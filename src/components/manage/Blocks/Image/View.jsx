@@ -7,6 +7,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Image, UniversalLink } from '@plone/volto/components';
 import cx from 'classnames';
+import { isString } from 'lodash';
 import { withBlockExtensions } from '@plone/volto/helpers';
 
 /**
@@ -30,7 +31,9 @@ export const View = ({ data, detached, properties }) => {
       {data.url && (
         <>
           {(() => {
-            const image = (
+            const image = isString(data.url) ? (
+              <img src={data.url} alt={data.alt} />
+            ) : (
               <Image
                 className={cx({
                   'full-width': data.align === 'full',
@@ -38,8 +41,7 @@ export const View = ({ data, detached, properties }) => {
                   medium: data.size === 'm',
                   small: data.size === 's',
                 })}
-                item={data}
-                imageField="image"
+                item={data.url}
                 alt={data.alt || ''}
                 loading="lazy"
               />

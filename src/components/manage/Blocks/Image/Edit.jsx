@@ -12,7 +12,7 @@ import { Button, Dimmer, Input, Loader, Message } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import loadable from '@loadable/component';
 import cx from 'classnames';
-import { isEqual } from 'lodash';
+import { isEqual, isString } from 'lodash';
 
 import {
   Icon,
@@ -59,7 +59,7 @@ class Edit extends Component {
     block: PropTypes.string.isRequired,
     index: PropTypes.number.isRequired,
     data: PropTypes.objectOf(PropTypes.any).isRequired,
-    content: PropTypes.objectOf(PropTypes.any).isRequired,
+    content: PropTypes.objectOf(PropTypes.any),
     request: PropTypes.shape({
       loading: PropTypes.bool,
       loaded: PropTypes.bool,
@@ -88,6 +88,7 @@ class Edit extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
+    // Update block data after upload finished
     if (
       this.props.request.loading &&
       nextProps.request.loaded &&
@@ -98,7 +99,10 @@ class Edit extends Component {
       });
       this.props.onChangeBlock(this.props.block, {
         ...this.props.data,
-        url: nextProps.content['@id'],
+        url: {
+          '@id': nextProps.content['@id'],
+          image_scales: { image: [nextProps.content.image] },
+        },
         alt: '',
       });
     }
@@ -252,18 +256,21 @@ class Edit extends Component {
         )}
       >
         {data.url ? (
-          <Image
-            className={cx({
-              'full-width': data.align === 'full',
-              large: data.size === 'l',
-              medium: data.size === 'm',
-              small: data.size === 's',
-            })}
-            item={data.url}
-            imageField="image"
-            alt={data.alt || ''}
-            loading="lazy"
-          />
+          isString(data.url) ? (
+            <img src={data.url} alt={data.alt} style={{ width: '50%' }} />
+          ) : (
+            <Image
+              className={cx({
+                'full-width': data.align === 'full',
+                large: data.size === 'l',
+                medium: data.size === 'm',
+                small: data.size === 's',
+              })}
+              item={data.url}
+              alt={data.alt || ''}
+              loading="lazy"
+            />
+          )
         ) : (
           <div>
             {this.props.editable && (
@@ -298,7 +305,6 @@ class Edit extends Component {
                                 e.stopPropagation();
                                 e.preventDefault();
                                 this.props.openObjectBrowser({
-                                  mode: 'link',
                                   onSelectItem: (
                                     url,
                                     { title, image_field, image_scales },
@@ -314,7 +320,6 @@ class Edit extends Component {
                                       alt: this.props.data.alt || title,
                                     });
                                   },
-                                  selectableTypes: ['Image'],
                                 });
                               }}
                             >

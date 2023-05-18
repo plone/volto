@@ -1,10 +1,6 @@
 import { defineMessages } from 'react-intl';
 
 const messages = defineMessages({
-  Source: {
-    id: 'Source',
-    defaultMessage: 'Source',
-  },
   Image: {
     id: 'Image',
     defaultMessage: 'Image',
