@@ -1,10 +1,6 @@
 import { defineMessages } from 'react-intl';
 
 const messages = defineMessages({
-  Source: {
-    id: 'Source',
-    defaultMessage: 'Source',
-  },
   Image: {
     id: 'Image',
     defaultMessage: 'Image',
@@ -45,7 +41,7 @@ export function ImageSchema({ formData, intl }) {
       {
         id: 'default',
         title: 'Default',
-        fields: [...(formData.url ? ['image', 'alt', 'align', 'size'] : [])],
+        fields: [...(formData.url ? ['alt', 'align', 'size'] : [])],
       },
       ...(formData.url
         ? [
@@ -58,12 +54,6 @@ export function ImageSchema({ formData, intl }) {
         : []),
     ],
     properties: {
-      image: {
-        title: intl.formatMessage(messages.Source),
-        widget: 'object_browser',
-        mode: 'image',
-        selectedItemAttrs: ['image_field', 'image_scales'],
-      },
       alt: {
         title: intl.formatMessage(messages.AltText),
         description: (

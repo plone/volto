@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Segment } from 'semantic-ui-react';
+import { isString } from 'lodash';
+import { Segment, Button } from 'semantic-ui-react';
 import { useIntl, FormattedMessage } from 'react-intl';
 import { BlockDataForm, Icon, Image } from '@plone/volto/components';
-import { isInternalURL } from '@plone/volto/helpers';
 import { ImageSchema } from './schema';
 import imageSVG from '@plone/volto/icons/image.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 const ImageSidebar = (props) => {
   const { data, block, onChangeBlock } = props;
@@ -20,19 +21,35 @@ const ImageSidebar = (props) => {
       </header>
 
       <Segment className="sidebar-metadata-container" secondary attached>
-        {data.url ? (
+        {typeof data.url === 'string' ? (
+          // Entered an external URL
           <>
-            {data.url.split('/').slice(-1)[0]}
-            {isInternalURL(data.url) && (
+            <div>
+              {(data.url?.['@id'] ?? data.url).split('/').slice(-1)[0]}
+              <Button
+                basic
+                className="cancel"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onChangeBlock(block, {
+                    ...data,
+                    url: undefined,
+                    image_scales: undefined,
+                  });
+                }}
+              >
+                <Icon name={clearSVG} size="30px" />
+              </Button>
+            </div>
+            {isString(data.url) ? (
+              <img src={data.url} alt={data.alt} style={{ width: '50%' }} />
+            ) : (
               <Image
-                item={data}
-                imageField="image"
+                item={data.url}
                 alt={data.alt}
                 loading="lazy"
+                style={{ width: '50%' }}
               />
-            )}
-            {!isInternalURL(data.url) && (
-              <img src={data.url} alt={data.alt} style={{ width: '50%' }} />
             )}
           </>
         ) : (
@@ -49,18 +66,11 @@ const ImageSidebar = (props) => {
         schema={schema}
         title={schema.title}
         onChangeField={(id, value) => {
-          if (id === 'image') {
-            onChangeBlock(block, {
-              ...data,
-              alt: data.alt || value?.title,
-              [id]: value?.image_scales[value?.image_field]?.[0],
-            });
-          } else {
-            onChangeBlock(block, {
-              ...data,
-              [id]: value,
-            });
-          }
+          onChangeBlock(block, {
+            ...data,
+            [id]: value,
+            image_scales: id === 'url' ? undefined : data.image_scales,
+          });
         }}
         onChangeBlock={onChangeBlock}
         formData={data}

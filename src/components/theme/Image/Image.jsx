@@ -28,13 +28,14 @@ export default function Image({
 
   if (!image) return null;
 
-  const baseUrl = isFromRealObject ? '' : flattenToAppURL(item['@id']);
+  const baseUrl = isFromRealObject ? '' : flattenToAppURL(item['@id'] + '/');
 
   attrs.src = `${baseUrl}${flattenToAppURL(image.download)}`;
   attrs.width = image.width;
-  attrs.height = image.height;
+  attrs.height = 'auto';
   attrs.style = {
     aspectRatio: `${image.width} / ${image.height}`,
+    maxWidth: '100%',
     ...imageProps.style,
   };
 
@@ -67,5 +68,5 @@ Image.propTypes = {
   item: PropTypes.object.isRequired,
   imageField: PropTypes.string,
   alt: PropTypes.string.isRequired,
-  loading: PropTypes.bool,
+  loading: PropTypes.string,
 };
