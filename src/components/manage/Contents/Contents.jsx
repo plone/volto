@@ -273,43 +273,6 @@ const messages = defineMessages({
     id: 'All',
     defaultMessage: 'All',
   },
-  linkIntegrityMessageHeader: {
-    id: 'Potential link breakage',
-    defaultMessage: 'Potential link breakage',
-  },
-  linkIntegrityMessageBody: {
-    id:
-      'By deleting this item, you will break ' +
-      'links that exist in the items listed below. ' +
-      'If this is indeed what you want to do, ' +
-      'we recommend that remove these references first.',
-    defaultMessage:
-      'By deleting this item, ' +
-      'you will break links that exist in the items ' +
-      'listed below. If this is indeed what you ' +
-      'want to do, we recommend that remove ' +
-      'these references first.',
-  },
-  linkIntegrityMessageExtra: {
-    id: 'This Page is referenced by the following items:',
-    defaultMessage: 'This Page is referenced by the following items:',
-  },
-  deleteSingleItemCountMessage: {
-    id:
-      'This item is also a folder. By deleting it you will delete N items inside the folder.',
-    defaultMessage:
-      'This item is also a folder. By deleting it you will delete N items inside the folder.',
-  },
-  deleteMultipleItemsCountMessage: {
-    id:
-      'Some items are also a folder. By deleting it you will delete N items inside the folder.',
-    defaultMessage:
-      'Some items are also a folder. By deleting it you will delete N items inside the folder.',
-  },
-  deleteItemMessage: {
-    id: 'Items to be deleted:',
-    defaultMessage: 'Items to be deleted:',
-  },
 });
 
 /**
