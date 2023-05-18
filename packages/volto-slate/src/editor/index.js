@@ -8,6 +8,7 @@ export default (config) => {
     ...slateConfig,
     // showExpandedToolbar: false,
     enableExpandedToolbar: false,
+    uselinkedHeadlines: false,
   };
   config = installDefaultPlugins(config);
   return config;

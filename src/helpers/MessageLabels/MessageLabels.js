@@ -260,4 +260,8 @@ export const messages = defineMessages({
     id: 'Show groups of users below',
     defaultMessage: 'Show groups of users below',
   },
+  UrlclipboardCopy: {
+    id: 'URL copied to clipboard',
+    defaultMessage: 'URL copied to clipboard',
+  },
 });
