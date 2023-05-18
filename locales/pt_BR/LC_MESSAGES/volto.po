@@ -278,6 +278,16 @@ msgstr "Complemento desinstalado com sucesso"
 msgid "Addon upgraded succesfuly"
 msgstr "Complemento atualizado com sucesso"
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Advanced facet?
+msgid "Advanced facet?"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Advanced facets are initially hidden and displayed on demand
+msgid "Advanced facets are initially hidden and displayed on demand"
+msgstr ""
+
 #: config/Views
 # defaultMessage: Album view
 msgid "Album view"
@@ -1578,10 +1588,20 @@ msgstr "Facetas ocultas ainda filtrarão os resultados se parâmetros adequados 
 msgid "Hide Replies"
 msgstr "Ocultar respostas"
 
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: Hide advanced
+msgid "Hide advanced"
+msgstr ""
+
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Hide facet?
 msgid "Hide facet?"
 msgstr "Ocultar faceta?"
+
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: Hide filters
+msgid "Hide filters"
+msgstr ""
 
 #: components/manage/History/History
 #: components/manage/Toolbar/More
@@ -3096,6 +3116,16 @@ msgstr "Mostrar tudo"
 # defaultMessage: Show Replies
 msgid "Show Replies"
 msgstr "Mostrar respostas"
+
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: Show advanced
+msgid "Show advanced"
+msgstr ""
+
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: Show filters
+msgid "Show filters"
+msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Show groups of users below

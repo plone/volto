@@ -275,6 +275,16 @@ msgstr "Produktu gehigarria ondo kendu da"
 msgid "Addon upgraded succesfuly"
 msgstr "Produktu gehigarria ondo eguneratu da"
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Advanced facet?
+msgid "Advanced facet?"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Advanced facets are initially hidden and displayed on demand
+msgid "Advanced facets are initially hidden and displayed on demand"
+msgstr ""
+
 #: config/Views
 # defaultMessage: Album view
 msgid "Album view"
@@ -1575,10 +1585,20 @@ msgstr "Ezkutatutako fazetek emaitzak filtratzen dituzte parametro egokiak URLan
 msgid "Hide Replies"
 msgstr "Ezkutatu erantzunak"
 
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: Hide advanced
+msgid "Hide advanced"
+msgstr ""
+
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Hide facet?
 msgid "Hide facet?"
 msgstr "Fazeta ezkutatu?"
+
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: Hide filters
+msgid "Hide filters"
+msgstr ""
 
 #: components/manage/History/History
 #: components/manage/Toolbar/More
@@ -3093,6 +3113,16 @@ msgstr "Erakutsi guztiak"
 # defaultMessage: Show Replies
 msgid "Show Replies"
 msgstr "Erakutsi erantzunak"
+
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: Show advanced
+msgid "Show advanced"
+msgstr ""
+
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: Show filters
+msgid "Show filters"
+msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Show groups of users below

@@ -268,6 +268,16 @@ msgstr ""
 msgid "Addon upgraded succesfuly"
 msgstr ""
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Advanced facet?
+msgid "Advanced facet?"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Advanced facets are initially hidden and displayed on demand
+msgid "Advanced facets are initially hidden and displayed on demand"
+msgstr ""
+
 #: config/Views
 # defaultMessage: Album view
 msgid "Album view"
@@ -1568,10 +1578,20 @@ msgstr "Fațetele ascunse vor filtra în continuare rezultatele dacă parametrii
 msgid "Hide Replies"
 msgstr "Ascunde răspunsurile"
 
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: Hide advanced
+msgid "Hide advanced"
+msgstr ""
+
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Hide facet?
 msgid "Hide facet?"
 msgstr "Ascundeți fațeta?"
+
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: Hide filters
+msgid "Hide filters"
+msgstr ""
 
 #: components/manage/History/History
 #: components/manage/Toolbar/More
@@ -3086,6 +3106,16 @@ msgstr "Afișează tot"
 # defaultMessage: Show Replies
 msgid "Show Replies"
 msgstr "Afișați răspunsurile"
+
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: Show advanced
+msgid "Show advanced"
+msgstr ""
+
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: Show filters
+msgid "Show filters"
+msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Show groups of users below
