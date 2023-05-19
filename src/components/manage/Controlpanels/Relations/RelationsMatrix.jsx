@@ -34,9 +34,7 @@ const RelationsMatrix = (props) => {
     id: 'plone_setup',
   });
 
-  const relationtypes = useSelector(
-    (state) => state.relations?.stats?.relations,
-  );
+  const relationtypes = useSelector((state) => state.relations?.stats?.stats);
   const relationsListError = useSelector(
     (state) => state.relations?.list?.error?.response?.body?.error,
   );

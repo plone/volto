@@ -32,7 +32,7 @@ const ListingTemplate = ({
 
   const stats = useSelector((state) => state.relations?.stats || null);
   let relations = useSelector(
-    (state) => state.relations?.result?.relations?.[relationtype]?.items || [],
+    (state) => state.relations?.relations?.[relationtype]?.items || [],
   );
 
   let potential_targets_objects = useSelector(
@@ -45,14 +45,13 @@ const ListingTemplate = ({
 
   const staticCatalogVocabularyQuery = useSelector(
     (state) =>
-      state.relations?.result?.relations?.[relationtype]
+      state.relations?.relations?.[relationtype]
         ?.staticCatalogVocabularyQuery || {},
   );
 
   // Editable if plone.api.relations available
   const editable = useSelector(
-    (state) =>
-      state.relations?.result?.relations?.[relationtype]?.readonly === false,
+    (state) => state.relations?.relations?.[relationtype]?.readonly === false,
   );
 
   let relationMatrix = {};
@@ -140,7 +139,7 @@ const ListingTemplate = ({
 
   useEffect(() => {
     // If many relations, then fetch relations only with search query on source or target
-    if (stats?.relations[relationtype] <= MAX_RELATIONS) {
+    if (stats?.stats[relationtype] <= MAX_RELATIONS) {
       dispatch(queryRelations(relationtype));
     } else if (query_source || query_target) {
       dispatch(

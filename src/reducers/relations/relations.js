@@ -101,15 +101,19 @@ export default function relations(state = initialState, action = {}) {
                 loading: false,
                 loaded: true,
                 error: null,
-                result: action.result,
+                relations: action.result.relations
+                  ? action.result.relations
+                  : state.relations,
                 stats: null,
               },
             },
           }
         : {
             ...state,
-            result: action.result,
-            stats: action.result.relations ? action.result : state.stats,
+            relations: action.result.relations
+              ? action.result.relations
+              : state.relations,
+            stats: action.result.stats ? action.result : state.stats,
             [getRequestKey(action.type)]: {
               loading: false,
               loaded: true,

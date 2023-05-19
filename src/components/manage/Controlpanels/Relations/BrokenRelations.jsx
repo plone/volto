@@ -13,7 +13,7 @@ const BrokenRelations = () => {
     (state) => state.relations?.stats?.broken || {},
   );
   const brokenRelations = useSelector(
-    (state) => state.relations?.subrequests?.broken?.result?.relations,
+    (state) => state.relations?.subrequests?.broken?.relations,
   );
 
   useEffect(() => {
