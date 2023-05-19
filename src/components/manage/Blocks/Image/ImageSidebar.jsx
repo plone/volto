@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { isString } from 'lodash';
 import { Segment, Button } from 'semantic-ui-react';
 import { useIntl, FormattedMessage, defineMessages } from 'react-intl';
+import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers';
 import { BlockDataForm, Icon, Image } from '@plone/volto/components';
 import { ImageSchema } from './schema';
 import imageSVG from '@plone/volto/icons/image.svg';
@@ -42,7 +43,25 @@ const ImageSidebar = (props) => {
             </div>
             <Image
               item={isString(data.url) ? undefined : data.url}
-              src={isString(data.url) ? data.url : undefined}
+              src={
+                isString(data.url)
+                  ? isInternalURL(data.url)
+                    ? (() => {
+                        if (data.size === 'l')
+                          return `${flattenToAppURL(data.url)}/@@images/image`;
+                        if (data.size === 'm')
+                          return `${flattenToAppURL(
+                            data.url,
+                          )}/@@images/image/preview`;
+                        if (data.size === 's')
+                          return `${flattenToAppURL(
+                            data.url,
+                          )}/@@images/image/mini`;
+                        return `${flattenToAppURL(data.url)}/@@images/image`;
+                      })()
+                    : data.url
+                  : undefined
+              }
               alt={intl.formatMessage(messages.preview)}
               loading="lazy"
               responsive={true}

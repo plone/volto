@@ -8,7 +8,11 @@ import PropTypes from 'prop-types';
 import { Image, UniversalLink } from '@plone/volto/components';
 import cx from 'classnames';
 import { isString } from 'lodash';
-import { withBlockExtensions } from '@plone/volto/helpers';
+import {
+  flattenToAppURL,
+  isInternalURL,
+  withBlockExtensions,
+} from '@plone/volto/helpers';
 
 /**
  * View image block class.
@@ -41,7 +45,27 @@ export const View = ({ data, detached, properties }) => {
                   small: data.size === 's',
                 })}
                 item={isString(data.url) ? undefined : data.url}
-                src={isString(data.url) ? data.url : undefined}
+                src={
+                  isString(data.url)
+                    ? isInternalURL(data.url)
+                      ? (() => {
+                          if (data.size === 'l')
+                            return `${flattenToAppURL(
+                              data.url,
+                            )}/@@images/image`;
+                          if (data.size === 'm')
+                            return `${flattenToAppURL(
+                              data.url,
+                            )}/@@images/image/preview`;
+                          if (data.size === 's')
+                            return `${flattenToAppURL(
+                              data.url,
+                            )}/@@images/image/mini`;
+                          return `${flattenToAppURL(data.url)}/@@images/image`;
+                        })()
+                      : data.url
+                    : undefined
+                }
                 alt={data.alt || ''}
                 loading="lazy"
               />
