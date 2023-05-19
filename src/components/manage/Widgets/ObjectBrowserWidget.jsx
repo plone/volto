@@ -9,13 +9,8 @@ import { compose } from 'redux';
 import { compact, isArray, isEmpty, remove } from 'lodash';
 import { connect } from 'react-redux';
 import { Label, Popup, Button } from 'semantic-ui-react';
-import {
-  flattenToAppURL,
-  isInternalURL,
-  isUrl,
-  normalizeUrl,
-  removeProtocol,
-} from '@plone/volto/helpers/Url/Url';
+import { flattenToAppURL, isInternalURL, isUrl, normalizeUrl, removeProtocol } from '@plone/volto/helpers/Url/Url';
+import { UniversalLink } from '@plone/volto/components';
 import { searchContent } from '@plone/volto/actions/search/search';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import { defineMessages, injectIntl } from 'react-intl';
@@ -68,10 +63,7 @@ export class ObjectBrowserWidgetComponent extends Component {
     initialPath: PropTypes.string,
     required: PropTypes.bool,
     error: PropTypes.arrayOf(PropTypes.string),
-    value: PropTypes.oneOfType([
-      PropTypes.arrayOf(PropTypes.object),
-      PropTypes.object,
-    ]),
+    value: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.object), PropTypes.object]),
     onChange: PropTypes.func.isRequired,
     openObjectBrowser: PropTypes.func.isRequired,
     allowExternals: PropTypes.bool,
@@ -111,18 +103,18 @@ export class ObjectBrowserWidgetComponent extends Component {
         key={flattenToAppURL(href)}
         content={
           <div style={{ display: 'flex' }}>
-            {isInternalURL(href) ? (
-              <Icon name={homeSVG} size="18px" />
-            ) : (
-              <Icon name={blankSVG} size="18px" />
-            )}
+            {isInternalURL(href) ? <Icon name={homeSVG} size="18px" /> : <Icon name={blankSVG} size="18px" />}
             &nbsp;
             {flattenToAppURL(href)}
           </div>
         }
         trigger={
           <Label>
-            <div className="item-title">{item.title}</div>
+            <div className="item-title">
+              <UniversalLink openLinkInNewTab href={href}>
+                {item.title}
+              </UniversalLink>
+            </div>
             <div>
               {this.props.mode === 'multiple' && (
                 <Icon
@@ -151,13 +143,9 @@ export class ObjectBrowserWidgetComponent extends Component {
   };
 
   onChange = (item) => {
-    let value =
-      this.props.mode === 'multiple' && this.props.value
-        ? [...this.props.value]
-        : [];
+    let value = this.props.mode === 'multiple' && this.props.value ? [...this.props.value] : [];
     value = value.filter((item) => item != null);
-    const maxSize =
-      this.props.widgetOptions?.pattern_options?.maximumSelectionSize || -1;
+    const maxSize = this.props.widgetOptions?.pattern_options?.maximumSelectionSize || -1;
     if (maxSize === 1 && value.length === 1) {
       value = []; //enable replace of selected item with another value, if maxsize is 1
     }
@@ -284,12 +272,8 @@ export class ObjectBrowserWidgetComponent extends Component {
       onSelectItem: (url, item) => {
         this.onChange(item);
       },
-      selectableTypes:
-        this.props.widgetOptions?.pattern_options?.selectableTypes ||
-        this.props.selectableTypes,
-      maximumSelectionSize:
-        this.props.widgetOptions?.pattern_options?.maximumSelectionSize ||
-        this.props.maximumSelectionSize,
+      selectableTypes: this.props.widgetOptions?.pattern_options?.selectableTypes || this.props.selectableTypes,
+      maximumSelectionSize: this.props.widgetOptions?.pattern_options?.maximumSelectionSize || this.props.maximumSelectionSize,
     });
   };
 
@@ -298,10 +282,7 @@ export class ObjectBrowserWidgetComponent extends Component {
       return;
     }
 
-    if (
-      e.target.contains(this.selectedItemsRef.current) ||
-      e.target.contains(this.placeholderRef.current)
-    ) {
+    if (e.target.contains(this.selectedItemsRef.current) || e.target.contains(this.placeholderRef.current)) {
       this.showObjectBrowser(e);
     }
   };
@@ -312,20 +293,11 @@ export class ObjectBrowserWidgetComponent extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const {
-      id,
-      description,
-      fieldSet,
-      value,
-      mode,
-      onChange,
-      isDisabled,
-    } = this.props;
+    const { id, description, fieldSet, value, mode, onChange, isDisabled } = this.props;
 
     let items = compact(!isArray(value) && value ? [value] : value || []);
 
-    let icon =
-      mode === 'multiple' || items.length === 0 ? navTreeSVG : clearSVG;
+    let icon = mode === 'multiple' || items.length === 0 ? navTreeSVG : clearSVG;
     let iconAction =
       mode === 'multiple' || items.length === 0
         ? this.showObjectBrowser
@@ -335,45 +307,17 @@ export class ObjectBrowserWidgetComponent extends Component {
           };
 
     return (
-      <FormFieldWrapper
-        {...this.props}
-        className={description ? 'help text' : 'text'}
-      >
-        <div
-          className="objectbrowser-field"
-          aria-labelledby={`fieldset-${
-            fieldSet || 'default'
-          }-field-label-${id}`}
-        >
-          <div
-            className="selected-values"
-            onClick={this.handleSelectedItemsRefClick}
-            onKeyDown={this.handleSelectedItemsRefClick}
-            role="searchbox"
-            tabIndex={0}
-            ref={this.selectedItemsRef}
-          >
+      <FormFieldWrapper {...this.props} className={description ? 'help text' : 'text'}>
+        <div className="objectbrowser-field" aria-labelledby={`fieldset-${fieldSet || 'default'}-field-label-${id}`}>
+          <div className="selected-values" onClick={this.handleSelectedItemsRefClick} onKeyDown={this.handleSelectedItemsRefClick} role="searchbox" tabIndex={0} ref={this.selectedItemsRef}>
             {items.map((item) => this.renderLabel(item))}
 
             {items.length === 0 && this.props.mode === 'multiple' && (
               <div className="placeholder" ref={this.placeholderRef}>
-                {this.props.placeholder ??
-                  this.props.intl.formatMessage(messages.placeholder)}
+                {this.props.placeholder ?? this.props.intl.formatMessage(messages.placeholder)}
               </div>
             )}
-            {this.props.allowExternals &&
-              items.length === 0 &&
-              this.props.mode !== 'multiple' && (
-                <input
-                  onKeyDown={this.onKeyDownManualLink}
-                  onChange={this.onManualLinkInput}
-                  value={this.state.manualLinkInput}
-                  placeholder={
-                    this.props.placeholder ??
-                    this.props.intl.formatMessage(messages.placeholder)
-                  }
-                />
-              )}
+            {this.props.allowExternals && items.length === 0 && this.props.mode !== 'multiple' && <input onKeyDown={this.onKeyDownManualLink} onChange={this.onManualLinkInput} value={this.state.manualLinkInput} placeholder={this.props.placeholder ?? this.props.intl.formatMessage(messages.placeholder)} />}
           </div>
           {this.state.manualLinkInput && isEmpty(items) && (
             <Button.Group>
@@ -401,14 +345,7 @@ export class ObjectBrowserWidgetComponent extends Component {
             </Button.Group>
           )}
           {!this.state.manualLinkInput && (
-            <Button
-              aria-label={this.props.intl.formatMessage(
-                messages.openObjectBrowser,
-              )}
-              onClick={iconAction}
-              className="action"
-              disabled={isDisabled}
-            >
+            <Button aria-label={this.props.intl.formatMessage(messages.openObjectBrowser)} onClick={iconAction} className="action" disabled={isDisabled}>
               <Icon name={icon} size="18px" />
             </Button>
           )}
@@ -418,17 +355,6 @@ export class ObjectBrowserWidgetComponent extends Component {
   }
 }
 
-const ObjectBrowserWidgetMode = (mode) =>
-  compose(
-    injectIntl,
-    withObjectBrowser,
-    withRouter,
-    connect(null, { searchContent }),
-  )((props) => <ObjectBrowserWidgetComponent {...props} mode={mode} />);
+const ObjectBrowserWidgetMode = (mode) => compose(injectIntl, withObjectBrowser, withRouter, connect(null, { searchContent }))((props) => <ObjectBrowserWidgetComponent {...props} mode={mode} />);
 export { ObjectBrowserWidgetMode };
-export default compose(
-  injectIntl,
-  withObjectBrowser,
-  withRouter,
-  connect(null, { searchContent }),
-)(ObjectBrowserWidgetComponent);
+export default compose(injectIntl, withObjectBrowser, withRouter, connect(null, { searchContent }))(ObjectBrowserWidgetComponent);

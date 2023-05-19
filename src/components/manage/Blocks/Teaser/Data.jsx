@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { useDispatch } from 'react-redux';
 import { Button } from 'semantic-ui-react';
@@ -11,13 +11,9 @@ import reloadSVG from '@plone/volto/icons/reload.svg';
 import { useEffect } from 'react';
 
 const messages = defineMessages({
-  resetTeaser: {
-    id: 'Reset the block',
-    defaultMessage: 'Reset the block',
-  },
   refreshTeaser: {
-    id: 'Fetch newest data',
-    defaultMessage: 'Fetch newest data',
+    id: 'Refresh source content',
+    defaultMessage: 'Refresh source content',
   },
 });
 
@@ -25,7 +21,6 @@ const TeaserData = (props) => {
   const { block, blocksConfig, data, onChangeBlock } = props;
   const intl = useIntl();
   const dispatch = useDispatch();
-  const [refreshed, setRefreshed] = useState(false);
 
   const dataTransformer = (resp, data) => {
     let hrefData = {
@@ -46,6 +41,7 @@ const TeaserData = (props) => {
       '@type': data['@type'],
       description: resp?.description,
       head_title: resp?.head_title,
+      overwrite: data.overwrite,
       href: [hrefData],
       styles: data.styles,
       title: resp.title,
@@ -56,7 +52,6 @@ const TeaserData = (props) => {
     dispatch(getContent(flattenToAppURL(data.href[0]['@id']))).then((resp) => {
       if (resp) {
         let blockData = dataTransformer(resp, data);
-        setRefreshed(true);
         onChangeBlock(block, blockData);
       }
     });
@@ -72,8 +67,6 @@ const TeaserData = (props) => {
       });
     }
   }, [data.href, data.live]);
-
-  const dataAdapter = blocksConfig[data['@type']].dataAdapter;
 
   const teaserDataAdapter = ({ block, data, id, onChangeBlock, value }) => {
     let dataSaved = {
@@ -91,18 +84,14 @@ const TeaserData = (props) => {
     onChangeBlock(block, dataSaved);
   };
 
-  // const isReseteable = isEmpty(data.href) && !data.title && !data.description && !data.head_title;
-
-  // const HeaderActions = (
-  //   <Button.Group>
-  //     <Button aria-label={intl.formatMessage(messages.refreshTeaser)} basic disabled={refreshed} onClick={() => refresh()}>
-  //       <Icon name={reloadSVG} size="24px" color="grey" />
-  //     </Button>
-  //     <Button aria-label={intl.formatMessage(messages.resetTeaser)} basic disabled={isReseteable} onClick={() => reset()}>
-  //       <Icon name={trashSVG} size="24px" color="red" />
-  //     </Button>
-  //   </Button.Group>
-  // );
+  const ActionButton = (
+    <Button.Group className="refresh teaser">
+      <Button aria-label={intl.formatMessage(messages.refreshTeaser)} basic onClick={() => refresh()}>
+        {intl.formatMessage(messages.refreshTeaser)}
+        <Icon name={reloadSVG} size="20px" color="#00000099" />
+      </Button>
+    </Button.Group>
+  );
 
   const schema = data.overwrite ? blocksConfig[data['@type']].blockSchema({ intl }) : blocksConfig[data['@type']].enhancedSchema({ intl });
 
@@ -123,6 +112,7 @@ const TeaserData = (props) => {
       formData={data}
       block={block}
       blocksConfig={blocksConfig}
+      actionButton={data.overwrite && ActionButton}
     />
   );
 };

@@ -40,6 +40,7 @@ const InlineForm = (props) => {
     title,
     icon,
     headerActions,
+    actionButton,
     prompts,
     footer,
     focusIndex,
@@ -93,29 +94,9 @@ const InlineForm = (props) => {
           {description}
         </Segment>
       )}
-      {keys(errors).length > 0 && !errorOptions?.hideErrorBox && (
-        <Message
-          icon="warning"
-          negative
-          attached
-          header={_(messages.error)}
-          content={_(messages.thereWereSomeErrors)}
-        />
-      )}
-      {error && !errorOptions?.hideErrorBox && (
-        <Message
-          icon="warning"
-          negative
-          attached
-          header={_(messages.error)}
-          content={error.message}
-        />
-      )}
-      {prompts && (
-        <Message icon="warning" warning attached>
-          {prompts}
-        </Message>
-      )}
+      {keys(errors).length > 0 && !errorOptions?.hideErrorBox && <Message icon="warning" negative attached header={_(messages.error)} content={_(messages.thereWereSomeErrors)} />}
+      {error && !errorOptions?.hideErrorBox && <Message icon="warning" negative attached header={_(messages.error)} content={error.message} />}
+
       <div id={`blockform-fieldset-${defaultFieldset.id}`}>
         <Segment className="form attached">
           {map(defaultFieldset.fields, (field, index) => (
@@ -134,30 +115,19 @@ const InlineForm = (props) => {
               block={block}
             />
           ))}
+          {actionButton && <Segment className="attached actions">{actionButton}</Segment>}
         </Segment>
       </div>
 
       {other.map((fieldset, index) => (
         <Accordion fluid styled className="form" key={fieldset.id}>
           <div key={fieldset.id} id={`blockform-fieldset-${fieldset.id}`}>
-            <Accordion.Title
-              active={currentActiveFieldset === index}
-              index={index}
-              onClick={handleCurrentActiveFieldset}
-            >
+            <Accordion.Title active={currentActiveFieldset === index} index={index} onClick={handleCurrentActiveFieldset}>
               {fieldset.title && <>{fieldset.title}</>}
-              {currentActiveFieldset === index ? (
-                <Icon name={upSVG} size="20px" />
-              ) : (
-                <Icon name={downSVG} size="20px" />
-              )}
+              {currentActiveFieldset === index ? <Icon name={upSVG} size="20px" /> : <Icon name={downSVG} size="20px" />}
             </Accordion.Title>
             <Accordion.Content active={currentActiveFieldset === index}>
-              <AnimateHeight
-                animateOpacity
-                duration={500}
-                height={currentActiveFieldset === index ? 'auto' : 0}
-              >
+              <AnimateHeight animateOpacity duration={500} height={currentActiveFieldset === index ? 'auto' : 0}>
                 <Segment className="attached">
                   {map(fieldset.fields, (field) => (
                     <Field
