@@ -115,6 +115,20 @@ button .close {
   color: @darkHotPink;
 }
 
+//focus-visible
+:focus-visible,
+a:focus-visible,
+button:focus-visible {
+  outline: 1px auto @primaryColorFocus !important;
+}
+.ui.inverted {
+  :focus-visible,
+  a:focus-visible,
+  button:focus-visible {
+    outline: 1px solid @invertedFocus !important;
+  }
+}
+
 // Override default behavior for forms and segments
 .ui.form,
 .ui.segments,

@@ -7,55 +7,48 @@
 --------------------*/
 
 @importGoogleFonts: false;
-@fontName          : 'Poppins';
+@fontName: 'Poppins';
 @fontDisplay: swap;
 
 @toolbarWidth: 80px;
 @toolbarWidthMin: 20px;
 @fullSizeIcon: 36px;
 
-
 /*-------------------
       Base Sizes
 --------------------*/
-
 
 /*-------------------
     Border Radius
 --------------------*/
 
-
 /*-------------------
     Brand Colors
 --------------------*/
 
-@secondaryColor      : @brown;
+@secondaryColor: @brown;
 
-@lightSecondaryColor : @lightGrey;
-
+@lightSecondaryColor: @lightGrey;
 
 /*--------------
   Page Heading
 ---------------*/
 
-@headerFontWeight : 500;
-
+@headerFontWeight: 500;
 
 /*--------------
    Form Input
 ---------------*/
 
 /* This adjusts the default form input across all elements */
-@inputHorizontalPadding : 0;
+@inputHorizontalPadding: 0;
 
 /* Input Text Color */
-@inputPlaceholderColor: #B8C6C8;
-
+@inputPlaceholderColor: #b8c6c8;
 
 /*-------------------
     Focused Input
 --------------------*/
-
 
 /*-------------------
         Sizes
@@ -66,29 +59,25 @@
   This ensures these "ratios" remain constant despite changes in EM
 */
 
-@bigSize         : (19 / 14);
-@hugeSize        : (22 / 14);
-@massiveSize     : (26 / 14);
-
+@bigSize: (19 / 14);
+@hugeSize: (22 / 14);
+@massiveSize: (26 / 14);
 
 /*-------------------
         Page
 --------------------*/
 
-@pageBackground      : @white;
-
+@pageBackground: @white;
 
 /*-------------------
       Paragraph
 --------------------*/
 
-
 /*-------------------
        Links
 --------------------*/
 
-@linkColor           : @blue;
-
+@linkColor: @blue;
 
 /*-------------------
     Scroll Bars
@@ -96,16 +85,13 @@
 @mobileScrollbarWidth: 4px;
 @mobileScrollbarTrackBackground: transparent;
 
-
 /*-------------------
   Highlighted Text
 --------------------*/
 
-
 /*-------------------
        Loader
 --------------------*/
-
 
 /*-------------------
         Grid
@@ -116,7 +102,6 @@
 /*-------------------
      Transitions
 --------------------*/
-
 
 /*------------------
      Animations
@@ -129,49 +114,48 @@
      Breakpoints
 --------------------*/
 
-
 /*-------------------
       Site Colors
 --------------------*/
 
 /*---  Colors  ---*/
-@orange           : #FA5C2A; // Palette: reddishOrange
-@yellow           : #F6A808; // Palette: goldenRod
-@green            : #51AA55; // Palette: darkPastelGreen
-@teal             : #517776; // Palette: slate
-@blue             : #007EB1; // Palette: Plone (tealBlue/cerulean)
-@pink             : #E40166; // Palette: darkHotPink
-@red              : @pink;
-@brown            : #826A6A; // Palette: reddishGrey
-@grey             : #68778D; // Palette: blueishGrey
-@black            : #252525; // Palette: darkishGrey
+@orange: #fa5c2a; // Palette: reddishOrange
+@yellow: #f6a808; // Palette: goldenRod
+@green: #51aa55; // Palette: darkPastelGreen
+@teal: #517776; // Palette: slate
+@blue: #007eb1; // Palette: Plone (tealBlue/cerulean)
+@pink: #e40166; // Palette: darkHotPink
+@red: @pink;
+@brown: #826a6a; // Palette: reddishGrey
+@grey: #68778d; // Palette: blueishGrey
+@black: #252525; // Palette: darkishGrey
 
 /*---  Light Colors  ---*/
-@lightOlive       : #C9EAB1; // Palette: lightSage
-@lightGrey        : #878F93;
+@lightOlive: #c9eab1; // Palette: lightSage
+@lightGrey: #878f93;
 
 /*---   Neutrals  ---*/
-@fullBlack        : #000000;
-@offWhite         : #F9FAFB;
-@darkWhite        : #F3F4F5;
-@midWhite         : #DCDDDE;
-@white            : #FFFFFF;
+@fullBlack: #000000;
+@offWhite: #f9fafb;
+@darkWhite: #f3f4f5;
+@midWhite: #dcddde;
+@white: #ffffff;
 
 /*--- Colored Backgrounds ---*/
-@redBackground    : #F5C1C1; // Palette: alertError
-@tealBackground   : #EDF1F2; // Palette: Breadcrumbs
-@blueBackground   : #F2F6F8;
-@purpleBackground : #B8C6C8; // Dublin Core Summary
+@redBackground: #f5c1c1; // Palette: alertError
+@tealBackground: #edf1f2; // Palette: Breadcrumbs
+@blueBackground: #f2f6f8;
+@purpleBackground: #b8c6c8; // Dublin Core Summary
 
 /*--- Colored Headers ---*/
 
 /*--- Colored Text ---*/
-@tealTextColor   : @teal;
+@tealTextColor: @teal;
 
 /*--- Colored Border ---*/
 // Pastanaga custom borders colors
-@greyBorderColor      : #C7D5D8; // breadcrumbs border
-@lightGreyBorderColor : #EDF1F2; // breadcrumbs background
+@greyBorderColor: #c7d5d8; // breadcrumbs border
+@lightGreyBorderColor: #edf1f2; // breadcrumbs background
 
 @sidebarToggleButtonHighlightColor: @grey;
 
@@ -179,11 +163,9 @@
      Alpha Colors
 --------------------*/
 
-
 /*-------------------
        Accents
 --------------------*/
-
 
 /*-------------------
       Opacities
@@ -195,7 +177,6 @@
            Power-User
 *******************************/
 
-
 /*-------------------
     Emotive Colors
 --------------------*/
@@ -203,23 +184,21 @@
 /* Positive */
 
 /* Negative */
-@negativeBackgroundColor : rgb(237, 195, 194);
-@negativeHeaderColor     : @black;
-@negativeTextColor       : @black;
+@negativeBackgroundColor: rgb(237, 195, 194);
+@negativeHeaderColor: @black;
+@negativeTextColor: @black;
 
 /* Info */
 
 /* Warning */
-@warningBorderColor     : #F3E2AB;
-@warningBackgroundColor : #F3E2AB;
-@warningHeaderColor     : @black;
-@warningTextColor       : @black;
-
+@warningBorderColor: #f3e2ab;
+@warningBackgroundColor: #f3e2ab;
+@warningHeaderColor: @black;
+@warningTextColor: @black;
 
 /*-------------------
         Paths
 --------------------*/
-
 
 /*-------------------
        Em Sizes
@@ -229,39 +208,34 @@
 
 /* rem */
 
-
 /*-------------------
        Icons
 --------------------*/
-
 
 /*-------------------
      Neutral Text
 --------------------*/
 
-@selectedTextColor           : @lightGrey;
-@inverteditemlinkcolor       : @white;
+@selectedTextColor: @lightGrey;
+@inverteditemlinkcolor: @white;
 
 /*-------------------
      Brand Colors
 --------------------*/
 
-@youtubeColor    : #CC181E;
-
+@youtubeColor: #cc181e;
 
 /*-------------------
       Borders
 --------------------*/
 
-@borderColor               : @greyBorderColor;
-
+@borderColor: @greyBorderColor;
 
 /*-------------------
     Derived Values
 --------------------*/
 
 /* Loaders Position Offset */
-
 
 /* Rendered Scrollbar Width */
 
@@ -273,12 +247,9 @@
 
 /* Minimum Mobile Width */
 
-
 /* Positive / Negative Dupes */
 
-
 /* Responsive */
-
 
 /*-------------------
   Exact Pixel Values
@@ -295,7 +266,6 @@
 
 /* Columns */
 
-
 /*******************************
              States
 *******************************/
@@ -303,7 +273,6 @@
 /*-------------------
       Disabled
 --------------------*/
-
 
 /*-------------------
         Hover
@@ -321,7 +290,6 @@
 
 /*---  Light Tones  ---*/
 
-
 /*-------------------
         Focus
 --------------------*/
@@ -336,7 +304,6 @@
 
 /*---  Light Tones  ---*/
 
-
 /*-------------------
     Down (:active)
 --------------------*/
@@ -350,7 +317,6 @@
 /*---  Dark Tones  ---*/
 
 /*---  Light Tones  ---*/
-
 
 /*-------------------
         Active
