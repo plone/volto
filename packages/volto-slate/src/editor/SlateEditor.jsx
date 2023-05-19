@@ -285,6 +285,7 @@ class SlateEditor extends Component {
               ''
             )}
             <Editable
+              className="inner-focus"
               tabIndex={this.props.tabIndex || 0}
               readOnly={readOnly}
               placeholder={placeholder}
