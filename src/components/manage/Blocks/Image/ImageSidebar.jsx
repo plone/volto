@@ -40,24 +40,14 @@ const ImageSidebar = (props) => {
                 <Icon name={clearSVG} size="30px" />
               </Button>
             </div>
-            {isString(data.url) ? (
-              <img
-                src={data.url}
-                alt={intl.formatMessage(messages.preview)}
-                style={{ width: '50%' }}
-                className="responsive"
-                loading="lazy"
-                decoding="async"
-              />
-            ) : (
-              <Image
-                item={data.url}
-                alt={intl.formatMessage(messages.preview)}
-                loading="lazy"
-                responsive={true}
-                style={{ width: '50%' }}
-              />
-            )}
+            <Image
+              item={isString(data.url) ? undefined : data.url}
+              src={isString(data.url) ? data.url : undefined}
+              alt={intl.formatMessage(messages.preview)}
+              loading="lazy"
+              responsive={true}
+              style={{ width: '50%' }}
+            />
           </>
         ) : (
           <>

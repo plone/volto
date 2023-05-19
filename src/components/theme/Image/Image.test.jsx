@@ -112,3 +112,14 @@ test('renders an image component from a catalog brain', () => {
   const json = component.toJSON();
   expect(json).toMatchSnapshot();
 });
+
+test('renders an image component from a string src', () => {
+  const component = renderer.create(
+    <Image
+      src="http://localhost:3000/image/@@images/image/image.png"
+      alt="alt text"
+    />,
+  );
+  const json = component.toJSON();
+  expect(json).toMatchSnapshot();
+});

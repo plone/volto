@@ -245,12 +245,6 @@ class Edit extends Component {
     const placeholder =
       this.props.data.placeholder ||
       this.props.intl.formatMessage(messages.ImageBlockInputPlaceholder);
-    const className = cx('responsive', {
-      'full-width': data.align === 'full',
-      large: data.size === 'l',
-      medium: data.size === 'm',
-      small: data.size === 's',
-    });
 
     return (
       <div
@@ -263,23 +257,19 @@ class Edit extends Component {
         )}
       >
         {data.url ? (
-          isString(data.url) ? (
-            <img
-              src={data.url}
-              alt={data.alt || ''}
-              style={{ width: '50%' }}
-              className={className}
-              loading="lazy"
-              decoding="async"
-            />
-          ) : (
-            <Image
-              className={className}
-              item={data.url}
-              alt={data.alt || ''}
-              loading="lazy"
-            />
-          )
+          <Image
+            className={cx({
+              'full-width': data.align === 'full',
+              large: data.size === 'l',
+              medium: data.size === 'm',
+              small: data.size === 's',
+            })}
+            item={isString(data.url) ? undefined : data.url}
+            src={isString(data.url) ? data.url : undefined}
+            alt={data.alt || ''}
+            loading="lazy"
+            responsive={true}
+          />
         ) : (
           <div>
             {this.props.editable && (

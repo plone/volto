@@ -17,12 +17,6 @@ import { withBlockExtensions } from '@plone/volto/helpers';
  */
 export const View = ({ data, detached, properties }) => {
   const href = data?.href?.[0]?.['@id'] || '';
-  const className = cx('responsive', {
-    'full-width': data.align === 'full',
-    large: data.size === 'l',
-    medium: data.size === 'm',
-    small: data.size === 's',
-  });
 
   return (
     <p
@@ -38,18 +32,16 @@ export const View = ({ data, detached, properties }) => {
       {data.url && (
         <>
           {(() => {
-            const image = isString(data.url) ? (
-              <img
-                src={data.url}
-                alt={data.alt || ''}
-                className={className}
-                loading="lazy"
-                decoding="async"
-              />
-            ) : (
+            const image = (
               <Image
-                className={className}
-                item={data.url}
+                className={cx('responsive', {
+                  'full-width': data.align === 'full',
+                  large: data.size === 'l',
+                  medium: data.size === 'm',
+                  small: data.size === 's',
+                })}
+                item={isString(data.url) ? undefined : data.url}
+                src={isString(data.url) ? data.url : undefined}
                 alt={data.alt || ''}
                 loading="lazy"
               />

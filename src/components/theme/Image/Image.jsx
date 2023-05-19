@@ -6,55 +6,67 @@ import { flattenToAppURL } from '@plone/volto/helpers';
  * Image component
  * @param {object} item - Context item that has the image field (can also be a catalog brain or summary)
  * @param {string} imageField - Key of the image field inside the item, or inside the image_scales object of the item if it is a catalog brain or summary
+ * @param {string} src - URL of the image to be used if the item field is not available
  * @param {string} alt - Alternative text for the image
  * @param {boolean} loading - (default: eager) set to `lazy` to lazy load the image
+ * @param {boolean} responsive - (default: false) set to `true` to add the `responsive` class to the image
+ * @param {string} className - Additional classes to add to the image
  */
 export default function Image({
   item,
   imageField,
+  src,
   alt = '',
   loading = 'eager',
   responsive = false,
   className = '',
   ...imageProps
 }) {
+  if (!item && !src) return null;
+
   // TypeScript hints for editor autocomplete :)
   /** @type {React.ImgHTMLAttributes<HTMLImageElement>} */
   const attrs = {};
 
-  const isFromRealObject = !item.image_scales;
-  const imageFieldWithDefault = imageField || item.image_field || 'image';
+  if (!item && src) {
+    attrs.src = src;
+    attrs.alt = alt;
+    attrs.className = cx(className, { responsive });
+  } else {
+    const isFromRealObject = !item.image_scales;
+    const imageFieldWithDefault = imageField || item.image_field || 'image';
 
-  const image = isFromRealObject
-    ? item[imageFieldWithDefault]
-    : item.image_scales[imageFieldWithDefault]?.[0];
+    const image = isFromRealObject
+      ? item[imageFieldWithDefault]
+      : item.image_scales[imageFieldWithDefault]?.[0];
 
-  if (!image) return null;
+    if (!image) return null;
 
-  const baseUrl = isFromRealObject ? '' : flattenToAppURL(item['@id'] + '/');
+    const baseUrl = isFromRealObject ? '' : flattenToAppURL(item['@id'] + '/');
 
-  attrs.src = `${baseUrl}${flattenToAppURL(image.download)}`;
-  attrs.width = image.width;
-  attrs.height = image.height;
-  attrs.style = {
-    aspectRatio: `${image.width} / ${image.height}`,
-    ...imageProps.style,
-  };
-  attrs.className = cx(className, { responsive });
+    attrs.src = `${baseUrl}${flattenToAppURL(image.download)}`;
+    attrs.width = image.width;
+    attrs.height = image.height;
+    attrs.style = {
+      aspectRatio: `${image.width} / ${image.height}`,
+      ...imageProps.style,
+    };
+    attrs.className = cx(className, { responsive });
 
-  if (image.scales && Object.keys(image.scales).length > 0) {
-    const sortedScales = Object.values(image.scales).sort((a, b) => {
-      if (a.width > b.width) return 1;
-      else if (a.width < b.width) return -1;
-      else return 0;
-    });
+    if (image.scales && Object.keys(image.scales).length > 0) {
+      const sortedScales = Object.values(image.scales).sort((a, b) => {
+        if (a.width > b.width) return 1;
+        else if (a.width < b.width) return -1;
+        else return 0;
+      });
 
-    attrs.srcSet = sortedScales
-      .map(
-        (scale) =>
-          `${baseUrl}${flattenToAppURL(scale.download)} ${scale.width}w`,
-      )
-      .join(', ');
+      attrs.srcSet = sortedScales
+        .map(
+          (scale) =>
+            `${baseUrl}${flattenToAppURL(scale.download)} ${scale.width}w`,
+        )
+        .join(', ');
+    }
   }
 
   if (loading === 'lazy') {
@@ -68,8 +80,14 @@ export default function Image({
 }
 
 Image.propTypes = {
-  item: PropTypes.object.isRequired,
+  item: PropTypes.shape({
+    '@id': PropTypes.string,
+    image_field: PropTypes.string,
+    image_scales: PropTypes.object,
+    image: PropTypes.object,
+  }),
   imageField: PropTypes.string,
+  src: PropTypes.string,
   alt: PropTypes.string.isRequired,
   loading: PropTypes.string,
   responsive: PropTypes.bool,
