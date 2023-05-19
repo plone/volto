@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import { Message } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
-import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers';
-import { getTeaserImageURL } from './utils';
+import { isInternalURL } from '@plone/volto/helpers';
 import { MaybeWrap } from '@plone/volto/components';
 import { UniversalLink } from '@plone/volto/components';
 import cx from 'classnames';
@@ -18,20 +17,14 @@ const messages = defineMessages({
   },
 });
 
-const DefaultImage = (props) => <img {...props} alt={props.alt || ''} />;
-
 const TeaserDefaultTemplate = (props) => {
   const { className, data, isEditMode } = props;
   const intl = useIntl();
   const href = data.href?.[0];
   const image = data.preview_image?.[0];
-  const align = data?.styles?.align;
 
-  const hasImageComponent = config.getComponent('Image').component;
-  const Image = config.getComponent('Image').component || DefaultImage;
+  const Image = config.getComponent('Image').component;
   const { openExternalLinkInNewTab } = config.settings;
-  const defaultImageSrc =
-    href && flattenToAppURL(getTeaserImageURL({ href, image, align }));
 
   return (
     <div className={cx('block teaser', className)}>
@@ -60,9 +53,11 @@ const TeaserDefaultTemplate = (props) => {
               {(href.hasPreviewImage || href.image_field || image) && (
                 <div className="image-wrapper">
                   <Image
-                    src={hasImageComponent ? href : defaultImageSrc}
+                    item={image || href}
+                    imageField={image ? image.image_field : href.image_field}
                     alt=""
                     loading="lazy"
+                    responsive={true}
                   />
                 </div>
               )}
