@@ -42,9 +42,11 @@ describe('Accessibility Tests', () => {
     cy.focused()
       .tab({ shift: true })
       .should('have.attr', 'name', 'SearchableText');
+    //Active menu item
     cy.focused()
       .tab({ shift: true })
       .should('have.attr', 'class', 'item active');
+    //Menu items - Variable
     cy.focused().tab({ shift: true }).should('have.class', 'item');
     cy.focused().tab({ shift: true }).should('have.class', 'item');
     cy.focused().tab({ shift: true }).should('have.class', 'item');
@@ -61,6 +63,13 @@ describe('Accessibility Tests', () => {
       .tab({ shift: true })
       .should('have.class', 'skiplink')
       .should('have.attr', 'href', '#view');
+    cy.focused()
+      .tab({ shift: true })
+      .should('have.attr', 'aria-label', 'Shrink toolbar');
+    cy.focused().tab({ shift: true }).should('have.class', 'ui button undo');
+    cy.focused().tab({ shift: true }).should('have.class', 'ui button cancel');
+    cy.focused().tab({ shift: true }).should('have.class', 'ui button save');
+    cy.focused().click();
   });
 
   //IMPORTANT TO DO
