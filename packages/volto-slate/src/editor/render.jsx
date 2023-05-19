@@ -164,7 +164,7 @@ export const renderLinkElement = (tagName) => {
     mode = 'edit',
     className = null,
   }) {
-    const { slate } = config.settings;
+    const { slate = {} } = config.settings;
     const Tag = tagName;
     const slug = attributes.id || '';
     const location = useLocation();
