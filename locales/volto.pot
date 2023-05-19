@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2023-05-15T07:04:19.612Z\n"
+"POT-Creation-Date: 2023-05-19T08:59:10.549Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -3584,6 +3584,11 @@ msgstr ""
 #: components/manage/Aliases/Aliases
 # defaultMessage: URL Management for {title}
 msgid "URL Management for {title}"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: URL copied to clipboard
+msgid "URL copied to clipboard"
 msgstr ""
 
 #: components/manage/Rules/Rules

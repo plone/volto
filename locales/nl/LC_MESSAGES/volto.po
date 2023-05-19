@@ -3591,6 +3591,11 @@ msgstr "URL-beheer"
 msgid "URL Management for {title}"
 msgstr "URL-beheer voor {title}"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: URL copied to clipboard
+msgid "URL copied to clipboard"
+msgstr ""
+
 #: components/manage/Rules/Rules
 # defaultMessage: Unassign
 msgid "Unassign"

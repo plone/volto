@@ -3590,6 +3590,11 @@ msgstr "URL管理"
 msgid "URL Management for {title}"
 msgstr "{title}的URL管理"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: URL copied to clipboard
+msgid "URL copied to clipboard"
+msgstr ""
+
 #: components/manage/Rules/Rules
 # defaultMessage: Unassign
 msgid "Unassign"
