@@ -21,6 +21,42 @@ describe('Listing Block Tests', () => {
     cy.waitForResourceToLoad('');
   });
 
+  it('Add Listing block with no results', () => {
+    cy.intercept('PATCH', '/**/my-page').as('save');
+    cy.intercept('GET', '/**/my-page').as('content');
+    cy.intercept('GET', '/**/@types/Document').as('schema');
+
+    cy.createContent({
+      contentType: 'Document',
+      contentId: 'my-page-test',
+      contentTitle: 'My Page Test',
+      path: 'my-page',
+    });
+
+    cy.navigate('/my-page');
+    cy.wait('@content');
+
+    cy.navigate('/my-page/edit');
+    cy.wait('@schema');
+
+    cy.clearSlateTitle().type('My title');
+
+    //add listing block
+    cy.addNewBlock('listing');
+
+    cy.configureListingWith('News Item');
+
+    //save
+    cy.get('#toolbar-save').click();
+    cy.wait('@save');
+    cy.wait('@content');
+
+    //test after save
+    cy.get('#page-document .block.listing.default .emptyListing').contains(
+      'No results found.',
+    );
+  });
+
   it('Add Listing block', () => {
     cy.intercept('PATCH', '/**/my-page').as('save');
     cy.intercept('GET', '/**/my-page').as('content');
@@ -906,7 +942,7 @@ describe('Listing Block Tests', () => {
     cy.wait('@save');
     cy.wait('@content');
     //test second pagination click
-    cy.get('.ui.pagination.menu a[value="2"]').first().click();
+    cy.get('.ui.pagination.menu a[value="2"]').first().click({ force: true });
     cy.url().should('include', '?page=2');
     //on logo click go to home page and remove ?page=2 from path
     cy.get('.logo').first().click();
@@ -1125,13 +1161,68 @@ describe('Listing Block Tests', () => {
     //test back button
     cy.navigate('/my-page');
     cy.wait('@content');
-    cy.get('.ui.pagination.menu a[value="2"]').first().click();
-    cy.get('.ui.pagination.menu a[value="3"]').first().click();
+    cy.get('.ui.pagination.menu a[value="2"]').first().click({ force: true });
+    cy.get('.ui.pagination.menu a[value="3"]').first().click({ force: true });
     cy.go(-1);
     cy.url().should('not.include', '=3');
     cy.go(-1);
     cy.url().should('not.include', '=2');
     cy.url().should('not.include', '=3');
+  });
+
+  it('Add Listing block with no results, navigate to home, add a News Item, go to the listing', () => {
+    cy.intercept('PATCH', '/**/my-page').as('save');
+    cy.intercept('GET', '/**/my-page').as('content');
+    cy.intercept('GET', '/**/@types/Document').as('schema');
+
+    cy.createContent({
+      contentType: 'Document',
+      contentId: 'my-page-test',
+      contentTitle: 'My Page Test',
+      path: 'my-page',
+    });
+
+    cy.navigate('/my-page');
+    cy.wait('@content');
+
+    cy.navigate('/my-page/edit');
+    cy.wait('@schema');
+
+    cy.clearSlateTitle().type('My title');
+
+    //add listing block
+    cy.addNewBlock('listing');
+
+    cy.configureListingWith('News Item');
+
+    //save
+    cy.get('#toolbar-save').click();
+    cy.wait('@save');
+    cy.wait('@content');
+
+    //test after save
+    cy.get('#page-document .block.listing.default .emptyListing').contains(
+      'No results found.',
+    );
+
+    cy.get('.logo').first().click();
+
+    cy.createContent({
+      contentType: 'News Item',
+      contentId: 'my-news-item-test',
+      contentTitle: 'My News Item',
+      path: 'my-page',
+    });
+    cy.navigate('/my-page');
+
+    cy.get('#page-document .listing-body:first-of-type').contains(
+      'My News Item',
+    );
+    cy.get('#page-document .listing-item:first-of-type a').should(
+      'have.attr',
+      'href',
+      '/my-page/my-news-item-test',
+    );
   });
 
   // it('Listing block - Test Criteria: Location Navigation', () => {
