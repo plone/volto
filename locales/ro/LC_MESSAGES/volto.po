@@ -2320,6 +2320,16 @@ msgstr "Deschideți browserul de obiecte"
 msgid "Origin"
 msgstr "Origine"
 
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Override source content
+msgid "Override source content"
+msgstr ""
+
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Override source content if you want to prevent further updates
+msgid "Override source content if you want to prevent further updates"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Page
 msgid "Page"
@@ -2559,6 +2569,11 @@ msgstr "Reface"
 msgid "Reduce complexity"
 msgstr "Reduce complexitatea"
 
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: Refresh source content
+msgid "Refresh source content"
+msgstr ""
+
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
 #: components/theme/Register/Register
@@ -2669,11 +2684,6 @@ msgstr "Câmpul este obligatoriu."
 # defaultMessage: Reset title
 msgid "Reset term title"
 msgstr "Resetați titlul termenului"
-
-#: components/manage/Blocks/Teaser/Data
-# defaultMessage: Reset the block
-msgid "Reset the block"
-msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Results limit
@@ -4149,7 +4159,7 @@ msgid "event_where"
 msgstr "Locație"
 
 #: components/manage/Blocks/Teaser/schema
-# defaultMessage: Head title
+# defaultMessage: head title
 msgid "head_title"
 msgstr ""
 

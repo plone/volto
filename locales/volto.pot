@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2023-05-15T07:04:19.612Z\n"
+"POT-Creation-Date: 2023-05-19T13:41:11.130Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -2322,6 +2322,16 @@ msgstr ""
 msgid "Origin"
 msgstr ""
 
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Override source content
+msgid "Override source content"
+msgstr ""
+
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Override source content if you want to prevent further updates
+msgid "Override source content if you want to prevent further updates"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Page
 msgid "Page"
@@ -2561,6 +2571,11 @@ msgstr ""
 msgid "Reduce complexity"
 msgstr ""
 
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: Refresh source content
+msgid "Refresh source content"
+msgstr ""
+
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
 #: components/theme/Register/Register
@@ -2670,11 +2685,6 @@ msgstr ""
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Reset title
 msgid "Reset term title"
-msgstr ""
-
-#: components/manage/Blocks/Teaser/Data
-# defaultMessage: Reset the block
-msgid "Reset the block"
 msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
@@ -4151,7 +4161,7 @@ msgid "event_where"
 msgstr ""
 
 #: components/manage/Blocks/Teaser/schema
-# defaultMessage: Head title
+# defaultMessage: head title
 msgid "head_title"
 msgstr ""
 

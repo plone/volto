@@ -56,15 +56,7 @@ import SearchBlockEdit from '@plone/volto/components/manage/Blocks/Search/Search
 import RightColumnFacets from '@plone/volto/components/manage/Blocks/Search/layout/RightColumnFacets';
 import LeftColumnFacets from '@plone/volto/components/manage/Blocks/Search/layout/LeftColumnFacets';
 import TopSideFacets from '@plone/volto/components/manage/Blocks/Search/layout/TopSideFacets';
-import {
-  SelectFacet,
-  CheckboxFacet,
-  DateRangeFacet,
-  ToggleFacet,
-  ToggleFacetFilterListEntry,
-  SelectFacetFilterListEntry,
-  DateRangeFacetFilterListEntry,
-} from '@plone/volto/components/manage/Blocks/Search/components';
+import { SelectFacet, CheckboxFacet, DateRangeFacet, ToggleFacet, ToggleFacetFilterListEntry, SelectFacetFilterListEntry, DateRangeFacetFilterListEntry } from '@plone/volto/components/manage/Blocks/Search/components';
 import getListingBlockAsyncData from '@plone/volto/components/manage/Blocks/Listing/getAsyncData';
 
 // block sidebar schemas (not the Dexterity Layout block settings schemas)
@@ -77,7 +69,7 @@ import ToCVariations from '@plone/volto/components/manage/Blocks/ToC/variations'
 import TeaserViewBlock from '@plone/volto/components/manage/Blocks/Teaser/View';
 import TeaserEditBlock from '@plone/volto/components/manage/Blocks/Teaser/Edit';
 import TeaserBlockDefaultBody from '@plone/volto/components/manage/Blocks/Teaser/DefaultBody';
-import { TeaserSchema } from '@plone/volto/components/manage/Blocks/Teaser/schema';
+import { TeaserSchema, OverwriteTeaserSchema } from '@plone/volto/components/manage/Blocks/Teaser/schema';
 import { TeaserBlockDataAdapter } from '@plone/volto/components/manage/Blocks/Teaser/adapter';
 
 defineMessages({
@@ -198,10 +190,7 @@ const blocksConfig = {
     view: ViewTitleBlock,
     edit: EditTitleBlock,
     schema: BlockSettingsSchema,
-    restricted: ({ properties, block }) =>
-      properties.blocks_layout?.items?.find(
-        (uid) => properties.blocks?.[uid]?.['@type'] === block.id,
-      ),
+    restricted: ({ properties, block }) => properties.blocks_layout?.items?.find((uid) => properties.blocks?.[uid]?.['@type'] === block.id),
     mostUsed: false,
     blockHasOwnFocusManagement: true,
     sidebarTab: 0,
@@ -232,9 +221,7 @@ const blocksConfig = {
     blockHasOwnFocusManagement: true,
     sidebarTab: 0,
     blockHasValue: (data) => {
-      const isEmpty =
-        !data.text ||
-        (data.text?.blocks?.length === 1 && data.text.blocks[0].text === '');
+      const isEmpty = !data.text || (data.text?.blocks?.length === 1 && data.text.blocks[0].text === '');
       return !isEmpty;
     },
   },
@@ -469,6 +456,7 @@ const blocksConfig = {
     mostUsed: true,
     sidebarTab: 1,
     blockSchema: TeaserSchema,
+    enhancedSchema: OverwriteTeaserSchema,
     dataAdapter: TeaserBlockDataAdapter,
     variations: [
       {
@@ -486,10 +474,4 @@ const requiredBlocks = ['title'];
 const initialBlocks = {};
 const initialBlocksFocus = {}; //{Document:'title'}
 
-export {
-  groupBlocksOrder,
-  requiredBlocks,
-  blocksConfig,
-  initialBlocks,
-  initialBlocksFocus,
-};
+export { groupBlocksOrder, requiredBlocks, blocksConfig, initialBlocks, initialBlocksFocus };

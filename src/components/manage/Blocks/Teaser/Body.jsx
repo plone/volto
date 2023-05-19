@@ -10,13 +10,7 @@ const TeaserBody = (props) => {
 
   // Compatible with the previous version of the component registry
   // and the Volto 16 one.
-  const BodyComponent =
-    (config?.getComponent &&
-      hasType &&
-      config.getComponent({ name: 'Teaser', dependencies: [hasType] })
-        .component) ||
-    variation?.template ||
-    DefaultBody;
+  const BodyComponent = (config?.getComponent && hasType && config.getComponent({ name: 'Teaser', dependencies: [hasType] }).component) || variation?.template || DefaultBody;
 
   return <BodyComponent {...props} />;
 };

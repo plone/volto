@@ -2328,6 +2328,16 @@ msgstr ""
 msgid "Origin"
 msgstr "Origem"
 
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Override source content
+msgid "Override source content"
+msgstr ""
+
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Override source content if you want to prevent further updates
+msgid "Override source content if you want to prevent further updates"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Page
 msgid "Page"
@@ -2567,6 +2577,11 @@ msgstr ""
 msgid "Reduce complexity"
 msgstr "Reduzir complexidade"
 
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: Refresh source content
+msgid "Refresh source content"
+msgstr ""
+
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
 #: components/theme/Register/Register
@@ -2676,11 +2691,6 @@ msgstr "Falta informação obrigatória."
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Reset title
 msgid "Reset term title"
-msgstr ""
-
-#: components/manage/Blocks/Teaser/Data
-# defaultMessage: Reset the block
-msgid "Reset the block"
 msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
@@ -4157,7 +4167,7 @@ msgid "event_where"
 msgstr ""
 
 #: components/manage/Blocks/Teaser/schema
-# defaultMessage: Head title
+# defaultMessage: head title
 msgid "head_title"
 msgstr ""
 
