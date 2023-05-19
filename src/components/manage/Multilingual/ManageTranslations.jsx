@@ -8,11 +8,7 @@ import { Icon, Toast, Toolbar } from '@plone/volto/components';
 import config from '@plone/volto/registry';
 
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
-import {
-  deleteLinkTranslation,
-  getContent,
-  linkTranslation,
-} from '@plone/volto/actions';
+import { deleteLinkTranslation, getContent, linkTranslation } from '@plone/volto/actions';
 import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
 import { useSelector, useDispatch } from 'react-redux';
 import { Portal } from 'react-portal';
@@ -78,34 +74,16 @@ const ManageTranslations = (props) => {
     // Only execute the link API call on the final item selected, once the ObjectBrowser
     // is closed
     if (!isObjectBrowserOpen && currentSelectedItem.current) {
-      dispatch(
-        linkTranslation(
-          flattenToAppURL(content['@id']),
-          currentSelectedItem.current,
-        ),
-      )
+      dispatch(linkTranslation(flattenToAppURL(content['@id']), currentSelectedItem.current))
         .then((resp) => {
-          toast.success(
-            <Toast
-              success
-              title={intl.formatMessage(messages.success)}
-              content={intl.formatMessage(messages.linked)}
-            />,
-          );
+          toast.success(<Toast success title={intl.formatMessage(messages.success)} content={intl.formatMessage(messages.linked)} />);
           dispatch(getContent(getBaseUrl(pathname)));
         })
         .catch((error) => {
           // TODO: The true error sent by the API is shadowed by the superagent one
           // Update this when this issue is fixed.
           const shadowedError = JSON.parse(error.response.text);
-          toast.error(
-            <Toast
-              error
-              title={shadowedError.error.type}
-              content={shadowedError.error.message}
-            />,
-            { toastId: 'linkFailed' },
-          );
+          toast.error(<Toast error title={shadowedError.error.type} content={shadowedError.error.message} />, { toastId: 'linkFailed' });
         });
     }
     /* eslint-disable react-hooks/exhaustive-deps */
@@ -135,40 +113,23 @@ const ManageTranslations = (props) => {
   function onDeleteTranslation(lang) {
     dispatch(deleteLinkTranslation(flattenToAppURL(content['@id']), lang))
       .then((resp) => {
-        toast.success(
-          <Toast
-            success
-            title={intl.formatMessage(messages.success)}
-            content={intl.formatMessage(messages.unlinked)}
-          />,
-        );
+        toast.success(<Toast success title={intl.formatMessage(messages.success)} content={intl.formatMessage(messages.unlinked)} />);
         dispatch(getContent(getBaseUrl(pathname)));
       })
       .catch((error) => {
         // TODO: The true error sent by the API is shadowed by the superagent one
         // Update this when this issue is fixed.
         const shadowedError = JSON.parse(error.response.text);
-        toast.error(
-          <Toast
-            error
-            title={shadowedError.error.type}
-            content={shadowedError.error.message}
-          />,
-          { toastId: 'linkFailed' },
-        );
+        toast.error(<Toast error title={shadowedError.error.type} content={shadowedError.error.message} />, { toastId: 'linkFailed' });
       });
   }
-
+  console.log(content['@id']);
   return (
     <Container id="page-manage-translations">
       <Helmet title={intl.formatMessage(messages.ManageTranslations)} />
       <Segment.Group raised>
         <Segment className="primary">
-          <FormattedMessage
-            id="Manage translations for {title}"
-            defaultMessage="Manage translations for {title}"
-            values={{ title: <q>{content.title}</q> }}
-          />
+          <FormattedMessage id="Manage translations for {title}" defaultMessage="Manage translations for {title}" values={{ title: <q>{content.title}</q> }} />
         </Segment>
         {content && (
           <Table selectable compact singleLine attached>
@@ -182,30 +143,16 @@ const ManageTranslations = (props) => {
             <Table.Body>
               {config.settings.supportedLanguages.map((lang) => (
                 <Table.Row key={lang}>
-                  <Table.Cell collapsing>
-                    {lang === content.language.token ? (
-                      <strong>{langmap[lang].nativeName}</strong>
-                    ) : (
-                      langmap[lang].nativeName
-                    )}
-                  </Table.Cell>
+                  <Table.Cell collapsing>{lang === content.language.token ? <strong>{langmap[lang].nativeName}</strong> : langmap[lang].nativeName}</Table.Cell>
                   <Table.Cell>
-                    <Link to={flattenToAppURL(translations[lang]?.url || '')}>
-                      {flattenToAppURL(translations[lang]?.url || '')}
-                    </Link>
+                    <Link to={flattenToAppURL(translations[lang]?.url || '')}>{flattenToAppURL(translations[lang]?.url || '')}</Link>
                   </Table.Cell>
-                  <Table.Cell
-                    textAlign="right"
-                    className="manage-multilingual-tools"
-                  >
+                  <Table.Cell textAlign="right" className="manage-multilingual-tools">
                     <Button.Group>
                       <Button
                         basic
                         icon
-                        disabled={
-                          lang === content.language.token ||
-                          translations?.[lang]
-                        }
+                        disabled={lang === content.language.token || translations?.[lang]}
                         as={Link}
                         to={{
                           pathname: `${pathname}/create-translation`,
@@ -221,31 +168,14 @@ const ManageTranslations = (props) => {
                     </Button.Group>
                     {translations?.[lang] ? (
                       <Button.Group>
-                        <Button
-                          aria-label={`${intl.formatMessage(
-                            messages.unlink,
-                          )} ${langmap[lang].nativeName.toLowerCase()}`}
-                          basic
-                          icon
-                          disabled={lang === content.language.token}
-                          onClick={() => onDeleteTranslation(lang)}
-                        >
-                          <Icon
-                            name={
-                              lang === content.language.token
-                                ? linkSVG
-                                : unlinkSVG
-                            }
-                            size="24px"
-                          />
+                        <Button aria-label={`${intl.formatMessage(messages.unlink)} ${langmap[lang].nativeName.toLowerCase()}`} basic icon disabled={lang === content.language.token} onClick={() => onDeleteTranslation(lang)}>
+                          <Icon name={lang === content.language.token ? linkSVG : unlinkSVG} size="24px" />
                         </Button>
                       </Button.Group>
                     ) : (
                       <Button.Group>
                         <Button
-                          aria-label={`${intl.formatMessage(
-                            messages.link,
-                          )} ${langmap[lang].nativeName.toLowerCase()}`}
+                          aria-label={`${intl.formatMessage(messages.link)} ${langmap[lang].nativeName.toLowerCase()}`}
                           basic
                           icon
                           disabled={lang === content.language.token}
@@ -276,12 +206,7 @@ const ManageTranslations = (props) => {
               hideDefaultViewButtons
               inner={
                 <Link to={`${getBaseUrl(pathname)}`} className="item">
-                  <Icon
-                    name={backSVG}
-                    className="contents circled"
-                    size="30px"
-                    title={intl.formatMessage(messages.back)}
-                  />
+                  <Icon name={backSVG} className="contents circled" size="30px" title={intl.formatMessage(messages.back)} />
                 </Link>
               }
             />

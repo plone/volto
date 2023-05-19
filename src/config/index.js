@@ -85,7 +85,7 @@ let config = {
     notSupportedBrowsers: ['ie'],
     defaultPageSize: 25,
     isMultilingual: true,
-    supportedLanguages: ['en', 'de'],
+    supportedLanguages: ['de', 'en', 'es'],
     defaultLanguage: 'de',
     navDepth: 1,
     expressMiddleware: serverConfig.expressMiddleware, // BBB
