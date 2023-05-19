@@ -7,6 +7,7 @@ import {
   CREATE_RELATIONS,
   DELETE_RELATIONS,
   LIST_RELATIONS,
+  RESET_RELATIONS,
 } from '@plone/volto/constants/ActionTypes';
 
 /**
@@ -82,5 +83,18 @@ export function queryRelations(
       op: 'get',
       path: path,
     },
+  };
+}
+
+/**
+ * Reset relations function
+ * @function resetRelations
+ * @param {string} subrequest Key of the subrequest.
+ * @returns {Object} Reset relations action
+ */
+export function resetRelations(subrequest = null) {
+  return {
+    type: RESET_RELATIONS,
+    subrequest,
   };
 }
