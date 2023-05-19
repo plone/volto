@@ -44,7 +44,8 @@ const TeaserDefaultTemplate = (props) => {
     if (href && !data.overwrite) {
       dispatch(getContent(flattenToAppURL(href['@id']), null, id));
     }
-  }, [data.overwrite]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className={cx('block teaser', className)}>
@@ -82,7 +83,7 @@ const TeaserDefaultTemplate = (props) => {
                           )
                         : result?.image
                         ? flattenToAppURL(result.image.scales.teaser.download)
-                        : placeholderIMG
+                        : defaultImageSrc
                     }
                     alt=""
                     loading="lazy"

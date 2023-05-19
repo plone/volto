@@ -3,7 +3,6 @@ import { defineMessages, useIntl } from 'react-intl';
 import { useDispatch } from 'react-redux';
 import { Button } from 'semantic-ui-react';
 import { BlockDataForm, Icon } from '@plone/volto/components';
-import { isEmpty } from 'lodash';
 import { getContent } from '@plone/volto/actions';
 import { flattenToAppURL } from '@plone/volto/helpers';
 
@@ -72,6 +71,7 @@ const TeaserData = (props) => {
         },
       );
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data.href, data.live]);
 
   const dataAdapter = blocksConfig[data['@type']].dataAdapter;
