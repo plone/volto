@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LinksToItem renders links to item view 1`] = `
+<div
+  className="ui container"
+  id="linktoitem"
+>
+  <div
+    className="ui raised segments"
+  >
+    <div
+      className="ui segment primary"
+    >
+      Links to 
+      <q>
+        page #1
+      </q>
+    </div>
+    <div
+      className="ui secondary segment"
+    >
+      Whenever this item is being referenced from some different item by a hyperlink, block or similar, it appears here in this list.
+    </div>
+    <table
+      className="ui selectable single line attached compact table"
+    >
+      <thead
+        className=""
+      >
+        <tr
+          className=""
+        >
+          <th
+            className=""
+          >
+            Linked by this item
+          </th>
+          <th
+            className=""
+          >
+            Review state
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        className=""
+      >
+        <tr
+          className=""
+        >
+          <td
+            className=""
+          >
+            <a
+              className="not-published"
+              href="http://localhost:3000/page-2-linking-to-page-1"
+              rel="noopener noreferrer"
+              target="_blank"
+              title={null}
+            >
+              <span
+                className="label"
+              >
+                page #2 linking to page #1
+              </span>
+            </a>
+          </td>
+          <td
+            className=""
+          >
+            <span>
+              private
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div
+    id="Portal"
+  />
+</div>
+`;
