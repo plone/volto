@@ -271,7 +271,8 @@ class Edit extends Component {
             item={isString(data.url) ? undefined : data.url}
             src={
               isString(data.url)
-                ? isInternalURL(data.url)
+                ? // Backwards compat in the case that the block is storing the full server URL
+                  isInternalURL(data.url)
                   ? (() => {
                       if (data.size === 'l')
                         return `${flattenToAppURL(data.url)}/@@images/image`;
