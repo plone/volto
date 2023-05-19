@@ -14,7 +14,7 @@ import {
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 import { map } from 'lodash';
-import { queryRelations } from '@plone/volto/actions';
+import { queryRelations, resetRelations, getContent, resetContent } from '@plone/volto/actions';
 import { Icon as IconNext, Toolbar, UniversalLink } from '@plone/volto/components';
 
 import backSVG from '@plone/volto/icons/back.svg';
@@ -46,41 +46,43 @@ const LinksToItem = (props) => {
   const intl = useIntl();
   const pathname = useLocation().pathname;
   const dispatch = useDispatch();
-
-  // XXX: UID might be the one from another object.
-  const uid = useSelector(
-    (state) => {
-      return state.content?.data?.UID || {};
-    },
-  );
-  const title = useSelector(
-    (state) => {
-      return state.content?.data?.title || {};
-    },
-  );
+  const relations_subrequest = useSelector((state) => state.relations.subrequests);
+  const content_subrequest = useSelector((state) => state.content.subrequests);
+  const content = content_subrequest[pathname]?.data;
+  const relations = relations_subrequest[pathname]?.relations;
 
   useEffect(() => {
-    dispatch(queryRelations(null, false, null, null, [uid]));
-  }, [dispatch]);
-  const relations = useSelector(
-    (state) => {
-      return state.relations?.relations?.items || [];
-    },
-  );
+    if (!content_subrequest[pathname]) {
+      dispatch(getContent(getBaseUrl(pathname), null, pathname));
+    }
+    return () => {
+      resetContent(pathname);
+    };
+  }, [dispatch, pathname, content_subrequest]);
+
+  useEffect(() => {
+    if (!relations_subrequest[pathname] && content_subrequest[pathname]?.data?.UID) {
+      dispatch(queryRelations(null, false, pathname, null, [content_subrequest[pathname]?.data?.UID]));
+    }
+    return () => {
+      resetRelations(pathname);
+    };
+  }, [dispatch, content_subrequest[pathname]?.data?.UID, relations_subrequest]);
 
   let links = {};
 
   // Create a list of links (via constructing a hashmap and thus avoiding duplicates)
-  for (const relation_items of Object.values(relations)) {
-    for (const item of relation_items) {
-      links[item.source.UID] = item.source;
+  if (relations) {
+    for (const relation_items of Object.values(relations.items)) {
+      for (const item of relation_items) {
+        links[item.source.UID] = item.source;
+      }
     }
   }
 
   let links_ordered = Object.values(links).sort((link) => link['@id']);
   const relations_found = links_ordered.length > 0;
-
-  return (
+  return ((content && relations) ? (
     <Container id="linktoitem">
       <Helmet title={intl.formatMessage(messages.linktoitem)} />
       <Segment.Group raised>
@@ -88,7 +90,7 @@ const LinksToItem = (props) => {
           <FormattedMessage
             id="Links to {title}"
             defaultMessage="Links to {title}"
-            values={{ title: <q>{title}</q> }}
+            values={{ title: <q>{content.title}</q> }}
           />
         </Segment>
         {relations_found && (
@@ -170,7 +172,7 @@ const LinksToItem = (props) => {
         </Portal>
       )}
     </Container>
-  );
+  ) : null);
 };
 
 export default LinksToItem;
