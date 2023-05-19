@@ -102,6 +102,7 @@ export const widgetMapping = {
     color_picker: ColorPickerWidget,
     image: ImageWidget,
     media: MediaWidget,
+    select: SelectWidget,
   },
   vocabulary: {
     'plone.app.vocabularies.Catalog': ObjectBrowserWidget,

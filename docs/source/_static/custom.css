@@ -240,3 +240,7 @@ span.guilabel, span.menuselection {
   font-style: italic;
   white-space: nowrap;
 }
+
+video {
+  width: 100%;
+}

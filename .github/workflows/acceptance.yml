@@ -1,13 +1,15 @@
 name: Acceptance Tests
-on: [push]
+on: [push, pull_request]
 jobs:
   core:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     runs-on: ubuntu-latest
     name: Core Basic
     timeout-minutes: 45
     strategy:
+      fail-fast: false
       matrix:
-        node-version: [14.x, 16.x]
+        node-version: [16.x, 18.x]
     steps:
       - uses: actions/checkout@v3
 
@@ -22,7 +24,7 @@ jobs:
       - run: yarn --immutable
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v5
         env:
           BABEL_ENV: production
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -39,7 +41,7 @@ jobs:
           start: |
             make start-test-acceptance-server
             make start-test-acceptance-frontend
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v1
@@ -55,12 +57,14 @@ jobs:
           path: cypress/videos
 
   coreblocks:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     runs-on: ubuntu-latest
     name: Core Blocks
     timeout-minutes: 35
     strategy:
+      fail-fast: false
       matrix:
-        node-version: [14.x, 16.x]
+        node-version: [16.x, 18.x]
     steps:
       - uses: actions/checkout@v3
 
@@ -75,7 +79,7 @@ jobs:
       - run: yarn --immutable
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v5
         env:
           BABEL_ENV: production
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -92,7 +96,7 @@ jobs:
           start: |
             make start-test-acceptance-server
             make start-test-acceptance-frontend
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v1
@@ -108,12 +112,14 @@ jobs:
           path: cypress/videos
 
   corevoltoslate:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     runs-on: ubuntu-latest
     name: Core Volto Slate
     timeout-minutes: 45
     strategy:
+      fail-fast: false
       matrix:
-        node-version: [14.x, 16.x]
+        node-version: [16.x, 18.x]
     steps:
       - uses: actions/checkout@v3
 
@@ -125,10 +131,10 @@ jobs:
           cache: 'yarn'
 
       ## node install
-      - run: yarn --frozen-lockfile
+      - run: yarn --immutable
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v5
         env:
           BABEL_ENV: production
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -145,7 +151,7 @@ jobs:
           start: |
             make start-test-acceptance-server
             make start-test-acceptance-frontend
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v1
@@ -161,11 +167,13 @@ jobs:
           path: cypress/videos
 
   core5:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     runs-on: ubuntu-latest
     name: Core Basic - Plone 5
     strategy:
+      fail-fast: false
       matrix:
-        node-version: [16.x]
+        node-version: [18.x]
     steps:
       - uses: actions/checkout@v3
 
@@ -180,7 +188,7 @@ jobs:
       - run: yarn --immutable
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v5
         env:
           BABEL_ENV: production
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -197,7 +205,7 @@ jobs:
           start: |
             make start-test-acceptance-server-5
             make start-test-acceptance-frontend
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v1
@@ -213,13 +221,14 @@ jobs:
           path: cypress/videos
 
   coresandbox:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     runs-on: ubuntu-latest
     name: Coresandbox
     timeout-minutes: 35
     strategy:
+      fail-fast: false
       matrix:
-        node-version: [16.x]
-        python-version: [3.7]
+        node-version: [18.x]
     steps:
       - uses: actions/checkout@v3
 
@@ -232,32 +241,8 @@ jobs:
 
       - run: yarn --immutable
 
-      # python setup (temporary, while p.volto coresandbox changes are in a PR)
-      # - name: Set up Python ${{ matrix.python-version }}
-      #   uses: actions/setup-python@v1
-      #   with:
-      #     python-version: ${{ matrix.python-version }}
-
-      # # python cache
-      # - uses: actions/cache@v1
-      #   with:
-      #     path: ~/.cache/pip
-      #     key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-pip-
-      # # python install
-      # - run: pip install virtualenv
-      # - name: pip install
-      #   working-directory: api
-      #   run: pip install -r requirements.txt
-      # - name: buildout
-      #   working-directory: api
-      #   run: buildout
-      #   env:
-      #     CI: true
-
       - name: Cypress Coresandbox Acceptance tests
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v5
         env:
           BABEL_ENV: production
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -274,7 +259,7 @@ jobs:
           start: |
             make start-test-acceptance-server-coresandbox
             make start-test-acceptance-frontend-coresandbox
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v1
@@ -290,12 +275,14 @@ jobs:
           path: cypress/videos
 
   guillotina:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     name: Guillotina
     runs-on: ubuntu-latest
     timeout-minutes: 35
     strategy:
+      fail-fast: false
       matrix:
-        node-version: [16.x]
+        node-version: [18.x]
     steps:
       - uses: actions/checkout@v3
 
@@ -310,7 +297,7 @@ jobs:
       - run: yarn --immutable
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v5
         env:
           BABEL_ENV: production
           CYPRESS_API: guillotina
@@ -328,7 +315,7 @@ jobs:
           start: |
             make start-test-acceptance-server-guillotina
             make start-test-acceptance-frontend-guillotina
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:8081 http://localhost:3000'
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:8081 http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v1
@@ -344,12 +331,14 @@ jobs:
           path: cypress/videos
 
   multilingual:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     name: Multilingual
     runs-on: ubuntu-latest
     timeout-minutes: 35
     strategy:
+      fail-fast: false
       matrix:
-        node-version: [16.x]
+        node-version: [18.x]
     steps:
       - uses: actions/checkout@v3
 
@@ -364,7 +353,7 @@ jobs:
       - run: yarn --immutable
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v5
         env:
           BABEL_ENV: production
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -381,7 +370,7 @@ jobs:
           start: |
             make start-test-acceptance-server-multilingual
             make start-test-acceptance-frontend-multilingual
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v1
@@ -397,12 +386,14 @@ jobs:
           path: cypress/videos
 
   workingcopy:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     name: Working Copy
     runs-on: ubuntu-latest
     timeout-minutes: 35
     strategy:
+      fail-fast: false
       matrix:
-        node-version: [16.x]
+        node-version: [18.x]
         # python-version: [3.7]
     steps:
       - uses: actions/checkout@v3
@@ -442,7 +433,7 @@ jobs:
       #     CI: true
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v5
         env:
           BABEL_ENV: production
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -459,7 +450,7 @@ jobs:
           start: |
             make start-test-acceptance-server-workingcopy
             make start-test-acceptance-frontend-workingcopy
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v1
@@ -475,12 +466,14 @@ jobs:
           path: cypress/videos
 
   generator:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     name: Project Generator
     runs-on: ubuntu-latest
     timeout-minutes: 35
     strategy:
+      fail-fast: false
       matrix:
-        node-version: [16.x]
+        node-version: [18.x]
     env:
       generator-directory: ./packages/generator-volto
       project-directory: ./my-volto-app
@@ -530,7 +523,7 @@ jobs:
         working-directory: ${{env.project-directory}}
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v5
         env:
           BABEL_ENV: production
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -547,7 +540,7 @@ jobs:
           start: |
             make start-test-acceptance-server
             make start-test-acceptance-frontend-project
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v1
@@ -569,12 +562,14 @@ jobs:
         working-directory: ${{env.generator-directory}}
 
   seamless:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     name: Seamless Mode
     runs-on: ubuntu-latest
     timeout-minutes: 35
     strategy:
+      fail-fast: false
       matrix:
-        node-version: [16.x]
+        node-version: [18.x]
     steps:
       - uses: actions/checkout@v3
 
@@ -589,7 +584,7 @@ jobs:
       - run: yarn --immutable
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v5
         env:
           BABEL_ENV: production
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -608,7 +603,7 @@ jobs:
             make start-test-acceptance-server
             make start-test-acceptance-frontend-seamless
             make start-test-acceptance-webserver-seamless
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000 http://localhost'
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000 http://localhost'
 
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v1

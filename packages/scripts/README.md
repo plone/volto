@@ -6,7 +6,7 @@ This package is a library of scripts that are useful to automate certain tasks w
 
 It scans and detects i18n messages from the code and adds them to the i18n machinery.
 
-See https://6.dev-docs.plone.org/volto/recipes/i18n.html for more information.
+See https://6.docs.plone.org/volto/recipes/i18n.html for more information.
 
 This script is installed in the `node_modules/.bin` directory and can be called via `yarn i18n` or directly in the `scripts` `package.json` part.
 

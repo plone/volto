@@ -1,1 +1,0 @@
-Option for opening /edit with the same vertical offset like the page in view mode before. @ksuess

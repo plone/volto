@@ -290,6 +290,10 @@ const messages = defineMessages({
     id: 'This Page is referenced by the following items:',
     defaultMessage: 'This Page is referenced by the following items:',
   },
+  deleteItemCountMessage: {
+    id: 'Total items to be deleted:',
+    defaultMessage: 'Total items to be deleted:',
+  },
   deleteItemMessage: {
     id: 'Items to be deleted:',
     defaultMessage: 'Items to be deleted:',
@@ -418,6 +422,8 @@ class Contents extends Component {
     this.paste = this.paste.bind(this);
     this.fetchContents = this.fetchContents.bind(this);
     this.orderTimeout = null;
+    this.deleteItemsToShowThreshold = 10;
+
     this.state = {
       selected: [],
       showDelete: false,
@@ -427,6 +433,7 @@ class Contents extends Component {
       showProperties: false,
       showWorkflow: false,
       itemsToDelete: [],
+      showAllItemsToDelete: true,
       items: this.props.items,
       filter: '',
       currentPage: 0,
@@ -456,7 +463,6 @@ class Contents extends Component {
     this.fetchContents();
     this.setState({ isClient: true });
   }
-
   async componentDidUpdate(_, prevState) {
     if (
       this.state.itemsToDelete !== prevState.itemsToDelete &&
@@ -468,6 +474,8 @@ class Contents extends Component {
             this.getFieldById(item, 'UID'),
           ),
         ),
+        showAllItemsToDelete:
+          this.state.itemsToDelete.length < this.deleteItemsToShowThreshold,
       });
     }
   }
@@ -788,18 +796,20 @@ class Contents extends Component {
    */
   onMoveToTop(event, { value }) {
     const id = this.state.items[value]['@id'];
-    value = this.state.currentPage * this.state.pageSize + value;
-    this.props.orderContent(
-      getBaseUrl(this.props.pathname),
-      id.replace(/^.*\//, ''),
-      -value,
-    );
-    this.setState(
-      {
-        currentPage: 0,
-      },
-      () => this.fetchContents(),
-    );
+    this.props
+      .orderContent(
+        getBaseUrl(this.props.pathname),
+        id.replace(/^.*\//, ''),
+        'top',
+      )
+      .then(() => {
+        this.setState(
+          {
+            currentPage: 0,
+          },
+          () => this.fetchContents(),
+        );
+      });
   }
 
   /**
@@ -810,18 +820,21 @@ class Contents extends Component {
    * @returns {undefined}
    */
   onMoveToBottom(event, { value }) {
-    this.onOrderItem(
-      this.state.items[value]['@id'],
-      value,
-      this.state.items.length - 1 - value,
-      false,
-    );
-    this.onOrderItem(
-      this.state.items[value]['@id'],
-      value,
-      this.state.items.length - 1 - value,
-      true,
-    );
+    const id = this.state.items[value]['@id'];
+    this.props
+      .orderContent(
+        getBaseUrl(this.props.pathname),
+        id.replace(/^.*\//, ''),
+        'bottom',
+      )
+      .then(() => {
+        this.setState(
+          {
+            currentPage: 0,
+          },
+          () => this.fetchContents(),
+        );
+      });
   }
 
   /**
@@ -1000,6 +1013,7 @@ class Contents extends Component {
         sort_order: this.state.sort_order,
         metadata_fields: '_all',
         b_size: 100000000,
+        show_inactive: true,
         ...(this.state.filter && { SearchableText: `${this.state.filter}*` }),
       });
     } else {
@@ -1011,6 +1025,7 @@ class Contents extends Component {
         ...(this.state.filter && { SearchableText: `${this.state.filter}*` }),
         b_size: this.state.pageSize,
         b_start: this.state.currentPage * this.state.pageSize,
+        show_inactive: true,
       });
     }
   }
@@ -1188,16 +1203,35 @@ class Contents extends Component {
                       <div className="content">
                         <h3>
                           {this.props.intl.formatMessage(
-                            messages.deleteItemMessage,
-                          )}
+                            messages.deleteItemCountMessage,
+                          ) + ` ${this.state.itemsToDelete.length}`}
                         </h3>
                         <ul className="content">
-                          {map(this.state.itemsToDelete, (item) => (
-                            <li key={item}>
-                              {this.getFieldById(item, 'title')}
-                            </li>
-                          ))}
+                          {map(
+                            this.state.showAllItemsToDelete
+                              ? this.state.itemsToDelete
+                              : this.state.itemsToDelete.slice(
+                                  0,
+                                  this.deleteItemsToShowThreshold,
+                                ),
+                            (item) => (
+                              <li key={item}>
+                                {this.getFieldById(item, 'title')}
+                              </li>
+                            ),
+                          )}
                         </ul>
+                        {!this.state.showAllItemsToDelete && (
+                          <Button
+                            onClick={() =>
+                              this.setState({
+                                showAllItemsToDelete: true,
+                              })
+                            }
+                          >
+                            Show all items
+                          </Button>
+                        )}
                         {this.state.linkIntegrityBreakages.length > 0 ? (
                           <div>
                             <h3>
@@ -1242,7 +1276,7 @@ class Contents extends Component {
                     }
                     onCancel={this.onDeleteCancel}
                     onConfirm={this.onDeleteOk}
-                    size="mini"
+                    size="medium"
                   />
                   <ContentsUploadModal
                     open={this.state.showUpload}
