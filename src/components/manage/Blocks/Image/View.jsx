@@ -7,8 +7,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Image, UniversalLink } from '@plone/volto/components';
 import cx from 'classnames';
-import { isString } from 'lodash';
-import { withBlockExtensions } from '@plone/volto/helpers';
+import { isInternalURL, withBlockExtensions } from '@plone/volto/helpers';
 
 /**
  * View image block class.
@@ -38,7 +37,7 @@ export const View = ({ data, detached, properties }) => {
       {data.url && (
         <>
           {(() => {
-            const image = isString(data.url) ? (
+            const image = !isInternalURL(data.url) ? (
               <img
                 src={data.url}
                 alt={data.alt || ''}
@@ -49,7 +48,11 @@ export const View = ({ data, detached, properties }) => {
             ) : (
               <Image
                 className={className}
-                item={data.url}
+                item={{
+                  '@id': data.url,
+                  image_field: data.image_field,
+                  image_scales: data.image_scales,
+                }}
                 alt={data.alt || ''}
                 loading="lazy"
               />

@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { isString } from 'lodash';
 import { Segment, Button } from 'semantic-ui-react';
 import { useIntl, FormattedMessage, defineMessages } from 'react-intl';
+import { isInternalURL } from '@plone/volto/helpers';
 import { BlockDataForm, Icon, Image } from '@plone/volto/components';
 import { ImageSchema } from './schema';
 import imageSVG from '@plone/volto/icons/image.svg';
@@ -40,7 +40,7 @@ const ImageSidebar = (props) => {
                 <Icon name={clearSVG} size="30px" />
               </Button>
             </div>
-            {isString(data.url) ? (
+            {!isInternalURL(data.url) ? (
               <img
                 src={data.url}
                 alt={intl.formatMessage(messages.preview)}
@@ -51,7 +51,11 @@ const ImageSidebar = (props) => {
               />
             ) : (
               <Image
-                item={data.url}
+                item={{
+                  '@id': data.url,
+                  image_field: data.image_field,
+                  image_scales: data.image_scales,
+                }}
                 alt={intl.formatMessage(messages.preview)}
                 loading="lazy"
                 responsive={true}

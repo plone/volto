@@ -12,7 +12,7 @@ import { Button, Dimmer, Input, Loader, Message } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import loadable from '@loadable/component';
 import cx from 'classnames';
-import { isEqual, isString } from 'lodash';
+import { isEqual } from 'lodash';
 
 import {
   Icon,
@@ -20,9 +20,13 @@ import {
   ImageSidebar,
   SidebarPortal,
 } from '@plone/volto/components';
-import { withBlockExtensions } from '@plone/volto/helpers';
 import { createContent } from '@plone/volto/actions';
-import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
+import {
+  flattenToAppURL,
+  getBaseUrl,
+  isInternalURL,
+  withBlockExtensions,
+} from '@plone/volto/helpers';
 
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -263,7 +267,7 @@ class Edit extends Component {
         )}
       >
         {data.url ? (
-          isString(data.url) ? (
+          !isInternalURL(data.url) ? (
             <img
               src={data.url}
               alt={data.alt || ''}
@@ -275,7 +279,11 @@ class Edit extends Component {
           ) : (
             <Image
               className={className}
-              item={data.url}
+              item={{
+                '@id': data.url,
+                image_field: data.image_field,
+                image_scales: data.image_scales,
+              }}
               alt={data.alt || ''}
               loading="lazy"
             />
@@ -325,12 +333,9 @@ class Edit extends Component {
                                   ) => {
                                     this.props.onChangeBlock(this.props.block, {
                                       ...this.props.data,
-                                      url: {
-                                        '@id': url,
-                                        title,
-                                        image_field,
-                                        image_scales,
-                                      },
+                                      url,
+                                      image_field,
+                                      image_scales,
                                       alt: this.props.data.alt || title,
                                     });
                                   },
