@@ -30,7 +30,11 @@ const TeaserData = (props) => {
       Title: resp.title,
       hasPreviewImage: resp?.preview_image ? true : false,
       head_title: resp.head_title ?? null,
-      image_field: resp?.preview_image ? 'preview_image' : resp?.image ? 'image' : null,
+      image_field: resp?.preview_image
+        ? 'preview_image'
+        : resp?.image
+        ? 'image'
+        : null,
       image_scales: {
         preview_image: [resp?.preview_image],
         image: [resp?.image?.image],
@@ -59,12 +63,14 @@ const TeaserData = (props) => {
 
   useEffect(() => {
     if (data.href && data.live) {
-      dispatch(getContent(flattenToAppURL(data.href[0]['@id']))).then((resp) => {
-        if (resp) {
-          let blockData = dataTransformer(resp, data);
-          onChangeBlock(block, blockData);
-        }
-      });
+      dispatch(getContent(flattenToAppURL(data.href[0]['@id']))).then(
+        (resp) => {
+          if (resp) {
+            let blockData = dataTransformer(resp, data);
+            onChangeBlock(block, blockData);
+          }
+        },
+      );
     }
   }, [data.href, data.live]);
 
@@ -72,14 +78,20 @@ const TeaserData = (props) => {
 
   const ActionButton = (
     <Button.Group className="refresh teaser">
-      <Button aria-label={intl.formatMessage(messages.refreshTeaser)} basic onClick={() => refresh()}>
+      <Button
+        aria-label={intl.formatMessage(messages.refreshTeaser)}
+        basic
+        onClick={() => refresh()}
+      >
         {intl.formatMessage(messages.refreshTeaser)}
         <Icon name={reloadSVG} size="20px" color="#00000099" />
       </Button>
     </Button.Group>
   );
 
-  const schema = data.overwrite ? blocksConfig[data['@type']].blockSchema({ intl }) : blocksConfig[data['@type']].enhancedSchema({ intl });
+  const schema = data.overwrite
+    ? blocksConfig[data['@type']].blockSchema({ intl })
+    : blocksConfig[data['@type']].enhancedSchema({ intl });
 
   return (
     <BlockDataForm

@@ -15,7 +15,8 @@ import config from '@plone/volto/registry';
 const messages = defineMessages({
   PleaseChooseContent: {
     id: 'Please choose an existing content as source for this element',
-    defaultMessage: 'Please choose an existing content as source for this element',
+    defaultMessage:
+      'Please choose an existing content as source for this element',
   },
 });
 
@@ -32,9 +33,12 @@ const TeaserDefaultTemplate = (props) => {
   const hasImageComponent = config.getComponent('Image').component;
   const Image = config.getComponent('Image').component || DefaultImage;
   const { openExternalLinkInNewTab } = config.settings;
-  const defaultImageSrc = href && flattenToAppURL(getTeaserImageURL({ href, image, align }));
+  const defaultImageSrc =
+    href && flattenToAppURL(getTeaserImageURL({ href, image, align }));
 
-  const result = useSelector((state) => state?.content?.subrequests?.[id]?.data);
+  const result = useSelector(
+    (state) => state?.content?.subrequests?.[id]?.data,
+  );
 
   useEffect(() => {
     if (href && !data.overwrite) {
@@ -54,15 +58,41 @@ const TeaserDefaultTemplate = (props) => {
           </Message>
         )}
         {!data.overwrite && result && (
-          <MaybeWrap condition={!isEditMode} as={UniversalLink} href={href['@id']} target={data.openLinkInNewTab || (openExternalLinkInNewTab && !isInternalURL(href['@id'])) ? '_blank' : null}>
+          <MaybeWrap
+            condition={!isEditMode}
+            as={UniversalLink}
+            href={href['@id']}
+            target={
+              data.openLinkInNewTab ||
+              (openExternalLinkInNewTab && !isInternalURL(href['@id']))
+                ? '_blank'
+                : null
+            }
+          >
             <div className="teaser-item default">
-              {(result.hasPreviewImage || result.image_field || result.preview_image) && (
+              {(result.hasPreviewImage ||
+                result.image_field ||
+                result.preview_image) && (
                 <div className="image-wrapper">
-                  <Image src={result?.preview_image ? flattenToAppURL(result.preview_image.scales.teaser.download) : result?.image ? flattenToAppURL(result.image.scales.teaser.download) : placeholderIMG} alt="" loading="lazy" />
+                  <Image
+                    src={
+                      result?.preview_image
+                        ? flattenToAppURL(
+                            result.preview_image.scales.teaser.download,
+                          )
+                        : result?.image
+                        ? flattenToAppURL(result.image.scales.teaser.download)
+                        : placeholderIMG
+                    }
+                    alt=""
+                    loading="lazy"
+                  />
                 </div>
               )}
               <div className="content">
-                {result?.head_title && <div className="headline">{result.head_title}</div>}
+                {result?.head_title && (
+                  <div className="headline">{result.head_title}</div>
+                )}
                 <h2>{result?.title}</h2>
                 {!result.hide_description && <p>{result?.description}</p>}
               </div>
@@ -70,15 +100,31 @@ const TeaserDefaultTemplate = (props) => {
           </MaybeWrap>
         )}
         {href && data.overwrite && (
-          <MaybeWrap condition={!isEditMode} as={UniversalLink} href={href['@id']} target={data.openLinkInNewTab || (openExternalLinkInNewTab && !isInternalURL(href['@id'])) ? '_blank' : null}>
+          <MaybeWrap
+            condition={!isEditMode}
+            as={UniversalLink}
+            href={href['@id']}
+            target={
+              data.openLinkInNewTab ||
+              (openExternalLinkInNewTab && !isInternalURL(href['@id']))
+                ? '_blank'
+                : null
+            }
+          >
             <div className="teaser-item default">
               {(href.hasPreviewImage || href.image_field || image) && (
                 <div className="image-wrapper">
-                  <Image src={hasImageComponent ? href : defaultImageSrc} alt="" loading="lazy" />
+                  <Image
+                    src={hasImageComponent ? href : defaultImageSrc}
+                    alt=""
+                    loading="lazy"
+                  />
                 </div>
               )}
               <div className="content">
-                {data?.head_title && <div className="headline">{data.head_title}</div>}
+                {data?.head_title && (
+                  <div className="headline">{data.head_title}</div>
+                )}
                 <h2>{data?.title}</h2>
                 {!data.hide_description && <p>{data?.description}</p>}
               </div>

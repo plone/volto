@@ -40,7 +40,8 @@ const messages = defineMessages({
   },
   overwriteDescription: {
     id: 'Override source content if you want to prevent further updates',
-    defaultMessage: 'Override source content if you want to prevent further updates',
+    defaultMessage:
+      'Override source content if you want to prevent further updates',
   },
 });
 
@@ -51,7 +52,14 @@ export const TeaserSchema = ({ intl }) => {
       {
         id: 'default',
         title: 'Default',
-        fields: ['href', 'overwrite', 'title', 'head_title', 'description', 'preview_image'],
+        fields: [
+          'href',
+          'overwrite',
+          'title',
+          'head_title',
+          'description',
+          'preview_image',
+        ],
       },
     ],
 
@@ -60,7 +68,15 @@ export const TeaserSchema = ({ intl }) => {
         title: intl.formatMessage(messages.Target),
         widget: 'object_browser',
         mode: 'link',
-        selectedItemAttrs: ['Title', 'head_title', 'Description', 'hasPreviewImage', 'image_field', 'image_scales', '@type'],
+        selectedItemAttrs: [
+          'Title',
+          'head_title',
+          'Description',
+          'hasPreviewImage',
+          'image_field',
+          'image_scales',
+          '@type',
+        ],
         allowExternals: true,
       },
       overwrite: {
@@ -128,7 +144,15 @@ export const OverwriteTeaserSchema = ({ intl }) => {
         title: intl.formatMessage(messages.Target),
         widget: 'object_browser',
         mode: 'link',
-        selectedItemAttrs: ['Title', 'head_title', 'Description', 'hasPreviewImage', 'image_field', 'image_scales', '@type'],
+        selectedItemAttrs: [
+          'Title',
+          'head_title',
+          'Description',
+          'hasPreviewImage',
+          'image_field',
+          'image_scales',
+          '@type',
+        ],
         allowExternals: true,
       },
       openLinkInNewTab: {
