@@ -6,21 +6,24 @@ import React, { useEffect } from 'react';
 import { Helmet } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
 import { Portal } from 'react-portal';
-import {
-  Container,
-  Segment,
-  Table,
-} from 'semantic-ui-react';
+import { Container, Segment, Table } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 import { map } from 'lodash';
-import { queryRelations, resetRelations, getContent, resetContent } from '@plone/volto/actions';
-import { Icon as IconNext, Toolbar, UniversalLink } from '@plone/volto/components';
+import {
+  queryRelations,
+  resetRelations,
+  getContent,
+  resetContent,
+} from '@plone/volto/actions';
+import {
+  Icon as IconNext,
+  Toolbar,
+  UniversalLink,
+} from '@plone/volto/components';
 
 import backSVG from '@plone/volto/icons/back.svg';
 import { getBaseUrl } from '@plone/volto/helpers';
-import { useLocation } from 'react-router-dom';
-
 
 const messages = defineMessages({
   back: {
@@ -42,11 +45,12 @@ const messages = defineMessages({
 });
 
 const LinksToItem = (props) => {
-
   const intl = useIntl();
-  const pathname = useLocation().pathname;
+  const pathname = props.location.pathname;
   const dispatch = useDispatch();
-  const relations_subrequest = useSelector((state) => state.relations.subrequests);
+  const relations_subrequest = useSelector(
+    (state) => state.relations.subrequests,
+  );
   const content_subrequest = useSelector((state) => state.content.subrequests);
   const content = content_subrequest[pathname]?.data;
   const relations = relations_subrequest[pathname]?.relations;
@@ -61,8 +65,15 @@ const LinksToItem = (props) => {
   }, [dispatch, pathname, content_subrequest]);
 
   useEffect(() => {
-    if (!relations_subrequest[pathname] && content_subrequest[pathname]?.data?.UID) {
-      dispatch(queryRelations(null, false, pathname, null, [content_subrequest[pathname]?.data?.UID]));
+    if (
+      !relations_subrequest[pathname] &&
+      content_subrequest[pathname]?.data?.UID
+    ) {
+      dispatch(
+        queryRelations(null, false, pathname, null, [
+          content_subrequest[pathname]?.data?.UID,
+        ]),
+      );
     }
     return () => {
       resetRelations(pathname);
@@ -82,7 +93,7 @@ const LinksToItem = (props) => {
 
   let links_ordered = Object.values(links).sort((link) => link['@id']);
   const relations_found = links_ordered.length > 0;
-  return ((content && relations) ? (
+  return content && relations ? (
     <Container id="linktoitem">
       <Helmet title={intl.formatMessage(messages.linktoitem)} />
       <Segment.Group raised>
@@ -105,7 +116,10 @@ const LinksToItem = (props) => {
               <Table.Header>
                 <Table.Row>
                   <Table.HeaderCell>
-                    <FormattedMessage id="Linked by this item" defaultMessage="Linked by this item" />
+                    <FormattedMessage
+                      id="Linked by this item"
+                      defaultMessage="Linked by this item"
+                    />
                   </Table.HeaderCell>
                   <Table.HeaderCell>
                     <FormattedMessage
@@ -115,43 +129,42 @@ const LinksToItem = (props) => {
                   </Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
-              {<Table.Body>
-                {map(links_ordered, (link) => (
-                  <Table.Row key={link["@id"]}>
-                    <Table.Cell>
-                      <UniversalLink
-                        href={link["@id"]}
-                        className={
-                          link.review_state !== 'published'
-                            ? 'not-published'
-                            : ''
-                        }
-                      >
-                        <span className="label" title={link.value}>
-                          {link.title}
-                        </span>
-                      </UniversalLink>
-
-                    </Table.Cell>
-                    <Table.Cell>
-                      <span>
-                        {link.review_state}
-                      </span>
-                    </Table.Cell>
-                  </Table.Row>
-                ))}
-              </Table.Body>}
+              {
+                <Table.Body>
+                  {map(links_ordered, (link) => (
+                    <Table.Row key={link['@id']}>
+                      <Table.Cell>
+                        <UniversalLink
+                          href={link['@id']}
+                          className={
+                            link.review_state !== 'published'
+                              ? 'not-published'
+                              : ''
+                          }
+                        >
+                          <span className="label" title={link.value}>
+                            {link.title}
+                          </span>
+                        </UniversalLink>
+                      </Table.Cell>
+                      <Table.Cell>
+                        <span>{link.review_state}</span>
+                      </Table.Cell>
+                    </Table.Row>
+                  ))}
+                </Table.Body>
+              }
             </Table>
           </>
         )}
-        {!relations_found &&
+        {!relations_found && (
           <Segment secondary>
             <FormattedMessage
               id="No links to this item found."
               defaultMessage="No links to this item found."
             />
           </Segment>
-        }
+        )}
       </Segment.Group>
       {__CLIENT__ && (
         <Portal node={document.getElementById('toolbar')}>
@@ -172,7 +185,7 @@ const LinksToItem = (props) => {
         </Portal>
       )}
     </Container>
-  ) : null);
+  ) : null;
 };
 
 export default LinksToItem;
