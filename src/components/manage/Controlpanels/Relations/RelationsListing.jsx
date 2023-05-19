@@ -32,10 +32,7 @@ const ListingTemplate = ({
 
   const stats = useSelector((state) => state.relations?.stats || null);
   let relations = useSelector(
-    (state) =>
-      (state.relations?.relations?.items
-        ? state.relations?.relations?.items[relationtype]
-        : []) || [],
+    (state) => state.relations?.result?.relations?.[relationtype]?.items || [],
   );
 
   let potential_targets_objects = useSelector(
@@ -47,12 +44,15 @@ const ListingTemplate = ({
   );
 
   const staticCatalogVocabularyQuery = useSelector(
-    (state) => state.relations?.relations?.staticCatalogVocabularyQuery || {},
+    (state) =>
+      state.relations?.result?.relations?.[relationtype]
+        ?.staticCatalogVocabularyQuery || {},
   );
 
   // Editable if plone.api.relations available
   const editable = useSelector(
-    (state) => state.relations?.relations?.readonly === false,
+    (state) =>
+      state.relations?.result?.relations?.[relationtype]?.readonly === false,
   );
 
   let relationMatrix = {};

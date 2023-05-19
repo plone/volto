@@ -13,7 +13,7 @@ const BrokenRelations = () => {
     (state) => state.relations?.stats?.broken || {},
   );
   const brokenRelations = useSelector(
-    (state) => state.relations?.subrequests?.broken?.relations,
+    (state) => state.relations?.subrequests?.broken?.result?.relations,
   );
 
   useEffect(() => {
@@ -30,7 +30,7 @@ const BrokenRelations = () => {
             defaultMessage="Broken relations"
           />
         </h3>
-        {Object.keys(brokenRelations.items).map((relationname) => (
+        {Object.keys(brokenRelations).map((relationname) => (
           <div key={relationname}>
             <Divider section hidden />
             <h4>
@@ -39,7 +39,7 @@ const BrokenRelations = () => {
             </h4>
             <Table>
               <Table.Body>
-                {uniqBy(brokenRelations.items[relationname], function (el) {
+                {uniqBy(brokenRelations[relationname].items, function (el) {
                   return el[0];
                 }).map((el) => (
                   <Table.Row key={el[0]}>
