@@ -178,6 +178,8 @@ class Edit extends Component {
     this.props.onChangeBlock(this.props.block, {
       ...this.props.data,
       url: flattenToAppURL(this.state.url),
+      image_field: undefined,
+      image_scales: undefined,
     });
   };
 
@@ -249,12 +251,6 @@ class Edit extends Component {
     const placeholder =
       this.props.data.placeholder ||
       this.props.intl.formatMessage(messages.ImageBlockInputPlaceholder);
-    const className = cx('responsive', {
-      'full-width': data.align === 'full',
-      large: data.size === 'l',
-      medium: data.size === 'm',
-      small: data.size === 's',
-    });
 
     return (
       <div
@@ -267,27 +263,44 @@ class Edit extends Component {
         )}
       >
         {data.url ? (
-          !isInternalURL(data.url) ? (
-            <img
-              src={data.url}
-              alt={data.alt || ''}
-              style={{ width: '50%' }}
-              className={className}
-              loading="lazy"
-              decoding="async"
-            />
-          ) : (
-            <Image
-              className={className}
-              item={{
-                '@id': data.url,
-                image_field: data.image_field,
-                image_scales: data.image_scales,
-              }}
-              alt={data.alt || ''}
-              loading="lazy"
-            />
-          )
+          <Image
+            className={cx({
+              'full-width': data.align === 'full',
+              large: data.size === 'l',
+              medium: data.size === 'm',
+              small: data.size === 's',
+            })}
+            item={
+              data.image_scales
+                ? {
+                    '@id': data.url,
+                    image_field: data.image_field,
+                    image_scales: data.image_scales,
+                  }
+                : undefined
+            }
+            src={
+              data.image_scales
+                ? undefined
+                : isInternalURL(data.url)
+                ? // Backwards compat in the case that the block is storing the full server URL
+                  (() => {
+                    if (data.size === 'l')
+                      return `${flattenToAppURL(data.url)}/@@images/image`;
+                    if (data.size === 'm')
+                      return `${flattenToAppURL(
+                        data.url,
+                      )}/@@images/image/preview`;
+                    if (data.size === 's')
+                      return `${flattenToAppURL(data.url)}/@@images/image/mini`;
+                    return `${flattenToAppURL(data.url)}/@@images/image`;
+                  })()
+                : data.url
+            }
+            alt={data.alt || ''}
+            loading="lazy"
+            responsive={true}
+          />
         ) : (
           <div>
             {this.props.editable && (
@@ -336,7 +349,7 @@ class Edit extends Component {
                                       url,
                                       image_field,
                                       image_scales,
-                                      alt: this.props.data.alt || title,
+                                      alt: this.props.data.alt || title || '',
                                     });
                                   },
                                 });

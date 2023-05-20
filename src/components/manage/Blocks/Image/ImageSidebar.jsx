@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Segment, Button } from 'semantic-ui-react';
 import { useIntl, FormattedMessage, defineMessages } from 'react-intl';
-import { isInternalURL } from '@plone/volto/helpers';
+import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers';
 import { BlockDataForm, Icon, Image } from '@plone/volto/components';
 import { ImageSchema } from './schema';
 import imageSVG from '@plone/volto/icons/image.svg';
@@ -40,28 +40,41 @@ const ImageSidebar = (props) => {
                 <Icon name={clearSVG} size="30px" />
               </Button>
             </div>
-            {!isInternalURL(data.url) ? (
-              <img
-                src={data.url}
-                alt={intl.formatMessage(messages.preview)}
-                style={{ width: '50%' }}
-                className="responsive"
-                loading="lazy"
-                decoding="async"
-              />
-            ) : (
-              <Image
-                item={{
-                  '@id': data.url,
-                  image_field: data.image_field,
-                  image_scales: data.image_scales,
-                }}
-                alt={intl.formatMessage(messages.preview)}
-                loading="lazy"
-                responsive={true}
-                style={{ width: '50%' }}
-              />
-            )}
+            <Image
+              item={
+                data.image_scales
+                  ? {
+                      '@id': data.url,
+                      image_field: data.image_field,
+                      image_scales: data.image_scales,
+                    }
+                  : undefined
+              }
+              src={
+                data.image_scales
+                  ? undefined
+                  : isInternalURL(data.url)
+                  ? // Backwards compat in the case that the block is storing the full server URL
+                    (() => {
+                      if (data.size === 'l')
+                        return `${flattenToAppURL(data.url)}/@@images/image`;
+                      if (data.size === 'm')
+                        return `${flattenToAppURL(
+                          data.url,
+                        )}/@@images/image/preview`;
+                      if (data.size === 's')
+                        return `${flattenToAppURL(
+                          data.url,
+                        )}/@@images/image/mini`;
+                      return `${flattenToAppURL(data.url)}/@@images/image`;
+                    })()
+                  : data.url
+              }
+              alt={intl.formatMessage(messages.preview)}
+              loading="lazy"
+              responsive={true}
+              style={{ width: '50%' }}
+            />
           </>
         ) : (
           <>

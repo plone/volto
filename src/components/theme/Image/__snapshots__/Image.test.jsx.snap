@@ -17,6 +17,15 @@ exports[`renders an image component from a catalog brain 1`] = `
 />
 `;
 
+exports[`renders an image component from a string src 1`] = `
+<img
+  alt="alt text"
+  className=""
+  fetchpriority="high"
+  src="http://localhost:3000/image/@@images/image/image.png"
+/>
+`;
+
 exports[`renders an image component with fetchpriority high 1`] = `
 <img
   alt="alt text"

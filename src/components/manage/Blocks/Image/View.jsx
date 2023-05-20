@@ -7,7 +7,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Image, UniversalLink } from '@plone/volto/components';
 import cx from 'classnames';
-import { isInternalURL, withBlockExtensions } from '@plone/volto/helpers';
+import {
+  flattenToAppURL,
+  isInternalURL,
+  withBlockExtensions,
+} from '@plone/volto/helpers';
 
 /**
  * View image block class.
@@ -16,12 +20,6 @@ import { isInternalURL, withBlockExtensions } from '@plone/volto/helpers';
  */
 export const View = ({ data, detached, properties }) => {
   const href = data?.href?.[0]?.['@id'] || '';
-  const className = cx('responsive', {
-    'full-width': data.align === 'full',
-    large: data.size === 'l',
-    medium: data.size === 'm',
-    small: data.size === 's',
-  });
 
   return (
     <p
@@ -37,22 +35,43 @@ export const View = ({ data, detached, properties }) => {
       {data.url && (
         <>
           {(() => {
-            const image = !isInternalURL(data.url) ? (
-              <img
-                src={data.url}
-                alt={data.alt || ''}
-                className={className}
-                loading="lazy"
-                decoding="async"
-              />
-            ) : (
+            const image = (
               <Image
-                className={className}
-                item={{
-                  '@id': data.url,
-                  image_field: data.image_field,
-                  image_scales: data.image_scales,
-                }}
+                className={cx('responsive', {
+                  'full-width': data.align === 'full',
+                  large: data.size === 'l',
+                  medium: data.size === 'm',
+                  small: data.size === 's',
+                })}
+                item={
+                  data.image_scales
+                    ? {
+                        '@id': data.url,
+                        image_field: data.image_field,
+                        image_scales: data.image_scales,
+                      }
+                    : undefined
+                }
+                src={
+                  data.image_scales
+                    ? undefined
+                    : isInternalURL(data.url)
+                    ? // Backwards compat in the case that the block is storing the full server URL
+                      (() => {
+                        if (data.size === 'l')
+                          return `${flattenToAppURL(data.url)}/@@images/image`;
+                        if (data.size === 'm')
+                          return `${flattenToAppURL(
+                            data.url,
+                          )}/@@images/image/preview`;
+                        if (data.size === 's')
+                          return `${flattenToAppURL(
+                            data.url,
+                          )}/@@images/image/mini`;
+                        return `${flattenToAppURL(data.url)}/@@images/image`;
+                      })()
+                    : data.url
+                }
                 alt={data.alt || ''}
                 loading="lazy"
               />
