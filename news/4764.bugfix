@@ -1,0 +1,1 @@
+Fix bug where editors could not see their own content in the Contents view if it was expired or has a future effective date. @davisagli

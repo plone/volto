@@ -1,0 +1,1 @@
+Fix to not update breadrumbs, navigation, actions, and types when content is fetched as a subrequest and apiExpanders includes these components. @davisagli
