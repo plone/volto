@@ -27,7 +27,7 @@ const RelationsControlPanel = () => {
     (state) => state.relations?.stats?.broken,
   );
 
-  const relations_stats = useSelector((state) => state.relations?.stats);
+  const relations_stats = useSelector((state) => state.relations?.stats?.stats);
   const actions = useSelector((state) => state.actions?.actions ?? {});
   const can_edit = find(actions.object, {
     id: 'edit',
