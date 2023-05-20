@@ -2704,6 +2704,7 @@ __metadata:
     jest: 26.6.3
     jest-environment-jsdom: ^26
     jest-file: 1.0.0
+    jotai: 2.0.3
     jsonwebtoken: 9.0.0
     jwt-decode: 2.2.0
     less: 3.11.1
@@ -15035,6 +15036,18 @@ __metadata:
     "@sideway/formula": ^3.0.0
     "@sideway/pinpoint": ^2.0.0
   checksum: 767a847936cb66787256c4351ff86e1b9e8d7383cbe81a5c827064032c2a8e8b6e938baef5ad32c4035fe4c56e537bd90aa2a952be8a0658601c920cdeb4fb3c
+  languageName: node
+  linkType: hard
+
+"jotai@npm:2.0.3":
+  version: 2.0.3
+  resolution: "jotai@npm:2.0.3"
+  peerDependencies:
+    react: ">=17.0.0"
+  peerDependenciesMeta:
+    react:
+      optional: true
+  checksum: 3ad1d6a9b7e40a8dd8cdc423441164c25852a328c98806ed0e2a283a4e07af661f4a88b50528367aeae582932171bc8979e45cbc9023af30b9f4a348faeed567
   languageName: node
   linkType: hard
 

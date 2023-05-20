@@ -2864,6 +2864,11 @@ msgstr "Sauvegarder"
 msgid "Saved"
 msgstr "Sauvegardé"
 
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Scheduled
+msgid "Scheduled"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypesActions
 # defaultMessage: Schema
 msgid "Schema"

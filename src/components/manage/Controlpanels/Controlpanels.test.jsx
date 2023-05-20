@@ -1,11 +1,11 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
-import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
+import renderer from 'react-test-renderer';
+import configureStore from 'redux-mock-store';
 
-import Controlpanels from './Controlpanels';
 import config from '@plone/volto/registry';
+import Controlpanels from './Controlpanels';
 
 const mockStore = configureStore();
 
@@ -20,7 +20,30 @@ jest.mock('./VersionOverview', () =>
 describe('Controlpanels', () => {
   it('renders a controlpanels component', () => {
     const store = mockStore({
-      controlpanels: {
+      controlpanels: [
+        {
+          '@id': 'http://localhost:8080/Plone/@controlpanels/date-and-time',
+          group: 'General',
+          title: 'Date and Time',
+        },
+        {
+          '@id': 'http://localhost:8080/Plone/@controlpanels/lang',
+          group: 'General',
+          title: 'Language',
+        },
+        {
+          '@id': 'http://localhost:8080/Plone/@controlpanels/editing',
+          group: 'Content',
+          title: 'Editing',
+        },
+        {
+          '@id': 'http://localhost:8080/Plone/@controlpanels/security',
+          group: 'Security',
+          title: 'test',
+        },
+      ],
+      reduxAsyncConnect: {
+        // Mocked in redux async connect as it isn't fetch client-side.
         controlpanels: [
           {
             '@id': 'http://localhost:8080/Plone/@controlpanels/date-and-time',
@@ -40,10 +63,11 @@ describe('Controlpanels', () => {
           {
             '@id': 'http://localhost:8080/Plone/@controlpanels/security',
             group: 'Security',
-            title: 'Security',
+            title: 'test',
           },
         ],
       },
+      router: { location: '/blog' },
       intl: {
         locale: 'en',
         messages: {},
@@ -62,9 +86,24 @@ describe('Controlpanels', () => {
 
   it('renders an additional control panel', () => {
     const store = mockStore({
-      controlpanels: {
-        controlpanels: [],
+      controlpanels: [
+        {
+          '@id': 'http://localhost:8080/Plone/@controlpanels/security',
+          group: 'Security',
+          title: 'test',
+        },
+      ],
+      reduxAsyncConnect: {
+        // Mocked in redux async connect as it isn't fetch client-side.
+        controlpanels: [
+          {
+            '@id': 'http://localhost:8080/Plone/@controlpanels/security',
+            group: 'Security',
+            title: 'test',
+          },
+        ],
       },
+      router: { location: '/blog' },
       intl: {
         locale: 'en',
         messages: {},

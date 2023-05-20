@@ -2853,6 +2853,11 @@ msgstr "Wiederkehrende Einstellung speichern"
 msgid "Saved"
 msgstr "Gespeichert"
 
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Scheduled
+msgid "Scheduled"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypesActions
 # defaultMessage: Schema
 msgid "Schema"

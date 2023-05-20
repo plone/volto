@@ -3,6 +3,7 @@ import NewsAndEvents from './components/Views/NewsAndEvents';
 import TestBlockView from './components/Blocks/TestBlock/View';
 import TestBlockEdit from './components/Blocks/TestBlock/Edit';
 import { SliderSchema as TestBlockSchema } from './components/Blocks/TestBlock/schema';
+import { multipleFieldsetsSchema } from './components/Blocks/TestBlock/schema';
 import codeSVG from '@plone/volto/icons/code.svg';
 
 const testBlock = {
@@ -12,13 +13,10 @@ const testBlock = {
   group: 'common',
   view: TestBlockView,
   edit: TestBlockEdit,
+  blockSchema: TestBlockSchema,
   restricted: false,
   mostUsed: true,
   sidebarTab: 1,
-  security: {
-    addPermission: [],
-    view: [],
-  },
   variations: [
     {
       id: 'default',
@@ -32,6 +30,19 @@ const testBlock = {
   extensions: {},
 };
 
+const testBlockMultipleFieldsets = {
+  id: 'testBlockMultipleFieldsets',
+  title: 'testBlockMultipleFieldsets',
+  icon: codeSVG,
+  group: 'common',
+  view: TestBlockView,
+  edit: TestBlockEdit,
+  blockSchema: multipleFieldsetsSchema,
+  restricted: false,
+  mostUsed: true,
+  sidebarTab: 1,
+};
+
 const testBlockDefaultEdit = {
   id: 'testBlockDefaultEdit',
   title: 'testBlockDefaultEdit',
@@ -42,10 +53,6 @@ const testBlockDefaultEdit = {
   restricted: false,
   mostUsed: true,
   sidebarTab: 1,
-  security: {
-    addPermission: [],
-    view: [],
-  },
   variations: [
     {
       id: 'default',
@@ -68,10 +75,6 @@ const testBlockDefaultView = {
   restricted: false,
   mostUsed: true,
   sidebarTab: 1,
-  security: {
-    addPermission: [],
-    view: [],
-  },
   variations: [
     {
       id: 'default',
@@ -122,6 +125,7 @@ export const workingCopyFixture = (config) => {
 
 const applyConfig = (config) => {
   config.blocks.blocksConfig.testBlock = testBlock;
+  config.blocks.blocksConfig.testBlockMultipleFieldsets = testBlockMultipleFieldsets;
   config.blocks.blocksConfig.testBlockDefaultEdit = testBlockDefaultEdit;
   config.blocks.blocksConfig.testBlockDefaultView = testBlockDefaultView;
   config.blocks.blocksConfig.listing = listing(config);

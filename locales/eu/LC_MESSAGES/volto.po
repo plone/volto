@@ -2854,6 +2854,11 @@ msgstr "Gorde errepikapena"
 msgid "Saved"
 msgstr "Gordeta"
 
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Scheduled
+msgid "Scheduled"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypesActions
 # defaultMessage: Schema
 msgid "Schema"
