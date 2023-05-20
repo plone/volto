@@ -1419,6 +1419,11 @@ msgstr "Vue fichier"
 msgid "Filename"
 msgstr "Nom du fichier"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Filter
+msgid "Filter"
+msgstr ""
+
 #: components/manage/Controlpanels/Rules/Rules
 # defaultMessage: Filter Rules:
 msgid "Filter Rules:"
@@ -2586,6 +2591,11 @@ msgstr "Saisissez à nouveau le mot de passe. Assurez-vous que les mots de passe
 msgid "Read More…"
 msgstr "Lire la suite..."
 
+#: components/manage/Controlpanels/Relations/RelationsListing
+# defaultMessage: Read only for this type of relation.
+msgid "Read only for this type of relation."
+msgstr ""
+
 #: components/manage/Contents/Contents
 # defaultMessage: Rearrange items by…
 msgid "Rearrange items by…"
@@ -2975,6 +2985,7 @@ msgstr "Titre de la section"
 #: components/manage/Controlpanels/Aliases
 #: components/manage/Rules/Rules
 #: components/manage/Sidebar/ObjectBrowserNav
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Select
 msgid "Select"
 msgstr "Sélectionner"
@@ -2998,6 +3009,11 @@ msgstr ""
 # defaultMessage: Select the transition to be used for modifying the items state.
 msgid "Select the transition to be used for modifying the items state."
 msgstr "Sélectionnez la transition à utiliser pour modifier l'état des éléments."
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Selected
+msgid "Selected"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 # defaultMessage: Selected dates
@@ -3224,6 +3240,7 @@ msgstr "Trié"
 
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Blocks/Image/schema
+#: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: Source
 msgid "Source"
 msgstr "Source"
@@ -3367,6 +3384,7 @@ msgstr "Mots clés à supprimer"
 
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: Target
 msgid "Target"
 msgstr "Destination"

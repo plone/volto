@@ -43,11 +43,13 @@
   .controlpanel_search_y {
     grid-column: 1;
     grid-row: 2;
+    margin-right: 10rem;
   }
 
   .controlpanel_search_x {
     grid-column: 2;
     grid-row: 2;
+    margin-left: 10rem;
   }
 
   .controlpanel_filter {
@@ -70,6 +72,30 @@
     grid-row: 3;
     grid-template-rows: 14rem 1fr;
     overflow-x: scroll;
+
+    .label-options {
+      justify-content: start;
+      padding-left: 20%;
+    }
+
+    .items {
+      .listing-row.selectall {
+        margin-left: 19%;
+        div {
+          margin: 0;
+
+        }
+      }
+      .listing-row .listing-item {
+      display: flex;
+      justify-content: start;
+
+      .item-title-container {
+        width: 20%;
+        min-width: fit-content;
+      }
+    }
+    }
   }
 
   .not-published {
