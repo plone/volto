@@ -38,7 +38,7 @@
           ["@package", "./src"],
           ["@root", "./src"]
         ],
-        "extensions": [".js", ".jsx", ".json"]
+        "extensions": [".js", ".jsx", ".ts", ".tsx", ".json"]
       },
       "babel-plugin-root-import": {
         "rootPathSuffix": "src"

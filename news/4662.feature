@@ -1,1 +1,1 @@
-TypeScript support in core @sneridagh
+TypeScript support in core @sneridagh @ninanoleto
