@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { capitalize, find } from 'lodash';
 import { compose } from 'redux';
 import { useSelector, useDispatch } from 'react-redux';
@@ -23,7 +23,6 @@ import BrokenRelations from './BrokenRelations';
 import helpSVG from '@plone/volto/icons/help.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import navTreeSVG from '@plone/volto/icons/nav.svg';
-import aheadSVG from '@plone/volto/icons/ahead.svg';
 
 const RelationsMatrix = (props) => {
   const intl = useIntl();
