@@ -210,6 +210,11 @@ const RelationsMatrix = (props) => {
               {relationtype ? (
                 <>
                   <div className="controlpanel_search_y">
+                    <Header as="h4">
+                      <Header.Content>
+                        <FormattedMessage id="Source" defaultMessage="Source" />
+                      </Header.Content>
+                    </Header>
                     <Form className="search_y" onSubmit={onReset}>
                       <Form.Field>
                         <Input
@@ -300,6 +305,14 @@ const RelationsMatrix = (props) => {
                   </div>
                   <div className="controlpanel_search_x">
                     <Form className="search_x" onSubmit={onReset}>
+                      <Header as="h4">
+                        <Header.Content>
+                          <FormattedMessage
+                            id="Target"
+                            defaultMessage="Target"
+                          />
+                        </Header.Content>
+                      </Header>
                       <Form.Field>
                         <Input
                           name="SearchX"

@@ -336,7 +336,9 @@ const ListingTemplate = ({
                     }
                   >
                     <span className="label" title={matrix_option.value}>
-                      {matrix_option.label}
+                      {matrix_option.label.length > 30
+                        ? matrix_option.label.slice(0, 27) + '...'
+                        : matrix_option.label}
                     </span>
                   </UniversalLink>
                 </div>
@@ -359,68 +361,75 @@ const ListingTemplate = ({
                   <div />
 
                   <div className="matrix_options">
-                    {matrix_options?.map((matrix_option) => (
-                      <div key={matrix_option.value}>
-                        <Button
-                          icon
-                          basic
-                          onClick={() =>
-                            onSelectAllHandler(matrix_option.value, true)
-                          }
-                          className="add-button"
-                          aria-label={
-                            intl.formatMessage(
-                              messages.createRelationsToTarget,
-                            ) + ` '${matrix_option.label}'`
-                          }
-                          title={
-                            intl.formatMessage(
-                              messages.createRelationsToTarget,
-                            ) + ` '${matrix_option.label}'`
-                          }
-                        >
-                          <Icon
-                            name={add}
-                            size="10px"
-                            className="circled"
-                            color="unset"
-                          />
-                        </Button>
-                        <Button
-                          icon
-                          basic
-                          onClick={() =>
-                            onSelectAllHandler(matrix_option.value, false)
-                          }
-                          className="remove-button"
-                          aria-label={
-                            intl.formatMessage(
-                              messages.removeRelationsToTarget,
-                            ) + ` '${matrix_option.label}'`
-                          }
-                          title={
-                            intl.formatMessage(
-                              messages.removeRelationsToTarget,
-                            ) + ` '${matrix_option.label}'`
-                          }
-                        >
-                          <Icon
-                            name={remove}
-                            size="10px"
-                            className="circled"
-                            color="unset"
-                          />
-                        </Button>
-                      </div>
-                    ))}
+                    {relationtype !== 'isReferencing' ? (
+                      matrix_options?.map((matrix_option) => (
+                        <div key={matrix_option.value}>
+                          <Button
+                            icon
+                            basic
+                            onClick={() =>
+                              onSelectAllHandler(matrix_option.value, true)
+                            }
+                            className="add-button"
+                            aria-label={
+                              intl.formatMessage(
+                                messages.createRelationsToTarget,
+                              ) + ` '${matrix_option.label}'`
+                            }
+                            title={
+                              intl.formatMessage(
+                                messages.createRelationsToTarget,
+                              ) + ` '${matrix_option.label}'`
+                            }
+                          >
+                            <Icon
+                              name={add}
+                              size="10px"
+                              className="circled"
+                              color="unset"
+                            />
+                          </Button>
+                          <Button
+                            icon
+                            basic
+                            onClick={() =>
+                              onSelectAllHandler(matrix_option.value, false)
+                            }
+                            className="remove-button"
+                            aria-label={
+                              intl.formatMessage(
+                                messages.removeRelationsToTarget,
+                              ) + ` '${matrix_option.label}'`
+                            }
+                            title={
+                              intl.formatMessage(
+                                messages.removeRelationsToTarget,
+                              ) + ` '${matrix_option.label}'`
+                            }
+                          >
+                            <Icon
+                              name={remove}
+                              size="10px"
+                              className="circled"
+                              color="unset"
+                            />
+                          </Button>
+                        </div>
+                      ))
+                    ) : (
+                      <FormattedMessage
+                        id="Read only for this type of relation."
+                        defaultMessage="Read only for this type of relation."
+                      />
+                    )}
                   </div>
                 </div>
               </div>
               {items.map((item) => (
                 <div className="listing-row" key={item.id}>
                   <div className="listing-item" key={item['@id']}>
-                    <div>
-                      <span title={item.value}>
+                    <div className="item-title-container">
+                      <span title={item.value} className="item-title">
                         <UniversalLink
                           href={item.url}
                           className={
@@ -429,7 +438,9 @@ const ListingTemplate = ({
                               : ''
                           }
                         >
-                          {item.label}
+                          {item.label.length > 25
+                            ? item.label.slice(0, 22) + '...'
+                            : item.label}
                         </UniversalLink>
                         {/* <span>targets: {item.targets.join(', ')}</span> */}
                       </span>

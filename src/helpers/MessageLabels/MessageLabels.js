@@ -324,4 +324,16 @@ export const messages = defineMessages({
     id: 'Relations updated',
     defaultMessage: 'Relations updated',
   },
+  select: {
+    id: 'Select',
+    defaultMessage: 'Select',
+  },
+  selected: {
+    id: 'Selected',
+    defaultMessage: 'Selected',
+  },
+  filter: {
+    id: 'Filter',
+    defaultMessage: 'Filter',
+  },
 });

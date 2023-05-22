@@ -28,9 +28,9 @@
 
 .controlpanel_matrix {
   display: grid;
-  grid-gap: 2rem;
+  grid-gap: 2rem 10rem;
   grid-template-columns: 5fr 5fr 2fr;
-  
+
   .ui.action.input button.ui.icon.button {
     background-color: transparent;
   }
@@ -48,6 +48,12 @@
   .controlpanel_search_x {
     grid-column: 2;
     grid-row: 2;
+    margin-right: 2rem;
+    @media only screen and (max-width: @tabletBreakpoint) {
+      grid-row: 3;
+      grid-column: 1;
+      margin-right: 0;
+    }
   }
 
   .controlpanel_filter {
@@ -55,6 +61,9 @@
     flex-direction: column;
     grid-column: 3;
     grid-row: 3;
+    @media only screen and (max-width: @tabletBreakpoint) {
+      grid-row: 4;
+    }
 
     .ui.checkbox {
       margin-top: 0.5rem;
@@ -78,6 +87,41 @@
     grid-row: 3;
     grid-template-rows: 14rem 1fr;
     overflow-x: scroll;
+    @media only screen and (max-width: @tabletBreakpoint) {
+      grid-row: 4;
+    }
+    @media only screen and (max-width: 440px) {
+      grid-column-end: 2;
+    }
+
+    .label-options {
+      display: flex;
+      justify-content: flex-start;
+      @media only screen and (min-width: @tabletBreakpoint) {
+        padding-left: 25%;
+      }
+    }
+
+    .items {
+      .listing-row.selectall {
+        @media only screen and (min-width: @tabletBreakpoint) {
+          margin-left: 24%;
+        }
+
+        div {
+          margin: 0;
+        }
+      }
+      .listing-row .listing-item {
+        display: flex;
+        justify-content: flex-start;
+
+        .item-title-container {
+          width: 25%;
+          min-width: 25%;
+        }
+      }
+    }
   }
 
   .not-published {
@@ -94,15 +138,14 @@ body.section-relations .controlpanel_matrix {
   }
 
   .label-options {
-    position: sticky;
-    z-index: 3;
+    z-index: 2;
     top: 0;
     left: 0;
     display: flex;
     height: 14rem;
     align-items: baseline;
     justify-content: flex-end;
-    padding-right: 2rem;
+    padding-right: 5rem;
     .stickyLabelLayerBackground();
 
     .label-options-label {
