@@ -28,7 +28,7 @@
 
 .controlpanel_matrix {
   display: grid;
-  grid-gap: 2rem;
+  grid-gap: 2rem 10rem;
   grid-template-columns: 5fr 5fr 2fr;
 
   .ui.action.input button.ui.icon.button {
@@ -43,21 +43,15 @@
   .controlpanel_search_y {
     grid-column: 1;
     grid-row: 2;
-    padding-right: 5rem;
-    @media only screen and (max-width: @tabletBreakpoint) {
-      padding-right: 0;
-    }
   }
 
   .controlpanel_search_x {
     grid-column: 2;
     grid-row: 2;
-    padding-left: 5rem;
     margin-right: 2rem;
     @media only screen and (max-width: @tabletBreakpoint) {
       grid-row: 3;
       grid-column: 1;
-      padding-left: 0;
       margin-right: 0;
     }
   }
@@ -95,6 +89,9 @@
     overflow-x: scroll;
     @media only screen and (max-width: @tabletBreakpoint) {
       grid-row: 4;
+    }
+    @media only screen and (max-width: 440px) {
+      grid-column-end: 2;
     }
 
     .label-options {
@@ -140,14 +137,14 @@ body.section-relations .controlpanel_matrix {
   }
 
   .label-options {
-    z-index: 3;
+    z-index: 2;
     top: 0;
     left: 0;
     display: flex;
     height: 14rem;
     align-items: baseline;
     justify-content: flex-end;
-    padding-right: 2rem;
+    padding-right: 5rem;
     .stickyLabelLayerBackground();
 
     .label-options-label {
