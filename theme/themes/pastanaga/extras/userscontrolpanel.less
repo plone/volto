@@ -30,7 +30,7 @@
   display: grid;
   grid-gap: 2rem;
   grid-template-columns: 5fr 5fr 2fr;
-  
+
   .ui.action.input button.ui.icon.button {
     background-color: transparent;
   }
@@ -43,13 +43,23 @@
   .controlpanel_search_y {
     grid-column: 1;
     grid-row: 2;
-    margin-right: 10rem;
+    padding-right: 5rem;
+    @media only screen and (max-width: @tabletBreakpoint) {
+      padding-right: 0;
+    }
   }
 
   .controlpanel_search_x {
     grid-column: 2;
     grid-row: 2;
-    margin-left: 10rem;
+    padding-left: 5rem;
+    margin-right: 2rem;
+    @media only screen and (max-width: @tabletBreakpoint) {
+      grid-row: 3;
+      grid-column: 1;
+      padding-left: 0;
+      margin-right: 0;
+    }
   }
 
   .controlpanel_filter {
@@ -57,6 +67,9 @@
     flex-direction: column;
     grid-column: 3;
     grid-row: 3;
+    @media only screen and (max-width: @tabletBreakpoint) {
+      grid-row: 4;
+    }
 
     .ui.checkbox {
       margin-top: 0.5rem;
@@ -80,29 +93,36 @@
     grid-row: 3;
     grid-template-rows: 14rem 1fr;
     overflow-x: scroll;
+    @media only screen and (max-width: @tabletBreakpoint) {
+      grid-row: 4;
+    }
 
     .label-options {
       justify-content: start;
-      padding-left: 20%;
+      @media only screen and (min-width: @tabletBreakpoint) {
+        padding-left: 25%;
+      }
     }
 
     .items {
       .listing-row.selectall {
-        margin-left: 19%;
+        @media only screen and (min-width: @tabletBreakpoint) {
+          margin-left: 24%;
+        }
+
         div {
           margin: 0;
-
         }
       }
       .listing-row .listing-item {
-      display: flex;
-      justify-content: start;
+        display: flex;
+        justify-content: start;
 
-      .item-title-container {
-        width: 20%;
-        min-width: fit-content;
+        .item-title-container {
+          width: 25%;
+          min-width: 25%;
+        }
       }
-    }
     }
   }
 
@@ -120,7 +140,6 @@ body.section-relations .controlpanel_matrix {
   }
 
   .label-options {
-    position: sticky;
     z-index: 3;
     top: 0;
     left: 0;

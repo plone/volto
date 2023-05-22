@@ -337,7 +337,7 @@ const ListingTemplate = ({
                   >
                     <span className="label" title={matrix_option.value}>
                       {matrix_option.label.length > 30
-                        ? matrix_option.label.slice(0, 30) + '...'
+                        ? matrix_option.label.slice(0, 27) + '...'
                         : matrix_option.label}
                     </span>
                   </UniversalLink>
@@ -439,7 +439,7 @@ const ListingTemplate = ({
                           }
                         >
                           {item.label.length > 25
-                            ? item.label.slice(0, 25) + '...'
+                            ? item.label.slice(0, 22) + '...'
                             : item.label}
                         </UniversalLink>
                         {/* <span>targets: {item.targets.join(', ')}</span> */}
