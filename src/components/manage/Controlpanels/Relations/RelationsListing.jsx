@@ -22,7 +22,7 @@ const ListingTemplate = ({
   query_target,
   potential_sources_path,
   potential_targets_path,
-  target_filter,
+  // target_filter,
 }) => {
   const intl = useIntl();
   const dispatch = useDispatch();
@@ -51,7 +51,7 @@ const ListingTemplate = ({
 
   // Editable if plone.api.relations available
   const editable = useSelector(
-    (state) => state.relations?.relations?.[relationtype]?.readonly === false,
+    (state) => state.relations?.relations?.[relationtype]?.readonly !== true,
   );
 
   let relationMatrix = {};
@@ -88,7 +88,14 @@ const ListingTemplate = ({
     review_state: obj.review_state,
     uid: obj.UID,
   }));
-  matrix_options = [...matrix_options, ...potential_targets];
+  // Just show potential targets if no querying
+  matrix_options =
+    query_source === '' &&
+    query_target === '' &&
+    potential_sources_path !== '' &&
+    potential_targets_path !== ''
+      ? potential_targets
+      : [...matrix_options, ...potential_targets];
   matrix_options = uniqBy(matrix_options, function (el) {
     return el.value;
   });
@@ -117,11 +124,17 @@ const ListingTemplate = ({
   const potential_sources = potential_sources_objects.map((obj) => ({
     value: obj.UID,
     label: obj.title,
-    targets: [],
+    targets: relationMatrix[obj.UID]?.targets?.map((el) => el.UID) || [],
     url: obj['@id'],
     review_state: obj.review_state,
   }));
-  items = [...items, ...potential_sources];
+  items =
+    query_source === '' &&
+    query_target === '' &&
+    potential_sources_path !== '' &&
+    potential_targets_path !== ''
+      ? potential_sources
+      : [...items, ...potential_sources];
   items = uniqBy(items, function (el) {
     return el.value;
   });
@@ -141,7 +154,7 @@ const ListingTemplate = ({
     // If many relations, then fetch relations only with search query on source or target
     if (stats?.stats[relationtype] <= MAX_RELATIONS) {
       dispatch(queryRelations(relationtype));
-    } else if (query_source || query_target) {
+    } else {
       dispatch(
         queryRelations(
           relationtype,
@@ -161,8 +174,6 @@ const ListingTemplate = ({
             : null,
         ),
       );
-    } else {
-      // console.debug('many relations, but no search for source nor target');
     }
   }, [dispatch, stats, relationtype, query_source, query_target]);
 
@@ -293,12 +304,18 @@ const ListingTemplate = ({
 
   return (
     <>
-      {/* 
+      {/* <div>
         <div>
-          <div>{items.length} items</div>
-          <div>{matrix_options.length} matrix_options</div>
-        </div> 
-      */}
+          <div>{items.length} sources</div>
+          <div>{matrix_options.length} targets</div>
+        </div>
+        <div>
+          <div>query_source <b>{query_source}</b></div>
+          <div>query_target <b>{query_target}</b></div>
+          <div>potential_sources_path <b>{potential_sources_path}</b></div>
+          <div>potential_targets_path <b>{potential_targets_path}</b></div>
+        </div>
+      </div> */}
       {matrix_options.length <= MAX &&
       (items.length <= MAX) & (matrix_options.length > 0) &&
       items.length > 0 ? (
