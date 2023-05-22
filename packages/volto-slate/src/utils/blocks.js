@@ -125,6 +125,13 @@ export function createEmptyParagraph() {
   };
 }
 
+export function createParagraph(text) {
+  return {
+    type: config.settings.slate.defaultBlockType,
+    children: [{ text }],
+  };
+}
+
 export const isSingleBlockTypeActive = (editor, format) => {
   const [match] = Editor.nodes(editor, {
     match: (n) => n.type === format,
