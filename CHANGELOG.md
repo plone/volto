@@ -1277,6 +1277,7 @@ See https://6.docs.plone.org/volto/upgrade-guide/index.html for more information
 - Object browser: image search should only show images @reebalazs
 - Updated spanish translation @macagua
 - Add Dutch translation @spereverde
+- Add control panel for relations. @ksuess
 
 ### Bugfix
 

@@ -48,11 +48,11 @@ describe('User Group Membership Control Panel test for NOT many users and many g
       if ($segmentUsergroupmembership.hasClass('upgrade-info')) {
         // Panel not supported.
       } else {
-        cy.get('input[name="member_-_max_-_cooks"]').check({
+        cy.get('#source-row-max div.checkbox_cooks input').check({
           force: true,
         });
         cy.reload();
-        cy.get('input[name="member_-_max_-_cooks"]').should('be.checked');
+        cy.get('#source-row-max div.checkbox_cooks input').should('be.checked');
       }
     });
   });
