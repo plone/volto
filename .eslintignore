@@ -1,3 +1,5 @@
 webpack/*
 karma.conf.js
 tests.webpack.js
+packages/generator-volto/generators
+node_modules
