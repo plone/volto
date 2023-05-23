@@ -21,7 +21,7 @@ An item references another item by creating a hyperlink to this item, using the 
 
 ## {guilabel}`Links to item` view
 
-In the toolbar on the left side you can click on the item with the three horizontally-aligned dots (called {guilabel}`More Menu`).
+In the toolbar on the left side, you can click on the item with the three horizontally aligned dots, called {guilabel}`More menu`.
 Click then on the item labeled {guilabel}`Links to item`.
 
 You can see now a table displaying all links to the current item.
