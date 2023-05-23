@@ -1,0 +1,1 @@
+Fix hot module reloading of changes to `@plone/volto`. @davisagli
