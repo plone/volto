@@ -237,9 +237,9 @@ const ListingTemplate = ({
                 <div className="listing-item" key={item['@id']}>
                   <div>
                     <h4 title={`${item.fullname} ${item.id}`}>
-                      {item.fullname.length > 25
+                      {item.fullname?.length > 25
                         ? item.fullname.slice(0, 22) + '...'
-                        : item.fullname}
+                        : item.fullname || item.id}
                     </h4>
                   </div>
                   <div className="matrix_options">
