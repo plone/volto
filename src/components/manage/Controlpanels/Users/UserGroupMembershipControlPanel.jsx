@@ -9,7 +9,7 @@ import { useHistory } from 'react-router';
 import { Link, useLocation } from 'react-router-dom';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
-import { Container, Segment } from 'semantic-ui-react';
+import { Segment } from 'semantic-ui-react';
 import { Helmet, messages } from '@plone/volto/helpers';
 import {
   getControlpanel,
