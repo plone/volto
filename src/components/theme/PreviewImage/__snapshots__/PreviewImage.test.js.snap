@@ -42,18 +42,17 @@ exports[`PreviewImage renders a fallback image with extra props 1`] = `
 exports[`PreviewImage renders a preview image 1`] = `
 <img
   alt="Item title"
+  className=""
+  fetchpriority="high"
   height={400}
-  src="http://localhost:3000/something/@@images/image/preview?modified="
+  src="http://localhost:3000/something/@@images/image"
+  srcSet="http://localhost:3000/something/@@images/image-400.png 400w"
+  style={
+    Object {
+      "aspectRatio": "400 / 400",
+    }
+  }
   width={400}
-/>
-`;
-
-exports[`PreviewImage renders a preview image with custom size 1`] = `
-<img
-  alt="Item title"
-  height={800}
-  src="http://localhost:3000/something/@@images/image/large?modified="
-  width={800}
 />
 `;
 
@@ -61,8 +60,15 @@ exports[`PreviewImage renders a preview image with extra props 1`] = `
 <img
   alt="Item title"
   className="extra"
+  fetchpriority="high"
   height={400}
-  src="http://localhost:3000/something/@@images/image/preview?modified="
+  src="http://localhost:3000/something/@@images/image"
+  srcSet="http://localhost:3000/something/@@images/image-400.png 400w"
+  style={
+    Object {
+      "aspectRatio": "400 / 400",
+    }
+  }
   width={400}
 />
 `;

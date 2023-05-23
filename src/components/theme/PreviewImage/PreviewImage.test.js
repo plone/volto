@@ -10,8 +10,12 @@ describe('PreviewImage', () => {
       image_scales: {
         image: [
           {
+            download: '@@images/image',
+            width: 400,
+            height: 400,
             scales: {
               preview: {
+                download: '@@images/image-400.png',
                 width: 400,
                 height: 400,
               },
@@ -22,7 +26,9 @@ describe('PreviewImage', () => {
       title: 'Item title',
       '@id': 'http://localhost:3000/something',
     };
-    const component = renderer.create(<PreviewImage item={item} />);
+    const component = renderer.create(
+      <PreviewImage item={item} alt={item.title} />,
+    );
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });
@@ -33,8 +39,12 @@ describe('PreviewImage', () => {
       image_scales: {
         image: [
           {
+            download: '@@images/image',
+            width: 400,
+            height: 400,
             scales: {
               preview: {
+                download: '@@images/image-400.png',
                 width: 400,
                 height: 400,
               },
@@ -46,32 +56,7 @@ describe('PreviewImage', () => {
       '@id': 'http://localhost:3000/something',
     };
     const component = renderer.create(
-      <PreviewImage item={item} className="extra" />,
-    );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
-  });
-
-  it('renders a preview image with custom size', () => {
-    const item = {
-      image_field: 'image',
-      image_scales: {
-        image: [
-          {
-            scales: {
-              large: {
-                width: 800,
-                height: 800,
-              },
-            },
-          },
-        ],
-      },
-      title: 'Item title',
-      '@id': 'http://localhost:3000/something',
-    };
-    const component = renderer.create(
-      <PreviewImage item={item} size="large" />,
+      <PreviewImage item={item} alt={item.title} className="extra" />,
     );
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
@@ -82,7 +67,9 @@ describe('PreviewImage', () => {
       title: 'Item title',
       '@id': 'http://localhost:3000/something',
     };
-    const component = renderer.create(<PreviewImage item={item} />);
+    const component = renderer.create(
+      <PreviewImage item={item} alt={item.title} />,
+    );
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });
@@ -93,7 +80,7 @@ describe('PreviewImage', () => {
       '@id': 'http://localhost:3000/something',
     };
     const component = renderer.create(
-      <PreviewImage item={item} className="extra" />,
+      <PreviewImage item={item} alt={item.title} className="extra" />,
     );
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
