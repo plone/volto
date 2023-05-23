@@ -4,17 +4,15 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { uniqBy } from 'lodash';
-import { Button, Checkbox, Message } from 'semantic-ui-react';
+import { Checkbox, Message } from 'semantic-ui-react';
 import { messages } from '@plone/volto/helpers';
-import { Icon, Toast, UniversalLink } from '@plone/volto/components';
+import { Toast, UniversalLink } from '@plone/volto/components';
 import {
   createRelations,
   deleteRelations,
   queryRelations,
   searchContent,
 } from '@plone/volto/actions';
-import add from '@plone/volto/icons/add.svg';
-import remove from '@plone/volto/icons/remove.svg';
 
 const ListingTemplate = ({
   relationtype,
@@ -247,7 +245,7 @@ const ListingTemplate = ({
     );
   }
 
-  const onSelectOptionHandler = (relation, item, selectedvalue, checked) => {
+  const onSelectOptionHandler = (relation, selectedvalue, checked) => {
     let source = selectedvalue.y;
     let target = selectedvalue.x;
     const relation_data = [
@@ -274,14 +272,12 @@ const ListingTemplate = ({
       });
   };
 
-  const onSelectAllHandler = (mtxoption, checked) => {
-    let elements = document.querySelectorAll(`div.checkbox_${mtxoption} input`);
+  const onSelectAllHandler = (target, items_ids, checked) => {
     let relation_data = [];
-    elements.forEach((element) => {
-      let identifier = element.name.split('_-_');
+    items_ids.forEach((el) => {
       relation_data.push({
-        source: identifier[1],
-        target: identifier[2],
+        source: el,
+        target: target,
         relation: relationtype,
       });
     });
@@ -320,30 +316,77 @@ const ListingTemplate = ({
       (items.length <= MAX) & (matrix_options.length > 0) &&
       items.length > 0 ? (
         <div className="administration_matrix">
-          <div className="label-options" key="label-options">
-            {matrix_options?.map((matrix_option) => (
-              <div
-                className="label-options-label inclined"
-                key={matrix_option.value}
-              >
-                <div>
-                  <UniversalLink
-                    href={matrix_option.url}
-                    className={
-                      matrix_option.review_state !== 'published'
-                        ? 'not-published'
-                        : ''
-                    }
+          <div className="label-options">
+            <div className="target-labels">
+              <div></div>
+              <div>
+                {matrix_options?.map((matrix_option) => (
+                  <div
+                    className="label-options-label inclined"
+                    id={`label-options-label-${matrix_option.value}`}
+                    key={matrix_option.value}
                   >
-                    <span className="label" title={matrix_option.value}>
-                      {matrix_option.label.length > 30
-                        ? matrix_option.label.slice(0, 27) + '...'
-                        : matrix_option.label}
-                    </span>
-                  </UniversalLink>
+                    <div>
+                      <UniversalLink
+                        href={matrix_option.url}
+                        className={
+                          matrix_option.review_state !== 'published'
+                            ? 'not-published'
+                            : ''
+                        }
+                        target="_blank"
+                      >
+                        <span className="label" title={matrix_option.label}>
+                          {matrix_option.label.length > 30
+                            ? matrix_option.label.slice(0, 27) + '...'
+                            : matrix_option.label}
+                        </span>
+                      </UniversalLink>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="listing-row selectall" key="selectall">
+              <div className="listing-item">
+                <div />
+                <div className="matrix_options">
+                  {!(
+                    relationtype === 'isReferencing' ||
+                    relationtype === 'iterate-working-copy' ||
+                    !editable
+                  ) ? (
+                    matrix_options?.map((matrix_option) => (
+                      <div
+                        key={matrix_option.value}
+                        title={
+                          intl.formatMessage(
+                            messages.createOrDeleteRelationsToTarget,
+                          ) + ` '${matrix_option.label}'`
+                        }
+                      >
+                        <Checkbox
+                          className="toggle-target"
+                          defaultChecked={false}
+                          onChange={(event, { checked }) =>
+                            onSelectAllHandler(
+                              matrix_option.value,
+                              items.map((el) => el.value),
+                              checked,
+                            )
+                          }
+                        />
+                      </div>
+                    ))
+                  ) : (
+                    <FormattedMessage
+                      id="Read only for this type of relation."
+                      defaultMessage="Read only for this type of relation."
+                    />
+                  )}
                 </div>
               </div>
-            ))}
+            </div>
           </div>
 
           <div className="items" key="items">
@@ -356,80 +399,15 @@ const ListingTemplate = ({
                   />
                 </Message>
               )}
-              <div className="listing-row selectall" key="selectall">
-                <div className="listing-item">
-                  <div />
-
-                  <div className="matrix_options">
-                    {relationtype !== 'isReferencing' ? (
-                      matrix_options?.map((matrix_option) => (
-                        <div key={matrix_option.value}>
-                          <Button
-                            icon
-                            basic
-                            onClick={() =>
-                              onSelectAllHandler(matrix_option.value, true)
-                            }
-                            className="add-button"
-                            aria-label={
-                              intl.formatMessage(
-                                messages.createRelationsToTarget,
-                              ) + ` '${matrix_option.label}'`
-                            }
-                            title={
-                              intl.formatMessage(
-                                messages.createRelationsToTarget,
-                              ) + ` '${matrix_option.label}'`
-                            }
-                          >
-                            <Icon
-                              name={add}
-                              size="10px"
-                              className="circled"
-                              color="unset"
-                            />
-                          </Button>
-                          <Button
-                            icon
-                            basic
-                            onClick={() =>
-                              onSelectAllHandler(matrix_option.value, false)
-                            }
-                            className="remove-button"
-                            aria-label={
-                              intl.formatMessage(
-                                messages.removeRelationsToTarget,
-                              ) + ` '${matrix_option.label}'`
-                            }
-                            title={
-                              intl.formatMessage(
-                                messages.removeRelationsToTarget,
-                              ) + ` '${matrix_option.label}'`
-                            }
-                          >
-                            <Icon
-                              name={remove}
-                              size="10px"
-                              className="circled"
-                              color="unset"
-                            />
-                          </Button>
-                        </div>
-                      ))
-                    ) : (
-                      <FormattedMessage
-                        id="Read only for this type of relation."
-                        defaultMessage="Read only for this type of relation."
-                      />
-                    )}
-                  </div>
-                </div>
-              </div>
               {items.map((item) => (
-                <div className="listing-row" key={item.id}>
+                <div
+                  className="listing-row"
+                  key={item.id}
+                  id={`source-row-${item.value}`}
+                >
                   <div className="listing-item" key={item['@id']}>
-                    <div className="item-title-container">
-                      <span title={item.value} className="item-title">
+                    <div>
+                      <span title={item.label} className="item-title">
                         <UniversalLink
                           href={item.url}
                           className={
@@ -437,6 +415,7 @@ const ListingTemplate = ({
                               ? 'not-published'
                               : ''
                           }
+                          target="_blank"
                         >
                           {item.label.length > 25
                             ? item.label.slice(0, 22) + '...'
@@ -449,7 +428,6 @@ const ListingTemplate = ({
                       {matrix_options?.map((matrix_option) => (
                         <React.Fragment key={matrix_option.value}>
                           <Checkbox
-                            name={`member_-_${item.value}_-_${matrix_option.value}`}
                             className={`checkbox_${matrix_option.value}`}
                             key={matrix_option.value}
                             title={matrix_option.title}
@@ -462,7 +440,6 @@ const ListingTemplate = ({
                             onChange={(event, { checked }) => {
                               onSelectOptionHandler(
                                 relationtype,
-                                item,
                                 { x: matrix_option.value, y: item.value },
                                 checked,
                               );

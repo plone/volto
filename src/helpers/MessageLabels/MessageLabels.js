@@ -280,13 +280,9 @@ export const messages = defineMessages({
     id: 'Search targets by title or path',
     defaultMessage: 'Search targets by title or path',
   },
-  createRelationsToTarget: {
-    id: 'Create relations to target',
-    defaultMessage: 'Create relations to target',
-  },
-  removeRelationsToTarget: {
-    id: 'Remove relations to target',
-    defaultMessage: 'Remove relations to target',
+  createOrDeleteRelationsToTarget: {
+    id: 'Create or delete relations to target',
+    defaultMessage: 'Create or delete relations to target',
   },
   relationName: {
     id: 'Relation name',

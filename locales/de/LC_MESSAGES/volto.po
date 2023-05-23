@@ -785,9 +785,9 @@ msgid "Copyright statement or other rights information on this item."
 msgstr "Informationen über die Urheber- und Nutzungsrechte an diesem Artikel."
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Create relations to target
-msgid "Create relations to target"
-msgstr "Erstelle Relationen zum ausgewählten Ziel"
+# defaultMessage: Create or delete relations to target
+msgid "Create or delete relations to target"
+msgstr "Relationen mit diesem Ziel erstellen oder löschen"
 
 #: components/manage/Toolbar/More
 # defaultMessage: Create working copy
@@ -2669,11 +2669,6 @@ msgstr "Element entfernen"
 # defaultMessage: Remove
 msgid "Remove recurrence"
 msgstr "Wiederkehrende Einstellung entfernen"
-
-#: helpers/MessageLabels/MessageLabels
-# defaultMessage: Remove relations to target
-msgid "Remove relations to target"
-msgstr "Lösche die Relationen zum ausgewählten Ziel"
 
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Remove selected

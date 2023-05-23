@@ -790,8 +790,8 @@ msgid "Copyright statement or other rights information on this item."
 msgstr "Información del copyright o otros derechos en este elemento."
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Create relations to target
-msgid "Create relations to target"
+# defaultMessage: Create or delete relations to target
+msgid "Create or delete relations to target"
 msgstr ""
 
 #: components/manage/Toolbar/More
@@ -2674,11 +2674,6 @@ msgstr "Eliminar elemento"
 # defaultMessage: Remove
 msgid "Remove recurrence"
 msgstr "Eliminar repetición"
-
-#: helpers/MessageLabels/MessageLabels
-# defaultMessage: Remove relations to target
-msgid "Remove relations to target"
-msgstr ""
 
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Remove selected

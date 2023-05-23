@@ -209,225 +209,227 @@ const RelationsMatrix = (props) => {
               </div>
               {relationtype ? (
                 <>
-                  <div className="controlpanel_search_y">
-                    <Header as="h4">
-                      <Header.Content>
-                        <FormattedMessage id="Source" defaultMessage="Source" />
-                      </Header.Content>
-                    </Header>
-                    <Form className="search_y" onSubmit={onReset}>
-                      <Form.Field>
-                        <Input
-                          name="SearchY"
-                          placeholder={intl.formatMessage(
-                            messages.searchRelationSource,
-                          )}
-                          onChange={onChangeSearchYs}
-                          id="y-search-input"
-                        />
-                        <Button.Group>
-                          <Button
-                            basic
-                            className="cancel"
-                            aria-label="cancel"
-                            onClick={(e) => {
-                              e.preventDefault();
-                              e.stopPropagation();
-                              document.querySelector(
-                                'input[name="SearchY"]',
-                              ).value = '';
-                              setQuery_source('');
-                            }}
-                          >
-                            <Icon name={clearSVG} size="24px" />
-                          </Button>
-                        </Button.Group>
-                      </Form.Field>
-                    </Form>
-                    <Form className="add_potential_sources" onSubmit={onReset}>
-                      <Form.Field>
-                        <Input
-                          name="showPotentialSources"
-                          type="url"
-                          value={potential_sources_path}
-                          placeholder={intl.formatMessage(
-                            messages.addPotentialSourcesPath,
-                          )}
-                          onChange={({ target }) =>
-                            onChangeShowPotentialSources(target.value)
-                          }
-                          id="potential-sources-path-input"
-                        />
-
-                        {potential_sources_path?.length > 0 ? (
-                          <Button.Group>
-                            <Button
-                              basic
-                              className="cancel"
-                              aria-label="clearUrlBrowser"
-                              onClick={(e) => {
-                                e.preventDefault();
-                                e.stopPropagation();
-                                clear_potential_sources_path();
-                              }}
-                            >
-                              <Icon name={clearSVG} size="24px" />
-                            </Button>
-                          </Button.Group>
-                        ) : (
-                          <Button.Group>
-                            <Button
-                              basic
-                              icon
-                              aria-label="openUrlBrowser"
-                              onClick={(e) => {
-                                e.preventDefault();
-                                e.stopPropagation();
-                                props.openObjectBrowser({
-                                  mode: 'link',
-                                  overlay: true,
-                                  onSelectItem: (url) => {
-                                    onChangeShowPotentialSources(url);
-                                  },
-                                });
-                              }}
-                            >
-                              <Icon name={navTreeSVG} size="24px" />
-                            </Button>
-                          </Button.Group>
-                        )}
-                      </Form.Field>
-                      <FormattedMessage
-                        id="Show potential sources. Not only objects that are source of some relation."
-                        defaultMessage="Show potential sources. Not only objects that are source of some relation."
-                      />
-                    </Form>
-                  </div>
-                  <div className="controlpanel_search_x">
-                    <Form className="search_x" onSubmit={onReset}>
+                  <div className="controlpanel_search_wrapper">
+                    <div className="controlpanel_search_y">
                       <Header as="h4">
                         <Header.Content>
-                          <FormattedMessage
-                            id="Target"
-                            defaultMessage="Target"
-                          />
+                          <FormattedMessage id="Source" defaultMessage="Source" />
                         </Header.Content>
                       </Header>
-                      <Form.Field>
-                        <Input
-                          name="SearchX"
-                          placeholder={intl.formatMessage(
-                            messages.searchRelationTarget,
-                          )}
-                          onChange={onChangeSearchXs}
-                          id="x-search-input"
-                        />
-                        <Button.Group>
-                          <Button
-                            basic
-                            className="cancel"
-                            aria-label="cancel"
-                            onClick={(e) => {
-                              e.preventDefault();
-                              e.stopPropagation();
-                              document.querySelector(
-                                'input[name="SearchX"]',
-                              ).value = '';
-                              setQuery_target('');
-                            }}
-                          >
-                            <Icon name={clearSVG} size="24px" />
-                          </Button>
-                        </Button.Group>
-                      </Form.Field>
-                    </Form>
-                    <Form className="add_potential_targets" onSubmit={onReset}>
-                      <Form.Field>
-                        <Input
-                          name="showPotentialTargets"
-                          type="url"
-                          value={potential_targets_path}
-                          placeholder={intl.formatMessage(
-                            messages.addPotentialTargetsPath,
-                          )}
-                          onChange={({ target }) =>
-                            onChangeShowPotentialTargets(target.value)
-                          }
-                          id="potential-targets-path-input"
-                        />
-
-                        {potential_targets_path?.length > 0 ? (
+                      <Form className="search_y" onSubmit={onReset}>
+                        <Form.Field>
+                          <Input
+                            name="SearchY"
+                            placeholder={intl.formatMessage(
+                              messages.searchRelationSource,
+                            )}
+                            onChange={onChangeSearchYs}
+                            id="y-search-input"
+                          />
                           <Button.Group>
                             <Button
                               basic
                               className="cancel"
-                              aria-label="clearUrlBrowser"
+                              aria-label="cancel"
                               onClick={(e) => {
                                 e.preventDefault();
                                 e.stopPropagation();
-                                clear_potential_targets_path();
+                                document.querySelector(
+                                  'input[name="SearchY"]',
+                                ).value = '';
+                                setQuery_source('');
                               }}
                             >
                               <Icon name={clearSVG} size="24px" />
                             </Button>
                           </Button.Group>
-                        ) : (
+                        </Form.Field>
+                      </Form>
+                      <Form className="add_potential_sources" onSubmit={onReset}>
+                        <Form.Field>
+                          <Input
+                            name="showPotentialSources"
+                            type="url"
+                            value={potential_sources_path}
+                            placeholder={intl.formatMessage(
+                              messages.addPotentialSourcesPath,
+                            )}
+                            onChange={({ target }) =>
+                              onChangeShowPotentialSources(target.value)
+                            }
+                            id="potential-sources-path-input"
+                          />
+                          {potential_sources_path?.length > 0 ? (
+                            <Button.Group>
+                              <Button
+                                basic
+                                className="cancel"
+                                aria-label="clearUrlBrowser"
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  e.stopPropagation();
+                                  clear_potential_sources_path();
+                                }}
+                              >
+                                <Icon name={clearSVG} size="24px" />
+                              </Button>
+                            </Button.Group>
+                          ) : (
+                            <Button.Group>
+                              <Button
+                                basic
+                                icon
+                                aria-label="openUrlBrowser"
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  e.stopPropagation();
+                                  props.openObjectBrowser({
+                                    mode: 'link',
+                                    overlay: true,
+                                    onSelectItem: (url) => {
+                                      onChangeShowPotentialSources(url);
+                                    },
+                                  });
+                                }}
+                              >
+                                <Icon name={navTreeSVG} size="24px" />
+                              </Button>
+                            </Button.Group>
+                          )}
+                        </Form.Field>
+                        <FormattedMessage
+                          id="Show potential sources. Not only objects that are source of some relation."
+                          defaultMessage="Show potential sources. Not only objects that are source of some relation."
+                        />
+                      </Form>
+                    </div>
+                    <div className="controlpanel_search_x">
+                      <Form className="search_x" onSubmit={onReset}>
+                        <Header as="h4">
+                          <Header.Content>
+                            <FormattedMessage
+                              id="Target"
+                              defaultMessage="Target"
+                            />
+                          </Header.Content>
+                        </Header>
+                        <Form.Field>
+                          <Input
+                            name="SearchX"
+                            placeholder={intl.formatMessage(
+                              messages.searchRelationTarget,
+                            )}
+                            onChange={onChangeSearchXs}
+                            id="x-search-input"
+                          />
                           <Button.Group>
                             <Button
                               basic
-                              icon
-                              aria-label="openUrlBrowser"
+                              className="cancel"
+                              aria-label="cancel"
                               onClick={(e) => {
                                 e.preventDefault();
                                 e.stopPropagation();
-                                props.openObjectBrowser({
-                                  mode: 'link',
-                                  overlay: true,
-                                  onSelectItem: (url) => {
-                                    onChangeShowPotentialTargets(url);
-                                  },
-                                });
+                                document.querySelector(
+                                  'input[name="SearchX"]',
+                                ).value = '';
+                                setQuery_target('');
                               }}
                             >
-                              <Icon name={navTreeSVG} size="24px" />
+                              <Icon name={clearSVG} size="24px" />
                             </Button>
                           </Button.Group>
-                        )}
-                      </Form.Field>
-                      <div className="foo">
-                        <FormattedMessage
-                          id="Show potential targets. Not only objects that are target of some relation."
-                          defaultMessage="Show potential targets. Not only objects that are target of some relation."
-                        />{' '}
-                        <Popup
-                          trigger={
-                            <a
-                              href="https://6.docs.plone.org/volto/recipes/widget.html#restricting-potential-targets"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              <Icon name={helpSVG} size="16px" />
-                            </a>
-                          }
-                        >
-                          <Popup.Header>Respect constraints</Popup.Header>
-                          <Popup.Content>
-                            <div>
-                              See docs.plone.org on how to respect constraints.
-                            </div>
-                          </Popup.Content>
-                        </Popup>
-                      </div>
-                    </Form>
+                        </Form.Field>
+                      </Form>
+                      <Form className="add_potential_targets" onSubmit={onReset}>
+                        <Form.Field>
+                          <Input
+                            name="showPotentialTargets"
+                            type="url"
+                            value={potential_targets_path}
+                            placeholder={intl.formatMessage(
+                              messages.addPotentialTargetsPath,
+                            )}
+                            onChange={({ target }) =>
+                              onChangeShowPotentialTargets(target.value)
+                            }
+                            id="potential-targets-path-input"
+                          />
+                          {potential_targets_path?.length > 0 ? (
+                            <Button.Group>
+                              <Button
+                                basic
+                                className="cancel"
+                                aria-label="clearUrlBrowser"
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  e.stopPropagation();
+                                  clear_potential_targets_path();
+                                }}
+                              >
+                                <Icon name={clearSVG} size="24px" />
+                              </Button>
+                            </Button.Group>
+                          ) : (
+                            <Button.Group>
+                              <Button
+                                basic
+                                icon
+                                aria-label="openUrlBrowser"
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  e.stopPropagation();
+                                  props.openObjectBrowser({
+                                    mode: 'link',
+                                    overlay: true,
+                                    onSelectItem: (url) => {
+                                      onChangeShowPotentialTargets(url);
+                                    },
+                                  });
+                                }}
+                              >
+                                <Icon name={navTreeSVG} size="24px" />
+                              </Button>
+                            </Button.Group>
+                          )}
+                        </Form.Field>
+                        <div className="foo">
+                          <FormattedMessage
+                            id="Show potential targets. Not only objects that are target of some relation."
+                            defaultMessage="Show potential targets. Not only objects that are target of some relation."
+                          />{' '}
+                          <Popup
+                            trigger={
+                              <a
+                                href="https://6.docs.plone.org/volto/recipes/widget.html#restricting-potential-targets"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                <Icon name={helpSVG} size="16px" />
+                              </a>
+                            }
+                          >
+                            <Popup.Header>Respect constraints</Popup.Header>
+                            <Popup.Content>
+                              <div>
+                                See docs.plone.org on how to respect constraints.
+                              </div>
+                            </Popup.Content>
+                          </Popup>
+                        </div>
+                      </Form>
+                    </div>
                   </div>
-                  <RelationsListing
-                    relationtype={relationtype}
-                    query_source={query_source}
-                    query_target={query_target}
-                    potential_targets_path={potential_targets_path}
-                    potential_sources_path={potential_sources_path}
-                    // target_filter={target_filter}
-                  />
+                  <div className="controlpanel_listing_wrapper">
+                    <RelationsListing
+                      relationtype={relationtype}
+                      query_source={query_source}
+                      query_target={query_target}
+                      potential_targets_path={potential_targets_path}
+                      potential_sources_path={potential_sources_path}
+                      // target_filter={target_filter}
+                    />
+                  </div>
                 </>
               ) : null}
             </div>
