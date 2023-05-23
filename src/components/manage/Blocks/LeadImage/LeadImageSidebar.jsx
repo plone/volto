@@ -110,10 +110,9 @@ const LeadImageSidebar = ({
             )}
             {!properties.image.data && (
               <Image
-                item={properties.image}
+                item={properties}
                 imageField="image"
                 alt={data.image_caption || properties.image_caption || ''}
-                loading="lazy"
                 responsive={true}
               />
             )}

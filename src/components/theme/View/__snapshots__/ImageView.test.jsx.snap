@@ -17,25 +17,20 @@ exports[`renders an image view component 1`] = `
   <a
     href="file:///preview.jpg"
   >
-    <picture
-      className="volto-image responsive"
-    >
-      <source
-        sizes="100vw"
-        srcSet={
-          Array [
-            "file:///preview.jpg 400w",
-          ]
+    <img
+      alt="Hello World!"
+      className="responsive"
+      fetchpriority="high"
+      height={400}
+      src="file:///preview.jpg"
+      srcSet="file:///preview.jpg 400w"
+      style={
+        Object {
+          "aspectRatio": "400 / 400",
         }
-      />
-      <img
-        alt="Hello World!"
-        height={400}
-        role="img"
-        src="file:///preview.jpg"
-        width={400}
-      />
-    </picture>
+      }
+      width={400}
+    />
     <figcaption>
       Size: 123 kB
         —  

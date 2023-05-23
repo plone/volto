@@ -12,9 +12,37 @@ Array [
   <div
     className="ui secondary attached segment sidebar-metadata-container"
   >
-    image
+    <div>
+      image
+      <button
+        className="ui basic button cancel"
+        onClick={[Function]}
+      >
+        <svg
+          className="icon"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": undefined,
+            }
+          }
+          onClick={null}
+          style={
+            Object {
+              "fill": "currentColor",
+              "height": "30px",
+              "width": "auto",
+            }
+          }
+          viewBox=""
+          xmlns=""
+        />
+      </button>
+    </div>
     <img
-      alt="alternate text"
+      alt="Image preview"
+      className="responsive"
+      decoding="async"
+      loading="lazy"
       src="image"
       style={
         Object {
@@ -32,14 +60,6 @@ Array [
       <div
         className="ui segment form attached"
       >
-        <div
-          className="mocked-url-widget"
-          id="mocked-field-url"
-        >
-          Source
-           - 
-          No description
-        </div>
         <div
           className="mocked-default-widget"
           id="mocked-field-alt"
