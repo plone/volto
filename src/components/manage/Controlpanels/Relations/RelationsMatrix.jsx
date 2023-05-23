@@ -447,12 +447,6 @@ const RelationsMatrix = (props) => {
           )}
         </Tab.Pane>
       ),
-      get pane() {
-        return this._pane;
-      },
-      set pane(value) {
-        this._pane = value;
-      },
     },
     {
       menuItem: intl.formatMessage(messages.fixRelations),
