@@ -2790,6 +2790,11 @@ msgstr "Guardar repetición"
 msgid "Saved"
 msgstr "Guardado"
 
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Scheduled
+msgid "Scheduled"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypesActions
 # defaultMessage: Schema
 msgid "Schema"

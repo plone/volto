@@ -8,6 +8,47 @@
 
 <!-- towncrier release notes start -->
 
+## 17.0.0-alpha.7 (2023-05-11)
+
+### Bugfix
+
+- Fix language negotiation for language codes that include a region (e.g. `pt-br`). @davisagli [#4644](https://github.com/plone/volto/issues/4644)
+
+
+## 17.0.0-alpha.6 (2023-05-11)
+
+### Feature
+
+- Changed control panel list to be fetched server-side not client-side
+  @JeffersonBledsoe [#3749](https://github.com/plone/volto/issues/3749)
+
+### Bugfix
+
+- Apply suggestion from browser for password field @lord2anil [#3990](https://github.com/plone/volto/issues/3990)
+- Open all accordion'd content in InlineForm by default, allow arbitrarily close any number of them. @sneridagh [#4178](https://github.com/plone/volto/issues/4178)
+- Fix duplicating listing block by removing block uid from blocks data. @ksuess [#4234](https://github.com/plone/volto/issues/4234)
+- The tabs for the add page was unresponsive on mobile devices. Fixed this by changing flex-wrap property. @sudhanshu1309 [#4506](https://github.com/plone/volto/issues/4506)
+- (fix):Object.normaliseMail: Cannot read properties of null @dobri1408 [#4558](https://github.com/plone/volto/issues/4558)
+- Update add-on control panel tranlsations: install -> activate. @ksuess [#4582](https://github.com/plone/volto/issues/4582)
+- Fix robot.txt - the sitemap link should respect x-forwarded headers @reebalazs [#4638](https://github.com/plone/volto/issues/4638)
+- Fix Move to top of folder ordering in folder content view by searching also @iFlameing [#4690](https://github.com/plone/volto/issues/4690)
+- Fix faulty D&D elements in ObjectBrowserList widget @sneridagh [#4703](https://github.com/plone/volto/issues/4703)
+- Fix fetching API paths with urlencoded characters in the querystring. @davisagli [#4718](https://github.com/plone/volto/issues/4718)
+
+### Internal
+
+- Change conditional checking to optional chaining for a theme icon @nilootpal [#4567](https://github.com/plone/volto/issues/4567)
+- Security upgrade for momentjs [#4715](https://github.com/plone/volto/issues/4715)
+- Upgrade to Plone 6.0.4 @sneridagh [#4743](https://github.com/plone/volto/issues/4743)
+
+### Documentation
+
+- Added documentation regarding the static middleware. @BhardwajAditya-github [#4518](https://github.com/plone/volto/issues/4518)
+- Use new URL `6.docs.plone.org`. @stevepiercy [#4726](https://github.com/plone/volto/issues/4726)
+- Synch stuff from `16.x.x` branch that should have been in `master` as well. @stevepiercy [#4728](https://github.com/plone/volto/issues/4728)
+- Fix link in Volto, remove from linkcheck ignore in Documentation. @stevepiercy [#4742](https://github.com/plone/volto/issues/4742)
+
+
 ## 17.0.0-alpha.5 (2023-04-14)
 
 ### Bugfix
@@ -159,6 +200,32 @@
   [erral] [#4310](https://github.com/plone/volto/issues/4310)
 - Fix English and MyST grammar and syntax from PR #4285 @stevepiercy [#4331](https://github.com/plone/volto/issues/4331)
 - Use a universal static path for both documentation and volto repos. @stevepiercy [#4376](https://github.com/plone/volto/issues/4376)
+
+
+## 16.20.6 (2023-05-12)
+
+### Bugfix
+
+- Fix language negotiation for language codes that include a region (e.g. `pt-br`). @davisagli [#4644](https://github.com/plone/volto/issues/4644)
+
+
+## 16.20.5 (2023-05-12)
+
+### Bugfix
+
+- Apply suggestion from browser for password field @lord2anil [#3990](https://github.com/plone/volto/issues/3990)
+- The tabs for the add page was unresponsive on mobile devices. Fixed this by changing flex-wrap property. @sudhanshu1309 [#4506](https://github.com/plone/volto/issues/4506)
+- (fix):Object.normaliseMail: Cannot read properties of null @dobri1408 [#4558](https://github.com/plone/volto/issues/4558)
+
+### Internal
+
+- Upgrade to Plone 6.0.4 @sneridagh [#4743](https://github.com/plone/volto/issues/4743)
+
+### Documentation
+
+- Added documentation regarding the static middleware. @BhardwajAditya-github [#4518](https://github.com/plone/volto/issues/4518)
+- Backport most documentation differences from `master` to `16.x.x`. @stevepiercy [#4727](https://github.com/plone/volto/issues/4727)
+- Fix link in Volto, remove from linkcheck ignore in Documentation. @stevepiercy [#4742](https://github.com/plone/volto/issues/4742)
 
 
 ## 16.20.4 (2023-04-20)
