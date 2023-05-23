@@ -394,8 +394,8 @@ const ListingTemplate = ({
               {!editable && (
                 <Message warning>
                   <FormattedMessage
-                    id="Relations are editable with plone.api >= 2.0.0."
-                    defaultMessage="Relations are editable with plone.api >= 2.0.0."
+                    id="Relations are editable with plone.api >= 2.0.3."
+                    defaultMessage="Relations are editable with plone.api >= 2.0.3."
                   />
                 </Message>
               )}

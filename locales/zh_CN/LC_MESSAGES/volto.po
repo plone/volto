@@ -2641,8 +2641,8 @@ msgid "Relations"
 msgstr ""
 
 #: components/manage/Controlpanels/Relations/RelationsListing
-# defaultMessage: Relations are editable with plone.api >= 2.0.0.
-msgid "Relations are editable with plone.api >= 2.0.0."
+# defaultMessage: Relations are editable with plone.api >= 2.0.3.
+msgid "Relations are editable with plone.api >= 2.0.3."
 msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
