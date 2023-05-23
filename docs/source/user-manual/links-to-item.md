@@ -19,7 +19,7 @@ For this situation, you can visit the {guilabel}`Links to item` page, which is a
 An item references another item by creating a hyperlink to this item, using the item in a block, or using it in the {guilabel}`Related Items` field.
 ```
 
-# Links to item view
+## {guilabel}`Links to item` view
 
 In the toolbar on the left side you can click on the item with the three horizontally-aligned dots (called {guilabel}`More Menu`).
 Click then on the item labeled {guilabel}`Links to item`.
