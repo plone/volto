@@ -110,7 +110,7 @@ const PersistentSlashMenu = ({ editor }) => {
 
   const [slashMenuSelected, setSlashMenuSelected] = React.useState(0);
 
-  const useAllowedBlocks = !isEmpty(allowedBlocks);
+  const hasAllowedBlocks  = !isEmpty(allowedBlocks);
   const slashCommand = data.plaintext
     ?.toLowerCase()
     .trim()
@@ -119,7 +119,7 @@ const PersistentSlashMenu = ({ editor }) => {
   const availableBlocks = React.useMemo(
     () =>
       filter(blocksConfig, (item) =>
-        useAllowedBlocks
+      hasAllowedBlocks
           ? allowedBlocks.includes(item.id)
           : typeof item.restricted === 'function'
           ? !item.restricted({ properties, block: item })
@@ -150,7 +150,8 @@ const PersistentSlashMenu = ({ editor }) => {
       intl,
       properties,
       slashCommand,
-      useAllowedBlocks,
+      hasAllowedBlocks
+,
     ],
   );
 
