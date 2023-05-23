@@ -30,7 +30,7 @@ You can see now a table displaying all links to the current item.
 :alt: A panel captioned with "Links to My Summer Vacation - Day 2". A table with two columns (first column labeled with "linked by this item", second column labeled with "review state"). In the row appears a link titled "Links to My Summer Vacation - Day 1", because it is referencing the current item.
 ```
 
-For editors this view gives insight, if those links are still relevant or not.
+For editors, this view gives insight to whether those links are still relevant.
 On second sight, it also helps to prevent potential broken links.
 
 For example, when you try to delete this page with other pages linking to it, you will get a warning that this will cause broken links that lead to a "not found" error page.
