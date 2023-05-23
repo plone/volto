@@ -125,6 +125,7 @@ const PersistentSlashMenu = ({ editor }) => {
           ? !item.restricted({ properties, block: item })
           : !item.restricted,
       )
+        .filter((block) => Boolean(block.title && block.id))
         .filter((block) => {
           // typed text is a substring of the title or id
           const title = translateBlockTitle(block, intl).toLowerCase();
