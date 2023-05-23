@@ -213,7 +213,10 @@ const RelationsMatrix = (props) => {
                     <div className="controlpanel_search_y">
                       <Header as="h4">
                         <Header.Content>
-                          <FormattedMessage id="Source" defaultMessage="Source" />
+                          <FormattedMessage
+                            id="Source"
+                            defaultMessage="Source"
+                          />
                         </Header.Content>
                       </Header>
                       <Form className="search_y" onSubmit={onReset}>
@@ -245,7 +248,10 @@ const RelationsMatrix = (props) => {
                           </Button.Group>
                         </Form.Field>
                       </Form>
-                      <Form className="add_potential_sources" onSubmit={onReset}>
+                      <Form
+                        className="add_potential_sources"
+                        onSubmit={onReset}
+                      >
                         <Form.Field>
                           <Input
                             name="showPotentialSources"
@@ -341,7 +347,10 @@ const RelationsMatrix = (props) => {
                           </Button.Group>
                         </Form.Field>
                       </Form>
-                      <Form className="add_potential_targets" onSubmit={onReset}>
+                      <Form
+                        className="add_potential_targets"
+                        onSubmit={onReset}
+                      >
                         <Form.Field>
                           <Input
                             name="showPotentialTargets"
@@ -412,7 +421,8 @@ const RelationsMatrix = (props) => {
                             <Popup.Header>Respect constraints</Popup.Header>
                             <Popup.Content>
                               <div>
-                                See docs.plone.org on how to respect constraints.
+                                See docs.plone.org on how to respect
+                                constraints.
                               </div>
                             </Popup.Content>
                           </Popup>
@@ -427,7 +437,6 @@ const RelationsMatrix = (props) => {
                       query_target={query_target}
                       potential_targets_path={potential_targets_path}
                       potential_sources_path={potential_sources_path}
-                      // target_filter={target_filter}
                     />
                   </div>
                 </>
@@ -438,6 +447,12 @@ const RelationsMatrix = (props) => {
           )}
         </Tab.Pane>
       ),
+      get pane() {
+        return this._pane;
+      },
+      set pane(value) {
+        this._pane = value;
+      },
     },
     {
       menuItem: intl.formatMessage(messages.fixRelations),
