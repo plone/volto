@@ -1249,9 +1249,9 @@ msgstr "Geben Sie Ihre E-Mail zur Verifikation ein."
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Enter your new password. Minimum 5 characters.
-msgid "Enter your new password. Minimum 5 characters."
-msgstr "Geben Sie ihr neues Passwort ein. Mindestens 5 Zeichen."
+# defaultMessage: Enter your new password. Minimum 8 characters.
+msgid "Enter your new password. Minimum 8 characters."
+msgstr "Geben Sie ihr neues Passwort ein. Mindestens 8 Zeichen."
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Enter your username for verification.
