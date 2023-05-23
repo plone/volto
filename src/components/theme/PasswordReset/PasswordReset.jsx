@@ -227,7 +227,9 @@ class PasswordReset extends Component {
       );
     }
     if (this.props.token) {
-      const errmsg = (this.props.error) ? this.props.error.response.body.error : null;
+      const errmsg = this.props.error
+        ? this.props.error.response.body.error
+        : null;
       return (
         <div id="page-password-reset">
           <Helmet
