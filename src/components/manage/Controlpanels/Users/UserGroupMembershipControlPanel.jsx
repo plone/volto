@@ -63,7 +63,7 @@ const UserGroupMembershipPanel = () => {
 
   return (
     <>
-      <Container className="users-control-panel">
+      <div className="users-control-panel">
         <Helmet title={intl.formatMessage(messages.usergroupmemberbership)} />
         <Segment.Group raised>
           <Segment className="primary">
@@ -106,7 +106,7 @@ const UserGroupMembershipPanel = () => {
             </Segment>
           )}
         </Segment.Group>
-      </Container>
+      </div>
 
       {__CLIENT__ && (
         <Portal node={document.getElementById('toolbar')}>
