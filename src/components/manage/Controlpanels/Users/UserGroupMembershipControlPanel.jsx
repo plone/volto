@@ -9,7 +9,7 @@ import { useHistory } from 'react-router';
 import { Link, useLocation } from 'react-router-dom';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
-import { Container, Segment } from 'semantic-ui-react';
+import { Segment } from 'semantic-ui-react';
 import { Helmet, messages } from '@plone/volto/helpers';
 import {
   getControlpanel,
@@ -63,7 +63,7 @@ const UserGroupMembershipPanel = () => {
 
   return (
     <>
-      <Container className="users-control-panel">
+      <div className="users-control-panel">
         <Helmet title={intl.formatMessage(messages.usergroupmemberbership)} />
         <Segment.Group raised>
           <Segment className="primary">
@@ -106,7 +106,7 @@ const UserGroupMembershipPanel = () => {
             </Segment>
           )}
         </Segment.Group>
-      </Container>
+      </div>
 
       {__CLIENT__ && (
         <Portal node={document.getElementById('toolbar')}>

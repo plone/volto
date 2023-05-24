@@ -1931,7 +1931,9 @@ class Contents extends Component {
                                     <Menu.Header
                                       content={this.props.intl.formatMessage(
                                         messages.selected,
-                                        { count: this.state.selected.length },
+                                        {
+                                          count: this.state.selected.length,
+                                        },
                                       )}
                                     />
                                     <Input
