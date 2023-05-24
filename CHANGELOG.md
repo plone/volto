@@ -8,6 +8,24 @@
 
 <!-- towncrier release notes start -->
 
+## 16.20.7 (2023-05-24)
+
+### Bugfix
+
+- Fixed the issue "shouldn't use a hook like function name for a variable" @Kaku-g [#4693](https://github.com/plone/volto/issues/4693)
+- Fix to not update breadrumbs, navigation, actions, and types when content is fetched as a subrequest and apiExpanders includes these components. @davisagli [#4760](https://github.com/plone/volto/issues/4760)
+- Fix bug where editors could not see their own content in the Contents view if it was expired or has a future effective date. @davisagli [#4764](https://github.com/plone/volto/issues/4764)
+- Fix bug showing logs at the browsers when richtext widget is use @claytonc [#4780](https://github.com/plone/volto/issues/4780)
+- Add guard in case of malformed blocks are present (at least id and title should be present) @sneridagh [#4802](https://github.com/plone/volto/issues/4802)
+- Fix html tag lang attribute in SSR @sneridagh [#4803](https://github.com/plone/volto/issues/4803)
+- Add newest supported languages to `Language` constants list @sneridagh [#4811](https://github.com/plone/volto/issues/4811)
+
+### Internal
+
+- Remove max_line_length from .editorconfig @pnicolli [#4776](https://github.com/plone/volto/issues/4776)
+- Fix unannounced breaking change in cypress-io/github-action @sneridagh [#4795](https://github.com/plone/volto/issues/4795)
+
+
 ## 16.20.6 (2023-05-12)
 
 ### Bugfix

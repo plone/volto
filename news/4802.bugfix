@@ -1,1 +1,0 @@
-Add guard in case of malformed blocks are present (at least id and title should be present) @sneridagh
