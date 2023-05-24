@@ -1212,9 +1212,18 @@ class Contents extends Component {
                                     ),
                                     variation: (
                                       <span>
-                                        {this.state.containedItemsToDelete === 1
-                                          ? 'item'
-                                          : 'items'}
+                                        {this.state.containedItemsToDelete ===
+                                        1 ? (
+                                          <FormattedMessage
+                                            id="item"
+                                            defaultMessage="item"
+                                          />
+                                        ) : (
+                                          <FormattedMessage
+                                            id="items"
+                                            defaultMessage="items"
+                                          />
+                                        )}
                                       </span>
                                     ),
                                   }}
@@ -1235,9 +1244,18 @@ class Contents extends Component {
                                         ),
                                         variation: (
                                           <span>
-                                            {this.state.brokenReferences === 1
-                                              ? 'reference'
-                                              : 'references'}
+                                            {this.state.brokenReferences ===
+                                            1 ? (
+                                              <FormattedMessage
+                                                id="reference"
+                                                defaultMessage="reference"
+                                              />
+                                            ) : (
+                                              <FormattedMessage
+                                                id="references"
+                                                defaultMessage="references"
+                                              />
+                                            )}
                                           </span>
                                         ),
                                       }}
@@ -1262,9 +1280,18 @@ class Contents extends Component {
                                         ),
                                         variation: (
                                           <span>
-                                            {this.state.brokenReferences === 1
-                                              ? 'reference'
-                                              : 'references'}
+                                            {this.state.brokenReferences ===
+                                            1 ? (
+                                              <FormattedMessage
+                                                id="reference"
+                                                defaultMessage="reference"
+                                              />
+                                            ) : (
+                                              <FormattedMessage
+                                                id="references"
+                                                defaultMessage="references"
+                                              />
+                                            )}
                                           </span>
                                         ),
                                       }}
@@ -1288,9 +1315,18 @@ class Contents extends Component {
                                   ),
                                   variation: (
                                     <span>
-                                      {this.state.containedItemsToDelete === 1
-                                        ? 'item'
-                                        : 'items'}
+                                      {this.state.containedItemsToDelete ===
+                                      1 ? (
+                                        <FormattedMessage
+                                          id="item"
+                                          defaultMessage="item"
+                                        />
+                                      ) : (
+                                        <FormattedMessage
+                                          id="items"
+                                          defaultMessage="items"
+                                        />
+                                      )}
                                     </span>
                                   ),
                                 }}
@@ -1313,16 +1349,27 @@ class Contents extends Component {
                                       ),
                                       variation: (
                                         <span>
-                                          {this.state.brokenReferences === 1
-                                            ? 'reference'
-                                            : 'references'}
+                                          {this.state.brokenReferences === 1 ? (
+                                            <FormattedMessage
+                                              id="reference"
+                                              defaultMessage="reference"
+                                            />
+                                          ) : (
+                                            <FormattedMessage
+                                              id="references"
+                                              defaultMessage="references"
+                                            />
+                                          )}
                                         </span>
                                       ),
                                     }}
                                   />
                                   <div className="broken-links-list-link-wrapper">
                                     <a href={this.state.brokenLinksList}>
-                                      View broken links list
+                                      <FormattedMessage
+                                        id="View broken links list"
+                                        defaultMessage="View broken links list"
+                                      />
                                     </a>
                                   </div>
                                 </>
@@ -1343,16 +1390,27 @@ class Contents extends Component {
                                   ),
                                   variation: (
                                     <span>
-                                      {this.state.brokenReferences === 1
-                                        ? 'reference'
-                                        : 'references'}
+                                      {this.state.brokenReferences === 1 ? (
+                                        <FormattedMessage
+                                          id="reference"
+                                          defaultMessage="reference"
+                                        />
+                                      ) : (
+                                        <FormattedMessage
+                                          id="references"
+                                          defaultMessage="references"
+                                        />
+                                      )}
                                     </span>
                                   ),
                                 }}
                               />
                               <div className="broken-links-list-link-wrapper">
                                 <a href={this.state.brokenLinksList}>
-                                  View broken links list
+                                  <FormattedMessage
+                                    id="View broken links list"
+                                    defaultMessage="View broken links list"
+                                  />
                                 </a>
                               </div>
                             </>

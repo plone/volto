@@ -3845,6 +3845,11 @@ msgstr "URL de la vidéo"
 msgid "View"
 msgstr "Vue"
 
+#: components/manage/Contents/Contents
+# defaultMessage: View broken links list
+msgid "View broken links list"
+msgstr ""
+
 #: components/manage/History/History
 # defaultMessage: View changes
 msgid "View changes"
@@ -4210,6 +4215,16 @@ msgstr "Le champ doit être un entier"
 msgid "intranet"
 msgstr "Intranet"
 
+#: components/manage/Contents/Contents
+# defaultMessage: item
+msgid "item"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: items
+msgid "items"
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: My email is
 msgid "label_my_email_is"
@@ -4328,6 +4343,16 @@ msgstr "Publié"
 # defaultMessage: Select…
 msgid "querystring-widget-select"
 msgstr "Sélectionnez…"
+
+#: components/manage/Contents/Contents
+# defaultMessage: reference
+msgid "reference"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: references
+msgid "references"
+msgstr ""
 
 #: components/theme/Search/Search
 # defaultMessage: results

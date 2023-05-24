@@ -3828,6 +3828,11 @@ msgstr "URL-ul video"
 msgid "View"
 msgstr "Vizualizare"
 
+#: components/manage/Contents/Contents
+# defaultMessage: View broken links list
+msgid "View broken links list"
+msgstr ""
+
 #: components/manage/History/History
 # defaultMessage: View changes
 msgid "View changes"
@@ -4193,6 +4198,16 @@ msgstr "număr întreg"
 msgid "intranet"
 msgstr "intranet"
 
+#: components/manage/Contents/Contents
+# defaultMessage: item
+msgid "item"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: items
+msgid "items"
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: My email is
 msgid "label_my_email_is"
@@ -4311,6 +4326,16 @@ msgstr "publicat"
 # defaultMessage: Select…
 msgid "querystring-widget-select"
 msgstr "querystring-widget-select"
+
+#: components/manage/Contents/Contents
+# defaultMessage: reference
+msgid "reference"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: references
+msgid "references"
+msgstr ""
 
 #: components/theme/Search/Search
 # defaultMessage: results
