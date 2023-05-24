@@ -1,0 +1,1 @@
+Turn ShortcutListing and MarkdownIntroduction of text editor into overridable components by retrieving them from component registry. @ksuess

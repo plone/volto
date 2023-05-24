@@ -24,8 +24,8 @@ import {
 import { Transforms } from 'slate';
 
 import PersistentSlashMenu from './SlashMenu';
-import ShortcutListing from './ShortcutListing';
-import MarkdownIntroduction from './MarkdownIntroduction';
+import ShortcutListingOriginal from './ShortcutListing';
+import MarkdownIntroductionOriginal from './MarkdownIntroduction';
 import { handleKey } from './keyboard';
 import TextBlockSchema from './schema';
 
@@ -188,6 +188,13 @@ export const DefaultTextBlockEditor = (props) => {
     threshold: 0,
     rootMargin: '0px 0px 200px 0px',
   });
+
+  const ShortcutListing =
+    config.getComponent({ name: 'TextBlockEditor.ShortcutListing' })
+      .component || ShortcutListingOriginal;
+  const MarkdownIntroduction =
+    config.getComponent({ name: 'TextBlockEditor.MarkdownIntroduction' })
+      .component || MarkdownIntroductionOriginal;
 
   const handleFocus = React.useCallback(() => {
     if (!selected) {
