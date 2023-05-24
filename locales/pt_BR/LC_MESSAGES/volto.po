@@ -2789,6 +2789,11 @@ msgstr "Salvar a recorrência"
 msgid "Saved"
 msgstr "Salvo"
 
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Scheduled
+msgid "Scheduled"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypesActions
 # defaultMessage: Schema
 msgid "Schema"

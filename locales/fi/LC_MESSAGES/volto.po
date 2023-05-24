@@ -2790,6 +2790,11 @@ msgstr "Tallenna toistuminen"
 msgid "Saved"
 msgstr "Tallennettu"
 
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Scheduled
+msgid "Scheduled"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypesActions
 # defaultMessage: Schema
 msgid "Schema"
