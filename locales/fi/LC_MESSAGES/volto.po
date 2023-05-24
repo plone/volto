@@ -95,7 +95,7 @@ msgid "Add (object list)"
 msgstr "Lisää (objektilista)"
 
 #: components/manage/Controlpanels/AddonsControlpanel
-# defaultMessage: To make new add-ons show up here, add them to your buildout configuration, run buildout, and restart the server process. For detailed instructions see
+# defaultMessage: To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see
 msgid "Add Addons"
 msgstr "Lisää laajennoksia"
 
@@ -298,6 +298,7 @@ msgstr "Alias on lisätty"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/schema
+#: components/manage/Blocks/Teaser/schema
 #: components/manage/Blocks/Video/schema
 # defaultMessage: Alignment
 msgid "Alignment"
@@ -464,6 +465,11 @@ msgstr "Tarkista, että caps lock ei ole päällä. Sekä sähköpostiosoitteess
 # defaultMessage: Breadcrumbs
 msgid "Breadcrumbs"
 msgstr "Leivänmurut"
+
+#: components/manage/Controlpanels/Relations/BrokenRelations
+# defaultMessage: Broken relations
+msgid "Broken relations"
+msgstr ""
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/ContentsUploadModal
@@ -783,6 +789,11 @@ msgstr "Tekijänoikeudet"
 msgid "Copyright statement or other rights information on this item."
 msgstr "Tekijänoikeuslauseke tai muu sisällön tekijänoikeuksia kuvaava tieto."
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Create or delete relations to target
+msgid "Create or delete relations to target"
+msgstr ""
+
 #: components/manage/Toolbar/More
 # defaultMessage: Create working copy
 msgid "Create working copy"
@@ -980,6 +991,7 @@ msgid "Descending"
 msgstr "Laskeva"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Teaser/schema
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -1401,6 +1413,11 @@ msgstr "Tiedostonäkymä"
 msgid "Filename"
 msgstr "Tiedostonimi"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Filter
+msgid "Filter"
+msgstr ""
+
 #: components/manage/Controlpanels/Rules/Rules
 # defaultMessage: Filter Rules:
 msgid "Filter Rules:"
@@ -1425,6 +1442,11 @@ msgstr "Suodattimet…"
 # defaultMessage: First
 msgid "First"
 msgstr "Ensimmäinen"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Fix relations
+msgid "Fix relations"
+msgstr ""
 
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Fixed width columns
@@ -1630,6 +1652,11 @@ msgstr "Kuva"
 msgid "Image gallery"
 msgstr "Kuvagalleria"
 
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Image override
+msgid "Image override"
+msgstr ""
+
 #: components/manage/Blocks/Image/schema
 # defaultMessage: Image size
 msgid "Image size"
@@ -1641,7 +1668,7 @@ msgid "Image view"
 msgstr "Kuvanäkymä"
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
-# defaultMessage: Include this occurence
+# defaultMessage: Include this occurrence
 msgid "Include this occurence"
 msgstr "Sisällytä tämä päivä"
 
@@ -1687,6 +1714,11 @@ msgstr "Lisää rivi valinnan jälkeen"
 # defaultMessage: Insert row before
 msgid "Insert row before"
 msgstr "Lisää rivi ennen valintaa"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Inspect relations
+msgid "Inspect relations"
+msgstr ""
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Install
@@ -1740,7 +1772,7 @@ msgid "Item batch size"
 msgstr "Sivun koko"
 
 #: components/manage/Contents/Contents
-# defaultMessage: Item succesfully moved.
+# defaultMessage: Item successfully moved.
 msgid "Item succesfully moved."
 msgstr "Sisällön siirto onnistui."
 
@@ -1975,6 +2007,11 @@ msgstr "Manuaalinen"
 msgid "Manually or automatically added?"
 msgstr "Manuaalisesti vai automaattisesti lisätty?"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Many relations found. Please search.
+msgid "Many relations found. Please search."
+msgstr ""
+
 #: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Maps/schema
 # defaultMessage: Maps
@@ -2093,7 +2130,7 @@ msgid "My email is"
 msgstr "Sähköpostiosoitteeni on"
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: My username is
+# defaultMessage: My user name is
 msgid "My username is"
 msgstr "Käyttäjätunnukseni on"
 
@@ -2166,6 +2203,11 @@ msgstr "Videota ei valittu"
 msgid "No addons found"
 msgstr "Lisäosia ei löytynyt"
 
+#: components/manage/Controlpanels/Relations/RelationsMatrix
+# defaultMessage: No broken relations found.
+msgid "No broken relations found."
+msgstr ""
+
 #: components/theme/RequestTimeout/RequestTimeout
 # defaultMessage: There is no connection to the server, due to a timeout o no network connection.
 msgid "No connection to the server"
@@ -2185,6 +2227,11 @@ msgstr "Sisällöstä puuttuu nostokuva"
 # defaultMessage: No image set in image content field
 msgid "No image set in image content field"
 msgstr "Kuva puuttuu"
+
+#: components/manage/Blocks/Listing/GalleryNoResultsComponent
+# defaultMessage: No images found.
+msgid "No images found."
+msgstr ""
 
 #: components/manage/Blocks/Listing/ListingBody
 # defaultMessage: No items found in this container.
@@ -2214,13 +2261,18 @@ msgstr "Toistumista ei ole määritetty"
 msgid "No options"
 msgstr "Ei vaihtoehtoja"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: No relation found
+msgid "No relation found"
+msgstr ""
+
 #: components/manage/BlockChooser/BlockChooser
 #: components/theme/Search/Search
 # defaultMessage: No results found
 msgid "No results found"
 msgstr "Yhtään tulosta ei löytynyt"
 
-#: components/manage/Blocks/Listing/ListingBody
+#: components/manage/Blocks/Listing/DefaultNoResultsComponent
 #: components/manage/Widgets/ReferenceWidget
 # defaultMessage: No results found.
 msgid "No results found."
@@ -2299,6 +2351,7 @@ msgstr "Ainostaan pienet kirjaimet (a-z), numerot (0-9) ja merkit "-", "_", ja "
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Teaser/schema
 # defaultMessage: Open in a new tab
 msgid "Open in a new tab"
 msgstr "Avaa uudella välilehdellä"
@@ -2393,6 +2446,11 @@ msgstr "Omat työkalut"
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
 msgstr "Tämän sisällön tuottamiseen osallistuneet käyttäjät. Syötä Yksi käyttäjätunus per rivi. Syötä ensisijainen tekijä ensimmäisenä."
 
+#: components/manage/Blocks/Teaser/DefaultBody
+# defaultMessage: Please choose an existing content as source for this element
+msgid "Please choose an existing content as source for this element"
+msgstr ""
+
 #: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Please continue with the upgrade.
 msgid "Please continue with the upgrade."
@@ -2427,6 +2485,11 @@ msgstr "Etsi käyttäjiä tai käytä suodattimia."
 # defaultMessage: Please upgrade to plone.restapi >= 8.24.0.
 msgid "Please upgrade to plone.restapi >= 8.24.0."
 msgstr "Päivitä plone.restapi"
+
+#: components/manage/Controlpanels/Relations/Relations
+# defaultMessage: Please upgrade to plone.restapi >= 8.35.3.
+msgid "Please upgrade to plone.restapi >= 8.35.3."
+msgstr ""
 
 #: components/theme/Footer/Footer
 # defaultMessage: Plone Foundation
@@ -2522,6 +2585,11 @@ msgstr "Syötä salasana uudelleen. Syötettyjen salasanojen tulee olla identtis
 msgid "Read More…"
 msgstr "Lue lisää…"
 
+#: components/manage/Controlpanels/Relations/RelationsListing
+# defaultMessage: Read only for this type of relation.
+msgid "Read only for this type of relation."
+msgstr ""
+
 #: components/manage/Contents/Contents
 # defaultMessage: Rearrange items by…
 msgid "Rearrange items by…"
@@ -2563,6 +2631,29 @@ msgstr "Rekisteröidy"
 # defaultMessage: Registration form
 msgid "Registration form"
 msgstr "Rekisteröitymislomake"
+
+#: components/manage/Controlpanels/Relations/RelationsMatrix
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Relation
+msgid "Relation name"
+msgstr ""
+
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/Relations/Relations
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Relations
+msgid "Relations"
+msgstr ""
+
+#: components/manage/Controlpanels/Relations/RelationsListing
+# defaultMessage: Relations are editable with plone.api >= 2.0.3.
+msgid "Relations are editable with plone.api >= 2.0.3."
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Relations updated
+msgid "Relations updated"
+msgstr ""
 
 #: components/theme/Search/Search
 # defaultMessage: Relevance
@@ -2662,6 +2753,11 @@ msgstr "Pakollista tietoa puuttuu."
 # defaultMessage: Reset title
 msgid "Reset term title"
 msgstr "Tyhjennä termin otsikko"
+
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: Reset the block
+msgid "Reset the block"
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Results limit
@@ -2767,6 +2863,11 @@ msgstr "Tallenna toistuminen"
 msgid "Saved"
 msgstr "Tallennettu"
 
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Scheduled
+msgid "Scheduled"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypesActions
 # defaultMessage: Schema
 msgid "Schema"
@@ -2841,6 +2942,16 @@ msgid "Search results for {term}"
 msgstr "Hakutulokset: {term}"
 
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Search sources by title or path
+msgid "Search sources by title or path"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Search targets by title or path
+msgid "Search targets by title or path"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Search users…
 msgid "Search users…"
 msgstr "Etsi käyttäjiä…"
@@ -2863,6 +2974,7 @@ msgstr "Osion otsikko"
 #: components/manage/Controlpanels/Aliases
 #: components/manage/Rules/Rules
 #: components/manage/Sidebar/ObjectBrowserNav
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Select
 msgid "Select"
 msgstr "Valitse"
@@ -2877,10 +2989,20 @@ msgstr "Valitse toistumiseen lisättävä päivä"
 msgid "Select columns to show"
 msgstr "Näytettävät sarakkeet"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Select relation
+msgid "Select relation"
+msgstr ""
+
 #: components/manage/Contents/ContentsWorkflowModal
 # defaultMessage: Select the transition to be used for modifying the items state.
 msgid "Select the transition to be used for modifying the items state."
 msgstr "Valitse tilasiirtymä, jolla sisällön julkisuutta muutetaan."
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Selected
+msgid "Selected"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 # defaultMessage: Selected dates
@@ -2986,6 +3108,16 @@ msgstr "Näytä käyttäjäryhmät alapuolella"
 msgid "Show item"
 msgstr "Näytä kohde"
 
+#: components/manage/Controlpanels/Relations/RelationsMatrix
+# defaultMessage: Show potential sources. Not only objects that are source of some relation.
+msgid "Show potential sources. Not only objects that are source of some relation."
+msgstr ""
+
+#: components/manage/Controlpanels/Relations/RelationsMatrix
+# defaultMessage: Show potential targets. Not only objects that are target of some relation.
+msgid "Show potential targets. Not only objects that are target of some relation."
+msgstr ""
+
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Show search button?
 msgid "Show search button?"
@@ -3053,6 +3185,11 @@ msgstr "Koko: {size}"
 msgid "Small"
 msgstr "Pieni"
 
+#: components/manage/Controlpanels/Relations/Relations
+# defaultMessage: Some relations are broken. Please fix.
+msgid "Some relations are broken. Please fix."
+msgstr ""
+
 #: error
 # defaultMessage: Sorry, something went wrong with your request
 msgid "Sorry, something went wrong with your request"
@@ -3092,6 +3229,7 @@ msgstr "Lajiteltu"
 
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Blocks/Image/schema
+#: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: Source
 msgid "Source"
 msgstr "Lähde"
@@ -3233,7 +3371,9 @@ msgstr "Lisättävät tagit"
 msgid "Tags to remove"
 msgstr "Poistettavat tagit"
 
+#: components/manage/Blocks/Teaser/schema
 #: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: Target
 msgid "Target"
 msgstr "Kohde"
@@ -3257,6 +3397,11 @@ msgstr "Välimuistin tavoitekoko olioiden määrässä"
 # defaultMessage: Target url path must start with a slash.
 msgid "Target url path must start with a slash."
 msgstr "Kohdeosoitteen tulee alkaa kauttaviivalla."
+
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Teaser
+msgid "Teaser"
+msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Text
@@ -3420,6 +3565,7 @@ msgid "Time"
 msgstr "Aika"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Teaser/schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
@@ -3447,6 +3593,11 @@ msgstr "Aktiivisten ja ei-aktiivisten kohteiden määrä"
 # defaultMessage: Total comments
 msgid "Total comments"
 msgstr "Kommentteja"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Total items to be deleted:
+msgid "Total items to be deleted:"
+msgstr ""
 
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Total number of objects in each cache
@@ -3686,6 +3837,7 @@ msgid "Uploading files"
 msgstr "Lähetetään tiedostoja"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Blocks/Image/Edit
 # defaultMessage: Uploading image
 msgid "Uploading image"
 msgstr "Kuvaa ladataan"
@@ -3967,6 +4119,11 @@ msgstr "Liitettävä sisältö ei sopinut tänne"
 msgid "You have been logged out from the site."
 msgstr "Olet kirjautunut ulos sivustolta."
 
+#: components/manage/Controlpanels/Relations/Relations
+# defaultMessage: You have not the required permission for this control panel.
+msgid "You have not the required permission for this control panel."
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Your email is required for reset your password.
 msgid "Your email is required for reset your password."
@@ -4118,6 +4275,16 @@ msgstr "Milloin"
 msgid "event_where"
 msgstr "Missä"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: flush intIds and rebuild relations
+msgid "flush intIds and rebuild relations"
+msgstr ""
+
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Head title
+msgid "head_title"
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Password reset confirmation sent
 msgid "heading_sent_password"
@@ -4154,7 +4321,7 @@ msgid "label_my_email_is"
 msgstr "Sähköpostiosoitteeni"
 
 #: components/theme/PasswordReset/RequestPasswordReset
-# defaultMessage: My username is
+# defaultMessage: My user name is
 msgid "label_my_username_is"
 msgstr "Käyttäjätunnukseni"
 
@@ -4214,6 +4381,11 @@ msgstr "minimi"
 msgid "mostUsed"
 msgstr "käytetyimmät"
 
+#: components/manage/Controlpanels/Relations/RelationsListing
+# defaultMessage: Found {sources} sources and {targets} targets. Narrow down to {max}!
+msgid "narrowDownRelations"
+msgstr ""
+
 #: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
 #: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
 #: components/theme/Widgets/BooleanWidget
@@ -4266,6 +4438,11 @@ msgstr "julkaistu"
 # defaultMessage: Select…
 msgid "querystring-widget-select"
 msgstr "Valitse..."
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: rebuild relations
+msgid "rebuild relations"
+msgstr ""
 
 #: components/theme/Search/Search
 # defaultMessage: results
@@ -4467,10 +4644,20 @@ msgstr "Siirry navigointiin"
 msgid "sort"
 msgstr "järjestys"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: sources path
+msgid "sources path"
+msgstr ""
+
 #: config/Blocks
 # defaultMessage: Table
 msgid "table"
 msgstr "taulukko"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: target path
+msgid "target path"
+msgstr ""
 
 #: config/Blocks
 # defaultMessage: Text
