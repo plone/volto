@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2023-05-24T08:25:50.140Z\n"
+"POT-Creation-Date: 2023-05-25T07:51:49.228Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -4471,6 +4471,11 @@ msgstr ""
 msgid "querystring-widget-select"
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: rebuild relations
+msgid "rebuild relations"
+msgstr ""
+
 #: components/manage/Contents/Contents
 # defaultMessage: reference
 msgid "reference"
@@ -4479,11 +4484,6 @@ msgstr ""
 #: components/manage/Contents/Contents
 # defaultMessage: references
 msgid "references"
-msgstr ""
-
-#: helpers/MessageLabels/MessageLabels
-# defaultMessage: rebuild relations
-msgid "rebuild relations"
 msgstr ""
 
 #: components/theme/Search/Search

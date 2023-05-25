@@ -4460,6 +4460,11 @@ msgstr "Argitaratuta"
 msgid "querystring-widget-select"
 msgstr "Aukeratu..."
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: rebuild relations
+msgid "rebuild relations"
+msgstr ""
+
 #: components/manage/Contents/Contents
 # defaultMessage: reference
 msgid "reference"
@@ -4468,11 +4473,6 @@ msgstr ""
 #: components/manage/Contents/Contents
 # defaultMessage: references
 msgid "references"
-msgstr ""
-
-#: helpers/MessageLabels/MessageLabels
-# defaultMessage: rebuild relations
-msgid "rebuild relations"
 msgstr ""
 
 #: components/theme/Search/Search

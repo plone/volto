@@ -3173,7 +3173,6 @@ msgstr "Mida: {size}"
 msgid "Small"
 msgstr ""
 
-
 #: components/manage/Contents/Contents
 # defaultMessage: Some items are also a folder.
 msgid "Some items are also a folder."
@@ -4463,6 +4462,11 @@ msgstr "Publicat"
 msgid "querystring-widget-select"
 msgstr "Selecciona ..."
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: rebuild relations
+msgid "rebuild relations"
+msgstr ""
+
 #: components/manage/Contents/Contents
 # defaultMessage: reference
 msgid "reference"
@@ -4471,11 +4475,6 @@ msgstr ""
 #: components/manage/Contents/Contents
 # defaultMessage: references
 msgid "references"
-msgstr ""
-
-#: helpers/MessageLabels/MessageLabels
-# defaultMessage: rebuild relations
-msgid "rebuild relations"
 msgstr ""
 
 #: components/theme/Search/Search

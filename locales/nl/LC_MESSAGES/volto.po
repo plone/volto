@@ -3183,11 +3183,6 @@ msgstr ""
 msgid "Small"
 msgstr ""
 
-#: components/manage/Controlpanels/Relations/Relations
-# defaultMessage: Some relations are broken. Please fix.
-msgid "Some relations are broken. Please fix."
-msgstr ""
-
 #: components/manage/Contents/Contents
 # defaultMessage: Some items are also a folder.
 msgid "Some items are also a folder."
@@ -3201,6 +3196,11 @@ msgstr ""
 #: components/manage/Contents/Contents
 # defaultMessage: Some items are referenced by other contents.
 msgid "Some items are referenced by other contents."
+msgstr ""
+
+#: components/manage/Controlpanels/Relations/Relations
+# defaultMessage: Some relations are broken. Please fix.
+msgid "Some relations are broken. Please fix."
 msgstr ""
 
 #: error

@@ -4459,6 +4459,11 @@ msgstr "Veröffentlicht"
 msgid "querystring-widget-select"
 msgstr "Auswahl"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: rebuild relations
+msgid "rebuild relations"
+msgstr "Relationen neu katalogisieren"
+
 #: components/manage/Contents/Contents
 # defaultMessage: reference
 msgid "reference"
@@ -4468,12 +4473,6 @@ msgstr ""
 # defaultMessage: references
 msgid "references"
 msgstr ""
-
-#: helpers/MessageLabels/MessageLabels
-# defaultMessage: rebuild relations
-msgid "rebuild relations"
-msgstr "Relationen neu katalogisieren"
-
 
 #: components/theme/Search/Search
 # defaultMessage: results
