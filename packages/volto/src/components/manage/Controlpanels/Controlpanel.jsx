@@ -54,6 +54,39 @@ const messages = defineMessages({
   },
 });
 
+// Filters props.controlpanel.schema to only valid/relevant fields
+const filterControlPanelsSchema = (controlpanel) => {
+  const panelType = controlpanel['@id'].split('/').pop();
+
+  const { unwantedControlPanelsFields } = config.settings;
+
+  // Creates modified version of properties object
+  const newPropertiesObj = Object.fromEntries(
+    Object.entries(controlpanel.schema.properties).filter(
+      ([key, _val]) =>
+        !(unwantedControlPanelsFields[panelType] || []).includes(key),
+    ),
+  );
+  // Filters props.controlpanel.schema.fieldsets.fields to only valid/relevant fields
+  const filterFields = (fields) => {
+    return fields.filter(
+      (field) =>
+        !(unwantedControlPanelsFields[panelType] || []).includes(field),
+    );
+  };
+  // Creates modified version of fieldsets array
+  const newFieldsets = controlpanel.schema.fieldsets.map((fieldset) => {
+    return { ...fieldset, fields: filterFields(fieldset.fields) };
+  });
+
+  // Returns clone of props.controlpanel.schema, with updated properties/fieldsets
+  return {
+    ...controlpanel.schema,
+    properties: newPropertiesObj,
+    fieldsets: newFieldsets,
+  };
+};
+
 /**
  * Controlpanel class.
  * @class Controlpanel
@@ -188,8 +221,6 @@ class Controlpanel extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { filterControlPanelsSchema } = config.settings;
-
     if (this.props.controlpanel) {
       return (
         <div id="page-controlpanel">

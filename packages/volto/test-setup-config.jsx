@@ -19,7 +19,7 @@ import {
 import {
   controlPanelsIcons,
   filterControlPanels,
-  filterControlPanelsSchema,
+  unwantedControlPanelsFields,
 } from '@plone/volto/config/ControlPanels';
 
 import ListingBlockSchema from '@plone/volto/components/manage/Blocks/Listing/schema';
@@ -48,7 +48,7 @@ config.set('settings', {
   },
   controlPanelsIcons,
   filterControlPanels,
-  filterControlPanelsSchema,
+  unwantedControlPanelsFields,
   apiExpanders: [],
   downloadableObjects: ['File'],
   viewableInBrowserObjects: [],
