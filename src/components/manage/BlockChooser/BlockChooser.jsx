@@ -33,17 +33,22 @@ const BlockChooser = ({
   properties = {},
 }) => {
   const intl = useIntl();
-  const useAllowedBlocks = !isEmpty(allowedBlocks);
+  const hasAllowedBlocks = !isEmpty(allowedBlocks);
 
   const filteredBlocksConfig = filter(blocksConfig, (item) => {
+    // Check if the block is well formed (has at least id and title)
+    const blockIsWellFormed = Boolean(item.title && item.id);
+    if (!blockIsWellFormed) {
+      return false;
+    }
     if (showRestricted) {
-      if (useAllowedBlocks) {
+      if (hasAllowedBlocks) {
         return allowedBlocks.includes(item.id);
       } else {
         return true;
       }
     } else {
-      if (useAllowedBlocks) {
+      if (hasAllowedBlocks) {
         return allowedBlocks.includes(item.id);
       } else {
         // Overload restricted as a function, so we can decide the availability of a block

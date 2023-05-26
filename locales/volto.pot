@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2023-04-05T10:12:20.363Z\n"
+"POT-Creation-Date: 2023-05-23T08:20:31.464Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -457,6 +457,11 @@ msgstr ""
 msgid "Breadcrumbs"
 msgstr ""
 
+#: components/manage/Controlpanels/Relations/BrokenRelations
+# defaultMessage: Broken relations
+msgid "Broken relations"
+msgstr ""
+
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Sidebar/ObjectBrowserNav
@@ -773,6 +778,11 @@ msgstr ""
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: Copyright statement or other rights information on this item.
 msgid "Copyright statement or other rights information on this item."
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Create or delete relations to target
+msgid "Create or delete relations to target"
 msgstr ""
 
 #: components/manage/Toolbar/More
@@ -1394,6 +1404,11 @@ msgstr ""
 msgid "Filename"
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Filter
+msgid "Filter"
+msgstr ""
+
 #: components/manage/Controlpanels/Rules/Rules
 # defaultMessage: Filter Rules:
 msgid "Filter Rules:"
@@ -1417,6 +1432,11 @@ msgstr ""
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 # defaultMessage: First
 msgid "First"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Fix relations
+msgid "Fix relations"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
@@ -1684,6 +1704,11 @@ msgstr ""
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Insert row before
 msgid "Insert row before"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Inspect relations
+msgid "Inspect relations"
 msgstr ""
 
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -1973,6 +1998,11 @@ msgstr ""
 msgid "Manually or automatically added?"
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Many relations found. Please search.
+msgid "Many relations found. Please search."
+msgstr ""
+
 #: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Maps/schema
 # defaultMessage: Maps
@@ -2164,6 +2194,11 @@ msgstr ""
 msgid "No addons found"
 msgstr ""
 
+#: components/manage/Controlpanels/Relations/RelationsMatrix
+# defaultMessage: No broken relations found.
+msgid "No broken relations found."
+msgstr ""
+
 #: components/theme/RequestTimeout/RequestTimeout
 # defaultMessage: There is no connection to the server, due to a timeout o no network connection.
 msgid "No connection to the server"
@@ -2215,6 +2250,11 @@ msgstr ""
 #: components/manage/Widgets/TokenWidget
 # defaultMessage: No options
 msgid "No options"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: No relation found
+msgid "No relation found"
 msgstr ""
 
 #: components/manage/BlockChooser/BlockChooser
@@ -2437,6 +2477,11 @@ msgstr ""
 msgid "Please upgrade to plone.restapi >= 8.24.0."
 msgstr ""
 
+#: components/manage/Controlpanels/Relations/Relations
+# defaultMessage: Please upgrade to plone.restapi >= 8.35.3.
+msgid "Please upgrade to plone.restapi >= 8.35.3."
+msgstr ""
+
 #: components/theme/Footer/Footer
 # defaultMessage: Plone Foundation
 msgid "Plone Foundation"
@@ -2531,6 +2576,11 @@ msgstr ""
 msgid "Read More…"
 msgstr ""
 
+#: components/manage/Controlpanels/Relations/RelationsListing
+# defaultMessage: Read only for this type of relation.
+msgid "Read only for this type of relation."
+msgstr ""
+
 #: components/manage/Contents/Contents
 # defaultMessage: Rearrange items by…
 msgid "Rearrange items by…"
@@ -2571,6 +2621,29 @@ msgstr ""
 #: components/theme/Register/Register
 # defaultMessage: Registration form
 msgid "Registration form"
+msgstr ""
+
+#: components/manage/Controlpanels/Relations/RelationsMatrix
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Relation
+msgid "Relation name"
+msgstr ""
+
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/Relations/Relations
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Relations
+msgid "Relations"
+msgstr ""
+
+#: components/manage/Controlpanels/Relations/RelationsListing
+# defaultMessage: Relations are editable with plone.api >= 2.0.3.
+msgid "Relations are editable with plone.api >= 2.0.3."
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Relations updated
+msgid "Relations updated"
 msgstr ""
 
 #: components/theme/Search/Search
@@ -2781,6 +2854,11 @@ msgstr ""
 msgid "Saved"
 msgstr ""
 
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Scheduled
+msgid "Scheduled"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypesActions
 # defaultMessage: Schema
 msgid "Schema"
@@ -2855,6 +2933,16 @@ msgid "Search results for {term}"
 msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Search sources by title or path
+msgid "Search sources by title or path"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Search targets by title or path
+msgid "Search targets by title or path"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Search users…
 msgid "Search users…"
 msgstr ""
@@ -2877,6 +2965,7 @@ msgstr ""
 #: components/manage/Controlpanels/Aliases
 #: components/manage/Rules/Rules
 #: components/manage/Sidebar/ObjectBrowserNav
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Select
 msgid "Select"
 msgstr ""
@@ -2891,9 +2980,19 @@ msgstr ""
 msgid "Select columns to show"
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Select relation
+msgid "Select relation"
+msgstr ""
+
 #: components/manage/Contents/ContentsWorkflowModal
 # defaultMessage: Select the transition to be used for modifying the items state.
 msgid "Select the transition to be used for modifying the items state."
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Selected
+msgid "Selected"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
@@ -3000,6 +3099,16 @@ msgstr ""
 msgid "Show item"
 msgstr ""
 
+#: components/manage/Controlpanels/Relations/RelationsMatrix
+# defaultMessage: Show potential sources. Not only objects that are source of some relation.
+msgid "Show potential sources. Not only objects that are source of some relation."
+msgstr ""
+
+#: components/manage/Controlpanels/Relations/RelationsMatrix
+# defaultMessage: Show potential targets. Not only objects that are target of some relation.
+msgid "Show potential targets. Not only objects that are target of some relation."
+msgstr ""
+
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Show search button?
 msgid "Show search button?"
@@ -3067,6 +3176,11 @@ msgstr ""
 msgid "Small"
 msgstr ""
 
+#: components/manage/Controlpanels/Relations/Relations
+# defaultMessage: Some relations are broken. Please fix.
+msgid "Some relations are broken. Please fix."
+msgstr ""
+
 #: error
 # defaultMessage: Sorry, something went wrong with your request 
 msgid "Sorry, something went wrong with your request"
@@ -3106,6 +3220,7 @@ msgstr ""
 
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Blocks/Image/schema
+#: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: Source
 msgid "Source"
 msgstr ""
@@ -3249,6 +3364,7 @@ msgstr ""
 
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: Target
 msgid "Target"
 msgstr ""
@@ -3994,6 +4110,11 @@ msgstr ""
 msgid "You have been logged out from the site."
 msgstr ""
 
+#: components/manage/Controlpanels/Relations/Relations
+# defaultMessage: You have not the required permission for this control panel.
+msgid "You have not the required permission for this control panel."
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Your email is required for reset your password.
 msgid "Your email is required for reset your password."
@@ -4145,6 +4266,11 @@ msgstr ""
 msgid "event_where"
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: flush intIds and rebuild relations
+msgid "flush intIds and rebuild relations"
+msgstr ""
+
 #: components/manage/Blocks/Teaser/schema
 # defaultMessage: Head title
 msgid "head_title"
@@ -4246,6 +4372,11 @@ msgstr ""
 msgid "mostUsed"
 msgstr ""
 
+#: components/manage/Controlpanels/Relations/RelationsListing
+# defaultMessage: Found {sources} sources and {targets} targets. Narrow down to {max}!
+msgid "narrowDownRelations"
+msgstr ""
+
 #: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
 #: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
 #: components/theme/Widgets/BooleanWidget
@@ -4297,6 +4428,11 @@ msgstr ""
 #: components/manage/Widgets/QueryWidget
 # defaultMessage: Select…
 msgid "querystring-widget-select"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: rebuild relations
+msgid "rebuild relations"
 msgstr ""
 
 #: components/theme/Search/Search
@@ -4499,9 +4635,19 @@ msgstr ""
 msgid "sort"
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: sources path
+msgid "sources path"
+msgstr ""
+
 #: config/Blocks
 # defaultMessage: Table
 msgid "table"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: target path
+msgid "target path"
 msgstr ""
 
 #: config/Blocks
