@@ -27,45 +27,51 @@
 }
 
 .controlpanel_matrix {
-  display: grid;
-  grid-gap: 2rem;
-  grid-template-columns: 5fr 5fr 2fr;
+  .ui.action.input button.ui.icon.button {
+    background-color: transparent;
+  }
 
   .controlpanel_select_relation {
-    grid-column: 1;
-    grid-row: 1;
+    margin-bottom: 2rem;
   }
 
-  .controlpanel_search_y {
-    grid-column: 1;
-    grid-row: 1;
-  }
-
-  .controlpanel_search_x {
-    grid-column: 2;
-    grid-row: 1;
-  }
-
-  .controlpanel_filter {
+  .controlpanel_search_wrapper {
     display: flex;
-    flex-direction: column;
-    grid-column: 3;
-    grid-row: 2;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-bottom: 2rem;
+    column-gap: 5rem;
+    row-gap: 3rem;
 
-    .ui.checkbox {
-      margin-top: 0.5rem;
+    & > * {
+      min-width: 30rem;
     }
   }
 
-  .administration_matrix {
-    display: grid;
-    height: 60rem;
-    padding-right: 0;
-    grid-column-end: 3;
-    grid-column-start: 1;
-    grid-row: 2;
-    grid-template-rows: 14rem 1fr;
-    overflow-x: scroll;
+  .add_potential_sources .field,
+  .add_potential_targets .field,
+  .controlpanel_search_x .field,
+  .controlpanel_search_y .field {
+    display: flex;
+  }
+
+  .controlpanel_listing_wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    margin-bottom: 2rem;
+    gap: 1rem;
+
+    .administration_matrix {
+      min-width: 30rem;
+      flex-grow: 2;
+    }
+
+    .controlpanel_filter {
+      display: flex;
+      flex-direction: column;
+    }
   }
 }
 
@@ -75,71 +81,96 @@
   }
 
   .label-options {
+    // display: flex;
+    // justify-content: start;
     position: sticky;
-    z-index: 1000;
+    z-index: 100;
     top: 0;
-    left: 0;
-    display: flex;
-    height: 14rem;
-    align-items: baseline;
-    justify-content: flex-end;
-    padding-right: 2rem;
     .stickyLabelLayerBackground();
 
-    .label-options-label {
+    .target-labels {
+      z-index: 2;
+      top: 0;
+      left: 0;
       display: flex;
-      align-items: flex-end;
+      height: 14rem;
+      align-items: baseline;
+      // justify-content: flex-end;
+      // padding-right: 5rem;
+      @media only screen and (max-width: (@largestMobileScreen)) {
+        flex-direction: column;
+      }
 
-      &.inclined {
-        width: 3.5rem;
-        height: 13rem;
-        white-space: nowrap;
+      & > div:first-child {
+        min-width: 15rem;
+      }
 
-        div {
-          transform: rotate(315deg);
-          transform-origin: top left;
+      & > div:nth-child(2) {
+        display: flex;
+        flex-grow: 2;
+      }
+
+      .label-options-label {
+        display: flex;
+        align-items: flex-end;
+
+        &.inclined {
+          width: 3.5rem;
+          height: 13rem;
+          white-space: nowrap;
+
+          div {
+            transform: rotate(315deg);
+            transform-origin: top left;
+          }
         }
       }
     }
   }
 
-  .items {
-    padding-top: 0.5rem;
+  .listing-row {
+    &:nth-child(2n) {
+      background-color: rgba(0, 0, 50, 0.05);
+    }
 
-    .listing-row {
-      padding-right: 2rem;
+    .listing-item {
+      display: flex;
+      width: 100%;
+      align-items: baseline;
+      justify-content: space-between;
+      padding: 0.5rem 0.1rem;
+      margin: 0.2rem 0;
 
-      &:nth-child(2n) {
-        background-color: rgba(0, 0, 50, 0.05);
+      & > div:first-child {
+        min-width: 15rem;
       }
 
-      &.selectall {
-        margin-bottom: 1rem;
-      }
-
-      .listing-item {
+      .matrix_options {
         display: flex;
-        width: 100%;
-        align-items: baseline;
-        justify-content: space-between;
-        padding: 0.5rem 0.1rem;
-        margin: 0.2rem 0;
+        flex-direction: row;
+        flex-grow: 2;
 
-        .matrix_options {
-          display: flex;
-          flex-direction: row;
+        & > div {
+          width: 3rem;
+          padding: 0.3rem 0.1rem;
+          margin-left: 0.5rem;
 
-          & > div {
-            width: 3rem;
-            padding: 0.3rem 0.1rem;
-            margin-left: 0.5rem;
-
-            .ui.checkbox {
-              margin: auto;
-            }
+          .ui.checkbox {
+            margin: auto;
           }
         }
+
+        .ui.checkbox.toggle-target label:before {
+          border: 3px solid #826a6a;
+        }
       }
+    }
+  }
+
+  // Rows
+  .items {
+    .not-published {
+      opacity: 0.6;
     }
   }
 }
