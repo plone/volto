@@ -335,11 +335,6 @@ class Edit extends Component {
                                 e.stopPropagation();
                                 e.preventDefault();
                                 this.props.openObjectBrowser({
-                                  /**
-                                   * link mode closes the browser automatically
-                                   * after the first click, while image does not
-                                   */
-                                  mode: 'link',
                                   onSelectItem: (
                                     url,
                                     { title, image_field, image_scales },
