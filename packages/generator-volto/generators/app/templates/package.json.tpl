@@ -137,22 +137,26 @@
   },
   "dependencies": <%- dependencies %>,
   "devDependencies": {
-    "eslint-plugin-prettier": "3.1.3",
-    "jest-junit": "8.0.0",
-    "mrs-developer": "*",
-    "postcss": "8.4.13",
-    "prettier": "2.0.5",
-    "@plone/scripts": "^2.1.5",
+    "@plone/scripts": "^3.0.0",
     "@storybook/addon-actions": "^6.3.0",
     "@storybook/addon-controls": "6.3.0",
     "@storybook/addon-essentials": "^6.3.0",
     "@storybook/addon-links": "^6.3.0",
     "@storybook/react": "^6.3.0",
+    "@typescript-eslint/eslint-plugin": "5.57.1",
+    "@typescript-eslint/parser": "5.57.1",
+    "jest-junit": "8.0.0",
+    "mrs-developer": "*",
+    "postcss": "8.4.13",
+    "prettier": "2.0.5",
     "razzle": "4.2.18",
     "stylelint": "14.0.1",
     "stylelint-config-idiomatic-order": "8.1.0",
     "stylelint-config-prettier": "8.0.1",
-    "stylelint-prettier": "1.1.2"
+    "stylelint-prettier": "1.1.2",
+    "ts-jest": "^26.4.2",
+    "ts-loader": "9.4.2",
+    "typescript": "5.0.3"
   },
   "resolutions": {
     "react-error-overlay": "6.0.9"
