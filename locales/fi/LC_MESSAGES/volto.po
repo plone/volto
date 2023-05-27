@@ -3228,7 +3228,6 @@ msgid "Sorted"
 msgstr "Lajiteltu"
 
 #: components/manage/Blocks/HTML/Edit
-#: components/manage/Blocks/Image/schema
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: Source
 msgid "Source"
@@ -4304,6 +4303,11 @@ msgstr "HTML"
 # defaultMessage: Image
 msgid "image"
 msgstr "kuva"
+
+#: components/manage/Blocks/Image/ImageSidebar
+# defaultMessage: Image preview
+msgid "image_block_preview"
+msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Input must be integer
