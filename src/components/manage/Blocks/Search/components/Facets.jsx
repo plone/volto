@@ -2,6 +2,7 @@ import React from 'react';
 import { resolveExtension } from '@plone/volto/helpers/Extensions/withBlockExtensions';
 import config from '@plone/volto/registry';
 import { hasNonValueOperation, hasDateOperation } from '../utils';
+import { useSelector } from 'react-redux';
 
 const showFacet = (index) => {
   const { values } = index;
@@ -30,6 +31,8 @@ const Facets = (props) => {
     ...(data?.query?.query?.map(({ i, v }) => ({ [i]: v })) || []),
   );
 
+  const currentLang = useSelector((state) => state.intl.locale);
+
   return (
     <>
       {data?.facets
@@ -53,7 +56,9 @@ const Facets = (props) => {
             );
 
           choices = choices.sort((a, b) =>
-            a.label.localeCompare(b.label, 'en', { sensitivity: 'base' }),
+            a.label.localeCompare(b.label, currentLang, {
+              sensitivity: 'base',
+            }),
           );
 
           const isMulti = facetSettings.multiple;
