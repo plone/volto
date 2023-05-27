@@ -9,7 +9,7 @@ import withQuerystringResults from './withQuerystringResults';
 import paginationLeftSVG from '@plone/volto/icons/left-key.svg';
 import paginationRightSVG from '@plone/volto/icons/right-key.svg';
 
-const ListingBody = withQuerystringResults((props) => {
+const ListingBody = (props) => {
   const {
     data = {},
     isEditMode,
@@ -125,6 +125,8 @@ const ListingBody = withQuerystringResults((props) => {
       )}
     </>
   );
-});
+};
 
-export default injectIntl(ListingBody);
+const ListingBodyComponent = withQuerystringResults(ListingBody);
+
+export default injectIntl(ListingBodyComponent);
