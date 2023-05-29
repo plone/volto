@@ -19,7 +19,7 @@ charset = utf-8
 # Indent style default
 indent_style = space
 # Max Line Length - a hard line wrap, should be disabled
-max_line_length = off
+max_line_length = 80
 
 [*.{py,cfg,ini}]
 # 4 space indentation

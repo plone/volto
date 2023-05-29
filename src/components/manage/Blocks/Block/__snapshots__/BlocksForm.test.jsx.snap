@@ -12,7 +12,7 @@ exports[`Allow override of blocksConfig 1`] = `
         class="block-editor-custom"
       >
         <div
-          style="position: relative;"
+          style="position: relative; margin-bottom: 2em;"
         >
           <div
             aria-describedby=""
@@ -63,7 +63,7 @@ exports[`Allow override of blocksConfig 1`] = `
         class="block-editor-custom"
       >
         <div
-          style="position: relative;"
+          style="position: relative; margin-bottom: 2em;"
         >
           <div
             aria-describedby=""

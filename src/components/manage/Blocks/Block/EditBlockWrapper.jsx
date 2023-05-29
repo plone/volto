@@ -68,7 +68,7 @@ const EditBlockWrapper = (props) => {
       ref={setNodeRef}
       style={style ? style : null}
     >
-      <div style={{ position: 'relative' }}>
+      <div style={{ position: 'relative', marginBottom: '2em' }}>
         <div
           {...listeners}
           {...attributes}

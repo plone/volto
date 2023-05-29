@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { BodyClass } from '@plone/volto/helpers';
 import { Icon } from '@plone/volto/components';
 import {
   DndContext,
@@ -53,6 +54,7 @@ function BlocksDnDContainer({ children, onDragEnd, blocks }) {
               marginLeft: '-10px',
             }}
           >
+            <BodyClass className="dragging" />
             <div style={{ margin: '32px' }}>
               <Icon
                 name={
