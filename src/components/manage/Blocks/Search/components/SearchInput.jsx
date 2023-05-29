@@ -20,7 +20,7 @@ const SearchInput = (props) => {
     <div className="search-input">
       <Input
         id={`${props.id}-searchtext`}
-        value={searchText}
+        value={searchText === ' ' ? '' : searchText}
         placeholder={
           data.searchInputPrompt || intl.formatMessage(messages.search)
         }
@@ -37,14 +37,14 @@ const SearchInput = (props) => {
       />
 
       <div className="search-input-actions">
-        {searchText && (
+        {searchText && searchText !== ' ' && (
           <Button
             basic
             icon
             className="search-input-clear-icon-button"
             onClick={() => {
-              setSearchText('');
-              onTriggerSearch('');
+              setSearchText(' ');
+              onTriggerSearch(' ');
             }}
           >
             <Icon name={clearSVG} />

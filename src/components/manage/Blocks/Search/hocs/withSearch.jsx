@@ -127,6 +127,9 @@ function normalizeState({
       (acc, kvp) => (kvp.i === 'SearchableText' ? acc : [...acc, kvp]),
       [],
     );
+    if (searchText === ' ') {
+      return params;
+    }
     params.query.push({
       i: 'SearchableText',
       o: 'plone.app.querystring.operation.string.contains',
