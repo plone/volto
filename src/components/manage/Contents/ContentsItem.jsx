@@ -25,6 +25,7 @@ import dragSVG from '@plone/volto/icons/drag.svg';
 import cx from 'classnames';
 
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import { BasicTable } from './ReactTableContent';
 
 const messages = defineMessages({
   private: {
@@ -94,7 +95,6 @@ export const ContentsItemComponent = ({
   order,
 }) => {
   const intl = useIntl();
-
   return connectDropTarget(
     connectDragPreview(
       <tr
@@ -173,6 +173,7 @@ export const ContentsItemComponent = ({
               new Date(item.EffectiveDate).getTime() > new Date().getTime() && (
                 <Button className="button-margin effective-future" size="mini">
                   <FormattedMessage id="Scheduled" defaultMessage="Scheduled" />
+                  Alok
                 </Button>
               )}
           </Link>
@@ -182,6 +183,7 @@ export const ContentsItemComponent = ({
             className={cx('', { 'dragging-cell': isDragging })}
             key={index.id}
           >
+            {console.log(index.id)}
             {index.type === 'boolean' &&
               (item[index.id] ? (
                 <FormattedMessage id="Yes" defaultMessage="Yes" />
@@ -201,6 +203,7 @@ export const ContentsItemComponent = ({
                   : item['review_title'] ||
                     item['review_state'] ||
                     intl.formatMessage(messages.no_workflow_state)}
+                Alok
               </div>
             )}
             {index.type === 'date' && (

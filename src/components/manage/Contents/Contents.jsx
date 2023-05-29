@@ -91,6 +91,7 @@ import sortUpSVG from '@plone/volto/icons/sort-up.svg';
 import downKeySVG from '@plone/volto/icons/down-key.svg';
 import moreSVG from '@plone/volto/icons/more.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
+import { BasicTable } from './ReactTableContent';
 
 const messages = defineMessages({
   back: {
@@ -1636,6 +1637,7 @@ class Contents extends Component {
                         </Dropdown>
                       </Segment>
                       <div className="contents-table-wrapper">
+                        <BasicTable data={this.state.items} />
                         <Table selectable compact singleLine attached>
                           <Table.Header>
                             <Table.Row>
