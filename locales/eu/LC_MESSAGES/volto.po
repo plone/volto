@@ -1585,11 +1585,6 @@ msgstr "Ezkutatutako fazetek emaitzak filtratzen dituzte parametro egokiak URLan
 msgid "Hide Replies"
 msgstr "Ezkutatu erantzunak"
 
-#: components/manage/Blocks/Search/components/Facets
-# defaultMessage: Hide advanced
-msgid "Hide advanced"
-msgstr ""
-
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Hide facet?
 msgid "Hide facet?"
@@ -1896,6 +1891,11 @@ msgstr "Irudia"
 msgid "Left"
 msgstr "Ezkerrean"
 
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: Less filters
+msgid "Less filters"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Link
 msgid "Link"
@@ -2104,6 +2104,11 @@ msgstr "Hilero"
 # defaultMessage: More
 msgid "More"
 msgstr "Gehiago"
+
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: More filters
+msgid "More filters"
+msgstr ""
 
 #: components/manage/Controlpanels/UpgradeControlPanel
 # defaultMessage: More information about the upgrade procedure can be found in the documentation section of plone.org in the Upgrade Guide.
@@ -3113,11 +3118,6 @@ msgstr "Erakutsi guztiak"
 # defaultMessage: Show Replies
 msgid "Show Replies"
 msgstr "Erakutsi erantzunak"
-
-#: components/manage/Blocks/Search/components/Facets
-# defaultMessage: Show advanced
-msgid "Show advanced"
-msgstr ""
 
 #: components/manage/Blocks/Search/components/Facets
 # defaultMessage: Show filters

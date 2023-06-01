@@ -1584,11 +1584,6 @@ msgstr ""
 msgid "Hide Replies"
 msgstr "隐藏回复"
 
-#: components/manage/Blocks/Search/components/Facets
-# defaultMessage: Hide advanced
-msgid "Hide advanced"
-msgstr ""
-
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Hide facet?
 msgid "Hide facet?"
@@ -1895,6 +1890,11 @@ msgstr "首图"
 msgid "Left"
 msgstr ""
 
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: Less filters
+msgid "Less filters"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Link
 msgid "Link"
@@ -2103,6 +2103,11 @@ msgstr "每月"
 # defaultMessage: More
 msgid "More"
 msgstr "更多"
+
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: More filters
+msgid "More filters"
+msgstr ""
 
 #: components/manage/Controlpanels/UpgradeControlPanel
 # defaultMessage: More information about the upgrade procedure can be found in the documentation section of plone.org in the Upgrade Guide.
@@ -3112,11 +3117,6 @@ msgstr "显示全部"
 # defaultMessage: Show Replies
 msgid "Show Replies"
 msgstr "显示回复"
-
-#: components/manage/Blocks/Search/components/Facets
-# defaultMessage: Show advanced
-msgid "Show advanced"
-msgstr ""
 
 #: components/manage/Blocks/Search/components/Facets
 # defaultMessage: Show filters

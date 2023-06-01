@@ -1578,11 +1578,6 @@ msgstr "Fațetele ascunse vor filtra în continuare rezultatele dacă parametrii
 msgid "Hide Replies"
 msgstr "Ascunde răspunsurile"
 
-#: components/manage/Blocks/Search/components/Facets
-# defaultMessage: Hide advanced
-msgid "Hide advanced"
-msgstr ""
-
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Hide facet?
 msgid "Hide facet?"
@@ -1889,6 +1884,11 @@ msgstr "Imaginea de start"
 msgid "Left"
 msgstr "Stânga"
 
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: Less filters
+msgid "Less filters"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Link
 msgid "Link"
@@ -2097,6 +2097,11 @@ msgstr "Lunar"
 # defaultMessage: More
 msgid "More"
 msgstr "Mai mult"
+
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: More filters
+msgid "More filters"
+msgstr ""
 
 #: components/manage/Controlpanels/UpgradeControlPanel
 # defaultMessage: More information about the upgrade procedure can be found in the documentation section of plone.org in the Upgrade Guide.
@@ -3106,11 +3111,6 @@ msgstr "Afișează tot"
 # defaultMessage: Show Replies
 msgid "Show Replies"
 msgstr "Afișați răspunsurile"
-
-#: components/manage/Blocks/Search/components/Facets
-# defaultMessage: Show advanced
-msgid "Show advanced"
-msgstr ""
 
 #: components/manage/Blocks/Search/components/Facets
 # defaultMessage: Show filters

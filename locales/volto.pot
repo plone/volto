@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2023-05-23T08:20:31.464Z\n"
+"POT-Creation-Date: 2023-06-01T14:36:52.213Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -1580,11 +1580,6 @@ msgstr ""
 msgid "Hide Replies"
 msgstr ""
 
-#: components/manage/Blocks/Search/components/Facets
-# defaultMessage: Hide advanced
-msgid "Hide advanced"
-msgstr ""
-
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Hide facet?
 msgid "Hide facet?"
@@ -1891,6 +1886,11 @@ msgstr ""
 msgid "Left"
 msgstr ""
 
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: Less filters
+msgid "Less filters"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Link
 msgid "Link"
@@ -2098,6 +2098,11 @@ msgstr ""
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: More
 msgid "More"
+msgstr ""
+
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: More filters
+msgid "More filters"
 msgstr ""
 
 #: components/manage/Controlpanels/UpgradeControlPanel
@@ -3107,11 +3112,6 @@ msgstr ""
 #: components/theme/Comments/Comments
 # defaultMessage: Show Replies
 msgid "Show Replies"
-msgstr ""
-
-#: components/manage/Blocks/Search/components/Facets
-# defaultMessage: Show advanced
-msgid "Show advanced"
 msgstr ""
 
 #: components/manage/Blocks/Search/components/Facets

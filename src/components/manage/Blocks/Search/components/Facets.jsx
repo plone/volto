@@ -6,8 +6,8 @@ import { hasNonValueOperation, hasDateOperation } from '../utils';
 import { defineMessages, useIntl } from 'react-intl';
 
 const messages = defineMessages({
-  showAdvanced: { id: 'Show advanced', defaultMessage: 'Show advanced' },
-  hideAdvanced: { id: 'Hide advanced', defaultMessage: 'Hide advanced' },
+  moreFilters: { id: 'More filters', defaultMessage: 'More filters' },
+  lessFilters: { id: 'Less filters', defaultMessage: 'Less filters' },
   showFilters: { id: 'Show filters', defaultMessage: 'Show filters' },
   hideFilters: { id: 'Hide filters', defaultMessage: 'Hide filters' },
 });
@@ -139,10 +139,10 @@ const Facets = (props) => {
             {hidden
               ? advancedFilters === 2
                 ? intl.formatMessage(messages.showFilters)
-                : intl.formatMessage(messages.showAdvanced)
+                : intl.formatMessage(messages.moreFilters)
               : advancedFilters === 2
-              ? intl.formatMessage(messages.hideFilters)
-              : intl.formatMessage(messages.hideAdvanced)}
+                ? intl.formatMessage(messages.hideFilters)
+                : intl.formatMessage(messages.lessFilters)}
           </Button>
         </Grid.Column>
       )}

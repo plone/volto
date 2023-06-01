@@ -1589,11 +1589,6 @@ msgstr "Las facetas ocultas aplicarán los filtros si los parámetros adecuados 
 msgid "Hide Replies"
 msgstr "Ocultar respuestas"
 
-#: components/manage/Blocks/Search/components/Facets
-# defaultMessage: Hide advanced
-msgid "Hide advanced"
-msgstr ""
-
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Hide facet?
 msgid "Hide facet?"
@@ -1900,6 +1895,11 @@ msgstr "Imagen principal"
 msgid "Left"
 msgstr "Izquierda"
 
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: Less filters
+msgid "Less filters"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Link
 msgid "Link"
@@ -2108,6 +2108,11 @@ msgstr "Mensualmente"
 # defaultMessage: More
 msgid "More"
 msgstr "Más"
+
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: More filters
+msgid "More filters"
+msgstr ""
 
 #: components/manage/Controlpanels/UpgradeControlPanel
 # defaultMessage: More information about the upgrade procedure can be found in the documentation section of plone.org in the Upgrade Guide.
@@ -3117,11 +3122,6 @@ msgstr "Mostrar todos"
 # defaultMessage: Show Replies
 msgid "Show Replies"
 msgstr "Mostrar respuestas"
-
-#: components/manage/Blocks/Search/components/Facets
-# defaultMessage: Show advanced
-msgid "Show advanced"
-msgstr ""
 
 #: components/manage/Blocks/Search/components/Facets
 # defaultMessage: Show filters
