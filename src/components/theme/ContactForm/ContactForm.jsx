@@ -3,14 +3,14 @@
  * @module components/theme/ContactForm/ContactForm
  */
 
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from '@plone/volto/helpers';
-import { connect } from 'react-redux';
+import { useSelector,shallowEqual, useDispatch } from 'react-redux';
 import { compose } from 'redux';
 import { Portal } from 'react-portal';
 import { Container, Message, Icon } from 'semantic-ui-react';
-import { defineMessages, injectIntl } from 'react-intl';
+import { defineMessages, useIntl } from 'react-intl';
 import { Link, withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
@@ -70,72 +70,37 @@ const messages = defineMessages({
  * @class ContactForm
  * @extends Component
  */
-export class ContactFormComponent extends Component {
-  /**
-   * Property types.
-   * @property {Object} propTypes Property types.
-   * @static
-   */
-  static propTypes = {
-    emailNotification: PropTypes.func.isRequired,
-    error: PropTypes.shape({
-      message: PropTypes.string,
-    }),
-    loading: PropTypes.bool,
-    loaded: PropTypes.bool,
-    pathname: PropTypes.string.isRequired,
-  };
+const ContactFormComponent=({ location , history })=>{
 
-  /**
-   * Default properties.
-   * @property {Object} defaultProps Default properties.
-   * @static
-   */
-  static defaultProps = {
-    error: null,
-    loading: null,
-    loaded: null,
-  };
+  const dispatch=useDispatch();
+  const intl=useIntl();
+  const [isClient,setisClient]=useState(false);
+  
+  const {loaded,loading,error} = useSelector(
+    (state) => ({
+      loading: state.emailNotification.loading,
+      loaded: state.emailNotification.loaded,
+      error: state.emailNotification.error,
+    }),shallowEqual);
+    
+  const pathname=location.pathname;
+    
+  useEffect(()=>{
+    setisClient(true);
+  },[])
 
-  /**
-   * Constructor
-   * @method constructor
-   * @param {Object} props Component properties
-   * @constructs WysiwygEditor
-   */
-  constructor(props) {
-    super(props);
-    this.onSubmit = this.onSubmit.bind(this);
-    this.onCancel = this.onCancel.bind(this);
-    this.state = { isClient: false };
-  }
-
-  /**
-   * Component will receive props
-   * @method componentWillReceiveProps
-   * @param {Object} nextProps Next properties
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (this.props.loading && nextProps.loaded) {
+  useEffect(()=>{
+    if (loading && loaded) {
       toast.success(
         <Toast
           success
-          title={this.props.intl.formatMessage(messages.success)}
-          content={this.props.intl.formatMessage(messages.messageSent)}
+          title={intl.formatMessage(messages.success)}
+          content={intl.formatMessage(messages.messageSent)}
         />,
       );
     }
-  }
+  },[loaded,loading]);
 
-  /**
-   * Component did mount
-   * @method componentDidMount
-   * @returns {undefined}
-   */
-  componentDidMount() {
-    this.setState({ isClient: true });
-  }
 
   /**
    * On submit handler
@@ -143,13 +108,13 @@ export class ContactFormComponent extends Component {
    * @param {Object} data Data object.
    * @returns {undefined}
    */
-  onSubmit(data) {
-    this.props.emailNotification(
+  const onSubmit=(data) =>{
+    dispatch(emailNotification(
       data.from,
       data.message,
       data.name,
       data.subject,
-    );
+    ));
   }
 
   /**
@@ -157,59 +122,60 @@ export class ContactFormComponent extends Component {
    * @method onCancel
    * @returns {undefined}
    */
-  onCancel() {
-    this.props.history.goBack();
+  const onCancel=()=> {
+    history.goBack();
   }
+  
   /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
    */
-  render() {
+
     return (
       <div id="contact-form">
         <Container id="view">
-          <Helmet title={this.props.intl.formatMessage(messages.contactForm)} />
-          {this.props.error && (
+          <Helmet title={intl.formatMessage(messages.contactForm)} />
+          {error && (
             <Message
               icon="warning"
               negative
               attached
-              header={this.props.intl.formatMessage(messages.error)}
-              content={this.props.error.message}
+              header={intl.formatMessage(messages.error)}
+              content={error.message}
             />
           )}
           <Form
-            onSubmit={this.onSubmit}
-            onCancel={this.onCancel}
+            onSubmit={onSubmit}
+            onCancel={onCancel}
             formData={{ blocksLayoutFieldname: {} }}
-            submitLabel={this.props.intl.formatMessage(messages.send)}
+            submitLabel={intl.formatMessage(messages.send)}
             resetAfterSubmit
-            title={this.props.intl.formatMessage(messages.contactForm)}
-            loading={this.props.loading}
+            title={intl.formatMessage(messages.contactForm)}
+            loading={loading}
             schema={{
               fieldsets: [
                 {
                   fields: ['name', 'from', 'subject', 'message'],
                   id: 'default',
-                  title: this.props.intl.formatMessage(messages.default),
+                  title: intl.formatMessage(messages.default),
                 },
               ],
               properties: {
                 name: {
-                  title: this.props.intl.formatMessage(messages.name),
+                  title: intl.formatMessage(messages.name),
                   type: 'string',
                 },
                 from: {
-                  title: this.props.intl.formatMessage(messages.from),
+                  title: intl.formatMessage(messages.from),
                   type: 'email',
                 },
                 subject: {
-                  title: this.props.intl.formatMessage(messages.subject),
+                  title: intl.formatMessage(messages.subject),
                   type: 'string',
                 },
                 message: {
-                  title: this.props.intl.formatMessage(messages.message),
+                  title: intl.formatMessage(messages.message),
                   type: 'string',
                   widget: 'textarea',
                 },
@@ -217,21 +183,21 @@ export class ContactFormComponent extends Component {
               required: ['from', 'message'],
             }}
           />
-          {this.state.isClient && (
+          {isClient && (
             <Portal node={document.getElementById('toolbar')}>
               <Toolbar
-                pathname={this.props.pathname}
+                pathname={pathname}
                 hideDefaultViewButtons
                 inner={
                   <Link
-                    to={`${getBaseUrl(this.props.pathname)}`}
+                    to={`${getBaseUrl(pathname)}`}
                     className="item"
                   >
                     <Icon
                       name="arrow left"
                       size="big"
                       color="blue"
-                      title={this.props.intl.formatMessage(messages.back)}
+                      title={intl.formatMessage(messages.back)}
                     />
                   </Link>
                 }
@@ -242,18 +208,31 @@ export class ContactFormComponent extends Component {
       </div>
     );
   }
-}
 
-export default compose(
-  withRouter,
-  injectIntl,
-  connect(
-    (state, props) => ({
-      loading: state.emailNotification.loading,
-      loaded: state.emailNotification.loaded,
-      error: state.emailNotification.error,
-      pathname: props.location.pathname,
+  /**
+   * Property types.
+   * @property {Object} propTypes Property types.
+   * @static
+   */
+  ContactFormComponent.propTypes = {
+    emailNotification: PropTypes.func,
+    error: PropTypes.shape({
+      message: PropTypes.string,
     }),
-    { emailNotification },
-  ),
-)(ContactFormComponent);
+    loading: PropTypes.bool,
+    loaded: PropTypes.bool,
+    pathname: PropTypes.string,
+  };
+
+  /**
+   * Default properties.
+   * @property {Object} defaultProps Default properties.
+   * @static
+   */
+  ContactFormComponent.defaultProps = {
+    error: null,
+    loading: null,
+    loaded: null,
+  };
+
+export default compose( withRouter)(ContactFormComponent);

@@ -3,58 +3,46 @@
  * @module components/theme/Anontools/Anontools
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Menu } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
 import config from '@plone/volto/registry';
+import { useSelector, shallowEqual } from 'react-redux';
 
 /**
- * Anontools container class.
+ * Anontools function.
+ * @function Anontools
+ * @
+ * @returns {string} Markup of the component.
  */
-export class Anontools extends Component {
-  /**
-   * Property types.
-   * @property {Object} propTypes Property types.
-   * @static
-   */
-  static propTypes = {
-    token: PropTypes.string,
-    content: PropTypes.shape({
-      '@id': PropTypes.string,
-    }),
-  };
+const Anontools = ()=> {
 
-  /**
-   * Default properties.
-   * @property {Object} defaultProps Default properties.
-   * @static
-   */
-  static defaultProps = {
-    token: null,
-    content: {
-      '@id': null,
-    },
-  };
+  const { token,content } = useSelector(
+    (state) => ({
+      token: state.userSession.token,
+      content:state.content.data,
+    }),
+    shallowEqual,
+  );
 
   /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
    */
-  render() {
+
     const { settings } = config;
     return (
-      !this.props.token && (
+      !token && (
         <Menu pointing secondary floated="right">
           <Menu.Item>
             <Link
               aria-label="login"
               to={`/login${
-                this.props.content?.['@id']
-                  ? `?return_url=${this.props.content['@id'].replace(
+                content?.['@id']
+                  ? `?return_url=${content['@id'].replace(
                       settings.apiPath,
                       '',
                     )}`
@@ -75,9 +63,32 @@ export class Anontools extends Component {
       )
     );
   }
-}
 
-export default connect((state) => ({
-  token: state.userSession.token,
-  content: state.content.data,
-}))(Anontools);
+
+export default Anontools;
+
+
+
+/**
+   * Property types.
+   * @property {Object} propTypes Property types.
+   * @static
+   */
+Anontools.propTypes = {
+  token: PropTypes.string,
+  content: PropTypes.shape({
+    '@id': PropTypes.string,
+  }),
+};
+
+/**
+ * Default properties.
+ * @property {Object} defaultProps Default properties.
+ * @static
+ */
+Anontools.defaultProps = {
+  token: null,
+  content: {
+    '@id': null,
+  },
+};

@@ -3,10 +3,10 @@
  * @module components/theme/Header/Header
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import { Container, Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import {
   Anontools,
@@ -17,36 +17,23 @@ import {
 } from '@plone/volto/components';
 
 /**
- * Header component class.
- * @class Header
- * @extends Component
+ * Header function.
+ * @function Header
+ * @
+ * @returns {string} Markup of the component.
  */
-class Header extends Component {
-  /**
-   * Property types.
-   * @property {Object} propTypes Property types.
-   * @static
-   */
-  static propTypes = {
-    token: PropTypes.string,
-    pathname: PropTypes.string.isRequired,
-  };
-
-  /**
-   * Default properties.
-   * @property {Object} defaultProps Default properties.
-   * @static
-   */
-  static defaultProps = {
-    token: null,
-  };
-
+const Header=({ pathname })=> {
+ 
+  const { token } = useSelector(
+    (state) => ({
+       token :   state.userSession.token,
+    }));
+    
   /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
    */
-  render() {
     return (
       <Segment basic className="header-wrapper" role="banner">
         <Container>
@@ -55,11 +42,11 @@ class Header extends Component {
               <div className="logo">
                 <Logo />
               </div>
-              <Navigation pathname={this.props.pathname} />
+              <Navigation pathname={pathname} />
             </div>
             <div className="tools-search-wrapper">
               <LanguageSelector />
-              {!this.props.token && (
+              {!token && (
                 <div className="tools">
                   <Anontools />
                 </div>
@@ -73,8 +60,25 @@ class Header extends Component {
       </Segment>
     );
   }
-}
 
-export default connect((state) => ({
-  token: state.userSession.token,
-}))(Header);
+
+export default Header;
+
+ /**
+   * Property types.
+   * @property {Object} propTypes Property types.
+   * @static
+   */
+ Header.propTypes = {
+  token: PropTypes.string,
+  pathname: PropTypes.string.isRequired,
+};
+
+/**
+ * Default properties.
+ * @property {Object} defaultProps Default properties.
+ * @static
+ */
+  Header.defaultProps = {
+  token: null,
+};
