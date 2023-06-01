@@ -51,7 +51,7 @@ const ColorPickerWidget = (props) => {
                       onClick={(e) => {
                         e.preventDefault();
                         e.stopPropagation();
-                        onChange(id, color.name);
+                        onChange(id, value === color.name ? null : color.name);
                       }}
                       active={value === color.name}
                       circular
