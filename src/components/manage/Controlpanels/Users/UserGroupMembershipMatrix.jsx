@@ -122,83 +122,87 @@ const UserGroupMembershipMatrix = ({ many_users, many_groups }) => {
 
   return (
     <div className="controlpanel_matrix">
-      <div className="controlpanel_search_y">
-        <Form className="search_users" onSubmit={onReset}>
-          <Form.Field>
-            <Input
-              name="SearchUser"
-              action={{ icon: 'delete' }}
-              placeholder={intl.formatMessage(messages.searchUsers)}
-              onChange={onChangeSearchUsers}
-              onKeyDown={onChangeSearchUsers}
-              id="user-search-input"
-            />
-          </Form.Field>
-        </Form>
+      <div className="controlpanel_search_wrapper">
+        <div className="controlpanel_search_y">
+          <Form className="search_users" onSubmit={onReset}>
+            <Form.Field>
+              <Input
+                name="SearchUser"
+                action={{ icon: 'delete' }}
+                placeholder={intl.formatMessage(messages.searchUsers)}
+                onChange={onChangeSearchUsers}
+                onKeyDown={onChangeSearchUsers}
+                id="user-search-input"
+              />
+            </Form.Field>
+          </Form>
+        </div>
+        <div className="controlpanel_search_x">
+          <Form className="search_groups" onSubmit={onReset}>
+            <Form.Field>
+              <Input
+                name="SearchGroup"
+                action={{ icon: 'delete' }}
+                placeholder={intl.formatMessage(messages.searchGroups)}
+                onChange={onChangeSearchGroups}
+                onKeyDown={onChangeSearchGroups}
+                id="group-search-input"
+              />
+            </Form.Field>
+            <Form.Field>
+              <Checkbox
+                name="addJoinedGroups"
+                label={intl.formatMessage(messages.addJoinedGroups)}
+                title={intl.formatMessage(messages.addJoinedGroups)}
+                defaultChecked={false}
+                onChange={(event, { checked }) => {
+                  onToggleJoinedGroups(checked);
+                }}
+              />
+            </Form.Field>
+          </Form>
+        </div>
       </div>
-      <div className="controlpanel_search_x">
-        <Form className="search_groups" onSubmit={onReset}>
-          <Form.Field>
-            <Input
-              name="SearchGroup"
-              action={{ icon: 'delete' }}
-              placeholder={intl.formatMessage(messages.searchGroups)}
-              onChange={onChangeSearchGroups}
-              onKeyDown={onChangeSearchGroups}
-              id="group-search-input"
-            />
-          </Form.Field>
-          <Form.Field>
-            <Checkbox
-              name="addJoinedGroups"
-              label={intl.formatMessage(messages.addJoinedGroups)}
-              title={intl.formatMessage(messages.addJoinedGroups)}
-              defaultChecked={false}
-              onChange={(event, { checked }) => {
-                onToggleJoinedGroups(checked);
-              }}
-            />
-          </Form.Field>
-        </Form>
+      <div className="controlpanel_listing_wrapper">
+        <div className="controlpanel_filter">
+          <h3>{intl.formatMessage(messages.filterByGroups)}</h3>
+          <Form className="search_filter_groups" onSubmit={onReset}>
+            <Form.Field>
+              <Input
+                name="SearchGroupFilter"
+                action={{ icon: 'delete' }}
+                placeholder={intl.formatMessage(messages.searchGroups)}
+                onChange={onChangeSearchGroupsFilter}
+                onKeyDown={onChangeSearchGroupsFilter}
+                id="groupfilter-search-input"
+              />
+            </Form.Field>
+          </Form>
+          {(!many_groups || query_group_filter.length > 1) &&
+            filter_options?.map((filter_option) => (
+              <Form.Field>
+                <Checkbox
+                  name={`filter_option_${filter_option.value}`}
+                  key={filter_option.value}
+                  title={filter_option.label}
+                  label={filter_option.label}
+                  defaultChecked={false}
+                  onChange={(event, { checked }) => {
+                    onSelectOptionHandler(filter_option, checked);
+                  }}
+                />
+              </Form.Field>
+            ))}
+        </div>
+        <UserGroupMembershipListing
+          query_user={query_user}
+          query_group={query_group}
+          groups_filter={groups_filter}
+          add_joined_groups={add_joined_groups}
+          many_users={many_users}
+          many_groups={many_groups}
+        />
       </div>
-      <div className="controlpanel_filter">
-        <h3>{intl.formatMessage(messages.filterByGroups)}</h3>
-
-        <Form className="search_filter_groups" onSubmit={onReset}>
-          <Form.Field>
-            <Input
-              name="SearchGroupFilter"
-              action={{ icon: 'delete' }}
-              placeholder={intl.formatMessage(messages.searchGroups)}
-              onChange={onChangeSearchGroupsFilter}
-              onKeyDown={onChangeSearchGroupsFilter}
-              id="groupfilter-search-input"
-            />
-          </Form.Field>
-        </Form>
-
-        {(!many_groups || query_group_filter.length > 1) &&
-          filter_options?.map((filter_option) => (
-            <Checkbox
-              name={`filter_option_${filter_option.value}`}
-              key={filter_option.value}
-              title={filter_option.label}
-              label={filter_option.label}
-              defaultChecked={false}
-              onChange={(event, { checked }) => {
-                onSelectOptionHandler(filter_option, checked);
-              }}
-            />
-          ))}
-      </div>
-      <UserGroupMembershipListing
-        query_user={query_user}
-        query_group={query_group}
-        groups_filter={groups_filter}
-        add_joined_groups={add_joined_groups}
-        many_users={many_users}
-        many_groups={many_groups}
-      />
     </div>
   );
 };

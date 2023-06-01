@@ -33,6 +33,7 @@ jobs:
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          install: false
           record: true
           parallel: false # Since they run on different node versions, we can't parallel
           browser: chrome
@@ -88,6 +89,7 @@ jobs:
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          install: false
           record: true
           parallel: false # Since they run on different node versions, we can't parallel
           browser: chrome
@@ -143,6 +145,7 @@ jobs:
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          install: false
           record: true
           parallel: false # Since they run on different node versions, we can't parallel
           browser: chrome
@@ -197,6 +200,7 @@ jobs:
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          install: false
           record: true
           parallel: false # Since they run on different node versions, we can't parallel
           browser: chrome
@@ -251,6 +255,7 @@ jobs:
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          install: false
           record: true
           parallel: true
           browser: chrome
@@ -307,6 +312,7 @@ jobs:
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          install: false
           record: true
           parallel: true
           browser: chrome
@@ -362,6 +368,7 @@ jobs:
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          install: false
           record: true
           parallel: true
           browser: chrome
@@ -442,6 +449,7 @@ jobs:
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          install: false
           record: true
           parallel: true
           browser: chrome
@@ -532,6 +540,7 @@ jobs:
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          install: false
           record: true
           parallel: true
           browser: chrome
@@ -593,6 +602,7 @@ jobs:
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          install: false
           record: true
           parallel: true
           browser: chrome
