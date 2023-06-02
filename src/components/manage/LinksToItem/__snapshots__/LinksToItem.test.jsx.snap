@@ -40,6 +40,11 @@ exports[`LinksToItem renders links to item view 1`] = `
           >
             Review state
           </th>
+          <th
+            className=""
+          >
+            Type
+          </th>
         </tr>
       </thead>
       <tbody
@@ -71,6 +76,13 @@ exports[`LinksToItem renders links to item view 1`] = `
           >
             <span>
               private
+            </span>
+          </td>
+          <td
+            className=""
+          >
+            <span>
+              Document
             </span>
           </td>
         </tr>
