@@ -1923,8 +1923,8 @@ msgid "Link translation for"
 msgstr "Traduction du lien pour"
 
 #: components/manage/LinksToItem/LinksToItem
-# defaultMessage: Linking this item
-msgid "Linking this item"
+# defaultMessage: Linking this item with
+msgid "Linking this item with"
 msgstr ""
 
 #: components/manage/LinksToItem/LinksToItem

@@ -1912,8 +1912,8 @@ msgid "Link translation for"
 msgstr "链接翻译"
 
 #: components/manage/LinksToItem/LinksToItem
-# defaultMessage: Linking this item
-msgid "Linking this item"
+# defaultMessage: Linking this item with
+msgid "Linking this item with"
 msgstr ""
 
 #: components/manage/LinksToItem/LinksToItem

@@ -1,0 +1,1 @@
+tune 'links to item' view to 'references to item' view. Show all relation types. @ksuess

@@ -19,6 +19,7 @@ import {
 
 import backSVG from '@plone/volto/icons/back.svg';
 import { getBaseUrl } from '@plone/volto/helpers';
+import { object } from 'prop-types';
 
 const messages = defineMessages({
   back: {
@@ -51,14 +52,23 @@ const LinksToItem = (props) => {
   }, [dispatch, itempath, title]);
 
   let links = {};
-  if (myrelations && 'isReferencing' in myrelations) {
-    myrelations['isReferencing'].items.forEach((item) => {
-      links[item.source.UID] = item.source;
+  if (myrelations) {
+    Object.keys(myrelations).forEach((relationtype) => {
+      links[relationtype] = {};
+      myrelations[relationtype].items.forEach((item) => {
+        links[relationtype][item.source.UID] = item.source;
+      });
     });
   }
 
-  let links_ordered = Object.values(links).sort((link) => link['@id']);
-  const relations_found = links_ordered.length > 0;
+  let links_ordered = {};
+  Object.keys(links).forEach((relationtype) => {
+    links_ordered[relationtype] = Object.values(links[relationtype]).sort(
+      (link) => link['@id'],
+    );
+  });
+
+  const relations_found = Object.keys(links_ordered).length > 0;
   return (
     <Container id="linkstoitem">
       <Helmet title={intl.formatMessage(messages.linkstoitem)} />
@@ -79,48 +89,61 @@ const LinksToItem = (props) => {
               />
             </Segment>
             <Table selectable compact singleLine attached>
-              <Table.Header>
-                <Table.Row>
-                  <Table.HeaderCell>
-                    <FormattedMessage
-                      id="Linking this item"
-                      defaultMessage="Linking this item"
-                    />
-                  </Table.HeaderCell>
-                  <Table.HeaderCell>
-                    <FormattedMessage
-                      id="Review state"
-                      defaultMessage="Review state"
-                    />
-                  </Table.HeaderCell>
-                  <Table.HeaderCell>
-                    <FormattedMessage id="Type" defaultMessage="Type" />
-                  </Table.HeaderCell>
-                </Table.Row>
-              </Table.Header>
               {
                 <Table.Body>
-                  {map(links_ordered, (link) => (
-                    <Table.Row key={link['@id']}>
-                      <Table.Cell>
-                        <UniversalLink
-                          href={link['@id']}
-                          target="_blank"
-                          className={`source ${link.review_state}`}
-                        >
-                          <span className="label" title={link.type_title}>
-                            {link.title}
-                          </span>
-                        </UniversalLink>
-                      </Table.Cell>
-                      <Table.Cell>
-                        <span>{link.review_state}</span>
-                      </Table.Cell>
-                      <Table.Cell>
-                        <span>{link.type_title || ''}</span>
-                      </Table.Cell>
-                    </Table.Row>
-                  ))}
+                  {Object.keys(links_ordered).map((relationtype) => {
+                    return [].concat(
+                      [
+                        <Table.Row>
+                          <Table.HeaderCell>
+                            <FormattedMessage
+                              id="Linking this item with"
+                              defaultMessage="Linking this item with"
+                            />{' '}
+                            {relationtype === 'isReferencing' ? (
+                              <FormattedMessage
+                                id="hyperlink"
+                                defaultMessage="hyperlink"
+                              />
+                            ) : (
+                              `'${relationtype}'`
+                            )}
+                          </Table.HeaderCell>
+                          <Table.HeaderCell>
+                            <FormattedMessage
+                              id="Review state"
+                              defaultMessage="Review state"
+                            />
+                          </Table.HeaderCell>
+                          <Table.HeaderCell>
+                            <FormattedMessage id="Type" defaultMessage="Type" />
+                          </Table.HeaderCell>
+                        </Table.Row>,
+                      ],
+                      links_ordered[relationtype].map((link) => {
+                        return (
+                          <Table.Row key={link['@id']}>
+                            <Table.Cell>
+                              <UniversalLink
+                                href={link['@id']}
+                                className={`source ${link.review_state}`}
+                              >
+                                <span className="label" title={link.type_title}>
+                                  {link.title}
+                                </span>
+                              </UniversalLink>
+                            </Table.Cell>
+                            <Table.Cell>
+                              <span>{link.review_state}</span>
+                            </Table.Cell>
+                            <Table.Cell>
+                              <span>{link.type_title || ''}</span>
+                            </Table.Cell>
+                          </Table.Row>
+                        );
+                      }),
+                    );
+                  })}
                 </Table.Body>
               }
             </Table>

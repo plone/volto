@@ -33,7 +33,7 @@ exports[`LinksToItem renders links to item view 1`] = `
           <th
             className=""
           >
-            Linking this item
+            Linking this item with
           </th>
           <th
             className=""
