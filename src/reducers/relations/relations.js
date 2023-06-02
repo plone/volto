@@ -3,8 +3,6 @@
  * @module reducers/relations/relations
  */
 
-import { omit } from 'lodash';
-
 import {
   CREATE_RELATIONS,
   DELETE_RELATIONS,
