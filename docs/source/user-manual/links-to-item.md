@@ -1,22 +1,22 @@
 ---
 myst:
   html_meta:
-    "description": "User manual on how to find all links to the current item."
-    "property=og:description": "User manual on how to find all links to the current item."
-    "property=og:title": "Finding links to the current item."
-    "keywords": "Volto, Plone, frontend, React, User manual, links"
+    "description": "User manual on how to find all links and relations to the current item."
+    "property=og:description": "User manual on how to find all links and relations to the current item."
+    "property=og:title": "Finding links and relations to the current item."
+    "keywords": "Volto, Plone, frontend, React, User manual, links, relations"
 ---
 
 (links-to-item-label)=
 
-# Finding links to the current item
+# Finding links and relations to the current item
 
 Sometimes it can be hard to keep track from where a certain page is referenced.
 This is especially true whenever you want to reconstruct your website with a greater number of objects being moved or deleted.
 For this situation, you can visit the {guilabel}`Links to item` page, which is an overview of all objects that refererence a certain object.
 
 ```{note}
-An item references another item by creating a hyperlink to this item, using the item in a block, or using it in the {guilabel}`Related Items` field.
+An item references another item by creating a hyperlink to this item, using the item in a block, referencing it in the {guilabel}`Related Items` field, or referencing it in a relation field.
 ```
 
 ## {guilabel}`Links to item` view
