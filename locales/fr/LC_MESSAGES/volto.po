@@ -753,6 +753,11 @@ msgstr "Règles de contenu pour {title}"
 msgid "Content rules from parent folders"
 msgstr "Règles de contenu des dossiers parents"
 
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Content that link to this item
+msgid "Content that link to this item"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Content type created
 msgid "Content type created"
@@ -4057,11 +4062,6 @@ msgstr "Quand"
 msgid "When this date is reached, the content will nolonger be visible in listings and searches."
 msgstr "Lorsque cette date est atteinte, le contenu ne sera plus visible dans les listes et les recherches."
 
-#: components/manage/LinksToItem/LinksToItem
-# defaultMessage: Whenever this item is being referenced from some different item by a hyperlink, block or similar, it appears here in this list.
-msgid "Whenever this item is being referenced from some different item by a hyperlink, block or similar, it appears here in this list."
-msgstr ""
-
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 # defaultMessage: Whether or not execution of further rules should stop after this rule is executed
@@ -4334,6 +4334,11 @@ msgstr "hero"
 # defaultMessage: HTML
 msgid "html"
 msgstr "html"
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: hyperlink
+msgid "hyperlink"
+msgstr ""
 
 #: config/Blocks
 # defaultMessage: Image

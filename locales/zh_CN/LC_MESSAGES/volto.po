@@ -742,6 +742,11 @@ msgstr "{title}的内容规则"
 msgid "Content rules from parent folders"
 msgstr "父文件夹的内容规则"
 
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Content that link to this item
+msgid "Content that link to this item"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Content type created
 msgid "Content type created"
@@ -4046,11 +4051,6 @@ msgstr ""
 msgid "When this date is reached, the content will nolonger be visible in listings and searches."
 msgstr "当到了这个日期，这些内容将不再在列表和搜索中可见。"
 
-#: components/manage/LinksToItem/LinksToItem
-# defaultMessage: Whenever this item is being referenced from some different item by a hyperlink, block or similar, it appears here in this list.
-msgid "Whenever this item is being referenced from some different item by a hyperlink, block or similar, it appears here in this list."
-msgstr ""
-
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 # defaultMessage: Whether or not execution of further rules should stop after this rule is executed
@@ -4322,6 +4322,11 @@ msgstr ""
 #: config/Blocks
 # defaultMessage: HTML
 msgid "html"
+msgstr ""
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: hyperlink
+msgid "hyperlink"
 msgstr ""
 
 #: config/Blocks

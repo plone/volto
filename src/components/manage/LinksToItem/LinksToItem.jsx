@@ -9,7 +9,6 @@ import { Portal } from 'react-portal';
 import { Container, Segment, Table } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
-import { map } from 'lodash';
 import { getContent, queryRelations } from '@plone/volto/actions';
 import {
   Icon as IconNext,
@@ -19,7 +18,6 @@ import {
 
 import backSVG from '@plone/volto/icons/back.svg';
 import { getBaseUrl } from '@plone/volto/helpers';
-import { object } from 'prop-types';
 
 const messages = defineMessages({
   back: {
@@ -84,8 +82,8 @@ const LinksToItem = (props) => {
           <>
             <Segment secondary>
               <FormattedMessage
-                id="Whenever this item is being referenced from some different item by a hyperlink, block or similar, it appears here in this list."
-                defaultMessage="Whenever this item is being referenced from some different item by a hyperlink, block or similar, it appears here in this list."
+                id="Content that link to this item"
+                defaultMessage="Content that link to this item"
               />
             </Segment>
             <Table selectable compact singleLine attached>

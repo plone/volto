@@ -19,7 +19,7 @@ exports[`LinksToItem renders links to item view 1`] = `
     <div
       className="ui secondary segment"
     >
-      Whenever this item is being referenced from some different item by a hyperlink, block or similar, it appears here in this list.
+      Content that link to this item
     </div>
     <table
       className="ui selectable single line attached compact table"
