@@ -232,9 +232,10 @@ class More extends Component {
       id: 'redirection',
     });
 
-    const linksToItemAction = find(this.props.actions.object_buttons, {
-      id: 'linkstoitem',
-    });
+    const linksToItemAction = true;
+    //find(this.props.actions.object_buttons, {
+    //   id: 'linkstoitem',
+    // });
 
     const { content, intl } = this.props;
 

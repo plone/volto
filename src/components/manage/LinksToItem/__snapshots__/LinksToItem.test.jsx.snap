@@ -3,7 +3,7 @@
 exports[`LinksToItem renders links to item view 1`] = `
 <div
   className="ui container"
-  id="linktoitem"
+  id="linkstoitem"
 >
   <div
     className="ui raised segments"
@@ -33,7 +33,7 @@ exports[`LinksToItem renders links to item view 1`] = `
           <th
             className=""
           >
-            Linked by this item
+            Linking this item
           </th>
           <th
             className=""
@@ -52,7 +52,7 @@ exports[`LinksToItem renders links to item view 1`] = `
             className=""
           >
             <a
-              className="not-published"
+              className="source private"
               href="http://localhost:3000/page-2-linking-to-page-1"
               rel="noopener noreferrer"
               target="_blank"
@@ -60,6 +60,7 @@ exports[`LinksToItem renders links to item view 1`] = `
             >
               <span
                 className="label"
+                title="Document"
               >
                 page #2 linking to page #1
               </span>

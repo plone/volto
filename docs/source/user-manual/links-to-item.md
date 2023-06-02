@@ -27,7 +27,7 @@ Click then on the item labeled {guilabel}`Links to item`.
 You can see now a table displaying all links to the current item.
 
 ```{image} ../_static/user-manual/manage/link-to-items.png
-:alt: A panel captioned with "Links to My Summer Vacation - Day 2". A table with two columns (first column labeled with "linked by this item", second column labeled with "review state"). In the row appears a link titled "Links to My Summer Vacation - Day 1", because it is referencing the current item.
+:alt: A panel captioned with "Links to My Summer Vacation - Day 2". A table with two columns (first column labeled with "Linking this item", second column labeled with "review state"). In the row appears a link titled "Links to My Summer Vacation - Day 1", because it is referencing the current item.
 ```
 
 For editors, this view gives insight to whether those links are still relevant.

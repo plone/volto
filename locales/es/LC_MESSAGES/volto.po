@@ -427,6 +427,7 @@ msgstr "Reglas de contenido disponibles:"
 #: components/manage/Controlpanels/UpgradeControlPanel
 #: components/manage/Diff/Diff
 #: components/manage/History/History
+#: components/manage/LinksToItem/LinksToItem
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalPreferences
@@ -1915,6 +1916,22 @@ msgstr "Enlazar a"
 msgid "Link translation for"
 msgstr "Enlazar traducción de"
 
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Linking this item
+msgid "Linking this item"
+msgstr ""
+
+#: components/manage/LinksToItem/LinksToItem
+#: components/manage/Toolbar/More
+# defaultMessage: Links To Item
+msgid "Links To Item"
+msgstr ""
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Links to {title}
+msgid "Links to {title}"
+msgstr ""
+
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Listing
 msgid "Listing"
@@ -2242,6 +2259,11 @@ msgstr "No hay elementos en esta carpeta."
 # defaultMessage: No items selected
 msgid "No items selected"
 msgstr "No se han seleccionado elementos"
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: No links to this item found.
+msgid "No links to this item found."
+msgstr ""
 
 #: components/manage/Blocks/Maps/MapsSidebar
 # defaultMessage: No map selected
@@ -2785,6 +2807,7 @@ msgid "Revert to this revision"
 msgstr "Revertir a esta revisión"
 
 #: components/manage/Contents/Contents
+#: components/manage/LinksToItem/LinksToItem
 # defaultMessage: Review state
 msgid "Review state"
 msgstr "Estado"
@@ -4026,6 +4049,11 @@ msgstr "Cuando"
 # defaultMessage: When this date is reached, the content will nolonger be visible in listings and searches.
 msgid "When this date is reached, the content will nolonger be visible in listings and searches."
 msgstr "Cuando se alcanza esta fecha, el contenido ya no será visible en listas y búsquedas."
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Whenever this item is being referenced from some different item by a hyperlink, block or similar, it appears here in this list.
+msgid "Whenever this item is being referenced from some different item by a hyperlink, block or similar, it appears here in this list."
+msgstr ""
 
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
