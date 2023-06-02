@@ -24,7 +24,7 @@ exports[`LinksToItem renders links to item view 1`] = `
     <table
       className="ui selectable single line attached compact table"
     >
-      <thead
+      <tbody
         className=""
       >
         <tr
@@ -34,6 +34,8 @@ exports[`LinksToItem renders links to item view 1`] = `
             className=""
           >
             Linking this item with
+             
+            hyperlink
           </th>
           <th
             className=""
@@ -46,10 +48,6 @@ exports[`LinksToItem renders links to item view 1`] = `
             Type
           </th>
         </tr>
-      </thead>
-      <tbody
-        className=""
-      >
         <tr
           className=""
         >
