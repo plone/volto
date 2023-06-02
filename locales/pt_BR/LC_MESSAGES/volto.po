@@ -3679,6 +3679,7 @@ msgid "Triggering event field error. Please select a value"
 msgstr "Erro no campo de gatilho. Selecione um valor"
 
 #: components/manage/Controlpanels/ContentTypes
+#: components/manage/LinksToItem/LinksToItem
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
 # defaultMessage: Type
