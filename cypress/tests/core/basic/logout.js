@@ -14,9 +14,9 @@ describe('Logout Tests', () => {
   });
   it('As registered user I can logout', function () {
     cy.get('#toolbar-personal').click();
-    cy.get('#toolbar-logout').click(); 
+    cy.get('#toolbar-logout').click();
   });
-    afterEach(() => {
+  afterEach(() => {
     cy.visit('/');
     cy.contains('Log in').click();
     const user = ploneAuth[0];

@@ -4,9 +4,6 @@ describe('Header Test', () => {
     cy.visit('/');
   });
   it('Header is rendered', function () {
-      cy.get('#footer').should('be.visible');
-      });
+    cy.get('#footer').should('be.visible');
   });
-
-
-  
+});

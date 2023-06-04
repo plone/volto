@@ -22,54 +22,51 @@ import {
  * @
  * @returns {string} Markup of the component.
  */
-const Header=({ pathname })=> {
- 
-  const { token } = useSelector(
-    (state) => ({
-       token :   state.userSession.token,
-    }));
-    
+const Header = ({ pathname }) => {
+  const { token } = useSelector((state) => ({
+    token: state.userSession.token,
+  }));
+
   /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
    */
-    return (
-      <Segment basic className="header-wrapper" role="banner">
-        <Container>
-          <div className="header">
-            <div className="logo-nav-wrapper">
-              <div className="logo">
-                <Logo />
-              </div>
-              <Navigation pathname={pathname} />
+  return (
+    <Segment basic className="header-wrapper" role="banner">
+      <Container>
+        <div className="header">
+          <div className="logo-nav-wrapper">
+            <div className="logo">
+              <Logo />
             </div>
-            <div className="tools-search-wrapper">
-              <LanguageSelector />
-              {!token && (
-                <div className="tools">
-                  <Anontools />
-                </div>
-              )}
-              <div className="search">
-                <SearchWidget />
+            <Navigation pathname={pathname} />
+          </div>
+          <div className="tools-search-wrapper">
+            <LanguageSelector />
+            {!token && (
+              <div className="tools">
+                <Anontools />
               </div>
+            )}
+            <div className="search">
+              <SearchWidget />
             </div>
           </div>
-        </Container>
-      </Segment>
-    );
-  }
-
+        </div>
+      </Container>
+    </Segment>
+  );
+};
 
 export default Header;
 
- /**
-   * Property types.
-   * @property {Object} propTypes Property types.
-   * @static
-   */
- Header.propTypes = {
+/**
+ * Property types.
+ * @property {Object} propTypes Property types.
+ * @static
+ */
+Header.propTypes = {
   token: PropTypes.string,
   pathname: PropTypes.string.isRequired,
 };
@@ -79,6 +76,6 @@ export default Header;
  * @property {Object} defaultProps Default properties.
  * @static
  */
-  Header.defaultProps = {
+Header.defaultProps = {
   token: null,
 };

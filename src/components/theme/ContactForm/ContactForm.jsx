@@ -6,7 +6,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from '@plone/volto/helpers';
-import { useSelector,shallowEqual, useDispatch } from 'react-redux';
+import { useSelector, shallowEqual, useDispatch } from 'react-redux';
 import { compose } from 'redux';
 import { Portal } from 'react-portal';
 import { Container, Message, Icon } from 'semantic-ui-react';
@@ -70,26 +70,27 @@ const messages = defineMessages({
  * @class ContactForm
  * @extends Component
  */
-const ContactFormComponent=({ location , history })=>{
+const ContactFormComponent = ({ location, history }) => {
+  const dispatch = useDispatch();
+  const intl = useIntl();
+  const [isClient, setisClient] = useState(false);
 
-  const dispatch=useDispatch();
-  const intl=useIntl();
-  const [isClient,setisClient]=useState(false);
-  
-  const {loaded,loading,error} = useSelector(
+  const { loaded, loading, error } = useSelector(
     (state) => ({
       loading: state.emailNotification.loading,
       loaded: state.emailNotification.loaded,
       error: state.emailNotification.error,
-    }),shallowEqual);
-    
-  const pathname=location.pathname;
-    
-  useEffect(()=>{
-    setisClient(true);
-  },[])
+    }),
+    shallowEqual,
+  );
 
-  useEffect(()=>{
+  const pathname = location.pathname;
+
+  useEffect(() => {
+    setisClient(true);
+  }, []);
+
+  useEffect(() => {
     if (loading && loaded) {
       toast.success(
         <Toast
@@ -99,8 +100,7 @@ const ContactFormComponent=({ location , history })=>{
         />,
       );
     }
-  },[loaded,loading]);
-
+  }, [loaded, loading]);
 
   /**
    * On submit handler
@@ -108,131 +108,125 @@ const ContactFormComponent=({ location , history })=>{
    * @param {Object} data Data object.
    * @returns {undefined}
    */
-  const onSubmit=(data) =>{
-    dispatch(emailNotification(
-      data.from,
-      data.message,
-      data.name,
-      data.subject,
-    ));
-  }
+  const onSubmit = (data) => {
+    dispatch(
+      emailNotification(data.from, data.message, data.name, data.subject),
+    );
+  };
 
   /**
    * Cancel handler
    * @method onCancel
    * @returns {undefined}
    */
-  const onCancel=()=> {
+  const onCancel = () => {
     history.goBack();
-  }
-  
+  };
+
   /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
    */
 
-    return (
-      <div id="contact-form">
-        <Container id="view">
-          <Helmet title={intl.formatMessage(messages.contactForm)} />
-          {error && (
-            <Message
-              icon="warning"
-              negative
-              attached
-              header={intl.formatMessage(messages.error)}
-              content={error.message}
-            />
-          )}
-          <Form
-            onSubmit={onSubmit}
-            onCancel={onCancel}
-            formData={{ blocksLayoutFieldname: {} }}
-            submitLabel={intl.formatMessage(messages.send)}
-            resetAfterSubmit
-            title={intl.formatMessage(messages.contactForm)}
-            loading={loading}
-            schema={{
-              fieldsets: [
-                {
-                  fields: ['name', 'from', 'subject', 'message'],
-                  id: 'default',
-                  title: intl.formatMessage(messages.default),
-                },
-              ],
-              properties: {
-                name: {
-                  title: intl.formatMessage(messages.name),
-                  type: 'string',
-                },
-                from: {
-                  title: intl.formatMessage(messages.from),
-                  type: 'email',
-                },
-                subject: {
-                  title: intl.formatMessage(messages.subject),
-                  type: 'string',
-                },
-                message: {
-                  title: intl.formatMessage(messages.message),
-                  type: 'string',
-                  widget: 'textarea',
-                },
-              },
-              required: ['from', 'message'],
-            }}
+  return (
+    <div id="contact-form">
+      <Container id="view">
+        <Helmet title={intl.formatMessage(messages.contactForm)} />
+        {error && (
+          <Message
+            icon="warning"
+            negative
+            attached
+            header={intl.formatMessage(messages.error)}
+            content={error.message}
           />
-          {isClient && (
-            <Portal node={document.getElementById('toolbar')}>
-              <Toolbar
-                pathname={pathname}
-                hideDefaultViewButtons
-                inner={
-                  <Link
-                    to={`${getBaseUrl(pathname)}`}
-                    className="item"
-                  >
-                    <Icon
-                      name="arrow left"
-                      size="big"
-                      color="blue"
-                      title={intl.formatMessage(messages.back)}
-                    />
-                  </Link>
-                }
-              />
-            </Portal>
-          )}
-        </Container>
-      </div>
-    );
-  }
+        )}
+        <Form
+          onSubmit={onSubmit}
+          onCancel={onCancel}
+          formData={{ blocksLayoutFieldname: {} }}
+          submitLabel={intl.formatMessage(messages.send)}
+          resetAfterSubmit
+          title={intl.formatMessage(messages.contactForm)}
+          loading={loading}
+          schema={{
+            fieldsets: [
+              {
+                fields: ['name', 'from', 'subject', 'message'],
+                id: 'default',
+                title: intl.formatMessage(messages.default),
+              },
+            ],
+            properties: {
+              name: {
+                title: intl.formatMessage(messages.name),
+                type: 'string',
+              },
+              from: {
+                title: intl.formatMessage(messages.from),
+                type: 'email',
+              },
+              subject: {
+                title: intl.formatMessage(messages.subject),
+                type: 'string',
+              },
+              message: {
+                title: intl.formatMessage(messages.message),
+                type: 'string',
+                widget: 'textarea',
+              },
+            },
+            required: ['from', 'message'],
+          }}
+        />
+        {isClient && (
+          <Portal node={document.getElementById('toolbar')}>
+            <Toolbar
+              pathname={pathname}
+              hideDefaultViewButtons
+              inner={
+                <Link to={`${getBaseUrl(pathname)}`} className="item">
+                  <Icon
+                    name="arrow left"
+                    size="big"
+                    color="blue"
+                    title={intl.formatMessage(messages.back)}
+                  />
+                </Link>
+              }
+            />
+          </Portal>
+        )}
+      </Container>
+    </div>
+  );
+};
 
-  /**
-   * Property types.
-   * @property {Object} propTypes Property types.
-   * @static
-   */
-  ContactFormComponent.propTypes = {
-    emailNotification: PropTypes.func,
-    error: PropTypes.shape({
-      message: PropTypes.string,
-    }),
-    loading: PropTypes.bool,
-    loaded: PropTypes.bool,
-    pathname: PropTypes.string,
-  };
+/**
+ * Property types.
+ * @property {Object} propTypes Property types.
+ * @static
+ */
+ContactFormComponent.propTypes = {
+  emailNotification: PropTypes.func,
+  error: PropTypes.shape({
+    message: PropTypes.string,
+  }),
+  loading: PropTypes.bool,
+  loaded: PropTypes.bool,
+  pathname: PropTypes.string,
+};
 
-  /**
-   * Default properties.
-   * @property {Object} defaultProps Default properties.
-   * @static
-   */
-  ContactFormComponent.defaultProps = {
-    error: null,
-    loading: null,
-    loaded: null,
-  };
+/**
+ * Default properties.
+ * @property {Object} defaultProps Default properties.
+ * @static
+ */
+ContactFormComponent.defaultProps = {
+  error: null,
+  loading: null,
+  loaded: null,
+};
 
-export default compose( withRouter)(ContactFormComponent);
+export default compose(withRouter)(ContactFormComponent);
