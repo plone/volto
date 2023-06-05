@@ -10,13 +10,6 @@ import {
   SearchWidget,
 } from '@plone/volto/components';
 
-/**
- * Header function.
- * @function Header
- * @
- * @returns {string} Markup of the component.
-
- */
 const Header = ({ pathname }) => {
   const token = useToken();
 
@@ -49,23 +42,12 @@ const Header = ({ pathname }) => {
 
 export default Header;
 
-/**
- * Property types.
- * @property {Object} propTypes Property types.
- * @static
- */
-
 Header.propTypes = {
   token: PropTypes.string,
   pathname: PropTypes.string.isRequired,
   content: PropTypes.objectOf(PropTypes.any),
 };
 
-/**
- * Default properties.
- * @property {Object} defaultProps Default properties.
- * @static
- */
 Header.defaultProps = {
   token: null,
   content: null,
