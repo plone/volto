@@ -20,7 +20,9 @@ function imageMiddleware(req, res, next) {
 export default function () {
   const middleware = express.Router();
 
-  middleware.all(['**/@@images/*', '**/@@site-logo/*'], imageMiddleware);
+  middleware.all(['**/@@images/*'], imageMiddleware);
+  middleware.all(['/@portrait/*'], imageMiddleware);
+  middleware.all(['**/@@site-logo/*'], imageMiddleware);
   middleware.id = 'imageResourcesProcessor';
   return middleware;
 }

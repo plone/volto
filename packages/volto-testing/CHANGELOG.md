@@ -1,14 +1,26 @@
-# Change Log
+# Volto Testing Release Notes
 
-## 2.0.2 (unreleased)
+<!-- You should *NOT* be adding new change log entries to this file.
+     You should create a file in the news directory instead.
+     For helpful instructions, please see:
+     https://6.docs.plone.org/volto/developer-guidelines/contributing.html#create-a-pull-request
+-->
 
-### Breaking
+<!-- towncrier release notes start -->
+
+## 3.1.0 (2023-02-08)
 
 ### Feature
 
-### Bugfix
+- Update Cypress support commands, add missing peer dependency `axe-core` @sneridagh [#4382](https://github.com/plone/volto/issues/4382)
 
-### Internal
+
+## 3.0.0 (2022-12-15)
+
+### Breaking
+
+- Update to latest Cypress used in Volto core @sneridagh [#4128](https://github.com/plone/volto/issues/4128)
+
 
 ## 2.0.1 (2022-08-01)
 

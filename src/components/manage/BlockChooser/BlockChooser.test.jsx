@@ -8,6 +8,8 @@ import config from '@plone/volto/registry';
 
 const blockSVG = {};
 
+config.experimental = { addBlockButton: { enabled: false } };
+
 config.blocks.blocksConfig = {
   title: {
     id: 'title',
@@ -105,6 +107,11 @@ config.blocks.blocksConfig = {
     group: 'common',
     restricted: false,
     mostUsed: false,
+  },
+  malformedBlock: {
+    icon: blockSVG,
+    group: 'common',
+    restricted: false,
   },
 };
 

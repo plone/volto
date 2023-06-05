@@ -20,6 +20,8 @@ import EditTextBlock from '@plone/volto/components/manage/Blocks/Text/Edit';
 import EditImageBlock from '@plone/volto/components/manage/Blocks/Image/Edit';
 import EditLeadImageBlock from '@plone/volto/components/manage/Blocks/LeadImage/Edit';
 import EditListingBlock from '@plone/volto/components/manage/Blocks/Listing/Edit';
+import DefaultNoResultsComponent from '@plone/volto/components/manage/Blocks/Listing/DefaultNoResultsComponent';
+import GalleryNoResultsComponent from '@plone/volto/components/manage/Blocks/Listing/GalleryNoResultsComponent';
 import DefaultListingBlockTemplate from '@plone/volto/components/manage/Blocks/Listing/DefaultTemplate';
 import SummaryListingBlockTemplate from '@plone/volto/components/manage/Blocks/Listing/SummaryTemplate';
 import EditVideoBlock from '@plone/volto/components/manage/Blocks/Video/Edit';
@@ -37,9 +39,10 @@ import globeSVG from '@plone/volto/icons/globe.svg';
 import codeSVG from '@plone/volto/icons/code.svg';
 import heroSVG from '@plone/volto/icons/hero.svg';
 import tableSVG from '@plone/volto/icons/table.svg';
-import listBulletSVG from '@plone/volto/icons/list-bullet.svg';
+import listingBlockSVG from '@plone/volto/icons/content-listing.svg';
 import tocSVG from '@plone/volto/icons/list-bullet.svg';
 import searchSVG from '@plone/volto/icons/zoom.svg';
+import imagesSVG from '@plone/volto/icons/images.svg';
 
 import ImageGalleryListingBlockTemplate from '@plone/volto/components/manage/Blocks/Listing/ImageGallery';
 import BlockSettingsSchema from '@plone/volto/components/manage/Blocks/Block/Schema';
@@ -70,6 +73,12 @@ import ListingBlockSchema from '@plone/volto/components/manage/Blocks/Listing/sc
 import SearchBlockSchema from '@plone/volto/components/manage/Blocks/Search/schema';
 
 import ToCVariations from '@plone/volto/components/manage/Blocks/ToC/variations';
+
+import TeaserViewBlock from '@plone/volto/components/manage/Blocks/Teaser/View';
+import TeaserEditBlock from '@plone/volto/components/manage/Blocks/Teaser/Edit';
+import TeaserBlockDefaultBody from '@plone/volto/components/manage/Blocks/Teaser/DefaultBody';
+import { TeaserSchema } from '@plone/volto/components/manage/Blocks/Teaser/schema';
+import { TeaserBlockDataAdapter } from '@plone/volto/components/manage/Blocks/Teaser/adapter';
 
 defineMessages({
   title: {
@@ -155,6 +164,22 @@ defineMessages({
     id: 'Facets on top',
     defaultMessage: 'Facets on top',
   },
+  selectFacet: {
+    id: 'selectFacet',
+    defaultMessage: 'Select',
+  },
+  checkboxFacet: {
+    id: 'checkboxFacet',
+    defaultMessage: 'Checkbox',
+  },
+  daterangeFacet: {
+    id: 'daterangeFacet',
+    defaultMessage: 'Date Range',
+  },
+  toggleFacet: {
+    id: 'toggleFacet',
+    defaultMessage: 'Toggle',
+  },
 });
 
 const groupBlocksOrder = [
@@ -180,10 +205,6 @@ const blocksConfig = {
     mostUsed: false,
     blockHasOwnFocusManagement: true,
     sidebarTab: 0,
-    security: {
-      addPermission: [],
-      view: [],
-    },
   },
   description: {
     id: 'description',
@@ -197,10 +218,6 @@ const blocksConfig = {
     mostUsed: false,
     blockHasOwnFocusManagement: true,
     sidebarTab: 0,
-    security: {
-      addPermission: [],
-      view: [],
-    },
   },
   text: {
     id: 'text',
@@ -214,10 +231,6 @@ const blocksConfig = {
     mostUsed: false,
     blockHasOwnFocusManagement: true,
     sidebarTab: 0,
-    security: {
-      addPermission: [],
-      view: [],
-    },
     blockHasValue: (data) => {
       const isEmpty =
         !data.text ||
@@ -236,10 +249,6 @@ const blocksConfig = {
     restricted: false,
     mostUsed: true,
     sidebarTab: 1,
-    security: {
-      addPermission: [],
-      view: [],
-    },
   },
   leadimage: {
     id: 'leadimage',
@@ -252,15 +261,11 @@ const blocksConfig = {
     restricted: ({ properties }) => !properties.hasOwnProperty('image'),
     mostUsed: false,
     sidebarTab: 1,
-    security: {
-      addPermission: [],
-      view: [],
-    },
   },
   listing: {
     id: 'listing',
     title: 'Listing',
-    icon: listBulletSVG,
+    icon: listingBlockSVG,
     group: 'common',
     view: ViewListingBlock,
     edit: EditListingBlock,
@@ -270,10 +275,7 @@ const blocksConfig = {
     mostUsed: true,
     sidebarTab: 1,
     showLinkMore: false,
-    security: {
-      addPermission: [],
-      view: [],
-    },
+    noResultsComponent: DefaultNoResultsComponent,
     variations: [
       {
         id: 'default',
@@ -285,6 +287,7 @@ const blocksConfig = {
         id: 'imageGallery',
         title: 'Image gallery',
         template: ImageGalleryListingBlockTemplate,
+        noResultsComponent: GalleryNoResultsComponent,
       },
       {
         id: 'summary',
@@ -305,10 +308,6 @@ const blocksConfig = {
     restricted: false,
     mostUsed: true,
     sidebarTab: 1,
-    security: {
-      addPermission: [],
-      view: [],
-    },
   },
   toc: {
     id: 'toc',
@@ -322,10 +321,6 @@ const blocksConfig = {
     restricted: false,
     mostUsed: false,
     sidebarTab: 1,
-    security: {
-      addPermission: [],
-      view: [],
-    },
   },
   hero: {
     id: 'hero',
@@ -340,10 +335,6 @@ const blocksConfig = {
     mostUsed: false,
     blockHasOwnFocusManagement: true,
     sidebarTab: 1,
-    security: {
-      addPermission: [],
-      view: [],
-    },
   },
 
   maps: {
@@ -357,10 +348,6 @@ const blocksConfig = {
     restricted: false,
     mostUsed: false,
     sidebarTab: 1,
-    security: {
-      addPermission: [],
-      view: [],
-    },
   },
   html: {
     id: 'html',
@@ -373,10 +360,6 @@ const blocksConfig = {
     restricted: false,
     mostUsed: false,
     sidebarTab: 0,
-    security: {
-      addPermission: [],
-      view: [],
-    },
   },
   table: {
     id: 'table',
@@ -390,10 +373,6 @@ const blocksConfig = {
     mostUsed: false,
     blockHasOwnFocusManagement: true,
     sidebarTab: 1,
-    security: {
-      addPermission: [],
-      view: [],
-    },
   },
   search: {
     id: 'search',
@@ -406,10 +385,6 @@ const blocksConfig = {
     restricted: false,
     mostUsed: false,
     sidebarTab: 1,
-    security: {
-      addPermission: [],
-      view: [],
-    },
     variations: [
       {
         id: 'facetsRightSide',
@@ -482,6 +457,27 @@ const blocksConfig = {
         ],
       },
     },
+  },
+  teaser: {
+    id: 'teaser',
+    title: 'Teaser',
+    icon: imagesSVG,
+    group: 'common',
+    view: TeaserViewBlock,
+    edit: TeaserEditBlock,
+    restricted: false,
+    mostUsed: true,
+    sidebarTab: 1,
+    blockSchema: TeaserSchema,
+    dataAdapter: TeaserBlockDataAdapter,
+    variations: [
+      {
+        id: 'default',
+        isDefault: true,
+        title: 'Default',
+        template: TeaserBlockDefaultBody,
+      },
+    ],
   },
 };
 

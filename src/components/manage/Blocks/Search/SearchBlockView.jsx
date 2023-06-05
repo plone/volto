@@ -13,9 +13,11 @@ import { isEqual, isFunction } from 'lodash';
 const getListingBodyVariation = (data) => {
   const { variations } = config.blocks.blocksConfig.listing;
 
-  const variation = data.listingBodyTemplate
+  let variation = data.listingBodyTemplate
     ? variations.find(({ id }) => id === data.listingBodyTemplate)
     : variations.find(({ isDefault }) => isDefault);
+
+  if (!variation) variation = variations[0];
 
   return variation;
 };
@@ -55,18 +57,39 @@ const applyDefaults = (data, root) => {
 };
 
 const SearchBlockView = (props) => {
-  const { data, searchData, mode = 'view', variation } = props;
+  const { id, data, searchData, mode = 'view', variation } = props;
 
   const Layout = variation.view;
 
-  const listingBodyVariation = getListingBodyVariation(data);
+  const dataListingBodyVariation = getListingBodyVariation(data).id;
+  const [selectedView, setSelectedView] = React.useState(
+    dataListingBodyVariation,
+  );
+
+  // in the block edit you can change the used listing block variation,
+  // but it's cached here in the state. So we reset it.
+  React.useEffect(() => {
+    if (mode !== 'view') {
+      setSelectedView(dataListingBodyVariation);
+    }
+  }, [dataListingBodyVariation, mode]);
+
   const root = useSelector((state) => state.breadcrumbs.root);
   const listingBodyData = applyDefaults(searchData, root);
 
+  const { variations } = config.blocks.blocksConfig.listing;
+  const listingBodyVariation = variations.find(({ id }) => id === selectedView);
+
   return (
     <div className="block search">
-      <Layout {...props} isEditMode={mode === 'edit'}>
+      <Layout
+        {...props}
+        isEditMode={mode === 'edit'}
+        selectedView={selectedView}
+        setSelectedView={setSelectedView}
+      >
         <ListingBody
+          id={id}
           variation={{ ...data, ...listingBodyVariation }}
           data={listingBodyData}
           path={props.path}

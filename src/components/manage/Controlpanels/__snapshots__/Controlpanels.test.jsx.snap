@@ -24,7 +24,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
         className="ui attached segment"
       >
         <div
-          className="ui six column grid"
+          className="ui doubling six column grid"
         >
           <div
             className="row"
@@ -257,7 +257,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
         className="ui attached segment"
       >
         <div
-          className="ui six column grid"
+          className="ui doubling six column grid"
         >
           <div
             className="row"
@@ -294,6 +294,78 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                     className="content"
                   >
                     Editing
+                  </div>
+                </h3>
+              </a>
+            </div>
+            <div
+              className="column"
+            >
+              <a
+                href="/controlpanel/rules"
+                onClick={[Function]}
+              >
+                <h3
+                  className="ui icon center aligned header"
+                >
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                  <div
+                    className="content"
+                  >
+                    Content Rules
+                  </div>
+                </h3>
+              </a>
+            </div>
+            <div
+              className="column"
+            >
+              <a
+                href="/controlpanel/relations"
+                onClick={[Function]}
+              >
+                <h3
+                  className="ui icon center aligned header"
+                >
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                  <div
+                    className="content"
+                  >
+                    Relations
                   </div>
                 </h3>
               </a>
@@ -346,7 +418,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
         className="ui attached segment"
       >
         <div
-          className="ui six column grid"
+          className="ui doubling six column grid"
         >
           <div
             className="row"
@@ -382,7 +454,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                   <div
                     className="content"
                   >
-                    Security
+                    test
                   </div>
                 </h3>
               </a>
@@ -399,7 +471,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
         className="ui attached segment"
       >
         <div
-          className="ui six column grid"
+          className="ui doubling six column grid"
         >
           <div
             className="row"
@@ -529,9 +601,6 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
       />
     </div>
   </div>
-  <div
-    id="Portal"
-  />
 </div>
 `;
 
@@ -553,13 +622,66 @@ exports[`Controlpanels renders an additional control panel 1`] = `
       <div
         className="ui secondary segment"
       >
+        Security
+      </div>
+      <div
+        className="ui attached segment"
+      >
+        <div
+          className="ui doubling six column grid"
+        >
+          <div
+            className="row"
+          >
+            <div
+              className="column"
+            >
+              <a
+                href="/controlpanel/security"
+                onClick={[Function]}
+              >
+                <h3
+                  className="ui icon center aligned header"
+                >
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                  <div
+                    className="content"
+                  >
+                    test
+                  </div>
+                </h3>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="ui secondary segment"
+      >
         Add-on Configuration
       </div>
       <div
         className="ui attached segment"
       >
         <div
-          className="ui six column grid"
+          className="ui doubling six column grid"
         >
           <div
             className="row"
@@ -612,7 +734,7 @@ exports[`Controlpanels renders an additional control panel 1`] = `
         className="ui attached segment"
       >
         <div
-          className="ui six column grid"
+          className="ui doubling six column grid"
         >
           <div
             className="row"
@@ -773,11 +895,83 @@ exports[`Controlpanels renders an additional control panel 1`] = `
         className="ui attached segment"
       >
         <div
-          className="ui six column grid"
+          className="ui doubling six column grid"
         >
           <div
             className="row"
           >
+            <div
+              className="column"
+            >
+              <a
+                href="/controlpanel/rules"
+                onClick={[Function]}
+              >
+                <h3
+                  className="ui icon center aligned header"
+                >
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                  <div
+                    className="content"
+                  >
+                    Content Rules
+                  </div>
+                </h3>
+              </a>
+            </div>
+            <div
+              className="column"
+            >
+              <a
+                href="/controlpanel/relations"
+                onClick={[Function]}
+              >
+                <h3
+                  className="ui icon center aligned header"
+                >
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                  <div
+                    className="content"
+                  >
+                    Relations
+                  </div>
+                </h3>
+              </a>
+            </div>
             <div
               className="column"
             >
@@ -826,7 +1020,7 @@ exports[`Controlpanels renders an additional control panel 1`] = `
         className="ui attached segment"
       >
         <div
-          className="ui six column grid"
+          className="ui doubling six column grid"
         >
           <div
             className="row"

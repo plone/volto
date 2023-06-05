@@ -33,7 +33,7 @@ import {
   getBlocksLayoutFieldname,
   getLanguageIndependentFields,
   langmap,
-  normalizeLanguageName,
+  toGettextLang,
 } from '@plone/volto/helpers';
 
 import { preloadLazyLibs } from '@plone/volto/helpers/Loadable';
@@ -219,7 +219,7 @@ class Add extends Component {
   onCancel() {
     if (this.props.location?.state?.translationOf) {
       const language = this.props.location.state.languageFrom;
-      const langFileName = normalizeLanguageName(language);
+      const langFileName = toGettextLang(language);
       import('@root/../locales/' + langFileName + '.json').then((locale) => {
         this.props.changeLanguage(language, locale.default);
       });

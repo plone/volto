@@ -89,6 +89,10 @@ class SearchWidget extends Component {
         this.state.text,
       )}${path}`,
     );
+    // reset input value
+    this.setState({
+      text: '',
+    });
     event.preventDefault();
   }
 

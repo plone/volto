@@ -174,13 +174,13 @@ export const parseDateTime = (locale, value, format, moment) => {
 };
 
 /**
- * Converts a language code to the format `lang_region`
+ * Converts a language code like pt-br to the format `pt_BR` (`lang_region`)
  * Useful for passing from Plone's i18n lang names to Xnix locale names
- * eg. LC_MESSAGES/lang_region.po filenames
+ * eg. LC_MESSAGES/lang_region.po filenames. Also used in the I18N_LANGUAGE cookie.
  * @param {string} language Language to be converted
  * @returns {string} Language converted
  */
-export const normalizeLanguageName = (language) => {
+export const toGettextLang = (language) => {
   if (language.includes('-')) {
     let normalizedLang = language.split('-');
     normalizedLang = `${normalizedLang[0]}_${normalizedLang[1].toUpperCase()}`;
@@ -189,28 +189,42 @@ export const normalizeLanguageName = (language) => {
 
   return language;
 };
+export const normalizeLanguageName = toGettextLang;
 
 /**
- * Converts a language code to the format `lang-region`
- * `react-intl` only supports this syntax, so coming from the language
- * negotiation of the `locale` lib, one need to convert it first
+ * Converts a language code like pt-br or pt_BR to the format `pt-BR`.
+ * `react-intl` only supports this syntax. We also use it for the locales
+ * in the volto Redux store.
  * @param {string} language Language to be converted
  * @returns {string} Language converted
  */
-export const toLangUnderscoreRegion = (language) => {
-  if (language.includes('_')) {
-    let langCode = language.split('_');
+export const toReactIntlLang = (language) => {
+  if (language.includes('_') || language.includes('-')) {
+    let langCode = language.split(/[-_]/);
     langCode = `${langCode[0]}-${langCode[1].toUpperCase()}`;
     return langCode;
   }
 
   return language;
 };
+export const toLangUnderscoreRegion = toReactIntlLang; // old name for backwards-compat
 
 /**
- * Lookup if a given expander is set in apiExpanders
- * @param {string} language Language to be normalized
- * @returns {string} Language normalized
+ * Converts a language code like pt_BR or pt-BR to the format `pt-br`.
+ * This format is used on the backend and in volto config settings.
+ * @param {string} language Language to be converted
+ * @returns {string} Language converted
+ */
+export const toBackendLang = (language) => {
+  return toReactIntlLang(language).toLowerCase();
+};
+
+/**
+ * Lookup if a given expander is set in apiExpanders for the given path and action type
+ * @param {string} expander The id literal of the expander eg. `navigation`
+ * @param {string} path The path (no URL) to check if the expander has effect
+ * @param {string} type The Redux action type
+ * @returns {boolean} Return if the expander is present for the path and the type given
  */
 export const hasApiExpander = (expander, path = '', type = 'GET_CONTENT') => {
   return flatten(
@@ -256,11 +270,11 @@ export const removeFromArray = (array, index) => {
 };
 
 /**
- * Reorder array
+ * Moves an item from origin to target inside an array in an immutable way
  * @param {Array} array Array with data
- * @param {number} origin Index of item to be reordered
- * @param {number} target Index of item to be reordered to
- * @returns {Array} Array with reordered elements
+ * @param {number} origin Index of item to be moved from
+ * @param {number} target Index of item to be moved to
+ * @returns {Array} Resultant array
  */
 export const reorderArray = (array, origin, target) => {
   const result = Array.from(array);
@@ -297,3 +311,16 @@ export const cloneDeepSchema = (object) => {
     }
   });
 };
+
+/**
+ * Creates an array given a range of numbers
+ * @param {number} start start number from
+ * @param {number} stop stop number at
+ * @param {number} step step every each number in the sequence
+ * @returns {array} The result, eg. [0, 1, 2, 3, 4]
+ */
+export const arrayRange = (start, stop, step) =>
+  Array.from(
+    { length: (stop - start) / step + 1 },
+    (value, index) => start + index * step,
+  );

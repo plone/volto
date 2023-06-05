@@ -1,12 +1,12 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
-import { SliderSchema } from './schema';
 import { BlockDataForm } from '@plone/volto/components';
 
 const TestBlockData = (props) => {
-  const { block, data, onChangeBlock } = props;
+  const { block, blocksConfig, data, onChangeBlock } = props;
   const intl = useIntl();
-  const schema = SliderSchema({ ...props, intl });
+  const schema = blocksConfig[data['@type']].blockSchema({ intl });
+
   return (
     <BlockDataForm
       block={block}
@@ -18,6 +18,7 @@ const TestBlockData = (props) => {
           [id]: value,
         });
       }}
+      onChangeBlock={onChangeBlock}
       formData={data}
     />
   );

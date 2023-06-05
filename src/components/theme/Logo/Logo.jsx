@@ -5,6 +5,10 @@
 import { useEffect } from 'react';
 import { Image } from 'semantic-ui-react';
 import { ConditionalLink } from '@plone/volto/components';
+import { useSelector } from 'react-redux';
+import config from '@plone/volto/registry';
+import { UniversalLink } from '@plone/volto/components';
+import { toBackendLang } from '@plone/volto/helpers';
 import LogoImage from '@plone/volto/components/theme/Logo/Logo.svg';
 import { useSelector, useDispatch } from 'react-redux';
 import { getNavroot, getSite } from '@plone/volto/actions';

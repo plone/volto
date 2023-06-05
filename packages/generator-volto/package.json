@@ -10,7 +10,7 @@
     }
   ],
   "license": "MIT",
-  "version": "5.9.3",
+  "version": "7.0.0-alpha.4",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/plone/generator-volto.git"
@@ -50,7 +50,6 @@
     "ci:cypress:run": "start-test ci:start-api-plone http-get://localhost:55001/plone ci:start-frontend",
     "ci:cypress:run:guillotina": "start-test ci:start-api-guillotina http-get://localhost:8081 ci:start-frontend-guillotina",
     "dry-release": "release-it --dry-run",
-    "prerelease": "tar --exclude=node_modules -zcvf generator-volto.tgz .",
     "release": "release-it",
     "release-major-alpha": "release-it major --preRelease=alpha",
     "release-alpha": "release-it --preRelease=alpha"
@@ -61,11 +60,11 @@
   },
   "release-it": {
     "hooks": {
-      "after:bump": "node ../scripts/changelogupdater.cjs bump ${version}",
-      "after:release": "node ../scripts/changelogupdater.cjs back ${version} && git commit -am 'Back to development (generator-volto)' && git push"
+      "after:bump": "pipx run towncrier build --draft --yes --version ${version} > .changelog.draft && pipx run towncrier build --yes --version ${version}",
+      "after:release": "rm .changelog.draft"
     },
     "git": {
-      "changelog": "node ../scripts/changelogupdater.cjs excerpt",
+      "changelog": "pipx run towncrier build --draft --yes --version 0.0.0",
       "requireUpstream": false,
       "requireCleanWorkingDir": false,
       "commitMessage": "Release generate-volto ${version}",
@@ -75,10 +74,7 @@
     "github": {
       "release": true,
       "releaseName": "@plone/generator-volto ${version}",
-      "releaseNotes": "node ../scripts/changelogupdater.cjs excerpt",
-      "assets": [
-        "*.tgz"
-      ]
+      "releaseNotes": "cat .changelog.draft"
     }
   },
   "jest": {
@@ -100,7 +96,7 @@
     }
   },
   "engines": {
-    "node": "^12 || ^14 || ^16"
+    "node": "^16 || ^18"
   },
   "dependencies": {
     "ansi-escapes": "2.0.0",
@@ -112,10 +108,10 @@
     "fs-extra": "3.0.0",
     "gitly": "2.0.3",
     "mkdirp-then": "1.2.0",
-    "ms": "1.0.0",
     "mz": "2.6.0",
     "ora": "1.2.0",
     "promise": "7.1.1",
+    "semver": "7.3.8",
     "update-notifier": "^5.0.1",
     "yeoman-generator": "^4.12.0"
   },
@@ -132,5 +128,8 @@
     "release-it": "^14.9.0",
     "yeoman-assert": "^3.1.0",
     "yeoman-test": "^6.1.0"
+  },
+  "resolutions": {
+    "mem-fs-editor": "^9.5.0"
   }
 }

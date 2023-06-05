@@ -45,7 +45,13 @@ const itemSchema = (props) => {
       {
         id: 'default',
         title: 'Default',
-        fields: ['href', 'title', 'description', 'preview_image'],
+        fields: [
+          'href',
+          'title',
+          'description',
+          'preview_image',
+          'extraDefault',
+        ],
       },
     ],
 
@@ -74,6 +80,10 @@ const itemSchema = (props) => {
         mode: 'image',
         allowExternals: true,
       },
+      extraDefault: {
+        title: 'Extra',
+        default: 'Extra default',
+      },
     },
     required: [],
   };
@@ -85,7 +95,14 @@ export const SliderSchema = (props) => ({
     {
       id: 'default',
       title: 'Default',
-      fields: ['slides', 'fieldAfterObjectList', 'href'],
+      fields: [
+        'html',
+        'slides',
+        'fieldAfterObjectList',
+        'href',
+        'firstWithDefault',
+        'style',
+      ],
     },
   ],
   properties: {
@@ -108,6 +125,111 @@ export const SliderSchema = (props) => ({
         'headtitle',
       ],
       allowExternals: true,
+    },
+    firstWithDefault: {
+      title: 'Field with default',
+      default: 'Some default value',
+    },
+    style: {
+      widget: 'object',
+      schema: {
+        title: 'Style',
+        fieldsets: [
+          {
+            id: 'default',
+            fields: ['color'],
+            title: 'Default',
+          },
+        ],
+        properties: {
+          color: {
+            title: 'Color',
+            default: 'red',
+          },
+        },
+        required: [],
+      },
+    },
+    html: {
+      title: 'HTML',
+      widget: 'richtext',
+    },
+  },
+  required: [],
+});
+
+export const multipleFieldsetsSchema = (props) => ({
+  title: props.intl.formatMessage(messages.Slider),
+  fieldsets: [
+    {
+      id: 'default',
+      title: 'Default',
+      fields: ['html'],
+    },
+    {
+      id: 'second',
+      title: 'second',
+      fields: ['slides'],
+    },
+    {
+      id: 'third',
+      title: 'third',
+      fields: ['fieldAfterObjectList'],
+    },
+    {
+      id: 'fourth',
+      title: 'fourth',
+      fields: ['href', 'firstWithDefault', 'style'],
+    },
+  ],
+  properties: {
+    slides: {
+      widget: 'object_list',
+      title: props.intl.formatMessage(messages.items),
+      schema: itemSchema,
+    },
+    fieldAfterObjectList: {
+      title: 'Field after OL',
+    },
+    href: {
+      title: props.intl.formatMessage(messages.Source),
+      widget: 'object_browser',
+      mode: 'link',
+      selectedItemAttrs: [
+        'Title',
+        'Description',
+        'hasPreviewImage',
+        'headtitle',
+      ],
+      allowExternals: true,
+    },
+    firstWithDefault: {
+      title: 'Field with default',
+      default: 'Some default value',
+    },
+    style: {
+      widget: 'object',
+      schema: {
+        title: 'Style',
+        fieldsets: [
+          {
+            id: 'default',
+            fields: ['color'],
+            title: 'Default',
+          },
+        ],
+        properties: {
+          color: {
+            title: 'Color',
+            default: 'red',
+          },
+        },
+        required: [],
+      },
+    },
+    html: {
+      title: 'HTML',
+      widget: 'richtext',
     },
   },
   required: [],

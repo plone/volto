@@ -20,8 +20,18 @@ import {
 } from '@plone/volto/config/RichTextEditor/Blocks';
 import FromHTMLCustomBlockFn from '@plone/volto/config/RichTextEditor/FromHTML';
 import { contentIcons } from '@plone/volto/config/ContentIcons';
+import {
+  styleClassNameConverters,
+  styleClassNameExtenders,
+} from '@plone/volto/config/Style';
 
-import { controlPanelsIcons } from '@plone/volto/config/ControlPanels';
+import {
+  controlPanelsIcons,
+  filterControlPanels,
+  filterControlPanelsSchema,
+} from '@plone/volto/config/ControlPanels';
+
+import ListingBlockSchema from '@plone/volto/components/manage/Blocks/Listing/schema';
 
 // we need to do a redefinition here because of circular import issues
 // because draftjs-based components are not really tested, this is basically
@@ -65,13 +75,19 @@ config.set('settings', {
     ],
   },
   controlPanelsIcons,
+  filterControlPanels,
+  filterControlPanelsSchema,
   apiExpanders: [],
   downloadableObjects: ['File'],
   viewableInBrowserObjects: [],
+  styleClassNameConverters,
+  styleClassNameExtenders,
+  blockSettingsTabFieldsetsInitialStateOpen: true,
 });
 config.set('blocks', {
   blocksConfig: {
     listing: {
+      blockSchema: ListingBlockSchema,
       variations: [
         {
           id: 'default',
@@ -157,3 +173,8 @@ config.set('widgets', {
 });
 
 config.set('components', {});
+config.set('experimental', {
+  addBlockButton: {
+    enabled: false,
+  },
+});

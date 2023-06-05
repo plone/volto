@@ -47,6 +47,7 @@ import {
   orderContent,
   sortContent,
   updateColumnsContent,
+  linkIntegrityCheck,
   getContent,
 } from '@plone/volto/actions';
 import Indexes, { defaultIndexes } from '@plone/volto/constants/Indexes';
@@ -89,6 +90,7 @@ import sortDownSVG from '@plone/volto/icons/sort-down.svg';
 import sortUpSVG from '@plone/volto/icons/sort-up.svg';
 import downKeySVG from '@plone/volto/icons/down-key.svg';
 import moreSVG from '@plone/volto/icons/more.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
   back: {
@@ -149,7 +151,7 @@ const messages = defineMessages({
   },
   messageReorder: {
     id: 'Item succesfully moved.',
-    defaultMessage: 'Item succesfully moved.',
+    defaultMessage: 'Item successfully moved.',
   },
   messagePasted: {
     id: 'Item(s) pasted.',
@@ -267,6 +269,35 @@ const messages = defineMessages({
     id: 'All',
     defaultMessage: 'All',
   },
+  linkIntegrityMessageHeader: {
+    id: 'Potential link breakage',
+    defaultMessage: 'Potential link breakage',
+  },
+  linkIntegrityMessageBody: {
+    id:
+      'By deleting this item, you will break ' +
+      'links that exist in the items listed below. ' +
+      'If this is indeed what you want to do, ' +
+      'we recommend that remove these references first.',
+    defaultMessage:
+      'By deleting this item, ' +
+      'you will break links that exist in the items ' +
+      'listed below. If this is indeed what you ' +
+      'want to do, we recommend that remove ' +
+      'these references first.',
+  },
+  linkIntegrityMessageExtra: {
+    id: 'This Page is referenced by the following items:',
+    defaultMessage: 'This Page is referenced by the following items:',
+  },
+  deleteItemCountMessage: {
+    id: 'Total items to be deleted:',
+    defaultMessage: 'Total items to be deleted:',
+  },
+  deleteItemMessage: {
+    id: 'Items to be deleted:',
+    defaultMessage: 'Items to be deleted:',
+  },
 });
 
 /**
@@ -292,6 +323,7 @@ class Contents extends Component {
     orderContent: PropTypes.func.isRequired,
     sortContent: PropTypes.func.isRequired,
     updateColumnsContent: PropTypes.func.isRequired,
+    linkIntegrityCheck: PropTypes.func.isRequired,
     clipboardRequest: PropTypes.shape({
       loading: PropTypes.bool,
       loaded: PropTypes.bool,
@@ -390,6 +422,8 @@ class Contents extends Component {
     this.paste = this.paste.bind(this);
     this.fetchContents = this.fetchContents.bind(this);
     this.orderTimeout = null;
+    this.deleteItemsToShowThreshold = 10;
+
     this.state = {
       selected: [],
       showDelete: false,
@@ -399,6 +433,7 @@ class Contents extends Component {
       showProperties: false,
       showWorkflow: false,
       itemsToDelete: [],
+      showAllItemsToDelete: true,
       items: this.props.items,
       filter: '',
       currentPage: 0,
@@ -414,6 +449,7 @@ class Contents extends Component {
       sort_on: this.props.sort?.on || 'getObjPositionInParent',
       sort_order: this.props.sort?.order || 'ascending',
       isClient: false,
+      linkIntegrityBreakages: '',
     };
     this.filterTimeout = null;
   }
@@ -426,6 +462,22 @@ class Contents extends Component {
   componentDidMount() {
     this.fetchContents();
     this.setState({ isClient: true });
+  }
+  async componentDidUpdate(_, prevState) {
+    if (
+      this.state.itemsToDelete !== prevState.itemsToDelete &&
+      this.state.itemsToDelete.length > 0
+    ) {
+      this.setState({
+        linkIntegrityBreakages: await this.props.linkIntegrityCheck(
+          map(this.state.itemsToDelete, (item) =>
+            this.getFieldById(item, 'UID'),
+          ),
+        ),
+        showAllItemsToDelete:
+          this.state.itemsToDelete.length < this.deleteItemsToShowThreshold,
+      });
+    }
   }
 
   /**
@@ -744,18 +796,20 @@ class Contents extends Component {
    */
   onMoveToTop(event, { value }) {
     const id = this.state.items[value]['@id'];
-    value = this.state.currentPage * this.state.pageSize + value;
-    this.props.orderContent(
-      getBaseUrl(this.props.pathname),
-      id.replace(/^.*\//, ''),
-      -value,
-    );
-    this.setState(
-      {
-        currentPage: 0,
-      },
-      () => this.fetchContents(),
-    );
+    this.props
+      .orderContent(
+        getBaseUrl(this.props.pathname),
+        id.replace(/^.*\//, ''),
+        'top',
+      )
+      .then(() => {
+        this.setState(
+          {
+            currentPage: 0,
+          },
+          () => this.fetchContents(),
+        );
+      });
   }
 
   /**
@@ -766,18 +820,21 @@ class Contents extends Component {
    * @returns {undefined}
    */
   onMoveToBottom(event, { value }) {
-    this.onOrderItem(
-      this.state.items[value]['@id'],
-      value,
-      this.state.items.length - 1 - value,
-      false,
-    );
-    this.onOrderItem(
-      this.state.items[value]['@id'],
-      value,
-      this.state.items.length - 1 - value,
-      true,
-    );
+    const id = this.state.items[value]['@id'];
+    this.props
+      .orderContent(
+        getBaseUrl(this.props.pathname),
+        id.replace(/^.*\//, ''),
+        'bottom',
+      )
+      .then(() => {
+        this.setState(
+          {
+            currentPage: 0,
+          },
+          () => this.fetchContents(),
+        );
+      });
   }
 
   /**
@@ -956,6 +1013,7 @@ class Contents extends Component {
         sort_order: this.state.sort_order,
         metadata_fields: '_all',
         b_size: 100000000,
+        show_inactive: true,
         ...(this.state.filter && { SearchableText: `${this.state.filter}*` }),
       });
     } else {
@@ -967,6 +1025,7 @@ class Contents extends Component {
         ...(this.state.filter && { SearchableText: `${this.state.filter}*` }),
         b_size: this.state.pageSize,
         b_start: this.state.currentPage * this.state.pageSize,
+        show_inactive: true,
       });
     }
   }
@@ -1136,23 +1195,88 @@ class Contents extends Component {
                 <article id="content">
                   <Confirm
                     open={this.state.showDelete}
+                    confirmButton="Delete"
                     header={this.props.intl.formatMessage(
                       messages.deleteConfirm,
                     )}
                     content={
                       <div className="content">
+                        <h3>
+                          {this.props.intl.formatMessage(
+                            messages.deleteItemCountMessage,
+                          ) + ` ${this.state.itemsToDelete.length}`}
+                        </h3>
                         <ul className="content">
-                          {map(this.state.itemsToDelete, (item) => (
-                            <li key={item}>
-                              {this.getFieldById(item, 'title')}
-                            </li>
-                          ))}
+                          {map(
+                            this.state.showAllItemsToDelete
+                              ? this.state.itemsToDelete
+                              : this.state.itemsToDelete.slice(
+                                  0,
+                                  this.deleteItemsToShowThreshold,
+                                ),
+                            (item) => (
+                              <li key={item}>
+                                {this.getFieldById(item, 'title')}
+                              </li>
+                            ),
+                          )}
                         </ul>
+                        {!this.state.showAllItemsToDelete && (
+                          <Button
+                            onClick={() =>
+                              this.setState({
+                                showAllItemsToDelete: true,
+                              })
+                            }
+                          >
+                            Show all items
+                          </Button>
+                        )}
+                        {this.state.linkIntegrityBreakages.length > 0 ? (
+                          <div>
+                            <h3>
+                              {this.props.intl.formatMessage(
+                                messages.linkIntegrityMessageHeader,
+                              )}
+                            </h3>
+                            <p>
+                              {this.props.intl.formatMessage(
+                                messages.linkIntegrityMessageBody,
+                              )}
+                            </p>
+                            <ul className="content">
+                              {map(
+                                this.state.linkIntegrityBreakages,
+                                (item) => (
+                                  <li key={item['@id']}>
+                                    <a href={item['@id']}>{item.title}</a>
+                                    <p>
+                                      {this.props.intl.formatMessage(
+                                        messages.linkIntegrityMessageExtra,
+                                      )}
+                                    </p>
+                                    <ul className="content">
+                                      {map(item.breaches, (breach) => (
+                                        <li key={breach['@id']}>
+                                          <a href={breach['@id']}>
+                                            {breach.title}
+                                          </a>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </li>
+                                ),
+                              )}
+                            </ul>
+                          </div>
+                        ) : (
+                          <div></div>
+                        )}
                       </div>
                     }
                     onCancel={this.onDeleteCancel}
                     onConfirm={this.onDeleteOk}
-                    size="mini"
+                    size="medium"
                   />
                   <ContentsUploadModal
                     open={this.state.showUpload}
@@ -1418,11 +1542,26 @@ class Contents extends Component {
                               value={this.state.filter}
                               onChange={this.onChangeFilter}
                             />
+                            {this.state.filter && (
+                              <Button
+                                className="icon icon-container"
+                                onClick={() => {
+                                  this.onChangeFilter('', { value: '' });
+                                }}
+                              >
+                                <Icon
+                                  name={clearSVG}
+                                  size="30px"
+                                  color="#e40166"
+                                />
+                              </Button>
+                            )}
                             <Icon
                               name={zoomSVG}
                               size="30px"
                               color="#007eb1"
                               className="zoom"
+                              style={{ flexShrink: '0' }}
                             />
                             <div className="results" />
                           </div>
@@ -1648,7 +1787,9 @@ class Contents extends Component {
                                     <Menu.Header
                                       content={this.props.intl.formatMessage(
                                         messages.selected,
-                                        { count: this.state.selected.length },
+                                        {
+                                          count: this.state.selected.length,
+                                        },
                                       )}
                                     />
                                     <Input
@@ -1858,6 +1999,7 @@ export const __test__ = compose(
       orderContent,
       sortContent,
       updateColumnsContent,
+      linkIntegrityCheck,
       getContent,
     },
   ),
@@ -1899,6 +2041,7 @@ export default compose(
       orderContent,
       sortContent,
       updateColumnsContent,
+      linkIntegrityCheck,
       getContent,
     },
   ),

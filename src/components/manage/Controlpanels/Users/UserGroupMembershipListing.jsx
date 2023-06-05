@@ -9,8 +9,6 @@ import { listGroups } from '@plone/volto/actions';
 import { Icon, Toast } from '@plone/volto/components';
 import { updateGroup, listUsers } from '@plone/volto/actions';
 
-import add from '@plone/volto/icons/add.svg';
-import remove from '@plone/volto/icons/remove.svg';
 import down_key from '@plone/volto/icons/down-key.svg';
 
 const ListingTemplate = ({
@@ -116,7 +114,7 @@ const ListingTemplate = ({
     }
   }, [dispatch, query_group, show_matrix_options, groups_filter]);
 
-  const onSelectOptionHandler = (item, selectedvalue, checked, singleClick) => {
+  const onSelectOptionHandler = (selectedvalue, checked, singleClick) => {
     singleClick = singleClick ?? false;
     let group = selectedvalue.y;
     let username = selectedvalue.x;
@@ -144,23 +142,20 @@ const ListingTemplate = ({
             <Toast
               success
               title={intl.formatMessage(messages.success)}
-              content="Membership updated"
+              content={intl.formatMessage(messages.membershipUpdated)}
             />,
           );
       });
   };
 
-  const onSelectAllHandler = (mtxoption, checked) => {
-    let elements = document.querySelectorAll(`div.checkbox_${mtxoption} input`);
-    let identifier;
+  const onSelectAllHandler = (group, items_ids, checked) => {
     let usersgroupmapping = {};
-    elements.forEach((element) => {
-      identifier = element.name.split('_-_');
-      usersgroupmapping[identifier[1]] = checked ? true : false;
+    items_ids.forEach((el) => {
+      usersgroupmapping[el] = checked ? true : false;
     });
 
     dispatch(
-      updateGroup(identifier[2], {
+      updateGroup(group, {
         users: usersgroupmapping,
       }),
     )
@@ -178,7 +173,7 @@ const ListingTemplate = ({
           <Toast
             success
             title={intl.formatMessage(messages.success)}
-            content="Membership updated"
+            content={intl.formatMessage(messages.membershipUpdated)}
           />,
         );
       });
@@ -188,93 +183,68 @@ const ListingTemplate = ({
     <div className="administration_matrix">
       {matrix_options && matrix_options?.length > 0 && (
         <div className="label-options">
-          {matrix_options?.map((matrix_option) => (
-            <div
-              className="label-options-label inclined"
-              key={matrix_option.value}
-            >
-              <div>
-                <span className="label">{matrix_option.label}</span>
+          <div className="target-labels">
+            <div>
+              <h3>{items.length} users</h3>
+            </div>
+            <div>
+              {matrix_options?.map((matrix_option) => (
+                <div
+                  className="label-options-label inclined"
+                  key={matrix_option.value}
+                >
+                  <div>
+                    <span className="label">{matrix_option.label}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="listing-row selectall" key="selectall">
+            <div className="listing-item">
+              <div />
+              <div className="matrix_options">
+                {matrix_options?.map((matrix_option) => (
+                  <div key={matrix_option.value}>
+                    <Checkbox
+                      className="toggle-target"
+                      defaultChecked={false}
+                      onChange={(event, { checked }) =>
+                        onSelectAllHandler(
+                          matrix_option.value,
+                          items.map((el) => el.id),
+                          checked,
+                        )
+                      }
+                    />
+                  </div>
+                ))}
               </div>
             </div>
-          ))}
+          </div>
         </div>
       )}
 
       <div className="items">
         {items.length > 0 ? (
           <>
-            <div className="listing-row selectall" key="selectall">
-              <div className="listing-item">
-                <div />
-                <div className="matrix_options">
-                  {matrix_options?.map((matrix_option) => (
-                    <div key={matrix_option.value}>
-                      <Button
-                        icon
-                        basic
-                        onClick={() =>
-                          onSelectAllHandler(matrix_option.value, true)
-                        }
-                        className="add-button"
-                        aria-label={
-                          intl.formatMessage(messages.addUsersToGroup) +
-                          ` ${matrix_option.label}`
-                        }
-                        title={
-                          intl.formatMessage(messages.addUsersToGroup) +
-                          ` ${matrix_option.label}`
-                        }
-                      >
-                        <Icon
-                          name={add}
-                          size="10px"
-                          className="circled"
-                          color="unset"
-                        />
-                      </Button>
-                      <Button
-                        icon
-                        basic
-                        onClick={() =>
-                          onSelectAllHandler(matrix_option.value, false)
-                        }
-                        className="remove-button"
-                        aria-label={
-                          intl.formatMessage(messages.removeUsersFromGroup) +
-                          ` ${matrix_option.label}`
-                        }
-                        title={
-                          intl.formatMessage(messages.removeUsersFromGroup) +
-                          ` ${matrix_option.label}`
-                        }
-                      >
-                        <Icon
-                          name={remove}
-                          size="10px"
-                          className="circled"
-                          color="unset"
-                        />
-                      </Button>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <h3>{items.length} users </h3>
             {items.map((item) => (
-              <div className="listing-row" key={item.id}>
+              <div
+                className="listing-row"
+                key={item.id}
+                id={`source-row-${item.id}`}
+              >
                 <div className="listing-item" key={item['@id']}>
                   <div>
-                    <h4>
-                      {item.fullname} ({item.id})
+                    <h4 title={`${item.fullname} ${item.id}`}>
+                      {item.fullname?.length > 25
+                        ? item.fullname.slice(0, 22) + '...'
+                        : item.fullname || item.id}
                     </h4>
                   </div>
                   <div className="matrix_options">
                     {matrix_options?.map((matrix_option) => (
                       <Checkbox
-                        name={`member_-_${item.id}_-_${matrix_option.value}`}
                         className={`checkbox_${matrix_option.value}`}
                         key={matrix_option.value}
                         title={matrix_option.title}
@@ -283,7 +253,6 @@ const ListingTemplate = ({
                           .includes(matrix_option.value)}
                         onChange={(event, { checked }) => {
                           onSelectOptionHandler(
-                            item,
                             { y: matrix_option.value, x: item.id },
                             checked,
                             true,

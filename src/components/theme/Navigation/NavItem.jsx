@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { isInternalURL } from '@plone/volto/helpers';
+import { isInternalURL, toBackendLang } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
 const NavItem = ({ item, lang }) => {
@@ -15,7 +15,9 @@ const NavItem = ({ item, lang }) => {
         className="item"
         activeClassName="active"
         exact={
-          settings.isMultilingual ? item.url === `/${lang}` : item.url === ''
+          settings.isMultilingual
+            ? item.url === `/${toBackendLang(lang)}`
+            : item.url === ''
         }
       >
         {item.title}
@@ -28,6 +30,7 @@ const NavItem = ({ item, lang }) => {
         key={item.url}
         className="item"
         rel="noopener noreferrer"
+        target={settings.openExternalLinkInNewTab ? '_blank' : '_self'}
       >
         {item.title}
       </a>
