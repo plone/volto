@@ -3,7 +3,7 @@
  * @module components/theme/ContactForm/ContactForm
  */
 
-import React, {  useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from '@plone/volto/helpers';
 import { useSelector, shallowEqual, useDispatch } from 'react-redux';
@@ -84,9 +84,9 @@ const ContactFormComponent = ({ location, history }) => {
     shallowEqual,
   );
 
-  const pathname = useMemo(()=>{
+  const pathname = useMemo(() => {
     location.pathname;
-  },[location]);
+  }, [location]);
 
   useEffect(() => {
     setisClient(true);
@@ -110,7 +110,7 @@ const ContactFormComponent = ({ location, history }) => {
    * @param {Object} data Data object.
    * @returns {undefined}
    */
-  const onSubmit =(data) => {
+  const onSubmit = (data) => {
     dispatch(
       emailNotification(data.from, data.message, data.name, data.subject),
     );
@@ -123,7 +123,7 @@ const ContactFormComponent = ({ location, history }) => {
    */
   const onCancel = useCallback(() => {
     history.goBack();
-  },[history]);
+  }, [history]);
 
   /**
    * Render method.

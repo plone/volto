@@ -4,7 +4,6 @@ about: Plone Improvement Proposal
 title: ''
 labels: ''
 assignees: ''
-
 ---
 
 ## PLIP (Plone Improvement Proposal)
