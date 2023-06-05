@@ -1,12 +1,6 @@
-/**
- * Header component.
- * @module components/theme/Header/Header
- */
-
-import React from 'react';
 import { Container, Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { useSelector, shallowEqual } from 'react-redux';
+import { useToken } from '@plone/volto/hooks/userSession/useToken';
 
 import {
   Anontools,
@@ -24,18 +18,8 @@ import {
 
  */
 const Header = ({ pathname }) => {
-  const { token } = useSelector(
-    (state) => ({
-      token: state.userSession.token,
-    }),
-    shallowEqual,
-  );
+  const token = useToken();
 
-  /**
-   * Render method.
-   * @method render
-   * @returns {string} Markup for the component.
-   */
   return (
     <Segment basic className="header-wrapper" role="banner">
       <Container>
