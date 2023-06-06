@@ -1250,9 +1250,9 @@ msgstr "Geef je e-mail op voor verificatie."
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Enter your new password. Minimum 5 characters.
-msgid "Enter your new password. Minimum 5 characters."
-msgstr "Geef een nieuw wachtwoord op. Minimaal 5 karakters."
+# defaultMessage: Enter your new password. Minimum 8 characters.
+msgid "Enter your new password. Minimum 8 characters."
+msgstr "Geef een nieuw wachtwoord op. Minimaal 8 karakters."
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Enter your username for verification.

@@ -1260,9 +1260,9 @@ msgstr "Saisissez votre email pour vérification."
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Enter your new password. Minimum 5 characters.
-msgid "Enter your new password. Minimum 5 characters."
-msgstr "Saisissez votre nouveau mot de passe. Minimum 5 caractères."
+# defaultMessage: Enter your new password. Minimum 8 characters.
+msgid "Enter your new password. Minimum 8 characters."
+msgstr "Saisissez votre nouveau mot de passe. Minimum 8 caractères."
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Enter your username for verification.
