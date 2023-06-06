@@ -1,10 +1,10 @@
 ---
 myst:
   html_meta:
-    "description": "Volto forms and widgets"
-    "property=og:description": "Volto forms and widgets"
-    "property=og:title": "Forms and widgets"
-    "keywords": "Volto, Plone, frontend, React, Blocks, Edit, components, Forms, widgets"
+    'description': 'Volto forms and widgets'
+    'property=og:description': 'Volto forms and widgets'
+    'property=og:title': 'Forms and widgets'
+    'keywords': 'Volto, Plone, frontend, React, Blocks, Edit, components, Forms, widgets'
 ---
 
 # Forms and widgets
@@ -30,7 +30,7 @@ import { MySpecialWidget } from './components';
 const applyConfig = (config) => {
   config.widgets.widget.specialwidget = MySpecialWidget;
   return config;
-}
+};
 ```
 
 You can also pass additional props to the frontend widget using the `widgetProps` key:
@@ -139,12 +139,10 @@ import TokenWidget from '@plone/volto/components/manage/Widgets/TokenWidget';
 const applyConfig = (config) => {
   config.widgets.id.category = TokenWidget;
   return config;
-}
-
+};
 ```
 
 Based on this setup, Volto will render this field with the `TokenWidget`.
-
 
 (widget-relation-field-label)=
 
@@ -182,6 +180,7 @@ It is recommended to define the vocabulary as a named `StaticCatalogVocabulary` 
 This allows the {guilabel}`relations` control panel to respect the defined restrictions to potential relation targets.
 
 {file}`vocabularies.py`
+
 ```python
 from plone.app.vocabularies.catalog import StaticCatalogVocabulary
 from zope.interface import provider
@@ -199,6 +198,7 @@ def ExamplesVocabularyFactory(context=None):
 ```
 
 {file}`configure.zcml`
+
 ```xml
 <utility
   name="relationchoice_field_named_staticcatalogvocabulary"
@@ -241,16 +241,13 @@ directives.widget(
 )
 ```
 
-
 ## Widget `isDisabled` Props
 
 We can disable the input of a widget by passing props `isDisabled: true`.
 
-
 ## Available widgets
 
 See [Storybook](https://6.docs.plone.org/storybook) with available widgets.
-
 
 ## Write a new widget
 
