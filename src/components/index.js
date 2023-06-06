@@ -89,6 +89,7 @@ export ContentTypeSchema from '@plone/volto/components/manage/Controlpanels/Cont
 export ContentTypesActions from '@plone/volto/components/manage/Controlpanels/ContentTypesActions';
 export UsersControlpanel from '@plone/volto/components/manage/Controlpanels/Users/UsersControlpanel';
 export UserGroupMembershipControlPanel from '@plone/volto/components/manage/Controlpanels/Users/UserGroupMembershipControlPanel';
+export Relations from '@plone/volto/components/manage/Controlpanels/Relations/Relations';
 export GroupsControlpanel from '@plone/volto/components/manage/Controlpanels/Groups/GroupsControlpanel';
 export RulesControlpanel from '@plone/volto/components/manage/Controlpanels/Rules/Rules';
 export AddRuleControlpanel from '@plone/volto/components/manage/Controlpanels/Rules/AddRule';
