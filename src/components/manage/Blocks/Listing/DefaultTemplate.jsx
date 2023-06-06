@@ -26,7 +26,7 @@ const DefaultTemplate = ({ items, linkTitle, linkHref, isEditMode }) => {
           <div className="listing-item" key={item['@id']}>
             <ConditionalLink item={item} condition={!isEditMode}>
               <div className="listing-body">
-                <h4>{item.title ? item.title : item.id}</h4>
+                <h2>{item.title ? item.title : item.id}</h2>
                 <p>{item.description}</p>
               </div>
             </ConditionalLink>
