@@ -3736,6 +3736,11 @@ msgstr "URL-osoitteiden hallinta"
 msgid "URL Management for {title}"
 msgstr "URL-osoitteiden hallinta kohteelle {title}"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: URL copied to clipboard
+msgid "URL copied to clipboard"
+msgstr ""
+
 #: components/manage/Rules/Rules
 # defaultMessage: Unassign
 msgid "Unassign"
