@@ -108,6 +108,11 @@ config.blocks.blocksConfig = {
     restricted: false,
     mostUsed: false,
   },
+  malformedBlock: {
+    icon: blockSVG,
+    group: 'common',
+    restricted: false,
+  },
 };
 
 const mockStore = configureStore();
