@@ -1,0 +1,1 @@
+Add css identifier to slate style menu options @razvanMiu
