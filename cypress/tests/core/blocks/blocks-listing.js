@@ -838,7 +838,7 @@ describe('Listing Block Tests', () => {
     cy.get('#field-b_size-4-querystring').click().type('2');
     cy.get('.ui.pagination.menu a[value="2"]').first().click();
 
-    cy.get('.listing-item h4').first().contains('My Folder 3');
+    cy.get('.listing-item h2').first().contains('My Folder 3');
   });
 
   // it('Listing block - Test Criteria: Location Navigation', () => {
