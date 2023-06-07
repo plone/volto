@@ -1270,9 +1270,9 @@ msgstr "Idatzi zure eposta helbidea egiaztatu dezagun."
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Enter your new password. Minimum 5 characters.
-msgid "Enter your new password. Minimum 5 characters."
-msgstr "Idatzi zure pasahitz berria. Gutxienez 5 karaktere."
+# defaultMessage: Enter your new password. Minimum 8 characters.
+msgid "Enter your new password. Minimum 8 characters."
+msgstr "Idatzi zure pasahitz berria. Gutxienez 8 karaktere."
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Enter your username for verification.
