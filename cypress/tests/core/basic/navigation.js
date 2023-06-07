@@ -20,3 +20,51 @@ describe('Navigation', () => {
     cy.get('#navigation a.item').contains('My Page').should('not.exist');
   });
 });
+
+describe('Navigation menu', () => {
+  context('menu hamburger', () => {
+    beforeEach(() => {
+      cy.visit('/');
+      cy.waitForResourceToLoad('@navigation');
+      cy.waitForResourceToLoad('@breadcrumbs');
+      cy.waitForResourceToLoad('@actions');
+      cy.waitForResourceToLoad('');
+    });
+    const hambClass =
+      'nav.navigation .hamburger-wrapper.mobile.tablet.only button.hamburger';
+    it('iphone-xr', () => {
+      cy.viewport('iphone-xr');
+      cy.get(hambClass).should('be.visible');
+      cy.get(hambClass).click();
+      cy.get(`${hambClass}.is-active`).should('be.visible');
+      cy.get('nav.navigation a.item.active').contains('Home');
+      cy.isInViewport(`${hambClass}.is-active`);
+
+      cy.get('body')
+        .invoke('css', 'overflow')
+        .then((ov) => {
+          expect(ov).to.eq('hidden');
+        });
+      cy.get('nav .ui.pointing.secondary.stackable.menu')
+        .invoke('css', 'flex-direction')
+        .then((ov) => {
+          expect(ov).to.eq('column');
+        });
+    });
+
+    it('ipad-mini', () => {
+      cy.viewport('ipad-mini');
+      cy.get(hambClass).should('be.visible');
+      cy.get(hambClass).click();
+      cy.get(`${hambClass}.is-active`).should('be.visible');
+      cy.get('nav.navigation a.item.active').contains('Home');
+      cy.isInViewport(`${hambClass}.is-active`);
+
+      cy.get('body')
+        .invoke('css', 'overflow')
+        .then((ov) => {
+          expect(ov).to.eq('hidden');
+        });
+    });
+  });
+});
