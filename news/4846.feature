@@ -1,1 +1,1 @@
-Add css identifier to slate style menu options @razvanMiu
+Added a CSS identifier to the Slate style menu options. @razvanMiu
