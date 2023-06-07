@@ -2521,11 +2521,6 @@ msgstr ""
 msgid "Plone Foundation"
 msgstr "Plone-säätiön"
 
-#: components/theme/Logo/Logo
-# defaultMessage: Plone Site
-msgid "Plone Site"
-msgstr "Plone-sivusto"
-
 #: components/theme/Footer/Footer
 # defaultMessage: Plone{reg} Open Source CMS/WCM
 msgid "Plone{reg} Open Source CMS/WCM"
@@ -3182,11 +3177,6 @@ msgstr "Kutista työkalupalkki"
 # defaultMessage: Sign in to start session
 msgid "Sign in to start session"
 msgstr "Kirjaudu sisään"
-
-#: components/theme/Logo/Logo
-# defaultMessage: Site
-msgid "Site"
-msgstr "Sivusto"
 
 #: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized
