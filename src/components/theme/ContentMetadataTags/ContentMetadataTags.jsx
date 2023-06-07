@@ -1,6 +1,9 @@
+import { useEffect } from 'react';
 import React from 'react';
 import { toPublicURL, Helmet } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
+import { useSelector, useDispatch } from 'react-redux';
+import { getNavroot } from '@plone/volto/actions';
 
 const ContentMetadataTags = (props) => {
   const {
@@ -13,6 +16,13 @@ const ContentMetadataTags = (props) => {
     title,
     description,
   } = props.content;
+  const pathname = useSelector((state) => state.router.location.pathname);
+  const navroot = useSelector((state) => state.navroot.data);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    pathname && dispatch(getNavroot(pathname));
+  }, [dispatch, pathname]);
 
   const getContentImageInfo = () => {
     const { contentMetadataTagsImageField } = config.settings;
@@ -46,7 +56,7 @@ const ContentMetadataTags = (props) => {
   const contentImageInfo = getContentImageInfo();
 
   let title_tag_content = seo_title || title;
-  let nav_root_title = props.content['@components']?.navroot?.navroot?.title;
+  let nav_root_title = navroot?.navroot?.title;
   title_tag_content =
     (nav_root_title === title_tag_content && title_tag_content) ||
     title_tag_content + ' — ' + nav_root_title;

@@ -150,9 +150,7 @@ export function getContent(
           b_size: settings.defaultPageSize,
         }
       : {},
-    settings.isMultilingual
-      ? { expand: 'translations,navroot' }
-      : { expand: 'navroot' },
+    settings.isMultilingual ? { expand: 'translations' } : {},
   );
 
   let qs = Object.keys(query)

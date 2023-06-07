@@ -162,8 +162,6 @@
 - Improve i18n script ordering of addons, so that addons can override translations from their dependencies. @davisagli [#4495](https://github.com/plone/volto/issues/4495)
 
 ### Feature
-- use @navroot endpoint to get Logo title and alt @erral
-
 - Add option to hide empty listing blocks @ksuess [#4393](https://github.com/plone/volto/issues/4393)
 
 ### Bugfix
