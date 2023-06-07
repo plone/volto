@@ -12,11 +12,11 @@ import { toast } from 'react-toastify';
 import { Form, Toolbar, Toast } from '@plone/volto/components';
 import { emailNotification } from '@plone/volto/actions';
 import { getBaseUrl } from '@plone/volto/helpers';
-import {
-  useLoaded,
-  useLoading,
-  useError,
-} from '@plone/volto/hooks/contactForm/contactForm';
+
+import { useLoaded } from '@plone/volto/hooks/emailNotification/useLoaded';
+import { useLoading } from '@plone/volto/hooks/emailNotification/useLoading';
+import { useError } from '@plone/volto/hooks/emailNotification/useError';
+
 const messages = defineMessages({
   send: {
     id: 'Send',
@@ -64,7 +64,7 @@ const messages = defineMessages({
   },
 });
 
-const ContactFormComponent = ({ location, history }) => {
+const ContactFormComponent = ({ pathname, history }) => {
   const dispatch = useDispatch();
   const intl = useIntl();
   const [isClient, setisClient] = useState(false);
@@ -72,8 +72,6 @@ const ContactFormComponent = ({ location, history }) => {
   const loaded = useLoaded();
   const loading = useLoading();
   const error = useError();
-
-  const pathname = location.pathname;
 
   useEffect(() => {
     setisClient(true);
