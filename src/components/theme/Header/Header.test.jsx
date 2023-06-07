@@ -30,6 +30,7 @@ describe('Header', () => {
         messages: {},
       },
     });
+
     const component = renderer.create(
       <Provider store={store}>
         <Header pathname="/blog" />

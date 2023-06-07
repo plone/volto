@@ -1,6 +1,5 @@
 import { Container, Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { useToken } from '@plone/volto/hooks/userSession/useToken';
 import {
   Anontools,
@@ -31,7 +30,7 @@ const Header = ({ pathname }) => {
               </div>
             )}
             <div className="search">
-              <SearchWidget pathname={this.props.pathname} />
+              <SearchWidget pathname={pathname} />
             </div>
           </div>
         </div>
