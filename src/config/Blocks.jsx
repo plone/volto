@@ -20,6 +20,8 @@ import EditTextBlock from '@plone/volto/components/manage/Blocks/Text/Edit';
 import EditImageBlock from '@plone/volto/components/manage/Blocks/Image/Edit';
 import EditLeadImageBlock from '@plone/volto/components/manage/Blocks/LeadImage/Edit';
 import EditListingBlock from '@plone/volto/components/manage/Blocks/Listing/Edit';
+import DefaultNoResultsComponent from '@plone/volto/components/manage/Blocks/Listing/DefaultNoResultsComponent';
+import GalleryNoResultsComponent from '@plone/volto/components/manage/Blocks/Listing/GalleryNoResultsComponent';
 import DefaultListingBlockTemplate from '@plone/volto/components/manage/Blocks/Listing/DefaultTemplate';
 import SummaryListingBlockTemplate from '@plone/volto/components/manage/Blocks/Listing/SummaryTemplate';
 import EditVideoBlock from '@plone/volto/components/manage/Blocks/Video/Edit';
@@ -40,6 +42,7 @@ import tableSVG from '@plone/volto/icons/table.svg';
 import listingBlockSVG from '@plone/volto/icons/content-listing.svg';
 import tocSVG from '@plone/volto/icons/list-bullet.svg';
 import searchSVG from '@plone/volto/icons/zoom.svg';
+import imagesSVG from '@plone/volto/icons/images.svg';
 
 import ImageGalleryListingBlockTemplate from '@plone/volto/components/manage/Blocks/Listing/ImageGallery';
 import BlockSettingsSchema from '@plone/volto/components/manage/Blocks/Block/Schema';
@@ -70,6 +73,12 @@ import ListingBlockSchema from '@plone/volto/components/manage/Blocks/Listing/sc
 import SearchBlockSchema from '@plone/volto/components/manage/Blocks/Search/schema';
 
 import ToCVariations from '@plone/volto/components/manage/Blocks/ToC/variations';
+
+import TeaserViewBlock from '@plone/volto/components/manage/Blocks/Teaser/View';
+import TeaserEditBlock from '@plone/volto/components/manage/Blocks/Teaser/Edit';
+import TeaserBlockDefaultBody from '@plone/volto/components/manage/Blocks/Teaser/DefaultBody';
+import { TeaserSchema } from '@plone/volto/components/manage/Blocks/Teaser/schema';
+import { TeaserBlockDataAdapter } from '@plone/volto/components/manage/Blocks/Teaser/adapter';
 
 defineMessages({
   title: {
@@ -266,6 +275,7 @@ const blocksConfig = {
     mostUsed: true,
     sidebarTab: 1,
     showLinkMore: false,
+    noResultsComponent: DefaultNoResultsComponent,
     variations: [
       {
         id: 'default',
@@ -277,6 +287,7 @@ const blocksConfig = {
         id: 'imageGallery',
         title: 'Image gallery',
         template: ImageGalleryListingBlockTemplate,
+        noResultsComponent: GalleryNoResultsComponent,
       },
       {
         id: 'summary',
@@ -446,6 +457,27 @@ const blocksConfig = {
         ],
       },
     },
+  },
+  teaser: {
+    id: 'teaser',
+    title: 'Teaser',
+    icon: imagesSVG,
+    group: 'common',
+    view: TeaserViewBlock,
+    edit: TeaserEditBlock,
+    restricted: false,
+    mostUsed: true,
+    sidebarTab: 1,
+    blockSchema: TeaserSchema,
+    dataAdapter: TeaserBlockDataAdapter,
+    variations: [
+      {
+        id: 'default',
+        isDefault: true,
+        title: 'Default',
+        template: TeaserBlockDefaultBody,
+      },
+    ],
   },
 };
 

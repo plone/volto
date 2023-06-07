@@ -97,8 +97,10 @@ class Html extends Component {
     } = this.props;
     const head = Helmet.rewind();
     const bodyClass = join(BodyClass.rewind(), ' ');
+    const htmlAttributes = head.htmlAttributes.toComponent();
+
     return (
-      <html lang="en">
+      <html lang={htmlAttributes.lang}>
         <head>
           <meta charSet="utf-8" />
           {head.base.toComponent()}

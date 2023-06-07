@@ -1,5 +1,9 @@
 import { updateIntl } from 'react-intl-redux';
-import { normalizeLanguageName, getCookieOptions } from '@plone/volto/helpers';
+import {
+  toGettextLang,
+  toReactIntlLang,
+  getCookieOptions,
+} from '@plone/volto/helpers';
 import Cookies from 'universal-cookie';
 
 export function changeLanguageCookies(language, req) {
@@ -7,18 +11,15 @@ export function changeLanguageCookies(language, req) {
 
   const cookieOptions = getCookieOptions({
     secure: req?.protocol?.startsWith('https') ? true : false,
+    sameSite: 'strict',
   });
 
   if (!req) {
-    cookies.set(
-      'I18N_LANGUAGE',
-      normalizeLanguageName(language) || '',
-      cookieOptions,
-    );
+    cookies.set('I18N_LANGUAGE', toGettextLang(language) || '', cookieOptions);
   } else {
     req.universalCookies.set(
       'I18N_LANGUAGE',
-      normalizeLanguageName(language) || '',
+      toGettextLang(language) || '',
       cookieOptions,
     );
   }
@@ -35,7 +36,7 @@ export function changeLanguage(language, locale, req) {
   changeLanguageCookies(language, req);
 
   return updateIntl({
-    locale: language,
+    locale: toReactIntlLang(language),
     messages: locale,
   });
 }

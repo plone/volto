@@ -14,11 +14,16 @@ function getDisplayName(WrappedComponent) {
 
 export default function withQuerystringResults(WrappedComponent) {
   function WithQuerystringResults(props) {
-    const { data = {}, properties: content, path, variation } = props;
+    const {
+      data = {},
+      id = data.block,
+      properties: content,
+      path,
+      variation,
+    } = props;
     const { settings } = config;
     const querystring = data.querystring || data; // For backwards compat with data saved before Blocks schema. Note, this is also how the Search block passes data to ListingBody
 
-    const { block } = data;
     const { b_size = settings.defaultPageSize } = querystring; // batchsize
 
     // save the path so it won't trigger dispatch on eager router location change
@@ -45,32 +50,32 @@ export default function withQuerystringResults(WrappedComponent) {
 
     const folderItems = content?.is_folderish ? content.items : [];
     const hasQuery = querystring?.query?.length > 0;
-    const hasLoaded = hasQuery ? !querystringResults?.[block]?.loading : true;
+    const hasLoaded = hasQuery ? !querystringResults?.[id]?.loading : true;
 
     const listingItems =
-      querystring?.query?.length > 0 && querystringResults?.[block]
-        ? querystringResults?.[block]?.items || []
+      querystring?.query?.length > 0 && querystringResults?.[id]
+        ? querystringResults?.[id]?.items || []
         : folderItems;
 
     const showAsFolderListing = !hasQuery && content?.items_total > b_size;
     const showAsQueryListing =
-      hasQuery && querystringResults?.[block]?.total > b_size;
+      hasQuery && querystringResults?.[id]?.total > b_size;
 
     const totalPages = showAsFolderListing
       ? Math.ceil(content.items_total / b_size)
       : showAsQueryListing
-      ? Math.ceil(querystringResults[block].total / b_size)
+      ? Math.ceil(querystringResults[id].total / b_size)
       : 0;
 
     const prevBatch = showAsFolderListing
       ? content.batching?.prev
       : showAsQueryListing
-      ? querystringResults[block].batching?.prev
+      ? querystringResults[id].batching?.prev
       : null;
     const nextBatch = showAsFolderListing
       ? content.batching?.next
       : showAsQueryListing
-      ? querystringResults[block].batching?.next
+      ? querystringResults[id].batching?.next
       : null;
 
     const isImageGallery =
@@ -80,7 +85,7 @@ export default function withQuerystringResults(WrappedComponent) {
     useDeepCompareEffect(() => {
       if (hasQuery) {
         dispatch(
-          getQueryStringResults(initialPath, adaptedQuery, block, currentPage),
+          getQueryStringResults(initialPath, adaptedQuery, id, currentPage),
         );
       } else if (isImageGallery && !hasQuery) {
         // when used as image gallery, it doesn't need a query to list children
@@ -98,14 +103,14 @@ export default function withQuerystringResults(WrappedComponent) {
                 },
               ],
             },
-            block,
+            id,
           ),
         );
       } else {
         dispatch(getContent(initialPath, null, null, currentPage));
       }
     }, [
-      block,
+      id,
       isImageGallery,
       adaptedQuery,
       hasQuery,
@@ -118,7 +123,7 @@ export default function withQuerystringResults(WrappedComponent) {
       <WrappedComponent
         {...props}
         onPaginationChange={(e, { activePage }) => setCurrentPage(activePage)}
-        total={querystringResults?.[block]?.total}
+        total={querystringResults?.[id]?.total}
         batch_size={b_size}
         currentPage={currentPage}
         totalPages={totalPages}

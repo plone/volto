@@ -202,7 +202,7 @@ class SelectWidget extends Component {
 
     const isMulti = this.props.isMulti
       ? this.props.isMulti
-      : id === 'roles' || id === 'groups';
+      : id === 'roles' || id === 'groups' || this.props.type === 'array';
 
     return (
       <FormFieldWrapper {...this.props}>
@@ -210,6 +210,7 @@ class SelectWidget extends Component {
           id={`field-${id}`}
           key={choices}
           name={id}
+          menuShouldScrollIntoView={false}
           isDisabled={disabled}
           isSearchable={true}
           className="react-select-container"

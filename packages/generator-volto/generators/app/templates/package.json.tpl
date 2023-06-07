@@ -13,7 +13,7 @@
     "prettier": "./node_modules/.bin/prettier --single-quote --check 'src/**/*.{js,jsx,ts,tsx,css,scss}'",
     "prettier:fix": "./node_modules/.bin/prettier --single-quote --write 'src/**/*.{js,jsx,ts,tsx,css,scss}'",
     "prettier:ci": "./node_modules/.bin/prettier --single-quote --check 'src/**/*.{js,jsx,ts,tsx,css,scss}'",
-    "stylelint": "stylelint 'theme/**/*.{css,less}' 'src/**/*.{css,less}'",
+    "stylelint": "stylelint 'theme/**/*.{css,scss,less}' 'src/**/*.{css,scss,less}'",
     "stylelint:overrides": "stylelint 'theme/**/*.overrides' 'src/**/*.overrides'",
     "stylelint:fix": "yarn stylelint --fix && yarn stylelint:overrides --fix",
     "test": "razzle test --passWithNoTests",
@@ -46,6 +46,7 @@
       "@plone/volto/webpack-plugins/webpack-less-plugin": "<rootDir>/node_modules/@plone/volto/webpack-plugins/webpack-less-plugin",
       "@plone/volto/babel": "<rootDir>/node_modules/@plone/volto/babel",
       "@plone/volto/(.*)$": "<rootDir>/node_modules/@plone/volto/src/$1",
+      "@plone/volto-slate/(.*)$": "<rootDir>/node_modules/@plone/volto/packages/volto-slate/src/$1",
       "load-volto-addons": "<rootDir>/node_modules/@plone/volto/jest-addons-loader.js",
       "@package/(.*)$": "<rootDir>/src/$1",
       "@root/(.*)$": "<rootDir>/src/$1",
@@ -82,6 +83,7 @@
   },
   "stylelint": {
     "extends": [
+      "stylelint-config-prettier",
       "stylelint-config-idiomatic-order"
     ],
     "plugins": [
@@ -99,6 +101,12 @@
           "**/*.overrides"
         ],
         "customSyntax": "postcss-less"
+      },
+      {
+        "files": [
+          "**/*.scss"
+        ],
+        "customSyntax": "postcss-scss"
       }
     ],
     "rules": {
@@ -125,7 +133,7 @@
     "not dead"
   ],
   "engines": {
-    "node": "^14 || ^16"
+    "node": "^16 || ^18"
   },
   "dependencies": <%- dependencies %>,
   "devDependencies": {
@@ -140,11 +148,14 @@
     "@storybook/addon-essentials": "^6.3.0",
     "@storybook/addon-links": "^6.3.0",
     "@storybook/react": "^6.3.0",
-    "razzle": "4.2.17",
+    "razzle": "4.2.18",
     "stylelint": "14.0.1",
     "stylelint-config-idiomatic-order": "8.1.0",
     "stylelint-config-prettier": "8.0.1",
     "stylelint-prettier": "1.1.2"
+  },
+  "resolutions": {
+    "react-error-overlay": "6.0.9"
   },
   "packageManager": "yarn@3.2.3"
 }

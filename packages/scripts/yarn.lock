@@ -1941,7 +1941,6 @@ __metadata:
     mrs-developer: "*"
     pofile: 1.0.10
     release-it: 14.2.1
-    simple-git: 3.5.0
   bin:
     addon: ./addon/index.js
     changelogupdater: ./changelogupdater.cjs
@@ -2180,6 +2179,13 @@ __metadata:
   dependencies:
     retry: 0.12.0
   checksum: 42b518505c0cf56179d49d0cc373e50656a1edf913842c045e84a9f7191ade10b73edf583915b05617296ed3d8c2f1f151e47fcb10eb47681a935db3b407787f
+  languageName: node
+  linkType: hard
+
+"async@npm:^3.2.4":
+  version: 3.2.4
+  resolution: "async@npm:3.2.4"
+  checksum: 43d07459a4e1d09b84a20772414aa684ff4de085cbcaec6eea3c7a8f8150e8c62aa6cd4e699fe8ee93c3a5b324e777d34642531875a0817a35697522c1b02e89
   languageName: node
   linkType: hard
 
@@ -2464,7 +2470,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chalk@npm:^2.0.0":
+"chalk@npm:^2.0.0, chalk@npm:^2.4.2":
   version: 2.4.2
   resolution: "chalk@npm:2.4.2"
   dependencies:
@@ -2577,13 +2583,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"colors@npm:^1.4.0":
-  version: 1.4.0
-  resolution: "colors@npm:1.4.0"
-  checksum: 98aa2c2418ad87dedf25d781be69dc5fc5908e279d9d30c34d8b702e586a0474605b3a189511482b9d5ed0d20c867515d22749537f7bc546256c6014f3ebdcec
-  languageName: node
-  linkType: hard
-
 "combined-stream@npm:^1.0.8":
   version: 1.0.8
   resolution: "combined-stream@npm:1.0.8"
@@ -2683,7 +2682,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"debug@npm:^4.0.1, debug@npm:^4.1.0, debug@npm:^4.1.1, debug@npm:^4.3.3":
+"debug@npm:^4.1.0, debug@npm:^4.1.1, debug@npm:^4.3.4":
   version: 4.3.4
   resolution: "debug@npm:4.3.4"
   dependencies:
@@ -3244,9 +3243,9 @@ __metadata:
   linkType: hard
 
 "http-cache-semantics@npm:^4.0.0":
-  version: 4.1.0
-  resolution: "http-cache-semantics@npm:4.1.0"
-  checksum: 974de94a81c5474be07f269f9fd8383e92ebb5a448208223bfb39e172a9dbc26feff250192ecc23b9593b3f92098e010406b0f24bd4d588d631f80214648ed42
+  version: 4.1.1
+  resolution: "http-cache-semantics@npm:4.1.1"
+  checksum: 83ac0bc60b17a3a36f9953e7be55e5c8f41acc61b22583060e8dedc9dd5e3607c823a88d0926f9150e571f90946835c7fe150732801010845c72cd8bbff1a236
   languageName: node
   linkType: hard
 
@@ -3599,23 +3598,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"json5@npm:^2.1.2":
-  version: 2.2.0
-  resolution: "json5@npm:2.2.0"
-  dependencies:
-    minimist: ^1.2.5
+"json5@npm:^2.1.2, json5@npm:^2.2.1":
+  version: 2.2.3
+  resolution: "json5@npm:2.2.3"
   bin:
     json5: lib/cli.js
-  checksum: e88fc5274bb58fc99547baa777886b069d2dd96d9cfc4490b305fd16d711dabd5979e35a4f90873cefbeb552e216b041a304fe56702bedba76e19bc7845f208d
-  languageName: node
-  linkType: hard
-
-"json5@npm:^2.2.1":
-  version: 2.2.1
-  resolution: "json5@npm:2.2.1"
-  bin:
-    json5: lib/cli.js
-  checksum: 74b8a23b102a6f2bf2d224797ae553a75488b5adbaee9c9b6e5ab8b510a2fc6e38f876d4c77dea672d4014a44b2399e15f2051ac2b37b87f74c0c7602003543b
+  checksum: 2a7436a93393830bce797d4626275152e37e877b265e94ca69c99e3d20c2b9dab021279146a39cdb700e71b2dd32a4cebd1514cd57cee102b1af906ce5040349
   languageName: node
   linkType: hard
 
@@ -3835,15 +3823,15 @@ __metadata:
   linkType: hard
 
 "minimatch@npm:^3.0.4":
-  version: 3.0.4
-  resolution: "minimatch@npm:3.0.4"
+  version: 3.1.2
+  resolution: "minimatch@npm:3.1.2"
   dependencies:
     brace-expansion: ^1.1.7
-  checksum: 66ac295f8a7b59788000ea3749938b0970344c841750abd96694f80269b926ebcafad3deeb3f1da2522978b119e6ae3a5869b63b13a7859a456b3408bd18a078
+  checksum: c154e566406683e7bcb746e000b84d74465b3a832c45d59912b9b55cd50dee66e5c4b1e5566dba26154040e51672f9aa450a9aef0c97cfc7336b78b7afb9540a
   languageName: node
   linkType: hard
 
-"minimist@npm:^1.2.0, minimist@npm:^1.2.5":
+"minimist@npm:^1.2.0":
   version: 1.2.6
   resolution: "minimist@npm:1.2.6"
   checksum: d15428cd1e11eb14e1233bcfb88ae07ed7a147de251441d61158619dfb32c4d7e9061d09cab4825fdee18ecd6fce323228c8c47b5ba7cd20af378ca4048fb3fb
@@ -3851,14 +3839,15 @@ __metadata:
   linkType: hard
 
 "mrs-developer@npm:*":
-  version: 1.6.0
-  resolution: "mrs-developer@npm:1.6.0"
+  version: 2.1.0
+  resolution: "mrs-developer@npm:2.1.0"
   dependencies:
-    colors: ^1.4.0
-    simple-git: ^1.132.0
+    async: ^3.2.4
+    chalk: ^2.4.2
+    simple-git: ^3.3.0
   bin:
     missdev: src/command.js
-  checksum: 7154612bfa0f316b7a443bf4bc698bf46ba953900a5f134c67048974134a678218a0624e92c81ec1d84f5b923593b6a2c0d768a72d6ea4199fa769a30fe9530a
+  checksum: 11a47dee219fb4986a591195ea18d47602741f90d66ccb94378d619979c0bc52284590cc11f48da60fbbd463765904fc60a3800fb5f786caa9c5a5610cbece86
   languageName: node
   linkType: hard
 
@@ -4620,23 +4609,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"simple-git@npm:3.5.0":
-  version: 3.5.0
-  resolution: "simple-git@npm:3.5.0"
+"simple-git@npm:^3.3.0":
+  version: 3.17.0
+  resolution: "simple-git@npm:3.17.0"
   dependencies:
     "@kwsites/file-exists": ^1.1.1
     "@kwsites/promise-deferred": ^1.1.1
-    debug: ^4.3.3
-  checksum: be078d9e898d1dea99bb15d4f6927c0f61aafde73114c7423fb0efca6d6f99012da2a2f43b5e2151a1707994cc9c75139bc12e3d307dd25da48ed1dce1167748
-  languageName: node
-  linkType: hard
-
-"simple-git@npm:^1.132.0":
-  version: 1.132.0
-  resolution: "simple-git@npm:1.132.0"
-  dependencies:
-    debug: ^4.0.1
-  checksum: 717d7cf7919ebe771b2562ed70c79c3971ac650d9577a15c47052472f8e549a088aea593b6a7245d73af0425a202106e6c236d35a73dc4c48dce99bf7b4f939a
+    debug: ^4.3.4
+  checksum: 977a05cb0b5087296348b5afa682ce552f43234f5fd29b44c3d7f56b3682d10dcb03752a418e508aaffcbdb6ea2e304a3ef10095197d6743d2353adb85f32592
   languageName: node
   linkType: hard
 

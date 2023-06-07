@@ -5,6 +5,7 @@ const schema = {
   properties: {
     username: { title: 'Username', type: 'string', description: '' },
     email: { title: 'Email', type: 'string', widget: 'email', description: '' },
+    url: { title: 'url', type: 'string', widget: 'url', description: '' },
   },
   fieldsets: [
     { id: 'default', title: 'FIXME: User Data', fields: ['username'] },
@@ -65,6 +66,38 @@ describe('FormValidation', () => {
       });
     });
 
+    it('do not treat 0 as missing required value', () => {
+      let newSchema = {
+        ...schema,
+        properties: {
+          ...schema.properties,
+          age: {
+            title: 'age',
+            type: 'integer',
+            widget: 'number',
+            description: '',
+          },
+        },
+        required: ['age'],
+      };
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema: newSchema,
+          formData: { username: 'test username', age: null },
+          formatMessage,
+        }),
+      ).toEqual({
+        age: [messages.required.defaultMessage],
+      });
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema: newSchema,
+          formData: { username: 'test username', age: 0 },
+          formatMessage,
+        }),
+      ).toEqual({});
+    });
+
     it('validates incorrect email', () => {
       expect(
         FormValidation.validateFieldsPerFieldset({
@@ -79,6 +112,46 @@ describe('FormValidation', () => {
 
     it('validates correct email', () => {
       formData.email = 'test@domain.name';
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema,
+          formData,
+          formatMessage,
+        }),
+      ).toEqual({});
+    });
+    it('validates incorrect url', () => {
+      formData.url = 'foo';
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema,
+          formData,
+          formatMessage,
+        }),
+      ).toEqual({ url: [messages.isValidURL.defaultMessage] });
+    });
+    it('validates url', () => {
+      formData.url = 'https://plone.org/';
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema,
+          formData,
+          formatMessage,
+        }),
+      ).toEqual({});
+    });
+    it('validates url with ip', () => {
+      formData.url = 'http://127.0.0.1:8080/Plone';
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema,
+          formData,
+          formatMessage,
+        }),
+      ).toEqual({});
+    });
+    it('validates url with localhost', () => {
+      formData.url = 'http://localhost:8080/Plone';
       expect(
         FormValidation.validateFieldsPerFieldset({
           schema,
