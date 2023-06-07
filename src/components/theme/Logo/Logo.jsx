@@ -32,9 +32,9 @@ const Logo = () => {
 
   return (
     <ConditionalLink
-      href={navroot?.navroot?.['@id']}
-      title={navroot?.navroot?.title}
-      condition={navroot?.navroot?.['@id'] ? true : false}
+      href={navroot?.url}
+      title={navroot?.title}
+      condition={navroot?.url ? true : false}
     >
       <Image
         src={
@@ -42,8 +42,8 @@ const Logo = () => {
             ? flattenToAppURL(site['plone.site_logo'])
             : LogoImage
         }
-        alt={navroot?.navroot?.title}
-        title={navroot?.navroot?.title}
+        alt={navroot?.title}
+        title={navroot?.title}
       />
     </ConditionalLink>
   );

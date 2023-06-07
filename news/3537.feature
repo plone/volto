@@ -1,3 +1,0 @@
-- Use the @navroot endpoint to build the title tag @erral
-- Use the @navroot endpoint to build the search url @erral
-- Use the @site endpoint to get the logo from Plone @erral
