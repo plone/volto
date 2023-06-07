@@ -1,9 +1,9 @@
-import {useEffect} from 'react';
+import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Breadcrumb, Container, Segment } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
-import { useSelector,useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { Icon } from '@plone/volto/components';
 import { getBreadcrumbs } from '@plone/volto/actions';
@@ -23,71 +23,65 @@ const messages = defineMessages({
   },
 });
 
-
-const BreadcrumbsComponent=({ pathname })=>{
-
- const intl=useIntl();
+const BreadcrumbsComponent = ({ pathname }) => {
+  const intl = useIntl();
   const dispatch = useDispatch();
-  const { items,root } = useSelector(
-    (state) => ({
-      items: state.breadcrumbs.items,
-      root: state.breadcrumbs.root,
-    }),
-  );
+  const { items, root } = useSelector((state) => ({
+    items: state.breadcrumbs.items,
+    root: state.breadcrumbs.root,
+  }));
 
   useEffect(() => {
     if (!hasApiExpander('breadcrumbs', getBaseUrl(pathname))) {
-        dispatch(getBreadcrumbs(getBaseUrl(pathname)));
+      dispatch(getBreadcrumbs(getBaseUrl(pathname)));
     }
+  }, [pathname]);
 
-  },[pathname]);
+  return (
+    <Segment
+      role="navigation"
+      aria-label={intl.formatMessage(messages.breadcrumbs)}
+      className="breadcrumbs"
+      secondary
+      vertical
+    >
+      <Container>
+        <Breadcrumb>
+          <Link
+            to={root || '/'}
+            className="section"
+            title={intl.formatMessage(messages.home)}
+          >
+            <Icon name={homeSVG} size="18px" />
+          </Link>
+          {items.map((item, index, items) => [
+            <Breadcrumb.Divider key={`divider-${item.url}`} />,
+            index < items.length - 1 ? (
+              <Link key={item.url} to={item.url} className="section">
+                {item.title}
+              </Link>
+            ) : (
+              <Breadcrumb.Section key={item.url} active>
+                {item.title}
+              </Breadcrumb.Section>
+            ),
+          ])}
+        </Breadcrumb>
+      </Container>
+    </Segment>
+  );
+};
 
-
-    return (
-      <Segment
-        role="navigation"
-        aria-label={intl.formatMessage(messages.breadcrumbs)}
-        className="breadcrumbs"
-        secondary
-        vertical
-      >
-        <Container>
-          <Breadcrumb>
-            <Link
-              to={root || '/'}
-              className="section"
-              title={intl.formatMessage(messages.home)}
-            >
-              <Icon name={homeSVG} size="18px" />
-            </Link>
-            {items.map((item, index, items) => [
-              <Breadcrumb.Divider key={`divider-${item.url}`} />,
-              index < items.length - 1 ? (
-                <Link key={item.url} to={item.url} className="section">
-                  {item.title}
-                </Link>
-              ) : (
-                <Breadcrumb.Section key={item.url} active>
-                  {item.title}
-                </Breadcrumb.Section>
-              ),
-            ])}
-          </Breadcrumb>
-        </Container>
-      </Segment>
-    );
-  }
-
-  BreadcrumbsComponent.propTypes = {
-    getBreadcrumbs: PropTypes.func,
-    pathname: PropTypes.string,
-    root: PropTypes.string,
-    items: PropTypes.arrayOf(
-      PropTypes.shape({
-        title: PropTypes.string,
-        url: PropTypes.string,
-      }),
-    ),
-  };
+BreadcrumbsComponent.propTypes = {
+  getBreadcrumbs: PropTypes.func,
+  pathname: PropTypes.string,
+  root: PropTypes.string,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string,
+      url: PropTypes.string,
+    }),
+  ),
+};
 
 export default BreadcrumbsComponent;
