@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Breadcrumb, Container, Segment } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { Icon } from '@plone/volto/components';
 import { getBreadcrumbs } from '@plone/volto/actions';
 import { getBaseUrl, hasApiExpander } from '@plone/volto/helpers';
 
 import homeSVG from '@plone/volto/icons/home.svg';
-import { useRoot } from '@plone/volto/hooks/Breadcrumbs/useRoot';
-import { useItems } from '@plone/volto/hooks/Breadcrumbs/useItems';
+import { useRoot } from '@plone/volto/hooks/breadcrumbs/useRoot';
+import { useItems } from '@plone/volto/hooks/breadcrumbs/useItems';
 
 const messages = defineMessages({
   home: {
