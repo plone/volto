@@ -43,8 +43,8 @@ const messages = defineMessages({
     defaultMessage: 'New password',
   },
   newPasswordDescription: {
-    id: 'Enter your new password. Minimum 5 characters.',
-    defaultMessage: 'Enter your new password. Minimum 5 characters.',
+    id: 'Enter your new password. Minimum 8 characters.',
+    defaultMessage: 'Enter your new password. Minimum 8 characters.',
   },
   newPasswordRepeatTitle: {
     id: 'Confirm password',
