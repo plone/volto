@@ -1,22 +1,17 @@
-/**
- * Breadcrumbs components.
- * @module components/theme/Breadcrumbs/Breadcrumbs
- */
-
-import React, { Component } from 'react';
+import {useEffect} from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 import { Breadcrumb, Container, Segment } from 'semantic-ui-react';
-import { defineMessages, injectIntl } from 'react-intl';
+import { defineMessages, useIntl } from 'react-intl';
+import { useSelector,useDispatch } from 'react-redux';
 
 import { Icon } from '@plone/volto/components';
 import { getBreadcrumbs } from '@plone/volto/actions';
 import { getBaseUrl, hasApiExpander } from '@plone/volto/helpers';
 
 import homeSVG from '@plone/volto/icons/home.svg';
-
+import { useRoot } from '@plone/volto/hooks/Breadcrumbs/useRoot';
+import { useItems } from '@plone/volto/hooks/Breadcrumbs/useItems';
 const messages = defineMessages({
   home: {
     id: 'Home',
@@ -28,57 +23,30 @@ const messages = defineMessages({
   },
 });
 
-/**
- * Breadcrumbs container class.
- */
-export class BreadcrumbsComponent extends Component {
-  /**
-   * Property types.
-   * @property {Object} propTypes Property types.
-   * @static
-   */
-  static propTypes = {
-    getBreadcrumbs: PropTypes.func.isRequired,
-    pathname: PropTypes.string.isRequired,
-    root: PropTypes.string,
-    items: PropTypes.arrayOf(
-      PropTypes.shape({
-        title: PropTypes.string,
-        url: PropTypes.string,
-      }),
-    ).isRequired,
-  };
 
-  componentDidMount() {
-    if (!hasApiExpander('breadcrumbs', getBaseUrl(this.props.pathname))) {
-      this.props.getBreadcrumbs(getBaseUrl(this.props.pathname));
+const BreadcrumbsComponent=({ pathname })=>{
+
+ const intl=useIntl();
+  const dispatch = useDispatch();
+  const { items,root } = useSelector(
+    (state) => ({
+      items: state.breadcrumbs.items,
+      root: state.breadcrumbs.root,
+    }),
+  );
+
+  useEffect(() => {
+    if (!hasApiExpander('breadcrumbs', getBaseUrl(pathname))) {
+        dispatch(getBreadcrumbs(getBaseUrl(pathname)));
     }
-  }
 
-  /**
-   * Component will receive props
-   * @method componentWillReceiveProps
-   * @param {Object} nextProps Next properties
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.pathname !== this.props.pathname) {
-      if (!hasApiExpander('breadcrumbs', getBaseUrl(this.props.pathname))) {
-        this.props.getBreadcrumbs(getBaseUrl(nextProps.pathname));
-      }
-    }
-  }
+  },[pathname]);
 
-  /**
-   * Render method.
-   * @method render
-   * @returns {string} Markup for the component.
-   */
-  render() {
+
     return (
       <Segment
         role="navigation"
-        aria-label={this.props.intl.formatMessage(messages.breadcrumbs)}
+        aria-label={intl.formatMessage(messages.breadcrumbs)}
         className="breadcrumbs"
         secondary
         vertical
@@ -86,13 +54,13 @@ export class BreadcrumbsComponent extends Component {
         <Container>
           <Breadcrumb>
             <Link
-              to={this.props.root || '/'}
+              to={root || '/'}
               className="section"
-              title={this.props.intl.formatMessage(messages.home)}
+              title={intl.formatMessage(messages.home)}
             >
               <Icon name={homeSVG} size="18px" />
             </Link>
-            {this.props.items.map((item, index, items) => [
+            {items.map((item, index, items) => [
               <Breadcrumb.Divider key={`divider-${item.url}`} />,
               index < items.length - 1 ? (
                 <Link key={item.url} to={item.url} className="section">
@@ -109,15 +77,17 @@ export class BreadcrumbsComponent extends Component {
       </Segment>
     );
   }
-}
 
-export default compose(
-  injectIntl,
-  connect(
-    (state) => ({
-      items: state.breadcrumbs.items,
-      root: state.breadcrumbs.root,
-    }),
-    { getBreadcrumbs },
-  ),
-)(BreadcrumbsComponent);
+  BreadcrumbsComponent.propTypes = {
+    getBreadcrumbs: PropTypes.func,
+    pathname: PropTypes.string,
+    root: PropTypes.string,
+    items: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string,
+        url: PropTypes.string,
+      }),
+    ),
+  };
+
+export default BreadcrumbsComponent;
