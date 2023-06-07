@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { Menu } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
 import config from '@plone/volto/registry';
-import { useToken, useContent } from '@plone/volto/hooks/anontools/anontools';
+import { useToken } from '@plone/volto/hooks/userSession/useToken';
+import { useContent } from '@plone/volto/hooks/content/useContent';
 
 const Anontools = () => {
   const token = useToken();
