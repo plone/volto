@@ -36,12 +36,13 @@ import {
 } from './extensions';
 import {
   // inlineTagDeserializer,
-  bodyTagDeserializer,
-  blockTagDeserializer,
-  preTagDeserializer,
-  spanTagDeserializer,
   bTagDeserializer,
+  blockTagDeserializer,
+  bodyTagDeserializer,
   codeTagDeserializer,
+  preTagDeserializer,
+  removeTagDeserializer,
+  spanTagDeserializer,
 } from './deserialize';
 
 // Registry of available buttons
@@ -321,6 +322,8 @@ export const htmlTagsToSlate = {
   OL: blockTagDeserializer('ol'),
   UL: blockTagDeserializer('ul'),
   LI: blockTagDeserializer('li'),
+
+  COLGROUP: removeTagDeserializer,
 };
 
 // Adds "highlight" decoration in the editor. Used by `highlightByType`

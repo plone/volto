@@ -28,3 +28,5 @@ export const extractImages = (editor, pathRef) => {
 
   return images.map((el) => syncCreateImageBlock(el.url));
 };
+
+extractImages.id = 'extractImages';

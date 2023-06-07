@@ -289,6 +289,10 @@ export const switchListType = (editor, format) => {
 
 export const changeBlockToList = (editor, format) => {
   const { slate } = config.settings;
+
+  const block = { type: format };
+  Transforms.wrapNodes(editor, block);
+
   const [match] = Editor.nodes(editor, {
     match: (n) => n.type === slate.listItemType,
   });
@@ -302,8 +306,6 @@ export const changeBlockToList = (editor, format) => {
 
   // `children` property is added automatically as an empty array then
   // normalized
-  const block = { type: format };
-  Transforms.wrapNodes(editor, block);
 };
 
 export const toggleFormat = (editor, format, allowedChildren) => {

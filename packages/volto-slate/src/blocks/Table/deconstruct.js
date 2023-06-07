@@ -19,7 +19,7 @@ import {
 export function syncCreateTableBlock(rows) {
   const id = uuid();
   const block = {
-    '@type': 'table',
+    '@type': 'slateTable',
     table: {
       rows,
     },
@@ -50,6 +50,8 @@ export const extractTables = (editor, pathRef) => {
 
   return tables.map((el) => syncCreateTableBlock(el));
 };
+
+extractTables.id = 'extractTables';
 
 /**
  * @param {Node[]} fragment A Slate document fragment.

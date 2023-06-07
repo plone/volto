@@ -1,0 +1,10 @@
+- Upgrade slate to latest libraries
+- When normalizing slate text, lift the list nodes (ul/ol) if they are children
+  of list items (li) up to the level of the list item
+- When normalizing slate text, remove any empty element (has no text) when it's
+  a child of a list item
+- fix pasting a table that was copied from LibreOffice
+- pasting a single node that can be converted to a Volto block (an image or
+  table) is now properly converted to a block
+
+@tiberiuichim

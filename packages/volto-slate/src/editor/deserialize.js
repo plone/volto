@@ -182,4 +182,8 @@ export const preTagDeserializer = (editor, el, options) => {
   return blockTagDeserializer(nodeName)(editor, parent, options);
 };
 
+export const removeTagDeserializer = (editor, el, options) => {
+  return null;
+};
+
 export default deserialize;

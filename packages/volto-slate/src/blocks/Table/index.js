@@ -14,10 +14,6 @@ import tableSVG from '@plone/volto/icons/table.svg';
 export default function install(config) {
   config.settings.slate = {
     ...config.settings.slate,
-    voltoBlockEmiters: [
-      ...(config.settings.slate.voltoBlockEmiters || []),
-      extractTables,
-    ],
     tableblockExtensions: [
       // First here gets executed last
       // withLists,
@@ -55,6 +51,19 @@ export default function install(config) {
     ...tableBlockConfig,
     id: 'slateTable',
   };
+
+  const { voltoBlockEmiters = [] } = config.settings.slate;
+  const imageExtractor = voltoBlockEmiters.find(
+    (e) => e.id === 'extractImages',
+  );
+
+  // we want to extract the tables before the images, so that the images that
+  // that are inserted in the tables are not extracted as Volto image blocks
+  config.settings.slate.voltoBlockEmiters = [
+    ...voltoBlockEmiters.filter((e) => e.id !== 'extractImages'),
+    extractTables,
+    ...(imageExtractor ? [imageExtractor] : []),
+  ];
 
   return config;
 }
