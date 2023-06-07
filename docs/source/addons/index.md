@@ -14,6 +14,7 @@ myst:
 
 i18n
 best-practices
+theme
 ```
 
 There are several advanced scenarios where we might want to have more control
@@ -330,9 +331,7 @@ export default applyConfig;
 
 ## Add third-party dependencies to your add-on
 
-If you're developing the add-on and you wish to add an external dependency,
-you'll have to switch your project to be a [Yarn Workspaces
-root](https://classic.yarnpkg.com/en/docs/workspaces/).
+If you're developing the add-on and you wish to add an external dependency, you'll have to switch your project to be a [Yarn Workspaces root](https://yarnpkg.com/features/workspaces).
 
 So you'll need to add, in your Volto project's `package.json`:
 

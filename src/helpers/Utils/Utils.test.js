@@ -6,7 +6,7 @@ import {
   getColor,
   getInitials,
   hasApiExpander,
-  normalizeLanguageName,
+  toGettextLang,
   parseDateTime,
   removeFromArray,
   reorderArray,
@@ -284,12 +284,12 @@ describe('Utils tests', () => {
     });
   });
 
-  describe('normalizeLanguageName', () => {
+  describe('toGettextLang', () => {
     it('Normalizes an extended language (pt_BR)', () => {
-      expect(normalizeLanguageName('pt-br')).toStrictEqual('pt_BR');
+      expect(toGettextLang('pt-br')).toStrictEqual('pt_BR');
     });
     it('Normalizes a simple language (ca)', () => {
-      expect(normalizeLanguageName('ca')).toStrictEqual('ca');
+      expect(toGettextLang('ca')).toStrictEqual('ca');
     });
   });
 

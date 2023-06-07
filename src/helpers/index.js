@@ -30,7 +30,6 @@ export {
   removeProtocol,
   URLUtils,
 } from '@plone/volto/helpers/Url/Url';
-export { generateSitemap } from '@plone/volto/helpers/Sitemap/Sitemap';
 export { generateRobots } from '@plone/volto/helpers/Robots/Robots';
 export {
   nestContent,
@@ -81,11 +80,16 @@ export {
   applyConfig,
   withServerErrorCode,
   parseDateTime,
-  normalizeLanguageName,
-  toLangUnderscoreRegion,
+  toGettextLang,
+  normalizeLanguageName, // old name for toGettextLang
+  toReactIntlLang,
+  toLangUnderscoreRegion, // old name for toReactIntlLang
+  toBackendLang,
   hasApiExpander,
   replaceItemOfArray,
   cloneDeepSchema,
+  arrayRange,
+  reorderArray,
 } from '@plone/volto/helpers/Utils/Utils';
 export { messages } from './MessageLabels/MessageLabels';
 export {
