@@ -57,7 +57,13 @@ const RenderBlocks = (props) => {
         if (Block) {
           return (
             <MaybeWrap condition={blockWrapperTag} as={blockWrapperTag}>
-              <StyleWrapper key={block} {...props} id={block} data={blockData}>
+              <StyleWrapper
+                key={block}
+                {...props}
+                id={block}
+                block={block}
+                data={blockData}
+              >
                 <Block
                   id={block}
                   metadata={metadata}

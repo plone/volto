@@ -226,7 +226,6 @@ workflowMapping
     It's meant to be extended with your own workflows/transitions.
     It is recommended to assign the same color to the transition as the destination state, so the user can have the visual hint to which state are they transitioning to.
 
-
 styleClassNameConverters
     An object with functions used by the style wrapper helpers to convert style
     data to actual class names. You can customize the generated classname by
@@ -374,6 +373,7 @@ additionalToolbarComponents
       }}
     </Plug>
     ```
+
 blockSettingsTabFieldsetsInitialStateOpen
     A Boolean, `true` by default.
     The fieldsets in the blocks settings tab start by default as non-collapsed (opened), you can decide to have them collapsed (closed) by default setting this to `false`.

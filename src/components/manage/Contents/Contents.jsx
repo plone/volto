@@ -1013,6 +1013,7 @@ class Contents extends Component {
         sort_order: this.state.sort_order,
         metadata_fields: '_all',
         b_size: 100000000,
+        show_inactive: true,
         ...(this.state.filter && { SearchableText: `${this.state.filter}*` }),
       });
     } else {
@@ -1024,6 +1025,7 @@ class Contents extends Component {
         ...(this.state.filter && { SearchableText: `${this.state.filter}*` }),
         b_size: this.state.pageSize,
         b_start: this.state.currentPage * this.state.pageSize,
+        show_inactive: true,
       });
     }
   }
@@ -1785,7 +1787,9 @@ class Contents extends Component {
                                     <Menu.Header
                                       content={this.props.intl.formatMessage(
                                         messages.selected,
-                                        { count: this.state.selected.length },
+                                        {
+                                          count: this.state.selected.length,
+                                        },
                                       )}
                                     />
                                     <Input

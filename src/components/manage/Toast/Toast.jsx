@@ -15,7 +15,7 @@ const Toast = (props) => {
       return successSVG;
     } else if (props.error) {
       return errorSVG;
-    } else if (props.error) {
+    } else if (props.warning) {
       return warningSVG;
     } else {
       return successSVG;
