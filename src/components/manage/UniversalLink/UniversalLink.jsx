@@ -12,7 +12,6 @@ import {
   isInternalURL,
   URLUtils,
 } from '@plone/volto/helpers/Url/Url';
-import { matchPath } from 'react-router';
 
 import config from '@plone/volto/registry';
 
@@ -65,15 +64,6 @@ const UniversalLink = ({
       }
     }
   }
-
-  // const isBlacklisted = !!(config.settings.externalRoutes ?? []).find((route) =>
-  //   matchPath(flattenToAppURL(url), route.match),
-  // );
-
-  // const isBlacklisted =
-  //   (config.settings.externalRoutes ?? []).find((route) =>
-  //     matchPath(flattenToAppURL(url), route.match),
-  //   )?.length > 0;
 
   const isExternal = !isInternalURL(url);
 
