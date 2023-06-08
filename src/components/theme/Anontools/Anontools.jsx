@@ -8,7 +8,7 @@ import { useContent } from '@plone/volto/hooks/content/useContent';
 
 const Anontools = () => {
   const token = useToken();
-  const {data} = useContent();
+  const { data } = useContent();
 
   const { settings } = config;
   return (
@@ -49,7 +49,7 @@ Anontools.propTypes = {
 
 Anontools.defaultProps = {
   token: null,
-  data : {
+  data: {
     '@id': null,
   },
 };
