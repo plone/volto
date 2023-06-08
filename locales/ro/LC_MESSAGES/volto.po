@@ -133,7 +133,7 @@ msgstr ""
 msgid "Add block"
 msgstr "Adăugare bloc …"
 
-#: components/manage/Blocks/Row/NewBlockAddButton
+#: components/manage/Blocks/Container/NewBlockAddButton
 # defaultMessage: Add block in position {index}
 msgid "Add block in position {index}"
 msgstr ""
@@ -2700,7 +2700,7 @@ msgstr "Eliminați elementul"
 msgid "Remove recurrence"
 msgstr "Eliminați recurența"
 
-#: components/manage/Blocks/Row/EditBlockWrapper
+#: components/manage/Blocks/Container/EditBlockWrapper
 # defaultMessage: Remove row element {index}
 msgid "Remove row element {index}"
 msgstr ""
@@ -2779,7 +2779,7 @@ msgstr "Obligatoriu"
 msgid "Required input is missing."
 msgstr "Câmpul este obligatoriu."
 
-#: components/manage/Blocks/Row/EditBlockWrapper
+#: components/manage/Blocks/Container/EditBlockWrapper
 # defaultMessage: Reset row element {index}
 msgid "Reset row element {index}"
 msgstr ""

@@ -142,7 +142,7 @@ msgstr ""
 msgid "Add block"
 msgstr "Afegeix bloc"
 
-#: components/manage/Blocks/Row/NewBlockAddButton
+#: components/manage/Blocks/Container/NewBlockAddButton
 # defaultMessage: Add block in position {index}
 msgid "Add block in position {index}"
 msgstr ""
@@ -2709,7 +2709,7 @@ msgstr "Elimina l'element"
 msgid "Remove recurrence"
 msgstr "Elimina"
 
-#: components/manage/Blocks/Row/EditBlockWrapper
+#: components/manage/Blocks/Container/EditBlockWrapper
 # defaultMessage: Remove row element {index}
 msgid "Remove row element {index}"
 msgstr ""
@@ -2788,7 +2788,7 @@ msgstr "Obligatori"
 msgid "Required input is missing."
 msgstr "Falta l'entrada necessària."
 
-#: components/manage/Blocks/Row/EditBlockWrapper
+#: components/manage/Blocks/Container/EditBlockWrapper
 # defaultMessage: Reset row element {index}
 msgid "Reset row element {index}"
 msgstr ""
