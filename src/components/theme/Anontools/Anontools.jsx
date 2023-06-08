@@ -8,7 +8,7 @@ import { useContent } from '@plone/volto/hooks/content/useContent';
 
 const Anontools = () => {
   const token = useToken();
-  const { data } = useContent();
+  const content = useContent();
 
   const { settings } = config;
   return (
@@ -18,8 +18,8 @@ const Anontools = () => {
           <Link
             aria-label="login"
             to={`/login${
-              data?.['@id']
-                ? `?return_url=${data['@id'].replace(settings.apiPath, '')}`
+              content?.['@id']
+                ? `?return_url=${content['@id'].replace(settings.apiPath, '')}`
                 : ''
             }`}
           >
@@ -42,14 +42,14 @@ export default Anontools;
 
 Anontools.propTypes = {
   token: PropTypes.string,
-  data: PropTypes.shape({
+  content: PropTypes.shape({
     '@id': PropTypes.string,
   }),
 };
 
 Anontools.defaultProps = {
   token: null,
-  data: {
+  content: {
     '@id': null,
   },
 };
