@@ -209,11 +209,7 @@ class ContentsPropertiesModal extends Component {
                 title: this.props.intl.formatMessage(
                   messages.excludeFromNavTitle,
                 ),
-                type: 'array',
-                choices: [
-                  [true, this.props.intl.formatMessage(messages.yes)],
-                  [false, this.props.intl.formatMessage(messages.no)],
-                ],
+                type: 'boolean',
               },
             },
             required: [],
