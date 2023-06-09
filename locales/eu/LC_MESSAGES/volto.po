@@ -170,6 +170,11 @@ msgstr "Gehitu irizpidea"
 msgid "Add date"
 msgstr "Gehitu data"
 
+#: components/manage/Blocks/Container/Edit
+# defaultMessage: Add element to container
+msgid "Add element to container"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Add field
 msgid "Add field"
@@ -731,6 +736,11 @@ msgstr "Kontaktu-formularioa"
 msgid "Contained items"
 msgstr "Barneko elementuak"
 
+#: components/manage/Blocks/Container/Edit
+# defaultMessage: Container settings
+msgid "Container settings"
+msgstr ""
+
 #: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Content
 msgid "Content"
@@ -1022,11 +1032,6 @@ msgstr "Desberdintasunak"
 # defaultMessage: Difference between revision {one} and {two} of {title}
 msgid "Difference between revision {one} and {two} of {title}"
 msgstr "{title} elementuaren {one} eta {two} errebisioen arteko desberdintasunak"
-
-#: components/manage/Blocks/Row/schema
-# defaultMessage: Direction
-msgid "Direction"
-msgstr ""
 
 #: components/manage/Rules/Rules
 # defaultMessage: Disable
@@ -1536,6 +1541,11 @@ msgstr "Rol globala"
 msgid "Google Maps Embedded Block"
 msgstr "Google Maps itsasteko blokea"
 
+#: components/manage/Blocks/Grid/schema
+# defaultMessage: Grid
+msgid "Grid"
+msgstr ""
+
 #: components/manage/Sharing/Sharing
 # defaultMessage: Group
 msgid "Group"
@@ -1574,8 +1584,8 @@ msgstr "Taldeak erabiltzaileen multzo logikoak dira. Taldeak ez daude baimenei e
 msgid "Header cell"
 msgstr "Goiburuko gelaxka"
 
+#: components/manage/Blocks/Grid/schema
 #: components/manage/Blocks/Listing/schema
-#: components/manage/Blocks/Row/schema
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Headline
 msgid "Headline"
@@ -2697,6 +2707,11 @@ msgstr "Errelebantzia"
 msgid "Remove"
 msgstr "Ezabatu"
 
+#: components/manage/Blocks/Container/EditBlockWrapper
+# defaultMessage: Remove element {index}
+msgid "Remove element {index}"
+msgstr ""
+
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Remove item
 msgid "Remove item"
@@ -2706,11 +2721,6 @@ msgstr "Ezabatu elementua"
 # defaultMessage: Remove
 msgid "Remove recurrence"
 msgstr "Errepikapena ezabatu"
-
-#: components/manage/Blocks/Container/EditBlockWrapper
-# defaultMessage: Remove row element {index}
-msgid "Remove row element {index}"
-msgstr ""
 
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Remove selected
@@ -2787,8 +2797,8 @@ msgid "Required input is missing."
 msgstr "Beharrezko balioak falta dira"
 
 #: components/manage/Blocks/Container/EditBlockWrapper
-# defaultMessage: Reset row element {index}
-msgid "Reset row element {index}"
+# defaultMessage: Reset element {index}
+msgid "Reset element {index}"
 msgstr ""
 
 #: components/manage/Widgets/VocabularyTermsWidget
@@ -2858,11 +2868,6 @@ msgstr "Rolak"
 # defaultMessage: Root
 msgid "Root"
 msgstr "Erroa"
-
-#: components/manage/Blocks/Row/schema
-# defaultMessage: Row
-msgid "Row"
-msgstr ""
 
 #: components/manage/Controlpanels/Rules/AddRule
 # defaultMessage: Rule added
@@ -4237,12 +4242,12 @@ msgstr "Pasahitza ahaztuta?"
 msgid "checkboxFacet"
 msgstr "Aukeraketa kutxa"
 
-#: components/manage/Blocks/Row/templates
+#: components/manage/Blocks/Grid/templates
 # defaultMessage: column
 msgid "column"
 msgstr ""
 
-#: components/manage/Blocks/Row/templates
+#: components/manage/Blocks/Grid/templates
 # defaultMessage: columns
 msgid "columns"
 msgstr ""

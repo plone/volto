@@ -171,6 +171,11 @@ msgstr "基準を追加"
 msgid "Add date"
 msgstr "日付を追加"
 
+#: components/manage/Blocks/Container/Edit
+# defaultMessage: Add element to container
+msgid "Add element to container"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Add field
 msgid "Add field"
@@ -732,6 +737,11 @@ msgstr "お問い合わせフォーム"
 msgid "Contained items"
 msgstr "含まれるアイテム"
 
+#: components/manage/Blocks/Container/Edit
+# defaultMessage: Container settings
+msgid "Container settings"
+msgstr ""
+
 #: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Content
 msgid "Content"
@@ -1023,11 +1033,6 @@ msgstr "差分"
 # defaultMessage: Difference between revision {one} and {two} of {title}
 msgid "Difference between revision {one} and {two} of {title}"
 msgstr "{title} のリビジョン {one} と {two} の差分"
-
-#: components/manage/Blocks/Row/schema
-# defaultMessage: Direction
-msgid "Direction"
-msgstr ""
 
 #: components/manage/Rules/Rules
 # defaultMessage: Disable
@@ -1537,6 +1542,11 @@ msgstr "グローバルロール"
 msgid "Google Maps Embedded Block"
 msgstr "Googleマップ埋め込みブロック"
 
+#: components/manage/Blocks/Grid/schema
+# defaultMessage: Grid
+msgid "Grid"
+msgstr ""
+
 #: components/manage/Sharing/Sharing
 # defaultMessage: Group
 msgid "Group"
@@ -1575,8 +1585,8 @@ msgstr ""
 msgid "Header cell"
 msgstr "見出しセル"
 
+#: components/manage/Blocks/Grid/schema
 #: components/manage/Blocks/Listing/schema
-#: components/manage/Blocks/Row/schema
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Headline
 msgid "Headline"
@@ -2698,6 +2708,11 @@ msgstr "関連性"
 msgid "Remove"
 msgstr ""
 
+#: components/manage/Blocks/Container/EditBlockWrapper
+# defaultMessage: Remove element {index}
+msgid "Remove element {index}"
+msgstr ""
+
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Remove item
 msgid "Remove item"
@@ -2707,11 +2722,6 @@ msgstr ""
 # defaultMessage: Remove
 msgid "Remove recurrence"
 msgstr "繰り返しを削除"
-
-#: components/manage/Blocks/Container/EditBlockWrapper
-# defaultMessage: Remove row element {index}
-msgid "Remove row element {index}"
-msgstr ""
 
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Remove selected
@@ -2788,8 +2798,8 @@ msgid "Required input is missing."
 msgstr "必須"
 
 #: components/manage/Blocks/Container/EditBlockWrapper
-# defaultMessage: Reset row element {index}
-msgid "Reset row element {index}"
+# defaultMessage: Reset element {index}
+msgid "Reset element {index}"
 msgstr ""
 
 #: components/manage/Widgets/VocabularyTermsWidget
@@ -2859,11 +2869,6 @@ msgstr "ロール"
 # defaultMessage: Root
 msgid "Root"
 msgstr "Root"
-
-#: components/manage/Blocks/Row/schema
-# defaultMessage: Row
-msgid "Row"
-msgstr ""
 
 #: components/manage/Controlpanels/Rules/AddRule
 # defaultMessage: Rule added
@@ -4238,12 +4243,12 @@ msgstr "パスワードを忘れた？"
 msgid "checkboxFacet"
 msgstr ""
 
-#: components/manage/Blocks/Row/templates
+#: components/manage/Blocks/Grid/templates
 # defaultMessage: column
 msgid "column"
 msgstr ""
 
-#: components/manage/Blocks/Row/templates
+#: components/manage/Blocks/Grid/templates
 # defaultMessage: columns
 msgid "columns"
 msgstr ""

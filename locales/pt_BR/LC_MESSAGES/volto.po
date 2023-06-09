@@ -173,6 +173,11 @@ msgstr "Adicionar critério"
 msgid "Add date"
 msgstr "Adicionar data"
 
+#: components/manage/Blocks/Container/Edit
+# defaultMessage: Add element to container
+msgid "Add element to container"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Add field
 msgid "Add field"
@@ -734,6 +739,11 @@ msgstr "Formulário de contato"
 msgid "Contained items"
 msgstr "Itens contidos"
 
+#: components/manage/Blocks/Container/Edit
+# defaultMessage: Container settings
+msgid "Container settings"
+msgstr ""
+
 #: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Content
 msgid "Content"
@@ -1025,11 +1035,6 @@ msgstr "Diferenças"
 # defaultMessage: Difference between revision {one} and {two} of {title}
 msgid "Difference between revision {one} and {two} of {title}"
 msgstr "Diferenças entre as revisões {one} e {two} de {title}"
-
-#: components/manage/Blocks/Row/schema
-# defaultMessage: Direction
-msgid "Direction"
-msgstr ""
 
 #: components/manage/Rules/Rules
 # defaultMessage: Disable
@@ -1539,6 +1544,11 @@ msgstr "Papel global"
 msgid "Google Maps Embedded Block"
 msgstr "Bloco Google Maps"
 
+#: components/manage/Blocks/Grid/schema
+# defaultMessage: Grid
+msgid "Grid"
+msgstr ""
+
 #: components/manage/Sharing/Sharing
 # defaultMessage: Group
 msgid "Group"
@@ -1577,8 +1587,8 @@ msgstr "Grupos são coleções lógicas de usuários, como departamentos e unida
 msgid "Header cell"
 msgstr "Célula de cabeçalho"
 
+#: components/manage/Blocks/Grid/schema
 #: components/manage/Blocks/Listing/schema
-#: components/manage/Blocks/Row/schema
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Headline
 msgid "Headline"
@@ -2700,6 +2710,11 @@ msgstr "Relevância"
 msgid "Remove"
 msgstr "Remover"
 
+#: components/manage/Blocks/Container/EditBlockWrapper
+# defaultMessage: Remove element {index}
+msgid "Remove element {index}"
+msgstr ""
+
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Remove item
 msgid "Remove item"
@@ -2709,11 +2724,6 @@ msgstr "Remover Item"
 # defaultMessage: Remove
 msgid "Remove recurrence"
 msgstr "Remover a recorrência"
-
-#: components/manage/Blocks/Container/EditBlockWrapper
-# defaultMessage: Remove row element {index}
-msgid "Remove row element {index}"
-msgstr ""
 
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Remove selected
@@ -2790,8 +2800,8 @@ msgid "Required input is missing."
 msgstr "Falta informação obrigatória."
 
 #: components/manage/Blocks/Container/EditBlockWrapper
-# defaultMessage: Reset row element {index}
-msgid "Reset row element {index}"
+# defaultMessage: Reset element {index}
+msgid "Reset element {index}"
 msgstr ""
 
 #: components/manage/Widgets/VocabularyTermsWidget
@@ -2861,11 +2871,6 @@ msgstr "Papéis"
 # defaultMessage: Root
 msgid "Root"
 msgstr "Raiz"
-
-#: components/manage/Blocks/Row/schema
-# defaultMessage: Row
-msgid "Row"
-msgstr ""
 
 #: components/manage/Controlpanels/Rules/AddRule
 # defaultMessage: Rule added
@@ -4240,12 +4245,12 @@ msgstr "Esqueceu sua senha?"
 msgid "checkboxFacet"
 msgstr "Caixa de seleção"
 
-#: components/manage/Blocks/Row/templates
+#: components/manage/Blocks/Grid/templates
 # defaultMessage: column
 msgid "column"
 msgstr ""
 
-#: components/manage/Blocks/Row/templates
+#: components/manage/Blocks/Grid/templates
 # defaultMessage: columns
 msgid "columns"
 msgstr ""

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2023-06-08T13:51:38.559Z\n"
+"POT-Creation-Date: 2023-06-09T09:09:49.024Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -163,6 +163,11 @@ msgstr ""
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: Add date
 msgid "Add date"
+msgstr ""
+
+#: components/manage/Blocks/Container/Edit
+# defaultMessage: Add element to container
+msgid "Add element to container"
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
@@ -726,6 +731,11 @@ msgstr ""
 msgid "Contained items"
 msgstr ""
 
+#: components/manage/Blocks/Container/Edit
+# defaultMessage: Container settings
+msgid "Container settings"
+msgstr ""
+
 #: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Content
 msgid "Content"
@@ -1016,11 +1026,6 @@ msgstr ""
 #: components/manage/Diff/Diff
 # defaultMessage: Difference between revision {one} and {two} of {title}
 msgid "Difference between revision {one} and {two} of {title}"
-msgstr ""
-
-#: components/manage/Blocks/Row/schema
-# defaultMessage: Direction
-msgid "Direction"
 msgstr ""
 
 #: components/manage/Rules/Rules
@@ -1531,6 +1536,11 @@ msgstr ""
 msgid "Google Maps Embedded Block"
 msgstr ""
 
+#: components/manage/Blocks/Grid/schema
+# defaultMessage: Grid
+msgid "Grid"
+msgstr ""
+
 #: components/manage/Sharing/Sharing
 # defaultMessage: Group
 msgid "Group"
@@ -1569,8 +1579,8 @@ msgstr ""
 msgid "Header cell"
 msgstr ""
 
+#: components/manage/Blocks/Grid/schema
 #: components/manage/Blocks/Listing/schema
-#: components/manage/Blocks/Row/schema
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Headline
 msgid "Headline"
@@ -2692,6 +2702,11 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
+#: components/manage/Blocks/Container/EditBlockWrapper
+# defaultMessage: Remove element {index}
+msgid "Remove element {index}"
+msgstr ""
+
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Remove item
 msgid "Remove item"
@@ -2700,11 +2715,6 @@ msgstr ""
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: Remove
 msgid "Remove recurrence"
-msgstr ""
-
-#: components/manage/Blocks/Container/EditBlockWrapper
-# defaultMessage: Remove row element {index}
-msgid "Remove row element {index}"
 msgstr ""
 
 #: components/manage/Controlpanels/Aliases
@@ -2782,8 +2792,8 @@ msgid "Required input is missing."
 msgstr ""
 
 #: components/manage/Blocks/Container/EditBlockWrapper
-# defaultMessage: Reset row element {index}
-msgid "Reset row element {index}"
+# defaultMessage: Reset element {index}
+msgid "Reset element {index}"
 msgstr ""
 
 #: components/manage/Widgets/VocabularyTermsWidget
@@ -2852,11 +2862,6 @@ msgstr ""
 #: components/manage/Contents/ContentsBreadcrumbsRootItem
 # defaultMessage: Root
 msgid "Root"
-msgstr ""
-
-#: components/manage/Blocks/Row/schema
-# defaultMessage: Row
-msgid "Row"
 msgstr ""
 
 #: components/manage/Controlpanels/Rules/AddRule
@@ -4232,12 +4237,12 @@ msgstr ""
 msgid "checkboxFacet"
 msgstr ""
 
-#: components/manage/Blocks/Row/templates
+#: components/manage/Blocks/Grid/templates
 # defaultMessage: column
 msgid "column"
 msgstr ""
 
-#: components/manage/Blocks/Row/templates
+#: components/manage/Blocks/Grid/templates
 # defaultMessage: columns
 msgid "columns"
 msgstr ""

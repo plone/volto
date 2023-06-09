@@ -169,6 +169,11 @@ msgstr "添加标准"
 msgid "Add date"
 msgstr "添加日期"
 
+#: components/manage/Blocks/Container/Edit
+# defaultMessage: Add element to container
+msgid "Add element to container"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Add field
 msgid "Add field"
@@ -730,6 +735,11 @@ msgstr "联系表单"
 msgid "Contained items"
 msgstr "包含的项目"
 
+#: components/manage/Blocks/Container/Edit
+# defaultMessage: Container settings
+msgid "Container settings"
+msgstr ""
+
 #: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Content
 msgid "Content"
@@ -1021,11 +1031,6 @@ msgstr "不同"
 # defaultMessage: Difference between revision {one} and {two} of {title}
 msgid "Difference between revision {one} and {two} of {title}"
 msgstr "{title}版本 {one} 和 {two} 之间的区别"
-
-#: components/manage/Blocks/Row/schema
-# defaultMessage: Direction
-msgid "Direction"
-msgstr ""
 
 #: components/manage/Rules/Rules
 # defaultMessage: Disable
@@ -1535,6 +1540,11 @@ msgstr "全局角色"
 msgid "Google Maps Embedded Block"
 msgstr "Google 地图嵌入块"
 
+#: components/manage/Blocks/Grid/schema
+# defaultMessage: Grid
+msgid "Grid"
+msgstr ""
+
 #: components/manage/Sharing/Sharing
 # defaultMessage: Group
 msgid "Group"
@@ -1573,8 +1583,8 @@ msgstr "组是用户的逻辑集合，如部门和商务小组。他们不直接
 msgid "Header cell"
 msgstr "标题单元格"
 
+#: components/manage/Blocks/Grid/schema
 #: components/manage/Blocks/Listing/schema
-#: components/manage/Blocks/Row/schema
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Headline
 msgid "Headline"
@@ -2696,6 +2706,11 @@ msgstr "相关度"
 msgid "Remove"
 msgstr "删除"
 
+#: components/manage/Blocks/Container/EditBlockWrapper
+# defaultMessage: Remove element {index}
+msgid "Remove element {index}"
+msgstr ""
+
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Remove item
 msgid "Remove item"
@@ -2704,11 +2719,6 @@ msgstr "删除条目"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: Remove
 msgid "Remove recurrence"
-msgstr ""
-
-#: components/manage/Blocks/Container/EditBlockWrapper
-# defaultMessage: Remove row element {index}
-msgid "Remove row element {index}"
 msgstr ""
 
 #: components/manage/Controlpanels/Aliases
@@ -2786,8 +2796,8 @@ msgid "Required input is missing."
 msgstr "缺少所需的输出。"
 
 #: components/manage/Blocks/Container/EditBlockWrapper
-# defaultMessage: Reset row element {index}
-msgid "Reset row element {index}"
+# defaultMessage: Reset element {index}
+msgid "Reset element {index}"
 msgstr ""
 
 #: components/manage/Widgets/VocabularyTermsWidget
@@ -2856,11 +2866,6 @@ msgstr "规则"
 #: components/manage/Contents/ContentsBreadcrumbsRootItem
 # defaultMessage: Root
 msgid "Root"
-msgstr ""
-
-#: components/manage/Blocks/Row/schema
-# defaultMessage: Row
-msgid "Row"
 msgstr ""
 
 #: components/manage/Controlpanels/Rules/AddRule
@@ -4236,12 +4241,12 @@ msgstr "忘记了密码？"
 msgid "checkboxFacet"
 msgstr ""
 
-#: components/manage/Blocks/Row/templates
+#: components/manage/Blocks/Grid/templates
 # defaultMessage: column
 msgid "column"
 msgstr ""
 
-#: components/manage/Blocks/Row/templates
+#: components/manage/Blocks/Grid/templates
 # defaultMessage: columns
 msgid "columns"
 msgstr ""
