@@ -27,7 +27,7 @@ const messages = defineMessages({
   },
 });
 
-const ContainerEdit = (props) => {
+const ContainerBlockEdit = (props) => {
   const {
     block,
     data,
@@ -183,7 +183,7 @@ const ContainerEdit = (props) => {
   );
 };
 
-ContainerEdit.propTypes = {
+ContainerBlockEdit.propTypes = {
   block: PropTypes.string.isRequired,
   onChangeBlock: PropTypes.func.isRequired,
   pathname: PropTypes.string.isRequired,
@@ -192,4 +192,4 @@ ContainerEdit.propTypes = {
   direction: PropTypes.oneOf(['horizontal', 'vertical']),
 };
 
-export default ContainerEdit;
+export default ContainerBlockEdit;

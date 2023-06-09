@@ -1,4 +1,3 @@
-import React from 'react';
 import { Icon } from '@plone/volto/components';
 import { Button } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
@@ -84,7 +83,7 @@ const EditBlockWrapper = (props) => {
           </Button>
         )}
         {type && type !== 'empty' ? (
-          <div className={`ui drag block inner ${type}`}>{children}</div>
+          <div className={cx('ui drag block inner', type)}>{children}</div>
         ) : (
           <div
             className={cx('gridBlock-empty-placeholder', {
