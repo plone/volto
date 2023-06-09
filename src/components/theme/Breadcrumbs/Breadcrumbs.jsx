@@ -12,7 +12,6 @@ import { getBaseUrl, hasApiExpander } from '@plone/volto/helpers';
 import homeSVG from '@plone/volto/icons/home.svg';
 import { useBreadcrumbs } from '@plone/volto/hooks/breadcrumbs/useBreadcrumbs';
 
-
 const messages = defineMessages({
   home: {
     id: 'Home',
@@ -27,8 +26,7 @@ const messages = defineMessages({
 const BreadcrumbsComponent = ({ pathname }) => {
   const intl = useIntl();
   const dispatch = useDispatch();
-  const {items,root}=useBreadcrumbs();
-
+  const { items, root } = useBreadcrumbs();
 
   useEffect(() => {
     if (!hasApiExpander('breadcrumbs', getBaseUrl(pathname))) {
