@@ -15,20 +15,6 @@ describe('Logo', () => {
         locale: 'en',
         messages: {},
       },
-      router: {
-        location: {
-          pathname: '/',
-        },
-      },
-      site: {
-        data: {},
-      },
-      navroot: {
-        data: {
-          url: '/',
-          title: 'My site',
-        },
-      },
     });
     const component = renderer.create(
       <Provider store={store}>

@@ -2,13 +2,25 @@
  * Logo component.
  * @module components/theme/Logo/Logo
  */
-import { useEffect } from 'react';
+
+import { defineMessages, useIntl } from 'react-intl';
 import { Image } from 'semantic-ui-react';
-import { ConditionalLink } from '@plone/volto/components';
+import { useSelector } from 'react-redux';
+import config from '@plone/volto/registry';
+import { UniversalLink } from '@plone/volto/components';
+import { toBackendLang } from '@plone/volto/helpers';
 import LogoImage from '@plone/volto/components/theme/Logo/Logo.svg';
-import { useSelector, useDispatch } from 'react-redux';
-import { getNavroot, getSite } from '@plone/volto/actions';
-import { flattenToAppURL } from '@plone/volto/helpers';
+
+const messages = defineMessages({
+  site: {
+    id: 'Site',
+    defaultMessage: 'Site',
+  },
+  plonesite: {
+    id: 'Plone Site',
+    defaultMessage: 'Plone Site',
+  },
+});
 
 /**
  * Logo component class.
@@ -17,35 +29,21 @@ import { flattenToAppURL } from '@plone/volto/helpers';
  * @returns {string} Markup of the component.
  */
 const Logo = () => {
-  const pathname = useSelector((state) => state.router.location.pathname);
-  const site = useSelector((state) => state.site.data);
-  const navroot = useSelector((state) => state.navroot.data);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    pathname && dispatch(getNavroot(pathname));
-  }, [dispatch, pathname]);
-
-  useEffect(() => {
-    dispatch(getSite());
-  }, [dispatch]);
+  const { settings } = config;
+  const lang = useSelector((state) => state.intl.locale);
+  const intl = useIntl();
 
   return (
-    <ConditionalLink
-      href={navroot?.url}
-      title={navroot?.title}
-      condition={navroot?.url ? true : false}
+    <UniversalLink
+      href={settings.isMultilingual ? `/${toBackendLang(lang)}` : '/'}
+      title={intl.formatMessage(messages.site)}
     >
       <Image
-        src={
-          site['plone.site_logo']
-            ? flattenToAppURL(site['plone.site_logo'])
-            : LogoImage
-        }
-        alt={navroot?.title}
-        title={navroot?.title}
+        src={LogoImage}
+        alt={intl.formatMessage(messages.plonesite)}
+        title={intl.formatMessage(messages.plonesite)}
       />
-    </ConditionalLink>
+    </UniversalLink>
   );
 };
 
