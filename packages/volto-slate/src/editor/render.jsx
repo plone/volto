@@ -175,7 +175,7 @@ export const renderLinkElement = (tagName) => {
     );
     const intl = useIntl();
 
-    return slate.useLinkedHeadlines === false ? (
+    return slate.useLinkedHeadings === false ? (
       <Tag {...attributes} className={className}>
         {children}
       </Tag>
@@ -201,7 +201,7 @@ export const renderLinkElement = (tagName) => {
                     <Toast
                       info
                       title={intl.formatMessage(messages.success)}
-                      content={intl.formatMessage(messages.UrlclipboardCopy)}
+                      content={intl.formatMessage(messages.urlClipboardCopy)}
                     />,
                   );
                 }}

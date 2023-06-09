@@ -1,1 +1,1 @@
-Slug based linked headlines in volto-slate: [tiberiuichim , nileshgulia1]
+Added slug-based linked headings in `volto-slate`. @tiberiuichim, @nileshgulia1
