@@ -1,9 +1,9 @@
-# 
+#
 # Translators:
 # Petri Savolainen <petri.savolainen@iki.fi>, 2020
 # Asko Soukka <asko.soukka@iki.fi>, 2020
 # Rikupekka Oksanen <rioksane@gmail.com>, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
@@ -2524,7 +2524,7 @@ msgstr "Plone-säätiön"
 #: components/theme/Logo/Logo
 # defaultMessage: Plone Site
 msgid "Plone Site"
-msgstr ""
+msgstr "Plone-sivusto"
 
 #: components/theme/Footer/Footer
 # defaultMessage: Plone{reg} Open Source CMS/WCM
@@ -3186,7 +3186,7 @@ msgstr "Kirjaudu sisään"
 #: components/theme/Logo/Logo
 # defaultMessage: Site
 msgid "Site"
-msgstr ""
+msgstr "Sivusto"
 
 #: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized

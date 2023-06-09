@@ -2532,7 +2532,7 @@ msgstr "Plone Foundation"
 #: components/theme/Logo/Logo
 # defaultMessage: Plone Site
 msgid "Plone Site"
-msgstr ""
+msgstr "Plone website"
 
 #: components/theme/Footer/Footer
 # defaultMessage: Plone{reg} Open Source CMS/WCM
@@ -3194,7 +3194,7 @@ msgstr ""
 #: components/theme/Logo/Logo
 # defaultMessage: Site
 msgid "Site"
-msgstr ""
+msgstr "Website"
 
 #: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized

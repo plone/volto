@@ -2519,7 +2519,7 @@ msgstr ""
 #: components/theme/Logo/Logo
 # defaultMessage: Plone Site
 msgid "Plone Site"
-msgstr ""
+msgstr "Plone站点"
 
 #: components/theme/Footer/Footer
 # defaultMessage: Plone{reg} Open Source CMS/WCM
@@ -3181,7 +3181,7 @@ msgstr "登录以开始session会话"
 #: components/theme/Logo/Logo
 # defaultMessage: Site
 msgid "Site"
-msgstr ""
+msgstr "网站"
 
 #: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized

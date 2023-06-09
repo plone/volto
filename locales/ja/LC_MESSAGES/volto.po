@@ -2521,7 +2521,7 @@ msgstr "Plone Foundation"
 #: components/theme/Logo/Logo
 # defaultMessage: Plone Site
 msgid "Plone Site"
-msgstr ""
+msgstr "Ploneサイト"
 
 #: components/theme/Footer/Footer
 # defaultMessage: Plone{reg} Open Source CMS/WCM
@@ -3183,7 +3183,7 @@ msgstr "ログインしてセッションを開始"
 #: components/theme/Logo/Logo
 # defaultMessage: Site
 msgid "Site"
-msgstr ""
+msgstr "サイト"
 
 #: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized

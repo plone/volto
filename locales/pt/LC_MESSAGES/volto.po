@@ -1,6 +1,6 @@
 # Translators:
 # Emanuel de Jesus <emanuel.angelo@gmail.com>, 2019
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
@@ -2521,7 +2521,7 @@ msgstr "Fundação Plone"
 #: components/theme/Logo/Logo
 # defaultMessage: Plone Site
 msgid "Plone Site"
-msgstr ""
+msgstr "Sítio Plone"
 
 #: components/theme/Footer/Footer
 # defaultMessage: Plone{reg} Open Source CMS/WCM
@@ -3183,7 +3183,7 @@ msgstr "Inicie a sessão"
 #: components/theme/Logo/Logo
 # defaultMessage: Site
 msgid "Site"
-msgstr ""
+msgstr "Sítio"
 
 #: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized

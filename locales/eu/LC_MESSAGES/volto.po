@@ -2520,7 +2520,7 @@ msgstr "Plone Fundazioa"
 #: components/theme/Logo/Logo
 # defaultMessage: Plone Site
 msgid "Plone Site"
-msgstr ""
+msgstr "Plone Ataria"
 
 #: components/theme/Footer/Footer
 # defaultMessage: Plone{reg} Open Source CMS/WCM
@@ -3182,7 +3182,7 @@ msgstr "Sartu saioa hasteko"
 #: components/theme/Logo/Logo
 # defaultMessage: Site
 msgid "Site"
-msgstr ""
+msgstr "Ataria"
 
 #: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized
