@@ -9,7 +9,7 @@ import {
   SearchWidget,
 } from '@plone/volto/components';
 
-const Header = ({ pathname }) => {
+const Header = ({ pathname, content }) => {
   const token = useToken();
 
   return (
@@ -30,7 +30,7 @@ const Header = ({ pathname }) => {
               </div>
             )}
             <div className="search">
-              <SearchWidget pathname={pathname} />
+              <SearchWidget pathname={pathname} content={content} />
             </div>
           </div>
         </div>
