@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Form, Input } from 'semantic-ui-react';
 import { compose } from 'redux';
@@ -27,18 +27,15 @@ const SearchWidget = ({ pathname, history }) => {
     setText(value);
   };
 
-  const onSubmit = useCallback(
-    (event) => {
-      const path =
-        pathname?.length > 0 ? `&path=${encodeURIComponent(pathname)}` : '';
+  const onSubmit = (event) => {
+    const path =
+      pathname?.length > 0 ? `&path=${encodeURIComponent(pathname)}` : '';
 
-      history.push(`/search?SearchableText=${encodeURIComponent(text)}${path}`);
-      // reset input value
-      setText('');
-      event.preventDefault();
-    },
-    [pathname, history, text],
-  );
+    history.push(`/search?SearchableText=${encodeURIComponent(text)}${path}`);
+    // reset input value
+    setText('');
+    event.preventDefault();
+  };
 
   return (
     <Form action="/search" onSubmit={onSubmit}>
