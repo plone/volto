@@ -1,19 +1,16 @@
-/**
- * Register container.
- * @module components/theme/Register/Register
- */
-
-import React, { Component } from 'react';
+import { useEffect, useState } from 'react';
 import { Helmet } from '@plone/volto/helpers';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { compose } from 'redux';
-import { defineMessages, injectIntl } from 'react-intl';
+import { defineMessages, useIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import { Form, Toast } from '@plone/volto/components';
 import { createUser } from '@plone/volto/actions';
+
+import { useUsers } from '@plone/volto/hooks/users/useUsers';
 
 const messages = defineMessages({
   title: {
@@ -58,124 +55,72 @@ const messages = defineMessages({
   },
 });
 
-/**
- * Register class.
- * @class Register
- * @extends Component
- */
-class Register extends Component {
-  /**
-   * Property types.
-   * @property {Object} propTypes Property types.
-   * @static
-   */
-  static propTypes = {
-    createUser: PropTypes.func.isRequired,
-    loading: PropTypes.bool.isRequired,
-    loaded: PropTypes.bool.isRequired,
-    error: PropTypes.shape({
-      message: PropTypes.string,
-    }),
-  };
 
-  /**
-   * Default properties.
-   * @property {Object} defaultProps Default properties.
-   * @static
-   */
-  static defaultProps = {
-    error: null,
-  };
+const Register=({ history })=> {
 
-  /**
-   * Constructor
-   * @method constructor
-   * @param {Object} props Component properties
-   * @constructs WysiwygEditor
-   */
-  constructor(props) {
-    super(props);
-    this.onSubmit = this.onSubmit.bind(this);
-    this.state = {
-      error: null,
-    };
-  }
 
-  /**
-   * Component will receive props
-   * @method componentWillReceiveProps
-   * @param {Object} nextProps Next properties
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (this.props.loading && nextProps.loaded) {
+  const dispatch=useDispatch();
+  const intl=useIntl();
+  const [errors,setError]=useState(null);
+  const {loaded,loading,error}=useUsers();
+ 
+  
+  useEffect(()=>{
+    if (loading && loaded) {
       toast.success(
         <Toast
           success
-          title={this.props.intl.formatMessage(
+          title={intl.formatMessage(
             messages.successRegisterCompletedTitle,
           )}
-          content={this.props.intl.formatMessage(
+          content={intl.formatMessage(
             messages.successRegisterCompletedBody,
           )}
         />,
       );
-      this.props.history.push('/login');
+      history.push('/login');
     }
-  }
+  },[intl,history,loaded,loading]);
+ 
 
-  /**
-   * On submit handler
-   * @method onSubmit
-   * @param {object} data Form data.
-   * @returns {undefined}
-   */
-  onSubmit(data) {
-    this.props.createUser({
+ const onSubmit=(data)=>{
+    dispatch(createUser({
       fullname: data.fullname,
       email: data.email,
       password: data.password,
-    });
-    this.setState({
-      error: null,
-    });
+    }));
+    setError(null);
   }
 
-  /**
-   * Render method.
-   * @method render
-   * @returns {string} Markup for the component.
-   */
-  render() {
     return (
       <div id="page-register">
-        <Helmet title={this.props.intl.formatMessage(messages.register)} />
+        <Helmet title={intl.formatMessage(messages.register)} />
         <Form
-          onSubmit={this.onSubmit}
-          title={this.props.intl.formatMessage(messages.title)}
-          error={this.state.error || this.props.error}
-          loading={this.props.loading}
-          submitLabel={this.props.intl.formatMessage(messages.register)}
+          onSubmit={onSubmit}
+          title={intl.formatMessage(messages.title)}
+          error={errors || error}
+          loading={loading}
+          submitLabel={intl.formatMessage(messages.register)}
           schema={{
             fieldsets: [
               {
                 id: 'default',
-                title: this.props.intl.formatMessage(messages.default),
+                title: intl.formatMessage(messages.default),
                 fields: ['fullname', 'email'],
               },
             ],
             properties: {
               fullname: {
                 type: 'string',
-                title: this.props.intl.formatMessage(messages.fullnameTitle),
-                description: this.props.intl.formatMessage(
+                title: intl.formatMessage(messages.fullnameTitle),
+                description: intl.formatMessage(
                   messages.fullnameDescription,
                 ),
               },
               email: {
                 type: 'string',
-                title: this.props.intl.formatMessage(messages.emailTitle),
-                description: this.props.intl.formatMessage(
+                title: intl.formatMessage(messages.emailTitle),
+                description: intl.formatMessage(
                   messages.emailDescription,
                 ),
               },
@@ -186,17 +131,19 @@ class Register extends Component {
       </div>
     );
   }
-}
 
-export default compose(
-  withRouter,
-  injectIntl,
-  connect(
-    (state) => ({
-      loading: state.users.create.loading,
-      loaded: state.users.create.loaded,
-      error: state.users.create.error,
+  Register.propTypes = {
+    createUser: PropTypes.func.isRequired,
+    loading: PropTypes.bool.isRequired,
+    loaded: PropTypes.bool.isRequired,
+    error: PropTypes.shape({
+      message: PropTypes.string,
     }),
-    { createUser },
-  ),
-)(Register);
+  };
+
+
+  Register.defaultProps = {
+    error: null,
+  };
+
+export default compose(withRouter)(Register);
