@@ -13,9 +13,7 @@ import { Form, Toolbar, Toast } from '@plone/volto/components';
 import { emailNotification } from '@plone/volto/actions';
 import { getBaseUrl } from '@plone/volto/helpers';
 
-import { useLoaded } from '@plone/volto/hooks/emailNotification/useLoaded';
-import { useLoading } from '@plone/volto/hooks/emailNotification/useLoading';
-import { useError } from '@plone/volto/hooks/emailNotification/useError';
+import { useemailNotification } from '@plone/volto/hooks/emailNotification/useemailNotification';
 
 const messages = defineMessages({
   send: {
@@ -69,9 +67,7 @@ const ContactFormComponent = ({ pathname, history }) => {
   const intl = useIntl();
   const [isClient, setisClient] = useState(false);
 
-  const loaded = useLoaded();
-  const loading = useLoading();
-  const error = useError();
+  const { loaded, loading, error } = useemailNotification();
 
   useEffect(() => {
     setisClient(true);
