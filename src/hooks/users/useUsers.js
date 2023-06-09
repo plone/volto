@@ -1,4 +1,4 @@
-import { useSelector, shallowEqual } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 export function useUsers() {
   const error = useSelector((state) => state.users.create.error);
