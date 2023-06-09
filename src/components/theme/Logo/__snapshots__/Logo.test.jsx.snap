@@ -6,13 +6,13 @@ exports[`Logo renders a logo component 1`] = `
   href="/"
   onClick={[Function]}
   target={null}
-  title="My site"
+  title="Site"
 >
   <img
-    alt="My site"
+    alt="Plone Site"
     className="ui image"
     src="Logo.svg"
-    title="My site"
+    title="Plone Site"
   />
 </a>
 `;
