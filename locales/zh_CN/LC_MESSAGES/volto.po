@@ -1900,6 +1900,11 @@ msgstr ""
 msgid "Link"
 msgstr "链接"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Link copied to clipboard
+msgid "Link copied to clipboard"
+msgstr ""
+
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Link more
@@ -3730,11 +3735,6 @@ msgstr "URL管理"
 # defaultMessage: URL Management for {title}
 msgid "URL Management for {title}"
 msgstr "{title}的URL管理"
-
-#: helpers/MessageLabels/MessageLabels
-# defaultMessage: URL copied to clipboard
-msgid "URL copied to clipboard"
-msgstr ""
 
 #: components/manage/Rules/Rules
 # defaultMessage: Unassign

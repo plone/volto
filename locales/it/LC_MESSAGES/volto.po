@@ -1894,6 +1894,11 @@ msgstr ""
 msgid "Link"
 msgstr "Link"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Link copied to clipboard
+msgid "Link copied to clipboard"
+msgstr ""
+
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Link more
@@ -3723,11 +3728,6 @@ msgstr ""
 #: components/manage/Aliases/Aliases
 # defaultMessage: URL Management for {title}
 msgid "URL Management for {title}"
-msgstr ""
-
-#: helpers/MessageLabels/MessageLabels
-# defaultMessage: URL copied to clipboard
-msgid "URL copied to clipboard"
 msgstr ""
 
 #: components/manage/Rules/Rules

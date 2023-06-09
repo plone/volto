@@ -1911,6 +1911,11 @@ msgstr ""
 msgid "Link"
 msgstr "Lien"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Link copied to clipboard
+msgid "Link copied to clipboard"
+msgstr ""
+
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Link more
@@ -3741,11 +3746,6 @@ msgstr "Gestion des URLs"
 # defaultMessage: URL Management for {title}
 msgid "URL Management for {title}"
 msgstr "Gestion de l'URL pour {title}"
-
-#: helpers/MessageLabels/MessageLabels
-# defaultMessage: URL copied to clipboard
-msgid "URL copied to clipboard"
-msgstr ""
 
 #: components/manage/Rules/Rules
 # defaultMessage: Unassign
