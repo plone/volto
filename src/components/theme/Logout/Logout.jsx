@@ -1,4 +1,4 @@
-import { useEffect ,useMemo} from 'react';
+import { useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { defineMessages, useIntl } from 'react-intl';
@@ -23,10 +23,15 @@ const messages = defineMessages({
 const Logout = ({ location, history }) => {
   const token = useToken();
 
-  const returnUrl =useMemo(()=>    qs.parse(location.search).return_url ||
-  location.pathname.replace(/\/login\/?$/, '').replace(/\/logout\/?$/, '') ||
-  '/'
-,[location])
+  const returnUrl = useMemo(
+    () =>
+      qs.parse(location.search).return_url ||
+      location.pathname
+        .replace(/\/login\/?$/, '')
+        .replace(/\/logout\/?$/, '') ||
+      '/',
+    [location],
+  );
 
   const dispatch = useDispatch();
   const intl = useIntl();
