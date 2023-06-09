@@ -65,12 +65,12 @@ context('Blocks Acceptance Tests', () => {
 
       cy.navigate('/document/edit');
       cy.wait('@schema');
-      cy.get('.block.inner.blockGrid').click();
-      cy.get('.block.inner.blockGrid .block-editor-slate').click();
-      cy.get('.block.inner.blockGrid [aria-label="Reset element 1"]').click();
-      cy.get('.block.inner.blockGrid [aria-label="Remove element 1"]').click();
+      cy.get('.block.inner.gridBlock').click();
+      cy.get('.block.inner.gridBlock .block-editor-slate').click();
+      cy.get('.block.inner.gridBlock [aria-label="Reset element 1"]').click();
+      cy.get('.block.inner.gridBlock [aria-label="Remove element 1"]').click();
       cy.get(
-        '.block.inner.blockGrid .toolbar [aria-label="Add element to container"]',
+        '.block.inner.gridBlock .toolbar [aria-label="Add element to container"]',
       ).click();
       cy.get('button[aria-label="Add block in position 1"]').click();
       cy.get('.blocks-chooser .mostUsed .button.teaser').click();
