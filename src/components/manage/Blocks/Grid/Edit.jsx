@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import ContainerEdit from '../Container/Edit';
 
-const RowEdit = (props) => {
+const GridBlockEdit = (props) => {
   const { data } = props;
 
   const columnsLength = data?.blocks_layout?.items?.length || 0;
@@ -14,7 +14,7 @@ const RowEdit = (props) => {
         two: columnsLength === 2,
         three: columnsLength === 3,
         four: columnsLength === 4,
-        rows: true,
+        'grid-items': true,
       })}
     >
       <ContainerEdit {...props} direction="horizontal" />
@@ -22,7 +22,7 @@ const RowEdit = (props) => {
   );
 };
 
-RowEdit.propTypes = {
+GridBlockEdit.propTypes = {
   block: PropTypes.string.isRequired,
   onChangeBlock: PropTypes.func.isRequired,
   pathname: PropTypes.string.isRequired,
@@ -30,4 +30,4 @@ RowEdit.propTypes = {
   manage: PropTypes.bool.isRequired,
 };
 
-export default RowEdit;
+export default GridBlockEdit;

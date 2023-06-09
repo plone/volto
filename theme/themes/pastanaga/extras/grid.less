@@ -2,10 +2,10 @@
 @blueArctic: #e2f1fd;
 @greySnow: #f3f5f7;
 @greySmoke: #e4e8ec;
-@row-images-aspect-ratio: var(--row-images-aspect-ratio, 16/9);
-@row-images-object-position: var(--row-images-object-position, top left);
+@grid-images-aspect-ratio: var(--grid-images-aspect-ratio, 16/9);
+@grid-images-object-position: var(--grid-images-object-position, top left);
 
-.block-editor-row {
+.block-editor-gridBlock {
   position: relative;
   // Removed because it broke the z-index of the blockChooser, making it fall behind
   // z-index: 10;
@@ -25,8 +25,8 @@
   }
 }
 
-// Override handler TODO: do it better (only for rows/columns)
-body.has-toolbar.has-sidebar .drag.row.handle.wrapper {
+// Override handler TODO: do it better (only for grids)
+body.has-toolbar.has-sidebar .drag.gridBlock.handle.wrapper {
   // TODO: review
   margin-top: 5px;
   margin-left: 0px !important;
@@ -59,7 +59,7 @@ body.has-toolbar.has-sidebar .drag.row.handle.wrapper {
   }
 }
 
-.block.row,
+.block.gridBlock,
 .block.column {
   [class^='block-editor-'].selected .ui.basic.button.remove-block-button,
   [class^='block-editor-']:hover .ui.basic.button.remove-block-button {
@@ -68,7 +68,7 @@ body.has-toolbar.has-sidebar .drag.row.handle.wrapper {
 }
 
 // The Empty block cell (yet to be added)
-.row-empty-placeholder {
+.gridBlock-empty-placeholder {
   position: relative;
   display: flex;
   height: 100%;
@@ -123,7 +123,7 @@ body.has-toolbar.has-sidebar .drag.row.handle.wrapper {
 
 // Required to overcome the droppable from b-d&d at the bottom
 // !! Required for ALL blocks that have b-d&d and a grid
-.block.row,
+.block.gridBlock,
 [class$='Row'].block {
   .ui.grid {
     margin-top: 0;
@@ -137,7 +137,7 @@ body.has-toolbar.has-sidebar .drag.row.handle.wrapper {
 }
 
 // Toolbar position
-.block-editor-row .block .toolbar,
+.block-editor-gridBlock .block .toolbar,
 .block-editor-column .block .toolbar,
 [class$='Row'] .block .toolbar {
   top: -50px;
@@ -149,7 +149,7 @@ body.has-toolbar.has-sidebar .drag.row.handle.wrapper {
 }
 
 [class$='Row'] .block,
-.block.row {
+.block.gridBlock {
   h2,
   h3 {
     &:not(.headline) {
@@ -272,12 +272,12 @@ body.has-toolbar.has-sidebar .drag.row.handle.wrapper {
 // Reasoning: SemanticUI Grid does not support detached (as non consecutive)
 // Grid > Grid.Columns support, so we have to build our own because of the
 // Blocks Editor wrappers
-.block.row .rows [data-rbd-droppable-id] {
+.block.gridBlock .grid-items [data-rbd-droppable-id] {
   display: flex;
 }
 
 // general spacing in the Row block wrapper
-.block.row [class^='block-editor-'] {
+.block.gridBlock [class^='block-editor-'] {
   padding-right: 1rem;
   padding-left: 1rem;
   margin-top: 1rem;
@@ -297,24 +297,24 @@ body.has-toolbar.has-sidebar .drag.row.handle.wrapper {
   }
 }
 
-.block.row .one.rows [class^='block-editor-'] {
+.block.gridBlock .one.grid-items [class^='block-editor-'] {
   width: 100%;
 }
 
-.block.row .two.rows [class^='block-editor-'] {
+.block.gridBlock .two.grid-items [class^='block-editor-'] {
   width: 50%;
 }
 
-.block.row .three.rows [class^='block-editor-'] {
+.block.gridBlock .three.grid-items [class^='block-editor-'] {
   width: 33.33333333%;
 }
 
-.block.row .four.rows [class^='block-editor-'] {
+.block.gridBlock .four.grid-items [class^='block-editor-'] {
   width: 25%;
 }
 
 // Outter cell item flexbox behavior so all have the same height
-.block.row [class^='block-editor-'] {
+.block.gridBlock [class^='block-editor-'] {
   display: inline-flex !important;
   flex-direction: column;
   align-self: stretch;
@@ -327,7 +327,7 @@ body.has-toolbar.has-sidebar .drag.row.handle.wrapper {
 }
 
 // Add our own block selected marker different than the normal one so we can full control over it
-.block.row,
+.block.gridBlock,
 .block.column {
   [class^='block-editor-'].selected .cell-wrapper::before {
     position: absolute;
@@ -345,17 +345,17 @@ body.has-toolbar.has-sidebar .drag.row.handle.wrapper {
 }
 
 // Remove default bottom image block margin
-.block.row [class^='block-editor-'] .block.image {
+.block.gridBlock [class^='block-editor-'] .block.image {
   margin: 0;
 }
 
 // Remove the text block "add block" button TODO: remove when we move to Quanta Toolbar
-.block.row [class^='block-editor-'] .block-add-button {
+.block.gridBlock [class^='block-editor-'] .block-add-button {
   display: none;
 }
 
 // Remove completely the default inner selection marker, so we are using our own
-.block.row,
+.block.gridBlock,
 .block.column {
   [class^='block-editor-'] .block.selected::before {
     content: unset;
@@ -363,7 +363,7 @@ body.has-toolbar.has-sidebar .drag.row.handle.wrapper {
 }
 
 // Disable hover blue border on inner blocks
-.block.row [class^='block-editor-'],
+.block.gridBlock [class^='block-editor-'],
 .block.column [class^='block-editor-'],
 [class$='Row'].block [class^='block-editor-'] {
   .block:not(.inner):not(.selected)::before {
@@ -372,14 +372,14 @@ body.has-toolbar.has-sidebar .drag.row.handle.wrapper {
 }
 
 // Remove block selection blue outline on hover for view only
-.block.row,
+.block.gridBlock,
 .block.column {
   :not([class^='block-editor-']) .block:hover::before {
     border: none;
   }
 }
 
-.block.row,
+.block.gridBlock,
 .block.column {
   .block.inner.slate {
     cursor: text;
@@ -392,14 +392,14 @@ body.has-toolbar.has-sidebar .drag.row.handle.wrapper {
 
 // Aspect ratio on all images
 .grid-image-wrapper img,
-.block-editor-row .block-editor-image img {
+.block-editor-gridBlock .block-editor-image img {
   width: 100%;
-  aspect-ratio: @row-images-aspect-ratio;
+  aspect-ratio: @grid-images-aspect-ratio;
   object-fit: cover;
-  object-position: @row-images-object-position;
+  object-position: @grid-images-object-position;
 }
 
 // Prevents the above styling to leak to the unset image wrapper
-.block-editor-row .block-editor-image .no-image-wrapper img {
+.block-editor-gridBlock .block-editor-image .no-image-wrapper img {
   width: unset;
 }

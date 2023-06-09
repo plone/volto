@@ -87,7 +87,7 @@ const EditBlockWrapper = (props) => {
           <div className={`ui drag block inner ${type}`}>{children}</div>
         ) : (
           <div
-            className={cx('row-empty-placeholder', {
+            className={cx('gridBlock-empty-placeholder', {
               selected: selected,
             })}
             role="presentation"

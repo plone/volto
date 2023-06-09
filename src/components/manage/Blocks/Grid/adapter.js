@@ -1,4 +1,4 @@
-export const RowBlockDataAdapter = ({
+export const GridBlockDataAdapter = ({
   block,
   data,
   id,

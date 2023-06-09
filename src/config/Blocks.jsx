@@ -42,7 +42,7 @@ import tableSVG from '@plone/volto/icons/table.svg';
 import listingBlockSVG from '@plone/volto/icons/content-listing.svg';
 import tocSVG from '@plone/volto/icons/list-bullet.svg';
 import searchSVG from '@plone/volto/icons/zoom.svg';
-import rowSVG from '@plone/volto/icons/rowblock.svg';
+import gridSVG from '@plone/volto/icons/grid-block.svg';
 import imagesSVG from '@plone/volto/icons/images.svg';
 
 import ImageGalleryListingBlockTemplate from '@plone/volto/components/manage/Blocks/Listing/ImageGallery';
@@ -51,11 +51,11 @@ import TextSettingsSchema from '@plone/volto/components/manage/Blocks/Text/Schem
 import ImageSettingsSchema from '@plone/volto/components/manage/Blocks/Image/LayoutSchema';
 import ToCSettingsSchema from '@plone/volto/components/manage/Blocks/ToC/Schema';
 
-import RowViewBlock from '@plone/volto/components/manage/Blocks/Row/View';
-import RowEditBlock from '@plone/volto/components/manage/Blocks/Row/Edit';
-import { RowBlockDataAdapter } from '@plone/volto/components/manage/Blocks/Row/adapter';
-import { RowBlockSchema } from '@plone/volto/components/manage/Blocks/Row/schema';
-import RowTemplates from '@plone/volto/components/manage/Blocks/Row/templates';
+import GridBlockView from '@plone/volto/components/manage/Blocks/Grid/View';
+import GridBlockEdit from '@plone/volto/components/manage/Blocks/Grid/Edit';
+import { GridBlockDataAdapter } from '@plone/volto/components/manage/Blocks/Grid/adapter';
+import { GridBlockSchema } from '@plone/volto/components/manage/Blocks/Grid/schema';
+import GridTemplates from '@plone/volto/components/manage/Blocks/Grid/templates';
 
 import SearchBlockView from '@plone/volto/components/manage/Blocks/Search/SearchBlockView';
 import SearchBlockEdit from '@plone/volto/components/manage/Blocks/Search/SearchBlockEdit';
@@ -465,38 +465,27 @@ const blocksConfig = {
       },
     },
   },
-  row: {
-    id: 'row',
-    title: 'Row',
-    icon: rowSVG,
+  // This next block is not named just grid for some reasons:
+  // 1.- Naming it grid will collide with the SemanticUI CSS of the Grid component
+  // 2.- It would prevent the transition from the old grid
+  //     (based on @kitconcept/volto-blocks-grid) without having to perform any migration.
+  //     This way, both can co-exist at the same time.
+  gridBlock: {
+    id: 'gridBlock',
+    title: 'Grid',
+    icon: gridSVG,
     group: 'common',
-    view: RowViewBlock,
-    edit: RowEditBlock,
-    blockSchema: RowBlockSchema,
-    dataAdapter: RowBlockDataAdapter,
+    view: GridBlockView,
+    edit: GridBlockEdit,
+    blockSchema: GridBlockSchema,
+    dataAdapter: GridBlockDataAdapter,
     restricted: false,
     mostUsed: true,
     sidebarTab: 1,
     // This has a good reason: Slate does not work in detached mode if enabled
     blockHasOwnFocusManagement: false,
-    templates: RowTemplates,
+    templates: GridTemplates,
     maxRowLength: 4,
-    allowedBlocks: ['image', 'listing', 'slate', 'teaser'],
-  },
-  column: {
-    id: 'column',
-    title: 'Column',
-    icon: rowSVG,
-    group: 'common',
-    view: RowViewBlock,
-    edit: RowEditBlock,
-    blockSchema: RowBlockSchema,
-    dataAdapter: RowBlockDataAdapter,
-    restricted: true,
-    mostUsed: false,
-    sidebarTab: 1,
-    // This has a good reason: Slate does not work in detached mode if enabled
-    blockHasOwnFocusManagement: false,
     allowedBlocks: ['image', 'listing', 'slate', 'teaser'],
   },
   teaser: {
