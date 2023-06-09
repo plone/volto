@@ -10,12 +10,12 @@ import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
   delete: {
-    id: 'Remove row element {index}',
-    defaultMessage: 'Remove row element {index}',
+    id: 'Remove element {index}',
+    defaultMessage: 'Remove element {index}',
   },
   reset: {
-    id: 'Reset row element {index}',
-    defaultMessage: 'Reset row element {index}',
+    id: 'Reset element {index}',
+    defaultMessage: 'Reset element {index}',
   },
 });
 

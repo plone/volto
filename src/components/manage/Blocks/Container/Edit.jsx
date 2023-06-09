@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { defineMessages, useIntl } from 'react-intl';
 import { pickBy } from 'lodash';
 import { BlocksForm, SidebarPortal, Icon } from '@plone/volto/components';
 import PropTypes from 'prop-types';
 import { Button } from 'semantic-ui-react';
 import ContainerData from './Data';
 import DefaultEditBlockWrapper from './EditBlockWrapper';
-import { useIntl } from 'react-intl';
 import { v4 as uuid } from 'uuid';
 import { blocksFormGenerator } from '@plone/volto/helpers';
 
@@ -15,6 +15,17 @@ import addSVG from '@plone/volto/icons/add.svg';
 import configSVG from '@plone/volto/icons/configuration.svg';
 
 import config from '@plone/volto/registry';
+
+const messages = defineMessages({
+  addBlock: {
+    id: 'Add element to container',
+    defaultMessage: 'Add element to container',
+  },
+  blockSettings: {
+    id: 'Container settings',
+    defaultMessage: 'Container settings',
+  },
+});
 
 const ContainerEdit = (props) => {
   const {
@@ -93,7 +104,7 @@ const ContainerEdit = (props) => {
         <div className="toolbar">
           <Button.Group>
             <Button
-              aria-label={`Add ${blockType} element`}
+              aria-label={intl.formatMessage(messages.addBlock)}
               icon
               basic
               disabled={data?.blocks_layout?.items?.length >= maxLength}
@@ -104,7 +115,7 @@ const ContainerEdit = (props) => {
           </Button.Group>
           <Button.Group>
             <Button
-              aria-label={`${blockType} block settings`}
+              aria-label={intl.formatMessage(messages.blockSettings)}
               icon
               basic
               onClick={(e) => {

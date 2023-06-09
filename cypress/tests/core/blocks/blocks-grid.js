@@ -38,7 +38,9 @@ context('Blocks Acceptance Tests', () => {
     it('As editor I can add a Grid', function () {
       cy.getSlate().click();
       cy.get('.button .block-add-button').click({ force: true });
-      cy.get('.blocks-chooser .mostUsed .button.row').click({ force: true });
+      cy.get('.blocks-chooser .mostUsed .button.gridBlock').click({
+        force: true,
+      });
       cy.findByText('2 columns').click();
 
       cy.get('button[aria-label="Add block in position 0"]').click();
@@ -51,7 +53,7 @@ context('Blocks Acceptance Tests', () => {
       cy.get('.blocks-chooser [aria-label="Unfold Text blocks"]').click();
       cy.get('.blocks-chooser .text .button.slate').click();
       cy.getSlateEditorSelectorAndType(
-        '.block.row.selected .slate-editor [contenteditable=true]',
+        '.block.gridBlock.selected .slate-editor [contenteditable=true]',
         'Colorless green ideas sleep furiously.',
       );
 
@@ -63,12 +65,12 @@ context('Blocks Acceptance Tests', () => {
 
       cy.navigate('/document/edit');
       cy.wait('@schema');
-      cy.get('.block.inner.row').click();
-      cy.get('.block.inner.row .block-editor-slate').click();
-      cy.get('.block.inner.row [aria-label="Reset row element 1"]').click();
-      cy.get('.block.inner.row [aria-label="Remove row element 1"]').click();
+      cy.get('.block.inner.blockGrid').click();
+      cy.get('.block.inner.blockGrid .block-editor-slate').click();
+      cy.get('.block.inner.blockGrid [aria-label="Reset element 1"]').click();
+      cy.get('.block.inner.blockGrid [aria-label="Remove element 1"]').click();
       cy.get(
-        '.block.inner.row .toolbar [aria-label="Add row element"]',
+        '.block.inner.blockGrid .toolbar [aria-label="Add element to container"]',
       ).click();
       cy.get('button[aria-label="Add block in position 1"]').click();
       cy.get('.blocks-chooser .mostUsed .button.teaser').click();
@@ -80,13 +82,15 @@ context('Blocks Acceptance Tests', () => {
       cy.wait('@edit');
       cy.wait('@content');
 
-      cy.get('.block.row').findByText('My Page');
+      cy.get('.block.gridBlock').findByText('My Page');
     });
 
     it('As editor I can add a Grid with slate block on it', function () {
       cy.getSlate().click();
       cy.get('.button .block-add-button').click({ force: true });
-      cy.get('.blocks-chooser .mostUsed .button.row').click({ force: true });
+      cy.get('.blocks-chooser .mostUsed .button.gridBlock').click({
+        force: true,
+      });
       cy.findByText('2 columns').click();
 
       cy.get('button[aria-label="Add block in position 1"]').click();
@@ -95,7 +99,7 @@ context('Blocks Acceptance Tests', () => {
       cy.scrollTo('top');
 
       cy.getSlateEditorSelectorAndType(
-        '.block.row.selected .slate-editor [contenteditable=true]',
+        '.block.gridBlock.selected .slate-editor [contenteditable=true]',
         'Colorless green ideas sleep furiously.',
       ).setSelection('furiously');
       cy.scrollTo('top');
@@ -108,10 +112,10 @@ context('Blocks Acceptance Tests', () => {
 
       cy.get('#toolbar-save').click();
 
-      cy.get('.block.row.two p').contains(
+      cy.get('.block.gridBlock.two p').contains(
         'Colorless green ideas sleep furiously.',
       );
-      cy.get('.block.row.two p a')
+      cy.get('.block.gridBlock.two p a')
         .should('have.attr', 'href')
         .and('include', 'https://google.com');
     });
