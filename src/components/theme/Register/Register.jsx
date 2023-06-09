@@ -55,95 +55,83 @@ const messages = defineMessages({
   },
 });
 
+const Register = ({ history }) => {
+  const dispatch = useDispatch();
+  const intl = useIntl();
+  const [errors, setError] = useState(null);
+  const { loaded, loading, error } = useUsers();
 
-const Register=({ history })=> {
-
-
-  const dispatch=useDispatch();
-  const intl=useIntl();
-  const [errors,setError]=useState(null);
-  const {loaded,loading,error}=useUsers();
- 
-  
-  useEffect(()=>{
+  useEffect(() => {
     if (loading && loaded) {
       toast.success(
         <Toast
           success
-          title={intl.formatMessage(
-            messages.successRegisterCompletedTitle,
-          )}
-          content={intl.formatMessage(
-            messages.successRegisterCompletedBody,
-          )}
+          title={intl.formatMessage(messages.successRegisterCompletedTitle)}
+          content={intl.formatMessage(messages.successRegisterCompletedBody)}
         />,
       );
       history.push('/login');
     }
-  },[intl,history,loaded,loading]);
- 
+  }, [intl, history, loaded, loading]);
 
- const onSubmit=(data)=>{
-    dispatch(createUser({
-      fullname: data.fullname,
-      email: data.email,
-      password: data.password,
-    }));
-    setError(null);
-  }
-
-    return (
-      <div id="page-register">
-        <Helmet title={intl.formatMessage(messages.register)} />
-        <Form
-          onSubmit={onSubmit}
-          title={intl.formatMessage(messages.title)}
-          error={errors || error}
-          loading={loading}
-          submitLabel={intl.formatMessage(messages.register)}
-          schema={{
-            fieldsets: [
-              {
-                id: 'default',
-                title: intl.formatMessage(messages.default),
-                fields: ['fullname', 'email'],
-              },
-            ],
-            properties: {
-              fullname: {
-                type: 'string',
-                title: intl.formatMessage(messages.fullnameTitle),
-                description: intl.formatMessage(
-                  messages.fullnameDescription,
-                ),
-              },
-              email: {
-                type: 'string',
-                title: intl.formatMessage(messages.emailTitle),
-                description: intl.formatMessage(
-                  messages.emailDescription,
-                ),
-              },
-            },
-            required: ['fullname', 'email'],
-          }}
-        />
-      </div>
+  const onSubmit = (data) => {
+    dispatch(
+      createUser({
+        fullname: data.fullname,
+        email: data.email,
+        password: data.password,
+      }),
     );
-  }
-
-  Register.propTypes = {
-    createUser: PropTypes.func.isRequired,
-    loading: PropTypes.bool.isRequired,
-    loaded: PropTypes.bool.isRequired,
-    error: PropTypes.shape({
-      message: PropTypes.string,
-    }),
+    setError(null);
   };
 
+  return (
+    <div id="page-register">
+      <Helmet title={intl.formatMessage(messages.register)} />
+      <Form
+        onSubmit={onSubmit}
+        title={intl.formatMessage(messages.title)}
+        error={errors || error}
+        loading={loading}
+        submitLabel={intl.formatMessage(messages.register)}
+        schema={{
+          fieldsets: [
+            {
+              id: 'default',
+              title: intl.formatMessage(messages.default),
+              fields: ['fullname', 'email'],
+            },
+          ],
+          properties: {
+            fullname: {
+              type: 'string',
+              title: intl.formatMessage(messages.fullnameTitle),
+              description: intl.formatMessage(messages.fullnameDescription),
+            },
+            email: {
+              type: 'string',
+              title: intl.formatMessage(messages.emailTitle),
+              description: intl.formatMessage(messages.emailDescription),
+            },
+          },
+          required: ['fullname', 'email'],
+        }}
+      />
+    </div>
+  );
+};
 
-  Register.defaultProps = {
-    error: null,
-  };
+Register.propTypes = {
+  createUser: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
+  loaded: PropTypes.bool.isRequired,
+  error: PropTypes.shape({
+    message: PropTypes.string,
+  }),
+};
+
+Register.defaultProps = {
+  error: null,
+};
 
 export default compose(withRouter)(Register);
