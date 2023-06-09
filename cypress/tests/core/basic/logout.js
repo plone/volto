@@ -13,7 +13,7 @@ describe('Logout Tests', () => {
     cy.get('body').should('have.class', 'has-toolbar');
   });
   it('As registered user I can logout', function () {
-    cy.get('#toolbar-personal').click();
-    cy.get('#toolbar-logout').click();
+    cy.get('#toolbar-personal > .icon').click();
+    cy.get('.toast-dismiss-action').click();    
   });
 });
