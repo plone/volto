@@ -4,6 +4,7 @@ import { Button } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
 import NewBlockAddButton from './NewBlockAddButton';
 import cx from 'classnames';
+import { isInteractiveElement } from '@plone/volto/helpers';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
 
@@ -91,8 +92,11 @@ const EditBlockWrapper = (props) => {
             })}
             role="presentation"
             onClick={(e) => {
-              e.stopPropagation();
               onSelectBlock(block);
+              // If the click is in the button, then
+              if (isInteractiveElement(e.target)) {
+                e.stopPropagation();
+              }
             }}
           >
             <p>Add a new block</p>
