@@ -604,7 +604,6 @@ msgid "Choose Target"
 msgstr "Aukeratu helburua"
 
 #: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/SiteLogoWidget
 # defaultMessage: Choose a file
 msgid "Choose a file"
 msgstr "Aukeratu fitxategia"
@@ -1096,19 +1095,16 @@ msgid "Drag and drop files from your computer onto this area or click the “Bro
 msgstr "Arrastatu fitxategiak hona edo erabili Arakatu botoia."
 
 #: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/SiteLogoWidget
 # defaultMessage: Drop file here to replace the existing file
 msgid "Drop file here to replace the existing file"
 msgstr "Arrastatu fitxategia hona orain dagoena ordezkatzeko"
 
 #: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/SiteLogoWidget
 # defaultMessage: Drop file here to upload a new file
 msgid "Drop file here to upload a new file"
 msgstr "Arrastatu fitxategia hona fitxategi berria kargatzeko"
 
 #: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/SiteLogoWidget
 # defaultMessage: Drop files here ...
 msgid "Drop files here ..."
 msgstr "Arrastatu fitxategiak hona..."
@@ -2752,7 +2748,6 @@ msgid "Repeat on"
 msgstr "Egun honetan errepikatu"
 
 #: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/SiteLogoWidget
 # defaultMessage: Replace existing file
 msgid "Replace existing file"
 msgstr "Ordezkatu fitxategia"

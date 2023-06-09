@@ -608,7 +608,6 @@ msgid "Choose Target"
 msgstr "Valitse sisältö"
 
 #: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/SiteLogoWidget
 # defaultMessage: Choose a file
 msgid "Choose a file"
 msgstr "Valitse tiedosto"
@@ -1100,19 +1099,16 @@ msgid "Drag and drop files from your computer onto this area or click the “Bro
 msgstr "Raahaa ja pudota tiedostoja tietokoneeltasi tähän tai paina “Selaa”."
 
 #: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/SiteLogoWidget
 # defaultMessage: Drop file here to replace the existing file
 msgid "Drop file here to replace the existing file"
 msgstr "Pudota tiedosto tähän korvataksesi olemassaolevan tiedoston"
 
 #: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/SiteLogoWidget
 # defaultMessage: Drop file here to upload a new file
 msgid "Drop file here to upload a new file"
 msgstr "Pudota tiedosto tähän ladataksesi uuden tiedoston"
 
 #: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/SiteLogoWidget
 # defaultMessage: Drop files here ...
 msgid "Drop files here ..."
 msgstr "Pudota tiedosto tänne... "
@@ -2756,7 +2752,6 @@ msgid "Repeat on"
 msgstr "Toista"
 
 #: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/SiteLogoWidget
 # defaultMessage: Replace existing file
 msgid "Replace existing file"
 msgstr "Korvaa olemassaoleva tiedosto"
