@@ -93,8 +93,8 @@ export const isBlockStyleActive = (editor, style) => {
       keyName.split('-').filter((x) => x === style).length > 0
     )
       return true;
-    else return false;
   }
+  return false;
 };
 
 export const isInlineStyleActive = (editor, style) => {
