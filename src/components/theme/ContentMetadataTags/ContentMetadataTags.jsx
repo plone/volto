@@ -47,11 +47,8 @@ const ContentMetadataTags = (props) => {
 
   const contentImageInfo = getContentImageInfo();
   const getTitle = () => {
-    const {
-      includeSiteTitle,
-      separator,
-      includeLanguage,
-    } = config?.settings?.siteTitleFormat;
+    const { includeSiteTitle, separator, includeLanguage } =
+      config?.settings?.siteTitleFormat || {};
     if (includeSiteTitle === true) {
       if (includeLanguage === true && languageRootTitle) {
         return seo_title || title + ' ' + separator + ' ' + languageRootTitle;
