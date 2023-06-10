@@ -3,6 +3,8 @@
  * @module constants/ActionTypes
  */
 
+export const GET_NAVROOT = 'GET_NAVROOT';
+export const GET_SITE = 'GET_SITE';
 export const ADD_COMMENT = 'ADD_COMMENT';
 export const ADD_MESSAGE = 'ADD_MESSAGE';
 export const SET_APIERROR = 'SET_APIERROR';

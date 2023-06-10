@@ -18,7 +18,12 @@ import {
   Tags,
   Toolbar,
 } from '@plone/volto/components';
-import { listActions, getContent } from '@plone/volto/actions';
+import {
+  listActions,
+  getContent,
+  getSite,
+  getNavroot,
+} from '@plone/volto/actions';
 import {
   BodyClass,
   getBaseUrl,
@@ -123,6 +128,12 @@ class View extends Component {
     if (!hasApiExpander('actions', getBaseUrl(this.props.pathname))) {
       this.props.listActions(getBaseUrl(this.props.pathname));
     }
+    if (!hasApiExpander('site', getBaseUrl(this.props.pathname))) {
+      this.props.getSite(getBaseUrl(this.props.pathname));
+    }
+    if (!hasApiExpander('navroot', getBaseUrl(this.props.pathname))) {
+      this.props.getNavroot(getBaseUrl(this.props.pathname));
+    }
     this.props.getContent(
       getBaseUrl(this.props.pathname),
       this.props.versionId,
@@ -203,6 +214,7 @@ class View extends Component {
    */
   render() {
     const { views } = config;
+    console.log(this.props.site, this.props.site, this.props.navroot);
     if (this.props.error && this.props.error.code === 301) {
       const redirect = flattenToAppURL(this.props.error.url).split('?')[0];
       return <Redirect to={`${redirect}${this.props.location.search}`} />;
@@ -230,10 +242,15 @@ class View extends Component {
     }
     const RenderedView =
       this.getViewByLayout() || this.getViewByType() || this.getViewDefault();
-
     return (
       <div id="view">
-        <ContentMetadataTags content={this.props.content} />
+        <ContentMetadataTags
+          content={{
+            ...this.props.content,
+            siteTitle: this.props?.site?.['plone.site_title'],
+            languageRootTitle: this.props?.navroot?.navroot?.title,
+          }}
+        />
         {/* Body class if displayName in component is set */}
         <BodyClass
           className={
@@ -282,6 +299,8 @@ export default compose(
       token: state.userSession.token,
       content: state.content.data,
       error: state.content.get.error,
+      site: state.site.site,
+      navroot: state.navroot.navroot,
       apiError: state.apierror.error,
       connectionRefused: state.apierror.connectionRefused,
       pathname: props.location.pathname,
@@ -291,7 +310,9 @@ export default compose(
     }),
     {
       listActions,
+      getSite,
       getContent,
+      getNavroot,
     },
   ),
 )(View);

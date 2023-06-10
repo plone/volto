@@ -12,6 +12,8 @@ const ContentMetadataTags = (props) => {
     seo_noindex,
     title,
     description,
+    siteTitle,
+    languageRootTitle,
   } = props.content;
 
   const getContentImageInfo = () => {
@@ -44,11 +46,23 @@ const ContentMetadataTags = (props) => {
   };
 
   const contentImageInfo = getContentImageInfo();
-
+  const getTitle = () => {
+    const {
+      includeSiteTitle,
+      separator,
+      includeLanguage,
+    } = config?.settings?.siteTitleFormat;
+    if (includeSiteTitle === true) {
+      if (includeLanguage === true && languageRootTitle) {
+        return seo_title || title + ' ' + separator + ' ' + languageRootTitle;
+      }
+      return seo_title || title + ' ' + separator + ' ' + siteTitle;
+    }
+  };
   return (
     <>
       <Helmet>
-        <title>{(seo_title || title)?.replace(/\u00AD/g, '')}</title>
+        <title>{getTitle()?.replace(/\u00AD/g, '')}</title>
         <meta name="description" content={seo_description || description} />
         <meta
           property="og:title"

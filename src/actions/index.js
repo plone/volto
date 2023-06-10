@@ -4,6 +4,8 @@
  * @example import { getSchema } from 'actions';
  */
 export { listActions } from '@plone/volto/actions/actions/actions';
+export { getSite } from '@plone/volto/actions/site/site';
+export { getNavroot } from '@plone/volto/actions/navroot/navroot';
 export { getBreadcrumbs } from '@plone/volto/actions/breadcrumbs/breadcrumbs';
 export { setExpandedToolbar } from '@plone/volto/actions/toolbar/toolbar';
 export {
