@@ -75,7 +75,6 @@ export const filterControlPanelsSchema = (controlpanel) => {
       'toolbar_position',
       'toolbar_logo',
       'default_page',
-      'site_logo',
       'site_favicon',
       'site_favicon_mimetype',
       'exposeDCMetaTags',
