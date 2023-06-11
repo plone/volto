@@ -42,7 +42,7 @@ const BlocksForm = (props) => {
     isMainForm = true,
     blocksConfig = config.blocks.blocksConfig,
     editable = true,
-    direction,
+    direction = 'vertical',
   } = props;
 
   const blockList = getBlocks(properties);
