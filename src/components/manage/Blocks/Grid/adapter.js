@@ -9,11 +9,6 @@ export const GridBlockDataAdapter = ({
     ...data,
     [id]: value,
   };
-  if (id === 'direction') {
-    dataSaved = {
-      ...dataSaved,
-      '@type': value,
-    };
-  }
+
   onChangeBlock(block, dataSaved);
 };
