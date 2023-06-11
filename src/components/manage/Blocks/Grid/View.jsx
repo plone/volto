@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { Grid } from 'semantic-ui-react';
 import cx from 'classnames';
 import { RenderBlocks } from '@plone/volto/components';
@@ -38,11 +37,6 @@ const GridBlockView = (props) => {
       </Grid>
     </div>
   );
-};
-
-GridBlockView.propTypes = {
-  blocks: PropTypes.objectOf(PropTypes.any).isRequired,
-  blocks_layout: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 export default withBlockExtensions(GridBlockView);
