@@ -24,7 +24,7 @@ The Grid block can potentially contain any block type. However, the used blocks 
 The Grid has the following settings:
 
 Headline
-: The headline is a heading that appears above the title of the Grid Block.
+: The headline is a heading that appears above the columns of the Grid Block.
 
 ## Block configuration
 
@@ -57,7 +57,7 @@ maxLength
 By default is four elements.
 
 allowedBlocks
-: The internal `id` of the allowed blocks in the grid block.
+: Array of block types allowed in the grid block.
 This can be extended to include any of the registered blocks
 
 blocksConfig
@@ -139,7 +139,7 @@ export const GridBlockDataAdapter = ({
 
 ## Migration from `@kitconcept/volto-blocks-grid`
 
-From Volto 17.0.0-alpha.10 the Grid block, as it's in the `@kitconcept/volto-blocks-grid` add-on version 7.x.x, is included in Volto core.
+The Grid block was included in Volto core starting from Volto 17.0.0-alpha.10. It is based on the `@kitconcept/volto-blocks-grid` add-on version 7.x.x.
 
 The Volto core Grid is using the Volto internals default blocks-in-block architecture.
 Because of that, they both store the data differently, being incompatible and a migration of data is needed.

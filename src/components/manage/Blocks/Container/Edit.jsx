@@ -158,7 +158,7 @@ const ContainerBlockEdit = (props) => {
           });
         }}
         onChangeField={(id, value) => {
-          if (['blocks', 'blocks_layout'].indexOf(id) > -1) {
+          if (['blocks', 'blocks_layout'].includes(id)) {
             blockState[id] = value;
             onChangeBlock(block, {
               ...data,
