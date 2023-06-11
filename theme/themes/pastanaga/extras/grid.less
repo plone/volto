@@ -25,7 +25,7 @@
   }
 }
 
-// Override handler TODO: do it better (only for grids)
+// Override handler TODO: do it better (when using QuantaToolbar, only for grids)
 body.has-toolbar.has-sidebar .drag.gridBlock.handle.wrapper {
   // TODO: review
   margin-top: 5px;
@@ -59,8 +59,7 @@ body.has-toolbar.has-sidebar .drag.gridBlock.handle.wrapper {
   }
 }
 
-.block.gridBlock,
-.block.column {
+.block.gridBlock {
   [class^='block-editor-'].selected .ui.basic.button.remove-block-button,
   [class^='block-editor-']:hover .ui.basic.button.remove-block-button {
     display: block;
@@ -123,8 +122,7 @@ body.has-toolbar.has-sidebar .drag.gridBlock.handle.wrapper {
 
 // Required to overcome the droppable from b-d&d at the bottom
 // !! Required for ALL blocks that have b-d&d and a grid
-.block.gridBlock,
-[class$='Row'].block {
+.block.gridBlock {
   .ui.grid {
     margin-top: 0;
     margin-bottom: 0;
@@ -137,9 +135,7 @@ body.has-toolbar.has-sidebar .drag.gridBlock.handle.wrapper {
 }
 
 // Toolbar position
-.block-editor-gridBlock .block .toolbar,
-.block-editor-column .block .toolbar,
-[class$='Row'] .block .toolbar {
+.block-editor-gridBlock .block .toolbar {
   top: -50px;
   left: -10px;
   border-radius: 6px;
@@ -148,7 +144,6 @@ body.has-toolbar.has-sidebar .drag.gridBlock.handle.wrapper {
   transform: initial;
 }
 
-[class$='Row'] .block,
 .block.gridBlock {
   h2,
   h3 {
@@ -284,19 +279,6 @@ body.has-toolbar.has-sidebar .drag.gridBlock.handle.wrapper {
   margin-bottom: 1rem;
 }
 
-// general spacing in the Column block wrapper
-.block.column [class^='block-editor-'] {
-  padding-right: 1rem;
-  padding-left: 1rem;
-  margin-top: 1rem;
-}
-
-.block.column [class^='block-editor-'] {
-  &:last-child {
-    margin-bottom: 0;
-  }
-}
-
 .block.gridBlock .one.grid-items [class^='block-editor-'] {
   width: 100%;
 }
@@ -327,8 +309,7 @@ body.has-toolbar.has-sidebar .drag.gridBlock.handle.wrapper {
 }
 
 // Add our own block selected marker different than the normal one so we can full control over it
-.block.gridBlock,
-.block.column {
+.block.gridBlock {
   [class^='block-editor-'].selected .cell-wrapper::before {
     position: absolute;
     // otherwise, this layer is above the object, then it does not allow clicking inside
@@ -355,32 +336,27 @@ body.has-toolbar.has-sidebar .drag.gridBlock.handle.wrapper {
 }
 
 // Remove completely the default inner selection marker, so we are using our own
-.block.gridBlock,
-.block.column {
+.block.gridBlock {
   [class^='block-editor-'] .block.selected::before {
     content: unset;
   }
 }
 
 // Disable hover blue border on inner blocks
-.block.gridBlock [class^='block-editor-'],
-.block.column [class^='block-editor-'],
-[class$='Row'].block [class^='block-editor-'] {
+.block.gridBlock [class^='block-editor-'] {
   .block:not(.inner):not(.selected)::before {
     content: unset;
   }
 }
 
 // Remove block selection blue outline on hover for view only
-.block.gridBlock,
-.block.column {
+.block.gridBlock {
   :not([class^='block-editor-']) .block:hover::before {
     border: none;
   }
 }
 
-.block.gridBlock,
-.block.column {
+.block.gridBlock {
   .block.inner.slate {
     cursor: text;
   }
