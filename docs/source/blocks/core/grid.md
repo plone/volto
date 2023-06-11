@@ -14,7 +14,7 @@ myst:
 ```{versionadded} Volto 17.0.0-alpha.10
 ```
 
-Volto comes with a Grid block, building upon the primitive of a container block, it is a block that contains other blocks.
+Volto comes with a Grid block, it is a block that contains other blocks.
 The Grid block uses a fixed horizontal layout with a configurable maximum items per block, defaulting to four elements.
 
 The Grid block can potentially contain any block type. However, the used blocks might need some styling work to adapt to the horizontal and small widths in the container. For this reason, only these four are included by default: `slate` (text), `image`, `listing` and `teaser`.
@@ -31,7 +31,9 @@ Headline
 The Grid block has these configuration settings:
 
 templates
-: It's a function to provide a list of available templates.
+: When you create a new Grid block, it shows the user a list of choices with the initial contents the block should have.
+By default, it allows the user to choose how many blocks (columns) the block will contain initially.
+One can customize the choices providing a function that generates the initial list of choices and the outcome of choosing one option or another.
 It has the following signature: (type) => (intl) => TemplateData[]
 See the `src/components/manage/Blocks/Grid/template.jsx` for more info.
 ```ts
