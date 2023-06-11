@@ -103,11 +103,10 @@ class Edit extends Component {
       });
       this.props.onChangeBlock(this.props.block, {
         ...this.props.data,
-        url: {
-          '@id': nextProps.content['@id'],
-          image_scales: { image: [nextProps.content.image] },
-        },
-        alt: '',
+        url: nextProps.content['@id'],
+        image_field: 'image',
+        image_scales: { image: [nextProps.content.image] },
+        alt: nextProps.content?.title || '',
       });
     }
   }

@@ -27,7 +27,7 @@ const ImageSidebar = (props) => {
               {(data.url?.['@id'] ?? data.url).split('/').slice(-1)[0]}
               <Button
                 basic
-                className="cancel"
+                className="clear-image"
                 onClick={(e) => {
                   e.stopPropagation();
                   onChangeBlock(block, {
@@ -36,6 +36,7 @@ const ImageSidebar = (props) => {
                     alt: data.url.title === data.alt ? undefined : data.alt,
                   });
                 }}
+                title={intl.formatMessage(messages.clear)}
               >
                 <Icon name={clearSVG} size="30px" />
               </Button>
@@ -115,5 +116,9 @@ const messages = defineMessages({
   preview: {
     id: 'image_block_preview',
     defaultMessage: 'Image preview',
+  },
+  clear: {
+    id: 'image_block_clear',
+    defaultMessage: 'Clear image',
   },
 });
