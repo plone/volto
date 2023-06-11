@@ -33,7 +33,7 @@ const RenderBlocks = (props) => {
   const CustomTag = props.as || React.Fragment;
 
   return hasBlocksData(content) ? (
-    <MaybeWrap condition={CustomTag} as={CustomTag}>
+    <CustomTag>
       {map(content[blocksLayoutFieldname].items, (block) => {
         const Block =
           blocksConfig[content[blocksFieldname]?.[block]?.['@type']]?.view ||
@@ -48,7 +48,11 @@ const RenderBlocks = (props) => {
 
         if (content[blocksFieldname]?.[block]?.['@type'] === 'empty') {
           return (
-            <MaybeWrap condition={blockWrapperTag} as={blockWrapperTag}>
+            <MaybeWrap
+              key={block}
+              condition={blockWrapperTag}
+              as={blockWrapperTag}
+            >
               <RenderEmptyBlock />
             </MaybeWrap>
           );
@@ -56,7 +60,11 @@ const RenderBlocks = (props) => {
 
         if (Block) {
           return (
-            <MaybeWrap condition={blockWrapperTag} as={blockWrapperTag}>
+            <MaybeWrap
+              key={block}
+              condition={blockWrapperTag}
+              as={blockWrapperTag}
+            >
               <StyleWrapper
                 key={block}
                 {...props}
@@ -91,7 +99,7 @@ const RenderBlocks = (props) => {
           <div key={block}>{intl.formatMessage(messages.invalidBlock)}</div>
         );
       })}
-    </MaybeWrap>
+    </CustomTag>
   ) : (
     ''
   );
