@@ -737,8 +737,8 @@ msgid "Content rules from parent folders"
 msgstr ""
 
 #: components/manage/LinksToItem/LinksToItem
-# defaultMessage: Content that link to this item
-msgid "Content that link to this item"
+# defaultMessage: Content that links or references to {title}
+msgid "Content that links or references to {title}"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
@@ -1911,19 +1911,14 @@ msgid "Link translation for"
 msgstr ""
 
 #: components/manage/LinksToItem/LinksToItem
-# defaultMessage: Linking this item with
-msgid "Linking this item with"
+# defaultMessage: Linking this item with hyperlink in text
+msgid "Linking this item with hyperlink in text"
 msgstr ""
 
 #: components/manage/LinksToItem/LinksToItem
 #: components/manage/Toolbar/More
-# defaultMessage: Links To Item
-msgid "Links To Item"
-msgstr ""
-
-#: components/manage/LinksToItem/LinksToItem
-# defaultMessage: Links to {title}
-msgid "Links to {title}"
+# defaultMessage: Links and references
+msgid "Links and references"
 msgstr ""
 
 #: components/manage/Blocks/Listing/schema
@@ -2634,6 +2629,16 @@ msgstr ""
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Minimalistic table design
 msgid "Reduce complexity"
+msgstr ""
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Referencing this item as related item
+msgid "Referencing this item as related item"
+msgstr ""
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Referencing this item with {relationship}
+msgid "Referencing this item with {relationship}"
 msgstr ""
 
 #: components/theme/Anontools/Anontools
@@ -4316,11 +4321,6 @@ msgstr ""
 #: config/Blocks
 # defaultMessage: HTML
 msgid "html"
-msgstr ""
-
-#: components/manage/LinksToItem/LinksToItem
-# defaultMessage: hyperlink
-msgid "hyperlink"
 msgstr ""
 
 #: config/Blocks

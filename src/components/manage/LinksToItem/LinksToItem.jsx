@@ -25,8 +25,8 @@ const messages = defineMessages({
     defaultMessage: 'Back',
   },
   linkstoitem: {
-    id: 'Links To Item',
-    defaultMessage: 'Links To Item',
+    id: 'Links and references',
+    defaultMessage: 'Links and references',
   },
 });
 
@@ -73,79 +73,78 @@ const LinksToItem = (props) => {
       <Segment.Group raised>
         <Segment className="primary">
           <FormattedMessage
-            id="Links to {title}"
-            defaultMessage="Links to {title}"
+            id="Content that links or references to {title}"
+            defaultMessage="Content that links or references to {title}"
             values={{ title: <q>{title}</q> }}
           />
         </Segment>
         {relations_found ? (
-          <>
-            <Segment secondary>
-              <FormattedMessage
-                id="Content that link to this item"
-                defaultMessage="Content that link to this item"
-              />
-            </Segment>
-            <Table selectable compact singleLine attached>
-              {
-                <Table.Body>
-                  {Object.keys(links_ordered).map((relationtype) => {
-                    return [].concat(
-                      [
-                        <Table.Row>
-                          <Table.HeaderCell>
+          <Table selectable compact singleLine attached>
+            {
+              <Table.Body>
+                {Object.keys(links_ordered).map((relationtype) => {
+                  return [].concat(
+                    [
+                      <Table.Row>
+                        <Table.HeaderCell>
+                          {relationtype === 'isReferencing' ? (
                             <FormattedMessage
-                              id="Linking this item with"
-                              defaultMessage="Linking this item with"
-                            />{' '}
-                            {relationtype === 'isReferencing' ? (
-                              <FormattedMessage
-                                id="hyperlink"
-                                defaultMessage="hyperlink"
-                              />
-                            ) : (
-                              `'${relationtype}'`
-                            )}
-                          </Table.HeaderCell>
-                          <Table.HeaderCell>
-                            <FormattedMessage
-                              id="Review state"
-                              defaultMessage="Review state"
+                              id="Linking this item with hyperlink in text"
+                              defaultMessage="Linking this item with hyperlink in text"
                             />
-                          </Table.HeaderCell>
-                          <Table.HeaderCell>
-                            <FormattedMessage id="Type" defaultMessage="Type" />
-                          </Table.HeaderCell>
-                        </Table.Row>,
-                      ],
-                      links_ordered[relationtype].map((link) => {
-                        return (
-                          <Table.Row key={link['@id']}>
-                            <Table.Cell>
-                              <UniversalLink
-                                href={link['@id']}
-                                className={`source ${link.review_state}`}
-                              >
-                                <span className="label" title={link.type_title}>
-                                  {link.title}
-                                </span>
-                              </UniversalLink>
-                            </Table.Cell>
-                            <Table.Cell>
-                              <span>{link.review_state}</span>
-                            </Table.Cell>
-                            <Table.Cell>
-                              <span>{link.type_title || ''}</span>
-                            </Table.Cell>
-                          </Table.Row>
-                        );
-                      }),
-                    );
-                  })}
-                </Table.Body>
-              }
-            </Table>
-          </>
+                          ) : relationtype === 'relatedItems' ? (
+                            <FormattedMessage
+                              id="Referencing this item as related item"
+                              defaultMessage="Referencing this item as related item"
+                            />
+                          ) : (
+                            <>
+                              <FormattedMessage
+                                id="Referencing this item with {relationship}"
+                                defaultMessage="Referencing this item with {relationship}"
+                                values={{ relationship: <q>{relationtype}</q> }}
+                              />
+                            </>
+                          )}
+                        </Table.HeaderCell>
+                        <Table.HeaderCell>
+                          <FormattedMessage
+                            id="Review state"
+                            defaultMessage="Review state"
+                          />
+                        </Table.HeaderCell>
+                        <Table.HeaderCell>
+                          <FormattedMessage id="Type" defaultMessage="Type" />
+                        </Table.HeaderCell>
+                      </Table.Row>,
+                    ],
+                    links_ordered[relationtype].map((link) => {
+                      return (
+                        <Table.Row key={link['@id']}>
+                          <Table.Cell>
+                            <UniversalLink
+                              href={link['@id']}
+                              className={`source ${link.review_state}`}
+                            >
+                              <span className="label" title={link.type_title}>
+                                {link.title}
+                              </span>
+                            </UniversalLink>
+                          </Table.Cell>
+                          <Table.Cell>
+                            <span>{link.review_state}</span>
+                          </Table.Cell>
+                          <Table.Cell>
+                            <span>{link.type_title || ''}</span>
+                          </Table.Cell>
+                        </Table.Row>
+                      );
+                    }),
+                  );
+                })}
+              </Table.Body>
+            }
+          </Table>
         ) : (
           <Segment secondary>
             <FormattedMessage

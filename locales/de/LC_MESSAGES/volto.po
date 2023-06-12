@@ -743,9 +743,9 @@ msgid "Content rules from parent folders"
 msgstr "Inhaltsregeln von übergeordneten Seiten"
 
 #: components/manage/LinksToItem/LinksToItem
-# defaultMessage: Content that link to this item
-msgid "Content that link to this item"
-msgstr "Alle Inhalte, die auf dieses Item verlinken"
+# defaultMessage: Content that links or references to {title}
+msgid "Content that links or references to {title}"
+msgstr "Zu {title} verlinkende oder referenzierende Inhalte"
 
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Content type created
@@ -1917,20 +1917,15 @@ msgid "Link translation for"
 msgstr "Übersetzung verbinden"
 
 #: components/manage/LinksToItem/LinksToItem
-# defaultMessage: Linking this item with
-msgid "Linking this item with"
-msgstr "Inhalte, die hierher verlinken"
+# defaultMessage: Linking this item with hyperlink in text
+msgid "Linking this item with hyperlink in text"
+msgstr "Inhalte, die im Text auf diesen Inhalt verlinken"
 
 #: components/manage/LinksToItem/LinksToItem
 #: components/manage/Toolbar/More
-# defaultMessage: Links To Item
-msgid "Links To Item"
-msgstr "Verlinkende Inhalte"
-
-#: components/manage/LinksToItem/LinksToItem
-# defaultMessage: Links to {title}
-msgid "Links to {title}"
-msgstr "Zu {title} verlinkende Inhalte"
+# defaultMessage: Links and references
+msgid "Links and references"
+msgstr "Links und Referenzen"
 
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Listing
@@ -2641,6 +2636,16 @@ msgstr "Wiederholen"
 # defaultMessage: Minimalistic table design
 msgid "Reduce complexity"
 msgstr "Komplexität reduzieren"
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Referencing this item as related item
+msgid "Referencing this item as related item"
+msgstr "Inhalte, die diesen Inhalt als verwandten Inhalt referenzieren"
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Referencing this item with {relationship}
+msgid "Referencing this item with {relationship}"
+msgstr "Inhalte, die diesen Inhalt mit {relationship} referenzieren"
 
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
@@ -4323,11 +4328,6 @@ msgstr "Hero"
 # defaultMessage: HTML
 msgid "html"
 msgstr "HTML"
-
-#: components/manage/LinksToItem/LinksToItem
-# defaultMessage: hyperlink
-msgid "hyperlink"
-msgstr ""
 
 #: config/Blocks
 # defaultMessage: Image
