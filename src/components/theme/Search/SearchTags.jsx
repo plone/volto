@@ -5,25 +5,16 @@ import { Link } from 'react-router-dom';
 
 import { getVocabulary } from '@plone/volto/actions';
 import { useVocabularies } from '@plone/volto/hooks/vocabularies/useVocabularies';
-
 const vocabulary = 'plone.app.vocabularies.Keywords';
+
 const SearchTags = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getVocabulary({ vocabNameOrURL: vocabulary }));
-  }, [dispatch]);
+  });
 
   const items = useVocabularies();
-
-  SearchTags.propTypes = {
-    getVocabulary: PropTypes.func,
-    items: PropTypes.arrayOf(
-      PropTypes.shape({
-        label: PropTypes.string,
-      }),
-    ),
-  };
 
   return items && items.length > 0 ? (
     <div>
@@ -40,6 +31,15 @@ const SearchTags = () => {
   ) : (
     <span />
   );
+};
+
+SearchTags.propTypes = {
+  getVocabulary: PropTypes.func,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string,
+    }),
+  ),
 };
 
 export default SearchTags;
