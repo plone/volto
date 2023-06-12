@@ -8,6 +8,43 @@
 
 <!-- towncrier release notes start -->
 
+## 17.0.0-alpha.11 (2023-06-09)
+
+### Bugfix
+
+- Added current page parameter to route in listing and search block pagination - Fix: #3868 @bipoza [#4159](https://github.com/plone/volto/issues/4159)
+
+
+## 17.0.0-alpha.10 (2023-06-09)
+
+### Feature
+
+- Search Block: Add support for advanced facets that are only displayed on demand.
+  [pbauer, razvanMiu, claudiaifrim] [#4783](https://github.com/plone/volto/issues/4783)
+- Display PAS validation errors. [tschorr] [#4801](https://github.com/plone/volto/issues/4801)
+- Added a CSS identifier to the Slate style menu options. @razvanMiu [#4846](https://github.com/plone/volto/issues/4846)
+- Use a Container from the registry in the Form component and fallback to the Semantic UI one. @sneridagh [#4849](https://github.com/plone/volto/issues/4849)
+- Update Brazilian Portuguese translations @ericof [#4853](https://github.com/plone/volto/issues/4853)
+
+### Bugfix
+
+- Convert header class to function. @gomez [#4767](https://github.com/plone/volto/issues/4767)
+- Do not break validation on required number field with value 0 @cekk [#4841](https://github.com/plone/volto/issues/4841)
+
+
+## 17.0.0-alpha.9 (2023-06-01)
+
+### Bugfix
+
+- Fix special characters in request urls @pnicolli @mamico @luca-bellenghi @cekk [#4825](https://github.com/plone/volto/issues/4825)
+- Fix block is undefined in StyleWrapper helper when building classnames @sneridagh [#4827](https://github.com/plone/volto/issues/4827)
+- Fix navigation sections in 404 pages @sneridagh [#4836](https://github.com/plone/volto/issues/4836)
+
+### Documentation
+
+- Fix glossary warning due to lack of empty line before a term. @stevepiercy [#4820](https://github.com/plone/volto/issues/4820)
+
+
 ## 17.0.0-alpha.8 (2023-05-24)
 
 ### Feature
