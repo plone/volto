@@ -1,6 +1,6 @@
 /**
  * Navroot reducer.
- * @module reducers/site/site
+ * @module reducers/navroot/navroot
  */
 
 import { GET_NAVROOT } from '@plone/volto/constants/ActionTypes';
