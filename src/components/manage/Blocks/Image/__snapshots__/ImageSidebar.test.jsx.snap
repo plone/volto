@@ -15,8 +15,9 @@ Array [
     <div>
       image
       <button
-        className="ui basic button cancel"
+        className="ui basic button clear-image"
         onClick={[Function]}
+        title="Clear image"
       >
         <svg
           className="icon"
