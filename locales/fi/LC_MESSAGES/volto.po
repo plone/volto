@@ -279,6 +279,16 @@ msgstr "Laajennos poistettu onnistuneesti"
 msgid "Addon upgraded succesfuly"
 msgstr "Laajennos päivitetty onnistuneesti"
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Advanced facet?
+msgid "Advanced facet?"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Advanced facets are initially hidden and displayed on demand
+msgid "Advanced facets are initially hidden and displayed on demand"
+msgstr ""
+
 #: config/Views
 # defaultMessage: Album view
 msgid "Album view"
@@ -1264,9 +1274,9 @@ msgstr "Syötä sähköpostiosoitteesi vahvistusta varten."
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Enter your new password. Minimum 5 characters.
-msgid "Enter your new password. Minimum 5 characters."
-msgstr "Syötä uusi salasanasi, jossa on vähintään viisi (5) merkkiä."
+# defaultMessage: Enter your new password. Minimum 8 characters.
+msgid "Enter your new password. Minimum 8 characters."
+msgstr "Syötä uusi salasanasi, jossa on vähintään viisi (8) merkkiä."
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Enter your username for verification.
@@ -1584,6 +1594,11 @@ msgstr "Piilota vastaukset"
 msgid "Hide facet?"
 msgstr "Piilota fasetti?"
 
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: Hide filters
+msgid "Hide filters"
+msgstr ""
+
 #: components/manage/History/History
 #: components/manage/Toolbar/More
 # defaultMessage: History
@@ -1880,6 +1895,11 @@ msgstr "Nostokuva"
 msgid "Left"
 msgstr "Vasemmalla"
 
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: Less filters
+msgid "Less filters"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Link
 msgid "Link"
@@ -2088,6 +2108,11 @@ msgstr "Kuukausittain"
 # defaultMessage: More
 msgid "More"
 msgstr "Lisää"
+
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: More filters
+msgid "More filters"
+msgstr ""
 
 #: components/manage/Controlpanels/UpgradeControlPanel
 # defaultMessage: More information about the upgrade procedure can be found in the documentation section of plone.org in the Upgrade Guide.
@@ -3097,6 +3122,11 @@ msgstr "Näytä kaikki"
 # defaultMessage: Show Replies
 msgid "Show Replies"
 msgstr "Näytä vastaukset"
+
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: Show filters
+msgid "Show filters"
+msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Show groups of users below
