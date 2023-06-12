@@ -1,9 +1,4 @@
-/**
- * Album view component.
- * @module components/theme/View/AlbumView
- */
-
-import React, { Component } from 'react';
+import {useState}from 'react';
 import PropTypes from 'prop-types';
 import { Container, GridColumn, Segment } from 'semantic-ui-react';
 import { Button, Modal, Grid } from 'semantic-ui-react';
@@ -13,49 +8,28 @@ import openSVG from '@plone/volto/icons/open.svg';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import backSVG from '@plone/volto/icons/back.svg';
 
-/**
- * Album view component class.
- * @function AlbumView
- * @param {Object} content Content object.
- * @returns {string} Markup of the component.
- */
-class AlbumView extends Component {
-  constructor(props) {
-    super(props);
 
-    this.state = {
-      openIndex: undefined,
-    };
+const AlbumView =({content})=> {
 
-    this.closeModal = this.closeModal.bind(this);
-    this.nextImage = this.nextImage.bind(this);
-    this.prevImage = this.prevImage.bind(this);
+  const [openIndex,setopenIndex]=useState(undefined);
+
+  const closeModal=()=> {
+    setopenIndex(-1);
   }
 
-  closeModal() {
-    this.setState({
-      openIndex: -1,
-    });
-  }
-
-  nextImage() {
+  const nextImage=()=> {
     const openIndex =
-      (this.state.openIndex + 1) % this.props.content.items.length;
-    this.setState({
-      openIndex,
-    });
+      (openIndex + 1) % content.items.length;
+      setopenIndex(openIndex);
   }
 
-  prevImage() {
+  const prevImage=()=> {
     const openIndex =
-      (this.state.openIndex - 1) % this.props.content.items.length;
-    this.setState({
-      openIndex,
-    });
+      (openIndex - 1) % content.items.length;
+      setopenIndex(openIndex);
   }
 
-  render() {
-    const { content } = this.props;
+
     return (
       <Container className="view-wrapper">
         <article id="content">
@@ -73,8 +47,8 @@ class AlbumView extends Component {
                     {item.image_field && (
                       <Modal
                         className="gallery"
-                        onClose={this.closeModal}
-                        open={this.state.openIndex === index}
+                        onClose={closeModal}
+                        open={openIndex === index}
                         trigger={
                           <Grid.Column>
                             <Segment className="imageborder">
@@ -86,9 +60,7 @@ class AlbumView extends Component {
                                     : item.title
                                 }
                                 onClick={() => {
-                                  this.setState({
-                                    openIndex: index,
-                                  });
+                                  setopenIndex(index);
                                 }}
                                 className="ui middle aligned image"
                               />
@@ -105,7 +77,7 @@ class AlbumView extends Component {
                                 <UniversalLink
                                   href={item.url}
                                   title={item['@type']}
-                                  onClick={this.closeModal}
+                                  onClick={closeModal}
                                 >
                                   <Icon size="30px" fitted name={openSVG} />
                                 </UniversalLink>
@@ -118,7 +90,7 @@ class AlbumView extends Component {
                             <Grid.Column width={2} textAlign="center">
                               <Button
                                 className="gallery noborder"
-                                onClick={this.nextImage}
+                                onClick={nextImage}
                                 style={{ margin: 0 }}
                               >
                                 <Icon
@@ -139,9 +111,7 @@ class AlbumView extends Component {
                                       : item.title
                                   }
                                   onClick={() => {
-                                    this.setState({
-                                      openIndex: index,
-                                    });
+                                    setopenIndex(index);
                                   }}
                                   size="large"
                                   className="ui image"
@@ -154,7 +124,7 @@ class AlbumView extends Component {
                             </Grid.Column>
                             <Grid.Column width={2} textAlign="center">
                               <Button
-                                onClick={this.nextImage}
+                                onClick={nextImage}
                                 className="gallery noborder"
                                 style={{ margin: 0 }}
                               >
@@ -178,13 +148,9 @@ class AlbumView extends Component {
       </Container>
     );
   }
-}
 
-/**
- * Property types.
- * @property {Object} propTypes Property types.
- * @static
- */
+
+
 AlbumView.propTypes = {
   /**
    * Content of the object
@@ -232,4 +198,5 @@ AlbumView.propTypes = {
   }).isRequired,
 };
 
-export default AlbumView;
+ export default AlbumView;
+ 
