@@ -11,15 +11,10 @@ exports[`LinksToItem renders links to item view 1`] = `
     <div
       className="ui segment primary"
     >
-      Links to 
+      Content that links or references to 
       <q>
         page #1
       </q>
-    </div>
-    <div
-      className="ui secondary segment"
-    >
-      Content that link to this item
     </div>
     <table
       className="ui selectable single line attached compact table"
@@ -33,9 +28,7 @@ exports[`LinksToItem renders links to item view 1`] = `
           <th
             className=""
           >
-            Linking this item with
-             
-            hyperlink
+            Linking this item with hyperlink in text
           </th>
           <th
             className=""

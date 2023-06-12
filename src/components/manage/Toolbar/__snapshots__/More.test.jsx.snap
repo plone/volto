@@ -96,7 +96,7 @@ exports[`Toolbar More component renders a Toolbar More component 1`] = `
           <a
             href="/blah/links-to-item"
           >
-            Links To Item
+            Links and references
             <svg
               class="icon"
               style="height: 24px; width: auto; fill: currentColor;"
@@ -207,7 +207,7 @@ exports[`Toolbar More component renders a Toolbar More component with manage con
           <a
             href="/blah/links-to-item"
           >
-            Links To Item
+            Links and references
             <svg
               class="icon"
               style="height: 24px; width: auto; fill: currentColor;"
