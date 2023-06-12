@@ -1,5 +1,5 @@
 /**
- * Site reducer.
+ * Navroot reducer.
  * @module reducers/site/site
  */
 
@@ -13,10 +13,10 @@ const initialState = {
 };
 
 /**
- * Actions reducer.
- * @function site
+ * Navroot reducer.
+ * @function navroot
  * @param {Object} state Current state.
- * @param {Object} site Action to be handled.
+ * @param {Object} navroot Action to be handled.
  * @returns {Object} New state.
  */
 export default function navroot(state = initialState, action = {}) {

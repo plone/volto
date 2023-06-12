@@ -4,12 +4,6 @@
  */
 
 import { GET_SITE } from '@plone/volto/constants/ActionTypes';
-import {
-  flattenToAppURL,
-  getBaseUrl,
-  hasApiExpander,
-} from '@plone/volto/helpers';
-import { PortalInner } from 'semantic-ui-react';
 
 const initialState = {
   error: null,

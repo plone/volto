@@ -44,8 +44,8 @@ const ContentMetadataTags = (props) => {
 
     return contentImageInfo;
   };
-
   const contentImageInfo = getContentImageInfo();
+
   const getTitle = () => {
     const { includeSiteTitle, separator, includeLanguage } =
       config?.settings?.siteTitleFormat || {};
@@ -53,9 +53,13 @@ const ContentMetadataTags = (props) => {
       if (includeLanguage === true && languageRootTitle) {
         return seo_title || title + ' ' + separator + ' ' + languageRootTitle;
       }
-      return seo_title || title + ' ' + separator + ' ' + siteTitle;
+      if (siteTitle)
+        return seo_title || title + ' ' + separator + ' ' + siteTitle;
+      else return seo_title || title;
     }
+    return seo_title || title;
   };
+
   return (
     <>
       <Helmet>

@@ -214,7 +214,6 @@ class View extends Component {
    */
   render() {
     const { views } = config;
-    console.log(this.props.site, this.props.site, this.props.navroot);
     if (this.props.error && this.props.error.code === 301) {
       const redirect = flattenToAppURL(this.props.error.url).split('?')[0];
       return <Redirect to={`${redirect}${this.props.location.search}`} />;

@@ -45,7 +45,6 @@ import {
   getNavigation,
   getTypes,
   getWorkflow,
-  getSite,
 } from '@plone/volto/actions';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -266,23 +265,12 @@ export function connectAppComponent(AppComponent) {
       {
         key: 'breadcrumbs',
         promise: ({ location, store: { dispatch } }) => {
-          console.log('aici merge');
           // Do not trigger the breadcrumbs action if the expander is present
           if (
             __SERVER__ &&
             !hasApiExpander('breadcrumbs', getBaseUrl(location.pathname))
           ) {
             return dispatch(getBreadcrumbs(getBaseUrl(location.pathname)));
-          }
-        },
-      },
-      {
-        key: 'site',
-        promise: async ({ location, store: { dispatch } }) => {
-          // Do not trigger the actions action if the expander is present
-          console.log({ location });
-          if (!hasApiExpander('site', getBaseUrl(location.pathname))) {
-            return await dispatch(getSite(getBaseUrl(location.pathname)));
           }
         },
       },
@@ -331,7 +319,6 @@ export function connectAppComponent(AppComponent) {
       (state, props) => ({
         pathname: props.location.pathname,
         token: state.userSession.token,
-
         userId: state.userSession.token
           ? jwtDecode(state.userSession.token).sub
           : '',

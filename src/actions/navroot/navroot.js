@@ -1,13 +1,13 @@
 /**
- * site actions.
+ * navroot actions.
  * @module actions/site/site
  */
 
 import { GET_NAVROOT } from '@plone/volto/constants/ActionTypes';
 
 /**
- * List actions.
- * @function getSite
+ * Navroot actions.
+ * @function getNavroot
  * @param {string} url Content url.
  * @returns {Object} Get site action.
  */

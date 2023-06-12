@@ -6,7 +6,7 @@
 import { GET_SITE } from '@plone/volto/constants/ActionTypes';
 
 /**
- * List actions.
+ * Site actions.
  * @function getSite
  * @param {string} url Content url.
  * @returns {Object} Get site action.
