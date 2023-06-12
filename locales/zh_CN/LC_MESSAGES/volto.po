@@ -4330,6 +4330,11 @@ msgid "image"
 msgstr "图片"
 
 #: components/manage/Blocks/Image/ImageSidebar
+# defaultMessage: Clear image
+msgid "image_block_clear"
+msgstr ""
+
+#: components/manage/Blocks/Image/ImageSidebar
 # defaultMessage: Image preview
 msgid "image_block_preview"
 msgstr ""
