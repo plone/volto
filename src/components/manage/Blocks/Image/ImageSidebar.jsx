@@ -6,7 +6,7 @@ import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers';
 import { BlockDataForm, Icon, Image } from '@plone/volto/components';
 import { ImageSchema } from './schema';
 import imageSVG from '@plone/volto/icons/image.svg';
-import clearSVG from '@plone/volto/icons/clear.svg';
+import trashSVG from '@plone/volto/icons/delete.svg';
 
 const ImageSidebar = (props) => {
   const { data, block, onChangeBlock } = props;
@@ -18,29 +18,34 @@ const ImageSidebar = (props) => {
         <h2>
           <FormattedMessage id="Image" defaultMessage="Image" />
         </h2>
+        <Button.Group>
+          <Button
+            title={intl.formatMessage(messages.clear)}
+            basic
+            disabled={!data.url}
+            onClick={() => {
+              onChangeBlock(block, {
+                ...data,
+                url: undefined,
+                image_scales: undefined,
+                image_field: undefined,
+                alt: data.url.title === data.alt ? undefined : data.alt,
+              });
+            }}
+          >
+            <Icon name={trashSVG} size="24px" color="red" />
+          </Button>
+        </Button.Group>
       </header>
 
-      <Segment className="sidebar-metadata-container" secondary attached>
+      <Segment
+        className="sidebar-metadata-container image-sidebar"
+        secondary
+        attached
+      >
         {data.url ? (
           <>
-            <div>
-              {(data.url?.['@id'] ?? data.url).split('/').slice(-1)[0]}
-              <Button
-                basic
-                className="clear-image"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onChangeBlock(block, {
-                    ...data,
-                    url: undefined,
-                    alt: data.url.title === data.alt ? undefined : data.alt,
-                  });
-                }}
-                title={intl.formatMessage(messages.clear)}
-              >
-                <Icon name={clearSVG} size="30px" />
-              </Button>
-            </div>
+            <div>{(data.url?.['@id'] ?? data.url).split('/').slice(-1)[0]}</div>
             <Image
               item={
                 data.image_scales
