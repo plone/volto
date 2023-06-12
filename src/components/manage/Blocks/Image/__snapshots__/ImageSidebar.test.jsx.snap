@@ -8,14 +8,11 @@ Array [
     <h2>
       Image
     </h2>
-  </header>,
-  <div
-    className="ui secondary attached segment sidebar-metadata-container"
-  >
-    <div>
-      image
+    <div
+      className="ui buttons"
+    >
       <button
-        className="ui basic button clear-image"
+        className="ui basic button"
         onClick={[Function]}
         title="Clear image"
       >
@@ -29,8 +26,8 @@ Array [
           onClick={null}
           style={
             Object {
-              "fill": "currentColor",
-              "height": "30px",
+              "fill": "red",
+              "height": "24px",
               "width": "auto",
             }
           }
@@ -38,6 +35,13 @@ Array [
           xmlns=""
         />
       </button>
+    </div>
+  </header>,
+  <div
+    className="ui secondary attached segment sidebar-metadata-container image-sidebar"
+  >
+    <div>
+      image
     </div>
     <img
       alt="Image preview"
