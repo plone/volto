@@ -7,17 +7,17 @@ import { FormattedMessage } from 'react-intl';
 import config from '@plone/volto/registry';
 
 const LinkView = ({ token, content, history }) => {
-  const { remoteUrl } = content;
   useEffect(() => {
     if (!token) {
+      const { remoteUrl } = content;
       if (isInternalURL(remoteUrl)) {
         history.replace(flattenToAppURL(remoteUrl));
       } else if (!__SERVER__) {
         window.location.href = flattenToAppURL(remoteUrl);
       }
     }
-  }, [history, remoteUrl, token]);
-
+  }, [content, history, token]);
+  const { remoteUrl } = content;
   const { openExternalLinkInNewTab } = config.settings;
 
   return (
