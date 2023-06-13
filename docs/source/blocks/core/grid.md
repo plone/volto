@@ -29,7 +29,7 @@ For this reason, only four blocks are included by default, namely `slate` (text)
 The grid block has the following settings.
 
 `Headline`
-:   The headline is a heading that appears above the title of the grid block.
+:   The headline is a heading that appears above the columns of the grid block.
 
 
 ## Block configuration
