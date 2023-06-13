@@ -764,8 +764,8 @@ msgid "Content rules from parent folders"
 msgstr "Règles de contenu des dossiers parents"
 
 #: components/manage/LinksToItem/LinksToItem
-# defaultMessage: Content that links or references to {title}
-msgid "Content that links or references to {title}"
+# defaultMessage: Content that links to or references {title}
+msgid "Content that links to or references {title}"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes

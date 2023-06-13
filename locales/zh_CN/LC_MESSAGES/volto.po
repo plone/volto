@@ -753,8 +753,8 @@ msgid "Content rules from parent folders"
 msgstr "父文件夹的内容规则"
 
 #: components/manage/LinksToItem/LinksToItem
-# defaultMessage: Content that links or references to {title}
-msgid "Content that links or references to {title}"
+# defaultMessage: Content that links to or references {title}
+msgid "Content that links to or references {title}"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes

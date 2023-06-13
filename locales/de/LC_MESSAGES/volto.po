@@ -753,8 +753,8 @@ msgid "Content rules from parent folders"
 msgstr "Inhaltsregeln von übergeordneten Seiten"
 
 #: components/manage/LinksToItem/LinksToItem
-# defaultMessage: Content that links or references to {title}
-msgid "Content that links or references to {title}"
+# defaultMessage: Content that links to or references {title}
+msgid "Content that links to or references {title}"
 msgstr "Zu {title} verlinkende oder referenzierende Inhalte"
 
 #: components/manage/Controlpanels/ContentTypes
