@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Container, GridColumn, Segment } from 'semantic-ui-react';
 import { Button, Modal, Grid } from 'semantic-ui-react';
@@ -16,13 +16,8 @@ const AlbumView = ({ content }) => {
   };
 
   const nextImage = () => {
-    const openIndex = (openIndex + 1) % content.items.length;
-    setopenIndex(openIndex);
-  };
-
-  const prevImage = () => {
-    const openIndex = (openIndex - 1) % content.items.length;
-    setopenIndex(openIndex);
+    let openIndexes = (openIndex + 1) % content.items.length;
+    setopenIndex(openIndexes);
   };
 
   return (
@@ -38,7 +33,7 @@ const AlbumView = ({ content }) => {
           <Grid doubling stackable columns={4}>
             {content.items &&
               content.items.map((item, index) => (
-                <React.Fragment key={item.url}>
+                <Fragment key={item.url}>
                   {item.image_field && (
                     <Modal
                       className="gallery"
@@ -135,7 +130,7 @@ const AlbumView = ({ content }) => {
                       </Grid>
                     </Modal>
                   )}
-                </React.Fragment>
+                </Fragment>
               ))}
           </Grid>
         </section>
