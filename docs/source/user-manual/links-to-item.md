@@ -13,7 +13,7 @@ myst:
 
 Sometimes it can be hard to keep track from where a certain page is referenced.
 This is especially true whenever you want to reconstruct your website with a greater number of objects being moved or deleted.
-For this situation, you can visit the {guilabel}`Links and references` page, which is an overview of all content items that refererence a certain content item.
+For this situation, you can visit the {guilabel}`Links and references` page, which is an overview of all content items that reference a certain content item.
 
 ```{note}
 An item references another item by creating a hyperlink to this item, using the item in a block, referencing it in the {guilabel}`Related Items` field, or referencing it in a relation field.

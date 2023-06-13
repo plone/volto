@@ -11,7 +11,7 @@ exports[`LinksToItem renders links to item view 1`] = `
     <div
       className="ui segment primary"
     >
-      Content that links or references to 
+      Content that links to or references 
       <q>
         page #1
       </q>

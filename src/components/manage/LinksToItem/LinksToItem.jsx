@@ -73,8 +73,8 @@ const LinksToItem = (props) => {
       <Segment.Group raised>
         <Segment className="primary">
           <FormattedMessage
-            id="Content that links or references to {title}"
-            defaultMessage="Content that links or references to {title}"
+            id="Content that links to or references {title}"
+            defaultMessage="Content that links to or references {title}"
             values={{ title: <q>{title}</q> }}
           />
         </Segment>
