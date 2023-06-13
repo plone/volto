@@ -24,10 +24,10 @@ An item references another item by creating a hyperlink to this item, using the 
 In the toolbar on the left side, you can click on the item with the three horizontally aligned dots, called {guilabel}`More menu`.
 Click then on the item labeled {guilabel}`Links and references`.
 
-You can see now a table displaying all links and references to the current item.
+You can see now a table displaying all links to and references of the current item.
 
 ```{image} ../_static/user-manual/manage/link-to-items.png
-:alt: A panel captioned with "Links and references to 'My Summer Vacation - Day 2'". A table with three columns (first column labeled with "Linking / referencing this item…", second column labeled with "Review state", third column labeled with "Type"). In the row appears a link titled "Links to My Summer Vacation - Day 1", because it is referencing the current item.
+:alt: A panel captioned with "Content that links to or references 'Supervisor Adélaïde Pickavance'". Below the caption, there is a table with one section per relation type, where each section has three columns. The first column's heading is the relation name, the second is "Review State", and the third is "Type". The sections are named, from top to bottom, "Linking this item with hyperlink in text", "Referencing the item as related item", and "Referencing this item with '[Name of Relation]'".
 ```
 
 For editors, this view gives insight to whether those links and references are still relevant.
