@@ -2,7 +2,7 @@ import { map, uniq, keys, intersection, isEmpty } from 'lodash';
 import { messages } from '../MessageLabels/MessageLabels';
 import config from '@plone/volto/registry';
 import { toast } from 'react-toastify';
-import { Toast } from '@plone/volto/components';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
 
 /**
  * Will return the intl message if invalid
