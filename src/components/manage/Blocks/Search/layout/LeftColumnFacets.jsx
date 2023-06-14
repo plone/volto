@@ -11,6 +11,7 @@ import { Grid, Segment } from 'semantic-ui-react';
 import { Button } from 'semantic-ui-react';
 import { flushSync } from 'react-dom';
 import { defineMessages, useIntl } from 'react-intl';
+import cx from 'classnames';
 
 const messages = defineMessages({
   searchButtonText: {
@@ -19,11 +20,22 @@ const messages = defineMessages({
   },
 });
 
-const FacetWrapper = ({ children }) => (
-  <Segment basic className="facet">
-    {children}
-  </Segment>
-);
+const FacetWrapper = ({ children, facetSettings = {}, visible }) => {
+  const { advanced, field = {} } = facetSettings;
+
+  return (
+    <Segment
+      basic
+      className={cx('facet', {
+        [`facet-index-${field.value}`]: !!field.value,
+        'advanced-facet': advanced,
+        'advanced-facet-hidden': !visible,
+      })}
+    >
+      {children}
+    </Segment>
+  );
+};
 
 const LeftColumnFacets = (props) => {
   const {

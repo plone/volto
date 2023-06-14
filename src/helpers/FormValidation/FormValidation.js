@@ -203,7 +203,7 @@ const validateRequiredFields = (
     const type = schema.properties[requiredField]?.type;
     const widget = schema.properties[requiredField]?.widget;
 
-    let isEmpty = !formData[requiredField];
+    let isEmpty = !formData[requiredField] && formData[requiredField] !== 0;
     if (!isEmpty) {
       if (type === 'array') {
         isEmpty = formData[requiredField]
