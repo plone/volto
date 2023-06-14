@@ -1,9 +1,9 @@
 import { GET_SITE } from '@plone/volto/constants/ActionTypes';
 
 /**
- * Set sidebar tab function.
+ * Get the Site information.
  * @function getSite
- * @returns {Object} Get the Site information
+ * @returns {Object} site info
  */
 export function getSite() {
   return {
