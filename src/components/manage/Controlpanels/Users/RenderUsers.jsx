@@ -5,8 +5,9 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { Button, Dropdown, Table, Checkbox } from 'semantic-ui-react';
+import { Dropdown, Table, Checkbox } from 'semantic-ui-react';
 import trashSVG from '@plone/volto/icons/delete.svg';
+import editSVG from '@plone/volto/icons/editing.svg';
 import { Icon, ModalForm, Toast } from '@plone/volto/components';
 import { updateUser } from '@plone/volto/actions';
 import ploneSVG from '@plone/volto/icons/plone.svg';
@@ -113,18 +114,6 @@ class RenderUsers extends Component {
             ? this.props.user.fullname
             : this.props.user.username}{' '}
           ({this.props.user.username})
-          {this.props.userschema && (
-            <>
-              <br />
-              <Button
-                onClick={() => {
-                  this.onClickEdit({ formData: this.props.user });
-                }}
-              >
-                {this.props.intl.formatMessage(messages.edit)}
-              </Button>
-            </>
-          )}
         </Table.Cell>
         {this.props.roles.map((role) => (
           <Table.Cell key={role.id}>
@@ -148,6 +137,17 @@ class RenderUsers extends Component {
         <Table.Cell textAlign="right">
           <Dropdown icon="ellipsis horizontal">
             <Dropdown.Menu className="left">
+              {this.props.userschema && (
+                <Dropdown.Item
+                  onClick={() => {
+                    this.onClickEdit({ formData: this.props.user });
+                  }}
+                  value={this.props.user['@id']}
+                >
+                  <Icon name={editSVG} size="15px" />
+                  <FormattedMessage id="Edit" defaultMessage="Edit" />
+                </Dropdown.Item>
+              )}
               <Dropdown.Item
                 onClick={this.props.onDelete}
                 value={this.props.user['@id']}
