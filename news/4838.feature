@@ -1,1 +1,0 @@
-Allow to deselect color in ColorPickerWidget. @ksuess
