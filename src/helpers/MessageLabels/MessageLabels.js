@@ -285,6 +285,7 @@ export const messages = defineMessages({
   edit: {
     id: 'Edit',
     defaultMesage: 'Edit',
+  },
   inspectRelations: {
     id: 'Inspect relations',
     defaultMessage: 'Inspect relations',
