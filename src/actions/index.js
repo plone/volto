@@ -75,7 +75,6 @@ export {
   createRelations,
   deleteRelations,
   queryRelations,
-  resetRelations,
 } from '@plone/volto/actions/relations/relations';
 export { rebuildRelations } from '@plone/volto/actions/relations/rebuild';
 export { listRoles } from '@plone/volto/actions/roles/roles';

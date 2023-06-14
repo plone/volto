@@ -54,8 +54,8 @@ const messages = defineMessages({
     defaultMessage: 'URL Management',
   },
   linkstoitem: {
-    id: 'Links To Item',
-    defaultMessage: 'Links To Item',
+    id: 'Links and references',
+    defaultMessage: 'Links and references',
   },
   ManageTranslations: {
     id: 'Manage Translations',
@@ -232,9 +232,7 @@ class More extends Component {
       id: 'redirection',
     });
 
-    const linksToItemAction = find(this.props.actions.object_buttons, {
-      id: 'linkstoitem',
-    });
+    const linksToItemAction = path !== '';
 
     const { content, intl } = this.props;
 

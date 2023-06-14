@@ -9,13 +9,7 @@ import { Portal } from 'react-portal';
 import { Container, Segment, Table } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
-import { map } from 'lodash';
-import {
-  queryRelations,
-  resetRelations,
-  getContent,
-  resetContent,
-} from '@plone/volto/actions';
+import { getContent, queryRelations } from '@plone/volto/actions';
 import {
   Icon as IconNext,
   Toolbar,
@@ -30,134 +24,128 @@ const messages = defineMessages({
     id: 'Back',
     defaultMessage: 'Back',
   },
-  linktoitem: {
-    id: 'Link To Item',
-    defaultMessage: 'Link To Item',
-  },
-  success: {
-    id: 'Success',
-    defaultMessage: 'Success',
-  },
-  successAdd: {
-    id: 'Alias has been added',
-    defaultMessage: 'Alias has been added',
+  linkstoitem: {
+    id: 'Links and references',
+    defaultMessage: 'Links and references',
   },
 });
 
 const LinksToItem = (props) => {
   const intl = useIntl();
-  const pathname = props.location.pathname;
   const dispatch = useDispatch();
-  const relations_subrequest = useSelector(
-    (state) => state.relations.subrequests,
+  const pathname = props.location.pathname;
+  const itempath = getBaseUrl(pathname);
+
+  const title = useSelector((state) => state.content.data?.title || '');
+  const myrelations = useSelector(
+    (state) => state.relations.subrequests[itempath]?.relations,
   );
-  const content_subrequest = useSelector((state) => state.content.subrequests);
-  const content = content_subrequest[pathname]?.data;
-  const relations = relations_subrequest[pathname]?.relations;
 
   useEffect(() => {
-    if (!content_subrequest[pathname]) {
-      dispatch(getContent(getBaseUrl(pathname), null, pathname));
-    }
-    return () => {
-      resetContent(pathname);
-    };
-  }, [dispatch, pathname, content_subrequest]);
+    dispatch(queryRelations(null, false, itempath, null, [itempath]));
+  }, [dispatch, itempath]);
 
   useEffect(() => {
-    if (
-      !relations_subrequest[pathname] &&
-      content_subrequest[pathname]?.data?.UID
-    ) {
-      dispatch(
-        queryRelations(null, false, pathname, null, [
-          content_subrequest[pathname]?.data?.UID,
-        ]),
-      );
-    }
-    return () => {
-      resetRelations(pathname);
-    };
-  }, [dispatch, content_subrequest[pathname]?.data?.UID, relations_subrequest]);
+    if (!title) dispatch(getContent(itempath));
+  }, [dispatch, itempath, title]);
 
   let links = {};
-
-  // Create a list of links (via constructing a hashmap and thus avoiding duplicates)
-  if (relations) {
-    for (const relation_items of Object.values(relations.items)) {
-      for (const item of relation_items) {
-        links[item.source.UID] = item.source;
-      }
-    }
+  if (myrelations) {
+    Object.keys(myrelations).forEach((relationtype) => {
+      links[relationtype] = {};
+      myrelations[relationtype].items.forEach((item) => {
+        links[relationtype][item.source.UID] = item.source;
+      });
+    });
   }
 
-  let links_ordered = Object.values(links).sort((link) => link['@id']);
-  const relations_found = links_ordered.length > 0;
-  return content && relations ? (
-    <Container id="linktoitem">
-      <Helmet title={intl.formatMessage(messages.linktoitem)} />
+  let links_ordered = {};
+  Object.keys(links).forEach((relationtype) => {
+    links_ordered[relationtype] = Object.values(links[relationtype]).sort(
+      (link) => link['@id'],
+    );
+  });
+
+  const relations_found = Object.keys(links_ordered).length > 0;
+  return (
+    <Container id="linkstoitem">
+      <Helmet title={intl.formatMessage(messages.linkstoitem)} />
       <Segment.Group raised>
         <Segment className="primary">
           <FormattedMessage
-            id="Links to {title}"
-            defaultMessage="Links to {title}"
-            values={{ title: <q>{content.title}</q> }}
+            id="Content that links to or references {title}"
+            defaultMessage="Content that links to or references {title}"
+            values={{ title: <q>{title}</q> }}
           />
         </Segment>
-        {relations_found && (
-          <>
-            <Segment secondary>
-              <FormattedMessage
-                id="Whenever this item is being referenced from some different item by a hyperlink, block or similar, it appears here in this list."
-                defaultMessage="Whenever this item is being referenced from some different item by a hyperlink, block or similar, it appears here in this list."
-              />
-            </Segment>
-            <Table selectable compact singleLine attached>
-              <Table.Header>
-                <Table.Row>
-                  <Table.HeaderCell>
-                    <FormattedMessage
-                      id="Linked by this item"
-                      defaultMessage="Linked by this item"
-                    />
-                  </Table.HeaderCell>
-                  <Table.HeaderCell>
-                    <FormattedMessage
-                      id="Review state"
-                      defaultMessage="Review state"
-                    />
-                  </Table.HeaderCell>
-                </Table.Row>
-              </Table.Header>
-              {
-                <Table.Body>
-                  {map(links_ordered, (link) => (
-                    <Table.Row key={link['@id']}>
-                      <Table.Cell>
-                        <UniversalLink
-                          href={link['@id']}
-                          className={
-                            link.review_state !== 'published'
-                              ? 'not-published'
-                              : ''
-                          }
-                        >
-                          <span className="label" title={link.value}>
-                            {link.title}
-                          </span>
-                        </UniversalLink>
-                      </Table.Cell>
-                      <Table.Cell>
-                        <span>{link.review_state}</span>
-                      </Table.Cell>
-                    </Table.Row>
-                  ))}
-                </Table.Body>
-              }
-            </Table>
-          </>
-        )}
-        {!relations_found && (
+        {relations_found ? (
+          <Table selectable compact singleLine attached>
+            {
+              <Table.Body>
+                {Object.keys(links_ordered).map((relationtype) => {
+                  return [].concat(
+                    [
+                      <Table.Row>
+                        <Table.HeaderCell>
+                          {relationtype === 'isReferencing' ? (
+                            <FormattedMessage
+                              id="Linking this item with hyperlink in text"
+                              defaultMessage="Linking this item with hyperlink in text"
+                            />
+                          ) : relationtype === 'relatedItems' ? (
+                            <FormattedMessage
+                              id="Referencing this item as related item"
+                              defaultMessage="Referencing this item as related item"
+                            />
+                          ) : (
+                            <>
+                              <FormattedMessage
+                                id="Referencing this item with {relationship}"
+                                defaultMessage="Referencing this item with {relationship}"
+                                values={{ relationship: <q>{relationtype}</q> }}
+                              />
+                            </>
+                          )}
+                        </Table.HeaderCell>
+                        <Table.HeaderCell>
+                          <FormattedMessage
+                            id="Review state"
+                            defaultMessage="Review state"
+                          />
+                        </Table.HeaderCell>
+                        <Table.HeaderCell>
+                          <FormattedMessage id="Type" defaultMessage="Type" />
+                        </Table.HeaderCell>
+                      </Table.Row>,
+                    ],
+                    links_ordered[relationtype].map((link) => {
+                      return (
+                        <Table.Row key={link['@id']}>
+                          <Table.Cell>
+                            <UniversalLink
+                              href={link['@id']}
+                              className={`source ${link.review_state}`}
+                            >
+                              <span className="label" title={link.type_title}>
+                                {link.title}
+                              </span>
+                            </UniversalLink>
+                          </Table.Cell>
+                          <Table.Cell>
+                            <span>{link.review_state}</span>
+                          </Table.Cell>
+                          <Table.Cell>
+                            <span>{link.type_title || ''}</span>
+                          </Table.Cell>
+                        </Table.Row>
+                      );
+                    }),
+                  );
+                })}
+              </Table.Body>
+            }
+          </Table>
+        ) : (
           <Segment secondary>
             <FormattedMessage
               id="No links to this item found."
@@ -172,7 +160,7 @@ const LinksToItem = (props) => {
             pathname={pathname}
             hideDefaultViewButtons
             inner={
-              <Link to={`${getBaseUrl(pathname)}`} className="item">
+              <Link to={itempath} className="item">
                 <IconNext
                   name={backSVG}
                   className="contents circled"
@@ -185,7 +173,7 @@ const LinksToItem = (props) => {
         </Portal>
       )}
     </Container>
-  ) : null;
+  );
 };
 
 export default LinksToItem;

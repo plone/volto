@@ -19,51 +19,41 @@ describe('LinksToItem', () => {
     const store = mockStore({
       relations: {
         subrequests: {
-          '/page-1/links-to-item': {
-            loading: false,
-            loaded: true,
-            error: null,
+          '/page-1': {
             relations: {
-              '@id':
-                'http://localhost:3000/VirtualHostBase/http/localhost:3000/Plone/++api++/VirtualHostRoot/@relations?target=d4cf2f07ea844d5ea58b98a66ab30e3b',
-              items: {
-                isReferencing: [
+              isReferencing: {
+                items: [
                   {
                     source: {
                       '@id': 'http://localhost:3000/page-2-linking-to-page-1',
                       '@type': 'Document',
-                      UID: '46550d2ad6564938a7cdbaabd6fd24a8',
+                      UID: 'SOMEUID008',
                       description: '',
                       review_state: 'private',
                       title: 'page #2 linking to page #1',
+                      type_title: 'Document',
                     },
                     target: {
                       '@id': 'http://localhost:3000/page-1',
                       '@type': 'Document',
-                      UID: 'd4cf2f07ea844d5ea58b98a66ab30e3b',
+                      UID: 'SOMEUID007',
                       description: '',
                       review_state: 'private',
                       title: 'page #1',
+                      type_title: 'Document',
                     },
                   },
                 ],
-              },
-              items_total: {
-                isReferencing: 1,
+                items_total: 1,
               },
             },
-            stats: null,
           },
         },
       },
       content: {
-        subrequests: {
-          '/page-1/links-to-item': {
-            data: {
-              UID: 'd4cf2f07ea844d5ea58b98a66ab30e3b',
-              title: 'page #1',
-            },
-          },
+        data: {
+          UID: 'SOMEUID007',
+          title: 'page #1',
         },
       },
       intl: {

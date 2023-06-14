@@ -3,13 +3,10 @@
  * @module reducers/relations/relations
  */
 
-import { omit } from 'lodash';
-
 import {
   CREATE_RELATIONS,
   DELETE_RELATIONS,
   LIST_RELATIONS,
-  RESET_RELATIONS,
   REBUILD_RELATIONS,
 } from '@plone/volto/constants/ActionTypes';
 
@@ -170,20 +167,6 @@ export default function relations(state = initialState, action = {}) {
           error: action.error,
         },
       };
-    case RESET_RELATIONS:
-      return action.subrequest
-        ? {
-            ...state,
-            subrequests: omit(state.subrequests, action.subrequest),
-          }
-        : {
-            ...state,
-            get: {
-              loaded: false,
-            },
-            data: null,
-            relations: null,
-          };
     default:
       return state;
   }

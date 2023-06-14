@@ -3,7 +3,7 @@
 exports[`LinksToItem renders links to item view 1`] = `
 <div
   className="ui container"
-  id="linktoitem"
+  id="linkstoitem"
 >
   <div
     className="ui raised segments"
@@ -11,20 +11,15 @@ exports[`LinksToItem renders links to item view 1`] = `
     <div
       className="ui segment primary"
     >
-      Links to 
+      Content that links to or references 
       <q>
         page #1
       </q>
     </div>
-    <div
-      className="ui secondary segment"
-    >
-      Whenever this item is being referenced from some different item by a hyperlink, block or similar, it appears here in this list.
-    </div>
     <table
       className="ui selectable single line attached compact table"
     >
-      <thead
+      <tbody
         className=""
       >
         <tr
@@ -33,18 +28,19 @@ exports[`LinksToItem renders links to item view 1`] = `
           <th
             className=""
           >
-            Linked by this item
+            Linking this item with hyperlink in text
           </th>
           <th
             className=""
           >
             Review state
           </th>
+          <th
+            className=""
+          >
+            Type
+          </th>
         </tr>
-      </thead>
-      <tbody
-        className=""
-      >
         <tr
           className=""
         >
@@ -52,7 +48,7 @@ exports[`LinksToItem renders links to item view 1`] = `
             className=""
           >
             <a
-              className="not-published"
+              className="source private"
               href="http://localhost:3000/page-2-linking-to-page-1"
               rel="noopener noreferrer"
               target="_blank"
@@ -60,6 +56,7 @@ exports[`LinksToItem renders links to item view 1`] = `
             >
               <span
                 className="label"
+                title="Document"
               >
                 page #2 linking to page #1
               </span>
@@ -70,6 +67,13 @@ exports[`LinksToItem renders links to item view 1`] = `
           >
             <span>
               private
+            </span>
+          </td>
+          <td
+            className=""
+          >
+            <span>
+              Document
             </span>
           </td>
         </tr>
