@@ -139,6 +139,7 @@ class RenderUsers extends Component {
             <Dropdown.Menu className="left">
               {this.props.userschema && (
                 <Dropdown.Item
+                  id="edit-user-button"
                   onClick={() => {
                     this.onClickEdit({ formData: this.props.user });
                   }}
@@ -149,6 +150,7 @@ class RenderUsers extends Component {
                 </Dropdown.Item>
               )}
               <Dropdown.Item
+                id="delete-user-button"
                 onClick={this.props.onDelete}
                 value={this.props.user['@id']}
               >
