@@ -263,7 +263,7 @@ class Form extends Component {
     ) {
       this.props.onChangeFormData(this.state.formData);
     }
-
+    // on each update it will save the form to the localStorage
     if (prevProps.schema) this.props.onSaveDraft(this.state.formData);
   }
 
@@ -309,6 +309,9 @@ class Form extends Component {
     }
   }
 
+  // !! componentDidMount is called twice for ADD
+  // setState is not synch there for it will use the oldFormData
+  // obtained on the second call => should not delete on check for mount to not lose data
   /**
    * Component did mount
    * @method componentDidMount
@@ -319,7 +322,9 @@ class Form extends Component {
 
     // schema already exists in redux store
     if (this.props.schema) {
-      const oldFormData = this.props.checkSavedDraft(this.state.formData);
+      const oldFormData = this.props.checkSavedDraftMounted(
+        this.state.formData,
+      );
 
       if (oldFormData) {
         this.setState((state) => ({

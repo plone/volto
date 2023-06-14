@@ -16,30 +16,75 @@ const mapSchemaToData = (schema, data) => {
   );
 };
 
+let shoudRewrite = undefined;
+
 const getFormId = (props) => {
   const { type, pathname, isEditForm } = props;
-
   const id = isEditForm
     ? ['form', type, pathname].join('-')
     : type
-    ? ['form', 'add', type].join('-')
+    ? ['form', pathname, type].join('-')
     : ['form', pathname].join('-');
 
   return id;
 };
 
-const draftApi = (id, schema, timer) => ({
+const draftApi = (id, schema, timer, timerForDeletion) => ({
+  // will be used on componentDidUpdate
+  // on each update including refresh
   checkSavedDraft(state) {
     if (!schema) return;
     const saved = localStorage.getItem(id);
     if (saved) {
       const formData = mapSchemaToData(schema, state);
       const savedData = JSON.parse(saved);
+
+      if (!isEqual(formData, savedData)) {
+        if (shoudRewrite === undefined) {
+          shoudRewrite = window.confirm('Autosave found, load it?');
+        }
+
+        return shoudRewrite ? savedData : null;
+      }
+    }
+  },
+
+  // will be used for componentDidMount
+  // but not on refresh because then it will not have schema
+  // will delete localStorage data if user selects cancel
+  // for Add componentDidMount will call it twice, use let shoudRewrite
+  // because it's sync and will not show confirm again (useRef is async)
+  // Delete data only if user confirms Cancel, because otherwise it will be added
+  // on each update anyway, but can create problems on checks on successive updates
+  checkSavedDraftMounted(state) {
+    if (!schema) return;
+    const saved = localStorage.getItem(id);
+
+    if (saved) {
+      const formData = mapSchemaToData(schema, state);
+      const savedData = JSON.parse(saved);
+
       if (!isEqual(formData, savedData)) {
         // eslint-disable-next-line no-alert
-        const rewrite = window.confirm('Autosave found, load it?');
-        localStorage.removeItem(id);
-        return rewrite ? savedData : null;
+        if (shoudRewrite === undefined) {
+          shoudRewrite = window.confirm('Autosave found, load it?');
+        }
+        // change back to undefined to avoid consecutive call
+        // (Add) and to be able to show it on refresh
+        setTimeout(() => {
+          shoudRewrite = undefined;
+        }, 500);
+
+        if (shoudRewrite) {
+          return savedData;
+        } else {
+          timerForDeletion.current && clearTimeout(timerForDeletion.current);
+          timerForDeletion.current = setTimeout(() => {
+            localStorage.removeItem(id);
+            shoudRewrite = undefined;
+          }, 500);
+          return null;
+        }
       }
     }
   },
@@ -67,7 +112,11 @@ export function withSaveAsDraft(options) {
       const { schema } = props;
       const id = getFormId(props);
       const ref = React.useRef();
-      const api = React.useMemo(() => draftApi(id, schema, ref), [id, schema]);
+      const ref2 = React.useRef();
+      const api = React.useMemo(() => draftApi(id, schema, ref, ref2), [
+        id,
+        schema,
+      ]);
 
       return (
         <WrappedComponent
