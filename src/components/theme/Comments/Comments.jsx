@@ -7,15 +7,14 @@ import {
 import { Avatar, CommentEditModal, Form } from '@plone/volto/components';
 import { flattenToAppURL, getBaseUrl, getColor } from '@plone/volto/helpers';
 import PropTypes from 'prop-types';
-import React, {  useEffect, useState,useMemo, useCallback } from 'react';
+import React, { useEffect, useState, useMemo, useCallback } from 'react';
 import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
 import { Portal } from 'react-portal';
-import {  useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { compose } from 'redux';
 import { Button, Comment, Container, Icon } from 'semantic-ui-react';
 import { useComments } from '@plone/volto/hooks/comments/useComments';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
-
 
 const messages = defineMessages({
   comment: {
@@ -80,83 +79,86 @@ const makeFormSchema = (intl) => ({
   required: ['comment1'],
 });
 
+const Comments = (props) => {
+  const intl = useIntl();
+  const dispatch = useDispatch();
 
-const Comments =(props)=> {
+  const [showEdit, setshowEdit] = useState(false);
+  const [editId, seteditId] = useState(null);
+  const [editText, seteditText] = useState(null);
+  const [replyTo, setreplyTo] = useState(null);
+  const [collapsedComments, setcollapsedComments] = useState({});
+  const {
+    items,
+    next,
+    items_total,
+    permissions,
+    addRequest,
+    deleteRequest,
+  } = useComments();
 
-const intl=useIntl();
-const dispatch=useDispatch();
-
-  const [showEdit,setshowEdit]=useState(false);
-  const [editId,seteditId]=useState(null);
-  const [editText,seteditText]=useState(null);
-  const [replyTo,setreplyTo]=useState(null);
-  const [collapsedComments,setcollapsedComments]=useState({});
-  const {items,next,items_total,permissions,addRequest,deleteRequest}=useComments();
-
-  useEffect(()=>{
+  useEffect(() => {
     dispatch(listComments(getBaseUrl(props.pathname)));
-  },[dispatch,props.pathname,addRequest.loading,addRequest.loaded,deleteRequest.loading,deleteRequest.loaded]);
+  }, [
+    dispatch,
+    props.pathname,
+    addRequest.loading,
+    addRequest.loaded,
+    deleteRequest.loading,
+    deleteRequest.loaded,
+  ]);
 
-
-
-const onSubmit=(formData)=> {
-    dispatch(addComment(
-      getBaseUrl(props.pathname),
-      formData.comment,
-      replyTo,
-    ));
+  const onSubmit = (formData) => {
+    dispatch(addComment(getBaseUrl(props.pathname), formData.comment, replyTo));
     setreplyTo(null);
-  }
-
-
- const setReplyTo=(commentId)=> {
-  setreplyTo(commentId);
-  }
-
-
- const loadMoreComments=()=> {
-    dispatch(listMoreComments(next));
-  }
-
-
-  const onDelete=(value)=> {
-    dispatch(deleteComment(value));
-  }
-
-const  hideReply=useCallback((commentId)=> {
-setcollapsedComments((prevState)=>{
-  const hasComment = prevState.collapsedComments[commentId];
-  const { collapsedComments } = prevState;
-  return {
-    collapsedComments: {
-      ...collapsedComments,
-      [commentId]: !hasComment,
-    },
   };
-})
-},[collapsedComments]);
 
-const onEdit=useCallback((value)=> {
-  setshowEdit(true);
-  seteditText(value.text);
-  seteditId(value.id);
-  },[]);
+  const setReplyTo = (commentId) => {
+    setreplyTo(commentId);
+  };
 
-const onEditOk=useCallback(()=> {
-  setshowEdit(false);
-  seteditId(null);
-  seteditText(null);
-  dispatch(listComments(getBaseUrl(props.pathname)));
-  },[]);
+  const loadMoreComments = () => {
+    dispatch(listMoreComments(next));
+  };
 
-const onEditCancel=useCallback(()=> {
-  setshowEdit(false);
-  seteditId(null);
-  seteditText(null);
-  setreplyTo(null);
-  },[]);
+  const onDelete = (value) => {
+    dispatch(deleteComment(value));
+  };
 
- const addRepliesAsChildrenToComments=(items)=> {
+  const hideReply = (commentId) => {
+    setcollapsedComments((prevState) => {
+      const hasComment = prevState.collapsedComments[commentId];
+      const { collapsedComments } = prevState;
+      return {
+        collapsedComments: {
+          ...collapsedComments,
+          [commentId]: !hasComment,
+        },
+      };
+    });
+  };
+
+  const onEdit = useCallback((value) => {
+    setshowEdit(true);
+    seteditText(value.text);
+    seteditId(value.id);
+  }, []);
+
+  const onEditOk = () => {
+    setshowEdit(false);
+    seteditId(null);
+    seteditText(null);
+    dispatch(listComments(getBaseUrl(props.pathname)));
+  };
+
+  const onEditCancel = useCallback(() => {
+    setshowEdit(false);
+    seteditId(null);
+    seteditText(null);
+    setreplyTo(null);
+  }, []);
+
+  const addRepliesAsChildrenToComments = (items) => {
     let initialValue = {};
     const allCommentsWithCildren = items.reduce((accumulator, item) => {
       return {
@@ -171,186 +173,179 @@ const onEditCancel=useCallback(()=> {
       }
     });
     return allCommentsWithCildren;
-  }
+  };
 
+  const moment = props.moment.default;
 
-  
-    const moment = props.moment.default;
+  const allCommentsWithCildren = useMemo(
+    () => addRepliesAsChildrenToComments(items),
+    [items],
+  );
+  // all comments that are not a reply will be shown in the first iteration
+  const allPrimaryComments = items.filter((comment) => !comment.in_reply_to);
 
-    const allCommentsWithCildren = useMemo(()=>addRepliesAsChildrenToComments(items),[[items]]);
-    // all comments that are not a reply will be shown in the first iteration
-    const allPrimaryComments = items.filter((comment) => !comment.in_reply_to);
-
-    // recursively makes comments with their replies nested
-    // each iteration will show replies to the specific comment using allCommentsWithCildren
-    const commentElement = (comment) => (
-      <Comment key={comment.comment_id}>
-        <Avatar
-          src={flattenToAppURL(comment.author_image)}
-          title={comment.author_name || 'Anonymous'}
-          color={getColor(comment.author_username)}
-        />
-        <Comment.Content>
-          <Comment.Author>{comment.author_name}</Comment.Author>
-          <Comment.Metadata>
-            <span>
-              {' '}
-              <span title={moment(comment.creation_date).format('LLLL')}>
-                {moment(comment.creation_date).fromNow()}
-              </span>
-            </span>
-          </Comment.Metadata>
-          <Comment.Text>
+  // recursively makes comments with their replies nested
+  // each iteration will show replies to the specific comment using allCommentsWithCildren
+  const commentElement = (comment) => (
+    <Comment key={comment.comment_id}>
+      <Avatar
+        src={flattenToAppURL(comment.author_image)}
+        title={comment.author_name || 'Anonymous'}
+        color={getColor(comment.author_username)}
+      />
+      <Comment.Content>
+        <Comment.Author>{comment.author_name}</Comment.Author>
+        <Comment.Metadata>
+          <span>
             {' '}
-            {comment.text['mime-type'] === 'text/html' ? (
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: comment.text.data,
-                }}
-              />
-            ) : (
-              comment.text.data
-            )}
-          </Comment.Text>
-          <Comment.Actions>
-            {comment.can_reply && (
-              <Comment.Action
-                as="a"
-                aria-label={intl.formatMessage(messages.reply)}
-                onClick={() => setReplyTo(comment.comment_id)}
-              >
-                <FormattedMessage id="Reply" defaultMessage="Reply" />
-              </Comment.Action>
-            )}
-            {comment.is_editable && (
-              <Comment.Action
-                onClick={() =>
-                  onEdit({
-                    id: flattenToAppURL(comment['@id']),
-                    text: comment.text.data,
-                  })
-                }
-                aria-label={intl.formatMessage(messages.edit)}
-                value={{
-                  id: flattenToAppURL(comment['@id']),
-                  text: comment.text.data,
-                }}
-              >
-                <FormattedMessage id="Edit" defaultMessage="Edit" />
-              </Comment.Action>
-            )}
-            {comment.is_deletable && (
-              <Comment.Action
-                aria-label={intl.formatMessage(messages.delete)}
-                onClick={() => onDelete(flattenToAppURL(comment['@id']))}
-                color="red"
-              >
-                <Icon name="delete" color="red" />
-                <FormattedMessage
-                  id="Delete"
-                  defaultMessage="Delete"
-                  color="red"
-                />
-              </Comment.Action>
-            )}
+            <span title={moment(comment.creation_date).format('LLLL')}>
+              {moment(comment.creation_date).fromNow()}
+            </span>
+          </span>
+        </Comment.Metadata>
+        <Comment.Text>
+          {' '}
+          {comment.text['mime-type'] === 'text/html' ? (
+            <div
+              dangerouslySetInnerHTML={{
+                __html: comment.text.data,
+              }}
+            />
+          ) : (
+            comment.text.data
+          )}
+        </Comment.Text>
+        <Comment.Actions>
+          {comment.can_reply && (
             <Comment.Action
               as="a"
-              onClick={() => hideReply(comment.comment_id)}
+              aria-label={intl.formatMessage(messages.reply)}
+              onClick={() => setReplyTo(comment.comment_id)}
             >
-              {allCommentsWithCildren[comment.comment_id].children.length >
-              0 ? (
-                collapsedComments[comment.comment_id] ? (
-                  <>
-                    <Icon name="eye" color="blue" />
-                    <FormattedMessage
-                      id="Show Replies"
-                      defaultMessage="Show Replies"
-                    />
-                  </>
-                ) : (
-                  <>
-                    <Icon name="minus" color="blue" />
-                    <FormattedMessage
-                      id="Hide Replies"
-                      defaultMessage="Hide Replies"
-                    />
-                  </>
-                )
-              ) : null}
+              <FormattedMessage id="Reply" defaultMessage="Reply" />
             </Comment.Action>
-          </Comment.Actions>
-          <div id={`reply-place-${comment.comment_id}`}></div>
-        </Comment.Content>
+          )}
+          {comment.is_editable && (
+            <Comment.Action
+              onClick={() =>
+                onEdit({
+                  id: flattenToAppURL(comment['@id']),
+                  text: comment.text.data,
+                })
+              }
+              aria-label={intl.formatMessage(messages.edit)}
+              value={{
+                id: flattenToAppURL(comment['@id']),
+                text: comment.text.data,
+              }}
+            >
+              <FormattedMessage id="Edit" defaultMessage="Edit" />
+            </Comment.Action>
+          )}
+          {comment.is_deletable && (
+            <Comment.Action
+              aria-label={intl.formatMessage(messages.delete)}
+              onClick={() => onDelete(flattenToAppURL(comment['@id']))}
+              color="red"
+            >
+              <Icon name="delete" color="red" />
+              <FormattedMessage
+                id="Delete"
+                defaultMessage="Delete"
+                color="red"
+              />
+            </Comment.Action>
+          )}
+          <Comment.Action as="a" onClick={() => hideReply(comment.comment_id)}>
+            {allCommentsWithCildren[comment.comment_id].children.length > 0 ? (
+              collapsedComments[comment.comment_id] ? (
+                <>
+                  <Icon name="eye" color="blue" />
+                  <FormattedMessage
+                    id="Show Replies"
+                    defaultMessage="Show Replies"
+                  />
+                </>
+              ) : (
+                <>
+                  <Icon name="minus" color="blue" />
+                  <FormattedMessage
+                    id="Hide Replies"
+                    defaultMessage="Hide Replies"
+                  />
+                </>
+              )
+            ) : null}
+          </Comment.Action>
+        </Comment.Actions>
+        <div id={`reply-place-${comment.comment_id}`}></div>
+      </Comment.Content>
 
-        {allCommentsWithCildren[comment.comment_id].children.length > 0
-          ? allCommentsWithCildren[comment.comment_id].children.map(
-              (child, index) => (
-                <Comment.Group
-                  collapsed={collapsedComments[comment.comment_id]}
-                  key={`group-${index}-${comment.comment_id}`}
-                >
-                  {commentElement(child)}
-                </Comment.Group>
-              ),
-            )
-          : null}
-      </Comment>
-    );
+      {allCommentsWithCildren[comment.comment_id].children.length > 0
+        ? allCommentsWithCildren[comment.comment_id].children.map(
+            (child, index) => (
+              <Comment.Group
+                collapsed={collapsedComments[comment.comment_id]}
+                key={`group-${index}-${comment.comment_id}`}
+              >
+                {commentElement(child)}
+              </Comment.Group>
+            ),
+          )
+        : null}
+    </Comment>
+  );
 
-    if (!permissions.view_comments) return '';
+  if (!permissions.view_comments) return '';
 
-    return (
-      <Container className="comments">
-        <CommentEditModal
-          open={showEdit}
-          onCancel={onEditCancel}
-          onOk={onEditOk}
-          id={editId}
-          text={editText}
-        />
-        {permissions.can_reply && (
-          <div id="comment-add-id">
-            <Form
-              onSubmit={onSubmit}
-              onCancel={onEditCancel}
-              submitLabel={intl.formatMessage(messages.comment)}
-              resetAfterSubmit
-              schema={makeFormSchema(intl)}
-            />
-          </div>
-        )}
-        {/* all comments  */}
-        <Comment.Group threaded>
-          {allPrimaryComments.map((item) => commentElement(item))}
-        </Comment.Group>
+  return (
+    <Container className="comments">
+      <CommentEditModal
+        open={showEdit}
+        onCancel={onEditCancel}
+        onOk={onEditOk}
+        id={editId}
+        text={editText}
+      />
+      {permissions.can_reply && (
+        <div id="comment-add-id">
+          <Form
+            onSubmit={onSubmit}
+            onCancel={onEditCancel}
+            submitLabel={intl.formatMessage(messages.comment)}
+            resetAfterSubmit
+            schema={makeFormSchema(intl)}
+          />
+        </div>
+      )}
+      {/* all comments  */}
+      <Comment.Group threaded>
+        {allPrimaryComments.map((item) => commentElement(item))}
+      </Comment.Group>
 
-        {/* load more button */}
-        {items_total > items.length && (
-          <Button fluid basic color="blue" onClick={loadMoreComments}>
-            <FormattedMessage id="Load more" defaultMessage="Load more..." />
-          </Button>
-        )}
+      {/* load more button */}
+      {items_total > items.length && (
+        <Button fluid basic color="blue" onClick={loadMoreComments}>
+          <FormattedMessage id="Load more" defaultMessage="Load more..." />
+        </Button>
+      )}
 
-        {replyTo && (
-          <Portal
-            node={
-              document &&
-              document.getElementById(`reply-place-${replyTo}`)
-            }
-          >
-            <Form
-              onSubmit={onSubmit}
-              onCancel={onEditCancel}
-              submitLabel={intl.formatMessage(messages.comment)}
-              resetAfterSubmit
-              schema={makeFormSchema(intl)}
-            />
-          </Portal>
-        )}
-      </Container>
-    );
-  }
-
+      {replyTo && (
+        <Portal
+          node={document && document.getElementById(`reply-place-${replyTo}`)}
+        >
+          <Form
+            onSubmit={onSubmit}
+            onCancel={onEditCancel}
+            submitLabel={intl.formatMessage(messages.comment)}
+            resetAfterSubmit
+            schema={makeFormSchema(intl)}
+          />
+        </Portal>
+      )}
+    </Container>
+  );
+};
 
 Comments.propTypes = {
   addComment: PropTypes.func.isRequired,
@@ -380,6 +375,4 @@ Comments.propTypes = {
   }).isRequired,
 };
 
-export default compose(
-  injectLazyLibs(['moment']),
-)(Comments);
+export default compose(injectLazyLibs(['moment']))(Comments);
