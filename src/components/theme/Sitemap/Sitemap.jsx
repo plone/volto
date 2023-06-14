@@ -1,20 +1,17 @@
-/**
- * Login container.
- * @module components/theme/Sitemap/Sitemap
- */
-
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { asyncConnect } from '@plone/volto/helpers';
-import { defineMessages, injectIntl } from 'react-intl';
+import { defineMessages, useIntl } from 'react-intl';
 import { Container } from 'semantic-ui-react';
 import { Helmet, toBackendLang } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
 import config from '@plone/volto/registry';
 
 import { getNavigation } from '@plone/volto/actions';
+import { useIntls } from '@plone/volto/hooks/intl/useIntls';
+import { useNavigation } from '@plone/volto/hooks/navigation/useNavigation';
 
 const messages = defineMessages({
   Sitemap: {
@@ -22,35 +19,22 @@ const messages = defineMessages({
     defaultMessage: 'Sitemap',
   },
 });
-/**
- * Sitemap class.
- * @class Sitemap
- * @extends Component
- */
-class Sitemap extends Component {
-  /**
-   * Property types.
-   * @property {Object} propTypes Property types.
-   * @static
-   */
-  static propTypes = {
-    getNavigation: PropTypes.func.isRequired,
-  };
 
-  componentDidMount() {
-    const { settings } = config;
-    if (settings.isMultilingual) {
-      this.props.getNavigation(`${toBackendLang(this.props.lang)}`, 4);
-    } else {
-      this.props.getNavigation('', 4);
-    }
+const Sitemap =()=> {
+ 
+  const dispatch=useDispatch();
+  const intl=useIntl();
+  const lang=useIntls();
+  const items=useNavigation();
+ useEffect(()=>{
+  const { settings } = config;
+  if (settings.isMultilingual) {
+    dispatch(getNavigation(`${toBackendLang(lang)}`, 4));
+  } else {
+    dispatch(getNavigation('', 4));
   }
+ })
 
-  /**
-   * Render method.
-   * @method render
-   * @returns {string} Markup for the component.
-   */
 
   renderItems = (items) => {
     return (
@@ -61,46 +45,32 @@ class Sitemap extends Component {
             className={item.items?.length > 0 ? 'with-children' : ''}
           >
             <Link to={item.url}>{item.title}</Link>
-            {item.items && this.renderItems(item.items)}
+            {item.items && renderItems(item.items)}
           </li>
         ))}
       </ul>
     );
   };
-  render() {
-    const { items } = this.props;
+
+
     return (
       <div id="page-sitemap">
-        <Helmet title={this.props.intl.formatMessage(messages.Sitemap)} />
+        <Helmet title={intl.formatMessage(messages.Sitemap)} />
         <Container className="view-wrapper">
-          <h1>{this.props.intl.formatMessage(messages.Sitemap)} </h1>
-          {items && this.renderItems(items)}
+          <h1>{intl.formatMessage(messages.Sitemap)} </h1>
+          {items && renderItems(items)}
         </Container>
       </div>
     );
   }
-}
 
-export const __test__ = compose(
-  injectIntl,
-  connect(
-    (state) => ({
-      items: state.navigation.items,
-      lang: state.intl.locale,
-    }),
-    { getNavigation },
-  ),
-)(Sitemap);
+Sitemap.propTypes = {
+  getNavigation: PropTypes.func.isRequired,
+};
+
+export const __test__ = Sitemap;
 
 export default compose(
-  injectIntl,
-  connect(
-    (state) => ({
-      items: state.navigation.items,
-      lang: state.intl.locale,
-    }),
-    { getNavigation },
-  ),
   asyncConnect([
     {
       key: 'navigation',
