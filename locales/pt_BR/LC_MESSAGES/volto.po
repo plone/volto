@@ -784,7 +784,7 @@ msgid "Copy"
 msgstr "Copiar"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: undefined
+# defaultMessage: Copy blocks
 msgid "Copy blocks"
 msgstr "Copiar blocos"
 
@@ -857,7 +857,7 @@ msgid "Cut"
 msgstr "Cortar"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: undefined
+# defaultMessage: Cut blocks
 msgid "Cut blocks"
 msgstr "Recortar blocos"
 
@@ -964,7 +964,7 @@ msgid "Delete action"
 msgstr "Remover ação"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: undefined
+# defaultMessage: Delete blocks
 msgid "Delete blocks"
 msgstr "Excluir blocos"
 
@@ -1131,6 +1131,7 @@ msgstr "Os endereços de e-mail não coincidem."
 #: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Controlpanels/Rules/EditRule
+#: components/manage/Controlpanels/Users/RenderUsers
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/FormFieldWrapper
 #: components/manage/Widgets/ObjectBrowserWidget
@@ -2435,7 +2436,7 @@ msgid "Paste"
 msgstr "Colar"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: undefined
+# defaultMessage: Paste blocks
 msgid "Paste blocks"
 msgstr "Colar blocos"
 
@@ -3942,7 +3943,7 @@ msgid "User roles updated"
 msgstr "Papéis do grupo atualizados"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: undefined
+# defaultMessage: User updated successfuly
 msgid "User updated successfuly"
 msgstr ""
 

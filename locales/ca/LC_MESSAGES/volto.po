@@ -783,7 +783,7 @@ msgid "Copy"
 msgstr "Copia"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: undefined
+# defaultMessage: Copy blocks
 msgid "Copy blocks"
 msgstr "Copiar blocks"
 
@@ -856,7 +856,7 @@ msgid "Cut"
 msgstr "Talla"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: undefined
+# defaultMessage: Cut blocks
 msgid "Cut blocks"
 msgstr "Talla bloc"
 
@@ -963,7 +963,7 @@ msgid "Delete action"
 msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: undefined
+# defaultMessage: Delete blocks
 msgid "Delete blocks"
 msgstr "Esborra blocs"
 
@@ -1130,6 +1130,7 @@ msgstr "Les adreces de correu electrònic no coincideixen."
 #: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Controlpanels/Rules/EditRule
+#: components/manage/Controlpanels/Users/RenderUsers
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/FormFieldWrapper
 #: components/manage/Widgets/ObjectBrowserWidget
@@ -2434,7 +2435,7 @@ msgid "Paste"
 msgstr "Enganxar"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: undefined
+# defaultMessage: Paste blocks
 msgid "Paste blocks"
 msgstr "Enganxa blocs"
 
@@ -3941,7 +3942,7 @@ msgid "User roles updated"
 msgstr "Rols d'usuari actualitzats"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: undefined
+# defaultMessage: User updated successfuly
 msgid "User updated successfuly"
 msgstr ""
 

@@ -192,7 +192,7 @@ export const messages = defineMessages({
   },
   updateUserSuccess: {
     id: 'User updated successfuly',
-    defaultMesage: 'User updated successfuly',
+    defaultMessage: 'User updated successfuly',
   },
   updateRoles: {
     id: 'User roles updated',
@@ -256,19 +256,19 @@ export const messages = defineMessages({
   },
   copyBlocks: {
     id: 'Copy blocks',
-    defaultMesages: 'Copy blocks',
+    defaultMessage: 'Copy blocks',
   },
   cutBlocks: {
     id: 'Cut blocks',
-    defaultMesages: 'Cut blocks',
+    defaultMessage: 'Cut blocks',
   },
   pasteBlocks: {
     id: 'Paste blocks',
-    defaultMesages: 'Paste blocks',
+    defaultMessage: 'Paste blocks',
   },
   deleteBlocks: {
     id: 'Delete blocks',
-    defaultMesages: 'Delete blocks',
+    defaultMessage: 'Delete blocks',
   },
   showAllUserButton: {
     id: 'Show All',
@@ -284,7 +284,7 @@ export const messages = defineMessages({
   },
   edit: {
     id: 'Edit',
-    defaultMesage: 'Edit',
+    defaultMessage: 'Edit',
   },
   inspectRelations: {
     id: 'Inspect relations',
