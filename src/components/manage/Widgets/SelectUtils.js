@@ -54,7 +54,7 @@ export function normalizeSingleSelectOption(value, intl) {
     throw new Error(`Unknown value type of select widget: ${value}`);
   }
 
-  const token = value.token ?? value.value ?? 'no-value';
+  const token = value.token ?? value.value ?? value.UID ?? 'no-value';
   const label =
     (value.title && value.title !== 'None' ? value.title : undefined) ??
     value.label ??
