@@ -16,6 +16,9 @@ const mapSchemaToData = (schema, data) => {
   );
 };
 
+// use let instead of useRef beause it's faster
+// useRef is a synchronous hook, in case of concomitant calls 
+// it can be a problem if we need to change the value, it will show old one
 let shoudRewrite = undefined;
 
 const getFormId = (props) => {
