@@ -53,7 +53,7 @@ const ContentMetadataTags = (props) => {
 
     const navRootTitle = props.content['@components']?.navroot?.navroot?.title;
     const siteRootTitle =
-      props.content['@components']?.site?.['plone.site_logo'];
+      props.content['@components']?.site?.['plone.site_title'];
     const titlePart = navRootTitle || siteRootTitle;
 
     if (includeSiteTitle && titlePart && titlePart !== title) {
