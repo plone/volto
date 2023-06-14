@@ -182,6 +182,10 @@ let config = {
     styleClassNameExtenders,
     querystringSearchGet: false,
     blockSettingsTabFieldsetsInitialStateOpen: true,
+    siteTitleFormat: {
+      includeSiteTitle: false,
+      titleAndSiteTitleSeparator: '-',
+    },
   },
   experimental: {
     addBlockButton: {

@@ -45,16 +45,28 @@ const ContentMetadataTags = (props) => {
 
   const contentImageInfo = getContentImageInfo();
 
-  let title_tag_content = seo_title || title;
-  let nav_root_title = props.content['@components']?.navroot?.navroot?.title;
-  title_tag_content =
-    (nav_root_title === title_tag_content && title_tag_content) ||
-    title_tag_content + ' — ' + nav_root_title;
-  title_tag_content = title_tag_content.replace(/\u00AD/g, '');
+  const getTitle = () => {
+    const includeSiteTitle =
+      config?.settings?.siteTitleFormat?.includeSiteTitle || false;
+    const titleAndSiteTitleSeparator =
+      config?.settings?.titleAndSiteTitleSeparator || '-';
+
+    const navRootTitle = props.content['@components']?.navroot?.navroot?.title;
+    const siteRootTitle =
+      props.content['@components']?.site?.['plone.site_logo'];
+    const titlePart = navRootTitle || siteRootTitle;
+
+    if (includeSiteTitle && titlePart && titlePart !== title) {
+      return seo_title || `${title} ${titleAndSiteTitleSeparator} ${titlePart}`;
+    } else {
+      return seo_title || title;
+    }
+  };
+
   return (
     <>
       <Helmet>
-        <title>{title_tag_content}</title>
+        <title>{getTitle()?.replace(/\u00AD/g, '')}</title>
         <meta name="description" content={seo_description || description} />
         <meta
           property="og:title"
