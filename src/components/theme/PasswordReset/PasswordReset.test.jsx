@@ -5,7 +5,6 @@ import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
 
 import PasswordReset from './PasswordReset';
-import { set } from 'lodash';
 
 const mockStore = configureStore();
 let setInitialPassword = jest.fn();
