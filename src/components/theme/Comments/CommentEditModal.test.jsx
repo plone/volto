@@ -6,7 +6,7 @@ import { Provider } from 'react-intl-redux';
 import CommentEditModal from './CommentEditModal';
 
 const mockStore = configureStore();
-let updateComment=jest.fn();
+let updateComment = jest.fn();
 jest.mock('../../manage/Form/ModalForm', () =>
   jest.fn(() => <div id="modalform" />),
 );
@@ -29,8 +29,7 @@ describe('CommentEditModal', () => {
       <Provider store={store}>
         <CommentEditModal
           updateComment={updateComment}
-          request={{loaded:true,
-          loading:false}}
+          request={{ loaded: true, loading: false }}
           open
           onOk={() => {}}
           onCancel={() => {}}
