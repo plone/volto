@@ -14,7 +14,7 @@ import { Portal } from 'react-portal';
 import {
   Button,
   Checkbox,
-  Container,
+  Container as SemanticContainer,
   Form,
   Icon as IconOld,
   Input,
@@ -28,6 +28,7 @@ import { updateSharing, getSharing } from '@plone/volto/actions';
 import { getBaseUrl } from '@plone/volto/helpers';
 import { Icon, Toolbar, Toast } from '@plone/volto/components';
 import { toast } from 'react-toastify';
+import config from '@plone/volto/registry';
 
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -288,6 +289,9 @@ class SharingComponent extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const Container =
+      config.getComponent({ name: 'Container' }).component || SemanticContainer;
+
     return (
       <Container id="page-sharing">
         <Helmet title={this.props.intl.formatMessage(messages.sharing)} />
