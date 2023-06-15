@@ -7,7 +7,7 @@ import { MemoryRouter } from 'react-router-dom';
 import SearchTags from './SearchTags';
 
 const mockStore = configureStore();
-
+let getVocabulary = jest.fn();
 describe('SearchTags', () => {
   it('renders a search tags component', () => {
     const store = mockStore({
@@ -20,7 +20,10 @@ describe('SearchTags', () => {
     const component = renderer.create(
       <Provider store={store}>
         <MemoryRouter>
-          <SearchTags />
+          <SearchTags
+            getVocabulary={getVocabulary}
+            items={[{ label: 'Tag 1' }, { label: 'Tag 2' }]}
+          />
         </MemoryRouter>
       </Provider>,
     );
