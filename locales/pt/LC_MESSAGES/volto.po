@@ -1,6 +1,6 @@
 # Translators:
 # Emanuel de Jesus <emanuel.angelo@gmail.com>, 2019
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
@@ -4154,6 +4154,16 @@ msgstr ""
 #: components/theme/EventDetails/EventDetails
 # defaultMessage: Where
 msgid "event_where"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: This website does not accept files larger than {limit}
+msgid "fileTooLarge"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: flush intIds and rebuild relations
+msgid "flush intIds and rebuild relations"
 msgstr ""
 
 #: components/manage/Blocks/Teaser/schema
