@@ -8,7 +8,7 @@ import config from '@plone/volto/registry';
 import Navigation from './Navigation';
 
 const mockStore = configureStore();
-
+let getNavigation = jest.fn();
 beforeAll(() => {
   config.settings.nonContentRoutes = [];
   config.settings.navDepth = 1;
@@ -32,7 +32,15 @@ describe('Navigation', () => {
     const component = renderer.create(
       <Provider store={store}>
         <MemoryRouter>
-          <Navigation pathname="/" />
+          <Navigation
+            pathname="/"
+            getNavigation={getNavigation}
+            items={[
+              { title: 'Blog', url: '/blog' },
+              { title: 'Users', url: '/users' },
+            ]}
+            lang="en"
+          />
         </MemoryRouter>
       </Provider>,
     );
@@ -57,7 +65,15 @@ describe('Navigation', () => {
     const component = renderer.create(
       <Provider store={store}>
         <MemoryRouter initialEntries={[{ pathname: '/blog' }]}>
-          <Navigation pathname="/blog" />
+          <Navigation
+            pathname="/blog"
+            getNavigation={getNavigation}
+            items={[
+              { title: 'Blog', url: '/blog' },
+              { title: 'Users', url: '/users' },
+            ]}
+            lang="en"
+          />
         </MemoryRouter>
       </Provider>,
     );
@@ -82,7 +98,15 @@ describe('Navigation', () => {
     const component = renderer.create(
       <Provider store={store}>
         <MemoryRouter initialEntries={[{ pathname: '/blog/2017/12/27' }]}>
-          <Navigation pathname="/blog/2017/12/27" />
+          <Navigation
+            pathname="/blog/2017/12/27"
+            getNavigation={getNavigation}
+            items={[
+              { title: 'Blog', url: '/blog' },
+              { title: 'Users', url: '/users' },
+            ]}
+            lang="en"
+          />
         </MemoryRouter>
       </Provider>,
     );
@@ -108,7 +132,16 @@ describe('Navigation', () => {
     const component = renderer.create(
       <Provider store={store}>
         <MemoryRouter initialEntries={[{ pathname: '/blog' }]}>
-          <Navigation pathname="/blog" />
+          <Navigation
+            pathname="/blog"
+            getNavigation={getNavigation}
+            items={[
+              { title: 'Blog', url: '/blog' },
+              { title: 'Blog of mine', url: '/blog-of-mine' },
+              { title: 'Users', url: '/users' },
+            ]}
+            lang="en"
+          />
         </MemoryRouter>
       </Provider>,
     );
@@ -134,7 +167,16 @@ describe('Navigation', () => {
     const component = renderer.create(
       <Provider store={store}>
         <MemoryRouter>
-          <Navigation pathname="/" />
+          <Navigation
+            pathname="/"
+            getNavigation={getNavigation}
+            items={[
+              { title: 'Blog', url: '/blog' },
+              { title: 'Users', url: '/users' },
+              { title: 'Store', url: 'https://store.plone.org' },
+            ]}
+            lang="en"
+          />
         </MemoryRouter>
       </Provider>,
     );
