@@ -7,7 +7,7 @@ import { MemoryRouter } from 'react-router-dom';
 import Breadcrumbs from './Breadcrumbs';
 
 const mockStore = configureStore();
-
+let getBreadcrumbs = jest.fn();
 describe('Breadcrumbs', () => {
   it('renders a breadcrumbs component', () => {
     const store = mockStore({
@@ -25,7 +25,14 @@ describe('Breadcrumbs', () => {
     const component = renderer.create(
       <Provider store={store}>
         <MemoryRouter>
-          <Breadcrumbs pathname="/blog" />
+          <Breadcrumbs
+            pathname="/blog"
+            getBreadcrumbs={getBreadcrumbs}
+            items={[
+              { title: 'Blog', url: '/blog' },
+              { title: 'My first blog', url: '/blog/my-first-blog' },
+            ]}
+          />
         </MemoryRouter>
       </Provider>,
     );

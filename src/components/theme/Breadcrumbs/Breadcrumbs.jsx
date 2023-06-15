@@ -70,15 +70,15 @@ const BreadcrumbsComponent = ({ pathname }) => {
 };
 
 BreadcrumbsComponent.propTypes = {
-  getBreadcrumbs: PropTypes.func,
-  pathname: PropTypes.string,
+  getBreadcrumbs: PropTypes.func.isRequired,
+  pathname: PropTypes.string.isRequired,
   root: PropTypes.string,
   items: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string,
       url: PropTypes.string,
     }),
-  ),
+  ).isRequired,
 };
 
 export default BreadcrumbsComponent;
