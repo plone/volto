@@ -34,12 +34,12 @@ const SearchTags = () => {
 };
 
 SearchTags.propTypes = {
-  getVocabulary: PropTypes.func,
+  getVocabulary: PropTypes.func.isRequired,
   items: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string,
     }),
-  ),
+  ).isRequired,
 };
 
 export default SearchTags;
