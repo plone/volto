@@ -6,7 +6,10 @@ import { Provider } from 'react-intl-redux';
 import Comments from './Comments';
 
 const mockStore = configureStore();
-
+let addComment = jest.fn();
+let deleteComment = jest.fn();
+let listComments = jest.fn();
+let listMoreComments = jest.fn();
 jest.mock('moment', () =>
   jest.fn(() => ({
     format: jest.fn(() => 'Sunday, April 23, 2017 3:38 AM'),
@@ -60,7 +63,30 @@ describe('Comments', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <Comments pathname="/blog" />
+        <Comments
+          addComment={addComment}
+          deleteComment={deleteComment}
+          listComments={listComments}
+          listMoreComments={listMoreComments}
+          items={[
+            {
+              '@id': 'someurl',
+              comment_id: '1614094601171408',
+              author_name: 'admin',
+              creation_date: '2017-11-06T19:36:01',
+              text: { data: 'Some comment' },
+              is_deletable: true,
+              is_editable: true,
+              can_reply: true,
+            },
+          ]}
+          addRequest={{
+            loading: false,
+            loaded: true,
+          }}
+          deleteRequest={{ loading: false, loaded: true }}
+          pathname="/blog"
+        />
       </Provider>,
     );
     const json = component.toJSON();
