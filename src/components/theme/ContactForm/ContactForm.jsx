@@ -170,13 +170,13 @@ const ContactFormComponent = ({ pathname, history }) => {
 };
 
 ContactFormComponent.propTypes = {
-  emailNotification: PropTypes.func,
+  emailNotification: PropTypes.func.isRequired,
   error: PropTypes.shape({
     message: PropTypes.string,
   }),
   loading: PropTypes.bool,
   loaded: PropTypes.bool,
-  pathname: PropTypes.string,
+  pathname: PropTypes.string.isRequired,
 };
 
 ContactFormComponent.defaultProps = {
