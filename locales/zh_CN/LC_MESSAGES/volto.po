@@ -1249,9 +1249,9 @@ msgstr "输入你的邮箱进行验证"
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Enter your new password. Minimum 5 characters.
-msgid "Enter your new password. Minimum 5 characters."
-msgstr "输入你的新密码。最少5个字符"
+# defaultMessage: Enter your new password. Minimum 8 characters.
+msgid "Enter your new password. Minimum 8 characters."
+msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Enter your username for verification.
