@@ -8,7 +8,7 @@ import PasswordReset from './PasswordReset';
 import { set } from 'lodash';
 
 const mockStore = configureStore();
-let setInitialPassword=jest.fn();
+let setInitialPassword = jest.fn();
 describe('PasswordReset', () => {
   it('renders a PasswordReset component', () => {
     const store = mockStore({
@@ -34,7 +34,7 @@ describe('PasswordReset', () => {
             setInitialPassword={setInitialPassword}
             loading={false}
             loaded={false}
-            token='a9dd24f9aab74bdea66aba6d80ef651'
+            token="a9dd24f9aab74bdea66aba6d80ef651"
           />
         </MemoryRouter>
       </Provider>,
