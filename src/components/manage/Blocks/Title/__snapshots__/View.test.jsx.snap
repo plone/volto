@@ -6,30 +6,26 @@ exports[`renders a view title component 1`] = `
   id="my-title"
 >
   My Title
-  <span
-    className="anchor-wrapper"
+  <a
+    aria-hidden="true"
+    className="anchor"
+    href="/#my-title"
+    onClick={[Function]}
+    tabIndex={-1}
+    target={null}
+    title={null}
   >
-    <a
-      aria-hidden="true"
-      className="anchor"
-      href="/#my-title"
-      onClick={[Function]}
-      tabIndex={-1}
-      target={null}
-      title={null}
-    >
-      <svg
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": undefined,
-          }
+    <svg
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": undefined,
         }
-        height={null}
-        onClick={[Function]}
-        viewBox=""
-        xmlns=""
-      />
-    </a>
-  </span>
+      }
+      height={null}
+      onClick={[Function]}
+      viewBox=""
+      xmlns=""
+    />
+  </a>
 </h1>
 `;
