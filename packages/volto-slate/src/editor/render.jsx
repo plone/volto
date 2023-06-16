@@ -183,31 +183,29 @@ export const renderLinkElement = (tagName) => {
       <Tag {...attributes} className={className}>
         {children}
         {mode === 'view' && slug && (
-          <span className="anchor-wrapper">
-            <UniversalLink
-              className="anchor"
-              aria-hidden="true"
-              tabIndex={-1}
-              href={`#${slug}`}
-            >
-              <svg
-                {...linkSVG.attributes}
-                dangerouslySetInnerHTML={{ __html: linkSVG.content }}
-                height={null}
-                onClick={() => {
-                  copy();
+          <UniversalLink
+            className="anchor"
+            aria-hidden="true"
+            tabIndex={-1}
+            href={`#${slug}`}
+          >
+            <svg
+              {...linkSVG.attributes}
+              dangerouslySetInnerHTML={{ __html: linkSVG.content }}
+              height={null}
+              onClick={() => {
+                copy();
 
-                  toast.info(
-                    <Toast
-                      info
-                      title={intl.formatMessage(messages.success)}
-                      content={intl.formatMessage(messages.urlClipboardCopy)}
-                    />,
-                  );
-                }}
-              ></svg>
-            </UniversalLink>
-          </span>
+                toast.info(
+                  <Toast
+                    info
+                    title={intl.formatMessage(messages.success)}
+                    content={intl.formatMessage(messages.urlClipboardCopy)}
+                  />,
+                );
+              }}
+            ></svg>
+          </UniversalLink>
         )}
       </Tag>
     );
