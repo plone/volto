@@ -2,7 +2,8 @@
  * LinksToItem component
  * @module components/manage/LinksToItem/LinksToItem
  */
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
+import { find } from 'lodash';
 import { Helmet } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
 import { Portal } from 'react-portal';
@@ -16,8 +17,9 @@ import {
   UniversalLink,
 } from '@plone/volto/components';
 
-import backSVG from '@plone/volto/icons/back.svg';
 import { getBaseUrl } from '@plone/volto/helpers';
+import backSVG from '@plone/volto/icons/back.svg';
+import settingsSVG from '@plone/volto/icons/settings.svg';
 
 const messages = defineMessages({
   back: {
@@ -27,6 +29,10 @@ const messages = defineMessages({
   linkstoitem: {
     id: 'Links and references',
     defaultMessage: 'Links and references',
+  },
+  helpLinkRelationsControlPanel: {
+    id: 'Overview and management of relations of all content items',
+    defaultMessage: 'Overview and management of relations of all content items',
   },
 });
 
@@ -40,6 +46,10 @@ const LinksToItem = (props) => {
   const myrelations = useSelector(
     (state) => state.relations.subrequests[itempath]?.relations,
   );
+  const actions = useSelector((state) => state.actions?.actions ?? {});
+  const ploneSetupAction = find(actions.user, {
+    id: 'plone_setup',
+  });
 
   useEffect(() => {
     dispatch(queryRelations(null, false, itempath, null, [itempath]));
@@ -160,14 +170,34 @@ const LinksToItem = (props) => {
             pathname={pathname}
             hideDefaultViewButtons
             inner={
-              <Link to={itempath} className="item">
-                <IconNext
-                  name={backSVG}
-                  className="contents circled"
-                  size="30px"
-                  title={intl.formatMessage(messages.back)}
-                />
-              </Link>
+              <>
+                <Link to={itempath} className="item">
+                  <IconNext
+                    name={backSVG}
+                    className="contents circled"
+                    size="30px"
+                    title={intl.formatMessage(messages.back)}
+                  />
+                </Link>
+
+                <>
+                  {ploneSetupAction ? (
+                    <Link to="/controlpanel/relations" className="relations">
+                      <IconNext
+                        name={settingsSVG}
+                        className="circled"
+                        aria-label={intl.formatMessage(
+                          messages.helpLinkRelationsControlPanel,
+                        )}
+                        size="30px"
+                        title={intl.formatMessage(
+                          messages.helpLinkRelationsControlPanel,
+                        )}
+                      />
+                    </Link>
+                  ) : null}
+                </>
+              </>
             }
           />
         </Portal>

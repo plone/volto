@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2023-06-16T10:41:06.125Z\n"
+"POT-Creation-Date: 2023-06-16T11:24:34.567Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -2407,6 +2407,11 @@ msgstr ""
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Origin
 msgid "Origin"
+msgstr ""
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Overview and management of relations of all content items
+msgid "Overview and management of relations of all content items"
 msgstr ""
 
 #: components/manage/Toolbar/Toolbar
