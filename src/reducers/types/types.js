@@ -35,6 +35,7 @@ export default function types(state = initialState, action = {}) {
         loaded: false,
       };
     case `${GET_CONTENT}_SUCCESS`:
+      if (action.subrequest) return state;
       hasExpander = hasApiExpander(
         'types',
         getBaseUrl(flattenToAppURL(action.result['@id'])),

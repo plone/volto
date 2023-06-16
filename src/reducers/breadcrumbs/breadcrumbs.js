@@ -41,6 +41,7 @@ export default function breadcrumbs(state = initialState, action = {}) {
         loading: true,
       };
     case `${GET_CONTENT}_SUCCESS`:
+      if (action.subrequest) return state;
       hasExpander = hasApiExpander(
         'breadcrumbs',
         getBaseUrl(flattenToAppURL(action.result['@id'])),
