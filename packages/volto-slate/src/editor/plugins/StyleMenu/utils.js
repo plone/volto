@@ -79,7 +79,7 @@ export const isBlockStyleActive = (editor, style) => {
         const isStyle = typeof n.styleName === 'string' || n[keyName];
         return !Editor.isEditor(n) && isStyle;
       },
-      mode: 'highest',
+      mode: 'all',
     }),
   );
 
