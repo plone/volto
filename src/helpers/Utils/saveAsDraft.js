@@ -17,9 +17,9 @@ const mapSchemaToData = (schema, data) => {
 };
 
 // use let instead of useRef beause it's faster
-// useRef is a synchronous hook, in case of concomitant calls 
+// useRef is a synchronous hook, in case of concomitant calls
 // it can be a problem if we need to change the value, it will show old one
-let shoudRewrite = undefined;
+let shouldRewrite = undefined;
 
 const getFormId = (props) => {
   const { type, pathname, isEditForm } = props;
@@ -43,11 +43,11 @@ const draftApi = (id, schema, timer, timerForDeletion) => ({
       const savedData = JSON.parse(saved);
 
       if (!isEqual(formData, savedData)) {
-        if (shoudRewrite === undefined) {
-          shoudRewrite = window.confirm('Autosave found, load it?');
+        if (shouldRewrite === undefined) {
+          shouldRewrite = window.confirm('Autosave found, load it?');
         }
 
-        return shoudRewrite ? savedData : null;
+        return shouldRewrite ? savedData : null;
       }
     }
   },
@@ -55,7 +55,7 @@ const draftApi = (id, schema, timer, timerForDeletion) => ({
   // will be used for componentDidMount
   // but not on refresh because then it will not have schema
   // will delete localStorage data if user selects cancel
-  // for Add componentDidMount will call it twice, use let shoudRewrite
+  // for Add componentDidMount will call it twice, use let shouldRewrite
   // because it's sync and will not show confirm again (useRef is async)
   // Delete data only if user confirms Cancel, because otherwise it will be added
   // on each update anyway, but can create problems on checks on successive updates
@@ -69,22 +69,22 @@ const draftApi = (id, schema, timer, timerForDeletion) => ({
 
       if (!isEqual(formData, savedData)) {
         // eslint-disable-next-line no-alert
-        if (shoudRewrite === undefined) {
-          shoudRewrite = window.confirm('Autosave found, load it?');
+        if (shouldRewrite === undefined) {
+          shouldRewrite = window.confirm('Autosave found, load it?');
         }
         // change back to undefined to avoid consecutive call
         // (Add) and to be able to show it on refresh
         setTimeout(() => {
-          shoudRewrite = undefined;
+          shouldRewrite = undefined;
         }, 500);
 
-        if (shoudRewrite) {
+        if (shouldRewrite) {
           return savedData;
         } else {
           timerForDeletion.current && clearTimeout(timerForDeletion.current);
           timerForDeletion.current = setTimeout(() => {
             localStorage.removeItem(id);
-            shoudRewrite = undefined;
+            shouldRewrite = undefined;
           }, 500);
           return null;
         }
