@@ -66,6 +66,38 @@ describe('FormValidation', () => {
       });
     });
 
+    it('do not treat 0 as missing required value', () => {
+      let newSchema = {
+        ...schema,
+        properties: {
+          ...schema.properties,
+          age: {
+            title: 'age',
+            type: 'integer',
+            widget: 'number',
+            description: '',
+          },
+        },
+        required: ['age'],
+      };
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema: newSchema,
+          formData: { username: 'test username', age: null },
+          formatMessage,
+        }),
+      ).toEqual({
+        age: [messages.required.defaultMessage],
+      });
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema: newSchema,
+          formData: { username: 'test username', age: 0 },
+          formatMessage,
+        }),
+      ).toEqual({});
+    });
+
     it('validates incorrect email', () => {
       expect(
         FormValidation.validateFieldsPerFieldset({
