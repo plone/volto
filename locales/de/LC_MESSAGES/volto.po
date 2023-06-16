@@ -4296,9 +4296,14 @@ msgid "event_where"
 msgstr "Ort"
 
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: This website does not accept files larger than {limit}
+msgid "fileTooLarge"
+msgstr "Dateien, die größer sind als {limit}, dürfen nicht hochgeladen werden."
+
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: flush intIds and rebuild relations
 msgid "flush intIds and rebuild relations"
-msgstr "TODO Translation. IntIds neu generieren und Relationen neu katalogisieren"
+msgstr "IntIds neu generieren und Relationen neu katalogisieren"
 
 #: components/manage/Blocks/Teaser/schema
 # defaultMessage: Head title
