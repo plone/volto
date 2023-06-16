@@ -7,7 +7,8 @@ import { MemoryRouter } from 'react-router-dom';
 import Delete from './Delete';
 
 const mockStore = configureStore();
-
+let deleteContent = jest.fn();
+let getContent = jest.fn();
 jest.mock('react-portal', () => ({
   Portal: jest.fn(() => <div id="Portal" />),
 }));
@@ -30,7 +31,13 @@ describe('Delete', () => {
     const component = renderer.create(
       <Provider store={store}>
         <MemoryRouter>
-          <Delete location={{ pathname: '/blog', search: {} }} />
+          <Delete
+            location={{ pathname: '/blog', search: {} }}
+            deleteContent={deleteContent}
+            getContent={getContent}
+            deleteRequest={{ loading: false, loaded: true }}
+            pathname="/blog"
+          />
         </MemoryRouter>
       </Provider>,
     );
@@ -57,7 +64,13 @@ describe('Delete', () => {
     const component = renderer.create(
       <Provider store={store}>
         <MemoryRouter>
-          <Delete location={{ pathname: '/blog', search: {} }} />
+          <Delete
+            location={{ pathname: '/blog', search: {} }}
+            deleteContent={deleteContent}
+            getContent={getContent}
+            deleteRequest={{ loading: false, loaded: true }}
+            pathname="/blog"
+          />
         </MemoryRouter>
       </Provider>,
     );
