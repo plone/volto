@@ -83,6 +83,10 @@ maxResponseSize
     You can edit this limit in the `settings` object setting a new value in bytes
     (for example, to set 500 mb you need to write 5000000000).
 
+maxFileUploadSize
+    The maximum allowed size of file uploads (in bytes).
+    Default: `null` (no limit enforced by Volto).
+
 initialReducersBlacklist
     The initial state passed from server to browser needs to be minimal in order to optimize the resultant html generated. This state gets stored in `window.__data` and received in client.
 

@@ -5,13 +5,14 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Container, Image } from 'semantic-ui-react';
+import { Container as SemanticContainer, Image } from 'semantic-ui-react';
 import {
   hasBlocksData,
   flattenToAppURL,
   flattenHTMLToAppURL,
 } from '@plone/volto/helpers';
 import RenderBlocks from '@plone/volto/components/theme/View/RenderBlocks';
+import config from '@plone/volto/registry';
 
 /**
  * NewsItemView view component class.
@@ -19,11 +20,14 @@ import RenderBlocks from '@plone/volto/components/theme/View/RenderBlocks';
  * @params {object} content Content object.
  * @returns {string} Markup of the component.
  */
-const NewsItemView = ({ content }) =>
-  hasBlocksData(content) ? (
-    <div id="page-document" className="ui container view-wrapper newsitem-view">
+const NewsItemView = ({ content }) => {
+  const Container =
+    config.getComponent({ name: 'Container' }).component || SemanticContainer;
+
+  return hasBlocksData(content) ? (
+    <Container id="page-document" className="view-wrapper newsitem-view">
       <RenderBlocks content={content} />
-    </div>
+    </Container>
   ) : (
     <Container className="view-wrapper">
       {content.title && (
@@ -57,6 +61,7 @@ const NewsItemView = ({ content }) =>
       )}
     </Container>
   );
+};
 
 /**
  * Property types.
