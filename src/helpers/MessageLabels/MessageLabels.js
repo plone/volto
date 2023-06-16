@@ -358,4 +358,8 @@ export const messages = defineMessages({
     id: 'Filter',
     defaultMessage: 'Filter',
   },
+  fileTooLarge: {
+    id: 'fileTooLarge',
+    defaultMessage: 'This website does not accept files larger than {limit}',
+  },
 });
