@@ -5,6 +5,7 @@ import { useLocation, useHistory } from 'react-router-dom';
 
 import { resolveExtension } from '@plone/volto/helpers/Extensions/withBlockExtensions';
 import config from '@plone/volto/registry';
+import { usePrevious } from '@plone/volto/helpers';
 import { isEqual } from 'lodash';
 
 function getDisplayName(WrappedComponent) {
@@ -226,16 +227,6 @@ const serializeQuery = (q) => {
   return JSON.stringify(
     q?.map((kvp) => ({ ...kvp, o: kvp.o.replace(PAQO, 'paqo') })),
   );
-};
-
-const usePrevious = (value) => {
-  const ref = React.useRef();
-
-  React.useEffect(() => {
-    ref.current = value;
-  });
-
-  return ref.current;
 };
 
 const withSearch = (options) => (WrappedComponent) => {
