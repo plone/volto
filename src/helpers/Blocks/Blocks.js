@@ -88,6 +88,76 @@ export const getBlocks = (properties) => {
 };
 
 /**
+ * Get block Table of Content entries
+ * @function getBlocksTocEntries
+ * @param {Object} properties
+ * @param {Object} tocData Table of Content data
+ * @return {Object} an object containing informations about entries used by Table of Content block
+ */
+export const getBlocksTocEntries = (properties, tocData) => {
+  const blocksFieldName = getBlocksFieldname(properties);
+  const blocksLayoutFieldname = getBlocksLayoutFieldname(properties);
+
+  const blocks = properties[blocksFieldName];
+  const blocks_layout = properties[blocksLayoutFieldname];
+
+  const levels =
+    tocData.levels?.length > 0
+      ? tocData.levels.map((l) => parseInt(l.slice(1)))
+      : [1, 2, 3, 4, 5, 6];
+  let rootLevel = Infinity;
+  let blocksFormEntries = [];
+  let tocEntries = {};
+  let tocEntriesLayout = [];
+
+  blocks_layout.items.forEach((id) => {
+    const block = blocks[id];
+    const blockConfig = config.blocks.blocksConfig[block['@type']];
+
+    if (!block || !blockConfig) {
+      return null;
+    }
+    if (!blockConfig.tocEntries && !blockConfig.tocEntry) {
+      return null;
+    }
+
+    const blockTocEntry = blockConfig.tocEntry?.(block, tocData);
+
+    const blockTocEntries = [
+      ...(blockConfig.tocEntries?.(block, tocData) ||
+        (blockTocEntry ? [blockTocEntry] : [])),
+    ];
+
+    blocksFormEntries = [...blocksFormEntries, ...blockTocEntries];
+
+    blockTocEntries.forEach((entry, index) => {
+      const i = `${id}-${index}`;
+      const level = entry[0];
+      const title = entry[1];
+      const items = [];
+      if (!level || !levels.includes(level)) return;
+      tocEntriesLayout.push(i);
+      tocEntries[i] = {
+        level,
+        title: title || block.plaintext,
+        items,
+        id: i,
+      };
+      if (level < rootLevel) {
+        rootLevel = level;
+      }
+    });
+  });
+
+  return {
+    rootLevel,
+    blocksFormEntries,
+    tocEntries,
+    tocEntriesLayout,
+  };
+};
+
+/**
  * Move block to different location index within blocks_layout
  * @function moveBlock
  * @param {Object} formData Form data

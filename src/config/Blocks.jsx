@@ -296,6 +296,14 @@ const blocksConfig = {
       },
     ],
     getAsyncData: getListingBlockAsyncData,
+    tocEntry: (blockData = {}) => {
+      const levels = {
+        h2: 2,
+        h3: 3,
+      };
+      if (!blockData.headline) return false;
+      return [levels[blockData.headlineTag], blockData.headline];
+    },
   },
   video: {
     id: 'video',

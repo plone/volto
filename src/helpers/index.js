@@ -47,6 +47,7 @@ export {
   getBlocks,
   getBlocksFieldname,
   getBlocksLayoutFieldname,
+  getBlocksTocEntries,
   hasBlocksData,
   moveBlock,
   mutateBlock,
