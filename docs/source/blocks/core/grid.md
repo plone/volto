@@ -105,6 +105,8 @@ By default, the images inside a grid block are using a 16/9 aspect ratio.
 It is configurable by setting a LESS variable, `@grid-images-aspect-ratio`, or setting a CSS property somewhere in your project, `--grid-images-aspect-ratio`.
 There is another setting for the `object-position` CSS definition, `@grid-images-object-position`, and its corresponding `--grid-images-object-position`.
 
+If you want to disable this feature from the grid images, you should set both to `unset`.
+
 ## Style wrapper properties
 
 The Grid block supports the block styling wrapper but does not provide any property by default.
