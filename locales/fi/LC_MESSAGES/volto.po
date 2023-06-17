@@ -1274,9 +1274,9 @@ msgstr "Syötä sähköpostiosoitteesi vahvistusta varten."
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Enter your new password. Minimum 5 characters.
-msgid "Enter your new password. Minimum 5 characters."
-msgstr "Syötä uusi salasanasi, jossa on vähintään viisi (5) merkkiä."
+# defaultMessage: Enter your new password. Minimum 8 characters.
+msgid "Enter your new password. Minimum 8 characters."
+msgstr "Syötä uusi salasanasi, jossa on vähintään viisi (8) merkkiä."
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Enter your username for verification.
@@ -4309,6 +4309,11 @@ msgstr "Milloin"
 # defaultMessage: Where
 msgid "event_where"
 msgstr "Missä"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: This website does not accept files larger than {limit}
+msgid "fileTooLarge"
+msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: flush intIds and rebuild relations
