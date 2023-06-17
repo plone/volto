@@ -7,14 +7,14 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-03 03:20-0400\n"
-"PO-Revision-Date: 2023-06-17 12:51-0400\n"
+"PO-Revision-Date: 2023-06-17 16:05-0400\n"
 "Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
-"Language-Team: ES <LL@li.org>\n"
 "Language: es\n"
-"MIME-Version: 1.0\n"
+"Language-Team: ES <LL@li.org>\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
 "X-Generator: Poedit 3.3.1\n"
 "Language-Code: es\n"
 "Language-Name: Español\n"
@@ -2372,7 +2372,7 @@ msgstr "Ok"
 #: components/manage/Widgets/IdWidget
 # defaultMessage: Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed.
 msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed."
-msgstr "Solo letras minúsculas (a-z) sin tildes, números (0-9), y los caracteres \"-\", \"_\", y \".\" están permitidos."
+msgstr "Solo letras minúsculas (a-z) sin tildes, números (0-9), y los caracteres "-", "_", y "." están permitidos."
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -4197,7 +4197,7 @@ msgstr "Introduzca su nueva contraseña. Mínimo 8 caracteres."
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Enter a user name, usually something like "jsmith". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in.
 msgid "addUserFormUsernameDescription"
-msgstr "Introduzca el nombre de usuario que desee utilizar. Generalmente algo como \"jperez\" o \"jose_perez\". No están permitidos caracteres especiales o espacios en el nombre de usuario. Los nombres de usuario y las contraseñas son sensibles a mayúsculas y minúsculas, asegúrese que la tecla de bloqueo de mayúsculas no está activada ('caps lock'). Este es el nombre que utilizará para identificarse."
+msgstr "Introduzca el nombre de usuario que desee utilizar. Generalmente algo como "jperez" o "jose_perez". No están permitidos caracteres especiales o espacios en el nombre de usuario. Los nombres de usuario y las contraseñas son sensibles a mayúsculas y minúsculas, asegúrese que la tecla de bloqueo de mayúsculas no está activada ('caps lock'). Este es el nombre que utilizará para identificarse."
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Available views
