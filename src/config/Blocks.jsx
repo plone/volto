@@ -56,6 +56,7 @@ import GridBlockEdit from '@plone/volto/components/manage/Blocks/Grid/Edit';
 import { GridBlockDataAdapter } from '@plone/volto/components/manage/Blocks/Grid/adapter';
 import { GridBlockSchema } from '@plone/volto/components/manage/Blocks/Grid/schema';
 import GridTemplates from '@plone/volto/components/manage/Blocks/Grid/templates';
+import { gridTeaserDisableStylingSchema } from '@plone/volto/components/manage/Blocks/Teaser/schema';
 
 import SearchBlockView from '@plone/volto/components/manage/Blocks/Search/SearchBlockView';
 import SearchBlockEdit from '@plone/volto/components/manage/Blocks/Search/SearchBlockEdit';
@@ -509,6 +510,12 @@ const blocksConfig = {
       },
     ],
   },
+};
+
+blocksConfig.gridBlock.blocksConfig = blocksConfig;
+blocksConfig.gridBlock.blocksConfig.teaser = {
+  ...blocksConfig.teaser,
+  schemaEnhancer: gridTeaserDisableStylingSchema,
 };
 
 const requiredBlocks = ['title'];
