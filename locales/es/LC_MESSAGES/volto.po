@@ -2168,11 +2168,7 @@ msgstr "Nombre"
 #: components/manage/Widgets/AlignWidget
 # defaultMessage: Narrow
 msgid "Narrow"
-<<<<<<< HEAD
 msgstr "Filtrar"
-=======
-msgstr "Reducir"
->>>>>>> 74a1b682f (Updated Spanish translation)
 
 #: error
 # defaultMessage: Navigate back
