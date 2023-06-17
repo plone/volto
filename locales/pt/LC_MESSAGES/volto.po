@@ -1271,9 +1271,9 @@ msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Enter your new password. Minimum 5 characters.
-msgid "Enter your new password. Minimum 5 characters."
-msgstr "Escreva uma senha nova. Mínimo de 5 caracteres."
+# defaultMessage: Enter your new password. Minimum 8 characters.
+msgid "Enter your new password. Minimum 8 characters."
+msgstr "Escreva uma senha nova. Mínimo de 8 caracteres."
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Enter your username for verification.
@@ -4300,6 +4300,11 @@ msgstr ""
 #: components/theme/EventDetails/EventDetails
 # defaultMessage: Where
 msgid "event_where"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: This website does not accept files larger than {limit}
+msgid "fileTooLarge"
 msgstr ""
 
 #: helpers/MessageLabels/MessageLabels

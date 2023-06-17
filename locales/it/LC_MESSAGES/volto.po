@@ -1263,9 +1263,9 @@ msgstr "Inserisci la tua email per la verifica."
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Enter your new password. Minimum 5 characters.
-msgid "Enter your new password. Minimum 5 characters."
-msgstr "Inserisci la tua nuova password. Minimo 5 caratteri."
+# defaultMessage: Enter your new password. Minimum 8 characters.
+msgid "Enter your new password. Minimum 8 characters."
+msgstr "Inserisci la tua nuova password. Minimo 8 caratteri."
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Enter your username for verification.
@@ -4293,6 +4293,11 @@ msgstr "Quando"
 # defaultMessage: Where
 msgid "event_where"
 msgstr "Dove"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: This website does not accept files larger than {limit}
+msgid "fileTooLarge"
+msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: flush intIds and rebuild relations
