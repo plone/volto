@@ -8,7 +8,7 @@ import cx from 'classnames';
 import { isEmpty, omit } from 'lodash';
 import { UniversalLink, Toast } from '@plone/volto/components';
 import { messages, addAppURL } from '@plone/volto/helpers';
-import useClipboard from '@plone/volto-slate/hooks/useClipboard';
+import useClipboard from '@plone/volto/hooks/clipboard/useClipboard';
 import config from '@plone/volto/registry';
 import linkSVG from '@plone/volto/icons/link.svg';
 
