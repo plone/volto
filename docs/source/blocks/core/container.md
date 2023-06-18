@@ -23,10 +23,9 @@ A container consists of an Edit component that allows users to add, edit, or del
 When building a custom block that uses a container as its base, you must pass your block's properties into the container.
 
 
-## Container properties
+## Container props
 
-The container has particular properties.
-Currently only one property is supported, although others may be added in future releases.
+The container component has particular properties:
 
 `direction`
 :   The arrangement of blocks in the container, either `horizontal` or `vertical`.
