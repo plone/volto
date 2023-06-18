@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Helmet } from '@plone/volto/helpers';
 import { useDispatch } from 'react-redux';
 import { Portal } from 'react-portal';
 import { Container, Message, Icon } from 'semantic-ui-react';
@@ -10,8 +9,7 @@ import { toast } from 'react-toastify';
 
 import { Form, Toolbar, Toast } from '@plone/volto/components';
 import { emailNotification } from '@plone/volto/actions';
-import { getBaseUrl } from '@plone/volto/helpers';
-
+import { getBaseUrl, Helmet } from '@plone/volto/helpers';
 import { useEmailNotification } from '@plone/volto/hooks/emailNotification/useEmailNotification';
 
 const messages = defineMessages({
@@ -175,7 +173,6 @@ ContactFormComponent.propTypes = {
   }),
   loading: PropTypes.bool,
   loaded: PropTypes.bool,
-  pathname: PropTypes.string.isRequired,
 };
 
 ContactFormComponent.defaultProps = {
