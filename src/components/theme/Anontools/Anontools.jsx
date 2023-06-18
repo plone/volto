@@ -2,9 +2,10 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Menu } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
-import config from '@plone/volto/registry';
+import { flattenToAppURL } from '@plone/volto/helpers';
 import { useToken } from '@plone/volto/hooks/userSession/useToken';
 import { useContent } from '@plone/volto/hooks/content/useContent';
+import config from '@plone/volto/registry';
 
 const Anontools = () => {
   const token = useToken();
@@ -19,7 +20,7 @@ const Anontools = () => {
             aria-label="login"
             to={`/login${
               content?.['@id']
-                ? `?return_url=${content['@id'].replace(settings.apiPath, '')}`
+                ? `?return_url=${flattenToAppURL(content['@id'])}`
                 : ''
             }`}
           >
