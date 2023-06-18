@@ -43,7 +43,7 @@ const EditBlockWrapper = (props) => {
       ref={draginfo.innerRef}
       {...draginfo.draggableProps}
       {...draginfo.dragHandleProps}
-      className={cx(`block-editor-${data['@type']} container`, { selected })}
+      className={cx(`block-editor-${data['@type']} contained`, { selected })}
     >
       <div
         role="presentation"

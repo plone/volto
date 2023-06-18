@@ -25,12 +25,12 @@
   }
 }
 
-[class^='block-editor-'].container {
+[class^='block-editor-'].contained {
   .block {
     height: 100%;
   }
 
-  .block-editor-image.container {
+  .block-editor-image.contained {
     .image {
       & > div {
         height: 100%;
@@ -297,7 +297,7 @@ body.has-toolbar.has-sidebar .drag.gridBlock.handle.wrapper {
 
 // general spacing in the Row block wrapper
 .block.gridBlock [class^='block-editor-'],
-[class^='block-editor-'].container {
+[class^='block-editor-'].contained {
   padding-right: 1rem;
   padding-left: 1rem;
   margin-top: 1rem;
@@ -322,7 +322,7 @@ body.has-toolbar.has-sidebar .drag.gridBlock.handle.wrapper {
 
 // Outter cell item flexbox behavior so all have the same height
 .block.gridBlock [class^='block-editor-'],
-[class^='block-editor-'].container {
+[class^='block-editor-'].contained {
   display: inline-flex !important;
   flex-direction: column;
   align-self: stretch;
@@ -353,7 +353,7 @@ body.has-toolbar.has-sidebar .drag.gridBlock.handle.wrapper {
 
 // Remove default bottom image block margin
 .block.gridBlock [class^='block-editor-'] .block.image,
-[class^='block-editor-'].container .block.image {
+[class^='block-editor-'].contained .block.image {
   margin: 0;
 }
 
@@ -397,7 +397,7 @@ body.has-toolbar.has-sidebar .drag.gridBlock.handle.wrapper {
 .grid-image-wrapper img,
 .gridBlock .block.image img,
 .block-editor-gridBlock .block-editor-image img,
-.block-editor-image.container img {
+.block-editor-image.contained img {
   width: 100%;
   aspect-ratio: @grid-images-aspect-ratio;
   object-fit: cover;
@@ -406,12 +406,12 @@ body.has-toolbar.has-sidebar .drag.gridBlock.handle.wrapper {
 
 // Prevents the above styling to leak to the unset image wrapper
 .block-editor-gridBlock .block-editor-image .no-image-wrapper img,
-.block-editor-image.container .no-image-wrapper img {
+.block-editor-image.contained .no-image-wrapper img {
   width: unset;
 }
 
 .block.gridBlock .teaser-item,
-.block-editor-teaser.container .teaser-item {
+.block-editor-teaser.contained .teaser-item {
   flex-direction: column;
 
   &.default .image-wrapper {
