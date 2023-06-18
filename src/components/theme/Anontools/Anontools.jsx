@@ -8,7 +8,7 @@ import { useContent } from '@plone/volto/hooks/content/useContent';
 
 const Anontools = () => {
   const token = useToken();
-  const content = useContent();
+  const { data: content } = useContent();
 
   const { settings } = config;
   return (
