@@ -512,7 +512,11 @@ const blocksConfig = {
   },
 };
 
-blocksConfig.gridBlock.blocksConfig = blocksConfig;
+// This is required in order to initialize the inner blocksConfig
+// for the grid block, since we need to modify how the inner teaser
+// block behave in it (= no schemaEnhancer fields for teasers inside a grid)
+// Afterwards, it can be further customized in add-ons using the same technique.
+blocksConfig.gridBlock.blocksConfig = { ...blocksConfig };
 blocksConfig.gridBlock.blocksConfig.teaser = {
   ...blocksConfig.teaser,
   schemaEnhancer: gridTeaserDisableStylingSchema,
