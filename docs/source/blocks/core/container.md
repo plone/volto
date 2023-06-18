@@ -33,12 +33,14 @@ Currently only one property is supported, although others may be added in future
     The default value is `horizontal`.
 
 `templateChooser`
-: To complete the full customization of the template choice experience, you can customize the component that shows the choices as well.
-So you can enhance the default component located in {file}`src/components/manage/TemplateChooser/TemplateChooser.jsx` by providing your own.
-Remember that most likely you will have to provide also your own custom `templates` function that will play well with this one.
+:   To complete the full customization of the template choice experience, you can customize the component that shows the choices as well.
+    You can enhance the default component located in {file}`src/components/manage/TemplateChooser/TemplateChooser.jsx` by providing your own component.
+    You might also need to provide your own custom `templates` function that is compatible with your component.
 
 `editBlockWrapper`
-: You can customize the container's `editBlockWrapper` by providing your own. This will be passed to the `BlocksForm` component used by the container. It is used to customize the block wrapper if the block that you are building needs to have one different for the user experience of your block.
+:   You can customize the container's `editBlockWrapper` by providing your own.
+    This will be passed to the `BlocksForm` component used by the container.
+    It is used to customize the block wrapper if the block that you are building needs to have a different one for the user experience of your block.
 
 `maxLength`
 :   The maximum number of elements allowed inside the grid block.
