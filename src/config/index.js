@@ -32,7 +32,6 @@ import {
 } from './ControlPanels';
 
 import { richtextEditorSettings, richtextViewSettings } from './RichTextEditor';
-import { finalizeCoreConfiguration } from './finalizeConfiguration';
 
 import applyAddonConfiguration, { addonsInfo } from 'load-volto-addons';
 
@@ -224,5 +223,3 @@ ConfigRegistry.addonReducers = config.addonReducers;
 ConfigRegistry.components = config.components;
 
 applyAddonConfiguration(ConfigRegistry);
-
-finalizeCoreConfiguration(ConfigRegistry);
