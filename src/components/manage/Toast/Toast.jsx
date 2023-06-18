@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 
 import successSVG from '@plone/volto/icons/ready.svg';
 import infoSVG from '@plone/volto/icons/info.svg';
