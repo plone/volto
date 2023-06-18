@@ -2,11 +2,10 @@ import { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from '@plone/volto/helpers';
 import { useDispatch } from 'react-redux';
-import { compose } from 'redux';
 import { Portal } from 'react-portal';
 import { Container, Message, Icon } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import { Form, Toolbar, Toast } from '@plone/volto/components';
@@ -62,8 +61,10 @@ const messages = defineMessages({
   },
 });
 
-const ContactFormComponent = ({ pathname, history }) => {
+const ContactFormComponent = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
+  const { pathname } = useLocation();
   const intl = useIntl();
   const [isClient, setisClient] = useState(false);
 
@@ -86,9 +87,8 @@ const ContactFormComponent = ({ pathname, history }) => {
   }, [intl, loaded, loading]);
 
   const onSubmit = (data) => {
-    dispatch(
-      emailNotification(data.from, data.message, data.name, data.subject),
-    );
+    const { from, message, name, subject } = data;
+    dispatch(emailNotification(from, message, name, subject));
   };
 
   const onCancel = useCallback(() => {
@@ -170,7 +170,6 @@ const ContactFormComponent = ({ pathname, history }) => {
 };
 
 ContactFormComponent.propTypes = {
-  emailNotification: PropTypes.func.isRequired,
   error: PropTypes.shape({
     message: PropTypes.string,
   }),
@@ -185,4 +184,4 @@ ContactFormComponent.defaultProps = {
   loaded: null,
 };
 
-export default compose(withRouter)(ContactFormComponent);
+export default ContactFormComponent;
