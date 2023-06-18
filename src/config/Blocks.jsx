@@ -56,7 +56,6 @@ import GridBlockEdit from '@plone/volto/components/manage/Blocks/Grid/Edit';
 import { GridBlockDataAdapter } from '@plone/volto/components/manage/Blocks/Grid/adapter';
 import { GridBlockSchema } from '@plone/volto/components/manage/Blocks/Grid/schema';
 import GridTemplates from '@plone/volto/components/manage/Blocks/Grid/templates';
-import { gridTeaserDisableStylingSchema } from '@plone/volto/components/manage/Blocks/Teaser/schema';
 
 import SearchBlockView from '@plone/volto/components/manage/Blocks/Search/SearchBlockView';
 import SearchBlockEdit from '@plone/volto/components/manage/Blocks/Search/SearchBlockEdit';
@@ -510,16 +509,6 @@ const blocksConfig = {
       },
     ],
   },
-};
-
-// This is required in order to initialize the inner blocksConfig
-// for the grid block, since we need to modify how the inner teaser
-// block behave in it (= no schemaEnhancer fields for teasers inside a grid)
-// Afterwards, it can be further customized in add-ons using the same technique.
-blocksConfig.gridBlock.blocksConfig = { ...blocksConfig };
-blocksConfig.gridBlock.blocksConfig.teaser = {
-  ...blocksConfig.teaser,
-  schemaEnhancer: gridTeaserDisableStylingSchema,
 };
 
 const requiredBlocks = ['title'];
