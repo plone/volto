@@ -1,10 +1,9 @@
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Link  } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Breadcrumb, Container, Segment } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
 import { useDispatch } from 'react-redux';
-
 
 import { getBreadcrumbs } from '@plone/volto/actions';
 import { getBaseUrl, hasApiExpander } from '@plone/volto/helpers';
