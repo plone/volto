@@ -7,7 +7,7 @@ import { MemoryRouter } from 'react-router-dom';
 import PasswordReset from './PasswordReset';
 
 const mockStore = configureStore();
-let setInitialPassword = jest.fn();
+
 describe('PasswordReset', () => {
   it('renders a PasswordReset component', () => {
     const store = mockStore({
@@ -30,10 +30,6 @@ describe('PasswordReset', () => {
             match={{
               params: { token: 'a9dd24f9aab74bdea66aba6d80ef651b' },
             }}
-            setInitialPassword={setInitialPassword}
-            loading={false}
-            loaded={false}
-            token="a9dd24f9aab74bdea66aba6d80ef651"
           />
         </MemoryRouter>
       </Provider>,

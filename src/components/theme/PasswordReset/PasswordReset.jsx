@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { compose } from 'redux';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Helmet } from '@plone/volto/helpers';
 import { Container } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
@@ -11,6 +10,7 @@ import { Form } from '@plone/volto/components';
 import { setInitialPassword } from '@plone/volto/actions';
 import config from '@plone/volto/registry';
 import { useUsers } from '@plone/volto/hooks/users/useUsers';
+
 const messages = defineMessages({
   title: {
     id: 'Set your password',
@@ -88,6 +88,7 @@ const messages = defineMessages({
 const PasswordReset = (props) => {
   const intl = useIntl();
   const dispatch = useDispatch();
+  const history = useHistory();
   const [errors, setError] = useState(null);
   const [isSuccessful, setisSuccessful] = useState(false);
   const token = props.match.params.token;
@@ -108,12 +109,13 @@ const PasswordReset = (props) => {
       : intl.formatMessage(messages.usernameDescription);
 
   useEffect(() => {
-    setisSuccessful(true);
+    if (loaded) setisSuccessful(true);
   }, [loading, loaded]);
 
   const onSubmit = (data) => {
-    if (data.password === data.passwordRepeat) {
-      dispatch(setInitialPassword(data[identifierField], token, data.password));
+    const { password, passwordRepeat } = data;
+    if (password === passwordRepeat) {
+      dispatch(setInitialPassword(data[identifierField], token, password));
       setError(null);
     } else {
       setError(intl.formatMessage(messages.passwordsDoNotMatch));
@@ -121,7 +123,7 @@ const PasswordReset = (props) => {
   };
 
   const onCancel = () => {
-    props.history.goBack();
+    history.goBack();
   };
 
   if (isSuccessful) {
@@ -200,15 +202,15 @@ const PasswordReset = (props) => {
 };
 
 PasswordReset.propTypes = {
-  loading: PropTypes.bool.isRequired,
-  loaded: PropTypes.bool.isRequired,
+  loading: PropTypes.bool,
+  loaded: PropTypes.bool,
   error: PropTypes.string,
-  token: PropTypes.string.isRequired,
-  setInitialPassword: PropTypes.func.isRequired,
+  token: PropTypes.string,
+  setInitialPassword: PropTypes.func,
 };
 
 PasswordReset.defaultProps = {
   error: null,
 };
 
-export default compose(withRouter)(PasswordReset);
+export default PasswordReset;
