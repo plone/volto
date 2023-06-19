@@ -1,16 +1,16 @@
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link ,useLocation } from 'react-router-dom';
 import { Breadcrumb, Container, Segment } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
 import { useDispatch } from 'react-redux';
 
-import { Icon } from '@plone/volto/components';
+
 import { getBreadcrumbs } from '@plone/volto/actions';
 import { getBaseUrl, hasApiExpander } from '@plone/volto/helpers';
-
-import homeSVG from '@plone/volto/icons/home.svg';
 import { useBreadcrumbs } from '@plone/volto/hooks/breadcrumbs/useBreadcrumbs';
+import { Icon } from '@plone/volto/components';
+import homeSVG from '@plone/volto/icons/home.svg';
 
 const messages = defineMessages({
   home: {
@@ -23,9 +23,10 @@ const messages = defineMessages({
   },
 });
 
-const BreadcrumbsComponent = ({ pathname }) => {
+const BreadcrumbsComponent = () => {
   const intl = useIntl();
   const dispatch = useDispatch();
+  const pathname=useLocation();
   const { items, root } = useBreadcrumbs();
 
   useEffect(() => {
@@ -70,15 +71,14 @@ const BreadcrumbsComponent = ({ pathname }) => {
 };
 
 BreadcrumbsComponent.propTypes = {
-  getBreadcrumbs: PropTypes.func.isRequired,
-  pathname: PropTypes.string.isRequired,
+  getBreadcrumbs: PropTypes.func,
   root: PropTypes.string,
   items: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string,
       url: PropTypes.string,
     }),
-  ).isRequired,
+  ),
 };
 
 export default BreadcrumbsComponent;
