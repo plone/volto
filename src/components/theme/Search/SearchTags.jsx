@@ -12,7 +12,7 @@ const SearchTags = () => {
 
   useEffect(() => {
     dispatch(getVocabulary({ vocabNameOrURL: vocabulary }));
-  },[dispatch]);
+  }, [dispatch]);
 
   const items = useVocabularies();
 
