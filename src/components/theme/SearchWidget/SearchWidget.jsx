@@ -21,7 +21,7 @@ const messages = defineMessages({
 const SearchWidget = ({ pathname }) => {
   const intl = useIntl();
   const [text, setText] = useState('');
-  const history=useHistory();
+  const history = useHistory();
   const onChangeText = ({ value }) => {
     setText(value);
   };
