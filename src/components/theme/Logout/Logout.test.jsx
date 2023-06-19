@@ -9,8 +9,7 @@ import Logout from './Logout';
 const mockStore = configureStore();
 
 jest.mock('../Login/Login', () => jest.fn(() => <div />));
-let logout = jest.fn();
-let purgeMessages = jest.fn();
+
 describe('Logout', () => {
   it('renders a logout component', () => {
     const store = mockStore({
@@ -25,11 +24,7 @@ describe('Logout', () => {
     const component = renderer.create(
       <Provider store={store}>
         <IntlProvider locale="en">
-          <Logout
-            location={{ pathname: '' }}
-            purgeMessages={purgeMessages}
-            logout={logout}
-          />
+          <Logout location={{ pathname: '' }} />
         </IntlProvider>
       </Provider>,
     );

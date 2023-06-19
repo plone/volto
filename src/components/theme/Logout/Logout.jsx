@@ -1,12 +1,12 @@
 import { useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { defineMessages, useIntl } from 'react-intl';
 import qs from 'query-string';
-import { Login } from '@plone/volto/components';
+import { Login, Toast } from '@plone/volto/components';
 import { logout, purgeMessages } from '@plone/volto/actions';
 import { toast } from 'react-toastify';
-import { Toast } from '@plone/volto/components';
 import { useToken } from '@plone/volto/hooks/userSession/useToken';
 
 const messages = defineMessages({
@@ -20,8 +20,11 @@ const messages = defineMessages({
   },
 });
 
-const Logout = ({ location, history }) => {
+const Logout = ({ location }) => {
   const token = useToken();
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const intl = useIntl();
 
   const returnUrl = useMemo(
     () =>
@@ -33,13 +36,12 @@ const Logout = ({ location, history }) => {
     [location],
   );
 
-  const dispatch = useDispatch();
-  const intl = useIntl();
-
   useEffect(() => {
     dispatch(logout());
     dispatch(purgeMessages());
+  });
 
+  useEffect(() => {
     if (token) {
       history.replace(returnUrl || '/');
       if (!toast.isActive('loggedOut')) {
@@ -53,14 +55,14 @@ const Logout = ({ location, history }) => {
         );
       }
     }
-  }, [dispatch, history, returnUrl, intl, token]);
+  }, [history, returnUrl, intl, token]);
 
   return <Login location={{ query: location.query }} />;
 };
 
 Logout.propTypes = {
-  logout: PropTypes.func.isRequired,
-  purgeMessages: PropTypes.func.isRequired,
+  logout: PropTypes.func,
+  purgeMessages: PropTypes.func,
   query: PropTypes.shape({
     return_url: PropTypes.string,
   }),
