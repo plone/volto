@@ -18,7 +18,7 @@ const LinkView = ({ token, content }) => {
         window.location.href = flattenToAppURL(remoteUrl);
       }
     }
-  }, []);
+  }, [content, history, token]);
   const { title, description, remoteUrl } = content;
   const { openExternalLinkInNewTab } = config.settings;
 
