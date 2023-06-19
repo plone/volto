@@ -9,7 +9,13 @@ import { Helmet } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { Container, Dropdown, Icon, Segment, Table } from 'semantic-ui-react';
+import {
+  Container as SemanticContainer,
+  Dropdown,
+  Icon,
+  Segment,
+  Table,
+} from 'semantic-ui-react';
 import { concat, map, reverse, find } from 'lodash';
 import { Portal } from 'react-portal';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
@@ -24,6 +30,7 @@ import {
 } from '@plone/volto/components';
 import { getHistory, revertHistory, listActions } from '@plone/volto/actions';
 import { getBaseUrl } from '@plone/volto/helpers';
+import config from '@plone/volto/registry';
 
 import backSVG from '@plone/volto/icons/back.svg';
 
@@ -146,6 +153,9 @@ class History extends Component {
       id: 'history',
     });
     const entries = this.processHistoryEntries();
+
+    const Container =
+      config.getComponent({ name: 'Container' }).component || SemanticContainer;
 
     return !historyAction ? (
       <>
