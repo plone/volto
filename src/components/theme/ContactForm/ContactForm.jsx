@@ -85,9 +85,8 @@ const ContactFormComponent = () => {
   }, [intl, loaded, loading]);
 
   const onSubmit = (data) => {
-    dispatch(
-      emailNotification(data.from, data.message, data.name, data.subject),
-    );
+    const { from, message, name, subject } = data;
+    dispatch(emailNotification(from, message, name, subject));
   };
 
   const onCancel = useCallback(() => {
