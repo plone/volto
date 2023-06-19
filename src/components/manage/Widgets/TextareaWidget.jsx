@@ -25,6 +25,7 @@ import { FormFieldWrapper } from '@plone/volto/components';
 const TextareaWidget = (props) => {
   const { id, maxLength, value, onChange, placeholder, isDisabled } = props;
   const [lengthError, setlengthError] = useState('');
+  const [textareaRows, setTextareaRows] = useState(10);
 
   const onhandleChange = (id, value) => {
     if (maxLength & value?.length) {
@@ -36,6 +37,12 @@ const TextareaWidget = (props) => {
       }
     }
     onChange(id, value);
+    adjustTextareaRows(value);
+  };
+
+  const adjustTextareaRows = (value) => {
+    const lines = value.split('\n').length;
+    setTextareaRows(Math.max(lines, 10)); // Set minimum rows to 10
   };
 
   return (
