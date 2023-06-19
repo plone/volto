@@ -13,10 +13,6 @@ const ContentMetadataTags = (props) => {
     title,
     description,
   } = props.content;
-  const navroot = props.navroot;
-  const site = props.site;
-  console.log('site', site);
-  console.log('navroot', navroot);
 
   const getContentImageInfo = () => {
     const { contentMetadataTagsImageField } = config.settings;
