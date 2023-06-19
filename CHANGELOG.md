@@ -8,6 +8,29 @@
 
 <!-- towncrier release notes start -->
 
+## 17.0.0-alpha.13 (2023-06-15)
+
+### Feature
+
+- Add and enforce a new config setting, `maxFileUploadSize`. @davisagli [#4868](https://github.com/plone/volto/issues/4868)
+
+### Bugfix
+
+- Fix and improve the `addStyling` helper @sneridagh [#4880](https://github.com/plone/volto/issues/4880)
+
+
+## 17.0.0-alpha.12 (2023-06-14)
+
+### Feature
+
+- Allow to deselect color in ColorPickerWidget. @ksuess [#4838](https://github.com/plone/volto/issues/4838)
+- Configurable Container component from registry for some key route views. @sneridagh [#4871](https://github.com/plone/volto/issues/4871)
+
+### Bugfix
+
+- Fix regression in horizontal scroll in contents view, add it back @sneridagh [#4872](https://github.com/plone/volto/issues/4872)
+
+
 ## 17.0.0-alpha.11 (2023-06-09)
 
 ### Bugfix
