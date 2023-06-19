@@ -12,7 +12,7 @@ import deleteSVG from '@plone/volto/icons/delete.svg';
 import { Icon, FormFieldWrapper } from '@plone/volto/components';
 import loadable from '@loadable/component';
 import { defineMessages, useIntl } from 'react-intl';
-import { toPublicURL } from '@plone/volto/helpers';
+import { toPublicURL, validateFileUploadSize } from '@plone/volto/helpers';
 
 const imageMimetypes = [
   'image/png',
@@ -89,6 +89,8 @@ const SiteLogoWidget = (props) => {
    */
   const onDrop = (files) => {
     const file = files[0];
+    if (!validateFileUploadSize(file, intl.formatMessage)) return;
+
     readAsDataURL(file).then((data) => {
       const fields = data.match(/^data:(.*);(.*),(.*)$/);
       onChange(id, `filenameb64:${btoa(file.name)};datab64:${fields[3]}}`);
