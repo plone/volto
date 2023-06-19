@@ -1,12 +1,15 @@
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers';
 import { Container } from 'semantic-ui-react';
 import { UniversalLink } from '@plone/volto/components';
 import { FormattedMessage } from 'react-intl';
 import config from '@plone/volto/registry';
 
-const LinkView = ({ token, content, history }) => {
+
+const LinkView = ({ token, content }) => {
+  const history=useHistory();
   useEffect(() => {
     if (!token) {
       const { remoteUrl } = content;
@@ -16,15 +19,15 @@ const LinkView = ({ token, content, history }) => {
         window.location.href = flattenToAppURL(remoteUrl);
       }
     }
-  });
-  const { remoteUrl } = content;
+  },[]);
+  const { title,description,remoteUrl } = content;
   const { openExternalLinkInNewTab } = config.settings;
 
   return (
     <Container id="page-document">
-      <h1 className="documentFirstHeading">{content.title}</h1>
+      <h1 className="documentFirstHeading">{title}</h1>
       {content.description && (
-        <p className="documentDescription">{content.description}</p>
+        <p className="documentDescription">{description}</p>
       )}
       {remoteUrl && (
         <p>
