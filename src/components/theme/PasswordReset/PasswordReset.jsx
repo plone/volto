@@ -2,15 +2,14 @@ import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
-import { Helmet } from '@plone/volto/helpers';
 import { Container } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 
 import { Form } from '@plone/volto/components';
 import { setInitialPassword } from '@plone/volto/actions';
 import config from '@plone/volto/registry';
+import { Helmet } from '@plone/volto/helpers';
 import { useUsers } from '@plone/volto/hooks/users/useUsers';
-
 const messages = defineMessages({
   title: {
     id: 'Set your password',
@@ -113,9 +112,8 @@ const PasswordReset = (props) => {
   }, [loading, loaded]);
 
   const onSubmit = (data) => {
-    const { password, passwordRepeat } = data;
-    if (password === passwordRepeat) {
-      dispatch(setInitialPassword(data[identifierField], token, password));
+    if (data.password === data.passwordRepeat) {
+      dispatch(setInitialPassword(data[identifierField], token, data.password));
       setError(null);
     } else {
       setError(intl.formatMessage(messages.passwordsDoNotMatch));
@@ -205,7 +203,7 @@ PasswordReset.propTypes = {
   loading: PropTypes.bool,
   loaded: PropTypes.bool,
   error: PropTypes.string,
-  token: PropTypes.string,
+  token: PropTypes.string.isRequired,
   setInitialPassword: PropTypes.func,
 };
 
