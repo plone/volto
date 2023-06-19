@@ -22,7 +22,7 @@ const SearchWidget = ({ pathname }) => {
   const intl = useIntl();
   const [text, setText] = useState('');
   const history = useHistory();
-  const onChangeText = ({ value }) => {
+  const onChangeText = (event, { value }) => {
     setText(value);
   };
 
