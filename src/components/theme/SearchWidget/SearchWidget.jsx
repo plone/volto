@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import { withRouter } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { Form, Input } from 'semantic-ui-react';
-import { compose } from 'redux';
 import { PropTypes } from 'prop-types';
 import { defineMessages, useIntl } from 'react-intl';
 
@@ -19,11 +18,11 @@ const messages = defineMessages({
   },
 });
 
-const SearchWidget = ({ pathname, history }) => {
+const SearchWidget = ({ pathname }) => {
   const intl = useIntl();
   const [text, setText] = useState('');
-
-  const onChangeText = (event, { value }) => {
+  const history=useHistory();
+  const onChangeText = ({ value }) => {
     setText(value);
   };
 
@@ -62,4 +61,4 @@ SearchWidget.propTypes = {
   pathname: PropTypes.string,
 };
 
-export default compose(withRouter)(SearchWidget);
+export default SearchWidget;
