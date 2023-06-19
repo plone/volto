@@ -1,3 +1,13 @@
 /*******************************
         Global Overrides
 *******************************/
+.ui.menu {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.sticky {
+  position: sticky;
+  z-index: 100;
+  top: 0;
+}
