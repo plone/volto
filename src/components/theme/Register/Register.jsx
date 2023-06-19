@@ -53,10 +53,10 @@ const messages = defineMessages({
   },
 });
 
-const Register = ({ history }) => {
+const Register = () => {
   const dispatch = useDispatch();
   const intl = useIntl();
-  const history=useHistory();
+  const history = useHistory();
   const [errors, setError] = useState(null);
   const { loaded, loading, error } = useUsers();
 
@@ -74,7 +74,7 @@ const Register = ({ history }) => {
   }, [intl, history, loaded, loading]);
 
   const onSubmit = (data) => {
-    const {fullname , email ,password}=data;
+    const { fullname, email, password } = data;
     dispatch(
       createUser({
         fullname: fullname,
