@@ -13,6 +13,10 @@ const ContentMetadataTags = (props) => {
     title,
     description,
   } = props.content;
+  const navroot = props.navroot;
+  const site = props.site;
+  console.log('site', site);
+  console.log('navroot', navroot);
 
   const getContentImageInfo = () => {
     const { contentMetadataTagsImageField } = config.settings;
@@ -50,10 +54,8 @@ const ContentMetadataTags = (props) => {
       config?.settings?.siteTitleFormat?.includeSiteTitle || false;
     const titleAndSiteTitleSeparator =
       config?.settings?.titleAndSiteTitleSeparator || '-';
-
-    const navRootTitle = props.content['@components']?.navroot?.navroot?.title;
-    const siteRootTitle =
-      props.content['@components']?.site?.['plone.site_title'];
+    const navRootTitle = props.navroot?.navroot?.title;
+    const siteRootTitle = props?.['plone.site_title'];
     const titlePart = navRootTitle || siteRootTitle;
 
     if (includeSiteTitle && titlePart && titlePart !== title) {
