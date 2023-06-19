@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Link, useLocation } from 'react-router-dom';
+import { Link  } from 'react-router-dom';
 import { Breadcrumb, Container, Segment } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
 import { useDispatch } from 'react-redux';
+
 
 import { getBreadcrumbs } from '@plone/volto/actions';
 import { getBaseUrl, hasApiExpander } from '@plone/volto/helpers';
@@ -22,10 +23,9 @@ const messages = defineMessages({
   },
 });
 
-const BreadcrumbsComponent = () => {
+const BreadcrumbsComponent = ({ pathname }) => {
   const intl = useIntl();
   const dispatch = useDispatch();
-  const pathname = useLocation();
   const { items, root } = useBreadcrumbs();
 
   useEffect(() => {
@@ -71,6 +71,7 @@ const BreadcrumbsComponent = () => {
 
 BreadcrumbsComponent.propTypes = {
   getBreadcrumbs: PropTypes.func,
+  pathname: PropTypes.string,
   root: PropTypes.string,
   items: PropTypes.arrayOf(
     PropTypes.shape({
