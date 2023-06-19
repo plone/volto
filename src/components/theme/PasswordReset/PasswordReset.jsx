@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Container } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 
@@ -87,7 +87,6 @@ const messages = defineMessages({
 const PasswordReset = (props) => {
   const intl = useIntl();
   const dispatch = useDispatch();
-  const history = useHistory();
   const [errors, setError] = useState(null);
   const [isSuccessful, setisSuccessful] = useState(false);
   const token = props.match.params.token;
@@ -121,7 +120,7 @@ const PasswordReset = (props) => {
   };
 
   const onCancel = () => {
-    history.goBack();
+    props.history.goBack();
   };
 
   if (isSuccessful) {
@@ -203,7 +202,7 @@ PasswordReset.propTypes = {
   loading: PropTypes.bool,
   loaded: PropTypes.bool,
   error: PropTypes.string,
-  token: PropTypes.string.isRequired,
+  token: PropTypes.string,
   setInitialPassword: PropTypes.func,
 };
 
