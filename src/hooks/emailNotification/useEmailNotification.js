@@ -1,9 +1,18 @@
 import { useSelector } from 'react-redux';
 
+/**
+ * useEmailNotification hook
+ *
+ * This hook returns the current status of email Notification that is stored in the Redux store in the
+ * `emailNotification` reducer, and returns loading/loaded/error state.
+ *
+ * @export
+ * @return {{ loading: boolean, loaded: boolean, error: Error }}
+ */
 export function useEmailNotification() {
-  const error = useSelector((state) => state.emailNotification.error);
   const loading = useSelector((state) => state.emailNotification.loading);
   const loaded = useSelector((state) => state.emailNotification.loaded);
+  const error = useSelector((state) => state.emailNotification.error);
 
-  return { error, loaded, loading };
+  return { loading, loaded, error };
 }
