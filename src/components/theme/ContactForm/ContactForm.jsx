@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-
 import { useDispatch } from 'react-redux';
 import { Portal } from 'react-portal';
 import { Container, Message, Icon } from 'semantic-ui-react';
@@ -11,7 +10,6 @@ import { toast } from 'react-toastify';
 import { Form, Toolbar, Toast } from '@plone/volto/components';
 import { emailNotification } from '@plone/volto/actions';
 import { getBaseUrl, Helmet } from '@plone/volto/helpers';
-
 import { useEmailNotification } from '@plone/volto/hooks/emailNotification/useEmailNotification';
 
 const messages = defineMessages({
@@ -87,8 +85,9 @@ const ContactFormComponent = () => {
   }, [intl, loaded, loading]);
 
   const onSubmit = (data) => {
-    const { from, message, name, subject } = data;
-    dispatch(emailNotification(from, message, name, subject));
+    dispatch(
+      emailNotification(data.from, data.message, data.name, data.subject),
+    );
   };
 
   const onCancel = useCallback(() => {
@@ -170,7 +169,6 @@ const ContactFormComponent = () => {
 };
 
 ContactFormComponent.propTypes = {
-  emailNotification: PropTypes.func,
   error: PropTypes.shape({
     message: PropTypes.string,
   }),
