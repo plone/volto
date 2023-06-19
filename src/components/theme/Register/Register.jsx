@@ -1,15 +1,13 @@
 import { useEffect, useState } from 'react';
 import { Helmet } from '@plone/volto/helpers';
 import { useDispatch } from 'react-redux';
-import { compose } from 'redux';
 import { defineMessages, useIntl } from 'react-intl';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import { Form, Toast } from '@plone/volto/components';
 import { createUser } from '@plone/volto/actions';
-
 import { useUsers } from '@plone/volto/hooks/users/useUsers';
 
 const messages = defineMessages({
@@ -58,6 +56,7 @@ const messages = defineMessages({
 const Register = ({ history }) => {
   const dispatch = useDispatch();
   const intl = useIntl();
+  const history=useHistory();
   const [errors, setError] = useState(null);
   const { loaded, loading, error } = useUsers();
 
@@ -75,11 +74,12 @@ const Register = ({ history }) => {
   }, [intl, history, loaded, loading]);
 
   const onSubmit = (data) => {
+    const {fullname , email ,password}=data;
     dispatch(
       createUser({
-        fullname: data.fullname,
-        email: data.email,
-        password: data.password,
+        fullname: fullname,
+        email: email,
+        password: password,
       }),
     );
     setError(null);
@@ -122,9 +122,9 @@ const Register = ({ history }) => {
 };
 
 Register.propTypes = {
-  createUser: PropTypes.func.isRequired,
-  loading: PropTypes.bool.isRequired,
-  loaded: PropTypes.bool.isRequired,
+  createUser: PropTypes.func,
+  loading: PropTypes.bool,
+  loaded: PropTypes.bool,
   error: PropTypes.shape({
     message: PropTypes.string,
   }),
@@ -134,4 +134,4 @@ Register.defaultProps = {
   error: null,
 };
 
-export default compose(withRouter)(Register);
+export default Register;

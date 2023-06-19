@@ -7,7 +7,7 @@ import { MemoryRouter } from 'react-router-dom';
 import Register from './Register';
 
 const mockStore = configureStore();
-let createUser = jest.fn();
+
 describe('Register', () => {
   it('renders a register component', () => {
     const store = mockStore({
@@ -26,7 +26,7 @@ describe('Register', () => {
     const component = renderer.create(
       <Provider store={store}>
         <MemoryRouter>
-          <Register createUser={createUser} loaded={false} loading={false} />
+          <Register />
         </MemoryRouter>
       </Provider>,
     );
