@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { Helmet } from '@plone/volto/helpers';
 import { Container } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 
 import { Form } from '@plone/volto/components';
 import { setInitialPassword } from '@plone/volto/actions';
 import config from '@plone/volto/registry';
-import { Helmet } from '@plone/volto/helpers';
 import { useUsers } from '@plone/volto/hooks/users/useUsers';
 const messages = defineMessages({
   title: {
@@ -107,7 +107,7 @@ const PasswordReset = (props) => {
       : intl.formatMessage(messages.usernameDescription);
 
   useEffect(() => {
-    if (loaded) setisSuccessful(true);
+    setisSuccessful(true);
   }, [loading, loaded]);
 
   const onSubmit = (data) => {
