@@ -70,7 +70,7 @@ const ContactFormComponent = () => {
 
   useEffect(() => {
     setisClient(true);
-  }, []);
+  }, [isClient]);
 
   useEffect(() => {
     if (loading && loaded) {
