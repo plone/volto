@@ -7,9 +7,8 @@ import { UniversalLink } from '@plone/volto/components';
 import { FormattedMessage } from 'react-intl';
 import config from '@plone/volto/registry';
 
-
 const LinkView = ({ token, content }) => {
-  const history=useHistory();
+  const history = useHistory();
   useEffect(() => {
     if (!token) {
       const { remoteUrl } = content;
@@ -19,8 +18,8 @@ const LinkView = ({ token, content }) => {
         window.location.href = flattenToAppURL(remoteUrl);
       }
     }
-  },[]);
-  const { title,description,remoteUrl } = content;
+  }, []);
+  const { title, description, remoteUrl } = content;
   const { openExternalLinkInNewTab } = config.settings;
 
   return (
