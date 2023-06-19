@@ -39,7 +39,7 @@ const Logout = ({ location }) => {
   useEffect(() => {
     dispatch(logout());
     dispatch(purgeMessages());
-  });
+  }, [dispatch]);
 
   useEffect(() => {
     if (token) {
