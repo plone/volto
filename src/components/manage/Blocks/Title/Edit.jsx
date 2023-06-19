@@ -143,13 +143,25 @@ export const TitleBlockEdit = (props) => {
     onSelectBlock(block);
   }, [block, onSelectBlock]);
 
-  const renderElement = useCallback(({ attributes, children }) => {
-    return (
-      <h1 {...attributes} className="documentFirstHeading">
-        {children}
-      </h1>
-    );
-  }, []);
+  const renderElement = useCallback(
+    ({ attributes, children }) => {
+      const hasType = properties['@type'];
+      const AboveTitle =
+        hasType &&
+        config.getComponent({ name: 'AboveTitle', dependencies: [hasType] })
+          ?.component;
+
+      return (
+        <>
+          {AboveTitle ? <AboveTitle item={properties} /> : null}
+          <h1 {...attributes} className="documentFirstHeading">
+            {children}
+          </h1>
+        </>
+      );
+    },
+    [properties],
+  );
 
   if (typeof window.__SERVER__ !== 'undefined') {
     return <div />;
