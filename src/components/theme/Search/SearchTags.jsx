@@ -12,7 +12,7 @@ const SearchTags = () => {
 
   useEffect(() => {
     dispatch(getVocabulary({ vocabNameOrURL: vocabulary }));
-  });
+  },[dispatch]);
 
   const items = useVocabularies();
 
@@ -34,12 +34,12 @@ const SearchTags = () => {
 };
 
 SearchTags.propTypes = {
-  getVocabulary: PropTypes.func.isRequired,
+  getVocabulary: PropTypes.func,
   items: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string,
     }),
-  ).isRequired,
+  ),
 };
 
 export default SearchTags;
