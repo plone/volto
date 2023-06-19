@@ -2,7 +2,7 @@ describe('Contact Form Tests', () => {
     beforeEach(() => {
       cy.visit('/');
     });
-    it('Control Form', function () {
+    it('renders contact Form', function () {
       cy.get('a:contains("Contact")').click();
       cy.get('#fieldset-undefined-field-label-name').type('Myname');
       cy.get('#fieldset-undefined-field-label-from').type('admin@admin.com');
