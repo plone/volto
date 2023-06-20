@@ -1,5 +1,14 @@
 import { useSelector, shallowEqual } from 'react-redux';
 
+/**
+ * useComment hook
+ *
+ * This hook returns the current comments that are stored in the Redux store in the
+ * `comments` reducer, and returns it along with the related state (items/next/items_total/permissions/addRequest/deleteRquest).
+ *
+ * @export
+ * @return {{ items, next, items_total, permissions, addRequest, deleteRequest }}
+ */
 export function useComments() {
   const items = useSelector((state) => state.comments.items, shallowEqual);
   const next = useSelector((state) => state.comments.next, shallowEqual);

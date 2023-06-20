@@ -1,3 +1,12 @@
+import { useEffect, useState, useMemo, useCallback } from 'react';
+import PropTypes from 'prop-types';
+import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
+import { Portal } from 'react-portal';
+import { useDispatch } from 'react-redux';
+import { compose } from 'redux';
+import { Button, Comment, Container, Icon } from 'semantic-ui-react';
+import { useComments } from '@plone/volto/hooks/comments/useComments';
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import {
   addComment,
   deleteComment,
@@ -6,15 +15,6 @@ import {
 } from '@plone/volto/actions';
 import { Avatar, CommentEditModal, Form } from '@plone/volto/components';
 import { flattenToAppURL, getBaseUrl, getColor } from '@plone/volto/helpers';
-import PropTypes from 'prop-types';
-import React, { useEffect, useState, useMemo, useCallback } from 'react';
-import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
-import { Portal } from 'react-portal';
-import { useDispatch } from 'react-redux';
-import { compose } from 'redux';
-import { Button, Comment, Container, Icon } from 'semantic-ui-react';
-import { useComments } from '@plone/volto/hooks/comments/useComments';
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 const messages = defineMessages({
   comment: {
@@ -348,10 +348,10 @@ const Comments = (props) => {
 };
 
 Comments.propTypes = {
-  addComment: PropTypes.func.isRequired,
-  deleteComment: PropTypes.func.isRequired,
-  listComments: PropTypes.func.isRequired,
-  listMoreComments: PropTypes.func.isRequired,
+  addComment: PropTypes.func,
+  deleteComment: PropTypes.func,
+  listComments: PropTypes.func,
+  listMoreComments: PropTypes.func,
   pathname: PropTypes.string.isRequired,
   items: PropTypes.arrayOf(
     PropTypes.shape({
@@ -364,15 +364,15 @@ Comments.propTypes = {
       is_deletable: PropTypes.bool,
       is_editable: PropTypes.bool,
     }),
-  ).isRequired,
+  ),
   addRequest: PropTypes.shape({
     loading: PropTypes.bool,
     loaded: PropTypes.bool,
-  }).isRequired,
+  }),
   deleteRequest: PropTypes.shape({
     loading: PropTypes.bool,
     loaded: PropTypes.bool,
-  }).isRequired,
+  }),
 };
 
 export default compose(injectLazyLibs(['moment']))(Comments);
