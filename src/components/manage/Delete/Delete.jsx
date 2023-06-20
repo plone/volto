@@ -117,23 +117,4 @@ const Delete = () => {
   return <div />;
 };
 
-Delete.propTypes = {
-  deleteContent: PropTypes.func,
-  getContent: PropTypes.func,
-  deleteRequest: PropTypes.shape({
-    loading: PropTypes.bool,
-    loaded: PropTypes.bool,
-  }),
-  pathname: PropTypes.string,
-  content: PropTypes.shape({
-    title: PropTypes.string,
-  }),
-  returnUrl: PropTypes.string,
-};
-
-Delete.defaultProps = {
-  content: null,
-  returnUrl: null,
-};
-
 export default Delete;
