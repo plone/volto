@@ -232,8 +232,6 @@ class More extends Component {
       id: 'redirection',
     });
 
-    const linksToItemAction = path !== '';
-
     const { content, intl } = this.props;
 
     const dateOptions = {
@@ -325,7 +323,7 @@ class More extends Component {
               )}
             </Plug>
             <Plug pluggable="toolbar-more-menu-list" id="linkstoitems">
-              {linksToItemAction && (
+              {path !== '' && !config.settings.excludeLinksAndReferencesMenuItem && (
                 <li>
                   <Link to={`${path}/links-to-item`}>
                     {this.props.intl.formatMessage(messages.linkstoitem)}
