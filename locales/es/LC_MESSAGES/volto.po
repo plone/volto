@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-03 03:20-0400\n"
-"PO-Revision-Date: 2023-06-20 09:01-0400\n"
+"PO-Revision-Date: 2023-06-20 14:02-0400\n"
 "Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
 "Language: es\n"
 "Language-Team: ES <LL@li.org>\n"
@@ -2474,7 +2474,7 @@ msgstr "Las personas responsables de la creación del contenido de este elemento
 #: components/manage/Blocks/Teaser/DefaultBody
 # defaultMessage: Please choose an existing content as source for this element
 msgid "Please choose an existing content as source for this element"
-msgstr "Elija un contenido existente como fuente para este elemento"
+msgstr "Elija un contenido existente como origen para este elemento"
 
 #: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Please continue with the upgrade.
@@ -2969,7 +2969,7 @@ msgstr "Resultados de búsqueda para {term}"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Search sources by title or path
 msgid "Search sources by title or path"
-msgstr "Buscar fuentes por título o ruta"
+msgstr "Buscar orígenes por título o ruta"
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Search targets by title or path
@@ -3141,7 +3141,7 @@ msgstr "Mostrar elemento"
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: Show potential sources. Not only objects that are source of some relation.
 msgid "Show potential sources. Not only objects that are source of some relation."
-msgstr "Mostrar fuentes potenciales. No solo objetos que son fuente de alguna relación."
+msgstr "Mostrar orígenes potenciales. No solo objetos que son orígenes de alguna relación."
 
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: Show potential targets. Not only objects that are target of some relation.
@@ -4318,7 +4318,7 @@ msgstr "vaciar intIds y reconstruir relaciones"
 #: components/manage/Blocks/Teaser/schema
 # defaultMessage: Head title
 msgid "head_title"
-msgstr "Título principal"
+msgstr "Encabezado"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Password reset confirmation sent
@@ -4419,7 +4419,7 @@ msgstr "Más usado"
 #: components/manage/Controlpanels/Relations/RelationsListing
 # defaultMessage: Found {sources} sources and {targets} targets. Narrow down to {max}!
 msgid "narrowDownRelations"
-msgstr "Se encontraron {sources} fuentes y {targets} destinos. ¡Reduzca a {max}!"
+msgstr "Se encontraron {sources} orígenes y {targets} destinos. ¡Reduzca a {max}!"
 
 #: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
 #: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
@@ -4652,7 +4652,7 @@ msgstr "años"
 #: config/Blocks
 # defaultMessage: Select
 msgid "selectFacet"
-msgstr "Seleccione"
+msgstr "Menú de selección"
 
 #: components/manage/Blocks/Search/components/ViewSwitcher
 # defaultMessage: Select view
@@ -4682,7 +4682,7 @@ msgstr "Ordenar"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: sources path
 msgid "sources path"
-msgstr "ruta de fuente"
+msgstr "ruta de origen"
 
 #: config/Blocks
 # defaultMessage: Table
