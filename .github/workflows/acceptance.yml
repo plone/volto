@@ -7,7 +7,7 @@ jobs:
     timeout-minutes: 45
     strategy:
       matrix:
-        node-version: [14.x, 16.x]
+        node-version: [14.x, 16.x, 18.x]
     steps:
       - uses: actions/checkout@v3
 
@@ -61,7 +61,7 @@ jobs:
     timeout-minutes: 35
     strategy:
       matrix:
-        node-version: [14.x, 16.x]
+        node-version: [14.x, 16.x, 18.x]
     steps:
       - uses: actions/checkout@v3
 
@@ -115,7 +115,7 @@ jobs:
     timeout-minutes: 45
     strategy:
       matrix:
-        node-version: [14.x, 16.x]
+        node-version: [14.x, 16.x, 18.x]
     steps:
       - uses: actions/checkout@v3
 
@@ -168,7 +168,7 @@ jobs:
     name: Core Basic - Plone 5
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [16.x, 18.x]
     steps:
       - uses: actions/checkout@v3
 
@@ -222,7 +222,7 @@ jobs:
     timeout-minutes: 35
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [16.x, 18.x]
         python-version: [3.7]
     steps:
       - uses: actions/checkout@v3
@@ -300,7 +300,7 @@ jobs:
     timeout-minutes: 35
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [16.x, 18.x]
     steps:
       - uses: actions/checkout@v3
 
@@ -355,7 +355,7 @@ jobs:
     timeout-minutes: 35
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [16.x, 18.x]
     steps:
       - uses: actions/checkout@v3
 
@@ -409,7 +409,7 @@ jobs:
     timeout-minutes: 35
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [16.x, 18.x]
         # python-version: [3.7]
     steps:
       - uses: actions/checkout@v3
@@ -488,7 +488,7 @@ jobs:
     timeout-minutes: 35
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [16.x, 18.x]
     env:
       generator-directory: ./packages/generator-volto
       project-directory: ./my-volto-app
@@ -583,7 +583,7 @@ jobs:
     timeout-minutes: 35
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [16.x, 18.x]
     steps:
       - uses: actions/checkout@v3
 
