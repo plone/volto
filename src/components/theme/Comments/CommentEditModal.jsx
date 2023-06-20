@@ -68,13 +68,13 @@ const CommentEditModal = (props) => {
 };
 
 CommentEditModal.propTypes = {
-  updateComment: PropTypes.func.isRequired,
+  updateComment: PropTypes.func,
   id: PropTypes.string,
   text: PropTypes.string,
   request: PropTypes.shape({
     loading: PropTypes.bool,
     loaded: PropTypes.bool,
-  }).isRequired,
+  }),
   open: PropTypes.bool.isRequired,
   onOk: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
