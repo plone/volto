@@ -58,7 +58,7 @@ const SearchWidget = ({ pathname }) => {
 };
 
 SearchWidget.propTypes = {
-  pathname: PropTypes.string,
+  pathname: PropTypes.string.isRequired,
 };
 
 export default SearchWidget;
