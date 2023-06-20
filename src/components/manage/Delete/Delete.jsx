@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import { Helmet } from '@plone/volto/helpers';
 import { useDispatch } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
