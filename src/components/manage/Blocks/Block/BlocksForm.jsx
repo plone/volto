@@ -42,6 +42,7 @@ const BlocksForm = (props) => {
     isMainForm = true,
     isContainer,
     stopPropagation,
+    disableAddBlockOnEnterKey,
     blocksConfig = config.blocks.blocksConfig,
     editable = true,
     direction = 'vertical',
@@ -86,7 +87,9 @@ const BlocksForm = (props) => {
       e.preventDefault();
     }
     if (e.key === 'Enter' && !disableEnter) {
-      onSelectBlock(onAddBlock(config.settings.defaultBlockType, index + 1));
+      if (!disableAddBlockOnEnterKey) {
+        onSelectBlock(onAddBlock(config.settings.defaultBlockType, index + 1));
+      }
       e.preventDefault();
     }
   };

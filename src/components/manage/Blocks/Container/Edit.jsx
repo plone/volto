@@ -150,6 +150,7 @@ const ContainerBlockEdit = (props) => {
         title={data.placeholder}
         isContainer
         stopPropagation={selectedBlock}
+        disableAddBlockOnEnterKey
         onSelectBlock={(id) => {
           setSelectedBlock(id);
         }}
