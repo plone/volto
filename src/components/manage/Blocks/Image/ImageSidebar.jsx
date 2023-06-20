@@ -8,7 +8,7 @@ import { ImageSchema } from './schema';
 import imageSVG from '@plone/volto/icons/image.svg';
 
 const ImageSidebar = (props) => {
-  const { data, block, onChangeBlock } = props;
+  const { blocksConfig, data, block, onChangeBlock } = props;
   const intl = useIntl();
   const schema = ImageSchema({ formData: data, intl });
   return (
@@ -55,6 +55,7 @@ const ImageSidebar = (props) => {
         onChangeBlock={onChangeBlock}
         formData={data}
         block={block}
+        blocksConfig={blocksConfig}
       />
     </>
   );

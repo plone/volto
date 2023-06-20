@@ -57,6 +57,7 @@ import { GridBlockDataAdapter } from '@plone/volto/components/manage/Blocks/Grid
 import { GridBlockSchema } from '@plone/volto/components/manage/Blocks/Grid/schema';
 import GridTemplates from '@plone/volto/components/manage/Blocks/Grid/templates';
 import { gridTeaserDisableStylingSchema } from '@plone/volto/components/manage/Blocks/Teaser/schema';
+import { gridImageDisableSizeAndPositionHandlersSchema } from '@plone/volto/components/manage/Blocks/Image/schema';
 
 import SearchBlockView from '@plone/volto/components/manage/Blocks/Search/SearchBlockView';
 import SearchBlockEdit from '@plone/volto/components/manage/Blocks/Search/SearchBlockEdit';
@@ -483,8 +484,6 @@ const blocksConfig = {
     restricted: false,
     mostUsed: true,
     sidebarTab: 1,
-    // This has a good reason: Slate does not work in detached mode if enabled
-    blockHasOwnFocusManagement: true,
     templates: GridTemplates,
     maxLength: 4,
     allowedBlocks: ['image', 'listing', 'slate', 'teaser'],
@@ -520,6 +519,10 @@ blocksConfig.gridBlock.blocksConfig = { ...blocksConfig };
 blocksConfig.gridBlock.blocksConfig.teaser = {
   ...blocksConfig.teaser,
   schemaEnhancer: gridTeaserDisableStylingSchema,
+};
+blocksConfig.gridBlock.blocksConfig.image = {
+  ...blocksConfig.image,
+  schemaEnhancer: gridImageDisableSizeAndPositionHandlersSchema,
 };
 
 const requiredBlocks = ['title'];
