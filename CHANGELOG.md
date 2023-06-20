@@ -8,6 +8,17 @@
 
 <!-- towncrier release notes start -->
 
+## 17.0.0-alpha.13 (2023-06-15)
+
+### Feature
+
+- Add and enforce a new config setting, `maxFileUploadSize`. @davisagli [#4868](https://github.com/plone/volto/issues/4868)
+
+### Bugfix
+
+- Fix and improve the `addStyling` helper @sneridagh [#4880](https://github.com/plone/volto/issues/4880)
+
+
 ## 17.0.0-alpha.12 (2023-06-14)
 
 ### Feature
