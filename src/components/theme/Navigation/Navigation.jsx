@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { defineMessages, useIntl } from 'react-intl';
 import { Menu } from 'semantic-ui-react';
+
 import cx from 'classnames';
 import { BodyClass, getBaseUrl, hasApiExpander } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
@@ -11,7 +12,7 @@ import { CSSTransition } from 'react-transition-group';
 import NavItems from '@plone/volto/components/theme/Navigation/NavItems';
 import { useToken } from '@plone/volto/hooks/userSession/useToken';
 import { useNavigation } from '@plone/volto/hooks/navigation/useNavigation';
-import { useIntls } from '@plone/volto/hooks/intl/useIntls';
+import { useLang } from '@plone/volto/hooks/intl/useLang';
 const messages = defineMessages({
   closeMobileMenu: {
     id: 'Close menu',
@@ -30,7 +31,7 @@ const Navigation = (props) => {
   const [isMobileMenuOpen, setisMobileMenuOpen] = useState(false);
   const token = useToken();
   const items = useNavigation();
-  const lang = useIntls();
+  const lang = useLang();
 
   useEffect(() => {
     const { settings } = config;
@@ -112,15 +113,15 @@ const Navigation = (props) => {
 };
 
 Navigation.propTypes = {
-  getNavigation: PropTypes.func.isRequired,
+  getNavigation: PropTypes.func,
   pathname: PropTypes.string.isRequired,
   items: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string,
       url: PropTypes.string,
     }),
-  ).isRequired,
-  lang: PropTypes.string.isRequired,
+  ),
+  lang: PropTypes.string,
 };
 
 Navigation.defaultProps = {
