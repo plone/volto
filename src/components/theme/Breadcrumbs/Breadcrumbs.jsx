@@ -69,7 +69,7 @@ const BreadcrumbsComponent = ({ pathname }) => {
 };
 
 BreadcrumbsComponent.propTypes = {
-  pathname: PropTypes.string,
+  pathname: PropTypes.string.isRequired,
 };
 
 export default BreadcrumbsComponent;
