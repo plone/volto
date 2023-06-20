@@ -10,8 +10,7 @@ import { useSelector, shallowEqual } from 'react-redux';
  * @return {{ request }}
  */
 export function useComments() {
-
   const request = useSelector((state) => state.comments.update, shallowEqual);
 
-  return  request ;
+  return request;
 }
