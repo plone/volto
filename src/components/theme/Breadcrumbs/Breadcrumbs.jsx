@@ -69,15 +69,7 @@ const BreadcrumbsComponent = ({ pathname }) => {
 };
 
 BreadcrumbsComponent.propTypes = {
-  getBreadcrumbs: PropTypes.func,
   pathname: PropTypes.string,
-  root: PropTypes.string,
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string,
-      url: PropTypes.string,
-    }),
-  ),
 };
 
 export default BreadcrumbsComponent;
