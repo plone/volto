@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { Portal } from 'react-portal';
 import { Container, Message, Icon } from 'semantic-ui-react';
@@ -165,20 +164,6 @@ const ContactFormComponent = () => {
       </Container>
     </div>
   );
-};
-
-ContactFormComponent.propTypes = {
-  error: PropTypes.shape({
-    message: PropTypes.string,
-  }),
-  loading: PropTypes.bool,
-  loaded: PropTypes.bool,
-};
-
-ContactFormComponent.defaultProps = {
-  error: null,
-  loading: null,
-  loaded: null,
 };
 
 export default ContactFormComponent;
