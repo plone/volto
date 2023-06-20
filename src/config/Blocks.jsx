@@ -484,7 +484,7 @@ const blocksConfig = {
     mostUsed: true,
     sidebarTab: 1,
     // This has a good reason: Slate does not work in detached mode if enabled
-    blockHasOwnFocusManagement: false,
+    blockHasOwnFocusManagement: true,
     templates: GridTemplates,
     maxLength: 4,
     allowedBlocks: ['image', 'listing', 'slate', 'teaser'],

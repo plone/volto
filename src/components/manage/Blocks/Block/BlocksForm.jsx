@@ -40,6 +40,7 @@ const BlocksForm = (props) => {
     manage,
     children,
     isMainForm = true,
+    isContainer = false,
     blocksConfig = config.blocks.blocksConfig,
     editable = true,
     direction = 'vertical',
@@ -252,6 +253,7 @@ const BlocksForm = (props) => {
               type: child['@type'],
               editable,
               showBlockChooser: selectedBlock === childId,
+              detached: isContainer,
             };
             return editBlockWrapper(
               dragProps,

@@ -148,6 +148,7 @@ const ContainerBlockEdit = (props) => {
         selectedBlock={selected ? selectedBlock : null}
         blocksConfig={allowedBlocksConfig}
         title={data.placeholder}
+        isContainer
         onSelectBlock={(id) => {
           setSelectedBlock(id);
         }}
