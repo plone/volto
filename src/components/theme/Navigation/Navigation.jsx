@@ -124,8 +124,4 @@ Navigation.propTypes = {
   lang: PropTypes.string,
 };
 
-Navigation.defaultProps = {
-  token: null,
-};
-
 export default Navigation;
