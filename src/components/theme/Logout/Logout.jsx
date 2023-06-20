@@ -61,8 +61,6 @@ const Logout = ({ location }) => {
 };
 
 Logout.propTypes = {
-  logout: PropTypes.func,
-  purgeMessages: PropTypes.func,
   query: PropTypes.shape({
     return_url: PropTypes.string,
   }),
