@@ -2414,6 +2414,11 @@ msgstr "Ireki elementu bilatzailea"
 msgid "Origin"
 msgstr "Jatorria"
 
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Overview and management of relations of all content items
+msgid "Overview and management of relations of all content items"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Page
 msgid "Page"

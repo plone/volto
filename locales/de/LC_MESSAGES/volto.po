@@ -2413,6 +2413,11 @@ msgstr "Objekt-Browser öffnen"
 msgid "Origin"
 msgstr "Quelle"
 
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Overview and management of relations of all content items
+msgid "Overview and management of relations of all content items"
+msgstr "Übersicht und Management der Relationen aller Inhalte"
+
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Page
 msgid "Page"
