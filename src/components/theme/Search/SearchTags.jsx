@@ -33,13 +33,4 @@ const SearchTags = () => {
   );
 };
 
-SearchTags.propTypes = {
-  getVocabulary: PropTypes.func,
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      label: PropTypes.string,
-    }),
-  ),
-};
-
 export default SearchTags;
