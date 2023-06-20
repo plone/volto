@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { Helmet } from '@plone/volto/helpers';
 import { useDispatch } from 'react-redux';
 import { defineMessages, useIntl } from 'react-intl';
-import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
@@ -121,17 +120,5 @@ const Register = () => {
   );
 };
 
-Register.propTypes = {
-  createUser: PropTypes.func,
-  loading: PropTypes.bool,
-  loaded: PropTypes.bool,
-  error: PropTypes.shape({
-    message: PropTypes.string,
-  }),
-};
-
-Register.defaultProps = {
-  error: null,
-};
 
 export default Register;
