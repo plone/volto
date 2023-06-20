@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-03 03:20-0400\n"
-"PO-Revision-Date: 2023-06-17 16:05-0400\n"
+"PO-Revision-Date: 2023-06-20 09:01-0400\n"
 "Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
 "Language: es\n"
 "Language-Team: ES <LL@li.org>\n"
@@ -1456,7 +1456,7 @@ msgstr "Primero"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Fix relations
 msgid "Fix relations"
-msgstr "Fijar relaciones"
+msgstr "Corregir relaciones"
 
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Fixed width columns
@@ -3218,7 +3218,7 @@ msgstr "Pequeño"
 #: components/manage/Controlpanels/Relations/Relations
 # defaultMessage: Some relations are broken. Please fix.
 msgid "Some relations are broken. Please fix."
-msgstr "Algunas relaciones se rompen. Por favor, arregla."
+msgstr "Algunas relaciones están rotas. Por favor, arréglelas."
 
 #: error
 # defaultMessage: Sorry, something went wrong with your request
@@ -3431,7 +3431,7 @@ msgstr "El camino de destino debe comenzar con /."
 #: components/manage/Blocks/Teaser/schema
 # defaultMessage: Teaser
 msgid "Teaser"
-msgstr "Énfasis"
+msgstr "Destacado"
 
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Text
