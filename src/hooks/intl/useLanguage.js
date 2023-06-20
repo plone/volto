@@ -3,13 +3,13 @@ import { useSelector } from 'react-redux';
 /**
  * useLang hook
  *
- * This hook returns the current intl data that is stored in the Redux store in the
- * `intl` reducer, and returns it along with the related state (lang).
+ * This hook returns the current active language of the site.
+ * It is stored in the locale key of the intl Redux store reducer.
  *
  * @export
  * @return {{ items:ContentData }}
  */
-export function useLang() {
+export function useLanguage() {
   const lang = useSelector((state) => state.intl.locale);
   return lang;
 }

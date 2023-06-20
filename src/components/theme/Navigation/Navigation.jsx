@@ -12,7 +12,7 @@ import { CSSTransition } from 'react-transition-group';
 import NavItems from '@plone/volto/components/theme/Navigation/NavItems';
 import { useToken } from '@plone/volto/hooks/userSession/useToken';
 import { useNavigation } from '@plone/volto/hooks/navigation/useNavigation';
-import { useLang } from '@plone/volto/hooks/intl/useLang';
+import { useLanguage } from '@plone/volto/hooks/intl/useLanguage';
 const messages = defineMessages({
   closeMobileMenu: {
     id: 'Close menu',
@@ -31,7 +31,7 @@ const Navigation = (props) => {
   const [isMobileMenuOpen, setisMobileMenuOpen] = useState(false);
   const token = useToken();
   const items = useNavigation();
-  const lang = useLang();
+  const lang = useLanguage();
 
   useEffect(() => {
     const { settings } = config;
