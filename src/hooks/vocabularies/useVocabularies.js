@@ -8,7 +8,7 @@ const vocabulary = 'plone.app.vocabularies.Keywords';
  * `vocabularies` reducer, and returns it along with the related state (items).
  *
  * @export
- * @return {{ data: ContentData, loading: boolean, loaded: boolean, error: Error }}
+ * @return {{ items }}
  */
 export function useVocabularies() {
   const items = useSelector(
