@@ -287,6 +287,10 @@ export const defaultRoutes = [
     component: ManageTranslations,
   },
   {
+    path: '/links-to-item',
+    component: LinksToItem,
+  },
+  {
     path: '/**/links-to-item',
     component: LinksToItem,
   },
