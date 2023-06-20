@@ -60,13 +60,4 @@ const Logout = ({ location }) => {
   return <Login location={{ query: location.query }} />;
 };
 
-Logout.propTypes = {
-  query: PropTypes.shape({
-    return_url: PropTypes.string,
-  }),
-};
-
-Logout.defaultProps = {
-  query: null,
-};
 export default Logout;
