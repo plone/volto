@@ -40,7 +40,8 @@ const BlocksForm = (props) => {
     manage,
     children,
     isMainForm = true,
-    isContainer = false,
+    isContainer,
+    stopPropagation,
     blocksConfig = config.blocks.blocksConfig,
     editable = true,
     direction = 'vertical',
@@ -201,7 +202,16 @@ const BlocksForm = (props) => {
   });
 
   return (
-    <div className="blocks-form" ref={ref}>
+    <div
+      className="blocks-form"
+      role="presentation"
+      ref={ref}
+      onKeyDown={(e) => {
+        if (stopPropagation) {
+          e.stopPropagation();
+        }
+      }}
+    >
       <fieldset className="invisible" disabled={!editable}>
         <DragDropList
           childList={blockList}

@@ -4,6 +4,7 @@ exports[`Allow override of blocksConfig 1`] = `
 <div>
   <div
     class="blocks-form"
+    role="presentation"
   >
     <fieldset
       class="invisible"

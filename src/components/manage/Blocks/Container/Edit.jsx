@@ -149,6 +149,7 @@ const ContainerBlockEdit = (props) => {
         blocksConfig={allowedBlocksConfig}
         title={data.placeholder}
         isContainer
+        stopPropagation={selectedBlock}
         onSelectBlock={(id) => {
           setSelectedBlock(id);
         }}
