@@ -10,14 +10,13 @@ import { useSelector, shallowEqual } from 'react-redux';
  * @return {{ data: ContentData, loading: boolean, loaded: boolean, error: Error , deleteRequest }}
  */
 export function useContent() {
-
   const deleteRequest = useSelector((state) => state.content?.delete);
   const data = useSelector((state) => state.content?.data, shallowEqual);
   const loading = useSelector((state) => state.content.get?.loading);
   const loaded = useSelector((state) => state.content.get?.loaded);
   const error = useSelector((state) => state.content.get?.error);
 
-  return { data, loading, loaded, error , deleteRequest };
+  return { data, loading, loaded, error, deleteRequest };
 }
 
 // For reference purposes: Potential future useQuery version
