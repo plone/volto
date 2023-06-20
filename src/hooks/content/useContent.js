@@ -1,8 +1,33 @@
 import { useSelector, shallowEqual } from 'react-redux';
 
+/**
+ * useContent hook
+ *
+ * This hook returns the current content that is stored in the Redux store in the
+ * `content` reducer, and returns it along with the related state (loading/loaded/error/deleteRequest).
+ *
+ * @export
+ * @return {{ data: ContentData, loading: boolean, loaded: boolean, error: Error , deleteRequest }}
+ */
 export function useContent() {
-  const content = useSelector((state) => state.content?.data, shallowEqual);
+
   const deleteRequest = useSelector((state) => state.content?.delete);
+  const data = useSelector((state) => state.content?.data, shallowEqual);
+  const loading = useSelector((state) => state.content.get?.loading);
+  const loaded = useSelector((state) => state.content.get?.loaded);
   const error = useSelector((state) => state.content.get?.error);
-  return { content, deleteRequest, error };
+
+  return { data, loading, loaded, error , deleteRequest };
 }
+
+// For reference purposes: Potential future useQuery version
+// export function useContent() {
+//   // the cache will need to know the current location
+//   const pathname = useLocation();
+//   const query = useQuery(getContentQuery({ path }))
+
+//   // This might not be needed if we rename the properties
+//   const {isLoading: loading, isSuccess: loaded, ...rest} = query;
+
+//   return { loading, loaded, ...rest };
+// }

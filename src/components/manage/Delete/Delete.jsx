@@ -2,8 +2,7 @@ import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from '@plone/volto/helpers';
 import { useDispatch } from 'react-redux';
-import { compose } from 'redux';
-import { withRouter } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { Portal } from 'react-portal';
 import { Button, Container, List, Segment } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
@@ -27,19 +26,23 @@ const messages = defineMessages({
   },
 });
 
-const Delete = ({ location, history }) => {
+const Delete = () => {
   const dispatch = useDispatch();
   const intl = useIntl();
   const [isClient, setisClient] = useState(false);
-
-  const { content, deleteRequest } = useContent();
+  const location = useLocation();
+  const history = useHistory();
+  const { data: content, deleteRequest } = useContent();
 
   const pathname = location.pathname;
   const returnUrl = qs.parse(location.search).return_url;
 
   useEffect(() => {
-    dispatch(getContent(pathname.split('/delete')[0]));
     setisClient(true);
+  }, [isClient]);
+
+  useEffect(() => {
+    dispatch(getContent(pathname.split('/delete')[0]));
   }, [dispatch, pathname]);
 
   useEffect(() => {
@@ -115,13 +118,13 @@ const Delete = ({ location, history }) => {
 };
 
 Delete.propTypes = {
-  deleteContent: PropTypes.func.isRequired,
-  getContent: PropTypes.func.isRequired,
+  deleteContent: PropTypes.func,
+  getContent: PropTypes.func,
   deleteRequest: PropTypes.shape({
     loading: PropTypes.bool,
     loaded: PropTypes.bool,
-  }).isRequired,
-  pathname: PropTypes.string.isRequired,
+  }),
+  pathname: PropTypes.string,
   content: PropTypes.shape({
     title: PropTypes.string,
   }),
@@ -133,4 +136,4 @@ Delete.defaultProps = {
   returnUrl: null,
 };
 
-export default compose(withRouter)(Delete);
+export default Delete;
