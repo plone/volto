@@ -348,31 +348,7 @@ const Comments = (props) => {
 };
 
 Comments.propTypes = {
-  addComment: PropTypes.func,
-  deleteComment: PropTypes.func,
-  listComments: PropTypes.func,
-  listMoreComments: PropTypes.func,
   pathname: PropTypes.string.isRequired,
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      author_name: PropTypes.string,
-      creation_date: PropTypes.string,
-      text: PropTypes.shape({
-        data: PropTypes.string,
-        'mime-type': PropTypes.string,
-      }),
-      is_deletable: PropTypes.bool,
-      is_editable: PropTypes.bool,
-    }),
-  ),
-  addRequest: PropTypes.shape({
-    loading: PropTypes.bool,
-    loaded: PropTypes.bool,
-  }),
-  deleteRequest: PropTypes.shape({
-    loading: PropTypes.bool,
-    loaded: PropTypes.bool,
-  }),
 };
 
 export default compose(injectLazyLibs(['moment']))(Comments);
