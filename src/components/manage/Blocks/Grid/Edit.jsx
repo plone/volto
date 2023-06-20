@@ -13,7 +13,7 @@ const GridBlockEdit = (props) => {
         one: columnsLength === 1,
         two: columnsLength === 2,
         three: columnsLength === 3,
-        four: columnsLength === 4,
+        four: columnsLength >= 4,
         'grid-items': true,
       })}
     >
