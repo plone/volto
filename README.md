@@ -53,20 +53,16 @@ First get all the requirements installed on your system.
 
 ### Prerequisites
 
-- [Node.js LTS (16.x)](https://nodejs.org/)
+- [Node.js LTS (16.x or 18.x)](https://nodejs.org/)
 - [Python](https://python.org/) - See below for specific versions.
 - [Docker](https://www.docker.com/get-started) (if using the Plone docker images)
-
-*UPDATE 2022-10-25*: Since 2022-10-25, NodeJS 18 is in LTS state (https://github.com/nodejs/release#release-schedule). However, due to changes in internal SSL libraries, some Volto dependencies have been deprecated and need to be updated in order to continue working in NodeJS 18, mainly Webpack 4 (see: https://github.com/webpack/webpack/issues/14532#issuecomment-947525539 for further information). You can still use it, but NodeJS should be run under a special flag: `NODE_OPTIONS=--openssl-legacy-provider`. See also Volto's PR: https://github.com/plone/volto/pull/3699 for more information.
 
 The versions of Python that are supported in Volto depend on the version of Plone that you use.
 
 | Plone | Python | Volto |
 |---|---|---|
 | 5.2 | 2.7, 3.6-3.8 | 15.0 |
-| 6.0 (beta) | 3.8-3.10 | 16.0 (alpha) |
-
-At the time of this writing, Volto 16 is still in alpha status, and Plone 6 is in beta status.
+| 6.0 | 3.8-3.11 | 16.0 |
 
 ### Create a Volto project using the generator
 
@@ -229,10 +225,11 @@ JavaScript-centered trainings.
 
 ## Node Support
 
+- Node 18: Supported since Volto 16
 - Node 16: Supported since Volto 14
-- Node 14: Supported since Volto 8.8.0
-- Node 12: Deprecated from Volto 16 onwards. It was supported since Volto 4
-- Node 10: Deprecated from Volto 13 onwards. It was supported since Volto 1 (and its predecessor "plone-react")
+- Node 14: Supported from Volto 8.8.0 - 16
+- Node 12: No longer supported. It was supported from Volto 4 - 15
+- Node 10: No longer supported. It was supported from Volto 1 - 12
 
 ## Browser support
 
