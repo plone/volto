@@ -71,7 +71,9 @@ export {
 
 export langmap from './LanguageMap/LanguageMap';
 export Helmet from './Helmet/Helmet';
-export FormValidation from './FormValidation/FormValidation';
+export FormValidation, {
+  validateFileUploadSize,
+} from './FormValidation/FormValidation';
 export {
   difference,
   getColor,
