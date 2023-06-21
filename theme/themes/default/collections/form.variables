@@ -193,3 +193,18 @@
 --------------------*/
 
 @inlineFieldsMargin: 0em 1em 0em 0em;
+
+.toast-box-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .save.toast-box {
+    background: transparent;
+    color: #007eb1;
+
+    .circled.toast-box-blue-icon {
+      color: #007eb1;
+    }
+  }
+}

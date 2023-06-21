@@ -66,30 +66,24 @@ const ConfirmAutoSave = ({ onUpdate, onClose, userMessage }) => {
 
   return (
     <div
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}
+      className='toast-box-center'
     >
       <div>{userMessage}</div>
       <Button
         icon
         aria-label="Unchecked"
-        className="save"
-        style={{ background: 'transparent', color: '#007eb1' }}
+        className="save toast-box"
         onClick={handleClickOK}
       >
-        <Icon name={checkSVG} color="#007eb1" size="24px" className="circled" />
+        <Icon name={checkSVG} size="24px" className="circled toast-box-blue-icon" />
       </Button>
       <Button
         icon
         aria-label="Unchecked"
-        className="save"
-        style={{ background: 'transparent', color: '#007eb1' }}
+        className="save toast-box"
         onClick={handleClickCancel}
       >
-        <Icon name={clearSVG} color="#007eb1" size="24px" className="circled" />
+        <Icon name={clearSVG} size="24px" className="circled toast-box-blue-icon" />
       </Button>
     </div>
   );
