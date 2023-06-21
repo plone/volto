@@ -5,9 +5,9 @@ import { useDispatch } from 'react-redux';
 import { uniqBy } from 'lodash';
 import { toast } from 'react-toastify';
 import { defineMessages, useIntl } from 'react-intl';
+
 import { FormFieldWrapper, Icon, Toast } from '@plone/volto/components';
 import { flattenToAppURL, getWorkflowOptions } from '@plone/volto/helpers';
-
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import {
   getContent,
