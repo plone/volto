@@ -217,6 +217,18 @@ class Form extends Component {
     this.onTabChange = this.onTabChange.bind(this);
     this.onBlurField = this.onBlurField.bind(this);
     this.onClickInput = this.onClickInput.bind(this);
+    this.updateFormDataWithSaved = this.updateFormDataWithSaved.bind(this);
+  }
+
+  /**
+   * Function sent as callback to saveAsDraft when user
+   * choses to load local data
+   * @param {Object} savedFormData
+   */
+  updateFormDataWithSaved(savedFormData) {
+    if (savedFormData) {
+      this.setState({ formData: savedFormData });
+    }
   }
 
   /**
@@ -228,14 +240,10 @@ class Form extends Component {
   async componentDidUpdate(prevProps, prevState) {
     // schema was just received async and plugged as prop
     if (!prevProps.schema && this.props.schema) {
-      const oldFormData = this.props.checkSavedDraft(this.state.formData);
-
-      if (oldFormData) {
-        this.setState((state) => ({
-          formData: { ...state.formData, ...oldFormData },
-        }));
-      }
-      return;
+      this.props.checkSavedDraft(
+        this.state.formData,
+        this.updateFormDataWithSaved,
+      );
     }
 
     let { requestError } = this.props;
@@ -263,8 +271,11 @@ class Form extends Component {
     ) {
       this.props.onChangeFormData(this.state.formData);
     }
-    // on each update it will save the form to the localStorage
-    if (prevProps.schema) this.props.onSaveDraft(this.state.formData);
+
+    // on each formData update it will save the form to the localStorage
+    if (!isEqual(prevState?.formData, this.state.formData)) {
+      this.props.onSaveDraft(this.state.formData);
+    }
   }
 
   /**
@@ -309,9 +320,8 @@ class Form extends Component {
     }
   }
 
-  // !! componentDidMount is called twice for ADD
-  // setState is not synch there for it will use the oldFormData
-  // obtained on the second call => should not delete on check for mount to not lose data
+  // !! componentDidMount is called twice for Add
+  // first call will ignore are setState passed through callbacks
   /**
    * Component did mount
    * @method componentDidMount
@@ -322,15 +332,10 @@ class Form extends Component {
 
     // schema already exists in redux store
     if (this.props.schema) {
-      const oldFormData = this.props.checkSavedDraftMounted(
+      this.props.checkSavedDraft(
         this.state.formData,
+        this.updateFormDataWithSaved,
       );
-
-      if (oldFormData) {
-        this.setState((state) => ({
-          formData: { ...state.formData, ...oldFormData },
-        }));
-      }
       return;
     }
   }

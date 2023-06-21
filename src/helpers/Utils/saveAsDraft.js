@@ -1,6 +1,29 @@
 import React from 'react';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import isEqual from 'react-fast-compare';
+import { toast } from 'react-toastify';
+import { Toast, Icon } from '@plone/volto/components';
+import { Button } from 'semantic-ui-react';
+import checkSVG from '@plone/volto/icons/check.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
+import { useIntl, defineMessages } from 'react-intl';
+
+const messages = defineMessages({
+  autoSaveFound: {
+    id: 'Autosave found',
+    defaultMessage: 'Autosave found',
+  },
+  loadData: {
+    id: 'Do you want to load it?',
+    defaultMessage: 'Do you want to load it?',
+  },
+  loadExpiredData: {
+    id:
+      'The version found is less recent than the server, do you want to load it (you can undo if you change your mind)?',
+    defaultMessage:
+      'The version found is less recent than the server, do you want to load it (you can undo if you change your mind)?',
+  },
+});
 
 function getDisplayName(WrappedComponent) {
   return WrappedComponent.displayName || WrappedComponent.name || 'Component';
@@ -16,10 +39,8 @@ const mapSchemaToData = (schema, data) => {
   );
 };
 
-// use let instead of useRef beause it's faster
-// useRef is a synchronous hook, in case of concomitant calls
-// it can be a problem if we need to change the value, it will show old one
-let shouldRewrite = undefined;
+// will be used to avoid using the first mount call if there is a second call
+let mountTime;
 
 const getFormId = (props) => {
   const { type, pathname, isEditForm } = props;
@@ -32,78 +53,144 @@ const getFormId = (props) => {
   return id;
 };
 
-const draftApi = (id, schema, timer, timerForDeletion) => ({
-  // will be used on componentDidUpdate
-  // on each update including refresh
-  checkSavedDraft(state) {
+/**
+ * Toast content that has OK and Cancel buttons
+ * @param {function} onUpdate
+ * @param {function} onClose
+ * @param {string} userMessage
+ * @returns
+ */
+const ConfirmAutoSave = ({ onUpdate, onClose, userMessage }) => {
+  const handleClickOK = () => onUpdate();
+  const handleClickCancel = () => onClose();
+
+  return (
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <div>{userMessage}</div>
+      <Button
+        icon
+        aria-label="Unchecked"
+        className="save"
+        style={{ background: 'transparent', color: '#007eb1' }}
+        onClick={handleClickOK}
+      >
+        <Icon name={checkSVG} color="#007eb1" size="24px" className="circled" />
+      </Button>
+      <Button
+        icon
+        aria-label="Unchecked"
+        className="save"
+        style={{ background: 'transparent', color: '#007eb1' }}
+        onClick={handleClickCancel}
+      >
+        <Icon name={clearSVG} color="#007eb1" size="24px" className="circled" />
+      </Button>
+    </div>
+  );
+};
+
+/**
+ * Will remove localStorage item using debounce
+ * @param {string} id
+ * @param {number} timerForDeletion
+ */
+const clearStorage = (id, timerForDeletion) => {
+  timerForDeletion.current && clearTimeout(timerForDeletion.current);
+  timerForDeletion.current = setTimeout(() => {
+    localStorage.removeItem(id);
+  }, 500);
+};
+
+/**
+ * Stale if server date is more recent
+ * @param {string} serverModifiedDate
+ * @param {string} autoSaveDate
+ * @returns {Boolean}
+ */
+const autoSaveFoundIsStale = (serverModifiedDate, autoSaveDate) => {
+  const result = !serverModifiedDate
+    ? false
+    : new Date(serverModifiedDate) > new Date(autoSaveDate);
+  return result;
+};
+
+const draftApi = (id, schema, timer, timerForDeletion, intl) => ({
+  // - since Add Content Type will call componentDidMount twice, we will
+  // use the second call (using debounce)- the first will ignore any setState comands;
+  // - Delete local data only if user confirms Cancel
+  // - Will tell user that it has local stored data, even if its less recent than the server data
+  checkSavedDraft(state, updateCallback) {
     if (!schema) return;
     const saved = localStorage.getItem(id);
-    if (saved) {
-      const formData = mapSchemaToData(schema, state);
-      const savedData = JSON.parse(saved);
-
-      if (!isEqual(formData, savedData)) {
-        if (shouldRewrite === undefined) {
-          shouldRewrite = window.confirm('Autosave found, load it?');
-        }
-
-        return shouldRewrite ? savedData : null;
-      }
-    }
-  },
-
-  // will be used for componentDidMount
-  // but not on refresh because then it will not have schema
-  // will delete localStorage data if user selects cancel
-  // for Add componentDidMount will call it twice, use let shouldRewrite
-  // because it's sync and will not show confirm again (useRef is async)
-  // Delete data only if user confirms Cancel, because otherwise it will be added
-  // on each update anyway, but can create problems on checks on successive updates
-  checkSavedDraftMounted(state) {
-    if (!schema) return;
-    const saved = localStorage.getItem(id);
 
     if (saved) {
       const formData = mapSchemaToData(schema, state);
-      const savedData = JSON.parse(saved);
+      // includes autoSaveDate
+      const foundSavedData = JSON.parse(saved);
+      // includes only form data found in schema (no autoSaveDate)
+      const foundSavedSchemaData = mapSchemaToData(schema, foundSavedData);
 
-      if (!isEqual(formData, savedData)) {
+      if (!isEqual(formData, foundSavedSchemaData)) {
         // eslint-disable-next-line no-alert
-        if (shouldRewrite === undefined) {
-          shouldRewrite = window.confirm('Autosave found, load it?');
-        }
-        // change back to undefined to avoid consecutive call
-        // (Add) and to be able to show it on refresh
-        setTimeout(() => {
-          shouldRewrite = undefined;
-        }, 500);
-
-        if (shouldRewrite) {
-          return savedData;
-        } else {
-          timerForDeletion.current && clearTimeout(timerForDeletion.current);
-          timerForDeletion.current = setTimeout(() => {
-            localStorage.removeItem(id);
-            shouldRewrite = undefined;
-          }, 500);
-          return null;
-        }
+        // cancel existing setTimeout to avoid using first call if
+        // successive calls are made
+        mountTime && clearTimeout(mountTime);
+        mountTime = setTimeout(() => {
+          toast.info(
+            <Toast
+              position="top-right"
+              info
+              autoClose={false}
+              title={intl.formatMessage(messages.autoSaveFound)}
+              content={
+                <ConfirmAutoSave
+                  onUpdate={() => updateCallback(foundSavedSchemaData)}
+                  onClose={() => clearStorage(id, timerForDeletion)}
+                  userMessage={
+                    autoSaveFoundIsStale(
+                      state.modified,
+                      foundSavedData.autoSaveDate,
+                    )
+                      ? intl.formatMessage(messages.loadExpiredData)
+                      : intl.formatMessage(messages.loadData)
+                  }
+                />
+              }
+            />,
+          );
+        }, 300);
       }
     }
   },
-
+  // use debounce mode
   onSaveDraft(state) {
     if (!schema) return;
     timer.current && clearTimeout(timer.current);
     timer.current = setTimeout(() => {
       const formData = mapSchemaToData(schema, state);
-      localStorage.setItem(id, JSON.stringify(formData));
+      const saved = localStorage.getItem(id);
+      const newData = JSON.parse(saved);
+
+      localStorage.setItem(
+        id,
+        JSON.stringify({
+          ...newData,
+          ...formData,
+          autoSaveDate: new Date(),
+        }),
+      );
     }, 300);
   },
 
   onCancelDraft() {
     if (!schema) return;
-    localStorage.removeItem(id);
+    clearStorage(id, timerForDeletion);
   },
 });
 
@@ -113,10 +200,11 @@ export function withSaveAsDraft(options) {
   return (WrappedComponent) => {
     function WithSaveAsDraft(props) {
       const { schema } = props;
+      const intl = useIntl();
       const id = getFormId(props);
       const ref = React.useRef();
       const ref2 = React.useRef();
-      const api = React.useMemo(() => draftApi(id, schema, ref, ref2), [
+      const api = React.useMemo(() => draftApi(id, schema, ref, ref2, intl), [
         id,
         schema,
       ]);
