@@ -41,7 +41,7 @@ jobs:
           start: |
             make start-test-acceptance-server
             make start-test-acceptance-frontend
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v1
@@ -96,7 +96,7 @@ jobs:
           start: |
             make start-test-acceptance-server
             make start-test-acceptance-frontend
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v1
@@ -151,7 +151,7 @@ jobs:
           start: |
             make start-test-acceptance-server
             make start-test-acceptance-frontend
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v1
@@ -205,7 +205,7 @@ jobs:
           start: |
             make start-test-acceptance-server-5
             make start-test-acceptance-frontend
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v1
@@ -284,7 +284,7 @@ jobs:
           start: |
             make start-test-acceptance-server-coresandbox
             make start-test-acceptance-frontend-coresandbox
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v1
@@ -340,7 +340,7 @@ jobs:
           start: |
             make start-test-acceptance-server-guillotina
             make start-test-acceptance-frontend-guillotina
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:8081 http://localhost:3000'
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:8081 http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v1
@@ -395,7 +395,7 @@ jobs:
           start: |
             make start-test-acceptance-server-multilingual
             make start-test-acceptance-frontend-multilingual
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v1
@@ -475,7 +475,7 @@ jobs:
           start: |
             make start-test-acceptance-server-workingcopy
             make start-test-acceptance-frontend-workingcopy
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v1
@@ -565,7 +565,7 @@ jobs:
           start: |
             make start-test-acceptance-server
             make start-test-acceptance-frontend-project
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v1
@@ -628,7 +628,7 @@ jobs:
             make start-test-acceptance-server
             make start-test-acceptance-frontend-seamless
             make start-test-acceptance-webserver-seamless
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000 http://localhost'
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000 http://127.0.0.1'
 
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v1
