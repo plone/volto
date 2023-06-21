@@ -8,6 +8,53 @@
 
 <!-- towncrier release notes start -->
 
+## 17.0.0-alpha.13 (2023-06-15)
+
+### Feature
+
+- Add and enforce a new config setting, `maxFileUploadSize`. @davisagli [#4868](https://github.com/plone/volto/issues/4868)
+
+### Bugfix
+
+- Fix and improve the `addStyling` helper @sneridagh [#4880](https://github.com/plone/volto/issues/4880)
+
+
+## 17.0.0-alpha.12 (2023-06-14)
+
+### Feature
+
+- Allow to deselect color in ColorPickerWidget. @ksuess [#4838](https://github.com/plone/volto/issues/4838)
+- Configurable Container component from registry for some key route views. @sneridagh [#4871](https://github.com/plone/volto/issues/4871)
+
+### Bugfix
+
+- Fix regression in horizontal scroll in contents view, add it back @sneridagh [#4872](https://github.com/plone/volto/issues/4872)
+
+
+## 17.0.0-alpha.11 (2023-06-09)
+
+### Bugfix
+
+- Added current page parameter to route in listing and search block pagination - Fix: #3868 @bipoza [#4159](https://github.com/plone/volto/issues/4159)
+
+
+## 17.0.0-alpha.10 (2023-06-09)
+
+### Feature
+
+- Search Block: Add support for advanced facets that are only displayed on demand.
+  [pbauer, razvanMiu, claudiaifrim] [#4783](https://github.com/plone/volto/issues/4783)
+- Display PAS validation errors. [tschorr] [#4801](https://github.com/plone/volto/issues/4801)
+- Added a CSS identifier to the Slate style menu options. @razvanMiu [#4846](https://github.com/plone/volto/issues/4846)
+- Use a Container from the registry in the Form component and fallback to the Semantic UI one. @sneridagh [#4849](https://github.com/plone/volto/issues/4849)
+- Update Brazilian Portuguese translations @ericof [#4853](https://github.com/plone/volto/issues/4853)
+
+### Bugfix
+
+- Convert header class to function. @gomez [#4767](https://github.com/plone/volto/issues/4767)
+- Do not break validation on required number field with value 0 @cekk [#4841](https://github.com/plone/volto/issues/4841)
+
+
 ## 17.0.0-alpha.9 (2023-06-01)
 
 ### Bugfix
