@@ -189,6 +189,7 @@ const Workflow = (props) => {
     <FormFieldWrapper
       id="state-select"
       title={intl.formatMessage(messages.state)}
+      intl={intl}
       {...props}
     >
       <Select
