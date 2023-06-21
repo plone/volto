@@ -384,8 +384,8 @@ blockSettingsTabFieldsetsInitialStateOpen
 
 excludeLinksAndReferencesMenuItem
     A Boolean, `false` by default.
-    The content menu links to the "links and references" view per default.
-    Exclude this menu item by setting excludeLinksAndReferencesMenuItem to true.
+    The content menu links to the {guilabel}`Links and references` view per default.
+    Exclude this menu item by setting `excludeLinksAndReferencesMenuItem` to `true`.
 
 ```
 
