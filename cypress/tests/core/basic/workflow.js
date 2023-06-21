@@ -18,5 +18,8 @@ describe('workflow Tests', () => {
           cy.findByText('Select…').click();
           cy.findByText('Publish').click();
           cy.findByTitle('Save').click();
+          cy.get('tr[aria-label="/my-page"]').within(() => {
+            cy.get('td > div').should('contain','Published');
+          })
     });
   });

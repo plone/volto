@@ -1,15 +1,12 @@
-import  { useEffect } from 'react';
+import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
-import {  useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { uniqBy } from 'lodash';
 import { toast } from 'react-toastify';
 import { defineMessages, useIntl } from 'react-intl';
 import { FormFieldWrapper, Icon, Toast } from '@plone/volto/components';
-import {
-  flattenToAppURL,
-  getWorkflowOptions,
-} from '@plone/volto/helpers';
+import { flattenToAppURL, getWorkflowOptions } from '@plone/volto/helpers';
 
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
@@ -160,25 +157,22 @@ const customSelectStyles = {
   }),
 };
 
+const Workflow = (props) => {
+  const intl = useIntl();
+  const dispatch = useDispatch();
+  const { loaded, transitions, currentStateValue } = useWorkflow();
+  const { data: content } = useContent();
+  const { pathname } = props;
+  useEffect(() => {
+    dispatch(getWorkflow(pathname));
+  }, [dispatch, pathname]);
 
-const Workflow =(props)=> {
- 
-  const intl=useIntl();
-  const dispatch=useDispatch();
-  const {loaded, history, transitions, currentStateValue }=useWorkflow();
-  const {data : content}=useContent();
-  const {pathname}=props;
-  useEffect(()=>{
-    dispatch(getWorkflow(pathname));    
-      },[dispatch,pathname]);
+  useEffect(() => {
+    dispatch(getWorkflow(pathname));
+    dispatch(getContent(pathname));
+  }, [dispatch, pathname, loaded]);
 
-      useEffect(()=>{
-        dispatch(getWorkflow(pathname));
-        dispatch(getContent(pathname));
-      },[dispatch,pathname,loaded]);
-
-
-const  transition = (selectedOption) => {
+  const transition = (selectedOption) => {
     dispatch(transitionWorkflow(flattenToAppURL(selectedOption.url)));
     toast.success(
       <Toast
@@ -189,107 +183,49 @@ const  transition = (selectedOption) => {
     );
   };
 
- const selectValue = (option) => {
-    const stateDecorator = {
-      marginLeft: '10px',
-      marginRight: '10px',
-      display: 'inline-block',
-      backgroundColor: option.color || null,
-      content: ' ',
-      height: '10px',
-      width: '10px',
-      borderRadius: '50%',
-    };
-    return (
-      <Fragment>
-        <span style={stateDecorator} />
-        <span className="Select-value-label">{option.label}</span>
-      </Fragment>
-    );
-  };
+  const { Placeholder } = props.reactSelect.components;
+  const Select = props.reactSelect.default;
 
- const optionRenderer = (option) => {
-    const stateDecorator = {
-      marginLeft: '10px',
-      marginRight: '10px',
-      display: 'inline-block',
-      backgroundColor:
-        currentStateValue.value === option.value
-          ? option.color
-          : null,
-      content: ' ',
-      height: '10px',
-      width: '10px',
-      borderRadius: '50%',
-      border:
-        currentStateValue.value !== option.value
-          ? `1px solid ${option.color}`
-          : null,
-    };
-
-    return (
-      <Fragment>
-        <span style={stateDecorator} />
-        <span style={{ marginRight: 'auto' }}>{option.label}</span>
-        <Icon name={checkSVG} size="24px" />
-      </Fragment>
-    );
-  };
-
-
-    const { Placeholder } = props.reactSelect.components;
-    const Select = props.reactSelect.default;
-
-    return (
-      <FormFieldWrapper
-        id="state-select"
-        title={intl.formatMessage(messages.state)}
-        {...props}
-      >
-        <Select
-          name="state-select"
-          className="react-select-container"
-          classNamePrefix="react-select"
-          isDisabled={
-            !content.review_state ||
-             transitions.length === 0
-          }
-          options={uniqBy(
-            transitions.map((transition) =>
-              getWorkflowOptions(transition),
-            ),
-            'label',
-          ).concat(currentStateValue)}
-          styles={customSelectStyles}
-          theme={selectTheme}
-          components={{
-            DropdownIndicator,
-            Placeholder,
-            Option,
-            SingleValue,
-          }}
-          onChange={transition}
-          value={
-            content.review_state
-              ? currentStateValue
-              : {
-                  label: intl.formatMessage(
-                    messages.messageNoWorkflow,
-                  ),
-                  value: 'noworkflow',
-                }
-          }
-          isSearchable={false}
-        />
-      </FormFieldWrapper>
-    );
-  }
+  return (
+    <FormFieldWrapper
+      id="state-select"
+      title={intl.formatMessage(messages.state)}
+      {...props}
+    >
+      <Select
+        name="state-select"
+        className="react-select-container"
+        classNamePrefix="react-select"
+        isDisabled={!content.review_state || transitions.length === 0}
+        options={uniqBy(
+          transitions.map((transition) => getWorkflowOptions(transition)),
+          'label',
+        ).concat(currentStateValue)}
+        styles={customSelectStyles}
+        theme={selectTheme}
+        components={{
+          DropdownIndicator,
+          Placeholder,
+          Option,
+          SingleValue,
+        }}
+        onChange={transition}
+        value={
+          content.review_state
+            ? currentStateValue
+            : {
+                label: intl.formatMessage(messages.messageNoWorkflow),
+                value: 'noworkflow',
+              }
+        }
+        isSearchable={false}
+      />
+    </FormFieldWrapper>
+  );
+};
 
 Workflow.propTypes = {
   pathname: PropTypes.string.isRequired,
 };
 
-
-export default compose(
-  injectLazyLibs(['reactSelect'])
-)(Workflow);
+export default compose(injectLazyLibs(['reactSelect']))(Workflow);
