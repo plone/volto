@@ -207,6 +207,9 @@ export function withSaveAsDraft(options) {
       const api = React.useMemo(() => draftApi(id, schema, ref, ref2, intl), [
         id,
         schema,
+        ref,
+        ref2,
+        intl,
       ]);
 
       return (
