@@ -2408,8 +2408,8 @@ msgid "Origin"
 msgstr "Origine"
 
 #: components/manage/LinksToItem/LinksToItem
-# defaultMessage: Overview and management of relations of all content items
-msgid "Overview and management of relations of all content items"
+# defaultMessage: Overview of relations of all content items
+msgid "Overview of relations of all content items"
 msgstr ""
 
 #: components/manage/Toolbar/Toolbar

@@ -31,8 +31,8 @@ const messages = defineMessages({
     defaultMessage: 'Links and references',
   },
   helpLinkRelationsControlPanel: {
-    id: 'Overview and management of relations of all content items',
-    defaultMessage: 'Overview and management of relations of all content items',
+    id: 'Overview of relations of all content items',
+    defaultMessage: 'Overview of relations of all content items',
   },
 });
 
