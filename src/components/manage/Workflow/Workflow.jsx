@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { useDispatch } from 'react-redux';
@@ -172,16 +172,19 @@ const Workflow = (props) => {
     dispatch(getContent(pathname));
   }, [dispatch, pathname, loaded]);
 
-  const transition = (selectedOption) => {
-    dispatch(transitionWorkflow(flattenToAppURL(selectedOption.url)));
-    toast.success(
-      <Toast
-        success
-        title={intl.formatMessage(messages.messageUpdated)}
-        content=""
-      />,
-    );
-  };
+  const transition = useCallback(
+    (selectedOption) => {
+      dispatch(transitionWorkflow(flattenToAppURL(selectedOption.url)));
+      toast.success(
+        <Toast
+          success
+          title={intl.formatMessage(messages.messageUpdated)}
+          content=""
+        />,
+      );
+    },
+    [dispatch, intl],
+  );
 
   const { Placeholder } = props.reactSelect.components;
   const Select = props.reactSelect.default;
