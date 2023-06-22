@@ -65,9 +65,7 @@ const ConfirmAutoSave = ({ onUpdate, onClose, userMessage }) => {
   const handleClickCancel = () => onClose();
 
   return (
-    <div
-      className='toast-box-center'
-    >
+    <div className="toast-box-center">
       <div>{userMessage}</div>
       <Button
         icon
@@ -75,7 +73,11 @@ const ConfirmAutoSave = ({ onUpdate, onClose, userMessage }) => {
         className="save toast-box"
         onClick={handleClickOK}
       >
-        <Icon name={checkSVG} size="24px" className="circled toast-box-blue-icon" />
+        <Icon
+          name={checkSVG}
+          size="24px"
+          className="circled toast-box-blue-icon"
+        />
       </Button>
       <Button
         icon
@@ -83,7 +85,11 @@ const ConfirmAutoSave = ({ onUpdate, onClose, userMessage }) => {
         className="save toast-box"
         onClick={handleClickCancel}
       >
-        <Icon name={clearSVG} size="24px" className="circled toast-box-blue-icon" />
+        <Icon
+          name={clearSVG}
+          size="24px"
+          className="circled toast-box-blue-icon"
+        />
       </Button>
     </div>
   );
