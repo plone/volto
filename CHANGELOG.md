@@ -8,6 +8,13 @@
 
 <!-- towncrier release notes start -->
 
+## 16.21.1 (2023-06-23)
+
+### Bugfix
+
+- Added current page parameter to route in listing and search block pagination - Fix: #3868 @bipoza [#4159](https://github.com/plone/volto/issues/4159)
+
+
 ## 16.21.0 (2023-06-16)
 
 ### Feature
