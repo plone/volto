@@ -405,6 +405,7 @@ msgid "Assignments"
 msgstr "Esleipenak"
 
 #: helpers/Utils/saveAsDraft
+#: helpers/Utils/withSaveAsDraft
 # defaultMessage: Autosave found
 msgid "Autosave found"
 msgstr ""
@@ -1079,6 +1080,7 @@ msgid "Do you really want to delete this item?"
 msgstr "Elementu hau ezabatu egin nahi duzu?"
 
 #: helpers/Utils/saveAsDraft
+#: helpers/Utils/withSaveAsDraft
 # defaultMessage: Do you want to load it?
 msgid "Do you want to load it?"
 msgstr ""
@@ -3520,6 +3522,7 @@ msgid "The site configuration is outdated and needs to be upgraded."
 msgstr "Atariaren konfigurazioa zaharkituta dago eta eguneratu egin behar da."
 
 #: helpers/Utils/saveAsDraft
+#: helpers/Utils/withSaveAsDraft
 # defaultMessage: The version found is less recent than the server, do you want to load it (you can undo if you change your mind)?
 msgid "The version found is less recent than the server, do you want to load it (you can undo if you change your mind)?"
 msgstr ""
