@@ -849,3 +849,23 @@ Cypress.Commands.add('getTableSlate', (header = false) => {
   );
   return slate;
 });
+
+Cypress.Commands.add('configureListingWith', (contentType) => {
+  cy.get('.sidebar-container .tabs-wrapper .menu .item')
+    .contains('Block')
+    .click();
+  cy.get('.querystring-widget .fields').contains('Add criteria').click();
+  cy.get(
+    '.querystring-widget .fields:first-of-type .field:first-of-type .react-select__menu .react-select__option',
+  )
+    .contains('Type')
+    .click();
+
+  //insert Page
+  cy.get('.querystring-widget .fields:first-of-type > .field').click();
+  cy.get(
+    '.querystring-widget .fields:first-of-type > .field .react-select__menu .react-select__option',
+  )
+    .contains(contentType)
+    .click();
+});
