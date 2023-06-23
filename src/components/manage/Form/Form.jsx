@@ -11,8 +11,8 @@ import {
   getBlocksFieldname,
   getBlocksLayoutFieldname,
   messages,
-  withSaveAsDraft,
 } from '@plone/volto/helpers';
+import withSaveAsDraft from '@plone/volto/helpers/Utils/withSaveAsDraft';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import {
