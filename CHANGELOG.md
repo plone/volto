@@ -8,6 +8,18 @@
 
 <!-- towncrier release notes start -->
 
+## 17.0.0-alpha.14 (2023-06-23)
+
+### Feature
+
+- Added slug-based linked headings in `volto-slate`. @tiberiuichim, @nileshgulia1 [#4287](https://github.com/plone/volto/issues/4287)
+- Refactored Anontools components. @Tishasoumya-02 [#4845](https://github.com/plone/volto/issues/4845)
+
+### Bugfix
+
+- Update to version 6.0.5 of Plone backend. @davisagli [#4897](https://github.com/plone/volto/issues/4897)
+
+
 ## 17.0.0-alpha.13 (2023-06-15)
 
 ### Feature
