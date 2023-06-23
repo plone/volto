@@ -30,7 +30,7 @@ function getDisplayName(WrappedComponent) {
 }
 
 const mapSchemaToData = (schema, data) => {
-  if(!data) return {}
+  if (!data) return {};
   const dataKeys = Object.keys(data);
   return Object.assign(
     {},
