@@ -5,19 +5,24 @@ h4 {
   &:hover {
     a.anchor {
       svg {
-        visibility: unset;
+        opacity: 1;
+        transform: rotate(15deg);
       }
     }
   }
 
   a.anchor {
-    margin-left: -1ch;
-    float: left;
+    position: absolute;
+    display: inline-block;
+    margin-left: 5px;
+    vertical-align: middle;
 
     svg {
-      width: 1ch;
-      visibility: hidden;
-      transform: rotate(45deg);
+      width: 1.6ch;
+      fill: #42526e;
+      opacity: 0;
+      transform: rotate(15deg) translate(-8px, 2px);
+      transition: opacity 0.2s ease 0s, transform 0.2s ease 0s;
     }
   }
 }

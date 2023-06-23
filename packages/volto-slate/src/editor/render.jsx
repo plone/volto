@@ -1,8 +1,14 @@
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
+import { useLocation } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { useIntl } from 'react-intl';
 import { Node, Text } from 'slate';
 import cx from 'classnames';
 import { isEmpty, omit } from 'lodash';
+import { UniversalLink, Toast } from '@plone/volto/components';
+import { messages, addAppURL } from '@plone/volto/helpers';
+import useClipboard from '@plone/volto/hooks/clipboard/useClipboard';
 import config from '@plone/volto/registry';
 import linkSVG from '@plone/volto/icons/link.svg';
 
@@ -152,23 +158,55 @@ export const serializeNodesToHtml = (nodes) =>
   renderToStaticMarkup(serializeNodes(nodes));
 
 export const renderLinkElement = (tagName) => {
-  function LinkElement({ attributes, children, mode = 'edit' }) {
+  function LinkElement({
+    attributes,
+    children,
+    mode = 'edit',
+    className = null,
+  }) {
+    const { slate = {} } = config.settings;
     const Tag = tagName;
     const slug = attributes.id || '';
+    const location = useLocation();
+    const appPathname = addAppURL(location.pathname);
+    // eslint-disable-next-line no-unused-vars
+    const [copied, copy, setCopied] = useClipboard(
+      appPathname.concat(`#${slug}`),
+    );
+    const intl = useIntl();
 
-    return (
-      <Tag {...attributes}>
+    return slate.useLinkedHeadings === false ? (
+      <Tag {...attributes} className={className}>
+        {children}
+      </Tag>
+    ) : (
+      <Tag {...attributes} className={className}>
+        {children}
         {mode === 'view' && slug && (
-          <a class="anchor" aria-hidden="true" href={`#${slug}`}>
+          <UniversalLink
+            className="anchor"
+            aria-hidden="true"
+            tabIndex={-1}
+            href={`#${slug}`}
+          >
             <svg
               {...linkSVG.attributes}
               dangerouslySetInnerHTML={{ __html: linkSVG.content }}
-              width="2em"
               height={null}
+              onClick={() => {
+                copy();
+
+                toast.info(
+                  <Toast
+                    info
+                    title={intl.formatMessage(messages.success)}
+                    content={intl.formatMessage(messages.urlClipboardCopy)}
+                  />,
+                );
+              }}
             ></svg>
-          </a>
+          </UniversalLink>
         )}
-        {children}
       </Tag>
     );
   }
