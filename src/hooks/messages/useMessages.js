@@ -12,7 +12,7 @@ import { useSelector, shallowEqual } from 'react-redux';
 export function useMessages() {
   const messages = useSelector(
     (state) => state.messages.messages,
-    shallowEqual
+    shallowEqual,
   );
 
   return { messages };
