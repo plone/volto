@@ -25,7 +25,6 @@ const messages = defineMessages({
   },
 });
 
-
 function getDisplayName(WrappedComponent) {
   return WrappedComponent.displayName || WrappedComponent.name || 'Component';
 }
