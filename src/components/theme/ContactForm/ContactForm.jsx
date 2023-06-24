@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Portal } from 'react-portal';
 import { Container, Message, Icon } from 'semantic-ui-react';
@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 import { Form, Toolbar, Toast } from '@plone/volto/components';
 import { emailNotification } from '@plone/volto/actions';
 import { getBaseUrl, Helmet } from '@plone/volto/helpers';
-import { useEmailNotification } from '@plone/volto/hooks/emailNotification/useEmailNotification';
+import { useEmailNotification, useClient } from '@plone/volto/hooks';
 
 const messages = defineMessages({
   send: {
@@ -63,13 +63,9 @@ const ContactFormComponent = () => {
   const history = useHistory();
   const { pathname } = useLocation();
   const intl = useIntl();
-  const [isClient, setisClient] = useState(false);
+  const isClient = useClient();
 
   const { loaded, loading, error } = useEmailNotification();
-
-  useEffect(() => {
-    setisClient(true);
-  }, [isClient]);
 
   useEffect(() => {
     if (loading && loaded) {
