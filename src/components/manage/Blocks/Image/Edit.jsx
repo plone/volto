@@ -106,7 +106,7 @@ class Edit extends Component {
         url: nextProps.content['@id'],
         image_field: 'image',
         image_scales: { image: [nextProps.content.image] },
-        alt: nextProps.content?.title || '',
+        alt: '',
       });
     }
   }
