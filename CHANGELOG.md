@@ -8,6 +8,14 @@
 
 <!-- towncrier release notes start -->
 
+## 16.21.2 (2023-06-24)
+
+### Bugfix
+
+- Update to version 6.0.5 of Plone backend. @davisagli [#4897](https://github.com/plone/volto/issues/4897)
+- Fix "digital envelope routines::unsupported" error when running Volto 16 in Node 17+. @davisagli [#4901](https://github.com/plone/volto/issues/4901)
+
+
 ## 16.21.1 (2023-06-23)
 
 ### Bugfix

@@ -1,1 +1,0 @@
-Fix "digital envelope routines::unsupported" error when running Volto 16 in Node 17+. @davisagli
