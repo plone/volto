@@ -1,62 +1,51 @@
 # Images
 
-The goals for optimizing images are:
+Volto comes with an Image component that allows to load images in an optimal way.
 
-- serving proper size images to the client (using `srcset`s)
-- lazy loading images
+Features of the Image component are:
 
-The most basic example of image usage is an image block, or an image in Tinymce if using Classic UI.
-In both situations the user usually defines an alignment and a size for the image.
+- optimized lazy loading
+- automatic `srcset` generation, if given a content item or catalog brain
+- optional responsive width
 
-The alignment can be: left, centered, right, or full width.
+The component can accept all the regular html `<img>` attributes, as well as a few extra for the features described above.
 
-The size can be: small, medium, large.
-Depending on the site layout and design, these sizes can be fixed (in pixels) or fluid (in percentages).
+Setting the `loading="lazy"` attribute to the Image component also adds the `decoding="async"` attribute which is generally considered an improvement when loading images lazily.
+
+In order to render an image from a content object, you would use the component like this:
+
+```javascript
+import { Image } from '@plone/volto/components';
+
+<Image item={content} imageField="image" alt="" />;
+```
+
+This will generate the `src`, `srcset`, `width` and `height` attributes automatically for the given image.
+
+If the `responsive` prop is added, a class is applied that will make the image width responsive.
 
 ## Serving the right image size
 
-In order to achieve the first goal, images have to be rendered using a `picture` element and a `source` element with a `srcset` attribute.
+In order to serve the proper image size in every situation, a `sizes` attribute should be added to the Image component while rendering, this responsibility is left to the developer because it depends on where the image is rendered.
 
-```html
-<picture>
-  <source
-    srcset="
-      /image-400-uuid.jpg   400w,
-      /image-600-uuid.jpg   600w,
-      /image-800-uuid.jpg   800w,
-      /image-1000-uuid.jpg 1000w,
-      /image-1200-uuid.jpg 1200w
-    "
-    sizes="100vw"
-  />
-  <img
-    src="/image-placeholder.jpg"
-    alt="Alt text"
-    role="img"
-    width="960"
-    height="600"
-  />
-</picture>
+For example, if the image is rendered in a container that is always half as wide as the page, the `sizes` attribute should reflect that in order to properly inform the browser.
+
+```javascript
+<Image item={content} imageField="image" alt="" sizes="50vw" />
 ```
 
-This will allow the browser to choose the proper size to download from the server.
+If the image is rendered at full viewport width when the viewport is less than 900px wide, though, you can add a media condition to the `sizes` attribute.
 
-### Width and height
+```jsx
+<Image
+  item={content}
+  imageField="image"
+  alt=""
+  sizes="(max-width: 900px) 100vw, 50vw"
+/>
+```
 
-The important thing to note here is that we provide width and height in the `img` tag, those are used by the browser to define which space the image will take and avoid layout shift while loading the page. These information are to be taken from the backend. The backend will provide urls for each size for the `srcset` and the width and height attribute for each one.
+More info on this subject can be found at:
 
-The size of the image chosen by the user defines which of the combinations of width and height are used among those served by the backend.
-
-### Other discussion points
-
-_Should we render in the `srcset` the sizes that are bigger than the chosen one?_
-
-_In fluid layouts, the alignment decision made by the user will impact the actual width of the image, based on CSS rules. Should this be taken into account for `srcset` rendering?_
-
-Sizes are defined in the Volto config, or in the Tinymce controlpanel if using Classic UI.
-
-## Lazy loading
-
-Lazy loading can be achieved in Volto by rendering the `srcset` attribute only when the user scrolling the page gets close to the image. The placeholder is shown until then. An `IntersectionObserver` can take care of that.
-
-As a placeholder, we can use the smallest available image size provided by the backend (the `listing` scale at the time of this writing), which results in a blurred light version of the final image. The `width` and `height` attributes on the placeholder still need to be the ones of the final image.
+- <https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images>
+- <https://www.builder.io/blog/fast-images>
