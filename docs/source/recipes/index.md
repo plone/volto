@@ -18,6 +18,7 @@ environment-variables
 customizing-components
 customizing-views
 creating-views
+images
 i18n
 express
 lazyload

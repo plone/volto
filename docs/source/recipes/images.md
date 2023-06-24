@@ -36,7 +36,7 @@ For example, if the image is rendered in a container that is always half as wide
 
 If the image is rendered at full viewport width when the viewport is less than 900px wide, though, you can add a media condition to the `sizes` attribute.
 
-```jsx
+```javascript
 <Image
   item={content}
   imageField="image"
