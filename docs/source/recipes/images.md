@@ -1,42 +1,55 @@
+---
+myst:
+  html_meta:
+    "description": "Volto code recipe for images"
+    "property=og:description": "Volto code recipe for images"
+    "property=og:title": "Volto code recipe for images"
+    "keywords": "Plone, Volto, code, recipe, images"
+---
+
+(images-label)=
+
 # Images
 
-Volto comes with an Image component that allows to load images in an optimal way.
+Volto comes with an `Image` component that loads images in an optimal way.
 
-Features of the Image component are:
+Features of the `Image` component are the following.
 
-- optimized lazy loading
+- optimized [lazy loading](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/loading)
 - automatic `srcset` generation, if given a content item or catalog brain
 - optional responsive width
 
-The component can accept all the regular html `<img>` attributes, as well as a few extra for the features described above.
+The component can accept all the regular HTML `<img>` attributes and a few extra for the above features.
 
-Setting the `loading="lazy"` attribute to the Image component also adds the `decoding="async"` attribute which is generally considered an improvement when loading images lazily.
+Setting the `loading="lazy"` attribute to the `Image` component also adds the `decoding="async"` attribute.
+The [`async`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/decoding) attribute decodes the image asynchronously to reduce delay in presenting other content.
 
-In order to render an image from a content object, you would use the component like this:
+To render an image from a content object, you can use the component as shown in the following code snippet.
 
-```javascript
+```jsx
 import { Image } from '@plone/volto/components';
 
 <Image item={content} imageField="image" alt="" />;
 ```
 
-This will generate the `src`, `srcset`, `width` and `height` attributes automatically for the given image.
+This will generate the `src`, `srcset`, `width`, and `height` attributes automatically for the given image.
 
 If the `responsive` prop is added, a class is applied that will make the image width responsive.
 
 ## Serving the right image size
 
-In order to serve the proper image size in every situation, a `sizes` attribute should be added to the Image component while rendering, this responsibility is left to the developer because it depends on where the image is rendered.
+To serve the proper image size for the viewer's device, you should a `sizes` attribute to the `Image` component while rendering.
+This responsibility is left to the developer because it depends on where the image is rendered.
 
-For example, if the image is rendered in a container that is always half as wide as the page, the `sizes` attribute should reflect that in order to properly inform the browser.
+For example, if the image is rendered in a container that is always half as wide as the page, the `sizes` attribute should reflect that to properly inform the browser which image size to request and render.
 
-```javascript
+```jsx
 <Image item={content} imageField="image" alt="" sizes="50vw" />
 ```
 
-If the image is rendered at full viewport width when the viewport is less than 900px wide, though, you can add a media condition to the `sizes` attribute.
+If the image is rendered at full viewport width when the viewport is less than `900px` wide, though, you can add a media condition to the `sizes` attribute.
 
-```javascript
+```jsx
 <Image
   item={content}
   imageField="image"
@@ -45,7 +58,7 @@ If the image is rendered at full viewport width when the viewport is less than 9
 />
 ```
 
-More info on this subject can be found at:
+More information on this subject can be found at the following resources.
 
-- <https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images>
-- <https://www.builder.io/blog/fast-images>
+-   https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images
+-   https://www.builder.io/blog/fast-images
