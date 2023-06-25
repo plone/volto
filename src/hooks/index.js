@@ -1,1 +1,1 @@
-import { useBreadcrumbs } from '@plone/volto/hooks/breadcrumbs/useBreadcrumbs';
+export { useBreadcrumbs } from '@plone/volto/hooks/breadcrumbs/useBreadcrumbs';
