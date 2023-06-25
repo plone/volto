@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 
 import { getBreadcrumbs } from '@plone/volto/actions';
 import { getBaseUrl, hasApiExpander } from '@plone/volto/helpers';
-import { useBreadcrumbs } from '@plone/volto/hooks/breadcrumbs/useBreadcrumbs';
+import { useBreadcrumbs } from '@plone/volto/hooks';
 import { Icon } from '@plone/volto/components';
 import homeSVG from '@plone/volto/icons/home.svg';
 
