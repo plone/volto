@@ -38,7 +38,7 @@ If the `responsive` prop is added, a class is applied that will make the image w
 
 ## Serving the right image size
 
-To serve the proper image size for the viewer's device, you should a `sizes` attribute to the `Image` component while rendering.
+To serve the proper image size for the viewer's device, you should add a `sizes` attribute to the `Image` component while rendering.
 This responsibility is left to the developer because it depends on where the image is rendered.
 
 For example, if the image is rendered in a container that is always half as wide as the page, the `sizes` attribute should reflect that to properly inform the browser which image size to request and render.
@@ -60,5 +60,5 @@ If the image is rendered at full viewport width when the viewport is less than `
 
 More information on this subject can be found at the following resources.
 
--   https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images
--   https://www.builder.io/blog/fast-images
+- https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images
+- https://www.builder.io/blog/fast-images
