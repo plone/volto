@@ -1900,6 +1900,11 @@ msgstr ""
 msgid "Link"
 msgstr "Link"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Link copied to clipboard
+msgid "Link copied to clipboard"
+msgstr ""
+
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Link more
@@ -4301,9 +4306,14 @@ msgid "event_where"
 msgstr "Ort"
 
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: This website does not accept files larger than {limit}
+msgid "fileTooLarge"
+msgstr "Dateien, die größer sind als {limit}, dürfen nicht hochgeladen werden."
+
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: flush intIds and rebuild relations
 msgid "flush intIds and rebuild relations"
-msgstr "TODO Translation. IntIds neu generieren und Relationen neu katalogisieren"
+msgstr "IntIds neu generieren und Relationen neu katalogisieren"
 
 #: components/manage/Blocks/Teaser/schema
 # defaultMessage: Head title

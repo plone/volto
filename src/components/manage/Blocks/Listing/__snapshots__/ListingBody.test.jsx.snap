@@ -5,7 +5,7 @@ exports[`renders a ListingBody component 1`] = `
   className="emptyListing"
 >
   <div
-    className="ui inverted dimmer"
+    className="ui active transition visible inverted dimmer"
     onClick={[Function]}
   >
     <div
