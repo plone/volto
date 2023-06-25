@@ -27,7 +27,9 @@ The [`async`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/
 To render an image from a content object, you can use the component as shown in the following code snippet.
 
 ```jsx
-import { Image } from '@plone/volto/components';
+import config from '@plone/volto/registry';
+
+const Image = config.getComponent({ name: 'Image' }).component;
 
 <Image item={content} imageField="image" alt="" />;
 ```

@@ -8,7 +8,6 @@ import PropTypes from 'prop-types';
 import { Container as SemanticContainer } from 'semantic-ui-react';
 import { hasBlocksData, flattenHTMLToAppURL } from '@plone/volto/helpers';
 import RenderBlocks from '@plone/volto/components/theme/View/RenderBlocks';
-import { Image } from '@plone/volto/components';
 import config from '@plone/volto/registry';
 
 /**
@@ -18,6 +17,7 @@ import config from '@plone/volto/registry';
  * @returns {string} Markup of the component.
  */
 const NewsItemView = ({ content }) => {
+  const Image = config.getComponent({ name: 'Image' }).component;
   const Container =
     config.getComponent({ name: 'Container' }).component || SemanticContainer;
 

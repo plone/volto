@@ -114,6 +114,7 @@ const LeadImageSidebar = ({
                 imageField="image"
                 alt={data.image_caption || properties.image_caption || ''}
                 responsive={true}
+                sizes="188px"
               />
             )}
           </Segment>

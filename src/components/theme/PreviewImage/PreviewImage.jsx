@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 
-import { Image } from '@plone/volto/components';
 import config from '@plone/volto/registry';
 
 import DefaultImageSVG from '@plone/volto/components/manage/Blocks/Listing/default-image.svg';
@@ -9,6 +8,8 @@ import DefaultImageSVG from '@plone/volto/components/manage/Blocks/Listing/defau
  * Renders a preview image for a catalog brain result item.
  */
 function PreviewImage({ item, alt, ...rest }) {
+  const Image = config.getComponent({ name: 'Image' }).component;
+
   if (item.image_field && item.image_scales?.[item.image_field]?.[0]) {
     return (
       <Image item={item} imageField={item.image_field} alt={alt} {...rest} />

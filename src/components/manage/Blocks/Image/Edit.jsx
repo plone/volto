@@ -14,12 +14,7 @@ import loadable from '@loadable/component';
 import cx from 'classnames';
 import { isEqual } from 'lodash';
 
-import {
-  Icon,
-  Image,
-  ImageSidebar,
-  SidebarPortal,
-} from '@plone/volto/components';
+import { Icon, ImageSidebar, SidebarPortal } from '@plone/volto/components';
 import { createContent } from '@plone/volto/actions';
 import {
   flattenToAppURL,
@@ -28,6 +23,7 @@ import {
   withBlockExtensions,
   validateFileUploadSize,
 } from '@plone/volto/helpers';
+import config from '@plone/volto/registry';
 
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -250,6 +246,7 @@ class Edit extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const Image = config.getComponent({ name: 'Image' }).component;
     const { data } = this.props;
     const placeholder =
       this.props.data.placeholder ||
@@ -300,6 +297,20 @@ class Edit extends Component {
                   })()
                 : data.url
             }
+            sizes={(() => {
+              if (data.align === 'full') return '100vw';
+              if (data.align === 'center') {
+                if (data.size === 'l') return '100vw';
+                if (data.size === 'm') return '50vw';
+                if (data.size === 's') return '25vw';
+              }
+              if (data.align === 'left' || data.align === 'right') {
+                if (data.size === 'l') return '50vw';
+                if (data.size === 'm') return '25vw';
+                if (data.size === 's') return '15vw';
+              }
+              return undefined;
+            })()}
             alt={data.alt || ''}
             loading="lazy"
             responsive={true}

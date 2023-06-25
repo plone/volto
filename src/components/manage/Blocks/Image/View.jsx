@@ -5,13 +5,14 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Image, UniversalLink } from '@plone/volto/components';
+import { UniversalLink } from '@plone/volto/components';
 import cx from 'classnames';
 import {
   flattenToAppURL,
   isInternalURL,
   withBlockExtensions,
 } from '@plone/volto/helpers';
+import config from '@plone/volto/registry';
 
 /**
  * View image block class.
@@ -20,6 +21,8 @@ import {
  */
 export const View = ({ data, detached, properties }) => {
   const href = data?.href?.[0]?.['@id'] || '';
+
+  const Image = config.getComponent({ name: 'Image' }).component;
 
   return (
     <p
@@ -37,7 +40,7 @@ export const View = ({ data, detached, properties }) => {
           {(() => {
             const image = (
               <Image
-                className={cx('responsive', {
+                className={cx({
                   'full-width': data.align === 'full',
                   large: data.size === 'l',
                   medium: data.size === 'm',
@@ -72,8 +75,23 @@ export const View = ({ data, detached, properties }) => {
                       })()
                     : data.url
                 }
+                sizes={(() => {
+                  if (data.align === 'full') return '100vw';
+                  if (data.align === 'center') {
+                    if (data.size === 'l') return '100vw';
+                    if (data.size === 'm') return '50vw';
+                    if (data.size === 's') return '25vw';
+                  }
+                  if (data.align === 'left' || data.align === 'right') {
+                    if (data.size === 'l') return '50vw';
+                    if (data.size === 'm') return '25vw';
+                    if (data.size === 's') return '15vw';
+                  }
+                  return undefined;
+                })()}
                 alt={data.alt || ''}
                 loading="lazy"
+                responsive={true}
               />
             );
             if (href) {

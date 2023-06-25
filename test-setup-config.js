@@ -31,6 +31,9 @@ import {
   filterControlPanelsSchema,
 } from '@plone/volto/config/ControlPanels';
 
+import Image from '@plone/volto/components/theme/Image/Image';
+import PreviewImage from '@plone/volto/components/theme/PreviewImage/PreviewImage';
+
 import ListingBlockSchema from '@plone/volto/components/manage/Blocks/Listing/schema';
 
 // we need to do a redefinition here because of circular import issues
@@ -172,7 +175,10 @@ config.set('widgets', {
   default: BaseWidget('default'),
 });
 
-config.set('components', {});
+config.set('components', {
+  PreviewImage: { component: PreviewImage },
+  Image: { component: Image },
+});
 config.set('experimental', {
   addBlockButton: {
     enabled: false,

@@ -11,11 +11,8 @@ import cx from 'classnames';
 import { Message } from 'semantic-ui-react';
 import { isEqual } from 'lodash';
 
-import {
-  Image,
-  LeadImageSidebar,
-  SidebarPortal,
-} from '@plone/volto/components';
+import { LeadImageSidebar, SidebarPortal } from '@plone/volto/components';
+import config from '@plone/volto/registry';
 
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
 
@@ -82,6 +79,7 @@ class Edit extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const Image = config.getComponent({ name: 'Image' }).component;
     const { data, properties } = this.props;
     const placeholder =
       this.props.data.placeholder ||
@@ -113,7 +111,6 @@ class Edit extends Component {
         {hasImage && hasImageData && (
           <img
             className={className}
-            // TODO understand when this actually happens
             src={`data:${properties.image['content-type']};base64,${properties.image.data}`}
             width={properties.image.width}
             height={properties.image.height}
@@ -128,6 +125,13 @@ class Edit extends Component {
             className={className}
             item={properties}
             imageField="image"
+            sizes={(() => {
+              if (data.align === 'full' || data.align === 'center')
+                return '100vw';
+              if (data.align === 'left' || data.align === 'right')
+                return '50vw';
+              return undefined;
+            })()}
             alt={altText}
           />
         )}

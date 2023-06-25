@@ -48,6 +48,7 @@ Array [
       className="responsive"
       decoding="async"
       loading="lazy"
+      sizes="188px"
       src="image"
       style={
         Object {

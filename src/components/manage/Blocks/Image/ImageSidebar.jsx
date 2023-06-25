@@ -61,21 +61,10 @@ const ImageSidebar = (props) => {
                   ? undefined
                   : isInternalURL(data.url)
                   ? // Backwards compat in the case that the block is storing the full server URL
-                    (() => {
-                      if (data.size === 'l')
-                        return `${flattenToAppURL(data.url)}/@@images/image`;
-                      if (data.size === 'm')
-                        return `${flattenToAppURL(
-                          data.url,
-                        )}/@@images/image/preview`;
-                      if (data.size === 's')
-                        return `${flattenToAppURL(
-                          data.url,
-                        )}/@@images/image/mini`;
-                      return `${flattenToAppURL(data.url)}/@@images/image`;
-                    })()
+                    `${flattenToAppURL(data.url)}/@@images/image/preview`
                   : data.url
               }
+              sizes="188px"
               alt={intl.formatMessage(messages.preview)}
               loading="lazy"
               responsive={true}
