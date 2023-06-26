@@ -35,7 +35,7 @@ import textSVG from '@plone/volto/icons/subtext.svg';
 
 export { TextBlockView, TextBlockEdit, TextBlockSchema };
 
-export default (config) => {
+export default function applyConfig(config) {
   config.settings.slate = {
     // TODO: should we inverse order? First here gets executed last
     textblockExtensions: [
@@ -165,4 +165,4 @@ export default (config) => {
     restricted: true,
   };
   return config;
-};
+}
