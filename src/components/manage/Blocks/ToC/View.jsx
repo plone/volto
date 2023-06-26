@@ -56,7 +56,14 @@ const View = (props) => {
         const items = [];
         if (!level || !levels.includes(level)) return;
         tocEntriesLayout.push(id);
-        tocEntries[id] = { level, title: title || block.plaintext, items, id };
+        tocEntries[id] = {
+          level,
+          title: title || block.plaintext,
+          items,
+          id,
+          override_toc: block.override_toc,
+          plaintext: block.plaintext,
+        };
         if (level < rootLevel) {
           rootLevel = level;
         }
