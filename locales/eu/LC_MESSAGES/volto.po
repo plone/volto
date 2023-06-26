@@ -170,7 +170,7 @@ msgstr "Gehitu irizpidea"
 msgid "Add date"
 msgstr "Gehitu data"
 
-#: components/manage/Blocks/Container/Edit
+#: components/manage/Blocks/Container/SimpleContainerToolbar
 # defaultMessage: Add element to container
 msgid "Add element to container"
 msgstr ""
@@ -736,7 +736,7 @@ msgstr "Kontaktu-formularioa"
 msgid "Contained items"
 msgstr "Barneko elementuak"
 
-#: components/manage/Blocks/Container/Edit
+#: components/manage/Blocks/Container/SimpleContainerToolbar
 # defaultMessage: Container settings
 msgid "Container settings"
 msgstr ""

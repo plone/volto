@@ -174,7 +174,7 @@ msgstr "Lisää ehto"
 msgid "Add date"
 msgstr "Lisää päivä"
 
-#: components/manage/Blocks/Container/Edit
+#: components/manage/Blocks/Container/SimpleContainerToolbar
 # defaultMessage: Add element to container
 msgid "Add element to container"
 msgstr ""
@@ -740,7 +740,7 @@ msgstr "Yhteydenottolomake"
 msgid "Contained items"
 msgstr "Sisältö"
 
-#: components/manage/Blocks/Container/Edit
+#: components/manage/Blocks/Container/SimpleContainerToolbar
 # defaultMessage: Container settings
 msgid "Container settings"
 msgstr ""

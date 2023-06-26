@@ -163,7 +163,7 @@ msgstr ""
 msgid "Add date"
 msgstr ""
 
-#: components/manage/Blocks/Container/Edit
+#: components/manage/Blocks/Container/SimpleContainerToolbar
 # defaultMessage: Add element to container
 msgid "Add element to container"
 msgstr ""
@@ -729,7 +729,7 @@ msgstr ""
 msgid "Contained items"
 msgstr ""
 
-#: components/manage/Blocks/Container/Edit
+#: components/manage/Blocks/Container/SimpleContainerToolbar
 # defaultMessage: Container settings
 msgid "Container settings"
 msgstr ""

@@ -174,7 +174,7 @@ msgstr "Añadir criterio"
 msgid "Add date"
 msgstr "Añadir fecha"
 
-#: components/manage/Blocks/Container/Edit
+#: components/manage/Blocks/Container/SimpleContainerToolbar
 # defaultMessage: Add element to container
 msgid "Add element to container"
 msgstr ""
@@ -740,7 +740,7 @@ msgstr "Formulario de contacto"
 msgid "Contained items"
 msgstr "Elementos contenidos"
 
-#: components/manage/Blocks/Container/Edit
+#: components/manage/Blocks/Container/SimpleContainerToolbar
 # defaultMessage: Container settings
 msgid "Container settings"
 msgstr ""

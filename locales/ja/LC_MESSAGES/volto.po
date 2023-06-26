@@ -171,7 +171,7 @@ msgstr "基準を追加"
 msgid "Add date"
 msgstr "日付を追加"
 
-#: components/manage/Blocks/Container/Edit
+#: components/manage/Blocks/Container/SimpleContainerToolbar
 # defaultMessage: Add element to container
 msgid "Add element to container"
 msgstr ""
@@ -737,7 +737,7 @@ msgstr "お問い合わせフォーム"
 msgid "Contained items"
 msgstr "含まれるアイテム"
 
-#: components/manage/Blocks/Container/Edit
+#: components/manage/Blocks/Container/SimpleContainerToolbar
 # defaultMessage: Container settings
 msgid "Container settings"
 msgstr ""

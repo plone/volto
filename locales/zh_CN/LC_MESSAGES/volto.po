@@ -169,7 +169,7 @@ msgstr "添加标准"
 msgid "Add date"
 msgstr "添加日期"
 
-#: components/manage/Blocks/Container/Edit
+#: components/manage/Blocks/Container/SimpleContainerToolbar
 # defaultMessage: Add element to container
 msgid "Add element to container"
 msgstr ""
@@ -735,7 +735,7 @@ msgstr "联系表单"
 msgid "Contained items"
 msgstr "包含的项目"
 
-#: components/manage/Blocks/Container/Edit
+#: components/manage/Blocks/Container/SimpleContainerToolbar
 # defaultMessage: Container settings
 msgid "Container settings"
 msgstr ""
