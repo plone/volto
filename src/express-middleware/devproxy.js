@@ -37,7 +37,7 @@ function getEnv() {
   return _env;
 }
 
-export default function () {
+export default function devProxyMiddleware() {
   const middleware = express.Router();
   const devProxy = createProxyMiddleware(filter, {
     selfHandleResponse: true,

@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 
-export default ({ data, detached, children }) => {
+export default function Style({ data, detached, children }) {
   return (
     <div
       className={cx(
@@ -25,4 +25,4 @@ export default ({ data, detached, children }) => {
       </div>
     </div>
   );
-};
+}
