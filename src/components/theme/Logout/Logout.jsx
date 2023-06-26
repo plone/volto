@@ -6,7 +6,7 @@ import qs from 'query-string';
 import { Login, Toast } from '@plone/volto/components';
 import { logout, purgeMessages } from '@plone/volto/actions';
 import { toast } from 'react-toastify';
-import { useToken } from '@plone/volto/hooks/';
+import { useToken } from '@plone/volto/hooks';
 
 const messages = defineMessages({
   loggedOut: {
