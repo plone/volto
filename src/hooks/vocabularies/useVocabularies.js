@@ -1,5 +1,4 @@
 import { useSelector, shallowEqual } from 'react-redux';
-const vocabulary = 'plone.app.vocabularies.Keywords';
 
 /**
  * useVocabularies hook
@@ -10,7 +9,7 @@ const vocabulary = 'plone.app.vocabularies.Keywords';
  * @export
  * @return {{ items }}
  */
-export function useVocabularies() {
+export function useVocabularies(vocabulary = '') {
   const items = useSelector(
     (state) =>
       state.vocabularies[vocabulary] && state.vocabularies[vocabulary].items

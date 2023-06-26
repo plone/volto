@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { getVocabulary } from '@plone/volto/actions';
-import { useVocabularies } from '@plone/volto/hooks/vocabularies/useVocabularies';
+import { useVocabularies } from '@plone/volto/hooks';
 const vocabulary = 'plone.app.vocabularies.Keywords';
 
 const SearchTags = () => {
@@ -13,7 +13,7 @@ const SearchTags = () => {
     dispatch(getVocabulary({ vocabNameOrURL: vocabulary }));
   }, [dispatch]);
 
-  const items = useVocabularies();
+  const items = useVocabularies(vocabulary);
 
   return items && items.length > 0 ? (
     <div>
