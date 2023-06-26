@@ -9,7 +9,8 @@ import qs from 'query-string';
 
 import { deleteContent, getContent } from '@plone/volto/actions';
 import { Toolbar } from '@plone/volto/components';
-import { useContent } from '@plone/volto/hooks/content/useContent';
+import { useContent } from '@plone/volto/hooks';
+
 const messages = defineMessages({
   delete: {
     id: 'Delete',
@@ -48,7 +49,13 @@ const Delete = () => {
     history.push(
       returnUrl || pathname.replace('/delete', '').replace(/\/[^/]*$/, ''),
     );
-  }, [history, pathname, returnUrl, deleteRequest]);
+  }, [
+    history,
+    pathname,
+    returnUrl,
+    deleteRequest.loading,
+    deleteRequest.loaded,
+  ]);
 
   const onSubmit = () => {
     dispatch(deleteContent(pathname.replace('/delete', '')));
