@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { Form, Input } from 'semantic-ui-react';
-import { PropTypes } from 'prop-types';
 import { defineMessages, useIntl } from 'react-intl';
 
 import { Icon } from '@plone/volto/components';
@@ -18,14 +17,14 @@ const messages = defineMessages({
   },
 });
 
-const SearchWidget = ({ pathname }) => {
+const SearchWidget = () => {
   const intl = useIntl();
   const [text, setText] = useState('');
   const history = useHistory();
   const onChangeText = (event, { value }) => {
     setText(value);
   };
-
+  const pathname = useLocation();
   const onSubmit = (event) => {
     const path =
       pathname?.length > 0 ? `&path=${encodeURIComponent(pathname)}` : '';
@@ -55,10 +54,6 @@ const SearchWidget = ({ pathname }) => {
       </Form.Field>
     </Form>
   );
-};
-
-SearchWidget.propTypes = {
-  pathname: PropTypes.string.isRequired,
 };
 
 export default SearchWidget;
