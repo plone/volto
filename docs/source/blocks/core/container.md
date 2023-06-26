@@ -41,6 +41,9 @@ The container component has particular properties:
     This will be passed to the `BlocksForm` component used by the container.
     It is used to customize the block wrapper if the block that you are building needs to have a different one for the user experience of your block.
 
+`containerToolbar`
+:   You can customize the container's control toolbar (the one on the top) by providing your own.
+
 `maxLength`
 :   The maximum number of elements allowed inside the grid block.
     The default value is four elements.
