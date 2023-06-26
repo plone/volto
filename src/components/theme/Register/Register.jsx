@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import { Helmet } from '@plone/volto/helpers';
 import { useDispatch } from 'react-redux';
 import { defineMessages, useIntl } from 'react-intl';
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
+import { Helmet } from '@plone/volto/helpers';
 import { Form, Toast } from '@plone/volto/components';
 import { createUser } from '@plone/volto/actions';
 import { useUsers } from '@plone/volto/hooks/users/useUsers';
