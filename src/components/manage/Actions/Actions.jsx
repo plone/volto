@@ -9,9 +9,9 @@ import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import { cut, copy, copyContent, moveContent } from '@plone/volto/actions';
 import { getBaseUrl } from '@plone/volto/helpers';
 import { ContentsRenameModal, Toast } from '@plone/volto/components';
-import { useContent } from '@plone/volto/hooks';
-import { useActions } from '@plone/volto/hooks';
-import { useClipboard } from '@plone/volto/hooks';
+import { useContent } from '@plone/volto/hooks/content/useContent';
+import { useActions } from '@plone/volto/hooks/actions/useActions';
+import useClipboard from '@plone/volto/hooks/clipboard/useClipboard';
 
 const messages = defineMessages({
   cut: {
