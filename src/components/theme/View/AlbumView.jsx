@@ -20,6 +20,11 @@ const AlbumView = ({ content }) => {
     setopenIndex(openIndexes);
   };
 
+  const prevImage = () => {
+    const openIndexes = (openIndex - 1) % content.items.length;
+    setopenIndex(openIndexes);
+  };
+
   return (
     <Container className="view-wrapper">
       <article id="content">
@@ -80,7 +85,7 @@ const AlbumView = ({ content }) => {
                           <Grid.Column width={2} textAlign="center">
                             <Button
                               className="gallery noborder"
-                              onClick={nextImage}
+                              onClick={prevImage}
                               style={{ margin: 0 }}
                             >
                               <Icon
