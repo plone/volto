@@ -12,6 +12,7 @@ import { ContentsRenameModal, Toast } from '@plone/volto/components';
 import { useContent } from '@plone/volto/hooks';
 import { useActions } from '@plone/volto/hooks';
 import { useClipboard } from '@plone/volto/hooks';
+
 const messages = defineMessages({
   cut: {
     id: 'Cut',
