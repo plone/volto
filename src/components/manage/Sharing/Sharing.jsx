@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { Plug, Pluggable } from '@plone/volto/components/manage/Pluggable';
 import { Helmet } from '@plone/volto/helpers';
 import { useDispatch } from 'react-redux';
