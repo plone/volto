@@ -1,6 +1,6 @@
 # Gettext Message File for Plone
 # Translators:
-# Leonardo J. Caballero G. <leonardocaballero@gmail.com>, 2019, 2022.
+# Leonardo J. Caballero G. <leonardocaballero@gmail.com>, 2019, 2022, 2023.
 # Mikel Larreategi <mlarreategi@codesyntax.com>, 2021, 2022.
 msgid ""
 msgstr ""
