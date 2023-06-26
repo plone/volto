@@ -1,13 +1,13 @@
 import { getQueryStringResults } from '@plone/volto/actions';
 import { resolveBlockExtensions } from '@plone/volto/helpers';
 
-const getListingBlockAsyncData = ({
+export default function getListingBlockAsyncData({
   dispatch,
   id,
   data,
   path,
   blocksConfig,
-}) => {
+}) {
   const { resolvedExtensions } = resolveBlockExtensions(data, blocksConfig);
 
   return [
@@ -24,6 +24,4 @@ const getListingBlockAsyncData = ({
       ),
     ),
   ];
-};
-
-export default getListingBlockAsyncData;
+}
