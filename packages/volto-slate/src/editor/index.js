@@ -1,9 +1,9 @@
 import * as slateConfig from './config';
 import installDefaultPlugins from './plugins';
-export SlateEditor from './SlateEditor';
-export EditorReference from './EditorReference';
+export { default as SlateEditor } from './SlateEditor';
+export { default as EditorReference } from './EditorReference';
 
-export default (config) => {
+export default function applyConfig(config) {
   config.settings.slate = {
     ...slateConfig,
     // showExpandedToolbar: false,
@@ -11,4 +11,4 @@ export default (config) => {
   };
   config = installDefaultPlugins(config);
   return config;
-};
+}
