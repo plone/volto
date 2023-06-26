@@ -13,7 +13,7 @@ import orderedListSVG from '@plone/volto/icons/list-numbered.svg';
 import blockquoteSVG from '@plone/volto/icons/quote.svg';
 import calloutSVG from '@plone/volto/icons/megaphone.svg';
 
-export default function (props) {
+export default function Styles(props) {
   const createInlineStyleButton = props.draftJsCreateInlineStyleButton.default;
   const createBlockStyleButton = props.draftJsCreateBlockStyleButton.default;
 
