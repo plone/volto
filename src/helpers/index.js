@@ -72,6 +72,7 @@ export {
 export { default as langmap } from './LanguageMap/LanguageMap';
 export { default as Helmet } from './Helmet/Helmet';
 export { default as FormValidation } from './FormValidation/FormValidation';
+export { validateFileUploadSize } from './FormValidation/FormValidation';
 export {
   difference,
   getColor,

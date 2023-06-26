@@ -1,5 +1,8 @@
 import { map, uniq, keys, intersection, isEmpty } from 'lodash';
 import { messages } from '../MessageLabels/MessageLabels';
+import config from '@plone/volto/registry';
+import { toast } from 'react-toastify';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
 
 /**
  * Will return the intl message if invalid
@@ -203,7 +206,7 @@ const validateRequiredFields = (
     const type = schema.properties[requiredField]?.type;
     const widget = schema.properties[requiredField]?.widget;
 
-    let isEmpty = !formData[requiredField];
+    let isEmpty = !formData[requiredField] && formData[requiredField] !== 0;
     if (!isEmpty) {
       if (type === 'array') {
         isEmpty = formData[requiredField]
@@ -369,3 +372,29 @@ class FormValidation {
 }
 
 export default FormValidation;
+
+/**
+ * Check if a file upload is within the maximum size limit.
+ * @param {File} file
+ * @param {Function} intlFunc
+ * @returns {Boolean}
+ */
+export const validateFileUploadSize = (file, intlFunc) => {
+  const isValid =
+    !config.settings.maxFileUploadSize ||
+    file.size <= config.settings.maxFileUploadSize;
+  if (!isValid) {
+    toast.error(
+      <Toast
+        error
+        title={intlFunc(messages.error)}
+        content={intlFunc(messages.fileTooLarge, {
+          limit: `${Math.floor(
+            config.settings.maxFileUploadSize / 1024 / 1024,
+          )}MB`,
+        })}
+      />,
+    );
+  }
+  return isValid;
+};

@@ -28,15 +28,17 @@ class ScrollToTop extends React.Component {
    * @memberof ScrollToTop
    */
   componentDidUpdate(prevProps) {
+    const { location } = this.props;
     const noInitialBlocksFocus = // Do not scroll on /edit
       config.blocks?.initialBlocksFocus === null
         ? this.props.location?.pathname.slice(-5) !== '/edit'
         : true;
+
+    const isHash = location?.hash || location?.pathname.hash;
     if (
-      !this.props.location?.hash &&
-      !this.props.location?.pathname.hash &&
+      !isHash &&
       noInitialBlocksFocus &&
-      this.props.location?.pathname !== prevProps.location?.pathname
+      location?.pathname !== prevProps.location?.pathname
     ) {
       window.scrollTo(0, 0);
     }

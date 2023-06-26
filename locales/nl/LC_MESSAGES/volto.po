@@ -287,6 +287,16 @@ msgstr ""
 msgid "Addon upgraded succesfuly"
 msgstr ""
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Advanced facet?
+msgid "Advanced facet?"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Advanced facets are initially hidden and displayed on demand
+msgid "Advanced facets are initially hidden and displayed on demand"
+msgstr ""
+
 #: config/Views
 # defaultMessage: Album view
 msgid "Album view"
@@ -1272,9 +1282,9 @@ msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Enter your new password. Minimum 5 characters.
-msgid "Enter your new password. Minimum 5 characters."
-msgstr "Geef een nieuw wachtwoord op. Minimaal 5 karakters."
+# defaultMessage: Enter your new password. Minimum 8 characters.
+msgid "Enter your new password. Minimum 8 characters."
+msgstr "Geef een nieuw wachtwoord op. Minimaal 8 karakters."
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Enter your username for verification.
@@ -1592,6 +1602,11 @@ msgstr ""
 msgid "Hide facet?"
 msgstr ""
 
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: Hide filters
+msgid "Hide filters"
+msgstr ""
+
 #: components/manage/History/History
 #: components/manage/Toolbar/More
 # defaultMessage: History
@@ -1888,9 +1903,19 @@ msgstr ""
 msgid "Left"
 msgstr ""
 
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: Less filters
+msgid "Less filters"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Link
 msgid "Link"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Link copied to clipboard
+msgid "Link copied to clipboard"
 msgstr ""
 
 #: components/manage/Blocks/HeroImageLeft/schema
@@ -2095,6 +2120,11 @@ msgstr ""
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: More
 msgid "More"
+msgstr ""
+
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: More filters
+msgid "More filters"
 msgstr ""
 
 #: components/manage/Controlpanels/UpgradeControlPanel
@@ -3104,6 +3134,11 @@ msgstr ""
 #: components/theme/Comments/Comments
 # defaultMessage: Show Replies
 msgid "Show Replies"
+msgstr ""
+
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: Show filters
+msgid "Show filters"
 msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
@@ -4281,6 +4316,11 @@ msgstr ""
 #: components/theme/EventDetails/EventDetails
 # defaultMessage: Where
 msgid "event_where"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: This website does not accept files larger than {limit}
+msgid "fileTooLarge"
 msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
