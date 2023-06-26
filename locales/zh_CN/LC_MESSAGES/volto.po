@@ -3211,13 +3211,8 @@ msgid "Some items are also a folder."
 msgstr ""
 
 #: components/manage/Contents/Contents
-# defaultMessage: Some items are referenced by other contents.
-msgid "Some items are referenced by other contents."
-msgstr ""
-
-#: components/manage/Contents/Contents
-# defaultMessage: Some items are referenced by other contents.
-msgid "Some items are referenced by other contents."
+# defaultMessage: Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken.
+msgid "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
 msgstr ""
 
 #: components/manage/Controlpanels/Relations/Relations
@@ -3575,13 +3570,8 @@ msgid "This item is also a folder."
 msgstr ""
 
 #: components/manage/Contents/Contents
-# defaultMessage: This item is referenced by other items. By
-msgid "This item is referenced by other items. Bydeleting it {brokenReferences}"
-msgstr ""
-
-#: components/manage/Contents/Contents
-# defaultMessage: This item is referenced by other items. By
-msgid "This item is referenced by other items. Bydeleting it {brokenReferences}"
+# defaultMessage: This item is referenced by other items. By deleting it {brokenReferences} {variation} will be broken.
+msgid "This item is referenced by other items. By deleting it {brokenReferences} {variation} will be broken."
 msgstr ""
 
 #: components/manage/LockingToastsFactory/LockingToastsFactory

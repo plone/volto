@@ -1236,10 +1236,8 @@ class Contents extends Component {
                                   <>
                                     <br />
                                     <FormattedMessage
-                                      id="Some items are referenced by other contents.
-                            By deleting them {brokenReferences} {variation} will be broken."
-                                      defaultMessage="Some items are referenced by other contents.
-                            By deleting them {brokenReferences} {variation} will be broken."
+                                      id="Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
+                                      defaultMessage="Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
                                       values={{
                                         brokenReferences: (
                                           <span>
@@ -1272,10 +1270,8 @@ class Contents extends Component {
                                 {this.state.brokenReferences > 0 && (
                                   <>
                                     <FormattedMessage
-                                      id="Some items are referenced by other contents.
-                              By deleting them {brokenReferences} {variation} will be broken."
-                                      defaultMessage="Some items are referenced by other contents.
-                              By deleting them {brokenReferences} {variation} will be broken."
+                                      id="Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
+                                      defaultMessage="Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
                                       values={{
                                         brokenReferences: (
                                           <span>
@@ -1339,12 +1335,8 @@ class Contents extends Component {
                                 <>
                                   <br />
                                   <FormattedMessage
-                                    id="This item is referenced by other items. By
-                                deleting it {brokenReferences}
-                                {variation} will be broken."
-                                    defaultMessage="This item is referenced by other items. By
-                                deleting it {brokenReferences}
-                                {variation} will be broken."
+                                    id="This item is referenced by other items. By deleting it {brokenReferences} {variation} will be broken."
+                                    defaultMessage="This item is referenced by other items. By deleting it {brokenReferences} {variation} will be broken."
                                     values={{
                                       brokenReferences: (
                                         <span>
@@ -1382,12 +1374,8 @@ class Contents extends Component {
                           ) : this.state.brokenReferences > 0 ? (
                             <>
                               <FormattedMessage
-                                id="This item is referenced by other items. By
-                              deleting it {brokenReferences}
-                              {variation} will be broken."
-                                defaultMessage="This item is referenced by other items. By
-                              deleting it {brokenReferences}
-                              {variation} will be broken."
+                                id="This item is referenced by other items. By deleting it {brokenReferences} {variation} will be broken."
+                                defaultMessage="This item is referenced by other items. By deleting it {brokenReferences} {variation} will be broken."
                                 values={{
                                   brokenReferences: (
                                     <span>{this.state.brokenReferences}</span>
