@@ -62,7 +62,7 @@ const View = ({ data, tocEntries }) => {
 
     secondHalfNested.forEach((item) => item.classList.add('hidden-dropdown'));
 
-    const diff = firstHalfNested.length - firstHalfNestedHiddenItems.length - 1;
+    const diff = firstHalfNested.length - firstHalfNestedHiddenItems.length;
     const secondHalfNestedShownItems = secondHalfNested.slice(diff);
     secondHalfNestedShownItems.forEach((item) =>
       item.classList.remove('hidden-dropdown'),
