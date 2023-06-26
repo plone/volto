@@ -1,0 +1,1 @@
+Fix hook dependency in `useDetectClickOutside` helper hook. This fixes an missbehave in its lifecycle. @sneridagh
