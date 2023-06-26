@@ -41,7 +41,7 @@ const Logout = ({ location }) => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (token) {
+    if (!token) {
       history.replace(returnUrl || '/');
       if (!toast.isActive('loggedOut')) {
         toast.info(
