@@ -37,8 +37,7 @@ export function useDetectClickOutside({
         }
       }
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [ref.current],
+    [onTriggered],
   );
 
   useEffect(() => {
