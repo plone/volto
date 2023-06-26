@@ -32,7 +32,7 @@ const DefaultTemplate = ({
       return 'h3';
     }
   };
-  const TitleTag = getTitleTag(headlineTag);
+  const TitleTag = headlineTag ? getTitleTag(headlineTag) : 'h3';
 
   return (
     <>
