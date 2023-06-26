@@ -1,31 +1,17 @@
 import { useState } from 'react';
-import { defineMessages, useIntl } from 'react-intl';
+import { useIntl } from 'react-intl';
 import { pickBy } from 'lodash';
-import { BlocksForm, SidebarPortal, Icon } from '@plone/volto/components';
+import { BlocksForm, SidebarPortal } from '@plone/volto/components';
 import PropTypes from 'prop-types';
-import { Button } from 'semantic-ui-react';
 import ContainerData from './Data';
 import DefaultEditBlockWrapper from './EditBlockWrapper';
+import SimpleContainerToolbar from './SimpleContainerToolbar';
 import { v4 as uuid } from 'uuid';
 import { blocksFormGenerator } from '@plone/volto/helpers';
 
 import DefaultTemplateChooser from '@plone/volto/components/manage/TemplateChooser/TemplateChooser';
 
-import addSVG from '@plone/volto/icons/add.svg';
-import configSVG from '@plone/volto/icons/configuration.svg';
-
 import config from '@plone/volto/registry';
-
-const messages = defineMessages({
-  addBlock: {
-    id: 'Add element to container',
-    defaultMessage: 'Add element to container',
-  },
-  blockSettings: {
-    id: 'Container settings',
-    defaultMessage: 'Container settings',
-  },
-});
 
 const ContainerBlockEdit = (props) => {
   const {
@@ -49,6 +35,8 @@ const ContainerBlockEdit = (props) => {
   const allowedBlocks = blockConfig.allowedBlocks;
   const maxLength = blockConfig.maxLength || 8;
   const templates = blockConfig.templates;
+  const ContainerToolbar =
+    blockConfig.containerToolbar || SimpleContainerToolbar;
 
   // Custom components from config or default ones
   const TemplateChooser = blockConfig.templateChooser || DefaultTemplateChooser;
@@ -96,39 +84,27 @@ const ContainerBlockEdit = (props) => {
     allowedBlocks.includes(key),
   );
 
+  const containerProps = {
+    ...props,
+    allowedBlocks,
+    allowedBlocksConfig,
+    blocksConfig,
+    blockType,
+    maxLength,
+    metadata,
+    onAddNewBlock,
+    onSelectTemplate,
+    selectedBlock,
+    setSelectedBlock,
+    templates,
+  };
+
   return (
     <>
       {data.headline && <h2 className="headline">{data.headline}</h2>}
 
-      {selected && (
-        <div className="toolbar">
-          <Button.Group>
-            <Button
-              aria-label={intl.formatMessage(messages.addBlock)}
-              icon
-              basic
-              disabled={data?.blocks_layout?.items?.length >= maxLength}
-              onClick={(e) => onAddNewBlock()}
-            >
-              <Icon name={addSVG} size="24px" />
-            </Button>
-          </Button.Group>
-          <Button.Group>
-            <Button
-              aria-label={intl.formatMessage(messages.blockSettings)}
-              icon
-              basic
-              onClick={(e) => {
-                e.stopPropagation();
-                setSelectedBlock();
-                props.setSidebarTab(1);
-              }}
-            >
-              <Icon name={configSVG} size="24px" />
-            </Button>
-          </Button.Group>
-        </div>
-      )}
+      {selected && <ContainerToolbar {...containerProps} />}
+
       {!isInitialized && templates && (
         <TemplateChooser
           templates={
