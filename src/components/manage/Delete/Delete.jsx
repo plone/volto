@@ -38,7 +38,7 @@ const Delete = () => {
 
   useEffect(() => {
     setisClient(true);
-  }, [isClient]);
+  }, []);
 
   useEffect(() => {
     dispatch(getContent(pathname.split('/delete')[0]));
