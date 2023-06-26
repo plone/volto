@@ -16,8 +16,6 @@ import {
   getBlocksLayoutFieldname,
 } from '@plone/volto/helpers';
 
-import './styles.less';
-
 /**
  * View toc block class.
  * @class View
