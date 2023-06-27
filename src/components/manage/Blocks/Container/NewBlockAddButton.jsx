@@ -65,6 +65,7 @@ const NewBlockAddButton = (props) => {
             ref={setPopperElement}
             style={styles.popper}
             {...attributes.popper}
+            className="container-chooser-wrapper"
           >
             <BlockChooser
               onMutateBlock={onMutateBlock}
