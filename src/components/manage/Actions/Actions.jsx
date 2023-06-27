@@ -9,9 +9,9 @@ import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import { cut, copy, copyContent, moveContent } from '@plone/volto/actions';
 import { getBaseUrl } from '@plone/volto/helpers';
 import { ContentsRenameModal, Toast } from '@plone/volto/components';
-import { useContent } from '@plone/volto/hooks/content/useContent';
-import { useActions } from '@plone/volto/hooks/actions/useActions';
-import { useClipboard } from '@plone/volto/hooks/clipboard/useClipboard';
+import { useContent } from '@plone/volto/hooks';
+import { useActions } from '@plone/volto/hooks';
+import { useCopyContent } from '@plone/volto/hooks';
 
 const messages = defineMessages({
   cut: {
@@ -57,7 +57,7 @@ const Actions = (props) => {
   const dispatch = useDispatch();
   const [showRename, setshowRename] = useState(false);
   const actions = useActions();
-  const { action, source } = useClipboard();
+  const { action, source } = useCopyContent();
   const { id, title } = useContent();
 
   const onRenameOk = () => {
