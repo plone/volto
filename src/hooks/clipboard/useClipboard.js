@@ -20,10 +20,9 @@ export default function useClipboard(clipboardText = '') {
     setCopied(copiedString);
   }, [stringToCopy]);
 
-
   useEffect(() => {
     stringToCopy.current = clipboardText;
   }, [clipboardText]);
 
-  return [copied, copyAction, setCopied,action,source];
+  return [copied, copyAction, setCopied, action, source];
 }

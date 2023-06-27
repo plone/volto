@@ -1,7 +1,7 @@
 import { useSelector, shallowEqual } from 'react-redux';
 
 /**
- * useClipboard hook
+ * useCopyContent hook
  *
  * This hook returns the current clipboard state that is stored in the Redux store in the
  * `clipboard` reducer, and returns it along with the related state (action/source).
