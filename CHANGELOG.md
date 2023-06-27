@@ -2145,6 +2145,7 @@ Use next release instead: https://github.com/plone/volto/releases/tag/16.0.0-alp
 - Fixed secure cookie option. @giuliaghisini
 - Changed addon order in addon controlpanel to mimic Classic UI @erral
 - Fixed error when loading content in a language for which a Volto translation is not available. @davisagli
+- Show lead image in event view
 - Fix different querystring filters in the querystring widget @kreafox
 - Fix for clipped dropdown menus when the table has few or no records in Contents view @mihaislobozeanu
 
