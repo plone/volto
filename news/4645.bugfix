@@ -1,0 +1,2 @@
+ Fixed the UI Bug where After clicking on the submit button in user management module ,the submit button
+ remains in focus and shows a buggy blueish circular shadow.
