@@ -29,8 +29,7 @@
 #main {
   .ui.basic.buttons .button,
   .ui.basic.button {
-    -webkit-box-shadow: 0px 0px 0px @basicBorderSize transparent inset !important;
-    box-shadow: 0px 0px 0px @basicBorderSize transparent inset !important;
+  
   }
 }
 
@@ -54,6 +53,7 @@
   &:active {
     background: transparent !important;
     box-shadow: none !important;
+    color: #980000!important
   }
 }
 
