@@ -7,7 +7,7 @@ import { Button } from 'semantic-ui-react';
 import checkSVG from '@plone/volto/icons/check.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import { useIntl, defineMessages } from 'react-intl';
-import { useLocation, useHistory } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const messages = defineMessages({
   autoSaveFound: {
