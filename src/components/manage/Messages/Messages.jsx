@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { Message, Container } from 'semantic-ui-react';
 import { map } from 'lodash';
 
-import { useMessages } from '@plone/volto/hooks/messages/useMessages';
+import { useMessages } from '@plone/volto/hooks';
 import { removeMessage } from '@plone/volto/actions';
 
 const Messages = () => {
