@@ -32,10 +32,8 @@ context('Blocks Acceptance Tests', () => {
 
     it('As editor I can add a Grid', function () {
       cy.getSlate().click();
-      cy.get('.button .block-add-button').click({ force: true });
-      cy.get('.blocks-chooser .mostUsed .button.gridBlock').click({
-        force: true,
-      });
+      cy.addNewBlock('grid');
+
       cy.findByText('2 columns').click();
 
       cy.get('button[aria-label="Add block in position 0"]').click();
@@ -82,10 +80,8 @@ context('Blocks Acceptance Tests', () => {
 
     it('As editor I can add a Grid with slate block on it', function () {
       cy.getSlate().click();
-      cy.get('.button .block-add-button').click({ force: true });
-      cy.get('.blocks-chooser .mostUsed .button.gridBlock').click({
-        force: true,
-      });
+      cy.addNewBlock('grid');
+
       cy.findByText('2 columns').click();
 
       cy.get('button[aria-label="Add block in position 1"]').click();
