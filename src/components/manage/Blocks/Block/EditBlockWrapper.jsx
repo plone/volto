@@ -68,18 +68,18 @@ const EditBlockWrapper = (props) => {
       })}
     >
       <div style={{ position: 'relative' }}>
-        <div
-          style={{
-            visibility: visible ? 'visible' : 'hidden',
-            display: 'inline-block',
-          }}
-          {...draginfo.dragHandleProps}
-          className="drag handle wrapper"
-        >
-          <Icon name={dragSVG} size="18px" />
-        </div>
         <div className={`ui drag block inner ${type}`}>
           {children}
+          <div
+            style={{
+              visibility: visible ? 'visible' : 'hidden',
+              display: 'inline-block',
+            }}
+            {...draginfo.dragHandleProps}
+            className="drag handle wrapper"
+          >
+            <Icon name={dragSVG} size="18px" />
+          </div>
           {selected && !required && editable && (
             <Button
               icon

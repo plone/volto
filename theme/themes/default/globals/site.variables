@@ -799,6 +799,7 @@
 @secondaryColorFocus      : saturate(lighten(@secondaryColor, 8), 20, relative);
 @lightPrimaryColorFocus   : saturate(darken(@lightPrimaryColor, 8), 20, relative);
 @lightSecondaryColorFocus : saturate(lighten(@lightSecondaryColor, 8), 20, relative);
+@invertedFocus            : @whiteFocus;
 
 @redFocus                 : saturate(darken(@red, 8), 20, relative);
 @orangeFocus              : saturate(darken(@orange, 8), 20, relative);

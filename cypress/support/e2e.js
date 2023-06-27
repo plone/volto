@@ -3,6 +3,7 @@ import 'cypress-file-upload';
 import './commands';
 import { setupGuillotina, tearDownGuillotina } from './guillotina';
 import { setup, teardown } from './reset-fixture';
+import 'cypress-plugin-tab';
 
 before(function () {
   if (Cypress.env('API') === 'guillotina') {
