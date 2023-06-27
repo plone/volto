@@ -95,7 +95,11 @@ class SearchWidget extends Component {
    */
   render() {
     return (
-      <Form action="/search" onSubmit={this.onSubmit}>
+      <Form
+        action="/search"
+        onSubmit={this.onSubmit}
+        aria-controls="search-results"
+      >
         <Form.Field className="searchbox">
           <Input
             aria-label={this.props.intl.formatMessage(messages.search)}
@@ -107,7 +111,10 @@ class SearchWidget extends Component {
             placeholder={this.props.intl.formatMessage(messages.searchSite)}
             title={this.props.intl.formatMessage(messages.search)}
           />
-          <button aria-label={this.props.intl.formatMessage(messages.search)}>
+          <button
+            aria-label={this.props.intl.formatMessage(messages.search)}
+            aria-controls="search-results"
+          >
             <Icon name={zoomSVG} size="18px" />
           </button>
         </Form.Field>

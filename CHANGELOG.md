@@ -1819,6 +1819,7 @@ See https://6.docs.plone.org/volto/upgrade-guide/index.html for more information
 
 ### Bugfix
 
+- fix a11y search. @giuliaghisini
 - Make Search page title translatable @erral
 - Changed storeProtectLoadUtils location from src/storeProtectLoadUtils to src/middleware/storeProtectLoadUtils @MdSahil-oss
 
