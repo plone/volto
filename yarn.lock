@@ -2690,6 +2690,7 @@ __metadata:
     express: 4.17.3
     filesize: 6
     full-icu: 1.4.0
+    github-slugger: 1.4.0
     glob: 7.1.6
     history: 4.10.1
     hoist-non-react-statics: 3.3.2
@@ -12195,6 +12196,13 @@ __metadata:
   dependencies:
     git-up: ^4.0.0
   checksum: 18a7d0bbac76c55fe8a501d4bd4c6b5f5528883a4dadcfce1152b4902e3e5831df8e97f36ea3f564de633e9ab44d9ab09bb2f319e41af1b6e4f627af139d35d5
+  languageName: node
+  linkType: hard
+
+"github-slugger@npm:1.4.0":
+  version: 1.4.0
+  resolution: "github-slugger@npm:1.4.0"
+  checksum: 4f52e7a21f5c6a4c5328f01fe4fe13ae8881fea78bfe31f9e72c4038f97e3e70d52fb85aa7633a52c501dc2486874474d9abd22aa61cbe9b113099a495551c6b
   languageName: node
   linkType: hard
 
