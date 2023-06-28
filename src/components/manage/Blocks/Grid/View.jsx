@@ -33,6 +33,7 @@ const GridBlockView = (props) => {
           content={data}
           location={location}
           blocksConfig={blocksConfig}
+          isContainer
         />
       </Grid>
     </div>
