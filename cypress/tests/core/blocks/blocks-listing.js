@@ -874,7 +874,7 @@ describe('Listing Block Tests', () => {
     cy.get('#field-b_size-4-querystring').click().type('2');
     cy.get('.ui.pagination.menu a[value="2"]').first().click();
 
-    cy.get('.listing-item h4').first().contains('My Folder 3');
+    cy.get('.listing-item h3').first().contains('My Folder 3');
   });
 
   it('Navigates in listing block pagination and url clears on logo click', () => {
@@ -1037,7 +1037,7 @@ describe('Listing Block Tests', () => {
     cy.get('#field-b_size-4-querystring').click().type('2');
     cy.get('.ui.pagination.menu a[value="2"]').first().click();
 
-    cy.get('.listing-item h4').first().contains('My Folder 3');
+    cy.get('.listing-item h3').first().contains('My Folder 3');
     cy.get('#toolbar-save').click();
     cy.wait('@save');
     cy.wait('@content');
