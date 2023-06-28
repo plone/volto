@@ -25,6 +25,10 @@ Thus it is safe to run it on top of your project and answer the prompts.
 ```
 
 
+### Use an `h2` tag instead of an `h4` in default listing template
+
+This change fixes a bug with the accessibility in listings.
+
 (volto-upgrade-guide-16.x.x)=
 
 ## Upgrading to Volto 16.x.x
