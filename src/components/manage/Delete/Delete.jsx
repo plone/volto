@@ -1,15 +1,17 @@
 import { useEffect, useState } from 'react';
 import { Helmet } from '@plone/volto/helpers';
-import { useDispatch } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import { Portal } from 'react-portal';
 import { Button, Container, List, Segment } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import qs from 'query-string';
 
-import { deleteContent, getContent } from '@plone/volto/actions';
 import { Toolbar } from '@plone/volto/components';
-import { useContent } from '@plone/volto/hooks';
+import {
+  useContent,
+  useDeleteContent,
+  useGetContent,
+} from '@plone/volto/hooks';
 
 const messages = defineMessages({
   delete: {
@@ -27,11 +29,13 @@ const messages = defineMessages({
 });
 
 const Delete = () => {
-  const dispatch = useDispatch();
   const intl = useIntl();
   const [isClient, setisClient] = useState(false);
   const location = useLocation();
   const history = useHistory();
+
+  const { getContent } = useGetContent();
+  const { deleteContent } = useDeleteContent();
   const { data: content, deleteRequest } = useContent();
 
   const pathname = location.pathname;
@@ -42,8 +46,8 @@ const Delete = () => {
   }, []);
 
   useEffect(() => {
-    dispatch(getContent(pathname.split('/delete')[0]));
-  }, [dispatch, pathname]);
+    getContent(pathname.split('/delete')[0]);
+  }, [getContent, pathname]);
 
   useEffect(() => {
     history.push(
@@ -58,7 +62,7 @@ const Delete = () => {
   ]);
 
   const onSubmit = () => {
-    dispatch(deleteContent(pathname.replace('/delete', '')));
+    deleteContent(pathname.replace('/delete', ''));
   };
 
   const onCancel = () => {
