@@ -5,14 +5,26 @@ exports[`Messages renders an messages component 1`] = `
   className="ui container messages"
 >
   <div
-    className="ui message"
-    value="messages"
+    className="ui success message"
+    value={0}
   >
     <i
       aria-hidden="true"
       className="close icon"
       onClick={[Function]}
     />
+    <div
+      className="content"
+    >
+      <div
+        className="header"
+      >
+        Title
+      </div>
+      <p>
+        Body
+      </p>
+    </div>
   </div>
 </div>
 `;

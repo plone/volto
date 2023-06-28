@@ -15,5 +15,5 @@ export function useMessages() {
     shallowEqual,
   );
 
-  return { messages };
+  return messages;
 }
