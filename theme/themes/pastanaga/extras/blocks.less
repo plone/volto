@@ -477,7 +477,9 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
 
   &.new-add-block {
     bottom: -26px;
-    left: 50%;
+    left: calc(
+      50% - 12px
+    ); // This is to compensate the width of the icon and center it correctly
     padding: 0 !important;
     border: none !important;
     background: white !important;
