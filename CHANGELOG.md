@@ -8,6 +8,14 @@
 
 <!-- towncrier release notes start -->
 
+## 17.0.0-alpha.16 (2023-06-28)
+
+### Feature
+
+- New block: Grid - A container of blocks, arranged in horizontal direction. @sneridagh
+  New primitive: Container - A primitive to build blocks containing other blocks. @sneridagh [#3180](https://github.com/plone/volto/issues/3180)
+
+
 ## 17.0.0-alpha.15 (2023-06-28)
 
 ### Breaking
