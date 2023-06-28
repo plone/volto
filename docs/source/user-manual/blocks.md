@@ -408,6 +408,9 @@ Hide facet?
 : Toggle to show or hide the facet.
   Hidden facets will still filter the results if proper parameters are passed in URLs
 
+Advanced facet?
+: Select to set the facet as advanced.
+  Advanced facets are initially hidden and displayed on demand.
 
 #### Controls
 

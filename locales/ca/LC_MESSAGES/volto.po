@@ -277,6 +277,16 @@ msgstr ""
 msgid "Addon upgraded succesfuly"
 msgstr ""
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Advanced facet?
+msgid "Advanced facet?"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Advanced facets are initially hidden and displayed on demand
+msgid "Advanced facets are initially hidden and displayed on demand"
+msgstr ""
+
 #: config/Views
 # defaultMessage: Album view
 msgid "Album view"
@@ -1262,9 +1272,9 @@ msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Enter your new password. Minimum 5 characters.
-msgid "Enter your new password. Minimum 5 characters."
-msgstr "Introduïu la vostra nova contrasenya. Mínim 5 caràcters."
+# defaultMessage: Enter your new password. Minimum 8 characters.
+msgid "Enter your new password. Minimum 8 characters."
+msgstr "Introduïu la vostra nova contrasenya. Mínim 8 caràcters."
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Enter your username for verification.
@@ -1582,6 +1592,11 @@ msgstr "Amaga les respostes"
 msgid "Hide facet?"
 msgstr "Amagar la faceta?"
 
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: Hide filters
+msgid "Hide filters"
+msgstr ""
+
 #: components/manage/History/History
 #: components/manage/Toolbar/More
 # defaultMessage: History
@@ -1878,10 +1893,20 @@ msgstr "Imatge Principal"
 msgid "Left"
 msgstr "A l'esquerra"
 
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: Less filters
+msgid "Less filters"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Link
 msgid "Link"
 msgstr "Enllaç"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Link copied to clipboard
+msgid "Link copied to clipboard"
+msgstr ""
 
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
@@ -2086,6 +2111,11 @@ msgstr "Mensual"
 # defaultMessage: More
 msgid "More"
 msgstr "Més"
+
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: More filters
+msgid "More filters"
+msgstr ""
 
 #: components/manage/Controlpanels/UpgradeControlPanel
 # defaultMessage: More information about the upgrade procedure can be found in the documentation section of plone.org in the Upgrade Guide.
@@ -3095,6 +3125,11 @@ msgstr "Mostrar tots"
 # defaultMessage: Show Replies
 msgid "Show Replies"
 msgstr "Mostra les respostes"
+
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: Show filters
+msgid "Show filters"
+msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Show groups of users below
@@ -4272,6 +4307,11 @@ msgstr "quan"
 # defaultMessage: Where
 msgid "event_where"
 msgstr "On?"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: This website does not accept files larger than {limit}
+msgid "fileTooLarge"
+msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: flush intIds and rebuild relations

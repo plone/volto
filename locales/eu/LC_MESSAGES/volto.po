@@ -275,6 +275,16 @@ msgstr "Produktu gehigarria ondo kendu da"
 msgid "Addon upgraded succesfuly"
 msgstr "Produktu gehigarria ondo eguneratu da"
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Advanced facet?
+msgid "Advanced facet?"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Advanced facets are initially hidden and displayed on demand
+msgid "Advanced facets are initially hidden and displayed on demand"
+msgstr ""
+
 #: config/Views
 # defaultMessage: Album view
 msgid "Album view"
@@ -1260,9 +1270,9 @@ msgstr "Idatzi zure eposta helbidea egiaztatu dezagun."
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Enter your new password. Minimum 5 characters.
-msgid "Enter your new password. Minimum 5 characters."
-msgstr "Idatzi zure pasahitz berria. Gutxienez 5 karaktere."
+# defaultMessage: Enter your new password. Minimum 8 characters.
+msgid "Enter your new password. Minimum 8 characters."
+msgstr "Idatzi zure pasahitz berria. Gutxienez 8 karaktere."
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Enter your username for verification.
@@ -1580,6 +1590,11 @@ msgstr "Ezkutatu erantzunak"
 msgid "Hide facet?"
 msgstr "Fazeta ezkutatu?"
 
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: Hide filters
+msgid "Hide filters"
+msgstr ""
+
 #: components/manage/History/History
 #: components/manage/Toolbar/More
 # defaultMessage: History
@@ -1876,10 +1891,20 @@ msgstr "Irudia"
 msgid "Left"
 msgstr "Ezkerrean"
 
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: Less filters
+msgid "Less filters"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Link
 msgid "Link"
 msgstr "Esteka"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Link copied to clipboard
+msgid "Link copied to clipboard"
+msgstr ""
 
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
@@ -2084,6 +2109,11 @@ msgstr "Hilero"
 # defaultMessage: More
 msgid "More"
 msgstr "Gehiago"
+
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: More filters
+msgid "More filters"
+msgstr ""
 
 #: components/manage/Controlpanels/UpgradeControlPanel
 # defaultMessage: More information about the upgrade procedure can be found in the documentation section of plone.org in the Upgrade Guide.
@@ -3093,6 +3123,11 @@ msgstr "Erakutsi guztiak"
 # defaultMessage: Show Replies
 msgid "Show Replies"
 msgstr "Erakutsi erantzunak"
+
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: Show filters
+msgid "Show filters"
+msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Show groups of users below
@@ -4270,6 +4305,11 @@ msgstr "Noiz"
 # defaultMessage: Where
 msgid "event_where"
 msgstr "Non"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: This website does not accept files larger than {limit}
+msgid "fileTooLarge"
+msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: flush intIds and rebuild relations

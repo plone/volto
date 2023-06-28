@@ -2,6 +2,7 @@ import {
   addExtensionFieldToSchema,
   applySchemaEnhancer,
   composeSchema,
+  addStyling,
 } from './withBlockSchemaEnhancer';
 
 import config from '@plone/volto/registry';
@@ -244,5 +245,149 @@ describe('composeSchema', () => {
     const res = enhancer(props);
 
     expect(res).toStrictEqual([6, 9]);
+  });
+});
+
+describe('addStyling', () => {
+  it('returns an enhanced schema with the styling wrapper object on it', () => {
+    const intl = { formatMessage: () => 'Styling' };
+
+    const schema = {
+      fieldsets: [
+        {
+          id: 'default',
+          title: 'Default',
+          fields: [],
+        },
+      ],
+      properties: {},
+      required: [],
+    };
+
+    const result = addStyling({ schema, intl });
+
+    expect(result).toStrictEqual({
+      fieldsets: [
+        { id: 'default', title: 'Default', fields: [] },
+        { id: 'styling', title: 'Styling', fields: ['styles'] },
+      ],
+      properties: {
+        styles: {
+          widget: 'object',
+          title: 'Styling',
+          schema: {
+            fieldsets: [
+              {
+                fields: [],
+                id: 'default',
+                title: 'Default',
+              },
+            ],
+            properties: {},
+            required: [],
+          },
+        },
+      },
+      required: [],
+    });
+  });
+
+  it('multiple schema enhancers', () => {
+    const intl = { formatMessage: () => 'Styling' };
+
+    const schema1 = {
+      fieldsets: [
+        {
+          id: 'default',
+          title: 'Default',
+          fields: [],
+        },
+      ],
+      properties: {},
+      required: [],
+    };
+
+    const schema2 = {
+      fieldsets: [
+        {
+          id: 'default',
+          title: 'Default',
+          fields: [],
+        },
+      ],
+      properties: {},
+      required: [],
+    };
+
+    const result = addStyling({ schema: schema1, intl });
+
+    // We add some fields to the styling schema
+    result.properties.styles.schema.properties.align = {
+      widget: 'align',
+      title: 'align',
+      actions: ['left', 'right', 'center'],
+      default: 'left',
+    };
+
+    result.properties.styles.schema.fieldsets[0].fields = ['align'];
+
+    const result2 = addStyling({ schema: schema2, intl });
+
+    expect(result).toStrictEqual({
+      fieldsets: [
+        { id: 'default', title: 'Default', fields: [] },
+        { id: 'styling', title: 'Styling', fields: ['styles'] },
+      ],
+      properties: {
+        styles: {
+          widget: 'object',
+          title: 'Styling',
+          schema: {
+            fieldsets: [
+              {
+                fields: ['align'],
+                id: 'default',
+                title: 'Default',
+              },
+            ],
+            properties: {
+              align: {
+                widget: 'align',
+                title: 'align',
+                actions: ['left', 'right', 'center'],
+                default: 'left',
+              },
+            },
+            required: [],
+          },
+        },
+      },
+      required: [],
+    });
+
+    expect(result2).toStrictEqual({
+      fieldsets: [
+        { id: 'default', title: 'Default', fields: [] },
+        { id: 'styling', title: 'Styling', fields: ['styles'] },
+      ],
+      properties: {
+        styles: {
+          widget: 'object',
+          title: 'Styling',
+          schema: {
+            fieldsets: [
+              {
+                fields: [],
+                id: 'default',
+                title: 'Default',
+              },
+            ],
+            properties: {},
+            required: [],
+          },
+        },
+      },
+      required: [],
+    });
   });
 });

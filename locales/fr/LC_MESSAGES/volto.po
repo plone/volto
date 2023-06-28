@@ -285,6 +285,16 @@ msgstr "Module désinstallé avec succès"
 msgid "Addon upgraded succesfuly"
 msgstr "Module mis à jour avec succès"
 
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Advanced facet?
+msgid "Advanced facet?"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Advanced facets are initially hidden and displayed on demand
+msgid "Advanced facets are initially hidden and displayed on demand"
+msgstr ""
+
 #: config/Views
 # defaultMessage: Album view
 msgid "Album view"
@@ -1270,9 +1280,9 @@ msgstr "Saisissez votre email pour vérification."
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Enter your new password. Minimum 5 characters.
-msgid "Enter your new password. Minimum 5 characters."
-msgstr "Saisissez votre nouveau mot de passe. Minimum 5 caractères."
+# defaultMessage: Enter your new password. Minimum 8 characters.
+msgid "Enter your new password. Minimum 8 characters."
+msgstr "Saisissez votre nouveau mot de passe. Minimum 8 caractères."
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Enter your username for verification.
@@ -1590,6 +1600,11 @@ msgstr "Masquer les réponses"
 msgid "Hide facet?"
 msgstr "Masquer la facette ?"
 
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: Hide filters
+msgid "Hide filters"
+msgstr ""
+
 #: components/manage/History/History
 #: components/manage/Toolbar/More
 # defaultMessage: History
@@ -1886,10 +1901,20 @@ msgstr "Image de garde"
 msgid "Left"
 msgstr "Gauche"
 
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: Less filters
+msgid "Less filters"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Link
 msgid "Link"
 msgstr "Lien"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Link copied to clipboard
+msgid "Link copied to clipboard"
+msgstr ""
 
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
@@ -2094,6 +2119,11 @@ msgstr "Mensuel"
 # defaultMessage: More
 msgid "More"
 msgstr "Plus"
+
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: More filters
+msgid "More filters"
+msgstr ""
 
 #: components/manage/Controlpanels/UpgradeControlPanel
 # defaultMessage: More information about the upgrade procedure can be found in the documentation section of plone.org in the Upgrade Guide.
@@ -3103,6 +3133,11 @@ msgstr "Afficher tous"
 # defaultMessage: Show Replies
 msgid "Show Replies"
 msgstr "Afficher les réponses"
+
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: Show filters
+msgid "Show filters"
+msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Show groups of users below
@@ -4280,6 +4315,11 @@ msgstr "Quand"
 # defaultMessage: Where
 msgid "event_where"
 msgstr "Où"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: This website does not accept files larger than {limit}
+msgid "fileTooLarge"
+msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: flush intIds and rebuild relations
