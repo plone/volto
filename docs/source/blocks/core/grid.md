@@ -11,7 +11,7 @@ myst:
 
 # Grid block
 
-```{versionadded} Volto 17.0.0-alpha.10
+```{versionadded} Volto 17.0.0-alpha.16
 ```
 
 Volto comes with a grid block.
@@ -160,7 +160,7 @@ export const GridBlockDataAdapter = ({
 
 ## Migration from `@kitconcept/volto-blocks-grid`
 
-The grid block was added to Volto in version 17.0.0-alpha.10.
+The grid block was added to Volto in version 17.0.0-alpha.16.
 It is based on the `@kitconcept/volto-blocks-grid` add-on version 7.x.x.
 
 The Volto core grid uses the Volto internals default blocks-in-block architecture.
