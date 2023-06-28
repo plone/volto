@@ -109,7 +109,7 @@ const Login = () => {
         toast.dismiss('loginFailed');
       }
     };
-  }, [token, error]);
+  }, [token, error, intl, history, returnUrl]);
 
   const onLogin = (event) => {
     dispatch(
