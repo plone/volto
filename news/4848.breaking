@@ -1,1 +1,1 @@
-Use an `h2` tag instead of an `h4` in default listing template @sneridagh
+Use proper heading tag (depending on the headline) in default listing template @sneridagh
