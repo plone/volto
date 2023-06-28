@@ -2,6 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
+import { MemoryRouter } from 'react-router-dom';
 
 import Comments from './Comments';
 
@@ -58,9 +59,12 @@ describe('Comments', () => {
         messages: {},
       },
     });
+    const route = '/some-route';
     const component = renderer.create(
       <Provider store={store}>
-        <Comments pathname="/blog" />
+        <MemoryRouter initialEntries={[route]}>
+          <Comments pathname="/blog" />
+        </MemoryRouter>
       </Provider>,
     );
     const json = component.toJSON();

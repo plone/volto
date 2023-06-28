@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2023-06-13T20:41:58.672Z\n"
+"POT-Creation-Date: 2023-06-23T13:01:43.970Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -397,6 +397,12 @@ msgstr ""
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Assignments
 msgid "Assignments"
+msgstr ""
+
+#: helpers/Utils/saveAsDraft
+#: helpers/Utils/withSaveAsDraft
+# defaultMessage: Autosave found
+msgid "Autosave found"
 msgstr ""
 
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -1066,6 +1072,12 @@ msgstr ""
 #: components/manage/Delete/Delete
 # defaultMessage: Do you really want to delete this item?
 msgid "Do you really want to delete this item?"
+msgstr ""
+
+#: helpers/Utils/saveAsDraft
+#: helpers/Utils/withSaveAsDraft
+# defaultMessage: Do you want to load it?
+msgid "Do you want to load it?"
 msgstr ""
 
 #: components/manage/Multilingual/TranslationObject
@@ -3502,6 +3514,12 @@ msgstr ""
 #: components/manage/Controlpanels/UpgradeControlPanel
 # defaultMessage: The site configuration is outdated and needs to be upgraded.
 msgid "The site configuration is outdated and needs to be upgraded."
+msgstr ""
+
+#: helpers/Utils/saveAsDraft
+#: helpers/Utils/withSaveAsDraft
+# defaultMessage: The version found is less recent than the server, do you want to load it (you can undo if you change your mind)?
+msgid "The version found is less recent than the server, do you want to load it (you can undo if you change your mind)?"
 msgstr ""
 
 #: components/manage/Toolbar/More

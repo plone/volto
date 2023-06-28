@@ -7,6 +7,7 @@ import { Button } from 'semantic-ui-react';
 import checkSVG from '@plone/volto/icons/check.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import { useIntl, defineMessages } from 'react-intl';
+import { useLocation } from 'react-router-dom';
 
 const messages = defineMessages({
   autoSaveFound: {
@@ -30,6 +31,7 @@ function getDisplayName(WrappedComponent) {
 }
 
 const mapSchemaToData = (schema, data) => {
+  if (!data) return {};
   const dataKeys = Object.keys(data);
   return Object.assign(
     {},
@@ -42,12 +44,14 @@ const mapSchemaToData = (schema, data) => {
 // will be used to avoid using the first mount call if there is a second call
 let mountTime;
 
-const getFormId = (props) => {
-  const { type, pathname, isEditForm } = props;
+const getFormId = (props, location) => {
+  const { type, pathname = location.pathname, isEditForm, schema } = props;
   const id = isEditForm
     ? ['form', type, pathname].join('-')
     : type
     ? ['form', pathname, type].join('-')
+    : schema?.properties?.comment
+    ? ['form', pathname, 'comment'].join('-')
     : ['form', pathname].join('-');
 
   return id;
@@ -194,14 +198,15 @@ const draftApi = (id, schema, timer, timerForDeletion, intl) => ({
   },
 });
 
-export function withSaveAsDraft(options) {
+export default function withSaveAsDraft(options) {
   const { forwardRef } = options;
 
   return (WrappedComponent) => {
     function WithSaveAsDraft(props) {
       const { schema } = props;
       const intl = useIntl();
-      const id = getFormId(props);
+      const location = useLocation();
+      const id = getFormId(props, location);
       const ref = React.useRef();
       const ref2 = React.useRef();
       const api = React.useMemo(() => draftApi(id, schema, ref, ref2, intl), [

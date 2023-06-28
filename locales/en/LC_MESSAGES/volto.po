@@ -397,6 +397,12 @@ msgstr ""
 msgid "Assignments"
 msgstr ""
 
+#: helpers/Utils/saveAsDraft
+#: helpers/Utils/withSaveAsDraft
+# defaultMessage: Autosave found
+msgid "Autosave found"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Available
 msgid "Available"
@@ -1064,6 +1070,12 @@ msgstr ""
 #: components/manage/Delete/Delete
 # defaultMessage: Do you really want to delete this item?
 msgid "Do you really want to delete this item?"
+msgstr ""
+
+#: helpers/Utils/saveAsDraft
+#: helpers/Utils/withSaveAsDraft
+# defaultMessage: Do you want to load it?
+msgid "Do you want to load it?"
 msgstr ""
 
 #: components/manage/Multilingual/TranslationObject
@@ -3500,6 +3512,12 @@ msgstr ""
 #: components/manage/Controlpanels/UpgradeControlPanel
 # defaultMessage: The site configuration is outdated and needs to be upgraded.
 msgid "The site configuration is outdated and needs to be upgraded."
+msgstr ""
+
+#: helpers/Utils/saveAsDraft
+#: helpers/Utils/withSaveAsDraft
+# defaultMessage: The version found is less recent than the server, do you want to load it (you can undo if you change your mind)?
+msgid "The version found is less recent than the server, do you want to load it (you can undo if you change your mind)?"
 msgstr ""
 
 #: components/manage/Toolbar/More

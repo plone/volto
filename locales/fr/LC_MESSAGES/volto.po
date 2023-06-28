@@ -414,6 +414,12 @@ msgstr "Ascendant"
 msgid "Assignments"
 msgstr "Affectations"
 
+#: helpers/Utils/saveAsDraft
+#: helpers/Utils/withSaveAsDraft
+# defaultMessage: Autosave found
+msgid "Autosave found"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Available
 msgid "Available"
@@ -1082,6 +1088,12 @@ msgstr "Voulez-vous vraiment supprimer l'utilisateur {username} ?"
 # defaultMessage: Do you really want to delete this item?
 msgid "Do you really want to delete this item?"
 msgstr "Voulez-vous vraiment supprimer cet élément ?"
+
+#: helpers/Utils/saveAsDraft
+#: helpers/Utils/withSaveAsDraft
+# defaultMessage: Do you want to load it?
+msgid "Do you want to load it?"
+msgstr ""
 
 #: components/manage/Multilingual/TranslationObject
 #: components/manage/Sidebar/Sidebar
@@ -3518,6 +3530,12 @@ msgstr "Le processus d'inscription a réussi. Veuillez vérifier votre boîte e-
 # defaultMessage: The site configuration is outdated and needs to be upgraded.
 msgid "The site configuration is outdated and needs to be upgraded."
 msgstr "La configuration du site nécessite une mise à niveau."
+
+#: helpers/Utils/saveAsDraft
+#: helpers/Utils/withSaveAsDraft
+# defaultMessage: The version found is less recent than the server, do you want to load it (you can undo if you change your mind)?
+msgid "The version found is less recent than the server, do you want to load it (you can undo if you change your mind)?"
+msgstr ""
 
 #: components/manage/Toolbar/More
 # defaultMessage: The working copy was discarded
