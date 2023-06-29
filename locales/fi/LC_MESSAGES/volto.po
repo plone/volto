@@ -144,6 +144,11 @@ msgstr "Lisää toiminto"
 msgid "Add block"
 msgstr "Lisää palikka"
 
+#: components/manage/Blocks/Container/NewBlockAddButton
+# defaultMessage: Add block in position {index}
+msgid "Add block in position {index}"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add block…
 msgid "Add block…"
@@ -168,6 +173,11 @@ msgstr "Lisää ehto"
 # defaultMessage: Add date
 msgid "Add date"
 msgstr "Lisää päivä"
+
+#: components/manage/Blocks/Container/SimpleContainerToolbar
+# defaultMessage: Add element to container
+msgid "Add element to container"
+msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Add field
@@ -735,6 +745,11 @@ msgstr "Yhteydenottolomake"
 # defaultMessage: Contained items
 msgid "Contained items"
 msgstr "Sisältö"
+
+#: components/manage/Blocks/Container/SimpleContainerToolbar
+# defaultMessage: Container settings
+msgid "Container settings"
+msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Content
@@ -1542,6 +1557,11 @@ msgstr "Sivustonlaajuinen rooli"
 msgid "Google Maps Embedded Block"
 msgstr "Google Maps -upotuspalikka"
 
+#: components/manage/Blocks/Grid/schema
+# defaultMessage: Grid
+msgid "Grid"
+msgstr ""
+
 #: components/manage/Sharing/Sharing
 # defaultMessage: Group
 msgid "Group"
@@ -1580,6 +1600,7 @@ msgstr ""
 msgid "Header cell"
 msgstr "Otsikkosolu"
 
+#: components/manage/Blocks/Grid/schema
 #: components/manage/Blocks/Listing/schema
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Headline
@@ -1916,6 +1937,11 @@ msgstr ""
 # defaultMessage: Link
 msgid "Link"
 msgstr "Linkki"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Link copied to clipboard
+msgid "Link copied to clipboard"
+msgstr ""
 
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
@@ -2702,6 +2728,11 @@ msgstr "Osuvuus"
 msgid "Remove"
 msgstr "Poista"
 
+#: components/manage/Blocks/Container/EditBlockWrapper
+# defaultMessage: Remove element {index}
+msgid "Remove element {index}"
+msgstr ""
+
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Remove item
 msgid "Remove item"
@@ -2785,6 +2816,11 @@ msgstr "Pakollinen"
 # defaultMessage: Required input is missing.
 msgid "Required input is missing."
 msgstr "Pakollista tietoa puuttuu."
+
+#: components/manage/Blocks/Container/EditBlockWrapper
+# defaultMessage: Reset element {index}
+msgid "Reset element {index}"
+msgstr ""
 
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Reset title
@@ -4232,6 +4268,16 @@ msgstr "Unohditko salasanasi?"
 # defaultMessage: Checkbox
 msgid "checkboxFacet"
 msgstr "Valintaruutu"
+
+#: components/manage/Blocks/Grid/templates
+# defaultMessage: column
+msgid "column"
+msgstr ""
+
+#: components/manage/Blocks/Grid/templates
+# defaultMessage: columns
+msgid "columns"
+msgstr ""
 
 #: config/Blocks
 # defaultMessage: Common

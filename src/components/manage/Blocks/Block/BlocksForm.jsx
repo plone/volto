@@ -40,8 +40,12 @@ const BlocksForm = (props) => {
     manage,
     children,
     isMainForm = true,
+    isContainer,
+    stopPropagation,
+    disableAddBlockOnEnterKey,
     blocksConfig = config.blocks.blocksConfig,
     editable = true,
+    direction = 'vertical',
   } = props;
 
   const blockList = getBlocks(properties);
@@ -83,7 +87,9 @@ const BlocksForm = (props) => {
       e.preventDefault();
     }
     if (e.key === 'Enter' && !disableEnter) {
-      onSelectBlock(onAddBlock(config.settings.defaultBlockType, index + 1));
+      if (!disableAddBlockOnEnterKey) {
+        onSelectBlock(onAddBlock(config.settings.defaultBlockType, index + 1));
+      }
       e.preventDefault();
     }
   };
@@ -199,7 +205,16 @@ const BlocksForm = (props) => {
   });
 
   return (
-    <div className="blocks-form" ref={ref}>
+    <div
+      className="blocks-form"
+      role="presentation"
+      ref={ref}
+      onKeyDown={(e) => {
+        if (stopPropagation) {
+          e.stopPropagation();
+        }
+      }}
+    >
       <fieldset className="invisible" disabled={!editable}>
         <DragDropList
           childList={blockList}
@@ -216,6 +231,7 @@ const BlocksForm = (props) => {
             onChangeFormData(newFormData);
             return true;
           }}
+          direction={direction}
         >
           {(dragProps) => {
             const { child, childId, index } = dragProps;
@@ -250,6 +266,7 @@ const BlocksForm = (props) => {
               type: child['@type'],
               editable,
               showBlockChooser: selectedBlock === childId,
+              detached: isContainer,
             };
             return editBlockWrapper(
               dragProps,
