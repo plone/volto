@@ -19,6 +19,7 @@ import {
   buildStyleClassNamesFromData,
   buildStyleClassNamesExtenders,
   getPreviousNextBlock,
+  blocksFormGenerator,
 } from './Blocks';
 
 import config from '@plone/volto/registry';
@@ -1273,6 +1274,26 @@ describe('Blocks', () => {
         'previous--has--same--backgroundColor',
         'next--has--different--backgroundColor',
       ]);
+    });
+  });
+
+  describe('blocksFormGenerator', () => {
+    it('Returns an empty blocks/blocks_layout pair', () => {
+      expect(blocksFormGenerator(0, '')).toEqual({
+        blocks: {},
+        blocks_layout: { items: [] },
+      });
+    });
+    it.only('Returns a filled blocks/blocks_layout pair with type block', () => {
+      const result = blocksFormGenerator(2, 'teaser');
+      expect(Object.keys(result.blocks).length).toEqual(2);
+      expect(result.blocks_layout.items.length).toEqual(2);
+      expect(result.blocks[result.blocks_layout.items[0]]['@type']).toEqual(
+        'teaser',
+      );
+      expect(result.blocks[result.blocks_layout.items[1]]['@type']).toEqual(
+        'teaser',
+      );
     });
   });
 });
