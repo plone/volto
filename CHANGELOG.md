@@ -8,6 +8,31 @@
 
 <!-- towncrier release notes start -->
 
+## 17.0.0-alpha.16 (2023-06-28)
+
+### Feature
+
+- New block: Grid - A container of blocks, arranged in horizontal direction. @sneridagh
+  New primitive: Container - A primitive to build blocks containing other blocks. @sneridagh [#3180](https://github.com/plone/volto/issues/3180)
+
+
+## 17.0.0-alpha.15 (2023-06-28)
+
+### Breaking
+
+- Use proper heading tag (depending on the headline) in default listing template @sneridagh [#4848](https://github.com/plone/volto/issues/4848)
+
+### Bugfix
+
+- Remove anonymous function calls. Remove default exports from. @sneridagh [#4917](https://github.com/plone/volto/issues/4917)
+- Fix Annontools StoryBook @sneridagh [#4921](https://github.com/plone/volto/issues/4921)
+- Fix the experimental add new block button position, compensate the icon width to center it correctly @sneridagh [#4924](https://github.com/plone/volto/issues/4924)
+
+### Internal
+
+- Add Storybook story for useDetectClickOutside hook with several demos @sneridagh [#4923](https://github.com/plone/volto/issues/4923)
+
+
 ## 17.0.0-alpha.14 (2023-06-23)
 
 ### Feature
