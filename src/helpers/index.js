@@ -110,6 +110,7 @@ export { userHasRoles } from './User/User';
 // export { injectLazyLibs } from './Loadable/Loadable';
 export { useDetectClickOutside } from './Utils/useDetectClickOutside';
 export { useEvent } from './Utils/useEvent';
+export { usePrevious } from './Utils/usePrevious';
 export { usePagination } from './Utils/usePagination';
 export { default as useUndoManager } from './UndoManager/useUndoManager';
 export { getCookieOptions } from './Cookies/cookies';
