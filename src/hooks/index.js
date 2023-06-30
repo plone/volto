@@ -1,2 +1,3 @@
-export useClipboard from '@plone/volto/hooks/clipboard/useClipboard';
-export useToken from '@plone/volto/hooks/userSession/useToken';
+export { useContent } from '@plone/volto/hooks/content/useContent';
+export { useActions } from '@plone/volto/hooks/actions/useActions';
+export { useCopyContent } from '@plone/volto/hooks/copyContent/useCopyContent';
