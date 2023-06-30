@@ -75,7 +75,7 @@ const Actions = (props) => {
         success
         title={intl.formatMessage(messages.success)}
         content={intl.formatMessage(messages.messageCut, {
-          title:title,
+          title: title,
         })}
       />,
     );
