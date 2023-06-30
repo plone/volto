@@ -15,7 +15,7 @@ jest.mock('react-portal', () => ({
 jest.mock('../Toolbar/More', () => jest.fn(() => <div className="More" />));
 
 describe('LinksToItem', () => {
-  it('renders links to item view', () => {
+  it('renders "links and references" view', () => {
     const store = mockStore({
       relations: {
         subrequests: {
@@ -25,21 +25,46 @@ describe('LinksToItem', () => {
                 items: [
                   {
                     source: {
-                      '@id': 'http://localhost:3000/page-2-linking-to-page-1',
+                      '@id': 'http://localhost:3000/page-basil',
                       '@type': 'Document',
                       UID: 'SOMEUID008',
                       description: '',
-                      review_state: 'private',
-                      title: 'page #2 linking to page #1',
+                      review_state: 'published',
+                      title: 'Basil',
                       type_title: 'Document',
                     },
                     target: {
-                      '@id': 'http://localhost:3000/page-1',
+                      '@id': 'http://localhost:3000/page-tomato',
                       '@type': 'Document',
                       UID: 'SOMEUID007',
                       description: '',
-                      review_state: 'private',
-                      title: 'page #1',
+                      review_state: 'published',
+                      title: 'Tomato',
+                      type_title: 'Document',
+                    },
+                  },
+                ],
+                items_total: 1,
+              },
+              relatedItems: {
+                items: [
+                  {
+                    source: {
+                      '@id': 'http://localhost:3000/page-cucumber',
+                      '@type': 'Document',
+                      UID: 'SOMEUID008',
+                      description: '',
+                      review_state: 'published',
+                      title: 'Cucumber',
+                      type_title: 'Document',
+                    },
+                    target: {
+                      '@id': 'http://localhost:3000/page-tomato',
+                      '@type': 'Document',
+                      UID: 'SOMEUID007',
+                      description: '',
+                      review_state: 'published',
+                      title: 'Tomato',
                       type_title: 'Document',
                     },
                   },
