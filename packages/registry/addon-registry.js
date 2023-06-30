@@ -9,6 +9,7 @@ const { DepGraph } = require('dependency-graph');
 const excludedCompilerOptionsPaths = [
   '@plone/volto/*',
   '@plone/volto-slate/*',
+  '@plone/registry/*',
   '@root/*',
 ];
 

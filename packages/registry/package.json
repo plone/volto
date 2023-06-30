@@ -1,0 +1,51 @@
+{
+  "name": "@plone/registry",
+  "description": "Add-on and configuration registry for Plone products.",
+  "maintainers": [
+    {
+      "name": "Plone Foundation",
+      "email": "plone-developers@lists.sourceforge.net",
+      "url": "http://plone.org"
+    }
+  ],
+  "license": "MIT",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:plone/volto.git"
+  },
+  "bugs": {
+    "url": "https://github.com/plone/volto/issues",
+    "email": "plone-developers@lists.sourceforge.net"
+  },
+  "homepage": "https://plone.org",
+  "keywords": [
+    "volto",
+    "plone",
+    "plone6",
+    "react",
+    "add-ons",
+    "registry",
+    "configuration",
+    "config"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "dry-release": "release-it --dry-run",
+    "release": "release-it",
+    "release-major-alpha": "release-it major --preRelease=alpha",
+    "release-alpha": "release-it --preRelease=alpha"
+  },
+  "dependencies": {
+    "crypto-random-string": "3.2.0",
+    "debug": "4.3.2",
+    "dependency-graph": "0.10.0",
+    "glob": "7.1.6",
+    "lodash": "4.17.21"
+  },
+  "devDependencies": {
+    "release-it": "^15.0.0"
+  }
+}
