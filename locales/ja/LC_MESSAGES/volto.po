@@ -141,6 +141,11 @@ msgstr ""
 msgid "Add block"
 msgstr ""
 
+#: components/manage/Blocks/Container/NewBlockAddButton
+# defaultMessage: Add block in position {index}
+msgid "Add block in position {index}"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add block…
 msgid "Add block…"
@@ -165,6 +170,11 @@ msgstr "基準を追加"
 # defaultMessage: Add date
 msgid "Add date"
 msgstr "日付を追加"
+
+#: components/manage/Blocks/Container/SimpleContainerToolbar
+# defaultMessage: Add element to container
+msgid "Add element to container"
+msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Add field
@@ -727,6 +737,11 @@ msgstr "お問い合わせフォーム"
 # defaultMessage: Contained items
 msgid "Contained items"
 msgstr "含まれるアイテム"
+
+#: components/manage/Blocks/Container/SimpleContainerToolbar
+# defaultMessage: Container settings
+msgid "Container settings"
+msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Content
@@ -1533,6 +1548,11 @@ msgstr "グローバルロール"
 msgid "Google Maps Embedded Block"
 msgstr "Googleマップ埋め込みブロック"
 
+#: components/manage/Blocks/Grid/schema
+# defaultMessage: Grid
+msgid "Grid"
+msgstr ""
+
 #: components/manage/Sharing/Sharing
 # defaultMessage: Group
 msgid "Group"
@@ -1571,6 +1591,7 @@ msgstr ""
 msgid "Header cell"
 msgstr "見出しセル"
 
+#: components/manage/Blocks/Grid/schema
 #: components/manage/Blocks/Listing/schema
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Headline
@@ -1907,6 +1928,11 @@ msgstr ""
 # defaultMessage: Link
 msgid "Link"
 msgstr "リンク"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Link copied to clipboard
+msgid "Link copied to clipboard"
+msgstr ""
 
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
@@ -2724,6 +2750,11 @@ msgstr "関連性"
 msgid "Remove"
 msgstr ""
 
+#: components/manage/Blocks/Container/EditBlockWrapper
+# defaultMessage: Remove element {index}
+msgid "Remove element {index}"
+msgstr ""
+
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Remove item
 msgid "Remove item"
@@ -2807,6 +2838,11 @@ msgstr "必須"
 # defaultMessage: Required input is missing.
 msgid "Required input is missing."
 msgstr "必須"
+
+#: components/manage/Blocks/Container/EditBlockWrapper
+# defaultMessage: Reset element {index}
+msgid "Reset element {index}"
+msgstr ""
 
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Reset title
@@ -4249,6 +4285,16 @@ msgstr "パスワードを忘れた？"
 #: config/Blocks
 # defaultMessage: Checkbox
 msgid "checkboxFacet"
+msgstr ""
+
+#: components/manage/Blocks/Grid/templates
+# defaultMessage: column
+msgid "column"
+msgstr ""
+
+#: components/manage/Blocks/Grid/templates
+# defaultMessage: columns
+msgid "columns"
 msgstr ""
 
 #: config/Blocks

@@ -140,6 +140,11 @@ msgstr "Gehitu akzioa"
 msgid "Add block"
 msgstr "Gehitu blokea"
 
+#: components/manage/Blocks/Container/NewBlockAddButton
+# defaultMessage: Add block in position {index}
+msgid "Add block in position {index}"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add block…
 msgid "Add block…"
@@ -164,6 +169,11 @@ msgstr "Gehitu irizpidea"
 # defaultMessage: Add date
 msgid "Add date"
 msgstr "Gehitu data"
+
+#: components/manage/Blocks/Container/SimpleContainerToolbar
+# defaultMessage: Add element to container
+msgid "Add element to container"
+msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Add field
@@ -726,6 +736,11 @@ msgstr "Kontaktu-formularioa"
 # defaultMessage: Contained items
 msgid "Contained items"
 msgstr "Barneko elementuak"
+
+#: components/manage/Blocks/Container/SimpleContainerToolbar
+# defaultMessage: Container settings
+msgid "Container settings"
+msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Content
@@ -1532,6 +1547,11 @@ msgstr "Rol globala"
 msgid "Google Maps Embedded Block"
 msgstr "Google Maps itsasteko blokea"
 
+#: components/manage/Blocks/Grid/schema
+# defaultMessage: Grid
+msgid "Grid"
+msgstr ""
+
 #: components/manage/Sharing/Sharing
 # defaultMessage: Group
 msgid "Group"
@@ -1570,6 +1590,7 @@ msgstr "Taldeak erabiltzaileen multzo logikoak dira. Taldeak ez daude baimenei e
 msgid "Header cell"
 msgstr "Goiburuko gelaxka"
 
+#: components/manage/Blocks/Grid/schema
 #: components/manage/Blocks/Listing/schema
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Headline
@@ -1906,6 +1927,11 @@ msgstr ""
 # defaultMessage: Link
 msgid "Link"
 msgstr "Esteka"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Link copied to clipboard
+msgid "Link copied to clipboard"
+msgstr ""
 
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
@@ -2723,6 +2749,11 @@ msgstr "Errelebantzia"
 msgid "Remove"
 msgstr "Ezabatu"
 
+#: components/manage/Blocks/Container/EditBlockWrapper
+# defaultMessage: Remove element {index}
+msgid "Remove element {index}"
+msgstr ""
+
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Remove item
 msgid "Remove item"
@@ -2806,6 +2837,11 @@ msgstr "Beharrezkoa"
 # defaultMessage: Required input is missing.
 msgid "Required input is missing."
 msgstr "Beharrezko balioak falta dira"
+
+#: components/manage/Blocks/Container/EditBlockWrapper
+# defaultMessage: Reset element {index}
+msgid "Reset element {index}"
+msgstr ""
 
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Reset title
@@ -4249,6 +4285,16 @@ msgstr "Pasahitza ahaztuta?"
 # defaultMessage: Checkbox
 msgid "checkboxFacet"
 msgstr "Aukeraketa kutxa"
+
+#: components/manage/Blocks/Grid/templates
+# defaultMessage: column
+msgid "column"
+msgstr ""
+
+#: components/manage/Blocks/Grid/templates
+# defaultMessage: columns
+msgid "columns"
+msgstr ""
 
 #: config/Blocks
 # defaultMessage: Common

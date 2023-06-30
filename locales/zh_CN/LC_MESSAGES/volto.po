@@ -139,6 +139,11 @@ msgstr "添加操作"
 msgid "Add block"
 msgstr "添加block"
 
+#: components/manage/Blocks/Container/NewBlockAddButton
+# defaultMessage: Add block in position {index}
+msgid "Add block in position {index}"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add block…
 msgid "Add block…"
@@ -163,6 +168,11 @@ msgstr "添加标准"
 # defaultMessage: Add date
 msgid "Add date"
 msgstr "添加日期"
+
+#: components/manage/Blocks/Container/SimpleContainerToolbar
+# defaultMessage: Add element to container
+msgid "Add element to container"
+msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Add field
@@ -725,6 +735,11 @@ msgstr "联系表单"
 # defaultMessage: Contained items
 msgid "Contained items"
 msgstr "包含的项目"
+
+#: components/manage/Blocks/Container/SimpleContainerToolbar
+# defaultMessage: Container settings
+msgid "Container settings"
+msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Content
@@ -1531,6 +1546,11 @@ msgstr "全局角色"
 msgid "Google Maps Embedded Block"
 msgstr "Google 地图嵌入块"
 
+#: components/manage/Blocks/Grid/schema
+# defaultMessage: Grid
+msgid "Grid"
+msgstr ""
+
 #: components/manage/Sharing/Sharing
 # defaultMessage: Group
 msgid "Group"
@@ -1569,6 +1589,7 @@ msgstr "组是用户的逻辑集合，如部门和商务小组。他们不直接
 msgid "Header cell"
 msgstr "标题单元格"
 
+#: components/manage/Blocks/Grid/schema
 #: components/manage/Blocks/Listing/schema
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Headline
@@ -1905,6 +1926,11 @@ msgstr ""
 # defaultMessage: Link
 msgid "Link"
 msgstr "链接"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Link copied to clipboard
+msgid "Link copied to clipboard"
+msgstr ""
 
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
@@ -2722,6 +2748,11 @@ msgstr "相关度"
 msgid "Remove"
 msgstr "删除"
 
+#: components/manage/Blocks/Container/EditBlockWrapper
+# defaultMessage: Remove element {index}
+msgid "Remove element {index}"
+msgstr ""
+
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Remove item
 msgid "Remove item"
@@ -2805,6 +2836,11 @@ msgstr ""
 # defaultMessage: Required input is missing.
 msgid "Required input is missing."
 msgstr "缺少所需的输出。"
+
+#: components/manage/Blocks/Container/EditBlockWrapper
+# defaultMessage: Reset element {index}
+msgid "Reset element {index}"
+msgstr ""
 
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Reset title
@@ -4247,6 +4283,16 @@ msgstr "忘记了密码？"
 #: config/Blocks
 # defaultMessage: Checkbox
 msgid "checkboxFacet"
+msgstr ""
+
+#: components/manage/Blocks/Grid/templates
+# defaultMessage: column
+msgid "column"
+msgstr ""
+
+#: components/manage/Blocks/Grid/templates
+# defaultMessage: columns
+msgid "columns"
 msgstr ""
 
 #: config/Blocks

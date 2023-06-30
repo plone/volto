@@ -1,7 +1,7 @@
 import registry from '@plone/volto/registry';
 
 /**
- * A component that can autommatically look up its implementation from the
+ * A component that can automatically look up its implementation from the
  * registry based on the provided component `componentName`
  */
 const Component = ({ componentName, dependencies, ...rest }) => {

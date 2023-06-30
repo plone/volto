@@ -142,6 +142,11 @@ msgstr ""
 msgid "Add block"
 msgstr "Afegeix bloc"
 
+#: components/manage/Blocks/Container/NewBlockAddButton
+# defaultMessage: Add block in position {index}
+msgid "Add block in position {index}"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add block…
 msgid "Add block…"
@@ -166,6 +171,11 @@ msgstr "Afegeix criteri"
 # defaultMessage: Add date
 msgid "Add date"
 msgstr "Afegeix data"
+
+#: components/manage/Blocks/Container/SimpleContainerToolbar
+# defaultMessage: Add element to container
+msgid "Add element to container"
+msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Add field
@@ -728,6 +738,11 @@ msgstr "Formulari de contacte"
 # defaultMessage: Contained items
 msgid "Contained items"
 msgstr "Elements continguts"
+
+#: components/manage/Blocks/Container/SimpleContainerToolbar
+# defaultMessage: Container settings
+msgid "Container settings"
+msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Content
@@ -1534,6 +1549,11 @@ msgstr "Paper global"
 msgid "Google Maps Embedded Block"
 msgstr "Bloc incrustat de Google Maps"
 
+#: components/manage/Blocks/Grid/schema
+# defaultMessage: Grid
+msgid "Grid"
+msgstr ""
+
 #: components/manage/Sharing/Sharing
 # defaultMessage: Group
 msgid "Group"
@@ -1572,6 +1592,7 @@ msgstr "Els grups són col·leccions lògiques d'usuaris, com ara departaments i
 msgid "Header cell"
 msgstr "Cel·la de capçalera"
 
+#: components/manage/Blocks/Grid/schema
 #: components/manage/Blocks/Listing/schema
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Headline
@@ -1908,6 +1929,11 @@ msgstr ""
 # defaultMessage: Link
 msgid "Link"
 msgstr "Enllaç"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Link copied to clipboard
+msgid "Link copied to clipboard"
+msgstr ""
 
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
@@ -2725,6 +2751,11 @@ msgstr "Pertinència"
 msgid "Remove"
 msgstr ""
 
+#: components/manage/Blocks/Container/EditBlockWrapper
+# defaultMessage: Remove element {index}
+msgid "Remove element {index}"
+msgstr ""
+
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Remove item
 msgid "Remove item"
@@ -2808,6 +2839,11 @@ msgstr "Obligatori"
 # defaultMessage: Required input is missing.
 msgid "Required input is missing."
 msgstr "Falta l'entrada necessària."
+
+#: components/manage/Blocks/Container/EditBlockWrapper
+# defaultMessage: Reset element {index}
+msgid "Reset element {index}"
+msgstr ""
 
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Reset title
@@ -4250,6 +4286,16 @@ msgstr "Has oblidat la teva contrasenya?"
 #: config/Blocks
 # defaultMessage: Checkbox
 msgid "checkboxFacet"
+msgstr ""
+
+#: components/manage/Blocks/Grid/templates
+# defaultMessage: column
+msgid "column"
+msgstr ""
+
+#: components/manage/Blocks/Grid/templates
+# defaultMessage: columns
+msgid "columns"
 msgstr ""
 
 #: config/Blocks

@@ -75,6 +75,10 @@ By fixing this, we may break how the locales were applied, since the order will 
 Please check the translations of your project and add-ons, and verify that the translations are still correct.
 This could be especially true if you did translation overrides, two add-ons were using different translations for the same `msgid`, or there were conflicting `msgid`s in different add-ons.
 
+### Use proper heading tag (depending on the headline) in default listing template
+
+This change fixes a bug with the accessibility in listings.
+
 (volto-upgrade-guide-16.x.x)=
 
 ## Upgrading to Volto 16.x.x
