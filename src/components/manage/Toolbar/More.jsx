@@ -322,17 +322,16 @@ class More extends Component {
                 </li>
               )}
             </Plug>
-            <Plug pluggable="toolbar-more-menu-list" id="linkstoitems">
-              {path !== '' &&
-                !config.settings.excludeLinksAndReferencesMenuItem && (
-                  <li>
-                    <Link to={`${path}/links-to-item`}>
-                      {this.props.intl.formatMessage(messages.linkstoitem)}
-                      <Icon name={rightArrowSVG} size="24px" />
-                    </Link>
-                  </li>
-                )}
-            </Plug>
+            {path !== '' && !config.settings.excludeLinksAndReferencesMenuItem && (
+              <Plug pluggable="toolbar-more-menu-list" id="linkstoitems">
+                <li>
+                  <Link to={`${path}/links-to-item`}>
+                    {this.props.intl.formatMessage(messages.linkstoitem)}
+                    <Icon name={rightArrowSVG} size="24px" />
+                  </Link>
+                </li>
+              </Plug>
+            )}
             <Plug pluggable="toolbar-more-menu-list" id="rules">
               {rulesAction && (
                 <li>
