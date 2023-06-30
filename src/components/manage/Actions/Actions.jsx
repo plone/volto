@@ -55,7 +55,7 @@ const Actions = (props) => {
   const intl = useIntl();
   const dispatch = useDispatch();
   const [showRename, setshowRename] = useState(false);
-  const actions = useActions();
+  const { actions } = useActions();
   const { action, source } = useCopyContent();
   const { id, title } = useContent();
 

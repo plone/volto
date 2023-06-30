@@ -12,5 +12,5 @@ import { useSelector, shallowEqual } from 'react-redux';
 export function useActions() {
   const actions = useSelector((state) => state.actions.actions, shallowEqual);
 
-  return actions;
+  return { actions };
 }

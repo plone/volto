@@ -32,6 +32,66 @@ exports[`Actions renders an actions component 1`] = `
     className="menu transition"
   >
     <div
+      className="item"
+      onClick={[Function]}
+      role="option"
+    >
+      <i
+        aria-hidden="true"
+        className="cut icon"
+        onClick={[Function]}
+      />
+      <span
+        className="text"
+      >
+        Cut
+      </span>
+    </div>
+    <div
+      className="item"
+      onClick={[Function]}
+      role="option"
+    >
+      <i
+        aria-hidden="true"
+        className="copy icon"
+        onClick={[Function]}
+      />
+      <span
+        className="text"
+      >
+        Copy
+      </span>
+    </div>
+    <a
+      className="item"
+      href="/test/delete"
+      onClick={[Function]}
+    >
+      <i
+        aria-hidden="true"
+        className="trash icon"
+        onClick={[Function]}
+      />
+      Delete
+    </a>
+    <div
+      className="item"
+      onClick={[Function]}
+      role="option"
+    >
+      <i
+        aria-hidden="true"
+        className="text cursor icon"
+        onClick={[Function]}
+      />
+      <span
+        className="text"
+      >
+        Rename
+      </span>
+    </div>
+    <div
       className="RenameModal"
     />
   </div>
