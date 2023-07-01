@@ -44,7 +44,7 @@ function unboundRemoveEntity(editorState) {
   return newEditorState;
 }
 
-export default (config = {}) => {
+export default function AnchorPlugin(config = {}) {
   // ToDo: Get rif of the remainings of having the original CSS modules
   const defaultTheme = {};
 
@@ -79,4 +79,4 @@ export default (config = {}) => {
         setEditorState(removeEntity(getEditorState())),
     }),
   };
-};
+}

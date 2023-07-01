@@ -150,6 +150,11 @@ msgstr "Action ajoutée"
 msgid "Add block"
 msgstr "Ajouter un bloc"
 
+#: components/manage/Blocks/Container/NewBlockAddButton
+# defaultMessage: Add block in position {index}
+msgid "Add block in position {index}"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add block…
 msgid "Add block…"
@@ -174,6 +179,11 @@ msgstr "Ajouter un critère"
 # defaultMessage: Add date
 msgid "Add date"
 msgstr "Ajouter une date"
+
+#: components/manage/Blocks/Container/SimpleContainerToolbar
+# defaultMessage: Add element to container
+msgid "Add element to container"
+msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Add field
@@ -736,6 +746,11 @@ msgstr "Formulaire de contact"
 # defaultMessage: Contained items
 msgid "Contained items"
 msgstr "Eléments contenants"
+
+#: components/manage/Blocks/Container/SimpleContainerToolbar
+# defaultMessage: Container settings
+msgid "Container settings"
+msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Content
@@ -1540,6 +1555,11 @@ msgstr "Rôle global"
 msgid "Google Maps Embedded Block"
 msgstr "Bloc intégré de la carte Google"
 
+#: components/manage/Blocks/Grid/schema
+# defaultMessage: Grid
+msgid "Grid"
+msgstr ""
+
 #: components/manage/Sharing/Sharing
 # defaultMessage: Group
 msgid "Group"
@@ -1578,6 +1598,7 @@ msgstr "Les groupes sont des ensembles logiques d'utilisateurs, tels que des ser
 msgid "Header cell"
 msgstr "Cellule d'en-tête"
 
+#: components/manage/Blocks/Grid/schema
 #: components/manage/Blocks/Listing/schema
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Headline
@@ -1914,6 +1935,11 @@ msgstr ""
 # defaultMessage: Link
 msgid "Link"
 msgstr "Lien"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Link copied to clipboard
+msgid "Link copied to clipboard"
+msgstr ""
 
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
@@ -2695,6 +2721,11 @@ msgstr "Pertinence"
 msgid "Remove"
 msgstr "Supprimer"
 
+#: components/manage/Blocks/Container/EditBlockWrapper
+# defaultMessage: Remove element {index}
+msgid "Remove element {index}"
+msgstr ""
+
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Remove item
 msgid "Remove item"
@@ -2779,6 +2810,11 @@ msgstr "Obligatoire"
 # defaultMessage: Required input is missing.
 msgid "Required input is missing."
 msgstr "Un champ obligatoire est manquant"
+
+#: components/manage/Blocks/Container/EditBlockWrapper
+# defaultMessage: Reset element {index}
+msgid "Reset element {index}"
+msgstr ""
 
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Reset title
@@ -4215,6 +4251,16 @@ msgstr "Mot de passe oublié"
 # defaultMessage: Checkbox
 msgid "checkboxFacet"
 msgstr "Case à cocher"
+
+#: components/manage/Blocks/Grid/templates
+# defaultMessage: column
+msgid "column"
+msgstr ""
+
+#: components/manage/Blocks/Grid/templates
+# defaultMessage: columns
+msgid "columns"
+msgstr ""
 
 #: config/Blocks
 # defaultMessage: Common
