@@ -5,7 +5,7 @@ import {
   hasApiExpander,
   getBaseUrl,
 } from '@plone/volto/helpers';
-import { getNavroot, getSite } from '@plone/volto/actions';
+import { getNavroot } from '@plone/volto/actions';
 import config from '@plone/volto/registry';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -27,8 +27,9 @@ const ContentMetadataTags = (props) => {
   const site = useSelector((state) => state.site?.data);
 
   useEffect(() => {
-    pathname && dispatch(getNavroot(getBaseUrl(pathname)));
-    pathname && dispatch(getSite(getBaseUrl(pathname)));
+    if (pathname && !hasApiExpander('navroot', getBaseUrl(pathname))) {
+      dispatch(getNavroot(getBaseUrl(pathname)));
+    }
   }, [dispatch, pathname]);
 
   const getContentImageInfo = () => {

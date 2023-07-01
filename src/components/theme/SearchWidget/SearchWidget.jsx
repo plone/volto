@@ -12,6 +12,7 @@ import { PropTypes } from 'prop-types';
 import { defineMessages, injectIntl } from 'react-intl';
 
 import { getNavroot } from '@plone/volto/actions';
+import { hasApiExpander, getBaseUrl } from '@plone/volto/helpers';
 import { Icon } from '@plone/volto/components';
 import zoomSVG from '@plone/volto/icons/zoom.svg';
 
@@ -88,6 +89,12 @@ class SearchWidget extends Component {
       text: '',
     });
     event.preventDefault();
+  }
+
+  UNSAFE_componentWillReceiveProps() {
+    if (!hasApiExpander('navroot', getBaseUrl(this.props.pathname))) {
+      this.props.getNavroot(getBaseUrl(this.props.pathname));
+    }
   }
 
   /**
