@@ -1,6 +1,6 @@
 /**
- * Toolbar reducer.
- * @module reducers/toolbar/toolbar
+ * Site reducer.
+ * @module reducers/site/site
  */
 
 import { GET_SITE } from '@plone/volto/constants/ActionTypes';

@@ -1,8 +1,7 @@
 /**
- * Toolbar reducer.
- * @module reducers/toolbar/toolbar
+ * Navroot reducer.
+ * @module reducers/navroot/navroot
  */
-import { map } from 'lodash';
 import {
   flattenToAppURL,
   getBaseUrl,

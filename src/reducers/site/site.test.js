@@ -1,4 +1,4 @@
-import { GET_CONTENT, GET_SITE } from '@plone/volto/constants/ActionTypes';
+import { GET_SITE } from '@plone/volto/constants/ActionTypes';
 import config from '@plone/volto/registry';
 import site from './site';
 
@@ -63,16 +63,5 @@ describe('Site reducer', () => {
       loaded: false,
       loading: false,
     });
-  });
-});
-
-describe('Navroot reducer (NAVROOT)GET_CONTENT', () => {
-  beforeEach(() => {
-    config.settings.apiExpanders = [
-      {
-        match: '',
-        GET_CONTENT: ['navroot'],
-      },
-    ];
   });
 });
