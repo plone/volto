@@ -1,6 +1,13 @@
-import React from 'react';
-import { toPublicURL, Helmet } from '@plone/volto/helpers';
+import React, { useEffect } from 'react';
+import {
+  toPublicURL,
+  Helmet,
+  hasApiExpander,
+  getBaseUrl,
+} from '@plone/volto/helpers';
+import { getNavroot, getSite } from '@plone/volto/actions';
 import config from '@plone/volto/registry';
+import { useDispatch, useSelector } from 'react-redux';
 
 const ContentMetadataTags = (props) => {
   const {
@@ -13,6 +20,16 @@ const ContentMetadataTags = (props) => {
     title,
     description,
   } = props.content;
+
+  const dispatch = useDispatch();
+  const pathname = useSelector((state) => state.router.location.pathname);
+  const navroot = useSelector((state) => state.navroot?.data?.navroot);
+  const site = useSelector((state) => state.site?.data);
+
+  useEffect(() => {
+    pathname && dispatch(getNavroot(getBaseUrl(pathname)));
+    pathname && dispatch(getSite(getBaseUrl(pathname)));
+  }, [dispatch, pathname]);
 
   const getContentImageInfo = () => {
     const { contentMetadataTagsImageField } = config.settings;
@@ -50,8 +67,8 @@ const ContentMetadataTags = (props) => {
       config?.settings?.siteTitleFormat?.includeSiteTitle || false;
     const titleAndSiteTitleSeparator =
       config?.settings?.titleAndSiteTitleSeparator || '-';
-    const navRootTitle = props.navroot?.navroot?.title;
-    const siteRootTitle = props?.['plone.site_title'];
+    const navRootTitle = navroot?.title;
+    const siteRootTitle = site?.['plone.site_title'];
     const titlePart = navRootTitle || siteRootTitle;
 
     if (includeSiteTitle && titlePart && titlePart !== title) {

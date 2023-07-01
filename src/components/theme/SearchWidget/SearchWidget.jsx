@@ -6,10 +6,12 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Form, Input } from 'semantic-ui-react';
-import { compose } from 'redux';
+import { bindActionCreators, compose } from 'redux';
+import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { defineMessages, injectIntl } from 'react-intl';
 
+import { getNavroot } from '@plone/volto/actions';
 import { Icon } from '@plone/volto/components';
 import zoomSVG from '@plone/volto/icons/zoom.svg';
 
@@ -96,10 +98,7 @@ class SearchWidget extends Component {
   render() {
     return (
       <Form
-        action={
-          `${this.props?.content?.['@components'].navroot?.navroot?.['@id']}/search` ||
-          '/search'
-        }
+        action={`${this.props?.navroot?.navroot?.['@id']}/search` || '/search'}
         onSubmit={this.onSubmit}
       >
         <Form.Field className="searchbox">
@@ -122,4 +121,13 @@ class SearchWidget extends Component {
   }
 }
 
-export default compose(withRouter, injectIntl)(SearchWidget);
+export default compose(
+  withRouter,
+  injectIntl,
+  connect(
+    (state) => ({
+      navroot: state.navroot.data,
+    }),
+    { getNavroot },
+  ),
+)(SearchWidget);

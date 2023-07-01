@@ -18,12 +18,7 @@ import {
   Tags,
   Toolbar,
 } from '@plone/volto/components';
-import {
-  listActions,
-  getContent,
-  getSite,
-  getNavroot,
-} from '@plone/volto/actions';
+import { listActions, getContent } from '@plone/volto/actions';
 import {
   BodyClass,
   getBaseUrl,
@@ -127,12 +122,6 @@ class View extends Component {
     // Do not trigger the actions action if the expander is present
     if (!hasApiExpander('actions', getBaseUrl(this.props.pathname))) {
       this.props.listActions(getBaseUrl(this.props.pathname));
-    }
-    if (!hasApiExpander('site', getBaseUrl(this.props.pathname))) {
-      this.props.getSite(getBaseUrl(this.props.pathname));
-    }
-    if (!hasApiExpander('navroot', getBaseUrl(this.props.pathname))) {
-      this.props.getNavroot(getBaseUrl(this.props.pathname));
     }
 
     this.props.getContent(
@@ -246,11 +235,7 @@ class View extends Component {
 
     return (
       <div id="view">
-        <ContentMetadataTags
-          content={this.props.content}
-          site={this.props.site}
-          navroot={this.props.navroot}
-        />
+        <ContentMetadataTags content={this.props.content} />
         {/* Body class if displayName in component is set */}
         <BodyClass
           className={
@@ -305,14 +290,10 @@ export default compose(
       versionId:
         qs.parse(props.location.search) &&
         qs.parse(props.location.search).version,
-      site: state.site.data,
-      navroot: state.navroot.data,
     }),
     {
       listActions,
       getContent,
-      getSite,
-      getNavroot,
     },
   ),
 )(View);
