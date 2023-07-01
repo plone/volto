@@ -7,6 +7,7 @@ import { last, memoize } from 'lodash';
 import { urlRegex, telRegex, mailRegex } from './urlRegex';
 import prependHttp from 'prepend-http';
 import config from '@plone/volto/registry';
+import { matchPath } from 'react-router';
 
 /**
  * Get base url.
@@ -213,7 +214,17 @@ export function expandToBackendURL(path) {
  */
 export function isInternalURL(url) {
   const { settings } = config;
-  return (
+
+  const isMatch = (config.settings.externalRoutes ?? []).find((route) => {
+    if (typeof route === 'object') {
+      return matchPath(flattenToAppURL(url), route.match);
+    }
+    return matchPath(flattenToAppURL(url), route);
+  });
+
+  const isExcluded = isMatch && Object.keys(isMatch)?.length > 0;
+
+  const internalURL =
     url &&
     (url.indexOf(settings.publicURL) !== -1 ||
       (settings.internalApiPath &&
@@ -221,8 +232,13 @@ export function isInternalURL(url) {
       url.indexOf(settings.apiPath) !== -1 ||
       url.charAt(0) === '/' ||
       url.charAt(0) === '.' ||
-      url.startsWith('#'))
-  );
+      url.startsWith('#'));
+
+  if (internalURL && isExcluded) {
+    return false;
+  }
+
+  return internalURL;
 }
 
 /**
@@ -264,14 +280,14 @@ export function isTelephone(text) {
 }
 
 export function normaliseMail(email) {
-  if (email.toLowerCase().startsWith('mailto:')) {
+  if (email?.toLowerCase()?.startsWith('mailto:')) {
     return email;
   }
   return `mailto:${email}`;
 }
 
 export function normalizeTelephone(tel) {
-  if (tel.toLowerCase().startsWith('tel:')) {
+  if (tel?.toLowerCase()?.startsWith('tel:')) {
     return tel;
   }
   return `tel:${tel}`;
@@ -294,12 +310,17 @@ export function checkAndNormalizeUrl(url) {
     res.url = URLUtils.normalizeTelephone(url);
   } else {
     //url
-    if (!res.url.startsWith('/') && !res.url.startsWith('#')) {
+    if (
+      res.url?.length >= 0 &&
+      !res.url.startsWith('/') &&
+      !res.url.startsWith('#')
+    ) {
       res.url = URLUtils.normalizeUrl(url);
       if (!URLUtils.isUrl(res.url)) {
         res.isValid = false;
       }
     }
+    if (res.url === undefined || res.url === null) res.isValid = false;
   }
   return res;
 }

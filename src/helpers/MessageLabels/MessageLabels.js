@@ -260,4 +260,84 @@ export const messages = defineMessages({
     id: 'Show groups of users below',
     defaultMessage: 'Show groups of users below',
   },
+  urlClipboardCopy: {
+    id: 'Link copied to clipboard',
+    defaultMessage: 'Link copied to clipboard',
+  },
+  inspectRelations: {
+    id: 'Inspect relations',
+    defaultMessage: 'Inspect relations',
+  },
+  relations: {
+    id: 'Relations',
+    defaultMessage: 'Relations',
+  },
+  fixRelations: {
+    id: 'Fix relations',
+    defaultMessage: 'Fix relations',
+  },
+  searchRelationSource: {
+    id: 'Search sources by title or path',
+    defaultMessage: 'Search sources by title or path',
+  },
+  searchRelationTarget: {
+    id: 'Search targets by title or path',
+    defaultMessage: 'Search targets by title or path',
+  },
+  createOrDeleteRelationsToTarget: {
+    id: 'Create or delete relations to target',
+    defaultMessage: 'Create or delete relations to target',
+  },
+  relationName: {
+    id: 'Relation name',
+    defaultMessage: 'relation',
+  },
+  selectRelation: {
+    id: 'Select relation',
+    defaultMessage: 'Select relation',
+  },
+  norelationfound: {
+    id: 'No relation found',
+    defaultMessage: 'No relation found',
+  },
+  toomanyrelationsfound: {
+    id: 'Many relations found. Please search.',
+    defaultMessage: 'Many relations found. Please search.',
+  },
+  rebuildRelations: {
+    id: 'rebuild relations',
+    defaultMessage: 'rebuild relations',
+  },
+  flushAndRebuildRelations: {
+    id: 'flush intIds and rebuild relations',
+    defaultMessage: 'flush intIds and rebuild relations',
+  },
+  addPotentialTargetsPath: {
+    id: 'target path',
+    defaultMessage: 'target path',
+  },
+  addPotentialSourcesPath: {
+    id: 'sources path',
+    defaultMessage: 'sources path',
+  },
+  relationsUpdated: {
+    id: 'Relations updated',
+    defaultMessage: 'Relations updated',
+  },
+  select: {
+    id: 'Select',
+    defaultMessage: 'Select',
+  },
+  selected: {
+    id: 'Selected',
+    defaultMessage: 'Selected',
+  },
+  filter: {
+    id: 'Filter',
+    defaultMessage: 'Filter',
+  },
+  fileTooLarge: {
+    id: 'fileTooLarge',
+    defaultMessage: 'This website does not accept files larger than {limit}',
+  },
 });

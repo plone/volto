@@ -21,6 +21,7 @@ import {
   flattenToAppURL,
   getBaseUrl,
   isInternalURL,
+  validateFileUploadSize,
 } from '@plone/volto/helpers';
 
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
@@ -125,6 +126,7 @@ class Edit extends Component {
   onUploadImage = (e) => {
     e.stopPropagation();
     const file = e.target.files[0];
+    if (!validateFileUploadSize(file, this.props.intl.formatMessage)) return;
     this.setState({
       uploading: true,
     });
@@ -178,23 +180,25 @@ class Edit extends Component {
    * @param {array} files File objects
    * @returns {undefined}
    */
-  onDrop = (file) => {
-    this.setState({
-      uploading: true,
-    });
+  onDrop = (files) => {
+    if (!validateFileUploadSize(files[0], this.props.intl.formatMessage)) {
+      this.setState({ dragging: false });
+      return;
+    }
+    this.setState({ uploading: true });
 
-    readAsDataURL(file[0]).then((data) => {
+    readAsDataURL(files[0]).then((data) => {
       const fields = data.match(/^data:(.*);(.*),(.*)$/);
       this.props.createContent(
         getBaseUrl(this.props.pathname),
         {
           '@type': 'Image',
-          title: file[0].name,
+          title: files[0].name,
           image: {
             data: fields[3],
             encoding: fields[2],
             'content-type': fields[1],
-            filename: file[0].name,
+            filename: files[0].name,
           },
         },
         this.props.block,

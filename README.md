@@ -86,7 +86,7 @@ cd myvoltoproject
 You can bootstrap a ready Docker Plone container with all the dependencies and ready for Volto use. We recommend to use the Plone docker builds based in `pip` [plone/plone-backend](https://github.com/plone/plone-backend) image:
 
 ```shell
-docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e PROFILES="plone.volto:default-homepage" plone/plone-backend:6.0.1
+docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e PROFILES="plone.volto:default-homepage" plone/plone-backend:6.0.5
 ```
 
 or as an alternative if you have experience with Plone and you have all the
@@ -182,23 +182,20 @@ Please create a new [issue](https://github.com/plone/volto/issues/new) or [pull 
 
 ## Documentation
 
-You can find the latest (in-progress) documentation in [https://6.dev-docs.plone.org/](https://6.dev-docs.plone.org/volto/index.html)
+You can find the latest (in-progress) documentation in [https://6.docs.plone.org/](https://6.docs.plone.org/volto/index.html)
 
 ## Training
 
-On the [Plone Trainings Website](https://training.plone.org) you'll find
-Volto-dedicated open training materials, plus React and other
-JavaScript-centered trainings.
+On the [Plone Training website](https://training.plone.org), you'll find Volto-dedicated training materials, plus other JavaScript-centered trainings.
 
-- [Mastering Plone 6 Development](https://training.plone.org/5/mastering-plone/)
+- [Mastering Plone 6 Development](https://training.plone.org/mastering-plone/)
   The comprehensive training on Plone 6 with best practice tips for developers and integrators.
-- [Volto](https://training.plone.org/5/volto/index.html)
-  A detailed training on how to create your own website using Volto frontend.
-- [Volto Hands-On](https://training.plone.org/5/voltohandson/index.html)
-- [Volto Add-ons Development](https://training.plone.org/5/voltoaddons/index.html)
-- [Plone Deployment](https://training.plone.org/5/plone-deployment/index.html)
-- [React](https://training.plone.org/5/react/index.html)
-- [JavaScript For Plone Developers](https://training.plone.org/5/javascript/index.html)
+- [Volto Hands-On](https://training.plone.org/voltohandson/index.html)
+- [Volto Add-ons Development](https://training.plone.org/voltoaddons/index.html)
+- [Effective Volto](https://training.plone.org/effective-volto/index.html)
+- [Plone Deployment](https://training.plone.org/plone-deployment/index.html)
+- [Volto](https://2022.training.plone.org/volto/index.html) (archived)
+- [JavaScript For Plone Developers](https://2022.training.plone.org/javascript/index.html) (archived)
 
 ## Talks
 
@@ -245,7 +242,7 @@ We do not guarantee that deprecated browsers (e.g., Internet Explorer 11) are su
 
 ## Upgrades
 
-You can find the upgrade guide here: https://6.dev-docs.plone.org/volto/upgrade-guide/index.html
+You can find the upgrade guide here: https://6.docs.plone.org/volto/upgrade-guide/index.html
 
 ## Volto Development
 
@@ -269,7 +266,7 @@ yarn
 Either using a Docker command:
 
 ```shell
-docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e PROFILES="plone.volto:default-homepage" plone/plone-backend:6.0.1
+docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e PROFILES="plone.volto:default-homepage" plone/plone-backend:6.0.5
 ```
 
 or using the convenience makefile command:
@@ -320,11 +317,11 @@ yarn test
 
 Here you can find a guide on how acceptance testing is done in Volto:
 
-https://6.dev-docs.plone.org/volto/developer-guidelines/acceptance-tests.html
+https://6.docs.plone.org/volto/developer-guidelines/acceptance-tests.html
 
 ## Translations
 
-If you would like contribute to translate Volto into several languages, please, read the [Internationalization (i18n) guide](https://6.dev-docs.plone.org/volto/recipes/i18n.html).
+If you would like contribute to translate Volto into several languages, please, read the [Internationalization (i18n) guide](https://6.docs.plone.org/volto/recipes/i18n.html).
 
 ## Contributors
 

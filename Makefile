@@ -13,15 +13,15 @@ MAKEFLAGS+=--no-builtin-rules
 # Project settings
 
 INSTANCE_PORT=8080
-DOCKER_IMAGE=plone/server-dev:6.0.2
-DOCKER_IMAGE_ACCEPTANCE=plone/server-acceptance:6.0.2
+DOCKER_IMAGE=plone/server-dev:6.0.5
+DOCKER_IMAGE_ACCEPTANCE=plone/server-acceptance:6.0.5
 KGS=
 NODEBIN = ./node_modules/.bin
 SCRIPTSPACKAGE = ./packages/scripts
 
 # Plone 5 legacy
 DOCKER_IMAGE5=plone/plone-backend:5.2.10
-KGS5=plone.restapi==8.35.0 plone.volto==4.0.7 plone.rest==3.0.0
+KGS5=plone.restapi==8.37.0 plone.volto==4.0.8 plone.rest==3.0.0
 TESTING_ADDONS=plone.app.robotframework==2.0.0 plone.app.testing==7.0.0
 
 # Sphinx variables
@@ -115,9 +115,9 @@ clean:
 
 .PHONY: docs-clean
 docs-clean:  ## Clean current and legacy docs build directories, and Python virtual environment
-	cd $(DOCS_DIR) && rm -rf $(BUILDDIR)/
 	rm -rf bin include lib
 	rm -rf docs/_build
+	cd $(DOCS_DIR) && rm -rf $(BUILDDIR)/
 
 .PHONY: docs-html
 docs-html: bin/python  ## Build html

@@ -10,7 +10,7 @@
     }
   ],
   "license": "MIT",
-  "version": "7.0.0-alpha.2",
+  "version": "7.0.0-alpha.4",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/plone/generator-volto.git"
@@ -108,7 +108,6 @@
     "fs-extra": "3.0.0",
     "gitly": "2.0.3",
     "mkdirp-then": "1.2.0",
-    "ms": "1.0.0",
     "mz": "2.6.0",
     "ora": "1.2.0",
     "promise": "7.1.1",

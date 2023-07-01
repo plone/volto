@@ -82,6 +82,7 @@ config.set('settings', {
   viewableInBrowserObjects: [],
   styleClassNameConverters,
   styleClassNameExtenders,
+  blockSettingsTabFieldsetsInitialStateOpen: true,
 });
 config.set('blocks', {
   blocksConfig: {

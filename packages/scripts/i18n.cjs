@@ -5,7 +5,7 @@
  * @module scripts/i18n
  */
 
-const { find, keys, map, concat, reduce, zipObject } = require('lodash');
+const { find, keys, map, concat, reduce } = require('lodash');
 const glob = require('glob').sync;
 const fs = require('fs');
 const Pofile = require('pofile');
@@ -142,20 +142,52 @@ msgstr ""
  * @return {undefined}
  */
 function poToJson({ registry, addonMode }) {
+  const mergeMessages = (result, items, language) => {
+    items.forEach((item) => {
+      if (item.msgid in result) {
+        if (item.msgstr[0] !== '') {
+          result[item.msgid] = item.msgstr[0];
+        }
+      } else {
+        result[item.msgid] =
+          language === 'en'
+            ? item.msgstr[0] ||
+              (item.comments[0]
+                ? item.comments[0].replace('defaultMessage: ', '')
+                : '')
+            : item.msgstr[0];
+      }
+    });
+
+    return result;
+  };
+
   map(glob('locales/**/*.po'), (filename) => {
     let { items } = Pofile.parse(fs.readFileSync(filename, 'utf8'));
+    const projectLocalesItems = Pofile.parse(fs.readFileSync(filename, 'utf8'))
+      .items;
     const lang = filename.match(/locales\/(.*)\/LC_MESSAGES\//)[1];
+    const result = {};
+
+    // Merge volto core locales
+    const lib = `node_modules/@plone/volto/${filename}`;
+    if (fs.existsSync(lib)) {
+      const libItems = Pofile.parse(fs.readFileSync(lib, 'utf8')).items;
+      items = [...libItems, ...items];
+      mergeMessages(result, items, lang);
+    }
 
     if (!addonMode) {
       // Merge addons locales
       if (packageJson.addons) {
-        registry.addonNames.forEach((addon) => {
+        registry.getAddonDependencies().forEach((addon) => {
           const addonlocale = `${registry.packages[addon].modulePath}/../${filename}`;
           if (fs.existsSync(addonlocale)) {
             const addonItems = Pofile.parse(
               fs.readFileSync(addonlocale, 'utf8'),
             ).items;
             items = [...addonItems, ...items];
+            mergeMessages(result, items, lang);
             if (require.main === module) {
               // We only log it if called as script
               console.log(`Merging ${addon} locales for ${lang}`);
@@ -164,32 +196,9 @@ function poToJson({ registry, addonMode }) {
         });
       }
     }
-
     // Merge project locales, the project customization wins
-    const lib = `node_modules/@plone/volto/${filename}`;
-    if (fs.existsSync(lib)) {
-      const libItems = Pofile.parse(fs.readFileSync(lib, 'utf8')).items;
-      items = [...libItems, ...items];
-    }
-
-    // Write the corresponding language JSON, cover the special EN use case for including
-    // defaults if not present
-    fs.writeFileSync(
-      `locales/${lang}.json`,
-      JSON.stringify(
-        zipObject(
-          map(items, (item) => item.msgid),
-          map(items, (item) =>
-            lang === 'en'
-              ? item.msgstr[0] ||
-                (item.comments[0]
-                  ? item.comments[0].replace('defaultMessage: ', '')
-                  : '')
-              : item.msgstr[0],
-          ),
-        ),
-      ),
-    );
+    mergeMessages(result, projectLocalesItems, lang);
+    fs.writeFileSync(`locales/${lang}.json`, JSON.stringify(result));
   });
 }
 

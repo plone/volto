@@ -46,7 +46,7 @@ export default function actions(state = initialState, action = {}) {
         'actions',
         getBaseUrl(flattenToAppURL(action.result['@id'])),
       );
-      if (hasExpander) {
+      if (hasExpander && !action.subrequest) {
         return {
           ...state,
           error: null,

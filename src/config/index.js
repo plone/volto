@@ -151,6 +151,7 @@ let config = {
     },
     appExtras: [],
     maxResponseSize: 2000000000, // This is superagent default (200 mb)
+    maxFileUploadSize: null,
     serverConfig,
     storeExtenders: [],
     showTags: true,
@@ -181,6 +182,8 @@ let config = {
     styleClassNameConverters,
     hashLinkSmoothScroll: false,
     styleClassNameExtenders,
+    querystringSearchGet: false,
+    blockSettingsTabFieldsetsInitialStateOpen: true,
   },
   experimental: {
     addBlockButton: {

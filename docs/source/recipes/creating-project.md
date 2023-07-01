@@ -15,7 +15,7 @@ In addition to bootstrapping stand-alone Volto projects, it can also bootstrap V
 
 1.  Open a terminal and execute:
 
-    ```bash
+    ```shell
     npm install -g yo @plone/generator-volto
     # Install the latest and stable release of Volto with the following command
     yo @plone/volto
@@ -29,7 +29,8 @@ In addition to bootstrapping stand-alone Volto projects, it can also bootstrap V
     yo @plone/volto --addon=volto-form-block
     ```
 
-2.  Answer the questions when prompted, and provide the name of the new app (folder) to be created. For the sake of this documentation, provide `myvoltoproject` as the project name then.
+2.  Answer the questions when prompted, and provide the name of the new app (folder) to be created.
+    For the sake of this documentation, provide `myvoltoproject` as the project name then.
 
     ````{note}
     You can run the generator with parameters to tailor your requirements.

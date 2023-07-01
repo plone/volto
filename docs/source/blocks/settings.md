@@ -26,7 +26,6 @@ import CardTeaserView from '@package/components/Blocks/CardTeaserView';
 import DefaultColumnRenderer from '@package/components/Blocks/DefaultColumnRenderer';
 import NumberColumnRenderer from '@package/components/Blocks/NumberColumnRenderer';
 import ColoredColumnRenderer from '@package/components/Blocks/ColoredColumnRenderer';
-import CardTeaserView from '@package/components/Blocks/CardTeaserView';
 
 import CustomSchemaEnhancer from '@package/components/Blocks/CustomSchemaEnhancer';
 

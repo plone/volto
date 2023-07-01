@@ -3,10 +3,272 @@
 <!-- You should *NOT* be adding new change log entries to this file.
      You should create a file in the news directory instead.
      For helpful instructions, please see:
-     https://6.dev-docs.plone.org/volto/developer-guidelines/contributing.html#create-a-pull-request
+     https://6.docs.plone.org/volto/developer-guidelines/contributing.html#create-a-pull-request
 -->
 
 <!-- towncrier release notes start -->
+
+## 17.0.0-alpha.16 (2023-06-28)
+
+### Feature
+
+- New block: Grid - A container of blocks, arranged in horizontal direction. @sneridagh
+  New primitive: Container - A primitive to build blocks containing other blocks. @sneridagh [#3180](https://github.com/plone/volto/issues/3180)
+
+
+## 17.0.0-alpha.15 (2023-06-28)
+
+### Breaking
+
+- Use proper heading tag (depending on the headline) in default listing template @sneridagh [#4848](https://github.com/plone/volto/issues/4848)
+
+### Bugfix
+
+- Remove anonymous function calls. Remove default exports from. @sneridagh [#4917](https://github.com/plone/volto/issues/4917)
+- Fix Annontools StoryBook @sneridagh [#4921](https://github.com/plone/volto/issues/4921)
+- Fix the experimental add new block button position, compensate the icon width to center it correctly @sneridagh [#4924](https://github.com/plone/volto/issues/4924)
+
+### Internal
+
+- Add Storybook story for useDetectClickOutside hook with several demos @sneridagh [#4923](https://github.com/plone/volto/issues/4923)
+
+
+## 17.0.0-alpha.14 (2023-06-23)
+
+### Feature
+
+- Added slug-based linked headings in `volto-slate`. @tiberiuichim, @nileshgulia1 [#4287](https://github.com/plone/volto/issues/4287)
+- Refactored Anontools components. @Tishasoumya-02 [#4845](https://github.com/plone/volto/issues/4845)
+
+### Bugfix
+
+- Update to version 6.0.5 of Plone backend. @davisagli [#4897](https://github.com/plone/volto/issues/4897)
+
+
+## 17.0.0-alpha.13 (2023-06-15)
+
+### Feature
+
+- Add and enforce a new config setting, `maxFileUploadSize`. @davisagli [#4868](https://github.com/plone/volto/issues/4868)
+
+### Bugfix
+
+- Fix and improve the `addStyling` helper @sneridagh [#4880](https://github.com/plone/volto/issues/4880)
+
+
+## 17.0.0-alpha.12 (2023-06-14)
+
+### Feature
+
+- Allow to deselect color in ColorPickerWidget. @ksuess [#4838](https://github.com/plone/volto/issues/4838)
+- Configurable Container component from registry for some key route views. @sneridagh [#4871](https://github.com/plone/volto/issues/4871)
+
+### Bugfix
+
+- Fix regression in horizontal scroll in contents view, add it back @sneridagh [#4872](https://github.com/plone/volto/issues/4872)
+
+
+## 17.0.0-alpha.11 (2023-06-09)
+
+### Bugfix
+
+- Added current page parameter to route in listing and search block pagination - Fix: #3868 @bipoza [#4159](https://github.com/plone/volto/issues/4159)
+
+
+## 17.0.0-alpha.10 (2023-06-09)
+
+### Feature
+
+- Search Block: Add support for advanced facets that are only displayed on demand.
+  [pbauer, razvanMiu, claudiaifrim] [#4783](https://github.com/plone/volto/issues/4783)
+- Display PAS validation errors. [tschorr] [#4801](https://github.com/plone/volto/issues/4801)
+- Added a CSS identifier to the Slate style menu options. @razvanMiu [#4846](https://github.com/plone/volto/issues/4846)
+- Use a Container from the registry in the Form component and fallback to the Semantic UI one. @sneridagh [#4849](https://github.com/plone/volto/issues/4849)
+- Update Brazilian Portuguese translations @ericof [#4853](https://github.com/plone/volto/issues/4853)
+
+### Bugfix
+
+- Convert header class to function. @gomez [#4767](https://github.com/plone/volto/issues/4767)
+- Do not break validation on required number field with value 0 @cekk [#4841](https://github.com/plone/volto/issues/4841)
+
+
+## 17.0.0-alpha.9 (2023-06-01)
+
+### Bugfix
+
+- Fix special characters in request urls @pnicolli @mamico @luca-bellenghi @cekk [#4825](https://github.com/plone/volto/issues/4825)
+- Fix block is undefined in StyleWrapper helper when building classnames @sneridagh [#4827](https://github.com/plone/volto/issues/4827)
+- Fix navigation sections in 404 pages @sneridagh [#4836](https://github.com/plone/volto/issues/4836)
+
+### Documentation
+
+- Fix glossary warning due to lack of empty line before a term. @stevepiercy [#4820](https://github.com/plone/volto/issues/4820)
+
+
+## 17.0.0-alpha.8 (2023-05-24)
+
+### Feature
+
+- Add Finnish translation (contributed by @rioksane) @erral [#4084](https://github.com/plone/volto/issues/4084)
+
+### Bugfix
+
+- Fixed the issue "shouldn't use a hook like function name for a variable" @Kaku-g [#4693](https://github.com/plone/volto/issues/4693)
+- Fix to not update breadrumbs, navigation, actions, and types when content is fetched as a subrequest and apiExpanders includes these components. @davisagli [#4760](https://github.com/plone/volto/issues/4760)
+- Fix bug where editors could not see their own content in the Contents view if it was expired or has a future effective date. @davisagli [#4764](https://github.com/plone/volto/issues/4764)
+- Fix bug showing logs at the browsers when richtext widget is use @claytonc [#4780](https://github.com/plone/volto/issues/4780)
+- Update relations control panel layout @danalvrz [#4794](https://github.com/plone/volto/issues/4794)
+- Fix hot module reloading of changes to `@plone/volto`. @davisagli [#4799](https://github.com/plone/volto/issues/4799)
+- Add guard in case of malformed blocks are present (at least id and title should be present) @sneridagh [#4802](https://github.com/plone/volto/issues/4802)
+- Fix html tag lang attribute in SSR @sneridagh [#4803](https://github.com/plone/volto/issues/4803)
+- Add newest supported languages to `Language` constants list @sneridagh [#4811](https://github.com/plone/volto/issues/4811)
+
+### Internal
+
+- Remove max_line_length from .editorconfig @pnicolli [#4776](https://github.com/plone/volto/issues/4776)
+- Fix unannounced breaking change in cypress-io/github-action @sneridagh [#4795](https://github.com/plone/volto/issues/4795)
+
+
+## 17.0.0-alpha.7 (2023-05-11)
+
+### Bugfix
+
+- Fix language negotiation for language codes that include a region (e.g. `pt-br`). @davisagli [#4644](https://github.com/plone/volto/issues/4644)
+
+
+## 17.0.0-alpha.6 (2023-05-11)
+
+### Feature
+
+- Changed control panel list to be fetched server-side not client-side
+  @JeffersonBledsoe [#3749](https://github.com/plone/volto/issues/3749)
+
+### Bugfix
+
+- Apply suggestion from browser for password field @lord2anil [#3990](https://github.com/plone/volto/issues/3990)
+- Open all accordion'd content in InlineForm by default, allow arbitrarily close any number of them. @sneridagh [#4178](https://github.com/plone/volto/issues/4178)
+- Fix duplicating listing block by removing block uid from blocks data. @ksuess [#4234](https://github.com/plone/volto/issues/4234)
+- The tabs for the add page was unresponsive on mobile devices. Fixed this by changing flex-wrap property. @sudhanshu1309 [#4506](https://github.com/plone/volto/issues/4506)
+- (fix):Object.normaliseMail: Cannot read properties of null @dobri1408 [#4558](https://github.com/plone/volto/issues/4558)
+- Update add-on control panel tranlsations: install -> activate. @ksuess [#4582](https://github.com/plone/volto/issues/4582)
+- Fix robot.txt - the sitemap link should respect x-forwarded headers @reebalazs [#4638](https://github.com/plone/volto/issues/4638)
+- Fix Move to top of folder ordering in folder content view by searching also @iFlameing [#4690](https://github.com/plone/volto/issues/4690)
+- Fix faulty D&D elements in ObjectBrowserList widget @sneridagh [#4703](https://github.com/plone/volto/issues/4703)
+- Fix fetching API paths with urlencoded characters in the querystring. @davisagli [#4718](https://github.com/plone/volto/issues/4718)
+
+### Internal
+
+- Change conditional checking to optional chaining for a theme icon @nilootpal [#4567](https://github.com/plone/volto/issues/4567)
+- Security upgrade for momentjs [#4715](https://github.com/plone/volto/issues/4715)
+- Upgrade to Plone 6.0.4 @sneridagh [#4743](https://github.com/plone/volto/issues/4743)
+
+### Documentation
+
+- Added documentation regarding the static middleware. @BhardwajAditya-github [#4518](https://github.com/plone/volto/issues/4518)
+- Use new URL `6.docs.plone.org`. @stevepiercy [#4726](https://github.com/plone/volto/issues/4726)
+- Synch stuff from `16.x.x` branch that should have been in `master` as well. @stevepiercy [#4728](https://github.com/plone/volto/issues/4728)
+- Fix link in Volto, remove from linkcheck ignore in Documentation. @stevepiercy [#4742](https://github.com/plone/volto/issues/4742)
+
+
+## 17.0.0-alpha.5 (2023-04-14)
+
+### Bugfix
+
+- Generate a split sitemap @reebalazs [#4638](https://github.com/plone/volto/issues/4638)
+- Fix Move to top of folder ordering in folder content view @iFlameing [#4690](https://github.com/plone/volto/issues/4690)
+- Revert "Add current page parameter to the route in the listing and search block pagination (#4159)" @sneridagh [#4695](https://github.com/plone/volto/issues/4695)
+- Fix search block in edit mode re-queries multiple blocks with an empty search text @reebalazs [#4697](https://github.com/plone/volto/issues/4697)
+
+### Documentation
+
+- Update links for 2022 Training archive. @stevepiercy [#4635](https://github.com/plone/volto/issues/4635)
+
+
+## 17.0.0-alpha.4 (2023-04-12)
+
+### Feature
+
+- DefaultView (view of fields for content types with blocks disabled): Show field name as tip on hover of label. @ksuess [#4598](https://github.com/plone/volto/issues/4598)
+- Support RelationList field with named StaticCatalogVocabulary and SelectWidget. @ksuess [#4614](https://github.com/plone/volto/issues/4614)
+- Support for declaring a theme in `volto.config.js` or in `package.json`
+  Add two entry points to allow extension of a theme from other add-ons. @sneridagh [#4625](https://github.com/plone/volto/issues/4625)
+- Set sameSite in I18N_LANGUAGE cookie @sneridagh [#4627](https://github.com/plone/volto/issues/4627)
+- Added querystring search get option. @robgietema [#4658](https://github.com/plone/volto/issues/4658)
+
+### Bugfix
+
+- Added current page parameter to route in listing and search block pagination - Fix: #3868 @bipoza [#4159](https://github.com/plone/volto/issues/4159)
+- Fix regexp that checks valid URLs and improve tests [cekk] [#4601](https://github.com/plone/volto/issues/4601)
+- Fixed wrong localization on password reset page @iRohitSingh [#4656](https://github.com/plone/volto/issues/4656)
+- fix sitemap.xml.gz not is not compressed @dobri1408 [#4663](https://github.com/plone/volto/issues/4663)
+
+### Internal
+
+- Trigger CI workflows to run from external pull requests. @davisagli [#4629](https://github.com/plone/volto/issues/4629)
+- Update to p.restapi 8.36.0 and Plone 6.0.3 @sneridagh [#4682](https://github.com/plone/volto/issues/4682)
+
+### Documentation
+
+- Added `JavaScript` and `NodeJS` as accepted spellings, and deviations of them as rejected spellings. @utkkkarshhh [#3092](https://github.com/plone/volto/issues/3092)
+- Fix documentation build, add pins @sneridagh [#4626](https://github.com/plone/volto/issues/4626)
+- Update Volto contributing to align with and refer to the new Plone core code contributing requirements. @stevepiercy [#4634](https://github.com/plone/volto/issues/4634)
+- Improve creating views documentation page. @rboixaderg [#4636](https://github.com/plone/volto/issues/4636)
+- Razzle upgrade notice in upgrade guide @sneridagh [#4641](https://github.com/plone/volto/issues/4641)
+- Rename "Developer Guidelines" to "Contributing". @stevepiercy [#4666](https://github.com/plone/volto/issues/4666)
+- Fix broken link to `ReactJS.org`. @stevepiercy [#4667](https://github.com/plone/volto/issues/4667)
+
+
+## 17.0.0-alpha.3 (2023-03-22)
+
+### Feature
+
+- Add Vale to CI for spell and style checks. @MAX-786 [#4423](https://github.com/plone/volto/issues/4423)
+
+### Bugfix
+
+- Fix Search is case sensitive in Block chooser @iRohitSingh [#4526](https://github.com/plone/volto/issues/4526)
+- InternalURl helper method should incorporate externalRoutes settings into consideration. @iFlameing [#4559](https://github.com/plone/volto/issues/4559)
+- Update message add-on control panel: remove 'buildout', update reference. @ksuess [#4574](https://github.com/plone/volto/issues/4574)
+
+### Documentation
+
+- Deleted duplicate import and fixed training URLs. @yahya-cloud [#4523](https://github.com/plone/volto/issues/4523)
+- Fix grammar in PR #4542. @stevepiercy [#4555](https://github.com/plone/volto/issues/4555)
+- Fix broken links at `ReactJS.org`. @stevepiercy [#4569](https://github.com/plone/volto/issues/4569)
+- Fix video warnings and link errors. @stevepiercy [#4578](https://github.com/plone/volto/issues/4578)
+
+
+## 17.0.0-alpha.2 (2023-03-15)
+
+### Breaking
+
+- Add custom CSS animation to hamburger menu. Removed `hamburgers` dependency. @danalvrz [#4433](https://github.com/plone/volto/issues/4433)
+- Improve i18n script ordering of addons, so that addons can override translations from their dependencies. @davisagli [#4495](https://github.com/plone/volto/issues/4495)
+
+### Feature
+
+- Add option to hide empty listing blocks @ksuess [#4393](https://github.com/plone/volto/issues/4393)
+
+### Bugfix
+
+- Update build dependencies (razzle and react-dev-utils) @davisagli [#3997](https://github.com/plone/volto/issues/3997)
+- Added block prop to BlockDataForm in the Edit component of ToC. If block is not passed, OnChangeBlock will be called with undefined block id. @tedw87 [#4110](https://github.com/plone/volto/issues/4110)
+- Fix focus steal in Form @tedw87 [#4230](https://github.com/plone/volto/issues/4230)
+- Fixed paste issue in Table Block and added cypress test for pasting text in Table Block. [#4301](https://github.com/plone/volto/issues/4301)
+- Fixed i18n script to avoid overwriting translations with an empty msgstr @danalvrz [#4316](https://github.com/plone/volto/issues/4316)
+- bugfix: conditionally render all delete items in confirm widget [#4336](https://github.com/plone/volto/issues/4336)
+- Make the Site Setup control panel responsive for small screen devices. @lord2anil [#4484](https://github.com/plone/volto/issues/4484)
+- The menu for the contents page was unresponsive on mobile devices. Fixed this by changing the menu overflow to scroll. @sudhanshu1309 [#4492](https://github.com/plone/volto/issues/4492)
+- Make Drag and Drop list work with container-type inline-size. @robgietema [#4497](https://github.com/plone/volto/issues/4497)
+- (fix): Paste button disappearing while coping from nested blocks @dobri1408 [#4505](https://github.com/plone/volto/issues/4505)
+- Patch updates for some dependencies. @davisagli [#4520](https://github.com/plone/volto/issues/4520)
+- Fix flaky Cypress test introduced in #4521 @sneridagh [#4522](https://github.com/plone/volto/issues/4522)
+
+### Documentation
+
+- Fix training urls @ksuess [#4502](https://github.com/plone/volto/issues/4502)
+- Add upgrade guide for 4504 @sneridagh [#4542](https://github.com/plone/volto/issues/4542)
+
 
 ## 17.0.0-alpha.1 (2023-03-09)
 
@@ -60,6 +322,228 @@
 - Use a universal static path for both documentation and volto repos. @stevepiercy [#4376](https://github.com/plone/volto/issues/4376)
 
 
+## 16.21.1 (2023-06-23)
+
+### Bugfix
+
+- Added current page parameter to route in listing and search block pagination - Fix: #3868 @bipoza [#4159](https://github.com/plone/volto/issues/4159)
+
+
+## 16.21.0 (2023-06-16)
+
+### Feature
+
+- Display PAS validation errors. [tschorr] [#4801](https://github.com/plone/volto/issues/4801)
+- Allow to deselect color in ColorPickerWidget. @ksuess [#4838](https://github.com/plone/volto/issues/4838)
+- Added a CSS identifier to the Slate style menu options. @razvanMiu [#4846](https://github.com/plone/volto/issues/4846)
+- Use a Container from the registry in the Form component and fallback to the Semantic UI one. @sneridagh [#4849](https://github.com/plone/volto/issues/4849)
+- Add and enforce a new config setting, `maxFileUploadSize`. @davisagli [#4868](https://github.com/plone/volto/issues/4868)
+- Configurable Container component from registry for some key route views. @sneridagh [#4871](https://github.com/plone/volto/issues/4871)
+
+### Bugfix
+
+- Do not break validation on required number field with value 0 @cekk [#4841](https://github.com/plone/volto/issues/4841)
+- Fix regression in horizontal scroll in contents view, add it back @sneridagh [#4872](https://github.com/plone/volto/issues/4872)
+- Fix and improve the `addStyling` helper @sneridagh [#4880](https://github.com/plone/volto/issues/4880)
+
+
+## 16.20.8 (2023-06-01)
+
+### Bugfix
+
+- Fix special characters in request urls @pnicolli @mamico @luca-bellenghi @cekk [#4826](https://github.com/plone/volto/issues/4826)
+- Fix block is undefined in StyleWrapper helper when building classnames @sneridagh [#4827](https://github.com/plone/volto/issues/4827)
+- Fix navigation sections in 404 pages @sneridagh [#4836](https://github.com/plone/volto/issues/4836)
+
+### Documentation
+
+- Fix glossary warning due to lack of empty line before a term. @stevepiercy [#4820](https://github.com/plone/volto/issues/4820)
+
+
+## 16.20.7 (2023-05-24)
+
+### Bugfix
+
+- Fixed the issue "shouldn't use a hook like function name for a variable" @Kaku-g [#4693](https://github.com/plone/volto/issues/4693)
+- Fix to not update breadrumbs, navigation, actions, and types when content is fetched as a subrequest and apiExpanders includes these components. @davisagli [#4760](https://github.com/plone/volto/issues/4760)
+- Fix bug where editors could not see their own content in the Contents view if it was expired or has a future effective date. @davisagli [#4764](https://github.com/plone/volto/issues/4764)
+- Fix bug showing logs at the browsers when richtext widget is use @claytonc [#4780](https://github.com/plone/volto/issues/4780)
+- Add guard in case of malformed blocks are present (at least id and title should be present) @sneridagh [#4802](https://github.com/plone/volto/issues/4802)
+- Fix html tag lang attribute in SSR @sneridagh [#4803](https://github.com/plone/volto/issues/4803)
+- Add newest supported languages to `Language` constants list @sneridagh [#4811](https://github.com/plone/volto/issues/4811)
+
+### Internal
+
+- Remove max_line_length from .editorconfig @pnicolli [#4776](https://github.com/plone/volto/issues/4776)
+- Fix unannounced breaking change in cypress-io/github-action @sneridagh [#4795](https://github.com/plone/volto/issues/4795)
+
+
+## 16.20.6 (2023-05-12)
+
+### Bugfix
+
+- Fix language negotiation for language codes that include a region (e.g. `pt-br`). @davisagli [#4644](https://github.com/plone/volto/issues/4644)
+
+
+## 16.20.5 (2023-05-12)
+
+### Bugfix
+
+- Apply suggestion from browser for password field @lord2anil [#3990](https://github.com/plone/volto/issues/3990)
+- The tabs for the add page was unresponsive on mobile devices. Fixed this by changing flex-wrap property. @sudhanshu1309 [#4506](https://github.com/plone/volto/issues/4506)
+- (fix):Object.normaliseMail: Cannot read properties of null @dobri1408 [#4558](https://github.com/plone/volto/issues/4558)
+
+### Internal
+
+- Upgrade to Plone 6.0.4 @sneridagh [#4743](https://github.com/plone/volto/issues/4743)
+
+### Documentation
+
+- Added documentation regarding the static middleware. @BhardwajAditya-github [#4518](https://github.com/plone/volto/issues/4518)
+- Backport most documentation differences from `master` to `16.x.x`. @stevepiercy [#4727](https://github.com/plone/volto/issues/4727)
+- Fix link in Volto, remove from linkcheck ignore in Documentation. @stevepiercy [#4742](https://github.com/plone/volto/issues/4742)
+
+
+## 16.20.4 (2023-04-20)
+
+### Bugfix
+
+- Fix fetching API paths with urlencoded characters in the querystring. @davisagli [#4718](https://github.com/plone/volto/issues/4718)
+
+### Internal
+
+- Security upgrade for momentjs [#4716](https://github.com/plone/volto/issues/4716)
+
+
+## 16.20.3 (2023-04-18)
+
+### Bugfix
+
+- Revert inadvertently included files from another PR in #4710 @sneridagh [#4713](https://github.com/plone/volto/issues/4713)
+
+
+## 16.20.2 (2023-04-18)
+
+### Bugfix
+
+- Fix robot.txt - the sitemap link should respect x-forwarded headers @reebalazs [#4638](https://github.com/plone/volto/issues/4638)
+- Fix Move to top of folder ordering in folder content view by searching also @iFlameing [#4690](https://github.com/plone/volto/issues/4690)
+- Fix faulty D&D elements in ObjectBrowserList widget @sneridagh [#4703](https://github.com/plone/volto/issues/4703)
+
+
+## 16.20.1 (2023-04-14)
+
+### Bugfix
+
+- Generate a split sitemap @reebalazs [#4638](https://github.com/plone/volto/issues/4638)
+- Fix Move to top of folder ordering in folder content view @iFlameing [#4690](https://github.com/plone/volto/issues/4690)
+- Revert "Add current page parameter to the route in the listing and search block pagination (#4159)" @sneridagh [#4695](https://github.com/plone/volto/issues/4695)
+- Fix search block in edit mode re-queries multiple blocks with an empty search text @reebalazs [#4697](https://github.com/plone/volto/issues/4697)
+
+
+## 16.20.0 (2023-04-12)
+
+### Feature
+
+- Support RelationList field with named StaticCatalogVocabulary and SelectWidget. @ksuess [#4614](https://github.com/plone/volto/issues/4614)
+- Support for declaring a theme in `volto.config.js` or in `package.json`
+  Add two entry points to allow extension of a theme from other add-ons. @sneridagh [#4625](https://github.com/plone/volto/issues/4625)
+- Added querystring search get option. @robgietema [#4658](https://github.com/plone/volto/issues/4658)
+
+### Bugfix
+
+- Added current page parameter to route in listing and search block pagination - Fix: #3868 @bipoza [#4159](https://github.com/plone/volto/issues/4159)
+- Fixed wrong localization on password reset page @iRohitSingh [#4656](https://github.com/plone/volto/issues/4656)
+- fix sitemap.xml.gz not is not compressed @dobri1408 [#4663](https://github.com/plone/volto/issues/4663)
+
+### Internal
+
+- Update to p.restapi 8.36.0 and Plone 6.0.3 @sneridagh [#4682](https://github.com/plone/volto/issues/4682)
+
+### Documentation
+
+- Update Volto contributing to align with and refer to the new Plone core code contributing requirements. @stevepiercy [#4634](https://github.com/plone/volto/issues/4634)
+- Improve creating views documentation page. @rboixaderg [#4636](https://github.com/plone/volto/issues/4636)
+- Rename "Developer Guidelines" to "Contributing". @stevepiercy [#4666](https://github.com/plone/volto/issues/4666)
+- Fix broken link to `ReactJS.org`. @stevepiercy [#4667](https://github.com/plone/volto/issues/4667)
+
+
+## 16.19.0 (2023-04-04)
+
+### Feature
+
+- DefaultView (view of fields for content types with blocks disabled): Show field name as tip on hover of label. @ksuess [#4598](https://github.com/plone/volto/issues/4598)
+- Set sameSite in I18N_LANGUAGE cookie @sneridagh [#4627](https://github.com/plone/volto/issues/4627)
+
+### Bugfix
+
+- Fix regexp that checks valid URLs and improve tests [cekk] [#4601](https://github.com/plone/volto/issues/4601)
+
+### Documentation
+
+- Added `JavaScript` and `NodeJS` as accepted spellings, and deviations of them as rejected spellings. @utkkkarshhh [#3092](https://github.com/plone/volto/issues/3092)
+- Fix documentation build, add pins @sneridagh [#4626](https://github.com/plone/volto/issues/4626)
+
+
+## 16.18.0 (2023-03-22)
+
+### Feature
+
+- Add Vale to CI for spell and style checks. @MAX-786 [#4423](https://github.com/plone/volto/issues/4423)
+
+### Bugfix
+
+- Patch updates for some dependencies. @davisagli [#4520](https://github.com/plone/volto/issues/4520)
+- InternalURl helper method should incorporate externalRoutes settings into consideration. @iFlameing [#4559](https://github.com/plone/volto/issues/4559)
+- Update message add-on control panel: remove 'buildout', update reference. @ksuess [#4574](https://github.com/plone/volto/issues/4574)
+
+### Documentation
+
+- Fix broken links at `ReactJS.org`. @stevepiercy [#4569](https://github.com/plone/volto/issues/4569)
+- Fix video warnings and link errors. @stevepiercy [#4578](https://github.com/plone/volto/issues/4578)
+
+
+## 16.17.1 (2023-03-16)
+
+ ### Bugfix
+
+ - Fix Search is case sensitive in Block chooser @iRohitSingh [#4526](https://github.com/plone/volto/issues/4526)
+
+ ### Documentation
+
+ - Deleted duplicate import and fixed training URLs. @yahya-cloud [#4523](https://github.com/plone/volto/issues/4523)
+
+
+## 16.17.0 (2023-03-15)
+
+### Feature
+
+- Add option to hide empty listing blocks @ksuess [#4393](https://github.com/plone/volto/issues/4393)
+
+### Bugfix
+
+- Added block prop to BlockDataForm in the Edit component of ToC. If block is not passed, OnChangeBlock will be called with undefined block id. @tedw87 [#4110](https://github.com/plone/volto/issues/4110)
+- Fix focus steal in Form @tedw87 [#4230](https://github.com/plone/volto/issues/4230)
+- Fixed paste issue in Table Block and added cypress test for pasting text in Table Block. [#4301](https://github.com/plone/volto/issues/4301)
+- Fixed i18n script to avoid overwriting translations with an empty msgstr @danalvrz [#4316](https://github.com/plone/volto/issues/4316)
+- bugfix: conditionally render all delete items in confirm widget [#4336](https://github.com/plone/volto/issues/4336)
+- Make the Site Setup control panel responsive for small screen devices. @lord2anil [#4484](https://github.com/plone/volto/issues/4484)
+- The menu for the contents page was unresponsive on mobile devices. Fixed this by changing the menu overflow to scroll. @sudhanshu1309 [#4492](https://github.com/plone/volto/issues/4492)
+- (fix): Paste button disappearing while coping from nested blocks @dobri1408 [#4505](https://github.com/plone/volto/issues/4505)
+- Fix flaky Cypress test introduced in #4521 @sneridagh [#4522](https://github.com/plone/volto/issues/4522)
+
+### Documentation
+
+- Fix training urls @ksuess [#4502](https://github.com/plone/volto/issues/4502)
+
+
+## 16.16.0 (2023-03-09)
+
+### Feature
+
+- Add directive to cache stable resources in browser or intermediate server for 365 days by default directly in the SSR Express server, static resource that could change after a new deployment for 1 minute. @mamico [#2216](https://github.com/plone/volto/issues/2216)
+
+
 ## 16.15.0 (2023-03-08)
 
 ### Feature
@@ -82,7 +566,7 @@
 
 ### Documentation
 
-- Complete teaser docs, add new section in `Blocks`: `Core Blocks developers notes` @sneridagh [#4461](https://github.com/plone/volto/issues/4461)
+- Complete teaser docs, add new section in `Blocks`: `Core Blocks developers notes` @sneridagh [#4461](https://github.com/plone/volto/pull/4461)
 
 
 ## 16.14.0 (2023-03-03)
@@ -412,7 +896,7 @@
 - Enable the use of yarn 3 in the build by default @sneridagh
 - The `ContentsBreadcrumbs` component now renders the whole language name of the language root folder (if any) instead of just the `id` (before: `de`, now: `Deutsch`) @sneridagh
 
-See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
+See https://6.docs.plone.org/volto/upgrade-guide/index.html for more information.
 
 ### Feature
 
@@ -847,6 +1331,7 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 - Add support for loading core add-ons from the `packages` folder defined in Volto's `package.json` @sneridagh
 - Implement the Upgrade Control Panel @ericof
 - Allow addons to customize modules from the project root, via the `@root` namespace and folder @tiberiuichim
+- Updated Spanish translation @macagua
 
 ### Bugfix
 
@@ -909,7 +1394,7 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 - Moved all sentry-related code from Volto to the `@plone-collective/volto-sentry` package. @tiberiuichim
 - The listing block icon has been improved to avoid confusion with the normal text list. @sneridagh
 
-See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
+See https://6.docs.plone.org/volto/upgrade-guide/index.html for more information.
 
 ### Feature
 
@@ -970,6 +1455,7 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 - Object browser: image search should only show images @reebalazs
 - Updated spanish translation @macagua
 - Add Dutch translation @spereverde
+- Add control panel for relations. @ksuess
 
 ### Bugfix
 
@@ -1020,7 +1506,7 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 
 - Sentry integration is now lazy-loaded. The `sentryOptions` key from the `settings` registry becomes a callable that passes resolved sentry libraries. @tiberiuichim
 
-  See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
+  See https://6.docs.plone.org/volto/upgrade-guide/index.html for more information.
 
 ### Feature
 
@@ -1084,7 +1570,7 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 - Upgrade to Razzle 4 @davisagli
 - Jest downgraded from 27 to 26 @davisagli
 
-See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
+See https://6.docs.plone.org/volto/upgrade-guide/index.html for more information.
 
 ### Internal
 
@@ -1124,7 +1610,7 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 ### Breaking
 
 - `react-window` no longer a Volto dependency @sneridagh
-  See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
+  See https://6.docs.plone.org/volto/upgrade-guide/index.html for more information.
 
 ### Bugfix
 
@@ -1163,7 +1649,7 @@ See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more informa
 ### Breaking
 
 - Move Layout constants to `config.views.layoutViewsNamesMapping`. Complete the list. i18n the list. Improve Display component. @sneridagh
-  See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
+  See https://6.docs.plone.org/volto/upgrade-guide/index.html for more information.
 
 ### Feature
 
@@ -1209,7 +1695,7 @@ Undo html_static_path configuration in `plone/documentation`, and restore image 
 ### Breaking
 
 - Main workflow change menu changed from Pastanaga UI simplification to classic Plone implementation. @sneridagh
-  See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
+  See https://6.docs.plone.org/volto/upgrade-guide/index.html for more information.
 
 ### Feature
 
@@ -1305,7 +1791,7 @@ Undo html_static_path configuration in `plone/documentation`, and restore image 
 - change password-reset url to be consistent with Plone configuration @erral
 - Simplify over the existing Component Registry API. The `component` key has been flattened for simplification and now it's mapped directly to the `component` argument of `registerComponent`. @sneridagh
 
-See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
+See https://6.docs.plone.org/volto/upgrade-guide/index.html for more information.
 
 ### Feature
 
@@ -1883,14 +2369,14 @@ Use next release instead: https://github.com/plone/volto/releases/tag/16.0.0-alp
 ### Breaking
 
 - Upgrade `react-cookie` to the latest version. @sneridagh @robgietema
-  See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
+  See https://6.docs.plone.org/volto/upgrade-guide/index.html for more information.
 - Language Switcher no longer takes care of the change of the language on the Redux Store. This responsibility has been unified in the API Redux middleware @sneridagh
 - Markup change in `LinkView` component.
 - Rename `core-sandbox` to `coresandbox` for sake of consistency @sneridagh
 - Extend the original intent and rename `RAZZLE_TESTING_ADDONS` to `ADDONS`. @sneridagh
-  See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
+  See https://6.docs.plone.org/volto/upgrade-guide/index.html for more information.
 - Lazyload Draft.js library. See the upgrade guide on how that impacts you, in case you have extended the rich text editor configuration @tiberiuichim @kreafox
-  See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
+  See https://6.docs.plone.org/volto/upgrade-guide/index.html for more information.
 - Deprecating `lang` cookie in favor of Plone official one `I18N_LANGUAGE` @sneridagh
 
 ### Feature
@@ -2374,7 +2860,7 @@ See https://6.docs.plone.org/volto/upgrade-guide/index.html for more information
 - Use Plone logo @ericof
 - Update favicon and related tags with best practices @sneridagh
 - Enable to be able to use the internal proxy in production as well @sneridagh
-- Add runtime configuration for `@babel/plugin-transform-react-jsx` set to `automatic`. This enables the new JSX runtime: https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html So no longer `import React from 'react'` is needed anymore. @sneridagh
+- Add runtime configuration for `@babel/plugin-transform-react-jsx` set to `automatic`. This enables the new JSX runtime: https://legacy.reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html So no longer `import React from 'react'` is needed anymore. @sneridagh
 - Add `autocomplete` Widget component - It holds off the vocabulary endpoint pull until you search (more than 2 chars). Useful when dealing with huge vocabularies @sneridagh @reebalazs
 - Add new listing block option "fullobjects" per variation @ksuess
 - `FormFieldWrapper` accepts now strings and elements for description @nzambello
@@ -2504,7 +2990,7 @@ See https://6.docs.plone.org/volto/upgrade-guide/index.html for more information
 
 ### Feature
 
-- Add runtime configuration for `@babel/plugin-transform-react-jsx` set to `automatic`. This enables the new JSX runtime: https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html So no longer `import React from 'react'` is needed anymore.
+- Add runtime configuration for `@babel/plugin-transform-react-jsx` set to `automatic`. This enables the new JSX runtime: https://legacy.reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html So no longer `import React from 'react'` is needed anymore.
 - Update favicon and related tags with best practices @sneridagh
 
 ### Bugfix
@@ -4836,7 +5322,7 @@ https://6.docs.plone.org/volto/upgrade-guide/index.html
 - Added item type as a tooltip in contents @nzambello
 - Added Italian translations and translated array, token and select widget. @giuliaghisini
 - Added uploading image preview in FileWidget @iFlameing
-- Allow custom express middleware declared with `settings.expressMiddleware`. See [Custom Express middleware](https://6.dev-docs.plone.org/volto/recipes/express.html) @tiberiuichim
+- Allow custom express middleware declared with `settings.expressMiddleware`. See [Custom Express middleware](https://6.docs.plone.org/volto/recipes/express.html) @tiberiuichim
 
 ### Bugfix
 

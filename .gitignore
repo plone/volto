@@ -75,6 +75,7 @@ selenium-screenshot-*.png
 /selenium/
 cypress/videos/
 cypress/screenshots
+/styles/Microsoft
 
 # Local environment setup
 .env

@@ -1,9 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders a ListingBody component 1`] = `
-<div>
+<div
+  className="emptyListing"
+>
   <div
-    className="ui inverted dimmer"
+    className="ui active transition visible inverted dimmer"
     onClick={[Function]}
   >
     <div

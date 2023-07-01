@@ -47,6 +47,11 @@ Volto 17 now uses Webpack 5.
 If you customized `razzle.config.js` for your project to change Webpack configuration
 or use Webpack plugins, you might need to make adjustments.
 
+### Razzle upgraded to version `4.2.18`
+
+Razzle has been upgraded to version `4.2.18`.
+It is recommended that you update your project's dependency on Razzle to this version in order to avoid duplication.
+
 ### `BlockChooser` component now uses `popperjs` internally
 
 Technically not a breaking, the API nor the component contract has changed, but it's worth noting this change in here.
@@ -58,6 +63,21 @@ This is better from the UI point of view, since any other element can take prece
 ```
 
 If you have customized the `BlockChooser` in any way could be that this now could interact with your customizations.
+
+### Removed `hamburgers` library
+
+The `hamburgers` library was removed from core Volto, replaced by a much more lightweight approach.
+If your theme or add-ons relied on it, add it again as a dependency in them, or adopt the CSS part that you are using in them.
+
+### Fixed i18n script by taking into account the real add-on order
+
+By fixing this, we may break how the locales were applied, since the order will now be correct.
+Please check the translations of your project and add-ons, and verify that the translations are still correct.
+This could be especially true if you did translation overrides, two add-ons were using different translations for the same `msgid`, or there were conflicting `msgid`s in different add-ons.
+
+### Use proper heading tag (depending on the headline) in default listing template
+
+This change fixes a bug with the accessibility in listings.
 
 (volto-upgrade-guide-16.x.x)=
 
@@ -552,7 +572,7 @@ If you are extending an existing one, you should add it as a normal `schemaEnhan
 ```
 
 ```{seealso}
-See https://6.dev-docs.plone.org/volto/blocks/block-style-wrapper.html for more documentation.
+See https://6.docs.plone.org/volto/blocks/block-style-wrapper.html for more documentation.
 ```
 
 ### Sentry integration moved from Volto core to add-on

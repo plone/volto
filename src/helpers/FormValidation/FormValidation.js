@@ -1,5 +1,8 @@
 import { map, uniq, keys, intersection, isEmpty } from 'lodash';
 import { messages } from '../MessageLabels/MessageLabels';
+import config from '@plone/volto/registry';
+import { toast } from 'react-toastify';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
 
 /**
  * Will return the intl message if invalid
@@ -65,7 +68,16 @@ const widgetValidation = {
   },
   url: {
     isValidURL: (urlValue, urlObj, intlFunc) => {
-      const urlRegex = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([-.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?|^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([_.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?|^((http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/gm;
+      var urlRegex = new RegExp(
+        '^(https?:\\/\\/)?' + // validate protocol
+        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // validate domain name
+        '((\\d{1,3}\\.){3}\\d{1,3}))|' + // validate OR ip (v4) address
+        '(localhost)' + // validate OR localhost address
+        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // validate port and path
+        '(\\?[;&a-z\\d%_.~+=-]*)?' + // validate query string
+          '(\\#[-a-z\\d_]*)?$', // validate fragment locator
+        'i',
+      );
       const isValid = urlRegex.test(urlValue);
       return !isValid ? intlFunc(messages.isValidURL) : null;
     },
@@ -194,7 +206,7 @@ const validateRequiredFields = (
     const type = schema.properties[requiredField]?.type;
     const widget = schema.properties[requiredField]?.widget;
 
-    let isEmpty = !formData[requiredField];
+    let isEmpty = !formData[requiredField] && formData[requiredField] !== 0;
     if (!isEmpty) {
       if (type === 'array') {
         isEmpty = formData[requiredField]
@@ -360,3 +372,29 @@ class FormValidation {
 }
 
 export default FormValidation;
+
+/**
+ * Check if a file upload is within the maximum size limit.
+ * @param {File} file
+ * @param {Function} intlFunc
+ * @returns {Boolean}
+ */
+export const validateFileUploadSize = (file, intlFunc) => {
+  const isValid =
+    !config.settings.maxFileUploadSize ||
+    file.size <= config.settings.maxFileUploadSize;
+  if (!isValid) {
+    toast.error(
+      <Toast
+        error
+        title={intlFunc(messages.error)}
+        content={intlFunc(messages.fileTooLarge, {
+          limit: `${Math.floor(
+            config.settings.maxFileUploadSize / 1024 / 1024,
+          )}MB`,
+        })}
+      />,
+    );
+  }
+  return isValid;
+};

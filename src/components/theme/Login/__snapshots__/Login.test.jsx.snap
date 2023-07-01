@@ -95,6 +95,7 @@ exports[`Login renders a login component 1`] = `
                   className="stretched eight wide column"
                 >
                   <div
+                    autocomplete="current-password"
                     className="ui input"
                   >
                     <input
