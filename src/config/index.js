@@ -37,6 +37,8 @@ import applyAddonConfiguration, { addonsInfo } from 'load-volto-addons';
 
 import ConfigRegistry from '@plone/volto/registry';
 
+import { getSiteAsyncPropExtender } from '@plone/volto/helpers';
+
 const host = process.env.HOST || 'localhost';
 const port = process.env.PORT || '3000';
 
@@ -125,7 +127,7 @@ let config = {
     useEmailAsLogin: false,
     persistentReducers: ['blocksClipboard'],
     initialReducersBlacklist: [], // reducers in this list won't be hydrated in windows.__data
-    asyncPropsExtenders: [], // per route asyncConnect customizers
+    asyncPropsExtenders: [getSiteAsyncPropExtender], // per route asyncConnect customizers
     contentIcons: contentIcons,
     loadables,
     lazyBundles: {

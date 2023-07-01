@@ -118,3 +118,4 @@ export {
   getCurrentStateMapping,
   getWorkflowOptions,
 } from './Workflows/Workflows';
+export { getSiteAsyncPropExtender } from './Site';
