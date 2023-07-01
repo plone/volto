@@ -381,7 +381,6 @@ additionalToolbarComponents
 blockSettingsTabFieldsetsInitialStateOpen
     A Boolean, `true` by default.
     The fieldsets in the blocks settings tab start by default as non-collapsed (opened), you can decide to have them collapsed (closed) by default setting this to `false`.
-```
 
 okRoute
     Volto provides a `/ok` URL where it respondes with a text/plain ok response (with an `HTTP 200` status code) to signal third-party health-check services that the Volto process is running correctly.
@@ -392,6 +391,7 @@ okRoute
       config.settings.okRoute = '/site-is-ok'
 
     ```
+```
 
 ## Views settings
 
