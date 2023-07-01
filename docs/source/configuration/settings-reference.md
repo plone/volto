@@ -384,8 +384,10 @@ blockSettingsTabFieldsetsInitialStateOpen
 
 okRoute
     Volto provides a `/ok` URL where it respondes with a text/plain ok response (with an `HTTP 200` status code) to signal third-party health-check services that the Volto process is running correctly.
+
     Using this setting one can modify such an URL and configure to respond in some other URL.
-    The provided default matches the existing Plone Classic URL.
+
+    The provided default URL matches the existing Plone Classic URL.
 
     ```jsx
       config.settings.okRoute = '/site-is-ok'
