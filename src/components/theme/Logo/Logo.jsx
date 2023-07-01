@@ -7,9 +7,13 @@ import { Image } from 'semantic-ui-react';
 import { ConditionalLink } from '@plone/volto/components';
 import LogoImage from '@plone/volto/components/theme/Logo/Logo.svg';
 import { useSelector, useDispatch } from 'react-redux';
-import { getNavroot, getSite } from '@plone/volto/actions';
-import { flattenToAppURL } from '@plone/volto/helpers';
-import { toPublicURL } from '@plone/volto/helpers';
+import { getNavroot } from '@plone/volto/actions';
+import {
+  flattenToAppURL,
+  hasApiExpander,
+  getBaseUrl,
+  toPublicURL,
+} from '@plone/volto/helpers';
 
 /**
  * Logo component class.
@@ -24,15 +28,14 @@ const Logo = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    pathname && dispatch(getNavroot(pathname));
+    if (pathname && !hasApiExpander('navroot', getBaseUrl(pathname))) {
+      dispatch(getNavroot(getBaseUrl(pathname)));
+    }
   }, [dispatch, pathname]);
-
-  useEffect(() => {
-    dispatch(getSite());
-  }, [dispatch]);
 
   // remove trailing slash
   const currentURL = toPublicURL(pathname).replace(/\/$/, '');
+
   return (
     <ConditionalLink
       href={navroot?.navroot?.['@id']}
