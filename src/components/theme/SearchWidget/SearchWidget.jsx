@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Form, Input } from 'semantic-ui-react';
-import { bindActionCreators, compose } from 'redux';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { defineMessages, injectIntl } from 'react-intl';
