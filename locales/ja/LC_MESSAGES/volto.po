@@ -615,7 +615,7 @@ msgid "Choose Target"
 msgstr "ターゲットを選択"
 
 #: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/SiteLogoWidget
+#: components/manage/Widgets/RegistryImageWidget
 # defaultMessage: Choose a file
 msgid "Choose a file"
 msgstr "ファイルを選択"
@@ -1112,19 +1112,19 @@ msgid "Drag and drop files from your computer onto this area or click the “Bro
 msgstr "ここにファイルをドラッグ、または「参照」ボタンをクリック"
 
 #: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/SiteLogoWidget
+#: components/manage/Widgets/RegistryImageWidget
 # defaultMessage: Drop file here to replace the existing file
 msgid "Drop file here to replace the existing file"
 msgstr "ファイルをここにドロップして、既存のファイルを置き換え"
 
 #: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/SiteLogoWidget
+#: components/manage/Widgets/RegistryImageWidget
 # defaultMessage: Drop file here to upload a new file
 msgid "Drop file here to upload a new file"
 msgstr "ファイルをここにドロップして、新しいファイルをアップロード"
 
 #: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/SiteLogoWidget
+#: components/manage/Widgets/RegistryImageWidget
 # defaultMessage: Drop files here ...
 msgid "Drop files here ..."
 msgstr "ファイルをここにドロップ"
@@ -2779,7 +2779,7 @@ msgid "Repeat on"
 msgstr "日または曜日"
 
 #: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/SiteLogoWidget
+#: components/manage/Widgets/RegistryImageWidget
 # defaultMessage: Replace existing file
 msgid "Replace existing file"
 msgstr "ファイルの置き換え"
