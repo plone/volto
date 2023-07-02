@@ -1,6 +1,6 @@
 /**
- * SiteLogoWidget component.
- * @module components/manage/Widgets/SiteLogoWidget
+ * RegistryImageWidget component.
+ * @module components/manage/Widgets/RegistryImageWidget
  */
 
 import React from 'react';
@@ -48,8 +48,8 @@ const messages = defineMessages({
 });
 
 /**
- * SiteLogoWidget component class.
- * @function SiteLogoWidget
+ * RegistryImageWidget component class.
+ * @function RegistryImageWidget
  * @returns {string} Markup of the component.
  *
  * To use it, in schema properties, declare a field like:
@@ -70,7 +70,7 @@ const messages = defineMessages({
  * ```
  *
  */
-const SiteLogoWidget = (props) => {
+const RegistryImageWidget = (props) => {
   const { id, value, onChange, isDisabled } = props;
   const intl = useIntl();
 
@@ -181,7 +181,7 @@ const SiteLogoWidget = (props) => {
  * @property {Object} propTypes Property types.
  * @static
  */
-SiteLogoWidget.propTypes = {
+RegistryImageWidget.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
@@ -200,11 +200,11 @@ SiteLogoWidget.propTypes = {
  * @property {Object} defaultProps Default properties.
  * @static
  */
-SiteLogoWidget.defaultProps = {
+RegistryImageWidget.defaultProps = {
   description: null,
   required: false,
   error: [],
   value: null,
 };
 
-export default injectIntl(SiteLogoWidget);
+export default injectIntl(RegistryImageWidget);

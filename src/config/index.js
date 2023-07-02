@@ -82,7 +82,13 @@ let config = {
       // https://6.docs.plone.org/volto/configuration/settings-reference.html#term-apiExpanders
       // {
       //   match: '',
-      //   GET_CONTENT: ['breadcrumbs', 'navigation', 'actions', 'types'],
+      //   GET_CONTENT: [
+      //     'breadcrumbs',
+      //     'navigation',
+      //     'actions',
+      //     'types',
+      //     'navroot',
+      //   ],
       // },
     ],
     // Internal proxy to bypass CORS *while developing*. NOT intended for production use.
