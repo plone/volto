@@ -93,3 +93,14 @@ export function ImageSchema({ formData, intl }) {
     required: [],
   };
 }
+
+export const gridImageDisableSizeAndPositionHandlersSchema = ({
+  schema,
+  formData,
+  intl,
+}) => {
+  schema.fieldsets[0].fields = schema.fieldsets[0].fields.filter(
+    (item) => !['align', 'size'].includes(item),
+  );
+  return schema;
+};
