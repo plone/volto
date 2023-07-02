@@ -91,7 +91,7 @@ class SearchWidget extends Component {
     event.preventDefault();
   }
 
-  UNSAFE_componentWillReceiveProps() {
+  componentDidMount() {
     if (!hasApiExpander('navroot', getBaseUrl(this.props.pathname))) {
       this.props.getNavroot(getBaseUrl(this.props.pathname));
     }
