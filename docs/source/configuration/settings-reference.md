@@ -383,15 +383,14 @@ blockSettingsTabFieldsetsInitialStateOpen
     The fieldsets in the blocks settings tab start by default as non-collapsed (opened), you can decide to have them collapsed (closed) by default setting this to `false`.
 
 okRoute
-    Volto provides a `/ok` URL where it respondes with a text/plain ok response (with an `HTTP 200` status code) to signal third-party health-check services that the Volto process is running correctly.
+    Volto provides an `/ok` URL where it responds with a `text/plain ok` response, with an `HTTP 200` status code, to signal third party health check services that the Volto process is running correctly.
 
-    Using this setting one can modify such an URL and configure to respond in some other URL.
+    Using this setting, one can modify such an URL and configure it to respond with another URL.
 
-    The provided default URL matches the existing Plone Classic URL.
+    The provided default URL matches the existing Plone Classic UI URL.
 
     ```jsx
       config.settings.okRoute = '/site-is-ok'
-
     ```
 ```
 
