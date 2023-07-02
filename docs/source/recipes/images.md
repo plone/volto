@@ -31,12 +31,12 @@ import config from '@plone/volto/registry';
 
 const Image = config.getComponent({ name: 'Image' }).component;
 
-<Image item={content} imageField="image" alt="" />;
+<Image item={content} imageField="image" alt="Alt text for accessibility" />;
 ```
 
 This will generate the `src`, `srcset`, `width`, and `height` attributes automatically for the given image.
 
-If the `responsive` prop is added, a class is applied that will make the image width responsive.
+To make the image width response, you can add the prop `responsive`, and the literal `responsive` will be added to the HTML attribute `class`.
 
 ## Serving the right image size
 
@@ -46,7 +46,7 @@ This responsibility is left to the developer because it depends on where the ima
 For example, if the image is rendered in a container that is always half as wide as the page, the `sizes` attribute should reflect that to properly inform the browser which image size to request and render.
 
 ```jsx
-<Image item={content} imageField="image" alt="" sizes="50vw" />
+<Image item={content} imageField="image" alt="Alt text for accessibility" sizes="50vw" />
 ```
 
 If the image is rendered at full viewport width when the viewport is less than `900px` wide, though, you can add a media condition to the `sizes` attribute.
@@ -55,7 +55,7 @@ If the image is rendered at full viewport width when the viewport is less than `
 <Image
   item={content}
   imageField="image"
-  alt=""
+  alt="Alt text for accessibility"
   sizes="(max-width: 900px) 100vw, 50vw"
 />
 ```
