@@ -9,16 +9,107 @@ import Logo from './Logo';
 
 beforeAll(() => {
   config.settings.isMultilingual = true;
+  config.settings.publicURL = 'http://mysite.com';
 });
 
 const mockStore = configureStore();
 
 describe('Multilingual Logo', () => {
-  it('renders a logo component with multilingual', () => {
+  it('renders a logo component in a multilingual site root', () => {
     const store = mockStore({
       intl: {
         locale: 'en',
         messages: {},
+      },
+      navroot: {
+        data: {
+          id: 'http://localhost:3000/@navroot',
+          navroot: {
+            '@id': 'http://localhost:3000',
+            title: 'Plone Site',
+          },
+        },
+      },
+      router: {
+        location: {
+          pathname: '/',
+        },
+      },
+      site: {
+        data: {},
+      },
+    });
+    const component = renderer.create(
+      <Provider store={store}>
+        <MemoryRouter>
+          <Logo />
+        </MemoryRouter>
+      </Provider>,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
+  it('renders a logo component in a multilingual site language root', () => {
+    const store = mockStore({
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+      navroot: {
+        data: {
+          id: 'http://localhost:3000/en/@navroot',
+          navroot: {
+            '@id': 'http://localhost:3000/en',
+            title: 'English',
+          },
+        },
+      },
+      router: {
+        location: {
+          pathname: '/en',
+        },
+      },
+      site: {
+        data: {
+          'plone.site_title': 'Plone Site',
+        },
+      },
+    });
+    const component = renderer.create(
+      <Provider store={store}>
+        <MemoryRouter>
+          <Logo />
+        </MemoryRouter>
+      </Provider>,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
+  it('renders a logo component with a custom logo in a non-root url', () => {
+    const store = mockStore({
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+      navroot: {
+        data: {
+          id: 'http://localhost:3000/en/@navroot',
+          navroot: {
+            '@id': 'http://localhost:3000/en',
+            title: 'English',
+          },
+        },
+      },
+      router: {
+        location: {
+          pathname: '/en',
+        },
+      },
+      site: {
+        data: {
+          'plone.site_logo':
+            'http://localhost:3000/@@site-logo/logo.cab945d8.svg',
+        },
       },
     });
     const component = renderer.create(

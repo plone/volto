@@ -35,7 +35,6 @@ const Logo = () => {
 
   // remove trailing slash
   const currentURL = toPublicURL(pathname).replace(/\/$/, '');
-
   return (
     <ConditionalLink
       href={navroot?.navroot?.['@id']}
