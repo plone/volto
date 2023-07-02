@@ -132,9 +132,9 @@ export default compose(
   withRouter,
   injectIntl,
   connect(
-    (state) => ({
+    (state, props) => ({
       navroot: state.navroot.data,
-      pathname: state.router.location.pathname,
+      pathname: props.location.pathname,
     }),
     { getNavroot },
   ),
