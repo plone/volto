@@ -1,10 +1,10 @@
 ---
 myst:
   html_meta:
-    'description': 'This upgrade guide lists all breaking changes in Volto and explains the steps that are necessary to upgrade to the latest version.'
-    'property=og:description': 'This upgrade guide lists all breaking changes in Volto and explains the steps that are necessary to upgrade to the latest version.'
-    'property=og:title': 'Upgrade Guide'
-    'keywords': 'Volto, Plone, frontend, React, Upgrade, Guide'
+    "description": "This upgrade guide lists all breaking changes in Volto and explains the steps that are necessary to upgrade to the latest version."
+    "property=og:description": "This upgrade guide lists all breaking changes in Volto and explains the steps that are necessary to upgrade to the latest version."
+    "property=og:title": "Upgrade Guide"
+    "keywords": "Volto, Plone, frontend, React, Upgrade, Guide"
 ---
 
 (volto-upgrade-guide)=
@@ -294,7 +294,7 @@ We updated Volto to be able to use it, however some changes have to be made in y
 1.  Enable yarn 3 in your project, adding `.yarnrc.yml`:
 
     ```yaml
-    defaultSemverRangePrefix: ''
+    defaultSemverRangePrefix: ""
 
     nodeLinker: node-modules
     ```
@@ -588,7 +588,6 @@ It now makes sense to extract this feature into its own add-on.
 Integrate Sentry in your app with [`@plone-collective/volto-sentry`](https://www.npmjs.com/package/@plone-collective/volto-sentry).
 
 ```{versionchanged} 16.0.0.alpha.45
-
 ```
 
 ### Upgrade `husky` to latest version
@@ -725,7 +724,6 @@ Support for the `~` alias is still in place, but we now mark it as deprecated.
 The use of `~` will be removed in Volto 16.
 
 ```{deprecated} 15.0
-
 ```
 
 ## Upgrading to Volto 14.x.x
@@ -2324,7 +2322,7 @@ Modify the parent element of your block making these changes:
 - Add a proper role for it
 
 ```jsx
-role = 'presentation';
+  role='presentation';
 ```
 
 Take a look into the implementation of the default Volto blocks to get a grasp
@@ -2339,6 +2337,6 @@ be updated by making sure you have these two extras in the
 
 ```less
 /* Extras */
-@main: 'pastanaga';
-@custom: 'pastanaga';
+@main        : 'pastanaga';
+@custom      : 'pastanaga';
 ```
