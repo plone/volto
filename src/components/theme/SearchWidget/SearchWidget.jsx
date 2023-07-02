@@ -134,6 +134,7 @@ export default compose(
   connect(
     (state) => ({
       navroot: state.navroot.data,
+      pathname: state.router.location.pathname,
     }),
     { getNavroot },
   ),
