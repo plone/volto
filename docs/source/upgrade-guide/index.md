@@ -1,10 +1,10 @@
 ---
 myst:
   html_meta:
-    "description": "This upgrade guide lists all breaking changes in Volto and explains the steps that are necessary to upgrade to the latest version."
-    "property=og:description": "This upgrade guide lists all breaking changes in Volto and explains the steps that are necessary to upgrade to the latest version."
-    "property=og:title": "Upgrade Guide"
-    "keywords": "Volto, Plone, frontend, React, Upgrade, Guide"
+    'description': 'This upgrade guide lists all breaking changes in Volto and explains the steps that are necessary to upgrade to the latest version.'
+    'property=og:description': 'This upgrade guide lists all breaking changes in Volto and explains the steps that are necessary to upgrade to the latest version.'
+    'property=og:title': 'Upgrade Guide'
+    'keywords': 'Volto, Plone, frontend, React, Upgrade, Guide'
 ---
 
 (volto-upgrade-guide)=
@@ -78,6 +78,11 @@ This could be especially true if you did translation overrides, two add-ons were
 ### Use proper heading tag (depending on the headline) in default listing template
 
 This change fixes a bug with the accessibility in listings.
+
+### Removed Teaser block utils
+
+The `utils.js` file of the Teaser block was removed because it is no longer used.
+You can consider removing it if you were shadowing it in your project.
 
 (volto-upgrade-guide-16.x.x)=
 
@@ -156,7 +161,7 @@ You will have to configure your project to continue using `draftJS`, for example
 ```js
 import { WysiwygWidget } from '@plone/volto/components';
 
-config.settings.defaultBlockType = 'text'
+config.settings.defaultBlockType = 'text';
 config.blocks.blocksConfig.table.restricted = false;
 config.blocks.blocksConfig.slateTable.restricted = true;
 config.widgets.widget.richtext = WysiwygWidget;
@@ -289,7 +294,7 @@ We updated Volto to be able to use it, however some changes have to be made in y
 1.  Enable yarn 3 in your project, adding `.yarnrc.yml`:
 
     ```yaml
-    defaultSemverRangePrefix: ""
+    defaultSemverRangePrefix: ''
 
     nodeLinker: node-modules
     ```
@@ -550,7 +555,7 @@ defineMessages({
     id: 'Album view',
     defaultMessage: 'Album view',
   },
-})
+});
 ```
 
 ### `react-window` is no longer a Volto dependency
@@ -583,6 +588,7 @@ It now makes sense to extract this feature into its own add-on.
 Integrate Sentry in your app with [`@plone-collective/volto-sentry`](https://www.npmjs.com/package/@plone-collective/volto-sentry).
 
 ```{versionchanged} 16.0.0.alpha.45
+
 ```
 
 ### Upgrade `husky` to latest version
@@ -628,7 +634,6 @@ To correct this and allow Volto to handle defaults in a correct way, we have to 
   />
 ```
 ````
-
 
 (volto-upgrade-guide-15.x.x)=
 
@@ -678,9 +683,9 @@ export default function applyConfig(config) {
   const { richtextEditorSettings } = config.settings;
   config.settings.richtextEditorSettings = (props) => {
     const result = richtextEditorSettings(props);
-    result.listBlockTypes = [...result.listBlockTypes, 'my-list-item']
+    result.listBlockTypes = [...result.listBlockTypes, 'my-list-item'];
     return result;
-  }
+  };
   return config;
 }
 ```
@@ -720,6 +725,7 @@ Support for the `~` alias is still in place, but we now mark it as deprecated.
 The use of `~` will be removed in Volto 16.
 
 ```{deprecated} 15.0
+
 ```
 
 ## Upgrading to Volto 14.x.x
@@ -771,7 +777,6 @@ Within the `scripts` section of `package.json` apply the following change:
 -    "i18n": "NODE_ENV=production node node_modules/@plone/volto/src/i18n.js",
 +    "i18n": "rm -rf build/messages && NODE_ENV=production i18n --addon",
 ```
-
 
 afterwards add this to the `dependencies` list:
 
@@ -845,22 +850,22 @@ the block title. Before, it took the `id` of the block, which is utterly wrong a
 ### Variation field now uses the title instead of the id of the variation as translation source
 
 Following the same convention as the above change, `Variation` field coming from the block enhancers now uses the `title` of the block as source for translating
-the variation title. Before, it took the `id` of the block, which as stated before, is wrong and missleading. There is a chance that  this change will trigger untranslated variation titles in your projects and add-ons.
+the variation title. Before, it took the `id` of the block, which as stated before, is wrong and missleading. There is a chance that this change will trigger untranslated variation titles in your projects and add-ons.
 
 ### Listing block no longer retrieve fullobjects by default
 
 The query used by the listing block always used the `fullobjects` flag, which fully serialized (and thus, wake from the db) the resultant response items. This was causing performance issues. From Volto 14, the results will get the normal catalog query metadata results. You'll need to adapt your code to get the appropiate data if required and/or use the metadata counterparts. If your custom code depends on this behavior and you don't have time to adapt now, there's a scape hatch: set an additional `fullobjects` key to `true` per variation in the variation of the listing block config object:
 
 ```js
-    variations: [
-      {
-        id: 'default',
-        isDefault: true,
-        title: 'Default',
-        template: DefaultListingBlockTemplate,
-        fullobjects: true
-      },
-    ]
+variations: [
+  {
+    id: 'default',
+    isDefault: true,
+    title: 'Default',
+    template: DefaultListingBlockTemplate,
+    fullobjects: true,
+  },
+];
 ```
 
 ```{note}
@@ -881,7 +886,7 @@ This is not a strict breaking change, but it's worth mentioning it as it might b
 
 ### `getVocabulary` action changed its signature
 
-The `getVocabulary` action has changed API. Before, it used separate positional arguments, but now it uses named arguments by passing a single object as the argument.  You'll have to adjust any call you do if you are using this action in custom code to the new API.
+The `getVocabulary` action has changed API. Before, it used separate positional arguments, but now it uses named arguments by passing a single object as the argument. You'll have to adjust any call you do if you are using this action in custom code to the new API.
 
 ## Upgrading to Volto 13.x.x
 
@@ -1007,22 +1012,22 @@ config.blocks.blocksConfig.listing.templates = {
   mycustomvariationid: {
     label: 'My custom listing variation',
     template: MyCustomListingBlockTemplate,
-  }
-}
+  },
+};
 ```
 
 To this:
 
 ```js
-  config.blocks.blocksConfig.listing.variations = [
-    ...config.blocks.blocksConfig.listing.variations,
-    {
-      id: 'mycustomvariationid',
-      isDefault: false,
-      title: 'My custom listing variation',
-      template: MyCustomListingBlockTemplate,
-    }
-  ]
+config.blocks.blocksConfig.listing.variations = [
+  ...config.blocks.blocksConfig.listing.variations,
+  {
+    id: 'mycustomvariationid',
+    isDefault: false,
+    title: 'My custom listing variation',
+    template: MyCustomListingBlockTemplate,
+  },
+];
 ```
 
 ### Control panel icons are now SVG based instead of font based
@@ -1034,7 +1039,7 @@ the config registry setting: `controlPanelsIcons` and add the name of your contr
 
 ```js
 import myfancyiconSVG from '@plone/volto/icons/myfancyicon.svg';
-import config from '@plone/volto/registry'
+import config from '@plone/volto/registry';
 
 config.settings.controlPanelsIcons.mynewcontrolpanelid = myfancyiconSVG;
 ```
@@ -1052,7 +1057,6 @@ CSS set. Better naming of options and labels in table block (English). Updating 
 messages for the used translations is advisable, but not required.
 
 ## Upgrading to Volto 12.x.x
-
 
 (frontend-upgrade-guide-volto-configuration-registry-label)=
 
@@ -1080,6 +1084,7 @@ it, imports the singleton and then access the proper registry key inside it (`se
 ### Changes in your code (and local customizations)
 
 This was the old way:
+
 ```js
 import { settings } from '~/config'
 ...
@@ -1187,7 +1192,7 @@ Remove the imports and the exports in your `src/config.js`:
 -export const addonReducers = { ...defaultAddonReducers };
 ```
 
-notice from the diff, that you must add this import *AFTER* all your imports:
+notice from the diff, that you must add this import _AFTER_ all your imports:
 
 ```js
 // All your imports required for the config here BEFORE this line
@@ -1234,14 +1239,14 @@ export default function applyConfig(config) {
 }
 ```
 
-```{warning}
+````{warning}
 The add-ons you might be using might need to migrate to use the new
 configuration registry too. Make sure all of them are already migrated to Volto 12.
 
 ```{tip}
 Although this might be daunting, the migration is quite straightforward, and the refactoring
 of the required code can be undergone through a series of "search and replace" in your IDE of choice.
-```
+````
 
 #### Changes in your project's `package.json`
 
@@ -1285,7 +1290,7 @@ the import to the new config registry:
 +import ConfigRegistry from '@plone/volto/registry';
 ```
 
-then *after the last existing import* in your existing `src/config.js` add:
+then _after the last existing import_ in your existing `src/config.js` add:
 
 ```js
 import * as voltoDefaultConfig from '@plone/volto/config';
@@ -1443,7 +1448,7 @@ of which Volto is built. Recently, it has been under heavy development and some 
 exciting features have been added to it. The Razzle configuration is now more flexible
 and extensible than ever.
 
-This change *might* be breaking for you if you customized the `razzle.config.js` heavily
+This change _might_ be breaking for you if you customized the `razzle.config.js` heavily
 in your projects. Since the new version adds a new way to extend Razzle configuration,
 you should adapt your extensions to the new way of doing it. See the documentation for
 more information: https://razzlejs.org/docs/customization#extending-webpack
@@ -1454,8 +1459,8 @@ version. If you have developed your own Razzle plugin, you should adapt its sign
 well. See the documentation for more information:
 https://razzlejs.org/docs/customization#plugins
 
-Razzle 3.3 also has some new *experimental* features, that will be default in the
-upcoming Razzle 4, such as the new *React Fast Refresh* feature, which fixes the
+Razzle 3.3 also has some new _experimental_ features, that will be default in the
+upcoming Razzle 4, such as the new _React Fast Refresh_ feature, which fixes the
 annoying breaking of the router after any live refresh.
 
 See the documentation of Razzle for more information: https://razzlejs.org/
@@ -1603,19 +1608,20 @@ theme folder. So, in your project's `theme.config` file, you can replace:
 
 ```less
 @themesFolder: '../../node_modules/@plone/volto/theme/themes';
-@siteFolder: "../../theme";
-@fontPath : "../../@{theme}/assets/fonts";
+@siteFolder: '../../theme';
+@fontPath: '../../@{theme}/assets/fonts';
 ```
+
 with:
 
 ```less
 @themesFolder: '~volto-themes';
 @siteFolder: '~@package/../theme';
-@fontPath: "~volto-themes/@{theme}/assets/fonts";
+@fontPath: '~volto-themes/@{theme}/assets/fonts';
 ```
 
 You might consider moving your theme files to a subfolder called `site`, to
-prepare for the arrival of add-ons theming and their overrides.  In that case,
+prepare for the arrival of add-ons theming and their overrides. In that case,
 you would set your `@siteFolder` to:
 
 ```
@@ -1680,7 +1686,7 @@ Add this key to the `jest.moduleNameMapper`:
   }
 ```
 
-because the new version of Jest is a bit more picky when importing externals. Attention, this mapping needs to be the first, it needs to come before the ``@plone/volto/(.*)$`` key.
+because the new version of Jest is a bit more picky when importing externals. Attention, this mapping needs to be the first, it needs to come before the `@plone/volto/(.*)$` key.
 
 ### Prettier
 
@@ -1713,7 +1719,7 @@ const packageJson = require(path.join(projectRootPath, 'package.json'));
 const addonsAliases = [];
 if (packageJson.addons) {
   const addons = packageJson.addons;
-  addons.forEach(addon => {
+  addons.forEach((addon) => {
     const addonPath = `${addon}/src`;
     addonsAliases.push([addon, addonPath]);
   });
@@ -1900,7 +1906,7 @@ Not a breaking change, but now there's a new setting in Blocks, `initialBlocks` 
 
 ```js
 const initialBlocks = {
-    Document: ['leadimage', 'title', 'text', 'listing' ]
+  Document: ['leadimage', 'title', 'text', 'listing'],
 };
 ```
 
@@ -2093,7 +2099,7 @@ import '@plone/volto/../theme/themes/pastanaga/extras/extras.less';
 
 Enzyme has been removed, in favor of `@testing-library/react`, and the configuration should be removed in `package.json`:
 
-``` diff
+```diff
 diff --git a/package.json b/package.json
 index 27c7f8d..8f5f088 100644
 --- a/package.json
@@ -2155,7 +2161,7 @@ The edit block wrapper boilerplate was quite big, and for bootstraping an edit b
 
 In order to upgrade your blocks you should simplify the outer `<div>` (took as an example the Title block):
 
-``` diff
+```diff
 --- a/src/components/manage/Blocks/Title/Edit.jsx
 +++ b/src/components/manage/Blocks/Title/Edit.jsx
 @@ -138,11 +138,7 @@ class Edit extends Component {
@@ -2256,16 +2262,18 @@ This change only applies to your existing blocks, you have to update them
 accordingly by deleting the trash icon and action from the end of your blocks
 
 ```jsx
-{this.props.selected && (
-  <Button
-    icon
-    basic
-    onClick={() => this.props.onDeleteBlock(this.props.block)}
-    className="block-delete-button"
-  >
-    <Icon name={trashSVG} size="18px" />
-  </Button>
-)}
+{
+  this.props.selected && (
+    <Button
+      icon
+      basic
+      onClick={() => this.props.onDeleteBlock(this.props.block)}
+      className="block-delete-button"
+    >
+      <Icon name={trashSVG} size="18px" />
+    </Button>
+  );
+}
 ```
 
 Modify the parent element of your block making these changes:
@@ -2316,7 +2324,7 @@ Modify the parent element of your block making these changes:
 - Add a proper role for it
 
 ```jsx
-  role="presentation"
+role = 'presentation';
 ```
 
 Take a look into the implementation of the default Volto blocks to get a grasp
@@ -2331,6 +2339,6 @@ be updated by making sure you have these two extras in the
 
 ```less
 /* Extras */
-@main        : 'pastanaga';
-@custom      : 'pastanaga';
+@main: 'pastanaga';
+@custom: 'pastanaga';
 ```

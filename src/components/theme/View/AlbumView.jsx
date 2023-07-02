@@ -81,6 +81,7 @@ class AlbumView extends React.Component {
                               <Component
                                 componentName="PreviewImage"
                                 item={item}
+                                alt={item.image_caption || item.title}
                                 onClick={() => {
                                   this.setState({
                                     openIndex: index,
@@ -89,7 +90,6 @@ class AlbumView extends React.Component {
                                 className="ui middle aligned image"
                                 responsive={true}
                                 loading="lazy"
-                                alt={item.title}
                                 title={item.title}
                               />
                             </Segment>
@@ -134,12 +134,12 @@ class AlbumView extends React.Component {
                                 <Component
                                   componentName="PreviewImage"
                                   item={item}
+                                  alt={item.image_caption}
                                   onClick={() => {
                                     this.setState({
                                       openIndex: index,
                                     });
                                   }}
-                                  size="large"
                                   className="ui image"
                                   responsive={true}
                                 />

@@ -31,7 +31,7 @@ const ListingView = ({ content }) => (
             <Component
               componentName="PreviewImage"
               item={item}
-              size="thumb"
+              alt={item.image_caption}
               className="ui image"
               responsive={true}
               loading="lazy"

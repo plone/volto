@@ -20,6 +20,31 @@ Features of the `Image` component are the following.
 - optional responsive width
 
 The component can accept all the regular HTML `<img>` attributes and a few extra for the above features.
+The following example demonstrates how the code with attributes will render to HTML.
+
+```jsx
+import config from '@plone/volto/registry';
+
+const Image = config.getComponent({ name: 'Image' }).component;
+
+<Image
+  src="https://picsum.photos/200/300"
+  alt="Alt text for accessibility"
+  className="myClass"
+  width="200"
+  height="300"
+/>
+```
+
+```html
+<img
+  src="https://picsum.photos/200/300"
+  alt="Alt text for accessibility"
+  class="myClass"
+  width="200"
+  height="300"
+/>
+```
 
 Setting the `loading="lazy"` attribute to the `Image` component also adds the `decoding="async"` attribute.
 The [`async`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/decoding) attribute decodes the image asynchronously to reduce delay in presenting other content.
@@ -27,10 +52,6 @@ The [`async`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/
 To render an image from a content object, you can use the component as shown in the following code snippet.
 
 ```jsx
-import config from '@plone/volto/registry';
-
-const Image = config.getComponent({ name: 'Image' }).component;
-
 <Image item={content} imageField="image" alt="Alt text for accessibility" />;
 ```
 

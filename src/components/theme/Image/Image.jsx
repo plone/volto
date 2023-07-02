@@ -30,7 +30,6 @@ export default function Image({
 
   if (!item && src) {
     attrs.src = src;
-    attrs.alt = alt;
     attrs.className = cx(className, { responsive });
   } else {
     const isFromRealObject = !item.image_scales;
@@ -41,6 +40,8 @@ export default function Image({
       : item.image_scales[imageFieldWithDefault]?.[0];
 
     if (!image) return null;
+
+    const isSvg = image['content-type'] === 'image/svg+xml';
 
     const baseUrl = isFromRealObject ? '' : flattenToAppURL(item['@id'] + '/');
 
@@ -53,7 +54,7 @@ export default function Image({
     };
     attrs.className = cx(className, { responsive });
 
-    if (image.scales && Object.keys(image.scales).length > 0) {
+    if (!isSvg && image.scales && Object.keys(image.scales).length > 0) {
       const sortedScales = Object.values(image.scales).sort((a, b) => {
         if (a.width > b.width) return 1;
         else if (a.width < b.width) return -1;

@@ -38,11 +38,10 @@
   .controlpanel_search_wrapper {
     display: flex;
     flex-wrap: wrap;
+    row-gap: 3rem;
+    column-gap: 5rem;
     justify-content: flex-start;
     margin-bottom: 2rem;
-    column-gap: 5rem;
-    row-gap: 3rem;
-
     & > * {
       min-width: 30rem;
     }
@@ -57,17 +56,15 @@
 
   .controlpanel_listing_wrapper {
     display: flex;
-    flex-direction: row-reverse;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    margin-bottom: 2rem;
     gap: 1rem;
-
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    margin-bottom: 2rem;
     .administration_matrix {
-      min-width: 30rem;
       flex-grow: 2;
+      min-width: 30rem;
     }
-
     .controlpanel_filter {
       display: flex;
       flex-direction: column;
@@ -84,8 +81,8 @@
     // display: flex;
     // justify-content: start;
     position: sticky;
-    z-index: 100;
     top: 0;
+    z-index: 100;
     .stickyLabelLayerBackground();
 
     .target-labels {
@@ -100,14 +97,12 @@
       @media only screen and (max-width: (@largestMobileScreen)) {
         flex-direction: column;
       }
-
       & > div:first-child {
         min-width: 15rem;
       }
-
       & > div:nth-child(2) {
-        display: flex;
         flex-grow: 2;
+        display: flex;
       }
 
       .label-options-label {
@@ -132,7 +127,6 @@
     &:nth-child(2n) {
       background-color: rgba(0, 0, 50, 0.05);
     }
-
     .listing-item {
       display: flex;
       width: 100%;
@@ -144,11 +138,10 @@
       & > div:first-child {
         min-width: 15rem;
       }
-
       .matrix_options {
+        flex-grow: 2;
         display: flex;
         flex-direction: row;
-        flex-grow: 2;
 
         & > div {
           width: 3rem;
@@ -159,7 +152,6 @@
             margin: auto;
           }
         }
-
         .ui.checkbox.toggle-target label:before {
           border: 3px solid #826a6a;
         }

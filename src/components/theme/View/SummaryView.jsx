@@ -36,7 +36,7 @@ const SummaryView = ({ content }) => (
               <Component
                 componentName="PreviewImage"
                 item={item}
-                size="thumb"
+                alt={item.image_caption}
                 className="ui image floated right clear"
                 responsive={true}
                 loading="lazy"
