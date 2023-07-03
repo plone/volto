@@ -10,6 +10,6 @@ import { shallowEqual, useSelector } from 'react-redux';
  * @return {{ workingCopy }}
  */
 export function useWorkingCopy() {
-  const workingCopy = useSelector((state) => state.workingCopy,shallowEqual);
+  const workingCopy = useSelector((state) => state.workingCopy, shallowEqual);
   return workingCopy;
 }
