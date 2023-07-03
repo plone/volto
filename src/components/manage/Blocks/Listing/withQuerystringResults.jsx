@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import useDeepCompareEffect from 'use-deep-compare-effect';
@@ -30,7 +30,7 @@ export default function withQuerystringResults(WrappedComponent) {
     const [initialPath] = React.useState(getBaseUrl(path));
 
     const copyFields = ['limit', 'query', 'sort_on', 'sort_order', 'depth'];
-
+    const { currentPage, setCurrentPage } = usePagination(id, 1);
     const adaptedQuery = Object.assign(
       variation?.fullobjects ? { fullobjects: 1 } : { metadata_fields: '_all' },
       {
@@ -42,7 +42,9 @@ export default function withQuerystringResults(WrappedComponent) {
           : {},
       ),
     );
-    const { currentPage, setCurrentPage } = usePagination(querystring, 1);
+    const adaptedQueryRef = useRef(adaptedQuery);
+    const currentPageRef = useRef(currentPage);
+
     const querystringResults = useSelector(
       (state) => state.querystringsearch.subrequests,
     );
@@ -50,7 +52,7 @@ export default function withQuerystringResults(WrappedComponent) {
 
     const folderItems = content?.is_folderish ? content.items : [];
     const hasQuery = querystring?.query?.length > 0;
-    const hasLoaded = hasQuery ? !querystringResults?.[id]?.loading : true;
+    const hasLoaded = hasQuery ? querystringResults?.[id]?.loaded : true;
 
     const listingItems =
       querystring?.query?.length > 0 && querystringResults?.[id]
@@ -109,6 +111,8 @@ export default function withQuerystringResults(WrappedComponent) {
       } else {
         dispatch(getContent(initialPath, null, null, currentPage));
       }
+      adaptedQueryRef.current = adaptedQuery;
+      currentPageRef.current = currentPage;
     }, [
       id,
       isImageGallery,
