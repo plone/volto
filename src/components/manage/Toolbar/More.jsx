@@ -109,7 +109,7 @@ const More = (props) => {
   const dispatch = useDispatch();
   const intl = useIntl();
   const history = useHistory();
-  const [,setPushed] = useState(false);
+  const [, setPushed] = useState(false);
   const pathname = props.pathname;
 
   const { data: content } = useContent();
