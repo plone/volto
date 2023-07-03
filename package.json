@@ -70,8 +70,7 @@
   },
   "jest": {
     "modulePathIgnorePatterns": [
-      "api",
-      "packages"
+      "api"
     ],
     "transform": {
       "^.+\\.js(x)?$": "babel-jest",
@@ -85,6 +84,8 @@
       "@plone/volto/babel": "<rootDir>/babel.js",
       "@plone/volto/(.*)$": "<rootDir>/src/$1",
       "@plone/volto-slate/(.*)$": "<rootDir>/packages/volto-slate/src/$1",
+      "@plone/registry": "<rootDir>/packages/registry/src",
+      "@plone/registry/(.*)$": "<rootDir>/packages/registry/src/$1",
       "~/config": "<rootDir>/src/config",
       "~/../locales/${lang}.json": "<rootDir>/locales/en.json",
       "(.*)/locales/(.*)": "<rootDir>/locales/$2",
@@ -115,7 +116,8 @@
       "<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs,ts,tsx}",
       "<rootDir>/src/**/?(*.)(spec|test).{js,jsx,mjs,ts,tsx}",
       "<rootDir>/__tests__/**/?(*.)(spec|test).{js,jsx,mjs,ts,tsx}",
-      "<rootDir>/packages/volto-slate/src/**/?(*.)(spec|test).{js,jsx,mjs,ts,tsx}"
+      "<rootDir>/packages/volto-slate/src/**/?(*.)(spec|test).{js,jsx,mjs,ts,tsx}",
+      "<rootDir>/packages/registry/src/**/?(*.)(spec|test).{js,jsx,mjs,ts,tsx}"
     ]
   },
   "prettier": {
