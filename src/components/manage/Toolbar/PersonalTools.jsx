@@ -54,7 +54,7 @@ const PersonalTools = (props) => {
 
   useEffect(() => {
     dispatch(getUser(userId));
-  }, []);
+  }, [dispatch, userId]);
 
   const push = (selector) => {
     setPushed(true);
