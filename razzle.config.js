@@ -352,7 +352,7 @@ const defaultModify = ({
 
   if (prefixPath) {
     if (target === 'web' && dev) {
-      config.devServer.publicPath = prefixPath;
+      config.devServer.devMiddleware.publicPath = prefixPath;
     }
     const pp = config.output.publicPath;
     config.output.publicPath = `${pp}${prefixPath.slice(1)}/`;
