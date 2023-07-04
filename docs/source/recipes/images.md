@@ -1,10 +1,10 @@
 ---
 myst:
   html_meta:
-    "description": "Volto code recipe for images"
-    "property=og:description": "Volto code recipe for images"
-    "property=og:title": "Volto code recipe for images"
-    "keywords": "Plone, Volto, code, recipe, images"
+    'description': 'Volto code recipe for images'
+    'property=og:description': 'Volto code recipe for images'
+    'property=og:title': 'Volto code recipe for images'
+    'keywords': 'Plone, Volto, code, recipe, images'
 ---
 
 (images-label)=
@@ -33,7 +33,7 @@ const Image = config.getComponent({ name: 'Image' }).component;
   className="myClass"
   width="200"
   height="300"
-/>
+/>;
 ```
 
 ```html
@@ -52,12 +52,12 @@ The [`async`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/
 To render an image from a content object, you can use the component as shown in the following code snippet.
 
 ```jsx
-<Image item={content} imageField="image" alt="Alt text for accessibility" />;
+<Image item={content} imageField="image" alt="Alt text for accessibility" />
 ```
 
 This will generate the `src`, `srcset`, `width`, and `height` attributes automatically for the given image.
 
-To make the image width response, you can add the prop `responsive`, and the literal `responsive` will be added to the HTML attribute `class`.
+To make the image width responsive, you can add the prop `responsive`, and the literal `responsive` will be added to the HTML attribute `class`.
 
 ## Serving the right image size
 
@@ -67,7 +67,12 @@ This responsibility is left to the developer because it depends on where the ima
 For example, if the image is rendered in a container that is always half as wide as the page, the `sizes` attribute should reflect that to properly inform the browser which image size to request and render.
 
 ```jsx
-<Image item={content} imageField="image" alt="Alt text for accessibility" sizes="50vw" />
+<Image
+  item={content}
+  imageField="image"
+  alt="Alt text for accessibility"
+  sizes="50vw"
+/>
 ```
 
 If the image is rendered at full viewport width when the viewport is less than `900px` wide, though, you can add a media condition to the `sizes` attribute.
