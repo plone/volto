@@ -147,7 +147,6 @@ const Toolbar = (props) => {
   const unlockloading = unlockRequest?.loading;
   const unlockloaded = unlockRequest?.loaded;
   const prevUnlockloading = usePrevious(unlockloading);
-  const unlockRequestloaded = usePrevious(unlockloaded);
 
   useEffect(() => {
     // Do not trigger the actions action if the expander is present
@@ -185,10 +184,10 @@ const Toolbar = (props) => {
 
   useEffect(() => {
     // Unlock
-    if (prevUnlockloading && unlockRequestloaded) {
+    if (prevUnlockloading && unlockloaded) {
       dispatch(listActions(getBaseUrl(pathname)));
     }
-  }, [prevUnlockloading, unlockRequestloaded, dispatch, pathname]);
+  }, [prevUnlockloading, unlockloaded, dispatch, pathname]);
 
   const handleShrink = () => {
     cookies.set('toolbar_expanded', !expanded, getCookieOptions());
@@ -240,7 +239,7 @@ const Toolbar = (props) => {
     [showMenu, loadComponent],
   );
 
-  const unlock = (e) => {
+  const unlock = () => {
     dispatch(unlockContent(getBaseUrl(pathname), true));
   };
 
@@ -346,7 +345,7 @@ const Toolbar = (props) => {
                     <button
                       aria-label={intl.formatMessage(messages.unlock)}
                       className="unlock"
-                      onClick={(e) => unlock(e)}
+                      onClick={unlock}
                       tabIndex={0}
                     >
                       <Icon
