@@ -7,15 +7,15 @@ import { useSelector, shallowEqual } from 'react-redux';
  * `content` reducer, and returns it along with the related state (loading/loaded/error).
  *
  * @export
- * @return {{ data: ContentData, loading: boolean, loaded: boolean, error: Error }}
+ * @return {{ data: ContentData, loading: boolean, loaded: boolean, error: Error , }}
  */
 export function useContent() {
-  const data = useSelector((state) => state.content.data, shallowEqual);
-  const loading = useSelector((state) => state.content.get.loading);
-  const loaded = useSelector((state) => state.content.get.loaded);
-  const error = useSelector((state) => state.content.get.error, shallowEqual);
-
-  return { data, loading, loaded, error };
+  const data = useSelector((state) => state.content?.data, shallowEqual);
+  const loading = useSelector((state) => state.content.get?.loading);
+  const loaded = useSelector((state) => state.content.get?.loaded);
+  const error = useSelector((state) => state.content.get?.error, shallowEqual);
+  const unlockRequest = useSelector((state) => state.content?.unlock);
+  return { data, loading, loaded, error, unlockRequest };
 }
 
 // For reference purposes: Potential future useQuery version
