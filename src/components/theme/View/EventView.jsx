@@ -43,7 +43,7 @@ const EventView = (props) => {
   const { content } = props;
 
   return (
-    <div id="page-document" className="ui container viewwrapper event-view">
+    <div id="page-document" className="ui container view-wrapper event-view">
       <Grid>
         <Grid.Column width={7} className="mobile hidden">
           {hasBlocksData(content) ? (

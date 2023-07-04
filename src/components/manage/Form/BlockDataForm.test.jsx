@@ -8,6 +8,24 @@ import { Provider } from 'react-intl-redux';
 
 const mockStore = configureStore();
 
+const withStateManagement = (Component) => ({ ...props }) => {
+  const [formData, onChangeFormData] = React.useState(props.formData || {});
+  const onChangeField = (id, value) => {
+    onChangeFormData({ ...formData, [id]: value });
+  };
+
+  // NOTE: onChangeBlock here is not "really" implemented
+
+  return (
+    <Component
+      {...props}
+      onChangeField={onChangeField}
+      onChangeBlock={(block, data) => onChangeFormData(data)}
+      formData={formData}
+    />
+  );
+};
+
 beforeAll(() => {
   config.widgets = {
     id: {},
@@ -28,7 +46,6 @@ beforeAll(() => {
     },
     testBlock: {
       id: 'testBlock',
-      // enableStyling: true,
       variations: [
         {
           id: 'default',
@@ -56,6 +73,7 @@ beforeAll(() => {
 
 describe('BlockDataForm', () => {
   it('should does not add variations to schema when unneeded', () => {
+    const WrappedBlockDataForm = withStateManagement(BlockDataForm);
     const store = mockStore({
       intl: {
         locale: 'en',
@@ -72,7 +90,7 @@ describe('BlockDataForm', () => {
     };
     const { container } = render(
       <Provider store={store}>
-        <BlockDataForm
+        <WrappedBlockDataForm
           formData={formData}
           schema={testSchema}
           onChangeField={(id, value) => {}}
@@ -86,6 +104,7 @@ describe('BlockDataForm', () => {
   });
 
   it('should does not add variations when only one variation', () => {
+    const WrappedBlockDataForm = withStateManagement(BlockDataForm);
     const store = mockStore({
       intl: {
         locale: 'en',
@@ -102,7 +121,7 @@ describe('BlockDataForm', () => {
     };
     const { container } = render(
       <Provider store={store}>
-        <BlockDataForm
+        <WrappedBlockDataForm
           formData={formData}
           schema={testSchema}
           onChangeField={(id, value) => {}}
@@ -116,6 +135,7 @@ describe('BlockDataForm', () => {
   });
 
   it('should add variations to schema', () => {
+    const WrappedBlockDataForm = withStateManagement(BlockDataForm);
     const store = mockStore({
       intl: {
         locale: 'en',
@@ -132,7 +152,7 @@ describe('BlockDataForm', () => {
     };
     const { container } = render(
       <Provider store={store}>
-        <BlockDataForm
+        <WrappedBlockDataForm
           formData={formData}
           schema={testSchema}
           onChangeField={(id, value) => {}}
@@ -143,78 +163,5 @@ describe('BlockDataForm', () => {
 
     // schema is cloned, not mutated in place
     expect(testSchema.fieldsets[0].fields).toStrictEqual([]);
-  });
-
-  it('should add styling field to schema', () => {
-    config.blocks.blocksConfig.testBlock.enableStyling = true;
-    const store = mockStore({
-      intl: {
-        locale: 'en',
-        messages: {},
-      },
-    });
-    const testSchema = {
-      fieldsets: [{ title: 'Default', id: 'default', fields: [] }],
-      properties: {},
-      required: [],
-    };
-    const formData = {
-      '@type': 'testBlock',
-    };
-    const { container } = render(
-      <Provider store={store}>
-        <BlockDataForm
-          formData={formData}
-          schema={testSchema}
-          onChangeField={(id, value) => {}}
-        />
-      </Provider>,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should allow variations to enhance styling schema', () => {
-    config.blocks.blocksConfig.testBlock.enableStyling = true;
-    let finalSchema; // the schema is cloned during enhancing; we need it for tests because the ObjectWidget is not rendered properly in the test
-    config.blocks.blocksConfig.testBlock.variations[0].schemaEnhancer = ({
-      schema,
-    }) => {
-      const stylesSchema = schema.properties.styles.schema;
-      stylesSchema.properties.extraField = { title: 'Extra field' };
-      stylesSchema.fieldsets[0].fields.push('extraField');
-      finalSchema = schema;
-      return schema;
-    };
-
-    const store = mockStore({
-      intl: {
-        locale: 'en',
-        messages: {},
-      },
-    });
-    const testSchema = {
-      fieldsets: [{ title: 'Default', id: 'default', fields: [] }],
-      properties: {},
-      required: [],
-    };
-    const formData = {
-      '@type': 'testBlock',
-    };
-    const { container } = render(
-      <Provider store={store}>
-        <BlockDataForm
-          formData={formData}
-          schema={testSchema}
-          onChangeField={(id, value) => {}}
-        />
-      </Provider>,
-    );
-    expect(container).toMatchSnapshot();
-    expect(
-      finalSchema.properties.styles.schema.properties.extraField,
-    ).toStrictEqual({ title: 'Extra field' });
-    expect(
-      finalSchema.properties.styles.schema.fieldsets[0].fields,
-    ).toStrictEqual(['align', 'extraField']);
   });
 });

@@ -94,6 +94,7 @@ class ModalForm extends Component {
     loadingMessage: null,
     submitError: null,
     className: null,
+    dimmer: null,
   };
 
   /**
@@ -224,7 +225,11 @@ class ModalForm extends Component {
 
     const state_errors = keys(this.state.errors).length > 0;
     return (
-      <Modal open={this.props.open} className={this.props.className}>
+      <Modal
+        dimmer={this.props.dimmer}
+        open={this.props.open}
+        className={this.props.className}
+      >
         <Header>{this.props.title}</Header>
         <Dimmer active={this.props.loading}>
           <Loader>

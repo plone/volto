@@ -26,8 +26,9 @@ import {
   Html,
   Api,
   persistAuthToken,
-  normalizeLanguageName,
-  toLangUnderscoreRegion,
+  toBackendLang,
+  toGettextLang,
+  toReactIntlLang,
 } from '@plone/volto/helpers';
 import { changeLanguage } from '@plone/volto/actions';
 
@@ -44,9 +45,9 @@ let locales = {};
 
 if (config.settings) {
   config.settings.supportedLanguages.forEach((lang) => {
-    const langFileName = normalizeLanguageName(lang);
+    const langFileName = toGettextLang(lang);
     import('@root/../locales/' + langFileName + '.json').then((locale) => {
-      locales = { ...locales, [lang]: locale.default };
+      locales = { ...locales, [toReactIntlLang(lang)]: locale.default };
     });
   });
 }
@@ -59,13 +60,6 @@ const supported = new locale.Locales(keys(languages), 'en');
 
 const server = express()
   .disable('x-powered-by')
-  .use(
-    express.static(
-      process.env.BUILD_DIR
-        ? path.join(process.env.BUILD_DIR, 'public')
-        : process.env.RAZZLE_PUBLIC_DIR,
-    ),
-  )
   .head('/*', function (req, res) {
     // Support for HEAD requests. Required by start-test utility in CI.
     res.send('');
@@ -108,13 +102,15 @@ server.use(function (err, req, res, next) {
 function setupServer(req, res, next) {
   const api = new Api(req);
 
-  const lang = new locale.Locales(
-    req.universalCookies.get('I18N_LANGUAGE') ||
-      config.settings.defaultLanguage ||
-      req.headers['accept-language'],
-  )
-    .best(supported)
-    .toString();
+  const lang = toReactIntlLang(
+    new locale.Locales(
+      req.universalCookies.get('I18N_LANGUAGE') ||
+        config.settings.defaultLanguage ||
+        req.headers['accept-language'],
+    )
+      .best(supported)
+      .toString(),
+  );
 
   // Minimum initial state for the fake Redux store instance
   const initialState = {
@@ -183,13 +179,15 @@ server.get('/*', (req, res) => {
 
   const browserdetect = detect(req.headers['user-agent']);
 
-  const lang = new locale.Locales(
-    req.universalCookies.get('I18N_LANGUAGE') ||
-      config.settings.defaultLanguage ||
-      req.headers['accept-language'],
-  )
-    .best(supported)
-    .toString();
+  const lang = toReactIntlLang(
+    new locale.Locales(
+      req.universalCookies.get('I18N_LANGUAGE') ||
+        config.settings.defaultLanguage ||
+        req.headers['accept-language'],
+    )
+      .best(supported)
+      .toString(),
+  );
 
   const authToken = req.universalCookies.get('auth_token');
   const initialState = {
@@ -224,23 +222,28 @@ server.get('/*', (req, res) => {
 
   loadOnServer({ store, location, routes, api })
     .then(() => {
-      // The content info is in the store at this point thanks to the asynconnect
-      // features, then we can force the current language info into the store when
-      // coming from an SSR request
-      const contentLang =
-        store.getState().content.data?.language?.token ||
-        config.settings.defaultLanguage;
-
-      const cookie_lang =
+      const initialLang =
         req.universalCookies.get('I18N_LANGUAGE') ||
         config.settings.defaultLanguage ||
         req.headers['accept-language'];
 
-      if (cookie_lang !== contentLang) {
-        const newLocale = toLangUnderscoreRegion(
+      // The content info is in the store at this point thanks to the asynconnect
+      // features, then we can force the current language info into the store when
+      // coming from an SSR request
+
+      // TODO: there is a bug here with content that, for any reason, doesn't
+      // present the language token field, for some reason. In this case, we
+      // should follow the cookie rather then switching the language
+      const contentLang = store.getState().content.get?.error
+        ? initialLang
+        : store.getState().content.data?.language?.token ||
+          config.settings.defaultLanguage;
+
+      if (toBackendLang(initialLang) !== contentLang) {
+        const newLang = toReactIntlLang(
           new locale.Locales(contentLang).best(supported).toString(),
         );
-        store.dispatch(changeLanguage(newLocale, locales[newLocale], req));
+        store.dispatch(changeLanguage(newLang, locales[newLang], req));
       }
 
       const context = {};
@@ -324,6 +327,7 @@ export const defaultReadCriticalCss = () => {
 // Exposed for the console bootstrap info messages
 server.apiPath = config.settings.apiPath;
 server.devProxyToApiPath = config.settings.devProxyToApiPath;
+server.proxyRewriteTarget = config.settings.proxyRewriteTarget;
 server.publicURL = config.settings.publicURL;
 
 export default server;

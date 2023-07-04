@@ -1,4 +1,5 @@
 import React from 'react';
+import { Popup } from 'semantic-ui-react';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import { Icon } from '@plone/volto/components';
 import DynamicHeightList from '@plone/volto/components/manage/ReactVirtualized/DynamicRowHeightList';
@@ -40,6 +41,20 @@ export const SortableMultiValueLabel = injectLazyLibs([
   const { SortableHandle } = props.reactSortableHOC;
   const SortableComponent = SortableHandle(MultiValueLabel);
   return <SortableComponent {...props} />;
+});
+
+export const MultiValueContainer = injectLazyLibs('reactSelect')((props) => {
+  const { MultiValueContainer } = props.reactSelect.components;
+  return (
+    <Popup
+      content={props.data.label}
+      trigger={
+        <div {...props.innerProps}>
+          <MultiValueContainer {...props} />
+        </div>
+      }
+    />
+  );
 });
 
 export const Option = injectLazyLibs('reactSelect')((props) => {

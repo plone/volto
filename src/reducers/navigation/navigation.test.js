@@ -1,4 +1,7 @@
-import { GET_NAVIGATION } from '@plone/volto/constants/ActionTypes';
+import {
+  GET_CONTENT,
+  GET_NAVIGATION,
+} from '@plone/volto/constants/ActionTypes';
 import config from '@plone/volto/registry';
 import navigation from './navigation';
 
@@ -121,6 +124,51 @@ describe('Navigation reducer', () => {
       error: 'failed',
       items: [],
       loaded: false,
+      loading: false,
+    });
+  });
+});
+
+describe('Navigation reducer (NAVIGATION)GET_CONTENT', () => {
+  beforeEach(() => {
+    config.settings.apiExpanders = [
+      {
+        match: '',
+        GET_CONTENT: ['navigation'],
+      },
+    ];
+  });
+
+  it('should handle (NAVIGATION)GET_CONTENT_SUCCESS', () => {
+    expect(
+      navigation(undefined, {
+        type: `${GET_CONTENT}_SUCCESS`,
+        result: {
+          '@components': {
+            navigation: {
+              items: [
+                {
+                  title: 'Welcome to Plone!',
+                  description:
+                    'Congratulations! You have successfully installed Plone.',
+                  '@id': `${settings.apiPath}/front-page`,
+                },
+              ],
+            },
+          },
+        },
+      }),
+    ).toEqual({
+      error: null,
+      items: [
+        {
+          title: 'Welcome to Plone!',
+          description:
+            'Congratulations! You have successfully installed Plone.',
+          url: '/front-page',
+        },
+      ],
+      loaded: true,
       loading: false,
     });
   });

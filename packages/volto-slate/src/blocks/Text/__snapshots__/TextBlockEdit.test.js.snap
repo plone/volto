@@ -13,6 +13,7 @@ exports[`TextBlockEdit renders w/o errors 1`] = `
         class="toolbar-wrapper"
       />
       <div
+        aria-multiline="false"
         autocapitalize="false"
         autocorrect="false"
         contenteditable="false"

@@ -1,5 +1,5 @@
 function setup() {
-  const api_url = Cypress.env('API_PATH') || 'http://localhost:55001/plone';
+  const api_url = Cypress.env('API_PATH') || 'http://127.0.0.1:55001/plone';
   cy.request({
     method: 'POST',
     url: `${api_url}/RobotRemote`,
@@ -10,7 +10,7 @@ function setup() {
 }
 
 function teardown() {
-  const api_url = Cypress.env('API_PATH') || 'http://localhost:55001/plone';
+  const api_url = Cypress.env('API_PATH') || 'http://127.0.0.1:55001/plone';
   cy.request({
     method: 'POST',
     url: `${api_url}/RobotRemote`,

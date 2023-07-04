@@ -43,13 +43,9 @@ describe('Search Block Tests', () => {
     cy.getSlateTitle().focus().click().type('My Search Page');
 
     // Add Search listing block
-    cy.getSlate().click();
-    cy.get('button.block-add-button').click();
-    cy.get('.blocks-chooser .title').contains('Common').click();
-    cy.get('.blocks-chooser .common').contains('Search').click();
+    cy.addNewBlock('search');
 
     // Add search query criteria
-    cy.get('#blockform-fieldset-searchquery').click();
     cy.get('#default-query-0-query .react-select__value-container').click();
     cy.get('#default-query-0-query .react-select__option')
       .contains('Type')
@@ -77,7 +73,6 @@ describe('Search Block Tests', () => {
       .click();
 
     //  Add checkbox facet
-    cy.get('#blockform-fieldset-facets > .title').click();
     cy.get('.add-item-button-wrapper > button').click();
     cy.get('#field-field-1-facets-0 .react-select__value-container').click();
     cy.get('.react-select__option').contains('Type').click();
@@ -92,7 +87,7 @@ describe('Search Block Tests', () => {
     cy.get('.react-select__option').contains('Effective date').click();
     cy.get('#field-title-0-facets-1').type('Effective date');
     cy.get('#field-type-2-facets-1').click();
-    cy.get('.react-select__option').contains('Date range').click();
+    cy.get('.react-select__option').contains('Date Range').click();
 
     // Save the page
     cy.get('#toolbar-save > .icon').click();

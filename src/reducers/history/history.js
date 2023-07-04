@@ -45,6 +45,7 @@ export default function history(state = initialState, action = {}) {
     case `${REVERT_HISTORY}_PENDING`:
       return {
         ...state,
+        entries: [],
         [getRequestKey(action.type)]: {
           loading: true,
           loaded: false,

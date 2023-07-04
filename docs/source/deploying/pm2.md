@@ -54,7 +54,7 @@ module.exports = {
 };
 ```
 
-- `mywebsite.com-volto` starts the Node process that is responsible for Volto server-side rendering.
+- `mywebsite.com-volto` starts the Node process that is responsible for Volto {term}`server-side rendering`.
 - `mywebsite.com-api-zeo` starts the ZEO server.
 - `mywebsite.com-api-instance1` starts the first Zope instance.
 - `mywebsite.com-api-instance2` starts the second Zope instance.

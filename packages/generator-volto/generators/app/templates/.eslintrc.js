@@ -27,7 +27,9 @@ const addonAliases = Object.keys(reg.packages).map((o) => [
   reg.packages[o].modulePath,
 ]);
 
-module.exports = {
+const addonExtenders = reg.getEslintExtenders().map((m) => require(m));
+
+const defaultConfig = {
   extends: `${voltoPath}/.eslintrc`,
   settings: {
     'import/resolver': {
@@ -48,3 +50,10 @@ module.exports = {
     },
   },
 };
+
+const config = addonExtenders.reduce(
+  (acc, extender) => extender.modify(acc),
+  defaultConfig,
+);
+
+module.exports = config;

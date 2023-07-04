@@ -329,7 +329,7 @@ export class EditComponent extends Component {
           }}
         />
         <InlineToolbar />
-        {this.props.selected && (
+        {!config.experimental.addBlockButton.enabled && this.props.selected && (
           <BlockChooserButton
             data={this.props.data}
             block={this.props.block}
@@ -339,7 +339,6 @@ export class EditComponent extends Component {
             allowedBlocks={this.props.allowedBlocks}
             blocksConfig={this.props.blocksConfig}
             size="24px"
-            className="block-add-button"
             properties={this.props.properties}
           />
         )}

@@ -26,6 +26,7 @@ import {
   Option,
   ClearIndicator,
   DropdownIndicator,
+  MultiValueContainer,
   selectTheme,
   customSelectStyles,
   MenuList,
@@ -236,6 +237,7 @@ class SelectAutoComplete extends Component {
             ...(this.props.choices?.length > 25 && {
               MenuList,
             }),
+            MultiValueContainer,
             ClearIndicator,
             DropdownIndicator,
             Option,

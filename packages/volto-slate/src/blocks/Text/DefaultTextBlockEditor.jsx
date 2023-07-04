@@ -6,7 +6,11 @@ import { defineMessages, useIntl } from 'react-intl';
 import { useInView } from 'react-intersection-observer';
 import { Dimmer, Loader, Message, Segment } from 'semantic-ui-react';
 
-import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
+import {
+  flattenToAppURL,
+  getBaseUrl,
+  validateFileUploadSize,
+} from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 import {
   BlockDataForm,
@@ -71,6 +75,7 @@ export const DefaultTextBlockEditor = (props) => {
   const { slate } = config.settings;
   const { textblockExtensions } = slate;
   const { value } = data;
+  const intl = useIntl();
 
   // const [addNewBlockOpened, setAddNewBlockOpened] = React.useState();
   const [showDropzone, setShowDropzone] = React.useState(false);
@@ -106,6 +111,7 @@ export const DefaultTextBlockEditor = (props) => {
       files.forEach((file) => {
         const [mime] = file.type.split('/');
         if (mime !== 'image') return;
+        if (!validateFileUploadSize(file, intl.formatMessage)) return;
 
         readAsDataURL(file).then((data) => {
           const fields = data.match(/^data:(.*);(.*),(.*)$/);
@@ -127,7 +133,7 @@ export const DefaultTextBlockEditor = (props) => {
       });
       setShowDropzone(false);
     },
-    [pathname, uploadContent, block],
+    [pathname, uploadContent, block, intl.formatMessage],
   );
 
   const { loaded, loading } = uploadRequest;
@@ -178,7 +184,6 @@ export const DefaultTextBlockEditor = (props) => {
     instructions = formDescription;
   }
 
-  const intl = useIntl();
   const placeholder =
     data.placeholder || formTitle || intl.formatMessage(messages.text);
   const schema = TextBlockSchema(data);
@@ -239,6 +244,7 @@ export const DefaultTextBlockEditor = (props) => {
                   selected={selected}
                   placeholder={placeholder}
                   slateSettings={slateSettings}
+                  editableProps={{ 'aria-multiline': 'false' }}
                 />
                 {DEBUG ? <div>{block}</div> : ''}
               </>
@@ -246,21 +252,23 @@ export const DefaultTextBlockEditor = (props) => {
           }}
         </Dropzone>
 
-        {selected && !data.plaintext?.trim() && !disableNewBlocks && (
-          <BlockChooserButton
-            data={data}
-            block={block}
-            onInsertBlock={(id, value) => {
-              onSelectBlock(onInsertBlock(id, value));
-            }}
-            onMutateBlock={onMutateBlock}
-            allowedBlocks={allowedBlocks}
-            blocksConfig={blocksConfig}
-            size="24px"
-            className="block-add-button"
-            properties={properties}
-          />
-        )}
+        {!config.experimental.addBlockButton.enabled &&
+          selected &&
+          !data.plaintext?.trim() &&
+          !disableNewBlocks && (
+            <BlockChooserButton
+              data={data}
+              block={block}
+              onInsertBlock={(id, value) => {
+                onSelectBlock(onInsertBlock(id, value));
+              }}
+              onMutateBlock={onMutateBlock}
+              allowedBlocks={allowedBlocks}
+              blocksConfig={blocksConfig}
+              size="24px"
+              properties={properties}
+            />
+          )}
 
         <SidebarPortal selected={selected}>
           <div id="slate-plugin-sidebar"></div>
@@ -276,6 +284,7 @@ export const DefaultTextBlockEditor = (props) => {
                 block={block}
                 schema={schema}
                 title={schema.title}
+                onChangeBlock={onChangeBlock}
                 onChangeField={(id, value) => {
                   onChangeBlock(block, {
                     ...data,

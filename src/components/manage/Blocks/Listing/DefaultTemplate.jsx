@@ -1,11 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ConditionalLink } from '@plone/volto/components';
+import { ConditionalLink, UniversalLink } from '@plone/volto/components';
 import { flattenToAppURL } from '@plone/volto/helpers';
-
 import { isInternalURL } from '@plone/volto/helpers/Url/Url';
 
-const DefaultTemplate = ({ items, linkTitle, linkHref, isEditMode }) => {
+const DefaultTemplate = ({
+  headlineTag,
+  items,
+  linkTitle,
+  linkHref,
+  isEditMode,
+}) => {
   let link = null;
   let href = linkHref?.[0]?.['@id'] || '';
 
@@ -16,8 +21,18 @@ const DefaultTemplate = ({ items, linkTitle, linkHref, isEditMode }) => {
       </ConditionalLink>
     );
   } else if (href) {
-    link = <a href={href}>{linkTitle || href}</a>;
+    link = <UniversalLink href={href}>{linkTitle || href}</UniversalLink>;
   }
+
+  const getTitleTag = (tag) => {
+    const level = tag.slice(-1);
+    if (/\d/.test(level)) {
+      return `h${Number(level) + 1}`;
+    } else {
+      return 'h3';
+    }
+  };
+  const TitleTag = headlineTag ? getTitleTag(headlineTag) : 'h3';
 
   return (
     <>
@@ -26,7 +41,7 @@ const DefaultTemplate = ({ items, linkTitle, linkHref, isEditMode }) => {
           <div className="listing-item" key={item['@id']}>
             <ConditionalLink item={item} condition={!isEditMode}>
               <div className="listing-body">
-                <h4>{item.title ? item.title : item.id}</h4>
+                <TitleTag>{item.title ? item.title : item.id}</TitleTag>
                 <p>{item.description}</p>
               </div>
             </ConditionalLink>

@@ -449,7 +449,10 @@ class GroupsControlpanel extends Component {
                       messages.addGroupsFormRolesTitle,
                     ),
                     type: 'array',
-                    choices: this.props.roles.map((role) => [role.id, role.id]),
+                    choices: this.props.roles.map((role) => [
+                      role.id,
+                      role.title,
+                    ]),
                     noValueOption: false,
                     description: '',
                   },
@@ -507,7 +510,7 @@ class GroupsControlpanel extends Component {
                     </Table.HeaderCell>
                     {this.props.roles.map((role) => (
                       <Table.HeaderCell key={role.id}>
-                        {role.id}
+                        {role.title}
                       </Table.HeaderCell>
                     ))}
                     <Table.HeaderCell>

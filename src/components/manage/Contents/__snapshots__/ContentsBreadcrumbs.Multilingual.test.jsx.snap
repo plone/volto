@@ -23,7 +23,7 @@ exports[`ContentsBreadcrumbs Multilingual renders a ContentsBreadcrumbs componen
     onClick={[Function]}
     title="Home"
   >
-    en
+    English
   </a>
   <div
     className="divider"
@@ -74,7 +74,7 @@ exports[`ContentsBreadcrumbs Multilingual renders a breadcrumbs component contai
     onClick={[Function]}
     title="Home"
   >
-    en
+    English
   </a>
   <div
     className="divider"

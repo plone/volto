@@ -3,12 +3,11 @@
  * @module components/theme/App/App
  */
 
-import { Component } from 'react';
+import React, { Component } from 'react';
 import jwtDecode from 'jwt-decode';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import loadable from '@loadable/component';
 import { asyncConnect, Helmet } from '@plone/volto/helpers';
 import { Segment } from 'semantic-ui-react';
 import { renderRoutes } from 'react-router-config';
@@ -33,7 +32,13 @@ import {
   AppExtras,
   SkipLinks,
 } from '@plone/volto/components';
-import { BodyClass, getBaseUrl, getView, isCmsUi } from '@plone/volto/helpers';
+import {
+  BodyClass,
+  getBaseUrl,
+  getView,
+  hasApiExpander,
+  isCmsUi,
+} from '@plone/volto/helpers';
 import {
   getBreadcrumbs,
   getContent,
@@ -47,16 +52,12 @@ import MultilingualRedirector from '@plone/volto/components/theme/MultilingualRe
 import WorkingCopyToastsFactory from '@plone/volto/components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory';
 import LockingToastsFactory from '@plone/volto/components/manage/LockingToastsFactory/LockingToastsFactory';
 
-const Sentry = loadable.lib(
-  () => import(/* webpackChunkName: "s_entry-browser" */ '@sentry/browser'), // chunk name avoids ad blockers
-);
-
 /**
  * @export
  * @class App
  * @extends {Component}
  */
-class App extends Component {
+export class App extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -71,6 +72,11 @@ class App extends Component {
     error: null,
     errorInfo: null,
   };
+
+  constructor(props) {
+    super(props);
+    this.mainRef = React.createRef();
+  }
 
   /**
    * @method componentWillReceiveProps
@@ -94,12 +100,17 @@ class App extends Component {
    */
   componentDidCatch(error, info) {
     this.setState({ hasError: true, error, errorInfo: info });
-    if (__CLIENT__) {
-      if (window?.env?.RAZZLE_SENTRY_DSN || __SENTRY__?.SENTRY_DSN) {
-        Sentry.load().then((mod) => mod.captureException(error));
+    config.settings.errorHandlers.forEach((handler) => handler(error));
+  }
+
+  dispatchContentClick = (event) => {
+    if (event.target === event.currentTarget) {
+      const rect = this.mainRef.current.getBoundingClientRect();
+      if (event.clientY > rect.bottom) {
+        document.dispatchEvent(new Event('voltoClickBelowContent'));
       }
     }
-  }
+  };
 
   /**
    * Render method.
@@ -153,8 +164,12 @@ class App extends Component {
           pathname={this.props.pathname}
           contentLanguage={this.props.content?.language?.token}
         >
-          <Segment basic className="content-area">
-            <main>
+          <Segment
+            basic
+            className="content-area"
+            onClick={this.dispatchContentClick}
+          >
+            <main ref={this.mainRef}>
               <OutdatedBrowser />
               {this.props.connectionRefused ? (
                 <ConnectionRefusedView />
@@ -244,52 +259,76 @@ export const fetchContent = async ({ store, location }) => {
   return content;
 };
 
-export default compose(
-  asyncConnect([
-    {
-      key: 'breadcrumbs',
-      promise: ({ location, store: { dispatch } }) =>
-        __SERVER__ && dispatch(getBreadcrumbs(getBaseUrl(location.pathname))),
-    },
-    {
-      key: 'content',
-      promise: ({ location, store }) =>
-        __SERVER__ && fetchContent({ store, location }),
-    },
-    {
-      key: 'navigation',
-      promise: ({ location, store: { dispatch } }) =>
-        __SERVER__ &&
-        dispatch(
-          getNavigation(
-            getBaseUrl(location.pathname),
-            config.settings.navDepth,
-          ),
-        ),
-    },
-    {
-      key: 'types',
-      promise: ({ location, store: { dispatch } }) =>
-        __SERVER__ && dispatch(getTypes(getBaseUrl(location.pathname))),
-    },
-    {
-      key: 'workflow',
-      promise: ({ location, store: { dispatch } }) =>
-        __SERVER__ && dispatch(getWorkflow(getBaseUrl(location.pathname))),
-    },
-  ]),
-  injectIntl,
-  connect(
-    (state, props) => ({
-      pathname: props.location.pathname,
-      token: state.userSession.token,
-      userId: state.userSession.token
-        ? jwtDecode(state.userSession.token).sub
-        : '',
-      content: state.content.data,
-      apiError: state.apierror.error,
-      connectionRefused: state.apierror.connectionRefused,
-    }),
-    null,
-  ),
-)(App);
+export function connectAppComponent(AppComponent) {
+  return compose(
+    asyncConnect([
+      {
+        key: 'breadcrumbs',
+        promise: ({ location, store: { dispatch } }) => {
+          // Do not trigger the breadcrumbs action if the expander is present
+          if (
+            __SERVER__ &&
+            !hasApiExpander('breadcrumbs', getBaseUrl(location.pathname))
+          ) {
+            return dispatch(getBreadcrumbs(getBaseUrl(location.pathname)));
+          }
+        },
+      },
+      {
+        key: 'content',
+        promise: ({ location, store }) =>
+          __SERVER__ && fetchContent({ store, location }),
+      },
+      {
+        key: 'navigation',
+        promise: ({ location, store: { dispatch } }) => {
+          // Do not trigger the navigation action if the expander is present
+          if (
+            __SERVER__ &&
+            !hasApiExpander('navigation', getBaseUrl(location.pathname))
+          ) {
+            return dispatch(
+              getNavigation(
+                getBaseUrl(location.pathname),
+                config.settings.navDepth,
+              ),
+            );
+          }
+        },
+      },
+      {
+        key: 'types',
+        promise: ({ location, store: { dispatch } }) => {
+          // Do not trigger the types action if the expander is present
+          if (
+            __SERVER__ &&
+            !hasApiExpander('types', getBaseUrl(location.pathname))
+          ) {
+            return dispatch(getTypes(getBaseUrl(location.pathname)));
+          }
+        },
+      },
+      {
+        key: 'workflow',
+        promise: ({ location, store: { dispatch } }) =>
+          __SERVER__ && dispatch(getWorkflow(getBaseUrl(location.pathname))),
+      },
+    ]),
+    injectIntl,
+    connect(
+      (state, props) => ({
+        pathname: props.location.pathname,
+        token: state.userSession.token,
+        userId: state.userSession.token
+          ? jwtDecode(state.userSession.token).sub
+          : '',
+        content: state.content.data,
+        apiError: state.apierror.error,
+        connectionRefused: state.apierror.connectionRefused,
+      }),
+      null,
+    ),
+  )(AppComponent);
+}
+
+export default connectAppComponent(App);

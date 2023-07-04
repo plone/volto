@@ -5,7 +5,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { HashLink as Link } from 'react-router-hash-link';
 import { useSelector } from 'react-redux';
 import {
   flattenToAppURL,
@@ -78,13 +78,13 @@ const UniversalLink = ({
   const checkedURL = URLUtils.checkAndNormalizeUrl(url);
 
   url = checkedURL.url;
-
   let tag = (
     <Link
       to={flattenToAppURL(url)}
       target={openLinkInNewTab ?? false ? '_blank' : null}
       title={title}
       className={className}
+      smooth={config.settings.hashLinkSmoothScroll}
       {...props}
     >
       {children}

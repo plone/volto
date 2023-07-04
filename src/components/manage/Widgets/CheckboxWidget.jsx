@@ -51,8 +51,8 @@ const CheckboxWidget = (props) => {
  */
 CheckboxWidget.propTypes = {
   id: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string,
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
+  description: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   required: PropTypes.bool,
   error: PropTypes.arrayOf(PropTypes.string),
   value: PropTypes.bool,

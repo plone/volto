@@ -1,10 +1,13 @@
 import React from 'react';
 import { Accordion, Button, Icon } from 'semantic-ui-react';
-import { Icon as VoltoIcon } from '@plone/volto/components';
-import downSVG from '@plone/volto/icons/down-key.svg';
 import { defineMessages, useIntl } from 'react-intl';
-import { resolveExtension } from '@plone/volto/helpers/Extensions/withBlockExtensions';
+import { isEmpty } from 'lodash';
+
+import { Icon as VoltoIcon } from '@plone/volto/components';
+import { resolveExtension } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
+
+import downSVG from '@plone/volto/icons/down-key.svg';
 
 const messages = defineMessages({
   currentFilters: {
@@ -28,7 +31,9 @@ const FilterList = (props) => {
 
   const totalFilters = definedFacets.filter(
     ({ field }) =>
-      field && Object.keys(facets).includes(field.value) && facets[field.value],
+      field &&
+      Object.keys(facets).includes(field.value) &&
+      !isEmpty(facets[field.value]),
   ).length;
 
   const {

@@ -1,5 +1,6 @@
 import actions from './actions';
-import { LIST_ACTIONS } from '@plone/volto/constants/ActionTypes';
+import { GET_CONTENT, LIST_ACTIONS } from '@plone/volto/constants/ActionTypes';
+import config from '@plone/volto/registry';
 
 describe('Actions reducer', () => {
   it('should return the initial state', () => {
@@ -118,6 +119,91 @@ describe('Actions reducer', () => {
       error: 'failed',
       actions: {},
       loaded: false,
+      loading: false,
+    });
+  });
+});
+
+describe('Actions reducer - (ACTIONS)GET_CONTENT', () => {
+  beforeEach(() => {
+    config.settings.apiExpanders = [
+      {
+        match: '',
+        GET_CONTENT: ['actions'],
+      },
+    ];
+  });
+
+  it('should handle (ACTIONS)GET_CONTENT', () => {
+    expect(
+      actions(undefined, {
+        type: `${GET_CONTENT}_SUCCESS`,
+        result: {
+          '@components': {
+            actions: {
+              object: [],
+              object_buttons: [],
+              site_actions: [],
+              user: [
+                {
+                  icon: '',
+                  id: 'preferences',
+                  title: 'Preferences',
+                },
+                {
+                  icon: '',
+                  id: 'dashboard',
+                  title: 'Dashboard',
+                },
+                {
+                  icon: '',
+                  id: 'plone_setup',
+                  title: 'Site Setup',
+                },
+                {
+                  icon: '',
+                  id: 'logout',
+                  title: 'Log out',
+                },
+              ],
+              document_actions: [],
+              portal_tabs: [],
+            },
+          },
+        },
+      }),
+    ).toEqual({
+      error: null,
+      actions: {
+        object: [],
+        object_buttons: [],
+        site_actions: [],
+        user: [
+          {
+            icon: '',
+            id: 'preferences',
+            title: 'Preferences',
+          },
+          {
+            icon: '',
+            id: 'dashboard',
+            title: 'Dashboard',
+          },
+          {
+            icon: '',
+            id: 'plone_setup',
+            title: 'Site Setup',
+          },
+          {
+            icon: '',
+            id: 'logout',
+            title: 'Log out',
+          },
+        ],
+        document_actions: [],
+        portal_tabs: [],
+      },
+      loaded: true,
       loading: false,
     });
   });

@@ -26,6 +26,7 @@ import {
   withLists,
   withSplitBlocksOnBreak,
   withIsSelected,
+  normalizeExternalData,
 } from './extensions';
 import { extractImages } from '@plone/volto-slate/editor/plugins/Image/deconstruct';
 import { extractTables } from '@plone/volto-slate/blocks/Table/deconstruct';
@@ -34,7 +35,7 @@ import textSVG from '@plone/volto/icons/subtext.svg';
 
 export { TextBlockView, TextBlockEdit, TextBlockSchema };
 
-export default (config) => {
+export default function applyConfig(config) {
   config.settings.slate = {
     // TODO: should we inverse order? First here gets executed last
     textblockExtensions: [
@@ -44,6 +45,7 @@ export default (config) => {
       withDeserializers,
       withIsSelected,
       breakList,
+      normalizeExternalData,
     ],
 
     // Pluggable handlers for the onKeyDown event of <Editable />
@@ -162,5 +164,13 @@ export default (config) => {
     edit: (props) => <TextBlockEdit {...props} detached />,
     restricted: true,
   };
+
+  if (config.blocks.blocksConfig.gridBlock) {
+    // This is required in order to initialize the inner blocksConfig
+    // for the grid block, since the slate block lives in an add-on
+    // it should be responsible to fill itself into the grid configuration
+    config.blocks.blocksConfig.gridBlock.blocksConfig.slate = slateBlockConfig;
+  }
+
   return config;
-};
+}

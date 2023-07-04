@@ -10,7 +10,7 @@ myst:
 # Server-side rendering for async blocks
 
 By default blocks that depend on async-fetched data won't be rendered fully in
-the server-side rendering phase. For the main "content", Volto provides
+the {term}`server-side rendering` phase. For the main "content", Volto provides
 a mechanism for async rendering in the form of `asyncConnect` and
 `asyncPropExtenders`.
 
@@ -21,15 +21,15 @@ configuration, pointing to a function that returns a list of promises.
 For example:
 
 ```js
-export default ({ dispatch, data, path }) => {
+export default ({ dispatch, id, data, path }) => {
   return [
     dispatch(
-      getQueryStringResults(path, { ...data, fullobjects: 1 }, data.block),
+      getQueryStringResults(path, { ...data, fullobjects: 1 }, id),
     ),
   ];
 };
 ```
 
 All promises returned will be awaited before the rendering of that block, so
-the strategy is to dispatch the data-fetching actions so that the Redux store
+the strategy is to dispatch the data-fetching actions so that the {term}`Redux` store
 gets populated.

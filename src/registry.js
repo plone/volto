@@ -26,6 +26,14 @@ class Config {
     this._data.settings = settings;
   }
 
+  get experimental() {
+    return this._data.experimental;
+  }
+
+  set experimental(experimental) {
+    this._data.experimental = experimental;
+  }
+
   get blocks() {
     return this._data.blocks;
   }
@@ -64,14 +72,6 @@ class Config {
 
   set addonRoutes(addonRoutes) {
     this._data.addonRoutes = addonRoutes;
-  }
-
-  get appExtras() {
-    return this._data.appExtras;
-  }
-
-  set appExtras(appExtras) {
-    this._data.appExtras = appExtras;
   }
 
   get slots() {
@@ -120,6 +120,24 @@ class Config {
       const componentName = `${name}${depsString ? `|${depsString}` : ''}`;
 
       this._data.components[componentName] = { component };
+      // Try to set a displayName (useful for React dev tools) for the registered component
+      // Only if it's a function and it's not set previously
+      try {
+        const displayName = this._data.components[componentName].component
+          .displayName;
+
+        if (
+          !displayName &&
+          typeof this._data.components[componentName].component === 'function'
+        ) {
+          this._data.components[componentName].component.displayName = name;
+        }
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.warning(
+          `Not setting the component displayName because ${error}`,
+        );
+      }
     }
   }
 }

@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Rules renders rules control panel control 1`] = `
+<div
+  id="page-rules"
+>
+  <div
+    className="ui container"
+  >
+    <article
+      id="content"
+    >
+      <div
+        className="ui raised segments"
+      >
+        <div
+          className="ui segment primary"
+        >
+          Content Rules
+        </div>
+        <div
+          className="ui segment secondary"
+        >
+          Use the form below to define, change or remove content rules. Rules will automatically perform actions on content when certain triggers take place. After defining rules, you may want to go to a folder to assign them, using the 'rules' item in the actions menu.
+        </div>
+        <div
+          className="ui segment"
+        >
+          <div
+            className="ui small header"
+          >
+            Filter Rules:
+          </div>
+          <form
+            className="ui form"
+            onSubmit={[Function]}
+          >
+            <div
+              style={
+                Object {
+                  "display": "flex",
+                  "flexWrap": "wrap",
+                }
+              }
+            />
+          </form>
+          <table
+            className="ui table"
+          >
+            <tbody
+              className=""
+            >
+              <tr
+                className=""
+              >
+                <th
+                  className=""
+                >
+                  Content Rule
+                </th>
+                <th
+                  className=""
+                >
+                  Event
+                </th>
+                <th
+                  className=""
+                >
+                  Status
+                </th>
+                <th
+                  className=""
+                >
+                  Actions
+                </th>
+              </tr>
+            </tbody>
+          </table>
+          <button
+            className="ui primary button"
+            onClick={[Function]}
+          >
+            Add content rule
+          </button>
+        </div>
+      </div>
+    </article>
+  </div>
+  <div
+    id="Portal"
+  />
+</div>
+`;

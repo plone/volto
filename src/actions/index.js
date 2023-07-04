@@ -36,6 +36,7 @@ export {
   updateColumnsContent,
   lockContent,
   unlockContent,
+  linkIntegrityCheck,
 } from '@plone/volto/actions/content/content';
 export {
   getControlpanel,
@@ -70,6 +71,12 @@ export {
   purgeMessages,
 } from '@plone/volto/actions/messages/messages';
 export { getNavigation } from '@plone/volto/actions/navigation/navigation';
+export {
+  createRelations,
+  deleteRelations,
+  queryRelations,
+} from '@plone/volto/actions/relations/relations';
+export { rebuildRelations } from '@plone/volto/actions/relations/rebuild';
 export { listRoles } from '@plone/volto/actions/roles/roles';
 export {
   getSchema,
@@ -77,6 +84,31 @@ export {
   putSchema,
   updateSchema,
 } from '@plone/volto/actions/schema/schema';
+export {
+  addRule,
+  moveRuleCondition,
+  moveRuleAction,
+  getRules,
+  enableRules,
+  disableRules,
+  applyRulesToSubfolders,
+  unapplyRulesToSubfolders,
+  removeRules,
+  getControlPanelRule,
+  getControlPanelRules,
+  deleteControlPanelRule,
+  getContentRulesEvents,
+  addNewRule,
+  editRule,
+  removeCondition,
+  addCondition,
+  editCondition,
+  getCondition,
+  removeAction,
+  addAction,
+  editAction,
+  getAction,
+} from '@plone/volto/actions/rules/rules';
 export {
   resetSearchContent,
   searchContent,
@@ -137,3 +169,4 @@ export {
   removeWorkingCopy,
 } from './workingcopy/workingcopy';
 export { getUserSchema } from './userschema/userschema';
+export { getUpgradeInformation, runUpgrade } from './upgrade/upgrade';

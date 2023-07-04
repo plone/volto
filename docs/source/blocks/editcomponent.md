@@ -104,11 +104,11 @@ To render this form and make it available to the edit component:
 
 ```jsx
 import schema from './schema';
-import InlineForm from '@plone/volto/components/manage/Form/InlineForm';
+import BlockDataForm from '@plone/volto/components/manage/Form/BlockDataForm';
 import { Icon } from '@plone/volto/components';
 
 <SidebarPortal selected={this.props.selected}>
-  <InlineForm
+  <BlockDataForm
     icon={<Icon size="24px" name={nameSVG} />}
     schema={schema}
     title={schema.title}
@@ -120,7 +120,9 @@ import { Icon } from '@plone/volto/components';
         [id]: value,
       });
     }}
+    onChangeBlock={onChangeBlock}
     formData={this.props.data}
+    block={block}
   />
 </SidebarPortal>;
 ```

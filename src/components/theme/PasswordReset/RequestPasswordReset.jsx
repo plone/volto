@@ -32,7 +32,7 @@ const messages = defineMessages({
   },
   usernameTitle: {
     id: 'label_my_username_is',
-    defaultMessage: 'My username is',
+    defaultMessage: 'My user name is',
   },
   emailTitle: {
     id: 'label_my_email_is',

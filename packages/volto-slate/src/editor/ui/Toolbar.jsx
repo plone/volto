@@ -1,9 +1,10 @@
+import cx from 'classnames';
 import React, { useRef, useEffect } from 'react';
 import { Portal } from 'react-portal';
 import { useSlate } from 'slate-react';
 import Separator from './Separator';
 import BasicToolbar from './BasicToolbar';
-import { Editor } from 'slate';
+import { Editor, Node } from 'slate';
 import { ReactEditor } from 'slate-react';
 
 const Toolbar = ({
@@ -18,31 +19,31 @@ const Toolbar = ({
   const editor = useSlate();
 
   useEffect(() => {
-    const el = ref.current;
+    const domNode = ref.current;
+    let rect = { width: 1, top: 0, left: 0 };
 
     if ((children || []).length === 0) {
-      el.removeAttribute('style');
+      domNode.removeAttribute('style');
       return;
     }
 
     if (!show) {
-      el.removeAttribute('style');
+      domNode.removeAttribute('style');
       return;
     }
 
     const { selection } = editor;
     // const savedSelection = editor.getSavedSelection();
     if (!selection) {
-      el.removeAttribute('style');
+      domNode.removeAttribute('style');
       return;
     }
 
     if (editor.isSidebarOpen) {
-      el.removeAttribute('style');
+      domNode.removeAttribute('style');
       return;
     }
 
-    let rect;
     if (elementType) {
       const [element] = Editor.nodes(editor, {
         at: editor.selection || editor.getSavedSelection(),
@@ -50,38 +51,43 @@ const Toolbar = ({
       });
 
       if (!element) {
-        el.removeAttribute('style');
+        domNode.removeAttribute('style');
         return;
       }
 
-      const [n] = element;
-      const domEl = ReactEditor.toDOMNode(editor, n);
+      const [node] = element;
+      const domEl = ReactEditor.toDOMNode(editor, node);
 
       rect = domEl.getBoundingClientRect();
     } else {
-      const domSelection = window.getSelection();
-      if (domSelection.rangeCount < 1) {
-        // don't do anything here, this happens when opening a focus-stealing
-        // component, in which case we actually want to keep the toolbar open
-        // See
-        // https://stackoverflow.com/questions/22935320/uncaught-indexsizeerror-failed-to-execute-getrangeat-on-selection-0-is-not
-        return;
+      // TODO: should we fallback to editor.getSelection()?
+      // TODO: test with third party plugins
+      const slateNode = Node.get(editor, selection.anchor.path);
+      try {
+        const domEl = ReactEditor.toDOMNode(editor, slateNode);
+        rect = domEl.getBoundingClientRect();
+      } catch {
+        // ignoring error here is safe, editor is out of sync and the selection
+        // is actually none, so no toolbar should be shown
       }
-      const domRange = domSelection.getRangeAt(0);
-      rect = domRange.getBoundingClientRect();
     }
 
-    el.style.opacity = 1;
-    el.style.top = `${rect.top + window.pageYOffset - el.offsetHeight - 6}px`;
-    el.style.left = `${Math.max(
-      rect.left + window.pageXOffset - el.offsetWidth / 2 + rect.width / 2,
+    domNode.style.opacity = 1;
+    domNode.style.top = `${
+      rect.top + window.pageYOffset - domNode.offsetHeight - 6
+    }px`;
+    domNode.style.left = `${Math.max(
+      rect.left + window.pageXOffset - domNode.offsetWidth / 2 + rect.width / 2,
       0, // if the left edge of the toolbar should be otherwise offscreen
     )}px`;
   });
 
   return (
     <Portal>
-      <BasicToolbar className={`slate-inline-toolbar ${className}`} ref={ref}>
+      <BasicToolbar
+        className={cx('slate-inline-toolbar', { [className]: className })}
+        ref={ref}
+      >
         {children}
         {enableExpando && toggleButton && (
           <>

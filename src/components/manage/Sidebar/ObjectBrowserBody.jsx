@@ -71,6 +71,7 @@ class ObjectBrowserBody extends Component {
     dataName: PropTypes.string,
     maximumSelectionSize: PropTypes.number,
     contextURL: PropTypes.string,
+    searchableTypes: PropTypes.arrayOf(PropTypes.string),
   };
 
   /**
@@ -84,6 +85,7 @@ class ObjectBrowserBody extends Component {
     onSelectItem: null,
     dataName: null,
     selectableTypes: [],
+    searchableTypes: null,
     maximumSelectionSize: null,
   };
 
@@ -124,6 +126,12 @@ class ObjectBrowserBody extends Component {
           ? flattenToAppURL(this.props.data.href)
           : '',
       showSearchInput: false,
+      // In image mode, the searchable types default to the image types which
+      // can be overridden with the property if specified.
+      searchableTypes:
+        this.props.mode === 'image'
+          ? this.props.searchableTypes || config.settings.imageObjects
+          : this.props.searchableTypes,
     };
     this.searchInputRef = React.createRef();
   }
@@ -207,6 +215,7 @@ class ObjectBrowserBody extends Component {
           'path.depth': 1,
           sort_on: 'getObjPositionInParent',
           metadata_fields: '_all',
+          portal_type: this.state.searchableTypes,
         },
         `${this.props.block}-${this.props.mode}`,
       );
@@ -217,6 +226,7 @@ class ObjectBrowserBody extends Component {
             {
               SearchableText: `${text}*`,
               metadata_fields: '_all',
+              portal_type: this.state.searchableTypes,
             },
             `${this.props.block}-${this.props.mode}`,
           )
@@ -226,6 +236,7 @@ class ObjectBrowserBody extends Component {
               'path.depth': 1,
               sort_on: 'getObjPositionInParent',
               metadata_fields: '_all',
+              portal_type: this.state.searchableTypes,
             },
             `${this.props.block}-${this.props.mode}`,
           );

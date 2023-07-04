@@ -8,8 +8,11 @@ const fs = require('fs');
 const RootResolverPlugin = require('./webpack-plugins/webpack-root-resolver');
 const RelativeResolverPlugin = require('./webpack-plugins/webpack-relative-resolver');
 const createAddonsLoader = require('./create-addons-loader');
+const createThemeAddonsLoader = require('./create-theme-addons-loader');
 const AddonConfigurationRegistry = require('./addon-registry');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 const fileLoaderFinder = makeLoaderFinder('file-loader');
 
@@ -97,18 +100,37 @@ const defaultModify = ({
       runtimeChunk: true,
       splitChunks: {
         chunks: 'all',
-        name: dev,
         cacheGroups: {
           // We reset the default values set by webpack
           // So the chunks have all proper names (no random numbers)
           // The CSS gets bundled in one CSS chunk and it's consistent with
           // the `style-loader` load order, so no difference between
           // local (project CSS) and `node_modules` ones.
-          vendors: false,
           default: false,
+          defaultVendors: false,
         },
       },
     });
+
+    // This is needed to override Razzle use of the unmaintained CleanCSS
+    // which does not have support for recently CSS features (container queries).
+    // Using the default provided (cssnano) by css-minimizer-webpack-plugin
+    // should be enough see:
+    // (https://github.com/clean-css/clean-css/discussions/1209)
+    delete options.webpackOptions.terserPluginOptions?.sourceMap;
+    if (!dev) {
+      config.optimization = Object.assign({}, config.optimization, {
+        minimizer: [
+          new TerserPlugin(options.webpackOptions.terserPluginOptions),
+          new CssMinimizerPlugin({
+            sourceMap: options.razzleOptions.enableSourceMaps,
+            minimizerOptions: {
+              sourceMap: options.razzleOptions.enableSourceMaps,
+            },
+          }),
+        ],
+      });
+    }
 
     config.plugins.unshift(
       // restrict moment.js locales to en/de
@@ -224,6 +246,28 @@ const defaultModify = ({
     'lodash-es': path.dirname(require.resolve('lodash')),
   };
 
+  const [
+    addonsThemeLoaderVariablesPath,
+    addonsThemeLoaderMainPath,
+  ] = createThemeAddonsLoader(registry.getCustomThemeAddons());
+
+  // Automatic Theme Loading
+  if (registry.theme) {
+    // The themes should be located in `src/theme`
+    const themePath = registry.packages[registry.theme].modulePath;
+    const themeConfigPath = `${themePath}/theme/theme.config`;
+    config.resolve.alias['../../theme.config$'] = themeConfigPath;
+    config.resolve.alias['../../theme.config'] = themeConfigPath;
+
+    // We create an alias for each custom theme insertion point (variables, main)
+    config.resolve.alias[
+      'addonsThemeCustomizationsVariables'
+    ] = addonsThemeLoaderVariablesPath;
+    config.resolve.alias[
+      'addonsThemeCustomizationsMain'
+    ] = addonsThemeLoaderMainPath;
+  }
+
   config.performance = {
     maxAssetSize: 10000000,
     maxEntrypointSize: 10000000,
@@ -266,6 +310,17 @@ const defaultModify = ({
     });
   }
 
+  // write a .dot file with the graph
+  // convert it to svg with: `dot addon-dependency-graph.dot -Tsvg -o out.svg`
+  if (process.env.DEBUG_ADDONS_LOADER && target === 'node') {
+    const addonsDepGraphPath = path.join(
+      process.cwd(),
+      'addon-dependency-graph.dot',
+    );
+    const graph = registry.getDotDependencyGraph();
+    fs.writeFileSync(addonsDepGraphPath, new Buffer.from(graph));
+  }
+
   config.externals =
     target === 'node'
       ? [
@@ -284,6 +339,15 @@ const defaultModify = ({
         ]
       : [];
 
+  if (config.devServer) {
+    config.devServer.static.watch.ignored = /node_modules\/(?!@plone\/volto)/;
+    config.snapshot = {
+      managedPaths: [
+        /^(.+?[\\/]node_modules[\\/](?!(@plone[\\/]volto))(@.+?[\\/])?.+?)[\\/]/,
+      ],
+    };
+  }
+
   return config;
 };
 
@@ -291,10 +355,10 @@ const addonExtenders = registry.getAddonExtenders().map((m) => require(m));
 
 const defaultPlugins = [
   { object: require('./webpack-plugins/webpack-less-plugin')({ registry }) },
-  { object: require('./webpack-plugins/webpack-sentry-plugin') },
   { object: require('./webpack-plugins/webpack-svg-plugin') },
   { object: require('./webpack-plugins/webpack-bundle-analyze-plugin') },
   { object: require('./jest-extender-plugin') },
+  'scss',
 ];
 
 const plugins = addonExtenders.reduce(

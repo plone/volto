@@ -114,6 +114,24 @@ export const messages = defineMessages({
     id: 'Username',
     defaultMessage: 'Username',
   },
+  addUserFormUsernameDescription: {
+    id: 'addUserFormUsernameDescription',
+    defaultMessage:
+      'Enter a user name, usually something like "jsmith". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in.',
+  },
+  addUserFormFullnameDescription: {
+    id: 'addUserFormFullnameDescription',
+    defaultMessage: 'Enter full name, e.g. John Smith.',
+  },
+  addUserFormEmailDescription: {
+    id: 'addUserFormEmailDescription',
+    defaultMessage:
+      'Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.',
+  },
+  addUserFormPasswordDescription: {
+    id: 'addUserFormPasswordDescription',
+    defaultMessage: 'Enter your new password. Minimum 8 characters.',
+  },
   addGroupsFormTitleTitle: {
     id: 'Title',
     defaultMessage: 'Title',
@@ -190,6 +208,10 @@ export const messages = defineMessages({
     id: 'User Group Membership',
     defaultMessage: 'User Group Membership',
   },
+  membershipUpdated: {
+    id: 'Membership updated',
+    defaultMessage: 'Membership updated',
+  },
   noUserFound: {
     id: 'No user found',
     defaultMessage: 'No user found',
@@ -237,5 +259,85 @@ export const messages = defineMessages({
   addJoinedGroups: {
     id: 'Show groups of users below',
     defaultMessage: 'Show groups of users below',
+  },
+  urlClipboardCopy: {
+    id: 'Link copied to clipboard',
+    defaultMessage: 'Link copied to clipboard',
+  },
+  inspectRelations: {
+    id: 'Inspect relations',
+    defaultMessage: 'Inspect relations',
+  },
+  relations: {
+    id: 'Relations',
+    defaultMessage: 'Relations',
+  },
+  fixRelations: {
+    id: 'Fix relations',
+    defaultMessage: 'Fix relations',
+  },
+  searchRelationSource: {
+    id: 'Search sources by title or path',
+    defaultMessage: 'Search sources by title or path',
+  },
+  searchRelationTarget: {
+    id: 'Search targets by title or path',
+    defaultMessage: 'Search targets by title or path',
+  },
+  createOrDeleteRelationsToTarget: {
+    id: 'Create or delete relations to target',
+    defaultMessage: 'Create or delete relations to target',
+  },
+  relationName: {
+    id: 'Relation name',
+    defaultMessage: 'relation',
+  },
+  selectRelation: {
+    id: 'Select relation',
+    defaultMessage: 'Select relation',
+  },
+  norelationfound: {
+    id: 'No relation found',
+    defaultMessage: 'No relation found',
+  },
+  toomanyrelationsfound: {
+    id: 'Many relations found. Please search.',
+    defaultMessage: 'Many relations found. Please search.',
+  },
+  rebuildRelations: {
+    id: 'rebuild relations',
+    defaultMessage: 'rebuild relations',
+  },
+  flushAndRebuildRelations: {
+    id: 'flush intIds and rebuild relations',
+    defaultMessage: 'flush intIds and rebuild relations',
+  },
+  addPotentialTargetsPath: {
+    id: 'target path',
+    defaultMessage: 'target path',
+  },
+  addPotentialSourcesPath: {
+    id: 'sources path',
+    defaultMessage: 'sources path',
+  },
+  relationsUpdated: {
+    id: 'Relations updated',
+    defaultMessage: 'Relations updated',
+  },
+  select: {
+    id: 'Select',
+    defaultMessage: 'Select',
+  },
+  selected: {
+    id: 'Selected',
+    defaultMessage: 'Selected',
+  },
+  filter: {
+    id: 'Filter',
+    defaultMessage: 'Filter',
+  },
+  fileTooLarge: {
+    id: 'fileTooLarge',
+    defaultMessage: 'This website does not accept files larger than {limit}',
   },
 });

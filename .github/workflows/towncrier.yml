@@ -1,0 +1,32 @@
+name: Towncrier check
+on:
+  pull_request:
+    types: [assigned, opened, synchronize, reopened, labeled, unlabeled]
+    branches:
+      - master
+
+env:
+  node-version: 16.x
+
+jobs:
+  towncrier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          # Fetch all history
+          fetch-depth: '0'
+
+      - name: Install towncrier
+        run: pip install towncrier
+
+      - name: Check for presence of a Change Log fragment (only pull requests)
+        run: |
+          # Fetch the pull request' base branch so towncrier will be able to
+          # compare the current branch with the base branch.
+          # Source: https://github.com/actions/checkout/#fetch-all-branches.
+          git fetch --no-tags origin master
+          towncrier check --compare-with origin/master
+        env:
+          BASE_BRANCH: ${{ github.base_ref }}
+        if: github.event_name == 'pull_request'

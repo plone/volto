@@ -1,4 +1,5 @@
 import { Node, Range } from 'slate';
+// import { ReactEditor } from 'slate-react';
 
 import config from '@plone/volto/registry';
 
@@ -20,6 +21,8 @@ export const highlightByType = (editor, [node, path], ranges) => {
     const range = {
       anchor: { path, offset: 0 },
       focus: { path, offset: text.length },
+      // we need to differentiate between multiple highlight types, the active
+      // selection and the highlighted node
       highlight: true,
       highlightType: visualSelectionRanges.length === 0 ? node.type : null,
       isSelection: visualSelectionRanges.length > 0,
@@ -43,13 +46,17 @@ export const highlightByType = (editor, [node, path], ranges) => {
  */
 export function highlightSelection(editor, [node, path], ranges) {
   let selected = editor.isSelected();
+  // const focused = ReactEditor.isFocused(editor);
+  // TODO: handle the case when the editor is not focused, then use the
+  // editor.getSavedSelection()
 
-  if (selected && !editor.selection && editor.getSavedSelection()) {
-    const newSelection = editor.getSavedSelection();
-    if (JSON.stringify(path) === JSON.stringify(newSelection.anchor.path)) {
+  if (selected && editor.selection) {
+    const selection = editor.selection;
+    if (JSON.stringify(path) === JSON.stringify(selection.anchor.path)) {
       const range = {
-        ...newSelection,
+        ...selection,
         highlight: true,
+        highlightType: 'selection',
         isSelection: true,
       };
       if (Range.isExpanded(range)) {
@@ -57,7 +64,5 @@ export function highlightSelection(editor, [node, path], ranges) {
       }
     }
   }
-  // if (ranges.length) console.log('RANGES!', ranges, editor.children);
-  // console.log(node, path, editor.savedSelection);
   return ranges;
 }

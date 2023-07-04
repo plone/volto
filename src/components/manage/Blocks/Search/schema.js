@@ -54,10 +54,6 @@ const messages = defineMessages({
     id: 'Show sorting?',
     defaultMessage: 'Show sorting?',
   },
-  sortOnLabel: {
-    id: 'Sort on label',
-    defaultMessage: 'Sort on label',
-  },
   sortOnOptions: {
     id: 'Sort on options',
     defaultMessage: 'Sort on options',
@@ -92,9 +88,26 @@ const messages = defineMessages({
     defaultMessage:
       'Hidden facets will still filter the results if proper parameters are passed in URLs',
   },
+  advancedFacetTitle: {
+    id: 'Advanced facet?',
+    defaultMessage: 'Advanced facet?',
+  },
+  advancedFacetDescription: {
+    id: 'Advanced facets are initially hidden and displayed on demand',
+    defaultMessage:
+      'Advanced facets are initially hidden and displayed on demand',
+  },
   facetWidget: {
     id: 'Facet widget',
     defaultMessage: 'Facet widget',
+  },
+  views: {
+    id: 'views',
+    defaultMessage: 'Views',
+  },
+  availableViews: {
+    id: 'availableViews',
+    defaultMessage: 'Available views',
   },
   showTotalResults: {
     id: 'Show total results',
@@ -127,7 +140,7 @@ const FacetSchema = ({ intl }) => ({
     {
       id: 'default',
       title: 'Default',
-      fields: ['title', 'field', 'type', 'hidden'],
+      fields: ['title', 'field', 'type', 'hidden', 'advanced'],
     },
   ],
   properties: {
@@ -166,10 +179,19 @@ const FacetSchema = ({ intl }) => ({
       default: false,
       description: intl.formatMessage(messages.hideFacetDescription),
     },
+    advanced: {
+      type: 'boolean',
+      title: intl.formatMessage(messages.advancedFacetTitle),
+      default: false,
+      description: intl.formatMessage(messages.advancedFacetDescription),
+    },
     type: {
       title: intl.formatMessage(messages.facetWidget),
       choices: config.blocks.blocksConfig.search.extensions.facetWidgets.types.map(
-        ({ id, title }) => [id, title],
+        ({ id, title }) => [
+          id,
+          `${intl.formatMessage({ id: id, defaultMessage: title })}`,
+        ],
       ),
       defaultValue: config.blocks.blocksConfig.search.extensions.facetWidgets.types.find(
         ({ isDefault }) => isDefault,
@@ -179,7 +201,7 @@ const FacetSchema = ({ intl }) => ({
   required: ['field'],
 });
 
-export default ({ data = {}, intl }) => {
+const SearchSchema = ({ data = {}, intl }) => {
   return {
     title: intl.formatMessage(messages.searchBlock),
     fieldsets: [
@@ -203,7 +225,6 @@ export default ({ data = {}, intl }) => {
         title: intl.formatMessage(messages.controls),
         fields: [
           'showSortOn',
-          ...(data.showSortOn ? ['sortOnLabel'] : []),
           ...(data.showSortOn ? ['sortOnOptions'] : []),
           'showSearchInput',
           ...(data.showSearchInput ?? true ? ['showSearchButton'] : []),
@@ -211,6 +232,11 @@ export default ({ data = {}, intl }) => {
           // ...(data.showSearchButton ? ['searchButtonLabel'] : []),
           'showTotalResults',
         ],
+      },
+      {
+        id: 'views',
+        title: intl.formatMessage(messages.views),
+        fields: ['availableViews'],
       },
     ],
     properties: {
@@ -243,9 +269,6 @@ export default ({ data = {}, intl }) => {
         type: 'boolean',
         title: intl.formatMessage(messages.showSortOn),
       },
-      sortOnLabel: {
-        title: intl.formatMessage(messages.sortOnLabel),
-      },
       sortOnOptions: {
         title: intl.formatMessage(messages.sortOnOptions),
         widget: 'array',
@@ -262,7 +285,16 @@ export default ({ data = {}, intl }) => {
       query: {
         title: 'Query',
       },
+      availableViews: {
+        title: intl.formatMessage(messages.availableViews),
+        choices: config.blocks.blocksConfig.listing.variations.map(
+          ({ id, title }) => [id, title],
+        ),
+        widget: 'array',
+      },
     },
     required: [],
   };
 };
+
+export default SearchSchema;

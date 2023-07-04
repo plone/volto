@@ -5,17 +5,19 @@ import RelationWidget from './RelationWidget';
 const RelationsWidget = ({ value, children, className }) =>
   value ? (
     <ul className={cx(className, 'relations', 'widget')}>
-      {value.map((item, key) => (
-        <li key={key}>
-          <RelationWidget
-            value={item}
-            className={className}
-            key={item.token || item.title || item}
-          >
-            {children}
-          </RelationWidget>
-        </li>
-      ))}
+      {value.map((item, key) => {
+        return item ? (
+          <li key={key}>
+            <RelationWidget
+              value={item || `relation target not found '${key}'`}
+              className={className}
+              key={item.token || item.title || item}
+            >
+              {children}
+            </RelationWidget>
+          </li>
+        ) : null;
+      })}
     </ul>
   ) : (
     ''

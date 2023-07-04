@@ -38,7 +38,7 @@ describe('Working Copy Tests - Cancelling', () => {
     cy.url().should('eq', Cypress.config().baseUrl + '/document');
 
     // The Title hasn't changed and there's a success message on screen
-    cy.get('h1.documentFirstHeading').contains('Test document');
+    cy.get('h1.documentFirstHeading').should('contain', 'Test document');
     cy.contains('The working copy was discarded');
 
     // I can also create another working copy now

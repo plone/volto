@@ -14,7 +14,7 @@ and adjust to the new frontend-centered development.
 
 But if you already have some frontend development experience any JS frameworks
 such as AngularJS, Vue or React, you'll find that Volto is a relatively shallow
-framework, structured as a typical Redux-centered React application. Although
+framework, structured as a typical {term}`Redux`-centered React application. Although
 there will be Volto-specific knowledge to be gained along the way, you can be
 productive in a short time.
 
@@ -28,7 +28,7 @@ As is the case with similar modern Javascript-based applications, you should kno
 - Modern Javascript development. Volto uses next-generation Javascript. Follow
   the [ES6 guide](https://flaviocopes.com/es6/) to get up to speed.
 - React knowledge - [basic level is
-  fine](https://reactjs.org/tutorial/tutorial.html) for the beginning, you'll progress
+  fine](https://react.dev/learn/tutorial-tic-tac-toe) for the beginning, you'll progress
   along the way. React itself is a simple and well documented framework.
 - A basic understanding of Javascript
   [CommonJS](https://flaviocopes.com/commonjs/),

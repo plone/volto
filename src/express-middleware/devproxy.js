@@ -37,7 +37,7 @@ function getEnv() {
   return _env;
 }
 
-export default function () {
+export default function devProxyMiddleware() {
   const middleware = express.Router();
   const devProxy = createProxyMiddleware(filter, {
     selfHandleResponse: true,
@@ -75,12 +75,14 @@ export default function () {
       const { apiPathURL, instancePath } = getEnv();
       const target =
         config.settings.proxyRewriteTarget ||
-        `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/++api++/VirtualHostRoot`;
+        `/VirtualHostBase/${apiPathURL.protocol.slice(0, -1)}/${
+          apiPathURL.hostname
+        }:${apiPathURL.port}${instancePath}/++api++/VirtualHostRoot`;
 
       return `${target}${path.replace('/++api++', '')}`;
     },
     logLevel: process.env.DEBUG_HPM ? 'debug' : 'silent',
-    ...(config.settings?.proxyRewriteTarget?.startsWith('https') && {
+    ...(process.env.RAZZLE_DEV_PROXY_INSECURE && {
       changeOrigin: true,
       secure: false,
     }),

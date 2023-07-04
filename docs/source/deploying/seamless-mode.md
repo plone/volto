@@ -13,7 +13,7 @@ myst:
 
 This was added in Volto 13 as an experimental feature. During the experimental phase, we realized of several issues hard to solve, which made us rethink the feature into its second incarnation, available since Volto 14.
 
-The first implementation wanted to unify both backend and frontend under the same sun, using the `Accept` header to route the requests to the API and the Volto SSR server. As a reference and for the record, these were the major issues we encountered (https://github.com/plone/volto/issues/2706):
+The first implementation wanted to unify both backend and frontend under the same sun, using the `Accept` header to route the requests to the API and the Volto {term}`SSR` server. As a reference and for the record, these were the major issues we encountered (https://github.com/plone/volto/issues/2706):
 
 - Browsers are unable to differentiate cached responses using the `Accept` header, so the last one (usually the JSON one) was cached, then shown in some situations (like browser restart and open tabs). The back button also showed the JSON responses under some circumstances.
 - The use of cache servers and services is hard since they do not accept the `Vary` header (Cloudflare) and in Varnish the handling is also difficult to differentiate both requests and cache (and then invalidate) them properly.

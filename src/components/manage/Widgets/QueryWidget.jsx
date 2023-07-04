@@ -14,6 +14,7 @@ import { getQuerystring } from '@plone/volto/actions';
 import { Icon } from '@plone/volto/components';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import cx from 'classnames';
+import config from '@plone/volto/registry';
 
 import {
   Option,
@@ -190,6 +191,23 @@ export class QuerystringWidgetComponent extends Component {
                 label: values?.[value]?.title || value,
                 value,
               }))}
+            />
+          </Form.Field>
+        );
+      case 'autocomplete':
+        const AutoCompleteComponent = config.widgets.widget.autocomplete;
+        const vocabulary = { '@id': this.props.indexes[row.i].vocabulary };
+        return (
+          <Form.Field style={{ flex: '1 0 auto', maxWidth: '92%' }}>
+            <AutoCompleteComponent
+              {...props}
+              vocabulary={vocabulary}
+              wrapped={false}
+              id={`id-${index}`}
+              title={`title-${index}`}
+              onChange={(_d, data) => {
+                this.onChangeValue(index, data);
+              }}
             />
           </Form.Field>
         );

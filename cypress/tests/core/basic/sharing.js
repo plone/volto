@@ -67,7 +67,7 @@ describe('Sharing Tests', () => {
     cy.visit('/logout');
     cy.wait('@logout');
 
-    cy.autologin('test-user');
+    cy.autologin('test-user', 'correct horse battery staple');
     cy.visit('/my-page');
     cy.findByRole('heading', { name: /my page/i }).should('exist');
   });
