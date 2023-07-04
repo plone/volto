@@ -1,10 +1,10 @@
 ---
 myst:
   html_meta:
-    'description': 'Volto code recipe for images'
-    'property=og:description': 'Volto code recipe for images'
-    'property=og:title': 'Volto code recipe for images'
-    'keywords': 'Plone, Volto, code, recipe, images'
+    "description": "Volto code recipe for images"
+    "property=og:description": "Volto code recipe for images"
+    "property=og:title": "Volto code recipe for images"
+    "keywords": "Plone, Volto, code, recipe, images"
 ---
 
 (images-label)=
