@@ -1,5 +1,4 @@
 import { useCallback, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import { Portal } from 'react-portal';
 import { Container, Message, Icon } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
@@ -7,9 +6,12 @@ import { Link, useHistory, useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import { Form, Toolbar, Toast } from '@plone/volto/components';
-import { emailNotification } from '@plone/volto/actions';
 import { getBaseUrl, Helmet } from '@plone/volto/helpers';
-import { useEmailNotification, useClient } from '@plone/volto/hooks';
+import {
+  useEmailNotification,
+  useClient,
+  useGetEmailNotification,
+} from '@plone/volto/hooks';
 
 const messages = defineMessages({
   send: {
@@ -59,13 +61,13 @@ const messages = defineMessages({
 });
 
 const ContactFormComponent = () => {
-  const dispatch = useDispatch();
   const history = useHistory();
   const { pathname } = useLocation();
   const intl = useIntl();
   const isClient = useClient();
 
   const { loaded, loading, error } = useEmailNotification();
+  const { emailNotification } = useGetEmailNotification();
 
   useEffect(() => {
     if (loading && loaded) {
@@ -80,8 +82,7 @@ const ContactFormComponent = () => {
   }, [intl, loaded, loading]);
 
   const onSubmit = (data) => {
-    const { from, message, name, subject } = data;
-    dispatch(emailNotification(from, message, name, subject));
+    emailNotification(data);
   };
 
   const onCancel = useCallback(() => {
