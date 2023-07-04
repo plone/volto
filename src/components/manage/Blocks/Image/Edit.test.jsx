@@ -3,6 +3,7 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { waitFor } from '@testing-library/react';
+import { getImageBlockSizes } from '@plone/volto/components/manage/Blocks/Image/utils';
 import config from '@plone/volto/registry';
 
 import Edit from './Edit';
@@ -25,6 +26,7 @@ config.blocks.blocksConfig = {
       addPermission: [],
       view: [],
     },
+    getSizes: getImageBlockSizes,
   },
 };
 
