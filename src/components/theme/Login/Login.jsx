@@ -179,7 +179,7 @@ const Login = () => {
                       <Input
                         type="password"
                         id="password"
-                        autocomplete="current-password"
+                        autoComplete="current-password"
                         name="password"
                         placeholder={intl.formatMessage(messages.password)}
                         tabIndex={0}
