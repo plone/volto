@@ -145,7 +145,9 @@ const Toolbar = (props) => {
   const [loadedComponents, setLoadedComponents] = useState([]);
   const [, setHideToolbarBody] = useState(false);
   const unlockloading = unlockRequest?.loading;
+  const unlockloaded = unlockRequest?.loaded;
   const prevUnlockloading = usePrevious(unlockloading);
+  const unlockRequestloaded = usePrevious(unlockloaded);
 
   useEffect(() => {
     // Do not trigger the actions action if the expander is present
@@ -183,10 +185,10 @@ const Toolbar = (props) => {
 
   useEffect(() => {
     // Unlock
-    if (prevUnlockloading && unlockRequest.loaded) {
+    if (prevUnlockloading && unlockRequestloaded) {
       dispatch(listActions(getBaseUrl(pathname)));
     }
-  }, [prevUnlockloading, unlockRequest.loaded, dispatch, pathname]);
+  }, [prevUnlockloading, unlockRequestloaded, dispatch, pathname]);
 
   const handleShrink = () => {
     cookies.set('toolbar_expanded', !expanded, getCookieOptions());
