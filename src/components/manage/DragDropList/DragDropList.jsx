@@ -53,6 +53,7 @@ const DragDropList = (props) => {
   const {
     childList,
     children,
+    direction = 'vertical',
     onMoveItem,
     as = 'div',
     style,
@@ -128,6 +129,7 @@ const DragDropList = (props) => {
     >
       <Droppable
         droppableId={uid}
+        direction={direction}
         renderClone={(provided, snapshot, rubric) => {
           const index = rubric.source.index;
           return children({
@@ -160,19 +162,22 @@ const DragDropList = (props) => {
                 </Draggable>
               ))}
             {provided.placeholder}
-            {!isEmpty(placeholderProps) && snapshot.isDraggingOver && (
-              <div
-                style={{
-                  position: 'absolute',
-                  top: placeholderProps.clientY,
-                  left: placeholderProps.clientX,
-                  height: placeholderProps.clientHeight,
-                  background: '#eee',
-                  width: placeholderProps.clientWidth,
-                  borderRadius: '3px',
-                }}
-              />
-            )}
+            {/* TODO: Fix the ghost problem if horizontal dnd is present */}
+            {direction !== 'horizontal' &&
+              !isEmpty(placeholderProps) &&
+              snapshot.isDraggingOver && (
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: placeholderProps.clientY,
+                    left: placeholderProps.clientX,
+                    height: placeholderProps.clientHeight,
+                    background: '#eee',
+                    width: placeholderProps.clientWidth,
+                    borderRadius: '3px',
+                  }}
+                />
+              )}
           </AsDomComponent>
         )}
       </Droppable>
