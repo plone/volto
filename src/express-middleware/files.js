@@ -9,7 +9,7 @@ const HEADERS = [
   'Content-Type',
 ];
 
-function fileMiddleware(req, res, next) {
+function filesMiddlewareFn(req, res, next) {
   getAPIResourceWithAuth(req)
     .then((resource) => {
       // Just forward the headers that we need
@@ -24,10 +24,10 @@ function fileMiddleware(req, res, next) {
     .catch(next);
 }
 
-export default function () {
+export default function filesMiddleware() {
   const middleware = express.Router();
 
-  middleware.all(['**/@@download/*', '**/@@display-file/*'], fileMiddleware);
+  middleware.all(['**/@@download/*', '**/@@display-file/*'], filesMiddlewareFn);
   middleware.id = 'filesResourcesProcessor';
   return middleware;
 }
