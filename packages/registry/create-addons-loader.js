@@ -96,7 +96,7 @@ export default load;
   return buf;
 }
 
-module.exports = (addons, addonsInfo, { tempInProject }) => {
+module.exports = (addons, addonsInfo, { tempInProject } = {}) => {
   // Some frameworks do not allow to load code from outside the project.
   // the `tempInProject` allows to place it inside
   let addonsLoaderPath;
