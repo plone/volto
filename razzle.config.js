@@ -350,7 +350,6 @@ const defaultModify = ({
       ],
     };
   }
-  console.log(config.module.rules[0]);
 
   return config;
 };
