@@ -1,5 +1,6 @@
 describe('Navigation', () => {
   beforeEach(() => {
+    cy.intercept('GET', `/**/*?expand*`).as('content');
     cy.autologin();
     cy.createContent({
       contentType: 'Document',
@@ -7,11 +8,7 @@ describe('Navigation', () => {
       contentTitle: 'My Page',
     });
     cy.visit('/');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('');
+    cy.wait('@content');
   });
   it('Given an private page, when I logout it is not present in nav anymore', function () {
     cy.findByLabelText('Personal tools').click();
