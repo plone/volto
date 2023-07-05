@@ -74,6 +74,10 @@ class SearchWidget extends Component {
    * @returns {undefined}
    */
   onSubmit(event) {
+    event.preventDefault();
+    if (this.state.text === '') {
+      return;
+    }
     const path =
       this.props.pathname?.length > 0
         ? `&path=${encodeURIComponent(this.props.pathname)}`
@@ -85,7 +89,6 @@ class SearchWidget extends Component {
     this.setState({
       text: '',
     });
-    event.preventDefault();
   }
 
   /**
