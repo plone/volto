@@ -2,10 +2,10 @@ import { useEffect, useState, useMemo, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
 import { Portal } from 'react-portal';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { compose } from 'redux';
 import { Button, Comment, Container, Icon } from 'semantic-ui-react';
-import { useComments } from '@plone/volto/hooks/comments/useComments';
+
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import {
   addComment,
@@ -14,7 +14,12 @@ import {
   listMoreComments,
 } from '@plone/volto/actions';
 import { Avatar, CommentEditModal, Form } from '@plone/volto/components';
-import { flattenToAppURL, getBaseUrl, getColor } from '@plone/volto/helpers';
+import {
+  flattenToAppURL,
+  getBaseUrl,
+  getColor,
+  usePrevious,
+} from '@plone/volto/helpers';
 
 const messages = defineMessages({
   comment: {
@@ -79,10 +84,30 @@ const makeFormSchema = (intl) => ({
   required: ['comment1'],
 });
 
+const useComments = () => {
+  const items = useSelector((state) => state.comments.items, shallowEqual);
+  const next = useSelector((state) => state.comments.next, shallowEqual);
+  const items_total = useSelector(
+    (state) => state.comments.items_total,
+    shallowEqual,
+  );
+  const permissions = useSelector(
+    (state) => state.comments.permissions || {},
+    shallowEqual,
+  );
+  const addRequest = useSelector((state) => state.comments.add, shallowEqual);
+  const deleteRequest = useSelector(
+    (state) => state.comments.delete,
+    shallowEqual,
+  );
+
+  return { items, next, items_total, permissions, addRequest, deleteRequest };
+};
+
 const Comments = (props) => {
   const intl = useIntl();
   const dispatch = useDispatch();
-
+  const { pathname } = props;
   const [showEdit, setshowEdit] = useState(false);
   const [editId, seteditId] = useState(null);
   const [editText, seteditText] = useState(null);
@@ -97,19 +122,30 @@ const Comments = (props) => {
     deleteRequest,
   } = useComments();
 
+  const prevpathname = usePrevious(pathname);
+
+  const prevaddRequestLoading = usePrevious(addRequest.loading);
+  const prevdeleteRequestLoading = usePrevious(deleteRequest.loading);
+
   useEffect(() => {
-    dispatch(listComments(getBaseUrl(props.pathname)));
+    if (
+      pathname !== prevpathname ||
+      (prevaddRequestLoading && addRequest.loaded) ||
+      (prevdeleteRequestLoading && deleteRequest.loaded)
+    ) {
+      dispatch(listComments(getBaseUrl(pathname)));
+    }
   }, [
     dispatch,
-    props.pathname,
-    addRequest.loading,
+    pathname,
+    prevaddRequestLoading,
     addRequest.loaded,
-    deleteRequest.loading,
+    prevdeleteRequestLoading,
     deleteRequest.loaded,
   ]);
 
   const onSubmit = (formData) => {
-    dispatch(addComment(getBaseUrl(props.pathname), formData.comment, replyTo));
+    dispatch(addComment(getBaseUrl(pathname), formData.comment, replyTo));
     setreplyTo(null);
   };
 
@@ -148,7 +184,7 @@ const Comments = (props) => {
     setshowEdit(false);
     seteditId(null);
     seteditText(null);
-    dispatch(listComments(getBaseUrl(props.pathname)));
+    dispatch(listComments(getBaseUrl(pathname)));
   };
 
   const onEditCancel = useCallback(() => {
