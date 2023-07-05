@@ -96,14 +96,17 @@ export default load;
   return buf;
 }
 
-module.exports = (addons, addonsInfo) => {
-  // const addonsLoaderPath = path.join(
-  //   process.cwd(),
-  //   'src',
-  //   'load-volto-addons.js',
-  // );
+module.exports = (addons, addonsInfo, { tempInProject }) => {
+  // Some frameworks do not allow to load code from outside the project.
+  // the `tempInProject` allows to place it inside
+  let addonsLoaderPath;
+  if (tempInProject) {
+    const path = require('path');
+    addonsLoaderPath = path.join(process.cwd(), 'src', '.addons-loader.js');
+  } else {
+    addonsLoaderPath = tmp.tmpNameSync({ postfix: '.js' });
+  }
 
-  const addonsLoaderPath = tmp.tmpNameSync({ postfix: '.js' });
   const code = getAddonsLoaderCode(addons, addonsInfo);
   fs.writeFileSync(addonsLoaderPath, new Buffer.from(code));
   return addonsLoaderPath;
