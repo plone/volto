@@ -1,10 +1,10 @@
 ---
 myst:
   html_meta:
-    'description': "The Pluggables framework give you insertion points to push components to other components in an 'out of tree' fashion, like React's Portal component, but with vitamins."
-    'property=og:description': "The Pluggables framework give you insertion points to push components to other components in an 'out of tree' fashion, like React's Portal component, but with vitamins."
-    'property=og:title': 'Pluggables framework'
-    'keywords': 'Pluggables, framework, React, portal'
+    "description": "The Pluggables framework give you insertion points to push components to other components in an 'out of tree' fashion, like React's Portal component, but with vitamins."
+    "property=og:description": "The Pluggables framework give you insertion points to push components to other components in an 'out of tree' fashion, like React's Portal component, but with vitamins."
+    "property=og:title": "Pluggables framework"
+    "keywords": "Pluggables, framework, React, portal"
 ---
 
 # Pluggables framework
@@ -57,7 +57,15 @@ Internally, the `<PluggablesProvider>` keeps a record of `Pluggables` and `Plug`
 this is achieved by having the `<Pluggables>` and `<Plug>` components register
 themselves with the Provider via React context.
 
-Note: It is important to note that while Pluggables are a powerful framework for enhancing component integration, they are currently not compatible with server-side rendering (SSR). They excel in providing dynamic visual enhancements for CMSUI and client components/widgets. However, when it comes to handling critical data that needs to load quickly, alternative approaches may be more suitable.
+```{note}
+
+	While Pluggables are a powerful framework for enhancing component integration, they are currently not compatible with server-side rendering (SSR).
+
+	They excel in providing dynamic visual enhancements for the user interface, such as client components and widgets.
+
+	However, when it comes to handling critical data that needs to load quickly, alternative approaches may be more suitable.
+
+	```
 
 ## Customize the rendering of plugs
 
