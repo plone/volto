@@ -344,6 +344,32 @@ export function emptyBlocksForm() {
 }
 
 /**
+ * Generate empty blocks blocks/blocks_layout pair given the type
+ * (could be empty, if not type given) and the number of blocks
+ * @function blocksFormGenerator
+ * @param {number} number How many blocks to generate of the type (could be "empty", if no type provided)
+ * @param {number} type The type of the blocks
+ * @return {Object} blocks/blocks_layout pair filled with the generated blocks
+ */
+export function blocksFormGenerator(number, type) {
+  const idMap = [...Array(number).keys()].map(() => uuid());
+  const start = {
+    blocks: {},
+    blocks_layout: { items: idMap },
+  };
+
+  return {
+    ...start,
+    blocks: Object.fromEntries(
+      start.blocks_layout.items.map((item) => [
+        item,
+        { '@type': type || 'empty' },
+      ]),
+    ),
+  };
+}
+
+/**
  * Recursively discover blocks in data and call the provided callback
  * @function visitBlocks
  * @param {Object} content A content data structure (an object with blocks and blocks_layout)

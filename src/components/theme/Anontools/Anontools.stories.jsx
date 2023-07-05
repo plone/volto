@@ -1,15 +1,25 @@
 import React from 'react';
-import { Anontools as AnontoolsDefault } from './Anontools';
+import AnontoolsDefault from './Anontools';
 import Wrapper from '@plone/volto/storybook';
 
 const AnontoolsComponent = ({ children, ...args }) => {
   return (
-    <Wrapper location={{ pathname: '/folder2/folder21/doc212' }}>
+    <Wrapper
+      anonymous
+      location={{ pathname: '/folder2/folder21/doc212' }}
+      customStore={{
+        content: {
+          data: { '@id': 'http://myreturnURL' },
+          get: {
+            loaded: false,
+            loading: false,
+            error: null,
+          },
+        },
+      }}
+    >
       <div className="ui segment form attached" style={{ width: '400px' }}>
-        <AnontoolsDefault
-          userSession={{ token: null }}
-          content={{ '@id': 'myid' }}
-        />
+        <AnontoolsDefault />
       </div>
     </Wrapper>
   );
