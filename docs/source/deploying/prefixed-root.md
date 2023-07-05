@@ -1,5 +1,6 @@
 ---
 myst:
+  html_meta:
     "description": "Prefixed (non-root) deployment for Volto"
     "property=og:description": "Prefixed (non-root) deployment for Volto"
     "property=og:title": "Prefixed (non-root) deployment"
@@ -8,10 +9,10 @@ myst:
 
 # Prefixed (non-root) deployment
 
-If you're integrating a Volto website with another existing website, you may need to run Volto on a "folder" inside that website, rather than If you're integrating a Volto website with another existing website, you may need to run Volto on a virtual path inside that website instead of the root path.
+If you're integrating a Volto website within another existing website, you may need to run Volto on a virtual path inside that website instead of the root path.
 
 The first step is to set an environment variable `RAZZLE_PREFIX_PATH` to the prefixed path of your Volto.
-For example, if I want Volto's root to be hosted at `http://example.com/my-prefix`, you need to start Volto with:
+For example, if you want Volto's root to be hosted at `http://example.com/my-prefix`, you need to start Volto with:
 
 ```shell
 RAZZLE_PREFIX_PATH=/my-prefix yarn start
