@@ -3,11 +3,10 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Breadcrumb, Container, Segment } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 
 import { getBreadcrumbs } from '@plone/volto/actions';
 import { getBaseUrl, hasApiExpander } from '@plone/volto/helpers';
-import { useBreadcrumbs } from '@plone/volto/hooks';
 import { Icon } from '@plone/volto/components';
 import homeSVG from '@plone/volto/icons/home.svg';
 
@@ -21,6 +20,13 @@ const messages = defineMessages({
     defaultMessage: 'Breadcrumbs',
   },
 });
+
+const useBreadcrumbs = () => {
+  const items = useSelector((state) => state.breadcrumbs.items, shallowEqual);
+  const root = useSelector((state) => state.breadcrumbs.root);
+
+  return { items, root };
+};
 
 const BreadcrumbsComponent = ({ pathname }) => {
   const intl = useIntl();
