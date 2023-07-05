@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 import { emailNotification } from '@plone/volto/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { Form, Toolbar, Toast } from '@plone/volto/components';
-import { getBaseUrl, Helmet } from '@plone/volto/helpers';
+import { getBaseUrl, Helmet, usePrevious } from '@plone/volto/helpers';
 import { useClient } from '@plone/volto/hooks';
 
 const messages = defineMessages({
@@ -75,8 +75,10 @@ const ContactFormComponent = () => {
 
   const { loaded, loading, error } = useEmailNotification();
 
+  const prevloading = usePrevious(loading);
+
   useEffect(() => {
-    if (loading && loaded) {
+    if (prevloading && loaded) {
       toast.success(
         <Toast
           success
@@ -85,7 +87,7 @@ const ContactFormComponent = () => {
         />,
       );
     }
-  }, [intl, loaded, loading]);
+  }, [intl, loaded, prevloading]);
 
   const onSubmit = (data) => {
     const { from, message, name, subject } = data;
