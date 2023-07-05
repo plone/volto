@@ -1,12 +1,11 @@
 import { useEffect, useMemo } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { defineMessages, useIntl } from 'react-intl';
 import qs from 'query-string';
 import { Login, Toast } from '@plone/volto/components';
 import { logout, purgeMessages } from '@plone/volto/actions';
 import { toast } from 'react-toastify';
-import { useToken } from '@plone/volto/hooks';
 
 const messages = defineMessages({
   loggedOut: {
@@ -18,6 +17,12 @@ const messages = defineMessages({
     defaultMessage: 'You have been logged out from the site.',
   },
 });
+
+function useToken() {
+  const token = useSelector((state) => state.userSession.token, shallowEqual);
+
+  return token;
+}
 
 const Logout = ({ location }) => {
   const token = useToken();
