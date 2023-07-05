@@ -3,7 +3,6 @@ import * as configTypes from './types';
 
 type ConfigData = {
   settings: configTypes.SettingsConfig;
-  experimental: configTypes.ExperimentalConfig;
   blocks: configTypes.BlocksConfig;
   views: configTypes.ViewsConfig;
   widgets: configTypes.WidgetsConfig;
@@ -11,6 +10,7 @@ type ConfigData = {
   addonRoutes: configTypes.AddonRoutesConfig;
   slots: configTypes.SlotsConfig;
   components: configTypes.ComponentsConfig;
+  experimental: configTypes.ExperimentalConfig;
 };
 
 class Config {
