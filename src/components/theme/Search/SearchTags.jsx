@@ -1,10 +1,22 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { getVocabulary } from '@plone/volto/actions';
-import { useVocabularies } from '@plone/volto/hooks';
+
 const vocabulary = 'plone.app.vocabularies.Keywords';
+
+const useVocabularies = (vocabulary = '') => {
+  const items = useSelector(
+    (state) =>
+      state.vocabularies[vocabulary] && state.vocabularies[vocabulary].items
+        ? state.vocabularies[vocabulary].items
+        : [],
+    shallowEqual,
+  );
+
+  return items;
+};
 
 const SearchTags = () => {
   const dispatch = useDispatch();
