@@ -321,7 +321,8 @@ class Form extends Component {
   }
 
   // !! componentDidMount is called twice for Add
-  // first call will ignore are setState passed through callbacks
+  // setState passed through callback (updateFormDataWithSaved) is ignored for the first call
+  // only for the second call it will execute the setState
   /**
    * Component did mount
    * @method componentDidMount
