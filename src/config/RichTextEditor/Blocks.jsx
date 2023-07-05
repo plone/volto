@@ -1,4 +1,4 @@
-export default (props) => {
+export default function Blocks(props) {
   const { draftJs, immutableLib } = props;
   const { DefaultDraftBlockRenderMap } = draftJs;
   const { Map } = immutableLib;
@@ -27,4 +27,4 @@ export default (props) => {
   const listBlockTypes = ['unordered-list-item', 'ordered-list-item'];
 
   return { extendedBlockRenderMap, blockStyleFn, listBlockTypes };
-};
+}

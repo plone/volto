@@ -3,19 +3,29 @@
  * @module volto-slate/blocks/Title/TitleBlockView
  */
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
+import Slugger from 'github-slugger';
+import { renderLinkElement } from '@plone/volto-slate/editor/render';
 
 /**
  * View title block component.
  * @class View
  * @extends Component
  */
-const TitleBlockView = ({ properties, metadata }) => {
+const TitleBlockView = ({ properties, metadata, id, children }) => {
+  let attr = { id };
+  const title = (properties || metadata)['title'];
+  const slug = Slugger.slug(title);
+  attr.id = slug || id;
+  const LinkedTitle = useMemo(() => renderLinkElement('h1'), []);
   return (
-    <h1 className="documentFirstHeading">
-      {(metadata || properties)['title'] || ''}
-    </h1>
+    <LinkedTitle
+      mode="view"
+      children={title ?? children}
+      attributes={attr}
+      className={'documentFirstHeading'}
+    />
   );
 };
 
