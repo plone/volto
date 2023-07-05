@@ -54,6 +54,7 @@ export {
   previousBlockId,
   applyBlockDefaults,
   applySchemaDefaults,
+  blocksFormGenerator,
   buildStyleClassNamesFromData,
   buildStyleClassNamesExtenders,
   getPreviousNextBlock,
@@ -91,6 +92,7 @@ export {
   cloneDeepSchema,
   arrayRange,
   reorderArray,
+  isInteractiveElement,
 } from '@plone/volto/helpers/Utils/Utils';
 export { messages } from './MessageLabels/MessageLabels';
 export {

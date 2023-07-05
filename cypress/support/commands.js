@@ -705,6 +705,20 @@ Cypress.Commands.add('getSlate', (createNewSlate = false) => {
   return slate;
 });
 
+Cypress.Commands.add('getSlateSelector', (selector = SLATE_SELECTOR) => {
+  let slate;
+  cy.getIfExists(
+    selector,
+    () => {
+      slate = cy.get(selector).last();
+    },
+    () => {
+      slate = cy.get(selector, { timeout: 10000 }).last();
+    },
+  );
+  return slate;
+});
+
 Cypress.Commands.add('getSlateTitle', () => {
   return cy.get(SLATE_TITLE_SELECTOR, {
     timeout: 10000,
@@ -761,6 +775,10 @@ Cypress.Commands.add('setSlateSelection', (subject, query, endQuery) => {
 
 Cypress.Commands.add('getSlateEditorAndType', (type) => {
   cy.getSlate().focus().click().type(type);
+});
+
+Cypress.Commands.add('getSlateEditorSelectorAndType', (selector, type) => {
+  cy.getSlateSelector(selector).focus().click().type(type);
 });
 
 Cypress.Commands.add('setSlateCursor', (subject, query, endQuery) => {
