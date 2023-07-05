@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import { useDispatch,useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { defineMessages, useIntl } from 'react-intl';
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import { Helmet,usePrevious } from '@plone/volto/helpers';
+import { Helmet, usePrevious } from '@plone/volto/helpers';
 import { Form, Toast } from '@plone/volto/components';
 import { createUser } from '@plone/volto/actions';
 
@@ -50,13 +50,13 @@ const messages = defineMessages({
     defaultMessage: 'Register',
   },
 });
-const useUsers=()=>{
+const useUsers = () => {
   const error = useSelector((state) => state.users.create.error);
   const loading = useSelector((state) => state.users.create.loading);
   const loaded = useSelector((state) => state.users.create.loaded);
 
   return { error, loaded, loading };
-}
+};
 const Register = () => {
   const dispatch = useDispatch();
   const intl = useIntl();
@@ -64,7 +64,7 @@ const Register = () => {
   const [errors, setError] = useState(null);
   const { loaded, loading, error } = useUsers();
 
-  const prevloading=usePrevious(loading);
+  const prevloading = usePrevious(loading);
 
   useEffect(() => {
     if (prevloading && loaded) {
