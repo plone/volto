@@ -138,6 +138,7 @@ const Comments = (props) => {
   }, [
     dispatch,
     pathname,
+    prevpathname,
     prevaddRequestLoading,
     addRequest.loaded,
     prevdeleteRequestLoading,
