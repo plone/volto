@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
-import { Helmet } from '@plone/volto/helpers';
 import { useDispatch } from 'react-redux';
 import { defineMessages, useIntl } from 'react-intl';
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
+import { Helmet,usePrevious } from '@plone/volto/helpers';
 import { Form, Toast } from '@plone/volto/components';
 import { createUser } from '@plone/volto/actions';
-import { useUsers } from '@plone/volto/hooks/users/useUsers';
 
 const messages = defineMessages({
   title: {
@@ -51,7 +50,13 @@ const messages = defineMessages({
     defaultMessage: 'Register',
   },
 });
+const useUsers=()=>{
+  const error = useSelector((state) => state.users.create.error);
+  const loading = useSelector((state) => state.users.create.loading);
+  const loaded = useSelector((state) => state.users.create.loaded);
 
+  return { error, loaded, loading };
+}
 const Register = () => {
   const dispatch = useDispatch();
   const intl = useIntl();
@@ -59,8 +64,10 @@ const Register = () => {
   const [errors, setError] = useState(null);
   const { loaded, loading, error } = useUsers();
 
+  const prevloading=usePrevious(loading);
+
   useEffect(() => {
-    if (loading && loaded) {
+    if (prevloading && loaded) {
       toast.success(
         <Toast
           success
@@ -70,7 +77,7 @@ const Register = () => {
       );
       history.push('/login');
     }
-  }, [intl, history, loaded, loading]);
+  }, [intl, history, loaded, prevloading]);
 
   const onSubmit = (data) => {
     const { fullname, email, password } = data;
