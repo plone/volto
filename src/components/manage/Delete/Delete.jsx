@@ -1,15 +1,14 @@
 import { useEffect, useState } from 'react';
-import { Helmet } from '@plone/volto/helpers';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import { Portal } from 'react-portal';
 import { Button, Container, List, Segment } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import qs from 'query-string';
 
+import { Helmet, usePrevious } from '@plone/volto/helpers';
 import { deleteContent, getContent } from '@plone/volto/actions';
 import { Toolbar } from '@plone/volto/components';
-import { useContent } from '@plone/volto/hooks';
 
 const messages = defineMessages({
   delete: {
@@ -26,16 +25,23 @@ const messages = defineMessages({
   },
 });
 
+function useContent() {
+  const deleteRequest = useSelector((state) => state.content?.delete);
+  const data = useSelector((state) => state.content?.data, shallowEqual);
+
+  return { data, deleteRequest };
+}
+
 const Delete = () => {
   const dispatch = useDispatch();
   const intl = useIntl();
   const [isClient, setisClient] = useState(false);
-  const location = useLocation();
+  const { pathname, search } = useLocation();
   const history = useHistory();
   const { data: content, deleteRequest } = useContent();
 
-  const pathname = location.pathname;
-  const returnUrl = qs.parse(location.search).return_url;
+  const prevdeleteRequestLoading = usePrevious(deleteRequest.loading);
+  const returnUrl = qs.parse(search).return_url;
 
   useEffect(() => {
     setisClient(true);
@@ -46,14 +52,16 @@ const Delete = () => {
   }, [dispatch, pathname]);
 
   useEffect(() => {
-    history.push(
-      returnUrl || pathname.replace('/delete', '').replace(/\/[^/]*$/, ''),
-    );
+    if (prevdeleteRequestLoading && deleteRequest.loaded) {
+      history.push(
+        returnUrl || pathname.replace('/delete', '').replace(/\/[^/]*$/, ''),
+      );
+    }
   }, [
     history,
     pathname,
     returnUrl,
-    deleteRequest.loading,
+    prevdeleteRequestLoading,
     deleteRequest.loaded,
   ]);
 
