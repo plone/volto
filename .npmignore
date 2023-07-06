@@ -120,6 +120,7 @@ styleguide.config
 .vscode
 packages/*
 !packages/volto-slate
+!packages/scripts
 !packages/registry
 .tx
 
