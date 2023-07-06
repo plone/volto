@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
-import { Helmet } from '@plone/volto/helpers';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import {
   Container,
@@ -13,8 +12,7 @@ import {
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import qs from 'query-string';
 
-import { useToken } from '@plone/volto/hooks';
-import { useUserSession } from '@plone/volto/hooks';
+import { Helmet } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 import { Icon } from '@plone/volto/components';
 import { login } from '@plone/volto/actions';
@@ -67,6 +65,14 @@ const messages = defineMessages({
     defaultMessage: 'Forgot your password?',
   },
 });
+const useUserSession = () => {
+  const error = useSelector((state) => state.userSession.login.error);
+  const loading = useSelector((state) => state.userSession.login.loading);
+  return { loading, error };
+};
+const useToken = () => {
+  return useSelector((state) => state.userSession.token, shallowEqual);
+};
 
 const Login = () => {
   const intl = useIntl();
