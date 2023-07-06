@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { defineMessages, useIntl } from 'react-intl';
 
+import { usePrevious } from '@plone/volto/helpers';
 import { updateComment } from '@plone/volto/actions';
 import { ModalForm } from '@plone/volto/components';
-import { useComments } from '@plone/volto/hooks/comments/useComments';
+
 const messages = defineMessages({
   editComment: {
     id: 'Edit comment',
@@ -21,17 +22,25 @@ const messages = defineMessages({
   },
 });
 
+const useComments = () => {
+  const request = useSelector((state) => state.comments.update, shallowEqual);
+
+  return request;
+};
+
 const CommentEditModal = (props) => {
   const intl = useIntl();
   const dispatch = useDispatch();
-  const { onOk } = props;
+  const { onOk, open, onCancel } = props;
   const request = useComments();
 
+  const prevRequestLoading = usePrevious(request.loading);
+
   useEffect(() => {
-    if (request.loading && request.loaded) {
+    if (prevRequestLoading && request.loaded) {
       onOk();
     }
-  }, [onOk, request]);
+  }, [onOk, prevRequestLoading, request.loaded]);
 
   const onSubmit = (data) => {
     dispatch(updateComment(props.id, data.text));
@@ -40,9 +49,9 @@ const CommentEditModal = (props) => {
   return (
     props.open && (
       <ModalForm
-        open={props.open}
+        open={open}
         onSubmit={onSubmit}
-        onCancel={props.onCancel}
+        onCancel={onCancel}
         formData={{ text: props.text }}
         title={intl.formatMessage(messages.editComment)}
         schema={{
