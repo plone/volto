@@ -1,15 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Container } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 
-import { useUsers } from '@plone/volto/hooks';
-import { Helmet } from '@plone/volto/helpers';
+import { Helmet, usePrevious } from '@plone/volto/helpers';
 import { Form } from '@plone/volto/components';
 import { resetPassword } from '@plone/volto/actions';
 import config from '@plone/volto/registry';
-import { usePrevious } from '@plone/volto/helpers';
 
 const messages = defineMessages({
   title: {
@@ -50,6 +48,14 @@ const messages = defineMessages({
     defaultMessage: 'Password reset',
   },
 });
+
+const useUsers = () => {
+  const loading = useSelector((state) => state.users.reset.loading);
+  const loaded = useSelector((state) => state.users.reset.loaded);
+  const error = useSelector((state) => state.users.reset.error);
+
+  return { loading, loaded, error };
+};
 
 const RequestPasswordReset = () => {
   const intl = useIntl();
