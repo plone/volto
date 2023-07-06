@@ -3,10 +3,10 @@ import { defineMessages, useIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import { withCookies } from 'react-cookie';
-import { find } from 'lodash';
+import { find, filter } from 'lodash';
 import cx from 'classnames';
 import config from '@plone/volto/registry';
 
@@ -30,7 +30,7 @@ import {
   hasApiExpander,
   usePrevious,
 } from '@plone/volto/helpers';
-import { useToken, useContent, useActions, useTypes } from '@plone/volto/hooks';
+
 import { Pluggable } from '@plone/volto/components/manage/Pluggable';
 
 import penSVG from '@plone/volto/icons/pen.svg';
@@ -122,6 +122,27 @@ let toolbarComponents = {
     hideToolbarBody: true,
   },
 };
+
+function useTypes() {
+  const type = useSelector((state) => state.types.types, shallowEqual);
+  const types = filter(type, 'addable');
+  return types;
+}
+
+function useContent() {
+  const data = useSelector((state) => state.content?.data, shallowEqual);
+  const unlockRequest = useSelector((state) => state.content?.unlock);
+
+  return { data, unlockRequest };
+}
+function useActions() {
+  const actions = useSelector((state) => state.actions.actions, shallowEqual);
+
+  return { actions };
+}
+function useToken() {
+  return useSelector((state) => state.userSession.token, shallowEqual);
+}
 
 const Toolbar = (props) => {
   const intl = useIntl();
