@@ -6,9 +6,10 @@ import { Button, Container, List, Segment } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import qs from 'query-string';
 
+import { Toolbar } from '@plone/volto/components';
 import { Helmet, usePrevious } from '@plone/volto/helpers';
 import { deleteContent, getContent } from '@plone/volto/actions';
-import { Toolbar } from '@plone/volto/components';
+
 
 const messages = defineMessages({
   delete: {
