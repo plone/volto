@@ -1,1 +1,1 @@
-export { useContent } from '@plone/volto/hooks/content/useContent';
+export * from '@plone/volto/hooks/content/useContent';
