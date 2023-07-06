@@ -16,4 +16,6 @@ This part of the documentation describes how to develop the core blocks in Volto
 
 listing
 teaser
+grid
+container
 ```
