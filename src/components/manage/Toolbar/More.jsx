@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { find } from 'lodash';
 import { toast } from 'react-toastify';
+
 import { Toast } from '@plone/volto/components';
 import { Pluggable, Plug } from '@plone/volto/components/manage/Pluggable';
 import {
@@ -18,11 +19,8 @@ import {
   createWorkingCopy,
   removeWorkingCopy,
 } from '@plone/volto/actions';
-import { useActions, useWorkingCopy, useContent } from '@plone/volto/hooks';
-import { usePrevious } from '@plone/volto/helpers';
-import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
+import { flattenToAppURL, getBaseUrl, usePrevious } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
-
 import rightArrowSVG from '@plone/volto/icons/right-key.svg';
 import userSVG from '@plone/volto/icons/user.svg';
 import applySVG from '@plone/volto/icons/ready.svg';
@@ -104,6 +102,21 @@ const messages = defineMessages({
     defaultMessage: 'An error occurred while performing this operation.',
   },
 });
+const useContent = () => {
+  const data = useSelector((state) => state.content?.data, shallowEqual);
+
+  return { data };
+};
+const useActions = () => {
+  const actions = useSelector((state) => state.actions.actions, shallowEqual);
+
+  return { actions };
+};
+
+const useWorkingCopy = () => {
+  const workingCopy = useSelector((state) => state.workingCopy, shallowEqual);
+  return workingCopy;
+};
 
 const More = (props) => {
   const dispatch = useDispatch();
