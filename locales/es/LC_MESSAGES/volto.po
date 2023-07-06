@@ -418,7 +418,6 @@ msgstr "Ascendente"
 msgid "Assignments"
 msgstr "Tareas"
 
-#: helpers/Utils/saveAsDraft
 #: helpers/Utils/withSaveAsDraft
 # defaultMessage: Autosave found
 msgid "Autosave found"
@@ -1098,7 +1097,6 @@ msgstr "¿Esta seguro que quiere eliminar el usuario {username}?"
 msgid "Do you really want to delete this item?"
 msgstr "¿Usted realmente quiere eliminar este elemento?"
 
-#: helpers/Utils/saveAsDraft
 #: helpers/Utils/withSaveAsDraft
 # defaultMessage: Do you want to load it?
 msgid "Do you want to load it?"
@@ -3561,7 +3559,6 @@ msgstr "El registro fue exitoso. Por favor, verifique su bandeja de entrada para
 msgid "The site configuration is outdated and needs to be upgraded."
 msgstr "La configuración del sitio está anticuada y debe ser actualizada."
 
-#: helpers/Utils/saveAsDraft
 #: helpers/Utils/withSaveAsDraft
 # defaultMessage: The version found is less recent than the server, do you want to load it (you can undo if you change your mind)?
 msgid "The version found is less recent than the server, do you want to load it (you can undo if you change your mind)?"

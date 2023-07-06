@@ -416,7 +416,6 @@ msgstr "Ascendent"
 msgid "Assignments"
 msgstr ""
 
-#: helpers/Utils/saveAsDraft
 #: helpers/Utils/withSaveAsDraft
 # defaultMessage: Autosave found
 msgid "Autosave found"
@@ -1096,7 +1095,6 @@ msgstr "Realment voleu suprimir l'usuari {username}?"
 msgid "Do you really want to delete this item?"
 msgstr "Realment voleu suprimir aquest element?"
 
-#: helpers/Utils/saveAsDraft
 #: helpers/Utils/withSaveAsDraft
 # defaultMessage: Do you want to load it?
 msgid "Do you want to load it?"
@@ -3559,7 +3557,6 @@ msgstr "El procés de registre ha estat satisfactori. Si us plau, comproveu la v
 msgid "The site configuration is outdated and needs to be upgraded."
 msgstr ""
 
-#: helpers/Utils/saveAsDraft
 #: helpers/Utils/withSaveAsDraft
 # defaultMessage: The version found is less recent than the server, do you want to load it (you can undo if you change your mind)?
 msgid "The version found is less recent than the server, do you want to load it (you can undo if you change your mind)?"

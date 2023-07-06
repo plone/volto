@@ -415,7 +415,6 @@ msgstr "昇順"
 msgid "Assignments"
 msgstr ""
 
-#: helpers/Utils/saveAsDraft
 #: helpers/Utils/withSaveAsDraft
 # defaultMessage: Autosave found
 msgid "Autosave found"
@@ -1095,7 +1094,6 @@ msgstr "ユーザ {username} を削除してよろしいですか?"
 msgid "Do you really want to delete this item?"
 msgstr "このアイテムを削除してよろしいですか?"
 
-#: helpers/Utils/saveAsDraft
 #: helpers/Utils/withSaveAsDraft
 # defaultMessage: Do you want to load it?
 msgid "Do you want to load it?"
@@ -3558,7 +3556,6 @@ msgstr "The registration process has been successful. Please check your e-mail i
 msgid "The site configuration is outdated and needs to be upgraded."
 msgstr ""
 
-#: helpers/Utils/saveAsDraft
 #: helpers/Utils/withSaveAsDraft
 # defaultMessage: The version found is less recent than the server, do you want to load it (you can undo if you change your mind)?
 msgid "The version found is less recent than the server, do you want to load it (you can undo if you change your mind)?"
