@@ -8,6 +8,15 @@
 
 <!-- towncrier release notes start -->
 
+## 16.21.3 (2023-07-06)
+
+### Bugfix
+
+- Fix temporary rendering of folder contents while query results are loading. @davisagli [#4351](https://github.com/plone/volto/issues/4351)
+- Remove anonymous function calls. Remove default exports from. @sneridagh [#4917](https://github.com/plone/volto/issues/4917)
+- Fix the experimental add new block button position, compensate the icon width to center it correctly @sneridagh [#4924](https://github.com/plone/volto/issues/4924)
+
+
 ## 16.21.2 (2023-06-24)
 
 ### Bugfix
