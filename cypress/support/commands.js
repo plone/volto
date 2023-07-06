@@ -705,6 +705,20 @@ Cypress.Commands.add('getSlate', (createNewSlate = false) => {
   return slate;
 });
 
+Cypress.Commands.add('getSlateSelector', (selector = SLATE_SELECTOR) => {
+  let slate;
+  cy.getIfExists(
+    selector,
+    () => {
+      slate = cy.get(selector).last();
+    },
+    () => {
+      slate = cy.get(selector, { timeout: 10000 }).last();
+    },
+  );
+  return slate;
+});
+
 Cypress.Commands.add('getSlateTitle', () => {
   return cy.get(SLATE_TITLE_SELECTOR, {
     timeout: 10000,
@@ -761,6 +775,10 @@ Cypress.Commands.add('setSlateSelection', (subject, query, endQuery) => {
 
 Cypress.Commands.add('getSlateEditorAndType', (type) => {
   cy.getSlate().focus().click().type(type);
+});
+
+Cypress.Commands.add('getSlateEditorSelectorAndType', (selector, type) => {
+  cy.getSlateSelector(selector).focus().click().type(type);
 });
 
 Cypress.Commands.add('setSlateCursor', (subject, query, endQuery) => {
@@ -848,4 +866,24 @@ Cypress.Commands.add('getTableSlate', (header = false) => {
     },
   );
   return slate;
+});
+
+Cypress.Commands.add('configureListingWith', (contentType) => {
+  cy.get('.sidebar-container .tabs-wrapper .menu .item')
+    .contains('Block')
+    .click();
+  cy.get('.querystring-widget .fields').contains('Add criteria').click();
+  cy.get(
+    '.querystring-widget .fields:first-of-type .field:first-of-type .react-select__menu .react-select__option',
+  )
+    .contains('Type')
+    .click();
+
+  //insert Page
+  cy.get('.querystring-widget .fields:first-of-type > .field').click();
+  cy.get(
+    '.querystring-widget .fields:first-of-type > .field .react-select__menu .react-select__option',
+  )
+    .contains(contentType)
+    .click();
 });

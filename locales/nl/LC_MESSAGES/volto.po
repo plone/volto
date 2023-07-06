@@ -152,6 +152,11 @@ msgstr ""
 msgid "Add block"
 msgstr ""
 
+#: components/manage/Blocks/Container/NewBlockAddButton
+# defaultMessage: Add block in position {index}
+msgid "Add block in position {index}"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add block…
 msgid "Add block…"
@@ -175,6 +180,11 @@ msgstr ""
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: Add date
 msgid "Add date"
+msgstr ""
+
+#: components/manage/Blocks/Container/SimpleContainerToolbar
+# defaultMessage: Add element to container
+msgid "Add element to container"
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
@@ -738,6 +748,11 @@ msgstr ""
 msgid "Contained items"
 msgstr ""
 
+#: components/manage/Blocks/Container/SimpleContainerToolbar
+# defaultMessage: Container settings
+msgid "Container settings"
+msgstr ""
+
 #: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Content
 msgid "Content"
@@ -1282,9 +1297,9 @@ msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Enter your new password. Minimum 5 characters.
-msgid "Enter your new password. Minimum 5 characters."
-msgstr "Geef een nieuw wachtwoord op. Minimaal 5 karakters."
+# defaultMessage: Enter your new password. Minimum 8 characters.
+msgid "Enter your new password. Minimum 8 characters."
+msgstr "Geef een nieuw wachtwoord op. Minimaal 8 karakters."
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Enter your username for verification.
@@ -1538,6 +1553,11 @@ msgstr ""
 msgid "Google Maps Embedded Block"
 msgstr ""
 
+#: components/manage/Blocks/Grid/schema
+# defaultMessage: Grid
+msgid "Grid"
+msgstr ""
+
 #: components/manage/Sharing/Sharing
 # defaultMessage: Group
 msgid "Group"
@@ -1576,6 +1596,7 @@ msgstr ""
 msgid "Header cell"
 msgstr ""
 
+#: components/manage/Blocks/Grid/schema
 #: components/manage/Blocks/Listing/schema
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Headline
@@ -1911,6 +1932,11 @@ msgstr ""
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Link
 msgid "Link"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Link copied to clipboard
+msgid "Link copied to clipboard"
 msgstr ""
 
 #: components/manage/Blocks/HeroImageLeft/schema
@@ -2698,6 +2724,11 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
+#: components/manage/Blocks/Container/EditBlockWrapper
+# defaultMessage: Remove element {index}
+msgid "Remove element {index}"
+msgstr ""
+
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Remove item
 msgid "Remove item"
@@ -2781,6 +2812,11 @@ msgstr ""
 # defaultMessage: Required input is missing.
 msgid "Required input is missing."
 msgstr "Verplichte waarde mist."
+
+#: components/manage/Blocks/Container/EditBlockWrapper
+# defaultMessage: Reset element {index}
+msgid "Reset element {index}"
+msgstr ""
 
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Reset title
@@ -4223,6 +4259,16 @@ msgstr ""
 msgid "checkboxFacet"
 msgstr ""
 
+#: components/manage/Blocks/Grid/templates
+# defaultMessage: column
+msgid "column"
+msgstr ""
+
+#: components/manage/Blocks/Grid/templates
+# defaultMessage: columns
+msgid "columns"
+msgstr ""
+
 #: config/Blocks
 # defaultMessage: Common
 msgid "common"
@@ -4311,6 +4357,11 @@ msgstr ""
 #: components/theme/EventDetails/EventDetails
 # defaultMessage: Where
 msgid "event_where"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: This website does not accept files larger than {limit}
+msgid "fileTooLarge"
 msgstr ""
 
 #: helpers/MessageLabels/MessageLabels

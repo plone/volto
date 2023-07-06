@@ -28,13 +28,13 @@ const StyleMenuButton = ({ icon, active, ...props }) => (
   <ToolbarButton {...props} icon={icon} active={active} />
 );
 
-const MenuOpts = ({ editor, toSelect, option, ...rest }) => {
+const MenuOpts = ({ editor, toSelect, option, type }) => {
   const isActive = toSelect.includes(option);
   return (
     <Dropdown.Item
       as="span"
       active={isActive}
-      className={cx({ active: isActive })}
+      className={cx(`${type}-${option.value}`, { active: isActive })}
       {...omit(option, ['isBlock'])}
       data-isblock={option.isBlock}
       onClick={(event, selItem) => {
@@ -118,7 +118,12 @@ const StylingsButton = (props) => {
               content={intl.formatMessage(messages.inlineStyle)}
             />
             {inlineOpts.map((option, index) => (
-              <MenuOpts {...menuItemProps} option={option} key={index} />
+              <MenuOpts
+                {...menuItemProps}
+                type="inline-style"
+                option={option}
+                key={index}
+              />
             ))}
           </>
         )}
@@ -129,7 +134,12 @@ const StylingsButton = (props) => {
               content={intl.formatMessage(messages.paragraphStyle)}
             />
             {blockOpts.map((option, index) => (
-              <MenuOpts {...menuItemProps} option={option} key={index} />
+              <MenuOpts
+                {...menuItemProps}
+                type="block-style"
+                option={option}
+                key={index}
+              />
             ))}
           </>
         )}
