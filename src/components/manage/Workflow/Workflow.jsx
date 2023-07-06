@@ -1,21 +1,24 @@
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { uniqBy } from 'lodash';
 import { toast } from 'react-toastify';
 import { defineMessages, useIntl } from 'react-intl';
 
 import { FormFieldWrapper, Icon, Toast } from '@plone/volto/components';
-import { flattenToAppURL, getWorkflowOptions } from '@plone/volto/helpers';
+import {
+  flattenToAppURL,
+  getWorkflowOptions,
+  getCurrentStateMapping,
+} from '@plone/volto/helpers';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+
 import {
   getContent,
   getWorkflow,
   transitionWorkflow,
 } from '@plone/volto/actions';
-import { useContent } from '@plone/volto/hooks/content/useContent';
-import { useWorkflow } from '@plone/volto/hooks/workflow/useWorkflow';
 import downSVG from '@plone/volto/icons/down-key.svg';
 import upSVG from '@plone/volto/icons/up-key.svg';
 import checkSVG from '@plone/volto/icons/check.svg';
@@ -155,6 +158,26 @@ const customSelectStyles = {
     },
   }),
 };
+
+function useContent() {
+  const data = useSelector((state) => state.content?.data, shallowEqual);
+
+  return { data };
+}
+function useWorkflow() {
+  const history = useSelector((state) => state.workflow.history, shallowEqual);
+  const transitions = useSelector(
+    (state) => state.workflow.transitions,
+    shallowEqual,
+  );
+  const loaded = useSelector((state) => state.workflow.transition.loaded);
+  const currentStateValue = useSelector(
+    (state) => getCurrentStateMapping(state.workflow.currentState),
+    shallowEqual,
+  );
+
+  return { loaded, history, transitions, currentStateValue };
+}
 
 const Workflow = (props) => {
   const intl = useIntl();
