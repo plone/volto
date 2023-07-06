@@ -1,15 +1,14 @@
 import { useEffect, useState } from 'react';
-import { Helmet } from '@plone/volto/helpers';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import { Portal } from 'react-portal';
 import { Button, Container, List, Segment } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import qs from 'query-string';
 
+import { Helmet, usePrevious } from '@plone/volto/helpers';
 import { deleteContent, getContent } from '@plone/volto/actions';
 import { Toolbar } from '@plone/volto/components';
-import { useContent } from '@plone/volto/hooks';
 
 const messages = defineMessages({
   delete: {
@@ -34,13 +33,11 @@ function useContent() {
 }
 
 const Delete = () => {
+  const dispatch = useDispatch();
   const intl = useIntl();
   const [isClient, setisClient] = useState(false);
   const { pathname, search } = useLocation();
   const history = useHistory();
-
-  const { getContent } = useGetContent();
-  const { deleteContent } = useDeleteContent();
   const { data: content, deleteRequest } = useContent();
 
   const prevdeleteRequestLoading = usePrevious(deleteRequest.loading);
@@ -51,8 +48,8 @@ const Delete = () => {
   }, []);
 
   useEffect(() => {
-    getContent(pathname.split('/delete')[0]);
-  }, [getContent, pathname]);
+    dispatch(getContent(pathname.split('/delete')[0]));
+  }, [dispatch, pathname]);
 
   useEffect(() => {
     if (prevdeleteRequestLoading && deleteRequest.loaded) {
@@ -69,7 +66,7 @@ const Delete = () => {
   ]);
 
   const onSubmit = () => {
-    deleteContent(pathname.replace('/delete', ''));
+    dispatch(deleteContent(pathname.replace('/delete', '')));
   };
 
   const onCancel = () => {
