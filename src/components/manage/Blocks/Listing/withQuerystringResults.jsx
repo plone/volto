@@ -54,10 +54,9 @@ export default function withQuerystringResults(WrappedComponent) {
     const hasQuery = querystring?.query?.length > 0;
     const hasLoaded = hasQuery ? querystringResults?.[id]?.loaded : true;
 
-    const listingItems =
-      querystring?.query?.length > 0 && querystringResults?.[id]
-        ? querystringResults?.[id]?.items || []
-        : folderItems;
+    const listingItems = hasQuery
+      ? querystringResults?.[id]?.items || []
+      : folderItems;
 
     const showAsFolderListing = !hasQuery && content?.items_total > b_size;
     const showAsQueryListing =
