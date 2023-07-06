@@ -11,11 +11,8 @@ import { useSelector, shallowEqual } from 'react-redux';
  */
 export function useContent() {
   const data = useSelector((state) => state.content?.data, shallowEqual);
-  const loading = useSelector((state) => state.content.get?.loading);
-  const loaded = useSelector((state) => state.content.get?.loaded);
-  const error = useSelector((state) => state.content.get?.error, shallowEqual);
-
-  return { data, loading, loaded, error };
+  
+  return { data };
 }
 
 // For reference purposes: Potential future useQuery version
