@@ -1,0 +1,74 @@
+.field .checkbox {
+    position: absolute;
+    z-index: -1;
+    width: 18px;
+    height: 18px;
+    margin-top: 3px;
+    margin-left: 0;
+    border-radius: 3px;
+    opacity: 1;
+    -webkit-appearance: none;
+
+
+    & + label::before {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        margin-top:3px;
+        margin-left: -30px;
+        background: $air;
+        box-shadow: inset 0 0 0 1px $dolphin;
+        border-radius: 3px;
+        margin-right: 12px;
+        transition: box-shadow $time-tiny ease-in-out;
+    }
+    &:not(:checked) + label::before {
+        background: $air;
+        box-shadow: inset 0 0 0 1px $dolphin;
+    }
+    &:not(:checked) + label:hover::before {
+        box-shadow: inset 0 0 0 1px $sapphire;
+    }
+    &:not(:checked) + label:active::before {
+        box-shadow: inset 0 0 0 2px $cobalt;
+    }
+    &:checked + label::before {
+        box-shadow: inset 0 0 0 9px $sapphire;
+    }
+    &:checked + label:hover::before {
+        transition: box-shadow $time-tiny ease-in-out;
+        box-shadow: inset 0 0 0 9px $royal;
+    }
+    &:checked + label:active::before {
+        transition: box-shadow $time-tiny ease-in-out;
+        box-shadow: inset 0 0 0 9px $cobalt;
+    }
+    & + label::after {
+        content: url($icon-checkbox);
+        position: absolute;
+        left: 0;
+        width: 18px;
+        height: 18px;
+        margin-top: 3px;
+        opacity: 0;
+        transition: opacity $time-tiny ease-in-out;
+    }
+    &:checked + label::after {
+        opacity: 1;
+    }
+    & + label {
+        @extend %label-medium;
+        cursor: pointer;
+        vertical-align: middle;
+        margin-left: 30px;
+    }
+    &:focus {
+        outline: 0;
+        @include focus-visible;
+    }
+    & ~ .hint {
+        margin-left: 30px;
+    }
+}

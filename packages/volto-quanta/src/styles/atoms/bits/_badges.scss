@@ -1,0 +1,43 @@
+//*// BADGES
+
+//// USAGE
+/*
+* SIZES: —
+* WEIGHTS: —
+* KINDS: Neutral (default, Positive
+* IONS: —
+
+* USAGE: 
+    <div class="badge" role="note">Badge</div>
+    <div class="badge positive" role="note">Badge</div>
+*/
+
+
+//// VARIABLES
+$badge-minwidth: $rhythm-medium*2;
+$badge-padding: $rhythm-small;
+$badge-radii: $radii-full;
+$badge-bg: $smoke;
+$badge-color: $iron;
+$badge-positive-bg: $mint;
+$badge-positive-color: $turtle;
+
+
+
+.badge {
+    background-color: $badge-bg;
+    min-width: $badge-minwidth;
+    padding: 0 $badge-padding;
+    color: $badge-color;
+    border-radius: $badge-radii;
+    overflow: hidden;
+    display: inline-flex;
+    vertical-align: middle;
+    align-items: center;
+    justify-content: center;
+    @extend %label-medium;
+    &.positive {
+        background-color: $badge-positive-bg;
+        color: $badge-positive-color;
+    }
+}

@@ -1,0 +1,13 @@
+.field .radio {
+    @extend .checkbox;
+}
+
+.field .radio + label::before {
+    border-radius: $radii-full;
+}
+.field .radio  + label::after {
+    content: url($icon-radio);
+}
+.field .radio:focus {
+    border-radius: $radii-full;
+}

@@ -1,0 +1,16 @@
+kbd {
+    @extend %text-kbd;
+    background: $tiffany;
+    color: $denim;
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+kbd > kbd {
+    font-size: 1em;
+    padding: 0;
+}
+kbd > kbd + kbd::before {
+    content:"+";
+    color: $pigeon;
+    padding: 0 3px;
+}

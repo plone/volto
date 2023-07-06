@@ -1,0 +1,20 @@
+ins {
+    background: $mint;
+    padding: 2px 3px;
+    text-decoration: none;
+    border-radius: 2px;
+}
+del {
+    background: $flamingo;
+    padding: 2px 3px;
+    text-decoration: line-through;
+    text-decoration-color: $denim;
+    padding:2px 3px;
+    border-radius: 2px;
+}
+mark {
+    background: $banana;
+    padding:2px 3px;
+    padding:2px 3px;
+    border-radius: 2px;
+}

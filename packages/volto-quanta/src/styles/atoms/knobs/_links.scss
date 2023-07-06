@@ -1,0 +1,55 @@
+/*// LINKS
+
+//// USAGE
+/*
+* SIZES: Inherit from parent text
+* WEIGHTS: —
+* KINDS: —
+* IONS: Blank
+
+* USAGE: 
+    No class required
+    <a href="…">Link</a>
+    <a href="…" target="_blank" rel="noreferrer noopener">Blank window link</a>
+*/
+
+//// VARIABLES
+$link-radii: $radii-small;
+$link-blank-icon: $icon-blank;
+$link-blank-separation: $rhythm-tiny;
+
+//// LINKS
+a {
+  @extend %link;
+  border-radius: $radii-small;
+
+  
+  &:hover {
+    @extend %link-hover;
+  }
+  &:active {
+    @extend %link-active;
+  }
+  @include focus-visible;
+  display:inline-flex; //fixesfocus-visible chrome bug  
+
+}
+
+//// ANCHOR (not shown)
+a:not([href]) {
+  &,
+  &:hover, &:active {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+
+//// BLANK
+a[target="_blank"]::after { //rel="noreferrer noopener"
+  content: url($link-blank-icon);
+  vertical-align: middle;
+  line-height: 0;
+  display: inline-block;
+  margin-left: $link-blank-separation;
+}

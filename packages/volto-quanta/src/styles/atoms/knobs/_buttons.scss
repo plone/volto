@@ -1,0 +1,312 @@
+//*// BUTTONS
+
+//// USAGE
+/*
+* SIZES: Small, Medium (default), Large
+* WEIGHTS: Regular (default), Accent
+* KINDS: Neutral (default), Main, Negative
+* IONS: Icon, Solid
+
+* USAGE: 
+    <button class="small negative solid">Button</button>
+    <button class="small accent negative icon"><svg …></button>
+*/
+
+
+//// VARIABLES
+$button-rhythm: $rhythm-small;
+$button-radii: $radii-medium;
+$button-transition: color $time-tiny ease-in-out, box-shadow $time-tiny ease-in-out, background-color $time-tiny ease-in-out;
+$button-color: c(iron);
+$button-color-hover: c(denim);
+$button-color-active: c(denim);
+$button-bg: transparent;
+$button-solid-bg: c(air);
+$button-bg-hover: c(smoke);
+$button-bg-active: c(silver);
+$button-shadow: $litho;
+$button-shadow-hover: $tropo;
+$button-shadow-active: $meso;
+
+$button-main-color: c(sapphire);
+$button-main-color-hover: c(royal);
+$button-main-color-active: c(royal);
+$button-main-bg-hover: c(sky);
+$button-main-bg-active: c(azure);
+
+$button-negative-color: c(candy);
+$button-negative-color-hover: c(wine);
+$button-negative-color-active: c(wine);
+$button-negative-bg-hover: c(flamingo);
+$button-negative-bg-active: c(poppy);
+
+$button-accent-color: c(air);
+$button-accent-bg: c(smoke);
+$button-accent-bg-hover: c(smoke);
+$button-accent-bg-active: c(silver);
+
+$button-accent-main-bg: c(sapphire);
+$button-accent-main-bg-hover: c(royal);
+$button-accent-main-bg-active: c(cobalt);
+
+$button-accent-negative-bg: c(candy);
+$button-accent-negative-bg-hover: c(wine);
+$button-accent-negative-bg-active: c(rose);
+
+$button-bg-disabled: c(snow);
+$button-color-disabled: c(smoke);
+$button-shadow-disabled: $litho;
+
+
+
+//// RESET
+button {
+  // stylelint-disable-next-line property-blacklist
+  border-radius: 0;
+  margin: 0; // 1
+  font-family: inherit;
+  //font-size: inherit;
+  //line-height: inherit;
+  overflow: visible;
+  text-transform: none;
+}
+
+button:focus,
+.button:focus,
+[type="button"]:focus, // 1
+[type="reset"]:focus,
+[type="submit"]:focus {
+  outline: 0;
+}
+
+button,
+[type="button"], // 1
+[type="reset"],
+[type="submit"] {
+    -webkit-appearance: button; // 2
+    cursor: pointer; // 3
+}
+
+a.button {
+  display: inline-block;
+  cursor: pointer; // 3
+}
+
+//// BASE
+button,
+.button,
+[type="button"], // 1
+[type="reset"],
+[type="submit"] {
+  background-color: $button-bg;
+  color: $button-color;
+  @extend %button-medium;
+  padding: $button-rhythm $button-rhythm*2;
+  border:0;
+  border-radius: $button-radii;
+  box-shadow: $button-shadow;
+  overflow: hidden;
+  position: relative;
+  vertical-align: middle;
+  transition: $button-transition;
+  &:hover, &:focus {
+    background-color: $button-bg-hover;
+    color: $button-color-hover;
+  }
+  &:active {
+    background-color: $button-bg-active;
+    color: $button-color-active;
+  }
+  @include focus-visible;
+}
+
+button::after,
+.button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1px;
+  height: 1px;
+  background: rgba($denim, $a3);
+  opacity: $a0;
+  border-radius: 50%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+  
+}
+
+button:active::after,
+.button:active::after {
+  @include ripple;  
+}
+button.icon:active::after,
+.button.icon:active::after {
+  @include ripple;  
+  animation-duration: $time-large*2;
+}
+
+
+
+//// WEIGHTS
+.button.accent {
+  background-color: $button-accent-bg;
+  &:hover {
+    background-color: $button-accent-bg-hover;
+    box-shadow: $button-shadow-hover;
+  }
+  &:active {
+    background-color: $button-accent-bg-active;
+    box-shadow: $button-shadow-active;
+  }
+  &.main {
+    background-color: $button-accent-main-bg;
+  }
+  &.negative {
+    background-color: $button-accent-negative-bg;
+  }
+}
+
+
+
+//// KINDS
+.button.main {
+  color: $button-main-color;
+  &.button.accent {
+    color: $button-accent-color;
+  }
+  &:hover, &:focus {
+    background-color: $button-main-bg-hover;
+    color: $button-main-color-hover;
+  }
+  &.accent:hover, &.accent:focus {
+    background-color: $button-accent-main-bg-hover;
+    box-shadow: $button-shadow-hover;
+  }
+  &:active {
+    background-color: $button-main-bg-active;
+    color: $button-main-color-active;
+  }
+  &.accent:active, &.accent:active {
+    background-color: $button-accent-main-bg-active;
+    box-shadow: $button-shadow-active;
+  }
+}
+
+.button.negative {
+  color: $button-negative-color;
+  &.button.accent {
+    color: $button-accent-color;
+  }
+  &:hover, &:focus {
+    background-color: $button-negative-bg-hover;
+    color: $button-negative-color-hover;
+  }
+  &.accent:hover, &.accent:focus {
+    background-color: $button-accent-negative-bg-hover;
+    box-shadow: $button-shadow-hover;
+  }
+  &:active {
+    background-color: $button-negative-bg-active;
+    color: $button-negative-color-active;
+  }
+  &.accent:active, &.accent:active {
+    background-color: $button-accent-negative-bg-active;
+    box-shadow: $button-shadow-active;
+  }
+}
+
+
+
+//// SIZES
+.button.small {
+  @extend %button-small;
+  padding:$button-rhythm $button-rhythm*1.5;
+}
+
+.button.large {
+  @extend %button-large;
+  padding:$button-rhythm*2 $button-rhythm*3;
+}
+
+
+
+//// SOLID
+.button.solid:not(.accent):not(:hover):not(:active):not(:focus) {
+  background: $button-solid-bg;
+}
+
+
+
+//// ICONS
+.button.icon {
+  border-radius: $radii-full;
+  padding: $button-rhythm;
+  svg {
+    fill: $button-color;
+    display: flex; //fixes roundings in chrome
+    &:hover, &:active {
+      fill: $button-color-hover;
+    }
+  }
+  &.main svg {
+    fill: $button-main-color;
+    &:hover, &:active {
+      fill: $button-main-color-hover;
+    }
+  }
+  &.negative svg {
+    fill: $button-negative-color;
+    &:hover, &:active {
+      fill: $button-negative-color-hover;
+    }
+  }
+}
+.button.icon.accent.main,
+.button.icon.accent.negative {
+  svg {
+    fill: $button-accent-color;
+  }
+}
+
+.button.icon.small {
+  padding: $button-rhythm/2;
+  svg {
+    width: $xl; //20
+    height: $xl; //20
+    margin: $button-rhythm/3;
+  }
+}
+.button.icon.large {
+  padding: $button-rhythm;
+  svg {
+    width: $l*2; //32
+    height: $l*2; //32
+    margin: $button-rhythm/3;
+  }
+}
+
+//// ICON TINY
+// Only used for close button "×" inside elements 
+.button.icon.tiny {
+  padding: $button-rhythm/2;
+  svg {
+    width: $l; //16
+    height: $l; //16
+    margin: $button-rhythm/6;
+  }
+}
+
+//// DISABLED
+button:disabled,
+[type="button"]:disabled, // 1
+[type="reset"]:disabled,
+[type="submit"]:disabled {
+    cursor: default; // 3
+    background-color: $button-bg-disabled !important;
+    box-shadow: $button-shadow-disabled !important;
+    color: $button-color-disabled !important;
+    svg {
+      fill: $button-color-disabled !important;
+    }
+}

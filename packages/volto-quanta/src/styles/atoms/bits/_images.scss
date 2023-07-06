@@ -1,0 +1,26 @@
+
+figure {
+    margin: 0 0 $rhythm-large;
+}
+
+
+// Images and content
+img,
+svg {
+    vertical-align: middle;
+}
+
+//Icons
+.icon {
+    svg {
+        fill: $pigeon;
+    }
+    &.large svg {
+        width: $rhythm-medium*4;
+        height: $rhythm-medium*4;
+    }
+    &.small svg {
+        width: $rhythm-large;
+        height: $rhythm-large;
+    }
+}

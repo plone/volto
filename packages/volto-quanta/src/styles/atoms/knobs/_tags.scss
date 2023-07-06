@@ -1,0 +1,34 @@
+
+
+
+.tag {
+    border-radius: $radii-full;
+    background-color: $air;
+    box-shadow: inset 0 0 0 1px $silver;
+    display: inline-flex;
+    vertical-align: middle;
+
+    & .label {
+        @extend %label-medium;
+        margin: 3px 12px;
+        &:not(:last-child) {
+            margin-right: 0;
+        }
+        &:not(:first-child) {
+            margin-left: 3px;
+        }
+    }
+    .avatar {
+        width:24px;
+        height: 24px;
+        border-radius: 50%;
+        background: $tiffany;
+        @extend %button-small;
+        line-height: 24px;
+        text-align: center;
+        margin: 3px;
+    }
+    .button {
+        margin:3px;
+    }
+}

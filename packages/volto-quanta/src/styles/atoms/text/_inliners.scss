@@ -1,0 +1,26 @@
+abbr[title] { // 1
+    text-decoration: underline; // 2
+    text-decoration: underline dotted $silver; // 2
+    text-decoration-skip-ink: none; // 4
+    cursor: help; // 3
+}
+
+b,
+strong {
+font-weight: bolder;
+}
+
+small {
+font-size: calc(1em - (2rem/16));
+}
+
+sub,
+sup {
+position: relative;
+font-size: calc(1em - (2rem/16));
+line-height: 0;
+vertical-align: baseline;
+}
+sub { bottom: -.25em; }
+sup { top: -.5em; }
+

@@ -120,6 +120,7 @@ styleguide.config
 .vscode
 packages/*
 !packages/volto-slate
+!packages/volto-quanta
 .tx
 
 # yarn 3

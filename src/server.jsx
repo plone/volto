@@ -17,6 +17,7 @@ import { resetServerContext } from 'react-beautiful-dnd';
 import { CookiesProvider } from 'react-cookie';
 import cookiesMiddleware from 'universal-cookie-express';
 import debug from 'debug';
+import { SSRProvider } from 'react-aria';
 
 import routes from '@root/routes';
 import config from '@plone/volto/registry';
@@ -249,15 +250,17 @@ server.get('/*', (req, res) => {
       const context = {};
       resetServerContext();
       const markup = renderToString(
-        <ChunkExtractorManager extractor={extractor}>
-          <CookiesProvider cookies={req.universalCookies}>
-            <Provider store={store} onError={reactIntlErrorHandler}>
-              <StaticRouter context={context} location={req.url}>
-                <ReduxAsyncConnect routes={routes} helpers={api} />
-              </StaticRouter>
-            </Provider>
-          </CookiesProvider>
-        </ChunkExtractorManager>,
+        <SSRProvider>
+          <ChunkExtractorManager extractor={extractor}>
+            <CookiesProvider cookies={req.universalCookies}>
+              <Provider store={store} onError={reactIntlErrorHandler}>
+                <StaticRouter context={context} location={req.url}>
+                  <ReduxAsyncConnect routes={routes} helpers={api} />
+                </StaticRouter>
+              </Provider>
+            </CookiesProvider>
+          </ChunkExtractorManager>
+        </SSRProvider>,
       );
 
       const readCriticalCss =

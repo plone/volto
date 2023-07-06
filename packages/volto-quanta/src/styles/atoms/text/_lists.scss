@@ -1,0 +1,74 @@
+ol,
+ul {
+padding-left: $rhythm-huge;
+}
+
+ol,
+ul,
+dl {
+margin-top: 0;
+margin-bottom: $rhythm-large; //margin-bottom-element
+}
+
+ol ol,
+ol ul,
+ul ul,
+ul ol {
+margin-bottom: 0;
+}
+
+ul li {
+    list-style: none;
+    &::before {
+        content: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="%23'+str_slice(#{$dolphin}, 2)+'" d="M6 10.5h12v3H6z"/></svg>');
+        vertical-align: middle;
+        line-height: 0;
+        display: inline-block;
+        position: relative;
+        margin-left: - $rhythm-huge;
+        padding: 0 $rhythm-medium 0 0;
+    }
+}
+
+ol {
+    counter-reset: ordered;
+    list-style: none;
+    li::before {
+        font-size: $s;
+        counter-increment: ordered; 
+        content: counters(ordered, ".") " ";
+        vertical-align: baseline;
+        text-align: center;
+        display: inline-block;
+        position: relative;
+        margin-left: - $rhythm-huge;
+        margin-right: $rhythm-medium;
+        padding: 0;
+        min-width: 18px;
+        color:$dolphin;
+        font-weight: $bold;
+    }
+}
+dl {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: $rhythm-large;
+}
+dt {
+    @extend %text-medium;
+    font-weight: $bold;
+    color: $dolphin;
+    flex: 0 0 calc(20% - #{$rhythm-medium});
+}
+
+// 1. Undo browser default
+
+dd {
+    flex: 0 0 calc(80% - #{$rhythm-medium});
+    margin-left: 0;
+    margin-bottom: 0;  //margin-bottom-subelement
+    margin-left: $rhythm-medium*2; // 1
+}
+dl dd + dd {
+    margin-left: calc(20% + #{$rhythm-medium}*2);
+}

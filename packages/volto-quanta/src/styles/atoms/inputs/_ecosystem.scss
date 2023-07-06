@@ -1,0 +1,39 @@
+//*// ECOSYSTEM for INPUTS
+
+////
+.q.field {
+  position: relative;
+  margin-top: 30px;
+  font-size: 0; //prevent white spaces
+}
+
+//// Required
+.q.input[required] + label::after {
+  content: url($icon-mandatory);
+}
+
+.q.input[required]:not(:placeholder-shown):not(:hover):not(:active):not(:focus)
+  + label::after {
+  filter: grayscale(1);
+}
+
+//// Optional
+.q.input.optional + label::after {
+  content: '— Optional';
+}
+
+//// Hint (Help text)
+.q.hint {
+  @extend %text-small;
+  display: block;
+  color: $pigeon;
+}
+
+//// Assist (Error message)
+.q.assist {
+  @extend %label-small;
+  display: block;
+  margin-top: 0;
+  margin-bottom: 0;
+  color: $candy;
+}

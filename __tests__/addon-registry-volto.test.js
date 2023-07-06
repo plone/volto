@@ -6,6 +6,9 @@ describe('AddonConfigurationRegistry - Volto', () => {
     const base = path.join(__dirname, '..');
     const reg = new AddonConfigurationRegistry(base);
     expect(reg.projectRootPath).toStrictEqual(base);
-    expect(reg.addonNames).toStrictEqual(['@plone/volto-slate']);
+    expect(reg.addonNames).toStrictEqual([
+      '@plone/volto-slate',
+      '@plone/volto-quanta',
+    ]);
   });
 });
