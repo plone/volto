@@ -1,6 +1,4 @@
-import { useCallback } from 'react';
-import { useSelector, shallowEqual, useDispatch } from 'react-redux';
-import { deleteContent, getContent } from '@plone/volto/actions';
+import { useSelector, shallowEqual } from 'react-redux';
 
 /**
  * useContent hook
