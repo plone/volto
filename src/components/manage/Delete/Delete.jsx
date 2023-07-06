@@ -10,7 +10,6 @@ import { Toolbar } from '@plone/volto/components';
 import { Helmet, usePrevious } from '@plone/volto/helpers';
 import { deleteContent, getContent } from '@plone/volto/actions';
 
-
 const messages = defineMessages({
   delete: {
     id: 'Delete',
