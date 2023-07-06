@@ -1,6 +1,6 @@
 import { Container, Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { useToken } from '@plone/volto/hooks/userSession/useToken';
+import { useSelector, shallowEqual } from 'react-redux';
 
 import {
   Anontools,
@@ -9,6 +9,10 @@ import {
   Navigation,
   SearchWidget,
 } from '@plone/volto/components';
+
+const useToken = () => {
+  return useSelector((state) => state.userSession.token, shallowEqual);
+};
 
 const Header = ({ pathname }) => {
   const token = useToken();

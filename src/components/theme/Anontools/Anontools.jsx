@@ -3,10 +3,17 @@ import { Link } from 'react-router-dom';
 import { Menu } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
 import { flattenToAppURL } from '@plone/volto/helpers';
-import { useToken } from '@plone/volto/hooks/userSession/useToken';
-import { useContent } from '@plone/volto/hooks/content/useContent';
 import config from '@plone/volto/registry';
+import { useSelector, shallowEqual } from 'react-redux';
 
+function useContent() {
+  const data = useSelector((state) => state.content.data, shallowEqual);
+
+  return { data };
+}
+const useToken = () => {
+  return useSelector((state) => state.userSession.token, shallowEqual);
+};
 const Anontools = () => {
   const token = useToken();
   const { data: content } = useContent();
