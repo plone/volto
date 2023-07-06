@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
 import cx from 'classnames';
@@ -14,7 +14,6 @@ import {
   getBaseUrl,
   userHasRoles,
 } from '@plone/volto/helpers';
-import { useToken, useUsers } from '@plone/volto/hooks';
 import logoutSVG from '@plone/volto/icons/log-out.svg';
 import rightArrowSVG from '@plone/volto/icons/right-key.svg';
 import backSVG from '@plone/volto/icons/back.svg';
@@ -42,6 +41,15 @@ const messages = defineMessages({
     defaultMessage: 'user avatar',
   },
 });
+
+const useToken = () => {
+  return useSelector((state) => state.userSession.token, shallowEqual);
+};
+const useUsers = () => {
+  const user = useSelector((state) => state.users.user);
+
+  return { user };
+};
 
 const PersonalTools = (props) => {
   const dispatch = useDispatch();
