@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Dropdown, Icon } from 'semantic-ui-react';
 import { toast } from 'react-toastify';
@@ -9,9 +9,7 @@ import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import { cut, copy, copyContent, moveContent } from '@plone/volto/actions';
 import { getBaseUrl } from '@plone/volto/helpers';
 import { ContentsRenameModal, Toast } from '@plone/volto/components';
-import { useContent } from '@plone/volto/hooks';
-import { useActions } from '@plone/volto/hooks';
-import { useCopyContent } from '@plone/volto/hooks';
+
 const messages = defineMessages({
   cut: {
     id: 'Cut',
@@ -50,6 +48,30 @@ const messages = defineMessages({
     defaultMessage: 'Success',
   },
 });
+
+function useActions() {
+  const actions = useSelector((state) => state.actions.actions, shallowEqual);
+
+  return { actions };
+}
+
+function useCopyContent() {
+  const action = useSelector((state) => state.clipboard.action);
+  const source = useSelector((state) => state.clipboard.source, shallowEqual);
+
+  return { action, source };
+}
+
+function useContent() {
+  const id = useSelector((state) =>
+    state.content.data ? state.content.data.id : '',
+  );
+  const title = useSelector((state) =>
+    state.content.data ? state.content.data.title : '',
+  );
+
+  return { id, title };
+}
 
 const Actions = (props) => {
   const intl = useIntl();
