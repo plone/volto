@@ -11,7 +11,7 @@ import { useSelector, shallowEqual } from 'react-redux';
  */
 export function useContent() {
   const data = useSelector((state) => state.content?.data, shallowEqual);
-  
+
   return { data };
 }
 
