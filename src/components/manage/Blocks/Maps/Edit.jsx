@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Input, Message } from 'semantic-ui-react';
 import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
@@ -47,24 +47,27 @@ const Edit = React.memo((props) => {
     setUrl(target.value);
   };
 
-  const onSubmitUrl = () => {
+  const onSubmitUrl = useCallback(() => {
     onChangeBlock(block, {
       ...data,
       url: getSrc(url),
     });
-  };
+  }, [onChangeBlock, block, data, url]);
 
-  const onKeyDownVariantMenuForm = (e) => {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      e.stopPropagation();
-      onSubmitUrl();
-    } else if (e.key === 'Escape') {
-      e.preventDefault();
-      e.stopPropagation();
-      // TODO: Do something on ESC key
-    }
-  };
+  const onKeyDownVariantMenuForm = useCallback(
+    (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        e.stopPropagation();
+        onSubmitUrl();
+      } else if (e.key === 'Escape') {
+        e.preventDefault();
+        e.stopPropagation();
+        // TODO: Do something on ESC key
+      }
+    },
+    [onSubmitUrl],
+  );
 
   const getSrc = (embed) => {
     const parser = new DOMParser();
@@ -82,8 +85,13 @@ const Edit = React.memo((props) => {
     setUrl('');
   };
 
-  const placeholder =
-    data.placeholder || intl.formatMessage(messages.MapsBlockInputPlaceholder);
+  const placeholder = useMemo(
+    () =>
+      data.placeholder ||
+      intl.formatMessage(messages.MapsBlockInputPlaceholder),
+    [data, intl],
+  );
+
   return (
     <div
       className={cx(
