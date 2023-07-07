@@ -1,7 +1,7 @@
 describe('Listing Block Tests', () => {
   beforeEach(() => {
-    // Wait a bit to previous teardown to complete correctly because Heisenbug in this point
-    // cy.wait(2000);
+    cy.intercept('GET', `/**/*?expand*`).as('content');
+    cy.intercept('GET', '/**/Document').as('schema');
     // given a logged in editor and a page in edit mode
     cy.autologin();
     cy.createContent({
@@ -14,11 +14,7 @@ describe('Listing Block Tests', () => {
     cy.removeContent({ path: 'Members' });
 
     cy.visit('/');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('');
+    cy.wait('@content');
   });
 
   it('Add Listing block with no results', () => {
