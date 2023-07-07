@@ -1,19 +1,11 @@
-/**
- * Edit image block.
- * @module components/manage/Blocks/Image/Edit
- */
-
-import React, { Component } from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { compose } from 'redux';
-import { defineMessages, injectIntl } from 'react-intl';
+import { defineMessages, useIntl } from 'react-intl';
 import cx from 'classnames';
 import { Message } from 'semantic-ui-react';
-import { isEqual } from 'lodash';
 
 import { LeadImageSidebar, SidebarPortal } from '@plone/volto/components';
 import { flattenToAppURL } from '@plone/volto/helpers';
-
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
 
 const messages = defineMessages({
@@ -23,102 +15,61 @@ const messages = defineMessages({
   },
 });
 
-/**
- * Edit image block class.
- * @class Edit
- * @extends Component
- */
-class Edit extends Component {
-  /**
-   * Property types.
-   * @property {Object} propTypes Property types.
-   * @static
-   */
-  static propTypes = {
-    properties: PropTypes.objectOf(PropTypes.any).isRequired,
-    selected: PropTypes.bool.isRequired,
-    block: PropTypes.string.isRequired,
-    index: PropTypes.number.isRequired,
-    data: PropTypes.objectOf(PropTypes.any).isRequired,
-    pathname: PropTypes.string.isRequired,
-    onChangeBlock: PropTypes.func.isRequired,
-    openObjectBrowser: PropTypes.func.isRequired,
-  };
+const Edit = React.memo((props) => {
+  const intl = useIntl();
+  const { data, properties, selected } = props;
 
-  /**
-   * Align block handler
-   * @method onAlignBlock
-   * @param {string} align Alignment option
-   * @returns {undefined}
-   */
-  onAlignBlock(align) {
-    this.props.onChangeBlock(this.props.block, {
-      ...this.props.data,
-      align,
-    });
-  }
+  const placeholder = useMemo(
+    () =>
+      data.placeholder ||
+      intl.formatMessage(messages.ImageBlockInputPlaceholder),
+    [data, intl],
+  );
 
-  /**
-   * @param {*} nextProps
-   * @returns {boolean}
-   * @memberof Edit
-   */
-  shouldComponentUpdate(nextProps) {
-    return (
-      this.props.selected ||
-      nextProps.selected ||
-      !isEqual(this.props.data, nextProps.data)
-    );
-  }
+  return (
+    <div
+      className={cx(
+        'block image align',
+        {
+          center: !Boolean(data.align),
+        },
+        data.align,
+      )}
+    >
+      {!properties.image && (
+        <Message>
+          <center>
+            <img src={imageBlockSVG} alt="" />
+            <div className="message-text">{placeholder}</div>
+          </center>
+        </Message>
+      )}
+      {properties.image && (
+        <img
+          className={cx({ 'full-width': data.align === 'full' })}
+          src={
+            properties.image.data
+              ? `data:${properties.image['content-type']};base64,${properties.image.data}`
+              : flattenToAppURL(properties.image.download)
+          }
+          alt={data.image_caption || ''}
+        />
+      )}
+      <SidebarPortal selected={selected}>
+        <LeadImageSidebar {...props} />
+      </SidebarPortal>
+    </div>
+  );
+});
+Edit.propTypes = {
+  properties: PropTypes.objectOf(PropTypes.any).isRequired,
+  selected: PropTypes.bool.isRequired,
+  block: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
+  data: PropTypes.objectOf(PropTypes.any).isRequired,
+  pathname: PropTypes.string.isRequired,
+  onChangeBlock: PropTypes.func.isRequired,
+  openObjectBrowser: PropTypes.func.isRequired,
+};
 
-  node = React.createRef();
-
-  /**
-   * Render method.
-   * @method render
-   * @returns {string} Markup for the component.
-   */
-  render() {
-    const { data, properties } = this.props;
-    const placeholder =
-      this.props.data.placeholder ||
-      this.props.intl.formatMessage(messages.ImageBlockInputPlaceholder);
-
-    return (
-      <div
-        className={cx(
-          'block image align',
-          {
-            center: !Boolean(data.align),
-          },
-          data.align,
-        )}
-      >
-        {!properties.image && (
-          <Message>
-            <center>
-              <img src={imageBlockSVG} alt="" />
-              <div className="message-text">{placeholder}</div>
-            </center>
-          </Message>
-        )}
-        {properties.image && (
-          <img
-            className={cx({ 'full-width': data.align === 'full' })}
-            src={
-              properties.image.data
-                ? `data:${properties.image['content-type']};base64,${properties.image.data}`
-                : flattenToAppURL(properties.image.download)
-            }
-            alt={data.image_caption || ''}
-          />
-        )}
-        <SidebarPortal selected={this.props.selected}>
-          <LeadImageSidebar {...this.props} />
-        </SidebarPortal>
-      </div>
-    );
-  }
-}
-
-export default compose(injectIntl)(Edit);
+export default Edit;
