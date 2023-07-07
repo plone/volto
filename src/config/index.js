@@ -225,9 +225,9 @@ config.settings.apiExpanders = [
   {
     match: '',
     GET_CONTENT: ['navigation'],
-    querystring: {
+    querystring: (config) => ({
       'expand.navigation.depth': config.settings.navDepth,
-    },
+    }),
   },
 ];
 

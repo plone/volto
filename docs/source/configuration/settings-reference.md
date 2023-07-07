@@ -342,6 +342,34 @@ apiExpanders
     ```
     The configuration accepts a list of matchers, with the ability to filter by the request path and action type for maximum flexibility.
     It also accepts a `querystring` object that allows configuring the expanders via query string parameters, such as the navigation expander.
+    The `querystring` object accepts a querystring object or a function that returns a querystring object.
+
+    ```js
+    export default function applyConfig (config) {
+      config.settings.apiExpanders = [
+          ...config.settings.apiExpanders,
+          {
+            match: '',
+            GET_CONTENT: ['mycustomexpander'],
+          },
+          {
+            match: '/de',
+            GET_CONTENT: ['myothercustomexpander'],
+          },
+          {
+            match: '/de',
+            GET_CONTENT: ['navigation'],
+            querystring: (config) => ({
+              'expand.navigation.depth': config.settings.navDepth,
+            }),
+          }
+      ];
+
+      return config;
+    }
+    ```
+
+    This is used in case that you want to pass current (as in resultant, in place) config options to the querystring object.
 
 additionalToolbarComponents
     For additional toolbar menus, the menu body component needs to be added to the on-demand loaded components.
