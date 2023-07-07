@@ -637,11 +637,11 @@ jobs:
       matrix:
         node-version: [16.x]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       # node setup
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'yarn'
@@ -650,7 +650,7 @@ jobs:
       - run: yarn --frozen-lockfile
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v5
         env:
           BABEL_ENV: production
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -673,13 +673,13 @@ jobs:
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000 http://localhost/foo'
 
       # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v3
         if: failure()
         with:
           name: cypress-screenshots
           path: cypress/screenshots
       # Upload Cypress videos
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v3
         if: failure()
         with:
           name: cypress-videos
