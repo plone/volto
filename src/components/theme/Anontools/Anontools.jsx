@@ -6,17 +6,9 @@ import { flattenToAppURL } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 import { useSelector, shallowEqual } from 'react-redux';
 
-function useContent() {
-  const data = useSelector((state) => state.content.data, shallowEqual);
-
-  return { data };
-}
-const useToken = () => {
-  return useSelector((state) => state.userSession.token, shallowEqual);
-};
 const Anontools = () => {
-  const token = useToken();
-  const { data: content } = useContent();
+  const token = useSelector((state) => state.userSession.token, shallowEqual);
+  const content = useSelector((state) => state.content.data, shallowEqual);
 
   const { settings } = config;
   return (

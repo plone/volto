@@ -10,12 +10,8 @@ import {
   SearchWidget,
 } from '@plone/volto/components';
 
-const useToken = () => {
-  return useSelector((state) => state.userSession.token, shallowEqual);
-};
-
 const Header = ({ pathname }) => {
-  const token = useToken();
+  const token = useSelector((state) => state.userSession.token, shallowEqual);
 
   return (
     <Segment basic className="header-wrapper" role="banner">
