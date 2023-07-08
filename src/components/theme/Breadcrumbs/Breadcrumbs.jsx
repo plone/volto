@@ -21,17 +21,12 @@ const messages = defineMessages({
   },
 });
 
-const useBreadcrumbs = () => {
-  const items = useSelector((state) => state.breadcrumbs.items, shallowEqual);
-  const root = useSelector((state) => state.breadcrumbs.root);
-
-  return { items, root };
-};
-
 const BreadcrumbsComponent = ({ pathname }) => {
   const intl = useIntl();
   const dispatch = useDispatch();
-  const { items, root } = useBreadcrumbs();
+
+  const items = useSelector((state) => state.breadcrumbs.items, shallowEqual);
+  const root = useSelector((state) => state.breadcrumbs.root);
 
   useEffect(() => {
     if (!hasApiExpander('breadcrumbs', getBaseUrl(pathname))) {
