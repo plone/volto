@@ -42,23 +42,14 @@ const messages = defineMessages({
   },
 });
 
-const useToken = () => {
-  return useSelector((state) => state.userSession.token, shallowEqual);
-};
-const useUsers = () => {
-  const user = useSelector((state) => state.users.user);
-
-  return { user };
-};
-
 const PersonalTools = (props) => {
   const dispatch = useDispatch();
   const intl = useIntl();
   const { pathname } = useLocation();
   const [setPushed] = useState(false);
-  const token = useToken();
+  const token = useSelector((state) => state.userSession.token, shallowEqual);
+  const user = useSelector((state) => state.users.user);
   const userId = token ? jwtDecode(token).sub : '';
-  const { user } = useUsers();
 
   useEffect(() => {
     dispatch(getUser(userId));
