@@ -58,15 +58,12 @@ this is achieved by having the `<Pluggables>` and `<Plug>` components register
 themselves with the Provider via React context.
 
 ```{note}
-
 While Pluggables are a powerful framework for enhancing component integration, they are currently not compatible with server-side rendering (SSR).
 
 They excel in providing dynamic visual enhancements for the user interface, such as client components and widgets.
 
 However, when it comes to handling critical data that needs to load quickly, alternative approaches may be more suitable.
-
-	```
-
+```
 ## Customize the rendering of plugs
 
 You can customize the rendering of pluggables. The `<Pluggable>` component can take a function as a child and use that function to describe the rendering of pluggables.
@@ -76,7 +73,6 @@ You can customize the rendering of pluggables. The `<Pluggable>` component can t
   {(pluggables) => pluggables.map((p) => <>{p()}</>)}
 </Pluggable>
 ```
-
 ## Passing parameters from the Pluggable to the Plugs
 
 You can also pass options to the `Plugs`, to enable inter-component communication:
