@@ -18,14 +18,8 @@ const messages = defineMessages({
   },
 });
 
-function useToken() {
-  const token = useSelector((state) => state.userSession.token, shallowEqual);
-
-  return token;
-}
-
 const Logout = ({ location }) => {
-  const token = useToken();
+  const token = useSelector((state) => state.userSession.token, shallowEqual);
   const history = useHistory();
   const dispatch = useDispatch();
   const intl = useIntl();
