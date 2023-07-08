@@ -132,8 +132,8 @@ export const Cell = injectLazyLibs([
 ])(CellComponent);
 
 const Preloader = (props) => {
-  const [loaded, setLoaded] = useState(false);
-  useEffect(() => {
+  const [loaded, setLoaded] = React.useState(false);
+  React.useEffect(() => {
     Editor.load().then(() => setLoaded(true));
   }, []);
   return loaded ? <Cell {...props} /> : null;
