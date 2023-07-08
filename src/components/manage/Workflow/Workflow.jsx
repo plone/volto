@@ -159,11 +159,6 @@ const customSelectStyles = {
   }),
 };
 
-function useContent() {
-  const data = useSelector((state) => state.content?.data, shallowEqual);
-
-  return { data };
-}
 function useWorkflow() {
   const history = useSelector((state) => state.workflow.history, shallowEqual);
   const transitions = useSelector(
@@ -183,7 +178,7 @@ const Workflow = (props) => {
   const intl = useIntl();
   const dispatch = useDispatch();
   const { loaded, transitions, currentStateValue } = useWorkflow();
-  const { data: content } = useContent();
+  const content = useSelector((state) => state.content?.data, shallowEqual);
   const { pathname } = props;
   useEffect(() => {
     dispatch(getWorkflow(pathname));
