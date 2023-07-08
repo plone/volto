@@ -123,37 +123,22 @@ let toolbarComponents = {
   },
 };
 
-function useTypes() {
-  const type = useSelector((state) => state.types.types, shallowEqual);
-  const types = filter(type, 'addable');
-  return types;
-}
-
-function useContent() {
-  const data = useSelector((state) => state.content?.data, shallowEqual);
-  const unlockRequest = useSelector((state) => state.content?.unlock);
-
-  return { data, unlockRequest };
-}
-function useActions() {
-  const actions = useSelector((state) => state.actions.actions, shallowEqual);
-
-  return { actions };
-}
-function useToken() {
-  return useSelector((state) => state.userSession.token, shallowEqual);
-}
-
 const Toolbar = (props) => {
   const intl = useIntl();
   const dispatch = useDispatch();
   const toolbarWindow = useRef();
   const pusher = useRef();
 
-  const { actions } = useActions();
-  const { data: content, unlockRequest } = useContent();
-  const token = useToken();
-  const types = useTypes();
+  const actions = useSelector((state) => state.actions.actions, shallowEqual);
+
+  const content = useSelector((state) => state.content?.data, shallowEqual);
+  const unlockRequest = useSelector((state) => state.content?.unlock);
+
+  const token = useSelector((state) => state.userSession.token, shallowEqual);
+
+  const type = useSelector((state) => state.types.types, shallowEqual);
+  const types = filter(type, 'addable');
+
   const userId = token ? jwtDecode(token).sub : '';
 
   const { cookies, pathname, hideDefaultViewButtons, inner } = props;
