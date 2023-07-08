@@ -102,21 +102,6 @@ const messages = defineMessages({
     defaultMessage: 'An error occurred while performing this operation.',
   },
 });
-const useContent = () => {
-  const data = useSelector((state) => state.content?.data, shallowEqual);
-
-  return { data };
-};
-const useActions = () => {
-  const actions = useSelector((state) => state.actions.actions, shallowEqual);
-
-  return { actions };
-};
-
-const useWorkingCopy = () => {
-  const workingCopy = useSelector((state) => state.workingCopy, shallowEqual);
-  return workingCopy;
-};
 
 const More = (props) => {
   const dispatch = useDispatch();
@@ -125,9 +110,9 @@ const More = (props) => {
   const [, setPushed] = useState(false);
   const pathname = props.pathname;
 
-  const { data: content } = useContent();
-  const workingCopy = useWorkingCopy();
-  const { actions } = useActions();
+  const content = useSelector((state) => state.content?.data, shallowEqual);
+  const workingCopy = useSelector((state) => state.workingCopy, shallowEqual);
+  const actions = useSelector((state) => state.actions.actions, shallowEqual);
 
   const workingCopy_apply = workingCopy?.apply.loading;
   const workingCopy_create = workingCopy?.create.loading;
