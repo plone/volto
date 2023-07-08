@@ -4,19 +4,13 @@ import { map } from 'lodash';
 
 import { removeMessage } from '@plone/volto/actions';
 
-const useMessages = () => {
+const Messages = () => {
+  const dispatch = useDispatch();
+
   const messages = useSelector(
     (state) => state.messages.messages,
     shallowEqual,
   );
-
-  return messages;
-};
-
-const Messages = () => {
-  const dispatch = useDispatch();
-
-  const messages = useMessages();
 
   const onDismiss = ({ value }) => {
     dispatch(removeMessage(value));
