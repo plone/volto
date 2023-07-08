@@ -22,17 +22,11 @@ const messages = defineMessages({
   },
 });
 
-const useComments = () => {
-  const request = useSelector((state) => state.comments.update, shallowEqual);
-
-  return request;
-};
-
 const CommentEditModal = (props) => {
   const intl = useIntl();
   const dispatch = useDispatch();
   const { onOk, open, onCancel } = props;
-  const request = useComments();
+  const request = useSelector((state) => state.comments.update, shallowEqual);
 
   const prevRequestLoading = usePrevious(request.loading);
 
