@@ -25,20 +25,14 @@ const messages = defineMessages({
   },
 });
 
-function useContent() {
-  const deleteRequest = useSelector((state) => state.content?.delete);
-  const data = useSelector((state) => state.content?.data, shallowEqual);
-
-  return { data, deleteRequest };
-}
-
 const Delete = () => {
   const dispatch = useDispatch();
   const intl = useIntl();
   const [isClient, setisClient] = useState(false);
   const { pathname, search } = useLocation();
   const history = useHistory();
-  const { data: content, deleteRequest } = useContent();
+  const deleteRequest = useSelector((state) => state.content?.delete);
+  const content = useSelector((state) => state.content?.data, shallowEqual);
 
   const prevdeleteRequestLoading = usePrevious(deleteRequest.loading);
   const returnUrl = qs.parse(search).return_url;
