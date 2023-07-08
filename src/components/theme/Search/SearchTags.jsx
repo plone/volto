@@ -6,18 +6,6 @@ import { getVocabulary } from '@plone/volto/actions';
 
 const vocabulary = 'plone.app.vocabularies.Keywords';
 
-const useVocabularies = (vocabulary = '') => {
-  const items = useSelector(
-    (state) =>
-      state.vocabularies[vocabulary] && state.vocabularies[vocabulary].items
-        ? state.vocabularies[vocabulary].items
-        : [],
-    shallowEqual,
-  );
-
-  return items;
-};
-
 const SearchTags = () => {
   const dispatch = useDispatch();
 
@@ -25,7 +13,13 @@ const SearchTags = () => {
     dispatch(getVocabulary({ vocabNameOrURL: vocabulary }));
   }, [dispatch]);
 
-  const items = useVocabularies(vocabulary);
+  const items = useSelector(
+    (state) =>
+      state.vocabularies[vocabulary] && state.vocabularies[vocabulary].items
+        ? state.vocabularies[vocabulary].items
+        : [],
+    shallowEqual,
+  );
 
   return items && items.length > 0 ? (
     <div>
