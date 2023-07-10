@@ -32,19 +32,23 @@ const CellComponent = (props) => {
   const createInlineToolbarPlugin = draftJsInlineToolbarPlugin.default;
   let draftConfig;
   let editorstate;
-  editorState = EditorState.createWithContent(convertFromRaw(props.value));
+  editorstate = EditorState.createWithContent(convertFromRaw(props.value));
+  const [editorState, setEditorState] = useState();
 
+  const [inlineToolbarPlugin,setInlineToolbarPlugin] = useState();
   if (!__SERVER__) {
     draftConfig = config.settings.richtextEditorSettings(props);
+    let editorstate;
+    editorstate = EditorState.createWithContent(convertFromRaw(value));
+
+    const inlineToolbarPlugin = createInlineToolbarPlugin({
+      structure: draftConfig.richTextEditorInlineToolbarButtons,
+    });
+    setEditorState(editorstate);
+    setInlineToolbarPlugin(inlineToolbarPlugin);
   }
 
-  const [editorState, setEditorState] = useState(editorstate);
 
-  const [inlineToolbarPlugin] = useState(
-    createInlineToolbarPlugin({
-      structure: draftConfig.richTextEditorInlineToolbarButtons,
-    }),
-  );
 
   const previsTableBlockSelected = usePrevious(isTableBlockSelected);
 
