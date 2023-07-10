@@ -69,7 +69,7 @@ const TeaserDefaultTemplate = (props) => {
           >
             <div className="teaser-item default">
               {renderedImage && (
-                <div className="grid-image-wrapper">{renderedImage}</div>
+                <div className="image-wrapper">{renderedImage}</div>
               )}
               <div className="content">
                 {data?.head_title && (
