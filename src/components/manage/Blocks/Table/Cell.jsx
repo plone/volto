@@ -31,13 +31,14 @@ const CellComponent = (props) => {
   const { EditorState, convertFromRaw } = draftJs;
   const createInlineToolbarPlugin = draftJsInlineToolbarPlugin.default;
   let draftConfig;
+  let editorstate;
+  editorState = EditorState.createWithContent(convertFromRaw(props.value));
+
   if (!__SERVER__) {
     draftConfig = config.settings.richtextEditorSettings(props);
   }
 
-  const [editorState, setEditorState] = useState(
-    EditorState.createWithContent(convertFromRaw(value)),
-  );
+  const [editorState, setEditorState] = useState(editorstate);
 
   const [inlineToolbarPlugin] = useState(
     createInlineToolbarPlugin({
