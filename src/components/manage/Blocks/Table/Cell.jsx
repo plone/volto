@@ -24,7 +24,6 @@ const CellComponent = (props) => {
     onSelectBlock,
     onAddBlock,
     index,
-   
   } = props;
 
   const node = useRef();
@@ -37,7 +36,7 @@ const CellComponent = (props) => {
 
   const [editorState, setEditorState] = useState();
 
-  const [inlineToolbarPlugin,setInlineToolbarPlugin] = useState();
+  const [inlineToolbarPlugin, setInlineToolbarPlugin] = useState();
   if (!__SERVER__) {
     draftConfig = config.settings.richtextEditorSettings(props);
     let editorstate;
@@ -60,7 +59,7 @@ const CellComponent = (props) => {
         onSelectCell(row, cell);
       };
     }
-  },[]);
+  }, []);
 
   useEffect(() => {
     if (
@@ -70,7 +69,7 @@ const CellComponent = (props) => {
     ) {
       node.focus();
     }
-  },[]);
+  }, []);
 
   const onChange = (editorState) => {
     setEditorState(onChange(row, cell, editorState));
