@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { Form, Input } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
 
@@ -17,14 +17,14 @@ const messages = defineMessages({
   },
 });
 
-const SearchWidget = () => {
+const SearchWidget = (props) => {
   const intl = useIntl();
   const [text, setText] = useState('');
   const history = useHistory();
   const onChangeText = (event, { value }) => {
     setText(value);
   };
-  const pathname = useLocation();
+  const pathname = props.pathname;
   const onSubmit = (event) => {
     const path =
       pathname?.length > 0 ? `&path=${encodeURIComponent(pathname)}` : '';
