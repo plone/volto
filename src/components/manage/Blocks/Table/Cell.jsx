@@ -24,6 +24,7 @@ const CellComponent = (props) => {
     onSelectBlock,
     onAddBlock,
     index,
+   
   } = props;
 
   const node = useRef();
@@ -32,7 +33,8 @@ const CellComponent = (props) => {
   const createInlineToolbarPlugin = draftJsInlineToolbarPlugin.default;
   let draftConfig;
   let editorstate;
-  editorstate = EditorState.createWithContent(convertFromRaw(props.value));
+  editorstate = EditorState.createWithContent(convertFromRaw(value));
+
   const [editorState, setEditorState] = useState();
 
   const [inlineToolbarPlugin,setInlineToolbarPlugin] = useState();
@@ -48,8 +50,6 @@ const CellComponent = (props) => {
     setInlineToolbarPlugin(inlineToolbarPlugin);
   }
 
-
-
   const previsTableBlockSelected = usePrevious(isTableBlockSelected);
 
   useEffect(() => {
@@ -60,7 +60,7 @@ const CellComponent = (props) => {
         onSelectCell(row, cell);
       };
     }
-  });
+  },[]);
 
   useEffect(() => {
     if (
@@ -70,10 +70,10 @@ const CellComponent = (props) => {
     ) {
       node.focus();
     }
-  });
+  },[]);
 
   const onChange = (editorState) => {
-    setEditorState(props.onChange(row, cell, editorState));
+    setEditorState(onChange(row, cell, editorState));
   };
 
   if (__SERVER__) {
