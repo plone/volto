@@ -662,7 +662,7 @@ jobs:
           record: true
           parallel: false
           browser: chrome
-          group: Seamless
+          group: Prefix
           spec: cypress/tests/minimal/**/*.js
           config: baseUrl=http://localhost/foo
           env: prefixPath=/foo
