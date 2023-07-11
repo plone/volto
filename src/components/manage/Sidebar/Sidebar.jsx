@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Tab } from 'semantic-ui-react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -58,7 +58,7 @@ const Sidebar = (props) => {
     resetFullSizeSidebar();
   };
 
-  const resetFullSizeSidebar = () => {
+  const resetFullSizeSidebar = useCallback(() => {
     if (!expanded) {
       const currentResizer = document.querySelector('#sidebar');
       const sidebarContainer = currentResizer.getElementsByClassName(
@@ -68,9 +68,9 @@ const Sidebar = (props) => {
       sidebarContainer.classList.remove('no-toolbar');
       setshowFull(true);
     }
-  };
+  }, [expanded]);
 
-  const onToggleFullSize = () => {
+  const onToggleFullSize = useCallback(() => {
     const currentResizer = document.querySelector('#sidebar');
     const sidebarContainer = currentResizer.getElementsByClassName(
       'sidebar-container',
@@ -88,7 +88,7 @@ const Sidebar = (props) => {
       sidebarContainer.classList.remove('no-toolbar');
     }
     setshowFull(!prevShowFull);
-  };
+  }, [prevShowFull, showFull, toolbarExpanded]);
 
   const onTabChange = (event, data) => {
     event.nativeEvent.stopImmediatePropagation();
