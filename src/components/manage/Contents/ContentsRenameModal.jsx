@@ -1,15 +1,10 @@
-/**
- * Contents rename modal.
- * @module components/manage/Contents/ContentsRenameModal
- */
-
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { concat, merge, map } from 'lodash';
-import { defineMessages, injectIntl } from 'react-intl';
+import { defineMessages, useIntl } from 'react-intl';
 
+import { usePrevious } from '@plone/volto/helpers';
 import { updateContent } from '@plone/volto/actions';
 import { ModalForm } from '@plone/volto/components';
 
@@ -40,140 +35,91 @@ const messages = defineMessages({
   },
 });
 
-/**
- * ContentsRenameModal class.
- * @class ContentsRenameModal
- * @extends Component
- */
-class ContentsRenameModal extends Component {
-  /**
-   * Property types.
-   * @property {Object} propTypes Property types.
-   * @static
-   */
-  static propTypes = {
-    updateContent: PropTypes.func.isRequired,
-    items: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string,
-        title: PropTypes.string,
-        url: PropTypes.string,
-      }),
-    ).isRequired,
-    request: PropTypes.shape({
-      loading: PropTypes.bool,
-      loaded: PropTypes.bool,
-    }).isRequired,
-    open: PropTypes.bool.isRequired,
-    onOk: PropTypes.func.isRequired,
-    onCancel: PropTypes.func.isRequired,
+const ContentsRenameModal = (props) => {
+  const { onOk, open, items, onCancel } = props;
+  const intl = useIntl();
+  const dispatch = useDispatch();
+  const request = useSelector((state) => state.content.update);
+  const prevrequestloading = usePrevious(request.loading);
+
+  useEffect(() => {
+    if (prevrequestloading && request.loaded) {
+      onOk();
+    }
+  }, [onOk, prevrequestloading, request.loaded]);
+
+  const onSubmit = (data) => {
+    dispatch(
+      updateContent(
+        map(items, (item) => item.url),
+        map(items, (item, index) => ({
+          id: data[`${index}_id`],
+          title: data[`${index}_title`],
+        })),
+      ),
+    );
   };
 
-  /**
-   * Constructor
-   * @method constructor
-   * @param {Object} props Component properties
-   * @constructs ContentsUploadModal
-   */
-  constructor(props) {
-    super(props);
-    this.onSubmit = this.onSubmit.bind(this);
-  }
-
-  /**
-   * Component will receive props
-   * @method componentWillReceiveProps
-   * @param {Object} nextProps Next properties
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (this.props.request.loading && nextProps.request.loaded) {
-      this.props.onOk();
-    }
-  }
-
-  /**
-   * Submit handler
-   * @method onSubmit
-   * @param {Object} data Form data
-   * @returns {undefined}
-   */
-  onSubmit(data) {
-    this.props.updateContent(
-      map(this.props.items, (item) => item.url),
-      map(this.props.items, (item, index) => ({
-        id: data[`${index}_id`],
-        title: data[`${index}_title`],
-      })),
-    );
-  }
-
-  /**
-   * Render method.
-   * @method render
-   * @returns {string} Markup for the component.
-   */
-  render() {
-    return (
-      this.props.open && (
-        <ModalForm
-          open={this.props.open}
-          loading={this.props.request.loading}
-          loadingMessage={this.props.intl.formatMessage(
-            messages.loadingMessage,
-          )}
-          onSubmit={this.onSubmit}
-          onCancel={this.props.onCancel}
-          formData={merge(
-            ...map(this.props.items, (item, index) => ({
-              [`${index}_title`]: item.title,
-              [`${index}_id`]: item.id,
-            })),
-          )}
-          title={this.props.intl.formatMessage(messages.renameItems)}
-          schema={{
-            fieldsets: [
-              {
-                id: 'default',
-                title: this.props.intl.formatMessage(messages.default),
-                fields: concat(
-                  ...map(this.props.items, (item, index) => [
-                    `${index}_title`,
-                    `${index}_id`,
-                  ]),
-                ),
+  return (
+    open && (
+      <ModalForm
+        open={open}
+        loading={request.loading}
+        loadingMessage={intl.formatMessage(messages.loadingMessage)}
+        onSubmit={onSubmit}
+        onCancel={onCancel}
+        formData={merge(
+          ...map(items, (item, index) => ({
+            [`${index}_title`]: item.title,
+            [`${index}_id`]: item.id,
+          })),
+        )}
+        title={intl.formatMessage(messages.renameItems)}
+        schema={{
+          fieldsets: [
+            {
+              id: 'default',
+              title: intl.formatMessage(messages.default),
+              fields: concat(
+                ...map(items, (item, index) => [
+                  `${index}_title`,
+                  `${index}_id`,
+                ]),
+              ),
+            },
+          ],
+          properties: merge(
+            ...map(items, (item, index) => ({
+              [`${index}_title`]: {
+                title: intl.formatMessage(messages.title),
+                type: 'string',
+                description: '',
               },
-            ],
-            properties: merge(
-              ...map(this.props.items, (item, index) => ({
-                [`${index}_title`]: {
-                  title: this.props.intl.formatMessage(messages.title),
-                  type: 'string',
-                  description: '',
-                },
-                [`${index}_id`]: {
-                  title: this.props.intl.formatMessage(messages.shortName),
-                  type: 'id',
-                  description: this.props.intl.formatMessage(
-                    messages.shortNameDescription,
-                  ),
-                },
-              })),
-            ),
-            required: [],
-          }}
-        />
-      )
-    );
-  }
-}
+              [`${index}_id`]: {
+                title: intl.formatMessage(messages.shortName),
+                type: 'id',
+                description: intl.formatMessage(messages.shortNameDescription),
+              },
+            })),
+          ),
+          required: [],
+        }}
+      />
+    )
+  );
+};
 
-export default compose(
-  injectIntl,
-  connect(
-    (state) => ({
-      request: state.content.update,
+ContentsRenameModal.propTypes = {
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      title: PropTypes.string,
+      url: PropTypes.string,
     }),
-    { updateContent },
-  ),
-)(ContentsRenameModal);
+  ).isRequired,
+  open: PropTypes.bool.isRequired,
+  onOk: PropTypes.func.isRequired,
+  onCancel: PropTypes.func.isRequired,
+};
+
+export default ContentsRenameModal;
