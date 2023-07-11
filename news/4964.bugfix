@@ -1,0 +1,1 @@
+Fix handling of overriden image in Teaser, improve in case that a custom image component is present. @sneridagh
