@@ -1,4 +1,9 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, {
+  useState,
+  useEffect,
+  useCallback,
+  useRef,
+} from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
@@ -58,8 +63,6 @@ const ObjectBrowserBody = (props) => {
     onChangeBlock,
     maximumSelectionSize,
     closeObjectBrowser,
-    prop_onSelectItem,
-    prop_selectableTypes,
   } = props;
 
   const intl = useIntl();
@@ -152,7 +155,7 @@ const ObjectBrowserBody = (props) => {
         );
       }
     },
-    [block, currentFolder, dispatch, selectedHref, selectedImage],
+    [dispatch, block, selectedHref, currentFolder, selectedImage],
   );
 
   useEffect(() => {
@@ -163,205 +166,171 @@ const ObjectBrowserBody = (props) => {
     if (searchInputRef?.current) searchInputRef.current.focus();
   }, [showSearchInput]);
 
-  const navigateTo = useCallback(
-    (id) => {
+  const navigateTo = (id) => {
+    dispatch(
+      searchContent(
+        id,
+        {
+          'path.depth': 1,
+          sort_on: 'getObjPositionInParent',
+          metadata_fields: '_all',
+          b_size: 1000,
+        },
+        `${block}-${mode}`,
+      ),
+    );
+    const parent = `${join(id.split('/').slice(0, -1), '/')}` || '/';
+    setParentFolder(parent);
+    setCurrentFolder(id || '/');
+  };
+
+  const toggleSearchInput = () => setshowSearchInput(!prevshowsearchinput);
+
+  const onSearch = (e) => {
+    const text = flattenToAppURL(e.target.value);
+    if (text.startsWith('/')) {
+      setCurrentFolder(text);
+
       dispatch(
         searchContent(
-          id,
+          text,
           {
             'path.depth': 1,
             sort_on: 'getObjPositionInParent',
             metadata_fields: '_all',
-            b_size: 1000,
+            portal_type: searchableTypes,
           },
           `${block}-${mode}`,
         ),
       );
-      const parent = `${join(id.split('/').slice(0, -1), '/')}` || '/';
-      setParentFolder(parent);
-      setCurrentFolder(id || '/');
-    },
-    [block, dispatch, mode],
-  );
+    } else {
+      text.length > 2
+        ? dispatch(
+            searchContent(
+              '/',
+              {
+                SearchableText: `${text}*`,
+                metadata_fields: '_all',
+                portal_type: searchableTypes,
+              },
+              `${block}-${mode}`,
+            ),
+          )
+        : dispatch(
+            searchContent(
+              '/',
+              {
+                'path.depth': 1,
+                sort_on: 'getObjPositionInParent',
+                metadata_fields: '_all',
+                portal_type: searchableTypes,
+              },
+              `${block}-${mode}`,
+            ),
+          );
+    }
+  };
 
-  const toggleSearchInput = () => setshowSearchInput(!prevshowsearchinput);
-
-  const onSearch = useCallback(
-    (e) => {
-      const text = flattenToAppURL(e.target.value);
-      if (text.startsWith('/')) {
-        setCurrentFolder(text);
-
-        dispatch(
-          searchContent(
-            text,
-            {
-              'path.depth': 1,
-              sort_on: 'getObjPositionInParent',
-              metadata_fields: '_all',
-              portal_type: searchableTypes,
-            },
-            `${block}-${mode}`,
-          ),
-        );
-      } else {
-        text.length > 2
-          ? dispatch(
-              searchContent(
-                '/',
-                {
-                  SearchableText: `${text}*`,
-                  metadata_fields: '_all',
-                  portal_type: searchableTypes,
-                },
-                `${block}-${mode}`,
-              ),
-            )
-          : dispatch(
-              searchContent(
-                '/',
-                {
-                  'path.depth': 1,
-                  sort_on: 'getObjPositionInParent',
-                  metadata_fields: '_all',
-                  portal_type: searchableTypes,
-                },
-                `${block}-${mode}`,
-              ),
-            );
+  const onSelectItem = (item) => {
+    const url = item['@id'];
+    const updateState = (mode) => {
+      switch (mode) {
+        case 'image':
+          setSelectedImage(url);
+          setCurrentImageFolder(getParentURL(url));
+          break;
+        case 'link':
+          setSelectedHref(url);
+          setCurrentLinkFolder(getParentURL(url));
+          break;
+        default:
+          break;
       }
-    },
-    [block, dispatch, mode, searchableTypes],
-  );
+    };
 
-  const onSelectItem = useCallback(
-    (item) => {
-      const url = item['@id'];
-      const updateState = (mode) => {
-        switch (mode) {
-          case 'image':
-            setSelectedImage(url);
-            setCurrentImageFolder(getParentURL(url));
-            break;
-          case 'link':
-            setSelectedHref(url);
-            setCurrentLinkFolder(getParentURL(url));
-            break;
-          default:
-            break;
-        }
-      };
+    if (dataName) {
+      onChangeBlock(block, {
+        ...data,
+        [dataName]: url,
+      });
+    } else if (props.onSelectItem) {
+      props.onSelectItem(url, item);
+    } else if (mode === 'image') {
+      onChangeBlock(block, {
+        ...data,
+        url: flattenToAppURL(item.getURL),
+        alt: '',
+      });
+    } else if (mode === 'link') {
+      onChangeBlock(block, {
+        ...data,
+        href: flattenToAppURL(url),
+      });
+    }
+    updateState(mode);
+  };
 
-      if (dataName) {
-        onChangeBlock(block, {
-          ...data,
-          [dataName]: url,
-        });
-      } else if (prop_onSelectItem) {
-        prop_onSelectItem(url, item);
-      } else if (mode === 'image') {
-        onChangeBlock(block, {
-          ...data,
-          url: flattenToAppURL(item.getURL),
-          alt: '',
-        });
-      } else if (mode === 'link') {
-        onChangeBlock(block, {
-          ...data,
-          href: flattenToAppURL(url),
-        });
+  const isSelectable = (item) => {
+    return props.selectableTypes.length > 0
+      ? props.selectableTypes.indexOf(item['@type']) >= 0
+      : true;
+  };
+
+  const handleClickOnItem = (item) => {
+    if (mode === 'image') {
+      if (item.is_folderish) {
+        navigateTo(item['@id']);
       }
-      updateState(mode);
-    },
-    [block, prop_onSelectItem, onChangeBlock, data, dataName, mode],
-  );
-
-  const isSelectable = useCallback(
-    (item) => {
-      return prop_selectableTypes.length > 0
-        ? prop_selectableTypes.indexOf(item['@type']) >= 0
-        : true;
-    },
-    [prop_selectableTypes],
-  );
-
-  const handleClickOnItem = useCallback(
-    (item) => {
-      if (mode === 'image') {
-        if (item.is_folderish) {
-          navigateTo(item['@id']);
-        }
-        if (config.settings.imageObjects.includes(item['@type'])) {
+      if (config.settings.imageObjects.includes(item['@type'])) {
+        onSelectItem(item);
+      }
+    } else {
+      if (isSelectable(item)) {
+        if (
+          !maximumSelectionSize ||
+          mode === 'multiple' ||
+          !data ||
+          data.length < maximumSelectionSize
+        ) {
           onSelectItem(item);
-        }
-      } else {
-        if (isSelectable(item)) {
-          if (
-            !maximumSelectionSize ||
-            mode === 'multiple' ||
-            !data ||
-            data.length < maximumSelectionSize
-          ) {
-            onSelectItem(item);
-            let length = data ? data.length : 0;
+          let length = data ? data.length : 0;
 
-            let stopSelecting =
-              mode !== 'multiple' ||
-              (maximumSelectionSize > 0 && length + 1 >= maximumSelectionSize);
+          let stopSelecting =
+            mode !== 'multiple' ||
+            (maximumSelectionSize > 0 && length + 1 >= maximumSelectionSize);
 
-            if (stopSelecting) {
-              closeObjectBrowser();
-            }
-          } else {
+          if (stopSelecting) {
             closeObjectBrowser();
           }
         } else {
-          navigateTo(item['@id']);
-        }
-      }
-    },
-    [
-      mode,
-      closeObjectBrowser,
-      data,
-      isSelectable,
-      maximumSelectionSize,
-      onSelectItem,
-      navigateTo,
-    ],
-  );
-
-  const handleDoubleClickOnItem = useCallback(
-    (item) => {
-      if (mode === 'image') {
-        if (item.is_folderish) {
-          navigateTo(item['@id']);
-        }
-        if (config.settings.imageObjects.includes(item['@type'])) {
-          onSelectItem(item);
           closeObjectBrowser();
         }
       } else {
-        if (isSelectable(item)) {
-          if (data.length < maximumSelectionSize) {
-            onSelectItem(item);
-          }
-          closeObjectBrowser();
-        } else {
-          navigateTo(item['@id']);
-        }
+        navigateTo(item['@id']);
       }
-    },
-    [
-      mode,
-      data.length,
-      maximumSelectionSize,
-      navigateTo,
-      isSelectable,
-      closeObjectBrowser,
-      onSelectItem,
-    ],
-  );
+    }
+  };
+
+  const handleDoubleClickOnItem = (item) => {
+    if (mode === 'image') {
+      if (item.is_folderish) {
+        navigateTo(item['@id']);
+      }
+      if (config.settings.imageObjects.includes(item['@type'])) {
+        onSelectItem(item);
+        closeObjectBrowser();
+      }
+    } else {
+      if (isSelectable(item)) {
+        if (data.length < maximumSelectionSize) {
+          onSelectItem(item);
+        }
+        closeObjectBrowser();
+      } else {
+        navigateTo(item['@id']);
+      }
+    }
+  };
 
   return (
     <Segment.Group raised>
