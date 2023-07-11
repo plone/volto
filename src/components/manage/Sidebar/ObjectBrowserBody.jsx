@@ -59,6 +59,7 @@ const ObjectBrowserBody = (props) => {
     maximumSelectionSize,
     closeObjectBrowser,
     prop_onSelectItem,
+    prop_selectableTypes,
   } = props;
 
   const intl = useIntl();
@@ -277,11 +278,11 @@ const ObjectBrowserBody = (props) => {
 
   const isSelectable = useCallback(
     (item) => {
-      return props.selectableTypes.length > 0
-        ? props.selectableTypes.indexOf(item['@type']) >= 0
+      return prop_selectableTypes.length > 0
+        ? prop_selectableTypes.indexOf(item['@type']) >= 0
         : true;
     },
-    [props.selectableTypes],
+    [prop_selectableTypes],
   );
 
   const handleClickOnItem = useCallback(
