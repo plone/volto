@@ -161,19 +161,14 @@ const Comments = (props) => {
   const onDelete = (value) => {
     dispatch(deleteComment(value));
   };
+const prevcollapsedComments=usePrevious(collapsedComments);
 
   const hideReply = (commentId) => {
-    setcollapsedComments((prevState) => {
-      const hasComment = prevState.collapsedComments[commentId];
-      const { collapsedComments } = prevState;
-      return {
-        collapsedComments: {
-          ...collapsedComments,
-          [commentId]: !hasComment,
-        },
-      };
-    });
-  };
+    const hasComment = prevcollapsedComments[commentId];
+    setcollapsedComments( {...prevcollapsedComments,
+      [commentId]: !hasComment});
+    };
+
 
   const onEdit = useCallback((value) => {
     setshowEdit(true);
