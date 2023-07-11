@@ -19,7 +19,6 @@ import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers/Url/Url';
 import { usePrevious } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
-
 import backSVG from '@plone/volto/icons/back.svg';
 import folderSVG from '@plone/volto/icons/folder.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
