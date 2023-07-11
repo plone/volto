@@ -49,37 +49,20 @@ const messages = defineMessages({
   },
 });
 
-function useActions() {
+const Actions = (props) => {
+  const intl = useIntl();
+  const dispatch = useDispatch();
+  const [showRename, setshowRename] = useState(false);
   const actions = useSelector((state) => state.actions.actions, shallowEqual);
-
-  return { actions };
-}
-
-function useCopyContent() {
   const action = useSelector((state) => state.clipboard.action);
   const source = useSelector((state) => state.clipboard.source, shallowEqual);
 
-  return { action, source };
-}
-
-function useContent() {
   const id = useSelector((state) =>
     state.content.data ? state.content.data.id : '',
   );
   const title = useSelector((state) =>
     state.content.data ? state.content.data.title : '',
   );
-
-  return { id, title };
-}
-
-const Actions = (props) => {
-  const intl = useIntl();
-  const dispatch = useDispatch();
-  const [showRename, setshowRename] = useState(false);
-  const { actions } = useActions();
-  const { action, source } = useCopyContent();
-  const { id, title } = useContent();
 
   const onRenameOk = () => {
     setshowRename(false);
