@@ -65,22 +65,15 @@ const messages = defineMessages({
     defaultMessage: 'Forgot your password?',
   },
 });
-const useUserSession = () => {
-  const error = useSelector((state) => state.userSession.login.error);
-  const loading = useSelector((state) => state.userSession.login.loading);
-  return { loading, error };
-};
-const useToken = () => {
-  return useSelector((state) => state.userSession.token, shallowEqual);
-};
 
 const Login = () => {
   const intl = useIntl();
   const history = useHistory();
   const { search, pathname } = useLocation();
   const dispatch = useDispatch();
-  const token = useToken();
-  const { loading, error } = useUserSession();
+  const token = useSelector((state) => state.userSession.token, shallowEqual);
+  const error = useSelector((state) => state.userSession.login.error);
+  const loading = useSelector((state) => state.userSession.login.loading);
   const returnUrl =
     qs.parse(search).return_url ||
     pathname.replace(/\/login\/?$/, '').replace(/\/logout\/?$/, '') ||
