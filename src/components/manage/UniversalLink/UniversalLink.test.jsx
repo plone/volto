@@ -157,6 +157,42 @@ describe('UniversalLink', () => {
     );
   });
 
+  it('UniversalLink renders external link where link is blacklisted', () => {
+    const notInEN = /^(?!.*(#|\/en|\/static|\/controlpanel|\/cypress|\/login|\/logout|\/contact-form)).*$/;
+    config.settings.externalRoutes = [
+      {
+        match: {
+          path: notInEN,
+          exact: false,
+          strict: false,
+        },
+        url(payload) {
+          return payload.location.pathname;
+        },
+      },
+    ];
+
+    const { getByTitle } = render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <UniversalLink
+            href="http://localhost:3000/blacklisted-app"
+            title="External blacklisted app"
+          >
+            <h1>Title</h1>
+          </UniversalLink>
+        </MemoryRouter>
+      </Provider>,
+    );
+
+    expect(getByTitle('External blacklisted app').getAttribute('target')).toBe(
+      '_blank',
+    );
+    expect(getByTitle('External blacklisted app').getAttribute('rel')).toBe(
+      'noopener noreferrer',
+    );
+  });
+
   it('check UniversalLink does not break with error in item', () => {
     const component = renderer.create(
       <Provider store={store}>
