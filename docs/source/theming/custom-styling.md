@@ -55,7 +55,7 @@ both) files (including the matching folder structure) in your theme folder.
 ## Pastanaga UI Theme
 
 Volto implements Pastanaga UI theme, a new theme for Content Management Systems
-created and designed by [Albert Casado](https://twitter.com/albertcasado).
+created and designed by [Albert Casado](https://github.com/albertcasado).
 For more info:
 
 * https://pastanaga.io
