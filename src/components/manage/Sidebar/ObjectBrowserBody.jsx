@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
 import { Input, Segment, Breadcrumb } from 'semantic-ui-react';
 
@@ -62,7 +62,10 @@ const ObjectBrowserBody = (props) => {
   const intl = useIntl();
   const dispatch = useDispatch();
 
-  const searchSubrequests = useSelector((state) => state.search.subrequests);
+  const searchSubrequests = useSelector(
+    (state) => state.search.subrequests,
+    shallowEqual,
+  );
 
   const [currentFolder, setCurrentFolder] = useState(
     mode === 'multiple' ? '/' : contextURL || '/',
