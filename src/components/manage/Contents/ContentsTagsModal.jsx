@@ -28,6 +28,7 @@ const messages = defineMessages({
 });
 
 const ContentsTagsModal = (props) => {
+  const { items, open, onCancel, onOk } = props;
   const intl = useIntl();
   const dispatch = useDispatch();
   const request = useSelector((state) => state.content.update);
@@ -35,15 +36,15 @@ const ContentsTagsModal = (props) => {
 
   useEffect(() => {
     if (prevrequestloading && request.loaded) {
-      props.onOk();
+      onOk();
     }
   });
 
   const onSubmit = ({ tags_to_add = [], tags_to_remove = [] }) => {
     dispatch(
       updateContent(
-        map(props.items, (item) => item.url),
-        map(props.items, (item) => ({
+        map(items, (item) => item.url),
+        map(items, (item) => ({
           subjects: [
             ...new Set(
               (item.subjects ?? [])
@@ -57,15 +58,15 @@ const ContentsTagsModal = (props) => {
   };
 
   const currentSetTags = [
-    ...new Set(props.items.map((item) => item.subjects).flat()),
+    ...new Set(items.map((item) => item.subjects).flat()),
   ];
 
   return (
-    props.open && (
+    open && (
       <ModalForm
-        open={props.open}
+        open={open}
         onSubmit={onSubmit}
-        onCancel={props.onCancel}
+        onCancel={onCancel}
         title={intl.formatMessage(messages.tags)}
         schema={{
           fieldsets: [
