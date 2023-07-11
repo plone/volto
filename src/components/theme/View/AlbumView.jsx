@@ -1,8 +1,13 @@
 import { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Container, GridColumn, Segment } from 'semantic-ui-react';
+import {
+  Container as SemanticContainer,
+  GridColumn,
+  Segment,
+} from 'semantic-ui-react';
 import { Button, Modal, Grid } from 'semantic-ui-react';
 import { Icon, UniversalLink, PreviewImage } from '@plone/volto/components';
+import config from '@plone/volto/registry';
 
 import openSVG from '@plone/volto/icons/open.svg';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
@@ -14,7 +19,7 @@ const AlbumView = ({ content }) => {
   const closeModal = () => {
     setopenIndex(-1);
   };
-
+  
   const nextImage = () => {
     let openIndexes = (openIndex + 1) % content.items.length;
     setopenIndex(openIndexes);
