@@ -1,6 +1,6 @@
 import { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { defineMessages, useIntl } from 'react-intl';
 import qs from 'query-string';
 import { Login, Toast } from '@plone/volto/components';
@@ -23,15 +23,13 @@ const Logout = ({ location }) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const intl = useIntl();
-
+  const { pathname, search } = useLocation();
   const returnUrl = useMemo(
     () =>
-      qs.parse(location.search).return_url ||
-      location.pathname
-        .replace(/\/login\/?$/, '')
-        .replace(/\/logout\/?$/, '') ||
+      qs.parse(search).return_url ||
+      pathname.replace(/\/login\/?$/, '').replace(/\/logout\/?$/, '') ||
       '/',
-    [location],
+    [search, pathname],
   );
 
   useEffect(() => {
