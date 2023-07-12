@@ -130,7 +130,13 @@ const apiMiddlewareFactory = (api) => ({ dispatch, getState }) => (next) => (
 ) => {
   const { settings } = config;
 
-  const isAnonymous = !getState().userSession.token;
+  const token = getState().userSession.token;
+  let isAnonymous = true;
+  if (token) {
+    const tokenExpiration = jwtDecode(token).exp;
+    const currentTime = new Date().getTime() / 1000;
+    isAnonymous = !token || currentTime > tokenExpiration;
+  }
 
   if (typeof action === 'function') {
     return action(dispatch, getState);
