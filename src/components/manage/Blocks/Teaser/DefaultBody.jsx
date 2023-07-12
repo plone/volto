@@ -18,20 +18,31 @@ const messages = defineMessages({
   },
 });
 
-const DefaultImage = (props) => <img {...props} alt={props.alt || ''} />;
-
 const TeaserDefaultTemplate = (props) => {
   const { className, data, isEditMode } = props;
   const intl = useIntl();
   const href = data.href?.[0];
-  const image = data.preview_image?.[0];
+  const imageOverride = data.preview_image?.[0];
   const align = data?.styles?.align;
 
-  const hasImageComponent = config.getComponent('Image').component;
-  const Image = config.getComponent('Image').component || DefaultImage;
   const { openExternalLinkInNewTab } = config.settings;
-  const defaultImageSrc =
-    href && flattenToAppURL(getTeaserImageURL({ href, image, align }));
+
+  let renderedImage = null;
+  if (href && (imageOverride || href.hasPreviewImage || href.image_field)) {
+    let Image = config.getComponent('Image').component;
+    if (Image) {
+      // custom image component expects item summary as src
+      renderedImage = (
+        <Image src={imageOverride || href} alt="" loading="lazy" />
+      );
+    } else {
+      // default img expects string src
+      const src = flattenToAppURL(
+        getTeaserImageURL({ href, imageOverride, align }),
+      );
+      renderedImage = <img src={src} alt="" loading="lazy" />;
+    }
+  }
 
   return (
     <div className={cx('block teaser', className)}>
@@ -57,14 +68,8 @@ const TeaserDefaultTemplate = (props) => {
             }
           >
             <div className="teaser-item default">
-              {(href.hasPreviewImage || href.image_field || image) && (
-                <div className="image-wrapper">
-                  <Image
-                    src={hasImageComponent ? href : defaultImageSrc}
-                    alt=""
-                    loading="lazy"
-                  />
-                </div>
+              {renderedImage && (
+                <div className="image-wrapper">{renderedImage}</div>
               )}
               <div className="content">
                 {data?.head_title && (
