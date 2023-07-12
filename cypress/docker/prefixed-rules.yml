@@ -1,0 +1,27 @@
+http:
+  routers:
+    frontend:
+      rule: "Host(`localhost`) && PathPrefix(`/foo`)"
+      service: frontend
+    backend:
+      rule: "Host(`localhost`) && PathPrefix(`/foo/++api++`)"
+      service: backend
+      middlewares:
+        - backend
+
+  middlewares:
+    backend:
+      replacePathRegex:
+        regex: "^/foo/\\+\\+api\\+\\+($|/.*)"
+        replacement: "/VirtualHostBase/http/localhost/plone/++api++/VirtualHostRoot/_vh_foo$1"
+
+  services:
+    frontend:
+      loadBalancer:
+        servers:
+          - url: "http://host.docker.internal:3000"
+    backend:
+      loadBalancer:
+        servers:
+          - url: "http://host.docker.internal:55001"
+
