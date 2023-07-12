@@ -41,7 +41,7 @@ const messages = defineMessages({
   },
 });
 
-const ContentType = () => {
+const ContentType = (props) => {
   const history = useHistory();
   const { pathname } = useLocation();
   const intl = useIntl();
@@ -63,9 +63,9 @@ const ContentType = () => {
   const id = last(pathname.split('/'));
   const parent = nth(pathname.split('/'), -2);
 
-  const prevcpanelGetRequestLoading = usePrevious(cpanelRequest.get.loading);
+  const prevcpanelGetRequestLoading = usePrevious(cpanelRequest.get?.loading);
   const prevcpanelUpdateRequestLoading = usePrevious(
-    cpanelRequest.update.loading,
+    cpanelRequest.update?.loading,
   );
 
   useEffect(() => {
@@ -91,8 +91,8 @@ const ContentType = () => {
   }, [
     prevcpanelGetRequestLoading,
     prevcpanelUpdateRequestLoading,
-    cpanelRequest.get.error,
-    cpanelRequest.update.loaded,
+    cpanelRequest.get?.error,
+    cpanelRequest.update?.loaded,
     intl,
   ]);
 
