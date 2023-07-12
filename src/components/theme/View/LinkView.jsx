@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers';
-import { Container } from 'semantic-ui-react';
+import { Container as SemanticContainer } from 'semantic-ui-react';
 import { UniversalLink } from '@plone/volto/components';
 import { FormattedMessage } from 'react-intl';
 import config from '@plone/volto/registry';
@@ -21,7 +21,9 @@ const LinkView = ({ token, content }) => {
   }, [content, history, token]);
   const { title, description, remoteUrl } = content;
   const { openExternalLinkInNewTab } = config.settings;
-
+  const Container =
+  config.getComponent({ name: 'Container' }).component || SemanticContainer;
+  
   return (
     <Container id="page-document">
       <h1 className="documentFirstHeading">{title}</h1>
