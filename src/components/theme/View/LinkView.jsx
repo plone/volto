@@ -22,8 +22,8 @@ const LinkView = ({ token, content }) => {
   const { title, description, remoteUrl } = content;
   const { openExternalLinkInNewTab } = config.settings;
   const Container =
-  config.getComponent({ name: 'Container' }).component || SemanticContainer;
-  
+    config.getComponent({ name: 'Container' }).component || SemanticContainer;
+
   return (
     <Container id="page-document">
       <h1 className="documentFirstHeading">{title}</h1>
