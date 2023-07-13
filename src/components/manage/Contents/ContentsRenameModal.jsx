@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { concat, merge, map } from 'lodash';
@@ -48,17 +48,20 @@ const ContentsRenameModal = (props) => {
     }
   }, [onOk, prevrequestloading, request.loaded]);
 
-  const onSubmit = (data) => {
-    dispatch(
-      updateContent(
-        map(items, (item) => item.url),
-        map(items, (item, index) => ({
-          id: data[`${index}_id`],
-          title: data[`${index}_title`],
-        })),
-      ),
-    );
-  };
+  const onSubmit = useCallback(
+    (data) => {
+      dispatch(
+        updateContent(
+          map(items, (item) => item.url),
+          map(items, (item, index) => ({
+            id: data[`${index}_id`],
+            title: data[`${index}_title`],
+          })),
+        ),
+      );
+    },
+    [items, dispatch],
+  );
 
   return (
     open && (
