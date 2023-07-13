@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { map } from 'lodash';
@@ -38,28 +38,32 @@ const ContentsTagsModal = (props) => {
     if (prevrequestloading && request.loaded) {
       onOk();
     }
-  });
+  }, [onOk, prevrequestloading, request.loaded]);
 
-  const onSubmit = ({ tags_to_add = [], tags_to_remove = [] }) => {
-    dispatch(
-      updateContent(
-        map(items, (item) => item.url),
-        map(items, (item) => ({
-          subjects: [
-            ...new Set(
-              (item.subjects ?? [])
-                .filter((s) => !tags_to_remove.includes(s))
-                .concat(tags_to_add),
-            ),
-          ],
-        })),
-      ),
-    );
-  };
+  const onSubmit = useCallback(
+    ({ tags_to_add = [], tags_to_remove = [] }) => {
+      dispatch(
+        updateContent(
+          map(items, (item) => item.url),
+          map(items, (item) => ({
+            subjects: [
+              ...new Set(
+                (item.subjects ?? [])
+                  .filter((s) => !tags_to_remove.includes(s))
+                  .concat(tags_to_add),
+              ),
+            ],
+          })),
+        ),
+      );
+    },
+    [dispatch, items],
+  );
 
-  const currentSetTags = [
-    ...new Set(items.map((item) => item.subjects).flat()),
-  ];
+  const currentSetTags = useMemo(
+    () => [...new Set(items.map((item) => item.subjects).flat())],
+    [items],
+  );
 
   return (
     open && (
