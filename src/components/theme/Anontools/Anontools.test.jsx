@@ -12,7 +12,14 @@ describe('Anontools', () => {
   it('renders an anontools component when no token is specified', () => {
     const store = mockStore({
       userSession: { token: null },
-      content: { data: { '@id': 'myid' } },
+      content: {
+        data: { '@id': 'myid' },
+        get: {
+          loading: false,
+          loaded: true,
+          error: null,
+        },
+      },
       intl: {
         locale: 'en',
         messages: {},
@@ -32,7 +39,14 @@ describe('Anontools', () => {
   it('should not render an anontools component when a token is specified', () => {
     const store = mockStore({
       userSession: { token: '1234' },
-      content: { data: {} },
+      content: {
+        data: {},
+        get: {
+          loading: false,
+          loaded: true,
+          error: null,
+        },
+      },
       intl: {
         locale: 'en',
         messages: {},

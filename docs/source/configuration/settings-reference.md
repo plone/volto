@@ -83,6 +83,10 @@ maxResponseSize
     You can edit this limit in the `settings` object setting a new value in bytes
     (for example, to set 500 mb you need to write 5000000000).
 
+maxFileUploadSize
+    The maximum allowed size of file uploads (in bytes).
+    Default: `null` (no limit enforced by Volto).
+
 initialReducersBlacklist
     The initial state passed from server to browser needs to be minimal in order to optimize the resultant html generated. This state gets stored in `window.__data` and received in client.
 
@@ -225,7 +229,6 @@ workflowMapping
 
     It's meant to be extended with your own workflows/transitions.
     It is recommended to assign the same color to the transition as the destination state, so the user can have the visual hint to which state are they transitioning to.
-
 
 styleClassNameConverters
     An object with functions used by the style wrapper helpers to convert style
@@ -374,6 +377,7 @@ additionalToolbarComponents
       }}
     </Plug>
     ```
+
 blockSettingsTabFieldsetsInitialStateOpen
     A Boolean, `true` by default.
     The fieldsets in the blocks settings tab start by default as non-collapsed (opened), you can decide to have them collapsed (closed) by default setting this to `false`.
