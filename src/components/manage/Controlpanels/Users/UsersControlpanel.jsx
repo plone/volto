@@ -89,11 +89,12 @@ class UsersControlpanel extends Component {
     this.onChangeSearch = this.onChangeSearch.bind(this);
     this.onSearch = this.onSearch.bind(this);
     this.delete = this.delete.bind(this);
-
+    this.edit = this.edit.bind(this);
     this.onDeleteOk = this.onDeleteOk.bind(this);
     this.onDeleteCancel = this.onDeleteCancel.bind(this);
     this.onAddUserSubmit = this.onAddUserSubmit.bind(this);
     this.onAddUserError = this.onAddUserError.bind(this);
+    this.onEditUserError = this.onEditUserError.bind(this);
     this.onAddUserSuccess = this.onAddUserSuccess.bind(this);
     this.updateUserRole = this.updateUserRole.bind(this);
     this.state = {
@@ -107,6 +108,9 @@ class UsersControlpanel extends Component {
       isClient: false,
       currentPage: 0,
       pageSize: 10,
+      showEditUser: false,
+      userToEdit: {},
+      editUserError: '',
     };
   }
 
@@ -137,7 +141,8 @@ class UsersControlpanel extends Component {
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (
       (this.props.deleteRequest.loading && nextProps.deleteRequest.loaded) ||
-      (this.props.createRequest.loading && nextProps.createRequest.loaded)
+      (this.props.createRequest.loading && nextProps.createRequest.loaded) ||
+      (this.props.updateRequest.loading && nextProps.updateRequest.loaded)
     ) {
       this.props.listUsers({
         search: this.state.search,
@@ -146,8 +151,24 @@ class UsersControlpanel extends Component {
     if (this.props.createRequest.loading && nextProps.createRequest.loaded) {
       this.onAddUserSuccess();
     }
+    if (this.props.updateRequest.loading && nextProps.updateRequest.loaded) {
+      this.setState({
+        showEditUser: false,
+        userToEdit: {},
+      });
+      toast.success(
+        <Toast
+          success
+          title={this.props.intl.formatMessage(messages.success)}
+          content={this.props.intl.formatMessage(messages.userUpdated)}
+        />,
+      );
+    }
     if (this.props.createRequest.loading && nextProps.createRequest.error) {
       this.onAddUserError(nextProps.createRequest.error);
+    }
+    if (this.props.updateRequest.loading && nextProps.updateRequest.error) {
+      this.onEditUserError(nextProps.updateRequest.error);
     }
     if (
       this.props.loadRolesRequest.loading &&
@@ -205,6 +226,44 @@ class UsersControlpanel extends Component {
   }
 
   /**
+   * Edit a user
+   * @method edit
+   * @param {object} event Event object.
+   * @param {string} value username.
+   * @returns {undefined}
+   */
+
+  edit(event, { value }) {
+    if (value) {
+      this.setState({
+        showEditUser: true,
+        userToEdit: this.getUserFromProps(value),
+      });
+    }
+  }
+
+  editUserSubmit = (data, callback) => {
+    const { groups } = data;
+    const roles = this.props.roles.map((item) => item.id);
+    const userData = { roles: {} };
+    const removedRoles = difference(roles, data.roles);
+
+    removedRoles.forEach((role) => {
+      userData.roles[role] = false;
+    });
+    data.roles.forEach((role) => {
+      userData.roles[role] = true;
+    });
+    data = {
+      ...data,
+      roles: userData.roles,
+    };
+
+    if (groups && groups.length > 0) this.addUserToGroup(data);
+    this.props.updateUser(this.state.userToEdit.id, data);
+  };
+
+  /**
    * On delete ok
    * @method onDeleteOk
    * @returns {undefined}
@@ -238,12 +297,15 @@ class UsersControlpanel extends Component {
    */
   addUserToGroup = (user) => {
     const { groups, username } = user;
-    groups.forEach((group) => {
-      this.props.updateGroup(group, {
+    const defaultGroups = this.props.groups.map((item) => item.id);
+    defaultGroups.forEach((group) => {
+      const userExistsInGroup = groups.includes(group);
+      const groupData = {
         users: {
-          [username]: true,
+          [username]: userExistsInGroup,
         },
-      });
+      };
+      this.props.updateGroup(group, groupData);
     });
   };
 
@@ -347,6 +409,18 @@ class UsersControlpanel extends Component {
   }
 
   /**
+   * Handle Errors after editUser()
+   *
+   * @param {object} error object. Requires the property .message
+   * @returns {undefined}
+   */
+  onEditUserError(error) {
+    this.setState({
+      editUserError: error.response.body.error.message,
+    });
+  }
+
+  /**
    * On change page
    * @method onChangePage
    * @param {object} event Event object.
@@ -408,6 +482,107 @@ class UsersControlpanel extends Component {
             onConfirm={this.onDeleteOk}
             size={null}
           />
+          {this.state.showEditUser ? (
+            <ModalForm
+              open={this.state.showEditUser}
+              className="modal"
+              onSubmit={this.editUserSubmit}
+              submitError={this.state.editUserError}
+              onCancel={() =>
+                this.setState({ showEditUser: false, editUserError: undefined })
+              }
+              title={this.props.intl.formatMessage(messages.editUserFormTitle)}
+              loading={this.props.updateRequest.loading}
+              formData={{
+                username: this.state.userToEdit.username,
+                fullname: this.state.userToEdit.fullname,
+                email: this.state.userToEdit.email,
+                roles: this.state.userToEdit.roles,
+                groups: this.state.userToEdit.groups.items.map(
+                  (group) => group.id,
+                ),
+              }}
+              schema={{
+                fieldsets: [
+                  {
+                    id: 'default',
+                    title: 'FIXME: Edit User Data',
+                    fields: [
+                      'roles',
+                      'groups',
+                      'username',
+                      'fullname',
+                      'email',
+                      'password',
+                    ],
+                  },
+                ],
+                properties: {
+                  username: {
+                    title: this.props.intl.formatMessage(
+                      messages.addUserFormUsernameTitle,
+                    ),
+                    type: 'string',
+                    description: this.props.intl.formatMessage(
+                      messages.addUserFormUsernameDescription,
+                    ),
+                  },
+                  fullname: {
+                    title: this.props.intl.formatMessage(
+                      messages.addUserFormFullnameTitle,
+                    ),
+                    type: 'string',
+                    description: this.props.intl.formatMessage(
+                      messages.addUserFormFullnameDescription,
+                    ),
+                  },
+                  email: {
+                    title: this.props.intl.formatMessage(
+                      messages.addUserFormEmailTitle,
+                    ),
+                    type: 'string',
+                    description: this.props.intl.formatMessage(
+                      messages.addUserFormEmailDescription,
+                    ),
+                    widget: 'email',
+                  },
+                  roles: {
+                    title: this.props.intl.formatMessage(
+                      messages.addUserFormRolesTitle,
+                    ),
+                    type: 'array',
+                    choices: this.props.roles.map((role) => [
+                      role.id,
+                      role.title,
+                    ]),
+                    noValueOption: false,
+                  },
+                  groups: {
+                    title: this.props.intl.formatMessage(
+                      messages.addUserGroupNameTitle,
+                    ),
+                    type: 'array',
+                    choices: this.props.groups.map((group) => [
+                      group.id,
+                      group.id,
+                    ]),
+                    noValueOption: false,
+                  },
+                  password: {
+                    title: this.props.intl.formatMessage(
+                      messages.addUserFormPasswordTitle,
+                    ),
+                    type: 'password',
+                    description: this.props.intl.formatMessage(
+                      messages.addUserFormPasswordDescription,
+                    ),
+                    widget: 'password',
+                  },
+                },
+                required: ['username', 'email'],
+              }}
+            />
+          ) : null}
           {this.state.showAddUser ? (
             <ModalForm
               open={this.state.showAddUser}
@@ -425,13 +600,13 @@ class UsersControlpanel extends Component {
                     id: 'default',
                     title: 'FIXME: User Data',
                     fields: [
+                      'roles',
+                      'groups',
                       'username',
                       'fullname',
                       'email',
                       'password',
                       'sendPasswordReset',
-                      'roles',
-                      'groups',
                     ],
                   },
                 ],
@@ -564,24 +739,46 @@ class UsersControlpanel extends Component {
                     </Table.HeaderCell>
                   </Table.Row>
                 </Table.Header>
-                <Table.Body data-user="users">
-                  {this.state.entries
-                    .slice(
-                      this.state.currentPage * 10,
-                      this.state.pageSize * (this.state.currentPage + 1),
-                    )
-                    .map((user) => (
-                      <RenderUsers
-                        key={user.id}
-                        onDelete={this.delete}
-                        roles={this.props.roles}
-                        user={user}
-                        updateUser={this.updateUserRole}
-                        inheritedRole={this.props.inheritedRole}
-                      />
-                    ))}
-                </Table.Body>
+                {this.state.entries.length ? (
+                  <Table.Body data-user="users">
+                    {this.state.entries
+                      .slice(
+                        this.state.currentPage * 10,
+                        this.state.pageSize * (this.state.currentPage + 1),
+                      )
+                      .map((user) => (
+                        <RenderUsers
+                          key={user.id}
+                          onDelete={this.delete}
+                          onEdit={this.edit}
+                          roles={this.props.roles}
+                          user={user}
+                          updateUser={this.updateUserRole}
+                          inheritedRole={this.props.inheritedRole}
+                        />
+                      ))}
+                  </Table.Body>
+                ) : null}
               </Table>
+              {this.state.entries.length === 0 && (
+                <div className="no-user-message">
+                  <div className="large message">
+                    {this.props.intl.formatMessage(messages.noUserFound)}
+                  </div>
+                  <Button
+                    id="add-user"
+                    aria-label={this.props.intl.formatMessage(
+                      messages.addUserButtonTitle,
+                    )}
+                    onClick={() => {
+                      this.setState({ showAddUser: true });
+                    }}
+                    loading={this.props.createRequest.loading}
+                  >
+                    Add User
+                  </Button>
+                </div>
+              )}
             </div>
             <div className="contents-pagination">
               <Pagination
@@ -668,6 +865,7 @@ export default compose(
       pathname: props.location.pathname,
       deleteRequest: state.users.delete,
       createRequest: state.users.create,
+      updateRequest: state.users.update,
       loadRolesRequest: state.roles,
       inheritedRole: state.authRole.authenticatedRole,
     }),

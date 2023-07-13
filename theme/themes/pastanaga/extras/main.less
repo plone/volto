@@ -391,12 +391,20 @@ button {
 
 .users-control-panel .table {
   overflow-x: scroll;
+  overflow-y: overlay;
 
   &::-webkit-scrollbar {
     width: 3px;
     height: 3px; /* scrollbar height */
     background: transparent; /* optional: just make scrollbar invisible */
   }
+}
+
+.users-control-panel .no-user-message {
+  display: flex;
+  flex-direction: column;
+  padding: 2em;
+  place-items: center;
 }
 
 //Controlpanel

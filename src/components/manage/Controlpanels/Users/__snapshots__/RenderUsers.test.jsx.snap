@@ -118,6 +118,31 @@ exports[`UsersControlpanelUser renders a UsersControlpanelUser component 1`] = `
             viewBox=""
             xmlns=""
           />
+          Edit
+        </div>
+        <div
+          className="item"
+          onClick={[Function]}
+          role="option"
+        >
+          <svg
+            className="icon"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "currentColor",
+                "height": "15px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
+          />
           Delete
         </div>
       </div>

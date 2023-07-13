@@ -332,4 +332,12 @@ export const messages = defineMessages({
     id: 'Filter',
     defaultMessage: 'Filter',
   },
+  editUserFormTitle: {
+    id: 'Edit User',
+    defaultMessage: 'Edit User',
+  },
+  userUpdated: {
+    id: 'User updated',
+    defaultMessage: 'User updated',
+  },
 });

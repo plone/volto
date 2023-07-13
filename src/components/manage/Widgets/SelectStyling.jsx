@@ -121,9 +121,10 @@ export const customSelectStyles = {
     ...styles,
     top: null,
     marginTop: 0,
-    boxShadow: 'none',
+    boxShadow: '0px 2px 5px 2px rgba(145,145,145,0.67)',
+    borderRight: '1px solid #c7d5d8',
+    borderLeft: '1px solid #c7d5d8',
     borderBottom: '1px solid #c7d5d8',
-    zIndex: 2,
   }),
   indicatorSeparator: (styles) => ({
     ...styles,
@@ -152,7 +153,7 @@ export const customSelectStyles = {
       : state.isDisabled
       ? '#b5b5b5'
       : state.isFocused
-      ? '#4a4a4a'
+      ? '#007eb1'
       : 'inherit',
     ':active': {
       backgroundColor: null,

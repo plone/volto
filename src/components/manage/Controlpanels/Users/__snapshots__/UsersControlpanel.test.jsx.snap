@@ -101,11 +101,24 @@ exports[`UsersControlpanel renders a user control component 1`] = `
               </th>
             </tr>
           </thead>
-          <tbody
-            className=""
-            data-user="users"
-          />
         </table>
+        <div
+          className="no-user-message"
+        >
+          <div
+            className="large message"
+          >
+            No user found
+          </div>
+          <button
+            aria-label="Add new user"
+            className="ui button"
+            id="add-user"
+            onClick={[Function]}
+          >
+            Add User
+          </button>
+        </div>
       </div>
       <div
         className="contents-pagination"
