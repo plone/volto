@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { concat, filter, last, map, uniqBy } from 'lodash';
@@ -46,30 +46,33 @@ const ContentsWorkflowModal = (props) => {
   useEffect(() => {
     dispatch(getWorkflow(items));
   }, [dispatch, items]);
+
   useEffect(() => {
     if (prevrequestloading && request.loaded) {
       onOk();
     }
   }, [onOk, prevrequestloading, request.loaded]);
 
-  const onSubmit = ({ state, include_children }) => {
-    if (!state) {
-      return;
-    }
-
-    dispatch(
-      transitionWorkflow(
-        filter(
-          map(
-            concat(...map(workflows, (workflow) => workflow.transitions)),
-            (item) => item['@id'],
+  const onSubmit = useCallback(
+    ({ state, include_children }) => {
+      if (!state) {
+        return;
+      }
+      dispatch(
+        transitionWorkflow(
+          filter(
+            map(
+              concat(...map(workflows, (workflow) => workflow.transitions)),
+              (item) => item['@id'],
+            ),
+            (x) => last(x.split('/')) === state,
           ),
-          (x) => last(x.split('/')) === state,
+          include_children,
         ),
-        include_children,
-      ),
-    );
-  };
+      );
+    },
+    [dispatch, workflows],
+  );
 
   return (
     open &&
