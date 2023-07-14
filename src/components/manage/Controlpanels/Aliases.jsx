@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import {
@@ -62,7 +61,6 @@ const filterChoices = [
 const itemsPerPageChoices = [10, 25, 50, 'All'];
 
 const Aliases = (props) => {
-  
   const title = props;
   const intl = useIntl();
   const dispatch = useDispatch();
