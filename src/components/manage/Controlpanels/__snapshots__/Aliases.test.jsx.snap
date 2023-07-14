@@ -511,8 +511,5 @@ exports[`Aliases renders an aliases control component 1`] = `
       </div>
     </article>
   </div>
-  <div
-    id="Portal"
-  />
 </div>
 `;
