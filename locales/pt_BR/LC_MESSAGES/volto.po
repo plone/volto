@@ -143,6 +143,11 @@ msgstr "Adicionar ação"
 msgid "Add block"
 msgstr "Adicionar bloco"
 
+#: components/manage/Blocks/Container/NewBlockAddButton
+# defaultMessage: Add block in position {index}
+msgid "Add block in position {index}"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add block…
 msgid "Add block…"
@@ -167,6 +172,11 @@ msgstr "Adicionar critério"
 # defaultMessage: Add date
 msgid "Add date"
 msgstr "Adicionar data"
+
+#: components/manage/Blocks/Container/SimpleContainerToolbar
+# defaultMessage: Add element to container
+msgid "Add element to container"
+msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Add field
@@ -277,6 +287,16 @@ msgstr "Complemento desinstalado com sucesso"
 # defaultMessage: Addon upgraded succesfuly
 msgid "Addon upgraded succesfuly"
 msgstr "Complemento atualizado com sucesso"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Advanced facet?
+msgid "Advanced facet?"
+msgstr "Facetas avançadas?"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Advanced facets are initially hidden and displayed on demand
+msgid "Advanced facets are initially hidden and displayed on demand"
+msgstr "Facetas avançadas ficam ocultas inicialmente e exibidas sob demanda"
 
 #: config/Views
 # defaultMessage: Album view
@@ -468,7 +488,7 @@ msgstr "Navegação estrutural"
 #: components/manage/Controlpanels/Relations/BrokenRelations
 # defaultMessage: Broken relations
 msgid "Broken relations"
-msgstr ""
+msgstr "Relacionamentos rompidos"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/ContentsUploadModal
@@ -719,6 +739,11 @@ msgstr "Formulário de contato"
 msgid "Contained items"
 msgstr "Itens contidos"
 
+#: components/manage/Blocks/Container/SimpleContainerToolbar
+# defaultMessage: Container settings
+msgid "Container settings"
+msgstr ""
+
 #: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Content
 msgid "Content"
@@ -791,7 +816,7 @@ msgstr "Declaração de copyright ou outras informações de direitos sobre este
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Create or delete relations to target
 msgid "Create or delete relations to target"
-msgstr ""
+msgstr "Crie ou remova relacionamentos para o destino"
 
 #: components/manage/Toolbar/More
 # defaultMessage: Create working copy
@@ -1263,9 +1288,9 @@ msgstr "Informe seu e-mail para verificação."
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Enter your new password. Minimum 5 characters.
-msgid "Enter your new password. Minimum 5 characters."
-msgstr "Digite sua nova senha. Mínimo de 5 caracteres."
+# defaultMessage: Enter your new password. Minimum 8 characters.
+msgid "Enter your new password. Minimum 8 characters."
+msgstr "Digite sua nova senha. Mínimo de 8 caracteres."
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Enter your username for verification.
@@ -1415,7 +1440,7 @@ msgstr "Nome do arquivo"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Filter
 msgid "Filter"
-msgstr ""
+msgstr "Filtrar"
 
 #: components/manage/Controlpanels/Rules/Rules
 # defaultMessage: Filter Rules:
@@ -1445,7 +1470,7 @@ msgstr "Primeiro"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Fix relations
 msgid "Fix relations"
-msgstr ""
+msgstr "Consertar relacionamentos"
 
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Fixed width columns
@@ -1519,6 +1544,11 @@ msgstr "Papel global"
 msgid "Google Maps Embedded Block"
 msgstr "Bloco Google Maps"
 
+#: components/manage/Blocks/Grid/schema
+# defaultMessage: Grid
+msgid "Grid"
+msgstr ""
+
 #: components/manage/Sharing/Sharing
 # defaultMessage: Group
 msgid "Group"
@@ -1557,6 +1587,7 @@ msgstr "Grupos são coleções lógicas de usuários, como departamentos e unida
 msgid "Header cell"
 msgstr "Célula de cabeçalho"
 
+#: components/manage/Blocks/Grid/schema
 #: components/manage/Blocks/Listing/schema
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Headline
@@ -1582,6 +1613,11 @@ msgstr "Ocultar respostas"
 # defaultMessage: Hide facet?
 msgid "Hide facet?"
 msgstr "Ocultar faceta?"
+
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: Hide filters
+msgid "Hide filters"
+msgstr "Ocultar filtros"
 
 #: components/manage/History/History
 #: components/manage/Toolbar/More
@@ -1654,7 +1690,7 @@ msgstr "Galeria de imagem"
 #: components/manage/Blocks/Teaser/schema
 # defaultMessage: Image override
 msgid "Image override"
-msgstr ""
+msgstr "Substituir imagem"
 
 #: components/manage/Blocks/Image/schema
 # defaultMessage: Image size
@@ -1717,7 +1753,7 @@ msgstr "Inserir linha antes"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Inspect relations
 msgid "Inspect relations"
-msgstr ""
+msgstr "Inspecionar relacionamentos"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Install
@@ -1879,10 +1915,20 @@ msgstr "Imagem principal"
 msgid "Left"
 msgstr "Esquerda"
 
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: Less filters
+msgid "Less filters"
+msgstr "Menos filtros"
+
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Link
 msgid "Link"
 msgstr "Link"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Link copied to clipboard
+msgid "Link copied to clipboard"
+msgstr ""
 
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
@@ -2009,7 +2055,7 @@ msgstr "Adicionado manual ou automaticamente?"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Many relations found. Please search.
 msgid "Many relations found. Please search."
-msgstr ""
+msgstr "Muitos relacionamentos foram encontrados. Por favor realize uma busca"
 
 #: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Maps/schema
@@ -2040,7 +2086,7 @@ msgstr "Médio"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Membership updated
 msgid "Membership updated"
-msgstr ""
+msgstr "Participação atualizada"
 
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Message
@@ -2087,6 +2133,11 @@ msgstr "Mensalmente"
 # defaultMessage: More
 msgid "More"
 msgstr "Mais"
+
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: More filters
+msgid "More filters"
+msgstr "Mais filtros"
 
 #: components/manage/Controlpanels/UpgradeControlPanel
 # defaultMessage: More information about the upgrade procedure can be found in the documentation section of plone.org in the Upgrade Guide.
@@ -2205,7 +2256,7 @@ msgstr "Nenhum complemento encontrado"
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: No broken relations found.
 msgid "No broken relations found."
-msgstr ""
+msgstr "Nenhum relacionamento rompido foi encontrado"
 
 #: components/theme/RequestTimeout/RequestTimeout
 # defaultMessage: There is no connection to the server, due to a timeout o no network connection.
@@ -2230,7 +2281,7 @@ msgstr "Nenhuma imagem definida no campo de imagem"
 #: components/manage/Blocks/Listing/GalleryNoResultsComponent
 # defaultMessage: No images found.
 msgid "No images found."
-msgstr ""
+msgstr "Nenhuma imagem foi encontrada"
 
 #: components/manage/Blocks/Listing/ListingBody
 # defaultMessage: No items found in this container.
@@ -2263,7 +2314,7 @@ msgstr "Sem opções"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: No relation found
 msgid "No relation found"
-msgstr ""
+msgstr "Nenhum relacionamento foi encontrado"
 
 #: components/manage/BlockChooser/BlockChooser
 #: components/theme/Search/Search
@@ -2448,7 +2499,7 @@ msgstr "Pessoas responsáveis pela criação do conteúdo deste item. Por favor,
 #: components/manage/Blocks/Teaser/DefaultBody
 # defaultMessage: Please choose an existing content as source for this element
 msgid "Please choose an existing content as source for this element"
-msgstr ""
+msgstr "Por favor selecione um conteúdo existente como fonte para este elemento"
 
 #: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Please continue with the upgrade.
@@ -2488,7 +2539,7 @@ msgstr "Por favor, atualize para plone.restapi >= 8.24.0."
 #: components/manage/Controlpanels/Relations/Relations
 # defaultMessage: Please upgrade to plone.restapi >= 8.35.3.
 msgid "Please upgrade to plone.restapi >= 8.35.3."
-msgstr ""
+msgstr "Por favor atualize a plone.restapi para versão 8.35.3 ou superior."
 
 #: components/theme/Footer/Footer
 # defaultMessage: Plone Foundation
@@ -2587,12 +2638,12 @@ msgstr "Leia Mais…"
 #: components/manage/Controlpanels/Relations/RelationsListing
 # defaultMessage: Read only for this type of relation.
 msgid "Read only for this type of relation."
-msgstr ""
+msgstr "Apenas leitura para este tipo de relacionamento."
 
 #: components/manage/Contents/Contents
 # defaultMessage: Rearrange items by…
 msgid "Rearrange items by…"
-msgstr "Reorganize itens por…"
+msgstr "Reorganizar itens por…"
 
 #: components/manage/Widgets/RecurrenceWidget/EndField
 # defaultMessage: Ends
@@ -2635,24 +2686,24 @@ msgstr "Formulário de cadastro"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Relation
 msgid "Relation name"
-msgstr ""
+msgstr "Nome do relacionamento"
 
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/Relations/Relations
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Relations
 msgid "Relations"
-msgstr ""
+msgstr "Relacionamentos"
 
 #: components/manage/Controlpanels/Relations/RelationsListing
 # defaultMessage: Relations are editable with plone.api >= 2.0.3.
 msgid "Relations are editable with plone.api >= 2.0.3."
-msgstr ""
+msgstr "Relacionamentos são editáveis com uso da plone.api versão 2.0.3 ou superior."
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Relations updated
 msgid "Relations updated"
-msgstr ""
+msgstr "Relacionamentos atualizados"
 
 #: components/theme/Search/Search
 # defaultMessage: Relevance
@@ -2663,6 +2714,11 @@ msgstr "Relevância"
 # defaultMessage: Remove
 msgid "Remove"
 msgstr "Remover"
+
+#: components/manage/Blocks/Container/EditBlockWrapper
+# defaultMessage: Remove element {index}
+msgid "Remove element {index}"
+msgstr ""
 
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Remove item
@@ -2748,6 +2804,11 @@ msgstr "Obrigatório"
 msgid "Required input is missing."
 msgstr "Falta informação obrigatória."
 
+#: components/manage/Blocks/Container/EditBlockWrapper
+# defaultMessage: Reset element {index}
+msgid "Reset element {index}"
+msgstr ""
+
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Reset title
 msgid "Reset term title"
@@ -2756,7 +2817,7 @@ msgstr "Redefinir o título do termo"
 #: components/manage/Blocks/Teaser/Data
 # defaultMessage: Reset the block
 msgid "Reset the block"
-msgstr ""
+msgstr "Redefinir o bloco"
 
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Results limit
@@ -2865,7 +2926,7 @@ msgstr "Salvo"
 #: components/manage/Contents/ContentsItem
 # defaultMessage: Scheduled
 msgid "Scheduled"
-msgstr ""
+msgstr "Agendado"
 
 #: components/manage/Controlpanels/ContentTypesActions
 # defaultMessage: Schema
@@ -2943,12 +3004,12 @@ msgstr "Resultados da pesquisa para {term}"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Search sources by title or path
 msgid "Search sources by title or path"
-msgstr ""
+msgstr "Pesquise fontes por título ou caminho"
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Search targets by title or path
 msgid "Search targets by title or path"
-msgstr ""
+msgstr "Pesquise destinos por título ou caminho"
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Search users…
@@ -2991,7 +3052,7 @@ msgstr "Selecione colunas para mostrar"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Select relation
 msgid "Select relation"
-msgstr ""
+msgstr "Selecione um relacionamento"
 
 #: components/manage/Contents/ContentsWorkflowModal
 # defaultMessage: Select the transition to be used for modifying the items state.
@@ -3001,7 +3062,7 @@ msgstr "Selecione a transição a ser usada para modificar o estado dos itens."
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Selected
 msgid "Selected"
-msgstr ""
+msgstr "Selecionado"
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 # defaultMessage: Selected dates
@@ -3097,6 +3158,11 @@ msgstr "Mostrar tudo"
 msgid "Show Replies"
 msgstr "Mostrar respostas"
 
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: Show filters
+msgid "Show filters"
+msgstr "Exibir filtros"
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Show groups of users below
 msgid "Show groups of users below"
@@ -3110,12 +3176,12 @@ msgstr "Mostrar item"
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: Show potential sources. Not only objects that are source of some relation.
 msgid "Show potential sources. Not only objects that are source of some relation."
-msgstr ""
+msgstr "Exibir potenciais fontes. Não apenas os objetos que já são fonte de algum relacionamento."
 
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: Show potential targets. Not only objects that are target of some relation.
 msgid "Show potential targets. Not only objects that are target of some relation."
-msgstr ""
+msgstr "Exibir potenciais destinos. Não apenas os objetos que já são destino de algum relacionamento."
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Show search button?
@@ -3187,7 +3253,7 @@ msgstr "Pequeno"
 #: components/manage/Controlpanels/Relations/Relations
 # defaultMessage: Some relations are broken. Please fix.
 msgid "Some relations are broken. Please fix."
-msgstr ""
+msgstr "Alguns relacionamentos estão rompidos. Por favor corrija-os."
 
 #: error
 # defaultMessage: Sorry, something went wrong with your request
@@ -3400,7 +3466,7 @@ msgstr "O caminho da URL de destino deve começar com uma barra."
 #: components/manage/Blocks/Teaser/schema
 # defaultMessage: Teaser
 msgid "Teaser"
-msgstr ""
+msgstr "Destaque"
 
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Text
@@ -3596,7 +3662,7 @@ msgstr "Total de comentários"
 #: components/manage/Contents/Contents
 # defaultMessage: Total items to be deleted:
 msgid "Total items to be deleted:"
-msgstr ""
+msgstr "Total de itens a serem removidos:"
 
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Total number of objects in each cache
@@ -4121,7 +4187,7 @@ msgstr "Você foi desconectado do site."
 #: components/manage/Controlpanels/Relations/Relations
 # defaultMessage: You have not the required permission for this control panel.
 msgid "You have not the required permission for this control panel."
-msgstr ""
+msgstr "Você não possui a permissão necessária para acessar esse painel de controle."
 
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Your email is required for reset your password.
@@ -4183,6 +4249,16 @@ msgstr "Esqueceu sua senha?"
 # defaultMessage: Checkbox
 msgid "checkboxFacet"
 msgstr "Caixa de seleção"
+
+#: components/manage/Blocks/Grid/templates
+# defaultMessage: column
+msgid "column"
+msgstr ""
+
+#: components/manage/Blocks/Grid/templates
+# defaultMessage: columns
+msgid "columns"
+msgstr ""
 
 #: config/Blocks
 # defaultMessage: Common
@@ -4275,14 +4351,19 @@ msgid "event_where"
 msgstr "Onde"
 
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: This website does not accept files larger than {limit}
+msgid "fileTooLarge"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: flush intIds and rebuild relations
 msgid "flush intIds and rebuild relations"
-msgstr ""
+msgstr "descarrega os intIds e recontrua os relacionamentos"
 
 #: components/manage/Blocks/Teaser/schema
 # defaultMessage: Head title
 msgid "head_title"
-msgstr ""
+msgstr "Título principal"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Password reset confirmation sent
@@ -4383,7 +4464,7 @@ msgstr "Mais usados"
 #: components/manage/Controlpanels/Relations/RelationsListing
 # defaultMessage: Found {sources} sources and {targets} targets. Narrow down to {max}!
 msgid "narrowDownRelations"
-msgstr ""
+msgstr "Encontradas {sources} fontes e {targets} destinos. Por favor, reduza ao máximo de {max}!"
 
 #: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
 #: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
@@ -4441,7 +4522,7 @@ msgstr "Selecionar"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: rebuild relations
 msgid "rebuild relations"
-msgstr ""
+msgstr "reconstruir relacionamentos"
 
 #: components/theme/Search/Search
 # defaultMessage: results
@@ -4646,7 +4727,7 @@ msgstr "ordenar"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: sources path
 msgid "sources path"
-msgstr ""
+msgstr "caminho da fonte"
 
 #: config/Blocks
 # defaultMessage: Table
@@ -4656,7 +4737,7 @@ msgstr "Tabela"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: target path
 msgid "target path"
-msgstr ""
+msgstr "caminho do destino"
 
 #: config/Blocks
 # defaultMessage: Text

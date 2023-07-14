@@ -8,15 +8,27 @@ import PropTypes from 'prop-types';
 import { map } from 'lodash';
 import { List } from 'semantic-ui-react';
 import { FormattedMessage, injectIntl } from 'react-intl';
+import { useHistory } from 'react-router-dom';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
+import Slugger from 'github-slugger';
 
-const RenderListItems = ({ items, data }) => {
+const RenderListItems = ({ items, data, history }) => {
   return map(items, (item) => {
-    const { id, level, title } = item;
+    const { id, level, title, override_toc, plaintext } = item;
+    const slug = override_toc
+      ? Slugger.slug(plaintext)
+      : Slugger.slug(title) || id;
     return (
       item && (
         <List.Item key={id} className={`item headline-${level}`} as="li">
-          <AnchorLink href={`#${id}`}>{title}</AnchorLink>
+          <AnchorLink
+            href={`#${slug}`}
+            onClick={(e) => {
+              history.push({ hash: slug });
+            }}
+          >
+            {title}
+          </AnchorLink>
           {item.items?.length > 0 && (
             <List
               ordered={data.ordered}
@@ -38,6 +50,7 @@ const RenderListItems = ({ items, data }) => {
  * @extends Component
  */
 const View = ({ data, tocEntries }) => {
+  const history = useHistory();
   return (
     <>
       {data.title && !data.hide_title ? (
@@ -57,7 +70,7 @@ const View = ({ data, tocEntries }) => {
         bulleted={!data.ordered}
         as={data.ordered ? 'ol' : 'ul'}
       >
-        <RenderListItems items={tocEntries} data={data} />
+        <RenderListItems items={tocEntries} data={data} history={history} />
       </List>
     </>
   );

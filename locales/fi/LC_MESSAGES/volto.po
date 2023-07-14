@@ -144,6 +144,11 @@ msgstr "Lisää toiminto"
 msgid "Add block"
 msgstr "Lisää palikka"
 
+#: components/manage/Blocks/Container/NewBlockAddButton
+# defaultMessage: Add block in position {index}
+msgid "Add block in position {index}"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add block…
 msgid "Add block…"
@@ -168,6 +173,11 @@ msgstr "Lisää ehto"
 # defaultMessage: Add date
 msgid "Add date"
 msgstr "Lisää päivä"
+
+#: components/manage/Blocks/Container/SimpleContainerToolbar
+# defaultMessage: Add element to container
+msgid "Add element to container"
+msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Add field
@@ -278,6 +288,16 @@ msgstr "Laajennos poistettu onnistuneesti"
 # defaultMessage: Addon upgraded succesfuly
 msgid "Addon upgraded succesfuly"
 msgstr "Laajennos päivitetty onnistuneesti"
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Advanced facet?
+msgid "Advanced facet?"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Advanced facets are initially hidden and displayed on demand
+msgid "Advanced facets are initially hidden and displayed on demand"
+msgstr ""
 
 #: config/Views
 # defaultMessage: Album view
@@ -719,6 +739,11 @@ msgstr "Yhteydenottolomake"
 # defaultMessage: Contained items
 msgid "Contained items"
 msgstr "Sisältö"
+
+#: components/manage/Blocks/Container/SimpleContainerToolbar
+# defaultMessage: Container settings
+msgid "Container settings"
+msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Content
@@ -1264,9 +1289,9 @@ msgstr "Syötä sähköpostiosoitteesi vahvistusta varten."
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Enter your new password. Minimum 5 characters.
-msgid "Enter your new password. Minimum 5 characters."
-msgstr "Syötä uusi salasanasi, jossa on vähintään viisi (5) merkkiä."
+# defaultMessage: Enter your new password. Minimum 8 characters.
+msgid "Enter your new password. Minimum 8 characters."
+msgstr "Syötä uusi salasanasi, jossa on vähintään viisi (8) merkkiä."
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Enter your username for verification.
@@ -1520,6 +1545,11 @@ msgstr "Sivustonlaajuinen rooli"
 msgid "Google Maps Embedded Block"
 msgstr "Google Maps -upotuspalikka"
 
+#: components/manage/Blocks/Grid/schema
+# defaultMessage: Grid
+msgid "Grid"
+msgstr ""
+
 #: components/manage/Sharing/Sharing
 # defaultMessage: Group
 msgid "Group"
@@ -1558,6 +1588,7 @@ msgstr ""
 msgid "Header cell"
 msgstr "Otsikkosolu"
 
+#: components/manage/Blocks/Grid/schema
 #: components/manage/Blocks/Listing/schema
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Headline
@@ -1583,6 +1614,11 @@ msgstr "Piilota vastaukset"
 # defaultMessage: Hide facet?
 msgid "Hide facet?"
 msgstr "Piilota fasetti?"
+
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: Hide filters
+msgid "Hide filters"
+msgstr ""
 
 #: components/manage/History/History
 #: components/manage/Toolbar/More
@@ -1880,10 +1916,20 @@ msgstr "Nostokuva"
 msgid "Left"
 msgstr "Vasemmalla"
 
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: Less filters
+msgid "Less filters"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Link
 msgid "Link"
 msgstr "Linkki"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Link copied to clipboard
+msgid "Link copied to clipboard"
+msgstr ""
 
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
@@ -2088,6 +2134,11 @@ msgstr "Kuukausittain"
 # defaultMessage: More
 msgid "More"
 msgstr "Lisää"
+
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: More filters
+msgid "More filters"
+msgstr ""
 
 #: components/manage/Controlpanels/UpgradeControlPanel
 # defaultMessage: More information about the upgrade procedure can be found in the documentation section of plone.org in the Upgrade Guide.
@@ -2665,6 +2716,11 @@ msgstr "Osuvuus"
 msgid "Remove"
 msgstr "Poista"
 
+#: components/manage/Blocks/Container/EditBlockWrapper
+# defaultMessage: Remove element {index}
+msgid "Remove element {index}"
+msgstr ""
+
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Remove item
 msgid "Remove item"
@@ -2748,6 +2804,11 @@ msgstr "Pakollinen"
 # defaultMessage: Required input is missing.
 msgid "Required input is missing."
 msgstr "Pakollista tietoa puuttuu."
+
+#: components/manage/Blocks/Container/EditBlockWrapper
+# defaultMessage: Reset element {index}
+msgid "Reset element {index}"
+msgstr ""
 
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Reset title
@@ -3097,6 +3158,11 @@ msgstr "Näytä kaikki"
 # defaultMessage: Show Replies
 msgid "Show Replies"
 msgstr "Näytä vastaukset"
+
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: Show filters
+msgid "Show filters"
+msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Show groups of users below
@@ -4185,6 +4251,16 @@ msgstr "Unohditko salasanasi?"
 msgid "checkboxFacet"
 msgstr "Valintaruutu"
 
+#: components/manage/Blocks/Grid/templates
+# defaultMessage: column
+msgid "column"
+msgstr ""
+
+#: components/manage/Blocks/Grid/templates
+# defaultMessage: columns
+msgid "columns"
+msgstr ""
+
 #: config/Blocks
 # defaultMessage: Common
 msgid "common"
@@ -4274,6 +4350,11 @@ msgstr "Milloin"
 # defaultMessage: Where
 msgid "event_where"
 msgstr "Missä"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: This website does not accept files larger than {limit}
+msgid "fileTooLarge"
+msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: flush intIds and rebuild relations

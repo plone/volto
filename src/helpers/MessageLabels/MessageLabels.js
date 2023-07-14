@@ -260,6 +260,10 @@ export const messages = defineMessages({
     id: 'Show groups of users below',
     defaultMessage: 'Show groups of users below',
   },
+  urlClipboardCopy: {
+    id: 'Link copied to clipboard',
+    defaultMessage: 'Link copied to clipboard',
+  },
   inspectRelations: {
     id: 'Inspect relations',
     defaultMessage: 'Inspect relations',
@@ -339,5 +343,9 @@ export const messages = defineMessages({
   userUpdated: {
     id: 'User updated',
     defaultMessage: 'User updated',
+  },
+  fileTooLarge: {
+    id: 'fileTooLarge',
+    defaultMessage: 'This website does not accept files larger than {limit}',
   },
 });
