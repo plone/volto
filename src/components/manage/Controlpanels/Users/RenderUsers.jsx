@@ -95,6 +95,7 @@ class RenderUsers extends Component {
               <Dropdown.Item
                 onClick={this.props.onEdit}
                 value={this.props.user['@id']}
+                data-key={`edit-${this.props.user.username}`}
               >
                 <Icon name={editingSVG} size="15px" />
                 <FormattedMessage id="Edit" defaultMessage="Edit" />
@@ -102,6 +103,7 @@ class RenderUsers extends Component {
               <Dropdown.Item
                 onClick={this.props.onDelete}
                 value={this.props.user['@id']}
+                data-key={`delete-${this.props.user.username}`}
               >
                 <Icon name={trashSVG} size="15px" />
                 <FormattedMessage id="Delete" defaultMessage="Delete" />

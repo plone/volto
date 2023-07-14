@@ -80,7 +80,9 @@ describe('User Control Panel Test', () => {
     // select first user with name, delete it and search if its exists or not!
     cy.get('tr:nth-of-type(2) > td.fullname').should('have.text', 'Alok Kumar');
     cy.get('tr:nth-of-type(2) div[role="listbox"]').click();
-    cy.get('tr:nth-of-type(2) div[role="option"]').click();
+    cy.get(
+      'tr:nth-of-type(2) div[role="option"] [data-key^="delete-"]',
+    ).click();
     cy.contains('Delete User');
     cy.get('button.ui.primary.button').should('have.text', 'OK').click();
     cy.get('input[id="user-search-input"]').clear().type('i');
