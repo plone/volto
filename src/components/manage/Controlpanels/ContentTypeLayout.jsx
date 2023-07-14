@@ -1,23 +1,18 @@
-/**
- * Content Type component.
- * @module components/manage/Controlpanels/ContentTypeLayout
- */
-
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import {
   getParentUrl,
   hasBlocksData,
   getBlocksFieldname,
   getBlocksLayoutFieldname,
+  usePrevious,
 } from '@plone/volto/helpers';
+import { useClient } from '@plone/volto/hooks';
 import { Portal } from 'react-portal';
 import { Button, Segment } from 'semantic-ui-react';
 import { toast } from 'react-toastify';
-import { defineMessages, injectIntl, FormattedMessage } from 'react-intl';
+import { defineMessages, useIntl, FormattedMessage } from 'react-intl';
 import { nth, join } from 'lodash';
 import {
   Error,
@@ -65,192 +60,45 @@ const messages = defineMessages({
   },
 });
 
-/**
- * ContentTypeLayout class.
- * @class ContentTypeLayout
- * @extends Component
- */
-class ContentTypeLayout extends Component {
-  /**
-   * Property types.
-   * @property {Object} propTypes Property types.
-   * @static
-   */
-  static propTypes = {
-    updateControlpanel: PropTypes.func.isRequired,
-    getControlpanel: PropTypes.func.isRequired,
-    getSchema: PropTypes.func.isRequired,
-    updateSchema: PropTypes.func.isRequired,
-    id: PropTypes.string.isRequired,
-    parent: PropTypes.string.isRequired,
-    pathname: PropTypes.string.isRequired,
-    schemaRequest: PropTypes.objectOf(PropTypes.any).isRequired,
-    cpanelRequest: PropTypes.objectOf(PropTypes.any).isRequired,
-    schema: PropTypes.objectOf(PropTypes.any),
-    controlpanel: PropTypes.shape({
-      '@id': PropTypes.string,
-      data: PropTypes.object,
-      schema: PropTypes.object,
-      title: PropTypes.string,
-    }),
-  };
+const ContentTypeLayout = () => {
+  const dispatch = useDispatch();
+  const intl = useIntl();
+  const history = useHistory();
+  const [visual, setVisual] = useState(false);
+  const [content, setContent] = useState(null);
+  const [readOnlyBehavior, setReadOnlyBehaviour] = useState(null);
+  const [error, setError] = useState(null);
+  const isClient = useClient();
 
-  /**
-   * Default properties.
-   * @property {Object} defaultProps Default properties.
-   * @static
-   */
-  static defaultProps = {
-    schema: {},
-    controlpanel: null,
-  };
+  const form = useRef();
 
-  /**
-   * Constructor
-   * @method constructor
-   * @param {Object} props Component properties
-   * @constructs ContentTypeLayout
-   */
-  constructor(props) {
-    super(props);
+  const controlpanel = useSelector((state) => state.controlpanels.controlpanel);
 
-    this.state = {
-      visual: false,
-      content: null,
-      readOnlyBehavior: null,
-      error: null,
-      isClient: false,
-    };
+  const schemaRequest = useSelector((state) => state.schema);
+  const cpanelRequest = useSelector((state) => state.controlpanels);
+  const { pathname } = useLocation();
+  const id = nth(pathname.split('/'), -2);
+  const parent = nth(pathname.split('/'), -3);
 
-    this.form = React.createRef();
-  }
-
-  /**
-   * Component did mount
-   * @method componentDidMount
-   * @returns {undefined}
-   */
-  componentDidMount() {
-    this.props.getControlpanel(join([this.props.parent, this.props.id], '/'));
-    this.props.getSchema(this.props.id);
-    this.setState({ isClient: true });
-  }
-
-  /**
-   * Component will receive props
-   * @method componentWillReceiveProps
-   * @param {Object} nextProps Next properties
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    // Control Panel GET
-    if (
-      this.props.cpanelRequest.get.loading &&
-      nextProps.cpanelRequest.get.error
-    ) {
-      this.setState({
-        error: nextProps.cpanelRequest.get.error,
-      });
-    }
-
-    // Schema GET
-    if (this.props.schemaRequest.loading && nextProps.schemaRequest.loaded) {
-      const properties = nextProps.schema?.properties || {};
-      const content = {};
-      for (const key in properties) {
-        const value = properties[key].default;
-        if (value) {
-          content[key] = value;
-        }
-      }
-
-      if (hasBlocksData(properties)) {
-        this.setState({
-          visual: true,
-        });
-
-        const blocksFieldName = getBlocksFieldname(properties);
-        const blocksLayoutFieldname = getBlocksLayoutFieldname(properties);
-        content[blocksFieldName] = properties[blocksFieldName]?.default || {};
-        content[blocksLayoutFieldname] = properties[blocksLayoutFieldname]
-          ?.default || { items: [] };
-
-        const blocksBehavior = properties[blocksFieldName]?.behavior || '';
-        this.setState({
-          readOnlyBehavior: !blocksBehavior.includes('generated')
-            ? blocksBehavior
-            : '',
-        });
-      } else {
-        this.setState({
-          visual: false,
-          readOnlyBehavior: '',
-        });
-      }
-
-      this.setState({
-        content: content,
-      });
-    }
-
-    // Schema updated
-    if (
-      this.props.schemaRequest.update.loading &&
-      nextProps.schemaRequest.update.loaded
-    ) {
-      this.props.getSchema(this.props.id);
-      toast.info(
-        <Toast
-          info
-          title={this.props.intl.formatMessage(messages.info)}
-          content={this.props.intl.formatMessage(messages.changesSaved)}
-        />,
-      );
-    }
-
-    // Blocks behavior disabled
-    if (
-      this.props.cpanelRequest.update.loading &&
-      nextProps.cpanelRequest.update.loaded
-    ) {
-      this.onEnableBlocks();
-    }
-  }
-
-  /**
-   * Submit handler
-   * @method onSubmit
-   * @param {object} data Form data.
-   * @returns {undefined}
-   */
-  onSubmit = (data) => {
-    const schema = { properties: {} };
-    Object.keys(data)
-      .filter((k) => data[k])
-      .forEach((k) => (schema.properties[k] = { default: data[k] }));
-    this.props.updateSchema(this.props.id, schema);
-  };
-
-  /**
-   * Cancel handler
-   * @method onCancel
-   * @returns {undefined}
-   */
-  onCancel = () => {
-    const url = getParentUrl(this.props.pathname);
-    this.props.history.push(getParentUrl(url));
-  };
-
-  /**
-   * Enable blocks handler
-   * @method onEnableBlocks
-   * @returns {undefined}
-   */
-  onEnableBlocks = () => {
-    const { properties = {} } = this.props.schema;
+  const prevcpanelRequestgetloading = usePrevious(cpanelRequest.get?.loading);
+  const prevschemaRequestloading = usePrevious(schemaRequest.loading);
+  const prevschemaRequestupdateloading = usePrevious(
+    schemaRequest?.update?.loading,
+  );
+  const prevcpanelRequestupdateloading = usePrevious(
+    cpanelRequest.update?.loading,
+  );
+  const schema = useSelector((state) => state.schema.schema);
+  const cpanelRequestgeterror = cpanelRequest.get?.error;
+  const cpanelRequestupdateloaded = cpanelRequest.update?.loaded;
+  const schemaRequestupdateloaded = schemaRequest.update?.loaded;
+  const schemaRequestloaded = schemaRequest.loaded;
+  const schemaProperties = schema?.properties;
+  const onEnableBlocks = useCallback(() => {
+    const { properties = {} } = schema;
     const blocksFieldName = getBlocksFieldname(properties);
     const blocksLayoutFieldname = getBlocksLayoutFieldname(properties);
-    const schema = {
+    const schemas = {
       fieldsets: [
         {
           id: 'layout',
@@ -275,241 +123,286 @@ class ContentTypeLayout extends Component {
         },
       },
     };
-    this.props.updateSchema(this.props.id, schema);
-  };
+    dispatch(updateSchema(id, schemas));
+  }, [dispatch, id, schema]);
 
-  /**
-   * Disable Blocks behavior handler
-   * @method onDisableBlocksBehavior
-   * @returns {undefined}
-   */
-  onDisableBlocksBehavior = () => {
-    this.props.updateControlpanel(this.props.controlpanel['@id'], {
-      [this.state.readOnlyBehavior]: false,
-      'volto.blocks.editable.layout': true,
-    });
-  };
+  useEffect(() => {
+    dispatch(getControlpanel(join([parent, id], '/')));
+    dispatch(getSchema(id));
+  }, [dispatch, id, parent]);
 
-  /**
-   * Enable Blocks behavior handler
-   * @method onEnableBlocksBehavior
-   * @returns {undefined}
-   */
-  onEnableBlocksBehavior = () => {
-    this.props.updateControlpanel(this.props.controlpanel['@id'], {
-      'volto.blocks.editable.layout': true,
-    });
-  };
-
-  /**
-   * Render method.
-   * @method render
-   * @returns {string} Markup for the component.
-   */
-  render() {
-    // Error
-    if (this.state.error) {
-      return <Error error={this.state.error} />;
+  useEffect(() => {
+    if (prevcpanelRequestgetloading && cpanelRequestgeterror) {
+      setError(cpanelRequestgeterror);
     }
-
-    if (!this.state.visual) {
-      // Still loading
-      if (!this.state.content) {
-        return <div />;
+    // Schema GET
+    if (prevschemaRequestloading && schemaRequestloaded) {
+      const properties = schemaProperties || {};
+      const content = {};
+      for (const key in properties) {
+        const value = properties[key].default;
+        if (value) {
+          content[key] = value;
+        }
       }
 
-      // Blocks are not enabled
-      return (
-        <>
-          <Segment
-            placeholder
-            id="page-controlpanel-layout"
-            className="ui container center aligned"
-          >
-            <div>
-              <FormattedMessage
-                id="Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled"
-                defaultMessage="Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled"
-                values={{
-                  strong: (...chunks) => <strong>{chunks}</strong>,
-                  type: this.props?.controlpanel?.title || this.props.id,
-                }}
-              />
-            </div>
-            <div className="ui divider"></div>
-            <Button
-              primary
-              onClick={this.onEnableBlocksBehavior}
-              content={this.props.intl.formatMessage(messages.enable)}
-            />
-          </Segment>
-          <Portal
-            node={this.state.isClient && document.getElementById('toolbar')}
-          >
-            <Toolbar
-              pathname={this.props.pathname}
-              hideDefaultViewButtons
-              inner={
-                <>
-                  <Link className="item" to="#" onClick={() => this.onCancel()}>
-                    <Icon
-                      name={backSVG}
-                      size="30px"
-                      className="contents circled"
-                      title={this.props.intl.formatMessage(messages.back)}
-                    />
-                  </Link>
-                </>
-              }
-            />
-          </Portal>
-        </>
+      if (hasBlocksData(properties)) {
+        setVisual(true);
+
+        const blocksFieldName = getBlocksFieldname(properties);
+        const blocksLayoutFieldname = getBlocksLayoutFieldname(properties);
+        content[blocksFieldName] = properties[blocksFieldName]?.default || {};
+        content[blocksLayoutFieldname] = properties[blocksLayoutFieldname]
+          ?.default || { items: [] };
+
+        const blocksBehavior = properties[blocksFieldName]?.behavior || '';
+        setReadOnlyBehaviour(
+          !blocksBehavior.includes('generated') ? blocksBehavior : '',
+        );
+      } else {
+        setVisual(false);
+        setReadOnlyBehaviour('');
+      }
+      setContent(content);
+    }
+    if (prevschemaRequestupdateloading && schemaRequestupdateloaded) {
+      dispatch(getSchema(id));
+      toast.info(
+        <Toast
+          info
+          title={intl.formatMessage(messages.info)}
+          content={intl.formatMessage(messages.changesSaved)}
+        />,
       );
     }
+    if (prevcpanelRequestupdateloading && cpanelRequestupdateloaded) {
+      onEnableBlocks();
+    }
+  }, [
+    prevcpanelRequestgetloading,
+    cpanelRequestgeterror,
+    cpanelRequestupdateloaded,
+    prevschemaRequestloading,
+    schemaRequestloaded,
+    schemaProperties,
+    schemaRequestupdateloaded,
+    prevschemaRequestupdateloading,
+    prevcpanelRequestupdateloading,
 
-    if (this.state.readOnlyBehavior) {
-      return (
-        <>
-          <Segment
-            placeholder
-            id="page-controlpanel-layout"
-            className="ui container center aligned"
-          >
-            <div>
-              <FormattedMessage
-                id="Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>"
-                defaultMessage="Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>"
-                values={{
-                  strong: (...chunks) => <strong>{chunks}</strong>,
-                  type: this.props?.controlpanel?.title || this.props.id,
-                }}
-              />
-            </div>
-            <div className="ui divider"></div>
-            <Button
-              primary
-              onClick={this.onDisableBlocksBehavior}
-              content={this.props.intl.formatMessage(messages.enable)}
-            />
-          </Segment>
-          <Portal
-            node={this.state.isClient && document.getElementById('toolbar')}
-          >
-            <Toolbar
-              pathname={this.props.pathname}
-              hideDefaultViewButtons
-              inner={
-                <>
-                  <Link className="item" to="#" onClick={() => this.onCancel()}>
-                    <Icon
-                      name={backSVG}
-                      size="30px"
-                      className="contents circled"
-                      title={this.props.intl.formatMessage(messages.back)}
-                    />
-                  </Link>
-                </>
-              }
-            />
-          </Portal>
-        </>
-      );
+    dispatch,
+    id,
+    intl,
+    onEnableBlocks,
+  ]);
+
+  const onSubmit = (data) => {
+    const schema = { properties: {} };
+    Object.keys(data)
+      .filter((k) => data[k])
+      .forEach((k) => (schema.properties[k] = { default: data[k] }));
+    dispatch(updateSchema(id, schema));
+  };
+
+  const onCancel = () => {
+    const url = getParentUrl(pathname);
+    history.push(getParentUrl(url));
+  };
+
+  const onDisableBlocksBehavior = () => {
+    dispatch(
+      updateControlpanel(controlpanel['@id'], {
+        [readOnlyBehavior]: false,
+        'volto.blocks.editable.layout': true,
+      }),
+    );
+  };
+
+  const onEnableBlocksBehavior = () => {
+    dispatch(
+      updateControlpanel(controlpanel['@id'], {
+        'volto.blocks.editable.layout': true,
+      }),
+    );
+  };
+
+  // Error
+  if (error) {
+    return <Error error={error} />;
+  }
+
+  if (!visual) {
+    // Still loading
+    if (!content) {
+      return <div />;
     }
 
-    // Render layout editor
-    const blocksFieldName = getBlocksFieldname(
-      this.props.schema?.properties || {},
-    );
-    const blocksLayoutFieldname = getBlocksLayoutFieldname(
-      this.props.schema?.properties || {},
-    );
+    // Blocks are not enabled
     return (
-      <div id="page-controlpanel-layout">
-        <Form
-          isAdminForm
-          ref={this.form}
-          schema={{
-            fieldsets: [
-              {
-                id: 'layout',
-                title: 'Layout',
-                fields: [blocksFieldName, blocksLayoutFieldname],
-              },
-            ],
-            properties: {
-              ...this.props.schema.properties[blocksFieldName],
-              ...this.props.schema.properties[blocksLayoutFieldname],
-            },
-            required: [],
-          }}
-          formData={this.state.content}
-          onSubmit={this.onSubmit}
-          onCancel={this.onCancel}
-          pathname={this.props.pathname}
-          visual={this.state.visual}
-          hideActions
-        />
-        <Portal
-          node={this.state.isClient && document.getElementById('sidebar')}
+      <>
+        <Segment
+          placeholder
+          id="page-controlpanel-layout"
+          className="ui container center aligned"
         >
-          <Sidebar settingsTab={true} documentTab={false} />
-        </Portal>
-        <Portal
-          node={this.state.isClient && document.getElementById('toolbar')}
-        >
+          <div>
+            <FormattedMessage
+              id="Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled"
+              defaultMessage="Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled"
+              values={{
+                strong: (...chunks) => <strong>{chunks}</strong>,
+                type: controlpanel?.title || id,
+              }}
+            />
+          </div>
+          <div className="ui divider"></div>
+          <Button
+            primary
+            onClick={onEnableBlocksBehavior}
+            content={intl.formatMessage(messages.enable)}
+          />
+        </Segment>
+        <Portal node={isClient && document.getElementById('toolbar')}>
           <Toolbar
-            pathname={this.props.pathname}
+            pathname={pathname}
             hideDefaultViewButtons
             inner={
               <>
-                <Button
-                  id="toolbar-save"
-                  className="save"
-                  aria-label={this.props.intl.formatMessage(messages.save)}
-                  onClick={() => this.form.current.onSubmit()}
-                  disabled={this.props.schemaRequest.update.loading}
-                  loading={this.props.schemaRequest.update.loading}
-                >
+                <Link className="item" to="#" onClick={() => onCancel()}>
                   <Icon
-                    name={saveSVG}
-                    className="circled"
+                    name={backSVG}
                     size="30px"
-                    title={this.props.intl.formatMessage(messages.save)}
+                    className="contents circled"
+                    title={intl.formatMessage(messages.back)}
                   />
-                </Button>
-                <Button
-                  className="cancel"
-                  aria-label={this.props.intl.formatMessage(messages.cancel)}
-                  onClick={() => this.onCancel()}
-                >
-                  <Icon
-                    name={clearSVG}
-                    className="circled"
-                    size="30px"
-                    title={this.props.intl.formatMessage(messages.cancel)}
-                  />
-                </Button>
+                </Link>
               </>
             }
           />
         </Portal>
-      </div>
+      </>
     );
   }
-}
 
-export default compose(
-  injectIntl,
-  connect(
-    (state, props) => ({
-      schema: state.schema.schema,
-      schemaRequest: state.schema,
-      cpanelRequest: state.controlpanels,
-      controlpanel: state.controlpanels.controlpanel,
-      pathname: props.location.pathname,
-      id: nth(props.location.pathname.split('/'), -2),
-      parent: nth(props.location.pathname.split('/'), -3),
-    }),
-    { getSchema, updateSchema, getControlpanel, updateControlpanel },
-  ),
-)(ContentTypeLayout);
+  if (readOnlyBehavior) {
+    return (
+      <>
+        <Segment
+          placeholder
+          id="page-controlpanel-layout"
+          className="ui container center aligned"
+        >
+          <div>
+            <FormattedMessage
+              id="Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>"
+              defaultMessage="Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>"
+              values={{
+                strong: (...chunks) => <strong>{chunks}</strong>,
+                type: controlpanel?.title || id,
+              }}
+            />
+          </div>
+          <div className="ui divider"></div>
+          <Button
+            primary
+            onClick={onDisableBlocksBehavior}
+            content={intl.formatMessage(messages.enable)}
+          />
+        </Segment>
+        <Portal node={isClient && document.getElementById('toolbar')}>
+          <Toolbar
+            pathname={pathname}
+            hideDefaultViewButtons
+            inner={
+              <>
+                <Link className="item" to="#" onClick={() => onCancel()}>
+                  <Icon
+                    name={backSVG}
+                    size="30px"
+                    className="contents circled"
+                    title={intl.formatMessage(messages.back)}
+                  />
+                </Link>
+              </>
+            }
+          />
+        </Portal>
+      </>
+    );
+  }
+
+  // Render layout editor
+  const blocksFieldName = getBlocksFieldname(schema?.properties || {});
+  const blocksLayoutFieldname = getBlocksLayoutFieldname(
+    schema?.properties || {},
+  );
+  return (
+    <div id="page-controlpanel-layout">
+      <Form
+        isAdminForm
+        ref={form}
+        schema={{
+          fieldsets: [
+            {
+              id: 'layout',
+              title: 'Layout',
+              fields: [blocksFieldName, blocksLayoutFieldname],
+            },
+          ],
+          properties: {
+            ...schema.properties[blocksFieldName],
+            ...schema.properties[blocksLayoutFieldname],
+          },
+          required: [],
+        }}
+        formData={content}
+        onSubmit={onSubmit}
+        onCancel={onCancel}
+        pathname={pathname}
+        visual={visual}
+        hideActions
+      />
+      <Portal node={isClient && document.getElementById('sidebar')}>
+        <Sidebar settingsTab={true} documentTab={false} />
+      </Portal>
+      <Portal node={isClient && document.getElementById('toolbar')}>
+        <Toolbar
+          pathname={pathname}
+          hideDefaultViewButtons
+          inner={
+            <>
+              <Button
+                id="toolbar-save"
+                className="save"
+                aria-label={intl.formatMessage(messages.save)}
+                onClick={() => form.current.onSubmit()}
+                disabled={schemaRequest.update.loading}
+                loading={schemaRequest.update.loading}
+              >
+                <Icon
+                  name={saveSVG}
+                  className="circled"
+                  size="30px"
+                  title={intl.formatMessage(messages.save)}
+                />
+              </Button>
+              <Button
+                className="cancel"
+                aria-label={intl.formatMessage(messages.cancel)}
+                onClick={() => onCancel()}
+              >
+                <Icon
+                  name={clearSVG}
+                  className="circled"
+                  size="30px"
+                  title={intl.formatMessage(messages.cancel)}
+                />
+              </Button>
+            </>
+          }
+        />
+      </Portal>
+    </div>
+  );
+};
+
+export default ContentTypeLayout;
