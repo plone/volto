@@ -9,6 +9,8 @@ import { hasBlocksData, flattenHTMLToAppURL } from '@plone/volto/helpers';
 import { Image, Grid } from 'semantic-ui-react';
 import RenderBlocks from '@plone/volto/components/theme/View/RenderBlocks';
 import { EventDetails } from '@plone/volto/components';
+import { Container as SemanticContainer } from 'semantic-ui-react';
+import config from '@plone/volto/registry';
 
 const EventTextfieldView = ({ content }) => (
   <React.Fragment>
@@ -41,9 +43,11 @@ const EventTextfieldView = ({ content }) => (
  */
 const EventView = (props) => {
   const { content } = props;
+  const Container =
+    config.getComponent({ name: 'Container' }).component || SemanticContainer;
 
   return (
-    <div id="page-document" className="ui container view-wrapper event-view">
+    <Container id="page-document" className="view-wrapper event-view">
       <Grid>
         <Grid.Column width={7} className="mobile hidden">
           {hasBlocksData(content) ? (
@@ -83,7 +87,7 @@ const EventView = (props) => {
           )}
         </Grid.Column>
       </Grid>
-    </div>
+    </Container>
   );
 };
 
