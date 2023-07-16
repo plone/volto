@@ -4,12 +4,25 @@
  */
 
 import React from 'react';
+import isUndefined from 'lodash/isUndefined';
+import isString from 'lodash/isString';
 import { FormFieldWrapper } from '@plone/volto/components';
 import SlateEditor from '@plone/volto-slate/editor/SlateEditor';
 
-import { createEmptyParagraph } from '../utils/blocks';
+import { createEmptyParagraph, createParagraph } from '../utils/blocks';
 
 import './style.css';
+
+const getValue = (value) => {
+  if (isUndefined(value) || !isUndefined(value?.data)) {
+    return [createEmptyParagraph()];
+  }
+  // Previously this was a text field
+  if (isString(value)) {
+    return [createParagraph(value)];
+  }
+  return value;
+};
 
 const SlateRichTextWidget = (props) => {
   const {
@@ -42,13 +55,7 @@ const SlateRichTextWidget = (props) => {
           readOnly={readOnly}
           id={id}
           name={id}
-          value={
-            typeof value === 'undefined' ||
-            typeof value?.data !==
-              'undefined' /* previously this was a Draft block */
-              ? [createEmptyParagraph()]
-              : value
-          }
+          value={getValue(value)}
           onChange={(newValue) => {
             onChange(id, newValue);
           }}
