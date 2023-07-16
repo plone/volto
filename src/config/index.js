@@ -183,6 +183,7 @@ let config = {
     styleClassNameExtenders,
     querystringSearchGet: false,
     blockSettingsTabFieldsetsInitialStateOpen: true,
+    excludeLinksAndReferencesMenuItem: false,
   },
   experimental: {
     addBlockButton: {
