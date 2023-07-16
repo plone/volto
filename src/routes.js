@@ -23,6 +23,7 @@ import {
   Diff,
   Edit,
   History,
+  LinksToItem,
   Login,
   Logout,
   ManageTranslations,
@@ -279,6 +280,14 @@ export const defaultRoutes = [
   {
     path: '/**/manage-translations',
     component: ManageTranslations,
+  },
+  {
+    path: '/links-to-item',
+    component: LinksToItem,
+  },
+  {
+    path: '/**/links-to-item',
+    component: LinksToItem,
   },
   {
     path: '/register',
