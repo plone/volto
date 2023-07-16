@@ -1142,6 +1142,9 @@ describe('Listing Block Tests', () => {
 
     // const listing1 = cy.get('.ui.pagination.menu').first();
     // cy.log('listing1', listing1);
+    // The wait is needed to solve the flakyness introduced because that component
+    // is removed momentarilly from the DOM when saving
+    cy.wait(2000);
     //test second pagination click
     cy.get('.ui.pagination.menu a[value="2"]').first().click();
     //test f5
