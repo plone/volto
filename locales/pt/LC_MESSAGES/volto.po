@@ -141,6 +141,11 @@ msgstr ""
 msgid "Add block"
 msgstr ""
 
+#: components/manage/Blocks/Container/NewBlockAddButton
+# defaultMessage: Add block in position {index}
+msgid "Add block in position {index}"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add block…
 msgid "Add block…"
@@ -164,6 +169,11 @@ msgstr ""
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: Add date
 msgid "Add date"
+msgstr ""
+
+#: components/manage/Blocks/Container/SimpleContainerToolbar
+# defaultMessage: Add element to container
+msgid "Add element to container"
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
@@ -434,6 +444,7 @@ msgstr ""
 #: components/manage/Controlpanels/UpgradeControlPanel
 #: components/manage/Diff/Diff
 #: components/manage/History/History
+#: components/manage/LinksToItem/LinksToItem
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalPreferences
@@ -727,6 +738,11 @@ msgstr "Formulário de contacto"
 msgid "Contained items"
 msgstr ""
 
+#: components/manage/Blocks/Container/SimpleContainerToolbar
+# defaultMessage: Container settings
+msgid "Container settings"
+msgstr ""
+
 #: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Content
 msgid "Content"
@@ -751,6 +767,11 @@ msgstr ""
 #: components/manage/Rules/Rules
 # defaultMessage: Content rules from parent folders
 msgid "Content rules from parent folders"
+msgstr ""
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Content that links to or references {title}
+msgid "Content that links to or references {title}"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
@@ -1527,6 +1548,11 @@ msgstr "Papel global"
 msgid "Google Maps Embedded Block"
 msgstr "Bloco Integrado Google Maps"
 
+#: components/manage/Blocks/Grid/schema
+# defaultMessage: Grid
+msgid "Grid"
+msgstr ""
+
 #: components/manage/Sharing/Sharing
 # defaultMessage: Group
 msgid "Group"
@@ -1565,6 +1591,7 @@ msgstr ""
 msgid "Header cell"
 msgstr ""
 
+#: components/manage/Blocks/Grid/schema
 #: components/manage/Blocks/Listing/schema
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Headline
@@ -1937,6 +1964,17 @@ msgstr "Ligar a"
 msgid "Link translation for"
 msgstr ""
 
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Linking this item with hyperlink in text
+msgid "Linking this item with hyperlink in text"
+msgstr ""
+
+#: components/manage/LinksToItem/LinksToItem
+#: components/manage/Toolbar/More
+# defaultMessage: Links and references
+msgid "Links and references"
+msgstr ""
+
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Listing
 msgid "Listing"
@@ -2270,6 +2308,11 @@ msgstr ""
 msgid "No items selected"
 msgstr ""
 
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: No links to this item found.
+msgid "No links to this item found."
+msgstr ""
+
 #: components/manage/Blocks/Maps/MapsSidebar
 # defaultMessage: No map selected
 msgid "No map selected"
@@ -2397,6 +2440,11 @@ msgstr ""
 # defaultMessage: Origin
 msgid "Origin"
 msgstr "Origem"
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Overview of relations of all content items
+msgid "Overview of relations of all content items"
+msgstr ""
 
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Page
@@ -2647,6 +2695,16 @@ msgstr ""
 msgid "Reduce complexity"
 msgstr "Reduzir complexidade"
 
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Referencing this item as related item
+msgid "Referencing this item as related item"
+msgstr ""
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Referencing this item with {relationship}
+msgid "Referencing this item with {relationship}"
+msgstr ""
+
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
 #: components/theme/Register/Register
@@ -2690,6 +2748,11 @@ msgstr ""
 #: components/manage/Aliases/Aliases
 # defaultMessage: Remove
 msgid "Remove"
+msgstr ""
+
+#: components/manage/Blocks/Container/EditBlockWrapper
+# defaultMessage: Remove element {index}
+msgid "Remove element {index}"
 msgstr ""
 
 #: components/manage/Widgets/ObjectListWidget
@@ -2776,6 +2839,11 @@ msgstr "Obrigatório"
 msgid "Required input is missing."
 msgstr "Falta informação obrigatória."
 
+#: components/manage/Blocks/Container/EditBlockWrapper
+# defaultMessage: Reset element {index}
+msgid "Reset element {index}"
+msgstr ""
+
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Reset title
 msgid "Reset term title"
@@ -2812,6 +2880,7 @@ msgid "Revert to this revision"
 msgstr "Reverter para esta revisão"
 
 #: components/manage/Contents/Contents
+#: components/manage/LinksToItem/LinksToItem
 # defaultMessage: Review state
 msgid "Review state"
 msgstr ""
@@ -3689,6 +3758,7 @@ msgid "Triggering event field error. Please select a value"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
+#: components/manage/LinksToItem/LinksToItem
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
 # defaultMessage: Type
@@ -4215,6 +4285,16 @@ msgstr "box_forgot_password_option"
 #: config/Blocks
 # defaultMessage: Checkbox
 msgid "checkboxFacet"
+msgstr ""
+
+#: components/manage/Blocks/Grid/templates
+# defaultMessage: column
+msgid "column"
+msgstr ""
+
+#: components/manage/Blocks/Grid/templates
+# defaultMessage: columns
+msgid "columns"
 msgstr ""
 
 #: config/Blocks

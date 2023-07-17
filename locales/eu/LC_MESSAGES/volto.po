@@ -140,6 +140,11 @@ msgstr "Gehitu akzioa"
 msgid "Add block"
 msgstr "Gehitu blokea"
 
+#: components/manage/Blocks/Container/NewBlockAddButton
+# defaultMessage: Add block in position {index}
+msgid "Add block in position {index}"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add block…
 msgid "Add block…"
@@ -164,6 +169,11 @@ msgstr "Gehitu irizpidea"
 # defaultMessage: Add date
 msgid "Add date"
 msgstr "Gehitu data"
+
+#: components/manage/Blocks/Container/SimpleContainerToolbar
+# defaultMessage: Add element to container
+msgid "Add element to container"
+msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Add field
@@ -433,6 +443,7 @@ msgstr "Erabilgarri dauden eduki-erregelak:"
 #: components/manage/Controlpanels/UpgradeControlPanel
 #: components/manage/Diff/Diff
 #: components/manage/History/History
+#: components/manage/LinksToItem/LinksToItem
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalPreferences
@@ -726,6 +737,11 @@ msgstr "Kontaktu-formularioa"
 msgid "Contained items"
 msgstr "Barneko elementuak"
 
+#: components/manage/Blocks/Container/SimpleContainerToolbar
+# defaultMessage: Container settings
+msgid "Container settings"
+msgstr ""
+
 #: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Content
 msgid "Content"
@@ -751,6 +767,11 @@ msgstr "{title} elementuaren eduki erregelak"
 # defaultMessage: Content rules from parent folders
 msgid "Content rules from parent folders"
 msgstr "Gurasoetan dauden eduki erregelak"
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Content that links to or references {title}
+msgid "Content that links to or references {title}"
+msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Content type created
@@ -1526,6 +1547,11 @@ msgstr "Rol globala"
 msgid "Google Maps Embedded Block"
 msgstr "Google Maps itsasteko blokea"
 
+#: components/manage/Blocks/Grid/schema
+# defaultMessage: Grid
+msgid "Grid"
+msgstr ""
+
 #: components/manage/Sharing/Sharing
 # defaultMessage: Group
 msgid "Group"
@@ -1564,6 +1590,7 @@ msgstr "Taldeak erabiltzaileen multzo logikoak dira. Taldeak ez daude baimenei e
 msgid "Header cell"
 msgstr "Goiburuko gelaxka"
 
+#: components/manage/Blocks/Grid/schema
 #: components/manage/Blocks/Listing/schema
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Headline
@@ -1936,6 +1963,17 @@ msgstr "Esteka"
 msgid "Link translation for"
 msgstr "Lotu itzulpena"
 
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Linking this item with hyperlink in text
+msgid "Linking this item with hyperlink in text"
+msgstr ""
+
+#: components/manage/LinksToItem/LinksToItem
+#: components/manage/Toolbar/More
+# defaultMessage: Links and references
+msgid "Links and references"
+msgstr ""
+
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Listing
 msgid "Listing"
@@ -2269,6 +2307,11 @@ msgstr "Karpeta honetan ez dago elementurik"
 msgid "No items selected"
 msgstr "Ez da elementurik aukeratu"
 
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: No links to this item found.
+msgid "No links to this item found."
+msgstr ""
+
 #: components/manage/Blocks/Maps/MapsSidebar
 # defaultMessage: No map selected
 msgid "No map selected"
@@ -2396,6 +2439,11 @@ msgstr "Ireki elementu bilatzailea"
 # defaultMessage: Origin
 msgid "Origin"
 msgstr "Jatorria"
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Overview of relations of all content items
+msgid "Overview of relations of all content items"
+msgstr ""
 
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Page
@@ -2646,6 +2694,16 @@ msgstr "Berregin"
 msgid "Reduce complexity"
 msgstr "Konplexutasuna gutxitu"
 
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Referencing this item as related item
+msgid "Referencing this item as related item"
+msgstr ""
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Referencing this item with {relationship}
+msgid "Referencing this item with {relationship}"
+msgstr ""
+
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
 #: components/theme/Register/Register
@@ -2690,6 +2748,11 @@ msgstr "Errelebantzia"
 # defaultMessage: Remove
 msgid "Remove"
 msgstr "Ezabatu"
+
+#: components/manage/Blocks/Container/EditBlockWrapper
+# defaultMessage: Remove element {index}
+msgid "Remove element {index}"
+msgstr ""
 
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Remove item
@@ -2775,6 +2838,11 @@ msgstr "Beharrezkoa"
 msgid "Required input is missing."
 msgstr "Beharrezko balioak falta dira"
 
+#: components/manage/Blocks/Container/EditBlockWrapper
+# defaultMessage: Reset element {index}
+msgid "Reset element {index}"
+msgstr ""
+
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Reset title
 msgid "Reset term title"
@@ -2811,6 +2879,7 @@ msgid "Revert to this revision"
 msgstr "Bertsio honetara itzuli"
 
 #: components/manage/Contents/Contents
+#: components/manage/LinksToItem/LinksToItem
 # defaultMessage: Review state
 msgid "Review state"
 msgstr "Egoera"
@@ -3688,6 +3757,7 @@ msgid "Triggering event field error. Please select a value"
 msgstr "Akzioaren eremuan errorea. Aukeratu balio bat"
 
 #: components/manage/Controlpanels/ContentTypes
+#: components/manage/LinksToItem/LinksToItem
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
 # defaultMessage: Type
@@ -4215,6 +4285,16 @@ msgstr "Pasahitza ahaztuta?"
 # defaultMessage: Checkbox
 msgid "checkboxFacet"
 msgstr "Aukeraketa kutxa"
+
+#: components/manage/Blocks/Grid/templates
+# defaultMessage: column
+msgid "column"
+msgstr ""
+
+#: components/manage/Blocks/Grid/templates
+# defaultMessage: columns
+msgid "columns"
+msgstr ""
 
 #: config/Blocks
 # defaultMessage: Common

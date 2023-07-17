@@ -21,6 +21,23 @@ const ploneAuthObj = {
   pass: ploneAuth[1],
 };
 
+// --- isInViewport ----------------------------------------------------------
+Cypress.Commands.add('isInViewport', (element) => {
+  cy.get(element).then(($el) => {
+    const windowInnerWidth = Cypress.config(`viewportWidth`);
+    const windowInnerHeight = Cypress.config(`viewportHeight`);
+    const rect = $el[0].getBoundingClientRect();
+
+    const rightBoundOfWindow = windowInnerWidth;
+    const bottomBoundOfWindow = windowInnerHeight;
+
+    expect(rect.top).to.be.at.least(0);
+    expect(rect.left).to.be.at.least(0);
+    expect(rect.right).to.be.lessThan(rightBoundOfWindow);
+    expect(rect.bottom).to.be.lessThan(bottomBoundOfWindow);
+  });
+});
+
 // --- AUTOLOGIN -------------------------------------------------------------
 Cypress.Commands.add('autologin', (usr, pass) => {
   let api_url, user, password;
@@ -705,6 +722,20 @@ Cypress.Commands.add('getSlate', (createNewSlate = false) => {
   return slate;
 });
 
+Cypress.Commands.add('getSlateSelector', (selector = SLATE_SELECTOR) => {
+  let slate;
+  cy.getIfExists(
+    selector,
+    () => {
+      slate = cy.get(selector).last();
+    },
+    () => {
+      slate = cy.get(selector, { timeout: 10000 }).last();
+    },
+  );
+  return slate;
+});
+
 Cypress.Commands.add('getSlateTitle', () => {
   return cy.get(SLATE_TITLE_SELECTOR, {
     timeout: 10000,
@@ -761,6 +792,10 @@ Cypress.Commands.add('setSlateSelection', (subject, query, endQuery) => {
 
 Cypress.Commands.add('getSlateEditorAndType', (type) => {
   cy.getSlate().focus().click().type(type);
+});
+
+Cypress.Commands.add('getSlateEditorSelectorAndType', (selector, type) => {
+  cy.getSlateSelector(selector).focus().click().type(type);
 });
 
 Cypress.Commands.add('setSlateCursor', (subject, query, endQuery) => {
