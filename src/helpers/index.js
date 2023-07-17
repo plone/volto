@@ -94,6 +94,7 @@ export {
   arrayRange,
   reorderArray,
   isInteractiveElement,
+  slugify,
 } from '@plone/volto/helpers/Utils/Utils';
 export { messages } from './MessageLabels/MessageLabels';
 export {
