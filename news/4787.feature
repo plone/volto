@@ -1,0 +1,1 @@
+Add `Links to item` view (available via object's more menu) @pgrunewald
