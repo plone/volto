@@ -301,7 +301,7 @@ const withSearch = (options) => (WrappedComponent) => {
               id,
               query: data.query || {},
               facets: toSearchFacets || facets,
-              searchText: toSearchText || searchText,
+              searchText: toSearchText ? toSearchText.trim() : '',
               sortOn: toSortOn || sortOn,
               sortOrder: toSortOrder || sortOrder,
               facetSettings,
