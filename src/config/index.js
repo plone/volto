@@ -184,6 +184,7 @@ let config = {
     querystringSearchGet: false,
     blockSettingsTabFieldsetsInitialStateOpen: true,
     excludeLinksAndReferencesMenuItem: false,
+    containerBlockTypes: ['gridBlock'],
   },
   experimental: {
     addBlockButton: {
