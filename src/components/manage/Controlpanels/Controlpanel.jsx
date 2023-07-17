@@ -1,4 +1,4 @@
-import  { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import { Helmet, usePrevious } from '@plone/volto/helpers';
@@ -59,7 +59,7 @@ const Controlpanel = (props) => {
   useEffect(() => {
     dispatch(getControlpanel(id));
   }, [dispatch, id]);
-  
+
   useEffect(() => {
     if (prevupdateRequestloading && updateRequest.loaded) {
       toast.info(
