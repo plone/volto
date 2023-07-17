@@ -29,5 +29,3 @@ afterEach(function () {
     teardown();
   }
 });
-
-export * from './volto-slate';
