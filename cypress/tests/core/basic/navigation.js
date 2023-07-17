@@ -21,11 +21,9 @@ describe('Navigation', () => {
 describe('Navigation menu', () => {
   context('menu hamburger', () => {
     beforeEach(() => {
+      cy.intercept('GET', `/**/*?expand*`).as('content');
       cy.visit('/');
-      cy.waitForResourceToLoad('@navigation');
-      cy.waitForResourceToLoad('@breadcrumbs');
-      cy.waitForResourceToLoad('@actions');
-      cy.waitForResourceToLoad('');
+      cy.wait('@content');
     });
     const hambClass =
       'nav.navigation .hamburger-wrapper.mobile.tablet.only button.hamburger';
