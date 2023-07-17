@@ -5,9 +5,10 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { UniversalLink, Component } from '@plone/volto/components';
-import { Container } from 'semantic-ui-react';
+import { UniversalLink } from '@plone/volto/components';
+import { Container as SemanticContainer } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
+import config from '@plone/volto/registry';
 
 /**
  * Summary view component class.
@@ -15,45 +16,53 @@ import { FormattedMessage } from 'react-intl';
  * @param {Object} content Content object.
  * @returns {string} Markup of the component.
  */
-const SummaryView = ({ content }) => (
-  <Container className="view-wrapper summary-view">
-    <article id="content">
-      <header>
-        <h1 className="documentFirstHeading">{content.title}</h1>
-        {content.description && (
-          <p className="documentDescription">{content.description}</p>
-        )}
-      </header>
-      <section id="content-core">
-        {content.items.map((item) => (
-          <article key={item.url}>
-            <h2>
-              <UniversalLink item={item} title={item['@type']}>
-                {item.title}
-              </UniversalLink>
-            </h2>
-            {item.image_field && (
-              <Component
-                componentName="PreviewImage"
-                item={item}
-                alt={item.image_caption}
-                className="ui image floated right clear"
-                responsive={true}
-                loading="lazy"
-              />
-            )}
-            {item.description && <p>{item.description}</p>}
-            <p>
-              <UniversalLink item={item}>
-                <FormattedMessage id="Read More…" defaultMessage="Read More…" />
-              </UniversalLink>
-            </p>
-          </article>
-        ))}
-      </section>
-    </article>
-  </Container>
-);
+const SummaryView = ({ content }) => {
+  const Container =
+    config.getComponent({ name: 'Container' }).component || SemanticContainer;
+  const PreviewImage = config.getComponent({ name: 'PreviewImage' }).component;
+
+  return (
+    <Container className="view-wrapper summary-view">
+      <article id="content">
+        <header>
+          <h1 className="documentFirstHeading">{content.title}</h1>
+          {content.description && (
+            <p className="documentDescription">{content.description}</p>
+          )}
+        </header>
+        <section id="content-core">
+          {content.items.map((item) => (
+            <article key={item.url}>
+              <h2>
+                <UniversalLink item={item} title={item['@type']}>
+                  {item.title}
+                </UniversalLink>
+              </h2>
+              {item.image_field && (
+                <PreviewImage
+                  item={item}
+                  alt={item.image_caption}
+                  className="ui image floated right clear"
+                  responsive={true}
+                  loading="lazy"
+                />
+              )}
+              {item.description && <p>{item.description}</p>}
+              <p>
+                <UniversalLink item={item}>
+                  <FormattedMessage
+                    id="Read More…"
+                    defaultMessage="Read More…"
+                  />
+                </UniversalLink>
+              </p>
+            </article>
+          ))}
+        </section>
+      </article>
+    </Container>
+  );
+};
 
 /**
  * Property types.

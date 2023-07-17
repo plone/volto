@@ -5,9 +5,14 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Container, GridColumn, Segment } from 'semantic-ui-react';
+import {
+  Container as SemanticContainer,
+  GridColumn,
+  Segment,
+} from 'semantic-ui-react';
 import { Button, Modal, Grid } from 'semantic-ui-react';
-import { Icon, UniversalLink, Component } from '@plone/volto/components';
+import { Icon, UniversalLink } from '@plone/volto/components';
+import config from '@plone/volto/registry';
 
 import openSVG from '@plone/volto/icons/open.svg';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
@@ -56,6 +61,11 @@ class AlbumView extends React.Component {
 
   render() {
     const { content } = this.props;
+    const Container =
+      config.getComponent({ name: 'Container' }).component || SemanticContainer;
+    const PreviewImage = config.getComponent({ name: 'PreviewImage' })
+      .component;
+
     return (
       <Container className="view-wrapper">
         <article id="content">
@@ -78,8 +88,7 @@ class AlbumView extends React.Component {
                         trigger={
                           <Grid.Column>
                             <Segment className="imageborder">
-                              <Component
-                                componentName="PreviewImage"
+                              <PreviewImage
                                 item={item}
                                 alt={item.image_caption || item.title}
                                 onClick={() => {
@@ -131,8 +140,7 @@ class AlbumView extends React.Component {
                             </Grid.Column>
                             <Grid.Column width={8}>
                               <Modal.Content image>
-                                <Component
-                                  componentName="PreviewImage"
+                                <PreviewImage
                                   item={item}
                                   alt={item.image_caption}
                                   onClick={() => {

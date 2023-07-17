@@ -442,6 +442,7 @@ msgstr "Verfügbare Inhaltsregeln:"
 #: components/manage/Controlpanels/UpgradeControlPanel
 #: components/manage/Diff/Diff
 #: components/manage/History/History
+#: components/manage/LinksToItem/LinksToItem
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalPreferences
@@ -765,6 +766,11 @@ msgstr "Inhaltsregeln für {title}"
 # defaultMessage: Content rules from parent folders
 msgid "Content rules from parent folders"
 msgstr "Inhaltsregeln von übergeordneten Seiten"
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Content that links to or references {title}
+msgid "Content that links to or references {title}"
+msgstr "Zu {title} verlinkende oder referenzierende Inhalte"
 
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Content type created
@@ -1956,6 +1962,17 @@ msgstr "Link auf"
 msgid "Link translation for"
 msgstr "Übersetzung verbinden"
 
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Linking this item with hyperlink in text
+msgid "Linking this item with hyperlink in text"
+msgstr "Inhalte, die im Text auf diesen Inhalt verlinken"
+
+#: components/manage/LinksToItem/LinksToItem
+#: components/manage/Toolbar/More
+# defaultMessage: Links and references
+msgid "Links and references"
+msgstr "Links und Referenzen"
+
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Listing
 msgid "Listing"
@@ -2289,6 +2306,11 @@ msgstr "Keine Elemente gefunden"
 msgid "No items selected"
 msgstr "Kein Element ausgewählt"
 
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: No links to this item found.
+msgid "No links to this item found."
+msgstr "Keine Links gefunden."
+
 #: components/manage/Blocks/Maps/MapsSidebar
 # defaultMessage: No map selected
 msgid "No map selected"
@@ -2416,6 +2438,11 @@ msgstr "Objekt-Browser öffnen"
 # defaultMessage: Origin
 msgid "Origin"
 msgstr "Quelle"
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Overview of relations of all content items
+msgid "Overview of relations of all content items"
+msgstr "Übersicht der Relationen aller Inhalte"
 
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Page
@@ -2666,6 +2693,16 @@ msgstr "Wiederholen"
 msgid "Reduce complexity"
 msgstr "Komplexität reduzieren"
 
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Referencing this item as related item
+msgid "Referencing this item as related item"
+msgstr "Inhalte, die diesen Inhalt als verwandten Inhalt referenzieren"
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Referencing this item with {relationship}
+msgid "Referencing this item with {relationship}"
+msgstr "Inhalte, die diesen Inhalt mit {relationship} referenzieren"
+
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
 #: components/theme/Register/Register
@@ -2841,6 +2878,7 @@ msgid "Revert to this revision"
 msgstr "Die aktuelle Version durch diese ersetzen"
 
 #: components/manage/Contents/Contents
+#: components/manage/LinksToItem/LinksToItem
 # defaultMessage: Review state
 msgid "Review state"
 msgstr "Arbeitsablauf"
@@ -3717,6 +3755,7 @@ msgid "Triggering event field error. Please select a value"
 msgstr "Fehler im auslösenden Ereignis. Bitte geben Sie einen Wert ein"
 
 #: components/manage/Controlpanels/ContentTypes
+#: components/manage/LinksToItem/LinksToItem
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
 # defaultMessage: Type
