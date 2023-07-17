@@ -111,10 +111,10 @@ class Config {
   ) {
     if (typeof options === 'object') {
       const { name, dependencies = '' } = options;
-      let depsString: string;
+      let depsString: string = '';
       if (dependencies && isArray(dependencies)) {
         depsString = dependencies.join('+');
-      } else {
+      } else if (typeof dependencies === 'string') {
         depsString = dependencies;
       }
       const componentName = `${name}${depsString ? `|${depsString}` : ''}`;
@@ -133,13 +133,13 @@ class Config {
     component: React.ComponentType;
   }) {
     const { name, component, dependencies = '' } = options;
-    let depsString: string;
+    let depsString: string = '';
     if (!component) {
       throw new Error('No component provided');
     } else {
       if (dependencies && isArray(dependencies)) {
         depsString = dependencies.join('+');
-      } else {
+      } else if (typeof dependencies === 'string') {
         depsString = dependencies;
       }
       const componentName = `${name}${depsString ? `|${depsString}` : ''}`;
