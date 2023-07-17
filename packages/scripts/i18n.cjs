@@ -272,8 +272,13 @@ function main({ addonMode }) {
     let AddonConfigurationRegistry;
     try {
       if (fs.existsSync(`${projectRootPath}/node_modules/@plone/volto`)) {
-        AddonConfigurationRegistry = require('@plone/registry/addon-registry');
+        // We are in a project
+        AddonConfigurationRegistry = require(path.join(
+          projectRootPath,
+          '/node_modules/@plone/volto/packages/registry/addon-registry',
+        ));
       } else {
+        // We are in Volto itself
         AddonConfigurationRegistry = require(path.join(
           projectRootPath,
           '/packages/registry/addon-registry',
