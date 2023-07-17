@@ -37,7 +37,7 @@ const ModerateComments = (props) => {
   const isClient = useClient();
   const items = useSelector((state) => state.search.items, shallowEqual);
   const deleteRequest = useSelector((state) => state.comments.delete);
-  const pathname  = props.location.pathname;
+  const pathname = props.location.pathname;
   const history = useHistory();
   const prevdeleteRequestloading = usePrevious(deleteRequest.loading);
   useEffect(() => {
