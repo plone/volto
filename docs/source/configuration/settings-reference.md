@@ -382,6 +382,11 @@ blockSettingsTabFieldsetsInitialStateOpen
     A Boolean, `true` by default.
     The fieldsets in the blocks settings tab start by default as non-collapsed (opened), you can decide to have them collapsed (closed) by default setting this to `false`.
 
+excludeLinksAndReferencesMenuItem
+    A Boolean, `false` by default.
+    The content menu links to the {guilabel}`Links and references` view per default.
+    Exclude this menu item by setting `excludeLinksAndReferencesMenuItem` to `true`.
+
 okRoute
     Volto provides an `/ok` URL where it responds with a `text/plain ok` response, with an `HTTP 200` status code, to signal third party health check services that the Volto process is running correctly.
 

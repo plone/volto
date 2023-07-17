@@ -8,6 +8,43 @@
 
 <!-- towncrier release notes start -->
 
+## 17.0.0-alpha.18 (2023-07-16)
+
+### Feature
+
+- Refactor CommentEdit -@Tishasoumya-02 [#4075](https://github.com/plone/volto/issues/4075)
+- Facets should be able to decide themselves if they should show or not. Made defaultShowFacet to be a fallback in case there is no custom function for each facet type. @tedw87 [#4579](https://github.com/plone/volto/issues/4579)
+- Add backward compatibility to `slate_richtext` with fields that are plain text @razvanMiu [#4796](https://github.com/plone/volto/issues/4796)
+- Refactor-Contact Form @Tishasoumya-02 [#4850](https://github.com/plone/volto/issues/4850)
+- Refactor BreadcrumbsComponent @Tishasoumya-02 [#4858](https://github.com/plone/volto/issues/4858)
+- Refactor SearchWidget @Tishasoumya-02 [#4864](https://github.com/plone/volto/issues/4864)
+- Refactor LinkView -@Tishasoumya-02 [#4866](https://github.com/plone/volto/issues/4866)
+- Use container from component registry in content type views, if defined. @sneridagh [#4962](https://github.com/plone/volto/issues/4962)
+
+### Bugfix
+
+- Fix temporary rendering of folder contents while query results are loading. @davisagli [#4351](https://github.com/plone/volto/issues/4351)
+- Fix isBlacklisted method check for volto externalRoutes [#4725](https://github.com/plone/volto/issues/4725)
+- fix(styleMenu): Highlight selected block styles @nileshgulia1 [#4851](https://github.com/plone/volto/issues/4851)
+- Fix tablet main menu. [#4859](https://github.com/plone/volto/issues/4859)
+- Fix the table of contents block so that if one or more items get out of the viewport, a dropdown menu appears with all the items that do not fit the viewport and also added an option to make the TOC sticky. @MihaelaCretu11 [#4907](https://github.com/plone/volto/issues/4907)
+- Add a marker in the props passed to `RenderBlocks` in the Grid block view @sneridagh [#4932](https://github.com/plone/volto/issues/4932)
+- Typo in Italian locales @mamico [#4944](https://github.com/plone/volto/issues/4944)
+- Fix handling of overriden image in Teaser, improve in case that a custom image component is present. @sneridagh [#4964](https://github.com/plone/volto/issues/4964)
+- Fix slateTable still uses old style of sidebar generation @iFlameing [#4972](https://github.com/plone/volto/issues/4972)
+- Fix password autocomplete hint for login form. @davisagli [#4976](https://github.com/plone/volto/issues/4976)
+
+### Internal
+
+- Upgrade bundlewatch to 0.3.3. @wesleybl [#4967](https://github.com/plone/volto/issues/4967)
+
+### Documentation
+
+- Added note that Pluggables are not compatible with server-side rendering (SSR). @Akshat2Jain [#4735](https://github.com/plone/volto/issues/4735)
+- Replace broken link for @albertcasado to use GitHub instead of Twitter. @stevepiercy [#4941](https://github.com/plone/volto/issues/4941)
+- Exclude video markup from `make text` builder. @stevepiercy [#4966](https://github.com/plone/volto/issues/4966)
+
+
 ## 17.0.0-alpha.17 (2023-07-11)
 
 ### Breaking
