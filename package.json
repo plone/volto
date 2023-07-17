@@ -92,7 +92,6 @@
       "load-volto-addons": "<rootDir>/jest-addons-loader.js",
       "@package/(.*)$": "<rootDir>/src/$1",
       "@root/config": "<rootDir>/jest-addons-loader.js",
-      "@root/../locales/(.*)$": "<rootDir>/locales/$1",
       "@root/(.*)$": "<rootDir>/src/$1",
       "@voltoconfig": "<rootDir>/jest-addons-loader.js",
       "\\.(css|less|scss|sass)$": "identity-obj-proxy"
