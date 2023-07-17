@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
-import { Link, useHistory, useLocation } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { getParentUrl, Helmet, usePrevious } from '@plone/volto/helpers';
 import { useClient } from '@plone/volto/hooks';
 import { Portal } from 'react-portal';
@@ -37,7 +37,7 @@ const ModerateComments = (props) => {
   const isClient = useClient();
   const items = useSelector((state) => state.search.items, shallowEqual);
   const deleteRequest = useSelector((state) => state.comments.delete);
-  const { pathname } = useLocation();
+  const pathname  = props.location.pathname;
   const history = useHistory();
   const prevdeleteRequestloading = usePrevious(deleteRequest.loading);
   useEffect(() => {
