@@ -6,7 +6,7 @@ const HEADERS = [
   'content-disposition',
   'cache-control',
   'X-Sendfile',
-  'X-Accel-Redirect'
+  'X-Accel-Redirect',
 ];
 
 function imageMiddlewareFn(req, res, next) {
