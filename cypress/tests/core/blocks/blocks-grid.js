@@ -44,6 +44,7 @@ context('Blocks Acceptance Tests', () => {
 
       cy.get('button[aria-label="Add block in position 1"]').click();
       cy.get('.blocks-chooser [aria-label="Unfold Text blocks"]').click();
+      cy.wait(200);
       cy.get('.blocks-chooser .text .button.slate').click();
       cy.getSlateEditorSelectorAndType(
         '.block.gridBlock.selected .slate-editor [contenteditable=true]',
@@ -86,6 +87,7 @@ context('Blocks Acceptance Tests', () => {
 
       cy.get('button[aria-label="Add block in position 1"]').click();
       cy.get('.blocks-chooser [aria-label="Unfold Text blocks"]').click();
+      cy.wait(200);
       cy.get('.blocks-chooser .text .button.slate').click();
       cy.scrollTo('top');
 
