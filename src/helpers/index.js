@@ -58,6 +58,7 @@ export {
   buildStyleClassNamesFromData,
   buildStyleClassNamesExtenders,
   getPreviousNextBlock,
+  findBlocks,
 } from '@plone/volto/helpers/Blocks/Blocks';
 export { default as BodyClass } from '@plone/volto/helpers/BodyClass/BodyClass';
 export { default as ScrollToTop } from '@plone/volto/helpers/ScrollToTop/ScrollToTop';
@@ -93,6 +94,7 @@ export {
   arrayRange,
   reorderArray,
   isInteractiveElement,
+  slugify,
 } from '@plone/volto/helpers/Utils/Utils';
 export { messages } from './MessageLabels/MessageLabels';
 export {

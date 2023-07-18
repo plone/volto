@@ -1,6 +1,7 @@
 import { Container, Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { useToken } from '@plone/volto/hooks/userSession/useToken';
+import { useSelector, shallowEqual } from 'react-redux';
+
 import {
   Anontools,
   LanguageSelector,
@@ -10,7 +11,7 @@ import {
 } from '@plone/volto/components';
 
 const Header = ({ pathname }) => {
-  const token = useToken();
+  const token = useSelector((state) => state.userSession.token, shallowEqual);
 
   return (
     <Segment basic className="header-wrapper" role="banner">

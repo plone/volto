@@ -150,6 +150,7 @@ export const widgetMapping = {
       title: TitleViewWidget,
       url: UrlViewWidget,
       internal_url: InternalUrlWidget,
+      object: () => '', // TODO: Not implemented yet: Object View widget
     },
     vocabulary: {},
     choices: SelectViewWidget,
