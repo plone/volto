@@ -44,5 +44,5 @@ Since it also uses the path to create the ID, the local data will be loaded agai
 
 (autosave-comments-label)=
 ## Autosave comments
-Comments are also saved locally even though we are not in edit mode or add.
+Comments are also saved locally, even though you are not in edit or add mode.
 After loading local data if comment is submitted, it will deleted from localStorage.
