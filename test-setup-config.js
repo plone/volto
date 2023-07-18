@@ -86,6 +86,7 @@ config.set('settings', {
   styleClassNameConverters,
   styleClassNameExtenders,
   blockSettingsTabFieldsetsInitialStateOpen: true,
+  containerBlockTypes: [],
 });
 config.set('blocks', {
   blocksConfig: {

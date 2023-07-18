@@ -79,6 +79,16 @@ This could be especially true if you did translation overrides, two add-ons were
 
 This change fixes a bug with the accessibility in listings.
 
+### Use `apiExpanders` to improve performance
+
+By default, Volto is now configured to use all possible `apiExpanders` in Plone RESTAPI in order to reduce the XHR requests to only one request.
+
+If you want to retain the old behavior (and no use `apiExpanders` at all), you need to add this configuration to your project/add-on configuration that will remove all `apiExpanders`:
+
+```js
+config.settings.apiExpanders = [];
+```
+
 ### Removed Teaser block utils
 
 The `utils.js` file of the Teaser block was removed because it is no longer used.

@@ -1,12 +1,9 @@
 describe('Search', () => {
   beforeEach(() => {
+    cy.intercept('GET', `/**/*?expand*`).as('content');
     cy.autologin();
     cy.visit('/');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('');
+    cy.wait('@content');
   });
   it('As anonymous user I can see the search results ordered by search rank,', () => {
     // Given document Colorless and Color and feeding some text into it.

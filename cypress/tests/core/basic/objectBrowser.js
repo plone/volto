@@ -1,5 +1,7 @@
 describe('Object Browser Tests', () => {
   beforeEach(() => {
+    cy.intercept('GET', `/**/*?expand*`).as('content');
+    cy.intercept('GET', '/**/Document').as('schema');
     // Wait a bit to previous teardown to complete correctly because Heisenbug in this point
     cy.wait(2000);
     // given a logged in editor and a page in edit mode
@@ -31,12 +33,10 @@ describe('Object Browser Tests', () => {
       contentTitle: 'My Searchable Page',
     });
     cy.visit('/my-page');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('my-page');
+    cy.wait('@content');
+
     cy.navigate('/my-page/edit');
+    cy.wait('@schema');
   });
 
   it('As editor I can add the relative url in search box in sidebar', () => {
