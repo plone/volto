@@ -228,7 +228,7 @@ start-test-acceptance-frontend-dev: ## Start the Core Acceptance Frontend Fixtur
 
 .PHONY: start-test-acceptance-server test-acceptance-server
 start-test-acceptance-server test-acceptance-server: ## Start Test Acceptance Server Main Fixture (docker container)
-	docker run -i --rm -p 55001:55001 -e ADDONS='$(KGS)' $(DOCKER_IMAGE_ACCEPTANCE)
+	docker run -i --rm -p 55001:55001 -e ADDONS='$(KGS)' $(DOCKER_IMAGE)
 
 .PHONY: start-test-acceptance-frontend
 start-test-acceptance-frontend: ## Start the Core Acceptance Frontend Fixture
@@ -274,7 +274,7 @@ start-test-acceptance-frontend-project: ## Start the Project Acceptance Frontend
 
 .PHONY: start-test-acceptance-server-coresandbox test-acceptance-server-coresandbox
 start-test-acceptance-server-coresandbox test-acceptance-server-coresandbox: ## Start CoreSandbox Test Acceptance Server Fixture (docker container)
-	docker run -i --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage,plone.volto:coresandbox -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors,plone.volto.coresandbox $(DOCKER_IMAGE_ACCEPTANCE)
+	docker run -i --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage,plone.volto:coresandbox -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors,plone.volto.coresandbox $(DOCKER_IMAGE)
 	# ZSERVER_PORT=55001 CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors,plone.volto.coresandbox APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage,plone.volto:coresandbox ./api/bin/robot-server plone.app.robotframework.testing.VOLTO_ROBOT_TESTING
 
 .PHONY: start-test-acceptance-frontend-coresandbox
@@ -301,7 +301,7 @@ full-test-acceptance-coresandbox: ## Runs CoreSandbox Full Acceptance Testing in
 
 .PHONY: start-test-acceptance-server-multilingual test-acceptance-server-multilingual
 start-test-acceptance-server-multilingual test-acceptance-server-multilingual: ## Start Multilingual Acceptance Server Multilingual Fixture (docker container)
-	docker run -i --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:multilingual $(DOCKER_IMAGE_ACCEPTANCE)
+	docker run -i --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:multilingual $(DOCKER_IMAGE)
 
 .PHONY: start-test-acceptance-frontend-multilingual
 start-test-acceptance-frontend-multilingual: ## Start the Multilingual Acceptance Frontend Fixture
@@ -323,7 +323,7 @@ full-test-acceptance-multilingual: ## Runs Multilingual Full Acceptance Testing 
 
 .PHONY: start-test-acceptance-server-workingcopy test-acceptance-server-workingcopy
 start-test-acceptance-server-workingcopy test-acceptance-server-workingcopy : ## Start the WorkingCopy Acceptance Server  Fixture (docker container)
-	docker run -i --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.app.iterate:default,plone.volto:default-homepage $(DOCKER_IMAGE_ACCEPTANCE)
+	docker run -i --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.app.iterate:default,plone.volto:default-homepage $(DOCKER_IMAGE)
 	# ZSERVER_PORT=55001 CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.app.iterate,plone.volto,plone.volto.cors APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.app.iterate:default,plone.volto:default-homepage ./api/bin/robot-server plone.app.robotframework.testing.VOLTO_ROBOT_TESTING
 
 .PHONY: start-test-acceptance-frontend-workingcopy
