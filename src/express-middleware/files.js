@@ -7,6 +7,8 @@ const HEADERS = [
   'Content-Disposition',
   'Content-Range',
   'Content-Type',
+  'X-Sendfile',
+  'X-Accell-Redirect'
 ];
 
 function filesMiddlewareFn(req, res, next) {
