@@ -10,7 +10,8 @@ myst:
 (autosave-content-label)=
 
 # Autosave content
-Autosave feature allows you to load locally saved data in case of accidental close, refresh, close or change page.
+
+The autosave feature allows you to load locally saved data, in case of accidental browser close, refresh, quit, or change page.
 - It uses localstorage and clears the data once either the Form is saved or you cancel loading the local data.
 - If local data is found for the specific content a toast is shown that allows you to either load (OK) or discard (Cancel).
 - If local data is stale, it will still show the toast, but it will specify that the found data is less recent than the server one.
