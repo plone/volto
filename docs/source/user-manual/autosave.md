@@ -40,7 +40,7 @@ Local data for the current content will be deleted, when you save the form or ch
 When adding content, a copy of the form will be saved in `localStorage`, similar to edit mode.
 But since the content hasn't been saved yet, we don't have an ID.
 In this case the content type will be used.
-Since it also uses the path to create the id, the local data will be loaded again, in case of exiting without saving, only if adding the same content, in the same path.
+Since it also uses the path to create the ID, the local data will be loaded again if you exit without saving, and only if you add the same content in the same path.
 
 (autosave-comments-label)=
 ## Autosave comments
