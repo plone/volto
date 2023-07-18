@@ -1,5 +1,7 @@
 describe('Search Block Tests', () => {
   beforeEach(() => {
+    cy.intercept('GET', `/**/*?expand*`).as('content');
+    cy.intercept('GET', '/**/Document').as('schema');
     // Wait a bit to previous teardown to complete correctly because Heisenbug in this point
     cy.wait(2000);
     // given a logged in editor and a page in edit mode
@@ -7,7 +9,6 @@ describe('Search Block Tests', () => {
     cy.removeContent({ path: 'news' });
     cy.removeContent({ path: 'events' });
     cy.removeContent({ path: 'Members' });
-    cy.visit('/');
 
     cy.createContent({
       contentType: 'Document',
@@ -30,10 +31,8 @@ describe('Search Block Tests', () => {
       path: '/',
     });
 
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
+    cy.visit('/');
+    cy.wait('@content');
   });
 
   afterEach(() => {
@@ -44,7 +43,6 @@ describe('Search Block Tests', () => {
   });
 
   it('Search block - test checkbox facet', () => {
-    cy.visit('/');
     cy.get('#toolbar-add > .icon').click();
     cy.get('#toolbar-add-document').click();
     cy.getSlateTitle().focus().click().type('My Search Page');
@@ -200,6 +198,7 @@ describe('Search Block Tests', () => {
 
     // Save the page
     cy.get('#toolbar-save > .icon').click();
+    cy.wait('@content');
 
     cy.wait(500);
     // test searching for Event

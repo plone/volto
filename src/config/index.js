@@ -77,6 +77,8 @@ let config = {
     okRoute: '/ok',
     apiPath,
     apiExpanders: [
+      // Added here for documentation purposes, addded at the end because it
+      // depends on a value of this object.
       // Add the following expanders for only issuing a single request.
       // https://6.docs.plone.org/volto/configuration/settings-reference.html#term-apiExpanders
       // {
@@ -215,6 +217,22 @@ let config = {
   addonReducers: {},
   components,
 };
+
+// The apiExpanders depends on a config of the object, so it's done here
+config.settings.apiExpanders = [
+  ...config.settings.apiExpanders,
+  {
+    match: '',
+    GET_CONTENT: ['breadcrumbs', 'actions', 'types'],
+  },
+  {
+    match: '',
+    GET_CONTENT: ['navigation'],
+    querystring: (config) => ({
+      'expand.navigation.depth': config.settings.navDepth,
+    }),
+  },
+];
 
 ConfigRegistry.settings = config.settings;
 ConfigRegistry.experimental = config.experimental;
