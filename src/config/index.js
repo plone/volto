@@ -74,6 +74,7 @@ let config = {
     port,
     // The URL Volto is going to be served (see sensible defaults above)
     publicURL,
+    okRoute: '/ok',
     apiPath,
     apiExpanders: [
       // Add the following expanders for only issuing a single request.
