@@ -42,17 +42,30 @@ exports[`PreviewImage renders a fallback image with extra props 1`] = `
 exports[`PreviewImage renders a preview image 1`] = `
 <img
   alt="Item title"
-  className=""
-  fetchpriority="high"
-  height={400}
-  src="http://localhost:3000/something/@@images/image"
-  srcSet="http://localhost:3000/something/@@images/image-400.png 400w"
-  style={
+  imageField="image"
+  item={
     Object {
-      "aspectRatio": "400 / 400",
+      "@id": "http://localhost:3000/something",
+      "image_field": "image",
+      "image_scales": Object {
+        "image": Array [
+          Object {
+            "download": "@@images/image",
+            "height": 400,
+            "scales": Object {
+              "preview": Object {
+                "download": "@@images/image-400.png",
+                "height": 400,
+                "width": 400,
+              },
+            },
+            "width": 400,
+          },
+        ],
+      },
+      "title": "Item title",
     }
   }
-  width={400}
 />
 `;
 
@@ -60,15 +73,29 @@ exports[`PreviewImage renders a preview image with extra props 1`] = `
 <img
   alt="Item title"
   className="extra"
-  fetchpriority="high"
-  height={400}
-  src="http://localhost:3000/something/@@images/image"
-  srcSet="http://localhost:3000/something/@@images/image-400.png 400w"
-  style={
+  imageField="image"
+  item={
     Object {
-      "aspectRatio": "400 / 400",
+      "@id": "http://localhost:3000/something",
+      "image_field": "image",
+      "image_scales": Object {
+        "image": Array [
+          Object {
+            "download": "@@images/image",
+            "height": 400,
+            "scales": Object {
+              "preview": Object {
+                "download": "@@images/image-400.png",
+                "height": 400,
+                "width": 400,
+              },
+            },
+            "width": 400,
+          },
+        ],
+      },
+      "title": "Item title",
     }
   }
-  width={400}
 />
 `;

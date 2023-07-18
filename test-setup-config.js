@@ -31,9 +31,6 @@ import {
   filterControlPanelsSchema,
 } from '@plone/volto/config/ControlPanels';
 
-import Image from '@plone/volto/components/theme/Image/Image';
-import PreviewImage from '@plone/volto/components/theme/PreviewImage/PreviewImage';
-
 import ListingBlockSchema from '@plone/volto/components/manage/Blocks/Listing/schema';
 
 // we need to do a redefinition here because of circular import issues
@@ -177,8 +174,13 @@ config.set('widgets', {
 });
 
 config.set('components', {
-  PreviewImage: { component: PreviewImage },
-  Image: { component: Image },
+  PreviewImage: {
+    component: (props) => <img alt="PreviewImage component mock" {...props} />,
+  },
+  Image: {
+    // eslint-disable-next-line jsx-a11y/img-redundant-alt
+    component: (props) => <img alt="Image component mock" {...props} />,
+  },
 });
 config.set('experimental', {
   addBlockButton: {

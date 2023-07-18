@@ -7,16 +7,23 @@ exports[`renders an edit Lead Image block component 1`] = `
   <img
     alt=""
     className="responsive"
-    fetchpriority="high"
-    height={400}
-    src="http://localhost:3000/image.png"
-    srcSet="http://localhost:3000/image.png/@@images/image/image-400.png 400w"
-    style={
+    imageField="image"
+    item={
       Object {
-        "aspectRatio": "400 / 400",
+        "image": Object {
+          "download": "http://localhost:3000/image.png",
+          "height": 400,
+          "scales": Object {
+            "preview": Object {
+              "download": "http://localhost:3000/image.png/@@images/image/image-400.png",
+              "height": 400,
+              "width": 400,
+            },
+          },
+          "width": 400,
+        },
       }
     }
-    width={400}
   />
 </div>
 `;
