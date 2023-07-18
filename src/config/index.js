@@ -74,6 +74,7 @@ let config = {
     port,
     // The URL Volto is going to be served (see sensible defaults above)
     publicURL,
+    okRoute: '/ok',
     apiPath,
     apiExpanders: [
       // Added here for documentation purposes, addded at the end because it
@@ -186,6 +187,7 @@ let config = {
     querystringSearchGet: false,
     blockSettingsTabFieldsetsInitialStateOpen: true,
     excludeLinksAndReferencesMenuItem: false,
+    containerBlockTypes: ['gridBlock'],
   },
   experimental: {
     addBlockButton: {

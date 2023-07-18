@@ -415,8 +415,17 @@ excludeLinksAndReferencesMenuItem
     The content menu links to the {guilabel}`Links and references` view per default.
     Exclude this menu item by setting `excludeLinksAndReferencesMenuItem` to `true`.
 
-```
+okRoute
+    Volto provides an `/ok` URL where it responds with a `text/plain ok` response, with an `HTTP 200` status code, to signal third party health check services that the Volto process is running correctly.
 
+    Using this setting, one can modify such an URL and configure it to respond with another URL.
+
+    The provided default URL matches the existing Plone Classic UI URL.
+
+    ```jsx
+      config.settings.okRoute = '/site-is-ok'
+    ```
+```
 
 ## Views settings
 
