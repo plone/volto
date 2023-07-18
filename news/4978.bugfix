@@ -1,0 +1,1 @@
+Fix the condition deciding on listing pagination format so it takes into account container blocks as well @sneridagh
