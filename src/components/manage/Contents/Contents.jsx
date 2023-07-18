@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 import {
   Button,
   Confirm,
-  Container,
+  Container as SemanticContainer,
   Divider,
   Dropdown,
   Menu,
@@ -70,6 +70,7 @@ import {
 
 import { Helmet, getBaseUrl } from '@plone/volto/helpers';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import config from '@plone/volto/registry';
 
 import backSVG from '@plone/volto/icons/back.svg';
 import cutSVG from '@plone/volto/icons/cut.svg';
@@ -1176,6 +1177,9 @@ class Contents extends Component {
       (this.props.updateRequest?.loading && !this.props.updateRequest?.error) ||
       (this.props.orderRequest?.loading && !this.props.orderRequest?.error) ||
       (this.props.searchRequest?.loading && !this.props.searchRequest?.error);
+
+    const Container =
+      config.getComponent({ name: 'Container' }).component || SemanticContainer;
 
     return this.props.token && this.props.objectActions?.length > 0 ? (
       <>

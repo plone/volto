@@ -1,5 +1,6 @@
 describe('Add a new alias from control panel interface', () => {
   beforeEach(() => {
+    cy.intercept('GET', `/**/*?expand*`).as('content');
     cy.autologin();
     cy.createContent({
       contentType: 'Document',
@@ -7,11 +8,7 @@ describe('Add a new alias from control panel interface', () => {
       contentTitle: 'My Page',
     });
     cy.visit('/my-page');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('my-page');
+    cy.wait('@content');
   });
   it('adds a new alias', () => {
     cy.visit('/controlpanel/aliases');

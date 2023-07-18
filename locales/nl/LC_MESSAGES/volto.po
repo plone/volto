@@ -152,6 +152,11 @@ msgstr ""
 msgid "Add block"
 msgstr ""
 
+#: components/manage/Blocks/Container/NewBlockAddButton
+# defaultMessage: Add block in position {index}
+msgid "Add block in position {index}"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add block…
 msgid "Add block…"
@@ -175,6 +180,11 @@ msgstr ""
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: Add date
 msgid "Add date"
+msgstr ""
+
+#: components/manage/Blocks/Container/SimpleContainerToolbar
+# defaultMessage: Add element to container
+msgid "Add element to container"
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
@@ -285,6 +295,16 @@ msgstr ""
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Addon upgraded succesfuly
 msgid "Addon upgraded succesfuly"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Advanced facet?
+msgid "Advanced facet?"
+msgstr ""
+
+#: components/manage/Blocks/Search/schema
+# defaultMessage: Advanced facets are initially hidden and displayed on demand
+msgid "Advanced facets are initially hidden and displayed on demand"
 msgstr ""
 
 #: config/Views
@@ -435,6 +455,7 @@ msgstr ""
 #: components/manage/Controlpanels/UpgradeControlPanel
 #: components/manage/Diff/Diff
 #: components/manage/History/History
+#: components/manage/LinksToItem/LinksToItem
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalPreferences
@@ -728,6 +749,11 @@ msgstr ""
 msgid "Contained items"
 msgstr ""
 
+#: components/manage/Blocks/Container/SimpleContainerToolbar
+# defaultMessage: Container settings
+msgid "Container settings"
+msgstr ""
+
 #: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Content
 msgid "Content"
@@ -752,6 +778,11 @@ msgstr ""
 #: components/manage/Rules/Rules
 # defaultMessage: Content rules from parent folders
 msgid "Content rules from parent folders"
+msgstr ""
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Content that links to or references {title}
+msgid "Content that links to or references {title}"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
@@ -1272,9 +1303,9 @@ msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Enter your new password. Minimum 5 characters.
-msgid "Enter your new password. Minimum 5 characters."
-msgstr "Geef een nieuw wachtwoord op. Minimaal 5 karakters."
+# defaultMessage: Enter your new password. Minimum 8 characters.
+msgid "Enter your new password. Minimum 8 characters."
+msgstr "Geef een nieuw wachtwoord op. Minimaal 8 karakters."
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Enter your username for verification.
@@ -1528,6 +1559,11 @@ msgstr ""
 msgid "Google Maps Embedded Block"
 msgstr ""
 
+#: components/manage/Blocks/Grid/schema
+# defaultMessage: Grid
+msgid "Grid"
+msgstr ""
+
 #: components/manage/Sharing/Sharing
 # defaultMessage: Group
 msgid "Group"
@@ -1566,6 +1602,7 @@ msgstr ""
 msgid "Header cell"
 msgstr ""
 
+#: components/manage/Blocks/Grid/schema
 #: components/manage/Blocks/Listing/schema
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Headline
@@ -1590,6 +1627,11 @@ msgstr ""
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Hide facet?
 msgid "Hide facet?"
+msgstr ""
+
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: Hide filters
+msgid "Hide filters"
 msgstr ""
 
 #: components/manage/History/History
@@ -1888,9 +1930,19 @@ msgstr ""
 msgid "Left"
 msgstr ""
 
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: Less filters
+msgid "Less filters"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Link
 msgid "Link"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Link copied to clipboard
+msgid "Link copied to clipboard"
 msgstr ""
 
 #: components/manage/Blocks/HeroImageLeft/schema
@@ -1921,6 +1973,17 @@ msgstr ""
 #: components/manage/Multilingual/ManageTranslations
 # defaultMessage: Link translation for
 msgid "Link translation for"
+msgstr ""
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Linking this item with hyperlink in text
+msgid "Linking this item with hyperlink in text"
+msgstr ""
+
+#: components/manage/LinksToItem/LinksToItem
+#: components/manage/Toolbar/More
+# defaultMessage: Links and references
+msgid "Links and references"
 msgstr ""
 
 #: components/manage/Blocks/Listing/schema
@@ -2097,6 +2160,11 @@ msgstr ""
 msgid "More"
 msgstr ""
 
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: More filters
+msgid "More filters"
+msgstr ""
+
 #: components/manage/Controlpanels/UpgradeControlPanel
 # defaultMessage: More information about the upgrade procedure can be found in the documentation section of plone.org in the Upgrade Guide.
 msgid "More information about the upgrade procedure can be found in the documentation section of plone.org in the Upgrade Guide."
@@ -2251,6 +2319,11 @@ msgstr ""
 msgid "No items selected"
 msgstr ""
 
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: No links to this item found.
+msgid "No links to this item found."
+msgstr ""
+
 #: components/manage/Blocks/Maps/MapsSidebar
 # defaultMessage: No map selected
 msgid "No map selected"
@@ -2377,6 +2450,11 @@ msgstr ""
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Origin
 msgid "Origin"
+msgstr ""
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Overview of relations of all content items
+msgid "Overview of relations of all content items"
 msgstr ""
 
 #: components/manage/Toolbar/Toolbar
@@ -2628,6 +2706,16 @@ msgstr ""
 msgid "Reduce complexity"
 msgstr ""
 
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Referencing this item as related item
+msgid "Referencing this item as related item"
+msgstr ""
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Referencing this item with {relationship}
+msgid "Referencing this item with {relationship}"
+msgstr ""
+
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
 #: components/theme/Register/Register
@@ -2671,6 +2759,11 @@ msgstr ""
 #: components/manage/Aliases/Aliases
 # defaultMessage: Remove
 msgid "Remove"
+msgstr ""
+
+#: components/manage/Blocks/Container/EditBlockWrapper
+# defaultMessage: Remove element {index}
+msgid "Remove element {index}"
 msgstr ""
 
 #: components/manage/Widgets/ObjectListWidget
@@ -2757,6 +2850,11 @@ msgstr ""
 msgid "Required input is missing."
 msgstr "Verplichte waarde mist."
 
+#: components/manage/Blocks/Container/EditBlockWrapper
+# defaultMessage: Reset element {index}
+msgid "Reset element {index}"
+msgstr ""
+
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Reset title
 msgid "Reset term title"
@@ -2793,6 +2891,7 @@ msgid "Revert to this revision"
 msgstr "Deze rivisie herstellen"
 
 #: components/manage/Contents/Contents
+#: components/manage/LinksToItem/LinksToItem
 # defaultMessage: Review state
 msgid "Review state"
 msgstr ""
@@ -3104,6 +3203,11 @@ msgstr ""
 #: components/theme/Comments/Comments
 # defaultMessage: Show Replies
 msgid "Show Replies"
+msgstr ""
+
+#: components/manage/Blocks/Search/components/Facets
+# defaultMessage: Show filters
+msgid "Show filters"
 msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
@@ -3665,6 +3769,7 @@ msgid "Triggering event field error. Please select a value"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
+#: components/manage/LinksToItem/LinksToItem
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
 # defaultMessage: Type
@@ -4193,6 +4298,16 @@ msgstr ""
 msgid "checkboxFacet"
 msgstr ""
 
+#: components/manage/Blocks/Grid/templates
+# defaultMessage: column
+msgid "column"
+msgstr ""
+
+#: components/manage/Blocks/Grid/templates
+# defaultMessage: columns
+msgid "columns"
+msgstr ""
+
 #: config/Blocks
 # defaultMessage: Common
 msgid "common"
@@ -4281,6 +4396,11 @@ msgstr ""
 #: components/theme/EventDetails/EventDetails
 # defaultMessage: Where
 msgid "event_where"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: This website does not accept files larger than {limit}
+msgid "fileTooLarge"
 msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
