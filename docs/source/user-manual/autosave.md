@@ -2,7 +2,7 @@
 myst:
   html_meta:
     "description": "User manual for how Volto autosaves data in Plone 6 frontend."
-    "property=og:description": "User manual for how Volto autosaves data in Plone 6 frontend."
+    "property=og:description": "User manual for how Volto autosaves data in Plone 6."
     "property=og:title": "How to autosave content in Volto for edit, add and comments"
     "keywords": "Volto, Plone, frontend, React, User manual, autosave"
 ---
