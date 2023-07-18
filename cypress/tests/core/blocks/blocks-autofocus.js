@@ -1,5 +1,9 @@
 describe('New Block Auto Focus Tests', () => {
   beforeEach(() => {
+    cy.intercept('GET', `/**/*?expand*`).as('content');
+    cy.intercept('GET', '/**/my-page').as('content');
+    cy.intercept('PATCH', '*').as('save');
+
     // given a logged in editor and a page in edit mode
     cy.visit('/');
     cy.autologin();
@@ -9,14 +13,9 @@ describe('New Block Auto Focus Tests', () => {
       contentTitle: 'My Page',
     });
     cy.visit('/my-page');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('my-page');
+    cy.wait('@content');
+
     cy.navigate('/my-page/edit');
-    cy.intercept('GET', '/**/my-page').as('content');
-    cy.intercept('PATCH', '*').as('save');
   });
 
   it('Press Enter on a description block adds new autofocused default block', () => {
