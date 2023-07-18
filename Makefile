@@ -13,15 +13,15 @@ MAKEFLAGS+=--no-builtin-rules
 # Project settings
 
 INSTANCE_PORT=8080
-DOCKER_IMAGE=plone/server-dev:6.0.3
-DOCKER_IMAGE_ACCEPTANCE=plone/server-acceptance:6.0.3
-KGS=plone.restapi==8.36.0
+DOCKER_IMAGE=plone/server-dev:6.0.6
+DOCKER_IMAGE_ACCEPTANCE=plone/server-acceptance:6.0.6
+KGS=plone.restapi==8.42.0
 NODEBIN = ./node_modules/.bin
 SCRIPTSPACKAGE = ./packages/scripts
 
 # Plone 5 legacy
-DOCKER_IMAGE5=plone/plone-backend:5.2.10
-KGS5=plone.restapi==8.36.0 plone.volto==4.0.7 plone.rest==3.0.0
+DOCKER_IMAGE5=plone/plone-backend:5.2.12
+KGS5=plone.restapi==8.42.0 plone.volto==4.0.8 plone.rest==3.0.0
 TESTING_ADDONS=plone.app.robotframework==2.0.0 plone.app.testing==7.0.0
 
 # Sphinx variables
@@ -115,9 +115,9 @@ clean:
 
 .PHONY: docs-clean
 docs-clean:  ## Clean current and legacy docs build directories, and Python virtual environment
-	cd $(DOCS_DIR) && rm -rf $(BUILDDIR)/
 	rm -rf bin include lib
 	rm -rf docs/_build
+	cd $(DOCS_DIR) && rm -rf $(BUILDDIR)/
 
 .PHONY: docs-html
 docs-html: bin/python  ## Build html
@@ -240,7 +240,7 @@ test-acceptance: ## Start Core Cypress Acceptance Tests
 
 .PHONY: test-acceptance-headless
 test-acceptance-headless: ## Start Core Cypress Acceptance Tests in headless mode
-	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress run
+	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress run --config specPattern='cypress/tests/core/**/*.{js,jsx,ts,tsx}'
 
 .PHONY: full-test-acceptance
 full-test-acceptance: ## Runs Core Full Acceptance Testing in headless mode

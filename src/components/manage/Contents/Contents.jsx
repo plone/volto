@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 import {
   Button,
   Confirm,
-  Container,
+  Container as SemanticContainer,
   Divider,
   Dropdown,
   Menu,
@@ -70,6 +70,7 @@ import {
 
 import { Helmet, getBaseUrl } from '@plone/volto/helpers';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import config from '@plone/volto/registry';
 
 import backSVG from '@plone/volto/icons/back.svg';
 import cutSVG from '@plone/volto/icons/cut.svg';
@@ -1013,6 +1014,7 @@ class Contents extends Component {
         sort_order: this.state.sort_order,
         metadata_fields: '_all',
         b_size: 100000000,
+        show_inactive: true,
         ...(this.state.filter && { SearchableText: `${this.state.filter}*` }),
       });
     } else {
@@ -1024,6 +1026,7 @@ class Contents extends Component {
         ...(this.state.filter && { SearchableText: `${this.state.filter}*` }),
         b_size: this.state.pageSize,
         b_start: this.state.currentPage * this.state.pageSize,
+        show_inactive: true,
       });
     }
   }
@@ -1174,6 +1177,9 @@ class Contents extends Component {
       (this.props.updateRequest?.loading && !this.props.updateRequest?.error) ||
       (this.props.orderRequest?.loading && !this.props.orderRequest?.error) ||
       (this.props.searchRequest?.loading && !this.props.searchRequest?.error);
+
+    const Container =
+      config.getComponent({ name: 'Container' }).component || SemanticContainer;
 
     return this.props.token && this.props.objectActions?.length > 0 ? (
       <>
@@ -1785,7 +1791,9 @@ class Contents extends Component {
                                     <Menu.Header
                                       content={this.props.intl.formatMessage(
                                         messages.selected,
-                                        { count: this.state.selected.length },
+                                        {
+                                          count: this.state.selected.length,
+                                        },
                                       )}
                                     />
                                     <Input

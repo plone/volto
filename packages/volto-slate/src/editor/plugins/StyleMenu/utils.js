@@ -72,19 +72,28 @@ export const toggleInlineStyle = (editor, style) => {
 };
 
 export const isBlockStyleActive = (editor, style) => {
+  const keyName = `style-${style}`;
   const sn = Array.from(
     Editor.nodes(editor, {
-      match: (n) => !Editor.isEditor(n) && typeof n.styleName === 'string',
-      mode: 'highest',
+      match: (n) => {
+        const isStyle = typeof n.styleName === 'string' || n[keyName];
+        return !Editor.isEditor(n) && isStyle;
+      },
+      mode: 'all',
     }),
   );
 
   for (const [n] of sn) {
-    if (n.styleName.split(' ').filter((x) => x === style).length > 0) {
+    if (typeof n.styleName === 'string') {
+      if (n.styleName.split(' ').filter((x) => x === style).length > 0) {
+        return true;
+      }
+    } else if (
+      n[keyName] &&
+      keyName.split('-').filter((x) => x === style).length > 0
+    )
       return true;
-    }
   }
-
   return false;
 };
 

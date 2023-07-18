@@ -18,7 +18,11 @@ import {
   SET_APIERROR,
 } from '@plone/volto/constants/ActionTypes';
 import { changeLanguage } from '@plone/volto/actions';
-import { normalizeLanguageName, getCookieOptions } from '@plone/volto/helpers';
+import {
+  toGettextLang,
+  toReactIntlLang,
+  getCookieOptions,
+} from '@plone/volto/helpers';
 let socket = null;
 
 /**
@@ -205,11 +209,11 @@ const apiMiddlewareFactory = (api) => ({ dispatch, getState }) => (next) => (
           const lang = result?.language?.token;
           if (
             lang &&
-            getState().intl.language !== lang &&
+            getState().intl.locale !== toReactIntlLang(lang) &&
             !subrequest &&
             config.settings.supportedLanguages.includes(lang)
           ) {
-            const langFileName = normalizeLanguageName(lang);
+            const langFileName = toGettextLang(lang);
             import('~/../locales/' + langFileName + '.json').then((locale) => {
               dispatch(changeLanguage(lang, locale.default));
             });

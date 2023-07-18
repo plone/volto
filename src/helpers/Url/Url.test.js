@@ -14,6 +14,9 @@ import {
   removeProtocol,
   addAppURL,
   expandToBackendURL,
+  checkAndNormalizeUrl,
+  normaliseMail,
+  normalizeTelephone,
 } from './Url';
 
 beforeEach(() => {
@@ -60,6 +63,17 @@ describe('Url', () => {
     });
     it('return empty string if no url is empty string', () => {
       expect(getBaseUrl('')).toBe('');
+    });
+    it('return a null/undefined mailto adress ', () => {
+      expect(normaliseMail(null)).toBe('mailto:null');
+      expect(normaliseMail(undefined)).toBe('mailto:undefined');
+    });
+    it('return a null/undefined telephone number', () => {
+      expect(normalizeTelephone(null)).toBe('tel:null');
+      expect(normalizeTelephone(undefined)).toBe('tel:undefined');
+    });
+    it('null returns an invalid link', () => {
+      expect(checkAndNormalizeUrl(null).isValid).toBe(false);
     });
   });
 
