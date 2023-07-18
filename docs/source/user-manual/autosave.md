@@ -35,7 +35,7 @@ Data is saved with a unique id:
 Local data for the current content will be deleted, when you save the form or choose {guilabel}`Cancel` from the toast.
 
 (autosave-add-content-label)=
-## Autosave add new content
+## Autosave new content
 When adding a new content, a copy of the form will be saved in localStorage, similar to edit mode, but since the content hasn't been saved, we don't have an id, in this case the content type will be used.
 Since it also uses the path to create the id, the local data will be loaded again, in case of exiting without saving, only if adding the same content, in the same path.
 
