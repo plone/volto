@@ -1,9 +1,10 @@
 describe('Folder Contents Tests', () => {
   beforeEach(() => {
+    cy.intercept('GET', `/**/*?expand*`).as('content');
+    cy.intercept('GET', '/**/Document').as('schema');
     // given a logged in editor
     // and a folder that contains a document
     // and the folder contents view
-    cy.visit('/');
     cy.autologin();
     cy.createContent({
       contentType: 'Document',
@@ -16,11 +17,10 @@ describe('Folder Contents Tests', () => {
       contentTitle: 'My Document',
       path: 'my-folder',
     });
-    cy.visit('/my-folder/my-document');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
+    cy.visit('/');
+    cy.wait('@content');
+    cy.navigate('/my-folder/my-document');
+    cy.wait('@content');
   });
 
   it('Should render Summary template', () => {
@@ -41,10 +41,8 @@ describe('Folder Contents Tests', () => {
     ).click();
     cy.get('#field-variation').click().type('summary{enter}');
     cy.get('#toolbar-save').click();
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
+    cy.wait('@content');
+
     cy.url().should('eq', Cypress.config().baseUrl + '/my-folder/my-document');
     cy.get('.listing-item img')
       .should('have.attr', 'src')
@@ -75,10 +73,8 @@ describe('Folder Contents Tests', () => {
     ).click();
     cy.get('#field-variation').click().type('imageGallery{enter}');
     cy.get('#toolbar-save').click();
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
+    cy.wait('@content');
+
     cy.url().should('eq', Cypress.config().baseUrl + '/my-folder/my-document');
 
     // then we should have a slide play or pause button
@@ -103,7 +99,6 @@ describe('Folder Contents Tests', () => {
       contentTitle: 'My Image',
     });
 
-    cy.visit('/my-folder/my-document');
     cy.findByLabelText('Edit').click();
     cy.getSlate().click();
     cy.get('.ui.basic.icon.button.block-add-button').click();

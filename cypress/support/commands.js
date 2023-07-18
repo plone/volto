@@ -689,10 +689,7 @@ Cypress.Commands.add(
 Cypress.Commands.add('toolbarSave', () => {
   // Save
   cy.get('#toolbar-save', { timeout: 10000 }).click();
-  cy.waitForResourceToLoad('@navigation');
-  cy.waitForResourceToLoad('@breadcrumbs');
-  cy.waitForResourceToLoad('@actions');
-  cy.waitForResourceToLoad('@types');
+  cy.waitForResourceToLoad('');
 });
 
 Cypress.Commands.add('clearSlate', (selector) => {
