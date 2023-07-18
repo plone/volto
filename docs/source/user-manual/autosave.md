@@ -14,7 +14,7 @@ myst:
 The autosave feature allows you to load locally saved data, in case of accidental browser close, refresh, quit, or change page.
 It uses the [`localStorage` property](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage).
 It clears the data once either the form is saved or you cancel loading the local data.
-- If local data is found for the specific content a toast is shown that allows you to either load (OK) or discard (Cancel).
+If local data is found for the specific content, a toast is shown that allows you to either load ({guilabel}`OK`) or discard ({guilabel}`Cancel`).
 - If local data is stale, it will still show the toast, but it will specify that the found data is less recent than the server one.
 
 (autosave-edit-mode-label)=
