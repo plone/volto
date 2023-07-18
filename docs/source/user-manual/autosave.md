@@ -32,7 +32,7 @@ Data is saved with a unique id:
     ? ['form', pathname, 'comment'].join('-') // comments
     : ['form', pathname].join('-');
 ```
-Local data for the current content will be deleted in case of saving the Form or choosing cancel from the toast.
+Local data for the current content will be deleted, when you save the form or choose {guilabel}`Cancel` from the toast.
 
 (autosave-add-content-label)=
 ## Autosave add new content
