@@ -21,7 +21,7 @@ If local data is stale, it will still show the toast, but it will specify that t
 ## Autosave edit mode
 A local copy of the form is saved in `localStorage` when you start to edit, not when you merely open the page in edit mode.
 Changing the form will update the `localStorage` with a new complete copy of the Form.
-In case of closing the tab, refreshing, changing the page, cancelling edit, when revisiting the page in edit mode, it will show a toast for the found data.
+In case you close the tab, quit, refresh, change the page, or cancel edit, when you revisit the page in edit mode, it will display a toast for the found data.
 Data is saved with an unique id:
 ```js
   const id = isEditForm
