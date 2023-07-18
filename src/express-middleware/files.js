@@ -2,13 +2,13 @@ import express from 'express';
 import { getAPIResourceWithAuth } from '@plone/volto/helpers';
 
 const HEADERS = [
-  'Accept-Ranges',
-  'Cache-Control',
-  'Content-Disposition',
-  'Content-Range',
-  'Content-Type',
-  'X-Sendfile',
-  'X-Accell-Redirect',
+  'accept-ranges',
+  'cache-control',
+  'content-disposition',
+  'content-range',
+  'content-type',
+  'x-sendfile',
+  'x-accel-redirect',
 ];
 
 function filesMiddlewareFn(req, res, next) {
@@ -16,7 +16,7 @@ function filesMiddlewareFn(req, res, next) {
     .then((resource) => {
       // Just forward the headers that we need
       HEADERS.forEach((header) => {
-        if (resource.get(header)) {
+        if (resource.headers[header]) {
           res.set(header, resource.get(header));
         }
       });
