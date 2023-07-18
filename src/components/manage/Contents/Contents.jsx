@@ -461,7 +461,7 @@ class Contents extends Component {
         brokenReferences: brokenReferencesCount,
         brokenLinksList:
           linkintegrityInfo.length === 1
-            ? linkintegrityInfo[0]['@id'] + '/links-to-items'
+            ? linkintegrityInfo[0]['@id'] + '/links-to-item'
             : null,
         showAllItemsToDelete:
           this.state.itemsToDelete.length < this.deleteItemsToShowThreshold,
