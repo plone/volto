@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Form, Input } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
-import { useDispatch, useSelector, shallowEqual } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { getNavroot } from '@plone/volto/actions';
 import { hasApiExpander, getBaseUrl } from '@plone/volto/helpers';
