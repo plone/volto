@@ -61,5 +61,8 @@ exports[`ModerateComments renders a moderate comments component 1`] = `
       </section>
     </article>
   </div>
+  <div
+    id="Portal"
+  />
 </div>
 `;
