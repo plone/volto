@@ -2,4 +2,4 @@
 
 - Use the @site endpoint to render the logo @erral
 
-- Register a widget to set the logo in the site controlpanel @erral
+Register a widget to set the logo in the site control panel. @erral
