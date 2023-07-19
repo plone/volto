@@ -487,7 +487,7 @@ layoutViewsNamesMapping
       },
     })
     ```
-````
+```
 
 ## Server-specific serverConfig
 
