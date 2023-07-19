@@ -430,7 +430,7 @@ siteTitleFormat
     Volto lets you modify how the site title is built.
     By default the site title only includes the title of the current page.
 
-    Modifying this configuration setting, the developer can decide to use the title of the navigation root (either the site root or the language root folder) as the second part of the title.
+    By modifying this configuration setting, you can decide whether to use the title of the navigation root (either the site root or the language root folder) as the second part of the title.
 
     The developer can also decide which is the separator character between the current page title and the site title.
 
