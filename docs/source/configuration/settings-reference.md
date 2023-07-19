@@ -1,10 +1,10 @@
 ---
 myst:
   html_meta:
-    "description": "This is a summary of all the Volto configuration options and what they control."
-    "property=og:description": "This is a summary of all the Volto configuration options and what they control."
-    "property=og:title": "Settings reference guide"
-    "keywords": "Volto, Plone, frontend, React, configuration, settings, reference"
+    'description': 'This is a summary of all the Volto configuration options and what they control.'
+    'property=og:description': 'This is a summary of all the Volto configuration options and what they control.'
+    'property=og:title': 'Settings reference guide'
+    'keywords': 'Volto, Plone, frontend, React, configuration, settings, reference'
 ---
 
 # Settings reference guide
@@ -19,7 +19,7 @@ This list is still incomplete, contributions are welcomed!
 
 They are exposed in `config.settings`:
 
-```{glossary}
+````{glossary}
 :sorted:
 
 navDepth
@@ -425,13 +425,28 @@ okRoute
     ```jsx
       config.settings.okRoute = '/site-is-ok'
     ```
-```
+
+siteTitleFormat
+    Volto lets the developer to modify how the site title is built. By default the site title only includes the title of the current page.
+
+    Modifying this configuration setting, the developer can decide to use the title of the navigation root (either the site root or the language root folder) as the second part of the title.
+
+    The developer can also decide which is the separator character between the current page title and the site title.
+
+    ```jsx
+        siteTitleFormat: {
+          includeSiteTitle: true,
+          titleAndSiteTitleSeparator: '-',
+        }
+    ```
+
+````
 
 ## Views settings
 
 They are exposed in `config.views`:
 
-```{glossary}
+````{glossary}
 :sorted:
 
 layoutViewsNamesMapping
@@ -471,7 +486,7 @@ layoutViewsNamesMapping
       },
     })
     ```
-```
+````
 
 ## Server-specific serverConfig
 
