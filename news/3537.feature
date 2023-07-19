@@ -1,4 +1,4 @@
-- Use the @navroot endpoint to build the title tag @erral
+Use the `@navroot` endpoint to build the `title` tag. @erral
 
 Use the `@site` endpoint to render the logo. @erral
 
