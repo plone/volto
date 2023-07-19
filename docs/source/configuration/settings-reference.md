@@ -441,7 +441,7 @@ siteTitleFormat
         }
     ```
 
-````
+```
 
 ## Views settings
 
