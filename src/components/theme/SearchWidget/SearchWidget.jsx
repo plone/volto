@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { Form, Input } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
@@ -23,13 +23,15 @@ const messages = defineMessages({
 const SearchWidget = (props) => {
   const intl = useIntl();
   const dispatch = useDispatch();
+  const location = useLocation();
 
   const [text, setText] = useState('');
   const history = useHistory();
   const onChangeText = (event, { value }) => {
     setText(value);
   };
-  const pathname = props.pathname;
+
+  const pathname = location.pathname;
   const onSubmit = (event) => {
     const path =
       pathname?.length > 0 ? `&path=${encodeURIComponent(pathname)}` : '';
@@ -40,8 +42,7 @@ const SearchWidget = (props) => {
     event.preventDefault();
   };
 
-  const navroot = useSelector((state) => state.navroot?.navroot);
-
+  const navroot = useSelector((state) => state.navroot?.data);
   useEffect(() => {
     if (!hasApiExpander('navroot', getBaseUrl(pathname))) {
       dispatch(getNavroot(getBaseUrl(pathname)));
@@ -49,7 +50,7 @@ const SearchWidget = (props) => {
   }, [dispatch, pathname]);
 
   return (
-    <Form action={`${navroot?.['@id']}/search`} onSubmit={onSubmit}>
+    <Form action={`${navroot?.navroot?.['@id']}/search`} onSubmit={onSubmit}>
       <Form.Field className="searchbox">
         <Input
           aria-label={intl.formatMessage(messages.search)}
