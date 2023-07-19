@@ -427,7 +427,8 @@ okRoute
     ```
 
 siteTitleFormat
-    Volto lets the developer to modify how the site title is built. By default the site title only includes the title of the current page.
+    Volto lets you modify how the site title is built.
+    By default the site title only includes the title of the current page.
 
     Modifying this configuration setting, the developer can decide to use the title of the navigation root (either the site root or the language root folder) as the second part of the title.
 
