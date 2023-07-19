@@ -291,7 +291,7 @@ msgstr "I filtri avanzati sono inizialmente nascosti e vengono visualizzati su r
 #: config/Views
 # defaultMessage: Album view
 msgid "Album view"
-msgstr "View Album"
+msgstr "Vista album"
 
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Alias
@@ -937,7 +937,7 @@ msgstr "Default"
 #: config/Views
 # defaultMessage: Default view
 msgid "Default view"
-msgstr "Default view"
+msgstr "Vista default"
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
@@ -1096,7 +1096,7 @@ msgstr "Pagina"
 #: config/Views
 # defaultMessage: Document view
 msgid "Document view"
-msgstr "View pagina"
+msgstr "Vista pagina"
 
 #: components/theme/EventDetails/EventDetails
 # defaultMessage: Download Event
@@ -1321,7 +1321,7 @@ msgstr "Evento"
 #: config/Views
 # defaultMessage: Event listing
 msgid "Event listing"
-msgstr "Elenco evento"
+msgstr "Elenco eventi"
 
 #: config/Views
 # defaultMessage: Event view
@@ -1426,7 +1426,7 @@ msgstr "Dimensione del file"
 #: config/Views
 # defaultMessage: File view
 msgid "File view"
-msgstr "View file"
+msgstr "Vista file"
 
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Filename
@@ -1696,7 +1696,7 @@ msgstr "Dimensione dell'immagine"
 #: config/Views
 # defaultMessage: Image view
 msgid "Image view"
-msgstr "View immagine"
+msgstr "Vista immagine"
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 # defaultMessage: Include this occurrence
@@ -1935,7 +1935,7 @@ msgstr "Link ad altro"
 #: config/Views
 # defaultMessage: Link redirect view
 msgid "Link redirect view"
-msgstr "Aggiungi redirect alla view"
+msgstr "Aggiungi redirect alla vista"
 
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
@@ -1975,7 +1975,7 @@ msgstr "Elenco"
 #: config/Views
 # defaultMessage: Listing view
 msgid "Listing view"
-msgstr "View elenco"
+msgstr "Vista standard"
 
 #: components/theme/Comments/Comments
 # defaultMessage: Load more...
@@ -2226,7 +2226,7 @@ msgstr "Notizia"
 #: config/Views
 # defaultMessage: News item view
 msgid "News item view"
-msgstr "View notizia"
+msgstr "Vista notizia"
 
 #: components/manage/Contents/ContentsItem
 #: components/manage/Contents/ContentsPropertiesModal
@@ -2263,7 +2263,7 @@ msgstr "Nessun addon trovato"
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: No broken relations found.
 msgid "No broken relations found."
-msgstr "Nessuna relazione corrotta trovata.a"
+msgstr "Nessuna relazione corrotta trovata."
 
 #: components/theme/RequestTimeout/RequestTimeout
 # defaultMessage: There is no connection to the server, due to a timeout o no network connection.
@@ -2725,7 +2725,7 @@ msgstr "Relazioni"
 #: components/manage/Controlpanels/Relations/RelationsListing
 # defaultMessage: Relations are editable with plone.api >= 2.0.3.
 msgid "Relations are editable with plone.api >= 2.0.3."
-msgstr "Le relazioni possono essere modificate con plone.api >= 2.0.3"
+msgstr "Le relazioni possono essere modificate con plone.api >= 2.0.3."
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Relations updated
@@ -3277,11 +3277,11 @@ msgstr "Dimensione: {size}"
 # defaultMessage: Small
 msgid "Small"
 msgstr "Piccolo"
-
+x
 #: components/manage/Controlpanels/Relations/Relations
 # defaultMessage: Some relations are broken. Please fix.
 msgid "Some relations are broken. Please fix."
-msgstr "Alcune relazioni sono corrotte. "
+msgstr "Alcune relazioni sono corrotte."
 
 #: error
 # defaultMessage: Sorry, something went wrong with your request
@@ -3425,7 +3425,7 @@ msgstr "Sommario"
 #: config/Views
 # defaultMessage: Summary view
 msgid "Summary view"
-msgstr "View di riepilogo"
+msgstr "Vista riassuntiva"
 
 #: components/theme/LanguageSelector/LanguageSelector
 # defaultMessage: Switch to
@@ -3548,7 +3548,7 @@ msgstr "Le seguenti regole di contenuto sono attive in questa pagina. "
 #: components/manage/Controlpanels/UpgradeControlPanel
 # defaultMessage: The following list shows which upgrade steps are going to be run. Upgrading sometimes performs a catalog/security update, which may take a long time on large sites. Be patient.
 msgid "The following list shows which upgrade steps are going to be run. Upgrading sometimes performs a catalog/security update, which may take a long time on large sites. Be patient."
-msgstr "Questa lista mostar quali upgrade steps verranno eseguiti. A volte questa procedura comporta un aggiornamento di catalog/security che potrebbe richiedere tempi lunghi su siti molto grandi. Attendi."
+msgstr "Questa lista mostra quali upgrade steps verranno eseguiti. A volte questa procedura comporta un aggiornamento di catalog/security che potrebbe richiedere tempi lunghi su siti molto grandi. Attendi."
 
 #: components/manage/Contents/Contents
 # defaultMessage: The item could not be deleted.
@@ -4266,7 +4266,7 @@ msgstr "Inserisci uno username, ad esempio 'jsmith'. Non sono consentiti spazi o
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Available views
 msgid "availableViews"
-msgstr "View disponibili"
+msgstr "Viste disponibili"
 
 #: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
@@ -4731,7 +4731,7 @@ msgstr "Seleziona"
 #: components/manage/Blocks/Search/components/ViewSwitcher
 # defaultMessage: Select view
 msgid "selectView"
-msgstr "Seleziona la view"
+msgstr "Seleziona la vista"
 
 #: components/theme/SkipLinks/SkipLinks
 # defaultMessage: Skip to footer
@@ -4811,7 +4811,7 @@ msgstr "Video"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Views
 msgid "views"
-msgstr "View"
+msgstr "Viste"
 
 #: components/theme/EventDetails/EventDetails
 # defaultMessage: Visit external website
