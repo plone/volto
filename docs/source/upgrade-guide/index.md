@@ -91,11 +91,11 @@ config.settings.apiExpanders = [];
 
 ### Cypress upgraded to 12.17.1
 
-As usual in a Volto major version, Cypress has been upgraded to latest version to date.
+As usual in a Volto major version release, Cypress has been upgraded to the latest version to date.
 There are no major changes to the way the tests are implemented and run.
 
-However, could be that the Cypress boilerplate you are using has to be updated in your projects and add-ons in case you are using `@testing-library/cypress` in your tests.
-This is due to a change in how the default commands are now built internally and `@testing-library/cypress`.
+However, it could be that your Cypress boilerplate must be updated in your projects and add-ons if you use `@testing-library/cypress` in your tests.
+This is due to a change in how the default commands are now built internally and in `@testing-library/cypress`.
 
 You need to move the import:
 
@@ -103,10 +103,10 @@ You need to move the import:
 import '@testing-library/cypress/add-commands';
 ```
 
-from `cypress/support/commands.js` to `cypress/support/e2e.js`, in case you have it in there.
+from {file}`cypress/support/commands.js` to {file}`cypress/support/e2e.js`, in case you have it in there.
 
-This is because the overrides that the `@testing-library/cypress` introduces can only be run once.
-Since there are some commands that can call exports in `cypress/support/commands.js`, this import was run more than once, then it errors.
+This is because the overrides that `@testing-library/cypress` introduce can be run only once.
+Since there are some commands that can call exports in {file}`cypress/support/commands.js`, this import may be run more than once, and then it errors.
 So you have to make sure that import is run only once while the tests are run.
 
 (volto-upgrade-guide-16.x.x)=
