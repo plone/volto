@@ -447,7 +447,7 @@ siteTitleFormat
 
 They are exposed in `config.views`:
 
-````{glossary}
+```{glossary}
 :sorted:
 
 layoutViewsNamesMapping
