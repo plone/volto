@@ -8,6 +8,17 @@
 
 <!-- towncrier release notes start -->
 
+## 17.0.0-alpha.20 (2023-07-18)
+
+### Feature
+
+- Use all the apiExpanders in use, so we perform a single request for getting all the required data. @sneridagh [#4946](https://github.com/plone/volto/issues/4946)
+
+### Bugfix
+
+- Fix the condition deciding on listing pagination format so it takes into account container blocks as well @sneridagh [#4978](https://github.com/plone/volto/issues/4978)
+
+
 ## 17.0.0-alpha.19 (2023-07-18)
 
 ### Feature
