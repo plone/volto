@@ -764,7 +764,7 @@ msgstr "Regole di contenuto da cartelle padre"
 #: components/manage/LinksToItem/LinksToItem
 # defaultMessage: Content that links to or references {title}
 msgid "Content that links to or references {title}"
-msgstr "Contenuto che porta o collegato a {title}"
+msgstr "Contenuto collegato a {title}"
 
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Content type created
@@ -1959,7 +1959,7 @@ msgstr "Collega traduzione per"
 #: components/manage/LinksToItem/LinksToItem
 # defaultMessage: Linking this item with hyperlink in text
 msgid "Linking this item with hyperlink in text"
-msgstr "Link aggiunto a questo elemento con collegamento ipertestuale"
+msgstr "Elementi collegati a questo contenuto con un collegamento ipertestuali nel testo"
 
 #: components/manage/LinksToItem/LinksToItem
 #: components/manage/Toolbar/More
@@ -2690,12 +2690,12 @@ msgstr "Riduci complessità"
 #: components/manage/LinksToItem/LinksToItem
 # defaultMessage: Referencing this item as related item
 msgid "Referencing this item as related item"
-msgstr ""
+msgstr "Elementi collegati a questo contenuto come contenuto correlato"
 
 #: components/manage/LinksToItem/LinksToItem
 # defaultMessage: Referencing this item with {relationship}
 msgid "Referencing this item with {relationship}"
-msgstr "Elemento collegato con {relationship}"
+msgstr "Elementi collegati a questo contenuto in {relationship}"
 
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
