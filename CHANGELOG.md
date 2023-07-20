@@ -10,6 +10,10 @@
 
 ## 17.0.0-alpha.20 (2023-07-18)
 
+### Breaking
+
+- Replaced `h3` html tags from the Listing Block Summart variation with `ul` tags as can cause confusion in people relying on the page structure with headlines that function of section headers. @tiberiuichim [#4982](https://github.com/plone/volto/issues/4982)
+
 ### Feature
 
 - Use all the apiExpanders in use, so we perform a single request for getting all the required data. @sneridagh [#4946](https://github.com/plone/volto/issues/4946)
