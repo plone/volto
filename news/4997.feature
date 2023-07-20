@@ -1,0 +1,1 @@
+Made selectedView prop available as className in the SearchBlockView.jsx to improve styling development. @danalvrz
