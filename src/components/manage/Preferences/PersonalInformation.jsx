@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useDispatch, useSelector, shallowEqual } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useIntl } from 'react-intl';
 import { useHistory } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
