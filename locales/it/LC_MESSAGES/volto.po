@@ -1795,7 +1795,7 @@ msgstr "anni"
 #: components/theme/View/RenderBlocks
 # defaultMessage: Invalid block - Will be removed on saving
 msgid "Invalid Block"
-msgstr "Blocco invalido - Salvando, verrà rimosso"
+msgstr "Blocco non valido - Salvando, verrà rimosso"
 
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Item batch size
@@ -1935,7 +1935,7 @@ msgstr "Link ad altro"
 #: config/Views
 # defaultMessage: Link redirect view
 msgid "Link redirect view"
-msgstr "Aggiungi redirect alla vista"
+msgstr "Vista collegamento"
 
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
@@ -3277,7 +3277,7 @@ msgstr "Dimensione: {size}"
 # defaultMessage: Small
 msgid "Small"
 msgstr "Piccolo"
-x
+
 #: components/manage/Controlpanels/Relations/Relations
 # defaultMessage: Some relations are broken. Please fix.
 msgid "Some relations are broken. Please fix."
