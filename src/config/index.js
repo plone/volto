@@ -235,7 +235,7 @@ config.settings.apiExpanders = [
   ...config.settings.apiExpanders,
   {
     match: '',
-    GET_CONTENT: ['breadcrumbs', 'actions', 'types'],
+    GET_CONTENT: ['breadcrumbs', 'actions', 'types', 'navroot'],
   },
   {
     match: '',
