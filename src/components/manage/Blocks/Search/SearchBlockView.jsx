@@ -58,7 +58,7 @@ const applyDefaults = (data, root) => {
 };
 
 const SearchBlockView = (props) => {
-  const { id, data, searchData, mode = 'view', variation } = props;
+  const { id, data, searchData, mode = 'view', variation, className } = props;
 
   const Layout = variation.view;
 
@@ -82,7 +82,7 @@ const SearchBlockView = (props) => {
   const listingBodyVariation = variations.find(({ id }) => id === selectedView);
 
   return (
-    <div className={cx('block search', selectedView)}>
+    <div className={cx('block search', selectedView, className)}>
       <Layout
         {...props}
         isEditMode={mode === 'edit'}
