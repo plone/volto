@@ -1,0 +1,1 @@
+ Replaced `h3` html tags from the Listing Block Summart variation with `ul` tags as can cause confusion in people relying on the page structure with headlines that function of section headers. @tiberiuichim [#4982](https://github.com/plone/volto/issues/4982)
