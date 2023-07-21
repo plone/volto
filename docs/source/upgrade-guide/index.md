@@ -89,6 +89,12 @@ If you want to retain the old behavior (and no use `apiExpanders` at all), you n
 config.settings.apiExpanders = [];
 ```
 
+### New Image component
+
+```{versionadded} 17.0.0-alpha.21
+A new image component has been added to core to render optimized images. It requires the latest version of `plone.restapi` (>=8.42.0) in place in the backend in order to work properly.
+```
+
 ### Removed Teaser block utils
 
 The `utils.js` file of the Teaser block was removed because it is no longer used.
