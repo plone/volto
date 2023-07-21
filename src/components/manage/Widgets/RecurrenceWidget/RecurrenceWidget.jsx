@@ -249,7 +249,7 @@ class RecurrenceWidget extends Component {
   setRecurrenceStartEnd = () => {
     const start = this.props.formData?.start;
 
-    let _start = this.getUTCDate(start).startOf('day').toDate();
+    let _start = this.moment(start).startOf('day').toDate(); //The date is already in utc from plone, so this is not necessary: this.getUTCDate(start).startOf('day').toDate();
 
     this.setState((prevState) => {
       let rruleSet = prevState.rruleSet;
@@ -470,12 +470,12 @@ class RecurrenceWidget extends Component {
   getDefaultUntil = (freq) => {
     const moment = this.moment;
     var end = this.props.formData?.end
-      ? toISOString(this.getUTCDate(this.props.formData.end).toDate())
+      ? moment(new Date(this.props.formData?.end)).format('YYYY-MM-DD')
       : null;
-    var tomorrow = toISOString(moment().add(1, 'days').utc().toDate());
-    var nextWeek = toISOString(moment().add(7, 'days').utc().toDate());
-    var nextMonth = toISOString(moment().add(1, 'months').utc().toDate());
-    var nextYear = toISOString(moment().add(1, 'years').utc().toDate());
+    var tomorrow = moment().add(1, 'days').format('YYYY-MM-DD');
+    var nextWeek = moment().add(7, 'days').format('YYYY-MM-DD');
+    var nextMonth = moment().add(1, 'months').format('YYYY-MM-DD');
+    var nextYear = moment().add(1, 'years').format('YYYY-MM-DD');
 
     var until = end;
     switch (freq) {
