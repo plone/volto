@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ConditionalLink, Component } from '@plone/volto/components';
 import { flattenToAppURL } from '@plone/volto/helpers';
-import { List, Header } from 'semantic-ui-react';
+import { List } from 'semantic-ui-react';
 import { isInternalURL } from '@plone/volto/helpers/Url/Url';
 
 const SummaryTemplate = ({ items, linkTitle, linkHref, isEditMode }) => {
