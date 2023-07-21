@@ -2185,7 +2185,7 @@ msgstr "Nessun video selezionato"
 #: components/manage/Controlpanels/VersionOverview
 # defaultMessage: No addons found
 msgid "No addons found"
-msgstr "Nesssun addon trovato"
+msgstr "Nessun addon trovato"
 
 #: components/theme/RequestTimeout/RequestTimeout
 # defaultMessage: There is no connection to the server, due to a timeout o no network connection.
