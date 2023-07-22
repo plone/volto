@@ -436,6 +436,7 @@ msgstr ""
 #: components/manage/Controlpanels/UpgradeControlPanel
 #: components/manage/Diff/Diff
 #: components/manage/History/History
+#: components/manage/LinksToItem/LinksToItem
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalPreferences
@@ -758,6 +759,11 @@ msgstr ""
 #: components/manage/Rules/Rules
 # defaultMessage: Content rules from parent folders
 msgid "Content rules from parent folders"
+msgstr ""
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Content that links to or references {title}
+msgid "Content that links to or references {title}"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
@@ -1950,6 +1956,17 @@ msgstr "Link a"
 msgid "Link translation for"
 msgstr "Collega traduzione per"
 
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Linking this item with hyperlink in text
+msgid "Linking this item with hyperlink in text"
+msgstr ""
+
+#: components/manage/LinksToItem/LinksToItem
+#: components/manage/Toolbar/More
+# defaultMessage: Links and references
+msgid "Links and references"
+msgstr ""
+
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Listing
 msgid "Listing"
@@ -2241,7 +2258,7 @@ msgstr "Nessun video selezionato"
 #: components/manage/Controlpanels/VersionOverview
 # defaultMessage: No addons found
 msgid "No addons found"
-msgstr "Nesssun addon trovato"
+msgstr "Nessun addon trovato"
 
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: No broken relations found.
@@ -2282,6 +2299,11 @@ msgstr "Nessun elemento trovato in questo contenitore."
 # defaultMessage: No items selected
 msgid "No items selected"
 msgstr "Nessun elemento selezionato"
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: No links to this item found.
+msgid "No links to this item found."
+msgstr ""
 
 #: components/manage/Blocks/Maps/MapsSidebar
 # defaultMessage: No map selected
@@ -2410,6 +2432,11 @@ msgstr "Apri object browser"
 # defaultMessage: Origin
 msgid "Origin"
 msgstr "Origine"
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Overview of relations of all content items
+msgid "Overview of relations of all content items"
+msgstr ""
 
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Page
@@ -2660,6 +2687,16 @@ msgstr "Ripeti"
 msgid "Reduce complexity"
 msgstr "Riduci complessità"
 
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Referencing this item as related item
+msgid "Referencing this item as related item"
+msgstr ""
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Referencing this item with {relationship}
+msgid "Referencing this item with {relationship}"
+msgstr ""
+
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
 #: components/theme/Register/Register
@@ -2835,6 +2872,7 @@ msgid "Revert to this revision"
 msgstr "Ripristina questa versione"
 
 #: components/manage/Contents/Contents
+#: components/manage/LinksToItem/LinksToItem
 # defaultMessage: Review state
 msgid "Review state"
 msgstr "Stato del workflow"
@@ -3712,6 +3750,7 @@ msgid "Triggering event field error. Please select a value"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
+#: components/manage/LinksToItem/LinksToItem
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
 # defaultMessage: Type
