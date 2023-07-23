@@ -89,6 +89,18 @@ If you want to retain the old behavior (and no use `apiExpanders` at all), you n
 config.settings.apiExpanders = [];
 ```
 
+### New Image component
+
+```{versionadded} 17.0.0-alpha.21
+A new image component has been added to core to render optimized images.
+It requires the latest version of `plone.restapi` (>=8.42.0) installed in the backend to work properly.
+```
+
+### Removed Teaser block utils
+
+The `utils.js` file of the Teaser block was removed because it is no longer used.
+You can consider removing it if you were shadowing it in your project.
+
 (volto-upgrade-guide-16.x.x)=
 
 ## Upgrading to Volto 16.x.x

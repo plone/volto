@@ -3329,7 +3329,6 @@ msgid "Sorted"
 msgstr ""
 
 #: components/manage/Blocks/HTML/Edit
-#: components/manage/Blocks/Image/schema
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: Source
 msgid "Source"
@@ -4421,6 +4420,16 @@ msgstr "html"
 # defaultMessage: Image
 msgid "image"
 msgstr "imagem"
+
+#: components/manage/Blocks/Image/ImageSidebar
+# defaultMessage: Clear image
+msgid "image_block_clear"
+msgstr ""
+
+#: components/manage/Blocks/Image/ImageSidebar
+# defaultMessage: Image preview
+msgid "image_block_preview"
+msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Input must be integer
