@@ -450,7 +450,7 @@ class Contents extends Component {
       sort_on: this.props.sort?.on || 'getObjPositionInParent',
       sort_order: this.props.sort?.order || 'ascending',
       isClient: false,
-      linkIntegrityBreakages: '',
+      linkIntegrityBreakages: [],
     };
     this.filterTimeout = null;
   }
@@ -1236,7 +1236,10 @@ class Contents extends Component {
                             Show all items
                           </Button>
                         )}
-                        {this.state.linkIntegrityBreakages.length > 0 ? (
+                        {this.state.linkIntegrityBreakages.reduce(
+                          (a, b) => a + b.breaches.length,
+                          0,
+                        ) ? (
                           <div>
                             <h3>
                               {this.props.intl.formatMessage(
@@ -1249,9 +1252,8 @@ class Contents extends Component {
                               )}
                             </p>
                             <ul className="content">
-                              {map(
-                                this.state.linkIntegrityBreakages,
-                                (item) => (
+                              {map(this.state.linkIntegrityBreakages, (item) =>
+                                item.breaches.length ? (
                                   <li key={item['@id']}>
                                     <a href={item['@id']}>{item.title}</a>
                                     <p>
@@ -1269,7 +1271,7 @@ class Contents extends Component {
                                       ))}
                                     </ul>
                                   </li>
-                                ),
+                                ) : null,
                               )}
                             </ul>
                           </div>
