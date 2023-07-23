@@ -8,6 +8,25 @@
 
 <!-- towncrier release notes start -->
 
+## 17.0.0-alpha.21 (2023-07-23)
+
+### Breaking
+
+- Added new Image component to render optimized images @pnicolli @davisagli [#3337](https://github.com/plone/volto/issues/3337)
+
+### Feature
+
+- Add getFieldURL helper function used to get the url value of a field based on its structure. @razvanMiu [#2252](https://github.com/plone/volto/issues/2252)
+
+### Bugfix
+
+- Fix delete confirmation to handle empty `breaches`. @davisagli [#4832](https://github.com/plone/volto/issues/4832)
+
+### Internal
+
+- Upgrade to Cypress 12.17.1 (latest) @sneridagh [#4981](https://github.com/plone/volto/issues/4981)
+
+
 ## 17.0.0-alpha.20 (2023-07-18)
 
 ### Feature
