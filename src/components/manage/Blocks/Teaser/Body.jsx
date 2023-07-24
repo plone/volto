@@ -24,7 +24,6 @@ const TeaserBody = (props) => {
 TeaserBody.propTypes = {
   data: PropTypes.objectOf(PropTypes.any).isRequired,
   isEditMode: PropTypes.bool,
-  variation: PropTypes.string,
 };
 
 export default TeaserBody;

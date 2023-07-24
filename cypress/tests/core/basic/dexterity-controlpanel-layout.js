@@ -1,15 +1,13 @@
 describe('ControlPanel: Dexterity Content-Types Layout', () => {
   beforeEach(() => {
+    cy.intercept('GET', `/**/*?expand*`).as('content');
     // given a logged in editor
     // add a new dexterity content-type for Book
     // and edit it's initial layout
     cy.visit('/');
     cy.autologin();
     cy.visit('/controlpanel/dexterity-types');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
+    cy.wait('@content');
   });
 
   it('Edit Blocks Layout for Book', () => {
@@ -48,10 +46,7 @@ describe('ControlPanel: Dexterity Content-Types Layout', () => {
     cy.get('#toolbar-save').click();
 
     cy.visit('/');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
+    cy.wait('@content');
 
     cy.get('button[class="add"]').click();
     cy.get('#toolbar-add-book').click();

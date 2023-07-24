@@ -1,5 +1,8 @@
 describe('Blocks copy/paste', () => {
   beforeEach(() => {
+    cy.intercept('GET', `/**/*?expand*`).as('pagecontent');
+    cy.intercept('GET', '/**/Document').as('schema');
+
     cy.clearLocalStorage();
     cy.autologin();
     cy.createContent({
@@ -8,12 +11,10 @@ describe('Blocks copy/paste', () => {
       contentTitle: 'My Page',
     });
     cy.visit('/my-page');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('my-page');
+    cy.wait('@pagecontent');
+
     cy.navigate('/my-page/edit');
+    cy.wait('@schema');
   });
 
   it('Copy/paste multiple blocks', () => {

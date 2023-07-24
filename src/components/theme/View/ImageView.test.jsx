@@ -23,9 +23,13 @@ test('renders an image view component', () => {
           image: {
             size: 123123,
             download: 'file:///preview.jpg',
+            width: 400,
+            height: 400,
             scales: {
               preview: {
                 download: 'file:///preview.jpg',
+                width: 400,
+                height: 400,
               },
             },
           },
