@@ -37,6 +37,7 @@ export { default as Unauthorized } from '@plone/volto/components/theme/Unauthori
 
 export { default as Avatar } from '@plone/volto/components/theme/Avatar/Avatar';
 export { default as Icon } from '@plone/volto/components/theme/Icon/Icon';
+export { default as Image } from '@plone/volto/components/theme/Image/Image';
 export { default as ConditionalLink } from '@plone/volto/components/manage/ConditionalLink/ConditionalLink';
 export { default as UniversalLink } from '@plone/volto/components/manage/UniversalLink/UniversalLink';
 export { default as LinkMore } from '@plone/volto/components/manage/LinkMore/LinkMore';
@@ -108,6 +109,7 @@ export { default as History } from '@plone/volto/components/manage/History/Histo
 export { default as Sharing } from '@plone/volto/components/manage/Sharing/Sharing';
 export { default as Rules } from '@plone/volto/components/manage/Rules/Rules';
 export { default as Aliases } from '@plone/volto/components/manage/Aliases/Aliases';
+export { default as LinksToItem } from '@plone/volto/components/manage/LinksToItem/LinksToItem';
 export { default as Workflow } from '@plone/volto/components/manage/Workflow/Workflow';
 export { default as Messages } from '@plone/volto/components/manage/Messages/Messages';
 export { default as BlockChooser } from '@plone/volto/components/manage/BlockChooser/BlockChooser';
