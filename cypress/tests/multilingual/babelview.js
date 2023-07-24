@@ -1,7 +1,8 @@
 describe('Babel View Tests', () => {
   beforeEach(() => {
+    cy.intercept('GET', `/**/*?expand*`).as('content');
+    cy.intercept('GET', '/**/Document').as('schema');
     // given a logged in editor and a page in edit mode
-    cy.visit('/en');
     cy.autologin();
     cy.createContent({
       contentType: 'Document',
@@ -9,20 +10,21 @@ describe('Babel View Tests', () => {
       contentTitle: 'Test document',
       path: '/en',
     });
-    cy.visit('/en/document');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('document');
+    cy.visit('/en');
+    cy.wait('@content');
+
+    cy.navigate('/en/document');
+    cy.wait('@content');
   });
 
   it('Basic babel view operation', function () {
     // Create translation
     cy.get('#toolbar-add').click();
     cy.findByText('Translate to italiano').click();
+    cy.wait('@schema');
     cy.url().should('eq', Cypress.config().baseUrl + '/it/add?type=Document');
-    cy.findByText('Test document');
+
+    cy.get('.content-area').findByText('Test document');
     cy.findByText('Traduci in Italiano');
     cy.get('.new-translation .block.inner.title [contenteditable="true"]')
       .focus()
@@ -46,7 +48,10 @@ describe('Babel View Tests', () => {
     // Create translation
     cy.get('#toolbar-add').click();
     cy.findByText('Translate to italiano').click();
-    cy.findByText('Test document');
+    cy.wait('@schema');
+
+    cy.get('.content-area').findByText('Test document');
+
     cy.findByText('Traduci in Italiano');
     cy.get('.new-translation .block.inner.title [contenteditable="true"]')
       .focus()

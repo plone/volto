@@ -10,7 +10,6 @@ jest.mock('react-portal', () => ({
 }));
 
 const mockStore = configureStore();
-
 describe('Contact form', () => {
   it('renders a contact form', () => {
     const store = mockStore({
@@ -29,7 +28,7 @@ describe('Contact form', () => {
     const component = renderer.create(
       <Provider store={store}>
         <MemoryRouter>
-          <ContactForm location={{ pathname: '/blog' }} />
+          <ContactForm />
         </MemoryRouter>
       </Provider>,
     );
@@ -56,7 +55,7 @@ describe('Contact form', () => {
     const component = renderer.create(
       <Provider store={store}>
         <MemoryRouter>
-          <ContactForm location={{ pathname: '/' }} />
+          <ContactForm />
         </MemoryRouter>
       </Provider>,
     );

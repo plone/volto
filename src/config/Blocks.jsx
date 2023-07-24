@@ -75,6 +75,7 @@ import {
   DateRangeFacetFilterListEntry,
 } from '@plone/volto/components/manage/Blocks/Search/components';
 import getListingBlockAsyncData from '@plone/volto/components/manage/Blocks/Listing/getAsyncData';
+import { getImageBlockSizes } from '@plone/volto/components/manage/Blocks/Image/utils';
 
 // block sidebar schemas (not the Dexterity Layout block settings schemas)
 import HeroImageLeftBlockSchema from '@plone/volto/components/manage/Blocks/HeroImageLeft/schema';
@@ -258,6 +259,7 @@ const blocksConfig = {
     restricted: false,
     mostUsed: true,
     sidebarTab: 1,
+    getSizes: getImageBlockSizes,
   },
   leadimage: {
     id: 'leadimage',

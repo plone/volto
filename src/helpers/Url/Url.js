@@ -3,7 +3,7 @@
  * @module helpers/Url
  */
 
-import { last, memoize } from 'lodash';
+import { last, memoize, isArray, isObject, isString } from 'lodash';
 import { urlRegex, telRegex, mailRegex } from './urlRegex';
 import prependHttp from 'prepend-http';
 import config from '@plone/volto/registry';
@@ -250,6 +250,27 @@ export function isInternalURL(url) {
 export function isUrl(url) {
   return urlRegex().test(url);
 }
+
+/**
+ * Get field url
+ * @method getFieldURL
+ * @param {object} data
+ * @returns {string | any} URL string value if field is of url type or any.
+ */
+export const getFieldURL = (data) => {
+  let url = data;
+  const _isObject = data && isObject(data) && !isArray(data);
+  if (_isObject && data['@type'] === 'URL') {
+    url = data['value'] ?? data['url'] ?? data['href'] ?? data;
+  } else if (_isObject) {
+    url = data['@id'] ?? data['url'] ?? data['href'] ?? data;
+  }
+  if (isArray(data)) {
+    url = data.map((item) => getFieldURL(item));
+  }
+  if (isString(url) && isInternalURL(url)) return flattenToAppURL(url);
+  return url;
+};
 
 /**
  * Normalize URL, adds protocol (if required eg. user has not entered the protocol)

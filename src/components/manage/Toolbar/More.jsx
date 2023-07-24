@@ -47,6 +47,10 @@ const messages = defineMessages({
     id: 'URL Management',
     defaultMessage: 'URL Management',
   },
+  linkstoitem: {
+    id: 'Links and references',
+    defaultMessage: 'Links and references',
+  },
   ManageTranslations: {
     id: 'Manage Translations',
     defaultMessage: 'Manage Translations',
