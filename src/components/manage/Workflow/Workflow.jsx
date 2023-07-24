@@ -180,9 +180,6 @@ const Workflow = (props) => {
   const { loaded, transitions, currentStateValue } = useWorkflow();
   const content = useSelector((state) => state.content?.data, shallowEqual);
   const { pathname } = props;
-  useEffect(() => {
-    dispatch(getWorkflow(pathname));
-  }, [dispatch, pathname]);
 
   useEffect(() => {
     dispatch(getWorkflow(pathname));
