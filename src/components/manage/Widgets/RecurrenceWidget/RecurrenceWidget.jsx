@@ -470,7 +470,7 @@ class RecurrenceWidget extends Component {
   getDefaultUntil = (freq) => {
     const moment = this.moment;
     var end = this.props.formData?.end
-      ? moment(new Date(this.props.formData?.end)).format('YYYY-MM-DD')
+      ? moment(new Date(this.props.formData.end)).format('YYYY-MM-DD')
       : null;
     var tomorrow = moment().add(1, 'days').format('YYYY-MM-DD');
     var nextWeek = moment().add(7, 'days').format('YYYY-MM-DD');
