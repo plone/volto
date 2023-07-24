@@ -70,14 +70,6 @@ const messages = defineMessages({
     defaultMessage:
       'If selected, this item will not appear in the navigation tree',
   },
-  yes: {
-    id: 'Yes',
-    defaultMessage: 'Yes',
-  },
-  no: {
-    id: 'No',
-    defaultMessage: 'No',
-  },
 });
 
 /**
