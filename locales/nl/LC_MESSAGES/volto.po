@@ -2163,7 +2163,6 @@ msgid "News item view"
 msgstr "Nieuwsbericht weergave"
 
 #: components/manage/Contents/ContentsItem
-#: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: No
 msgid "No"
@@ -4024,7 +4023,6 @@ msgid "Yearly"
 msgstr "Jaarlijks"
 
 #: components/manage/Contents/ContentsItem
-#: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Yes
 msgid "Yes"
