@@ -342,6 +342,34 @@ apiExpanders
     ```
     The configuration accepts a list of matchers, with the ability to filter by the request path and action type for maximum flexibility.
     It also accepts a `querystring` object that allows configuring the expanders via query string parameters, such as the navigation expander.
+    The `querystring` object accepts a querystring object or a function that returns a querystring object.
+
+    ```js
+    export default function applyConfig (config) {
+      config.settings.apiExpanders = [
+          ...config.settings.apiExpanders,
+          {
+            match: '',
+            GET_CONTENT: ['mycustomexpander'],
+          },
+          {
+            match: '/de',
+            GET_CONTENT: ['myothercustomexpander'],
+          },
+          {
+            match: '/de',
+            GET_CONTENT: ['navigation'],
+            querystring: (config) => ({
+              'expand.navigation.depth': config.settings.navDepth,
+            }),
+          }
+      ];
+
+      return config;
+    }
+    ```
+
+    This is used in case that you want to pass current (as in resultant, in place) config options to the querystring object.
 
 additionalToolbarComponents
     For additional toolbar menus, the menu body component needs to be added to the on-demand loaded components.
@@ -381,8 +409,23 @@ additionalToolbarComponents
 blockSettingsTabFieldsetsInitialStateOpen
     A Boolean, `true` by default.
     The fieldsets in the blocks settings tab start by default as non-collapsed (opened), you can decide to have them collapsed (closed) by default setting this to `false`.
-```
 
+excludeLinksAndReferencesMenuItem
+    A Boolean, `false` by default.
+    The content menu links to the {guilabel}`Links and references` view per default.
+    Exclude this menu item by setting `excludeLinksAndReferencesMenuItem` to `true`.
+
+okRoute
+    Volto provides an `/ok` URL where it responds with a `text/plain ok` response, with an `HTTP 200` status code, to signal third party health check services that the Volto process is running correctly.
+
+    Using this setting, one can modify such an URL and configure it to respond with another URL.
+
+    The provided default URL matches the existing Plone Classic UI URL.
+
+    ```jsx
+      config.settings.okRoute = '/site-is-ok'
+    ```
+```
 
 ## Views settings
 
