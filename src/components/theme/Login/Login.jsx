@@ -66,17 +66,17 @@ const messages = defineMessages({
   },
 });
 
-const Login = (props) => {
+const Login = () => {
   const intl = useIntl();
   const history = useHistory();
-  const location = useLocation();
+  const { search, pathname } = useLocation();
   const dispatch = useDispatch();
   const token = useSelector((state) => state.userSession.token, shallowEqual);
   const error = useSelector((state) => state.userSession.login.error);
   const loading = useSelector((state) => state.userSession.login.loading);
   const returnUrl =
-    qs.parse(props.location.search ?? location.search).return_url ||
-    location.pathname.replace(/\/login\/?$/, '').replace(/\/logout\/?$/, '') ||
+    qs.parse(search).return_url ||
+    pathname.replace(/\/login\/?$/, '').replace(/\/logout\/?$/, '') ||
     '/';
   useEffect(() => {
     if (token) {
