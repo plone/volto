@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 import {
   Button,
   Confirm,
-  Container,
+  Container as SemanticContainer,
   Divider,
   Dropdown,
   Menu,
@@ -70,6 +70,7 @@ import {
 
 import { Helmet, getBaseUrl } from '@plone/volto/helpers';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import config from '@plone/volto/registry';
 
 import backSVG from '@plone/volto/icons/back.svg';
 import cutSVG from '@plone/volto/icons/cut.svg';
@@ -449,7 +450,7 @@ class Contents extends Component {
       sort_on: this.props.sort?.on || 'getObjPositionInParent',
       sort_order: this.props.sort?.order || 'ascending',
       isClient: false,
-      linkIntegrityBreakages: '',
+      linkIntegrityBreakages: [],
     };
     this.filterTimeout = null;
   }
@@ -1177,6 +1178,9 @@ class Contents extends Component {
       (this.props.orderRequest?.loading && !this.props.orderRequest?.error) ||
       (this.props.searchRequest?.loading && !this.props.searchRequest?.error);
 
+    const Container =
+      config.getComponent({ name: 'Container' }).component || SemanticContainer;
+
     return this.props.token && this.props.objectActions?.length > 0 ? (
       <>
         {folderContentsAction ? (
@@ -1232,7 +1236,10 @@ class Contents extends Component {
                             Show all items
                           </Button>
                         )}
-                        {this.state.linkIntegrityBreakages.length > 0 ? (
+                        {this.state.linkIntegrityBreakages.reduce(
+                          (a, b) => a + b.breaches.length,
+                          0,
+                        ) ? (
                           <div>
                             <h3>
                               {this.props.intl.formatMessage(
@@ -1245,9 +1252,8 @@ class Contents extends Component {
                               )}
                             </p>
                             <ul className="content">
-                              {map(
-                                this.state.linkIntegrityBreakages,
-                                (item) => (
+                              {map(this.state.linkIntegrityBreakages, (item) =>
+                                item.breaches.length ? (
                                   <li key={item['@id']}>
                                     <a href={item['@id']}>{item.title}</a>
                                     <p>
@@ -1265,7 +1271,7 @@ class Contents extends Component {
                                       ))}
                                     </ul>
                                   </li>
-                                ),
+                                ) : null,
                               )}
                             </ul>
                           </div>

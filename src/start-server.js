@@ -4,7 +4,7 @@ import http from 'http';
 import app from './server';
 import debug from 'debug';
 
-export default () => {
+export default function server() {
   const server = http.createServer(app);
   // const host = process.env.HOST || 'localhost';
   const port = process.env.PORT || 3000;
@@ -46,4 +46,4 @@ export default () => {
       currentApp = newApp;
     });
   };
-};
+}

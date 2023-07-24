@@ -1,4 +1,3 @@
-import '@testing-library/cypress/add-commands';
 import { getIfExists } from '../helpers';
 import { ploneAuth } from './constants';
 
@@ -20,6 +19,25 @@ const ploneAuthObj = {
   user: ploneAuth[0],
   pass: ploneAuth[1],
 };
+
+export * from './volto-slate';
+
+// --- isInViewport ----------------------------------------------------------
+Cypress.Commands.add('isInViewport', (element) => {
+  cy.get(element).then(($el) => {
+    const windowInnerWidth = Cypress.config(`viewportWidth`);
+    const windowInnerHeight = Cypress.config(`viewportHeight`);
+    const rect = $el[0].getBoundingClientRect();
+
+    const rightBoundOfWindow = windowInnerWidth;
+    const bottomBoundOfWindow = windowInnerHeight;
+
+    expect(rect.top).to.be.at.least(0);
+    expect(rect.left).to.be.at.least(0);
+    expect(rect.right).to.be.lessThan(rightBoundOfWindow);
+    expect(rect.bottom).to.be.lessThan(bottomBoundOfWindow);
+  });
+});
 
 // --- AUTOLOGIN -------------------------------------------------------------
 Cypress.Commands.add('autologin', (usr, pass) => {
@@ -671,10 +689,7 @@ Cypress.Commands.add(
 Cypress.Commands.add('toolbarSave', () => {
   // Save
   cy.get('#toolbar-save', { timeout: 10000 }).click();
-  cy.waitForResourceToLoad('@navigation');
-  cy.waitForResourceToLoad('@breadcrumbs');
-  cy.waitForResourceToLoad('@actions');
-  cy.waitForResourceToLoad('@types');
+  cy.waitForResourceToLoad('');
 });
 
 Cypress.Commands.add('clearSlate', (selector) => {
@@ -700,6 +715,20 @@ Cypress.Commands.add('getSlate', (createNewSlate = false) => {
     },
     () => {
       slate = cy.get(SLATE_SELECTOR, { timeout: 10000 }).last();
+    },
+  );
+  return slate;
+});
+
+Cypress.Commands.add('getSlateSelector', (selector = SLATE_SELECTOR) => {
+  let slate;
+  cy.getIfExists(
+    selector,
+    () => {
+      slate = cy.get(selector).last();
+    },
+    () => {
+      slate = cy.get(selector, { timeout: 10000 }).last();
     },
   );
   return slate;
@@ -761,6 +790,10 @@ Cypress.Commands.add('setSlateSelection', (subject, query, endQuery) => {
 
 Cypress.Commands.add('getSlateEditorAndType', (type) => {
   cy.getSlate().focus().click().type(type);
+});
+
+Cypress.Commands.add('getSlateEditorSelectorAndType', (selector, type) => {
+  cy.getSlateSelector(selector).focus().click().type(type);
 });
 
 Cypress.Commands.add('setSlateCursor', (subject, query, endQuery) => {
@@ -848,4 +881,24 @@ Cypress.Commands.add('getTableSlate', (header = false) => {
     },
   );
   return slate;
+});
+
+Cypress.Commands.add('configureListingWith', (contentType) => {
+  cy.get('.sidebar-container .tabs-wrapper .menu .item')
+    .contains('Block')
+    .click();
+  cy.get('.querystring-widget .fields').contains('Add criteria').click();
+  cy.get(
+    '.querystring-widget .fields:first-of-type .field:first-of-type .react-select__menu .react-select__option',
+  )
+    .contains('Type')
+    .click();
+
+  //insert Page
+  cy.get('.querystring-widget .fields:first-of-type > .field').click();
+  cy.get(
+    '.querystring-widget .fields:first-of-type > .field .react-select__menu .react-select__option',
+  )
+    .contains(contentType)
+    .click();
 });

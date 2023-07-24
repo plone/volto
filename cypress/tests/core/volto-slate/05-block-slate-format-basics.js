@@ -1,4 +1,4 @@
-import { slateBeforeEach } from '../../../support/e2e';
+import { slateBeforeEach } from '../../../support/commands';
 
 describe('Block Tests: Basic text format', () => {
   beforeEach(slateBeforeEach);
@@ -135,7 +135,7 @@ describe('Block Tests: Basic text format', () => {
     cy.toolbarSave();
 
     // then the page view should contain our changes
-    cy.get('[id="page-document"] h2').children().should('have.length', 0);
+    cy.get('[id="page-document"] h2').children().should('have.length', 1);
     cy.get('[id="page-document"] h2').contains('Colorless');
   });
 
@@ -177,7 +177,7 @@ describe('Block Tests: Basic text format', () => {
     cy.toolbarSave();
 
     // then the page view should contain our changes
-    cy.get('[id="page-document"] h3').children().should('have.length', 0);
+    cy.get('[id="page-document"] h3').children().should('have.length', 1);
     cy.get('[id="page-document"] h3').contains('Colorless');
   });
 
