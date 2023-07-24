@@ -16,7 +16,18 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
   >
     <img
       alt="alternate text"
-      src="image.png"
+      className="responsive"
+      fetchpriority="high"
+      height={400}
+      sizes="188px"
+      src="http://localhost:3000/image.png"
+      srcSet="http://localhost:3000/image.png/@@images/image/image-400.png 400w"
+      style={
+        Object {
+          "aspectRatio": "400 / 400",
+        }
+      }
+      width={400}
     />
   </div>
   <div
