@@ -46,7 +46,7 @@ describe('Folder Contents Tests', () => {
     cy.url().should('eq', Cypress.config().baseUrl + '/my-folder/my-document');
     cy.get('.listing-item img')
       .should('have.attr', 'src')
-      .and('contain', '/my-folder/my-document/my-image/@@images/image/preview');
+      .and('contain', '/my-folder/my-document/my-image/@@images/image-');
     cy.get('.listing-item img')
       .should('be.visible')
       .and(($img) => {
