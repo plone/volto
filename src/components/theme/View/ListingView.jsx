@@ -6,7 +6,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Segment, Container as SemanticContainer } from 'semantic-ui-react';
-import { UniversalLink, PreviewImage } from '@plone/volto/components';
+import { UniversalLink } from '@plone/volto/components';
 import config from '@plone/volto/registry';
 
 /**
@@ -18,6 +18,7 @@ import config from '@plone/volto/registry';
 const ListingView = ({ content }) => {
   const Container =
     config.getComponent({ name: 'Container' }).component || SemanticContainer;
+  const PreviewImage = config.getComponent({ name: 'PreviewImage' }).component;
 
   return (
     <Container id="page-home">
@@ -35,9 +36,10 @@ const ListingView = ({ content }) => {
             {item.image_field && (
               <PreviewImage
                 item={item}
-                size="thumb"
-                alt={item.image_caption ? item.image_caption : item.title}
+                alt={item.image_caption}
                 className="ui image"
+                responsive={true}
+                loading="lazy"
               />
             )}
           </Segment>
