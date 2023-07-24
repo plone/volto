@@ -1,4 +1,4 @@
-import { slateBeforeEach } from '../../../support/e2e';
+import { slateBeforeEach } from '../../../support/commands';
 
 describe('SlashMenu Test: Shortcuts', () => {
   beforeEach(slateBeforeEach);

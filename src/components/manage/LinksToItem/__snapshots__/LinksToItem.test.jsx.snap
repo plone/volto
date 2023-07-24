@@ -1,0 +1,142 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LinksToItem renders "links and references" view 1`] = `
+<div
+  className="ui container"
+  id="linkstoitem"
+>
+  <div
+    className="ui raised segments"
+  >
+    <div
+      className="ui segment primary"
+    >
+      Content that links to or references 
+      <q>
+        page #1
+      </q>
+    </div>
+    <table
+      className="ui selectable single line attached compact table"
+    >
+      <tbody
+        className=""
+      >
+        <tr
+          className=""
+        >
+          <th
+            className=""
+          >
+            Linking this item with hyperlink in text
+          </th>
+          <th
+            className=""
+          >
+            Review state
+          </th>
+          <th
+            className=""
+          >
+            Type
+          </th>
+        </tr>
+        <tr
+          className=""
+        >
+          <td
+            className=""
+          >
+            <a
+              className="source published"
+              href="http://localhost:3000/page-basil"
+              rel="noopener noreferrer"
+              target="_blank"
+              title={null}
+            >
+              <span
+                className="label"
+                title="Document"
+              >
+                Basil
+              </span>
+            </a>
+          </td>
+          <td
+            className=""
+          >
+            <span>
+              published
+            </span>
+          </td>
+          <td
+            className=""
+          >
+            <span>
+              Document
+            </span>
+          </td>
+        </tr>
+        <tr
+          className=""
+        >
+          <th
+            className=""
+          >
+            Referencing this item as related item
+          </th>
+          <th
+            className=""
+          >
+            Review state
+          </th>
+          <th
+            className=""
+          >
+            Type
+          </th>
+        </tr>
+        <tr
+          className=""
+        >
+          <td
+            className=""
+          >
+            <a
+              className="source published"
+              href="http://localhost:3000/page-cucumber"
+              rel="noopener noreferrer"
+              target="_blank"
+              title={null}
+            >
+              <span
+                className="label"
+                title="Document"
+              >
+                Cucumber
+              </span>
+            </a>
+          </td>
+          <td
+            className=""
+          >
+            <span>
+              published
+            </span>
+          </td>
+          <td
+            className=""
+          >
+            <span>
+              Document
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div
+    id="Portal"
+  />
+</div>
+`;
