@@ -156,7 +156,7 @@
     "stylelint-prettier": "1.1.2",
     "ts-jest": "^26.4.2",
     "ts-loader": "9.4.2",
-    "typescript": "5.0.3"
+    "typescript": "5.1.6"
   },
   "resolutions": {
     "react-error-overlay": "6.0.9"
