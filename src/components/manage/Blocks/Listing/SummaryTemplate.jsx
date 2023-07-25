@@ -26,7 +26,9 @@ const SummaryTemplate = ({ items, linkTitle, linkHref, isEditMode }) => {
           {items.map((item) => (
             <List.Item key={item['@id']}>
               <div
-                className={`listing-item public-state-${item.review_state}`}
+                className={`listing-item ${
+                  item.review_state ? `state-${item.review_state}` : ''
+                }`}
                 role="listitem"
               >
                 <ConditionalLink item={item} condition={!isEditMode}>
