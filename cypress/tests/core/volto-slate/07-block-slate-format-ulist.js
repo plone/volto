@@ -1,4 +1,4 @@
-import { slateBeforeEach } from '../../../support/e2e';
+import { slateBeforeEach } from '../../../support/commands';
 
 describe('Block Tests: Bulleted lists', () => {
   beforeEach(slateBeforeEach);
@@ -47,7 +47,7 @@ describe('Block Tests: Bulleted lists', () => {
 
     cy.log('then the page view should contain a link');
     cy.get('#view #page-document p').its('length').should('eq', 1);
-    cy.get('#view #page-document p').should('have.text', "");
+    cy.get('#view #page-document p').should('have.text', '');
   });
 
   it('As editor I can remove bulleted lists', function () {

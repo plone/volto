@@ -239,7 +239,7 @@ class Login extends Component {
                         <Input
                           type="password"
                           id="password"
-                          autocomplete="current-password"
+                          autoComplete="current-password"
                           name="password"
                           placeholder={this.props.intl.formatMessage(
                             messages.password,
