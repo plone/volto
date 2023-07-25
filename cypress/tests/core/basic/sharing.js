@@ -1,13 +1,10 @@
 describe('Sharing Tests', () => {
   beforeEach(() => {
+    cy.intercept('GET', `/**/*?expand*`).as('content');
     // give a logged in editor and the site root
     cy.autologin();
     cy.visit('/');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('');
+    cy.wait('@content');
 
     // I add a page
     cy.get('#toolbar-add').click();
@@ -16,6 +13,8 @@ describe('Sharing Tests', () => {
 
     // then a new page has been created
     cy.get('#toolbar-save').click();
+    cy.wait('@content');
+
     cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
 
     cy.get('.navigation .item.active').should('have.text', 'My Page');
