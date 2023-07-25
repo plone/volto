@@ -12,7 +12,7 @@ import { useHistory } from 'react-router-dom';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import Slugger from 'github-slugger';
 
-const RenderListItems = ({ items, data, history }) => {
+const RenderListItems = ({ mode, items, data, history }) => {
   return map(items, (item) => {
     const { id, level, title, override_toc, plaintext } = item;
     const slug = override_toc
@@ -21,21 +21,25 @@ const RenderListItems = ({ items, data, history }) => {
     return (
       item && (
         <List.Item key={id} className={`item headline-${level}`} as="li">
-          <AnchorLink
-            href={`#${slug}`}
-            onClick={(e) => {
-              history.push({ hash: slug });
-            }}
-          >
-            {title}
-          </AnchorLink>
+          {mode === 'edit' ? (
+            <a href={`#${slug}`}>{title}</a>
+          ) : (
+            <AnchorLink
+              href={`#${slug}`}
+              onClick={(e) => {
+                if (mode !== 'edit') history.push({ hash: slug });
+              }}
+            >
+              {title}
+            </AnchorLink>
+          )}
           {item.items?.length > 0 && (
             <List
               ordered={data.ordered}
               bulleted={!data.ordered}
               as={data.ordered ? 'ol' : 'ul'}
             >
-              <RenderListItems items={item.items} data={data} />
+              <RenderListItems mode={mode} items={item.items} data={data} />
             </List>
           )}
         </List.Item>
@@ -49,7 +53,7 @@ const RenderListItems = ({ items, data, history }) => {
  * @class View
  * @extends Component
  */
-const View = ({ data, tocEntries }) => {
+const View = ({ mode, data, tocEntries }) => {
   const history = useHistory();
   return (
     <>
@@ -70,7 +74,12 @@ const View = ({ data, tocEntries }) => {
         bulleted={!data.ordered}
         as={data.ordered ? 'ol' : 'ul'}
       >
-        <RenderListItems items={tocEntries} data={data} history={history} />
+        <RenderListItems
+          mode={mode}
+          items={tocEntries}
+          data={data}
+          history={history}
+        />
       </List>
     </>
   );
