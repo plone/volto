@@ -1,5 +1,5 @@
 import React from 'react';
-import { ContactFormComponent } from './ContactForm';
+import ContactFormComponent from './ContactForm';
 import { injectIntl } from 'react-intl';
 import { RealStoreWrapper as Wrapper } from '@plone/volto/storybook';
 

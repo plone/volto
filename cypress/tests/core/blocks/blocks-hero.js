@@ -1,5 +1,7 @@
-describe('Blocks Tests', () => {
+describe('Hero Block Tests', () => {
   beforeEach(() => {
+    cy.intercept('GET', `/**/*?expand*`).as('content');
+    cy.intercept('GET', '/**/Document').as('schema');
     // given a logged in editor and a page in edit mode
     cy.autologin();
     cy.createContent({
@@ -8,16 +10,11 @@ describe('Blocks Tests', () => {
       contentTitle: 'My Page',
     });
     cy.visit('/my-page');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('my-page');
+    cy.wait('@content');
   });
 
   it('Add hero block', () => {
     cy.intercept('PATCH', '/**/my-page').as('save');
-    cy.intercept('GET', '/**/my-page').as('content');
     cy.intercept('GET', '/**/my-page/@types/*').as('schema');
 
     const block = 'hero';
