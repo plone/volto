@@ -46,7 +46,7 @@ const PersonalTools = (props) => {
   const dispatch = useDispatch();
   const intl = useIntl();
   const { pathname } = useLocation();
-  const [setPushed] = useState(false);
+  const [,setPushed] = useState(false);
   const token = useSelector((state) => state.userSession.token, shallowEqual);
   const user = useSelector((state) => state.users.user);
   const userId = token ? jwtDecode(token).sub : '';
