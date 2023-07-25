@@ -12,7 +12,7 @@ const Messages = () => {
     shallowEqual,
   );
 
-  const onDismiss = ({ value }) => {
+  const onDismiss = (event, { value }) => {
     dispatch(removeMessage(value));
   };
 
