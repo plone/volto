@@ -25,24 +25,14 @@ describe('createContent Tests', () => {
 
   it('As editor I can autosave when editing a content item', () => {
     cy.visit('/my-first-page');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
 
     cy.log('adding a text block on the first page');
 
-    cy.waitForResourceToLoad('my-first-page');
     cy.navigate('/my-first-page/edit');
     cy.getSlateEditorAndType('My first text').contains('My first text');
     cy.wait(1000);
 
     cy.visit('/my-second-page');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('my-second-page');
 
     cy.log('adding a text block on the second page');
     cy.navigate('/my-second-page/edit');
