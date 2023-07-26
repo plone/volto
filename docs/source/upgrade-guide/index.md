@@ -55,16 +55,17 @@ It is recommended that you update your project's dependency on Razzle to this ve
 ### TypeScript support in Volto
 
 ```{versionadded} 17.0.0-alpha.22
-We have now full support of TypeScript in Volto core.
+We added full support of TypeScript in Volto core.
 No existing code has been migrated.
-You still have the freedom to develop using JavaScript, it's your choice if you want to do it in TypeScript.
+You still have the freedom to develop using JavaScript.
+It's your choice whether you want to do it in TypeScript.
 In the past, you could add TypeScript support for Volto add-ons.
-It's also available for projects too now if you upgrade dependencies (see next section).
+It's also available for projects now, if you upgrade dependencies (see next section).
 ```
 
-You should update your projects if you want to support TypeScript in your projects as well.
+If you want to support TypeScript in your projects, you should update your projects.
 
-Changes in your `package.json`:
+Make the following changes in your {file}`package.json`:
 
 ```diff
 "devDependencies": {
@@ -83,7 +84,7 @@ Changes in your `package.json`:
 ESlint uses a library to parse the language under analysis.
 The one used was long deprecated and didn't supported both TypeScript and JavaScript.
 We upgraded the ESlint parser to use `@babel/eslint-parser`.
-This means that could be that when you upgrade your projects, some new violations appear in your project.
+This means when you upgrade your project, some new violations may appear.
 Once upgraded, run the linters again to make sure that your code is free of violations.
 
 ### `BlockChooser` component now uses `popperjs` internally
