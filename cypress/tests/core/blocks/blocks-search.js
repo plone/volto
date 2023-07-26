@@ -152,6 +152,7 @@ describe('Search Block Tests', () => {
       .click();
 
     //  Add data range facet
+    cy.get('.ui.accordion #blockform-fieldset-facets .title').click();
     cy.get('.add-item-button-wrapper > button').click();
     cy.get('#field-field-1-facets-0 .react-select__value-container').click();
     cy.get('.react-select__option').contains('Effective date').click();
@@ -317,6 +318,7 @@ describe('Search Block Tests', () => {
       .click();
 
     // uncheck showSearchButton
+    cy.get('.ui.accordion #blockform-fieldset-controls .title').click();
     cy.get('label[for=field-showSearchButton]').click();
     cy.get('.search-wrapper .ui.button').should('contain', 'Search');
 
