@@ -2235,7 +2235,6 @@ msgid "News item view"
 msgstr ""
 
 #: components/manage/Contents/ContentsItem
-#: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: No
 msgid "No"
@@ -3327,7 +3326,6 @@ msgid "Sorted"
 msgstr ""
 
 #: components/manage/Blocks/HTML/Edit
-#: components/manage/Blocks/Image/schema
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: Source
 msgid "Source"
@@ -4193,7 +4191,6 @@ msgid "Yearly"
 msgstr "Annuale"
 
 #: components/manage/Contents/ContentsItem
-#: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Yes
 msgid "Yes"
@@ -4440,6 +4437,16 @@ msgstr "HTML"
 msgid "image"
 msgstr "Immagine"
 
+#: components/manage/Blocks/Image/ImageSidebar
+# defaultMessage: Clear image
+msgid "image_block_clear"
+msgstr "Deseleziona l'immagine"
+
+#: components/manage/Blocks/Image/ImageSidebar
+# defaultMessage: Image preview
+msgid "image_block_preview"
+msgstr "Anteprima dell'immagine"
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Input must be integer
 msgid "integer"
@@ -4448,7 +4455,7 @@ msgstr "intero"
 #: components/manage/Contents/ContentsItem
 # defaultMessage: Intranet
 msgid "intranet"
-msgstr "Pubbliato internamente"
+msgstr "Pubblicato internamente"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: My email is

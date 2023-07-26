@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2023-06-29T07:51:49.066Z\n"
+"POT-Creation-Date: 2023-07-24T12:48:39.546Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -2237,7 +2237,6 @@ msgid "News item view"
 msgstr ""
 
 #: components/manage/Contents/ContentsItem
-#: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: No
 msgid "No"
@@ -3329,7 +3328,6 @@ msgid "Sorted"
 msgstr ""
 
 #: components/manage/Blocks/HTML/Edit
-#: components/manage/Blocks/Image/schema
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: Source
 msgid "Source"
@@ -4195,7 +4193,6 @@ msgid "Yearly"
 msgstr ""
 
 #: components/manage/Contents/ContentsItem
-#: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Yes
 msgid "Yes"
@@ -4440,6 +4437,16 @@ msgstr ""
 #: config/Blocks
 # defaultMessage: Image
 msgid "image"
+msgstr ""
+
+#: components/manage/Blocks/Image/ImageSidebar
+# defaultMessage: Clear image
+msgid "image_block_clear"
+msgstr ""
+
+#: components/manage/Blocks/Image/ImageSidebar
+# defaultMessage: Image preview
+msgid "image_block_preview"
 msgstr ""
 
 #: helpers/MessageLabels/MessageLabels

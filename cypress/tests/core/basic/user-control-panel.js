@@ -12,18 +12,17 @@
 
 describe('User Control Panel Test', () => {
   beforeEach(() => {
+    cy.intercept('GET', `/**/*?expand*`).as('content');
     // given a logged in editor
     // and a folder that contains a document
     // and the folder contents view
-    cy.visit('/');
     cy.autologin();
+    cy.visit('/');
+    cy.wait('@content');
   });
   it('Should add User to controlPanel', () => {
     cy.visit('/controlpanel/users');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
+
     // when I added a user from controlPanel
     cy.get('Button[id="toolbar-add"]').click();
     cy.get('input[id="field-username"]').clear().type('iFlameing');
@@ -63,11 +62,6 @@ describe('User Control Panel Test', () => {
 
   it('Should edit and delete User from controlPanel', () => {
     cy.visit('/controlpanel/users');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('@users');
 
     //add a user first
     cy.get('Button[id="toolbar-add"]').click();
@@ -112,10 +106,6 @@ describe('User Control Panel Test', () => {
 
   it('Should update user roles', () => {
     cy.visit('/controlpanel/users');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
 
     cy.get('[data-user="users"] input[type="checkbox"')
       .first()
@@ -132,15 +122,18 @@ describe('User Control Panel Test', () => {
 });
 describe('User Control Panel test for many users', () => {
   beforeEach(() => {
-    cy.visit('/');
+    cy.intercept('GET', `/**/*?expand*`).as('content');
+
     cy.autologin();
     cy.createUser({
       username: 'editor',
       fullname: 'Peet Editor',
     });
+
+    cy.visit('/');
+    cy.wait('@content');
+
     cy.visit('/controlpanel/usergroup');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
 
     cy.get('.content-area').then(($content_area) => {
       if ($content_area.text().indexOf('Settings') > -1) {
@@ -157,8 +150,6 @@ describe('User Control Panel test for many users', () => {
   afterEach(() => {
     // not many users, not many groups
     cy.visit('/controlpanel/usergroup');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
 
     cy.get('.content-area').then(($content_area) => {
       if ($content_area.text().indexOf('Settings') > -1) {

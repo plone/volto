@@ -2252,7 +2252,6 @@ msgid "News item view"
 msgstr "Affichage des actualités"
 
 #: components/manage/Contents/ContentsItem
-#: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: No
 msgid "No"
@@ -3344,7 +3343,6 @@ msgid "Sorted"
 msgstr "Trié"
 
 #: components/manage/Blocks/HTML/Edit
-#: components/manage/Blocks/Image/schema
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: Source
 msgid "Source"
@@ -4210,7 +4208,6 @@ msgid "Yearly"
 msgstr "Annuel"
 
 #: components/manage/Contents/ContentsItem
-#: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Yes
 msgid "Yes"
@@ -4456,6 +4453,16 @@ msgstr "html"
 # defaultMessage: Image
 msgid "image"
 msgstr "image"
+
+#: components/manage/Blocks/Image/ImageSidebar
+# defaultMessage: Clear image
+msgid "image_block_clear"
+msgstr ""
+
+#: components/manage/Blocks/Image/ImageSidebar
+# defaultMessage: Image preview
+msgid "image_block_preview"
+msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Input must be integer
