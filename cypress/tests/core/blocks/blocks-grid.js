@@ -46,9 +46,8 @@ context('Blocks Acceptance Tests', () => {
 
       cy.get('button[aria-label="Add block in position 1"]').click();
       cy.get('.blocks-chooser [aria-label="Unfold Text blocks"]').click();
-      cy.get('.blocks-chooser .text .button.slate').click({ force: true });
       cy.wait(200);
-      cy.get('.blocks-chooser .text .button.slate').click();
+      cy.get('.blocks-chooser .text .button.slate').click({ force: true });
       cy.getSlateEditorSelectorAndType(
         '.block.gridBlock.selected .slate-editor [contenteditable=true]',
         'Colorless green ideas sleep furiously.',
@@ -90,9 +89,8 @@ context('Blocks Acceptance Tests', () => {
 
       cy.get('button[aria-label="Add block in position 1"]').click();
       cy.get('.blocks-chooser [aria-label="Unfold Text blocks"]').click();
-      cy.get('.blocks-chooser .text .button.slate').click({ force: true });
       cy.wait(200);
-      cy.get('.blocks-chooser .text .button.slate').click();
+      cy.get('.blocks-chooser .text .button.slate').click({ force: true });
       cy.scrollTo('top');
 
       cy.getSlateEditorSelectorAndType(

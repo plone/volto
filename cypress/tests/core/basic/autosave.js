@@ -15,7 +15,6 @@ describe('createContent Tests', () => {
       contentType: 'Document',
       contentId: 'my-first-page',
       contentTitle: 'My First Page',
-      allow_discussion: true,
     });
     cy.createContent({
       contentType: 'Document',
@@ -170,7 +169,7 @@ describe('createContent Tests', () => {
   });
 
   it('As editor I can autosave comments', function () {
-    cy.log('adding a coment and refresh,');
+    cy.log('adding a comment and refresh,');
     cy.visit('/comments-page');
     cy.get('textarea[id="field-comment"]').clear().type('This is a comment');
     cy.wait(1000);
