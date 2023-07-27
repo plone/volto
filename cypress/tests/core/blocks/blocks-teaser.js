@@ -1,6 +1,7 @@
 context('Blocks Acceptance Tests', () => {
   beforeEach(() => {
-    cy.visit('/');
+    cy.intercept('GET', `/**/*?expand*`).as('content');
+    cy.intercept('GET', '/**/Document').as('schema');
     cy.viewport('macbook-16');
     cy.createContent({
       contentType: 'Document',
@@ -8,6 +9,8 @@ context('Blocks Acceptance Tests', () => {
       contentTitle: 'Document',
     });
     cy.autologin();
+    cy.visit('/');
+    cy.wait('@content');
   });
 
   it('As editor I can add a (standalone) Teaser block', () => {
@@ -21,6 +24,8 @@ context('Blocks Acceptance Tests', () => {
       path: '/document',
     });
     cy.visit('/document/edit');
+    cy.wait('@schema');
+
     // WHEN I create a Teaser block
     cy.get('.block .slate-editor [contenteditable=true]').click();
     cy.get('.button .block-add-button').click({ force: true });

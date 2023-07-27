@@ -1,4 +1,5 @@
 export const slateBeforeEach = (contentType = 'Document') => {
+  cy.intercept('GET', `/**/*?expand*`).as('content');
   cy.autologin();
   cy.createContent({
     contentType: contentType,
@@ -6,12 +7,10 @@ export const slateBeforeEach = (contentType = 'Document') => {
     contentTitle: 'My Page',
   });
   cy.visit('/my-page');
-  cy.waitForResourceToLoad('@navigation');
-  cy.waitForResourceToLoad('@breadcrumbs');
-  cy.waitForResourceToLoad('@actions');
-  cy.waitForResourceToLoad('@types');
-  cy.waitForResourceToLoad('my-page');
+  cy.wait('@content');
+
   cy.navigate('/my-page/edit');
+  cy.wait('@content');
 };
 
 export const getSelectedSlateEditor = () => {
