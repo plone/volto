@@ -287,12 +287,12 @@ msgstr "Erweiterung erfolgreich aktualisiert"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Advanced facet?
 msgid "Advanced facet?"
-msgstr ""
+msgstr "Erweiterte Facette?"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Advanced facets are initially hidden and displayed on demand
 msgid "Advanced facets are initially hidden and displayed on demand"
-msgstr ""
+msgstr "Erweiterte Facetten sind zunächst verborgen und werden auf Anforderung angezeigt."
 
 #: config/Views
 # defaultMessage: Album view
@@ -1604,7 +1604,7 @@ msgstr "Überschrift"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Hidden facets will still filter the results if proper parameters are passed in URLs
 msgid "Hidden facets will still filter the results if proper parameters are passed in URLs"
-msgstr "Verteckte Facetten können die Ergebnisse weiterhin filtern, wenn die entsprechenden Parameter in der URL angehängt werden"
+msgstr "Versteckte Facetten können die Ergebnisse weiterhin filtern, wenn die entsprechenden Parameter in der URL angehängt werden"
 
 #: components/theme/Comments/Comments
 # defaultMessage: Hide Replies
@@ -1920,7 +1920,7 @@ msgstr "Links"
 #: components/manage/Blocks/Search/components/Facets
 # defaultMessage: Less filters
 msgid "Less filters"
-msgstr ""
+msgstr "Weniger Filter"
 
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Link
@@ -2150,7 +2150,7 @@ msgstr "Mehr"
 #: components/manage/Blocks/Search/components/Facets
 # defaultMessage: More filters
 msgid "More filters"
-msgstr ""
+msgstr "Mehr Filter"
 
 #: components/manage/Controlpanels/UpgradeControlPanel
 # defaultMessage: More information about the upgrade procedure can be found in the documentation section of plone.org in the Upgrade Guide.
