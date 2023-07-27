@@ -292,7 +292,7 @@ msgstr "Erweiterte Facette?"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Advanced facets are initially hidden and displayed on demand
 msgid "Advanced facets are initially hidden and displayed on demand"
-msgstr "Erweiterte Facetten sind zunächst verborgen und werden auf Anforderung angezeigt"
+msgstr "Erweiterte Facetten sind zunächst verborgen und werden auf Anforderung angezeigt."
 
 #: config/Views
 # defaultMessage: Album view
