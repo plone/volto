@@ -7,8 +7,7 @@
 
 @import (multiple) '../../theme.config';
 @import (reference) 'main.variables';
-@import (reference)
-  '../../../../node_modules/semantic-ui-less/definitions/globals/site.less';
+@import (reference) '../../pastanaga-cms-ui/extras/cms-ui.site.less';
 
 // Extras (third party libs)
 @import (less) '~react-toastify/dist/ReactToastify.css';
@@ -655,7 +654,7 @@ img.responsive {
 
 #main {
   .summary-listing-item-header {
-    &:extend(h3 all);
+    &:extend(#toolbar h3 all);
     color: @summaryItemTitle;
   }
 }
