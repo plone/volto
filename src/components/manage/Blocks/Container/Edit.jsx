@@ -43,9 +43,12 @@ const ContainerBlockEdit = (props) => {
   const EditBlockWrapper =
     blockConfig.editBlockWrapper || DefaultEditBlockWrapper;
 
-  const [selectedBlock, setSelectedBlock] = useState(
+  let [selectedBlock, setSelectedBlock] = useState(
     properties.blocks_layout.items[0],
   );
+  if (props.setSelectedBlock) {
+    ({ selectedBlock, setSelectedBlock } = props);
+  }
 
   const blockState = {};
 

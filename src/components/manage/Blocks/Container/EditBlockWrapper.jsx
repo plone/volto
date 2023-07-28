@@ -49,6 +49,7 @@ const EditBlockWrapper = (props) => {
         role="presentation"
         className="cell-wrapper"
         onClick={(e) => {
+          e.stopPropagation();
           onSelectBlock(block);
         }}
       >
