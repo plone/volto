@@ -6,6 +6,9 @@
 @element: 'main';
 
 @import (multiple) '../../theme.config';
+@import (reference) 'main.variables';
+@import (reference)
+  '../../../../node_modules/semantic-ui-less/definitions/globals/site.less';
 
 // Extras (third party libs)
 @import (less) '~react-toastify/dist/ReactToastify.css';
@@ -650,10 +653,11 @@ img.responsive {
   height: auto;
 }
 
-#main .summary-listing-item-header {
-  color: @summaryItemTitle;
-  font-size: 1.25em;
-  font-weight: 500;
+#main {
+  .summary-listing-item-header {
+    &:extend(h3 all);
+    color: @summaryItemTitle;
+  }
 }
 
 // Deprecated as per https://github.com/plone/volto/issues/1265
