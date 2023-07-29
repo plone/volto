@@ -1,5 +1,0 @@
-Fix regression from v17a22: It was not possible to select a block in a grid
-column unless the grid was already selected. @davisagli
-
-Fix regression from v17a22: Block outline was blocking clicks in some cases.
-@davisagli

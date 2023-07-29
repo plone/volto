@@ -8,6 +8,17 @@
 
 <!-- towncrier release notes start -->
 
+## 17.0.0-alpha.23 (2023-07-28)
+
+### Bugfix
+
+- Fix regression from v17a22: It was not possible to select a block in a grid
+  column unless the grid was already selected. @davisagli
+
+  Fix regression from v17a22: Block outline was blocking clicks in some cases.
+  @davisagli [#5039](https://github.com/plone/volto/issues/5039)
+
+
 ## 17.0.0-alpha.22 (2023-07-28)
 
 ### Feature
