@@ -11,6 +11,7 @@ import {
   createRelations,
   deleteRelations,
   queryRelations,
+  resetSearchContent,
   searchContent,
 } from '@plone/volto/actions';
 
@@ -194,8 +195,7 @@ const ListingTemplate = ({
         ),
       );
     } else {
-      // TODO Better just reset redux store
-      dispatch(searchContent('/findstenichätsch', null, 'potential_targets'));
+      dispatch(resetSearchContent('potential_targets'));
     }
 
     // Fetch fresh potential sources
@@ -213,8 +213,7 @@ const ListingTemplate = ({
         ),
       );
     } else {
-      // TODO Better just reset redux store
-      dispatch(searchContent('/findstenichätsch', null, 'potential_sources'));
+      dispatch(resetSearchContent('potential_sources'));
     }
   }, [
     dispatch,
