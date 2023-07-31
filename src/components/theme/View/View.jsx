@@ -129,6 +129,11 @@ class View extends Component {
     );
     this.setState({ isClient: true });
   }
+  /**
+   * Component did mount
+   * @method componentDidUpdate
+   * @returns {undefined}
+   */
   componentDidUpdate() {
     if (__CLIENT__ && window) {
       if (window?.location?.hash) {
@@ -139,6 +144,7 @@ class View extends Component {
       }
     }
   }
+
   /**
    * Component will receive props
    * @method componentWillReceiveProps
@@ -212,7 +218,6 @@ class View extends Component {
    */
   render() {
     const { views } = config;
-
     if (this.props.error && this.props.error.code === 301) {
       const redirect = flattenToAppURL(this.props.error.url).split('?')[0];
       return <Redirect to={`${redirect}${this.props.location.search}`} />;
