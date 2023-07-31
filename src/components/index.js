@@ -37,6 +37,7 @@ export Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorize
 
 export Avatar from '@plone/volto/components/theme/Avatar/Avatar';
 export Icon from '@plone/volto/components/theme/Icon/Icon';
+export Image from '@plone/volto/components/theme/Image/Image';
 export ConditionalLink from '@plone/volto/components/manage/ConditionalLink/ConditionalLink';
 export UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
 export LinkMore from '@plone/volto/components/manage/LinkMore/LinkMore';
@@ -108,6 +109,7 @@ export History from '@plone/volto/components/manage/History/History';
 export Sharing from '@plone/volto/components/manage/Sharing/Sharing';
 export Rules from '@plone/volto/components/manage/Rules/Rules';
 export Aliases from '@plone/volto/components/manage/Aliases/Aliases';
+export LinksToItem from '@plone/volto/components/manage/LinksToItem/LinksToItem';
 export Workflow from '@plone/volto/components/manage/Workflow/Workflow';
 export Messages from '@plone/volto/components/manage/Messages/Messages';
 export BlockChooser from '@plone/volto/components/manage/BlockChooser/BlockChooser';
