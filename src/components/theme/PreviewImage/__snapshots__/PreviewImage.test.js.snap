@@ -3,7 +3,9 @@
 exports[`PreviewImage renders a fallback image 1`] = `
 <img
   alt="Item title"
+  height="300"
   src="default-image.svg"
+  width="400"
 />
 `;
 
@@ -11,7 +13,9 @@ exports[`PreviewImage renders a fallback image with alt prop 1`] = `
 <img
   alt="Alt prop"
   className="extra"
+  height="300"
   src="default-image.svg"
+  width="400"
 />
 `;
 
@@ -19,7 +23,9 @@ exports[`PreviewImage renders a fallback image with alt prop empty 1`] = `
 <img
   alt=""
   className="extra"
+  height="300"
   src="default-image.svg"
+  width="400"
 />
 `;
 
@@ -27,21 +33,39 @@ exports[`PreviewImage renders a fallback image with extra props 1`] = `
 <img
   alt="Item title"
   className="extra"
+  height="300"
   src="default-image.svg"
+  width="400"
 />
 `;
 
 exports[`PreviewImage renders a preview image 1`] = `
 <img
   alt="Item title"
-  src="http://localhost:3000/something/@@images/image/preview"
-/>
-`;
-
-exports[`PreviewImage renders a preview image with custom size 1`] = `
-<img
-  alt="Item title"
-  src="http://localhost:3000/something/@@images/image/large"
+  imageField="image"
+  item={
+    Object {
+      "@id": "http://localhost:3000/something",
+      "image_field": "image",
+      "image_scales": Object {
+        "image": Array [
+          Object {
+            "download": "@@images/image",
+            "height": 400,
+            "scales": Object {
+              "preview": Object {
+                "download": "@@images/image-400.png",
+                "height": 400,
+                "width": 400,
+              },
+            },
+            "width": 400,
+          },
+        ],
+      },
+      "title": "Item title",
+    }
+  }
 />
 `;
 
@@ -49,6 +73,29 @@ exports[`PreviewImage renders a preview image with extra props 1`] = `
 <img
   alt="Item title"
   className="extra"
-  src="http://localhost:3000/something/@@images/image/preview"
+  imageField="image"
+  item={
+    Object {
+      "@id": "http://localhost:3000/something",
+      "image_field": "image",
+      "image_scales": Object {
+        "image": Array [
+          Object {
+            "download": "@@images/image",
+            "height": 400,
+            "scales": Object {
+              "preview": Object {
+                "download": "@@images/image-400.png",
+                "height": 400,
+                "width": 400,
+              },
+            },
+            "width": 400,
+          },
+        ],
+      },
+      "title": "Item title",
+    }
+  }
 />
 `;

@@ -143,6 +143,11 @@ msgstr "Adicionar ação"
 msgid "Add block"
 msgstr "Adicionar bloco"
 
+#: components/manage/Blocks/Container/NewBlockAddButton
+# defaultMessage: Add block in position {index}
+msgid "Add block in position {index}"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add block…
 msgid "Add block…"
@@ -167,6 +172,11 @@ msgstr "Adicionar critério"
 # defaultMessage: Add date
 msgid "Add date"
 msgstr "Adicionar data"
+
+#: components/manage/Blocks/Container/SimpleContainerToolbar
+# defaultMessage: Add element to container
+msgid "Add element to container"
+msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Add field
@@ -436,6 +446,7 @@ msgstr "Regras de conteúdo disponíveis:"
 #: components/manage/Controlpanels/UpgradeControlPanel
 #: components/manage/Diff/Diff
 #: components/manage/History/History
+#: components/manage/LinksToItem/LinksToItem
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalPreferences
@@ -729,6 +740,11 @@ msgstr "Formulário de contato"
 msgid "Contained items"
 msgstr "Itens contidos"
 
+#: components/manage/Blocks/Container/SimpleContainerToolbar
+# defaultMessage: Container settings
+msgid "Container settings"
+msgstr ""
+
 #: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Content
 msgid "Content"
@@ -754,6 +770,11 @@ msgstr "Regras de conteúdo para {title}"
 # defaultMessage: Content rules from parent folders
 msgid "Content rules from parent folders"
 msgstr "Regras de conteúdo de pastas pai"
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Content that links to or references {title}
+msgid "Content that links to or references {title}"
+msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Content type created
@@ -1529,6 +1550,11 @@ msgstr "Papel global"
 msgid "Google Maps Embedded Block"
 msgstr "Bloco Google Maps"
 
+#: components/manage/Blocks/Grid/schema
+# defaultMessage: Grid
+msgid "Grid"
+msgstr ""
+
 #: components/manage/Sharing/Sharing
 # defaultMessage: Group
 msgid "Group"
@@ -1567,6 +1593,7 @@ msgstr "Grupos são coleções lógicas de usuários, como departamentos e unida
 msgid "Header cell"
 msgstr "Célula de cabeçalho"
 
+#: components/manage/Blocks/Grid/schema
 #: components/manage/Blocks/Listing/schema
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Headline
@@ -1904,6 +1931,11 @@ msgstr "Menos filtros"
 msgid "Link"
 msgstr "Link"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Link copied to clipboard
+msgid "Link copied to clipboard"
+msgstr ""
+
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Link more
@@ -1933,6 +1965,17 @@ msgstr "Link para"
 # defaultMessage: Link translation for
 msgid "Link translation for"
 msgstr "Linkar tradução para"
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Linking this item with hyperlink in text
+msgid "Linking this item with hyperlink in text"
+msgstr ""
+
+#: components/manage/LinksToItem/LinksToItem
+#: components/manage/Toolbar/More
+# defaultMessage: Links and references
+msgid "Links and references"
+msgstr ""
 
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Listing
@@ -2196,7 +2239,6 @@ msgid "News item view"
 msgstr "Visão de Notícia"
 
 #: components/manage/Contents/ContentsItem
-#: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: No
 msgid "No"
@@ -2266,6 +2308,11 @@ msgstr "Não foram encontrados itens nesta pasta."
 # defaultMessage: No items selected
 msgid "No items selected"
 msgstr "Nenhum item selecionado"
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: No links to this item found.
+msgid "No links to this item found."
+msgstr ""
 
 #: components/manage/Blocks/Maps/MapsSidebar
 # defaultMessage: No map selected
@@ -2395,6 +2442,11 @@ msgstr "Abrir navegador de objetos"
 msgid "Origin"
 msgstr "Origem"
 
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Overview of relations of all content items
+msgid "Overview of relations of all content items"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Page
 msgid "Page"
@@ -2511,9 +2563,9 @@ msgid "Please upgrade to plone.restapi >= 8.24.0."
 msgstr "Por favor, atualize para plone.restapi >= 8.24.0."
 
 #: components/manage/Controlpanels/Relations/Relations
-# defaultMessage: Please upgrade to plone.restapi >= 8.35.3.
-msgid "Please upgrade to plone.restapi >= 8.35.3."
-msgstr "Por favor atualize a plone.restapi para versão 8.35.3 ou superior."
+# defaultMessage: Please upgrade to plone.restapi >= 8.39.0.
+msgid "Please upgrade to plone.restapi >= 8.39.0."
+msgstr "Por favor atualize a plone.restapi para versão 8.39.0 ou superior."
 
 #: components/theme/Footer/Footer
 # defaultMessage: Plone Foundation
@@ -2644,6 +2696,16 @@ msgstr "Refazer"
 msgid "Reduce complexity"
 msgstr "Reduzir complexidade"
 
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Referencing this item as related item
+msgid "Referencing this item as related item"
+msgstr ""
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Referencing this item with {relationship}
+msgid "Referencing this item with {relationship}"
+msgstr ""
+
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
 #: components/theme/Register/Register
@@ -2688,6 +2750,11 @@ msgstr "Relevância"
 # defaultMessage: Remove
 msgid "Remove"
 msgstr "Remover"
+
+#: components/manage/Blocks/Container/EditBlockWrapper
+# defaultMessage: Remove element {index}
+msgid "Remove element {index}"
+msgstr ""
 
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Remove item
@@ -2773,6 +2840,11 @@ msgstr "Obrigatório"
 msgid "Required input is missing."
 msgstr "Falta informação obrigatória."
 
+#: components/manage/Blocks/Container/EditBlockWrapper
+# defaultMessage: Reset element {index}
+msgid "Reset element {index}"
+msgstr ""
+
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Reset title
 msgid "Reset term title"
@@ -2809,6 +2881,7 @@ msgid "Revert to this revision"
 msgstr "Reverter para esta revisão"
 
 #: components/manage/Contents/Contents
+#: components/manage/LinksToItem/LinksToItem
 # defaultMessage: Review state
 msgid "Review state"
 msgstr "Estado"
@@ -3257,7 +3330,7 @@ msgid "Sorted"
 msgstr "Ordenado"
 
 #: components/manage/Blocks/HTML/Edit
-#: components/manage/Blocks/Image/schema
+#: components/manage/Controlpanels/Relations/BrokenRelations
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: Source
 msgid "Source"
@@ -3402,6 +3475,7 @@ msgstr "Tags a serem removidas"
 
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/Relations/BrokenRelations
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: Target
 msgid "Target"
@@ -3686,6 +3760,7 @@ msgid "Triggering event field error. Please select a value"
 msgstr "Erro no campo de gatilho. Selecione um valor"
 
 #: components/manage/Controlpanels/ContentTypes
+#: components/manage/LinksToItem/LinksToItem
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
 # defaultMessage: Type
@@ -4102,7 +4177,6 @@ msgid "Yearly"
 msgstr "Anualmente"
 
 #: components/manage/Contents/ContentsItem
-#: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Yes
 msgid "Yes"
@@ -4214,6 +4288,16 @@ msgstr "Esqueceu sua senha?"
 msgid "checkboxFacet"
 msgstr "Caixa de seleção"
 
+#: components/manage/Blocks/Grid/templates
+# defaultMessage: column
+msgid "column"
+msgstr ""
+
+#: components/manage/Blocks/Grid/templates
+# defaultMessage: columns
+msgid "columns"
+msgstr ""
+
 #: config/Blocks
 # defaultMessage: Common
 msgid "common"
@@ -4223,6 +4307,11 @@ msgstr "Padrão"
 # defaultMessage: Compare to language
 msgid "compare_to"
 msgstr "Comparar com"
+
+#: components/manage/Controlpanels/Relations/BrokenRelations
+# defaultMessage: {countofrelation} broken {countofrelation, plural, one {relation} other {relations}} of type {typeofrelation}
+msgid "countBrokenRelations"
+msgstr ""
 
 #: config/Blocks
 # defaultMessage: Date Range
@@ -4314,6 +4403,11 @@ msgstr ""
 msgid "flush intIds and rebuild relations"
 msgstr "descarrega os intIds e recontrua os relacionamentos"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: <ul><li>Regenerate intIds (tokens of relations in relation catalog)</li><li>Rebuild relations</li></ul><p>Check the log for details!</p><p><b>Warning</b>: If you have add-ons relying on intIds, you should not flush them.</p>
+msgid "flushAndRebuildRelationsHints"
+msgstr ""
+
 #: components/manage/Blocks/Teaser/schema
 # defaultMessage: Head title
 msgid "head_title"
@@ -4338,6 +4432,16 @@ msgstr "HTML"
 # defaultMessage: Image
 msgid "image"
 msgstr "Imagem"
+
+#: components/manage/Blocks/Image/ImageSidebar
+# defaultMessage: Clear image
+msgid "image_block_clear"
+msgstr ""
+
+#: components/manage/Blocks/Image/ImageSidebar
+# defaultMessage: Image preview
+msgid "image_block_preview"
+msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Input must be integer

@@ -477,7 +477,9 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
 
   &.new-add-block {
     bottom: -26px;
-    left: 50%;
+    left: calc(
+      50% - 12px
+    ); // This is to compensate the width of the icon and center it correctly
     padding: 0 !important;
     border: none !important;
     background: white !important;
@@ -809,6 +811,7 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
 .listing-item a {
   display: flex;
   width: 100%;
+  align-items: flex-start;
 
   @media only screen and (max-width: (@largestMobileScreen)) {
     flex-direction: column;
@@ -820,6 +823,7 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
 
   img {
     width: 15%;
+    height: auto;
     margin-right: 20px;
 
     @media only screen and (max-width: (@largestMobileScreen)) {

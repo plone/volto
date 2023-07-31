@@ -144,6 +144,11 @@ msgstr "Lisää toiminto"
 msgid "Add block"
 msgstr "Lisää palikka"
 
+#: components/manage/Blocks/Container/NewBlockAddButton
+# defaultMessage: Add block in position {index}
+msgid "Add block in position {index}"
+msgstr ""
+
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add block…
 msgid "Add block…"
@@ -168,6 +173,11 @@ msgstr "Lisää ehto"
 # defaultMessage: Add date
 msgid "Add date"
 msgstr "Lisää päivä"
+
+#: components/manage/Blocks/Container/SimpleContainerToolbar
+# defaultMessage: Add element to container
+msgid "Add element to container"
+msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Add field
@@ -437,6 +447,7 @@ msgstr "Saatavilla olevat sisältösäännöt:"
 #: components/manage/Controlpanels/UpgradeControlPanel
 #: components/manage/Diff/Diff
 #: components/manage/History/History
+#: components/manage/LinksToItem/LinksToItem
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalPreferences
@@ -730,6 +741,11 @@ msgstr "Yhteydenottolomake"
 msgid "Contained items"
 msgstr "Sisältö"
 
+#: components/manage/Blocks/Container/SimpleContainerToolbar
+# defaultMessage: Container settings
+msgid "Container settings"
+msgstr ""
+
 #: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Content
 msgid "Content"
@@ -755,6 +771,11 @@ msgstr "Sisältösäännöt kohteelle {title} "
 # defaultMessage: Content rules from parent folders
 msgid "Content rules from parent folders"
 msgstr "Sisältösäännöt ylemmistä kansioista"
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Content that links to or references {title}
+msgid "Content that links to or references {title}"
+msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Content type created
@@ -1530,6 +1551,11 @@ msgstr "Sivustonlaajuinen rooli"
 msgid "Google Maps Embedded Block"
 msgstr "Google Maps -upotuspalikka"
 
+#: components/manage/Blocks/Grid/schema
+# defaultMessage: Grid
+msgid "Grid"
+msgstr ""
+
 #: components/manage/Sharing/Sharing
 # defaultMessage: Group
 msgid "Group"
@@ -1568,6 +1594,7 @@ msgstr ""
 msgid "Header cell"
 msgstr "Otsikkosolu"
 
+#: components/manage/Blocks/Grid/schema
 #: components/manage/Blocks/Listing/schema
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Headline
@@ -1905,6 +1932,11 @@ msgstr ""
 msgid "Link"
 msgstr "Linkki"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Link copied to clipboard
+msgid "Link copied to clipboard"
+msgstr ""
+
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Link more
@@ -1934,6 +1966,17 @@ msgstr "Linkin kohde"
 # defaultMessage: Link translation for
 msgid "Link translation for"
 msgstr "Linkin käännös kohteelle"
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Linking this item with hyperlink in text
+msgid "Linking this item with hyperlink in text"
+msgstr ""
+
+#: components/manage/LinksToItem/LinksToItem
+#: components/manage/Toolbar/More
+# defaultMessage: Links and references
+msgid "Links and references"
+msgstr ""
 
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Listing
@@ -2197,7 +2240,6 @@ msgid "News item view"
 msgstr "Uutisnäkymä"
 
 #: components/manage/Contents/ContentsItem
-#: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: No
 msgid "No"
@@ -2267,6 +2309,11 @@ msgstr "Ei sisältöä"
 # defaultMessage: No items selected
 msgid "No items selected"
 msgstr "Sisältöä ei ole valittu"
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: No links to this item found.
+msgid "No links to this item found."
+msgstr ""
 
 #: components/manage/Blocks/Maps/MapsSidebar
 # defaultMessage: No map selected
@@ -2396,6 +2443,11 @@ msgstr ""
 msgid "Origin"
 msgstr "Kuva"
 
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Overview of relations of all content items
+msgid "Overview of relations of all content items"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Page
 msgid "Page"
@@ -2512,8 +2564,8 @@ msgid "Please upgrade to plone.restapi >= 8.24.0."
 msgstr "Päivitä plone.restapi"
 
 #: components/manage/Controlpanels/Relations/Relations
-# defaultMessage: Please upgrade to plone.restapi >= 8.35.3.
-msgid "Please upgrade to plone.restapi >= 8.35.3."
+# defaultMessage: Please upgrade to plone.restapi >= 8.39.0.
+msgid "Please upgrade to plone.restapi >= 8.39.0."
 msgstr ""
 
 #: components/theme/Footer/Footer
@@ -2645,6 +2697,16 @@ msgstr "Toista"
 msgid "Reduce complexity"
 msgstr "Yksinkertainen taulukko"
 
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Referencing this item as related item
+msgid "Referencing this item as related item"
+msgstr ""
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Referencing this item with {relationship}
+msgid "Referencing this item with {relationship}"
+msgstr ""
+
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
 #: components/theme/Register/Register
@@ -2689,6 +2751,11 @@ msgstr "Osuvuus"
 # defaultMessage: Remove
 msgid "Remove"
 msgstr "Poista"
+
+#: components/manage/Blocks/Container/EditBlockWrapper
+# defaultMessage: Remove element {index}
+msgid "Remove element {index}"
+msgstr ""
 
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Remove item
@@ -2774,6 +2841,11 @@ msgstr "Pakollinen"
 msgid "Required input is missing."
 msgstr "Pakollista tietoa puuttuu."
 
+#: components/manage/Blocks/Container/EditBlockWrapper
+# defaultMessage: Reset element {index}
+msgid "Reset element {index}"
+msgstr ""
+
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Reset title
 msgid "Reset term title"
@@ -2810,6 +2882,7 @@ msgid "Revert to this revision"
 msgstr "Palauta tämä versio"
 
 #: components/manage/Contents/Contents
+#: components/manage/LinksToItem/LinksToItem
 # defaultMessage: Review state
 msgid "Review state"
 msgstr "Julkaisutila"
@@ -3258,7 +3331,7 @@ msgid "Sorted"
 msgstr "Lajiteltu"
 
 #: components/manage/Blocks/HTML/Edit
-#: components/manage/Blocks/Image/schema
+#: components/manage/Controlpanels/Relations/BrokenRelations
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: Source
 msgid "Source"
@@ -3403,6 +3476,7 @@ msgstr "Poistettavat tagit"
 
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/Relations/BrokenRelations
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: Target
 msgid "Target"
@@ -3687,6 +3761,7 @@ msgid "Triggering event field error. Please select a value"
 msgstr "Käynnistä tapahtumakentän virhe. Valtse arvo"
 
 #: components/manage/Controlpanels/ContentTypes
+#: components/manage/LinksToItem/LinksToItem
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
 # defaultMessage: Type
@@ -4103,7 +4178,6 @@ msgid "Yearly"
 msgstr "Vuosittain"
 
 #: components/manage/Contents/ContentsItem
-#: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Yes
 msgid "Yes"
@@ -4215,6 +4289,16 @@ msgstr "Unohditko salasanasi?"
 msgid "checkboxFacet"
 msgstr "Valintaruutu"
 
+#: components/manage/Blocks/Grid/templates
+# defaultMessage: column
+msgid "column"
+msgstr ""
+
+#: components/manage/Blocks/Grid/templates
+# defaultMessage: columns
+msgid "columns"
+msgstr ""
+
 #: config/Blocks
 # defaultMessage: Common
 msgid "common"
@@ -4224,6 +4308,11 @@ msgstr "yleiset"
 # defaultMessage: Compare to language
 msgid "compare_to"
 msgstr "Vertaa"
+
+#: components/manage/Controlpanels/Relations/BrokenRelations
+# defaultMessage: {countofrelation} broken {countofrelation, plural, one {relation} other {relations}} of type {typeofrelation}
+msgid "countBrokenRelations"
+msgstr ""
 
 #: config/Blocks
 # defaultMessage: Date Range
@@ -4315,6 +4404,11 @@ msgstr ""
 msgid "flush intIds and rebuild relations"
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: <ul><li>Regenerate intIds (tokens of relations in relation catalog)</li><li>Rebuild relations</li></ul><p>Check the log for details!</p><p><b>Warning</b>: If you have add-ons relying on intIds, you should not flush them.</p>
+msgid "flushAndRebuildRelationsHints"
+msgstr ""
+
 #: components/manage/Blocks/Teaser/schema
 # defaultMessage: Head title
 msgid "head_title"
@@ -4339,6 +4433,16 @@ msgstr "HTML"
 # defaultMessage: Image
 msgid "image"
 msgstr "kuva"
+
+#: components/manage/Blocks/Image/ImageSidebar
+# defaultMessage: Clear image
+msgid "image_block_clear"
+msgstr ""
+
+#: components/manage/Blocks/Image/ImageSidebar
+# defaultMessage: Image preview
+msgid "image_block_preview"
+msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Input must be integer
