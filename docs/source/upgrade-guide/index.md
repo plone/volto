@@ -79,6 +79,49 @@ This could be especially true if you did translation overrides, two add-ons were
 
 This change fixes a bug with the accessibility in listings.
 
+### Use `apiExpanders` to improve performance
+
+By default, Volto is now configured to use all possible `apiExpanders` in Plone RESTAPI in order to reduce the XHR requests to only one request.
+
+If you want to retain the old behavior (and no use `apiExpanders` at all), you need to add this configuration to your project/add-on configuration that will remove all `apiExpanders`:
+
+```js
+config.settings.apiExpanders = [];
+```
+
+### Cypress upgraded to 12.17.1
+
+As usual in a Volto major version release, Cypress has been upgraded to the latest version to date.
+There are no major changes to the way the tests are implemented and run.
+
+However, it could be that your Cypress boilerplate must be updated in your projects and add-ons if you use `@testing-library/cypress` in your tests.
+This is due to a change in how the default commands are now built internally and in `@testing-library/cypress`.
+
+You need to move the import:
+
+```js
+import '@testing-library/cypress/add-commands';
+```
+
+from {file}`cypress/support/commands.js` to {file}`cypress/support/e2e.js`, in case you have it in there.
+
+This is because the overrides that `@testing-library/cypress` introduce can be run only once.
+Since there are some commands that can call exports in {file}`cypress/support/commands.js`, this import may be run more than once, and then it errors.
+So you have to make sure that import is run only once while the tests are run.
+
+### New Image component
+
+```{versionadded} 17.0.0-alpha.21
+A new image component has been added to core to render optimized images.
+It requires the latest version of `plone.restapi` (>=8.42.0) installed in the backend to work properly.
+```
+
+### Removed Teaser block utils
+
+The `utils.js` file of the Teaser block was removed because it is no longer used.
+You can consider removing it if you were shadowing it in your project.
+
+
 (volto-upgrade-guide-16.x.x)=
 
 ## Upgrading to Volto 16.x.x

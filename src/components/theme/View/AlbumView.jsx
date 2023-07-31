@@ -1,8 +1,13 @@
 import { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Container, GridColumn, Segment } from 'semantic-ui-react';
+import {
+  Container as SemanticContainer,
+  GridColumn,
+  Segment,
+} from 'semantic-ui-react';
 import { Button, Modal, Grid } from 'semantic-ui-react';
-import { Icon, UniversalLink, PreviewImage } from '@plone/volto/components';
+import { Icon, UniversalLink } from '@plone/volto/components';
+import config from '@plone/volto/registry';
 
 import openSVG from '@plone/volto/icons/open.svg';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
@@ -23,6 +28,9 @@ const AlbumView = ({ content }) => {
     const openIndexes = (openIndex - 1) % content.items.length;
     setopenIndex(openIndexes);
   };
+  const Container =
+    config.getComponent({ name: 'Container' }).component || SemanticContainer;
+  const PreviewImage = config.getComponent({ name: 'PreviewImage' }).component;
   return (
     <Container className="view-wrapper">
       <article id="content">
@@ -47,15 +55,14 @@ const AlbumView = ({ content }) => {
                           <Segment className="imageborder">
                             <PreviewImage
                               item={item}
-                              alt={
-                                item.image_caption
-                                  ? item.image_caption
-                                  : item.title
-                              }
+                              alt={item.image_caption || item.title}
                               onClick={() => {
                                 setopenIndex(index);
                               }}
                               className="ui middle aligned image"
+                              responsive={true}
+                              loading="lazy"
+                              title={item.title}
                             />
                           </Segment>
                         </Grid.Column>
@@ -98,16 +105,12 @@ const AlbumView = ({ content }) => {
                             <Modal.Content image>
                               <PreviewImage
                                 item={item}
-                                alt={
-                                  item.image_caption
-                                    ? item.image_caption
-                                    : item.title
-                                }
+                                alt={item.image_caption}
                                 onClick={() => {
                                   setopenIndex(index);
                                 }}
-                                size="large"
                                 className="ui image"
+                                responsive={true}
                               />
 
                               <Modal.Description>
@@ -142,6 +145,11 @@ const AlbumView = ({ content }) => {
   );
 };
 
+/**
+ * Property types.
+ * @property {Object} propTypes Property types.
+ * @static
+ */
 AlbumView.propTypes = {
   /**
    * Content of the object
