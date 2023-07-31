@@ -2238,7 +2238,6 @@ msgid "News item view"
 msgstr "Notícia"
 
 #: components/manage/Contents/ContentsItem
-#: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: No
 msgid "No"
@@ -2563,8 +2562,8 @@ msgid "Please upgrade to plone.restapi >= 8.24.0."
 msgstr ""
 
 #: components/manage/Controlpanels/Relations/Relations
-# defaultMessage: Please upgrade to plone.restapi >= 8.35.3.
-msgid "Please upgrade to plone.restapi >= 8.35.3."
+# defaultMessage: Please upgrade to plone.restapi >= 8.39.0.
+msgid "Please upgrade to plone.restapi >= 8.39.0."
 msgstr ""
 
 #: components/theme/Footer/Footer
@@ -3330,7 +3329,7 @@ msgid "Sorted"
 msgstr ""
 
 #: components/manage/Blocks/HTML/Edit
-#: components/manage/Blocks/Image/schema
+#: components/manage/Controlpanels/Relations/BrokenRelations
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: Source
 msgid "Source"
@@ -3475,6 +3474,7 @@ msgstr "Etiquetes per eliminar"
 
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/Relations/BrokenRelations
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: Target
 msgid "Target"
@@ -4176,7 +4176,6 @@ msgid "Yearly"
 msgstr "Anualment"
 
 #: components/manage/Contents/ContentsItem
-#: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Yes
 msgid "Yes"
@@ -4308,6 +4307,11 @@ msgstr "Comú"
 msgid "compare_to"
 msgstr "Compara amb la llengua"
 
+#: components/manage/Controlpanels/Relations/BrokenRelations
+# defaultMessage: {countofrelation} broken {countofrelation, plural, one {relation} other {relations}} of type {typeofrelation}
+msgid "countBrokenRelations"
+msgstr ""
+
 #: config/Blocks
 # defaultMessage: Date Range
 msgid "daterangeFacet"
@@ -4398,6 +4402,11 @@ msgstr ""
 msgid "flush intIds and rebuild relations"
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: <ul><li>Regenerate intIds (tokens of relations in relation catalog)</li><li>Rebuild relations</li></ul><p>Check the log for details!</p><p><b>Warning</b>: If you have add-ons relying on intIds, you should not flush them.</p>
+msgid "flushAndRebuildRelationsHints"
+msgstr ""
+
 #: components/manage/Blocks/Teaser/schema
 # defaultMessage: Head title
 msgid "head_title"
@@ -4422,6 +4431,16 @@ msgstr "HTML"
 # defaultMessage: Image
 msgid "image"
 msgstr "Imatge"
+
+#: components/manage/Blocks/Image/ImageSidebar
+# defaultMessage: Clear image
+msgid "image_block_clear"
+msgstr ""
+
+#: components/manage/Blocks/Image/ImageSidebar
+# defaultMessage: Image preview
+msgid "image_block_preview"
+msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Input must be integer

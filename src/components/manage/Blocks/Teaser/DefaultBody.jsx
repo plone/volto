@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import { Message } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
-import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers';
-import { getTeaserImageURL } from './utils';
+import { isInternalURL } from '@plone/volto/helpers';
 import { MaybeWrap } from '@plone/volto/components';
 import { UniversalLink } from '@plone/volto/components';
 import cx from 'classnames';
@@ -22,27 +21,10 @@ const TeaserDefaultTemplate = (props) => {
   const { className, data, isEditMode } = props;
   const intl = useIntl();
   const href = data.href?.[0];
-  const imageOverride = data.preview_image?.[0];
-  const align = data?.styles?.align;
+  const image = data.preview_image?.[0];
 
+  const Image = config.getComponent('Image').component;
   const { openExternalLinkInNewTab } = config.settings;
-
-  let renderedImage = null;
-  if (href && (imageOverride || href.hasPreviewImage || href.image_field)) {
-    let Image = config.getComponent('Image').component;
-    if (Image) {
-      // custom image component expects item summary as src
-      renderedImage = (
-        <Image src={imageOverride || href} alt="" loading="lazy" />
-      );
-    } else {
-      // default img expects string src
-      const src = flattenToAppURL(
-        getTeaserImageURL({ href, imageOverride, align }),
-      );
-      renderedImage = <img src={src} alt="" loading="lazy" />;
-    }
-  }
 
   return (
     <div className={cx('block teaser', className)}>
@@ -68,8 +50,16 @@ const TeaserDefaultTemplate = (props) => {
             }
           >
             <div className="teaser-item default">
-              {renderedImage && (
-                <div className="image-wrapper">{renderedImage}</div>
+              {(href.hasPreviewImage || href.image_field || image) && (
+                <div className="image-wrapper">
+                  <Image
+                    item={image || href}
+                    imageField={image ? image.image_field : href.image_field}
+                    alt=""
+                    loading="lazy"
+                    responsive={true}
+                  />
+                </div>
               )}
               <div className="content">
                 {data?.head_title && (
