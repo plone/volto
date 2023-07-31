@@ -1,5 +1,3 @@
-import { Helmet } from '@plone/volto/helpers';
-import { useClient } from '@plone/volto/hooks';
 import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { Portal } from 'react-portal';
@@ -8,10 +6,11 @@ import { Container } from 'semantic-ui-react';
 import jwtDecode from 'jwt-decode';
 import { toast } from 'react-toastify';
 
+import { Helmet } from '@plone/volto/helpers';
+import { useClient } from '@plone/volto/hooks';
 import { Form, Icon, Toast, Toolbar } from '@plone/volto/components';
 import { updatePassword } from '@plone/volto/actions';
 import { getBaseUrl } from '@plone/volto/helpers';
-
 import backSVG from '@plone/volto/icons/back.svg';
 
 const messages = defineMessages({
@@ -73,7 +72,7 @@ const ChangePassword = () => {
     shallowEqual,
   );
   const loading = useSelector((state) => state.users.update_password.loading);
-  const pathname = useLocation();
+  const { pathname } = useLocation();
   const history = useHistory();
 
   const onSubmit = (data) => {
