@@ -65,6 +65,6 @@
     "cypress-file-upload": "5.0.8"
   },
   "devDependencies": {
-    "release-it": "14.2.1"
+    "release-it": "^16.1.3"
   }
 }

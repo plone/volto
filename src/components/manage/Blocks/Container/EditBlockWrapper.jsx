@@ -49,6 +49,7 @@ const EditBlockWrapper = (props) => {
         role="presentation"
         className="cell-wrapper"
         onClick={(e) => {
+          e.block = block;
           onSelectBlock(block);
         }}
       >
