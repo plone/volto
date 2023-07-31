@@ -3,11 +3,16 @@
  * @module components/theme/View/AlbumView
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { Container, GridColumn, Segment } from 'semantic-ui-react';
+import {
+  Container as SemanticContainer,
+  GridColumn,
+  Segment,
+} from 'semantic-ui-react';
 import { Button, Modal, Grid } from 'semantic-ui-react';
-import { Icon, UniversalLink, PreviewImage } from '@plone/volto/components';
+import { Icon, UniversalLink } from '@plone/volto/components';
+import config from '@plone/volto/registry';
 
 import openSVG from '@plone/volto/icons/open.svg';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
@@ -19,7 +24,7 @@ import backSVG from '@plone/volto/icons/back.svg';
  * @param {Object} content Content object.
  * @returns {string} Markup of the component.
  */
-class AlbumView extends Component {
+class AlbumView extends React.Component {
   constructor(props) {
     super(props);
 
@@ -56,6 +61,11 @@ class AlbumView extends Component {
 
   render() {
     const { content } = this.props;
+    const Container =
+      config.getComponent({ name: 'Container' }).component || SemanticContainer;
+    const PreviewImage = config.getComponent({ name: 'PreviewImage' })
+      .component;
+
     return (
       <Container className="view-wrapper">
         <article id="content">
@@ -80,17 +90,16 @@ class AlbumView extends Component {
                             <Segment className="imageborder">
                               <PreviewImage
                                 item={item}
-                                alt={
-                                  item.image_caption
-                                    ? item.image_caption
-                                    : item.title
-                                }
+                                alt={item.image_caption || item.title}
                                 onClick={() => {
                                   this.setState({
                                     openIndex: index,
                                   });
                                 }}
                                 className="ui middle aligned image"
+                                responsive={true}
+                                loading="lazy"
+                                title={item.title}
                               />
                             </Segment>
                           </Grid.Column>
@@ -133,20 +142,15 @@ class AlbumView extends Component {
                               <Modal.Content image>
                                 <PreviewImage
                                   item={item}
-                                  alt={
-                                    item.image_caption
-                                      ? item.image_caption
-                                      : item.title
-                                  }
+                                  alt={item.image_caption}
                                   onClick={() => {
                                     this.setState({
                                       openIndex: index,
                                     });
                                   }}
-                                  size="large"
                                   className="ui image"
+                                  responsive={true}
                                 />
-
                                 <Modal.Description>
                                   <p>{item.description}</p>
                                 </Modal.Description>
