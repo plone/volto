@@ -116,15 +116,16 @@ const More = (props) => {
 
   const content = useSelector((state) => state.content?.data, shallowEqual);
   const workingCopy = useSelector((state) => state.workingCopy, shallowEqual);
+
   const actions = useSelector((state) => state.actions.actions, shallowEqual);
 
-  const workingCopy_apply = workingCopy?.apply.loading;
-  const workingCopy_create = workingCopy?.create.loading;
-  const workingCopy_remove = workingCopy?.remove.loading;
+  const workingCopyApply = workingCopy?.apply.loading;
+  const workingCopyCreate = workingCopy?.create.loading;
+  const workingCopyRemove = workingCopy?.remove.loading;
 
-  const prevWorkingCopyApplyLoading = usePrevious(workingCopy_apply);
-  const prevWorkingCopyCreateLoading = usePrevious(workingCopy_create);
-  const prevWorkingCopyRemoveLoading = usePrevious(workingCopy_remove);
+  const prevWorkingCopyApplyLoading = usePrevious(workingCopyApply);
+  const prevWorkingCopyCreateLoading = usePrevious(workingCopyCreate);
+  const prevWorkingCopyRemoveLoading = usePrevious(workingCopyRemove);
 
   const push = (selector) => {
     setPushed(true);
@@ -278,6 +279,16 @@ const More = (props) => {
               </li>
             )}
           </Plug>
+          {path !== '' && !config.settings.excludeLinksAndReferencesMenuItem && (
+            <Plug pluggable="toolbar-more-menu-list" id="linkstoitems">
+              <li>
+                <Link to={`${path}/links-to-item`}>
+                  {intl.formatMessage(messages.linkstoitem)}
+                  <Icon name={rightArrowSVG} size="24px" />
+                </Link>
+              </li>
+            </Plug>
+          )}
           <Plug pluggable="toolbar-more-menu-list" id="rules">
             {rulesAction && (
               <li>
