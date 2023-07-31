@@ -18,6 +18,8 @@ import {
   withBlockExtensions,
   usePrevious,
 } from '@plone/volto/helpers';
+import config from '@plone/volto/registry';
+
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import navTreeSVG from '@plone/volto/icons/nav.svg';
@@ -69,6 +71,8 @@ const Edit = React.memo((props) => {
       onChangeBlock(block, {
         ...data,
         url: content['@id'],
+        image_field: 'image',
+        image_scales: { image: [content.image] },
         alt: '',
       });
     }
@@ -119,6 +123,8 @@ const Edit = React.memo((props) => {
     onChangeBlock(block, {
       ...data,
       url: flattenToAppURL(url),
+      image_field: undefined,
+      image_scales: undefined,
     });
   }, [block, data, url, onChangeBlock]);
 
@@ -174,6 +180,7 @@ const Edit = React.memo((props) => {
     setDragging(false);
   };
 
+  const Image = config.getComponent({ name: 'Image' }).component;
   const placeholder = useMemo(
     () =>
       data.placeholder ||
@@ -192,15 +199,26 @@ const Edit = React.memo((props) => {
       )}
     >
       {data.url ? (
-        <img
+        <Image
           className={cx({
             'full-width': data.align === 'full',
             large: data.size === 'l',
             medium: data.size === 'm',
             small: data.size === 's',
           })}
+          item={
+            data.image_scales
+              ? {
+                  '@id': data.url,
+                  image_field: data.image_field,
+                  image_scales: data.image_scales,
+                }
+              : undefined
+          }
           src={
-            isInternalURL(data.url)
+            data.image_scales
+              ? undefined
+              : isInternalURL(data.url)
               ? // Backwards compat in the case that the block is storing the full server URL
                 (() => {
                   if (data.size === 'l')
@@ -215,7 +233,10 @@ const Edit = React.memo((props) => {
                 })()
               : data.url
           }
+          sizes={config.blocks.blocksConfig.image.getSizes(data)}
           alt={data.alt || ''}
+          loading="lazy"
+          responsive={true}
         />
       ) : (
         <div>
@@ -248,7 +269,20 @@ const Edit = React.memo((props) => {
                             onClick={(e) => {
                               e.stopPropagation();
                               e.preventDefault();
-                              openObjectBrowser();
+                              openObjectBrowser({
+                                onSelectItem: (
+                                  url,
+                                  { title, image_field, image_scales },
+                                ) => {
+                                  onChangeBlock(block, {
+                                    ...data,
+                                    url,
+                                    image_field,
+                                    image_scales,
+                                    alt: data.alt || title || '',
+                                  });
+                                },
+                              });
                             }}
                           >
                             <Icon name={navTreeSVG} size="24px" />
