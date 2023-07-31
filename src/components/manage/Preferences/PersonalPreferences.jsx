@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux';
 import { map, keys } from 'lodash';
 import { defineMessages, useIntl } from 'react-intl';
 import { toast } from 'react-toastify';
+import { compose } from 'redux';
+import { withCookies } from 'react-cookie';
 
 import { Form, Toast } from '@plone/volto/components';
 import languages from '@plone/volto/constants/Languages';
@@ -44,7 +46,7 @@ const messages = defineMessages({
 const PersonalPreferences = (props) => {
   const intl = useIntl();
   const dispatch = useDispatch();
-
+  const { closeMenu } = props;
   const onSubmit = (data) => {
     let language = data.language || 'en';
     if (config.settings.supportedLanguages.includes(language)) {
@@ -54,13 +56,12 @@ const PersonalPreferences = (props) => {
       });
     }
     toast.success(<Toast success title={intl.formatMessage(messages.saved)} />);
-    props.closeMenu();
+    closeMenu();
   };
 
   const onCancel = () => {
-    props.closeMenu();
+    closeMenu();
   };
-
   const { cookies } = props;
   return (
     <Form
@@ -90,7 +91,6 @@ const PersonalPreferences = (props) => {
 };
 
 PersonalPreferences.propTypes = {
-  changeLanguage: PropTypes.func.isRequired,
   closeMenu: PropTypes.func.isRequired,
 };
-export default PersonalPreferences;
+export default compose(withCookies)(PersonalPreferences);
