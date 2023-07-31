@@ -98,6 +98,7 @@ class UsersControlpanel extends Component {
     this.updateUserRole = this.updateUserRole.bind(this);
     this.state = {
       search: '',
+      isLoading: false,
       showAddUser: false,
       showAddUserErrorConfirm: false,
       addUserError: '',
@@ -171,9 +172,19 @@ class UsersControlpanel extends Component {
    */
   onSearch(event) {
     event.preventDefault();
-    this.props.listUsers({
-      search: this.state.search,
-    });
+    this.setState({ isLoading: true });
+    this.props
+      .listUsers({
+        search: this.state.search,
+      })
+      .then(() => {
+        this.setState({ isLoading: false });
+      })
+      .catch((error) => {
+        this.setState({ isLoading: false });
+        // eslint-disable-next-line no-console
+        console.error('Error searching users', error);
+      });
   }
 
   /**
@@ -533,7 +544,11 @@ class UsersControlpanel extends Component {
               <Form.Field>
                 <Input
                   name="SearchableText"
-                  action={{ icon: 'search' }}
+                  action={{
+                    icon: 'search',
+                    loading: this.state.isLoading,
+                    disabled: this.state.isLoading,
+                  }}
                   placeholder={this.props.intl.formatMessage(
                     messages.searchUsers,
                   )}
