@@ -103,7 +103,7 @@ export default function relations(state = initialState, action = {}) {
                 error: null,
                 relations: action.result.relations
                   ? action.result.relations
-                  : state.relations,
+                  : [],
                 stats: null,
               },
             },
