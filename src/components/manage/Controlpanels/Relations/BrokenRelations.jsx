@@ -34,15 +34,31 @@ const BrokenRelations = () => {
           <div key={relationname}>
             <Divider section hidden />
             <h4>
-              {brokenRelationStats[relationname]} broken <i>{relationname}</i>{' '}
-              relations
+              <FormattedMessage
+                id="countBrokenRelations"
+                defaultMessage="{countofrelation} broken {countofrelation, plural, one {relation} other {relations}} of type {typeofrelation}"
+                values={{
+                  countofrelation: brokenRelationStats[relationname],
+                  typeofrelation: relationname,
+                }}
+              />
             </h4>
-            <Table>
+            <Table compact="very">
+              <Table.Header>
+                <Table.Row>
+                  <Table.HeaderCell width={6}>
+                    <FormattedMessage id="Source" defaultMessage="Source" />
+                  </Table.HeaderCell>
+                  <Table.HeaderCell>
+                    <FormattedMessage id="Target" defaultMessage="Target" />
+                  </Table.HeaderCell>
+                </Table.Row>
+              </Table.Header>
               <Table.Body>
                 {uniqBy(brokenRelations[relationname].items, function (el) {
-                  return el[0];
-                }).map((el) => (
-                  <Table.Row key={el[0]}>
+                  return el.toString();
+                }).map((el, index) => (
+                  <Table.Row key={index}>
                     <Table.Cell>
                       <UniversalLink
                         href={`${flattenToAppURL(el[0])}/edit`}
@@ -51,7 +67,14 @@ const BrokenRelations = () => {
                         {flattenToAppURL(el[0])}
                       </UniversalLink>
                     </Table.Cell>
-                    <Table.Cell>{el[1]}</Table.Cell>
+                    <Table.Cell>
+                      <UniversalLink
+                        href={`${flattenToAppURL(el[1])}/edit`}
+                        openLinkInNewTab={true}
+                      >
+                        {flattenToAppURL(el[1])}
+                      </UniversalLink>
+                    </Table.Cell>
                   </Table.Row>
                 ))}
               </Table.Body>
