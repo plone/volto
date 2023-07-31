@@ -1,4 +1,3 @@
-import '@testing-library/cypress/add-commands';
 import { getIfExists } from '../helpers';
 import { ploneAuth } from './constants';
 
@@ -20,6 +19,8 @@ const ploneAuthObj = {
   user: ploneAuth[0],
   pass: ploneAuth[1],
 };
+
+export * from './volto-slate';
 
 // --- isInViewport ----------------------------------------------------------
 Cypress.Commands.add('isInViewport', (element) => {
