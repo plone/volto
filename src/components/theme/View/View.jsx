@@ -129,7 +129,18 @@ class View extends Component {
     );
     this.setState({ isClient: true });
   }
-
+  componentDidUpdate(prevProps) {
+    if (__CLIENT__ && window) {
+      if (window.location.hash) {
+        let id = window.location.hash.substring(1);
+        console.log(id);
+        if (document.getElementById(id)) {
+          console.log('intru');
+          document.getElementById(id).focus();
+        }
+      }
+    }
+  }
   /**
    * Component will receive props
    * @method componentWillReceiveProps
@@ -203,6 +214,7 @@ class View extends Component {
    */
   render() {
     const { views } = config;
+
     if (this.props.error && this.props.error.code === 301) {
       const redirect = flattenToAppURL(this.props.error.url).split('?')[0];
       return <Redirect to={`${redirect}${this.props.location.search}`} />;
