@@ -129,13 +129,11 @@ class View extends Component {
     );
     this.setState({ isClient: true });
   }
-  componentDidUpdate(prevProps) {
+  componentDidUpdate() {
     if (__CLIENT__ && window) {
-      if (window.location.hash) {
+      if (window?.location?.hash) {
         let id = window.location.hash.substring(1);
-        console.log(id);
         if (document.getElementById(id)) {
-          console.log('intru');
           document.getElementById(id).focus();
         }
       }
