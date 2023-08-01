@@ -145,8 +145,9 @@ describe('createContent Tests', () => {
     cy.log('test if page content type is added as new page after Toolbar Save');
 
     cy.get('#toolbar-save').focus().click();
-    cy.navigate('/page-1-title');
+    cy.wait(2000);
     cy.contains('Page 1 title');
+    cy.wait(1000);
 
     cy.log('test draft is deleted from local storage after save');
 
