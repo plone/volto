@@ -10,52 +10,48 @@ function StoryComponent(args) {
     <Wrapper
       customStore={{
         comments: {
-            items: [
-              {
-                '@id': 'someurl',
-                comment_id: '1614094601171408',
-                author_name: 'admin',
-                creation_date: '2017-11-06T19:36:01',
-                text: { data: 'Some comment' },
-                is_deletable: true,
-                is_editable: true,
-                can_reply: true,
-              },
-            ],
-            permissions: {
-              view_comments: true,
+          items: [
+            {
+              '@id': 'someurl',
+              comment_id: '1614094601171408',
+              author_name: 'admin',
+              creation_date: '2017-11-06T19:36:01',
+              text: { data: 'Some comment' },
+              is_deletable: true,
+              is_editable: true,
               can_reply: true,
             },
-            add: {
-              loading: false,
-              loaded: true,
-            },
-            delete: {
-              loading: false,
-              loaded: true,
-            },
-            update: {
-              loading: false,
-              loaded: true,
-            },
+          ],
+          permissions: {
+            view_comments: true,
+            can_reply: true,
           },
-          intl: {
-            locale: 'en',
-            messages: {},
+          add: {
+            loading: false,
+            loaded: true,
           },
+          delete: {
+            loading: false,
+            loaded: true,
+          },
+          update: {
+            loading: false,
+            loaded: true,
+          },
+        },
+        intl: {
+          locale: 'en',
+          messages: {},
+        },
       }}
     >
       <div id="toolbar" style={{ display: 'none' }} />
-      <IntlCommentsComponent
-        {...args}
-      />
+      <IntlCommentsComponent {...args} />
     </Wrapper>
   );
 }
 
 export const CommentsModal = StoryComponent.bind({});
-
-
 
 export default {
   title: 'Public components/Comments/Comments Modal',
