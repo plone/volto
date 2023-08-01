@@ -1,12 +1,10 @@
 describe('Add Content Tests', () => {
   beforeEach(() => {
+    cy.intercept('GET', `/**/*?expand*`).as('content');
     cy.autologin();
     cy.visit('/');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('');
+    cy.wait('@content');
+
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-document').click();
   });
@@ -24,11 +22,7 @@ describe('Add Content Tests', () => {
     cy.url().should('contain', '/my-page');
 
     cy.get('.edit').click();
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('my-page');
+    cy.wait('@content');
 
     cy.get('input#effective-date').should('have.value', '12/24/2050');
     cy.get('input#effective-time').should('have.value', '10:00 AM');
