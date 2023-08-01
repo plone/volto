@@ -11,7 +11,7 @@ exports[`renders a view title component 1`] = `
     className="anchor"
     href="/#my-title"
     onClick={[Function]}
-    tabIndex={-1}
+    tabIndex={0}
     target={null}
     title={null}
   >
