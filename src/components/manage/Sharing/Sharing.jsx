@@ -145,6 +145,7 @@ class SharingComponent extends Component {
     this.onToggleInherit = this.onToggleInherit.bind(this);
     this.state = {
       search: '',
+      isLoading: false,
       inherit: props.inherit,
       entries: props.entries,
       isClient: false,
@@ -225,7 +226,17 @@ class SharingComponent extends Component {
    */
   onSearch(event) {
     event.preventDefault();
-    this.props.getSharing(getBaseUrl(this.props.pathname), this.state.search);
+    this.setState({ isLoading: true });
+    this.props
+      .getSharing(getBaseUrl(this.props.pathname), this.state.search)
+      .then(() => {
+        this.setState({ isLoading: false });
+      })
+      .catch((error) => {
+        this.setState({ isLoading: false });
+        // eslint-disable-next-line no-console
+        console.error('Error searching users or groups', error);
+      });
   }
 
   /**
@@ -323,11 +334,16 @@ class SharingComponent extends Component {
                 <Form.Field>
                   <Input
                     name="SearchableText"
-                    action={{ icon: 'search' }}
+                    action={{
+                      icon: 'search',
+                      loading: this.state.isLoading,
+                      disable: this.state.isLoading,
+                    }}
                     placeholder={this.props.intl.formatMessage(
                       messages.searchForUserOrGroup,
                     )}
                     onChange={this.onChangeSearch}
+                    id="sharing-input-search"
                   />
                 </Form.Field>
               </Form>
