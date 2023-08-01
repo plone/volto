@@ -1,17 +1,19 @@
 context('Select widgets family Acceptance Tests', () => {
   describe('Select', () => {
     beforeEach(() => {
+      cy.intercept('GET', `/**/*?expand*`).as('content');
+      cy.intercept('GET', '/**/@types/example').as('schema');
+      cy.intercept('POST', '/**/').as('create');
+
       // given a logged in editor and a page in edit mode
-      cy.visit('/');
       cy.autologin();
       cy.visit('/');
-      cy.waitForResourceToLoad('@navigation');
-      cy.waitForResourceToLoad('@breadcrumbs');
-      cy.waitForResourceToLoad('@actions');
-      cy.waitForResourceToLoad('');
+      cy.wait('@content');
 
       // We always add a new example content type, fill the required
       cy.navigate('/add?type=example');
+      cy.wait('@schema');
+
       cy.get('#field-title').type('An Example');
     });
 
@@ -22,9 +24,6 @@ context('Select widgets family Acceptance Tests', () => {
       //     values=[u"One", u"Two", u"Three"],
       //     required=True
       //     )
-      cy.intercept('POST', '/**/').as('create');
-      cy.intercept('GET', '/**/an-example').as('content');
-      cy.intercept('GET', '/**/@types/example').as('schema');
 
       cy.findAllByText('Choice and Multiple Choice fields').click();
       cy.wait(500); // We allow the Select component to lazy load
@@ -72,9 +71,6 @@ context('Select widgets family Acceptance Tests', () => {
       //     vocabulary="plone.app.vocabularies.PortalTypes",
       //     required=False,
       // )
-      cy.intercept('POST', '/**/').as('create');
-      cy.intercept('GET', '/**/an-example').as('content');
-      cy.intercept('GET', '/**/@types/example').as('schema');
 
       cy.findByText('Choice and Multiple Choice fields').click();
       cy.wait(500); // We allow the Select component to lazy load
@@ -144,10 +140,6 @@ context('Select widgets family Acceptance Tests', () => {
       //         "closeOnSelect": False,  # Select2 option to leave dropdown open for multiple selection
       //     },
       // )
-      cy.intercept('POST', '/**/').as('create');
-      cy.intercept('GET', '/**/an-example').as('content');
-      cy.intercept('GET', '/**/@types/example').as('schema');
-
       cy.findByText('Choice and Multiple Choice fields').click();
       cy.wait(500); // We allow the Select component to lazy load
 
@@ -229,9 +221,6 @@ context('Select widgets family Acceptance Tests', () => {
       //     "list_field_voc_huge",
       //     frontendOptions={"widget": "autocomplete"},
       // )
-      cy.intercept('POST', '/**/').as('create');
-      cy.intercept('GET', '/**/an-example').as('content');
-      cy.intercept('GET', '/**/@types/example').as('schema');
 
       cy.findByText('Choice and Multiple Choice fields').click();
       cy.wait(500); // We allow the Select component to lazy load
