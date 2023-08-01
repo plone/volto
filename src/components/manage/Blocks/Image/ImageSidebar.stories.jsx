@@ -10,24 +10,28 @@ function StoryComponent(args) {
     <Wrapper
       customStore={{
         content: {
-            create: {},
-            data: {},
-          },
-          intl: {
-            locale: 'en',
-            messages: {},
-          },
+          create: {},
+          data: {},
+        },
+        intl: {
+          locale: 'en',
+          messages: {},
+        },
       }}
     >
       <div id="toolbar" style={{ display: 'none' }} />
-      <IntlImageSidebarComponent 
-      {...args}    
-      data={{ url: 'https://6.docs.plone.org/_static/logo.svg', alt: 'Plone Logo' }}
-      block="1234"
-      pathname="/news"
-      onChangeBlock={() => {}}
-      openObjectBrowser={() => {}}
-      resetSubmitUrl={() => {}}/>
+      <IntlImageSidebarComponent
+        {...args}
+        data={{
+          url: 'https://6.docs.plone.org/_static/logo.svg',
+          alt: 'Plone Logo',
+        }}
+        block="1234"
+        pathname="/news"
+        onChangeBlock={() => {}}
+        openObjectBrowser={() => {}}
+        resetSubmitUrl={() => {}}
+      />
     </Wrapper>
   );
 }
