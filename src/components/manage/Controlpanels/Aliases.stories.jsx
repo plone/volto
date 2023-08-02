@@ -61,7 +61,7 @@ function StoryComponent(args) {
 export const Aliases = StoryComponent.bind({});
 
 export default {
-  title: 'Internal Components/Aliases',
+  title: 'Internal Components/ControlPanels/Aliases',
   component: Aliases,
   decorators: [
     (Story) => (
