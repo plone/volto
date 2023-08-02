@@ -26,8 +26,7 @@ function StoryComponent(args) {
             height: 400,
             scales: {
               preview: {
-                download:
-                  'https://6.docs.plone.org/_static/logo.svg',
+                download: 'https://6.docs.plone.org/_static/logo.svg',
                 width: 400,
                 height: 400,
               },
