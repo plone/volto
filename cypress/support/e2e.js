@@ -1,3 +1,4 @@
+import '@testing-library/cypress/add-commands';
 import 'cypress-axe';
 import 'cypress-file-upload';
 import './commands';
@@ -28,5 +29,3 @@ afterEach(function () {
     teardown();
   }
 });
-
-export * from './volto-slate';
