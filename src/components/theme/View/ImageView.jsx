@@ -18,6 +18,7 @@ import config from '@plone/volto/registry';
  * @returns {string} Markup of the component.
  */
 const ImageView = ({ content }) => {
+  const Image = config.getComponent({ name: 'Image' }).component;
   const Container =
     config.getComponent({ name: 'Container' }).component || SemanticContainer;
 
@@ -32,9 +33,11 @@ const ImageView = ({ content }) => {
       )}
       {content?.image?.download && (
         <a href={flattenToAppURL(content.image.download)}>
-          <img
+          <Image
+            item={content}
+            imageField="image"
             alt={content.title}
-            src={flattenToAppURL(content.image.scales.preview.download)}
+            responsive={true}
           />
           <figcaption>
             <FormattedMessage

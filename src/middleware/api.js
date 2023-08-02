@@ -67,7 +67,15 @@ export function addExpandersToPath(path, type, isAnonymous) {
 
   const querystringFromConfig = apiExpanders
     .filter((expand) => matchPath(url, expand.match) && expand[type])
-    .reduce((acc, expand) => ({ ...acc, ...expand?.['querystring'] }), {});
+    .reduce((acc, expand) => {
+      let querystring = expand?.['querystring'];
+      // The querystring accepts being a function to be able to take other
+      // config parameters
+      if (typeof querystring === 'function') {
+        querystring = querystring(config);
+      }
+      return { ...acc, ...querystring };
+    }, {});
 
   const queryMerge = { ...query, ...querystringFromConfig };
 
@@ -122,7 +130,13 @@ const apiMiddlewareFactory = (api) => ({ dispatch, getState }) => (next) => (
 ) => {
   const { settings } = config;
 
-  const isAnonymous = !getState().userSession.token;
+  const token = getState().userSession.token;
+  let isAnonymous = true;
+  if (token) {
+    const tokenExpiration = jwtDecode(token).exp;
+    const currentTime = new Date().getTime() / 1000;
+    isAnonymous = !token || currentTime > tokenExpiration;
+  }
 
   if (typeof action === 'function') {
     return action(dispatch, getState);
