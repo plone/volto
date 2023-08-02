@@ -307,7 +307,10 @@ class SharingComponent extends Component {
       <Container id="page-sharing">
         <Helmet title={this.props.intl.formatMessage(messages.sharing)} />
         <Segment.Group raised>
-          <Pluggable name="sharing-component" />
+          <Pluggable
+            name="sharing-component"
+            params={{ isLoading: this.state.isLoading }}
+          />
           <Plug pluggable="sharing-component" id="sharing-component-title">
             <Segment className="primary">
               <FormattedMessage
@@ -329,25 +332,29 @@ class SharingComponent extends Component {
             </Segment>
           </Plug>
           <Plug pluggable="sharing-component" id="sharing-component-search">
-            <Segment>
-              <Form onSubmit={this.onSearch}>
-                <Form.Field>
-                  <Input
-                    name="SearchableText"
-                    action={{
-                      icon: 'search',
-                      loading: this.state.isLoading,
-                      disable: this.state.isLoading,
-                    }}
-                    placeholder={this.props.intl.formatMessage(
-                      messages.searchForUserOrGroup,
-                    )}
-                    onChange={this.onChangeSearch}
-                    id="sharing-input-search"
-                  />
-                </Form.Field>
-              </Form>
-            </Segment>
+            {({ isLoading }) => {
+              return (
+                <Segment>
+                  <Form onSubmit={this.onSearch}>
+                    <Form.Field>
+                      <Input
+                        name="SearchableText"
+                        action={{
+                          icon: 'search',
+                          loading: isLoading,
+                          disable: isLoading,
+                        }}
+                        placeholder={this.props.intl.formatMessage(
+                          messages.searchForUserOrGroup,
+                        )}
+                        onChange={this.onChangeSearch}
+                        id="sharing-component-search"
+                      />
+                    </Form.Field>
+                  </Form>
+                </Segment>
+              );
+            }}
           </Plug>
           <Plug
             pluggable="sharing-component"
