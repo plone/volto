@@ -2249,7 +2249,6 @@ msgid "News item view"
 msgstr "Visão de Notícia"
 
 #: components/manage/Contents/ContentsItem
-#: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: No
 msgid "No"
@@ -2574,9 +2573,9 @@ msgid "Please upgrade to plone.restapi >= 8.24.0."
 msgstr "Por favor, atualize para plone.restapi >= 8.24.0."
 
 #: components/manage/Controlpanels/Relations/Relations
-# defaultMessage: Please upgrade to plone.restapi >= 8.35.3.
-msgid "Please upgrade to plone.restapi >= 8.35.3."
-msgstr "Por favor atualize a plone.restapi para versão 8.35.3 ou superior."
+# defaultMessage: Please upgrade to plone.restapi >= 8.39.0.
+msgid "Please upgrade to plone.restapi >= 8.39.0."
+msgstr "Por favor atualize a plone.restapi para versão 8.39.0 ou superior."
 
 #: components/theme/Footer/Footer
 # defaultMessage: Plone Foundation
@@ -3341,6 +3340,7 @@ msgid "Sorted"
 msgstr "Ordenado"
 
 #: components/manage/Blocks/HTML/Edit
+#: components/manage/Controlpanels/Relations/BrokenRelations
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: Source
 msgid "Source"
@@ -3485,6 +3485,7 @@ msgstr "Tags a serem removidas"
 
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/Relations/BrokenRelations
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: Target
 msgid "Target"
@@ -4191,7 +4192,6 @@ msgid "Yearly"
 msgstr "Anualmente"
 
 #: components/manage/Contents/ContentsItem
-#: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Yes
 msgid "Yes"
@@ -4323,6 +4323,11 @@ msgstr "Padrão"
 msgid "compare_to"
 msgstr "Comparar com"
 
+#: components/manage/Controlpanels/Relations/BrokenRelations
+# defaultMessage: {countofrelation} broken {countofrelation, plural, one {relation} other {relations}} of type {typeofrelation}
+msgid "countBrokenRelations"
+msgstr ""
+
 #: config/Blocks
 # defaultMessage: Date Range
 msgid "daterangeFacet"
@@ -4412,6 +4417,11 @@ msgstr ""
 # defaultMessage: flush intIds and rebuild relations
 msgid "flush intIds and rebuild relations"
 msgstr "descarrega os intIds e recontrua os relacionamentos"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: <ul><li>Regenerate intIds (tokens of relations in relation catalog)</li><li>Rebuild relations</li></ul><p>Check the log for details!</p><p><b>Warning</b>: If you have add-ons relying on intIds, you should not flush them.</p>
+msgid "flushAndRebuildRelationsHints"
+msgstr ""
 
 #: components/manage/Blocks/Teaser/schema
 # defaultMessage: Head title
