@@ -36,7 +36,7 @@ Sidebar.args = {
 };
 
 export default {
-  title: 'Internal Components/Sidebar',
+  title: 'Internal Components/Sidebar/SidebarPopup',
   component: SidebarPopup,
   argTypes: {},
 };
