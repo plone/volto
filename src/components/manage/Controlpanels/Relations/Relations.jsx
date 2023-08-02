@@ -63,8 +63,8 @@ const RelationsControlPanel = () => {
                   <Divider hidden />
                   <Message warning>
                     <FormattedMessage
-                      id="Please upgrade to plone.restapi >= 8.35.3."
-                      defaultMessage="Please upgrade to plone.restapi >= 8.35.3."
+                      id="Please upgrade to plone.restapi >= 8.39.0."
+                      defaultMessage="Please upgrade to plone.restapi >= 8.39.0."
                     />
                   </Message>
                 </React.Fragment>
