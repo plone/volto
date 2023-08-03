@@ -18,4 +18,4 @@
 @checkboxColor: #007eb1;
 
 /* Listing Block*/
-@summaryItemTitle: #007eb1;
+@summaryItemTitleColor: #007eb1;
