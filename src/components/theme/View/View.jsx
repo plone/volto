@@ -139,7 +139,7 @@ class View extends Component {
       if (window?.location?.hash) {
         let id = window.location.hash.substring(1);
         if (document.getElementById(id)) {
-          document.getElementById(id).focus();
+          document.getElementById(id).focus({ focusVisible: true });
         }
       }
     }
