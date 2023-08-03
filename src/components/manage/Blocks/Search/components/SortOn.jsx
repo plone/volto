@@ -59,6 +59,9 @@ const SortOn = (props) => {
         : activeSortOn || intl.formatMessage(messages.noSelection),
   };
 
+  const DropDownIndicatorComponent =
+    sortOnOptions.length > 0 ? DropdownIndicator : () => null;
+
   return (
     <div className="search-sort-wrapper">
       <div className="search-sort-on">
@@ -73,7 +76,8 @@ const SortOn = (props) => {
           placeholder={intl.formatMessage(messages.sortOn)}
           styles={sortOnSelectStyles}
           theme={selectTheme}
-          components={{ DropdownIndicator, Option }}
+          noOptionsMessage={() => null}
+          components={{ DropdownIndicator: DropDownIndicatorComponent, Option }}
           options={[
             ...sortOnOptions.map((k) => ({
               value: k,
