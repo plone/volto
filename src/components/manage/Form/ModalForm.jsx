@@ -1,9 +1,4 @@
-/**
- * Modal form component.
- * @module components/manage/Form/ModalForm
- */
-
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { keys, map } from 'lodash';
 import {
@@ -16,7 +11,7 @@ import {
   Dimmer,
   Loader,
 } from 'semantic-ui-react';
-import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
+import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import { FormValidation } from '@plone/volto/helpers';
 import { Field, Icon } from '@plone/volto/components';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
@@ -45,280 +40,196 @@ const messages = defineMessages({
   },
 });
 
-/**
- * Modal form container class.
- * @class ModalForm
- * @extends Component
- */
-class ModalForm extends Component {
-  /**
-   * Property types.
-   * @property {Object} propTypes Property types.
-   * @static
-   */
-  static propTypes = {
-    schema: PropTypes.shape({
-      fieldsets: PropTypes.arrayOf(
-        PropTypes.shape({
-          fields: PropTypes.arrayOf(PropTypes.string),
-          id: PropTypes.string,
-          title: PropTypes.string,
-        }),
-      ),
-      properties: PropTypes.objectOf(PropTypes.any),
-      required: PropTypes.arrayOf(PropTypes.string),
-    }).isRequired,
-    title: PropTypes.string.isRequired,
-    formData: PropTypes.objectOf(PropTypes.any),
-    submitError: PropTypes.string,
-    onSubmit: PropTypes.func.isRequired,
-    onCancel: PropTypes.func,
-    open: PropTypes.bool,
-    submitLabel: PropTypes.string,
-    loading: PropTypes.bool,
-    loadingMessage: PropTypes.string,
-    className: PropTypes.string,
+const ModalForm = (props) => {
+  const intl = useIntl();
+  const [currentTab, setcurrentTab] = useState(0);
+  const [errors, seterrors] = useState({});
+  const [isFormPristine, setisFormPristine] = useState(true);
+  const [formData, setformData] = useState(props.formData);
+
+  const onChangeField = (id, value) => {
+    setformData(...formData, ([id] = value));
   };
 
-  /**
-   * Default properties.
-   * @property {Object} defaultProps Default properties.
-   * @static
-   */
-  static defaultProps = {
-    submitLabel: null,
-    onCancel: null,
-    formData: {},
-    open: true,
-    loading: null,
-    loadingMessage: null,
-    submitError: null,
-    className: null,
-    dimmer: null,
+  const onClickInput = (e) => {
+    setisFormPristine(false);
   };
 
-  /**
-   * Constructor
-   * @method constructor
-   * @param {Object} props Component properties
-   * @constructs ModalForm
-   */
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentTab: 0,
-      errors: {},
-      isFormPristine: true,
-      formData: props.formData,
-    };
-    this.selectTab = this.selectTab.bind(this);
-    this.onChangeField = this.onChangeField.bind(this);
-    this.onBlurField = this.onBlurField.bind(this);
-    this.onClickInput = this.onClickInput.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-  }
-
-  /**
-   * Change field handler
-   * @method onChangeField
-   * @param {string} id Id of the field
-   * @param {*} value Value of the field
-   * @returns {undefined}
-   */
-  onChangeField(id, value) {
-    this.setState({
-      formData: {
-        ...this.state.formData,
-        [id]: value,
-      },
-    });
-  }
-
-  /**
-   * If user clicks on input, the form will be not considered pristine
-   * this will avoid onBlur effects without interraction with the form
-   * @param {Object} e event
-   */
-  onClickInput(e) {
-    this.setState({ isFormPristine: false });
-  }
-
-  /**
-   * Validate fields on blur
-   * @method onBlurField
-   * @param {string} id Id of the field
-   * @param {*} value Value of the field
-   * @returns {undefined}
-   */
-  onBlurField(id, value) {
-    if (!this.state.isFormPristine) {
+  const onBlurField = (id, value) => {
+    if (!isFormPristine) {
       const errors = FormValidation.validateFieldsPerFieldset({
-        schema: this.props.schema,
-        formData: this.state.formData,
-        formatMessage: this.props.intl.formatMessage,
+        schema: props.schema,
+        formData: formData,
+        formatMessage: intl.formatMessage,
         touchedField: { [id]: value },
       });
-
-      this.setState({
-        errors,
-      });
+      seterrors(errors);
     }
-  }
+  };
 
-  /**
-   * Submit handler
-   * @method onSubmit
-   * @param {Object} event Event object.
-   * @returns {undefined}
-   */
-  onSubmit(event) {
+  const onSubmit = (event) => {
     event.preventDefault();
     const errors = FormValidation.validateFieldsPerFieldset({
-      schema: this.props.schema,
-      formData: this.state.formData,
-      formatMessage: this.props.intl.formatMessage,
+      schema: props.schema,
+      formData: formData,
+      formatMessage: intl.formatMessage,
     });
 
     if (keys(errors).length > 0) {
-      this.setState({
-        errors,
-      });
+      seterrors(errors);
     } else {
       let setFormDataCallback = (formData) => {
-        this.setState({ formData: formData, errors: {} });
+        setformData(formData);
+        seterrors({});
       };
-      this.props.onSubmit(this.state.formData, setFormDataCallback);
+      props.onSubmit(formData, setFormDataCallback);
     }
-  }
+  };
 
-  /**
-   * Select tab handler
-   * @method selectTab
-   * @param {Object} event Event object.
-   * @param {number} index Selected tab index.
-   * @returns {undefined}
-   */
-  selectTab(event, { index }) {
-    this.setState({
-      currentTab: index,
-    });
-  }
+  const selectTab = (event, { index }) => {
+    setcurrentTab(index);
+  };
 
-  /**
-   * Render method.
-   * @method render
-   * @returns {string} Markup for the component.
-   */
-  render() {
-    const { schema, onCancel } = this.props;
-    const currentFieldset = schema.fieldsets[this.state.currentTab];
+  const { schema, onCancel } = props;
+  const currentFieldset = schema.fieldsets[currentTab];
 
-    const fields = map(currentFieldset.fields, (field) => ({
-      ...schema.properties[field],
-      id: field,
-      value: this.state.formData[field],
-      required: schema.required.indexOf(field) !== -1,
-      onChange: this.onChangeField,
-      onBlur: this.onBlurField,
-      onClick: this.onClickInput,
-    }));
+  const fields = map(currentFieldset.fields, (field) => ({
+    ...schema.properties[field],
+    id: field,
+    value: formData[field],
+    required: schema.required.indexOf(field) !== -1,
+    onChange: onChangeField,
+    onBlur: onBlurField,
+    onClick: onClickInput,
+  }));
 
-    const state_errors = keys(this.state.errors).length > 0;
-    return (
-      <Modal
-        dimmer={this.props.dimmer}
-        open={this.props.open}
-        className={this.props.className}
-      >
-        <Header>{this.props.title}</Header>
-        <Dimmer active={this.props.loading}>
-          <Loader>
-            {this.props.loadingMessage || (
-              <FormattedMessage id="Loading" defaultMessage="Loading." />
-            )}
-          </Loader>
-        </Dimmer>
-        <Modal.Content scrolling>
-          <UiForm
-            method="post"
-            onSubmit={this.onSubmit}
-            error={state_errors || Boolean(this.props.submitError)}
-          >
-            <Message error>
-              {state_errors ? (
-                <FormattedMessage
-                  id="There were some errors."
-                  defaultMessage="There were some errors."
-                />
-              ) : (
-                ''
-              )}
-              <div>{this.props.submitError}</div>
-            </Message>
-            {schema.fieldsets.length > 1 && (
-              <Menu tabular stackable>
-                {map(schema.fieldsets, (item, index) => (
-                  <Menu.Item
-                    name={item.id}
-                    index={index}
-                    key={item.id}
-                    active={this.state.currentTab === index}
-                    onClick={this.selectTab}
-                  >
-                    {item.title}
-                  </Menu.Item>
-                ))}
-              </Menu>
-            )}
-            {fields.map((field) => (
-              <Field
-                {...field}
-                key={field.id}
-                onBlur={this.onBlurField}
-                onClick={this.onClickInput}
-                error={this.state.errors[field.id]}
+  const state_errors = keys(errors).length > 0;
+  return (
+    <Modal dimmer={props.dimmer} open={props.open} className={props.className}>
+      <Header>{props.title}</Header>
+      <Dimmer active={props.loading}>
+        <Loader>
+          {props.loadingMessage || (
+            <FormattedMessage id="Loading" defaultMessage="Loading." />
+          )}
+        </Loader>
+      </Dimmer>
+      <Modal.Content scrolling>
+        <UiForm
+          method="post"
+          onSubmit={onSubmit}
+          error={state_errors || Boolean(props.submitError)}
+        >
+          <Message error>
+            {state_errors ? (
+              <FormattedMessage
+                id="There were some errors."
+                defaultMessage="There were some errors."
               />
-            ))}
-          </UiForm>
-        </Modal.Content>
-        <Modal.Actions>
+            ) : (
+              ''
+            )}
+            <div>{props.submitError}</div>
+          </Message>
+          {schema.fieldsets.length > 1 && (
+            <Menu tabular stackable>
+              {map(schema.fieldsets, (item, index) => (
+                <Menu.Item
+                  name={item.id}
+                  index={index}
+                  key={item.id}
+                  active={currentTab === index}
+                  onClick={selectTab}
+                >
+                  {item.title}
+                </Menu.Item>
+              ))}
+            </Menu>
+          )}
+          {fields.map((field) => (
+            <Field
+              {...field}
+              key={field.id}
+              onBlur={onBlurField}
+              onClick={onClickInput}
+              error={errors[field.id]}
+            />
+          ))}
+        </UiForm>
+      </Modal.Content>
+      <Modal.Actions>
+        <Button
+          basic
+          circular
+          primary
+          floated="right"
+          aria-label={
+            props.submitLabel
+              ? props.submitLabel
+              : intl.formatMessage(messages.save)
+          }
+          title={
+            props.submitLabel
+              ? props.submitLabel
+              : intl.formatMessage(messages.save)
+          }
+          onClick={onSubmit}
+          loading={props.loading}
+        >
+          <Icon name={aheadSVG} className="contents circled" size="30px" />
+        </Button>
+        {onCancel && (
           <Button
             basic
             circular
-            primary
+            secondary
+            aria-label={intl.formatMessage(messages.cancel)}
+            title={intl.formatMessage(messages.cancel)}
             floated="right"
-            aria-label={
-              this.props.submitLabel
-                ? this.props.submitLabel
-                : this.props.intl.formatMessage(messages.save)
-            }
-            title={
-              this.props.submitLabel
-                ? this.props.submitLabel
-                : this.props.intl.formatMessage(messages.save)
-            }
-            onClick={this.onSubmit}
-            loading={this.props.loading}
+            onClick={onCancel}
           >
-            <Icon name={aheadSVG} className="contents circled" size="30px" />
+            <Icon name={clearSVG} className="circled" size="30px" />
           </Button>
-          {onCancel && (
-            <Button
-              basic
-              circular
-              secondary
-              aria-label={this.props.intl.formatMessage(messages.cancel)}
-              title={this.props.intl.formatMessage(messages.cancel)}
-              floated="right"
-              onClick={onCancel}
-            >
-              <Icon name={clearSVG} className="circled" size="30px" />
-            </Button>
-          )}
-        </Modal.Actions>
-      </Modal>
-    );
-  }
-}
+        )}
+      </Modal.Actions>
+    </Modal>
+  );
+};
 
-export default injectIntl(ModalForm);
+ModalForm.propTypes = {
+  schema: PropTypes.shape({
+    fieldsets: PropTypes.arrayOf(
+      PropTypes.shape({
+        fields: PropTypes.arrayOf(PropTypes.string),
+        id: PropTypes.string,
+        title: PropTypes.string,
+      }),
+    ),
+    properties: PropTypes.objectOf(PropTypes.any),
+    required: PropTypes.arrayOf(PropTypes.string),
+  }).isRequired,
+  title: PropTypes.string.isRequired,
+  formData: PropTypes.objectOf(PropTypes.any),
+  submitError: PropTypes.string,
+  onSubmit: PropTypes.func.isRequired,
+  onCancel: PropTypes.func,
+  open: PropTypes.bool,
+  submitLabel: PropTypes.string,
+  loading: PropTypes.bool,
+  loadingMessage: PropTypes.string,
+  className: PropTypes.string,
+};
+
+ModalForm.defaultProps = {
+  submitLabel: null,
+  onCancel: null,
+  formData: {},
+  open: true,
+  loading: null,
+  loadingMessage: null,
+  submitError: null,
+  className: null,
+  dimmer: null,
+};
+
+export default ModalForm;
