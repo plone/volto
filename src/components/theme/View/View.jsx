@@ -128,17 +128,15 @@ class View extends Component {
       this.props.versionId,
     );
     this.setState({ isClient: true });
-
-    this.unlisten = this.props.history.listen((location) => {
-      if (__CLIENT__ && window) {
+    if (__CLIENT__ && window && this?.props?.history)
+      this.unlisten = this.props.history.listen((location) => {
         if (location?.hash) {
           let id = window.location.hash.substring(1);
           if (document.getElementById(id)) {
             document.getElementById(id).focus();
           }
         }
-      }
-    });
+      });
   }
   /**
    * Component will unmount
@@ -146,7 +144,7 @@ class View extends Component {
    * @returns {undefined}
    */
   componentWillUnmount() {
-    this.unlisten();
+    if (__CLIENT__ && this.unlisten) this.unlisten();
   }
 
   /**
