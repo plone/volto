@@ -95,12 +95,12 @@ const UndoControlpanel = (props) => {
   const [showPrevButton, setshowPrevButton] = useState(false);
   const [showNextButton, setshowNextButton] = useState(false);
 
-  const pathname  =props.location;
+  const pathname = props.location;
   const transactions = useSelector(
     (state) => state.transactions.transactions_recieved,
   );
   const revertRequest = useSelector((state) => state.transactions.revert);
-  const revertRequestloading=revertRequest.loading;
+  const revertRequestloading = revertRequest.loading;
   const prevrevertRequest = usePrevious(revertRequestloading);
   useEffect(() => {
     dispatch(getTransactions());
