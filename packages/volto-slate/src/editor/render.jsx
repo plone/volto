@@ -175,19 +175,11 @@ export const renderLinkElement = (tagName) => {
     );
     const intl = useIntl();
     return slate.useLinkedHeadings === false ? (
-      <Tag
-        {...attributes}
-        className={cx(className, 'heading-focus')}
-        tabIndex={0}
-      >
+      <Tag {...attributes} className={className} tabIndex={0}>
         {children}
       </Tag>
     ) : (
-      <Tag
-        {...attributes}
-        className={cx(className, 'heading-focus')}
-        tabIndex={0}
-      >
+      <Tag {...attributes} className={className} tabIndex={0}>
         {children}
         {mode === 'view' && slug && (
           <UniversalLink className="anchor" tabIndex={-1} href={`#${slug}`}>
