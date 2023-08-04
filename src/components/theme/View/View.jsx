@@ -28,6 +28,7 @@ import {
 } from '@plone/volto/helpers';
 
 import config from '@plone/volto/registry';
+import { isCallExpression } from '@babel/types';
 
 /**
  * View container class.
@@ -128,21 +129,25 @@ class View extends Component {
       this.props.versionId,
     );
     this.setState({ isClient: true });
-  }
-  /**
-   * Component did mount
-   * @method componentDidUpdate
-   * @returns {undefined}
-   */
-  componentDidUpdate() {
-    if (__CLIENT__ && window) {
-      if (window?.location?.hash) {
-        let id = window.location.hash.substring(1);
-        if (document.getElementById(id)) {
-          document.getElementById(id).focus({ focusVisible: true });
+
+    this.unlisten = this.props.history.listen((location) => {
+      if (__CLIENT__ && window) {
+        if (location?.hash) {
+          let id = window.location.hash.substring(1);
+          if (document.getElementById(id)) {
+            document.getElementById(id).focus();
+          }
         }
       }
-    }
+    });
+  }
+  /**
+   * Component will unmount
+   * @method componentWillUnmount
+   * @returns {undefined}
+   */
+  componentWillUnmount() {
+    this.unlisten();
   }
 
   /**
