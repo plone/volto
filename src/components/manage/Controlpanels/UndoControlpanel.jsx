@@ -95,7 +95,7 @@ const UndoControlpanel = (props) => {
   const [showPrevButton, setshowPrevButton] = useState(false);
   const [showNextButton, setshowNextButton] = useState(false);
 
-  const pathname = props.location;
+  const { pathname } = props.location;
   const transactions = useSelector(
     (state) => state.transactions.transactions_recieved,
   );
