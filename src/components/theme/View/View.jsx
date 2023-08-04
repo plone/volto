@@ -28,7 +28,6 @@ import {
 } from '@plone/volto/helpers';
 
 import config from '@plone/volto/registry';
-import { isCallExpression } from '@babel/types';
 
 /**
  * View container class.
