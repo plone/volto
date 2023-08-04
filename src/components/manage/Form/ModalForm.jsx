@@ -48,7 +48,10 @@ const ModalForm = (props) => {
   const [formData, setformData] = useState(props.formData);
 
   const onChangeField = (id, value) => {
-    setformData(...formData, ([id] = value));
+    setformData({
+      ...formData,
+      [id]: value,
+    });
   };
 
   const onClickInput = (e) => {
