@@ -184,6 +184,7 @@ export const renderLinkElement = (tagName) => {
         {mode === 'view' && slug && (
           <UniversalLink
             className="anchor"
+            aria-hidden="true"
             tabIndex={-1}
             href={`#${slug}`}
             aria-label="anchor"
