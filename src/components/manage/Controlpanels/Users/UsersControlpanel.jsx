@@ -123,7 +123,7 @@ class UsersControlpanel extends Component {
     }
   };
 
-  // Because username field needs to be disabled if email login is enabled so we need a way of knowing if email login is enabled.
+  // Because username field needs to be disabled if email login is enabled.
   checkLoginUsingEmailStatus = async () => {
     await this.props.getControlpanel('security');
     this.setState({
