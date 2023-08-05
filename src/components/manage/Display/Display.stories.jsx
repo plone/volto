@@ -1,9 +1,9 @@
 import { injectIntl } from 'react-intl';
 import React from 'react';
-import CDisplayComponent from './Display';
+import DisplayComponent from './Display';
 import { RealStoreWrapper as Wrapper } from '@plone/volto/storybook';
 
-const IntlDisplayComponent = injectIntl(CDisplayComponent);
+const IntlDisplayComponent = injectIntl(DisplayComponent);
 
 function StoryComponent(args) {
   return (
