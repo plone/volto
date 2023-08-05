@@ -1,0 +1,1 @@
+Bug fix for user registration when email is used as username. @mehedikhan72 [#5031](https://github.com/plone/volto/issues/5031)
