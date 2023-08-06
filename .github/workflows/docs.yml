@@ -38,7 +38,7 @@ jobs:
       - name: Build HTML documentation
         run: make docs-html
 
-      - uses: errata-ai/-action@reviewdog
+      - uses: errata-ai/vale-action@reviewdog
         with:
           # debug: true
           files: all
