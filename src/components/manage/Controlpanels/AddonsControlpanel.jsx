@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Portal } from 'react-portal';
@@ -151,83 +151,92 @@ const AddonsControlpanel = (props) => {
     dispatch(listAddons());
   }, [dispatch]);
 
-  const onInstall = (event, { value }) => {
-    event.preventDefault();
+  const onInstall = useCallback(
+    (event, { value }) => {
+      event.preventDefault();
 
-    dispatch(installAddon(value))
-      .then(() => {
-        toast.success(
-          <Toast
-            success
-            title={intl.formatMessage(messages.success)}
-            content={intl.formatMessage(messages.addonInstalled, {
-              title: title,
-            })}
-          />,
-        );
-      })
-      .catch(() => {
-        toast.error(
-          <Toast
-            error
-            title={intl.formatMessage(messages.error)}
-            content={intl.formatMessage(messages.addonNotInstalled)}
-          />,
-        );
-      })
-      .finally(() => dispatch(listAddons()));
-  };
+      dispatch(installAddon(value))
+        .then(() => {
+          toast.success(
+            <Toast
+              success
+              title={intl.formatMessage(messages.success)}
+              content={intl.formatMessage(messages.addonInstalled, {
+                title: title,
+              })}
+            />,
+          );
+        })
+        .catch(() => {
+          toast.error(
+            <Toast
+              error
+              title={intl.formatMessage(messages.error)}
+              content={intl.formatMessage(messages.addonNotInstalled)}
+            />,
+          );
+        })
+        .finally(() => dispatch(listAddons()));
+    },
+    [dispatch, title, intl],
+  );
 
-  const onUninstall = (event, { value }) => {
-    event.preventDefault();
-    dispatch(uninstallAddon(value))
-      .then(() => {
-        toast.success(
-          <Toast
-            success
-            title={intl.formatMessage(messages.success)}
-            content={intl.formatMessage(messages.addonUninstalled)}
-          />,
-        );
-      })
-      .catch(() => {
-        toast.error(
-          <Toast
-            error
-            title={intl.formatMessage(messages.error)}
-            content={intl.formatMessage(messages.addonNotUninstalled, {
-              title: title,
-            })}
-          />,
-        );
-      })
-      .finally(() => dispatch(listAddons()));
-  };
+  const onUninstall = useCallback(
+    (event, { value }) => {
+      event.preventDefault();
+      dispatch(uninstallAddon(value))
+        .then(() => {
+          toast.success(
+            <Toast
+              success
+              title={intl.formatMessage(messages.success)}
+              content={intl.formatMessage(messages.addonUninstalled)}
+            />,
+          );
+        })
+        .catch(() => {
+          toast.error(
+            <Toast
+              error
+              title={intl.formatMessage(messages.error)}
+              content={intl.formatMessage(messages.addonNotUninstalled, {
+                title: title,
+              })}
+            />,
+          );
+        })
+        .finally(() => dispatch(listAddons()));
+    },
+    [dispatch, intl, title],
+  );
 
-  const onUpgrade = (event, { value }) => {
-    event.preventDefault();
+  const onUpgrade = useCallback(
+    (event, { value }) => {
+      event.preventDefault();
 
-    dispatch(upgradeAddon(value))
-      .then(() => {
-        toast.success(
-          <Toast
-            success
-            title={intl.formatMessage(messages.success)}
-            content={intl.formatMessage(messages.addonUpgraded)}
-          />,
-        );
-      })
-      .catch(() => {
-        toast.error(
-          <Toast
-            error
-            title={intl.formatMessage(messages.error)}
-            content={intl.formatMessage(messages.addonNotUpgraded)}
-          />,
-        );
-      })
-      .finally(() => dispatch(listAddons()));
-  };
+      dispatch(upgradeAddon(value))
+        .then(() => {
+          toast.success(
+            <Toast
+              success
+              title={intl.formatMessage(messages.success)}
+              content={intl.formatMessage(messages.addonUpgraded)}
+            />,
+          );
+        })
+        .catch(() => {
+          toast.error(
+            <Toast
+              error
+              title={intl.formatMessage(messages.error)}
+              content={intl.formatMessage(messages.addonNotUpgraded)}
+            />,
+          );
+        })
+        .finally(() => dispatch(listAddons()));
+    },
+    [dispatch, intl],
+  );
 
   const onAccordionClick = (event, item) => {
     const newIndex = activeIndex === item.index ? -1 : item.index;
