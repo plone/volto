@@ -127,7 +127,7 @@ class UsersControlpanel extends Component {
   checkLoginUsingEmailStatus = async () => {
     await this.props.getControlpanel('security');
     this.setState({
-      loginUsingEmail: this.props.controlPanelData.data.use_email_as_login,
+      loginUsingEmail: this.props.controlPanelData?.data.use_email_as_login,
     });
   };
 
