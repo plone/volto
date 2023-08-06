@@ -1,11 +1,22 @@
+async
+api 
+backend
+css
+http 
+https 
 JavaScript
+LTS 
 npm
+nvm 
 NodeJS
+Pastanaga
 `plone.restapi`
 `plone.volto`
 Plone
 Razzle
 RichText
+repo 
 Volto
+Vue
 Zope
 

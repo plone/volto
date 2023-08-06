@@ -23,7 +23,7 @@ This chapter contains some legacy information that may be useful to Plone 5.2 de
 
 Volto can be installed in any operating system assuming that the following pre-requisites are met:
 
-- [Node.js LTS (18.x)](https://nodejs.org/en)
+- [NodeJS LTS (18.x)](https://nodejs.org/en)
 - [Python](https://www.python.org/) - See below for specific versions.
 - [Docker](https://www.docker.com/get-started) (if using the Plone docker images)
 
@@ -45,7 +45,7 @@ They assume you have a macOS/Linux machine.
 There are three processes continuously running when you have a working Volto website:
 
 1. A frontend web application running in your browser (JavaScript)
-2. A Node.js server process that delivers the JavaScript to the client and does
+2. A NodeJS server process that delivers the JavaScript to the client and does
    {term}`server-side rendering` (SSR) of your pages on first request (JavaScript, the
    Razzle package is used for SSR)
 3. A Plone server process that stores and delivers all content through a REST API (Python)
@@ -61,7 +61,7 @@ and suggest you start the API backend using a container.
 ## Install nvm (NodeJS version manager)
 
 If you have a working Node JavaScript development already set up on your machine or you prefer
-another management tool to install/maintain node this step is not needed. If you have less
+another management tool to install/maintain NodeJS this step is not needed. If you have less
 experience with setting up JavaScript, it's a good idea to integrate nvm for development, as
 it provides easy access to any NodeJS released version.
 
@@ -124,7 +124,7 @@ npm install -g yo
 
 ## Yarn (NodeJS package manager)
 
-Install the Yarn Classic version (not the 2.x one!), of the popular node package manager.
+Install the Yarn Classic version (not the 2.x one!), of the popular NodeJS package manager.
 
 1. Open a terminal and type:
 
@@ -206,7 +206,7 @@ execute `docker run` will be use to persist the backend server data.
 
 If you are somewhat familiar with Python development, you can also install Plone locally
 without using Docker. Check the [backend configuration](../configuration/backend.md) section.
-It also has more information on plone.volto.
+It also has more information on Plone.Volto.
 
 
 (frontend-getting-started-install-volto-label)=
@@ -266,7 +266,7 @@ You may choose to install the canary version, which is the latest alpha release,
 ## Build the production bundle
 
 In production environments, you should build an static version of your (Volto) app. The
-app should be run in a node process (because of the {term}`server-side rendering`
+app should be run in a NodeJS process (because of the {term}`server-side rendering`
 part), but it also have a client part that is provided and deployed by the server
 side rendering process.
 
@@ -277,12 +277,12 @@ side rendering process.
     ```
     The resultant build is available in the `build` folder.
 
-2.  Run the Volto Nodejs process
+2.  Run the Volto NodeJS process
     ```bash
     yarn start:prod
     ```
 
-    to run the node process with the production build. You can also run it manually:
+    to run the NodeJS process with the production build. You can also run it manually:
 
     ```bash
     NODE_ENV=production node build/server.js
