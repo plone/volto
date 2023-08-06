@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import {
@@ -250,7 +250,7 @@ const Aliases = (props) => {
     setTargetUrlPath(url);
   };
 
-  const handleSubmitAlias = () => {
+  const handleSubmitAlias = useCallback(() => {
     if (isAltUrlCorrect && isTargetUrlCorrect) {
       dispatch(
         addAliases('', {
@@ -265,7 +265,13 @@ const Aliases = (props) => {
       setAltUrlPath('');
       setTargetUrlPath('');
     }
-  };
+  }, [
+    isAltUrlCorrect,
+    isTargetUrlCorrect,
+    altUrlPath,
+    targetUrlPath,
+    dispatch,
+  ]);
 
   const handleCheckAlias = (alias) => {
     const aliases = aliasesToRemove;
@@ -280,7 +286,6 @@ const Aliases = (props) => {
       setAliasesToRemove([...aliasesToRemove, alias]);
     }
   };
-
   const handleRemoveAliases = () => {
     const items = aliasesToRemove.map((a) => {
       return {
