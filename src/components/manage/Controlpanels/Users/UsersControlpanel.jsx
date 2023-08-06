@@ -309,8 +309,8 @@ class UsersControlpanel extends Component {
           entry.id === name && !entry.roles.includes(value)
             ? [...entry.roles, value]
             : entry.id !== name
-              ? entry.roles
-              : pull(entry.roles, value),
+            ? entry.roles
+            : pull(entry.roles, value),
       })),
     });
   }
@@ -448,14 +448,16 @@ class UsersControlpanel extends Component {
                 properties: {
                   ...(!this.state.loginUsingEmail
                     ? {
-                      username: {
-                        title: this.props.intl.formatMessage(messages.addUserFormUsernameTitle),
-                        type: 'string',
-                        description: this.props.intl.formatMessage(
-                          messages.addUserFormUsernameDescription,
-                        ),
-                      },
-                    }
+                        username: {
+                          title: this.props.intl.formatMessage(
+                            messages.addUserFormUsernameTitle,
+                          ),
+                          type: 'string',
+                          description: this.props.intl.formatMessage(
+                            messages.addUserFormUsernameDescription,
+                          ),
+                        },
+                      }
                     : {}),
                   fullname: {
                     title: this.props.intl.formatMessage(
