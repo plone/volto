@@ -258,8 +258,5 @@ exports[`History renders a history component 1`] = `
       </tbody>
     </table>
   </div>
-  <div
-    id="Portal"
-  />
 </div>
 `;
