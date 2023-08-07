@@ -118,6 +118,26 @@ class View extends Component {
     isClient: false,
   };
 
+  componentDidMount() {
+    // Do not trigger the actions action if the expander is present
+    if (!hasApiExpander('actions', getBaseUrl(this.props.pathname))) {
+      this.props.listActions(getBaseUrl(this.props.pathname));
+    }
+    this.props.getContent(
+      getBaseUrl(this.props.pathname),
+      this.props.versionId,
+    );
+    this.setState({ isClient: true });
+  }
+  /**
+   * Component will unmount
+   * @method componentWillUnmount
+   * @returns {undefined}
+   */
+  componentWillUnmount() {
+    if (__CLIENT__ && this.unlisten) this.unlisten();
+  }
+
   /**
    * Component will receive props
    * @method componentWillReceiveProps
