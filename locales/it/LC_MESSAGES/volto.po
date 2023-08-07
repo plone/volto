@@ -3131,6 +3131,11 @@ msgstr "Invia"
 msgid "Send a confirmation mail with a link to set the password."
 msgstr "Invia una mail di conferma con un link per impostare la password."
 
+#: components/theme/Error/ServerError
+# defaultMessage: Server Error
+msgid "Server Error"
+msgstr ""
+
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Set my password
 msgid "Set my password"
@@ -4083,6 +4088,11 @@ msgstr "Ci scusiamo per l'inconveniente, ma il backend del sito a cui stai cerca
 # defaultMessage: We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for.
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
 msgstr "Ci scusiamo per l'inconveniente, la pagina cui stai provando ad accedere non esiste a questo indirizzo. Puoi usare il link qui sotto per trovare quello che stavi cercando."
+
+#: components/theme/Error/ServerError
+# defaultMessage: We apologize for the inconvenience, but there was an unexpected error on the server.
+msgid "We apologize for the inconvenience, but there was an unexpected error on the server."
+msgstr ""
 
 #: components/theme/Forbidden/Forbidden
 # defaultMessage: We apologize for the inconvenience, but you don't have permissions on this resource.
