@@ -4092,7 +4092,7 @@ msgstr "Ci scusiamo per l'inconveniente, la pagina cui stai provando ad accedere
 #: components/theme/Error/ServerError
 # defaultMessage: We apologize for the inconvenience, but there was an unexpected error on the server.
 msgid "We apologize for the inconvenience, but there was an unexpected error on the server."
-msgstr ""
+msgstr "Ci scusiamo per l'inconveniente. Si è verificato un errore non previsto."
 
 #: components/theme/Forbidden/Forbidden
 # defaultMessage: We apologize for the inconvenience, but you don't have permissions on this resource.
