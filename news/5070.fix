@@ -1,0 +1,1 @@
+Fix querystringResults subrequests id, to work properly in duplicate pages where blocks id's are the same. @giuliaghisini
