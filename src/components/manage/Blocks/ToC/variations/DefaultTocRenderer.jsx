@@ -11,6 +11,7 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import { useHistory } from 'react-router-dom';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import Slugger from 'github-slugger';
+import UniversalLink from '../../../UniversalLink/UniversalLink';
 
 const RenderListItems = ({ items, data, history }) => {
   return map(items, (item) => {
@@ -21,14 +22,7 @@ const RenderListItems = ({ items, data, history }) => {
     return (
       item && (
         <List.Item key={id} className={`item headline-${level}`} as="li">
-          <AnchorLink
-            href={`#${slug}`}
-            onClick={(e) => {
-              history.push({ hash: slug });
-            }}
-          >
-            {title}
-          </AnchorLink>
+          <UniversalLink href={`#${slug}`}>{title}</UniversalLink>
           {item.items?.length > 0 && (
             <List
               ordered={data.ordered}
