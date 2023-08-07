@@ -129,14 +129,6 @@ class View extends Component {
     );
     this.setState({ isClient: true });
   }
-  /**
-   * Component will unmount
-   * @method componentWillUnmount
-   * @returns {undefined}
-   */
-  componentWillUnmount() {
-    if (__CLIENT__ && this.unlisten) this.unlisten();
-  }
 
   /**
    * Component will receive props
