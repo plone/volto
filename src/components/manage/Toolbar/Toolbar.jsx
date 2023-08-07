@@ -239,7 +239,7 @@ class Toolbar extends Component {
     }
 
     // Unlock
-    if (this.props.unlockRequest.loading && nextProps.unlockRequest.loaded) {
+    if (this.props.unlockRequest?.loading && nextProps.unlockRequest.loaded) {
       this.props.listActions(getBaseUrl(nextProps.pathname));
     }
   }
