@@ -1,14 +1,11 @@
 async
-api 
-backend
-css
-http 
-https 
+backend 
 JavaScript
 LTS 
 npm
 nvm 
-NodeJS
+Node.js
+Node.js®
 Pastanaga
 `plone.restapi`
 `plone.volto`

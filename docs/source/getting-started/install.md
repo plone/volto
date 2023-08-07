@@ -206,7 +206,7 @@ execute `docker run` will be use to persist the backend server data.
 
 If you are somewhat familiar with Python development, you can also install Plone locally
 without using Docker. Check the [backend configuration](../configuration/backend.md) section.
-It also has more information on Plone.Volto.
+It also has more information on `plone.volto`.
 
 
 (frontend-getting-started-install-volto-label)=
@@ -266,7 +266,7 @@ You may choose to install the canary version, which is the latest alpha release,
 ## Build the production bundle
 
 In production environments, you should build an static version of your (Volto) app. The
-app should be run in a NodeJS process (because of the {term}`server-side rendering`
+app should be run in a Node.js process (because of the {term}`server-side rendering`
 part), but it also have a client part that is provided and deployed by the server
 side rendering process.
 
@@ -277,12 +277,12 @@ side rendering process.
     ```
     The resultant build is available in the `build` folder.
 
-2.  Run the Volto NodeJS process
+2.  Run the Volto Node.js process
     ```bash
     yarn start:prod
     ```
 
-    to run the NodeJS process with the production build. You can also run it manually:
+    to run the Node.js process with the production build. You can also run it manually:
 
     ```bash
     NODE_ENV=production node build/server.js
