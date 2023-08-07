@@ -9,9 +9,8 @@ import { map } from 'lodash';
 import { List } from 'semantic-ui-react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { useHistory } from 'react-router-dom';
-import AnchorLink from 'react-anchor-link-smooth-scroll';
 import Slugger from 'github-slugger';
-import UniversalLink from '../../../UniversalLink/UniversalLink';
+import { UniversalLink } from '@plone/volto/components';
 
 const RenderListItems = ({ items, data, history }) => {
   return map(items, (item) => {
