@@ -36,7 +36,6 @@ import {
   FREQUENCES,
   WEEKLY_DAYS,
   MONDAYFRIDAY_DAYS,
-  toISOString,
   rrulei18n,
 } from './Utils';
 
@@ -220,7 +219,7 @@ class RecurrenceWidget extends Component {
     if (this.props.value) {
       if (prevProps.formData?.start !== this.props.formData?.start) {
         let start = this.getUTCDate(this.props.formData?.start)
-          .startOf('day')
+          //.startOf('day')
           .toDate();
 
         this.setState((prevState) => {
@@ -249,7 +248,7 @@ class RecurrenceWidget extends Component {
   setRecurrenceStartEnd = () => {
     const start = this.props.formData?.start;
 
-    let _start = this.moment(start).startOf('day').toDate(); //The date is already in utc from plone, so this is not necessary: this.getUTCDate(start).startOf('day').toDate();
+    const _start = new Date(start); //The date is already in utc from plone, so this is not necessary: this.getUTCDate(start).startOf('day').toDate();
 
     this.setState((prevState) => {
       let rruleSet = prevState.rruleSet;
@@ -338,7 +337,7 @@ class RecurrenceWidget extends Component {
           case 'until':
             if (value != null) {
               formValues['recurrenceEnds'] = option;
-              formValues[option] = toISOString(value);
+              formValues[option] = value;
             }
             break;
           case 'byweekday':
@@ -421,7 +420,22 @@ class RecurrenceWidget extends Component {
           }
           break;
         case 'until':
-          value = value ? this.moment(new Date(value)).utc().toDate() : null;
+          let mDate = null;
+          if (value) {
+            mDate = this.moment(new Date(value));
+            if (typeof value === 'string') {
+              mDate = this.moment(new Date(value));
+            } else {
+              //object-->Date()
+              mDate = this.moment(value);
+            }
+            if (this.props.formData.end) {
+              const mEnd = this.moment(new Date(this.props.formData.end));
+              mDate.set('hour', mEnd.get('hour'));
+              mDate.set('minute', mEnd.get('minute'));
+            }
+          }
+          value = value ? mDate.toDate() : null;
           break;
         default:
           break;
@@ -446,7 +460,7 @@ class RecurrenceWidget extends Component {
         ? value
         : rruleSet.dtstart()
         ? rruleSet.dtstart()
-        : this.moment().utc().toDate();
+        : new Date();
     var exdates =
       field === 'exdates' ? value : Object.assign([], rruleSet.exdates());
 
@@ -469,13 +483,14 @@ class RecurrenceWidget extends Component {
 
   getDefaultUntil = (freq) => {
     const moment = this.moment;
+
     var end = this.props.formData?.end
-      ? moment(new Date(this.props.formData.end)).format('YYYY-MM-DD')
+      ? moment(new Date(this.props.formData.end))
       : null;
-    var tomorrow = moment().add(1, 'days').format('YYYY-MM-DD');
-    var nextWeek = moment().add(7, 'days').format('YYYY-MM-DD');
-    var nextMonth = moment().add(1, 'months').format('YYYY-MM-DD');
-    var nextYear = moment().add(1, 'years').format('YYYY-MM-DD');
+    var tomorrow = moment().add(1, 'days');
+    var nextWeek = moment().add(7, 'days');
+    var nextMonth = moment().add(1, 'months');
+    var nextYear = moment().add(1, 'years');
 
     var until = end;
     switch (freq) {
@@ -500,6 +515,19 @@ class RecurrenceWidget extends Component {
       default:
         break;
     }
+
+    if (this.props.formData.end) {
+      //set default end time
+      until.set('hour', end.get('hour'));
+      until.set('minute', end.get('minute'));
+    }
+    until = new Date(
+      until.get('year'),
+      until.get('month'),
+      until.get('date'),
+      until.get('hour'),
+      until.get('minute'),
+    );
 
     return until;
   };
@@ -717,6 +745,7 @@ class RecurrenceWidget extends Component {
 
   save = () => {
     var value = this.state.rruleSet.toString();
+    console.log(value, this.state.rruleSet);
     this.props.onChange(this.props.id, value);
     this.close();
   };
