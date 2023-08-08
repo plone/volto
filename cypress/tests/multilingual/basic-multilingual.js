@@ -1,7 +1,8 @@
 describe('Basic multilingual Tests', () => {
   beforeEach(() => {
+    cy.intercept('GET', `/**/*?expand*`).as('pagecontent');
+    cy.intercept('GET', '/**/*Document').as('schema');
     // given a logged in editor and a page in edit mode
-    cy.visit('/en');
     cy.autologin();
     cy.createContent({
       contentType: 'Document',
@@ -9,16 +10,17 @@ describe('Basic multilingual Tests', () => {
       contentTitle: 'Test document',
       path: '/en',
     });
-    cy.visit('/en/document');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('document');
+    cy.visit('/en');
+    cy.wait('@pagecontent');
+
+    cy.navigate('/en/document');
+    cy.wait('@pagecontent');
   });
 
   it('Language selector in literals', function () {
     cy.navigate('/en');
+    cy.wait('@pagecontent');
+
     cy.findByText('Site Map');
     cy.findByLabelText('Switch to italiano').click();
 
@@ -28,6 +30,7 @@ describe('Basic multilingual Tests', () => {
 
   it('Language coming from SSR', function () {
     cy.visit('/it');
+    cy.wait('@pagecontent');
 
     cy.findByText('Mappa del sito');
     cy.get('.language-selector .selected').contains('Italiano');
@@ -41,8 +44,11 @@ describe('Basic multilingual Tests', () => {
 
     // Create translation
     cy.get('#toolbar-add').click();
+
     cy.findByText('Translate to italiano').click();
-    cy.findByText('Test document');
+    cy.wait('@schema');
+    cy.get('.content-area').findByText('Test document');
+
     cy.findByText('Traduci in Italiano');
     cy.get('.new-translation .block.inner.title [contenteditable="true"]')
       .focus()
@@ -78,7 +84,10 @@ describe('Basic multilingual Tests', () => {
     // Create translation
     cy.get('#toolbar-add').click();
     cy.findByText('Translate to italiano').click();
-    cy.findByText('Test document');
+    cy.wait('@schema');
+
+    cy.get('.content-area').findByText('Test document');
+
     cy.findByText('Traduci in Italiano');
     cy.get('.new-translation .block.inner.title [contenteditable="true"]')
       .focus()
