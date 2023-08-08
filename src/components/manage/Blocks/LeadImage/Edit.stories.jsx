@@ -21,7 +21,8 @@ function StoryComponent(args) {
         data={{}}
         properties={{
           image: {
-            download: 'https://plone.org/news-and-events/news/2023/plone-6-0-1-released/@@images/image/preview',
+            download:
+              'https://plone.org/news-and-events/news/2023/plone-6-0-1-released/@@images/image/preview',
             width: 400,
             height: 400,
             scales: {
