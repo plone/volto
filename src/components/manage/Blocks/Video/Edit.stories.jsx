@@ -39,7 +39,7 @@ function StoryComponent(args) {
 export const Video = StoryComponent.bind({});
 
 export default {
-  title: 'Public components/Video',
+  title: 'Public components/Video/Video',
   component: Video,
   decorators: [
     (Story) => (
