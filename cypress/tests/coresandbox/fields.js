@@ -45,8 +45,8 @@ context('Special fields Acceptance Tests', () => {
 
       cy.navigate('/document/edit');
       cy.wait('@schema');
-
-      cy.findAllByText('Test Block Edit').click();
+      //just for testing
+      cy.get('.block-editor-testBlock').click();
 
       cy.get('#field-firstWithDefault').should(
         'have.value',
