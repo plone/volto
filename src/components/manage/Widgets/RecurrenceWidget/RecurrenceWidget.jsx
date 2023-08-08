@@ -217,26 +217,41 @@ class RecurrenceWidget extends Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.value) {
-      if (prevProps.formData?.start !== this.props.formData?.start) {
-        let start = this.getUTCDate(this.props.formData?.start)
-          //.startOf('day')
-          .toDate();
+      const changedStart =
+        prevProps.formData?.start !== this.props.formData?.start;
+      const changedEnd = prevProps.formData?.end !== this.props.formData?.end;
 
-        this.setState((prevState) => {
-          let rruleSet = prevState.rruleSet;
+      if (changedStart || changedEnd) {
+        let start = this.getUTCDate(this.props.formData?.start).toDate();
+        // let end = this.getUTCDate(this.props.formData?.end).toDate();
 
-          rruleSet = this.updateRruleSet(
-            rruleSet,
-            prevState.formValues,
-            'dtstart',
-            start,
-          );
+        let changeFormValues = {};
+        if (changedEnd) {
+          changeFormValues.until = this.getUTCDate(
+            this.props.formData?.end,
+          ).toDate();
+        }
+        this.setState(
+          (prevState) => {
+            let rruleSet = prevState.rruleSet;
 
-          return {
-            ...prevState,
-            rruleSet,
-          };
-        });
+            rruleSet = this.updateRruleSet(
+              rruleSet,
+              { ...prevState.formValues, ...changeFormValues },
+              'dtstart',
+              start,
+            );
+
+            return {
+              ...prevState,
+              rruleSet,
+            };
+          },
+          () => {
+            //then, after set state, set recurrence rrule value
+            this.saveRrule();
+          },
+        );
       }
     }
   }
@@ -429,7 +444,9 @@ class RecurrenceWidget extends Component {
               //object-->Date()
               mDate = this.moment(value);
             }
+
             if (this.props.formData.end) {
+              //set time from formData.end
               const mEnd = this.moment(new Date(this.props.formData.end));
               mDate.set('hour', mEnd.get('hour'));
               mDate.set('minute', mEnd.get('minute'));
@@ -743,10 +760,13 @@ class RecurrenceWidget extends Component {
     }
   };
 
-  save = () => {
+  saveRrule = () => {
     var value = this.state.rruleSet.toString();
-    console.log(value, this.state.rruleSet);
     this.props.onChange(this.props.id, value);
+  };
+
+  save = () => {
+    this.saveRrule();
     this.close();
   };
 
