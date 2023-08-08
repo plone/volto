@@ -23,7 +23,7 @@ This chapter contains some legacy information that may be useful to Plone 5.2 de
 
 Volto can be installed in any operating system assuming that the following pre-requisites are met:
 
-- [NodeJS LTS (18.x)](https://nodejs.org/en)
+- [Node.js LTS (18.x)](https://nodejs.org/en)
 - [Python](https://www.python.org/) - See below for specific versions.
 - [Docker](https://www.docker.com/get-started) (if using the Plone docker images)
 
@@ -45,7 +45,7 @@ They assume you have a macOS/Linux machine.
 There are three processes continuously running when you have a working Volto website:
 
 1. A frontend web application running in your browser (JavaScript)
-2. A NodeJS server process that delivers the JavaScript to the client and does
+2. A Node.js server process that delivers the JavaScript to the client and does
    {term}`server-side rendering` (SSR) of your pages on first request (JavaScript, the
    Razzle package is used for SSR)
 3. A Plone server process that stores and delivers all content through a REST API (Python)
@@ -61,7 +61,7 @@ and suggest you start the API backend using a container.
 ## Install nvm (NodeJS version manager)
 
 If you have a working Node JavaScript development already set up on your machine or you prefer
-another management tool to install/maintain NodeJS this step is not needed. If you have less
+another management tool to install/maintain Node.js this step is not needed. If you have less
 experience with setting up JavaScript, it's a good idea to integrate nvm for development, as
 it provides easy access to any NodeJS released version.
 
@@ -124,7 +124,7 @@ npm install -g yo
 
 ## Yarn (NodeJS package manager)
 
-Install the Yarn Classic version (not the 2.x one!), of the popular NodeJS package manager.
+Install the Yarn Classic version (not the 2.x one!), of the popular Node.js package manager.
 
 1. Open a terminal and type:
 

@@ -1,7 +1,6 @@
 async
 backend 
-JavaScript
-LTS 
+JavaScript 
 npm
 nvm 
 Node.js
@@ -12,7 +11,6 @@ Pastanaga
 Plone
 Razzle
 RichText
-repo 
 Volto
 Vue
 Zope
