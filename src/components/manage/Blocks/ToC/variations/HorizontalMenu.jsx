@@ -6,7 +6,7 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import Slugger from 'github-slugger';
 
-const RenderMenuItems = ({ items }) => {
+const RenderMenuItems = ({ mode, items }) => {
   return map(items, (item) => {
     const { id, level, title, override_toc, plaintext } = item;
     const slug = override_toc
@@ -16,7 +16,11 @@ const RenderMenuItems = ({ items }) => {
       item && (
         <React.Fragment key={id}>
           <Menu.Item className={`headline-${level}`}>
-            <AnchorLink href={`#${slug}`}>{title}</AnchorLink>
+            {mode === 'edit' ? (
+              <a href={`#${slug}`}>{title}</a>
+            ) : (
+              <AnchorLink href={`#${slug}`}>{title}</AnchorLink>
+            )}
           </Menu.Item>
           {item.items?.length > 0 && <RenderMenuItems items={item.items} />}
         </React.Fragment>
@@ -30,7 +34,7 @@ const RenderMenuItems = ({ items }) => {
  * @class View
  * @extends Component
  */
-const View = ({ data, tocEntries }) => {
+const View = ({ mode, data, tocEntries }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   // When the page is resized to prevent items from the TOC from going out of the viewport,
   // a dropdown menu is added containing all the items that don't fit.
@@ -171,7 +175,7 @@ const View = ({ data, tocEntries }) => {
         ''
       )}
       <Menu className="responsive-menu">
-        <RenderMenuItems items={tocEntries} />
+        <RenderMenuItems mode={mode} items={tocEntries} />
         <Dropdown
           item
           text="More"
@@ -183,7 +187,7 @@ const View = ({ data, tocEntries }) => {
           onKeyDown={handleDropdownKeyDown}
         >
           <Dropdown.Menu>
-            <RenderMenuItems items={tocEntries} />
+            <RenderMenuItems mode={mode} items={tocEntries} />
           </Dropdown.Menu>
         </Dropdown>
       </Menu>
