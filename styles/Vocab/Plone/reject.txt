@@ -1,11 +1,11 @@
-api 
+api
 javascript
-js
 Javascript
+js
 node
 nodejs
 Nodejs
-NPM 
+NPM
 plone
-razzle 
+razzle
 volto
