@@ -1,8 +1,32 @@
-const TableOfContentsSchema = ({ data }) => {
+import { defineMessages } from 'react-intl';
+
+const messages = defineMessages({
+  Title: {
+    id: 'Title',
+    defaultMessage: 'Title',
+  },
+  HideTitle: {
+    id: 'Hide title',
+    defaultMessage: 'Hide title',
+  },
+  Entries: {
+    id: 'Entries',
+    defaultMessage: 'Entries',
+  },
+  Ordered: {
+    id: 'Ordered',
+    defaultMessage: 'Ordered',
+  },
+  Sticky: {
+    id: 'Sticky',
+    defaultMessage: 'Sticky',
+  },
+});
+
+const TableOfContentsSchema = ({ data, intl }) => {
   const { variation = 'default' } = data;
 
   return {
-    title: 'Table of Contents',
     fieldsets: [
       {
         id: 'default',
@@ -17,14 +41,14 @@ const TableOfContentsSchema = ({ data }) => {
     ],
     properties: {
       title: {
-        title: 'Block title',
+        title: intl.formatMessage(messages.Title),
       },
       hide_title: {
-        title: 'Hide title',
+        title: intl.formatMessage(messages.HideTitle),
         type: 'boolean',
       },
       levels: {
-        title: 'Entries',
+        title: intl.formatMessage(messages.Entries),
         isMulti: true,
         choices: [
           ['h1', 'h1'],
@@ -36,11 +60,11 @@ const TableOfContentsSchema = ({ data }) => {
         ],
       },
       ordered: {
-        title: 'Ordered',
+        title: intl.formatMessage(messages.Ordered),
         type: 'boolean',
       },
       sticky: {
-        title: 'Sticky',
+        title: intl.formatMessage(messages.Sticky),
         type: 'boolean',
       },
     },

@@ -1304,6 +1304,11 @@ msgstr "Introduzca su nueva contraseña. Mínimo 8 caracteres."
 msgid "Enter your username for verification."
 msgstr "Introduzca su nombre de usuario para verificar."
 
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Entries
+msgid "Entries"
+msgstr ""
+
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -1625,6 +1630,11 @@ msgstr "¿Ocultar la faceta?"
 # defaultMessage: Hide filters
 msgid "Hide filters"
 msgstr "Ocultar filtros"
+
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Hide title
+msgid "Hide title"
+msgstr ""
 
 #: components/manage/History/History
 #: components/manage/Toolbar/More
@@ -2437,6 +2447,11 @@ msgstr "Abrir menú"
 # defaultMessage: Open object browser
 msgid "Open object browser"
 msgstr "Abrir buscador de objetos"
+
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Ordered
+msgid "Ordered"
+msgstr ""
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Origin
@@ -3375,6 +3390,11 @@ msgstr "Estado"
 msgid "Status"
 msgstr "Estado"
 
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Sticky
+msgid "Sticky"
+msgstr ""
+
 #: components/manage/Multilingual/CompareLanguages
 # defaultMessage: Stop compare
 msgid "Stop compare"
@@ -3670,6 +3690,7 @@ msgstr "Hora"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Teaser/schema
+#: components/manage/Blocks/ToC/Schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
