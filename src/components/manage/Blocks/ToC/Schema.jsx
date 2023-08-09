@@ -1,6 +1,10 @@
 import { defineMessages } from 'react-intl';
 
 const messages = defineMessages({
+  toc: {
+    id: 'toc',
+    defaultMessage: 'Table of Contents',
+  },
   Title: {
     id: 'Title',
     defaultMessage: 'Title',
@@ -27,6 +31,7 @@ const TableOfContentsSchema = ({ data, intl }) => {
   const { variation = 'default' } = data;
 
   return {
+    title: intl.formatMessage(messages.toc),
     fieldsets: [
       {
         id: 'default',
