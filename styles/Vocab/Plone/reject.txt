@@ -1,10 +1,9 @@
 api
 Javascript
 javascript
-js
+[^.]js
 node
-Nodejs
-nodejs
+[Nn]odejs
 NPM
 plone
 razzle

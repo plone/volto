@@ -7,9 +7,9 @@ myst:
     "keywords": "Volto, Plone, frontend, React, deployment, PM2"
 ---
 
-# Deployment using a {term}`Node.js` process manager (PM2)
+# Deployment using a {term}Node.js process manager (PM2)
 
-PM2 is a popular and maintained process manager based in {term}`Node.js` (https://pm2.keymetrics.io/).
+PM2 is a popular and maintained process manager based in {term}Node.js (https://pm2.keymetrics.io/).
 
 ```{note}
 You can use the good old known supervisord as well. However, the supervisord project is stalled and in low maintenance mode for many years. PM2 is a good alternative, and as you'll see you can manage all kind of processes, not only node ones, including the Plone processes.

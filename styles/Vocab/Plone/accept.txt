@@ -1,7 +1,7 @@
 `plone.restapi`
 `plone.volto`
-async
-backend
+[Aa]sync
+[Bb]ackend
 JavaScript
 Node.js
 Node\.js
