@@ -1299,6 +1299,11 @@ msgstr ""
 msgid "Enter your username for verification."
 msgstr "输入你的用户名进行验证"
 
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Entries
+msgid "Entries"
+msgstr ""
+
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -1619,6 +1624,11 @@ msgstr ""
 #: components/manage/Blocks/Search/components/Facets
 # defaultMessage: Hide filters
 msgid "Hide filters"
+msgstr ""
+
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Hide title
+msgid "Hide title"
 msgstr ""
 
 #: components/manage/History/History
@@ -2432,6 +2442,11 @@ msgstr "打开菜单"
 # defaultMessage: Open object browser
 msgid "Open object browser"
 msgstr "打开目标浏览器"
+
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Ordered
+msgid "Ordered"
+msgstr ""
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Origin
@@ -3370,6 +3385,11 @@ msgstr "状态"
 msgid "Status"
 msgstr "状态"
 
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Sticky
+msgid "Sticky"
+msgstr ""
+
 #: components/manage/Multilingual/CompareLanguages
 # defaultMessage: Stop compare
 msgid "Stop compare"
@@ -3665,6 +3685,7 @@ msgstr "时间"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Teaser/schema
+#: components/manage/Blocks/ToC/Schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
@@ -4803,6 +4824,7 @@ msgstr "文本"
 msgid "title"
 msgstr "标题"
 
+#: components/manage/Blocks/ToC/Schema
 #: config/Blocks
 # defaultMessage: Table of Contents
 msgid "toc"

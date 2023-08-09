@@ -1302,6 +1302,11 @@ msgstr "Introduïu la vostra nova contrasenya. Mínim 8 caràcters."
 msgid "Enter your username for verification."
 msgstr ""
 
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Entries
+msgid "Entries"
+msgstr ""
+
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -1622,6 +1627,11 @@ msgstr "Amagar la faceta?"
 #: components/manage/Blocks/Search/components/Facets
 # defaultMessage: Hide filters
 msgid "Hide filters"
+msgstr ""
+
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Hide title
+msgid "Hide title"
 msgstr ""
 
 #: components/manage/History/History
@@ -2435,6 +2445,11 @@ msgstr "Obre el menú"
 # defaultMessage: Open object browser
 msgid "Open object browser"
 msgstr "Obre el navegador d'objectes"
+
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Ordered
+msgid "Ordered"
+msgstr ""
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Origin
@@ -3373,6 +3388,11 @@ msgstr "Estat"
 msgid "Status"
 msgstr ""
 
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Sticky
+msgid "Sticky"
+msgstr ""
+
 #: components/manage/Multilingual/CompareLanguages
 # defaultMessage: Stop compare
 msgid "Stop compare"
@@ -3668,6 +3688,7 @@ msgstr "Hora"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Teaser/schema
+#: components/manage/Blocks/ToC/Schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
@@ -4806,6 +4827,7 @@ msgstr "Text"
 msgid "title"
 msgstr "Títol"
 
+#: components/manage/Blocks/ToC/Schema
 #: config/Blocks
 # defaultMessage: Table of Contents
 msgid "toc"
