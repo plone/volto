@@ -4824,6 +4824,7 @@ msgstr "文本"
 msgid "title"
 msgstr "标题"
 
+#: components/manage/Blocks/ToC/Schema
 #: config/Blocks
 # defaultMessage: Table of Contents
 msgid "toc"

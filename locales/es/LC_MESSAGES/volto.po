@@ -4829,6 +4829,7 @@ msgstr "Texto"
 msgid "title"
 msgstr "Título"
 
+#: components/manage/Blocks/ToC/Schema
 #: config/Blocks
 # defaultMessage: Table of Contents
 msgid "toc"

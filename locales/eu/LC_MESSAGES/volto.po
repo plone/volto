@@ -4825,6 +4825,7 @@ msgstr "Testua"
 msgid "title"
 msgstr "Izenburua"
 
+#: components/manage/Blocks/ToC/Schema
 #: config/Blocks
 # defaultMessage: Table of Contents
 msgid "toc"
