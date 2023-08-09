@@ -1263,6 +1263,11 @@ msgstr "Geben Sie ihr neues Passwort ein. Mindestens 8 Zeichen."
 msgid "Enter your username for verification."
 msgstr "Geben Sie Ihren Nutzernamen zur Verifikation ein."
 
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Entries
+msgid "Entries"
+msgstr ""
+
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -2350,6 +2355,11 @@ msgstr "Menü öffnen"
 msgid "Open object browser"
 msgstr "Objekt-Browser öffnen"
 
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Ordered
+msgid "Ordered"
+msgstr ""
+
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Origin
 msgid "Origin"
@@ -3222,6 +3232,11 @@ msgstr "Status"
 msgid "Status"
 msgstr "Status"
 
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Sticky
+msgid "Sticky"
+msgstr ""
+
 #: components/manage/Multilingual/CompareLanguages
 # defaultMessage: Stop compare
 msgid "Stop compare"
@@ -3515,6 +3530,7 @@ msgstr "Zeit"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Teaser/schema
+#: components/manage/Blocks/ToC/Schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
@@ -4612,6 +4628,7 @@ msgstr "Text"
 msgid "title"
 msgstr "Titel"
 
+#: components/manage/Blocks/ToC/Schema
 #: config/Blocks
 # defaultMessage: Table of Contents
 msgid "toc"
