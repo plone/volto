@@ -1,10 +1,9 @@
 describe('Language control-panel', () => {
   beforeEach(() => {
-    cy.visit('/');
+    cy.intercept('GET', `/**/*?expand*`).as('content');
     cy.autologin();
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
+    cy.visit('/');
+    cy.wait('@content');
   });
 
   it('Displays all valid fields in language control-panel', () => {

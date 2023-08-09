@@ -550,3 +550,25 @@ export const getPreviousNextBlock = ({ content, block }) => {
 
   return [previousBlock, nextBlock];
 };
+
+/**
+ * Given a `block` object and a list of block types, return a list of block ids matching the types
+ *
+ * @function findBlocks
+ * @param {Object} types A list with the list of types to be matched
+ * @return {Array} An array of block ids
+ */
+export function findBlocks(blocks, types, result = []) {
+  const containerBlockTypes = config.settings.containerBlockTypes;
+
+  Object.keys(blocks).forEach((blockId) => {
+    const block = blocks[blockId];
+    if (types.includes(block['@type'])) {
+      result.push(blockId);
+    } else if (containerBlockTypes.includes(block['@type']) || block.blocks) {
+      findBlocks(block.blocks, types, result);
+    }
+  });
+
+  return result;
+}

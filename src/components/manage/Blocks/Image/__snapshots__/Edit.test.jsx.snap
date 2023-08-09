@@ -7,6 +7,8 @@ exports[`renders an edit image block component 1`] = `
   <img
     alt=""
     className=""
+    loading="lazy"
+    responsive={true}
     src="image"
   />
 </div>
