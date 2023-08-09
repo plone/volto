@@ -14,9 +14,9 @@ function StoryComponent(args) {
             {
               '@id': 'someurl',
               comment_id: '1614094601171408',
-              author_name: 'admin',
-              creation_date: '2017-11-06T19:36:01',
-              text: { data: 'Some comment' },
+
+              ...args,
+
               is_deletable: true,
               is_editable: true,
               can_reply: true,
@@ -52,7 +52,11 @@ function StoryComponent(args) {
 }
 
 export const CommentsModal = StoryComponent.bind({});
-
+CommentsModal.args = {
+  author_name: 'admin',
+  creation_date: '2017-11-06T19:36:01',
+  text: { data: 'Some comment' },
+};
 export default {
   title: 'Public components/Comments/Comments Modal',
   component: CommentsComponent,
@@ -63,5 +67,20 @@ export default {
       </div>
     ),
   ],
-  argTypes: {},
+  argTypes: {
+    creation_date: {
+      control: 'date',
+      description: 'Date comment was created',
+    },
+    author_name: {
+      control: 'text',
+      description: 'Comment author name',
+    },
+    text: {
+      data: {
+        control: 'date',
+        description: 'Comment text',
+      },
+    },
+  },
 };
