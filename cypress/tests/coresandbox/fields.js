@@ -1,21 +1,24 @@
 context('Special fields Acceptance Tests', () => {
   describe('Form with default values', () => {
     beforeEach(() => {
+      cy.intercept('GET', `/**/*?expand*`).as('content');
+      cy.intercept('GET', '/**/Document').as('schema');
       // given a logged in editor and a page in edit mode
-      cy.visit('/');
       cy.autologin();
       cy.createContent({
         contentType: 'Document',
         contentId: 'document',
         contentTitle: 'Test document',
       });
-      cy.visit('/document');
-      cy.waitForResourceToLoad('@navigation');
-      cy.waitForResourceToLoad('@breadcrumbs');
-      cy.waitForResourceToLoad('@actions');
-      cy.waitForResourceToLoad('@types');
-      cy.waitForResourceToLoad('document');
+      cy.visit('/');
+      cy.wait('@content');
+
+      cy.navigate('/document');
+      cy.wait('@content');
+
       cy.navigate('/document/edit');
+      cy.wait('@schema');
+
       cy.getSlateTitle();
     });
 
@@ -42,8 +45,8 @@ context('Special fields Acceptance Tests', () => {
 
       cy.navigate('/document/edit');
       cy.wait('@schema');
-
-      cy.findAllByText('Test Block Edit').click();
+      //just for testing
+      cy.get('.block-editor-testBlock').click();
 
       cy.get('#field-firstWithDefault').should(
         'have.value',
@@ -64,21 +67,24 @@ context('Special fields Acceptance Tests', () => {
 
   describe('HTML Richtext Widget', () => {
     beforeEach(() => {
+      cy.intercept('GET', `/**/*?expand*`).as('content');
+      cy.intercept('GET', '/**/Document').as('schema');
       // given a logged in editor and a page in edit mode
-      cy.visit('/');
       cy.autologin();
       cy.createContent({
         contentType: 'Document',
         contentId: 'document',
         contentTitle: 'Test document',
       });
-      cy.visit('/document');
-      cy.waitForResourceToLoad('@navigation');
-      cy.waitForResourceToLoad('@breadcrumbs');
-      cy.waitForResourceToLoad('@actions');
-      cy.waitForResourceToLoad('@types');
-      cy.waitForResourceToLoad('document');
+      cy.visit('/');
+      cy.wait('@content');
+
+      cy.navigate('/document');
+      cy.wait('@content');
+
       cy.navigate('/document/edit');
+      cy.wait('@schema');
+
       cy.getSlateTitle();
     });
 
@@ -103,21 +109,24 @@ context('Special fields Acceptance Tests', () => {
 
   describe('ObjectListWidget', () => {
     beforeEach(() => {
+      cy.intercept('GET', `/**/*?expand*`).as('content');
+      cy.intercept('GET', '/**/Document').as('schema');
       // given a logged in editor and a page in edit mode
-      cy.visit('/');
       cy.autologin();
       cy.createContent({
         contentType: 'Document',
         contentId: 'document',
         contentTitle: 'Test document',
       });
-      cy.visit('/document');
-      cy.waitForResourceToLoad('@navigation');
-      cy.waitForResourceToLoad('@breadcrumbs');
-      cy.waitForResourceToLoad('@actions');
-      cy.waitForResourceToLoad('@types');
-      cy.waitForResourceToLoad('document');
+      cy.visit('/');
+      cy.wait('@content');
+
+      cy.navigate('/document');
+      cy.wait('@content');
+
       cy.navigate('/document/edit');
+      cy.wait('@schema');
+
       cy.getSlateTitle();
     });
 
@@ -158,21 +167,24 @@ context('Special fields Acceptance Tests', () => {
 
   describe('Variation field', () => {
     beforeEach(() => {
+      cy.intercept('GET', `/**/*?expand*`).as('content');
+      cy.intercept('GET', '/**/Document').as('schema');
       // given a logged in editor and a page in edit mode
-      cy.visit('/');
       cy.autologin();
       cy.createContent({
         contentType: 'Document',
         contentId: 'document',
         contentTitle: 'Test document',
       });
-      cy.visit('/document');
-      cy.waitForResourceToLoad('@navigation');
-      cy.waitForResourceToLoad('@breadcrumbs');
-      cy.waitForResourceToLoad('@actions');
-      cy.waitForResourceToLoad('@types');
-      cy.waitForResourceToLoad('document');
+      cy.visit('/');
+      cy.wait('@content');
+
+      cy.navigate('/document');
+      cy.wait('@content');
+
       cy.navigate('/document/edit');
+      cy.wait('@schema');
+
       cy.getSlateTitle();
     });
 
@@ -189,8 +201,9 @@ context('Special fields Acceptance Tests', () => {
 
   describe('ObjectBrowserWidget', () => {
     beforeEach(() => {
+      cy.intercept('GET', `/**/*?expand*`).as('content');
+      cy.intercept('GET', '/**/Document').as('schema');
       // given a logged in editor and a page in edit mode
-      cy.visit('/');
       cy.autologin();
       cy.createContent({
         contentType: 'Document',
@@ -203,13 +216,15 @@ context('Special fields Acceptance Tests', () => {
         contentTitle: 'My Image',
         path: '/document',
       });
-      cy.visit('/document');
-      cy.waitForResourceToLoad('@navigation');
-      cy.waitForResourceToLoad('@breadcrumbs');
-      cy.waitForResourceToLoad('@actions');
-      cy.waitForResourceToLoad('@types');
-      cy.waitForResourceToLoad('document');
+      cy.visit('/');
+      cy.wait('@content');
+
+      cy.navigate('/document');
+      cy.wait('@content');
+
       cy.navigate('/document/edit');
+      cy.wait('@schema');
+
       cy.getSlateTitle();
     });
 

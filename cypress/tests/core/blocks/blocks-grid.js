@@ -1,11 +1,10 @@
 context('Blocks Acceptance Tests', () => {
   describe('Text Block Tests', () => {
     beforeEach(() => {
+      cy.intercept('GET', `/**/*?expand*`).as('content');
       cy.intercept('PATCH', '/**/document').as('edit');
-      cy.intercept('GET', '/**/document').as('content');
       cy.intercept('GET', '/**/Document').as('schema');
       // given a logged in editor and a page in edit mode
-      cy.visit('/');
       cy.autologin();
       cy.createContent({
         contentType: 'Document',
@@ -25,7 +24,10 @@ context('Blocks Acceptance Tests', () => {
         contentTitle: 'My Image',
         path: '/document',
       });
-      cy.visit('/document');
+      cy.visit('/');
+      cy.wait('@content');
+      cy.navigate('/document');
+      cy.wait('@content');
       cy.navigate('/document/edit');
       cy.wait('@schema');
     });
@@ -44,6 +46,7 @@ context('Blocks Acceptance Tests', () => {
 
       cy.get('button[aria-label="Add block in position 1"]').click();
       cy.get('.blocks-chooser [aria-label="Unfold Text blocks"]').click();
+      cy.wait(200);
       cy.get('.blocks-chooser .text .button.slate').click();
       cy.getSlateEditorSelectorAndType(
         '.block.gridBlock.selected .slate-editor [contenteditable=true]',
@@ -86,6 +89,7 @@ context('Blocks Acceptance Tests', () => {
 
       cy.get('button[aria-label="Add block in position 1"]').click();
       cy.get('.blocks-chooser [aria-label="Unfold Text blocks"]').click();
+      cy.wait(200);
       cy.get('.blocks-chooser .text .button.slate').click();
       cy.scrollTo('top');
 

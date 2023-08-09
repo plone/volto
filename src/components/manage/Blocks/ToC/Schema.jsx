@@ -10,7 +10,7 @@ const TableOfContentsSchema = ({ data }) => {
         fields: [
           'title',
           'hide_title',
-          ...(variation === 'default' ? ['ordered'] : []),
+          ...(variation === 'default' ? ['ordered'] : ['sticky']),
           'levels',
         ],
       },
@@ -37,6 +37,10 @@ const TableOfContentsSchema = ({ data }) => {
       },
       ordered: {
         title: 'Ordered',
+        type: 'boolean',
+      },
+      sticky: {
+        title: 'Sticky',
         type: 'boolean',
       },
     },
