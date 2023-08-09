@@ -14,9 +14,7 @@ function StoryComponent(args) {
             {
               '@id': 'someurl',
               comment_id: '1614094601171408',
-
               ...args,
-
               is_deletable: true,
               is_editable: true,
               can_reply: true,
