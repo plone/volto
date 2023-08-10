@@ -17,7 +17,6 @@ function StoryComponent(args) {
     >
       <div id="toolbar" style={{ display: 'none' }} />
       <IntlVideoComponent
-        {...args}
         data={{
           ...args,
           '@type': 'video',
@@ -41,15 +40,18 @@ export const Video = StoryComponent.bind({});
 Video.args = {
   url: 'https://www.youtube.com/watch?v=ayjNbKju-8s',
 };
+
 export default {
   title: 'Public components/Video/Video',
   component: Video,
   decorators: [
     (Story) => (
-      <div className="ui segment form attached" style={{ width: '400px' }}>
+      <div className="ui segment form attached" style={{ width: '600px' }}>
         <Story />
       </div>
     ),
   ],
-  argTypes: {},
+  argTypes: {
+    // controlled value prop
+  },
 };
