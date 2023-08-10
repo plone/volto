@@ -26,13 +26,11 @@ function StoryComponent(args) {
       <div id="toolbar" style={{ display: 'none' }} />
       <IntlContentRenameModalComponent
         {...args}
-        open
         onOk={() => {}}
         onCancel={() => {}}
         items={[
           {
-            id: 'blogs',
-            title: 'Plone Blog',
+            ...args,
             url: '/blog',
           },
         ]}
@@ -44,10 +42,9 @@ function StoryComponent(args) {
 export const ContentRenameModal = StoryComponent.bind({});
 
 ContentRenameModal.args = {
+  open: true,
   id: 'blogs',
   title: 'Plone Blog',
-  loading: false,
-  loaded: true,
 };
 
 export default {
