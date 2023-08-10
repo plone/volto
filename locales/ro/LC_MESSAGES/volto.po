@@ -1293,6 +1293,11 @@ msgstr "Introduceți noua parolă. Minim 8 caractere."
 msgid "Enter your username for verification."
 msgstr ""
 
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Entries
+msgid "Entries"
+msgstr ""
+
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -1613,6 +1618,11 @@ msgstr "Ascundeți fațeta?"
 #: components/manage/Blocks/Search/components/Facets
 # defaultMessage: Hide filters
 msgid "Hide filters"
+msgstr ""
+
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Hide title
+msgid "Hide title"
 msgstr ""
 
 #: components/manage/History/History
@@ -2427,6 +2437,11 @@ msgstr "Deschideți meniul"
 msgid "Open object browser"
 msgstr "Deschideți browserul de obiecte"
 
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Ordered
+msgid "Ordered"
+msgstr ""
+
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Origin
 msgid "Origin"
@@ -3131,6 +3146,11 @@ msgstr "Trimite"
 msgid "Send a confirmation mail with a link to set the password."
 msgstr ""
 
+#: components/theme/Error/ServerError
+# defaultMessage: Server Error
+msgid "Server Error"
+msgstr ""
+
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Set my password
 msgid "Set my password"
@@ -3362,6 +3382,11 @@ msgstr "Stare"
 #: components/manage/Controlpanels/Rules/Rules
 # defaultMessage: Status
 msgid "Status"
+msgstr ""
+
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Sticky
+msgid "Sticky"
 msgstr ""
 
 #: components/manage/Multilingual/CompareLanguages
@@ -3659,6 +3684,7 @@ msgstr "Oră"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Teaser/schema
+#: components/manage/Blocks/ToC/Schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
@@ -4083,6 +4109,11 @@ msgstr "Ne cerem scuze pentru neplăceri, dar backend-ul site-ului pe care îl a
 # defaultMessage: We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for.
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
 msgstr "Ne cerem scuze pentru neplăceri, dar pagina pe care încercați să o accesați nu se află la această adresă. Puteți utiliza linkurile de mai jos pentru a vă ajuta să găsiți ceea ce căutați."
+
+#: components/theme/Error/ServerError
+# defaultMessage: We apologize for the inconvenience, but there was an unexpected error on the server.
+msgid "We apologize for the inconvenience, but there was an unexpected error on the server."
+msgstr ""
 
 #: components/theme/Forbidden/Forbidden
 # defaultMessage: We apologize for the inconvenience, but you don't have permissions on this resource.
@@ -4797,6 +4828,7 @@ msgstr "Text"
 msgid "title"
 msgstr "Titlu"
 
+#: components/manage/Blocks/ToC/Schema
 #: config/Blocks
 # defaultMessage: Table of Contents
 msgid "toc"
