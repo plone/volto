@@ -19,7 +19,7 @@ function StoryComponent(args) {
       <IntlVideoComponent
         {...args}
         data={{
-          url: 'https://www.youtube.com/watch?v=ayjNbKju-8s',
+          ...args,
           '@type': 'video',
         }}
         selected={false}
@@ -38,6 +38,9 @@ function StoryComponent(args) {
 
 export const Video = StoryComponent.bind({});
 
+Video.args = {
+  url: 'https://www.youtube.com/watch?v=ayjNbKju-8s',
+};
 export default {
   title: 'Public components/Video/Video',
   component: Video,
