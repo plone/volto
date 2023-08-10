@@ -2,6 +2,7 @@ import { injectIntl } from 'react-intl';
 import React from 'react';
 import ContentsTagsModalComponent from './ContentsTagsModal';
 import { RealStoreWrapper as Wrapper } from '@plone/volto/storybook';
+import { bool } from 'prop-types';
 
 const IntlContentTagsModalComponent = injectIntl(ContentsTagsModalComponent);
 
@@ -24,12 +25,11 @@ function StoryComponent(args) {
       <div id="toolbar" style={{ display: 'none' }} />
       <IntlContentTagsModalComponent
         {...args}
-        open
         onOk={() => {}}
         onCancel={() => {}}
         items={[
           {
-            subjects: [],
+            ...args,
             url: '/blog',
           },
         ]}
@@ -41,8 +41,8 @@ function StoryComponent(args) {
 export const ContentTagsModal = StoryComponent.bind({});
 
 ContentTagsModal.args = {
-  loading: false,
-  loaded: true,
+  subjects: ['plone 6 ', 'plone 5', 'plone'],
+  open: true,
 };
 
 export default {
@@ -55,5 +55,14 @@ export default {
       </div>
     ),
   ],
-  argTypes: {},
+  argTypes: {
+    subjects: {
+      context: 'json',
+      description: 'Added tags',
+    },
+    open: {
+      context: bool,
+      description: 'open/close modal',
+    },
+  },
 };
