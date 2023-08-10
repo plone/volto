@@ -53,7 +53,7 @@ export const CommentsModal = StoryComponent.bind({});
 CommentsModal.args = {
   author_name: 'admin',
   creation_date: '2017-11-06T19:36:01',
-  text: { data: 'Some comment' },
+  text: { data: 'Plone 6' },
 };
 export default {
   title: 'Public components/Comments/Comments Modal',
@@ -77,8 +77,8 @@ export default {
     text: {
       data: {
         control: 'date',
-        description: 'Comment text',
       },
+      description: 'Comment text',
     },
   },
 };
