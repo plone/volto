@@ -1885,6 +1885,11 @@ msgstr "Legătură către mai multe"
 msgid "Link redirect view"
 msgstr ""
 
+#: components/manage/Blocks/Image/schema
+# defaultMessage: Link settings
+msgid "Link settings"
+msgstr ""
+
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Link Title

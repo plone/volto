@@ -1896,6 +1896,11 @@ msgstr "Lisää"
 msgid "Link redirect view"
 msgstr "Linkin uudelleenohjauksen näkymä"
 
+#: components/manage/Blocks/Image/schema
+# defaultMessage: Link settings
+msgid "Link settings"
+msgstr ""
+
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Link Title
