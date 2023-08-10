@@ -60,7 +60,7 @@ const SortOn = (props) => {
   };
 
   const DropDownIndicatorComponent =
-    sortOnOptions.length > 0 ? DropdownIndicator : () => null;
+    sortOnOptions.length > 1 ? DropdownIndicator : () => null;
 
   return (
     <div className="search-sort-wrapper">
