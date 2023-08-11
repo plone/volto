@@ -8,6 +8,22 @@
 
 <!-- towncrier release notes start -->
 
+## 17.0.0-alpha.24 (2023-08-09)
+
+### Breaking
+
+- Update `@plone/scripts` to 3.0.0. @davisagli [#5040](https://github.com/plone/volto/issues/5040)
+
+### Bugfix
+
+- Fix handling of exceptions in reducers. @davisagli [#5069](https://github.com/plone/volto/issues/5069)
+- Add missing i18n for ToC block. @davisagli [#5073](https://github.com/plone/volto/issues/5073)
+
+### Documentation
+
+- Fix 302 redirect in changelog. @stevepiercy [#5068](https://github.com/plone/volto/issues/5068)
+
+
 ## 17.0.0-alpha.23 (2023-07-28)
 
 ### Bugfix
