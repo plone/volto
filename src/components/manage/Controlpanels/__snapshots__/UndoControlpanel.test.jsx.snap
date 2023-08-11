@@ -445,8 +445,5 @@ exports[`UndoControlpanel renders undo controlpanel component 1`] = `
       </table>
     </div>
   </div>
-  <div
-    id="Portal"
-  />
 </div>
 `;
