@@ -250,10 +250,22 @@ const apiMiddlewareFactory = (api) => ({ dispatch, getState }) => (next) => (
             };
           });
         }
-        return next({ ...rest, result, type: `${type}_SUCCESS` });
+        try {
+          return next({ ...rest, result, type: `${type}_SUCCESS` });
+        } catch (error) {
+          // There was an exception while processing reducers or downstream middleware.
+          next({
+            ...rest,
+            error: { status: 500, error },
+            type: `${type}_FAIL`,
+          });
+          // Rethrow the original exception on the client side only,
+          // so it doesn't fall through to express on the server.
+          if (__CLIENT__) throw error;
+        }
       },
       (error) => {
-        // Only SRR can set ECONNREFUSED
+        // Only SSR can set ECONNREFUSED
         if (error.code === 'ECONNREFUSED') {
           next({
             ...rest,

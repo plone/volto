@@ -2598,7 +2598,7 @@ new users/evaluators. @fredvd
 ### Internal
 
 - Fix URL for Climate-Energy, a Volto website @tiberiuichim
-- Fix quirky Cypress test in "DX control panel schema" (see https://github.com/plone/volto/actions/runs/1692689792/jobs/2306969715) @sneridagh
+- Fix quirky Cypress test in "DX control panel schema" @sneridagh
 
 ## 14.2.1 (2022-01-12)
 

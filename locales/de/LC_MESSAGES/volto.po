@@ -1263,6 +1263,11 @@ msgstr "Geben Sie ihr neues Passwort ein. Mindestens 8 Zeichen."
 msgid "Enter your username for verification."
 msgstr "Geben Sie Ihren Nutzernamen zur Verifikation ein."
 
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Entries
+msgid "Entries"
+msgstr ""
+
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -1562,7 +1567,7 @@ msgstr "Überschrift"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Hidden facets will still filter the results if proper parameters are passed in URLs
 msgid "Hidden facets will still filter the results if proper parameters are passed in URLs"
-msgstr "Verteckte Facetten können die Ergebnisse weiterhin filtern, wenn die entsprechenden Parameter in der URL angehängt werden"
+msgstr "Versteckte Facetten können die Ergebnisse weiterhin filtern, wenn die entsprechenden Parameter in der URL angehängt werden"
 
 #: components/theme/Comments/Comments
 # defaultMessage: Hide Replies
@@ -1573,6 +1578,11 @@ msgstr "Antworten ausblenden"
 # defaultMessage: Hide facet?
 msgid "Hide facet?"
 msgstr "Facette verstecken"
+
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Hide title
+msgid "Hide title"
+msgstr ""
 
 #: components/manage/History/History
 #: components/manage/Toolbar/More
@@ -1885,6 +1895,11 @@ msgstr "'Mehr' Link"
 # defaultMessage: Link redirect view
 msgid "Link redirect view"
 msgstr "Link"
+
+#: components/manage/Blocks/Image/schema
+# defaultMessage: Link settings
+msgid "Link settings"
+msgstr "Link Einstellungen"
 
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
@@ -2349,6 +2364,11 @@ msgstr "Menü öffnen"
 # defaultMessage: Open object browser
 msgid "Open object browser"
 msgstr "Objekt-Browser öffnen"
+
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Ordered
+msgid "Ordered"
+msgstr ""
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Origin
@@ -3010,6 +3030,11 @@ msgstr "Absenden"
 msgid "Send a confirmation mail with a link to set the password."
 msgstr "Eine Bestätigungsmail mit dem Link zum Passwort setzen schicken."
 
+#: components/theme/Error/ServerError
+# defaultMessage: Server Error
+msgid "Server Error"
+msgstr ""
+
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Set my password
 msgid "Set my password"
@@ -3221,6 +3246,11 @@ msgstr "Status"
 # defaultMessage: Status
 msgid "Status"
 msgstr "Status"
+
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Sticky
+msgid "Sticky"
+msgstr ""
 
 #: components/manage/Multilingual/CompareLanguages
 # defaultMessage: Stop compare
@@ -3515,6 +3545,7 @@ msgstr "Zeit"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Teaser/schema
+#: components/manage/Blocks/ToC/Schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
@@ -3938,6 +3969,11 @@ msgstr "Entschuldigen Sie die Unannehmlichkeiten aber das Backend der Seite antw
 # defaultMessage: We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for.
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
 msgstr "Entschuldigung, aber die Webseite die Sie versucht haben zu erreichen ist hier nicht verfügbar. Bitte benutzen Sie die aufgeführten Verweise um zu finden was Sie gesucht haben."
+
+#: components/theme/Error/ServerError
+# defaultMessage: We apologize for the inconvenience, but there was an unexpected error on the server.
+msgid "We apologize for the inconvenience, but there was an unexpected error on the server."
+msgstr ""
 
 #: components/theme/Forbidden/Forbidden
 # defaultMessage: We apologize for the inconvenience, but you don't have permissions on this resource.
@@ -4612,6 +4648,7 @@ msgstr "Text"
 msgid "title"
 msgstr "Titel"
 
+#: components/manage/Blocks/ToC/Schema
 #: config/Blocks
 # defaultMessage: Table of Contents
 msgid "toc"
