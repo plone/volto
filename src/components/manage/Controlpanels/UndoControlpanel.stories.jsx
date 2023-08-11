@@ -12,11 +12,9 @@ function StoryComponent(args) {
         transactions: {
           transactions_recieved: [
             {
-              description: 'Added default view for root object',
               id: 'QStrR0RRc0M5TjA9',
               size: 2216,
-              time: '2022-06-19T22:15:02',
-              username: 'admin',
+              ...args,
             },
             {
               description: 'Added virtual_hosting',
@@ -89,7 +87,11 @@ function StoryComponent(args) {
 }
 
 export const UndoControlpanel = StoryComponent.bind({});
-
+UndoControlpanel.args = {
+  description: 'Added default view for root object',
+  time: '2022-06-19T22:15:02',
+  username: 'admin',
+};
 export default {
   title: 'Public components/UndoControlpanel',
   component: UndoControlpanel,
@@ -100,5 +102,9 @@ export default {
       </div>
     ),
   ],
-  argTypes: {},
+  argTypes: {
+    time: {
+      control: 'date',
+    },
+  },
 };
