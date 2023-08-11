@@ -1582,6 +1582,11 @@ msgstr "Amaga les respostes"
 msgid "Hide facet?"
 msgstr "Amagar la faceta?"
 
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Hide title
+msgid "Hide title"
+msgstr ""
+
 #: components/manage/History/History
 #: components/manage/Toolbar/More
 # defaultMessage: History

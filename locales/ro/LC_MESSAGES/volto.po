@@ -1573,6 +1573,11 @@ msgstr "Ascunde răspunsurile"
 msgid "Hide facet?"
 msgstr "Ascundeți fațeta?"
 
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Hide title
+msgid "Hide title"
+msgstr ""
+
 #: components/manage/History/History
 #: components/manage/Toolbar/More
 # defaultMessage: History

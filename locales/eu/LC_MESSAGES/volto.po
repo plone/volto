@@ -1580,6 +1580,11 @@ msgstr "Ezkutatu erantzunak"
 msgid "Hide facet?"
 msgstr "Fazeta ezkutatu?"
 
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Hide title
+msgid "Hide title"
+msgstr ""
+
 #: components/manage/History/History
 #: components/manage/Toolbar/More
 # defaultMessage: History
