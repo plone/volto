@@ -8,6 +8,32 @@
 
 <!-- towncrier release notes start -->
 
+## 16.22.1 (2023-08-11)
+
+### Feature
+
+- Updated Italian translations @sabrina-bongiovanni [#4987](https://github.com/plone/volto/issues/4987)
+
+### Bugfix
+
+- Fix search block input clear button doesn't reset the search @iFlameing [#4828](https://github.com/plone/volto/issues/4828)
+- Fix Volto contents - set properties Exclude from navigation - bad request, set exclude_from_nav to boolean [#4855](https://github.com/plone/volto/issues/4855)
+- Add XSendfile headers to files and images middleware @instification [#4984](https://github.com/plone/volto/issues/4984)
+- search-block: translate some missing strings to german and fix a typo. @pbauer [#4996](https://github.com/plone/volto/issues/4996)
+- Allow LIST_ACTIONS to be called as standalone when actions expander is present @sneridagh [#5021](https://github.com/plone/volto/issues/5021)
+- Fix for 'no value' entry in table of content field. @satyam4p [#5022](https://github.com/plone/volto/issues/5022)
+- Fix updating roles when username contains a period (.). @nileshgulia1 [#5025](https://github.com/plone/volto/issues/5025)
+- Allow a user to register when they use an email address as their username. [#5031](https://github.com/plone/volto/issues/5031) @mehedikhan72 [#5031](https://github.com/plone/volto/issues/5031)
+- Fix handling of exceptions in reducers. @davisagli [#5069](https://github.com/plone/volto/issues/5069)
+- Add missing i18n for ToC block. @davisagli [#5073](https://github.com/plone/volto/issues/5073)
+- Fix i18n for link settings fieldset in the image block @iRohitSingh [#5075](https://github.com/plone/volto/issues/5075)
+- Prevent caching the outdated browser message in a shared cache. @davisagli [#5076](https://github.com/plone/volto/issues/5076)
+
+### Documentation
+
+- Fix 302 redirect in changelog. @stevepiercy [#5068](https://github.com/plone/volto/issues/5068)
+
+
 ## 16.22.0 (2023-07-23)
 
 ### Feature
