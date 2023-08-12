@@ -1293,6 +1293,11 @@ msgstr "Inserisci la tua nuova password. Minimo 8 caratteri."
 msgid "Enter your username for verification."
 msgstr "Inserisci il tuo username per la verifica."
 
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Entries
+msgid "Entries"
+msgstr ""
+
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -1615,6 +1620,11 @@ msgstr "Nascondi il filtro"
 msgid "Hide filters"
 msgstr "Nascondi i filtri"
 
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Hide title
+msgid "Hide title"
+msgstr ""
+
 #: components/manage/History/History
 #: components/manage/Toolbar/More
 # defaultMessage: History
@@ -1936,6 +1946,11 @@ msgstr "Link ad altro"
 # defaultMessage: Link redirect view
 msgid "Link redirect view"
 msgstr "Vista collegamento"
+
+#: components/manage/Blocks/Image/schema
+# defaultMessage: Link settings
+msgid "Link settings"
+msgstr ""
 
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
@@ -2426,6 +2441,11 @@ msgstr "Apri menu"
 # defaultMessage: Open object browser
 msgid "Open object browser"
 msgstr "Apri object browser"
+
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Ordered
+msgid "Ordered"
+msgstr ""
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Origin
@@ -3131,6 +3151,11 @@ msgstr "Invia"
 msgid "Send a confirmation mail with a link to set the password."
 msgstr "Invia una mail di conferma con un link per impostare la password."
 
+#: components/theme/Error/ServerError
+# defaultMessage: Server Error
+msgid "Server Error"
+msgstr ""
+
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Set my password
 msgid "Set my password"
@@ -3363,6 +3388,11 @@ msgstr "Stato"
 # defaultMessage: Status
 msgid "Status"
 msgstr "Status"
+
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Sticky
+msgid "Sticky"
+msgstr ""
 
 #: components/manage/Multilingual/CompareLanguages
 # defaultMessage: Stop compare
@@ -3659,6 +3689,7 @@ msgstr "Ora"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Teaser/schema
+#: components/manage/Blocks/ToC/Schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
@@ -4083,6 +4114,11 @@ msgstr "Ci scusiamo per l'inconveniente, ma il backend del sito a cui stai cerca
 # defaultMessage: We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for.
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
 msgstr "Ci scusiamo per l'inconveniente, la pagina cui stai provando ad accedere non esiste a questo indirizzo. Puoi usare il link qui sotto per trovare quello che stavi cercando."
+
+#: components/theme/Error/ServerError
+# defaultMessage: We apologize for the inconvenience, but there was an unexpected error on the server.
+msgid "We apologize for the inconvenience, but there was an unexpected error on the server."
+msgstr "Ci scusiamo per l'inconveniente. Si è verificato un errore non previsto."
 
 #: components/theme/Forbidden/Forbidden
 # defaultMessage: We apologize for the inconvenience, but you don't have permissions on this resource.
@@ -4797,6 +4833,7 @@ msgstr "Testo"
 msgid "title"
 msgstr "Titolo"
 
+#: components/manage/Blocks/ToC/Schema
 #: config/Blocks
 # defaultMessage: Table of Contents
 msgid "toc"
