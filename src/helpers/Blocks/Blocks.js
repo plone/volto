@@ -413,13 +413,13 @@ export function applySchemaDefaults({ data = {}, schema, intl }) {
     Object.keys(schema.properties).reduce((accumulator, currentField) => {
       return typeof schema.properties[currentField].default !== 'undefined'
         ? {
-            ...accumulator,
-            [currentField]: schema.properties[currentField].default,
-          }
+          ...accumulator,
+          [currentField]: schema.properties[currentField].default,
+        }
         : intl &&
           schema.properties[currentField].schema &&
-          !(schema.properties[currentField].widget === 'object_list') // TODO: this should be renamed as itemSchema
-        ? {
+          !(schema.properties[currentField].type === 'object_list') // TODO: this should be renamed as itemSchema
+          ? {
             ...accumulator,
             [currentField]: {
               ...applySchemaDefaults({
@@ -427,16 +427,16 @@ export function applySchemaDefaults({ data = {}, schema, intl }) {
                 schema:
                   typeof schema.properties[currentField].schema === 'function'
                     ? schema.properties[currentField].schema({
-                        data: accumulator[currentField],
-                        formData: accumulator[currentField],
-                        intl,
-                      })
+                      data: accumulator[currentField],
+                      formData: accumulator[currentField],
+                      intl,
+                    })
                     : schema.properties[currentField].schema,
                 intl,
               }),
             },
           }
-        : accumulator;
+          : accumulator;
     }, {}),
     data,
   );
@@ -537,15 +537,15 @@ export const buildStyleClassNamesExtenders = ({
 export const getPreviousNextBlock = ({ content, block }) => {
   const previousBlock =
     content['blocks'][
-      content['blocks_layout'].items[
-        content['blocks_layout'].items.indexOf(block) - 1
-      ]
+    content['blocks_layout'].items[
+    content['blocks_layout'].items.indexOf(block) - 1
+    ]
     ];
   const nextBlock =
     content['blocks'][
-      content['blocks_layout'].items[
-        content['blocks_layout'].items.indexOf(block) + 1
-      ]
+    content['blocks_layout'].items[
+    content['blocks_layout'].items.indexOf(block) + 1
+    ]
     ];
 
   return [previousBlock, nextBlock];
