@@ -69,7 +69,7 @@ EventViewWithoutLinkToApiInTheText.args = {
   },
 };
 export default {
-  title: 'Public components/EventView',
+  title: 'Public components/View/EventView',
   component: EventViewComponent,
   decorators: [
     (Story) => (
