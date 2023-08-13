@@ -59,6 +59,7 @@ export const settings = {
 ```
 
 or use the environment variable:
+
 ```bash
 RAZZLE_DEV_PROXY_API_PATH=http://localhost:8081/mysite yarn start
 ```
@@ -67,4 +68,4 @@ This redefines the request path from the internal proxy of the server side Node.
 
 ### Advanced usage
 
-See [](../recipes/environment-variables.md) for recipes on internal proxy usage.
+See {doc}`../recipes/environment-variables` for recipes for internal proxy usage.
