@@ -55,7 +55,7 @@ Then, in your `theme.config` change the following and the needed variables:
 
 ### Use sass loader
 
-If you have to load sass, you will need `razzle-plugin-scss` and you will have to customize `razzle.config.js` integrating that plugin into razzle configuration.
+If you have to load Sass, you will need `razzle-plugin-scss` and you will have to customize `razzle.config.js` integrating that plugin into Razzle configuration.
 
 Example:
 
