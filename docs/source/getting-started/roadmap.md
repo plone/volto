@@ -83,7 +83,7 @@ Not really advanced but perhaps less common, here's some stuff you can do:
 
 - Provide backend-based integration to your Volto code, write `plone.restapi`
   endpoints, adapters and other extensions
-- Custom integration for blocks to the backend using the block transfomers
+- Custom integration for blocks to the backend using the block transformers
   concept
 - Write Express middleware for Volto's server
 - Customize Volto's Webpack configuration or project loader using Razzle
