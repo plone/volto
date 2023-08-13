@@ -81,7 +81,7 @@ can be really productive.
 
 Not really advanced but perhaps less common, here's some stuff you can do:
 
-- Provide backend-based integration to your Volto code, write plone.restapi
+- Provide backend-based integration to your Volto code, write `plone.restapi`
   endpoints, adapters and other extensions
 - Custom integration for blocks to the backend using the block transfomers
   concept

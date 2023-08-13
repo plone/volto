@@ -73,10 +73,10 @@ hold the Cypress integration tests and trigger the CI tests.
 If you're releasing your add-on to `npmjs.com`, please consider adding the
 following tags, next to your add-on-specific tags:
 
-- volto-addon
-- volto
-- plone
-- react
+- `volto-addon`
+- `volto`
+- `plone`
+- `react`
 
 ## Include in collective/awesome-volto
 

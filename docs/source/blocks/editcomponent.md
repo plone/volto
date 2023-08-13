@@ -195,7 +195,7 @@ this.props.openObjectBrowser({
 
 This widget shows an objectBrowser to find content/contents on site.
 
-It is the default widget for vocabulary fields that uses plone.app.vocabularies.Catalog.
+It is the default widget for vocabulary fields that uses `plone.app.vocabularies.Catalog`.
 
 It works in 3 different mode:
 

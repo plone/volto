@@ -865,8 +865,8 @@ Not really a breaking change, but it's worth noting it. By default, Volto 14 com
 {doc}`../configuration/locking` enabled, if the backend supports it. Thus:
 
 - Upgrade Plone RestAPI
-  - **plone.restapi**>=`8.9.0` (Plone 5+)
-  - **plone.restapi**>=`7.4.0` (Plone 4)
+  - `plone.restapi`>=`8.9.0` (Plone 5+)
+  - `plone.restapi`>=`7.4.0` (Plone 4)
 - Update `plone:CORSPolicy` to include `Lock-Token` within `allow_headers`:
 
 ```xml
@@ -2090,7 +2090,7 @@ Plone RESTAPI was updated for that purpose too, and running an upgrade step (do 
 
 This is the version compatibility table across all the packages involved:
 
-Volto 4 - plone.restapi >= 5.0.0 - kitconcept.voltodemo >= 2.0
+Volto 4 - `plone.restapi` >= 5.0.0 - `kitconcept.voltodemo` >= 2.0
 
 ```{note}
 The renaming happened in Volto 4 alpha.10 and plone.restapi 5.0.0. Volto 4 alpha versions under that release use older versions of `plone.restapi` and `kitconcept.voltodemo`, however if you are using alpha releases it's recommended to upgrade to the latest alpha or the final release of Volto 4.
@@ -2274,7 +2274,7 @@ Then update your `package.json` to Volto 3.x.
 ```
 
 Volto 3.x is compatible with the new changes introduced in the vocabularies
-endpoint in plone.restapi 4.0.0. If you custom-build a widget based in the
+endpoint in `plone.restapi` 4.0.0. If you custom-build a widget based in the
 Volto ones, you should update them as well. Volto updated its own widget set to
 support them:
 

@@ -44,5 +44,4 @@ As parameters you can use:
 - `thumb_scale`: String, Override thumb scale
 - `no_thumbs`: Bool, Suppress thumbs
 
-Notice the similarity to the classic Plone navigation portlet, as the
-plone.restapi implementation is based on that original code.
+Notice the similarity to the classic Plone navigation portlet, as the `plone.restapi` implementation is based on that original code.
