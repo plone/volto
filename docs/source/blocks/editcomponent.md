@@ -21,7 +21,7 @@ The sidebar and the object browser are the main ones.
 
 ## Sidebar
 
-We can use the new sidebar when building our blocks' edit components.
+We can use the new sidebar when building our block's edit components.
 The sidebar is a new UI asset that is available in Volto 4.
 You need to instantiate it this way:
 
@@ -207,7 +207,7 @@ It works in 3 different mode:
 
 #### `return` prop
 
-The object widget returns always an array, even if it's meant to have only one object in return. In order to fix that situation and do not issue a breaking change, a `return` prop is being introduced, so if it's value is `single`, then it returns a single value:
+The object widget returns always an array, even if it's meant to have only one object in return. In order to fix that situation and do not issue a breaking change, a `return` prop is being introduced, so if its value is `single`, then it returns a single value:
 
 ```js
 export const Image = () => <ObjectBrowserWidget mode="image" return="single" />;
