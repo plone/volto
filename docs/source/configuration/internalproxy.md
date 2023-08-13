@@ -18,9 +18,9 @@ develop/test drive/demo Volto.
 
 To understand the need for the internal proxy, there are three processes running in a Volto website:
 
-1. A frontend web application running in your browser (Javascript)
-2. A Node.js server process that delivers the javascript to the client and does
-   {term}`server-side rendering` (SSR) of your pages on first request (Javascript, the
+1. A frontend web application running in your browser (JavaScript)
+2. A Node.js server process that delivers the JavaScript to the client and does
+   {term}`server-side rendering` (SSR) of your pages on first request (JavaScript, the
    Razzle package is used for SSR)
 3. A Plone server process that stores and delivers all content through a REST API (Python)
 
@@ -30,8 +30,8 @@ The default values from Volto configuration expect a Plone content backend locat
 
 What happens in the default development configuration/setup:
 
-* The client side Volto javascript files precooked HTML (SSR) is served from http://localhost:3000/ by the Node.js server process
-* The client javascript does API requests for content and other data on the same url at http://localhost:3000/++api++/
+* The client side Volto JavaScript files precooked HTML (SSR) is served from http://localhost:3000/ by the Node.js server process
+* The client JavaScript does API requests for content and other data on the same url at http://localhost:3000/++api++/
 * The Node.js service its internal proxy requests the data from the Plone content backend api and delivers
 back json to the frontend.
 * The web browser application is happy, because all connections go through the same URL and no CORS related security issues will be triggered.
