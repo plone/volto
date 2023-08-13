@@ -199,11 +199,11 @@ It is the default widget for vocabulary fields that uses `plone.app.vocabularies
 
 It works in 3 different mode:
 
-- **image**: The field value is an object.
-  The path of selected item is saved in 'url' property of value object. (fieldName: {url:''})
-- **link**: The field value is an object.
-  The path of selected item is saved in 'href' property of value object. (fieldName: {href:''})
-- **multiple**: The field value is an array of objects.
+- `image`: The field value is an object.
+  The path of selected item is saved in `url` property of value object. (`fieldName: {url:''}`)
+- `link`: The field value is an object.
+  The path of selected item is saved in `href` property of value object. (`fieldName: {href:''}`)
+- `multiple`: The field value is an array of objects.
 
 #### `return` prop
 
@@ -219,8 +219,8 @@ This situation will be fixed in subsequent Volto releases.
 
 #### PropDataName vs dataName
 
-- **dataName** is the prop inside _data_ object, used for _link_ and _image_ mode.
-- **PropDataName** is the name of field wich value is _data_. It's used for _multiple_ mode.
+- `dataName` is the prop inside `data` object, used for `link` and `image` mode.
+- `PropDataName` is the name of field wich value is `data`. It's used for `multiple` mode.
 
 For example:
 
@@ -230,9 +230,9 @@ content:{ '@id': 'page-1', related_pages:[], image:{url:""}, link:{href:""} }
 
 if we use object browser widget for fields:
 
-- **related_pages**: propDataName is _related_pages_ and dataName is null,
-- **image**: dataName is _url_ and propDataName is null
-- **link**: dataName is _href_ and propDataName is null
+- `related_pages`: propDataName is `related_pages` and `dataName` is `null`.
+- `image`: dataName is `url` and `propDataName` is `null`.
+- `link`: dataName is `href` and `propDataName` is `null`.
 
 #### Usage in blocks schema
 
@@ -273,7 +273,7 @@ tokenized value, as if it was selected via the Object Browser widget.
 
 #### ObjectBrowserWidgetMode()
 
-Returns the component widget with _mode_ passed as argument.
+Returns the component widget with `mode` passed as argument.
 
 The default mode for ObjectBrowserWidget is multiple. If you would like to use this widget with link or image mode as widget field for a specific field id (for example), you could specify in in config.js as:
 
@@ -299,7 +299,7 @@ If `selectableTypes` is set in `widgetOptions.pattern_options`, then only items 
 <ObjectBrowserWidget ... widgetOptions={{pattern_options:{selectableTypes:['News Item','Event']}}}>
 ```
 
-You can also set the _selectableTypes_ from plone when declaring a field for contenttype:
+You can also set the `selectableTypes` from `plone` when declaring a field for `contenttype`:
 
 ```jsx
 form.widget(
@@ -313,15 +313,15 @@ form.widget(
 );
 ```
 
-#### MaximumSelectionSize
+#### `maximumSelectionSize`
 
-If **maximumSelectionSize** is set in _widgetOptions.pattern_options_, widget allows to select at most the **maximumSelectionSize** number of items defined in _widgetOptions.pattern_options.maximumSelectionSize_.
+If `maximumSelectionSize` is set in `widgetOptions.pattern_options`, the widget allows to select at most the `maximumSelectionSize` number of items defined in `widgetOptions.pattern_options.maximumSelectionSize`.
 
 ```jsx
 <ObjectBrowserWidget ... widgetOptions={{pattern_options:{maximumSelectionSize:2}}}>
 ```
 
-You can also set the _maximumSelectionSize_ from plone when declaring a field for contenttype:
+You can also set the `maximumSelectionSize` from `plone` when declaring a field for `contenttype`:
 
 ```jsx
 form.widget(
