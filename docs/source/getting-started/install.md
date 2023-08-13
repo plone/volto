@@ -4,7 +4,7 @@ myst:
     "description": "Installing Volto"
     "property=og:description": "Installing Volto"
     "property=og:title": "Getting Started"
-    "keywords": "Volto, Plone, frontend, React, install, nvm, NodeJS, JavaScript"
+    "keywords": "Volto, Plone, frontend, React, install, nvm, Node.js , JavaScript"
 ---
 
 (frontend-getting-started-label)=
@@ -45,25 +45,25 @@ They assume you have a macOS/Linux machine.
 There are three processes continuously running when you have a working Volto website:
 
 1. A frontend web application running in your browser (JavaScript)
-2. A Node.js server process that delivers the JavaScript to the client and does
+2. A {term}`Node.js` server process that delivers the JavaScript to the client and does
    {term}`server-side rendering` (SSR) of your pages on first request (JavaScript, the
    Razzle package is used for SSR)
 3. A Plone server process that stores and delivers all content through a REST API (Python)
 
 When you start with Volto most of the first customisations you will want to make (or maybe
 ever need to make) are in the JavaScript code used in the browser and Razzle process. Therefore
-this getting started chapter will focus on installing a NodeJS/JavaScript environment locally
+this getting started chapter will focus on installing a Node.js/JavaScript environment locally
 and suggest you start the API backend using a container.
 
 
 (frontend-getting-started-install-nvm-label)=
 
-## Install nvm (NodeJS version manager)
+## Install nvm (Node.js version manager)
 
-If you have a working Node JavaScript development already set up on your machine or you prefer
+If you have a working Node.js JavaScript development already set up on your machine or you prefer
 another management tool to install/maintain Node.js this step is not needed. If you have less
 experience with setting up JavaScript, it's a good idea to integrate nvm for development, as
-it provides easy access to any NodeJS released version.
+it provides easy access to any Node.js released version.
 
 1.  Open a terminal console and type:
 
@@ -86,14 +86,14 @@ it provides easy access to any NodeJS released version.
     nvm version
     ```
 
-4.  Install any active LTS version of NodeJS (https://github.com/nodejs/release#release-schedule):
+4.  Install any active LTS version of Node.js (https://github.com/nodejs/release#release-schedule):
 
     ```bash
     nvm install 18
     nvm use 18
     ```
 
-5.  Test NodeJS:
+5.  Test Node.js :
 
     ```bash
     node -v
@@ -104,8 +104,8 @@ it provides easy access to any NodeJS released version.
     ```
 
     ```{note}
-    Volto supports currently active NodeJS LTS versions based on [NodeJS
-    Releases page](https://github.com/nodejs/release#release-schedule), starting with Node 16 LTS.
+    Volto supports currently active Node.js LTS versions based on [Node.js
+    Releases page](https://github.com/nodejs/release#release-schedule), starting with Node.js 16 LTS.
     ```
 
 
@@ -122,7 +122,7 @@ npm install -g yo
 
 (frontend-getting-started-yarn-label)=
 
-## Yarn (NodeJS package manager)
+## Yarn (Node.js package manager)
 
 Install the Yarn Classic version (not the 2.x one!), of the popular Node.js package manager.
 

@@ -30,16 +30,16 @@ The default values from Volto configuration expect a Plone content backend locat
 
 What happens in the default development configuration/setup:
 
-* The client side Volto javascript files precooked HTML (SSR) is served from http://localhost:3000/ by the NodeJS server process
+* The client side Volto javascript files precooked HTML (SSR) is served from http://localhost:3000/ by the Node.js server process
 * The client javascript does API requests for content and other data on the same url at http://localhost:3000/++api++/
-* The NodeJS service its internal proxy requests the data from the Plone content backend api and delivers
+* The Node.js service its internal proxy requests the data from the Plone content backend api and delivers
 back json to the frontend.
 * The web browser application is happy, because all connections go through the same URL and no CORS related security issues will be triggered.
 
 ```{tip}
 You could also use the internal proxy for production setups. For convenience and for
 testing/demoing using the stock build, it is also enabled in production mode since
-Volto 14. But it is bad for performance because the server side running Node process
+Volto 14. But it is bad for performance because the server side running Node.js process
 is also responsable for generating the SSR HTML. With nginx, Apache or another
 'reverse proxy' you can also create an internal API mount which is more suited for
 that. For more deployment information see {doc}`../deploying/seamless-mode`.
@@ -63,7 +63,7 @@ or use the environment variable:
 RAZZLE_DEV_PROXY_API_PATH=http://localhost:8081/mysite yarn start
 ```
 
-This redefines the request path from the internal proxy of the server side Node proces to the Plone content backend API, but leaves the frontend Volto process making all content requests to http://localhost:3000/++api++/
+This redefines the request path from the internal proxy of the server side Node.js process to the Plone content backend API, but leaves the frontend Volto process making all content requests to `http://localhost:3000/++api++/`.
 
 ### Advanced usage
 

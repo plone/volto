@@ -35,7 +35,7 @@ you can compute and pass a custom path like:
 As parameters you can use:
 
 - `name`: The title of the navigation tree.
-- `root_path`: Root node path, can be "frontend path", derived from router
+- `root_path`: Root Node.js path, can be "frontend path", derived from router
 - `includeTop`: Bool, Include top nodeschema
 - `currentFolderOnly`: Bool, Only show the contents of the current folder.
 - `topLevel`: Int, Start level

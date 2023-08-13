@@ -28,16 +28,16 @@ Thus it is safe to run it on top of your project and answer the prompts.
 
 ## Upgrading to Volto 17.x.x
 
-### Ending support for NodeJS 14
+### Ending support for Node.js 14
 
-Long Term Support for NodeJS 14 by the NodeJS community ends in April 2023.
-Volto 17 no longer supports NodeJS 14.
-Please update your projects to a NodeJS LTS version, where either 16 or 18 is supported at the moment of this writing.
+Long Term Support for {term}`Node.js` 14 by the Node.js community ends in April 2023.
+Volto 17 no longer supports Node.js 14.
+Please update your projects to a Node.js LTS version, where either 16 or 18 is supported at the moment of this writing.
 Version 18 is recommended.
 
 #### localhost now resolves to an IPv6 address
 
-NodeJS 18 prefers to resolve `localhost` to an IPv6 address instead of IPv4.
+Node.js 18 prefers to resolve `localhost` to an IPv6 address instead of IPv4.
 If you are setting `RAZZLE_API_PATH` to a URL that includes `localhost`,
 change the hostname to `127.0.0.1` instead.
 
@@ -217,11 +217,11 @@ It is recommended to go the extra mile and migrate the `text` blocks to `slate` 
 Use the `blocks-conversion-tool`.
 See https://github.com/plone/blocks-conversion-tool for more information.
 
-### Deprecating NodeJS 12
+### Deprecating Node.js 12
 
-Since April 30, 2022, NodeJS 12 is out of Long Term Support by the NodeJS community.
-NodeJS 12 is deprecated in Volto 13.
-Please update your projects to a NodeJS LTS version, where either 14 or 16 is supported at the moment of this writing.
+Since April 30, 2022, Node.js 12 is out of Long Term Support by the Node.js community.
+Node.js 12 is deprecated in Volto 13.
+Please update your projects to a Node.js LTS version, where either 14 or 16 is supported at the moment of this writing.
 Version 16 is recommended.
 
 ### Upgraded to Razzle 4
@@ -337,7 +337,7 @@ We updated Volto to be able to use it, however some changes have to be made in y
     nodeLinker: node-modules
     ```
 
-    Then, if you are using Node >=16.10 run:
+    Then, if you are using Node.js >=16.10 run:
 
     ```shell
     corepack enable
@@ -352,7 +352,7 @@ We updated Volto to be able to use it, however some changes have to be made in y
     ```
 
     ```{important}
-    It is highly recommended that you use the latest Node 16.
+    It is highly recommended that you use the latest Node.js 16.
     ```
 
 2.  Change your root project `Makefile` to include these commands:
@@ -848,7 +848,7 @@ Apply the following diff to your add-on's `babel.config.js`:
 ```
 
 ```{note}
-For convenience the `i18n` script is now an executable in the node environment.
+For convenience the `i18n` script is now an executable in the Node.js environment.
 ```
 
 ### Removal of the old configuration system based on imports
@@ -928,10 +928,10 @@ The `getVocabulary` action has changed API. Before, it used separate positional 
 
 ## Upgrading to Volto 13.x.x
 
-### Deprecating NodeJS 10
+### Deprecating Node.js 10
 
-Since April 30th, 2021 NodeJS 10 is out of Long Term Support by the NodeJS community, so
-we are deprecating it in Volto 13. Please update your projects to a NodeJS LTS version
+Since April 30th, 2021 Node.js 10 is out of Long Term Support by the Node.js community, so
+we are deprecating it in Volto 13. Please update your projects to a Node.js LTS version
 (12 or 14 at the moment of this writing).
 
 ### Seamless mode is the default in development mode
@@ -1109,8 +1109,8 @@ the config every time we need it, then the exported config data in that module
 It's been a while since we were experiencing undesired side effects from "circular import
 dependency" problems in Volto, due to the very nature of the solution (importing the
 `~/config`). Although they aren't very noticeable, they are there, waiting to bite
-us. In fact, circular dependencies are common in NodeJS world, and the very nature of
-how it works make them "workable" thanks to the NodeJS own import resolution algorithm.
+us. In fact, circular dependencies are common in Node.js world, and the very nature of
+how it works make them "workable" thanks to the Node.js own import resolution algorithm.
 So the "build" always works, although we have the circular dependencies, but that leads to weird problems
 like (just to mention one of them) the {term}`hot module replacement` (HMR) not working properly.
 
@@ -1679,11 +1679,11 @@ First, update the `package.json` of your Volto project to Volto 6.x.x.
 This release includes a number of changes to the internal dependencies. If you have problems building your project, you might need to remove your `node_modules` and, ultimately, also remove your `yarn.lock` file. Then run again `yarn` for rebuilding the dependencies.
 ```
 
-### Upgrade to Node 12
+### Upgrade to Node.js 12
 
-We have now dependencies that requires `node >=10.19.0`. Although Node 10 has still LTS
+We have now dependencies that requires `node >=10.19.0`. Although Node.js 10 has still LTS
 "maintenance" treatment (see https://github.com/nodejs/release#release-schedule) the recommended path
-is that you use from now on node 12 which is LTS since last October.
+is that you use from now on Node.js 12 which is LTS since last October.
 
 ### New Razzle version and related development dependencies
 

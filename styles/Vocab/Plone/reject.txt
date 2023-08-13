@@ -1,10 +1,2 @@
-api
-Javascript
-javascript
 [^.]js
-node
-[Nn]odejs
-NPM
-plone
-razzle
-volto
+NodeJS

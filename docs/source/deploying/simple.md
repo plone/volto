@@ -9,7 +9,7 @@ myst:
 
 # Simple deployment
 
-Volto is a Node application that runs on your machine/server and listens to a port. Once you are ready to deploy it, you should build it running:
+Volto is a Node.js application that runs on your machine/server and listens to a port. Once you are ready to deploy it, you should build it running:
 
 ```bash
 $ yarn build
@@ -35,7 +35,7 @@ $ NODE_ENV=production node build/server.js
 
 This will start Volto in the PORT specified in the build command, and will issue internal API queries to the RAZZLE_API_PATH specified as well.
 
-The simplest deployment is to start this node process in your server by any mean of your choice (systemd, process manager, etc) and manage its lifecycle.
+The simplest deployment is to start this Node.js process in your server by any mean of your choice (systemd, process manager, etc) and manage its lifecycle.
 
 ## Reverse proxies
 
