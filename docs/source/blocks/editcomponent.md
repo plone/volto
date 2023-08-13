@@ -429,15 +429,15 @@ class Example extends Component {
 
 The current block engine is available as the separate `BlocksForm` component,
 used to be a part of the `Form.jsx` component. It has been previously exposed
-as the [@eeacms/volto-blocks-form](https://github.com/eea/volto-blocks-form)
+as the [`@eeacms/volto-blocks-form`](https://github.com/eea/volto-blocks-form)
 addon and reused in several other addons, so you can find integration examples
 in addons such as
-[volto-columns-block](https://github.com/eea/volto-columns-block),
-[volto-accordion-block](https://github.com/rohberg/volto-accordion-block),
-[@eeacms/volto-accordion-block](https://github.com/eea/volto-accordion-block),
-[@eeacms/volto-grid-block](https://github.com/eea/volto-accordion-block), but
+[`volto-columns-block`](https://github.com/eea/volto-columns-block),
+[`volto-accordion-block`](https://github.com/rohberg/volto-accordion-block),
+[`@eeacms/volto-accordion-block`](https://github.com/eea/volto-accordion-block),
+[`@eeacms/volto-grid-block`](https://github.com/eea/volto-accordion-block), but
 probably the simplest implementation to follow is in the
-[@eeacms/volto-group-block](https://github.com/eea/volto-group-block)
+[`@eeacms/volto-group-block`](https://github.com/eea/volto-group-block)
 
 Notice that the `BlocksForm` component allows overriding the edit block
 wrapper and allows passing a custom `blocksConfig` configuration object, for
@@ -507,6 +507,6 @@ You can also reuse the DragDropList component as a separate component:
   </DragDropList>
 ```
 
-Check the source code of volto-columns-block and
-[volto-taxonomy](https://github.com/eea/volto-taxonomy/) for details on
+Check the source code of `volto-columns-block` and
+[`volto-taxonomy`](https://github.com/eea/volto-taxonomy/) for details on
 how to reuse this component.

@@ -1099,7 +1099,7 @@ messages for the used translations is advisable, but not required.
 
 (frontend-upgrade-guide-volto-configuration-registry-label)=
 
-### Volto Configuration Registry
+### Volto configuration registry
 
 The configuration object in Volto is located in the `~/config` module and uses it as
 container of Volto's config taking advantage of the ES6 module system. So we "import"
@@ -1957,7 +1957,7 @@ const initialBlocks = {};
 
 For better resource grouping, the `ImageSidebar` component has been moved to the `Image` block component directory: `components/manage/Blocks/Image`
 
-### Copy `yarn.lock` from volto-starter-kit in Alpha 17
+### Copy `yarn.lock` from `volto-starter-kit` in Alpha 17
 
 Due to changes in the dependency tree, it's required to use a specific `yarn.lock` file by deleting it and copy the one here: https://github.com/plone/volto-starter-kit/blob/master/yarn.lock before upgrading to Volto alpha 17.
 

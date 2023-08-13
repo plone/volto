@@ -74,7 +74,7 @@ configurations methods, making it possible to selectively choose which specific
 add-on functionality you want to load.
 
 In your Volto project's ``package.json`` you can allow the add-on to alter the
-global configuration by adding, in the `addons` key, a list of volto add-on
+global configuration by adding, in the `addons` key, a list of Volto add-on
 package names, like:
 
 ```js
@@ -439,9 +439,9 @@ in your add-on's `addons` key, just like you do in your project. By doing so,
 that other add-on's configuration loader is executed first, so you can depend on
 the configuration being already applied. Another benefit is that you'll have
 to declare only the "top level" add-on in your project, the dependencies will be
-discovered and automatically treated as Volto add-ons. For example, volto-slate
-depends on volto-object-widget's configuration being already applied, so
-volto-slate can declare in its `package.json`:
+discovered and automatically treated as Volto add-ons. For example, `volto-slate`
+depends on `volto-object-widget`'s configuration being already applied, so
+`volto-slate` can declare in its `package.json`:
 
 ```json
 {
