@@ -32,7 +32,7 @@ What happens in the default development configuration/setup:
 
 * The client side Volto JavaScript files precooked HTML (SSR) is served from http://localhost:3000/ by the Node.js server process
 * The client JavaScript does API requests for content and other data on the same url at http://localhost:3000/++api++/
-* The Node.js service its internal proxy requests the data from the Plone content backend api and delivers
+* The Node.js service its internal proxy requests the data from the Plone content backend API and delivers
 back json to the frontend.
 * The web browser application is happy, because all connections go through the same URL and no CORS related security issues will be triggered.
 
