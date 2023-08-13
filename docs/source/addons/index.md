@@ -32,7 +32,7 @@ by Babel), whole-process customization via razzle.extend.js and
 integration with Volto's {term}`configuration registry`.
 ```
 
-The add-on can be published to an NPM registry or directly installed from github
+The add-on can be published to an npm registry or directly installed from github
 by Yarn. By using [mrs-develop](https://github.com/collective/mrs-developer),
 it's possible to have a workflow similar to zc.buildout's mr.developer, where
 you can "checkout" an add-on for development.
@@ -56,7 +56,7 @@ You can install a Volto add-on just like any other JS package:
 yarn add name-of-add-on
 ```
 
-If the add-on is not published on NPM, you can retrieve it directly from Github:
+If the add-on is not published on npm, you can retrieve it directly from Github:
 
 ```shell
 yarn add collective/volto-dropdownmenu
