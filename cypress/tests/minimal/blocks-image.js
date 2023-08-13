@@ -3,7 +3,7 @@ describe('Blocks Tests', () => {
     cy.intercept('GET', `/**/*?expand*`).as('content');
     cy.intercept('GET', '/**/Document').as('schema');
     cy.intercept('POST', '*').as('saveImage');
-    cy.intercept('GET', '/**/image.png/@@images/image').as('getImage');
+    cy.intercept('GET', '/**/image.png/@@images/image-*').as('getImage');
     // given a logged in editor and a page in edit mode
     cy.autologin();
     cy.createContent({
@@ -115,7 +115,7 @@ describe('Blocks Tests', () => {
     // then image src must be equal to image name
     cy.get('.block img')
       .should('have.attr', 'src')
-      .and('eq', '/my-page/image.png/@@images/image');
+      .and('contains', '/my-page/image.png/@@images/image-');
 
     cy.get('.block img')
       .should('be.visible')
@@ -144,7 +144,7 @@ describe('Blocks Tests', () => {
 
     cy.get('.block img')
       .should('have.attr', 'src')
-      .and('eq', '/image.png/@@images/image');
+      .and('contains', '/image.png/@@images/image-');
 
     cy.get('.block img')
       .should('be.visible')
