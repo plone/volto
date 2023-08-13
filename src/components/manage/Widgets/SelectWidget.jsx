@@ -1,6 +1,6 @@
-import React, { useState,useEffect } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useSelector,useDispatch,shallowEqual } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { compose } from 'redux';
 import { map } from 'lodash';
 import { defineMessages, useIntl } from 'react-intl';
@@ -10,7 +10,7 @@ import {
   getVocabFromItems,
 } from '@plone/volto/helpers';
 import { FormFieldWrapper } from '@plone/volto/components';
-import { getVocabulary, getVocabularyTokenTitle } from '@plone/volto/actions';
+import { getVocabulary } from '@plone/volto/actions';
 import { normalizeValue } from '@plone/volto/components/manage/Widgets/SelectUtils';
 
 import {
@@ -71,133 +71,115 @@ const messages = defineMessages({
   },
 });
 
-const SelectWidget=(props)=> {
-  const { id, choices, value, intl, onChange } = props;
+const SelectWidget = (props) => {
+  const { value, onChange, id, isDisabled } = props;
+  let { choices } = props;
+  const intl = useIntl();
+  const dispatch = useDispatch();
 
-  const dispatch=useDispatch();
-  const vocabBaseUrl = !props.choices
-  ? getVocabFromHint(props) ||
-    getVocabFromField(props) ||
-    getVocabFromItems(props)
-  : '';
+  const vocabBaseUrl = !choices
+    ? getVocabFromHint(props) ||
+      getVocabFromField(props) ||
+      getVocabFromItems(props)
+    : '';
 
-const vocabState =useSelector((state)=>
-  state.vocabularies?.[vocabBaseUrl]?.subrequests?.[state.intl.locale]);
+  const vocabState = useSelector(
+    (state) =>
+      state.vocabularies?.[vocabBaseUrl]?.subrequests?.[state.intl.locale],
+  );
+  const lang = useSelector((state) => state.intl.locale);
 
-      // If the schema already has the choices in it, then do not try to get the vocab,
-      // even if there is one
-      if (props.choices) {
-        return {
-          choices: props.choices,
-          lang: state.intl.locale,
-        };
-      } else if (vocabState) {
-        return {
-          vocabBaseUrl,
-          choices: vocabState?.items ?? [],
-          lang: state.intl.locale,
-        };
-        // There is a moment that vocabState is not there yet, so we need to pass the
-        // vocabBaseUrl to the component.
-      } else if (vocabBaseUrl) {
-        return {
-          vocabBaseUrl,
-          lang: state.intl.locale,
-        };
-      }
-      
-  useEffect(()=>{
-    if (
-      (!choices || choices?.length === 0) &&
-      props.vocabBaseUrl
-    ) {
-      dispatch(getVocabulary({
-        vocabNameOrURL: props.vocabBaseUrl,
-        size: -1,
-        subrequest: props.lang,
-      }));
+  if (vocabState) {
+    choices = vocabState?.items ?? [];
+  }
+
+  useEffect(() => {
+    if ((!choices || choices?.length === 0) && vocabBaseUrl) {
+      dispatch(
+        getVocabulary({
+          vocabNameOrURL: vocabBaseUrl,
+          size: -1,
+          subrequest: lang,
+        }),
+      );
     }
-  },[]);
+  }, [choices, vocabBaseUrl, lang, dispatch]);
 
-   
-    const normalizedValue = normalizeValue(choices, value, intl);
-    // Make sure that both disabled and isDisabled (from the DX layout feat work)
-    const disabled = props.disabled || props.isDisabled;
-    const Select = props.reactSelect.default;
+  const normalizedValue = normalizeValue(choices, value, intl);
+  // Make sure that both disabled and isDisabled (from the DX layout feat work)
+  const disabled = props.disabled || isDisabled;
+  const Select = props.reactSelect.default;
 
-    let options = props.vocabBaseUrl
-      ? props.choices
-      : [
-          ...map(choices, (option) => ({
-            value: option[0],
-            label:
-              // Fix "None" on the serializer, to remove when fixed in p.restapi
-              option[1] !== 'None' && option[1] ? option[1] : option[0],
-          })),
-          // Only set "no-value" option if there's no default in the field
-          // TODO: also if this.props.defaultValue?
-          ...(props.noValueOption && !props.default
-            ? [
-                {
-                  label: intl.formatMessage(messages.no_value),
-                  value: 'no-value',
-                },
-              ]
-            : []),
-        ];
+  let options = vocabBaseUrl
+    ? choices
+    : [
+        ...map(choices, (option) => ({
+          value: option[0],
+          label:
+            // Fix "None" on the serializer, to remove when fixed in p.restapi
+            option[1] !== 'None' && option[1] ? option[1] : option[0],
+        })),
+        // Only set "no-value" option if there's no default in the field
+        // TODO: also if this.props.defaultValue?
+        ...(props.noValueOption && !props.default
+          ? [
+              {
+                label: intl.formatMessage(messages.no_value),
+                value: 'no-value',
+              },
+            ]
+          : []),
+      ];
 
-    const isMulti = props.isMulti
-      ? props.isMulti
-      : id === 'roles' || id === 'groups' || props.type === 'array';
+  const isMulti = props.isMulti
+    ? props.isMulti
+    : id === 'roles' || id === 'groups' || props.type === 'array';
 
-    return (
-      <FormFieldWrapper {...props}>
-        <Select
-          id={`field-${id}`}
-          key={choices}
-          name={id}
-          menuShouldScrollIntoView={false}
-          isDisabled={disabled}
-          isSearchable={true}
-          className="react-select-container"
-          classNamePrefix="react-select"
-          isMulti={isMulti}
-          options={options}
-          styles={customSelectStyles}
-          theme={selectTheme}
-          components={{
-            ...(options?.length > 25 && {
-              MenuList,
-            }),
-            MultiValueContainer,
-            DropdownIndicator,
-            ClearIndicator,
-            Option: props.customOptionStyling || Option,
-          }}
-          value={normalizedValue}
-          placeholder={
-            props.placeholder ??
-            intl.formatMessage(messages.select)
-          }
-          onChange={(selectedOption) => {
-            if (isMulti) {
-              return onChange(
-                id,
-                selectedOption.map((el) => el.value),
-              );
-            }
+  return (
+    <FormFieldWrapper {...props}>
+      <Select
+        id={`field-${id}`}
+        key={choices}
+        name={id}
+        menuShouldScrollIntoView={false}
+        isDisabled={disabled}
+        isSearchable={true}
+        className="react-select-container"
+        classNamePrefix="react-select"
+        isMulti={isMulti}
+        options={options}
+        styles={customSelectStyles}
+        theme={selectTheme}
+        components={{
+          ...(options?.length > 25 && {
+            MenuList,
+          }),
+          MultiValueContainer,
+          DropdownIndicator,
+          ClearIndicator,
+          Option: props.customOptionStyling || Option,
+        }}
+        value={normalizedValue}
+        placeholder={props.placeholder ?? intl.formatMessage(messages.select)}
+        onChange={(selectedOption) => {
+          if (isMulti) {
             return onChange(
               id,
-              selectedOption && selectedOption.value !== 'no-value'
-                ? selectedOption.value
-                : undefined,
+              selectedOption.map((el) => el.value),
             );
-          }}
-          isClearable
-        />
-      </FormFieldWrapper>
-    );
-  }
+          }
+          return onChange(
+            id,
+            selectedOption && selectedOption.value !== 'no-value'
+              ? selectedOption.value
+              : undefined,
+          );
+        }}
+        isClearable
+      />
+    </FormFieldWrapper>
+  );
+};
 
 SelectWidget.propTypes = {
   id: PropTypes.string.isRequired,
@@ -205,8 +187,6 @@ SelectWidget.propTypes = {
   description: PropTypes.string,
   required: PropTypes.bool,
   error: PropTypes.arrayOf(PropTypes.string),
-  getVocabulary: PropTypes.func.isRequired,
-  getVocabularyTokenTitle: PropTypes.func.isRequired,
   choices: PropTypes.arrayOf(
     PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   ),
@@ -255,44 +235,7 @@ SelectWidget.defaultProps = {
   noValueOption: true,
   customOptionStyling: null,
 };
-export const SelectWidgetComponent = injectIntl(SelectWidget);
 
-export default compose(
-  injectLazyLibs(['reactSelect']),
-  connect(
-    (state, props) => {
-      const vocabBaseUrl = !props.choices
-        ? getVocabFromHint(props) ||
-          getVocabFromField(props) ||
-          getVocabFromItems(props)
-        : '';
+export const SelectWidgetComponent = SelectWidget;
 
-      const vocabState =
-        state.vocabularies?.[vocabBaseUrl]?.subrequests?.[state.intl.locale];
-
-      // If the schema already has the choices in it, then do not try to get the vocab,
-      // even if there is one
-      if (props.choices) {
-        return {
-          choices: props.choices,
-          lang: state.intl.locale,
-        };
-      } else if (vocabState) {
-        return {
-          vocabBaseUrl,
-          choices: vocabState?.items ?? [],
-          lang: state.intl.locale,
-        };
-        // There is a moment that vocabState is not there yet, so we need to pass the
-        // vocabBaseUrl to the component.
-      } else if (vocabBaseUrl) {
-        return {
-          vocabBaseUrl,
-          lang: state.intl.locale,
-        };
-      }
-      return { lang: state.intl.locale };
-    },
-    { getVocabulary, getVocabularyTokenTitle },
-  ),
-)(SelectWidgetComponent);
+export default compose(injectLazyLibs(['reactSelect']))(SelectWidgetComponent);
