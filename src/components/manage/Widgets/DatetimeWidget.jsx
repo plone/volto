@@ -68,9 +68,8 @@ const defaultTimeDateOnly = {
 };
 
 export const DatetimeWidgetComponent = (props) => {
-
   const { id, resettable, reactDates, widgetOptions } = props;
-  const intl=useIntl();
+  const intl = useIntl();
   const moment = props.moment.default;
   const lang = useSelector((state) => state.intl.locale);
   const [focused, setFocused] = useState(false);
