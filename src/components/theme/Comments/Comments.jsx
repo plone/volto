@@ -165,10 +165,10 @@ const Comments = (props) => {
 
   const hideReply = (commentId) => {
     const hasComment = prevcollapsedComments[commentId];
-    setcollapsedComments({
-      ...prevcollapsedComments,
+    setcollapsedComments((prevState) => ({
+      ...prevState,
       [commentId]: !hasComment,
-    });
+    }));
   };
 
   const onEdit = useCallback((value) => {
