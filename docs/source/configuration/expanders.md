@@ -4,7 +4,7 @@ myst:
     "description": "Configure the API expanders in Volto using the `settings.apiExpanders`"
     "property=og:description": "Configure the API expanders in Volto using the `settings.apiExpanders`"
     "property=og:title": "API expanders"
-    "keywords": "Volto, Plone, frontend, React, api expanders"
+    "keywords": "Volto, Plone, frontend, React, API expanders"
 ---
 
 # API expanders

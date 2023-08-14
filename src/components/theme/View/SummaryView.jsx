@@ -8,7 +8,6 @@ import PropTypes from 'prop-types';
 import { UniversalLink } from '@plone/volto/components';
 import { Container as SemanticContainer } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
-import PreviewImage from '../PreviewImage/PreviewImage';
 import config from '@plone/volto/registry';
 
 /**
@@ -20,6 +19,7 @@ import config from '@plone/volto/registry';
 const SummaryView = ({ content }) => {
   const Container =
     config.getComponent({ name: 'Container' }).component || SemanticContainer;
+  const PreviewImage = config.getComponent({ name: 'PreviewImage' }).component;
 
   return (
     <Container className="view-wrapper summary-view">
@@ -41,9 +41,10 @@ const SummaryView = ({ content }) => {
               {item.image_field && (
                 <PreviewImage
                   item={item}
-                  alt={item.image_caption ? item.image_caption : item.title}
-                  size="thumb"
+                  alt={item.image_caption}
                   className="ui image floated right clear"
+                  responsive={true}
+                  loading="lazy"
                 />
               )}
               {item.description && <p>{item.description}</p>}

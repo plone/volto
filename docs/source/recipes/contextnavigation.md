@@ -35,7 +35,7 @@ you can compute and pass a custom path like:
 As parameters you can use:
 
 - `name`: The title of the navigation tree.
-- `root_path`: Root node path, can be "frontend path", derived from router
+- `root_path`: Root Node.js path, can be "frontend path", derived from router
 - `includeTop`: Bool, Include top nodeschema
 - `currentFolderOnly`: Bool, Only show the contents of the current folder.
 - `topLevel`: Int, Start level
@@ -44,5 +44,4 @@ As parameters you can use:
 - `thumb_scale`: String, Override thumb scale
 - `no_thumbs`: Bool, Suppress thumbs
 
-Notice the similarity to the classic Plone navigation portlet, as the
-plone.restapi implementation is based on that original code.
+Notice the similarity to the classic Plone navigation portlet, as the `plone.restapi` implementation is based on that original code.

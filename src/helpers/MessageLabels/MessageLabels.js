@@ -328,6 +328,12 @@ export const messages = defineMessages({
     id: 'flush intIds and rebuild relations',
     defaultMessage: 'flush intIds and rebuild relations',
   },
+  flushAndRebuildRelationsHints: {
+    id: 'flushAndRebuildRelationsHints',
+    defaultMessage:
+      '<ul><li>Regenerate intIds (tokens of relations in relation catalog)</li><li>Rebuild relations</li></ul><p>Check the log for details!</p><p><b>Warning</b>: If you have add-ons relying on intIds, you should not flush them.</p>',
+  },
+
   addPotentialTargetsPath: {
     id: 'target path',
     defaultMessage: 'target path',

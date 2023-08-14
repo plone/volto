@@ -28,16 +28,16 @@ Thus it is safe to run it on top of your project and answer the prompts.
 
 ## Upgrading to Volto 17.x.x
 
-### Ending support for NodeJS 14
+### Ending support for Node.js 14
 
-Long Term Support for NodeJS 14 by the NodeJS community ends in April 2023.
-Volto 17 no longer supports NodeJS 14.
-Please update your projects to a NodeJS LTS version, where either 16 or 18 is supported at the moment of this writing.
+Long Term Support for {term}`Node.js` 14 by the Node.js community ends in April 2023.
+Volto 17 no longer supports Node.js 14.
+Please update your projects to a Node.js LTS version, where either 16 or 18 is supported at the moment of this writing.
 Version 18 is recommended.
 
 #### localhost now resolves to an IPv6 address
 
-NodeJS 18 prefers to resolve `localhost` to an IPv6 address instead of IPv4.
+Node.js 18 prefers to resolve `localhost` to an IPv6 address instead of IPv4.
 If you are setting `RAZZLE_API_PATH` to a URL that includes `localhost`,
 change the hostname to `127.0.0.1` instead.
 
@@ -88,6 +88,39 @@ If you want to retain the old behavior (and no use `apiExpanders` at all), you n
 ```js
 config.settings.apiExpanders = [];
 ```
+
+### Cypress upgraded to 12.17.1
+
+As usual in a Volto major version release, Cypress has been upgraded to the latest version to date.
+There are no major changes to the way the tests are implemented and run.
+
+However, it could be that your Cypress boilerplate must be updated in your projects and add-ons if you use `@testing-library/cypress` in your tests.
+This is due to a change in how the default commands are now built internally and in `@testing-library/cypress`.
+
+You need to move the import:
+
+```js
+import '@testing-library/cypress/add-commands';
+```
+
+from {file}`cypress/support/commands.js` to {file}`cypress/support/e2e.js`, in case you have it in there.
+
+This is because the overrides that `@testing-library/cypress` introduce can be run only once.
+Since there are some commands that can call exports in {file}`cypress/support/commands.js`, this import may be run more than once, and then it errors.
+So you have to make sure that import is run only once while the tests are run.
+
+### New Image component
+
+```{versionadded} 17.0.0-alpha.21
+A new image component has been added to core to render optimized images.
+It requires the latest version of `plone.restapi` (>=8.42.0) installed in the backend to work properly.
+```
+
+### Removed Teaser block utils
+
+The `utils.js` file of the Teaser block was removed because it is no longer used.
+You can consider removing it if you were shadowing it in your project.
+
 
 (volto-upgrade-guide-16.x.x)=
 
@@ -184,11 +217,11 @@ It is recommended to go the extra mile and migrate the `text` blocks to `slate` 
 Use the `blocks-conversion-tool`.
 See https://github.com/plone/blocks-conversion-tool for more information.
 
-### Deprecating NodeJS 12
+### Deprecating Node.js 12
 
-Since April 30, 2022, NodeJS 12 is out of Long Term Support by the NodeJS community.
-NodeJS 12 is deprecated in Volto 13.
-Please update your projects to a NodeJS LTS version, where either 14 or 16 is supported at the moment of this writing.
+Since April 30, 2022, Node.js 12 is out of Long Term Support by the Node.js community.
+Node.js 12 is deprecated in Volto 13.
+Please update your projects to a Node.js LTS version, where either 14 or 16 is supported at the moment of this writing.
 Version 16 is recommended.
 
 ### Upgraded to Razzle 4
@@ -304,7 +337,7 @@ We updated Volto to be able to use it, however some changes have to be made in y
     nodeLinker: node-modules
     ```
 
-    Then, if you are using Node >=16.10 run:
+    Then, if you are using Node.js >=16.10 run:
 
     ```shell
     corepack enable
@@ -319,7 +352,7 @@ We updated Volto to be able to use it, however some changes have to be made in y
     ```
 
     ```{important}
-    It is highly recommended that you use the latest Node 16.
+    It is highly recommended that you use the latest Node.js 16.
     ```
 
 2.  Change your root project `Makefile` to include these commands:
@@ -815,7 +848,7 @@ Apply the following diff to your add-on's `babel.config.js`:
 ```
 
 ```{note}
-For convenience the `i18n` script is now an executable in the node environment.
+For convenience the `i18n` script is now an executable in the Node.js environment.
 ```
 
 ### Removal of the old configuration system based on imports
@@ -832,8 +865,8 @@ Not really a breaking change, but it's worth noting it. By default, Volto 14 com
 {doc}`../configuration/locking` enabled, if the backend supports it. Thus:
 
 - Upgrade Plone RestAPI
-  - **plone.restapi**>=`8.9.0` (Plone 5+)
-  - **plone.restapi**>=`7.4.0` (Plone 4)
+  - `plone.restapi`>=`8.9.0` (Plone 5+)
+  - `plone.restapi`>=`7.4.0` (Plone 4)
 - Update `plone:CORSPolicy` to include `Lock-Token` within `allow_headers`:
 
 ```xml
@@ -895,10 +928,10 @@ The `getVocabulary` action has changed API. Before, it used separate positional 
 
 ## Upgrading to Volto 13.x.x
 
-### Deprecating NodeJS 10
+### Deprecating Node.js 10
 
-Since April 30th, 2021 NodeJS 10 is out of Long Term Support by the NodeJS community, so
-we are deprecating it in Volto 13. Please update your projects to a NodeJS LTS version
+Since April 30th, 2021 Node.js 10 is out of Long Term Support by the Node.js community, so
+we are deprecating it in Volto 13. Please update your projects to a Node.js LTS version
 (12 or 14 at the moment of this writing).
 
 ### Seamless mode is the default in development mode
@@ -1066,7 +1099,7 @@ messages for the used translations is advisable, but not required.
 
 (frontend-upgrade-guide-volto-configuration-registry-label)=
 
-### Volto Configuration Registry
+### Volto configuration registry
 
 The configuration object in Volto is located in the `~/config` module and uses it as
 container of Volto's config taking advantage of the ES6 module system. So we "import"
@@ -1076,8 +1109,8 @@ the config every time we need it, then the exported config data in that module
 It's been a while since we were experiencing undesired side effects from "circular import
 dependency" problems in Volto, due to the very nature of the solution (importing the
 `~/config`). Although they aren't very noticeable, they are there, waiting to bite
-us. In fact, circular dependencies are common in NodeJS world, and the very nature of
-how it works make them "workable" thanks to the NodeJS own import resolution algorithm.
+us. In fact, circular dependencies are common in Node.js world, and the very nature of
+how it works make them "workable" thanks to the Node.js own import resolution algorithm.
 So the "build" always works, although we have the circular dependencies, but that leads to weird problems
 like (just to mention one of them) the {term}`hot module replacement` (HMR) not working properly.
 
@@ -1646,11 +1679,11 @@ First, update the `package.json` of your Volto project to Volto 6.x.x.
 This release includes a number of changes to the internal dependencies. If you have problems building your project, you might need to remove your `node_modules` and, ultimately, also remove your `yarn.lock` file. Then run again `yarn` for rebuilding the dependencies.
 ```
 
-### Upgrade to Node 12
+### Upgrade to Node.js 12
 
-We have now dependencies that requires `node >=10.19.0`. Although Node 10 has still LTS
+We have now dependencies that requires `node >=10.19.0`. Although Node.js 10 has still LTS
 "maintenance" treatment (see https://github.com/nodejs/release#release-schedule) the recommended path
-is that you use from now on node 12 which is LTS since last October.
+is that you use from now on Node.js 12 which is LTS since last October.
 
 ### New Razzle version and related development dependencies
 
@@ -1924,7 +1957,7 @@ const initialBlocks = {};
 
 For better resource grouping, the `ImageSidebar` component has been moved to the `Image` block component directory: `components/manage/Blocks/Image`
 
-### Copy `yarn.lock` from volto-starter-kit in Alpha 17
+### Copy `yarn.lock` from `volto-starter-kit` in Alpha 17
 
 Due to changes in the dependency tree, it's required to use a specific `yarn.lock` file by deleting it and copy the one here: https://github.com/plone/volto-starter-kit/blob/master/yarn.lock before upgrading to Volto alpha 17.
 
@@ -2057,7 +2090,7 @@ Plone RESTAPI was updated for that purpose too, and running an upgrade step (do 
 
 This is the version compatibility table across all the packages involved:
 
-Volto 4 - plone.restapi >= 5.0.0 - kitconcept.voltodemo >= 2.0
+Volto 4 - `plone.restapi` >= 5.0.0 - `kitconcept.voltodemo` >= 2.0
 
 ```{note}
 The renaming happened in Volto 4 alpha.10 and plone.restapi 5.0.0. Volto 4 alpha versions under that release use older versions of `plone.restapi` and `kitconcept.voltodemo`, however if you are using alpha releases it's recommended to upgrade to the latest alpha or the final release of Volto 4.
@@ -2241,7 +2274,7 @@ Then update your `package.json` to Volto 3.x.
 ```
 
 Volto 3.x is compatible with the new changes introduced in the vocabularies
-endpoint in plone.restapi 4.0.0. If you custom-build a widget based in the
+endpoint in `plone.restapi` 4.0.0. If you custom-build a widget based in the
 Volto ones, you should update them as well. Volto updated its own widget set to
 support them:
 

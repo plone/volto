@@ -54,7 +54,7 @@ class RenderUsers extends Component {
    */
 
   onChange(event, { value }) {
-    const [user, role] = value.split('.');
+    const [user, role] = value.split('&role=');
     this.props.updateUser(user, role);
   }
   /**
@@ -84,7 +84,7 @@ class RenderUsers extends Component {
               <Checkbox
                 checked={this.props.user.roles.includes(role.id)}
                 onChange={this.onChange}
-                value={`${this.props.user.id}.${role.id}`}
+                value={`${this.props.user.id}&role=${role.id}`}
               />
             )}
           </Table.Cell>
