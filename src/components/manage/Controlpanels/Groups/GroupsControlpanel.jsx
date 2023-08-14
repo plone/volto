@@ -10,6 +10,7 @@ import {
   listRoles,
   updateGroup,
   authenticatedRole,
+  listUsers,
 } from '@plone/volto/actions';
 import {
   Icon,
@@ -44,6 +45,7 @@ import {
   Segment,
   Table,
 } from 'semantic-ui-react';
+import { difference } from 'lodash';
 
 /**
  * GroupsControlpanel class.
@@ -75,6 +77,7 @@ class GroupsControlpanel extends Component {
         groupname: PropTypes.string,
       }),
     ).isRequired,
+    listUsers: PropTypes.func.isRequired,
   };
 
   /**
@@ -88,9 +91,13 @@ class GroupsControlpanel extends Component {
     this.onChangeSearch = this.onChangeSearch.bind(this);
     this.onSearchGroups = this.onSearchGroups.bind(this);
     this.deleteGroup = this.deleteGroup.bind(this);
+    this.editGroup = this.editGroup.bind(this);
+    this.addUserstoGroup = this.addUserstoGroup.bind(this);
     this.onDeleteOk = this.onDeleteOk.bind(this);
     this.onDeleteCancel = this.onDeleteCancel.bind(this);
     this.onAddGroupSubmit = this.onAddGroupSubmit.bind(this);
+    this.onAddUsersGroupSubmit = this.onAddUsersGroupSubmit.bind(this);
+    this.onEditGroupSubmit = this.onEditGroupSubmit.bind(this);
     this.onAddGroupError = this.onAddGroupError.bind(this);
     this.onAddGroupSuccess = this.onAddGroupSuccess.bind(this);
     this.updateGroupRole = this.updateGroupRole.bind(this);
@@ -105,6 +112,13 @@ class GroupsControlpanel extends Component {
       authenticatedRole: props.inheritedRole || [],
       currentPage: 0,
       pageSize: 10,
+      editGroupDetails: false,
+      showAddUserToGroup: false,
+      groupToEdit: {},
+      allUsers: [],
+      usersNotPresentInGroup: [],
+      usersInGroup: [],
+      manyGroupError: null,
     };
   }
 
@@ -112,9 +126,11 @@ class GroupsControlpanel extends Component {
     await this.props.getControlpanel('usergroup');
     await this.props.listRoles();
     if (!this.props.many_groups) {
+      await this.props.listUsers();
       await this.props.listGroups();
       this.setState({
         groupEntries: this.props.groups,
+        allUsers: this.props.users,
       });
     }
   };
@@ -174,6 +190,13 @@ class GroupsControlpanel extends Component {
    */
   onSearchGroups(event) {
     event.preventDefault();
+    if (this.props.many_groups && this.state.search === '') {
+      this.setState({
+        groupEntries: [],
+        manyGroupError: 'Please enter a search term',
+      });
+      return;
+    }
     this.props.listGroups(this.state.search);
   }
 
@@ -187,6 +210,9 @@ class GroupsControlpanel extends Component {
     this.setState({
       search: event.target.value,
     });
+    if (event.keyCode === 13) {
+      this.onSearchGroups(event);
+    }
   }
 
   /**
@@ -204,6 +230,98 @@ class GroupsControlpanel extends Component {
         groupToDelete: this.getGroupFromProps(value),
       });
     }
+  }
+
+  /**
+   *
+   * @param {*} event Event object.
+   * @param {*} {value} id (groupname)
+   * @memberof GroupsControlpanel
+   * @returns {undefined}
+   */
+  editGroup(event, { value }) {
+    this.setState({
+      editGroupDetails: true,
+      groupToEdit: this.getGroupFromProps(value),
+    });
+  }
+
+  /**
+   * On edit group submit
+   * @method onEditGroupSubmit
+   * @param {object} data Form data from the ModalForm.
+   * @param {func} callback to set new form data in the ModalForm
+   * @memberof GroupsControlpanel
+   * @returns {undefined}
+   */
+  onEditGroupSubmit(data) {
+    this.props.updateGroup(data.groupname, data);
+    this.setState({
+      editGroupDetails: false,
+    });
+    toast.success(
+      <Toast
+        success
+        title={this.props.intl.formatMessage(messages.success)}
+        content={this.props.intl.formatMessage(messages.updateGroups)}
+      />,
+    );
+  }
+
+  /**
+   * On add users to group
+   * @method addUserstoGroup
+   * @param {object} event Event object.
+   * @param {string} value Groupname.
+   * @memberof GroupsControlpanel
+   * @returns {undefined}
+   */
+  addUserstoGroup(event, { value }) {
+    const groupToEdit = this.getGroupFromProps(value);
+    const userIds = this.state.allUsers.map((user) => user.id);
+    const usersInGroup = groupToEdit.members.items.map((user) => user);
+    var leftusers = difference(userIds, usersInGroup);
+    this.setState({
+      showAddUserToGroup: true,
+      groupToEdit: groupToEdit,
+      usersNotPresentInGroup: leftusers,
+      usersInGroup: usersInGroup,
+    });
+  }
+
+  /**
+   * On add users to group submit
+   * @method onAddUsersGroupSubmit
+   * @param {object} data Form data from the ModalForm.
+   * @param {func} callback to set new form data in the ModalForm
+   * @memberof GroupsControlpanel
+   * @returns {undefined}
+   */
+
+  onAddUsersGroupSubmit(data, callback) {
+    const usersToadd = {};
+    const userIds = this.state.allUsers.map((user) => user.id);
+    const usersNotInGroup = difference(userIds, data.addUsers);
+    data.addUsers.forEach((user) => {
+      usersToadd[user] = true;
+    });
+    usersNotInGroup.forEach((user) => {
+      usersToadd[user] = false;
+    });
+
+    this.props.updateGroup(this.state.groupToEdit.groupname, {
+      users: usersToadd,
+    });
+    this.setState({
+      showAddUserToGroup: false,
+    });
+    toast.success(
+      <Toast
+        success
+        title={this.props.intl.formatMessage(messages.success)}
+        content={this.props.intl.formatMessage(messages.userAdded)}
+      />,
+    );
   }
 
   /**
@@ -286,6 +404,13 @@ class GroupsControlpanel extends Component {
    * @returns {undefined}
    */
   onAddGroupSubmit(data, callback) {
+    const rolesNoGap = data.groupname.replace(/\s/g, '');
+    if (rolesNoGap !== data.groupname) {
+      this.setState({
+        addGroupError: 'Groupname cannot contain spaces',
+      });
+      return;
+    }
     this.props.createGroup(data);
     this.setState({
       addGroupSetFormDataCallback: callback,
@@ -309,6 +434,7 @@ class GroupsControlpanel extends Component {
     if (this.props.groups !== prevProps.groups) {
       this.setState({
         groupEntries: this.props.groups,
+        manyGroupError: null,
       });
     }
   }
@@ -405,15 +531,27 @@ class GroupsControlpanel extends Component {
                     id: 'default',
                     title: 'FIXME: Group Data',
                     fields: [
+                      'roles',
                       'title',
                       'description',
                       'groupname',
                       'email',
-                      'roles',
                     ],
                   },
                 ],
                 properties: {
+                  roles: {
+                    title: this.props.intl.formatMessage(
+                      messages.addGroupsFormRolesTitle,
+                    ),
+                    type: 'array',
+                    choices: this.props.roles.map((role) => [
+                      role.id,
+                      role.title,
+                    ]),
+                    noValueOption: false,
+                    description: '',
+                  },
                   title: {
                     title: this.props.intl.formatMessage(
                       messages.addGroupsFormTitleTitle,
@@ -444,6 +582,81 @@ class GroupsControlpanel extends Component {
                     description: '',
                     widget: 'email',
                   },
+                },
+                required: ['groupname'],
+              }}
+            />
+          ) : null}
+          {this.state.editGroupDetails ? (
+            <ModalForm
+              open={this.state.editGroupDetails}
+              className="modal"
+              onSubmit={this.onEditGroupSubmit}
+              submitError={this.state.addGroupError}
+              onCancel={() =>
+                this.setState({
+                  editGroupDetails: false,
+                  addGroupError: undefined,
+                })
+              }
+              title={this.props.intl.formatMessage(
+                messages.editGroupsFormTitle,
+              )}
+              loading={this.props.createGroupRequest.loading}
+              formData={{
+                title: this.state.groupToEdit.title,
+                description: this.state.groupToEdit.description,
+                groupname: this.state.groupToEdit.id,
+                email: this.state.groupToEdit.email,
+                roles: this.state.groupToEdit.roles,
+              }}
+              schema={{
+                fieldsets: [
+                  {
+                    id: 'default',
+                    title: 'FIXME: Group Data',
+                    fields: [
+                      'roles',
+                      'title',
+                      'description',
+                      'groupname',
+                      'email',
+                    ],
+                  },
+                ],
+                properties: {
+                  title: {
+                    title: this.props.intl.formatMessage(
+                      messages.addGroupsFormTitleTitle,
+                    ),
+                    type: 'string',
+                    description: '',
+                  },
+                  description: {
+                    title: this.props.intl.formatMessage(
+                      messages.addGroupsFormDescriptionTitle,
+                    ),
+                    type: 'string',
+                    description: '',
+                  },
+                  groupname: {
+                    title: this.props.intl.formatMessage(
+                      messages.addGroupsFormGroupNameTitle,
+                    ),
+                    type: 'string',
+                    description:
+                      'A unique identifier for the group. Can not be changed after creation.',
+                    minLength: 3,
+                    isDisabled: true,
+                  },
+                  email: {
+                    title: this.props.intl.formatMessage(
+                      messages.addGroupsFormEmailTitle,
+                    ),
+                    type: 'string',
+                    description: '',
+                    widget: 'email',
+                  },
                   roles: {
                     title: this.props.intl.formatMessage(
                       messages.addGroupsFormRolesTitle,
@@ -458,6 +671,50 @@ class GroupsControlpanel extends Component {
                   },
                 },
                 required: ['groupname'],
+              }}
+            />
+          ) : null}
+          {this.state.showAddUserToGroup ? (
+            <ModalForm
+              open={this.state.showAddUserToGroup}
+              className="modal addUserToGroup"
+              onSubmit={this.onAddUsersGroupSubmit}
+              submitError={this.state.addGroupError}
+              onCancel={() =>
+                this.setState({
+                  showAddUserToGroup: false,
+                  addGroupError: undefined,
+                })
+              }
+              title={
+                this.props.intl.formatMessage(messages.addUsersToGroup) +
+                ' - ' +
+                this.state.groupToEdit.groupname
+              }
+              loading={this.props.createGroupRequest.loading}
+              formData={{ addUsers: this.state.usersInGroup }}
+              schema={{
+                fieldsets: [
+                  {
+                    id: 'default',
+                    title: 'FIXME: Group Data',
+                    fields: ['addUsers'],
+                  },
+                ],
+                properties: {
+                  addUsers: {
+                    title: this.props.intl.formatMessage(
+                      messages.addUsersFormTitle,
+                    ),
+                    type: 'array',
+                    choices: this.state.usersNotPresentInGroup.map((user) => [
+                      user,
+                      user,
+                    ]),
+                    noValueOption: false,
+                  },
+                },
+                required: ['addUsers'],
               }}
             />
           ) : null}
@@ -497,27 +754,35 @@ class GroupsControlpanel extends Component {
               </Form.Field>
             </Form>
           </Segment>
-          <Form>
-            <div className="table">
-              <Table padded striped attached unstackable>
-                <Table.Header>
-                  <Table.Row>
-                    <Table.HeaderCell>
-                      <FormattedMessage
-                        id="Groupname"
-                        defaultMessage="Groupname"
-                      />
+          {this.props.many_groups && (
+            <Segment secondary>
+              <FormattedMessage
+                id="ManyGroupsList"
+                defaultMessage="You have selected the option 'many groups'. Thus this control panel asks for input to show groups. If you want to see groups instantaneous, head over to User and Group settings."
+              />
+            </Segment>
+          )}
+          <div className="table">
+            <Table padded striped attached unstackable>
+              <Table.Header>
+                <Table.Row>
+                  <Table.HeaderCell>
+                    <FormattedMessage
+                      id="Groupname"
+                      defaultMessage="Groupname"
+                    />
+                  </Table.HeaderCell>
+                  {this.props.roles.map((role) => (
+                    <Table.HeaderCell key={role.id}>
+                      {role.title}
                     </Table.HeaderCell>
-                    {this.props.roles.map((role) => (
-                      <Table.HeaderCell key={role.id}>
-                        {role.title}
-                      </Table.HeaderCell>
-                    ))}
-                    <Table.HeaderCell>
-                      <FormattedMessage id="Actions" defaultMessage="Actions" />
-                    </Table.HeaderCell>
-                  </Table.Row>
-                </Table.Header>
+                  ))}
+                  <Table.HeaderCell>
+                    <FormattedMessage id="Actions" defaultMessage="Actions" />
+                  </Table.HeaderCell>
+                </Table.Row>
+              </Table.Header>
+              {this.state.groupEntries.length !== 0 && (
                 <Table.Body data-group="groups">
                   {this.state.groupEntries
                     .slice(
@@ -528,6 +793,8 @@ class GroupsControlpanel extends Component {
                       <RenderGroups
                         key={group.id}
                         onDelete={this.deleteGroup}
+                        onEdit={this.editGroup}
+                        addUsers={this.addUserstoGroup}
                         roles={this.props.roles}
                         group={group}
                         updateGroups={this.updateGroupRole}
@@ -535,18 +802,47 @@ class GroupsControlpanel extends Component {
                       />
                     ))}
                 </Table.Body>
-              </Table>
-            </div>
-            <div className="contents-pagination">
-              <Pagination
-                current={this.state.currentPage}
-                total={Math.ceil(
-                  this.state.groupEntries?.length / this.state.pageSize,
-                )}
-                onChangePage={this.onChangePage}
-              />
-            </div>
-          </Form>
+              )}
+            </Table>
+            {this.state.groupEntries.length === 0 && !this.props.many_groups && (
+              <div className="no-user-message">
+                <div className="large message">
+                  {this.props.intl.formatMessage(messages.noGroupFound)}
+                </div>
+                <Button
+                  id="add-group"
+                  aria-label={this.props.intl.formatMessage(
+                    messages.addGroupsButtonTitle,
+                  )}
+                  onClick={() => {
+                    this.setState({ showAddGroup: true });
+                  }}
+                  loading={this.props.createGroupRequest.loading}
+                >
+                  Add Group
+                </Button>
+              </div>
+            )}
+            {this.state.groupEntries.length === 0 && this.props.many_groups && (
+              <div>
+                {this.props.intl.formatMessage(messages.searchManyGroups)}
+              </div>
+            )}
+            {this.props.many_groups && this.state.manyGroupError && (
+              <div className="enter-input-error">
+                {this.props.intl.formatMessage(messages.manyGroupError)}
+              </div>
+            )}
+          </div>
+          <div className="contents-pagination">
+            <Pagination
+              current={this.state.currentPage}
+              total={Math.ceil(
+                this.state.groupEntries?.length / this.state.pageSize,
+              )}
+              onChangePage={this.onChangePage}
+            />
+          </div>
         </Segment.Group>
         {this.state.isClient && (
           <Portal node={document.getElementById('toolbar')}>
@@ -623,6 +919,7 @@ export default compose(
       createGroupRequest: state.groups.create,
       loadRolesRequest: state.roles,
       inheritedRole: state.authRole.authenticatedRole,
+      users: state.users.users,
     }),
     (dispatch) =>
       bindActionCreators(
@@ -634,6 +931,7 @@ export default compose(
           createGroup,
           updateGroup,
           authenticatedRole,
+          listUsers,
         },
         dispatch,
       ),

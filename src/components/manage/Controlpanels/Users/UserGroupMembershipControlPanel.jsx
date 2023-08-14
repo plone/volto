@@ -63,7 +63,7 @@ const UserGroupMembershipPanel = () => {
 
   return (
     <>
-      <div className="users-control-panel">
+      <div className="ui container users-control-panel">
         <Helmet title={intl.formatMessage(messages.usergroupmemberbership)} />
         <Segment.Group raised>
           <Segment className="primary">
@@ -77,7 +77,7 @@ const UserGroupMembershipPanel = () => {
                 <Segment secondary>
                   <FormattedMessage
                     id="InfoUserGroupSettings"
-                    defaultMessage="You have selected the option 'many users' or 'many groups'. Thus this control panel asks for input to show users and groups. If you want to see users and groups instantaneous, head over to user group settings. See the button on the left."
+                    defaultMessage="You have selected the option 'many users' or 'many groups'. Thus this control panel asks for input to show users and groups. If you want to see users and groups instantaneous, head over to User and Group settings. See the button on the left."
                   />
                 </Segment>
                 <Segment className="usergroupmembership">

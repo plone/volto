@@ -149,11 +149,11 @@ export const customSelectStyles = {
     alignItems: 'center',
     padding: '12px 12px',
     color: state.isSelected
-      ? '#007bc1'
+      ? '#0089BA'
       : state.isDisabled
       ? '#b5b5b5'
       : state.isFocused
-      ? '#007eb1'
+      ? '#00598C'
       : 'inherit',
     ':active': {
       backgroundColor: null,

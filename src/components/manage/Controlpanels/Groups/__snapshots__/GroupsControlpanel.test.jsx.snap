@@ -56,7 +56,7 @@ exports[`UsersControlpanel renders a user control component 1`] = `
               id="group-search-input"
               name="SearchableText"
               onChange={[Function]}
-              placeholder="Search group…"
+              placeholder="Search groups"
               type="text"
             />
             <button
@@ -73,52 +73,60 @@ exports[`UsersControlpanel renders a user control component 1`] = `
         </div>
       </form>
     </div>
-    <form
-      className="ui form"
-      onSubmit={[Function]}
+    <div
+      className="table"
     >
-      <div
-        className="table"
+      <table
+        className="ui striped unstackable attached padded table"
       >
-        <table
-          className="ui striped unstackable attached padded table"
+        <thead
+          className=""
         >
-          <thead
+          <tr
             className=""
           >
-            <tr
+            <th
               className=""
             >
-              <th
-                className=""
-              >
-                Groupname
-              </th>
-              <th
-                className=""
-              >
-                Actions
-              </th>
-            </tr>
-          </thead>
-          <tbody
-            className=""
-            data-group="groups"
-          />
-        </table>
-      </div>
+              Groupname
+            </th>
+            <th
+              className=""
+            >
+              Actions
+            </th>
+          </tr>
+        </thead>
+      </table>
       <div
-        className="contents-pagination"
+        className="no-user-message"
       >
         <div
-          className="ui secondary attached menu"
+          className="large message"
         >
-          <div
-            className="menu"
-          />
+          No group found
         </div>
+        <button
+          aria-label="Add new group"
+          className="ui button"
+          id="add-group"
+          onClick={[Function]}
+        >
+          Add Group
+        </button>
       </div>
-    </form>
+    </div>
+    <div
+      className="contents-pagination"
+    >
+      <div
+        className="ui secondary attached menu"
+      >
+        <div
+          className="menu"
+        />
+      </div>
+    </div>
   </div>
   <div
     id="Portal"

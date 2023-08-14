@@ -67,12 +67,12 @@ export const messages = defineMessages({
     defaultMessage: 'There were some errors.',
   },
   searchUsers: {
-    id: 'Search users…',
-    defaultMessage: 'Search users…',
+    id: 'Search users',
+    defaultMessage: 'Search users',
   },
   searchGroups: {
-    id: 'Search group…',
-    defaultMessage: 'Search group…',
+    id: 'Search groups',
+    defaultMessage: 'Search groups',
   },
   filterByGroups: {
     id: 'Filter users by groups',
@@ -109,6 +109,10 @@ export const messages = defineMessages({
   addGroupsFormTitle: {
     id: 'Add group',
     defaultMessage: 'Add group',
+  },
+  editGroupsFormTitle: {
+    id: 'Edit group',
+    defaultMessage: 'Edit group',
   },
   addUserFormUsernameTitle: {
     id: 'Username',
@@ -216,13 +220,25 @@ export const messages = defineMessages({
     id: 'No user found',
     defaultMessage: 'No user found',
   },
+  noGroupFound: {
+    id: 'No group found',
+    defaultMessage: 'No group found',
+  },
   pleaseSearchOrFilterUsers: {
-    id: 'Please search for users or use the filters on the side.',
-    defaultMessage: 'Please search for users or use the filters on the side.',
+    id: 'Please search for users or use the filters.',
+    defaultMessage: 'Please search for users or use the filters.',
   },
   addUsersToGroup: {
     id: 'Add users to group',
     defaultMessage: 'Add users to group',
+  },
+  addUsersFormTitle: {
+    id: 'Add users',
+    defaultMessage: 'Add users',
+  },
+  userAdded: {
+    id: 'User added',
+    defaultMessage: 'User added',
   },
   removeUsersFromGroup: {
     id: 'Remove users from group',
@@ -347,5 +363,27 @@ export const messages = defineMessages({
   fileTooLarge: {
     id: 'fileTooLarge',
     defaultMessage: 'This website does not accept files larger than {limit}',
+  },
+  addUserFormPasswordAndSendPasswordTogetherNotAllowed: {
+    id:
+      'It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them.',
+    defaultMessage:
+      'It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them.',
+  },
+  manyUserError: {
+    id: 'Too many users found.',
+    defaultMessage: 'Too many users found.',
+  },
+  searchManyUsers: {
+    id: 'Search users by username or email',
+    defaultMessage: 'Search users by username or email',
+  },
+  manyGroupError: {
+    id: 'Too many groups found.',
+    defaultMessage: 'Too many groups found.',
+  },
+  searchManyGroups: {
+    id: 'Search groups by title ',
+    defaultMessage: 'Search groups by title',
   },
 });

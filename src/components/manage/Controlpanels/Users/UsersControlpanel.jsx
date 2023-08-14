@@ -11,6 +11,7 @@ import {
   getControlpanel,
   updateUser,
   updateGroup,
+  getUserSchema,
 } from '@plone/volto/actions';
 import {
   Icon,
@@ -111,12 +112,14 @@ class UsersControlpanel extends Component {
       showEditUser: false,
       userToEdit: {},
       editUserError: '',
+      manyUserError: null,
     };
   }
 
   fetchData = async () => {
     await this.props.getControlpanel('usergroup');
     await this.props.listRoles();
+    await this.props.getUserSchema();
     if (!this.props.many_users) {
       this.props.listGroups();
       await this.props.listUsers();
@@ -156,6 +159,7 @@ class UsersControlpanel extends Component {
         showEditUser: false,
         userToEdit: {},
       });
+      this.props.listUsers();
       toast.success(
         <Toast
           success
@@ -192,6 +196,13 @@ class UsersControlpanel extends Component {
    */
   onSearch(event) {
     event.preventDefault();
+    if (this.props.many_users && this.state.search === '') {
+      this.setState({
+        entries: [],
+        manyUserError: 'Please enter a search term',
+      });
+      return;
+    }
     this.props.listUsers({
       search: this.state.search,
     });
@@ -207,6 +218,9 @@ class UsersControlpanel extends Component {
     this.setState({
       search: event.target.value,
     });
+    if (event.keyCode === 13) {
+      this.onSearch(event);
+    }
   }
 
   /**
@@ -317,12 +331,28 @@ class UsersControlpanel extends Component {
    * @returns {undefined}
    */
   onAddUserSubmit(data, callback) {
-    const { groups, sendPasswordReset } = data;
-    if (groups && groups.length > 0) this.addUserToGroup(data);
-    this.props.createUser(data, sendPasswordReset);
-    this.setState({
-      addUserSetFormDataCallback: callback,
-    });
+    const { groups, sendPasswordReset, password } = data;
+    if (
+      sendPasswordReset !== undefined &&
+      sendPasswordReset === true &&
+      password !== undefined
+    ) {
+      toast.error(
+        <Toast
+          error
+          title={this.props.intl.formatMessage(messages.error)}
+          content={this.props.intl.formatMessage(
+            messages.addUserFormPasswordAndSendPasswordTogetherNotAllowed,
+          )}
+        />,
+      );
+    } else {
+      if (groups && groups.length > 0) this.addUserToGroup(data);
+      this.props.createUser(data, sendPasswordReset);
+      this.setState({
+        addUserSetFormDataCallback: callback,
+      });
+    }
   }
 
   /**
@@ -437,6 +467,7 @@ class UsersControlpanel extends Component {
     if (this.props.users !== prevProps.users) {
       this.setState({
         entries: this.props.users,
+        manyUserError: null,
       });
     }
   }
@@ -456,6 +487,58 @@ class UsersControlpanel extends Component {
     let usernameToDelete = this.state.userToDelete
       ? this.state.userToDelete.username
       : '';
+    let addschema = {};
+    if (this.props?.userschema?.loaded) {
+      addschema = JSON.parse(
+        JSON.stringify(this.props?.userschema?.userschema),
+      );
+      addschema.properties['username'] = {
+        title: this.props.intl.formatMessage(messages.addUserFormUsernameTitle),
+        type: 'string',
+        description: this.props.intl.formatMessage(
+          messages.addUserFormUsernameDescription,
+        ),
+      };
+      addschema.properties['password'] = {
+        title: this.props.intl.formatMessage(messages.addUserFormPasswordTitle),
+        type: 'password',
+        description: this.props.intl.formatMessage(
+          messages.addUserFormPasswordDescription,
+        ),
+        widget: 'password',
+      };
+      addschema.properties['sendPasswordReset'] = {
+        title: this.props.intl.formatMessage(
+          messages.addUserFormSendPasswordResetTitle,
+        ),
+        type: 'boolean',
+      };
+      addschema.properties['roles'] = {
+        title: this.props.intl.formatMessage(messages.addUserFormRolesTitle),
+        type: 'array',
+        choices: this.props.roles.map((role) => [role.id, role.title]),
+        noValueOption: false,
+      };
+      addschema.properties['groups'] = {
+        title: this.props.intl.formatMessage(messages.addUserGroupNameTitle),
+        type: 'array',
+        choices: this.props.groups.map((group) => [group.id, group.id]),
+        noValueOption: false,
+      };
+      addschema.required = ['username', 'email'];
+      if (
+        addschema.fieldsets &&
+        addschema.fieldsets.length > 0 &&
+        !addschema.fieldsets[0]['fields'].includes('username')
+      )
+        addschema.fieldsets[0]['fields'] = [
+          'roles',
+          'groups',
+          'username',
+          'password',
+          ...(this.state.showAddUser ? ['sendPasswordReset'] : []),
+        ].concat(addschema.fieldsets[0]['fields']);
+    }
     return (
       <Container className="users-control-panel">
         <Helmet title={this.props.intl.formatMessage(messages.users)} />
@@ -482,7 +565,7 @@ class UsersControlpanel extends Component {
             onConfirm={this.onDeleteOk}
             size={null}
           />
-          {this.state.showEditUser ? (
+          {this.props?.userschema?.loaded && this.state.showEditUser ? (
             <ModalForm
               open={this.state.showEditUser}
               className="modal"
@@ -502,88 +585,10 @@ class UsersControlpanel extends Component {
                   (group) => group.id,
                 ),
               }}
-              schema={{
-                fieldsets: [
-                  {
-                    id: 'default',
-                    title: 'FIXME: Edit User Data',
-                    fields: [
-                      'roles',
-                      'groups',
-                      'username',
-                      'fullname',
-                      'email',
-                      'password',
-                    ],
-                  },
-                ],
-                properties: {
-                  username: {
-                    title: this.props.intl.formatMessage(
-                      messages.addUserFormUsernameTitle,
-                    ),
-                    type: 'string',
-                    description: this.props.intl.formatMessage(
-                      messages.addUserFormUsernameDescription,
-                    ),
-                  },
-                  fullname: {
-                    title: this.props.intl.formatMessage(
-                      messages.addUserFormFullnameTitle,
-                    ),
-                    type: 'string',
-                    description: this.props.intl.formatMessage(
-                      messages.addUserFormFullnameDescription,
-                    ),
-                  },
-                  email: {
-                    title: this.props.intl.formatMessage(
-                      messages.addUserFormEmailTitle,
-                    ),
-                    type: 'string',
-                    description: this.props.intl.formatMessage(
-                      messages.addUserFormEmailDescription,
-                    ),
-                    widget: 'email',
-                  },
-                  roles: {
-                    title: this.props.intl.formatMessage(
-                      messages.addUserFormRolesTitle,
-                    ),
-                    type: 'array',
-                    choices: this.props.roles.map((role) => [
-                      role.id,
-                      role.title,
-                    ]),
-                    noValueOption: false,
-                  },
-                  groups: {
-                    title: this.props.intl.formatMessage(
-                      messages.addUserGroupNameTitle,
-                    ),
-                    type: 'array',
-                    choices: this.props.groups.map((group) => [
-                      group.id,
-                      group.id,
-                    ]),
-                    noValueOption: false,
-                  },
-                  password: {
-                    title: this.props.intl.formatMessage(
-                      messages.addUserFormPasswordTitle,
-                    ),
-                    type: 'password',
-                    description: this.props.intl.formatMessage(
-                      messages.addUserFormPasswordDescription,
-                    ),
-                    widget: 'password',
-                  },
-                },
-                required: ['username', 'email'],
-              }}
+              schema={addschema}
             />
           ) : null}
-          {this.state.showAddUser ? (
+          {this.props?.userschema?.loaded && this.state.showAddUser ? (
             <ModalForm
               open={this.state.showAddUser}
               className="modal"
@@ -594,92 +599,7 @@ class UsersControlpanel extends Component {
               }
               title={this.props.intl.formatMessage(messages.addUserFormTitle)}
               loading={this.props.createRequest.loading}
-              schema={{
-                fieldsets: [
-                  {
-                    id: 'default',
-                    title: 'FIXME: User Data',
-                    fields: [
-                      'roles',
-                      'groups',
-                      'username',
-                      'fullname',
-                      'email',
-                      'password',
-                      'sendPasswordReset',
-                    ],
-                  },
-                ],
-                properties: {
-                  username: {
-                    title: this.props.intl.formatMessage(
-                      messages.addUserFormUsernameTitle,
-                    ),
-                    type: 'string',
-                    description: this.props.intl.formatMessage(
-                      messages.addUserFormUsernameDescription,
-                    ),
-                  },
-                  fullname: {
-                    title: this.props.intl.formatMessage(
-                      messages.addUserFormFullnameTitle,
-                    ),
-                    type: 'string',
-                    description: this.props.intl.formatMessage(
-                      messages.addUserFormFullnameDescription,
-                    ),
-                  },
-                  email: {
-                    title: this.props.intl.formatMessage(
-                      messages.addUserFormEmailTitle,
-                    ),
-                    type: 'string',
-                    description: this.props.intl.formatMessage(
-                      messages.addUserFormEmailDescription,
-                    ),
-                    widget: 'email',
-                  },
-                  password: {
-                    title: this.props.intl.formatMessage(
-                      messages.addUserFormPasswordTitle,
-                    ),
-                    type: 'password',
-                    description: this.props.intl.formatMessage(
-                      messages.addUserFormPasswordDescription,
-                    ),
-                    widget: 'password',
-                  },
-                  sendPasswordReset: {
-                    title: this.props.intl.formatMessage(
-                      messages.addUserFormSendPasswordResetTitle,
-                    ),
-                    type: 'boolean',
-                  },
-                  roles: {
-                    title: this.props.intl.formatMessage(
-                      messages.addUserFormRolesTitle,
-                    ),
-                    type: 'array',
-                    choices: this.props.roles.map((role) => [
-                      role.id,
-                      role.title,
-                    ]),
-                    noValueOption: false,
-                  },
-                  groups: {
-                    title: this.props.intl.formatMessage(
-                      messages.addUserGroupNameTitle,
-                    ),
-                    type: 'array',
-                    choices: this.props.groups.map((group) => [
-                      group.id,
-                      group.id,
-                    ]),
-                    noValueOption: false,
-                  },
-                },
-                required: ['username', 'email'],
-              }}
+              schema={addschema}
             />
           ) : null}
         </div>
@@ -718,78 +638,94 @@ class UsersControlpanel extends Component {
               </Form.Field>
             </Form>
           </Segment>
-          <Form>
-            <div className="table">
-              <Table padded striped attached unstackable>
-                <Table.Header>
-                  <Table.Row>
-                    <Table.HeaderCell>
-                      <FormattedMessage
-                        id="User name"
-                        defaultMessage="User name"
-                      />
-                    </Table.HeaderCell>
-                    {this.props.roles.map((role) => (
-                      <Table.HeaderCell key={role.id}>
-                        {role.title}
-                      </Table.HeaderCell>
-                    ))}
-                    <Table.HeaderCell>
-                      <FormattedMessage id="Actions" defaultMessage="Actions" />
-                    </Table.HeaderCell>
-                  </Table.Row>
-                </Table.Header>
-                {this.state.entries.length ? (
-                  <Table.Body data-user="users">
-                    {this.state.entries
-                      .slice(
-                        this.state.currentPage * 10,
-                        this.state.pageSize * (this.state.currentPage + 1),
-                      )
-                      .map((user) => (
-                        <RenderUsers
-                          key={user.id}
-                          onDelete={this.delete}
-                          onEdit={this.edit}
-                          roles={this.props.roles}
-                          user={user}
-                          updateUser={this.updateUserRole}
-                          inheritedRole={this.props.inheritedRole}
-                        />
-                      ))}
-                  </Table.Body>
-                ) : null}
-              </Table>
-              {this.state.entries.length === 0 && (
-                <div className="no-user-message">
-                  <div className="large message">
-                    {this.props.intl.formatMessage(messages.noUserFound)}
-                  </div>
-                  <Button
-                    id="add-user"
-                    aria-label={this.props.intl.formatMessage(
-                      messages.addUserButtonTitle,
-                    )}
-                    onClick={() => {
-                      this.setState({ showAddUser: true });
-                    }}
-                    loading={this.props.createRequest.loading}
-                  >
-                    Add User
-                  </Button>
-                </div>
-              )}
-            </div>
-            <div className="contents-pagination">
-              <Pagination
-                current={this.state.currentPage}
-                total={Math.ceil(
-                  this.state.entries?.length / this.state.pageSize,
-                )}
-                onChangePage={this.onChangePage}
+          {this.props.many_users && (
+            <Segment secondary>
+              <FormattedMessage
+                id="ManyUsersList"
+                defaultMessage="You have selected the option 'many users'. Thus this control panel asks for input to show users. If you want to see users instantaneous, head over to User and Group settings."
               />
-            </div>
-          </Form>
+            </Segment>
+          )}
+          <div className="table">
+            <Table padded striped unstackable>
+              <Table.Header>
+                <Table.Row>
+                  <Table.HeaderCell>
+                    <FormattedMessage
+                      id="User name"
+                      defaultMessage="User name"
+                    />
+                  </Table.HeaderCell>
+                  {this.props.roles.map((role) => (
+                    <Table.HeaderCell key={role.id}>
+                      {role.title}
+                    </Table.HeaderCell>
+                  ))}
+                  <Table.HeaderCell>
+                    <FormattedMessage id="Actions" defaultMessage="Actions" />
+                  </Table.HeaderCell>
+                </Table.Row>
+              </Table.Header>
+              {this.state.entries.length ? (
+                <Table.Body data-user="users">
+                  {this.state.entries
+                    .slice(
+                      this.state.currentPage * 10,
+                      this.state.pageSize * (this.state.currentPage + 1),
+                    )
+                    .map((user) => (
+                      <RenderUsers
+                        key={user.id}
+                        onDelete={this.delete}
+                        onEdit={this.edit}
+                        roles={this.props.roles}
+                        user={user}
+                        updateUser={this.updateUserRole}
+                        inheritedRole={this.props.inheritedRole}
+                      />
+                    ))}
+                </Table.Body>
+              ) : null}
+            </Table>
+            {this.state.entries.length === 0 && !this.props.many_users && (
+              <div className="no-user-message">
+                <div className="large message">
+                  {this.props.intl.formatMessage(messages.noUserFound)}
+                </div>
+                <Button
+                  id="add-user"
+                  aria-label={this.props.intl.formatMessage(
+                    messages.addUserButtonTitle,
+                  )}
+                  onClick={() => {
+                    this.setState({ showAddUser: true });
+                  }}
+                  loading={this.props.createRequest.loading}
+                >
+                  Add User
+                </Button>
+              </div>
+            )}
+            {this.state.entries.length === 0 && this.props.many_users && (
+              <div>
+                {this.props.intl.formatMessage(messages.searchManyUsers)}
+              </div>
+            )}
+            {this.props.many_users && this.state.manyUserError && (
+              <div className="enter-input-error">
+                {this.props.intl.formatMessage(messages.manyUserError)}
+              </div>
+            )}
+          </div>
+          <div className="contents-pagination">
+            <Pagination
+              current={this.state.currentPage}
+              total={Math.ceil(
+                this.state.entries?.length / this.state.pageSize,
+              )}
+              onChangePage={this.onChangePage}
+            />
+          </div>
         </Segment.Group>
         {this.state.isClient && (
           <Portal node={document.getElementById('toolbar')}>
@@ -866,8 +802,10 @@ export default compose(
       deleteRequest: state.users.delete,
       createRequest: state.users.create,
       updateRequest: state.users.update,
+      getRequest: state.users.get,
       loadRolesRequest: state.roles,
       inheritedRole: state.authRole.authenticatedRole,
+      userschema: state.userschema,
     }),
     (dispatch) =>
       bindActionCreators(
@@ -880,6 +818,7 @@ export default compose(
           createUser,
           updateUser,
           updateGroup,
+          getUserSchema,
         },
         dispatch,
       ),

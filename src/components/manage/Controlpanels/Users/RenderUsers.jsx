@@ -89,7 +89,7 @@ class RenderUsers extends Component {
             )}
           </Table.Cell>
         ))}
-        <Table.Cell textAlign="right">
+        <Table.Cell>
           <Dropdown icon="ellipsis horizontal">
             <Dropdown.Menu className="left">
               <Dropdown.Item

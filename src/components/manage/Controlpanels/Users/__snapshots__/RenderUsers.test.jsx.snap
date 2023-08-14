@@ -73,7 +73,7 @@ exports[`UsersControlpanelUser renders a UsersControlpanelUser component 1`] = `
     </div>
   </td>
   <td
-    className="right aligned"
+    className=""
   >
     <div
       aria-expanded={false}
@@ -97,6 +97,7 @@ exports[`UsersControlpanelUser renders a UsersControlpanelUser component 1`] = `
       >
         <div
           className="item"
+          data-key="edit-testuser"
           onClick={[Function]}
           role="option"
         >
@@ -122,6 +123,7 @@ exports[`UsersControlpanelUser renders a UsersControlpanelUser component 1`] = `
         </div>
         <div
           className="item"
+          data-key="delete-testuser"
           onClick={[Function]}
           role="option"
         >

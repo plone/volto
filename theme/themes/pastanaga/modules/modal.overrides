@@ -27,3 +27,7 @@
     }
   }
 }
+
+.ui.modal.addUserToGroup .scrolling.content {
+  overflow: visible;
+}
