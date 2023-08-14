@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2023-08-13T14:22:35.492Z\n"
+"POT-Creation-Date: 2023-08-14T02:15:56.709Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -208,11 +208,6 @@ msgstr ""
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add to Groups
 msgid "Add to Groups"
-msgstr ""
-
-#: helpers/MessageLabels/MessageLabels
-# defaultMessage: Add user(s) to group
-msgid "Add user(s) to group"
 msgstr ""
 
 #: helpers/MessageLabels/MessageLabels

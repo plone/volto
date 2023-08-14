@@ -18,7 +18,7 @@ describe('User Control Panel Test', () => {
     cy.get('input[id ="field-email"]').clear().type('testuser0@example.com');
     cy.get('input[id="field-password"]').clear().type('test@test');
     cy.get('button[title="Save"]').click(-50, -50, { force: true });
-    // Create 4 more users with different usernames and fullnames
+    // Create 3 more users with different usernames and fullnames
     for (let i = 1; i < 3; i++) {
       cy.get('Button[id="toolbar-add"]').click();
       cy.get('input[id="field-username"]')
@@ -35,7 +35,7 @@ describe('User Control Panel Test', () => {
     }
 
     // Check total users added
-    cy.get('tr').should('have.length', 5); //Contains the header row as well
+    cy.get('tbody[data-user="users"] tr').should('have.length', 5); //Contains the 2 users already created row as well
 
     // Check if the user added is present in the list
     // user with user id containing 0
@@ -89,12 +89,16 @@ describe('User Control Panel Test', () => {
     }
 
     //Select user and update the fullname
-    cy.get('tr:nth-of-type(3) > td.fullname').should(
+    cy.get('tbody[data-user="users"] tr:nth-of-type(3) > td.fullname').should(
       'have.text',
-      'test user 1',
+      'test user 0',
     );
-    cy.get('tr:nth-of-type(3) div[role="listbox"]').click();
-    cy.get('tr:nth-of-type(3) div[role="option"][data-key^="edit-"]').click({
+    cy.get(
+      'tbody[data-user="users"] tr:nth-of-type(4) div[role="listbox"]',
+    ).click();
+    cy.get(
+      'tbody[data-user="users"] tr:nth-of-type(4) div[role="option"][data-key^="edit-"]',
+    ).click({
       force: true,
     });
     cy.get('input[id="field-fullname"]').clear().type('test user 1 updated');
@@ -106,12 +110,16 @@ describe('User Control Panel Test', () => {
     // select test user 0 with name, delete it and search if its exists or not!
     cy.get('input[id="user-search-input"]').clear();
     cy.get('.icon.button:first').click();
-    cy.get('tr:nth-of-type(2) > td.fullname').should(
+    cy.get('tbody[data-user="users"] > tr:nth-of-type(3) > td.fullname').should(
       'have.text',
       'test user 0',
     );
-    cy.get('tr:nth-of-type(2) div[role="listbox"]').click();
-    cy.get('tr:nth-of-type(2) div[role="option"][data-key^="delete-"]').click({
+    cy.get(
+      'tbody[data-user="users"] tr:nth-of-type(3) div[role="listbox"]',
+    ).click();
+    cy.get(
+      'tbody[data-user="users"] tr:nth-of-type(3) div[role="option"][data-key^="delete-"]',
+    ).click({
       force: true,
     });
     cy.contains('Delete User');
@@ -142,23 +150,24 @@ describe('User Control Panel Test', () => {
     }
 
     //Select user and update a role from the checkbox
-    cy.get('tr:nth-of-type(2) input[type="checkbox"]')
+    cy.get('tbody[data-user="users"] tr:nth-of-type(2) input[type="checkbox"]')
       .eq(4)
       .check({ force: true });
 
-    cy.get('tr:nth-of-type(3) input[type="checkbox"]')
+    cy.get('tbody[data-user="users"] tr:nth-of-type(3) input[type="checkbox"]')
       .first()
       .check({ force: true });
 
     cy.get('Button[id="toolbar-save"]').click();
     cy.reload();
+    // cy.wait(1000);
 
-    cy.get('tr:nth-of-type(2) input[type="checkbox"]')
+    cy.get('tbody[data-user="users"] tr:nth-of-type(2) input[type="checkbox"]')
       .eq(4)
       .parent()
       .should('have.class', 'checked');
 
-    cy.get('tr:nth-of-type(3) input[type="checkbox"]')
+    cy.get('tbody[data-user="users"] tr:nth-of-type(3) input[type="checkbox"]')
       .first()
       .parent()
       .should('have.class', 'checked');
@@ -169,17 +178,12 @@ describe('User Control Panel test for  many users', () => {
     cy.intercept('GET', `/**/*?expand*`).as('content');
 
     cy.autologin();
-    cy.createUser({
-      username: 'editor',
-      fullname: 'Peet Editor',
-    });
 
     cy.visit('/');
     cy.wait('@content');
   });
 
   it('Should not show users if the many_users option in enabled', () => {
-    // interceptUsers();
     cy.intercept(
       {
         method: 'GET',
@@ -203,7 +207,6 @@ describe('User Control Panel test for  many users', () => {
     });
   });
   it('In the case of many users, It should show a user only when it is searched by a username ', () => {
-    // interceptUsers();
     cy.intercept(
       {
         method: 'GET',

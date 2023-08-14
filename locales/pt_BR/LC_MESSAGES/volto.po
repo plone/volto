@@ -219,11 +219,6 @@ msgid "Add to Groups"
 msgstr "Adicionar a grupos"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Add user(s) to group
-msgid "Add user(s) to group"
-msgstr ""
-
-#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add users
 msgid "Add users"
 msgstr ""
