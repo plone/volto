@@ -2,7 +2,6 @@ import { injectIntl } from 'react-intl';
 import React from 'react';
 import RegisterComponent from './Register';
 import { RealStoreWrapper as Wrapper } from '@plone/volto/storybook';
-import { create } from 'lodash';
 
 const IntlRegister = injectIntl(RegisterComponent);
 
