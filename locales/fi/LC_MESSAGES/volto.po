@@ -1304,6 +1304,11 @@ msgstr "Syötä uusi salasanasi, jossa on vähintään viisi (8) merkkiä."
 msgid "Enter your username for verification."
 msgstr "Syötä käyttäjätunnuksesi vahvistusta varten."
 
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Entries
+msgid "Entries"
+msgstr ""
+
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -1624,6 +1629,11 @@ msgstr "Piilota fasetti?"
 #: components/manage/Blocks/Search/components/Facets
 # defaultMessage: Hide filters
 msgid "Hide filters"
+msgstr ""
+
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Hide title
+msgid "Hide title"
 msgstr ""
 
 #: components/manage/History/History
@@ -1947,6 +1957,11 @@ msgstr "Lisää"
 # defaultMessage: Link redirect view
 msgid "Link redirect view"
 msgstr "Linkin uudelleenohjauksen näkymä"
+
+#: components/manage/Blocks/Image/schema
+# defaultMessage: Link settings
+msgid "Link settings"
+msgstr ""
 
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
@@ -2436,6 +2451,11 @@ msgstr "Avaa valikko"
 #: components/manage/Widgets/ObjectBrowserWidget
 # defaultMessage: Open object browser
 msgid "Open object browser"
+msgstr ""
+
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Ordered
+msgid "Ordered"
 msgstr ""
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -3142,6 +3162,11 @@ msgstr "Lähetä"
 msgid "Send a confirmation mail with a link to set the password."
 msgstr "Lähetä vahvistusviesti ja linkki salasanan asettamista varten."
 
+#: components/theme/Error/ServerError
+# defaultMessage: Server Error
+msgid "Server Error"
+msgstr ""
+
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Set my password
 msgid "Set my password"
@@ -3374,6 +3399,11 @@ msgstr "Julkisuus"
 # defaultMessage: Status
 msgid "Status"
 msgstr "Tila"
+
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Sticky
+msgid "Sticky"
+msgstr ""
 
 #: components/manage/Multilingual/CompareLanguages
 # defaultMessage: Stop compare
@@ -3670,6 +3700,7 @@ msgstr "Aika"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Teaser/schema
+#: components/manage/Blocks/ToC/Schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
@@ -4094,6 +4125,11 @@ msgstr "Olemme pahoillamme, mutta taustajärjestelmä ei vastaa. Ole hyvä ja ko
 # defaultMessage: We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for.
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
 msgstr "Olemme pahoillamme, mutta tästä osoitteesta ei löytynyt mitään sisältöä."
+
+#: components/theme/Error/ServerError
+# defaultMessage: We apologize for the inconvenience, but there was an unexpected error on the server.
+msgid "We apologize for the inconvenience, but there was an unexpected error on the server."
+msgstr ""
 
 #: components/theme/Forbidden/Forbidden
 # defaultMessage: We apologize for the inconvenience, but you don't have permissions on this resource.
@@ -4808,6 +4844,7 @@ msgstr "teksti"
 msgid "title"
 msgstr "nimike"
 
+#: components/manage/Blocks/ToC/Schema
 #: config/Blocks
 # defaultMessage: Table of Contents
 msgid "toc"
