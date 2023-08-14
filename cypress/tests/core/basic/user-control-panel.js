@@ -112,7 +112,7 @@ describe('User Control Panel Test', () => {
     cy.get('.icon.button:first').click();
     cy.get('tbody[data-user="users"] > tr:nth-of-type(3) > td.fullname').should(
       'have.text',
-      'test user 1',
+      'test user 1 updated',
     );
     cy.get(
       'tbody[data-user="users"] tr:nth-of-type(3) div[role="listbox"]',
@@ -215,9 +215,9 @@ describe('User Control Panel test for  many users', () => {
     cy.visit('/controlpanel/users');
     cy.wait('@manyUsers').then((interception) => {
       if (expect(interception.response.body.data.many_users).to.equal(true)) {
-        cy.get('input[id="user-search-input"]').clear().type('editor');
+        cy.get('input[id="user-search-input"]').clear().type('0');
         cy.get('.icon.button:first').click();
-        cy.get('.fullname').should('have.text', 'Peet Editor');
+        cy.get('.fullname').should('have.text', 'test user 0');
 
         cy.get('input[id="user-search-input"]').clear();
         cy.get('.icon.button:first').click();
