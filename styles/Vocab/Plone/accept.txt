@@ -1,10 +1,15 @@
 `plone.restapi`
 `plone.volto`
+[Aa]sync
+[Bb]ackend
+JavaScript
 npm
+nvm
+Pastanaga
 Plone
 Razzle
 RichText
+Sass
 Volto
+Vue
 Zope
-JavaScript
-NodeJS
