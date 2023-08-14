@@ -112,7 +112,7 @@ describe('User Control Panel Test', () => {
     cy.get('.icon.button:first').click();
     cy.get('tbody[data-user="users"] > tr:nth-of-type(3) > td.fullname').should(
       'have.text',
-      'test user 0',
+      'test user 1',
     );
     cy.get(
       'tbody[data-user="users"] tr:nth-of-type(3) div[role="listbox"]',
