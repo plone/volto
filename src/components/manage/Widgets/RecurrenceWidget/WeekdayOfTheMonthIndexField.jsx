@@ -1,11 +1,5 @@
-/**
- * WeekdayOfTheMonthIndexField component.
- * @module components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
- */
-
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { defineMessages, injectIntl } from 'react-intl';
+import { defineMessages, useIntl } from 'react-intl';
 import { map } from 'lodash';
 import { Form } from 'semantic-ui-react';
 import SelectInput from './SelectInput';
@@ -34,53 +28,41 @@ const ORDINAL_NUMBERS = {
   '-1': 'last',
 };
 
-class WeekdayOfTheMonthIndexField extends Component {
-  /**
-   * Property types.
-   * @property {Object} propTypes Property types.
-   * @static
-   */
-  static propTypes = {
-    disabled: PropTypes.bool,
-    value: PropTypes.any,
-    onChange: PropTypes.func,
-  };
+const WeekdayOfTheMonthIndexField = (props) => {
+  const intl = useIntl();
+  const { disabled } = props;
+  const weekdayOfTheMonthIndexList = [
+    ...map(Object.keys(ORDINAL_NUMBERS), (option) => ({
+      value: parseInt(option),
+      label: intl.formatMessage(messages[ORDINAL_NUMBERS[option]]),
+    })),
+  ];
+  return (
+    <>
+      <Form.Field disabled={disabled}>
+        {intl.formatMessage(messages.bymonthDayNumber)}
+      </Form.Field>
 
-  /**
-   * Default properties.
-   * @property {Object} defaultProps Default properties.
-   * @static
-   */
-  static defaultProps = {
-    disabled: false,
-    value: null,
-    onChange: null,
-  };
+      <Form.Field disabled={disabled}>
+        <SelectInput
+          name="weekdayOfTheMonthIndex"
+          options={weekdayOfTheMonthIndexList}
+          {...this.props}
+        />
+      </Form.Field>
+    </>
+  );
+};
 
-  render() {
-    const { intl, disabled } = this.props;
-    const weekdayOfTheMonthIndexList = [
-      ...map(Object.keys(ORDINAL_NUMBERS), (option) => ({
-        value: parseInt(option),
-        label: intl.formatMessage(messages[ORDINAL_NUMBERS[option]]),
-      })),
-    ];
-    return (
-      <>
-        <Form.Field disabled={disabled}>
-          {intl.formatMessage(messages.bymonthDayNumber)}
-        </Form.Field>
+WeekdayOfTheMonthIndexField.propTypes = {
+  disabled: PropTypes.bool,
+  value: PropTypes.any,
+  onChange: PropTypes.func,
+};
 
-        <Form.Field disabled={disabled}>
-          <SelectInput
-            name="weekdayOfTheMonthIndex"
-            options={weekdayOfTheMonthIndexList}
-            {...this.props}
-          />
-        </Form.Field>
-      </>
-    );
-  }
-}
-
-export default injectIntl(WeekdayOfTheMonthIndexField);
+WeekdayOfTheMonthIndexField.defaultProps = {
+  disabled: false,
+  value: null,
+  onChange: null,
+};
+export default WeekdayOfTheMonthIndexField;
