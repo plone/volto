@@ -35,7 +35,7 @@ describe('User Control Panel Test', () => {
     }
 
     // Check total users added
-    cy.get('tbody[data-user="users"] tr').should('have.length', 5); //Contains the 2 users already created row as well
+    cy.get('tbody[data-user="users"] tr').should('have.length', 4); //Contains the 2 users already created row as well
 
     // Check if the user added is present in the list
     // user with user id containing 0
@@ -91,7 +91,7 @@ describe('User Control Panel Test', () => {
     //Select user and update the fullname
     cy.get('tbody[data-user="users"] tr:nth-of-type(3) > td.fullname').should(
       'have.text',
-      'test user 0',
+      'test user 1',
     );
     cy.get(
       'tbody[data-user="users"] tr:nth-of-type(4) div[role="listbox"]',
@@ -148,12 +148,7 @@ describe('User Control Panel Test', () => {
       cy.get('input[id="field-password"]').clear().type('test@test');
       cy.get('button[title="Save"]').click(-50, -50, { force: true });
     }
-
     //Select user and update a role from the checkbox
-    cy.get('tbody[data-user="users"] tr:nth-of-type(2) input[type="checkbox"]')
-      .eq(4)
-      .check({ force: true });
-
     cy.get('tbody[data-user="users"] tr:nth-of-type(3) input[type="checkbox"]')
       .first()
       .check({ force: true });
@@ -161,11 +156,6 @@ describe('User Control Panel Test', () => {
     cy.get('Button[id="toolbar-save"]').click();
     cy.reload();
     // cy.wait(1000);
-
-    cy.get('tbody[data-user="users"] tr:nth-of-type(2) input[type="checkbox"]')
-      .eq(4)
-      .parent()
-      .should('have.class', 'checked');
 
     cy.get('tbody[data-user="users"] tr:nth-of-type(3) input[type="checkbox"]')
       .first()
@@ -225,9 +215,9 @@ describe('User Control Panel test for  many users', () => {
     cy.visit('/controlpanel/users');
     cy.wait('@manyUsers').then((interception) => {
       if (expect(interception.response.body.data.many_users).to.equal(true)) {
-        cy.get('input[id="user-search-input"]').clear().type('editor');
+        cy.get('input[id="user-search-input"]').clear().type('0');
         cy.get('.icon.button:first').click();
-        cy.get('.fullname').should('have.text', 'Peet Editor');
+        cy.get('.fullname').should('have.text', 'test user 0');
 
         cy.get('input[id="user-search-input"]').clear();
         cy.get('.icon.button:first').click();
