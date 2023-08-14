@@ -118,6 +118,10 @@ class UsersControlpanel extends Component {
   }
 
   fetchData = async () => {
+    await this.props.getControlpanel('security');
+    this.setState({
+      loginUsingEmail: this.props.controlPanelData,
+    });
     await this.props.getControlpanel('usergroup');
     await this.props.listRoles();
     await this.props.getUserSchema();
@@ -130,14 +134,6 @@ class UsersControlpanel extends Component {
     }
   };
 
-  // Because username field needs to be disabled if email login is enabled!
-  checkLoginUsingEmailStatus = async () => {
-    await this.props.getControlpanel('security');
-    this.setState({
-      loginUsingEmail: this.props.controlPanelData?.data.use_email_as_login,
-    });
-  };
-
   /**
    * Component did mount
    * @method componentDidMount
@@ -148,7 +144,6 @@ class UsersControlpanel extends Component {
       isClient: true,
     });
     this.fetchData();
-    this.checkLoginUsingEmailStatus();
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
@@ -502,13 +497,17 @@ class UsersControlpanel extends Component {
       addschema = JSON.parse(
         JSON.stringify(this.props?.userschema?.userschema),
       );
-      addschema.properties['username'] = {
-        title: this.props.intl.formatMessage(messages.addUserFormUsernameTitle),
-        type: 'string',
-        description: this.props.intl.formatMessage(
-          messages.addUserFormUsernameDescription,
-        ),
-      };
+      if (!this.state.loginUsingEmail) {
+        addschema.properties['username'] = {
+          title: this.props.intl.formatMessage(
+            messages.addUserFormUsernameTitle,
+          ),
+          type: 'string',
+          description: this.props.intl.formatMessage(
+            messages.addUserFormUsernameDescription,
+          ),
+        };
+      }
       addschema.properties['password'] = {
         title: this.props.intl.formatMessage(messages.addUserFormPasswordTitle),
         type: 'password',
@@ -544,7 +543,7 @@ class UsersControlpanel extends Component {
         addschema.fieldsets[0]['fields'] = [
           'roles',
           'groups',
-          'username',
+          ...(!this.state.loginUsingEmail ? ['username'] : []),
           'password',
           ...(this.state.showAddUser ? ['sendPasswordReset'] : []),
         ].concat(addschema.fieldsets[0]['fields']);
@@ -816,7 +815,8 @@ export default compose(
       loadRolesRequest: state.roles,
       inheritedRole: state.authRole.authenticatedRole,
       userschema: state.userschema,
-      controlPanelData: state.controlpanels?.controlpanel,
+      controlPanelData:
+        state.controlpanels?.controlpanel?.data.use_email_as_login,
     }),
     (dispatch) =>
       bindActionCreators(
