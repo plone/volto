@@ -45,6 +45,7 @@ describe('Link Integrity View for different content types', () => {
     cy.visit('/my-document');
     cy.get('#toolbar-more').click();
     cy.findByText('Links and references').click();
+    cy.get('.primary').contains('Content that links to or references');
   });
 
   it('As editor I can see on what content items my Page is referenced in the richtext', () => {
@@ -66,6 +67,7 @@ describe('Link Integrity View for different content types', () => {
       },
     });
 
+    //Test if link appears in links and references view
     cy.visit('/document-linked/links-to-item');
     cy.get('tbody > :nth-child(2) > :nth-child(1)').contains(
       'Document that is linking a document',
@@ -91,6 +93,7 @@ describe('Link Integrity View for different content types', () => {
       },
     });
 
+    //Test if link appears in links and references view
     cy.visit('/news-item-linked/links-to-item');
     cy.get('tbody > :nth-child(2) > :nth-child(1)').contains(
       'Document that is linking a News Item',
@@ -116,6 +119,7 @@ describe('Link Integrity View for different content types', () => {
       },
     });
 
+    //Test if link appears in links and references view
     cy.visit('/event-linked/links-to-item');
     cy.get('tbody > :nth-child(2) > :nth-child(1)').contains(
       'Document that is linking an Event',
@@ -140,6 +144,7 @@ describe('Link Integrity View for different content types', () => {
         return body;
       },
     });
+    //Test if link appears in links and references view
 
     cy.visit('/file-linked/links-to-item');
     cy.get('tbody > :nth-child(2) > :nth-child(1)').contains(
@@ -165,6 +170,7 @@ describe('Link Integrity View for different content types', () => {
         return body;
       },
     });
+    //Test if link appears in links and references view
 
     cy.visit('/image-linked/links-to-item');
     cy.get('tbody > :nth-child(2) > :nth-child(1)').contains(
@@ -173,6 +179,7 @@ describe('Link Integrity View for different content types', () => {
   });
 
   it('As editor I can see on what content items a Link is referenced in the richtext', () => {
+    //Test Setup
     cy.createContent({
       contentType: 'Link',
       contentTitle: 'Link that is linked',
@@ -182,7 +189,6 @@ describe('Link Integrity View for different content types', () => {
         return body;
       },
     });
-
     cy.createContent({
       contentType: 'Document',
       contentTitle: 'Document that is linking a Link',
@@ -194,10 +200,121 @@ describe('Link Integrity View for different content types', () => {
         return body;
       },
     });
-
+    //Test if link appears in links and references view
     cy.visit('/link-linked/links-to-item');
     cy.get('tbody > :nth-child(2) > :nth-child(1)').contains(
       'Document that is linking a Link',
     );
+  });
+});
+
+describe('Test if different forms of Linking content appear in links and references View', () => {
+  beforeEach(() => {
+    cy.autologin();
+    cy.visit('/');
+  });
+
+  it('As an Editor I can see if my document is linked somewhere via teaser block', () => {
+    cy.createContent({
+      contentType: 'Document',
+      contentTitle: 'Document that is linked',
+      contentId: 'document-linked',
+    });
+
+    cy.createContent({
+      contentType: 'Document',
+      contentTitle: 'Document that is linking via teaser block',
+      contentId: 'document-linking',
+      bodyModifier(body) {
+        body.blocks['abc'] = {
+          '@type': 'teaser',
+          description: '',
+          href: [
+            {
+              '@id': '/document-linked',
+              '@type': 'Document',
+              Description: '',
+              Title: 'Document linked',
+              effective: '2023-08-14T22:00:42+00:00',
+              getObjSize: '0 KB',
+              hasPreviewImage: null,
+              head_title: null,
+              image_field: '',
+              mime_type: 'text/plain',
+              title: 'Document linked',
+            },
+          ],
+          title: 'Document linked',
+        };
+        body.blocks_layout.items.push('abc');
+
+        return body;
+      },
+    });
+
+    cy.visit('/document-linked/links-to-item');
+    cy.get('tbody > :nth-child(2) > :nth-child(1)').contains(
+      'Document that is linking via teaser block',
+    );
+  });
+
+  it.only('As an Editor I can see if my document is linked somewhere via teaser block', () => {
+    cy.createContent({
+      contentType: 'Document',
+      contentTitle: 'Document that is linked',
+      contentId: 'document-linked',
+    });
+
+    cy.createContent({
+      contentType: 'Image',
+      contentTitle: 'Image that is linked',
+      contentId: 'image-linked',
+    });
+
+    cy.createContent({
+      contentType: 'Document',
+      contentTitle: 'Document that is linking via teaser block',
+      contentId: 'document-linking',
+      bodyModifier(body) {
+        body.blocks['abc'] = {
+          '@type': 'teaser',
+          description: '',
+          href: [
+            {
+              '@id': '/document-linked',
+              '@type': 'Document',
+              Description: '',
+              Title: 'Document linked',
+              effective: '2023-08-14T22:00:42+00:00',
+              getObjSize: '0 KB',
+              hasPreviewImage: null,
+              head_title: null,
+              image_field: 'image',
+              mime_type: 'text/plain',
+              title: 'Document linked',
+              preview_image: [
+                {
+                  '@id': '/image-linked',
+                  '@type': 'Image',
+                  image_field: 'image',
+                  Title: 'Image linked',
+                  Type: 'Image',
+                },
+              ],
+            },
+          ],
+          title: 'Document linked',
+        };
+        body.blocks_layout.items.push('abc');
+
+        return body;
+      },
+    });
+
+    cy.visit('/image-linked/links-to-item');
+    cy.visit('document-linking');
+    // cy.get('tbody > :nth-child(2) > :nth-child(1)').contains(
+    //   'Document that is linking via teaser block',
+    // );
   });
 });
