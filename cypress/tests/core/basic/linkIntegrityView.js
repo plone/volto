@@ -258,7 +258,9 @@ describe('Test if different forms of Linking content appear in links and referen
     );
   });
 
-  it.only('As an Editor I can see if my document is linked somewhere via teaser block', () => {
+  // Test currently disabled as it seems not possible to set an image override on teaser blocks in test setup
+  /*
+  it('As an Editor I can see if my document is linked somewhere via teaser block', () => {
     cy.createContent({
       contentType: 'Document',
       contentTitle: 'Document that is linked',
@@ -271,6 +273,7 @@ describe('Test if different forms of Linking content appear in links and referen
       contentId: 'image-linked',
     });
 
+    // TODO: get the content creation with image override to work here
     cy.createContent({
       contentType: 'Document',
       contentTitle: 'Document that is linking via teaser block',
@@ -316,5 +319,78 @@ describe('Test if different forms of Linking content appear in links and referen
     // cy.get('tbody > :nth-child(2) > :nth-child(1)').contains(
     //   'Document that is linking via teaser block',
     // );
+  });
+  */
+
+  it('As an Editor I can see if my image is linked somewhere via image block', () => {
+    cy.createContent({
+      contentType: 'Image',
+      contentTitle: 'Image that is linked',
+      contentId: 'image-linked',
+    });
+
+    cy.createContent({
+      contentType: 'Document',
+      contentTitle: 'Document that is linking via image block',
+      contentId: 'document-linking',
+      bodyModifier(body) {
+        body.blocks['abc'] = {
+          '@type': 'image',
+          alt: 'Image that is linked',
+          image_field: 'image',
+          url: '/image-linked',
+        };
+        body.blocks_layout.items.push('abc');
+
+        return body;
+      },
+    });
+
+    cy.visit('/image-linked/links-to-item');
+    cy.get('tbody > :nth-child(2) > :nth-child(1)').contains(
+      'Document that is linking via image block',
+    );
+  });
+
+  it.only('As an Editor I can see if my image is linked somewhere via image block', () => {
+    cy.createContent({
+      contentType: 'Image',
+      contentTitle: 'Image that is linked',
+      contentId: 'image-linked',
+    });
+
+    cy.createContent({
+      contentType: 'Document',
+      contentTitle: 'Document that is linked',
+      contentId: 'document-linked',
+    });
+
+    cy.createContent({
+      contentType: 'Document',
+      contentTitle: 'Document that is linking via image block',
+      contentId: 'document-linking',
+      bodyModifier(body) {
+        body.blocks['abc'] = {
+          '@type': 'image',
+          alt: 'Image that is linked',
+          image_field: 'image',
+          url: '/image-linked',
+          href: [
+            {
+              '@id': 'document-linked',
+              Title: 'Document linked in image block',
+            },
+          ],
+        };
+        body.blocks_layout.items.push('abc');
+
+        return body;
+      },
+    });
+
+    cy.visit('/document-linked/links-to-item');
+    cy.get('tbody > :nth-child(2) > :nth-child(1)').contains(
+      'Document that is linking via image block',
+    );
   });
 });
