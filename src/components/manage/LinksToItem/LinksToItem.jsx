@@ -44,7 +44,7 @@ const LinksToItem = (props) => {
 
   const title = useSelector((state) => state.content.data?.title || '');
   const myrelations = useSelector(
-    (state) => state.relations.subrequests[itempath]?.relations,
+    (state) => state.relations.subrequests[itempath]?.data,
   );
   const actions = useSelector((state) => state.actions?.actions ?? {});
   const ploneSetupAction = find(actions.user, {

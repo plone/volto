@@ -5,15 +5,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Divider, Segment, Table } from 'semantic-ui-react';
 import { queryRelations } from '@plone/volto/actions';
 import { flattenToAppURL } from '@plone/volto/helpers';
-import { UniversalLink } from '@plone/volto/components';
+import { ConditionalLink } from '@plone/volto/components';
 
 const BrokenRelations = () => {
   const dispatch = useDispatch();
   const brokenRelationStats = useSelector(
-    (state) => state.relations?.stats?.broken || {},
+    (state) => state.relations?.stats?.data?.broken || {},
   );
   const brokenRelations = useSelector(
-    (state) => state.relations?.subrequests?.broken?.relations,
+    (state) => state.relations?.subrequests?.broken?.data,
   );
 
   useEffect(() => {
@@ -60,20 +60,22 @@ const BrokenRelations = () => {
                 }).map((el, index) => (
                   <Table.Row key={index}>
                     <Table.Cell>
-                      <UniversalLink
-                        href={`${flattenToAppURL(el[0])}/edit`}
+                      <ConditionalLink
+                        to={`${el[0]}/edit`}
                         openLinkInNewTab={true}
+                        condition={el[0].includes('http')}
                       >
                         {flattenToAppURL(el[0])}
-                      </UniversalLink>
+                      </ConditionalLink>
                     </Table.Cell>
                     <Table.Cell>
-                      <UniversalLink
-                        href={`${flattenToAppURL(el[1])}/edit`}
+                      <ConditionalLink
+                        to={`${el[1]}/edit`}
                         openLinkInNewTab={true}
+                        condition={el[1].includes('http')}
                       >
                         {flattenToAppURL(el[1])}
-                      </UniversalLink>
+                      </ConditionalLink>
                     </Table.Cell>
                   </Table.Row>
                 ))}
