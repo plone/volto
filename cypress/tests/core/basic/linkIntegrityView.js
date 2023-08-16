@@ -394,7 +394,7 @@ describe('Test if different forms of Linking content appear in links and referen
     );
   });
 
-  it.only('As an Editor I can see if my document is linked somewhere via teaser block', () => {
+  it.only('As an Editor I can see if my document is linked somewhere via teaser block inside a grid block', () => {
     cy.createContent({
       contentType: 'Document',
       contentTitle: 'Document that is linked',
