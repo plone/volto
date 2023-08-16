@@ -187,7 +187,6 @@ export const renderLinkElement = (tagName) => {
             aria-hidden="true"
             tabIndex={-1}
             href={`#${slug}`}
-            aria-label="anchor"
           >
             <svg
               {...linkSVG.attributes}
