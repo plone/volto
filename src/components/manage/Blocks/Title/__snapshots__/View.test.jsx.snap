@@ -9,7 +9,6 @@ exports[`renders a view title component 1`] = `
   My Title
   <a
     aria-hidden="true"
-    aria-label="anchor"
     className="anchor"
     href="/#my-title"
     onClick={[Function]}
