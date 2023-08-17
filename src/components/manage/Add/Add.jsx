@@ -16,7 +16,7 @@ import { v4 as uuid } from 'uuid';
 import qs from 'query-string';
 import { toast } from 'react-toastify';
 
-import { createContent, getSchema, changeLanguage } from '@plone/volto/actions';
+import { changeLanguage, createContent, getSchema } from '@plone/volto/actions';
 import {
   Form,
   Icon,
@@ -42,6 +42,7 @@ import config from '@plone/volto/registry';
 
 import saveSVG from '@plone/volto/icons/save.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
+import configSVG from '@plone/volto/icons/configuration.svg';
 
 const messages = defineMessages({
   add: {

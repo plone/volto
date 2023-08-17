@@ -35,6 +35,30 @@ Array [
         xmlns=""
       />
     </button>
+    <button
+      aria-label="Shrink sidebar"
+      className="ui button close-sidenav-btn"
+      onClick={[Function]}
+    >
+      <svg
+        className="icon"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": undefined,
+          }
+        }
+        onClick={null}
+        style={
+          Object {
+            "fill": "currentColor",
+            "height": "36px",
+            "width": "auto",
+          }
+        }
+        viewBox=""
+        xmlns=""
+      />
+    </button>
     <div
       className="tabs-wrapper"
     >

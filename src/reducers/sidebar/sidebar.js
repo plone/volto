@@ -3,7 +3,10 @@
  * @module reducers/sidebar/sidebar
  */
 
-import { SET_SIDEBAR_TAB } from '@plone/volto/constants/ActionTypes';
+import {
+  SET_SIDEBAR_EXPANDED,
+  SET_SIDEBAR_TAB,
+} from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
   tab: 0,
@@ -22,6 +25,11 @@ export default function sidebar(state = initialState, action = {}) {
       return {
         ...state,
         tab: action.index,
+      };
+    case SET_SIDEBAR_EXPANDED:
+      return {
+        ...state,
+        expanded: action.isExpanded,
       };
     default:
       return state;
