@@ -39,7 +39,7 @@ describe('User Group Membership Control Panel test for NOT many users and many g
   });
   it('Should update group membership for: one user and one group', () => {
     cy.visit('/controlpanel/usergroupmembership');
-    cy.wait(2000);
+    cy.get('.usergroupmembership').should('be.visible');
     cy.wait('@usergroup');
 
     cy.get('.usergroupmembership').then(($segmentUsergroupmembership) => {
@@ -56,7 +56,7 @@ describe('User Group Membership Control Panel test for NOT many users and many g
   });
   it('I can search for a user and show his groups', () => {
     cy.visit('/controlpanel/usergroupmembership');
-    cy.wait(2000);
+    cy.get('.usergroupmembership').should('be.visible');
     cy.wait('@usergroup');
 
     cy.get('.usergroupmembership').then(($segmentUsergroupmembership) => {
@@ -94,23 +94,11 @@ describe('User Group Membership Control Panel test for MANY users and MANY group
       force: true,
     });
     cy.get('#toolbar-save').click();
-    // cy.get('.content-area').then(($content_area) => {
-    //   console.log($content_area);
-    //   if ($content_area.text().indexOf('Settings') > -1) {
-    //     cy.get('input[name="field-many_groups"]').check({
-    //       force: true,
-    //     });
-    //     cy.get('input[name="field-many_users"]').check({
-    //       force: true,
-    //     });
-    //     cy.get('#toolbar-save').click();
-    //   }
-    // });
   });
 
   it('Should not show users and groups if many of them', () => {
     cy.visit('/controlpanel/usergroupmembership');
-    cy.wait(2000);
+    cy.get('.usergroupmembership').should('be.visible');
     cy.wait('@usergroup');
 
     cy.get('.usergroupmembership').then(($segmentUsergroupmembership) => {
@@ -124,7 +112,7 @@ describe('User Group Membership Control Panel test for MANY users and MANY group
 
   it('I can search for a user and show his groups', () => {
     cy.visit('/controlpanel/usergroupmembership');
-    cy.wait(2000);
+    cy.get('.usergroupmembership').should('be.visible');
 
     cy.get('.usergroupmembership').then(($segmentUsergroupmembership) => {
       if ($segmentUsergroupmembership.hasClass('upgrade-info')) {

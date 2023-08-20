@@ -155,7 +155,6 @@ describe('User Control Panel Test', () => {
 
     cy.get('Button[id="toolbar-save"]').click();
     cy.reload();
-    // cy.wait(1000);
 
     cy.get('tbody[data-user="users"] tr:nth-of-type(3) input[type="checkbox"]')
       .first()
@@ -215,10 +214,6 @@ describe('User Control Panel test for  many users', () => {
     cy.visit('/controlpanel/users');
     cy.wait('@manyUsers').then((interception) => {
       if (expect(interception.response.body.data.many_users).to.equal(true)) {
-        // cy.get('input[id="user-search-input"]').clear().type('0');
-        // cy.get('.icon.button:first').click();
-        // cy.get('.fullname').should('have.text', 'test user 0');
-
         cy.get('input[id="user-search-input"]').clear();
         cy.get('.icon.button:first').click();
         cy.contains('Too many users found.');

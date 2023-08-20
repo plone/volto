@@ -33,9 +33,9 @@ const ListingTemplate = ({
 
   const pageSize = 25;
   const [userLimit, setUserLimit] = useState(pageSize);
-  // console.log(groups_filter);
+
   // y axis
-  let items = allUsers; //useSelector((state) => state.users.users);
+  let items = allUsers;
   let show_users =
     !many_users ||
     (many_users && query_user.length > 1) ||
