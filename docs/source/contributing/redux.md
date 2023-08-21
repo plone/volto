@@ -111,7 +111,7 @@ Creating a "request action" potentially triggers some additional access. For
 example, even if we only declare the `GET_CONTENT` type of action, we can see
 that `GET_CONTENT_SUCCESS`, `GET_CONTENT_PENDING` and `GET_CONTENT_FAIL` are
 also used in the `content` reducer. They are automatically created by the
-special Api middleware, available in `src/middleware/api.js`.
+special API middleware, available in `src/middleware/api.js`.
 
 ## Customizing the Redux middleware
 
