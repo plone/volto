@@ -280,46 +280,6 @@ exports[`DiffField renders a richtext field 1`] = `
 </div>
 `;
 
-exports[`DiffField renders a slate field 1`] = `
-<div>
-  <div
-    class="ui grid"
-    data-testid="DiffField"
-  >
-    <div
-      class="row"
-    >
-      <div
-        class="twelve wide column"
-      >
-        Slate
-      </div>
-    </div>
-    <div
-      class="row"
-    >
-      <div
-        class="top aligned sixteen wide column"
-      >
-        <span>
-          <span>
-            [object Object
-          </span>
-          <span
-            class="addition"
-          >
-            ],[object Object
-          </span>
-          <span>
-            ]
-          </span>
-        </span>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
 exports[`DiffField renders a textarea field 1`] = `
 <div>
   <div
