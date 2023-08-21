@@ -56,9 +56,6 @@ const DiffField = ({
 
   let parts, oneArray, twoArray;
   if (schema.widget) {
-    const api = new Api();
-    const history = createBrowserHistory();
-    const store = configureStore(window.__data, history, api);
     switch (schema.widget) {
       case 'richtext':
         parts = diffWords(one?.data, two?.data);
@@ -73,7 +70,10 @@ const DiffField = ({
             .replace('\u202F', ' '),
         );
         break;
-      case 'json':
+      case 'json': {
+        const api = new Api();
+        const history = createBrowserHistory();
+        const store = configureStore(window.__data, history, api);
         parts = diffWords(
           ReactDOMServer.renderToStaticMarkup(
             <Provider store={store}>
@@ -91,7 +91,11 @@ const DiffField = ({
           ),
         );
         break;
-      case 'slate':
+      }
+      case 'slate': {
+        const api = new Api();
+        const history = createBrowserHistory();
+        const store = configureStore(window.__data, history, api);
         parts = diffWords(
           ReactDOMServer.renderToStaticMarkup(
             <Provider store={store}>
@@ -109,6 +113,7 @@ const DiffField = ({
           ),
         );
         break;
+      }
       case 'textarea':
       default:
         parts = diffWords(one, two);
