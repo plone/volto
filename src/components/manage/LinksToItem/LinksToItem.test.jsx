@@ -20,7 +20,7 @@ describe('LinksToItem', () => {
       relations: {
         subrequests: {
           '/page-1': {
-            relations: {
+            data: {
               isReferencing: {
                 items: [
                   {
