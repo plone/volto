@@ -87,7 +87,9 @@ class Logout extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    return <Login location={{ query: this.props.location.query }} />;
+    return (
+      <Login location={{ query: this.props.location.query }} isLogout={true} />
+    );
   }
 }
 export default compose(

@@ -79,7 +79,7 @@ const Login = (props) => {
     location.pathname.replace(/\/login\/?$/, '').replace(/\/logout\/?$/, '') ||
     '/';
   useEffect(() => {
-    if (token) {
+    if (token && !props.isLogout) {
       history.push(returnUrl || '/');
       if (toast.isActive('loggedOut')) {
         toast.dismiss('loggedOut');
@@ -108,7 +108,7 @@ const Login = (props) => {
         toast.dismiss('loginFailed');
       }
     };
-  }, [token, error, intl, history, returnUrl]);
+  }, [token, error, intl, history, returnUrl, props.isLogout]);
 
   const onLogin = (event) => {
     dispatch(
