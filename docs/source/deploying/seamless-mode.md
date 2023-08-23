@@ -87,7 +87,7 @@ problematic from the SEO point of view), so indexers cannot reach it.
 
 Repeatable docker builds (since the config will be based on runtime).
 
-Ready to use production builds (e.g. vanila Volto built, ready for testing), configured in runtime.
+Ready to use production builds (e.g. vanilla Volto built, ready for testing), configured in runtime.
 
 ![How Plone 6 works](HowPlone6Works001.png)
 
