@@ -101,7 +101,7 @@ const UniversalLink = ({
             : null
         }
         rel="noopener noreferrer"
-        className={cx('external', { className })}
+        className={cx('external', className)}
         {...props}
       >
         {children}
