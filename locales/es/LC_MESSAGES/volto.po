@@ -4348,7 +4348,11 @@ msgstr "Comparar con el idioma"
 #: components/manage/Controlpanels/Relations/BrokenRelations
 # defaultMessage: {countofrelation} broken {countofrelation, plural, one {relation} other {relations}} of type {typeofrelation}
 msgid "countBrokenRelations"
+<<<<<<< HEAD
 msgstr "{countofrelation} roto {countofrelation, plural, one {relation} other {relations}} de tipo {typeofrelation}"
+=======
+msgstr "{countofrelation} roto {countofrelation, plural, one {relación} other {relaciones}} de tipo {typeofrelation}"
+>>>>>>> 5cef194ef (Updated the Spanish translation)
 
 #: config/Blocks
 # defaultMessage: Date Range
@@ -4443,7 +4447,11 @@ msgstr "vaciar intIds y reconstruir relaciones"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: <ul><li>Regenerate intIds (tokens of relations in relation catalog)</li><li>Rebuild relations</li></ul><p>Check the log for details!</p><p><b>Warning</b>: If you have add-ons relying on intIds, you should not flush them.</p>
 msgid "flushAndRebuildRelationsHints"
+<<<<<<< HEAD
 msgstr "<ul><li>Regenerar intIds (tokens de relaciones en el catálogo de relaciones)</li><li>Reconstruir relaciones</li></ul><p>¡Consulte el registro para obtener más detalles!</p><p><b>Advertencia</b>: Si tiene complementos que dependen de intIds, no debería eliminarlos.</p>"
+=======
+msgstr "<ul><li>Regenerar intIds (tokens de relaciones en el catálogo de relaciones)</li><li>Reconstruir relaciones</li></ul><p>¡Consulte el registro para obtener más detalles!</p><p><b>Advertencia</b>: Si tiene complementos que dependen de intIds, no debe eliminarlos.</p>"
+>>>>>>> 5cef194ef (Updated the Spanish translation)
 
 #: components/manage/Blocks/Teaser/schema
 # defaultMessage: Head title
