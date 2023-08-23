@@ -14,6 +14,7 @@ import {
 } from '@plone/volto/helpers/Url/Url';
 
 import config from '@plone/volto/registry';
+import cx from 'classnames';
 
 const UniversalLink = ({
   href,
@@ -100,7 +101,7 @@ const UniversalLink = ({
             : null
         }
         rel="noopener noreferrer"
-        className={`${className ?? ''} external`}
+        className={cx('external', { className })}
         {...props}
       >
         {children}

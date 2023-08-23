@@ -48,7 +48,7 @@ exports[`LinksToItem renders "links and references" view 1`] = `
             className=""
           >
             <a
-              className="source published external"
+              className="external className"
               href="http://localhost:3000/page-basil"
               rel="noopener noreferrer"
               target="_blank"
@@ -103,7 +103,7 @@ exports[`LinksToItem renders "links and references" view 1`] = `
             className=""
           >
             <a
-              className="source published external"
+              className="external className"
               href="http://localhost:3000/page-cucumber"
               rel="noopener noreferrer"
               target="_blank"
