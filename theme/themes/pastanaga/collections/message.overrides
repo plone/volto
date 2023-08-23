@@ -12,9 +12,5 @@
 }
 
 .ui.attached.message {
-  // This fixes the overlap when the first field is one of the errored fields. It seems
-  // that the attached prop in SemanticUI React Message component was not the most
-  // appropiate for this kind of message and was intended for another use case (see
-  // docs).
-  margin: 1em 0;
+  margin: 0;
 }
