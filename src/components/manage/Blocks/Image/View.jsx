@@ -19,7 +19,7 @@ import config from '@plone/volto/registry';
  * @class View
  * @extends Component
  */
-export const View = ({ data, detached, properties }) => {
+export const View = ({ className, data, detached, properties }) => {
   const href = data?.href?.[0]?.['@id'] || '';
 
   const Image = config.getComponent({ name: 'Image' }).component;
@@ -33,6 +33,7 @@ export const View = ({ data, detached, properties }) => {
           detached,
         },
         data.align,
+        className,
       )}
     >
       {data.url && (
