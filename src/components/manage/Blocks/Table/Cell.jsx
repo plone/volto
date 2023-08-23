@@ -31,8 +31,6 @@ const CellComponent = (props) => {
   const { EditorState, convertFromRaw } = draftJs;
   const createInlineToolbarPlugin = draftJsInlineToolbarPlugin.default;
   let draftConfig;
-  let editorstate;
-  editorstate = EditorState.createWithContent(convertFromRaw(value));
 
   const [editorState, setEditorState] = useState();
 
@@ -59,6 +57,7 @@ const CellComponent = (props) => {
         onSelectCell(row, cell);
       };
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -69,7 +68,7 @@ const CellComponent = (props) => {
     ) {
       node.focus();
     }
-  }, []);
+  }, [cell, isTableBlockSelected, previsTableBlockSelected, row]);
 
   const onChange = (editorState) => {
     setEditorState(onChange(row, cell, editorState));
@@ -80,7 +79,7 @@ const CellComponent = (props) => {
   }
 
   const { InlineToolbar } = inlineToolbarPlugin;
-  const isSoftNewlineEvent = draftJsLibIsSoftNewlineEvent.default;
+  const isSoftNewlineEvent = props.draftJsLibIsSoftNewlineEvent.default;
   const { RichUtils } = draftJs;
 
   return (
