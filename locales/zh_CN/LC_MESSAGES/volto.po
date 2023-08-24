@@ -1299,6 +1299,11 @@ msgstr ""
 msgid "Enter your username for verification."
 msgstr "输入你的用户名进行验证"
 
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Entries
+msgid "Entries"
+msgstr ""
+
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -1619,6 +1624,11 @@ msgstr ""
 #: components/manage/Blocks/Search/components/Facets
 # defaultMessage: Hide filters
 msgid "Hide filters"
+msgstr ""
+
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Hide title
+msgid "Hide title"
 msgstr ""
 
 #: components/manage/History/History
@@ -1942,6 +1952,11 @@ msgstr "链接更多"
 # defaultMessage: Link redirect view
 msgid "Link redirect view"
 msgstr "链接重定向视图"
+
+#: components/manage/Blocks/Image/schema
+# defaultMessage: Link settings
+msgid "Link settings"
+msgstr ""
 
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
@@ -2432,6 +2447,11 @@ msgstr "打开菜单"
 # defaultMessage: Open object browser
 msgid "Open object browser"
 msgstr "打开目标浏览器"
+
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Ordered
+msgid "Ordered"
+msgstr ""
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Origin
@@ -3137,6 +3157,11 @@ msgstr "发送"
 msgid "Send a confirmation mail with a link to set the password."
 msgstr "发送一条带设置密码链接的确认邮件"
 
+#: components/theme/Error/ServerError
+# defaultMessage: Server Error
+msgid "Server Error"
+msgstr ""
+
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Set my password
 msgid "Set my password"
@@ -3369,6 +3394,11 @@ msgstr "状态"
 # defaultMessage: Status
 msgid "Status"
 msgstr "状态"
+
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Sticky
+msgid "Sticky"
+msgstr ""
 
 #: components/manage/Multilingual/CompareLanguages
 # defaultMessage: Stop compare
@@ -3665,6 +3695,7 @@ msgstr "时间"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Teaser/schema
+#: components/manage/Blocks/ToC/Schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
@@ -4089,6 +4120,11 @@ msgstr "很抱歉，您正在访问的网站后端现在不可用。请稍后重
 # defaultMessage: We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for.
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
 msgstr "很抱歉，您所尝试访问的地址不存在。您可以使用下面的链接帮助您查找所需内容。"
+
+#: components/theme/Error/ServerError
+# defaultMessage: We apologize for the inconvenience, but there was an unexpected error on the server.
+msgid "We apologize for the inconvenience, but there was an unexpected error on the server."
+msgstr ""
 
 #: components/theme/Forbidden/Forbidden
 # defaultMessage: We apologize for the inconvenience, but you don't have permissions on this resource.
@@ -4803,6 +4839,7 @@ msgstr "文本"
 msgid "title"
 msgstr "标题"
 
+#: components/manage/Blocks/ToC/Schema
 #: config/Blocks
 # defaultMessage: Table of Contents
 msgid "toc"
