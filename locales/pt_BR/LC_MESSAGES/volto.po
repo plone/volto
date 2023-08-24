@@ -1303,6 +1303,11 @@ msgstr "Digite sua nova senha. Mínimo de 8 caracteres."
 msgid "Enter your username for verification."
 msgstr "Informe seu nome de usuário para verificação."
 
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Entries
+msgid "Entries"
+msgstr ""
+
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -1625,6 +1630,11 @@ msgstr "Ocultar faceta?"
 msgid "Hide filters"
 msgstr "Ocultar filtros"
 
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Hide title
+msgid "Hide title"
+msgstr ""
+
 #: components/manage/History/History
 #: components/manage/Toolbar/More
 # defaultMessage: History
@@ -1946,6 +1956,11 @@ msgstr "Mais"
 # defaultMessage: Link redirect view
 msgid "Link redirect view"
 msgstr "Visão de redireção de Link"
+
+#: components/manage/Blocks/Image/schema
+# defaultMessage: Link settings
+msgid "Link settings"
+msgstr ""
 
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
@@ -2436,6 +2451,11 @@ msgstr "Abrir menu"
 # defaultMessage: Open object browser
 msgid "Open object browser"
 msgstr "Abrir navegador de objetos"
+
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Ordered
+msgid "Ordered"
+msgstr ""
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Origin
@@ -3141,6 +3161,11 @@ msgstr "Enviar"
 msgid "Send a confirmation mail with a link to set the password."
 msgstr "Envie um e-mail de confirmação com um link para definir a senha."
 
+#: components/theme/Error/ServerError
+# defaultMessage: Server Error
+msgid "Server Error"
+msgstr ""
+
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Set my password
 msgid "Set my password"
@@ -3373,6 +3398,11 @@ msgstr "Estado"
 # defaultMessage: Status
 msgid "Status"
 msgstr "Situação"
+
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Sticky
+msgid "Sticky"
+msgstr ""
 
 #: components/manage/Multilingual/CompareLanguages
 # defaultMessage: Stop compare
@@ -3669,6 +3699,7 @@ msgstr "Hora"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Teaser/schema
+#: components/manage/Blocks/ToC/Schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
@@ -4093,6 +4124,11 @@ msgstr "Pedimos desculpas pelo inconveniente, mas o backend do site que você es
 # defaultMessage: We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for.
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
 msgstr "Pedimos desculpas pelo inconveniente, mas a página que você estava tentando acessar não está neste endereço. Você pode usar os links abaixo para ajudá-lo a encontrar o que você está procurando."
+
+#: components/theme/Error/ServerError
+# defaultMessage: We apologize for the inconvenience, but there was an unexpected error on the server.
+msgid "We apologize for the inconvenience, but there was an unexpected error on the server."
+msgstr ""
 
 #: components/theme/Forbidden/Forbidden
 # defaultMessage: We apologize for the inconvenience, but you don't have permissions on this resource.
@@ -4807,6 +4843,7 @@ msgstr "Texto"
 msgid "title"
 msgstr "Título"
 
+#: components/manage/Blocks/ToC/Schema
 #: config/Blocks
 # defaultMessage: Table of Contents
 msgid "toc"

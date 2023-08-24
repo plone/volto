@@ -120,11 +120,15 @@ exports[`Sharing renders a sharing component 1`] = `
             <input
               checked={true}
               className="hidden"
+              id="inherit-permissions-checkbox"
+              name="inherit-permissions-checkbox"
               readOnly={true}
               tabIndex={0}
               type="checkbox"
             />
-            <label>
+            <label
+              htmlFor="inherit-permissions-checkbox"
+            >
               Inherit permissions from higher levels
             </label>
           </div>
