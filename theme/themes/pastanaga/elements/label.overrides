@@ -6,3 +6,13 @@
     margin: 0em 0em 0em 0.75em;
   }
 }
+
+.ui.form {
+  .ui.basic.red.label.form-error-label {
+    padding-left: 0;
+    border: none;
+    margin-top: 0;
+    color: #d01157 !important;
+    font-weight: normal;
+  }
+}
