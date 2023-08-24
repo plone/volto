@@ -8,11 +8,7 @@
 }
 
 .ui.form {
-  .ui.pointing.label:before {
-    content: initial;
-  }
-
-  .ui.basic.red.label {
+  .ui.basic.red.label.form-error-label {
     padding-left: 0;
     border: none;
     margin-top: 0;
