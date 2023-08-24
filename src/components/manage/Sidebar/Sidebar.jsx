@@ -6,7 +6,7 @@ import { compose } from 'redux';
 import { withCookies } from 'react-cookie';
 import { defineMessages, useIntl } from 'react-intl';
 import cx from 'classnames';
-import { BodyClass, getCookieOptions, usePrevious } from '@plone/volto/helpers';
+import { BodyClass, getCookieOptions } from '@plone/volto/helpers';
 import { Icon } from '@plone/volto/components';
 import forbiddenSVG from '@plone/volto/icons/forbidden.svg';
 import { setSidebarTab } from '@plone/volto/actions';
@@ -45,8 +45,6 @@ const Sidebar = (props) => {
   );
   const [size] = useState(0);
   const [showFull, setshowFull] = useState(true);
-
-  const prevShowFull = usePrevious(showFull);
 
   const tab = useSelector((state) => state.sidebar.tab);
   const toolbarExpanded = useSelector((state) => state.toolbar.expanded);
@@ -87,8 +85,8 @@ const Sidebar = (props) => {
       sidebarContainer.classList.remove('full-size');
       sidebarContainer.classList.remove('no-toolbar');
     }
-    setshowFull(!prevShowFull);
-  }, [prevShowFull, showFull, toolbarExpanded]);
+    setshowFull(!showFull);
+  }, [showFull, toolbarExpanded]);
 
   const onTabChange = (event, data) => {
     event.nativeEvent.stopImmediatePropagation();
