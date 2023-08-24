@@ -65,14 +65,6 @@ const messages = defineMessages({
     defaultMessage:
       'If selected, this item will not appear in the navigation tree',
   },
-  yes: {
-    id: 'Yes',
-    defaultMessage: 'Yes',
-  },
-  no: {
-    id: 'No',
-    defaultMessage: 'No',
-  },
 });
 
 const ContentsPropertiesModal = (props) => {
@@ -151,11 +143,7 @@ const ContentsPropertiesModal = (props) => {
                 messages.excludeFromNavDescription,
               ),
               title: intl.formatMessage(messages.excludeFromNavTitle),
-              type: 'array',
-              choices: [
-                [true, intl.formatMessage(messages.yes)],
-                [false, intl.formatMessage(messages.no)],
-              ],
+              type: 'boolean',
             },
           },
           required: [],

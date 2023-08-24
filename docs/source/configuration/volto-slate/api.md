@@ -90,7 +90,7 @@ The {term}`elementEditor` is a top-level wrapper of all plugins used in `volto-s
 It consists of various modules:
 
 `makeInlineElementPlugin`
-:   Used to build and install a custom schema based plugin from volto-slate API.
+:   Used to build and install a custom schema based plugin from `volto-slate` API.
     It expects a set of options passed as a property to your plugin.
 
 `PluginEditor`

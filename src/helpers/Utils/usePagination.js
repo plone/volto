@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import qs from 'query-string';
 import { useSelector } from 'react-redux';
-import { slugify } from '@plone/volto/helpers/Utils/Utils';
+import { findBlocks, slugify } from '@plone/volto/helpers';
 
 /**
  * @function useCreatePageQueryStringKey
@@ -12,13 +12,8 @@ import { slugify } from '@plone/volto/helpers/Utils/Utils';
 const useCreatePageQueryStringKey = (id) => {
   const blockTypesWithPagination = ['search', 'listing'];
   const blocks = useSelector((state) => state?.content?.data?.blocks) || [];
-  const blocksLayout =
-    useSelector((state) => state?.content?.data?.blocks_layout?.items) || [];
-  const displayedBlocks = blocksLayout?.map((item) => blocks[item]);
   const hasMultiplePaginations =
-    displayedBlocks.filter((item) =>
-      blockTypesWithPagination.includes(item['@type']),
-    ).length > 1 || false;
+    findBlocks(blocks, blockTypesWithPagination).length > 1;
 
   return hasMultiplePaginations ? slugify(`page-${id}`) : 'page';
 };

@@ -6,8 +6,24 @@ exports[`renders an edit Lead Image block component 1`] = `
 >
   <img
     alt=""
-    className=""
-    src="image.png"
+    className="responsive"
+    imageField="image"
+    item={
+      Object {
+        "image": Object {
+          "download": "http://localhost:3000/image.png",
+          "height": 400,
+          "scales": Object {
+            "preview": Object {
+              "download": "http://localhost:3000/image.png/@@images/image/image-400.png",
+              "height": 400,
+              "width": 400,
+            },
+          },
+          "width": 400,
+        },
+      }
+    }
   />
 </div>
 `;
