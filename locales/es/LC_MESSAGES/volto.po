@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-03 03:20-0400\n"
-"PO-Revision-Date: 2023-08-23 13:11-0400\n"
+"PO-Revision-Date: 2023-08-23 21:45-0400\n"
 "Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
 "Language: es\n"
 "Language-Team: ES <LL@li.org>\n"
@@ -4348,7 +4348,7 @@ msgstr "Comparar con el idioma"
 #: components/manage/Controlpanels/Relations/BrokenRelations
 # defaultMessage: {countofrelation} broken {countofrelation, plural, one {relation} other {relations}} of type {typeofrelation}
 msgid "countBrokenRelations"
-msgstr "{countofrelation} roto {countofrelation, plural, one {relación} other {relaciones}} de tipo {typeofrelation}"
+msgstr "{countofrelation} roto {countofrelation, plural, one {relation} other {relations}} de tipo {typeofrelation}"
 
 #: config/Blocks
 # defaultMessage: Date Range
@@ -4443,7 +4443,7 @@ msgstr "vaciar intIds y reconstruir relaciones"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: <ul><li>Regenerate intIds (tokens of relations in relation catalog)</li><li>Rebuild relations</li></ul><p>Check the log for details!</p><p><b>Warning</b>: If you have add-ons relying on intIds, you should not flush them.</p>
 msgid "flushAndRebuildRelationsHints"
-msgstr "<ul><li>Regenerar intIds (tokens de relaciones en el catálogo de relaciones)</li><li>Reconstruir relaciones</li></ul><p>¡Consulte el registro para obtener más detalles!</p><p><b>Advertencia</b>: Si tiene complementos que dependen de intIds, no debe eliminarlos.</p>"
+msgstr "<ul><li>Regenerar intIds (tokens de relaciones en el catálogo de relaciones)</li><li>Reconstruir relaciones</li></ul><p>¡Consulte el registro para obtener más detalles!</p><p><b>Advertencia</b>: Si tiene complementos que dependen de intIds, no debería eliminarlos.</p>"
 
 #: components/manage/Blocks/Teaser/schema
 # defaultMessage: Head title
