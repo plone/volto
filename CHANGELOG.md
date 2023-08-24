@@ -23,6 +23,9 @@
 
 - Fix 302 redirect in changelog. @stevepiercy [#5068](https://github.com/plone/volto/issues/5068)
 
+### Internal
+
+- Add www.dlr.de to "Volto in production" list. @tisto [#5112](https://github.com/plone/volto/pull/5112)
 
 ## 17.0.0-alpha.23 (2023-07-28)
 
