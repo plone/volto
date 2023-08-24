@@ -1,13 +1,10 @@
 describe('History Tests', () => {
   beforeEach(() => {
+    cy.intercept('GET', `/**/*?expand*`).as('content');
     // give a logged in editor and the site root
     cy.autologin();
     cy.visit('/');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('');
+    cy.wait('@content');
   });
   it('As editor I can add a page and access history', function () {
     // I add a page
@@ -18,6 +15,7 @@ describe('History Tests', () => {
     // then a new page has been created
     cy.get('#toolbar-save').click();
     cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
+    cy.wait('@content');
 
     cy.get('.navigation .item.active').should('have.text', 'My Page');
 

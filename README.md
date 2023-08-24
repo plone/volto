@@ -134,7 +134,7 @@ Go to [http://localhost:3000](http://localhost:3000) in your browser.
 Volto is actively developed since 2017 and used in production since 2018 on the following websites:
 
 - [VHS Ehrenamtsportal](https://vhs-ehrenamtsportal.de) (Website to help volunteers that help refugees for the [German Adult Education Association](https://www.dvv-vhs.de/en/home/), developed by [kitconcept GmbH](https://kitconcept.com), 2018)
-- [Zeelandia](https://zeelandia.de) (Corporate website for one of the leading backery ingredients manufacturers in Germany, developed by [kitconcept GmbH](https://kitconcept.com), 2019)
+- [Zeelandia](https://zeelandia.de) (Corporate website for one of the leading bakery ingredients manufacturers in Germany, developed by [kitconcept GmbH](https://kitconcept.com), 2019)
 - [Excellence at Humboldt-Universität zu Berlin](https://www.alles-beginnt-mit-einer-frage.de) (Website for the excellence initiative of the [Humboldt University Berlin](https://hu-berlin.de), developed by [kitconcept GmbH](https://kitconcept.com), 2019)
 - [Forest Information System for Europe](https://forest.eea.europa.eu) (Thematic website focusing on European forests, developed by [Eau de Web](https://www.eaudeweb.ro), 2019)
 - [Industrial Emissions portal for Europe](https://industry.eea.europa.eu) (Thematic website focusing on European industrial emissions, developed by [Eau de Web](https://www.eaudeweb.ro), 2020)
