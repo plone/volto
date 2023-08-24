@@ -71,4 +71,27 @@ describe('Sharing Tests', () => {
     cy.visit('/my-page');
     cy.findByRole('heading', { name: /my page/i }).should('exist');
   });
+
+  it('As editor, I can uncheck the inherit permissions checkbox', function () {
+    cy.intercept('/**/@logout').as('logout');
+    cy.intercept('/**/@sharing').as('sharing');
+
+    // Click on the Toolbar > More
+    cy.findByRole('button', { name: /more/i }).click();
+    cy.findByRole('link', { name: /sharing/i }).click();
+    cy.wait('@sharing');
+
+    cy.findByLabelText('Inherit permissions from higher levels').click({
+      force: true,
+    });
+
+    cy.findByRole('button', { name: /save/i }).click();
+    cy.wait('@sharing');
+
+    cy.visit('/my-page/sharing');
+
+    cy.findByLabelText('Inherit permissions from higher levels').should(
+      'not.be.checked',
+    );
+  });
 });
