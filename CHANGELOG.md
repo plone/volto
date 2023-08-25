@@ -3,7 +3,7 @@
 <!-- You should *NOT* be adding new change log entries to this file.
      You should create a file in the news directory instead.
      For helpful instructions, please see:
-     https://6.docs.plone.org/volto/developer-guidelines/contributing.html#create-a-pull-request
+     https://6.docs.plone.org/contributing/index.html#contributing-change-log-label
 -->
 
 <!-- towncrier release notes start -->
@@ -63,7 +63,7 @@
 
 ### Internal
 
-- Add www.dlr.de to "Volto in production" list. @tisto [#5112](https://github.com/plone/volto/pull/5112)
+- Add https://www.dlr.de/de to "Volto in production" list. @tisto [#5112](https://github.com/plone/volto/pull/5112)
 
 ## 17.0.0-alpha.23 (2023-07-28)
 
