@@ -8,6 +8,29 @@
 
 <!-- towncrier release notes start -->
 
+## 16.22.2 (2023-08-25)
+
+### Bugfix
+
+- Fix querystringResults subrequests id, to work properly in duplicate pages where blocks id's are the same. @giuliaghisini [#5070](https://github.com/plone/volto/issues/5070)
+- Fix accessibility of the content folder buttons. @SaraBianchi [#5101](https://github.com/plone/volto/issues/5101)
+- For folders inside navigation roots, properly fetch navigation from the
+  navroot, rather then the site root  @tiberiuichim [#5106](https://github.com/plone/volto/issues/5106)
+- Fix uncached case when the widget is slate on diff @dobri1408 [#5107](https://github.com/plone/volto/issues/5107)
+- Fix load addon translations: last addon translations wins @giuliaghisini [#5113](https://github.com/plone/volto/issues/5113)
+- [Visual bugfix] Match the original mockups for PastanagaUI in regards of the error messages in form field elements @sneridagh [#5115](https://github.com/plone/volto/issues/5115)
+- Fix inherit checkbox in sharing view @sneridagh [#5514](https://github.com/plone/volto/issues/5514)
+
+### Internal
+
+- Improved spellcheck to keep spellings consistent. @chirayu-humar [#1190](https://github.com/plone/volto/issues/1190)
+
+### Documentation
+
+- Update links to contributing. @stevepiercy [#5084](https://github.com/plone/volto/issues/5084)
+- Accept `plone` and `volto` in labels with janky regex. Include Vale styles directory for checking spelling and styles. @stevepiercy [#5095](https://github.com/plone/volto/issues/5095)
+
+
 ## 16.22.1 (2023-08-11)
 
 ### Feature
