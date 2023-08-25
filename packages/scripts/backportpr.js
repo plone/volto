@@ -58,11 +58,11 @@ function execCommand(command) {
 async function main(params) {
   const PRInfo = await getPRInfo(pr);
 
-  execCommand(`git pull`);
-  execCommand(`git co -b ${PRInfo.branchName}__16`);
+  // execCommand(`git pull`);
+  // execCommand(`git co -b ${PRInfo.branchName}__16`);
   execCommand(`git cherry-pick ${PRInfo.mergeCommit}`);
-  execCommand(`git push`);
-  execCommand(`git co 16.x.x`);
+  // execCommand(`git push`);
+  // execCommand(`git co 16.x.x`);
 }
 
 main();
