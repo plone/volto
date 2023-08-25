@@ -63,7 +63,7 @@
 
 ### Internal
 
-- Add www.dlr.de to "Volto in production" list. @tisto [#5112](https://github.com/plone/volto/pull/5112)
+- Add https://www.dlr.de/de to "Volto in production" list. @tisto [#5112](https://github.com/plone/volto/pull/5112)
 
 ## 17.0.0-alpha.23 (2023-07-28)
 
