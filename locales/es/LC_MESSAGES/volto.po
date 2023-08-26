@@ -1958,6 +1958,11 @@ msgstr "Enlace más"
 msgid "Link redirect view"
 msgstr "Vista de redirección del enlace"
 
+#: components/manage/Blocks/Image/schema
+# defaultMessage: Link settings
+msgid "Link settings"
+msgstr ""
+
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Link Title
