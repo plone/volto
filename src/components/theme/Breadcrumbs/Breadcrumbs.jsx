@@ -28,16 +28,10 @@ const messages = defineMessages({
 const BreadcrumbsComponent = ({ pathname }) => {
   const intl = useIntl();
 
-  const { data, isLoading, isFetching } = useQuery(
-    getBreadcrumbsQuery(pathname),
-  );
+  const { data } = useQuery(getBreadcrumbsQuery({ path: pathname }));
 
   const items = data?.items || [];
   const root = data?.root || '/';
-
-  console.log('loading', isLoading);
-  console.log('fetching', isFetching);
-  console.log('abc', data);
 
   return (
     <Segment
