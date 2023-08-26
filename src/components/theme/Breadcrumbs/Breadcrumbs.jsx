@@ -4,11 +4,15 @@ import { Link } from 'react-router-dom';
 import { Breadcrumb, Container, Segment } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
-
+import { useQuery } from '@tanstack/react-query';
 import { getBreadcrumbs } from '@plone/volto/actions';
+import ploneClient from '@root/plone-client';
+
 import { getBaseUrl, hasApiExpander } from '@plone/volto/helpers';
 import { Icon } from '@plone/volto/components';
 import homeSVG from '@plone/volto/icons/home.svg';
+
+const { getBreadcrumbsQuery } = ploneClient;
 
 const messages = defineMessages({
   home: {
@@ -23,16 +27,17 @@ const messages = defineMessages({
 
 const BreadcrumbsComponent = ({ pathname }) => {
   const intl = useIntl();
-  const dispatch = useDispatch();
 
-  const items = useSelector((state) => state.breadcrumbs.items, shallowEqual);
-  const root = useSelector((state) => state.breadcrumbs.root);
+  const { data, isLoading, isFetching } = useQuery(
+    getBreadcrumbsQuery(pathname),
+  );
 
-  useEffect(() => {
-    if (!hasApiExpander('breadcrumbs', getBaseUrl(pathname))) {
-      dispatch(getBreadcrumbs(getBaseUrl(pathname)));
-    }
-  }, [dispatch, pathname]);
+  const items = data?.items || [];
+  const root = data?.root || '/';
+
+  console.log('loading', isLoading);
+  console.log('fetching', isFetching);
+  console.log('abc', data);
 
   return (
     <Segment

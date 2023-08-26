@@ -37,29 +37,6 @@ exports[`Breadcrumbs renders a breadcrumbs component 1`] = `
           xmlns=""
         />
       </a>
-      <div
-        className="divider"
-      >
-        /
-      </div>
-      <a
-        className="section"
-        href="/blog"
-        onClick={[Function]}
-      >
-        Blog
-      </a>
-      <div
-        className="divider"
-      >
-        /
-      </div>
-      <div
-        className="active section"
-        onClick={[Function]}
-      >
-        My first blog
-      </div>
     </div>
   </div>
 </div>
