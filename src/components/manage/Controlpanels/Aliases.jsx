@@ -82,24 +82,6 @@ const Aliases = (props) => {
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const isClient = useClient();
 
-  useEffect(() => {
-    dispatch(
-      getAliases(getBaseUrl(pathname), {
-        query: filterQuery,
-        manual: filterType.value,
-        datetime: createdBefore,
-        batchSize: itemsPerPage,
-      }),
-    );
-  }, [
-    createdBefore,
-    dispatch,
-    filterQuery,
-    filterType.value,
-    itemsPerPage,
-    pathname,
-  ]);
-
   const prevaliasesitemstotal = usePrevious(aliases.items_total);
   const previtemsPerPage = usePrevious(itemsPerPage);
   const prevactivePage = usePrevious(activePage);
@@ -147,10 +129,11 @@ const Aliases = (props) => {
       }
     }
   }, [
+    itemsPerPage,
+    pathname,
     prevaliasesitemstotal,
     aliases.items_total,
     previtemsPerPage,
-    itemsPerPage,
     prevactivePage,
     activePage,
     prevalturlpath,
@@ -158,7 +141,6 @@ const Aliases = (props) => {
     prevtargetUrlPath,
     targetUrlPath,
     dispatch,
-    pathname,
     filterQuery,
     filterType.value,
     createdBefore,
@@ -274,11 +256,11 @@ const Aliases = (props) => {
   ]);
 
   const handleCheckAlias = (alias) => {
-    const aliases = aliasesToRemove;
-    if (aliases.includes(alias)) {
-      const index = aliases.indexOf(alias);
+    const aliasess = [...aliasesToRemove];
+    if (aliasess.includes(alias)) {
+      const index = aliasess.indexOf(alias);
       if (index > -1) {
-        let newAliasesArr = aliases;
+        let newAliasesArr = aliasess;
         newAliasesArr.splice(index, 1);
         setAliasesToRemove(newAliasesArr);
       }

@@ -65,7 +65,7 @@ export default {
   component: Aliases,
   decorators: [
     (Story) => (
-      <div className="ui segment form attached" style={{ width: '400px' }}>
+      <div className="ui segment form attached" style={{ width: '900px' }}>
         <Story />
       </div>
     ),
