@@ -51,3 +51,10 @@ user-manual/index
 contributing/index
 release-notes/index
 ```
+
+````{ifconfig} context in ("volto")
+```{toctree}
+
+news*
+```
+````

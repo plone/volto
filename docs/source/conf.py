@@ -108,6 +108,11 @@ spelling_ignore_pypi_package_names = True
 # The suffix of source filenames.
 source_suffix = {
     ".md": "markdown",
+    ".bugfix": "markdown",
+    ".breaking": "markdown",
+    ".documentation": "markdown",
+    ".feature": "markdown",
+    ".internal": "markdown",
 }
 
 # The master toctree document.
