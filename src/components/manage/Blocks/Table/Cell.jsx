@@ -31,8 +31,6 @@ const CellComponent = (props) => {
   const { EditorState, convertFromRaw } = draftJs;
   const createInlineToolbarPlugin = draftJsInlineToolbarPlugin.default;
   let draftConfig;
-  let editorstate;
-  editorstate = EditorState.createWithContent(convertFromRaw(value));
 
   const [editorState, setEditorState] = useState();
 
@@ -59,7 +57,7 @@ const CellComponent = (props) => {
         onSelectCell(row, cell);
       };
     }
-  }, []);
+  }, [cell, onSelectCell, row]);
 
   useEffect(() => {
     if (
@@ -69,10 +67,14 @@ const CellComponent = (props) => {
     ) {
       node.focus();
     }
-  }, []);
+  }, [cell, row, isTableBlockSelected, previsTableBlockSelected]);
+
+  useEffect(() => {
+    props.onChange(row, cell, editorState);
+  }, [editorState, row, cell]);
 
   const onChange = (editorState) => {
-    setEditorState(onChange(row, cell, editorState));
+    setEditorState(editorState);
   };
 
   if (__SERVER__) {
