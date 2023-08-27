@@ -23,22 +23,32 @@ const chalk = require('chalk');
  * @function extractMessages
  * @return {undefined}
  */
-function extractMessages() {
+function extractMessages({ workingDirectory }) {
+  console.log(workingDirectory);
   map(
     // We ignore the existing customized shadowed components ones, since most
     // probably we won't be overriding them
     // If so, we should do it in the config object or somewhere else
     // We also ignore the addons folder since they are populated using
     // their own locales files and taken care separatedly in this script
-    glob('src/**/*.js?(x)', {
-      ignore: ['src/customizations/**', 'src/addons/**'],
+    glob(`${workingDirectory}/src/**/*.js?(x)`, {
+      ignore: [`${workingDirectory}/src/customizations/**`],
+      cwd: workingDirectory || process.cwd(),
     }),
     (filename) => {
-      babel.transformFileSync(filename, {}, (err) => {
-        if (err) {
-          console.log(err);
-        }
-      });
+      console.log(filename);
+
+      babel.transformFileSync(
+        filename,
+        {
+          // cwd: workingDirectory || process.cwd(),
+        },
+        (err) => {
+          if (err) {
+            console.log(err);
+          }
+        },
+      );
     },
   );
 }
@@ -61,7 +71,7 @@ function getMessages() {
         glob('build/messages/src/**/*.json', {
           ignore: [
             'build/messages/src/customizations/**',
-            'build/messages/src/addons/**',
+            // 'build/messages/src/addons/**',
           ],
         }),
         (filename) =>
@@ -224,10 +234,12 @@ function formatHeader(comments, headers) {
  * @function syncPoByPot
  * @return {undefined}
  */
-function syncPoByPot() {
-  const pot = Pofile.parse(fs.readFileSync('locales/volto.pot', 'utf8'));
+function syncPoByPot({ workingDirectory }) {
+  const pot = Pofile.parse(
+    fs.readFileSync(`${workingDirectory}/locales/volto.pot`, 'utf8'),
+  );
 
-  map(glob('locales/**/*.po'), (filename) => {
+  map(glob(`${workingDirectory}/locales/**/*.po`), (filename) => {
     const po = Pofile.parse(fs.readFileSync(filename, 'utf8'));
 
     fs.writeFileSync(
@@ -246,9 +258,15 @@ ${map(pot.items, (item) => {
   });
 }
 
-function main({ addonMode }) {
+function main({ addon }) {
+  let basePath = '.';
+  if (typeof addon === 'string') {
+    basePath = addon;
+  }
+
   console.log('Extracting messages from source files...');
-  extractMessages();
+  extractMessages({ workingDirectory: basePath });
+
   console.log('Synchronizing messages to pot file...');
   // We only write the pot file if it's really different
   const newPot = `${potHeader()}${messagesToPot(getMessages())}\n`.replace(
@@ -256,18 +274,20 @@ function main({ addonMode }) {
     '',
   );
   const oldPot = fs
-    .readFileSync('locales/volto.pot', 'utf8')
+    .readFileSync(`${basePath}/locales/volto.pot`, 'utf8')
     .replace(/"POT-Creation-Date:(.*)\\n"/, '');
 
   if (newPot !== oldPot) {
     fs.writeFileSync(
-      'locales/volto.pot',
+      `${basePath}/locales/volto.pot`,
       `${potHeader()}${messagesToPot(getMessages())}\n`,
     );
   }
+
   console.log('Synchronizing messages to po files...');
-  syncPoByPot();
-  if (!addonMode) {
+  syncPoByPot({ workingDirectory: basePath });
+
+  if (!addon) {
     // Detect if I'm in a project or in Volto itself
     let AddonConfigurationRegistry;
     try {
@@ -289,17 +309,21 @@ function main({ addonMode }) {
     }
     console.log('Generating the language JSON files...');
     const registry = new AddonConfigurationRegistry(projectRootPath);
-    poToJson({ registry, addonMode });
+    poToJson({ registry, addonMode: !!addon });
   }
   console.log('done!');
 }
 
 // This is the equivalent of `if __name__ == '__main__'` in Python :)
 if (require.main === module) {
-  program.option('-a, --addon', 'run i18n script for addons');
+  program.option(
+    '-a, --addon [path]',
+    'run i18n script for add-ons - you can supply an optional add-on path',
+  );
+  // program.option('-p, --addon-path <path>', 'run i18n script for addons in a given path');
   program.parse(process.argv);
   const options = program.opts();
-  main({ addonMode: options.addon });
+  main({ addon: options.addon });
 }
 
 module.exports = { poToJson };
