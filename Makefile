@@ -105,6 +105,7 @@ bin/python:
 	python3 -m venv . || virtualenv --clear --python=python3 .
 	bin/python -m pip install --upgrade pip
 	bin/pip install -r requirements-docs.txt
+	ln -s docs/source/news ./news
 
 .PHONY: clean
 clean:
