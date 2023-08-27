@@ -57,7 +57,8 @@ const CellComponent = (props) => {
         onSelectCell(row, cell);
       };
     }
-  }, [cell, onSelectCell, row]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     if (
@@ -67,14 +68,14 @@ const CellComponent = (props) => {
     ) {
       node.focus();
     }
-  }, [cell, row, isTableBlockSelected, previsTableBlockSelected]);
+  }, [cell, isTableBlockSelected, previsTableBlockSelected, row]);
 
   useEffect(() => {
-    props.onChange(row, cell, editorState);
-  }, [editorState, row, cell]);
+    setEditorState(editorState);
+  }, [editorState]);
 
   const onChange = (editorState) => {
-    setEditorState(editorState);
+    props.onChange(row, cell, editorState);
   };
 
   if (__SERVER__) {
@@ -82,7 +83,7 @@ const CellComponent = (props) => {
   }
 
   const { InlineToolbar } = inlineToolbarPlugin;
-  const isSoftNewlineEvent = draftJsLibIsSoftNewlineEvent.default;
+  const isSoftNewlineEvent = props.draftJsLibIsSoftNewlineEvent.default;
   const { RichUtils } = draftJs;
 
   return (

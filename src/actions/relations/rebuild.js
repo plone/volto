@@ -12,14 +12,14 @@ import { REBUILD_RELATIONS } from '@plone/volto/constants/ActionTypes';
  * @returns {Object} Rebuild relation action.
  */
 export function rebuildRelations(flush = false) {
-  let path = '/@relations';
-  var searchParams = new URLSearchParams();
-  searchParams.append('rebuild', '1');
-  flush && searchParams.append('flush', '1');
-  const searchParamsToString = searchParams.toString();
-  path += `?${searchParamsToString}`;
+  let path = '/@relations/rebuild';
+  const data = flush === true ? { flush: 1 } : {};
   return {
     type: REBUILD_RELATIONS,
-    request: { op: 'get', path: path },
+    request: {
+      op: 'post',
+      path: path,
+      data: data,
+    },
   };
 }
