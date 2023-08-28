@@ -99,6 +99,18 @@ export const protectLoadEnd = ({ dispatch, getState }) => (next) => (
   return next(action);
 };
 
+/*
+Below the loadProtector reducer function aims to ensure that content loading transitions are handled smoothly, especially
+when navigating between different types of routes within the application. It helps coordinate actions, state updates, and 
+timing to provide a better user experience during navigating and content loading.
+
+loadProtector function performs the following opertations:
+1. Tracking the loading process by counting the number of pending requests (requestCount) and whether counting is currently 
+   active (isCounting)
+2. Managing the state related to reset actions before content fetching (resetBeforeFetch).
+3. Storing location information, both for postponed and current location.
+*/
+
 export function loadProtector(state = {}, action = {}) {
   switch (action.type) {
     case PROTECT_START:
