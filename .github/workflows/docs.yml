@@ -34,7 +34,7 @@ jobs:
         run: pip install -r requirements-docs.txt
 
       - name: Make symlink
-        run: ln -s ./docs/source/news ./news
+        run: ln -s news docs/source/news
 
       - name: Check for broken links
         run: make docs-linkcheckbroken
