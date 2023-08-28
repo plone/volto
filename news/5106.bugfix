@@ -1,2 +1,0 @@
-For folders inside navigation roots, properly fetch navigation from the
-navroot, rather then the site root  @tiberiuichim
