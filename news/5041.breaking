@@ -1,2 +1,0 @@
-Spin off relation stats action. Get relation stats with getRelationStats() instead of with queryRelations(). @ksuess
-Refactor relations actions: slightly change the shape of the redux state for `queryRelations` to follow common signatures. @ksuess
