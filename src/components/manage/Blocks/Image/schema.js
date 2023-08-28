@@ -33,6 +33,10 @@ const messages = defineMessages({
     id: 'Alt text hint link text',
     defaultMessage: 'Describe the purpose of the image.',
   },
+  linkSettings: {
+    id: 'Link settings',
+    defaultMessage: 'Link settings',
+  },
 });
 
 export function ImageSchema({ formData, intl }) {
@@ -47,7 +51,7 @@ export function ImageSchema({ formData, intl }) {
         ? [
             {
               id: 'link_settings',
-              title: 'Link settings',
+              title: intl.formatMessage(messages.linkSettings),
               fields: ['href', 'openLinkInNewTab'],
             },
           ]
