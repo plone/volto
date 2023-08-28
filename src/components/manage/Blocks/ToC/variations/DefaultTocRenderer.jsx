@@ -8,7 +8,6 @@ import PropTypes from 'prop-types';
 import { map } from 'lodash';
 import { List } from 'semantic-ui-react';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { useHistory } from 'react-router-dom';
 import Slugger from 'github-slugger';
 import { UniversalLink } from '@plone/volto/components';
 
