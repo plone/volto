@@ -107,7 +107,7 @@ bin/python:
 	@echo "Python environment created."
 	bin/pip install -r requirements-docs.txt
 	@echo "Requirements installed."
-	ln -s docs/source/news ./news
+	ln -s ../../news ./docs/source/news
 	@echo "Symlink created."
 
 .PHONY: clean
