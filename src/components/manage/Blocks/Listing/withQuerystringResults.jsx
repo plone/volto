@@ -23,7 +23,7 @@ export default function withQuerystringResults(WrappedComponent) {
     } = props;
     const { settings } = config;
     const querystring = data.querystring || data; // For backwards compat with data saved before Blocks schema. Note, this is also how the Search block passes data to ListingBody
-
+    const subrequestID = content?.UID + '-' + id;
     const { b_size = settings.defaultPageSize } = querystring; // batchsize
 
     // save the path so it won't trigger dispatch on eager router location change
@@ -52,31 +52,33 @@ export default function withQuerystringResults(WrappedComponent) {
 
     const folderItems = content?.is_folderish ? content.items : [];
     const hasQuery = querystring?.query?.length > 0;
-    const hasLoaded = hasQuery ? querystringResults?.[id]?.loaded : true;
+    const hasLoaded = hasQuery
+      ? querystringResults?.[subrequestID]?.loaded
+      : true;
 
     const listingItems = hasQuery
-      ? querystringResults?.[id]?.items || []
+      ? querystringResults?.[subrequestID]?.items || []
       : folderItems;
 
     const showAsFolderListing = !hasQuery && content?.items_total > b_size;
     const showAsQueryListing =
-      hasQuery && querystringResults?.[id]?.total > b_size;
+      hasQuery && querystringResults?.[subrequestID]?.total > b_size;
 
     const totalPages = showAsFolderListing
       ? Math.ceil(content.items_total / b_size)
       : showAsQueryListing
-      ? Math.ceil(querystringResults[id].total / b_size)
+      ? Math.ceil(querystringResults[subrequestID].total / b_size)
       : 0;
 
     const prevBatch = showAsFolderListing
       ? content.batching?.prev
       : showAsQueryListing
-      ? querystringResults[id].batching?.prev
+      ? querystringResults[subrequestID].batching?.prev
       : null;
     const nextBatch = showAsFolderListing
       ? content.batching?.next
       : showAsQueryListing
-      ? querystringResults[id].batching?.next
+      ? querystringResults[subrequestID].batching?.next
       : null;
 
     const isImageGallery =
@@ -86,7 +88,12 @@ export default function withQuerystringResults(WrappedComponent) {
     useDeepCompareEffect(() => {
       if (hasQuery) {
         dispatch(
-          getQueryStringResults(initialPath, adaptedQuery, id, currentPage),
+          getQueryStringResults(
+            initialPath,
+            adaptedQuery,
+            subrequestID,
+            currentPage,
+          ),
         );
       } else if (isImageGallery && !hasQuery) {
         // when used as image gallery, it doesn't need a query to list children
@@ -104,7 +111,7 @@ export default function withQuerystringResults(WrappedComponent) {
                 },
               ],
             },
-            id,
+            subrequestID,
           ),
         );
       } else {
@@ -113,7 +120,7 @@ export default function withQuerystringResults(WrappedComponent) {
       adaptedQueryRef.current = adaptedQuery;
       currentPageRef.current = currentPage;
     }, [
-      id,
+      subrequestID,
       isImageGallery,
       adaptedQuery,
       hasQuery,
@@ -126,7 +133,7 @@ export default function withQuerystringResults(WrappedComponent) {
       <WrappedComponent
         {...props}
         onPaginationChange={(e, { activePage }) => setCurrentPage(activePage)}
-        total={querystringResults?.[id]?.total}
+        total={querystringResults?.[subrequestID]?.total}
         batch_size={b_size}
         currentPage={currentPage}
         totalPages={totalPages}
