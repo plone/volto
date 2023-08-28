@@ -13,8 +13,6 @@ import Slugger from 'github-slugger';
 import { UniversalLink } from '@plone/volto/components';
 
 const RenderListItems = ({ items, data }) => {
-  const history = useHistory();
-
   return map(items, (item) => {
     const { id, level, title, override_toc, plaintext } = item;
     const slug = override_toc
