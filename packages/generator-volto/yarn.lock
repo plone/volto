@@ -689,7 +689,7 @@ __metadata:
     mkdirp-then: 1.2.0
     mz: 2.6.0
     ora: 1.2.0
-    prettier: 2.0.5
+    prettier: 3.0.2
     promise: 7.1.1
     release-it: ^16.1.3
     semver: ^7.5.4
@@ -8460,12 +8460,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:2.0.5":
-  version: 2.0.5
-  resolution: "prettier@npm:2.0.5"
+"prettier@npm:3.0.2":
+  version: 3.0.2
+  resolution: "prettier@npm:3.0.2"
   bin:
-    prettier: bin-prettier.js
-  checksum: 7f89d2f5d1a1a15a7bf200556b8c5395913d0119fe52a3fba51ab116695d584652d37fdb7d86e0919bfe36b22649afcf222eaca00a1065eb486b7b4cf3062eff
+    prettier: bin/prettier.cjs
+  checksum: 118b59ddb6c80abe2315ab6d0f4dd1b253be5cfdb20622fa5b65bb1573dcd362e6dd3dcf2711dd3ebfe64aecf7bdc75de8a69dc2422dcd35bdde7610586b677a
   languageName: node
   linkType: hard
 
