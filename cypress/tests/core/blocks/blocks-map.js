@@ -1,5 +1,7 @@
 describe('Map Block Tests', () => {
   beforeEach(() => {
+    cy.intercept('GET', `/**/*?expand*`).as('content');
+    cy.intercept('GET', '/**/Document').as('schema');
     // given a logged in editor and a page in edit mode
     cy.autologin();
     cy.createContent({
@@ -8,12 +10,9 @@ describe('Map Block Tests', () => {
       contentTitle: 'My Page',
     });
     cy.visit('/my-page');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('my-page');
+    cy.wait('@content');
     cy.navigate('/my-page/edit');
+    cy.wait('@content');
   });
 
   it('Add maps block - Google Maps', () => {
@@ -26,12 +25,8 @@ describe('Map Block Tests', () => {
       )
       .type('{enter}');
     cy.get('#toolbar-save').click();
+    cy.wait('@content');
     cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('my-page');
 
     // then the page view should contain the maps block
     cy.get('#page-document iframe')
@@ -49,12 +44,9 @@ describe('Map Block Tests', () => {
       )
       .type('{enter}');
     cy.get('#toolbar-save').click();
+    cy.wait('@content');
     cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('my-page');
+
     // cy.pause();
     // then the page view should contain the maps block
     cy.get('#page-document iframe')

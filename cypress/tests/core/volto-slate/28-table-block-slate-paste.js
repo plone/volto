@@ -1,4 +1,4 @@
-import { slateBeforeEach } from '../../../support/volto-slate';
+import { slateBeforeEach } from '../../../support/commands';
 
 describe('Block Tests: pasting content in table block', () => {
   beforeEach(slateBeforeEach);
