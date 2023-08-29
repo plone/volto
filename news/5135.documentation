@@ -1,4 +1,1 @@
 Fix Sphinx toctree warnings from included `CHANGELOG.md`. @stevepiercy
-This changelog entry will be updated. However for now, it has a couple of links that should cause docs-linkcheckbroken to fail, and one good link.
-www.dlr.de should redirect to https://www.dlr.de/de
-http://thisurldoesnotexist.xyz/
