@@ -161,7 +161,7 @@ const View = (props) => {
     });
 
     return entries;
-  }, [data, levels, metadata, blocksFieldname, blocksLayoutFieldname]);
+  }, [data, levels, metadata, blocksFieldname]);
 
   const Renderer = variation?.view;
   return (
