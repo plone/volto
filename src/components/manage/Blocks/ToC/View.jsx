@@ -16,16 +16,80 @@ import {
   getBlocksLayoutFieldname,
 } from '@plone/volto/helpers';
 
+export const getBlocksTocEntries = (properties, tocData) => {
+  const blocksFieldName = getBlocksFieldname(properties);
+  const blocksLayoutFieldname = getBlocksLayoutFieldname(properties);
+
+  const blocks = properties[blocksFieldName];
+  const blocks_layout = properties[blocksLayoutFieldname];
+
+  const levels =
+    tocData.levels?.length > 0
+      ? tocData.levels.map((l) => parseInt(l.slice(1)))
+      : [1, 2, 3, 4, 5, 6];
+  let rootLevel = Infinity;
+  let blocksFormEntries = [];
+  let tocEntries = {};
+  let tocEntriesLayout = [];
+
+  blocks_layout.items.forEach((id) => {
+    const block = blocks[id];
+    const blockConfig = config.blocks.blocksConfig[block['@type']];
+
+    if (!block || !blockConfig) {
+      return null;
+    }
+    if (!blockConfig.tocEntries && !blockConfig.tocEntry) {
+      return null;
+    }
+
+    const blockTocEntry = blockConfig.tocEntry?.(block, tocData);
+
+    const blockTocEntries = [
+      ...(blockConfig.tocEntries?.(block, tocData) ||
+        (blockTocEntry ? [blockTocEntry] : [])),
+    ];
+
+    blocksFormEntries = [...blocksFormEntries, ...blockTocEntries];
+
+    blockTocEntries.forEach((entry, index) => {
+      const i = `${id}-${index}`;
+      const level = entry[0];
+      const title = entry[1];
+      const items = [];
+      if (!level || !levels.includes(level)) return;
+      tocEntriesLayout.push(i);
+      tocEntries[i] = {
+        level,
+        title: title || block.plaintext,
+        items,
+        id: i,
+      };
+      if (level < rootLevel) {
+        rootLevel = level;
+      }
+    });
+  });
+
+  return {
+    rootLevel,
+    blocksFormEntries,
+    tocEntries,
+    tocEntriesLayout,
+  };
+};
+
 /**
  * View toc block class.
  * @class View
  * @extends Component
  */
 const View = (props) => {
-  const { properties, data } = props;
+  const { data } = props;
   const { variation } = props;
-  const blocksFieldname = getBlocksFieldname(properties);
-  const blocksLayoutFieldname = getBlocksLayoutFieldname(properties);
+  const metadata = props.metadata || props.properties;
+  const blocksFieldname = getBlocksFieldname(metadata);
+  const blocksLayoutFieldname = getBlocksLayoutFieldname(metadata);
   const levels = React.useMemo(
     () =>
       data.levels?.length > 0
@@ -34,14 +98,15 @@ const View = (props) => {
     [data],
   );
   const tocEntries = React.useMemo(() => {
-    let rootLevel = Infinity;
     let entries = [];
     let prevEntry = {};
-    let tocEntries = {};
-    let tocEntriesLayout = [];
+    const { rootLevel, tocEntries, tocEntriesLayout } = getBlocksTocEntries(
+      metadata,
+      data,
+    );
 
-    properties[blocksLayoutFieldname].items.forEach((id) => {
-      const block = properties[blocksFieldname][id];
+    tocEntriesLayout.forEach((id) => {
+      const block = metadata[blocksFieldname][id];
       if (typeof block === 'undefined') {
         return null;
       }
@@ -50,6 +115,7 @@ const View = (props) => {
         block,
         data,
       );
+
       if (entry) {
         const level = entry[0];
         const title = entry[1];
@@ -98,7 +164,7 @@ const View = (props) => {
     });
 
     return entries;
-  }, [data, levels, properties, blocksFieldname, blocksLayoutFieldname]);
+  }, [data, levels, metadata, blocksFieldname, blocksLayoutFieldname]);
 
   const Renderer = variation?.view;
   return (
@@ -108,7 +174,7 @@ const View = (props) => {
       )}
 
       {Renderer ? (
-        <Renderer {...props} tocEntries={tocEntries} properties={properties} />
+        <Renderer {...props} tocEntries={tocEntries} metadata={metadata} />
       ) : (
         <div>View extension not found</div>
       )}
