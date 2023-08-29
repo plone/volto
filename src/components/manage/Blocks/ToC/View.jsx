@@ -130,9 +130,6 @@ const View = (props) => {
           override_toc: block.override_toc,
           plaintext: block.plaintext,
         };
-        if (level < rootLevel) {
-          rootLevel = level;
-        }
       }
     });
 
