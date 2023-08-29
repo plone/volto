@@ -89,7 +89,6 @@ const View = (props) => {
   const { variation } = props;
   const metadata = props.metadata || props.properties;
   const blocksFieldname = getBlocksFieldname(metadata);
-  const blocksLayoutFieldname = getBlocksLayoutFieldname(metadata);
   const levels = React.useMemo(
     () =>
       data.levels?.length > 0
