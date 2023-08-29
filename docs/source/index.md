@@ -52,7 +52,7 @@ contributing/index
 release-notes/index
 ```
 
-````{ifconfig} context in ("volto")
+````{ifconfig} context in ("volto",)
 ```{toctree}
 
 news*
