@@ -179,7 +179,21 @@ const Edit = React.memo((props) => {
   const onDragLeave = () => {
     setDragging(false);
   };
-
+  const onSelectImage = (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    openObjectBrowser({
+      onSelectItem: (url, { title, image_field, image_scales }) => {
+        onChangeBlock(block, {
+          ...data,
+          url,
+          image_field,
+          image_scales,
+          alt: data.alt || title || '',
+        });
+      },
+    });
+  };
   const Image = config.getComponent({ name: 'Image' }).component;
   const placeholder = useMemo(
     () =>
@@ -263,28 +277,7 @@ const Edit = React.memo((props) => {
                       <img src={imageBlockSVG} alt="" />
                       <div className="toolbar-inner">
                         <Button.Group>
-                          <Button
-                            basic
-                            icon
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              e.preventDefault();
-                              openObjectBrowser({
-                                onSelectItem: (
-                                  url,
-                                  { title, image_field, image_scales },
-                                ) => {
-                                  onChangeBlock(block, {
-                                    ...data,
-                                    url,
-                                    image_field,
-                                    image_scales,
-                                    alt: data.alt || title || '',
-                                  });
-                                },
-                              });
-                            }}
-                          >
+                          <Button basic icon onClick={onSelectImage}>
                             <Icon name={navTreeSVG} size="24px" />
                           </Button>
                         </Button.Group>
