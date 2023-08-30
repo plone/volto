@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, useIntl } from 'react-intl';
 import cx from 'classnames';
@@ -20,12 +20,8 @@ const Edit = React.memo((props) => {
   const intl = useIntl();
   const { data, properties, selected } = props;
 
-  const placeholder = useMemo(
-    () =>
-      data.placeholder ||
-      intl.formatMessage(messages.ImageBlockInputPlaceholder),
-    [data, intl],
-  );
+  const placeholder = () =>
+    data.placeholder || intl.formatMessage(messages.ImageBlockInputPlaceholder);
 
   const Image = config.getComponent({ name: 'Image' }).component;
   const hasImage = !!properties.image;
@@ -68,12 +64,13 @@ const Edit = React.memo((props) => {
           className={className}
           item={properties}
           imageField="image"
-          sizes={(() => {
-            if (data.align === 'full' || data.align === 'center')
-              return '100vw';
-            if (data.align === 'left' || data.align === 'right') return '50vw';
-            return undefined;
-          })()}
+          sizes={() => {
+            return data.align === 'full' || data.align === 'center'
+              ? '100vw'
+              : data.align === 'left' || data.align === 'right'
+              ? '50vw'
+              : undefined;
+          }}
           alt={altText}
         />
       )}

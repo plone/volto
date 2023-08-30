@@ -24,6 +24,7 @@ exports[`renders an edit Lead Image block component 1`] = `
         },
       }
     }
+    sizes={[Function]}
   />
 </div>
 `;
