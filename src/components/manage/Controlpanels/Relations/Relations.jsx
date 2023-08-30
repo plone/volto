@@ -24,10 +24,10 @@ const RelationsControlPanel = () => {
   const dispatch = useDispatch();
 
   const brokenRelations = useSelector(
-    (state) => state.relations?.stats?.broken,
+    (state) => state.relations?.stats?.data?.broken,
   );
 
-  const relations_stats = useSelector((state) => state.relations?.stats?.stats);
+  const relations_stats = useSelector((state) => state.relations?.stats?.data);
   const actions = useSelector((state) => state.actions?.actions ?? {});
   const can_edit = find(actions.object, {
     id: 'edit',
@@ -58,7 +58,7 @@ const RelationsControlPanel = () => {
               <h1>
                 <FormattedMessage id="Relations" defaultMessage="Relations" />
               </h1>
-              {!relations_stats ? (
+              {relations_stats?.error ? (
                 <React.Fragment>
                   <Divider hidden />
                   <Message warning>
