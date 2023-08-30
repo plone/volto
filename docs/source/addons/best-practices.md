@@ -73,15 +73,15 @@ hold the Cypress integration tests and trigger the CI tests.
 If you're releasing your add-on to `npmjs.com`, please consider adding the
 following tags, next to your add-on-specific tags:
 
-- volto-addon
-- volto
-- plone
-- react
+- `volto-addon`
+- `volto`
+- `plone`
+- `react`
 
-## Include in collective/awesome-volto
+## Include in `collective/awesome-volto`
 
 Even if you think your add-on is not generic or it's tricky to integrate, please
 consider including your add-on in the
-[collective/awesome-volto](https://github.com/collective/awesome-volto) add-ons
+[`collective/awesome-volto`](https://github.com/collective/awesome-volto) add-ons
 list. This provides visibility to your add-on but also further solidifies
 Volto's possition in our Plone community.
