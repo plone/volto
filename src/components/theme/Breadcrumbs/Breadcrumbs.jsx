@@ -12,7 +12,7 @@ import { getBaseUrl, hasApiExpander } from '@plone/volto/helpers';
 import { Icon } from '@plone/volto/components';
 import homeSVG from '@plone/volto/icons/home.svg';
 
-const { getBreadcrumbsQuery } = ploneClient;
+const { useGetBreadcrumbs } = ploneClient;
 
 const messages = defineMessages({
   home: {
@@ -28,7 +28,7 @@ const messages = defineMessages({
 const BreadcrumbsComponent = ({ pathname }) => {
   const intl = useIntl();
 
-  const { data } = useQuery(getBreadcrumbsQuery({ path: pathname }));
+  const { data } = useGetBreadcrumbs({ path: pathname });
 
   const items = data?.items || [];
   const root = data?.root || '/';

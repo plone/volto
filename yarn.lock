@@ -2624,9 +2624,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@plone/client@npm:1.0.0-alpha.3":
-  version: 1.0.0-alpha.3
-  resolution: "@plone/client@npm:1.0.0-alpha.3"
+"@plone/client@npm:1.0.0-alpha.6":
+  version: 1.0.0-alpha.6
+  resolution: "@plone/client@npm:1.0.0-alpha.6"
   dependencies:
     "@tanstack/react-query": 4.29.1
     axios: ^1.4.0
@@ -2639,7 +2639,7 @@ __metadata:
   peerDependenciesMeta:
     react-dom:
       optional: true
-  checksum: f8d0ad283c65b6bf15c044f8e4ef0b1f76f7059168a494e2a718932d43081a1cc250e5b8e4aee978d900d2978c5520a36af106b2db41a2722a320c714d33a723
+  checksum: 1ac2d1145fdb27e467d02004e7575735c37f7bff3690822bdec610c517f1422acbcc022f2e87e5fe1bc2458a2365c3b44b62a4f58b7041c390609cac32535b32
   languageName: node
   linkType: hard
 
@@ -2680,7 +2680,7 @@ __metadata:
     "@loadable/component": 5.14.1
     "@loadable/server": 5.14.0
     "@loadable/webpack-plugin": 5.15.2
-    "@plone/client": 1.0.0-alpha.3
+    "@plone/client": 1.0.0-alpha.6
     "@plone/scripts": 3.0.0
     "@storybook/addon-actions": ^6.5.15
     "@storybook/addon-controls": 6.5.15
