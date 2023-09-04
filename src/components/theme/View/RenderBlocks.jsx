@@ -46,7 +46,7 @@ const RenderBlocks = (props) => {
           properties: content,
         });
 
-        if (blockData.hidden) {
+        if (blockData?.hidden) {
           return null;
         }
 
