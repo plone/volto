@@ -167,6 +167,19 @@ class SelectWidget extends Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    if (
+      this.props.vocabBaseUrl !== prevProps.vocabBaseUrl &&
+      (!this.props.choices || this.props.choices?.length === 0)
+    ) {
+      this.props.getVocabulary({
+        vocabNameOrURL: this.props.vocabBaseUrl,
+        size: -1,
+        subrequest: this.props.lang,
+      });
+    }
+  }
+
   /**
    * Render method.
    * @method render
