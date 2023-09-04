@@ -4466,6 +4466,11 @@ msgstr "Procédure de réinitialisation de mot de passe envoyée"
 msgid "hero"
 msgstr "hero"
 
+#: components/manage/Blocks/Block/EditBlockWrapper
+# defaultMessage: hide
+msgid "hide"
+msgstr "Masquer"
+
 #: config/Blocks
 # defaultMessage: HTML
 msgid "html"
@@ -4804,6 +4809,11 @@ msgstr "List de sélection"
 # defaultMessage: Select view
 msgid "selectView"
 msgstr "Sélectionner une vue"
+
+#: components/manage/Blocks/Block/EditBlockWrapper
+# defaultMessage: show
+msgid "show"
+msgstr "Afficher"
 
 #: components/theme/SkipLinks/SkipLinks
 # defaultMessage: Skip to footer

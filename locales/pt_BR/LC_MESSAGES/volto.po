@@ -4459,6 +4459,11 @@ msgstr "Sua solicitação de redefinição de senha foi enviada"
 msgid "hero"
 msgstr "Herói"
 
+#: components/manage/Blocks/Block/EditBlockWrapper
+# defaultMessage: hide
+msgid "hide"
+msgstr ""
+
 #: config/Blocks
 # defaultMessage: HTML
 msgid "html"
@@ -4797,6 +4802,11 @@ msgstr "Seleção"
 # defaultMessage: Select view
 msgid "selectView"
 msgstr "Escolha a visão"
+
+#: components/manage/Blocks/Block/EditBlockWrapper
+# defaultMessage: show
+msgid "show"
+msgstr ""
 
 #: components/theme/SkipLinks/SkipLinks
 # defaultMessage: Skip to footer

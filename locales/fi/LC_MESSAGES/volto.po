@@ -4460,6 +4460,11 @@ msgstr "Sähköposti salasanan vaihtamiseksi lähetetty"
 msgid "hero"
 msgstr "nosto"
 
+#: components/manage/Blocks/Block/EditBlockWrapper
+# defaultMessage: hide
+msgid "hide"
+msgstr ""
+
 #: config/Blocks
 # defaultMessage: HTML
 msgid "html"
@@ -4798,6 +4803,11 @@ msgstr "Valitse"
 # defaultMessage: Select view
 msgid "selectView"
 msgstr "Valitse näkymä"
+
+#: components/manage/Blocks/Block/EditBlockWrapper
+# defaultMessage: show
+msgid "show"
+msgstr ""
 
 #: components/theme/SkipLinks/SkipLinks
 # defaultMessage: Skip to footer

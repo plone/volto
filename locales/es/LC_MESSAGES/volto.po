@@ -4460,6 +4460,11 @@ msgstr "Solicitud de confirmación de restablecimiento de contraseña enviada"
 msgid "hero"
 msgstr "Héroe"
 
+#: components/manage/Blocks/Block/EditBlockWrapper
+# defaultMessage: hide
+msgid "hide"
+msgstr ""
+
 #: config/Blocks
 # defaultMessage: HTML
 msgid "html"
@@ -4798,6 +4803,11 @@ msgstr "Menú de selección"
 # defaultMessage: Select view
 msgid "selectView"
 msgstr "Seleccione Vista"
+
+#: components/manage/Blocks/Block/EditBlockWrapper
+# defaultMessage: show
+msgid "show"
+msgstr ""
 
 #: components/theme/SkipLinks/SkipLinks
 # defaultMessage: Skip to footer

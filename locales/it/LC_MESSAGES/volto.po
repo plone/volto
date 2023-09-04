@@ -4449,6 +4449,11 @@ msgstr "Richiesta di conferma reimpostazione password spedita"
 msgid "hero"
 msgstr "Hero"
 
+#: components/manage/Blocks/Block/EditBlockWrapper
+# defaultMessage: hide
+msgid "hide"
+msgstr "Nascondi"
+
 #: config/Blocks
 # defaultMessage: HTML
 msgid "html"
@@ -4787,6 +4792,11 @@ msgstr "Seleziona"
 # defaultMessage: Select view
 msgid "selectView"
 msgstr "Seleziona la vista"
+
+#: components/manage/Blocks/Block/EditBlockWrapper
+# defaultMessage: show
+msgid "show"
+msgstr "Mostra"
 
 #: components/theme/SkipLinks/SkipLinks
 # defaultMessage: Skip to footer

@@ -4456,6 +4456,11 @@ msgstr "Pasahitza aldatzeko eskaera bidalia"
 msgid "hero"
 msgstr "Hero"
 
+#: components/manage/Blocks/Block/EditBlockWrapper
+# defaultMessage: hide
+msgid "hide"
+msgstr ""
+
 #: config/Blocks
 # defaultMessage: HTML
 msgid "html"
@@ -4794,6 +4799,11 @@ msgstr "Aukeraketa laukia"
 # defaultMessage: Select view
 msgid "selectView"
 msgstr "Aukeratu bista"
+
+#: components/manage/Blocks/Block/EditBlockWrapper
+# defaultMessage: show
+msgid "show"
+msgstr ""
 
 #: components/theme/SkipLinks/SkipLinks
 # defaultMessage: Skip to footer

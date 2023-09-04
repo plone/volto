@@ -161,6 +161,7 @@ export class Edit extends Component {
             className={cx('block', type, this.props.data.variation, {
               selected: this.props.selected || this.props.multiSelected,
               multiSelected: this.props.multiSelected,
+              hidden: this.props.data.hidden,
             })}
             style={{ outline: 'none' }}
             ref={this.blockNode}
@@ -199,7 +200,9 @@ export class Edit extends Component {
                     )
                 : null
             }
-            className={cx(`block ${type}`, { selected: this.props.selected })}
+            className={cx(`block ${type}`, {
+              selected: this.props.selected,
+            })}
             style={{ outline: 'none' }}
             ref={this.blockNode}
             // The tabIndex is required for the keyboard navigation

@@ -42,6 +42,18 @@
   border-color: rgba(120, 192, 215, 0.75);
 }
 
+.block .block.selected.hidden:not(.description) {
+  opacity: 0.65;
+}
+
+.block .block.selected.hidden.description {
+  opacity: 0.9;
+}
+
+.block .block.hidden {
+  opacity: 0.3;
+}
+
 .block .block:hover::before {
   border-color: rgba(120, 192, 215, 0.375);
 }
@@ -501,20 +513,37 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
   }
 }
 
-.block .ui.basic.button.delete-button {
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 0;
-  border: none;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-
-  &:hover,
-  &:focus {
+.block .ui.basic.button {
+  &.delete-button,
+  &.hide-show-button {
+    position: absolute;
+    right: 0;
+    padding: 0;
+    border: none;
     -webkit-box-shadow: none;
     box-shadow: none;
-    color: #e40166 !important;
+
+    &:hover,
+    &:focus {
+      -webkit-box-shadow: none;
+      box-shadow: none;
+    }
+  }
+
+  &.delete-button {
+    top: -10px;
+  }
+
+  &.hide-show-button {
+    top: 12px;
+    margin-right: -31px;
+  }
+
+  &.delete-button {
+    &:hover,
+    &:focus {
+      color: #e40166 !important;
+    }
   }
 }
 
