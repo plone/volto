@@ -14,6 +14,7 @@ const Settings = ({ data, block, onChangeBlock, schema }) => {
           [id]: value,
         });
       }}
+      onChangeBlock={onChangeBlock}
       formData={data}
       applySchemaEnhancers={false}
     />
