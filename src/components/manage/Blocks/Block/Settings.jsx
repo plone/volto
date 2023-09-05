@@ -15,7 +15,7 @@ const Settings = ({ data, block, onChangeBlock, schema }) => {
         });
       }}
       formData={data}
-      noSchemaEnhancer={true}
+      applySchemaEnhancers={false}
     />
   );
 };
