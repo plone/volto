@@ -3,12 +3,16 @@ import { getAPIResourceWithAuth } from '@plone/volto/helpers';
 
 const HEADERS = [
   'accept-ranges',
+  'age',
   'cache-control',
   'content-disposition',
   'content-range',
   'content-type',
-  'x-sendfile',
+  'expires',
+  'last-modified',
   'x-accel-redirect',
+  'x-sendfile', // collective.sendfile
+  'x-ids-involved', // collective.purgebyid
 ];
 
 function filesMiddlewareFn(req, res, next) {
