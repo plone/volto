@@ -250,7 +250,7 @@ export const applySchemaEnhancer = ({
  * - adds the variation selection input (as a choice widget)
  */
 export const withVariationSchemaEnhancer = (FormComponent) => (props) => {
-  const { formData, schema: originalSchema } = props;
+  const { formData, schema: originalSchema, noSchemaEnhancer } = props;
   const intl = useIntl();
 
   const blocksConfig = getBlocksConfig(props);
@@ -258,12 +258,14 @@ export const withVariationSchemaEnhancer = (FormComponent) => (props) => {
   const blockType = formData['@type'];
   const variations = blocksConfig[blockType]?.variations || [];
 
-  let schema = applySchemaEnhancer({
-    schema: originalSchema,
-    formData,
-    intl,
-    blocksConfig,
-  });
+  let schema = noSchemaEnhancer
+    ? originalSchema
+    : applySchemaEnhancer({
+        schema: originalSchema,
+        formData,
+        intl,
+        blocksConfig,
+      });
 
   if (variations.length > 1) {
     addExtensionFieldToSchema({
