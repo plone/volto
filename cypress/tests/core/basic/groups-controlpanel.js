@@ -1,25 +1,20 @@
-// const interceptGroups = () => {
-//   cy.intercept('/**/usergroup').as('manyGroups');
-//   cy.visit('/controlpanel/groups');
-//   cy.waitForResourceToLoad('@navigation');
-//   cy.waitForResourceToLoad('@breadcrumbs');
-//   cy.waitForResourceToLoad('@actions');
-//   cy.waitForResourceToLoad('@types');
-// };
-
 describe('Groups Control Panel Test', () => {
   beforeEach(() => {
+    cy.intercept('GET', `/**/*?expand*`).as('content');
     // given a logged in editor
     // and a folder that contains a document
     // and the folder contents view
-    cy.visit('/');
     cy.autologin();
+    cy.visit('/');
+    cy.wait('@content');
   });
+
   it('Should add a new group to controlPanel', () => {
     cy.intercept('POST', '/plone/++api++/@groups').as('addGroup');
     cy.visit('/controlpanel/groups');
-    cy.waitForResourceToLoad('@navigation');
+
     cy.waitForResourceToLoad('@groups');
+
     // when I added a group from controlPanel
     cy.get('Button[id="toolbar-add"]').click();
     cy.get('input[id="field-title"]').clear().type('demo-title');
@@ -28,7 +23,6 @@ describe('Groups Control Panel Test', () => {
     cy.get('input[id="field-email"]').clear().type('test@gmail.com');
     cy.get('button[title="Save"]').click(-50, -50, { force: true });
 
-    cy.waitForResourceToLoad('@navigation');
     cy.waitForResourceToLoad('@groups');
     cy.contains('uniquename');
   });
@@ -55,11 +49,6 @@ describe('Groups Control Panel Test', () => {
 
   it('Should delete a group from controlPanel', () => {
     cy.visit('/controlpanel/groups');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('@groups');
 
     // select first group with name, delete it and search if its exists or not!
     cy.get('div[role="listbox"]').first().click();
@@ -74,10 +63,6 @@ describe('Groups Control Panel Test', () => {
   it('Should update group roles', () => {
     cy.intercept('PATCH', `**/++api++/@groups/Administrators`).as('editGroup');
     cy.visit('/controlpanel/groups');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
 
     cy.get('[data-group="groups"] input[type="checkbox"')
       .first()
@@ -96,16 +81,18 @@ describe('Groups Control Panel Test', () => {
 
 describe('Groups Control Panel test for many groups', () => {
   beforeEach(() => {
-    cy.visit('/');
+    cy.intercept('GET', `/**/*?expand*`).as('content');
     cy.autologin();
+
     cy.createGroup({
       groupname: 'editors',
       title: 'editors',
       users: ['editor'],
     });
+
+    cy.visit('/');
+    cy.wait('@content');
     cy.visit('/controlpanel/usergroup');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
 
     cy.get('.content-area').then(($content_area) => {
       if ($content_area.text().indexOf('Settings') > -1) {
@@ -120,10 +107,9 @@ describe('Groups Control Panel test for many groups', () => {
     });
   });
   afterEach(() => {
+    cy.intercept('GET', `/**/*?expand*`).as('content');
     // not many users, not many groups
     cy.visit('/controlpanel/usergroup');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
 
     cy.get('.content-area').then(($content_area) => {
       if ($content_area.text().indexOf('Settings') > -1) {

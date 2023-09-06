@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
-import { waitFor } from '@testing-library/react';
+import { waitFor, render, fireEvent } from '@testing-library/react';
 
 import ArrayWidget from './ArrayWidget';
 
@@ -40,4 +40,48 @@ test('renders an array widget component', async () => {
   );
   await waitFor(() => {});
   expect(component.toJSON()).toMatchSnapshot();
+});
+
+test("No 'No value' option when default value is 0", async () => {
+  const store = mockStore({
+    intl: {
+      locale: 'en',
+      messages: {},
+    },
+  });
+
+  const choices = [
+    ['0', 'None'],
+    ['1', 'One'],
+  ];
+
+  const value = {
+    value: '0',
+    label: 'None',
+  };
+
+  const _default = 0;
+
+  const { container } = render(
+    <Provider store={store}>
+      <ArrayWidget
+        id="my-field"
+        title="My field"
+        fieldSet="default"
+        choices={choices}
+        default={_default}
+        value={value}
+        noValueOption={true}
+        onChange={() => {}}
+        onBlur={() => {}}
+        onClick={() => {}}
+      />
+    </Provider>,
+  );
+
+  fireEvent.mouseDown(
+    container.querySelector('.react-select__dropdown-indicator'),
+    { button: 0 },
+  );
+  expect(container).toMatchSnapshot();
 });

@@ -318,7 +318,7 @@ const withSearch = (options) => (WrappedComponent) => {
               id,
               query: data.query || {},
               facets: toSearchFacets || facets,
-              searchText: toSearchText || searchText,
+              searchText: toSearchText ? toSearchText.trim() : '',
               sortOn: toSortOn || sortOn,
               sortOrder: toSortOrder || sortOrder,
               facetSettings,
@@ -346,6 +346,16 @@ const withSearch = (options) => (WrappedComponent) => {
       ],
     );
 
+    const removeSearchQuery = () => {
+      searchData.query = searchData.query.reduce(
+        // Remove SearchableText from query
+        (acc, kvp) => (kvp.i === 'SearchableText' ? acc : [...acc, kvp]),
+        [],
+      );
+      setSearchData(searchData);
+      setLocationSearchData(getSearchFields(searchData));
+    };
+
     const querystringResults = useSelector(
       (state) => state.querystringsearch.subrequests,
     );
@@ -364,6 +374,7 @@ const withSearch = (options) => (WrappedComponent) => {
         sortOrder={sortOrder}
         searchedText={urlSearchText}
         searchText={searchText}
+        removeSearchQuery={removeSearchQuery}
         setSearchText={setSearchText}
         onTriggerSearch={onTriggerSearch}
         totalItems={totalItems}

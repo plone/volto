@@ -1,4 +1,4 @@
-import { slateBeforeEach } from '../../../support/e2e';
+import { slateBeforeEach } from '../../../support/commands';
 
 describe('Block Tests: Links', () => {
   beforeEach(slateBeforeEach);
@@ -66,7 +66,7 @@ describe('Block Tests: Links', () => {
       'Colorless green ideas{shift}{enter} {shift}{enter}sleep furiously.',
     );
 
-    cy.log("Adding link")
+    cy.log('Adding link');
     cy.setSlateSelection('green', 'furiously');
     cy.clickSlateButton('Add link');
 
@@ -74,12 +74,12 @@ describe('Block Tests: Links', () => {
       'https://google.com{enter}',
     );
 
-    cy.log("Removing link");
+    cy.log('Removing link');
     cy.setSlateSelection('ideas');
     cy.clickSlateButton('Edit link');
     cy.get('.slate-inline-toolbar .cancel').click();
 
-    cy.log("Re-add link")
+    cy.log('Re-add link');
     cy.setSlateSelection('Colorless', 'furiously');
     cy.clickSlateButton('Add link');
 
@@ -87,10 +87,10 @@ describe('Block Tests: Links', () => {
       'https://google.com{enter}',
     );
 
-    cy.log("Save");
+    cy.log('Save');
     cy.toolbarSave();
 
-    cy.log("then the page view should contain a link");
+    cy.log('then the page view should contain a link');
     cy.get('[id="page-document"] p a')
       .should('have.attr', 'href')
       .and('include', 'https://google.com');
