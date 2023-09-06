@@ -52,7 +52,7 @@ describe('Groups Control Panel Test', () => {
 
     // select first group with name, delete it and search if its exists or not!
     cy.get('div[role="listbox"]').first().click();
-    cy.get('div[role="option"]').first().click();
+    cy.get('div[role="option"][data-key^="onDelete-"]').first().click();
     cy.contains('Delete Group');
     cy.get('button.ui.primary.button').should('have.text', 'OK').click();
     cy.get('input[id="group-search-input"]').clear().type('Administrators');
@@ -77,11 +77,36 @@ describe('Groups Control Panel Test', () => {
       .first()
       .should('have.class', 'checked');
   });
+
+  it('Should edit group details', () => {
+    cy.intercept('PATCH', `**/++api++/@groups/Administrators`).as('editGroup');
+    cy.visit('/controlpanel/groups');
+
+    cy.get('div[role="listbox"]').first().click();
+    cy.get('div[role="option"][data-key^="onEdit-"]').first().click();
+    cy.get('input[id="field-title"]').clear().type('admin-title');
+    cy.get('input[id="field-description"]').clear().type('Is Admin');
+    cy.get('input[id="field-email"]').clear().type('admin@gmail.com');
+
+    cy.get('button[title="Save"]').click(-50, -50, { force: true });
+
+    cy.wait('@editGroup');
+    cy.reload();
+    cy.waitForResourceToLoad('@groups');
+
+    // cy.get('input[id="group-search-input"]').clear().type('Admininstrators');
+    // cy.get('.icon.button:first').click();
+    cy.get('div[role="listbox"]').first().click();
+    cy.get('div[role="option"][data-key^="onEdit-"]').first().click();
+    cy.get('input[id="field-title"]').should('have.value', 'admin-title');
+    cy.get('input[id="field-description"]').should('have.value', 'Is Admin');
+  });
 });
 
 describe('Groups Control Panel test for many groups', () => {
   beforeEach(() => {
     cy.intercept('GET', `/**/*?expand*`).as('content');
+    cy.intercept('GET', `/**/@controlpanels/usergroup`).as('usergroup');
     cy.autologin();
 
     cy.createGroup({
@@ -92,57 +117,44 @@ describe('Groups Control Panel test for many groups', () => {
 
     cy.visit('/');
     cy.wait('@content');
-    cy.visit('/controlpanel/usergroup');
 
-    cy.get('.content-area').then(($content_area) => {
-      if ($content_area.text().indexOf('Settings') > -1) {
-        cy.get('input[name="field-many_groups"]').check({
-          force: true,
-        });
-        cy.get('input[name="field-many_users"]').check({
-          force: true,
-        });
-        cy.get('#toolbar-save').click();
-      }
+    cy.visit('/controlpanel/usergroup');
+    cy.get('input[name="field-many_groups"]').check({
+      force: true,
     });
+    cy.get('input[name="field-many_users"]').check({
+      force: true,
+    });
+    cy.get('#toolbar-save').click();
   });
+
+  it('Should not show groups if the many_groups option in enabled', () => {
+    cy.visit('/controlpanel/groups');
+    cy.contains('Search groups by title');
+  });
+
+  it('In the case of many groups, It should show a group only when it is searched by a groupname ', () => {
+    cy.visit('/controlpanel/groups');
+    cy.get('input[id="group-search-input"]').clear().type('editors');
+    cy.get('.icon.button:first').click();
+    cy.get('[data-group="groups"] td').first().should('have.text', 'editors');
+  });
+
+  it('Should show message if blank search is done', () => {
+    cy.visit('/controlpanel/groups');
+    cy.get('input[id="group-search-input"]').clear();
+    cy.get('.icon.button:first').click();
+    cy.contains('Too many groups found.');
+  });
+
   afterEach(() => {
-    cy.intercept('GET', `/**/*?expand*`).as('content');
-    // not many users, not many groups
     cy.visit('/controlpanel/usergroup');
-
-    cy.get('.content-area').then(($content_area) => {
-      if ($content_area.text().indexOf('Settings') > -1) {
-        cy.get('input[name="field-many_groups"]').check({
-          force: true,
-        });
-        cy.get('input[name="field-many_users"]').check({
-          force: true,
-        });
-        cy.get('#toolbar-save').click();
-      }
+    cy.get('input[name="field-many_groups"]').uncheck({
+      force: true,
     });
+    cy.get('input[name="field-many_users"]').uncheck({
+      force: true,
+    });
+    cy.get('#toolbar-save').click();
   });
-
-  // it('Should not show groups if the many_groups option in enabled', () => {
-  //   interceptGroups();
-  //   cy.wait('@manyGroups').then((interception) => {
-  //     if (expect(interception.response.body.data.many_groups).to.equal(true)) {
-  //       cy.get('.ui.secondary.attached.menu div.menu').should('be.empty');
-  //     }
-  //   });
-  // });
-
-  // it('In the case of many groups, It should show a group only when it is searched by a groupname ', () => {
-  //   interceptGroups();
-  //   cy.wait('@manyGroups').then((interception) => {
-  //     if (expect(interception.response.body.data.many_groups).to.equal(true)) {
-  //       cy.get('input[id="group-search-input"]').clear().type('editors');
-  //       cy.get('.icon.button:first').click();
-  //       cy.get('[data-group="groups"] td')
-  //         .first()
-  //         .should('have.text', 'editors');
-  //     }
-  //   });
-  // });
 });

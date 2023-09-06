@@ -64,6 +64,11 @@
   display: none;
 }
 
+.users-control-panel .table table {
+  width: calc(100% - (-1px)) !important;
+  max-width: calc(100% - (-1px)) !important;
+}
+
 .ui.segment.imageborder {
   display: flex;
   height: 100%;

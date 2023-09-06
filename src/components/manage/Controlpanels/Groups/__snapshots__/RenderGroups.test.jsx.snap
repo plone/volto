@@ -97,6 +97,59 @@ exports[`UsersControlpanelGroups renders a UsersControlpanelGroups component 1`]
       >
         <div
           className="item"
+          data-key="addUsers-Administrators"
+          onClick={[Function]}
+          role="option"
+        >
+          <svg
+            className="icon"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "currentColor",
+                "height": "15px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
+          />
+          Add Users
+        </div>
+        <div
+          className="item"
+          data-key="onEdit-Administrators"
+          onClick={[Function]}
+          role="option"
+        >
+          <svg
+            className="icon"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "currentColor",
+                "height": "15px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
+          />
+          Edit
+        </div>
+        <div
+          className="item"
+          data-key="onDelete-Administrators"
           onClick={[Function]}
           role="option"
         >

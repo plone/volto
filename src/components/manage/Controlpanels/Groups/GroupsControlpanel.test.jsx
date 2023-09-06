@@ -12,6 +12,10 @@ jest.mock('react-portal', () => ({
 describe('UsersControlpanel', () => {
   it('renders a user control component', () => {
     const store = mockStore({
+      users: {
+        users: [],
+        create: { loading: false },
+      },
       roles: { roles: [] },
       groups: {
         groups: [],

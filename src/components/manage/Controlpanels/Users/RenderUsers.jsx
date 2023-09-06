@@ -9,6 +9,7 @@ import { Dropdown, Table, Checkbox } from 'semantic-ui-react';
 import trashSVG from '@plone/volto/icons/delete.svg';
 import { Icon } from '@plone/volto/components';
 import ploneSVG from '@plone/volto/icons/plone.svg';
+import editingSVG from '@plone/volto/icons/editing.svg';
 
 /**
  * UsersControlpanelUser class.
@@ -88,12 +89,21 @@ class RenderUsers extends Component {
             )}
           </Table.Cell>
         ))}
-        <Table.Cell textAlign="right">
+        <Table.Cell>
           <Dropdown icon="ellipsis horizontal">
             <Dropdown.Menu className="left">
               <Dropdown.Item
+                onClick={this.props.onEdit}
+                value={this.props.user['@id']}
+                data-key={`edit-${this.props.user.username}`}
+              >
+                <Icon name={editingSVG} size="15px" />
+                <FormattedMessage id="Edit" defaultMessage="Edit" />
+              </Dropdown.Item>
+              <Dropdown.Item
                 onClick={this.props.onDelete}
                 value={this.props.user['@id']}
+                data-key={`delete-${this.props.user.username}`}
               >
                 <Icon name={trashSVG} size="15px" />
                 <FormattedMessage id="Delete" defaultMessage="Delete" />

@@ -73,7 +73,7 @@ exports[`UsersControlpanelUser renders a UsersControlpanelUser component 1`] = `
     </div>
   </td>
   <td
-    className="right aligned"
+    className=""
   >
     <div
       aria-expanded={false}
@@ -97,6 +97,33 @@ exports[`UsersControlpanelUser renders a UsersControlpanelUser component 1`] = `
       >
         <div
           className="item"
+          data-key="edit-testuser"
+          onClick={[Function]}
+          role="option"
+        >
+          <svg
+            className="icon"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "currentColor",
+                "height": "15px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
+          />
+          Edit
+        </div>
+        <div
+          className="item"
+          data-key="delete-testuser"
           onClick={[Function]}
           role="option"
         >

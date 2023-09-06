@@ -120,6 +120,11 @@ msgstr "Gehitu itzulpena..."
 msgid "Add User"
 msgstr "Gehitu erabiltzailea"
 
+#: components/manage/Controlpanels/Groups/RenderGroups
+# defaultMessage: Add Users
+msgid "Add Users"
+msgstr ""
+
 #: components/manage/Blocks/Description/Edit
 # defaultMessage: Add a description…
 msgid "Add a description…"
@@ -209,6 +214,11 @@ msgstr "Gehitu erabiltzaile berria"
 # defaultMessage: Add to Groups
 msgid "Add to Groups"
 msgstr "Gehitu taldeetara"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Add users
+msgid "Add users"
+msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add users to group
@@ -1147,8 +1157,10 @@ msgstr "Eposta helbideak ez datoz bat"
 
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypesActions
+#: components/manage/Controlpanels/Groups/RenderGroups
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Controlpanels/Rules/EditRule
+#: components/manage/Controlpanels/Users/RenderUsers
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/FormFieldWrapper
 #: components/manage/Widgets/ObjectBrowserWidget
@@ -1161,6 +1173,11 @@ msgstr "Editatu"
 # defaultMessage: Edit Rule
 msgid "Edit Rule"
 msgstr "Aldatu erregela"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Edit User
+msgid "Edit User"
+msgstr ""
 
 #: components/theme/Comments/CommentEditModal
 # defaultMessage: Edit comment
@@ -1176,6 +1193,11 @@ msgstr "Editatu eramua"
 # defaultMessage: Edit fieldset
 msgid "Edit fieldset"
 msgstr "Editatu eremu-multzoa"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Edit group
+msgid "Edit group"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: Edit recurrence
@@ -1729,7 +1751,7 @@ msgid "Info"
 msgstr "informazioa"
 
 #: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
-# defaultMessage: You have selected the option 'many users' or 'many groups'. Thus this control panel asks for input to show users and groups. If you want to see users and groups instantaneous, head over to user group settings. See the button on the left.
+# defaultMessage: You have selected the option 'many users' or 'many groups'. Thus this control panel asks for input to show users and groups. If you want to see users and groups instantaneous, head over to User and Group settings. See the button on the left.
 msgid "InfoUserGroupSettings"
 msgstr "Zure atarian 'erabiltzaile asko' edo 'talde asko' aukerak aktibo dituzu. Hori dela eta formulario honetan erabiltzaile eta taldeen bilaketa egiteko aukera duzu. Dituzun erabiltzaile eta talde guztiak berehala ikusi nahi badituzu joan taldeen ezarpenetara. Ikusi ezkerreko botoia."
 
@@ -1813,6 +1835,11 @@ msgstr "urtean behin"
 # defaultMessage: Invalid block - Will be removed on saving
 msgid "Invalid Block"
 msgstr "Bloke okerra"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them.
+msgid "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Item batch size
@@ -2086,6 +2113,16 @@ msgstr "Eskuz edo automatikoki gehitu da?"
 msgid "Many relations found. Please search."
 msgstr ""
 
+#: components/manage/Controlpanels/Groups/GroupsControlpanel
+# defaultMessage: You have selected the option 'many groups'. Thus this control panel asks for input to show groups. If you want to see groups instantaneous, head over to User and Group settings.
+msgid "ManyGroupsList"
+msgstr ""
+
+#: components/manage/Controlpanels/Users/UsersControlpanel
+# defaultMessage: You have selected the option 'many users'. Thus this control panel asks for input to show users. If you want to see users instantaneous, head over to User and Group settings.
+msgid "ManyUsersList"
+msgstr ""
+
 #: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Maps/schema
 # defaultMessage: Maps
@@ -2290,6 +2327,11 @@ msgstr ""
 # defaultMessage: There is no connection to the server, due to a timeout o no network connection.
 msgid "No connection to the server"
 msgstr "Ez dago konexiorik zerbitzariarekin"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: No group found
+msgid "No group found"
+msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
 # defaultMessage: No image selected
@@ -2570,9 +2612,9 @@ msgid "Please fill out the form below to set your password."
 msgstr "Bete formulario hau zure pasahitza ezartzeko."
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Please search for users or use the filters on the side.
-msgid "Please search for users or use the filters on the side."
-msgstr "Bilatu erabiltzaileak aldameneko filtroak erabiliz."
+# defaultMessage: Please search for users or use the filters.
+msgid "Please search for users or use the filters."
+msgstr ""
 
 #: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
 # defaultMessage: Please upgrade to plone.restapi >= 8.24.0.
@@ -3035,9 +3077,14 @@ msgid "Search for user or group"
 msgstr "Bilatu erabiltzailea edo taldea"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Search group…
-msgid "Search group…"
-msgstr "Bilatu taldea..."
+# defaultMessage: Search groups
+msgid "Search groups"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Search groups by title
+msgid "Search groups by title "
+msgstr ""
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Search input label
@@ -3066,9 +3113,14 @@ msgid "Search targets by title or path"
 msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Search users…
-msgid "Search users…"
-msgstr "Bilatu erabiltzaileak..."
+# defaultMessage: Search users
+msgid "Search users"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Search users by username or email
+msgid "Search users by username or email"
+msgstr ""
 
 #: components/manage/Blocks/Search/components/SearchDetails
 # defaultMessage: Searched for: <em>{searchedtext}</em>.
@@ -3092,6 +3144,11 @@ msgstr "Atalaren izenburua"
 # defaultMessage: Select
 msgid "Select"
 msgstr "Aukeratu"
+
+#: components/manage/Controlpanels/Users/UserGroupMembershipListing
+# defaultMessage: Select All
+msgid "Select All"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: Select a date to add to recurrence
@@ -3211,6 +3268,11 @@ msgstr "Erakutsi"
 # defaultMessage: Show All
 msgid "Show All"
 msgstr "Erakutsi guztiak"
+
+#: components/manage/Controlpanels/Users/UserGroupMembershipListing
+# defaultMessage: Show More
+msgid "Show More"
+msgstr ""
 
 #: components/theme/Comments/Comments
 # defaultMessage: Show Replies
@@ -3715,6 +3777,21 @@ msgstr "Izenburua"
 msgid "Title field error. Value not provided or already existing."
 msgstr "Errorea izenburuaren eremuan. Ez duzu ezer idatzi edo jada existitzen da."
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Too many groups found.
+msgid "Too many groups found."
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Too many users found.
+msgid "Too many users found."
+msgstr ""
+
+#: components/manage/Controlpanels/Users/UserGroupMembershipListing
+# defaultMessage: Total Users
+msgid "Total Users"
+msgstr ""
+
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Total active and non-active objects
 msgid "Total active and non-active objects"
@@ -4009,6 +4086,11 @@ msgid "User Group Settings"
 msgstr "Erabiltzaile eta Taldeen ezarpenak"
 
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: User added
+msgid "User added"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: User created
 msgid "User created"
 msgstr "Erabiltzailea ondo sortu da"
@@ -4024,11 +4106,17 @@ msgid "User roles updated"
 msgstr "Erabiltzailearen rolak eguneratu egin dira"
 
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: User updated
+msgid "User updated"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Username
 msgid "Username"
 msgstr "Erabiltzaile izena"
 
 #: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/Users/UserGroupMembershipListing
 #: components/manage/Controlpanels/Users/UsersControlpanel
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Users

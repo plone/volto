@@ -2,7 +2,6 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
-import { JSDOM } from 'jsdom';
 
 import TextLineEdit from './TextLineEdit';
 
@@ -10,9 +9,6 @@ const mockStore = configureStore();
 
 describe('renders TextLineEdit', () => {
   beforeEach(() => {
-    const jsdom = new JSDOM();
-    global.window = jsdom.window;
-    global.document = jsdom.window.document;
     global.Document = document.constructor;
   });
 

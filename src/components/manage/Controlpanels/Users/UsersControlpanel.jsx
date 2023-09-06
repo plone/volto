@@ -11,6 +11,7 @@ import {
   getControlpanel,
   updateUser,
   updateGroup,
+  getUserSchema,
 } from '@plone/volto/actions';
 import {
   Icon,
@@ -89,11 +90,12 @@ class UsersControlpanel extends Component {
     this.onChangeSearch = this.onChangeSearch.bind(this);
     this.onSearch = this.onSearch.bind(this);
     this.delete = this.delete.bind(this);
-
+    this.edit = this.edit.bind(this);
     this.onDeleteOk = this.onDeleteOk.bind(this);
     this.onDeleteCancel = this.onDeleteCancel.bind(this);
     this.onAddUserSubmit = this.onAddUserSubmit.bind(this);
     this.onAddUserError = this.onAddUserError.bind(this);
+    this.onEditUserError = this.onEditUserError.bind(this);
     this.onAddUserSuccess = this.onAddUserSuccess.bind(this);
     this.updateUserRole = this.updateUserRole.bind(this);
     this.state = {
@@ -107,13 +109,22 @@ class UsersControlpanel extends Component {
       isClient: false,
       currentPage: 0,
       pageSize: 10,
+      showEditUser: false,
+      userToEdit: {},
+      editUserError: '',
+      manyUserError: null,
       loginUsingEmail: false,
     };
   }
 
   fetchData = async () => {
+    await this.props.getControlpanel('security');
+    this.setState({
+      loginUsingEmail: this.props.controlPanelData,
+    });
     await this.props.getControlpanel('usergroup');
     await this.props.listRoles();
+    await this.props.getUserSchema();
     if (!this.props.many_users) {
       this.props.listGroups();
       await this.props.listUsers();
@@ -121,14 +132,6 @@ class UsersControlpanel extends Component {
         entries: this.props.users,
       });
     }
-  };
-
-  // Because username field needs to be disabled if email login is enabled!
-  checkLoginUsingEmailStatus = async () => {
-    await this.props.getControlpanel('security');
-    this.setState({
-      loginUsingEmail: this.props.controlPanelData?.data.use_email_as_login,
-    });
   };
 
   /**
@@ -141,13 +144,13 @@ class UsersControlpanel extends Component {
       isClient: true,
     });
     this.fetchData();
-    this.checkLoginUsingEmailStatus();
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (
       (this.props.deleteRequest.loading && nextProps.deleteRequest.loaded) ||
-      (this.props.createRequest.loading && nextProps.createRequest.loaded)
+      (this.props.createRequest.loading && nextProps.createRequest.loaded) ||
+      (this.props.updateRequest.loading && nextProps.updateRequest.loaded)
     ) {
       this.props.listUsers({
         search: this.state.search,
@@ -156,8 +159,25 @@ class UsersControlpanel extends Component {
     if (this.props.createRequest.loading && nextProps.createRequest.loaded) {
       this.onAddUserSuccess();
     }
+    if (this.props.updateRequest.loading && nextProps.updateRequest.loaded) {
+      this.setState({
+        showEditUser: false,
+        userToEdit: {},
+      });
+      this.props.listUsers();
+      toast.success(
+        <Toast
+          success
+          title={this.props.intl.formatMessage(messages.success)}
+          content={this.props.intl.formatMessage(messages.userUpdated)}
+        />,
+      );
+    }
     if (this.props.createRequest.loading && nextProps.createRequest.error) {
       this.onAddUserError(nextProps.createRequest.error);
+    }
+    if (this.props.updateRequest.loading && nextProps.updateRequest.error) {
+      this.onEditUserError(nextProps.updateRequest.error);
     }
     if (
       this.props.loadRolesRequest.loading &&
@@ -181,6 +201,13 @@ class UsersControlpanel extends Component {
    */
   onSearch(event) {
     event.preventDefault();
+    if (this.props.many_users && this.state.search === '') {
+      this.setState({
+        entries: [],
+        manyUserError: 'Please enter a search term',
+      });
+      return;
+    }
     this.props.listUsers({
       search: this.state.search,
     });
@@ -196,6 +223,9 @@ class UsersControlpanel extends Component {
     this.setState({
       search: event.target.value,
     });
+    if (event.keyCode === 13) {
+      this.onSearch(event);
+    }
   }
 
   /**
@@ -213,6 +243,44 @@ class UsersControlpanel extends Component {
       });
     }
   }
+
+  /**
+   * Edit a user
+   * @method edit
+   * @param {object} event Event object.
+   * @param {string} value username.
+   * @returns {undefined}
+   */
+
+  edit(event, { value }) {
+    if (value) {
+      this.setState({
+        showEditUser: true,
+        userToEdit: this.getUserFromProps(value),
+      });
+    }
+  }
+
+  editUserSubmit = (data, callback) => {
+    const { groups } = data;
+    const roles = this.props.roles.map((item) => item.id);
+    const userData = { roles: {} };
+    const removedRoles = difference(roles, data.roles);
+
+    removedRoles.forEach((role) => {
+      userData.roles[role] = false;
+    });
+    data.roles.forEach((role) => {
+      userData.roles[role] = true;
+    });
+    data = {
+      ...data,
+      roles: userData.roles,
+    };
+
+    if (groups && groups.length > 0) this.addUserToGroup(data);
+    this.props.updateUser(this.state.userToEdit.id, data);
+  };
 
   /**
    * On delete ok
@@ -248,12 +316,15 @@ class UsersControlpanel extends Component {
    */
   addUserToGroup = (user) => {
     const { groups, username } = user;
-    groups.forEach((group) => {
-      this.props.updateGroup(group, {
+    const defaultGroups = this.props.groups.map((item) => item.id);
+    defaultGroups.forEach((group) => {
+      const userExistsInGroup = groups.includes(group);
+      const groupData = {
         users: {
-          [username]: true,
+          [username]: userExistsInGroup,
         },
-      });
+      };
+      this.props.updateGroup(group, groupData);
     });
   };
 
@@ -265,12 +336,28 @@ class UsersControlpanel extends Component {
    * @returns {undefined}
    */
   onAddUserSubmit(data, callback) {
-    const { groups, sendPasswordReset } = data;
-    if (groups && groups.length > 0) this.addUserToGroup(data);
-    this.props.createUser(data, sendPasswordReset);
-    this.setState({
-      addUserSetFormDataCallback: callback,
-    });
+    const { groups, sendPasswordReset, password } = data;
+    if (
+      sendPasswordReset !== undefined &&
+      sendPasswordReset === true &&
+      password !== undefined
+    ) {
+      toast.error(
+        <Toast
+          error
+          title={this.props.intl.formatMessage(messages.error)}
+          content={this.props.intl.formatMessage(
+            messages.addUserFormPasswordAndSendPasswordTogetherNotAllowed,
+          )}
+        />,
+      );
+    } else {
+      if (groups && groups.length > 0) this.addUserToGroup(data);
+      this.props.createUser(data, sendPasswordReset);
+      this.setState({
+        addUserSetFormDataCallback: callback,
+      });
+    }
   }
 
   /**
@@ -357,6 +444,18 @@ class UsersControlpanel extends Component {
   }
 
   /**
+   * Handle Errors after editUser()
+   *
+   * @param {object} error object. Requires the property .message
+   * @returns {undefined}
+   */
+  onEditUserError(error) {
+    this.setState({
+      editUserError: error.response.body.error.message,
+    });
+  }
+
+  /**
    * On change page
    * @method onChangePage
    * @param {object} event Event object.
@@ -373,6 +472,7 @@ class UsersControlpanel extends Component {
     if (this.props.users !== prevProps.users) {
       this.setState({
         entries: this.props.users,
+        manyUserError: null,
       });
     }
   }
@@ -392,6 +492,62 @@ class UsersControlpanel extends Component {
     let usernameToDelete = this.state.userToDelete
       ? this.state.userToDelete.username
       : '';
+    let addschema = {};
+    if (this.props?.userschema?.loaded) {
+      addschema = JSON.parse(
+        JSON.stringify(this.props?.userschema?.userschema),
+      );
+      if (!this.state.loginUsingEmail) {
+        addschema.properties['username'] = {
+          title: this.props.intl.formatMessage(
+            messages.addUserFormUsernameTitle,
+          ),
+          type: 'string',
+          description: this.props.intl.formatMessage(
+            messages.addUserFormUsernameDescription,
+          ),
+        };
+      }
+      addschema.properties['password'] = {
+        title: this.props.intl.formatMessage(messages.addUserFormPasswordTitle),
+        type: 'password',
+        description: this.props.intl.formatMessage(
+          messages.addUserFormPasswordDescription,
+        ),
+        widget: 'password',
+      };
+      addschema.properties['sendPasswordReset'] = {
+        title: this.props.intl.formatMessage(
+          messages.addUserFormSendPasswordResetTitle,
+        ),
+        type: 'boolean',
+      };
+      addschema.properties['roles'] = {
+        title: this.props.intl.formatMessage(messages.addUserFormRolesTitle),
+        type: 'array',
+        choices: this.props.roles.map((role) => [role.id, role.title]),
+        noValueOption: false,
+      };
+      addschema.properties['groups'] = {
+        title: this.props.intl.formatMessage(messages.addUserGroupNameTitle),
+        type: 'array',
+        choices: this.props.groups.map((group) => [group.id, group.id]),
+        noValueOption: false,
+      };
+      addschema.required = ['username', 'email'];
+      if (
+        addschema.fieldsets &&
+        addschema.fieldsets.length > 0 &&
+        !addschema.fieldsets[0]['fields'].includes('username')
+      )
+        addschema.fieldsets[0]['fields'] = [
+          'roles',
+          'groups',
+          ...(!this.state.loginUsingEmail ? ['username'] : []),
+          'password',
+          ...(this.state.showAddUser ? ['sendPasswordReset'] : []),
+        ].concat(addschema.fieldsets[0]['fields']);
+    }
     return (
       <Container className="users-control-panel">
         <Helmet title={this.props.intl.formatMessage(messages.users)} />
@@ -418,7 +574,30 @@ class UsersControlpanel extends Component {
             onConfirm={this.onDeleteOk}
             size={null}
           />
-          {this.state.showAddUser ? (
+          {this.props?.userschema?.loaded && this.state.showEditUser ? (
+            <ModalForm
+              open={this.state.showEditUser}
+              className="modal"
+              onSubmit={this.editUserSubmit}
+              submitError={this.state.editUserError}
+              onCancel={() =>
+                this.setState({ showEditUser: false, editUserError: undefined })
+              }
+              title={this.props.intl.formatMessage(messages.editUserFormTitle)}
+              loading={this.props.updateRequest.loading}
+              formData={{
+                username: this.state.userToEdit.username,
+                fullname: this.state.userToEdit.fullname,
+                email: this.state.userToEdit.email,
+                roles: this.state.userToEdit.roles,
+                groups: this.state.userToEdit.groups.items.map(
+                  (group) => group.id,
+                ),
+              }}
+              schema={addschema}
+            />
+          ) : null}
+          {this.props?.userschema?.loaded && this.state.showAddUser ? (
             <ModalForm
               open={this.state.showAddUser}
               className="modal"
@@ -429,96 +608,7 @@ class UsersControlpanel extends Component {
               }
               title={this.props.intl.formatMessage(messages.addUserFormTitle)}
               loading={this.props.createRequest.loading}
-              schema={{
-                fieldsets: [
-                  {
-                    id: 'default',
-                    title: 'FIXME: User Data',
-                    fields: [
-                      ...(!this.state.loginUsingEmail ? ['username'] : []),
-                      'fullname',
-                      'email',
-                      'password',
-                      'sendPasswordReset',
-                      'roles',
-                      'groups',
-                    ],
-                  },
-                ],
-                properties: {
-                  ...(!this.state.loginUsingEmail
-                    ? {
-                        username: {
-                          title: this.props.intl.formatMessage(
-                            messages.addUserFormUsernameTitle,
-                          ),
-                          type: 'string',
-                          description: this.props.intl.formatMessage(
-                            messages.addUserFormUsernameDescription,
-                          ),
-                        },
-                      }
-                    : {}),
-                  fullname: {
-                    title: this.props.intl.formatMessage(
-                      messages.addUserFormFullnameTitle,
-                    ),
-                    type: 'string',
-                    description: this.props.intl.formatMessage(
-                      messages.addUserFormFullnameDescription,
-                    ),
-                  },
-                  email: {
-                    title: this.props.intl.formatMessage(
-                      messages.addUserFormEmailTitle,
-                    ),
-                    type: 'string',
-                    description: this.props.intl.formatMessage(
-                      messages.addUserFormEmailDescription,
-                    ),
-                    widget: 'email',
-                  },
-                  password: {
-                    title: this.props.intl.formatMessage(
-                      messages.addUserFormPasswordTitle,
-                    ),
-                    type: 'password',
-                    description: this.props.intl.formatMessage(
-                      messages.addUserFormPasswordDescription,
-                    ),
-                    widget: 'password',
-                  },
-                  sendPasswordReset: {
-                    title: this.props.intl.formatMessage(
-                      messages.addUserFormSendPasswordResetTitle,
-                    ),
-                    type: 'boolean',
-                  },
-                  roles: {
-                    title: this.props.intl.formatMessage(
-                      messages.addUserFormRolesTitle,
-                    ),
-                    type: 'array',
-                    choices: this.props.roles.map((role) => [
-                      role.id,
-                      role.title,
-                    ]),
-                    noValueOption: false,
-                  },
-                  groups: {
-                    title: this.props.intl.formatMessage(
-                      messages.addUserGroupNameTitle,
-                    ),
-                    type: 'array',
-                    choices: this.props.groups.map((group) => [
-                      group.id,
-                      group.id,
-                    ]),
-                    noValueOption: false,
-                  },
-                },
-                required: ['username', 'email'],
-              }}
+              schema={addschema}
             />
           ) : null}
         </div>
@@ -557,27 +647,35 @@ class UsersControlpanel extends Component {
               </Form.Field>
             </Form>
           </Segment>
-          <Form>
-            <div className="table">
-              <Table padded striped attached unstackable>
-                <Table.Header>
-                  <Table.Row>
-                    <Table.HeaderCell>
-                      <FormattedMessage
-                        id="User name"
-                        defaultMessage="User name"
-                      />
+          {this.props.many_users && (
+            <Segment secondary>
+              <FormattedMessage
+                id="ManyUsersList"
+                defaultMessage="You have selected the option 'many users'. Thus this control panel asks for input to show users. If you want to see users instantaneous, head over to User and Group settings."
+              />
+            </Segment>
+          )}
+          <div className="table">
+            <Table padded striped unstackable>
+              <Table.Header>
+                <Table.Row>
+                  <Table.HeaderCell>
+                    <FormattedMessage
+                      id="User name"
+                      defaultMessage="User name"
+                    />
+                  </Table.HeaderCell>
+                  {this.props.roles.map((role) => (
+                    <Table.HeaderCell key={role.id}>
+                      {role.title}
                     </Table.HeaderCell>
-                    {this.props.roles.map((role) => (
-                      <Table.HeaderCell key={role.id}>
-                        {role.title}
-                      </Table.HeaderCell>
-                    ))}
-                    <Table.HeaderCell>
-                      <FormattedMessage id="Actions" defaultMessage="Actions" />
-                    </Table.HeaderCell>
-                  </Table.Row>
-                </Table.Header>
+                  ))}
+                  <Table.HeaderCell>
+                    <FormattedMessage id="Actions" defaultMessage="Actions" />
+                  </Table.HeaderCell>
+                </Table.Row>
+              </Table.Header>
+              {this.state.entries.length ? (
                 <Table.Body data-user="users">
                   {this.state.entries
                     .slice(
@@ -588,6 +686,7 @@ class UsersControlpanel extends Component {
                       <RenderUsers
                         key={user.id}
                         onDelete={this.delete}
+                        onEdit={this.edit}
                         roles={this.props.roles}
                         user={user}
                         updateUser={this.updateUserRole}
@@ -595,18 +694,47 @@ class UsersControlpanel extends Component {
                       />
                     ))}
                 </Table.Body>
-              </Table>
-            </div>
-            <div className="contents-pagination">
-              <Pagination
-                current={this.state.currentPage}
-                total={Math.ceil(
-                  this.state.entries?.length / this.state.pageSize,
-                )}
-                onChangePage={this.onChangePage}
-              />
-            </div>
-          </Form>
+              ) : null}
+            </Table>
+            {this.state.entries.length === 0 && !this.props.many_users && (
+              <div className="no-user-message">
+                <div className="large message">
+                  {this.props.intl.formatMessage(messages.noUserFound)}
+                </div>
+                <Button
+                  id="add-user"
+                  aria-label={this.props.intl.formatMessage(
+                    messages.addUserButtonTitle,
+                  )}
+                  onClick={() => {
+                    this.setState({ showAddUser: true });
+                  }}
+                  loading={this.props.createRequest.loading}
+                >
+                  Add User
+                </Button>
+              </div>
+            )}
+            {this.state.entries.length === 0 && this.props.many_users && (
+              <div>
+                {this.props.intl.formatMessage(messages.searchManyUsers)}
+              </div>
+            )}
+            {this.props.many_users && this.state.manyUserError && (
+              <div className="enter-input-error">
+                {this.props.intl.formatMessage(messages.manyUserError)}
+              </div>
+            )}
+          </div>
+          <div className="contents-pagination">
+            <Pagination
+              current={this.state.currentPage}
+              total={Math.ceil(
+                this.state.entries?.length / this.state.pageSize,
+              )}
+              onChangePage={this.onChangePage}
+            />
+          </div>
         </Segment.Group>
         {this.state.isClient && (
           <Portal node={document.getElementById('toolbar')}>
@@ -682,9 +810,13 @@ export default compose(
       pathname: props.location.pathname,
       deleteRequest: state.users.delete,
       createRequest: state.users.create,
+      updateRequest: state.users.update,
+      getRequest: state.users.get,
       loadRolesRequest: state.roles,
       inheritedRole: state.authRole.authenticatedRole,
-      controlPanelData: state.controlpanels?.controlpanel,
+      userschema: state.userschema,
+      controlPanelData:
+        state.controlpanels?.controlpanel?.data.use_email_as_login,
     }),
     (dispatch) =>
       bindActionCreators(
@@ -697,6 +829,7 @@ export default compose(
           createUser,
           updateUser,
           updateGroup,
+          getUserSchema,
         },
         dispatch,
       ),

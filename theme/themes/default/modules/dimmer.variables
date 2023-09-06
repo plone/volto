@@ -14,7 +14,7 @@
 @transition:
   background-color @duration linear
 ;
-@zIndex: 1000;
+@zIndex: 10;
 @textAlign: center;
 @verticalAlign: middle;
 @textColor: @white;

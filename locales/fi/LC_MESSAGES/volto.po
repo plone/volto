@@ -124,6 +124,11 @@ msgstr "Lisää käännös…"
 msgid "Add User"
 msgstr "Lisää käyttäjä"
 
+#: components/manage/Controlpanels/Groups/RenderGroups
+# defaultMessage: Add Users
+msgid "Add Users"
+msgstr ""
+
 #: components/manage/Blocks/Description/Edit
 # defaultMessage: Add a description…
 msgid "Add a description…"
@@ -213,6 +218,11 @@ msgstr "Lisää uusi käyttäjä"
 # defaultMessage: Add to Groups
 msgid "Add to Groups"
 msgstr "Lisää ryhmiin"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Add users
+msgid "Add users"
+msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add users to group
@@ -1151,8 +1161,10 @@ msgstr "Sähköpostiosoitteet eivät olleet identtiset."
 
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypesActions
+#: components/manage/Controlpanels/Groups/RenderGroups
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Controlpanels/Rules/EditRule
+#: components/manage/Controlpanels/Users/RenderUsers
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/FormFieldWrapper
 #: components/manage/Widgets/ObjectBrowserWidget
@@ -1165,6 +1177,11 @@ msgstr "Muokkaa"
 # defaultMessage: Edit Rule
 msgid "Edit Rule"
 msgstr "Muokkaa sääntöä"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Edit User
+msgid "Edit User"
+msgstr ""
 
 #: components/theme/Comments/CommentEditModal
 # defaultMessage: Edit comment
@@ -1180,6 +1197,11 @@ msgstr "Muokkaa kenttää"
 # defaultMessage: Edit fieldset
 msgid "Edit fieldset"
 msgstr "Muokkaa kenttäryhmää"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Edit group
+msgid "Edit group"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: Edit recurrence
@@ -1733,7 +1755,7 @@ msgid "Info"
 msgstr "Tiedot"
 
 #: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
-# defaultMessage: You have selected the option 'many users' or 'many groups'. Thus this control panel asks for input to show users and groups. If you want to see users and groups instantaneous, head over to user group settings. See the button on the left.
+# defaultMessage: You have selected the option 'many users' or 'many groups'. Thus this control panel asks for input to show users and groups. If you want to see users and groups instantaneous, head over to User and Group settings. See the button on the left.
 msgid "InfoUserGroupSettings"
 msgstr ""
 
@@ -1817,6 +1839,11 @@ msgstr "Toista vuosittain"
 # defaultMessage: Invalid block - Will be removed on saving
 msgid "Invalid Block"
 msgstr "Virheellinen palikka"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them.
+msgid "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Item batch size
@@ -2090,6 +2117,16 @@ msgstr "Manuaalisesti vai automaattisesti lisätty?"
 msgid "Many relations found. Please search."
 msgstr ""
 
+#: components/manage/Controlpanels/Groups/GroupsControlpanel
+# defaultMessage: You have selected the option 'many groups'. Thus this control panel asks for input to show groups. If you want to see groups instantaneous, head over to User and Group settings.
+msgid "ManyGroupsList"
+msgstr ""
+
+#: components/manage/Controlpanels/Users/UsersControlpanel
+# defaultMessage: You have selected the option 'many users'. Thus this control panel asks for input to show users. If you want to see users instantaneous, head over to User and Group settings.
+msgid "ManyUsersList"
+msgstr ""
+
 #: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Maps/schema
 # defaultMessage: Maps
@@ -2294,6 +2331,11 @@ msgstr ""
 # defaultMessage: There is no connection to the server, due to a timeout o no network connection.
 msgid "No connection to the server"
 msgstr "Ei yhteyttä palvelimeen"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: No group found
+msgid "No group found"
+msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
 # defaultMessage: No image selected
@@ -2574,9 +2616,9 @@ msgid "Please fill out the form below to set your password."
 msgstr "Voit vaihtaa salasanan täytämällä oheisen lomakkeen."
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Please search for users or use the filters on the side.
-msgid "Please search for users or use the filters on the side."
-msgstr "Etsi käyttäjiä tai käytä suodattimia."
+# defaultMessage: Please search for users or use the filters.
+msgid "Please search for users or use the filters."
+msgstr ""
 
 #: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
 # defaultMessage: Please upgrade to plone.restapi >= 8.24.0.
@@ -3039,9 +3081,14 @@ msgid "Search for user or group"
 msgstr "Hae käyttäjiä tai ryhmiä"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Search group…
-msgid "Search group…"
-msgstr "Etsi ryhmää…"
+# defaultMessage: Search groups
+msgid "Search groups"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Search groups by title
+msgid "Search groups by title "
+msgstr ""
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Search input label
@@ -3070,9 +3117,14 @@ msgid "Search targets by title or path"
 msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Search users…
-msgid "Search users…"
-msgstr "Etsi käyttäjiä…"
+# defaultMessage: Search users
+msgid "Search users"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Search users by username or email
+msgid "Search users by username or email"
+msgstr ""
 
 #: components/manage/Blocks/Search/components/SearchDetails
 # defaultMessage: Searched for: <em>{searchedtext}</em>.
@@ -3096,6 +3148,11 @@ msgstr "Osion otsikko"
 # defaultMessage: Select
 msgid "Select"
 msgstr "Valitse"
+
+#: components/manage/Controlpanels/Users/UserGroupMembershipListing
+# defaultMessage: Select All
+msgid "Select All"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 # defaultMessage: Select a date to add to recurrence
@@ -3215,6 +3272,11 @@ msgstr "Näytä"
 # defaultMessage: Show All
 msgid "Show All"
 msgstr "Näytä kaikki"
+
+#: components/manage/Controlpanels/Users/UserGroupMembershipListing
+# defaultMessage: Show More
+msgid "Show More"
+msgstr ""
 
 #: components/theme/Comments/Comments
 # defaultMessage: Show Replies
@@ -3719,6 +3781,21 @@ msgstr "Nimike"
 msgid "Title field error. Value not provided or already existing."
 msgstr "Otsikkovirhe. Arvoa ei syötetty tai se on jo olemassa."
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Too many groups found.
+msgid "Too many groups found."
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Too many users found.
+msgid "Too many users found."
+msgstr ""
+
+#: components/manage/Controlpanels/Users/UserGroupMembershipListing
+# defaultMessage: Total Users
+msgid "Total Users"
+msgstr ""
+
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Total active and non-active objects
 msgid "Total active and non-active objects"
@@ -4013,6 +4090,11 @@ msgid "User Group Settings"
 msgstr "Käyttäjän ryhmän asetukset"
 
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: User added
+msgid "User added"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: User created
 msgid "User created"
 msgstr "Käyttäjä luotu"
@@ -4028,11 +4110,17 @@ msgid "User roles updated"
 msgstr "Käyttäjän roolit päivitetty"
 
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: User updated
+msgid "User updated"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Username
 msgid "Username"
 msgstr "Käyttäjätunnus"
 
 #: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/Users/UserGroupMembershipListing
 #: components/manage/Controlpanels/Users/UsersControlpanel
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Users
