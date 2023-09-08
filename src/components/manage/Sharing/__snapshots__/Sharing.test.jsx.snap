@@ -43,7 +43,6 @@ exports[`Sharing renders a sharing component 1`] = `
             />
             <button
               className="ui icon button"
-              disable={false}
               onClick={[Function]}
             >
               <i
