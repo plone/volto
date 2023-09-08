@@ -342,7 +342,7 @@ class SharingComponent extends Component {
                         action={{
                           icon: 'search',
                           loading: isLoading,
-                          disable: isLoading,
+                          disabled: isLoading,
                         }}
                         placeholder={this.props.intl.formatMessage(
                           messages.searchForUserOrGroup,
