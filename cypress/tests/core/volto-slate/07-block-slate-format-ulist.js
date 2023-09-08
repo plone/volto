@@ -62,8 +62,7 @@ describe('Block Tests: Bulleted lists', () => {
     cy.setSlateCursor('ideas').type('{enter}');
 
     // Remove list
-    cy.setSlateSelection('green', 'sleep');
-    cy.wait(2000);
+    cy.setSlateSelection('green', 'sleep', 2000);
     cy.clickSlateButton('Bulleted list', 2000);
 
     // Save
