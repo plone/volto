@@ -8,6 +8,25 @@
 
 <!-- towncrier release notes start -->
 
+## 16.23.0 (2023-09-08)
+
+### Feature
+
+- Updated Spanish translation @macagua [#5120](https://github.com/plone/volto/issues/5120)
+
+### Bugfix
+
+- Add image block className support (Style wrapper). @sneridagh [#5018](https://github.com/plone/volto/issues/5018)
+- Don't show ``No value`` option in SelectWidget and ArrayWidget if default value is 0. @wesleybl [#5151](https://github.com/plone/volto/issues/5151)
+- Fix SelectWidget throwing error when editing a recently created content. @iFlameing [#5154](https://github.com/plone/volto/issues/5154)
+- Fix editing layout for blocks using schema enhancers. @iFlameing, @davisagli [#5158](https://github.com/plone/volto/issues/5158)
+- Fix ContentRules add and edit forms for languages other than English. @ericof [#5161](https://github.com/plone/volto/issues/5161)
+
+### Documentation
+
+- Fix linkcheckbroken 301 redirect to https://www.dlr.de/de @stevepiercy [#5131](https://github.com/plone/volto/issues/5131)
+
+
 ## 16.22.2 (2023-08-25)
 
 ### Bugfix
