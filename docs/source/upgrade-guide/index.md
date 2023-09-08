@@ -89,9 +89,10 @@ If you want to retain the old behavior (and no use `apiExpanders` at all), you n
 config.settings.apiExpanders = [];
 ```
 
-### Cypress upgraded to 12.17.1
+### Cypress upgraded to 13.1.0
 
 As usual in a Volto major version release, Cypress has been upgraded to the latest version to date.
+We are moving from Cypress 11 to Cypress 13.
 There are no major changes to the way the tests are implemented and run.
 
 However, it could be that your Cypress boilerplate must be updated in your projects and add-ons if you use `@testing-library/cypress` in your tests.
@@ -108,6 +109,8 @@ from {file}`cypress/support/commands.js` to {file}`cypress/support/e2e.js`, in c
 This is because the overrides that `@testing-library/cypress` introduce can be run only once.
 Since there are some commands that can call exports in {file}`cypress/support/commands.js`, this import may be run more than once, and then it errors.
 So you have to make sure that import is run only once while the tests are run.
+
+Check the official [Cypress Migration Guide](https://docs.cypress.io/guides/references/migration-guide) for more information.
 
 ### New Image component
 
