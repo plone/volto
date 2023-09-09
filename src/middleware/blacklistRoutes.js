@@ -18,7 +18,7 @@ const blacklistRoutes = ({ dispatch, getState }) => (next) => (action) => {
       if (!route) {
         return next(action);
       } else {
-        window.location.replace(
+        window.location.assign(
           route.url ? route.url(action.payload) : pathname,
         );
       }
