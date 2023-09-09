@@ -30,10 +30,10 @@ Thus it is safe to run it on top of your project and answer the prompts.
 
 ### Ending support for Node.js 14
 
-Long Term Support for {term}`Node.js` 14 by the Node.js community ends in April 2023.
+Long Term Support (LTS) for {term}`Node.js` 14 by the Node.js community ended in April 2023.
 Volto 17 no longer supports Node.js 14.
-Please update your projects to a Node.js LTS version, where either 16 or 18 is supported at the moment of this writing.
-Version 18 is recommended.
+Please update your projects to a supported Node.js version (16, 18, or 20).
+Version 18 is recommended, as the current LTS version of Node.js.
 
 #### localhost now resolves to an IPv6 address
 

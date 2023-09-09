@@ -96,7 +96,7 @@
     }
   },
   "engines": {
-    "node": "^16 || ^18"
+    "node": "^16 || ^18 || ^20"
   },
   "dependencies": {
     "ansi-escapes": "2.0.0",
