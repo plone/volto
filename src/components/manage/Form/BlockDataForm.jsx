@@ -5,7 +5,7 @@ import { withVariationSchemaEnhancer } from '@plone/volto/helpers';
 const EnhancedBlockDataForm = withVariationSchemaEnhancer(InlineForm);
 
 export default function BlockDataForm(props) {
-  const { onChangeBlock, block } = props;
+  const { onChangeBlock, block, applySchemaEnhancers = true } = props;
 
   if (!onChangeBlock) {
     // eslint-disable-next-line no-console
@@ -19,8 +19,9 @@ export default function BlockDataForm(props) {
     [block, onChangeBlock],
   );
 
+  const Form = applySchemaEnhancers ? EnhancedBlockDataForm : InlineForm;
   return (
-    <EnhancedBlockDataForm
+    <Form
       {...props}
       onChangeFormData={onChangeBlock ? onChangeFormData : undefined}
     />
