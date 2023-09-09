@@ -787,7 +787,7 @@ Cypress.Commands.add(
       .focus()
       // .click()
       .setSelection(subject, query, endQuery)
-      .wait(1000); // this wait is needed for the selection change to be detected after
+      .wait(wait); // this wait is needed for the selection change to be detected after
   },
 );
 

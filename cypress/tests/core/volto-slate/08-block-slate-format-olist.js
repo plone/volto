@@ -38,8 +38,8 @@ describe('Block Tests: Numbered lists', () => {
     cy.setSlateCursor('ideas').type('{enter}');
 
     // Remove list
-    cy.setSlateSelection('green', 'sleep');
-    cy.clickSlateButton('Numbered list');
+    cy.setSlateSelection('green', 'sleep', 2000);
+    cy.clickSlateButton('Numbered list', 2000);
 
     // Save
     cy.toolbarSave();
