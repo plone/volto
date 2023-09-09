@@ -121,8 +121,13 @@ Run "npm install -g @plone/generator-volto" to update.`,
       [this.globals.scope, this.globals.name] = this.globals.addonName.split(
         '/',
       );
+      this.globals.normalizedName = `${this.globals.scope.replace(
+        '@',
+        '',
+      )}/${this.globals.name.replace('-', '')}`;
     } else {
       this.globals.name = this.globals.addonName;
+      this.globals.normalizedName = `${this.globals.name.replace('-', '')}`;
     }
 
     // Template
@@ -184,6 +189,12 @@ Run "npm install -g @plone/generator-volto" to update.`,
       this.globals,
     );
     // copy dotfiles
+    this.fs.copyTpl(
+      this.templatePath('.github/workflows'),
+      this.destinationPath('.github/workflows'),
+      this.globals,
+    );
+
     this.fs.copy(this.templatePath('.*'), this.destinationPath());
   }
 
