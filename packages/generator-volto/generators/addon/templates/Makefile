@@ -142,7 +142,3 @@ pull-backend-image:  ## Pulls and updates the backend image (for use it while de
 .PHONY: release
 release:  ## Release a version of the add-on
 	yarn release
-
-.PHONY: release-rc
-release-rc:  ## Release a RC version of the add-on
-	npx release-it --preRelease=rc
