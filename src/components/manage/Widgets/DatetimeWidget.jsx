@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import loadable from '@loadable/component';
 import cx from 'classnames';
 import { Icon, FormFieldWrapper } from '@plone/volto/components';
-import { parseDateTime } from '@plone/volto/helpers';
+import { parseDateTime, toBackendLang } from '@plone/volto/helpers';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 import leftKey from '@plone/volto/icons/left-key.svg';
@@ -101,7 +101,7 @@ export class DatetimeWidgetComponent extends Component {
       // if passed value matches the construction time, we guess it's a default
       isDefault:
         parseDateTime(
-          this.props.lang,
+          toBackendLang(this.props.lang),
           this.props.value,
           undefined,
           this.moment,
@@ -111,7 +111,7 @@ export class DatetimeWidgetComponent extends Component {
 
   getInternalValue() {
     return parseDateTime(
-      this.props.lang,
+      toBackendLang(this.props.lang),
       this.props.value,
       undefined,
       this.moment,
@@ -211,7 +211,9 @@ export class DatetimeWidgetComponent extends Component {
               {...(noPastDates ? {} : { isOutsideRange: () => false })}
               onFocusChange={this.onFocusChange}
               noBorder
-              displayFormat={moment.localeData(lang).longDateFormat('L')}
+              displayFormat={moment
+                .localeData(toBackendLang(lang))
+                .longDateFormat('L')}
               navPrev={<PrevIcon />}
               navNext={<NextIcon />}
               id={`${id}-date`}
@@ -233,7 +235,9 @@ export class DatetimeWidgetComponent extends Component {
                 showSecond={false}
                 use12Hours={lang === 'en'}
                 id={`${id}-time`}
-                format={moment.localeData(lang).longDateFormat('LT')}
+                format={moment
+                  .localeData(toBackendLang(lang))
+                  .longDateFormat('LT')}
                 placeholder={intl.formatMessage(messages.time)}
                 focusOnOpen
                 placement="bottomRight"

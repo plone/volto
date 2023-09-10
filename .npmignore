@@ -7,9 +7,15 @@ build/
 lib/
 g-api/
 tests/
+share/
+.yarn/
+.storybook/
 
 # Docs
 docs/
+styles/
+.vale.ini
+netlify.toml
 
 # Cypress
 cypress/fixtures
@@ -26,18 +32,24 @@ __tests__/
 requirements-docs.txt
 requirements-tests.txt
 yarn.lock
+.editorconfig
 .dockerignore
 .gitattributes
 .yarnrc
+.yarnrc.yml
 .nvmrc
 changelogupdater.js
 pip-selfcheck.json
+pyvenv.cfg
 Dockerfile
 CNAME
 entrypoint.sh
 Jenkinsfile
 Makefile
 .husky
+.changelog.draft
+towncrier.toml
+jsdoc.json
 
 # Logs
 logs

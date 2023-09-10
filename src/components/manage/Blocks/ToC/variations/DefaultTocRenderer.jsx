@@ -8,15 +8,29 @@ import PropTypes from 'prop-types';
 import { map } from 'lodash';
 import { List } from 'semantic-ui-react';
 import { FormattedMessage, injectIntl } from 'react-intl';
+import { useHistory } from 'react-router-dom';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
+import Slugger from 'github-slugger';
 
 const RenderListItems = ({ items, data }) => {
+  const history = useHistory();
+
   return map(items, (item) => {
-    const { id, level, title } = item;
+    const { id, level, title, override_toc, plaintext } = item;
+    const slug = override_toc
+      ? Slugger.slug(plaintext)
+      : Slugger.slug(title) || id;
     return (
       item && (
         <List.Item key={id} className={`item headline-${level}`} as="li">
-          <AnchorLink href={`#${id}`}>{title}</AnchorLink>
+          <AnchorLink
+            href={`#${slug}`}
+            onClick={(e) => {
+              history.push({ hash: slug });
+            }}
+          >
+            {title}
+          </AnchorLink>
           {item.items?.length > 0 && (
             <List
               ordered={data.ordered}

@@ -86,7 +86,7 @@ cd myvoltoproject
 You can bootstrap a ready Docker Plone container with all the dependencies and ready for Volto use. We recommend to use the Plone docker builds based in `pip` [plone/plone-backend](https://github.com/plone/plone-backend) image:
 
 ```shell
-docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e PROFILES="plone.volto:default-homepage" plone/plone-backend:6.0.1
+docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e PROFILES="plone.volto:default-homepage" plone/plone-backend:6.0.5
 ```
 
 or as an alternative if you have experience with Plone and you have all the
@@ -134,7 +134,7 @@ Go to [http://localhost:3000](http://localhost:3000) in your browser.
 Volto is actively developed since 2017 and used in production since 2018 on the following websites:
 
 - [VHS Ehrenamtsportal](https://vhs-ehrenamtsportal.de) (Website to help volunteers that help refugees for the [German Adult Education Association](https://www.dvv-vhs.de/en/home/), developed by [kitconcept GmbH](https://kitconcept.com), 2018)
-- [Zeelandia](https://zeelandia.de) (Corporate website for one of the leading backery ingredients manufacturers in Germany, developed by [kitconcept GmbH](https://kitconcept.com), 2019)
+- [Zeelandia](https://zeelandia.de) (Corporate website for one of the leading bakery ingredients manufacturers in Germany, developed by [kitconcept GmbH](https://kitconcept.com), 2019)
 - [Excellence at Humboldt-Universität zu Berlin](https://www.alles-beginnt-mit-einer-frage.de) (Website for the excellence initiative of the [Humboldt University Berlin](https://hu-berlin.de), developed by [kitconcept GmbH](https://kitconcept.com), 2019)
 - [Forest Information System for Europe](https://forest.eea.europa.eu) (Thematic website focusing on European forests, developed by [Eau de Web](https://www.eaudeweb.ro), 2019)
 - [Industrial Emissions portal for Europe](https://industry.eea.europa.eu) (Thematic website focusing on European industrial emissions, developed by [Eau de Web](https://www.eaudeweb.ro), 2020)
@@ -177,28 +177,26 @@ Volto is actively developed since 2017 and used in production since 2018 on the 
 - [Helmholtz-Institut Erlangen-Nürnberg für Erneuerbare Energien (HI-ERN)](https://www.hi-ern.de) (Website for HI ERN, a research institution for renewable energies, developed by [kitconcept GmbH](https://kitconcept.com), 2022)
 - [Lanku](https://www.lanku.eus) (Website for Lanku Kultur Zerbitzuak, a company offering cultural services and improvised Basque verse singing sessions across the Basque Country, developed by [CodeSyntax](https://www.codesyntax.com/en), 2023)
 - [UEU](https://www.ueu.eus) (Website for Udako Euskal Unibertsitatea, a non-profit University offering all its service only in Basque: courses, publications, ... developed by [CodeSyntax](https://www.codesyntax.com/en), 2023)
+- [German Aerospace Center (DLR)](https://www.dlr.de/de) (The German Aerospace Center (DLR) is the Federal Republic of Germany's research center for aeronautics. With more than 10.000 employees and a yearly budget of more than 1 billion euros, it is one of the largest research institutions in Germany, developed by [kitconcept GmbH](https://kitconcept.com), 2023)
 
 Please create a new [issue](https://github.com/plone/volto/issues/new) or [pull request](https://github.com/plone/volto/pulls) to add your Volto-site here!
 
 ## Documentation
 
-You can find the latest (in-progress) documentation in [https://6.dev-docs.plone.org/](https://6.dev-docs.plone.org/volto/index.html)
+You can find the latest (in-progress) documentation in [https://6.docs.plone.org/](https://6.docs.plone.org/volto/index.html)
 
 ## Training
 
-On the [Plone Trainings Website](https://training.plone.org) you'll find
-Volto-dedicated open training materials, plus React and other
-JavaScript-centered trainings.
+On the [Plone Training website](https://training.plone.org), you'll find Volto-dedicated training materials, plus other JavaScript-centered trainings.
 
 - [Mastering Plone 6 Development](https://training.plone.org/mastering-plone/)
   The comprehensive training on Plone 6 with best practice tips for developers and integrators.
-- [Volto](https://training.plone.org/5/volto/index.html)
-  A detailed training on how to create your own website using Volto frontend.
 - [Volto Hands-On](https://training.plone.org/voltohandson/index.html)
 - [Volto Add-ons Development](https://training.plone.org/voltoaddons/index.html)
-- [Plone Deployment](https://training.plone.org/5/plone-deployment/index.html)
-- [React](https://training.plone.org/react/index.html)
-- [JavaScript For Plone Developers](https://training.plone.org/5/javascript/index.html)
+- [Effective Volto](https://training.plone.org/effective-volto/index.html)
+- [Plone Deployment](https://training.plone.org/plone-deployment/index.html)
+- [Volto](https://2022.training.plone.org/volto/index.html) (archived)
+- [JavaScript For Plone Developers](https://2022.training.plone.org/javascript/index.html) (archived)
 
 ## Talks
 
@@ -245,7 +243,7 @@ We do not guarantee that deprecated browsers (e.g., Internet Explorer 11) are su
 
 ## Upgrades
 
-You can find the upgrade guide here: https://6.dev-docs.plone.org/volto/upgrade-guide/index.html
+You can find the upgrade guide here: https://6.docs.plone.org/volto/upgrade-guide/index.html
 
 ## Volto Development
 
@@ -269,7 +267,7 @@ yarn
 Either using a Docker command:
 
 ```shell
-docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e PROFILES="plone.volto:default-homepage" plone/plone-backend:6.0.1
+docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e PROFILES="plone.volto:default-homepage" plone/plone-backend:6.0.5
 ```
 
 or using the convenience makefile command:
@@ -320,11 +318,11 @@ yarn test
 
 Here you can find a guide on how acceptance testing is done in Volto:
 
-https://6.dev-docs.plone.org/volto/developer-guidelines/acceptance-tests.html
+https://6.docs.plone.org/volto/developer-guidelines/acceptance-tests.html
 
 ## Translations
 
-If you would like contribute to translate Volto into several languages, please, read the [Internationalization (i18n) guide](https://6.dev-docs.plone.org/volto/recipes/i18n.html).
+If you would like contribute to translate Volto into several languages, please, read the [Internationalization (i18n) guide](https://6.docs.plone.org/volto/recipes/i18n.html).
 
 ## Contributors
 

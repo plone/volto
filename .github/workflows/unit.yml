@@ -16,7 +16,8 @@ jobs:
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
+        # remove workaround for 18.x once https://github.com/nodejs/node/issues/47563 is fixed
+          node-version: ${{ matrix.node-version == '18.x' && '18.15.0' || matrix.node-version }}
           cache: yarn
 
       # node install

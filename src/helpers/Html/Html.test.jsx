@@ -20,6 +20,11 @@ jest.mock('../Helmet/Helmet', () => ({
     script: {
       toComponent: () => '',
     },
+    htmlAttributes: {
+      toComponent: () => ({
+        lang: 'en',
+      }),
+    },
   }),
 }));
 

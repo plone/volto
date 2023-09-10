@@ -82,6 +82,8 @@ config.set('settings', {
   viewableInBrowserObjects: [],
   styleClassNameConverters,
   styleClassNameExtenders,
+  blockSettingsTabFieldsetsInitialStateOpen: true,
+  containerBlockTypes: [],
 });
 config.set('blocks', {
   blocksConfig: {
@@ -171,7 +173,15 @@ config.set('widgets', {
   default: BaseWidget('default'),
 });
 
-config.set('components', {});
+config.set('components', {
+  PreviewImage: {
+    component: (props) => <img alt="PreviewImage component mock" {...props} />,
+  },
+  Image: {
+    // eslint-disable-next-line jsx-a11y/img-redundant-alt
+    component: (props) => <img alt="Image component mock" {...props} />,
+  },
+});
 config.set('experimental', {
   addBlockButton: {
     enabled: false,

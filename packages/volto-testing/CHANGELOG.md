@@ -3,10 +3,17 @@
 <!-- You should *NOT* be adding new change log entries to this file.
      You should create a file in the news directory instead.
      For helpful instructions, please see:
-     https://6.dev-docs.plone.org/volto/developer-guidelines/contributing.html#create-a-pull-request
+     https://6.docs.plone.org/volto/developer-guidelines/contributing.html#create-a-pull-request
 -->
 
 <!-- towncrier release notes start -->
+
+## 4.0.0-alpha.0 (2023-07-23)
+
+### Breaking
+
+- Update to Cypress 12.17.1 @sneridagh [#4981](https://github.com/plone/volto/issues/4981)
+
 
 ## 3.1.0 (2023-02-08)
 

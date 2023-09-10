@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 import {
   Button,
   Confirm,
-  Container,
+  Container as SemanticContainer,
   Divider,
   Dropdown,
   Menu,
@@ -70,6 +70,7 @@ import {
 
 import { Helmet, getBaseUrl } from '@plone/volto/helpers';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import config from '@plone/volto/registry';
 
 import backSVG from '@plone/volto/icons/back.svg';
 import cutSVG from '@plone/volto/icons/cut.svg';
@@ -449,7 +450,7 @@ class Contents extends Component {
       sort_on: this.props.sort?.on || 'getObjPositionInParent',
       sort_order: this.props.sort?.order || 'ascending',
       isClient: false,
-      linkIntegrityBreakages: '',
+      linkIntegrityBreakages: [],
     };
     this.filterTimeout = null;
   }
@@ -796,18 +797,20 @@ class Contents extends Component {
    */
   onMoveToTop(event, { value }) {
     const id = this.state.items[value]['@id'];
-    value = this.state.currentPage * this.state.pageSize + value;
-    this.props.orderContent(
-      getBaseUrl(this.props.pathname),
-      id.replace(/^.*\//, ''),
-      -value,
-    );
-    this.setState(
-      {
-        currentPage: 0,
-      },
-      () => this.fetchContents(),
-    );
+    this.props
+      .orderContent(
+        getBaseUrl(this.props.pathname),
+        id.replace(/^.*\//, ''),
+        'top',
+      )
+      .then(() => {
+        this.setState(
+          {
+            currentPage: 0,
+          },
+          () => this.fetchContents(),
+        );
+      });
   }
 
   /**
@@ -818,18 +821,21 @@ class Contents extends Component {
    * @returns {undefined}
    */
   onMoveToBottom(event, { value }) {
-    this.onOrderItem(
-      this.state.items[value]['@id'],
-      value,
-      this.state.items.length - 1 - value,
-      false,
-    );
-    this.onOrderItem(
-      this.state.items[value]['@id'],
-      value,
-      this.state.items.length - 1 - value,
-      true,
-    );
+    const id = this.state.items[value]['@id'];
+    this.props
+      .orderContent(
+        getBaseUrl(this.props.pathname),
+        id.replace(/^.*\//, ''),
+        'bottom',
+      )
+      .then(() => {
+        this.setState(
+          {
+            currentPage: 0,
+          },
+          () => this.fetchContents(),
+        );
+      });
   }
 
   /**
@@ -1008,6 +1014,7 @@ class Contents extends Component {
         sort_order: this.state.sort_order,
         metadata_fields: '_all',
         b_size: 100000000,
+        show_inactive: true,
         ...(this.state.filter && { SearchableText: `${this.state.filter}*` }),
       });
     } else {
@@ -1019,6 +1026,7 @@ class Contents extends Component {
         ...(this.state.filter && { SearchableText: `${this.state.filter}*` }),
         b_size: this.state.pageSize,
         b_start: this.state.currentPage * this.state.pageSize,
+        show_inactive: true,
       });
     }
   }
@@ -1170,6 +1178,9 @@ class Contents extends Component {
       (this.props.orderRequest?.loading && !this.props.orderRequest?.error) ||
       (this.props.searchRequest?.loading && !this.props.searchRequest?.error);
 
+    const Container =
+      config.getComponent({ name: 'Container' }).component || SemanticContainer;
+
     return this.props.token && this.props.objectActions?.length > 0 ? (
       <>
         {folderContentsAction ? (
@@ -1225,7 +1236,10 @@ class Contents extends Component {
                             Show all items
                           </Button>
                         )}
-                        {this.state.linkIntegrityBreakages.length > 0 ? (
+                        {this.state.linkIntegrityBreakages.reduce(
+                          (a, b) => a + b.breaches.length,
+                          0,
+                        ) ? (
                           <div>
                             <h3>
                               {this.props.intl.formatMessage(
@@ -1238,9 +1252,8 @@ class Contents extends Component {
                               )}
                             </p>
                             <ul className="content">
-                              {map(
-                                this.state.linkIntegrityBreakages,
-                                (item) => (
+                              {map(this.state.linkIntegrityBreakages, (item) =>
+                                item.breaches.length ? (
                                   <li key={item['@id']}>
                                     <a href={item['@id']}>{item.title}</a>
                                     <p>
@@ -1258,7 +1271,7 @@ class Contents extends Component {
                                       ))}
                                     </ul>
                                   </li>
-                                ),
+                                ) : null,
                               )}
                             </ul>
                           </div>
@@ -1321,6 +1334,9 @@ class Contents extends Component {
                                 as={Button}
                                 onClick={this.upload}
                                 className="upload"
+                                aria-label={this.props.intl.formatMessage(
+                                  messages.upload,
+                                )}
                               >
                                 <Icon
                                   name={uploadSVG}
@@ -1345,6 +1361,9 @@ class Contents extends Component {
                                 as={Button}
                                 onClick={this.rename}
                                 disabled={!selected}
+                                aria-label={this.props.intl.formatMessage(
+                                  messages.rename,
+                                )}
                               >
                                 <Icon
                                   name={renameSVG}
@@ -1367,6 +1386,9 @@ class Contents extends Component {
                                 as={Button}
                                 onClick={this.workflow}
                                 disabled={!selected}
+                                aria-label={this.props.intl.formatMessage(
+                                  messages.state,
+                                )}
                               >
                                 <Icon
                                   name={semaphoreSVG}
@@ -1389,6 +1411,9 @@ class Contents extends Component {
                                 as={Button}
                                 onClick={this.tags}
                                 disabled={!selected}
+                                aria-label={this.props.intl.formatMessage(
+                                  messages.tags,
+                                )}
                               >
                                 <Icon
                                   name={tagSVG}
@@ -1412,6 +1437,9 @@ class Contents extends Component {
                                 as={Button}
                                 onClick={this.properties}
                                 disabled={!selected}
+                                aria-label={this.props.intl.formatMessage(
+                                  messages.properties,
+                                )}
                               >
                                 <Icon
                                   name={propertiesSVG}
@@ -1436,6 +1464,9 @@ class Contents extends Component {
                                 as={Button}
                                 onClick={this.cut}
                                 disabled={!selected}
+                                aria-label={this.props.intl.formatMessage(
+                                  messages.cut,
+                                )}
                               >
                                 <Icon
                                   name={cutSVG}
@@ -1458,6 +1489,9 @@ class Contents extends Component {
                                 as={Button}
                                 onClick={this.copy}
                                 disabled={!selected}
+                                aria-label={this.props.intl.formatMessage(
+                                  messages.copy,
+                                )}
                               >
                                 <Icon
                                   name={copySVG}
@@ -1481,6 +1515,9 @@ class Contents extends Component {
                                 as={Button}
                                 onClick={this.paste}
                                 disabled={!this.props.action}
+                                aria-label={this.props.intl.formatMessage(
+                                  messages.paste,
+                                )}
                               >
                                 <Icon
                                   name={pasteSVG}
@@ -1504,6 +1541,9 @@ class Contents extends Component {
                                 as={Button}
                                 onClick={this.delete}
                                 disabled={!selected}
+                                aria-label={this.props.intl.formatMessage(
+                                  messages.delete,
+                                )}
                               >
                                 <Icon
                                   name={deleteSVG}
@@ -1780,7 +1820,9 @@ class Contents extends Component {
                                     <Menu.Header
                                       content={this.props.intl.formatMessage(
                                         messages.selected,
-                                        { count: this.state.selected.length },
+                                        {
+                                          count: this.state.selected.length,
+                                        },
                                       )}
                                     />
                                     <Input

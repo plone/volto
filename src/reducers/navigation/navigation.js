@@ -60,7 +60,7 @@ export default function navigation(state = initialState, action = {}) {
         'navigation',
         getBaseUrl(flattenToAppURL(action.result['@id'])),
       );
-      if (hasExpander) {
+      if (hasExpander && !action.subrequest) {
         return {
           ...state,
           error: null,

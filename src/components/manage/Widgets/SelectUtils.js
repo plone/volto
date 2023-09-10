@@ -54,7 +54,7 @@ export function normalizeSingleSelectOption(value, intl) {
     throw new Error(`Unknown value type of select widget: ${value}`);
   }
 
-  const token = value.token ?? value.value ?? 'no-value';
+  const token = value.token ?? value.value ?? value.UID ?? 'no-value';
   const label =
     (value.title && value.title !== 'None' ? value.title : undefined) ??
     value.label ??
@@ -111,7 +111,7 @@ export function normalizeValue(choices, value, intl) {
 
   if (Array.isArray(value)) {
     // a list of values, like ['foo', 'bar'];
-    return value.map((v) => normalizeValue(choices, v));
+    return value.map((v) => normalizeValue(choices, v, intl));
   }
 
   if (isObject(value)) {

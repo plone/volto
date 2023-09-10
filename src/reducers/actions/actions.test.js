@@ -207,4 +207,74 @@ describe('Actions reducer - (ACTIONS)GET_CONTENT', () => {
       loading: false,
     });
   });
+
+  it('should handle (ACTIONS)LIST_ACTIONS (standalone with apiExpander enabled)', () => {
+    expect(
+      actions(undefined, {
+        type: `${LIST_ACTIONS}_SUCCESS`,
+        result: {
+          object: [],
+          object_buttons: [],
+          site_actions: [],
+          user: [
+            {
+              icon: '',
+              id: 'preferences',
+              title: 'Preferences',
+            },
+            {
+              icon: '',
+              id: 'dashboard',
+              title: 'Dashboard',
+            },
+            {
+              icon: '',
+              id: 'plone_setup',
+              title: 'Site Setup',
+            },
+            {
+              icon: '',
+              id: 'logout',
+              title: 'Log out',
+            },
+          ],
+          document_actions: [],
+          portal_tabs: [],
+        },
+      }),
+    ).toEqual({
+      error: null,
+      actions: {
+        object: [],
+        object_buttons: [],
+        site_actions: [],
+        user: [
+          {
+            icon: '',
+            id: 'preferences',
+            title: 'Preferences',
+          },
+          {
+            icon: '',
+            id: 'dashboard',
+            title: 'Dashboard',
+          },
+          {
+            icon: '',
+            id: 'plone_setup',
+            title: 'Site Setup',
+          },
+          {
+            icon: '',
+            id: 'logout',
+            title: 'Log out',
+          },
+        ],
+        document_actions: [],
+        portal_tabs: [],
+      },
+      loaded: true,
+      loading: false,
+    });
+  });
 });

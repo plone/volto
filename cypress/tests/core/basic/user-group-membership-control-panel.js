@@ -1,5 +1,7 @@
 const init = () => {
-  cy.visit('/');
+  cy.intercept('GET', `/**/*?expand*`).as('content');
+  cy.intercept('GET', `/**/@controlpanels/usergroup`).as('usergroup');
+
   cy.autologin();
   cy.createUser({
     username: 'bob',
@@ -27,13 +29,8 @@ const init = () => {
     groupname: 'cooks',
     title: 'cooks',
   });
-};
-
-const waitForPage = () => {
-  cy.waitForResourceToLoad('@navigation');
-  cy.waitForResourceToLoad('@breadcrumbs');
-  cy.waitForResourceToLoad('@actions');
-  cy.waitForResourceToLoad('@types');
+  cy.visit('/');
+  cy.wait('@content');
 };
 
 describe('User Group Membership Control Panel test for NOT many users and many groups', () => {
@@ -42,23 +39,23 @@ describe('User Group Membership Control Panel test for NOT many users and many g
   });
   it('Should update group membership for: one user and one group', () => {
     cy.visit('/controlpanel/usergroupmembership');
-    waitForPage();
+    cy.wait('@usergroup');
 
     cy.get('.usergroupmembership').then(($segmentUsergroupmembership) => {
       if ($segmentUsergroupmembership.hasClass('upgrade-info')) {
         // Panel not supported.
       } else {
-        cy.get('input[name="member_-_max_-_cooks"]').check({
+        cy.get('#source-row-max div.checkbox_cooks input').check({
           force: true,
         });
         cy.reload();
-        cy.get('input[name="member_-_max_-_cooks"]').should('be.checked');
+        cy.get('#source-row-max div.checkbox_cooks input').should('be.checked');
       }
     });
   });
   it('I can search for a user and show his groups', () => {
     cy.visit('/controlpanel/usergroupmembership');
-    waitForPage();
+    cy.wait('@usergroup');
 
     cy.get('.usergroupmembership').then(($segmentUsergroupmembership) => {
       if ($segmentUsergroupmembership.hasClass('upgrade-info')) {
@@ -88,8 +85,7 @@ describe('User Group Membership Control Panel test for MANY users and MANY group
     init();
     // many users, many groups
     cy.visit('/controlpanel/usergroup');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
+    cy.wait('@usergroup');
 
     cy.get('.content-area').then(($content_area) => {
       if ($content_area.text().indexOf('Settings') > -1) {
@@ -106,7 +102,7 @@ describe('User Group Membership Control Panel test for MANY users and MANY group
 
   it('Should not show users and groups if many of them', () => {
     cy.visit('/controlpanel/usergroupmembership');
-    waitForPage();
+    cy.wait('@usergroup');
 
     cy.get('.usergroupmembership').then(($segmentUsergroupmembership) => {
       if ($segmentUsergroupmembership.hasClass('upgrade-info')) {
@@ -119,7 +115,7 @@ describe('User Group Membership Control Panel test for MANY users and MANY group
 
   it('I can search for a user and show his groups', () => {
     cy.visit('/controlpanel/usergroupmembership');
-    waitForPage();
+    cy.wait('@usergroup');
 
     cy.get('.usergroupmembership').then(($segmentUsergroupmembership) => {
       if ($segmentUsergroupmembership.hasClass('upgrade-info')) {
@@ -149,8 +145,7 @@ describe('User Group Membership Control Panel test for MANY users and MANY group
   afterEach(() => {
     // not many users, not many groups
     cy.visit('/controlpanel/usergroup');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
+    cy.wait('@usergroup');
 
     cy.get('.content-area').then(($content_area) => {
       if ($content_area.text().indexOf('Settings') > -1) {
