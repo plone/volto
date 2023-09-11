@@ -138,6 +138,7 @@ export {
   login,
   loginRenew,
   logout,
+  resetLoginRequest,
 } from '@plone/volto/actions/userSession/userSession';
 export {
   getVocabulary,
