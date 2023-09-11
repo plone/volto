@@ -1301,6 +1301,11 @@ msgstr "Idatzi zure pasahitz berria. Gutxienez 8 karaktere."
 msgid "Enter your username for verification."
 msgstr "Idatzi zure erabiltzaile-izena egiaztatu dezagun."
 
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Entries
+msgid "Entries"
+msgstr ""
+
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -1621,6 +1626,11 @@ msgstr "Fazeta ezkutatu?"
 #: components/manage/Blocks/Search/components/Facets
 # defaultMessage: Hide filters
 msgid "Hide filters"
+msgstr ""
+
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Hide title
+msgid "Hide title"
 msgstr ""
 
 #: components/manage/History/History
@@ -1949,6 +1959,11 @@ msgstr "Gehiago estekatu"
 # defaultMessage: Link redirect view
 msgid "Link redirect view"
 msgstr "Loturaren berbideraketa bista"
+
+#: components/manage/Blocks/Image/schema
+# defaultMessage: Link settings
+msgid "Link settings"
+msgstr ""
 
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
@@ -2440,6 +2455,11 @@ msgstr "Menua ireki"
 msgid "Open object browser"
 msgstr "Ireki elementu bilatzailea"
 
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Ordered
+msgid "Ordered"
+msgstr ""
+
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Origin
 msgid "Origin"
@@ -2566,8 +2586,8 @@ msgid "Please upgrade to plone.restapi >= 8.24.0."
 msgstr "Eguneratu plone.restapi bertsioa 8.24.0 edo handiago batera"
 
 #: components/manage/Controlpanels/Relations/Relations
-# defaultMessage: Please upgrade to plone.restapi >= 8.35.3.
-msgid "Please upgrade to plone.restapi >= 8.35.3."
+# defaultMessage: Please upgrade to plone.restapi >= 8.39.0.
+msgid "Please upgrade to plone.restapi >= 8.39.0."
 msgstr ""
 
 #: components/theme/Footer/Footer
@@ -3144,6 +3164,11 @@ msgstr "Bidali"
 msgid "Send a confirmation mail with a link to set the password."
 msgstr "Bidali pasahitza ezartzeko lotura duen baieztapen mezua."
 
+#: components/theme/Error/ServerError
+# defaultMessage: Server Error
+msgid "Server Error"
+msgstr ""
+
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Set my password
 msgid "Set my password"
@@ -3333,6 +3358,7 @@ msgid "Sorted"
 msgstr "Ordenatuta"
 
 #: components/manage/Blocks/HTML/Edit
+#: components/manage/Controlpanels/Relations/BrokenRelations
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: Source
 msgid "Source"
@@ -3375,6 +3401,11 @@ msgstr "Egoera"
 # defaultMessage: Status
 msgid "Status"
 msgstr "Egoera"
+
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Sticky
+msgid "Sticky"
+msgstr ""
 
 #: components/manage/Multilingual/CompareLanguages
 # defaultMessage: Stop compare
@@ -3477,6 +3508,7 @@ msgstr "Kendu beharreko etiketak"
 
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/Relations/BrokenRelations
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: Target
 msgid "Target"
@@ -3680,6 +3712,7 @@ msgstr "Ordua"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Teaser/schema
+#: components/manage/Blocks/ToC/Schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
@@ -4115,6 +4148,11 @@ msgstr "Barkatu eragozpenak baina zerbitzaria ez dago konektatuta. Saiatu berand
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
 msgstr "Barkatu eragozpenak baina orrialde horren helbidea ez da zuzena. erabili beheko loturak bilatu nahi duzuna aurkitzeko."
 
+#: components/theme/Error/ServerError
+# defaultMessage: We apologize for the inconvenience, but there was an unexpected error on the server.
+msgid "We apologize for the inconvenience, but there was an unexpected error on the server."
+msgstr ""
+
 #: components/theme/Forbidden/Forbidden
 # defaultMessage: We apologize for the inconvenience, but you don't have permissions on this resource.
 msgid "We apologize for the inconvenience, but you don't have permissions on this resource."
@@ -4329,6 +4367,11 @@ msgstr "Ohikoa"
 msgid "compare_to"
 msgstr "Konparatu hizkuntza honekin"
 
+#: components/manage/Controlpanels/Relations/BrokenRelations
+# defaultMessage: {countofrelation} broken {countofrelation, plural, one {relation} other {relations}} of type {typeofrelation}
+msgid "countBrokenRelations"
+msgstr ""
+
 #: config/Blocks
 # defaultMessage: Date Range
 msgid "daterangeFacet"
@@ -4417,6 +4460,11 @@ msgstr ""
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: flush intIds and rebuild relations
 msgid "flush intIds and rebuild relations"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: <ul><li>Regenerate intIds (tokens of relations in relation catalog)</li><li>Rebuild relations</li></ul><p>Check the log for details!</p><p><b>Warning</b>: If you have add-ons relying on intIds, you should not flush them.</p>
+msgid "flushAndRebuildRelationsHints"
 msgstr ""
 
 #: components/manage/Blocks/Teaser/schema
@@ -4818,6 +4866,7 @@ msgstr "Testua"
 msgid "title"
 msgstr "Izenburua"
 
+#: components/manage/Blocks/ToC/Schema
 #: config/Blocks
 # defaultMessage: Table of Contents
 msgid "toc"

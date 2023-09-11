@@ -7,6 +7,7 @@ import {
   CREATE_RELATIONS,
   DELETE_RELATIONS,
   LIST_RELATIONS,
+  STATS_RELATIONS,
 } from '@plone/volto/constants/ActionTypes';
 
 /**
@@ -78,6 +79,22 @@ export function queryRelations(
   return {
     type: LIST_RELATIONS,
     subrequest,
+    request: {
+      op: 'get',
+      path: path,
+    },
+  };
+}
+
+/** Get relation stats
+ * @function getRelationStats
+ * @returns {Object} Relation stats
+ */
+
+export function getRelationStats() {
+  let path = '/@relations';
+  return {
+    type: STATS_RELATIONS,
     request: {
       op: 'get',
       path: path,

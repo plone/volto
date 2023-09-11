@@ -1,8 +1,8 @@
 ---
 myst:
   html_meta:
-    "description": "Volto is developed using Babel to transpile modern Javascript to Javascript that browsers are able to understand and execute."
-    "property=og:description": "Volto is developed using Babel to transpile modern Javascript to Javascript that browsers are able to understand and execute."
+    "description": "Volto is developed using Babel to transpile modern JavaScript to JavaScript that browsers are able to understand and execute."
+    "property=og:description": "Volto is developed using Babel to transpile modern JavaScript to JavaScript that browsers are able to understand and execute."
     "property=og:title": "Language features and conventions"
     "keywords": "Volto, Plone, frontend, React, Babel, translations, language, internationalization, i18n, localization, transpilation"
 ---
@@ -11,7 +11,7 @@ myst:
 
 ## Babel
 
-Volto is developed using Babel to transpile modern Javascript to Javascript that
+Volto is developed using Babel to transpile modern JavaScript to JavaScript that
 browsers are able to understand and execute.
 
 Ecma International's TC39 (https://tc39.es/) is a group of JavaScript developers,
@@ -19,7 +19,7 @@ implementers, academics, and more, collaborating with the community to maintain 
 evolve the definition of JavaScript. They stablished a process
 (https://tc39.es/process-document/) where the proposals are discussed, developed, and
 eventually approved (or dropped). The process has five stages (0 to 4) where reaching
-the stage 4 means the proposal is accepted and it becomes part of the Javascript
+the stage 4 means the proposal is accepted and it becomes part of the JavaScript
 specification.
 
 Babel enables a series of features and syntax that the developer can use in code to

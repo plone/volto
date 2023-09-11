@@ -287,12 +287,12 @@ msgstr "Erweiterung erfolgreich aktualisiert"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Advanced facet?
 msgid "Advanced facet?"
-msgstr ""
+msgstr "Erweiterte Facette?"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Advanced facets are initially hidden and displayed on demand
 msgid "Advanced facets are initially hidden and displayed on demand"
-msgstr ""
+msgstr "Erweiterte Facetten sind zunächst verborgen und werden auf Anforderung angezeigt."
 
 #: config/Views
 # defaultMessage: Album view
@@ -1300,6 +1300,11 @@ msgstr "Geben Sie ihr neues Passwort ein. Mindestens 8 Zeichen."
 msgid "Enter your username for verification."
 msgstr "Geben Sie Ihren Nutzernamen zur Verifikation ein."
 
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Entries
+msgid "Entries"
+msgstr ""
+
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -1473,7 +1478,7 @@ msgstr "Erster Tag des Monats"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Fix relations
 msgid "Fix relations"
-msgstr "Repariere Relationen"
+msgstr "Reparieren"
 
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Fixed width columns
@@ -1605,7 +1610,7 @@ msgstr "Überschrift"
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Hidden facets will still filter the results if proper parameters are passed in URLs
 msgid "Hidden facets will still filter the results if proper parameters are passed in URLs"
-msgstr "Verteckte Facetten können die Ergebnisse weiterhin filtern, wenn die entsprechenden Parameter in der URL angehängt werden"
+msgstr "Versteckte Facetten können die Ergebnisse weiterhin filtern, wenn die entsprechenden Parameter in der URL angehängt werden"
 
 #: components/theme/Comments/Comments
 # defaultMessage: Hide Replies
@@ -1620,6 +1625,11 @@ msgstr "Facette verstecken"
 #: components/manage/Blocks/Search/components/Facets
 # defaultMessage: Hide filters
 msgid "Hide filters"
+msgstr ""
+
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Hide title
+msgid "Hide title"
 msgstr ""
 
 #: components/manage/History/History
@@ -1756,7 +1766,7 @@ msgstr "Zeile davor einfügen"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Inspect relations
 msgid "Inspect relations"
-msgstr "Untersuche Relationen"
+msgstr "Bearbeiten"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Install
@@ -1926,7 +1936,7 @@ msgstr "Links"
 #: components/manage/Blocks/Search/components/Facets
 # defaultMessage: Less filters
 msgid "Less filters"
-msgstr ""
+msgstr "Weniger Filter"
 
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Link
@@ -1936,7 +1946,7 @@ msgstr "Link"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Link copied to clipboard
 msgid "Link copied to clipboard"
-msgstr ""
+msgstr "Link in Zwischenablage kopiert."
 
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
@@ -1948,6 +1958,11 @@ msgstr "'Mehr' Link"
 # defaultMessage: Link redirect view
 msgid "Link redirect view"
 msgstr "Link"
+
+#: components/manage/Blocks/Image/schema
+# defaultMessage: Link settings
+msgid "Link settings"
+msgstr "Link Einstellungen"
 
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
@@ -2156,7 +2171,7 @@ msgstr "Mehr"
 #: components/manage/Blocks/Search/components/Facets
 # defaultMessage: More filters
 msgid "More filters"
-msgstr ""
+msgstr "Mehr Filter"
 
 #: components/manage/Controlpanels/UpgradeControlPanel
 # defaultMessage: More information about the upgrade procedure can be found in the documentation section of plone.org in the Upgrade Guide.
@@ -2274,7 +2289,7 @@ msgstr "Keine Add-ons installiert."
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: No broken relations found.
 msgid "No broken relations found."
-msgstr "Alle Relationen OK"
+msgstr "Alle Relationen sind OK."
 
 #: components/theme/RequestTimeout/RequestTimeout
 # defaultMessage: There is no connection to the server, due to a timeout o no network connection.
@@ -2439,6 +2454,11 @@ msgstr "Menü öffnen"
 msgid "Open object browser"
 msgstr "Objekt-Browser öffnen"
 
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Ordered
+msgid "Ordered"
+msgstr ""
+
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Origin
 msgid "Origin"
@@ -2565,9 +2585,9 @@ msgid "Please upgrade to plone.restapi >= 8.24.0."
 msgstr "Bitte upgraden auf plone.restapi >= 8.24.0."
 
 #: components/manage/Controlpanels/Relations/Relations
-# defaultMessage: Please upgrade to plone.restapi >= 8.35.3.
-msgid "Please upgrade to plone.restapi >= 8.35.3."
-msgstr "Bitte upgraden Sie zu plone.restapi >= 8.35.3."
+# defaultMessage: Please upgrade to plone.restapi >= 8.39.0.
+msgid "Please upgrade to plone.restapi >= 8.39.0."
+msgstr "Bitte upgraden Sie auf plone.restapi >= 8.39.0."
 
 #: components/theme/Footer/Footer
 # defaultMessage: Plone Foundation
@@ -2666,7 +2686,7 @@ msgstr "Mehr…"
 #: components/manage/Controlpanels/Relations/RelationsListing
 # defaultMessage: Read only for this type of relation.
 msgid "Read only for this type of relation."
-msgstr ""
+msgstr "Relationen von diesem Typ sind nur im Kontext editierbar."
 
 #: components/manage/Contents/Contents
 # defaultMessage: Rearrange items by…
@@ -3143,6 +3163,11 @@ msgstr "Absenden"
 msgid "Send a confirmation mail with a link to set the password."
 msgstr "Eine Bestätigungsmail mit dem Link zum Passwort setzen schicken."
 
+#: components/theme/Error/ServerError
+# defaultMessage: Server Error
+msgid "Server Error"
+msgstr ""
+
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Set my password
 msgid "Set my password"
@@ -3332,6 +3357,7 @@ msgid "Sorted"
 msgstr "Sortiert"
 
 #: components/manage/Blocks/HTML/Edit
+#: components/manage/Controlpanels/Relations/BrokenRelations
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: Source
 msgid "Source"
@@ -3374,6 +3400,11 @@ msgstr "Status"
 # defaultMessage: Status
 msgid "Status"
 msgstr "Status"
+
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Sticky
+msgid "Sticky"
+msgstr ""
 
 #: components/manage/Multilingual/CompareLanguages
 # defaultMessage: Stop compare
@@ -3476,6 +3507,7 @@ msgstr "Zu entfernende Tags"
 
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/Relations/BrokenRelations
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: Target
 msgid "Target"
@@ -3679,6 +3711,7 @@ msgstr "Zeit"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Teaser/schema
+#: components/manage/Blocks/ToC/Schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
@@ -4114,6 +4147,11 @@ msgstr "Entschuldigen Sie die Unannehmlichkeiten aber das Backend der Seite antw
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
 msgstr "Entschuldigung, aber die Webseite die Sie versucht haben zu erreichen ist hier nicht verfügbar. Bitte benutzen Sie die aufgeführten Verweise um zu finden was Sie gesucht haben."
 
+#: components/theme/Error/ServerError
+# defaultMessage: We apologize for the inconvenience, but there was an unexpected error on the server.
+msgid "We apologize for the inconvenience, but there was an unexpected error on the server."
+msgstr ""
+
 #: components/theme/Forbidden/Forbidden
 # defaultMessage: We apologize for the inconvenience, but you don't have permissions on this resource.
 msgid "We apologize for the inconvenience, but you don't have permissions on this resource."
@@ -4328,6 +4366,11 @@ msgstr "Allgemein"
 msgid "compare_to"
 msgstr "Vergleichen mit"
 
+#: components/manage/Controlpanels/Relations/BrokenRelations
+# defaultMessage: {countofrelation} broken {countofrelation, plural, one {relation} other {relations}} of type {typeofrelation}
+msgid "countBrokenRelations"
+msgstr "{countofrelation, plural, one {Eine} other {#}} kaputte {countofrelation, plural, one {Relation} other {Relationen}} vom Typ {typeofrelation}"
+
 #: config/Blocks
 # defaultMessage: Date Range
 msgid "daterangeFacet"
@@ -4416,7 +4459,12 @@ msgstr "Dateien, die größer sind als {limit}, dürfen nicht hochgeladen werden
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: flush intIds and rebuild relations
 msgid "flush intIds and rebuild relations"
-msgstr "IntIds neu generieren und Relationen neu katalogisieren"
+msgstr "IntIds neu generieren und Relationen neu indizieren"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: <ul><li>Regenerate intIds (tokens of relations in relation catalog)</li><li>Rebuild relations</li></ul><p>Check the log for details!</p><p><b>Warning</b>: If you have add-ons relying on intIds, you should not flush them.</p>
+msgid "flushAndRebuildRelationsHints"
+msgstr "<ul><li>Generiere neue intIds (Tokens der Relationen im Relations-Katalog).</li><li>Reindiziere alle Relationen.</li></ul><p><b>Warnung</b>: Wenn Sie Add-Ons verwenden, die intIds verwenden, sollten sie intIds nicht neu generieren lassen. Prüfen Sie bitte vorab das entsprechende Add-On.</p>"
 
 #: components/manage/Blocks/Teaser/schema
 # defaultMessage: Head title
@@ -4590,7 +4638,7 @@ msgstr "Auswahl"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: rebuild relations
 msgid "rebuild relations"
-msgstr "Relationen neu katalogisieren"
+msgstr "Relationen neu indizieren"
 
 #: components/theme/Search/Search
 # defaultMessage: results
@@ -4620,7 +4668,7 @@ msgstr "Regel AT"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: [month] [day], [year]
 msgid "rrule_dateFormat"
-msgstr "Regel Datumsformat"
+msgstr "[day] [month] [year]"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: day
@@ -4817,6 +4865,7 @@ msgstr "Text"
 msgid "title"
 msgstr "Titel"
 
+#: components/manage/Blocks/ToC/Schema
 #: config/Blocks
 # defaultMessage: Table of Contents
 msgid "toc"

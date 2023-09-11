@@ -1311,6 +1311,11 @@ msgstr "Saisissez votre nouveau mot de passe. Minimum 8 caractères."
 msgid "Enter your username for verification."
 msgstr "Saisissez votre nom d'utilisateur pour vérification."
 
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Entries
+msgid "Entries"
+msgstr ""
+
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -1631,6 +1636,11 @@ msgstr "Masquer la facette ?"
 #: components/manage/Blocks/Search/components/Facets
 # defaultMessage: Hide filters
 msgid "Hide filters"
+msgstr ""
+
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Hide title
+msgid "Hide title"
 msgstr ""
 
 #: components/manage/History/History
@@ -1958,6 +1968,11 @@ msgstr "Lier plus"
 #: config/Views
 # defaultMessage: Link redirect view
 msgid "Link redirect view"
+msgstr ""
+
+#: components/manage/Blocks/Image/schema
+# defaultMessage: Link settings
+msgid "Link settings"
 msgstr ""
 
 #: components/manage/Blocks/HeroImageLeft/schema
@@ -2450,6 +2465,11 @@ msgstr "Ouvrir le menu"
 msgid "Open object browser"
 msgstr "Ouvrir le navigateur d'objets"
 
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Ordered
+msgid "Ordered"
+msgstr ""
+
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Origin
 msgid "Origin"
@@ -2576,8 +2596,8 @@ msgid "Please upgrade to plone.restapi >= 8.24.0."
 msgstr "Veuillez mettre à niveau plone.restapi >= 8.24.0."
 
 #: components/manage/Controlpanels/Relations/Relations
-# defaultMessage: Please upgrade to plone.restapi >= 8.35.3.
-msgid "Please upgrade to plone.restapi >= 8.35.3."
+# defaultMessage: Please upgrade to plone.restapi >= 8.39.0.
+msgid "Please upgrade to plone.restapi >= 8.39.0."
 msgstr ""
 
 #: components/theme/Footer/Footer
@@ -3154,6 +3174,11 @@ msgstr "Envoyer"
 msgid "Send a confirmation mail with a link to set the password."
 msgstr "Envoyer un email de confirmation avec un lien pour définir le mot de passe."
 
+#: components/theme/Error/ServerError
+# defaultMessage: Server Error
+msgid "Server Error"
+msgstr ""
+
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Set my password
 msgid "Set my password"
@@ -3343,6 +3368,7 @@ msgid "Sorted"
 msgstr "Trié"
 
 #: components/manage/Blocks/HTML/Edit
+#: components/manage/Controlpanels/Relations/BrokenRelations
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: Source
 msgid "Source"
@@ -3385,6 +3411,11 @@ msgstr "Etat"
 # defaultMessage: Status
 msgid "Status"
 msgstr "Statut"
+
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Sticky
+msgid "Sticky"
+msgstr ""
 
 #: components/manage/Multilingual/CompareLanguages
 # defaultMessage: Stop compare
@@ -3487,6 +3518,7 @@ msgstr "Mots clés à supprimer"
 
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/Relations/BrokenRelations
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: Target
 msgid "Target"
@@ -3690,6 +3722,7 @@ msgstr "Temps"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Teaser/schema
+#: components/manage/Blocks/ToC/Schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
@@ -4125,6 +4158,11 @@ msgstr "Nous nous excusons pour la gêne occasionnée, mais le backend du site a
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
 msgstr "Nous nous excusons pour la gêne occasionnée, mais la page à laquelle vous tentiez d'accéder n'est pas à cette adresse. Vous pouvez utiliser les liens ci-dessous pour vous aider à trouver ce que vous recherchez."
 
+#: components/theme/Error/ServerError
+# defaultMessage: We apologize for the inconvenience, but there was an unexpected error on the server.
+msgid "We apologize for the inconvenience, but there was an unexpected error on the server."
+msgstr ""
+
 #: components/theme/Forbidden/Forbidden
 # defaultMessage: We apologize for the inconvenience, but you don't have permissions on this resource.
 msgid "We apologize for the inconvenience, but you don't have permissions on this resource."
@@ -4339,6 +4377,11 @@ msgstr "commun"
 msgid "compare_to"
 msgstr "Comparer avec la langue"
 
+#: components/manage/Controlpanels/Relations/BrokenRelations
+# defaultMessage: {countofrelation} broken {countofrelation, plural, one {relation} other {relations}} of type {typeofrelation}
+msgid "countBrokenRelations"
+msgstr ""
+
 #: config/Blocks
 # defaultMessage: Date Range
 msgid "daterangeFacet"
@@ -4427,6 +4470,11 @@ msgstr ""
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: flush intIds and rebuild relations
 msgid "flush intIds and rebuild relations"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: <ul><li>Regenerate intIds (tokens of relations in relation catalog)</li><li>Rebuild relations</li></ul><p>Check the log for details!</p><p><b>Warning</b>: If you have add-ons relying on intIds, you should not flush them.</p>
+msgid "flushAndRebuildRelationsHints"
 msgstr ""
 
 #: components/manage/Blocks/Teaser/schema
@@ -4631,7 +4679,7 @@ msgstr "à"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: [month] [day], [year]
 msgid "rrule_dateFormat"
-msgstr "[mois] [jour], [année]"
+msgstr "[month] [day], [year]"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: day
@@ -4828,6 +4876,7 @@ msgstr "texte"
 msgid "title"
 msgstr "titre"
 
+#: components/manage/Blocks/ToC/Schema
 #: config/Blocks
 # defaultMessage: Table of Contents
 msgid "toc"

@@ -29,7 +29,7 @@ exports[`UsersControlpanelUser renders a UsersControlpanelUser component 1`] = `
         readOnly={true}
         tabIndex={0}
         type="checkbox"
-        value="testuser.Member"
+        value="testuser&role=Member"
       />
       <label />
     </div>
@@ -50,7 +50,7 @@ exports[`UsersControlpanelUser renders a UsersControlpanelUser component 1`] = `
         readOnly={true}
         tabIndex={0}
         type="checkbox"
-        value="testuser.Reader"
+        value="testuser&role=Reader"
       />
       <label />
     </div>
@@ -71,7 +71,7 @@ exports[`UsersControlpanelUser renders a UsersControlpanelUser component 1`] = `
         readOnly={true}
         tabIndex={0}
         type="checkbox"
-        value="testuser.Manager"
+        value="testuser&role=Manager"
       />
       <label />
     </div>

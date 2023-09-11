@@ -174,7 +174,7 @@ exports[`IdWidget renders an id widget with an reserved name 1`] = `
             />
           </div>
           <div
-            class="ui red pointing basic label"
+            class="ui red basic label form-error-label"
           >
             This is a reserved name and can't be used
           </div>
@@ -224,7 +224,7 @@ exports[`IdWidget renders an id widget with invalid characters 1`] = `
             />
           </div>
           <div
-            class="ui red pointing basic label"
+            class="ui red basic label form-error-label"
           >
             Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed.
           </div>
