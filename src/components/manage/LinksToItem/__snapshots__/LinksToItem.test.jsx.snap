@@ -48,10 +48,10 @@ exports[`LinksToItem renders "links and references" view 1`] = `
             className=""
           >
             <a
-              className="external source published"
-              href="http://localhost:3000/page-basil"
-              rel="noopener noreferrer"
-              target="_blank"
+              className="source published"
+              href="/page-basil"
+              onClick={[Function]}
+              target={null}
               title={null}
             >
               <span
@@ -103,10 +103,10 @@ exports[`LinksToItem renders "links and references" view 1`] = `
             className=""
           >
             <a
-              className="external source published"
-              href="http://localhost:3000/page-cucumber"
-              rel="noopener noreferrer"
-              target="_blank"
+              className="source published"
+              href="/page-cucumber"
+              onClick={[Function]}
+              target={null}
               title={null}
             >
               <span
