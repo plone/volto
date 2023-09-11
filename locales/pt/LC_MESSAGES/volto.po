@@ -4639,7 +4639,7 @@ msgstr ""
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: [month] [day], [year]
 msgid "rrule_dateFormat"
-msgstr ""
+msgstr "[day] de [month] de [year]"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: day
