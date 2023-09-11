@@ -15,7 +15,7 @@ import qs from 'query-string';
 import { Helmet } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 import { Icon } from '@plone/volto/components';
-import { login } from '@plone/volto/actions';
+import { login, resetLoginRequest } from '@plone/volto/actions';
 import { toast } from 'react-toastify';
 import { Toast } from '@plone/volto/components';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
@@ -106,9 +106,10 @@ const Login = (props) => {
     return () => {
       if (toast.isActive('loginFailed')) {
         toast.dismiss('loginFailed');
+        dispatch(resetLoginRequest());
       }
     };
-  }, [token, error, intl, history, returnUrl, props.isLogout]);
+  }, [dispatch, token, error, intl, history, returnUrl, props.isLogout]);
 
   const onLogin = (event) => {
     dispatch(

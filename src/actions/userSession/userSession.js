@@ -3,7 +3,12 @@
  * @module actions/search/search
  */
 
-import { LOGIN, LOGIN_RENEW, LOGOUT } from '@plone/volto/constants/ActionTypes';
+import {
+  LOGIN,
+  LOGIN_RENEW,
+  LOGOUT,
+  RESET_LOGIN_REQUEST,
+} from '@plone/volto/constants/ActionTypes';
 
 /**
  * Login function.
@@ -50,5 +55,16 @@ export function logout() {
       op: 'post',
       path: '@logout',
     },
+  };
+}
+
+/**
+ * Reset login request data function
+ * @function resetLoginRequest
+ * @returns {Object} Get content action
+ */
+export function resetLoginRequest() {
+  return {
+    type: RESET_LOGIN_REQUEST,
   };
 }
