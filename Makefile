@@ -15,7 +15,7 @@ MAKEFLAGS+=--no-builtin-rules
 INSTANCE_PORT=8080
 DOCKER_IMAGE=plone/server-dev:6.0.6
 DOCKER_IMAGE_ACCEPTANCE=plone/server-acceptance:6.0.6
-KGS=plone.restapi==8.42.0
+KGS=plone.restapi==8.43.1
 NODEBIN = ./node_modules/.bin
 SCRIPTSPACKAGE = ./packages/scripts
 
