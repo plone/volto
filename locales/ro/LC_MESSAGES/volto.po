@@ -4445,7 +4445,7 @@ msgstr "La"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: [month] [day], [year]
 msgid "rrule_dateFormat"
-msgstr ""
+msgstr "[year]-[month]-[day]"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: day

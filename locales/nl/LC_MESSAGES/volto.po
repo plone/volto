@@ -4452,7 +4452,7 @@ msgstr "om"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: [month] [day], [year]
 msgid "rrule_dateFormat"
-msgstr "[maand] [dag], [jaar]"
+msgstr "[month] [day], [year]"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: day
