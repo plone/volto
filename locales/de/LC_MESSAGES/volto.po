@@ -4642,7 +4642,7 @@ msgstr "Regel AT"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: [month] [day], [year]
 msgid "rrule_dateFormat"
-msgstr "Regel Datumsformat"
+msgstr "[day] [month] [year]"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: day
