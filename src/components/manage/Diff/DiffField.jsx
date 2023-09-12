@@ -17,6 +17,7 @@ import { useSelector } from 'react-redux';
 import { Api } from '@plone/volto/helpers';
 import configureStore from '@plone/volto/store';
 import { DefaultView } from '@plone/volto/components/';
+import { serializeNodes } from '@plone/volto-slate/editor/render';
 
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
@@ -69,7 +70,7 @@ const DiffField = ({
             .replace('\u202F', ' '),
         );
         break;
-      case 'json':
+      case 'json': {
         const api = new Api();
         const history = createBrowserHistory();
         const store = configureStore(window.__data, history, api);
@@ -90,6 +91,29 @@ const DiffField = ({
           ),
         );
         break;
+      }
+      case 'slate': {
+        const api = new Api();
+        const history = createBrowserHistory();
+        const store = configureStore(window.__data, history, api);
+        parts = diffWords(
+          ReactDOMServer.renderToStaticMarkup(
+            <Provider store={store}>
+              <ConnectedRouter history={history}>
+                {serializeNodes(one)}
+              </ConnectedRouter>
+            </Provider>,
+          ),
+          ReactDOMServer.renderToStaticMarkup(
+            <Provider store={store}>
+              <ConnectedRouter history={history}>
+                {serializeNodes(two)}
+              </ConnectedRouter>
+            </Provider>,
+          ),
+        );
+        break;
+      }
       case 'textarea':
       default:
         parts = diffWords(one, two);

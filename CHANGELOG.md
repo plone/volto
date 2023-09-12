@@ -3,10 +3,108 @@
 <!-- You should *NOT* be adding new change log entries to this file.
      You should create a file in the news directory instead.
      For helpful instructions, please see:
-     https://6.docs.plone.org/volto/developer-guidelines/contributing.html#create-a-pull-request
+     https://6.docs.plone.org/contributing/index.html#contributing-change-log-label
 -->
 
 <!-- towncrier release notes start -->
+
+## 17.0.0-alpha.25 (2023-08-25)
+
+### Breaking
+
+- Spin off relation stats action. Get relation stats with getRelationStats() instead of with queryRelations(). @ksuess
+  Refactor relations actions: slightly change the shape of the redux state for `queryRelations` to follow common signatures. @ksuess [#5041](https://github.com/plone/volto/issues/5041)
+
+### Feature
+
+- Refactor Comment -@Tishasoumya-02 [#4074](https://github.com/plone/volto/issues/4074)
+- Refactor Logout component @Tishasoumya-02 [#4860](https://github.com/plone/volto/issues/4860)
+- Refactore SearchTags @Tishasoumya-02 [#4873](https://github.com/plone/volto/issues/4873)
+
+### Bugfix
+
+- Allow a user to register when they use an email address as their username. [#5031](https://github.com/plone/volto/issues/5031) @mehedikhan72 [#5031](https://github.com/plone/volto/issues/5031)
+- Fix querystringResults subrequests id, to work properly in duplicate pages where blocks id's are the same. @giuliaghisini [#5070](https://github.com/plone/volto/issues/5070)
+- Fix i18n for link settings fieldset in the image block @iRohitSingh [#5075](https://github.com/plone/volto/issues/5075)
+- Prevent caching the outdated browser message in a shared cache. @davisagli [#5076](https://github.com/plone/volto/issues/5076)
+- Fix accessibility of the content folder buttons. @SaraBianchi [#5101](https://github.com/plone/volto/issues/5101)
+- For folders inside navigation roots, properly fetch navigation from the
+  navroot, rather then the site root  @tiberiuichim [#5106](https://github.com/plone/volto/issues/5106)
+- Fix uncached case when the widget is slate on diff @dobri1408 [#5107](https://github.com/plone/volto/issues/5107)
+- Fix load addon translations: last addon translations wins @giuliaghisini [#5113](https://github.com/plone/volto/issues/5113)
+- [Visual bugfix] Match the original mockups for PastanagaUI in regards of the error messages in form field elements @sneridagh [#5115](https://github.com/plone/volto/issues/5115)
+- Fix default toc renderer for nested entries @pnicolli [#5116](https://github.com/plone/volto/issues/5116)
+- Fix inherit checkbox in sharing view @sneridagh [#5514](https://github.com/plone/volto/issues/5514)
+
+### Internal
+
+- Improved spellcheck to keep spellings consistent. @chirayu-humar [#1190](https://github.com/plone/volto/issues/1190)
+
+### Documentation
+
+- Update links to contributing. @stevepiercy [#5084](https://github.com/plone/volto/issues/5084)
+- Accept `plone` and `volto` in labels with janky regex. Include Vale styles directory for checking spelling and styles. @stevepiercy [#5095](https://github.com/plone/volto/issues/5095)
+
+
+## 17.0.0-alpha.24 (2023-08-09)
+
+### Breaking
+
+- Update `@plone/scripts` to 3.0.0. @davisagli [#5040](https://github.com/plone/volto/issues/5040)
+
+### Bugfix
+
+- Fix handling of exceptions in reducers. @davisagli [#5069](https://github.com/plone/volto/issues/5069)
+- Add missing i18n for ToC block. @davisagli [#5073](https://github.com/plone/volto/issues/5073)
+
+### Documentation
+
+- Fix 302 redirect in changelog. @stevepiercy [#5068](https://github.com/plone/volto/issues/5068)
+
+### Internal
+
+- Add https://www.dlr.de/de to "Volto in production" list. @tisto [#5112](https://github.com/plone/volto/pull/5112)
+
+## 17.0.0-alpha.23 (2023-07-28)
+
+### Bugfix
+
+- Fix regression from v17a22: It was not possible to select a block in a grid
+  column unless the grid was already selected. @davisagli
+
+  Fix regression from v17a22: Block outline was blocking clicks in some cases.
+  @davisagli [#5039](https://github.com/plone/volto/issues/5039)
+
+
+## 17.0.0-alpha.22 (2023-07-28)
+
+### Feature
+
+- Refactor Delete -@Tishasoumya [#4890](https://github.com/plone/volto/issues/4890)
+- Refactor workflow -@Tishasoumya-02 [#4902](https://github.com/plone/volto/issues/4902)
+- Refactor Request Reset Password-@Tishasoumya-02 [#4938](https://github.com/plone/volto/issues/4938)
+- Refactor Actions-@Tishasoumya-02 [#4939](https://github.com/plone/volto/issues/4939)
+- Refactor Blocks/Maps/Edit component -@Tishasoumya-02 [#4958](https://github.com/plone/volto/issues/4958)
+- Updated Italian translations @sabrina-bongiovanni [#4987](https://github.com/plone/volto/issues/4987)
+- Made selectedView and className props available in the SearchBlockView.jsx to improve styling development. @danalvrz [#4997](https://github.com/plone/volto/issues/4997)
+
+### Bugfix
+
+- Fix Volto contents - set properties Exclude from navigation - bad request, set exclude_from_nav to boolean [#4855](https://github.com/plone/volto/issues/4855)
+- Add XSendfile headers to files and images middleware @instification [#4984](https://github.com/plone/volto/issues/4984)
+- search-block: translate some missing strings to german and fix a typo. @pbauer [#4996](https://github.com/plone/volto/issues/4996)
+- Add image block className support (Style wrapper). @sneridagh [#5018](https://github.com/plone/volto/issues/5018)
+- Fix for 'no value' entry in table of content field. @satyam4p [#5022](https://github.com/plone/volto/issues/5022)
+- Fix updating roles when username contains a period (.). @nileshgulia1 [#5025](https://github.com/plone/volto/issues/5025)
+- Fix hover and focused border for block child. @claudiaifrim [#5028](https://github.com/plone/volto/issues/5028)
+- Enhance display and repairing of broken relations. @ksuess [#5033](https://github.com/plone/volto/issues/5033)
+- Fix selecting grid block when a sub-block is selected. @davisagli [#5036](https://github.com/plone/volto/issues/5036)
+- Update versions of semver and release-it. @davisagli [#5053](https://github.com/plone/volto/issues/5053)
+
+### Documentation
+
+- Add short comment for easier finding registered components. @ksuess [#5017](https://github.com/plone/volto/issues/5017)
+
 
 ## 17.0.0-alpha.21 (2023-07-23)
 
@@ -2872,7 +2970,7 @@ new users/evaluators. @fredvd
 ### Internal
 
 - Fix URL for Climate-Energy, a Volto website @tiberiuichim
-- Fix quirky Cypress test in "DX control panel schema" (see https://github.com/plone/volto/actions/runs/1692689792/jobs/2306969715) @sneridagh
+- Fix quirky Cypress test in "DX control panel schema" @sneridagh
 
 ## 14.2.1 (2022-01-12)
 

@@ -12,7 +12,9 @@ import { useHistory } from 'react-router-dom';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import Slugger from 'github-slugger';
 
-const RenderListItems = ({ items, data, history }) => {
+const RenderListItems = ({ items, data }) => {
+  const history = useHistory();
+
   return map(items, (item) => {
     const { id, level, title, override_toc, plaintext } = item;
     const slug = override_toc
@@ -50,7 +52,6 @@ const RenderListItems = ({ items, data, history }) => {
  * @extends Component
  */
 const View = ({ data, tocEntries }) => {
-  const history = useHistory();
   return (
     <>
       {data.title && !data.hide_title ? (
@@ -70,7 +71,7 @@ const View = ({ data, tocEntries }) => {
         bulleted={!data.ordered}
         as={data.ordered ? 'ol' : 'ul'}
       >
-        <RenderListItems items={tocEntries} data={data} history={history} />
+        <RenderListItems items={tocEntries} data={data} />
       </List>
     </>
   );
