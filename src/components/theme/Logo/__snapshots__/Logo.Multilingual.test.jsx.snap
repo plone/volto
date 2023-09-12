@@ -28,10 +28,8 @@ exports[`Multilingual Logo renders a logo component in a multilingual site root 
   <img
     alt="Plone Site"
     className="ui image"
-    height="40.7"
     src="Logo.svg"
     title="Plone Site"
-    width="158.2"
   />
 </a>
 `;
