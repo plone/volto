@@ -174,13 +174,12 @@ export const renderLinkElement = (tagName) => {
       appPathname.concat(`#${slug}`),
     );
     const intl = useIntl();
-
     return slate.useLinkedHeadings === false ? (
-      <Tag {...attributes} className={className}>
+      <Tag {...attributes} className={className} tabIndex={0}>
         {children}
       </Tag>
     ) : (
-      <Tag {...attributes} className={className}>
+      <Tag {...attributes} className={className} tabIndex={0}>
         {children}
         {mode === 'view' && slug && (
           <UniversalLink
