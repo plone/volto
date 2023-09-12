@@ -1,0 +1,1 @@
+Fix back button in the search block to execute the search by adding two useEffects that update the facets and search data based on the current URL. @MihaelaCretu11
