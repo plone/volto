@@ -1,1 +1,1 @@
-Fixed PreviewImage component to work as Image component when testing image, and added show_default prop to PreviewImage
+Fixed PreviewImage component to work as Image component when testing image, and added showDefault prop to PreviewImage
