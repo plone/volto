@@ -230,7 +230,7 @@ On the [Plone Training website](https://training.plone.org), you'll find Volto-d
 
 - Node.js 20: Supported since Volto 17
 - Node.js 18: Supported since Volto 17
-- Node.js 16: Supported since Volto 14
+- Node.js 16: No longer supported. It was supported from Volto 14 - 16
 - Node.js 14: No longer supported. It was supported from Volto 8.8.0 - 16
 - Node.js 12: No longer supported. It was supported from Volto 4 - 15
 - Node.js 10: No longer supported. It was supported from Volto 1 - 12

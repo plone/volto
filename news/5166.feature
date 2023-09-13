@@ -1,1 +1,1 @@
-Add support for Node.js 20. @davisagli
+Added support for Node.js 20. @davisagli
