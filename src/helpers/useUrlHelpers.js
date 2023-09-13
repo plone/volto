@@ -77,25 +77,34 @@ export function injectUrlHelpers(WrappedComponent){
  * @param {Object} req The request object for server side calls.
  * @returns {string} Detected apiPath.
  */
- export function calculateApiPath(apiPath, internalApiPath, protocol) {
+export function calculateApiPath(host, internalApiPath, protocol, apiPath) {
   const { settings } = config;
   let apiPathValue = '';
   if (__SERVER__) {
     if (
+      // We don't have a RAZZLE_INTERNAL_API_ATH but there is an X-Internal-Api-Path header
       (!settings.internalApiPath || settings.internalApiPath === undefined) &&
       internalApiPath
     ) {
       apiPathValue = internalApiPath;
     } else if (
+      // We don't have a RAZZLE_API_PATH but there is an X-Api-Path header
       (!settings.apiPath || settings.apiPath === undefined) &&
       apiPath
     ) {
-      apiPathValue = `${protocol}://${apiPath}`;
+      apiPathValue = apiPath;
+    } else if (
+      (!settings.internalApiPath || settings.internalApiPath === undefined) &&
+      settings.apiPath
+    ) {
+      // We don't have a RAZZLE_INTERNAL_API_PATH but we have a RAZZLE_API_PATH
+      apiPathValue = settings.apiPath;
+    } else if ((!settings.apiPath || settings.apiPath === undefined) && host) {
+      // We don't have a RAZZLE_API_PATH (or RAZZLE_INTERNAL_API_PATH) but there is a detectable host
+      apiPathValue = `${protocol}://${host}`;
     } else {
-      apiPathValue =
-        settings.internalApiPath === undefined
-          ? 'http://localhost:8080/Plone'
-          : settings.internalApiPath;
+      // Fallback to the default
+      apiPathValue = 'http://localhost:8080/Plone';
     }
   } else {
     const windowApiPath = window.env?.apiPath;

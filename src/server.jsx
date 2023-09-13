@@ -55,6 +55,33 @@ function reactIntlErrorHandler(error) {
   debug('i18n')(error);
 }
 
+/**
+ * Return the correct apiPath when needed to generate the window.env.apiPath value
+ * @function calculateWindowApiPath
+ * @param {Object} req The request object for server side calls.
+ * @returns {string} Detected apiPath.
+ */
+export function calculateWindowApiPath(req) {
+  const { settings } = config;
+  if (__SERVER__) {
+    const hostHeader = req.headers.host;
+    const apiPathHeader = req.headers['x-api-path'];
+    let apiPathValue = '';
+    if (
+      // We don't have a RAZZLE_API_PATH but there is an X-Api-Path header
+      (!settings.apiPath || settings.apiPath === undefined) &&
+      apiPathHeader
+    ) {
+      apiPathValue = apiPathHeader;
+    } else if (settings.apiPath) {
+      apiPathValue = settings.apiPath;
+    } else {
+      apiPathValue = `${req.protocol}://${hostHeader}`;
+    }
+    return apiPathValue;
+  }
+}
+
 const supported = new locale.Locales(keys(languages), 'en');
 
 const server = express()
@@ -285,7 +312,7 @@ server.get('/*', (req, res) => {
                     process.env.NODE_ENV !== 'production'
                   }
                   criticalCss={readCriticalCss(req)}
-                  apiPath={res.locals.detectedHost || config.settings.apiPath}
+                  apiPath={calculateWindowApiPath(req)}
                   publicURL={
                     res.locals.detectedHost || config.settings.publicURL
                   }
@@ -302,7 +329,7 @@ server.get('/*', (req, res) => {
                   markup={markup}
                   store={store}
                   criticalCss={readCriticalCss(req)}
-                  apiPath={res.locals.detectedHost || config.settings.apiPath}
+                  apiPath={calculateWindowApiPath(req)}
                   publicURL={
                     res.locals.detectedHost || config.settings.publicURL
                   }

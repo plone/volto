@@ -17,7 +17,7 @@ services:
       - traefik.http.services.plone-backend.loadbalancer.server.port=8080
       # Plone API
       - traefik.http.routers.backend.rule=(Host(`plone.localhost`) && PathPrefix(`/++api++`))
-      - traefix.http.routers.backend2.rule=(Host(`plone2.localhost`) && PathPrefix(`/++api++`))
+      - traefik.http.routers.backend2.rule=(Host(`plone2.localhost`) && PathPrefix(`/++api++`))
       - traefik.http.routers.backend.service=plone-backend
       - "traefik.http.middlewares.backend.replacepathregex.regex=^/\\+\\+api\\+\\+($$|/.*)"
       - "traefik.http.middlewares.backend.replacepathregex.replacement=/VirtualHostBase/http/plone.localhost/Plone/++api++/VirtualHostRoot/$$1"
@@ -53,7 +53,9 @@ services:
       - traefik.http.routers.frontend2.rule=Host(`plone2.localhost`)
       - traefik.http.routers.frontend.service=plone-frontend
       - traefik.http.routers.frontend2.service=plone-frontend
+      - traefik.http.middlewares.apiPathHeaders.headers.customrequestheaders.X-Api-Path=http://plone.localhost
       - traefik.http.middlewares.apiPathHeaders.headers.customrequestheaders.X-Internal-Api-Path=http://backend:8080/Plone
+      - traefik.http.middlewares.apiPathHeaders2.headers.customrequestheaders.X-Api-Path=http://plone2.localhost
       - traefik.http.middlewares.apiPathHeaders2.headers.customrequestheaders.X-Internal-Api-Path=http://backend:8080/Plone2
       - traefik.http.routers.frontend.middlewares=apiPathHeaders
       - traefik.http.routers.frontend2.middlewares=apiPathHeaders2
