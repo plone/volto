@@ -2,13 +2,16 @@
  * Users controlpanel user.
  * @module components/manage/Controlpanels/UsersControlpanelUser
  */
+import { Icon } from '@plone/volto/components';
+import trashSVG from '@plone/volto/icons/delete.svg';
+import ploneSVG from '@plone/volto/icons/plone.svg';
+import showSVG from '@plone/volto/icons/show.svg';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { Dropdown, Table, Checkbox } from 'semantic-ui-react';
-import trashSVG from '@plone/volto/icons/delete.svg';
-import { Icon } from '@plone/volto/components';
-import ploneSVG from '@plone/volto/icons/plone.svg';
+import { Link, withRouter } from 'react-router-dom';
+import { compose } from 'redux';
+import { Checkbox, Dropdown, Table } from 'semantic-ui-react';
 
 /**
  * UsersControlpanelUser class.
@@ -65,9 +68,11 @@ class RenderUsers extends Component {
     return (
       <Table.Row key={this.props.user.username}>
         <Table.Cell className="fullname">
-          {this.props.user.fullname
-            ? this.props.user.fullname
-            : this.props.user.username}
+          <Link to={`/personal-information/${this.props.user.username}`}>
+            {this.props.user.fullname
+              ? this.props.user.fullname
+              : this.props.user.username}
+          </Link>
         </Table.Cell>
         {this.props.roles.map((role) => (
           <Table.Cell key={role.id}>
@@ -92,6 +97,20 @@ class RenderUsers extends Component {
           <Dropdown icon="ellipsis horizontal">
             <Dropdown.Menu className="left">
               <Dropdown.Item
+                onClick={() => {
+                  this.props.history.push(
+                    `/personal-information/${this.props.user.username}`,
+                  );
+                }}
+                value={this.props.user['@id']}
+              >
+                <Icon name={showSVG} size="15px" />
+                <FormattedMessage
+                  id="View user info"
+                  defaultMessage="View user info"
+                />
+              </Dropdown.Item>
+              <Dropdown.Item
                 onClick={this.props.onDelete}
                 value={this.props.user['@id']}
               >
@@ -106,4 +125,4 @@ class RenderUsers extends Component {
   }
 }
 
-export default injectIntl(RenderUsers);
+export default compose(injectIntl, withRouter)(RenderUsers);

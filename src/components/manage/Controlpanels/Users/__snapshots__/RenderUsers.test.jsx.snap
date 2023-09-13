@@ -7,7 +7,12 @@ exports[`UsersControlpanelUser renders a UsersControlpanelUser component 1`] = `
   <td
     className="fullname"
   >
-    Test User
+    <a
+      href="/personal-information/testuser"
+      onClick={[Function]}
+    >
+      Test User
+    </a>
   </td>
   <td
     className=""
@@ -95,6 +100,31 @@ exports[`UsersControlpanelUser renders a UsersControlpanelUser component 1`] = `
       <div
         className="menu transition left"
       >
+        <div
+          className="item"
+          onClick={[Function]}
+          role="option"
+        >
+          <svg
+            className="icon"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "currentColor",
+                "height": "15px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
+          />
+          View user info
+        </div>
         <div
           className="item"
           onClick={[Function]}

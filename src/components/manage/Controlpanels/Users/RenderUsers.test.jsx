@@ -1,7 +1,8 @@
 import React from 'react';
+import { Provider } from 'react-intl-redux';
+import { MemoryRouter } from 'react-router-dom';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
-import { Provider } from 'react-intl-redux';
 
 import RenderUsers from './RenderUsers';
 
@@ -47,7 +48,9 @@ describe('UsersControlpanelUser', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <RenderUsers user={testUser} roles={testRoles} onDelete={() => {}} />
+        <MemoryRouter>
+          <RenderUsers user={testUser} roles={testRoles} onDelete={() => {}} />
+        </MemoryRouter>
       </Provider>,
     );
     const json = component.toJSON();

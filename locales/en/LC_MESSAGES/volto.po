@@ -2515,6 +2515,11 @@ msgstr ""
 msgid "Personal Information"
 msgstr ""
 
+#: components/manage/Preferences/PersonalInformation
+# defaultMessage: Personal Information for {fullname} ({username})
+msgid "Personal Information for"
+msgstr ""
+
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Personal Preferences
@@ -4073,6 +4078,11 @@ msgstr ""
 #: components/manage/History/History
 # defaultMessage: View this revision
 msgid "View this revision"
+msgstr ""
+
+#: components/manage/Controlpanels/Users/RenderUsers
+# defaultMessage: View user info
+msgid "View user info"
 msgstr ""
 
 #: components/manage/Toolbar/More

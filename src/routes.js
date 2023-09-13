@@ -314,6 +314,11 @@ export const defaultRoutes = [
     exact: true,
   },
   {
+    path: '/personal-information/:username',
+    component: PersonalInformation,
+    exact: true,
+  },
+  {
     path: '/**',
     component: View,
   },

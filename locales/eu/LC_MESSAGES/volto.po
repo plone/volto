@@ -2522,6 +2522,11 @@ msgstr "Baimenak eguneratu dira"
 msgid "Personal Information"
 msgstr "Informazio pertsonala"
 
+#: components/manage/Preferences/PersonalInformation
+# defaultMessage: Personal Information for {fullname} ({username})
+msgid "Personal Information for"
+msgstr ""
+
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Personal Preferences
@@ -4081,6 +4086,11 @@ msgstr "Aldaketak ikusi"
 # defaultMessage: View this revision
 msgid "View this revision"
 msgstr "Bertsio hau ikusi"
+
+#: components/manage/Controlpanels/Users/RenderUsers
+# defaultMessage: View user info
+msgid "View user info"
+msgstr ""
 
 #: components/manage/Toolbar/More
 # defaultMessage: View working copy

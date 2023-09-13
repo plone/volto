@@ -7,13 +7,21 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { injectIntl } from 'react-intl';
+import { injectIntl, defineMessages } from 'react-intl';
 import { withRouter } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
 import { toast } from 'react-toastify';
-import { messages } from '@plone/volto/helpers';
-import { Form, Toast } from '@plone/volto/components';
+import { messages, asyncConnect } from '@plone/volto/helpers';
 import { getUser, updateUser, getUserSchema } from '@plone/volto/actions';
+import { Form, Toast } from '@plone/volto/components';
+import config from '@plone/volto/registry';
+
+const personalInformatioNMessages = defineMessages({
+  personalInformationFor: {
+    id: 'Personal Information for',
+    defaultMessage: 'Personal Information for {fullname} ({username})',
+  },
+});
 
 /**
  * PersonalInformation class.
@@ -39,7 +47,6 @@ class PersonalInformation extends Component {
     loaded: PropTypes.bool.isRequired,
     loading: PropTypes.bool,
     closeMenu: PropTypes.func,
-    getUserSchema: PropTypes.func.isRequired,
   };
 
   /**
@@ -56,7 +63,6 @@ class PersonalInformation extends Component {
 
   componentDidMount() {
     this.props.getUser(this.props.userId);
-    this.props.getUserSchema();
   }
 
   /**
@@ -99,9 +105,28 @@ class PersonalInformation extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    if (this.props.error && this.props.error.status) {
+      const { views } = config;
+      const ErrorView = views.errorViews[this.props.error.status.toString()];
+      return <ErrorView />;
+    }
+
+    const title = this.props.match.params.username
+      ? this.props.intl.formatMessage(
+          personalInformatioNMessages.personalInformationFor,
+          {
+            username: this.props.user.username,
+            fullname: this.props.user.fullname
+              ? this.props.user.fullname
+              : this.props.user.email,
+          },
+        )
+      : null;
+
     return (
       this.props?.userschema?.loaded && (
         <Form
+          title={title}
           formData={this.props.user}
           schema={this.props?.userschema.userschema}
           onSubmit={this.onSubmit}
@@ -113,19 +138,54 @@ class PersonalInformation extends Component {
   }
 }
 
-export default compose(
+export const __test__ = compose(
   withRouter,
   injectIntl,
   connect(
     (state, props) => ({
       user: state.users.user,
-      userId: state.userSession.token
+      error: state.users.get.error,
+      userId: props.match.params.username
+        ? props.match.params.username
+        : state.userSession.token
         ? jwtDecode(state.userSession.token).sub
         : '',
       loaded: state.users.get.loaded,
       loading: state.users.update.loading,
       userschema: state.userschema,
     }),
-    { getUser, updateUser, getUserSchema },
+    { getUser, updateUser },
+  ),
+)(PersonalInformation);
+
+export default compose(
+  withRouter,
+  injectIntl,
+  asyncConnect([
+    {
+      key: 'user',
+      promise: async ({ store: { dispatch }, match }) =>
+        await dispatch(getUser(match.params.username)),
+    },
+    {
+      key: 'userschema',
+      promise: async ({ store: { dispatch } }) =>
+        await dispatch(getUserSchema()),
+    },
+  ]),
+  connect(
+    (state, props) => ({
+      user: state.users.user,
+      error: state.users.get.error,
+      userId: props.match.params.username
+        ? props.match.params.username
+        : state.userSession.token
+        ? jwtDecode(state.userSession.token).sub
+        : '',
+      loaded: state.users.get.loaded,
+      loading: state.users.update.loading,
+      userschema: state.userschema,
+    }),
+    { getUser, updateUser },
   ),
 )(PersonalInformation);

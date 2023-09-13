@@ -26,6 +26,7 @@ export const nonContentRoutes = [
   '/controlpanel',
   '/contact-form',
   '/personal-information',
+  /\/personal-information\/.*$/,
   '/personal-preferences',
   '/register',
   /\/passwordreset\/.*$/,

@@ -60,6 +60,48 @@ describe('User Control Panel Test', () => {
     });
   });
 
+  it('Should view user info from controlPanel', () => {
+    const userFullName = 'Test Example';
+    const userEmail = 'info@example.com';
+
+    cy.visit('/controlpanel/users');
+    cy.waitForResourceToLoad('@navigation');
+    cy.waitForResourceToLoad('@breadcrumbs');
+    cy.waitForResourceToLoad('@actions');
+    cy.waitForResourceToLoad('@types');
+    cy.waitForResourceToLoad('@users');
+
+    //add a user first
+    cy.get('Button[id="toolbar-add"]').click();
+    cy.get('input[id="field-username"]').clear().type('example');
+    cy.get('input[id="field-fullname"]').clear().type(userFullName);
+    cy.get('input[id ="field-email"]').clear().type(userEmail);
+    cy.get('input[id="field-password"]').clear().type(userEmail);
+    cy.get('button[title="Save"]').click(-50, -50, { force: true });
+
+    cy.waitForResourceToLoad('@users');
+    cy.get('tr:nth-of-type(2) > td.fullname').should('have.text', userFullName);
+    cy.get('tr:nth-of-type(2) div[role="listbox"]').click();
+    cy.waitForResourceToLoad('@users');
+
+    // I can visit the user edit form through the action menu
+    cy.get('.menu.visible').within(() => {
+      cy.findByRole('option', { name: /view user info/gi }).click();
+    });
+    cy.waitForResourceToLoad('@userschema');
+    cy.waitForResourceToLoad('@users/example');
+    cy.findByText(/Test Example/gi).should('be.visible');
+
+    // I can visit the user edit form through clicking the user's name
+    cy.visit('/controlpanel/users');
+    cy.findByRole('link', { name: /Test Example/gi }).click();
+
+    cy.waitForResourceToLoad('@userschema');
+    cy.waitForResourceToLoad('@users/example');
+    cy.findByText(/Test Example/gi).should('be.visible');
+    cy.findByText(/(example)/gi).should('be.visible');
+  });
+
   it('Should delete User from controlPanel', () => {
     cy.visit('/controlpanel/users');
 
@@ -74,7 +116,9 @@ describe('User Control Panel Test', () => {
     // select first user with name, delete it and search if its exists or not!
     cy.get('tr:nth-of-type(2) > td.fullname').should('have.text', 'Alok Kumar');
     cy.get('tr:nth-of-type(2) div[role="listbox"]').click();
-    cy.get('tr:nth-of-type(2) div[role="option"]').click();
+    cy.get('.menu.visible').within(() => {
+      cy.findByRole('option', { name: 'Delete' }).click();
+    });
     cy.contains('Delete User');
     cy.get('button.ui.primary.button').should('have.text', 'OK').click();
     cy.get('input[id="user-search-input"]').clear().type('i');

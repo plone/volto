@@ -2524,6 +2524,11 @@ msgstr "Permisos actualitzats"
 msgid "Personal Information"
 msgstr "Informació personal"
 
+#: components/manage/Preferences/PersonalInformation
+# defaultMessage: Personal Information for {fullname} ({username})
+msgid "Personal Information for"
+msgstr ""
+
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Personal Preferences
@@ -4083,6 +4088,11 @@ msgstr "Veure els canvis"
 # defaultMessage: View this revision
 msgid "View this revision"
 msgstr "Veure aquesta revisió"
+
+#: components/manage/Controlpanels/Users/RenderUsers
+# defaultMessage: View user info
+msgid "View user info"
+msgstr ""
 
 #: components/manage/Toolbar/More
 # defaultMessage: View working copy
