@@ -46,8 +46,9 @@ services:
       - live
 
   backend:
-    image: ghcr.io/<%= normalizedName %>:latest
+    image: plone/plone-backend:${PLONE_VERSION:-6}
     environment:
+      SITE: Plone
       CORS_: true
     ports:
       - 8080:8080

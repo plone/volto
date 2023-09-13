@@ -79,7 +79,8 @@ help:		## Show this help.
 # Dev Helpers
 .PHONY: i18n
 i18n: ## Sync i18n
-	${DEV_COMPOSE} run addon-dev i18n
+	@echo "$(YELLOW)==> Do not forget to setup the local environment (make install) $(RESET)"
+	yarn i18n
 
 .PHONY: format
 format: ## Format codebase
