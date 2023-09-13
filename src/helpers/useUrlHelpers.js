@@ -2,7 +2,6 @@ import config from '@plone/volto/registry';
 import PropTypes from 'prop-types';
 import { Component } from 'react';
 import { connect, useSelector } from 'react-redux';
-import { _getBaseUrl } from './Url/Url';
 
 export function useUrlHelpers() {
   const apiHeaders = useSelector((store) => store.userSession.apiHeaders);
@@ -26,9 +25,18 @@ export function useUrlHelpers() {
     );
   }
 
+  function stub() {
+    return 'stub';
+  }
+
   return {
     getApiPath: getApiPath,
     flattenToAppURL: flattenToAppURL,
+    toPublicURL: stub,
+    flattenHTMLToAppURL: stub,
+    addAppURL: stub,
+    expandToBackendURL: stub,
+    isInternalURL: stub,
   };
 }
 
