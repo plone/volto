@@ -8,6 +8,17 @@
 
 <!-- towncrier release notes start -->
 
+## 7.0.0-alpha.5 (2023-09-13)
+
+### Feature
+
+- Add dockerized approach to add-on generator @sneridagh [#5167](https://github.com/plone/volto/issues/5167)
+
+### Bugfix
+
+- Fix whitespace in empty locales created by the generator. @davisagli [#4737](https://github.com/plone/volto/issues/4737)
+
+
 ## 7.0.0-alpha.4 (2023-04-13)
 
 ### Bugfix
