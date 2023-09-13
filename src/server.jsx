@@ -219,7 +219,8 @@ server.get('/*', (req, res) => {
       apiHeaders: {
         protocol: req.protocol,
         host: req.headers.host,
-        internalApiPath: req.headers['x-internal-api-path']
+        apiPath: req.headers['x-api-path'],
+        internalApiPath: req.headers['x-internal-api-path'],
       },
     },
     form: req.body,

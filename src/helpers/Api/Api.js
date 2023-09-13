@@ -40,12 +40,12 @@ export function formatUrl(path, req) {
     initialApiVars.protocol = req.protocol;
     initialApiVars.apiPath = req.headers['x-api-path'];
   }
-  const apiPath = calculateApiPath(
-    initialApiVars.host,
-    initialApiVars.internalApiPath,
-    initialApiVars.protocol,
-    initialApiVars.apiPath,
-  );
+  const apiPath = calculateApiPath({
+    protocol: initialApiVars.protocol,
+    host: initialApiVars.host,
+    internalApiPath: initialApiVars.internalApiPath,
+    apiPath: initialApiVars.apiPath,
+  });
   return `${apiPath}${APISUFIX}${adjustedPath}`;
 }
 
