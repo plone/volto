@@ -28,9 +28,14 @@ services:
 
   frontend:
     # image: 'plone/plone-frontend:latest'
-    build: .
+    build:
+      context: .
+      target: dev
+    stdin_open: true
+    tty: true
     ports:
       - '3000:3000'
+      - '3001:3001'
     restart: always
     #environment:
       # This last is not required if a reverse proxy is in the stack
