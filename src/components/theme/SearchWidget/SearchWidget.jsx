@@ -23,7 +23,6 @@ const messages = defineMessages({
 const SearchWidget = (props) => {
   const intl = useIntl();
   const dispatch = useDispatch();
-  const location = useLocation();
 
   const [text, setText] = useState('');
   const history = useHistory();
@@ -31,7 +30,7 @@ const SearchWidget = (props) => {
     setText(value);
   };
 
-  const pathname = location.pathname;
+  const pathname = props.pathname;
   const onSubmit = (event) => {
     const path =
       pathname?.length > 0 ? `&path=${encodeURIComponent(pathname)}` : '';
