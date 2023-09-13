@@ -194,6 +194,16 @@ Run "npm install -g @plone/generator-volto" to update.`,
       this.destinationPath('.github/workflows'),
       this.globals,
     );
+    this.fs.copyTpl(
+      this.templatePath('.yarn/releases'),
+      this.destinationPath('.yarn/releases'),
+      this.globals,
+    );
+    this.fs.copyTpl(
+      this.templatePath('.yarn/install-state.gz'),
+      this.destinationPath('.yarn/install-state.gz'),
+      this.globals,
+    );
 
     this.fs.copy(this.templatePath('.*'), this.destinationPath());
   }
