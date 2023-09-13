@@ -84,19 +84,19 @@ i18n: ## Sync i18n
 
 .PHONY: format
 format: ## Format codebase
-	${DEV_COMPOSE} run addon-dev lint:fix
-	${DEV_COMPOSE} run addon-dev prettier:fix
-	${DEV_COMPOSE} run addon-dev stylelint:fix
+	${DEV_COMPOSE} run --rm addon-dev lint:fix
+	${DEV_COMPOSE} run --rm addon-dev prettier:fix
+	${DEV_COMPOSE} run --rm addon-dev stylelint:fix
 
 .PHONY: lint
 lint: ## Lint Codebase
-	${DEV_COMPOSE} run addon-dev lint
-	${DEV_COMPOSE} run addon-dev prettier
-	${DEV_COMPOSE} run addon-dev stylelint --allow-empty-input
+	${DEV_COMPOSE} run --rm addon-dev lint
+	${DEV_COMPOSE} run --rm addon-dev prettier
+	${DEV_COMPOSE} run --rm addon-dev stylelint --allow-empty-input
 
 .PHONY: test
 test: ## Run unit tests
-	${DEV_COMPOSE} run addon-dev test --watchAll
+	${DEV_COMPOSE} run --rm addon-dev test --watchAll
 
 .PHONY: test-ci
 test-ci: ## Run unit tests in CI
