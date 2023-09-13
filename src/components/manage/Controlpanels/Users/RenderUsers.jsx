@@ -2,6 +2,7 @@
  * Users controlpanel user.
  * @module components/manage/Controlpanels/UsersControlpanelUser
  */
+
 import PropTypes from 'prop-types';
 import React from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
