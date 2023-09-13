@@ -76,6 +76,12 @@ dev: ## Develop the addon
 help:		## Show this help.
 	@echo -e "$$(grep -hE '^\S+:.*##' $(MAKEFILE_LIST) | sed -e 's/:.*##\s*/:/' -e 's/^\(.\+\):\(.*\)/\\x1b[36m\1\\x1b[m:\2/' | column -c2 -t -s :)"
 
+## Setup the local environment
+.PHONY: install
+install: ## Install the local environment, Cypress, build acceptance containers
+	yarn
+	make install-acceptance
+
 # Dev Helpers
 .PHONY: i18n
 i18n: ## Sync i18n
