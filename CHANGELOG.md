@@ -510,7 +510,7 @@
 
 ### Breaking
 
-- Volto 17 drops support for NodeJS 14, and adds support for NodeJS 18.
+- Volto 17 drops support for NodeJS 14, and adds support for Node.js 18.
   Please see the [upgrade guide](https://6.docs.plone.org/volto/upgrade-guide/index.html)
   for more information.
 
@@ -1410,7 +1410,7 @@ See https://6.docs.plone.org/volto/upgrade-guide/index.html for more information
 - Update README with latest versions, point to Plone 6 as recommended default @sneridagh
 - Trigger a new deploy core Plone documentation when Volto documentation is updated @esteele
 - Update supported Python versions. @stevepiercy
-- Add NodeJS 18 (LTS) usage notice @sneridagh
+- Add Node.js 18 (LTS) usage notice @sneridagh
 - Fix Netlify build @sneridagh
 - Fix grammar in Theming Strategy. Fixes #954. @stevepiercy
 - Fix wording in About Semantic UI. Fixes #953. @stevepiercy
@@ -1623,7 +1623,7 @@ See https://6.docs.plone.org/volto/upgrade-guide/index.html for more information
 
 ### Documentation
 
-- Add NodeJS 18 (LTS) usage notice @sneridagh
+- Add Node.js 18 (LTS) usage notice @sneridagh
 - Fix Netlify build @sneridagh
 
 ## 16.0.0-alpha.45 (2022-10-24)
