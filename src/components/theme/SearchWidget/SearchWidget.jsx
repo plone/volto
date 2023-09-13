@@ -29,7 +29,6 @@ const SearchWidget = (props) => {
   const onChangeText = (event, { value }) => {
     setText(value);
   };
-
   const pathname = props.pathname;
   const onSubmit = (event) => {
     const path =
