@@ -4647,7 +4647,7 @@ msgstr "a las"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: [month] [day], [year]
 msgid "rrule_dateFormat"
-msgstr "formato de fecha"
+msgstr "[day]/[month]/[year]"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: day
