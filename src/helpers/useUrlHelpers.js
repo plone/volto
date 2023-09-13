@@ -1,8 +1,8 @@
-import { Component } from 'react';
-import { useSelector } from 'react-redux';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import config from '@plone/volto/registry';
+import PropTypes from 'prop-types';
+import { Component } from 'react';
+import { connect, useSelector } from 'react-redux';
+import { _getBaseUrl } from './Url/Url';
 
 export function useUrlHelpers() {
   const apiHeaders = useSelector((store) => store.userSession.apiHeaders);
@@ -15,8 +15,20 @@ export function useUrlHelpers() {
       apiPath: apiHeaders.apiPath,
     });
   }
+
+  function flattenToAppURL(url) {
+    return (
+      url &&
+      url
+        .replace(apiHeaders.internalApiPath, '')
+        .replace(apiHeaders.apiPath, '')
+        .replace(apiHeaders.publicURL, '')
+    );
+  }
+
   return {
     getApiPath: getApiPath,
+    flattenToAppURL: flattenToAppURL,
   };
 }
 

@@ -11,6 +11,7 @@ import { useSelector, shallowEqual } from 'react-redux';
 import { UniversalLink } from '@plone/volto/components';
 import config from '@plone/volto/registry';
 import { flattenToAppURL, addAppURL } from '@plone/volto/helpers';
+import { useUrlHelpers } from '../../../helpers/useUrlHelpers';
 
 const messages = defineMessages({
   copyright: {
@@ -34,6 +35,7 @@ const Footer = ({ intl }) => {
     }),
     shallowEqual,
   );
+  const { flattenToAppURL: NEW_flattenToAppURL } = useUrlHelpers();
 
   return (
     <Segment
@@ -105,6 +107,39 @@ const Footer = ({ intl }) => {
                           }`
                         : item.url
                         ? flattenToAppURL(item.url)
+                        : addAppURL(item.id)
+                    }
+                  >
+                    {item?.title}
+                  </UniversalLink>
+                </div>
+              ))
+            : null}
+          <div role="listitem" className="item">
+            <a className="item" href="https://plone.org">
+              <FormattedMessage
+                id="Powered by Plone & Python"
+                defaultMessage="Powered by Plone & Python"
+              />
+            </a>
+          </div>
+        </List>
+        <h2>New stuff</h2>
+        <List horizontal inverted>
+          {siteActions?.length
+            ? map(siteActions, (item) => (
+                <div role="listitem" className="item" key={item.id}>
+                  <UniversalLink
+                    className="item"
+                    href={
+                      settings.isMultilingual
+                        ? `/${lang}/${
+                            item.url
+                              ? NEW_flattenToAppURL(item.url)
+                              : addAppURL(item.id)
+                          }`
+                        : item.url
+                        ? NEW_flattenToAppURL(item.url)
                         : addAppURL(item.id)
                     }
                   >
