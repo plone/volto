@@ -24,7 +24,7 @@ jobs:
       - run: yarn --immutable
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v5
+        uses: cypress-io/github-action@v6
         env:
           BABEL_ENV: production
           CYPRESS_RETRIES: 2
@@ -76,7 +76,7 @@ jobs:
       - run: yarn --immutable
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v5
+        uses: cypress-io/github-action@v6
         env:
           BABEL_ENV: production
           CYPRESS_RETRIES: 2
@@ -128,7 +128,7 @@ jobs:
       - run: yarn --immutable
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v5
+        uses: cypress-io/github-action@v6
         env:
           BABEL_ENV: production
           CYPRESS_RETRIES: 2
@@ -179,7 +179,7 @@ jobs:
       - run: yarn --immutable
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v5
+        uses: cypress-io/github-action@v6
         env:
           BABEL_ENV: production
           CYPRESS_RETRIES: 2
@@ -230,7 +230,7 @@ jobs:
       - run: yarn --immutable
 
       - name: Cypress Coresandbox Acceptance tests
-        uses: cypress-io/github-action@v5
+        uses: cypress-io/github-action@v6
         env:
           BABEL_ENV: production
           CYPRESS_RETRIES: 2
@@ -282,7 +282,7 @@ jobs:
       - run: yarn --immutable
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v5
+        uses: cypress-io/github-action@v6
         env:
           BABEL_ENV: production
           CYPRESS_API: guillotina
@@ -335,7 +335,7 @@ jobs:
       - run: yarn --immutable
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v5
+        uses: cypress-io/github-action@v6
         env:
           BABEL_ENV: production
           CYPRESS_RETRIES: 2
@@ -412,7 +412,7 @@ jobs:
       #     CI: true
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v5
+        uses: cypress-io/github-action@v6
         env:
           BABEL_ENV: production
           CYPRESS_RETRIES: 2
@@ -436,7 +436,7 @@ jobs:
           path: cypress/screenshots
       # Upload Cypress videos
       - uses: actions/upload-artifact@v1
-        if: always()
+        if: failure()
         with:
           name: cypress-videos
           path: cypress/videos
@@ -499,7 +499,7 @@ jobs:
         working-directory: ${{env.project-directory}}
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v5
+        uses: cypress-io/github-action@v6
         env:
           BABEL_ENV: production
           CYPRESS_RETRIES: 2
@@ -557,7 +557,7 @@ jobs:
       - run: yarn --immutable
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v5
+        uses: cypress-io/github-action@v6
         env:
           BABEL_ENV: production
           CYPRESS_RETRIES: 2
