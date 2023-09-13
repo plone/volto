@@ -20,6 +20,7 @@ import config from '@plone/volto/registry';
 import { PluggablesProvider } from '@plone/volto/components/manage/Pluggable';
 import { visitBlocks } from '@plone/volto/helpers/Blocks/Blocks';
 import { injectIntl } from 'react-intl';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import Error from '@plone/volto/error';
 
@@ -331,4 +332,12 @@ export function connectAppComponent(AppComponent) {
   )(AppComponent);
 }
 
-export default connectAppComponent(App);
+const queryClient = new QueryClient();
+
+export const AppWithQueryClient = (props) => (
+  <QueryClientProvider client={queryClient}>
+    <App {...props} />
+  </QueryClientProvider>
+);
+
+export default connectAppComponent(AppWithQueryClient);
