@@ -6,7 +6,7 @@ on:
       - master
 
 env:
-  node-version: 16.x
+  node-version: 18.x
 
 jobs:
   towncrier:
