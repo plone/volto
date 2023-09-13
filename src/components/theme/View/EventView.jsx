@@ -9,29 +9,44 @@ import { hasBlocksData, flattenHTMLToAppURL } from '@plone/volto/helpers';
 import { Image, Grid } from 'semantic-ui-react';
 import RenderBlocks from '@plone/volto/components/theme/View/RenderBlocks';
 import { EventDetails } from '@plone/volto/components';
+import { useUrlHelpers } from '@plone/volto/helpers/useUrlHelpers';
 
-const EventTextfieldView = ({ content }) => (
-  <React.Fragment>
-    {content.title && <h1 className="documentFirstHeading">{content.title}</h1>}
-    {content.description && (
-      <p className="documentDescription">{content.description}</p>
-    )}
-    {content.image && (
-      <Image
-        className="document-image"
-        src={content.image.scales.thumb.download}
-        floated="right"
-      />
-    )}
-    {content.text && (
-      <div
-        dangerouslySetInnerHTML={{
-          __html: flattenHTMLToAppURL(content.text.data),
-        }}
-      />
-    )}
-  </React.Fragment>
-);
+const EventTextfieldView = ({ content }) => {
+  const { flattenHTMLToAppURL: NEW_flattenHTMLToAppURL } = useUrlHelpers();
+  return (
+    <React.Fragment>
+      <h1>Event text field view</h1>
+      {content.title && (
+        <h1 className="documentFirstHeading">{content.title}</h1>
+      )}
+      {content.description && (
+        <p className="documentDescription">{content.description}</p>
+      )}
+      {content.image && (
+        <Image
+          className="document-image"
+          src={content.image.scales.thumb.download}
+          floated="right"
+        />
+      )}
+      {content.text && (
+        <>
+          <h2>text</h2>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: flattenHTMLToAppURL(content.text.data),
+            }}
+          />
+          <div
+            dangerouslySetInnerHTML={{
+              __html: NEW_flattenHTMLToAppURL(content.text.data),
+            }}
+          />
+        </>
+      )}
+    </React.Fragment>
+  );
+};
 
 /**
  * EventView view component class.

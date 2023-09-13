@@ -25,6 +25,14 @@ export function useUrlHelpers() {
     );
   }
 
+  function flattenHTMLToAppURL(html) {
+    return apiHeaders.internalApiPath
+      ? html
+          .replace(new RegExp(apiHeaders.internalApiPath, 'g'), '')
+          .replace(new RegExp(apiHeaders.apiPath, 'g'), '')
+      : html.replace(new RegExp(apiHeaders.apiPath, 'g'), '');
+  }
+
   function stub() {
     return 'stub';
   }
@@ -33,7 +41,7 @@ export function useUrlHelpers() {
     getApiPath: getApiPath,
     flattenToAppURL: flattenToAppURL,
     toPublicURL: stub,
-    flattenHTMLToAppURL: stub,
+    flattenHTMLToAppURL: flattenHTMLToAppURL,
     addAppURL: stub,
     expandToBackendURL: stub,
     isInternalURL: stub,
