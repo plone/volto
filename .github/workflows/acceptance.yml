@@ -27,14 +27,12 @@ jobs:
         uses: cypress-io/github-action@v5
         env:
           BABEL_ENV: production
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           CYPRESS_RETRIES: 2
           # Recommended: pass the GitHub token lets this action correctly
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           install: false
-          record: true
           parallel: false # Since they run on different node versions, we can't parallel
           browser: chrome
           group: Core ${{ matrix.node-version }}
@@ -83,14 +81,12 @@ jobs:
         uses: cypress-io/github-action@v5
         env:
           BABEL_ENV: production
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           CYPRESS_RETRIES: 2
           # Recommended: pass the GitHub token lets this action correctly
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           install: false
-          record: true
           parallel: false # Since they run on different node versions, we can't parallel
           browser: chrome
           group: Core Blocks ${{ matrix.node-version }}
@@ -139,14 +135,12 @@ jobs:
         uses: cypress-io/github-action@v5
         env:
           BABEL_ENV: production
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           CYPRESS_RETRIES: 2
           # Recommended: pass the GitHub token lets this action correctly
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           install: false
-          record: true
           parallel: false # Since they run on different node versions, we can't parallel
           browser: chrome
           group: Core Volto Slate ${{ matrix.node-version }}
@@ -194,14 +188,12 @@ jobs:
         uses: cypress-io/github-action@v5
         env:
           BABEL_ENV: production
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           CYPRESS_RETRIES: 2
           # Recommended: pass the GitHub token lets this action correctly
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           install: false
-          record: true
           parallel: false # Since they run on different node versions, we can't parallel
           browser: chrome
           group: Core Basic - Plone 5
@@ -249,14 +241,12 @@ jobs:
         uses: cypress-io/github-action@v5
         env:
           BABEL_ENV: production
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           CYPRESS_RETRIES: 2
           # Recommended: pass the GitHub token lets this action correctly
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           install: false
-          record: true
           parallel: true
           browser: chrome
           group: Coresandbox
@@ -306,14 +296,12 @@ jobs:
         env:
           BABEL_ENV: production
           CYPRESS_API: guillotina
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           CYPRESS_RETRIES: 2
           # Recommended: pass the GitHub token lets this action correctly
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           install: false
-          record: true
           parallel: true
           browser: chrome
           group: Guillotina
@@ -362,14 +350,12 @@ jobs:
         uses: cypress-io/github-action@v5
         env:
           BABEL_ENV: production
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           CYPRESS_RETRIES: 2
           # Recommended: pass the GitHub token lets this action correctly
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           install: false
-          record: true
           parallel: true
           browser: chrome
           group: Multilingual
@@ -443,14 +429,12 @@ jobs:
         uses: cypress-io/github-action@v5
         env:
           BABEL_ENV: production
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           CYPRESS_RETRIES: 2
           # Recommended: pass the GitHub token lets this action correctly
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           install: false
-          record: true
           parallel: true
           browser: chrome
           group: Working Copy
@@ -534,14 +518,12 @@ jobs:
         uses: cypress-io/github-action@v5
         env:
           BABEL_ENV: production
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           CYPRESS_RETRIES: 2
           # Recommended: pass the GitHub token lets this action correctly
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           install: false
-          record: true
           parallel: true
           browser: chrome
           group: Project Generator ${{ matrix.node-version }}
@@ -596,14 +578,12 @@ jobs:
         uses: cypress-io/github-action@v5
         env:
           BABEL_ENV: production
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           CYPRESS_RETRIES: 2
           # Recommended: pass the GitHub token lets this action correctly
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           install: false
-          record: true
           parallel: true
           browser: chrome
           group: Seamless
