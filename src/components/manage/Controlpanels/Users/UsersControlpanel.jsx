@@ -108,6 +108,7 @@ class UsersControlpanel extends Component {
       isClient: false,
       currentPage: 0,
       pageSize: 10,
+      loginUsingEmail: false,
     };
   }
 
@@ -123,6 +124,14 @@ class UsersControlpanel extends Component {
     }
   };
 
+  // Because username field needs to be disabled if email login is enabled!
+  checkLoginUsingEmailStatus = async () => {
+    await this.props.getControlpanel('security');
+    this.setState({
+      loginUsingEmail: this.props.controlPanelData?.data.use_email_as_login,
+    });
+  };
+
   /**
    * Component did mount
    * @method componentDidMount
@@ -133,6 +142,7 @@ class UsersControlpanel extends Component {
       isClient: true,
     });
     this.fetchData();
+    this.checkLoginUsingEmailStatus();
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
@@ -436,7 +446,7 @@ class UsersControlpanel extends Component {
                     id: 'default',
                     title: 'FIXME: User Data',
                     fields: [
-                      'username',
+                      ...(!this.state.loginUsingEmail ? ['username'] : []),
                       'fullname',
                       'email',
                       'password',
@@ -447,15 +457,19 @@ class UsersControlpanel extends Component {
                   },
                 ],
                 properties: {
-                  username: {
-                    title: this.props.intl.formatMessage(
-                      messages.addUserFormUsernameTitle,
-                    ),
-                    type: 'string',
-                    description: this.props.intl.formatMessage(
-                      messages.addUserFormUsernameDescription,
-                    ),
-                  },
+                  ...(!this.state.loginUsingEmail
+                    ? {
+                        username: {
+                          title: this.props.intl.formatMessage(
+                            messages.addUserFormUsernameTitle,
+                          ),
+                          type: 'string',
+                          description: this.props.intl.formatMessage(
+                            messages.addUserFormUsernameDescription,
+                          ),
+                        },
+                      }
+                    : {}),
                   fullname: {
                     title: this.props.intl.formatMessage(
                       messages.addUserFormFullnameTitle,
@@ -685,6 +699,7 @@ export default compose(
       createRequest: state.users.create,
       loadRolesRequest: state.roles,
       inheritedRole: state.authRole.authenticatedRole,
+      controlPanelData: state.controlpanels?.controlpanel,
     }),
     (dispatch) =>
       bindActionCreators(

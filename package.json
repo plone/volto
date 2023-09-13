@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "17.0.0-alpha.23",
+  "version": "17.0.0-alpha.25",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -222,7 +222,7 @@
     ]
   },
   "engines": {
-    "node": "^16 || ^18"
+    "node": "^16 || ^18 || ^20"
   },
   "dependencies": {
     "@babel/core": "^7.0.0",
@@ -257,8 +257,8 @@
     "connected-react-router": "6.8.0",
     "crypto-random-string": "3.2.0",
     "css-loader": "5.2.7",
-    "cypress": "12.17.1",
-    "cypress-axe": "1.4.0",
+    "cypress": "13.1.0",
+    "cypress-axe": "1.5.0",
     "cypress-file-upload": "5.0.8",
     "debug": "4.3.2",
     "decorate-component-with-props": "1.2.1",

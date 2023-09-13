@@ -257,9 +257,9 @@ class SharingComponent extends Component {
    * @returns {undefined}
    */
   onToggleInherit() {
-    this.setState({
-      inherit: !this.state.inherit,
-    });
+    this.setState((state) => ({
+      inherit: !state.inherit,
+    }));
   }
 
   /**
@@ -427,9 +427,15 @@ class SharingComponent extends Component {
               <Segment attached>
                 <Form.Field>
                   <Checkbox
-                    checked={this.state.inherit}
+                    id="inherit-permissions-checkbox"
+                    name="inherit-permissions-checkbox"
+                    defaultChecked={this.state.inherit}
                     onChange={this.onToggleInherit}
-                    label={this.props.intl.formatMessage(messages.inherit)}
+                    label={
+                      <label htmlFor="inherit-permissions-checkbox">
+                        {this.props.intl.formatMessage(messages.inherit)}
+                      </label>
+                    }
                   />
                 </Form.Field>
                 <p className="help">

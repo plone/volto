@@ -4,6 +4,7 @@ exports[`renders a view title component 1`] = `
 <h1
   className="documentFirstHeading"
   id="my-title"
+  tabIndex={0}
 >
   My Title
   <a

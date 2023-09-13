@@ -14,6 +14,7 @@ import {
 } from '@plone/volto/helpers/Url/Url';
 
 import config from '@plone/volto/registry';
+import cx from 'classnames';
 
 const UniversalLink = ({
   href,
@@ -88,19 +89,16 @@ const UniversalLink = ({
   );
 
   if (isExternal) {
+    const isTelephoneOrMail = checkedURL.isMail || checkedURL.isTelephone;
     tag = (
       <a
         href={url}
         title={title}
         target={
-          !checkedURL.isMail &&
-          !checkedURL.isTelephone &&
-          !(openLinkInNewTab === false)
-            ? '_blank'
-            : null
+          !isTelephoneOrMail && !(openLinkInNewTab === false) ? '_blank' : null
         }
         rel="noopener noreferrer"
-        className={className}
+        className={cx({ external: !isTelephoneOrMail }, className)}
         {...props}
       >
         {children}
