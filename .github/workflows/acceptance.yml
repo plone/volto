@@ -35,7 +35,6 @@ jobs:
           install: false
           parallel: false # Since they run on different node versions, we can't parallel
           browser: chrome
-          group: Core ${{ matrix.node-version }}
           spec: cypress/tests/core/basic/**/*.js
           start: |
             make start-test-acceptance-server
@@ -89,7 +88,6 @@ jobs:
           install: false
           parallel: false # Since they run on different node versions, we can't parallel
           browser: chrome
-          group: Core Blocks ${{ matrix.node-version }}
           spec: cypress/tests/core/blocks/**/*.js
           start: |
             make start-test-acceptance-server
@@ -143,7 +141,6 @@ jobs:
           install: false
           parallel: false # Since they run on different node versions, we can't parallel
           browser: chrome
-          group: Core Volto Slate ${{ matrix.node-version }}
           spec: cypress/tests/core/volto-slate/**/*.js
           start: |
             make start-test-acceptance-server
@@ -196,7 +193,6 @@ jobs:
           install: false
           parallel: false # Since they run on different node versions, we can't parallel
           browser: chrome
-          group: Core Basic - Plone 5
           spec: cypress/tests/core/basic/**/*.js
           start: |
             make start-test-acceptance-server-5
@@ -249,7 +245,6 @@ jobs:
           install: false
           parallel: true
           browser: chrome
-          group: Coresandbox
           spec: cypress/tests/coresandbox/**/*.js
           start: |
             make start-test-acceptance-server-coresandbox
@@ -304,7 +299,6 @@ jobs:
           install: false
           parallel: true
           browser: chrome
-          group: Guillotina
           spec: cypress/tests/guillotina/**/*.js
           start: |
             make start-test-acceptance-server-guillotina
@@ -358,7 +352,6 @@ jobs:
           install: false
           parallel: true
           browser: chrome
-          group: Multilingual
           spec: cypress/tests/multilingual/**/*.js
           start: |
             make start-test-acceptance-server-multilingual
@@ -437,7 +430,6 @@ jobs:
           install: false
           parallel: true
           browser: chrome
-          group: Working Copy
           spec: cypress/tests/workingCopy/**/*.js
           start: |
             make start-test-acceptance-server-workingcopy
@@ -526,7 +518,6 @@ jobs:
           install: false
           parallel: true
           browser: chrome
-          group: Project Generator ${{ matrix.node-version }}
           spec: cypress/tests/minimal/**/*.js
           start: |
             make start-test-acceptance-server
@@ -586,7 +577,6 @@ jobs:
           install: false
           parallel: true
           browser: chrome
-          group: Seamless
           spec: cypress/tests/core/basic/**/*.js
           config: baseUrl=http://localhost
           start: |
