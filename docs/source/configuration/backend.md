@@ -9,7 +9,7 @@ myst:
 
 # Backend configuration
 
-## plone.volto
+## `plone.volto`
 In order to fully support all Volto features, the Plone backend content API needs to be prepared for Volto. The add-on `plone.volto` does all the heavy lifting for you and is ready to use in your own projects. We used it in our Getting Started section.
 
 This package is slightly opinionated but provides the correct default settings for when

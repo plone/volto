@@ -1,7 +1,7 @@
 describe('Listing Block Tests', () => {
   beforeEach(() => {
-    // Wait a bit to previous teardown to complete correctly because Heisenbug in this point
-    // cy.wait(2000);
+    cy.intercept('GET', `/**/*?expand*`).as('content');
+    cy.intercept('GET', '/**/Document').as('schema');
     // given a logged in editor and a page in edit mode
     cy.autologin();
     cy.createContent({
@@ -14,11 +14,7 @@ describe('Listing Block Tests', () => {
     cy.removeContent({ path: 'Members' });
 
     cy.visit('/');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('');
+    cy.wait('@content');
   });
 
   it('Add Listing block with no results', () => {
@@ -1142,6 +1138,9 @@ describe('Listing Block Tests', () => {
 
     // const listing1 = cy.get('.ui.pagination.menu').first();
     // cy.log('listing1', listing1);
+    // The wait is needed to solve the flakyness introduced because that component
+    // is removed momentarilly from the DOM when saving
+    cy.wait(2000);
     //test second pagination click
     cy.get('.ui.pagination.menu a[value="2"]').first().click();
     //test f5

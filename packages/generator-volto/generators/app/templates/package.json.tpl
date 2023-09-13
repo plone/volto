@@ -142,6 +142,8 @@
     "@storybook/addon-controls": "6.3.0",
     "@storybook/addon-essentials": "^6.3.0",
     "@storybook/addon-links": "^6.3.0",
+    "@storybook/builder-webpack5": "^6.5.15",
+    "@storybook/manager-webpack5": "^6.5.15",
     "@storybook/react": "^6.3.0",
     "@typescript-eslint/eslint-plugin": "5.57.1",
     "@typescript-eslint/parser": "5.57.1",
@@ -156,7 +158,7 @@
     "stylelint-prettier": "1.1.2",
     "ts-jest": "^26.4.2",
     "ts-loader": "9.4.2",
-    "typescript": "5.0.3"
+    "typescript": "5.1.6"
   },
   "resolutions": {
     "react-error-overlay": "6.0.9"

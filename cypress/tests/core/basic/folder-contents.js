@@ -1,5 +1,6 @@
 describe('Folder Contents Tests', () => {
   beforeEach(() => {
+    cy.intercept('GET', `/**/*?expand*`).as('content');
     // given a logged in editor
     // and a folder that contains a document
     // and the folder contents view
@@ -17,10 +18,7 @@ describe('Folder Contents Tests', () => {
       path: 'my-folder',
     });
     cy.visit('/my-folder/contents');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
+    cy.wait('@content');
   });
 
   it('Renaming via folder contents view', () => {
@@ -124,10 +122,13 @@ describe('Folder Contents Tests', () => {
 
     // Tags index shows up on visiting another folder-contents view.
     cy.get('.folder-contents .breadcrumb a.section').first().click();
+
     cy.url().should('eq', Cypress.config().baseUrl + '/contents');
-    cy.waitForResourceToLoad('@breadcrumbs');
+    cy.wait('@content');
+
     cy.get('thead tr').contains('Creator');
   });
+
   it('Move items to top of folder and bottom of folder', () => {
     // creating a Document
     cy.createContent({

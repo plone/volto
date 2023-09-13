@@ -443,6 +443,7 @@ msgstr "Erabilgarri dauden eduki-erregelak:"
 #: components/manage/Controlpanels/UpgradeControlPanel
 #: components/manage/Diff/Diff
 #: components/manage/History/History
+#: components/manage/LinksToItem/LinksToItem
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalPreferences
@@ -766,6 +767,11 @@ msgstr "{title} elementuaren eduki erregelak"
 # defaultMessage: Content rules from parent folders
 msgid "Content rules from parent folders"
 msgstr "Gurasoetan dauden eduki erregelak"
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Content that links to or references {title}
+msgid "Content that links to or references {title}"
+msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Content type created
@@ -1294,6 +1300,11 @@ msgstr "Idatzi zure pasahitz berria. Gutxienez 8 karaktere."
 msgid "Enter your username for verification."
 msgstr "Idatzi zure erabiltzaile-izena egiaztatu dezagun."
 
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Entries
+msgid "Entries"
+msgstr ""
+
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -1614,6 +1625,11 @@ msgstr "Fazeta ezkutatu?"
 #: components/manage/Blocks/Search/components/Facets
 # defaultMessage: Hide filters
 msgid "Hide filters"
+msgstr ""
+
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Hide title
+msgid "Hide title"
 msgstr ""
 
 #: components/manage/History/History
@@ -1938,6 +1954,11 @@ msgstr "Gehiago estekatu"
 msgid "Link redirect view"
 msgstr "Loturaren berbideraketa bista"
 
+#: components/manage/Blocks/Image/schema
+# defaultMessage: Link settings
+msgid "Link settings"
+msgstr ""
+
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Link Title
@@ -1956,6 +1977,17 @@ msgstr "Esteka"
 # defaultMessage: Link translation for
 msgid "Link translation for"
 msgstr "Lotu itzulpena"
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Linking this item with hyperlink in text
+msgid "Linking this item with hyperlink in text"
+msgstr ""
+
+#: components/manage/LinksToItem/LinksToItem
+#: components/manage/Toolbar/More
+# defaultMessage: Links and references
+msgid "Links and references"
+msgstr ""
 
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Listing
@@ -2219,7 +2251,6 @@ msgid "News item view"
 msgstr "Albistearen bista"
 
 #: components/manage/Contents/ContentsItem
-#: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: No
 msgid "No"
@@ -2289,6 +2320,11 @@ msgstr "Karpeta honetan ez dago elementurik"
 # defaultMessage: No items selected
 msgid "No items selected"
 msgstr "Ez da elementurik aukeratu"
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: No links to this item found.
+msgid "No links to this item found."
+msgstr ""
 
 #: components/manage/Blocks/Maps/MapsSidebar
 # defaultMessage: No map selected
@@ -2413,10 +2449,20 @@ msgstr "Menua ireki"
 msgid "Open object browser"
 msgstr "Ireki elementu bilatzailea"
 
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Ordered
+msgid "Ordered"
+msgstr ""
+
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Origin
 msgid "Origin"
 msgstr "Jatorria"
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Overview of relations of all content items
+msgid "Overview of relations of all content items"
+msgstr ""
 
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Page
@@ -2534,8 +2580,8 @@ msgid "Please upgrade to plone.restapi >= 8.24.0."
 msgstr "Eguneratu plone.restapi bertsioa 8.24.0 edo handiago batera"
 
 #: components/manage/Controlpanels/Relations/Relations
-# defaultMessage: Please upgrade to plone.restapi >= 8.35.3.
-msgid "Please upgrade to plone.restapi >= 8.35.3."
+# defaultMessage: Please upgrade to plone.restapi >= 8.39.0.
+msgid "Please upgrade to plone.restapi >= 8.39.0."
 msgstr ""
 
 #: components/theme/Footer/Footer
@@ -2666,6 +2712,16 @@ msgstr "Berregin"
 # defaultMessage: Minimalistic table design
 msgid "Reduce complexity"
 msgstr "Konplexutasuna gutxitu"
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Referencing this item as related item
+msgid "Referencing this item as related item"
+msgstr ""
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Referencing this item with {relationship}
+msgid "Referencing this item with {relationship}"
+msgstr ""
 
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
@@ -2842,6 +2898,7 @@ msgid "Revert to this revision"
 msgstr "Bertsio honetara itzuli"
 
 #: components/manage/Contents/Contents
+#: components/manage/LinksToItem/LinksToItem
 # defaultMessage: Review state
 msgid "Review state"
 msgstr "Egoera"
@@ -3101,6 +3158,11 @@ msgstr "Bidali"
 msgid "Send a confirmation mail with a link to set the password."
 msgstr "Bidali pasahitza ezartzeko lotura duen baieztapen mezua."
 
+#: components/theme/Error/ServerError
+# defaultMessage: Server Error
+msgid "Server Error"
+msgstr ""
+
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Set my password
 msgid "Set my password"
@@ -3290,7 +3352,7 @@ msgid "Sorted"
 msgstr "Ordenatuta"
 
 #: components/manage/Blocks/HTML/Edit
-#: components/manage/Blocks/Image/schema
+#: components/manage/Controlpanels/Relations/BrokenRelations
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: Source
 msgid "Source"
@@ -3333,6 +3395,11 @@ msgstr "Egoera"
 # defaultMessage: Status
 msgid "Status"
 msgstr "Egoera"
+
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Sticky
+msgid "Sticky"
+msgstr ""
 
 #: components/manage/Multilingual/CompareLanguages
 # defaultMessage: Stop compare
@@ -3435,6 +3502,7 @@ msgstr "Kendu beharreko etiketak"
 
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/Relations/BrokenRelations
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: Target
 msgid "Target"
@@ -3628,6 +3696,7 @@ msgstr "Ordua"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Teaser/schema
+#: components/manage/Blocks/ToC/Schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
@@ -3719,6 +3788,7 @@ msgid "Triggering event field error. Please select a value"
 msgstr "Akzioaren eremuan errorea. Aukeratu balio bat"
 
 #: components/manage/Controlpanels/ContentTypes
+#: components/manage/LinksToItem/LinksToItem
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
 # defaultMessage: Type
@@ -4052,6 +4122,11 @@ msgstr "Barkatu eragozpenak baina zerbitzaria ez dago konektatuta. Saiatu berand
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
 msgstr "Barkatu eragozpenak baina orrialde horren helbidea ez da zuzena. erabili beheko loturak bilatu nahi duzuna aurkitzeko."
 
+#: components/theme/Error/ServerError
+# defaultMessage: We apologize for the inconvenience, but there was an unexpected error on the server.
+msgid "We apologize for the inconvenience, but there was an unexpected error on the server."
+msgstr ""
+
 #: components/theme/Forbidden/Forbidden
 # defaultMessage: We apologize for the inconvenience, but you don't have permissions on this resource.
 msgid "We apologize for the inconvenience, but you don't have permissions on this resource."
@@ -4135,7 +4210,6 @@ msgid "Yearly"
 msgstr "Urtero"
 
 #: components/manage/Contents/ContentsItem
-#: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Yes
 msgid "Yes"
@@ -4267,6 +4341,11 @@ msgstr "Ohikoa"
 msgid "compare_to"
 msgstr "Konparatu hizkuntza honekin"
 
+#: components/manage/Controlpanels/Relations/BrokenRelations
+# defaultMessage: {countofrelation} broken {countofrelation, plural, one {relation} other {relations}} of type {typeofrelation}
+msgid "countBrokenRelations"
+msgstr ""
+
 #: config/Blocks
 # defaultMessage: Date Range
 msgid "daterangeFacet"
@@ -4357,6 +4436,11 @@ msgstr ""
 msgid "flush intIds and rebuild relations"
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: <ul><li>Regenerate intIds (tokens of relations in relation catalog)</li><li>Rebuild relations</li></ul><p>Check the log for details!</p><p><b>Warning</b>: If you have add-ons relying on intIds, you should not flush them.</p>
+msgid "flushAndRebuildRelationsHints"
+msgstr ""
+
 #: components/manage/Blocks/Teaser/schema
 # defaultMessage: Head title
 msgid "head_title"
@@ -4381,6 +4465,16 @@ msgstr "HTML"
 # defaultMessage: Image
 msgid "image"
 msgstr "Irudia"
+
+#: components/manage/Blocks/Image/ImageSidebar
+# defaultMessage: Clear image
+msgid "image_block_clear"
+msgstr ""
+
+#: components/manage/Blocks/Image/ImageSidebar
+# defaultMessage: Image preview
+msgid "image_block_preview"
+msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Input must be integer
@@ -4746,6 +4840,7 @@ msgstr "Testua"
 msgid "title"
 msgstr "Izenburua"
 
+#: components/manage/Blocks/ToC/Schema
 #: config/Blocks
 # defaultMessage: Table of Contents
 msgid "toc"

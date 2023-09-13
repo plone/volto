@@ -450,7 +450,7 @@ class Contents extends Component {
       sort_on: this.props.sort?.on || 'getObjPositionInParent',
       sort_order: this.props.sort?.order || 'ascending',
       isClient: false,
-      linkIntegrityBreakages: '',
+      linkIntegrityBreakages: [],
     };
     this.filterTimeout = null;
   }
@@ -1236,7 +1236,10 @@ class Contents extends Component {
                             Show all items
                           </Button>
                         )}
-                        {this.state.linkIntegrityBreakages.length > 0 ? (
+                        {this.state.linkIntegrityBreakages.reduce(
+                          (a, b) => a + b.breaches.length,
+                          0,
+                        ) ? (
                           <div>
                             <h3>
                               {this.props.intl.formatMessage(
@@ -1249,9 +1252,8 @@ class Contents extends Component {
                               )}
                             </p>
                             <ul className="content">
-                              {map(
-                                this.state.linkIntegrityBreakages,
-                                (item) => (
+                              {map(this.state.linkIntegrityBreakages, (item) =>
+                                item.breaches.length ? (
                                   <li key={item['@id']}>
                                     <a href={item['@id']}>{item.title}</a>
                                     <p>
@@ -1269,7 +1271,7 @@ class Contents extends Component {
                                       ))}
                                     </ul>
                                   </li>
-                                ),
+                                ) : null,
                               )}
                             </ul>
                           </div>
@@ -1332,6 +1334,9 @@ class Contents extends Component {
                                 as={Button}
                                 onClick={this.upload}
                                 className="upload"
+                                aria-label={this.props.intl.formatMessage(
+                                  messages.upload,
+                                )}
                               >
                                 <Icon
                                   name={uploadSVG}
@@ -1356,6 +1361,9 @@ class Contents extends Component {
                                 as={Button}
                                 onClick={this.rename}
                                 disabled={!selected}
+                                aria-label={this.props.intl.formatMessage(
+                                  messages.rename,
+                                )}
                               >
                                 <Icon
                                   name={renameSVG}
@@ -1378,6 +1386,9 @@ class Contents extends Component {
                                 as={Button}
                                 onClick={this.workflow}
                                 disabled={!selected}
+                                aria-label={this.props.intl.formatMessage(
+                                  messages.state,
+                                )}
                               >
                                 <Icon
                                   name={semaphoreSVG}
@@ -1400,6 +1411,9 @@ class Contents extends Component {
                                 as={Button}
                                 onClick={this.tags}
                                 disabled={!selected}
+                                aria-label={this.props.intl.formatMessage(
+                                  messages.tags,
+                                )}
                               >
                                 <Icon
                                   name={tagSVG}
@@ -1423,6 +1437,9 @@ class Contents extends Component {
                                 as={Button}
                                 onClick={this.properties}
                                 disabled={!selected}
+                                aria-label={this.props.intl.formatMessage(
+                                  messages.properties,
+                                )}
                               >
                                 <Icon
                                   name={propertiesSVG}
@@ -1447,6 +1464,9 @@ class Contents extends Component {
                                 as={Button}
                                 onClick={this.cut}
                                 disabled={!selected}
+                                aria-label={this.props.intl.formatMessage(
+                                  messages.cut,
+                                )}
                               >
                                 <Icon
                                   name={cutSVG}
@@ -1469,6 +1489,9 @@ class Contents extends Component {
                                 as={Button}
                                 onClick={this.copy}
                                 disabled={!selected}
+                                aria-label={this.props.intl.formatMessage(
+                                  messages.copy,
+                                )}
                               >
                                 <Icon
                                   name={copySVG}
@@ -1492,6 +1515,9 @@ class Contents extends Component {
                                 as={Button}
                                 onClick={this.paste}
                                 disabled={!this.props.action}
+                                aria-label={this.props.intl.formatMessage(
+                                  messages.paste,
+                                )}
                               >
                                 <Icon
                                   name={pasteSVG}
@@ -1515,6 +1541,9 @@ class Contents extends Component {
                                 as={Button}
                                 onClick={this.delete}
                                 disabled={!selected}
+                                aria-label={this.props.intl.formatMessage(
+                                  messages.delete,
+                                )}
                               >
                                 <Icon
                                   name={deleteSVG}

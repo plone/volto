@@ -17,7 +17,11 @@ import {
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import { messages } from '@plone/volto/helpers';
 import { Icon, Toast } from '@plone/volto/components';
-import { rebuildRelations, queryRelations } from '@plone/volto/actions';
+import {
+  getRelationStats,
+  queryRelations,
+  rebuildRelations,
+} from '@plone/volto/actions';
 import RelationsListing from './RelationsListing';
 import BrokenRelations from './BrokenRelations';
 import helpSVG from '@plone/volto/icons/help.svg';
@@ -39,12 +43,14 @@ const RelationsMatrix = (props) => {
     id: 'plone_setup',
   });
 
-  const relationtypes = useSelector((state) => state.relations?.stats?.stats);
+  const relationtypes = useSelector(
+    (state) => state.relations?.stats?.data?.stats,
+  );
   const relationsListError = useSelector(
-    (state) => state.relations?.list?.error?.response?.body?.error,
+    (state) => state.relations?.stats?.error?.response?.body?.error,
   );
   const brokenRelations = useSelector(
-    (state) => state.relations?.stats?.broken,
+    (state) => state.relations?.stats?.data?.broken,
   );
 
   let filter_options = useSelector((state) => state.groups.filter_groups);
@@ -67,7 +73,7 @@ const RelationsMatrix = (props) => {
   }
 
   useEffect(() => {
-    dispatch(queryRelations());
+    dispatch(getRelationStats());
   }, [dispatch]);
 
   const onReset = (event) => {
@@ -128,9 +134,7 @@ const RelationsMatrix = (props) => {
   const rebuildRelationsHandler = (flush = false) => {
     dispatch(rebuildRelations(flush))
       .then(() => {
-        dispatch(queryRelations());
-      })
-      .then(() => {
+        dispatch(getRelationStats());
         dispatch(queryRelations(null, true, 'broken'));
       })
       .then(() => {
@@ -443,7 +447,9 @@ const RelationsMatrix = (props) => {
               ) : null}
             </div>
           ) : (
-            <p>{relationsListError?.message}</p>
+            <p>
+              <b>{relationsListError?.type}</b> {relationsListError?.message}
+            </p>
           )}
         </Tab.Pane>
       ),
@@ -452,68 +458,62 @@ const RelationsMatrix = (props) => {
       menuItem: intl.formatMessage(messages.fixRelations),
       pane: (
         <Tab.Pane attached={true} key="rebuild">
-          {brokenRelations && Object.keys(brokenRelations).length > 0 ? (
-            <div>
-              {can_fix_relations ? (
-                <React.Fragment>
-                  <Divider hidden />
-                  <h2>
-                    {capitalize(intl.formatMessage(messages.rebuildRelations))}
-                  </h2>
+          <div>
+            {!(brokenRelations && Object.keys(brokenRelations).length > 0) && (
+              <div>
+                <FormattedMessage
+                  id="No broken relations found."
+                  defaultMessage="No broken relations found."
+                />
+              </div>
+            )}
+            {can_fix_relations ? (
+              <React.Fragment>
+                <Divider hidden />
+                <h2>
+                  {capitalize(intl.formatMessage(messages.rebuildRelations))}
+                </h2>
 
-                  <Button.Group>
-                    <Button
-                      primary
-                      onClick={() => rebuildRelationsHandler(false)}
-                      content={intl.formatMessage(messages.rebuildRelations)}
-                      aria-label={intl.formatMessage(messages.rebuildRelations)}
-                    />
-                  </Button.Group>
+                <Button.Group>
+                  <Button
+                    primary
+                    onClick={() => rebuildRelationsHandler(false)}
+                    content={intl.formatMessage(messages.rebuildRelations)}
+                    aria-label={intl.formatMessage(messages.rebuildRelations)}
+                  />
+                </Button.Group>
 
-                  <Divider hidden />
-                  <h2>
-                    {capitalize(
-                      intl.formatMessage(messages.flushAndRebuildRelations),
+                <Divider hidden />
+                <h2>
+                  {capitalize(
+                    intl.formatMessage(messages.flushAndRebuildRelations),
+                  )}
+                </h2>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: intl.formatMessage(
+                      messages.flushAndRebuildRelationsHints,
+                    ),
+                  }}
+                />
+                <Divider hidden />
+                <Button.Group>
+                  <Button
+                    secondary
+                    color="red"
+                    onClick={() => rebuildRelationsHandler(true)}
+                    content={intl.formatMessage(
+                      messages.flushAndRebuildRelations,
                     )}
-                  </h2>
-                  <ul>
-                    <li>
-                      Regenerate intIds (tokens of relations in relation
-                      catalog)
-                    </li>
-                    <li>Rebuild relations</li>
-                  </ul>
-                  <p>Check the log for details!</p>
-                  <p>
-                    <b>Warning</b>: If you have add-ons relying on intIds, you
-                    should not flush them.
-                  </p>
-                  <Divider hidden />
-                  <Button.Group>
-                    <Button
-                      secondary
-                      color="red"
-                      onClick={() => rebuildRelationsHandler(true)}
-                      content={intl.formatMessage(
-                        messages.flushAndRebuildRelations,
-                      )}
-                      aria-label={intl.formatMessage(
-                        messages.flushAndRebuildRelations,
-                      )}
-                    />
-                  </Button.Group>
-                </React.Fragment>
-              ) : null}
-              <BrokenRelations />
-            </div>
-          ) : (
-            <div>
-              <FormattedMessage
-                id="No broken relations found."
-                defaultMessage="No broken relations found."
-              />
-            </div>
-          )}
+                    aria-label={intl.formatMessage(
+                      messages.flushAndRebuildRelations,
+                    )}
+                  />
+                </Button.Group>
+              </React.Fragment>
+            ) : null}
+            <BrokenRelations />
+          </div>
         </Tab.Pane>
       ),
     },
