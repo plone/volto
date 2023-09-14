@@ -499,43 +499,55 @@ class GroupsControlpanel extends Component {
           </Segment>
           <Form>
             <div className="table">
-              <Table padded striped attached unstackable>
-                <Table.Header>
-                  <Table.Row>
-                    <Table.HeaderCell>
-                      <FormattedMessage
-                        id="Groupname"
-                        defaultMessage="Groupname"
-                      />
-                    </Table.HeaderCell>
-                    {this.props.roles.map((role) => (
-                      <Table.HeaderCell key={role.id}>
-                        {role.title}
+              {((this.props.many_groups &&
+                this.state.groupEntries.length > 0) ||
+                !this.props.many_groups) && (
+                <Table padded striped attached unstackable>
+                  <Table.Header>
+                    <Table.Row>
+                      <Table.HeaderCell>
+                        <FormattedMessage
+                          id="Groupname"
+                          defaultMessage="Groupname"
+                        />
                       </Table.HeaderCell>
-                    ))}
-                    <Table.HeaderCell>
-                      <FormattedMessage id="Actions" defaultMessage="Actions" />
-                    </Table.HeaderCell>
-                  </Table.Row>
-                </Table.Header>
-                <Table.Body data-group="groups">
-                  {this.state.groupEntries
-                    .slice(
-                      this.state.currentPage * 10,
-                      this.state.pageSize * (this.state.currentPage + 1),
-                    )
-                    .map((group) => (
-                      <RenderGroups
-                        key={group.id}
-                        onDelete={this.deleteGroup}
-                        roles={this.props.roles}
-                        group={group}
-                        updateGroups={this.updateGroupRole}
-                        inheritedRole={this.state.authenticatedRole}
-                      />
-                    ))}
-                </Table.Body>
-              </Table>
+                      {this.props.roles.map((role) => (
+                        <Table.HeaderCell key={role.id}>
+                          {role.title}
+                        </Table.HeaderCell>
+                      ))}
+                      <Table.HeaderCell>
+                        <FormattedMessage
+                          id="Actions"
+                          defaultMessage="Actions"
+                        />
+                      </Table.HeaderCell>
+                    </Table.Row>
+                  </Table.Header>
+                  <Table.Body data-group="groups">
+                    {this.state.groupEntries
+                      .slice(
+                        this.state.currentPage * 10,
+                        this.state.pageSize * (this.state.currentPage + 1),
+                      )
+                      .map((group) => (
+                        <RenderGroups
+                          key={group.id}
+                          onDelete={this.deleteGroup}
+                          roles={this.props.roles}
+                          group={group}
+                          updateGroups={this.updateGroupRole}
+                          inheritedRole={this.state.authenticatedRole}
+                        />
+                      ))}
+                  </Table.Body>
+                </Table>
+              )}
+              {this.state.groupEntries.length === 0 && this.state.search && (
+                <Segment>
+                  {this.props.intl.formatMessage(messages.groupSearchNoResults)}
+                </Segment>
+              )}
             </div>
             <div className="contents-pagination">
               <Pagination
