@@ -1,4 +1,4 @@
-import { castArray } from 'lodash';
+import { castArray, cloneDeep } from 'lodash';
 import { Editor, Transforms, Range, Node } from 'slate';
 import { ReactEditor } from 'slate-react';
 import { isCursorInList, makeEditor } from '@plone/volto-slate/utils';
@@ -156,7 +156,7 @@ export function getFragmentFromStartOfSelectionToEndOfEditor(
 
   // immer doesn't like editor.savedSelection
   const newEditor = makeEditor();
-  newEditor.children = [...editor.children];
+  newEditor.children = cloneDeep(editor.children);
   return Editor.fragment(newEditor, range);
 }
 
@@ -176,7 +176,7 @@ export function getFragmentFromBeginningOfEditorToStartOfSelection(
   // immer doesn't like editor.savedSelection
   // TODO: there's a bug here related to splitting lists
   const newEditor = makeEditor();
-  newEditor.children = [...editor.children];
+  newEditor.children = cloneDeep(editor.children);
 
   return Editor.fragment(
     newEditor,
