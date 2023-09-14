@@ -3,10 +3,67 @@
 <!-- You should *NOT* be adding new change log entries to this file.
      You should create a file in the news directory instead.
      For helpful instructions, please see:
-     https://6.docs.plone.org/volto/developer-guidelines/contributing.html#create-a-pull-request
+     https://6.docs.plone.org/contributing/index.html#contributing-change-log-label
 -->
 
 <!-- towncrier release notes start -->
+
+## 17.0.0-alpha.25 (2023-08-25)
+
+### Breaking
+
+- Spin off relation stats action. Get relation stats with getRelationStats() instead of with queryRelations(). @ksuess
+  Refactor relations actions: slightly change the shape of the redux state for `queryRelations` to follow common signatures. @ksuess [#5041](https://github.com/plone/volto/issues/5041)
+
+### Feature
+
+- Refactor Comment -@Tishasoumya-02 [#4074](https://github.com/plone/volto/issues/4074)
+- Refactor Logout component @Tishasoumya-02 [#4860](https://github.com/plone/volto/issues/4860)
+- Refactore SearchTags @Tishasoumya-02 [#4873](https://github.com/plone/volto/issues/4873)
+
+### Bugfix
+
+- Allow a user to register when they use an email address as their username. [#5031](https://github.com/plone/volto/issues/5031) @mehedikhan72 [#5031](https://github.com/plone/volto/issues/5031)
+- Fix querystringResults subrequests id, to work properly in duplicate pages where blocks id's are the same. @giuliaghisini [#5070](https://github.com/plone/volto/issues/5070)
+- Fix i18n for link settings fieldset in the image block @iRohitSingh [#5075](https://github.com/plone/volto/issues/5075)
+- Prevent caching the outdated browser message in a shared cache. @davisagli [#5076](https://github.com/plone/volto/issues/5076)
+- Fix accessibility of the content folder buttons. @SaraBianchi [#5101](https://github.com/plone/volto/issues/5101)
+- For folders inside navigation roots, properly fetch navigation from the
+  navroot, rather then the site root  @tiberiuichim [#5106](https://github.com/plone/volto/issues/5106)
+- Fix uncached case when the widget is slate on diff @dobri1408 [#5107](https://github.com/plone/volto/issues/5107)
+- Fix load addon translations: last addon translations wins @giuliaghisini [#5113](https://github.com/plone/volto/issues/5113)
+- [Visual bugfix] Match the original mockups for PastanagaUI in regards of the error messages in form field elements @sneridagh [#5115](https://github.com/plone/volto/issues/5115)
+- Fix default toc renderer for nested entries @pnicolli [#5116](https://github.com/plone/volto/issues/5116)
+- Fix inherit checkbox in sharing view @sneridagh [#5514](https://github.com/plone/volto/issues/5514)
+
+### Internal
+
+- Improved spellcheck to keep spellings consistent. @chirayu-humar [#1190](https://github.com/plone/volto/issues/1190)
+
+### Documentation
+
+- Update links to contributing. @stevepiercy [#5084](https://github.com/plone/volto/issues/5084)
+- Accept `plone` and `volto` in labels with janky regex. Include Vale styles directory for checking spelling and styles. @stevepiercy [#5095](https://github.com/plone/volto/issues/5095)
+
+
+## 17.0.0-alpha.24 (2023-08-09)
+
+### Breaking
+
+- Update `@plone/scripts` to 3.0.0. @davisagli [#5040](https://github.com/plone/volto/issues/5040)
+
+### Bugfix
+
+- Fix handling of exceptions in reducers. @davisagli [#5069](https://github.com/plone/volto/issues/5069)
+- Add missing i18n for ToC block. @davisagli [#5073](https://github.com/plone/volto/issues/5073)
+
+### Documentation
+
+- Fix 302 redirect in changelog. @stevepiercy [#5068](https://github.com/plone/volto/issues/5068)
+
+### Internal
+
+- Add https://www.dlr.de/de to "Volto in production" list. @tisto [#5112](https://github.com/plone/volto/pull/5112)
 
 ## 17.0.0-alpha.23 (2023-07-28)
 
@@ -453,7 +510,7 @@
 
 ### Breaking
 
-- Volto 17 drops support for NodeJS 14, and adds support for NodeJS 18.
+- Volto 17 drops support for NodeJS 14, and adds support for Node.js 18.
   Please see the [upgrade guide](https://6.docs.plone.org/volto/upgrade-guide/index.html)
   for more information.
 
@@ -1353,7 +1410,7 @@ See https://6.docs.plone.org/volto/upgrade-guide/index.html for more information
 - Update README with latest versions, point to Plone 6 as recommended default @sneridagh
 - Trigger a new deploy core Plone documentation when Volto documentation is updated @esteele
 - Update supported Python versions. @stevepiercy
-- Add NodeJS 18 (LTS) usage notice @sneridagh
+- Add Node.js 18 (LTS) usage notice @sneridagh
 - Fix Netlify build @sneridagh
 - Fix grammar in Theming Strategy. Fixes #954. @stevepiercy
 - Fix wording in About Semantic UI. Fixes #953. @stevepiercy
@@ -1566,7 +1623,7 @@ See https://6.docs.plone.org/volto/upgrade-guide/index.html for more information
 
 ### Documentation
 
-- Add NodeJS 18 (LTS) usage notice @sneridagh
+- Add Node.js 18 (LTS) usage notice @sneridagh
 - Fix Netlify build @sneridagh
 
 ## 16.0.0-alpha.45 (2022-10-24)
@@ -2913,7 +2970,7 @@ new users/evaluators. @fredvd
 ### Internal
 
 - Fix URL for Climate-Energy, a Volto website @tiberiuichim
-- Fix quirky Cypress test in "DX control panel schema" (see https://github.com/plone/volto/actions/runs/1692689792/jobs/2306969715) @sneridagh
+- Fix quirky Cypress test in "DX control panel schema" @sneridagh
 
 ## 14.2.1 (2022-01-12)
 
