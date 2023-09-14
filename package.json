@@ -380,7 +380,7 @@
     "semantic-ui-react": "2.0.3",
     "serialize-javascript": "3.1.0",
     "slate": "0.94.1",
-    "slate-hyperscript": "0.77.0",
+    "slate-hyperscript": "0.81.3",
     "slate-react": "0.98.3",
     "start-server-and-test": "1.14.0",
     "style-loader": "3.3.1",
