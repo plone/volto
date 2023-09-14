@@ -8,6 +8,23 @@
 
 <!-- towncrier release notes start -->
 
+## 16.24.0 (2023-09-14)
+
+### Feature
+
+- Added loading spinner and disable search button while data is fetching. @tedw87 [#4551](https://github.com/plone/volto/issues/4551)
+- User Control panel improvements. See #4551 @erral [#4572](https://github.com/plone/volto/issues/4572)
+- Cypress test to test if 'Search results: number' text is present @ionlizarazu [#5171](https://github.com/plone/volto/issues/5171)
+
+### Bugfix
+
+- Fix for responsive error in the login page when the width of the screen decreases. @suman9893 [#3250](https://github.com/plone/volto/issues/3250)
+- Fix back button in the search block to execute the search by adding two useEffects that update the facets and search data based on the current URL. @MihaelaCretu11 [#4402](https://github.com/plone/volto/issues/4402)
+- fix : RecursiveWidget is incorrectly translated. @suman9893 [#4503](https://github.com/plone/volto/issues/4503)
+- Fix search block search results number @ionlizarazu [#5171](https://github.com/plone/volto/issues/5171)
+- Fix regression in forms input in toolbar height related to (#5115) @sneridagh [#5176](https://github.com/plone/volto/issues/5176)
+
+
 ## 16.23.0 (2023-09-08)
 
 ### Feature
