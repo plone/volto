@@ -136,14 +136,7 @@ class SlateEditor extends Component {
         }, 100); // flush
       }
 
-      for (const [node, path] of Editor.nodes(this.state.editor, {
-        at: [],
-        match: () => true,
-        universal: true,
-      })) {
-        console.log('normalize', path, node);
-        this.state.editor.normalizeNode([node, path]);
-      }
+      this.state.editor.normalize({ force: true });
     }
   }
 
