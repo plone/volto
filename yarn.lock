@@ -2933,7 +2933,7 @@ __metadata:
     semver: 5.6.0
     serialize-javascript: 3.1.0
     slate: 0.94.1
-    slate-hyperscript: 0.77.0
+    slate-hyperscript: 0.81.3
     slate-react: 0.98.3
     start-server-and-test: 1.14.0
     style-loader: 2
@@ -22555,14 +22555,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"slate-hyperscript@npm:0.77.0":
-  version: 0.77.0
-  resolution: "slate-hyperscript@npm:0.77.0"
+"slate-hyperscript@npm:0.81.3":
+  version: 0.81.3
+  resolution: "slate-hyperscript@npm:0.81.3"
   dependencies:
     is-plain-object: ^5.0.0
   peerDependencies:
     slate: ">=0.65.3"
-  checksum: b701dd1975c7d3510c1eb05c631c4c58072b22a94729033af915a43b20a703447ef8abcdc03d23146defd519cc668dcfa455220ff174a3d0be5126b248b7db72
+  checksum: cc3ba04d14e20c66eee5e5b0ca2d60fe92c0d38caf9b412153453d42f32d90bce61d57e3a00b2a4c30a7b15408bf8b14132871fd3c00f75de6ca4b49387637fe
   languageName: node
   linkType: hard
 
