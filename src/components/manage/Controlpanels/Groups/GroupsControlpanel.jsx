@@ -96,6 +96,7 @@ class GroupsControlpanel extends Component {
     this.updateGroupRole = this.updateGroupRole.bind(this);
     this.state = {
       search: '',
+      isLoading: false,
       addGroupError: '',
       showDelete: false,
       groupToDelete: undefined,
@@ -173,8 +174,18 @@ class GroupsControlpanel extends Component {
    * @returns {undefined}
    */
   onSearchGroups(event) {
+    this.setState({ isLoading: true });
     event.preventDefault();
-    this.props.listGroups(this.state.search);
+    this.props
+      .listGroups(this.state.search)
+      .then(() => {
+        this.setState({ isLoading: false });
+      })
+      .catch((error) => {
+        this.setState({ isLoading: false });
+        // eslint-disable-next-line no-console
+        console.error('Error searching group', error);
+      });
   }
 
   /**
@@ -487,7 +498,11 @@ class GroupsControlpanel extends Component {
               <Form.Field>
                 <Input
                   name="SearchableText"
-                  action={{ icon: 'search' }}
+                  action={{
+                    icon: 'search',
+                    loading: this.state.isLoading,
+                    disabled: this.state.isLoading,
+                  }}
                   placeholder={this.props.intl.formatMessage(
                     messages.searchGroups,
                   )}
