@@ -122,8 +122,8 @@ let config = {
     openExternalLinkInNewTab: false,
     notSupportedBrowsers: ['ie'],
     defaultPageSize: 25,
-    isMultilingual: false,
-    supportedLanguages: ['en'],
+    isMultilingual: true,
+    supportedLanguages: ['en', 'es'],
     defaultLanguage: 'en',
     navDepth: 1,
     expressMiddleware: serverConfig.expressMiddleware, // BBB
