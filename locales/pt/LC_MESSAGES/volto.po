@@ -616,6 +616,7 @@ msgid "Choose Target"
 msgstr "Escolha Alvo"
 
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 # defaultMessage: Choose a file
 msgid "Choose a file"
 msgstr ""
@@ -1117,16 +1118,19 @@ msgid "Drag and drop files from your computer onto this area or click the “Bro
 msgstr "Arraste e largue ficheiros do seu computador para esta área ou clique no botão “Procurar”."
 
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 # defaultMessage: Drop file here to replace the existing file
 msgid "Drop file here to replace the existing file"
 msgstr ""
 
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 # defaultMessage: Drop file here to upload a new file
 msgid "Drop file here to upload a new file"
 msgstr ""
 
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 # defaultMessage: Drop files here ...
 msgid "Drop files here ..."
 msgstr ""
@@ -2596,11 +2600,6 @@ msgstr ""
 msgid "Plone Foundation"
 msgstr "Fundação Plone"
 
-#: components/theme/Logo/Logo
-# defaultMessage: Plone Site
-msgid "Plone Site"
-msgstr "Sítio Plone"
-
 #: components/theme/Footer/Footer
 # defaultMessage: Plone{reg} Open Source CMS/WCM
 msgid "Plone{reg} Open Source CMS/WCM"
@@ -2842,6 +2841,7 @@ msgid "Repeat on"
 msgstr ""
 
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 # defaultMessage: Replace existing file
 msgid "Replace existing file"
 msgstr ""
@@ -3283,11 +3283,6 @@ msgstr ""
 # defaultMessage: Sign in to start session
 msgid "Sign in to start session"
 msgstr "Inicie a sessão"
-
-#: components/theme/Logo/Logo
-# defaultMessage: Site
-msgid "Site"
-msgstr "Sítio"
 
 #: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized

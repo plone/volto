@@ -614,6 +614,7 @@ msgid "Choose Target"
 msgstr "选择目标"
 
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 # defaultMessage: Choose a file
 msgid "Choose a file"
 msgstr "选择一个文件"
@@ -1115,16 +1116,19 @@ msgid "Drag and drop files from your computer onto this area or click the “Bro
 msgstr "从你的电脑中拖放文件到此区域或单击 “浏览” 按钮"
 
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 # defaultMessage: Drop file here to replace the existing file
 msgid "Drop file here to replace the existing file"
 msgstr "在此处放置文件以替换现有文件"
 
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 # defaultMessage: Drop file here to upload a new file
 msgid "Drop file here to upload a new file"
 msgstr "在此处放置文件来上传新文件"
 
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 # defaultMessage: Drop files here ...
 msgid "Drop files here ..."
 msgstr "在此处放置文件 ..."
@@ -2594,11 +2598,6 @@ msgstr ""
 msgid "Plone Foundation"
 msgstr ""
 
-#: components/theme/Logo/Logo
-# defaultMessage: Plone Site
-msgid "Plone Site"
-msgstr "Plone站点"
-
 #: components/theme/Footer/Footer
 # defaultMessage: Plone{reg} Open Source CMS/WCM
 msgid "Plone{reg} Open Source CMS/WCM"
@@ -2840,6 +2839,7 @@ msgid "Repeat on"
 msgstr ""
 
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 # defaultMessage: Replace existing file
 msgid "Replace existing file"
 msgstr "替换现有文件"
@@ -3281,11 +3281,6 @@ msgstr "缩小工具栏"
 # defaultMessage: Sign in to start session
 msgid "Sign in to start session"
 msgstr "登录以开始session会话"
-
-#: components/theme/Logo/Logo
-# defaultMessage: Site
-msgid "Site"
-msgstr "网站"
 
 #: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized

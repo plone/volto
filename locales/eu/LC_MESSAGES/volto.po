@@ -615,6 +615,7 @@ msgid "Choose Target"
 msgstr "Aukeratu helburua"
 
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 # defaultMessage: Choose a file
 msgid "Choose a file"
 msgstr "Aukeratu fitxategia"
@@ -1116,16 +1117,19 @@ msgid "Drag and drop files from your computer onto this area or click the “Bro
 msgstr "Arrastatu fitxategiak hona edo erabili Arakatu botoia."
 
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 # defaultMessage: Drop file here to replace the existing file
 msgid "Drop file here to replace the existing file"
 msgstr "Arrastatu fitxategia hona orain dagoena ordezkatzeko"
 
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 # defaultMessage: Drop file here to upload a new file
 msgid "Drop file here to upload a new file"
 msgstr "Arrastatu fitxategia hona fitxategi berria kargatzeko"
 
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 # defaultMessage: Drop files here ...
 msgid "Drop files here ..."
 msgstr "Arrastatu fitxategiak hona..."
@@ -2595,11 +2599,6 @@ msgstr ""
 msgid "Plone Foundation"
 msgstr "Plone Fundazioa"
 
-#: components/theme/Logo/Logo
-# defaultMessage: Plone Site
-msgid "Plone Site"
-msgstr "Plone Ataria"
-
 #: components/theme/Footer/Footer
 # defaultMessage: Plone{reg} Open Source CMS/WCM
 msgid "Plone{reg} Open Source CMS/WCM"
@@ -2841,6 +2840,7 @@ msgid "Repeat on"
 msgstr "Egun honetan errepikatu"
 
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 # defaultMessage: Replace existing file
 msgid "Replace existing file"
 msgstr "Ordezkatu fitxategia"
@@ -3282,11 +3282,6 @@ msgstr "Txikitu tresna-barra"
 # defaultMessage: Sign in to start session
 msgid "Sign in to start session"
 msgstr "Sartu saioa hasteko"
-
-#: components/theme/Logo/Logo
-# defaultMessage: Site
-msgid "Site"
-msgstr "Ataria"
 
 #: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized
