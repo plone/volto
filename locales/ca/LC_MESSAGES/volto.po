@@ -617,6 +617,7 @@ msgid "Choose Target"
 msgstr "Trieu Destí"
 
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 # defaultMessage: Choose a file
 msgid "Choose a file"
 msgstr "Trieu un fitxer"
@@ -804,7 +805,7 @@ msgid "Copy"
 msgstr "Copia"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: undefined
+# defaultMessage: Copy blocks
 msgid "Copy blocks"
 msgstr "Copiar blocks"
 
@@ -877,7 +878,7 @@ msgid "Cut"
 msgstr "Talla"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: undefined
+# defaultMessage: Cut blocks
 msgid "Cut blocks"
 msgstr "Talla bloc"
 
@@ -984,7 +985,7 @@ msgid "Delete action"
 msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: undefined
+# defaultMessage: Delete blocks
 msgid "Delete blocks"
 msgstr "Esborra blocs"
 
@@ -1118,16 +1119,19 @@ msgid "Drag and drop files from your computer onto this area or click the “Bro
 msgstr "Arrossegueu i deixeu anar fitxers des del vostre ordinador a aquesta àrea o feu clic al botó 'Examinar'."
 
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 # defaultMessage: Drop file here to replace the existing file
 msgid "Drop file here to replace the existing file"
 msgstr "Deixeu anar el fitxer aquí per substituir el fitxer existent"
 
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 # defaultMessage: Drop file here to upload a new file
 msgid "Drop file here to upload a new file"
 msgstr "Deixeu anar el fitxer aquí per pujar un fitxer nou"
 
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 # defaultMessage: Drop files here ...
 msgid "Drop files here ..."
 msgstr "Deixeu fitxers aquí..."
@@ -1151,6 +1155,7 @@ msgstr "Les adreces de correu electrònic no coincideixen."
 #: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Controlpanels/Rules/EditRule
+#: components/manage/Controlpanels/Users/RenderUsers
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/FormFieldWrapper
 #: components/manage/Widgets/ObjectBrowserWidget
@@ -1814,6 +1819,11 @@ msgstr "Any(s)"
 #: components/theme/View/RenderBlocks
 # defaultMessage: Invalid block - Will be removed on saving
 msgid "Invalid Block"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them.
+msgid "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
 msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
@@ -2500,7 +2510,7 @@ msgid "Paste"
 msgstr "Enganxar"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: undefined
+# defaultMessage: Paste blocks
 msgid "Paste blocks"
 msgstr "Enganxa blocs"
 
@@ -2590,11 +2600,6 @@ msgstr ""
 # defaultMessage: Plone Foundation
 msgid "Plone Foundation"
 msgstr "Fundació Plone"
-
-#: components/theme/Logo/Logo
-# defaultMessage: Plone Site
-msgid "Plone Site"
-msgstr "Lloc de Plone"
 
 #: components/theme/Footer/Footer
 # defaultMessage: Plone{reg} Open Source CMS/WCM
@@ -2837,6 +2842,7 @@ msgid "Repeat on"
 msgstr "Repetiu"
 
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 # defaultMessage: Replace existing file
 msgid "Replace existing file"
 msgstr "Substitueix el fitxer existent"
@@ -3279,11 +3285,6 @@ msgstr "Redueix la barra d'eines"
 msgid "Sign in to start session"
 msgstr "Inicieu la sessió per iniciar la sessió"
 
-#: components/theme/Logo/Logo
-# defaultMessage: Site
-msgid "Site"
-msgstr "Lloc"
-
 #: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized
 # defaultMessage: Site Administration
@@ -3625,6 +3626,16 @@ msgstr "La còpia de treball es va descartar"
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
 msgstr "El {plonecms} és {copyright} 2000-{current_year} per {plonefoundation} i amics."
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: There are no groups with the searched criteria
+msgid "There are no groups with the searched criteria"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: There are no users with the searched criteria
+msgid "There are no users with the searched criteria"
+msgstr ""
+
 #: components/theme/CorsError/CorsError
 # defaultMessage: There is a configuration problem on the backend
 msgid "There is a configuration problem on the backend"
@@ -3910,6 +3921,11 @@ msgstr ""
 msgid "Update"
 msgstr "Actualització"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Update User
+msgid "Update User"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Update installed addons
 msgid "Update installed addons"
@@ -4024,6 +4040,11 @@ msgstr "Nom d'usuari"
 # defaultMessage: User roles updated
 msgid "User roles updated"
 msgstr "Rols d'usuari actualitzats"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: User updated successfuly
+msgid "User updated successfuly"
+msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Username
@@ -4645,7 +4666,7 @@ msgstr "a"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: [month] [day], [year]
 msgid "rrule_dateFormat"
-msgstr "[mes] [dia], [any]"
+msgstr "[month] [day], [year]"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: day

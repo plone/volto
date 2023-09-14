@@ -28,12 +28,13 @@ Thus it is safe to run it on top of your project and answer the prompts.
 
 ## Upgrading to Volto 17.x.x
 
-### Ending support for Node.js 14
+### Ending support for Node.js 14 and 16
 
-Long Term Support for {term}`Node.js` 14 by the Node.js community ends in April 2023.
-Volto 17 no longer supports Node.js 14.
-Please update your projects to a Node.js LTS version, where either 16 or 18 is supported at the moment of this writing.
-Version 18 is recommended.
+Long Term Support (LTS) for {term}`Node.js` 14 by the Node.js community ended in April 2023.
+Long Term Support for Node.js 16 by the Node.js community ended in September 2023.
+Volto 17 no longer supports Node.js 14 or 16.
+Please update your projects to a supported Node.js version (18 or 20).
+Version 18 is recommended, as the current LTS version of Node.js.
 
 #### localhost now resolves to an IPv6 address
 
@@ -89,9 +90,10 @@ If you want to retain the old behavior (and no use `apiExpanders` at all), you n
 config.settings.apiExpanders = [];
 ```
 
-### Cypress upgraded to 12.17.1
+### Cypress upgraded to 13.1.0
 
 As usual in a Volto major version release, Cypress has been upgraded to the latest version to date.
+We are moving from Cypress 11 to Cypress 13.
 There are no major changes to the way the tests are implemented and run.
 
 However, it could be that your Cypress boilerplate must be updated in your projects and add-ons if you use `@testing-library/cypress` in your tests.
@@ -108,6 +110,8 @@ from {file}`cypress/support/commands.js` to {file}`cypress/support/e2e.js`, in c
 This is because the overrides that `@testing-library/cypress` introduce can be run only once.
 Since there are some commands that can call exports in {file}`cypress/support/commands.js`, this import may be run more than once, and then it errors.
 So you have to make sure that import is run only once while the tests are run.
+
+Check the official [Cypress Migration Guide](https://docs.cypress.io/guides/references/migration-guide) for more information.
 
 ### New Image component
 

@@ -34,6 +34,7 @@ export default function imagesMiddleware() {
 
   middleware.all(['**/@@images/*'], imageMiddlewareFn);
   middleware.all(['/@portrait/*'], imageMiddlewareFn);
+  middleware.all(['/@@site-logo/*'], imageMiddlewareFn);
   middleware.id = 'imageResourcesProcessor';
   return middleware;
 }
