@@ -7,14 +7,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { asyncConnect } from '@plone/volto/helpers';
+import { asyncConnect, flattenToAppURL } from '@plone/volto/helpers';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Container } from 'semantic-ui-react';
-import { Helmet, toBackendLang } from '@plone/volto/helpers';
+import { Helmet } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
 import config from '@plone/volto/registry';
 
-import { getNavigation } from '@plone/volto/actions';
+import { getNavigation, getNavroot } from '@plone/volto/actions';
 
 const messages = defineMessages({
   Sitemap: {
@@ -45,14 +45,10 @@ class Sitemap extends Component {
   };
 
   componentDidMount() {
-    const { settings } = config;
-
-    const lang = settings.isMultilingual
-      ? `${toBackendLang(this.props.lang)}`
-      : null;
-
-    const path = getSitemapPath(this.props.location.pathname, lang);
-    this.props.getNavigation(path, 4);
+    this.props.getNavigation(
+      flattenToAppURL(this.props.navroot?.navroot?.['@id']),
+      config.settings.siteMapDepth,
+    );
   }
 
   /**
@@ -95,9 +91,9 @@ export const __test__ = compose(
   connect(
     (state) => ({
       items: state.navigation.items,
-      lang: state.intl.locale,
+      navroot: state.navroot.data,
     }),
-    { getNavigation },
+    { getNavigation, getNavroot },
   ),
 )(Sitemap);
 
@@ -106,25 +102,20 @@ export default compose(
   connect(
     (state) => ({
       items: state.navigation.items,
-      lang: state.intl.locale,
+      navroot: state.navroot.data,
     }),
-    { getNavigation },
+    { getNavigation, getNavroot },
   ),
   asyncConnect([
     {
       key: 'navigation',
       promise: ({ location, store: { dispatch, getState } }) => {
         if (!__SERVER__) return;
-        const { settings } = config;
 
-        const path = getSitemapPath(
-          location.pathname,
-          settings.isMultilingual
-            ? toBackendLang(getState().intl.locale)
-            : null,
+        const navroot = getState().navroot.data?.navroot?.navroot?.['@id'];
+        return dispatch(
+          getNavigation(flattenToAppURL(navroot), config.settings.siteMapDepth),
         );
-
-        return dispatch(getNavigation(path, 4));
       },
     },
   ]),
