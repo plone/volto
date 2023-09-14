@@ -20,7 +20,7 @@ const messages = defineMessages({
   },
   loadExpiredData: {
     id:
-      'The version found is less recent than the server, do you want to load it (you can undo if you change your mind)?',
+      'The version of the autosaved content I found in your browser is older than that stored on the server. Do you want to load the autosaved content? (You can undo the autosaved content and revert to the server version.)',
     defaultMessage:
       'The version of the autosaved content I found in your browser is older than that stored on the server. Do you want to load the autosaved content? (You can undo the autosaved content and revert to the server version.)',
   },
