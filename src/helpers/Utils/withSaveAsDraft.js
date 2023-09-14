@@ -11,7 +11,7 @@ import { useLocation } from 'react-router-dom';
 
 const messages = defineMessages({
   autoSaveFound: {
-    id: 'Autosave found',
+    id: 'Autosaved content found',
     defaultMessage: 'Autosaved content found',
   },
   loadData: {
