@@ -15,7 +15,7 @@ const messages = defineMessages({
     defaultMessage: 'Autosave found',
   },
   loadData: {
-    id: 'Do you want to load it?',
+    id: 'Do you want to load the autosaved content?',
     defaultMessage: 'Do you want to load the autosaved content?',
   },
   loadExpiredData: {
