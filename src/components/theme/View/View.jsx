@@ -123,6 +123,7 @@ class View extends Component {
     if (!hasApiExpander('actions', getBaseUrl(this.props.pathname))) {
       this.props.listActions(getBaseUrl(this.props.pathname));
     }
+
     this.props.getContent(
       getBaseUrl(this.props.pathname),
       this.props.versionId,
@@ -142,6 +143,7 @@ class View extends Component {
       if (!hasApiExpander('actions', getBaseUrl(nextProps.pathname))) {
         this.props.listActions(getBaseUrl(nextProps.pathname));
       }
+
       this.props.getContent(
         getBaseUrl(nextProps.pathname),
         this.props.versionId,

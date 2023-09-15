@@ -5,6 +5,8 @@ import { useLocation, useHistory } from 'react-router-dom';
 
 import { resolveExtension } from '@plone/volto/helpers/Extensions/withBlockExtensions';
 import config from '@plone/volto/registry';
+import { usePrevious } from '@plone/volto/helpers';
+import { isEqual } from 'lodash';
 
 function getDisplayName(WrappedComponent) {
   return WrappedComponent.displayName || WrappedComponent.name || 'Component';
@@ -253,35 +255,50 @@ const withSearch = (options) => (WrappedComponent) => {
     const multiFacets = data.facets
       ?.filter((facet) => facet?.multiple)
       .map((facet) => facet?.field?.value);
-    const [facets, setFacets] = React.useState(
-      Object.assign(
-        {},
-        ...urlQuery.map(({ i, v }) => ({ [i]: v })), // TODO: the 'o' should be kept. This would be a major refactoring of the facets
+    const [facets, setFacets] = React.useState({});
+    const previousUrlQuery = usePrevious(urlQuery);
 
-        // support for simple filters like ?Subject=something
-        // TODO: since the move to hash params this is no longer working.
-        // We'd have to treat the location.search and manage it just like the
-        // hash, to support it. We can read it, but we'd have to reset it as
-        // well, so at that point what's the difference to the hash?
-        ...configuredFacets.map((f) =>
-          locationSearchData[f]
-            ? {
-                [f]:
-                  multiFacets.indexOf(f) > -1
-                    ? [locationSearchData[f]]
-                    : locationSearchData[f],
-              }
-            : {},
-        ),
-      ),
-    );
+    React.useEffect(() => {
+      if (!isEqual(urlQuery, previousUrlQuery)) {
+        setFacets(
+          Object.assign(
+            {},
+            ...urlQuery.map(({ i, v }) => ({ [i]: v })), // TODO: the 'o' should be kept. This would be a major refactoring of the facets
+
+            // support for simple filters like ?Subject=something
+            // TODO: since the move to hash params this is no longer working.
+            // We'd have to treat the location.search and manage it just like the
+            // hash, to support it. We can read it, but we'd have to reset it as
+            // well, so at that point what's the difference to the hash?
+            ...configuredFacets.map((f) =>
+              locationSearchData[f]
+                ? {
+                    [f]:
+                      multiFacets.indexOf(f) > -1
+                        ? [locationSearchData[f]]
+                        : locationSearchData[f],
+                  }
+                : {},
+            ),
+          ),
+        );
+      }
+    }, [
+      urlQuery,
+      configuredFacets,
+      locationSearchData,
+      multiFacets,
+      previousUrlQuery,
+    ]);
 
     const [sortOn, setSortOn] = React.useState(data?.query?.sort_on);
     const [sortOrder, setSortOrder] = React.useState(data?.query?.sort_order);
 
-    const [searchData, setSearchData] = React.useState(
-      getInitialState(data, facets, urlSearchText, id),
-    );
+    const [searchData, setSearchData] = React.useState({});
+
+    React.useEffect(() => {
+      setSearchData(getInitialState(data, facets, urlSearchText, id));
+    }, [facets, data, urlSearchText, id]);
 
     const timeoutRef = React.useRef();
     const facetSettings = data?.facets;
