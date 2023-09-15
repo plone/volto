@@ -412,10 +412,17 @@ class SharingComponent extends Component {
                           )}
                           {typeof entry.roles[role.id] === 'boolean' && (
                             <Checkbox
+                              id={`make-logged-in-users-as${role.id}${
+                                entry.roles[role.id] ? '-checked' : ''
+                              }`}
+                              name={`make-logged-in-users-as${role.id}${
+                                entry.roles[role.id] ? '-checked' : ''
+                              }`}
                               onChange={this.onChange}
                               value={`${entry.id}:${role.id}`}
                               checked={entry.roles[role.id]}
                               disabled={entry.login === this.props.login}
+                              aria-labelledby={`make-logged-in-users-as${role.id}`}
                             />
                           )}
                         </Table.Cell>
