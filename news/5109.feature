@@ -1,0 +1,1 @@
+Add external className to slate Link view. @iFlameing
