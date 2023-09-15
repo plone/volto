@@ -414,8 +414,8 @@ msgid "Assignments"
 msgstr "分配"
 
 #: helpers/Utils/withSaveAsDraft
-# defaultMessage: Autosave found
-msgid "Autosave found"
+# defaultMessage: Autosaved content found
+msgid "Autosaved content found"
 msgstr ""
 
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -1100,8 +1100,8 @@ msgid "Do you really want to delete this item?"
 msgstr "确定要删除这个条目吗"
 
 #: helpers/Utils/withSaveAsDraft
-# defaultMessage: Do you want to load it?
-msgid "Do you want to load it?"
+# defaultMessage: Do you want to load the autosaved content?
+msgid "Do you want to load the autosaved content?"
 msgstr ""
 
 #: components/manage/Multilingual/TranslationObject
@@ -3624,8 +3624,8 @@ msgid "The site configuration is outdated and needs to be upgraded."
 msgstr "网站配置已过时，需要升级。"
 
 #: helpers/Utils/withSaveAsDraft
-# defaultMessage: The version found is less recent than the server, do you want to load it (you can undo if you change your mind)?
-msgid "The version found is less recent than the server, do you want to load it (you can undo if you change your mind)?"
+# defaultMessage: The version of the autosaved content I found in your browser is older than that stored on the server. Do you want to load the autosaved content? (You can undo the autosaved content and revert to the server version.)
+msgid "The version of the autosaved content I found in your browser is older than that stored on the server. Do you want to load the autosaved content? (You can undo the autosaved content and revert to the server version.)"
 msgstr ""
 
 #: components/manage/Toolbar/More

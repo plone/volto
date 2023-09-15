@@ -48,7 +48,7 @@ describe('createContent Tests', () => {
 
     cy.findByRole('alert')
       .get('.toast-inner-content')
-      .contains('Autosave found')
+      .contains('Autosaved content found')
       .get('button.ui.icon.button.save.toast-box')
       .eq(0)
       .click();
@@ -65,7 +65,7 @@ describe('createContent Tests', () => {
 
     cy.findByRole('alert')
       .get('.toast-inner-content')
-      .contains('Autosave found')
+      .contains('Autosaved content found')
       .get('button.ui.icon.button.save.toast-box')
       .eq(0)
       .click();
@@ -80,7 +80,7 @@ describe('createContent Tests', () => {
     );
     cy.findByRole('alert')
       .get('.toast-inner-content')
-      .contains('Autosave found')
+      .contains('Autosaved content found')
       .get('button.ui.icon.button.save.toast-box')
       .eq(1)
       .click();
@@ -90,7 +90,7 @@ describe('createContent Tests', () => {
 
     cy.wait(1000);
 
-    cy.contains('Autosave found').should('not.exist');
+    cy.contains('Autosaved content found').should('not.exist');
   });
 
   it('As editor I can autosave when adding a content item', function () {
@@ -108,7 +108,7 @@ describe('createContent Tests', () => {
     cy.log('test if autosaved toast shows retrieved data and click OK to load');
     cy.findByRole('alert')
       .get('.toast-inner-content')
-      .contains('Autosave found')
+      .contains('Autosaved content found')
       .get('button.ui.icon.button.save.toast-box')
       .eq(0)
       .click();
@@ -131,7 +131,7 @@ describe('createContent Tests', () => {
 
     cy.findByRole('alert')
       .get('.toast-inner-content')
-      .contains('Autosave found')
+      .contains('Autosaved content found')
       .get('button.ui.icon.button.save.toast-box')
       .eq(0)
       .click();
@@ -156,7 +156,7 @@ describe('createContent Tests', () => {
 
     cy.wait(1000);
 
-    cy.contains('Autosave found').should('not.exist');
+    cy.contains('Autosaved content found').should('not.exist');
   });
 
   it('As editor I can autosave comments', function () {
@@ -170,7 +170,7 @@ describe('createContent Tests', () => {
 
     cy.findByRole('alert')
       .get('.toast-inner-content')
-      .contains('Autosave found')
+      .contains('Autosaved content found')
       .get('button.ui.icon.button.save.toast-box')
       .eq(0)
       .click();
@@ -186,14 +186,14 @@ describe('createContent Tests', () => {
 
     cy.findByRole('alert')
       .get('.toast-inner-content')
-      .contains('Autosave found')
+      .contains('Autosaved content found')
       .get('button.ui.icon.button.save.toast-box')
       .eq(1)
       .click();
 
     cy.wait(1000);
     cy.reload();
-    cy.contains('Autosave found').should('not.exist');
+    cy.contains('Autosaved content found').should('not.exist');
 
     cy.log('adding another comment and save it');
 
@@ -205,7 +205,7 @@ describe('createContent Tests', () => {
 
     cy.findByRole('alert')
       .get('.toast-inner-content')
-      .contains('Autosave found')
+      .contains('Autosaved content found')
       .get('button.ui.icon.button.save.toast-box')
       .eq(0)
       .click();
@@ -220,6 +220,6 @@ describe('createContent Tests', () => {
 
     cy.wait(1000);
     cy.reload();
-    cy.contains('Autosave found').should('not.exist');
+    cy.contains('Autosaved content found').should('not.exist');
   });
 });
