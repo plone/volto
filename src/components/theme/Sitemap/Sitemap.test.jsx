@@ -42,6 +42,11 @@ describe('Sitemap', () => {
         locale: 'en',
         messages: {},
       },
+      navroot: {
+        navroot: {
+          '@id': 'http://localhost:8080/Plone',
+        },
+      },
     });
     const component = renderer.create(
       <Provider store={store}>
