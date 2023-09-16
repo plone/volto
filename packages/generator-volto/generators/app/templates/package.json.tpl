@@ -133,7 +133,7 @@
     "not dead"
   ],
   "engines": {
-    "node": "^16 || ^18"
+    "node": "^16 || ^18 || ^20"
   },
   "dependencies": <%- dependencies %>,
   "devDependencies": {
@@ -147,6 +147,8 @@
     "@storybook/addon-controls": "6.3.0",
     "@storybook/addon-essentials": "^6.3.0",
     "@storybook/addon-links": "^6.3.0",
+    "@storybook/builder-webpack5": "^6.5.15",
+    "@storybook/manager-webpack5": "^6.5.15",
     "@storybook/react": "^6.3.0",
     "razzle": "4.2.18",
     "stylelint": "14.0.1",

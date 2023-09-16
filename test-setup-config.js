@@ -54,6 +54,7 @@ const richtextViewSettings = {
 
 config.set('settings', {
   apiPath: 'http://localhost:8080/Plone',
+  publicURL: 'http://localhost:3000',
   defaultLanguage: 'en',
   supportedLanguages: ['en'],
   defaultPageSize: 25,
@@ -173,7 +174,15 @@ config.set('widgets', {
   default: BaseWidget('default'),
 });
 
-config.set('components', {});
+config.set('components', {
+  PreviewImage: {
+    component: (props) => <img alt="PreviewImage component mock" {...props} />,
+  },
+  Image: {
+    // eslint-disable-next-line jsx-a11y/img-redundant-alt
+    component: (props) => <img alt="Image component mock" {...props} />,
+  },
+});
 config.set('experimental', {
   addBlockButton: {
     enabled: false,

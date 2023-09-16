@@ -134,7 +134,7 @@ Go to [http://localhost:3000](http://localhost:3000) in your browser.
 Volto is actively developed since 2017 and used in production since 2018 on the following websites:
 
 - [VHS Ehrenamtsportal](https://vhs-ehrenamtsportal.de) (Website to help volunteers that help refugees for the [German Adult Education Association](https://www.dvv-vhs.de/en/home/), developed by [kitconcept GmbH](https://kitconcept.com), 2018)
-- [Zeelandia](https://zeelandia.de) (Corporate website for one of the leading backery ingredients manufacturers in Germany, developed by [kitconcept GmbH](https://kitconcept.com), 2019)
+- [Zeelandia](https://zeelandia.de) (Corporate website for one of the leading bakery ingredients manufacturers in Germany, developed by [kitconcept GmbH](https://kitconcept.com), 2019)
 - [Excellence at Humboldt-Universität zu Berlin](https://www.alles-beginnt-mit-einer-frage.de) (Website for the excellence initiative of the [Humboldt University Berlin](https://hu-berlin.de), developed by [kitconcept GmbH](https://kitconcept.com), 2019)
 - [Forest Information System for Europe](https://forest.eea.europa.eu) (Thematic website focusing on European forests, developed by [Eau de Web](https://www.eaudeweb.ro), 2019)
 - [Industrial Emissions portal for Europe](https://industry.eea.europa.eu) (Thematic website focusing on European industrial emissions, developed by [Eau de Web](https://www.eaudeweb.ro), 2020)
@@ -177,6 +177,7 @@ Volto is actively developed since 2017 and used in production since 2018 on the 
 - [Helmholtz-Institut Erlangen-Nürnberg für Erneuerbare Energien (HI-ERN)](https://www.hi-ern.de) (Website for HI ERN, a research institution for renewable energies, developed by [kitconcept GmbH](https://kitconcept.com), 2022)
 - [Lanku](https://www.lanku.eus) (Website for Lanku Kultur Zerbitzuak, a company offering cultural services and improvised Basque verse singing sessions across the Basque Country, developed by [CodeSyntax](https://www.codesyntax.com/en), 2023)
 - [UEU](https://www.ueu.eus) (Website for Udako Euskal Unibertsitatea, a non-profit University offering all its service only in Basque: courses, publications, ... developed by [CodeSyntax](https://www.codesyntax.com/en), 2023)
+- [German Aerospace Center (DLR)](https://www.dlr.de/de) (The German Aerospace Center (DLR) is the Federal Republic of Germany's research center for aeronautics. With more than 10.000 employees and a yearly budget of more than 1 billion euros, it is one of the largest research institutions in Germany, developed by [kitconcept GmbH](https://kitconcept.com), 2023)
 
 Please create a new [issue](https://github.com/plone/volto/issues/new) or [pull request](https://github.com/plone/volto/pulls) to add your Volto-site here!
 
@@ -225,13 +226,14 @@ On the [Plone Training website](https://training.plone.org), you'll find Volto-d
 
 [Timo Stollenwerk - Reinventing Plone, Roadmap to the Modern Web](https://2018.ploneconf.org/talks/reinventing-plone-roadmap-to-the-modern-web)
 
-## Node Support
+## Node.js Support
 
-- Node 18: Supported since Volto 17
-- Node 16: Supported since Volto 14
-- Node 14: No longer supported. It was supported from Volto 8.8.0 - 16
-- Node 12: No longer supported. It was supported from Volto 4 - 15
-- Node 10: No longer supported. It was supported from Volto 1 - 12
+- Node.js 20: Supported since Volto 17
+- Node.js 18: Supported since Volto 17
+- Node.js 16: No longer supported. It was supported from Volto 14 - 16
+- Node.js 14: No longer supported. It was supported from Volto 8.8.0 - 16
+- Node.js 12: No longer supported. It was supported from Volto 4 - 15
+- Node.js 10: No longer supported. It was supported from Volto 1 - 12
 
 ## Browser support
 

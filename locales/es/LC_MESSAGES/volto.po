@@ -1,13 +1,13 @@
 # Gettext Message File for Plone
 # Translators:
-# Leonardo J. Caballero G. <leonardocaballero@gmail.com>, 2019, 2022.
+# Leonardo J. Caballero G. <leonardocaballero@gmail.com>, 2019, 2022, 2023.
 # Mikel Larreategi <mlarreategi@codesyntax.com>, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-03 03:20-0400\n"
-"PO-Revision-Date: 2023-06-20 14:02-0400\n"
+"PO-Revision-Date: 2023-06-26 12:13-0400\n"
 "Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
 "Language: es\n"
 "Language-Team: ES <LL@li.org>\n"
@@ -147,7 +147,7 @@ msgstr "Añadir bloque"
 #: components/manage/Blocks/Container/NewBlockAddButton
 # defaultMessage: Add block in position {index}
 msgid "Add block in position {index}"
-msgstr ""
+msgstr "Añadir bloque en posición {index}"
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Add block…
@@ -177,7 +177,7 @@ msgstr "Añadir fecha"
 #: components/manage/Blocks/Container/SimpleContainerToolbar
 # defaultMessage: Add element to container
 msgid "Add element to container"
-msgstr ""
+msgstr "Añadir elemento al contenedor"
 
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Add field
@@ -614,6 +614,7 @@ msgid "Choose Target"
 msgstr "Seleccione destino"
 
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 # defaultMessage: Choose a file
 msgid "Choose a file"
 msgstr "Seleccionar Archivo"
@@ -739,7 +740,7 @@ msgstr "Elementos contenidos"
 #: components/manage/Blocks/Container/SimpleContainerToolbar
 # defaultMessage: Container settings
 msgid "Container settings"
-msgstr ""
+msgstr "Ajustes del contenedor"
 
 #: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Content
@@ -770,7 +771,7 @@ msgstr "Reglas de contenido de las carpetas principales"
 #: components/manage/LinksToItem/LinksToItem
 # defaultMessage: Content that links to or references {title}
 msgid "Content that links to or references {title}"
-msgstr ""
+msgstr "Contenido que enlaza o hace referencia a {title}"
 
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Content type created
@@ -801,7 +802,7 @@ msgid "Copy"
 msgstr "Copia"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: undefined
+# defaultMessage: Copy blocks
 msgid "Copy blocks"
 msgstr "Copiar bloques"
 
@@ -874,7 +875,7 @@ msgid "Cut"
 msgstr "Cortar"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: undefined
+# defaultMessage: Cut blocks
 msgid "Cut blocks"
 msgstr "Cortar bloques"
 
@@ -981,7 +982,7 @@ msgid "Delete action"
 msgstr "Eliminar acción"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: undefined
+# defaultMessage: Delete blocks
 msgid "Delete blocks"
 msgstr "Eliminar bloques"
 
@@ -1120,16 +1121,19 @@ msgid "Drag and drop files from your computer onto this area or click the “Bro
 msgstr "Arrastre y suelte los archivos desde su computador en esta área o haga clic al botón “Seleccionar”."
 
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 # defaultMessage: Drop file here to replace the existing file
 msgid "Drop file here to replace the existing file"
 msgstr "Arrastre aquí el archivo para reemplazar el actual"
 
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 # defaultMessage: Drop file here to upload a new file
 msgid "Drop file here to upload a new file"
 msgstr "Arrastre aquí el archivo para añadir un nuevo"
 
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 # defaultMessage: Drop files here ...
 msgid "Drop files here ..."
 msgstr "Arrastrar archivos aquí..."
@@ -1153,6 +1157,7 @@ msgstr "La dirección de correo electrónico no coincide."
 #: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Controlpanels/Rules/EditRule
+#: components/manage/Controlpanels/Users/RenderUsers
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/FormFieldWrapper
 #: components/manage/Widgets/ObjectBrowserWidget
@@ -1303,6 +1308,11 @@ msgstr "Introduzca su nueva contraseña. Mínimo 8 caracteres."
 # defaultMessage: Enter your username for verification.
 msgid "Enter your username for verification."
 msgstr "Introduzca su nombre de usuario para verificar."
+
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Entries
+msgid "Entries"
+msgstr "Entradas"
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -1554,7 +1564,7 @@ msgstr "Bloque embebido de Google Maps"
 #: components/manage/Blocks/Grid/schema
 # defaultMessage: Grid
 msgid "Grid"
-msgstr ""
+msgstr "Cuadrícula"
 
 #: components/manage/Sharing/Sharing
 # defaultMessage: Group
@@ -1625,6 +1635,11 @@ msgstr "¿Ocultar la faceta?"
 # defaultMessage: Hide filters
 msgid "Hide filters"
 msgstr "Ocultar filtros"
+
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Hide title
+msgid "Hide title"
+msgstr "Ocultar título"
 
 #: components/manage/History/History
 #: components/manage/Toolbar/More
@@ -1808,6 +1823,11 @@ msgstr "Intervalo anual"
 msgid "Invalid Block"
 msgstr "Bloque no válido: se eliminará al guardar"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them.
+msgid "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
+msgstr ""
+
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Item batch size
 msgid "Item batch size"
@@ -1930,7 +1950,7 @@ msgstr "Enlace"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Link copied to clipboard
 msgid "Link copied to clipboard"
-msgstr ""
+msgstr "Enlace copiado al portapapeles"
 
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
@@ -1942,6 +1962,11 @@ msgstr "Enlace más"
 # defaultMessage: Link redirect view
 msgid "Link redirect view"
 msgstr "Vista de redirección del enlace"
+
+#: components/manage/Blocks/Image/schema
+# defaultMessage: Link settings
+msgid "Link settings"
+msgstr "Configuración de enlace"
 
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
@@ -1965,13 +1990,13 @@ msgstr "Enlazar traducción de"
 #: components/manage/LinksToItem/LinksToItem
 # defaultMessage: Linking this item with hyperlink in text
 msgid "Linking this item with hyperlink in text"
-msgstr ""
+msgstr "Vincular este elemento con un hipervínculo en el texto"
 
 #: components/manage/LinksToItem/LinksToItem
 #: components/manage/Toolbar/More
 # defaultMessage: Links and references
 msgid "Links and references"
-msgstr ""
+msgstr "Enlaces y referencias"
 
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Listing
@@ -2235,7 +2260,6 @@ msgid "News item view"
 msgstr "Vista de noticia"
 
 #: components/manage/Contents/ContentsItem
-#: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: No
 msgid "No"
@@ -2309,7 +2333,7 @@ msgstr "No se han seleccionado elementos"
 #: components/manage/LinksToItem/LinksToItem
 # defaultMessage: No links to this item found.
 msgid "No links to this item found."
-msgstr ""
+msgstr "No se encontraron enlaces a este elemento."
 
 #: components/manage/Blocks/Maps/MapsSidebar
 # defaultMessage: No map selected
@@ -2434,6 +2458,11 @@ msgstr "Abrir menú"
 msgid "Open object browser"
 msgstr "Abrir buscador de objetos"
 
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Ordered
+msgid "Ordered"
+msgstr "Ordenado"
+
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Origin
 msgid "Origin"
@@ -2442,7 +2471,7 @@ msgstr "Origen"
 #: components/manage/LinksToItem/LinksToItem
 # defaultMessage: Overview of relations of all content items
 msgid "Overview of relations of all content items"
-msgstr ""
+msgstr "Descripción general de las relaciones de todos los elementos de contenido."
 
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Page
@@ -2478,7 +2507,7 @@ msgid "Paste"
 msgstr "Pegar"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: undefined
+# defaultMessage: Paste blocks
 msgid "Paste blocks"
 msgstr "Pegar bloques"
 
@@ -2560,19 +2589,14 @@ msgid "Please upgrade to plone.restapi >= 8.24.0."
 msgstr "Actualice plone.restapi a la versión 8.24.0 o superior."
 
 #: components/manage/Controlpanels/Relations/Relations
-# defaultMessage: Please upgrade to plone.restapi >= 8.35.3.
-msgid "Please upgrade to plone.restapi >= 8.35.3."
-msgstr "Por favor, actualice a plone.restapi >= 8.35.3."
+# defaultMessage: Please upgrade to plone.restapi >= 8.39.0.
+msgid "Please upgrade to plone.restapi >= 8.39.0."
+msgstr "Por favor, actualice a plone.restapi >= 8.39.0."
 
 #: components/theme/Footer/Footer
 # defaultMessage: Plone Foundation
 msgid "Plone Foundation"
 msgstr "Fundación Plone"
-
-#: components/theme/Logo/Logo
-# defaultMessage: Plone Site
-msgid "Plone Site"
-msgstr "Sitio Plone"
 
 #: components/theme/Footer/Footer
 # defaultMessage: Plone{reg} Open Source CMS/WCM
@@ -2691,12 +2715,12 @@ msgstr "Reducir complejidad"
 #: components/manage/LinksToItem/LinksToItem
 # defaultMessage: Referencing this item as related item
 msgid "Referencing this item as related item"
-msgstr ""
+msgstr "Hacer referencia a este elemento como elemento relacionado"
 
 #: components/manage/LinksToItem/LinksToItem
 # defaultMessage: Referencing this item with {relationship}
 msgid "Referencing this item with {relationship}"
-msgstr ""
+msgstr "Hacer referencia a este elemento con {relationship}"
 
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
@@ -2746,7 +2770,7 @@ msgstr "Eliminar"
 #: components/manage/Blocks/Container/EditBlockWrapper
 # defaultMessage: Remove element {index}
 msgid "Remove element {index}"
-msgstr ""
+msgstr "Eliminar elemento {index}"
 
 #: components/manage/Widgets/ObjectListWidget
 # defaultMessage: Remove item
@@ -2810,6 +2834,7 @@ msgid "Repeat on"
 msgstr "Repetir el"
 
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 # defaultMessage: Replace existing file
 msgid "Replace existing file"
 msgstr "Sustituir el archivo actual"
@@ -2835,7 +2860,7 @@ msgstr "Un campo requerido esta sin tomar en cuenta."
 #: components/manage/Blocks/Container/EditBlockWrapper
 # defaultMessage: Reset element {index}
 msgid "Reset element {index}"
-msgstr ""
+msgstr "Restablecer elemento {index}"
 
 #: components/manage/Widgets/VocabularyTermsWidget
 # defaultMessage: Reset title
@@ -3133,6 +3158,11 @@ msgstr "Enviar"
 msgid "Send a confirmation mail with a link to set the password."
 msgstr "Enviar un correo de confirmación con un enlace para establecer la contraseña."
 
+#: components/theme/Error/ServerError
+# defaultMessage: Server Error
+msgid "Server Error"
+msgstr "Error del Servidor"
+
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Set my password
 msgid "Set my password"
@@ -3247,11 +3277,6 @@ msgstr "Contraer barra de herramientas"
 msgid "Sign in to start session"
 msgstr "Acceda para iniciar sesión"
 
-#: components/theme/Logo/Logo
-# defaultMessage: Site
-msgid "Site"
-msgstr "Sitio"
-
 #: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized
 # defaultMessage: Site Administration
@@ -3332,7 +3357,7 @@ msgid "Sorted"
 msgstr "Ordenado"
 
 #: components/manage/Blocks/HTML/Edit
-#: components/manage/Blocks/Image/schema
+#: components/manage/Controlpanels/Relations/BrokenRelations
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: Source
 msgid "Source"
@@ -3375,6 +3400,11 @@ msgstr "Estado"
 # defaultMessage: Status
 msgid "Status"
 msgstr "Estado"
+
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Sticky
+msgid "Sticky"
+msgstr "Fija"
 
 #: components/manage/Multilingual/CompareLanguages
 # defaultMessage: Stop compare
@@ -3477,6 +3507,7 @@ msgstr "Categoría a remover"
 
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/Relations/BrokenRelations
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 # defaultMessage: Target
 msgid "Target"
@@ -3597,6 +3628,16 @@ msgstr "La copia de trabajo se ha descartado"
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
 msgstr "El {plonecms} es {copyright} 2000-{current_year} por la {plonefoundation} y amigos."
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: There are no groups with the searched criteria
+msgid "There are no groups with the searched criteria"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: There are no users with the searched criteria
+msgid "There are no users with the searched criteria"
+msgstr ""
+
 #: components/theme/CorsError/CorsError
 # defaultMessage: There is a configuration problem on the backend
 msgid "There is a configuration problem on the backend"
@@ -3675,6 +3716,7 @@ msgstr "Hora"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Teaser/schema
+#: components/manage/Blocks/ToC/Schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
@@ -3881,6 +3923,11 @@ msgstr "Desordenadas"
 msgid "Update"
 msgstr "Actualizar"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Update User
+msgid "Update User"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Update installed addons
 msgid "Update installed addons"
@@ -3997,6 +4044,11 @@ msgid "User roles updated"
 msgstr "Roles de usuario actualizados"
 
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: User updated successfuly
+msgid "User updated successfuly"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Username
 msgid "Username"
 msgstr "Nombre de usuario"
@@ -4100,6 +4152,11 @@ msgstr "Disculpe las molestias, pero la base de datos no está disponible en est
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
 msgstr "Disculpe las molestias, la página a la que está intentando acceder no existe en esta dirección. Puede usar el siguiente enlace para encontrar lo que estaba buscando."
 
+#: components/theme/Error/ServerError
+# defaultMessage: We apologize for the inconvenience, but there was an unexpected error on the server.
+msgid "We apologize for the inconvenience, but there was an unexpected error on the server."
+msgstr "Disculpe las molestias, pero se ha producido un error inesperado en el servidor."
+
 #: components/theme/Forbidden/Forbidden
 # defaultMessage: We apologize for the inconvenience, but you don't have permissions on this resource.
 msgid "We apologize for the inconvenience, but you don't have permissions on this resource."
@@ -4183,7 +4240,6 @@ msgid "Yearly"
 msgstr "Anualmente"
 
 #: components/manage/Contents/ContentsItem
-#: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Yes
 msgid "Yes"
@@ -4298,12 +4354,12 @@ msgstr "Casilla de verificación"
 #: components/manage/Blocks/Grid/templates
 # defaultMessage: column
 msgid "column"
-msgstr ""
+msgstr "columna"
 
 #: components/manage/Blocks/Grid/templates
 # defaultMessage: columns
 msgid "columns"
-msgstr ""
+msgstr "columnas"
 
 #: config/Blocks
 # defaultMessage: Common
@@ -4314,6 +4370,11 @@ msgstr "Común"
 # defaultMessage: Compare to language
 msgid "compare_to"
 msgstr "Comparar con el idioma"
+
+#: components/manage/Controlpanels/Relations/BrokenRelations
+# defaultMessage: {countofrelation} broken {countofrelation, plural, one {relation} other {relations}} of type {typeofrelation}
+msgid "countBrokenRelations"
+msgstr "{countofrelation} roto {countofrelation, plural, one {relation} other {relations}} de tipo {typeofrelation}"
 
 #: config/Blocks
 # defaultMessage: Date Range
@@ -4405,6 +4466,11 @@ msgstr "Este sitio web no acepta archivos de más de {limit}"
 msgid "flush intIds and rebuild relations"
 msgstr "vaciar intIds y reconstruir relaciones"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: <ul><li>Regenerate intIds (tokens of relations in relation catalog)</li><li>Rebuild relations</li></ul><p>Check the log for details!</p><p><b>Warning</b>: If you have add-ons relying on intIds, you should not flush them.</p>
+msgid "flushAndRebuildRelationsHints"
+msgstr "<ul><li>Regenerar intIds (tokens de relaciones en el catálogo de relaciones)</li><li>Reconstruir relaciones</li></ul><p>¡Consulte el registro para obtener más detalles!</p><p><b>Advertencia</b>: Si tiene complementos que dependen de intIds, no debería eliminarlos.</p>"
+
 #: components/manage/Blocks/Teaser/schema
 # defaultMessage: Head title
 msgid "head_title"
@@ -4429,6 +4495,16 @@ msgstr "HTML"
 # defaultMessage: Image
 msgid "image"
 msgstr "Imagen"
+
+#: components/manage/Blocks/Image/ImageSidebar
+# defaultMessage: Clear image
+msgid "image_block_clear"
+msgstr "Limpiar imagen"
+
+#: components/manage/Blocks/Image/ImageSidebar
+# defaultMessage: Image preview
+msgid "image_block_preview"
+msgstr "Vista previa de la imagen"
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Input must be integer
@@ -4617,7 +4693,7 @@ msgstr "a las"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: [month] [day], [year]
 msgid "rrule_dateFormat"
-msgstr "formato de fecha"
+msgstr "[day]/[month]/[year]"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: day
@@ -4814,6 +4890,7 @@ msgstr "Texto"
 msgid "title"
 msgstr "Título"
 
+#: components/manage/Blocks/ToC/Schema
 #: config/Blocks
 # defaultMessage: Table of Contents
 msgid "toc"

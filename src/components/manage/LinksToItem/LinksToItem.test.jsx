@@ -3,6 +3,7 @@ import renderer from 'react-test-renderer';
 import { Provider } from 'react-intl-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
+import { MemoryRouter } from 'react-router-dom';
 
 import LinksToItem from './LinksToItem';
 
@@ -20,7 +21,7 @@ describe('LinksToItem', () => {
       relations: {
         subrequests: {
           '/page-1': {
-            relations: {
+            data: {
               isReferencing: {
                 items: [
                   {
@@ -88,7 +89,9 @@ describe('LinksToItem', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <LinksToItem location={{ pathname: '/page-1/links-to-item' }} />
+        <MemoryRouter>
+          <LinksToItem location={{ pathname: '/page-1/links-to-item' }} />
+        </MemoryRouter>
       </Provider>,
     );
     const json = component.toJSON();
