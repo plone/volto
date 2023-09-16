@@ -453,7 +453,7 @@ class Contents extends Component {
       let brokenReferencesCount = 0;
 
       linkintegrityInfo.forEach((item) => {
-        containedItems += item.items_total;
+        containedItems += item.items_total ?? 0;
         brokenReferencesCount += item.breaches.length;
       });
       this.setState({
