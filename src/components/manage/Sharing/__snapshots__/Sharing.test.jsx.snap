@@ -35,6 +35,7 @@ exports[`Sharing renders a sharing component 1`] = `
             className="ui action input"
           >
             <input
+              id="sharing-component-search"
               name="SearchableText"
               onChange={[Function]}
               placeholder="Search for user or group"

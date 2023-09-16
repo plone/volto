@@ -139,3 +139,5 @@ export const GET_USERSCHEMA = 'GET_USERSCHEMA';
 export const GET_UPGRADE = 'GET_UPGRADE';
 export const POST_UPGRADE = 'POST_UPGRADE';
 export const RESET_LOGIN_REQUEST = 'RESET_LOGIN_REQUEST';
+export const GET_SITE = 'GET_SITE';
+export const GET_NAVROOT = 'GET_NAVROOT';

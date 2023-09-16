@@ -618,6 +618,7 @@ msgid "Choose Target"
 msgstr "Escolha Alvo"
 
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 # defaultMessage: Choose a file
 msgid "Choose a file"
 msgstr "Escolha um arquivo"
@@ -805,7 +806,7 @@ msgid "Copy"
 msgstr "Copiar"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: undefined
+# defaultMessage: Copy blocks
 msgid "Copy blocks"
 msgstr "Copiar blocos"
 
@@ -878,7 +879,7 @@ msgid "Cut"
 msgstr "Cortar"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: undefined
+# defaultMessage: Cut blocks
 msgid "Cut blocks"
 msgstr "Recortar blocos"
 
@@ -985,7 +986,7 @@ msgid "Delete action"
 msgstr "Remover ação"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: undefined
+# defaultMessage: Delete blocks
 msgid "Delete blocks"
 msgstr "Excluir blocos"
 
@@ -1119,16 +1120,19 @@ msgid "Drag and drop files from your computer onto this area or click the “Bro
 msgstr "Arraste e solte arquivos do seu computador para esta área, ou clique no botão ‘Procurar’."
 
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 # defaultMessage: Drop file here to replace the existing file
 msgid "Drop file here to replace the existing file"
 msgstr "Solte um arquivo aqui para substituir o arquivo existente"
 
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 # defaultMessage: Drop file here to upload a new file
 msgid "Drop file here to upload a new file"
 msgstr "Solte um arquivo aqui para enviar um novo arquivo"
 
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 # defaultMessage: Drop files here ...
 msgid "Drop files here ..."
 msgstr "Soltar aquivos aqui…"
@@ -1152,6 +1156,7 @@ msgstr "Os endereços de e-mail não coincidem."
 #: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Controlpanels/Rules/EditRule
+#: components/manage/Controlpanels/Users/RenderUsers
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/FormFieldWrapper
 #: components/manage/Widgets/ObjectBrowserWidget
@@ -1816,6 +1821,11 @@ msgstr "Intervalo Anual"
 # defaultMessage: Invalid block - Will be removed on saving
 msgid "Invalid Block"
 msgstr "Bloco inválido"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them.
+msgid "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Item batch size
@@ -2501,7 +2511,7 @@ msgid "Paste"
 msgstr "Colar"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: undefined
+# defaultMessage: Paste blocks
 msgid "Paste blocks"
 msgstr "Colar blocos"
 
@@ -2591,11 +2601,6 @@ msgstr "Por favor atualize a plone.restapi para versão 8.39.0 ou superior."
 # defaultMessage: Plone Foundation
 msgid "Plone Foundation"
 msgstr "Fundação Plone"
-
-#: components/theme/Logo/Logo
-# defaultMessage: Plone Site
-msgid "Plone Site"
-msgstr "Site Plone"
 
 #: components/theme/Footer/Footer
 # defaultMessage: Plone{reg} Open Source CMS/WCM
@@ -2838,6 +2843,7 @@ msgid "Repeat on"
 msgstr "Repete em"
 
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 # defaultMessage: Replace existing file
 msgid "Replace existing file"
 msgstr "Substituir arquivo existente"
@@ -3280,11 +3286,6 @@ msgstr "Recolher barra de ferramentas"
 msgid "Sign in to start session"
 msgstr "Faça login para iniciar a sessão"
 
-#: components/theme/Logo/Logo
-# defaultMessage: Site
-msgid "Site"
-msgstr "Site"
-
 #: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized
 # defaultMessage: Site Administration
@@ -3626,6 +3627,16 @@ msgstr "A cópia de trabalho foi descartada."
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
 msgstr "O {plonecms} tem {copyright} de 2000-{current_year} pela {plonefoundation} e amigos."
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: There are no groups with the searched criteria
+msgid "There are no groups with the searched criteria"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: There are no users with the searched criteria
+msgid "There are no users with the searched criteria"
+msgstr ""
+
 #: components/theme/CorsError/CorsError
 # defaultMessage: There is a configuration problem on the backend
 msgid "There is a configuration problem on the backend"
@@ -3911,6 +3922,11 @@ msgstr "Desordenado"
 msgid "Update"
 msgstr "Atualizar"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Update User
+msgid "Update User"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Update installed addons
 msgid "Update installed addons"
@@ -4025,6 +4041,11 @@ msgstr "Nome de usuário"
 # defaultMessage: User roles updated
 msgid "User roles updated"
 msgstr "Papéis do grupo atualizados"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: User updated successfuly
+msgid "User updated successfuly"
+msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Username

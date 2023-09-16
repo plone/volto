@@ -1,1 +1,1 @@
-Add external className to UniversalLink for external link. @iFlameing
+Add external className to slate Link view. @iFlameing

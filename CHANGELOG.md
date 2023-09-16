@@ -8,6 +8,53 @@
 
 <!-- towncrier release notes start -->
 
+## 17.0.0-alpha.26 (2023-09-14)
+
+### Breaking
+
+- Upgrade to Cypress 13 @sneridagh [#5163](https://github.com/plone/volto/issues/5163)
+- Removed support for Node.js 16. It is no longer supported by the Node.js community. @davisagli [#5166](https://github.com/plone/volto/issues/5166)
+
+### Feature
+
+- Use the `@navroot` endpoint to build the `title` tag. @erral
+
+  Use the `@site` endpoint to render the logo. @erral
+
+  Register a widget to set the logo in the site control panel. @erral [#3537](https://github.com/plone/volto/issues/3537)
+- Refactor Navigation -@Tishasoumya-02 [#4076](https://github.com/plone/volto/issues/4076)
+- Added loading spinner and disable search button while data is fetching. @tedw87 [#4551](https://github.com/plone/volto/issues/4551)
+- User Control panel improvements. See #4551 @erral [#4572](https://github.com/plone/volto/issues/4572)
+- Messages Component Refactor - @Tishasoumya-02 [#4926](https://github.com/plone/volto/issues/4926)
+- Refactor Login -@Tishasoumya-02 [#4933](https://github.com/plone/volto/issues/4933)
+- Add external className to UniversalLink for external link. @iFlameing [#5109](https://github.com/plone/volto/issues/5109)
+- Updated Spanish translation @macagua [#5120](https://github.com/plone/volto/issues/5120)
+- (feat): Update toc block entries @dobri1408 [#5146](https://github.com/plone/volto/issues/5146)
+- Views cypress test -@Tishasoumya [#5149](https://github.com/plone/volto/issues/5149)
+- Added support for Node.js 20. @davisagli [#5166](https://github.com/plone/volto/issues/5166)
+- Cypress test to test if 'Search results: number' text is present @ionlizarazu [#5171](https://github.com/plone/volto/issues/5171)
+
+### Bugfix
+
+- Fix for responsive error in the login page when the width of the screen decreases. @suman9893 [#3250](https://github.com/plone/volto/issues/3250)
+- Fix back button in the search block to execute the search by adding two useEffects that update the facets and search data based on the current URL. @MihaelaCretu11 [#4402](https://github.com/plone/volto/issues/4402)
+- fix : RecursiveWidget is incorrectly translated. @suman9893 [#4503](https://github.com/plone/volto/issues/4503)
+- Fix use of CSS modules in webpack 5. @wesleybl [#5019](https://github.com/plone/volto/issues/5019)
+- Fix toc accessibility issue @dobri1408 [#5058](https://github.com/plone/volto/issues/5058)
+- Fix storybook config for project generator. Add support for SCSS, upgrade to webpack 5 in there as well. @sneridagh [#5132](https://github.com/plone/volto/issues/5132)
+- Don't show ``No value`` option in SelectWidget and ArrayWidget if default value is 0. @wesleybl [#5151](https://github.com/plone/volto/issues/5151)
+- Fix SelectWidget throwing error when editing a recently created content. @iFlameing [#5154](https://github.com/plone/volto/issues/5154)
+- Fix editing layout for blocks using schema enhancers. @iFlameing, @davisagli [#5158](https://github.com/plone/volto/issues/5158)
+- Fix ContentRules add and edit forms for languages other than English. @ericof [#5161](https://github.com/plone/volto/issues/5161)
+- Fix search block search results number @ionlizarazu [#5171](https://github.com/plone/volto/issues/5171)
+- fix flaky cypress in blocks-listing.js @nileshgulia1 [#5173](https://github.com/plone/volto/issues/5173)
+- Fix regression in forms input in toolbar height related to (#5115) @sneridagh [#5176](https://github.com/plone/volto/issues/5176)
+
+### Documentation
+
+- Fix linkcheckbroken 301 redirect to https://www.dlr.de/de @stevepiercy [#5131](https://github.com/plone/volto/issues/5131)
+
+
 ## 17.0.0-alpha.25 (2023-08-25)
 
 ### Breaking
