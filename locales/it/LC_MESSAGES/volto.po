@@ -498,11 +498,6 @@ msgstr "Sfoglia i contenuti, rilascia un'immagine o digita un URL"
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 msgstr "Di norma, i permessi di questo elemento vengono ereditati dal contenitore. Se disabiliti questa opzione, verranno considerati solo i permessi di condivisione definiti esplicitamente. Nel sommario, il simbolo {inherited} indica una impostazione ereditata. Analogamente, il simbolo {global} indica un ruolo globale, che è gestito dall'amministratore del sito"
 
-#: components/manage/Contents/Contents
-# defaultMessage: By deleting this item, you will break links that exist in the items listed below. If this is indeed what you want to do, we recommend that remove these references first.
-msgid "By deleting this item, you will break links that exist in the items listed below. If this is indeed what you want to do, we recommend that remove these references first."
-msgstr "Cancellando questo elemento, si romperanno i link dell'elemento elencato sotto. Se è quello che vuoi, è consigliabile rimuovere prima questi riferimenti."
-
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Cache Name
 msgid "Cache Name"
@@ -1869,11 +1864,6 @@ msgstr "Elementi"
 msgid "Items must be unique."
 msgstr "Gli elementi devono essere unici."
 
-#: components/manage/Contents/Contents
-# defaultMessage: Items to be deleted:
-msgid "Items to be deleted:"
-msgstr "Elementi da eliminare:"
-
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Label
 msgid "Label"
@@ -2611,11 +2601,6 @@ msgstr "Posizione cambiata"
 # defaultMessage: Possible values (Enter allowed choices one per line).
 msgid "Possible values"
 msgstr "Valori possibili"
-
-#: components/manage/Contents/Contents
-# defaultMessage: Potential link breakage
-msgid "Potential link breakage"
-msgstr "Potenziale rottura dei link"
 
 #: components/theme/Footer/Footer
 # defaultMessage: Powered by Plone & Python
@@ -3668,11 +3653,6 @@ msgstr "Si sono verificati degli errori."
 msgid "Third"
 msgstr "Terzo"
 
-#: components/manage/Contents/Contents
-# defaultMessage: This Page is referenced by the following items:
-msgid "This Page is referenced by the following items:"
-msgstr "I seguenti elementi sono collegati a questa pagina:"
-
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 # defaultMessage: This has an ongoing working copy in {title}
 msgid "This has an ongoing working copy in {title}"
@@ -3753,11 +3733,6 @@ msgstr "Totale degli oggetti attivi e non attivi"
 # defaultMessage: Total comments
 msgid "Total comments"
 msgstr "Totale dei commenti"
-
-#: components/manage/Contents/Contents
-# defaultMessage: Total items to be deleted:
-msgid "Total items to be deleted:"
-msgstr "Totale degli elementi da eliminare:"
 
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Total number of objects in each cache
