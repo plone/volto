@@ -453,29 +453,31 @@ class SharingComponent extends Component {
                   />
                 </p>
               </Segment>
-              <Segment className="actions" attached clearing>
-                <Button
-                  basic
-                  primary
-                  floated="right"
-                  type="submit"
-                  aria-label={this.props.intl.formatMessage(messages.save)}
-                  title={this.props.intl.formatMessage(messages.save)}
-                  loading={this.props.updateRequest.loading}
-                  onClick={this.onSubmit}
-                >
-                  <Icon className="circled" name={aheadSVG} size="30px" />
-                </Button>
-                <Button
-                  basic
-                  secondary
-                  aria-label={this.props.intl.formatMessage(messages.cancel)}
-                  title={this.props.intl.formatMessage(messages.cancel)}
-                  floated="right"
-                  onClick={this.onCancel}
-                >
-                  <Icon className="circled" name={clearSVG} size="30px" />
-                </Button>
+              <Segment className="ui grid" attached clearing>
+                <div className="sixteen wide right aligned column actions">
+                  <Button
+                    basic
+                    secondary
+                    aria-label={this.props.intl.formatMessage(messages.cancel)}
+                    title={this.props.intl.formatMessage(messages.cancel)}
+                    onClick={this.onCancel}
+                  >
+                    <Icon className="circled" name={clearSVG} size="30px" />
+                  </Button>
+
+                  <Button
+                    basic
+                    primary
+                    type="submit"
+                    floated="right"
+                    aria-label={this.props.intl.formatMessage(messages.save)}
+                    title={this.props.intl.formatMessage(messages.save)}
+                    loading={this.props.updateRequest.loading}
+                    onClick={this.onSubmit}
+                  >
+                    <Icon className="circled" name={aheadSVG} size="30px" />
+                  </Button>
+                </div>
               </Segment>
             </Form>
           </Plug>
