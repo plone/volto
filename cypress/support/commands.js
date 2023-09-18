@@ -780,13 +780,16 @@ Cypress.Commands.add('lineBreakInSlate', { prevSubject: true }, (subject) => {
   );
 });
 
-Cypress.Commands.add('setSlateSelection', (subject, query, endQuery) => {
-  cy.get('.slate-editor.selected [contenteditable=true]')
-    .focus()
-    // .click()
-    .setSelection(subject, query, endQuery)
-    .wait(1000); // this wait is needed for the selection change to be detected after
-});
+Cypress.Commands.add(
+  'setSlateSelection',
+  (subject, query, endQuery, wait = 1000) => {
+    cy.get('.slate-editor.selected [contenteditable=true]')
+      .focus()
+      // .click()
+      .setSelection(subject, query, endQuery)
+      .wait(wait); // this wait is needed for the selection change to be detected after
+  },
+);
 
 Cypress.Commands.add('getSlateEditorAndType', (type) => {
   cy.getSlate().focus().click().type(type);
@@ -804,9 +807,9 @@ Cypress.Commands.add('setSlateCursor', (subject, query, endQuery) => {
     .wait(1000); // this wait is needed for the selection change to be detected after
 });
 
-Cypress.Commands.add('clickSlateButton', (button) => {
+Cypress.Commands.add('clickSlateButton', (button, timeout = 1000) => {
   cy.get(`.slate-inline-toolbar .button-wrapper a[title="${button}"]`, {
-    timeout: 1000,
+    timeout,
   }).click({ force: true }); // force click is needed to ensure the button in visible in view.
 });
 

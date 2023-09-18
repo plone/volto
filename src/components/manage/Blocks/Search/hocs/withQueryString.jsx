@@ -15,6 +15,9 @@ export default function withQueryString(WrappedComponent) {
     const dispatch = useDispatch();
 
     const qs = useSelector((state) => state.querystring);
+    // This showed up after updating eslint-plugin-react-hooks
+    // TODO: fix it properly
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const indexes = qs?.indexes || {};
 
     React.useEffect(() => {

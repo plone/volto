@@ -54,6 +54,7 @@ const richtextViewSettings = {
 
 config.set('settings', {
   apiPath: 'http://localhost:8080/Plone',
+  publicURL: 'http://localhost:3000',
   defaultLanguage: 'en',
   supportedLanguages: ['en'],
   defaultPageSize: 25,
