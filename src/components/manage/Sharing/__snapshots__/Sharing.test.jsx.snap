@@ -153,59 +153,63 @@ exports[`Sharing renders a sharing component 1`] = `
         </p>
       </div>
       <div
-        className="ui clearing attached segment actions"
+        className="ui clearing attached segment ui grid"
       >
-        <button
-          aria-label="Save"
-          className="ui basic primary right floated button"
-          onClick={[Function]}
-          title="Save"
-          type="submit"
+        <div
+          className="sixteen wide right aligned column actions"
         >
-          <svg
-            className="icon circled"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": undefined,
+          <button
+            aria-label="Cancel"
+            className="ui basic secondary button"
+            onClick={[Function]}
+            title="Cancel"
+          >
+            <svg
+              className="icon circled"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": undefined,
+                }
               }
-            }
-            onClick={null}
-            style={
-              Object {
-                "fill": "currentColor",
-                "height": "30px",
-                "width": "auto",
+              onClick={null}
+              style={
+                Object {
+                  "fill": "currentColor",
+                  "height": "30px",
+                  "width": "auto",
+                }
               }
-            }
-            viewBox=""
-            xmlns=""
-          />
-        </button>
-        <button
-          aria-label="Cancel"
-          className="ui basic secondary right floated button"
-          onClick={[Function]}
-          title="Cancel"
-        >
-          <svg
-            className="icon circled"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": undefined,
+              viewBox=""
+              xmlns=""
+            />
+          </button>
+          <button
+            aria-label="Save"
+            className="ui basic primary right floated button"
+            onClick={[Function]}
+            title="Save"
+            type="submit"
+          >
+            <svg
+              className="icon circled"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": undefined,
+                }
               }
-            }
-            onClick={null}
-            style={
-              Object {
-                "fill": "currentColor",
-                "height": "30px",
-                "width": "auto",
+              onClick={null}
+              style={
+                Object {
+                  "fill": "currentColor",
+                  "height": "30px",
+                  "width": "auto",
+                }
               }
-            }
-            viewBox=""
-            xmlns=""
-          />
-        </button>
+              viewBox=""
+              xmlns=""
+            />
+          </button>
+        </div>
       </div>
     </form>
   </div>
