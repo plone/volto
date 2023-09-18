@@ -49,10 +49,11 @@
     "stylelint": "./node_modules/.bin/stylelint 'theme/**/*.{css,less}' 'src/**/*.{css,less}'",
     "stylelint:overrides": "./node_modules/.bin/stylelint 'theme/**/*.overrides' 'src/**/*.overrides'",
     "stylelint:fix": "yarn stylelint --fix && yarn stylelint:overrides --fix",
-    "lint": "./node_modules/eslint/bin/eslint.js --max-warnings=0 'src/**/*.{js,jsx,json}'",
-    "lint:fix": "./node_modules/eslint/bin/eslint.js --fix 'src/**/*.{js,jsx,json}'",
+    "lint": "./node_modules/eslint/bin/eslint.js --max-warnings=0 'src/**/*.{js,jsx,ts,tsx,json}'",
+    "lint:fix": "./node_modules/eslint/bin/eslint.js --fix 'src/**/*.{js,jsx,ts,tsx,json}'",
     "i18n": "rm -rf build/messages && NODE_ENV=production i18n",
     "i18n:ci": "yarn i18n && git diff -G'^[^\"POT]' --exit-code",
+    "typecheck": "tsc --project tsconfig.json --noEmit",
     "dry-release": "release-it --dry-run",
     "release": "release-it",
     "release-major-alpha": "release-it major --preRelease=alpha",
@@ -75,6 +76,7 @@
     ],
     "transform": {
       "^.+\\.js(x)?$": "babel-jest",
+      "^.+\\.ts(x)?$": "ts-jest",
       "^.+\\.(png)$": "jest-file",
       "^.+\\.(jpg)$": "jest-file",
       "^.+\\.(svg)$": "./jest-svgsystem-transform.js"
@@ -111,10 +113,10 @@
       "__DEV__": true
     },
     "testMatch": [
-      "<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs}",
-      "<rootDir>/src/**/?(*.)(spec|test).{js,jsx,mjs}",
-      "<rootDir>/__tests__/**/?(*.)(spec|test).{js,jsx,mjs}",
-      "<rootDir>/packages/volto-slate/src/**/?(*.)(spec|test).{js,jsx,mjs}"
+      "<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs,ts,tsx}",
+      "<rootDir>/src/**/?(*.)(spec|test).{js,jsx,mjs,ts,tsx}",
+      "<rootDir>/__tests__/**/?(*.)(spec|test).{js,jsx,mjs,ts,tsx}",
+      "<rootDir>/packages/volto-slate/src/**/?(*.)(spec|test).{js,jsx,mjs,ts,tsx}"
     ]
   },
   "prettier": {
@@ -226,7 +228,8 @@
   },
   "dependencies": {
     "@babel/core": "^7.0.0",
-    "@babel/plugin-proposal-export-default-from": "7.18.9",
+    "@babel/eslint-parser": "7.22.15",
+    "@babel/plugin-proposal-export-default-from": "7.18.10",
     "@babel/plugin-proposal-export-namespace-from": "7.18.9",
     "@babel/plugin-proposal-json-strings": "7.18.6",
     "@babel/plugin-proposal-nullish-coalescing-operator": "7.18.6",
@@ -245,7 +248,6 @@
     "@testing-library/react-hooks": "8.0.1",
     "autoprefixer": "10.4.8",
     "axe-core": "4.4.2",
-    "babel-eslint": "10.1.0",
     "babel-plugin-add-module-exports": "0.2.1",
     "babel-plugin-lodash": "3.3.4",
     "babel-plugin-react-intl": "5.1.17",
@@ -274,18 +276,16 @@
     "draft-js-plugins-editor": "2.1.1",
     "draft-js-plugins-utils": "2.0.3",
     "draftjs-filters": "2.3.0",
-    "eslint": "6.8.0",
-    "eslint-config-airbnb": "18.1.0",
-    "eslint-config-prettier": "6.11.0",
-    "eslint-config-react-app": "5.2.1",
+    "eslint": "8.49.0",
+    "eslint-config-prettier": "8.10.0",
+    "eslint-config-react-app": "7.0.1",
     "eslint-import-resolver-alias": "1.1.2",
     "eslint-import-resolver-babel-plugin-root-import": "1.1.1",
-    "eslint-plugin-flowtype": "4.7.0",
-    "eslint-plugin-import": "2.20.2",
-    "eslint-plugin-jsx-a11y": "6.2.3",
-    "eslint-plugin-prettier": "3.1.3",
-    "eslint-plugin-react": "7.20.0",
-    "eslint-plugin-react-hooks": "4.0.2",
+    "eslint-plugin-import": "2.28.1",
+    "eslint-plugin-jsx-a11y": "6.7.1",
+    "eslint-plugin-prettier": "3.4.1",
+    "eslint-plugin-react": "7.33.2",
+    "eslint-plugin-react-hooks": "4.6.0",
     "express": "4.17.3",
     "filesize": "6",
     "github-slugger": "1.4.0",
@@ -412,6 +412,9 @@
     "@storybook/builder-webpack5": "^6.5.15",
     "@storybook/manager-webpack5": "^6.5.15",
     "@storybook/react": "^6.5.15",
+    "@types/react-test-renderer": "18.0.1",
+    "@typescript-eslint/eslint-plugin": "6.7.0",
+    "@typescript-eslint/parser": "6.7.0",
     "babel-loader": "9.1.0",
     "bundlewatch": "0.3.3",
     "full-icu": "1.4.0",
@@ -424,18 +427,24 @@
     "release-it": "^16.1.3",
     "semver": "^7.5.4",
     "tmp": "0.2.1",
+    "ts-jest": "^26.4.2",
+    "ts-loader": "9.4.4",
+    "typescript": "5.2.2",
     "use-trace-update": "1.3.2",
     "why": "0.6.2"
   },
   "resolutions-comments": {
-    "ua-parser-js": "See https://github.com/faisalman/ua-parser-js/issues/536"
+    "ua-parser-js": "See https://github.com/faisalman/ua-parser-js/issues/536",
+    "@typescript-eslint/eslint-plugin": "ESlint support for TypeScript 5.2.0 needs these versions"
   },
   "resolutions": {
     "clean-css": "5.3.1",
     "http-proxy": "^1.18.1",
     "react-dev-utils": "^12",
     "react-error-overlay": "6.0.9",
-    "ua-parser-js": "0.7.28"
+    "ua-parser-js": "0.7.28",
+    "@typescript-eslint/eslint-plugin": "6.7.0",
+    "@typescript-eslint/parser": "6.7.0"
   },
   "volta": {
     "node": "18.13.0"
