@@ -8,6 +8,13 @@
 
 <!-- towncrier release notes start -->
 
+## 7.0.0-alpha.8 (2023-09-18)
+
+### Bugfix
+
+- Add missing empty lock to acceptance generator addon folder @sneridagh [#5193](https://github.com/plone/volto/issues/5193)
+
+
 ## 7.0.0-alpha.7 (2023-09-18)
 
 ### Feature
