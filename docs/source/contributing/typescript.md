@@ -9,8 +9,9 @@ myst:
 
 # TypeScript
 
-```{versionadded} 17.0.0-alpha.22
+```{versionadded} 17.0.0-alpha.27
 ```
+
 TypeScript support has been added to Volto core.
 ESlint has been configured in order to accept code base written both in JavaScript and in TypeScript.
 TypeScript in projects and add-ons has been supported since Volto 14.

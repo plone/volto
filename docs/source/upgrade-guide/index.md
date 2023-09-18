@@ -55,14 +55,7 @@ It is recommended that you update your project's dependency on Razzle to this ve
 
 ### TypeScript support in Volto
 
-```{versionadded} 17.0.0-alpha.22
-We added full support of TypeScript in Volto core.
-No existing code has been migrated.
-You still have the freedom to develop using JavaScript.
-It's your choice whether you want to do it in TypeScript.
-In the past, you could add TypeScript support for Volto add-ons.
-It's also available for projects now, if you upgrade dependencies (see next section).
-```{versionadded} 17.0.0-alpha.22
+```{versionadded} 17.0.0-alpha.27
 ```
 
 We added full support of TypeScript in Volto core.
@@ -79,12 +72,14 @@ To support TypeScript in your projects, you must update your project as follows.
 Edit your {file}`package.json`:
 
 ```diff
+"scripts": {
 -    "lint": "./node_modules/eslint/bin/eslint.js --max-warnings=0 'src/**/*.{js,jsx}'",
 -    "lint:fix": "./node_modules/eslint/bin/eslint.js --max-warnings=0 --fix 'src/**/*.{js,jsx}'",
 -    "lint:ci": "./node_modules/eslint/bin/eslint.js --max-warnings=0 -f checkstyle 'src/**/*.{js,jsx}' > eslint.xml",
 +    "lint": "./node_modules/eslint/bin/eslint.js --max-warnings=0 'src/**/*.{js,jsx,ts,tsx,json}'",
 +    "lint:fix": "./node_modules/eslint/bin/eslint.js --fix 'src/**/*.{js,jsx,ts,tsx,json}'",
 +    "lint:ci": "./node_modules/eslint/bin/eslint.js --max-warnings=0 -f checkstyle 'src/**/*.{js,jsx,ts,tsx,json}' > eslint.xml",
+}
 ```
 
 ```diff
@@ -163,8 +158,9 @@ make develop
 
 ### Upgrade ESlint and use `@babel/eslint-parser`
 
-```{versionchanged} 17.0.0-alpha.22
+```{versionchanged} 17.0.0-alpha.27
 ```
+
 ESlint uses a library to parse the language under analysis.
 The one used was long deprecated and didn't supported both TypeScript and JavaScript.
 We upgraded the ESlint parser to use `@babel/eslint-parser`.
