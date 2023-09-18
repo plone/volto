@@ -69,16 +69,87 @@ If you want to support TypeScript in your projects, you should update your proje
 Make the following changes in your {file}`package.json`:
 
 ```diff
+-    "lint": "./node_modules/eslint/bin/eslint.js --max-warnings=0 'src/**/*.{js,jsx}'",
+-    "lint:fix": "./node_modules/eslint/bin/eslint.js --max-warnings=0 --fix 'src/**/*.{js,jsx}'",
+-    "lint:ci": "./node_modules/eslint/bin/eslint.js --max-warnings=0 -f checkstyle 'src/**/*.{js,jsx}' > eslint.xml",
++    "lint": "./node_modules/eslint/bin/eslint.js --max-warnings=0 'src/**/*.{js,jsx,ts,tsx,json}'",
++    "lint:fix": "./node_modules/eslint/bin/eslint.js --fix 'src/**/*.{js,jsx,ts,tsx,json}'",
++    "lint:ci": "./node_modules/eslint/bin/eslint.js --max-warnings=0 -f checkstyle 'src/**/*.{js,jsx,ts,tsx,json}' > eslint.xml",
+```
+
+```diff
 "devDependencies": {
 +     "@plone/scripts": ^3.0.0,
-+     "@typescript-eslint/eslint-plugin": "5.57.1",
-+     "@typescript-eslint/parser": "5.57.1",
++     "@typescript-eslint/eslint-plugin": "6.7.0",
++     "@typescript-eslint/parser": "6.7.0",
 +     "stylelint-prettier": "1.1.2",
 +     "ts-jest": "^26.4.2",
-+     "ts-loader": "9.4.2",
-+     "typescript": "5.1.6"
++     "ts-loader": "9.4.4",
++     "typescript": "5.2.2"
 }
 ```
+
+```{note}
+Could be that after this, you experience hoisting problems and some packages can't be found on start.
+In that case, make sure you reset your `yarn.lock` by deleting it and start with a clean environment.
+```
+
+In case that you want to use TypeScript in your projects, you'll need to introduce a `tsconfig.json` file in it, and remove the existing `jsconfig.json`. You can use the one provided by de generator as template, or use your own:
+
+```json
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "module": "commonjs",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "paths": {},
+    "baseUrl": "src"
+  },
+  "include": ["src"],
+  "exclude": [
+    "node_modules",
+    "build",
+    "public",
+    "coverage",
+    "src/**/*.test.{js,jsx,ts,tsx}",
+    "src/**/*.spec.{js,jsx,ts,tsx}",
+    "src/**/*.stories.{js,jsx,ts,tsx}"
+  ]
+}
+```
+
+If you are using `mrs-developer` in your project, update the command in `Makefile`:
+
+```diff
+--- a/Makefile
++++ b/Makefile
+@@ -59,7 +59,8 @@ preinstall: ## Preinstall task, checks if missdev (mrs-developer) is present and
+
+ .PHONY: develop
+ develop: ## Runs missdev in the local project (mrs.developer.json should be present)
+-       npx -p mrs-developer missdev --config=jsconfig.json --output=addons --fetch-https
++       if [ -f $$(pwd)/jsconfig.json ]; then npx -p mrs-developer missdev --config=jsconfig.json --output=addons --fetch-https; fi
++       if [ ! -f $$(pwd)/jsconfig.json ]; then npx -p mrs-developer missdev --output=addons --fetch-https; fi
+```
+
+````{note}
+Do not forget to run `mrs-developer` after doing it, so the configuration gets in the right place (`tsconfig.json`) now.
+Run
+```shell
+make develop
+```
+````
 
 ### Upgrade ESlint and use `@babel/eslint-parser`
 
