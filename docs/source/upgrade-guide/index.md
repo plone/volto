@@ -62,11 +62,21 @@ You still have the freedom to develop using JavaScript.
 It's your choice whether you want to do it in TypeScript.
 In the past, you could add TypeScript support for Volto add-ons.
 It's also available for projects now, if you upgrade dependencies (see next section).
+```{versionadded} 17.0.0-alpha.22
 ```
 
-If you want to support TypeScript in your projects, you should update your projects.
+We added full support of TypeScript in Volto core.
 
-Make the following changes in your {file}`package.json`:
+No existing code has been migrated.
+You may write code in either JavaScript or TypeScript.
+The choice is yours.
+
+Previously developers had the option to support TypeScript only in their Volto add-ons.
+Now it's available in Volto projects, as long as you upgrade your project dependencies.
+
+To support TypeScript in your projects, you must update your project as follows.
+
+Edit your {file}`package.json`:
 
 ```diff
 -    "lint": "./node_modules/eslint/bin/eslint.js --max-warnings=0 'src/**/*.{js,jsx}'",
@@ -90,11 +100,12 @@ Make the following changes in your {file}`package.json`:
 ```
 
 ```{note}
-Could be that after this, you experience hoisting problems and some packages can't be found on start.
+After making this change, you might experience hoisting problems and some packages can't be found on start.
 In that case, make sure you reset your `yarn.lock` by deleting it and start with a clean environment.
 ```
 
-In case that you want to use TypeScript in your projects, you'll need to introduce a `tsconfig.json` file in it, and remove the existing `jsconfig.json`. You can use the one provided by de generator as template, or use your own:
+To use TypeScript in your projects, you'll need to introduce a TypeScript configuration file {file}`tsconfig.json`, and remove the existing file {file}`jsconfig.json`.
+You can use the one provided by the generator as a template, or use your own:
 
 ```json
 {
@@ -129,12 +140,12 @@ In case that you want to use TypeScript in your projects, you'll need to introdu
 }
 ```
 
-If you are using `mrs-developer` in your project, update the command in `Makefile`:
+If you use `mrs-developer` in your project, update the command in {file}`Makefile`:
 
 ```diff
 --- a/Makefile
 +++ b/Makefile
-@@ -59,7 +59,8 @@ preinstall: ## Preinstall task, checks if missdev (mrs-developer) is present and
+preinstall: ## Preinstall task, checks if missdev (mrs-developer) is present and runs it
 
  .PHONY: develop
  develop: ## Runs missdev in the local project (mrs.developer.json should be present)
@@ -144,8 +155,7 @@ If you are using `mrs-developer` in your project, update the command in `Makefil
 ```
 
 ````{note}
-Do not forget to run `mrs-developer` after doing it, so the configuration gets in the right place (`tsconfig.json`) now.
-Run
+After editing your {file}`Makefile`, run `mrs-developer` with the following command, so the configuration gets in the right place ({file}`tsconfig.json`).
 ```shell
 make develop
 ```
@@ -153,6 +163,8 @@ make develop
 
 ### Upgrade ESlint and use `@babel/eslint-parser`
 
+```{versionchanged} 17.0.0-alpha.22
+```
 ESlint uses a library to parse the language under analysis.
 The one used was long deprecated and didn't supported both TypeScript and JavaScript.
 We upgraded the ESlint parser to use `@babel/eslint-parser`.
