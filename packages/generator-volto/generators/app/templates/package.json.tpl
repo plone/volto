@@ -17,6 +17,7 @@
     "stylelint:overrides": "stylelint 'theme/**/*.overrides' 'src/**/*.overrides'",
     "stylelint:fix": "yarn stylelint --fix && yarn stylelint:overrides --fix",
     "test": "razzle test --passWithNoTests",
+    "typecheck": "tsc --project tsconfig.json --noEmit",
     "cypress:open": "make test-acceptance",
     "cypress:run": "test-acceptance-headless",
     "start:prod": "NODE_ENV=production node build/server.js",
