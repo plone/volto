@@ -23,7 +23,7 @@ export default function withQuerystringResults(WrappedComponent) {
     } = props;
     const { settings } = config;
     const querystring = data.querystring || data; // For backwards compat with data saved before Blocks schema. Note, this is also how the Search block passes data to ListingBody
-    const subrequestID = content?.UID + '-' + id;
+    const subrequestID = content?.UID ? `${content?.UID}-${id}` : id;
     const { b_size = settings.defaultPageSize } = querystring; // batchsize
 
     // save the path so it won't trigger dispatch on eager router location change

@@ -55,7 +55,7 @@ const Logout = ({ location }) => {
     }
   }, [history, returnUrl, intl, token]);
 
-  return <Login location={{ query: location.query }} />;
+  return <Login location={{ query: location.query }} isLogout={true} />;
 };
 
 export default Logout;
