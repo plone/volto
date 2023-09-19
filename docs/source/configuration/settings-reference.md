@@ -425,6 +425,22 @@ okRoute
     ```jsx
       config.settings.okRoute = '/site-is-ok'
     ```
+
+siteTitleFormat
+    Volto lets you modify how the site title is built.
+    By default the site title only includes the title of the current page.
+
+    By modifying this configuration setting, you can decide whether to use the title of the navigation root (either the site root or the language root folder) as the second part of the title.
+
+    You can also decide the separator character between the current page title and the site title.
+
+    ```jsx
+        siteTitleFormat: {
+          includeSiteTitle: true,
+          titleAndSiteTitleSeparator: '-',
+        }
+    ```
+
 ```
 
 ## Views settings

@@ -240,6 +240,8 @@ const withSearch = (options) => (WrappedComponent) => {
       editable,
     );
 
+    // TODO: Improve the hook dependencies out of the scope of https://github.com/plone/volto/pull/4662
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const urlQuery = locationSearchData.query
       ? deserializeQuery(locationSearchData.query)
       : [];
@@ -250,6 +252,8 @@ const withSearch = (options) => (WrappedComponent) => {
 
     // TODO: refactor, should use only useLocationStateManager()!!!
     const [searchText, setSearchText] = React.useState(urlSearchText);
+    // TODO: Improve the hook dependencies out of the scope of https://github.com/plone/volto/pull/4662
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const configuredFacets =
       data.facets?.map((facet) => facet?.field?.value) || [];
     const multiFacets = data.facets

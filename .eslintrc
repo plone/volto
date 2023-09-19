@@ -53,8 +53,11 @@
   "overrides": [
     {
       "files": ["**/*.ts", "**/*.tsx"],
-      "extends": ["plugin:@typescript-eslint/recommended", "react-app", "prettier", "plugin:jsx-a11y/recommended"],
-      "plugins": ["@typescript-eslint", "prettier", "react-hooks", "jsx-a11y"],
+      // "react-app" already loads plugin:@typescript-eslint/eslint-plugin
+      // and it complains on having two different versions around.
+      // Re-add it if at some point, we stop relying on it
+      "extends": ["react-app", "prettier", "plugin:jsx-a11y/recommended"],
+      "plugins": ["prettier", "react-hooks", "jsx-a11y"],
       "parser": "@typescript-eslint/parser"
     },
     {
