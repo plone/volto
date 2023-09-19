@@ -14,3 +14,14 @@ dist
 .env.development.local
 .env.test.local
 .env.production.local
+
+.changelog.draft
+
+# yarn 3
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions

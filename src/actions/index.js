@@ -138,6 +138,7 @@ export {
   login,
   loginRenew,
   logout,
+  resetLoginRequest,
 } from '@plone/volto/actions/userSession/userSession';
 export {
   getVocabulary,
@@ -171,3 +172,5 @@ export {
 } from './workingcopy/workingcopy';
 export { getUserSchema } from './userschema/userschema';
 export { getUpgradeInformation, runUpgrade } from './upgrade/upgrade';
+export { getSite } from './site/site';
+export { getNavroot } from './navroot/navroot';
