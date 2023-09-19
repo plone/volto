@@ -4,7 +4,7 @@ import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
 
-import { __test__ as Sitemap, getSitemapPath } from './Sitemap';
+import { __test__ as Sitemap } from './Sitemap';
 
 const mockStore = configureStore();
 
@@ -57,26 +57,5 @@ describe('Sitemap', () => {
     );
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
-  });
-});
-
-describe('getSitemapPath', () => {
-  it('accepts empty path', () => {
-    expect(getSitemapPath('', null)).toBe('');
-  });
-
-  it('accepts a path', () => {
-    expect(getSitemapPath('/page-1/sitemap', null)).toBe('page-1');
-  });
-  it('accepts a path', () => {
-    expect(getSitemapPath('/page-1/sitemap', null)).toBe('page-1');
-  });
-
-  it('uses a language as default root', () => {
-    expect(getSitemapPath('/', 'de')).toBe('de');
-  });
-
-  it('accepts language-rooted paths', () => {
-    expect(getSitemapPath('/de/mission', 'de')).toBe('de/mission');
   });
 });

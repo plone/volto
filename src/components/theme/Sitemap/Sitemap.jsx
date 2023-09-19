@@ -23,12 +23,6 @@ const messages = defineMessages({
   },
 });
 
-export function getSitemapPath(pathname = '', lang) {
-  const prefix = pathname.replace(/\/sitemap$/gm, '').replace(/^\//, '');
-  const path = prefix || lang || '';
-  return path;
-}
-
 /**
  * Sitemap class.
  * @class Sitemap
