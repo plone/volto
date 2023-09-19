@@ -28,12 +28,13 @@ Thus it is safe to run it on top of your project and answer the prompts.
 
 ## Upgrading to Volto 17.x.x
 
-### Ending support for Node.js 14
+### Ending support for Node.js 14 and 16
 
-Long Term Support for {term}`Node.js` 14 by the Node.js community ends in April 2023.
-Volto 17 no longer supports Node.js 14.
-Please update your projects to a Node.js LTS version, where either 16 or 18 is supported at the moment of this writing.
-Version 18 is recommended.
+Long Term Support (LTS) for {term}`Node.js` 14 by the Node.js community ended in April 2023.
+Long Term Support for Node.js 16 by the Node.js community ended in September 2023.
+Volto 17 no longer supports Node.js 14 or 16.
+Please update your projects to a supported Node.js version (18 or 20).
+Version 18 is recommended, as the current LTS version of Node.js.
 
 #### localhost now resolves to an IPv6 address
 
@@ -51,6 +52,120 @@ or use Webpack plugins, you might need to make adjustments.
 
 Razzle has been upgraded to version `4.2.18`.
 It is recommended that you update your project's dependency on Razzle to this version in order to avoid duplication.
+
+### TypeScript support in Volto
+
+```{versionadded} 17.0.0-alpha.27
+```
+
+We added full support of TypeScript in Volto core.
+
+No existing code has been migrated.
+You may write code in either JavaScript or TypeScript.
+The choice is yours.
+
+Previously developers had the option to support TypeScript only in their Volto add-ons.
+Now it's available in Volto projects, as long as you upgrade your project dependencies.
+
+To support TypeScript in your projects, you must update your project as follows.
+
+Edit your {file}`package.json`:
+
+```diff
+"scripts": {
+-    "lint": "./node_modules/eslint/bin/eslint.js --max-warnings=0 'src/**/*.{js,jsx}'",
+-    "lint:fix": "./node_modules/eslint/bin/eslint.js --max-warnings=0 --fix 'src/**/*.{js,jsx}'",
+-    "lint:ci": "./node_modules/eslint/bin/eslint.js --max-warnings=0 -f checkstyle 'src/**/*.{js,jsx}' > eslint.xml",
++    "lint": "./node_modules/eslint/bin/eslint.js --max-warnings=0 'src/**/*.{js,jsx,ts,tsx,json}'",
++    "lint:fix": "./node_modules/eslint/bin/eslint.js --fix 'src/**/*.{js,jsx,ts,tsx,json}'",
++    "lint:ci": "./node_modules/eslint/bin/eslint.js --max-warnings=0 -f checkstyle 'src/**/*.{js,jsx,ts,tsx,json}' > eslint.xml",
+}
+```
+
+```diff
+"devDependencies": {
++     "@plone/scripts": ^3.0.0,
++     "@typescript-eslint/eslint-plugin": "6.7.0",
++     "@typescript-eslint/parser": "6.7.0",
++     "stylelint-prettier": "1.1.2",
++     "ts-jest": "^26.4.2",
++     "ts-loader": "9.4.4",
++     "typescript": "5.2.2"
+}
+```
+
+```{note}
+After making this change, you might experience hoisting problems and some packages can't be found on start.
+In that case, make sure you reset your `yarn.lock` by deleting it and start with a clean environment.
+```
+
+To use TypeScript in your projects, you'll need to introduce a TypeScript configuration file {file}`tsconfig.json`, and remove the existing file {file}`jsconfig.json`.
+You can use the one provided by the generator as a template, or use your own:
+
+```json
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "module": "commonjs",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "paths": {},
+    "baseUrl": "src"
+  },
+  "include": ["src"],
+  "exclude": [
+    "node_modules",
+    "build",
+    "public",
+    "coverage",
+    "src/**/*.test.{js,jsx,ts,tsx}",
+    "src/**/*.spec.{js,jsx,ts,tsx}",
+    "src/**/*.stories.{js,jsx,ts,tsx}"
+  ]
+}
+```
+
+If you use `mrs-developer` in your project, update the command in {file}`Makefile`:
+
+```diff
+--- a/Makefile
++++ b/Makefile
+preinstall: ## Preinstall task, checks if missdev (mrs-developer) is present and runs it
+
+ .PHONY: develop
+ develop: ## Runs missdev in the local project (mrs.developer.json should be present)
+-       npx -p mrs-developer missdev --config=jsconfig.json --output=addons --fetch-https
++       if [ -f $$(pwd)/jsconfig.json ]; then npx -p mrs-developer missdev --config=jsconfig.json --output=addons --fetch-https; fi
++       if [ ! -f $$(pwd)/jsconfig.json ]; then npx -p mrs-developer missdev --output=addons --fetch-https; fi
+```
+
+````{note}
+After editing your {file}`Makefile`, run `mrs-developer` with the following command, so the configuration gets in the right place ({file}`tsconfig.json`).
+```shell
+make develop
+```
+````
+
+### Upgrade ESlint and use `@babel/eslint-parser`
+
+```{versionchanged} 17.0.0-alpha.27
+```
+
+ESlint uses a library to parse the language under analysis.
+The one used was long deprecated and didn't supported both TypeScript and JavaScript.
+We upgraded the ESlint parser to use `@babel/eslint-parser`.
+This means when you upgrade your project, some new violations may appear.
+Once upgraded, run the linters again to make sure that your code is free of violations.
 
 ### `BlockChooser` component now uses `popperjs` internally
 
@@ -89,9 +204,10 @@ If you want to retain the old behavior (and no use `apiExpanders` at all), you n
 config.settings.apiExpanders = [];
 ```
 
-### Cypress upgraded to 12.17.1
+### Cypress upgraded to 13.1.0
 
 As usual in a Volto major version release, Cypress has been upgraded to the latest version to date.
+We are moving from Cypress 11 to Cypress 13.
 There are no major changes to the way the tests are implemented and run.
 
 However, it could be that your Cypress boilerplate must be updated in your projects and add-ons if you use `@testing-library/cypress` in your tests.
@@ -108,6 +224,8 @@ from {file}`cypress/support/commands.js` to {file}`cypress/support/e2e.js`, in c
 This is because the overrides that `@testing-library/cypress` introduce can be run only once.
 Since there are some commands that can call exports in {file}`cypress/support/commands.js`, this import may be run more than once, and then it errors.
 So you have to make sure that import is run only once while the tests are run.
+
+Check the official [Cypress Migration Guide](https://docs.cypress.io/guides/references/migration-guide) for more information.
 
 ### New Image component
 

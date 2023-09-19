@@ -8,6 +8,42 @@
 
 <!-- towncrier release notes start -->
 
+## 7.0.0-alpha.8 (2023-09-18)
+
+### Bugfix
+
+- Add missing empty lock to acceptance generator addon folder @sneridagh [#5193](https://github.com/plone/volto/issues/5193)
+
+
+## 7.0.0-alpha.7 (2023-09-18)
+
+### Feature
+
+- TypeScript support in core @sneridagh @ninanoleto [#4462](https://github.com/plone/volto/issues/4462)
+
+### Bugfix
+
+- Fix addon i18n local command when executed outside the scope of a Volto project. @sneridagh [#5181](https://github.com/plone/volto/issues/5181)
+
+
+## 7.0.0-alpha.6 (2023-09-14)
+
+### Bugfix
+
+- Fix addon i18n local command when executed outside the scope of a Volto project. @sneridagh [#5181](https://github.com/plone/volto/issues/5181)
+
+
+## 7.0.0-alpha.5 (2023-09-13)
+
+### Feature
+
+- Add dockerized approach to add-on generator @sneridagh [#5167](https://github.com/plone/volto/issues/5167)
+
+### Bugfix
+
+- Fix whitespace in empty locales created by the generator. @davisagli [#4737](https://github.com/plone/volto/issues/4737)
+
+
 ## 7.0.0-alpha.4 (2023-04-13)
 
 ### Bugfix
