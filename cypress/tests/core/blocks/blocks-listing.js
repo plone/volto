@@ -1,7 +1,7 @@
 describe('Listing Block Tests', () => {
   beforeEach(() => {
-    // Wait a bit to previous teardown to complete correctly because Heisenbug in this point
-    // cy.wait(2000);
+    cy.intercept('GET', `/**/*?expand*`).as('content');
+    cy.intercept('GET', '/**/Document').as('schema');
     // given a logged in editor and a page in edit mode
     cy.autologin();
     cy.createContent({
@@ -14,11 +14,7 @@ describe('Listing Block Tests', () => {
     cy.removeContent({ path: 'Members' });
 
     cy.visit('/');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('');
+    cy.wait('@content');
   });
 
   it('Add Listing block with no results', () => {
@@ -937,12 +933,15 @@ describe('Listing Block Tests', () => {
 
     cy.get('#field-limit-3-querystring').click().clear().type('0');
     cy.get('#field-b_size-4-querystring').click().type('2');
-    cy.get('.ui.pagination.menu a[value="2"]').first().click();
     cy.get('#toolbar-save').click();
     cy.wait('@save');
     cy.wait('@content');
     //test second pagination click
+    cy.get('.ui.pagination.menu a[value="1"][type="pageItem"]')
+      .first()
+      .click({ force: true });
     cy.get('.ui.pagination.menu a[value="2"]').first().click({ force: true });
+    cy.wait(1000);
     cy.url().should('include', '?page=2');
     //on logo click go to home page and remove ?page=2 from path
     cy.get('.logo').first().click();

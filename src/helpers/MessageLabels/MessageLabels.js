@@ -172,6 +172,28 @@ export const messages = defineMessages({
     id: 'Roles',
     defaultMessage: 'Roles',
   },
+  addUserFormPasswordAndSendPasswordTogetherNotAllowed: {
+    id:
+      'It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them.',
+    defaultMessage:
+      'It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them.',
+  },
+  userSearchNoResults: {
+    id: 'There are no users with the searched criteria',
+    defaultMessage: 'There are no users with the searched criteria',
+  },
+  groupSearchNoResults: {
+    id: 'There are no groups with the searched criteria',
+    defaultMessage: 'There are no groups with the searched criteria',
+  },
+  updateUserFormTitle: {
+    id: 'Update User',
+    defaultMessage: 'Update User',
+  },
+  updateUserSuccess: {
+    id: 'User updated successfuly',
+    defaultMessage: 'User updated successfuly',
+  },
   updateRoles: {
     id: 'User roles updated',
     defaultMessage: 'User roles updated',
@@ -234,19 +256,19 @@ export const messages = defineMessages({
   },
   copyBlocks: {
     id: 'Copy blocks',
-    defaultMesages: 'Copy blocks',
+    defaultMessage: 'Copy blocks',
   },
   cutBlocks: {
     id: 'Cut blocks',
-    defaultMesages: 'Cut blocks',
+    defaultMessage: 'Cut blocks',
   },
   pasteBlocks: {
     id: 'Paste blocks',
-    defaultMesages: 'Paste blocks',
+    defaultMessage: 'Paste blocks',
   },
   deleteBlocks: {
     id: 'Delete blocks',
-    defaultMesages: 'Delete blocks',
+    defaultMessage: 'Delete blocks',
   },
   showAllUserButton: {
     id: 'Show All',
@@ -312,6 +334,12 @@ export const messages = defineMessages({
     id: 'flush intIds and rebuild relations',
     defaultMessage: 'flush intIds and rebuild relations',
   },
+  flushAndRebuildRelationsHints: {
+    id: 'flushAndRebuildRelationsHints',
+    defaultMessage:
+      '<ul><li>Regenerate intIds (tokens of relations in relation catalog)</li><li>Rebuild relations</li></ul><p>Check the log for details!</p><p><b>Warning</b>: If you have add-ons relying on intIds, you should not flush them.</p>',
+  },
+
   addPotentialTargetsPath: {
     id: 'target path',
     defaultMessage: 'target path',

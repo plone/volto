@@ -1,13 +1,10 @@
 describe('Add Content Tests', () => {
   beforeEach(() => {
+    cy.intercept('GET', `/**/*?expand*`).as('content');
     // give a logged in editor and the site root
     cy.autologin();
     cy.visit('/');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('');
+    cy.wait('@content');
   });
 
   it('As editor I can add a file', function () {
@@ -25,11 +22,7 @@ describe('Add Content Tests', () => {
     cy.wait(2000);
 
     cy.get('#toolbar-save').focus().click();
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('file.pdf');
+    cy.wait('@content');
 
     // then a new file should have been created
     cy.url().should('eq', Cypress.config().baseUrl + '/file.pdf');
@@ -45,6 +38,8 @@ describe('Add Content Tests', () => {
 
     // then I a new page has been created
     cy.get('#toolbar-save').click();
+    cy.wait('@content');
+
     cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
 
     cy.get('.navigation .item.active').should('have.text', 'My Page');
@@ -57,6 +52,8 @@ describe('Add Content Tests', () => {
     cy.getSlateTitle().focus().click().type('My Page').contains('My Page');
     cy.getSlateEditorAndType('This is the text.').contains('This is the text');
     cy.get('#toolbar-save').click();
+    cy.wait('@content');
+
     cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
 
     // then a new page with a text block has been added
@@ -82,18 +79,19 @@ describe('Add Content Tests', () => {
     cy.get('.field-wrapper-relatedItems button').click();
     cy.get('.sidebar-container .object-listing').contains('My Page').click();
     cy.get('#toolbar-save').click();
+    cy.wait('@content');
+
     cy.get('#navigation').contains('Home').click();
     cy.get('.toolbar-actions').contains('Contents').click();
     cy.findByLabelText('/my-page').children('td').eq(1).click();
 
     cy.get('.top-menu-menu .delete').click();
-    cy.get('.modal.active').contains('Potential link breakage');
+    cy.get('.modal.active').contains('View broken links list');
     cy.get('.actions').contains('Delete').click();
   });
 
   it('As editor I can add an image', function () {
     cy.intercept('POST', '*').as('saveImage');
-    cy.intercept('GET', '/**/image.png').as('getImage');
     // when I add an image
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-image').click();
@@ -116,7 +114,7 @@ describe('Add Content Tests', () => {
 
     cy.get('#toolbar-save').click();
     cy.wait('@saveImage');
-    cy.wait('@getImage');
+    cy.wait('@content');
 
     cy.url().should('eq', Cypress.config().baseUrl + '/image.png');
 
@@ -167,7 +165,6 @@ describe('Add Content Tests', () => {
 
   it('As editor I can add a Link (with an external link)', function () {
     cy.intercept('POST', '*').as('saveLink');
-    cy.intercept('GET', '/**/my-link').as('getLink');
     // When I add a link
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-link').click();
@@ -182,7 +179,7 @@ describe('Add Content Tests', () => {
 
     cy.get('#toolbar-save').click();
     cy.wait('@saveLink');
-    cy.wait('@getLink');
+    cy.wait('@content');
 
     cy.url().should('eq', Cypress.config().baseUrl + '/my-link');
 
@@ -216,7 +213,7 @@ describe('Add Content Tests', () => {
 
     cy.get('#toolbar-save').click();
     cy.wait('@saveLink');
-    cy.wait('@getLink');
+    cy.wait('@content');
 
     cy.url().should('eq', Cypress.config().baseUrl + '/my-link');
 

@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Ts test component Renders 1`] = `
+<div>
+  Test a TS component
+</div>
+`;

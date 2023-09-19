@@ -11,6 +11,7 @@ import {
   createRelations,
   deleteRelations,
   queryRelations,
+  resetSearchContent,
   searchContent,
 } from '@plone/volto/actions';
 
@@ -28,9 +29,10 @@ const ListingTemplate = ({
   const MAX = 40; // Maximum of rows and columns
   const MAX_RELATIONS = 1000;
 
-  const stats = useSelector((state) => state.relations?.stats || null);
+  const stats = useSelector((state) => state.relations?.stats?.data || null);
+
   let relations = useSelector(
-    (state) => state.relations?.relations?.[relationtype]?.items || [],
+    (state) => state.relations?.relations?.data?.[relationtype]?.items || [],
   );
 
   let potential_targets_objects = useSelector(
@@ -49,7 +51,8 @@ const ListingTemplate = ({
 
   // Editable if plone.api.relations available
   const editable = useSelector(
-    (state) => state.relations?.relations?.[relationtype]?.readonly !== true,
+    (state) =>
+      state.relations?.relations?.data?.[relationtype]?.readonly !== true,
   );
 
   let relationMatrix = {};
@@ -192,8 +195,7 @@ const ListingTemplate = ({
         ),
       );
     } else {
-      // TODO Better just reset redux store
-      dispatch(searchContent('/findstenichätsch', null, 'potential_targets'));
+      dispatch(resetSearchContent('potential_targets'));
     }
 
     // Fetch fresh potential sources
@@ -211,8 +213,7 @@ const ListingTemplate = ({
         ),
       );
     } else {
-      // TODO Better just reset redux store
-      dispatch(searchContent('/findstenichätsch', null, 'potential_sources'));
+      dispatch(resetSearchContent('potential_sources'));
     }
   }, [
     dispatch,

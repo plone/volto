@@ -1,4 +1,3 @@
-import '@testing-library/cypress/add-commands';
 import { getIfExists } from '../helpers';
 import { ploneAuth } from './constants';
 
@@ -20,6 +19,25 @@ const ploneAuthObj = {
   user: ploneAuth[0],
   pass: ploneAuth[1],
 };
+
+export * from './volto-slate';
+
+// --- isInViewport ----------------------------------------------------------
+Cypress.Commands.add('isInViewport', (element) => {
+  cy.get(element).then(($el) => {
+    const windowInnerWidth = Cypress.config(`viewportWidth`);
+    const windowInnerHeight = Cypress.config(`viewportHeight`);
+    const rect = $el[0].getBoundingClientRect();
+
+    const rightBoundOfWindow = windowInnerWidth;
+    const bottomBoundOfWindow = windowInnerHeight;
+
+    expect(rect.top).to.be.at.least(0);
+    expect(rect.left).to.be.at.least(0);
+    expect(rect.right).to.be.lessThan(rightBoundOfWindow);
+    expect(rect.bottom).to.be.lessThan(bottomBoundOfWindow);
+  });
+});
 
 // --- AUTOLOGIN -------------------------------------------------------------
 Cypress.Commands.add('autologin', (usr, pass) => {
@@ -671,10 +689,7 @@ Cypress.Commands.add(
 Cypress.Commands.add('toolbarSave', () => {
   // Save
   cy.get('#toolbar-save', { timeout: 10000 }).click();
-  cy.waitForResourceToLoad('@navigation');
-  cy.waitForResourceToLoad('@breadcrumbs');
-  cy.waitForResourceToLoad('@actions');
-  cy.waitForResourceToLoad('@types');
+  cy.waitForResourceToLoad('');
 });
 
 Cypress.Commands.add('clearSlate', (selector) => {
@@ -765,13 +780,16 @@ Cypress.Commands.add('lineBreakInSlate', { prevSubject: true }, (subject) => {
   );
 });
 
-Cypress.Commands.add('setSlateSelection', (subject, query, endQuery) => {
-  cy.get('.slate-editor.selected [contenteditable=true]')
-    .focus()
-    // .click()
-    .setSelection(subject, query, endQuery)
-    .wait(1000); // this wait is needed for the selection change to be detected after
-});
+Cypress.Commands.add(
+  'setSlateSelection',
+  (subject, query, endQuery, wait = 1000) => {
+    cy.get('.slate-editor.selected [contenteditable=true]')
+      .focus()
+      // .click()
+      .setSelection(subject, query, endQuery)
+      .wait(wait); // this wait is needed for the selection change to be detected after
+  },
+);
 
 Cypress.Commands.add('getSlateEditorAndType', (type) => {
   cy.getSlate().focus().click().type(type);
@@ -789,9 +807,9 @@ Cypress.Commands.add('setSlateCursor', (subject, query, endQuery) => {
     .wait(1000); // this wait is needed for the selection change to be detected after
 });
 
-Cypress.Commands.add('clickSlateButton', (button) => {
+Cypress.Commands.add('clickSlateButton', (button, timeout = 1000) => {
   cy.get(`.slate-inline-toolbar .button-wrapper a[title="${button}"]`, {
-    timeout: 1000,
+    timeout,
   }).click({ force: true }); // force click is needed to ensure the button in visible in view.
 });
 

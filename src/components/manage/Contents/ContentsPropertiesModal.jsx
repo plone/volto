@@ -1,15 +1,10 @@
-/**
- * Contents properties modal.
- * @module components/manage/Contents/ContentsPropertiesModal
- */
-
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { isEmpty, map } from 'lodash';
-import { defineMessages, injectIntl } from 'react-intl';
+import { defineMessages, useIntl } from 'react-intl';
 
+import { usePrevious } from '@plone/volto/helpers';
 import { updateContent } from '@plone/volto/actions';
 import { ModalForm } from '@plone/volto/components';
 
@@ -70,166 +65,98 @@ const messages = defineMessages({
     defaultMessage:
       'If selected, this item will not appear in the navigation tree',
   },
-  yes: {
-    id: 'Yes',
-    defaultMessage: 'Yes',
-  },
-  no: {
-    id: 'No',
-    defaultMessage: 'No',
-  },
 });
 
-/**
- * ContentsPropertiesModal class.
- * @class ContentsPropertiesModal
- * @extends Component
- */
-class ContentsPropertiesModal extends Component {
-  /**
-   * Property types.
-   * @property {Object} propTypes Property types.
-   * @static
-   */
-  static propTypes = {
-    updateContent: PropTypes.func.isRequired,
-    items: PropTypes.arrayOf(PropTypes.string).isRequired,
-    request: PropTypes.shape({
-      loading: PropTypes.bool,
-      loaded: PropTypes.bool,
-    }).isRequired,
-    open: PropTypes.bool.isRequired,
-    onOk: PropTypes.func.isRequired,
-    onCancel: PropTypes.func.isRequired,
-  };
+const ContentsPropertiesModal = (props) => {
+  const { onCancel, onOk, open, items } = props;
+  const intl = useIntl();
+  const dispatch = useDispatch();
+  const request = useSelector((state) => state.content.update);
+  const prevrequestloading = usePrevious(request.loading);
 
-  /**
-   * Constructor
-   * @method constructor
-   * @param {Object} props Component properties
-   * @constructs ContentsUploadModal
-   */
-  constructor(props) {
-    super(props);
-    this.onSubmit = this.onSubmit.bind(this);
-  }
-
-  /**
-   * Component will receive props
-   * @method componentWillReceiveProps
-   * @param {Object} nextProps Next properties
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (this.props.request.loading && nextProps.request.loaded) {
-      this.props.onOk();
+  useEffect(() => {
+    if (prevrequestloading && request.loaded) {
+      onOk();
     }
-  }
+  }, [onOk, prevrequestloading, request.loaded]);
 
-  /**
-   * Submit handler
-   * @method onSubmit
-   * @param {Object} data Form data
-   * @returns {undefined}
-   */
-  onSubmit(data) {
+  const onSubmit = (data) => {
     if (isEmpty(data)) {
-      this.props.onOk();
+      onOk();
     } else {
-      this.props.updateContent(
-        this.props.items,
-        map(this.props.items, () => data),
+      dispatch(
+        updateContent(
+          items,
+          map(items, () => data),
+        ),
       );
     }
-  }
+  };
 
-  /**
-   * Render method.
-   * @method render
-   * @returns {string} Markup for the component.
-   */
-  render() {
-    return (
-      this.props.open && (
-        <ModalForm
-          open={this.props.open}
-          onSubmit={this.onSubmit}
-          onCancel={this.props.onCancel}
-          title={this.props.intl.formatMessage(messages.properties)}
-          schema={{
-            fieldsets: [
-              {
-                id: 'default',
-                title: this.props.intl.formatMessage(messages.default),
-                fields: [
-                  'effective',
-                  'expires',
-                  'rights',
-                  'creators',
-                  'exclude_from_nav',
-                ],
-              },
-            ],
-            properties: {
-              effective: {
-                description: this.props.intl.formatMessage(
-                  messages.effectiveDescription,
-                ),
-                title: this.props.intl.formatMessage(messages.effectiveTitle),
-                type: 'string',
-                widget: 'datetime',
-              },
-              expires: {
-                description: this.props.intl.formatMessage(
-                  messages.expiresDescription,
-                ),
-                title: this.props.intl.formatMessage(messages.expiresTitle),
-                type: 'string',
-                widget: 'datetime',
-              },
-              rights: {
-                description: this.props.intl.formatMessage(
-                  messages.rightsDescription,
-                ),
-                title: this.props.intl.formatMessage(messages.rightsTitle),
-                type: 'string',
-                widget: 'textarea',
-              },
-              creators: {
-                description: this.props.intl.formatMessage(
-                  messages.creatorsDescription,
-                ),
-                title: this.props.intl.formatMessage(messages.creatorsTitle),
-                type: 'array',
-              },
-              exclude_from_nav: {
-                description: this.props.intl.formatMessage(
-                  messages.excludeFromNavDescription,
-                ),
-                title: this.props.intl.formatMessage(
-                  messages.excludeFromNavTitle,
-                ),
-                type: 'array',
-                choices: [
-                  [true, this.props.intl.formatMessage(messages.yes)],
-                  [false, this.props.intl.formatMessage(messages.no)],
-                ],
-              },
+  return (
+    open && (
+      <ModalForm
+        open={open}
+        onSubmit={onSubmit}
+        onCancel={onCancel}
+        title={intl.formatMessage(messages.properties)}
+        schema={{
+          fieldsets: [
+            {
+              id: 'default',
+              title: intl.formatMessage(messages.default),
+              fields: [
+                'effective',
+                'expires',
+                'rights',
+                'creators',
+                'exclude_from_nav',
+              ],
             },
-            required: [],
-          }}
-        />
-      )
-    );
-  }
-}
+          ],
+          properties: {
+            effective: {
+              description: intl.formatMessage(messages.effectiveDescription),
+              title: intl.formatMessage(messages.effectiveTitle),
+              type: 'string',
+              widget: 'datetime',
+            },
+            expires: {
+              description: intl.formatMessage(messages.expiresDescription),
+              title: intl.formatMessage(messages.expiresTitle),
+              type: 'string',
+              widget: 'datetime',
+            },
+            rights: {
+              description: intl.formatMessage(messages.rightsDescription),
+              title: intl.formatMessage(messages.rightsTitle),
+              type: 'string',
+              widget: 'textarea',
+            },
+            creators: {
+              description: intl.formatMessage(messages.creatorsDescription),
+              title: intl.formatMessage(messages.creatorsTitle),
+              type: 'array',
+            },
+            exclude_from_nav: {
+              description: intl.formatMessage(
+                messages.excludeFromNavDescription,
+              ),
+              title: intl.formatMessage(messages.excludeFromNavTitle),
+              type: 'boolean',
+            },
+          },
+          required: [],
+        }}
+      />
+    )
+  );
+};
 
-export default compose(
-  injectIntl,
-  connect(
-    (state) => ({
-      request: state.content.update,
-    }),
-    { updateContent },
-  ),
-)(ContentsPropertiesModal);
+ContentsPropertiesModal.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.string).isRequired,
+  open: PropTypes.bool.isRequired,
+  onOk: PropTypes.func.isRequired,
+  onCancel: PropTypes.func.isRequired,
+};
+export default ContentsPropertiesModal;

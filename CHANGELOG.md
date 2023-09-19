@@ -3,10 +3,254 @@
 <!-- You should *NOT* be adding new change log entries to this file.
      You should create a file in the news directory instead.
      For helpful instructions, please see:
-     https://6.docs.plone.org/volto/developer-guidelines/contributing.html#create-a-pull-request
+     https://6.docs.plone.org/contributing/index.html#contributing-change-log-label
 -->
 
 <!-- towncrier release notes start -->
+
+## 17.0.0-alpha.27 (2023-09-18)
+
+### Feature
+
+- TypeScript support in core @sneridagh @ninanoleto [#4662](https://github.com/plone/volto/issues/4662)
+- Add external className to slate Link view. @iFlameing [#5109](https://github.com/plone/volto/issues/5109)
+
+### Bugfix
+
+- Update delete-content modal to simplify text and improve UX @danlavrz [#4786](https://github.com/plone/volto/issues/4786)
+
+
+## 17.0.0-alpha.26 (2023-09-14)
+
+### Breaking
+
+- Upgrade to Cypress 13 @sneridagh [#5163](https://github.com/plone/volto/issues/5163)
+- Removed support for Node.js 16. It is no longer supported by the Node.js community. @davisagli [#5166](https://github.com/plone/volto/issues/5166)
+
+### Feature
+
+- Use the `@navroot` endpoint to build the `title` tag. @erral
+
+  Use the `@site` endpoint to render the logo. @erral
+
+  Register a widget to set the logo in the site control panel. @erral [#3537](https://github.com/plone/volto/issues/3537)
+- Refactor Navigation -@Tishasoumya-02 [#4076](https://github.com/plone/volto/issues/4076)
+- Added loading spinner and disable search button while data is fetching. @tedw87 [#4551](https://github.com/plone/volto/issues/4551)
+- User Control panel improvements. See #4551 @erral [#4572](https://github.com/plone/volto/issues/4572)
+- Messages Component Refactor - @Tishasoumya-02 [#4926](https://github.com/plone/volto/issues/4926)
+- Refactor Login -@Tishasoumya-02 [#4933](https://github.com/plone/volto/issues/4933)
+- Add external className to UniversalLink for external link. @iFlameing [#5109](https://github.com/plone/volto/issues/5109)
+- Updated Spanish translation @macagua [#5120](https://github.com/plone/volto/issues/5120)
+- (feat): Update toc block entries @dobri1408 [#5146](https://github.com/plone/volto/issues/5146)
+- Views cypress test -@Tishasoumya [#5149](https://github.com/plone/volto/issues/5149)
+- Added support for Node.js 20. @davisagli [#5166](https://github.com/plone/volto/issues/5166)
+- Cypress test to test if 'Search results: number' text is present @ionlizarazu [#5171](https://github.com/plone/volto/issues/5171)
+
+### Bugfix
+
+- Fix for responsive error in the login page when the width of the screen decreases. @suman9893 [#3250](https://github.com/plone/volto/issues/3250)
+- Fix back button in the search block to execute the search by adding two useEffects that update the facets and search data based on the current URL. @MihaelaCretu11 [#4402](https://github.com/plone/volto/issues/4402)
+- fix : RecursiveWidget is incorrectly translated. @suman9893 [#4503](https://github.com/plone/volto/issues/4503)
+- Fix use of CSS modules in webpack 5. @wesleybl [#5019](https://github.com/plone/volto/issues/5019)
+- Fix toc accessibility issue @dobri1408 [#5058](https://github.com/plone/volto/issues/5058)
+- Fix storybook config for project generator. Add support for SCSS, upgrade to webpack 5 in there as well. @sneridagh [#5132](https://github.com/plone/volto/issues/5132)
+- Don't show ``No value`` option in SelectWidget and ArrayWidget if default value is 0. @wesleybl [#5151](https://github.com/plone/volto/issues/5151)
+- Fix SelectWidget throwing error when editing a recently created content. @iFlameing [#5154](https://github.com/plone/volto/issues/5154)
+- Fix editing layout for blocks using schema enhancers. @iFlameing, @davisagli [#5158](https://github.com/plone/volto/issues/5158)
+- Fix ContentRules add and edit forms for languages other than English. @ericof [#5161](https://github.com/plone/volto/issues/5161)
+- Fix search block search results number @ionlizarazu [#5171](https://github.com/plone/volto/issues/5171)
+- fix flaky cypress in blocks-listing.js @nileshgulia1 [#5173](https://github.com/plone/volto/issues/5173)
+- Fix regression in forms input in toolbar height related to (#5115) @sneridagh [#5176](https://github.com/plone/volto/issues/5176)
+
+### Documentation
+
+- Fix linkcheckbroken 301 redirect to https://www.dlr.de/de @stevepiercy [#5131](https://github.com/plone/volto/issues/5131)
+
+
+## 17.0.0-alpha.25 (2023-08-25)
+
+### Breaking
+
+- Spin off relation stats action. Get relation stats with getRelationStats() instead of with queryRelations(). @ksuess
+  Refactor relations actions: slightly change the shape of the redux state for `queryRelations` to follow common signatures. @ksuess [#5041](https://github.com/plone/volto/issues/5041)
+
+### Feature
+
+- Refactor Comment -@Tishasoumya-02 [#4074](https://github.com/plone/volto/issues/4074)
+- Refactor Logout component @Tishasoumya-02 [#4860](https://github.com/plone/volto/issues/4860)
+- Refactore SearchTags @Tishasoumya-02 [#4873](https://github.com/plone/volto/issues/4873)
+
+### Bugfix
+
+- Allow a user to register when they use an email address as their username. [#5031](https://github.com/plone/volto/issues/5031) @mehedikhan72 [#5031](https://github.com/plone/volto/issues/5031)
+- Fix querystringResults subrequests id, to work properly in duplicate pages where blocks id's are the same. @giuliaghisini [#5070](https://github.com/plone/volto/issues/5070)
+- Fix i18n for link settings fieldset in the image block @iRohitSingh [#5075](https://github.com/plone/volto/issues/5075)
+- Prevent caching the outdated browser message in a shared cache. @davisagli [#5076](https://github.com/plone/volto/issues/5076)
+- Fix accessibility of the content folder buttons. @SaraBianchi [#5101](https://github.com/plone/volto/issues/5101)
+- For folders inside navigation roots, properly fetch navigation from the
+  navroot, rather then the site root  @tiberiuichim [#5106](https://github.com/plone/volto/issues/5106)
+- Fix uncached case when the widget is slate on diff @dobri1408 [#5107](https://github.com/plone/volto/issues/5107)
+- Fix load addon translations: last addon translations wins @giuliaghisini [#5113](https://github.com/plone/volto/issues/5113)
+- [Visual bugfix] Match the original mockups for PastanagaUI in regards of the error messages in form field elements @sneridagh [#5115](https://github.com/plone/volto/issues/5115)
+- Fix default toc renderer for nested entries @pnicolli [#5116](https://github.com/plone/volto/issues/5116)
+- Fix inherit checkbox in sharing view @sneridagh [#5514](https://github.com/plone/volto/issues/5514)
+
+### Internal
+
+- Improved spellcheck to keep spellings consistent. @chirayu-humar [#1190](https://github.com/plone/volto/issues/1190)
+
+### Documentation
+
+- Update links to contributing. @stevepiercy [#5084](https://github.com/plone/volto/issues/5084)
+- Accept `plone` and `volto` in labels with janky regex. Include Vale styles directory for checking spelling and styles. @stevepiercy [#5095](https://github.com/plone/volto/issues/5095)
+
+
+## 17.0.0-alpha.24 (2023-08-09)
+
+### Breaking
+
+- Update `@plone/scripts` to 3.0.0. @davisagli [#5040](https://github.com/plone/volto/issues/5040)
+
+### Bugfix
+
+- Fix handling of exceptions in reducers. @davisagli [#5069](https://github.com/plone/volto/issues/5069)
+- Add missing i18n for ToC block. @davisagli [#5073](https://github.com/plone/volto/issues/5073)
+
+### Documentation
+
+- Fix 302 redirect in changelog. @stevepiercy [#5068](https://github.com/plone/volto/issues/5068)
+
+### Internal
+
+- Add https://www.dlr.de/de to "Volto in production" list. @tisto [#5112](https://github.com/plone/volto/pull/5112)
+
+## 17.0.0-alpha.23 (2023-07-28)
+
+### Bugfix
+
+- Fix regression from v17a22: It was not possible to select a block in a grid
+  column unless the grid was already selected. @davisagli
+
+  Fix regression from v17a22: Block outline was blocking clicks in some cases.
+  @davisagli [#5039](https://github.com/plone/volto/issues/5039)
+
+
+## 17.0.0-alpha.22 (2023-07-28)
+
+### Feature
+
+- Refactor Delete -@Tishasoumya [#4890](https://github.com/plone/volto/issues/4890)
+- Refactor workflow -@Tishasoumya-02 [#4902](https://github.com/plone/volto/issues/4902)
+- Refactor Request Reset Password-@Tishasoumya-02 [#4938](https://github.com/plone/volto/issues/4938)
+- Refactor Actions-@Tishasoumya-02 [#4939](https://github.com/plone/volto/issues/4939)
+- Refactor Blocks/Maps/Edit component -@Tishasoumya-02 [#4958](https://github.com/plone/volto/issues/4958)
+- Updated Italian translations @sabrina-bongiovanni [#4987](https://github.com/plone/volto/issues/4987)
+- Made selectedView and className props available in the SearchBlockView.jsx to improve styling development. @danalvrz [#4997](https://github.com/plone/volto/issues/4997)
+
+### Bugfix
+
+- Fix Volto contents - set properties Exclude from navigation - bad request, set exclude_from_nav to boolean [#4855](https://github.com/plone/volto/issues/4855)
+- Add XSendfile headers to files and images middleware @instification [#4984](https://github.com/plone/volto/issues/4984)
+- search-block: translate some missing strings to german and fix a typo. @pbauer [#4996](https://github.com/plone/volto/issues/4996)
+- Add image block className support (Style wrapper). @sneridagh [#5018](https://github.com/plone/volto/issues/5018)
+- Fix for 'no value' entry in table of content field. @satyam4p [#5022](https://github.com/plone/volto/issues/5022)
+- Fix updating roles when username contains a period (.). @nileshgulia1 [#5025](https://github.com/plone/volto/issues/5025)
+- Fix hover and focused border for block child. @claudiaifrim [#5028](https://github.com/plone/volto/issues/5028)
+- Enhance display and repairing of broken relations. @ksuess [#5033](https://github.com/plone/volto/issues/5033)
+- Fix selecting grid block when a sub-block is selected. @davisagli [#5036](https://github.com/plone/volto/issues/5036)
+- Update versions of semver and release-it. @davisagli [#5053](https://github.com/plone/volto/issues/5053)
+
+### Documentation
+
+- Add short comment for easier finding registered components. @ksuess [#5017](https://github.com/plone/volto/issues/5017)
+
+
+## 17.0.0-alpha.21 (2023-07-23)
+
+### Breaking
+
+- Added new Image component to render optimized images @pnicolli @davisagli [#3337](https://github.com/plone/volto/issues/3337)
+
+### Feature
+
+- Add getFieldURL helper function used to get the url value of a field based on its structure. @razvanMiu [#2252](https://github.com/plone/volto/issues/2252)
+
+### Bugfix
+
+- Fix delete confirmation to handle empty `breaches`. @davisagli [#4832](https://github.com/plone/volto/issues/4832)
+
+### Internal
+
+- Upgrade to Cypress 12.17.1 (latest) @sneridagh [#4981](https://github.com/plone/volto/issues/4981)
+
+
+## 17.0.0-alpha.20 (2023-07-18)
+
+### Feature
+
+- Use all the apiExpanders in use, so we perform a single request for getting all the required data. @sneridagh [#4946](https://github.com/plone/volto/issues/4946)
+
+### Bugfix
+
+- Fix the condition deciding on listing pagination format so it takes into account container blocks as well @sneridagh [#4978](https://github.com/plone/volto/issues/4978)
+
+
+## 17.0.0-alpha.19 (2023-07-18)
+
+### Feature
+
+- Add /ok route as an express middleware @ionlizarazu [#4375](https://github.com/plone/volto/issues/4375)
+- Add `Links to item` view (available via object's more menu) @pgrunewald [#4787](https://github.com/plone/volto/issues/4787)
+- Tune 'Links to item' view to 'Links and references' view. Show all relation types. @ksuess @stevepiercy [#4842](https://github.com/plone/volto/issues/4842)
+- Update browserlist to latest @sneridagh [#4977](https://github.com/plone/volto/issues/4977)
+
+### Bugfix
+
+- Handle condition for yearly frequency in recurrence @BhuvaneshPatil [#4498](https://github.com/plone/volto/issues/4498)
+- Fix search block input clear button doesn't reset the search @iFlameing [#4828](https://github.com/plone/volto/issues/4828)
+
+### Internal
+
+- Update to latest plone.restapi and Plone 6.0.6 @sneridagh [#4979](https://github.com/plone/volto/issues/4979)
+- Remove dangling out of place Guillotina Cypress tests @sneridagh [#4980](https://github.com/plone/volto/issues/4980)
+
+
+## 17.0.0-alpha.18 (2023-07-16)
+
+### Feature
+
+- Refactor CommentEdit -@Tishasoumya-02 [#4075](https://github.com/plone/volto/issues/4075)
+- Facets should be able to decide themselves if they should show or not. Made defaultShowFacet to be a fallback in case there is no custom function for each facet type. @tedw87 [#4579](https://github.com/plone/volto/issues/4579)
+- Add backward compatibility to `slate_richtext` with fields that are plain text @razvanMiu [#4796](https://github.com/plone/volto/issues/4796)
+- Refactor-Contact Form @Tishasoumya-02 [#4850](https://github.com/plone/volto/issues/4850)
+- Refactor BreadcrumbsComponent @Tishasoumya-02 [#4858](https://github.com/plone/volto/issues/4858)
+- Refactor SearchWidget @Tishasoumya-02 [#4864](https://github.com/plone/volto/issues/4864)
+- Refactor LinkView -@Tishasoumya-02 [#4866](https://github.com/plone/volto/issues/4866)
+- Use container from component registry in content type views, if defined. @sneridagh [#4962](https://github.com/plone/volto/issues/4962)
+
+### Bugfix
+
+- Fix temporary rendering of folder contents while query results are loading. @davisagli [#4351](https://github.com/plone/volto/issues/4351)
+- Fix isBlacklisted method check for volto externalRoutes [#4725](https://github.com/plone/volto/issues/4725)
+- fix(styleMenu): Highlight selected block styles @nileshgulia1 [#4851](https://github.com/plone/volto/issues/4851)
+- Fix tablet main menu. [#4859](https://github.com/plone/volto/issues/4859)
+- Fix the table of contents block so that if one or more items get out of the viewport, a dropdown menu appears with all the items that do not fit the viewport and also added an option to make the TOC sticky. @MihaelaCretu11 [#4907](https://github.com/plone/volto/issues/4907)
+- Add a marker in the props passed to `RenderBlocks` in the Grid block view @sneridagh [#4932](https://github.com/plone/volto/issues/4932)
+- Typo in Italian locales @mamico [#4944](https://github.com/plone/volto/issues/4944)
+- Fix handling of overriden image in Teaser, improve in case that a custom image component is present. @sneridagh [#4964](https://github.com/plone/volto/issues/4964)
+- Fix slateTable still uses old style of sidebar generation @iFlameing [#4972](https://github.com/plone/volto/issues/4972)
+- Fix password autocomplete hint for login form. @davisagli [#4976](https://github.com/plone/volto/issues/4976)
+
+### Internal
+
+- Upgrade bundlewatch to 0.3.3. @wesleybl [#4967](https://github.com/plone/volto/issues/4967)
+
+### Documentation
+
+- Added note that Pluggables are not compatible with server-side rendering (SSR). @Akshat2Jain [#4735](https://github.com/plone/volto/issues/4735)
+- Replace broken link for @albertcasado to use GitHub instead of Twitter. @stevepiercy [#4941](https://github.com/plone/volto/issues/4941)
+- Exclude video markup from `make text` builder. @stevepiercy [#4966](https://github.com/plone/volto/issues/4966)
+
 
 ## 17.0.0-alpha.17 (2023-07-11)
 
@@ -325,7 +569,7 @@
 
 ### Breaking
 
-- Volto 17 drops support for NodeJS 14, and adds support for NodeJS 18.
+- Volto 17 drops support for NodeJS 14, and adds support for Node.js 18.
   Please see the [upgrade guide](https://6.docs.plone.org/volto/upgrade-guide/index.html)
   for more information.
 
@@ -1225,7 +1469,7 @@ See https://6.docs.plone.org/volto/upgrade-guide/index.html for more information
 - Update README with latest versions, point to Plone 6 as recommended default @sneridagh
 - Trigger a new deploy core Plone documentation when Volto documentation is updated @esteele
 - Update supported Python versions. @stevepiercy
-- Add NodeJS 18 (LTS) usage notice @sneridagh
+- Add Node.js 18 (LTS) usage notice @sneridagh
 - Fix Netlify build @sneridagh
 - Fix grammar in Theming Strategy. Fixes #954. @stevepiercy
 - Fix wording in About Semantic UI. Fixes #953. @stevepiercy
@@ -1438,7 +1682,7 @@ See https://6.docs.plone.org/volto/upgrade-guide/index.html for more information
 
 ### Documentation
 
-- Add NodeJS 18 (LTS) usage notice @sneridagh
+- Add Node.js 18 (LTS) usage notice @sneridagh
 - Fix Netlify build @sneridagh
 
 ## 16.0.0-alpha.45 (2022-10-24)
@@ -2785,7 +3029,7 @@ new users/evaluators. @fredvd
 ### Internal
 
 - Fix URL for Climate-Energy, a Volto website @tiberiuichim
-- Fix quirky Cypress test in "DX control panel schema" (see https://github.com/plone/volto/actions/runs/1692689792/jobs/2306969715) @sneridagh
+- Fix quirky Cypress test in "DX control panel schema" @sneridagh
 
 ## 14.2.1 (2022-01-12)
 
