@@ -431,6 +431,7 @@ class SharingComponent extends Component {
                                 },
                               )}
                               onChange={this.onChange}
+                              value={`${entry.id}:${role.id}`}
                               checked={entry.roles[role.id]}
                               disabled={entry.login === this.props.login}
                             />
