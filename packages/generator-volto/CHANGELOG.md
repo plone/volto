@@ -8,6 +8,13 @@
 
 <!-- towncrier release notes start -->
 
+## 7.0.0-alpha.9 (2023-09-20)
+
+### Bugfix
+
+- Remove JSON files from being linted by ESlint, since it's not its purpose @sneridagh [#5194](https://github.com/plone/volto/issues/5194)
+
+
 ## 7.0.0-alpha.8 (2023-09-18)
 
 ### Bugfix
