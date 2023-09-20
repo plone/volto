@@ -163,8 +163,6 @@ const View = (props) => {
     return entries;
   }, [data, levels, metadata, blocksFieldname]);
 
-  // console.log(tocEntries);
-
   const Renderer = variation?.view;
   return (
     <div className={cx('table-of-contents', variation?.id)}>
