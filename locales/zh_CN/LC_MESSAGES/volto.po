@@ -4481,6 +4481,11 @@ msgstr "密码重置确认邮件已发送"
 msgid "hero"
 msgstr ""
 
+#: components/manage/Blocks/Block/EditBlockWrapper
+# defaultMessage: hide
+msgid "hide"
+msgstr ""
+
 #: config/Blocks
 # defaultMessage: HTML
 msgid "html"
@@ -4839,6 +4844,11 @@ msgstr ""
 # defaultMessage: Select view
 msgid "selectView"
 msgstr "选择视图"
+
+#: components/manage/Blocks/Block/EditBlockWrapper
+# defaultMessage: show
+msgid "show"
+msgstr ""
 
 #: components/theme/SkipLinks/SkipLinks
 # defaultMessage: Skip to footer

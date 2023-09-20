@@ -4475,6 +4475,11 @@ msgstr ""
 msgid "hero"
 msgstr ""
 
+#: components/manage/Blocks/Block/EditBlockWrapper
+# defaultMessage: hide
+msgid "hide"
+msgstr ""
+
 #: config/Blocks
 # defaultMessage: HTML
 msgid "html"
@@ -4832,6 +4837,11 @@ msgstr ""
 #: components/manage/Blocks/Search/components/ViewSwitcher
 # defaultMessage: Select view
 msgid "selectView"
+msgstr ""
+
+#: components/manage/Blocks/Block/EditBlockWrapper
+# defaultMessage: show
+msgid "show"
 msgstr ""
 
 #: components/theme/SkipLinks/SkipLinks

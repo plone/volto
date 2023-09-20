@@ -65,6 +65,17 @@ exports[`Allow override of blocksConfig 1`] = `
                   xmlns=""
                 />
               </button>
+              <button
+                aria-label="hide"
+                class="ui grey basic icon button hide-show-button"
+              >
+                <svg
+                  class="icon"
+                  style="height: 18px; width: auto; fill: currentColor;"
+                  viewBox=""
+                  xmlns=""
+                />
+              </button>
             </div>
           </div>
         </div>
