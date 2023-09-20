@@ -63,9 +63,9 @@ describe('Block Tests: Anchors', () => {
     cy.contains('Slate Heading Anchors');
     cy.get('h2[id="title-1"]').contains('Title 1');
     cy.get('h2[id="title-2"]').contains('Title 2');
-    cy.get('a[href="#title-1"]').click();
+    cy.get('.table-of-contents a[href="/my-page#title-1"]').click();
     cy.get('h2[id="title-1"]').scrollIntoView().should('be.visible');
-    cy.get('a[href="#title-2"]').click();
+    cy.get('.table-of-contents a[href="/my-page#title-2"]').click();
     cy.get('h2[id="title-2"]').scrollIntoView().should('be.visible');
   });
 });

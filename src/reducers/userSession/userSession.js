@@ -3,7 +3,12 @@
  * @module reducers/userSession/userSession
  */
 
-import { LOGIN, LOGIN_RENEW, LOGOUT } from '@plone/volto/constants/ActionTypes';
+import {
+  LOGIN,
+  LOGIN_RENEW,
+  LOGOUT,
+  RESET_LOGIN_REQUEST,
+} from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
   token: null,
@@ -60,6 +65,15 @@ export default function userSession(state = initialState, action = {}) {
       return {
         ...state,
         token: null,
+      };
+    case `${RESET_LOGIN_REQUEST}`:
+      return {
+        ...state,
+        login: {
+          loading: false,
+          loaded: false,
+          error: null,
+        },
       };
     default:
       return state;
