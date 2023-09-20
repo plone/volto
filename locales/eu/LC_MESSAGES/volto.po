@@ -409,6 +409,11 @@ msgstr "Eremu-multzo hau eta bere eremu guztiak ezabatu nahi dituzu?"
 msgid "Ascending"
 msgstr "Goraka"
 
+#: components/manage/Sharing/Sharing
+# defaultMessage: Assign the {entry} to the {role} role
+msgid "Assign the {entry} to the {role} role"
+msgstr ""
+
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Assignments
 msgid "Assignments"

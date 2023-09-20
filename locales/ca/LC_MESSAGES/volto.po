@@ -411,6 +411,11 @@ msgstr "Esteu segurs que voleu eliminar aquest grup de camps i tots els camps qu
 msgid "Ascending"
 msgstr "Ascendent"
 
+#: components/manage/Sharing/Sharing
+# defaultMessage: Assign the {entry} to the {role} role
+msgid "Assign the {entry} to the {role} role"
+msgstr ""
+
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Assignments
 msgid "Assignments"

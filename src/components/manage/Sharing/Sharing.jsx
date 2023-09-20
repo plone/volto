@@ -83,6 +83,10 @@ const messages = defineMessages({
     id: 'Permissions have been updated successfully',
     defaultMessage: 'Permissions have been updated successfully',
   },
+  assignNewRoles: {
+    id: 'Assign the {entry} to the {role} role',
+    defaultMessage: 'Assign the {entry} to the {role} role',
+  },
 });
 
 /**
@@ -412,8 +416,21 @@ class SharingComponent extends Component {
                           )}
                           {typeof entry.roles[role.id] === 'boolean' && (
                             <Checkbox
+                              name={this.props.intl.formatMessage(
+                                messages.assignNewRoles,
+                                {
+                                  entry: entry.title,
+                                  role: role.id,
+                                },
+                              )}
+                              aria-label={this.props.intl.formatMessage(
+                                messages.assignNewRoles,
+                                {
+                                  entry: entry.title,
+                                  role: role.id,
+                                },
+                              )}
                               onChange={this.onChange}
-                              value={`${entry.id}:${role.id}`}
                               checked={entry.roles[role.id]}
                               disabled={entry.login === this.props.login}
                             />

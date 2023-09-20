@@ -410,6 +410,11 @@ msgstr "Are you sure you want to delete this fieldset including all fields? (未
 msgid "Ascending"
 msgstr "昇順"
 
+#: components/manage/Sharing/Sharing
+# defaultMessage: Assign the {entry} to the {role} role
+msgid "Assign the {entry} to the {role} role"
+msgstr ""
+
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Assignments
 msgid "Assignments"
