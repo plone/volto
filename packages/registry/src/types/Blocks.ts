@@ -1,3 +1,5 @@
+import { Content } from './Content';
+
 export interface BlocksConfig {
   [key: string]: unknown;
   title?: string;
@@ -37,13 +39,19 @@ interface BlockConfigBase {
   /**
    * The group of the block
    */
-  blockSchema?: ({ props, intl }) => object;
+  blockSchema?: ({ props, intl }: { props: unknown; intl: unknown }) => object;
   /**
    * If the block is restricted, it won't show in the chooser.
    * The function signature is `({properties, block})` where `properties` is
    * the current object data and `block` is the block being evaluated in `BlockChooser`.
    */
-  restricted: ({ properties, block }) => boolean;
+  restricted: ({
+    properties,
+    block,
+  }: {
+    properties: Content;
+    block: BlockConfigBase; // TODO: This has to be extendable
+  }) => boolean;
   /**
    * A meta group `most used`, appearing at the top of the chooser
    */
@@ -61,7 +69,15 @@ interface BlockConfigBase {
    * It can be either be at block level (it's applied always), at a variation level
    * or both. It's up to the developer to make them work nicely (not conflict) between them
    */
-  schemaEnhancer: ({ schema, formData, intl }) => JSONSchema;
+  schemaEnhancer: ({
+    schema,
+    formData,
+    intl,
+  }: {
+    schema: JSONSchema;
+    formData: BlockConfigBase; // Not sure, if so, has to be extendable
+    intl: unknown;
+  }) => JSONSchema;
 }
 
 interface SlateBlock extends BlockConfigBase {
@@ -69,11 +85,11 @@ interface SlateBlock extends BlockConfigBase {
    * Returns true if the provided block data represents a value for the current block.
    * Required for alternate default block types implementations.
    */
-  blockHasValue: (data) => boolean;
+  blockHasValue: (data: BlockConfigBase) => boolean;
   /**
    *
    */
-  tocEntry: (block) => object;
+  tocEntry: (block: BlockConfigBase) => object;
 }
 
 export interface ContainerBlock extends BlockConfigBase {

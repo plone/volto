@@ -9,6 +9,7 @@
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
+    "strictPropertyInitialization": false,
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
@@ -21,7 +22,7 @@
       "@root/*": ["./src/*"]
     }
   },
-  "include": ["src"],
+  "include": ["src", "packages"],
   "exclude": [
     "node_modules",
     "build",

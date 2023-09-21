@@ -1,7 +1,7 @@
-export { SettingsConfig } from './Settings';
-export { BlocksConfig } from './Blocks';
-export { ViewsConfig } from './Views';
-export { WidgetsConfig } from './Widgets';
+export type { SettingsConfig } from './Settings';
+export type { BlocksConfig } from './Blocks';
+export type { ViewsConfig } from './Views';
+export type { WidgetsConfig } from './Widgets';
 
 export type AddonReducersConfig = {
   [key: string]: Function;

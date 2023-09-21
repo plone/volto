@@ -26,11 +26,13 @@ class Config {
     return Config.instance;
   }
 
-  set(registry, item) {
+  set(registry: keyof ConfigData, item: ConfigData[keyof ConfigData]) {
+    // TODO: I don't get this one
+    //@ts-ignore
     this._data[registry] = item;
   }
 
-  get(registry) {
+  get(registry: keyof ConfigData) {
     return this._data[registry];
   }
 
