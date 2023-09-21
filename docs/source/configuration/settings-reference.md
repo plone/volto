@@ -445,7 +445,8 @@ querystringSearchGet
     Volto uses `HTTP POST` requests to query the `@querystring-search` endpoint.
     This can create a lot of traffic between Volto and the backend, and can also create a lot of cache misses.
 
-    By modifying this configuration setting and setting it to `true` the endpoint queries will be executed as `HTTP GET` requests and thus any proxy-cache in between Volto and the backend may cache those queries making your site performance better.
+    By modifying this configuration setting and setting it to `true`, the endpoint queries will be executed as `HTTP GET` requests.
+    Thus any proxy cache in between Volto and the backend may cache those queries, improving your site performance.
 
     Please, be aware that this could break some other functionality in your site or some of your queries may break because they contain a lot of parameters (there is an HTTP spec that puts a limit on the lenght of a URL). Please test this setting properly before enabling in a production site.
 
