@@ -8,23 +8,25 @@ import { Provider } from 'react-intl-redux';
 
 const mockStore = configureStore();
 
-const withStateManagement = (Component) => ({ ...props }) => {
-  const [formData, onChangeFormData] = React.useState(props.formData || {});
-  const onChangeField = (id, value) => {
-    onChangeFormData({ ...formData, [id]: value });
+const withStateManagement =
+  (Component) =>
+  ({ ...props }) => {
+    const [formData, onChangeFormData] = React.useState(props.formData || {});
+    const onChangeField = (id, value) => {
+      onChangeFormData({ ...formData, [id]: value });
+    };
+
+    // NOTE: onChangeBlock here is not "really" implemented
+
+    return (
+      <Component
+        {...props}
+        onChangeField={onChangeField}
+        onChangeBlock={(block, data) => onChangeFormData(data)}
+        formData={formData}
+      />
+    );
   };
-
-  // NOTE: onChangeBlock here is not "really" implemented
-
-  return (
-    <Component
-      {...props}
-      onChangeField={onChangeField}
-      onChangeBlock={(block, data) => onChangeFormData(data)}
-      formData={formData}
-    />
-  );
-};
 
 beforeAll(() => {
   config.widgets = {

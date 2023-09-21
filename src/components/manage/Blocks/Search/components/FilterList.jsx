@@ -36,9 +36,8 @@ const FilterList = (props) => {
       !isEmpty(facets[field.value]),
   ).length;
 
-  const {
-    types: facetWidgetTypes,
-  } = config.blocks.blocksConfig.search.extensions.facetWidgets;
+  const { types: facetWidgetTypes } =
+    config.blocks.blocksConfig.search.extensions.facetWidgets;
 
   const intl = useIntl();
 
@@ -70,9 +69,8 @@ const FilterList = (props) => {
       <Accordion.Content className="filter-list-content" active={isOpened}>
         <div className="filter-list">
           {data.facets?.map((facetSettings, i) => {
-            const {
-              filterListComponent: FilterListComponent,
-            } = resolveExtension('type', facetWidgetTypes, facetSettings);
+            const { filterListComponent: FilterListComponent } =
+              resolveExtension('type', facetWidgetTypes, facetSettings);
             const facet = facetSettings?.field?.value;
             if (!facet) return null;
 

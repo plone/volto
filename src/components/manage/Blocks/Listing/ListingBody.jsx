@@ -15,9 +15,10 @@ const Headline = ({ headlineTag, id, data = {}, listingItems, isEditMode }) => {
   let attr = { id };
   const slug = Slugger.slug(data.headline);
   attr.id = slug || id;
-  const LinkedHeadline = useMemo(() => renderLinkElement(headlineTag), [
-    headlineTag,
-  ]);
+  const LinkedHeadline = useMemo(
+    () => renderLinkElement(headlineTag),
+    [headlineTag],
+  );
   return (
     <LinkedHeadline
       mode={!isEditMode && 'view'}
