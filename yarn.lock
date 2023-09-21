@@ -3372,7 +3372,7 @@ __metadata:
     postcss-overrides: 3.1.4
     postcss-scss: 4.0.6
     prepend-http: 2
-    prettier: 2.0.5
+    prettier: 3.0.3
     pretty-bytes: 5.3.0
     prismjs: 1.27.0
     promise-file-reader: 1.0.2
@@ -3439,7 +3439,7 @@ __metadata:
     style-loader: 3.3.1
     stylelint: 15.10.3
     stylelint-config-idiomatic-order: 9.0.0
-    stylelint-prettier: 3.0.0
+    stylelint-prettier: 4.0.2
     superagent: 3.8.2
     svg-loader: 0.0.2
     svgo-loader: 3.0.3
@@ -20112,12 +20112,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:2.0.5":
-  version: 2.0.5
-  resolution: "prettier@npm:2.0.5"
+"prettier@npm:3.0.3":
+  version: 3.0.3
+  resolution: "prettier@npm:3.0.3"
   bin:
-    prettier: bin-prettier.js
-  checksum: 7f89d2f5d1a1a15a7bf200556b8c5395913d0119fe52a3fba51ab116695d584652d37fdb7d86e0919bfe36b22649afcf222eaca00a1065eb486b7b4cf3062eff
+    prettier: bin/prettier.cjs
+  checksum: e10b9af02b281f6c617362ebd2571b1d7fc9fb8a3bd17e371754428cda992e5e8d8b7a046e8f7d3e2da1dcd21aa001e2e3c797402ebb6111b5cd19609dd228e0
   languageName: node
   linkType: hard
 
@@ -24296,15 +24296,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylelint-prettier@npm:3.0.0":
-  version: 3.0.0
-  resolution: "stylelint-prettier@npm:3.0.0"
+"stylelint-prettier@npm:4.0.2":
+  version: 4.0.2
+  resolution: "stylelint-prettier@npm:4.0.2"
   dependencies:
     prettier-linter-helpers: ^1.0.0
   peerDependencies:
-    prettier: ">=2.0.0"
-    stylelint: ">=14.0.0"
-  checksum: 094f53ef5dbe3806524db7f580b9312ceca444651803fc08c8baa48cd9a270985c709fa4f083681a685310dc347b8e55aa93d462554ba7d4ae6258a3bdf6a278
+    prettier: ">=3.0.0"
+    stylelint: ">=15.8.0"
+  checksum: b60112c10b8f31456211d65b4c17238fdaf46ee9f80ab035621f2eb86b47505a4b9582d99f4334dfe370cc8104de870f7fcc256737d0f2e68f4357239f739054
   languageName: node
   linkType: hard
 
