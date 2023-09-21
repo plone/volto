@@ -448,7 +448,9 @@ querystringSearchGet
     By modifying this configuration setting and setting it to `true`, the endpoint queries will be executed as `HTTP GET` requests.
     Thus any proxy cache in between Volto and the backend may cache those queries, improving your site performance.
 
-    Please, be aware that this could break some other functionality in your site or some of your queries may break because they contain a lot of parameters (there is an HTTP spec that puts a limit on the lenght of a URL). Please test this setting properly before enabling in a production site.
+    Please be aware that this could break some other functionality in your site, or some of your queries may break, when they contain more than 2000 characters.
+    [See an explanation of character limits in URLs](https://stackoverflow.com/a/417184/2214933).
+    Please test this setting properly before enabling in a production site.
 
 ```
 
