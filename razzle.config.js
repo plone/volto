@@ -13,6 +13,7 @@ const AddonConfigurationRegistry = require('./addon-registry');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 
 const fileLoaderFinder = makeLoaderFinder('file-loader');
 
@@ -135,10 +136,7 @@ const defaultModify = ({
     config.plugins.unshift(
       // restrict moment.js locales to en/de
       // see https://github.com/jmblog/how-to-optimize-momentjs-with-webpack for details
-      new webpack.ContextReplacementPlugin(
-        /moment[/\\]locale$/,
-        new RegExp(Object.keys(languages).join('|')),
-      ),
+      new MomentLocalesPlugin({ localesToKeep: Object.keys(languages) }),
       new LodashModuleReplacementPlugin({
         shorthands: true,
         cloning: true,
