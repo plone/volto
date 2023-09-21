@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-03 03:20-0400\n"
-"PO-Revision-Date: 2023-06-26 12:13-0400\n"
+"PO-Revision-Date: 2023-09-20 00:35-0400\n"
 "Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
 "Language: es\n"
 "Language-Team: ES <LL@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "MIME-Version: 1.0\n"
-"X-Generator: Poedit 3.3.1\n"
+"X-Generator: Poedit 3.3.2\n"
 "Language-Code: es\n"
 "Language-Name: Español\n"
 "Preferred-Encodings: utf-8\n"
@@ -1004,12 +1004,12 @@ msgstr "Eliminar fila"
 #: components/manage/Contents/Contents
 # defaultMessage: Delete selected items?
 msgid "Delete selected items?"
-msgstr ""
+msgstr "¿Eliminar elementos seleccionados?"
 
 #: components/manage/Contents/Contents
 # defaultMessage: Delete this item?
 msgid "Delete this item?"
-msgstr ""
+msgstr "¿Eliminar este elemento?"
 
 #: components/manage/Controlpanels/Rules/Rules
 # defaultMessage: Deleted
@@ -1564,7 +1564,7 @@ msgstr "Bloque embebido de Google Maps"
 #: components/manage/Blocks/Grid/schema
 # defaultMessage: Grid
 msgid "Grid"
-msgstr "Cuadrícula"
+msgstr "Grid"
 
 #: components/manage/Sharing/Sharing
 # defaultMessage: Group
@@ -1826,7 +1826,7 @@ msgstr "Bloque no válido: se eliminará al guardar"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them.
 msgid "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
-msgstr ""
+msgstr "No está permitido definir la contraseña y solicitar el envío del mensaje de restablecimiento de contraseña por correo electrónico. Debes seleccionar uno de ellos."
 
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Item batch size
@@ -3307,12 +3307,12 @@ msgstr "Pequeño"
 #: components/manage/Contents/Contents
 # defaultMessage: Some items are also a folder.
 msgid "Some items are also a folder."
-msgstr ""
+msgstr "Algunos elementos también son una carpeta."
 
 #: components/manage/Contents/Contents
 # defaultMessage: Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken.
 msgid "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
-msgstr ""
+msgstr "Algunos elementos están referenciados por otros contenidos. Al eliminarlos, {brokenReferences} {variation} se romperá."
 
 #: components/manage/Controlpanels/Relations/Relations
 # defaultMessage: Some relations are broken. Please fix.
@@ -3631,12 +3631,12 @@ msgstr "El {plonecms} es {copyright} 2000-{current_year} por la {plonefoundation
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: There are no groups with the searched criteria
 msgid "There are no groups with the searched criteria"
-msgstr ""
+msgstr "No hay grupos con los criterios buscados."
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: There are no users with the searched criteria
 msgid "There are no users with the searched criteria"
-msgstr ""
+msgstr "No hay usuarios con los criterios buscados"
 
 #: components/theme/CorsError/CorsError
 # defaultMessage: There is a configuration problem on the backend
@@ -3682,12 +3682,12 @@ msgstr "Es una copia de trabajo de {title}"
 #: components/manage/Contents/Contents
 # defaultMessage: This item is also a folder.
 msgid "This item is also a folder."
-msgstr ""
+msgstr "Este elemento también es una carpeta."
 
 #: components/manage/Contents/Contents
 # defaultMessage: This item is referenced by other items. By deleting it {brokenReferences} {variation} will be broken.
 msgid "This item is referenced by other items. By deleting it {brokenReferences} {variation} will be broken."
-msgstr ""
+msgstr "Este elemento está referenciado por otros elementos. Al eliminarlo, {brokenReferences} {variation} se romperá."
 
 #: components/manage/LockingToastsFactory/LockingToastsFactory
 # defaultMessage: This item was locked by {creator} on {date}
@@ -3926,7 +3926,7 @@ msgstr "Actualizar"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Update User
 msgid "Update User"
-msgstr ""
+msgstr "Actualizar Usuario"
 
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Update installed addons
@@ -4046,7 +4046,7 @@ msgstr "Roles de usuario actualizados"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: User updated successfuly
 msgid "User updated successfuly"
-msgstr ""
+msgstr "Usuario actualizado correctamente"
 
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Username
@@ -4100,7 +4100,7 @@ msgstr "Ver"
 #: components/manage/Contents/Contents
 # defaultMessage: View broken links list
 msgid "View broken links list"
-msgstr ""
+msgstr "Ver la lista de enlaces rotos"
 
 #: components/manage/History/History
 # defaultMessage: View changes
@@ -4519,12 +4519,12 @@ msgstr "Intranet"
 #: components/manage/Contents/Contents
 # defaultMessage: item
 msgid "item"
-msgstr ""
+msgstr "elemento"
 
 #: components/manage/Contents/Contents
 # defaultMessage: items
 msgid "items"
-msgstr ""
+msgstr "elementos"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: My email is
@@ -4658,12 +4658,12 @@ msgstr "reconstruir relaciones"
 #: components/manage/Contents/Contents
 # defaultMessage: reference
 msgid "reference"
-msgstr ""
+msgstr "referencia"
 
 #: components/manage/Contents/Contents
 # defaultMessage: references
 msgid "references"
-msgstr ""
+msgstr "referencias"
 
 #: components/theme/Search/Search
 # defaultMessage: results
