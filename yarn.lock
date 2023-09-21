@@ -3376,6 +3376,7 @@ __metadata:
     lodash-webpack-plugin: 0.11.6
     mini-css-extract-plugin: 2.7.2
     moment: 2.29.4
+    moment-locales-webpack-plugin: 1.2.0
     object-assign: 4.1.1
     pofile: 1.0.10
     postcss: 8.4.13
@@ -17068,6 +17069,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lodash.difference@npm:^4.5.0":
+  version: 4.5.0
+  resolution: "lodash.difference@npm:4.5.0"
+  checksum: ecee276aa578f300e79350805a14a51be8d1f12b3c1389a19996d8ab516f814211a5f65c68331571ecdad96522b863ccc484b55504ce8c9947212a29f8857d5a
+  languageName: node
+  linkType: hard
+
 "lodash.escaperegexp@npm:^4.1.2":
   version: 4.1.2
   resolution: "lodash.escaperegexp@npm:4.1.2"
@@ -17924,6 +17932,18 @@ __metadata:
   bin:
     mkdirp: bin/cmd.js
   checksum: 0c91b721bb12c3f9af4b77ebf73604baf350e64d80df91754dc509491ae93bf238581e59c7188360cec7cb62fc4100959245a42cfe01834efedc5e9d068376c2
+  languageName: node
+  linkType: hard
+
+"moment-locales-webpack-plugin@npm:1.2.0":
+  version: 1.2.0
+  resolution: "moment-locales-webpack-plugin@npm:1.2.0"
+  dependencies:
+    lodash.difference: ^4.5.0
+  peerDependencies:
+    moment: ^2.8.0
+    webpack: ^1 || ^2 || ^3 || ^4 || ^5
+  checksum: bb5daebfc2f2bd0c003b9d576893531edc6ac3c884c77fc4c3a7c8d228340c9a26a5c7676c8e4505922eebb1309f2defbcf619a1706d7d7e579039690df2487b
   languageName: node
   linkType: hard
 
