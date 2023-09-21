@@ -449,7 +449,7 @@ querystringSearchGet
     Thus any proxy cache in between Volto and the backend may cache those queries, improving your site performance.
 
     Please be aware that this could break some other functionality in your site, or some of your queries may break, when they contain more than 2000 characters.
-    [See an explanation of character limits in URLs](https://stackoverflow.com/a/417184/2214933).
+    [See an explanation of character limits in URLs](https://stackoverflow.com/questions/417142/what-is-the-maximum-length-of-a-url-in-different-browsers/417184#417184).
     Please test this setting properly before enabling in a production site.
 
 ```
