@@ -134,8 +134,8 @@ const defaultModify = ({
     }
 
     config.plugins.unshift(
-      // restrict moment.js locales to en/de
-      // see https://github.com/jmblog/how-to-optimize-momentjs-with-webpack for details
+      // restrict moment.js locales to supported languages
+      // see https://momentjs.com/docs/#/use-it/webpack/ for details
       new MomentLocalesPlugin({ localesToKeep: Object.keys(languages) }),
       new LodashModuleReplacementPlugin({
         shorthands: true,
