@@ -155,7 +155,7 @@
     "razzle": "4.2.18",
     "stylelint": "15.10.3",
     "stylelint-config-idiomatic-order": "9.0.0",
-    "stylelint-prettier": "4.0.2"
+    "stylelint-prettier": "4.0.2",
     "ts-jest": "^26.4.2",
     "ts-loader": "9.4.4",
     "typescript": "5.2.2"
