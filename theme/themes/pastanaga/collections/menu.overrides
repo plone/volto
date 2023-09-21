@@ -61,9 +61,9 @@
   width: 20px;
   height: 80px;
   padding: 0;
+  border-radius: 0;
   margin-top: -40px;
   background: transparent;
-  border-radius: 0;
   opacity: 0.3;
   transition: opacity 0.3s;
 }
