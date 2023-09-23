@@ -343,6 +343,7 @@ class SharingComponent extends Component {
                           icon: 'search',
                           loading: isLoading,
                           disabled: isLoading,
+                          'aria-label': 'Search',
                         }}
                         placeholder={this.props.intl.formatMessage(
                           messages.searchForUserOrGroup,
