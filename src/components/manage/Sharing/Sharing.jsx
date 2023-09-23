@@ -39,8 +39,8 @@ const messages = defineMessages({
     id: 'Search for user or group',
     defaultMessage: 'Search for user or group',
   },
-    ariaLabelSearch: {
-    id: 'Aria Label Search',
+  search: {
+    id: 'Search',
     defaultMessage: 'Search',
   },
   inherit: {
@@ -347,7 +347,9 @@ class SharingComponent extends Component {
                           icon: 'search',
                           loading: isLoading,
                           disabled: isLoading,
-                          'aria-label': this.props.intl.formatMessage(messages.ariaLabelSearch),
+                          'aria-label': this.props.intl.formatMessage(
+                            messages.search,
+                          ),
                         }}
                         placeholder={this.props.intl.formatMessage(
                           messages.searchForUserOrGroup,
