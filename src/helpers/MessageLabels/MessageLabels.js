@@ -283,7 +283,7 @@ export const messages = defineMessages({
   },
   urlClipboardCopy: {
     id: 'Link copied to clipboard',
-    defaultMessage: 'Link copied to clipboard',
+    defaultMessage: 'Anchor link copied to the clipboard',
   },
   inspectRelations: {
     id: 'Inspect relations',

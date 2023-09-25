@@ -190,6 +190,14 @@ export const renderLinkElement = (tagName) => {
             tabIndex={-1}
             href={`#${slug}`}
           >
+            <style>
+              {/* Prettify the unstyled flash of the link icon on development */}
+              {`
+              a.anchor svg {
+                height: var(--anchor-svg-height, 24px);
+              }
+              `}
+            </style>
             <svg
               {...linkSVG.attributes}
               dangerouslySetInnerHTML={{ __html: linkSVG.content }}
