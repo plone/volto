@@ -37,8 +37,7 @@ const messages = defineMessages({
     defaultMessage: 'Show search button?',
   },
   showSearchButtonDescription: {
-    id:
-      'The button presence disables the live search, the query is issued when you press ENTER',
+    id: 'The button presence disables the live search, the query is issued when you press ENTER',
     defaultMessage:
       'The button presence disables the live search, the query is issued when you press ENTER',
   },
@@ -83,8 +82,7 @@ const messages = defineMessages({
     defaultMessage: 'Hide facet?',
   },
   hideFacetDescription: {
-    id:
-      'Hidden facets will still filter the results if proper parameters are passed in URLs',
+    id: 'Hidden facets will still filter the results if proper parameters are passed in URLs',
     defaultMessage:
       'Hidden facets will still filter the results if proper parameters are passed in URLs',
   },
@@ -187,15 +185,17 @@ const FacetSchema = ({ intl }) => ({
     },
     type: {
       title: intl.formatMessage(messages.facetWidget),
-      choices: config.blocks.blocksConfig.search.extensions.facetWidgets.types.map(
-        ({ id, title }) => [
-          id,
-          `${intl.formatMessage({ id: id, defaultMessage: title })}`,
-        ],
-      ),
-      defaultValue: config.blocks.blocksConfig.search.extensions.facetWidgets.types.find(
-        ({ isDefault }) => isDefault,
-      ).id,
+      choices:
+        config.blocks.blocksConfig.search.extensions.facetWidgets.types.map(
+          ({ id, title }) => [
+            id,
+            `${intl.formatMessage({ id: id, defaultMessage: title })}`,
+          ],
+        ),
+      defaultValue:
+        config.blocks.blocksConfig.search.extensions.facetWidgets.types.find(
+          ({ isDefault }) => isDefault,
+        ).id,
     },
   },
   required: ['field'],

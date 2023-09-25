@@ -290,9 +290,8 @@ export function changeBlock(formData, id, value) {
  */
 export function nextBlockId(formData, currentBlock) {
   const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
-  const currentIndex = formData[blocksLayoutFieldname].items.indexOf(
-    currentBlock,
-  );
+  const currentIndex =
+    formData[blocksLayoutFieldname].items.indexOf(currentBlock);
 
   if (currentIndex === formData[blocksLayoutFieldname].items.length - 1) {
     // We are already at the bottom block don't do anything
@@ -312,9 +311,8 @@ export function nextBlockId(formData, currentBlock) {
  */
 export function previousBlockId(formData, currentBlock) {
   const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
-  const currentIndex = formData[blocksLayoutFieldname].items.indexOf(
-    currentBlock,
-  );
+  const currentIndex =
+    formData[blocksLayoutFieldname].items.indexOf(currentBlock);
 
   if (currentIndex === 0) {
     // We are already at the top block don't do anything

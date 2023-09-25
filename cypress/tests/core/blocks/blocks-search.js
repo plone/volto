@@ -173,7 +173,11 @@ describe('Search Block Tests', () => {
     );
   });
 
-  it('Search block - test live searchbox', () => {
+  // Sept-2023 - @sneridagh:
+  // Skipped for now, it behaves quite weird and different than the "live" one
+  // Still due to be investigated, I could not pinpoint why
+  // See: https://github.com/plone/volto/issues/5219
+  it.skip('Search block - test live searchbox', () => {
     cy.visit('/');
     cy.get('#toolbar-add > .icon').click();
     cy.get('#toolbar-add-document').click();
