@@ -490,9 +490,8 @@ class SchemaWidget extends Component {
    */
   onAddField(values) {
     const fieldId = slugify(values.title);
-    const currentFieldsetFields = this.props.value.fieldsets[
-      this.state.currentFieldset
-    ].fields;
+    const currentFieldsetFields =
+      this.props.value.fieldsets[this.state.currentFieldset].fields;
     const hasChangeNote = currentFieldsetFields.indexOf('changeNote') > -1;
     const newFieldsetFields = hasChangeNote
       ? [
@@ -698,9 +697,8 @@ class SchemaWidget extends Component {
       const newParentFieldsetIndex = fieldsets.findIndex(
         (field) => field.id === parentFieldSet,
       );
-      const indexOfChangeNote = fieldsets[
-        newParentFieldsetIndex
-      ].fields.indexOf('changeNote');
+      const indexOfChangeNote =
+        fieldsets[newParentFieldsetIndex].fields.indexOf('changeNote');
       // remove from current fieldset
       const fieldsetsWithoutField = [
         ...slice(fieldsets, 0, currentFieldset),
@@ -1363,9 +1361,8 @@ class SchemaWidget extends Component {
               required:
                 this.props.value.required.indexOf(this.state.editField.id) !==
                 -1,
-              parentFieldSet: this.props.value.fieldsets[
-                this.state.currentFieldset
-              ].id,
+              parentFieldSet:
+                this.props.value.fieldsets[this.state.currentFieldset].id,
               values: formatArrayToTextarea(
                 this.props.value.properties[this.state.editField.id],
               ),

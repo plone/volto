@@ -173,8 +173,7 @@ export const messages = defineMessages({
     defaultMessage: 'Roles',
   },
   addUserFormPasswordAndSendPasswordTogetherNotAllowed: {
-    id:
-      'It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them.',
+    id: 'It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them.',
     defaultMessage:
       'It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them.',
   },
