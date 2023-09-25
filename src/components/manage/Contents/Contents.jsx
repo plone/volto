@@ -35,6 +35,7 @@ import {
 import move from 'lodash-move';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import { asyncConnect } from '@plone/volto/helpers';
+import { flattenToAppURL } from '@plone/volto/helpers';
 
 import {
   searchContent,
@@ -1361,7 +1362,11 @@ class Contents extends Component {
                                     }}
                                   />
                                   <div className="broken-links-list-link-wrapper">
-                                    <Link to={this.state.brokenLinksList}>
+                                    <Link
+                                      to={flattenToAppURL(
+                                        this.state.brokenLinksList,
+                                      )}
+                                    >
                                       <FormattedMessage
                                         id="View broken links list"
                                         defaultMessage="View broken links list"
@@ -1398,7 +1403,11 @@ class Contents extends Component {
                                 }}
                               />
                               <div className="broken-links-list-link-wrapper">
-                                <Link to={this.state.brokenLinksList}>
+                                <Link
+                                  to={flattenToAppURL(
+                                    this.state.brokenLinksList,
+                                  )}
+                                >
                                   <FormattedMessage
                                     id="View broken links list"
                                     defaultMessage="View broken links list"
