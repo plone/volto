@@ -1361,12 +1361,12 @@ class Contents extends Component {
                                     }}
                                   />
                                   <div className="broken-links-list-link-wrapper">
-                                    <a href={this.state.brokenLinksList}>
+                                    <Link to={this.state.brokenLinksList}>
                                       <FormattedMessage
                                         id="View broken links list"
                                         defaultMessage="View broken links list"
                                       />
-                                    </a>
+                                    </Link>
                                   </div>
                                 </>
                               )}
@@ -1398,12 +1398,12 @@ class Contents extends Component {
                                 }}
                               />
                               <div className="broken-links-list-link-wrapper">
-                                <a href={this.state.brokenLinksList}>
+                                <Link to={this.state.brokenLinksList}>
                                   <FormattedMessage
                                     id="View broken links list"
                                     defaultMessage="View broken links list"
                                   />
-                                </a>
+                                </Link>
                               </div>
                             </>
                           ) : null}
