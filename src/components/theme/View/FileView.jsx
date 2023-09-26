@@ -6,7 +6,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Container as SemanticContainer } from 'semantic-ui-react';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { useUrlHelpers } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
 /**
@@ -18,6 +18,7 @@ import config from '@plone/volto/registry';
 const FileView = ({ content }) => {
   const Container =
     config.getComponent({ name: 'Container' }).component || SemanticContainer;
+  const { flattenToAppURL } = useUrlHelpers();
 
   return (
     <Container className="view-wrapper">
