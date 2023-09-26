@@ -31,9 +31,7 @@ const ConnectionRefused = (props) => {
         {__DEVELOPMENT__ && (
           <>
             <br />
-            <a href={apiPath}>
-              {apiPath}
-            </a>
+            <a href={apiPath}>{apiPath}</a>
             <p>Link: {apiPath} </p>
           </>
         )}
@@ -76,6 +74,6 @@ const ConnectionRefused = (props) => {
       )}
     </Container>
   );
-}
+};
 
 export default ConnectionRefused;
