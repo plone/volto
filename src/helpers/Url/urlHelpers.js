@@ -16,10 +16,10 @@ export function useUrlHelpers() {
 
   function getApiPath() {
     return calculateApiPath({
-      protocol: apiHeaders.protocol,
-      host: apiHeaders.host,
-      internalApiPath: apiHeaders.internalApiPath,
-      apiPath: apiHeaders.apiPath,
+      protocol: apiHeaders?.protocol,
+      host: apiHeaders?.host,
+      internalApiPath: apiHeaders?.internalApiPath,
+      apiPath: apiHeaders?.apiPath,
     });
   }
 
