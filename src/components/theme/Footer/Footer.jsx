@@ -3,15 +3,13 @@
  * @module components/theme/Footer/Footer
  */
 
-import React from 'react';
 import { Container, List, Segment } from 'semantic-ui-react';
 import { map } from 'lodash';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import { useSelector, shallowEqual } from 'react-redux';
 import { UniversalLink } from '@plone/volto/components';
-import { flattenToAppURL, addAppURL } from '@plone/volto/helpers';
+import { addAppURL } from '@plone/volto/helpers';
 import { useUrlHelpers } from '@plone/volto/helpers/';
-import config from '@plone/volto/registry';
 
 const messages = defineMessages({
   copyright: {
@@ -33,8 +31,7 @@ const Footer = ({ intl }) => {
     }),
     shallowEqual,
   );
-  const { flattenToAppURL: NEW_flattenToAppURL } = useUrlHelpers();
-  const settings = config.settings;
+  const { flattenToAppURL } = useUrlHelpers();
 
   return (
     <Segment
@@ -99,39 +96,6 @@ const Footer = ({ intl }) => {
                     className="item"
                     href={
                       item.url ? flattenToAppURL(item.url) : addAppURL(item.id)
-                    }
-                  >
-                    {item?.title}
-                  </UniversalLink>
-                </div>
-              ))
-            : null}
-          <div role="listitem" className="item">
-            <a className="item" href="https://plone.org">
-              <FormattedMessage
-                id="Powered by Plone & Python"
-                defaultMessage="Powered by Plone & Python"
-              />
-            </a>
-          </div>
-        </List>
-        <h2>New stuff</h2>
-        <List horizontal inverted>
-          {siteActions?.length
-            ? map(siteActions, (item) => (
-                <div role="listitem" className="item" key={item.id}>
-                  <UniversalLink
-                    className="item"
-                    href={
-                      settings.isMultilingual
-                        ? `/${lang}/${
-                            item.url
-                              ? NEW_flattenToAppURL(item.url)
-                              : addAppURL(item.id)
-                          }`
-                        : item.url
-                        ? NEW_flattenToAppURL(item.url)
-                        : addAppURL(item.id)
                     }
                   >
                     {item?.title}
