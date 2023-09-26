@@ -12,7 +12,7 @@ import { join } from 'lodash';
 // the very nature of the functionality of the component and its relationship with others
 import { searchContent } from '@plone/volto/actions/search/search';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
-import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers/Url/Url';
+import { injectUrlHelpers } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
 import backSVG from '@plone/volto/icons/back.svg';
@@ -146,6 +146,7 @@ class ObjectBrowserBody extends Component {
   }
 
   initialSearch = (mode) => {
+    const { isInternalURL } = this.props.urlHelpers;
     const currentSelected =
       mode === 'multiple'
         ? ''
@@ -206,6 +207,7 @@ class ObjectBrowserBody extends Component {
     );
 
   onSearch = (e) => {
+    const { flattenToAppURL } = this.props.urlHelpers;
     const text = flattenToAppURL(e.target.value);
     if (text.startsWith('/')) {
       this.setState({ currentFolder: text });
@@ -498,6 +500,7 @@ class ObjectBrowserBody extends Component {
 }
 
 export default compose(
+  injectUrlHelpers,
   injectIntl,
   connect(
     (state) => ({
