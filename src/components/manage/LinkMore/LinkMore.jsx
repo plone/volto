@@ -5,8 +5,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { flattenToAppURL } from '@plone/volto/helpers';
-import { isInternalURL } from '@plone/volto/helpers/Url/Url';
+import { useUrlHelpers } from '@plone/volto/helpers';
 import { ConditionalLink, UniversalLink } from '@plone/volto/components';
 
 /**
@@ -15,6 +14,7 @@ import { ConditionalLink, UniversalLink } from '@plone/volto/components';
  * @extends Component
  */
 const LinkMore = ({ data, isEditMode }) => {
+  const { flattenToAppURL, isInternalURL } = useUrlHelpers();
   let href = data.linkHref?.[0]?.['@id'] || '';
   let link = null;
   if (isInternalURL(href)) {
