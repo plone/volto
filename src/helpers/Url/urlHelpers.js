@@ -4,9 +4,7 @@ import {
 } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 import hoistNonReactStatics from 'hoist-non-react-statics';
-import PropTypes from 'prop-types';
-import { Component } from 'react';
-import { connect, shallowEqual, useSelector } from 'react-redux';
+import { shallowEqual, useSelector } from 'react-redux';
 
 export function useUrlHelpers() {
   const apiHeaders = useSelector(
