@@ -35,10 +35,10 @@ export function formatUrl(path, req) {
     protocol: null,
   };
   if (__SERVER__) {
-    initialApiVars.host = req.headers.host;
-    initialApiVars.internalApiPath = req.headers['x-internal-api-path'];
-    initialApiVars.protocol = req.protocol;
-    initialApiVars.apiPath = req.headers['x-api-path'];
+    initialApiVars.host = req?.headers.host;
+    initialApiVars.internalApiPath = req?.headers['x-internal-api-path'];
+    initialApiVars.protocol = req?.protocol;
+    initialApiVars.apiPath = req?.headers['x-api-path'];
   }
   const apiPath = calculateApiPath({
     protocol: initialApiVars.protocol,
