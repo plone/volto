@@ -9,7 +9,7 @@ import {
   Image,
   TextWidget,
 } from '@plone/volto/components';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { useUrlHelpers } from '@plone/volto/helpers';
 import AlignBlock from '@plone/volto/components/manage/Sidebar/AlignBlock';
 
 import imageSVG from '@plone/volto/icons/image.svg';
@@ -64,6 +64,7 @@ const LeadImageSidebar = ({
   intl,
 }) => {
   const [activeAccIndex, setActiveAccIndex] = useState(0);
+  const { flattenToAppURL } = useUrlHelpers();
 
   function handleAccClick(e, titleProps) {
     const { index } = titleProps;
