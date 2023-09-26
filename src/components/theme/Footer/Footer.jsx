@@ -11,6 +11,7 @@ import { useSelector, shallowEqual } from 'react-redux';
 import { UniversalLink } from '@plone/volto/components';
 import { flattenToAppURL, addAppURL } from '@plone/volto/helpers';
 import { useUrlHelpers } from '../../../helpers/useUrlHelpers';
+import config from '@plone/volto/registry';
 
 const messages = defineMessages({
   copyright: {
@@ -33,6 +34,7 @@ const Footer = ({ intl }) => {
     shallowEqual,
   );
   const { flattenToAppURL: NEW_flattenToAppURL } = useUrlHelpers();
+  const settings = config.settings;
 
   return (
     <Segment
