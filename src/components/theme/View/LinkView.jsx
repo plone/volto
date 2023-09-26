@@ -1,13 +1,14 @@
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
-import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers';
+import { useUrlHelpers } from '@plone/volto/helpers';
 import { Container as SemanticContainer } from 'semantic-ui-react';
 import { UniversalLink } from '@plone/volto/components';
 import { FormattedMessage } from 'react-intl';
 import config from '@plone/volto/registry';
 
 const LinkView = ({ token, content }) => {
+  const { isInternalURL, flattenToAppURL } = useUrlHelpers();
   const history = useHistory();
   useEffect(() => {
     if (!token) {
