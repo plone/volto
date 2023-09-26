@@ -7,7 +7,7 @@ import { compose } from 'redux';
 import { withRouter } from 'react-router';
 import { defineMessages, useIntl } from 'react-intl';
 
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { useUrlHelpers } from '@plone/volto/helpers';
 import { Icon, UniversalLink } from '@plone/volto/components';
 import { withContentNavigation } from './withContentNavigation';
 
@@ -22,6 +22,7 @@ const messages = defineMessages({
 
 function renderNode(node, parentLevel) {
   const level = parentLevel + 1;
+  const { flattenToAppURL } = useUrlHelpers();
   return (
     <List.Item
       key={node['@id']}
@@ -69,6 +70,7 @@ function renderNode(node, parentLevel) {
  * INavigationPortlet
  */
 export function ContextNavigationComponent(props) {
+  const { flattenToAppURL } = useUrlHelpers();
   const { navigation = {} } = props;
   const { items = [] } = navigation;
   const intl = useIntl();
