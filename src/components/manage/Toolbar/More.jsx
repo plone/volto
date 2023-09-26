@@ -24,7 +24,7 @@ import {
   createWorkingCopy,
   removeWorkingCopy,
 } from '@plone/volto/actions';
-import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
+import { injectUrlHelpers, getBaseUrl } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
 import rightArrowSVG from '@plone/volto/icons/right-key.svg';
@@ -216,6 +216,7 @@ class More extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const { flattenToAppURL } = this.props.urlHelpers;
     const path = getBaseUrl(this.props.pathname);
     const editAction = find(this.props.actions.object, { id: 'edit' });
     const historyAction = find(this.props.actions.object, { id: 'history' });
@@ -539,6 +540,7 @@ class More extends Component {
 }
 
 export default compose(
+  injectUrlHelpers,
   injectIntl,
   withRouter,
   connect(
