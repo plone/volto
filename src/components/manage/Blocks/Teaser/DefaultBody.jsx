@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Message } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
-import { isInternalURL } from '@plone/volto/helpers';
+import { useUrlHelpers } from '@plone/volto/helpers';
 import { MaybeWrap } from '@plone/volto/components';
 import { UniversalLink } from '@plone/volto/components';
 import cx from 'classnames';
@@ -22,6 +22,7 @@ const TeaserDefaultTemplate = (props) => {
   const intl = useIntl();
   const href = data.href?.[0];
   const image = data.preview_image?.[0];
+  const { isInternalURL } = useUrlHelpers();
 
   const Image = config.getComponent('Image').component;
   const { openExternalLinkInNewTab } = config.settings;
