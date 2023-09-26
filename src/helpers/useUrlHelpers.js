@@ -1,10 +1,19 @@
+import {
+  flattenHTMLToAppURL as classicFlattenHTMLToAppURL,
+  flatternToAppUrl as classicFlattenToAppUrl,
+} from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 import PropTypes from 'prop-types';
 import { Component } from 'react';
-import { connect, useSelector } from 'react-redux';
+import { connect, shallowEqual, useSelector } from 'react-redux';
 
 export function useUrlHelpers() {
-  const apiHeaders = useSelector((store) => store.userSession.apiHeaders);
+  const apiHeaders = useSelector(
+    (store) => store.userSession?.apiHeaders,
+    shallowEqual,
+  );
+  // TODO: Could memo this? Would need to see how often it is called and if apiHeaders works with shallowEqual
+  const hasApiHeaders = !!apiHeaders && Object.keys(apiHeaders).length > 0;
 
   function getApiPath() {
     return calculateApiPath({
@@ -16,6 +25,9 @@ export function useUrlHelpers() {
   }
 
   function flattenToAppURL(url) {
+    if (!hasApiHeaders) {
+      return classicFlattenToAppUrl(url);
+    }
     return (
       url &&
       url
@@ -26,6 +38,9 @@ export function useUrlHelpers() {
   }
 
   function flattenHTMLToAppURL(html) {
+    if (!hasApiHeaders) {
+      return classicFlattenHTMLToAppURL(html);
+    }
     return apiHeaders.internalApiPath
       ? html
           .replace(new RegExp(apiHeaders.internalApiPath, 'g'), '')
