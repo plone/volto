@@ -11,6 +11,7 @@ import hoistNonReactStatics from 'hoist-non-react-statics';
 import { shallowEqual, useSelector } from 'react-redux';
 
 export function useUrlHelpers() {
+  const { settings } = config;
   const apiHeaders = useSelector(
     (store) => store.userSession?.apiHeaders,
     shallowEqual,
@@ -66,9 +67,9 @@ export function useUrlHelpers() {
     return url.indexOf(apiPath) === 0 ? url : `${apiPath}${url}`;
   }
 
-  function expandToBackendURL(url) {
+  function expandToBackendURL(path) {
     if (!hasApiHeaders) {
-      return classicExpandToBackendURL(url);
+      return classicExpandToBackendURL(path);
     }
     const APISUFIX = settings.legacyTraverse ? '' : '/++api++';
     let adjustedPath;
@@ -87,8 +88,6 @@ export function useUrlHelpers() {
     if (!hasApiHeaders) {
       return classicIsInternalURL(url);
     }
-    const { settings } = config;
-
     const isMatch = (config.settings.externalRoutes ?? []).find((route) => {
       if (typeof route === 'object') {
         return matchPath(flattenToAppURL(url), route.match);
