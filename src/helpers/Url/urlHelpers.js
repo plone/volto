@@ -1,6 +1,6 @@
 import {
   flattenHTMLToAppURL as classicFlattenHTMLToAppURL,
-  flatternToAppUrl as classicFlattenToAppUrl,
+  flattenToAppURL as classicFlattenToAppURL,
 } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 import PropTypes from 'prop-types';
@@ -26,7 +26,7 @@ export function useUrlHelpers() {
 
   function flattenToAppURL(url) {
     if (!hasApiHeaders) {
-      return classicFlattenToAppUrl(url);
+      return classicFlattenToAppURL(url);
     }
     return (
       url &&

@@ -7,8 +7,7 @@ import superagent from 'superagent';
 import Cookies from 'universal-cookie';
 import config from '@plone/volto/registry';
 import { addHeadersFactory } from '@plone/volto/helpers/Proxy/Proxy';
-import { stripQuerystring } from '@plone/volto/helpers';
-import { calculateApiPath } from '@plone/volto/helpers/useUrlHelpers';
+import { stripQuerystring, useUrlHelpers } from '@plone/volto/helpers';
 import { compose } from 'redux';
 
 const methods = ['get', 'post', 'put', 'patch', 'del'];
@@ -22,6 +21,7 @@ const methods = ['get', 'post', 'put', 'patch', 'del'];
  */
 export function formatUrl(path, req) {
   const { settings } = config;
+  const { calculateApiPath } = useUrlHelpers();
   const APISUFIX = settings.legacyTraverse ? '' : '/++api++';
 
   if (path.startsWith('http://') || path.startsWith('https://')) return path;

@@ -9,7 +9,7 @@ import { Grid } from 'semantic-ui-react';
 import RenderBlocks from '@plone/volto/components/theme/View/RenderBlocks';
 import { EventDetails } from '@plone/volto/components';
 import { Container as SemanticContainer } from 'semantic-ui-react';
-import { useUrlHelpers } from '@plone/volto/helpers/useUrlHelpers';
+import { useUrlHelpers } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
 const EventTextfieldView = ({ content }) => {

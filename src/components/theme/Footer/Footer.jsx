@@ -10,7 +10,7 @@ import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import { useSelector, shallowEqual } from 'react-redux';
 import { UniversalLink } from '@plone/volto/components';
 import { flattenToAppURL, addAppURL } from '@plone/volto/helpers';
-import { useUrlHelpers } from '../../../helpers/useUrlHelpers';
+import { useUrlHelpers } from '@plone/volto/helpers/';
 import config from '@plone/volto/registry';
 
 const messages = defineMessages({

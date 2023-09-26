@@ -6,7 +6,7 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Container } from 'semantic-ui-react';
-import { useUrlHelpers } from '@plone/volto/helpers/useUrlHelpers';
+import { useUrlHelpers } from '@plone/volto/helpers';
 
 const ConnectionRefused = (props) => {
   const helpers = useUrlHelpers();
