@@ -13,7 +13,7 @@ import config from '@plone/volto/registry';
 import configureStore from '@plone/volto/store';
 import {
   Api,
-  flattenToAppURL,
+  useUrlHelpers,
   langmap,
   toGettextLang,
   toReactIntlLang,
@@ -39,6 +39,7 @@ const TranslationObject = ({
   isFormSelected,
   onSelectForm,
 }) => {
+  const { flattenToAppURL } = useUrlHelpers();
   const intl = useIntl();
 
   const [locales, setLocales] = useState({});
