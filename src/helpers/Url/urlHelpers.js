@@ -88,35 +88,33 @@ export function calculateApiPath(headers) {
   const { settings } = config;
   let apiPathValue = '';
   if (__SERVER__) {
-    if (
-      // We don't have a RAZZLE_INTERNAL_API_ATH but there is an X-Internal-Api-Path header
-      (!settings.internalApiPath || settings.internalApiPath === undefined) &&
-      headers.internalApiPath
-    ) {
+    // We don't have a RAZZLE_INTERNAL_API_ATH but there is an X-Internal-Api-Path header
+    if (!settings.internalApiPath && headers.internalApiPath) {
       apiPathValue = headers.internalApiPath;
-    } else if (
-      // We don't have a RAZZLE_API_PATH but there is an X-Api-Path header
-      (!settings.apiPath || settings.apiPath === undefined) &&
-      headers.apiPath
-    ) {
+    }
+    // We have a RAZZLE_INTERNAL_API_PATH
+    else if (settings.internalApiPath) {
+      apiPathValue = settings.internalApiPath;
+    }
+    // We don't have a RAZZLE_API_PATH but there is an X-Api-Path header. There wasn't an X-Internal-Api-Path
+    else if (!settings.apiPath && headers.apiPath) {
       apiPathValue = headers.apiPath;
-    } else if (
-      (!settings.internalApiPath || settings.internalApiPath === undefined) &&
-      settings.apiPath
-    ) {
-      // We don't have a RAZZLE_INTERNAL_API_PATH but we have a RAZZLE_API_PATH
+    }
+    // We don't have a RAZZLE_INTERNAL_API_PATH but we have a RAZZLE_API_PATH
+    else if (!settings.internalApiPath && settings.apiPath) {
       apiPathValue = settings.apiPath;
-    } else if (
-      (!settings.apiPath || settings.apiPath === undefined) &&
-      headers.host
-    ) {
-      // We don't have a RAZZLE_API_PATH (or RAZZLE_INTERNAL_API_PATH) but there is a detectable host
+    }
+    // We don't have a RAZZLE_API_PATH (or RAZZLE_INTERNAL_API_PATH) but there is a detectable hosts
+    else if (!settings.apiPath && headers.host) {
       apiPathValue = `${headers.protocol}://${headers.host}`;
-    } else {
-      // Fallback to the default
+    }
+    // Fallback to the default
+    else {
       apiPathValue = 'http://localhost:8080/Plone';
     }
-  } else {
+  }
+  // CLIENT
+  else {
     const windowApiPath = window.env?.apiPath;
     if (
       (!settings.apiPath || settings.apiPath === undefined) &&
