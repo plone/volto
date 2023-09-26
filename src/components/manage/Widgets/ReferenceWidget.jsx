@@ -13,7 +13,7 @@ import { defineMessages, injectIntl } from 'react-intl';
 
 import { FormFieldWrapper } from '@plone/volto/components';
 import { resetSearchContent, searchContent } from '@plone/volto/actions';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { injectUrlHelpers } from '@plone/volto/helpers';
 
 const messages = defineMessages({
   no_results_found: {
@@ -85,7 +85,7 @@ class ReferenceWidget extends Component {
   constructor(props) {
     super(props);
     this.onSearchChange = this.onSearchChange.bind(this);
-
+    const { flattenToAppURL } = props.urlHelpers;
     this.state = {
       choices: props.value
         ? props.multiple
@@ -135,6 +135,7 @@ class ReferenceWidget extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
+    const { flattenToAppURL } = this.props.urlHelpers;
     this.setState({
       choices: {
         ...fromPairs(
@@ -223,6 +224,7 @@ class ReferenceWidget extends Component {
    */
   render() {
     const { id, title, value, multiple, onChange } = this.props;
+    const { flattenToAppURL } = this.props.urlHelpers;
 
     return (
       <FormFieldWrapper {...this.props}>
@@ -264,6 +266,7 @@ class ReferenceWidget extends Component {
 }
 
 export default compose(
+  injectUrlHelpers,
   injectIntl,
   connect(
     (state) => ({
