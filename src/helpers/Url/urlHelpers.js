@@ -9,6 +9,7 @@ import {
 import config from '@plone/volto/registry';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import { shallowEqual, useSelector } from 'react-redux';
+import { matchPath } from 'react-router';
 
 export function useUrlHelpers() {
   const { settings } = config;
