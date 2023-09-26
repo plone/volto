@@ -19,7 +19,7 @@ const LinkView = ({ token, content }) => {
         window.location.href = flattenToAppURL(remoteUrl);
       }
     }
-  }, [content, history, token]);
+  }, [content, history, token, isInternalURL, flattenToAppURL]);
   const { title, description, remoteUrl } = content;
   const { openExternalLinkInNewTab } = config.settings;
   const Container =

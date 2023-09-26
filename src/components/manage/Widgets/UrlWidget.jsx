@@ -8,11 +8,7 @@ import { compose } from 'redux';
 import PropTypes from 'prop-types';
 import { Input, Button } from 'semantic-ui-react';
 import { FormFieldWrapper, Icon } from '@plone/volto/components';
-import {
-  addAppURL,
-  URLUtils,
-  useUrlHelpers,
-} from '@plone/volto/helpers';
+import { addAppURL, URLUtils, useUrlHelpers } from '@plone/volto/helpers';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import navTreeSVG from '@plone/volto/icons/nav.svg';

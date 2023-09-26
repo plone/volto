@@ -9,11 +9,7 @@ import { compose } from 'redux';
 
 // import unionClassNames from 'union-class-names';
 import cx from 'classnames';
-import {
-  addAppURL,
-  injectUrlHelpers,
-  URLUtils,
-} from '@plone/volto/helpers';
+import { addAppURL, injectUrlHelpers, URLUtils } from '@plone/volto/helpers';
 
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import { Input, Form, Button } from 'semantic-ui-react';
@@ -319,4 +315,5 @@ export default compose(
   injectUrlHelpers,
   injectIntl,
   withRouter,
-  withObjectBrowser)(AddLinkForm);
+  withObjectBrowser,
+)(AddLinkForm);

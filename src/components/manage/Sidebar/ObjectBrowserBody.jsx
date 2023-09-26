@@ -45,6 +45,7 @@ const messages = defineMessages({
 });
 
 function getParentURL(url) {
+  const { flattenToAppURL } = this.props.urlHelpers;
   return flattenToAppURL(`${join(url.split('/').slice(0, -1), '/')}`) || '/';
 }
 
@@ -97,6 +98,7 @@ class ObjectBrowserBody extends Component {
    */
   constructor(props) {
     super(props);
+    const { flattenToAppURL } = props.urlHelpers;
     this.state = {
       currentFolder:
         this.props.mode === 'multiple' ? '/' : this.props.contextURL || '/',
@@ -248,6 +250,7 @@ class ObjectBrowserBody extends Component {
   onSelectItem = (item) => {
     const url = item['@id'];
     const { block, data, mode, dataName, onChangeBlock } = this.props;
+    const { flattenToAppURL } = this.props.urlHelpers;
 
     const updateState = (mode) => {
       switch (mode) {

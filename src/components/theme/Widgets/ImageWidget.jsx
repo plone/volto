@@ -34,6 +34,6 @@ const ImageWidget = ({ value, className }) => {
   ) : (
     ''
   );
-}
+};
 
 export default ImageWidget;

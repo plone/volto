@@ -20,9 +20,8 @@ const messages = defineMessages({
   },
 });
 
-function renderNode(node, parentLevel) {
+function renderNode(node, parentLevel, flattenToAppURL) {
   const level = parentLevel + 1;
-  const { flattenToAppURL } = useUrlHelpers();
   return (
     <List.Item
       key={node['@id']}
@@ -55,7 +54,7 @@ function renderNode(node, parentLevel) {
         )}
         {(node.items?.length && (
           <List.List>
-            {node.items.map((node) => renderNode(node, level))}
+            {node.items.map((node) => renderNode(node, level, flattenToAppURL))}
           </List.List>
         )) ||
           ''}
@@ -88,7 +87,7 @@ export function ContextNavigationComponent(props) {
           {intl.formatMessage(messages.navigation)}
         </div>
       )}
-      <List>{items.map((node) => renderNode(node, 0))}</List>
+      <List>{items.map((node) => renderNode(node, 0, flattenToAppURL))}</List>
     </nav>
   ) : (
     ''

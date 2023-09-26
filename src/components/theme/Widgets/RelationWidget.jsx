@@ -6,11 +6,11 @@ import { Icon } from '@plone/volto/components';
 import { UniversalLink } from '@plone/volto/components';
 
 const RelationWidget = ({ value, children, className }) => {
+  const { flattenToAppURL } = useUrlHelpers();
   if (!value) {
     return '';
   }
 
-  const { flattenToAppURL } = useUrlHelpers();
   const url = flattenToAppURL(value['@id'] || '#');
   const state = value.review_state || '';
   const description = value.description || '';

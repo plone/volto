@@ -75,6 +75,6 @@ const RequestTimeout = () => {
       )}
     </Container>
   );
-}
+};
 
 export default RequestTimeout;

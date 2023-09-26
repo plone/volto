@@ -7,10 +7,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { HashLink as Link } from 'react-router-hash-link';
 import { useSelector } from 'react-redux';
-import {
-  useUrlHelpers,
-  URLUtils,
-} from '@plone/volto/helpers';
+import { useUrlHelpers, URLUtils } from '@plone/volto/helpers';
 
 import config from '@plone/volto/registry';
 import cx from 'classnames';

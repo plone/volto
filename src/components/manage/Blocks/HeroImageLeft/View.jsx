@@ -36,7 +36,7 @@ const View = ({ data }) => {
       </div>
     </div>
   );
-}
+};
 
 /**
  * Property types.

@@ -22,9 +22,8 @@ export default function Image({
   className = '',
   ...imageProps
 }) {
-  if (!item && !src) return null;
-
   const { flattenToAppURL } = useUrlHelpers();
+  if (!item && !src) return null;
 
   // TypeScript hints for editor autocomplete :)
   /** @type {React.ImgHTMLAttributes<HTMLImageElement>} */

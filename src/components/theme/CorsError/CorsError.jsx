@@ -76,6 +76,6 @@ const CorsError = () => {
       )}
     </Container>
   );
-}
+};
 
 export default CorsError;

@@ -14,11 +14,7 @@ import {
   listMoreComments,
 } from '@plone/volto/actions';
 import { Avatar, CommentEditModal, Form } from '@plone/volto/components';
-import {
-  getColor,
-  usePrevious,
-  useUrlHelpers,
-} from '@plone/volto/helpers';
+import { getColor, usePrevious, useUrlHelpers } from '@plone/volto/helpers';
 
 const messages = defineMessages({
   comment: {
@@ -136,6 +132,7 @@ const Comments = (props) => {
     addRequest.loaded,
     prevdeleteRequestLoading,
     deleteRequest.loaded,
+    getBaseUrl,
   ]);
 
   const onSubmit = (formData) => {

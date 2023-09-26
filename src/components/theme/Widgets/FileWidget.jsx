@@ -17,11 +17,11 @@ const niceBytes = (bytes) => {
 };
 
 const FileWidget = ({ value, children, className }) => {
+  const { flattenToAppURL } = useUrlHelpers();
   if (!value) {
     return '';
   }
 
-  const { flattenToAppURL } = useUrlHelpers();
   const url = flattenToAppURL(value.download || value.filename || value);
   const filename = value.filename || url;
   const size = value.data ? value.data.length * 0.75 : value.size || 0;
