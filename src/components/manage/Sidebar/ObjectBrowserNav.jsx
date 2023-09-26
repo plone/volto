@@ -3,7 +3,7 @@ import { Button, Segment, Popup } from 'semantic-ui-react';
 import { useIntl, defineMessages } from 'react-intl';
 import cx from 'classnames';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
-import { flattenToAppURL, getContentIcon } from '@plone/volto/helpers';
+import { useUrlHelpers, getContentIcon } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
 import rightArrowSVG from '@plone/volto/icons/right-key.svg';
@@ -29,6 +29,7 @@ const ObjectBrowserNav = ({
   navigateTo,
   isSelectable,
 }) => {
+  const { flattenToAppURL } = useUrlHelpers();
   const intl = useIntl();
   const isSelected = (item) => {
     let ret = false;
