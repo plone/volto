@@ -1,9 +1,4 @@
-/**
- * Edit text cell block.
- * @module components/manage/Blocks/Title/Cell
- */
-
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { includes } from 'lodash';
 import config from '@plone/volto/registry';
@@ -13,158 +8,97 @@ import loadable from '@loadable/component';
 
 const Editor = loadable(() => import('draft-js-plugins-editor'));
 
-/**
- * Edit text cell class.
- * @class Cell
- * @extends Component
- */
-class CellComponent extends Component {
-  /**
-   * Property types.
-   * @property {Object} propTypes Property types.
-   * @static
-   */
-  static propTypes = {
-    onSelectCell: PropTypes.func.isRequired,
-    row: PropTypes.number,
-    cell: PropTypes.number,
-    value: PropTypes.object,
-    selected: PropTypes.bool,
-    onChange: PropTypes.func.isRequired,
-    isTableBlockSelected: PropTypes.bool,
-    disableNewBlocks: PropTypes.bool,
-    editable: PropTypes.bool,
-  };
+const CellComponent = (props) => {
+  const {
+    onSelectCell,
+    row,
+    cell,
+    value,
+    selected,
+    onChange,
+    isTableBlockSelected,
+    disableNewBlocks,
+    editable,
+    draftJs,
+    draftJsInlineToolbarPlugin,
+    draftJsLibIsSoftNewlineEvent,
+    draftJsFilters,
+    immutableLib,
+    index,
+    onSelectBlock,
+    onAddBlock,
+  } = props;
 
-  /**
-   * Default properties
-   * @property {Object} defaultProps Default properties.
-   * @static
-   */
-  static defaultProps = {
-    detached: false,
-    editable: true,
-  };
+  const { EditorState, convertFromRaw, RichUtils } = draftJs;
+  const createInlineToolbarPlugin = draftJsInlineToolbarPlugin.default;
 
-  /**
-   * Constructor
-   * @method constructor
-   * @param {Object} props Component properties
-   * @constructs Cell
-   */
-  constructor(props) {
-    super(props);
+  const [editorState, setEditorState] = useState(
+    EditorState.createWithContent(convertFromRaw(value)),
+  );
+  const [inlineToolbarPlugin] = useState(
+    createInlineToolbarPlugin({
+      structure: config.settings.richtextEditorSettings(props)
+        .richTextEditorInlineToolbarButtons,
+    }),
+  );
 
-    const { EditorState, convertFromRaw } = props.draftJs;
-    const createInlineToolbarPlugin = props.draftJsInlineToolbarPlugin.default;
+  const isSoftNewlineEvent = draftJsLibIsSoftNewlineEvent.default;
 
-    if (!__SERVER__) {
-      this.draftConfig = config.settings.richtextEditorSettings(props);
-      let editorState;
-      editorState = EditorState.createWithContent(convertFromRaw(props.value));
-
-      const inlineToolbarPlugin = createInlineToolbarPlugin({
-        structure: this.draftConfig.richTextEditorInlineToolbarButtons,
-      });
-
-      this.state = {
-        editorState,
-        inlineToolbarPlugin,
-      };
-    }
-
-    this.onChange = this.onChange.bind(this);
-  }
-
-  /**
-   * Component did mount lifecycle method
-   * @method componentDidMount
-   * @returns {undefined}
-   */
-  componentDidMount() {
-    if (this.node) {
-      const onFocus = this.node.editor._onFocus;
-      this.node.editor._onFocus = (event) => {
+  useEffect(() => {
+    if (node) {
+      const onFocus = node.editor._onFocus;
+      node.editor._onFocus = (event) => {
         onFocus(event);
-        this.props.onSelectCell(this.props.row, this.props.cell);
+        onSelectCell(row, cell);
       };
     }
-  }
+  }, [node, onSelectCell, row, cell]);
 
-  /**
-   * Component will receive props
-   * @method componentWillReceiveProps
-   * @param {Object} nextProps Next properties
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillReceiveProps(nextProps) {
+  useEffect(() => {
     if (
-      nextProps.isTableBlockSelected !== this.props.isTableBlockSelected &&
-      this.props.cell === 0 &&
-      this.props.row === 0
+      isTableBlockSelected !== props.isTableBlockSelected &&
+      cell === 0 &&
+      row === 0
     ) {
-      this.node.focus();
+      node.focus();
     }
-  }
+  }, [isTableBlockSelected, props.isTableBlockSelected, cell, row, node]);
 
-  /**
-   * Change handler
-   * @method onChange
-   * @param {object} editorState Editor state.
-   * @returns {undefined}
-   */
-  onChange(editorState) {
-    this.setState({ editorState }, () => {
-      this.props.onChange(this.props.row, this.props.cell, editorState);
-    });
-  }
+  const onChangeEditorState = (newEditorState) => {
+    setEditorState(newEditorState);
+    onChange(row, cell, newEditorState);
+  };
 
-  /**
-   * Render method.
-   * @method render
-   * @returns {string} Markup for the component.
-   */
-  render() {
-    if (__SERVER__) {
-      return <div />;
-    }
-
-    const { InlineToolbar } = this.state.inlineToolbarPlugin;
-    const isSoftNewlineEvent = this.props.draftJsLibIsSoftNewlineEvent.default;
-    const { RichUtils } = this.props.draftJs;
-
-    return (
+  return (
+    props.open && (
       <div>
         <Editor
-          readOnly={!this.props.editable}
-          onChange={this.onChange}
-          editorState={this.state.editorState}
-          plugins={[
-            this.state.inlineToolbarPlugin,
-            ...this.draftConfig.richTextEditorPlugins,
-          ]}
-          blockRenderMap={this.draftConfig.extendedBlockRenderMap}
-          blockStyleFn={this.draftConfig.blockStyleFn}
-          customStyleMap={this.draftConfig.customStyleMap}
+          readOnly={!editable}
+          onChange={onChangeEditorState}
+          editorState={editorState}
+          plugins={[inlineToolbarPlugin]}
+          blockRenderMap={config.settings.richtextEditorSettings(props).extendedBlockRenderMap}
+          blockStyleFn={config.settings.richtextEditorSettings(props).blockStyleFn}
+          customStyleMap={config.settings.richtextEditorSettings(props).customStyleMap}
           handleReturn={(e) => {
             if (isSoftNewlineEvent(e)) {
-              this.onChange(
-                RichUtils.insertSoftNewline(this.state.editorState),
+              onChangeEditorState(
+                RichUtils.insertSoftNewline(editorState),
               );
               return 'handled';
             }
-            if (!this.props.detached && !this.props.disableNewBlocks) {
-              const selectionState = this.state.editorState.getSelection();
+            if (!props.detached && !disableNewBlocks) {
+              const selectionState = editorState.getSelection();
               const anchorKey = selectionState.getAnchorKey();
-              const currentContent = this.state.editorState.getCurrentContent();
+              const currentContent = editorState.getCurrentContent();
               const currentContentBlock =
                 currentContent.getBlockForKey(anchorKey);
               const blockType = currentContentBlock.getType();
-              if (!includes(this.draftConfig.listBlockTypes, blockType)) {
-                this.props.onSelectBlock(
-                  this.props.onAddBlock(
-                    this.draftConfig.defaultBlockType,
-                    this.props.index + 1,
+              if (!includes(config.settings.richtextEditorSettings(props).listBlockTypes, blockType)) {
+                onSelectBlock(
+                  onAddBlock(
+                    config.settings.richtextEditorSettings(props).defaultBlockType,
+                    index + 1,
                   ),
                 );
                 return 'handled';
@@ -177,11 +111,31 @@ class CellComponent extends Component {
             this.node = node;
           }}
         />
-        <InlineToolbar />
+        <inlineToolbarPlugin.InlineToolbar />
       </div>
-    );
-  }
-}
+    )
+  );
+};
+
+CellComponent.propTypes = {
+  onSelectCell: PropTypes.func.isRequired,
+  row: PropTypes.number,
+  cell: PropTypes.number,
+  value: PropTypes.object,
+  selected: PropTypes.bool,
+  onChange: PropTypes.func.isRequired,
+  isTableBlockSelected: PropTypes.bool,
+  disableNewBlocks: PropTypes.bool,
+  editable: PropTypes.bool,
+  draftJs: PropTypes.object.isRequired,
+  draftJsInlineToolbarPlugin: PropTypes.object.isRequired,
+  draftJsLibIsSoftNewlineEvent: PropTypes.object.isRequired,
+  draftJsFilters: PropTypes.object.isRequired,
+  immutableLib: PropTypes.object.isRequired,
+  index: PropTypes.number.isRequired,
+  onSelectBlock: PropTypes.func.isRequired,
+  onAddBlock: PropTypes.func.isRequired,
+};
 
 export const Cell = injectLazyLibs([
   'draftJs',
@@ -196,8 +150,8 @@ export const Cell = injectLazyLibs([
 ])(CellComponent);
 
 const Preloader = (props) => {
-  const [loaded, setLoaded] = React.useState(false);
-  React.useEffect(() => {
+  const [loaded, setLoaded] = useState(false);
+  useEffect(() => {
     Editor.load().then(() => setLoaded(true));
   }, []);
   return loaded ? <Cell {...props} /> : null;
