@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { useUrlHelpers } from '@plone/volto/helpers';
 import { getContentIcon } from '@plone/volto/helpers';
 import { Icon } from '@plone/volto/components';
 import { UniversalLink } from '@plone/volto/components';
@@ -10,6 +10,7 @@ const RelationWidget = ({ value, children, className }) => {
     return '';
   }
 
+  const { flattenToAppURL } = useUrlHelpers();
   const url = flattenToAppURL(value['@id'] || '#');
   const state = value.review_state || '';
   const description = value.description || '';
