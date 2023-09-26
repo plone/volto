@@ -109,4 +109,21 @@ describe('PreviewImage', () => {
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });
+
+  it('not renders a fallback image if showDefault prop is false', () => {
+    const item = {
+      title: 'Item title',
+      '@id': 'http://localhost:3000/something',
+    };
+    const component = renderer.create(
+      <PreviewImage
+        item={item}
+        className="extra"
+        showDefault={false}
+        alt={item.title}
+      />,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
 });

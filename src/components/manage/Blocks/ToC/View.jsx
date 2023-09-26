@@ -119,6 +119,7 @@ const View = (props) => {
         const level = entry[0];
         const title = entry[1];
         const items = [];
+        if (!title?.trim() && !block.plaintext?.trim()) return;
         if (!level || !levels.includes(level)) return;
         tocEntriesLayout.push(id);
         tocEntries[id] = {

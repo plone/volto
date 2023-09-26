@@ -83,6 +83,10 @@ const ContentMetadataTags = (props) => {
     <>
       <Helmet>
         <title>{getTitle()?.replace(/\u00AD/g, '')}</title>
+        <link
+          rel="canonical"
+          href={seo_canonical_url || toPublicURL(props.content['@id'])}
+        />
         <meta name="description" content={seo_description || description} />
         <meta
           property="og:title"
