@@ -6,10 +6,11 @@ import {
   getTranslationLocator,
   getContent,
 } from '@plone/volto/actions';
-import { flattenToAppURL, toGettextLang } from '@plone/volto/helpers';
+import { useUrlHelpers, toGettextLang } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
 const CreateTranslation = (props) => {
+  const { flattenToAppURL } = useUrlHelpers();
   const dispatch = useDispatch();
   const { language, translationOf } = props.location.state;
   const [translationLocation, setTranslationLocation] = React.useState(null);
