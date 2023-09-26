@@ -63,9 +63,7 @@ export function useUrlHelpers() {
       return classicAddAppURL(url);
     }
     const apiPath = getApiPath();
-    return url.indexOf(apiPath) === 0
-      ? url
-      : `${apiPath}${url}`;
+    return url.indexOf(apiPath) === 0 ? url : `${apiPath}${url}`;
   }
 
   function expandToBackendURL(url) {
