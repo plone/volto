@@ -285,6 +285,16 @@ export const reorderArray = (array, origin, target) => {
 };
 
 /**
+ * Normalize (unicode) string to a normalized plain ascii string
+ * @method normalizeString
+ * @param {string} str The string to be normalized
+ * @returns {string} Normalized plain ascii string
+ */
+export function normalizeString(str) {
+  return str.normalize('NFD').replace(/\p{Diacritic}/gu, '');
+}
+
+/**
  * Slugify a string: remove whitespaces, special chars and replace with _
  * @param {string} string String to be slugified
  * @returns {string} Slugified string
