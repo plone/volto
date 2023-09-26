@@ -1,5 +1,6 @@
 import types from './types';
-import { GET_TYPES } from '@plone/volto/constants/ActionTypes';
+import { GET_CONTENT, GET_TYPES } from '@plone/volto/constants/ActionTypes';
+import config from '@plone/volto/registry';
 
 describe('Types reducer', () => {
   it('should return the initial state', () => {
@@ -49,6 +50,35 @@ describe('Types reducer', () => {
       loaded: false,
       loading: false,
       types: [],
+    });
+  });
+});
+
+describe('Types reducer - (TYPES)GET_CONTENT_SUCCESS', () => {
+  beforeEach(() => {
+    config.settings.apiExpanders = [
+      {
+        match: '',
+        GET_CONTENT: ['types'],
+      },
+    ];
+  });
+
+  it('should handle (TYPES)GET_CONTENT_SUCCESS', () => {
+    expect(
+      types(undefined, {
+        type: `${GET_CONTENT}_SUCCESS`,
+        result: {
+          '@components': {
+            types: 'My types',
+          },
+        },
+      }),
+    ).toEqual({
+      error: null,
+      loaded: true,
+      loading: false,
+      types: 'My types',
     });
   });
 });

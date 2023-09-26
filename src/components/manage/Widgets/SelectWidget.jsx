@@ -25,6 +25,7 @@ import {
   Option,
   selectTheme,
   MenuList,
+  MultiValueContainer,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
@@ -166,6 +167,19 @@ class SelectWidget extends Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    if (
+      this.props.vocabBaseUrl !== prevProps.vocabBaseUrl &&
+      (!this.props.choices || this.props.choices?.length === 0)
+    ) {
+      this.props.getVocabulary({
+        vocabNameOrURL: this.props.vocabBaseUrl,
+        size: -1,
+        subrequest: this.props.lang,
+      });
+    }
+  }
+
   /**
    * Render method.
    * @method render
@@ -189,7 +203,8 @@ class SelectWidget extends Component {
           })),
           // Only set "no-value" option if there's no default in the field
           // TODO: also if this.props.defaultValue?
-          ...(this.props.noValueOption && !this.props.default
+          ...(this.props.noValueOption &&
+          (this.props.default === undefined || this.props.default === null)
             ? [
                 {
                   label: this.props.intl.formatMessage(messages.no_value),
@@ -201,7 +216,7 @@ class SelectWidget extends Component {
 
     const isMulti = this.props.isMulti
       ? this.props.isMulti
-      : id === 'roles' || id === 'groups';
+      : id === 'roles' || id === 'groups' || this.props.type === 'array';
 
     return (
       <FormFieldWrapper {...this.props}>
@@ -209,6 +224,7 @@ class SelectWidget extends Component {
           id={`field-${id}`}
           key={choices}
           name={id}
+          menuShouldScrollIntoView={false}
           isDisabled={disabled}
           isSearchable={true}
           className="react-select-container"
@@ -221,6 +237,7 @@ class SelectWidget extends Component {
             ...(options?.length > 25 && {
               MenuList,
             }),
+            MultiValueContainer,
             DropdownIndicator,
             ClearIndicator,
             Option: this.props.customOptionStyling || Option,

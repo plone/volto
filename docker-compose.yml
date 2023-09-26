@@ -2,14 +2,13 @@ version: '3.3'
 services:
 
   backend:
-    image: plone/plone-backend:6.0.0b2
+    image: plone/plone-backend:6.0.5
     # Plone 5.2 series can be used too
-    # image: plone/plone-backend:5.2.9
+    # image: plone/plone-backend:5.2.10
     ports:
       - '8080:8080'
     environment:
       - SITE=Plone
-      - 'ADDONS=plone.restapi==8.29.0 plone.volto==4.0.0a13 plone.rest==2.0.0a5'
       - 'PROFILES=plone.volto:default-homepage'
     labels:
       - traefik.enable=true
@@ -47,7 +46,7 @@ services:
 
   reverse-proxy:
     # The official v2 Traefik docker image
-    image: traefik:v2.8
+    image: traefik:v2.9
     # Enables the web UI and tells Traefik to listen to docker
     command: --api.insecure=true --providers.docker
     ports:
@@ -57,7 +56,7 @@ services:
       - "8888:8080"
     volumes:
       # So that Traefik can listen to the Docker events
-      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/run/docker.sock:/var/run/docker.sock:ro
     labels:
       - traefik.http.middlewares.gzip.compress=true
       - traefik.http.middlewares.gzip.compress.excludedcontenttypes=image/png, image/jpeg, font/woff2

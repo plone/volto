@@ -50,6 +50,40 @@ describe('registry', () => {
       'this is a Bar component',
     );
   });
+  it('registers and gets a component by name (as an object) - check displayName', () => {
+    config.registerComponent({
+      name: 'Toolbar.Bar',
+      component: (props) => <div>Hello</div>,
+    });
+    expect(config.getComponent('Toolbar.Bar').component.displayName).toEqual(
+      'Toolbar.Bar',
+    );
+  });
+  it('registers and gets a component by name (as an object) - check displayName if it has already one, it does not overwrite it', () => {
+    const TestComponent = (props) => <div>Hello</div>;
+    TestComponent.displayName = 'DisplayNameAlreadySet';
+    config.registerComponent({
+      name: 'Toolbar.Bar',
+      component: TestComponent,
+    });
+
+    expect(config.getComponent('Toolbar.Bar').component.displayName).toEqual(
+      'DisplayNameAlreadySet',
+    );
+  });
+  it('registers and gets a component by name (as an object) - check displayName - do not break if it is a normal function', () => {
+    function myFunction() {
+      return 'true';
+    }
+
+    config.registerComponent({
+      name: 'Toolbar.Bar',
+      component: myFunction,
+    });
+    expect(config.getComponent('Toolbar.Bar').component.displayName).toEqual(
+      'Toolbar.Bar',
+    );
+  });
   it('registers a component by name with dependencies', () => {
     config.registerComponent({
       name: 'Toolbar.Bar',

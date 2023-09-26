@@ -10,8 +10,6 @@ exports[`Can render a custom button 1`] = `
 </div>
 `;
 
-exports[`Does not render if the block is not empty 1`] = `<div />`;
-
 exports[`Renders a button 1`] = `
 <div>
   <button

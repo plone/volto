@@ -17,6 +17,8 @@ import { toast } from 'react-toastify';
 import { Form, Icon, Toolbar, Toast } from '@plone/volto/components';
 import { updateControlpanel, getControlpanel } from '@plone/volto/actions';
 
+import config from '@plone/volto/registry';
+
 import saveSVG from '@plone/volto/icons/save.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 
@@ -147,6 +149,8 @@ class Controlpanel extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const { filterControlPanelsSchema } = config.settings;
+
     if (this.props.controlpanel) {
       return (
         <div id="page-controlpanel">
@@ -155,7 +159,7 @@ class Controlpanel extends Component {
             <Form
               ref={this.form}
               title={this.props.controlpanel.title}
-              schema={this.props.controlpanel.schema}
+              schema={filterControlPanelsSchema(this.props.controlpanel)}
               formData={this.props.controlpanel.data}
               onSubmit={this.onSubmit}
               onCancel={this.onCancel}

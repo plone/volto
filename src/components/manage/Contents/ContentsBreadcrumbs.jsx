@@ -2,6 +2,10 @@ import React from 'react';
 import { Breadcrumb } from 'semantic-ui-react';
 import { Link, useLocation } from 'react-router-dom';
 import { defineMessages, useIntl } from 'react-intl';
+import { langmap } from '@plone/volto/helpers';
+import ContentsBreadcrumbsRootItem from '@plone/volto/components/manage/Contents/ContentsBreadcrumbsRootItem';
+import ContentsBreadcrumbsHomeItem from '@plone/volto/components/manage/Contents/ContentsBreadcrumbsHomeItem';
+
 import config from '@plone/volto/registry';
 
 const messages = defineMessages({
@@ -31,7 +35,7 @@ const ContentsBreadcrumbs = (props) => {
             className="section"
             title={intl.formatMessage(messages.root)}
           >
-            {intl.formatMessage(messages.root)}
+            <ContentsBreadcrumbsRootItem />
           </Link>
           <Breadcrumb.Divider />
         </>
@@ -42,7 +46,7 @@ const ContentsBreadcrumbs = (props) => {
           className="section"
           title={intl.formatMessage(messages.home)}
         >
-          {lang}
+          {langmap?.[lang]?.nativeName ?? lang}
         </Link>
       )}
       {!settings.isMultilingual && (
@@ -51,7 +55,7 @@ const ContentsBreadcrumbs = (props) => {
           className="section"
           title={intl.formatMessage(messages.home)}
         >
-          {intl.formatMessage(messages.home)}
+          <ContentsBreadcrumbsHomeItem />
         </Link>
       )}
       {items.map((breadcrumb, index, breadcrumbs) => [

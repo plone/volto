@@ -31,6 +31,7 @@ const PasswordWidget = (props) => {
     minLength,
     maxLength,
     placeholder,
+    isDisabled,
   } = props;
 
   return (
@@ -39,7 +40,7 @@ const PasswordWidget = (props) => {
         id={`field-${id}`}
         name={id}
         type="password"
-        disabled={props.isDisabled}
+        disabled={isDisabled}
         value={value || ''}
         placeholder={placeholder}
         onChange={({ target }) =>

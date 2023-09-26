@@ -1,15 +1,17 @@
 import React from 'react';
+import { flushSync } from 'react-dom';
+import { defineMessages, useIntl } from 'react-intl';
+import { Button, Grid } from 'semantic-ui-react';
+
 import {
   SearchInput,
   SearchDetails,
   Facets,
   FilterList,
   SortOn,
+  ViewSwitcher,
 } from '../components';
-import { Grid } from 'semantic-ui-react';
-import { Button } from 'semantic-ui-react';
-import { flushSync } from 'react-dom';
-import { defineMessages, useIntl } from 'react-intl';
+import cx from 'classnames';
 
 const messages = defineMessages({
   searchButtonText: {
@@ -18,11 +20,24 @@ const messages = defineMessages({
   },
 });
 
-const FacetWrapper = ({ children }) => (
-  <Grid.Column mobile={12} tablet={4} computer={3}>
-    {children}
-  </Grid.Column>
-);
+const FacetWrapper = ({ children, facetSettings = {}, visible }) => {
+  const { advanced, field = {} } = facetSettings;
+
+  return (
+    <Grid.Column
+      mobile={12}
+      tablet={4}
+      computer={3}
+      className={cx('facet', {
+        [`facet-index-${field.value}`]: !!field.value,
+        'advanced-facet': advanced,
+        'advanced-facet-hidden': !visible,
+      })}
+    >
+      {children}
+    </Grid.Column>
+  );
+};
 
 const TopSideFacets = (props) => {
   const {
@@ -50,11 +65,13 @@ const TopSideFacets = (props) => {
 
   return (
     <Grid className="searchBlock-facets" stackable>
-      <Grid.Row>
-        <Grid.Column>
-          {data.headline && <h2 className="headline">{data.headline}</h2>}
-        </Grid.Column>
-      </Grid.Row>
+      {data.headline && (
+        <Grid.Row>
+          <Grid.Column>
+            <h2 className="headline">{data.headline}</h2>
+          </Grid.Column>
+        </Grid.Row>
+      )}
 
       <Grid.Row>
         <Grid.Column>
@@ -110,7 +127,11 @@ const TopSideFacets = (props) => {
                 }}
               />
             )}
+            {data.availableViews && data.availableViews.length > 1 && (
+              <ViewSwitcher {...props} />
+            )}
           </div>
+
           {data.facets?.length > 0 && (
             <div className="facets">
               {data.facetsTitle && <h3>{data.facetsTitle}</h3>}
@@ -130,6 +151,7 @@ const TopSideFacets = (props) => {
               </Grid>
             </div>
           )}
+
           <SearchDetails
             text={searchedText}
             total={totalItems}

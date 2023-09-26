@@ -39,4 +39,22 @@ describe('Header', () => {
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });
+
+  it('renders a header component - auth', () => {
+    const store = mockStore({
+      userSession: { token: '1234567890' },
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+
+    const component = renderer.create(
+      <Provider store={store}>
+        <Header pathname="/blog" />
+      </Provider>,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
 });

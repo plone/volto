@@ -1,5 +1,6 @@
 import React from 'react';
 import { searchResults } from './ObjectBrowserWidget.stories';
+import { cloneDeep } from 'lodash';
 import ObjectWidget from './ObjectWidget';
 import WidgetStory from './story';
 
@@ -63,7 +64,7 @@ const multipleFieldsets = {
     contributors: {
       title: 'Contributors',
       description: 'Example field with contributors information',
-      wiget: 'textarea',
+      widget: 'textarea',
     },
     href: {
       title: 'Source',
@@ -91,6 +92,15 @@ const multipleFieldsets = {
     },
   },
   required: [],
+};
+
+const addDefaultValues = (schema) => {
+  schema = cloneDeep(schema);
+  schema.properties.title.default = 'Plone release announcement';
+  schema.properties.description.default =
+    'Soon to arrive on your local machine';
+  schema.properties.contributors.default = 'Plone team\nVolto team';
+  return schema;
 };
 
 const customStore = {
@@ -123,6 +133,15 @@ export const MultipleFieldsets = WidgetStory.bind({
 });
 MultipleFieldsets.args = {
   schema: multipleFieldsets,
+};
+
+export const DefaultValue = WidgetStory.bind({
+  props: { id: 'objectwidget', title: 'Slides' },
+  widget: ObjectWidget,
+  customStore,
+});
+DefaultValue.args = {
+  schema: addDefaultValues(multipleFieldsets),
 };
 
 export default {

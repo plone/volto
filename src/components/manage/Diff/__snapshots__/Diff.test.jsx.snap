@@ -212,72 +212,63 @@ exports[`Diff renders a diff component 1`] = `
         </tr>
       </thead>
     </table>
-    <table
-      class="ui compact table"
+    <div
+      class="ui grid"
       data-testid="DiffField"
     >
-      <thead
-        class=""
+      <div
+        class="row"
       >
-        <tr
-          class=""
+        <div
+          class="twelve wide column"
         >
-          <th
-            class=""
-            colspan="2"
-          >
-            Title
-          </th>
-        </tr>
-      </thead>
-      <tbody
-        class=""
+          Title
+        </div>
+      </div>
+      <div
+        class="row"
       >
-        <tr
-          class=""
+        <div
+          class="top aligned six wide column"
         >
-          <td
-            class="top aligned eight wide"
-          >
+          <span>
             <span>
-              <span>
-                My 
-              </span>
-              <span
-                class="deletion"
-              >
-                old
-              </span>
-              <span>
-                 title
-              </span>
+              My 
             </span>
-          </td>
-          <td
-            class="top aligned eight wide"
-          >
+            <span
+              class="deletion"
+            >
+              old
+            </span>
             <span>
-              <span>
-                My 
-              </span>
-              <span
-                class="addition"
-              >
-                new
-              </span>
-              <span>
-                 title
-              </span>
-              <span
-                class="addition"
-              >
-                ,
-              </span>
+               title
             </span>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+          </span>
+        </div>
+        <div
+          class="top aligned six wide column"
+        >
+          <span>
+            <span>
+              My 
+            </span>
+            <span
+              class="addition"
+            >
+              new
+            </span>
+            <span>
+               title
+            </span>
+            <span
+              class="addition"
+            >
+              ,
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
     <div
       id="Portal"
     />

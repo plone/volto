@@ -1,17 +1,10 @@
-/**
- * RequestPasswordReset component.
- * @module components/theme/RequestPasswordReset/RequestPasswordReset
- */
-
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-import { withRouter } from 'react-router-dom';
-import { Helmet } from '@plone/volto/helpers';
+import { useState, useEffect, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { Container } from 'semantic-ui-react';
-import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
+import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 
+import { Helmet, usePrevious } from '@plone/volto/helpers';
 import { Form } from '@plone/volto/components';
 import { resetPassword } from '@plone/volto/actions';
 import config from '@plone/volto/registry';
@@ -32,7 +25,7 @@ const messages = defineMessages({
   },
   usernameTitle: {
     id: 'label_my_username_is',
-    defaultMessage: 'My username is',
+    defaultMessage: 'My user name is',
   },
   emailTitle: {
     id: 'label_my_email_is',
@@ -56,178 +49,110 @@ const messages = defineMessages({
   },
 });
 
-/**
- * RequestPasswordReset class.
- * @class RequestPasswordReset
- * @extends Component
- */
-class RequestPasswordReset extends Component {
-  /**
-   * Property types.
-   * @property {Object} propTypes Property types.
-   * @static
-   */
-  static propTypes = {
-    loading: PropTypes.bool.isRequired,
-    loaded: PropTypes.bool.isRequired,
-    error: PropTypes.string,
-    resetPassword: PropTypes.func.isRequired,
-  };
+const useUsers = () => {
+  const loading = useSelector((state) => state.users.reset.loading);
+  const loaded = useSelector((state) => state.users.reset.loaded);
+  const error = useSelector((state) => state.users.reset.error);
 
-  /**
-   * Default properties.
-   * @property {Object} defaultProps Default properties.
-   * @static
-   */
-  static defaultProps = {
-    error: null,
-  };
+  return { loading, loaded, error };
+};
 
-  /**
-   * Constructor
-   * @method constructor
-   * @param {Object} props Component properties
-   * @constructs Controlpanel
-   */
-  constructor(props) {
-    super(props);
-    this.onCancel = this.onCancel.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-    this.identifierField = config.settings.useEmailAsLogin
-      ? 'email'
-      : 'username';
+const RequestPasswordReset = () => {
+  const intl = useIntl();
+  const dispatch = useDispatch();
+  const [error, setError] = useState(null);
+  const [isSuccessful, setisSuccessful] = useState(false);
+  const history = useHistory();
+  const identifierTitle = useRef();
+  const identifierRequiredMessage = useRef();
+  const { loaded, loading, error: props_error } = useUsers();
+  const prevloading = usePrevious(loading);
 
-    if (this.identifierField === 'email') {
-      this.identifierTitle = this.props.intl.formatMessage(messages.emailTitle);
-      this.identifierRequiredMessage = this.props.intl.formatMessage(
-        messages.emailRequired,
-      );
-    } else {
-      this.identifierTitle = this.props.intl.formatMessage(
-        messages.usernameTitle,
-      );
-      this.identifierRequiredMessage = this.props.intl.formatMessage(
-        messages.usernameRequired,
-      );
-    }
+  const identifierField = config.settings.useEmailAsLogin
+    ? 'email'
+    : 'username';
 
-    this.state = {
-      error: null,
-      isSuccessful: false,
-    };
-  }
-
-  /**
-   * Component will receive props
-   * @method componentWillReceiveProps
-   * @param {Object} nextProps Next properties
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (this.props.loading && nextProps.loaded) {
-      this.setState({ isSuccessful: true });
-    }
-  }
-
-  /**
-   * Submit handler
-   * @method onSubmit
-   * @param {object} data Form data.
-   * @param {object} event Form data.
-   * @returns {undefined}
-   */
-  onSubmit(data) {
-    if (data[this.identifierField]) {
-      this.props.resetPassword(data[this.identifierField]);
-      this.setState({
-        error: null,
-      });
-    } else {
-      this.setState({
-        error: {
-          message: this.identifierRequiredMessage,
-        },
-      });
-    }
-  }
-
-  /**
-   * Cancel handler
-   * @method onCancel
-   * @returns {undefined}
-   */
-  onCancel() {
-    this.props.history.goBack();
-  }
-
-  /**
-   * Render method.
-   * @method render
-   * @returns {string} Markup for the component.
-   */
-  render() {
-    if (this.state.isSuccessful) {
-      return (
-        <Container>
-          <h1 className="documentFirstHeading">
-            <FormattedMessage
-              id="heading_sent_password"
-              defaultMessage="Password reset confirmation sent"
-            />
-          </h1>
-          <p className="description">
-            <FormattedMessage
-              id="description_sent_password"
-              defaultMessage="Your password reset request has been mailed. It should arrive in your mailbox shortly. When you receive the message, visit the address it contains to reset your password."
-            />
-          </p>
-        </Container>
-      );
-    }
-
-    return (
-      <div id="page-password-reset">
-        <Helmet title={this.props.intl.formatMessage(messages.passwordReset)} />
-        <Container>
-          <Form
-            title={this.props.intl.formatMessage(messages.title)}
-            description={this.props.intl.formatMessage(messages.description)}
-            onSubmit={this.onSubmit}
-            onCancel={this.onCancel}
-            error={this.state.error || this.props.error}
-            schema={{
-              fieldsets: [
-                {
-                  id: 'default',
-                  title: this.props.intl.formatMessage(messages.default),
-                  fields: [this.identifierField],
-                },
-              ],
-              properties: {
-                [this.identifierField]: {
-                  type: 'string',
-                  title: this.identifierTitle,
-                },
-              },
-              submitLabel: this.props.intl.formatMessage(messages.sendEmail),
-              required: [this.identifierField],
-            }}
-          />
-        </Container>
-      </div>
+  if (identifierField === 'email') {
+    identifierTitle.current = intl.formatMessage(messages.emailTitle);
+    identifierRequiredMessage.current = intl.formatMessage(
+      messages.emailRequired,
+    );
+  } else {
+    identifierTitle.current = intl.formatMessage(messages.usernameTitle);
+    identifierRequiredMessage.current = intl.formatMessage(
+      messages.usernameRequired,
     );
   }
-}
 
-export default compose(
-  withRouter,
-  injectIntl,
-  connect(
-    (state) => ({
-      loading: state.users.reset.loading,
-      loaded: state.users.reset.loaded,
-      error: state.users.reset.error,
-    }),
-    { resetPassword },
-  ),
-)(RequestPasswordReset);
+  useEffect(() => {
+    if (prevloading && loaded) setisSuccessful(true);
+  }, [prevloading, loaded]);
+
+  const onSubmit = (data) => {
+    if (data[identifierField]) {
+      dispatch(resetPassword(data[identifierField]));
+      setError(null);
+    } else {
+      setError({
+        message: identifierRequiredMessage.current,
+      });
+    }
+  };
+
+  const onCancel = () => {
+    history.goBack();
+  };
+
+  if (isSuccessful) {
+    return (
+      <Container>
+        <h1 className="documentFirstHeading">
+          <FormattedMessage
+            id="heading_sent_password"
+            defaultMessage="Password reset confirmation sent"
+          />
+        </h1>
+        <p className="description">
+          <FormattedMessage
+            id="description_sent_password"
+            defaultMessage="Your password reset request has been mailed. It should arrive in your mailbox shortly. When you receive the message, visit the address it contains to reset your password."
+          />
+        </p>
+      </Container>
+    );
+  }
+
+  return (
+    <div id="page-password-reset">
+      <Helmet title={intl.formatMessage(messages.passwordReset)} />
+      <Container>
+        <Form
+          title={intl.formatMessage(messages.title)}
+          description={intl.formatMessage(messages.description)}
+          onSubmit={onSubmit}
+          onCancel={onCancel}
+          error={error || props_error}
+          schema={{
+            fieldsets: [
+              {
+                id: 'default',
+                title: intl.formatMessage(messages.default),
+                fields: [identifierField],
+              },
+            ],
+            properties: {
+              [identifierField]: {
+                type: 'string',
+                title: identifierTitle.current,
+              },
+            },
+            submitLabel: intl.formatMessage(messages.sendEmail),
+            required: [identifierField],
+          }}
+        />
+      </Container>
+    </div>
+  );
+};
+
+export default RequestPasswordReset;

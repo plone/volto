@@ -1,7 +1,9 @@
 const path = require('path');
 
 class RelativeResolverPlugin {
-  constructor(registry) {
+  constructor(registry, source, target) {
+    this.source = source || 'resolve';
+    this.target = target || 'resolve';
     this.registry = registry;
     this.voltoPaths = Object.assign(
       { '@plone/volto/': `${registry.voltoPath}/src` },
@@ -33,24 +35,36 @@ class RelativeResolverPlugin {
   }
 
   apply(resolver) {
-    resolver.plugin('resolve', (request, callback) => {
-      if (
-        request.request.startsWith('.') &&
-        request.context &&
-        request.context.issuer &&
-        this.isAddon(request)
-      ) {
-        const normalizedResourceName = this.getResolvePath(request);
-        const nextRequest = Object.assign({}, request, {
-          request: normalizedResourceName,
-          path: this.registry.projectRootPath,
-        });
+    var target = resolver.ensureHook(this.target);
+    resolver
+      .getHook(this.source)
+      .tapAsync(
+        'RelativeResolverPlugin',
+        (request, resolveContext, callback) => {
+          if (
+            request.request.startsWith('.') &&
+            request.context &&
+            request.context.issuer &&
+            this.isAddon(request)
+          ) {
+            const normalizedResourceName = this.getResolvePath(request);
+            const nextRequest = Object.assign({}, request, {
+              request: normalizedResourceName,
+              path: this.registry.projectRootPath,
+            });
 
-        resolver.doResolve('resolve', nextRequest, '', callback);
-      } else {
-        callback();
-      }
-    });
+            return resolver.doResolve(
+              target,
+              nextRequest,
+              null,
+              resolveContext,
+              callback,
+            );
+          } else {
+            callback();
+          }
+        },
+      );
   }
 }
 

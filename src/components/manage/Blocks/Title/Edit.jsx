@@ -162,6 +162,7 @@ export const TitleBlockEdit = (props) => {
         placeholder={placeholder}
         renderElement={renderElement}
         onFocus={handleFocus}
+        aria-multiline="false"
       ></Editable>
     </Slate>
   );

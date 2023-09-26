@@ -3,7 +3,7 @@
  * @module helpers/Blocks
  */
 
-import { omit, without, endsWith, find, isObject, keys, toPairs } from 'lodash';
+import { omit, without, endsWith, find, isObject, keys, merge } from 'lodash';
 import move from 'lodash-move';
 import { v4 as uuid } from 'uuid';
 import config from '@plone/volto/registry';
@@ -233,7 +233,7 @@ export function mutateBlock(formData, id, value) {
  * @param {number} value New block's value
  * @return {Array} New block id, New form data
  */
-export function insertBlock(formData, id, value, current = {}) {
+export function insertBlock(formData, id, value, current = {}, offset = 0) {
   const blocksFieldname = getBlocksFieldname(formData);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
   const index = formData[blocksLayoutFieldname].items.indexOf(id);
@@ -253,9 +253,9 @@ export function insertBlock(formData, id, value, current = {}) {
       },
       [blocksLayoutFieldname]: {
         items: [
-          ...formData[blocksLayoutFieldname].items.slice(0, index),
+          ...formData[blocksLayoutFieldname].items.slice(0, index + offset),
           newBlockId,
-          ...formData[blocksLayoutFieldname].items.slice(index),
+          ...formData[blocksLayoutFieldname].items.slice(index + offset),
         ],
       },
     },
@@ -290,9 +290,8 @@ export function changeBlock(formData, id, value) {
  */
 export function nextBlockId(formData, currentBlock) {
   const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
-  const currentIndex = formData[blocksLayoutFieldname].items.indexOf(
-    currentBlock,
-  );
+  const currentIndex =
+    formData[blocksLayoutFieldname].items.indexOf(currentBlock);
 
   if (currentIndex === formData[blocksLayoutFieldname].items.length - 1) {
     // We are already at the bottom block don't do anything
@@ -312,9 +311,8 @@ export function nextBlockId(formData, currentBlock) {
  */
 export function previousBlockId(formData, currentBlock) {
   const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
-  const currentIndex = formData[blocksLayoutFieldname].items.indexOf(
-    currentBlock,
-  );
+  const currentIndex =
+    formData[blocksLayoutFieldname].items.indexOf(currentBlock);
 
   if (currentIndex === 0) {
     // We are already at the top block don't do anything
@@ -344,6 +342,32 @@ export function emptyBlocksForm() {
 }
 
 /**
+ * Generate empty blocks blocks/blocks_layout pair given the type
+ * (could be empty, if not type given) and the number of blocks
+ * @function blocksFormGenerator
+ * @param {number} number How many blocks to generate of the type (could be "empty", if no type provided)
+ * @param {number} type The type of the blocks
+ * @return {Object} blocks/blocks_layout pair filled with the generated blocks
+ */
+export function blocksFormGenerator(number, type) {
+  const idMap = [...Array(number).keys()].map(() => uuid());
+  const start = {
+    blocks: {},
+    blocks_layout: { items: idMap },
+  };
+
+  return {
+    ...start,
+    blocks: Object.fromEntries(
+      start.blocks_layout.items.map((item) => [
+        item,
+        { '@type': type || 'empty' },
+      ]),
+    ),
+  };
+}
+
+/**
  * Recursively discover blocks in data and call the provided callback
  * @function visitBlocks
  * @param {Object} content A content data structure (an object with blocks and blocks_layout)
@@ -366,21 +390,55 @@ export function visitBlocks(content, callback) {
   }
 }
 
+let _logged = false;
+
 /**
  * Initializes data with the default values coming from schema
  */
-export function applySchemaDefaults({ data = {}, schema }) {
-  const derivedData = {
-    ...Object.keys(schema.properties).reduce((accumulator, currentField) => {
-      return schema.properties[currentField].default
+export function applySchemaDefaults({ data = {}, schema, intl }) {
+  if (!intl && !_logged) {
+    // Old code that doesn't pass intl doesn't get ObjectWidget defaults
+    // eslint-disable-next-line no-console
+    console.warn(
+      `You should pass intl to any applySchemaDefaults call. By failing to pass
+      the intl object, your ObjectWidget fields will not get default values
+      extracted from their schema.`,
+    );
+    _logged = true;
+  }
+
+  const derivedData = merge(
+    Object.keys(schema.properties).reduce((accumulator, currentField) => {
+      return typeof schema.properties[currentField].default !== 'undefined'
         ? {
             ...accumulator,
             [currentField]: schema.properties[currentField].default,
           }
+        : intl &&
+          schema.properties[currentField].schema &&
+          !(schema.properties[currentField].widget === 'object_list') // TODO: this should be renamed as itemSchema
+        ? {
+            ...accumulator,
+            [currentField]: {
+              ...applySchemaDefaults({
+                data: { ...data[currentField], ...accumulator[currentField] },
+                schema:
+                  typeof schema.properties[currentField].schema === 'function'
+                    ? schema.properties[currentField].schema({
+                        data: accumulator[currentField],
+                        formData: accumulator[currentField],
+                        intl,
+                      })
+                    : schema.properties[currentField].schema,
+                intl,
+              }),
+            },
+          }
         : accumulator;
     }, {}),
-    ...data,
-  };
+    data,
+  );
+
   return derivedData;
 }
 
@@ -392,7 +450,8 @@ export function applySchemaDefaults({ data = {}, schema }) {
  * @return {Object} Derived data, with the defaults extracted from the schema
  */
 export function applyBlockDefaults({ data, intl, ...rest }, blocksConfig) {
-  const block_type = data['@type'];
+  // We pay attention to not break on a missing (invalid) block.
+  const block_type = data?.['@type'];
   const { blockSchema } =
     (blocksConfig || config.blocks.blocksConfig)[block_type] || {};
   if (!blockSchema) return data;
@@ -403,38 +462,111 @@ export function applyBlockDefaults({ data, intl, ...rest }, blocksConfig) {
       : blockSchema;
   schema = applySchemaEnhancer({ schema, formData: data, intl });
 
-  return applySchemaDefaults({ data, schema });
+  return applySchemaDefaults({ data, schema, intl });
 }
 
-export const buildStyleClassNamesFromData = (styles) => {
-  // styles has the form
+/**
+ * Converts a name+value style pair (ex: color/red) to a classname,
+ * such as "has--color--red"
+ *
+ * This can be expanded via the style names, by suffixing them with special
+ * converters. See config.settings.styleClassNameConverters. Examples:
+ *
+ * styleToClassName('theme:noprefix', 'primary') returns "primary"
+ * styleToClassName('inverted:bool', true) returns 'inverted'
+ * styleToClassName('inverted:bool', false) returns ''
+ */
+export const styleToClassName = (key, value, prefix = '') => {
+  const converters = config.settings.styleClassNameConverters;
+  const [name, ...convIds] = key.split(':');
+
+  return (convIds.length ? convIds : ['default'])
+    .map((id) => converters[id])
+    .reduce((acc, conv) => conv(acc, value, prefix), name);
+};
+
+export const buildStyleClassNamesFromData = (obj = {}, prefix = '') => {
+  // styles has the form:
   // const styles = {
-  // color: 'red',
-  // backgroundColor: '#AABBCC',
+  //   color: 'red',
+  //   backgroundColor: '#AABBCC',
   // }
   // Returns: ['has--color--red', 'has--backgroundColor--AABBCC']
-  let styleArray = [];
-  const pairedStyles = toPairs(styles);
-  pairedStyles.forEach((item) => {
-    if (isObject(item[1])) {
-      const flattenedNestedStyles = toPairs(item[1]).map((nested) => [
-        item[0],
-        ...nested,
-      ]);
-      flattenedNestedStyles.forEach((sub) => styleArray.push(sub));
-    } else {
-      styleArray.push(item);
+
+  return Object.entries(obj)
+    .reduce(
+      (acc, [k, v]) => [
+        ...acc,
+        ...(isObject(v)
+          ? buildStyleClassNamesFromData(v, `${prefix}${k}--`)
+          : [styleToClassName(k, v, prefix)]),
+      ],
+      [],
+    )
+    .filter((v) => !!v);
+};
+
+/**
+ * Generate classNames from extenders
+ *
+ * @function buildStyleClassNamesExtenders
+ * @param {Object} params An object with data, content and block (current block id)
+ * @return {Array} Extender classNames resultant array
+ */
+export const buildStyleClassNamesExtenders = ({
+  block,
+  content,
+  data,
+  classNames,
+}) => {
+  return config.settings.styleClassNameExtenders.reduce(
+    (acc, extender) => extender({ block, content, data, classNames: acc }),
+    classNames,
+  );
+};
+
+/**
+ * Return previous/next blocks given the content object and the current block id
+ *
+ * @function getPreviousNextBlock
+ * @param {Object} params An object with the content object and block (current block id)
+ * @return {Array} An array with the signature [previousBlock, nextBlock]
+ */
+export const getPreviousNextBlock = ({ content, block }) => {
+  const previousBlock =
+    content['blocks'][
+      content['blocks_layout'].items[
+        content['blocks_layout'].items.indexOf(block) - 1
+      ]
+    ];
+  const nextBlock =
+    content['blocks'][
+      content['blocks_layout'].items[
+        content['blocks_layout'].items.indexOf(block) + 1
+      ]
+    ];
+
+  return [previousBlock, nextBlock];
+};
+
+/**
+ * Given a `block` object and a list of block types, return a list of block ids matching the types
+ *
+ * @function findBlocks
+ * @param {Object} types A list with the list of types to be matched
+ * @return {Array} An array of block ids
+ */
+export function findBlocks(blocks, types, result = []) {
+  const containerBlockTypes = config.settings.containerBlockTypes;
+
+  Object.keys(blocks).forEach((blockId) => {
+    const block = blocks[blockId];
+    if (types.includes(block['@type'])) {
+      result.push(blockId);
+    } else if (containerBlockTypes.includes(block['@type']) || block.blocks) {
+      findBlocks(block.blocks, types, result);
     }
   });
-  return styleArray.map((item) => {
-    const classname = item.map((item) => {
-      const str_item = item ? item.toString() : '';
-      return str_item && str_item.startsWith('#')
-        ? str_item.replace('#', '')
-        : str_item;
-    });
-    return `has--${classname[0]}--${classname[1]}${
-      classname[2] ? `--${classname[2]}` : ''
-    }`;
-  });
-};
+
+  return result;
+}

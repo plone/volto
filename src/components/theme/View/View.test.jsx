@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
@@ -214,5 +214,39 @@ describe('View', () => {
     );
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
+  });
+
+  it('renders a new view element if the @id changed', () => {
+    let instanceCount = 0;
+    const Counter = () => {
+      useEffect(() => {
+        instanceCount += 1;
+      }, []);
+      return <div />;
+    };
+    config.views.defaultView = Counter;
+    const store = mockStore({
+      actions: { actions },
+      content: { data: { '@id': '/a' }, get: { error: null } },
+      userSession: { token: null },
+      apierror: {},
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+    const component = renderer.create(
+      <Provider store={store}>
+        <View location={{ pathname: '/a' }} />
+      </Provider>,
+    );
+    expect(instanceCount).toBe(1);
+    store.getState().content.data['@id'] = '/b';
+    component.update(
+      <Provider store={store}>
+        <View location={{ pathname: '/b' }} />
+      </Provider>,
+    );
+    expect(instanceCount).toBe(2);
   });
 });

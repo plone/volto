@@ -15,13 +15,15 @@ import cx from 'classnames';
 import { isEqual } from 'lodash';
 
 import { Icon, ImageSidebar, SidebarPortal } from '@plone/volto/components';
-import { withBlockExtensions } from '@plone/volto/helpers';
 import { createContent } from '@plone/volto/actions';
 import {
   flattenToAppURL,
   getBaseUrl,
   isInternalURL,
+  withBlockExtensions,
+  validateFileUploadSize,
 } from '@plone/volto/helpers';
+import config from '@plone/volto/registry';
 
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -35,6 +37,10 @@ const messages = defineMessages({
   ImageBlockInputPlaceholder: {
     id: 'Browse the site, drop an image, or type an URL',
     defaultMessage: 'Browse the site, drop an image, or type an URL',
+  },
+  uploadingImage: {
+    id: 'Uploading image',
+    defaultMessage: 'Uploading image',
   },
 });
 
@@ -54,7 +60,7 @@ class Edit extends Component {
     block: PropTypes.string.isRequired,
     index: PropTypes.number.isRequired,
     data: PropTypes.objectOf(PropTypes.any).isRequired,
-    content: PropTypes.objectOf(PropTypes.any).isRequired,
+    content: PropTypes.objectOf(PropTypes.any),
     request: PropTypes.shape({
       loading: PropTypes.bool,
       loaded: PropTypes.bool,
@@ -83,6 +89,7 @@ class Edit extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
+    // Update block data after upload finished
     if (
       this.props.request.loading &&
       nextProps.request.loaded &&
@@ -94,6 +101,8 @@ class Edit extends Component {
       this.props.onChangeBlock(this.props.block, {
         ...this.props.data,
         url: nextProps.content['@id'],
+        image_field: 'image',
+        image_scales: { image: [nextProps.content.image] },
         alt: '',
       });
     }
@@ -121,6 +130,7 @@ class Edit extends Component {
   onUploadImage = (e) => {
     e.stopPropagation();
     const file = e.target.files[0];
+    if (!validateFileUploadSize(file, this.props.intl.formatMessage)) return;
     this.setState({
       uploading: true,
     });
@@ -165,6 +175,8 @@ class Edit extends Component {
     this.props.onChangeBlock(this.props.block, {
       ...this.props.data,
       url: flattenToAppURL(this.state.url),
+      image_field: undefined,
+      image_scales: undefined,
     });
   };
 
@@ -174,23 +186,25 @@ class Edit extends Component {
    * @param {array} files File objects
    * @returns {undefined}
    */
-  onDrop = (file) => {
-    this.setState({
-      uploading: true,
-    });
+  onDrop = (files) => {
+    if (!validateFileUploadSize(files[0], this.props.intl.formatMessage)) {
+      this.setState({ dragging: false });
+      return;
+    }
+    this.setState({ uploading: true });
 
-    readAsDataURL(file[0]).then((data) => {
+    readAsDataURL(files[0]).then((data) => {
       const fields = data.match(/^data:(.*);(.*),(.*)$/);
       this.props.createContent(
         getBaseUrl(this.props.pathname),
         {
           '@type': 'Image',
-          title: file[0].name,
+          title: files[0].name,
           image: {
             data: fields[3],
             encoding: fields[2],
             'content-type': fields[1],
-            filename: file[0].name,
+            filename: files[0].name,
           },
         },
         this.props.block,
@@ -232,10 +246,12 @@ class Edit extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const Image = config.getComponent({ name: 'Image' }).component;
     const { data } = this.props;
     const placeholder =
       this.props.data.placeholder ||
       this.props.intl.formatMessage(messages.ImageBlockInputPlaceholder);
+
     return (
       <div
         className={cx(
@@ -247,15 +263,26 @@ class Edit extends Component {
         )}
       >
         {data.url ? (
-          <img
+          <Image
             className={cx({
               'full-width': data.align === 'full',
               large: data.size === 'l',
               medium: data.size === 'm',
               small: data.size === 's',
             })}
+            item={
+              data.image_scales
+                ? {
+                    '@id': data.url,
+                    image_field: data.image_field,
+                    image_scales: data.image_scales,
+                  }
+                : undefined
+            }
             src={
-              isInternalURL(data.url)
+              data.image_scales
+                ? undefined
+                : isInternalURL(data.url)
                 ? // Backwards compat in the case that the block is storing the full server URL
                   (() => {
                     if (data.size === 'l')
@@ -270,7 +297,10 @@ class Edit extends Component {
                   })()
                 : data.url
             }
+            sizes={config.blocks.blocksConfig.image.getSizes(data)}
             alt={data.alt || ''}
+            loading="lazy"
+            responsive={true}
           />
         ) : (
           <div>
@@ -288,7 +318,11 @@ class Edit extends Component {
                       {this.state.dragging && <Dimmer active></Dimmer>}
                       {this.state.uploading && (
                         <Dimmer active>
-                          <Loader indeterminate>Uploading image</Loader>
+                          <Loader indeterminate>
+                            {this.props.intl.formatMessage(
+                              messages.uploadingImage,
+                            )}
+                          </Loader>
                         </Dimmer>
                       )}
                       <div className="no-image-wrapper">
@@ -301,7 +335,20 @@ class Edit extends Component {
                               onClick={(e) => {
                                 e.stopPropagation();
                                 e.preventDefault();
-                                this.props.openObjectBrowser();
+                                this.props.openObjectBrowser({
+                                  onSelectItem: (
+                                    url,
+                                    { title, image_field, image_scales },
+                                  ) => {
+                                    this.props.onChangeBlock(this.props.block, {
+                                      ...this.props.data,
+                                      url,
+                                      image_field,
+                                      image_scales,
+                                      alt: this.props.data.alt || title || '',
+                                    });
+                                  },
+                                });
                               }}
                             >
                               <Icon name={navTreeSVG} size="24px" />

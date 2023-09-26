@@ -312,15 +312,8 @@ export class ObjectBrowserWidgetComponent extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const {
-      id,
-      description,
-      fieldSet,
-      value,
-      mode,
-      onChange,
-      isDisabled,
-    } = this.props;
+    const { id, description, fieldSet, value, mode, onChange, isDisabled } =
+      this.props;
 
     let items = compact(!isArray(value) && value ? [value] : value || []);
 

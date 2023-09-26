@@ -5,13 +5,10 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Container, Image } from 'semantic-ui-react';
-import {
-  hasBlocksData,
-  flattenToAppURL,
-  flattenHTMLToAppURL,
-} from '@plone/volto/helpers';
+import { Container as SemanticContainer } from 'semantic-ui-react';
+import { hasBlocksData, flattenHTMLToAppURL } from '@plone/volto/helpers';
 import RenderBlocks from '@plone/volto/components/theme/View/RenderBlocks';
+import config from '@plone/volto/registry';
 
 /**
  * NewsItemView view component class.
@@ -19,11 +16,15 @@ import RenderBlocks from '@plone/volto/components/theme/View/RenderBlocks';
  * @params {object} content Content object.
  * @returns {string} Markup of the component.
  */
-const NewsItemView = ({ content }) =>
-  hasBlocksData(content) ? (
-    <div id="page-document" className="ui container viewwrapper event-view">
+const NewsItemView = ({ content }) => {
+  const Image = config.getComponent({ name: 'Image' }).component;
+  const Container =
+    config.getComponent({ name: 'Container' }).component || SemanticContainer;
+
+  return hasBlocksData(content) ? (
+    <Container id="page-document" className="view-wrapper newsitem-view">
       <RenderBlocks content={content} />
-    </div>
+    </Container>
   ) : (
     <Container className="view-wrapper">
       {content.title && (
@@ -37,15 +38,12 @@ const NewsItemView = ({ content }) =>
       )}
       {content.image && (
         <Image
-          className="documentImage"
+          className="documentImage ui right floated image"
           alt={content.title}
           title={content.title}
-          src={
-            content.image['content-type'] === 'image/svg+xml'
-              ? flattenToAppURL(content.image.download)
-              : flattenToAppURL(content.image.scales.mini.download)
-          }
-          floated="right"
+          item={content}
+          imageField="image"
+          responsive={true}
         />
       )}
       {content.text && (
@@ -57,6 +55,7 @@ const NewsItemView = ({ content }) =>
       )}
     </Container>
   );
+};
 
 /**
  * Property types.

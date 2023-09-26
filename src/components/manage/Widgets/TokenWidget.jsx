@@ -19,6 +19,7 @@ import {
   Option,
   DropdownIndicator,
   ClearIndicator,
+  MultiValueContainer,
   selectTheme,
   customSelectStyles,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
@@ -173,6 +174,7 @@ class TokenWidget extends Component {
         <CreatableSelect
           id={`field-${this.props.id}`}
           key={this.props.id}
+          menuShouldScrollIntoView={false}
           isDisabled={this.props.isDisabled}
           className="react-select-container"
           classNamePrefix="react-select"
@@ -180,7 +182,12 @@ class TokenWidget extends Component {
           options={defaultOptions}
           styles={customSelectStyles}
           theme={selectTheme}
-          components={{ ClearIndicator, DropdownIndicator, Option }}
+          components={{
+            MultiValueContainer,
+            ClearIndicator,
+            DropdownIndicator,
+            Option,
+          }}
           isMulti
           value={selectedOption || []}
           onChange={this.handleChange}

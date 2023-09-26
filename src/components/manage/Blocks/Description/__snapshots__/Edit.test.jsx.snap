@@ -2,6 +2,7 @@
 
 exports[`renders edit blocks renders an edit description block component 1`] = `
 <div
+  aria-multiline="false"
   autoCapitalize="false"
   autoCorrect="false"
   contentEditable={true}

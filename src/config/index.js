@@ -23,16 +23,21 @@ import { components } from './Components';
 import { loadables } from './Loadables';
 import { workflowMapping } from './Workflows';
 
-import { sentryOptions } from './Sentry';
 import { contentIcons } from './ContentIcons';
-import { controlPanelsIcons } from './ControlPanels';
+import { styleClassNameConverters, styleClassNameExtenders } from './Style';
+import {
+  controlPanelsIcons,
+  filterControlPanels,
+  filterControlPanelsSchema,
+} from './ControlPanels';
 
 import { richtextEditorSettings, richtextViewSettings } from './RichTextEditor';
-import applySlateConfiguration from '@plone/volto-slate';
 
 import applyAddonConfiguration, { addonsInfo } from 'load-volto-addons';
 
 import ConfigRegistry from '@plone/volto/registry';
+
+import { getSiteAsyncPropExtender } from '@plone/volto/helpers';
 
 const host = process.env.HOST || 'localhost';
 const port = process.env.PORT || '3000';
@@ -71,14 +76,31 @@ let config = {
     port,
     // The URL Volto is going to be served (see sensible defaults above)
     publicURL,
+    okRoute: '/ok',
     apiPath,
-    apiExpanders: [],
+    apiExpanders: [
+      // Added here for documentation purposes, addded at the end because it
+      // depends on a value of this object.
+      // Add the following expanders for only issuing a single request.
+      // https://6.docs.plone.org/volto/configuration/settings-reference.html#term-apiExpanders
+      // {
+      //   match: '',
+      //   GET_CONTENT: [
+      //     'breadcrumbs',
+      //     'navigation',
+      //     'actions',
+      //     'types',
+      //     'navroot',
+      //   ],
+      // },
+    ],
     // Internal proxy to bypass CORS *while developing*. NOT intended for production use.
     // In production is recommended you use a Seamless mode deployment using a web server in
     // front of both the frontend and the backend so you can bypass CORS safely.
-    // https://docs.voltocms.com/deploying/seamless-mode/
+    // https://6.docs.plone.org/volto/deploying/seamless-mode.html
     devProxyToApiPath:
       process.env.RAZZLE_DEV_PROXY_API_PATH ||
+      process.env.RAZZLE_INTERNAL_API_PATH ||
       process.env.RAZZLE_API_PATH ||
       'http://localhost:8080/Plone', // Set it to '' for disabling the proxy
     // proxyRewriteTarget Set it for set a custom target for the proxy or overide the internal VHM rewrite
@@ -101,6 +123,7 @@ let config = {
     downloadableObjects: ['File'], //list of content-types for which the direct download of the file will be carried out if the user is not authenticated
     viewableInBrowserObjects: [], //ex: ['File']. List of content-types for which the file will be displayed in browser if the user is not authenticated
     listingPreviewImageField: 'image', // deprecated from Volto 14 onwards
+    openExternalLinkInNewTab: false,
     notSupportedBrowsers: ['ie'],
     defaultPageSize: 25,
     isMultilingual: false,
@@ -113,8 +136,7 @@ let config = {
     useEmailAsLogin: false,
     persistentReducers: ['blocksClipboard'],
     initialReducersBlacklist: [], // reducers in this list won't be hydrated in windows.__data
-    asyncPropsExtenders: [], // per route asyncConnect customizers
-    sentryOptions,
+    asyncPropsExtenders: [getSiteAsyncPropExtender], // per route asyncConnect customizers
     contentIcons: contentIcons,
     loadables,
     lazyBundles: {
@@ -139,11 +161,14 @@ let config = {
     },
     appExtras: [],
     maxResponseSize: 2000000000, // This is superagent default (200 mb)
+    maxFileUploadSize: null,
     serverConfig,
     storeExtenders: [],
     showTags: true,
     controlpanels: [],
     controlPanelsIcons,
+    filterControlPanels,
+    filterControlPanelsSchema,
     externalRoutes: [
       // URL to be considered as external
       // {
@@ -163,6 +188,23 @@ let config = {
     maxUndoLevels: 200, // undo history size for the main form
     addonsInfo: addonsInfo,
     workflowMapping,
+    errorHandlers: [], // callables for unhandled errors
+    styleClassNameConverters,
+    hashLinkSmoothScroll: false,
+    styleClassNameExtenders,
+    querystringSearchGet: false,
+    blockSettingsTabFieldsetsInitialStateOpen: true,
+    excludeLinksAndReferencesMenuItem: false,
+    containerBlockTypes: ['gridBlock'],
+    siteTitleFormat: {
+      includeSiteTitle: false,
+      titleAndSiteTitleSeparator: '-',
+    },
+  },
+  experimental: {
+    addBlockButton: {
+      enabled: false,
+    },
   },
   widgets: {
     ...widgetMapping,
@@ -188,13 +230,29 @@ let config = {
   components,
 };
 
+// The apiExpanders depends on a config of the object, so it's done here
+config.settings.apiExpanders = [
+  ...config.settings.apiExpanders,
+  {
+    match: '',
+    GET_CONTENT: ['breadcrumbs', 'actions', 'types', 'navroot'],
+  },
+  {
+    match: '',
+    GET_CONTENT: ['navigation'],
+    querystring: (config) => ({
+      'expand.navigation.depth': config.settings.navDepth,
+    }),
+  },
+];
+
 ConfigRegistry.settings = config.settings;
+ConfigRegistry.experimental = config.experimental;
 ConfigRegistry.blocks = config.blocks;
 ConfigRegistry.views = config.views;
 ConfigRegistry.widgets = config.widgets;
 ConfigRegistry.addonRoutes = config.addonRoutes;
 ConfigRegistry.addonReducers = config.addonReducers;
-ConfigRegistry.appExtras = config.appExtras;
 ConfigRegistry.components = config.components;
 
-applyAddonConfiguration(applySlateConfiguration(ConfigRegistry));
+applyAddonConfiguration(ConfigRegistry);

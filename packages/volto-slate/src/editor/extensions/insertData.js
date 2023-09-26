@@ -29,13 +29,26 @@ export const insertData = (editor) => {
 
       let fragment;
 
+      // eslint-disable-next-line no-console
+      console.debug('clipboard operation', {
+        clipboard: dt,
+        parsedBody: body,
+      });
+
       const val = deserialize(editor, body);
       fragment = Array.isArray(val) ? val : [val];
-
-      // external normalization
-      fragment = normalizeExternalData(editor, fragment);
+      fragment = editor.normalizeExternalData(fragment);
 
       editor.insertFragment(fragment);
+
+      // eslint-disable-next-line no-console
+      console.debug('result clipboard operation', {
+        clipboard: dt,
+        parsedBody: body,
+        deserializedValue: val,
+        normalizedFragment: fragment,
+        editorChildren: editor.children,
+      });
 
       return true;
     },
@@ -94,6 +107,7 @@ export const insertData = (editor) => {
         }
       }
 
+      // always normalize when dealing with plain text
       const nodes = normalizeExternalData(editor, fragment);
       if (!containsText) {
         Transforms.insertNodes(editor, nodes);
@@ -116,7 +130,6 @@ export const insertData = (editor) => {
       editor.beforeInsertData(data);
     }
 
-    // debugger;
     for (let i = 0; i < editor.dataTransferFormatsOrder.length; ++i) {
       const dt = editor.dataTransferFormatsOrder[i];
       if (dt === 'files') {

@@ -19,7 +19,7 @@ export class ErrorBoundary extends React.Component {
   render() {
     if (this.state.hasError) {
       // You can render any custom fallback UI
-      return <pre className="error">{`ERROR: ${this.props.name}`}</pre>;
+      return <pre className="slate error">{`ERROR: ${this.props.name}`}</pre>;
     }
 
     return this.props.children;

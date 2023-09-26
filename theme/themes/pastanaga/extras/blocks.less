@@ -23,7 +23,6 @@
 .block .block:not(.inner)::before {
   position: absolute;
   z-index: -1;
-  z-index: -1;
   top: -9px;
   left: -9px;
   width: ~'calc(100% + 18px)';
@@ -72,7 +71,6 @@
 
 .ui.drag.block.video,
 .ui.drag.block.image {
-  z-index: 2;
   // This fixes the floating images in Volto Editor! Muahahaha
   display: block;
   // This fixes two left floated items in a row
@@ -309,9 +307,11 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
     left: 50%;
     display: flex;
     padding: 4px;
-    background-color: rgba(255, 255, 255, 0.975);
     border-radius: 2px;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.05);
+    background-color: rgba(255, 255, 255, 0.975);
+    box-shadow:
+      0 0 8px rgba(0, 0, 0, 0.1),
+      0 2px 4px rgba(0, 0, 0, 0.05);
     transform: translate(-50%, 0);
 
     form {
@@ -333,8 +333,8 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
 
     .ui.icon.button {
       padding: 4px;
-      margin-left: 4px;
       border-radius: 1px;
+      margin-left: 4px;
       color: @brown !important;
 
       &:hover {
@@ -354,9 +354,11 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
     width: ~'min(100%, 450px)';
     height: 40px;
     padding: 4px;
-    background-color: rgba(255, 255, 255, 0.975);
     border-radius: 2px;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.05);
+    background-color: rgba(255, 255, 255, 0.975);
+    box-shadow:
+      0 0 8px rgba(0, 0, 0, 0.1),
+      0 2px 4px rgba(0, 0, 0, 0.05);
 
     form {
       display: flex;
@@ -382,8 +384,8 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
 
     .ui.icon.button {
       padding: 4px;
-      margin-left: 4px;
       border-radius: 1px;
+      margin-left: 4px;
       color: @brown !important;
 
       &:hover {
@@ -470,18 +472,30 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
 }
 
 .ui.basic.button.block-add-button {
-  // .ui.basic.button.block-delete-button {
   position: absolute;
   z-index: 2;
-  // margin-top: -21px;
-  top: -2px;
-  padding: 0;
-  border: none;
   margin-bottom: 0;
   -webkit-box-shadow: none;
   box-shadow: none;
   color: #b8c6c8 !important;
-  transform: translateX(-40px);
+
+  &.new-add-block {
+    bottom: -26px;
+    left: calc(
+      50% - 12px
+    ); // This is to compensate the width of the icon and center it correctly
+    padding: 0 !important;
+    border: none !important;
+    border-radius: 50% !important;
+    background: white !important;
+  }
+
+  &:not(.new-add-block) {
+    top: -2px;
+    padding: 0;
+    border: none;
+    transform: translateX(-40px);
+  }
 
   &:hover,
   &:focus {
@@ -542,8 +556,8 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
   color: #b8c6c8;
 
   .icon {
-    background: rgba(255, 255, 255, 0.2);
     border-radius: 2px;
+    background: rgba(255, 255, 255, 0.2);
   }
 
   &:hover {
@@ -569,8 +583,8 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
 .callout {
   padding: 1em;
   border: 1px solid rgba(34, 36, 38, 0.15);
-  margin: 1rem 0;
   border-radius: 0.28571429rem;
+  margin: 1rem 0;
   box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15);
 }
 
@@ -594,8 +608,8 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
 // HTML block
 .html-editor {
   z-index: 1;
-  background-color: #f3f6f7;
   border-radius: 4px;
+  background-color: #f3f6f7;
   font-family: monospace;
   font-size: @16px;
   word-break: break-all !important;
@@ -703,15 +717,18 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
 }
 
 .blocks-chooser {
-  position: absolute;
-  z-index: 10;
-  top: -12px;
-  left: -9px;
   width: 310px;
   padding: 4px;
-  background-color: rgba(255, 255, 255, 0.975);
   border-radius: 2px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.05);
+  background-color: rgba(255, 255, 255, 0.975);
+  box-shadow:
+    0 0 8px rgba(0, 0, 0, 0.1),
+    0 2px 4px rgba(0, 0, 0, 0.05);
+
+  &:not(.new-add-block) {
+    top: -12px;
+    left: -9px;
+  }
 
   .ui.basic.button {
     display: flex;
@@ -720,9 +737,9 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
     align-items: center;
     justify-content: center;
     padding: 20px 0;
+    border-radius: 3px;
     margin-top: 5px;
     margin-bottom: 5px;
-    border-radius: 3px;
     color: @brown !important;
     hyphens: auto;
     text-align: center;
@@ -800,6 +817,7 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
 .listing-item a {
   display: flex;
   width: 100%;
+  align-items: flex-start;
 
   @media only screen and (max-width: (@largestMobileScreen)) {
     flex-direction: column;
@@ -811,6 +829,7 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
 
   img {
     width: 15%;
+    height: auto;
     margin-right: 20px;
 
     @media only screen and (max-width: (@largestMobileScreen)) {
@@ -938,6 +957,7 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin-bottom: 1.5em;
 
     .search-input {
       position: relative;
@@ -975,14 +995,14 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
 
   .ui.accordion.filter-listing {
     flex: 1 0 auto;
-    margin: 1em 0;
+    margin-bottom: 1.5em;
 
     .filter-list-header {
       display: flex;
       justify-content: space-between;
       padding: 0.5rem;
-      background-color: #faf8f8;
       border-radius: 0.3rem;
+      background-color: #faf8f8;
     }
 
     .active.title .filter-list-title svg {
@@ -1032,7 +1052,10 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;
-    margin: 1em 0 1em 1em;
+
+    @media only screen and (max-width: (@largestMobileScreen)) {
+      margin-bottom: 1.5em;
+    }
 
     .ui.basic.button {
       padding: 3px !important;
@@ -1058,29 +1081,70 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
     display: flex;
     align-items: flex-start;
 
-    .search-sort-wrapper {
-      padding-top: 4px;
+    @media only screen and (max-width: (@largestMobileScreen)) {
+      flex-direction: column;
     }
+
+    .filter-listing {
+      padding-right: 1em;
+      margin-bottom: 0 !important;
+
+      @media only screen and (max-width: (@largestMobileScreen)) {
+        width: 100%;
+        padding-right: 0;
+        margin-bottom: 1.5em !important;
+      }
+    }
+
+    // .search-sort-wrapper {
+    //   @media only screen and (min-width: (@largestMobileScreen)) {
+    //     padding-top: 4px;
+    //   }
+    // }
   }
 
   .search-results-count-sort {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 1.5em;
+
+    @media only screen and (max-width: (@largestMobileScreen)) {
+      flex-direction: column-reverse;
+      align-items: flex-start;
+    }
 
     .search-details {
-      margin: 1em 0;
+      margin: 0;
+    }
+
+    .sort-views-wrapper {
+      display: flex;
+      gap: 1em;
     }
   }
 
-  .search-input-live-icon-button {
+  .search-input-actions {
     position: absolute;
-    top: 4px;
-    right: 4px;
+    top: 0;
+    right: 0;
+    display: flex;
+    height: 100%;
+    align-items: center;
 
     svg {
       width: 28px !important;
       height: 28px !important;
+    }
+
+    .ui.button {
+      margin: 0 5px;
+    }
+
+    .divider {
+      width: 1px;
+      height: 60%;
+      border-right: 1px solid #dfe1e5;
     }
   }
 
@@ -1113,3 +1177,5 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
     }
   }
 }
+
+@import 'teaser';

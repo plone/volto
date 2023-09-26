@@ -56,11 +56,12 @@ templates_path = ["_templates"]
 extensions = [
     "myst_parser",
     "sphinx.ext.autodoc",
+    "sphinx.ext.ifconfig",
     "sphinx.ext.intersphinx",
     "sphinx.ext.todo",
     "sphinx_copybutton",
-    "sphinxcontrib.spelling",
     "sphinxext.opengraph",
+    "sphinxcontrib.video",
 ]
 
 
@@ -86,12 +87,14 @@ linkcheck_ignore = [
     r"https://github.com/plone/documentation/issues/new/choose",  # requires auth
     # Ignore specific anchors
     r"https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors#Identifying_the_issue",
+    r"https://docs.cypress.io/guides/references/migration-guide#Migrating-to-Cypress-version-10-0",
     r"https://github.com/browserslist/browserslist#queries",
     r"https://github.com/nodejs/release#release-schedule",
     r"https://github.com/plone/plone.docker#for-basic-usage",
     r"https://github.com/plone/plone.rest#cors",
     r"https://github.com/plone/plone.volto/blob/6f5382c74f668935527e962490b81cb72bf3bc94/src/kitconcept/volto/upgrades.py#L6-L54",
     r"https://github.com/plone/volto/issues/new/choose",
+    r"https://github.com/plone/volto/blob/6fd62cb2860bc7cf3cb7c36ea86bfd8bd03247d9/src/components/manage/Form/Field.jsx#L112",
     r"https://github.com/tc39/proposals/blob/HEAD/finished-proposals.md#finished-proposals",
 ]
 linkcheck_anchors = True
@@ -117,6 +120,7 @@ exclude_patterns = [
     "spelling_wordlist.txt",
     "**/CHANGES.rst",
     "**/LICENSE.rst",
+    "contributing/branch-policy.md",
 ]
 
 html_extra_path = [
@@ -137,6 +141,7 @@ myst_enable_extensions = [
     "linkify",  # Identify “bare” web URLs and add hyperlinks.
     "colon_fence",  # You can also use ::: delimiters to denote code fences,\
                     #  instead of ```.
+    "html_image",
 ]
 
 
@@ -153,9 +158,9 @@ myst_enable_extensions = [
 # https://www.sphinx-doc.org/en/master/usage/extensions/intersphinx.html
 #
 intersphinx_mapping = {
-    "plone": ("https://6.dev-docs.plone.org/", None),
+    "plone": ("https://6.docs.plone.org/", None),
     "python": ("https://docs.python.org/3/", None),
-    "training": ("https://training.plone.org/5/", None),
+    "training": ("https://training.plone.org/", None),
 }
 
 
@@ -166,9 +171,9 @@ graphviz_output_format = "svg"
 
 # -- OpenGraph configuration ----------------------------------
 
-ogp_site_url = "https://6.dev-docs.plone.org/"
+ogp_site_url = "https://6.docs.plone.org/"
 ogp_description_length = 200
-ogp_image = "https://docs.plone.org/_static/Plone_logo_square.png"
+ogp_image = "https://6.docs.plone.org/_static/Plone_logo_square.png"
 ogp_site_name = "Plone Documentation"
 ogp_type = "website"
 ogp_custom_meta_tags = [
@@ -199,7 +204,7 @@ todo_include_todos = True
 
 # Announce that we have an opensearch plugin
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-html_use_opensearch
-html_use_opensearch = "https://docs.plone.org"
+html_use_opensearch = "https://6.docs.plone.org"
 
 html_theme_options = {
     # TODO: Either get a separate GA ID or enable this one once it is in production.
@@ -246,3 +251,6 @@ latex_documents = [
 # The name of an image file (relative to this directory) to place at the top of
 # the title page.
 latex_logo = "_static/logo_2x.png"
+
+def setup(app):
+    app.add_config_value("context", "volto", "env")

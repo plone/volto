@@ -80,7 +80,7 @@ const HtmlSlateWidget = (props) => {
         parsed.getElementsByTagName('google-sheets-html-origin').length > 0
           ? parsed.querySelector('google-sheets-html-origin > table')
           : parsed.body;
-      let data = deserialize(editor, body);
+      let data = deserialize(editor, body, { collapseWhitespace: false });
       data = normalizeExternalData(editor, data);
 
       // editor.children = data;

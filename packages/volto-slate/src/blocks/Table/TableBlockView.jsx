@@ -33,13 +33,13 @@ const View = ({ data }) => {
   }, [data.table.rows]);
 
   const rows = useMemo(() => {
-    const items = {};
-    if (!data.table.rows) return {};
+    const items = [];
+    if (!data.table.rows) return [];
     data.table.rows.forEach((row, index) => {
       if (index > 0) {
-        items[row.key] = [];
+        items[index] = [];
         row.cells.forEach((cell, cellIndex) => {
-          items[row.key][cellIndex] = {
+          items[index][cellIndex] = {
             ...cell,
             value:
               cell.value && Node.string({ children: cell.value }).length > 0

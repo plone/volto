@@ -1,13 +1,10 @@
 describe('Sharing Tests', () => {
   beforeEach(() => {
+    cy.intercept('GET', `/**/*?expand*`).as('content');
     // give a logged in editor and the site root
     cy.autologin();
     cy.visit('/');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('');
+    cy.wait('@content');
 
     // I add a page
     cy.get('#toolbar-add').click();
@@ -16,6 +13,8 @@ describe('Sharing Tests', () => {
 
     // then a new page has been created
     cy.get('#toolbar-save').click();
+    cy.wait('@content');
+
     cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
 
     cy.get('.navigation .item.active').should('have.text', 'My Page');
@@ -67,8 +66,31 @@ describe('Sharing Tests', () => {
     cy.visit('/logout');
     cy.wait('@logout');
 
-    cy.autologin('test-user');
+    cy.autologin('test-user', 'correct horse battery staple');
     cy.visit('/my-page');
     cy.findByRole('heading', { name: /my page/i }).should('exist');
+  });
+
+  it('As editor, I can uncheck the inherit permissions checkbox', function () {
+    cy.intercept('/**/@logout').as('logout');
+    cy.intercept('/**/@sharing').as('sharing');
+
+    // Click on the Toolbar > More
+    cy.findByRole('button', { name: /more/i }).click();
+    cy.findByRole('link', { name: /sharing/i }).click();
+    cy.wait('@sharing');
+
+    cy.findByLabelText('Inherit permissions from higher levels').click({
+      force: true,
+    });
+
+    cy.findByRole('button', { name: /save/i }).click();
+    cy.wait('@sharing');
+
+    cy.visit('/my-page/sharing');
+
+    cy.findByLabelText('Inherit permissions from higher levels').should(
+      'not.be.checked',
+    );
   });
 });
