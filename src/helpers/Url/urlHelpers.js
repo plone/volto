@@ -3,6 +3,7 @@ import {
   flattenToAppURL as classicFlattenToAppURL,
 } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
+import hoistNonReactStatics from 'hoist-non-react-statics';
 import PropTypes from 'prop-types';
 import { Component } from 'react';
 import { connect, shallowEqual, useSelector } from 'react-redux';
@@ -64,51 +65,19 @@ export function useUrlHelpers() {
 }
 
 export function injectUrlHelpers(WrappedComponent) {
-  class urlHelpers extends Component {
-    /**
-     * Property types.
-     * @property {Object} propTypes Property types.
-     * @static
-     */
-    static propTypes = {
-      apiPath: PropTypes.string,
-    };
-
-    /**
-     * Default properties.
-     * @property {Object} defaultProps Default properties.
-     * @static
-     */
-    static defaultProps = {
-      apiPath: null,
-    };
-
-    flattenToAppUrl() {
-      return 'flat url';
+  const decorator = (WrappedComponent) => {
+    function WithURLHelpers(props) {
+      WithURLHelpers.displayName = `WithURLHelpers(${getDisplayName(
+        WrappedComponent,
+      )})`;
+      const helpers = useUrlHelpers();
+      return <WrappedComponent {...props} urlHelpers={helpers} />;
     }
 
-    getApiPath() {
-      return calculateApiPath({
-        protocol: this.props.apiHeaders.protocol,
-        host: this.props.apiHeaders.host,
-        internalApiPath: this.props.apiHeaders.internalApiPath,
-        apiPath: this.props.apiHeaders.apiPath,
-      });
-    }
+    return hoistNonReactStatics(WithURLHelpers, WrappedComponent);
+  };
 
-    render() {
-      return (
-        <WrappedComponent
-          getApiPath={() => this.getApiPath()}
-          flattenToAppURL={this.flattenToAppUrl}
-        />
-      );
-    }
-  }
-
-  return connect((store) => ({
-    apiHeaders: store.userSession.apiHeaders,
-  }))(urlHelpers);
+  return decorator(WrappedComponent);
 }
 
 /**
@@ -164,4 +133,8 @@ export function calculateApiPath(headers) {
     }
   }
   return apiPathValue;
+}
+
+function getDisplayName(WrappedComponent) {
+  return WrappedComponent.displayName || WrappedComponent.name || 'Component';
 }

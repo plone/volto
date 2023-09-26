@@ -22,9 +22,9 @@ import { listActions, getContent } from '@plone/volto/actions';
 import {
   BodyClass,
   getBaseUrl,
-  flattenToAppURL,
   getLayoutFieldname,
   hasApiExpander,
+  injectUrlHelpers,
 } from '@plone/volto/helpers';
 
 import config from '@plone/volto/registry';
@@ -206,6 +206,7 @@ class View extends Component {
   render() {
     const { views } = config;
     if (this.props.error && this.props.error.code === 301) {
+      const { flattenToAppURL } = this.props.urlHelpers;
       const redirect = flattenToAppURL(this.props.error.url).split('?')[0];
       return <Redirect to={`${redirect}${this.props.location.search}`} />;
     } else if (this.props.error && !this.props.connectionRefused) {
@@ -277,6 +278,7 @@ class View extends Component {
 }
 
 export default compose(
+  injectUrlHelpers,
   injectIntl,
   connect(
     (state, props) => ({
