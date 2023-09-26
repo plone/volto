@@ -118,9 +118,13 @@ const messages = defineMessages({
     id: 'Delete',
     defaultMessage: 'Delete',
   },
-  deleteConfirm: {
-    id: 'Do you really want to delete the following items?',
-    defaultMessage: 'Do you really want to delete the following items?',
+  deleteConfirmSingleItem: {
+    id: 'Delete this item?',
+    defaultMessage: 'Delete this item?',
+  },
+  deleteConfirmMultipleItems: {
+    id: 'Delete selected items?',
+    defaultMessage: 'Delete selected items?',
   },
   deleteError: {
     id: 'The item could not be deleted.',
@@ -270,35 +274,6 @@ const messages = defineMessages({
     id: 'All',
     defaultMessage: 'All',
   },
-  linkIntegrityMessageHeader: {
-    id: 'Potential link breakage',
-    defaultMessage: 'Potential link breakage',
-  },
-  linkIntegrityMessageBody: {
-    id:
-      'By deleting this item, you will break ' +
-      'links that exist in the items listed below. ' +
-      'If this is indeed what you want to do, ' +
-      'we recommend that remove these references first.',
-    defaultMessage:
-      'By deleting this item, ' +
-      'you will break links that exist in the items ' +
-      'listed below. If this is indeed what you ' +
-      'want to do, we recommend that remove ' +
-      'these references first.',
-  },
-  linkIntegrityMessageExtra: {
-    id: 'This Page is referenced by the following items:',
-    defaultMessage: 'This Page is referenced by the following items:',
-  },
-  deleteItemCountMessage: {
-    id: 'Total items to be deleted:',
-    defaultMessage: 'Total items to be deleted:',
-  },
-  deleteItemMessage: {
-    id: 'Items to be deleted:',
-    defaultMessage: 'Items to be deleted:',
-  },
 });
 
 /**
@@ -434,6 +409,8 @@ class Contents extends Component {
       showProperties: false,
       showWorkflow: false,
       itemsToDelete: [],
+      containedItemsToDelete: [],
+      brokenReferences: [],
       showAllItemsToDelete: true,
       items: this.props.items,
       filter: '',
@@ -469,12 +446,23 @@ class Contents extends Component {
       this.state.itemsToDelete !== prevState.itemsToDelete &&
       this.state.itemsToDelete.length > 0
     ) {
+      const linkintegrityInfo = await this.props.linkIntegrityCheck(
+        map(this.state.itemsToDelete, (item) => this.getFieldById(item, 'UID')),
+      );
+      let containedItems = 0;
+      let brokenReferencesCount = 0;
+
+      linkintegrityInfo.forEach((item) => {
+        containedItems += item.items_total ?? 0;
+        brokenReferencesCount += item.breaches.length;
+      });
       this.setState({
-        linkIntegrityBreakages: await this.props.linkIntegrityCheck(
-          map(this.state.itemsToDelete, (item) =>
-            this.getFieldById(item, 'UID'),
-          ),
-        ),
+        containedItemsToDelete: containedItems,
+        brokenReferences: brokenReferencesCount,
+        brokenLinksList:
+          linkintegrityInfo.length === 1
+            ? linkintegrityInfo[0]['@id'] + '/links-to-item'
+            : null,
         showAllItemsToDelete:
           this.state.itemsToDelete.length < this.deleteItemsToShowThreshold,
       });
@@ -1200,84 +1188,226 @@ class Contents extends Component {
                   <Confirm
                     open={this.state.showDelete}
                     confirmButton="Delete"
-                    header={this.props.intl.formatMessage(
-                      messages.deleteConfirm,
-                    )}
+                    header={
+                      this.state.itemsToDelete.length === 1
+                        ? this.props.intl.formatMessage(
+                            messages.deleteConfirmSingleItem,
+                          )
+                        : this.props.intl.formatMessage(
+                            messages.deleteConfirmMultipleItems,
+                          )
+                    }
                     content={
                       <div className="content">
-                        <h3>
-                          {this.props.intl.formatMessage(
-                            messages.deleteItemCountMessage,
-                          ) + ` ${this.state.itemsToDelete.length}`}
-                        </h3>
-                        <ul className="content">
-                          {map(
-                            this.state.showAllItemsToDelete
-                              ? this.state.itemsToDelete
-                              : this.state.itemsToDelete.slice(
-                                  0,
-                                  this.deleteItemsToShowThreshold,
-                                ),
-                            (item) => (
-                              <li key={item}>
-                                {this.getFieldById(item, 'title')}
-                              </li>
-                            ),
-                          )}
-                        </ul>
-                        {!this.state.showAllItemsToDelete && (
-                          <Button
-                            onClick={() =>
-                              this.setState({
-                                showAllItemsToDelete: true,
-                              })
-                            }
-                          >
-                            Show all items
-                          </Button>
-                        )}
-                        {this.state.linkIntegrityBreakages.reduce(
-                          (a, b) => a + b.breaches.length,
-                          0,
-                        ) ? (
-                          <div>
-                            <h3>
-                              {this.props.intl.formatMessage(
-                                messages.linkIntegrityMessageHeader,
-                              )}
-                            </h3>
-                            <p>
-                              {this.props.intl.formatMessage(
-                                messages.linkIntegrityMessageBody,
-                              )}
-                            </p>
-                            <ul className="content">
-                              {map(this.state.linkIntegrityBreakages, (item) =>
-                                item.breaches.length ? (
-                                  <li key={item['@id']}>
-                                    <a href={item['@id']}>{item.title}</a>
-                                    <p>
-                                      {this.props.intl.formatMessage(
-                                        messages.linkIntegrityMessageExtra,
+                        <p>
+                          {this.state.itemsToDelete.length > 1 ? (
+                            this.state.containedItemsToDelete > 0 ? (
+                              <>
+                                <FormattedMessage
+                                  id="Some items are also a folder.
+                              By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
+                                  defaultMessage="Some items are also a folder.
+                              By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
+                                  values={{
+                                    containedItemsToDelete: (
+                                      <span>
+                                        {this.state.containedItemsToDelete}
+                                      </span>
+                                    ),
+                                    variation: (
+                                      <span>
+                                        {this.state.containedItemsToDelete ===
+                                        1 ? (
+                                          <FormattedMessage
+                                            id="item"
+                                            defaultMessage="item"
+                                          />
+                                        ) : (
+                                          <FormattedMessage
+                                            id="items"
+                                            defaultMessage="items"
+                                          />
+                                        )}
+                                      </span>
+                                    ),
+                                  }}
+                                />
+                                {this.state.brokenReferences > 0 && (
+                                  <>
+                                    <br />
+                                    <FormattedMessage
+                                      id="Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
+                                      defaultMessage="Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
+                                      values={{
+                                        brokenReferences: (
+                                          <span>
+                                            {this.state.brokenReferences}
+                                          </span>
+                                        ),
+                                        variation: (
+                                          <span>
+                                            {this.state.brokenReferences ===
+                                            1 ? (
+                                              <FormattedMessage
+                                                id="reference"
+                                                defaultMessage="reference"
+                                              />
+                                            ) : (
+                                              <FormattedMessage
+                                                id="references"
+                                                defaultMessage="references"
+                                              />
+                                            )}
+                                          </span>
+                                        ),
+                                      }}
+                                    />
+                                  </>
+                                )}
+                              </>
+                            ) : (
+                              <>
+                                {this.state.brokenReferences > 0 && (
+                                  <>
+                                    <FormattedMessage
+                                      id="Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
+                                      defaultMessage="Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
+                                      values={{
+                                        brokenReferences: (
+                                          <span>
+                                            {this.state.brokenReferences}
+                                          </span>
+                                        ),
+                                        variation: (
+                                          <span>
+                                            {this.state.brokenReferences ===
+                                            1 ? (
+                                              <FormattedMessage
+                                                id="reference"
+                                                defaultMessage="reference"
+                                              />
+                                            ) : (
+                                              <FormattedMessage
+                                                id="references"
+                                                defaultMessage="references"
+                                              />
+                                            )}
+                                          </span>
+                                        ),
+                                      }}
+                                    />
+                                  </>
+                                )}
+                              </>
+                            )
+                          ) : this.state.containedItemsToDelete > 0 ? (
+                            <>
+                              <FormattedMessage
+                                id="This item is also a folder.
+                            By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
+                                defaultMessage="This item is also a folder.
+                            By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
+                                values={{
+                                  containedItemsToDelete: (
+                                    <span>
+                                      {this.state.containedItemsToDelete}
+                                    </span>
+                                  ),
+                                  variation: (
+                                    <span>
+                                      {this.state.containedItemsToDelete ===
+                                      1 ? (
+                                        <FormattedMessage
+                                          id="item"
+                                          defaultMessage="item"
+                                        />
+                                      ) : (
+                                        <FormattedMessage
+                                          id="items"
+                                          defaultMessage="items"
+                                        />
                                       )}
-                                    </p>
-                                    <ul className="content">
-                                      {map(item.breaches, (breach) => (
-                                        <li key={breach['@id']}>
-                                          <a href={breach['@id']}>
-                                            {breach.title}
-                                          </a>
-                                        </li>
-                                      ))}
-                                    </ul>
-                                  </li>
-                                ) : null,
+                                    </span>
+                                  ),
+                                }}
+                              />
+                              {this.state.brokenReferences > 0 && (
+                                <>
+                                  <br />
+                                  <FormattedMessage
+                                    id="This item is referenced by other items. By deleting it {brokenReferences} {variation} will be broken."
+                                    defaultMessage="This item is referenced by other items. By deleting it {brokenReferences} {variation} will be broken."
+                                    values={{
+                                      brokenReferences: (
+                                        <span>
+                                          {this.state.brokenReferences}
+                                        </span>
+                                      ),
+                                      variation: (
+                                        <span>
+                                          {this.state.brokenReferences === 1 ? (
+                                            <FormattedMessage
+                                              id="reference"
+                                              defaultMessage="reference"
+                                            />
+                                          ) : (
+                                            <FormattedMessage
+                                              id="references"
+                                              defaultMessage="references"
+                                            />
+                                          )}
+                                        </span>
+                                      ),
+                                    }}
+                                  />
+                                  <div className="broken-links-list-link-wrapper">
+                                    <a href={this.state.brokenLinksList}>
+                                      <FormattedMessage
+                                        id="View broken links list"
+                                        defaultMessage="View broken links list"
+                                      />
+                                    </a>
+                                  </div>
+                                </>
                               )}
-                            </ul>
-                          </div>
-                        ) : (
-                          <div></div>
-                        )}
+                            </>
+                          ) : this.state.brokenReferences > 0 ? (
+                            <>
+                              <FormattedMessage
+                                id="This item is referenced by other items. By deleting it {brokenReferences} {variation} will be broken."
+                                defaultMessage="This item is referenced by other items. By deleting it {brokenReferences} {variation} will be broken."
+                                values={{
+                                  brokenReferences: (
+                                    <span>{this.state.brokenReferences}</span>
+                                  ),
+                                  variation: (
+                                    <span>
+                                      {this.state.brokenReferences === 1 ? (
+                                        <FormattedMessage
+                                          id="reference"
+                                          defaultMessage="reference"
+                                        />
+                                      ) : (
+                                        <FormattedMessage
+                                          id="references"
+                                          defaultMessage="references"
+                                        />
+                                      )}
+                                    </span>
+                                  ),
+                                }}
+                              />
+                              <div className="broken-links-list-link-wrapper">
+                                <a href={this.state.brokenLinksList}>
+                                  <FormattedMessage
+                                    id="View broken links list"
+                                    defaultMessage="View broken links list"
+                                  />
+                                </a>
+                              </div>
+                            </>
+                          ) : null}
+                        </p>
                       </div>
                     }
                     onCancel={this.onDeleteCancel}
@@ -1656,9 +1786,8 @@ class Contents extends Component {
                                       {this.props.intl.formatMessage({
                                         id: this.state.index.values[index]
                                           .label,
-                                        defaultMessage: this.state.index.values[
-                                          index
-                                        ].label,
+                                        defaultMessage:
+                                          this.state.index.values[index].label,
                                       })}
                                     </span>
                                   </Dropdown.Item>

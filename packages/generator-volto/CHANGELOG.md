@@ -8,6 +8,31 @@
 
 <!-- towncrier release notes start -->
 
+## 7.0.0-alpha.9 (2023-09-20)
+
+### Bugfix
+
+- Remove JSON files from being linted by ESlint, since it's not its purpose @sneridagh [#5194](https://github.com/plone/volto/issues/5194)
+
+
+## 7.0.0-alpha.8 (2023-09-18)
+
+### Bugfix
+
+- Add missing empty lock to acceptance generator addon folder @sneridagh [#5193](https://github.com/plone/volto/issues/5193)
+
+
+## 7.0.0-alpha.7 (2023-09-18)
+
+### Feature
+
+- TypeScript support in core @sneridagh @ninanoleto [#4462](https://github.com/plone/volto/issues/4462)
+
+### Bugfix
+
+- Fix addon i18n local command when executed outside the scope of a Volto project. @sneridagh [#5181](https://github.com/plone/volto/issues/5181)
+
+
 ## 7.0.0-alpha.6 (2023-09-14)
 
 ### Bugfix

@@ -8,6 +8,18 @@
 
 <!-- towncrier release notes start -->
 
+## 17.0.0-alpha.27 (2023-09-18)
+
+### Feature
+
+- TypeScript support in core @sneridagh @ninanoleto [#4662](https://github.com/plone/volto/issues/4662)
+- Add external className to slate Link view. @iFlameing [#5109](https://github.com/plone/volto/issues/5109)
+
+### Bugfix
+
+- Update delete-content modal to simplify text and improve UX @danlavrz [#4786](https://github.com/plone/volto/issues/4786)
+
+
 ## 17.0.0-alpha.26 (2023-09-14)
 
 ### Breaking

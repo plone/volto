@@ -185,12 +185,8 @@ class Aliases extends Component {
       }
     }
     if (this.props.aliases.add.loading && nextProps.aliases.add.loaded) {
-      const {
-        filterQuery,
-        filterType,
-        createdBefore,
-        itemsPerPage,
-      } = this.state;
+      const { filterQuery, filterType, createdBefore, itemsPerPage } =
+        this.state;
 
       this.props.getAliases(getBaseUrl(this.props.pathname), {
         query: filterQuery,
@@ -212,12 +208,8 @@ class Aliases extends Component {
       }
     }
     if (this.props.aliases.remove.loading && nextProps.aliases.remove.loaded) {
-      const {
-        filterQuery,
-        filterType,
-        createdBefore,
-        itemsPerPage,
-      } = this.state;
+      const { filterQuery, filterType, createdBefore, itemsPerPage } =
+        this.state;
 
       this.props.getAliases(getBaseUrl(this.props.pathname), {
         query: filterQuery,
