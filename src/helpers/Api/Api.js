@@ -6,7 +6,6 @@
 import { calculateApiPath, stripQuerystring } from '@plone/volto/helpers';
 import { addHeadersFactory } from '@plone/volto/helpers/Proxy/Proxy';
 import config from '@plone/volto/registry';
-import { compose } from 'redux';
 import superagent from 'superagent';
 import Cookies from 'universal-cookie';
 
