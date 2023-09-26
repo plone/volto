@@ -19,8 +19,7 @@ const messages = defineMessages({
     defaultMessage: 'Do you want to load the autosaved content?',
   },
   loadExpiredData: {
-    id:
-      'The version of the autosaved content I found in your browser is older than that stored on the server. Do you want to load the autosaved content? (You can undo the autosaved content and revert to the server version.)',
+    id: 'The version of the autosaved content I found in your browser is older than that stored on the server. Do you want to load the autosaved content? (You can undo the autosaved content and revert to the server version.)',
     defaultMessage:
       'The version of the autosaved content I found in your browser is older than that stored on the server. Do you want to load the autosaved content? (You can undo the autosaved content and revert to the server version.)',
   },
@@ -209,13 +208,10 @@ export default function withSaveAsDraft(options) {
       const id = getFormId(props, location);
       const ref = React.useRef();
       const ref2 = React.useRef();
-      const api = React.useMemo(() => draftApi(id, schema, ref, ref2, intl), [
-        id,
-        schema,
-        ref,
-        ref2,
-        intl,
-      ]);
+      const api = React.useMemo(
+        () => draftApi(id, schema, ref, ref2, intl),
+        [id, schema, ref, ref2, intl],
+      );
 
       return (
         <WrappedComponent
