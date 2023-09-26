@@ -37,6 +37,8 @@ import applyAddonConfiguration, { addonsInfo } from 'load-volto-addons';
 
 import ConfigRegistry from '@plone/volto/registry';
 
+import { getSiteAsyncPropExtender } from '@plone/volto/helpers';
+
 const host = process.env.HOST || 'localhost';
 const port = process.env.PORT || '3000';
 
@@ -72,13 +74,22 @@ let config = {
     port,
     // The URL Volto is going to be served (see sensible defaults above)
     publicURL,
+    okRoute: '/ok',
     apiPath,
     apiExpanders: [
+      // Added here for documentation purposes, addded at the end because it
+      // depends on a value of this object.
       // Add the following expanders for only issuing a single request.
       // https://6.docs.plone.org/volto/configuration/settings-reference.html#term-apiExpanders
       // {
       //   match: '',
-      //   GET_CONTENT: ['breadcrumbs', 'navigation', 'actions', 'types'],
+      //   GET_CONTENT: [
+      //     'breadcrumbs',
+      //     'navigation',
+      //     'actions',
+      //     'types',
+      //     'navroot',
+      //   ],
       // },
     ],
     // Internal proxy to bypass CORS *while developing*. NOT intended for production use.
@@ -123,7 +134,7 @@ let config = {
     useEmailAsLogin: false,
     persistentReducers: ['blocksClipboard'],
     initialReducersBlacklist: [], // reducers in this list won't be hydrated in windows.__data
-    asyncPropsExtenders: [], // per route asyncConnect customizers
+    asyncPropsExtenders: [getSiteAsyncPropExtender], // per route asyncConnect customizers
     contentIcons: contentIcons,
     loadables,
     lazyBundles: {
@@ -148,6 +159,7 @@ let config = {
     },
     appExtras: [],
     maxResponseSize: 2000000000, // This is superagent default (200 mb)
+    maxFileUploadSize: null,
     serverConfig,
     storeExtenders: [],
     showTags: true,
@@ -178,6 +190,14 @@ let config = {
     styleClassNameConverters,
     hashLinkSmoothScroll: false,
     styleClassNameExtenders,
+    querystringSearchGet: false,
+    blockSettingsTabFieldsetsInitialStateOpen: true,
+    excludeLinksAndReferencesMenuItem: false,
+    containerBlockTypes: ['gridBlock'],
+    siteTitleFormat: {
+      includeSiteTitle: false,
+      titleAndSiteTitleSeparator: '-',
+    },
   },
   experimental: {
     addBlockButton: {
@@ -207,6 +227,22 @@ let config = {
   addonReducers: {},
   components,
 };
+
+// The apiExpanders depends on a config of the object, so it's done here
+config.settings.apiExpanders = [
+  ...config.settings.apiExpanders,
+  {
+    match: '',
+    GET_CONTENT: ['breadcrumbs', 'actions', 'types', 'navroot'],
+  },
+  {
+    match: '',
+    GET_CONTENT: ['navigation'],
+    querystring: (config) => ({
+      'expand.navigation.depth': config.settings.navDepth,
+    }),
+  },
+];
 
 ConfigRegistry.settings = config.settings;
 ConfigRegistry.experimental = config.experimental;

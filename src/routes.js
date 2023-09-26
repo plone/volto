@@ -23,12 +23,14 @@ import {
   Diff,
   Edit,
   History,
+  LinksToItem,
   Login,
   Logout,
   ManageTranslations,
   ModerateComments,
   NotFound,
   PasswordReset,
+  Relations,
   Register,
   Rules,
   RequestPasswordReset,
@@ -225,6 +227,10 @@ export const defaultRoutes = [
     component: RulesControlpanel,
   },
   {
+    path: '/controlpanel/relations',
+    component: Relations,
+  },
+  {
     path: '/controlpanel/:id',
     component: Controlpanel,
   },
@@ -279,6 +285,14 @@ export const defaultRoutes = [
   {
     path: '/**/manage-translations',
     component: ManageTranslations,
+  },
+  {
+    path: '/links-to-item',
+    component: LinksToItem,
+  },
+  {
+    path: '/**/links-to-item',
+    component: LinksToItem,
   },
   {
     path: '/register',

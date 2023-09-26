@@ -104,7 +104,7 @@ class Api {
               checkUrl &&
               request.url &&
               request.xhr &&
-              stripQuerystring(request.url) !==
+              encodeURI(stripQuerystring(request.url)) !==
                 stripQuerystring(request.xhr.responseURL)
             ) {
               if (request.xhr.responseURL?.length === 0) {

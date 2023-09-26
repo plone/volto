@@ -8,10 +8,12 @@ const fs = require('fs');
 const RootResolverPlugin = require('./webpack-plugins/webpack-root-resolver');
 const RelativeResolverPlugin = require('./webpack-plugins/webpack-relative-resolver');
 const createAddonsLoader = require('./create-addons-loader');
+const createThemeAddonsLoader = require('./create-theme-addons-loader');
 const AddonConfigurationRegistry = require('./addon-registry');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 
 const fileLoaderFinder = makeLoaderFinder('file-loader');
 
@@ -132,12 +134,9 @@ const defaultModify = ({
     }
 
     config.plugins.unshift(
-      // restrict moment.js locales to en/de
-      // see https://github.com/jmblog/how-to-optimize-momentjs-with-webpack for details
-      new webpack.ContextReplacementPlugin(
-        /moment[/\\]locale$/,
-        new RegExp(Object.keys(languages).join('|')),
-      ),
+      // restrict moment.js locales to supported languages
+      // see https://momentjs.com/docs/#/use-it/webpack/ for details
+      new MomentLocalesPlugin({ localesToKeep: Object.keys(languages) }),
       new LodashModuleReplacementPlugin({
         shorthands: true,
         cloning: true,
@@ -245,6 +244,28 @@ const defaultModify = ({
     'lodash-es': path.dirname(require.resolve('lodash')),
   };
 
+  const [
+    addonsThemeLoaderVariablesPath,
+    addonsThemeLoaderMainPath,
+  ] = createThemeAddonsLoader(registry.getCustomThemeAddons());
+
+  // Automatic Theme Loading
+  if (registry.theme) {
+    // The themes should be located in `src/theme`
+    const themePath = registry.packages[registry.theme].modulePath;
+    const themeConfigPath = `${themePath}/theme/theme.config`;
+    config.resolve.alias['../../theme.config$'] = themeConfigPath;
+    config.resolve.alias['../../theme.config'] = themeConfigPath;
+
+    // We create an alias for each custom theme insertion point (variables, main)
+    config.resolve.alias[
+      'addonsThemeCustomizationsVariables'
+    ] = addonsThemeLoaderVariablesPath;
+    config.resolve.alias[
+      'addonsThemeCustomizationsMain'
+    ] = addonsThemeLoaderMainPath;
+  }
+
   config.performance = {
     maxAssetSize: 10000000,
     maxEntrypointSize: 10000000,
@@ -318,7 +339,11 @@ const defaultModify = ({
 
   if (config.devServer) {
     config.devServer.static.watch.ignored = /node_modules\/(?!@plone\/volto)/;
-    config.devServer.host = '0.0.0.0';
+    config.snapshot = {
+      managedPaths: [
+        /^(.+?[\\/]node_modules[\\/](?!(@plone[\\/]volto))(@.+?[\\/])?.+?)[\\/]/,
+      ],
+    };
   }
 
   return config;

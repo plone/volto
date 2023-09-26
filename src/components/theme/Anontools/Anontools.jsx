@@ -1,88 +1,55 @@
-/**
- * Anontools component.
- * @module components/theme/Anontools/Anontools
- */
-
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { compose } from 'redux';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Menu } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
+import { flattenToAppURL } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
-import { injectUrlHelpers } from '@plone/volto/helpers/useUrlHelpers';
+import { useSelector, shallowEqual } from 'react-redux';
 
-/**
- * Anontools container class.
- */
-export class Anontools extends Component {
-  /**
-   * Property types.
-   * @property {Object} propTypes Property types.
-   * @static
-   */
-  static propTypes = {
-    token: PropTypes.string,
-    content: PropTypes.shape({
-      '@id': PropTypes.string,
-    }),
-  };
+const Anontools = () => {
+  const token = useSelector((state) => state.userSession.token, shallowEqual);
+  const content = useSelector((state) => state.content.data, shallowEqual);
 
-  /**
-   * Default properties.
-   * @property {Object} defaultProps Default properties.
-   * @static
-   */
-  static defaultProps = {
-    token: null,
-    content: {
-      '@id': null,
-    },
-  };
-
-  /**
-   * Render method.
-   * @method render
-   * @returns {string} Markup for the component.
-   */
-  render() {
-    const { settings } = config;
-    return (
-      !this.props.token && (
-        <Menu pointing secondary floated="right">
+  const { settings } = config;
+  return (
+    !token && (
+      <Menu pointing secondary floated="right">
+        <Menu.Item>
+          <Link
+            aria-label="login"
+            to={`/login${
+              content?.['@id']
+                ? `?return_url=${flattenToAppURL(content['@id'])}`
+                : ''
+            }`}
+          >
+            <FormattedMessage id="Log in" defaultMessage="Log in" />
+          </Link>
+        </Menu.Item>
+        {settings.showSelfRegistration && (
           <Menu.Item>
-            <Link
-              aria-label="login"
-              to={`/login${
-                this.props.content?.['@id']
-                  ? `?return_url=${this.props.content['@id'].replace(
-                      this.props.getApiPath(),
-                      '',
-                    )}`
-                  : ''
-              }`}
-            >
-              <FormattedMessage id="Log in" defaultMessage="Log in" />
+            <Link aria-label="register" to="/register">
+              <FormattedMessage id="Register" defaultMessage="Register" />
             </Link>
           </Menu.Item>
-          {settings.showSelfRegistration && (
-            <Menu.Item>
-              <Link aria-label="register" to="/register">
-                <FormattedMessage id="Register" defaultMessage="Register" />
-              </Link>
-            </Menu.Item>
-          )}
-        </Menu>
-      )
-    );
-  }
-}
+        )}
+      </Menu>
+    )
+  );
+};
 
-export default compose(
-  injectUrlHelpers,
-  connect((state) => ({
-    token: state.userSession.token,
-    content: state.content.data,
-  })),
-)(Anontools);
+export default Anontools;
+
+Anontools.propTypes = {
+  token: PropTypes.string,
+  content: PropTypes.shape({
+    '@id': PropTypes.string,
+  }),
+};
+
+Anontools.defaultProps = {
+  token: null,
+  content: {
+    '@id': null,
+  },
+};

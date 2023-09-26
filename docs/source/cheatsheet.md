@@ -14,7 +14,7 @@ myst:
 # Cheatsheet
 
 ```{seealso}
-{doc}`plone:contributing/myst-reference`
+{doc}`plone:contributing/documentation/myst-reference`
 ```
 
 

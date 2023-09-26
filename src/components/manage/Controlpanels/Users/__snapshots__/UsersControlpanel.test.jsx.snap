@@ -77,36 +77,33 @@ exports[`UsersControlpanel renders a user control component 1`] = `
       className="ui form"
       onSubmit={[Function]}
     >
-      <div
-        className="table"
+      <table
+        className="ui striped unstackable attached padded table"
       >
-        <table
-          className="ui striped unstackable attached padded table"
+        <thead
+          className=""
         >
-          <thead
+          <tr
             className=""
           >
-            <tr
+            <th
               className=""
             >
-              <th
-                className=""
-              >
-                User name
-              </th>
-              <th
-                className=""
-              >
-                Actions
-              </th>
-            </tr>
-          </thead>
-          <tbody
-            className=""
-            data-user="users"
-          />
-        </table>
-      </div>
+              User name
+            </th>
+            <th
+              className=""
+            >
+              Actions
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          className=""
+          data-user="users"
+        />
+      </table>
+      
       <div
         className="contents-pagination"
       >

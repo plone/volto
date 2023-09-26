@@ -12,9 +12,9 @@ import {
   isInternalURL,
   URLUtils,
 } from '@plone/volto/helpers/Url/Url';
-import { matchPath } from 'react-router';
 
 import config from '@plone/volto/registry';
+import cx from 'classnames';
 
 const UniversalLink = ({
   href,
@@ -66,11 +66,8 @@ const UniversalLink = ({
     }
   }
 
-  const isBlacklisted =
-    (config.settings.externalRoutes ?? []).find((route) =>
-      matchPath(flattenToAppURL(url), route.match),
-    )?.length > 0;
-  const isExternal = !isInternalURL(url) || isBlacklisted;
+  const isExternal = !isInternalURL(url);
+
   const isDownload = (!isExternal && url.includes('@@download')) || download;
   const isDisplayFile =
     (!isExternal && url.includes('@@display-file')) || false;
@@ -92,19 +89,16 @@ const UniversalLink = ({
   );
 
   if (isExternal) {
+    const isTelephoneOrMail = checkedURL.isMail || checkedURL.isTelephone;
     tag = (
       <a
         href={url}
         title={title}
         target={
-          !checkedURL.isMail &&
-          !checkedURL.isTelephone &&
-          !(openLinkInNewTab === false)
-            ? '_blank'
-            : null
+          !isTelephoneOrMail && !(openLinkInNewTab === false) ? '_blank' : null
         }
         rel="noopener noreferrer"
-        className={className}
+        className={cx({ external: !isTelephoneOrMail }, className)}
         {...props}
       >
         {children}

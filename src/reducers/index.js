@@ -25,6 +25,7 @@ import messages from '@plone/volto/reducers/messages/messages';
 import navigation from '@plone/volto/reducers/navigation/navigation';
 import querystring from '@plone/volto/reducers/querystring/querystring';
 import querystringsearch from '@plone/volto/reducers/querystringsearch/querystringsearch';
+import relations from '@plone/volto/reducers/relations/relations';
 import roles from '@plone/volto/reducers/roles/roles';
 import rules from '@plone/volto/reducers/rules/rules';
 import controlpanelrule from '@plone/volto/reducers/controlPanelRule/controlPanelRule';
@@ -49,6 +50,8 @@ import workingCopy from './workingcopy/workingcopy';
 import transactions from './transactions/transactions';
 import upgrade from './upgrade/upgrade';
 import userschema from './userschema/userschema';
+import site from './site/site';
+import navroot from './navroot/navroot';
 
 /**
  * Root reducer.
@@ -80,6 +83,7 @@ const reducers = {
   navigation,
   querystring,
   querystringsearch,
+  relations,
   roles,
   rules,
   controlpanelrule,
@@ -103,6 +107,8 @@ const reducers = {
   workingCopy,
   transactions,
   userschema,
+  site,
+  navroot,
 };
 
 export default reducers;

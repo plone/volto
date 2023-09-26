@@ -6,6 +6,12 @@ const debug = require('debug')('shadowing');
 const { map } = require('lodash');
 const { DepGraph } = require('dependency-graph');
 
+const excludedCompilerOptionsPaths = [
+  '@plone/volto/*',
+  '@plone/volto-slate/*',
+  '@root/*',
+];
+
 function getPackageBasePath(base) {
   while (!fs.existsSync(`${base}/package.json`)) {
     base = path.join(base, '../');
@@ -130,6 +136,11 @@ class AddonConfigurationRegistry {
     this.packages = {};
     this.customizations = new Map();
 
+    // Theme from a package.json key, from volto.config.js or from an ENV VAR
+    // Programatically via volto.config.js wins or the ENV VAR if present
+    this.theme =
+      packageJson.theme || this.voltoConfigJS.theme || process.env.THEME;
+
     this.initDevelopmentPackages();
     this.initPublishedPackages();
     this.initAddonsFromEnvVar();
@@ -192,7 +203,10 @@ class AddonConfigurationRegistry {
           addons: require(packageJsonPath).addons || [],
         };
 
-        this.packages[name] = Object.assign(this.packages[name] || {}, pkg);
+        // Removed excluded paths from CompilerOptions
+        if (!excludedCompilerOptionsPaths.includes(name)) {
+          this.packages[name] = Object.assign(this.packages[name] || {}, pkg);
+        }
       });
     }
     this.initPackagesFolder();
@@ -352,6 +366,35 @@ class AddonConfigurationRegistry {
     return this.getAddons()
       .map((o) => o.eslintExtender)
       .filter((e) => e);
+  }
+
+  getCustomThemeAddons() {
+    const customThemeAddonsInfo = {
+      variables: [],
+      main: [],
+    };
+
+    this.getAddonDependencies().forEach((addon) => {
+      const normalizedAddonName = addon.split(':')[0];
+      // We have two possible insertion points, variables and main
+
+      const customThemeVariables = `${this.packages[normalizedAddonName].modulePath}/theme/_variables.scss`;
+      const customThemeMain = `${this.packages[normalizedAddonName].modulePath}/theme/_main.scss`;
+      if (
+        fs.existsSync(customThemeVariables) &&
+        normalizedAddonName !== this.theme
+      ) {
+        customThemeAddonsInfo.variables.push(normalizedAddonName);
+      }
+      if (
+        fs.existsSync(customThemeMain) &&
+        normalizedAddonName !== this.theme
+      ) {
+        customThemeAddonsInfo.main.push(normalizedAddonName);
+      }
+    });
+
+    return customThemeAddonsInfo;
   }
 
   /**

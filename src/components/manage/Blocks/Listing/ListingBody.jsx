@@ -1,13 +1,35 @@
-import React, { createRef } from 'react';
+import React, { createRef, useMemo } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import cx from 'classnames';
 import { Pagination, Dimmer, Loader } from 'semantic-ui-react';
+import Slugger from 'github-slugger';
 import { Icon } from '@plone/volto/components';
+import { renderLinkElement } from '@plone/volto-slate/editor/render';
 import config from '@plone/volto/registry';
 import withQuerystringResults from './withQuerystringResults';
 
 import paginationLeftSVG from '@plone/volto/icons/left-key.svg';
 import paginationRightSVG from '@plone/volto/icons/right-key.svg';
+
+const Headline = ({ headlineTag, id, data = {}, listingItems, isEditMode }) => {
+  let attr = { id };
+  const slug = Slugger.slug(data.headline);
+  attr.id = slug || id;
+  const LinkedHeadline = useMemo(
+    () => renderLinkElement(headlineTag),
+    [headlineTag],
+  );
+  return (
+    <LinkedHeadline
+      mode={!isEditMode && 'view'}
+      children={data.headline}
+      attributes={attr}
+      className={cx('headline', {
+        emptyListing: !listingItems?.length > 0,
+      })}
+    />
+  );
+};
 
 const ListingBody = withQuerystringResults((props) => {
   const {
@@ -22,6 +44,7 @@ const ListingBody = withQuerystringResults((props) => {
     nextBatch,
     isFolderContentsListing,
     hasLoaded,
+    id,
   } = props;
 
   let ListingBodyTemplate;
@@ -50,13 +73,13 @@ const ListingBody = withQuerystringResults((props) => {
   return (
     <>
       {data.headline && (
-        <HeadlineTag
-          className={cx('headline', {
-            emptyListing: !listingItems?.length > 0,
-          })}
-        >
-          {data.headline}
-        </HeadlineTag>
+        <Headline
+          headlineTag={HeadlineTag}
+          id={id}
+          listingItems={listingItems}
+          data={data}
+          isEditMode={isEditMode}
+        />
       )}
       {listingItems?.length > 0 ? (
         <div ref={listingRef}>

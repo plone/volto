@@ -5,6 +5,8 @@ import { useLocation, useHistory } from 'react-router-dom';
 
 import { resolveExtension } from '@plone/volto/helpers/Extensions/withBlockExtensions';
 import config from '@plone/volto/registry';
+import { usePrevious } from '@plone/volto/helpers';
+import { isEqual } from 'lodash';
 
 function getDisplayName(WrappedComponent) {
   return WrappedComponent.displayName || WrappedComponent.name || 'Component';
@@ -27,9 +29,8 @@ const PAQO = 'plone.app.querystring.operation';
  *
  */
 function getInitialState(data, facets, urlSearchText, id) {
-  const {
-    types: facetWidgetTypes,
-  } = config.blocks.blocksConfig.search.extensions.facetWidgets;
+  const { types: facetWidgetTypes } =
+    config.blocks.blocksConfig.search.extensions.facetWidgets;
   const facetSettings = data?.facets || [];
 
   return {
@@ -85,9 +86,8 @@ function normalizeState({
   sortOrder,
   facetSettings, // data.facets extracted from block data
 }) {
-  const {
-    types: facetWidgetTypes,
-  } = config.blocks.blocksConfig.search.extensions.facetWidgets;
+  const { types: facetWidgetTypes } =
+    config.blocks.blocksConfig.search.extensions.facetWidgets;
 
   const params = {
     query: [
@@ -114,15 +114,19 @@ function normalizeState({
     block: id,
   };
 
-  // TODO: need to check if SearchableText facet is not already in the query
-  // Ideally the searchtext functionality should be restructured as being just
-  // another facet
-  params.query = params.query.reduce(
-    // Remove SearchableText from query
-    (acc, kvp) => (kvp.i === 'SearchableText' ? acc : [...acc, kvp]),
-    [],
-  );
+  // Note Ideally the searchtext functionality should be restructured as being just
+  // another facet. But right now it's the same. This means that if a searchText
+  // is provided, it will override the SearchableText facet.
+  // If there is no searchText, the SearchableText in the query remains in effect.
+  // TODO eventually the searchText should be a distinct facet from SearchableText, and
+  // the two conditions could be combined, in comparison to the current state, when
+  // one overrides the other.
   if (searchText) {
+    params.query = params.query.reduce(
+      // Remove SearchableText from query
+      (acc, kvp) => (kvp.i === 'SearchableText' ? acc : [...acc, kvp]),
+      [],
+    );
     params.query.push({
       i: 'SearchableText',
       o: 'plone.app.querystring.operation.string.contains',
@@ -144,12 +148,16 @@ const getSearchFields = (searchData) => {
 };
 
 /**
- * A HOC that will mirror the search block state to a hash location
+ * A hook that will mirror the search block state to a hash location
  */
 const useHashState = () => {
   const location = useLocation();
   const history = useHistory();
 
+  /**
+   * Required to maintain parameter compatibility.
+    With this we will maintain support for receiving hash (#) and search (?) type parameters.
+  */
   const oldState = React.useMemo(() => {
     return {
       ...qs.parse(location.search),
@@ -165,7 +173,7 @@ const useHashState = () => {
 
   const setSearchData = React.useCallback(
     (searchData) => {
-      const newParams = qs.parse(location.hash);
+      const newParams = qs.parse(location.search);
 
       let changed = false;
 
@@ -182,11 +190,11 @@ const useHashState = () => {
 
       if (changed) {
         history.push({
-          hash: qs.stringify(newParams),
+          search: qs.stringify(newParams),
         });
       }
     },
-    [history, oldState, location.hash],
+    [history, oldState, location.search],
   );
 
   return [current, setSearchData];
@@ -230,6 +238,8 @@ const withSearch = (options) => (WrappedComponent) => {
       editable,
     );
 
+    // TODO: Improve the hook dependencies out of the scope of https://github.com/plone/volto/pull/4662
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const urlQuery = locationSearchData.query
       ? deserializeQuery(locationSearchData.query)
       : [];
@@ -240,46 +250,69 @@ const withSearch = (options) => (WrappedComponent) => {
 
     // TODO: refactor, should use only useLocationStateManager()!!!
     const [searchText, setSearchText] = React.useState(urlSearchText);
+    // TODO: Improve the hook dependencies out of the scope of https://github.com/plone/volto/pull/4662
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const configuredFacets =
       data.facets?.map((facet) => facet?.field?.value) || [];
     const multiFacets = data.facets
       ?.filter((facet) => facet?.multiple)
       .map((facet) => facet?.field?.value);
-    const [facets, setFacets] = React.useState(
-      Object.assign(
-        {},
-        ...urlQuery.map(({ i, v }) => ({ [i]: v })), // TODO: the 'o' should be kept. This would be a major refactoring of the facets
+    const [facets, setFacets] = React.useState({});
+    const previousUrlQuery = usePrevious(urlQuery);
 
-        // support for simple filters like ?Subject=something
-        // TODO: since the move to hash params this is no longer working.
-        // We'd have to treat the location.search and manage it just like the
-        // hash, to support it. We can read it, but we'd have to reset it as
-        // well, so at that point what's the difference to the hash?
-        ...configuredFacets.map((f) =>
-          locationSearchData[f]
-            ? {
-                [f]:
-                  multiFacets.indexOf(f) > -1
-                    ? [locationSearchData[f]]
-                    : locationSearchData[f],
-              }
-            : {},
-        ),
-      ),
-    );
+    React.useEffect(() => {
+      if (!isEqual(urlQuery, previousUrlQuery)) {
+        setFacets(
+          Object.assign(
+            {},
+            ...urlQuery.map(({ i, v }) => ({ [i]: v })), // TODO: the 'o' should be kept. This would be a major refactoring of the facets
+
+            // support for simple filters like ?Subject=something
+            // TODO: since the move to hash params this is no longer working.
+            // We'd have to treat the location.search and manage it just like the
+            // hash, to support it. We can read it, but we'd have to reset it as
+            // well, so at that point what's the difference to the hash?
+            ...configuredFacets.map((f) =>
+              locationSearchData[f]
+                ? {
+                    [f]:
+                      multiFacets.indexOf(f) > -1
+                        ? [locationSearchData[f]]
+                        : locationSearchData[f],
+                  }
+                : {},
+            ),
+          ),
+        );
+      }
+    }, [
+      urlQuery,
+      configuredFacets,
+      locationSearchData,
+      multiFacets,
+      previousUrlQuery,
+    ]);
 
     const [sortOn, setSortOn] = React.useState(data?.query?.sort_on);
     const [sortOrder, setSortOrder] = React.useState(data?.query?.sort_order);
 
-    const [searchData, setSearchData] = React.useState(
-      getInitialState(data, facets, urlSearchText, id),
-    );
+    const [searchData, setSearchData] = React.useState({});
+
+    React.useEffect(() => {
+      setSearchData(getInitialState(data, facets, urlSearchText, id));
+    }, [facets, data, urlSearchText, id]);
 
     const timeoutRef = React.useRef();
     const facetSettings = data?.facets;
 
+    const deepQuery = JSON.stringify(data.query);
     const onTriggerSearch = React.useCallback(
-      (toSearchText, toSearchFacets, toSortOn, toSortOrder) => {
+      (
+        toSearchText = undefined,
+        toSearchFacets = undefined,
+        toSortOn = undefined,
+        toSortOrder = undefined,
+      ) => {
         if (timeoutRef.current) clearTimeout(timeoutRef.current);
         timeoutRef.current = setTimeout(
           () => {
@@ -287,7 +320,7 @@ const withSearch = (options) => (WrappedComponent) => {
               id,
               query: data.query || {},
               facets: toSearchFacets || facets,
-              searchText: toSearchText,
+              searchText: toSearchText ? toSearchText.trim() : '',
               sortOn: toSortOn || sortOn,
               sortOrder: toSortOrder || sortOrder,
               facetSettings,
@@ -301,16 +334,29 @@ const withSearch = (options) => (WrappedComponent) => {
           toSearchFacets ? inputDelay / 3 : inputDelay,
         );
       },
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       [
-        data.query,
+        // Use deep comparison of data.query
+        deepQuery,
         facets,
         id,
         setLocationSearchData,
+        searchText,
         sortOn,
         sortOrder,
         facetSettings,
       ],
     );
+
+    const removeSearchQuery = () => {
+      searchData.query = searchData.query.reduce(
+        // Remove SearchableText from query
+        (acc, kvp) => (kvp.i === 'SearchableText' ? acc : [...acc, kvp]),
+        [],
+      );
+      setSearchData(searchData);
+      setLocationSearchData(getSearchFields(searchData));
+    };
 
     const querystringResults = useSelector(
       (state) => state.querystringsearch.subrequests,
@@ -330,6 +376,7 @@ const withSearch = (options) => (WrappedComponent) => {
         sortOrder={sortOrder}
         searchedText={urlSearchText}
         searchText={searchText}
+        removeSearchQuery={removeSearchQuery}
         setSearchText={setSearchText}
         onTriggerSearch={onTriggerSearch}
         totalItems={totalItems}

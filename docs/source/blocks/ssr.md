@@ -21,10 +21,10 @@ configuration, pointing to a function that returns a list of promises.
 For example:
 
 ```js
-export default ({ dispatch, data, path }) => {
+export default ({ dispatch, id, data, path }) => {
   return [
     dispatch(
-      getQueryStringResults(path, { ...data, fullobjects: 1 }, data.block),
+      getQueryStringResults(path, { ...data, fullobjects: 1 }, id),
     ),
   ];
 };

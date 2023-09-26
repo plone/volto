@@ -3,10 +3,21 @@
 <!-- You should *NOT* be adding new change log entries to this file.
      You should create a file in the news directory instead.
      For helpful instructions, please see:
-     https://6.dev-docs.plone.org/volto/developer-guidelines/contributing.html#create-a-pull-request
+     https://6.docs.plone.org/volto/developer-guidelines/contributing.html#create-a-pull-request
 -->
 
 <!-- towncrier release notes start -->
+
+## 3.0.0 (2023-04-07)
+
+### Breaking
+
+- Remove dependency on `simple-git`. It is used by `mrs-developer` but not directly. @davisagli [#4546](https://github.com/plone/volto/issues/4546)
+
+### Bugfix
+
+- Fixed i18n script to avoid overwriting translations with an empty msgstr @danalvrz [#4316](https://github.com/plone/volto/issues/4316)
+
 
 ## 2.3.0 (2023-01-13)
 
@@ -80,7 +91,7 @@
 
 - Removed `Razzle` as dependency, leave only the `babel-preset-razzle` one which is enough.
 
-  See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
+  See https://6.docs.plone.org/volto/upgrade-guide/index.html for more information.
 
 ## 1.6.0 (2022-08-05)
 
