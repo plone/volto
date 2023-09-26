@@ -6,7 +6,7 @@
 import superagent from 'superagent';
 import config from '@plone/volto/registry';
 import { addHeadersFactory } from '@plone/volto/helpers/Proxy/Proxy';
-import formatUrl from './Api';
+import { formatUrl } from './Api';
 
 /**
  * Get a resource image/file with authenticated (if token exist) API headers
