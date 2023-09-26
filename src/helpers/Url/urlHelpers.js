@@ -38,6 +38,7 @@ export function useUrlHelpers() {
         .replace(apiHeaders.apiPath, '')
         .replace(apiHeaders.publicURL, '')
     );
+  }
 
   function toPublicURL(url) {
     if (!hasApiHeaders || !apiHeaders.publicUrl) {
