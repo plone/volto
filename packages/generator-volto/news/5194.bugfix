@@ -1,1 +1,0 @@
-Remove JSON files from being linted by ESlint, since it's not its purpose @sneridagh

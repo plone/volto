@@ -53,6 +53,32 @@ or use Webpack plugins, you might need to make adjustments.
 Razzle has been upgraded to version `4.2.18`.
 It is recommended that you update your project's dependency on Razzle to this version in order to avoid duplication.
 
+### Upgraded linters, ESlint, Prettier and Stylelint
+
+The main linters have been upgraded.
+Once updated, you may find new violations in your project or add-on code.
+It is recommended that you run again all the linters and fix all the violations once you update it to Volto 17.
+Upgrade your local dependencies in projects and add-ons by editing your {file}`package.json` as follows:
+
+```diff
+"devDependencies": {
+-    "eslint-config-prettier": "8.10.0",
++    "eslint-config-prettier": "9.0.0",
+-    "eslint-plugin-prettier": "3.4.1",
++    "eslint-plugin-prettier": "5.0.0",
+-    "prettier": "2.0.5",
++    "prettier": "3.0.3",
+-    "stylelint": "14.0.1",
+-    "stylelint-config-idiomatic-order": "8.1.0",
+-    "stylelint-config-prettier": "8.0.1",
+-    "stylelint-prettier": "1.1.2",
++    "stylelint": "15.10.3",
++    "stylelint-config-idiomatic-order": "9.0.0",
++    "stylelint-prettier": "4.0.2",
+}
+```
+
+
 ### TypeScript support in Volto
 
 ```{versionadded} 17.0.0-alpha.27

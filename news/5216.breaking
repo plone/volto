@@ -1,0 +1,4 @@
+Updated Prettier @sneridagh
+Upgrade Stylelint @sneridagh
+Fixed introduced violations due to the upgrades @sneridagh
+Updated HTML block and prettier loadables to match the new async Prettier plugin API @sneridagh
