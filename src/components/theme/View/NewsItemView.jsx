@@ -6,7 +6,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Container as SemanticContainer } from 'semantic-ui-react';
-import { hasBlocksData, flattenHTMLToAppURL } from '@plone/volto/helpers';
+import { hasBlocksData, useUrlHelpers } from '@plone/volto/helpers';
 import RenderBlocks from '@plone/volto/components/theme/View/RenderBlocks';
 import config from '@plone/volto/registry';
 
@@ -20,7 +20,7 @@ const NewsItemView = ({ content }) => {
   const Image = config.getComponent({ name: 'Image' }).component;
   const Container =
     config.getComponent({ name: 'Container' }).component || SemanticContainer;
-
+  const { flattenHTMLToAppURL } = useUrlHelpers();
   return hasBlocksData(content) ? (
     <Container id="page-document" className="view-wrapper newsitem-view">
       <RenderBlocks content={content} />
