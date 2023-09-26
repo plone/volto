@@ -5,7 +5,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { useUrlHelpers } from '@plone/volto/helpers';
 import { LinkMore } from '@plone/volto/components';
 
 /**
@@ -13,27 +13,30 @@ import { LinkMore } from '@plone/volto/components';
  * @class View
  * @extends Component
  */
-const View = ({ data }) => (
-  <div className="block hero">
-    <div className="block-inner-wrapper">
-      {data.url && (
-        <img
-          src={`${flattenToAppURL(data.url)}/@@images/image`}
-          alt=""
-          className="hero-image"
-          loading="lazy"
-        />
-      )}
-      <div className="hero-body">
-        <div className="hero-text">
-          {data.title && <h1>{data.title}</h1>}
-          {data.description && <p>{data.description}</p>}
+const View = ({ data }) => {
+  const { flattenToAppURL } = useUrlHelpers();
+  return (
+    <div className="block hero">
+      <div className="block-inner-wrapper">
+        {data.url && (
+          <img
+            src={`${flattenToAppURL(data.url)}/@@images/image`}
+            alt=""
+            className="hero-image"
+            loading="lazy"
+          />
+        )}
+        <div className="hero-body">
+          <div className="hero-text">
+            {data.title && <h1>{data.title}</h1>}
+            {data.description && <p>{data.description}</p>}
+          </div>
+          <LinkMore data={data} />
         </div>
-        <LinkMore data={data} />
       </div>
     </div>
-  </div>
-);
+  );
+}
 
 /**
  * Property types.
