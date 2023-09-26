@@ -18,22 +18,22 @@ export const __setLoadables = async () => {
 };
 
 // TODO: filter mockAllLoadables
-export const injectLazyLibs = jest
-  .fn()
-  .mockImplementation(function ([libraries]) {
-    return jest.fn((WrappedComponent) =>
-      jest.fn((props) => {
-        return <WrappedComponent {...props} {...mockAllLoadables} />;
-      }),
-    );
-  });
+export const injectLazyLibs = jest.fn().mockImplementation(function ([
+  libraries,
+]) {
+  return jest.fn((WrappedComponent) =>
+    jest.fn((props) => {
+      return <WrappedComponent {...props} {...mockAllLoadables} />;
+    }),
+  );
+});
 
-export const preloadLazyLibs = jest
-  .fn()
-  .mockImplementation(function ([libraries]) {
-    return jest.fn((WrappedComponent) =>
-      jest.fn((props) => {
-        return <WrappedComponent {...props} />;
-      }),
-    );
-  });
+export const preloadLazyLibs = jest.fn().mockImplementation(function ([
+  libraries,
+]) {
+  return jest.fn((WrappedComponent) =>
+    jest.fn((props) => {
+      return <WrappedComponent {...props} />;
+    }),
+  );
+});
