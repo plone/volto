@@ -3,12 +3,12 @@
  * @module helpers/Api
  */
 
+import { calculateApiPath, stripQuerystring } from '@plone/volto/helpers';
+import { addHeadersFactory } from '@plone/volto/helpers/Proxy/Proxy';
+import config from '@plone/volto/registry';
+import { compose } from 'redux';
 import superagent from 'superagent';
 import Cookies from 'universal-cookie';
-import config from '@plone/volto/registry';
-import { addHeadersFactory } from '@plone/volto/helpers/Proxy/Proxy';
-import { stripQuerystring, useUrlHelpers } from '@plone/volto/helpers';
-import { compose } from 'redux';
 
 const methods = ['get', 'post', 'put', 'patch', 'del'];
 
@@ -21,7 +21,6 @@ const methods = ['get', 'post', 'put', 'patch', 'del'];
  */
 export function formatUrl(path, req) {
   const { settings } = config;
-  const { calculateApiPath } = useUrlHelpers();
   const APISUFIX = settings.legacyTraverse ? '' : '/++api++';
 
   if (path.startsWith('http://') || path.startsWith('https://')) return path;

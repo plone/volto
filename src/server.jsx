@@ -127,7 +127,6 @@ server.use(function (err, req, res, next) {
 });
 
 function setupServer(req, res, next) {
-  console.log('setup');
   const api = new Api(req);
 
   const lang = toReactIntlLang(
