@@ -1,0 +1,1 @@
+Remove node requirements in generator-volto, add try-catch clause in code that seems to break in release mode @sneridagh
