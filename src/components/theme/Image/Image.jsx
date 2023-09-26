@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { useUrlHelpers } from '@plone/volto/helpers';
 
 /**
  * Image component
@@ -23,6 +23,8 @@ export default function Image({
   ...imageProps
 }) {
   if (!item && !src) return null;
+
+  const { flattenToAppURL } = useUrlHelpers();
 
   // TypeScript hints for editor autocomplete :)
   /** @type {React.ImgHTMLAttributes<HTMLImageElement>} */
