@@ -32,7 +32,6 @@ const ConnectionRefused = (props) => {
           <>
             <br />
             <a href={apiPath}>{apiPath}</a>
-            <p>Link: {apiPath} </p>
           </>
         )}
       </h1>
