@@ -8,10 +8,9 @@ import PropTypes from 'prop-types';
 import { HashLink as Link } from 'react-router-hash-link';
 import { useSelector } from 'react-redux';
 import {
-  flattenToAppURL,
-  isInternalURL,
+  useUrlHelpers,
   URLUtils,
-} from '@plone/volto/helpers/Url/Url';
+} from '@plone/volto/helpers';
 
 import config from '@plone/volto/registry';
 import cx from 'classnames';
@@ -26,6 +25,7 @@ const UniversalLink = ({
   title = null,
   ...props
 }) => {
+  const { isInternalURL, flattenToAppURL } = useUrlHelpers();
   const token = useSelector((state) => state.userSession?.token);
 
   let url = href;
