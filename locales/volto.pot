@@ -39,7 +39,7 @@ msgid "Action changed"
 msgstr ""
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
-# defaultMessage: Action: 
+# defaultMessage: Action:
 msgid "Action: "
 msgstr ""
 
@@ -683,7 +683,7 @@ msgid "Condition changed"
 msgstr ""
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
-# defaultMessage: Condition: 
+# defaultMessage: Condition:
 msgid "Condition: "
 msgstr ""
 
@@ -2989,6 +2989,7 @@ msgstr ""
 #: components/manage/Blocks/Search/layout/RightColumnFacets
 #: components/manage/Blocks/Search/layout/TopSideFacets
 #: components/manage/Blocks/Search/schema
+#: components/manage/Sharing/Sharing
 #: components/theme/Search/Search
 #: components/theme/SearchWidget/SearchWidget
 # defaultMessage: Search
