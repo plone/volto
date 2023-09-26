@@ -9,10 +9,9 @@ import LogoImage from '@plone/volto/components/theme/Logo/Logo.svg';
 import { useSelector, useDispatch } from 'react-redux';
 import { getNavroot } from '@plone/volto/actions';
 import {
-  flattenToAppURL,
   hasApiExpander,
   getBaseUrl,
-  toPublicURL,
+  useUrlHelpers,
 } from '@plone/volto/helpers';
 
 /**
@@ -26,6 +25,7 @@ const Logo = () => {
   const site = useSelector((state) => state.site.data);
   const navroot = useSelector((state) => state.navroot.data);
   const dispatch = useDispatch();
+  const { flattenToAppURL, toPublicURL } = useUrlHelpers();
 
   useEffect(() => {
     if (pathname && !hasApiExpander('navroot', getBaseUrl(pathname))) {
