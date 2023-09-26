@@ -26,7 +26,6 @@ function getEnv(req) {
 
   //const apiPathURL = parseUrl(config.settings.apiPath);
   const apiPathURL = formatUrl('', req);
-  console.log('apiPathURL', apiPathURL);
   const proxyURL = parseUrl(config.settings.devProxyToApiPath);
   const serverURL = `${proxyURL.protocol}//${proxyURL.host}`;
   const instancePath = proxyURL.pathname;
