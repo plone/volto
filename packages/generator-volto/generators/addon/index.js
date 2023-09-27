@@ -68,6 +68,10 @@ module.exports = class extends Generator {
         `${JSON.stringify({ ...mrsDeveloperJson, ...template }, null, 2)}`,
       );
     };
+
+    this.addGitIgnore = async function (gitignorefile) {
+      fs.appendFileSync(gitignorefile, `\n!src/addons/${this.globals.name}`);
+    };
   }
 
   async prompting() {
@@ -146,6 +150,7 @@ Run "npm install -g @plone/generator-volto" to update.`,
       return;
     }
 
+    const gitIgnore = path.join(process.cwd(), '.gitignore');
     const pkgJson = path.join(process.cwd(), 'package.json');
     const mrsDeveloperJson = path.join(process.cwd(), 'mrs.developer.json');
 
@@ -159,6 +164,7 @@ Run "npm install -g @plone/generator-volto" to update.`,
         return;
       }
 
+      await this.addGitIgnore(gitIgnore);
       // Modifies project package.json and wires the new addon
       await this.addAddonToPackageJSON(pkgJson);
       // Modifies project mrs.developer.json and wires the new addon localy
