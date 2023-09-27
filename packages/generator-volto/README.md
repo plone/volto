@@ -64,6 +64,12 @@ You can provide an specific Volto version like:
 yo @plone/volto --volto=12.0.0-alpha.0
 ```
 
+You can also pass a Volto branch or tag:
+
+```shell
+yo @plone/volto --volto=plone/volto#16.3.0
+```
+
 You can force to use the latest canary (alpha) Volto version like:
 
 ```bash
