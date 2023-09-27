@@ -7,13 +7,14 @@ import { Icon } from '@plone/volto/components';
 import { renderLinkElement } from '@plone/volto-slate/editor/render';
 import config from '@plone/volto/registry';
 import withQuerystringResults from './withQuerystringResults';
+import { normalizeString } from '@plone/volto/helpers';
 
 import paginationLeftSVG from '@plone/volto/icons/left-key.svg';
 import paginationRightSVG from '@plone/volto/icons/right-key.svg';
 
 const Headline = ({ headlineTag, id, data = {}, listingItems, isEditMode }) => {
   let attr = { id };
-  const slug = Slugger.slug(data.headline);
+  const slug = Slugger.slug(normalizeString(data.headline));
   attr.id = slug || id;
   const LinkedHeadline = useMemo(
     () => renderLinkElement(headlineTag),
