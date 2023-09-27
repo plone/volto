@@ -8,6 +8,13 @@
 
 <!-- towncrier release notes start -->
 
+## 6.4.0 (2023-09-27)
+
+### Bugfix
+
+- Fix generator for Volto 16, keep some backported code, get in all changes in generator-6.x.x From now on, the 6.x.x series of the generator will be released from the 16.x.x branch. will be @sneridagh [#5232](https://github.com/plone/volto/issues/5232)
+
+
 ## 6.3.1 (2023-04-13)
 
 ### Bugfix
