@@ -1,7 +1,7 @@
 {
   "name": "@plone/generator-volto",
   "description": "Yeoman Volto App Generator: scaffolding for Volto projects",
-  "homepage": "https://www.npmjs.com/package/@plone/generator-volto-app",
+  "homepage": "https://www.npmjs.com/package/@plone/generator-volto",
   "maintainers": [
     {
       "name": "Plone Foundation",
@@ -13,10 +13,10 @@
   "version": "6.4.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/plone/generator-volto.git"
+    "url": "git+https://github.com/plone/volto.git"
   },
   "bugs": {
-    "url": "https://github.com/plone/generator-volto/issues",
+    "url": "https://github.com/plone/volto/issues",
     "email": "plone-developers@lists.sourceforge.net"
   },
   "keywords": [
