@@ -15,13 +15,13 @@ const messages = defineMessages({
     defaultMessage: 'Autosaved content found',
   },
   loadData: {
-    id: 'Do you want to load the autosaved content?',
-    defaultMessage: 'Do you want to load the autosaved content?',
+    id: 'Do you want to restore the autosaved content?',
+    defaultMessage: 'Do you want to restore the autosaved content?',
   },
   loadExpiredData: {
-    id: 'The version of the autosaved content I found in your browser is older than that stored on the server. Do you want to load the autosaved content? (You can undo the autosaved content and revert to the server version.)',
+    id: 'The version of the autosaved content I found in your browser is older than that stored on the server. Do you want to restore the autosaved content? (You can undo the autosaved content and revert to the server version.)',
     defaultMessage:
-      'The version of the autosaved content I found in your browser is older than that stored on the server. Do you want to load the autosaved content? (You can undo the autosaved content and revert to the server version.)',
+      'The version of the autosaved content I found in your browser is older than that stored on the server. Do you want to restore the autosaved content? (You can undo the autosaved content and revert to the server version.)',
   },
 });
 

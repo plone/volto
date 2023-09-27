@@ -39,7 +39,7 @@ msgid "Action changed"
 msgstr ""
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
-# defaultMessage: Action: 
+# defaultMessage: Action:
 msgid "Action: "
 msgstr ""
 
@@ -688,7 +688,7 @@ msgid "Condition changed"
 msgstr ""
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
-# defaultMessage: Condition: 
+# defaultMessage: Condition:
 msgid "Condition: "
 msgstr ""
 
@@ -1096,8 +1096,8 @@ msgid "Do you really want to delete this item?"
 msgstr ""
 
 #: helpers/Utils/withSaveAsDraft
-# defaultMessage: Do you want to load the autosaved content?
-msgid "Do you want to load the autosaved content?"
+# defaultMessage: Do you want to restore the autosaved content?
+msgid "Do you want to restore the autosaved content?"
 msgstr ""
 
 #: components/manage/Multilingual/TranslationObject
@@ -3623,8 +3623,8 @@ msgid "The site configuration is outdated and needs to be upgraded."
 msgstr ""
 
 #: helpers/Utils/withSaveAsDraft
-# defaultMessage: The version of the autosaved content I found in your browser is older than that stored on the server. Do you want to load the autosaved content? (You can undo the autosaved content and revert to the server version.)
-msgid "The version of the autosaved content I found in your browser is older than that stored on the server. Do you want to load the autosaved content? (You can undo the autosaved content and revert to the server version.)"
+# defaultMessage: The version of the autosaved content I found in your browser is older than that stored on the server. Do you want to restore the autosaved content? (You can undo the autosaved content and revert to the server version.)
+msgid "The version of the autosaved content I found in your browser is older than that stored on the server. Do you want to restore the autosaved content? (You can undo the autosaved content and revert to the server version.)"
 msgstr ""
 
 #: components/manage/Toolbar/More

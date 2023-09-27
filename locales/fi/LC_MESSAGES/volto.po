@@ -1,9 +1,9 @@
-# 
+#
 # Translators:
 # Petri Savolainen <petri.savolainen@iki.fi>, 2020
 # Asko Soukka <asko.soukka@iki.fi>, 2020
 # Rikupekka Oksanen <rioksane@gmail.com>, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
@@ -1105,8 +1105,8 @@ msgid "Do you really want to delete this item?"
 msgstr "Haluatko varmasti poistaa tämän sisällön?"
 
 #: helpers/Utils/withSaveAsDraft
-# defaultMessage: Do you want to load the autosaved content?
-msgid "Do you want to load the autosaved content?"
+# defaultMessage: Do you want to restore the autosaved content?
+msgid "Do you want to restore the autosaved content?"
 msgstr ""
 
 #: components/manage/Multilingual/TranslationObject
@@ -3630,8 +3630,8 @@ msgid "The site configuration is outdated and needs to be upgraded."
 msgstr "Sivuston konfiguraatio on vanhentunut ja se pitää päivittää."
 
 #: helpers/Utils/withSaveAsDraft
-# defaultMessage: The version of the autosaved content I found in your browser is older than that stored on the server. Do you want to load the autosaved content? (You can undo the autosaved content and revert to the server version.)
-msgid "The version of the autosaved content I found in your browser is older than that stored on the server. Do you want to load the autosaved content? (You can undo the autosaved content and revert to the server version.)"
+# defaultMessage: The version of the autosaved content I found in your browser is older than that stored on the server. Do you want to restore the autosaved content? (You can undo the autosaved content and revert to the server version.)
+msgid "The version of the autosaved content I found in your browser is older than that stored on the server. Do you want to restore the autosaved content? (You can undo the autosaved content and revert to the server version.)"
 msgstr ""
 
 #: components/manage/Toolbar/More
