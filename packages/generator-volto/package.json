@@ -126,7 +126,7 @@
     "jest": "^24.8.0",
     "lint-staged": "^9.4.3",
     "prettier": "2.0.5",
-    "release-it": "^14.9.0",
+    "release-it": "^16.2.1",
     "yeoman-assert": "^3.1.0",
     "yeoman-test": "^6.1.0"
   }
