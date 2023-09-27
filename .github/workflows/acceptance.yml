@@ -33,7 +33,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           install: false
-          parallel: false # Since they run on different node versions, we can't parallel
           browser: chrome
           spec: cypress/tests/core/basic/**/*.js
           start: |
@@ -86,7 +85,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           install: false
-          parallel: false # Since they run on different node versions, we can't parallel
           browser: chrome
           spec: cypress/tests/core/blocks/**/*.js
           start: |
@@ -139,7 +137,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           install: false
-          parallel: false # Since they run on different node versions, we can't parallel
           browser: chrome
           spec: cypress/tests/core/volto-slate/**/*.js
           start: |
@@ -191,7 +188,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           install: false
-          parallel: false # Since they run on different node versions, we can't parallel
           browser: chrome
           spec: cypress/tests/core/basic/**/*.js
           start: |
@@ -268,7 +264,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           install: false
-          parallel: true
           browser: chrome
           spec: cypress/tests/coresandbox/**/*.js
           start: |
@@ -453,7 +448,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           install: false
-          parallel: true
           browser: chrome
           spec: cypress/tests/workingCopy/**/*.js
           start: |
@@ -541,7 +535,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           install: false
-          parallel: true
           browser: chrome
           spec: cypress/tests/minimal/**/*.js
           start: |
@@ -600,7 +593,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           install: false
-          parallel: true
           browser: chrome
           spec: cypress/tests/core/basic/**/*.js
           config: baseUrl=http://localhost
