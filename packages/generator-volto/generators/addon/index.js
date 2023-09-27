@@ -46,7 +46,21 @@ module.exports = class extends Generator {
       // const packageJSON = JSON.parse(fs.readFileSync(pkgJson, 'utf8'));
       const name = this.globals.name;
 
-      packageJSON.addons = [...(packageJSON.addons || []), name];
+      if (!packageJSON.addons) {
+        packageJSON.addons = [];
+      }
+
+      if (!packageJSON.addons.includes(name)) {
+        packageJSON.addons = [...(packageJSON.addons || []), name];
+      }
+
+      if (!packageJSON.workspaces) {
+        packageJSON.workspaces = [];
+      }
+
+      if (!packageJSON.workspaces.includes(`src/addons/${this.globals.name}`)) {
+        packageJSON.workspaces.push(`src/addons/${this.globals.name}`);
+      }
 
       fs.writeFileSync(pkgJson, `${JSON.stringify(packageJSON, null, 2)}`);
     };
@@ -69,8 +83,8 @@ module.exports = class extends Generator {
       );
     };
 
-    this.addGitIgnore = async function (gitignorefile) {
-      fs.appendFileSync(gitignorefile, `\n!src/addons/${this.globals.name}`);
+    this.addToIgnoreFile = async function (ignoreFile) {
+      fs.appendFileSync(ignoreFile, `\n!src/addons/${this.globals.name}`);
     };
   }
 
@@ -151,6 +165,8 @@ Run "npm install -g @plone/generator-volto" to update.`,
     }
 
     const gitIgnore = path.join(process.cwd(), '.gitignore');
+    const eslintIgnore = path.join(process.cwd(), '.eslintignore');
+    const prettierIgnore = path.join(process.cwd(), '.prettierignore');
     const pkgJson = path.join(process.cwd(), 'package.json');
     const mrsDeveloperJson = path.join(process.cwd(), 'mrs.developer.json');
 
@@ -164,7 +180,9 @@ Run "npm install -g @plone/generator-volto" to update.`,
         return;
       }
 
-      await this.addGitIgnore(gitIgnore);
+      await this.addToIgnoreFile(gitIgnore);
+      await this.addToIgnoreFile(eslintIgnore);
+      await this.addToIgnoreFile(prettierIgnore);
       // Modifies project package.json and wires the new addon
       await this.addAddonToPackageJSON(pkgJson);
       // Modifies project mrs.developer.json and wires the new addon localy
