@@ -318,7 +318,6 @@ jobs:
         with:
           install: false
           browser: chrome
-          group: Guillotina
           spec: cypress/tests/guillotina/**/*.js
           start: |
             make start-test-acceptance-server-guillotina
@@ -371,7 +370,6 @@ jobs:
         with:
           install: false
           browser: chrome
-          group: Multilingual
           spec: cypress/tests/multilingual/**/*.js
           start: |
             make start-test-acceptance-server-multilingual
