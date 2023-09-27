@@ -1,9 +1,8 @@
-#
+# Translation of plone.pot to Finnish
 # Translators:
 # Petri Savolainen <petri.savolainen@iki.fi>, 2020
 # Asko Soukka <asko.soukka@iki.fi>, 2020
 # Rikupekka Oksanen <rioksane@gmail.com>, 2022
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
