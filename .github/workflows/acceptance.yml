@@ -23,7 +23,7 @@ jobs:
       - run: yarn --immutable
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v6
         env:
           BABEL_ENV: production
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -78,7 +78,7 @@ jobs:
       - run: yarn --immutable
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v6
         env:
           BABEL_ENV: production
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -133,7 +133,7 @@ jobs:
       - run: yarn --immutable
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v6
         env:
           BABEL_ENV: production
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -187,7 +187,7 @@ jobs:
       - run: yarn --immutable
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v6
         env:
           BABEL_ENV: production
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -266,7 +266,7 @@ jobs:
       #     CI: true
 
       - name: Cypress Coresandbox Acceptance tests
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v6
         env:
           BABEL_ENV: production
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -321,7 +321,7 @@ jobs:
       - run: yarn --immutable
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v6
         env:
           BABEL_ENV: production
           CYPRESS_API: guillotina
@@ -377,7 +377,7 @@ jobs:
       - run: yarn --immutable
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v6
         env:
           BABEL_ENV: production
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -457,7 +457,7 @@ jobs:
       #     CI: true
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v6
         env:
           BABEL_ENV: production
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -547,7 +547,7 @@ jobs:
         working-directory: ${{env.project-directory}}
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v6
         env:
           BABEL_ENV: production
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -608,7 +608,7 @@ jobs:
       - run: yarn --immutable
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v6
         env:
           BABEL_ENV: production
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
