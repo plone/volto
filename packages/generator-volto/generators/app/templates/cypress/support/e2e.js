@@ -1,13 +1,14 @@
+import 'cypress-axe';
 import 'cypress-file-upload';
 import './commands';
-import 'cypress-axe';
+import { setup, teardown } from './reset-fixture';
 
 beforeEach(function () {
   cy.log('Setting up API fixture');
-  cy.exec('yarn cy:test:fixture:setup');
+  setup();
 });
 
 afterEach(function () {
   cy.log('Tearing down API fixture');
-  cy.exec('yarn cy:test:fixture:teardown');
+  teardown();
 });
