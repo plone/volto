@@ -1024,6 +1024,11 @@ msgstr ""
 msgid "Deleted"
 msgstr ""
 
+#: components/manage/Contents/Contents
+# defaultMessage: Deleting this item breaks {brokenReferences} {variation}.
+msgid "Deleting this item breaks {brokenReferences} {variation}."
+msgstr ""
+
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Depth
 msgid "Depth"
@@ -3693,11 +3698,6 @@ msgstr ""
 msgid "This item is also a folder."
 msgstr ""
 
-#: components/manage/Contents/Contents
-# defaultMessage: This item is referenced by other items. By deleting it {brokenReferences} {variation} will be broken.
-msgid "This item is referenced by other items. By deleting it {brokenReferences} {variation} will be broken."
-msgstr ""
-
 #: components/manage/LockingToastsFactory/LockingToastsFactory
 # defaultMessage: This item was locked by {creator} on {date}
 msgid "This item was locked by {creator} on {date}"
@@ -4105,11 +4105,6 @@ msgstr ""
 # defaultMessage: View
 msgid "View"
 msgstr "Bekijken"
-
-#: components/manage/Contents/Contents
-# defaultMessage: View broken links list
-msgid "View broken links list"
-msgstr ""
 
 #: components/manage/History/History
 # defaultMessage: View changes

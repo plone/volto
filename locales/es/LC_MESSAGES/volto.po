@@ -1016,6 +1016,11 @@ msgstr "¿Eliminar este elemento?"
 msgid "Deleted"
 msgstr "Eliminado"
 
+#: components/manage/Contents/Contents
+# defaultMessage: Deleting this item breaks {brokenReferences} {variation}.
+msgid "Deleting this item breaks {brokenReferences} {variation}."
+msgstr ""
+
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Depth
 msgid "Depth"
@@ -3685,11 +3690,6 @@ msgstr "Es una copia de trabajo de {title}"
 msgid "This item is also a folder."
 msgstr "Este elemento también es una carpeta."
 
-#: components/manage/Contents/Contents
-# defaultMessage: This item is referenced by other items. By deleting it {brokenReferences} {variation} will be broken.
-msgid "This item is referenced by other items. By deleting it {brokenReferences} {variation} will be broken."
-msgstr "Este elemento está referenciado por otros elementos. Al eliminarlo, {brokenReferences} {variation} se romperá."
-
 #: components/manage/LockingToastsFactory/LockingToastsFactory
 # defaultMessage: This item was locked by {creator} on {date}
 msgid "This item was locked by {creator} on {date}"
@@ -4097,11 +4097,6 @@ msgstr "URL del vídeo"
 # defaultMessage: View
 msgid "View"
 msgstr "Ver"
-
-#: components/manage/Contents/Contents
-# defaultMessage: View broken links list
-msgid "View broken links list"
-msgstr "Ver la lista de enlaces rotos"
 
 #: components/manage/History/History
 # defaultMessage: View changes
