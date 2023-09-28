@@ -35,8 +35,7 @@ const messages = defineMessages({
     defaultMessage: 'Cancel',
   },
   upload: {
-    id:
-      '{count, plural, one {Upload {count} file} other {Upload {count} files}}',
+    id: '{count, plural, one {Upload {count} file} other {Upload {count} files}}',
     defaultMessage:
       '{count, plural, one {Upload {count} file} other {Upload {count} files}}',
   },

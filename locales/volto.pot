@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2023-08-10T11:08:51.764Z\n"
+"POT-Creation-Date: 2023-09-26T10:20:03.552Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -1939,7 +1939,7 @@ msgid "Link"
 msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Link copied to clipboard
+# defaultMessage: Anchor link copied to the clipboard
 msgid "Link copied to clipboard"
 msgstr ""
 
@@ -2989,6 +2989,7 @@ msgstr ""
 #: components/manage/Blocks/Search/layout/RightColumnFacets
 #: components/manage/Blocks/Search/layout/TopSideFacets
 #: components/manage/Blocks/Search/schema
+#: components/manage/Sharing/Sharing
 #: components/theme/Search/Search
 #: components/theme/SearchWidget/SearchWidget
 # defaultMessage: Search
