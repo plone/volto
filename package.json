@@ -424,7 +424,7 @@
     "jsonwebtoken": "9.0.0",
     "react-error-overlay": "6.0.9",
     "react-is": "^16.13.1",
-    "release-it": "^16.1.3",
+    "release-it": "^16.2.1",
     "semver": "^7.5.4",
     "tmp": "0.2.1",
     "ts-jest": "^26.4.2",
