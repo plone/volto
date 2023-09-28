@@ -123,8 +123,8 @@ class Config {
       // Try to set a displayName (useful for React dev tools) for the registered component
       // Only if it's a function and it's not set previously
       try {
-        const displayName = this._data.components[componentName].component
-          .displayName;
+        const displayName =
+          this._data.components[componentName].component.displayName;
 
         if (
           !displayName &&

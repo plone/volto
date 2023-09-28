@@ -505,11 +505,6 @@ msgstr "Atarian bilatu, irudi bat hona arrastatu edo URL bat idatzi"
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 msgstr "Defektuz, elementu hau barnean duen karpetaren baimenak heredatu egiten dira. Hau desaktibatzen baduzu, hemen zehaztutako baimenak bakarrik aplikatuko dira. {inherited} ikurrak heredatutako balioa adierazten du. Era berean, {global} ikurrak rol globala adierazten du, atariaren kudeatzaileak kudeatzen duen rola."
 
-#: components/manage/Contents/Contents
-# defaultMessage: By deleting this item, you will break links that exist in the items listed below. If this is indeed what you want to do, we recommend that remove these references first.
-msgid "By deleting this item, you will break links that exist in the items listed below. If this is indeed what you want to do, we recommend that remove these references first."
-msgstr "Elementu hau ezabatzean, beheko zerrendan dauden loturak apurtuko dira. Hori baldin bada egin nahi duzuna, erreferentziak ezabatzea gomendatzen dizugu."
-
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Cache Name
 msgid "Cache Name"
@@ -1002,6 +997,16 @@ msgstr "Ezabatu baldintza"
 msgid "Delete row"
 msgstr "Ezabatu errenkada"
 
+#: components/manage/Contents/Contents
+# defaultMessage: Delete selected items?
+msgid "Delete selected items?"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: Delete this item?
+msgid "Delete this item?"
+msgstr ""
+
 #: components/manage/Controlpanels/Rules/Rules
 # defaultMessage: Deleted
 msgid "Deleted"
@@ -1069,11 +1074,6 @@ msgstr "{license} lizentziapean banatuta."
 # defaultMessage: Add border to inner columns
 msgid "Divide each row into separate cells"
 msgstr "Errenkada bakoitza zeldatan banatu"
-
-#: components/manage/Contents/Contents
-# defaultMessage: Do you really want to delete the following items?
-msgid "Do you really want to delete the following items?"
-msgstr "Elementu hauek ezabatu egin nahi dituzu?"
 
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 # defaultMessage: Do you really want to delete the group {groupname}?
@@ -1871,11 +1871,6 @@ msgstr "Elementuak"
 msgid "Items must be unique."
 msgstr "Elementuak bakarrak izan behar dira."
 
-#: components/manage/Contents/Contents
-# defaultMessage: Items to be deleted:
-msgid "Items to be deleted:"
-msgstr "Ezabatuko diren elementuak:"
-
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Label
 msgid "Label"
@@ -1949,7 +1944,7 @@ msgid "Link"
 msgstr "Esteka"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Link copied to clipboard
+# defaultMessage: Anchor link copied to the clipboard
 msgid "Link copied to clipboard"
 msgstr ""
 
@@ -2614,11 +2609,6 @@ msgstr "Posizioa ondo aldatu da"
 msgid "Possible values"
 msgstr "Balio posibleak"
 
-#: components/manage/Contents/Contents
-# defaultMessage: Potential link breakage
-msgid "Potential link breakage"
-msgstr "Loturak apurtzea gerta daiteke"
-
 #: components/theme/Footer/Footer
 # defaultMessage: Powered by Plone & Python
 msgid "Powered by Plone & Python"
@@ -3004,6 +2994,7 @@ msgstr "Eskemaren eguneraketak"
 #: components/manage/Blocks/Search/layout/RightColumnFacets
 #: components/manage/Blocks/Search/layout/TopSideFacets
 #: components/manage/Blocks/Search/schema
+#: components/manage/Sharing/Sharing
 #: components/theme/Search/Search
 #: components/theme/SearchWidget/SearchWidget
 # defaultMessage: Search
@@ -3309,6 +3300,16 @@ msgstr "Tamaina: {size}"
 # defaultMessage: Small
 msgid "Small"
 msgstr "Txikia"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Some items are also a folder.
+msgid "Some items are also a folder."
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken.
+msgid "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
+msgstr ""
 
 #: components/manage/Controlpanels/Relations/Relations
 # defaultMessage: Some relations are broken. Please fix.
@@ -3660,11 +3661,6 @@ msgstr "Errorea gertatu da"
 msgid "Third"
 msgstr "Hirugarren"
 
-#: components/manage/Contents/Contents
-# defaultMessage: This Page is referenced by the following items:
-msgid "This Page is referenced by the following items:"
-msgstr "Orrialde honek elementu hauetatik loturak ditu:"
-
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 # defaultMessage: This has an ongoing working copy in {title}
 msgid "This has an ongoing working copy in {title}"
@@ -3679,6 +3675,16 @@ msgstr "Izen hau erreserbatuta dago eta ezin da erabili"
 # defaultMessage: This is a working copy of {title}
 msgid "This is a working copy of {title}"
 msgstr "Hau {title} elementuaren lan-bertsioa da"
+
+#: components/manage/Contents/Contents
+# defaultMessage: This item is also a folder.
+msgid "This item is also a folder."
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: This item is referenced by other items. By deleting it {brokenReferences} {variation} will be broken.
+msgid "This item is referenced by other items. By deleting it {brokenReferences} {variation} will be broken."
+msgstr ""
 
 #: components/manage/LockingToastsFactory/LockingToastsFactory
 # defaultMessage: This item was locked by {creator} on {date}
@@ -3735,11 +3741,6 @@ msgstr "Objektu aktibo eta ez-aktiboak"
 # defaultMessage: Total comments
 msgid "Total comments"
 msgstr "Erantzun kopurua"
-
-#: components/manage/Contents/Contents
-# defaultMessage: Total items to be deleted:
-msgid "Total items to be deleted:"
-msgstr ""
 
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Total number of objects in each cache
@@ -4092,6 +4093,11 @@ msgstr "Bideoaren URLa"
 # defaultMessage: View
 msgid "View"
 msgstr "Ikusi"
+
+#: components/manage/Contents/Contents
+# defaultMessage: View broken links list
+msgid "View broken links list"
+msgstr ""
 
 #: components/manage/History/History
 # defaultMessage: View changes
@@ -4507,6 +4513,16 @@ msgstr "Zenbaki osoa izan behar da"
 msgid "intranet"
 msgstr "Intraneta"
 
+#: components/manage/Contents/Contents
+# defaultMessage: item
+msgid "item"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: items
+msgid "items"
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: My email is
 msgid "label_my_email_is"
@@ -4634,6 +4650,16 @@ msgstr "Aukeratu..."
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: rebuild relations
 msgid "rebuild relations"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: reference
+msgid "reference"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: references
+msgid "references"
 msgstr ""
 
 #: components/theme/Search/Search

@@ -12,9 +12,8 @@ export default function Blocks(props) {
     },
   });
 
-  const extendedBlockRenderMap = DefaultDraftBlockRenderMap.merge(
-    blockRenderMap,
-  );
+  const extendedBlockRenderMap =
+    DefaultDraftBlockRenderMap.merge(blockRenderMap);
 
   const blockStyleFn = (contentBlock) => {
     const type = contentBlock.getType();
