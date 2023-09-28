@@ -1,1 +1,0 @@
-Fix dependency problem, 'moment-locales-webpack-plugin' can't be in devDeps, since Razzle needs it in the projects. @sneridagh

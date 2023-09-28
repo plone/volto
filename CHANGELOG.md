@@ -8,6 +8,13 @@
 
 <!-- towncrier release notes start -->
 
+## 17.0.0-alpha.30 (2023-09-28)
+
+### Bugfix
+
+- Fix dependency problem, 'moment-locales-webpack-plugin' can't be in devDeps, since Razzle needs it in the projects. @sneridagh [#5236](https://github.com/plone/volto/issues/5236)
+
+
 ## 17.0.0-alpha.28 (2023-09-28)
 
 ### Breaking
