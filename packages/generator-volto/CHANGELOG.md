@@ -8,6 +8,17 @@
 
 <!-- towncrier release notes start -->
 
+## 7.0.0-alpha.10 (2023-09-27)
+
+### Breaking
+
+- Update the generators dependencies for linters @sneridagh [#5216](https://github.com/plone/volto/issues/5216)
+
+### Feature
+
+- Add ignores in addon generator and workspaces info @sneridagh [#5235](https://github.com/plone/volto/issues/5235)
+
+
 ## 7.0.0-alpha.9 (2023-09-20)
 
 ### Bugfix

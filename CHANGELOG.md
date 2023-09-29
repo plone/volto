@@ -8,6 +8,61 @@
 
 <!-- towncrier release notes start -->
 
+## 17.0.0-alpha.30 (2023-09-28)
+
+### Bugfix
+
+- Fix dependency problem, 'moment-locales-webpack-plugin' can't be in devDeps, since Razzle needs it in the projects. @sneridagh [#5236](https://github.com/plone/volto/issues/5236)
+
+
+## 17.0.0-alpha.28 (2023-09-28)
+
+### Breaking
+
+- Updated Prettier @sneridagh
+  Upgrade Stylelint @sneridagh
+  Fixed introduced violations due to the upgrades @sneridagh
+  Updated HTML block and prettier loadables to match the new async Prettier plugin API @sneridagh [#5216](https://github.com/plone/volto/issues/5216)
+- Improve linked headlines after feedback:
+  Disable the feature for anonymous users of the website
+  Disable it for the page title
+  Change the wording of the notification from "Link copied to clipboard" to "Anchor link copied to the clipboard" to make it more obvious that an anchor link has been copied
+  Normalize the slug to use only ascii characters
+  @sneridagh [#5225](https://github.com/plone/volto/issues/5225)
+
+### Feature
+
+- Refactor PersonalTools component -@Tishasoumya-02 [#4954](https://github.com/plone/volto/issues/4954)
+- Refactor Sidebar component-@Tishasoumya-02 [#4964](https://github.com/plone/volto/issues/4964)
+- Refactor ContentsPropertiesModal -@Tishasoumya-02 [#4968](https://github.com/plone/volto/issues/4968)
+- Refactor ContentsWorkflowModal -@Tishasoumya-02 [#4969](https://github.com/plone/volto/issues/4969)
+- Refactor ContentsRenameModal -@Tishasoumya-02 [#4970](https://github.com/plone/volto/issues/4970)
+- Refactor ContentsTagsModal -@Tishasoumya-02 [#4971](https://github.com/plone/volto/issues/4971)
+- Updated Spanish translations @macagua [#5200](https://github.com/plone/volto/issues/5200)
+- add canonical link @mamico [#5215](https://github.com/plone/volto/issues/5215)
+
+### Bugfix
+
+- Improved accessibility by adding an `aria-label` to the search icon on sharing page. @ZubairImtiaz3 [#5124](https://github.com/plone/volto/issues/5124)
+- Fixed PreviewImage component to work as Image component when testing image, and added showDefault prop to PreviewImage [#5153](https://github.com/plone/volto/issues/5153)
+- Fix empty slate text block in table of contents. @kreafox [#5156](https://github.com/plone/volto/issues/5156)
+- Remove integration with volto-style-block, as it's not working anymore @dobri1408 [#5192](https://github.com/plone/volto/issues/5192)
+- Fix standalone navigation action call if expander is set @sneridagh [#5197](https://github.com/plone/volto/issues/5197)
+- Updated the deprecated Buffer.from package in create-addons-loader.js @Junko-Takeguchi [#5205](https://github.com/plone/volto/issues/5205)
+- restrict moment.js locales to supported languages @mamico [#5207](https://github.com/plone/volto/issues/5207)
+- Fix links to link integrity in delete modal @sneridagh [#5226](https://github.com/plone/volto/issues/5226)
+
+### Internal
+
+- Redistribute Cypress Basic Core tests into other jobs @sneridagh [#5199](https://github.com/plone/volto/issues/5199)
+- Update to latest plone.restapi and Plone 6.0.7 @sneridagh [#5213](https://github.com/plone/volto/issues/5213)
+
+### Documentation
+
+- Update documentation: instruction 'make develop' to fetch add-on from repository. @ksuess [#5195](https://github.com/plone/volto/issues/5195)
+- Document the `querystringSearchGet` setting @erral [#5206](https://github.com/plone/volto/issues/5206)
+
+
 ## 17.0.0-alpha.27 (2023-09-18)
 
 ### Feature

@@ -1,1 +1,0 @@
-add canonical link @mamico

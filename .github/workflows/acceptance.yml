@@ -636,7 +636,7 @@ jobs:
         working-directory: ${{env.generator-directory}}
 
       # create a project
-      - run: yo @plone/volto my-volto-app --description "test volto project" --volto . --skip-install --no-interactive
+      - run: yo @plone/volto my-volto-app --description "test volto project" --volto . --skip-install --no-interactive --canary
 
       - name: Install yalc
         run: npm -g install yalc
