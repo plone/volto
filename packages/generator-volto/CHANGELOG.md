@@ -8,6 +8,13 @@
 
 <!-- towncrier release notes start -->
 
+## 7.0.0-alpha.11 (2023-09-29)
+
+### Bugfix
+
+- Fix ESlint parser in addon generator boilerplate @sneridagh [#5243](https://github.com/plone/volto/issues/5243)
+
+
 ## 7.0.0-alpha.10 (2023-09-27)
 
 ### Breaking
