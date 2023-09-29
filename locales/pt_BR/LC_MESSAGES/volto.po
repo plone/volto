@@ -413,9 +413,9 @@ msgid "Ascending"
 msgstr "Ascendente"
 
 #: components/manage/Sharing/Sharing
-# defaultMessage: Assign the {entry} to the {role} role
-msgid "Assign the {entry} to the {role} role"
-msgstr "Atribuir à {entry} o papel de {role}"
+# defaultMessage: Assign the {role} role to the {entry}
+msgid "Assign the {role} role to the {entry}"
+msgstr "Atribuir o papel de {role} à {entry}"
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Assignments

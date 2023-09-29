@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2023-09-26T10:20:03.552Z\n"
+"POT-Creation-Date: 2023-09-29T06:58:43.169Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -405,8 +405,8 @@ msgid "Ascending"
 msgstr ""
 
 #: components/manage/Sharing/Sharing
-# defaultMessage: Assign the {entry} to the {role} role
-msgid "Assign the {entry} to the {role} role"
+# defaultMessage: Assign the {role} role to the {entry}
+msgid "Assign the {role} role to the {entry}"
 msgstr ""
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
