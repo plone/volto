@@ -47,7 +47,8 @@ const widgetValidation = {
     isValidEmail: (emailValue, emailObj, intlFunc) => {
       // Email Regex taken from from WHATWG living standard:
       // https://html.spec.whatwg.org/multipage/input.html#e-mail-state-(type=email)
-      const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+      const emailRegex =
+        /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
       const isValid = emailRegex.test(emailValue);
       return !isValid ? intlFunc(messages.isValidEmail) : null;
     },
@@ -70,11 +71,11 @@ const widgetValidation = {
     isValidURL: (urlValue, urlObj, intlFunc) => {
       var urlRegex = new RegExp(
         '^(https?:\\/\\/)?' + // validate protocol
-        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // validate domain name
-        '((\\d{1,3}\\.){3}\\d{1,3}))|' + // validate OR ip (v4) address
-        '(localhost)' + // validate OR localhost address
-        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // validate port and path
-        '(\\?[;&a-z\\d%_.~+=-]*)?' + // validate query string
+          '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // validate domain name
+          '((\\d{1,3}\\.){3}\\d{1,3}))|' + // validate OR ip (v4) address
+          '(localhost)' + // validate OR localhost address
+          '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // validate port and path
+          '(\\?[;&a-z\\d%_.~+=-]*)?' + // validate query string
           '(\\#[-a-z\\d_]*)?$', // validate fragment locator
         'i',
       );

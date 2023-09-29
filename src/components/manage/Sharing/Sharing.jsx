@@ -39,6 +39,10 @@ const messages = defineMessages({
     id: 'Search for user or group',
     defaultMessage: 'Search for user or group',
   },
+  search: {
+    id: 'Search',
+    defaultMessage: 'Search',
+  },
   inherit: {
     id: 'Inherit permissions from higher levels',
     defaultMessage: 'Inherit permissions from higher levels',
@@ -347,6 +351,9 @@ class SharingComponent extends Component {
                           icon: 'search',
                           loading: isLoading,
                           disabled: isLoading,
+                          'aria-label': this.props.intl.formatMessage(
+                            messages.search,
+                          ),
                         }}
                         placeholder={this.props.intl.formatMessage(
                           messages.searchForUserOrGroup,

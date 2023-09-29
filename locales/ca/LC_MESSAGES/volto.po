@@ -1951,7 +1951,7 @@ msgid "Link"
 msgstr "Enllaç"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Link copied to clipboard
+# defaultMessage: Anchor link copied to the clipboard
 msgid "Link copied to clipboard"
 msgstr ""
 
@@ -3001,6 +3001,7 @@ msgstr "Actualitzacions d'esquemes"
 #: components/manage/Blocks/Search/layout/RightColumnFacets
 #: components/manage/Blocks/Search/layout/TopSideFacets
 #: components/manage/Blocks/Search/schema
+#: components/manage/Sharing/Sharing
 #: components/theme/Search/Search
 #: components/theme/SearchWidget/SearchWidget
 # defaultMessage: Search

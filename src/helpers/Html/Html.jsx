@@ -87,14 +87,8 @@ class Html extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const {
-      extractor,
-      markup,
-      store,
-      criticalCss,
-      apiPath,
-      publicURL,
-    } = this.props;
+    const { extractor, markup, store, criticalCss, apiPath, publicURL } =
+      this.props;
     const head = Helmet.rewind();
     const bodyClass = join(BodyClass.rewind(), ' ');
     const htmlAttributes = head.htmlAttributes.toComponent();
