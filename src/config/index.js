@@ -90,6 +90,31 @@ let config = {
     // In production is recommended you use a Seamless mode deployment using a web server in
     // front of both the frontend and the backend so you can bypass CORS safely.
     // https://6.docs.plone.org/volto/deploying/seamless-mode.html
+
+    // How 'devProxyToApiPath' is Set in Razzle (Volto 13+):
+    // -----------------------------------------------------
+
+    // In a Razzle application (Volto 13+), we have a special way to set a variable
+    // called 'devProxyToApiPath' based on some rules. This variable controls how our app
+    // talks to the server.
+
+    // Here's how it works:
+
+    // 1. We check if there's an environment variable called 'RAZZLE_DEV_PROXY_API_PATH'.
+    //    If it exists, we use its value for 'devProxyToApiPath'.
+
+    // 2. If 'RAZZLE_DEV_PROXY_API_PATH' is not defined, we check 'RAZZLE_INTERNAL_API_PATH'.
+    //    If it exists, we use its value.
+
+    // 3. If both of the above variables are not defined, we check 'RAZZLE_API_PATH'.
+    //    If it exists, we use its value.
+
+    // 4. If none of the above variables are defined, we have a default value, which is
+    //    'http://localhost:8080/Plone'.
+
+    // This code ensures that 'devProxyToApiPath' will have a value, either from the
+    // environment variables or the default if none are set.
+
     devProxyToApiPath:
       process.env.RAZZLE_DEV_PROXY_API_PATH ||
       process.env.RAZZLE_INTERNAL_API_PATH ||
