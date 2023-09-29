@@ -47,7 +47,12 @@ describe('UsersControlpanelUser', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <RenderUsers user={testUser} roles={testRoles} onDelete={() => {}} />
+        <RenderUsers
+          user={testUser}
+          roles={testRoles}
+          onDelete={() => {}}
+          isUserManager={true}
+        />
       </Provider>,
     );
     const json = component.toJSON();

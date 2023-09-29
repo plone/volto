@@ -49,6 +49,7 @@ describe('UsersControlpanelGroups', () => {
           group={testGroups}
           roles={testRoles}
           onDelete={() => {}}
+          isUserManager={true}
         />
       </Provider>,
     );

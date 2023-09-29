@@ -26,6 +26,7 @@ exports[`UsersControlpanelUser renders a UsersControlpanelUser component 1`] = `
       <input
         checked={true}
         className="hidden"
+        disabled={false}
         readOnly={true}
         tabIndex={0}
         type="checkbox"
@@ -47,6 +48,7 @@ exports[`UsersControlpanelUser renders a UsersControlpanelUser component 1`] = `
       <input
         checked={false}
         className="hidden"
+        disabled={false}
         readOnly={true}
         tabIndex={0}
         type="checkbox"
@@ -68,6 +70,7 @@ exports[`UsersControlpanelUser renders a UsersControlpanelUser component 1`] = `
       <input
         checked={false}
         className="hidden"
+        disabled={false}
         readOnly={true}
         tabIndex={0}
         type="checkbox"
