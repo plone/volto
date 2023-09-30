@@ -46,7 +46,7 @@ const BlockChooserSearch = ({ onChange, searchValue }) => {
               searchInput.current.focus();
             }}
           >
-            <Icon name={clearSVG} size="20px" /> 
+            <Icon name={clearSVG} size="18px" /> 
           </Button>
         )}
       </Form.Field>
