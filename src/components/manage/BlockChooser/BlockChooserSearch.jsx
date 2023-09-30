@@ -9,6 +9,10 @@ const messages = defineMessages({
     id: 'Search',
     defaultMessage: 'Search',
   },
+  clear: {
+    id: 'Clear Search',
+    defaultMessage: 'Clear Search',
+  }
 });
 
 const BlockChooserSearch = ({ onChange, searchValue }) => {
@@ -36,7 +40,7 @@ const BlockChooserSearch = ({ onChange, searchValue }) => {
         {searchValue && (
           <Button
             className="clear-search-button"
-            aria-label={intl.formatMessage(messages.search)}
+            aria-label={intl.formatMessage(messages.clear)}
             onClick={() => {
               onChange('');
               searchInput.current.focus();
