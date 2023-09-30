@@ -31,7 +31,7 @@ If you have some experience with Python development, you can also install a Plon
 from source. The Volto source repository contains an example Plone backend configuration
 using zc.buildout.
 
-    https://github.com/plone/volto/tree/master/api
+    https://github.com/plone/volto/tree/main/api
 
 From this folder you only need to copy the `buildout.cfg` and `requirements.txt` files to
 a folder on your development system. As with the Docker container setup of Plone, setting
