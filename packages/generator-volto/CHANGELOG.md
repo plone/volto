@@ -8,6 +8,13 @@
 
 <!-- towncrier release notes start -->
 
+## 7.0.0 (2023-09-30)
+
+### Feature
+
+- Update generators to Volto 17 final. @sneridagh [#5247](https://github.com/plone/volto/issues/5247)
+
+
 ## 7.0.0-alpha.12 (2023-09-30)
 
 ### Feature
