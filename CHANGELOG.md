@@ -8,6 +8,14 @@
 
 <!-- towncrier release notes start -->
 
+## 17.0.0 (2023-09-30)
+
+### Documentation
+
+- Add new website IPN
+  [pbauer] [#5241](https://github.com/plone/volto/issues/5241)
+
+
 ## 17.0.0-alpha.30 (2023-09-28)
 
 ### Bugfix
