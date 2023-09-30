@@ -77,4 +77,10 @@ export interface SettingsConfig {
   styleClassNameExtenders: unknown;
   querystringSearchGet: boolean;
   blockSettingsTabFieldsetsInitialStateOpen: boolean;
+  excludeLinksAndReferencesMenuItem: boolean;
+  containerBlockTypes: string[];
+  siteTitleFormat: {
+    includeSiteTitle: boolean;
+    titleAndSiteTitleSeparator: string;
+  };
 }

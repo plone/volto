@@ -1,4 +1,4 @@
-const path = require('path');
+// const path = require('path');
 const fs = require('fs');
 const tmp = require('tmp');
 const cryptoRandomString = require('crypto-random-string');
