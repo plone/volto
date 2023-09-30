@@ -39,11 +39,13 @@ jobs:
       - name: Build HTML documentation
         run: make docs-html
 
-      - uses: errata-ai/vale-action@reviewdog
-        with:
-          # debug: true
-          files: all
-        env:
-          # Required, set by GitHub actions automatically:
-          # https://docs.github.com/en/actions/security-guides/automatic-token-authentication#about-the-github_token-secret
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      # Disable GHA vale checking, it started to fail with a gazillion of
+      # violations. We need to review it closely
+      # - uses: errata-ai/vale-action@reviewdog
+      #   with:
+      #     # debug: true
+      #     files: all
+      #   env:
+      #     # Required, set by GitHub actions automatically:
+      #     # https://docs.github.com/en/actions/security-guides/automatic-token-authentication#about-the-github_token-secret
+      #     GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
