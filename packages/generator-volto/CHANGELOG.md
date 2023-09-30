@@ -8,6 +8,13 @@
 
 <!-- towncrier release notes start -->
 
+## 7.0.1 (2023-09-30)
+
+### Internal
+
+- Update to volto-testing final in generator @sneridagh [#5248](https://github.com/plone/volto/issues/5248)
+
+
 ## 7.0.0 (2023-09-30)
 
 ### Feature
