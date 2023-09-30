@@ -1947,7 +1947,7 @@ msgid "Link"
 msgstr "Link"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Link copied to clipboard
+# defaultMessage: Anchor link copied to the clipboard
 msgid "Link copied to clipboard"
 msgstr ""
 
@@ -2997,6 +2997,7 @@ msgstr "Atualizações do esquema"
 #: components/manage/Blocks/Search/layout/RightColumnFacets
 #: components/manage/Blocks/Search/layout/TopSideFacets
 #: components/manage/Blocks/Search/schema
+#: components/manage/Sharing/Sharing
 #: components/theme/Search/Search
 #: components/theme/SearchWidget/SearchWidget
 # defaultMessage: Search

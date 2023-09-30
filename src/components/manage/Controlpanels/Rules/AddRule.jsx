@@ -155,15 +155,8 @@ class AddRule extends Component {
    * @returns {undefined}
    */
   handleAdd() {
-    const {
-      title,
-      description,
-      event,
-      cascading,
-      stop,
-      enabled,
-      invalidForm,
-    } = this.state;
+    const { title, description, event, cascading, stop, enabled, invalidForm } =
+      this.state;
     const data = { title, description, event, cascading, enabled, stop };
     if (!invalidForm) {
       this.props.addNewRule(getBaseUrl(this.props.pathname), data);

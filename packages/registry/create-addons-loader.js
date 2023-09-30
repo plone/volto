@@ -108,7 +108,7 @@ module.exports = (addons, addonsInfo, { tempInProject } = {}) => {
   }
 
   const code = getAddonsLoaderCode(addons, addonsInfo);
-  fs.writeFileSync(addonsLoaderPath, new Buffer.from(code));
+  fs.writeFileSync(addonsLoaderPath, Buffer.from(code));
   return addonsLoaderPath;
 };
 

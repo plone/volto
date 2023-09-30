@@ -79,8 +79,7 @@ const messages = defineMessages({
     defaultMessage: 'Account activation completed',
   },
   successRedirectToLoginBody: {
-    id:
-      'Your password has been set successfully. You may now {link} with your new password.',
+    id: 'Your password has been set successfully. You may now {link} with your new password.',
     defaultMessage:
       'Your password has been set successfully. You may now {link} with your new password.',
   },

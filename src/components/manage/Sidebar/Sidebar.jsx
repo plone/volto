@@ -59,9 +59,8 @@ const Sidebar = (props) => {
   const resetFullSizeSidebar = useCallback(() => {
     if (!expanded) {
       const currentResizer = document.querySelector('#sidebar');
-      const sidebarContainer = currentResizer.getElementsByClassName(
-        'sidebar-container',
-      )[0];
+      const sidebarContainer =
+        currentResizer.getElementsByClassName('sidebar-container')[0];
       sidebarContainer.classList.remove('full-size');
       sidebarContainer.classList.remove('no-toolbar');
       setshowFull(true);
@@ -70,9 +69,8 @@ const Sidebar = (props) => {
 
   const onToggleFullSize = useCallback(() => {
     const currentResizer = document.querySelector('#sidebar');
-    const sidebarContainer = currentResizer.getElementsByClassName(
-      'sidebar-container',
-    )[0];
+    const sidebarContainer =
+      currentResizer.getElementsByClassName('sidebar-container')[0];
 
     if (showFull) {
       sidebarContainer.classList.add('full-size');

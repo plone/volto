@@ -9,15 +9,15 @@ MAKEFLAGS+=--warn-undefined-variables
 MAKEFLAGS+=--no-builtin-rules
 
 # Update the versions depending on your project requirements | Last Updated 2023-03-02
-DOCKER_IMAGE=plone/server-dev:6.0.2
-DOCKER_IMAGE_ACCEPTANCE=plone/server-acceptance:6.0.2
+DOCKER_IMAGE=plone/server-dev:6.0.6
+DOCKER_IMAGE_ACCEPTANCE=plone/server-acceptance:6.0.6
 KGS=
-TESTING_ADDONS=plone.app.robotframework==2.0.0 plone.app.testing==7.0.0
 NODEBIN = ./node_modules/.bin
 
 # Plone 5 legacy
-DOCKER_IMAGE5=plone/plone-backend:5.2.10
-KGS5=plone.restapi==8.35.0 plone.volto==4.0.5 plone.rest==3.0.0
+DOCKER_IMAGE5=plone/plone-backend:5.2.12
+KGS5=plone.restapi==8.43.3 plone.volto==4.1.0 plone.rest==3.0.1
+TESTING_ADDONS=plone.app.robotframework==2.0.0 plone.app.testing==7.0.0
 
 # Project settings
 

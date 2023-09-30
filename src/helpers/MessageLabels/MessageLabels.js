@@ -173,8 +173,7 @@ export const messages = defineMessages({
     defaultMessage: 'Roles',
   },
   addUserFormPasswordAndSendPasswordTogetherNotAllowed: {
-    id:
-      'It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them.',
+    id: 'It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them.',
     defaultMessage:
       'It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them.',
   },
@@ -284,7 +283,7 @@ export const messages = defineMessages({
   },
   urlClipboardCopy: {
     id: 'Link copied to clipboard',
-    defaultMessage: 'Link copied to clipboard',
+    defaultMessage: 'Anchor link copied to the clipboard',
   },
   inspectRelations: {
     id: 'Inspect relations',

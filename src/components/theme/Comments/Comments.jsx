@@ -31,8 +31,7 @@ const messages = defineMessages({
     defaultMessage: 'Comments',
   },
   commentDescription: {
-    id:
-      'You can add a comment by filling out the form below. Plain text formatting.',
+    id: 'You can add a comment by filling out the form below. Plain text formatting.',
     defaultMessage:
       'You can add a comment by filling out the form below. Plain text formatting.',
   },
@@ -113,14 +112,8 @@ const Comments = (props) => {
   const [editText, seteditText] = useState(null);
   const [replyTo, setreplyTo] = useState(null);
   const [collapsedComments, setcollapsedComments] = useState({});
-  const {
-    items,
-    next,
-    items_total,
-    permissions,
-    addRequest,
-    deleteRequest,
-  } = useComments();
+  const { items, next, items_total, permissions, addRequest, deleteRequest } =
+    useComments();
 
   const prevpathname = usePrevious(pathname);
 
