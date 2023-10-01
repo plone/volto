@@ -460,8 +460,8 @@ class SharingComponent extends Component {
                   />
                 </p>
               </Segment>
-              <Segment className="ui grid" attached clearing>
-                <div className="sixteen wide right aligned column actions">
+              <Segment className="ui" attached clearing>
+                <div className="ui right aligned container">
                   <Button
                     basic
                     secondary
