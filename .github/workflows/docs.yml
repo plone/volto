@@ -45,8 +45,7 @@ jobs:
         run: |
           git clone https://github.com/errata-ai/Microsoft.git
           cp -r ./Microsoft/Microsoft ./styles
-          VALEFILES=$(find -L ./docs/ -type d -prune -false -o -type f -name "*.md" -print)
-          vale --no-exit $VALEFILES
+          vale ./docs
 
       # Disable GHA vale checking, it started to fail with a gazillion of
       # violations. We need to review it closely
