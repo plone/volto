@@ -154,10 +154,10 @@ exports[`Sharing renders a sharing component 1`] = `
         </p>
       </div>
       <div
-        className="ui clearing attached segment ui grid"
+        className="ui clearing attached segment ui"
       >
         <div
-          className="sixteen wide right aligned column actions"
+          className="ui right aligned container"
         >
           <button
             aria-label="Cancel"
