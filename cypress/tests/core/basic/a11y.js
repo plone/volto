@@ -13,6 +13,11 @@ describe('Accessibility Tests', () => {
     cy.checkA11y();
   });
 
+  it('Sharing page has not a11y violations', () => {
+    cy.navigate('/sharing');
+    cy.checkA11y();
+  });
+
   // TODO: Adapt this to volto-slate table
   // it('Table has no a11y violations', () => {
   //   cy.createContent({
