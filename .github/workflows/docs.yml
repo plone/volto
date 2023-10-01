@@ -39,20 +39,12 @@ jobs:
       - name: Build HTML documentation
         run: make docs-html
 
-      - name: Get latest version of Vale
-        id: lastversion
-        uses: dvershinin/lastversion-action@v0.0.3
-        with:
-          repository: errata-ai/vale
-
-      - name: Install Vale
+      - name: Run vale
         run: |
-          wget https://github.com/errata-ai/vale/releases/download/v${{ steps.lastversion.outputs.last_version }}/vale_${{ steps.lastversion.outputs.last_version }}_Linux_64-bit.tar.gz -O vale.tar.gz
-          tar -xvzf vale.tar.gz vale
-          rm vale.tar.gz
-
-      - name: Run Vale
-        run: ./vale --config=.vale.ini *.md
+          git clone https://github.com/errata-ai/Microsoft.git
+          cp -r ./Microsoft/Microsoft ./styles
+          VALEFILES=$(find -L ./docs/ -type d -prune -false -o -type f -name "*.md" -print)
+          vale --no-exit $VALEFILES
 
       # Disable GHA vale checking, it started to fail with a gazillion of
       # violations. We need to review it closely
