@@ -43,7 +43,7 @@ legacy
     Upon the final release of version 16.0.0, the `15.x.x` branch line will become legacy.
 
 ```{todo}
-See https://github.com/plone/volto/issues/5255.
+See https://github.com/plone/volto/issues/5255
 ```
 
 
