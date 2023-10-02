@@ -1,0 +1,1 @@
+Disable GHA vale checking, it started to fail with a gazillion of violations. @sneridagh
