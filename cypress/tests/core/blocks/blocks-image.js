@@ -30,7 +30,7 @@ describe('Blocks Tests', () => {
     cy.get('.ui.basic.icon.button.block-add-button').click();
     cy.get('.ui.basic.icon.button.image').contains('Image').click();
     cy.get('.block.image .ui.input input[type="text"]').type(
-      `https://github.com/plone/volto/raw/master/logos/volto-colorful.png{enter}`,
+      `https://github.com/plone/volto/raw/main/logos/volto-colorful.png{enter}`,
     );
     cy.get('#toolbar-save').click();
     cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
@@ -39,7 +39,7 @@ describe('Blocks Tests', () => {
     cy.get('#page-document img').should(
       'have.attr',
       'src',
-      'https://github.com/plone/volto/raw/master/logos/volto-colorful.png',
+      'https://github.com/plone/volto/raw/main/logos/volto-colorful.png',
     );
 
     cy.get('#page-document img')
