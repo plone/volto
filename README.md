@@ -59,10 +59,10 @@ First get all the requirements installed on your system.
 
 The versions of Python that are supported in Volto depend on the version of Plone that you use.
 
-| Plone | Python | Volto |
-|---|---|---|
-| 5.2 | 2.7, 3.6-3.8 | 15.0 |
-| 6.0 | 3.8-3.11 | 16.0 |
+| Plone | Python       | Volto |
+| ----- | ------------ | ----- |
+| 5.2   | 2.7, 3.6-3.8 | 15.0  |
+| 6.0   | 3.8-3.11     | 16.0  |
 
 ### Create a Volto project using the generator
 
@@ -75,6 +75,7 @@ boilerplate to start customizing your Volto site.
 npm install -g yo @plone/generator-volto
 yo @plone/volto
 ```
+
 follow the prompts questions, provide `myvoltoproject` as project name then, when it finishes:
 
 ```
@@ -343,7 +344,7 @@ through it.
 
 ### Run a Guillotina backend
 
-*Disclaimer:* Guillotina doesn't support the full API/features that Plone provides. Contributors are welcome.
+_Disclaimer:_ Guillotina doesn't support the full API/features that Plone provides. Contributors are welcome.
 
 ```shell
 docker-compose -f g-api/docker-compose.yml up -d
