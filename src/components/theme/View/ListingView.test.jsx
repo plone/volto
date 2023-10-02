@@ -25,14 +25,14 @@ describe('ListingView', () => {
               description: 'Hi',
               items: [
                 {
-                  '@id': 'my-item',
+                  '@id': 'http://localhost:8080/Plone/my-item',
                   title: 'My item',
                   description: 'My item description',
                   url: '/item',
                   '@type': 'Document',
                 },
                 {
-                  '@id': 'my-second-item',
+                  '@id': 'http://localhost:8080/Plone/my-second-item',
                   title: 'Second item',
                   description: 'My second item description',
                   url: '/item2',
