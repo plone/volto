@@ -74,9 +74,14 @@ export async function runGitGenerator({
     branch,
   });
 
+  let configFileName = 'tsconfig.json';
+  if (fs.existsSync(`${destination}/jsconfig.json`)) {
+    configFileName = 'jsconfig.json';
+  }
+
   await develop({
     root: destination,
-    configFile: 'jsconfig.json',
+    configFile: configFileName,
     output: 'addons',
   });
 
@@ -163,9 +168,14 @@ export async function runLocalGenerator({
     destination,
   });
 
+  let configFileName = 'tsconfig.json';
+  if (fs.existsSync(`${destination}/jsconfig.json`)) {
+    configFileName = 'jsconfig.json';
+  }
+
   await develop({
     root: destination,
-    configFile: 'jsconfig.json',
+    configFile: configFileName,
     output: 'addons',
   });
 
