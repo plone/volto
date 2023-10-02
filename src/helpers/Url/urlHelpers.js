@@ -173,7 +173,7 @@ export function calculateApiPath(headers) {
     }
     // Fallback to the default
     else {
-      apiPathValue = 'http://localhost:8080/Plone';
+      apiPathValue = 'http://127.0.01:8080/Plone';
     }
   }
   // CLIENT
@@ -187,7 +187,7 @@ export function calculateApiPath(headers) {
     } else {
       apiPathValue =
         settings.apiPath === undefined
-          ? 'http://localhost:8080/Plone'
+          ? 'http://127.0.01:8080/Plone'
           : settings.apiPath;
     }
   }
