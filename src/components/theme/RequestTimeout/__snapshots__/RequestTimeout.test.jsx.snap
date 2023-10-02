@@ -25,9 +25,9 @@ exports[`RequestTimeout renders a request timeout or no connection component 1`]
     There is no connection to the server, due to a timeout o no network connection.
     <br />
     <a
-      href="http://127.0.0.1:8080/Plone"
+      href="http://localhost:8080/Plone"
     >
-      http://127.0.0.1:8080/Plone
+      http://localhost:8080/Plone
     </a>
   </h1>
   <p

@@ -1,8 +1,8 @@
 import React from 'react';
-import { Provider } from 'react-intl-redux';
-import { MemoryRouter, Route } from 'react-router-dom';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
+import { Provider } from 'react-intl-redux';
+import { MemoryRouter, Route } from 'react-router-dom';
 
 import ContentTypes from './ContentTypes';
 
@@ -18,13 +18,13 @@ describe('ContentTypes', () => {
     const store = mockStore({
       controlpanels: {
         controlpanel: {
-          '@id': 'http://127.0.0.1:8080/Plone/@controlpanels/dexterity-types',
+          '@id': 'http://localhost:8080/Plone/@controlpanels/dexterity-types',
           data: {},
           group: 'Content',
           items: [
             {
               '@id':
-                'http://127.0.0.1:8080/Plone/@controlpanels/dexterity-types/Document',
+                'http://localhost:8080/Plone/@controlpanels/dexterity-types/Document',
               '@type': 'Document',
               count: 0,
               description: '',
@@ -34,7 +34,7 @@ describe('ContentTypes', () => {
             },
             {
               '@id':
-                'http://127.0.0.1:8080/Plone/@controlpanels/dexterity-types/Folder',
+                'http://localhost:8080/Plone/@controlpanels/dexterity-types/Folder',
               '@type': 'Folder',
               count: 0,
               description: '',

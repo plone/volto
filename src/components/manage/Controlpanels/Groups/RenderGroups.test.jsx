@@ -1,14 +1,14 @@
 import React from 'react';
-import { Provider } from 'react-intl-redux';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
+import { Provider } from 'react-intl-redux';
 
 import RenderGroups from './RenderGroups';
 
 const mockStore = configureStore();
 
 const testGroups = {
-  '@id': 'http://127.0.0.1:55001/plone/@groups/Administrators',
+  '@id': 'http://localhost:55001/plone/@groups/Administrators',
   description: '',
   email: '',
   groupname: 'Administrators',
@@ -19,17 +19,17 @@ const testGroups = {
 
 const testRoles = [
   {
-    '@id': 'http://127.0.0.1:8080/Plone/@roles/Member',
+    '@id': 'http://localhost:8080/Plone/@roles/Member',
     '@type': 'role',
     id: 'Member',
   },
   {
-    '@id': 'http://127.0.0.1:8080/Plone/@roles/Reader',
+    '@id': 'http://localhost:8080/Plone/@roles/Reader',
     '@type': 'role',
     id: 'Reader',
   },
   {
-    '@id': 'http://127.0.0.1:8080/Plone/@roles/Manager',
+    '@id': 'http://localhost:8080/Plone/@roles/Manager',
     '@type': 'role',
     id: 'Manager',
   },

@@ -55,7 +55,7 @@ exports[`Html renders a html component 1`] = `
       as="script"
       crossOrigin="true"
       data-chunk="client"
-      href="http://127.0.0.1:3001/static/js/runtime~client.js"
+      href="http://localhost:3001/static/js/runtime~client.js"
       rel="preload"
     />
   </head>
@@ -150,7 +150,7 @@ exports[`Html renders a html component with apiPath present 1`] = `
       as="script"
       crossOrigin="true"
       data-chunk="client"
-      href="http://127.0.0.1:3001/static/js/runtime~client.js"
+      href="http://localhost:3001/static/js/runtime~client.js"
       rel="preload"
     />
   </head>

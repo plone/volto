@@ -1,6 +1,6 @@
-import { render, waitFor } from '@testing-library/react';
 import React from 'react';
 import { Provider } from 'react-intl-redux';
+import { render, waitFor } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 
 import RegistryImageWidget from './RegistryImageWidget';
@@ -12,7 +12,7 @@ jest.spyOn(global.Date, 'now').mockImplementation(() => '0');
 const mockStore = configureStore();
 
 beforeAll(() => {
-  config.settings.publicURL = 'http://127.0.0.1:3000';
+  config.settings.publicURL = 'http://localhost:3000';
 });
 
 describe('RegistryImageWidget', () => {

@@ -22,22 +22,22 @@ describe('Controlpanels', () => {
     const store = mockStore({
       controlpanels: [
         {
-          '@id': 'http://127.0.0.1:8080/Plone/@controlpanels/date-and-time',
+          '@id': 'http://localhost:8080/Plone/@controlpanels/date-and-time',
           group: 'General',
           title: 'Date and Time',
         },
         {
-          '@id': 'http://127.0.0.1:8080/Plone/@controlpanels/lang',
+          '@id': 'http://localhost:8080/Plone/@controlpanels/lang',
           group: 'General',
           title: 'Language',
         },
         {
-          '@id': 'http://127.0.0.1:8080/Plone/@controlpanels/editing',
+          '@id': 'http://localhost:8080/Plone/@controlpanels/editing',
           group: 'Content',
           title: 'Editing',
         },
         {
-          '@id': 'http://127.0.0.1:8080/Plone/@controlpanels/security',
+          '@id': 'http://localhost:8080/Plone/@controlpanels/security',
           group: 'Security',
           title: 'test',
         },
@@ -46,22 +46,22 @@ describe('Controlpanels', () => {
         // Mocked in redux async connect as it isn't fetch client-side.
         controlpanels: [
           {
-            '@id': 'http://127.0.0.1:8080/Plone/@controlpanels/date-and-time',
+            '@id': 'http://localhost:8080/Plone/@controlpanels/date-and-time',
             group: 'General',
             title: 'Date and Time',
           },
           {
-            '@id': 'http://127.0.0.1:8080/Plone/@controlpanels/lang',
+            '@id': 'http://localhost:8080/Plone/@controlpanels/lang',
             group: 'General',
             title: 'Language',
           },
           {
-            '@id': 'http://127.0.0.1:8080/Plone/@controlpanels/editing',
+            '@id': 'http://localhost:8080/Plone/@controlpanels/editing',
             group: 'Content',
             title: 'Editing',
           },
           {
-            '@id': 'http://127.0.0.1:8080/Plone/@controlpanels/security',
+            '@id': 'http://localhost:8080/Plone/@controlpanels/security',
             group: 'Security',
             title: 'test',
           },
@@ -88,7 +88,7 @@ describe('Controlpanels', () => {
     const store = mockStore({
       controlpanels: [
         {
-          '@id': 'http://127.0.0.1:8080/Plone/@controlpanels/security',
+          '@id': 'http://localhost:8080/Plone/@controlpanels/security',
           group: 'Security',
           title: 'test',
         },
@@ -97,7 +97,7 @@ describe('Controlpanels', () => {
         // Mocked in redux async connect as it isn't fetch client-side.
         controlpanels: [
           {
-            '@id': 'http://127.0.0.1:8080/Plone/@controlpanels/security',
+            '@id': 'http://localhost:8080/Plone/@controlpanels/security',
             group: 'Security',
             title: 'test',
           },

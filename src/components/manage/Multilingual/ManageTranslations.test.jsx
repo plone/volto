@@ -1,9 +1,9 @@
-import config from '@plone/volto/registry';
 import React from 'react';
-import { Provider } from 'react-intl-redux';
-import { MemoryRouter } from 'react-router-dom';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
+import { Provider } from 'react-intl-redux';
+import { MemoryRouter } from 'react-router-dom';
+import config from '@plone/volto/registry';
 
 import ManageTranslations from './ManageTranslations';
 
@@ -31,7 +31,7 @@ describe('ManageTranslations', () => {
             translations: { items: [] },
           },
           title: 'My page',
-          '@id': 'http://127.0.0.1:8080/Plone/my-page',
+          '@id': 'http://localhost:8080/Plone/my-page',
           language: 'en',
         },
       },

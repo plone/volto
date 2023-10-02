@@ -22,7 +22,7 @@ exports[`renders an image component from a string src 1`] = `
   alt="alt text"
   className=""
   fetchpriority="high"
-  src="http://127.0.0.1:3000/image/@@images/image/image.png"
+  src="http://localhost:3000/image/@@images/image/image.png"
 />
 `;
 

@@ -1,8 +1,8 @@
 import React from 'react';
-import { Provider } from 'react-intl-redux';
-import { MemoryRouter } from 'react-router-dom';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
+import { Provider } from 'react-intl-redux';
+import { MemoryRouter } from 'react-router-dom';
 
 import ListingBody from './ListingBody';
 
@@ -15,14 +15,14 @@ test('renders a ListingBody component', () => {
         '2110a241-1389-4cda-8811-77031a540efa': {
           items: [
             {
-              '@id': 'http://127.0.0.1:8080/Plone/the-page',
+              '@id': 'http://localhost:8080/Plone/the-page',
               '@type': 'Document',
               description: '',
               review_state: 'private',
               title: 'the page',
             },
             {
-              '@id': 'http://127.0.0.1:8080/Plone/front-page',
+              '@id': 'http://localhost:8080/Plone/front-page',
               '@type': 'Document',
               description:
                 'Congratulations! You have successfully installed Plone.',

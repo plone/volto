@@ -1,5 +1,5 @@
-import config from '@plone/volto/registry';
 import { getCurrentStateMapping, getWorkflowOptions } from './Workflows';
+import config from '@plone/volto/registry';
 
 beforeEach(() => {
   config.settings.workflowMapping = {
@@ -16,13 +16,13 @@ beforeEach(() => {
 describe('Workflow helpers', () => {
   it('getWorkflowOptions basic', () => {
     const transition = {
-      '@id': 'http://127.0.0.1:3000/de/@workflow/publish',
+      '@id': 'http://localhost:3000/de/@workflow/publish',
       title: 'Veröffentlichen',
     };
     expect(getWorkflowOptions(transition)).toStrictEqual({
       color: '#007bc1',
       label: 'Veröffentlichen',
-      url: 'http://127.0.0.1:3000/de/@workflow/publish',
+      url: 'http://localhost:3000/de/@workflow/publish',
       value: 'publish',
     });
   });

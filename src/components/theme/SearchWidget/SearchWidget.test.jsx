@@ -1,8 +1,8 @@
 import React from 'react';
-import { Provider } from 'react-intl-redux';
-import { MemoryRouter } from 'react-router-dom';
 import renderer from 'react-test-renderer';
+import { Provider } from 'react-intl-redux';
 import configureStore from 'redux-mock-store';
+import { MemoryRouter } from 'react-router-dom';
 
 import SearchWidget from './SearchWidget';
 
@@ -17,9 +17,9 @@ describe('SearchWidget', () => {
       },
       navroot: {
         data: {
-          '@id': 'http://127.0.0.1:3000/@navroot',
+          '@id': 'http://localhost:3000/@navroot',
           navroot: {
-            '@id': 'http://127.0.0.1:3000',
+            '@id': 'http://localhost:3000',
           },
         },
       },

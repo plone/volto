@@ -1,13 +1,13 @@
+import { updateSharing, getSharing } from './sharing';
 import {
-  GET_SHARING,
   UPDATE_SHARING,
+  GET_SHARING,
 } from '@plone/volto/constants/ActionTypes';
-import { getSharing, updateSharing } from './sharing';
 
 describe('Sharing action', () => {
   describe('updateSharing', () => {
     it('should create an action to update sharing', () => {
-      const url = 'http://127.0.0.1';
+      const url = 'http://localhost';
       const sharing = 'Hello World!';
       const action = updateSharing(url, sharing);
 
@@ -20,7 +20,7 @@ describe('Sharing action', () => {
 
   describe('getSharing', () => {
     it('should create an action to get sharing', () => {
-      const url = 'http://127.0.0.1';
+      const url = 'http://localhost';
       const action = getSharing(url);
 
       expect(action.type).toEqual(GET_SHARING);
@@ -29,7 +29,7 @@ describe('Sharing action', () => {
     });
 
     it('should create an action to get sharing with search param', () => {
-      const url = 'http://127.0.0.1';
+      const url = 'http://localhost';
       const search = 'admin';
       const action = getSharing(url, search);
 

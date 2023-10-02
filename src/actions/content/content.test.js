@@ -1,29 +1,29 @@
 import {
-  CREATE_CONTENT,
-  DELETE_CONTENT,
-  GET_CONTENT,
-  LOCK_CONTENT,
-  ORDER_CONTENT,
-  RESET_CONTENT,
-  UNLOCK_CONTENT,
-  UPDATE_CONTENT,
-} from '@plone/volto/constants/ActionTypes';
-import {
   createContent,
   deleteContent,
+  updateContent,
   getContent,
-  lockContent,
   orderContent,
   resetContent,
   sortContent,
+  lockContent,
   unlockContent,
-  updateContent,
 } from './content';
+import {
+  CREATE_CONTENT,
+  DELETE_CONTENT,
+  UPDATE_CONTENT,
+  GET_CONTENT,
+  ORDER_CONTENT,
+  RESET_CONTENT,
+  LOCK_CONTENT,
+  UNLOCK_CONTENT,
+} from '@plone/volto/constants/ActionTypes';
 
 describe('Content action', () => {
   describe('createContent', () => {
     it('should create an action to add content', () => {
-      const url = 'http://127.0.0.1';
+      const url = 'http://localhost';
       const content = 'Hello World!';
       const action = createContent(url, content);
 
@@ -34,7 +34,7 @@ describe('Content action', () => {
     });
 
     it('should create an action to add content for multiple objects', () => {
-      const url = 'http://127.0.0.1';
+      const url = 'http://localhost';
       const content = ['Hello World!', 'Hello World2!'];
       const action = createContent(url, content);
 
@@ -50,7 +50,7 @@ describe('Content action', () => {
 
   describe('deleteContent', () => {
     it('should create an action to delete content', () => {
-      const url = 'http://127.0.0.1';
+      const url = 'http://localhost';
       const action = deleteContent(url);
 
       expect(action.type).toEqual(DELETE_CONTENT);
@@ -59,7 +59,7 @@ describe('Content action', () => {
     });
 
     it('should create an action to delete content for multiple urls', () => {
-      const urls = ['http://127.0.0.1/blog', 'http://127.0.0.1/users'];
+      const urls = ['http://localhost/blog', 'http://locahost/users'];
       const action = deleteContent(urls);
 
       expect(action.type).toEqual(DELETE_CONTENT);
@@ -72,7 +72,7 @@ describe('Content action', () => {
 
   describe('updateContent', () => {
     it('should create an action to update content', () => {
-      const url = 'http://127.0.0.1';
+      const url = 'http://localhost';
       const content = 'Hello World!';
       const action = updateContent(url, content);
 
@@ -83,7 +83,7 @@ describe('Content action', () => {
     });
 
     it('should create an action to update content with custom headers', () => {
-      const url = 'http://127.0.0.1';
+      const url = 'http://localhost';
       const content = 'Hello World!';
       const headers = { token: 1 };
       const action = updateContent(url, content, headers);
@@ -96,7 +96,7 @@ describe('Content action', () => {
     });
 
     it('should create an action to update content for multiple urls', () => {
-      const urls = ['http://127.0.0.1/blog', 'http://127.0.0.1/users'];
+      const urls = ['http://localhost/blog', 'http://locahost/users'];
       const content = ['Hello World!', 'Hello World2!'];
       const action = updateContent(urls, content);
 
@@ -152,7 +152,7 @@ describe('Content action', () => {
 
   describe('getContent', () => {
     it('should create an action to get content', () => {
-      const url = 'http://127.0.0.1';
+      const url = 'http://localhost';
       const action = getContent(url);
 
       expect(action.type).toEqual(GET_CONTENT);
@@ -161,7 +161,7 @@ describe('Content action', () => {
     });
 
     it('should create an action to get content and full objects', () => {
-      const url = 'http://127.0.0.1';
+      const url = 'http://localhost';
       const action = getContent(url, null, null, null, true);
 
       expect(action.type).toEqual(GET_CONTENT);
@@ -170,7 +170,7 @@ describe('Content action', () => {
     });
 
     it('should create an action to get content with version', () => {
-      const url = 'http://127.0.0.1';
+      const url = 'http://localhost';
       const version = '0';
       const action = getContent(url, version);
 
@@ -180,7 +180,7 @@ describe('Content action', () => {
     });
 
     it('should create an action to get content with version and fullobjects', () => {
-      const url = 'http://127.0.0.1';
+      const url = 'http://localhost';
       const version = '0';
       const action = getContent(url, version, null, null, true);
 
@@ -192,7 +192,7 @@ describe('Content action', () => {
     });
 
     it('should create an action to get content with a subrequest', () => {
-      const url = 'http://127.0.0.1';
+      const url = 'http://localhost';
       const action = getContent(url, null, 'my-subrequest');
 
       expect(action.type).toEqual(GET_CONTENT);
@@ -202,7 +202,7 @@ describe('Content action', () => {
     });
 
     it('should create an action to get content with a pagination page', () => {
-      const url = 'http://127.0.0.1';
+      const url = 'http://localhost';
       const action = getContent(url, null, null, 2);
 
       expect(action.type).toEqual(GET_CONTENT);
@@ -228,7 +228,7 @@ describe('Content action', () => {
 
   describe('createContent', () => {
     it('should create an action to add content in a subrequest', () => {
-      const url = 'http://127.0.0.1';
+      const url = 'http://localhost';
       const content = 'Hello World!';
       const action = createContent(url, content, '1234');
 
@@ -239,7 +239,7 @@ describe('Content action', () => {
     });
 
     it('should create an action to add content for multiple objects in a subrequest', () => {
-      const url = 'http://127.0.0.1';
+      const url = 'http://localhost';
       const content = ['Hello World!', 'Hello World2!'];
       const action = createContent(url, content, '1234');
 
@@ -255,7 +255,7 @@ describe('Content action', () => {
 
   describe('lockContent', () => {
     it('should create an action to lock content', () => {
-      const url = 'http://127.0.0.1';
+      const url = 'http://localhost';
       const action = lockContent(url);
 
       expect(action.type).toEqual(LOCK_CONTENT);
@@ -264,7 +264,7 @@ describe('Content action', () => {
     });
 
     it('should create an action to lock content for multiple urls', () => {
-      const urls = ['http://127.0.0.1/blog', 'http://127.0.0.1/users'];
+      const urls = ['http://localhost/blog', 'http://locahost/users'];
       const action = lockContent(urls);
 
       expect(action.type).toEqual(LOCK_CONTENT);
@@ -277,7 +277,7 @@ describe('Content action', () => {
 
   describe('unlockContent', () => {
     it('should create an action to unlock content', () => {
-      const url = 'http://127.0.0.1';
+      const url = 'http://localhost';
       const action = unlockContent(url);
 
       expect(action.type).toEqual(UNLOCK_CONTENT);
@@ -286,7 +286,7 @@ describe('Content action', () => {
     });
 
     it('should create an action to force unlock content', () => {
-      const url = 'http://127.0.0.1';
+      const url = 'http://localhost';
       const data = { force: true };
       const action = unlockContent(url, true);
 
@@ -297,7 +297,7 @@ describe('Content action', () => {
     });
 
     it('should create an action to unlock content for multiple urls', () => {
-      const urls = ['http://127.0.0.1/blog', 'http://127.0.0.1/users'];
+      const urls = ['http://localhost/blog', 'http://locahost/users'];
       const action = unlockContent(urls);
 
       expect(action.type).toEqual(UNLOCK_CONTENT);

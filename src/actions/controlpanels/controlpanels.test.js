@@ -1,13 +1,13 @@
 import {
-  GET_CONTROLPANEL,
-  LIST_CONTROLPANELS,
-  UPDATE_CONTROLPANEL,
-} from '@plone/volto/constants/ActionTypes';
-import {
   getControlpanel,
   listControlpanels,
   updateControlpanel,
 } from './controlpanels';
+import {
+  GET_CONTROLPANEL,
+  LIST_CONTROLPANELS,
+  UPDATE_CONTROLPANEL,
+} from '@plone/volto/constants/ActionTypes';
 
 describe('Controlpanels action', () => {
   describe('getControlpanel', () => {
@@ -33,7 +33,7 @@ describe('Controlpanels action', () => {
 
   describe('updateControlpanel', () => {
     it('should create an action to update a controlpanel', () => {
-      const url = 'http://127.0.0.1';
+      const url = 'http://localhost';
       const data = 'Hello World!';
       const action = updateControlpanel(url, data);
 

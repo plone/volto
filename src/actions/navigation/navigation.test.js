@@ -1,10 +1,10 @@
-import { GET_NAVIGATION } from '@plone/volto/constants/ActionTypes';
 import { getNavigation } from './navigation';
+import { GET_NAVIGATION } from '@plone/volto/constants/ActionTypes';
 
 describe('Navigation action', () => {
   describe('getNavigation', () => {
     it('should create an action to get the navigation', () => {
-      const url = 'http://127.0.0.1';
+      const url = 'http://localhost';
       const action = getNavigation(url);
 
       expect(action.type).toEqual(GET_NAVIGATION);
@@ -13,7 +13,7 @@ describe('Navigation action', () => {
     });
 
     it('should create an action to get the navigation with depth', () => {
-      const url = 'http://127.0.0.1';
+      const url = 'http://localhost';
       const depth = 3;
       const action = getNavigation(url, depth);
 

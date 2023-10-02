@@ -1,16 +1,16 @@
-import config from '@plone/volto/registry';
-import { render } from '@testing-library/react';
 import React from 'react';
+import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
-import configureStore from 'redux-mock-store';
+import { render } from '@testing-library/react';
+import config from '@plone/volto/registry';
 
 import ContextNavigation from './ContextNavigation';
 
 const mockStore = configureStore();
 
 beforeAll(() => {
-  config.settings.apiPath = 'http://127.0.0.1:3000/api';
+  config.settings.apiPath = 'http://localhost:3000/api';
   config.settings.navDepth = 1;
 });
 
@@ -20,7 +20,7 @@ describe('ContextNavigation', () => {
       contextNavigation: {
         '/@contextnavigation': {
           data: {
-            '@id': 'http://127.0.0.1:8080/Plone/@contextnavigation',
+            '@id': 'http://localhost:8080/Plone/@contextnavigation',
             title: 'Navigation',
             items: [
               {
@@ -59,7 +59,7 @@ describe('ContextNavigation', () => {
       contextNavigation: {
         '/blog/@contextnavigation': {
           data: {
-            '@id': 'http://127.0.0.1:8080/Plone/blog/@contextnavigation',
+            '@id': 'http://localhost:8080/Plone/blog/@contextnavigation',
             title: 'Navigation',
             items: [
               {
@@ -105,14 +105,14 @@ describe('ContextNavigation', () => {
         '/folder2/folder21/doc212/@contextnavigation': {
           data: {
             '@id':
-              'http://127.0.0.1:3000/api/folder2/folder21/doc212/@contextnavigation',
+              'http://localhost:3000/api/folder2/folder21/doc212/@contextnavigation',
             available: true,
             has_custom_name: false,
             items: [
               {
-                '@id': 'http://127.0.0.1:3000/api/folder2/folder21',
+                '@id': 'http://localhost:3000/api/folder2/folder21',
                 description: '',
-                href: 'http://127.0.0.1:3000/api/folder2/folder21',
+                href: 'http://localhost:3000/api/folder2/folder21',
                 icon: '',
                 is_current: false,
                 is_folderish: true,
@@ -125,9 +125,9 @@ describe('ContextNavigation', () => {
                 type: 'folder',
               },
               {
-                '@id': 'http://127.0.0.1:3000/api/folder2/folder21/doc211',
+                '@id': 'http://localhost:3000/api/folder2/folder21/doc211',
                 description: '',
-                href: 'http://127.0.0.1:3000/api/folder2/folder21/doc211',
+                href: 'http://localhost:3000/api/folder2/folder21/doc211',
                 icon: '',
                 is_current: false,
                 is_folderish: false,
@@ -140,9 +140,9 @@ describe('ContextNavigation', () => {
                 type: 'document',
               },
               {
-                '@id': 'http://127.0.0.1:3000/api/folder2/folder21/doc212',
+                '@id': 'http://localhost:3000/api/folder2/folder21/doc212',
                 description: '',
-                href: 'http://127.0.0.1:3000/api/folder2/folder21/doc212',
+                href: 'http://localhost:3000/api/folder2/folder21/doc212',
                 icon: '',
                 is_current: true,
                 is_folderish: false,
@@ -156,7 +156,7 @@ describe('ContextNavigation', () => {
               },
             ],
             title: 'Navigation',
-            url: 'http://127.0.0.1:3000/api/folder2/sitemap',
+            url: 'http://localhost:3000/api/folder2/sitemap',
           },
         },
       },
@@ -184,14 +184,14 @@ describe('ContextNavigation', () => {
         '/folder2/folder21/doc212/@contextnavigation': {
           data: {
             '@id':
-              'http://127.0.0.1:3000/api/folder2/folder21/doc212/@contextnavigation',
+              'http://localhost:3000/api/folder2/folder21/doc212/@contextnavigation',
             available: true,
             has_custom_name: false,
             items: [
               {
-                '@id': 'http://127.0.0.1:3000/api/folder2/folder21',
+                '@id': 'http://localhost:3000/api/folder2/folder21',
                 description: '',
-                href: 'http://127.0.0.1:3000/api/folder2/folder21',
+                href: 'http://localhost:3000/api/folder2/folder21',
                 icon: '',
                 is_current: false,
                 is_folderish: true,
@@ -204,9 +204,9 @@ describe('ContextNavigation', () => {
                 type: 'folder',
               },
               {
-                '@id': 'http://127.0.0.1:3000/api/folder2/folder21/doc211',
+                '@id': 'http://localhost:3000/api/folder2/folder21/doc211',
                 description: '',
-                href: 'http://127.0.0.1:3000/api/folder2/folder21/doc211',
+                href: 'http://localhost:3000/api/folder2/folder21/doc211',
                 icon: '',
                 is_current: false,
                 is_folderish: false,
@@ -219,9 +219,9 @@ describe('ContextNavigation', () => {
                 type: 'document',
               },
               {
-                '@id': 'http://127.0.0.1:3000/api/folder2/folder21/doc211-copy',
+                '@id': 'http://localhost:3000/api/folder2/folder21/doc211-copy',
                 description: '',
-                href: 'http://127.0.0.1:3000/api/folder2/folder21/doc211-copy',
+                href: 'http://localhost:3000/api/folder2/folder21/doc211-copy',
                 icon: '',
                 is_current: true,
                 is_folderish: false,
@@ -235,7 +235,7 @@ describe('ContextNavigation', () => {
               },
             ],
             title: 'Navigation',
-            url: 'http://127.0.0.1:3000/api/folder2/sitemap',
+            url: 'http://localhost:3000/api/folder2/sitemap',
           },
         },
       },

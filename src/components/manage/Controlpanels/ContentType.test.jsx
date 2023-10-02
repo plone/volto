@@ -1,8 +1,8 @@
 import React from 'react';
-import { Provider } from 'react-intl-redux';
-import { MemoryRouter, Route } from 'react-router-dom';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
+import { Provider } from 'react-intl-redux';
+import { MemoryRouter, Route } from 'react-router-dom';
 
 import ContentType from './ContentType';
 
@@ -19,7 +19,7 @@ describe('ContentType', () => {
       controlpanels: {
         controlpanel: {
           '@id':
-            'http://127.0.0.1:8080/Plone/@controlpanels/dexterity-types/Document',
+            'http://localhost:8080/Plone/@controlpanels/dexterity-types/Document',
           title: 'Page',
           description: 'A document',
           data: {},

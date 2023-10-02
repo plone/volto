@@ -1,10 +1,10 @@
-import { PluggablesProvider } from '@plone/volto/components/manage/Pluggable';
-import jwt from 'jsonwebtoken';
 import React from 'react';
-import { Provider } from 'react-intl-redux';
-import { MemoryRouter } from 'react-router-dom';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
+import { Provider } from 'react-intl-redux';
+import { MemoryRouter } from 'react-router-dom';
+import jwt from 'jsonwebtoken';
+import { PluggablesProvider } from '@plone/volto/components/manage/Pluggable';
 
 import PersonalTools from './PersonalTools';
 
@@ -100,7 +100,7 @@ describe('Toolbar Personal Tools component', () => {
           fullname: 'admin',
           email: 'admin@plone.org',
           roles: ['Manager'],
-          portrait: 'http://127.0.0.1:8080/Plone/@portrait/admin',
+          portrait: 'http://localhost:8080/Plone/@portrait/admin',
         },
       },
       userSession: {

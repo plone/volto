@@ -1,20 +1,20 @@
 import {
-  ADD_COMMENT,
-  DELETE_COMMENT,
-  LIST_COMMENTS,
-  UPDATE_COMMENT,
-} from '@plone/volto/constants/ActionTypes';
-import {
   addComment,
   deleteComment,
-  listComments,
   updateComment,
+  listComments,
 } from './comments';
+import {
+  ADD_COMMENT,
+  DELETE_COMMENT,
+  UPDATE_COMMENT,
+  LIST_COMMENTS,
+} from '@plone/volto/constants/ActionTypes';
 
 describe('Comments action', () => {
   describe('addComment', () => {
     it('should create an action to add a comment', () => {
-      const url = 'http://127.0.0.1';
+      const url = 'http://localhost';
       const text = 'Hello World!';
       const action = addComment(url, text);
 
@@ -27,7 +27,7 @@ describe('Comments action', () => {
 
   describe('deleteComment', () => {
     it('should create an action to delete a comment', () => {
-      const url = 'http://127.0.0.1';
+      const url = 'http://localhost';
       const action = deleteComment(url);
 
       expect(action.type).toEqual(DELETE_COMMENT);
@@ -38,7 +38,7 @@ describe('Comments action', () => {
 
   describe('updateComment', () => {
     it('should create an action to update a comment', () => {
-      const url = 'http://127.0.0.1';
+      const url = 'http://localhost';
       const text = 'Hello World!';
       const action = updateComment(url, text);
 
@@ -51,7 +51,7 @@ describe('Comments action', () => {
 
   describe('listComments', () => {
     it('should create an action to list comments', () => {
-      const url = 'http://127.0.0.1';
+      const url = 'http://localhost';
       const action = listComments(url);
 
       expect(action.type).toEqual(LIST_COMMENTS);

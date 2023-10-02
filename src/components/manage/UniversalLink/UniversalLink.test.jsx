@@ -1,11 +1,11 @@
-import config from '@plone/volto/registry';
-import { render } from '@testing-library/react';
 import React from 'react';
-import { Provider } from 'react-intl-redux';
-import { MemoryRouter } from 'react-router-dom';
 import renderer from 'react-test-renderer';
+import { Provider } from 'react-intl-redux';
 import configureStore from 'redux-mock-store';
+import { render } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import UniversalLink from './UniversalLink';
+import config from '@plone/volto/registry';
 
 const mockStore = configureStore();
 const store = mockStore({
@@ -55,7 +55,7 @@ describe('UniversalLink', () => {
         <MemoryRouter>
           <UniversalLink
             item={{
-              '@id': 'http://127.0.0.1:3000/en/welcome-to-volto',
+              '@id': 'http://localhost:3000/en/welcome-to-volto',
             }}
           >
             <h1>Title</h1>
@@ -143,7 +143,7 @@ describe('UniversalLink', () => {
       <Provider store={store}>
         <MemoryRouter>
           <UniversalLink
-            href="http://127.0.0.1:3000/external-app"
+            href="http://localhost:3000/external-app"
             title="Blacklisted route"
           >
             <h1>Title</h1>
@@ -177,7 +177,7 @@ describe('UniversalLink', () => {
       <Provider store={store}>
         <MemoryRouter>
           <UniversalLink
-            href="http://127.0.0.1:3000/blacklisted-app"
+            href="http://localhost:3000/blacklisted-app"
             title="External blacklisted app"
           >
             <h1>Title</h1>
@@ -219,7 +219,7 @@ it('renders a UniversalLink component when url ends with @@display-file', () => 
   const component = renderer.create(
     <Provider store={store}>
       <MemoryRouter>
-        <UniversalLink href="http://127.0.0.1:3000/en/welcome-to-volto/@@display-file">
+        <UniversalLink href="http://localhost:3000/en/welcome-to-volto/@@display-file">
           <h1>Title</h1>
         </UniversalLink>
       </MemoryRouter>

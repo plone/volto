@@ -1,23 +1,23 @@
 import config from '@plone/volto/registry';
 
 import {
-  addAppURL,
-  checkAndNormalizeUrl,
-  expandToBackendURL,
-  flattenHTMLToAppURL,
   flattenToAppURL,
+  flattenHTMLToAppURL,
+  stripQuerystring,
+  toPublicURL,
   getBaseUrl,
-  getFieldURL,
   getView,
   isCmsUi,
   isInternalURL,
   isUrl,
-  normaliseMail,
-  normalizeTelephone,
+  getFieldURL,
   normalizeUrl,
   removeProtocol,
-  stripQuerystring,
-  toPublicURL,
+  addAppURL,
+  expandToBackendURL,
+  checkAndNormalizeUrl,
+  normaliseMail,
+  normalizeTelephone,
 } from './Url';
 
 beforeEach(() => {
@@ -29,7 +29,7 @@ const { settings } = config;
 describe('Url', () => {
   describe('getBaseUrl', () => {
     it('can remove a view name from an absolute url', () => {
-      expect(getBaseUrl('http://127.0.0.1/edit')).toBe('http://127.0.0.1');
+      expect(getBaseUrl('http://localhost/edit')).toBe('http://localhost');
     });
     it('can remove a view name from a relative url', () => {
       expect(getBaseUrl('/contents')).toBe('');
@@ -80,11 +80,11 @@ describe('Url', () => {
 
   describe('getView', () => {
     it('can get the edit view from the url', () => {
-      expect(getView('http://127.0.0.1/edit')).toBe('edit');
+      expect(getView('http://localhost/edit')).toBe('edit');
     });
 
     it('can get the view view from the url', () => {
-      expect(getView('http://127.0.0.1/my-blog')).toBe('view');
+      expect(getView('http://localhost/my-blog')).toBe('view');
     });
   });
 
@@ -126,8 +126,8 @@ describe('Url', () => {
       const savedPublicURL = settings.publicURL;
       const savedApiPath = settings.apiPath;
       settings.publicURL = 'https://plone.org';
-      settings.apiPath = 'http://127.0.0.1:3000/api';
-      expect(toPublicURL('http://127.0.0.1:3000/api/section/content')).toBe(
+      settings.apiPath = 'http://localhost:3000/api';
+      expect(toPublicURL('http://localhost:3000/api/section/content')).toBe(
         'https://plone.org/section/content',
       );
       settings.publicURL = savedPublicURL;
@@ -228,13 +228,13 @@ describe('Url', () => {
       expect(isInternalURL(href)).toBe(undefined);
     });
     it('tells if an  URL is external if settings.externalroutes is persent.', () => {
-      const url = `https://127.0.01:3000/fb/my-page/contents`;
+      const url = `https://localhost:3000/fb/my-page/contents`;
       const blacklistedurl = '/blacklisted';
       settings.externalRoutes = [
         { title: 'My Page', match: '/fb' },
         '/blacklisted',
       ];
-      settings.publicURL = 'https://127.0.01:3000';
+      settings.publicURL = 'https://localhost:3000';
       expect(isInternalURL(url)).toBe(false);
       expect(isInternalURL(blacklistedurl)).toBe(false);
     });
@@ -320,20 +320,20 @@ describe('Url', () => {
   describe('addAppURL', () => {
     it('addAppURL test https', () => {
       const href = `/ca/my-page`;
-      expect(addAppURL(href)).toBe('http://127.0.0.1:8080/Plone/ca/my-page');
+      expect(addAppURL(href)).toBe('http://localhost:8080/Plone/ca/my-page');
     });
   });
   describe('expandToBackendURL', () => {
     it('expandToBackendURL test with path', () => {
       const href = `/ca/my-page`;
       expect(expandToBackendURL(href)).toBe(
-        'http://127.0.0.1:8080/Plone/++api++/ca/my-page',
+        'http://localhost:8080/Plone/++api++/ca/my-page',
       );
     });
     it('expandToBackendURL test full URL', () => {
-      const href = `http://127.0.0.1:8080/Plone/ca/my-page`;
+      const href = `http://localhost:8080/Plone/ca/my-page`;
       expect(expandToBackendURL(href)).toBe(
-        'http://127.0.0.1:8080/Plone/++api++/ca/my-page',
+        'http://localhost:8080/Plone/++api++/ca/my-page',
       );
     });
     it('expandToBackendURL test full URL - legacyTraverse true', () => {

@@ -1,9 +1,9 @@
+import workingcopy from './workingcopy';
 import {
   APPLY_WORKING_COPY,
   CREATE_WORKING_COPY,
   REMOVE_WORKING_COPY,
 } from '@plone/volto/constants/ActionTypes';
-import workingcopy from './workingcopy';
 
 describe('Working copy reducer', () => {
   it('should return the initial state', () => {
@@ -57,7 +57,7 @@ describe('Working copy reducer', () => {
       workingcopy(undefined, {
         type: `${CREATE_WORKING_COPY}_SUCCESS`,
         result: {
-          '@id': 'http://127.0.0.1:8080/Plone/copy_of_document',
+          '@id': 'http://localhost:8080/Plone/copy_of_document',
           title: 'The title',
         },
       }),

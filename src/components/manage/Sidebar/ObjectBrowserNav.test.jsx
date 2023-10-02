@@ -1,8 +1,8 @@
 import React from 'react';
-import { Provider } from 'react-intl-redux';
 import renderer from 'react-test-renderer';
-import configureStore from 'redux-mock-store';
 import ObjectBrowserNav from './ObjectBrowserNav';
+import { Provider } from 'react-intl-redux';
+import configureStore from 'redux-mock-store';
 
 const mockStore = configureStore();
 
@@ -35,7 +35,7 @@ const currentSearchResults = {
       getObjSize: '4.6 KB',
       getPath: '/Plone/front-page',
       getRemoteUrl: null,
-      getURL: 'http://127.0.0.1:8080/Plone/front-page',
+      getURL: 'http://localhost:8080/Plone/front-page',
       id: 'front-page',
       in_response_to: null,
       is_folderish: false,
@@ -79,7 +79,7 @@ const currentSearchResults = {
       getObjSize: '0 KB',
       getPath: '/Plone/news',
       getRemoteUrl: null,
-      getURL: 'http://127.0.0.1:8080/Plone/news',
+      getURL: 'http://localhost:8080/Plone/news',
       id: 'news',
       in_response_to: null,
       is_folderish: true,
