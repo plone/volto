@@ -451,37 +451,34 @@ class Contents extends Component {
       const linkintegrityInfo = await this.props.linkIntegrityCheck(
         map(this.state.itemsToDelete, (item) => this.getFieldById(item, 'UID')),
       );
-      let containedItems = 0;
-      let brokenReferences = new Set();
-      let by_source_uid = new Map();
-      let sources = {};
-      linkintegrityInfo.forEach((item) => {
-        containedItems += item.items_total ?? 0;
-        item.breaches.forEach((breach) => {
-          breach.sources.forEach((source) => {
-            const uid = source.uid;
-            sources[uid] = source;
-            brokenReferences.add(uid);
-            if (by_source_uid.get(uid) === undefined) {
-              by_source_uid.set(uid, new Set());
-            }
-            by_source_uid.get(uid).add(breach.target);
-          });
-        });
-      });
-
-      let breaches = [];
-      by_source_uid.forEach((targets, source_uid) =>
-        breaches.push({
-          source: sources[source_uid],
-          targets: Array.from(targets),
-        }),
+      const containedItems = linkintegrityInfo
+        .map((result) => result.items_total ?? 0)
+        .reduce((acc, value) => acc + value, 0);
+      const breaches = linkintegrityInfo.flatMap((result) =>
+        result.breaches.map((source) => ({
+          source: source,
+          target: result,
+        })),
       );
+      const source_by_uid = breaches.reduce(
+        (acc, value) => acc.set(value.source.uid, value.source),
+        new Map(),
+      );
+      const by_source = breaches.reduce((acc, value) => {
+        if (acc.get(value.source.uid) === undefined) {
+          acc.set(value.source.uid, new Set());
+        }
+        acc.get(value.source.uid).add(value.target);
+        return acc;
+      }, new Map());
 
       this.setState({
         containedItemsToDelete: containedItems,
-        brokenReferences: brokenReferences.size,
-        breaches: breaches,
+        brokenReferences: by_source.size,
+        breaches: Array.from(by_source, (entry) => ({
+          source: source_by_uid.get(entry[0]),
+          targets: Array.from(entry[1]),
+        })),
         showAllItemsToDelete:
           this.state.itemsToDelete.length < this.deleteItemsToShowThreshold,
       });
@@ -1381,7 +1378,7 @@ class Contents extends Component {
                                   <FormattedMessage id="These items will have broken links" />
                                   <ul>
                                     {this.state.breaches.map((breach) => (
-                                      <li>
+                                      <li key={breach.source['@id']}>
                                         <Link
                                           to={flattenToAppURL(
                                             breach.source['@id'],
@@ -1390,7 +1387,7 @@ class Contents extends Component {
                                         >
                                           {breach.source.title}
                                         </Link>{' '}
-                                        references{' '}
+                                        refers to{' '}
                                         {breach.targets
                                           .map((target) => (
                                             <Link
@@ -1441,14 +1438,14 @@ class Contents extends Component {
                               <FormattedMessage id="These items will have broken links" />
                               <ul>
                                 {this.state.breaches.map((breach) => (
-                                  <li>
+                                  <li key={breach.source['@id']}>
                                     <Link
                                       to={flattenToAppURL(breach.source['@id'])}
                                       title="Navigate to this item"
                                     >
                                       {breach.source.title}
                                     </Link>{' '}
-                                    references{' '}
+                                    refers to{' '}
                                     {breach.targets
                                       .map((target) => (
                                         <Link
