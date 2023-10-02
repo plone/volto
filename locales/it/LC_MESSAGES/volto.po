@@ -403,8 +403,8 @@ msgid "Ascending"
 msgstr "Crescente"
 
 #: components/manage/Sharing/Sharing
-# defaultMessage: Assign the {role} role to the {entry}
-msgid "Assign the {role} role to the {entry}"
+# defaultMessage: Assign the {role} role to {entry}
+msgid "Assign the {role} role to {entry}"
 msgstr "Assegnare il ruolo di {role} a {entry}"
 
 #: components/manage/Controlpanels/Rules/ConfigureRule

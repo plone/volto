@@ -88,8 +88,8 @@ const messages = defineMessages({
     defaultMessage: 'Permissions have been updated successfully',
   },
   assignNewRoles: {
-    id: 'Assign the {role} role to the {entry}',
-    defaultMessage: 'Assign the {role} role to the {entry}',
+    id: 'Assign the {role} role to {entry}',
+    defaultMessage: 'Assign the {role} role to {entry}',
   },
 });
 
