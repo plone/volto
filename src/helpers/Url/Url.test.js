@@ -228,13 +228,13 @@ describe('Url', () => {
       expect(isInternalURL(href)).toBe(undefined);
     });
     it('tells if an  URL is external if settings.externalroutes is persent.', () => {
-      const url = `https://localhost:3000/fb/my-page/contents`;
+      const url = `https://127.0.01:3000/fb/my-page/contents`;
       const blacklistedurl = '/blacklisted';
       settings.externalRoutes = [
         { title: 'My Page', match: '/fb' },
         '/blacklisted',
       ];
-      settings.publicURL = 'https://localhost:3000';
+      settings.publicURL = 'https://127.0.01:3000';
       expect(isInternalURL(url)).toBe(false);
       expect(isInternalURL(blacklistedurl)).toBe(false);
     });
