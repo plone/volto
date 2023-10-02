@@ -2135,6 +2135,7 @@ const DragDropConnector = (props) => {
 };
 
 export const __test__ = compose(
+  injectUrlHelpers,
   injectIntl,
   injectLazyLibs(['toastify', 'reactDnd']),
   connect(

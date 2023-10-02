@@ -14,7 +14,12 @@ import {
   listMoreComments,
 } from '@plone/volto/actions';
 import { Avatar, CommentEditModal, Form } from '@plone/volto/components';
-import { getColor, usePrevious, useUrlHelpers } from '@plone/volto/helpers';
+import {
+  getBaseUrl,
+  getColor,
+  usePrevious,
+  useUrlHelpers,
+} from '@plone/volto/helpers';
 
 const messages = defineMessages({
   comment: {
@@ -99,7 +104,7 @@ const useComments = () => {
 };
 
 const Comments = (props) => {
-  const { flattenToAppURL, getBaseUrl } = useUrlHelpers();
+  const { flattenToAppURL } = useUrlHelpers();
   const intl = useIntl();
   const dispatch = useDispatch();
   const { pathname } = props;
