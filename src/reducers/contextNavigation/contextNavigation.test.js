@@ -1,5 +1,5 @@
-import getContextNavigation from './contextNavigation';
 import { GET_CONTEXT_NAVIGATION } from '@plone/volto/constants/ActionTypes';
+import getContextNavigation from './contextNavigation';
 
 describe('Context Navigation reducer', () => {
   it('should return the initial state', () => {
@@ -36,7 +36,7 @@ describe('Context Navigation reducer', () => {
           type: `${GET_CONTEXT_NAVIGATION}_SUCCESS`,
           url: '/',
           result: {
-            '@id': 'http://localhost:8080/Plone/@contextnavigation',
+            '@id': 'http://127.0.0.1:8080/Plone/@contextnavigation',
             title: 'Navigation',
             items: [
               {
@@ -50,7 +50,7 @@ describe('Context Navigation reducer', () => {
     ).toEqual({
       '/': {
         data: {
-          '@id': 'http://localhost:8080/Plone/@contextnavigation',
+          '@id': 'http://127.0.0.1:8080/Plone/@contextnavigation',
           title: 'Navigation',
           items: [
             {

@@ -1,13 +1,13 @@
-import { getHistory, revertHistory } from './history';
 import {
   GET_HISTORY,
   REVERT_HISTORY,
 } from '@plone/volto/constants/ActionTypes';
+import { getHistory, revertHistory } from './history';
 
 describe('History action', () => {
   describe('getHistory', () => {
     it('should create an action to get history', () => {
-      const url = 'http://localhost';
+      const url = 'http://127.0.0.1';
       const action = getHistory(url);
 
       expect(action.type).toEqual(GET_HISTORY);
@@ -18,7 +18,7 @@ describe('History action', () => {
 
   describe('revertHistory', () => {
     it('should create an action to revert history', () => {
-      const url = 'http://localhost';
+      const url = 'http://127.0.0.1';
       const version = 0;
       const action = revertHistory(url, version);
 

@@ -1,9 +1,9 @@
+import config from '@plone/volto/registry';
 import React from 'react';
-import renderer from 'react-test-renderer';
 import { Provider } from 'react-intl-redux';
+import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import config from '@plone/volto/registry';
 import EventDetails from './EventDetails';
 
 const mockStore = configureStore([thunk]);
@@ -22,7 +22,7 @@ test('renders event details component with all props', () => {
     <Provider store={store}>
       <EventDetails
         content={{
-          '@id': 'http://localhost:8080/Plone/my-page',
+          '@id': 'http://127.0.0.1:8080/Plone/my-page',
           title: 'Hello World!',
           description: 'Hi',
           text: {
@@ -53,7 +53,7 @@ test('renders event details component with only required props', () => {
     <Provider store={store}>
       <EventDetails
         content={{
-          '@id': 'http://localhost:8080/Plone/my-page',
+          '@id': 'http://127.0.0.1:8080/Plone/my-page',
           title: 'Hello World!',
           attendees: [],
           end: '2019-06-23T16:20:00+00:00',
@@ -72,7 +72,7 @@ test('renders event details component without links to api in the text', () => {
     <Provider store={store}>
       <EventDetails
         content={{
-          '@id': 'http://localhost:8080/Plone/my-page',
+          '@id': 'http://127.0.0.1:8080/Plone/my-page',
           title: 'Hello World!',
           attendees: [],
           end: '2019-06-23T16:20:00+00:00',

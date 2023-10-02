@@ -1,6 +1,6 @@
+import config from '@plone/volto/registry';
 import React from 'react';
 import renderer from 'react-test-renderer';
-import config from '@plone/volto/registry';
 import Html from './Html';
 
 jest.mock('../Helmet/Helmet', () => ({
@@ -46,7 +46,7 @@ describe('Html', () => {
               data-chunk="client"
               rel="preload"
               as="script"
-              href="http://localhost:3001/static/js/runtime~client.js"
+              href="http://127.0.0.1:3001/static/js/runtime~client.js"
             />,
           ],
           getStyleElements: () => [],
@@ -76,7 +76,7 @@ describe('Html', () => {
               data-chunk="client"
               rel="preload"
               as="script"
-              href="http://localhost:3001/static/js/runtime~client.js"
+              href="http://127.0.0.1:3001/static/js/runtime~client.js"
             />,
           ],
           getStyleElements: () => [],

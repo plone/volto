@@ -25,9 +25,9 @@ exports[`CorsError renders a not found component 1`] = `
     There is a configuration problem on the backend
     <br />
     <a
-      href="http://localhost:8080/Plone"
+      href="http://127.0.0.1:8080/Plone"
     >
-      http://localhost:8080/Plone
+      http://127.0.0.1:8080/Plone
     </a>
   </h1>
   <p

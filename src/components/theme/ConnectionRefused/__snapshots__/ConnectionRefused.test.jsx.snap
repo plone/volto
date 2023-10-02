@@ -25,9 +25,9 @@ exports[`ConnectionRefused renders a not found component 1`] = `
     Connection refused
     <br />
     <a
-      href="http://localhost:8080/Plone"
+      href="http://127.0.0.1:8080/Plone"
     >
-      http://localhost:8080/Plone
+      http://127.0.0.1:8080/Plone
     </a>
   </h1>
   <p

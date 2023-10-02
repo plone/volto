@@ -1,5 +1,5 @@
-import FormValidation from './FormValidation';
 import { messages } from '../MessageLabels/MessageLabels';
+import FormValidation from './FormValidation';
 
 const schema = {
   properties: {
@@ -151,7 +151,7 @@ describe('FormValidation', () => {
       ).toEqual({});
     });
     it('validates url with localhost', () => {
-      formData.url = 'http://localhost:8080/Plone';
+      formData.url = 'http://127.0.0.1:8080/Plone';
       expect(
         FormValidation.validateFieldsPerFieldset({
           schema,

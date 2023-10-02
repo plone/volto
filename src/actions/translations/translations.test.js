@@ -1,18 +1,18 @@
 import {
-  deleteLinkTranslation,
-  getTranslationLocator,
-  linkTranslation,
-} from './translations';
-import {
   DELETE_TRANSLATION,
   GET_TRANSLATION_LOCATOR,
   LINK_TRANSLATION,
 } from '@plone/volto/constants/ActionTypes';
+import {
+  deleteLinkTranslation,
+  getTranslationLocator,
+  linkTranslation,
+} from './translations';
 
 describe('Translations action', () => {
   describe('getTranslationLocator', () => {
     it('should create an action to add a translation', () => {
-      const url = 'http://localhost/ca/la-meva-pagina';
+      const url = 'http://127.0.0.1/ca/la-meva-pagina';
       const lang = 'ca';
       const action = getTranslationLocator(url, lang);
 
@@ -25,7 +25,7 @@ describe('Translations action', () => {
   });
   describe('linkTranslation', () => {
     it('should create an action to link translations', () => {
-      const url = 'http://localhost/de/my-page';
+      const url = 'http://127.0.0.1/de/my-page';
       const target = '1234123-123123-123123'; // Target as UUID
       const action = linkTranslation(url, target);
 
@@ -37,7 +37,7 @@ describe('Translations action', () => {
   });
   describe('deleteLinkTranslation', () => {
     it('should create an action to delete link translations', () => {
-      const url = 'http://localhost/de/my-page';
+      const url = 'http://127.0.0.1/de/my-page';
       const lang = 'es';
       const action = deleteLinkTranslation(url, lang);
 

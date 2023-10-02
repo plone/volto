@@ -1,9 +1,9 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
 import { Provider } from 'react-intl-redux';
+import { MemoryRouter } from 'react-router-dom';
+import renderer from 'react-test-renderer';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import { MemoryRouter } from 'react-router-dom';
 
 import LinksToItem from './LinksToItem';
 
@@ -26,7 +26,7 @@ describe('LinksToItem', () => {
                 items: [
                   {
                     source: {
-                      '@id': 'http://localhost:3000/page-basil',
+                      '@id': 'http://127.0.0.1:3000/page-basil',
                       '@type': 'Document',
                       UID: 'SOMEUID008',
                       description: '',
@@ -35,7 +35,7 @@ describe('LinksToItem', () => {
                       type_title: 'Document',
                     },
                     target: {
-                      '@id': 'http://localhost:3000/page-tomato',
+                      '@id': 'http://127.0.0.1:3000/page-tomato',
                       '@type': 'Document',
                       UID: 'SOMEUID007',
                       description: '',
@@ -51,7 +51,7 @@ describe('LinksToItem', () => {
                 items: [
                   {
                     source: {
-                      '@id': 'http://localhost:3000/page-cucumber',
+                      '@id': 'http://127.0.0.1:3000/page-cucumber',
                       '@type': 'Document',
                       UID: 'SOMEUID008',
                       description: '',
@@ -60,7 +60,7 @@ describe('LinksToItem', () => {
                       type_title: 'Document',
                     },
                     target: {
-                      '@id': 'http://localhost:3000/page-tomato',
+                      '@id': 'http://127.0.0.1:3000/page-tomato',
                       '@type': 'Document',
                       UID: 'SOMEUID007',
                       description: '',

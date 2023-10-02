@@ -1,9 +1,9 @@
+import config from '@plone/volto/registry';
 import React from 'react';
-import renderer from 'react-test-renderer';
 import { Provider } from 'react-intl-redux';
+import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import EventView from './EventView';
-import config from '@plone/volto/registry';
 
 const mockStore = configureStore();
 
@@ -29,7 +29,7 @@ test('renders an event view component with all props', () => {
     <Provider store={store}>
       <EventView
         content={{
-          '@id': 'http://localhost:8080/Plone/my-page',
+          '@id': 'http://127.0.0.1:8080/Plone/my-page',
           title: 'Hello World!',
           description: 'Hi',
           text: {
@@ -60,7 +60,7 @@ test('renders an event view component with only required props', () => {
     <Provider store={store}>
       <EventView
         content={{
-          '@id': 'http://localhost:8080/Plone/my-page',
+          '@id': 'http://127.0.0.1:8080/Plone/my-page',
           title: 'Hello World!',
           attendees: [],
           end: '2019-06-23T16:20:00+00:00',
@@ -79,7 +79,7 @@ test('renders an event view component without links to api in the text', () => {
     <Provider store={store}>
       <EventView
         content={{
-          '@id': 'http://localhost:8080/Plone/my-page',
+          '@id': 'http://127.0.0.1:8080/Plone/my-page',
           title: 'Hello World!',
           attendees: [],
           end: '2019-06-23T16:20:00+00:00',

@@ -1,14 +1,14 @@
 import React from 'react';
+import { Provider } from 'react-intl-redux';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
-import { Provider } from 'react-intl-redux';
 
 import RenderUsers from './RenderUsers';
 
 const mockStore = configureStore();
 
 const testUser = {
-  '@id': 'http://localhost:8080/Plone/@users/testuser',
+  '@id': 'http://127.0.0.1:8080/Plone/@users/testuser',
   description: '',
   email: 'testuser@plone.org',
   fullname: 'Test User',
@@ -21,17 +21,17 @@ const testUser = {
 
 const testRoles = [
   {
-    '@id': 'http://localhost:8080/Plone/@roles/Member',
+    '@id': 'http://127.0.0.1:8080/Plone/@roles/Member',
     '@type': 'role',
     id: 'Member',
   },
   {
-    '@id': 'http://localhost:8080/Plone/@roles/Reader',
+    '@id': 'http://127.0.0.1:8080/Plone/@roles/Reader',
     '@type': 'role',
     id: 'Reader',
   },
   {
-    '@id': 'http://localhost:8080/Plone/@roles/Manager',
+    '@id': 'http://127.0.0.1:8080/Plone/@roles/Manager',
     '@type': 'role',
     id: 'Manager',
   },

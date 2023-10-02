@@ -8,13 +8,13 @@ test('renders a view image component', () => {
       data={{}}
       properties={{
         image: {
-          download: 'http://localhost:3000/image.png',
+          download: 'http://127.0.0.1:3000/image.png',
           width: 400,
           height: 400,
           scales: {
             preview: {
               download:
-                'http://localhost:3000/image.png/@@images/image/image-400.png',
+                'http://127.0.0.1:3000/image.png/@@images/image/image-400.png',
               width: 400,
               height: 400,
             },

@@ -24,7 +24,7 @@ describe('PreviewImage', () => {
         ],
       },
       title: 'Item title',
-      '@id': 'http://localhost:3000/something',
+      '@id': 'http://127.0.0.1:3000/something',
     };
     const component = renderer.create(
       <PreviewImage item={item} alt={item.title} />,
@@ -53,7 +53,7 @@ describe('PreviewImage', () => {
         ],
       },
       title: 'Item title',
-      '@id': 'http://localhost:3000/something',
+      '@id': 'http://127.0.0.1:3000/something',
     };
     const component = renderer.create(
       <PreviewImage item={item} alt={item.title} className="extra" />,
@@ -65,7 +65,7 @@ describe('PreviewImage', () => {
   it('renders a fallback image', () => {
     const item = {
       title: 'Item title',
-      '@id': 'http://localhost:3000/something',
+      '@id': 'http://127.0.0.1:3000/something',
     };
     const component = renderer.create(
       <PreviewImage item={item} alt={item.title} />,
@@ -77,7 +77,7 @@ describe('PreviewImage', () => {
   it('renders a fallback image with extra props', () => {
     const item = {
       title: 'Item title',
-      '@id': 'http://localhost:3000/something',
+      '@id': 'http://127.0.0.1:3000/something',
     };
     const component = renderer.create(
       <PreviewImage item={item} alt={item.title} className="extra" />,
@@ -89,7 +89,7 @@ describe('PreviewImage', () => {
   it('renders a fallback image with alt prop empty', () => {
     const item = {
       title: 'Item title',
-      '@id': 'http://localhost:3000/something',
+      '@id': 'http://127.0.0.1:3000/something',
     };
     const component = renderer.create(
       <PreviewImage item={item} className="extra" alt="" />,
@@ -101,7 +101,7 @@ describe('PreviewImage', () => {
   it('renders a fallback image with alt prop', () => {
     const item = {
       title: 'Item title',
-      '@id': 'http://localhost:3000/something',
+      '@id': 'http://127.0.0.1:3000/something',
     };
     const component = renderer.create(
       <PreviewImage item={item} className="extra" alt="Alt prop" />,
@@ -113,7 +113,7 @@ describe('PreviewImage', () => {
   it('not renders a fallback image if showDefault prop is false', () => {
     const item = {
       title: 'Item title',
-      '@id': 'http://localhost:3000/something',
+      '@id': 'http://127.0.0.1:3000/something',
     };
     const component = renderer.create(
       <PreviewImage

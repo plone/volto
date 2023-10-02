@@ -1,10 +1,10 @@
-import { getContextNavigation } from './contextNavigation';
 import { GET_CONTEXT_NAVIGATION } from '@plone/volto/constants/ActionTypes';
+import { getContextNavigation } from './contextNavigation';
 
 describe('ContextNavigation action', () => {
   describe('getContextNavigation', () => {
     it('should create an action to get the context navigation', () => {
-      const url = 'http://localhost';
+      const url = 'http://127.0.0.1';
       const action = getContextNavigation(url);
 
       expect(action.type).toEqual(GET_CONTEXT_NAVIGATION);
@@ -13,7 +13,7 @@ describe('ContextNavigation action', () => {
     });
 
     it('should create an action to get the context navigation with options', () => {
-      const base = 'http://localhost';
+      const base = 'http://127.0.0.1';
       const params = {
         name: 'Custom navigation',
         root_path: '/test/folder',

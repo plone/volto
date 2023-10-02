@@ -7,13 +7,13 @@ test('renders an image component with fetchpriority high', () => {
     <Image
       item={{
         image: {
-          download: 'http://localhost:3000/image/@@images/image/image.png',
+          download: 'http://127.0.0.1:3000/image/@@images/image/image.png',
           width: 400,
           height: 400,
           scales: {
             preview: {
               download:
-                'http://localhost:3000/image/@@images/image/image-400.png',
+                'http://127.0.0.1:3000/image/@@images/image/image-400.png',
               width: 400,
               height: 400,
             },
@@ -33,13 +33,13 @@ test('renders an image component with lazy loading', () => {
     <Image
       item={{
         image: {
-          download: 'http://localhost:3000/image/@@images/image/image.png',
+          download: 'http://127.0.0.1:3000/image/@@images/image/image.png',
           width: 400,
           height: 400,
           scales: {
             preview: {
               download:
-                'http://localhost:3000/image/@@images/image/image-400.png',
+                'http://127.0.0.1:3000/image/@@images/image/image-400.png',
               width: 400,
               height: 400,
             },
@@ -60,13 +60,13 @@ test('renders an image component with responsive class', () => {
     <Image
       item={{
         image: {
-          download: 'http://localhost:3000/image/@@images/image/image.png',
+          download: 'http://127.0.0.1:3000/image/@@images/image/image.png',
           width: 400,
           height: 400,
           scales: {
             preview: {
               download:
-                'http://localhost:3000/image/@@images/image/image-400.png',
+                'http://127.0.0.1:3000/image/@@images/image/image-400.png',
               width: 400,
               height: 400,
             },
@@ -86,7 +86,7 @@ test('renders an image component from a catalog brain', () => {
   const component = renderer.create(
     <Image
       item={{
-        '@id': 'http://localhost:3000/image',
+        '@id': 'http://127.0.0.1:3000/image',
         image_field: 'image',
         image_scales: {
           image: [
@@ -116,7 +116,7 @@ test('renders an image component from a catalog brain', () => {
 test('renders an image component from a string src', () => {
   const component = renderer.create(
     <Image
-      src="http://localhost:3000/image/@@images/image/image.png"
+      src="http://127.0.0.1:3000/image/@@images/image/image.png"
       alt="alt text"
     />,
   );

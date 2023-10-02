@@ -1,8 +1,8 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
-import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
+import renderer from 'react-test-renderer';
+import configureStore from 'redux-mock-store';
 
 import UserGroupMembershipControlPanel from './UserGroupMembershipControlPanel';
 
@@ -40,7 +40,7 @@ describe('UserGroupMembershipControlPanel', () => {
           {
             id: 'bob-dabolina',
             fullname: 'Bob Dabolina',
-            '@id': 'http://localhost:8080/Plone/people/bob-dabolina',
+            '@id': 'http://127.0.0.1:8080/Plone/people/bob-dabolina',
           },
         ],
       },

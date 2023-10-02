@@ -6,7 +6,7 @@ exports[`PreviewImage not renders a fallback image if showDefault prop is false 
   className="extra"
   item={
     Object {
-      "@id": "http://localhost:3000/something",
+      "@id": "http://127.0.0.1:3000/something",
       "title": "Item title",
     }
   }
@@ -18,7 +18,7 @@ exports[`PreviewImage renders a fallback image 1`] = `
   alt="Item title"
   item={
     Object {
-      "@id": "http://localhost:3000/something",
+      "@id": "http://127.0.0.1:3000/something",
       "title": "Item title",
     }
   }
@@ -31,7 +31,7 @@ exports[`PreviewImage renders a fallback image with alt prop 1`] = `
   className="extra"
   item={
     Object {
-      "@id": "http://localhost:3000/something",
+      "@id": "http://127.0.0.1:3000/something",
       "title": "Item title",
     }
   }
@@ -44,7 +44,7 @@ exports[`PreviewImage renders a fallback image with alt prop empty 1`] = `
   className="extra"
   item={
     Object {
-      "@id": "http://localhost:3000/something",
+      "@id": "http://127.0.0.1:3000/something",
       "title": "Item title",
     }
   }
@@ -57,7 +57,7 @@ exports[`PreviewImage renders a fallback image with extra props 1`] = `
   className="extra"
   item={
     Object {
-      "@id": "http://localhost:3000/something",
+      "@id": "http://127.0.0.1:3000/something",
       "title": "Item title",
     }
   }
@@ -69,7 +69,7 @@ exports[`PreviewImage renders a preview image 1`] = `
   alt="Item title"
   item={
     Object {
-      "@id": "http://localhost:3000/something",
+      "@id": "http://127.0.0.1:3000/something",
       "image_field": "image",
       "image_scales": Object {
         "image": Array [
@@ -99,7 +99,7 @@ exports[`PreviewImage renders a preview image with extra props 1`] = `
   className="extra"
   item={
     Object {
-      "@id": "http://localhost:3000/something",
+      "@id": "http://127.0.0.1:3000/something",
       "image_field": "image",
       "image_scales": Object {
         "image": Array [

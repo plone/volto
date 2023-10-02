@@ -1,14 +1,14 @@
-import { getWorkflow, transitionWorkflow } from './workflow';
 import {
   GET_WORKFLOW,
   GET_WORKFLOW_MULTIPLE,
   TRANSITION_WORKFLOW,
 } from '@plone/volto/constants/ActionTypes';
+import { getWorkflow, transitionWorkflow } from './workflow';
 
 describe('Workflow action', () => {
   describe('getWorkflow', () => {
     it('should create an action to get the workflow', () => {
-      const url = 'http://localhost';
+      const url = 'http://127.0.0.1';
       const action = getWorkflow(url);
 
       expect(action.type).toEqual(GET_WORKFLOW);
@@ -30,7 +30,7 @@ describe('Workflow action', () => {
 
   describe('transitionWorkflow', () => {
     it('should create an action to transition workflow', () => {
-      const url = 'http://localhost';
+      const url = 'http://127.0.0.1';
       const action = transitionWorkflow(url);
 
       expect(action.type).toEqual(TRANSITION_WORKFLOW);
