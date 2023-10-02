@@ -40,7 +40,7 @@ test('renders a view video component with placeholder', () => {
         '@type': 'video',
         url: 'https://youtu.be/KqjeO_ekW3g',
         preview_image:
-          'https://github.com/plone/volto/raw/master/logos/volto-colorful.png',
+          'https://github.com/plone/volto/raw/main/logos/volto-colorful.png',
       }}
     />,
   );
