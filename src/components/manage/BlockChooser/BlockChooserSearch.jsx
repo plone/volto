@@ -9,6 +9,10 @@ const messages = defineMessages({
     id: 'Search',
     defaultMessage: 'Search',
   },
+  closeButton: {
+    id: 'Close',
+    defaultMessage: 'Close',
+  },
 });
 
 const BlockChooserSearch = ({ onChange, searchValue }) => {
@@ -36,13 +40,13 @@ const BlockChooserSearch = ({ onChange, searchValue }) => {
         {searchValue && (
           <Button
             className="clear-search-button"
-            aria-label={intl.formatMessage(messages.search)}
+            aria-label={intl.formatMessage(messages.closeButton)}
             onClick={() => {
               onChange('');
               searchInput.current.focus();
             }}
           >
-            <Icon name={clearSVG} size="18px" />
+            <Icon className='circled' name={clearSVG} size="18px" />
           </Button>
         )}
       </Form.Field>
