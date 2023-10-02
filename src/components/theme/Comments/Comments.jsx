@@ -137,7 +137,6 @@ const Comments = (props) => {
     addRequest.loaded,
     prevdeleteRequestLoading,
     deleteRequest.loaded,
-    getBaseUrl,
   ]);
 
   const onSubmit = (formData) => {
