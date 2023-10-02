@@ -84,7 +84,6 @@
   },
   "stylelint": {
     "extends": [
-      "stylelint-config-prettier",
       "stylelint-config-idiomatic-order"
     ],
     "plugins": [
