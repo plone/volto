@@ -1,6 +1,3 @@
-import dns from 'dns';
-dns.setDefaultResultOrder('ipv4first');
-
 global.__CLIENT__ = true;
 global.__DEVELOPMENT__ = false;
 
