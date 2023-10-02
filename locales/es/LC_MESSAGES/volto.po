@@ -413,6 +413,11 @@ msgstr "¿Esta seguro de querer eliminar este conjunto de campo incluyendo todos
 msgid "Ascending"
 msgstr "Ascendente"
 
+#: components/manage/Sharing/Sharing
+# defaultMessage: Assign the {role} role to {entry}
+msgid "Assign the {role} role to {entry}"
+msgstr ""
+
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Assignments
 msgid "Assignments"
