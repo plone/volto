@@ -39,6 +39,10 @@ const messages = defineMessages({
     id: 'Search for user or group',
     defaultMessage: 'Search for user or group',
   },
+  search: {
+    id: 'Search',
+    defaultMessage: 'Search',
+  },
   inherit: {
     id: 'Inherit permissions from higher levels',
     defaultMessage: 'Inherit permissions from higher levels',
@@ -82,6 +86,10 @@ const messages = defineMessages({
   permissionsUpdatedSuccessfully: {
     id: 'Permissions have been updated successfully',
     defaultMessage: 'Permissions have been updated successfully',
+  },
+  assignNewRoles: {
+    id: 'Assign the {role} role to {entry}',
+    defaultMessage: 'Assign the {role} role to {entry}',
   },
 });
 
@@ -145,6 +153,7 @@ class SharingComponent extends Component {
     this.onToggleInherit = this.onToggleInherit.bind(this);
     this.state = {
       search: '',
+      isLoading: false,
       inherit: props.inherit,
       entries: props.entries,
       isClient: false,
@@ -225,7 +234,17 @@ class SharingComponent extends Component {
    */
   onSearch(event) {
     event.preventDefault();
-    this.props.getSharing(getBaseUrl(this.props.pathname), this.state.search);
+    this.setState({ isLoading: true });
+    this.props
+      .getSharing(getBaseUrl(this.props.pathname), this.state.search)
+      .then(() => {
+        this.setState({ isLoading: false });
+      })
+      .catch((error) => {
+        this.setState({ isLoading: false });
+        // eslint-disable-next-line no-console
+        console.error('Error searching users or groups', error);
+      });
   }
 
   /**
@@ -246,9 +265,9 @@ class SharingComponent extends Component {
    * @returns {undefined}
    */
   onToggleInherit() {
-    this.setState({
-      inherit: !this.state.inherit,
-    });
+    this.setState((state) => ({
+      inherit: !state.inherit,
+    }));
   }
 
   /**
@@ -296,7 +315,10 @@ class SharingComponent extends Component {
       <Container id="page-sharing">
         <Helmet title={this.props.intl.formatMessage(messages.sharing)} />
         <Segment.Group raised>
-          <Pluggable name="sharing-component" />
+          <Pluggable
+            name="sharing-component"
+            params={{ isLoading: this.state.isLoading }}
+          />
           <Plug pluggable="sharing-component" id="sharing-component-title">
             <Segment className="primary">
               <FormattedMessage
@@ -318,20 +340,32 @@ class SharingComponent extends Component {
             </Segment>
           </Plug>
           <Plug pluggable="sharing-component" id="sharing-component-search">
-            <Segment>
-              <Form onSubmit={this.onSearch}>
-                <Form.Field>
-                  <Input
-                    name="SearchableText"
-                    action={{ icon: 'search' }}
-                    placeholder={this.props.intl.formatMessage(
-                      messages.searchForUserOrGroup,
-                    )}
-                    onChange={this.onChangeSearch}
-                  />
-                </Form.Field>
-              </Form>
-            </Segment>
+            {({ isLoading }) => {
+              return (
+                <Segment>
+                  <Form onSubmit={this.onSearch}>
+                    <Form.Field>
+                      <Input
+                        name="SearchableText"
+                        action={{
+                          icon: 'search',
+                          loading: isLoading,
+                          disabled: isLoading,
+                          'aria-label': this.props.intl.formatMessage(
+                            messages.search,
+                          ),
+                        }}
+                        placeholder={this.props.intl.formatMessage(
+                          messages.searchForUserOrGroup,
+                        )}
+                        onChange={this.onChangeSearch}
+                        id="sharing-component-search"
+                      />
+                    </Form.Field>
+                  </Form>
+                </Segment>
+              );
+            }}
           </Plug>
           <Plug
             pluggable="sharing-component"
@@ -389,6 +423,20 @@ class SharingComponent extends Component {
                           )}
                           {typeof entry.roles[role.id] === 'boolean' && (
                             <Checkbox
+                              name={this.props.intl.formatMessage(
+                                messages.assignNewRoles,
+                                {
+                                  entry: entry.title,
+                                  role: role.id,
+                                },
+                              )}
+                              aria-label={this.props.intl.formatMessage(
+                                messages.assignNewRoles,
+                                {
+                                  entry: entry.title,
+                                  role: role.id,
+                                },
+                              )}
                               onChange={this.onChange}
                               value={`${entry.id}:${role.id}`}
                               checked={entry.roles[role.id]}
@@ -404,9 +452,15 @@ class SharingComponent extends Component {
               <Segment attached>
                 <Form.Field>
                   <Checkbox
-                    checked={this.state.inherit}
+                    id="inherit-permissions-checkbox"
+                    name="inherit-permissions-checkbox"
+                    defaultChecked={this.state.inherit}
                     onChange={this.onToggleInherit}
-                    label={this.props.intl.formatMessage(messages.inherit)}
+                    label={
+                      <label htmlFor="inherit-permissions-checkbox">
+                        {this.props.intl.formatMessage(messages.inherit)}
+                      </label>
+                    }
                   />
                 </Form.Field>
                 <p className="help">

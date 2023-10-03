@@ -33,7 +33,7 @@ You can find the current Storybook build in: https://6.docs.plone.org/storybook
 
 The idea is that Quanta will become the design system for Plone 6 when it's finished. For now, Pastanaga and Quanta are treated as preliminary work and style guide to help Volto and Plone 6 a reality.
 
-It has been already some work on Quanta here and there, the idea is to adopt it bit by bit, since implementing it overnight would be impossible since maintaining both efforts, master and Quanta in sync would be crazy.
+It has been already some work on Quanta here and there, the idea is to adopt it bit by bit, since implementing it overnight would be impossible since maintaining both efforts, main and Quanta in sync would be crazy.
 
 Quanta for now have the shape of a Volto addon: https://github.com/plone/volto-quanta
 

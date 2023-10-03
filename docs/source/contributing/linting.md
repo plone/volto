@@ -15,9 +15,9 @@ gaps!
 ```
 
 Volto developers can enjoy a lot of freedom in their choice of text editors and
-IDEs, thanks to the strong tooling provided by the Javascript ecosystem.
+IDEs, thanks to the strong tooling provided by the JavaScript ecosystem.
 
-At the core of these capabilities is ESLint, the advanced javascript linting
+At the core of these capabilities is ESLint, the advanced JavaScript linting
 and formatting tool. Also included with Volto is integration with Stylelint and
 Prettier.
 

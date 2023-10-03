@@ -7,14 +7,16 @@ import ColorPickerWidget from './ColorPickerWidget';
 
 const mockStore = configureStore();
 
-const withStateManagement = (Component) => ({ ...props }) => {
-  const [value, setValue] = React.useState(props.value || null);
-  const onChange = (id, value) => {
-    setValue(value);
-  };
+const withStateManagement =
+  (Component) =>
+  ({ ...props }) => {
+    const [value, setValue] = React.useState(props.value || null);
+    const onChange = (id, value) => {
+      setValue(value);
+    };
 
-  return <Component {...props} onChange={onChange} value={value} />;
-};
+    return <Component {...props} onChange={onChange} value={value} />;
+  };
 
 describe('ColorPickerWidget', () => {
   const COLORS = [

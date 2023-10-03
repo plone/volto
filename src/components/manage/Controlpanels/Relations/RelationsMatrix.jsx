@@ -17,7 +17,11 @@ import {
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import { messages } from '@plone/volto/helpers';
 import { Icon, Toast } from '@plone/volto/components';
-import { rebuildRelations, queryRelations } from '@plone/volto/actions';
+import {
+  getRelationStats,
+  queryRelations,
+  rebuildRelations,
+} from '@plone/volto/actions';
 import RelationsListing from './RelationsListing';
 import BrokenRelations from './BrokenRelations';
 import helpSVG from '@plone/volto/icons/help.svg';
@@ -39,12 +43,14 @@ const RelationsMatrix = (props) => {
     id: 'plone_setup',
   });
 
-  const relationtypes = useSelector((state) => state.relations?.stats?.stats);
+  const relationtypes = useSelector(
+    (state) => state.relations?.stats?.data?.stats,
+  );
   const relationsListError = useSelector(
-    (state) => state.relations?.list?.error?.response?.body?.error,
+    (state) => state.relations?.stats?.error?.response?.body?.error,
   );
   const brokenRelations = useSelector(
-    (state) => state.relations?.stats?.broken,
+    (state) => state.relations?.stats?.data?.broken,
   );
 
   let filter_options = useSelector((state) => state.groups.filter_groups);
@@ -67,7 +73,7 @@ const RelationsMatrix = (props) => {
   }
 
   useEffect(() => {
-    dispatch(queryRelations());
+    dispatch(getRelationStats());
   }, [dispatch]);
 
   const onReset = (event) => {
@@ -128,9 +134,7 @@ const RelationsMatrix = (props) => {
   const rebuildRelationsHandler = (flush = false) => {
     dispatch(rebuildRelations(flush))
       .then(() => {
-        dispatch(queryRelations());
-      })
-      .then(() => {
+        dispatch(getRelationStats());
         dispatch(queryRelations(null, true, 'broken'));
       })
       .then(() => {
@@ -443,7 +447,9 @@ const RelationsMatrix = (props) => {
               ) : null}
             </div>
           ) : (
-            <p>{relationsListError?.message}</p>
+            <p>
+              <b>{relationsListError?.type}</b> {relationsListError?.message}
+            </p>
           )}
         </Tab.Pane>
       ),

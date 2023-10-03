@@ -47,10 +47,8 @@ export const defaultActionsInfo = ({ intl }) => ({
 const AlignWidget = (props) => {
   const intl = useIntl();
 
-  const {
-    actions = ['left', 'right', 'center', 'full'],
-    actionsInfoMap,
-  } = props;
+  const { actions = ['left', 'right', 'center', 'full'], actionsInfoMap } =
+    props;
 
   const actionsInfo = {
     ...defaultActionsInfo({ intl }),
