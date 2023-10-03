@@ -75,6 +75,7 @@ export {
   createRelations,
   deleteRelations,
   queryRelations,
+  getRelationStats,
 } from '@plone/volto/actions/relations/relations';
 export { rebuildRelations } from '@plone/volto/actions/relations/rebuild';
 export { listRoles } from '@plone/volto/actions/roles/roles';
@@ -137,6 +138,7 @@ export {
   login,
   loginRenew,
   logout,
+  resetLoginRequest,
 } from '@plone/volto/actions/userSession/userSession';
 export {
   getVocabulary,
@@ -170,3 +172,5 @@ export {
 } from './workingcopy/workingcopy';
 export { getUserSchema } from './userschema/userschema';
 export { getUpgradeInformation, runUpgrade } from './upgrade/upgrade';
+export { getSite } from './site/site';
+export { getNavroot } from './navroot/navroot';

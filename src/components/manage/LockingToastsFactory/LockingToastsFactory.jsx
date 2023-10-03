@@ -12,8 +12,7 @@ const messages = defineMessages({
     defaultMessage: 'This item was locked by {creator} on {date}',
   },
   unlockItem: {
-    id:
-      'If you are certain this user has abandoned the object, you may unlock the object. You will then be able to edit it.',
+    id: 'If you are certain this user has abandoned the object, you may unlock the object. You will then be able to edit it.',
     defaultMessage:
       'If you are certain this user has abandoned the object, you may unlock the object. You will then be able to edit it.',
   },

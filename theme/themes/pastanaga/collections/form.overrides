@@ -49,6 +49,52 @@
   }
 }
 
+.ui.form .fields.error .field textarea,
+.ui.form .fields.error .field select,
+.ui.form .fields.error .field input:not([type]),
+.ui.form .fields.error .field input[type='date'],
+.ui.form .fields.error .field input[type='datetime-local'],
+.ui.form .fields.error .field input[type='email'],
+.ui.form .fields.error .field input[type='number'],
+.ui.form .fields.error .field input[type='password'],
+.ui.form .fields.error .field input[type='search'],
+.ui.form .fields.error .field input[type='tel'],
+.ui.form .fields.error .field input[type='time'],
+.ui.form .fields.error .field input[type='text'],
+.ui.form .fields.error .field input[type='file'],
+.ui.form .fields.error .field input[type='url'],
+.ui.form .field.error textarea,
+.ui.form .field.error select,
+.ui.form .field.error input:not([type]),
+.ui.form .field.error input[type='date'],
+.ui.form .field.error input[type='datetime-local'],
+.ui.form .field.error input[type='email'],
+.ui.form .field.error input[type='number'],
+.ui.form .field.error input[type='password'],
+.ui.form .field.error input[type='search'],
+.ui.form .field.error input[type='tel'],
+.ui.form .field.error input[type='time'],
+.ui.form .field.error input[type='text'],
+.ui.form .field.error input[type='file'],
+.ui.form .field.error input[type='url'],
+.ui.form .field.error textarea:focus,
+.ui.form .field.error select:focus,
+.ui.form .field.error input:not([type]):focus,
+.ui.form .field.error input[type='date']:focus,
+.ui.form .field.error input[type='datetime-local']:focus,
+.ui.form .field.error input[type='email']:focus,
+.ui.form .field.error input[type='number']:focus,
+.ui.form .field.error input[type='password']:focus,
+.ui.form .field.error input[type='search']:focus,
+.ui.form .field.error input[type='tel']:focus,
+.ui.form .field.error input[type='time']:focus,
+.ui.form .field.error input[type='text']:focus,
+.ui.form .field.error input[type='file']:focus,
+.ui.form .field.error input[type='url']:focus {
+  border-color: #d01157;
+  background: none;
+}
+
 .ui.form .field > .selection.dropdown {
   height: 60px;
 }
