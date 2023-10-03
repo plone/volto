@@ -223,12 +223,10 @@ Run "npm install -g @plone/generator-volto" to update.`,
       this.destinationPath('.gitignore'),
       this.globals,
     );
-
-    this.fs.copy(this.templatePath(), this.destinationPath(), {
-      globOptions: {
-        ignore: ['**/*.tpl', '**/*~', '**/.gitignorefile'],
+    this.fs.copyTpl(this.templatePath(), this.destinationPath(), {
+      ...this.globals,
+      ignore: ['**/*.tpl', '**/*~', '**/.gitignorefile'],
         dot: true,
-      }
     });
   }
 
