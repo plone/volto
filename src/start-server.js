@@ -4,9 +4,6 @@ import http from 'http';
 import app from './server';
 import debug from 'debug';
 
-import dns from 'dns';
-dns.setDefaultResultOrder('ipv4first');
-
 export default function server() {
   const server = http.createServer(app);
   // const host = process.env.HOST || 'localhost';
