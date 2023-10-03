@@ -1,15 +1,10 @@
-/**
- * Contents workflow modal.
- * @module components/manage/Contents/ContentsWorkflowModal
- */
-
-import React, { Component } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { concat, filter, last, map, uniqBy } from 'lodash';
-import { defineMessages, injectIntl } from 'react-intl';
+import { defineMessages, useIntl } from 'react-intl';
 
+import { usePrevious } from '@plone/volto/helpers';
 import { getWorkflow, transitionWorkflow } from '@plone/volto/actions';
 import { ModalForm } from '@plone/volto/components';
 
@@ -37,158 +32,96 @@ const messages = defineMessages({
   },
 });
 
-/**
- * ContentsWorkflowModal class.
- * @class ContentsWorkflowModal
- * @extends Component
- */
-class ContentsWorkflowModal extends Component {
-  /**
-   * Property types.
-   * @property {Object} propTypes Property types.
-   * @static
-   */
-  static propTypes = {
-    getWorkflow: PropTypes.func.isRequired,
-    transitionWorkflow: PropTypes.func.isRequired,
-    items: PropTypes.arrayOf(PropTypes.string).isRequired,
-    request: PropTypes.shape({
-      loading: PropTypes.bool,
-      loaded: PropTypes.bool,
-    }).isRequired,
-    workflows: PropTypes.arrayOf(
-      PropTypes.shape({
-        transition: PropTypes.shape({
-          '@id': PropTypes.string,
-          title: PropTypes.string,
-        }),
-      }),
-    ).isRequired,
-    open: PropTypes.bool.isRequired,
-    onOk: PropTypes.func.isRequired,
-    onCancel: PropTypes.func.isRequired,
-  };
+const ContentsWorkflowModal = (props) => {
+  const { onOk, items, open, onCancel } = props;
+  const intl = useIntl();
+  const dispatch = useDispatch();
+  const request = useSelector((state) => state.workflow.transition);
+  const workflows = useSelector(
+    (state) => state.workflow.multiple,
+    shallowEqual,
+  );
+  const prevrequestloading = usePrevious(request.loading);
 
-  /**
-   * Constructor
-   * @method constructor
-   * @param {Object} props Component properties
-   * @constructs ContentsUploadModal
-   */
-  constructor(props) {
-    super(props);
-    this.onSubmit = this.onSubmit.bind(this);
-  }
+  useEffect(() => {
+    dispatch(getWorkflow(items));
+  }, [dispatch, items]);
 
-  componentDidMount() {
-    this.props.getWorkflow(this.props.items);
-  }
-
-  /**
-   * Component will receive props
-   * @method componentWillReceiveProps
-   * @param {Object} nextProps Next properties
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (this.props.request.loading && nextProps.request.loaded) {
-      this.props.onOk();
+  useEffect(() => {
+    if (prevrequestloading && request.loaded) {
+      onOk();
     }
-  }
+  }, [onOk, prevrequestloading, request.loaded]);
 
-  /**
-   * Submit handler
-   * @method onSubmit
-   * @param {string} state New state
-   * @returns {undefined}
-   */
-  onSubmit({ state, include_children }) {
-    if (!state) {
-      return;
-    }
-
-    this.props.transitionWorkflow(
-      filter(
-        map(
-          concat(
-            ...map(this.props.workflows, (workflow) => workflow.transitions),
+  const onSubmit = useCallback(
+    ({ state, include_children }) => {
+      if (!state) {
+        return;
+      }
+      dispatch(
+        transitionWorkflow(
+          filter(
+            map(
+              concat(...map(workflows, (workflow) => workflow.transitions)),
+              (item) => item['@id'],
+            ),
+            (x) => last(x.split('/')) === state,
           ),
-          (item) => item['@id'],
+          include_children,
         ),
-        (x) => last(x.split('/')) === state,
-      ),
-      include_children,
-    );
-  }
+      );
+    },
+    [dispatch, workflows],
+  );
 
-  /**
-   * Render method.
-   * @method render
-   * @returns {string} Markup for the component.
-   */
-  render() {
-    return (
-      this.props.open &&
-      this.props.workflows.length > 0 && (
-        <ModalForm
-          open={this.props.open}
-          loading={this.props.request.loading}
-          loadingMessage={this.props.intl.formatMessage(
-            messages.loadingMessage,
-          )}
-          onSubmit={this.onSubmit}
-          onCancel={this.props.onCancel}
-          title={this.props.intl.formatMessage(messages.stateTitle)}
-          schema={{
-            fieldsets: [
-              {
-                id: 'default',
-                title: this.props.intl.formatMessage(messages.default),
-                fields: ['state', 'include_children'],
-              },
-            ],
-            properties: {
-              state: {
-                description: this.props.intl.formatMessage(
-                  messages.stateDescription,
-                ),
-                title: this.props.intl.formatMessage(messages.stateTitle),
-                type: 'string',
-                choices: map(
-                  uniqBy(
-                    concat(
-                      ...map(
-                        this.props.workflows,
-                        (workflow) => workflow.transitions,
-                      ),
-                    ),
-                    (x) => x.title,
-                  ),
-                  (y) => [last(y['@id'].split('/')), y.title],
-                ),
-              },
-              include_children: {
-                title: this.props.intl.formatMessage(
-                  messages.includeChildrenTitle,
-                ),
-                type: 'boolean',
-              },
+  return (
+    open &&
+    workflows.length > 0 && (
+      <ModalForm
+        open={open}
+        loading={request.loading}
+        loadingMessage={intl.formatMessage(messages.loadingMessage)}
+        onSubmit={onSubmit}
+        onCancel={onCancel}
+        title={intl.formatMessage(messages.stateTitle)}
+        schema={{
+          fieldsets: [
+            {
+              id: 'default',
+              title: intl.formatMessage(messages.default),
+              fields: ['state', 'include_children'],
             },
-            required: [],
-          }}
-        />
-      )
-    );
-  }
-}
+          ],
+          properties: {
+            state: {
+              description: intl.formatMessage(messages.stateDescription),
+              title: intl.formatMessage(messages.stateTitle),
+              type: 'string',
+              choices: map(
+                uniqBy(
+                  concat(...map(workflows, (workflow) => workflow.transitions)),
+                  (x) => x.title,
+                ),
+                (y) => [last(y['@id'].split('/')), y.title],
+              ),
+            },
+            include_children: {
+              title: intl.formatMessage(messages.includeChildrenTitle),
+              type: 'boolean',
+            },
+          },
+          required: [],
+        }}
+      />
+    )
+  );
+};
 
-export default compose(
-  injectIntl,
-  connect(
-    (state) => ({
-      request: state.workflow.transition,
-      workflows: state.workflow.multiple,
-    }),
-    { getWorkflow, transitionWorkflow },
-  ),
-)(ContentsWorkflowModal);
+ContentsWorkflowModal.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.string).isRequired,
+  open: PropTypes.bool.isRequired,
+  onOk: PropTypes.func.isRequired,
+  onCancel: PropTypes.func.isRequired,
+};
+
+export default ContentsWorkflowModal;

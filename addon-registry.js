@@ -6,6 +6,12 @@ const debug = require('debug')('shadowing');
 const { map } = require('lodash');
 const { DepGraph } = require('dependency-graph');
 
+const excludedCompilerOptionsPaths = [
+  '@plone/volto/*',
+  '@plone/volto-slate/*',
+  '@root/*',
+];
+
 function getPackageBasePath(base) {
   while (!fs.existsSync(`${base}/package.json`)) {
     base = path.join(base, '../');
@@ -197,7 +203,10 @@ class AddonConfigurationRegistry {
           addons: require(packageJsonPath).addons || [],
         };
 
-        this.packages[name] = Object.assign(this.packages[name] || {}, pkg);
+        // Removed excluded paths from CompilerOptions
+        if (!excludedCompilerOptionsPaths.includes(name)) {
+          this.packages[name] = Object.assign(this.packages[name] || {}, pkg);
+        }
       });
     }
     this.initPackagesFolder();

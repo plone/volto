@@ -40,7 +40,7 @@ contentIcons
     With this property you can configure Content Types icons.
     Those are visible in Contents view (ex "Folder contents").  The default
     ones are in
-    [config/ContentIcons.jsx](https://github.com/plone/volto/blob/master/src/config/ContentIcons.jsx)
+    [config/ContentIcons.jsx](https://github.com/plone/volto/blob/main/src/config/ContentIcons.jsx)
     and you can extend them in your project's config for custom content types
     using `settings.contentIcons`.
 
@@ -425,6 +425,33 @@ okRoute
     ```jsx
       config.settings.okRoute = '/site-is-ok'
     ```
+
+siteTitleFormat
+    Volto lets you modify how the site title is built.
+    By default the site title only includes the title of the current page.
+
+    By modifying this configuration setting, you can decide whether to use the title of the navigation root (either the site root or the language root folder) as the second part of the title.
+
+    You can also decide the separator character between the current page title and the site title.
+
+    ```jsx
+        siteTitleFormat: {
+          includeSiteTitle: true,
+          titleAndSiteTitleSeparator: '-',
+        }
+    ```
+
+querystringSearchGet
+    Volto uses `HTTP POST` requests to query the `@querystring-search` endpoint.
+    This can create a lot of traffic between Volto and the backend, and can also create a lot of cache misses.
+
+    By modifying this configuration setting and setting it to `true`, the endpoint queries will be executed as `HTTP GET` requests.
+    Thus any proxy cache in between Volto and the backend may cache those queries, improving your site performance.
+
+    Please be aware that this could break some other functionality in your site, or some of your queries may break, when they contain more than 2000 characters.
+    [See an explanation of character limits in URLs](https://stackoverflow.com/questions/417142/what-is-the-maximum-length-of-a-url-in-different-browsers/417184#417184).
+    Please test this setting properly before enabling in a production site.
+
 ```
 
 ## Views settings
