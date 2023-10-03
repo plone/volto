@@ -59,9 +59,9 @@ const CommentEditModal = (props) => {
           properties: {
             text: {
               title: intl.formatMessage(messages.comment),
-              type: 'string',
+              type: 'textarea',
               description: '',
-            },
+            },  
           },
           required: ['text'],
         }}
