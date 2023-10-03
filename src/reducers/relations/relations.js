@@ -7,23 +7,29 @@ import {
   CREATE_RELATIONS,
   DELETE_RELATIONS,
   LIST_RELATIONS,
+  STATS_RELATIONS,
   REBUILD_RELATIONS,
 } from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
-  relations: null,
-  stats: null,
+  relations: {
+    error: null,
+    loaded: false,
+    loading: false,
+    data: null,
+  },
+  stats: {
+    error: null,
+    loaded: false,
+    loading: false,
+    data: null,
+  },
   create: {
     error: null,
     loaded: false,
     loading: false,
   },
   delete: {
-    error: null,
-    loaded: false,
-    loading: false,
-  },
-  list: {
     error: null,
     loaded: false,
     loading: false,
@@ -55,17 +61,6 @@ function getRequestKey(actionType) {
  */
 export default function relations(state = initialState, action = {}) {
   switch (action.type) {
-    case `${CREATE_RELATIONS}_PENDING`:
-    case `${DELETE_RELATIONS}_PENDING`:
-    case `${REBUILD_RELATIONS}_PENDING`:
-      return {
-        ...state,
-        [getRequestKey(action.type)]: {
-          loading: true,
-          loaded: false,
-          error: null,
-        },
-      };
     case `${LIST_RELATIONS}_PENDING`:
       return action.subrequest
         ? {
@@ -73,10 +68,7 @@ export default function relations(state = initialState, action = {}) {
             subrequests: {
               ...state.subrequests,
               [action.subrequest]: {
-                ...(state.subrequests[action.subrequest] || {
-                  relations: null,
-                  stats: null,
-                }),
+                data: null,
                 loaded: false,
                 loading: true,
                 error: null,
@@ -85,7 +77,8 @@ export default function relations(state = initialState, action = {}) {
           }
         : {
             ...state,
-            [getRequestKey(action.type)]: {
+            relations: {
+              data: null,
               loading: true,
               loaded: false,
               error: null,
@@ -98,28 +91,88 @@ export default function relations(state = initialState, action = {}) {
             subrequests: {
               ...state.subrequests,
               [action.subrequest]: {
+                data: action.result.relations,
                 loading: false,
                 loaded: true,
                 error: null,
-                relations: action.result.relations
-                  ? action.result.relations
-                  : [],
-                stats: null,
               },
             },
           }
         : {
             ...state,
-            relations: action.result.relations
-              ? action.result.relations
-              : state.relations,
-            stats: action.result.stats ? action.result : state.stats,
-            [getRequestKey(action.type)]: {
+            relations: {
+              data: action.result.relations,
               loading: false,
               loaded: true,
               error: null,
             },
           };
+    case `${LIST_RELATIONS}_FAIL`:
+      return action.subrequest
+        ? {
+            ...state,
+            subrequests: {
+              ...state.subrequests,
+              [action.subrequest]: {
+                data: null,
+                loading: false,
+                loaded: false,
+                error: action.error,
+              },
+            },
+          }
+        : {
+            ...state,
+            relations: {
+              data: null,
+              loading: false,
+              loaded: false,
+              error: action.error,
+            },
+          };
+
+    case `${STATS_RELATIONS}_PENDING`:
+      return {
+        ...state,
+        [getRequestKey(action.type)]: {
+          loading: true,
+          loaded: false,
+          error: null,
+          data: null,
+        },
+      };
+    case `${STATS_RELATIONS}_SUCCESS`:
+      return {
+        ...state,
+        [getRequestKey(action.type)]: {
+          loading: false,
+          loaded: true,
+          error: null,
+          data: action.result,
+        },
+      };
+    case `${STATS_RELATIONS}_FAIL`:
+      return {
+        ...state,
+        [getRequestKey(action.type)]: {
+          loading: false,
+          loaded: false,
+          error: action.error,
+          data: null,
+        },
+      };
+
+    case `${CREATE_RELATIONS}_PENDING`:
+    case `${DELETE_RELATIONS}_PENDING`:
+    case `${REBUILD_RELATIONS}_PENDING`:
+      return {
+        ...state,
+        [getRequestKey(action.type)]: {
+          loading: true,
+          loaded: false,
+          error: null,
+        },
+      };
     case `${CREATE_RELATIONS}_SUCCESS`:
     case `${DELETE_RELATIONS}_SUCCESS`:
     case `${REBUILD_RELATIONS}_SUCCESS`:
@@ -131,31 +184,6 @@ export default function relations(state = initialState, action = {}) {
           error: null,
         },
       };
-    case `${LIST_RELATIONS}_FAIL`:
-      return action.subrequest
-        ? {
-            ...state,
-            subrequests: {
-              ...state.subrequests,
-              [action.subrequest]: {
-                relations: null,
-                stats: null,
-                loading: false,
-                loaded: false,
-                error: action.error,
-              },
-            },
-          }
-        : {
-            ...state,
-            relations: null,
-            stats: null,
-            [getRequestKey(action.type)]: {
-              loading: false,
-              loaded: false,
-              error: action.error,
-            },
-          };
     case `${CREATE_RELATIONS}_FAIL`:
     case `${DELETE_RELATIONS}_FAIL`:
     case `${REBUILD_RELATIONS}_FAIL`:

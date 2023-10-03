@@ -95,6 +95,7 @@ export {
   reorderArray,
   isInteractiveElement,
   slugify,
+  normalizeString,
 } from '@plone/volto/helpers/Utils/Utils';
 export { messages } from './MessageLabels/MessageLabels';
 export {
@@ -121,3 +122,4 @@ export {
   getCurrentStateMapping,
   getWorkflowOptions,
 } from './Workflows/Workflows';
+export { getSiteAsyncPropExtender } from './Site';

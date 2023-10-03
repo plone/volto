@@ -8,6 +8,10 @@ exports[`UsersControlpanelUser renders a UsersControlpanelUser component 1`] = `
     className="fullname"
   >
     Test User
+     
+    (
+    testuser
+    )
   </td>
   <td
     className=""
@@ -97,6 +101,7 @@ exports[`UsersControlpanelUser renders a UsersControlpanelUser component 1`] = `
       >
         <div
           className="item"
+          id="delete-user-button"
           onClick={[Function]}
           role="option"
         >

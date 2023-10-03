@@ -82,7 +82,7 @@ describe('Content reducer', () => {
       }),
     ).toMatchObject({
       subrequests: {
-        '1234': {
+        1234: {
           data: null,
           loaded: false,
           loading: true,
@@ -136,7 +136,7 @@ describe('Content reducer', () => {
       }),
     ).toMatchObject({
       subrequests: {
-        '1234': {
+        1234: {
           data: {
             items: [
               {
@@ -170,7 +170,7 @@ describe('Content reducer', () => {
       }),
     ).toMatchObject({
       subrequests: {
-        '1234': {
+        1234: {
           data: [
             {
               '@id': `${settings.apiPath}/home-page`,
@@ -214,7 +214,7 @@ describe('Content reducer', () => {
       }),
     ).toMatchObject({
       subrequests: {
-        '1234': {
+        1234: {
           data: null,
           loaded: false,
           loading: false,
