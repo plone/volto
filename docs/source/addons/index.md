@@ -224,7 +224,7 @@ to pull the packages. So, create `mrs.developer.json` and add:
 Then run:
 
 ```shell
-yarn develop
+make develop
 ```
 
 Now the add-on is found in `src/addons/`.

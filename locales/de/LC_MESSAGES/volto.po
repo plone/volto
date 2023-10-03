@@ -408,6 +408,11 @@ msgstr "Sind Sie sicher, dass Sie dieses Fieldset löschen möchten?"
 msgid "Ascending"
 msgstr "Aufsteigend"
 
+#: components/manage/Sharing/Sharing
+# defaultMessage: Assign the {role} role to {entry}
+msgid "Assign the {role} role to {entry}"
+msgstr ""
+
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Assignments
 msgid "Assignments"
@@ -503,11 +508,6 @@ msgstr "Seite durchsuchen, Bild ablegen oder URL eingeben"
 # defaultMessage: By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator.
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 msgstr "Standardmäßig werden die Berechtigungen von einem Ordner auf die in ihm befindlichen Artikel vererbt. Wenn Sie dies deaktivieren, sind nur die explizit definierten Zugriffsberechtigungen gültig. In der Übersicht zeigt das Symbol ${image_confirm_icon} einen ererbten Wert an. Das Symbol ${image_link_icon} zeigt eine globale Funktion an, die vom Administrator verwaltet wird."
-
-#: components/manage/Contents/Contents
-# defaultMessage: By deleting this item, you will break links that exist in the items listed below. If this is indeed what you want to do, we recommend that remove these references first.
-msgid "By deleting this item, you will break links that exist in the items listed below. If this is indeed what you want to do, we recommend that remove these references first."
-msgstr "Wenn Sie dieses Element löschen, brechen Sie Links, welche in den unten gelisteten Elementen vorkommen. Wenn Sie das möchten, empfehlen wir, die Referenzen im Vorhinein zu löschen."
 
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Cache Name
@@ -1001,6 +1001,16 @@ msgstr "Löschbedingung"
 msgid "Delete row"
 msgstr "Zeile löschen"
 
+#: components/manage/Contents/Contents
+# defaultMessage: Delete selected items?
+msgid "Delete selected items?"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: Delete this item?
+msgid "Delete this item?"
+msgstr ""
+
 #: components/manage/Controlpanels/Rules/Rules
 # defaultMessage: Deleted
 msgid "Deleted"
@@ -1068,11 +1078,6 @@ msgstr "Lizensiert unter der {license}."
 # defaultMessage: Add border to inner columns
 msgid "Divide each row into separate cells"
 msgstr "Zeile in zwei separate Zellen aufteilen"
-
-#: components/manage/Contents/Contents
-# defaultMessage: Do you really want to delete the following items?
-msgid "Do you really want to delete the following items?"
-msgstr "Möchten Sie den Artikel wirklich löschen?"
 
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 # defaultMessage: Do you really want to delete the group {groupname}?
@@ -1870,11 +1875,6 @@ msgstr "Elemente"
 msgid "Items must be unique."
 msgstr "Auswahl muss eindeutig sein."
 
-#: components/manage/Contents/Contents
-# defaultMessage: Items to be deleted:
-msgid "Items to be deleted:"
-msgstr "Zu löschende Elemente:"
-
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Label
 msgid "Label"
@@ -1948,9 +1948,9 @@ msgid "Link"
 msgstr "Link"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Link copied to clipboard
+# defaultMessage: Anchor link copied to the clipboard
 msgid "Link copied to clipboard"
-msgstr "Link in Zwischenablage kopiert."
+msgstr "Anker-Link wurde in die Zwischenablage kopiert"
 
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
@@ -2613,11 +2613,6 @@ msgstr "Position geändert"
 msgid "Possible values"
 msgstr "Mögliche Werte"
 
-#: components/manage/Contents/Contents
-# defaultMessage: Potential link breakage
-msgid "Potential link breakage"
-msgstr "Potenziell werden Links ungültig"
-
 #: components/theme/Footer/Footer
 # defaultMessage: Powered by Plone & Python
 msgid "Powered by Plone & Python"
@@ -3003,6 +2998,7 @@ msgstr "Aktualisierungen Schema"
 #: components/manage/Blocks/Search/layout/RightColumnFacets
 #: components/manage/Blocks/Search/layout/TopSideFacets
 #: components/manage/Blocks/Search/schema
+#: components/manage/Sharing/Sharing
 #: components/theme/Search/Search
 #: components/theme/SearchWidget/SearchWidget
 # defaultMessage: Search
@@ -3308,6 +3304,16 @@ msgstr "Grösse: {size}"
 # defaultMessage: Small
 msgid "Small"
 msgstr "Klein"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Some items are also a folder.
+msgid "Some items are also a folder."
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken.
+msgid "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
+msgstr ""
 
 #: components/manage/Controlpanels/Relations/Relations
 # defaultMessage: Some relations are broken. Please fix.
@@ -3659,11 +3665,6 @@ msgstr "Es sind Fehler aufgetreten."
 msgid "Third"
 msgstr "Dritter"
 
-#: components/manage/Contents/Contents
-# defaultMessage: This Page is referenced by the following items:
-msgid "This Page is referenced by the following items:"
-msgstr "Diese Seite wird von folgenden Elementen referenziert:"
-
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 # defaultMessage: This has an ongoing working copy in {title}
 msgid "This has an ongoing working copy in {title}"
@@ -3678,6 +3679,16 @@ msgstr "Dies ist ein reservierter Name und kann nicht verwendet werden"
 # defaultMessage: This is a working copy of {title}
 msgid "This is a working copy of {title}"
 msgstr "Das ist eine Arbeitskopie von {title}"
+
+#: components/manage/Contents/Contents
+# defaultMessage: This item is also a folder.
+msgid "This item is also a folder."
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: This item is referenced by other items. By deleting it {brokenReferences} {variation} will be broken.
+msgid "This item is referenced by other items. By deleting it {brokenReferences} {variation} will be broken."
+msgstr ""
 
 #: components/manage/LockingToastsFactory/LockingToastsFactory
 # defaultMessage: This item was locked by {creator} on {date}
@@ -3734,11 +3745,6 @@ msgstr "Anzahl aktive und nicht-aktive Objekte"
 # defaultMessage: Total comments
 msgid "Total comments"
 msgstr "Anzahl Komentare"
-
-#: components/manage/Contents/Contents
-# defaultMessage: Total items to be deleted:
-msgid "Total items to be deleted:"
-msgstr ""
 
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Total number of objects in each cache
@@ -4091,6 +4097,11 @@ msgstr "Video URL"
 # defaultMessage: View
 msgid "View"
 msgstr "Anzeigen"
+
+#: components/manage/Contents/Contents
+# defaultMessage: View broken links list
+msgid "View broken links list"
+msgstr ""
 
 #: components/manage/History/History
 # defaultMessage: View changes
@@ -4506,6 +4517,16 @@ msgstr "Ganzzahl"
 msgid "intranet"
 msgstr "Intranet"
 
+#: components/manage/Contents/Contents
+# defaultMessage: item
+msgid "item"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: items
+msgid "items"
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: My email is
 msgid "label_my_email_is"
@@ -4634,6 +4655,16 @@ msgstr "Auswahl"
 # defaultMessage: rebuild relations
 msgid "rebuild relations"
 msgstr "Relationen neu indizieren"
+
+#: components/manage/Contents/Contents
+# defaultMessage: reference
+msgid "reference"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: references
+msgid "references"
+msgstr ""
 
 #: components/theme/Search/Search
 # defaultMessage: results
