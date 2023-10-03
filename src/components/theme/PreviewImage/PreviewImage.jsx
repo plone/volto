@@ -7,13 +7,17 @@ import DefaultImageSVG from '@plone/volto/components/manage/Blocks/Listing/defau
 /**
  * Renders a preview image for a catalog brain result item.
  */
-function PreviewImage({ item, alt, ...rest }) {
+function PreviewImage({ item, alt, image_field, showDefault = true, ...rest }) {
   const Image = config.getComponent({ name: 'Image' }).component;
 
-  if (item.image_field && item.image_scales?.[item.image_field]?.[0]) {
-    return (
-      <Image item={item} imageField={item.image_field} alt={alt} {...rest} />
-    );
+  const image = (
+    <Image item={item} image_field={image_field} alt={alt} {...rest} />
+  );
+
+  if (!image && !showDefault) return null;
+
+  if (image) {
+    return image;
   } else {
     return (
       <img
@@ -38,6 +42,7 @@ PreviewImage.propTypes = {
     title: PropTypes.string.isRequired,
     image_field: PropTypes.string,
     image_scales: PropTypes.object,
+    showDefault: PropTypes.bool,
   }),
   alt: PropTypes.string.isRequired,
 };

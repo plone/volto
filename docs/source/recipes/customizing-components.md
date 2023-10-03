@@ -12,7 +12,7 @@ myst:
 You are able to customize the existing Volto components using a pattern called
 {term}`component shadowing` using the `customizations` folder. You have to identify and locate
 the component that you want to customize, let's say the Logo component in [Volto source
-code](https://github.com/plone/volto/tree/master/src).
+code](https://github.com/plone/volto/tree/main/src).
 
 ```{tip}
 Those familiar with Plone's JBOT customizing add-on will recognize this pattern
