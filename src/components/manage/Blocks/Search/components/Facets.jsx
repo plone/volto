@@ -103,9 +103,8 @@ const Facets = (props) => {
 
           let value = stateToValue({ facetSettings, index, selectedValue });
 
-          const {
-            rewriteOptions = (name, options) => options,
-          } = search.extensions.facetWidgets;
+          const { rewriteOptions = (name, options) => options } =
+            search.extensions.facetWidgets;
 
           return FacetWrapper && (isEditMode || showFacet(index)) ? (
             <FacetWrapper

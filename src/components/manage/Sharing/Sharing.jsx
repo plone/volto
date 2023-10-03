@@ -39,6 +39,10 @@ const messages = defineMessages({
     id: 'Search for user or group',
     defaultMessage: 'Search for user or group',
   },
+  search: {
+    id: 'Search',
+    defaultMessage: 'Search',
+  },
   inherit: {
     id: 'Inherit permissions from higher levels',
     defaultMessage: 'Inherit permissions from higher levels',
@@ -82,6 +86,10 @@ const messages = defineMessages({
   permissionsUpdatedSuccessfully: {
     id: 'Permissions have been updated successfully',
     defaultMessage: 'Permissions have been updated successfully',
+  },
+  assignNewRoles: {
+    id: 'Assign the {role} role to {entry}',
+    defaultMessage: 'Assign the {role} role to {entry}',
   },
 });
 
@@ -343,6 +351,9 @@ class SharingComponent extends Component {
                           icon: 'search',
                           loading: isLoading,
                           disabled: isLoading,
+                          'aria-label': this.props.intl.formatMessage(
+                            messages.search,
+                          ),
                         }}
                         placeholder={this.props.intl.formatMessage(
                           messages.searchForUserOrGroup,
@@ -412,6 +423,20 @@ class SharingComponent extends Component {
                           )}
                           {typeof entry.roles[role.id] === 'boolean' && (
                             <Checkbox
+                              name={this.props.intl.formatMessage(
+                                messages.assignNewRoles,
+                                {
+                                  entry: entry.title,
+                                  role: role.id,
+                                },
+                              )}
+                              aria-label={this.props.intl.formatMessage(
+                                messages.assignNewRoles,
+                                {
+                                  entry: entry.title,
+                                  role: role.id,
+                                },
+                              )}
                               onChange={this.onChange}
                               value={`${entry.id}:${role.id}`}
                               checked={entry.roles[role.id]}
