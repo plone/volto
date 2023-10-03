@@ -1,0 +1,1 @@
+Normalize the shape of the image component item prop if it contains the serialized object after creation to match the one in the catalog. @sneridagh
