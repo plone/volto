@@ -1,1 +1,0 @@
-Reenable GHA vale checking, but with configuration from `plone/documentation`. It now runs Vale, but with the flag `--no-exit` which means "Don't return a nonzero exit code on errors." It also eliminates reviewdog as the test runner. @stevepiercy
