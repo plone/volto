@@ -44,7 +44,7 @@
     "test:husky": "CI=true yarn test --bail --findRelatedTests",
     "test:debug": "node --inspect node_modules/.bin/jest --runInBand",
     "start:prod": "NODE_ENV=production node build/server.js",
-    "prettier": "./node_modules/.bin/prettier --single-quote --check 'src/**/*.{js,jsx,ts,tsx,json}'",
+    "prettier": "./node_modules/.bin/prettier --single-quote --check 'src/**/*.{js,jsx,ts,tsx,json}' --check '*.js'",
     "prettier:fix": "./node_modules/.bin/prettier --single-quote --write 'src/**/*.{js,jsx,ts,tsx,json}'",
     "stylelint": "./node_modules/.bin/stylelint 'theme/**/*.{css,less}' 'src/**/*.{css,less}'",
     "stylelint:overrides": "./node_modules/.bin/stylelint 'theme/**/*.overrides' 'src/**/*.overrides'",
