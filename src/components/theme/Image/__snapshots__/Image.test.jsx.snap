@@ -6,8 +6,8 @@ exports[`renders an image component from a catalog brain 1`] = `
   className=""
   fetchpriority="high"
   height={400}
-  src="/image/@@images/image/image.png"
-  srcSet="/image/@@images/image/image-400.png 400w"
+  src="/image/@@images/image.png"
+  srcSet="/image/@@images/image-400.png 400w"
   style={
     Object {
       "aspectRatio": "400 / 400",
@@ -32,8 +32,8 @@ exports[`renders an image component with fetchpriority high 1`] = `
   className=""
   fetchpriority="high"
   height={400}
-  src="/image/@@images/image/image.png"
-  srcSet="/image/@@images/image/image-400.png 400w"
+  src="/image/@@images/image.png"
+  srcSet="/image/@@images/image-400.png 400w"
   style={
     Object {
       "aspectRatio": "400 / 400",
@@ -50,8 +50,8 @@ exports[`renders an image component with lazy loading 1`] = `
   decoding="async"
   height={400}
   loading="lazy"
-  src="/image/@@images/image/image.png"
-  srcSet="/image/@@images/image/image-400.png 400w"
+  src="/image/@@images/image.png"
+  srcSet="/image/@@images/image-400.png 400w"
   style={
     Object {
       "aspectRatio": "400 / 400",
@@ -67,8 +67,8 @@ exports[`renders an image component with responsive class 1`] = `
   className="responsive"
   fetchpriority="high"
   height={400}
-  src="/image/@@images/image/image.png"
-  srcSet="/image/@@images/image/image-400.png 400w"
+  src="/image/@@images/image-1200.png"
+  srcSet="/image/@@images/image-400.png 400w"
   style={
     Object {
       "aspectRatio": "400 / 400",

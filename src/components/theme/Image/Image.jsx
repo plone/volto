@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { flattenToAppURL, flattenScales } from '@plone/volto/helpers';
 
 /**
  * Image component
@@ -36,16 +36,17 @@ export default function Image({
     const imageFieldWithDefault = imageField || item.image_field || 'image';
 
     const image = isFromRealObject
-      ? item[imageFieldWithDefault]
-      : item.image_scales[imageFieldWithDefault]?.[0];
+      ? flattenScales(item['@id'], item[imageFieldWithDefault])
+      : flattenScales(
+          item['@id'],
+          item.image_scales[imageFieldWithDefault]?.[0],
+        );
 
     if (!image) return null;
 
     const isSvg = image['content-type'] === 'image/svg+xml';
 
-    const baseUrl = isFromRealObject ? '' : flattenToAppURL(item['@id'] + '/');
-
-    attrs.src = `${baseUrl}${flattenToAppURL(image.download)}`;
+    attrs.src = `${flattenToAppURL(item['@id'])}/${image.download}`;
     attrs.width = image.width;
     attrs.height = image.height;
     attrs.style = {
@@ -64,7 +65,7 @@ export default function Image({
       attrs.srcSet = sortedScales
         .map(
           (scale) =>
-            `${baseUrl}${flattenToAppURL(scale.download)} ${scale.width}w`,
+            `${flattenToAppURL(item['@id'])}/${scale.download} ${scale.width}w`,
         )
         .join(', ');
     }

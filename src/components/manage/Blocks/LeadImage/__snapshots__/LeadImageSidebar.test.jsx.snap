@@ -20,8 +20,8 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
       fetchpriority="high"
       height={400}
       sizes="188px"
-      src="/image.png"
-      srcSet="/image.png/@@images/image/image-400.png 400w"
+      src="/image.png/@@images/image-1200.png"
+      srcSet="/image.png/@@images/image-400.png 400w"
       style={
         Object {
           "aspectRatio": "400 / 400",
