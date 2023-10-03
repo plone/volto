@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { defineMessages } from 'react-intl';
 import { compose } from 'redux';
 
@@ -26,7 +26,6 @@ const SearchBlockEdit = (props) => {
     data,
     selected,
     intl,
-    onTriggerSearch,
     querystring = {},
   } = props;
   const { sortable_indexes = {} } = querystring;
@@ -57,8 +56,6 @@ const SearchBlockEdit = (props) => {
       sortable_indexes[k].title,
     ]),
   };
-
-  const { query = {} } = data || {};
 
   return (
     <>
