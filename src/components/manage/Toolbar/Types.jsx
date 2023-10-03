@@ -4,11 +4,12 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { filter, find, isEmpty, map } from 'lodash';
 import { FormattedMessage } from 'react-intl';
-import { flattenToAppURL, langmap, toBackendLang } from '@plone/volto/helpers';
+import { useUrlHelpers, langmap, toBackendLang } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
 const Types = ({ types, pathname, content, currentLanguage }) => {
   const { settings } = config;
+  const { flattenToAppURL } = useUrlHelpers();
   return types.length > 0 ||
     (settings.isMultilingual && content['@components'].translations) ? (
     <div className="menu-more pastanaga-menu">

@@ -12,7 +12,7 @@ import deleteSVG from '@plone/volto/icons/delete.svg';
 import { Icon, FormFieldWrapper } from '@plone/volto/components';
 import loadable from '@loadable/component';
 import { defineMessages, useIntl } from 'react-intl';
-import { toPublicURL, validateFileUploadSize } from '@plone/volto/helpers';
+import { useUrlHelpers, validateFileUploadSize } from '@plone/volto/helpers';
 
 const imageMimetypes = [
   'image/png',
@@ -73,6 +73,7 @@ const messages = defineMessages({
 const RegistryImageWidget = (props) => {
   const { id, value, onChange, isDisabled } = props;
   const intl = useIntl();
+  const { toPublicURL } = useUrlHelpers();
 
   const fileName = value?.split(';')[0];
   const imgsrc = fileName

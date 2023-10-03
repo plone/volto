@@ -4,10 +4,11 @@ import { FormattedMessage } from 'react-intl';
 import { useSelector, useDispatch } from 'react-redux';
 import { Divider, Segment, Table } from 'semantic-ui-react';
 import { queryRelations } from '@plone/volto/actions';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { useUrlHelpers } from '@plone/volto/helpers';
 import { ConditionalLink } from '@plone/volto/components';
 
 const BrokenRelations = () => {
+  const { flattenToAppURL } = useUrlHelpers();
   const dispatch = useDispatch();
   const brokenRelationStats = useSelector(
     (state) => state.relations?.stats?.data?.broken || {},

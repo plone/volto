@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { Embed, Message } from 'semantic-ui-react';
 import cx from 'classnames';
-import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers';
+import { useUrlHelpers } from '@plone/volto/helpers';
 
 /**
  * Body video block class.
@@ -16,6 +16,7 @@ import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers';
  * @extends Component
  */
 const Body = ({ data, isEditMode }) => {
+  const { isInternalURL, flattenToAppURL } = useUrlHelpers();
   let placeholder = data.preview_image
     ? isInternalURL(data.preview_image)
       ? `${flattenToAppURL(data.preview_image)}/@@images/image`

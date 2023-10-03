@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import {
-  toPublicURL,
   Helmet,
   hasApiExpander,
   getBaseUrl,
+  useUrlHelpers,
 } from '@plone/volto/helpers';
 import { getNavroot } from '@plone/volto/actions';
 import config from '@plone/volto/registry';
@@ -21,6 +21,7 @@ const ContentMetadataTags = (props) => {
     description,
   } = props.content;
 
+  const { toPublicURL } = useUrlHelpers();
   const dispatch = useDispatch();
   const pathname = useSelector((state) => state.router.location.pathname);
   const navroot = useSelector((state) => state.navroot?.data?.navroot);

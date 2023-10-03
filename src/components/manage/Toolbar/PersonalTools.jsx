@@ -9,11 +9,7 @@ import { FormattedMessage, useIntl, defineMessages } from 'react-intl';
 import { Icon } from '@plone/volto/components';
 import { getUser } from '@plone/volto/actions';
 import { Pluggable } from '@plone/volto/components/manage/Pluggable';
-import {
-  flattenToAppURL,
-  getBaseUrl,
-  userHasRoles,
-} from '@plone/volto/helpers';
+import { useUrlHelpers, getBaseUrl, userHasRoles } from '@plone/volto/helpers';
 import logoutSVG from '@plone/volto/icons/log-out.svg';
 import rightArrowSVG from '@plone/volto/icons/right-key.svg';
 import backSVG from '@plone/volto/icons/back.svg';
@@ -43,6 +39,7 @@ const messages = defineMessages({
 });
 
 const PersonalTools = (props) => {
+  const { flattenToAppURL } = useUrlHelpers();
   const dispatch = useDispatch();
   const intl = useIntl();
   const { pathname } = useLocation();

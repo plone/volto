@@ -14,8 +14,8 @@ import { find, map } from 'lodash';
 import {
   Helmet,
   langmap,
-  flattenToAppURL,
   toReactIntlLang,
+  useUrlHelpers,
 } from '@plone/volto/helpers';
 
 import config from '@plone/volto/registry';
@@ -30,6 +30,7 @@ const messages = defineMessages({
 });
 
 const LanguageSelector = (props) => {
+  const { flattenToAppURL } = useUrlHelpers();
   const intl = useIntl();
   const currentLang = useSelector((state) => state.intl.locale);
   const translations = useSelector(

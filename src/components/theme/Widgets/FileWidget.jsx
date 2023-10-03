@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { useUrlHelpers } from '@plone/volto/helpers';
 import { UniversalLink } from '@plone/volto/components';
 
 const niceBytes = (bytes) => {
@@ -17,6 +17,7 @@ const niceBytes = (bytes) => {
 };
 
 const FileWidget = ({ value, children, className }) => {
+  const { flattenToAppURL } = useUrlHelpers();
   if (!value) {
     return '';
   }

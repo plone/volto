@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { useUrlHelpers } from '@plone/volto/helpers';
 
 /**
  * Image component
@@ -22,6 +22,7 @@ export default function Image({
   className = '',
   ...imageProps
 }) {
+  const { flattenToAppURL } = useUrlHelpers();
   if (!item && !src) return null;
 
   // TypeScript hints for editor autocomplete :)

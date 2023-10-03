@@ -35,7 +35,7 @@ import {
 import move from 'lodash-move';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import { asyncConnect } from '@plone/volto/helpers';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { injectUrlHelpers } from '@plone/volto/helpers';
 
 import {
   searchContent,
@@ -1153,6 +1153,7 @@ class Contents extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const { flattenToAppURL } = this.props.urlHelpers;
     const selected = this.state.selected.length > 0;
     const filteredItems = this.state.filteredItems || this.state.selected;
     const path = getBaseUrl(this.props.pathname);
@@ -2134,6 +2135,7 @@ const DragDropConnector = (props) => {
 };
 
 export const __test__ = compose(
+  injectUrlHelpers,
   injectIntl,
   injectLazyLibs(['toastify', 'reactDnd']),
   connect(
@@ -2177,6 +2179,7 @@ export const __test__ = compose(
 )(Contents);
 
 export default compose(
+  injectUrlHelpers,
   injectIntl,
   connect(
     (store, props) => {

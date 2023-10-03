@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Segment, Button } from 'semantic-ui-react';
 import { useIntl, FormattedMessage, defineMessages } from 'react-intl';
-import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers';
+import { useUrlHelpers } from '@plone/volto/helpers';
 import { BlockDataForm, Icon, Image } from '@plone/volto/components';
 import { ImageSchema } from './schema';
 import imageSVG from '@plone/volto/icons/image.svg';
@@ -12,6 +12,7 @@ const ImageSidebar = (props) => {
   const { blocksConfig, data, block, onChangeBlock } = props;
   const intl = useIntl();
   const schema = ImageSchema({ formData: data, intl });
+  const { flattenToAppURL, isInternalURL } = useUrlHelpers();
   return (
     <>
       <header className="header pulled">

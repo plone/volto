@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { useUrlHelpers } from '@plone/volto/helpers';
 
 const niceBytes = (bytes) => {
   bytes = Number(bytes);
@@ -15,8 +15,9 @@ const niceBytes = (bytes) => {
   return fixed + suffix;
 };
 
-const ImageWidget = ({ value, className }) =>
-  value ? (
+const ImageWidget = ({ value, className }) => {
+  const { flattenToAppURL } = useUrlHelpers();
+  return value ? (
     <span className={cx(className, 'image', 'widget')}>
       <img
         src={
@@ -33,5 +34,6 @@ const ImageWidget = ({ value, className }) =>
   ) : (
     ''
   );
+};
 
 export default ImageWidget;

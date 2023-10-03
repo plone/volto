@@ -10,12 +10,11 @@ import { compact, isArray, isEmpty, remove } from 'lodash';
 import { connect } from 'react-redux';
 import { Label, Popup, Button } from 'semantic-ui-react';
 import {
-  flattenToAppURL,
-  isInternalURL,
+  injectUrlHelpers,
   isUrl,
   normalizeUrl,
   removeProtocol,
-} from '@plone/volto/helpers/Url/Url';
+} from '@plone/volto/helpers';
 import { searchContent } from '@plone/volto/actions/search/search';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import { defineMessages, injectIntl } from 'react-intl';
@@ -106,6 +105,7 @@ export class ObjectBrowserWidgetComponent extends Component {
   }
   renderLabel(item) {
     const href = item['@id'];
+    const { flattenToAppURL, isInternalURL } = this.props.urlHelpers;
     return (
       <Popup
         key={flattenToAppURL(href)}
@@ -163,6 +163,7 @@ export class ObjectBrowserWidgetComponent extends Component {
     }
     let exists = false;
     let index = -1;
+    const { flattenToAppURL } = this.props.urlHelpers;
     value.forEach((_item, _index) => {
       if (flattenToAppURL(_item['@id']) === flattenToAppURL(item['@id'])) {
         exists = true;
@@ -215,6 +216,7 @@ export class ObjectBrowserWidgetComponent extends Component {
   };
 
   validateManualLink = (url) => {
+    const { isInternalURL } = this.props.urlHelpers;
     if (this.props.allowExternals) {
       return isUrl(url);
     } else {
@@ -223,6 +225,7 @@ export class ObjectBrowserWidgetComponent extends Component {
   };
 
   onSubmitManualLink = () => {
+    const { flattenToAppURL, isInternalURL } = this.props.urlHelpers;
     if (this.validateManualLink(this.state.manualLinkInput)) {
       if (isInternalURL(this.state.manualLinkInput)) {
         const link = this.state.manualLinkInput;
@@ -413,6 +416,7 @@ export class ObjectBrowserWidgetComponent extends Component {
 
 const ObjectBrowserWidgetMode = (mode) =>
   compose(
+    injectUrlHelpers,
     injectIntl,
     withObjectBrowser,
     withRouter,
@@ -420,6 +424,7 @@ const ObjectBrowserWidgetMode = (mode) =>
   )((props) => <ObjectBrowserWidgetComponent {...props} mode={mode} />);
 export { ObjectBrowserWidgetMode };
 export default compose(
+  injectUrlHelpers,
   injectIntl,
   withObjectBrowser,
   withRouter,

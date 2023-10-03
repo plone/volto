@@ -15,7 +15,7 @@ import cx from 'classnames';
 
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import {
-  flattenToAppURL,
+  injectUrlHelpers,
   getBaseUrl,
   validateFileUploadSize,
 } from '@plone/volto/helpers';
@@ -310,6 +310,7 @@ class EditComponent extends Component {
       return <div />;
     }
     const { Editor } = this.props.draftJs;
+    const { flattenToAppURL } = this.props.urlHelpers;
     const placeholder =
       this.props.data.placeholder ||
       this.props.intl.formatMessage(messages.placeholder);
@@ -482,6 +483,7 @@ const Edit = injectLazyLibs(['draftJs', 'immutableLib', 'draftJsImportHtml'])(
 );
 
 export default compose(
+  injectUrlHelpers,
   injectIntl,
   connect(
     (state, ownProps) => ({

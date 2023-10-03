@@ -1,4 +1,3 @@
-import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
@@ -37,7 +36,11 @@ config.blocks.blocksConfig = {
 
 describe('Image View Component', () => {
   test('renders a view image component with a local image', () => {
-    const { getByRole } = render(<View data={{ url: '/image.jpg' }} />);
+    const { getByRole } = render(
+      <Provider store={store}>
+        <View data={{ url: '/image.jpg' }} />
+      </Provider>,
+    );
     const img = getByRole('img');
     expect(img).toHaveAttribute('src', '/image.jpg/@@images/image');
     expect(img).toHaveAttribute('loading', 'lazy');

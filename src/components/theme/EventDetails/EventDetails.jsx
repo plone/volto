@@ -6,7 +6,7 @@ import {
   Recurrence,
 } from '@plone/volto/components/theme/View/EventDatesInfo';
 import { Icon } from '@plone/volto/components';
-import { expandToBackendURL } from '@plone/volto/helpers';
+import { useUrlHelpers } from '@plone/volto/helpers';
 
 import calendarSVG from '@plone/volto/icons/calendar.svg';
 
@@ -55,6 +55,7 @@ const messages = defineMessages({
 
 const EventDetails = ({ content, display_as = 'aside' }) => {
   const intl = useIntl();
+  const { expandToBackendURL } = useUrlHelpers();
   return (
     <Segment
       as={display_as}

@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { defineMessages, useIntl } from 'react-intl';
 import { Toast } from '@plone/volto/components';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { useUrlHelpers } from '@plone/volto/helpers';
 import { FormattedDate } from '@plone/volto/components';
 import config from '@plone/volto/registry';
 import useDeepCompareEffect from 'use-deep-compare-effect';
@@ -26,6 +26,7 @@ const messages = defineMessages({
 });
 
 const WorkingCopyToastsFactory = (props) => {
+  const { flattenToAppURL } = useUrlHelpers();
   const intl = useIntl();
   const pathname = useLocation().pathname;
   const lang = useSelector((state) => state.intl.locale);

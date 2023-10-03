@@ -8,7 +8,7 @@ import { defineMessages, useIntl } from 'react-intl';
 
 import { FormFieldWrapper, Icon, Toast } from '@plone/volto/components';
 import {
-  flattenToAppURL,
+  useUrlHelpers,
   getWorkflowOptions,
   getCurrentStateMapping,
 } from '@plone/volto/helpers';
@@ -175,6 +175,7 @@ function useWorkflow() {
 }
 
 const Workflow = (props) => {
+  const { flattenToAppURL } = useUrlHelpers();
   const intl = useIntl();
   const dispatch = useDispatch();
   const { loaded, transitions, currentStateValue } = useWorkflow();

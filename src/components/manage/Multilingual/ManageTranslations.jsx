@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Container, Segment, Table } from 'semantic-ui-react';
 import { Helmet } from '@plone/volto/helpers';
-import { flattenToAppURL, getBaseUrl, langmap } from '@plone/volto/helpers';
+import { useUrlHelpers, getBaseUrl, langmap } from '@plone/volto/helpers';
 import { reduce } from 'lodash';
 import { Link, useLocation } from 'react-router-dom';
 import { Icon, Toast, Toolbar } from '@plone/volto/components';
@@ -59,6 +59,7 @@ const messages = defineMessages({
 });
 
 const ManageTranslations = (props) => {
+  const { flattenToAppURL } = useUrlHelpers();
   const intl = useIntl();
   const pathname = useLocation().pathname;
   const content = useSelector((state) => state.content.data);

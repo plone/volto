@@ -12,7 +12,7 @@ import { join } from 'lodash';
 // the very nature of the functionality of the component and its relationship with others
 import { searchContent } from '@plone/volto/actions/search/search';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
-import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers/Url/Url';
+import { injectUrlHelpers } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
 import backSVG from '@plone/volto/icons/back.svg';
@@ -45,6 +45,7 @@ const messages = defineMessages({
 });
 
 function getParentURL(url) {
+  const { flattenToAppURL } = this.props.urlHelpers;
   return flattenToAppURL(`${join(url.split('/').slice(0, -1), '/')}`) || '/';
 }
 
@@ -97,6 +98,7 @@ class ObjectBrowserBody extends Component {
    */
   constructor(props) {
     super(props);
+    const { flattenToAppURL } = props.urlHelpers;
     this.state = {
       currentFolder:
         this.props.mode === 'multiple' ? '/' : this.props.contextURL || '/',
@@ -146,6 +148,7 @@ class ObjectBrowserBody extends Component {
   }
 
   initialSearch = (mode) => {
+    const { isInternalURL } = this.props.urlHelpers;
     const currentSelected =
       mode === 'multiple'
         ? ''
@@ -206,6 +209,7 @@ class ObjectBrowserBody extends Component {
     );
 
   onSearch = (e) => {
+    const { flattenToAppURL } = this.props.urlHelpers;
     const text = flattenToAppURL(e.target.value);
     if (text.startsWith('/')) {
       this.setState({ currentFolder: text });
@@ -246,6 +250,7 @@ class ObjectBrowserBody extends Component {
   onSelectItem = (item) => {
     const url = item['@id'];
     const { block, data, mode, dataName, onChangeBlock } = this.props;
+    const { flattenToAppURL } = this.props.urlHelpers;
 
     const updateState = (mode) => {
       switch (mode) {
@@ -498,6 +503,7 @@ class ObjectBrowserBody extends Component {
 }
 
 export default compose(
+  injectUrlHelpers,
   injectIntl,
   connect(
     (state) => ({

@@ -28,7 +28,7 @@ import {
 import {
   getBaseUrl,
   hasBlocksData,
-  flattenToAppURL,
+  injectUrlHelpers,
   getBlocksFieldname,
   getBlocksLayoutFieldname,
   getLanguageIndependentFields,
@@ -164,6 +164,7 @@ class Add extends Component {
       nextProps.createRequest.loaded &&
       nextProps.content['@type'] === this.props.type
     ) {
+      const { flattenToAppURL } = this.props.urlHelpers;
       this.props.history.push(
         this.props.returnUrl || flattenToAppURL(nextProps.content['@id']),
       );
@@ -446,6 +447,7 @@ class Add extends Component {
 }
 
 export default compose(
+  injectUrlHelpers,
   injectIntl,
   connect(
     (state, props) => ({

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Menu } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { useUrlHelpers } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 import { useSelector, shallowEqual } from 'react-redux';
 
@@ -11,6 +11,7 @@ const Anontools = () => {
   const content = useSelector((state) => state.content.data, shallowEqual);
 
   const { settings } = config;
+  const { flattenToAppURL } = useUrlHelpers();
   return (
     !token && (
       <Menu pointing secondary floated="right">

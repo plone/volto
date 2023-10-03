@@ -11,7 +11,7 @@ import { injectIntl } from 'react-intl';
 import deleteSVG from '@plone/volto/icons/delete.svg';
 import { Icon, FormFieldWrapper } from '@plone/volto/components';
 import loadable from '@loadable/component';
-import { flattenToAppURL, validateFileUploadSize } from '@plone/volto/helpers';
+import { useUrlHelpers, validateFileUploadSize } from '@plone/volto/helpers';
 import { defineMessages, useIntl } from 'react-intl';
 
 const imageMimetypes = [
@@ -74,6 +74,7 @@ const FileWidget = (props) => {
   const { id, value, onChange, isDisabled } = props;
   const [fileType, setFileType] = React.useState(false);
   const intl = useIntl();
+  const { flattenToAppURL } = useUrlHelpers();
 
   React.useEffect(() => {
     if (value && imageMimetypes.includes(value['content-type'])) {

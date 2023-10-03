@@ -17,9 +17,8 @@ import { isEqual } from 'lodash';
 import { Icon, ImageSidebar, SidebarPortal } from '@plone/volto/components';
 import { createContent } from '@plone/volto/actions';
 import {
-  flattenToAppURL,
+  injectUrlHelpers,
   getBaseUrl,
-  isInternalURL,
   withBlockExtensions,
   validateFileUploadSize,
 } from '@plone/volto/helpers';
@@ -172,6 +171,7 @@ class Edit extends Component {
    * @returns {undefined}
    */
   onSubmitUrl = () => {
+    const { flattenToAppURL } = this.props.urlHelpers;
     this.props.onChangeBlock(this.props.block, {
       ...this.props.data,
       url: flattenToAppURL(this.state.url),
@@ -248,6 +248,7 @@ class Edit extends Component {
   render() {
     const Image = config.getComponent({ name: 'Image' }).component;
     const { data } = this.props;
+    const { isInternalURL, flattenToAppURL } = this.props.urlHelpers;
     const placeholder =
       this.props.data.placeholder ||
       this.props.intl.formatMessage(messages.ImageBlockInputPlaceholder);
@@ -423,6 +424,7 @@ class Edit extends Component {
 }
 
 export default compose(
+  injectUrlHelpers,
   injectIntl,
   withBlockExtensions,
   connect(

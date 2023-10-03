@@ -9,12 +9,7 @@ import { compose } from 'redux';
 
 // import unionClassNames from 'union-class-names';
 import cx from 'classnames';
-import {
-  addAppURL,
-  isInternalURL,
-  flattenToAppURL,
-  URLUtils,
-} from '@plone/volto/helpers';
+import { addAppURL, injectUrlHelpers, URLUtils } from '@plone/volto/helpers';
 
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import { Input, Form, Button } from 'semantic-ui-react';
@@ -62,7 +57,7 @@ class AddLinkForm extends Component {
    */
   constructor(props) {
     super(props);
-
+    const { isInternalURL, flattenToAppURL } = props.urlHelpers;
     this.state = {
       value: isInternalURL(props.data.url)
         ? flattenToAppURL(props.data.url)
@@ -119,6 +114,7 @@ class AddLinkForm extends Component {
    * @returns {undefined}
    */
   onChange(value, clear) {
+    const { isInternalURL, flattenToAppURL } = this.props.urlHelpers;
     let nextState = { value };
     if (!clear) {
       if (
@@ -204,7 +200,7 @@ class AddLinkForm extends Component {
       this.setState({ isInvalid: true });
       return;
     }
-
+    const { isInternalURL } = this.props.urlHelpers;
     const editorStateUrl = isInternalURL(url) ? addAppURL(url) : url;
 
     this.props.onChangeValue(editorStateUrl);
@@ -315,4 +311,9 @@ class AddLinkForm extends Component {
   }
 }
 
-export default compose(injectIntl, withRouter, withObjectBrowser)(AddLinkForm);
+export default compose(
+  injectUrlHelpers,
+  injectIntl,
+  withRouter,
+  withObjectBrowser,
+)(AddLinkForm);

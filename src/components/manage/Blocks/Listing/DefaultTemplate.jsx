@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ConditionalLink, UniversalLink } from '@plone/volto/components';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { useUrlHelpers } from '@plone/volto/helpers';
 import { isInternalURL } from '@plone/volto/helpers/Url/Url';
 
 const DefaultTemplate = ({
@@ -11,6 +11,7 @@ const DefaultTemplate = ({
   linkHref,
   isEditMode,
 }) => {
+  const { flattenToAppURL } = useUrlHelpers();
   let link = null;
   let href = linkHref?.[0]?.['@id'] || '';
 

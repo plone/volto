@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers';
+
+import { useUrlHelpers } from '@plone/volto/helpers';
 
 const propTypes = {
   className: PropTypes.string,
@@ -14,6 +15,7 @@ const Link = ({ children, className, entityKey, getEditorState, target }) => {
   const entity = getEditorState().getCurrentContent().getEntity(entityKey);
   const entityData = entity ? entity.get('data') : undefined;
   const href = (entityData && entityData.url) || undefined;
+  const { isInternalURL, flattenToAppURL } = useUrlHelpers();
 
   return (
     <a

@@ -7,7 +7,7 @@ import { compose } from 'redux';
 import { withRouter } from 'react-router';
 import { defineMessages, useIntl } from 'react-intl';
 
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { useUrlHelpers } from '@plone/volto/helpers';
 import { Icon, UniversalLink } from '@plone/volto/components';
 import { withContentNavigation } from './withContentNavigation';
 
@@ -20,7 +20,7 @@ const messages = defineMessages({
   },
 });
 
-function renderNode(node, parentLevel) {
+function renderNode(node, parentLevel, flattenToAppURL) {
   const level = parentLevel + 1;
   return (
     <List.Item
@@ -54,7 +54,7 @@ function renderNode(node, parentLevel) {
         )}
         {(node.items?.length && (
           <List.List>
-            {node.items.map((node) => renderNode(node, level))}
+            {node.items.map((node) => renderNode(node, level, flattenToAppURL))}
           </List.List>
         )) ||
           ''}
@@ -69,6 +69,7 @@ function renderNode(node, parentLevel) {
  * INavigationPortlet
  */
 export function ContextNavigationComponent(props) {
+  const { flattenToAppURL } = useUrlHelpers();
   const { navigation = {} } = props;
   const { items = [] } = navigation;
   const intl = useIntl();
@@ -86,7 +87,7 @@ export function ContextNavigationComponent(props) {
           {intl.formatMessage(messages.navigation)}
         </div>
       )}
-      <List>{items.map((node) => renderNode(node, 0))}</List>
+      <List>{items.map((node) => renderNode(node, 0, flattenToAppURL))}</List>
     </nav>
   ) : (
     ''
