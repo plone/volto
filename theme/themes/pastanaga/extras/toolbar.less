@@ -151,12 +151,16 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
       opacity: 0;
       // Removing this because is causing grey scroll appears
       // overflow-y: scroll;
-      transition: @max-height-transition, opacity 0.3s 0.3s;
+      transition:
+        @max-height-transition,
+        opacity 0.3s 0.3s;
 
       &.show {
         max-height: 900px;
         opacity: 1;
-        transition: @max-height-transition, opacity 0.3s 0.3s;
+        transition:
+          @max-height-transition,
+          opacity 0.3s 0.3s;
       }
     }
 

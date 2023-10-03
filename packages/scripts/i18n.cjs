@@ -186,8 +186,8 @@ function poToJson({ registry, addonMode }) {
             const addonItems = Pofile.parse(
               fs.readFileSync(addonlocale, 'utf8'),
             ).items;
-            items = [...addonItems, ...items];
-            mergeMessages(result, items, lang);
+
+            mergeMessages(result, addonItems, lang);
             if (require.main === module) {
               // We only log it if called as script
               console.log(`Merging ${addon} locales for ${lang}`);

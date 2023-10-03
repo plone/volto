@@ -209,7 +209,7 @@ class EditRule extends Component {
 
     const triggeringEvents =
       this.props.events?.items && this.props.events?.items.length > 0
-        ? this.props.events?.items.map((event) => [event.title, event.token])
+        ? this.props.events?.items.map((event) => [event.token, event.title])
         : '';
 
     return (
