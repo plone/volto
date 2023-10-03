@@ -328,7 +328,7 @@ const withSearch = (options) => (WrappedComponent) => {
             if (toSearchFacets) setFacets(toSearchFacets);
             if (toSortOn) setSortOn(toSortOn);
             if (toSortOrder) setSortOrder(toSortOrder);
-            //setSearchData(searchData);
+            setSearchData(searchData);
             setLocationSearchData(getSearchFields(searchData));
           },
           toSearchFacets ? inputDelay / 3 : inputDelay,
