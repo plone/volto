@@ -101,16 +101,14 @@ function getAddonsLoaderChain(graph) {
  */
 class AddonConfigurationRegistry {
   constructor(projectRootPath) {
-    const packageJson = (this.packageJson = require(path.join(
-      projectRootPath,
-      'package.json',
-    )));
+    const packageJson = (this.packageJson = require(
+      path.join(projectRootPath, 'package.json'),
+    ));
     // Loads the dynamic config, if any
     if (fs.existsSync(path.join(projectRootPath, 'volto.config.js'))) {
-      this.voltoConfigJS = require(path.join(
-        projectRootPath,
-        'volto.config.js',
-      ));
+      this.voltoConfigJS = require(
+        path.join(projectRootPath, 'volto.config.js'),
+      );
     } else {
       this.voltoConfigJS = [];
     }
