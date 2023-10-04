@@ -252,8 +252,8 @@ describe('UniversalLink', () => {
   });
 
   it('renders a UniversalLink component for a Plone Site with PUBLIC_URL', () => {
-    const old = config.settings.publicUrl;
-    config.settings.publicUrl = 'http://localhost:3000/subsite';
+    const old = config.settings.publicURL;
+    config.settings.publicURL = 'http://localhost:3000/subsite';
     const { getByTitle } = render(
       <Provider store={store}>
         <MemoryRouter>
@@ -270,7 +270,9 @@ describe('UniversalLink', () => {
       </Provider>,
     );
 
-    expect(getByTitle('marker').getAttribute('href')).toBe('/subsite');
+    expect(getByTitle('marker').getAttribute('href')).toBe(
+      'http://localhost:3000/subsite',
+    );
 
     config.settings.publicUrl = old;
   });

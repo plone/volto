@@ -31,7 +31,8 @@ const UniversalLink = ({
   let url = href;
   if (!href && item) {
     if (item['@id'] === '') {
-      url = config.settings.publicURL;
+      // a Plone site
+      url = '';
     } else if (!item['@id']) {
       // eslint-disable-next-line no-console
       console.error(
@@ -76,10 +77,11 @@ const UniversalLink = ({
 
   const checkedURL = URLUtils.checkAndNormalizeUrl(url);
 
-  url = checkedURL.url;
+  url = url === '' ? config.settings.publicURL : checkedURL.url;
+
   let tag = (
     <Link
-      to={flattenToAppURL(url)}
+      to={url}
       target={openLinkInNewTab ?? false ? '_blank' : null}
       title={title}
       className={className}
