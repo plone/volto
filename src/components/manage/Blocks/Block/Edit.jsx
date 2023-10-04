@@ -147,6 +147,15 @@ export class Edit extends Component {
                   e,
                 );
             }}
+            onFocus={(e) => {
+              const isMultipleSelection = e.shiftKey || e.ctrlKey || e.metaKey;
+              !this.props.selected &&
+                this.props.onSelectBlock(
+                  this.props.id,
+                  this.props.selected ? false : isMultipleSelection,
+                  e,
+                );
+            }}
             onKeyDown={
               !(blockHasOwnFocusManagement || disableNewBlocks)
                 ? (e) =>
