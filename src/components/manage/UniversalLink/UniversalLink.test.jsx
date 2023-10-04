@@ -155,6 +155,8 @@ describe('UniversalLink', () => {
     expect(getByTitle('Blacklisted route').getAttribute('target')).toBe(
       '_blank',
     );
+
+    config.settings.externalRoutes = [];
   });
 
   it('UniversalLink renders external link where link is blacklisted', () => {
@@ -192,6 +194,8 @@ describe('UniversalLink', () => {
     expect(getByTitle('External blacklisted app').getAttribute('rel')).toBe(
       'noopener noreferrer',
     );
+
+    config.settings.externalRoutes = [];
   });
 
   it('check UniversalLink does not break with error in item', () => {
@@ -213,18 +217,58 @@ describe('UniversalLink', () => {
     expect(json).toMatchSnapshot();
     expect(global.console.error).toHaveBeenCalled();
   });
-});
 
-it('renders a UniversalLink component when url ends with @@display-file', () => {
-  const component = renderer.create(
-    <Provider store={store}>
-      <MemoryRouter>
-        <UniversalLink href="http://localhost:3000/en/welcome-to-volto/@@display-file">
-          <h1>Title</h1>
-        </UniversalLink>
-      </MemoryRouter>
-    </Provider>,
-  );
-  const json = component.toJSON();
-  expect(json).toMatchSnapshot();
+  it('renders a UniversalLink component when url ends with @@display-file', () => {
+    const component = renderer.create(
+      <Provider store={store}>
+        <MemoryRouter>
+          <UniversalLink href="http://localhost:3000/en/welcome-to-volto/@@display-file">
+            <h1>Title</h1>
+          </UniversalLink>
+        </MemoryRouter>
+      </Provider>,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
+
+  it('renders a UniversalLink component for a Plone Site', () => {
+    const component = renderer.create(
+      <Provider store={store}>
+        <MemoryRouter>
+          <UniversalLink
+            item={{
+              '@id': '',
+              '@type': 'Plone Site',
+            }}
+          >
+            <h1>Title</h1>
+          </UniversalLink>
+        </MemoryRouter>
+      </Provider>,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
+
+  it('renders a UniversalLink component for a Plone Site with PUBLIC_URL', () => {
+    config.settings.publicUrl = 'http://localhost:3000/subsite';
+    const component = renderer.create(
+      <Provider store={store}>
+        <MemoryRouter>
+          <UniversalLink
+            item={{
+              '@id': '',
+              '@type': 'Plone Site',
+            }}
+          >
+            <h1>Title</h1>
+          </UniversalLink>
+        </MemoryRouter>
+      </Provider>,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+    config.settings.publicUrl = 'http://localhost:3000';
+  });
 });
