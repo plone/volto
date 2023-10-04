@@ -5,6 +5,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 import { HashLink as Link } from 'react-router-hash-link';
 import { useSelector } from 'react-redux';
 import {
@@ -14,7 +15,6 @@ import {
 } from '@plone/volto/helpers/Url/Url';
 
 import config from '@plone/volto/registry';
-import cx from 'classnames';
 
 const UniversalLink = ({
   href,

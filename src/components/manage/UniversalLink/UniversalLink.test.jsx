@@ -252,23 +252,26 @@ describe('UniversalLink', () => {
   });
 
   it('renders a UniversalLink component for a Plone Site with PUBLIC_URL', () => {
+    const old = config.settings.publicUrl;
     config.settings.publicUrl = 'http://localhost:3000/subsite';
-    const component = renderer.create(
+    const { getByTitle } = render(
       <Provider store={store}>
         <MemoryRouter>
           <UniversalLink
+            title="marker"
             item={{
               '@id': '',
               '@type': 'Plone Site',
             }}
           >
-            <h1>Title</h1>
+            <h1>Plone site</h1>
           </UniversalLink>
         </MemoryRouter>
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
-    config.settings.publicUrl = 'http://localhost:3000';
+
+    expect(getByTitle('marker').getAttribute('href')).toBe('/subsite');
+
+    config.settings.publicUrl = old;
   });
 });
