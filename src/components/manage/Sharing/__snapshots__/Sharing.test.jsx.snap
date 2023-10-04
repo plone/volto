@@ -42,6 +42,7 @@ exports[`Sharing renders a sharing component 1`] = `
               type="text"
             />
             <button
+              aria-label="Search"
               className="ui icon button"
               onClick={[Function]}
             >

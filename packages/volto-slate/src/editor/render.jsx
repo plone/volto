@@ -3,6 +3,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useIntl } from 'react-intl';
+import { useSelector } from 'react-redux';
 import { Node, Text } from 'slate';
 import cx from 'classnames';
 import { isEmpty, omit } from 'lodash';
@@ -168,13 +169,14 @@ export const renderLinkElement = (tagName) => {
     const Tag = tagName;
     const slug = attributes.id || '';
     const location = useLocation();
+    const token = useSelector((state) => state.userSession.token);
     const appPathname = addAppURL(location.pathname);
     // eslint-disable-next-line no-unused-vars
     const [copied, copy, setCopied] = useClipboard(
       appPathname.concat(`#${slug}`),
     );
     const intl = useIntl();
-    return slate.useLinkedHeadings === false ? (
+    return !token || slate.useLinkedHeadings === false ? (
       <Tag {...attributes} className={className} tabIndex={0}>
         {children}
       </Tag>
@@ -188,6 +190,14 @@ export const renderLinkElement = (tagName) => {
             tabIndex={-1}
             href={`#${slug}`}
           >
+            <style>
+              {/* Prettify the unstyled flash of the link icon on development */}
+              {`
+              a.anchor svg {
+                height: var(--anchor-svg-height, 24px);
+              }
+              `}
+            </style>
             <svg
               {...linkSVG.attributes}
               dangerouslySetInnerHTML={{ __html: linkSVG.content }}

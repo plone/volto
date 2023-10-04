@@ -637,6 +637,8 @@ jobs:
 
       # create a project
       - run: yo @plone/volto my-volto-app --description "test volto project" --volto . --skip-install --no-interactive
+      # When main is canary, make sure we use it in the generator
+      # - run: yo @plone/volto my-volto-app --description "test volto project" --volto . --skip-install --no-interactive --canary
 
       - name: Install yalc
         run: npm -g install yalc

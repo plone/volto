@@ -53,6 +53,32 @@ or use Webpack plugins, you might need to make adjustments.
 Razzle has been upgraded to version `4.2.18`.
 It is recommended that you update your project's dependency on Razzle to this version in order to avoid duplication.
 
+### Upgraded linters, ESlint, Prettier and Stylelint
+
+The main linters have been upgraded.
+Once updated, you may find new violations in your project or add-on code.
+It is recommended that you run again all the linters and fix all the violations once you update it to Volto 17.
+Upgrade your local dependencies in projects and add-ons by editing your {file}`package.json` as follows:
+
+```diff
+"devDependencies": {
+-    "eslint-config-prettier": "8.10.0",
++    "eslint-config-prettier": "9.0.0",
+-    "eslint-plugin-prettier": "3.4.1",
++    "eslint-plugin-prettier": "5.0.0",
+-    "prettier": "2.0.5",
++    "prettier": "3.0.3",
+-    "stylelint": "14.0.1",
+-    "stylelint-config-idiomatic-order": "8.1.0",
+-    "stylelint-config-prettier": "8.0.1",
+-    "stylelint-prettier": "1.1.2",
++    "stylelint": "15.10.3",
++    "stylelint-config-idiomatic-order": "9.0.0",
++    "stylelint-prettier": "4.0.2",
+}
+```
+
+
 ### TypeScript support in Volto
 
 ```{versionadded} 17.0.0-alpha.27
@@ -1634,7 +1660,7 @@ Since Volto 9.2.0 the next step IS NOT required anymore.
 ```
 
 ~~Copy (and overwrite) the `patches` folder into your local project
-https://github.com/plone/volto/tree/master/patches or, if you want to be more accurate,
+https://github.com/plone/volto/tree/main/patches or, if you want to be more accurate,
 just copy `patches/razzle-plugins.patch` file and overwrite `patches/patchit.sh` file.~~
 
 ### Babel config housekeeping

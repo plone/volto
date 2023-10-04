@@ -21,42 +21,43 @@ const RESET_CONTENT = 'RESET_CONTENT';
 // such a reset when navigating between two content routes.
 // ---
 
-export const protectLoadStart = ({ dispatch, getState }) => (next) => (
-  action,
-) => {
-  if (typeof action === 'function') {
-    return next(action);
-  }
-  switch (action.type) {
-    case LOCATION_CHANGE:
-      const { location } = action.payload;
-      const { pathname: path } = location;
-      const currentPath = getState().router.location.pathname;
-      const result = next(action);
-      if (isCmsUi(path)) {
-        // Next path: isCmsUI, Non Content. There is no
-        // loading here, so skip counting altogether.
-        // Will update the delayed location constantly.
-        dispatch({
-          type: PROTECT_SKIPPED,
-          location,
-        });
-      } else {
-        dispatch({
-          type: PROTECT_START,
-          location,
-          // Only reset before the fetch, if we depart from
-          // a not isCmsUi, Content pass. However, reset will
-          // not occur if moving between two content paths,
-          // only the postponed location will be booked.
-          resetBeforeFetch: isCmsUi(currentPath),
-        });
-      }
-      return result;
-    default:
+export const protectLoadStart =
+  ({ dispatch, getState }) =>
+  (next) =>
+  (action) => {
+    if (typeof action === 'function') {
       return next(action);
-  }
-};
+    }
+    switch (action.type) {
+      case LOCATION_CHANGE:
+        const { location } = action.payload;
+        const { pathname: path } = location;
+        const currentPath = getState().router.location.pathname;
+        const result = next(action);
+        if (isCmsUi(path)) {
+          // Next path: isCmsUI, Non Content. There is no
+          // loading here, so skip counting altogether.
+          // Will update the delayed location constantly.
+          dispatch({
+            type: PROTECT_SKIPPED,
+            location,
+          });
+        } else {
+          dispatch({
+            type: PROTECT_START,
+            location,
+            // Only reset before the fetch, if we depart from
+            // a not isCmsUi, Content pass. However, reset will
+            // not occur if moving between two content paths,
+            // only the postponed location will be booked.
+            resetBeforeFetch: isCmsUi(currentPath),
+          });
+        }
+        return result;
+      default:
+        return next(action);
+    }
+  };
 
 // Note that there is a bit of heuristics here. We assume that every action
 // like this is beginning/ending an action. If this logic fails then the counting
@@ -70,34 +71,32 @@ const mapActions = {
   [GET_CONTENT_PENDING]: RESET_CONTENT,
 };
 
-export const protectLoadEnd = ({ dispatch, getState }) => (next) => (
-  action,
-) => {
-  if (typeof action === 'function') {
-    return next(action);
-  }
-  const {
-    isCounting,
-    resetBeforeFetch,
-    requestCount,
-  } = getState().loadProtector;
-  if (resetBeforeFetch) {
-    const type = mapActions[action.type];
-    if (type) {
-      dispatch({ type });
+export const protectLoadEnd =
+  ({ dispatch, getState }) =>
+  (next) =>
+  (action) => {
+    if (typeof action === 'function') {
+      return next(action);
     }
-  }
-  if (isCounting && requestCount === 1 && isResponseAction(action)) {
-    setTimeout(
-      () =>
-        dispatch({
-          type: PROTECT_END,
-        }),
-      0,
-    );
-  }
-  return next(action);
-};
+    const { isCounting, resetBeforeFetch, requestCount } =
+      getState().loadProtector;
+    if (resetBeforeFetch) {
+      const type = mapActions[action.type];
+      if (type) {
+        dispatch({ type });
+      }
+    }
+    if (isCounting && requestCount === 1 && isResponseAction(action)) {
+      setTimeout(
+        () =>
+          dispatch({
+            type: PROTECT_END,
+          }),
+        0,
+      );
+    }
+    return next(action);
+  };
 
 export function loadProtector(state = {}, action = {}) {
   switch (action.type) {
