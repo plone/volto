@@ -102,11 +102,6 @@ export default function applyConfig(config) {
     ...config.settings.slate, // TODO: is this correct for volto-slate addons?
   };
 
-  config.settings.integratesBlockStyles = [
-    ...(config.settings.integratesBlockStyles || []),
-    'slate',
-  ];
-
   const slateBlockConfig = {
     id: 'slate',
     title: 'Text',

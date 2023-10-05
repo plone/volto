@@ -1,1 +1,0 @@
-Fix storybook config for project generator. Add support for SCSS, upgrade to webpack 5 in there as well. @sneridagh

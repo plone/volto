@@ -47,7 +47,7 @@ exports[`renders a view video component with placeholder 1`] = `
       />
       <img
         className="placeholder"
-        src="https://github.com/plone/volto/raw/master/logos/volto-colorful.png"
+        src="https://github.com/plone/volto/raw/main/logos/volto-colorful.png"
       />
     </div>
   </div>

@@ -17,7 +17,7 @@ const offendingPackages = [
 ];
 
 echo('\nPre-build transpiling to ES5 offending packages...\n');
-offendingPackages.forEach(pkg =>
+offendingPackages.forEach((pkg) =>
   exec(
     `NODE_ENV=production babel --presets=@babel/env ${pkg} --out-dir ${pkg}`,
   ),
