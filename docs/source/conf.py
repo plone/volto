@@ -96,6 +96,7 @@ linkcheck_ignore = [
     r"https://github.com/plone/volto/issues/new/choose",
     r"https://github.com/plone/volto/blob/6fd62cb2860bc7cf3cb7c36ea86bfd8bd03247d9/src/components/manage/Form/Field.jsx#L112",
     r"https://github.com/tc39/proposals/blob/HEAD/finished-proposals.md#finished-proposals",
+    r"https://www.youtube.com/playlist",  # TODO uncomment after installing sphinxcontrib.youtube
 ]
 linkcheck_anchors = True
 linkcheck_timeout = 10
