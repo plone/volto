@@ -22,11 +22,6 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
       sizes="188px"
       src="/image.png"
       srcSet="/image.png/@@images/image/image-400.png 400w"
-      style={
-        Object {
-          "aspectRatio": "400 / 400",
-        }
-      }
       width={400}
     />
   </div>

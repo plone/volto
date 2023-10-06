@@ -8,11 +8,6 @@ exports[`renders an image component from a catalog brain 1`] = `
   height={400}
   src="/image/@@images/image/image.png"
   srcSet="/image/@@images/image/image-400.png 400w"
-  style={
-    Object {
-      "aspectRatio": "400 / 400",
-    }
-  }
   width={400}
 />
 `;
@@ -34,11 +29,6 @@ exports[`renders an image component with fetchpriority high 1`] = `
   height={400}
   src="/image/@@images/image/image.png"
   srcSet="/image/@@images/image/image-400.png 400w"
-  style={
-    Object {
-      "aspectRatio": "400 / 400",
-    }
-  }
   width={400}
 />
 `;
@@ -52,11 +42,6 @@ exports[`renders an image component with lazy loading 1`] = `
   loading="lazy"
   src="/image/@@images/image/image.png"
   srcSet="/image/@@images/image/image-400.png 400w"
-  style={
-    Object {
-      "aspectRatio": "400 / 400",
-    }
-  }
   width={400}
 />
 `;
@@ -69,11 +54,6 @@ exports[`renders an image component with responsive class 1`] = `
   height={400}
   src="/image/@@images/image/image.png"
   srcSet="/image/@@images/image/image-400.png 400w"
-  style={
-    Object {
-      "aspectRatio": "400 / 400",
-    }
-  }
   width={400}
 />
 `;
