@@ -24,6 +24,8 @@
 
 ## 17.0.0 (2023-09-30)
 
+**This is a Release Notes summary of all the changes happened during the alpha stage of Volto 17.**
+
 ### Breaking
 
 - Volto 17 drops support for NodeJS 14, and adds support for Node.js 18.
