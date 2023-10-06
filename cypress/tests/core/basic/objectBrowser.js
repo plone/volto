@@ -97,7 +97,10 @@ describe('Object Browser Tests', () => {
     // The document is not in the list
     cy.findByLabelText('Browse My Searchable Page').should('not.exist');
     // And the list has only 1 item
-    cy.get('.ui.segment.object-listing li').should('have.length', 1);
+    cy.get('.ui.segment.object-listing .image-wrapper').should(
+      'have.length',
+      1,
+    );
 
     // The image can be selected as usual
     cy.findByLabelText('Select My Searchable Image').dblclick();
