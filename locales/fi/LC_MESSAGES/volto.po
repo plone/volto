@@ -3051,6 +3051,7 @@ msgid "Search input label"
 msgstr "Hakukentän nimike"
 
 #: components/manage/Blocks/Search/components/SearchDetails
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/theme/Search/Search
 # defaultMessage: Search results
 msgid "Search results"

@@ -3046,6 +3046,7 @@ msgid "Search input label"
 msgstr "搜索输入标签"
 
 #: components/manage/Blocks/Search/components/SearchDetails
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/theme/Search/Search
 # defaultMessage: Search results
 msgid "Search results"
