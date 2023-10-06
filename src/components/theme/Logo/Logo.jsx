@@ -7,12 +7,12 @@ import { Image } from 'semantic-ui-react';
 import { ConditionalLink } from '@plone/volto/components';
 import LogoImage from '@plone/volto/components/theme/Logo/Logo.svg';
 import { useSelector, useDispatch } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import { getNavroot } from '@plone/volto/actions';
 import {
   flattenToAppURL,
   hasApiExpander,
   getBaseUrl,
-  toPublicURL,
 } from '@plone/volto/helpers';
 
 /**
@@ -22,7 +22,7 @@ import {
  * @returns {string} Markup of the component.
  */
 const Logo = () => {
-  const pathname = useSelector((state) => state.router.location.pathname);
+  const pathname = useLocation().pathname;
   const site = useSelector((state) => state.site.data);
   const navroot = useSelector((state) => state.navroot.data);
   const dispatch = useDispatch();
@@ -33,17 +33,16 @@ const Logo = () => {
     }
   }, [dispatch, pathname]);
 
-  // remove trailing slash
-  const currentURL = toPublicURL(pathname).replace(/\/$/, '');
-
-  const navRoot = navroot?.navroot?.['@id'];
-  const currentURLIsNavRoot = currentURL !== navRoot;
+  const navRootPath = flattenToAppURL(navroot?.navroot?.['@id']) || '/';
+  const currentURLIsNavRoot = pathname !== navRootPath;
 
   return (
     <ConditionalLink
-      href={navRoot || '/'}
+      href={navRootPath}
       title={navroot?.navroot?.title}
-      condition={!navRoot || currentURLIsNavRoot}
+      // In case that the content returns 404, there is no information about the portal
+      // then render the link anyways to get out of the Unauthorized page
+      condition={!navroot || currentURLIsNavRoot}
     >
       <Image
         src={
