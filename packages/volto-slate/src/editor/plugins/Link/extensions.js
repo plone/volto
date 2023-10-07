@@ -27,7 +27,6 @@ export const withSimpleLink = (editor) => {
     // delete childless link nodes
     if (!isTextNode && isElementNode && isLinkTypeNode && !nodeToText(node)) {
       Transforms.removeNodes(editor, { at: path });
-      console.log('removing link', entry, node, path);
       return;
     }
 
