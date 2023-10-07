@@ -38,6 +38,11 @@ project and start hacking!
 ```{toctree}
 :maxdepth: 2
 
+guides/index
+reference/index
+explanation/index
+tutorials/index
+
 getting-started/index
 configuration/index
 theming/index
