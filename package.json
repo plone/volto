@@ -444,6 +444,7 @@
     "react-dev-utils": "^12",
     "react-error-overlay": "6.0.9",
     "ua-parser-js": "0.7.28",
+    "webpack-bundle-analyzer": "4.9.1",
     "@typescript-eslint/eslint-plugin": "6.7.0",
     "@typescript-eslint/parser": "6.7.0"
   },
