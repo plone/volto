@@ -40,7 +40,7 @@ contentIcons
     With this property you can configure Content Types icons.
     Those are visible in Contents view (ex "Folder contents").  The default
     ones are in
-    [config/ContentIcons.jsx](https://github.com/plone/volto/blob/master/src/config/ContentIcons.jsx)
+    [config/ContentIcons.jsx](https://github.com/plone/volto/blob/main/src/config/ContentIcons.jsx)
     and you can extend them in your project's config for custom content types
     using `settings.contentIcons`.
 
@@ -82,6 +82,10 @@ maxResponseSize
 
     You can edit this limit in the `settings` object setting a new value in bytes
     (for example, to set 500 mb you need to write 5000000000).
+
+maxFileUploadSize
+    The maximum allowed size of file uploads (in bytes).
+    Default: `null` (no limit enforced by Volto).
 
 initialReducersBlacklist
     The initial state passed from server to browser needs to be minimal in order to optimize the resultant html generated. This state gets stored in `window.__data` and received in client.
@@ -226,7 +230,6 @@ workflowMapping
     It's meant to be extended with your own workflows/transitions.
     It is recommended to assign the same color to the transition as the destination state, so the user can have the visual hint to which state are they transitioning to.
 
-
 styleClassNameConverters
     An object with functions used by the style wrapper helpers to convert style
     data to actual class names. You can customize the generated classname by
@@ -339,6 +342,34 @@ apiExpanders
     ```
     The configuration accepts a list of matchers, with the ability to filter by the request path and action type for maximum flexibility.
     It also accepts a `querystring` object that allows configuring the expanders via query string parameters, such as the navigation expander.
+    The `querystring` object accepts a querystring object or a function that returns a querystring object.
+
+    ```js
+    export default function applyConfig (config) {
+      config.settings.apiExpanders = [
+          ...config.settings.apiExpanders,
+          {
+            match: '',
+            GET_CONTENT: ['mycustomexpander'],
+          },
+          {
+            match: '/de',
+            GET_CONTENT: ['myothercustomexpander'],
+          },
+          {
+            match: '/de',
+            GET_CONTENT: ['navigation'],
+            querystring: (config) => ({
+              'expand.navigation.depth': config.settings.navDepth,
+            }),
+          }
+      ];
+
+      return config;
+    }
+    ```
+
+    This is used in case that you want to pass current (as in resultant, in place) config options to the querystring object.
 
 additionalToolbarComponents
     For additional toolbar menus, the menu body component needs to be added to the on-demand loaded components.
@@ -374,11 +405,54 @@ additionalToolbarComponents
       }}
     </Plug>
     ```
+
 blockSettingsTabFieldsetsInitialStateOpen
     A Boolean, `true` by default.
     The fieldsets in the blocks settings tab start by default as non-collapsed (opened), you can decide to have them collapsed (closed) by default setting this to `false`.
-```
 
+excludeLinksAndReferencesMenuItem
+    A Boolean, `false` by default.
+    The content menu links to the {guilabel}`Links and references` view per default.
+    Exclude this menu item by setting `excludeLinksAndReferencesMenuItem` to `true`.
+
+okRoute
+    Volto provides an `/ok` URL where it responds with a `text/plain ok` response, with an `HTTP 200` status code, to signal third party health check services that the Volto process is running correctly.
+
+    Using this setting, one can modify such an URL and configure it to respond with another URL.
+
+    The provided default URL matches the existing Plone Classic UI URL.
+
+    ```jsx
+      config.settings.okRoute = '/site-is-ok'
+    ```
+
+siteTitleFormat
+    Volto lets you modify how the site title is built.
+    By default the site title only includes the title of the current page.
+
+    By modifying this configuration setting, you can decide whether to use the title of the navigation root (either the site root or the language root folder) as the second part of the title.
+
+    You can also decide the separator character between the current page title and the site title.
+
+    ```jsx
+        siteTitleFormat: {
+          includeSiteTitle: true,
+          titleAndSiteTitleSeparator: '-',
+        }
+    ```
+
+querystringSearchGet
+    Volto uses `HTTP POST` requests to query the `@querystring-search` endpoint.
+    This can create a lot of traffic between Volto and the backend, and can also create a lot of cache misses.
+
+    By modifying this configuration setting and setting it to `true`, the endpoint queries will be executed as `HTTP GET` requests.
+    Thus any proxy cache in between Volto and the backend may cache those queries, improving your site performance.
+
+    Please be aware that this could break some other functionality in your site, or some of your queries may break, when they contain more than 2000 characters.
+    [See an explanation of character limits in URLs](https://stackoverflow.com/questions/417142/what-is-the-maximum-length-of-a-url-in-different-browsers/417184#417184).
+    Please test this setting properly before enabling in a production site.
+
+```
 
 ## Views settings
 

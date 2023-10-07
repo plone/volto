@@ -285,6 +285,16 @@ export const reorderArray = (array, origin, target) => {
 };
 
 /**
+ * Normalize (unicode) string to a normalized plain ascii string
+ * @method normalizeString
+ * @param {string} str The string to be normalized
+ * @returns {string} Normalized plain ascii string
+ */
+export function normalizeString(str) {
+  return str.normalize('NFD').replace(/\p{Diacritic}/gu, '');
+}
+
+/**
  * Slugify a string: remove whitespaces, special chars and replace with _
  * @param {string} string String to be slugified
  * @returns {string} Slugified string
@@ -324,3 +334,28 @@ export const arrayRange = (start, stop, step) =>
     { length: (stop - start) / step + 1 },
     (value, index) => start + index * step,
   );
+
+/**
+ * Given an event target element returns if it's an interactive element
+ * of the one in the list.
+ * @param {node} element event.target element type
+ * @returns {boolean} If it's an interactive element of the list
+ */
+export function isInteractiveElement(
+  element,
+  interactiveElements = [
+    'button',
+    'input',
+    'textarea',
+    'select',
+    'option',
+    'svg',
+    'path',
+  ],
+) {
+  if (interactiveElements.includes(element.tagName.toLowerCase())) {
+    return true;
+  }
+
+  return false;
+}

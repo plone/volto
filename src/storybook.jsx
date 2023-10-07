@@ -91,8 +91,7 @@ const initialState = () => ({
                   },
                 ],
                 key: '6470b',
-                text:
-                  'Disclaimer: This instance is reset every night, so all changes will be lost afterwards.',
+                text: 'Disclaimer: This instance is reset every night, so all changes will be lost afterwards.',
                 type: 'unstyled',
               },
             ],
@@ -143,13 +142,12 @@ const initialState = () => ({
                 ],
                 inlineStyleRanges: [],
                 key: 'behki',
-                text:
-                  'Plone is a CMS built on Python with over 19 years of experience. Plone has very interesting features that appeal to developers and users alike, such as customizable content types, hierarchical URL object traversing and a sophisticated content workflow powered by a granular permissions model. This allows you to build anything from simple websites to enterprise-grade intranets. Volto exposes all these features and communicates with Plone via its mature REST API. Volto can be esily themed and is highly customizable.',
+                text: 'Plone is a CMS built on Python with over 19 years of experience. Plone has very interesting features that appeal to developers and users alike, such as customizable content types, hierarchical URL object traversing and a sophisticated content workflow powered by a granular permissions model. This allows you to build anything from simple websites to enterprise-grade intranets. Volto exposes all these features and communicates with Plone via its mature REST API. Volto can be esily themed and is highly customizable.',
                 type: 'unstyled',
               },
             ],
             entityMap: {
-              '0': {
+              0: {
                 data: {
                   href: 'https://plone.org',
                   rel: 'nofollow',
@@ -158,7 +156,7 @@ const initialState = () => ({
                 mutability: 'MUTABLE',
                 type: 'LINK',
               },
-              '1': {
+              1: {
                 data: {
                   href: 'https://github.com/plone/plone.restapi',
                   url: 'https://github.com/plone/plone.restapi',
@@ -219,13 +217,12 @@ const initialState = () => ({
                 ],
                 inlineStyleRanges: [],
                 key: '6a248',
-                text:
-                  'Last but not least, it also supports a Volto Nodejs-based backend reference API implementation that demos how other systems could also use Volto to display and create content through it.',
+                text: 'Last but not least, it also supports a Volto Nodejs-based backend reference API implementation that demos how other systems could also use Volto to display and create content through it.',
                 type: 'unstyled',
               },
             ],
             entityMap: {
-              '0': {
+              0: {
                 data: {
                   href: 'https://github.com/plone/volto-reference-backend',
                   url: 'https://github.com/plone/volto-reference-backend',
@@ -252,8 +249,7 @@ const initialState = () => ({
                   },
                 ],
                 key: '94arl',
-                text:
-                  'You can log in and use it as admin user using these credentials:',
+                text: 'You can log in and use it as admin user using these credentials:',
                 type: 'unstyled',
               },
             ],
@@ -276,13 +272,12 @@ const initialState = () => ({
                 ],
                 inlineStyleRanges: [],
                 key: '1bnna',
-                text:
-                  'Volto is a React-based frontend for content management systems, currently supporting three backend implementations: Plone, Guillotina and a NodeJS reference implementation.',
+                text: 'Volto is a React-based frontend for content management systems, currently supporting three backend implementations: Plone, Guillotina and a NodeJS reference implementation.',
                 type: 'unstyled',
               },
             ],
             entityMap: {
-              '0': {
+              0: {
                 data: {
                   href: 'https://github.com/plone/volto',
                   url: 'https://github.com/plone/volto',
@@ -303,8 +298,7 @@ const initialState = () => ({
                 entityRanges: [],
                 inlineStyleRanges: [],
                 key: '55n44',
-                text:
-                  'You can use this site to test Volto. It runs on the master branch of Volto using latest Plone 5.2 Backend running on Python 3.',
+                text: 'You can use this site to test Volto. It runs on the main branch of Volto using latest Plone 5.2 Backend running on Python 3.',
                 type: 'unstyled',
               },
             ],
@@ -367,13 +361,12 @@ const initialState = () => ({
                 ],
                 inlineStyleRanges: [],
                 key: '68rve',
-                text:
-                  'Volto also supports other APIs like Guillotina, a Python resource management system, inspired by Plone and using the same basic concepts like traversal, content types and permissions model.',
+                text: 'Volto also supports other APIs like Guillotina, a Python resource management system, inspired by Plone and using the same basic concepts like traversal, content types and permissions model.',
                 type: 'unstyled',
               },
             ],
             entityMap: {
-              '0': {
+              0: {
                 data: {
                   href: 'https://guillotina.io/',
                   rel: 'nofollow',
@@ -686,8 +679,7 @@ const initialState = () => ({
                   },
                 ],
                 key: '6470b',
-                text:
-                  'Disclaimer: This instance is reset every night, so all changes will be lost afterwards.',
+                text: 'Disclaimer: This instance is reset every night, so all changes will be lost afterwards.',
                 type: 'unstyled',
               },
             ],
@@ -738,13 +730,12 @@ const initialState = () => ({
                 ],
                 inlineStyleRanges: [],
                 key: 'behki',
-                text:
-                  'Plone is a CMS built on Python with over 19 years of experience. Plone has very interesting features that appeal to developers and users alike, such as customizable content types, hierarchical URL object traversing and a sophisticated content workflow powered by a granular permissions model. This allows you to build anything from simple websites to enterprise-grade intranets. Volto exposes all these features and communicates with Plone via its mature REST API. Volto can be esily themed and is highly customizable.',
+                text: 'Plone is a CMS built on Python with over 19 years of experience. Plone has very interesting features that appeal to developers and users alike, such as customizable content types, hierarchical URL object traversing and a sophisticated content workflow powered by a granular permissions model. This allows you to build anything from simple websites to enterprise-grade intranets. Volto exposes all these features and communicates with Plone via its mature REST API. Volto can be esily themed and is highly customizable.',
                 type: 'unstyled',
               },
             ],
             entityMap: {
-              '0': {
+              0: {
                 data: {
                   href: 'https://plone.org',
                   rel: 'nofollow',
@@ -753,7 +744,7 @@ const initialState = () => ({
                 mutability: 'MUTABLE',
                 type: 'LINK',
               },
-              '1': {
+              1: {
                 data: {
                   href: 'https://github.com/plone/plone.restapi',
                   url: 'https://github.com/plone/plone.restapi',
@@ -814,13 +805,12 @@ const initialState = () => ({
                 ],
                 inlineStyleRanges: [],
                 key: '6a248',
-                text:
-                  'Last but not least, it also supports a Volto Nodejs-based backend reference API implementation that demos how other systems could also use Volto to display and create content through it.',
+                text: 'Last but not least, it also supports a Volto Nodejs-based backend reference API implementation that demos how other systems could also use Volto to display and create content through it.',
                 type: 'unstyled',
               },
             ],
             entityMap: {
-              '0': {
+              0: {
                 data: {
                   href: 'https://github.com/plone/volto-reference-backend',
                   url: 'https://github.com/plone/volto-reference-backend',
@@ -847,8 +837,7 @@ const initialState = () => ({
                   },
                 ],
                 key: '94arl',
-                text:
-                  'You can log in and use it as admin user using these credentials:',
+                text: 'You can log in and use it as admin user using these credentials:',
                 type: 'unstyled',
               },
             ],
@@ -871,13 +860,12 @@ const initialState = () => ({
                 ],
                 inlineStyleRanges: [],
                 key: '1bnna',
-                text:
-                  'Volto is a React-based frontend for content management systems, currently supporting three backend implementations: Plone, Guillotina and a NodeJS reference implementation.',
+                text: 'Volto is a React-based frontend for content management systems, currently supporting three backend implementations: Plone, Guillotina and a NodeJS reference implementation.',
                 type: 'unstyled',
               },
             ],
             entityMap: {
-              '0': {
+              0: {
                 data: {
                   href: 'https://github.com/plone/volto',
                   url: 'https://github.com/plone/volto',
@@ -898,8 +886,7 @@ const initialState = () => ({
                 entityRanges: [],
                 inlineStyleRanges: [],
                 key: '55n44',
-                text:
-                  'You can use this site to test Volto. It runs on the master branch of Volto using latest Plone 5.2 Backend running on Python 3.',
+                text: 'You can use this site to test Volto. It runs on the main branch of Volto using latest Plone 5.2 Backend running on Python 3.',
                 type: 'unstyled',
               },
             ],
@@ -962,13 +949,12 @@ const initialState = () => ({
                 ],
                 inlineStyleRanges: [],
                 key: '68rve',
-                text:
-                  'Volto also supports other APIs like Guillotina, a Python resource management system, inspired by Plone and using the same basic concepts like traversal, content types and permissions model.',
+                text: 'Volto also supports other APIs like Guillotina, a Python resource management system, inspired by Plone and using the same basic concepts like traversal, content types and permissions model.',
                 type: 'unstyled',
               },
             ],
             entityMap: {
-              '0': {
+              0: {
                 data: {
                   href: 'https://guillotina.io/',
                   rel: 'nofollow',

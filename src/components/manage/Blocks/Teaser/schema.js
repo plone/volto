@@ -176,3 +176,8 @@ export const OverwriteTeaserSchema = ({ intl }) => {
 
   return schema;
 };
+
+export const gridTeaserDisableStylingSchema = ({ schema, formData, intl }) => {
+  schema.fieldsets = schema.fieldsets.filter((item) => item.id !== 'styling');
+  return schema;
+};

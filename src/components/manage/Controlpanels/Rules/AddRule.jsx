@@ -155,15 +155,8 @@ class AddRule extends Component {
    * @returns {undefined}
    */
   handleAdd() {
-    const {
-      title,
-      description,
-      event,
-      cascading,
-      stop,
-      enabled,
-      invalidForm,
-    } = this.state;
+    const { title, description, event, cascading, stop, enabled, invalidForm } =
+      this.state;
     const data = { title, description, event, cascading, enabled, stop };
     if (!invalidForm) {
       this.props.addNewRule(getBaseUrl(this.props.pathname), data);
@@ -179,7 +172,7 @@ class AddRule extends Component {
     const { title, description, event, cascading, stop, enabled } = this.state;
     const triggeringEvents =
       this.props.events?.items && this.props.events?.items.length > 0
-        ? this.props.events?.items.map((event) => [event.title, event.token])
+        ? this.props.events?.items.map((event) => [event.token, event.title])
         : '';
 
     return (

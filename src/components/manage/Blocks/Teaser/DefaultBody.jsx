@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
 import { Message } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
+import { useDispatch, useSelector } from 'react-redux';
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
-import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers';
-import { getTeaserImageURL } from './utils';
-import { getContent } from '@plone/volto/actions';
+import { isInternalURL } from '@plone/volto/helpers';
 import { MaybeWrap } from '@plone/volto/components';
+import { getContent } from '@plone/volto/actions';
+import { flattenToAppURL } from '@plone/volto/helpers';
 import { UniversalLink } from '@plone/volto/components';
 import cx from 'classnames';
 import config from '@plone/volto/registry';
@@ -20,21 +20,15 @@ const messages = defineMessages({
   },
 });
 
-const DefaultImage = (props) => <img {...props} alt={props.alt || ''} />;
-
 const TeaserDefaultTemplate = (props) => {
   const { className, data, isEditMode, id } = props;
   const dispatch = useDispatch();
   const intl = useIntl();
   const href = data.href?.[0];
   const image = data.preview_image?.[0];
-  const align = data?.styles?.align;
 
-  const hasImageComponent = config.getComponent('Image').component;
-  const Image = config.getComponent('Image').component || DefaultImage;
+  const Image = config.getComponent('Image').component;
   const { openExternalLinkInNewTab } = config.settings;
-  const defaultImageSrc =
-    href && flattenToAppURL(getTeaserImageURL({ href, image, align }));
 
   const result = useSelector(
     (state) => state?.content?.subrequests?.[id]?.data,
@@ -58,6 +52,7 @@ const TeaserDefaultTemplate = (props) => {
             </div>
           </Message>
         )}
+
         {!data.overwrite && result && (
           <MaybeWrap
             condition={!isEditMode}
@@ -65,7 +60,7 @@ const TeaserDefaultTemplate = (props) => {
             href={href['@id']}
             target={
               data.openLinkInNewTab ||
-              (openExternalLinkInNewTab && !isInternalURL(href['@id']))
+                (openExternalLinkInNewTab && !isInternalURL(href['@id']))
                 ? '_blank'
                 : null
             }
@@ -74,22 +69,16 @@ const TeaserDefaultTemplate = (props) => {
               {(result.hasPreviewImage ||
                 result.image_field ||
                 result.preview_image) && (
-                <div className="image-wrapper">
-                  <Image
-                    src={
-                      result?.preview_image
-                        ? flattenToAppURL(
-                            result.preview_image.scales.teaser.download,
-                          )
-                        : result?.image
-                        ? flattenToAppURL(result.image.scales.teaser.download)
-                        : defaultImageSrc
-                    }
-                    alt=""
-                    loading="lazy"
-                  />
-                </div>
-              )}
+                  <div className="image-wrapper">
+                    <Image
+                      item={image || href}
+                      imageField={image ? image.image_field : href.image_field}
+                      alt=""
+                      loading="lazy"
+                      responsive={true}
+                    />
+                  </div>
+                )}
               <div className="content">
                 {result?.head_title && (
                   <div className="headline">{result.head_title}</div>
@@ -107,7 +96,7 @@ const TeaserDefaultTemplate = (props) => {
             href={href['@id']}
             target={
               data.openLinkInNewTab ||
-              (openExternalLinkInNewTab && !isInternalURL(href['@id']))
+                (openExternalLinkInNewTab && !isInternalURL(href['@id']))
                 ? '_blank'
                 : null
             }
@@ -116,9 +105,11 @@ const TeaserDefaultTemplate = (props) => {
               {(href.hasPreviewImage || href.image_field || image) && (
                 <div className="image-wrapper">
                   <Image
-                    src={hasImageComponent ? href : defaultImageSrc}
+                    item={image || href}
+                    imageField={image ? image.image_field : href.image_field}
                     alt=""
                     loading="lazy"
+                    responsive={true}
                   />
                 </div>
               )}

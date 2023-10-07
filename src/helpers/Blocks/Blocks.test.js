@@ -19,6 +19,8 @@ import {
   buildStyleClassNamesFromData,
   buildStyleClassNamesExtenders,
   getPreviousNextBlock,
+  blocksFormGenerator,
+  findBlocks,
 } from './Blocks';
 
 import config from '@plone/volto/registry';
@@ -586,26 +588,26 @@ describe('Blocks', () => {
       const d = {
         data: {
           blocks: {
-            '1': {
+            1: {
               blocks: {
-                '2': {},
-                '3': {
+                2: {},
+                3: {
                   data: {
                     blocks: {
-                      '11': {},
-                      '12': {},
-                      '13': {},
+                      11: {},
+                      12: {},
+                      13: {},
                     },
                     blocks_layout: {
                       items: ['11', '12', '13'],
                     },
                   },
                 },
-                '7': {
+                7: {
                   blocks: {
-                    '8': {},
-                    '9': {},
-                    '10': {},
+                    8: {},
+                    9: {},
+                    10: {},
                   },
                   blocks_layout: {
                     items: ['8', '9', '10'],
@@ -616,10 +618,10 @@ describe('Blocks', () => {
                 items: ['2', '3', '7'],
               },
             },
-            '4': {
+            4: {
               blocks: {
-                '5': {},
-                '6': {},
+                5: {},
+                6: {},
               },
               blocks_layout: {
                 items: ['5', '6'],
@@ -1274,5 +1276,82 @@ describe('Blocks', () => {
         'next--has--different--backgroundColor',
       ]);
     });
+  });
+
+  describe('blocksFormGenerator', () => {
+    it('Returns an empty blocks/blocks_layout pair', () => {
+      expect(blocksFormGenerator(0, '')).toEqual({
+        blocks: {},
+        blocks_layout: { items: [] },
+      });
+    });
+    it('Returns a filled blocks/blocks_layout pair with type block', () => {
+      const result = blocksFormGenerator(2, 'teaser');
+      expect(Object.keys(result.blocks).length).toEqual(2);
+      expect(result.blocks_layout.items.length).toEqual(2);
+      expect(result.blocks[result.blocks_layout.items[0]]['@type']).toEqual(
+        'teaser',
+      );
+      expect(result.blocks[result.blocks_layout.items[1]]['@type']).toEqual(
+        'teaser',
+      );
+    });
+  });
+});
+
+describe('findBlocks', () => {
+  it('Get all blocks in the first level (main block container)', () => {
+    const blocks = {
+      1: { title: 'title', '@type': 'title' },
+      2: { title: 'an image', '@type': 'image' },
+      3: { title: 'description', '@type': 'description' },
+      4: { title: 'a text', '@type': 'slate' },
+    };
+    const types = ['description'];
+    expect(findBlocks(blocks, types)).toStrictEqual(['3']);
+  });
+
+  it('Get all blocks in the first level (main block container) given a list', () => {
+    const blocks = {
+      1: { title: 'title', '@type': 'title' },
+      2: { title: 'an image', '@type': 'image' },
+      3: { title: 'description', '@type': 'description' },
+      4: { title: 'a text', '@type': 'slate' },
+    };
+    const types = ['description', 'slate'];
+    expect(findBlocks(blocks, types)).toStrictEqual(['3', '4']);
+  });
+
+  it('Get all blocks in the first level (main block container) given a list', () => {
+    const blocks = {
+      1: { title: 'title', '@type': 'title' },
+      2: { title: 'an image', '@type': 'image' },
+      3: { title: 'description', '@type': 'description' },
+      4: { title: 'a text', '@type': 'slate' },
+      5: { title: 'a text', '@type': 'slate' },
+    };
+    const types = ['description', 'slate'];
+    expect(findBlocks(blocks, types)).toStrictEqual(['3', '4', '5']);
+  });
+
+  it('Get all blocks, including containers, given a list', () => {
+    const blocks = {
+      1: { title: 'title', '@type': 'title' },
+      2: { title: 'an image', '@type': 'image' },
+      3: { title: 'description', '@type': 'description' },
+      4: { title: 'a text', '@type': 'slate' },
+      5: {
+        title: 'a container',
+        '@type': 'gridBlock',
+        blocks: {
+          6: { title: 'title', '@type': 'title' },
+          7: { title: 'an image', '@type': 'image' },
+          8: { title: 'description', '@type': 'description' },
+          9: { title: 'a text', '@type': 'slate' },
+        },
+      },
+    };
+    const types = ['description', 'slate'];
+    expect(findBlocks(blocks, types)).toStrictEqual(['3', '4', '8', '9']);
   });
 });

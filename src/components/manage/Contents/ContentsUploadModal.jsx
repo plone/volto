@@ -25,6 +25,7 @@ import { readAsDataURL } from 'promise-file-reader';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import { FormattedRelativeDate } from '@plone/volto/components';
 import { createContent } from '@plone/volto/actions';
+import { validateFileUploadSize } from '@plone/volto/helpers';
 
 const Dropzone = loadable(() => import('react-dropzone'));
 
@@ -34,8 +35,7 @@ const messages = defineMessages({
     defaultMessage: 'Cancel',
   },
   upload: {
-    id:
-      '{count, plural, one {Upload {count} file} other {Upload {count} files}}',
+    id: '{count, plural, one {Upload {count} file} other {Upload {count} files}}',
     defaultMessage:
       '{count, plural, one {Upload {count} file} other {Upload {count} files}}',
   },
@@ -121,14 +121,18 @@ class ContentsUploadModal extends Component {
    * @returns {undefined}
    */
   onDrop = async (files) => {
+    const validFiles = [];
     for (let i = 0; i < files.length; i++) {
-      await readAsDataURL(files[i]).then((data) => {
-        const fields = data.match(/^data:(.*);(.*),(.*)$/);
-        files[i].preview = fields[0];
-      });
+      if (validateFileUploadSize(files[i], this.props.intl.formatMessage)) {
+        await readAsDataURL(files[i]).then((data) => {
+          const fields = data.match(/^data:(.*);(.*),(.*)$/);
+          files[i].preview = fields[0];
+        });
+        validFiles.push(files[i]);
+      }
     }
     this.setState({
-      files: concat(this.state.files, files),
+      files: concat(this.state.files, validFiles),
     });
   };
 

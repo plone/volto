@@ -28,16 +28,17 @@ Thus it is safe to run it on top of your project and answer the prompts.
 
 ## Upgrading to Volto 17.x.x
 
-### Ending support for NodeJS 14
+### Ending support for Node.js 14 and 16
 
-Long Term Support for NodeJS 14 by the NodeJS community ends in April 2023.
-Volto 17 no longer supports NodeJS 14.
-Please update your projects to a NodeJS LTS version, where either 16 or 18 is supported at the moment of this writing.
-Version 18 is recommended.
+Long Term Support (LTS) for {term}`Node.js` 14 by the Node.js community ended in April 2023.
+Long Term Support for Node.js 16 by the Node.js community ended in September 2023.
+Volto 17 no longer supports Node.js 14 or 16.
+Please update your projects to a supported Node.js version (18 or 20).
+Version 18 is recommended, as the current LTS version of Node.js.
 
 #### localhost now resolves to an IPv6 address
 
-NodeJS 18 prefers to resolve `localhost` to an IPv6 address instead of IPv4.
+Node.js 18 prefers to resolve `localhost` to an IPv6 address instead of IPv4.
 If you are setting `RAZZLE_API_PATH` to a URL that includes `localhost`,
 change the hostname to `127.0.0.1` instead.
 
@@ -51,6 +52,146 @@ or use Webpack plugins, you might need to make adjustments.
 
 Razzle has been upgraded to version `4.2.18`.
 It is recommended that you update your project's dependency on Razzle to this version in order to avoid duplication.
+
+### Upgraded linters, ESlint, Prettier and Stylelint
+
+The main linters have been upgraded.
+Once updated, you may find new violations in your project or add-on code.
+It is recommended that you run again all the linters and fix all the violations once you update it to Volto 17.
+Upgrade your local dependencies in projects and add-ons by editing your {file}`package.json` as follows:
+
+```diff
+"devDependencies": {
+-    "eslint-config-prettier": "8.10.0",
++    "eslint-config-prettier": "9.0.0",
+-    "eslint-plugin-prettier": "3.4.1",
++    "eslint-plugin-prettier": "5.0.0",
+-    "prettier": "2.0.5",
++    "prettier": "3.0.3",
+-    "stylelint": "14.0.1",
+-    "stylelint-config-idiomatic-order": "8.1.0",
+-    "stylelint-config-prettier": "8.0.1",
+-    "stylelint-prettier": "1.1.2",
++    "stylelint": "15.10.3",
++    "stylelint-config-idiomatic-order": "9.0.0",
++    "stylelint-prettier": "4.0.2",
+}
+```
+
+
+### TypeScript support in Volto
+
+```{versionadded} 17.0.0-alpha.27
+```
+
+We added full support of TypeScript in Volto core.
+
+No existing code has been migrated.
+You may write code in either JavaScript or TypeScript.
+The choice is yours.
+
+Previously developers had the option to support TypeScript only in their Volto add-ons.
+Now it's available in Volto projects, as long as you upgrade your project dependencies.
+
+To support TypeScript in your projects, you must update your project as follows.
+
+Edit your {file}`package.json`:
+
+```diff
+"scripts": {
+-    "lint": "./node_modules/eslint/bin/eslint.js --max-warnings=0 'src/**/*.{js,jsx}'",
+-    "lint:fix": "./node_modules/eslint/bin/eslint.js --max-warnings=0 --fix 'src/**/*.{js,jsx}'",
+-    "lint:ci": "./node_modules/eslint/bin/eslint.js --max-warnings=0 -f checkstyle 'src/**/*.{js,jsx}' > eslint.xml",
++    "lint": "./node_modules/eslint/bin/eslint.js --max-warnings=0 'src/**/*.{js,jsx,ts,tsx,json}'",
++    "lint:fix": "./node_modules/eslint/bin/eslint.js --fix 'src/**/*.{js,jsx,ts,tsx,json}'",
++    "lint:ci": "./node_modules/eslint/bin/eslint.js --max-warnings=0 -f checkstyle 'src/**/*.{js,jsx,ts,tsx,json}' > eslint.xml",
+}
+```
+
+```diff
+"devDependencies": {
++     "@plone/scripts": ^3.0.0,
++     "@typescript-eslint/eslint-plugin": "6.7.0",
++     "@typescript-eslint/parser": "6.7.0",
++     "stylelint-prettier": "1.1.2",
++     "ts-jest": "^26.4.2",
++     "ts-loader": "9.4.4",
++     "typescript": "5.2.2"
+}
+```
+
+```{note}
+After making this change, you might experience hoisting problems and some packages can't be found on start.
+In that case, make sure you reset your `yarn.lock` by deleting it and start with a clean environment.
+```
+
+To use TypeScript in your projects, you'll need to introduce a TypeScript configuration file {file}`tsconfig.json`, and remove the existing file {file}`jsconfig.json`.
+You can use the one provided by the generator as a template, or use your own:
+
+```json
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "module": "commonjs",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "paths": {},
+    "baseUrl": "src"
+  },
+  "include": ["src"],
+  "exclude": [
+    "node_modules",
+    "build",
+    "public",
+    "coverage",
+    "src/**/*.test.{js,jsx,ts,tsx}",
+    "src/**/*.spec.{js,jsx,ts,tsx}",
+    "src/**/*.stories.{js,jsx,ts,tsx}"
+  ]
+}
+```
+
+If you use `mrs-developer` in your project, update the command in {file}`Makefile`:
+
+```diff
+--- a/Makefile
++++ b/Makefile
+preinstall: ## Preinstall task, checks if missdev (mrs-developer) is present and runs it
+
+ .PHONY: develop
+ develop: ## Runs missdev in the local project (mrs.developer.json should be present)
+-       npx -p mrs-developer missdev --config=jsconfig.json --output=addons --fetch-https
++       if [ -f $$(pwd)/jsconfig.json ]; then npx -p mrs-developer missdev --config=jsconfig.json --output=addons --fetch-https; fi
++       if [ ! -f $$(pwd)/jsconfig.json ]; then npx -p mrs-developer missdev --output=addons --fetch-https; fi
+```
+
+````{note}
+After editing your {file}`Makefile`, run `mrs-developer` with the following command, so the configuration gets in the right place ({file}`tsconfig.json`).
+```shell
+make develop
+```
+````
+
+### Upgrade ESlint and use `@babel/eslint-parser`
+
+```{versionchanged} 17.0.0-alpha.27
+```
+
+ESlint uses a library to parse the language under analysis.
+The one used was long deprecated and didn't supported both TypeScript and JavaScript.
+We upgraded the ESlint parser to use `@babel/eslint-parser`.
+This means when you upgrade your project, some new violations may appear.
+Once upgraded, run the linters again to make sure that your code is free of violations.
 
 ### `BlockChooser` component now uses `popperjs` internally
 
@@ -74,6 +215,56 @@ If your theme or add-ons relied on it, add it again as a dependency in them, or 
 By fixing this, we may break how the locales were applied, since the order will now be correct.
 Please check the translations of your project and add-ons, and verify that the translations are still correct.
 This could be especially true if you did translation overrides, two add-ons were using different translations for the same `msgid`, or there were conflicting `msgid`s in different add-ons.
+
+### Use proper heading tag (depending on the headline) in default listing template
+
+This change fixes a bug with the accessibility in listings.
+
+### Use `apiExpanders` to improve performance
+
+By default, Volto is now configured to use all possible `apiExpanders` in Plone RESTAPI in order to reduce the XHR requests to only one request.
+
+If you want to retain the old behavior (and no use `apiExpanders` at all), you need to add this configuration to your project/add-on configuration that will remove all `apiExpanders`:
+
+```js
+config.settings.apiExpanders = [];
+```
+
+### Cypress upgraded to 13.1.0
+
+As usual in a Volto major version release, Cypress has been upgraded to the latest version to date.
+We are moving from Cypress 11 to Cypress 13.
+There are no major changes to the way the tests are implemented and run.
+
+However, it could be that your Cypress boilerplate must be updated in your projects and add-ons if you use `@testing-library/cypress` in your tests.
+This is due to a change in how the default commands are now built internally and in `@testing-library/cypress`.
+
+You need to move the import:
+
+```js
+import '@testing-library/cypress/add-commands';
+```
+
+from {file}`cypress/support/commands.js` to {file}`cypress/support/e2e.js`, in case you have it in there.
+
+This is because the overrides that `@testing-library/cypress` introduce can be run only once.
+Since there are some commands that can call exports in {file}`cypress/support/commands.js`, this import may be run more than once, and then it errors.
+So you have to make sure that import is run only once while the tests are run.
+
+Check the official [Cypress Migration Guide](https://docs.cypress.io/guides/references/migration-guide) for more information.
+
+### New Image component
+
+```{versionadded} 17.0.0-alpha.21
+A new image component has been added to core to render optimized images.
+It requires the latest version of `plone.restapi` (>=8.42.0) installed in the backend to work properly.
+```
+
+### Removed Teaser block utils
+
+The `utils.js` file of the Teaser block was removed because it is no longer used.
+You can consider removing it if you were shadowing it in your project.
+
 
 (volto-upgrade-guide-16.x.x)=
 
@@ -170,11 +361,11 @@ It is recommended to go the extra mile and migrate the `text` blocks to `slate` 
 Use the `blocks-conversion-tool`.
 See https://github.com/plone/blocks-conversion-tool for more information.
 
-### Deprecating NodeJS 12
+### Deprecating Node.js 12
 
-Since April 30, 2022, NodeJS 12 is out of Long Term Support by the NodeJS community.
-NodeJS 12 is deprecated in Volto 13.
-Please update your projects to a NodeJS LTS version, where either 14 or 16 is supported at the moment of this writing.
+Since April 30, 2022, Node.js 12 is out of Long Term Support by the Node.js community.
+Node.js 12 is deprecated in Volto 13.
+Please update your projects to a Node.js LTS version, where either 14 or 16 is supported at the moment of this writing.
 Version 16 is recommended.
 
 ### Upgraded to Razzle 4
@@ -290,7 +481,7 @@ We updated Volto to be able to use it, however some changes have to be made in y
     nodeLinker: node-modules
     ```
 
-    Then, if you are using Node >=16.10 run:
+    Then, if you are using Node.js >=16.10 run:
 
     ```shell
     corepack enable
@@ -305,7 +496,7 @@ We updated Volto to be able to use it, however some changes have to be made in y
     ```
 
     ```{important}
-    It is highly recommended that you use the latest Node 16.
+    It is highly recommended that you use the latest Node.js 16.
     ```
 
 2.  Change your root project `Makefile` to include these commands:
@@ -801,7 +992,7 @@ Apply the following diff to your add-on's `babel.config.js`:
 ```
 
 ```{note}
-For convenience the `i18n` script is now an executable in the node environment.
+For convenience the `i18n` script is now an executable in the Node.js environment.
 ```
 
 ### Removal of the old configuration system based on imports
@@ -818,8 +1009,8 @@ Not really a breaking change, but it's worth noting it. By default, Volto 14 com
 {doc}`../configuration/locking` enabled, if the backend supports it. Thus:
 
 - Upgrade Plone RestAPI
-  - **plone.restapi**>=`8.9.0` (Plone 5+)
-  - **plone.restapi**>=`7.4.0` (Plone 4)
+  - `plone.restapi`>=`8.9.0` (Plone 5+)
+  - `plone.restapi`>=`7.4.0` (Plone 4)
 - Update `plone:CORSPolicy` to include `Lock-Token` within `allow_headers`:
 
 ```xml
@@ -881,10 +1072,10 @@ The `getVocabulary` action has changed API. Before, it used separate positional 
 
 ## Upgrading to Volto 13.x.x
 
-### Deprecating NodeJS 10
+### Deprecating Node.js 10
 
-Since April 30th, 2021 NodeJS 10 is out of Long Term Support by the NodeJS community, so
-we are deprecating it in Volto 13. Please update your projects to a NodeJS LTS version
+Since April 30th, 2021 Node.js 10 is out of Long Term Support by the Node.js community, so
+we are deprecating it in Volto 13. Please update your projects to a Node.js LTS version
 (12 or 14 at the moment of this writing).
 
 ### Seamless mode is the default in development mode
@@ -1052,7 +1243,7 @@ messages for the used translations is advisable, but not required.
 
 (frontend-upgrade-guide-volto-configuration-registry-label)=
 
-### Volto Configuration Registry
+### Volto configuration registry
 
 The configuration object in Volto is located in the `~/config` module and uses it as
 container of Volto's config taking advantage of the ES6 module system. So we "import"
@@ -1062,8 +1253,8 @@ the config every time we need it, then the exported config data in that module
 It's been a while since we were experiencing undesired side effects from "circular import
 dependency" problems in Volto, due to the very nature of the solution (importing the
 `~/config`). Although they aren't very noticeable, they are there, waiting to bite
-us. In fact, circular dependencies are common in NodeJS world, and the very nature of
-how it works make them "workable" thanks to the NodeJS own import resolution algorithm.
+us. In fact, circular dependencies are common in Node.js world, and the very nature of
+how it works make them "workable" thanks to the Node.js own import resolution algorithm.
 So the "build" always works, although we have the circular dependencies, but that leads to weird problems
 like (just to mention one of them) the {term}`hot module replacement` (HMR) not working properly.
 
@@ -1469,7 +1660,7 @@ Since Volto 9.2.0 the next step IS NOT required anymore.
 ```
 
 ~~Copy (and overwrite) the `patches` folder into your local project
-https://github.com/plone/volto/tree/master/patches or, if you want to be more accurate,
+https://github.com/plone/volto/tree/main/patches or, if you want to be more accurate,
 just copy `patches/razzle-plugins.patch` file and overwrite `patches/patchit.sh` file.~~
 
 ### Babel config housekeeping
@@ -1632,11 +1823,11 @@ First, update the `package.json` of your Volto project to Volto 6.x.x.
 This release includes a number of changes to the internal dependencies. If you have problems building your project, you might need to remove your `node_modules` and, ultimately, also remove your `yarn.lock` file. Then run again `yarn` for rebuilding the dependencies.
 ```
 
-### Upgrade to Node 12
+### Upgrade to Node.js 12
 
-We have now dependencies that requires `node >=10.19.0`. Although Node 10 has still LTS
+We have now dependencies that requires `node >=10.19.0`. Although Node.js 10 has still LTS
 "maintenance" treatment (see https://github.com/nodejs/release#release-schedule) the recommended path
-is that you use from now on node 12 which is LTS since last October.
+is that you use from now on Node.js 12 which is LTS since last October.
 
 ### New Razzle version and related development dependencies
 
@@ -1910,7 +2101,7 @@ const initialBlocks = {};
 
 For better resource grouping, the `ImageSidebar` component has been moved to the `Image` block component directory: `components/manage/Blocks/Image`
 
-### Copy `yarn.lock` from volto-starter-kit in Alpha 17
+### Copy `yarn.lock` from `volto-starter-kit` in Alpha 17
 
 Due to changes in the dependency tree, it's required to use a specific `yarn.lock` file by deleting it and copy the one here: https://github.com/plone/volto-starter-kit/blob/master/yarn.lock before upgrading to Volto alpha 17.
 
@@ -2043,7 +2234,7 @@ Plone RESTAPI was updated for that purpose too, and running an upgrade step (do 
 
 This is the version compatibility table across all the packages involved:
 
-Volto 4 - plone.restapi >= 5.0.0 - kitconcept.voltodemo >= 2.0
+Volto 4 - `plone.restapi` >= 5.0.0 - `kitconcept.voltodemo` >= 2.0
 
 ```{note}
 The renaming happened in Volto 4 alpha.10 and plone.restapi 5.0.0. Volto 4 alpha versions under that release use older versions of `plone.restapi` and `kitconcept.voltodemo`, however if you are using alpha releases it's recommended to upgrade to the latest alpha or the final release of Volto 4.
@@ -2227,7 +2418,7 @@ Then update your `package.json` to Volto 3.x.
 ```
 
 Volto 3.x is compatible with the new changes introduced in the vocabularies
-endpoint in plone.restapi 4.0.0. If you custom-build a widget based in the
+endpoint in `plone.restapi` 4.0.0. If you custom-build a widget based in the
 Volto ones, you should update them as well. Volto updated its own widget set to
 support them:
 
