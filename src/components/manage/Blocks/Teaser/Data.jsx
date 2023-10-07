@@ -1,15 +1,19 @@
-import React from 'react';
-import { defineMessages, useIntl } from 'react-intl';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { defineMessages, useIntl } from 'react-intl';
 import { Button } from 'semantic-ui-react';
 import { BlockDataForm, Icon } from '@plone/volto/components';
-import { getContent } from '@plone/volto/actions';
 import { flattenToAppURL } from '@plone/volto/helpers';
-
+import { getContent } from '@plone/volto/actions';
+import { isEmpty } from 'lodash';
 import reloadSVG from '@plone/volto/icons/reload.svg';
-import { useEffect } from 'react';
+import trashSVG from '@plone/volto/icons/delete.svg';
 
 const messages = defineMessages({
+  resetTeaser: {
+    id: 'Reset the block',
+    defaultMessage: 'Reset the block',
+  },
   refreshTeaser: {
     id: 'Refresh source content',
     defaultMessage: 'Refresh source content',
@@ -18,9 +22,18 @@ const messages = defineMessages({
 
 const TeaserData = (props) => {
   const { block, blocksConfig, data, onChangeBlock } = props;
-  const intl = useIntl();
   const dispatch = useDispatch();
+  const intl = useIntl();
 
+  const reset = () => {
+    onChangeBlock(block, {
+      ...data,
+      href: '',
+      title: '',
+      description: '',
+      head_title: '',
+    });
+  };
   const dataTransformer = (resp, data) => {
     let hrefData = {
       '@id': flattenToAppURL(resp['@id']),
@@ -51,8 +64,11 @@ const TeaserData = (props) => {
     };
     return blockData;
   };
+
   const refresh = () => {
-    dispatch(getContent(flattenToAppURL(data.href[0]['@id']))).then((resp) => {
+    dispatch(
+      getContent(flattenToAppURL(data.href[0]['@id']), null, `${block}-teaser`),
+    ).then((resp) => {
       if (resp) {
         let blockData = dataTransformer(resp, data);
         onChangeBlock(block, blockData);
@@ -74,8 +90,21 @@ const TeaserData = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data.href, data.live]);
 
-  const dataAdapter = blocksConfig[data['@type']].dataAdapter;
+  const isReseteable =
+    isEmpty(data.href) && !data.title && !data.description && !data.head_title;
 
+  const HeaderActions = (
+    <Button.Group>
+      <Button
+        aria-label={intl.formatMessage(messages.resetTeaser)}
+        basic
+        disabled={isReseteable}
+        onClick={() => reset()}
+      >
+        <Icon name={trashSVG} size="24px" color="red" />
+      </Button>
+    </Button.Group>
+  );
   const ActionButton = (
     <Button.Group className="refresh teaser">
       <Button
@@ -92,6 +121,7 @@ const TeaserData = (props) => {
   const schema = data.overwrite
     ? blocksConfig[data['@type']].blockSchema({ intl })
     : blocksConfig[data['@type']].enhancedSchema({ intl });
+  const dataAdapter = blocksConfig[data['@type']].dataAdapter;
 
   return (
     <BlockDataForm
@@ -110,6 +140,7 @@ const TeaserData = (props) => {
       formData={data}
       block={block}
       blocksConfig={blocksConfig}
+      headerActions={HeaderActions}
       actionButton={data.overwrite && ActionButton}
     />
   );

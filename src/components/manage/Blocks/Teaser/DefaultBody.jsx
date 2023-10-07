@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Message } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
@@ -31,15 +31,17 @@ const TeaserDefaultTemplate = (props) => {
   const { openExternalLinkInNewTab } = config.settings;
 
   const result = useSelector(
-    (state) => state?.content?.subrequests?.[id]?.data,
+    (state) => state?.content?.subrequests?.[`${id}-teaser`]?.data,
   );
 
   useEffect(() => {
     if (href && !data.overwrite) {
-      dispatch(getContent(flattenToAppURL(href['@id']), null, id));
+      dispatch(
+        getContent(flattenToAppURL(href?.['@id']), null, `${id}-teaser`),
+      );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [href]);
 
   return (
     <div className={cx('block teaser', className)}>
@@ -57,10 +59,10 @@ const TeaserDefaultTemplate = (props) => {
           <MaybeWrap
             condition={!isEditMode}
             as={UniversalLink}
-            href={href['@id']}
+            href={result?.['@id']}
             target={
               data.openLinkInNewTab ||
-                (openExternalLinkInNewTab && !isInternalURL(href['@id']))
+              (openExternalLinkInNewTab && !isInternalURL(href['@id']))
                 ? '_blank'
                 : null
             }
@@ -69,16 +71,16 @@ const TeaserDefaultTemplate = (props) => {
               {(result.hasPreviewImage ||
                 result.image_field ||
                 result.preview_image) && (
-                  <div className="image-wrapper">
-                    <Image
-                      item={image || href}
-                      imageField={image ? image.image_field : href.image_field}
-                      alt=""
-                      loading="lazy"
-                      responsive={true}
-                    />
-                  </div>
-                )}
+                <div className="image-wrapper">
+                  <Image
+                    item={image || href}
+                    imageField={image ? image?.image_field : href?.image_field}
+                    alt=""
+                    loading="lazy"
+                    responsive={true}
+                  />
+                </div>
+              )}
               <div className="content">
                 {result?.head_title && (
                   <div className="headline">{result.head_title}</div>
@@ -96,7 +98,7 @@ const TeaserDefaultTemplate = (props) => {
             href={href['@id']}
             target={
               data.openLinkInNewTab ||
-                (openExternalLinkInNewTab && !isInternalURL(href['@id']))
+              (openExternalLinkInNewTab && !isInternalURL(href['@id']))
                 ? '_blank'
                 : null
             }
