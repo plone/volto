@@ -1,5 +1,6 @@
 import React from 'react';
 import { useIntl, defineMessages } from 'react-intl';
+import { Pluggable } from '@plone/volto/components/manage/Pluggable';
 
 const messages = defineMessages({
   mainView: {
@@ -34,6 +35,7 @@ const SkipLinks = () => {
       <a className="skiplink" href="#footer">
         {intl.formatMessage(messages.footer)}
       </a>
+      <Pluggable name="main.skiplinks" />
     </div>
   );
 };
