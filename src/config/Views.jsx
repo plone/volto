@@ -111,11 +111,11 @@ export const contentTypesViews = {
 export const defaultView = DefaultView;
 
 export const errorViews = {
-  '404': NotFoundView,
-  '401': Unauthorized,
-  '403': Forbidden,
-  '408': RequestTimeout,
-  '500': ServerError,
+  404: NotFoundView,
+  401: Unauthorized,
+  403: Forbidden,
+  408: RequestTimeout,
+  500: ServerError,
   ECONNREFUSED: ConnectionRefused,
   corsError: CorsError,
 };

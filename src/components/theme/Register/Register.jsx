@@ -30,8 +30,7 @@ const messages = defineMessages({
     defaultMessage: 'E-mail',
   },
   emailDescription: {
-    id:
-      'Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.',
+    id: 'Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.',
     defaultMessage:
       'Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.',
   },
@@ -40,8 +39,7 @@ const messages = defineMessages({
     defaultMessage: 'Account Registration Completed',
   },
   successRegisterCompletedBody: {
-    id:
-      'The registration process has been successful. Please check your e-mail inbox for information on how activate your account.',
+    id: 'The registration process has been successful. Please check your e-mail inbox for information on how activate your account.',
     defaultMessage:
       'The registration process has been successful. Please check your e-mail inbox for information on how activate your account.',
   },

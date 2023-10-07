@@ -5,9 +5,8 @@ import FromHTMLCustomBlockFn from './FromHTML';
 
 export const richtextEditorSettings = (props) => {
   const { plugins, inlineToolbarButtons } = Plugins(props);
-  const { extendedBlockRenderMap, blockStyleFn, listBlockTypes } = Blocks(
-    props,
-  );
+  const { extendedBlockRenderMap, blockStyleFn, listBlockTypes } =
+    Blocks(props);
 
   return {
     extendedBlockRenderMap,

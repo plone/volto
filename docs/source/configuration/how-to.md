@@ -60,7 +60,7 @@ add-ons configuration in `config` argument. Next, perform all the required modif
 to the config and finally, return the config object.
 
 By reading Volto's
-[src/config/index.js](https://github.com/plone/volto/blob/master/src/config/index.js),
+[src/config/index.js](https://github.com/plone/volto/blob/main/src/config/index.js),
 you'll get to see that Volto provides some default configuration objects
 (`blocks`, `widgets`, `settings`, etc), passes them through the
 `applyAddonConfiguration()` function, which allows any installed addons to
@@ -78,7 +78,7 @@ See {doc}`settings-reference` for details.
 
 The `widgets` object holds the widget registry, used to decide which widget
 should be used when rendering forms. Check [its
-definition](https://github.com/plone/volto/blob/master/src/config/Widgets.jsx)
+definition](https://github.com/plone/volto/blob/main/src/config/Widgets.jsx)
 but also the [lookup
 mechanism](https://github.com/plone/volto/blob/6fd62cb2860bc7cf3cb7c36ea86bfd8bd03247d9/src/components/manage/Form/Field.jsx#L112)
 to understand how things work.

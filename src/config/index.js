@@ -37,6 +37,8 @@ import applyAddonConfiguration, { addonsInfo } from 'load-volto-addons';
 
 import ConfigRegistry from '@plone/volto/registry';
 
+import { getSiteAsyncPropExtender } from '@plone/volto/helpers';
+
 const host = process.env.HOST || 'localhost';
 const port = process.env.PORT || '3000';
 
@@ -83,7 +85,13 @@ let config = {
       // https://6.docs.plone.org/volto/configuration/settings-reference.html#term-apiExpanders
       // {
       //   match: '',
-      //   GET_CONTENT: ['breadcrumbs', 'navigation', 'actions', 'types'],
+      //   GET_CONTENT: [
+      //     'breadcrumbs',
+      //     'navigation',
+      //     'actions',
+      //     'types',
+      //     'navroot',
+      //   ],
       // },
     ],
     // Internal proxy to bypass CORS *while developing*. NOT intended for production use.
@@ -128,7 +136,7 @@ let config = {
     useEmailAsLogin: false,
     persistentReducers: ['blocksClipboard'],
     initialReducersBlacklist: [], // reducers in this list won't be hydrated in windows.__data
-    asyncPropsExtenders: [], // per route asyncConnect customizers
+    asyncPropsExtenders: [getSiteAsyncPropExtender], // per route asyncConnect customizers
     contentIcons: contentIcons,
     loadables,
     lazyBundles: {
@@ -188,6 +196,10 @@ let config = {
     blockSettingsTabFieldsetsInitialStateOpen: true,
     excludeLinksAndReferencesMenuItem: false,
     containerBlockTypes: ['gridBlock'],
+    siteTitleFormat: {
+      includeSiteTitle: false,
+      titleAndSiteTitleSeparator: '-',
+    },
   },
   experimental: {
     addBlockButton: {
@@ -223,7 +235,7 @@ config.settings.apiExpanders = [
   ...config.settings.apiExpanders,
   {
     match: '',
-    GET_CONTENT: ['breadcrumbs', 'actions', 'types'],
+    GET_CONTENT: ['breadcrumbs', 'actions', 'types', 'navroot'],
   },
   {
     match: '',

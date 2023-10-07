@@ -149,14 +149,14 @@ class Edit extends Component {
    * @method onPreview
    * @returns {undefined}
    */
-  onPreview() {
+  async onPreview() {
     try {
-      const code = this.props.prettierStandalone
-        .format(this.getValue(), {
+      const code = (
+        await this.props.prettierStandalone.format(this.getValue(), {
           parser: 'html',
           plugins: [this.props.prettierParserHtml],
         })
-        .trim();
+      ).trim();
       this.setState(
         {
           isPreview: !this.state.isPreview,
@@ -174,14 +174,14 @@ class Edit extends Component {
    * @method onPrettify
    * @returns {undefined}
    */
-  onPrettify = () => {
+  onPrettify = async () => {
     try {
-      const code = this.props.prettierStandalone
-        .format(this.getValue(), {
+      const code = (
+        await this.props.prettierStandalone.format(this.getValue(), {
           parser: 'html',
           plugins: [this.props.prettierParserHtml],
         })
-        .trim();
+      ).trim();
       this.onChangeCode(code);
     } catch (ex) {
       // error while parsing the user-typed HTML
