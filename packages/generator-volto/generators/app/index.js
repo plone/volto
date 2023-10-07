@@ -78,6 +78,10 @@ module.exports = class extends Generator {
       type: String,
       desc: 'Project description',
     });
+    this.option('defaultAddonName', {
+      type: String,
+      desc: 'The name of the add-on project added to the project by default',
+    });
 
     this.args = args;
     this.opts = opts;
@@ -253,6 +257,16 @@ Run "npm install -g @plone/generator-volto" to update.`,
   }
 
   end() {
+    const base =
+      currentDir === this.globals.projectName ? '.' : this.globals.projectName;
+    this.composeWith(require.resolve('../addon'), {
+      addonName: this.opts.defaultAddonName
+        ? this.opts.defaultAddonName
+        : `volto-${this.globals.projectName}`,
+      outputpath: base,
+      interactive: false,
+    });
+
     if (!this.opts['skip-install']) {
       this.log(
         `
