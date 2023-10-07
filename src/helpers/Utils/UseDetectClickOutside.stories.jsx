@@ -171,9 +171,8 @@ WithPortal.args = {};
 export const WithPortalAndPopper = StoryComponentWithPortalAndPopper.bind({});
 WithPortalAndPopper.args = {};
 
-export const WithPortalAndPopperUsingBlockChooser = StoryComponentWithPortalAndPopper.bind(
-  {},
-);
+export const WithPortalAndPopperUsingBlockChooser =
+  StoryComponentWithPortalAndPopper.bind({});
 WithPortalAndPopperUsingBlockChooser.args = {
   showBlockChooser: true,
 };

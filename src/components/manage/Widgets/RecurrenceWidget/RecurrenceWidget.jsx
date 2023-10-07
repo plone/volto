@@ -734,15 +734,8 @@ class RecurrenceWidget extends Component {
   render() {
     const { open, dimmer, rruleSet, formValues, RRULE_LANGUAGE } = this.state;
 
-    const {
-      id,
-      title,
-      required,
-      description,
-      error,
-      fieldSet,
-      intl,
-    } = this.props;
+    const { id, title, required, description, error, fieldSet, intl } =
+      this.props;
 
     return (
       <Form.Field
