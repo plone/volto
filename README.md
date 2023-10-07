@@ -14,9 +14,7 @@
 
 [Plone](https://plone.org) is a CMS built on Python with more than 20 years of history and experience.
 
-Plone has features that appeal to developers and users alike,
-such as an intuitive editing interface, customizable content types,
-hierarchical organization, and a sophisticated permissions model.
+Plone has features that appeal to developers and users alike, such as an intuitive editing interface, customizable content types, hierarchical organization, and a sophisticated permissions model.
 This allows you to build anything from simple websites to enterprise-grade intranets.
 
 Volto exposes all these features and communicates with Plone via its [REST API](https://github.com/plone/plone.restapi).
@@ -49,12 +47,12 @@ For links to trainings and videos, see [Other learning resources](https://6.docs
 Volto runs using [Node.js](https://nodejs.org/).
 We recommend using the current LTS version (18.x).
 
-- Node.js 20: Supported since Volto 17
+- Node.js 20: Supported since Volto 17.
 - Node.js 18 (LTS): Supported since Volto 17.
-- Node.js 16: No longer supported. It was supported from Volto 14 - 16
-- Node.js 14: No longer supported. It was supported from Volto 8.8.0 - 16
-- Node.js 12: No longer supported. It was supported from Volto 4 - 15
-- Node.js 10: No longer supported. It was supported from Volto 1 - 12
+- Node.js 16: No longer supported. It was supported from Volto 14 - 16.
+- Node.js 14: No longer supported. It was supported from Volto 8.8.0 - 16.
+- Node.js 12: No longer supported. It was supported from Volto 4 - 15.
+- Node.js 10: No longer supported. It was supported from Volto 1 - 12.
 
 ### Supported Plone and Python versions
 

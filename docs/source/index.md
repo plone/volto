@@ -14,22 +14,13 @@ myst:
 Volto is a React-based frontend for the [Plone CMS](https://plone.org).
 It is the default frontend starting with the Plone 6 release.
 
-Volto provides an attractive proposition:
-integration with the modern frontend development world,
-access to the huge ecosystem of React libraries and addons,
-combined with the ability to use the mature Plone CMS backend as a development platform.
+Volto provides an attractive proposition: integration with the modern frontend development world, access to the huge ecosystem of React libraries and addons, combined with the ability to use the mature Plone CMS backend as a development platform.
 
-Thanks to the use of the Plone REST API, it is fully compatible with
-Plone's content type framework. But its power comes from the innovative Pastanaga editor,
-which provides a flexible WYSIWYG editing interfaces based on "blocks".
+Thanks to the use of the Plone REST API, it is fully compatible with Plone's content type framework. But its power comes from the innovative Pastanaga editor, which provides a flexible WYSIWYG editing interfaces based on "blocks".
 
-Thanks to their simplicity and easy access to advanced frontend integration,
-Volto blocks can provide a fast development experience that reduces
-developer frustration and improves end-user experience.
+Thanks to their simplicity and easy access to advanced frontend integration, Volto blocks can provide a fast development experience that reduces developer frustration and improves end-user experience.
 
-To start developing a new Volto project you should have minimal React and
-modern JavaScript knowledge. Follow the {doc}`plone:install/install-from-packages`
-guide to bootstrap a new Volto project and start hacking!
+To start developing a new Volto project you should have minimal React and modern JavaScript knowledge. Follow the {doc}`plone:install/install-from-packages` guide to bootstrap a new Volto project and start hacking!
 
 ```{toctree}
 :maxdepth: 2

@@ -47,8 +47,7 @@ The Volto Team reviews pull requests only from people with a GitHub account who 
 ```{include} ./branch-policy.md
 ```
 
-
-(contributing-translations-label)=
+(contributing-install-volto-for-development-label)=
 
 ## Install Volto for development
 
@@ -67,8 +66,7 @@ git clone https://github.com/plone/volto.git
 ### Start the Plone backend
 
 While developing Volto, you need to have the Plone backend running.
-If you don't already have the backend installed,
-the easiest way is to run the following command inside the Volto repository:
+If you don't already have the backend installed, the easiest way is to run the following command inside the Volto repository:
 
 ```shell
 make start-backend-docker
@@ -89,6 +87,9 @@ yarn start
 ### Open Volto in your browser
 
 Browse to [http://localhost:3000](http://localhost:3000).
+
+
+(contributing-translations-label)=
 
 ## Translations
 
@@ -138,15 +139,6 @@ Specifically:
 (contributing-developer-guidelines-label)=
 
 ## Developer guidelines
-
-Development and configuration of Volto is managed through your {ref}`choice of Plone installation method <install-index-choose-installation-method-label>`.
-You may choose to install Plone via {ref}`containers <install-containers-label>` or from its {ref}`packages <install-packages-1-label>`.
-
-```{todo}
-When referring to installation and configuration of Plone's backend, this part of the Volto documentation may have obsolete content.
-The most current information for installing and configuring Plone is in {ref}`install-index-label`.
-Please report any issues in the [Volto issue tracker](https://github.com/plone/volto/issues/).
-```
 
 ```{toctree}
 :maxdepth: 1
