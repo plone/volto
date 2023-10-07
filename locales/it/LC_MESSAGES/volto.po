@@ -2462,6 +2462,16 @@ msgstr ""
 msgid "Origin"
 msgstr "Origine"
 
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Override source content
+msgid "Override source content"
+msgstr ""
+
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Override source content if you want to prevent further updates
+msgid "Override source content if you want to prevent further updates"
+msgstr ""
+
 #: components/manage/LinksToItem/LinksToItem
 # defaultMessage: Overview of relations of all content items
 msgid "Overview of relations of all content items"
@@ -2716,6 +2726,11 @@ msgstr "Elementi collegati a questo contenuto come contenuto correlato"
 msgid "Referencing this item with {relationship}"
 msgstr "Elementi collegati a questo contenuto in {relationship}"
 
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: Refresh source content
+msgid "Refresh source content"
+msgstr ""
+
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
 #: components/theme/Register/Register
@@ -2860,11 +2875,6 @@ msgstr "Reimposta elemento {index}"
 # defaultMessage: Reset title
 msgid "Reset term title"
 msgstr "Reimposta titolo del termine"
-
-#: components/manage/Blocks/Teaser/Data
-# defaultMessage: Reset the block
-msgid "Reset the block"
-msgstr "Reimposta il blocco"
 
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Results limit

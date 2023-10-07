@@ -1,11 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-<<<<<<< HEAD
-"POT-Creation-Date: 2023-05-19T13:41:11.130Z\n"
-=======
-"POT-Creation-Date: 2023-10-02T11:59:20.013Z\n"
->>>>>>> main
+"POT-Creation-Date: 2023-10-07T13:51:18.229Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -43,7 +39,7 @@ msgid "Action changed"
 msgstr ""
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
-# defaultMessage: Action:
+# defaultMessage: Action: 
 msgid "Action: "
 msgstr ""
 
@@ -692,7 +688,7 @@ msgid "Condition changed"
 msgstr ""
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
-# defaultMessage: Condition:
+# defaultMessage: Condition: 
 msgid "Condition: "
 msgstr ""
 
@@ -2468,7 +2464,6 @@ msgstr ""
 msgid "Origin"
 msgstr ""
 
-<<<<<<< HEAD
 #: components/manage/Blocks/Teaser/schema
 # defaultMessage: Override source content
 msgid "Override source content"
@@ -2477,11 +2472,11 @@ msgstr ""
 #: components/manage/Blocks/Teaser/schema
 # defaultMessage: Override source content if you want to prevent further updates
 msgid "Override source content if you want to prevent further updates"
-=======
+msgstr ""
+
 #: components/manage/LinksToItem/LinksToItem
 # defaultMessage: Overview of relations of all content items
 msgid "Overview of relations of all content items"
->>>>>>> main
 msgstr ""
 
 #: components/manage/Toolbar/Toolbar
@@ -2731,6 +2726,11 @@ msgstr ""
 #: components/manage/LinksToItem/LinksToItem
 # defaultMessage: Referencing this item with {relationship}
 msgid "Referencing this item with {relationship}"
+msgstr ""
+
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: Refresh source content
+msgid "Refresh source content"
 msgstr ""
 
 #: components/theme/Anontools/Anontools
@@ -3329,7 +3329,7 @@ msgid "Some relations are broken. Please fix."
 msgstr ""
 
 #: error
-# defaultMessage: Sorry, something went wrong with your request
+# defaultMessage: Sorry, something went wrong with your request 
 msgid "Sorry, something went wrong with your request"
 msgstr ""
 

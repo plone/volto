@@ -2462,6 +2462,16 @@ msgstr ""
 msgid "Origin"
 msgstr "Origine"
 
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Override source content
+msgid "Override source content"
+msgstr ""
+
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Override source content if you want to prevent further updates
+msgid "Override source content if you want to prevent further updates"
+msgstr ""
+
 #: components/manage/LinksToItem/LinksToItem
 # defaultMessage: Overview of relations of all content items
 msgid "Overview of relations of all content items"
@@ -2714,6 +2724,11 @@ msgstr ""
 #: components/manage/LinksToItem/LinksToItem
 # defaultMessage: Referencing this item with {relationship}
 msgid "Referencing this item with {relationship}"
+msgstr ""
+
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: Refresh source content
+msgid "Refresh source content"
 msgstr ""
 
 #: components/theme/Anontools/Anontools

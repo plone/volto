@@ -2481,11 +2481,6 @@ msgstr ""
 msgid "Origin"
 msgstr ""
 
-#: components/manage/LinksToItem/LinksToItem
-# defaultMessage: Overview of relations of all content items
-msgid "Overview of relations of all content items"
-msgstr ""
-
 #: components/manage/Blocks/Teaser/schema
 # defaultMessage: Override source content
 msgid "Override source content"
@@ -2494,6 +2489,11 @@ msgstr ""
 #: components/manage/Blocks/Teaser/schema
 # defaultMessage: Override source content if you want to prevent further updates
 msgid "Override source content if you want to prevent further updates"
+msgstr ""
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Overview of relations of all content items
+msgid "Overview of relations of all content items"
 msgstr ""
 
 #: components/manage/Toolbar/Toolbar
