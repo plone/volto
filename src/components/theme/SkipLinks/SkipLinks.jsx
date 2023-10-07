@@ -24,7 +24,7 @@ const SkipLinks = () => {
     <div
       className="skiplinks-wrapper"
       role="complementary"
-      aria-label="skiplinks"
+      aria-label="Skiplinks"
     >
       <a className="skiplink" href="#view">
         {intl.formatMessage(messages.mainView)}
