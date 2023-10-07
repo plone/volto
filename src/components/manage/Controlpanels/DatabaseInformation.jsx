@@ -48,7 +48,7 @@ const DatabaseInformation = () => {
         <Segment>
           <Message>
             <FormattedMessage
-              id="The Database Manager allow you to view database status information"
+              id="Database information"
               defaultMessage="The Database Manager allow you to view database status information"
             />
           </Message>
