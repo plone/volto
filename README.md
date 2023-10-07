@@ -38,6 +38,12 @@ You can try a Volto online demo at [https://6.demo.plone.org/](https://6.demo.pl
 
 To start a new project using Volto, follow the [Plone installation documentation](https://6.docs.plone.org/install/install-from-packages.html).
 
+## Documentation
+
+You can find the latest documentation at [https://6.docs.plone.org/](https://6.docs.plone.org/volto/index.html)
+
+For links to trainings and videos, see [Other learning resources](https://6.docs.plone.org/volto/getting-started/others.html).
+
 ## Supported Node.js versions
 
 Volto runs using [Node.js](https://nodejs.org/).
@@ -79,6 +85,7 @@ On Plone 5, Volto is currently tested with the following packages pinned to spec
 - plone.restapi 8.32.6
 - plone.rest 2.0.0
 - plone.volto 4.0.3
+
 
 ## Volto in Production
 
@@ -133,54 +140,9 @@ Volto is actively developed since 2017 and used in production since 2018 on the 
 
 Please create a new [issue](https://github.com/plone/volto/issues/new) or [pull request](https://github.com/plone/volto/pulls) to add your Volto-site here!
 
-## Documentation
-
-You can find the latest documentation at [https://6.docs.plone.org/](https://6.docs.plone.org/volto/index.html)
-
-## Training
-
-On the [Plone Training website](https://training.plone.org), you'll find Volto-dedicated training materials, plus other JavaScript-centered trainings.
-
-- [Mastering Plone 6 Development](https://training.plone.org/mastering-plone/)
-  The comprehensive training on Plone 6 with best practice tips for developers and integrators.
-- [Volto Hands-On](https://training.plone.org/voltohandson/index.html)
-- [Volto Add-ons Development](https://training.plone.org/voltoaddons/index.html)
-- [Effective Volto](https://training.plone.org/effective-volto/index.html)
-- [Plone Deployment](https://training.plone.org/plone-deployment/index.html)
-- [Volto](https://2022.training.plone.org/volto/index.html) (archived)
-- [JavaScript For Plone Developers](https://2022.training.plone.org/javascript/index.html) (archived)
-
-## Talks
-
-### Plone Conference Ferrara 2019
-
-[Víctor Fernández de Alba - Plone Beyond 2020: Jump into Volto today!](https://www.youtube.com/watch?v=8QrGOgXo1Js&list=PLGN9BI-OAQkQD9HliElIk9pe-8O_Y6S04&index=16&t=0s)
-
-[Rob Gietema - How to create your own Volto site!](https://www.youtube.com/watch?v=3QLN8tsjjf4&list=PLGN9BI-OAQkQD9HliElIk9pe-8O_Y6S04&index=11&t=0s)
-
-[Timo Stollenwerk - On the Road - Plone 6 and Beyond](https://www.youtube.com/watch?v=suXVdfYV2kA&list=PLGN9BI-OAQkQD9HliElIk9pe-8O_Y6S04&index=14&t=0s)
-
-[Rodrigo Ferreira de Souza - Data migration to Plone 5.2 and Volto](https://www.youtube.com/watch?v=kb9SEsnllqE&list=PLGN9BI-OAQkQD9HliElIk9pe-8O_Y6S04&index=49&t=0s)
-
-[Nicola Zambello - A Volto story: building a website by prototyping](https://www.youtube.com/watch?v=xtxJURICkWc&list=PLGN9BI-OAQkQD9HliElIk9pe-8O_Y6S04&index=17&t=0s)
-
-[Luca Pisani - Plone and React.js: An interview to Volto](https://www.youtube.com/watch?v=JZFUOG843no&list=PLGN9BI-OAQkQD9HliElIk9pe-8O_Y6S04&index=26&t=0s)
-
-### Plone Conference Tokyo 2018
-
-[Rob Gietema - Volto](https://2018.ploneconf.org/talks/plone-react)
-
-[Rob Gietema / Víctor Fernández de Alba - Volto Extensibility Story](https://2018.ploneconf.org/talks/plone-react-extensibility-story)
-
-[Víctor Fernández de Alba - Theming Volto](https://2018.ploneconf.org/talks/theming-plone-react)
-
-[Timo Stollenwerk / Víctor Fernández de Alba / Ramon Navarro - Volto Case Studies](https://2018.ploneconf.org/talks/plone-react-case-studies-when-stability-and-security-meet-speed-and-a-modern-user-interface)
-
-[Timo Stollenwerk - Reinventing Plone, Roadmap to the Modern Web](https://2018.ploneconf.org/talks/reinventing-plone-roadmap-to-the-modern-web)
-
 ## Contributing to Volto
 
-If you would like to contribute to the Volto project by writing code, documentation, translations, etc., please read [Contributing to Plone](https://6.docs.plone.org/contributing/index.html) and [Contributing to Volto](https://6.docs.plone.org/volto/contributing/index.html).
+To contribute to the Volto project by writing code, documentation, translations, etc., please read [Contributing to Plone](https://6.docs.plone.org/contributing/index.html) and [Contributing to Volto](https://6.docs.plone.org/volto/contributing/index.html).
 
 ## Contributors
 
