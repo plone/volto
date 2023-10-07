@@ -41,18 +41,18 @@ Array [
       <div
         className="ui pointing secondary attached tabular formtabs menu"
       >
-        <a
+        <button
           className="active item"
           onClick={[Function]}
         >
           Document
-        </a>
-        <a
+        </button>
+        <button
           className="item"
           onClick={[Function]}
         >
           Block
-        </a>
+        </button>
       </div>
       <div
         className="ui bottom attached segment active tab tab-wrapper"
