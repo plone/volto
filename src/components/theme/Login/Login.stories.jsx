@@ -18,7 +18,7 @@ const StoryComponent = (args) => {
   return (
     <Provider store={store}>
       <Wrapper>
-        <Login />
+        <Login location={{ search: {} }} />
       </Wrapper>
     </Provider>
   );
