@@ -101,10 +101,11 @@ export { default as UpgradeControlPanel } from '@plone/volto/components/manage/C
 export { default as ModerateComments } from '@plone/volto/components/manage/Controlpanels/ModerateComments';
 export { default as VersionOverview } from '@plone/volto/components/manage/Controlpanels/VersionOverview';
 export { default as Delete } from '@plone/volto/components/manage/Delete/Delete';
-export { default as Diff } from '@plone/volto/components/manage/Diff/Diff';
+export const Diff = loadable(() =>
+  import('@plone/volto/components/manage/Diff/Diff'),
+);
 export { default as Display } from '@plone/volto/components/manage/Display/Display';
 export { default as Edit } from '@plone/volto/components/manage/Edit/Edit';
-export { default as ModalForm } from '@plone/volto/components/manage/Form/ModalForm';
 export { default as History } from '@plone/volto/components/manage/History/History';
 export { default as Sharing } from '@plone/volto/components/manage/Sharing/Sharing';
 export { default as Rules } from '@plone/volto/components/manage/Rules/Rules';
@@ -126,10 +127,10 @@ export { default as ManageTranslations } from '@plone/volto/components/manage/Mu
 
 // Potentially could ve removed from index, since they are internal components and
 // we don't want them to end up in the main chunk
-export { default as Form } from '@plone/volto/components/manage/Form/Form';
-export { default as BlocksToolbar } from '@plone/volto/components/manage/Form/BlocksToolbar';
-export { default as UndoToolbar } from '@plone/volto/components/manage/Form/UndoToolbar';
-export { default as Field } from '@plone/volto/components/manage/Form/Field';
+export const Form = loadable(() =>
+  import('@plone/volto/components/manage/Form/Form'),
+);
+
 export { default as SearchTags } from '@plone/volto/components/theme/Search/SearchTags';
 export { default as CommentEditModal } from '@plone/volto/components/theme/Comments/CommentEditModal';
 export { default as ContentsBreadcrumbs } from '@plone/volto/components/manage/Contents/ContentsBreadcrumbs';
@@ -142,11 +143,7 @@ export { default as ContentsWorkflowModal } from '@plone/volto/components/manage
 export { default as ContentsTagsModal } from '@plone/volto/components/manage/Contents/ContentsTagsModal';
 export { default as RenderUsers } from '@plone/volto/components/manage/Controlpanels/Users/RenderUsers';
 export { default as RenderGroups } from '@plone/volto/components/manage/Controlpanels/Groups/RenderGroups';
-export { default as DiffField } from '@plone/volto/components/manage/Diff/DiffField';
 export { default as DragDropList } from '@plone/volto/components/manage/DragDropList/DragDropList';
-export { default as InlineForm } from '@plone/volto/components/manage/Form/InlineForm';
-export { default as BlocksForm } from '@plone/volto/components/manage/Blocks/Block/BlocksForm';
-export { default as BlockDataForm } from '@plone/volto/components/manage/Form/BlockDataForm';
 
 export { default as FormFieldWrapper } from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 export { default as ArrayWidget } from '@plone/volto/components/manage/Widgets/ArrayWidget';

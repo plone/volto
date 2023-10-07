@@ -13,7 +13,7 @@ import cx from 'classnames';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import Cell from '@plone/volto/components/manage/Blocks/Table/Cell';
-import { Field, Icon } from '@plone/volto/components';
+import { Icon } from '@plone/volto/components';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 import rowBeforeSVG from '@plone/volto/icons/row-before.svg';
@@ -22,6 +22,7 @@ import colBeforeSVG from '@plone/volto/icons/column-before.svg';
 import colAfterSVG from '@plone/volto/icons/column-after.svg';
 import rowDeleteSVG from '@plone/volto/icons/row-delete.svg';
 import colDeleteSVG from '@plone/volto/icons/column-delete.svg';
+import { Field } from '@plone/volto/components/manage/Form';
 
 const getId = () => Math.floor(Math.random() * Math.pow(2, 24)).toString(32);
 

@@ -13,7 +13,6 @@ import {
 } from '@plone/volto/actions';
 import {
   Icon,
-  ModalForm,
   Toast,
   Toolbar,
   RenderGroups,
@@ -44,6 +43,7 @@ import {
   Segment,
   Table,
 } from 'semantic-ui-react';
+import { ModalForm } from '@plone/volto/components/manage/Form';
 
 /**
  * GroupsControlpanel class.

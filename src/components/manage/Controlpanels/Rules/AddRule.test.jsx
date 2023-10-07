@@ -12,6 +12,9 @@ const mockStore = configureMockStore(middlewares);
 jest.mock('react-portal', () => ({
   Portal: jest.fn(() => <div id="Portal" />),
 }));
+jest.mock('@plone/volto/components/manage/Form', () => ({
+  Field: jest.fn(() => <div className="Field" />),
+}));
 
 describe('AddRule', () => {
   it('renders rules add interface', () => {

@@ -2,14 +2,15 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
-
 import Form from './Form';
 
 const mockStore = configureStore();
 const errorMessage =
   "[{'message': 'The specified email is not valid.', 'field': 'contact_email', 'error': 'ValidationError'}";
 
-jest.mock('./Field', () => jest.fn(() => <div className="Field" />));
+jest.mock('@plone/volto/components/manage/Form', () => ({
+  Field: jest.fn(() => <div className="Field" />),
+}));
 
 describe('Form', () => {
   it('renders a form component', () => {

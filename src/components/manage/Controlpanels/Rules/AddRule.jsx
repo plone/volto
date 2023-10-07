@@ -19,9 +19,10 @@ import {
   Segment,
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import { Icon, Toolbar, Field } from '@plone/volto/components';
+import { Icon, Toolbar } from '@plone/volto/components';
 import { toast } from 'react-toastify';
 import { Toast } from '@plone/volto/components';
+import { Field } from '@plone/volto/components/manage/Form';
 
 import { getContentRulesEvents, addNewRule } from '@plone/volto/actions';
 

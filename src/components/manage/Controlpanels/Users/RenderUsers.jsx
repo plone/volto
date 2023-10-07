@@ -8,13 +8,14 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import { Dropdown, Table, Checkbox } from 'semantic-ui-react';
 import trashSVG from '@plone/volto/icons/delete.svg';
 import editSVG from '@plone/volto/icons/editing.svg';
-import { Icon, ModalForm, Toast } from '@plone/volto/components';
+import { Icon, Toast } from '@plone/volto/components';
 import { updateUser } from '@plone/volto/actions';
 import ploneSVG from '@plone/volto/icons/plone.svg';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { messages } from '@plone/volto/helpers';
 import { toast } from 'react-toastify';
+import { ModalForm } from '@plone/volto/components/manage/Form';
 
 /**
  * UsersControlpanelUser class.

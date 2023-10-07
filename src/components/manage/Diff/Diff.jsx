@@ -23,12 +23,12 @@ import {
   hasBlocksData,
 } from '@plone/volto/helpers';
 import {
-  DiffField,
   FormattedDate,
   Icon,
   Toolbar,
   Unauthorized,
 } from '@plone/volto/components';
+import DiffField from '@plone/volto/components/manage/Diff/DiffField';
 
 import backSVG from '@plone/volto/icons/back.svg';
 

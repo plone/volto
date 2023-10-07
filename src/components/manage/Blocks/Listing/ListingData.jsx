@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
-import { BlockDataForm } from '@plone/volto/components';
+import { BlockDataForm } from '@plone/volto/components/manage/Form';
+
 import config from '@plone/volto/registry';
 
 const ListingData = (props) => {

@@ -5,7 +5,7 @@ import { defineMessages, useIntl } from 'react-intl';
 
 import { usePrevious } from '@plone/volto/helpers';
 import { updateComment } from '@plone/volto/actions';
-import { ModalForm } from '@plone/volto/components';
+import { ModalForm } from '@plone/volto/components/manage/Form';
 
 const messages = defineMessages({
   editComment: {

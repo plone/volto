@@ -17,7 +17,6 @@ import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import {
   Error,
   Icon,
-  ModalForm,
   Toolbar,
   Toast,
   ContentTypesActions,
@@ -31,6 +30,7 @@ import { getId } from '@plone/volto/helpers';
 
 import addSVG from '@plone/volto/icons/add-document.svg';
 import backSVG from '@plone/volto/icons/back.svg';
+import { ModalForm } from '@plone/volto/components/manage/Form';
 
 const messages = defineMessages({
   add: {

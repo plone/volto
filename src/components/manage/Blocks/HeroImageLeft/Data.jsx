@@ -1,7 +1,7 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
 import schemaHero from './schema.js';
-import { BlockDataForm } from '@plone/volto/components';
+import { BlockDataForm } from '@plone/volto/components/manage/Form';
 
 const HeroImageLeftBlockData = (props) => {
   const { block, data, onChangeBlock } = props;

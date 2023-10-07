@@ -3,9 +3,10 @@ import { isEqual } from 'lodash';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { ReactEditor } from 'slate-react';
-import { Icon as VoltoIcon, BlockDataForm } from '@plone/volto/components';
+import { Icon as VoltoIcon } from '@plone/volto/components';
 import { setPluginOptions } from '@plone/volto-slate/actions';
 import BaseSchemaProvider from './SchemaProvider';
+import { BlockDataForm } from '@plone/volto/components/manage/Form';
 
 import briefcaseSVG from '@plone/volto/icons/briefcase.svg';
 import checkSVG from '@plone/volto/icons/check.svg';

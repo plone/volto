@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { useIntl } from 'react-intl';
 import { pickBy } from 'lodash';
-import { BlocksForm, SidebarPortal } from '@plone/volto/components';
+import { SidebarPortal } from '@plone/volto/components';
 import PropTypes from 'prop-types';
 import ContainerData from './Data';
 import DefaultEditBlockWrapper from './EditBlockWrapper';
 import SimpleContainerToolbar from './SimpleContainerToolbar';
 import { v4 as uuid } from 'uuid';
 import { blocksFormGenerator } from '@plone/volto/helpers';
-
+import { BlocksForm } from '@plone/volto/components/manage/Form';
 import DefaultTemplateChooser from '@plone/volto/components/manage/TemplateChooser/TemplateChooser';
 
 import config from '@plone/volto/registry';
