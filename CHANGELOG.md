@@ -57,7 +57,7 @@
 
 ### Feature
 
-- Add control panel for relations @ksuess
+- Added a control panel for relations. @ksuess [#3382](https://github.com/plone/volto/pull/3382)
 - Add directive to cache stable resources in browser or intermediate server for 365 days by default directly in the SSR Express server, static resource that could change after a new deployment for 1 minute. @mamico [#2216](https://github.com/plone/volto/issues/2216)
 - Use popperjs in BlockChooser, move the markup to the bottom of the body tag. @sneridagh [#4141](https://github.com/plone/volto/issues/4141)
 - Improvements to the dev API proxy:
