@@ -3307,6 +3307,7 @@ __metadata:
     "@testing-library/jest-dom": 5.16.4
     "@testing-library/react": 12.1.5
     "@testing-library/react-hooks": 8.0.1
+    "@types/loadable__component": 5.13.5
     "@types/react-test-renderer": 18.0.1
     "@typescript-eslint/eslint-plugin": 6.7.0
     "@typescript-eslint/parser": 6.7.0
@@ -5316,6 +5317,15 @@ __metadata:
   version: 0.0.29
   resolution: "@types/json5@npm:0.0.29"
   checksum: e60b153664572116dfea673c5bda7778dbff150498f44f998e34b5886d8afc47f16799280e4b6e241c0472aef1bc36add771c569c68fc5125fc2ae519a3eb9ac
+  languageName: node
+  linkType: hard
+
+"@types/loadable__component@npm:5.13.5":
+  version: 5.13.5
+  resolution: "@types/loadable__component@npm:5.13.5"
+  dependencies:
+    "@types/react": "*"
+  checksum: 9ff5c96931bbc1eeb7ba776890ca576a3a96c8f236538ce29380d6d4b28643d14a50bac5524be0859ade3620e47ec41a68af1d9e17c2cec6d3271424b144ac21
   languageName: node
   linkType: hard
 
