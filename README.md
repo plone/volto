@@ -10,20 +10,19 @@
 
 ## Introduction
 
-[Volto](https://github.com/plone/volto) is a ReactJS-based frontend for the [Plone](https://plone.org) Content Management System. It will become the default UI for the upcoming Plone 6 release.
+[Volto](https://github.com/plone/volto) is a ReactJS-based frontend for the [Plone](https://plone.org) Content Management System. It is the default frontend starting with the Plone 6 release.
 
 [Plone](https://plone.org) is a CMS built on Python with more than 20 years of history and experience.
 
-Plone has very interesting features that appeal to developers and users alike,
-such as customizable content types, hierarchical URL object traversing and a
-sophisticated content workflow powered by a granular permissions model. This
-allows you to build anything from simple websites to enterprise-grade
-intranets.
+Plone has features that appeal to developers and users alike,
+such as an intuitive editing interface, customizable content types,
+hierarchical organization, and a sophisticated permissions model.
+This allows you to build anything from simple websites to enterprise-grade intranets.
 
 Volto exposes all these features and communicates with Plone via its [REST API](https://github.com/plone/plone.restapi).
-Volto has the ability of being easily extensible, themeable, and customizable.
 
-It features the Pastanaga editor, a modern block-based content layout editor. It is extensible and customizable, so you can adapt the default blocks provided to match your requirements, or build new ones to cover them.
+Volto features the Pastanaga editor, a modern block-based content layout editor.
+It is extensible and customizable, so you can adapt the default blocks provided to match your requirements, or build new ones to cover them.
 
 Volto is extensible using add-ons.
 You can build your own or choose from the community released ones:
@@ -33,75 +32,43 @@ You can build your own or choose from the community released ones:
 
 ## Demo
 
-You can try a Volto online demo in [https://6.demo.plone.org/](https://6.demo.plone.org/)
+You can try a Volto online demo at [https://6.demo.plone.org/](https://6.demo.plone.org/)
 
-### Try the demo locally
+## Create a Volto project
 
-If you want to give Volto a quick try and you have [Docker](https://www.docker.com/get-started) installed in your computer, bootstrap the demo using `docker-compose`:
+To start a new project using Volto, follow the [Plone installation documentation](https://6.docs.plone.org/install/install-from-packages.html).
 
-```shell
-git clone https://github.com/plone/volto.git
-cd volto
-docker-compose up
-```
+## Supported Node.js versions
 
-Go to [http://localhost:3000](http://localhost:3000) in your browser.
+Volto runs using [Node.js](https://nodejs.org/).
+We recommend using the current LTS version (18.x).
 
-## Quick Start
+- Node.js 20: Supported since Volto 17
+- Node.js 18 (LTS): Supported since Volto 17.
+- Node.js 16: No longer supported. It was supported from Volto 14 - 16
+- Node.js 14: No longer supported. It was supported from Volto 8.8.0 - 16
+- Node.js 12: No longer supported. It was supported from Volto 4 - 15
+- Node.js 10: No longer supported. It was supported from Volto 1 - 12
 
-First get all the requirements installed on your system.
-
-### Prerequisites
-
-- [Node.js LTS (18.x)](https://nodejs.org/)
-- [Python](https://python.org/) - See below for specific versions.
-- [Docker](https://www.docker.com/get-started) (if using the Plone docker images)
-
-The versions of Python that are supported in Volto depend on the version of Plone that you use.
-
-| Plone | Python | Volto |
-|---|---|---|
-| 5.2 | 2.7, 3.6-3.8 | 15.0 |
-| 6.0 | 3.8-3.11 | 16.0 |
-
-### Create a Volto project using the generator
-
-Create a new Volto project by using the `@plone/generator-volto` utility.
-
-It will bootstrap a Volto project in a folder of your choice with all the required
-boilerplate to start customizing your Volto site.
-
-```
-npm install -g yo @plone/generator-volto
-yo @plone/volto
-```
-follow the prompts questions, provide `myvoltoproject` as project name then, when it finishes:
-
-```
-cd myvoltoproject
-```
-
-### Bootstrap the Plone API backend
-
-You can bootstrap a ready Docker Plone container with all the dependencies and ready for Volto use. We recommend to use the Plone docker builds based in `pip` [plone/plone-backend](https://github.com/plone/plone-backend) image:
-
-```shell
-docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e PROFILES="plone.volto:default-homepage" plone/plone-backend:6.0.5
-```
-
-or as an alternative if you have experience with Plone and you have all the
-dependencies installed on your system, you can use the supplied convenience buildout in the
-`api` folder by issuing the command:
-
-```shell
-make build-backend
-```
-
-#### Recommended Plone version
+### Supported Plone and Python versions
 
 Volto is the default UI for Plone 6, so it will work for all Plone 6 released versions.
 
-For the Plone 5 series, the latest released version of Plone 5 (with Python 3) is recommended (at the time of writing 5.2.10).
+For the Plone 5 series, the latest released version of Plone 5 (with Python 3) is recommended (at the time of writing 5.2.14).
+
+The versions of Python that are supported in Volto depend on the version of Plone that you use.
+
+| Plone | Python       | Volto        |
+| ----- | ------------ | ------------ |
+| 6.0   | 3.8-3.11     | 16.0 or 17.0 |
+| 5.2   | 2.7, 3.6-3.8 | 15.0         |
+
+## Supported browsers
+
+Volto works well with any modern (evergreen) browser, including their mobile
+flavors: Chrome, Firefox, Safari, and Edge.
+
+We do not guarantee that outdated browsers such as Internet Explorer 11 are supported by Volto.
 
 #### KGS (known good set of versions) for backend packages
 
@@ -112,22 +79,6 @@ On Plone 5, Volto is currently tested with the following packages pinned to spec
 - plone.restapi 8.32.6
 - plone.rest 2.0.0
 - plone.volto 4.0.3
-
-This would be the docker command to spawn a Plone 5 container with the right KGS versions:
-
-```shell
-docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="plone.restapi==8.32.6 plone.volto==4.0.3 plone.rest==2.0.0" -e PROFILES="plone.volto:default-homepage" plone/plone-backend
-```
-
-### Start Volto
-
-```shell
-yarn start
-```
-
-### Browsing
-
-Go to [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## Volto in Production
 
@@ -184,7 +135,7 @@ Please create a new [issue](https://github.com/plone/volto/issues/new) or [pull 
 
 ## Documentation
 
-You can find the latest (in-progress) documentation in [https://6.docs.plone.org/](https://6.docs.plone.org/volto/index.html)
+You can find the latest documentation at [https://6.docs.plone.org/](https://6.docs.plone.org/volto/index.html)
 
 ## Training
 
@@ -227,104 +178,9 @@ On the [Plone Training website](https://training.plone.org), you'll find Volto-d
 
 [Timo Stollenwerk - Reinventing Plone, Roadmap to the Modern Web](https://2018.ploneconf.org/talks/reinventing-plone-roadmap-to-the-modern-web)
 
-## Node.js Support
+## Contributing to Volto
 
-- Node.js 20: Supported since Volto 17
-- Node.js 18: Supported since Volto 17
-- Node.js 16: No longer supported. It was supported from Volto 14 - 16
-- Node.js 14: No longer supported. It was supported from Volto 8.8.0 - 16
-- Node.js 12: No longer supported. It was supported from Volto 4 - 15
-- Node.js 10: No longer supported. It was supported from Volto 1 - 12
-
-## Browser support
-
-Volto works well with any modern (evergreen) browser, including their mobile
-flavors: Chrome, Firefox, Safari, Edge.
-
-We do not guarantee that deprecated browsers (e.g., Internet Explorer 11) are supported by Volto. Although proven possible, it's too great an effort to maintain. It is left to the integrator to provide support for it.
-
-## Upgrades
-
-You can find the upgrade guide here: https://6.docs.plone.org/volto/upgrade-guide/index.html
-
-## Volto Development
-
-For Volto development you need all the requirements already mentioned on the
-[Quick Start](#quick-start) section.
-
-### Checkout the Volto repository
-
-```shell
-git clone https://github.com/plone/volto.git
-```
-
-### Install dependencies
-
-```shell
-yarn
-```
-
-### Install Plone backend
-
-Either using a Docker command:
-
-```shell
-docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e PROFILES="plone.volto:default-homepage" plone/plone-backend:6.0.5
-```
-
-or using the convenience makefile command:
-
-```shell
-make start-backend-docker
-```
-
-or running Plone on your machine (advanced), additional dependencies might be
-required, only for Plone experienced integrators/developers. Check the [Plone
-Installation Documentation](https://6.docs.plone.org/install/index.html).
-
-```shell
-make build-backend
-```
-
-### Run frontend
-
-Either using a Docker command:
-
-```shell
-docker run -it --rm --name=volto --link backend -p 3000:3000 -e RAZZLE_INTERNAL_API_PATH=http://backend:8080/Plone -e RAZZLE_DEV_PROXY_API_PATH=http://backend:8080/Plone plone/plone-frontend:latest
-```
-
-or using the convenience makefile command:
-
-```shell
-make start-frontend-docker
-```
-
-or from the local repository code:
-
-```shell
-yarn && yarn start
-```
-
-### Browsing
-
-Browse to [http://localhost:3000](http://localhost:3000) in your browser.
-
-### Testing
-
-```shell
-yarn test
-```
-
-## Acceptance testing
-
-Here you can find a guide on how acceptance testing is done in Volto:
-
-https://6.docs.plone.org/volto/developer-guidelines/acceptance-tests.html
-
-## Translations
-
-If you would like contribute to translate Volto into several languages, please, read the [Internationalization (i18n) guide](https://6.docs.plone.org/volto/recipes/i18n.html).
+If you would like to contribute to the Volto project by writing code, documentation, translations, etc., please read [Contributing to Plone](https://6.docs.plone.org/contributing/index.html) and [Contributing to Volto](https://6.docs.plone.org/volto/contributing/index.html).
 
 ## Contributors
 
@@ -332,40 +188,8 @@ If you would like contribute to translate Volto into several languages, please, 
   <img src="https://contrib.rocks/image?repo=plone/volto" />
 </a>
 
-## Alternative backends
-
-Volto also supports other APIs like [Guillotina](https://guillotina.io/), a
-Python resource management system, inspired by Plone and using the same basic
-concepts like traversal, content types, and permissions model.
-
-Last but not least, it also supports a [Volto Node.js-based backend reference](https://github.com/plone/volto-reference-backend) API implementation that
-demos how other systems could also use Volto to display and create content
-through it.
-
-### Run a Guillotina backend
-
-*Disclaimer:* Guillotina doesn't support the full API/features that Plone provides. Contributors are welcome.
-
-```shell
-docker-compose -f g-api/docker-compose.yml up -d
-```
-
-or using the convenience makefile command:
-
-```shell
-make start-backend-docker-guillotina
-```
-
-### Running the acceptance tests with Guillotina backend
-
-If you want to use Guillotina as a backend to run the tests you should run:
-
-```shell
-yarn ci:start-api-plone-guillotina
-```
-
 ## License
 
-MIT License. Copyrights hold the [Plone Foundation](https://plone.org/foundation).
+MIT License. Copyrights held by the [Plone Foundation](https://plone.org/foundation).
 
 See [LICENSE.md](LICENSE.md) for details.
