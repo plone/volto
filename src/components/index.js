@@ -127,10 +127,7 @@ export { default as ManageTranslations } from '@plone/volto/components/manage/Mu
 
 // Potentially could ve removed from index, since they are internal components and
 // we don't want them to end up in the main chunk
-export const Form = loadable(() =>
-  import('@plone/volto/components/manage/Form/Form'),
-);
-
+export Form from '@plone/volto/components/manage/Form/Form';
 export { default as SearchTags } from '@plone/volto/components/theme/Search/SearchTags';
 export { default as CommentEditModal } from '@plone/volto/components/theme/Comments/CommentEditModal';
 export { default as ContentsBreadcrumbs } from '@plone/volto/components/manage/Contents/ContentsBreadcrumbs';
