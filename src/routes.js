@@ -10,7 +10,6 @@ import {
   Aliases,
   ChangePassword,
   ContactForm,
-  Contents,
   ContentType,
   ContentTypeLayout,
   ContentTypeSchema,
@@ -30,25 +29,28 @@ import {
   ModerateComments,
   NotFound,
   PasswordReset,
-  Relations,
   Register,
-  Rules,
   RequestPasswordReset,
   Search,
   Sharing,
   Sitemap,
   AliasesControlpanel,
   UndoControlpanel,
-  UsersControlpanel,
-  UserGroupMembershipControlPanel,
   GroupsControlpanel,
+  UpgradeControlPanel,
+  PersonalInformation,
+} from '@plone/volto/components';
+import { Contents } from '@plone/volto/components/manage/Contents';
+import { Rules } from '@plone/volto/components/manage/Rules';
+import {
   RulesControlpanel,
   AddRuleControlpanel,
   EditRuleControlpanel,
   ConfigureRuleControlpanel,
-  UpgradeControlPanel,
-  PersonalInformation,
-} from '@plone/volto/components';
+  UsersControlpanel,
+  UserGroupMembershipControlPanel,
+  RelationsControlpanel,
+} from '@plone/volto/components/manage/Controlpanels';
 
 // Deliberatelly use of absolute path of these components, since we do not want them
 // in the components/index.js file.
@@ -228,7 +230,7 @@ export const defaultRoutes = [
   },
   {
     path: '/controlpanel/relations',
-    component: Relations,
+    component: RelationsControlpanel,
   },
   {
     path: '/controlpanel/:id',
