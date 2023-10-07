@@ -5,7 +5,7 @@
 
 import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 import { concat, filter, last, map, uniqBy } from 'lodash';
@@ -107,10 +107,37 @@ function Controlpanels({
 }) {
   const intl = useIntl();
   const [isClient, setIsClient] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setIsClient(true);
   }, []);
+
+  useEffect(() => {
+    const handler = async () => {
+      const action = {
+        type: 'GET_BREADCRUMBS_SUCCESS',
+        subrequest: {}, // satisfy condition in breadcrumbs reducer
+        result: {
+          items: [
+            {
+              title: 'Home',
+              '@id': '/controlpanel',
+            },
+            {
+              title: 'Control Panel',
+              '@id': '/controlpanel',
+            },
+          ],
+        },
+      };
+      await dispatch({ type: 'GET_BREADCRUMBS_PENDING' }); // satisfy content load protection
+      await dispatch(action);
+      console.log('dispatched');
+    };
+
+    handler();
+  }, [dispatch]);
 
   const error = controlpanelsRequest?.error;
 

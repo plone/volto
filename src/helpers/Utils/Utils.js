@@ -227,11 +227,20 @@ export const toBackendLang = (language) => {
  * @returns {boolean} Return if the expander is present for the path and the type given
  */
 export const hasApiExpander = (expander, path = '', type = 'GET_CONTENT') => {
-  return flatten(
+  const res = flatten(
     config.settings.apiExpanders
       .filter((expand) => matchPath(path, expand.match) && expand[type])
       .map((expand) => expand[type]),
   ).includes(expander);
+
+  console.log({
+    expander,
+    path,
+    match: matchPath(path, /\/.*(?<!controlpanel)$/),
+    res,
+  });
+
+  return res;
 };
 
 /**

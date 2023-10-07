@@ -234,11 +234,13 @@ let config = {
 config.settings.apiExpanders = [
   ...config.settings.apiExpanders,
   {
-    match: '',
+    match: /\/.*(?<!controlpanel)$/,
+    // match: '',
     GET_CONTENT: ['breadcrumbs', 'actions', 'types', 'navroot'],
   },
   {
-    match: '',
+    // match: '',
+    match: /\/.*(?<!controlpanel)$/,
     GET_CONTENT: ['navigation'],
     querystring: (config) => ({
       'expand.navigation.depth': config.settings.navDepth,
