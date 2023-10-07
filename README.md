@@ -40,7 +40,7 @@ To start a new project using Volto, follow the [Plone installation documentation
 
 ## Documentation
 
-You can find the latest documentation at [https://6.docs.plone.org/](https://6.docs.plone.org/volto/index.html)
+You can find the latest documentation at [https://6.docs.plone.org/](https://6.docs.plone.org/volto/index.html).
 
 For links to trainings and videos, see [Other learning resources](https://6.docs.plone.org/volto/getting-started/others.html).
 
@@ -58,9 +58,10 @@ We recommend using the current LTS version (18.x).
 
 ### Supported Plone and Python versions
 
-Volto is the default UI for Plone 6, so it will work for all Plone 6 released versions.
+Volto is the default UI for Plone 6.
+It will work for all released Plone 6 versions.
 
-For the Plone 5 series, the latest released version of Plone 5 (with Python 3) is recommended (at the time of writing 5.2.14).
+For the Plone 5 series, the [latest released version of Plone 5](https://plone.org/download/releases) is recommended.
 
 The versions of Python that are supported in Volto depend on the version of Plone that you use.
 
@@ -71,12 +72,11 @@ The versions of Python that are supported in Volto depend on the version of Plon
 
 ## Supported browsers
 
-Volto works well with any modern (evergreen) browser, including their mobile
-flavors: Chrome, Firefox, Safari, and Edge.
+Volto works well with the current version of any modern browser, including their mobile flavors: Chrome, Firefox, Safari, and Edge.
 
 We do not guarantee that outdated browsers such as Internet Explorer 11 are supported by Volto.
 
-#### KGS (known good set of versions) for backend packages
+#### Known good set of versions for backend packages
 
 On Plone 6, we recommend using the known good set (KGS) of package versions that are specified in the Plone release.
 
@@ -142,7 +142,7 @@ Please create a new [issue](https://github.com/plone/volto/issues/new) or [pull 
 
 ## Contributing to Volto
 
-To contribute to the Volto project by writing code, documentation, translations, etc., please read [Contributing to Plone](https://6.docs.plone.org/contributing/index.html) and [Contributing to Volto](https://6.docs.plone.org/volto/contributing/index.html).
+To contribute to the Volto project by writing code, documentation, translations, and so on, please read [Contributing to Plone](https://6.docs.plone.org/contributing/index.html) and [Contributing to Volto](https://6.docs.plone.org/volto/contributing/index.html).
 
 ## Contributors
 

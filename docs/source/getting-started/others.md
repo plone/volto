@@ -39,8 +39,8 @@ In recent years the React based Volto frontend for Plone has been presented in m
 - [Piero Nicolli - Theming Volto in 2024](https://www.youtube.com/watch?v=LkPOsIn1jYY&list=PLGN9BI-OAQkSXMXVBXLWQAQr0AF2xM_NU&index=6)
 - [Víctor Fernández de Alba - Breaking boundaries: Plone as headless CMS](https://www.youtube.com/watch?v=43LVtjYyo28&list=PLGN9BI-OAQkSXMXVBXLWQAQr0AF2xM_NU&index=7)
 - [Rob Gietema - How to build a site using Nick](https://www.youtube.com/watch?v=ZbdYvNAnamM&list=PLGN9BI-OAQkSXMXVBXLWQAQr0AF2xM_NU&index=18)
-- [Alok Kumar - Is your Volto addon developer friendly?](https://www.youtube.com/watch?v=E6fH3NhR2Hc&list=PLGN9BI-OAQkSXMXVBXLWQAQr0AF2xM_NU&index=20)
-- [Dylan Jay & Jefferson Bledsoe - How to implement a Gov Design System in Plone 6](https://www.youtube.com/watch?v=_XmKc7jNIE8&list=PLGN9BI-OAQkSXMXVBXLWQAQr0AF2xM_NU&index=25)
+- [Alok Kumar - Is your Volto add-on developer friendly?](https://www.youtube.com/watch?v=E6fH3NhR2Hc&list=PLGN9BI-OAQkSXMXVBXLWQAQr0AF2xM_NU&index=20)
+- [Dylan Jay and Jefferson Bledsoe - How to implement a Gov Design System in Plone 6](https://www.youtube.com/watch?v=_XmKc7jNIE8&list=PLGN9BI-OAQkSXMXVBXLWQAQr0AF2xM_NU&index=25)
 - [Víctor Fernández de Alba - Volto-light-theme: Volto Theming, Reimagined](https://www.youtube.com/watch?v=t2X2NO62J-8)
 
 

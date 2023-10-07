@@ -1,3 +1,5 @@
+# Guillotina API
+
 Configuration demonstrating how to run Volto with Guillotina as a backend.
 
 ## Run a Guillotina backend

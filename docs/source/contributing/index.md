@@ -52,7 +52,7 @@ The Volto Team reviews pull requests only from people with a GitHub account who 
 
 ## Install Volto for development
 
-To make changes to Volto, you need to run it from a copy of the `plone/volto` repository.
+To make changes to Volto, you need to run it from a copy of the [`plone/volto` GitHub repository](https://github.com/plone/volto/).
 
 ### Prerequisites
 
@@ -99,7 +99,7 @@ Please mark all such strings as translatable as defined in the [i18n guide](../r
 
 Due to the nature of `main` and `16.x.x` branches, some developments that may land in `main` may not be backported to `16.x.x`. This means that many translations that may come with those developments will be useless in the `16.x.x` branch and thus porting them to `16.x.x` makes no sense.
 
-So when contributing translations, please create PRs directly from branches created from `16.x.x` and point your PRs to that exact branch instead of `main`.
+When contributing translations, please create pull requests directly from branches created from `16.x.x`, and point your pull requests to that exact branch instead of `main`.
 
 
 (contributing-change-log-entry-label)=

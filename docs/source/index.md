@@ -20,7 +20,7 @@ access to the huge ecosystem of React libraries and addons,
 combined with the ability to use the mature Plone CMS backend as a development platform.
 
 Thanks to the use of the Plone REST API, it is fully compatible with
-Plone's content type framework. But its power comes from the innovative Pastanaga Editor,
+Plone's content type framework. But its power comes from the innovative Pastanaga editor,
 which provides a flexible WYSIWYG editing interfaces based on "blocks".
 
 Thanks to their simplicity and easy access to advanced frontend integration,

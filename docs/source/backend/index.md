@@ -52,7 +52,7 @@ Volto can also be used with other backend systems if they provide an API that is
 
 [Nick](https://nickcms.org/) is a headless CMS built with Node.js that supports Volto as a frontend.
 
-[Guillotina](https://guillotina.io/) is a resource management system built with Python, inspired by Plone and using the same basic concepts like traversal, content types, and permissions model.
+[Guillotina](https://guillotina.io/) is a resource management system built with Python.
+It was inspired by Plone, using its same basic concepts, such as traversal, content types, and its permissions model.
 
-There is also a [Volto Node.js-based backend reference](https://github.com/plone/volto-reference-backend) API implementation that demonstrates how other systems could also use Volto to display and create content
-through it.
+There is also a [Volto Node.js-based backend reference](https://github.com/plone/volto-reference-backend) API implementation that demonstrates how other systems could also use Volto to display and create content through it.
