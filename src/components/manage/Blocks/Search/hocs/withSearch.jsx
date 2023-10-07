@@ -28,9 +28,17 @@ const PAQO = 'plone.app.querystring.operation';
  * @function getInitialState
  *
  */
-function getInitialState(data, facets, urlSearchText, id) {
-  const { types: facetWidgetTypes } =
-    config.blocks.blocksConfig.search.extensions.facetWidgets;
+function getInitialState(
+  data,
+  facets,
+  urlSearchText,
+  id,
+  sortOnParam,
+  sortOrderParam,
+) {
+  const {
+    types: facetWidgetTypes,
+  } = config.blocks.blocksConfig.search.extensions.facetWidgets;
   const facetSettings = data?.facets || [];
 
   return {
@@ -62,8 +70,8 @@ function getInitialState(data, facets, urlSearchText, id) {
           ]
         : []),
     ],
-    sort_on: data.query?.sort_on,
-    sort_order: data.query?.sort_order,
+    sort_on: sortOnParam || data.query?.sort_on,
+    sort_order: sortOrderParam || data.query?.sort_order,
     b_size: data.query?.b_size,
     limit: data.query?.limit,
     block: id,
@@ -86,8 +94,9 @@ function normalizeState({
   sortOrder,
   facetSettings, // data.facets extracted from block data
 }) {
-  const { types: facetWidgetTypes } =
-    config.blocks.blocksConfig.search.extensions.facetWidgets;
+  const {
+    types: facetWidgetTypes,
+  } = config.blocks.blocksConfig.search.extensions.facetWidgets;
 
   const params = {
     query: [
@@ -257,7 +266,28 @@ const withSearch = (options) => (WrappedComponent) => {
     const multiFacets = data.facets
       ?.filter((facet) => facet?.multiple)
       .map((facet) => facet?.field?.value);
-    const [facets, setFacets] = React.useState({});
+    const [facets, setFacets] = React.useState(
+      Object.assign(
+        {},
+        ...urlQuery.map(({ i, v }) => ({ [i]: v })), // TODO: the 'o' should be kept. This would be a major refactoring of the facets
+
+        // support for simple filters like ?Subject=something
+        // TODO: since the move to hash params this is no longer working.
+        // We'd have to treat the location.search and manage it just like the
+        // hash, to support it. We can read it, but we'd have to reset it as
+        // well, so at that point what's the difference to the hash?
+        ...configuredFacets.map((f) =>
+          locationSearchData[f]
+            ? {
+                [f]:
+                  multiFacets.indexOf(f) > -1
+                    ? [locationSearchData[f]]
+                    : locationSearchData[f],
+              }
+            : {},
+        ),
+      ),
+    );
     const previousUrlQuery = usePrevious(urlQuery);
 
     React.useEffect(() => {
@@ -296,11 +326,16 @@ const withSearch = (options) => (WrappedComponent) => {
     const [sortOn, setSortOn] = React.useState(data?.query?.sort_on);
     const [sortOrder, setSortOrder] = React.useState(data?.query?.sort_order);
 
-    const [searchData, setSearchData] = React.useState({});
+    const [searchData, setSearchData] = React.useState(
+      getInitialState(data, facets, urlSearchText, id),
+    );
 
+    const deepFacets = JSON.stringify(facets);
     React.useEffect(() => {
-      setSearchData(getInitialState(data, facets, urlSearchText, id));
-    }, [facets, data, urlSearchText, id]);
+      setSearchData(
+        getInitialState(data, facets, urlSearchText, id, sortOn, sortOrder),
+      );
+    }, [deepFacets, facets, data, urlSearchText, id, sortOn, sortOrder]);
 
     const timeoutRef = React.useRef();
     const facetSettings = data?.facets;
@@ -316,7 +351,7 @@ const withSearch = (options) => (WrappedComponent) => {
         if (timeoutRef.current) clearTimeout(timeoutRef.current);
         timeoutRef.current = setTimeout(
           () => {
-            const searchData = normalizeState({
+            const newSearchData = normalizeState({
               id,
               query: data.query || {},
               facets: toSearchFacets || facets,
@@ -328,8 +363,8 @@ const withSearch = (options) => (WrappedComponent) => {
             if (toSearchFacets) setFacets(toSearchFacets);
             if (toSortOn) setSortOn(toSortOn);
             if (toSortOrder) setSortOrder(toSortOrder);
-            setSearchData(searchData);
-            setLocationSearchData(getSearchFields(searchData));
+            setSearchData(newSearchData);
+            setLocationSearchData(getSearchFields(newSearchData));
           },
           toSearchFacets ? inputDelay / 3 : inputDelay,
         );
@@ -349,13 +384,14 @@ const withSearch = (options) => (WrappedComponent) => {
     );
 
     const removeSearchQuery = () => {
-      searchData.query = searchData.query.reduce(
+      let newSearchData = { ...searchData };
+      newSearchData.query = searchData.query.reduce(
         // Remove SearchableText from query
         (acc, kvp) => (kvp.i === 'SearchableText' ? acc : [...acc, kvp]),
         [],
       );
-      setSearchData(searchData);
-      setLocationSearchData(getSearchFields(searchData));
+      setSearchData(newSearchData);
+      setLocationSearchData(getSearchFields(newSearchData));
     };
 
     const querystringResults = useSelector(
