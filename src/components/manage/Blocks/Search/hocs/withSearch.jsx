@@ -36,9 +36,8 @@ function getInitialState(
   sortOnParam,
   sortOrderParam,
 ) {
-  const {
-    types: facetWidgetTypes,
-  } = config.blocks.blocksConfig.search.extensions.facetWidgets;
+  const { types: facetWidgetTypes } =
+    config.blocks.blocksConfig.search.extensions.facetWidgets;
   const facetSettings = data?.facets || [];
 
   return {
@@ -94,9 +93,8 @@ function normalizeState({
   sortOrder,
   facetSettings, // data.facets extracted from block data
 }) {
-  const {
-    types: facetWidgetTypes,
-  } = config.blocks.blocksConfig.search.extensions.facetWidgets;
+  const { types: facetWidgetTypes } =
+    config.blocks.blocksConfig.search.extensions.facetWidgets;
 
   const params = {
     query: [
