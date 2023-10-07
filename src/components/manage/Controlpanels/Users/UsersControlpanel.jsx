@@ -17,7 +17,6 @@ import {
   Icon,
   Toast,
   Toolbar,
-  RenderUsers,
   Pagination,
   Error,
 } from '@plone/volto/components';
@@ -45,6 +44,7 @@ import {
   Table,
 } from 'semantic-ui-react';
 import { ModalForm } from '@plone/volto/components/manage/Form';
+import RenderUsers from '@plone/volto/components/manage/Controlpanels/Users/RenderUsers';
 
 /**
  * UsersControlpanel class.

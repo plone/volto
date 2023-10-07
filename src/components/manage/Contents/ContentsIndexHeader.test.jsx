@@ -4,7 +4,7 @@ import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-intl-redux';
 
-import { ContentsIndexHeader } from '@plone/volto/components';
+import ContentsIndexHeader from './ContentsIndexHeader';
 
 const mockStore = configureStore([thunk]);
 

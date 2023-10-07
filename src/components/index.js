@@ -77,7 +77,6 @@ export { default as Actions } from '@plone/volto/components/manage/Actions/Actio
 export { default as Add } from '@plone/volto/components/manage/Add/Add';
 export { default as AddonsControlpanel } from '@plone/volto/components/manage/Controlpanels/AddonsControlpanel';
 export { default as UndoControlpanel } from '@plone/volto/components/manage/Controlpanels/UndoControlpanel';
-export { default as Contents } from '@plone/volto/components/manage/Contents/Contents';
 export { default as Circle } from '@plone/volto/components/manage/Contents/circle';
 export { default as DatabaseInformation } from '@plone/volto/components/manage/Controlpanels/DatabaseInformation';
 export { default as Controlpanel } from '@plone/volto/components/manage/Controlpanels/Controlpanel';
@@ -88,14 +87,7 @@ export { default as ContentType } from '@plone/volto/components/manage/Controlpa
 export { default as ContentTypeLayout } from '@plone/volto/components/manage/Controlpanels/ContentTypeLayout';
 export { default as ContentTypeSchema } from '@plone/volto/components/manage/Controlpanels/ContentTypeSchema';
 export { default as ContentTypesActions } from '@plone/volto/components/manage/Controlpanels/ContentTypesActions';
-export { default as UsersControlpanel } from '@plone/volto/components/manage/Controlpanels/Users/UsersControlpanel';
-export { default as UserGroupMembershipControlPanel } from '@plone/volto/components/manage/Controlpanels/Users/UserGroupMembershipControlPanel';
-export { default as Relations } from '@plone/volto/components/manage/Controlpanels/Relations/Relations';
 export { default as GroupsControlpanel } from '@plone/volto/components/manage/Controlpanels/Groups/GroupsControlpanel';
-export { default as RulesControlpanel } from '@plone/volto/components/manage/Controlpanels/Rules/Rules';
-export { default as AddRuleControlpanel } from '@plone/volto/components/manage/Controlpanels/Rules/AddRule';
-export { default as EditRuleControlpanel } from '@plone/volto/components/manage/Controlpanels/Rules/EditRule';
-export { default as ConfigureRuleControlpanel } from '@plone/volto/components/manage/Controlpanels/Rules/ConfigureRule';
 export { default as UpgradeControlPanel } from '@plone/volto/components/manage/Controlpanels/UpgradeControlPanel';
 
 export { default as ModerateComments } from '@plone/volto/components/manage/Controlpanels/ModerateComments';
@@ -108,7 +100,6 @@ export { default as Display } from '@plone/volto/components/manage/Display/Displ
 export { default as Edit } from '@plone/volto/components/manage/Edit/Edit';
 export { default as History } from '@plone/volto/components/manage/History/History';
 export { default as Sharing } from '@plone/volto/components/manage/Sharing/Sharing';
-export { default as Rules } from '@plone/volto/components/manage/Rules/Rules';
 export { default as Aliases } from '@plone/volto/components/manage/Aliases/Aliases';
 export { default as LinksToItem } from '@plone/volto/components/manage/LinksToItem/LinksToItem';
 export { default as Workflow } from '@plone/volto/components/manage/Workflow/Workflow';
@@ -130,15 +121,6 @@ export { default as ManageTranslations } from '@plone/volto/components/manage/Mu
 export Form from '@plone/volto/components/manage/Form/Form';
 export { default as SearchTags } from '@plone/volto/components/theme/Search/SearchTags';
 export { default as CommentEditModal } from '@plone/volto/components/theme/Comments/CommentEditModal';
-export { default as ContentsBreadcrumbs } from '@plone/volto/components/manage/Contents/ContentsBreadcrumbs';
-export { default as ContentsIndexHeader } from '@plone/volto/components/manage/Contents/ContentsIndexHeader';
-export { default as ContentsItem } from '@plone/volto/components/manage/Contents/ContentsItem';
-export { default as ContentsUploadModal } from '@plone/volto/components/manage/Contents/ContentsUploadModal';
-export { default as ContentsPropertiesModal } from '@plone/volto/components/manage/Contents/ContentsPropertiesModal';
-export { default as ContentsRenameModal } from '@plone/volto/components/manage/Contents/ContentsRenameModal';
-export { default as ContentsWorkflowModal } from '@plone/volto/components/manage/Contents/ContentsWorkflowModal';
-export { default as ContentsTagsModal } from '@plone/volto/components/manage/Contents/ContentsTagsModal';
-export { default as RenderUsers } from '@plone/volto/components/manage/Controlpanels/Users/RenderUsers';
 export { default as RenderGroups } from '@plone/volto/components/manage/Controlpanels/Groups/RenderGroups';
 export { default as DragDropList } from '@plone/volto/components/manage/DragDropList/DragDropList';
 
