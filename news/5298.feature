@@ -1,0 +1,1 @@
+add cypress test for search block via url - @ionlizarazu
