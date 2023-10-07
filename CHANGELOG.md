@@ -24,7 +24,7 @@
 
 ## 17.0.0 (2023-09-30)
 
-**This is a Release Notes summary of all the changes happened during the alpha stage of Volto 17.**
+**These Release Notes summarize all the changes during the alpha stage of Volto 17.**
 
 ### Breaking
 
