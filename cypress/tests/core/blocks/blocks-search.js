@@ -247,6 +247,7 @@ describe('Search Block Tests', () => {
       `Search results: ${results_number}`,
     );
 
+    cy.intercept('/**/@querystring-search', cy.spy().as('querystring-search'));
     // test searching for Event
     cy.get('.search-wrapper .search-input input').focus().type('Event');
     cy.get('#page-document .listing-item:first-of-type a').should(
@@ -262,6 +263,7 @@ describe('Search Block Tests', () => {
       'contain',
       '%7B%22i%22%3A%22SearchableText%22%2C%22o%22%3A%22paqo.string.contains%22%2C%22v%22%3A%22Event%22%7D',
     );
+    cy.get('@querystring-search').its('callCount').should('equal', 1);
 
     // test removing one char
     cy.get('.search-wrapper .search-input input').focus().type('{backspace}');
