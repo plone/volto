@@ -54,7 +54,7 @@ We recommend using the current LTS version (18.x).
 - Node.js 12: No longer supported. It was supported from Volto 4 - 15.
 - Node.js 10: No longer supported. It was supported from Volto 1 - 12.
 
-### Supported Plone and Python versions
+## Supported Plone and Python versions
 
 Volto is the default UI for Plone 6.
 It will work for all released Plone 6 versions.
@@ -74,7 +74,7 @@ Volto works well with the current version of any modern browser, including their
 
 We do not guarantee that outdated browsers such as Internet Explorer 11 are supported by Volto.
 
-#### Known good set of versions for backend packages
+## Known good set of versions for backend packages
 
 On Plone 6, we recommend using the known good set (KGS) of package versions that are specified in the Plone release.
 
