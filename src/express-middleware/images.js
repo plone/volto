@@ -1,9 +1,8 @@
 import express from 'express';
 import { defaultHttpProxyOptions } from '@plone/volto/helpers';
 import { createProxyMiddleware } from 'http-proxy-middleware';
-import config from '@plone/volto/registry';
+// import config from '@plone/volto/registry';
 
-debugger;
 const imageMiddlewareFn = createProxyMiddleware({
   ...defaultHttpProxyOptions,
   // ...config.settings.serverConfig?.httpProxyOptions,
