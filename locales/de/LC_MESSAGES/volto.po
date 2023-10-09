@@ -408,6 +408,11 @@ msgstr "Sind Sie sicher, dass Sie dieses Fieldset löschen möchten?"
 msgid "Ascending"
 msgstr "Aufsteigend"
 
+#: components/manage/Sharing/Sharing
+# defaultMessage: Assign the {role} role to {entry}
+msgid "Assign the {role} role to {entry}"
+msgstr ""
+
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Assignments
 msgid "Assignments"

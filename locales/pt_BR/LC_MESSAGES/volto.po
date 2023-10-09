@@ -412,6 +412,11 @@ msgstr "Você realmente deseja deletar este fieldset com todos os campos?"
 msgid "Ascending"
 msgstr "Ascendente"
 
+#: components/manage/Sharing/Sharing
+# defaultMessage: Assign the {role} role to {entry}
+msgid "Assign the {role} role to {entry}"
+msgstr "Atribuir o papel de {role} à {entry}"
+
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Assignments
 msgid "Assignments"
@@ -4529,7 +4534,7 @@ msgstr "Meu endereço de e-mail é"
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: My user name is
 msgid "label_my_username_is"
-msgstr "Meu nome de usuário é<<<<<<< HEAD"
+msgstr "Meu nome de usuário é "
 
 #: config/Blocks
 # defaultMessage: Lead Image Field

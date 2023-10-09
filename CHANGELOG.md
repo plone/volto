@@ -8,7 +8,23 @@
 
 <!-- towncrier release notes start -->
 
+## 17.0.1 (2023-10-03)
+
+### Bugfix
+
+- issue #5126 a11y for checkboxes on the sharing page @Wagner3UB [#5201](https://github.com/plone/volto/issues/5201)
+- Adjust DNS resolution to prefer IPv4 addresses when both IPv4 and IPv6 are resolved. @davisagli [#5261](https://github.com/plone/volto/issues/5261)
+
+### Documentation
+
+- Fix tests and documentation broken because the renaming master->main @sneridagh [#5251](https://github.com/plone/volto/issues/5251)
+- Disable GHA vale checking, it started to fail with a gazillion of violations. @sneridagh [#5253](https://github.com/plone/volto/issues/5253)
+- Reenable GHA vale checking, but with configuration from `plone/documentation`. It now runs Vale, but with the flag `--no-exit` which means "Don't return a nonzero exit code on errors." It also eliminates reviewdog as the test runner. @stevepiercy [#5256](https://github.com/plone/volto/issues/5256)
+
+
 ## 17.0.0 (2023-09-30)
+
+**These Release Notes summarize all the changes during the alpha stage of Volto 17.**
 
 ### Breaking
 
@@ -41,6 +57,7 @@
 
 ### Feature
 
+- Added a control panel for relations. @ksuess [#3382](https://github.com/plone/volto/pull/3382)
 - Add directive to cache stable resources in browser or intermediate server for 365 days by default directly in the SSR Express server, static resource that could change after a new deployment for 1 minute. @mamico [#2216](https://github.com/plone/volto/issues/2216)
 - Use popperjs in BlockChooser, move the markup to the bottom of the body tag. @sneridagh [#4141](https://github.com/plone/volto/issues/4141)
 - Improvements to the dev API proxy:

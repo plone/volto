@@ -413,6 +413,11 @@ msgstr "Haluatko varmasti poistaa tämän kenttäryhmän ja kaikki sen kentät?"
 msgid "Ascending"
 msgstr "Nouseva"
 
+#: components/manage/Sharing/Sharing
+# defaultMessage: Assign the {role} role to {entry}
+msgid "Assign the {role} role to {entry}"
+msgstr ""
+
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Assignments
 msgid "Assignments"
