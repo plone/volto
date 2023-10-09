@@ -475,6 +475,9 @@ class Contents extends Component {
       this.setState({
         containedItemsToDelete: containedItems,
         brokenReferences: by_source.size,
+        linksAndReferencesViewLink: linkintegrityInfo.length
+          ? linkintegrityInfo[0]['@id'] + '/links-to-item'
+          : null,
         breaches: Array.from(by_source, (entry) => ({
           source: source_by_uid.get(entry[0]),
           targets: Array.from(entry[1]),
@@ -1407,6 +1410,18 @@ class Contents extends Component {
                                       </li>
                                     ))}
                                   </ul>
+                                  {this.state.linksAndReferencesViewLink && (
+                                    <Link
+                                      to={flattenToAppURL(
+                                        this.state.linksAndReferencesViewLink,
+                                      )}
+                                    >
+                                      <FormattedMessage
+                                        id="View links and references to this item"
+                                        defaultMessage="View links and references to this item"
+                                      />
+                                    </Link>
+                                  )}
                                 </div>
                               </>
                             )}
@@ -1463,6 +1478,18 @@ class Contents extends Component {
                                   </li>
                                 ))}
                               </ul>
+                              {this.state.linksAndReferencesViewLink && (
+                                <Link
+                                  to={flattenToAppURL(
+                                    this.state.linksAndReferencesViewLink,
+                                  )}
+                                >
+                                  <FormattedMessage
+                                    id="View links and references to this item"
+                                    defaultMessage="View links and references to this item"
+                                  />
+                                </Link>
+                              )}
                             </div>
                           </>
                         ) : null}
@@ -2268,7 +2295,7 @@ export default compose(
   asyncConnect([
     {
       key: 'actions',
-      // Dispatch async/await to make the operation syncronous, otherwise it returns
+      // Dispatch async/await to make the operation synchronous, otherwise it returns
       // before the promise is resolved
       promise: async ({ location, store: { dispatch } }) =>
         await dispatch(listActions(getBaseUrl(location.pathname))),
