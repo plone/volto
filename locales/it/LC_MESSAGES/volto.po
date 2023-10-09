@@ -4097,6 +4097,11 @@ msgstr "Visualizza"
 msgid "View changes"
 msgstr "Mostra le modifiche"
 
+#: components/manage/Contents/Contents
+# defaultMessage: View links and references to this item
+msgid "View links and references to this item"
+msgstr ""
+
 #: components/manage/History/History
 # defaultMessage: View this revision
 msgid "View this revision"
