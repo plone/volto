@@ -17,7 +17,7 @@ Volto follows those guidelines with a few specific variations, as described in t
 
 (contributing-reporting-an-issue-or-making-a-feature-request-label)=
 
-## Reporting an issue or making a feature request
+## Report an issue or make a feature request
 
 If you know the issue or feature request is for Volto, first search for an existing item in the [Volto issue tracker](https://github.com/plone/volto/issues).
 
@@ -47,6 +47,47 @@ The Volto Team reviews pull requests only from people with a GitHub account who 
 ```{include} ./branch-policy.md
 ```
 
+(contributing-install-volto-for-development-label)=
+
+## Install Volto for development
+
+To make changes to Volto, you need to run it from a copy of the [`plone/volto` GitHub repository](https://github.com/plone/volto/).
+
+### Prerequisites
+
+You need all the requirements already mentioned in {doc}`plone:install-packages-prerequisites-label`.
+
+### Clone the Volto repository
+
+```shell
+git clone https://github.com/plone/volto.git
+```
+
+### Start the Plone backend
+
+While developing Volto, you need to have the Plone backend running.
+If you don't already have the backend installed, the easiest way is to run the following command inside the Volto repository:
+
+```shell
+make start-backend-docker
+```
+
+### Install Node.js dependencies
+
+```shell
+yarn
+```
+
+### Start Volto
+
+```
+yarn start
+```
+
+### Open Volto in your browser
+
+Browse to [http://localhost:3000](http://localhost:3000).
+
 
 (contributing-translations-label)=
 
@@ -54,6 +95,12 @@ The Volto Team reviews pull requests only from people with a GitHub account who 
 
 All text that can be shown in a browser must be translatable.
 Please mark all such strings as translatable as defined in the [i18n guide](../recipes/i18n.md).
+
+### Branch policy for translations
+
+Due to the nature of `main` and `16.x.x` branches, some developments that may land in `main` may not be backported to `16.x.x`. This means that many translations that may come with those developments will be useless in the `16.x.x` branch and thus porting them to `16.x.x` makes no sense.
+
+When contributing translations, please create pull requests directly from branches created from `16.x.x`, and point your pull requests to that exact branch instead of `main`.
 
 
 (contributing-change-log-entry-label)=
@@ -70,7 +117,7 @@ For details see {ref}`contributing-change-log-label`.
 
 (contributing-documenting-your-changes-label)=
 
-## Documenting your changes
+## Document your changes
 
 If the feature includes a breaking change, you must include instructions for how to upgrade in the [upgrade guide](../upgrade-guide/index.md).
 
@@ -92,15 +139,6 @@ Specifically:
 (contributing-developer-guidelines-label)=
 
 ## Developer guidelines
-
-Development and configuration of Volto is managed through your {ref}`choice of Plone installation method <install-index-choose-installation-method-label>`.
-You may choose to install Plone via {ref}`containers <install-containers-label>` or from its {ref}`packages <install-packages-1-label>`.
-
-```{todo}
-When referring to installation and configuration of Plone's backend, this part of the Volto documentation may have obsolete content.
-The most current information for installing and configuring Plone is in {ref}`install-index-label`.
-Please report any issues in the [Volto issue tracker](https://github.com/plone/volto/issues/).
-```
 
 ```{toctree}
 :maxdepth: 1

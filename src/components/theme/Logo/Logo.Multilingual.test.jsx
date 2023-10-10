@@ -24,14 +24,9 @@ describe('Multilingual Logo', () => {
         data: {
           id: 'http://localhost:3000/@navroot',
           navroot: {
-            '@id': 'http://localhost:3000',
+            '@id': 'http://localhost:3000/en',
             title: 'Plone Site',
           },
-        },
-      },
-      router: {
-        location: {
-          pathname: '/',
         },
       },
       site: {
@@ -40,7 +35,7 @@ describe('Multilingual Logo', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <MemoryRouter>
+        <MemoryRouter initialEntries={[{ pathname: '/' }]}>
           <Logo />
         </MemoryRouter>
       </Provider>,
@@ -64,11 +59,6 @@ describe('Multilingual Logo', () => {
           },
         },
       },
-      router: {
-        location: {
-          pathname: '/en',
-        },
-      },
       site: {
         data: {
           'plone.site_title': 'Plone Site',
@@ -77,7 +67,7 @@ describe('Multilingual Logo', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <MemoryRouter>
+        <MemoryRouter initialEntries={[{ pathname: '/en' }]}>
           <Logo />
         </MemoryRouter>
       </Provider>,
@@ -101,11 +91,6 @@ describe('Multilingual Logo', () => {
           },
         },
       },
-      router: {
-        location: {
-          pathname: '/en',
-        },
-      },
       site: {
         data: {
           'plone.site_logo':
@@ -115,7 +100,7 @@ describe('Multilingual Logo', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <MemoryRouter>
+        <MemoryRouter initialEntries={[{ pathname: '/en' }]}>
           <Logo />
         </MemoryRouter>
       </Provider>,
@@ -139,11 +124,6 @@ describe('Multilingual Logo', () => {
           },
         },
       },
-      router: {
-        location: {
-          pathname: '/en/my/path',
-        },
-      },
       site: {
         data: {
           'plone.site_logo':
@@ -153,7 +133,7 @@ describe('Multilingual Logo', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <MemoryRouter>
+        <MemoryRouter initialEntries={[{ pathname: '/en/my/path' }]}>
           <Logo />
         </MemoryRouter>
       </Provider>,
