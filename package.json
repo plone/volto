@@ -241,7 +241,7 @@
     "@loadable/component": "5.14.1",
     "@loadable/server": "5.14.0",
     "@loadable/webpack-plugin": "5.15.2",
-    "@plone/scripts": "3.0.0",
+    "@plone/scripts": "3.0.1",
     "@testing-library/cypress": "9.0.0",
     "@testing-library/jest-dom": "5.16.4",
     "@testing-library/react": "12.1.5",
@@ -443,6 +443,7 @@
     "react-dev-utils": "^12",
     "react-error-overlay": "6.0.9",
     "ua-parser-js": "0.7.28",
+    "webpack-bundle-analyzer": "4.9.1",
     "@typescript-eslint/eslint-plugin": "6.7.0",
     "@typescript-eslint/parser": "6.7.0"
   },
