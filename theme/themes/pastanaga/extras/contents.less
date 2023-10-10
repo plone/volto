@@ -137,6 +137,11 @@
     }
   }
 
+  th{
+    color: blue!important;
+    border-right: 2px solid lightgray!important;
+  }
+
   .ui.table .expire-align {
     display: flex;
     align-items: center;
@@ -169,11 +174,15 @@
   .ui.secondary.menu a.item,
   .ui.secondary.menu a.item.active {
     color: @linkColor;
+    transition: 300ms ease;
+   
+    
   }
+ 
 
   .ui.secondary.menu a.item:hover,
   .ui.secondary.menu a.item.active {
-    background-color: #edf1f2 !important;
+    background-color: hsl(192, 58%, 79%) !important;
   }
 }
 
