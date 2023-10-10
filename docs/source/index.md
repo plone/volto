@@ -39,9 +39,11 @@ contributing/index
 release-notes/index
 ```
 
+% Only check change log entries in Volto documentation—not when it is included in the main Plone documentation—to ensure links work and do not redirect.
+% It is OK to ignore warnings, such as the following:
+% docs/source/news/5280.bugfix: WARNING: document isn't included in any toctree
 ````{ifconfig} context in ("volto",)
 ```{toctree}
-
 news*
 ```
 ````
