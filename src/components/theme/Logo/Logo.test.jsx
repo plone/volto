@@ -30,18 +30,13 @@ describe('Logo', () => {
           },
         },
       },
-      router: {
-        location: {
-          pathname: '/',
-        },
-      },
       site: {
         data: {},
       },
     });
     const component = renderer.create(
       <Provider store={store}>
-        <MemoryRouter>
+        <MemoryRouter initialEntries={[{ pathname: '/' }]}>
           <Logo />
         </MemoryRouter>
       </Provider>,
@@ -64,11 +59,6 @@ describe('Logo', () => {
           },
         },
       },
-      router: {
-        location: {
-          pathname: '/',
-        },
-      },
       site: {
         data: {
           'plone.site_logo':
@@ -78,7 +68,7 @@ describe('Logo', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <MemoryRouter>
+        <MemoryRouter initialEntries={[{ pathname: '/' }]}>
           <Logo />
         </MemoryRouter>
       </Provider>,
@@ -86,6 +76,7 @@ describe('Logo', () => {
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });
+
   it('renders a logo component with default config in a non-root url', () => {
     const store = mockStore({
       intl: {
@@ -115,7 +106,7 @@ describe('Logo', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <MemoryRouter>
+        <MemoryRouter initialEntries={[{ pathname: '/some-page' }]}>
           <Logo />
         </MemoryRouter>
       </Provider>,
@@ -123,6 +114,7 @@ describe('Logo', () => {
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });
+
   it('renders a logo component with a custom logo in a non-root url', () => {
     const store = mockStore({
       intl: {
@@ -138,11 +130,6 @@ describe('Logo', () => {
           },
         },
       },
-      router: {
-        location: {
-          pathname: '/some-page',
-        },
-      },
       site: {
         data: {
           'plone.site_logo':
@@ -152,7 +139,7 @@ describe('Logo', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <MemoryRouter>
+        <MemoryRouter initialEntries={[{ pathname: '/some-page' }]}>
           <Logo />
         </MemoryRouter>
       </Provider>,
