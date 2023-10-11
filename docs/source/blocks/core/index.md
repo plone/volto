@@ -1,10 +1,10 @@
 ---
 myst:
   html_meta:
-    "description": "Core blocks provided in Volto by default"
-    "property=og:description": "Core blocks provided in Volto by default"
-    "property=og:title": "Core blocks provided in Volto by default"
-    "keywords": "Volto, Plone, frontend, React, blocks, default, core"
+    'description': 'Core blocks provided in Volto by default'
+    'property=og:description': 'Core blocks provided in Volto by default'
+    'property=og:title': 'Core blocks provided in Volto by default'
+    'keywords': 'Volto, Plone, frontend, React, blocks, default, core'
 ---
 
 # Core Blocks developer notes
@@ -18,4 +18,6 @@ listing
 teaser
 grid
 container
+image
+leadimage
 ```
