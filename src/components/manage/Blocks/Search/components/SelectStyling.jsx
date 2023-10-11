@@ -15,7 +15,7 @@ export const customSelectStyles = {
     borderBottom: '1px solid #c7d5d8',
     boxShadow: 'none',
     borderBottomStyle: state.menuIsOpen ? 'dotted' : 'solid',
-    minHeight: '37px',
+    minHeight: '40px',
   }),
   menu: (styles, state) => ({
     ...styles,
@@ -32,6 +32,7 @@ export const customSelectStyles = {
   valueContainer: (styles) => ({
     ...styles,
     padding: '0px',
+    paddingTop: '4px',
     paddingLeft: 0,
   }),
   dropdownIndicator: (styles) => ({
