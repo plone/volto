@@ -352,7 +352,7 @@ describe('Url', () => {
     });
   });
   describe('flattenScales', () => {
-    it('flattenScales test from serialization', () => {
+    it('flattenScales test from the catalog', () => {
       const id = '/halfdome2022-2.jpg';
       const image = {
         'content-type': 'image/jpeg',
@@ -399,7 +399,7 @@ describe('Url', () => {
         width: 1182,
       });
     });
-    it('flattenScales test from catalog', () => {
+    it('flattenScales test from serialization', () => {
       const id = 'http://localhost:3000/halfdome2022-2.jpg';
       const image = {
         'content-type': 'image/jpeg',
