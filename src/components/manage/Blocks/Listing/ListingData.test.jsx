@@ -3,6 +3,7 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { waitFor } from '@testing-library/react';
+import config from '@plone/volto/registry';
 
 import ListingData from './ListingData';
 
@@ -33,6 +34,7 @@ test('renders an Listing Data Sidebar component', async () => {
         block="1234"
         pathname="/news"
         onChangeBlock={() => {}}
+        blocksConfig={{ listing: config.blocks.blocksConfig.listing }}
       />
     </Provider>,
   );
