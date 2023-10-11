@@ -35,13 +35,7 @@ const View = ({ data, properties }) => {
                 className={cx({ 'full-width': data.align === 'full' })}
                 item={properties}
                 imageField="image"
-                sizes={(() => {
-                  if (data.align === 'full' || data.align === 'center')
-                    return '100vw';
-                  if (data.align === 'left' || data.align === 'right')
-                    return '50vw';
-                  return undefined;
-                })()}
+                sizes={config.blocks.blocksConfig.leadimage.getSizes(data)}
                 alt={properties.image_caption || ''}
                 responsive={true}
               />
