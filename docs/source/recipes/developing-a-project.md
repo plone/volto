@@ -18,7 +18,7 @@ The generator will output the project folder structure.
 It is organized in `frontend`, `backend` and `devops`.
 It also contains the convenience `Makefile` commands to perform all the usual actions while developing.
 
-## Add-on approach
+## Add-on first approach
 
 Developing for Plone's frontend means add code to a Volto project.
 This frontend files of the project are created under the `frontend` folder.
