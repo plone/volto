@@ -49,10 +49,6 @@ export default function Image({
     attrs.src = `${flattenToAppURL(item['@id'])}/${image.download}`;
     attrs.width = image.width;
     attrs.height = image.height;
-    attrs.style = {
-      aspectRatio: `${image.width} / ${image.height}`,
-      ...imageProps.style,
-    };
     attrs.className = cx(className, { responsive });
 
     if (!isSvg && image.scales && Object.keys(image.scales).length > 0) {
