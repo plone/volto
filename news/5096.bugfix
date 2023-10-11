@@ -1,1 +1,0 @@
-Remove the default aspect-ratio from Image component. It was redundant and hard to override. @pnicolli
