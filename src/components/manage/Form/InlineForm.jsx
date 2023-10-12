@@ -4,12 +4,20 @@ import { Accordion, Segment, Message } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import AnimateHeight from 'react-animate-height';
 import { keys, map, isEqual } from 'lodash';
-
+import { useAtom } from 'jotai';
+import { inlineFormFieldsetsState } from './InlineFormState';
+import {
+  insertInArray,
+  removeFromArray,
+  arrayRange,
+} from '@plone/volto/helpers/Utils/Utils';
 import { Field, Icon } from '@plone/volto/components';
 import { applySchemaDefaults } from '@plone/volto/helpers';
 
 import upSVG from '@plone/volto/icons/up-key.svg';
 import downSVG from '@plone/volto/icons/down-key.svg';
+
+import config from '@plone/volto/registry';
 
 const messages = defineMessages({
   editValues: {
@@ -70,12 +78,34 @@ const InlineForm = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const [currentActiveFieldset, setCurrentActiveFieldset] = React.useState(0);
+  const [currentActiveFieldset, setCurrentActiveFieldset] = useAtom(
+    inlineFormFieldsetsState({
+      name: block,
+      fielsetList: other,
+      initialState: config.settings.blockSettingsTabFieldsetsInitialStateOpen
+        ? arrayRange(0, other.length - 1, 1)
+        : [],
+    }),
+  );
+
   function handleCurrentActiveFieldset(e, blockProps) {
     const { index } = blockProps;
-    const newIndex = currentActiveFieldset === index ? -1 : index;
-
-    setCurrentActiveFieldset(newIndex);
+    if (currentActiveFieldset.includes(index)) {
+      setCurrentActiveFieldset(
+        removeFromArray(
+          currentActiveFieldset,
+          currentActiveFieldset.indexOf(index),
+        ),
+      );
+    } else {
+      setCurrentActiveFieldset(
+        insertInArray(
+          currentActiveFieldset,
+          index,
+          currentActiveFieldset.length + 1,
+        ),
+      );
+    }
   }
 
   return (
@@ -136,22 +166,22 @@ const InlineForm = (props) => {
         <Accordion fluid styled className="form" key={fieldset.id}>
           <div key={fieldset.id} id={`blockform-fieldset-${fieldset.id}`}>
             <Accordion.Title
-              active={currentActiveFieldset === index}
+              active={currentActiveFieldset.includes(index)}
               index={index}
               onClick={handleCurrentActiveFieldset}
             >
               {fieldset.title && <>{fieldset.title}</>}
-              {currentActiveFieldset === index ? (
+              {currentActiveFieldset.includes(index) ? (
                 <Icon name={upSVG} size="20px" />
               ) : (
                 <Icon name={downSVG} size="20px" />
               )}
             </Accordion.Title>
-            <Accordion.Content active={currentActiveFieldset === index}>
+            <Accordion.Content active={currentActiveFieldset.includes(index)}>
               <AnimateHeight
                 animateOpacity
                 duration={500}
-                height={currentActiveFieldset === index ? 'auto' : 0}
+                height={currentActiveFieldset.includes(index) ? 'auto' : 0}
               >
                 <Segment className="attached">
                   {map(fieldset.fields, (field) => (

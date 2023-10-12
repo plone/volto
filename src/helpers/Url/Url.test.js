@@ -10,6 +10,7 @@ import {
   isCmsUi,
   isInternalURL,
   isUrl,
+  getFieldURL,
   normalizeUrl,
   removeProtocol,
   addAppURL,
@@ -17,6 +18,7 @@ import {
   checkAndNormalizeUrl,
   normaliseMail,
   normalizeTelephone,
+  flattenScales,
 } from './Url';
 
 beforeEach(() => {
@@ -260,6 +262,46 @@ describe('Url', () => {
       expect(isUrl(href)).toBe(false);
     });
   });
+  describe('getFieldURL', () => {
+    it('returns app URL if the field is a string', () => {
+      const field = `${settings.apiPath}/foo/bar`;
+      expect(getFieldURL(field)).toBe('/foo/bar');
+    });
+    it('returns app URL if the field is an object with "@id"', () => {
+      const field = { '@id': '/foo/bar' };
+      expect(getFieldURL(field)).toBe('/foo/bar');
+    });
+    it('returns app URL if the field is an object with type URL', () => {
+      const field = { '@type': 'URL', value: '/foo/bar' };
+      expect(getFieldURL(field)).toBe('/foo/bar');
+    });
+    it('returns app URL if the field is an object with url or href properties', () => {
+      const fieldUrl = { url: '/foo/bar' };
+      const fieldHref = { href: '/foo/bar' };
+      expect(getFieldURL(fieldUrl)).toBe('/foo/bar');
+      expect(getFieldURL(fieldHref)).toBe('/foo/bar');
+    });
+    it('returns array of app URL if the field is an array of strings', () => {
+      const field = [
+        `${settings.apiPath}/foo/bar/1`,
+        `${settings.apiPath}/foo/bar/2`,
+      ];
+      expect(getFieldURL(field)).toStrictEqual(['/foo/bar/1', '/foo/bar/2']);
+    });
+    it('returns array of app URL if the field is an array of objects', () => {
+      const field = [
+        {
+          '@type': 'URL',
+          value: `${settings.apiPath}/foo/bar/1`,
+        },
+        {
+          '@type': 'URL',
+          value: `${settings.apiPath}/foo/bar/2`,
+        },
+      ];
+      expect(getFieldURL(field)).toStrictEqual(['/foo/bar/1', '/foo/bar/2']);
+    });
+  });
   describe('normalizeUrl', () => {
     it('normalizeUrl test', () => {
       const href = `www.example.com`;
@@ -307,6 +349,103 @@ describe('Url', () => {
       expect(expandToBackendURL(href)).toBe(
         'https://plone.org/++api++/ca/my-page',
       );
+    });
+  });
+  describe('flattenScales', () => {
+    it('flattenScales test from the catalog', () => {
+      const id = '/halfdome2022-2.jpg';
+      const image = {
+        'content-type': 'image/jpeg',
+        download: '@@images/image-1182-cf763ae23c52340d8a17a7afdb26c8cb.jpeg',
+        filename: 'halfdome2022.jpg',
+        height: 665,
+        scales: {
+          great: {
+            download:
+              '@@images/image-1200-539ab119ebadc7d011798980a4a5e8d4.jpeg',
+            height: 665,
+            width: 1182,
+          },
+          huge: {
+            download:
+              '@@images/image-1600-188968febc677890c1b99d5339f9bef1.jpeg',
+            height: 665,
+            width: 1182,
+          },
+        },
+        size: 319364,
+        width: 1182,
+      };
+      expect(flattenScales(id, image)).toStrictEqual({
+        'content-type': 'image/jpeg',
+        download: '@@images/image-1182-cf763ae23c52340d8a17a7afdb26c8cb.jpeg',
+        filename: 'halfdome2022.jpg',
+        height: 665,
+        scales: {
+          great: {
+            download:
+              '@@images/image-1200-539ab119ebadc7d011798980a4a5e8d4.jpeg',
+            height: 665,
+            width: 1182,
+          },
+          huge: {
+            download:
+              '@@images/image-1600-188968febc677890c1b99d5339f9bef1.jpeg',
+            height: 665,
+            width: 1182,
+          },
+        },
+        size: 319364,
+        width: 1182,
+      });
+    });
+    it('flattenScales test from serialization', () => {
+      const id = 'http://localhost:3000/halfdome2022-2.jpg';
+      const image = {
+        'content-type': 'image/jpeg',
+        download:
+          'http://localhost:3000/halfdome2022-2.jpg/@@images/image-1182-cf763ae23c52340d8a17a7afdb26c8cb.jpeg',
+        filename: 'halfdome2022.jpg',
+        height: 665,
+        scales: {
+          great: {
+            download:
+              'http://localhost:3000/halfdome2022-2.jpg/@@images/image-1200-539ab119ebadc7d011798980a4a5e8d4.jpeg',
+            height: 665,
+            width: 1182,
+          },
+          huge: {
+            download:
+              'http://localhost:3000/halfdome2022-2.jpg/@@images/image-1600-188968febc677890c1b99d5339f9bef1.jpeg',
+            height: 665,
+            width: 1182,
+          },
+        },
+        size: 319364,
+        width: 1182,
+      };
+      expect(flattenScales(id, image)).toStrictEqual({
+        'content-type': 'image/jpeg',
+        download: '@@images/image-1182-cf763ae23c52340d8a17a7afdb26c8cb.jpeg',
+        filename: 'halfdome2022.jpg',
+        height: 665,
+        scales: {
+          great: {
+            download:
+              '@@images/image-1200-539ab119ebadc7d011798980a4a5e8d4.jpeg',
+            height: 665,
+            width: 1182,
+          },
+          huge: {
+            download:
+              '@@images/image-1600-188968febc677890c1b99d5339f9bef1.jpeg',
+            height: 665,
+            width: 1182,
+          },
+        },
+        size: 319364,
+        width: 1182,
+      });
     });
   });
 });

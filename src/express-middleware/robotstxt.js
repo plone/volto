@@ -22,7 +22,7 @@ const envRobots = function (req, res, next) {
   res.send(process.env.VOLTO_ROBOTSTXT);
 };
 
-export default function () {
+export default function robotstxtMiddleware() {
   const middleware = express.Router();
   if (process.env.VOLTO_ROBOTSTXT) {
     middleware.all('**/robots.txt', envRobots);

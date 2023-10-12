@@ -290,9 +290,8 @@ export function changeBlock(formData, id, value) {
  */
 export function nextBlockId(formData, currentBlock) {
   const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
-  const currentIndex = formData[blocksLayoutFieldname].items.indexOf(
-    currentBlock,
-  );
+  const currentIndex =
+    formData[blocksLayoutFieldname].items.indexOf(currentBlock);
 
   if (currentIndex === formData[blocksLayoutFieldname].items.length - 1) {
     // We are already at the bottom block don't do anything
@@ -312,9 +311,8 @@ export function nextBlockId(formData, currentBlock) {
  */
 export function previousBlockId(formData, currentBlock) {
   const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
-  const currentIndex = formData[blocksLayoutFieldname].items.indexOf(
-    currentBlock,
-  );
+  const currentIndex =
+    formData[blocksLayoutFieldname].items.indexOf(currentBlock);
 
   if (currentIndex === 0) {
     // We are already at the top block don't do anything
@@ -340,6 +338,32 @@ export function emptyBlocksForm() {
       },
     },
     blocks_layout: { items: [id] },
+  };
+}
+
+/**
+ * Generate empty blocks blocks/blocks_layout pair given the type
+ * (could be empty, if not type given) and the number of blocks
+ * @function blocksFormGenerator
+ * @param {number} number How many blocks to generate of the type (could be "empty", if no type provided)
+ * @param {number} type The type of the blocks
+ * @return {Object} blocks/blocks_layout pair filled with the generated blocks
+ */
+export function blocksFormGenerator(number, type) {
+  const idMap = [...Array(number).keys()].map(() => uuid());
+  const start = {
+    blocks: {},
+    blocks_layout: { items: idMap },
+  };
+
+  return {
+    ...start,
+    blocks: Object.fromEntries(
+      start.blocks_layout.items.map((item) => [
+        item,
+        { '@type': type || 'empty' },
+      ]),
+    ),
   };
 }
 
@@ -524,3 +548,25 @@ export const getPreviousNextBlock = ({ content, block }) => {
 
   return [previousBlock, nextBlock];
 };
+
+/**
+ * Given a `block` object and a list of block types, return a list of block ids matching the types
+ *
+ * @function findBlocks
+ * @param {Object} types A list with the list of types to be matched
+ * @return {Array} An array of block ids
+ */
+export function findBlocks(blocks, types, result = []) {
+  const containerBlockTypes = config.settings.containerBlockTypes;
+
+  Object.keys(blocks).forEach((blockId) => {
+    const block = blocks[blockId];
+    if (types.includes(block['@type'])) {
+      result.push(blockId);
+    } else if (containerBlockTypes.includes(block['@type']) || block.blocks) {
+      findBlocks(block.blocks, types, result);
+    }
+  });
+
+  return result;
+}

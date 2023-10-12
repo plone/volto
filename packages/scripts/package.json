@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -66,11 +66,11 @@
     "chalk": "4",
     "commander": "8.2.0",
     "fs-extra": "10.1.0",
-    "git-url-parse": "^11.6.0",
+    "git-url-parse": "^13.1.0",
     "mrs-developer": "*",
     "pofile": "1.0.10"
   },
   "devDependencies": {
-    "release-it": "14.2.1"
+    "release-it": "^16.1.3"
   }
 }

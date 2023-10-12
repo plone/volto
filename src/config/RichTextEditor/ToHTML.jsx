@@ -101,16 +101,18 @@ const splitSoftLinesOfLists = (children) =>
   });
 
 // Returns how the default lists should be rendered
-const getList = (ordered) => (children, { depth, keys }) =>
-  ordered ? (
-    <ol key={keys[0]} keys={keys} depth={depth}>
-      {splitSoftLinesOfLists(children)}
-    </ol>
-  ) : (
-    <ul key={keys[0]} keys={keys} depth={depth}>
-      {splitSoftLinesOfLists(children)}
-    </ul>
-  );
+const getList =
+  (ordered) =>
+  (children, { depth, keys }) =>
+    ordered ? (
+      <ol key={keys[0]} keys={keys} depth={depth}>
+        {splitSoftLinesOfLists(children)}
+      </ol>
+    ) : (
+      <ul key={keys[0]} keys={keys} depth={depth}>
+        {splitSoftLinesOfLists(children)}
+      </ul>
+    );
 
 // Special function to deal with list clones
 /*const getSpecialList = type => (children, { depth, keys }) => (

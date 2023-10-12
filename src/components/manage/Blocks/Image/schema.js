@@ -1,10 +1,6 @@
 import { defineMessages } from 'react-intl';
 
 const messages = defineMessages({
-  Source: {
-    id: 'Source',
-    defaultMessage: 'Source',
-  },
   Image: {
     id: 'Image',
     defaultMessage: 'Image',
@@ -37,6 +33,10 @@ const messages = defineMessages({
     id: 'Alt text hint link text',
     defaultMessage: 'Describe the purpose of the image.',
   },
+  linkSettings: {
+    id: 'Link settings',
+    defaultMessage: 'Link settings',
+  },
 });
 
 export function ImageSchema({ formData, intl }) {
@@ -45,23 +45,19 @@ export function ImageSchema({ formData, intl }) {
       {
         id: 'default',
         title: 'Default',
-        fields: [...(formData.url ? ['url', 'alt', 'align', 'size'] : [])],
+        fields: [...(formData.url ? ['alt', 'align', 'size'] : [])],
       },
       ...(formData.url
         ? [
             {
               id: 'link_settings',
-              title: 'Link settings',
+              title: intl.formatMessage(messages.linkSettings),
               fields: ['href', 'openLinkInNewTab'],
             },
           ]
         : []),
     ],
     properties: {
-      url: {
-        title: intl.formatMessage(messages.Source),
-        widget: 'url',
-      },
       alt: {
         title: intl.formatMessage(messages.AltText),
         description: (
@@ -101,3 +97,14 @@ export function ImageSchema({ formData, intl }) {
     required: [],
   };
 }
+
+export const gridImageDisableSizeAndPositionHandlersSchema = ({
+  schema,
+  formData,
+  intl,
+}) => {
+  schema.fieldsets[0].fields = schema.fieldsets[0].fields.filter(
+    (item) => !['align', 'size'].includes(item),
+  );
+  return schema;
+};

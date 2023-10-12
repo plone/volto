@@ -8,6 +8,25 @@
 
 <!-- towncrier release notes start -->
 
+## 4.0.0 (2023-09-30)
+
+
+
+
+## 4.0.0-alpha.1 (2023-09-13)
+
+### Breaking
+
+- Upgrade to Cypress 13 @sneridagh [#5163](https://github.com/plone/volto/issues/5163)
+
+
+## 4.0.0-alpha.0 (2023-07-23)
+
+### Breaking
+
+- Update to Cypress 12.17.1 @sneridagh [#4981](https://github.com/plone/volto/issues/4981)
+
+
 ## 3.1.0 (2023-02-08)
 
 ### Feature

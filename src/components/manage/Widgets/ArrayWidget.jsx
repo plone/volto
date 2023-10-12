@@ -325,7 +325,9 @@ class ArrayWidget extends Component {
               : this.props.choices
               ? [
                   ...choices,
-                  ...(this.props.noValueOption && !this.props.default
+                  ...(this.props.noValueOption &&
+                  (this.props.default === undefined ||
+                    this.props.default === null)
                     ? [
                         {
                           label: this.props.intl.formatMessage(

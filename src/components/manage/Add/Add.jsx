@@ -33,7 +33,7 @@ import {
   getBlocksLayoutFieldname,
   getLanguageIndependentFields,
   langmap,
-  normalizeLanguageName,
+  toGettextLang,
 } from '@plone/volto/helpers';
 
 import { preloadLazyLibs } from '@plone/volto/helpers/Loadable';
@@ -124,9 +124,9 @@ class Add extends Component {
     this.onSubmit = this.onSubmit.bind(this);
 
     if (config.blocks?.initialBlocks[props.type]) {
-      this.initialBlocksLayout = config.blocks.initialBlocks[
-        props.type
-      ].map((item) => uuid());
+      this.initialBlocksLayout = config.blocks.initialBlocks[props.type].map(
+        (item) => uuid(),
+      );
       this.initialBlocks = this.initialBlocksLayout.reduce(
         (acc, value, index) => ({
           ...acc,
@@ -219,7 +219,7 @@ class Add extends Component {
   onCancel() {
     if (this.props.location?.state?.translationOf) {
       const language = this.props.location.state.languageFrom;
-      const langFileName = normalizeLanguageName(language);
+      const langFileName = toGettextLang(language);
       import('@root/../locales/' + langFileName + '.json').then((locale) => {
         this.props.changeLanguage(language, locale.default);
       });
@@ -250,11 +250,10 @@ class Add extends Component {
         : null;
 
       // Lookup initialBlocks and initialBlocksLayout within schema
-      const schemaBlocks = this.props.schema.properties[blocksFieldname]
-        ?.default;
-      const schemaBlocksLayout = this.props.schema.properties[
-        blocksLayoutFieldname
-      ]?.default?.items;
+      const schemaBlocks =
+        this.props.schema.properties[blocksFieldname]?.default;
+      const schemaBlocksLayout =
+        this.props.schema.properties[blocksLayoutFieldname]?.default?.items;
       let initialBlocks = this.initialBlocks;
       let initialBlocksLayout = this.initialBlocksLayout;
 
