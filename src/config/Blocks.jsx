@@ -76,6 +76,7 @@ import {
 } from '@plone/volto/components/manage/Blocks/Search/components';
 import getListingBlockAsyncData from '@plone/volto/components/manage/Blocks/Listing/getAsyncData';
 import { getImageBlockSizes } from '@plone/volto/components/manage/Blocks/Image/utils';
+import { getLeadImageBlockSizes } from '@plone/volto/components/manage/Blocks/LeadImage/utils';
 
 // block sidebar schemas (not the Dexterity Layout block settings schemas)
 import HeroImageLeftBlockSchema from '@plone/volto/components/manage/Blocks/HeroImageLeft/schema';
@@ -272,6 +273,7 @@ const blocksConfig = {
     restricted: ({ properties }) => !properties.hasOwnProperty('image'),
     mostUsed: false,
     sidebarTab: 1,
+    getSizes: getLeadImageBlockSizes,
   },
   listing: {
     id: 'listing',
