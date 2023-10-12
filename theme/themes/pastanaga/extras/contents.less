@@ -56,6 +56,10 @@
     }
   }
 
+  .ui.button.disabled{
+    opacity: 0.65!important;
+  }
+
   .ui.menu .menu.top-menu-searchbox {
     border-left: 1px solid #b8c6c8;
 
@@ -107,6 +111,11 @@
       top: auto;
       bottom: 100%;
     }
+  }
+
+  th {
+    color: blue !important;
+    border-right: 2px solid lightgray !important;
   }
 
   .ui.table .icon-align,
@@ -169,11 +178,12 @@
   .ui.secondary.menu a.item,
   .ui.secondary.menu a.item.active {
     color: @linkColor;
+    transition: 350ms ease;
   }
 
   .ui.secondary.menu a.item:hover,
   .ui.secondary.menu a.item.active {
-    background-color: #edf1f2 !important;
+    background-color: rgb(163, 209, 240) !important;
   }
 }
 
