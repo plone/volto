@@ -6,14 +6,14 @@ test('renders an image component with fetchpriority high', () => {
   const component = renderer.create(
     <Image
       item={{
+        '@id': 'http://localhost:3000/image',
         image: {
-          download: 'http://localhost:3000/image/@@images/image/image.png',
+          download: 'http://localhost:3000/image/@@images/image.png',
           width: 400,
           height: 400,
           scales: {
             preview: {
-              download:
-                'http://localhost:3000/image/@@images/image/image-400.png',
+              download: 'http://localhost:3000/image/@@images/image-400.png',
               width: 400,
               height: 400,
             },
@@ -32,14 +32,14 @@ test('renders an image component with lazy loading', () => {
   const component = renderer.create(
     <Image
       item={{
+        '@id': 'http://localhost:3000/image',
         image: {
-          download: 'http://localhost:3000/image/@@images/image/image.png',
+          download: 'http://localhost:3000/image/@@images/image.png',
           width: 400,
           height: 400,
           scales: {
             preview: {
-              download:
-                'http://localhost:3000/image/@@images/image/image-400.png',
+              download: 'http://localhost:3000/image/@@images/image-400.png',
               width: 400,
               height: 400,
             },
@@ -59,14 +59,14 @@ test('renders an image component with responsive class', () => {
   const component = renderer.create(
     <Image
       item={{
+        '@id': 'http://localhost:3000/image',
         image: {
-          download: 'http://localhost:3000/image/@@images/image/image.png',
+          download: 'http://localhost:3000/image/@@images/image-1200.png',
           width: 400,
           height: 400,
           scales: {
             preview: {
-              download:
-                'http://localhost:3000/image/@@images/image/image-400.png',
+              download: 'http://localhost:3000/image/@@images/image-400.png',
               width: 400,
               height: 400,
             },
@@ -91,12 +91,12 @@ test('renders an image component from a catalog brain', () => {
         image_scales: {
           image: [
             {
-              download: '@@images/image/image.png',
+              download: '@@images/image.png',
               width: 400,
               height: 400,
               scales: {
                 preview: {
-                  download: '@@images/image/image-400.png',
+                  download: '@@images/image-400.png',
                   width: 400,
                   height: 400,
                 },
