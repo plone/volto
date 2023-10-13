@@ -186,6 +186,13 @@ export function addBlock(formData, type, index, blocksConfig) {
   ];
 }
 
+/**
+ * Gets an initial value for a block, based on configuration
+ *
+ * This allows blocks that need complex initial data structures to avoid having
+ * to call `onChangeBlock` at their creation time, as this is prone to racing
+ * issue on block data storage.
+ */
 const _applyBlockInitialValue = ({ id, value, blocksConfig, formData }) => {
   const blocksFieldname = getBlocksFieldname(formData);
   const type = value['@type'];
@@ -278,30 +285,47 @@ export function mutateBlock(formData, id, value, blocksConfig) {
  * @param {number} value New block's value
  * @return {Array} New block id, New form data
  */
-export function insertBlock(formData, id, value, current = {}, offset = 0) {
+export function insertBlock(
+  formData,
+  id,
+  value,
+  current = {},
+  offset = 0,
+  blocksConfig,
+) {
   const blocksFieldname = getBlocksFieldname(formData);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
   const index = formData[blocksLayoutFieldname].items.indexOf(id);
 
+  value = applyBlockDefaults({
+    data: value,
+    intl: _dummyIntl,
+  });
+
   const newBlockId = uuid();
-  const newFormData = {
-    ...formData,
-    [blocksFieldname]: {
-      ...formData[blocksFieldname],
-      [newBlockId]: value || null,
-      [id]: {
-        ...formData[blocksFieldname][id],
-        ...current,
+  const newFormData = _applyBlockInitialValue({
+    id,
+    value,
+    blocksConfig,
+    formData: {
+      ...formData,
+      [blocksFieldname]: {
+        ...formData[blocksFieldname],
+        [newBlockId]: value || null,
+        [id]: {
+          ...formData[blocksFieldname][id],
+          ...current,
+        },
+      },
+      [blocksLayoutFieldname]: {
+        items: [
+          ...formData[blocksLayoutFieldname].items.slice(0, index + offset),
+          newBlockId,
+          ...formData[blocksLayoutFieldname].items.slice(index + offset),
+        ],
       },
     },
-    [blocksLayoutFieldname]: {
-      items: [
-        ...formData[blocksLayoutFieldname].items.slice(0, index + offset),
-        newBlockId,
-        ...formData[blocksLayoutFieldname].items.slice(index + offset),
-      ],
-    },
-  };
+  });
 
   return [newBlockId, newFormData];
 }
