@@ -155,41 +155,53 @@ export function addBlock(formData, type, index, blocksConfig) {
     intl: _dummyIntl,
   });
 
-  const newFormData = {
-    ...formData,
-    [blocksLayoutFieldname]: {
-      items: [
-        ...formData[blocksLayoutFieldname].items.slice(0, insert),
-        id,
-        ...(type !== settings.defaultBlockType ? [idTrailingBlock] : []),
-        ...formData[blocksLayoutFieldname].items.slice(insert),
-      ],
-    },
-    [blocksFieldname]: {
-      ...formData[blocksFieldname],
-      [id]: value,
-      ...(type !== settings.defaultBlockType && {
-        [idTrailingBlock]: {
-          '@type': settings.defaultBlockType,
+  return [
+    id,
+    _applyBlockInitialValue({
+      id,
+      value,
+      blocksConfig,
+      formData: {
+        ...formData,
+        [blocksLayoutFieldname]: {
+          items: [
+            ...formData[blocksLayoutFieldname].items.slice(0, insert),
+            id,
+            ...(type !== settings.defaultBlockType ? [idTrailingBlock] : []),
+            ...formData[blocksLayoutFieldname].items.slice(insert),
+          ],
         },
-      }),
-    },
-    selected: id,
-  };
+        [blocksFieldname]: {
+          ...formData[blocksFieldname],
+          [id]: value,
+          ...(type !== settings.defaultBlockType && {
+            [idTrailingBlock]: {
+              '@type': settings.defaultBlockType,
+            },
+          }),
+        },
+        selected: id,
+      },
+    }),
+  ];
+}
 
+const _applyBlockInitialValue = ({ id, value, blocksConfig, formData }) => {
+  const blocksFieldname = getBlocksFieldname(formData);
+  const type = value['@type'];
   blocksConfig = blocksConfig || config.blocks.blocksConfig;
 
-  if (blocksConfig[type].initialValue) {
+  if (blocksConfig[type]?.initialValue) {
     value = blocksConfig[type].initialValue({
       id,
       value,
-      formData: newFormData,
+      formData,
     });
-    newFormData[blocksFieldname][id] = value;
+    formData[blocksFieldname][id] = value;
   }
 
-  return [id, newFormData];
-}
+  return formData;
+};
 
 /**
  * Mutate block, changes the block @type
@@ -199,45 +211,63 @@ export function addBlock(formData, type, index, blocksConfig) {
  * @param {number} value Block's new value
  * @return {Object} New form data
  */
-export function mutateBlock(formData, id, value) {
+export function mutateBlock(formData, id, value, blocksConfig) {
   const { settings } = config;
   const blocksFieldname = getBlocksFieldname(formData);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
   const index = formData[blocksLayoutFieldname].items.indexOf(id) + 1;
 
+  value = applyBlockDefaults({
+    data: value,
+    intl: _dummyIntl,
+  });
+  let newFormData;
+
   // Test if block at index is already a placeholder (trailing) block
   const trailId = formData[blocksLayoutFieldname].items[index];
   if (trailId) {
     const block = formData[blocksFieldname][trailId];
-    if (!blockHasValue(block)) {
-      return {
+    newFormData = _applyBlockInitialValue({
+      id,
+      value,
+      blocksConfig,
+      formData: {
         ...formData,
         [blocksFieldname]: {
           ...formData[blocksFieldname],
           [id]: value || null,
         },
-      };
+      },
+    });
+    if (!blockHasValue(block)) {
+      return newFormData;
     }
   }
 
   const idTrailingBlock = uuid();
-  return {
-    ...formData,
-    [blocksFieldname]: {
-      ...formData[blocksFieldname],
-      [id]: value || null,
-      [idTrailingBlock]: {
-        '@type': settings.defaultBlockType,
+  newFormData = _applyBlockInitialValue({
+    id,
+    value,
+    blocksConfig,
+    formData: {
+      ...formData,
+      [blocksFieldname]: {
+        ...formData[blocksFieldname],
+        [id]: value || null,
+        [idTrailingBlock]: {
+          '@type': settings.defaultBlockType,
+        },
+      },
+      [blocksLayoutFieldname]: {
+        items: [
+          ...formData[blocksLayoutFieldname].items.slice(0, index),
+          idTrailingBlock,
+          ...formData[blocksLayoutFieldname].items.slice(index),
+        ],
       },
     },
-    [blocksLayoutFieldname]: {
-      items: [
-        ...formData[blocksLayoutFieldname].items.slice(0, index),
-        idTrailingBlock,
-        ...formData[blocksLayoutFieldname].items.slice(index),
-      ],
-    },
-  };
+  });
+  return newFormData;
 }
 
 /**
@@ -254,27 +284,26 @@ export function insertBlock(formData, id, value, current = {}, offset = 0) {
   const index = formData[blocksLayoutFieldname].items.indexOf(id);
 
   const newBlockId = uuid();
-  return [
-    newBlockId,
-    {
-      ...formData,
-      [blocksFieldname]: {
-        ...formData[blocksFieldname],
-        [newBlockId]: value || null,
-        [id]: {
-          ...formData[blocksFieldname][id],
-          ...current,
-        },
-      },
-      [blocksLayoutFieldname]: {
-        items: [
-          ...formData[blocksLayoutFieldname].items.slice(0, index + offset),
-          newBlockId,
-          ...formData[blocksLayoutFieldname].items.slice(index + offset),
-        ],
+  const newFormData = {
+    ...formData,
+    [blocksFieldname]: {
+      ...formData[blocksFieldname],
+      [newBlockId]: value || null,
+      [id]: {
+        ...formData[blocksFieldname][id],
+        ...current,
       },
     },
-  ];
+    [blocksLayoutFieldname]: {
+      items: [
+        ...formData[blocksLayoutFieldname].items.slice(0, index + offset),
+        newBlockId,
+        ...formData[blocksLayoutFieldname].items.slice(index + offset),
+      ],
+    },
+  };
+
+  return [newBlockId, newFormData];
 }
 
 /**
