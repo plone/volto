@@ -160,7 +160,8 @@ following signature:
 
 ### `blockSchema`
 
-A must-have for modern Volto blocks, this is a function (or directly the schema object) that returns the schema for the block data. While it's not required, having the schema defined enables the block to have its initial value based on the default values declared in the schema.
+A must-have for modern Volto blocks, `blockSchema` is a function, or directly the schema object, that returns the schema for the block data.
+Although it's not required, defining the schema enables the block to have its initial value based on the default values declared in the schema.
 
 
 ## Other block options
