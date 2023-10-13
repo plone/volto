@@ -352,6 +352,12 @@ describe('Url', () => {
     });
   });
   describe('flattenScales', () => {
+    it('flattenScales image is not set', () => {
+      const id = '/halfdome2022-2.jpg';
+      const image = undefined;
+      expect(flattenScales(id, image)).toBe(undefined);
+    });
+
     it('flattenScales test from the catalog', () => {
       const id = '/halfdome2022-2.jpg';
       const image = {
