@@ -139,7 +139,8 @@ Our new block should be ready to use in the editor.
 
 ## Common block options
 
-It is a common pattern to use the block configuration to allow customization of a block's behavior or to provide block-specific implementation of various Volto mechanisms. Some of these "common" options are:
+It is a common pattern to use the block configuration to allow customization of a block's behavior or to provide block-specific implementation of various Volto mechanisms.
+Some of these common options are described in the following sections.
 
 ### `blockHasValue`
 
