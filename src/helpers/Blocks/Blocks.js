@@ -639,6 +639,6 @@ export function findBlocks(blocks, types, result = []) {
   return result;
 }
 
-const _dummyIntl = () => ({
+const _dummyIntl = {
   formatMessage() {},
-});
+};
