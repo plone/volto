@@ -154,7 +154,7 @@ See also [Settings reference](/configuration/settings-reference).
 ### `initialValue`
 
 `initialValue` is a function that can be used to get the initial value for a block.
-following signature:
+It has the following signature.
 
 `initialValue({id, value, formData, intl}) => newFormData`
 
