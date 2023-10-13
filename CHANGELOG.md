@@ -8,6 +8,14 @@
 
 <!-- towncrier release notes start -->
 
+## 17.1.1 (2023-10-13)
+
+### Bugfix
+
+- Normalize the shape of the image component item prop if it contains the serialized object after creation to match the one in the catalog. @sneridagh [#5266](https://github.com/plone/volto/issues/5266)
+- Added guard in `flattenScales` in edge case image is undefined @sneridagh [#5318](https://github.com/plone/volto/issues/5318)
+
+
 ## 17.1.0 (2023-10-11)
 
 ### Feature
