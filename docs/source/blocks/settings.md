@@ -144,7 +144,12 @@ Some of these common options are described in the following sections.
 
 ### `blockHasValue`
 
-Returns true if the provided block data represents a value for the current block. Required for alternate default block types implementations. See also [Settings reference](/configuration/settings-reference)
+`blockHasValue` returns `true` if the provided block data represents a value for the current block.
+Required for alternate default block types implementations.
+
+```{seealso}
+See also [Settings reference](/configuration/settings-reference).
+```
 
 ### `initialValue`
 
