@@ -369,6 +369,7 @@ export function flattenScales(path, image) {
   function removeObjectIdFromURL(path, scale) {
     return scale.replace(`${path}/`, '');
   }
+  if (!image) return;
 
   const imageInfo = {
     ...image,
