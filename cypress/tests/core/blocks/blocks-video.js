@@ -72,7 +72,7 @@ describe('Blocks Tests', () => {
       .should('have.attr', 'src')
       .and(
         'match',
-        /https:\/\/github.com\/plone\/volto\/raw\/master\/logos\/volto-colorful.png/,
+        /https:\/\/github.com\/plone\/volto\/raw\/main\/logos\/volto-colorful.png/,
       );
   });
 
