@@ -59,9 +59,7 @@ describe('Blocks Tests', () => {
     cy.get(' #field-preview_image')
       .last()
       .click()
-      .type(
-        'https://github.com/plone/volto/raw/master/logos/volto-colorful.png',
-      );
+      .type('https://github.com/plone/volto/raw/main/logos/volto-colorful.png');
     cy.get('#toolbar-save').click();
 
     cy.wait('@save');
