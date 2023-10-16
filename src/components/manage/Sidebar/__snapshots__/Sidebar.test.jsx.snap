@@ -42,13 +42,13 @@ Array [
         className="ui pointing secondary attached tabular formtabs menu"
       >
         <button
-          className="active item"
+          className="active item ui button"
           onClick={[Function]}
         >
           Document
         </button>
         <button
-          className="item"
+          className="item ui button"
           onClick={[Function]}
         >
           Block
