@@ -1,1 +1,0 @@
-Fix Cypress ECONNREFUSED error in CI due to latest Chrome headless option handling for Cypress < 12.14.0 @sneridagh

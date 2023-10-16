@@ -8,6 +8,24 @@
 
 <!-- towncrier release notes start -->
 
+## 16.25.0 (2023-10-16)
+
+### Feature
+
+- Add external className to slate Link view. @iFlameing [#5109](https://github.com/plone/volto/issues/5109)
+
+### Bugfix
+
+- Fix empty slate text block in table of contents. @kreafox [#5156](https://github.com/plone/volto/issues/5156)
+- Fix standalone navigation action call if expander is set @sneridagh [#5197](https://github.com/plone/volto/issues/5197)
+- Added support for blocksConfig configuration in the listing block @sneridagh [#5310](https://github.com/plone/volto/issues/5310)
+- Fix adding multiple path criteria in search and listing blocks. @davisagli [#5317](https://github.com/plone/volto/issues/5317)
+
+### Internal
+
+- Fix Cypress ECONNREFUSED error in CI due to latest Chrome headless option handling for Cypress < 12.14.0 @sneridagh [#5233](https://github.com/plone/volto/issues/5233)
+
+
 ## 16.24.0 (2023-09-14)
 
 ### Feature
