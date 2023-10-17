@@ -73,13 +73,17 @@ module.exports = class extends Generator {
     this.destinationRoot(outputPath);
 
     const pkgJson = path.join(outputPath, 'package.json');
+    let destination;
 
     if (fs.existsSync(pkgJson)) {
-      const destination = path.join(
-        outputPath,
-        `./src/addons/${this.globals.name}`,
-      );
-
+      if (pkgJson.keywords && pkgJson.keywords.includes('volto-addon')) {
+        destination = outputPath;
+      } else {
+        destination = path.join(
+          outputPath,
+          `./src/addons/${this.globals.name}`,
+        );
+      }
       // Modifies project package.json and wires the new addon as theme
       await this.addAddonToPackageJSON(pkgJson);
 
