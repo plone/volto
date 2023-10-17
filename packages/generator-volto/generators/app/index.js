@@ -266,6 +266,13 @@ Run "npm install -g @plone/generator-volto" to update.`,
       outputpath: base,
       interactive: false,
     });
+    // Upgrade it as theme
+    this.composeWith(require.resolve('../addonTheme'), {
+      addonName: this.opts.defaultAddonName
+        ? this.opts.defaultAddonName
+        : `volto-${this.globals.projectName}`,
+      outputpath: path.resolve(base),
+    });
 
     if (!this.opts['skip-install']) {
       this.log(

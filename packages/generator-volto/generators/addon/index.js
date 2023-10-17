@@ -62,8 +62,6 @@ module.exports = class extends Generator {
         packageJSON.workspaces.push(`src/addons/${this.globals.name}`);
       }
 
-      packageJSON.theme = name;
-
       fs.writeFileSync(pkgJson, `${JSON.stringify(packageJSON, null, 2)}`);
     };
 
