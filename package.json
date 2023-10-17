@@ -197,6 +197,9 @@
       "release": true,
       "releaseName": "${version}",
       "releaseNotes": "cat .changelog.draft"
+    },
+    "npm": {
+      "tag": "lts"
     }
   },
   "lint-staged": {
