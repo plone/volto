@@ -26,3 +26,7 @@ The generator also creates a default add-on in the `frontend/src/addons` folder.
 The project is already configured to use this add-on.
 Add your code and customizations to this add-on, and Volto will load them on start up or a restart.
 This add-on is configured as a theme add-on, so you are able to customize the look and feel of your site as well.
+
+```{seealso}
+For more information about how to develop a Volto project as an add-on, see {doc}`training:voltoaddons/index`.
+```
