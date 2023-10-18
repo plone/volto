@@ -13,7 +13,7 @@ npm install -g @plone/generator-volto
 
 ## Compatibility
 
-|Version   |Volto version |
+| Plone version | Volto version |
 |----------|--------------|
 | 7.x      | >=17.0.0     |
 | 6.x      | 16.x.x       |
@@ -54,8 +54,8 @@ Options:
         --canary            # Desired Volto version should be a canary (alpha)                      Default: false
         --interactive       # Enable/disable interactive prompt                                     Default: true
         --skip-addons       # Don't ask for addons as part of the scaffolding
-        --addon             # Addon loader string, like: some-volto-addon:loadExtra,loadOtherExtra
-        --workspace         # Yarn workspace, like: src/addons/some-volto-addon
+        --addon             # Add-on loader string. Example: some-volto-addon:loadExtra,loadOtherExtra
+        --workspace         # Yarn workspace. Example: src/addons/some-volto-addon
         --description       # Project description
         --defaultAddonName  # The name of the add-on project added to the project by default
 
@@ -131,9 +131,9 @@ Arguments:
 
 ### Enabling an existing add-on as a theme add-on
 
-In case that you want that one of your add-ons became a theme, you can run this template on the top of your add-on.
-You should use the configuration option `outputpath` to pass the path of your add-on.
-Provided your add-on is located at `./testadon` folder:
+If you want one of your add-ons to be a theme, you can run this template on the top of your add-on.
+Use the configuration option `outputpath` for the path of your add-on.
+Assuming your add-on is located at `./testaddon` folder, you would issue the following shell command.
 
 ```shell
 yo volto:addonTheme --outputpath testaddon
