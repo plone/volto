@@ -11,6 +11,13 @@ npm install -g yo
 npm install -g @plone/generator-volto
 ```
 
+## Compatibility
+
+|Version   |Volto version |
+|----------|--------------|
+| 7.x      | >=17.0.0     |
+| 6.x      | 16.x.x       |
+
 ## Usage
 
 ### Creating a new Volto project using `npm init`
