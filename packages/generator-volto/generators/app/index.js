@@ -27,7 +27,7 @@ const addonPrompt = [
     type: 'input',
     name: 'addonName',
     message:
-      'Addon name, plus extra loaders, like: volto-addon:loadExtra,loadAnotherExtra',
+      'Addon name, plus extra loaders. Example: volto-addon:loadExtra,loadAnotherExtra',
     default: '',
     validate: validateAddonName,
   },
@@ -68,11 +68,11 @@ module.exports = class extends Generator {
     this.option('addon', {
       type: (arr) => arr,
       desc:
-        'Addon loader string, like: some-volto-addon:loadExtra,loadOtherExtra',
+        'Addon loader string. Example: some-volto-addon:loadExtra,loadOtherExtra',
     });
     this.option('workspace', {
       type: (arr) => arr,
-      desc: 'Yarn workspace, like: src/addons/some-volto-addon',
+      desc: 'Yarn workspace. Example: src/addons/some-volto-addon',
     });
     this.option('description', {
       type: String,
@@ -80,7 +80,7 @@ module.exports = class extends Generator {
     });
     this.option('defaultAddonName', {
       type: String,
-      desc: 'The name of the add-on project added to the project by default',
+      desc: `The default add-on's name to be added to the generated project.`,
     });
 
     this.args = args;

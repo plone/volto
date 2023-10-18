@@ -10,7 +10,7 @@ module.exports = class extends Generator {
 
     this.argument('addonName', {
       type: String,
-      desc: 'Addon name, e.g.: @plone-collective/volto-custom-block',
+      desc: 'Addon name. Example: @plone-collective/volto-custom-block',
       default: currentDir,
     });
 

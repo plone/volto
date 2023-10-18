@@ -57,7 +57,7 @@ Options:
         --addon             # Add-on loader string. Example: some-volto-addon:loadExtra,loadOtherExtra
         --workspace         # Yarn workspace. Example: src/addons/some-volto-addon
         --description       # Project description
-        --defaultAddonName  # The name of the add-on project added to the project by default
+        --defaultAddonName  # The default add-on's name to be added to the generated project.
 
 Arguments:
   projectName    Type: String  Required: false
