@@ -402,6 +402,11 @@ msgstr "Sicuro di voler eliminare questo insieme di campi compresi tutti i campi
 msgid "Ascending"
 msgstr "Crescente"
 
+#: components/manage/Sharing/Sharing
+# defaultMessage: Assign the {role} role to {entry}
+msgid "Assign the {role} role to {entry}"
+msgstr "Assegnare il ruolo di {role} a {entry}"
+
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Assignments
 msgid "Assignments"
@@ -1937,7 +1942,7 @@ msgid "Link"
 msgstr "Link"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Link copied to clipboard
+# defaultMessage: Anchor link copied to the clipboard
 msgid "Link copied to clipboard"
 msgstr "Link copiato negli appunti"
 

@@ -408,6 +408,11 @@ msgstr "Sind Sie sicher, dass Sie dieses Fieldset löschen möchten?"
 msgid "Ascending"
 msgstr "Aufsteigend"
 
+#: components/manage/Sharing/Sharing
+# defaultMessage: Assign the {role} role to {entry}
+msgid "Assign the {role} role to {entry}"
+msgstr ""
+
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Assignments
 msgid "Assignments"
@@ -1943,9 +1948,9 @@ msgid "Link"
 msgstr "Link"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Link copied to clipboard
+# defaultMessage: Anchor link copied to the clipboard
 msgid "Link copied to clipboard"
-msgstr "Link in Zwischenablage kopiert."
+msgstr "Anker-Link wurde in die Zwischenablage kopiert"
 
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema

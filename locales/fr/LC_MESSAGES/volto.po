@@ -419,6 +419,11 @@ msgstr "Voulez-vous vraiment supprimer ce groupe de champs et tous les champs de
 msgid "Ascending"
 msgstr "Ascendant"
 
+#: components/manage/Sharing/Sharing
+# defaultMessage: Assign the {role} role to {entry}
+msgid "Assign the {role} role to {entry}"
+msgstr ""
+
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Assignments
 msgid "Assignments"
@@ -1954,7 +1959,7 @@ msgid "Link"
 msgstr "Lien"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Link copied to clipboard
+# defaultMessage: Anchor link copied to the clipboard
 msgid "Link copied to clipboard"
 msgstr ""
 

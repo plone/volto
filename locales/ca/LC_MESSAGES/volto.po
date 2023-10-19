@@ -411,6 +411,11 @@ msgstr "Esteu segurs que voleu eliminar aquest grup de camps i tots els camps qu
 msgid "Ascending"
 msgstr "Ascendent"
 
+#: components/manage/Sharing/Sharing
+# defaultMessage: Assign the {role} role to {entry}
+msgid "Assign the {role} role to {entry}"
+msgstr ""
+
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Assignments
 msgid "Assignments"
@@ -1946,7 +1951,7 @@ msgid "Link"
 msgstr "Enllaç"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Link copied to clipboard
+# defaultMessage: Anchor link copied to the clipboard
 msgid "Link copied to clipboard"
 msgstr ""
 
