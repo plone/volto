@@ -11,8 +11,8 @@ const messages = defineMessages({
   },
   clear: {
     id: 'Clear Search',
-    defaultMessage: 'Clear Search',
-  }
+    defaultMessage: 'Clear search',
+  },
 });
 
 const BlockChooserSearch = ({ onChange, searchValue }) => {
@@ -46,7 +46,7 @@ const BlockChooserSearch = ({ onChange, searchValue }) => {
               searchInput.current.focus();
             }}
           >
-            <Icon name={clearSVG} size="18px" /> 
+            <Icon name={clearSVG} size="18px" />
           </Button>
         )}
       </Form.Field>
