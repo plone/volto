@@ -31,7 +31,6 @@ const BlockChooserSearch = ({ onChange, searchValue }) => {
           onChange={(event) => onChange(event.target.value)}
           name="SearchableText"
           value={searchValue}
-          transparent
           autoComplete="off"
           placeholder={intl.formatMessage(messages.search)}
           title={intl.formatMessage(messages.search)}
