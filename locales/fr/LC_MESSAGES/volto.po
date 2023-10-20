@@ -630,6 +630,7 @@ msgstr "Choisir une cible"
 msgid "Choose a file"
 msgstr "Choisissez un fichier"
 
+#: components/manage/BlockChooser/BlockChooserSearch
 #: components/manage/Blocks/HTML/Edit
 # defaultMessage: Clear
 msgid "Clear"

@@ -624,6 +624,7 @@ msgstr "Valitse sisältö"
 msgid "Choose a file"
 msgstr "Valitse tiedosto"
 
+#: components/manage/BlockChooser/BlockChooserSearch
 #: components/manage/Blocks/HTML/Edit
 # defaultMessage: Clear
 msgid "Clear"

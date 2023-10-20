@@ -10,8 +10,8 @@ const messages = defineMessages({
     defaultMessage: 'Search',
   },
   clear: {
-    id: 'Clear Search',
-    defaultMessage: 'Clear search',
+    id: 'Clear',
+    defaultMessage: 'Clear',
   },
 });
 

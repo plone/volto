@@ -624,6 +624,7 @@ msgstr "Seleccione destino"
 msgid "Choose a file"
 msgstr "Seleccionar Archivo"
 
+#: components/manage/BlockChooser/BlockChooserSearch
 #: components/manage/Blocks/HTML/Edit
 # defaultMessage: Clear
 msgid "Clear"

@@ -619,6 +619,7 @@ msgstr "选择目标"
 msgid "Choose a file"
 msgstr "选择一个文件"
 
+#: components/manage/BlockChooser/BlockChooserSearch
 #: components/manage/Blocks/HTML/Edit
 # defaultMessage: Clear
 msgid "Clear"
