@@ -8,6 +8,17 @@
 
 <!-- towncrier release notes start -->
 
+## 17.2.0 (2023-10-16)
+
+### Feature
+
+- add cypress test for search block via url - @ionlizarazu [#5298](https://github.com/plone/volto/issues/5298)
+
+### Bugfix
+
+- Fix adding multiple path criteria in search and listing blocks. @davisagli [#5317](https://github.com/plone/volto/issues/5317)
+
+
 ## 17.1.1 (2023-10-13)
 
 ### Bugfix
