@@ -23,6 +23,13 @@ const messages = defineMessages({
   },
 });
 
+export function getSitemapPath(pathname = '', lang) {
+  /* This function is deprecated
+   * We keep it for backwards compatibility.
+   */
+  return '';
+}
+
 /**
  * Sitemap class.
  * @class Sitemap
