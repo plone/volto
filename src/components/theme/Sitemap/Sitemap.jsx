@@ -27,7 +27,9 @@ export function getSitemapPath(pathname = '', lang) {
   /* This function is deprecated
    * We keep it for backwards compatibility.
    */
-  return '';
+  const prefix = pathname.replace(/\/sitemap$/gm, '').replace(/^\//, '');
+  const path = prefix || lang || '';
+  return path;
 }
 
 /**
