@@ -21,7 +21,7 @@ import cameraSVG from '@plone/volto/icons/camera.svg';
 
 const messages = defineMessages({
   settings: {
-    id: 'Setting',
+    id: 'settings',
     defaultMessage: 'Settings',
   },
   back: {
