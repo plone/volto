@@ -4847,6 +4847,11 @@ msgstr "Aukeraketa laukia"
 msgid "selectView"
 msgstr "Aukeratu bista"
 
+#: components/manage/Toolbar/PersonalTools
+# defaultMessage: Settings
+msgid "settings"
+msgstr ""
+
 #: components/theme/SkipLinks/SkipLinks
 # defaultMessage: Skip to footer
 msgid "skiplink-footer"

@@ -4851,6 +4851,11 @@ msgstr "Valitse"
 msgid "selectView"
 msgstr "Valitse näkymä"
 
+#: components/manage/Toolbar/PersonalTools
+# defaultMessage: Settings
+msgid "settings"
+msgstr ""
+
 #: components/theme/SkipLinks/SkipLinks
 # defaultMessage: Skip to footer
 msgid "skiplink-footer"

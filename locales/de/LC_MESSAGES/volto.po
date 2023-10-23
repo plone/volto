@@ -4846,6 +4846,11 @@ msgstr "Auswählen"
 msgid "selectView"
 msgstr "Ansicht wählen"
 
+#: components/manage/Toolbar/PersonalTools
+# defaultMessage: Settings
+msgid "settings"
+msgstr ""
+
 #: components/theme/SkipLinks/SkipLinks
 # defaultMessage: Skip to footer
 msgid "skiplink-footer"
