@@ -24,10 +24,6 @@ const messages = defineMessages({
     id: 'Back',
     defaultMessage: 'Back',
   },
-  logout: {
-    id: 'Logout',
-    defaultMessage: 'Logout',
-  },
   settings: {
     id: 'Settings',
     defaultMessage: 'Settings',
@@ -39,6 +35,10 @@ const messages = defineMessages({
   profile: {
     id: 'Profile',
     defaultMessage: 'Profile',
+  },
+  logout: {
+    id: 'Logout',
+    defaultMessage: 'Logout',
   },
   userAvatar: {
     id: 'user avatar',
