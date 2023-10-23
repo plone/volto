@@ -32,13 +32,13 @@ const messages = defineMessages({
     id: 'Settings',
     defaultMessage: 'Settings',
   },
-  profile: {
-    id: 'Profile',
-    defaultMessage: 'Profile',
-  },
   preferences: {
     id: 'Preferences',
     defaultMessage: 'Preferences',
+  },
+  profile: {
+    id: 'Profile',
+    defaultMessage: 'Profile',
   },
   userAvatar: {
     id: 'user avatar',
