@@ -84,7 +84,7 @@ const PersonalTools = (props) => {
           />
         </button>
         <div className="vertical divider" />
-        <h2>Settings</h2>
+        <h2>{user ? 'Settings' : ''}</h2>
         <Link id="toolbar-logout" to={`${getBaseUrl(pathname)}/logout`}>
           <Icon
             className="logout"
