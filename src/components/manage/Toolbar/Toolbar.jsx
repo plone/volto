@@ -42,7 +42,7 @@ import unlockSVG from '@plone/volto/icons/unlock.svg';
 import folderSVG from '@plone/volto/icons/folder.svg';
 import addSVG from '@plone/volto/icons/add-document.svg';
 import moreSVG from '@plone/volto/icons/more.svg';
-import settingsSVG from '@plone/volto/icons/settings.svg';
+import configurationSVG from '@plone/volto/icons/configuration.svg';
 import backSVG from '@plone/volto/icons/back.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 
@@ -575,7 +575,7 @@ class Toolbar extends Component {
                     id="toolbar-personal"
                   >
                     <Icon
-                      name={settingsSVG}
+                      name={configurationSVG}
                       size="30px"
                       title={this.props.intl.formatMessage(
                         messages.personalTools,
