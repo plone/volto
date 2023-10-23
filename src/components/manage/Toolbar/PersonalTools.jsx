@@ -21,8 +21,16 @@ import cameraSVG from '@plone/volto/icons/camera.svg';
 
 const messages = defineMessages({
   settings: {
-    id: 'Settings',
+    id: 'Setting',
     defaultMessage: 'Settings',
+  },
+  back: {
+    id: 'Back',
+    defaultMessage: 'Back',
+  },
+  logout: {
+    id: 'Logout',
+    defaultMessage: 'Logout',
   },
   preferences: {
     id: 'Preferences',
@@ -31,14 +39,6 @@ const messages = defineMessages({
   profile: {
     id: 'Profile',
     defaultMessage: 'Profile',
-  },
-  logout: {
-    id: 'Logout',
-    defaultMessage: 'Logout',
-  },
-  back: {
-    id: 'Back',
-    defaultMessage: 'Back',
   },
   userAvatar: {
     id: 'user avatar',
