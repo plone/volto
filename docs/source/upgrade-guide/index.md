@@ -265,6 +265,35 @@ It requires the latest version of `plone.restapi` (>=8.42.0) installed in the ba
 The `utils.js` file of the Teaser block was removed because it is no longer used.
 You can consider removing it if you were shadowing it in your project.
 
+### Grid block migration from `@kitconcept/volto-blocks-grid`
+
+The grid block was added to Volto in version 17.0.0-alpha.16.
+It is based on the `@kitconcept/volto-blocks-grid` add-on version 7.x.x.
+
+If you were using `@kitconcept/volto-blocks-grid` in your project, you need to take action since after the upgrade, your site will show two blocks called `Grid`.
+
+You need to choose and disable one of them based on the following.
+
+The Volto core grid block uses the Volto internals default blocks-in-block architecture.
+This differs from the grid block data structure in the add-on `@kitconcept/volto-blocks-grid`.
+Because of this difference, they are not compatible, and a data migration is necessary from the add-on to the Volto grid block. This migration is not provided (yet).
+
+However, the Volto core grid block uses a different internal name, `gridBlock`, so both blocks can coexist at the same time.
+Nonetheless, it is recommended to enable only one grid block type for your users, and eventually use a single version to avoid unexpected behaviors and bugs.
+
+You can disable the one you won't be using:
+
+```js
+  // This disables the `@kitconcept/volto-blocks-grid` grid block
+  config.blocks.blocksConfig.__grid.restricted = true;
+
+  // This disables the Volto core grid block
+  config.blocks.blocksConfig.gridBlock.restricted = true;
+```
+
+As long as you keep the add-on in place, your existing blocks will work as expected, even if you restrict the block.
+The recommendation is that you disable the `@kitconcept/volto-blocks-grid` block while allowing your new content use the new core grid block.
+
 
 (volto-upgrade-guide-16.x.x)=
 
