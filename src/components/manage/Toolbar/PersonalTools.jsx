@@ -20,10 +20,6 @@ import backSVG from '@plone/volto/icons/back.svg';
 import cameraSVG from '@plone/volto/icons/camera.svg';
 
 const messages = defineMessages({
-  back: {
-    id: 'Back',
-    defaultMessage: 'Back',
-  },
   settings: {
     id: 'Settings',
     defaultMessage: 'Settings',
@@ -39,6 +35,10 @@ const messages = defineMessages({
   logout: {
     id: 'Logout',
     defaultMessage: 'Logout',
+  },
+  back: {
+    id: 'Back',
+    defaultMessage: 'Back',
   },
   userAvatar: {
     id: 'user avatar',
