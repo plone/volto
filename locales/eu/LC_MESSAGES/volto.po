@@ -630,6 +630,11 @@ msgstr "Garbitu"
 msgid "Clear filters"
 msgstr "Garbitu filtroak"
 
+#: components/manage/BlockChooser/BlockChooserSearch
+# defaultMessage: Clear search
+msgid "Clear search"
+msgstr ""
+
 #: components/theme/View/ImageView
 # defaultMessage: Click to download full sized image
 msgid "Click to download full sized image"
