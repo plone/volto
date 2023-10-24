@@ -99,8 +99,8 @@ of an error is present, it overrides a default from SemanticUI grid definitions.
     &:hover {
       -webkit-box-shadow: none;
       box-shadow: none;
-      color: #e40166 !important;
-      outline: 1px solid #e40166;
+      color: @pink !important;
+      outline: 1px solid @pink;
     }
     &.clear-search-button {
       //needed for focus
