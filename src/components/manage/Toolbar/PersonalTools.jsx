@@ -20,6 +20,10 @@ import backSVG from '@plone/volto/icons/back.svg';
 import cameraSVG from '@plone/volto/icons/camera.svg';
 
 const messages = defineMessages({
+  settings: {
+    id: 'Settings',
+    defaultMessage: 'Settings',
+  },
   back: {
     id: 'Back',
     defaultMessage: 'Back',
@@ -39,10 +43,6 @@ const messages = defineMessages({
   userAvatar: {
     id: 'user avatar',
     defaultMessage: 'user avatar',
-  },
-  settings: {
-    id: 'settings',
-    defaultMessage: 'Settings',
   },
 });
 
@@ -88,7 +88,9 @@ const PersonalTools = (props) => {
           />
         </button>
         <div className="vertical divider" />
-        <h2>{user ? intl.formatMessage(messages.settings) : intl.formatMessage(messages.settings)}</h2>
+        {user && token && (
+          <h2>{intl.formatMessage(messages.settings)}</h2>
+        )}
         <Link id="toolbar-logout" to={`${getBaseUrl(pathname)}/logout`}>
           <Icon
             className="logout"

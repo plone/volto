@@ -3176,6 +3176,7 @@ msgid "Set your password"
 msgstr "Ezarri zure pasahitza"
 
 #: components/manage/Sidebar/Sidebar
+#: components/manage/Toolbar/PersonalTools
 # defaultMessage: Settings
 msgid "Settings"
 msgstr "Ezarpenak"
@@ -4846,11 +4847,6 @@ msgstr "Aukeraketa laukia"
 # defaultMessage: Select view
 msgid "selectView"
 msgstr "Aukeratu bista"
-
-#: components/manage/Toolbar/PersonalTools
-# defaultMessage: Settings
-msgid "settings"
-msgstr ""
 
 #: components/theme/SkipLinks/SkipLinks
 # defaultMessage: Skip to footer

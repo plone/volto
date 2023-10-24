@@ -3175,6 +3175,7 @@ msgid "Set your password"
 msgstr "Setzen Sie Ihr Passwort"
 
 #: components/manage/Sidebar/Sidebar
+#: components/manage/Toolbar/PersonalTools
 # defaultMessage: Settings
 msgid "Settings"
 msgstr "Einstellungen"
@@ -4845,11 +4846,6 @@ msgstr "Auswählen"
 # defaultMessage: Select view
 msgid "selectView"
 msgstr "Ansicht wählen"
-
-#: components/manage/Toolbar/PersonalTools
-# defaultMessage: Settings
-msgid "settings"
-msgstr ""
 
 #: components/theme/SkipLinks/SkipLinks
 # defaultMessage: Skip to footer
