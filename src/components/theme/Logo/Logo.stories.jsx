@@ -4,7 +4,31 @@ import Wrapper from '@plone/volto/storybook';
 
 const StoryComponent = (args) => {
   return (
-    <Wrapper>
+    <Wrapper
+      customStore={{
+        intl: {
+          locale: 'en',
+          messages: {},
+        },
+        navroot: {
+          data: {
+            id: 'http://localhost:3000/@navroot',
+            navroot: {
+              '@id': 'http://localhost:3000',
+              title: 'Plone Site',
+            },
+          },
+        },
+        router: {
+          location: {
+            pathname: '/',
+          },
+        },
+        site: {
+          data: {},
+        },
+      }}
+    >
       <Logo />
     </Wrapper>
   );
