@@ -55,7 +55,7 @@ To make changes to Volto, you need to run it from a copy of the [`plone/volto` G
 
 ### Prerequisites
 
-You need all the requirements already mentioned in {doc}`plone:install-packages-prerequisites-label`.
+You need all the requirements already mentioned in {doc}`plone:install/install-from-packages`.
 
 ### Clone the Volto repository
 
