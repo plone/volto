@@ -8,7 +8,72 @@
 
 <!-- towncrier release notes start -->
 
+## 17.2.0 (2023-10-16)
+
+### Feature
+
+- add cypress test for search block via url - @ionlizarazu [#5298](https://github.com/plone/volto/issues/5298)
+
+### Bugfix
+
+- Fix adding multiple path criteria in search and listing blocks. @davisagli [#5317](https://github.com/plone/volto/issues/5317)
+
+
+## 17.1.1 (2023-10-13)
+
+### Bugfix
+
+- Normalize the shape of the image component item prop if it contains the serialized object after creation to match the one in the catalog. @sneridagh [#5266](https://github.com/plone/volto/issues/5266)
+- Added guard in `flattenScales` in edge case image is undefined @sneridagh [#5318](https://github.com/plone/volto/issues/5318)
+
+
+## 17.1.0 (2023-10-11)
+
+### Feature
+
+- storybook Header-@Tishasoumya [#5085](https://github.com/plone/volto/issues/5085)
+- Storybook EventDetails-@Tishasoumya [#5088](https://github.com/plone/volto/issues/5088)
+- Storybook CommentEditModal-@Tishasoumya [#5091](https://github.com/plone/volto/issues/5091)
+- Storybook SearchWidget-@Tishasoumya [#5092](https://github.com/plone/volto/issues/5092)
+- Upgrade to @plone/scripts 3.0.1 @sneridagh [#5282](https://github.com/plone/volto/issues/5282)
+- Make LeadImage block sizes configurable through a function @erral [#5289](https://github.com/plone/volto/issues/5289)
+
+### Bugfix
+
+- Remove the default aspect-ratio from Image component. It was redundant and hard to override. @pnicolli [#5096](https://github.com/plone/volto/issues/5096)
+- Update translate pt_br to fix merge fail @luxcas [#5217](https://github.com/plone/volto/issues/5217)
+- Ensure .gitignore gets copied when running yo @plone/volto-addon @instification [#5258](https://github.com/plone/volto/issues/5258)
+- Configure the `prettier` and `prettier:fix` yarn commands to also include the root js files and the `cypress` subfolder @tiberiuichim [#5260](https://github.com/plone/volto/issues/5260)
+- Emit a proper URL for the Plone root in a listing, we use the `config.publicURL` for it @tiberiuichim [#5263](https://github.com/plone/volto/issues/5263)
+- fixed logo and login storybook @nileshgulia1 [#5264](https://github.com/plone/volto/issues/5264)
+- Refactor Logo component to improve the conditional link to the root @sneridagh [#5280](https://github.com/plone/volto/issues/5280)
+- Update webpack-bundle-analyzer to 4.9.0. @davisagli [#5283](https://github.com/plone/volto/issues/5283)
+- Added support for blocksConfig configuration in the listing block @sneridagh [#5310](https://github.com/plone/volto/issues/5310)
+
+### Documentation
+
+- Added notice in release notes for Volto 17 final to clarify that it's a summary for all changes during the alpha stage. @sneridagh
+  Added an omitted change log entry for the Relations Control Panel. @sneridagh [#5281](https://github.com/plone/volto/issues/5281)
+- Updated readme and removed outdated install docs. @davisagli [#5287](https://github.com/plone/volto/issues/5287)
+
+
+## 17.0.1 (2023-10-03)
+
+### Bugfix
+
+- issue #5126 a11y for checkboxes on the sharing page @Wagner3UB [#5201](https://github.com/plone/volto/issues/5201)
+- Adjust DNS resolution to prefer IPv4 addresses when both IPv4 and IPv6 are resolved. @davisagli [#5261](https://github.com/plone/volto/issues/5261)
+
+### Documentation
+
+- Fix tests and documentation broken because the renaming master->main @sneridagh [#5251](https://github.com/plone/volto/issues/5251)
+- Disable GHA vale checking, it started to fail with a gazillion of violations. @sneridagh [#5253](https://github.com/plone/volto/issues/5253)
+- Reenable GHA vale checking, but with configuration from `plone/documentation`. It now runs Vale, but with the flag `--no-exit` which means "Don't return a nonzero exit code on errors." It also eliminates reviewdog as the test runner. @stevepiercy [#5256](https://github.com/plone/volto/issues/5256)
+
+
 ## 17.0.0 (2023-09-30)
+
+**These Release Notes summarize all the changes during the alpha stage of Volto 17.**
 
 ### Breaking
 
@@ -41,6 +106,7 @@
 
 ### Feature
 
+- Added a control panel for relations. @ksuess [#3382](https://github.com/plone/volto/pull/3382)
 - Add directive to cache stable resources in browser or intermediate server for 365 days by default directly in the SSR Express server, static resource that could change after a new deployment for 1 minute. @mamico [#2216](https://github.com/plone/volto/issues/2216)
 - Use popperjs in BlockChooser, move the markup to the bottom of the body tag. @sneridagh [#4141](https://github.com/plone/volto/issues/4141)
 - Improvements to the dev API proxy:

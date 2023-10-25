@@ -12,7 +12,6 @@ myst:
 ```{toctree}
 :maxdepth: 1
 
-install
 roadmap
 others
 ```

@@ -245,10 +245,8 @@ const defaultModify = ({
     'lodash-es': path.dirname(require.resolve('lodash')),
   };
 
-  const [
-    addonsThemeLoaderVariablesPath,
-    addonsThemeLoaderMainPath,
-  ] = createThemeAddonsLoader(registry.getCustomThemeAddons());
+  const [addonsThemeLoaderVariablesPath, addonsThemeLoaderMainPath] =
+    createThemeAddonsLoader(registry.getCustomThemeAddons());
 
   // Automatic Theme Loading
   if (registry.theme) {
@@ -259,12 +257,10 @@ const defaultModify = ({
     config.resolve.alias['../../theme.config'] = themeConfigPath;
 
     // We create an alias for each custom theme insertion point (variables, main)
-    config.resolve.alias[
-      'addonsThemeCustomizationsVariables'
-    ] = addonsThemeLoaderVariablesPath;
-    config.resolve.alias[
-      'addonsThemeCustomizationsMain'
-    ] = addonsThemeLoaderMainPath;
+    config.resolve.alias['addonsThemeCustomizationsVariables'] =
+      addonsThemeLoaderVariablesPath;
+    config.resolve.alias['addonsThemeCustomizationsMain'] =
+      addonsThemeLoaderMainPath;
   }
 
   config.performance = {
