@@ -39,16 +39,16 @@ interface BlockConfigBase {
   /**
    * The group of the block
    */
-  blockSchema?: ({ props, intl }: { props: unknown; intl: unknown }) => object;
+  blockSchema?: (args: {
+    props: unknown;
+    intl: unknown;
+  }) => Record<string, unknown>;
   /**
    * If the block is restricted, it won't show in the chooser.
    * The function signature is `({properties, block})` where `properties` is
    * the current object data and `block` is the block being evaluated in `BlockChooser`.
    */
-  restricted: ({
-    properties,
-    block,
-  }: {
+  restricted: (args: {
     properties: Content;
     block: BlockConfigBase; // TODO: This has to be extendable
   }) => boolean;
@@ -69,11 +69,7 @@ interface BlockConfigBase {
    * It can be either be at block level (it's applied always), at a variation level
    * or both. It's up to the developer to make them work nicely (not conflict) between them
    */
-  schemaEnhancer: ({
-    schema,
-    formData,
-    intl,
-  }: {
+  schemaEnhancer: (args: {
     schema: JSONSchema;
     formData: BlockConfigBase; // Not sure, if so, has to be extendable
     intl: unknown;

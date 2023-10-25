@@ -3,9 +3,7 @@ export type { BlocksConfig } from './Blocks';
 export type { ViewsConfig } from './Views';
 export type { WidgetsConfig } from './Widgets';
 
-export type AddonReducersConfig = {
-  [key: string]: Function;
-};
+export type AddonReducersConfig = Record<string, Function>;
 
 export type AddonRoutesConfig = {
   path: string;
@@ -13,14 +11,11 @@ export type AddonRoutesConfig = {
   component: React.ComponentType;
 }[];
 
-export type SlotsConfig = {
-  [key: string]: unknown;
-};
+export type SlotsConfig = Record<string, unknown>;
 
-export type ComponentsConfig = {
-  [key: string]: { component: React.ComponentType };
-};
+export type ComponentsConfig = Record<
+  string,
+  { component: React.ComponentType }
+>;
 
-export type ExperimentalConfig = {
-  [key: string]: unknown;
-};
+export type ExperimentalConfig = Record<string, unknown>;
