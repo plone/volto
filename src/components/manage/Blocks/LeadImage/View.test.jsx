@@ -1,6 +1,28 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+
+import config from '@plone/volto/registry';
 import View from './View';
+
+import { getLeadImageBlockSizes } from './utils';
+
+config.blocks.blocksConfig = {
+  leadimage: {
+    id: 'leadimage',
+    title: 'Image',
+    group: 'media',
+    extensions: {},
+    variations: [],
+    restricted: false,
+    mostUsed: true,
+    sidebarTab: 1,
+    security: {
+      addPermission: [],
+      view: [],
+    },
+    getSizes: getLeadImageBlockSizes,
+  },
+};
 
 test('renders a view image component', () => {
   const component = renderer.create(
