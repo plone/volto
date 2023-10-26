@@ -333,7 +333,8 @@ const withSearch = (options) => (WrappedComponent) => {
       setSearchData(
         getInitialState(data, facets, urlSearchText, id, sortOn, sortOrder),
       );
-    }, [deepFacets, facets, data, urlSearchText, id, sortOn, sortOrder]);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [deepFacets, urlSearchText, id, sortOn, sortOrder]);
 
     const timeoutRef = React.useRef();
     const facetSettings = data?.facets;
