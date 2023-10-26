@@ -43,7 +43,7 @@ describe('Search Block Tests', () => {
     cy.removeContent({ path: 'my-search-page' });
   });
 
-  it.skip('Search block - test checkbox facet', () => {
+  it('Search block - test checkbox facet', () => {
     cy.get('#toolbar-add > .icon').click();
     cy.get('#toolbar-add-document').click();
     cy.getSlateTitle().focus().click().type('My Search Page');
@@ -141,7 +141,7 @@ describe('Search Block Tests', () => {
     cy.get('.search-details').should('contain', 'Search results: 1');
   });
 
-  it.skip('Search block - test date range facet', () => {
+  it('Search block - test date range facet', () => {
     cy.visit('/');
     cy.get('#toolbar-add > .icon').click();
     cy.get('#toolbar-add-document').click();
