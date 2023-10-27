@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools component - in a non-root path 1`] = `
+exports[Toolbar Personal Tools component renders an Toolbar Personal Tools component - in a non-root path 1] = `
 <div
   className="personal-tools pastanaga-menu"
   style={
@@ -39,7 +39,7 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
       className="vertical divider"
     />
     <h2>
-      admin
+      Settings
     </h2>
     <a
       href="/en/blog/logout"
@@ -176,7 +176,7 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
 </div>
 `;
 
-exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools component 1`] = `
+exports[Toolbar Personal Tools component renders an Toolbar Personal Tools component 1] = `
 <div
   className="personal-tools pastanaga-menu"
   style={
@@ -215,7 +215,7 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
       className="vertical divider"
     />
     <h2>
-      admin
+      Settings
     </h2>
     <a
       href="/logout"
@@ -352,7 +352,7 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
 </div>
 `;
 
-exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools component with portrait set 1`] = `
+exports[Toolbar Personal Tools component renders an Toolbar Personal Tools component with portrait set 1] = `
 <div
   className="personal-tools pastanaga-menu"
   style={
@@ -391,7 +391,7 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
       className="vertical divider"
     />
     <h2>
-      admin
+      Settings
     </h2>
     <a
       href="/logout"
