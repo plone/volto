@@ -175,6 +175,11 @@ patches:
 corepackagebump:
 	node $(SCRIPTSPACKAGE)/corepackagebump.js packages/volto-slate $(VERSION)
 
+.PHONY: copyreleasenotestodocs
+copyreleasenotestodocs:
+	cp CHANGELOG.md docs/source/release-notes/index.md
+	git add docs/source/release-notes/index.md
+
 ##### Docker containers
 
 .PHONY: start-backend-docker
