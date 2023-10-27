@@ -8,6 +8,25 @@
 
 <!-- towncrier release notes start -->
 
+## 16.26.0 (2023-10-27)
+
+### Feature
+
+- Updated aria-label for landmarks @ichim-david
+  Added landmark on sidebar @ichim-david
+  Added Pluggable section for skiplinks @ichim-david [#5290](https://github.com/plone/volto/issues/5290)
+
+### Bugfix
+
+- (FIX): put padding so the text is not clipped #5305 @dobri1408 [#5305](https://github.com/plone/volto/issues/5305)
+- Fix compare translations view @sneridagh [#5327](https://github.com/plone/volto/issues/5327)
+- Fix DatetimeWidget on FF, the button default if no type is set is sending the form. @sneridagh
+  See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#formmethod [#5343](https://github.com/plone/volto/issues/5343)
+
+### Internal
+
+- Add a new set of acceptance tests with the multilingual fixture using seamless mode. @sneridagh [#5332](https://github.com/plone/volto/issues/5332)
+
 ## 16.25.0 (2023-10-16)
 
 ### Feature

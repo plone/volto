@@ -1,2 +1,0 @@
-Fix DatetimeWidget on FF, the button default if no type is set is sending the form. @sneridagh
-See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#formmethod
