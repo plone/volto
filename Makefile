@@ -319,6 +319,28 @@ test-acceptance-multilingual-headless: ## Start Multilingual Cypress Acceptance 
 full-test-acceptance-multilingual: ## Runs Multilingual Full Acceptance Testing in headless mode
 	$(NODEBIN)/start-test "make start-test-acceptance-server-multilingual" http-get://localhost:55001/plone "make start-test-acceptance-frontend-multilingual" http://localhost:3000 "make test-acceptance-multilingual-headless"
 
+######### Seamless Multilingual Acceptance tests
+
+.PHONY: start-test-acceptance-server-seamless-multilingual test-acceptance-server-seamless-multilingual
+start-test-acceptance-server-seamless-multilingual test-acceptance-server-seamless-multilingual: ## Start Seamless Multilingual Acceptance Server Multilingual Fixture (docker container)
+	docker run -i --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:multilingual $(DOCKER_IMAGE_ACCEPTANCE)
+
+.PHONY: start-test-acceptance-frontend-seamless-multilingual
+start-test-acceptance-frontend-seamless-multilingual: ## Start the Seamless Multilingual Acceptance Frontend Fixture
+	ADDONS=coresandbox:multilingualFixture yarn build && yarn start:prod
+
+.PHONY: test-acceptance-seamless-multilingual
+test-acceptance-seamless-multilingual: ## Start Seamless Multilingual Cypress Acceptance Tests
+	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config baseUrl='http://localhost',specPattern='cypress/tests/multilingual/**/*.{js,jsx,ts,tsx}'
+
+.PHONY: test-acceptance-seamless-multilingual-headless
+test-acceptance-seamless-multilingual-headless: ## Start Seamless Multilingual Cypress Acceptance Tests in headless mode
+	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress run --config specPattern='cypress/tests/multilingual/**/*.{js,jsx,ts,tsx}'
+
+.PHONY: full-test-acceptance-seamless-multilingual
+full-test-acceptance-seamless-multilingual: ## Runs Seamless Multilingual Full Acceptance Testing in headless mode
+	$(NODEBIN)/start-test "make start-test-acceptance-server-seamless-multilingual" http-get://127.0.0.1:55001/plone "make start-test-acceptance-frontend-seamless-multilingual" http://127.0.0.1:3000 "make test-acceptance-multilingual-headless"
+
 ######### WorkingCopy Acceptance tests
 
 .PHONY: start-test-acceptance-server-workingcopy test-acceptance-server-workingcopy
