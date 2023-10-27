@@ -10,12 +10,20 @@ exports[`Multilingual Logo renders a logo component in a multilingual site langu
 `;
 
 exports[`Multilingual Logo renders a logo component in a multilingual site root 1`] = `
-<img
-  alt="Plone Site"
-  className="ui image"
-  src="Logo.svg"
+<a
+  className={null}
+  href="/en"
+  onClick={[Function]}
+  target={null}
   title="Plone Site"
-/>
+>
+  <img
+    alt="Plone Site"
+    className="ui image"
+    src="Logo.svg"
+    title="Plone Site"
+  />
+</a>
 `;
 
 exports[`Multilingual Logo renders a logo component with a custom logo in a non-root url 1`] = `
