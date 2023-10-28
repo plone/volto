@@ -1,6 +1,6 @@
 {
   "name": "@plone/registry",
-  "description": "Add-on and configuration registry for Plone products.",
+  "description": "Add-on and configuration registry for Plone.",
   "maintainers": [
     {
       "name": "Plone Foundation",
@@ -38,6 +38,15 @@
     "release-major-alpha": "release-it major --preRelease=alpha",
     "release-alpha": "release-it --preRelease=alpha"
   },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react-dom": {
+      "optional": true
+    }
+  },
   "dependencies": {
     "crypto-random-string": "3.2.0",
     "debug": "4.3.2",
@@ -46,6 +55,6 @@
     "lodash": "4.17.21"
   },
   "devDependencies": {
-    "release-it": "^15.0.0"
+    "release-it": "16.2.1"
   }
 }

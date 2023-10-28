@@ -1,5 +1,5 @@
 import { isArray } from 'lodash';
-import * as configTypes from './types';
+import * as configTypes from './types/config';
 
 type ConfigData = {
   settings: configTypes.SettingsConfig;
