@@ -8,6 +8,35 @@
 
 <!-- towncrier release notes start -->
 
+## 17.3.0 (2023-10-27)
+
+### Feature
+
+- Updated aria-label for landmarks @ichim-david
+  Added landmark on sidebar @ichim-david
+  Added Pluggable section for skiplinks @ichim-david [#5290](https://github.com/plone/volto/issues/5290)
+
+### Bugfix
+
+- (FIX): put padding so the text is not clipped #5305 @dobri1408 [#5305](https://github.com/plone/volto/issues/5305)
+- Fix compare translations view @sneridagh [#5327](https://github.com/plone/volto/issues/5327)
+- Fix DatetimeWidget on FF, the button default if no type is set is sending the form. @sneridagh
+  See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#formmethod [#5343](https://github.com/plone/volto/issues/5343)
+
+### Internal
+
+- For blocks that define their `blockSchema`, call `applyBlockDefaults` when creating the initial data for the blocks form.
+  It is now possible to define a block configuration function, `initialValue` that returns the initial value for a block. This is useful in use cases such as container blocks that want to create a complex initial data structure, to avoid the need to call `React.useEffect` on their initial block rendering and thus, avoid complex async "concurent" state mutations.
+  The `addBlock`, `mutateBlock`, `insertBlock` now allow passing a `blocksConfig` configuration object
+
+  @tiberiuichim [#5320](https://github.com/plone/volto/issues/5320)
+- Add a new set of acceptance tests with the multilingual fixture using seamless mode. @sneridagh [#5332](https://github.com/plone/volto/issues/5332)
+
+### Documentation
+
+- Fix reference link to installation. @stevepiercy [#5328](https://github.com/plone/volto/issues/5328)
+- Add upgrade docs for users of `@kitconcept/volto-blocks-grid` addon @sneridagh [#5333](https://github.com/plone/volto/issues/5333)
+
 ## 17.2.0 (2023-10-16)
 
 ### Feature
