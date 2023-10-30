@@ -16,3 +16,6 @@
 @checkboxBorderUnchecked: 1px solid #826a6a;
 @checkboxBorderChecked: 1px solid #007eb1;
 @checkboxColor: #007eb1;
+
+/* Listing Block*/
+@summaryItemTitle: #007eb1;
