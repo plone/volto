@@ -98,7 +98,6 @@ const LinkEditor = (props) => {
         }}
         onOverrideContent={(c) => {
           dispatch(setPluginOptions(pid, { show_sidebar_editor: false }));
-          savedPosition.current = null;
         }}
       />
     </PositionedToolbar>
