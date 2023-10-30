@@ -73,11 +73,12 @@ export default function devProxyMiddleware() {
     },
     pathRewrite: (path, req) => {
       const { apiPathURL, instancePath } = getEnv();
+      const targetPort = apiPathURL.port ? `:${apiPathURL.port}` : '';
       const target =
         config.settings.proxyRewriteTarget ||
         `/VirtualHostBase/${apiPathURL.protocol.slice(0, -1)}/${
           apiPathURL.hostname
-        }:${apiPathURL.port}${instancePath}/++api++/VirtualHostRoot`;
+        }${targetPort}${instancePath}/++api++/VirtualHostRoot`;
 
       return `${target}${path.replace('/++api++', '')}`;
     },
