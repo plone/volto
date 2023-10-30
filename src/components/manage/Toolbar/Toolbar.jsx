@@ -564,25 +564,23 @@ class Toolbar extends Component {
                   name="main.toolbar.bottom"
                   params={{ onClickHandler: this.toggleMenu }}
                 />
-                {!this.props.hideDefaultViewButtons && (
-                  <button
-                    className="user"
-                    aria-label={this.props.intl.formatMessage(
+                <button
+                  className="user"
+                  aria-label={this.props.intl.formatMessage(
+                    messages.personalTools,
+                  )}
+                  onClick={(e) => this.toggleMenu(e, 'personalTools')}
+                  tabIndex={0}
+                  id="toolbar-personal"
+                >
+                  <Icon
+                    name={userSVG}
+                    size="30px"
+                    title={this.props.intl.formatMessage(
                       messages.personalTools,
                     )}
-                    onClick={(e) => this.toggleMenu(e, 'personalTools')}
-                    tabIndex={0}
-                    id="toolbar-personal"
-                  >
-                    <Icon
-                      name={userSVG}
-                      size="30px"
-                      title={this.props.intl.formatMessage(
-                        messages.personalTools,
-                      )}
-                    />
-                  </button>
-                )}
+                  />
+                </button>
               </div>
             </div>
             <div className="toolbar-handler">
