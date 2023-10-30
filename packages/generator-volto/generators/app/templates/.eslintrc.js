@@ -36,6 +36,9 @@ const defaultConfig = {
       alias: {
         map: [
           ['@plone/volto', '@plone/volto/src'],
+          ['volto-themes', '@plone/volto/src/theme/themes'],
+          ['@plone/volto-original', '@plone/volto/src'],
+          ['redux-connect', '@plone/volto/src/helpers/AsyncConnect'],
           ['@plone/volto-slate', '@plone/volto/packages/volto-slate/src'],
           ...addonAliases,
           ['@package', `${__dirname}/src`],
