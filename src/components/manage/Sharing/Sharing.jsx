@@ -373,7 +373,7 @@ class SharingComponent extends Component {
             dependencies={[this.state.entries, this.props.available_roles]}
           >
             <Form onSubmit={this.onSubmit}>
-              <Table celled padded striped attached>
+              <Table size="small" unstackable celled padded striped attached>
                 <Table.Header>
                   <Table.Row>
                     <Table.HeaderCell>

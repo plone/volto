@@ -61,7 +61,7 @@ exports[`Sharing renders a sharing component 1`] = `
       onSubmit={[Function]}
     >
       <table
-        className="ui celled striped attached padded table"
+        className="ui small celled striped unstackable attached padded table"
       >
         <thead
           className=""
