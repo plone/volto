@@ -2589,6 +2589,7 @@ See https://6.docs.plone.org/volto/upgrade-guide/index.html for more information
 ### Feature
 
 - Send extra data coming from listing block schemaEnhancer from searchBlock to the listing variation @ionlizarazu
+- Pass onChange in iconAction so that implementation of clear action could be possible @MdSahil-oss
 
 ### Bugfix
 
