@@ -15,7 +15,7 @@ import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers';
  * @class Body
  * @extends Component
  */
-const Body = ({ data, isEditMode }) => {
+const Body = ({ data, isEditMode, selected }) => {
   let placeholder = data.preview_image
     ? isInternalURL(data.preview_image)
       ? `${flattenToAppURL(data.preview_image)}/@@images/image`
@@ -59,12 +59,13 @@ const Body = ({ data, isEditMode }) => {
   const embedSettings = {
     placeholder: placeholder,
     icon: 'play',
-    defaultActive: false,
+    // defaultActive: false,
     autoplay: false,
     aspectRatio: '16:9',
     tabIndex: 0,
     onKeyPress: onKeyDown,
     ref: ref,
+    active: selected,
   };
 
   return (
