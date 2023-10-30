@@ -6,6 +6,12 @@ const debug = require('debug')('shadowing');
 const { map } = require('lodash');
 const { DepGraph } = require('dependency-graph');
 
+const excludedCompilerOptionsPaths = [
+  '@plone/volto/*',
+  '@plone/volto-slate/*',
+  '@root/*',
+];
+
 function getPackageBasePath(base) {
   while (!fs.existsSync(`${base}/package.json`)) {
     base = path.join(base, '../');
@@ -95,16 +101,14 @@ function getAddonsLoaderChain(graph) {
  */
 class AddonConfigurationRegistry {
   constructor(projectRootPath) {
-    const packageJson = (this.packageJson = require(path.join(
-      projectRootPath,
-      'package.json',
-    )));
+    const packageJson = (this.packageJson = require(
+      path.join(projectRootPath, 'package.json'),
+    ));
     // Loads the dynamic config, if any
     if (fs.existsSync(path.join(projectRootPath, 'volto.config.js'))) {
-      this.voltoConfigJS = require(path.join(
-        projectRootPath,
-        'volto.config.js',
-      ));
+      this.voltoConfigJS = require(
+        path.join(projectRootPath, 'volto.config.js'),
+      );
     } else {
       this.voltoConfigJS = [];
     }
@@ -197,7 +201,10 @@ class AddonConfigurationRegistry {
           addons: require(packageJsonPath).addons || [],
         };
 
-        this.packages[name] = Object.assign(this.packages[name] || {}, pkg);
+        // Removed excluded paths from CompilerOptions
+        if (!excludedCompilerOptionsPaths.includes(name)) {
+          this.packages[name] = Object.assign(this.packages[name] || {}, pkg);
+        }
       });
     }
     this.initPackagesFolder();

@@ -8,6 +8,7 @@ import { map } from 'lodash';
 import { Days } from './Utils';
 import SelectInput from './SelectInput';
 import { Form } from 'semantic-ui-react';
+import { toBackendLang } from '@plone/volto/helpers';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import { useSelector } from 'react-redux';
 
@@ -22,7 +23,7 @@ const WeekdayOfTheMonthField = (props) => {
   const lang = useSelector((state) => state.intl.locale);
 
   const moment = momentlib.default;
-  moment.locale(lang);
+  moment.locale(toBackendLang(lang));
 
   const weekdayOfTheMonthList = [
     ...map(Object.keys(Days), (d) => ({

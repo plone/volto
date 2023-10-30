@@ -13,15 +13,15 @@ MAKEFLAGS+=--no-builtin-rules
 # Project settings
 
 INSTANCE_PORT=8080
-DOCKER_IMAGE=plone/server-dev:6.0.3
-DOCKER_IMAGE_ACCEPTANCE=plone/server-acceptance:6.0.3
-KGS=plone.restapi==8.36.0
+DOCKER_IMAGE=plone/server-dev:6.0.7
+DOCKER_IMAGE_ACCEPTANCE=plone/server-acceptance:6.0.7
+KGS=
 NODEBIN = ./node_modules/.bin
 SCRIPTSPACKAGE = ./packages/scripts
 
 # Plone 5 legacy
-DOCKER_IMAGE5=plone/plone-backend:5.2.10
-KGS5=plone.restapi==8.36.0 plone.volto==4.0.7 plone.rest==3.0.0
+DOCKER_IMAGE5=plone/plone-backend:5.2.12
+KGS5=plone.restapi==8.43.3 plone.volto==4.1.0 plone.rest==3.0.1
 TESTING_ADDONS=plone.app.robotframework==2.0.0 plone.app.testing==7.0.0
 
 # Sphinx variables
@@ -115,9 +115,9 @@ clean:
 
 .PHONY: docs-clean
 docs-clean:  ## Clean current and legacy docs build directories, and Python virtual environment
-	cd $(DOCS_DIR) && rm -rf $(BUILDDIR)/
 	rm -rf bin include lib
 	rm -rf docs/_build
+	cd $(DOCS_DIR) && rm -rf $(BUILDDIR)/
 
 .PHONY: docs-html
 docs-html: bin/python  ## Build html
@@ -240,7 +240,7 @@ test-acceptance: ## Start Core Cypress Acceptance Tests
 
 .PHONY: test-acceptance-headless
 test-acceptance-headless: ## Start Core Cypress Acceptance Tests in headless mode
-	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress run
+	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress run --config specPattern='cypress/tests/core/**/*.{js,jsx,ts,tsx}'
 
 .PHONY: full-test-acceptance
 full-test-acceptance: ## Runs Core Full Acceptance Testing in headless mode
@@ -318,6 +318,28 @@ test-acceptance-multilingual-headless: ## Start Multilingual Cypress Acceptance 
 .PHONY: full-test-acceptance-multilingual
 full-test-acceptance-multilingual: ## Runs Multilingual Full Acceptance Testing in headless mode
 	$(NODEBIN)/start-test "make start-test-acceptance-server-multilingual" http-get://127.0.0.1:55001/plone "make start-test-acceptance-frontend-multilingual" http://127.0.0.1:3000 "make test-acceptance-multilingual-headless"
+
+######### Seamless Multilingual Acceptance tests
+
+.PHONY: start-test-acceptance-server-seamless-multilingual test-acceptance-server-seamless-multilingual
+start-test-acceptance-server-seamless-multilingual test-acceptance-server-seamless-multilingual: ## Start Seamless Multilingual Acceptance Server Multilingual Fixture (docker container)
+	docker run -i --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:multilingual $(DOCKER_IMAGE_ACCEPTANCE)
+
+.PHONY: start-test-acceptance-frontend-seamless-multilingual
+start-test-acceptance-frontend-seamless-multilingual: ## Start the Seamless Multilingual Acceptance Frontend Fixture
+	ADDONS=coresandbox:multilingualFixture yarn build && yarn start:prod
+
+.PHONY: test-acceptance-seamless-multilingual
+test-acceptance-seamless-multilingual: ## Start Seamless Multilingual Cypress Acceptance Tests
+	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config baseUrl='http://localhost',specPattern='cypress/tests/multilingual/**/*.{js,jsx,ts,tsx}'
+
+.PHONY: test-acceptance-seamless-multilingual-headless
+test-acceptance-seamless-multilingual-headless: ## Start Seamless Multilingual Cypress Acceptance Tests in headless mode
+	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress run --config specPattern='cypress/tests/multilingual/**/*.{js,jsx,ts,tsx}'
+
+.PHONY: full-test-acceptance-seamless-multilingual
+full-test-acceptance-seamless-multilingual: ## Runs Seamless Multilingual Full Acceptance Testing in headless mode
+	$(NODEBIN)/start-test "make start-test-acceptance-server-seamless-multilingual" http-get://127.0.0.1:55001/plone "make start-test-acceptance-frontend-seamless-multilingual" http://127.0.0.1:3000 "make test-acceptance-multilingual-headless"
 
 ######### WorkingCopy Acceptance tests
 

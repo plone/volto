@@ -45,7 +45,8 @@
   margin: 4px -14px 0;
   background-repeat: no-repeat;
   background-size: 64px 18px;
-  transition: width 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045),
+  transition:
+    width 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045),
     margin 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 }
 
@@ -61,9 +62,9 @@
   width: 20px;
   height: 80px;
   padding: 0;
+  border-radius: 0;
   margin-top: -40px;
   background: transparent;
-  border-radius: 0;
   opacity: 0.3;
   transition: opacity 0.3s;
 }
