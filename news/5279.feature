@@ -1,0 +1,1 @@
+Add object browser icon view @robgietema

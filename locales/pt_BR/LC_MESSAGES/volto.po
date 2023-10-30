@@ -3050,6 +3050,7 @@ msgid "Search input label"
 msgstr "Rótulo da caixa de busca"
 
 #: components/manage/Blocks/Search/components/SearchDetails
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/theme/Search/Search
 # defaultMessage: Search results
 msgid "Search results"
