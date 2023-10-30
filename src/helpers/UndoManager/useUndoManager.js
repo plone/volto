@@ -1,6 +1,9 @@
 import React from 'react';
 import Undoo from 'undoo';
 
+import { setBlocksClipboard } from '@plone/volto/actions';
+import { useDispatch } from 'react-redux';
+
 // Code based on Apache-2.0 License
 // https://github.com/reaviz/reaflow/blob/78d60aa04f514947a17097c906efdbbd6bae5080/src/helpers/useUndo.ts
 
@@ -9,6 +12,7 @@ const useUndoManager = (
   onUndoRedo,
   { maxUndoLevels, enableHotKeys = true },
 ) => {
+  const dispatch = useDispatch();
   const [canUndo, setCanUndo] = React.useState(false);
   const [canRedo, setCanRedo] = React.useState(false);
   const manager = React.useRef(new Undoo({ maxLength: maxUndoLevels }));
@@ -26,6 +30,15 @@ const useUndoManager = (
       setCanUndo(nextUndo);
       setCanRedo(nextRedo);
 
+      if (Object.keys(state.blocksClipboard).length !== 0) {
+        const actionType = Object.keys(state.blocksClipboard)[0];
+
+        const blocksData = state.blocksClipboard?.copy
+          ? state.blocksClipboard.copy
+          : state.blocksClipboard.cut;
+        dispatch(setBlocksClipboard({ [actionType]: blocksData }));
+      }
+
       callbackRef.current({
         state,
         type: 'undo',
@@ -33,7 +46,7 @@ const useUndoManager = (
         canRedo: nextRedo,
       });
     });
-  }, []);
+  }, [dispatch]);
 
   React.useEffect(() => {
     manager.current.save({

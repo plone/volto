@@ -1,0 +1,1 @@
+Undoing a block paste operation now reloads the clipboard with the un-pasted stuff. @MAX-786
