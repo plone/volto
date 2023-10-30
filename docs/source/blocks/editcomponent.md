@@ -127,6 +127,43 @@ import { Icon } from '@plone/volto/components';
 </SidebarPortal>;
 ```
 
+### Default values support for block schema forms
+
+In the block schema definition, you can use the two additional properties for
+each field: `default` and `missing`. The `default` value is used to populate
+the field with an initial value. The `missing` value should be used when the field
+should always have a value (as required).
+
+```
+  // ...
+  properties: {
+    url: {
+      title: 'Embed URL',
+      default: 'https://example.com',
+      missing: 'https://nothing.com',
+    },
+  }
+  // ...
+```
+
+In effect, the following situation matrix will occur:
+
+- `default` and `missing` are declared: the block form is initialized with
+  the `default` value. When the user clears the field, the field is
+  reinitialized with the `missing` value. This would imply a "required" field.
+- only `default` is declared: the block form is initialized with the `default`
+  value. When the user clears the field, the field remains empty. This would
+  imply an "optional" field.
+- only `missing` is declared: the block form is initialized with the `missing`
+  value. When the user clears the field, the field is reinitialized with the
+  `missing` value.
+
+
+```{note}
+In order to have working default data derived from schema, you should always
+pass the `onChangeBlock` prop to `BlockDataForm`!
+```
+
 ## Object Browser
 
 Volto 4 has a new object browser component that allows you to select an existing content object from the site.

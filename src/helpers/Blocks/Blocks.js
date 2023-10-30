@@ -3,7 +3,7 @@
  * @module helpers/Blocks
  */
 
-import { omit, without, endsWith, find, isObject, keys, merge } from 'lodash';
+import { omit, without, endsWith, find, isObject, keys } from 'lodash';
 import move from 'lodash-move';
 import { v4 as uuid } from 'uuid';
 import config from '@plone/volto/registry';
@@ -475,37 +475,42 @@ export function applySchemaDefaults({ data = {}, schema, intl }) {
     _logged = true;
   }
 
-  const derivedData = merge(
-    Object.keys(schema.properties).reduce((accumulator, currentField) => {
-      return typeof schema.properties[currentField].default !== 'undefined'
-        ? {
-            ...accumulator,
-            [currentField]: schema.properties[currentField].default,
-          }
-        : intl &&
-          schema.properties[currentField].schema &&
-          !(schema.properties[currentField].widget === 'object_list') // TODO: this should be renamed as itemSchema
-        ? {
-            ...accumulator,
-            [currentField]: {
-              ...applySchemaDefaults({
-                data: { ...data[currentField], ...accumulator[currentField] },
-                schema:
-                  typeof schema.properties[currentField].schema === 'function'
-                    ? schema.properties[currentField].schema({
-                        data: accumulator[currentField],
-                        formData: accumulator[currentField],
-                        intl,
-                      })
-                    : schema.properties[currentField].schema,
-                intl,
-              }),
-            },
-          }
-        : accumulator;
-    }, {}),
-    data,
-  );
+  const dataKeys = Object.keys(data);
+  const derivedData = Object.keys(schema.properties).reduce((acc, key) => {
+    // TODO: the `.schema` properties for `object_list` should be renamed to
+    // `item_schema`
+
+    const isObjectWidget =
+      intl &&
+      schema.properties[key].schema &&
+      schema.properties[key].widget !== 'object_list';
+
+    const fieldData = !isObjectWidget
+      ? data[key] ??
+        (dataKeys.includes(key)
+          ? schema.properties[key].missing
+          : schema.properties[key].default ?? schema.properties[key].missing)
+      : applySchemaDefaults({
+          data: data[key],
+          schema:
+            typeof schema.properties[key].schema === 'function'
+              ? schema.properties[key].schema({
+                  data: data[key],
+                  formData: data[key],
+                  intl,
+                })
+              : schema.properties[key].schema,
+          intl,
+        });
+
+    const hasData = dataKeys.includes(key);
+    const schemaKeys = Object.keys(schema.properties[key]);
+    const hasDefault = isObjectWidget
+      ? Object.keys(fieldData).length > 0
+      : schemaKeys.includes('default') || schemaKeys.includes('missing');
+
+    return hasData || hasDefault ? { ...acc, [key]: fieldData } : acc;
+  }, data);
 
   return derivedData;
 }
