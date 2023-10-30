@@ -329,12 +329,19 @@ const withSearch = (options) => (WrappedComponent) => {
     );
 
     const deepFacets = JSON.stringify(facets);
+    const deepData = JSON.stringify(data);
     React.useEffect(() => {
       setSearchData(
-        getInitialState(data, facets, urlSearchText, id, sortOn, sortOrder),
+        getInitialState(
+          JSON.parse(deepData),
+          JSON.parse(deepFacets),
+          urlSearchText,
+          id,
+          sortOn,
+          sortOrder,
+        ),
       );
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [deepFacets, urlSearchText, id, sortOn, sortOrder]);
+    }, [deepData, deepFacets, urlSearchText, id, sortOn, sortOrder]);
 
     const timeoutRef = React.useRef();
     const facetSettings = data?.facets;
