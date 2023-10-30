@@ -98,6 +98,7 @@ class Add extends Component {
     }).isRequired,
     type: PropTypes.string,
     location: PropTypes.objectOf(PropTypes.any),
+    query: PropTypes.objectOf(PropTypes.any),
   };
 
   /**
@@ -110,6 +111,7 @@ class Add extends Component {
     content: null,
     returnUrl: null,
     type: 'Default',
+    query: null,
   };
 
   /**
@@ -305,6 +307,9 @@ class Add extends Component {
         return data;
       };
 
+      // extract type from the query in case there is a type field in the from
+      const { type, ...query } = this.props.query;
+
       const pageAdd = (
         <div id="page-add">
           <Helmet
@@ -334,6 +339,7 @@ class Add extends Component {
               // Copy the Language Independent Fields values from the to-be translated content
               // into the default values of the translated content Add form.
               ...lifData(),
+              ...query,
             }}
             requestError={this.state.error}
             onSubmit={this.onSubmit}
@@ -456,6 +462,7 @@ export default compose(
       pathname: props.location.pathname,
       returnUrl: qs.parse(props.location.search).return_url,
       type: qs.parse(props.location.search).type,
+      query: state?.router?.location?.query,
     }),
     { createContent, getSchema, changeLanguage },
   ),
