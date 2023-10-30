@@ -6,6 +6,7 @@
 import superagent from 'superagent';
 import config from '@plone/volto/registry';
 import { addHeadersFactory } from '@plone/volto/helpers/Proxy/Proxy';
+import { formatUrl } from './Api';
 
 /**
  * Get a resource image/file with authenticated (if token exist) API headers
@@ -16,18 +17,8 @@ import { addHeadersFactory } from '@plone/volto/helpers/Proxy/Proxy';
 export const getAPIResourceWithAuth = (req) =>
   new Promise((resolve, reject) => {
     const { settings } = config;
-    const APISUFIX = settings.legacyTraverse ? '' : '/++api++';
-
-    let apiPath = '';
-    if (settings.internalApiPath && __SERVER__) {
-      apiPath = settings.internalApiPath;
-    } else if (__DEVELOPMENT__ && settings.devProxyToApiPath) {
-      apiPath = settings.devProxyToApiPath;
-    } else {
-      apiPath = settings.apiPath;
-    }
     const request = superagent
-      .get(`${apiPath}${APISUFIX}${req.path}`)
+      .get(formatUrl(req.path, req))
       .maxResponseSize(settings.maxResponseSize)
       .responseType('blob');
     const authToken = req.universalCookies.get('auth_token');

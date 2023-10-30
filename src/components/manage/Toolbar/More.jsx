@@ -3,7 +3,7 @@
  * @module components/manage/Toolbar/More
  */
 
-import React, { Component } from 'react';
+import { Component, Fragment } from 'react';
 import { defineMessages, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';

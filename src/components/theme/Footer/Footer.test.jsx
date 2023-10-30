@@ -8,6 +8,8 @@ import Footer from './Footer';
 
 const mockStore = configureStore();
 
+global.__SERVER__ = true; // eslint-disable-line no-underscore-dangle
+
 describe('Footer', () => {
   it('renders a footer component', () => {
     const store = mockStore({

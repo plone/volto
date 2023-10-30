@@ -31,6 +31,11 @@ export {
   URLUtils,
   flattenScales,
 } from '@plone/volto/helpers/Url/Url';
+export {
+  useUrlHelpers,
+  injectUrlHelpers,
+  calculateApiPath,
+} from '@plone/volto/helpers/Url/urlHelpers';
 export { generateRobots } from '@plone/volto/helpers/Robots/Robots';
 export {
   nestContent,

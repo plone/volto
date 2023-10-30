@@ -1,6 +1,8 @@
 import config from '@plone/volto/registry';
 import Api from './Api';
 
+global.__SERVER__ = true; // eslint-disable-line no-underscore-dangle
+
 jest.mock('superagent', () => ({
   get: jest.fn((url) => ({
     url,

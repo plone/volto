@@ -25,6 +25,8 @@ beforeAll(() => {
 
 const mockStore = configureStore();
 
+global.__SERVER__ = true; // eslint-disable-line no-underscore-dangle
+
 jest.mock('react-portal', () => ({
   Portal: jest.fn(() => <div id="Portal" />),
 }));

@@ -8,27 +8,29 @@ import {
 } from 'http-proxy-middleware';
 import querystring from 'querystring';
 import { parse as parseUrl } from 'url';
+import { formatUrl } from '@plone/volto/helpers/Api/Api';
 
 const filter = function (pathname, req) {
   // This is the proxy to the API in case the accept header is 'application/json'
   return config.settings.devProxyToApiPath && pathname.startsWith('/++api++');
 };
 
-let _env = null;
+// let _env = null;
 
 // the config is not available at the middleware creation time, so it needs to
 // read/cache the global configuration on first request.
-function getEnv() {
-  if (_env) {
-    return _env;
-  }
+function getEnv(req) {
+  // if (_env) {
+  //   return _env;
+  // }
 
-  const apiPathURL = parseUrl(config.settings.apiPath);
+  //const apiPathURL = parseUrl(config.settings.apiPath);
+  const apiPathURL = formatUrl('', req);
   const proxyURL = parseUrl(config.settings.devProxyToApiPath);
   const serverURL = `${proxyURL.protocol}//${proxyURL.host}`;
   const instancePath = proxyURL.pathname;
 
-  _env = {
+  const _env = {
     apiPathURL,
     serverURL,
     instancePath,
@@ -68,11 +70,11 @@ export default function devProxyMiddleware() {
     },
     // target: serverURL,
     router: (req) => {
-      const { serverURL } = getEnv();
+      const { serverURL } = getEnv(req);
       return serverURL;
     },
     pathRewrite: (path, req) => {
-      const { apiPathURL, instancePath } = getEnv();
+      const { apiPathURL, instancePath } = getEnv(req);
       const target =
         config.settings.proxyRewriteTarget ||
         `/VirtualHostBase/${apiPathURL.protocol.slice(0, -1)}/${

@@ -3,11 +3,11 @@
  * @module helpers/Api
  */
 
+import { calculateApiPath, stripQuerystring } from '@plone/volto/helpers';
+import { addHeadersFactory } from '@plone/volto/helpers/Proxy/Proxy';
+import config from '@plone/volto/registry';
 import superagent from 'superagent';
 import Cookies from 'universal-cookie';
-import config from '@plone/volto/registry';
-import { addHeadersFactory } from '@plone/volto/helpers/Proxy/Proxy';
-import { stripQuerystring } from '@plone/volto/helpers';
 
 const methods = ['get', 'post', 'put', 'patch', 'del'];
 
@@ -15,22 +15,35 @@ const methods = ['get', 'post', 'put', 'patch', 'del'];
  * Format the url.
  * @function formatUrl
  * @param {string} path Path (or URL) to be formatted.
+ * @param {Object} req The request object for server side calls.
  * @returns {string} Formatted path.
  */
-function formatUrl(path) {
+export function formatUrl(path, req) {
   const { settings } = config;
   const APISUFIX = settings.legacyTraverse ? '' : '/++api++';
 
   if (path.startsWith('http://') || path.startsWith('https://')) return path;
 
   const adjustedPath = path[0] !== '/' ? `/${path}` : path;
-  let apiPath = '';
-  if (settings.internalApiPath && __SERVER__) {
-    apiPath = settings.internalApiPath;
-  } else if (settings.apiPath) {
-    apiPath = settings.apiPath;
-  }
 
+  const initialApiVars = {
+    host: null,
+    apiPath: null,
+    internalApiPath: null,
+    protocol: null,
+  };
+  if (__SERVER__) {
+    initialApiVars.host = req?.headers.host;
+    initialApiVars.internalApiPath = req?.headers['x-internal-api-path'];
+    initialApiVars.protocol = req?.protocol;
+    initialApiVars.apiPath = req?.headers['x-api-path'];
+  }
+  const apiPath = calculateApiPath({
+    protocol: initialApiVars.protocol,
+    host: initialApiVars.host,
+    internalApiPath: initialApiVars.internalApiPath,
+    apiPath: initialApiVars.apiPath,
+  });
   return `${apiPath}${APISUFIX}${adjustedPath}`;
 }
 
@@ -42,11 +55,11 @@ class Api {
   /**
    * Constructor
    * @method constructor
+   * @param {Object} req the request object for server side calls.
    * @constructs Api
    */
   constructor(req) {
     const cookies = new Cookies();
-
     methods.forEach((method) => {
       this[method] = (
         path,
@@ -54,7 +67,7 @@ class Api {
       ) => {
         let request;
         let promise = new Promise((resolve, reject) => {
-          request = superagent[method](formatUrl(path));
+          request = superagent[method](formatUrl(path, req));
 
           if (params) {
             request.query(params);

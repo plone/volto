@@ -9,34 +9,39 @@ import prependHttp from 'prepend-http';
 import config from '@plone/volto/registry';
 import { matchPath } from 'react-router';
 
+export const _getBaseUrl = (config) =>
+  memoize((url) => {
+    const { settings } = config;
+    if (url === undefined) return;
+
+    // We allow settings.nonContentRoutes to have strings (that are supposed to match
+    // ending strings of pathnames, so we are converting them to RegEx to match also
+    const normalized_nonContentRoutes = settings.nonContentRoutes.map(
+      (item) => {
+        if (item.test) {
+          return item;
+        } else {
+          return new RegExp(item + '$');
+        }
+      },
+    );
+
+    let adjustedUrl = normalized_nonContentRoutes.reduce(
+      (acc, item) => acc.replace(item, ''),
+      url,
+    );
+
+    adjustedUrl = adjustedUrl || '/';
+    return adjustedUrl === '/' ? '' : adjustedUrl;
+  });
+
 /**
  * Get base url.
  * @function getBaseUrl
  * @param {string} url Url to be parsed.
  * @return {string} Base url of content object.
  */
-export const getBaseUrl = memoize((url) => {
-  const { settings } = config;
-  if (url === undefined) return;
-
-  // We allow settings.nonContentRoutes to have strings (that are supposed to match
-  // ending strings of pathnames, so we are converting them to RegEx to match also
-  const normalized_nonContentRoutes = settings.nonContentRoutes.map((item) => {
-    if (item.test) {
-      return item;
-    } else {
-      return new RegExp(item + '$');
-    }
-  });
-
-  let adjustedUrl = normalized_nonContentRoutes.reduce(
-    (acc, item) => acc.replace(item, ''),
-    url,
-  );
-
-  adjustedUrl = adjustedUrl || '/';
-  return adjustedUrl === '/' ? '' : adjustedUrl;
-});
+export const getBaseUrl = _getBaseUrl(config);
 
 /**
  * Get parent url.

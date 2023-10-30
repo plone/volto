@@ -110,6 +110,12 @@ If you are using the official Docker Plone image, use the `VERSIONS` environment
 
 `VERSIONS="plone.restapi=8.12.1 plone.rest=2.0.0a1"`
 
+## Using an internal backend
+
+In many scenarios, such as docker deployments it is necessary to have a separate internal api path and is controlled via the `RAZZLE_INTERNAL_API_PATH` environment variable.
+
+In order to set this correctly in seamless mode you need to add a `X-Internal-Api-Path` header to each request.
+
 ## nginx example config for seamless mode deployments
 
 ```nginx
@@ -160,6 +166,10 @@ server {
       proxy_set_header        X-Real-IP $remote_addr;
       proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
       proxy_set_header        X-Forwarded-Proto $scheme;
+
+      # internal api path example - analagous to RAZZLE_INTERNAL_API_PATH
+      proxy_set_header        X-Internal-Api-Path http://backend:8080/Plone;
+
       proxy_redirect http:// https://;
       proxy_pass http://frontend;
   }

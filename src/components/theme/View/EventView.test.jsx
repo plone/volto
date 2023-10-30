@@ -7,6 +7,8 @@ import config from '@plone/volto/registry';
 
 const mockStore = configureStore();
 
+global.__SERVER__ = true; // eslint-disable-line no-underscore-dangle
+
 const store = mockStore({
   intl: {
     locale: 'en',

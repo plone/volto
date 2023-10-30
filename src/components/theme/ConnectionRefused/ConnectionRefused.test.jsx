@@ -7,6 +7,7 @@ import ConnectionRefused from './ConnectionRefused';
 
 const mockStore = configureStore();
 
+global.__SERVER__ = true; // eslint-disable-line no-underscore-dangle
 global.__DEVELOPMENT__ = true;
 
 describe('ConnectionRefused', () => {

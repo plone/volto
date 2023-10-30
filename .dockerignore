@@ -1,0 +1,7 @@
+/build
+/cache
+/node_modules
+/api
+/.github
+/.git
+docker-compose.yml
