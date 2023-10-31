@@ -1,28 +1,32 @@
 # Add-on and configuration registry
 
-This package provides support for building an add-on registry and infrastructure for JS/TS-based apps.
+This package provides support for building an add-on registry and infrastructure for JavaScript and TypeScript-based apps.
 
-## Extensibility and puggability
+## Extensibility and pluggability
 
-As developers, when you build an app, regardless of the framework and technologies used, it's a one-off app. Meaning, you have to build something that has very specific requirements, behavior and look and feel.
+As a developer when you build an app, regardless of the framework and technologies used, it's a one-off app.
+That means you have to build something that has very specific requirements, behavior, and look and feel.
 
-Other few times, you need to build something generic, that could be pluggable and extensible. In the JS/TS ecosystem this is often quite complex and the existing frameworks do not provide the meanings to "build up" in these regards.
+Sometimes you need to build something generic that is pluggable and extensible.
+In the JavaScript and TypeScript ecosystem, this is often quite complex, and the existing frameworks do not provide the means to do this.
 
 ## Add-on registry
 
-An add-on registry is a facility that allows an app built on an existing framework to build on extensibility and pluggability.
+An add-on registry is a facility that allows an app that was built on an existing framework to be extensible and pluggable.
 
-The add-on registry is a store where you can register a number of add-ons that your app is going to consume.
+The add-on registry is a store where you can register a number of add-ons that your app consumes.
 
-Add-on packages are just CommonJS packages. The only requirement is that
-they point the `main` key of their `package.json` to a module that exports, as a default function that acts as a configuration loader.
+Add-on packages are just CommonJS packages.
+The only requirement is that they point the `main` key of their `package.json` to a module that exports as a default function, which acts as a configuration loader.
 
-An add-on can be published in an npm registry, just as any other package. However, add-ons are meant to not be transpiled. They should be released as "source" packages.
+An add-on can be published in an npm registry, just as any other package.
+However, add-ons are meant to not be transpiled.
+They should be released as source packages.
 
 ## Register an add-on
 
-You should declare in your project that you are using an add-on.
-This is done in the åpp's `package.json`, `addons` key:
+You should declare your add-on in your project.
+This is done in your app's `package.json`'s `addons` key:
 
 ```json
 {
@@ -35,23 +39,31 @@ This is done in the åpp's `package.json`, `addons` key:
 }
 ```
 
-By including the add-on name in the `addons` key, the add-on's main default export function is executed, being passed the configuration registry. In that function, the add-on can customize the registry. The function needs to return the `config` (configuration registry) object, so that it's passed further along to the other add-ons.
+The `addons` key ensures the add-on's main default export function is executed, being passed the configuration registry.
+In that function, the add-on can customize the registry.
+The function needs to return the `config` (configuration registry) object, so that it's passed further along to the other add-ons.
 
-The add-ons are registered in the order they are found in the `addons` key. The last add-on takes precedence over the others. This means that if you configure something in `acme-volto-foo-addon` and then the same in `collective-another-volto-addon`, the latter configured will win and that configuration applied.
+The add-ons are registered in the order they are found in the `addons` key.
+The last add-on takes precedence over the others.
+This means that if you configure something in `acme-volto-foo-addon`, then the same thing later in `collective-another-volto-addon`, the latter configured thing will win and its configuration will be applied.
 
-The default export of any add-on main `index.js` file should be a function with the signature `config => config`. That is, it should take the configuration registry object and return it, possibly mutated or changed.
+The default export of any add-on main `index.js` file should be a function with the signature `config => config`.
+That is, it should take the configuration registry object and return it, possibly mutated or changed.
 
 ## Configuration registry
 
-The add-on registry is complemented with the configuration registry.
+The configuration registry supplements the add-on registry.
 
 It is a facility that stores app configuration to be shared in the app. This is where the extensibility and pluggability story for our app lies.
 
-Let's say that your app is the UI of a content management system (CMS). This CMS uses blocks as its main fundamental unit of content. The pages that the CMS builds are made up of these blocks. The CMS has some basic available blocks, but it's a requirement that integrators are able to register more blocks in a pluggable way.
+Let's say that your app is the user interface of a content management system (CMS).
+This CMS uses blocks as its main fundamental unit of content.
+The pages that the CMS builds are made up of these blocks.
+The CMS has some basic available blocks, but it's a requirement that integrators are able to register more blocks in a pluggable way.
 
-This app will use the add-on registry to extend the basic CMS capabilities, so an external add-on will be able to sum up with their own add-on(s) to the basic CMS ones.
+This app will use the add-on registry to extend the basic CMS capabilities, so an external add-on can supplement their own add-on(s) to the basic CMS ones.
 
-Let's assume we've defined a key in the registry `config.blocks.blocksConfig` and defined a way to register the available blocks in the CMS as the keys in that object in the configuration registry:
+Let's assume we've defined a key in the registry `config.blocks.blocksConfig`, and defined a way to register the available blocks in the CMS as the keys in that object in the configuration registry:
 
 ```js
   config.blocks.blocksConfig.faq_viewer = {

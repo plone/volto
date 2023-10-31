@@ -1,1 +1,1 @@
-Move add-on registry in its own package @sneridagh
+Moved add-on registry to its own package. @sneridagh
