@@ -144,12 +144,13 @@ class DisplaySelect extends Component {
   state = {
     selectedOption: {
       value: this.props.layout,
-      label:
-        this.props.intl.formatMessage({
-          id: config.views.layoutViewsNamesMapping?.[this.props.layout],
-          defaultMessage:
-            config.views.layoutViewsNamesMapping?.[this.props.layout],
-        }) || this.props.layout,
+      label: this.props.layout
+        ? this.props.intl.formatMessage({
+            id: config.views.layoutViewsNamesMapping?.[this.props.layout],
+            defaultMessage:
+              config.views.layoutViewsNamesMapping?.[this.props.layout],
+          })
+        : this.props.layout,
     },
   };
 
