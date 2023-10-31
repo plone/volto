@@ -79,9 +79,11 @@ Let's assume we've defined a key in the registry `config.blocks.blocksConfig`, a
   };
   ```
 
-The configuration registry will have other keys already set by default which will compose the initial set of basic blocks used by the CMS. The CMS will populate the available blocks in the CMSUI properly to be used by the users.
+The configuration registry will have other keys already set by default, which will compose the initial set of basic blocks used by the CMS.
+Then the CMS will properly populate the available blocks in the user interface.
 
-The add-on is meant to extend the initial configuration, so from the default export function of our add-on we should provide the configuration of the new block:
+The add-on is meant to extend the initial configuration.
+From the default export function of our add-on, we should provide the configuration of the new block:
 
 ```ts
 export default function applyConfig(config: ConfigData) {
@@ -101,7 +103,7 @@ export default function applyConfig(config: ConfigData) {
 }
 ```
 
-Once the app starts, the add-on registry will execute in order all the registered add-ons default export functions, configuring the new block and make it available to the CMS when it asks to the configuration registry for it.
+Once the app starts, the add-on registry will execute, in order, all the registered add-ons' default export functions, configuring the new block, and the add-on available to the CMS when it asks the configuration registry for it.
 
 ## Accessing the configuration registry
 
@@ -116,16 +118,17 @@ const blocksConfig = config.blocks.blocksConfig
 ## Component registry
 
 The configuration registry also stores a components registry in itself.
-The components registry is a mapping of name to component, so you can lookup
-a name and receive a component that you can reference in your code.
-The idea behind is to provide an alternative and more convenient way to customize components.
+The components registry is a mapping of name to component.
+You can look up a name, and receive a component that you can reference in your code.
+This provides an alternative, and more convenient, way to customize components.
 You can override programatically such registrations from your add-on or projects because it's stored in the configuration registry.
 You can customize a component without using shadowing at all, if the code that uses the component retrieves from the component registry, rather then import it directly.
-You can even have modifiers to the component registrations: dependencies. So you can "adapt" the call, given an array of such dependencies.
+You can even have modifiers to the component registrations through dependencies.
+Thus you can adapt the call, given an array of such dependencies.
 
-## Registering components by name using `config.registerComponent`
+## Register components by name using `config.registerComponent`
 
-Typically from an add-on or project configuration:
+You can register components by name, typically from an add-on or project configuration:
 
 ```js
 import MyToolbarComponent from './MyToolbarComponent'
@@ -136,7 +139,7 @@ config.registerComponent({
 });
 ```
 
-## Retrieving a component from the component registry
+## Retrieve a component from the component registry
 
 You can programatically retrieve a component from the registry using `config.getComponent`:
 
@@ -144,7 +147,7 @@ You can programatically retrieve a component from the registry using `config.get
 const Toolbar = config.getComponent('Toolbar').component
 ```
 
-or by using the convenience component `Component` if you want to use it in JSX directly
+Or you can retrieve a component by using the convenience component `Component`, if you want to use it in JSX code directly.
 
 ```jsx
 import Component from '@plone/volto/components/theme/Component/Component';
@@ -152,11 +155,11 @@ import Component from '@plone/volto/components/theme/Component/Component';
 <Component componentName="Toolbar" {...props} />
 ```
 
-Please notice that you are able to pass `props` down to the retrieved component.
+Note that you can pass `props` down to the retrieved component.
 
-## Adapting the component using `dependencies` array
+## Adapt the component using the `dependencies` array
 
-You can register components, and retrieve them afterwards given a list of modifiers `dependencies`.
+You can register components, then retrieve them, given a list of modifiers using `dependencies`.
 
 ```js
 import MyTeaserNewsItemComponent from './MyTeaserNewsItemComponent'
@@ -168,7 +171,7 @@ config.registerComponent({
   });
 ```
 
-and then retrieve it:
+And then retrieve the component:
 
 ```js
 config.getComponent({
@@ -177,7 +180,7 @@ config.getComponent({
   }).component
 ```
 
-The idea is that you can have both with and without dependencies:
+You can have both, either with or without dependencies:
 
 ```js
 import MyTeaserDefaultComponent from './MyTeaserDefaultComponent'
@@ -195,7 +198,8 @@ config.registerComponent({
   });
 ```
 
-and then retrieve them both, depending on the use case (in the example, given a content type value comming from `content` prop):
+Then retrieve them both, depending on the use case.
+In the example, given a content type value coming from the `content` prop, you would retrieve them as shown:
 
 ```jsx
 <Component componentName="Toolbar" dependencies={[props.content['@type']]} {...props} />

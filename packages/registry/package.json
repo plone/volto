@@ -4,19 +4,18 @@
   "maintainers": [
     {
       "name": "Plone Foundation",
-      "email": "plone-developers@lists.sourceforge.net",
-      "url": "http://plone.org"
+      "url": "https://plone.org"
     }
   ],
+  "funding": "https://github.com/sponsors/plone",
   "license": "MIT",
   "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "git@github.com:plone/volto.git"
+    "url": "https://github.com/plone/volto.git"
   },
   "bugs": {
     "url": "https://github.com/plone/volto/issues",
-    "email": "plone-developers@lists.sourceforge.net"
   },
   "homepage": "https://plone.org",
   "keywords": [
