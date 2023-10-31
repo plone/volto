@@ -54,7 +54,7 @@ That is, it should take the configuration registry object and return it, possibl
 
 The configuration registry supplements the add-on registry.
 
-It is a facility that stores app configuration to be shared in the app. This is where the extensibility and pluggability story for our app lies.
+It is a facility that stores app configuration to be shared in the app.
 
 Let's say that your app is the user interface of a content management system (CMS).
 This CMS uses blocks as its main fundamental unit of content.
