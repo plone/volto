@@ -240,6 +240,8 @@ export class DatetimeWidgetComponent extends Component {
           )}
           {resettable && (
             <button
+              // FF needs that the type is "button" in order to not POST the form
+              type="button"
               disabled={this.props.isDisabled || !datetime}
               onClick={() => this.onResetDates()}
               className="item ui noborder button"
