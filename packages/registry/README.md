@@ -12,7 +12,7 @@ In the JavaScript and TypeScript ecosystem, this is often quite complex, and the
 
 ## Add-on registry
 
-An add-on registry is a facility that allows an app that was built on an existing framework to be extensible and pluggable.
+An add-on registry is a facility that allows an app, which was built on an existing framework, to itself be extensible and pluggable.
 
 The add-on registry is a store where you can register a number of add-ons that your app consumes.
 
@@ -41,7 +41,7 @@ This is done in your app's `package.json`'s `addons` key:
 
 The `addons` key ensures the add-on's main default export function is executed, being passed the configuration registry.
 In that function, the add-on can customize the registry.
-The function needs to return the `config` (configuration registry) object, so that it's passed further along to the other add-ons.
+The function needs to return the `config` object (the configuration registry), so that it's passed further along to the other add-ons.
 
 The add-ons are registered in the order they are found in the `addons` key.
 The last add-on takes precedence over the others.
@@ -61,7 +61,7 @@ This CMS uses blocks as its main fundamental unit of content.
 The pages that the CMS builds are made up of these blocks.
 The CMS has some basic available blocks, but it's a requirement that integrators are able to register more blocks in a pluggable way.
 
-This app will use the add-on registry to extend the basic CMS capabilities, so an external add-on can supplement their own add-on(s) to the basic CMS ones.
+This app will use the add-on registry to extend the basic CMS capabilities, so an external add-on can supplement their own add-ons to the basic CMS ones.
 
 Let's assume we've defined a key in the registry `config.blocks.blocksConfig`, and defined a way to register the available blocks in the CMS as the keys in that object in the configuration registry:
 
@@ -77,7 +77,7 @@ Let's assume we've defined a key in the registry `config.blocks.blocksConfig`, a
     mostUsed: true,
     sidebarTab: 1,
   };
-  ```
+```
 
 The configuration registry will have other keys already set by default, which will compose the initial set of basic blocks used by the CMS.
 Then the CMS will properly populate the available blocks in the user interface.
@@ -103,7 +103,8 @@ export default function applyConfig(config: ConfigData) {
 }
 ```
 
-Once the app starts, the add-on registry will execute, in order, all the registered add-ons' default export functions, configuring the new block, and the add-on available to the CMS when it asks the configuration registry for it.
+Once the app starts, the add-on registry will execute, in order, all the registered add-ons' default export functions, configuring the new block.
+The add-on will then become available to the CMS when it asks the configuration registry for it.
 
 ## Accessing the configuration registry
 
