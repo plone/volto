@@ -248,6 +248,7 @@ export const elements = {
 
   div: ({ attributes, children }) => <div {...attributes}>{children}</div>,
   p: ({ attributes, children, element }) => <p {...attributes}>{children}</p>,
+  span: ({ children }) => <span>{children}</span>,
 
   // While usual slate editor consider these to be Leafs, we treat them as
   // inline elements because they can sometimes contain elements (ex:
