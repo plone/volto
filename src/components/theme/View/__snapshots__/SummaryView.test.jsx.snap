@@ -26,7 +26,7 @@ exports[`TabularView renders a summary view component 1`] = `
         <h2>
           <a
             className={null}
-            href="/"
+            href="/my-item"
             onClick={[Function]}
             target={null}
             title="News Item"
@@ -40,7 +40,7 @@ exports[`TabularView renders a summary view component 1`] = `
         <p>
           <a
             className={null}
-            href="/"
+            href="/my-item"
             onClick={[Function]}
             target={null}
             title={null}

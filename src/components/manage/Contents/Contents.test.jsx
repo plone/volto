@@ -88,7 +88,16 @@ describe('Contents', () => {
       },
       intl: {
         locale: 'en',
-        messages: {},
+        messages: {
+          ID: {
+            id: 'ID',
+            defaultMessage: 'ID',
+          },
+          Type: {
+            id: 'Type',
+            defaultMessage: 'Type',
+          },
+        },
       },
     });
     const component = renderer.create(

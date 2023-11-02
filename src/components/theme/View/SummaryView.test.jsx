@@ -25,6 +25,7 @@ describe('TabularView', () => {
               description: 'Hi',
               items: [
                 {
+                  '@id': 'http://localhost:8080/Plone/my-item',
                   title: 'My item',
                   description: 'My item description',
                   url: '/item',
