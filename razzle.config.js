@@ -242,6 +242,8 @@ const defaultModify = ({
     // avoids including lodash multiple times.
     // semantic-ui-react uses lodash-es, everything else uses lodash
     'lodash-es': path.dirname(require.resolve('lodash')),
+    "@slate-react": path.dirname(require.resolve('slate-react')),
+    'slate-react$': `${registry.voltoPath}/packages/volto-slate/src/slate-react`,
   };
 
   const [addonsThemeLoaderVariablesPath, addonsThemeLoaderMainPath] =
