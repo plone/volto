@@ -104,7 +104,11 @@ test:
 bin/python:
 	python3 -m venv . || virtualenv --clear --python=python3 .
 	bin/python -m pip install --upgrade pip
+	@echo "Python environment created."
 	bin/pip install -r requirements-docs.txt
+	@echo "Requirements installed."
+	ln -s ../../news ./docs/source/news
+	@echo "Symlink created."
 
 .PHONY: clean
 clean:
@@ -140,10 +144,7 @@ docs-linkcheck: bin/python  ## Run linkcheck
 
 .PHONY: docs-linkcheckbroken
 docs-linkcheckbroken: bin/python  ## Run linkcheck and show only broken links
-	cd $(DOCS_DIR) && $(SPHINXBUILD) -b linkcheck $(ALLSPHINXOPTS) $(BUILDDIR)/linkcheck | GREP_COLORS='0;31' grep -wi "broken\|redirect" --color=always | GREP_COLORS='0;31' grep -vi "https://github.com/plone/volto/issues/" --color=always && if test $$? = 0; then exit 1; fi || test $$? = 1
-	@echo
-	@echo "Link check complete; look for any errors in the above output " \
-		"or in $(BUILDDIR)/linkcheck/ ."
+	cd $(DOCS_DIR) && $(SPHINXBUILD) -b linkcheck $(ALLSPHINXOPTS) $(BUILDDIR)/linkcheck | GREP_COLORS='0;31' grep -wi "broken\|redirect" --color=always | GREP_COLORS='0;31' grep -vi "https://github.com/plone/volto/issues/" --color=always && if test $$? -eq 0; then exit 1; fi || test $$? -ne 0
 
 .PHONY: docs-vale
 docs-vale:  ## Run Vale style, grammar, and spell checks
@@ -173,6 +174,11 @@ patches:
 .PHONY: corepackagebump
 corepackagebump:
 	node $(SCRIPTSPACKAGE)/corepackagebump.js packages/volto-slate $(VERSION)
+
+.PHONY: copyreleasenotestodocs
+copyreleasenotestodocs:
+	cp CHANGELOG.md docs/source/release-notes/index.md
+	git add docs/source/release-notes/index.md
 
 ##### Docker containers
 

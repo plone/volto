@@ -1,3 +1,12 @@
+---
+myst:
+  html_meta:
+    "description": "Volto Release Notes for the Plone content management system"
+    "property=og:description": "Volto Release Notes for the Plone content management system"
+    "property=og:title": "Volto Release Notes"
+    "keywords": "Volto, Plone, frontend, Release Notes, change log, changelog, change history"
+---
+
 # Volto Release Notes
 
 <!-- You should *NOT* be adding new change log entries to this file.
