@@ -15,7 +15,7 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "paths": {
-      "@plone/volto/*": ["../node_modules/@plone/volto/src/*", "../node_modules/@plone/volto/types/*"],
+      "@plone/volto/*": ["../node_modules/@plone/volto/src/*", "../node_modules/@plone/volto/types/*"]
     },
     "baseUrl": "src"
   },
