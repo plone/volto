@@ -478,12 +478,16 @@ class AddonConfigurationRegistry {
 
       reg.forEach(({ customPath, name, sourcePath }) => {
         map(
-          glob(`${customPath}/**/*.*(svg|png|jpg|jpeg|gif|ico|less|js|jsx)`),
+          glob(
+            `${customPath}/**/*.*(svg|png|jpg|jpeg|gif|ico|less|js|jsx|ts|tsx)`,
+          ),
           (filename) => {
             const targetPath = filename.replace(customPath, sourcePath);
             if (fs.existsSync(targetPath)) {
               aliases[
-                filename.replace(customPath, name).replace(/\.(js|jsx)$/, '')
+                filename
+                  .replace(customPath, name)
+                  .replace(/\.(js|jsx|ts|tsx)$/, '')
               ] = path.resolve(filename);
             } else {
               debug(
