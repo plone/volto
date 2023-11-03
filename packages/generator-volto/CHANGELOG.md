@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 6.4.1 (2023-11-03)
+
+### Bugfix
+
+- Add TypeScript support for 6.x.x series @sneridagh [#5357](https://github.com/plone/volto/issues/5357)
+
 ## 6.4.0 (2023-09-27)
 
 ### Bugfix
