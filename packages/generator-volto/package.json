@@ -75,6 +75,9 @@
       "release": true,
       "releaseName": "@plone/generator-volto ${version}",
       "releaseNotes": "cat .changelog.draft"
+    },
+    "npm": {
+      "tag": "lts"
     }
   },
   "jest": {
