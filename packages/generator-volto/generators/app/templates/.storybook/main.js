@@ -155,4 +155,7 @@ module.exports = {
       // any extra options you want to set
     };
   },
+  typescript: {
+    reactDocgen: 'react-docgen-typescript-plugin',
+  },
 };
