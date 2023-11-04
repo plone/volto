@@ -1,8 +1,3 @@
-/**
- * View table block.
- * @module components/manage/Blocks/Table/View
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Table } from 'semantic-ui-react';
@@ -10,11 +5,6 @@ import { map } from 'lodash';
 import redraft from 'redraft';
 import config from '@plone/volto/registry';
 
-/**
- * View table block class.
- * @class View
- * @extends Component
- */
 const View = ({ data }) =>
   data &&
   data.table && (

@@ -1,0 +1,1 @@
+Remove regular expression from `sphinx-copybutton` configuration, now that `linenos` are excluded by default. @stevepiercy
