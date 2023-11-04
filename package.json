@@ -322,7 +322,7 @@
     "moment-locales-webpack-plugin": "1.2.0",
     "object-assign": "4.1.1",
     "pofile": "1.0.10",
-    "postcss": "8.4.13",
+    "postcss": "8.4.31",
     "postcss-flexbugs-fixes": "5.0.2",
     "postcss-less": "6.0.0",
     "postcss-load-config": "3.1.4",
