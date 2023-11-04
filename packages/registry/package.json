@@ -1,6 +1,6 @@
 {
   "name": "@plone/registry",
-  "description": "Add-on and configuration registry for Plone.",
+  "description": "Add-on and configuration registry for Plone and for JavaScript and TypeScript-based apps.",
   "maintainers": [
     {
       "name": "Plone Foundation",
@@ -9,7 +9,7 @@
   ],
   "funding": "https://github.com/sponsors/plone",
   "license": "MIT",
-  "version": "1.0.0",
+  "version": "1.0.0-1",
   "repository": {
     "type": "git",
     "url": "https://github.com/plone/volto.git"
