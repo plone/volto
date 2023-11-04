@@ -1,5 +1,3 @@
-import { z } from 'zod';
-
 export interface Type {
   '@id': string;
   addable: boolean;
@@ -54,28 +52,10 @@ export interface GetTypeResponse {
   type: string;
 }
 
-export const createTypeFieldDataSchema = z.object({
-  description: z.string(),
-  factory: z.string(),
-  required: z.boolean().optional(),
-  title: z.string(),
-});
-
 export interface CreateTypeFieldResponse extends Fieldset {
   factory: string;
   type: string;
   widget: string;
 }
-
-export const updateTypeFieldDataSchema = z.object({
-  description: z.string().optional(),
-  maxLength: z.number().optional(),
-  minLength: z.number().optional(),
-  fields: z.array(z.string()).optional(),
-  required: z.boolean().optional(),
-  title: z.string().optional(),
-  properties: z.any().optional(),
-  fieldsets: z.array(z.any()).optional(),
-});
 
 export interface GetTypeFieldResponse extends Fieldset {}
