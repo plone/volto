@@ -8,6 +8,14 @@
 
 <!-- towncrier release notes start -->
 
+## 3.0.1 (2023-10-06)
+
+### Bugfix
+
+- Update `git-url-parse` dependency. @davisagli [#5098](https://github.com/plone/volto/issues/5098)
+- Fix error ``no such file or directory, open 'addon-testing-project/jsconfig.json'`` in addon clone command. @wesleybl [#5239](https://github.com/plone/volto/issues/5239)
+
+
 ## 3.0.0 (2023-04-07)
 
 ### Breaking

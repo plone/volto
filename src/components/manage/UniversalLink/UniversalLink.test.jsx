@@ -158,7 +158,8 @@ describe('UniversalLink', () => {
   });
 
   it('UniversalLink renders external link where link is blacklisted', () => {
-    const notInEN = /^(?!.*(#|\/en|\/static|\/controlpanel|\/cypress|\/login|\/logout|\/contact-form)).*$/;
+    const notInEN =
+      /^(?!.*(#|\/en|\/static|\/controlpanel|\/cypress|\/login|\/logout|\/contact-form)).*$/;
     config.settings.externalRoutes = [
       {
         match: {

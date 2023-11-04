@@ -53,6 +53,32 @@ or use Webpack plugins, you might need to make adjustments.
 Razzle has been upgraded to version `4.2.18`.
 It is recommended that you update your project's dependency on Razzle to this version in order to avoid duplication.
 
+### Upgraded linters, ESlint, Prettier and Stylelint
+
+The main linters have been upgraded.
+Once updated, you may find new violations in your project or add-on code.
+It is recommended that you run again all the linters and fix all the violations once you update it to Volto 17.
+Upgrade your local dependencies in projects and add-ons by editing your {file}`package.json` as follows:
+
+```diff
+"devDependencies": {
+-    "eslint-config-prettier": "8.10.0",
++    "eslint-config-prettier": "9.0.0",
+-    "eslint-plugin-prettier": "3.4.1",
++    "eslint-plugin-prettier": "5.0.0",
+-    "prettier": "2.0.5",
++    "prettier": "3.0.3",
+-    "stylelint": "14.0.1",
+-    "stylelint-config-idiomatic-order": "8.1.0",
+-    "stylelint-config-prettier": "8.0.1",
+-    "stylelint-prettier": "1.1.2",
++    "stylelint": "15.10.3",
++    "stylelint-config-idiomatic-order": "9.0.0",
++    "stylelint-prettier": "4.0.2",
+}
+```
+
+
 ### TypeScript support in Volto
 
 ```{versionadded} 17.0.0-alpha.27
@@ -238,6 +264,37 @@ It requires the latest version of `plone.restapi` (>=8.42.0) installed in the ba
 
 The `utils.js` file of the Teaser block was removed because it is no longer used.
 You can consider removing it if you were shadowing it in your project.
+
+(grid-block-migration-from-kitconcept-volto-blocks-grid-label)=
+
+### Grid block migration from `@kitconcept/volto-blocks-grid`
+
+The grid block was added to Volto in version 17.0.0-alpha.16.
+It is based on the `@kitconcept/volto-blocks-grid` add-on version 7.x.x.
+
+If you previously used `@kitconcept/volto-blocks-grid` in your project based on a Volto version before 17.0.0-alpha.16, then your site will show two available block types both named `Grid`.
+You need to disable one of them based on the following information.
+
+The Volto core grid block uses the Volto default internal blocks-in-block architecture.
+This differs from the grid block data structure in the add-on `@kitconcept/volto-blocks-grid`.
+Because of this difference, they are not compatible, and a data migration is necessary from the add-on to the Volto grid block.
+This migration is not yet available.
+
+However, the Volto core grid block uses a different internal name, `gridBlock`, so both block types can coexist.
+Nonetheless, it is recommended to enable only one grid block type for your users, and eventually use a single version to avoid unexpected behaviors and bugs.
+
+You can disable the one you won't use with one of the following configuration settings.
+
+```js
+// This disables the `@kitconcept/volto-blocks-grid` grid block
+config.blocks.blocksConfig.__grid.restricted = true;
+
+// This disables the Volto core grid block
+config.blocks.blocksConfig.gridBlock.restricted = true;
+```
+
+As long as you keep the add-on in place, your existing blocks will work as expected, even if you restrict the block.
+We recommend that you disable the `@kitconcept/volto-blocks-grid` block and use the new Volto core grid block for new content.
 
 
 (volto-upgrade-guide-16.x.x)=
@@ -1634,7 +1691,7 @@ Since Volto 9.2.0 the next step IS NOT required anymore.
 ```
 
 ~~Copy (and overwrite) the `patches` folder into your local project
-https://github.com/plone/volto/tree/master/patches or, if you want to be more accurate,
+https://github.com/plone/volto/tree/main/patches or, if you want to be more accurate,
 just copy `patches/razzle-plugins.patch` file and overwrite `patches/patchit.sh` file.~~
 
 ### Babel config housekeeping

@@ -7,9 +7,9 @@
     "start": "razzle start",
     "postinstall": "make omelette && make patches",
     "build": "razzle build --noninteractive",
-    "lint": "./node_modules/eslint/bin/eslint.js --max-warnings=0 'src/**/*.{js,jsx,ts,tsx,json}'",
-    "lint:fix": "./node_modules/eslint/bin/eslint.js --fix 'src/**/*.{js,jsx,ts,tsx,json}'",
-    "lint:ci": "./node_modules/eslint/bin/eslint.js --max-warnings=0 -f checkstyle 'src/**/*.{js,jsx,ts,tsx,json}' > eslint.xml",
+    "lint": "./node_modules/eslint/bin/eslint.js --max-warnings=0 'src/**/*.{js,jsx,ts,tsx}'",
+    "lint:fix": "./node_modules/eslint/bin/eslint.js --fix 'src/**/*.{js,jsx,ts,tsx}'",
+    "lint:ci": "./node_modules/eslint/bin/eslint.js --max-warnings=0 -f checkstyle 'src/**/*.{js,jsx,ts,tsx}' > eslint.xml",
     "prettier": "./node_modules/.bin/prettier --single-quote --check 'src/**/*.{js,jsx,ts,tsx,css,scss}'",
     "prettier:fix": "./node_modules/.bin/prettier --single-quote --write 'src/**/*.{js,jsx,ts,tsx,css,scss}'",
     "prettier:ci": "./node_modules/.bin/prettier --single-quote --check 'src/**/*.{js,jsx,ts,tsx,css,scss}'",
@@ -84,7 +84,6 @@
   },
   "stylelint": {
     "extends": [
-      "stylelint-config-prettier",
       "stylelint-config-idiomatic-order"
     ],
     "plugins": [
@@ -151,12 +150,11 @@
     "jest-junit": "8.0.0",
     "mrs-developer": "*",
     "postcss": "8.4.13",
-    "prettier": "2.0.5",
+    "prettier": "3.0.3",
     "razzle": "4.2.18",
-    "stylelint": "14.0.1",
-    "stylelint-config-idiomatic-order": "8.1.0",
-    "stylelint-config-prettier": "8.0.1",
-    "stylelint-prettier": "1.1.2",
+    "stylelint": "15.10.3",
+    "stylelint-config-idiomatic-order": "9.0.0",
+    "stylelint-prettier": "4.0.2",
     "ts-jest": "^26.4.2",
     "ts-loader": "9.4.4",
     "typescript": "5.2.2"

@@ -27,10 +27,10 @@ const messages = defineMessages({
 });
 
 const ORDINAL_NUMBERS = {
-  '1': 'first',
-  '2': 'second',
-  '3': 'third',
-  '4': 'fourth',
+  1: 'first',
+  2: 'second',
+  3: 'third',
+  4: 'fourth',
   '-1': 'last',
 };
 

@@ -21,8 +21,7 @@ const messages = defineMessages({
     defaultMessage: "This is a reserved name and can't be used",
   },
   invalidCharacters: {
-    id:
-      'Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed.',
+    id: 'Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed.',
     defaultMessage:
       'Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed.',
   },

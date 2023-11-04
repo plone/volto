@@ -26,54 +26,58 @@ describe('storeProtectLoadUtils', () => {
       expect(result).toBe('NEXT');
     });
 
-    const testLocationChange = ({ locationMap, resetBeforeFetch }) => () => {
-      const dispatch = jest.fn();
-      const getState = jest.fn(() => ({
-        router: {
-          location: {
-            pathname: '/PATH',
+    const testLocationChange =
+      ({ locationMap, resetBeforeFetch }) =>
+      () => {
+        const dispatch = jest.fn();
+        const getState = jest.fn(() => ({
+          router: {
+            location: {
+              pathname: '/PATH',
+            },
           },
-        },
-      }));
-      const next = jest.fn(() => 'NEXT');
-      const action = {
-        type: '@@router/LOCATION_CHANGE',
-        payload: { location: { pathname: '/NEW-PATH' } },
+        }));
+        const next = jest.fn(() => 'NEXT');
+        const action = {
+          type: '@@router/LOCATION_CHANGE',
+          payload: { location: { pathname: '/NEW-PATH' } },
+        };
+        Url.isCmsUi = jest.fn((path) => locationMap[path]);
+        const result = protectLoadStart({ dispatch, getState })(next)(action);
+        expect(dispatch).toBeCalledWith({
+          type: '@@loadProtector/START',
+          location: { pathname: '/NEW-PATH' },
+          resetBeforeFetch,
+        });
+        expect(next).toBeCalledWith(action);
+        expect(result).toBe('NEXT');
       };
-      Url.isCmsUi = jest.fn((path) => locationMap[path]);
-      const result = protectLoadStart({ dispatch, getState })(next)(action);
-      expect(dispatch).toBeCalledWith({
-        type: '@@loadProtector/START',
-        location: { pathname: '/NEW-PATH' },
-        resetBeforeFetch,
-      });
-      expect(next).toBeCalledWith(action);
-      expect(result).toBe('NEXT');
-    };
 
-    const testLocationSkipped = ({ locationMap }) => () => {
-      const dispatch = jest.fn();
-      const getState = jest.fn(() => ({
-        router: {
-          location: {
-            pathname: '/PATH',
+    const testLocationSkipped =
+      ({ locationMap }) =>
+      () => {
+        const dispatch = jest.fn();
+        const getState = jest.fn(() => ({
+          router: {
+            location: {
+              pathname: '/PATH',
+            },
           },
-        },
-      }));
-      const next = jest.fn(() => 'NEXT');
-      const action = {
-        type: '@@router/LOCATION_CHANGE',
-        payload: { location: { pathname: '/NEW-PATH' } },
+        }));
+        const next = jest.fn(() => 'NEXT');
+        const action = {
+          type: '@@router/LOCATION_CHANGE',
+          payload: { location: { pathname: '/NEW-PATH' } },
+        };
+        Url.isCmsUi = jest.fn((path) => locationMap[path]);
+        const result = protectLoadStart({ dispatch, getState })(next)(action);
+        expect(dispatch).toBeCalledWith({
+          type: '@@loadProtector/SKIPPED',
+          location: { pathname: '/NEW-PATH' },
+        });
+        expect(next).toBeCalledWith(action);
+        expect(result).toBe('NEXT');
       };
-      Url.isCmsUi = jest.fn((path) => locationMap[path]);
-      const result = protectLoadStart({ dispatch, getState })(next)(action);
-      expect(dispatch).toBeCalledWith({
-        type: '@@loadProtector/SKIPPED',
-        location: { pathname: '/NEW-PATH' },
-      });
-      expect(next).toBeCalledWith(action);
-      expect(result).toBe('NEXT');
-    };
 
     describe('location change', () => {
       test(

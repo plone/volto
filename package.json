@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "17.0.0-alpha.27",
+  "version": "17.3.0",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -32,20 +32,22 @@
       "package": "@plone/volto-slate"
     }
   },
+  "types": "types/index.d.ts",
   "scripts": {
     "postinstall": "make patches",
     "analyze": "BUNDLE_ANALYZE=true razzle build",
     "start": "razzle start",
     "start:coresandbox": "ADDONS=coresandbox razzle start",
     "build": "razzle build --noninteractive",
+    "build:types": "tsc src/**/*.{js,jsx} --declaration --allowJs --emitDeclarationOnly --outDir types --skipLibCheck",
     "prepare": "husky install",
     "test": "razzle test --maxWorkers=50%",
     "test:ci": "CI=true NODE_ICU_DATA=node_modules/full-icu razzle test",
     "test:husky": "CI=true yarn test --bail --findRelatedTests",
     "test:debug": "node --inspect node_modules/.bin/jest --runInBand",
     "start:prod": "NODE_ENV=production node build/server.js",
-    "prettier": "./node_modules/.bin/prettier --single-quote --check 'src/**/*.{js,jsx,ts,tsx,json}'",
-    "prettier:fix": "./node_modules/.bin/prettier --single-quote --write 'src/**/*.{js,jsx,ts,tsx,json}'",
+    "prettier": "./node_modules/.bin/prettier --single-quote --check '{src,cypress}/**/*.{js,jsx,ts,tsx}' --check '*.js'",
+    "prettier:fix": "./node_modules/.bin/prettier --single-quote --write '{src,cypress}/**/*.{js,jsx,ts,tsx}' --write '*.js'",
     "stylelint": "./node_modules/.bin/stylelint 'theme/**/*.{css,less}' 'src/**/*.{css,less}'",
     "stylelint:overrides": "./node_modules/.bin/stylelint 'theme/**/*.overrides' 'src/**/*.overrides'",
     "stylelint:fix": "yarn stylelint --fix && yarn stylelint:overrides --fix",
@@ -184,10 +186,14 @@
   "release-it": {
     "hooks": {
       "before:bump": [
-        "yarn i18n",
-        "git add locales"
+        "yarn i18n"
       ],
-      "after:bump": "pipx run towncrier build --draft --yes --version ${version} > .changelog.draft && pipx run towncrier build --yes --version ${version} && make corepackagebump VERSION=${version}",
+      "after:bump": [
+        "pipx run towncrier build --draft --yes --version ${version} > .changelog.draft && pipx run towncrier build --yes --version ${version}",
+        "make corepackagebump VERSION=${version}",
+        "make copyreleasenotestodocs",
+        "yarn build:types"
+      ],
       "after:release": "rm .changelog.draft"
     },
     "git": {
@@ -241,7 +247,7 @@
     "@loadable/component": "5.14.1",
     "@loadable/server": "5.14.0",
     "@loadable/webpack-plugin": "5.15.2",
-    "@plone/scripts": "3.0.0",
+    "@plone/scripts": "3.0.1",
     "@testing-library/cypress": "9.0.0",
     "@testing-library/jest-dom": "5.16.4",
     "@testing-library/react": "12.1.5",
@@ -277,13 +283,13 @@
     "draft-js-plugins-utils": "2.0.3",
     "draftjs-filters": "2.3.0",
     "eslint": "8.49.0",
-    "eslint-config-prettier": "8.10.0",
+    "eslint-config-prettier": "9.0.0",
     "eslint-config-react-app": "7.0.1",
     "eslint-import-resolver-alias": "1.1.2",
     "eslint-import-resolver-babel-plugin-root-import": "1.1.1",
     "eslint-plugin-import": "2.28.1",
     "eslint-plugin-jsx-a11y": "6.7.1",
-    "eslint-plugin-prettier": "3.4.1",
+    "eslint-plugin-prettier": "5.0.0",
     "eslint-plugin-react": "7.33.2",
     "eslint-plugin-react-hooks": "4.6.0",
     "express": "4.17.3",
@@ -313,6 +319,7 @@
     "lodash-webpack-plugin": "0.11.6",
     "mini-css-extract-plugin": "2.7.2",
     "moment": "2.29.4",
+    "moment-locales-webpack-plugin": "1.2.0",
     "object-assign": "4.1.1",
     "pofile": "1.0.10",
     "postcss": "8.4.13",
@@ -323,7 +330,7 @@
     "postcss-overrides": "3.1.4",
     "postcss-scss": "4.0.6",
     "prepend-http": "2",
-    "prettier": "2.0.5",
+    "prettier": "3.0.3",
     "pretty-bytes": "5.3.0",
     "prismjs": "1.27.0",
     "promise-file-reader": "1.0.2",
@@ -384,10 +391,9 @@
     "slate-react": "0.83.2",
     "start-server-and-test": "1.14.0",
     "style-loader": "3.3.1",
-    "stylelint": "14.0.1",
-    "stylelint-config-idiomatic-order": "8.1.0",
-    "stylelint-config-prettier": "8.0.1",
-    "stylelint-prettier": "1.1.2",
+    "stylelint": "15.10.3",
+    "stylelint-config-idiomatic-order": "9.0.0",
+    "stylelint-prettier": "4.0.2",
     "superagent": "3.8.2",
     "svg-loader": "0.0.2",
     "svgo-loader": "3.0.3",
@@ -424,7 +430,7 @@
     "jsonwebtoken": "9.0.0",
     "react-error-overlay": "6.0.9",
     "react-is": "^16.13.1",
-    "release-it": "^16.1.3",
+    "release-it": "^16.2.1",
     "semver": "^7.5.4",
     "tmp": "0.2.1",
     "ts-jest": "^26.4.2",
@@ -443,6 +449,7 @@
     "react-dev-utils": "^12",
     "react-error-overlay": "6.0.9",
     "ua-parser-js": "0.7.28",
+    "webpack-bundle-analyzer": "4.9.1",
     "@typescript-eslint/eslint-plugin": "6.7.0",
     "@typescript-eslint/parser": "6.7.0"
   },

@@ -141,15 +141,12 @@ class UndoControlpanel extends Component {
     this.onNext = this.onNext.bind(this);
     this.onUndo = this.onUndo.bind(this);
     this.handleTableVisiblity = this.handleTableVisiblity.bind(this);
-    this.handleNotSortedNextPrevButtons = this.handleNotSortedNextPrevButtons.bind(
-      this,
-    );
-    this.handleSortedNextPrevButtons = this.handleSortedNextPrevButtons.bind(
-      this,
-    );
-    this.checkTransactionsUndoneStatus = this.checkTransactionsUndoneStatus.bind(
-      this,
-    );
+    this.handleNotSortedNextPrevButtons =
+      this.handleNotSortedNextPrevButtons.bind(this);
+    this.handleSortedNextPrevButtons =
+      this.handleSortedNextPrevButtons.bind(this);
+    this.checkTransactionsUndoneStatus =
+      this.checkTransactionsUndoneStatus.bind(this);
   }
 
   /**

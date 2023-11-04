@@ -101,16 +101,14 @@ function getAddonsLoaderChain(graph) {
  */
 class AddonConfigurationRegistry {
   constructor(projectRootPath) {
-    const packageJson = (this.packageJson = require(path.join(
-      projectRootPath,
-      'package.json',
-    )));
+    const packageJson = (this.packageJson = require(
+      path.join(projectRootPath, 'package.json'),
+    ));
     // Loads the dynamic config, if any
     if (fs.existsSync(path.join(projectRootPath, 'volto.config.js'))) {
-      this.voltoConfigJS = require(path.join(
-        projectRootPath,
-        'volto.config.js',
-      ));
+      this.voltoConfigJS = require(
+        path.join(projectRootPath, 'volto.config.js'),
+      );
     } else {
       this.voltoConfigJS = [];
     }
@@ -480,12 +478,16 @@ class AddonConfigurationRegistry {
 
       reg.forEach(({ customPath, name, sourcePath }) => {
         map(
-          glob(`${customPath}/**/*.*(svg|png|jpg|jpeg|gif|ico|less|js|jsx)`),
+          glob(
+            `${customPath}/**/*.*(svg|png|jpg|jpeg|gif|ico|less|js|jsx|ts|tsx)`,
+          ),
           (filename) => {
             const targetPath = filename.replace(customPath, sourcePath);
             if (fs.existsSync(targetPath)) {
               aliases[
-                filename.replace(customPath, name).replace(/\.(js|jsx)$/, '')
+                filename
+                  .replace(customPath, name)
+                  .replace(/\.(js|jsx|ts|tsx)$/, '')
               ] = path.resolve(filename);
             } else {
               debug(
