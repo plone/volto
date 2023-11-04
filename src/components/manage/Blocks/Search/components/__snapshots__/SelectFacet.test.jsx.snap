@@ -15,7 +15,7 @@ exports[`SelectFacet renders a facet component with select dropdown 1`] = `
       class="react-select__control css-1i6qwov-control"
     >
       <div
-        class="react-select__value-container css-131kkck-ValueContainer"
+        class="react-select__value-container css-12ms9px-ValueContainer"
       >
         <div
           class="react-select__placeholder css-1wa3eu0-placeholder"

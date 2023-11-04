@@ -6,6 +6,7 @@ const fileLoaderFinder = makeLoaderFinder('file-loader');
 
 const projectRootPath = path.resolve('.');
 const lessPlugin = require('@plone/volto/webpack-plugins/webpack-less-plugin');
+const scssPlugin = require('razzle-plugin-scss');
 
 const createConfig = require('../node_modules/razzle/config/createConfigAsync.js');
 const razzleConfig = require(path.join(projectRootPath, 'razzle.config.js'));
@@ -20,10 +21,17 @@ const SVGLOADER = {
       loader: 'svgo-loader',
       options: {
         plugins: [
-          { removeTitle: true },
-          { convertPathData: false },
-          { removeUselessStrokeAndFill: true },
-          { removeViewBox: false },
+          {
+            name: 'preset-default',
+            params: {
+              overrides: {
+                convertPathData: false,
+                removeViewBox: false,
+              },
+            },
+          },
+          'removeTitle',
+          'removeUselessStrokeAndFill',
         ],
       },
     },
@@ -55,6 +63,9 @@ const defaultRazzleOptions = {
 };
 
 module.exports = {
+  core: {
+    builder: 'webpack5',
+  },
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
     '@storybook/addon-links',
@@ -93,11 +104,20 @@ module.exports = {
       options: {},
     });
 
-    // putting SVG loader on top, fix the fileloader manually (Volto plugin does not
-    // work) since it needs to go first
+    config = scssPlugin.modifyWebpackConfig({
+      env: { target: 'web', dev: 'dev' },
+      webpackConfig: config,
+      webpackObject: webpack,
+      options: { razzleOptions: {} },
+    });
+
+    // Put the SVG loader on top and prevent the asset/resource rule
+    // from processing the app's SVGs
     config.module.rules.unshift(SVGLOADER);
-    const fileLoader = config.module.rules.find(fileLoaderFinder);
-    fileLoader.exclude = [/\.(config|variables|overrides)$/, /icons\/.*\.svg$/];
+    const fileLoaderRule = config.module.rules.find((rule) =>
+      rule.test.test('.svg'),
+    );
+    fileLoaderRule.exclude = /icons\/.*\.svg$/;
 
     config.plugins.unshift(
       new webpack.DefinePlugin({
@@ -112,6 +132,7 @@ module.exports = {
       resolve: {
         ...config.resolve,
         alias: { ...config.resolve.alias, ...baseConfig.resolve.alias },
+        fallback: { ...config.resolve.fallback, zlib: false },
       },
     };
 

@@ -21,7 +21,9 @@ const GridBlockEdit = (props) => {
       })}
       // This is required to enabling a small "in-between" clickable area
       // for bringing the Grid sidebar alive once you have selected an inner block
-      onClick={(e) => setSelectedBlock(null)}
+      onClick={(e) => {
+        if (!e.block) setSelectedBlock(null);
+      }}
       role="presentation"
     >
       <ContainerEdit

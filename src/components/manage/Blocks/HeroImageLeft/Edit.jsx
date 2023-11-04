@@ -126,9 +126,8 @@ class EditComponent extends Component {
         },
       });
 
-      this.extendedBlockRenderMap = DefaultDraftBlockRenderMap.merge(
-        blockTitleRenderMap,
-      );
+      this.extendedBlockRenderMap =
+        DefaultDraftBlockRenderMap.merge(blockTitleRenderMap);
 
       this.extendedDescripBlockRenderMap = DefaultDraftBlockRenderMap.merge(
         blockDescriptionRenderMap,
@@ -321,24 +320,26 @@ class EditComponent extends Component {
           selected: this.props.selected,
         })}
       >
-        {this.props.selected && this.props.editable && !!this.props.data.url && (
-          <div className="toolbar">
-            <Button.Group>
-              <Button
-                icon
-                basic
-                onClick={() =>
-                  this.props.onChangeBlock(this.props.block, {
-                    ...this.props.data,
-                    url: '',
-                  })
-                }
-              >
-                <Icon name={clearSVG} size="24px" color="#e40166" />
-              </Button>
-            </Button.Group>
-          </div>
-        )}
+        {this.props.selected &&
+          this.props.editable &&
+          !!this.props.data.url && (
+            <div className="toolbar">
+              <Button.Group>
+                <Button
+                  icon
+                  basic
+                  onClick={() =>
+                    this.props.onChangeBlock(this.props.block, {
+                      ...this.props.data,
+                      url: '',
+                    })
+                  }
+                >
+                  <Icon name={clearSVG} size="24px" color="#e40166" />
+                </Button>
+              </Button.Group>
+            </div>
+          )}
         <div className="block-inner-wrapper">
           {this.props.data.url ? (
             <img
@@ -391,7 +392,8 @@ class EditComponent extends Component {
                 placeholder={this.props.intl.formatMessage(messages.title)}
                 blockStyleFn={() => 'title-editor'}
                 onUpArrow={() => {
-                  const selectionState = this.state.titleEditorState.getSelection();
+                  const selectionState =
+                    this.state.titleEditorState.getSelection();
                   const { titleEditorState } = this.state;
                   if (
                     titleEditorState
@@ -407,7 +409,8 @@ class EditComponent extends Component {
                   }
                 }}
                 onDownArrow={() => {
-                  const selectionState = this.state.titleEditorState.getSelection();
+                  const selectionState =
+                    this.state.titleEditorState.getSelection();
                   const { titleEditorState } = this.state;
                   if (
                     titleEditorState
@@ -435,7 +438,8 @@ class EditComponent extends Component {
                 )}
                 blockStyleFn={() => 'description-editor'}
                 onUpArrow={() => {
-                  const selectionState = this.state.descriptionEditorState.getSelection();
+                  const selectionState =
+                    this.state.descriptionEditorState.getSelection();
                   const currentCursorPosition = selectionState.getStartOffset();
 
                   if (currentCursorPosition === 0) {
@@ -444,7 +448,8 @@ class EditComponent extends Component {
                   }
                 }}
                 onDownArrow={() => {
-                  const selectionState = this.state.descriptionEditorState.getSelection();
+                  const selectionState =
+                    this.state.descriptionEditorState.getSelection();
                   const { descriptionEditorState } = this.state;
                   const currentCursorPosition = selectionState.getStartOffset();
                   const blockLength = descriptionEditorState

@@ -29,6 +29,7 @@ export {
   normalizeUrl,
   removeProtocol,
   URLUtils,
+  flattenScales,
 } from '@plone/volto/helpers/Url/Url';
 export { generateRobots } from '@plone/volto/helpers/Robots/Robots';
 export {
@@ -95,6 +96,7 @@ export {
   reorderArray,
   isInteractiveElement,
   slugify,
+  normalizeString,
 } from '@plone/volto/helpers/Utils/Utils';
 export { messages } from './MessageLabels/MessageLabels';
 export {
@@ -121,3 +123,4 @@ export {
   getCurrentStateMapping,
   getWorkflowOptions,
 } from './Workflows/Workflows';
+export { getSiteAsyncPropExtender } from './Site';

@@ -85,3 +85,4 @@ public/critical.css
 docs/_build/
 /.python-version
 /.tool-versions
+docs/source/news

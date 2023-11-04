@@ -13,6 +13,7 @@ const AddonConfigurationRegistry = require('./addon-registry');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 
 const fileLoaderFinder = makeLoaderFinder('file-loader');
 
@@ -133,12 +134,9 @@ const defaultModify = ({
     }
 
     config.plugins.unshift(
-      // restrict moment.js locales to en/de
-      // see https://github.com/jmblog/how-to-optimize-momentjs-with-webpack for details
-      new webpack.ContextReplacementPlugin(
-        /moment[/\\]locale$/,
-        new RegExp(Object.keys(languages).join('|')),
-      ),
+      // restrict moment.js locales to supported languages
+      // see https://momentjs.com/docs/#/use-it/webpack/ for details
+      new MomentLocalesPlugin({ localesToKeep: Object.keys(languages) }),
       new LodashModuleReplacementPlugin({
         shorthands: true,
         cloning: true,
@@ -246,10 +244,8 @@ const defaultModify = ({
     'lodash-es': path.dirname(require.resolve('lodash')),
   };
 
-  const [
-    addonsThemeLoaderVariablesPath,
-    addonsThemeLoaderMainPath,
-  ] = createThemeAddonsLoader(registry.getCustomThemeAddons());
+  const [addonsThemeLoaderVariablesPath, addonsThemeLoaderMainPath] =
+    createThemeAddonsLoader(registry.getCustomThemeAddons());
 
   // Automatic Theme Loading
   if (registry.theme) {
@@ -260,12 +256,10 @@ const defaultModify = ({
     config.resolve.alias['../../theme.config'] = themeConfigPath;
 
     // We create an alias for each custom theme insertion point (variables, main)
-    config.resolve.alias[
-      'addonsThemeCustomizationsVariables'
-    ] = addonsThemeLoaderVariablesPath;
-    config.resolve.alias[
-      'addonsThemeCustomizationsMain'
-    ] = addonsThemeLoaderMainPath;
+    config.resolve.alias['addonsThemeCustomizationsVariables'] =
+      addonsThemeLoaderVariablesPath;
+    config.resolve.alias['addonsThemeCustomizationsMain'] =
+      addonsThemeLoaderMainPath;
   }
 
   config.performance = {

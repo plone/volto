@@ -1,4 +1,5 @@
 describe('Search Block Tests', () => {
+  var results_number = 3;
   beforeEach(() => {
     cy.intercept('GET', `/**/*?expand*`).as('content');
     cy.intercept('GET', '/**/Document').as('schema');
@@ -91,6 +92,12 @@ describe('Search Block Tests', () => {
 
     cy.wait(500);
 
+    // test search results number
+    cy.get('.search-details').should(
+      'contain',
+      `Search results: ${results_number}`,
+    );
+
     // test if type facet works
     cy.get('.block.search .facets > .facet .entries > .entry label')
       .contains('Event')
@@ -106,6 +113,32 @@ describe('Search Block Tests', () => {
     );
     // clear facets
     cy.get('.block.search .filter-list-header .ui.button').click();
+    cy.url().should(
+      'not.contain',
+      '%7B%22i%22%3A%22portal_type%22%2C%22o%22%3A%22paqo.list.contains%22%2C%22v%22%3A%5B%22Event%22%5D%7D',
+    );
+
+    // navigate to the searched url
+    cy.navigate(
+      '/my-search-page?query=%5B%7B%22i%22%3A%22portal_type%22%2C%22o%22%3A%22paqo.list.contains%22%2C%22v%22%3A%5B%22Event%22%5D%7D%5D',
+    );
+    cy.reload();
+    cy.wait(500);
+    cy.get('.search-details').should('contain', 'Search results: 1');
+
+    //navigate to home
+    cy.navigate('/');
+    cy.wait(500);
+
+    // navigate to the searched url
+    cy.navigate(
+      // '/my-search-page?query=%5B%7B%22i%22%3A%22portal_type%22%2C%22o%22%3A%22paqo.list.contains%22%2C%22v%22%3A%5B%22Event%22%5D%7D%5D',
+      '/my-search-page?query=%5B%7B%22i%22%3A%22portal_type%22%2C%22o%22%3A%22paqo.list.contains%22%2C%22v%22%3A%5B%22Event%22%5D%7D%5D',
+    );
+    cy.get('.search-details').should('contain', 'Search results: 1');
+
+    cy.reload();
+    cy.get('.search-details').should('contain', 'Search results: 1');
   });
 
   it('Search block - test date range facet', () => {
@@ -158,6 +191,12 @@ describe('Search Block Tests', () => {
     cy.get('#toolbar-save > .icon').click();
 
     cy.wait(500);
+
+    // test search results number
+    cy.get('.search-details').should(
+      'contain',
+      `Search results: ${results_number}`,
+    );
   });
 
   it('Search block - test live searchbox', () => {
@@ -201,6 +240,13 @@ describe('Search Block Tests', () => {
     cy.wait('@content');
 
     cy.wait(500);
+
+    // test search results number
+    cy.get('.search-details').should(
+      'contain',
+      `Search results: ${results_number}`,
+    );
+
     // test searching for Event
     cy.get('.search-wrapper .search-input input').focus().type('Event');
     cy.get('#page-document .listing-item:first-of-type a').should(
@@ -237,6 +283,12 @@ describe('Search Block Tests', () => {
     );
     cy.url().should('not.contain', '%22SearchableText%22');
 
+    // test search results number
+    cy.get('.search-details').should(
+      'contain',
+      `Search results: ${results_number}`,
+    );
+
     // test searching for Event
     cy.get('.search-wrapper .search-input input').focus().type('Event');
     cy.get('#page-document .listing-item:first-of-type a').should(
@@ -252,6 +304,9 @@ describe('Search Block Tests', () => {
       'contain',
       '%7B%22i%22%3A%22SearchableText%22%2C%22o%22%3A%22paqo.string.contains%22%2C%22v%22%3A%22Event%22%7D',
     );
+
+    // test search results number
+    cy.get('.search-details').should('contain', 'Search results: 1');
 
     // test removing one char
     cy.get('.search-wrapper .search-input input').focus().type('{backspace}');
@@ -319,6 +374,12 @@ describe('Search Block Tests', () => {
 
     cy.wait(500);
 
+    // test search results number
+    cy.get('.search-details').should(
+      'contain',
+      `Search results: ${results_number}`,
+    );
+
     // test searching for Event
     cy.get('.search-wrapper .search-input input').focus().type('Event');
     cy.get('.search-wrapper > .ui.button').click();
@@ -336,6 +397,9 @@ describe('Search Block Tests', () => {
       'contain',
       '%7B%22i%22%3A%22SearchableText%22%2C%22o%22%3A%22paqo.string.contains%22%2C%22v%22%3A%22Event%22%7D',
     );
+
+    // test search results number
+    cy.get('.search-details').should('contain', 'Search results: 1');
 
     // test removing one char
     cy.get('.search-wrapper .search-input input').focus().type('{backspace}');
@@ -359,6 +423,12 @@ describe('Search Block Tests', () => {
     );
     cy.url().should('not.contain', '%22SearchableText%22');
 
+    // test search results number
+    cy.get('.search-details').should(
+      'contain',
+      `Search results: ${results_number}`,
+    );
+
     // test searching for Event
     cy.get('.search-wrapper .search-input input').focus().type('Event');
     cy.get('.search-wrapper > .ui.button').click();
@@ -375,6 +445,9 @@ describe('Search Block Tests', () => {
       'contain',
       '%7B%22i%22%3A%22SearchableText%22%2C%22o%22%3A%22paqo.string.contains%22%2C%22v%22%3A%22Event%22%7D',
     );
+
+    // test search results number
+    cy.get('.search-details').should('contain', 'Search results: 1');
 
     // test removing one char
     cy.get('.search-wrapper .search-input input').focus().type('{backspace}');
@@ -397,5 +470,11 @@ describe('Search Block Tests', () => {
       'Searched for:',
     );
     cy.url().should('not.contain', '%22SearchableText%22');
+
+    // test search results number
+    cy.get('.search-details').should(
+      'contain',
+      `Search results: ${results_number}`,
+    );
   });
 });
