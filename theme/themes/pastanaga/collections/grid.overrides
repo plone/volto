@@ -9,3 +9,8 @@
 .ui.form .ui.grid > .row {
   padding: 0;
 }
+
+.ui.grid > .stretched.row > .column > *{
+  display: flex;
+  align-items: center;
+}
