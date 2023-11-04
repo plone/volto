@@ -1,2 +1,6 @@
 .parcel-cache/
 dist
+
+# yarn 3
+.pnp.*
+.yarn/*
