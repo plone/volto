@@ -32,12 +32,14 @@
       "package": "@plone/volto-slate"
     }
   },
+  "types": "types/index.d.ts",
   "scripts": {
     "postinstall": "make patches",
     "analyze": "BUNDLE_ANALYZE=true razzle build",
     "start": "razzle start",
     "start:coresandbox": "ADDONS=coresandbox razzle start",
     "build": "razzle build --noninteractive",
+    "build:types": "tsc src/**/*.{js,jsx} --declaration --allowJs --emitDeclarationOnly --outDir types --skipLibCheck",
     "prepare": "husky install",
     "test": "razzle test --maxWorkers=50%",
     "test:ci": "CI=true NODE_ICU_DATA=node_modules/full-icu razzle test",
@@ -186,10 +188,14 @@
   "release-it": {
     "hooks": {
       "before:bump": [
-        "yarn i18n",
-        "git add locales"
+        "yarn i18n"
       ],
-      "after:bump": "pipx run towncrier build --draft --yes --version ${version} > .changelog.draft && pipx run towncrier build --yes --version ${version} && make corepackagebump VERSION=${version} && make copyreleasenotestodocs",
+      "after:bump": [
+        "pipx run towncrier build --draft --yes --version ${version} > .changelog.draft && pipx run towncrier build --yes --version ${version}",
+        "make corepackagebump VERSION=${version}",
+        "make copyreleasenotestodocs",
+        "yarn build:types"
+      ],
       "after:release": "rm .changelog.draft"
     },
     "git": {

@@ -1,18 +1,8 @@
-/**
- * View image block.
- * @module components/manage/Blocks/Hero/View
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { flattenToAppURL } from '@plone/volto/helpers';
 import { LinkMore } from '@plone/volto/components';
 
-/**
- * View image block class.
- * @class View
- * @extends Component
- */
 const View = ({ data }) => (
   <div className="block hero">
     <div className="block-inner-wrapper">
