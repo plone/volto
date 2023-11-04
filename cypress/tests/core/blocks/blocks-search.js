@@ -247,30 +247,48 @@ describe('Search Block Tests', () => {
       `Search results: ${results_number}`,
     );
 
-    // test searching for Event
-    cy.get('.search-wrapper .search-input input').focus().type('Event');
-    cy.get('#page-document .listing-item:first-of-type a').should(
-      'have.attr',
-      'href',
-      '/my-event',
-    );
-    cy.get('.search-results-count-sort .search-details em').should(
-      'contain',
-      'Event',
-    );
-    cy.url().should(
-      'contain',
-      '%7B%22i%22%3A%22SearchableText%22%2C%22o%22%3A%22paqo.string.contains%22%2C%22v%22%3A%22Event%22%7D',
-    );
+    cy.queryCounter('/**/@querystring-search', [
+      () => cy.get('.search-wrapper .search-input input').focus().type('Event'),
+      () =>
+        cy
+          .get('#page-document .listing-item:first-of-type a')
+          .should('have.attr', 'href', '/my-event'),
+      () =>
+        cy
+          .get('.search-results-count-sort .search-details em')
+          .should('contain', 'Event'),
+      () =>
+        cy
+          .url()
+          .should(
+            'contain',
+            '%7B%22i%22%3A%22SearchableText%22%2C%22o%22%3A%22paqo.string.contains%22%2C%22v%22%3A%22Event%22%7D',
+          ),
+    ]);
 
     // test removing one char
-    cy.get('.search-wrapper .search-input input').focus().type('{backspace}');
-    cy.get('.search-results-count-sort .search-details em')
-      .should('not.contain', 'Event')
-      .and('contain', 'Even');
-    cy.url().should(
-      'contain',
-      '%7B%22i%22%3A%22SearchableText%22%2C%22o%22%3A%22paqo.string.contains%22%2C%22v%22%3A%22Even%22%7D',
+    cy.queryCounter(
+      '/**/@querystring-search',
+      [
+        () =>
+          cy
+            .get('.search-wrapper .search-input input')
+            .focus()
+            .type('{backspace}'),
+        () =>
+          cy
+            .get('.search-results-count-sort .search-details em')
+            .should('not.contain', 'Event')
+            .and('contain', 'Even'),
+        () =>
+          cy
+            .url()
+            .should(
+              'contain',
+              '%7B%22i%22%3A%22SearchableText%22%2C%22o%22%3A%22paqo.string.contains%22%2C%22v%22%3A%22Even%22%7D',
+            ),
+      ],
+      1,
     );
 
     // test removing the text with the button
