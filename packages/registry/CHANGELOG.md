@@ -7,3 +7,10 @@
 -->
 
 <!-- towncrier release notes start -->
+
+## 1.0.0 (2023-11-05)
+
+### Feature
+
+- Moved add-on registry to its own package. @sneridagh
+  Initial Release @sneridagh [#4949](https://github.com/plone/volto/issues/4949)
