@@ -154,7 +154,11 @@ export const ContentsItemComponent = ({
           >
             <div className="expire-align">
               <Icon
-                name={getContentIcon(item['@type'], item.is_folderish)}
+                name={getContentIcon(
+                  item['@type'],
+                  item.is_folderish,
+                  Boolean(item.numberOfFolderishDocuments),
+                )}
                 size="20px"
                 className="icon-margin"
                 color="#878f93"

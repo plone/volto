@@ -54,11 +54,17 @@ export function getLayoutFieldname(props) {
  * @function getContentIcon
  * @param {string} type Content type
  * @param {boolean} isFolderish
+ * @param {boolean} forceFolderIcon
  * @returns {Object} Icon component
  */
-export function getContentIcon(type, isFolderish) {
+export function getContentIcon(type, isFolderish, forceFolderIcon) {
   const { settings } = config;
   const { contentIcons } = settings;
+
+  // Allows UX affordance to indicate a branch vs leaf node in folder contents.
+  if (forceFolderIcon) {
+    return contentIcons.Folder;
+  }
 
   if (type in contentIcons) return contentIcons[type];
   return isFolderish ? contentIcons.Folder : contentIcons.File;
