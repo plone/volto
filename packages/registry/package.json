@@ -1,0 +1,59 @@
+{
+  "name": "@plone/registry",
+  "description": "Add-on and configuration registry for Plone.",
+  "maintainers": [
+    {
+      "name": "Plone Foundation",
+      "url": "https://plone.org"
+    }
+  ],
+  "funding": "https://github.com/sponsors/plone",
+  "license": "MIT",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/plone/volto.git"
+  },
+  "bugs": {
+    "url": "https://github.com/plone/volto/issues"
+  },
+  "homepage": "https://plone.org",
+  "keywords": [
+    "volto",
+    "plone",
+    "plone6",
+    "react",
+    "add-ons",
+    "registry",
+    "configuration",
+    "config"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "dry-release": "release-it --dry-run",
+    "release": "release-it",
+    "release-major-alpha": "release-it major --preRelease=alpha",
+    "release-alpha": "release-it --preRelease=alpha"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react-dom": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "crypto-random-string": "3.2.0",
+    "debug": "4.3.2",
+    "dependency-graph": "0.10.0",
+    "glob": "7.1.6",
+    "lodash": "4.17.21"
+  },
+  "devDependencies": {
+    "release-it": "16.2.1"
+  }
+}
