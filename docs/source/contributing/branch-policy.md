@@ -42,11 +42,11 @@ legacy
 `16.x.x`
 :   This is the LTS version of Volto, aligned with Plone 6.0 release.
     It receives bug fixes and security updates.
-    Any new feature will be released generally to the `main` branch, and only backported if the Volto Team approves it.
+    Any new feature will be released generally to the `main` branch, and only backported to `16.x.x` if the Volto Team approves it.
 
 `15.x.x`
-:   All branches below 15.x.x (14.x.x, 13.x.x, and so on) are considered legacy branches and won't receive any update.
-    If you need a bug fix or security update to any of them, please send a PR and the Volto Team will review if it's suitable for merging.
+:   `15.x.x` and older branches are considered legacy branches and won't receive any updates.
+    If you need a bug fix or security update to any of them, please submit a pull request, and the Volto Team will review it to determine whether it's suitable to merge.
 
 ```{todo}
 See https://github.com/plone/volto/issues/5255
