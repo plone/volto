@@ -13,15 +13,8 @@ import {
 } from './base';
 
 const SelectFacet = (props) => {
-  const {
-    facet,
-    choices,
-    reactSelect,
-    isMulti,
-    onChange,
-    value,
-    isEditMode,
-  } = props;
+  const { facet, choices, reactSelect, isMulti, onChange, value, isEditMode } =
+    props;
   const Select = reactSelect.default;
   const v = Array.isArray(value) && value.length === 0 ? null : value;
 

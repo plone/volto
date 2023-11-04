@@ -46,8 +46,13 @@ These proxied backend routes are in place for accessing URLs containing `@@downl
 These are the backend `BrowserView`s routes that retrieve images and file resources.
 Thus the Node.js Express server takes care of proxying and enhancing them at the same time as the authentication headers.
 
-```{todo}
-This section contains pointers for backend integration with Plone.
-Contributions for the Guillotina backend are needed.
-See https://github.com/plone/volto/issues/4430
-```
+## Alternative backends
+
+Volto can also be used with other backend systems if they provide an API that is compatible with `plone.restapi`.
+
+[Nick](https://nickcms.org/) is a headless CMS built with Node.js that supports Volto as a frontend.
+
+[Guillotina](https://guillotina.io/) is a resource management system built with Python.
+It was inspired by Plone, using its same basic concepts, such as traversal, content types, and its permissions model.
+
+There is also a [Volto Node.js-based backend reference](https://github.com/plone/volto-reference-backend) API implementation that demonstrates how other systems could also use Volto to display and create content through it.

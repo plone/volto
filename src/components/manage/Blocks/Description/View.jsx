@@ -1,17 +1,7 @@
-/**
- * View title/description block.
- * @module volto-slate/blocks/Title/TitleBlockView
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 
-/**
- * View title block component.
- * @class View
- * @extends Component
- */
-const TitleBlockView = ({ properties, metadata }) => {
+const DescriptionBlockView = ({ properties, metadata }) => {
   return (
     <p className="documentDescription">
       {(metadata || properties)['description'] || ''}
@@ -24,9 +14,9 @@ const TitleBlockView = ({ properties, metadata }) => {
  * @property {Object} propTypes Property types.
  * @static
  */
-TitleBlockView.propTypes = {
+DescriptionBlockView.propTypes = {
   properties: PropTypes.objectOf(PropTypes.any).isRequired,
   metadata: PropTypes.objectOf(PropTypes.any),
 };
 
-export default TitleBlockView;
+export default DescriptionBlockView;

@@ -96,6 +96,7 @@ linkcheck_ignore = [
     r"https://github.com/plone/volto/issues/new/choose",
     r"https://github.com/plone/volto/blob/6fd62cb2860bc7cf3cb7c36ea86bfd8bd03247d9/src/components/manage/Form/Field.jsx#L112",
     r"https://github.com/tc39/proposals/blob/HEAD/finished-proposals.md#finished-proposals",
+    r"https://www.youtube.com/playlist",  # TODO uncomment after installing sphinxcontrib.youtube
 ]
 linkcheck_anchors = True
 linkcheck_timeout = 10
@@ -108,6 +109,11 @@ spelling_ignore_pypi_package_names = True
 # The suffix of source filenames.
 source_suffix = {
     ".md": "markdown",
+    ".bugfix": "markdown",
+    ".breaking": "markdown",
+    ".documentation": "markdown",
+    ".feature": "markdown",
+    ".internal": "markdown",
 }
 
 # The master toctree document.
@@ -118,9 +124,12 @@ master_doc = "index"
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = [
     "spelling_wordlist.txt",
-    "**/CHANGES.rst",
-    "**/LICENSE.rst",
     "contributing/branch-policy.md",
+]
+
+suppress_warnings = [
+    # "toc.excluded",  # Suppress `WARNING: document isn't included in any toctree`
+    "toc.not_readable",  # Suppress `WARNING: toctree contains reference to nonexisting document 'news*'`
 ]
 
 html_extra_path = [
@@ -179,11 +188,6 @@ ogp_type = "website"
 ogp_custom_meta_tags = [
     '<meta property="og:locale" content="en_US" />',
 ]
-
-
-# -- sphinx_copybutton -----------------------
-copybutton_prompt_text = r"^ {0,2}\d{1,3}"
-copybutton_prompt_is_regexp = True
 
 
 # -- Options for HTML output -------------------------------------------------

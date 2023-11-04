@@ -1,19 +1,9 @@
-/**
- * View image block.
- * @module components/manage/Blocks/Image/View
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { UniversalLink } from '@plone/volto/components';
 import cx from 'classnames';
 import config from '@plone/volto/registry';
 
-/**
- * View image block class.
- * @class View
- * @extends Component
- */
 const View = ({ data, properties }) => {
   const Image = config.getComponent({ name: 'Image' }).component;
 
@@ -35,13 +25,7 @@ const View = ({ data, properties }) => {
                 className={cx({ 'full-width': data.align === 'full' })}
                 item={properties}
                 imageField="image"
-                sizes={(() => {
-                  if (data.align === 'full' || data.align === 'center')
-                    return '100vw';
-                  if (data.align === 'left' || data.align === 'right')
-                    return '50vw';
-                  return undefined;
-                })()}
+                sizes={config.blocks.blocksConfig.leadimage.getSizes(data)}
                 alt={properties.image_caption || ''}
                 responsive={true}
               />
