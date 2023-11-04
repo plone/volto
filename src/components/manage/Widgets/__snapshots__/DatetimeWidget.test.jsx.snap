@@ -86,6 +86,7 @@ exports[`datetime widget converts UTC date and adapt to local datetime 1`] = `
             </div>
             <button
               class="item ui noborder button"
+              type="button"
             >
               <svg
                 class="icon close"
@@ -188,6 +189,7 @@ exports[`renders a datetime widget component 1`] = `
             </div>
             <button
               class="item ui noborder button"
+              type="button"
             >
               <svg
                 class="icon close"

@@ -1,5 +1,0 @@
-For blocks that define their `blockSchema`, call `applyBlockDefaults` when creating the initial data for the blocks form.
-It is now possible to define a block configuration function, `initialValue` that returns the initial value for a block. This is useful in use cases such as container blocks that want to create a complex initial data structure, to avoid the need to call `React.useEffect` on their initial block rendering and thus, avoid complex async "concurent" state mutations.
-The `addBlock`, `mutateBlock`, `insertBlock` now allow passing a `blocksConfig` configuration object
-
-@tiberiuichim
