@@ -34,10 +34,9 @@ legacy
     If the pull request is a feature or a bugfix, and if the release manager deems it useful to the latest version's branch, they may ask the contributor to backport it to that branch.
 
 `17.x.x`
-:   At the moment of this writing, `17.x.x` is the current stable branch in git.
-    Upon the final release of version `18.0.0`, the `17.x.x` branch line will become legacy.
-    This is the current actively developed branch in git, meaning that it may receive new features and bug fixes.
-    Any new feature will be released generally to the `main` branch, and only backported if the Volto Team approves it.
+:   `17.x.x` is the current stable and actively developed branch in git.
+    Upon the final release of version `18.0.0`, the `17.x.x` branch line will be no longer supported.
+    Any new feature will be generally released to the `main` branch, and only backported to older versions if the Volto Team approves it.
 
 `16.x.x`
 :   This version of Volto has the [same maintenance and support schedule as Plone 6.0](https://plone.org/download/release-schedule).
