@@ -1,5 +1,5 @@
 const path = require('path');
-const AddonConfigurationRegistry = require('../addon-registry');
+const AddonConfigurationRegistry = require('../packages/registry/addon-registry');
 const {
   buildDependencyGraph,
   getAddonsLoaderChain,
