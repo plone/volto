@@ -40,7 +40,7 @@ legacy
     Any new feature will be released generally to the `main` branch, and only backported if the Volto Team approves it.
 
 `16.x.x`
-:   This is the LTS version of Volto, aligned with Plone 6.0 release.
+:   This version of Volto has the [same maintenance and support schedule as Plone 6.0](https://plone.org/download/release-schedule).
     It receives bug fixes and security updates.
     Any new feature will be released generally to the `main` branch, and only backported to `16.x.x` if the Volto Team approves it.
 
