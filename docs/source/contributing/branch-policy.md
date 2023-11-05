@@ -45,7 +45,7 @@ legacy
     Any new feature will be released generally to the `main` branch, and only backported to `16.x.x` if the Volto Team approves it.
 
 `15.x.x`
-:   `15.x.x` and older branches are considered legacy branches and won't receive any updates.
+:   `15.x.x` and older branches are no longer supported.
     If you need a bug fix or security update to any of them, please submit a pull request, and the Volto Team will review it to determine whether it's suitable to merge.
 
 ```{todo}
