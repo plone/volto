@@ -100,8 +100,8 @@ const messages = defineMessages({
     defaultMessage: 'Back',
   },
   contents: {
-    id: 'Contents',
-    defaultMessage: 'Contents',
+    id: 'Contents - Welcome to Plone 6!',
+    defaultMessage: 'Contents - Welcome to Plone 6!',
   },
   copy: {
     id: 'Copy',
