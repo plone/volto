@@ -13,10 +13,6 @@ canary
     During the development process, a canary release will be cut from the `main` branch.
     When it becomes worthy of a beta or release candidate version, a new numbered branch should be cut, and non-breaking changes must be merged into it.
 
-legacy
-:   A version that it is unsupported and receives no bug fixes.
-    It has no branch name in git.
-
 `main`
 :   This is the bleeding edge branch in git.
     It is the branch upon which future development occurs, and from which future releases shall be cut.
