@@ -1,3 +1,12 @@
+---
+myst:
+  html_meta:
+    "description": "Volto Release Notes for the Plone content management system"
+    "property=og:description": "Volto Release Notes for the Plone content management system"
+    "property=og:title": "Volto Release Notes"
+    "keywords": "Volto, Plone, frontend, Release Notes, change log, changelog, change history"
+---
+
 # Volto Release Notes
 
 <!-- You should *NOT* be adding new change log entries to this file.
@@ -7,6 +16,22 @@
 -->
 
 <!-- towncrier release notes start -->
+
+## 17.4.0 (2023-11-04)
+
+### Feature
+
+- add cypress test for search block via url - @ionlizarazu [#5298](https://github.com/plone/volto/issues/5298)
+- Add type definitions for Volto Javascript files @sneridagh [#5355](https://github.com/plone/volto/issues/5355)
+
+### Bugfix
+
+- Add support for TS files in add-on registry shadowing system @sneridagh [#5354](https://github.com/plone/volto/issues/5354)
+
+### Documentation
+
+- Fix Sphinx toctree warnings from included `CHANGELOG.md`. @stevepiercy [#5135](https://github.com/plone/volto/issues/5135)
+- Remove regular expression from `sphinx-copybutton` configuration, now that `linenos` are excluded by default. @stevepiercy [#5346](https://github.com/plone/volto/issues/5346)
 
 ## 17.3.0 (2023-10-27)
 

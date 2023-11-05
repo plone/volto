@@ -35,6 +35,7 @@
         "map": [
           ["@plone/volto", "./src"],
           ["@plone/volto-slate", "./packages/volto-slate/src"],
+          ["@plone/registry", "./packages/registry/src"],
           ["@package", "./src"],
           ["@root", "./src"]
         ],
