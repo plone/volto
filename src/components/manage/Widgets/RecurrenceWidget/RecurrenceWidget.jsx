@@ -776,7 +776,7 @@ class RecurrenceWidget extends Component {
                   </Segment>
                 </>
               )}
-              <div>
+              <div className="recurrence-div">
                 <Button
                   basic
                   disabled={this.props.isDisabled}
