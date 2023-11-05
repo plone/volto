@@ -33,14 +33,19 @@ legacy
     When opening a pull request, the contributor must open it against `main`.
     If the pull request is a feature or a bugfix, and if the release manager deems it useful to the latest version's branch, they may ask the contributor to backport it to that branch.
 
+`17.x.x`
+:   `17.x.x` is the current stable and actively developed branch in git.
+    Upon the final release of version `18.0.0`, the `17.x.x` branch line will be no longer supported.
+    Any new feature will be generally released to the `main` branch, and only backported to older versions if the Volto Team approves it.
+
 `16.x.x`
-:   This is the current actively developed branch in git, meaning that it may receive new features and bug fixes.
-    Its version is currently at 16.0.0-rc.1 as a release candidate.
-    It will become the stable version upon the final release of version 16.0.0.
+:   This version of Volto has the [same maintenance and support schedule as Plone 6.0](https://plone.org/download/release-schedule).
+    It receives bug fixes and security updates.
+    Any new feature will be released generally to the `main` branch, and only backported to `16.x.x` if the Volto Team approves it.
 
 `15.x.x`
-:   At the moment of this writing, `15.x.x` is the current stable branch in git.
-    Upon the final release of version 16.0.0, the `15.x.x` branch line will become legacy.
+:   `15.x.x` and older branches are no longer supported.
+    If you need a bug fix or security update to any of them, please submit a pull request, and the Volto Team will review it to determine whether it's suitable to merge.
 
 ```{todo}
 See https://github.com/plone/volto/issues/5255
