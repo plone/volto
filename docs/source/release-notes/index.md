@@ -17,6 +17,31 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.0 (2023-11-06)
+
+### Breaking
+
+- Experimental feature flag for new add block button enabled by default. @sneridagh [#4947](https://github.com/plone/volto/issues/4947)
+- Moved add-on registry to its own package. @sneridagh [#4949](https://github.com/plone/volto/issues/4949)
+- Sidebar formtabs item links are now real buttons with `ui button` class for proper keyboard and screen reader support @ichim-david [#5294](https://github.com/plone/volto/issues/5294)
+
+### Bugfix
+
+- Add build process to registry package and fixes @sneridagh [#5364](https://github.com/plone/volto/issues/5364)
+- Fixed import in Storybook configuration, related to the recent registry change. @sneridagh [#5368](https://github.com/plone/volto/issues/5368)
+- Improve importing from the new registry from Volto code itself @sneridagh [#5373](https://github.com/plone/volto/issues/5373)
+
+### Internal
+
+- Unused files in root cleanup @sneridagh [#5367](https://github.com/plone/volto/issues/5367)
+
+### Documentation
+
+- Updated branch policy. @sneridagh [#5363](https://github.com/plone/volto/issues/5363)
+- Remove "legacy" term, now that we use "no longer supported". @stevepiercy [#5370](https://github.com/plone/volto/issues/5370)
+- Reduce the severity level of `Microsoft.Contractions` and `Microsoft.Units` from `error` to `suggestion` when running `make docs-vale` in preparation for requiring Vale passing without errors. @stevepiercy [#5371](https://github.com/plone/volto/issues/5371)
+- Improved wording in branching policy. @sneridagh [#5372](https://github.com/plone/volto/issues/5372)
+
 ## 17.4.0 (2023-11-04)
 
 ### Feature
