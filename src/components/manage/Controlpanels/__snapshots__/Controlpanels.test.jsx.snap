@@ -338,6 +338,42 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
               className="column"
             >
               <a
+                href="/controlpanel/relations"
+                onClick={[Function]}
+              >
+                <h3
+                  className="ui icon center aligned header"
+                >
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                  <div
+                    className="content"
+                  >
+                    Relations
+                  </div>
+                </h3>
+              </a>
+            </div>
+            <div
+              className="column"
+            >
+              <a
                 href="/controlpanel/moderate-comments"
                 onClick={[Function]}
               >
@@ -896,6 +932,42 @@ exports[`Controlpanels renders an additional control panel 1`] = `
                     className="content"
                   >
                     Content Rules
+                  </div>
+                </h3>
+              </a>
+            </div>
+            <div
+              className="column"
+            >
+              <a
+                href="/controlpanel/relations"
+                onClick={[Function]}
+              >
+                <h3
+                  className="ui icon center aligned header"
+                >
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                  <div
+                    className="content"
+                  >
+                    Relations
                   </div>
                 </h3>
               </a>

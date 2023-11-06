@@ -65,8 +65,12 @@
 .ui.button.full-size-sidenav-btn {
   position: absolute;
   top: 0;
-  padding: 12px 6px;
+  padding: 12px 0 12px 6px;
   background: transparent;
+}
+
+.ui.button.full-size-sidenav-btn:focus-visible {
+  outline: auto;
 }
 
 .full-size-icon {
@@ -83,7 +87,8 @@
   height: 100vh;
   background-color: #fff;
   box-shadow: 0 1px 2px 0 #c7d5d8;
-  transition: right 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045),
+  transition:
+    right 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045),
     height 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045),
     width 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045),
     top 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
@@ -127,6 +132,8 @@
     border: 0;
     background: transparent;
     text-align: initial;
+    // we want buttons to have same font as the page font stack
+    font-family: @pageFont;
 
     &:focus {
       outline: none;
@@ -143,12 +150,12 @@
     width: 20px;
     height: 80px;
     padding: 0;
+    border-radius: 0;
     margin-top: -40px;
     animation: sidebar-toggle-button-highlight
       @sidebarToggleButtonAnimationsDuration;
     animation-iteration-count: @sidebarToggleButtonIterations;
     background: transparent;
-    border-radius: 0;
     opacity: @sidebarToggleButtonNormalOpacity;
     transition: opacity 0.3s;
   }
@@ -191,8 +198,11 @@
     height: 100%;
 
     .formtabs.menu {
-      a:first-child {
-        margin-left: 36px;
+      .item:focus-visible {
+        outline: auto;
+      }
+      .item:first-child {
+        margin-left: 45px;
       }
     }
   }
@@ -429,8 +439,8 @@
 
   .ui.icon.button {
     padding: 4px;
-    margin-left: 4px;
     border-radius: 1px;
+    margin-left: 4px;
     color: @brown !important;
 
     &:hover {
@@ -466,8 +476,8 @@
   width: 2.67142857em;
   height: 100%;
   padding: 4px;
-  margin: 0;
   border-radius: 1px;
+  margin: 0;
   color: @brown !important;
   line-height: 1;
   text-align: center;

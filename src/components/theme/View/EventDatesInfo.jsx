@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { List } from 'semantic-ui-react';
 import cx from 'classnames';
 
+import { toBackendLang } from '@plone/volto/helpers';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import { useSelector } from 'react-redux';
 
@@ -28,7 +29,7 @@ const When_ = ({ start, end, whole_day, open_end, moment: momentlib }) => {
   const lang = useSelector((state) => state.intl.locale);
 
   const moment = momentlib.default;
-  moment.locale(lang);
+  moment.locale(toBackendLang(lang));
 
   const datesInfo = datesForDisplay(start, end, moment);
   if (!datesInfo) {

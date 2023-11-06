@@ -90,6 +90,10 @@ const messages = defineMessages({
     id: 'Content Rules',
     defaultMessage: 'Content Rules',
   },
+  relations: {
+    id: 'Relations',
+    defaultMessage: 'Relations',
+  },
 });
 
 /**
@@ -152,6 +156,11 @@ function Controlpanels({
         '@id': '/aliases',
         group: intl.formatMessage(messages.general),
         title: intl.formatMessage(messages.urlmanagement),
+      },
+      {
+        '@id': '/relations',
+        group: intl.formatMessage(messages.content),
+        title: intl.formatMessage(messages.relations),
       },
       {
         '@id': '/moderate-comments',

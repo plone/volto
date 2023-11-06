@@ -186,8 +186,8 @@ function poToJson({ registry, addonMode }) {
             const addonItems = Pofile.parse(
               fs.readFileSync(addonlocale, 'utf8'),
             ).items;
-            items = [...addonItems, ...items];
-            mergeMessages(result, items, lang);
+
+            mergeMessages(result, addonItems, lang);
             if (require.main === module) {
               // We only log it if called as script
               console.log(`Merging ${addon} locales for ${lang}`);
@@ -272,11 +272,16 @@ function main({ addonMode }) {
     let AddonConfigurationRegistry;
     try {
       if (fs.existsSync(`${projectRootPath}/node_modules/@plone/volto`)) {
-        AddonConfigurationRegistry = require('@plone/volto/addon-registry');
-      } else {
+        // We are in a project
         AddonConfigurationRegistry = require(path.join(
           projectRootPath,
-          'addon-registry',
+          '/node_modules/@plone/volto/packages/registry/addon-registry',
+        ));
+      } else {
+        // We are in Volto itself
+        AddonConfigurationRegistry = require(path.join(
+          projectRootPath,
+          '/packages/registry/addon-registry',
         ));
       }
     } catch {

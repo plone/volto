@@ -408,6 +408,9 @@ Hide facet?
 : Toggle to show or hide the facet.
   Hidden facets will still filter the results if proper parameters are passed in URLs
 
+Advanced facet?
+: Select to set the facet as advanced.
+  Advanced facets are initially hidden and displayed on demand.
 
 #### Controls
 
@@ -506,6 +509,10 @@ The TOC block has several configuration options.
 
 Variation
 : Toggles the display of the TOC to be a listing (default) or horizontal as tabs.
+  The horizontal variation also adds a dropdown button, if necessary, so the items that won't fit would be displayed in the dropdown list.
+  ```{video} /_static/user-manual/blocks/table-of-contents-block-with-dropdown.mp4
+  :alt: Table of contents block with dropdown menu.
+  ```
 
 Block title
 : Optionally add a title above the table of contents.

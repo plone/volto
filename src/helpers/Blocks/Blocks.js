@@ -132,14 +132,14 @@ export function deleteBlock(formData, blockId) {
 }
 
 /**
- * Add block
+ * Adds a block to the blocks form
  * @function addBlock
  * @param {Object} formData Form data
  * @param {string} type Block type
  * @param {number} index Destination index
  * @return {Array} New block id, New form data
  */
-export function addBlock(formData, type, index) {
+export function addBlock(formData, type, index, blocksConfig) {
   const { settings } = config;
   const id = uuid();
   const idTrailingBlock = uuid();
@@ -148,81 +148,133 @@ export function addBlock(formData, type, index) {
   const totalItems = formData[blocksLayoutFieldname].items.length;
   const insert = index === -1 ? totalItems : index;
 
+  let value = applyBlockDefaults({
+    data: {
+      '@type': type,
+    },
+    intl: _dummyIntl,
+  });
+
   return [
     id,
-    {
-      ...formData,
-      [blocksLayoutFieldname]: {
-        items: [
-          ...formData[blocksLayoutFieldname].items.slice(0, insert),
-          id,
-          ...(type !== settings.defaultBlockType ? [idTrailingBlock] : []),
-          ...formData[blocksLayoutFieldname].items.slice(insert),
-        ],
-      },
-      [blocksFieldname]: {
-        ...formData[blocksFieldname],
-        [id]: {
-          '@type': type,
+    _applyBlockInitialValue({
+      id,
+      value,
+      blocksConfig,
+      formData: {
+        ...formData,
+        [blocksLayoutFieldname]: {
+          items: [
+            ...formData[blocksLayoutFieldname].items.slice(0, insert),
+            id,
+            ...(type !== settings.defaultBlockType ? [idTrailingBlock] : []),
+            ...formData[blocksLayoutFieldname].items.slice(insert),
+          ],
         },
-        ...(type !== settings.defaultBlockType && {
-          [idTrailingBlock]: {
-            '@type': settings.defaultBlockType,
-          },
-        }),
+        [blocksFieldname]: {
+          ...formData[blocksFieldname],
+          [id]: value,
+          ...(type !== settings.defaultBlockType && {
+            [idTrailingBlock]: {
+              '@type': settings.defaultBlockType,
+            },
+          }),
+        },
+        selected: id,
       },
-      selected: id,
-    },
+    }),
   ];
 }
 
 /**
- * Mutate block
+ * Gets an initial value for a block, based on configuration
+ *
+ * This allows blocks that need complex initial data structures to avoid having
+ * to call `onChangeBlock` at their creation time, as this is prone to racing
+ * issue on block data storage.
+ */
+const _applyBlockInitialValue = ({ id, value, blocksConfig, formData }) => {
+  const blocksFieldname = getBlocksFieldname(formData);
+  const type = value['@type'];
+  blocksConfig = blocksConfig || config.blocks.blocksConfig;
+
+  if (blocksConfig[type]?.initialValue) {
+    value = blocksConfig[type].initialValue({
+      id,
+      value,
+      formData,
+    });
+    formData[blocksFieldname][id] = value;
+  }
+
+  return formData;
+};
+
+/**
+ * Mutate block, changes the block @type
  * @function mutateBlock
  * @param {Object} formData Form data
  * @param {string} id Block uid to mutate
  * @param {number} value Block's new value
  * @return {Object} New form data
  */
-export function mutateBlock(formData, id, value) {
+export function mutateBlock(formData, id, value, blocksConfig) {
   const { settings } = config;
   const blocksFieldname = getBlocksFieldname(formData);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
   const index = formData[blocksLayoutFieldname].items.indexOf(id) + 1;
 
+  value = applyBlockDefaults({
+    data: value,
+    intl: _dummyIntl,
+  });
+  let newFormData;
+
   // Test if block at index is already a placeholder (trailing) block
   const trailId = formData[blocksLayoutFieldname].items[index];
   if (trailId) {
     const block = formData[blocksFieldname][trailId];
-    if (!blockHasValue(block)) {
-      return {
+    newFormData = _applyBlockInitialValue({
+      id,
+      value,
+      blocksConfig,
+      formData: {
         ...formData,
         [blocksFieldname]: {
           ...formData[blocksFieldname],
           [id]: value || null,
         },
-      };
+      },
+    });
+    if (!blockHasValue(block)) {
+      return newFormData;
     }
   }
 
   const idTrailingBlock = uuid();
-  return {
-    ...formData,
-    [blocksFieldname]: {
-      ...formData[blocksFieldname],
-      [id]: value || null,
-      [idTrailingBlock]: {
-        '@type': settings.defaultBlockType,
+  newFormData = _applyBlockInitialValue({
+    id,
+    value,
+    blocksConfig,
+    formData: {
+      ...formData,
+      [blocksFieldname]: {
+        ...formData[blocksFieldname],
+        [id]: value || null,
+        [idTrailingBlock]: {
+          '@type': settings.defaultBlockType,
+        },
+      },
+      [blocksLayoutFieldname]: {
+        items: [
+          ...formData[blocksLayoutFieldname].items.slice(0, index),
+          idTrailingBlock,
+          ...formData[blocksLayoutFieldname].items.slice(index),
+        ],
       },
     },
-    [blocksLayoutFieldname]: {
-      items: [
-        ...formData[blocksLayoutFieldname].items.slice(0, index),
-        idTrailingBlock,
-        ...formData[blocksLayoutFieldname].items.slice(index),
-      ],
-    },
-  };
+  });
+  return newFormData;
 }
 
 /**
@@ -233,15 +285,29 @@ export function mutateBlock(formData, id, value) {
  * @param {number} value New block's value
  * @return {Array} New block id, New form data
  */
-export function insertBlock(formData, id, value, current = {}, offset = 0) {
+export function insertBlock(
+  formData,
+  id,
+  value,
+  current = {},
+  offset = 0,
+  blocksConfig,
+) {
   const blocksFieldname = getBlocksFieldname(formData);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
   const index = formData[blocksLayoutFieldname].items.indexOf(id);
 
+  value = applyBlockDefaults({
+    data: value,
+    intl: _dummyIntl,
+  });
+
   const newBlockId = uuid();
-  return [
-    newBlockId,
-    {
+  const newFormData = _applyBlockInitialValue({
+    id,
+    value,
+    blocksConfig,
+    formData: {
       ...formData,
       [blocksFieldname]: {
         ...formData[blocksFieldname],
@@ -259,7 +325,9 @@ export function insertBlock(formData, id, value, current = {}, offset = 0) {
         ],
       },
     },
-  ];
+  });
+
+  return [newBlockId, newFormData];
 }
 
 /**
@@ -290,9 +358,8 @@ export function changeBlock(formData, id, value) {
  */
 export function nextBlockId(formData, currentBlock) {
   const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
-  const currentIndex = formData[blocksLayoutFieldname].items.indexOf(
-    currentBlock,
-  );
+  const currentIndex =
+    formData[blocksLayoutFieldname].items.indexOf(currentBlock);
 
   if (currentIndex === formData[blocksLayoutFieldname].items.length - 1) {
     // We are already at the bottom block don't do anything
@@ -312,9 +379,8 @@ export function nextBlockId(formData, currentBlock) {
  */
 export function previousBlockId(formData, currentBlock) {
   const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
-  const currentIndex = formData[blocksLayoutFieldname].items.indexOf(
-    currentBlock,
-  );
+  const currentIndex =
+    formData[blocksLayoutFieldname].items.indexOf(currentBlock);
 
   if (currentIndex === 0) {
     // We are already at the top block don't do anything
@@ -340,6 +406,32 @@ export function emptyBlocksForm() {
       },
     },
     blocks_layout: { items: [id] },
+  };
+}
+
+/**
+ * Generate empty blocks blocks/blocks_layout pair given the type
+ * (could be empty, if not type given) and the number of blocks
+ * @function blocksFormGenerator
+ * @param {number} number How many blocks to generate of the type (could be "empty", if no type provided)
+ * @param {number} type The type of the blocks
+ * @return {Object} blocks/blocks_layout pair filled with the generated blocks
+ */
+export function blocksFormGenerator(number, type) {
+  const idMap = [...Array(number).keys()].map(() => uuid());
+  const start = {
+    blocks: {},
+    blocks_layout: { items: idMap },
+  };
+
+  return {
+    ...start,
+    blocks: Object.fromEntries(
+      start.blocks_layout.items.map((item) => [
+        item,
+        { '@type': type || 'empty' },
+      ]),
+    ),
   };
 }
 
@@ -523,4 +615,30 @@ export const getPreviousNextBlock = ({ content, block }) => {
     ];
 
   return [previousBlock, nextBlock];
+};
+
+/**
+ * Given a `block` object and a list of block types, return a list of block ids matching the types
+ *
+ * @function findBlocks
+ * @param {Object} types A list with the list of types to be matched
+ * @return {Array} An array of block ids
+ */
+export function findBlocks(blocks, types, result = []) {
+  const containerBlockTypes = config.settings.containerBlockTypes;
+
+  Object.keys(blocks).forEach((blockId) => {
+    const block = blocks[blockId];
+    if (types.includes(block['@type'])) {
+      result.push(blockId);
+    } else if (containerBlockTypes.includes(block['@type']) || block.blocks) {
+      findBlocks(block.blocks, types, result);
+    }
+  });
+
+  return result;
+}
+
+const _dummyIntl = {
+  formatMessage() {},
 };
