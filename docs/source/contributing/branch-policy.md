@@ -37,7 +37,7 @@ canary
 `16.x.x`
 :   This version of Volto has the [same maintenance and support schedule as Plone 6.0](https://plone.org/download/release-schedule).
     It receives bug fixes and security updates.
-    Any new feature will be released generally to the `main` branch, and only backported to `16.x.x` if the Volto Team approves it.
+    Any new feature will be merged into the `main` branch, and only backported to and released in older versions, if the Volto Team approves it.
 
 `15.x.x`
 :   `15.x.x` and older branches are no longer supported.
