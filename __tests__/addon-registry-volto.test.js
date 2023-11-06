@@ -1,5 +1,5 @@
 const path = require('path');
-const AddonConfigurationRegistry = require('../addon-registry');
+const AddonConfigurationRegistry = require('../packages/registry/addon-registry');
 
 describe('AddonConfigurationRegistry - Volto', () => {
   it('works in Volto', () => {

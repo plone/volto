@@ -37,6 +37,6 @@ describe('Add Content Tests', () => {
     cy.findByRole('alert')
       .get('.toast-inner-content')
       .contains('Required input is missing');
-    cy.get('.sidebar-container .tabs-wrapper a.active.item').contains('Page');
+    cy.get('.sidebar-container .tabs-wrapper .active.item').contains('Page');
   });
 });

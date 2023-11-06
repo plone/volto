@@ -1,8 +1,3 @@
-/**
- * View image block.
- * @module components/manage/Blocks/Image/View
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { UniversalLink } from '@plone/volto/components';
@@ -14,11 +9,6 @@ import {
 } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
-/**
- * View image block class.
- * @class View
- * @extends Component
- */
 export const View = ({ className, data, detached, properties }) => {
   const href = data?.href?.[0]?.['@id'] || '';
 
