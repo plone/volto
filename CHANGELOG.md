@@ -1,3 +1,12 @@
+---
+myst:
+  html_meta:
+    "description": "Volto Release Notes for the Plone content management system"
+    "property=og:description": "Volto Release Notes for the Plone content management system"
+    "property=og:title": "Volto Release Notes"
+    "keywords": "Volto, Plone, frontend, Release Notes, change log, changelog, change history"
+---
+
 # Volto Release Notes
 
 <!-- You should *NOT* be adding new change log entries to this file.
@@ -7,6 +16,62 @@
 -->
 
 <!-- towncrier release notes start -->
+
+## 17.4.0 (2023-11-04)
+
+### Feature
+
+- add cypress test for search block via url - @ionlizarazu [#5298](https://github.com/plone/volto/issues/5298)
+- Add type definitions for Volto Javascript files @sneridagh [#5355](https://github.com/plone/volto/issues/5355)
+
+### Bugfix
+
+- Add support for TS files in add-on registry shadowing system @sneridagh [#5354](https://github.com/plone/volto/issues/5354)
+
+### Documentation
+
+- Fix Sphinx toctree warnings from included `CHANGELOG.md`. @stevepiercy [#5135](https://github.com/plone/volto/issues/5135)
+- Remove regular expression from `sphinx-copybutton` configuration, now that `linenos` are excluded by default. @stevepiercy [#5346](https://github.com/plone/volto/issues/5346)
+
+## 17.3.0 (2023-10-27)
+
+### Feature
+
+- Updated aria-label for landmarks @ichim-david
+  Added landmark on sidebar @ichim-david
+  Added Pluggable section for skiplinks @ichim-david [#5290](https://github.com/plone/volto/issues/5290)
+
+### Bugfix
+
+- (FIX): put padding so the text is not clipped #5305 @dobri1408 [#5305](https://github.com/plone/volto/issues/5305)
+- Fix compare translations view @sneridagh [#5327](https://github.com/plone/volto/issues/5327)
+- Fix DatetimeWidget on FF, the button default if no type is set is sending the form. @sneridagh
+  See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#formmethod [#5343](https://github.com/plone/volto/issues/5343)
+
+### Internal
+
+- For blocks that define their `blockSchema`, call `applyBlockDefaults` when creating the initial data for the blocks form.
+  It is now possible to define a block configuration function, `initialValue` that returns the initial value for a block. This is useful in use cases such as container blocks that want to create a complex initial data structure, to avoid the need to call `React.useEffect` on their initial block rendering and thus, avoid complex async "concurent" state mutations.
+  The `addBlock`, `mutateBlock`, `insertBlock` now allow passing a `blocksConfig` configuration object
+
+  @tiberiuichim [#5320](https://github.com/plone/volto/issues/5320)
+- Add a new set of acceptance tests with the multilingual fixture using seamless mode. @sneridagh [#5332](https://github.com/plone/volto/issues/5332)
+
+### Documentation
+
+- Fix reference link to installation. @stevepiercy [#5328](https://github.com/plone/volto/issues/5328)
+- Add upgrade docs for users of `@kitconcept/volto-blocks-grid` addon @sneridagh [#5333](https://github.com/plone/volto/issues/5333)
+
+## 17.2.0 (2023-10-16)
+
+### Feature
+
+- add cypress test for search block via url - @ionlizarazu [#5298](https://github.com/plone/volto/issues/5298)
+
+### Bugfix
+
+- Fix adding multiple path criteria in search and listing blocks. @davisagli [#5317](https://github.com/plone/volto/issues/5317)
+
 
 ## 17.1.1 (2023-10-13)
 

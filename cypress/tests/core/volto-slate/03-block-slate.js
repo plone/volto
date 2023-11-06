@@ -42,7 +42,7 @@ describe('Block Tests', () => {
       '{command+a}{command+b}{ctrl+a}{ctrl+b}',
     );
     cy.setSlateCursor('furiously').type('{enter}');
-    cy.get('.text-slate-editor-inner button').should('have.length', 1);
+    cy.get('.ui.basic.icon.button.block-add-button').should('have.length', 1);
 
     // Save
     cy.toolbarSave();
