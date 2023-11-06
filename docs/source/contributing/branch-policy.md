@@ -32,7 +32,7 @@ canary
 `17.x.x`
 :   `17.x.x` is the current stable and actively developed branch in git.
     Upon the final release of version `18.0.0`, the `17.x.x` branch line will be no longer supported.
-    Any new feature will be generally released to the `main` branch, and only backported to older versions if the Volto Team approves it.
+    Any new feature will be merged into the `main` branch, and only backported to and released in older versions, if the Volto Team approves it.
 
 `16.x.x`
 :   This version of Volto has the [same maintenance and support schedule as Plone 6.0](https://plone.org/download/release-schedule).
