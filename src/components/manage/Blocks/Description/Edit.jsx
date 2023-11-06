@@ -1,8 +1,3 @@
-/**
- * Edit title/description block.
- * @module volto-slate/blocks/Title/TitleBlockEdit
- */
-
 import React, {
   useCallback,
   useEffect,
@@ -35,12 +30,7 @@ function usePrevious(value) {
   return ref.current;
 }
 
-/**
- * Edit title block component.
- * @class TitleBlockEdit
- * @extends Component
- */
-export const TitleBlockEdit = (props) => {
+export const DescriptionBlockEdit = (props) => {
   const {
     block,
     blockNode,
@@ -187,7 +177,7 @@ export const TitleBlockEdit = (props) => {
   );
 };
 
-TitleBlockEdit.propTypes = {
+DescriptionBlockEdit.propTypes = {
   properties: PropTypes.objectOf(PropTypes.any).isRequired,
   selected: PropTypes.bool.isRequired,
   block: PropTypes.string.isRequired,
@@ -204,9 +194,9 @@ TitleBlockEdit.propTypes = {
   blockNode: PropTypes.any,
 };
 
-TitleBlockEdit.defaultProps = {
+DescriptionBlockEdit.defaultProps = {
   detached: false,
   editable: true,
 };
 
-export default TitleBlockEdit;
+export default DescriptionBlockEdit;

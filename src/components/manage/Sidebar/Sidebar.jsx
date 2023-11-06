@@ -137,7 +137,11 @@ const Sidebar = (props) => {
           onTabChange={onTabChange}
           panes={[
             !!documentTab && {
-              menuItem: type || intl.formatMessage(messages.document),
+              menuItem: {
+                as: 'button',
+                className: 'ui button',
+                content: type || intl.formatMessage(messages.document),
+              },
               pane: (
                 <Tab.Pane
                   key="metadata"
@@ -147,7 +151,11 @@ const Sidebar = (props) => {
               ),
             },
             !!blockTab && {
-              menuItem: intl.formatMessage(messages.block),
+              menuItem: {
+                as: 'button',
+                className: 'ui button',
+                content: intl.formatMessage(messages.block),
+              },
               pane: (
                 <Tab.Pane
                   key="properties"
