@@ -222,7 +222,7 @@ function Controlpanels({
                 <Grid.Row>
                   {map(
                     sortBy(
-                      filter(controlpanels, { group }),
+                      filter(filteredControlPanels, { group }),
                       (controlpanel) => controlpanel.title,
                     ),
                     (controlpanel) => (
