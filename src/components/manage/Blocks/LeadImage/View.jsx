@@ -1,19 +1,9 @@
-/**
- * View image block.
- * @module components/manage/Blocks/Image/View
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { UniversalLink } from '@plone/volto/components';
 import cx from 'classnames';
 import config from '@plone/volto/registry';
 
-/**
- * View image block class.
- * @class View
- * @extends Component
- */
 const View = ({ data, properties }) => {
   const Image = config.getComponent({ name: 'Image' }).component;
 
