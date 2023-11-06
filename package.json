@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "17.3.0",
+  "version": "17.4.0",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -53,7 +53,7 @@
     "stylelint:fix": "yarn stylelint --fix && yarn stylelint:overrides --fix",
     "lint": "./node_modules/eslint/bin/eslint.js --max-warnings=0 'src/**/*.{js,jsx,ts,tsx,json}'",
     "lint:fix": "./node_modules/eslint/bin/eslint.js --fix 'src/**/*.{js,jsx,ts,tsx,json}'",
-    "i18n": "rm -rf build/messages && NODE_ENV=production i18n",
+    "i18n": "rm -rf build/messages && NODE_ENV=production node packages/scripts/i18n.cjs",
     "i18n:ci": "yarn i18n && git diff -G'^[^\"POT]' --exit-code",
     "typecheck": "tsc --project tsconfig.json --noEmit",
     "dry-release": "release-it --dry-run",
@@ -73,8 +73,7 @@
   },
   "jest": {
     "modulePathIgnorePatterns": [
-      "api",
-      "packages"
+      "api"
     ],
     "transform": {
       "^.+\\.js(x)?$": "babel-jest",
@@ -88,6 +87,8 @@
       "@plone/volto/babel": "<rootDir>/babel.js",
       "@plone/volto/(.*)$": "<rootDir>/src/$1",
       "@plone/volto-slate/(.*)$": "<rootDir>/packages/volto-slate/src/$1",
+      "@plone/registry": "<rootDir>/packages/registry/src",
+      "@plone/registry/(.*)$": "<rootDir>/packages/registry/src/$1",
       "~/config": "<rootDir>/src/config",
       "~/../locales/${lang}.json": "<rootDir>/locales/en.json",
       "(.*)/locales/(.*)": "<rootDir>/locales/$2",
@@ -118,7 +119,8 @@
       "<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs,ts,tsx}",
       "<rootDir>/src/**/?(*.)(spec|test).{js,jsx,mjs,ts,tsx}",
       "<rootDir>/__tests__/**/?(*.)(spec|test).{js,jsx,mjs,ts,tsx}",
-      "<rootDir>/packages/volto-slate/src/**/?(*.)(spec|test).{js,jsx,mjs,ts,tsx}"
+      "<rootDir>/packages/volto-slate/src/**/?(*.)(spec|test).{js,jsx,mjs,ts,tsx}",
+      "<rootDir>/packages/registry/src/**/?(*.)(spec|test).{js,jsx,mjs,ts,tsx}"
     ]
   },
   "prettier": {
@@ -322,7 +324,7 @@
     "moment-locales-webpack-plugin": "1.2.0",
     "object-assign": "4.1.1",
     "pofile": "1.0.10",
-    "postcss": "8.4.13",
+    "postcss": "8.4.31",
     "postcss-flexbugs-fixes": "5.0.2",
     "postcss-less": "6.0.0",
     "postcss-load-config": "3.1.4",

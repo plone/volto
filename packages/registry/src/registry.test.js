@@ -1,4 +1,4 @@
-import config from './registry';
+import config from './index';
 
 config.set('components', {
   Toolbar: { component: 'this is the Toolbar component' },
