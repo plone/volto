@@ -21,7 +21,7 @@
     "slate": "0.100.0",
     "slate-history": "0.100.0",
     "slate-hyperscript": "0.100.0",
-    "slate-react": "0.100.1",
+    "slate-react": "0.98.4",
     "weak-key": "^1.0.2"
   },
   "devDependencies": {
