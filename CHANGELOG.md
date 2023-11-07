@@ -2236,6 +2236,7 @@ See https://6.docs.plone.org/volto/upgrade-guide/index.html for more information
 
 ### Bugfix
 
+- Sort control panels alphabetically within each group @JeffersonBledsoe #3737
 - Fix UniversalLink storybook @tiberiuichim
 - Fix logout to stay on the same page where the user was @reebalazs
 - Change sentry chunk name to avoid ad blockers. Only load sentry if env vars exist @tiberiuichim
