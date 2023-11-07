@@ -113,22 +113,6 @@ On Plone 5, Volto is currently tested with the following packages pinned to spec
 - plone.rest 2.0.0a5
 - plone.volto 4.0.0a13
 
-This would be the docker command to spawn a Plone 5 container with the right KGS versions:
-
-```shell
-docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="plone.restapi==8.30.0 plone.volto==4.0.0a13 plone.rest==2.0.0a5 plone.app.iterate==4.0.2 plone.app.vocabularies==4.3.0" -e PROFILES="plone.volto:default-homepage" plone/plone-backend
-```
-
-### Start Volto
-
-```shell
-yarn start
-```
-
-### Browsing
-
-Go to [http://localhost:3000](http://localhost:3000) in your browser.
-
 ## Volto in Production
 
 Volto is actively developed since 2017 and used in production since 2018 on the following websites:
