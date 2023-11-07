@@ -65,8 +65,12 @@
 .ui.button.full-size-sidenav-btn {
   position: absolute;
   top: 0;
-  padding: 12px 6px;
+  padding: 12px 0 12px 6px;
   background: transparent;
+}
+
+.ui.button.full-size-sidenav-btn:focus-visible {
+  outline: auto;
 }
 
 .full-size-icon {
@@ -128,6 +132,8 @@
     border: 0;
     background: transparent;
     text-align: initial;
+    // we want buttons to have same font as the page font stack
+    font-family: @pageFont;
 
     &:focus {
       outline: none;
@@ -192,8 +198,11 @@
     height: 100%;
 
     .formtabs.menu {
-      a:first-child {
-        margin-left: 36px;
+      .item:focus-visible {
+        outline: auto;
+      }
+      .item:first-child {
+        margin-left: 45px;
       }
     }
   }

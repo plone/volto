@@ -904,3 +904,12 @@ Cypress.Commands.add('configureListingWith', (contentType) => {
     .contains(contentType)
     .click();
 });
+
+Cypress.Commands.add('queryCounter', (path, steps, number = 1) => {
+  cy.intercept(path, cy.spy().as('counterName'));
+  steps.forEach((element) => {
+    element();
+  });
+
+  cy.get('@counterName').its('callCount').should('equal', number);
+});

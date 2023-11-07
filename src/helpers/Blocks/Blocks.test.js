@@ -64,6 +64,24 @@ config.blocks.blocksConfig.text = {
   }),
 };
 
+config.blocks.blocksConfig.dummyText = {
+  id: 'dummyText',
+  title: 'Text',
+  group: 'text',
+  restricted: false,
+  mostUsed: false,
+  blockHasOwnFocusManagement: true,
+  blockHasValue: (data) => {
+    const isEmpty =
+      !data.text ||
+      (data.text?.blocks?.length === 1 && data.text.blocks[0].text === '');
+    return !isEmpty;
+  },
+  initialValue: ({ value, id, formData }) => {
+    return { ...value, marker: true };
+  },
+};
+
 config.blocks.blocksConfig.enhancedBlock = {
   id: 'enhancedBlock',
   title: 'Text',
@@ -473,6 +491,63 @@ describe('Blocks', () => {
         1,
       );
       expect(form.blocks_layout.items).toStrictEqual(['a', newId, 'b']);
+    });
+
+    it('initializes data for new block with initialValue', () => {
+      const [newId, form] = addBlock(
+        {
+          blocks: { a: { value: 1 }, b: { value: 2 } },
+          blocks_layout: { items: ['a', 'b'] },
+        },
+        'dummyText',
+        1,
+      );
+      expect(form.blocks[newId]).toStrictEqual({
+        '@type': 'dummyText',
+        marker: true,
+      });
+    });
+
+    it('initializes data for new block based on schema defaults', () => {
+      const [newId, form] = addBlock(
+        {
+          blocks: { a: { value: 1 }, b: { value: 2 } },
+          blocks_layout: { items: ['a', 'b'] },
+        },
+        'text',
+        1,
+      );
+      expect(form.blocks[newId]).toStrictEqual({
+        '@type': 'text',
+        booleanField: false,
+        description: 'Default description',
+        title: 'Default title',
+      });
+    });
+
+    it('initializes data for new block based on schema defaults and initialValue', () => {
+      config.blocks.blocksConfig.text.initialValue = ({ value }) => ({
+        ...value,
+        marker: true,
+      });
+      const [newId, form] = addBlock(
+        {
+          blocks: { a: { value: 1 }, b: { value: 2 } },
+          blocks_layout: { items: ['a', 'b'] },
+        },
+        'text',
+        1,
+      );
+
+      delete config.blocks.blocksConfig.text.initialValue;
+
+      expect(form.blocks[newId]).toStrictEqual({
+        '@type': 'text',
+        booleanField: false,
+        description: 'Default description',
+        title: 'Default title',
+        marker: true,
+      });
     });
   });
 
