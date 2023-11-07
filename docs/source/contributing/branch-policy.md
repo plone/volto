@@ -26,8 +26,10 @@ canary
     We also freeze the release candidate, and stop adding features to it.
     This allows us to continue development on `main`, which may include both breaking changes that must not be backported, and bug fixes and feature additions that may be backported but only after the release candidate becomes final.
 
-    When opening a pull request, the contributor must open it against `main`.
-    If the pull request is a feature or a bugfix, and if the release manager deems it useful to the latest version's branch, they may ask the contributor to backport it to that branch.
+    When opening a pull request, you must open it against `main`, unless it involves translations.
+    See {ref}`contributing-branch-policy-for-translations-label` for details.
+
+    If the pull request is a feature or a bugfix, and if the release manager deems it useful to the latest version's branch, they may ask you to backport it to that branch.
 
 `17.x.x`
 :   `17.x.x` is the current stable and actively developed branch in git.
@@ -42,7 +44,3 @@ canary
 `15.x.x`
 :   `15.x.x` and older branches are no longer supported.
     If you need a bug fix or security update to any of them, please submit a pull request, and the Volto Team will review it to determine whether it's suitable to merge.
-
-```{todo}
-See https://github.com/plone/volto/issues/5255
-```
