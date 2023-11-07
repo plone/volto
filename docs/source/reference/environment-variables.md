@@ -1,3 +1,12 @@
+---
+myst:
+  html_meta:
+    "description": "How to use environment variables in Volto"
+    "property=og:description": "How to use environment variables in Volto"
+    "property=og:title": "How to use environment variables in Volto"
+    "keywords": "Volto, Plone, frontend, React, environment variables"
+---
+
 # How to use environment variables
 
 ## Configure your development environment
