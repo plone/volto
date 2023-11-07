@@ -1533,7 +1533,6 @@ myst:
 
 - Upgrade testbed and convenience api folder to Plone 6 final @sneridagh [#4105](https://github.com/plone/volto/issues/4105)
 
-
 ## 16.4.1 (2022-12-13)
 
 ### Bugfix
@@ -1541,25 +1540,25 @@ myst:
 - For hot reloading purposes when developing code, the Volto package is no longer excluded @tiberiuichim [#4108](https://github.com/plone/volto/issues/4108)
 - Remove clean-css from the CSS minimizing step, use css-minimizer-webpack-plugin one instead @sneridagh [#4115](https://github.com/plone/volto/issues/4115)
 
-
 ## 16.4.0 (2022-12-12)
 
 ### Feature
 
+- Added Image Preview in ObjectBrowserNav @dobri1408
 - Update Traefik version and make volume mount (docker-compose) read-only [#4067](https://github.com/plone/volto/issues/4067)
 - Allow addons to provide an `eslint.extend.js` file that customizez eslint configuration @tiberiuichim [#4072](https://github.com/plone/volto/issues/4072)
 
 ### Bugfix
 
 - Update Chinese translation @adam139 [#4009](https://github.com/plone/volto/issues/4009)
-- Reset value of search field after submit. [@MAX-786] [#4028](https://github.com/plone/volto/issues/4028)
+- Reset value of search field after submit. [@MAX-786][#4028](https://github.com/plone/volto/issues/4028)
 - Don't crash the view page when dealing with unknown blocks @tiberiuichim [#4070](https://github.com/plone/volto/issues/4070)
 - Bump version for plone-backend version used in Makefile @tiberiuichim [#4071](https://github.com/plone/volto/issues/4071)
 - Properly handle whitespace in HTML (richtext) slate-based widget @tiberiuichim [#4082](https://github.com/plone/volto/issues/4082)
 - Add Finnish translation (contributed by @rioksane)
-  [erral] [#4084](https://github.com/plone/volto/issues/4084)
+  [erral][#4084](https://github.com/plone/volto/issues/4084)
 - Fix typo in english translation and add missing french translation
-  [mpeeters, jchandelle] [#4085](https://github.com/plone/volto/issues/4085)
+  [mpeeters, jchandelle][#4085](https://github.com/plone/volto/issues/4085)
 
 ### Internal
 
@@ -1567,9 +1566,8 @@ myst:
 
 ### Documentation
 
-- Add content for user-manual of Volto, Plone 6 frontend. [@MAX-786] [#3827](https://github.com/plone/volto/issues/3827)
+- Add content for user-manual of Volto, Plone 6 frontend. [@MAX-786][#3827](https://github.com/plone/volto/issues/3827)
 - Remove duplicate `H1`-level page title, and inherit from Volto's `CHANGELOG.md`. @stevepiercy [#4048](https://github.com/plone/volto/issues/4048)
-
 
 ## 16.3.0 (2022-12-05)
 
@@ -1586,9 +1584,9 @@ myst:
 - Clear error message when canceling user add. Fix https://github.com/plone/volto/issues/4006 @wesleybl [#4006](https://github.com/plone/volto/issues/4006)
 - Fix subscript and supscript active at same time. @iFlameing [#4011](https://github.com/plone/volto/issues/4011)
 - Complete eu translation
-  [erral] [#4015](https://github.com/plone/volto/issues/4015)
+  [erral][#4015](https://github.com/plone/volto/issues/4015)
 - Complete es translation
-  [erral] [#4016](https://github.com/plone/volto/issues/4016)
+  [erral][#4016](https://github.com/plone/volto/issues/4016)
 - Add `cypress.config.js` to generator templates @sneridagh [#4021](https://github.com/plone/volto/issues/4021)
 - Bump Volto core packages with the current Volto version on Volto release @sneridagh [#4025](https://github.com/plone/volto/issues/4025)
 
@@ -1603,7 +1601,6 @@ myst:
 - Close the open Glossary list. @stevepiercy [#3995](https://github.com/plone/volto/issues/3995)
 - Added docs for proper usage of draftjs for richtext widgets. @pnicolli [#4001](https://github.com/plone/volto/issues/4001)
 - Document how to change the base font and the font for headings. Describe how to host the font. @ksuess [#4013](https://github.com/plone/volto/issues/4013)
-
 
 ## 16.2.0 (2022-11-25)
 

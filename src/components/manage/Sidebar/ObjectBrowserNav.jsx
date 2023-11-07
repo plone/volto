@@ -3,9 +3,13 @@ import { Button, Segment, Popup } from 'semantic-ui-react';
 import { useIntl, defineMessages } from 'react-intl';
 import cx from 'classnames';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
-import { flattenToAppURL, getContentIcon } from '@plone/volto/helpers';
+import {
+  flattenToAppURL,
+  getContentIcon,
+  getPreviewImageIcon,
+} from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
-
+import { Image } from 'semantic-ui-react';
 import rightArrowSVG from '@plone/volto/icons/right-key.svg';
 import homeSVG from '@plone/volto/icons/home.svg';
 
@@ -73,20 +77,28 @@ const ObjectBrowserNav = ({
                 key={item['@id']}
                 content={
                   <>
-                    <Icon name={homeSVG} size="18px" />{' '}
+                    <Icon name={homeSVG} size="18px" />
                     {flattenToAppURL(item['@id'])} ( {item['@type']})
                   </>
                 }
                 trigger={
                   <span>
-                    <Icon
-                      name={getContentIcon(item['@type'], item.is_folderish)}
-                      size="24px"
-                    />
+                    {item['@type'] === 'Image' ||
+                    item.hasPreviewImage === true ||
+                    item?.image_scales?.image?.length > 0 ? (
+                      <Image
+                        src={getPreviewImageIcon(item)}
+                        className="sidebar-image-icon"
+                      />
+                    ) : (
+                      <Icon
+                        name={getContentIcon(item['@type'], item.is_folderish)}
+                        size="24px"
+                      />
+                    )}
                   </span>
                 }
               />
-
               {item.title}
             </span>
             {item.is_folderish && mode === 'image' && (
