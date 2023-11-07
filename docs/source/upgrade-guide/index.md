@@ -24,6 +24,21 @@ The generator will also "update" your project with the latest changes, and propo
 Thus it is safe to run it on top of your project and answer the prompts.
 ```
 
+(volto-upgrade-guide-18.x.x)=
+
+## Upgrading to Volto 18.x.x
+
+### Upgraded Slate libraries
+
+The support libraries for Slate integration have been upgraded, mainly for bugfixes.
+There is a breaking change though on them. They have deprecated a prop in the main editor component: setting `value` is no longer supported in favor of `initialValue`.
+
+If you are using in your add-on(s) or projects directly the component provided by the library, you need to take action and update the name of the prop used.
+
+```{note}
+It is advisable that you always use in your add-on(s) and projects the public components provided by Volto instead of using directly the support libraries that Volto packages.
+```
+
 (volto-upgrade-guide-17.x.x)=
 
 ## Upgrading to Volto 17.x.x
