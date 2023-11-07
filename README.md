@@ -84,7 +84,6 @@ On Plone 5, Volto is currently tested with the following packages pinned to spec
 - plone.rest 2.0.0
 - plone.volto 4.0.3
 
-
 ## Volto in Production
 
 Volto is actively developed since 2017 and used in production since 2018 on the following websites:
