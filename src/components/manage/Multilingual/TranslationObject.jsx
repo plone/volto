@@ -1,8 +1,3 @@
-/**
- * Add container.
- * @module components/manage/Add/Add
- */
-
 import React, { useEffect, useState } from 'react';
 import { map } from 'lodash';
 import { defineMessages, useIntl } from 'react-intl';
@@ -28,11 +23,6 @@ const messages = defineMessages({
   },
 });
 
-/**
- * TranslationObject class.
- * @class TranslationObject
- * @extends Component
- */
 const TranslationObject = ({
   translationObject,
   schema,

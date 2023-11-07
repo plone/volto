@@ -1,8 +1,3 @@
-/**
- * Body video block.
- * @module components/manage/Blocks/Video/Body
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
@@ -10,11 +5,6 @@ import { Embed, Message } from 'semantic-ui-react';
 import cx from 'classnames';
 import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers';
 
-/**
- * Body video block class.
- * @class Body
- * @extends Component
- */
 const Body = ({ data, isEditMode }) => {
   let placeholder = data.preview_image
     ? isInternalURL(data.preview_image)
