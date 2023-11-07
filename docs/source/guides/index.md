@@ -28,5 +28,4 @@ appextras
 contextnavigation
 pluggables
 widget
-ie11compat
 ```
