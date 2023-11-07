@@ -13,9 +13,9 @@ MAKEFLAGS+=--no-builtin-rules
 # Project settings
 
 INSTANCE_PORT=8080
-DOCKER_IMAGE=plone/server-dev:6.0.6
-DOCKER_IMAGE_ACCEPTANCE=plone/server-acceptance:6.0.6
-KGS=plone.restapi==8.42.0
+DOCKER_IMAGE=plone/server-dev:6.0.8
+DOCKER_IMAGE_ACCEPTANCE=plone/server-acceptance:6.0.8
+KGS=
 NODEBIN = ./node_modules/.bin
 SCRIPTSPACKAGE = ./packages/scripts
 
