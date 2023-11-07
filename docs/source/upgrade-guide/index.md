@@ -30,13 +30,14 @@ Thus it is safe to run it on top of your project and answer the prompts.
 
 ### Upgraded Slate libraries
 
-The support libraries for Slate integration have been upgraded, mainly for bugfixes.
-There is a breaking change though on them. They have deprecated a prop in the main editor component: setting `value` is no longer supported in favor of `initialValue`.
+The support libraries for Slate integration have been upgraded, mainly for bug fixes.
+This is a breaking change.
+The deprecated prop `value` in the main editor component setting is no longer supported, and has been replaced by `initialValue`.
 
-If you are using in your add-on(s) or projects directly the component provided by the library, you need to take action and update the name of the prop used.
+If you use this component in your add-ons or projects directly, you need to replace the name of the prop.
 
 ```{note}
-It is advisable that you always use in your add-on(s) and projects the public components provided by Volto instead of using directly the support libraries that Volto packages.
+In your add-ons and projects, we advise you to always use the public components provided by Volto, instead of directly using the support libraries packaged in Volto.
 ```
 
 (volto-upgrade-guide-17.x.x)=
