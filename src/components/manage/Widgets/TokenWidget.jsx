@@ -174,6 +174,7 @@ class TokenWidget extends Component {
         <CreatableSelect
           id={`field-${this.props.id}`}
           key={this.props.id}
+          menuShouldScrollIntoView={false}
           isDisabled={this.props.isDisabled}
           className="react-select-container"
           classNamePrefix="react-select"

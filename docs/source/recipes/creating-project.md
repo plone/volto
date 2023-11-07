@@ -9,13 +9,18 @@ myst:
 
 # Creating a new Volto project
 
+```{seealso}
+This document shows how to create a Volto project with the frontend only.
+To create a full Plone project with both frontend and backend, see {doc}`plone:install/install-from-packages` instead.
+```
+
 For using Volto for a project—in other words, use Volto as a library—you should use Volto's project generator `@plone/generator-volto`.
 It's a boilerplate generator based in Yeoman that will provide you with the basic files and folder structure to bootstrap a Volto site.
 In addition to bootstrapping stand-alone Volto projects, it can also bootstrap Volto add-ons.
 
 1.  Open a terminal and execute:
 
-    ```bash
+    ```shell
     npm install -g yo @plone/generator-volto
     # Install the latest and stable release of Volto with the following command
     yo @plone/volto
@@ -29,7 +34,8 @@ In addition to bootstrapping stand-alone Volto projects, it can also bootstrap V
     yo @plone/volto --addon=volto-form-block
     ```
 
-2.  Answer the questions when prompted, and provide the name of the new app (folder) to be created. For the sake of this documentation, provide `myvoltoproject` as the project name then.
+2.  Answer the questions when prompted, and provide the name of the new app (folder) to be created.
+    For the sake of this documentation, provide `myvoltoproject` as the project name then.
 
     ````{note}
     You can run the generator with parameters to tailor your requirements.
@@ -38,7 +44,7 @@ In addition to bootstrapping stand-alone Volto projects, it can also bootstrap V
     yo @plone/volto --help
     ```
 
-    or take a look at the [README](https://github.com/plone/volto/blob/master/packages/generator-volto/README.md) for more information.
+    or take a look at the [README](https://github.com/plone/volto/blob/main/packages/generator-volto/README.md) for more information.
     ````
 
 3.  Change directory to the newly created folder `myvoltoapp` (or the one you've chosen).

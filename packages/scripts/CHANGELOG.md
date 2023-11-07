@@ -3,10 +3,45 @@
 <!-- You should *NOT* be adding new change log entries to this file.
      You should create a file in the news directory instead.
      For helpful instructions, please see:
-     https://6.dev-docs.plone.org/volto/developer-guidelines/contributing.html#create-a-pull-request
+     https://6.docs.plone.org/volto/developer-guidelines/contributing.html#create-a-pull-request
 -->
 
 <!-- towncrier release notes start -->
+
+## 3.0.1 (2023-10-06)
+
+### Bugfix
+
+- Update `git-url-parse` dependency. @davisagli [#5098](https://github.com/plone/volto/issues/5098)
+- Fix error ``no such file or directory, open 'addon-testing-project/jsconfig.json'`` in addon clone command. @wesleybl [#5239](https://github.com/plone/volto/issues/5239)
+
+
+## 3.0.0 (2023-04-07)
+
+### Breaking
+
+- Remove dependency on `simple-git`. It is used by `mrs-developer` but not directly. @davisagli [#4546](https://github.com/plone/volto/issues/4546)
+
+### Bugfix
+
+- Fixed i18n script to avoid overwriting translations with an empty msgstr @danalvrz [#4316](https://github.com/plone/volto/issues/4316)
+
+
+## 2.3.0 (2023-01-13)
+
+### Feature
+
+- The `consolidate` command includes Cypress folder @sneridagh [#4192](https://github.com/plone/volto/issues/4192)
+- Add backport PR helper script @sneridagh [#4222](https://github.com/plone/volto/issues/4222)
+- Improve consolidate and local clone copy files @sneridagh [#4253](https://github.com/plone/volto/issues/4253)
+
+
+## 2.2.2 (2022-12-23)
+
+### Internal
+
+- Adjust npmignores, reissue package @sneridagh [#0](https://github.com/plone/volto/issues/0)
+
 
 ## 2.2.1 (2022-11-24)
 
@@ -64,7 +99,7 @@
 
 - Removed `Razzle` as dependency, leave only the `babel-preset-razzle` one which is enough.
 
-  See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
+  See https://6.docs.plone.org/volto/upgrade-guide/index.html for more information.
 
 ## 1.6.0 (2022-08-05)
 

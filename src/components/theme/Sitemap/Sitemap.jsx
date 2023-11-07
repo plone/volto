@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { asyncConnect } from '@plone/volto/helpers';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Container } from 'semantic-ui-react';
-import { Helmet } from '@plone/volto/helpers';
+import { Helmet, toBackendLang } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
 import config from '@plone/volto/registry';
 
@@ -22,6 +22,13 @@ const messages = defineMessages({
     defaultMessage: 'Sitemap',
   },
 });
+
+export function getSitemapPath(pathname = '', lang) {
+  const prefix = pathname.replace(/\/sitemap$/gm, '').replace(/^\//, '');
+  const path = prefix || lang || '';
+  return path;
+}
+
 /**
  * Sitemap class.
  * @class Sitemap
@@ -39,11 +46,13 @@ class Sitemap extends Component {
 
   componentDidMount() {
     const { settings } = config;
-    if (settings.isMultilingual) {
-      this.props.getNavigation(`${this.props.lang}`, 4);
-    } else {
-      this.props.getNavigation('', 4);
-    }
+
+    const lang = settings.isMultilingual
+      ? `${toBackendLang(this.props.lang)}`
+      : null;
+
+    const path = getSitemapPath(this.props.location.pathname, lang);
+    this.props.getNavigation(path, 4);
   }
 
   /**
@@ -105,13 +114,17 @@ export default compose(
     {
       key: 'navigation',
       promise: ({ location, store: { dispatch, getState } }) => {
+        if (!__SERVER__) return;
         const { settings } = config;
-        const lang = getState().intl.locale;
-        if (settings.isMultilingual) {
-          return __SERVER__ && dispatch(getNavigation(`${lang}`, 4));
-        } else {
-          return __SERVER__ && dispatch(getNavigation('', 4));
-        }
+
+        const path = getSitemapPath(
+          location.pathname,
+          settings.isMultilingual
+            ? toBackendLang(getState().intl.locale)
+            : null,
+        );
+
+        return dispatch(getNavigation(path, 4));
       },
     },
   ]),

@@ -6,7 +6,7 @@ export const getsystemNeedsUpgrade = {
   plone_gs_metadata_version_file_system: '6008',
   plone_gs_metadata_version_installed: '6006',
   plone_restapi_version: '8.32.0',
-  plone_version: '6.0.0b3',
+  plone_version: '6.0.0',
   python_version:
     '3.9.14 (main, Sep 13 2022, 03:20:56) \n[GCC 10.2.1 20210110]',
   upgrade: true,

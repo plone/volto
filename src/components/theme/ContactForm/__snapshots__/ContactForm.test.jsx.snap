@@ -36,7 +36,6 @@ exports[`Contact form renders a contact form 1`] = `
       >
         <fieldset
           className="invisible"
-          disabled={false}
         >
           <div
             className="ui raised segments"
@@ -196,7 +195,6 @@ exports[`Contact form renders a contact form with error message 1`] = `
       >
         <fieldset
           className="invisible"
-          disabled={false}
         >
           <div
             className="ui raised segments"

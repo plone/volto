@@ -9,6 +9,7 @@ import { withSearch, withQueryString } from './hocs';
 import { compose } from 'redux';
 import { useSelector } from 'react-redux';
 import { isEqual, isFunction } from 'lodash';
+import cx from 'classnames';
 
 const getListingBodyVariation = (data) => {
   const { variations } = config.blocks.blocksConfig.listing;
@@ -57,7 +58,7 @@ const applyDefaults = (data, root) => {
 };
 
 const SearchBlockView = (props) => {
-  const { data, searchData, mode = 'view', variation } = props;
+  const { id, data, searchData, mode = 'view', variation, className } = props;
 
   const Layout = variation.view;
 
@@ -81,7 +82,7 @@ const SearchBlockView = (props) => {
   const listingBodyVariation = variations.find(({ id }) => id === selectedView);
 
   return (
-    <div className="block search">
+    <div className={cx('block search', selectedView, className)}>
       <Layout
         {...props}
         isEditMode={mode === 'edit'}
@@ -89,6 +90,7 @@ const SearchBlockView = (props) => {
         setSelectedView={setSelectedView}
       >
         <ListingBody
+          id={id}
           variation={{ ...data, ...listingBodyVariation }}
           data={listingBodyData}
           path={props.path}
@@ -104,4 +106,4 @@ export const SearchBlockViewComponent = compose(
   (Component) => React.memo(Component, blockPropsAreChanged),
 )(SearchBlockView);
 
-export default compose(withQueryString, withSearch())(SearchBlockViewComponent);
+export default withSearch()(withQueryString(SearchBlockViewComponent));

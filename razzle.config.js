@@ -7,17 +7,19 @@ const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const fs = require('fs');
 const RootResolverPlugin = require('./webpack-plugins/webpack-root-resolver');
 const RelativeResolverPlugin = require('./webpack-plugins/webpack-relative-resolver');
-const createAddonsLoader = require('./create-addons-loader');
-const AddonConfigurationRegistry = require('./addon-registry');
+const createAddonsLoader = require('./packages/registry/create-addons-loader');
+const createThemeAddonsLoader = require('./packages/registry/create-theme-addons-loader');
+const AddonConfigurationRegistry = require('./packages/registry/addon-registry');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 
 const fileLoaderFinder = makeLoaderFinder('file-loader');
 
 const projectRootPath = path.resolve('.');
 const languages = require('./src/constants/Languages');
-const { poToJson } = require('@plone/scripts/i18n.cjs');
+const { poToJson } = require('./packages/scripts/i18n.cjs');
 
 const packageJson = require(path.join(projectRootPath, 'package.json'));
 
@@ -99,15 +101,14 @@ const defaultModify = ({
       runtimeChunk: true,
       splitChunks: {
         chunks: 'all',
-        name: dev,
         cacheGroups: {
           // We reset the default values set by webpack
           // So the chunks have all proper names (no random numbers)
           // The CSS gets bundled in one CSS chunk and it's consistent with
           // the `style-loader` load order, so no difference between
           // local (project CSS) and `node_modules` ones.
-          vendors: false,
           default: false,
+          defaultVendors: false,
         },
       },
     });
@@ -117,6 +118,7 @@ const defaultModify = ({
     // Using the default provided (cssnano) by css-minimizer-webpack-plugin
     // should be enough see:
     // (https://github.com/clean-css/clean-css/discussions/1209)
+    delete options.webpackOptions.terserPluginOptions?.sourceMap;
     if (!dev) {
       config.optimization = Object.assign({}, config.optimization, {
         minimizer: [
@@ -132,12 +134,9 @@ const defaultModify = ({
     }
 
     config.plugins.unshift(
-      // restrict moment.js locales to en/de
-      // see https://github.com/jmblog/how-to-optimize-momentjs-with-webpack for details
-      new webpack.ContextReplacementPlugin(
-        /moment[/\\]locale$/,
-        new RegExp(Object.keys(languages).join('|')),
-      ),
+      // restrict moment.js locales to supported languages
+      // see https://momentjs.com/docs/#/use-it/webpack/ for details
+      new MomentLocalesPlugin({ localesToKeep: Object.keys(languages) }),
       new LodashModuleReplacementPlugin({
         shorthands: true,
         cloning: true,
@@ -233,6 +232,7 @@ const defaultModify = ({
     'load-volto-addons': addonsLoaderPath,
     ...registry.getResolveAliases(),
     '@plone/volto': `${registry.voltoPath}/src`,
+    '@plone/registry': `${registry.voltoPath}/packages/registry/src`,
     // to be able to reference path uncustomized by webpack
     '@plone/volto-original': `${registry.voltoPath}/src`,
     // be able to reference current package from customized package
@@ -245,6 +245,24 @@ const defaultModify = ({
     'lodash-es': path.dirname(require.resolve('lodash')),
   };
 
+  const [addonsThemeLoaderVariablesPath, addonsThemeLoaderMainPath] =
+    createThemeAddonsLoader(registry.getCustomThemeAddons());
+
+  // Automatic Theme Loading
+  if (registry.theme) {
+    // The themes should be located in `src/theme`
+    const themePath = registry.packages[registry.theme].modulePath;
+    const themeConfigPath = `${themePath}/theme/theme.config`;
+    config.resolve.alias['../../theme.config$'] = themeConfigPath;
+    config.resolve.alias['../../theme.config'] = themeConfigPath;
+
+    // We create an alias for each custom theme insertion point (variables, main)
+    config.resolve.alias['addonsThemeCustomizationsVariables'] =
+      addonsThemeLoaderVariablesPath;
+    config.resolve.alias['addonsThemeCustomizationsMain'] =
+      addonsThemeLoaderMainPath;
+  }
+
   config.performance = {
     maxAssetSize: 10000000,
     maxEntrypointSize: 10000000,
@@ -256,6 +274,8 @@ const defaultModify = ({
   if (packageJson.name !== '@plone/volto') {
     include.push(fs.realpathSync(`${registry.voltoPath}/src`));
   }
+
+  include.push(fs.realpathSync(`${registry.voltoPath}/packages/registry/src`));
 
   // Add babel support external (ie. node_modules npm published packages)
   const packagesNames = Object.keys(registry.packages);
@@ -317,7 +337,12 @@ const defaultModify = ({
       : [];
 
   if (config.devServer) {
-    config.devServer.watchOptions.ignored = /node_modules\/(?!@plone\/volto)/;
+    config.devServer.static.watch.ignored = /node_modules\/(?!@plone\/volto)/;
+    config.snapshot = {
+      managedPaths: [
+        /^(.+?[\\/]node_modules[\\/](?!(@plone[\\/]volto))(@.+?[\\/])?.+?)[\\/]/,
+      ],
+    };
   }
 
   return config;
@@ -330,6 +355,7 @@ const defaultPlugins = [
   { object: require('./webpack-plugins/webpack-svg-plugin') },
   { object: require('./webpack-plugins/webpack-bundle-analyze-plugin') },
   { object: require('./jest-extender-plugin') },
+  'scss',
 ];
 
 const plugins = addonExtenders.reduce(

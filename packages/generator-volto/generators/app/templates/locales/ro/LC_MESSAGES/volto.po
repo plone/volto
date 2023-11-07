@@ -1,5 +1,3 @@
-# Translation of plone.pot to Romanian
-# Alin Voinea <avoinea@plone.org>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"

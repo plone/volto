@@ -1,8 +1,7 @@
-import '@testing-library/cypress/add-commands';
 import { getIfExists } from '../helpers';
 import { ploneAuth } from './constants';
 
-const HOSTNAME = Cypress.env('BACKEND_HOST') || 'localhost';
+const HOSTNAME = Cypress.env('BACKEND_HOST') || '127.0.0.1';
 const GUILLOTINA_API_URL = `http://${HOSTNAME}:8081/db/web`;
 const PLONE_SITE_ID = Cypress.env('SITE_ID') || 'plone';
 const PLONE_API_URL =
@@ -11,10 +10,34 @@ const PLONE_API_URL =
 const SLATE_SELECTOR = '.content-area .slate-editor [contenteditable=true]';
 const SLATE_TITLE_SELECTOR = '.block.inner.title [contenteditable="true"]';
 
+const TABLE_SLATE_SELECTOR =
+  '.celled.fixed.table tbody tr:nth-child(1) td:first-child() [contenteditable="true"]';
+const TABLE_HEAD_SLATE_SELECTOR =
+  '.celled.fixed.table thead tr th:first-child() [contenteditable="true"]';
+
 const ploneAuthObj = {
   user: ploneAuth[0],
   pass: ploneAuth[1],
 };
+
+export * from './volto-slate';
+
+// --- isInViewport ----------------------------------------------------------
+Cypress.Commands.add('isInViewport', (element) => {
+  cy.get(element).then(($el) => {
+    const windowInnerWidth = Cypress.config(`viewportWidth`);
+    const windowInnerHeight = Cypress.config(`viewportHeight`);
+    const rect = $el[0].getBoundingClientRect();
+
+    const rightBoundOfWindow = windowInnerWidth;
+    const bottomBoundOfWindow = windowInnerHeight;
+
+    expect(rect.top).to.be.at.least(0);
+    expect(rect.left).to.be.at.least(0);
+    expect(rect.right).to.be.lessThan(rightBoundOfWindow);
+    expect(rect.bottom).to.be.lessThan(bottomBoundOfWindow);
+  });
+});
 
 // --- AUTOLOGIN -------------------------------------------------------------
 Cypress.Commands.add('autologin', (usr, pass) => {
@@ -46,10 +69,12 @@ Cypress.Commands.add(
     contentType,
     contentId,
     contentTitle,
+    contentDescription,
     path = '',
     allow_discussion = false,
     transition = '',
     bodyModifier = (body) => body,
+    image = false,
   }) => {
     let api_url, auth;
     if (Cypress.env('API') === 'guillotina') {
@@ -62,79 +87,119 @@ Cypress.Commands.add(
       api_url = PLONE_API_URL;
       auth = ploneAuthObj;
     }
+
+    const defaultParams = {
+      method: 'POST',
+      url: `${api_url}/${path}`,
+      headers: {
+        Accept: 'application/json',
+      },
+      auth: auth,
+      body: {
+        '@type': contentType,
+        id: contentId,
+        title: contentTitle,
+        description: contentDescription,
+        allow_discussion: allow_discussion,
+      },
+    };
+
     if (contentType === 'File') {
-      return cy.request({
-        method: 'POST',
-        url: `${api_url}/${path}`,
-        headers: {
-          Accept: 'application/json',
-        },
-        auth: auth,
+      const params = {
+        ...defaultParams,
         body: bodyModifier({
-          '@type': contentType,
-          id: contentId,
-          title: contentTitle,
+          ...defaultParams.body,
           file: {
             data: 'dGVzdGZpbGUK',
             encoding: 'base64',
             filename: 'lorem.txt',
             'content-type': 'text/plain',
           },
-          allow_discussion: allow_discussion,
         }),
-      });
+      };
+
+      return cy.request(params);
     }
     if (contentType === 'Image') {
-      return cy.request({
-        method: 'POST',
-        url: `${api_url}/${path}`,
-        headers: {
-          Accept: 'application/json',
-        },
-        auth: auth,
+      const params = {
+        ...defaultParams,
         body: bodyModifier({
-          '@type': contentType,
-          id: contentId,
-          title: contentTitle,
+          ...defaultParams.body,
           image: {
-            data:
-              'iVBORw0KGgoAAAANSUhEUgAAANcAAAA4CAMAAABZsZ3QAAAAM1BMVEX29fK42OU+oMvn7u9drtIPisHI4OhstdWZyt4fkcXX5+sAg74umMhNp86p0eJ7vNiKw9v/UV4wAAAAAXRSTlMAQObYZgAABBxJREFUeF7tmuty4yAMhZG4X2zn/Z92J5tsBJwWXG/i3XR6frW2Y/SBLIRAfaQUDNt8E5tLUt9BycfcKfq3R6Mlfyimtx4rzp+K3dtibXkor99zsEqLYZltblTecciogoh+TXfY1Ve4dn07rCDGG9dHSEEOg/GmXl0U1XDxTKxNK5De7BxsyyBr6gGm2/vPxKJ8F6f7BXKfRMp1xIWK9A+5ks25alSb353dWnDJN1k35EL5f8dVGifTf/4tjUuuFq7u4srmXC60yAmldLXIWbg65RKU87lcGxJCFqUPv0IacW0PmSivOZFLE908inPToMmii/roG+MRV/O8FU88i8tFsxV3a06MFUw0Qu7RmAtdV5/HVVaOVMTWNOWSwMljLhzhcB6XIS7OK5V6AvRDNN7t5VJWQs1J40UmalbK56usBG/CuCHSYuc+rkUGeMCViNRARPrzW52N3oQLe6WifNliSuuGaH3czbVNudI9s7ZLUCLHVwWlyES522o1t14uvmbblmVTKqFjaZYJFSTPP4dLL1kU1z7p0lzdbRulmEWLxoQX+z9ce7A8GqEEucllLxePuZwdJl1Lezu0hoswvTPt61DrFcRuujV/2cmlxaGBC7Aw6cpovGANwRiSdOAWJ5AGy4gLL64dl0QhUEAuEUNws+XxV+OKGPdw/hESGYF9XEGaFC7sNLMSXWJjHsnanYi87VK428N2uxpOjOFANcagLM5l+7mSycM8KknZpKLcGi6jmzWGr/vLurZ/0g4u9AZuAoeb5r1ceQhyiTPY1E4wUR6u/F3H2ojSpXMMriBPT9cezTto8Cx+MsglHL4fv1Rxrb1LVw9yvyQpJ3AhFnLZfuRLH2QsOG3FGGD20X/th/u5bFAt16Bt308KjF+MNOXgl/SquIEySX3GhaZvc67KZbDxcCDORz2N8yCWPaY5lyQZO7lQ29fnZbt3Xu6qoge4+DjXl/MocySPOp9rlvdyznahRyHEYd77v3LhugOXDv4J65QXfl803BDAdaWBEDhfVx7nKofjoVCgxnUAqw/UAUDPn788BDvQuG4TDtdtUPvzjSlXAB8DvaDOhhrmhwbywylXAm8CvaouikJTL93gs3y7Yy4VYbIxOHrcMizPqWOjqO9l3Uz52kibQy4xxOgqhJvD+w5rvokOcAlGvNCfeqCv1ste1stzLm0f71Iq3ZfTrPfuE5nhPtF+LvQE2lffQC7pYtQy3tdzdrKvd5TLVVzDetScS3nEKmmwDyt1Cev1kX3YfbvzNK4fzrlw+cB6vm+uiUgf2zdXI62241LawCb7Pi5FXFPF8KpzDoF/Sw2lg+GrHNbno1mhPu+VCF/vfMnw06PnUl6j48dVHD3jHNHPua+fc3o/5yp/zsGi0vYtzi3Pz5mHd4T6BWMIlewacd63AAAAAElFTkSuQmCC',
+            data: 'iVBORw0KGgoAAAANSUhEUgAAANcAAAA4CAMAAABZsZ3QAAAAM1BMVEX29fK42OU+oMvn7u9drtIPisHI4OhstdWZyt4fkcXX5+sAg74umMhNp86p0eJ7vNiKw9v/UV4wAAAAAXRSTlMAQObYZgAABBxJREFUeF7tmuty4yAMhZG4X2zn/Z92J5tsBJwWXG/i3XR6frW2Y/SBLIRAfaQUDNt8E5tLUt9BycfcKfq3R6Mlfyimtx4rzp+K3dtibXkor99zsEqLYZltblTecciogoh+TXfY1Ve4dn07rCDGG9dHSEEOg/GmXl0U1XDxTKxNK5De7BxsyyBr6gGm2/vPxKJ8F6f7BXKfRMp1xIWK9A+5ks25alSb353dWnDJN1k35EL5f8dVGifTf/4tjUuuFq7u4srmXC60yAmldLXIWbg65RKU87lcGxJCFqUPv0IacW0PmSivOZFLE908inPToMmii/roG+MRV/O8FU88i8tFsxV3a06MFUw0Qu7RmAtdV5/HVVaOVMTWNOWSwMljLhzhcB6XIS7OK5V6AvRDNN7t5VJWQs1J40UmalbK56usBG/CuCHSYuc+rkUGeMCViNRARPrzW52N3oQLe6WifNliSuuGaH3czbVNudI9s7ZLUCLHVwWlyES522o1t14uvmbblmVTKqFjaZYJFSTPP4dLL1kU1z7p0lzdbRulmEWLxoQX+z9ce7A8GqEEucllLxePuZwdJl1Lezu0hoswvTPt61DrFcRuujV/2cmlxaGBC7Aw6cpovGANwRiSdOAWJ5AGy4gLL64dl0QhUEAuEUNws+XxV+OKGPdw/hESGYF9XEGaFC7sNLMSXWJjHsnanYi87VK428N2uxpOjOFANcagLM5l+7mSycM8KknZpKLcGi6jmzWGr/vLurZ/0g4u9AZuAoeb5r1ceQhyiTPY1E4wUR6u/F3H2ojSpXMMriBPT9cezTto8Cx+MsglHL4fv1Rxrb1LVw9yvyQpJ3AhFnLZfuRLH2QsOG3FGGD20X/th/u5bFAt16Bt308KjF+MNOXgl/SquIEySX3GhaZvc67KZbDxcCDORz2N8yCWPaY5lyQZO7lQ29fnZbt3Xu6qoge4+DjXl/MocySPOp9rlvdyznahRyHEYd77v3LhugOXDv4J65QXfl803BDAdaWBEDhfVx7nKofjoVCgxnUAqw/UAUDPn788BDvQuG4TDtdtUPvzjSlXAB8DvaDOhhrmhwbywylXAm8CvaouikJTL93gs3y7Yy4VYbIxOHrcMizPqWOjqO9l3Uz52kibQy4xxOgqhJvD+w5rvokOcAlGvNCfeqCv1ste1stzLm0f71Iq3ZfTrPfuE5nhPtF+LvQE2lffQC7pYtQy3tdzdrKvd5TLVVzDetScS3nEKmmwDyt1Cev1kX3YfbvzNK4fzrlw+cB6vm+uiUgf2zdXI62241LawCb7Pi5FXFPF8KpzDoF/Sw2lg+GrHNbno1mhPu+VCF/vfMnw06PnUl6j48dVHD3jHNHPua+fc3o/5yp/zsGi0vYtzi3Pz5mHd4T6BWMIlewacd63AAAAAElFTkSuQmCC',
             encoding: 'base64',
             filename: 'image.png',
             'content-type': 'image/png',
           },
         }),
-      });
+      };
+
+      return cy.request(params);
     }
     if (
       ['Document', 'News Item', 'Folder', 'CMSFolder'].includes(contentType)
     ) {
-      return cy
-        .request({
-          method: 'POST',
-          url: `${api_url}/${path}`,
-          headers: {
-            Accept: 'application/json',
+      const params = {
+        ...defaultParams,
+        body: {
+          ...defaultParams.body,
+          blocks: {
+            'd3f1c443-583f-4e8e-a682-3bf25752a300': { '@type': 'title' },
+            '7624cf59-05d0-4055-8f55-5fd6597d84b0': { '@type': 'slate' },
           },
-          auth: auth,
+          blocks_layout: {
+            items: [
+              'd3f1c443-583f-4e8e-a682-3bf25752a300',
+              '7624cf59-05d0-4055-8f55-5fd6597d84b0',
+            ],
+          },
+        },
+      };
+
+      if (image) {
+        let sourceFilename = 'cypress/fixtures/halfdome2022.jpg';
+        let imageObject = {
+          encoding: 'base64',
+          filename: 'image.jpg',
+          'content-type': 'image/jpg',
+        };
+        if (typeof image === 'object') {
+          sourceFilename = image.sourceFilename;
+          imageObject = {
+            ...imageObject,
+            ...image,
+          };
+        }
+        cy.readFile(sourceFilename, 'base64').then((encodedImage) => {
+          const withImageParams = {
+            ...params,
+            body: bodyModifier({
+              ...params.body,
+              preview_image: {
+                ...imageObject,
+                data: encodedImage,
+              },
+            }),
+          };
+
+          return cy.request(withImageParams).then(() => {
+            if (transition) {
+              cy.setWorkflow({
+                path: path || contentId,
+                review_state: transition,
+              });
+            }
+            console.log(`${contentType} created`);
+          });
+        });
+      } else {
+        const documentParams = {
+          ...params,
           body: bodyModifier({
-            '@type': contentType,
-            id: contentId,
-            title: contentTitle,
-            blocks: {
-              'd3f1c443-583f-4e8e-a682-3bf25752a300': { '@type': 'title' },
-              '7624cf59-05d0-4055-8f55-5fd6597d84b0': { '@type': 'slate' },
-            },
-            blocks_layout: {
-              items: [
-                'd3f1c443-583f-4e8e-a682-3bf25752a300',
-                '7624cf59-05d0-4055-8f55-5fd6597d84b0',
-              ],
-            },
-            allow_discussion: allow_discussion,
+            ...params.body,
           }),
-        })
-        .then(() => {
+        };
+        return cy.request(documentParams).then(() => {
           if (transition) {
             cy.setWorkflow({
               path: path || contentId,
@@ -143,6 +208,7 @@ Cypress.Commands.add(
           }
           console.log(`${contentType} created`);
         });
+      }
     } else {
       return cy
         .request({
@@ -223,7 +289,7 @@ Cypress.Commands.add('getContent', ({ path = '' }) => {
 // --- Add DX Content-Type ----------------------------------------------------------
 Cypress.Commands.add('addContentType', (name) => {
   let api_url, auth;
-  api_url = Cypress.env('API_PATH') || 'http://localhost:8080/Plone';
+  api_url = Cypress.env('API_PATH') || 'http://127.0.0.1:8080/Plone';
   auth = ploneAuthObj;
 
   return cy
@@ -244,7 +310,7 @@ Cypress.Commands.add('addContentType', (name) => {
 // --- Remove DX behavior ----------------------------------------------------------
 Cypress.Commands.add('removeContentType', (name) => {
   let api_url, auth;
-  api_url = Cypress.env('API_PATH') || 'http://localhost:8080/Plone';
+  api_url = Cypress.env('API_PATH') || 'http://127.0.0.1:8080/Plone';
   auth = ploneAuthObj;
 
   return cy
@@ -263,7 +329,7 @@ Cypress.Commands.add('removeContentType', (name) => {
 // --- Add DX field ----------------------------------------------------------
 Cypress.Commands.add('addSlateJSONField', (type, name) => {
   let api_url, auth;
-  api_url = Cypress.env('API_PATH') || 'http://localhost:8080/Plone';
+  api_url = Cypress.env('API_PATH') || 'http://127.0.0.1:8080/Plone';
   auth = ploneAuthObj;
 
   return cy
@@ -288,7 +354,7 @@ Cypress.Commands.add('addSlateJSONField', (type, name) => {
 // --- Remove DX field ----------------------------------------------------------
 Cypress.Commands.add('removeSlateJSONField', (type, name) => {
   let api_url, auth;
-  api_url = Cypress.env('API_PATH') || 'http://localhost:8080/Plone';
+  api_url = Cypress.env('API_PATH') || 'http://127.0.0.1:8080/Plone';
   auth = ploneAuthObj;
 
   return cy
@@ -316,7 +382,7 @@ Cypress.Commands.add(
     password = 'password',
     roles = ['Member', 'Reader', 'Editor'],
     groups = {
-      '@id': 'http://localhost:3000/@users',
+      '@id': 'http://127.0.0.1:3000/@users',
       items: [
         {
           id: 'AuthenticatedUsers',
@@ -400,7 +466,7 @@ Cypress.Commands.add(
     password = ploneAuth[1],
     roles = ['Member', 'Reader'],
     users = {
-      '@id': 'http://localhost:3000/@groups',
+      '@id': 'http://127.0.0.1:3000/@groups',
       items: [],
       items_total: 0,
     },
@@ -622,10 +688,7 @@ Cypress.Commands.add(
 Cypress.Commands.add('toolbarSave', () => {
   // Save
   cy.get('#toolbar-save', { timeout: 10000 }).click();
-  cy.waitForResourceToLoad('@navigation');
-  cy.waitForResourceToLoad('@breadcrumbs');
-  cy.waitForResourceToLoad('@actions');
-  cy.waitForResourceToLoad('@types');
+  cy.waitForResourceToLoad('');
 });
 
 Cypress.Commands.add('clearSlate', (selector) => {
@@ -651,6 +714,20 @@ Cypress.Commands.add('getSlate', (createNewSlate = false) => {
     },
     () => {
       slate = cy.get(SLATE_SELECTOR, { timeout: 10000 }).last();
+    },
+  );
+  return slate;
+});
+
+Cypress.Commands.add('getSlateSelector', (selector = SLATE_SELECTOR) => {
+  let slate;
+  cy.getIfExists(
+    selector,
+    () => {
+      slate = cy.get(selector).last();
+    },
+    () => {
+      slate = cy.get(selector, { timeout: 10000 }).last();
     },
   );
   return slate;
@@ -702,16 +779,23 @@ Cypress.Commands.add('lineBreakInSlate', { prevSubject: true }, (subject) => {
   );
 });
 
-Cypress.Commands.add('setSlateSelection', (subject, query, endQuery) => {
-  cy.get('.slate-editor.selected [contenteditable=true]')
-    .focus()
-    // .click()
-    .setSelection(subject, query, endQuery)
-    .wait(1000); // this wait is needed for the selection change to be detected after
-});
+Cypress.Commands.add(
+  'setSlateSelection',
+  (subject, query, endQuery, wait = 1000) => {
+    cy.get('.slate-editor.selected [contenteditable=true]')
+      .focus()
+      // .click()
+      .setSelection(subject, query, endQuery)
+      .wait(wait); // this wait is needed for the selection change to be detected after
+  },
+);
 
 Cypress.Commands.add('getSlateEditorAndType', (type) => {
   cy.getSlate().focus().click().type(type);
+});
+
+Cypress.Commands.add('getSlateEditorSelectorAndType', (selector, type) => {
+  cy.getSlateSelector(selector).focus().click().type(type);
 });
 
 Cypress.Commands.add('setSlateCursor', (subject, query, endQuery) => {
@@ -722,9 +806,9 @@ Cypress.Commands.add('setSlateCursor', (subject, query, endQuery) => {
     .wait(1000); // this wait is needed for the selection change to be detected after
 });
 
-Cypress.Commands.add('clickSlateButton', (button) => {
+Cypress.Commands.add('clickSlateButton', (button, timeout = 1000) => {
   cy.get(`.slate-inline-toolbar .button-wrapper a[title="${button}"]`, {
-    timeout: 1000,
+    timeout,
   }).click({ force: true }); // force click is needed to ensure the button in visible in view.
 });
 
@@ -762,6 +846,12 @@ function createHtmlPasteEvent(htmlContent) {
   );
 }
 
+Cypress.Commands.add('addNewBlock', (blockName, createNewSlate = false) => {
+  let block;
+  block = cy.getSlate(createNewSlate).type(`/${blockName}{enter}`);
+  return block;
+});
+
 Cypress.Commands.add('navigate', (route = '') => {
   return cy.window().its('appHistory').invoke('push', route);
 });
@@ -774,3 +864,52 @@ Cypress.Commands.add('settings', (key, value) => {
   return cy.window().its('settings');
 });
 Cypress.Commands.add('getIfExists', getIfExists);
+
+Cypress.Commands.add('getTableSlate', (header = false) => {
+  let slate;
+
+  cy.addNewBlock('table');
+  cy.wait(2000);
+
+  const selector = header ? TABLE_HEAD_SLATE_SELECTOR : TABLE_SLATE_SELECTOR;
+
+  cy.getIfExists(
+    selector,
+    () => {
+      slate = cy.get(selector).last();
+    },
+    () => {
+      slate = cy.get(selector, { timeout: 10000 }).last();
+    },
+  );
+  return slate;
+});
+
+Cypress.Commands.add('configureListingWith', (contentType) => {
+  cy.get('.sidebar-container .tabs-wrapper .menu .item')
+    .contains('Block')
+    .click();
+  cy.get('.querystring-widget .fields').contains('Add criteria').click();
+  cy.get(
+    '.querystring-widget .fields:first-of-type .field:first-of-type .react-select__menu .react-select__option',
+  )
+    .contains('Type')
+    .click();
+
+  //insert Page
+  cy.get('.querystring-widget .fields:first-of-type > .field').click();
+  cy.get(
+    '.querystring-widget .fields:first-of-type > .field .react-select__menu .react-select__option',
+  )
+    .contains(contentType)
+    .click();
+});
+
+Cypress.Commands.add('queryCounter', (path, steps, number = 1) => {
+  cy.intercept(path, cy.spy().as('counterName'));
+  steps.forEach((element) => {
+    element();
+  });
+
+  cy.get('@counterName').its('callCount').should('equal', number);
+});

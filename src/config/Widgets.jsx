@@ -24,6 +24,7 @@ import InternalUrlWidget from '@plone/volto/components/manage/Widgets/InternalUr
 import EmailWidget from '@plone/volto/components/manage/Widgets/EmailWidget';
 import NumberWidget from '@plone/volto/components/manage/Widgets/NumberWidget';
 import ImageSizeWidget from '@plone/volto/components/manage/Widgets/ImageSizeWidget';
+import RegistryImageWidget from '@plone/volto/components/manage/Widgets/RegistryImageWidget';
 
 import ReferenceWidget from '@plone/volto/components/manage/Widgets/ReferenceWidget';
 import ObjectBrowserWidget from '@plone/volto/components/manage/Widgets/ObjectBrowserWidget';
@@ -73,6 +74,7 @@ export const widgetMapping = {
     recurrence: RecurrenceWidget,
     remoteUrl: UrlWidget,
     id: IdWidget,
+    site_logo: RegistryImageWidget,
   },
   widget: {
     richtext: WysiwygWidget,
@@ -100,6 +102,7 @@ export const widgetMapping = {
     autocomplete: SelectAutoComplete,
     color_picker: ColorPickerWidget,
     image: ImageWidget,
+    select: SelectWidget,
   },
   vocabulary: {
     'plone.app.vocabularies.Catalog': ObjectBrowserWidget,
@@ -149,6 +152,7 @@ export const widgetMapping = {
       title: TitleViewWidget,
       url: UrlViewWidget,
       internal_url: InternalUrlWidget,
+      object: () => '', // TODO: Not implemented yet: Object View widget
     },
     vocabulary: {},
     choices: SelectViewWidget,

@@ -2,13 +2,14 @@ name: Documentation
 on:
   push:
     branches:
-      - master
+      - main
     paths:
       - 'docs/**'
   # Build pull requests
   pull_request:
     paths:
       - 'docs/**'
+      - 'styles/**'
 
 jobs:
   docs:
@@ -30,10 +31,18 @@ jobs:
         run: pip install virtualenv
 
       - name: pip install requirements
-        run: pip install -r requirements-docs.txt
+        run: |
+          pip install -r requirements-docs.txt
+          sudo snap install --edge vale
 
       - name: Check for broken links
         run: make docs-linkcheckbroken
 
       - name: Build HTML documentation
         run: make docs-html
+
+      - name: Run vale
+        run: |
+          git clone https://github.com/errata-ai/Microsoft.git
+          cp -r ./Microsoft/Microsoft ./styles
+          vale --no-exit ./docs

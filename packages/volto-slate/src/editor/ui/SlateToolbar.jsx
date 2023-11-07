@@ -26,7 +26,9 @@ const SlateToolbar = (props) => {
     enableExpando = false,
     show,
   } = props;
-  const { slate } = config.settings;
+
+  const slate = props.slateSettings || config.settings.slate;
+
   const { toolbarButtons, expandedToolbarButtons, buttons } = slate;
 
   function renderButton(name, index) {

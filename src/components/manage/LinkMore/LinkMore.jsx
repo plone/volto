@@ -1,19 +1,9 @@
-/**
- * LinkMore component
- * @module components/manage/LinkMore/LinkMore
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { flattenToAppURL } from '@plone/volto/helpers';
 import { isInternalURL } from '@plone/volto/helpers/Url/Url';
 import { ConditionalLink, UniversalLink } from '@plone/volto/components';
 
-/**
- * LinkMore component.
- * @class LinkMore
- * @extends Component
- */
 const LinkMore = ({ data, isEditMode }) => {
   let href = data.linkHref?.[0]?.['@id'] || '';
   let link = null;

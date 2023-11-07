@@ -2,21 +2,22 @@
 #     https://tech.davis-hansson.com/p/make/
 SHELL:=bash
 .ONESHELL:
-.SHELLFLAGS:=-xeu -o pipefail -O inherit_errexit -c
+.SHELLFLAGS:=-eu -o pipefail -c
 .SILENT:
 .DELETE_ON_ERROR:
 MAKEFLAGS+=--warn-undefined-variables
 MAKEFLAGS+=--no-builtin-rules
 
-# Update the versions depending on your project requirements | Last Updated 2022-12-09
-DOCKER_IMAGE=plone/plone-backend:6.0.0
+# Update the versions depending on your project requirements | Last Updated 2023-03-02
+DOCKER_IMAGE=plone/server-dev:6.0.6
+DOCKER_IMAGE_ACCEPTANCE=plone/server-acceptance:6.0.6
 KGS=
-TESTING_ADDONS=plone.app.robotframework==2.0.0b2 plone.app.testing==7.0.0b2
 NODEBIN = ./node_modules/.bin
 
 # Plone 5 legacy
-DOCKER_IMAGE5=plone/plone-backend:5.2.9
-KGS5=plone.restapi==8.32.2 plone.volto==4.0.0 plone.rest==2.0.0
+DOCKER_IMAGE5=plone/plone-backend:5.2.12
+KGS5=plone.restapi==8.43.3 plone.volto==4.1.0 plone.rest==3.0.1
+TESTING_ADDONS=plone.app.robotframework==2.0.0 plone.app.testing==7.0.0
 
 # Project settings
 
@@ -58,7 +59,8 @@ preinstall: ## Preinstall task, checks if missdev (mrs-developer) is present and
 
 .PHONY: develop
 develop: ## Runs missdev in the local project (mrs.developer.json should be present)
-	npx -p mrs-developer missdev --config=jsconfig.json --output=addons --fetch-https
+	if [ -f $$(pwd)/jsconfig.json ]; then npx -p mrs-developer missdev --config=jsconfig.json --output=addons --fetch-https; fi
+	if [ ! -f $$(pwd)/jsconfig.json ]; then npx -p mrs-developer missdev --output=addons --fetch-https; fi
 
 .PHONY: omelette
 omelette: ## Creates the omelette folder that contains a link to the installed version of Volto (a softlink pointing to node_modules/@plone/volto)
@@ -71,13 +73,13 @@ patches:
 .PHONY: start-test-acceptance-server start-test-backend
 start-test-acceptance-server start-test-backend : ## Start Test Plone Backend
 	@echo "$(GREEN)==> Start Test Plone Backend$(RESET)"
-	docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e ADDONS='$(KGS) $(TESTING_ADDONS)' -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors $(DOCKER_IMAGE) ./bin/robot-server plone.app.robotframework.testing.VOLTO_ROBOT_TESTING
+	docker run -i --rm -p 55001:55001 $(DOCKER_IMAGE_ACCEPTANCE)
 	## KGS in case you need a Plone 5.2 series (comment/remove above line):
 	# docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e ADDONS='$(KGS5) $(TESTING_ADDONS)' -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors $(DOCKER_IMAGE5) ./bin/robot-server plone.app.robotframework.testing.VOLTO_ROBOT_TESTING
 
 .PHONY: start-test-acceptance-frontend
 start-test-acceptance-frontend: ## Start the Acceptance Frontend Fixture
-	RAZZLE_API_PATH=http://localhost:55001/plone yarn build && yarn start:prod
+	RAZZLE_API_PATH=http://127.0.0.1:55001/plone yarn build && yarn start:prod
 
 .PHONY: test-acceptance
 test-acceptance: ## Start Core Cypress Acceptance Tests
@@ -89,7 +91,7 @@ test-acceptance-headless: ## Start Core Cypress Acceptance Tests in headless mod
 
 .PHONY: full-test-acceptance
 full-test-acceptance: ## Runs Core Full Acceptance Testing in headless mode
-	$(NODEBIN)/start-test "make start-test-acceptance-server" http-get://localhost:55001/plone "make start-test-acceptance-frontend" http://localhost:3000 "make test-acceptance-headless"
+	$(NODEBIN)/start-test "make start-test-acceptance-server" http-get://127.0.0.1:55001/plone "make start-test-acceptance-frontend" http://127.0.0.1:3000 "make test-acceptance-headless"
 
 .PHONY: test-acceptance
 test-acceptance-addon: ## Start Core Cypress Acceptance Tests for an addon
@@ -101,4 +103,4 @@ test-acceptance-addon-headless: ## Start Core Cypress Acceptance Tests for an ad
 
 .PHONY: full-test-acceptance-addon
 full-test-acceptance-addon: ## Runs Core Full Acceptance Testing for an addon in headless mode
-	$(NODEBIN)/start-test "make start-test-acceptance-server" http-get://localhost:55001/plone "make start-test-acceptance-frontend" http://localhost:3000 "make test-acceptance-addon-headless"
+	$(NODEBIN)/start-test "make start-test-acceptance-server" http-get://127.0.0.1:55001/plone "make start-test-acceptance-frontend" http://127.0.0.1:3000 "make test-acceptance-addon-headless"

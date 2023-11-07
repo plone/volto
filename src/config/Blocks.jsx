@@ -20,6 +20,8 @@ import EditTextBlock from '@plone/volto/components/manage/Blocks/Text/Edit';
 import EditImageBlock from '@plone/volto/components/manage/Blocks/Image/Edit';
 import EditLeadImageBlock from '@plone/volto/components/manage/Blocks/LeadImage/Edit';
 import EditListingBlock from '@plone/volto/components/manage/Blocks/Listing/Edit';
+import DefaultNoResultsComponent from '@plone/volto/components/manage/Blocks/Listing/DefaultNoResultsComponent';
+import GalleryNoResultsComponent from '@plone/volto/components/manage/Blocks/Listing/GalleryNoResultsComponent';
 import DefaultListingBlockTemplate from '@plone/volto/components/manage/Blocks/Listing/DefaultTemplate';
 import SummaryListingBlockTemplate from '@plone/volto/components/manage/Blocks/Listing/SummaryTemplate';
 import EditVideoBlock from '@plone/volto/components/manage/Blocks/Video/Edit';
@@ -40,12 +42,22 @@ import tableSVG from '@plone/volto/icons/table.svg';
 import listingBlockSVG from '@plone/volto/icons/content-listing.svg';
 import tocSVG from '@plone/volto/icons/list-bullet.svg';
 import searchSVG from '@plone/volto/icons/zoom.svg';
+import gridSVG from '@plone/volto/icons/grid-block.svg';
+import imagesSVG from '@plone/volto/icons/images.svg';
 
 import ImageGalleryListingBlockTemplate from '@plone/volto/components/manage/Blocks/Listing/ImageGallery';
 import BlockSettingsSchema from '@plone/volto/components/manage/Blocks/Block/Schema';
 import TextSettingsSchema from '@plone/volto/components/manage/Blocks/Text/Schema';
 import ImageSettingsSchema from '@plone/volto/components/manage/Blocks/Image/LayoutSchema';
 import ToCSettingsSchema from '@plone/volto/components/manage/Blocks/ToC/Schema';
+
+import GridBlockView from '@plone/volto/components/manage/Blocks/Grid/View';
+import GridBlockEdit from '@plone/volto/components/manage/Blocks/Grid/Edit';
+import { GridBlockDataAdapter } from '@plone/volto/components/manage/Blocks/Grid/adapter';
+import { GridBlockSchema } from '@plone/volto/components/manage/Blocks/Grid/schema';
+import GridTemplates from '@plone/volto/components/manage/Blocks/Grid/templates';
+import { gridTeaserDisableStylingSchema } from '@plone/volto/components/manage/Blocks/Teaser/schema';
+import { gridImageDisableSizeAndPositionHandlersSchema } from '@plone/volto/components/manage/Blocks/Image/schema';
 
 import SearchBlockView from '@plone/volto/components/manage/Blocks/Search/SearchBlockView';
 import SearchBlockEdit from '@plone/volto/components/manage/Blocks/Search/SearchBlockEdit';
@@ -63,6 +75,8 @@ import {
   DateRangeFacetFilterListEntry,
 } from '@plone/volto/components/manage/Blocks/Search/components';
 import getListingBlockAsyncData from '@plone/volto/components/manage/Blocks/Listing/getAsyncData';
+import { getImageBlockSizes } from '@plone/volto/components/manage/Blocks/Image/utils';
+import { getLeadImageBlockSizes } from '@plone/volto/components/manage/Blocks/LeadImage/utils';
 
 // block sidebar schemas (not the Dexterity Layout block settings schemas)
 import HeroImageLeftBlockSchema from '@plone/volto/components/manage/Blocks/HeroImageLeft/schema';
@@ -70,6 +84,12 @@ import ListingBlockSchema from '@plone/volto/components/manage/Blocks/Listing/sc
 import SearchBlockSchema from '@plone/volto/components/manage/Blocks/Search/schema';
 
 import ToCVariations from '@plone/volto/components/manage/Blocks/ToC/variations';
+
+import TeaserViewBlock from '@plone/volto/components/manage/Blocks/Teaser/View';
+import TeaserEditBlock from '@plone/volto/components/manage/Blocks/Teaser/Edit';
+import TeaserBlockDefaultBody from '@plone/volto/components/manage/Blocks/Teaser/DefaultBody';
+import { TeaserSchema } from '@plone/volto/components/manage/Blocks/Teaser/schema';
+import { TeaserBlockDataAdapter } from '@plone/volto/components/manage/Blocks/Teaser/adapter';
 
 defineMessages({
   title: {
@@ -240,6 +260,7 @@ const blocksConfig = {
     restricted: false,
     mostUsed: true,
     sidebarTab: 1,
+    getSizes: getImageBlockSizes,
   },
   leadimage: {
     id: 'leadimage',
@@ -252,6 +273,7 @@ const blocksConfig = {
     restricted: ({ properties }) => !properties.hasOwnProperty('image'),
     mostUsed: false,
     sidebarTab: 1,
+    getSizes: getLeadImageBlockSizes,
   },
   listing: {
     id: 'listing',
@@ -266,6 +288,7 @@ const blocksConfig = {
     mostUsed: true,
     sidebarTab: 1,
     showLinkMore: false,
+    noResultsComponent: DefaultNoResultsComponent,
     variations: [
       {
         id: 'default',
@@ -277,6 +300,7 @@ const blocksConfig = {
         id: 'imageGallery',
         title: 'Image gallery',
         template: ImageGalleryListingBlockTemplate,
+        noResultsComponent: GalleryNoResultsComponent,
       },
       {
         id: 'summary',
@@ -447,6 +471,62 @@ const blocksConfig = {
       },
     },
   },
+  // This next block is not named just grid for some reasons:
+  // 1.- Naming it grid will collide with the SemanticUI CSS of the Grid component
+  // 2.- It would prevent the transition from the old grid
+  //     (based on @kitconcept/volto-blocks-grid) without having to perform any migration.
+  //     This way, both can co-exist at the same time.
+  gridBlock: {
+    id: 'gridBlock',
+    title: 'Grid',
+    icon: gridSVG,
+    group: 'common',
+    view: GridBlockView,
+    edit: GridBlockEdit,
+    blockSchema: GridBlockSchema,
+    dataAdapter: GridBlockDataAdapter,
+    restricted: false,
+    mostUsed: true,
+    sidebarTab: 1,
+    templates: GridTemplates,
+    maxLength: 4,
+    allowedBlocks: ['image', 'listing', 'slate', 'teaser'],
+  },
+  teaser: {
+    id: 'teaser',
+    title: 'Teaser',
+    icon: imagesSVG,
+    group: 'common',
+    view: TeaserViewBlock,
+    edit: TeaserEditBlock,
+    restricted: false,
+    mostUsed: true,
+    sidebarTab: 1,
+    blockSchema: TeaserSchema,
+    dataAdapter: TeaserBlockDataAdapter,
+    variations: [
+      {
+        id: 'default',
+        isDefault: true,
+        title: 'Default',
+        template: TeaserBlockDefaultBody,
+      },
+    ],
+  },
+};
+
+// This is required in order to initialize the inner blocksConfig
+// for the grid block, since we need to modify how the inner teaser
+// block behave in it (= no schemaEnhancer fields for teasers inside a grid)
+// Afterwards, it can be further customized in add-ons using the same technique.
+blocksConfig.gridBlock.blocksConfig = { ...blocksConfig };
+blocksConfig.gridBlock.blocksConfig.teaser = {
+  ...blocksConfig.teaser,
+  schemaEnhancer: gridTeaserDisableStylingSchema,
+};
+blocksConfig.gridBlock.blocksConfig.image = {
+  ...blocksConfig.image,
+  schemaEnhancer: gridImageDisableSizeAndPositionHandlersSchema,
 };
 
 const requiredBlocks = ['title'];

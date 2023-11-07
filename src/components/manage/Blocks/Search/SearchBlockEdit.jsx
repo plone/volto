@@ -1,5 +1,4 @@
-import React from 'react';
-import useDeepCompareEffect from 'use-deep-compare-effect';
+import React, { useEffect } from 'react';
 import { defineMessages } from 'react-intl';
 import { compose } from 'redux';
 
@@ -60,9 +59,11 @@ const SearchBlockEdit = (props) => {
   };
 
   const { query = {} } = data || {};
-  useDeepCompareEffect(() => {
+  // We don't need deep compare here, as this is just json serializable data.
+  const deepQuery = JSON.stringify(query);
+  useEffect(() => {
     onTriggerSearch();
-  }, [query, onTriggerSearch]);
+  }, [deepQuery, onTriggerSearch]);
 
   return (
     <>

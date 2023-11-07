@@ -51,6 +51,7 @@ export const DetachedTextBlockEditor = (props) => {
         value={value}
         block={block /* is this needed? */}
         debug={DEBUG}
+        slateSettings={props.slateSettings}
         onFocus={() => {
           if (!selected) {
             onSelectBlock(block);

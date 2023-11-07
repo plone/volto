@@ -3,10 +3,172 @@
 <!-- You should *NOT* be adding new change log entries to this file.
      You should create a file in the news directory instead.
      For helpful instructions, please see:
-     https://6.dev-docs.plone.org/volto/developer-guidelines/contributing.html#create-a-pull-request
+     https://6.docs.plone.org/volto/developer-guidelines/contributing.html#create-a-pull-request
 -->
 
 <!-- towncrier release notes start -->
+
+## 8.0.0 (2023-11-06)
+
+### Breaking
+
+- Clean up the generator boilerplate in favor of the recommended add-on driven approach, and add documentation for how to develop a Volto project as an add-on. @sneridagh [#5297](https://github.com/plone/volto/issues/5297)
+
+## 7.0.1 (2023-09-30)
+
+### Internal
+
+- Update to volto-testing final in generator @sneridagh [#5248](https://github.com/plone/volto/issues/5248)
+
+
+## 7.0.0 (2023-09-30)
+
+### Feature
+
+- Update generators to Volto 17 final. @sneridagh [#5247](https://github.com/plone/volto/issues/5247)
+
+
+## 7.0.0-alpha.12 (2023-09-30)
+
+### Feature
+
+- Update Plone and Volto versions in generators @sneridagh [#5246](https://github.com/plone/volto/issues/5246)
+
+
+## 7.0.0-alpha.11 (2023-09-29)
+
+### Bugfix
+
+- Fix ESlint parser in addon generator boilerplate @sneridagh [#5243](https://github.com/plone/volto/issues/5243)
+
+
+## 7.0.0-alpha.10 (2023-09-27)
+
+### Breaking
+
+- Update the generators dependencies for linters @sneridagh [#5216](https://github.com/plone/volto/issues/5216)
+
+### Feature
+
+- Add ignores in addon generator and workspaces info @sneridagh [#5235](https://github.com/plone/volto/issues/5235)
+
+
+## 7.0.0-alpha.9 (2023-09-20)
+
+### Bugfix
+
+- Remove JSON files from being linted by ESlint, since it's not its purpose @sneridagh [#5194](https://github.com/plone/volto/issues/5194)
+
+
+## 7.0.0-alpha.8 (2023-09-18)
+
+### Bugfix
+
+- Add missing empty lock to acceptance generator addon folder @sneridagh [#5193](https://github.com/plone/volto/issues/5193)
+
+
+## 7.0.0-alpha.7 (2023-09-18)
+
+### Feature
+
+- TypeScript support in core @sneridagh @ninanoleto [#4462](https://github.com/plone/volto/issues/4462)
+
+### Bugfix
+
+- Fix addon i18n local command when executed outside the scope of a Volto project. @sneridagh [#5181](https://github.com/plone/volto/issues/5181)
+
+
+## 7.0.0-alpha.6 (2023-09-14)
+
+### Bugfix
+
+- Fix addon i18n local command when executed outside the scope of a Volto project. @sneridagh [#5181](https://github.com/plone/volto/issues/5181)
+
+
+## 7.0.0-alpha.5 (2023-09-13)
+
+### Feature
+
+- Add dockerized approach to add-on generator @sneridagh [#5167](https://github.com/plone/volto/issues/5167)
+
+### Bugfix
+
+- Fix whitespace in empty locales created by the generator. @davisagli [#4737](https://github.com/plone/volto/issues/4737)
+
+
+## 7.0.0-alpha.4 (2023-04-13)
+
+### Bugfix
+
+- Force the resolution of the `react-error-overlay` package to `6.0.9` @sneridagh [#4687](https://github.com/plone/volto/issues/4687)
+
+
+## 7.0.0-alpha.3 (2023-04-03)
+
+### Bugfix
+
+- Update to latest Razzle - needed since #3997. This fixes the duplicated Razzles issue @sneridagh [#4640](https://github.com/plone/volto/issues/4640)
+
+
+## 7.0.0-alpha.2 (2023-03-05)
+
+### Feature
+
+- Improve stylelint config in generator, include scss support @sneridagh [#4469](https://github.com/plone/volto/issues/4469)
+
+
+## 7.0.0-alpha.1 (2023-03-04)
+
+### Bugfix
+
+- Fix ESlint failure for the generator @sneridagh [#4465](https://github.com/plone/volto/issues/4465)
+
+
+## 7.0.0-alpha.0 (2023-03-04)
+
+### Breaking
+
+- Volto 17 compliant version @davisagli [#4089](https://github.com/plone/volto/issues/4089)
+
+
+## 6.2.5 (2023-03-02)
+
+### Internal
+
+- Get the App component from the registry. This makes it possible to add wrappers over the App@tiberiuichim [#4413](https://github.com/plone/volto/issues/4413)
+
+
+## 6.2.4 (2023-03-02)
+
+### Bugfix
+
+- Fix generator adding the jest config for @plone/volto-slate @sneridagh [#4453](https://github.com/plone/volto/issues/4453)
+
+### Internal
+
+- made razzle.config.js in project template easier to extend @akshatgarg12 [#3424](https://github.com/plone/volto/issues/3424)
+
+
+## 6.2.3 (2023-01-16)
+
+### Bugfix
+
+- Add scss to stylelint config in package.json script @sneridagh [#4259](https://github.com/plone/volto/issues/4259)
+
+
+## 6.2.2 (2022-12-23)
+
+### Bugfix
+
+- Update docker image used in Makefile for addons @sneridagh [#4184](https://github.com/plone/volto/issues/4184)
+
+
+## 6.2.1 (2022-12-23)
+
+### Bugfix
+
+- Update docker image used in Makefile for addons @sneridagh [#4175](https://github.com/plone/volto/issues/4175)
+
 
 ## 6.2.0 (2022-12-15)
 

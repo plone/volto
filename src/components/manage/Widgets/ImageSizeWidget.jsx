@@ -20,7 +20,7 @@ const messages = defineMessages({
 });
 
 const ImageSizeWidget = (props) => {
-  const { onChange, id, disabled, intl, value } = props;
+  const { onChange, id, disabled, intl, value, isDisabled } = props;
 
   return (
     <FormFieldWrapper {...props}>
@@ -34,7 +34,7 @@ const ImageSizeWidget = (props) => {
                 aria-label={intl.formatMessage(messages.small)}
                 onClick={() => onChange(id, 's')}
                 active={value === 's'}
-                disabled={disabled}
+                disabled={disabled || isDisabled}
               >
                 <div className="image-sizes-text">S</div>
               </Button>
@@ -46,7 +46,7 @@ const ImageSizeWidget = (props) => {
                 aria-label={intl.formatMessage(messages.medium)}
                 onClick={() => onChange(id, 'm')}
                 active={value === 'm'}
-                disabled={disabled}
+                disabled={disabled || isDisabled}
               >
                 <div className="image-sizes-text">M</div>
               </Button>
@@ -58,7 +58,7 @@ const ImageSizeWidget = (props) => {
                 aria-label={intl.formatMessage(messages.large)}
                 onClick={() => onChange(id, 'l')}
                 active={value === 'l' || value === undefined}
-                disabled={disabled}
+                disabled={disabled || isDisabled}
               >
                 <div className="image-sizes-text">L</div>
               </Button>

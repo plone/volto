@@ -52,6 +52,7 @@ export class Edit extends Component {
     onMoveBlock: PropTypes.func.isRequired,
     onDeleteBlock: PropTypes.func.isRequired,
     editable: PropTypes.bool,
+    pathname: PropTypes.string.isRequired,
   };
 
   /**
@@ -157,7 +158,7 @@ export class Edit extends Component {
                     )
                 : null
             }
-            className={cx(`block ${type} ${this.props.data.variation ?? ''}`, {
+            className={cx('block', type, this.props.data.variation, {
               selected: this.props.selected || this.props.multiSelected,
               multiSelected: this.props.multiSelected,
             })}

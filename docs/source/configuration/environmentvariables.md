@@ -101,7 +101,7 @@ Set `DEBUG_ADDONS_LOADER=true` to have Volto generate a file, `addon-dependency-
 dot addon-dependency-graph.dot -Tsvg -o out.svg
 ```
 
-#### Component Shadowing errors (shadowing)
+#### Component shadowing errors (shadowing)
 
 It displays the errors of the non-compliant customizations (in server console) if you are experiencing problems with a customization not working.
 
@@ -188,7 +188,7 @@ As a result, your app will load the add-ons in the following order:
 - `volto-slate`
 
 ```{important}
-The `ADDONS` key is a Volto specific configuration. Simply setting `ADDONS` doesn't download the javascript package. This has to be covered by another way, either installing the addon package (with yarn add) or loading it as a development package with mrs-developer.
+The `ADDONS` key is a Volto specific configuration. Simply setting `ADDONS` doesn't download the JavaScript package. This has to be covered by another way, either installing the addon package (with yarn add) or loading it as a development package with mrs-developer.
 ```
 
 ## BUILD_DIR

@@ -31,8 +31,7 @@ export const customSelectStyles = {
   }),
   valueContainer: (styles) => ({
     ...styles,
-    padding: '0px',
-    paddingLeft: 0,
+    padding: '8px',
   }),
   dropdownIndicator: (styles) => ({
     paddingRight: 0,

@@ -24,11 +24,83 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
         className="ui attached segment"
       >
         <div
-          className="ui six column grid"
+          className="ui doubling six column grid"
         >
           <div
             className="row"
           >
+            <div
+              className="column"
+            >
+              <a
+                href="/controlpanel/addons"
+                onClick={[Function]}
+              >
+                <h3
+                  className="ui icon center aligned header"
+                >
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                  <div
+                    className="content"
+                  >
+                    Add-Ons
+                  </div>
+                </h3>
+              </a>
+            </div>
+            <div
+              className="column"
+            >
+              <a
+                href="/controlpanel/database"
+                onClick={[Function]}
+              >
+                <h3
+                  className="ui icon center aligned header"
+                >
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                  <div
+                    className="content"
+                  >
+                    Database
+                  </div>
+                </h3>
+              </a>
+            </div>
             <div
               className="column"
             >
@@ -105,7 +177,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
               className="column"
             >
               <a
-                href="/controlpanel/addons"
+                href="/controlpanel/aliases"
                 onClick={[Function]}
               >
                 <h3
@@ -132,43 +204,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                   <div
                     className="content"
                   >
-                    Add-Ons
-                  </div>
-                </h3>
-              </a>
-            </div>
-            <div
-              className="column"
-            >
-              <a
-                href="/controlpanel/database"
-                onClick={[Function]}
-              >
-                <h3
-                  className="ui icon center aligned header"
-                >
-                  <svg
-                    className="icon"
-                    dangerouslySetInnerHTML={
-                      Object {
-                        "__html": undefined,
-                      }
-                    }
-                    onClick={null}
-                    style={
-                      Object {
-                        "fill": "currentColor",
-                        "height": "48px",
-                        "width": "auto",
-                      }
-                    }
-                    viewBox=""
-                    xmlns=""
-                  />
-                  <div
-                    className="content"
-                  >
-                    Database
+                    URL Management
                   </div>
                 </h3>
               </a>
@@ -209,42 +245,6 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                 </h3>
               </a>
             </div>
-            <div
-              className="column"
-            >
-              <a
-                href="/controlpanel/aliases"
-                onClick={[Function]}
-              >
-                <h3
-                  className="ui icon center aligned header"
-                >
-                  <svg
-                    className="icon"
-                    dangerouslySetInnerHTML={
-                      Object {
-                        "__html": undefined,
-                      }
-                    }
-                    onClick={null}
-                    style={
-                      Object {
-                        "fill": "currentColor",
-                        "height": "48px",
-                        "width": "auto",
-                      }
-                    }
-                    viewBox=""
-                    xmlns=""
-                  />
-                  <div
-                    className="content"
-                  >
-                    URL Management
-                  </div>
-                </h3>
-              </a>
-            </div>
           </div>
         </div>
       </div>
@@ -257,47 +257,11 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
         className="ui attached segment"
       >
         <div
-          className="ui six column grid"
+          className="ui doubling six column grid"
         >
           <div
             className="row"
           >
-            <div
-              className="column"
-            >
-              <a
-                href="/controlpanel/editing"
-                onClick={[Function]}
-              >
-                <h3
-                  className="ui icon center aligned header"
-                >
-                  <svg
-                    className="icon"
-                    dangerouslySetInnerHTML={
-                      Object {
-                        "__html": undefined,
-                      }
-                    }
-                    onClick={null}
-                    style={
-                      Object {
-                        "fill": "currentColor",
-                        "height": "48px",
-                        "width": "auto",
-                      }
-                    }
-                    viewBox=""
-                    xmlns=""
-                  />
-                  <div
-                    className="content"
-                  >
-                    Editing
-                  </div>
-                </h3>
-              </a>
-            </div>
             <div
               className="column"
             >
@@ -338,6 +302,42 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
               className="column"
             >
               <a
+                href="/controlpanel/editing"
+                onClick={[Function]}
+              >
+                <h3
+                  className="ui icon center aligned header"
+                >
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                  <div
+                    className="content"
+                  >
+                    Editing
+                  </div>
+                </h3>
+              </a>
+            </div>
+            <div
+              className="column"
+            >
+              <a
                 href="/controlpanel/moderate-comments"
                 onClick={[Function]}
               >
@@ -370,6 +370,42 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                 </h3>
               </a>
             </div>
+            <div
+              className="column"
+            >
+              <a
+                href="/controlpanel/relations"
+                onClick={[Function]}
+              >
+                <h3
+                  className="ui icon center aligned header"
+                >
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                  <div
+                    className="content"
+                  >
+                    Relations
+                  </div>
+                </h3>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -382,7 +418,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
         className="ui attached segment"
       >
         <div
-          className="ui six column grid"
+          className="ui doubling six column grid"
         >
           <div
             className="row"
@@ -418,7 +454,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                   <div
                     className="content"
                   >
-                    Security
+                    test
                   </div>
                 </h3>
               </a>
@@ -435,7 +471,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
         className="ui attached segment"
       >
         <div
-          className="ui six column grid"
+          className="ui doubling six column grid"
         >
           <div
             className="row"
@@ -444,7 +480,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
               className="column"
             >
               <a
-                href="/controlpanel/users"
+                href="/controlpanel/groups"
                 onClick={[Function]}
               >
                 <h3
@@ -471,7 +507,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                   <div
                     className="content"
                   >
-                    Users
+                    Groups
                   </div>
                 </h3>
               </a>
@@ -516,7 +552,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
               className="column"
             >
               <a
-                href="/controlpanel/groups"
+                href="/controlpanel/users"
                 onClick={[Function]}
               >
                 <h3
@@ -543,7 +579,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                   <div
                     className="content"
                   >
-                    Groups
+                    Users
                   </div>
                 </h3>
               </a>
@@ -565,9 +601,6 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
       />
     </div>
   </div>
-  <div
-    id="Portal"
-  />
 </div>
 `;
 
@@ -589,13 +622,66 @@ exports[`Controlpanels renders an additional control panel 1`] = `
       <div
         className="ui secondary segment"
       >
+        Security
+      </div>
+      <div
+        className="ui attached segment"
+      >
+        <div
+          className="ui doubling six column grid"
+        >
+          <div
+            className="row"
+          >
+            <div
+              className="column"
+            >
+              <a
+                href="/controlpanel/security"
+                onClick={[Function]}
+              >
+                <h3
+                  className="ui icon center aligned header"
+                >
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                  <div
+                    className="content"
+                  >
+                    test
+                  </div>
+                </h3>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="ui secondary segment"
+      >
         Add-on Configuration
       </div>
       <div
         className="ui attached segment"
       >
         <div
-          className="ui six column grid"
+          className="ui doubling six column grid"
         >
           <div
             className="row"
@@ -648,7 +734,7 @@ exports[`Controlpanels renders an additional control panel 1`] = `
         className="ui attached segment"
       >
         <div
-          className="ui six column grid"
+          className="ui doubling six column grid"
         >
           <div
             className="row"
@@ -729,42 +815,6 @@ exports[`Controlpanels renders an additional control panel 1`] = `
               className="column"
             >
               <a
-                href="/controlpanel/undo"
-                onClick={[Function]}
-              >
-                <h3
-                  className="ui icon center aligned header"
-                >
-                  <svg
-                    className="icon"
-                    dangerouslySetInnerHTML={
-                      Object {
-                        "__html": undefined,
-                      }
-                    }
-                    onClick={null}
-                    style={
-                      Object {
-                        "fill": "currentColor",
-                        "height": "48px",
-                        "width": "auto",
-                      }
-                    }
-                    viewBox=""
-                    xmlns=""
-                  />
-                  <div
-                    className="content"
-                  >
-                    Undo
-                  </div>
-                </h3>
-              </a>
-            </div>
-            <div
-              className="column"
-            >
-              <a
                 href="/controlpanel/aliases"
                 onClick={[Function]}
               >
@@ -797,6 +847,42 @@ exports[`Controlpanels renders an additional control panel 1`] = `
                 </h3>
               </a>
             </div>
+            <div
+              className="column"
+            >
+              <a
+                href="/controlpanel/undo"
+                onClick={[Function]}
+              >
+                <h3
+                  className="ui icon center aligned header"
+                >
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                  <div
+                    className="content"
+                  >
+                    Undo
+                  </div>
+                </h3>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -809,7 +895,7 @@ exports[`Controlpanels renders an additional control panel 1`] = `
         className="ui attached segment"
       >
         <div
-          className="ui six column grid"
+          className="ui doubling six column grid"
         >
           <div
             className="row"
@@ -886,28 +972,11 @@ exports[`Controlpanels renders an additional control panel 1`] = `
                 </h3>
               </a>
             </div>
-          </div>
-        </div>
-      </div>
-      <div
-        className="ui secondary segment"
-      >
-        Users
-      </div>
-      <div
-        className="ui attached segment"
-      >
-        <div
-          className="ui six column grid"
-        >
-          <div
-            className="row"
-          >
             <div
               className="column"
             >
               <a
-                href="/controlpanel/users"
+                href="/controlpanel/relations"
                 onClick={[Function]}
               >
                 <h3
@@ -934,7 +1003,60 @@ exports[`Controlpanels renders an additional control panel 1`] = `
                   <div
                     className="content"
                   >
-                    Users
+                    Relations
+                  </div>
+                </h3>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="ui secondary segment"
+      >
+        Users
+      </div>
+      <div
+        className="ui attached segment"
+      >
+        <div
+          className="ui doubling six column grid"
+        >
+          <div
+            className="row"
+          >
+            <div
+              className="column"
+            >
+              <a
+                href="/controlpanel/groups"
+                onClick={[Function]}
+              >
+                <h3
+                  className="ui icon center aligned header"
+                >
+                  <svg
+                    className="icon"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": undefined,
+                      }
+                    }
+                    onClick={null}
+                    style={
+                      Object {
+                        "fill": "currentColor",
+                        "height": "48px",
+                        "width": "auto",
+                      }
+                    }
+                    viewBox=""
+                    xmlns=""
+                  />
+                  <div
+                    className="content"
+                  >
+                    Groups
                   </div>
                 </h3>
               </a>
@@ -979,7 +1101,7 @@ exports[`Controlpanels renders an additional control panel 1`] = `
               className="column"
             >
               <a
-                href="/controlpanel/groups"
+                href="/controlpanel/users"
                 onClick={[Function]}
               >
                 <h3
@@ -1006,7 +1128,7 @@ exports[`Controlpanels renders an additional control panel 1`] = `
                   <div
                     className="content"
                   >
-                    Groups
+                    Users
                   </div>
                 </h3>
               </a>

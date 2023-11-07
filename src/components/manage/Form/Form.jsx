@@ -31,7 +31,7 @@ import { Portal } from 'react-portal';
 import { connect } from 'react-redux';
 import {
   Button,
-  Container,
+  Container as SemanticContainer,
   Form as UiForm,
   Message,
   Segment,
@@ -180,10 +180,11 @@ class Form extends Component {
       formData.hasOwnProperty(blocksLayoutFieldname) &&
       formData[blocksLayoutFieldname].items.length > 0
     ) {
-      selectedBlock = formData[blocksLayoutFieldname].items[0];
-
-      if (config.blocks?.initialBlocksFocus?.[this.props.type]) {
-        //Default selected is not the first block, but the one from config.
+      if (config.blocks?.initialBlocksFocus === null) {
+        selectedBlock = null;
+      } else if (this.props.type in config.blocks?.initialBlocksFocus) {
+        // Default selected is not the first block, but the one from config.
+        // TODO Select first block and not an arbitrary one.
         Object.keys(formData[blocksFieldname]).forEach((b_key) => {
           if (
             formData[blocksFieldname][b_key]['@type'] ===
@@ -192,8 +193,11 @@ class Form extends Component {
             selectedBlock = b_key;
           }
         });
+      } else {
+        selectedBlock = formData[blocksLayoutFieldname].items[0];
       }
     }
+
     this.state = {
       formData,
       initialFormData: cloneDeep(formData),
@@ -225,9 +229,8 @@ class Form extends Component {
     let activeIndex = 0;
 
     if (requestError && prevProps.requestError !== requestError) {
-      errors = FormValidation.giveServerErrorsToCorrespondingFields(
-        requestError,
-      );
+      errors =
+        FormValidation.giveServerErrorsToCorrespondingFields(requestError);
       activeIndex = FormValidation.showFirstTabWithErrors({
         errors,
         schema: this.props.schema,
@@ -254,7 +257,11 @@ class Form extends Component {
    * Tab selection is done only by setting activeIndex in state
    */
   onTabChange(e, { activeIndex }) {
-    this.setState({ activeIndex });
+    const defaultFocus = this.props.schema.fieldsets[activeIndex].fields[0];
+    this.setState({
+      activeIndex,
+      ...(defaultFocus ? { inFocus: { [defaultFocus]: true } } : {}),
+    });
   }
 
   /**
@@ -537,12 +544,14 @@ class Form extends Component {
     const { schema: originalSchema, onCancel, onSubmit } = this.props;
     const { formData } = this.state;
     const schema = this.removeBlocksLayoutFields(originalSchema);
+    const Container =
+      config.getComponent({ name: 'Container' }).component || SemanticContainer;
 
     return this.props.visual ? (
       // Removing this from SSR is important, since react-beautiful-dnd supports SSR,
       // but draftJS don't like it much and the hydration gets messed up
       this.state.isClient && (
-        <div className="ui container">
+        <Container>
           <BlocksToolbar
             formData={this.state.formData}
             selectedBlock={this.state.selected}
@@ -631,7 +640,7 @@ class Form extends Component {
               </UiForm>
             </Portal>
           )}
-        </div>
+        </Container>
       )
     ) : (
       <Container>
@@ -641,7 +650,7 @@ class Form extends Component {
           error={keys(this.state.errors).length > 0}
           className={settings.verticalFormTabs ? 'vertical-form' : ''}
         >
-          <fieldset className="invisible" disabled={!this.props.editable}>
+          <fieldset className="invisible">
             <Segment.Group raised>
               {schema && schema.fieldsets.length > 1 && (
                 <>
@@ -678,10 +687,11 @@ class Form extends Component {
                         ...map(item.fields, (field, index) => (
                           <Field
                             {...schema.properties[field]}
+                            isDisabled={!this.props.editable}
                             id={field}
                             formData={this.state.formData}
                             fieldSet={item.title.toLowerCase()}
-                            focus={index === 0}
+                            focus={this.state.inFocus[field]}
                             value={this.state.formData?.[field]}
                             required={schema.required.indexOf(field) !== -1}
                             onChange={this.onChangeField}

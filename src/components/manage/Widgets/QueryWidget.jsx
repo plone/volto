@@ -14,6 +14,7 @@ import { getQuerystring } from '@plone/volto/actions';
 import { Icon } from '@plone/volto/components';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import cx from 'classnames';
+import config from '@plone/volto/registry';
 
 import {
   Option,
@@ -193,6 +194,23 @@ export class QuerystringWidgetComponent extends Component {
             />
           </Form.Field>
         );
+      case 'autocomplete':
+        const AutoCompleteComponent = config.widgets.widget.autocomplete;
+        const vocabulary = { '@id': this.props.indexes[row.i].vocabulary };
+        return (
+          <Form.Field style={{ flex: '1 0 auto', maxWidth: '92%' }}>
+            <AutoCompleteComponent
+              {...props}
+              vocabulary={vocabulary}
+              wrapped={false}
+              id={`id-${index}`}
+              title={`title-${index}`}
+              onChange={(_d, data) => {
+                this.onChangeValue(index, data);
+              }}
+            />
+          </Form.Field>
+        );
       case 'ReferenceWidget':
       default:
         // if (row.o === 'plone.app.querystring.operation.string.relativePath') {
@@ -296,7 +314,8 @@ export class QuerystringWidgetComponent extends Component {
                                   label: field[1].title,
                                   value: field[0],
                                   isDisabled: (value || []).some(
-                                    (v) => v['i'] === field[0],
+                                    (v) =>
+                                      v['i'] !== 'path' && v['i'] === field[0],
                                   ),
                                 }),
                               ),
@@ -426,8 +445,11 @@ export class QuerystringWidgetComponent extends Component {
                           (field) => ({
                             label: field[1].title,
                             value: field[0],
+                            // disable selecting indexes that are already used,
+                            // except for path, which has explicit support
+                            // in the backend for multipath queries
                             isDisabled: (value || []).some(
-                              (v) => v['i'] === field[0],
+                              (v) => v['i'] !== 'path' && v['i'] === field[0],
                             ),
                           }),
                         ),

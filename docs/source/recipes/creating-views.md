@@ -142,13 +142,18 @@ called `layoutViews` which registers all the layout views. We will add the `full
 ```js
 import { FullView } from './components';
 
-export const views = {
-  ...defaultViews,
-  layoutViews: {
-    ...defaultViews.layoutViews,
-    full_view: FullView,
-  },
-};
+export default function applyConfig(config) {
+  const defaultViews = config.views
+  // Add here your project's configuration here by modifying `config` accordingly
+  config.views = {
+    ...defaultViews,
+    layoutViews: {
+      ...defaultViewslayoutViews,
+      full_view: FullView,
+    },
+  };
+  return config;
+}
 ```
 
 ## Registering a new view called Album View
@@ -290,45 +295,33 @@ And in `config.js`:
  * Add your config changes here.
  * @module config
  * @example
- * export const settings = {
- *   ...defaultSettings,
- *   port: 4300,
- *   listBlockTypes: {
- *     ...defaultSettings.listBlockTypes,
- *     'my-list-item',
- *   }
+ * export default function applyConfig(config) {
+ *   config.settings = {
+ *     ...config.settings,
+ *     port: 4300,
+ *     listBlockTypes: {
+ *       ...config.settings.listBlockTypes,
+ *       'my-list-item',
+ *    }
  * }
  */
 
-import {
-  settings as defaultSettings,
-  views as defaultViews,
-  widgets as defaultWidgets,
-  blocks as defaultBlocks,
-} from '@plone/volto/config';
-
+// All your imports required for the config here BEFORE this line
+import '@plone/volto/config';
 import { AlbumView, FullView } from './components';
 
-export const settings = {
-  ...defaultSettings,
-};
+export default function applyConfig(config) {
+  const defaultViews = config.views
+  // Add here your project's configuration here by modifying `config` accordingly
+  config.views = {
+    ...defaultViews,
+    layoutViews: {
+      ...defaultViews.layoutViews,
+      album_view: AlbumView,
+      full_view: FullView,
+    },
+  };
+  return config;
+}
 
-export const views = {
-  ...defaultViews,
-  layoutViews: {
-    ...defaultViews.layoutViews,
-    album_view: AlbumView,
-    full_view: FullView,
-  },
-};
-
-export const widgets = {
-  ...defaultWidgets,
-};
-
-export const blocks = {
-  ...defaultBlocks,
-};
-
-export default SummaryView;
 ```

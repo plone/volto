@@ -20,13 +20,18 @@ import {
 } from '@plone/volto/config/RichTextEditor/Blocks';
 import FromHTMLCustomBlockFn from '@plone/volto/config/RichTextEditor/FromHTML';
 import { contentIcons } from '@plone/volto/config/ContentIcons';
-import { styleClassNameConverters } from '@plone/volto/config/Style';
+import {
+  styleClassNameConverters,
+  styleClassNameExtenders,
+} from '@plone/volto/config/Style';
 
 import {
   controlPanelsIcons,
   filterControlPanels,
   filterControlPanelsSchema,
 } from '@plone/volto/config/ControlPanels';
+
+import ListingBlockSchema from '@plone/volto/components/manage/Blocks/Listing/schema';
 
 // we need to do a redefinition here because of circular import issues
 // because draftjs-based components are not really tested, this is basically
@@ -49,6 +54,7 @@ const richtextViewSettings = {
 
 config.set('settings', {
   apiPath: 'http://localhost:8080/Plone',
+  publicURL: 'http://localhost:3000',
   defaultLanguage: 'en',
   supportedLanguages: ['en'],
   defaultPageSize: 25,
@@ -76,10 +82,14 @@ config.set('settings', {
   downloadableObjects: ['File'],
   viewableInBrowserObjects: [],
   styleClassNameConverters,
+  styleClassNameExtenders,
+  blockSettingsTabFieldsetsInitialStateOpen: true,
+  containerBlockTypes: [],
 });
 config.set('blocks', {
   blocksConfig: {
     listing: {
+      blockSchema: ListingBlockSchema,
       variations: [
         {
           id: 'default',
@@ -164,7 +174,15 @@ config.set('widgets', {
   default: BaseWidget('default'),
 });
 
-config.set('components', {});
+config.set('components', {
+  PreviewImage: {
+    component: (props) => <img alt="PreviewImage component mock" {...props} />,
+  },
+  Image: {
+    // eslint-disable-next-line jsx-a11y/img-redundant-alt
+    component: (props) => <img alt="Image component mock" {...props} />,
+  },
+});
 config.set('experimental', {
   addBlockButton: {
     enabled: false,

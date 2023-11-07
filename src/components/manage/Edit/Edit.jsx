@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { Helmet } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { asyncConnect } from '@plone/volto/helpers';
+import { asyncConnect, hasApiExpander } from '@plone/volto/helpers';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Button, Grid, Menu } from 'semantic-ui-react';
 import { Portal } from 'react-portal';
@@ -35,7 +35,11 @@ import {
   getSchema,
   listActions,
 } from '@plone/volto/actions';
-import { getBaseUrl, hasBlocksData } from '@plone/volto/helpers';
+import {
+  flattenToAppURL,
+  getBaseUrl,
+  hasBlocksData,
+} from '@plone/volto/helpers';
 import { preloadLazyLibs } from '@plone/volto/helpers/Loadable';
 
 import saveSVG from '@plone/volto/icons/save.svg';
@@ -260,7 +264,12 @@ class Edit extends Component {
 
   setComparingLanguage(lang, content_id) {
     this.setState({ comparingLanguage: lang });
-    this.props.getContent(content_id, null, 'compare_to', null);
+    this.props.getContent(
+      flattenToAppURL(content_id),
+      null,
+      'compare_to',
+      null,
+    );
   }
 
   form = React.createRef();
@@ -475,7 +484,10 @@ export default compose(
     {
       key: 'actions',
       promise: async ({ location, store: { dispatch } }) => {
-        await dispatch(listActions(getBaseUrl(location.pathname)));
+        // Do not trigger the actions action if the expander is present
+        if (!hasApiExpander('actions', getBaseUrl(location.pathname))) {
+          return await dispatch(listActions(getBaseUrl(location.pathname)));
+        }
       },
     },
     {

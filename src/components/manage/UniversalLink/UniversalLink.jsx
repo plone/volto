@@ -5,16 +5,16 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { HashLink as Link } from 'react-router-hash-link';
 import { useSelector } from 'react-redux';
 import {
   flattenToAppURL,
   isInternalURL,
   URLUtils,
 } from '@plone/volto/helpers/Url/Url';
-import { matchPath } from 'react-router';
 
 import config from '@plone/volto/registry';
+import cx from 'classnames';
 
 const UniversalLink = ({
   href,
@@ -30,7 +30,9 @@ const UniversalLink = ({
 
   let url = href;
   if (!href && item) {
-    if (!item['@id']) {
+    if (item['@id'] === '') {
+      url = config.settings.publicURL;
+    } else if (!item['@id']) {
       // eslint-disable-next-line no-console
       console.error(
         'Invalid item passed to UniversalLink',
@@ -66,11 +68,8 @@ const UniversalLink = ({
     }
   }
 
-  const isBlacklisted =
-    (config.settings.externalRoutes ?? []).find((route) =>
-      matchPath(flattenToAppURL(url), route.match),
-    )?.length > 0;
-  const isExternal = !isInternalURL(url) || isBlacklisted;
+  const isExternal = !isInternalURL(url);
+
   const isDownload = (!isExternal && url.includes('@@download')) || download;
   const isDisplayFile =
     (!isExternal && url.includes('@@display-file')) || false;
@@ -78,13 +77,13 @@ const UniversalLink = ({
   const checkedURL = URLUtils.checkAndNormalizeUrl(url);
 
   url = checkedURL.url;
-
   let tag = (
     <Link
       to={flattenToAppURL(url)}
       target={openLinkInNewTab ?? false ? '_blank' : null}
       title={title}
       className={className}
+      smooth={config.settings.hashLinkSmoothScroll}
       {...props}
     >
       {children}
@@ -92,19 +91,16 @@ const UniversalLink = ({
   );
 
   if (isExternal) {
+    const isTelephoneOrMail = checkedURL.isMail || checkedURL.isTelephone;
     tag = (
       <a
         href={url}
         title={title}
         target={
-          !checkedURL.isMail &&
-          !checkedURL.isTelephone &&
-          !(openLinkInNewTab === false)
-            ? '_blank'
-            : null
+          !isTelephoneOrMail && !(openLinkInNewTab === false) ? '_blank' : null
         }
         rel="noopener noreferrer"
-        className={className}
+        className={cx({ external: !isTelephoneOrMail }, className)}
         {...props}
       >
         {children}

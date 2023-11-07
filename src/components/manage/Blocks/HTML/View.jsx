@@ -1,16 +1,6 @@
-/**
- * View html block.
- * @module components/manage/Blocks/HTML/View
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 
-/**
- * View html block class.
- * @class View
- * @extends Component
- */
 const View = ({ data }) => (
   <div className="block html" dangerouslySetInnerHTML={{ __html: data.html }} />
 );

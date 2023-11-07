@@ -97,6 +97,7 @@ class TextWidget extends Component {
       minLength,
       maxLength,
       placeholder,
+      isDisabled,
     } = this.props;
 
     return (
@@ -105,7 +106,7 @@ class TextWidget extends Component {
           id={`field-${id}`}
           name={id}
           value={value || ''}
-          disabled={this.props.isDisabled}
+          disabled={isDisabled}
           icon={icon || null}
           placeholder={placeholder}
           onChange={({ target }) =>
