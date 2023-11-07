@@ -3,18 +3,18 @@
  * @module components/manage/Controlpanels/Controlpanels
  */
 
+import { Helmet, asyncConnect } from '@plone/volto/helpers';
+import { concat, filter, last, map, sortBy, uniqBy } from 'lodash';
 import PropTypes from 'prop-types';
-import { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-import { Link } from 'react-router-dom';
-import { concat, filter, last, map, uniqBy } from 'lodash';
-import { Portal } from 'react-portal';
-import { asyncConnect, Helmet } from '@plone/volto/helpers';
-import { Container, Grid, Header, Message, Segment } from 'semantic-ui-react';
+import { useEffect, useState } from 'react';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
+import { Portal } from 'react-portal';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { compose } from 'redux';
+import { Container, Grid, Header, Message, Segment } from 'semantic-ui-react';
 
-import { listControlpanels, getSystemInformation } from '@plone/volto/actions';
+import { getSystemInformation, listControlpanels } from '@plone/volto/actions';
 import { Error, Icon, Toolbar, VersionOverview } from '@plone/volto/components';
 
 import config from '@plone/volto/registry';
@@ -221,7 +221,10 @@ function Controlpanels({
               <Grid doubling columns={6}>
                 <Grid.Row>
                   {map(
-                    filter(filteredControlPanels, { group }),
+                    sortBy(
+                      filter(filteredControlPanels, { group }),
+                      (controlpanel) => controlpanel.title,
+                    ),
                     (controlpanel) => (
                       <Grid.Column key={controlpanel.id}>
                         <Link to={`/controlpanel/${controlpanel.id}`}>
