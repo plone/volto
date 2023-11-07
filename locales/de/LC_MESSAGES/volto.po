@@ -2468,6 +2468,16 @@ msgstr ""
 msgid "Origin"
 msgstr "Quelle"
 
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Override source content
+msgid "Override source content"
+msgstr ""
+
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Override source content if you want to prevent further updates
+msgid "Override source content if you want to prevent further updates"
+msgstr ""
+
 #: components/manage/LinksToItem/LinksToItem
 # defaultMessage: Overview of relations of all content items
 msgid "Overview of relations of all content items"
@@ -2722,6 +2732,11 @@ msgstr "Inhalte, die diesen Inhalt als verwandten Inhalt referenzieren"
 msgid "Referencing this item with {relationship}"
 msgstr "Inhalte, die diesen Inhalt mit {relationship} referenzieren"
 
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: Refresh source content
+msgid "Refresh source content"
+msgstr ""
+
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
 #: components/theme/Register/Register
@@ -2866,11 +2881,6 @@ msgstr ""
 # defaultMessage: Reset title
 msgid "Reset term title"
 msgstr "Setze Titel zurück"
-
-#: components/manage/Blocks/Teaser/Data
-# defaultMessage: Reset the block
-msgid "Reset the block"
-msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Results limit
@@ -3537,7 +3547,7 @@ msgstr "Der Zielpfad muss mit einem Schrägstrich beginnen."
 #: components/manage/Blocks/Teaser/schema
 # defaultMessage: Teaser
 msgid "Teaser"
-msgstr ""
+msgstr "Teaser"
 
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Text
@@ -4473,7 +4483,7 @@ msgid "flushAndRebuildRelationsHints"
 msgstr "<ul><li>Generiere neue intIds (Tokens der Relationen im Relations-Katalog).</li><li>Reindiziere alle Relationen.</li></ul><p><b>Warnung</b>: Wenn Sie Add-Ons verwenden, die intIds verwenden, sollten sie intIds nicht neu generieren lassen. Prüfen Sie bitte vorab das entsprechende Add-On.</p>"
 
 #: components/manage/Blocks/Teaser/schema
-# defaultMessage: Head title
+# defaultMessage: head title
 msgid "head_title"
 msgstr "Kopftitel"
 

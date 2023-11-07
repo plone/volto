@@ -16,6 +16,7 @@ import {
   normalizeUrl,
   removeProtocol,
 } from '@plone/volto/helpers/Url/Url';
+import { UniversalLink } from '@plone/volto/components';
 import { searchContent } from '@plone/volto/actions/search/search';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import { defineMessages, injectIntl } from 'react-intl';
@@ -122,7 +123,11 @@ export class ObjectBrowserWidgetComponent extends Component {
         }
         trigger={
           <Label>
-            <div className="item-title">{item.title}</div>
+            <div className="item-title">
+              <UniversalLink openLinkInNewTab href={href}>
+                {item.title}
+              </UniversalLink>
+            </div>
             <div>
               {this.props.mode === 'multiple' && (
                 <Icon

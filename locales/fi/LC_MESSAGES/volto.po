@@ -2473,6 +2473,16 @@ msgstr ""
 msgid "Origin"
 msgstr "Kuva"
 
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Override source content
+msgid "Override source content"
+msgstr ""
+
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Override source content if you want to prevent further updates
+msgid "Override source content if you want to prevent further updates"
+msgstr ""
+
 #: components/manage/LinksToItem/LinksToItem
 # defaultMessage: Overview of relations of all content items
 msgid "Overview of relations of all content items"
@@ -2727,6 +2737,11 @@ msgstr ""
 msgid "Referencing this item with {relationship}"
 msgstr ""
 
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: Refresh source content
+msgid "Refresh source content"
+msgstr ""
+
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
 #: components/theme/Register/Register
@@ -2871,11 +2886,6 @@ msgstr ""
 # defaultMessage: Reset title
 msgid "Reset term title"
 msgstr "Tyhjennä termin otsikko"
-
-#: components/manage/Blocks/Teaser/Data
-# defaultMessage: Reset the block
-msgid "Reset the block"
-msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Results limit
@@ -4478,7 +4488,7 @@ msgid "flushAndRebuildRelationsHints"
 msgstr ""
 
 #: components/manage/Blocks/Teaser/schema
-# defaultMessage: Head title
+# defaultMessage: head title
 msgid "head_title"
 msgstr ""
 

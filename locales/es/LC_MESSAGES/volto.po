@@ -2473,6 +2473,16 @@ msgstr "Ordenado"
 msgid "Origin"
 msgstr "Origen"
 
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Override source content
+msgid "Override source content"
+msgstr ""
+
+#: components/manage/Blocks/Teaser/schema
+# defaultMessage: Override source content if you want to prevent further updates
+msgid "Override source content if you want to prevent further updates"
+msgstr ""
+
 #: components/manage/LinksToItem/LinksToItem
 # defaultMessage: Overview of relations of all content items
 msgid "Overview of relations of all content items"
@@ -2727,6 +2737,11 @@ msgstr "Hacer referencia a este elemento como elemento relacionado"
 msgid "Referencing this item with {relationship}"
 msgstr "Hacer referencia a este elemento con {relationship}"
 
+#: components/manage/Blocks/Teaser/Data
+# defaultMessage: Refresh source content
+msgid "Refresh source content"
+msgstr ""
+
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
 #: components/theme/Register/Register
@@ -2871,11 +2886,6 @@ msgstr "Restablecer elemento {index}"
 # defaultMessage: Reset title
 msgid "Reset term title"
 msgstr "Limpiar el título del término"
-
-#: components/manage/Blocks/Teaser/Data
-# defaultMessage: Reset the block
-msgid "Reset the block"
-msgstr "Restablecer el bloque"
 
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Results limit
@@ -4478,7 +4488,7 @@ msgid "flushAndRebuildRelationsHints"
 msgstr "<ul><li>Regenerar intIds (tokens de relaciones en el catálogo de relaciones)</li><li>Reconstruir relaciones</li></ul><p>¡Consulte el registro para obtener más detalles!</p><p><b>Advertencia</b>: Si tiene complementos que dependen de intIds, no debería eliminarlos.</p>"
 
 #: components/manage/Blocks/Teaser/schema
-# defaultMessage: Head title
+# defaultMessage: head title
 msgid "head_title"
 msgstr "Encabezado"
 
