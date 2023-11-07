@@ -19,14 +19,15 @@ test('renders a Lead Image block Sidebar component', () => {
       <LeadImageSidebar
         data={{}}
         properties={{
+          '@id': 'http://localhost:3000/image.png',
           image: {
-            download: 'http://localhost:3000/image.png',
+            download: 'http://localhost:3000/image.png/@@images/image-1200.png',
             width: 400,
             height: 400,
             scales: {
               preview: {
                 download:
-                  'http://localhost:3000/image.png/@@images/image/image-400.png',
+                  'http://localhost:3000/image.png/@@images/image-400.png',
                 width: 400,
                 height: 400,
               },

@@ -50,7 +50,7 @@ const Navigation = (props) => {
   };
 
   return (
-    <nav className="navigation" id="navigation" aria-label="navigation">
+    <nav className="navigation" id="navigation" aria-label="Site">
       <div className="hamburger-wrapper mobile tablet only">
         <button
           className={cx('hamburger hamburger--spin', {

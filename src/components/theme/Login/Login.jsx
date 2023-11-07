@@ -74,7 +74,7 @@ const Login = (props) => {
   const error = useSelector((state) => state.userSession.login.error);
   const loading = useSelector((state) => state.userSession.login.loading);
   const returnUrl =
-    qs.parse(props.location.search ?? location.search).return_url ||
+    qs.parse(props.location?.search ?? location.search).return_url ||
     location.pathname.replace(/\/login\/?$/, '').replace(/\/logout\/?$/, '') ||
     '/';
   useEffect(() => {

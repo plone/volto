@@ -1,3 +1,12 @@
+---
+myst:
+  html_meta:
+    "description": "Volto Release Notes for the Plone content management system"
+    "property=og:description": "Volto Release Notes for the Plone content management system"
+    "property=og:title": "Volto Release Notes"
+    "keywords": "Volto, Plone, frontend, Release Notes, change log, changelog, change history"
+---
+
 # Volto Release Notes
 
 <!-- You should *NOT* be adding new change log entries to this file.
@@ -7,6 +16,125 @@
 -->
 
 <!-- towncrier release notes start -->
+
+## 18.0.0-alpha.0 (2023-11-06)
+
+### Breaking
+
+- Experimental feature flag for new add block button enabled by default. @sneridagh [#4947](https://github.com/plone/volto/issues/4947)
+- Moved add-on registry to its own package. @sneridagh [#4949](https://github.com/plone/volto/issues/4949)
+- Sidebar formtabs item links are now real buttons with `ui button` class for proper keyboard and screen reader support @ichim-david [#5294](https://github.com/plone/volto/issues/5294)
+
+### Bugfix
+
+- Add build process to registry package and fixes @sneridagh [#5364](https://github.com/plone/volto/issues/5364)
+- Fixed import in Storybook configuration, related to the recent registry change. @sneridagh [#5368](https://github.com/plone/volto/issues/5368)
+- Improve importing from the new registry from Volto code itself @sneridagh [#5373](https://github.com/plone/volto/issues/5373)
+
+### Internal
+
+- Unused files in root cleanup @sneridagh [#5367](https://github.com/plone/volto/issues/5367)
+
+### Documentation
+
+- Updated branch policy. @sneridagh [#5363](https://github.com/plone/volto/issues/5363)
+- Remove "legacy" term, now that we use "no longer supported". @stevepiercy [#5370](https://github.com/plone/volto/issues/5370)
+- Reduce the severity level of `Microsoft.Contractions` and `Microsoft.Units` from `error` to `suggestion` when running `make docs-vale` in preparation for requiring Vale passing without errors. @stevepiercy [#5371](https://github.com/plone/volto/issues/5371)
+- Improved wording in branching policy. @sneridagh [#5372](https://github.com/plone/volto/issues/5372)
+
+## 17.4.0 (2023-11-04)
+
+### Feature
+
+- add cypress test for search block via url - @ionlizarazu [#5298](https://github.com/plone/volto/issues/5298)
+- Add type definitions for Volto Javascript files @sneridagh [#5355](https://github.com/plone/volto/issues/5355)
+
+### Bugfix
+
+- Add support for TS files in add-on registry shadowing system @sneridagh [#5354](https://github.com/plone/volto/issues/5354)
+
+### Documentation
+
+- Fix Sphinx toctree warnings from included `CHANGELOG.md`. @stevepiercy [#5135](https://github.com/plone/volto/issues/5135)
+- Remove regular expression from `sphinx-copybutton` configuration, now that `linenos` are excluded by default. @stevepiercy [#5346](https://github.com/plone/volto/issues/5346)
+
+## 17.3.0 (2023-10-27)
+
+### Feature
+
+- Updated aria-label for landmarks @ichim-david
+  Added landmark on sidebar @ichim-david
+  Added Pluggable section for skiplinks @ichim-david [#5290](https://github.com/plone/volto/issues/5290)
+
+### Bugfix
+
+- (FIX): put padding so the text is not clipped #5305 @dobri1408 [#5305](https://github.com/plone/volto/issues/5305)
+- Fix compare translations view @sneridagh [#5327](https://github.com/plone/volto/issues/5327)
+- Fix DatetimeWidget on FF, the button default if no type is set is sending the form. @sneridagh
+  See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#formmethod [#5343](https://github.com/plone/volto/issues/5343)
+
+### Internal
+
+- For blocks that define their `blockSchema`, call `applyBlockDefaults` when creating the initial data for the blocks form.
+  It is now possible to define a block configuration function, `initialValue` that returns the initial value for a block. This is useful in use cases such as container blocks that want to create a complex initial data structure, to avoid the need to call `React.useEffect` on their initial block rendering and thus, avoid complex async "concurent" state mutations.
+  The `addBlock`, `mutateBlock`, `insertBlock` now allow passing a `blocksConfig` configuration object
+
+  @tiberiuichim [#5320](https://github.com/plone/volto/issues/5320)
+- Add a new set of acceptance tests with the multilingual fixture using seamless mode. @sneridagh [#5332](https://github.com/plone/volto/issues/5332)
+
+### Documentation
+
+- Fix reference link to installation. @stevepiercy [#5328](https://github.com/plone/volto/issues/5328)
+- Add upgrade docs for users of `@kitconcept/volto-blocks-grid` addon @sneridagh [#5333](https://github.com/plone/volto/issues/5333)
+
+## 17.2.0 (2023-10-16)
+
+### Feature
+
+- add cypress test for search block via url - @ionlizarazu [#5298](https://github.com/plone/volto/issues/5298)
+
+### Bugfix
+
+- Fix adding multiple path criteria in search and listing blocks. @davisagli [#5317](https://github.com/plone/volto/issues/5317)
+
+
+## 17.1.1 (2023-10-13)
+
+### Bugfix
+
+- Normalize the shape of the image component item prop if it contains the serialized object after creation to match the one in the catalog. @sneridagh [#5266](https://github.com/plone/volto/issues/5266)
+- Added guard in `flattenScales` in edge case image is undefined @sneridagh [#5318](https://github.com/plone/volto/issues/5318)
+
+
+## 17.1.0 (2023-10-11)
+
+### Feature
+
+- storybook Header-@Tishasoumya [#5085](https://github.com/plone/volto/issues/5085)
+- Storybook EventDetails-@Tishasoumya [#5088](https://github.com/plone/volto/issues/5088)
+- Storybook CommentEditModal-@Tishasoumya [#5091](https://github.com/plone/volto/issues/5091)
+- Storybook SearchWidget-@Tishasoumya [#5092](https://github.com/plone/volto/issues/5092)
+- Upgrade to @plone/scripts 3.0.1 @sneridagh [#5282](https://github.com/plone/volto/issues/5282)
+- Make LeadImage block sizes configurable through a function @erral [#5289](https://github.com/plone/volto/issues/5289)
+
+### Bugfix
+
+- Remove the default aspect-ratio from Image component. It was redundant and hard to override. @pnicolli [#5096](https://github.com/plone/volto/issues/5096)
+- Update translate pt_br to fix merge fail @luxcas [#5217](https://github.com/plone/volto/issues/5217)
+- Ensure .gitignore gets copied when running yo @plone/volto-addon @instification [#5258](https://github.com/plone/volto/issues/5258)
+- Configure the `prettier` and `prettier:fix` yarn commands to also include the root js files and the `cypress` subfolder @tiberiuichim [#5260](https://github.com/plone/volto/issues/5260)
+- Emit a proper URL for the Plone root in a listing, we use the `config.publicURL` for it @tiberiuichim [#5263](https://github.com/plone/volto/issues/5263)
+- fixed logo and login storybook @nileshgulia1 [#5264](https://github.com/plone/volto/issues/5264)
+- Refactor Logo component to improve the conditional link to the root @sneridagh [#5280](https://github.com/plone/volto/issues/5280)
+- Update webpack-bundle-analyzer to 4.9.0. @davisagli [#5283](https://github.com/plone/volto/issues/5283)
+- Added support for blocksConfig configuration in the listing block @sneridagh [#5310](https://github.com/plone/volto/issues/5310)
+
+### Documentation
+
+- Added notice in release notes for Volto 17 final to clarify that it's a summary for all changes during the alpha stage. @sneridagh
+  Added an omitted change log entry for the Relations Control Panel. @sneridagh [#5281](https://github.com/plone/volto/issues/5281)
+- Updated readme and removed outdated install docs. @davisagli [#5287](https://github.com/plone/volto/issues/5287)
+
 
 ## 17.0.1 (2023-10-03)
 
@@ -2108,6 +2236,7 @@ See https://6.docs.plone.org/volto/upgrade-guide/index.html for more information
 
 ### Bugfix
 
+- Sort control panels alphabetically within each group @JeffersonBledsoe #3737
 - Fix UniversalLink storybook @tiberiuichim
 - Fix logout to stay on the same page where the user was @reebalazs
 - Change sentry chunk name to avoid ad blockers. Only load sentry if env vars exist @tiberiuichim

@@ -68,7 +68,7 @@ module.exports = {
       modifyWebpackConfig: razzleConfig.modifyWebpackConfig,
       plugins: razzleConfig.plugins
     }, webpack, false, undefined, [], defaultRazzleOptions);
-    const AddonConfigurationRegistry = require('../addon-registry');
+    const AddonConfigurationRegistry = require('../packages/registry/addon-registry');
     const registry = new AddonConfigurationRegistry(projectRootPath);
     config = lessPlugin({
       registry
