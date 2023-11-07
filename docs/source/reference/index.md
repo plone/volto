@@ -13,4 +13,6 @@ myst:
 
 ```{toctree}
 :maxdepth: 2
+environment-variables
+folder-structure
 ```
