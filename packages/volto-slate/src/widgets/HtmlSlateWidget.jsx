@@ -9,7 +9,7 @@ import { MemoryRouter } from 'react-router-dom';
 import { Provider, useSelector } from 'react-redux';
 import { defineMessages, injectIntl } from 'react-intl';
 
-import { FormFieldWrapper } from '@plone/volto/components';
+import { FormFieldWrapper } from '@plone/volto/components/manage/Widgets';
 import SlateEditor from '@plone/volto-slate/editor/SlateEditor';
 import { serializeNodes } from '@plone/volto-slate/editor/render';
 import { makeEditor } from '@plone/volto-slate/utils';
@@ -25,8 +25,7 @@ import './style.css';
 
 const messages = defineMessages({
   error: {
-    id:
-      'An error has occurred while editing "{name}" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator.',
+    id: 'An error has occurred while editing "{name}" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator.',
     defaultMessage:
       'An error has occurred while editing "{name}" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator.',
   },

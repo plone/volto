@@ -1,5 +1,21 @@
 import loadable from '@loadable/component';
 
+// CONTROLPANELS
+
+export const Controlpanels = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "Controlpanels" */ '@plone/volto/components/manage/Controlpanels/Controlpanels'
+    ),
+);
+
+export const Controlpanel = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "Controlpanels" */ '@plone/volto/components/manage/Controlpanels/Controlpanel'
+    ),
+);
+
 // RULES CONTROLPANELS
 
 export const RulesControlpanel = loadable(
@@ -46,9 +62,91 @@ export const UserGroupMembershipControlPanel = loadable(
     ),
 );
 
+export const GroupsControlpanel = loadable(
+  () =>
+    import(
+      '@plone/volto/components/manage/Controlpanels/Groups/GroupsControlpanel'
+    ),
+);
+
 // RELATIONS CONTROLPANEL
 
 export const RelationsControlpanel = loadable(
   () =>
     import('@plone/volto/components/manage/Controlpanels/Relations/Relations'),
+);
+
+// ALIASES CONTROLPANEL
+
+export const AliasesControlpanel = loadable(
+  () => import('@plone/volto/components/manage/Controlpanels/Aliases'),
+);
+
+// UNDO CONTROLPANEL
+
+export const UndoControlpanel = loadable(
+  () => import('@plone/volto/components/manage/Controlpanels/UndoControlpanel'),
+);
+
+// ADDONS CONTROLPANEL
+
+export const AddonsControlpanel = loadable(
+  () =>
+    import('@plone/volto/components/manage/Controlpanels/AddonsControlpanel'),
+);
+
+// CONTENT TYPES CONTROLPANEL
+
+export const ContentType = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "ContentTypesControlpanel" */ '@plone/volto/components/manage/Controlpanels/ContentType'
+    ),
+);
+
+export const ContentTypeLayout = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "ContentTypesControlpanel" */ '@plone/volto/components/manage/Controlpanels/ContentTypeLayout'
+    ),
+);
+
+export const ContentTypeSchema = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "ContentTypesControlpanel" */ '@plone/volto/components/manage/Controlpanels/ContentTypeSchema'
+    ),
+);
+
+export const ContentTypes = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "ContentTypesControlpanel" */ '@plone/volto/components/manage/Controlpanels/ContentTypes'
+    ),
+);
+
+// VERSION OVERVIEW
+
+export const VersionOverview = loadable(
+  () => import('@plone/volto/components/manage/Controlpanels/VersionOverview'),
+);
+
+// PLONE UPGRADES CONTROLPANELS
+
+export const UpgradeControlPanel = loadable(
+  () =>
+    import('@plone/volto/components/manage/Controlpanels/UpgradeControlPanel'),
+);
+
+// MODERATE COMMENTS CONTROLPANEL
+
+export const ModerateComments = loadable(
+  () => import('@plone/volto/components/manage/Controlpanels/ModerateComments'),
+);
+
+// DATABASE INFORMATION CONTROLPANELS
+
+export const DatabaseInformation = loadable(
+  () =>
+    import('@plone/volto/components/manage/Controlpanels/DatabaseInformation'),
 );

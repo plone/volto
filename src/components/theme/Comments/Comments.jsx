@@ -13,7 +13,9 @@ import {
   listComments,
   listMoreComments,
 } from '@plone/volto/actions';
-import { Avatar, CommentEditModal, Form } from '@plone/volto/components';
+import { Avatar } from '@plone/volto/components';
+import { Form } from '@plone/volto/components/manage/Form';
+import { CommentEditModal } from '@plone/volto/components/theme/Comments';
 import {
   flattenToAppURL,
   getBaseUrl,

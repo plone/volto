@@ -6,7 +6,8 @@ import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 import { getSchema, updateContent, getContent } from '@plone/volto/actions';
 import { getLayoutFieldname } from '@plone/volto/helpers';
-import { FormFieldWrapper, Icon } from '@plone/volto/components';
+import { Icon } from '@plone/volto/components';
+import { FormFieldWrapper } from '@plone/volto/components/manage/Widgets';
 import { defineMessages, injectIntl } from 'react-intl';
 import config from '@plone/volto/registry';
 

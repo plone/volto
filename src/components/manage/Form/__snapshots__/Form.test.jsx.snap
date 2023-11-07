@@ -20,6 +20,7 @@ exports[`Form renders a form component 1`] = `
         >
           <div
             className="Field"
+            id="title"
           />
         </div>
         <div

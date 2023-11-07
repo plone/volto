@@ -26,7 +26,7 @@ import {
   Menu,
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import DatetimeWidget from '@plone/volto/components/manage/Widgets/DatetimeWidget';
+import { DatetimeWidget } from '@plone/volto/components/manage/Widgets';
 import { Icon, Toolbar } from '@plone/volto/components';
 
 import backSVG from '@plone/volto/icons/back.svg';

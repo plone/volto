@@ -15,7 +15,8 @@ import { Container, Grid, Header, Message, Segment } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 
 import { listControlpanels, getSystemInformation } from '@plone/volto/actions';
-import { Error, Icon, Toolbar, VersionOverview } from '@plone/volto/components';
+import { Error, Icon, Toolbar } from '@plone/volto/components';
+import { VersionOverview } from '@plone/volto/components/manage/Controlpanels';
 
 import config from '@plone/volto/registry';
 

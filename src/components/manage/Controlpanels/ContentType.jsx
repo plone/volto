@@ -13,7 +13,8 @@ import { Button, Header } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import { toast } from 'react-toastify';
 import { last, nth, join } from 'lodash';
-import { Error, Form, Icon, Toolbar, Toast } from '@plone/volto/components';
+import { Error, Icon, Toolbar, Toast } from '@plone/volto/components';
+import { Form } from '@plone/volto/components/manage/Form';
 import { getControlpanel, updateControlpanel } from '@plone/volto/actions';
 
 import saveSVG from '@plone/volto/icons/save.svg';

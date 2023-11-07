@@ -10,6 +10,7 @@ import { MemoryRouter } from 'react-router';
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
+jest.mock('@plone/volto/components/manage/Widgets');
 jest.mock('react-portal', () => ({
   Portal: jest.fn(() => <div id="Portal" />),
 }));

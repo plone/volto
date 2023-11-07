@@ -18,13 +18,13 @@ import { toast } from 'react-toastify';
 
 import { createContent, getSchema, changeLanguage } from '@plone/volto/actions';
 import {
-  Form,
   Icon,
   Toolbar,
   Sidebar,
   Toast,
   TranslationObject,
 } from '@plone/volto/components';
+import { Form } from '@plone/volto/components/manage/Form';
 import {
   getBaseUrl,
   hasBlocksData,

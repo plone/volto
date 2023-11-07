@@ -13,6 +13,8 @@ jest.mock('react-portal', () => ({
   Portal: jest.fn(() => <div id="Portal" />),
 }));
 
+jest.mock('@plone/volto/components/manage/Form');
+
 describe('EditRule', () => {
   it('renders rules edit interface', () => {
     const store = mockStore({

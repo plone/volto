@@ -12,7 +12,8 @@ import { withRouter } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
 import { toast } from 'react-toastify';
 import { messages } from '@plone/volto/helpers';
-import { Form, Toast } from '@plone/volto/components';
+import { Toast } from '@plone/volto/components';
+import { Form } from '@plone/volto/components/manage/Form';
 import { getUser, updateUser, getUserSchema } from '@plone/volto/actions';
 
 /**

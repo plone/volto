@@ -6,18 +6,10 @@ import debug from 'debug';
 import { compact } from 'lodash';
 import {
   Add,
-  AddonsControlpanel,
   Aliases,
   ChangePassword,
   ContactForm,
-  ContentType,
-  ContentTypeLayout,
-  ContentTypeSchema,
-  ContentTypes,
-  Controlpanel,
-  Controlpanels,
   CreateTranslation,
-  DatabaseInformation,
   Delete,
   Diff,
   Edit,
@@ -26,7 +18,6 @@ import {
   Login,
   Logout,
   ManageTranslations,
-  ModerateComments,
   NotFound,
   PasswordReset,
   Register,
@@ -34,10 +25,6 @@ import {
   Search,
   Sharing,
   Sitemap,
-  AliasesControlpanel,
-  UndoControlpanel,
-  GroupsControlpanel,
-  UpgradeControlPanel,
   PersonalInformation,
 } from '@plone/volto/components';
 import { Contents } from '@plone/volto/components/manage/Contents';
@@ -49,7 +36,20 @@ import {
   ConfigureRuleControlpanel,
   UsersControlpanel,
   UserGroupMembershipControlPanel,
+  GroupsControlpanel,
+  AddonsControlpanel,
+  AliasesControlpanel,
+  ContentType,
+  ContentTypeLayout,
+  ContentTypeSchema,
+  ContentTypes,
+  Controlpanel,
+  Controlpanels,
+  DatabaseInformation,
+  ModerateComments,
   RelationsControlpanel,
+  UndoControlpanel,
+  UpgradeControlPanel,
 } from '@plone/volto/components/manage/Controlpanels';
 
 // Deliberatelly use of absolute path of these components, since we do not want them

@@ -5,7 +5,12 @@ exports[`Edit renders an edit component 1`] = `
   id="page-edit"
 >
   <div
-    className="Form"
+    data-schema={
+      Object {
+        "some": "field",
+      }
+    }
+    id="Form"
   />
   <div
     id="Portal"
@@ -21,7 +26,8 @@ exports[`Edit renders an empty edit component 1`] = `
   id="page-edit"
 >
   <div
-    className="Form"
+    data-schema={null}
+    id="Form"
   />
   <div
     id="Portal"

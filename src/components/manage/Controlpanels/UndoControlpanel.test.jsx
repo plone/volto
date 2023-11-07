@@ -10,7 +10,7 @@ const mockStore = configureStore();
 jest.mock('react-portal', () => ({
   Portal: jest.fn(() => <div id="Portal" />),
 }));
-jest.mock('../Form/Form', () => jest.fn(() => <div id="form" />));
+jest.mock('@plone/volto/components/manage/Form');
 
 describe('UndoControlpanel', () => {
   it('renders undo controlpanel component', () => {

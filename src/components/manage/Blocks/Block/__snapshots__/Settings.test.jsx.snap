@@ -3,15 +3,8 @@
 exports[`Settings renders block settings form without schema enhancers 1`] = `
 <div>
   <div
-    class="ui form"
-  >
-    <div
-      id="blockform-fieldset-default"
-    >
-      <div
-        class="ui segment form attached"
-      />
-    </div>
-  </div>
+    data-schema="[object Object]"
+    id="BlockDataForm"
+  />
 </div>
 `;

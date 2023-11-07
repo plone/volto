@@ -75,23 +75,8 @@ export { default as AlbumView } from '@plone/volto/components/theme/View/AlbumVi
 
 export { default as Actions } from '@plone/volto/components/manage/Actions/Actions';
 export { default as Add } from '@plone/volto/components/manage/Add/Add';
-export { default as AddonsControlpanel } from '@plone/volto/components/manage/Controlpanels/AddonsControlpanel';
-export { default as UndoControlpanel } from '@plone/volto/components/manage/Controlpanels/UndoControlpanel';
 export { default as Circle } from '@plone/volto/components/manage/Contents/circle';
-export { default as DatabaseInformation } from '@plone/volto/components/manage/Controlpanels/DatabaseInformation';
-export { default as Controlpanel } from '@plone/volto/components/manage/Controlpanels/Controlpanel';
-export { default as Controlpanels } from '@plone/volto/components/manage/Controlpanels/Controlpanels';
-export { default as AliasesControlpanel } from '@plone/volto/components/manage/Controlpanels/Aliases';
-export { default as ContentTypes } from '@plone/volto/components/manage/Controlpanels/ContentTypes';
-export { default as ContentType } from '@plone/volto/components/manage/Controlpanels/ContentType';
-export { default as ContentTypeLayout } from '@plone/volto/components/manage/Controlpanels/ContentTypeLayout';
-export { default as ContentTypeSchema } from '@plone/volto/components/manage/Controlpanels/ContentTypeSchema';
-export { default as ContentTypesActions } from '@plone/volto/components/manage/Controlpanels/ContentTypesActions';
-export { default as GroupsControlpanel } from '@plone/volto/components/manage/Controlpanels/Groups/GroupsControlpanel';
-export { default as UpgradeControlPanel } from '@plone/volto/components/manage/Controlpanels/UpgradeControlPanel';
 
-export { default as ModerateComments } from '@plone/volto/components/manage/Controlpanels/ModerateComments';
-export { default as VersionOverview } from '@plone/volto/components/manage/Controlpanels/VersionOverview';
 export { default as Delete } from '@plone/volto/components/manage/Delete/Delete';
 export const Diff = loadable(() =>
   import('@plone/volto/components/manage/Diff/Diff'),
@@ -116,41 +101,8 @@ export { default as Types } from '@plone/volto/components/manage/Toolbar/Types';
 export { default as Toast } from '@plone/volto/components/manage/Toast/Toast';
 export { default as ManageTranslations } from '@plone/volto/components/manage/Multilingual/ManageTranslations';
 
-// Potentially could ve removed from index, since they are internal components and
-// we don't want them to end up in the main chunk
-export Form from '@plone/volto/components/manage/Form/Form';
 export { default as SearchTags } from '@plone/volto/components/theme/Search/SearchTags';
-export { default as CommentEditModal } from '@plone/volto/components/theme/Comments/CommentEditModal';
-export { default as RenderGroups } from '@plone/volto/components/manage/Controlpanels/Groups/RenderGroups';
 export { default as DragDropList } from '@plone/volto/components/manage/DragDropList/DragDropList';
-
-export { default as FormFieldWrapper } from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
-export { default as ArrayWidget } from '@plone/volto/components/manage/Widgets/ArrayWidget';
-export { default as CheckboxWidget } from '@plone/volto/components/manage/Widgets/CheckboxWidget';
-
-export const DatetimeWidget = loadable(() =>
-  import('@plone/volto/components/manage/Widgets/DatetimeWidget'),
-);
-export const RecurrenceWidget = loadable(() =>
-  import(
-    '@plone/volto/components/manage/Widgets/RecurrenceWidget/RecurrenceWidget'
-  ),
-);
-
-export { default as FileWidget } from '@plone/volto/components/manage/Widgets/FileWidget';
-export { default as IdWidget } from '@plone/volto/components/manage/Widgets/IdWidget';
-export { default as PasswordWidget } from '@plone/volto/components/manage/Widgets/PasswordWidget';
-export { default as ReferenceWidget } from '@plone/volto/components/manage/Widgets/ReferenceWidget';
-export { default as SchemaWidget } from '@plone/volto/components/manage/Widgets/SchemaWidget';
-export { default as SchemaWidgetFieldset } from '@plone/volto/components/manage/Widgets/SchemaWidgetFieldset';
-export { default as SelectWidget } from '@plone/volto/components/manage/Widgets/SelectWidget';
-export { default as TextareaWidget } from '@plone/volto/components/manage/Widgets/TextareaWidget';
-export { default as TextWidget } from '@plone/volto/components/manage/Widgets/TextWidget';
-export { default as WysiwygWidget } from '@plone/volto/components/manage/Widgets/WysiwygWidget';
-export { default as ObjectBrowserWidget } from '@plone/volto/components/manage/Widgets/ObjectBrowserWidget';
-export { default as ObjectBrowserWidgetMode } from '@plone/volto/components/manage/Widgets/ObjectBrowserWidget';
-export { default as ObjectWidget } from '@plone/volto/components/manage/Widgets/ObjectWidget';
-export { default as ObjectListWidget } from '@plone/volto/components/manage/Widgets/ObjectListWidget';
 
 export { default as EditDefaultBlock } from '@plone/volto/components/manage/Blocks/Block/DefaultEdit';
 export { default as EditDescriptionBlock } from '@plone/volto/components/manage/Blocks/Description/Edit';

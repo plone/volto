@@ -12,7 +12,8 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import { Form, Toast } from '@plone/volto/components';
+import { Toast } from '@plone/volto/components';
+import { Form } from '@plone/volto/components/manage/Form';
 import { createUser } from '@plone/volto/actions';
 
 const messages = defineMessages({
