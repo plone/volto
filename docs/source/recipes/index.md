@@ -11,4 +11,5 @@ myst:
 
 ```{toctree}
 :maxdepth: 1
-
+developing-a-project
+```

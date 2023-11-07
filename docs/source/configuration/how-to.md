@@ -35,7 +35,7 @@ Both use the same method, using a function as the default export. This function 
 add-ons, it must be provided in the main `index.js` module of the add-on. For project's
 it must be provided in the `src/config.js` module of the project.
 
-See the {doc}`../addons/index` section for extended information on how to work with add-ons.
+See the {doc}`../guides/addons` section for extended information on how to work with add-ons.
 
 ## Extending configuration in a project
 
@@ -83,7 +83,7 @@ but also the [lookup
 mechanism](https://github.com/plone/volto/blob/6fd62cb2860bc7cf3cb7c36ea86bfd8bd03247d9/src/components/manage/Form/Field.jsx#L112)
 to understand how things work.
 
-See {doc}`../recipes/widget` for more information.
+See {doc}`../guides/widget` for more information.
 
 ## views
 

@@ -14,6 +14,10 @@ myst:
 ```{toctree}
 :maxdepth: 2
 
+addons
+addons-best-practices
+addons-i18n
+addons-theme
 creating-project
 folder-structure
 environment-variables
