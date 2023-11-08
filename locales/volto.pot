@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2023-11-07T16:53:20.013Z\n"
+"POT-Creation-Date: 2023-11-08T06:40:10.453Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -493,6 +493,11 @@ msgstr ""
 #: components/manage/Sidebar/ObjectBrowserNav
 # defaultMessage: Browse
 msgid "Browse"
+msgstr ""
+
+#: components/manage/Widgets/ImageWidget
+# defaultMessage: Browse the site
+msgid "Browse the site"
 msgstr ""
 
 #: components/manage/Blocks/Image/Edit
