@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { useState } from 'react';
 import ContainerEdit from '../Container/Edit';
+import ImageWidget from '../../Widgets/ImageWidget';
 
 const GridBlockEdit = (props) => {
   const { data } = props;
@@ -32,6 +33,7 @@ const GridBlockEdit = (props) => {
         setSelectedBlock={setSelectedBlock}
         direction="horizontal"
       />
+      <ImageWidget />
     </div>
   );
 };

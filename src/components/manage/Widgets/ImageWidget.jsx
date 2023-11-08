@@ -16,14 +16,13 @@ import { createContent } from '@plone/volto/actions';
 import { readAsDataURL } from 'promise-file-reader';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import { UniversalLink } from '@plone/volto/components';
-import config from '@plone/volto/registry';
 
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import navTreeSVG from '@plone/volto/icons/nav.svg';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import uploadSVG from '@plone/volto/icons/upload.svg';
-import openinnewtabSVG from '@plone/volto/icons/openinnewtab.svg';
+import openinnewtabSVG from '@plone/volto/icons/nav.svg';
 
 const Dropzone = loadable(() => import('react-dropzone'));
 
@@ -32,7 +31,21 @@ const messages = defineMessages({
     id: 'Browse the site, drop an image, or type an URL',
     defaultMessage: 'Browse the site, drop an image, or type an URL',
   },
+  navigate: {
+    id: 'Browse the site',
+    defaultMessage: 'Browse the site',
+  },
 });
+
+const ImagePreview = ({ src }) => (
+  <>
+    {isInternalURL(src) ? (
+      <img src={`${flattenToAppURL(src)}/@@images/image/preview`} alt="" />
+    ) : (
+      <img src={src} alt="" style={{ width: '100%' }} />
+    )}
+  </>
+);
 
 const ImageWidget = (props) => {
   const {
@@ -103,16 +116,6 @@ const ImageWidget = (props) => {
   };
 
   /**
-   * Submit url handler
-   * @method onSubmitUrl
-   * @param {object} e Event
-   * @returns {undefined}
-   */
-  const onSubmitUrl = () => {
-    onChange(id, url);
-  };
-
-  /**
    * Drop handler
    * @method onDrop
    * @param {array} files File objects
@@ -150,6 +153,18 @@ const ImageWidget = (props) => {
   };
 
   /**
+   * Submit url handler
+   * @method onSubmitUrl
+   * @param {object} e Event
+   * @returns {undefined}
+   */
+  const onSubmitUrl = () => {
+    onChange(id, {
+      '@id': url,
+    });
+  };
+
+  /**
    * Change url handler
    * @method onChangeUrl
    * @param {Object} target Target object
@@ -178,17 +193,6 @@ const ImageWidget = (props) => {
       // TODO: Do something on ESC key
     }
   };
-  const Image = ({ src }) => (
-    <>
-      {isInternalURL(src) ? (
-        <img src={`${flattenToAppURL(src)}/@@images/image/mini`} alt="" />
-      ) : (
-        <img src={src} alt="" style={{ width: '100%' }} />
-      )}
-    </>
-  );
-
-  const Img = config.getComponent('Img').component || Image;
 
   return (
     <div className="image-widget">
@@ -196,7 +200,7 @@ const ImageWidget = (props) => {
         <FormFieldWrapper {...props} noForInFieldLabel className="image">
           {value ? (
             <div className="image-widget-filepath-preview">
-              {value}&nbsp;
+              {flattenToAppURL(value)}&nbsp;
               {isInternalURL ? (
                 <UniversalLink href={value} openLinkInNewTab>
                   <Icon name={openinnewtabSVG} size="16px" />
@@ -227,15 +231,18 @@ const ImageWidget = (props) => {
                   <img src={imageBlockSVG} alt="" />
                   <div className="toolbar-inner">
                     <Button.Group>
+                      asds
                       <Button
+                        aria-label={intl.formatMessage(messages.navigate)}
                         basic
                         icon
                         onClick={(e) => {
                           e.stopPropagation();
                           e.preventDefault();
                           openObjectBrowser({
-                            onSelectItem: (url, item) =>
-                              onChange(id, url, item),
+                            onSelectItem: (url, image) => {
+                              onChange(id, image);
+                            },
                           });
                         }}
                       >
@@ -316,7 +323,7 @@ const ImageWidget = (props) => {
               >
                 <Icon name={clearSVG} className="circled" size="24px" />
               </Button>
-              <Img loading="lazy" src={value} />
+              <ImagePreview src={value} />
             </div>
           ) : null}
         </>
@@ -327,7 +334,6 @@ const ImageWidget = (props) => {
 
 ImageWidget.propTypes = {
   onChange: PropTypes.func.isRequired,
-  value: PropTypes.string,
   id: PropTypes.string.isRequired,
   inline: PropTypes.bool,
 };
