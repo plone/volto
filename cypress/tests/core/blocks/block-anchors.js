@@ -17,6 +17,11 @@ describe('Block Tests: Anchors', () => {
     cy.get('.button.toc').click();
 
     // Add headings
+    cy.get('.ui.basic.icon.button.block-add-button').first().click();
+    cy.get(".blocks-chooser .ui.form .field.searchbox input[type='text']").type(
+      'text',
+    );
+    cy.get('.button.slate').click();
     cy.get('.ui.drag.block.inner.slate').click().type('Title 1').click();
     cy.get('.ui.drag.block.inner.slate span span span').setSelection('Title 1');
     cy.get('.slate-inline-toolbar .button-wrapper a[title="Title"]').click({
@@ -47,7 +52,7 @@ describe('Block Tests: Anchors', () => {
     cy.get('h2[id="title-2"]').scrollIntoView().should('be.visible');
   });
 
-  it.only('Add Block: add content to TOC with special characters', () => {
+  it('Add Block: add content to TOC with special characters', () => {
     // Change page title
     cy.clearSlateTitle();
     cy.getSlateTitle().type('Slate Heading Anchors with special characters');
@@ -61,6 +66,12 @@ describe('Block Tests: Anchors', () => {
     cy.get('.button.toc').click();
 
     // Add headings
+    cy.get('.ui.basic.icon.button.block-add-button').first().click();
+    cy.get(".blocks-chooser .ui.form .field.searchbox input[type='text']").type(
+      'text',
+    );
+    cy.get('.button.slate').click();
+
     cy.get('.ui.drag.block.inner.slate').click().type('Title 1').click();
     cy.get('.ui.drag.block.inner.slate span span span').setSelection('Title 1');
     cy.get('.slate-inline-toolbar .button-wrapper a[title="Title"]').click({

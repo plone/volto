@@ -13,8 +13,8 @@ MAKEFLAGS+=--no-builtin-rules
 # Project settings
 
 INSTANCE_PORT=8080
-DOCKER_IMAGE=plone/server-dev:6.0.7
-DOCKER_IMAGE_ACCEPTANCE=plone/server-acceptance:6.0.7
+DOCKER_IMAGE=plone/server-dev:6.0.8
+DOCKER_IMAGE_ACCEPTANCE=plone/server-acceptance:6.0.8
 KGS=
 NODEBIN = ./node_modules/.bin
 SCRIPTSPACKAGE = ./packages/scripts
@@ -34,6 +34,7 @@ DOCS_DIR        = ./docs/source/
 BUILDDIR        = ../_build/
 ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(SPHINXOPTS) .
 VALEFILES       := $(shell find $(DOCS_DIR) -type f -name "*.md" -print)
+VOLTO_NEWS_SYMLINK = ./docs/source/news
 
 # Recipe snippets for reuse
 
@@ -104,7 +105,10 @@ test:
 bin/python:
 	python3 -m venv . || virtualenv --clear --python=python3 .
 	bin/python -m pip install --upgrade pip
+	@echo "Python environment created."
 	bin/pip install -r requirements-docs.txt
+	@echo "Requirements installed."
+	if [ ! -L $(VOLTO_NEWS_SYMLINK) ] && [ ! -e $(VOLTO_NEWS_SYMLINK) ]; then ln -s ../../news $(VOLTO_NEWS_SYMLINK) && echo "Symlink to Volto news created."; else echo "Symlink to Volto news exists."; fi
 
 .PHONY: clean
 clean:
@@ -140,10 +144,7 @@ docs-linkcheck: bin/python  ## Run linkcheck
 
 .PHONY: docs-linkcheckbroken
 docs-linkcheckbroken: bin/python  ## Run linkcheck and show only broken links
-	cd $(DOCS_DIR) && $(SPHINXBUILD) -b linkcheck $(ALLSPHINXOPTS) $(BUILDDIR)/linkcheck | GREP_COLORS='0;31' grep -wi "broken\|redirect" --color=always | GREP_COLORS='0;31' grep -vi "https://github.com/plone/volto/issues/" --color=always && if test $$? = 0; then exit 1; fi || test $$? = 1
-	@echo
-	@echo "Link check complete; look for any errors in the above output " \
-		"or in $(BUILDDIR)/linkcheck/ ."
+	cd $(DOCS_DIR) && $(SPHINXBUILD) -b linkcheck $(ALLSPHINXOPTS) $(BUILDDIR)/linkcheck | GREP_COLORS='0;31' grep -wi "broken\|redirect" --color=always | GREP_COLORS='0;31' grep -vi "https://github.com/plone/volto/issues/" --color=always && if test $$? -eq 0; then exit 1; fi || test $$? -ne 0
 
 .PHONY: docs-vale
 docs-vale:  ## Run Vale style, grammar, and spell checks
@@ -173,6 +174,11 @@ patches:
 .PHONY: corepackagebump
 corepackagebump:
 	node $(SCRIPTSPACKAGE)/corepackagebump.js packages/volto-slate $(VERSION)
+
+.PHONY: copyreleasenotestodocs
+copyreleasenotestodocs:
+	cp CHANGELOG.md docs/source/release-notes/index.md
+	git add docs/source/release-notes/index.md
 
 ##### Docker containers
 
@@ -318,6 +324,28 @@ test-acceptance-multilingual-headless: ## Start Multilingual Cypress Acceptance 
 .PHONY: full-test-acceptance-multilingual
 full-test-acceptance-multilingual: ## Runs Multilingual Full Acceptance Testing in headless mode
 	$(NODEBIN)/start-test "make start-test-acceptance-server-multilingual" http-get://127.0.0.1:55001/plone "make start-test-acceptance-frontend-multilingual" http://127.0.0.1:3000 "make test-acceptance-multilingual-headless"
+
+######### Seamless Multilingual Acceptance tests
+
+.PHONY: start-test-acceptance-server-seamless-multilingual test-acceptance-server-seamless-multilingual
+start-test-acceptance-server-seamless-multilingual test-acceptance-server-seamless-multilingual: ## Start Seamless Multilingual Acceptance Server Multilingual Fixture (docker container)
+	docker run -i --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:multilingual $(DOCKER_IMAGE_ACCEPTANCE)
+
+.PHONY: start-test-acceptance-frontend-seamless-multilingual
+start-test-acceptance-frontend-seamless-multilingual: ## Start the Seamless Multilingual Acceptance Frontend Fixture
+	ADDONS=coresandbox:multilingualFixture yarn build && yarn start:prod
+
+.PHONY: test-acceptance-seamless-multilingual
+test-acceptance-seamless-multilingual: ## Start Seamless Multilingual Cypress Acceptance Tests
+	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config baseUrl='http://localhost',specPattern='cypress/tests/multilingual/**/*.{js,jsx,ts,tsx}'
+
+.PHONY: test-acceptance-seamless-multilingual-headless
+test-acceptance-seamless-multilingual-headless: ## Start Seamless Multilingual Cypress Acceptance Tests in headless mode
+	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress run --config specPattern='cypress/tests/multilingual/**/*.{js,jsx,ts,tsx}'
+
+.PHONY: full-test-acceptance-seamless-multilingual
+full-test-acceptance-seamless-multilingual: ## Runs Seamless Multilingual Full Acceptance Testing in headless mode
+	$(NODEBIN)/start-test "make start-test-acceptance-server-seamless-multilingual" http-get://127.0.0.1:55001/plone "make start-test-acceptance-frontend-seamless-multilingual" http://127.0.0.1:3000 "make test-acceptance-multilingual-headless"
 
 ######### WorkingCopy Acceptance tests
 
