@@ -10,6 +10,7 @@ const excludedCompilerOptionsPaths = [
   '@plone/volto/*',
   '@plone/volto-slate/*',
   '@plone/registry/*',
+  '@plone/registry',
   '@root/*',
 ];
 

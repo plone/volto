@@ -13,8 +13,8 @@ MAKEFLAGS+=--no-builtin-rules
 # Project settings
 
 INSTANCE_PORT=8080
-DOCKER_IMAGE=plone/server-dev:6.0.7
-DOCKER_IMAGE_ACCEPTANCE=plone/server-acceptance:6.0.7
+DOCKER_IMAGE=plone/server-dev:6.0.8
+DOCKER_IMAGE_ACCEPTANCE=plone/server-acceptance:6.0.8
 KGS=
 NODEBIN = ./node_modules/.bin
 SCRIPTSPACKAGE = ./packages/scripts
@@ -34,6 +34,7 @@ DOCS_DIR        = ./docs/source/
 BUILDDIR        = ../_build/
 ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(SPHINXOPTS) .
 VALEFILES       := $(shell find $(DOCS_DIR) -type f -name "*.md" -print)
+VOLTO_NEWS_SYMLINK = ./docs/source/news
 
 # Recipe snippets for reuse
 
@@ -107,8 +108,7 @@ bin/python:
 	@echo "Python environment created."
 	bin/pip install -r requirements-docs.txt
 	@echo "Requirements installed."
-	ln -s ../../news ./docs/source/news
-	@echo "Symlink created."
+	if [ ! -L $(VOLTO_NEWS_SYMLINK) ] && [ ! -e $(VOLTO_NEWS_SYMLINK) ]; then ln -s ../../news $(VOLTO_NEWS_SYMLINK) && echo "Symlink to Volto news created."; else echo "Symlink to Volto news exists."; fi
 
 .PHONY: clean
 clean:
