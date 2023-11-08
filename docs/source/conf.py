@@ -83,19 +83,14 @@ linkcheck_ignore = [
     r"http://localhost",
     r"http://0.0.0.0",
     r"http://127.0.0.1",
-    r"https://www.linode.com/",
-    r"https://github.com/plone/documentation/issues/new/choose",  # requires auth
-    # Ignore specific anchors
+    # Ignore pages that require authentication
+    r"https://github.com/orgs/plone/teams/",  # requires auth
+    r"https://github.com/plone/volto/issues/new/choose",  # requires auth
+    # Ignore github.com pages with anchors
+    r"https://github.com/.*#.*",
+    # Ignore other specific anchors
     r"https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors#Identifying_the_issue",
     r"https://docs.cypress.io/guides/references/migration-guide#Migrating-to-Cypress-version-10-0",
-    r"https://github.com/browserslist/browserslist#queries",
-    r"https://github.com/nodejs/release#release-schedule",
-    r"https://github.com/plone/plone.docker#for-basic-usage",
-    r"https://github.com/plone/plone.rest#cors",
-    r"https://github.com/plone/plone.volto/blob/6f5382c74f668935527e962490b81cb72bf3bc94/src/kitconcept/volto/upgrades.py#L6-L54",
-    r"https://github.com/plone/volto/issues/new/choose",
-    r"https://github.com/plone/volto/blob/6fd62cb2860bc7cf3cb7c36ea86bfd8bd03247d9/src/components/manage/Form/Field.jsx#L112",
-    r"https://github.com/tc39/proposals/blob/HEAD/finished-proposals.md#finished-proposals",
     r"https://www.youtube.com/playlist",  # TODO uncomment after installing sphinxcontrib.youtube
 ]
 linkcheck_anchors = True

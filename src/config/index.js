@@ -203,7 +203,7 @@ let config = {
   },
   experimental: {
     addBlockButton: {
-      enabled: false,
+      enabled: true,
     },
   },
   widgets: {

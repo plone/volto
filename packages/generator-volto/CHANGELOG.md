@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 8.0.0 (2023-11-06)
+
+### Breaking
+
+- Clean up the generator boilerplate in favor of the recommended add-on driven approach, and add documentation for how to develop a Volto project as an add-on. @sneridagh [#5297](https://github.com/plone/volto/issues/5297)
+
 ## 7.0.1 (2023-09-30)
 
 ### Internal
