@@ -1,1 +1,0 @@
-Improved the Makefil to check for the existence of a symlink from docs to news, and create one only if it exists, else do nothing. @stevepiercy
