@@ -60,14 +60,16 @@ function execCommand(command) {
 async function main(params) {
   const PRInfo = await getPRInfo(pr);
 
-  const currentBranch = execCommand(
-    `git rev-parse --abbrev-ref HEAD`,
-  ).toString();
+  // const currentBranch = execCommand(
+  //   `git rev-parse --abbrev-ref HEAD`,
+  // ).toString();
+  // execCommand(`git co -b ${PRInfo.branchName}__${currentBranch.split('.')[0]}`);
 
-  execCommand(`git co -b ${PRInfo.branchName}__${currentBranch.split('.')[0]}`);
+  // Now we do that in the same PR
   execCommand(`git cherry-pick ${PRInfo.mergeCommit}`);
-  execCommand(`git push`);
-  execCommand(`git co $(git rev-parse --abbrev-ref HEAD)`);
+
+  // execCommand(`git push`);
+  // execCommand(`git co $(git rev-parse --abbrev-ref HEAD)`);
 }
 
 main();
