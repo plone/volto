@@ -160,7 +160,7 @@ export const DescriptionBlockEdit = (props) => {
     <Slate
       editor={editor}
       onChange={handleChange}
-      value={initialValue}
+      initialValue={initialValue}
       className={cx('block description', {
         selected: selected,
       })}

@@ -17,6 +17,27 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.1 (2023-11-07)
+
+### Feature
+
+- List plone.app.linkintegrity breaches with links to the pages in the delete confirmation modal.
+  @jaroel [#5234](https://github.com/plone/volto/issues/5234)
+
+### Bugfix
+
+- Fix empty link element left hanging when hit enter at end of link. @iFlameing @tiberiuichim [#5291](https://github.com/plone/volto/issues/5291)
+
+### Internal
+
+- Update internal Plone version to 6.0.8 @sneridagh [#5384](https://github.com/plone/volto/issues/5384)
+
+### Documentation
+
+- Improved the Makefil to check for the existence of a symlink from docs to news, and create one only if it exists, else do nothing. @stevepiercy [#5375](https://github.com/plone/volto/issues/5375)
+- Improved wording in branch policy. @stevepiercy [#5376](https://github.com/plone/volto/issues/5376)
+- Simplify linkcheck configuration with a regex. @stevepiercy [#5378](https://github.com/plone/volto/issues/5378)
+
 ## 18.0.0-alpha.0 (2023-11-06)
 
 ### Breaking
