@@ -45,7 +45,7 @@ For links to trainings and videos, see [Other learning resources](https://6.docs
 ## Supported Node.js versions
 
 Volto runs using [Node.js](https://nodejs.org/).
-We recommend using the current LTS version (18.x).
+We recommend using the current LTS version.
 
 - Node.js 20: Supported since Volto 17.
 - Node.js 18 (LTS): Supported since Volto 17.
