@@ -17,6 +17,22 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 17.5.0 (2023-11-10)
+
+### Feature
+
+- List plone.app.linkintegrity breaches with links to the pages in the delete confirmation modal.
+  @jaroel [#5234](https://github.com/plone/volto/issues/5234)
+
+### Bugfix
+
+- Fix empty link element left hanging when hit enter at end of link. @iFlameing @tiberiuichim [#5291](https://github.com/plone/volto/issues/5291)
+
+### Internal
+
+- Added shim to keep working with value instead of initialValue after Slate upgrade @davisagli [#5291](https://github.com/plone/volto/issues/5291)
+- Update internal Plone version to 6.0.8 @sneridagh [#5384](https://github.com/plone/volto/issues/5384)
+
 ## 17.4.0 (2023-11-04)
 
 ### Feature
