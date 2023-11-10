@@ -8,6 +8,17 @@
 
 <!-- towncrier release notes start -->
 
+## 16.26.1 (2023-11-10)
+
+### Bugfix
+
+- Fix empty link element left hanging when hit enter at end of link. @iFlameing @tiberiuichim [#5291](https://github.com/plone/volto/issues/5291)
+
+### Internal
+
+- Added shim to keep working with value instead of initialValue in upgraded Slate @davisagli [#5291](https://github.com/plone/volto/issues/5291)
+- Update internal Plone version to 6.0.8 @sneridagh [#5384](https://github.com/plone/volto/issues/5384)
+
 ## 16.26.0 (2023-10-27)
 
 ### Feature
