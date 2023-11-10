@@ -784,6 +784,11 @@ msgstr "Règles de contenu des dossiers parents"
 msgid "Content that links to or references {title}"
 msgstr ""
 
+#: components/manage/Blocks/Title/Edit
+# defaultMessage: Content title
+msgid "Content title"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Content type created
 msgid "Content type created"

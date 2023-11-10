@@ -777,6 +777,11 @@ msgstr "Regras de conteúdo de pastas pai"
 msgid "Content that links to or references {title}"
 msgstr ""
 
+#: components/manage/Blocks/Title/Edit
+# defaultMessage: Content title
+msgid "Content title"
+msgstr "Título do conteúdo"
+
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Content type created
 msgid "Content type created"

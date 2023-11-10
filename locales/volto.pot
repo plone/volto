@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2023-10-09T09:36:27.737Z\n"
+"POT-Creation-Date: 2023-11-10T14:46:23.151Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -767,6 +767,11 @@ msgstr ""
 #: components/manage/LinksToItem/LinksToItem
 # defaultMessage: Content that links to or references {title}
 msgid "Content that links to or references {title}"
+msgstr ""
+
+#: components/manage/Blocks/Title/Edit
+# defaultMessage: Content title
+msgid "Content title"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes

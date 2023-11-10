@@ -17,6 +17,10 @@ const messages = defineMessages({
     id: 'Type the title…',
     defaultMessage: 'Type the title…',
   },
+  editable_title: {
+    id: 'Content title',
+    defaultMessage: 'Content title',
+  },
 });
 
 function usePrevious(value) {
@@ -135,7 +139,7 @@ export const TitleBlockEdit = (props) => {
 
   const renderElement = useCallback(({ attributes, children }) => {
     return (
-      <h1 {...attributes} className="documentFirstHeading">
+      <h1 aria-label="test3" {...attributes} className="documentFirstHeading">
         {children}
       </h1>
     );
@@ -145,7 +149,12 @@ export const TitleBlockEdit = (props) => {
     return <div />;
   }
   return (
-    <Slate editor={editor} onChange={handleChange} initialValue={initialValue}>
+    <Slate
+      editor={editor}
+      onChange={handleChange}
+      initialValue={initialValue}
+      aria-label="test2"
+    >
       <Editable
         readOnly={!editable}
         onKeyDown={handleKeyDown}
@@ -153,6 +162,7 @@ export const TitleBlockEdit = (props) => {
         renderElement={renderElement}
         onFocus={handleFocus}
         aria-multiline="false"
+        aria-label={intl.formatMessage(messages.editable_title)}
       ></Editable>
     </Slate>
   );
