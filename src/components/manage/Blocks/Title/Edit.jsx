@@ -139,7 +139,7 @@ export const TitleBlockEdit = (props) => {
 
   const renderElement = useCallback(({ attributes, children }) => {
     return (
-      <h1 aria-label="test3" {...attributes} className="documentFirstHeading">
+      <h1 {...attributes} className="documentFirstHeading">
         {children}
       </h1>
     );
@@ -149,12 +149,7 @@ export const TitleBlockEdit = (props) => {
     return <div />;
   }
   return (
-    <Slate
-      editor={editor}
-      onChange={handleChange}
-      initialValue={initialValue}
-      aria-label="test2"
-    >
+    <Slate editor={editor} onChange={handleChange} initialValue={initialValue}>
       <Editable
         readOnly={!editable}
         onKeyDown={handleKeyDown}
