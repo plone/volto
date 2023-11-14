@@ -3,7 +3,6 @@
  * @module components/manage/LinksToItem/LinksToItem
  */
 import { useEffect } from 'react';
-import { find } from 'lodash';
 import { Helmet } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
 import { Portal } from 'react-portal';
@@ -19,7 +18,6 @@ import {
 
 import { getBaseUrl } from '@plone/volto/helpers';
 import backSVG from '@plone/volto/icons/back.svg';
-import settingsSVG from '@plone/volto/icons/settings.svg';
 
 const messages = defineMessages({
   back: {
@@ -46,10 +44,6 @@ const LinksToItem = (props) => {
   const myrelations = useSelector(
     (state) => state.relations.subrequests[itempath]?.data,
   );
-  const actions = useSelector((state) => state.actions?.actions ?? {});
-  const ploneSetupAction = find(actions.user, {
-    id: 'plone_setup',
-  });
 
   useEffect(() => {
     dispatch(queryRelations(null, false, itempath, null, [itempath]));
@@ -179,24 +173,6 @@ const LinksToItem = (props) => {
                     title={intl.formatMessage(messages.back)}
                   />
                 </Link>
-
-                <>
-                  {ploneSetupAction ? (
-                    <Link to="/controlpanel/relations" className="relations">
-                      <IconNext
-                        name={settingsSVG}
-                        className="circled"
-                        aria-label={intl.formatMessage(
-                          messages.helpLinkRelationsControlPanel,
-                        )}
-                        size="30px"
-                        title={intl.formatMessage(
-                          messages.helpLinkRelationsControlPanel,
-                        )}
-                      />
-                    </Link>
-                  ) : null}
-                </>
               </>
             }
           />
