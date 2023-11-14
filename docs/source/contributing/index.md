@@ -160,6 +160,7 @@ acceptance-tests
 accessibility-guidelines
 typescript
 volto-core-addons
+version-policy
 ```
 
 
