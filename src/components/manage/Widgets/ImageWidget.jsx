@@ -231,7 +231,6 @@ const ImageWidget = (props) => {
                   <img src={imageBlockSVG} alt="" />
                   <div className="toolbar-inner">
                     <Button.Group>
-                      asds
                       <Button
                         aria-label={intl.formatMessage(messages.navigate)}
                         basic
