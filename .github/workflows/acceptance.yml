@@ -630,7 +630,8 @@ jobs:
         working-directory: ${{env.generator-directory}}
 
       # install Yeoman and the generator
-      - run: npm -g install yo
+      # Using @4 until https://github.com/yeoman/yo/issues/796 is fixed
+      - run: npm -g install yo@4
         working-directory: ${{env.generator-directory}}
       - run: npm -g install ./
         working-directory: ${{env.generator-directory}}
