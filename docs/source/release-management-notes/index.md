@@ -13,15 +13,17 @@ This chapter describes how maintainers manage the releases of Volto.
 
 ## Definition of breaking
 
-A breaking change refers to a modification, enhancement, or update made to the Volto's code base that has the potential to disrupt or "break" the existing Volto-based projects functionality, tests, or customizations.
+A breaking change refers to a modification, enhancement, or update made to Volto's code base that has the potential to disrupt or "break" an existing Volto-based project's functionality, tests, or customizations.
 
 Breaking changes typically require users or contributors to update their code base, configurations, or customizations of their Volto projects to accommodate the new changes, as they may no longer be compatible with the updated Volto version.
 
 It is essential for maintainers to communicate and document breaking changes clearly to help users and collaborators understand the impact and take appropriate actions to adapt to the new version of the project.
 This is why the Volto's {ref}`volto-upgrade-guide` exists.
 
-We define a "Public API" and a "Private API" to classify the types of changes in Volto.
+We define a {ref}`release-management-public-api` and a {ref}`release-management-private-api` to classify the types of changes in Volto.
 
+
+(release-management-public-api)=
 
 ## Public API
 
@@ -47,8 +49,11 @@ This especially includes `className` props that would cause existing CSS to fail
 The addition of DOM elements is also considered a breaking change, because it could result in delivering unstyled or uncustomized content in a Volto project.
 
 ```{note}
-Exceptions: It is not considered a breaking change when the change to the DOM is the addition or introduction of a property. eg. the addition of a class name to a component or tag.
+Exceptions: it is not considered a breaking change when the change to the DOM is the addition or introduction of a property, such as the addition of a class name to a component or tag.
 ```
+
+
+(release-management-private-api)=
 
 ## Private API
 
@@ -62,4 +67,3 @@ The following Volto components are considered Private API:
 
 If a bug is found in the text block, and the solution involves an upgrade of the Slate library, then it won't be considered a breaking change.
 This is true, even if that upgrade implies a breaking change in itself.
-
