@@ -8,6 +8,58 @@
 
 <!-- towncrier release notes start -->
 
+## 8.0.1 (2023-11-15)
+
+### Bugfix
+
+- Update `yeoman-generator` to match changes in latest `yo` breaking version @sneridagh
+  This fixes the errors in the generator if a fresh version of yo (5) is installed [#5406](https://github.com/plone/volto/issues/5406)
+
+## 8.0.0 (2023-11-06)
+
+### Breaking
+
+- Clean up the generator boilerplate in favor of the recommended add-on driven approach, and add documentation for how to develop a Volto project as an add-on. @sneridagh [#5297](https://github.com/plone/volto/issues/5297)
+
+## 7.0.1 (2023-09-30)
+
+### Internal
+
+- Update to volto-testing final in generator @sneridagh [#5248](https://github.com/plone/volto/issues/5248)
+
+
+## 7.0.0 (2023-09-30)
+
+### Feature
+
+- Update generators to Volto 17 final. @sneridagh [#5247](https://github.com/plone/volto/issues/5247)
+
+
+## 7.0.0-alpha.12 (2023-09-30)
+
+### Feature
+
+- Update Plone and Volto versions in generators @sneridagh [#5246](https://github.com/plone/volto/issues/5246)
+
+
+## 7.0.0-alpha.11 (2023-09-29)
+
+### Bugfix
+
+- Fix ESlint parser in addon generator boilerplate @sneridagh [#5243](https://github.com/plone/volto/issues/5243)
+
+
+## 7.0.0-alpha.10 (2023-09-27)
+
+### Breaking
+
+- Update the generators dependencies for linters @sneridagh [#5216](https://github.com/plone/volto/issues/5216)
+
+### Feature
+
+- Add ignores in addon generator and workspaces info @sneridagh [#5235](https://github.com/plone/volto/issues/5235)
+
+
 ## 7.0.0-alpha.9 (2023-09-20)
 
 ### Bugfix

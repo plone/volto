@@ -408,6 +408,11 @@ msgstr "确定要删除此包括所有字段的字段集？"
 msgid "Ascending"
 msgstr "上升"
 
+#: components/manage/Sharing/Sharing
+# defaultMessage: Assign the {role} role to {entry}
+msgid "Assign the {role} role to {entry}"
+msgstr ""
+
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Assignments
 msgid "Assignments"
@@ -1010,6 +1015,11 @@ msgstr ""
 # defaultMessage: Deleted
 msgid "Deleted"
 msgstr "已删除"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Deleting this item breaks {brokenReferences} {variation}.
+msgid "Deleting this item breaks {brokenReferences} {variation}."
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Depth
@@ -1943,7 +1953,7 @@ msgid "Link"
 msgstr "链接"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Link copied to clipboard
+# defaultMessage: Anchor link copied to the clipboard
 msgid "Link copied to clipboard"
 msgstr ""
 
@@ -3680,11 +3690,6 @@ msgstr "这是{title}的一个工作副本"
 msgid "This item is also a folder."
 msgstr ""
 
-#: components/manage/Contents/Contents
-# defaultMessage: This item is referenced by other items. By deleting it {brokenReferences} {variation} will be broken.
-msgid "This item is referenced by other items. By deleting it {brokenReferences} {variation} will be broken."
-msgstr ""
-
 #: components/manage/LockingToastsFactory/LockingToastsFactory
 # defaultMessage: This item was locked by {creator} on {date}
 msgid "This item was locked by {creator} on {date}"
@@ -4093,14 +4098,14 @@ msgstr "视频URL"
 msgid "View"
 msgstr ""
 
-#: components/manage/Contents/Contents
-# defaultMessage: View broken links list
-msgid "View broken links list"
-msgstr ""
-
 #: components/manage/History/History
 # defaultMessage: View changes
 msgid "View changes"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: View links and references to this item
+msgid "View links and references to this item"
 msgstr ""
 
 #: components/manage/History/History

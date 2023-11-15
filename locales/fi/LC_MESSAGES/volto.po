@@ -413,6 +413,11 @@ msgstr "Haluatko varmasti poistaa tämän kenttäryhmän ja kaikki sen kentät?"
 msgid "Ascending"
 msgstr "Nouseva"
 
+#: components/manage/Sharing/Sharing
+# defaultMessage: Assign the {role} role to {entry}
+msgid "Assign the {role} role to {entry}"
+msgstr ""
+
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Assignments
 msgid "Assignments"
@@ -1015,6 +1020,11 @@ msgstr ""
 # defaultMessage: Deleted
 msgid "Deleted"
 msgstr "Poistettu"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Deleting this item breaks {brokenReferences} {variation}.
+msgid "Deleting this item breaks {brokenReferences} {variation}."
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Depth
@@ -1948,7 +1958,7 @@ msgid "Link"
 msgstr "Linkki"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Link copied to clipboard
+# defaultMessage: Anchor link copied to the clipboard
 msgid "Link copied to clipboard"
 msgstr ""
 
@@ -3685,11 +3695,6 @@ msgstr ""
 msgid "This item is also a folder."
 msgstr ""
 
-#: components/manage/Contents/Contents
-# defaultMessage: This item is referenced by other items. By deleting it {brokenReferences} {variation} will be broken.
-msgid "This item is referenced by other items. By deleting it {brokenReferences} {variation} will be broken."
-msgstr ""
-
 #: components/manage/LockingToastsFactory/LockingToastsFactory
 # defaultMessage: This item was locked by {creator} on {date}
 msgid "This item was locked by {creator} on {date}"
@@ -4098,15 +4103,15 @@ msgstr "Videon URL"
 msgid "View"
 msgstr "Näytä"
 
-#: components/manage/Contents/Contents
-# defaultMessage: View broken links list
-msgid "View broken links list"
-msgstr ""
-
 #: components/manage/History/History
 # defaultMessage: View changes
 msgid "View changes"
 msgstr "Näytä muutokset"
+
+#: components/manage/Contents/Contents
+# defaultMessage: View links and references to this item
+msgid "View links and references to this item"
+msgstr ""
 
 #: components/manage/History/History
 # defaultMessage: View this revision

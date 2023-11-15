@@ -355,3 +355,32 @@ export const URLUtils = {
   isUrl,
   checkAndNormalizeUrl,
 };
+
+/**
+ * Given an image info object, it does flatten all the scales information to
+ * match the ones stored in the catalog
+ * 'http://localhost:3000/{path}/@@images/{scalefile}' -> '@images/{scalefile}'
+ * @function flattenScales
+ * @param {string} path path of the content object
+ * @param {object} image image information object
+ * @returns {object} New object with the flattened scale URLs
+ */
+export function flattenScales(path, image) {
+  function removeObjectIdFromURL(path, scale) {
+    return scale.replace(`${path}/`, '');
+  }
+  if (!image) return;
+
+  const imageInfo = {
+    ...image,
+    download: flattenToAppURL(removeObjectIdFromURL(path, image.download)),
+  };
+
+  Object.keys(imageInfo.scales).forEach((key) => {
+    imageInfo.scales[key].download = flattenToAppURL(
+      removeObjectIdFromURL(path, image.scales[key].download),
+    );
+  });
+
+  return imageInfo;
+}

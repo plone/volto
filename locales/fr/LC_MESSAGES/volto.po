@@ -419,6 +419,11 @@ msgstr "Voulez-vous vraiment supprimer ce groupe de champs et tous les champs de
 msgid "Ascending"
 msgstr "Ascendant"
 
+#: components/manage/Sharing/Sharing
+# defaultMessage: Assign the {role} role to {entry}
+msgid "Assign the {role} role to {entry}"
+msgstr ""
+
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Assignments
 msgid "Assignments"
@@ -1021,6 +1026,11 @@ msgstr ""
 # defaultMessage: Deleted
 msgid "Deleted"
 msgstr "Supprimé"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Deleting this item breaks {brokenReferences} {variation}.
+msgid "Deleting this item breaks {brokenReferences} {variation}."
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Depth
@@ -1954,7 +1964,7 @@ msgid "Link"
 msgstr "Lien"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Link copied to clipboard
+# defaultMessage: Anchor link copied to the clipboard
 msgid "Link copied to clipboard"
 msgstr ""
 
@@ -3691,11 +3701,6 @@ msgstr "Il sagit d'une copie de travail de {title}"
 msgid "This item is also a folder."
 msgstr ""
 
-#: components/manage/Contents/Contents
-# defaultMessage: This item is referenced by other items. By deleting it {brokenReferences} {variation} will be broken.
-msgid "This item is referenced by other items. By deleting it {brokenReferences} {variation} will be broken."
-msgstr ""
-
 #: components/manage/LockingToastsFactory/LockingToastsFactory
 # defaultMessage: This item was locked by {creator} on {date}
 msgid "This item was locked by {creator} on {date}"
@@ -4104,15 +4109,15 @@ msgstr "URL de la vidéo"
 msgid "View"
 msgstr "Vue"
 
-#: components/manage/Contents/Contents
-# defaultMessage: View broken links list
-msgid "View broken links list"
-msgstr ""
-
 #: components/manage/History/History
 # defaultMessage: View changes
 msgid "View changes"
 msgstr "Voir les changements"
+
+#: components/manage/Contents/Contents
+# defaultMessage: View links and references to this item
+msgid "View links and references to this item"
+msgstr ""
 
 #: components/manage/History/History
 # defaultMessage: View this revision

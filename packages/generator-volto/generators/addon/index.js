@@ -46,7 +46,21 @@ module.exports = class extends Generator {
       // const packageJSON = JSON.parse(fs.readFileSync(pkgJson, 'utf8'));
       const name = this.globals.name;
 
-      packageJSON.addons = [...(packageJSON.addons || []), name];
+      if (!packageJSON.addons) {
+        packageJSON.addons = [];
+      }
+
+      if (!packageJSON.addons.includes(name)) {
+        packageJSON.addons = [...(packageJSON.addons || []), name];
+      }
+
+      if (!packageJSON.workspaces) {
+        packageJSON.workspaces = [];
+      }
+
+      if (!packageJSON.workspaces.includes(`src/addons/${this.globals.name}`)) {
+        packageJSON.workspaces.push(`src/addons/${this.globals.name}`);
+      }
 
       fs.writeFileSync(pkgJson, `${JSON.stringify(packageJSON, null, 2)}`);
     };
@@ -67,6 +81,10 @@ module.exports = class extends Generator {
         mrsDeveloperJsonFile,
         `${JSON.stringify({ ...mrsDeveloperJson, ...template }, null, 2)}`,
       );
+    };
+
+    this.addToIgnoreFile = async function (ignoreFile) {
+      fs.appendFileSync(ignoreFile, `\n!src/addons/${this.globals.name}`);
     };
   }
 
@@ -98,6 +116,7 @@ Run "npm install -g @plone/generator-volto" to update.`,
     };
     let props;
 
+    this.globals.outputpath = this.opts.outputpath;
     // Add-on name
     if (this.args[0]) {
       this.globals.addonName = this.args[0];
@@ -113,7 +132,8 @@ Run "npm install -g @plone/generator-volto" to update.`,
         ]);
         this.globals.addonName = props.addonName;
       } else {
-        this.globals.addonName = path.basename(process.cwd());
+        this.globals.addonName =
+          this.opts.addonName || path.basename(process.cwd());
       }
     }
 
@@ -139,19 +159,19 @@ Run "npm install -g @plone/generator-volto" to update.`,
   async setDestination() {
     this._debug('namespace', this.options.namespace);
     // if in a Volto project, generate addon in src/addons
+    const outputPath = path.resolve(this.globals.outputpath) || process.cwd();
+    this.destinationRoot(outputPath);
 
-    if (this.opts.outputpath) {
-      this._debug('set destination to:', this.opts.outputpath);
-      this.destinationRoot(this.opts.outputpath);
-      return;
-    }
-
-    const pkgJson = path.join(process.cwd(), 'package.json');
-    const mrsDeveloperJson = path.join(process.cwd(), 'mrs.developer.json');
+    const pkgJson = path.join(outputPath, 'package.json');
 
     if (fs.existsSync(pkgJson)) {
+      const gitIgnore = path.join(outputPath, '.gitignore');
+      const eslintIgnore = path.join(outputPath, '.eslintignore');
+      const prettierIgnore = path.join(outputPath, '.prettierignore');
+      const mrsDeveloperJson = path.join(outputPath, 'mrs.developer.json');
+
       const destination = path.join(
-        process.cwd(),
+        outputPath,
         `./src/addons/${this.globals.name}`,
       );
 
@@ -159,6 +179,9 @@ Run "npm install -g @plone/generator-volto" to update.`,
         return;
       }
 
+      await this.addToIgnoreFile(gitIgnore);
+      await this.addToIgnoreFile(eslintIgnore);
+      await this.addToIgnoreFile(prettierIgnore);
       // Modifies project package.json and wires the new addon
       await this.addAddonToPackageJSON(pkgJson);
       // Modifies project mrs.developer.json and wires the new addon localy
@@ -183,11 +206,6 @@ Run "npm install -g @plone/generator-volto" to update.`,
   }
 
   install() {
-    this.renderTemplate(
-      `${this.templatePath()}/**/*`,
-      this.destinationPath(),
-      this.globals,
-    );
     // copy dotfiles
     this.fs.copyTpl(
       this.templatePath('.github/workflows'),
@@ -199,8 +217,16 @@ Run "npm install -g @plone/generator-volto" to update.`,
       this.destinationPath('.yarn/releases'),
       this.globals,
     );
-
-    this.fs.copy(this.templatePath('.*'), this.destinationPath());
+    this.fs.copyTpl(
+      this.templatePath('.gitignorefile'),
+      this.destinationPath('.gitignore'),
+      this.globals,
+    );
+    this.fs.copyTpl(this.templatePath(), this.destinationPath(), {
+      ...this.globals,
+      ignore: ['**/*.tpl', '**/*~', '**/.gitignorefile'],
+      dot: true,
+    });
   }
 
   end() {

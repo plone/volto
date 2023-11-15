@@ -412,6 +412,11 @@ msgstr "Você realmente deseja deletar este fieldset com todos os campos?"
 msgid "Ascending"
 msgstr "Ascendente"
 
+#: components/manage/Sharing/Sharing
+# defaultMessage: Assign the {role} role to {entry}
+msgid "Assign the {role} role to {entry}"
+msgstr "Atribuir o papel de {role} à {entry}"
+
 #: components/manage/Controlpanels/Rules/ConfigureRule
 # defaultMessage: Assignments
 msgid "Assignments"
@@ -1014,6 +1019,11 @@ msgstr ""
 # defaultMessage: Deleted
 msgid "Deleted"
 msgstr "Removida"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Deleting this item breaks {brokenReferences} {variation}.
+msgid "Deleting this item breaks {brokenReferences} {variation}."
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Depth
@@ -1947,7 +1957,7 @@ msgid "Link"
 msgstr "Link"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Link copied to clipboard
+# defaultMessage: Anchor link copied to the clipboard
 msgid "Link copied to clipboard"
 msgstr ""
 
@@ -3684,11 +3694,6 @@ msgstr "Esta é uma cópia de trabalho de {title}"
 msgid "This item is also a folder."
 msgstr ""
 
-#: components/manage/Contents/Contents
-# defaultMessage: This item is referenced by other items. By deleting it {brokenReferences} {variation} will be broken.
-msgid "This item is referenced by other items. By deleting it {brokenReferences} {variation} will be broken."
-msgstr ""
-
 #: components/manage/LockingToastsFactory/LockingToastsFactory
 # defaultMessage: This item was locked by {creator} on {date}
 msgid "This item was locked by {creator} on {date}"
@@ -4097,15 +4102,15 @@ msgstr "URL do vídeo"
 msgid "View"
 msgstr "Visão"
 
-#: components/manage/Contents/Contents
-# defaultMessage: View broken links list
-msgid "View broken links list"
-msgstr ""
-
 #: components/manage/History/History
 # defaultMessage: View changes
 msgid "View changes"
 msgstr "Ver mudanças"
+
+#: components/manage/Contents/Contents
+# defaultMessage: View links and references to this item
+msgid "View links and references to this item"
+msgstr ""
 
 #: components/manage/History/History
 # defaultMessage: View this revision
@@ -4534,7 +4539,7 @@ msgstr "Meu endereço de e-mail é"
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: My user name is
 msgid "label_my_username_is"
-msgstr "Meu nome de usuário é<<<<<<< HEAD"
+msgstr "Meu nome de usuário é "
 
 #: config/Blocks
 # defaultMessage: Lead Image Field

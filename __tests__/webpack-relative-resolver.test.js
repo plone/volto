@@ -1,5 +1,5 @@
 const path = require('path');
-const AddonConfigurationRegistry = require('../addon-registry');
+const AddonConfigurationRegistry = require('../packages/registry/addon-registry');
 const WebpackRelativeResolver = require('../webpack-plugins/webpack-relative-resolver');
 
 const base = path.join(__dirname, '..');
