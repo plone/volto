@@ -7,6 +7,7 @@
 // export { injectLazyLibs } from './Loadable/Loadable';
 export { default as Api } from '@plone/volto/helpers/Api/Api';
 export { getAPIResourceWithAuth } from '@plone/volto/helpers/Api/APIResourceWithAuth';
+export { defaultHttpProxyOptions } from '@plone/volto/helpers/Proxy/Proxy';
 export { default as Html } from '@plone/volto/helpers/Html/Html';
 export {
   getAuthToken,
