@@ -1,0 +1,2 @@
+Update `yeoman-generator` to match changes in latest `yo` breaking version @sneridagh
+This fixes the errors in the generator if a fresh version of yo (5) is installed
