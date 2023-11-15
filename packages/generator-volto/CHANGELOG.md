@@ -8,6 +8,13 @@
 
 <!-- towncrier release notes start -->
 
+## 8.0.1 (2023-11-15)
+
+### Bugfix
+
+- Update `yeoman-generator` to match changes in latest `yo` breaking version @sneridagh
+  This fixes the errors in the generator if a fresh version of yo (5) is installed [#5406](https://github.com/plone/volto/issues/5406)
+
 ## 8.0.0 (2023-11-06)
 
 ### Breaking
