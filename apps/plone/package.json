@@ -4,8 +4,7 @@
   "license": "MIT",
   "version": "1.0.0",
   "scripts": {
-    "dev2": "razzle start",
-    "postinstall": "make omelette && make patches",
+    "start": "razzle start",
     "build": "razzle build --noninteractive",
     "lint": "./node_modules/eslint/bin/eslint.js --max-warnings=0 'src/**/*.{js,jsx,ts,tsx}'",
     "lint:fix": "./node_modules/eslint/bin/eslint.js --fix 'src/**/*.{js,jsx,ts,tsx}'",
@@ -139,10 +138,13 @@
     "node": "^16 || ^18 || ^20"
   },
   "dependencies": {
-    "@plone/volto": "*"
+    "@plone/registry": "workspace:*",
+    "@plone/volto": "workspace:*",
+    "@plone/volto-slate": "workspace:*",
+    "volto-volto-project": "workspace:*"
   },
   "devDependencies": {
-    "@plone/scripts": "*",
+    "@plone/scripts": "workspace:*",
     "@storybook/addon-actions": "^6.3.0",
     "@storybook/addon-controls": "6.3.0",
     "@storybook/addon-essentials": "^6.3.0",
@@ -157,6 +159,8 @@
     "postcss": "8.4.13",
     "prettier": "3.0.3",
     "razzle": "4.2.18",
+    "svg-loader": "0.0.2",
+    "svgo-loader": "3.0.3",
     "stylelint": "15.10.3",
     "stylelint-config-idiomatic-order": "9.0.0",
     "stylelint-prettier": "4.0.2",
@@ -164,9 +168,6 @@
     "ts-loader": "9.4.4",
     "tsconfig": "*",
     "typescript": "5.2.2"
-  },
-  "resolutions": {
-    "react-error-overlay": "6.0.9"
   },
   "theme": "volto-volto-project"
 }

@@ -4,7 +4,7 @@
  */
 const fs = require('fs');
 
-let voltoPath = '../../node_modules/@plone/volto';
+let voltoPath = './node_modules/@plone/volto';
 
 let configFile;
 if (fs.existsSync(`${this.projectRootPath}/tsconfig.json`))

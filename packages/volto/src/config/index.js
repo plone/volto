@@ -1,7 +1,3 @@
-/**
- * Config.
- * @module config
- */
 import { parse as parseUrl } from 'url';
 import { defaultWidget, widgetMapping } from './Widgets';
 import {

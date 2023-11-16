@@ -2,7 +2,7 @@
   "name": "volto-volto-project",
   "version": "0.1.0",
   "description": "volto-volto-project: Volto add-on",
-  "main": "src/index.js",
+  "main": "src/index.ts",
   "license": "MIT",
   "keywords": [
     "volto-addon",
@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "7.22.15",
-    "@plone/scripts": "^3.0.0",
+    "@plone/scripts": "workspace:*",
     "eslint": "8.49.0",
     "eslint-config-prettier": "9.0.0",
     "eslint-config-react-app": "7.0.1",
@@ -40,8 +40,5 @@
     "stylelint-config-idiomatic-order": "9.0.0",
     "stylelint-config-sass-guidelines": "10.0.0",
     "stylelint-prettier": "4.0.2"
-  },
-  "peerDependencies": {
-    "@plone/volto": "*"
   }
 }

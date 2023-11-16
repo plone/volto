@@ -3,7 +3,7 @@
   "scripts": {
     "build": "turbo run build --filter @plone/registry",
     "start": "turbo run start --filter @plone/volto",
-    "start2": "turbo run start2",
+    "start:project": "turbo run start --filter plone",
     "dev": "turbo run dev2 --parallel",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""

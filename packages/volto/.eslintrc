@@ -34,8 +34,8 @@
       "alias": {
         "map": [
           ["@plone/volto", "./src"],
-          ["@plone/volto-slate", "./packages/volto-slate/src"],
-          ["@plone/registry", "./packages/registry/src"],
+          ["@plone/volto-slate", "../volto-slate/src"],
+          ["@plone/registry", "../registry/src"],
           ["@package", "./src"],
           ["@root", "./src"]
         ],

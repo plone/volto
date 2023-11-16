@@ -7,9 +7,10 @@ const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const fs = require('fs');
 const RootResolverPlugin = require('./webpack-plugins/webpack-root-resolver');
 const RelativeResolverPlugin = require('./webpack-plugins/webpack-relative-resolver');
-const createAddonsLoader = require('./packages/registry/create-addons-loader');
-const createThemeAddonsLoader = require('./packages/registry/create-theme-addons-loader');
-const AddonConfigurationRegistry = require('./packages/registry/addon-registry');
+const { poToJson } = require('@plone/scripts/i18n.cjs');
+const createAddonsLoader = require('@plone/registry/src/create-addons-loader');
+const createThemeAddonsLoader = require('@plone/registry/src/create-theme-addons-loader');
+const AddonConfigurationRegistry = require('@plone/registry/src/addon-registry');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
@@ -19,7 +20,7 @@ const fileLoaderFinder = makeLoaderFinder('file-loader');
 
 const projectRootPath = path.resolve('.');
 const languages = require('./src/constants/Languages');
-const { poToJson } = require('./packages/scripts/i18n.cjs');
+// const { poToJson } = require('@plone/scripts/i18n.cjs');
 
 const packageJson = require(path.join(projectRootPath, 'package.json'));
 
@@ -232,7 +233,7 @@ const defaultModify = ({
     'load-volto-addons': addonsLoaderPath,
     ...registry.getResolveAliases(),
     '@plone/volto': `${registry.voltoPath}/src`,
-    '@plone/registry': `${registry.voltoPath}/packages/registry/src`,
+    // '@plone/registry': `${registry.voltoPath}/packages/registry/src`,
     // to be able to reference path uncustomized by webpack
     '@plone/volto-original': `${registry.voltoPath}/src`,
     // be able to reference current package from customized package
@@ -275,7 +276,8 @@ const defaultModify = ({
     include.push(fs.realpathSync(`${registry.voltoPath}/src`));
   }
 
-  include.push(fs.realpathSync(`${registry.voltoPath}/packages/registry/src`));
+  // console.log(`${registry.voltoPath}../registry/src`);
+  // include.push(fs.realpathSync(`${registry.voltoPath}../registry/src`));
 
   // Add babel support external (ie. node_modules npm published packages)
   const packagesNames = Object.keys(registry.packages);
