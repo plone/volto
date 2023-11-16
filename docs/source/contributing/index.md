@@ -162,6 +162,7 @@ icons
 accessibility-guidelines
 typescript
 volto-core-addons
+version-policy
 ```
 
 
