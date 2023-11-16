@@ -1,0 +1,1 @@
+Added `postcss-less` package to the default add-on, since the builds were complaining @sneridagh
