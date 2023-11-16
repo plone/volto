@@ -68,8 +68,9 @@ A feature release indicates that new features have been added to Volto in a non-
 4.2.0 -> 4.3.0
 ```
 
-You should expect no breaking changes in a feature release.
+You should expect no breaking changes in a feature release, including new DOM elements.
 However, the user interface may change.
+If so, the feature must be under a feature flag and disabled by default, such that it is opt-in.
 
 
 #### Bugfix
