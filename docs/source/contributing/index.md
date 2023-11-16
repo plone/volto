@@ -80,7 +80,7 @@ yarn
 
 ### Start Volto
 
-```
+```shell
 yarn start
 ```
 
@@ -121,7 +121,7 @@ For details see {ref}`contributing-change-log-label`.
 
 (contributing-documenting-your-changes-label)=
 
-## Document your changes
+## Document breaking changes
 
 If the feature includes a breaking change, you must include instructions for how to upgrade in the [upgrade guide](../upgrade-guide/index.md).
 
@@ -138,6 +138,7 @@ Specifically:
 -   {doc}`./linting`
 -   {doc}`./testing`
 -   {doc}`./acceptance-tests`
+-   {doc}`./documentation`
 
 
 (contributing-developer-guidelines-label)=
@@ -151,12 +152,13 @@ design-principles
 style-guide
 language-features
 linting
+testing
+acceptance-tests
+documentation
 react
 redux
 routing
 icons
-testing
-acceptance-tests
 accessibility-guidelines
 typescript
 volto-core-addons
