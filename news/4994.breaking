@@ -1,0 +1,1 @@
+Replaced `h3` HTML tags from the Listing Block Summary variation with `ul` tags. Fixes #4982. @hazigabriel
