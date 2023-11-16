@@ -1,7 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "build": "turbo run build",
+    "build": "turbo run build --filter @plone/registry",
+    "start": "turbo run start --filter @plone/volto",
     "start2": "turbo run start2",
     "dev": "turbo run dev2 --parallel",
     "lint": "turbo run lint",
@@ -10,7 +11,7 @@
   "devDependencies": {
     "eslint": "^8.48.0",
     "prettier": "^3.0.3",
-    "tsconfig": "*",
+    "tsconfig": "workspace:*",
     "turbo": "latest"
   },
   "name": "my-turborepo",
@@ -18,5 +19,5 @@
     "apps/*",
     "packages/*"
   ],
-  "packageManager": "yarn@4.0.2"
+  "packageManager": "pnpm@8.9.0"
 }

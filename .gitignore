@@ -88,3 +88,4 @@ docs/_build/
 docs/source/news
 
 .turbo
+.parcel-cache/
