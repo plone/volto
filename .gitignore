@@ -86,3 +86,5 @@ docs/_build/
 /.python-version
 /.tool-versions
 docs/source/news
+
+.turbo
