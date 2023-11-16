@@ -11,6 +11,13 @@ npm install -g yo
 npm install -g @plone/generator-volto
 ```
 
+## Compatibility
+
+| Plone version | Volto version |
+|----------|--------------|
+| 7.x      | >=17.0.0     |
+| 6.x      | 16.x.x       |
+
 ## Usage
 
 ### Creating a new Volto project using `npm init`
@@ -38,18 +45,19 @@ Usage:
   yo @plone/volto:app [<projectName>] [options]
 
 Options:
-  -h,   --help           # Print the generator's options and usage
-        --skip-cache     # Do not remember prompt answers                                        Default: false
-        --skip-install   # Do not automatically install dependencies                             Default: false
-        --force-install  # Fail on install dependencies error                                    Default: false
-        --ask-answered   # Show prompts for already configured options                           Default: false
-        --volto          # Desired Volto version, if not provided, the most recent will be used
-        --canary         # Desired Volto version should be a canary (alpha)                      Default: true
-        --interactive    # Enable/disable interactive prompt                                     Default: true
-        --skip-addons    # Don't ask for addons as part of the scaffolding
-        --addon          # Addon loader string, like: some-volto-addon:loadExtra,loadOtherExtra
-        --workspace      # Yarn workspace, like: src/addons/some-volto-addon
-        --description    # Project description
+  -h,   --help              # Print the generator's options and usage
+        --skip-cache        # Do not remember prompt answers                                        Default: false
+        --skip-install      # Do not automatically install dependencies                             Default: false
+        --force-install     # Fail on install dependencies error                                    Default: false
+        --ask-answered      # Show prompts for already configured options                           Default: false
+        --volto             # Desired Volto version, if not provided, the most recent will be used
+        --canary            # Desired Volto version should be a canary (alpha)                      Default: false
+        --interactive       # Enable/disable interactive prompt                                     Default: true
+        --skip-addons       # Don't ask for addons as part of the scaffolding
+        --addon             # Add-on loader string. Example: some-volto-addon:loadExtra,loadOtherExtra
+        --workspace         # Yarn workspace. Example: src/addons/some-volto-addon
+        --description       # Project description
+        --defaultAddonName  # The default add-on's name to be added to the generated project.
 
 Arguments:
   projectName    Type: String  Required: false
@@ -115,10 +123,39 @@ Options:
         --ask-answered   # Show prompts for already configured options               Default: false
         --interactive    # Enable/disable interactive prompt                         Default: true
         --template       # Use github repo template, e.g.: eea/volto-addon-template
+        --outputpath     # Output path
 
 Arguments:
   addonName  # Addon name, e.g.: @plone-collective/volto-custom-block  Type: String  Required: false
 ```
+
+### Enabling an existing add-on as a theme add-on
+
+If you want one of your add-ons to be a theme, you can run this template on the top of your add-on.
+Use the configuration option `outputpath` for the path of your add-on.
+Assuming your add-on is located at `./testaddon` folder, you would issue the following shell command.
+
+```shell
+yo volto:addonTheme --outputpath testaddon
+```
+
+```console
+Usage:
+  yo volto:addonTheme [<addonName>] [options]
+
+Options:
+  -h,   --help           # Print the generator's options and usage
+        --skip-cache     # Do not remember prompt answers               Default: false
+        --skip-install   # Do not automatically install dependencies    Default: false
+        --force-install  # Fail on install dependencies error           Default: false
+        --ask-answered   # Show prompts for already configured options  Default: false
+        --outputpath     # Output path
+
+Arguments:
+  addonName  # Addon name, e.g.: @plone-collective/volto-custom-block  Type: String  Required: false
+```
+
+You can also run the command inside the add-on folder, without passing any option.
 
 ### Start Volto with `yarn start`
 
@@ -137,13 +174,13 @@ Please note that you have to run a Plone backend as well.
 
 E.g. with docker:
 
-```bash
-docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="plone.volto" -e ZCML="plone.volto.cors" -e PROFILES="plone.volto:default-homepage" plone
+```shell
+docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e PROFILES="plone.volto:default-homepage" plone/plone-backend:6.0.7
 ```
 
-Consult the Volto docs for further details:
+Consult the Plone frontend Volto docs for further details:
 
-https://www.npmjs.com/package/@plone/volto
+https://6.docs.plone.org/volto/index.html
 
 ### Build a production build with `yarn build`
 

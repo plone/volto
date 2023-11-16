@@ -135,6 +135,8 @@ class SlateEditor extends Component {
           } catch {}
         }, 100); // flush
       }
+
+      this.state.editor.normalize({ force: true });
     }
   }
 
@@ -257,7 +259,7 @@ class SlateEditor extends Component {
         <EditorContext.Provider value={editor}>
           <Slate
             editor={editor}
-            value={this.props.value || slateSettings.defaultValue()}
+            initialValue={this.props.value || slateSettings.defaultValue()}
             onChange={this.handleChange}
           >
             {selected ? (
