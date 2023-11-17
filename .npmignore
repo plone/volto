@@ -122,6 +122,7 @@ packages/*
 !packages/volto-slate
 !packages/scripts
 !packages/registry
+!packages/types
 .tx
 
 # yarn 3
