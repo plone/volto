@@ -6,6 +6,9 @@
     "start": "turbo run start --filter @plone/volto",
     "start:project": "turbo run start --filter plone",
     "lint": "turbo run lint --filter @plone/volto",
+    "test": "turbo run test:ci --filter @plone/volto",
+    "i18n": "turbo run i18n --filter @plone/volto",
+    "i18n:ci": "turbo run i18n:ci --filter @plone/volto",
     "prettier": "prettier --check '{apps,packages}/**/*.{js,jsx,ts,tsx}'",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },

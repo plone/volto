@@ -117,7 +117,6 @@ jobs:
             ${{ runner.os }}-pnpm-store-
 
       - run: pnpm i
-      - run: pnpm -g i turbo
 
       - name: i18n locales in sync
-        run: turbo run i18n:ci --filter @plone/volto
+        run: pnpm i18n:ci

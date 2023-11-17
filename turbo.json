@@ -8,6 +8,9 @@
     },
     "lint": {},
     "start": {},
-    "prettier": {}
+    "prettier": {},
+    "test:ci": {},
+    "i18n": {},
+    "i18n:ci": {}
   }
 }

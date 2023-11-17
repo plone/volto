@@ -16,18 +16,34 @@ jobs:
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
-          # remove workaround for 18.x once https://github.com/nodejs/node/issues/47563 is fixed
-          node-version: ${{ matrix.node-version == '18.x' && '18.15.0' || matrix.node-version }}
-          cache: yarn
+          node-version: ${{ matrix.node-version }}
 
-      # node install
-      - run: yarn --immutable
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        with:
+          version: 8
+          run_install: false
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - run: pnpm i
 
       # node test
-      - run: yarn i18n && yarn test:ci
+      - run: pnpm i18n && pnpm test:ci
 
       # Bundlewatch
-      - run: yarn build
-      - uses: jackyef/bundlewatch-gh-action@master
-        with:
-          bundlewatch-github-token: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
+      # - run: yarn build
+      # - uses: jackyef/bundlewatch-gh-action@master
+      #   with:
+      #     bundlewatch-github-token: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
