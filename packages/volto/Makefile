@@ -70,7 +70,7 @@ start:
 
 .PHONY: start-frontend
 start-frontend:
-	yarn start
+	pnpm start
 
 .PHONY: start-backend
 start-backend: ## Start Plone Backend
@@ -87,7 +87,7 @@ build:
 
 .PHONY: build-frontend
 build-frontend:
-	yarn && RAZZLE_API_PATH=http://127.0.0.1:55001/plone yarn build
+	pnpm i && RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build
 
 .PHONY: build-backend
 build-backend:  ## Build Plone 5.2
@@ -95,8 +95,8 @@ build-backend:  ## Build Plone 5.2
 
 .PHONY: dist
 dist:
-	yarn
-	yarn build
+	pnpm i
+	pnpm build
 
 .PHONY: test
 test:
@@ -163,7 +163,7 @@ docs-test: docs-clean docs-linkcheckbroken docs-vale  ## Clean docs build, then 
 
 .PHONY: storybook-build
 storybook-build:
-	yarn build-storybook -o docs/_build/storybook
+	pnpm build-storybook -o docs/_build/storybook
 
 .PHONY: patches
 patches:
@@ -199,17 +199,17 @@ start-backend-docker-guillotina:
 .PHONY: start-test
 start-test: ## Start Test
 	@echo "$(GREEN)==> Start Test$(RESET)"
-	yarn cypress:open
+	pnpm cypress:open
 
 .PHONY: start-test-all
 start-test-all: ## Start Test
 	@echo "$(GREEN)==> Start Test$(RESET)"
-	yarn ci:cypress:run
+	pnpm ci:cypress:run
 
 .PHONY: start-test-frontend
 start-test-frontend: ## Start Test Volto Frontend
 	@echo "$(GREEN)==> Start Test Volto Frontend$(RESET)"
-	RAZZLE_API_PATH=http://127.0.0.1:55001/plone yarn build && NODE_ENV=production yarn start:prod
+	RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build && NODE_ENV=production pnpm start:prod
 
 .PHONY: start-test-backend
 start-test-backend: ## Start Test Plone Backend (api folder)
@@ -228,7 +228,7 @@ test-acceptance-server-old:
 
 .PHONY: start-test-acceptance-frontend-dev
 start-test-acceptance-frontend-dev: ## Start the Core Acceptance Frontend Fixture in dev mode
-	RAZZLE_API_PATH=http://127.0.0.1:55001/plone yarn start
+	RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm start
 
 ######### Core Acceptance tests
 
@@ -238,7 +238,7 @@ start-test-acceptance-server test-acceptance-server: ## Start Test Acceptance Se
 
 .PHONY: start-test-acceptance-frontend
 start-test-acceptance-frontend: ## Start the Core Acceptance Frontend Fixture
-	RAZZLE_API_PATH=http://127.0.0.1:55001/plone yarn build && yarn start:prod
+	RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod
 
 .PHONY: test-acceptance
 test-acceptance: ## Start Core Cypress Acceptance Tests
@@ -256,7 +256,7 @@ full-test-acceptance: ## Runs Core Full Acceptance Testing in headless mode
 
 .PHONY: start-test-acceptance-frontend-seamless
 start-test-acceptance-frontend-seamless: ## Start the Seamless Core Acceptance Frontend Fixture
-	yarn build && yarn start:prod
+	pnpm build && pnpm start:prod
 
 .PHONY: test-acceptance-seamless
 test-acceptance-seamless: ## Start Seamless Cypress Acceptance Tests
@@ -274,7 +274,7 @@ full-test-acceptance-seamless: ## Runs Seamless Core Full Acceptance Testing in 
 
 .PHONY: start-test-acceptance-frontend-project
 start-test-acceptance-frontend-project: ## Start the Project Acceptance Frontend Fixture
-	cd my-volto-app && RAZZLE_API_PATH=http://127.0.0.1:55001/plone yarn build && yarn start:prod
+	cd my-volto-app && RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod
 
 ######### CoreSandbox Acceptance tests
 
@@ -285,11 +285,11 @@ start-test-acceptance-server-coresandbox test-acceptance-server-coresandbox: ## 
 
 .PHONY: start-test-acceptance-frontend-coresandbox
 start-test-acceptance-frontend-coresandbox: ## Start the CoreSandbox Acceptance Frontend Fixture
-	ADDONS=coresandbox RAZZLE_API_PATH=http://127.0.0.1:55001/plone yarn build && yarn start:prod
+	ADDONS=coresandbox RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod
 
 .PHONY: start-test-acceptance-frontend-coresandbox-dev
 start-test-acceptance-frontend-coresandbox-dev: ## Start the CoreSandbox Acceptance Frontend Fixture in dev mode
-	ADDONS=coresandbox RAZZLE_API_PATH=http://127.0.0.1:55001/plone yarn start
+	ADDONS=coresandbox RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm start
 
 .PHONY: test-acceptance-coresandbox
 test-acceptance-coresandbox: ## Start CoreSandbox Cypress Acceptance Tests
@@ -311,7 +311,7 @@ start-test-acceptance-server-multilingual test-acceptance-server-multilingual: #
 
 .PHONY: start-test-acceptance-frontend-multilingual
 start-test-acceptance-frontend-multilingual: ## Start the Multilingual Acceptance Frontend Fixture
-	ADDONS=coresandbox:multilingualFixture RAZZLE_API_PATH=http://127.0.0.1:55001/plone yarn build && yarn start:prod
+	ADDONS=coresandbox:multilingualFixture RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod
 
 .PHONY: test-acceptance-multilingual
 test-acceptance-multilingual: ## Start Multilingual Cypress Acceptance Tests
@@ -333,7 +333,7 @@ start-test-acceptance-server-seamless-multilingual test-acceptance-server-seamle
 
 .PHONY: start-test-acceptance-frontend-seamless-multilingual
 start-test-acceptance-frontend-seamless-multilingual: ## Start the Seamless Multilingual Acceptance Frontend Fixture
-	ADDONS=coresandbox:multilingualFixture yarn build && yarn start:prod
+	ADDONS=coresandbox:multilingualFixture pnpm build && pnpm start:prod
 
 .PHONY: test-acceptance-seamless-multilingual
 test-acceptance-seamless-multilingual: ## Start Seamless Multilingual Cypress Acceptance Tests
@@ -356,7 +356,7 @@ start-test-acceptance-server-workingcopy test-acceptance-server-workingcopy : ##
 
 .PHONY: start-test-acceptance-frontend-workingcopy
 start-test-acceptance-frontend-workingcopy: ## Start the WorkingCopy Acceptance Frontend Fixture
-	ADDONS=coresandbox:workingCopyFixture RAZZLE_API_PATH=http://127.0.0.1:55001/plone yarn build && yarn start:prod
+	ADDONS=coresandbox:workingCopyFixture RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod
 
 .PHONY: test-acceptance-workingcopy
 test-acceptance-workingcopy: ## Start WorkingCopy Cypress Acceptance Tests
@@ -378,7 +378,7 @@ start-test-acceptance-server-guillotina: ## Start Guillotina Test Acceptance Ser
 
 .PHONY: start-test-acceptance-frontend-guillotina
 start-test-acceptance-frontend-guillotina: ## Start the Guillotina Acceptance Frontend Fixture
-	ADDONS=volto-guillotina RAZZLE_API_PATH=http://127.0.0.1:8081/db/web RAZZLE_LEGACY_TRAVERSE=true yarn build && yarn start:prod
+	ADDONS=volto-guillotina RAZZLE_API_PATH=http://127.0.0.1:8081/db/web RAZZLE_LEGACY_TRAVERSE=true pnpm build && pnpm start:prod
 
 .PHONY: test-acceptance-guillotina
 test-acceptance-guillotina: ## Start the Guillotina Cypress Acceptance Tests
