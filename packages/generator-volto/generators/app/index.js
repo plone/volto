@@ -48,8 +48,7 @@ module.exports = class extends Generator {
     });
     this.option('volto', {
       type: String,
-      desc:
-        'Desired Volto version, if not provided, the most recent will be used',
+      desc: 'Desired Volto version, if not provided, the most recent will be used',
     });
     this.option('canary', {
       type: Boolean,
@@ -67,8 +66,7 @@ module.exports = class extends Generator {
     });
     this.option('addon', {
       type: (arr) => arr,
-      desc:
-        'Addon loader string. Example: some-volto-addon:loadExtra,loadOtherExtra',
+      desc: 'Addon loader string. Example: some-volto-addon:loadExtra,loadOtherExtra',
     });
     this.option('workspace', {
       type: (arr) => arr,
