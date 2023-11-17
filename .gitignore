@@ -26,7 +26,6 @@ build
 .DS_Store
 .idea
 lighthouse-report.html
-.vscode/
 .#*
 *~
 /.settings/
