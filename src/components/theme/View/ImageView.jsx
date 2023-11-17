@@ -10,7 +10,6 @@ import { FormattedMessage } from 'react-intl';
 import prettybytes from 'pretty-bytes';
 import { flattenToAppURL, addPrefixPath } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
-import { Image } from '@plone/volto/components';
 
 /**
  * Image view component class.
@@ -19,6 +18,7 @@ import { Image } from '@plone/volto/components';
  * @returns {string} Markup of the component.
  */
 const ImageView = ({ content }) => {
+  const Image = config.getComponent({ name: 'Image' }).component;
   const Container =
     config.getComponent({ name: 'Container' }).component || SemanticContainer;
 
@@ -34,8 +34,10 @@ const ImageView = ({ content }) => {
       {content?.image?.download && (
         <a href={addPrefixPath(flattenToAppURL(content.image.download))}>
           <Image
+            item={content}
+            imageField="image"
             alt={content.title}
-            src={flattenToAppURL(content.image.scales.preview.download)}
+            responsive={true}
           />
           <figcaption>
             <FormattedMessage

@@ -261,15 +261,8 @@ class WysiwygWidgetComponent extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const {
-      id,
-      title,
-      description,
-      required,
-      value,
-      error,
-      fieldSet,
-    } = this.props;
+    const { id, title, description, required, value, error, fieldSet } =
+      this.props;
 
     if (__SERVER__) {
       return (

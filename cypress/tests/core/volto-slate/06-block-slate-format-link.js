@@ -1,4 +1,4 @@
-import { slateBeforeEach } from '../../../support/e2e';
+import { slateBeforeEach } from '../../../support/commands';
 
 describe('Block Tests: Links', () => {
   beforeEach(slateBeforeEach);
@@ -66,7 +66,7 @@ describe('Block Tests: Links', () => {
       'Colorless green ideas{shift}{enter} {shift}{enter}sleep furiously.',
     );
 
-    cy.log("Adding link")
+    cy.log('Adding link');
     cy.setSlateSelection('green', 'furiously');
     cy.clickSlateButton('Add link');
 
@@ -74,12 +74,12 @@ describe('Block Tests: Links', () => {
       'https://google.com{enter}',
     );
 
-    cy.log("Removing link");
+    cy.log('Removing link');
     cy.setSlateSelection('ideas');
     cy.clickSlateButton('Edit link');
     cy.get('.slate-inline-toolbar .cancel').click();
 
-    cy.log("Re-add link")
+    cy.log('Re-add link');
     cy.setSlateSelection('Colorless', 'furiously');
     cy.clickSlateButton('Add link');
 
@@ -87,14 +87,42 @@ describe('Block Tests: Links', () => {
       'https://google.com{enter}',
     );
 
-    cy.log("Save");
+    cy.log('Save');
     cy.toolbarSave();
 
-    cy.log("then the page view should contain a link");
+    cy.log('then the page view should contain a link');
     cy.get('[id="page-document"] p a')
       .should('have.attr', 'href')
       .and('include', 'https://google.com');
     cy.get('[id="page-document"] p a').contains('Colorless green ideas');
     cy.get('[id="page-document"] p a').contains('sleep furiously');
+  });
+
+  it('As editor I can add a link and pressing enter does not add another link in the next block', function () {
+    // https://github.com/plone/volto/pull/5186
+    cy.get('#toolbar').click();
+    cy.getSlate().type('Colorless green ideas sleep furiously');
+
+    cy.log('Create a Link');
+
+    cy.setSlateSelection('ideas', 'furiously');
+    cy.clickSlateButton('Add link');
+
+    cy.get('.slate-toolbar .link-form-container input').type(
+      'https://google.com{enter}',
+    );
+    cy.getSlate().should('have.descendants', 'a.slate-editor-link');
+    cy.getSlate().type('{rightarrow}').type('{enter}');
+    cy.getSlate().type('Hello').type('{enter}');
+
+    cy.toolbarSave();
+
+    cy.log('Then the page view should contain a link');
+    cy.get('.ui.container p').contains('Colorless green ideas sleep furiously');
+    // It should be only one, it will fail if there are two
+    cy.get('.ui.container p a')
+      .should('have.text', 'ideas sleep furiously')
+      .and('have.attr', 'href')
+      .and('include', 'https://google.com');
   });
 });

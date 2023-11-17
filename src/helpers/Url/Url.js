@@ -3,7 +3,7 @@
  * @module helpers/Url
  */
 
-import { last, memoize } from 'lodash';
+import { last, memoize, isArray, isObject, isString } from 'lodash';
 import { urlRegex, telRegex, mailRegex } from './urlRegex';
 import prependHttp from 'prepend-http';
 import config from '@plone/volto/registry';
@@ -262,6 +262,27 @@ export function isUrl(url) {
 }
 
 /**
+ * Get field url
+ * @method getFieldURL
+ * @param {object} data
+ * @returns {string | any} URL string value if field is of url type or any.
+ */
+export const getFieldURL = (data) => {
+  let url = data;
+  const _isObject = data && isObject(data) && !isArray(data);
+  if (_isObject && data['@type'] === 'URL') {
+    url = data['value'] ?? data['url'] ?? data['href'] ?? data;
+  } else if (_isObject) {
+    url = data['@id'] ?? data['url'] ?? data['href'] ?? data;
+  }
+  if (isArray(data)) {
+    url = data.map((item) => getFieldURL(item));
+  }
+  if (isString(url) && isInternalURL(url)) return flattenToAppURL(url);
+  return url;
+};
+
+/**
  * Normalize URL, adds protocol (if required eg. user has not entered the protocol)
  * @method normalizeUrl
  * @param {string} url URL of the object
@@ -344,3 +365,32 @@ export const URLUtils = {
   isUrl,
   checkAndNormalizeUrl,
 };
+
+/**
+ * Given an image info object, it does flatten all the scales information to
+ * match the ones stored in the catalog
+ * 'http://localhost:3000/{path}/@@images/{scalefile}' -> '@images/{scalefile}'
+ * @function flattenScales
+ * @param {string} path path of the content object
+ * @param {object} image image information object
+ * @returns {object} New object with the flattened scale URLs
+ */
+export function flattenScales(path, image) {
+  function removeObjectIdFromURL(path, scale) {
+    return scale.replace(`${path}/`, '');
+  }
+  if (!image) return;
+
+  const imageInfo = {
+    ...image,
+    download: flattenToAppURL(removeObjectIdFromURL(path, image.download)),
+  };
+
+  Object.keys(imageInfo.scales).forEach((key) => {
+    imageInfo.scales[key].download = flattenToAppURL(
+      removeObjectIdFromURL(path, image.scales[key].download),
+    );
+  });
+
+  return imageInfo;
+}

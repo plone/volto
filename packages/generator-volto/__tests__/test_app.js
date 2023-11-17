@@ -44,9 +44,12 @@ describe('generator-create-volto-app:app', () => {
 
   it('creates files', () => {
     assert.file([
-      'test-volto/package.json',
-      'test-volto/yarn.lock',
-      'test-volto/.gitignore',
+      '../../../package.json',
+      '../../../yarn.lock',
+      '../../../.gitignore',
+      '../volto-test-volto/package.json',
+      '../volto-test-volto/yarn.lock',
+      '../volto-test-volto/.gitignore',
     ]);
   });
 
@@ -56,6 +59,7 @@ describe('generator-create-volto-app:app', () => {
     );
 
     expect(packageJSON.dependencies['@plone/volto']).not.toContain('alpha');
+    expect(packageJSON.theme).toBe('volto-test-volto');
   });
 });
 
@@ -77,9 +81,12 @@ describe('generator-create-volto-app:app with canary option', () => {
 
   it('creates files', () => {
     assert.file([
-      'test-volto/package.json',
-      'test-volto/yarn.lock',
-      'test-volto/.gitignore',
+      '../../../package.json',
+      '../../../yarn.lock',
+      '../../../.gitignore',
+      '../volto-test-volto/package.json',
+      '../volto-test-volto/yarn.lock',
+      '../volto-test-volto/.gitignore',
     ]);
   });
 
@@ -88,6 +95,7 @@ describe('generator-create-volto-app:app with canary option', () => {
       fs.readFileSync(path.join(tmpDir, 'test-volto/package.json'), 'utf8'),
     );
     expect(packageJSON.dependencies['@plone/volto']).toBe('16.3.0');
+    expect(packageJSON.theme).toBe('volto-test-volto');
   });
 });
 
@@ -109,9 +117,12 @@ describe('generator-create-volto-app:app with volto from Github branch', () => {
 
   it('creates files', () => {
     assert.file([
-      'test-volto/package.json',
-      'test-volto/yarn.lock',
-      'test-volto/.gitignore',
+      '../../../package.json',
+      '../../../yarn.lock',
+      '../../../.gitignore',
+      '../volto-test-volto/package.json',
+      '../volto-test-volto/yarn.lock',
+      '../volto-test-volto/.gitignore',
     ]);
   });
 
@@ -121,5 +132,6 @@ describe('generator-create-volto-app:app with volto from Github branch', () => {
     );
 
     expect(packageJSON.dependencies['@plone/volto']).toBe('plone/volto#16.3.0');
+    expect(packageJSON.theme).toBe('volto-test-volto');
   });
 });

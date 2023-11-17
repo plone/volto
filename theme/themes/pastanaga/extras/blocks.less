@@ -42,6 +42,15 @@
   border-color: rgba(120, 192, 215, 0.75);
 }
 
+.block-editor-title,
+.block-editor-slate,
+.block-editor-slateTable,
+.slate-editor.selected {
+  :focus-visible {
+    outline: none;
+  }
+}
+
 .block .block:hover::before {
   border-color: rgba(120, 192, 215, 0.375);
 }
@@ -307,9 +316,11 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
     left: 50%;
     display: flex;
     padding: 4px;
-    background-color: rgba(255, 255, 255, 0.975);
     border-radius: 2px;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.05);
+    background-color: rgba(255, 255, 255, 0.975);
+    box-shadow:
+      0 0 8px rgba(0, 0, 0, 0.1),
+      0 2px 4px rgba(0, 0, 0, 0.05);
     transform: translate(-50%, 0);
 
     form {
@@ -331,8 +342,8 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
 
     .ui.icon.button {
       padding: 4px;
-      margin-left: 4px;
       border-radius: 1px;
+      margin-left: 4px;
       color: @brown !important;
 
       &:hover {
@@ -352,9 +363,11 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
     width: ~'min(100%, 450px)';
     height: 40px;
     padding: 4px;
-    background-color: rgba(255, 255, 255, 0.975);
     border-radius: 2px;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.05);
+    background-color: rgba(255, 255, 255, 0.975);
+    box-shadow:
+      0 0 8px rgba(0, 0, 0, 0.1),
+      0 2px 4px rgba(0, 0, 0, 0.05);
 
     form {
       display: flex;
@@ -380,8 +393,8 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
 
     .ui.icon.button {
       padding: 4px;
-      margin-left: 4px;
       border-radius: 1px;
+      margin-left: 4px;
       color: @brown !important;
 
       &:hover {
@@ -482,8 +495,8 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
     ); // This is to compensate the width of the icon and center it correctly
     padding: 0 !important;
     border: none !important;
-    background: white !important;
     border-radius: 50% !important;
+    background: white !important;
   }
 
   &:not(.new-add-block) {
@@ -552,8 +565,8 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
   color: #b8c6c8;
 
   .icon {
-    background: rgba(255, 255, 255, 0.2);
     border-radius: 2px;
+    background: rgba(255, 255, 255, 0.2);
   }
 
   &:hover {
@@ -579,8 +592,8 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
 .callout {
   padding: 1em;
   border: 1px solid rgba(34, 36, 38, 0.15);
-  margin: 1rem 0;
   border-radius: 0.28571429rem;
+  margin: 1rem 0;
   box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15);
 }
 
@@ -604,8 +617,8 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
 // HTML block
 .html-editor {
   z-index: 1;
-  background-color: #f3f6f7;
   border-radius: 4px;
+  background-color: #f3f6f7;
   font-family: monospace;
   font-size: @16px;
   word-break: break-all !important;
@@ -715,9 +728,11 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
 .blocks-chooser {
   width: 310px;
   padding: 4px;
-  background-color: rgba(255, 255, 255, 0.975);
   border-radius: 2px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.05);
+  background-color: rgba(255, 255, 255, 0.975);
+  box-shadow:
+    0 0 8px rgba(0, 0, 0, 0.1),
+    0 2px 4px rgba(0, 0, 0, 0.05);
 
   &:not(.new-add-block) {
     top: -12px;
@@ -731,9 +746,9 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
     align-items: center;
     justify-content: center;
     padding: 20px 0;
+    border-radius: 3px;
     margin-top: 5px;
     margin-bottom: 5px;
-    border-radius: 3px;
     color: @brown !important;
     hyphens: auto;
     text-align: center;
@@ -811,6 +826,7 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
 .listing-item a {
   display: flex;
   width: 100%;
+  align-items: flex-start;
 
   @media only screen and (max-width: (@largestMobileScreen)) {
     flex-direction: column;
@@ -822,6 +838,7 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
 
   img {
     width: 15%;
+    height: auto;
     margin-right: 20px;
 
     @media only screen and (max-width: (@largestMobileScreen)) {
@@ -993,8 +1010,8 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
       display: flex;
       justify-content: space-between;
       padding: 0.5rem;
-      background-color: #faf8f8;
       border-radius: 0.3rem;
+      background-color: #faf8f8;
     }
 
     .active.title .filter-list-title svg {

@@ -6,8 +6,8 @@ import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
 import {
   CheckboxWidget,
   Icon,
-  TextWidget,
   Image,
+  TextWidget,
 } from '@plone/volto/components';
 import { flattenToAppURL } from '@plone/volto/helpers';
 import AlignBlock from '@plone/volto/components/manage/Sidebar/AlignBlock';
@@ -95,14 +95,28 @@ const LeadImageSidebar = ({
         <>
           <Segment className="sidebar-metadata-container" secondary>
             {properties.image.filename}
-            <Image
-              src={
-                properties.image.data
-                  ? `data:${properties.image['content-type']};base64,${properties.image.data}`
-                  : flattenToAppURL(properties.image.scales.mini.download)
-              }
-              alt={properties.image_caption || ''}
-            />
+            {properties.image.data && (
+              <img
+                // TODO understand when this actually happens
+                src={`data:${properties.image['content-type']};base64,${properties.image.data}`}
+                width={properties.image.width}
+                height={properties.image.height}
+                alt={data.image_caption || properties.image_caption || ''}
+                className="responsive"
+                style={{
+                  aspectRatio: `${properties.image.width} / ${properties.image.height}`,
+                }}
+              />
+            )}
+            {!properties.image.data && (
+              <Image
+                item={properties}
+                imageField="image"
+                alt={data.image_caption || properties.image_caption || ''}
+                responsive={true}
+                sizes="188px"
+              />
+            )}
           </Segment>
           <Segment className="form sidebar-image-data">
             <TextWidget

@@ -22,6 +22,13 @@ const messages = defineMessages({
     defaultMessage: 'Sitemap',
   },
 });
+
+export function getSitemapPath(pathname = '', lang) {
+  const prefix = pathname.replace(/\/sitemap$/gm, '').replace(/^\//, '');
+  const path = prefix || lang || '';
+  return path;
+}
+
 /**
  * Sitemap class.
  * @class Sitemap
@@ -39,11 +46,13 @@ class Sitemap extends Component {
 
   componentDidMount() {
     const { settings } = config;
-    if (settings.isMultilingual) {
-      this.props.getNavigation(`${toBackendLang(this.props.lang)}`, 4);
-    } else {
-      this.props.getNavigation('', 4);
-    }
+
+    const lang = settings.isMultilingual
+      ? `${toBackendLang(this.props.lang)}`
+      : null;
+
+    const path = getSitemapPath(this.props.location.pathname, lang);
+    this.props.getNavigation(path, 4);
   }
 
   /**
@@ -105,15 +114,17 @@ export default compose(
     {
       key: 'navigation',
       promise: ({ location, store: { dispatch, getState } }) => {
+        if (!__SERVER__) return;
         const { settings } = config;
-        const lang = getState().intl.locale;
-        if (settings.isMultilingual) {
-          return (
-            __SERVER__ && dispatch(getNavigation(`${toBackendLang(lang)}`, 4))
-          );
-        } else {
-          return __SERVER__ && dispatch(getNavigation('', 4));
-        }
+
+        const path = getSitemapPath(
+          location.pathname,
+          settings.isMultilingual
+            ? toBackendLang(getState().intl.locale)
+            : null,
+        );
+
+        return dispatch(getNavigation(path, 4));
       },
     },
   ]),

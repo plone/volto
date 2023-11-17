@@ -15,6 +15,7 @@ import {
 } from '@plone/volto/helpers';
 
 import config from '@plone/volto/registry';
+import cx from 'classnames';
 
 const UniversalLink = ({
   href,
@@ -30,7 +31,9 @@ const UniversalLink = ({
 
   let url = href;
   if (!href && item) {
-    if (!item['@id']) {
+    if (item['@id'] === '') {
+      url = config.settings.publicURL;
+    } else if (!item['@id']) {
       // eslint-disable-next-line no-console
       console.error(
         'Invalid item passed to UniversalLink',
@@ -89,19 +92,16 @@ const UniversalLink = ({
   );
 
   if (isExternal) {
+    const isTelephoneOrMail = checkedURL.isMail || checkedURL.isTelephone;
     tag = (
       <a
         href={url}
         title={title}
         target={
-          !checkedURL.isMail &&
-          !checkedURL.isTelephone &&
-          !(openLinkInNewTab === false)
-            ? '_blank'
-            : null
+          !isTelephoneOrMail && !(openLinkInNewTab === false) ? '_blank' : null
         }
         rel="noopener noreferrer"
-        className={className}
+        className={cx({ external: !isTelephoneOrMail }, className)}
         {...props}
       >
         {children}

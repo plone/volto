@@ -1,7 +1,13 @@
 import express from 'express';
 import { getAPIResourceWithAuth } from '@plone/volto/helpers';
 
-const HEADERS = ['content-type', 'content-disposition', 'cache-control'];
+const HEADERS = [
+  'content-type',
+  'content-disposition',
+  'cache-control',
+  'x-sendfile',
+  'x-accel-redirect',
+];
 
 function imageMiddlewareFn(req, res, next) {
   getAPIResourceWithAuth(req)
@@ -22,6 +28,7 @@ export default function imagesMiddleware() {
 
   middleware.all(['**/@@images/*'], imageMiddlewareFn);
   middleware.all(['/@portrait/*'], imageMiddlewareFn);
+  middleware.all(['/@@site-logo/*'], imageMiddlewareFn);
   middleware.id = 'imageResourcesProcessor';
   return middleware;
 }

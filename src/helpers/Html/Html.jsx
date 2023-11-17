@@ -87,14 +87,8 @@ class Html extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const {
-      extractor,
-      markup,
-      store,
-      criticalCss,
-      apiPath,
-      publicURL,
-    } = this.props;
+    const { extractor, markup, store, criticalCss, apiPath, publicURL } =
+      this.props;
     const head = Helmet.rewind();
     const bodyClass = join(BodyClass.rewind(), ' ');
     const htmlAttributes = head.htmlAttributes.toComponent();
@@ -194,7 +188,7 @@ class Html extends Component {
         <body className={bodyClass}>
           <div role="navigation" aria-label="Toolbar" id="toolbar" />
           <div id="main" dangerouslySetInnerHTML={{ __html: markup }} />
-          <div id="sidebar" />
+          <div role="complementary" aria-label="Sidebar" id="sidebar" />
           <script
             dangerouslySetInnerHTML={{
               __html: `window.__data=${serialize(
