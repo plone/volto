@@ -148,7 +148,7 @@ Some of these common options are described in the following sections.
 Required for alternate default block types implementations.
 
 ```{seealso}
-See also [Settings reference](/configuration/settings-reference).
+See also [Settings reference](../configuration/settings-reference).
 ```
 
 ### `initialValue`
