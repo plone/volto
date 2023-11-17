@@ -15,7 +15,6 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "baseUrl": ".",
     "paths": {
       "@plone/volto/*": ["./src/*"],
       "@plone/volto-slate/*": ["../volto-slate/src/*"],
