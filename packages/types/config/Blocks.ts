@@ -1,9 +1,10 @@
 import { GetContentResponse } from '../content/get';
+import type { BlockViewProps } from '@plone/types/Blocks/View';
 
 export interface BlocksConfig {
-  [key: string]: unknown;
-  title?: string;
-  description?: number;
+  [key: string]: BlockConfigBase | undefined;
+  title?: BlockConfigBase;
+  description?: BlockConfigBase;
   slate?: SlateBlock;
 }
 
@@ -27,7 +28,7 @@ interface BlockConfigBase {
   /**
    * The view mode component
    */
-  view: React.ComponentType;
+  view: React.ComponentType<BlockViewProps>;
   /**
    * The edit mode component
    */

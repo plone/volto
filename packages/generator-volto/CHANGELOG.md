@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 8.0.2 (2023-11-16)
+
+### Bugfix
+
+- Added `postcss-less` package to the default add-on, since the builds were complaining @sneridagh [#5408](https://github.com/plone/volto/issues/5408)
+
 ## 8.0.1 (2023-11-15)
 
 ### Bugfix

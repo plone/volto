@@ -1,5 +1,5 @@
 import { isArray } from 'lodash';
-import * as configTypes from './types/config';
+import * as configTypes from '@plone/types/config';
 
 type ConfigData = {
   settings: configTypes.SettingsConfig;
