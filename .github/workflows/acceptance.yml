@@ -23,6 +23,7 @@ jobs:
         name: Install pnpm
         with:
           version: 8
+          run_install: false
 
       - name: Get pnpm store directory
         shell: bash
@@ -38,6 +39,8 @@ jobs:
             ${{ runner.os }}-pnpm-store-
 
       - run: ls -la packages/volto/node_modules/@plone
+
+      - run: pnpm i
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
