@@ -7,9 +7,6 @@
       "outputs": [".next/**", "!.next/cache/**"]
     },
     "lint": {},
-    "start": {},
-    "dev2": {
-      "cache": false
-    }
+    "start": {}
   }
 }

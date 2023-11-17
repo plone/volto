@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [18.x]
+        node-version: [20.x]
     steps:
       - uses: actions/checkout@v3
 
@@ -16,13 +16,12 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
+          cache: 'pnpm'
 
-      # node install
-      - run: yarn --immutable
+      - run: pnpm i
 
       - name: Prettier check
-        run: yarn run prettier
+        run: pnpm prettier
 
   eslint:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
@@ -30,7 +29,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [18.x]
+        node-version: [20.x]
     steps:
       - uses: actions/checkout@v3
 
@@ -39,13 +38,12 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
+          cache: 'pnpm'
 
-      # node install
-      - run: yarn --immutable
+      - run: pnpm i
 
       - name: ESlint check
-        run: yarn run lint
+        run: pnpm lint
 
   i18n:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
@@ -62,10 +60,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
+          cache: 'pnpm'
 
-      # node install
-      - run: yarn --immutable
+      - run: pnpm i
+      - run: pnpm -g i turbo
 
       - name: i18n locales in sync
-        run: yarn run i18n:ci
+        run: turbo run i18n:ci --filter @plone/volto
