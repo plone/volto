@@ -5,7 +5,7 @@
     "build": "turbo run build --filter @plone/registry",
     "start": "turbo run start --filter @plone/volto",
     "start:project": "turbo run start --filter plone",
-    "lint": "turbo run lint",
+    "lint": "turbo run lint --filter @plone/volto",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
