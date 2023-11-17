@@ -42,7 +42,6 @@ jobs:
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
-        working-directory: packages/volto
         env:
           BABEL_ENV: production
           CYPRESS_RETRIES: 2
@@ -51,6 +50,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           install: false
+          working-directory: packages/volto
           browser: chrome
           spec: cypress/tests/core/basic/**/*.js
           start: |
