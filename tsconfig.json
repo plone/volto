@@ -9,6 +9,7 @@
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
+    "strictPropertyInitialization": false,
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
@@ -17,10 +18,13 @@
     "paths": {
       "@plone/volto/*": ["./src/*"],
       "@plone/volto-slate/*": ["./packages/volto-slate/src/*"],
+      "@plone/registry/*": ["./packages/registry/src/*"],
+      "@plone/registry": ["./packages/registry/src"],
+      "@plone/types/*": ["./packages/types/*"],
       "@root/*": ["./src/*"]
     }
   },
-  "include": ["src"],
+  "include": ["src", "packages"],
   "exclude": [
     "node_modules",
     "build",
