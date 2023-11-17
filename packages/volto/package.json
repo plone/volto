@@ -434,6 +434,7 @@
     "ts-loader": "9.4.4",
     "typescript": "5.2.2",
     "use-trace-update": "1.3.2",
+    "wait-on": "6.0.0",
     "why": "0.6.2"
   },
   "volta": {
