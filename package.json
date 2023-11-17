@@ -6,12 +6,12 @@
     "start": "turbo run start --filter @plone/volto",
     "start:project": "turbo run start --filter plone",
     "lint": "turbo run lint --filter @plone/volto",
-    "prettier": "turbo run prettier --filter @plone/volto",
+    "prettier": "prettier --check '{apps,packages}/**/*.{js,jsx,ts,tsx}'",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
     "eslint": "^8.48.0",
-    "prettier": "^3.0.3",
+    "prettier": "3.0.3",
     "tsconfig": "workspace:*",
     "turbo": "latest"
   },

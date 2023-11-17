@@ -122,18 +122,6 @@
       "<rootDir>/packages/registry/src/**/?(*.)(spec|test).{js,jsx,mjs,ts,tsx}"
     ]
   },
-  "prettier": {
-    "trailingComma": "all",
-    "singleQuote": true,
-    "overrides": [
-      {
-        "files": "*.overrides",
-        "options": {
-          "parser": "less"
-        }
-      }
-    ]
-  },
   "stylelint": {
     "extends": [
       "stylelint-config-idiomatic-order"
