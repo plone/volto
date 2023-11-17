@@ -14,6 +14,7 @@ const CircularDependencyPlugin = require('circular-dependency-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
+const transformModulesMapper = require('./webpack-plugins/babel-transform-modules');
 
 const fileLoaderFinder = makeLoaderFinder('file-loader');
 
@@ -270,12 +271,36 @@ const defaultModify = ({
 
   let addonsAsExternals = [];
 
-  const { include } = options.webpackOptions.babelRule;
+  const { include, use } = options.webpackOptions.babelRule;
   if (packageJson.name !== '@plone/volto') {
     include.push(fs.realpathSync(`${registry.voltoPath}/src`));
   }
 
   include.push(fs.realpathSync(`${registry.voltoPath}/packages/registry/src`));
+
+  const babelLoader = use.find(
+    (loader) => loader.ident === 'razzle-babel-loader',
+  );
+  if (babelLoader) {
+    babelLoader.options.plugins = [
+      // this transform-imports config is read by webpack and not by jest
+      [
+        'transform-imports',
+        {
+          '@plone/volto/components': {
+            transform: (importName) => {
+              const voltoTransforms =
+                transformModulesMapper['@plone/volto/components'];
+              if (voltoTransforms[importName]) {
+                return voltoTransforms[importName];
+              }
+              return '@plone/volto/components';
+            },
+          },
+        },
+      ],
+    ];
+  }
 
   // Add babel support external (ie. node_modules npm published packages)
   const packagesNames = Object.keys(registry.packages);
