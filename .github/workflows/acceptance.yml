@@ -23,6 +23,8 @@ jobs:
         name: Install pnpm
         with:
           version: 8
+          # We don't want to install until later,
+          # when the cache and Cypress are in place
           run_install: false
 
       - name: Get pnpm store directory
@@ -45,18 +47,24 @@ jobs:
           path: ~/.cache/Cypress
           key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
 
+      - name: Cache Cypress Binary
+        id: cache-cypress-binary
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/Cypress
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+
       - run: pnpm i
-
-      - run: ls -la packages/volto/node_modules/.bin || true
-      - run: ls -la packages/volto/node_modules/cypress || true
-      - run: ls -la /home/runner/.cache || true
-
 
       - name: Install Cypress if not in cache
         if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
         working-directory: packages/volto
         run: make cypress-install
 
+      - name: Install Cypress if not in cache
+        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
+        working-directory: packages/volto
+        run: make cypress-install
 
       - name: Build packages
         run: pnpm build:registry
@@ -129,7 +137,19 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
+      - name: Cache Cypress Binary
+        id: cache-cypress-binary
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/Cypress
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+
       - run: pnpm i
+
+      - name: Install Cypress if not in cache
+        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
+        working-directory: packages/volto
+        run: make cypress-install
 
       - name: Build packages
         run: pnpm build:registry
@@ -202,7 +222,19 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
+      - name: Cache Cypress Binary
+        id: cache-cypress-binary
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/Cypress
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+
       - run: pnpm i
+
+      - name: Install Cypress if not in cache
+        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
+        working-directory: packages/volto
+        run: make cypress-install
 
       - name: Build packages
         run: pnpm build:registry
@@ -275,7 +307,19 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
+      - name: Cache Cypress Binary
+        id: cache-cypress-binary
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/Cypress
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+
       - run: pnpm i
+
+      - name: Install Cypress if not in cache
+        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
+        working-directory: packages/volto
+        run: make cypress-install
 
       - name: Build packages
         run: pnpm build:registry
@@ -348,7 +392,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
-      - run: pnpm i
+
 
       - name: Build packages
         run: pnpm build:registry
@@ -421,7 +465,19 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
+      - name: Cache Cypress Binary
+        id: cache-cypress-binary
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/Cypress
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+
       - run: pnpm i
+
+      - name: Install Cypress if not in cache
+        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
+        working-directory: packages/volto
+        run: make cypress-install
 
       - name: Build packages
         run: pnpm build:registry
@@ -493,7 +549,19 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
+      - name: Cache Cypress Binary
+        id: cache-cypress-binary
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/Cypress
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+
       - run: pnpm i
+
+      - name: Install Cypress if not in cache
+        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
+        working-directory: packages/volto
+        run: make cypress-install
 
       - name: Build packages
         run: pnpm build:registry
@@ -566,7 +634,19 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
+      - name: Cache Cypress Binary
+        id: cache-cypress-binary
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/Cypress
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+
       - run: pnpm i
+
+      - name: Install Cypress if not in cache
+        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
+        working-directory: packages/volto
+        run: make cypress-install
 
       - name: Build packages
         run: pnpm build:registry
@@ -713,7 +793,19 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
+      - name: Cache Cypress Binary
+        id: cache-cypress-binary
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/Cypress
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+
       - run: pnpm i
+
+      - name: Install Cypress if not in cache
+        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
+        working-directory: packages/volto
+        run: make cypress-install
 
       - name: Build packages
         run: pnpm build:registry
@@ -787,7 +879,19 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
+      - name: Cache Cypress Binary
+        id: cache-cypress-binary
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/Cypress
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+
       - run: pnpm i
+
+      - name: Install Cypress if not in cache
+        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
+        working-directory: packages/volto
+        run: make cypress-install
 
       - name: Build packages
         run: pnpm build:registry
@@ -888,7 +992,19 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
+      - name: Cache Cypress Binary
+        id: cache-cypress-binary
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/Cypress
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+
       - run: pnpm i
+
+      - name: Install Cypress if not in cache
+        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
+        working-directory: packages/volto
+        run: make cypress-install
 
       - name: Build packages
         run: pnpm build:registry
@@ -1005,7 +1121,19 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
+      - name: Cache Cypress Binary
+        id: cache-cypress-binary
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/Cypress
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+
       - run: pnpm i
+
+      - name: Install Cypress if not in cache
+        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
+        working-directory: packages/volto
+        run: make cypress-install
 
       - name: Build packages
         run: pnpm build:registry
@@ -1080,7 +1208,19 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
+      - name: Cache Cypress Binary
+        id: cache-cypress-binary
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/Cypress
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+
       - run: pnpm i
+
+      - name: Install Cypress if not in cache
+        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
+        working-directory: packages/volto
+        run: make cypress-install
 
       - name: Build packages
         run: pnpm build:registry
