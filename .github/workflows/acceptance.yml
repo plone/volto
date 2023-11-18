@@ -42,6 +42,10 @@ jobs:
 
       - run: pnpm i
 
+      - run: ls .cache/Cypress
+
+      - run: ls ~.cache/Cypress
+
       - name: Build packages
         run: pnpm build:registry
 
