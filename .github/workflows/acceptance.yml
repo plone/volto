@@ -47,6 +47,7 @@ jobs:
 
       - name: Install Cypress if not in cache
         if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
+        working-directory: packages/volto
         run: make cypress-install
 
       - run: pnpm i
