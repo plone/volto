@@ -40,7 +40,7 @@ jobs:
       - run: pnpm i
 
       # node test
-      - run: pnpm i18n && pnpm test:ci
+      - run: pnpm i18n && pnpm test
 
       # Bundlewatch
       # - run: yarn build
