@@ -9,4 +9,3 @@ packages:
   - '!packages/coresandbox'
   - '!packages/volto-guillotina'
   - '!packages/volto-testing'
-  - '!packages/generator-volto'
