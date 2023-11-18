@@ -41,7 +41,7 @@
     "build": "razzle build --noninteractive",
     "build:types": "tsc src/**/*.{js,jsx} --declaration --allowJs --emitDeclarationOnly --outDir types --skipLibCheck",
     "test": "razzle test --maxWorkers=50%",
-    "test:ci": "CI=true NODE_ICU_DATA=node_modules/full-icu razzle test",
+    "test:ci": "CI=true NODE_ICU_DATA=node_modules/full-icu razzle test --runInBand",
     "test:husky": "CI=true yarn test --bail --findRelatedTests",
     "test:debug": "node --inspect node_modules/.bin/jest --runInBand",
     "start:prod": "NODE_ENV=production node build/server.js",
