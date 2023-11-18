@@ -36,7 +36,7 @@ jobs:
           path: |
             ${{ env.STORE_PATH }}
             .cache/Cypress
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: ${{ matrix.node-version }}-${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
@@ -111,7 +111,7 @@ jobs:
           path: |
             ${{ env.STORE_PATH }}
             .cache/Cypress
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: ${{ matrix.node-version }}-${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
@@ -186,7 +186,7 @@ jobs:
           path: |
             ${{ env.STORE_PATH }}
             .cache/Cypress
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: ${{ matrix.node-version }}-${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
@@ -261,7 +261,7 @@ jobs:
           path: |
             ${{ env.STORE_PATH }}
             .cache/Cypress
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: ${{ matrix.node-version }}-${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
@@ -336,7 +336,7 @@ jobs:
           path: |
             ${{ env.STORE_PATH }}
             .cache/Cypress
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: ${{ matrix.node-version }}-${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
@@ -411,7 +411,7 @@ jobs:
           path: |
             ${{ env.STORE_PATH }}
             .cache/Cypress
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: ${{ matrix.node-version }}-${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
@@ -485,7 +485,7 @@ jobs:
           path: |
             ${{ env.STORE_PATH }}
             .cache/Cypress
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: ${{ matrix.node-version }}-${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
@@ -560,7 +560,7 @@ jobs:
           path: |
             ${{ env.STORE_PATH }}
             .cache/Cypress
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: ${{ matrix.node-version }}-${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
@@ -709,7 +709,7 @@ jobs:
           path: |
             ${{ env.STORE_PATH }}
             .cache/Cypress
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: ${{ matrix.node-version }}-${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
@@ -785,7 +785,7 @@ jobs:
           path: |
             ${{ env.STORE_PATH }}
             .cache/Cypress
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: ${{ matrix.node-version }}-${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
@@ -888,7 +888,7 @@ jobs:
           path: |
             ${{ env.STORE_PATH }}
             .cache/Cypress
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: ${{ matrix.node-version }}-${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
@@ -1006,7 +1006,7 @@ jobs:
           path: |
             ${{ env.STORE_PATH }}
             .cache/Cypress
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: ${{ matrix.node-version }}-${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
@@ -1083,7 +1083,7 @@ jobs:
           path: |
             ${{ env.STORE_PATH }}
             .cache/Cypress
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: ${{ matrix.node-version }}-${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
