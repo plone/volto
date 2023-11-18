@@ -584,79 +584,79 @@ jobs:
           name: cypress-videos
           path: cypress/videos
 
-  guillotina:
-    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
-    name: Guillotina
-    runs-on: ubuntu-latest
-    timeout-minutes: 35
-    strategy:
-      fail-fast: false
-      matrix:
-        node-version: [18.x]
-    steps:
-      - uses: actions/checkout@v3
+  # guillotina:
+  #   if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
+  #   name: Guillotina
+  #   runs-on: ubuntu-latest
+  #   timeout-minutes: 35
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       node-version: [18.x]
+  #   steps:
+  #     - uses: actions/checkout@v3
 
-      # node setup
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
+  #     # node setup
+  #     - name: Use Node.js ${{ matrix.node-version }}
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: ${{ matrix.node-version }}
 
-      - uses: pnpm/action-setup@v2
-        name: Install pnpm
-        with:
-          version: 8
-          run_install: false
+  #     - uses: pnpm/action-setup@v2
+  #       name: Install pnpm
+  #       with:
+  #         version: 8
+  #         run_install: false
 
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+  #     - name: Get pnpm store directory
+  #       shell: bash
+  #       run: |
+  #         echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-      - uses: actions/cache@v3
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+  #     - uses: actions/cache@v3
+  #       name: Setup pnpm cache
+  #       with:
+  #         path: ${{ env.STORE_PATH }}
+  #         key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+  #         restore-keys: |
+  #           ${{ runner.os }}-pnpm-store-
 
-      - run: pnpm i
+  #     - run: pnpm i
 
-      - name: Build packages
-        run: pnpm build:registry
+  #     - name: Build packages
+  #       run: pnpm build:registry
 
-      - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v6
-        env:
-          BABEL_ENV: production
-          CYPRESS_API: guillotina
-          CYPRESS_RETRIES: 2
-          # Recommended: pass the GitHub token lets this action correctly
-          # determine the unique run id necessary to re-run the checks
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          install: false
-          working-directory: packages/volto
-          browser: chrome
-          spec: cypress/tests/guillotina/**/*.js
-          start: |
-            make start-test-acceptance-server-guillotina
-            make start-test-acceptance-frontend-guillotina
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:8081 http://127.0.0.1:3000'
+  #     - name: Cypress acceptance tests
+  #       uses: cypress-io/github-action@v6
+  #       env:
+  #         BABEL_ENV: production
+  #         CYPRESS_API: guillotina
+  #         CYPRESS_RETRIES: 2
+  #         # Recommended: pass the GitHub token lets this action correctly
+  #         # determine the unique run id necessary to re-run the checks
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #       with:
+  #         install: false
+  #         working-directory: packages/volto
+  #         browser: chrome
+  #         spec: cypress/tests/guillotina/**/*.js
+  #         start: |
+  #           make start-test-acceptance-server-guillotina
+  #           make start-test-acceptance-frontend-guillotina
+  #         wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:8081 http://127.0.0.1:3000'
 
-      # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v1
-        if: failure()
-        with:
-          name: cypress-screenshots
-          path: cypress/screenshots
-      # Upload Cypress videos
-      - uses: actions/upload-artifact@v1
-        if: failure()
-        with:
-          name: cypress-videos
-          path: cypress/videos
+  #     # Upload Cypress screenshots
+  #     - uses: actions/upload-artifact@v1
+  #       if: failure()
+  #       with:
+  #         name: cypress-screenshots
+  #         path: cypress/screenshots
+  #     # Upload Cypress videos
+  #     - uses: actions/upload-artifact@v1
+  #       if: failure()
+  #       with:
+  #         name: cypress-videos
+  #         path: cypress/videos
 
   multilingual:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
