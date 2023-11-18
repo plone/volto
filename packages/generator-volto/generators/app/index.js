@@ -109,7 +109,7 @@ Run "npm install -g @plone/generator-volto" to update.`,
       this.log(`Using latest canary (alpha) Volto version: ${voltoVersion}`);
     } else if (this.opts.volto === '.') {
       voltoVersion = '*';
-      this.voltoYarnLock = this.fs.read('yarn.lock');
+      // this.voltoYarnLock = this.fs.read('yarn.lock');
     } else if (this.opts.volto) {
       voltoVersion = this.opts.volto;
       this.log(`Using chosen Volto version: ${voltoVersion}`);
