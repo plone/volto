@@ -33,16 +33,23 @@ jobs:
       - uses: actions/cache@v3
         name: Setup pnpm cache
         with:
-          path: |
-            ${{ env.STORE_PATH }}
-            .cache/Cypress
-          key: ${{ matrix.node-version }}-${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
-            ${{ matrix.node-version }}-${{ runner.os }}-pnpm-store-
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Cache Cypress Binary
+        id: cache-cypress-binary
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/Cypress
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+
+      - name: Install Dependencies
+        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
+        run: pnpm cypress install
 
       - run: pnpm i
-
-      - run: ls /home/runner/.cache/Cypress
 
       - name: Build packages
         run: pnpm build:registry
@@ -110,12 +117,10 @@ jobs:
       - uses: actions/cache@v3
         name: Setup pnpm cache
         with:
-          path: |
-            ${{ env.STORE_PATH }}
-            .cache/Cypress
-          key: ${{ matrix.node-version }}-${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
-            ${{ matrix.node-version }}-${{ runner.os }}-pnpm-store-
+            ${{ runner.os }}-pnpm-store-
 
       - run: pnpm i
 
@@ -185,12 +190,10 @@ jobs:
       - uses: actions/cache@v3
         name: Setup pnpm cache
         with:
-          path: |
-            ${{ env.STORE_PATH }}
-            .cache/Cypress
-          key: ${{ matrix.node-version }}-${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
-            ${{ matrix.node-version }}-${{ runner.os }}-pnpm-store-
+            ${{ runner.os }}-pnpm-store-
 
       - run: pnpm i
 
@@ -260,12 +263,10 @@ jobs:
       - uses: actions/cache@v3
         name: Setup pnpm cache
         with:
-          path: |
-            ${{ env.STORE_PATH }}
-            .cache/Cypress
-          key: ${{ matrix.node-version }}-${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
-            ${{ matrix.node-version }}-${{ runner.os }}-pnpm-store-
+            ${{ runner.os }}-pnpm-store-
 
       - run: pnpm i
 
@@ -335,12 +336,10 @@ jobs:
       - uses: actions/cache@v3
         name: Setup pnpm cache
         with:
-          path: |
-            ${{ env.STORE_PATH }}
-            .cache/Cypress
-          key: ${{ matrix.node-version }}-${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
-            ${{ matrix.node-version }}-${{ runner.os }}-pnpm-store-
+            ${{ runner.os }}-pnpm-store-
 
       - run: pnpm i
 
@@ -410,12 +409,10 @@ jobs:
       - uses: actions/cache@v3
         name: Setup pnpm cache
         with:
-          path: |
-            ${{ env.STORE_PATH }}
-            .cache/Cypress
-          key: ${{ matrix.node-version }}-${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
-            ${{ matrix.node-version }}-${{ runner.os }}-pnpm-store-
+            ${{ runner.os }}-pnpm-store-
 
       - run: pnpm i
 
@@ -484,12 +481,10 @@ jobs:
       - uses: actions/cache@v3
         name: Setup pnpm cache
         with:
-          path: |
-            ${{ env.STORE_PATH }}
-            .cache/Cypress
-          key: ${{ matrix.node-version }}-${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
-            ${{ matrix.node-version }}-${{ runner.os }}-pnpm-store-
+            ${{ runner.os }}-pnpm-store-
 
       - run: pnpm i
 
@@ -559,12 +554,10 @@ jobs:
       - uses: actions/cache@v3
         name: Setup pnpm cache
         with:
-          path: |
-            ${{ env.STORE_PATH }}
-            .cache/Cypress
-          key: ${{ matrix.node-version }}-${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
-            ${{ matrix.node-version }}-${{ runner.os }}-pnpm-store-
+            ${{ runner.os }}-pnpm-store-
 
       - run: pnpm i
 
@@ -708,12 +701,10 @@ jobs:
       - uses: actions/cache@v3
         name: Setup pnpm cache
         with:
-          path: |
-            ${{ env.STORE_PATH }}
-            .cache/Cypress
-          key: ${{ matrix.node-version }}-${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
-            ${{ matrix.node-version }}-${{ runner.os }}-pnpm-store-
+            ${{ runner.os }}-pnpm-store-
 
       - run: pnpm i
 
@@ -784,12 +775,10 @@ jobs:
       - uses: actions/cache@v3
         name: Setup pnpm cache
         with:
-          path: |
-            ${{ env.STORE_PATH }}
-            .cache/Cypress
-          key: ${{ matrix.node-version }}-${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
-            ${{ matrix.node-version }}-${{ matrix.node-version }}-${{ runner.os }}-pnpm-store-
+            ${{ runner.os }}-pnpm-store-
 
       - run: pnpm i
 
@@ -887,12 +876,10 @@ jobs:
       - uses: actions/cache@v3
         name: Setup pnpm cache
         with:
-          path: |
-            ${{ env.STORE_PATH }}
-            .cache/Cypress
-          key: ${{ matrix.node-version }}-${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
-            ${{ matrix.node-version }}-${{ runner.os }}-pnpm-store-
+            ${{ runner.os }}-pnpm-store-
 
       - run: pnpm i
 
@@ -1006,12 +993,10 @@ jobs:
       - uses: actions/cache@v3
         name: Setup pnpm cache
         with:
-          path: |
-            ${{ env.STORE_PATH }}
-            .cache/Cypress
-          key: ${{ matrix.node-version }}-${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
-            ${{ matrix.node-version }}-${{ runner.os }}-pnpm-store-
+            ${{ runner.os }}-pnpm-store-
 
       - run: pnpm i
 
@@ -1083,12 +1068,10 @@ jobs:
       - uses: actions/cache@v3
         name: Setup pnpm cache
         with:
-          path: |
-            ${{ env.STORE_PATH }}
-            .cache/Cypress
-          key: ${{ matrix.node-version }}-${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
-            ${{ matrix.node-version }}-${{ runner.os }}-pnpm-store-
+            ${{ runner.os }}-pnpm-store-
 
       - run: pnpm i
 
