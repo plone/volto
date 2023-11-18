@@ -47,19 +47,7 @@ jobs:
           path: ~/.cache/Cypress
           key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
 
-      - name: Cache Cypress Binary
-        id: cache-cypress-binary
-        uses: actions/cache@v2
-        with:
-          path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
-
       - run: pnpm i
-
-      - name: Install Cypress if not in cache
-        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
-        working-directory: packages/volto
-        run: make cypress-install
 
       - name: Install Cypress if not in cache
         if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
