@@ -6,8 +6,6 @@ import config from '@plone/volto/registry';
 import { changeLanguage } from '@plone/volto/actions';
 import { toGettextLang } from '@plone/volto/helpers';
 
-jest.useFakeTimers();
-
 const MultilingualRedirector = (props) => {
   const { settings } = config;
   const { pathname, children } = props;
