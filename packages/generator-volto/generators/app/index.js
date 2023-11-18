@@ -121,7 +121,7 @@ Run "npm install -g @plone/generator-volto" to update.`,
 
     if (!this.voltoYarnLock) {
       this.log(chalk.red("Retrieving Volto's yarn.lock"));
-      this.voltoYarnLock = await utils.getVoltoYarnLock(voltoVersion);
+      // this.voltoYarnLock = await utils.getVoltoYarnLock(voltoVersion);
     }
 
     this.globals = {
@@ -234,7 +234,7 @@ Run "npm install -g @plone/generator-volto" to update.`,
       this.destinationPath(base, '.gitignore'),
       this.globals,
     );
-    this.fs.write(this.destinationPath(base, 'yarn.lock'), this.voltoYarnLock);
+    // this.fs.write(this.destinationPath(base, 'yarn.lock'), this.voltoYarnLock);
 
     this.fs.copy(this.templatePath(), this.destinationPath(base), {
       globOptions: {
