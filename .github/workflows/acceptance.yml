@@ -923,6 +923,7 @@ jobs:
         run: |
           yalc publish packages/volto
           yalc publish packages/scripts
+          yalc publish packages/volto-slate
       - name: Install a yalc'ed version of the current Volto in the project - add
         run: |
           yalc add @plone/volto --no-pure
