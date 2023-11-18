@@ -41,7 +41,6 @@ jobs:
 
       # node test
       - run: pnpm --filter @plone/volto i18n:ci
-      - run: pnpm --filter @plone/volto i18n
       - run: pnpm --filter @plone/volto test
 
       # Bundlewatch

@@ -164,8 +164,9 @@ function poToJson({ registry, addonMode }) {
 
   map(glob('locales/**/*.po'), (filename) => {
     let { items } = Pofile.parse(fs.readFileSync(filename, 'utf8'));
-    const projectLocalesItems = Pofile.parse(fs.readFileSync(filename, 'utf8'))
-      .items;
+    const projectLocalesItems = Pofile.parse(
+      fs.readFileSync(filename, 'utf8'),
+    ).items;
     const lang = filename.match(/locales\/(.*)\/LC_MESSAGES\//)[1];
     const result = {};
 
@@ -268,22 +269,14 @@ function main({ addonMode }) {
   console.log('Synchronizing messages to po files...');
   syncPoByPot();
   if (!addonMode) {
-    // Detect if I'm in a project or in Volto itself
     let AddonConfigurationRegistry;
     try {
-      if (fs.existsSync(`${projectRootPath}/node_modules/@plone/volto`)) {
-        // We are in a project
-        AddonConfigurationRegistry = require(path.join(
+      AddonConfigurationRegistry = require(
+        path.join(
           projectRootPath,
-          '/node_modules/@plone/volto/packages/registry/addon-registry',
-        ));
-      } else {
-        // We are in Volto itself
-        AddonConfigurationRegistry = require(path.join(
-          projectRootPath,
-          '/packages/registry/addon-registry',
-        ));
-      }
+          '/node_modules/@plone/registry/src/addon-registry',
+        ),
+      );
     } catch {
       console.log(
         chalk.red(
