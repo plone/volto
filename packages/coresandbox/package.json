@@ -1,5 +1,5 @@
 {
-  "name": "@plone/coresandbox",
+  "name": "@plone/volto-coresandbox",
   "description": "Volto Core Sandbox addon - Contains configuration and elements that are not present in vanilla Volto",
   "maintainers": [
     {
@@ -8,6 +8,7 @@
       "url": "http://plone.org"
     }
   ],
+  "main": "src/index.js",
   "license": "MIT",
   "version": "1.0.0",
   "repository": {

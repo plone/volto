@@ -214,6 +214,7 @@ class AddonConfigurationRegistry {
   }
 
   initPackagesFolder() {
+    // TODO: Monorepo => this can be spared, not needed anymore
     const registerPackageFolder = (packageFolderName, packageInfo) => {
       const packageName = packageInfo.package;
       if (this.packages[packageName]) return;
@@ -294,6 +295,7 @@ class AddonConfigurationRegistry {
   }
 
   initAddonFromEnvVar(name) {
+    // TODO: Monorepo => this can be spared, not needed anymore
     // First lookup in the packages folder, local to the root (either vanilla Volto or project)
     const normalizedAddonName = name.split(':')[0];
     const testingPackagePath = `${this.projectRootPath}/packages/${normalizedAddonName}/src`;

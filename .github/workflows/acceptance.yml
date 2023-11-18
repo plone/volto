@@ -480,9 +480,6 @@ jobs:
       - name: Build packages
         run: pnpm build:registry
 
-      ## node install
-      - run: yarn --immutable
-
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
         env:

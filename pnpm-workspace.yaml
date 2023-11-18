@@ -6,6 +6,5 @@ packages:
   - 'apps/plone/src/addons/*'
   # exclude packages that are inside test directories
   - '!**/test/**'
-  - '!packages/coresandbox'
   - '!packages/volto-guillotina'
   - '!packages/volto-testing'

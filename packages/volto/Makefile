@@ -285,11 +285,11 @@ start-test-acceptance-server-coresandbox test-acceptance-server-coresandbox: ## 
 
 .PHONY: start-test-acceptance-frontend-coresandbox
 start-test-acceptance-frontend-coresandbox: ## Start the CoreSandbox Acceptance Frontend Fixture
-	ADDONS=coresandbox RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod
+	ADDONS=@plone/volto-coresandbox RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod
 
 .PHONY: start-test-acceptance-frontend-coresandbox-dev
 start-test-acceptance-frontend-coresandbox-dev: ## Start the CoreSandbox Acceptance Frontend Fixture in dev mode
-	ADDONS=coresandbox RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm start
+	ADDONS=@plone/volto-coresandbox RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm start
 
 .PHONY: test-acceptance-coresandbox
 test-acceptance-coresandbox: ## Start CoreSandbox Cypress Acceptance Tests
@@ -311,7 +311,7 @@ start-test-acceptance-server-multilingual test-acceptance-server-multilingual: #
 
 .PHONY: start-test-acceptance-frontend-multilingual
 start-test-acceptance-frontend-multilingual: ## Start the Multilingual Acceptance Frontend Fixture
-	ADDONS=coresandbox:multilingualFixture RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod
+	ADDONS=@plone/volto-coresandbox:multilingualFixture RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod
 
 .PHONY: test-acceptance-multilingual
 test-acceptance-multilingual: ## Start Multilingual Cypress Acceptance Tests
@@ -333,7 +333,7 @@ start-test-acceptance-server-seamless-multilingual test-acceptance-server-seamle
 
 .PHONY: start-test-acceptance-frontend-seamless-multilingual
 start-test-acceptance-frontend-seamless-multilingual: ## Start the Seamless Multilingual Acceptance Frontend Fixture
-	ADDONS=coresandbox:multilingualFixture pnpm build && pnpm start:prod
+	ADDONS=@plone/volto-coresandbox:multilingualFixture pnpm build && pnpm start:prod
 
 .PHONY: test-acceptance-seamless-multilingual
 test-acceptance-seamless-multilingual: ## Start Seamless Multilingual Cypress Acceptance Tests
@@ -356,7 +356,7 @@ start-test-acceptance-server-workingcopy test-acceptance-server-workingcopy : ##
 
 .PHONY: start-test-acceptance-frontend-workingcopy
 start-test-acceptance-frontend-workingcopy: ## Start the WorkingCopy Acceptance Frontend Fixture
-	ADDONS=coresandbox:workingCopyFixture RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod
+	ADDONS=@plone/volto-coresandbox:workingCopyFixture RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod
 
 .PHONY: test-acceptance-workingcopy
 test-acceptance-workingcopy: ## Start WorkingCopy Cypress Acceptance Tests

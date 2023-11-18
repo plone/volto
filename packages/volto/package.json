@@ -418,6 +418,7 @@
     "@types/react-test-renderer": "18.0.1",
     "@typescript-eslint/eslint-plugin": "6.7.0",
     "@typescript-eslint/parser": "6.7.0",
+    "@plone/volto-coresandbox": "workspace:*",
     "babel-loader": "9.1.0",
     "bundlewatch": "0.3.3",
     "full-icu": "1.4.0",
