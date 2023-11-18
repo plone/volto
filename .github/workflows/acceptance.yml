@@ -45,9 +45,9 @@ jobs:
           path: ~/.cache/Cypress
           key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
 
-      - name: Install Dependencies
+      - name: Install Cypress if not in cache
         if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
-        run: pnpm cypress install
+        run: make cypress-install
 
       - run: pnpm i
 

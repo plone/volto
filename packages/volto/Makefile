@@ -169,6 +169,10 @@ storybook-build:
 patches:
 	/bin/bash patches/patchit.sh > /dev/null 2>&1 ||true
 
+.PHONY: cypress-install
+cypress-install:
+	$(NODEBIN)/cypress install
+
 ##### Release
 
 .PHONY: corepackagebump
