@@ -928,6 +928,7 @@ jobs:
         run: |
           yalc add @plone/volto --no-pure
           yalc add @plone/scripts --no-pure
+          yalc add @plone/volto-slate --no-pure
         working-directory: ${{env.project-directory}}
       - name: Install a yalc'ed version of the current Volto in the project - install
         # run: yarn config set -H enableImmutableInstalls false && yarn
