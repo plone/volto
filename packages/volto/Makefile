@@ -238,6 +238,7 @@ start-test-acceptance-server test-acceptance-server: ## Start Test Acceptance Se
 
 .PHONY: start-test-acceptance-frontend
 start-test-acceptance-frontend: ## Start the Core Acceptance Frontend Fixture
+	pwd
 	RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod
 
 .PHONY: test-acceptance
