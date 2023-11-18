@@ -649,6 +649,9 @@ importers:
 
   packages/scripts:
     dependencies:
+      '@babel/core':
+        specifier: ^7.0.0
+        version: 7.23.3
       babel-plugin-react-intl:
         specifier: 5.1.17
         version: 5.1.17
@@ -667,6 +670,12 @@ importers:
       git-url-parse:
         specifier: ^13.1.0
         version: 13.1.1
+      glob:
+        specifier: 7.1.6
+        version: 7.1.6
+      lodash:
+        specifier: 4.17.21
+        version: 4.17.21
       mrs-developer:
         specifier: '*'
         version: 2.1.1
