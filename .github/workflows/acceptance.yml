@@ -1033,14 +1033,14 @@ jobs:
 
       - name: Install a yalc'ed version of the current Volto in the project - publish
         run: |
-          yalc publish packages/volto
+          yalc publish packages/types
+          (cd packages/registry && yalc add @plone/types --no-pure && yalc publish)
           yalc publish packages/scripts
           yalc publish packages/volto-slate
+          (cd packages/volto && yalc add @plone/volto-slate --no-pure && yalc add @plone/registry --no-pure && yalc add @plone/volto-slate --no-pure && yalc publish)
       - name: Install a yalc'ed version of the current Volto in the project - add
         run: |
           yalc add @plone/volto --no-pure
-          yalc add @plone/scripts --no-pure
-          yalc add @plone/volto-slate --no-pure
         working-directory: ${{env.project-directory}}
       - name: Install a yalc'ed version of the current Volto in the project - install
         # run: yarn config set -H enableImmutableInstalls false && yarn
