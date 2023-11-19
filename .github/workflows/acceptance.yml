@@ -1046,9 +1046,6 @@ jobs:
         run: yarn config set -H enableImmutableInstalls false && yarn
         working-directory: ${{env.project-directory}}
 
-      - run: ls -la my-volto-app/.yalc/@plone/volto/.yalc/@plone || true
-      - run: ls -la my-volto-app/node_modules/@plone/volto/.yalc/@plone || true
-
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
         env:
