@@ -11,15 +11,10 @@
     "i18n": "turbo run i18n --filter @plone/volto",
     "i18n:ci": "turbo run i18n:ci --filter @plone/volto",
     "prettier": "prettier --check '{apps,packages}/**/*.{js,jsx,ts,tsx}'",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "lint-staged": "lint-staged",
-    "_prepare": "husky install",
-    "husky:uninstall": "husky uninstall"
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
     "eslint": "^8.48.0",
-    "husky": "^8.0.3",
-    "lint-staged": "^15.1.0",
     "prettier": "3.0.3",
     "tsconfig": "workspace:*",
     "turbo": "latest",
