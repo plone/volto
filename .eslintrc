@@ -36,6 +36,7 @@
           ["@plone/volto", "./src"],
           ["@plone/volto-slate", "./packages/volto-slate/src"],
           ["@plone/registry", "./packages/registry/src"],
+          ["@plone/types", "./packages/types"],
           ["@package", "./src"],
           ["@root", "./src"]
         ],
