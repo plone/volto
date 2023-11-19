@@ -1,9 +1,7 @@
 const path = require('path');
-const AddonConfigurationRegistry = require('../packages/registry/addon-registry');
-const {
-  buildDependencyGraph,
-  getAddonsLoaderChain,
-} = AddonConfigurationRegistry;
+const AddonConfigurationRegistry = require('../../registry/src/addon-registry');
+const { buildDependencyGraph, getAddonsLoaderChain } =
+  AddonConfigurationRegistry;
 
 describe('AddonConfigurationRegistry - Project', () => {
   jest.mock(

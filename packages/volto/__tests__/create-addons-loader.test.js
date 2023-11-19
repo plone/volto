@@ -1,7 +1,7 @@
 const fs = require('fs');
 const transform = require('@babel/core').transform;
 
-const getLoader = require('../packages/registry/create-addons-loader');
+const getLoader = require('../../registry/src/create-addons-loader');
 
 describe('create-addons-loader code generation', () => {
   test('no addon creates simple loader', () => {
@@ -150,7 +150,6 @@ function makeAddonLoader(addons, load = true) {
   );
 
   const loaderPath = getLoader(addons);
-
   transpile(loaderPath);
 
   if (load) {

@@ -1,6 +1,6 @@
 const path = require('path');
-const AddonConfigurationRegistry = require('../packages/registry/addon-registry');
-const WebpackRelativeResolver = require('../webpack-plugins/webpack-relative-resolver');
+const AddonConfigurationRegistry = require('../../registry/src/addon-registry');
+const WebpackRelativeResolver = require('../../volto/webpack-plugins/webpack-relative-resolver');
 
 const base = path.join(__dirname, '..');
 const makeRegistry = () => {
