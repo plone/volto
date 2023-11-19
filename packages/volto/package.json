@@ -71,9 +71,6 @@
     ]
   },
   "jest": {
-    "modulePathIgnorePatterns": [
-      "api"
-    ],
     "transform": {
       "^.+\\.js(x)?$": "babel-jest",
       "^.+\\.ts(x)?$": "ts-jest",
@@ -115,11 +112,8 @@
       "__DEV__": true
     },
     "testMatch": [
-      "<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs,ts,tsx}",
-      "<rootDir>/src/**/?(*.)(spec|test).{js,jsx,mjs,ts,tsx}",
       "<rootDir>/__tests__/**/?(*.)(spec|test).{js,jsx,mjs,ts,tsx}",
-      "<rootDir>/packages/volto-slate/src/**/?(*.)(spec|test).{js,jsx,mjs,ts,tsx}",
-      "<rootDir>/packages/registry/src/**/?(*.)(spec|test).{js,jsx,mjs,ts,tsx}"
+      "<rootDir>/../**/?(*.)(spec|test).{js,jsx,mjs,ts,tsx}"
     ]
   },
   "stylelint": {

@@ -41,7 +41,12 @@ jobs:
 
       # node test
       - run: pnpm --filter @plone/volto i18n:ci
-      - run: pnpm --filter @plone/volto test
+
+      - name: Run unit tests @plone/registry
+        run: pnpm --filter @plone/registry test
+
+      - name: Run unit tests Volto
+        run: pnpm --filter @plone/volto test
 
       # Bundlewatch
       # - run: yarn build

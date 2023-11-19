@@ -43,6 +43,7 @@
   "scripts": {
     "watch": "parcel watch",
     "build": "parcel build",
+    "test": "vitest",
     "dry-release": "release-it --dry-run",
     "release": "release-it",
     "release-major-alpha": "release-it major --preRelease=alpha",
