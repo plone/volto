@@ -181,13 +181,13 @@ describe('IdWidget', () => {
     const { container } = render(
       <Provider store={store}>
         <IdWidget
-          id="my%field#$#"
-          title="My field with special characters"
+          id="my-field"
+          title="My field"
           fieldSet="default"
           onChange={() => {}}
           onBlur={() => {}}
           onClick={() => {}}
-          value="Test id"
+          value="my%field#$#"
         />
       </Provider>,
     );
