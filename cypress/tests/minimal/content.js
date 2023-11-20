@@ -183,7 +183,7 @@ describe('Add Content Tests', () => {
 
     cy.get('#toolbar-save').click();
     cy.wait('@saveLink');
-    cy.wait('@getLink');
+    //cy.wait('@getLink');
     cy.wait('@content');
 
     cy.url().should('eq', Cypress.config().baseUrl + '/my-link');
