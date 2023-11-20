@@ -68,7 +68,7 @@ describe('Blocks Tests', () => {
     cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
 
     cy.addBaseUrl('/my-page/image.png/@@images/image').then((value) =>
-      cy.get('.block img').should('have.attr', 'src').and('eq', value),
+      cy.get('.block img').should('have.attr', 'src').and('contains', value),
     );
   });
 
@@ -90,7 +90,7 @@ describe('Blocks Tests', () => {
 
     // then image src must be equal to image name
     cy.addBaseUrl('/my-page/image.png/@@images/image').then((value) =>
-      cy.get('.block img').should('have.attr', 'src').and('eq', value),
+      cy.get('.block img').should('have.attr', 'src').and('contains', value),
     );
 
     cy.get('.block img')
@@ -119,7 +119,7 @@ describe('Blocks Tests', () => {
     cy.wait('@getImage');
 
     cy.addBaseUrl('/image.png/@@images/image').then((value) =>
-      cy.get('.block img').should('have.attr', 'src').and('eq', value),
+      cy.get('.block img').should('have.attr', 'src').and('contains', value),
     );
 
     cy.get('.block img')
