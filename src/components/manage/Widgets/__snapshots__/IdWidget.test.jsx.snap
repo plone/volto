@@ -270,7 +270,7 @@ exports[`IdWidget renders an id widget with special characters 1`] = `
               id="field-my-field"
               name="my-field"
               type="text"
-              value="Test id"
+              value="my%field#$#"
             />
           </div>
           <div
