@@ -54,6 +54,10 @@ export const messages = defineMessages({
     defaultMessage:
       'Input must be valid url (www.something.com or http(s)://www.something.com)',
   },
+  isValidId: {
+    id: 'id',
+    defaultMessage: 'Invalid short name',
+  },
   cancel: {
     id: 'Cancel',
     defaultMessage: 'Cancel',

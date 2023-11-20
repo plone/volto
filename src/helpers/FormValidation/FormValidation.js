@@ -129,6 +129,27 @@ const widgetValidation = {
         intlFunc,
       ),
   },
+  id: {
+    minLength: (value, itemObj, intlFunc) =>
+      isMinPropertyValid(
+        value.length,
+        itemObj.minLength,
+        'minLength',
+        intlFunc,
+      ),
+    maxLength: (value, itemObj, intlFunc) =>
+      isMaxPropertyValid(
+        value.length,
+        itemObj.maxLength,
+        'maxLength',
+        intlFunc,
+      ),
+    isValid: (value, itemObj, intlFunc) => {
+      const idRegex = /^[.a-z0-9_-]*$/;
+      const isValid = value !== undefined ? idRegex.test(value) : true;
+      return !isValid ? intlFunc(messages.isValidId) : null;
+    },
+  },
   number: {
     isNumber: (value, itemObj, intlFunc) => {
       const floatRegex = /^[+-]?\d+(\.\d+)?$/;
@@ -254,8 +275,12 @@ const validateFieldsPerFieldset = (
 
   map(schema.properties, (field, fieldId) => {
     const fieldWidgetType = field.widget || field.type;
-    const widgetValidationCriteria = widgetValidation[fieldWidgetType]
-      ? Object.keys(widgetValidation[fieldWidgetType])
+    const widgetValidationCriteria = widgetValidation[
+      fieldId === 'id' ? fieldId : fieldWidgetType
+    ]
+      ? Object.keys(
+          widgetValidation[fieldId === 'id' ? fieldId : fieldWidgetType],
+        )
       : [];
     let fieldData = formData[fieldId];
     // test each criterion ex maximum, isEmail, isUrl, maxLength etc
@@ -264,11 +289,9 @@ const validateFieldsPerFieldset = (
         const errorMessage =
           fieldData === undefined || fieldData === null
             ? null
-            : widgetValidation[fieldWidgetType][widgetCriterion](
-                fieldData,
-                field,
-                formatMessage,
-              );
+            : widgetValidation[fieldId === 'id' ? fieldId : fieldWidgetType][
+                widgetCriterion
+              ](fieldData, field, formatMessage);
         return errorMessage;
       })
       .filter((item) => !!item);
