@@ -1,6 +1,7 @@
 {
   "extends": ["react-app", "prettier", "plugin:jsx-a11y/recommended"],
   "plugins": ["prettier", "react-hooks", "jsx-a11y"],
+  "root": true,
   "env": {
     "es6": true,
     "browser": true,
@@ -30,20 +31,19 @@
     "react/react-in-jsx-scope": "off"
   },
   "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
     "import/resolver": {
-      "alias": {
-        "map": [
-          ["@plone/volto", "./src"],
-          ["@plone/volto-slate", "../volto-slate/src"],
-          ["@plone/registry", "../registry/src"],
-          ["@plone/types", "../types"],
-          ["@package", "./src"],
-          ["@root", "./src"]
-        ],
-        "extensions": [".js", ".jsx", ".ts", ".tsx", ".json"]
-      },
-      "babel-plugin-root-import": {
-        "rootPathSuffix": "src"
+      "typescript": {
+        "alwaysTryTypes": true, // always try to resolve types under `<root>@types` directory even it doesn"t contain any source code, like `@types/unist`
+
+        // use an array of glob patterns
+        "project": [
+          "packages/*/tsconfig.json",
+          "./tsconfig.json"
+          // "other-packages/*/tsconfig.json",
+        ]
       }
     },
     "import/core-modules": ["load-volto-addons"],

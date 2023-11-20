@@ -1,5 +1,5 @@
 {
-  "eslint.workingDirectories": [{ "mode": "auto" }],
+  // "eslint.workingDirectories": [{ "mode": "auto" }],
   "workbench.colorCustomizations": {
     "activityBar.activeBackground": "#a9dcfc",
     "activityBar.background": "#a9dcfc",

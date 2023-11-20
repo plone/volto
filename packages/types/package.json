@@ -26,14 +26,14 @@
     "types"
   ],
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "main": "dist/main.js",
+    "module": "dist/module.js",
+    "types": "dist/types.d.ts"
   },
-  "types": "index.ts",
-  "targets": {
-    "main": {
-      "includeNodeModules": false
-    }
-  },
+  "source": "index.ts",
+  "main": "index.js",
+  "typings": "index.ts",
   "scripts": {
     "watch": "parcel watch",
     "build": "parcel build",

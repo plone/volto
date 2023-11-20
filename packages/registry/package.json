@@ -29,12 +29,14 @@
     "config"
   ],
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "main": "dist/main.js",
+    "module": "dist/module.js",
+    "types": "dist/types.d.ts"
   },
   "source": "src/index.ts",
-  "main": "dist/main.js",
-  "module": "dist/module.js",
-  "types": "dist/types.d.ts",
+  "main": "src/index.js",
+  "types": "src/index.ts",
   "targets": {
     "main": {
       "includeNodeModules": false
