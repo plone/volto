@@ -160,6 +160,11 @@ class IdWidget extends Component {
    */
   handleChange({ target }) {
     this.fieldValidation(target.value);
+    
+    // If error not empty, don't call onChange
+    if (this.state.error.length > 0) {
+      return;
+    }
     this.props.onChange(
       this.props.id,
       target.value === '' ? undefined : target.value,
