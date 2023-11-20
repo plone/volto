@@ -164,4 +164,35 @@ describe('IdWidget', () => {
     await waitFor(() => {});
     expect(container).toMatchSnapshot();
   });
+  test('renders an id widget with special characters', async () => {
+    const store = mockStore({
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+      querystring: {
+        indexes: {},
+      },
+    });
+    config.settings = {
+      reservedIds: ['login'],
+    };
+
+    const { container } = render(
+      <Provider store={store}>
+        <IdWidget
+          id="my%field#$#"
+          title="My field with special characters"
+          fieldSet="default"
+          onChange={() => {}}
+          onBlur={() => {}}
+          onClick={() => {}}
+          value="Test id"
+        />
+      </Provider>,
+    );
+
+    await waitFor(() => {});
+    expect(container).toMatchSnapshot();
+  });
 });
