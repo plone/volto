@@ -10,10 +10,12 @@ export const prefixPath = function (req, res, next) {
   }
 };
 
-export default function () {
+const prefixMiddleware = () => {
   const middleware = express.Router({ strict: true });
 
   middleware.get('/', prefixPath);
   middleware.id = 'prefixPath';
   return middleware;
-}
+};
+
+export default prefixMiddleware;

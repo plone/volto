@@ -15,7 +15,7 @@ exports[`renders a file view component 1`] = `
     Hi
   </p>
   <a
-    className={null}
+    className="external"
     href="file:///preview.pdf"
     rel="noopener noreferrer"
     target="_blank"
