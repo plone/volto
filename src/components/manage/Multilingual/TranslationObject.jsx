@@ -1,8 +1,3 @@
-/**
- * Add container.
- * @module components/manage/Add/Add
- */
-
 import React, { useEffect, useState } from 'react';
 import { map } from 'lodash';
 import { defineMessages, useIntl } from 'react-intl';
@@ -15,7 +10,8 @@ import {
   Api,
   flattenToAppURL,
   langmap,
-  normalizeLanguageName,
+  toGettextLang,
+  toReactIntlLang,
 } from '@plone/volto/helpers';
 import { createBrowserHistory } from 'history';
 const messages = defineMessages({
@@ -25,11 +21,6 @@ const messages = defineMessages({
   },
 });
 
-/**
- * TranslationObject class.
- * @class TranslationObject
- * @extends Component
- */
 const TranslationObject = ({
   translationObject,
   schema,
@@ -55,9 +46,9 @@ const TranslationObject = ({
       setLoadingLocale(true);
       let lang =
         config.settings.supportedLanguages[Object.keys(locales).length];
-      const langFileName = normalizeLanguageName(lang);
+      const langFileName = toGettextLang(lang);
       import('@root/../locales/' + langFileName + '.json').then((locale) => {
-        setLocales({ ...locales, [lang]: locale.default });
+        setLocales({ ...locales, [toReactIntlLang(lang)]: locale.default });
         setLoadingLocale(false);
       });
     }

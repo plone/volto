@@ -3,10 +3,10 @@ on:
   pull_request:
     types: [assigned, opened, synchronize, reopened, labeled, unlabeled]
     branches:
-      - master
+      - main
 
 env:
-  node-version: 16.x
+  node-version: 18.x
 
 jobs:
   towncrier:
@@ -25,8 +25,8 @@ jobs:
           # Fetch the pull request' base branch so towncrier will be able to
           # compare the current branch with the base branch.
           # Source: https://github.com/actions/checkout/#fetch-all-branches.
-          git fetch --no-tags origin master
-          towncrier check --compare-with origin/master
+          git fetch --no-tags origin main
+          towncrier check --compare-with origin/main
         env:
           BASE_BRANCH: ${{ github.base_ref }}
         if: github.event_name == 'pull_request'

@@ -16,7 +16,9 @@ module.exports = {
       if (
         fs.existsSync(`${projectRootPath}/${process.env.RAZZLE_JEST_CONFIG}`)
       ) {
-        const jestConfig = require(`${projectRootPath}/${process.env.RAZZLE_JEST_CONFIG}`);
+        const jestConfig = require(
+          `${projectRootPath}/${process.env.RAZZLE_JEST_CONFIG}`,
+        );
         config = { ...config, ...jestConfig };
       }
       // if not, use the sensible default, `jest.config.js`

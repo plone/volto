@@ -1,23 +1,22 @@
 describe('Working Copy Tests - Applying', () => {
   beforeEach(() => {
+    cy.intercept('GET', `/**/*?expand*`).as('content');
+    cy.intercept('GET', '/**/Document').as('schema');
     // given a logged in editor and a page in edit mode
-    cy.visit('/');
     cy.autologin();
     cy.createContent({
       contentType: 'Document',
       contentId: 'document',
       contentTitle: 'Test document',
     });
-    cy.visit('/document');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('document');
+    cy.visit('/');
+    cy.wait('@content');
+
+    cy.navigate('/document');
+    cy.wait('@content');
   });
 
   it('Basic apply operation', function () {
-    cy.intercept('GET', '/**/document').as('content');
     cy.intercept('PATCH', '*').as('save');
     // As a user I create a working copy from a document
     cy.get('#toolbar-more').click();
@@ -51,7 +50,6 @@ describe('Working Copy Tests - Applying', () => {
   });
 
   it('Apply operation from baseline is not possible', function () {
-    cy.intercept('GET', '/**/document').as('content');
     cy.intercept('PATCH', '*').as('save');
     // As a user I create a working copy from a document
     cy.get('#toolbar-more').click();

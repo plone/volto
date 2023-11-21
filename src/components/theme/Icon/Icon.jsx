@@ -44,8 +44,8 @@ const Icon = ({
   ariaHidden,
 }) => (
   <svg
-    xmlns={name.attributes && name.attributes.xmlns}
-    viewBox={name.attributes && name.attributes.viewBox}
+    xmlns={name?.attributes?.xmlns}
+    viewBox={name?.attributes?.viewBox}
     style={{
       height: size,
       width: 'auto',

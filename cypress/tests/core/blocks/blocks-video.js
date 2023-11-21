@@ -1,6 +1,9 @@
 describe('Blocks Tests', () => {
   beforeEach(() => {
+    cy.intercept('GET', `/**/*?expand*`).as('content');
+    cy.intercept('GET', '/**/Document').as('schema');
     cy.intercept('GET', '/**/my-page/@types/*').as('schema');
+    cy.intercept('PATCH', '/**/my-page').as('save');
 
     // given a logged in editor and a page in edit mode
     cy.autologin();
@@ -10,19 +13,13 @@ describe('Blocks Tests', () => {
       contentTitle: 'My Page',
     });
     cy.visit('/my-page');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('my-page');
+    cy.wait('@content');
+
     cy.navigate('/my-page/edit');
     cy.wait('@schema');
   });
 
   it('Add Video Block with YouTube Video', () => {
-    cy.intercept('PATCH', '/**/my-page').as('save');
-    cy.intercept('GET', '/**/my-page').as('content');
-
     // when I create a video block with a YouTube video
     cy.getSlate().click();
     cy.get('.ui.basic.icon.button.block-add-button').click();
@@ -45,9 +42,6 @@ describe('Blocks Tests', () => {
   });
 
   it('Add Video Block with YouTube Video and Placeholder', () => {
-    cy.intercept('PATCH', '/**/my-page').as('save');
-    cy.intercept('GET', '/**/my-page').as('content');
-
     // when I create a video block with a YouTube video
     cy.getSlate().click();
     cy.get('.ui.basic.icon.button.block-add-button').click();
@@ -59,9 +53,7 @@ describe('Blocks Tests', () => {
     cy.get(' #field-preview_image')
       .last()
       .click()
-      .type(
-        'https://github.com/plone/volto/raw/master/logos/volto-colorful.png',
-      );
+      .type('https://github.com/plone/volto/raw/main/logos/volto-colorful.png');
     cy.get('#toolbar-save').click();
 
     cy.wait('@save');
@@ -74,14 +66,11 @@ describe('Blocks Tests', () => {
       .should('have.attr', 'src')
       .and(
         'match',
-        /https:\/\/github.com\/plone\/volto\/raw\/master\/logos\/volto-colorful.png/,
+        /https:\/\/github.com\/plone\/volto\/raw\/main\/logos\/volto-colorful.png/,
       );
   });
 
   it('Add Video Block with Vimeo Video', () => {
-    cy.intercept('PATCH', '/**/my-page').as('save');
-    cy.intercept('GET', '/**/my-page').as('content');
-
     // when I create a video block with a Vimeo video
     cy.getSlate().click();
     cy.get('.ui.basic.icon.button.block-add-button').click();
@@ -104,9 +93,6 @@ describe('Blocks Tests', () => {
   });
 
   it('Add Video Block with MP4 Video', () => {
-    cy.intercept('PATCH', '/**/my-page').as('save');
-    cy.intercept('GET', '/**/my-page').as('content');
-
     // when I create a video block with an MP4 video
     cy.getSlate().click();
     cy.get('.ui.basic.icon.button.block-add-button').click();

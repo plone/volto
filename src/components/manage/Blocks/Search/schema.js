@@ -37,8 +37,7 @@ const messages = defineMessages({
     defaultMessage: 'Show search button?',
   },
   showSearchButtonDescription: {
-    id:
-      'The button presence disables the live search, the query is issued when you press ENTER',
+    id: 'The button presence disables the live search, the query is issued when you press ENTER',
     defaultMessage:
       'The button presence disables the live search, the query is issued when you press ENTER',
   },
@@ -83,10 +82,18 @@ const messages = defineMessages({
     defaultMessage: 'Hide facet?',
   },
   hideFacetDescription: {
-    id:
-      'Hidden facets will still filter the results if proper parameters are passed in URLs',
+    id: 'Hidden facets will still filter the results if proper parameters are passed in URLs',
     defaultMessage:
       'Hidden facets will still filter the results if proper parameters are passed in URLs',
+  },
+  advancedFacetTitle: {
+    id: 'Advanced facet?',
+    defaultMessage: 'Advanced facet?',
+  },
+  advancedFacetDescription: {
+    id: 'Advanced facets are initially hidden and displayed on demand',
+    defaultMessage:
+      'Advanced facets are initially hidden and displayed on demand',
   },
   facetWidget: {
     id: 'Facet widget',
@@ -131,7 +138,7 @@ const FacetSchema = ({ intl }) => ({
     {
       id: 'default',
       title: 'Default',
-      fields: ['title', 'field', 'type', 'hidden'],
+      fields: ['title', 'field', 'type', 'hidden', 'advanced'],
     },
   ],
   properties: {
@@ -170,17 +177,25 @@ const FacetSchema = ({ intl }) => ({
       default: false,
       description: intl.formatMessage(messages.hideFacetDescription),
     },
+    advanced: {
+      type: 'boolean',
+      title: intl.formatMessage(messages.advancedFacetTitle),
+      default: false,
+      description: intl.formatMessage(messages.advancedFacetDescription),
+    },
     type: {
       title: intl.formatMessage(messages.facetWidget),
-      choices: config.blocks.blocksConfig.search.extensions.facetWidgets.types.map(
-        ({ id, title }) => [
-          id,
-          `${intl.formatMessage({ id: id, defaultMessage: title })}`,
-        ],
-      ),
-      defaultValue: config.blocks.blocksConfig.search.extensions.facetWidgets.types.find(
-        ({ isDefault }) => isDefault,
-      ).id,
+      choices:
+        config.blocks.blocksConfig.search.extensions.facetWidgets.types.map(
+          ({ id, title }) => [
+            id,
+            `${intl.formatMessage({ id: id, defaultMessage: title })}`,
+          ],
+        ),
+      defaultValue:
+        config.blocks.blocksConfig.search.extensions.facetWidgets.types.find(
+          ({ isDefault }) => isDefault,
+        ).id,
     },
   },
   required: ['field'],

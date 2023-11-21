@@ -1,4 +1,4 @@
-import { slateBeforeEach } from '../../../support/e2e';
+import { slateBeforeEach } from '../../../support/commands';
 
 describe('Block Tests: external text containing html contents/tags ', () => {
   beforeEach(slateBeforeEach);
@@ -42,6 +42,6 @@ is simply dummy text of the printing and typesetting industry.
     // Save
     cy.toolbarSave();
 
-    cy.get('[id="page-document"] p a').should('have.length', 1);
+    cy.get('[id="page-document"] p a').should('have.length', 0);
   });
 });

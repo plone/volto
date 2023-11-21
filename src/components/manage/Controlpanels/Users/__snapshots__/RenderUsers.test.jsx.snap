@@ -8,6 +8,10 @@ exports[`UsersControlpanelUser renders a UsersControlpanelUser component 1`] = `
     className="fullname"
   >
     Test User
+     
+    (
+    testuser
+    )
   </td>
   <td
     className=""
@@ -25,7 +29,7 @@ exports[`UsersControlpanelUser renders a UsersControlpanelUser component 1`] = `
         readOnly={true}
         tabIndex={0}
         type="checkbox"
-        value="testuser.Member"
+        value="testuser&role=Member"
       />
       <label />
     </div>
@@ -46,7 +50,7 @@ exports[`UsersControlpanelUser renders a UsersControlpanelUser component 1`] = `
         readOnly={true}
         tabIndex={0}
         type="checkbox"
-        value="testuser.Reader"
+        value="testuser&role=Reader"
       />
       <label />
     </div>
@@ -67,7 +71,7 @@ exports[`UsersControlpanelUser renders a UsersControlpanelUser component 1`] = `
         readOnly={true}
         tabIndex={0}
         type="checkbox"
-        value="testuser.Manager"
+        value="testuser&role=Manager"
       />
       <label />
     </div>
@@ -97,6 +101,7 @@ exports[`UsersControlpanelUser renders a UsersControlpanelUser component 1`] = `
       >
         <div
           className="item"
+          id="delete-user-button"
           onClick={[Function]}
           role="option"
         >

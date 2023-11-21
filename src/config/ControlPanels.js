@@ -18,6 +18,7 @@ import settingsSVG from '@plone/volto/icons/settings.svg';
 import rulesSVG from '@plone/volto/icons/content-existing.svg';
 import undoControlPanelSVG from '@plone/volto/icons/undo-control-panel.svg';
 import linkSVG from '@plone/volto/icons/link.svg';
+import relationsSVG from '@plone/volto/icons/ahead.svg';
 
 export const controlPanelsIcons = {
   default: settingsSVG,
@@ -40,6 +41,7 @@ export const controlPanelsIcons = {
   rules: rulesSVG,
   undo: undoControlPanelSVG,
   aliases: linkSVG,
+  relations: relationsSVG,
 };
 
 export const filterControlPanels = (controlpanels) => {
@@ -73,7 +75,6 @@ export const filterControlPanelsSchema = (controlpanel) => {
       'toolbar_position',
       'toolbar_logo',
       'default_page',
-      'site_logo',
       'site_favicon',
       'site_favicon_mimetype',
       'exposeDCMetaTags',
