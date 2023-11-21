@@ -1,0 +1,1 @@
+When you add a page, only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are enforced for the short name. Also after creating the page, you can now edit it. Previously you could enter invalid characters and create the page, and then you could not edit it. @pranayjoshi
