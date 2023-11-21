@@ -16,7 +16,8 @@
 .ui.wrapper > .ui.inner > * {
   display: block;
   max-width: @maxWidth !important;
-  transition: width 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045),
+  transition:
+    width 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045),
     margin-left 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045),
     margin-right 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 }

@@ -12,7 +12,7 @@ const messages = defineMessages({
   hideFilters: { id: 'Hide filters', defaultMessage: 'Hide filters' },
 });
 
-const showFacet = (index) => {
+const defaultShowFacet = (index) => {
   const { values } = index;
   return index
     ? hasNonValueOperation(index.operations || []) ||
@@ -91,7 +91,11 @@ const Facets = (props) => {
 
           // TODO :handle changing the type of facet (multi/nonmulti)
 
-          const { view: FacetWidget, stateToValue } = resolveExtension(
+          const {
+            view: FacetWidget,
+            stateToValue,
+            showFacet = defaultShowFacet,
+          } = resolveExtension(
             'type',
             search.extensions.facetWidgets.types,
             facetSettings,
@@ -99,9 +103,8 @@ const Facets = (props) => {
 
           let value = stateToValue({ facetSettings, index, selectedValue });
 
-          const {
-            rewriteOptions = (name, options) => options,
-          } = search.extensions.facetWidgets;
+          const { rewriteOptions = (name, options) => options } =
+            search.extensions.facetWidgets;
 
           return FacetWrapper && (isEditMode || showFacet(index)) ? (
             <FacetWrapper

@@ -229,9 +229,8 @@ class Form extends Component {
     let activeIndex = 0;
 
     if (requestError && prevProps.requestError !== requestError) {
-      errors = FormValidation.giveServerErrorsToCorrespondingFields(
-        requestError,
-      );
+      errors =
+        FormValidation.giveServerErrorsToCorrespondingFields(requestError);
       activeIndex = FormValidation.showFirstTabWithErrors({
         errors,
         schema: this.props.schema,

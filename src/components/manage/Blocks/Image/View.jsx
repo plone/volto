@@ -1,22 +1,19 @@
-/**
- * View image block.
- * @module components/manage/Blocks/Image/View
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { UniversalLink } from '@plone/volto/components';
 import cx from 'classnames';
-import { withBlockExtensions } from '@plone/volto/helpers';
-import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers';
+import {
+  flattenToAppURL,
+  isInternalURL,
+  withBlockExtensions,
+} from '@plone/volto/helpers';
+import config from '@plone/volto/registry';
 
-/**
- * View image block class.
- * @class View
- * @extends Component
- */
-export const View = ({ data, detached }) => {
+export const View = ({ className, data, detached, properties }) => {
   const href = data?.href?.[0]?.['@id'] || '';
+
+  const Image = config.getComponent({ name: 'Image' }).component;
+
   return (
     <p
       className={cx(
@@ -26,21 +23,33 @@ export const View = ({ data, detached }) => {
           detached,
         },
         data.align,
+        className,
       )}
     >
       {data.url && (
         <>
           {(() => {
             const image = (
-              <img
+              <Image
                 className={cx({
                   'full-width': data.align === 'full',
                   large: data.size === 'l',
                   medium: data.size === 'm',
                   small: data.size === 's',
                 })}
+                item={
+                  data.image_scales
+                    ? {
+                        '@id': data.url,
+                        image_field: data.image_field,
+                        image_scales: data.image_scales,
+                      }
+                    : undefined
+                }
                 src={
-                  isInternalURL(data.url)
+                  data.image_scales
+                    ? undefined
+                    : isInternalURL(data.url)
                     ? // Backwards compat in the case that the block is storing the full server URL
                       (() => {
                         if (data.size === 'l')
@@ -57,8 +66,10 @@ export const View = ({ data, detached }) => {
                       })()
                     : data.url
                 }
+                sizes={config.blocks.blocksConfig.image.getSizes(data)}
                 alt={data.alt || ''}
                 loading="lazy"
+                responsive={true}
               />
             );
             if (href) {

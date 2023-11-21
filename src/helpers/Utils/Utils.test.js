@@ -14,6 +14,7 @@ import {
   safeWrapper,
   slugify,
   cloneDeepSchema,
+  normalizeString,
 } from './Utils';
 import moment from 'moment';
 import deepFreeze from 'deep-freeze';
@@ -383,6 +384,18 @@ describe('Utils tests', () => {
       deepFreeze(array);
       const result = reorderArray(array, 2, 0);
       expect(result).toEqual(['c', 'a', 'b']);
+    });
+  });
+
+  describe('normalizeString', () => {
+    it('normalizeString no diacritics', () => {
+      const str = `my string without diacritics`;
+      expect(normalizeString(str)).toBe('my string without diacritics');
+    });
+
+    it('normalizeString with diacritics', () => {
+      const str = `my Ü Ú é à ñ string with diacritics`;
+      expect(normalizeString(str)).toBe('my U U e a n string with diacritics');
     });
   });
 

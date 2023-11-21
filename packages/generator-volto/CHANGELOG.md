@@ -8,6 +8,107 @@
 
 <!-- towncrier release notes start -->
 
+## 8.0.2 (2023-11-16)
+
+### Bugfix
+
+- Added `postcss-less` package to the default add-on, since the builds were complaining @sneridagh [#5408](https://github.com/plone/volto/issues/5408)
+
+## 8.0.1 (2023-11-15)
+
+### Bugfix
+
+- Update `yeoman-generator` to match changes in latest `yo` breaking version @sneridagh
+  This fixes the errors in the generator if a fresh version of yo (5) is installed [#5406](https://github.com/plone/volto/issues/5406)
+
+## 8.0.0 (2023-11-06)
+
+### Breaking
+
+- Clean up the generator boilerplate in favor of the recommended add-on driven approach, and add documentation for how to develop a Volto project as an add-on. @sneridagh [#5297](https://github.com/plone/volto/issues/5297)
+
+## 7.0.1 (2023-09-30)
+
+### Internal
+
+- Update to volto-testing final in generator @sneridagh [#5248](https://github.com/plone/volto/issues/5248)
+
+
+## 7.0.0 (2023-09-30)
+
+### Feature
+
+- Update generators to Volto 17 final. @sneridagh [#5247](https://github.com/plone/volto/issues/5247)
+
+
+## 7.0.0-alpha.12 (2023-09-30)
+
+### Feature
+
+- Update Plone and Volto versions in generators @sneridagh [#5246](https://github.com/plone/volto/issues/5246)
+
+
+## 7.0.0-alpha.11 (2023-09-29)
+
+### Bugfix
+
+- Fix ESlint parser in addon generator boilerplate @sneridagh [#5243](https://github.com/plone/volto/issues/5243)
+
+
+## 7.0.0-alpha.10 (2023-09-27)
+
+### Breaking
+
+- Update the generators dependencies for linters @sneridagh [#5216](https://github.com/plone/volto/issues/5216)
+
+### Feature
+
+- Add ignores in addon generator and workspaces info @sneridagh [#5235](https://github.com/plone/volto/issues/5235)
+
+
+## 7.0.0-alpha.9 (2023-09-20)
+
+### Bugfix
+
+- Remove JSON files from being linted by ESlint, since it's not its purpose @sneridagh [#5194](https://github.com/plone/volto/issues/5194)
+
+
+## 7.0.0-alpha.8 (2023-09-18)
+
+### Bugfix
+
+- Add missing empty lock to acceptance generator addon folder @sneridagh [#5193](https://github.com/plone/volto/issues/5193)
+
+
+## 7.0.0-alpha.7 (2023-09-18)
+
+### Feature
+
+- TypeScript support in core @sneridagh @ninanoleto [#4462](https://github.com/plone/volto/issues/4462)
+
+### Bugfix
+
+- Fix addon i18n local command when executed outside the scope of a Volto project. @sneridagh [#5181](https://github.com/plone/volto/issues/5181)
+
+
+## 7.0.0-alpha.6 (2023-09-14)
+
+### Bugfix
+
+- Fix addon i18n local command when executed outside the scope of a Volto project. @sneridagh [#5181](https://github.com/plone/volto/issues/5181)
+
+
+## 7.0.0-alpha.5 (2023-09-13)
+
+### Feature
+
+- Add dockerized approach to add-on generator @sneridagh [#5167](https://github.com/plone/volto/issues/5167)
+
+### Bugfix
+
+- Fix whitespace in empty locales created by the generator. @davisagli [#4737](https://github.com/plone/volto/issues/4737)
+
+
 ## 7.0.0-alpha.4 (2023-04-13)
 
 ### Bugfix
