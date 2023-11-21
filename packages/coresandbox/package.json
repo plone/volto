@@ -24,5 +24,10 @@
     "volto",
     "plone",
     "react"
-  ]
+  ],
+  "peerDependencies": {
+    "react-intl": "3.8.0",
+    "react-redux": "7.2.4",
+    "semantic-ui-react": "2.0.3"
+  }
 }
