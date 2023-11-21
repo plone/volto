@@ -21,8 +21,7 @@ const messages = defineMessages({
     defaultMessage: "This is a reserved name and can't be used",
   },
   invalidCharacters: {
-    id:
-      'Only 7-bit bytes characters are allowed. Cannot contain characters like: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: REQUEST, ., .., "". Cannot contain new lines.',
+    id: 'Only 7-bit bytes characters are allowed. Cannot contain characters like: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: REQUEST, ., .., "". Cannot contain new lines.',
     defaultMessage:
       'Only 7-bit bytes characters are allowed. Cannot contain characters like: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: REQUEST, ., .., "". Cannot contain new lines.',
   },
