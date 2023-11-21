@@ -9,6 +9,7 @@ export interface GetContentResponse {
   blocks: {
     [k in string]: {
       '@id': string;
+      '@type': string;
     } & Record<string, unknown>;
   };
   blocks_layout: {
