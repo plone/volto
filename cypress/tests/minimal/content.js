@@ -62,6 +62,7 @@ describe('Add Content Tests', () => {
 
   it('As editor I can add an image', function () {
     cy.intercept('POST', '*').as('saveImage');
+    cy.intercept('GET', '**/image.png/@@images/image-*').as('getImage');
     // when I add an image
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-image').click();
@@ -85,6 +86,7 @@ describe('Add Content Tests', () => {
     cy.get('#toolbar-save').click();
     cy.wait('@saveImage');
     cy.wait('@content');
+    cy.wait('@getImage');
 
     cy.url().should('eq', Cypress.config().baseUrl + '/image.png');
 
