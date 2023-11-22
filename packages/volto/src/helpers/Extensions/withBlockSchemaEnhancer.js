@@ -4,7 +4,6 @@ import { useIntl } from 'react-intl';
 import { find, isEmpty } from 'lodash';
 import config from '@plone/volto/registry';
 import { cloneDeepSchema } from '@plone/volto/helpers/Utils/Utils';
-import { useSelector } from 'react-redux';
 
 const messages = defineMessages({
   variation: {
@@ -263,8 +262,7 @@ export const applySchemaEnhancer = ({
  * - adds the variation selection input (as a choice widget)
  */
 export const withVariationSchemaEnhancer = (FormComponent) => (props) => {
-  const { formData, schema: originalSchema } = props;
-  const properties = useSelector((state) => state?.content?.data);
+  const { formData, schema: originalSchema, properties } = props;
   const intl = useIntl();
 
   const blocksConfig = getBlocksConfig(props);
