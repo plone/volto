@@ -3,6 +3,7 @@ import {
   applySchemaEnhancer,
   composeSchema,
   addStyling,
+  getVariations,
 } from './withBlockSchemaEnhancer';
 
 import config from '@plone/volto/registry';
@@ -389,5 +390,71 @@ describe('addStyling', () => {
       },
       required: [],
     });
+  });
+});
+
+describe('getVariations', () => {
+  const schema = {
+    fieldsets: [{ fields: [] }],
+    properties: {},
+  };
+  const formData = { '@type': 'listing' };
+  const properties = { showVariationIfSet: true };
+
+  it('Get the variations', () => {
+    const variations = [
+      {
+        id: 'default',
+        isDefault: true,
+        title: 'Default',
+      },
+      {
+        id: 'alternatevariation',
+        isDefault: false,
+        title: 'Alternate variation',
+      },
+    ];
+    const result = getVariations({ variations, formData, schema, properties });
+    expect(result).toStrictEqual(variations);
+  });
+  it('Get the variations with conditionals', () => {
+    const variations = [
+      {
+        id: 'default',
+        isDefault: true,
+        title: 'Default',
+      },
+      {
+        id: 'alternatevariation',
+        isDefault: false,
+        title: 'Alternate variation',
+        enabled: false,
+      },
+    ];
+    const result = getVariations({ variations, formData, schema, properties });
+    expect(result).toStrictEqual([
+      {
+        id: 'default',
+        isDefault: true,
+        title: 'Default',
+      },
+    ]);
+  });
+  it('Get the variations with conditionals given functions', () => {
+    const variations = [
+      {
+        id: 'default',
+        isDefault: true,
+        title: 'Default',
+      },
+      {
+        id: 'alternatevariation',
+        isDefault: false,
+        title: 'Alternate variation',
+        enabled: (properties) => properties.showVariationIfSet,
+      },
+    ];
+    const result = getVariations({ variations, formData, schema, properties });
+    expect(result).toStrictEqual(variations);
   });
 });
