@@ -4,6 +4,7 @@ import { useIntl } from 'react-intl';
 import { find, isEmpty } from 'lodash';
 import config from '@plone/volto/registry';
 import { cloneDeepSchema } from '@plone/volto/helpers/Utils/Utils';
+import { useSelector } from 'react-redux';
 
 const messages = defineMessages({
   variation: {
@@ -36,6 +37,20 @@ function getBlocksConfig(props) {
   }
 
   return blocks?.blocksConfig;
+}
+
+export function getVariations({ variations, schema, formData, properties }) {
+  return variations.filter((variation) => {
+    if (variation.enabled !== undefined) {
+      if (typeof variation.enabled === 'function') {
+        const variationFunc = variation.enabled;
+        variationFunc({ schema, formData, properties });
+      } else {
+        return variation.enabled;
+      }
+    }
+    return true;
+  });
 }
 
 /**
@@ -249,6 +264,7 @@ export const applySchemaEnhancer = ({
  */
 export const withVariationSchemaEnhancer = (FormComponent) => (props) => {
   const { formData, schema: originalSchema } = props;
+  const properties = useSelector((state) => state?.content?.data);
   const intl = useIntl();
 
   const blocksConfig = getBlocksConfig(props);
@@ -263,11 +279,18 @@ export const withVariationSchemaEnhancer = (FormComponent) => (props) => {
     blocksConfig,
   });
 
+  const resolvedVariations = getVariations({
+    variations,
+    schema,
+    formData,
+    properties,
+  });
+
   if (variations.length > 1) {
     addExtensionFieldToSchema({
       schema,
       name: 'variation',
-      items: variations,
+      items: resolvedVariations,
       intl,
       title: messages.variation,
       insertFieldToOrder: _addField,
