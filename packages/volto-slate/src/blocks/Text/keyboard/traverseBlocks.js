@@ -77,5 +77,5 @@ export function traverseBlocks(opts) {
   const { event } = opts;
   event.preventDefault();
   // return event.shiftKey ? goUp(opts) : goDown(opts);
-  return true;
+  return false;
 }
