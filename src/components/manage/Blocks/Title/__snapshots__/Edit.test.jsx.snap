@@ -2,6 +2,7 @@
 
 exports[`renders edit blocks renders an edit title block component 1`] = `
 <div
+  aria-label="Content title"
   aria-multiline="false"
   autoCapitalize="false"
   autoCorrect="false"

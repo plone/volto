@@ -17,6 +17,10 @@ const messages = defineMessages({
     id: 'Type the title…',
     defaultMessage: 'Type the title…',
   },
+  editable_title: {
+    id: 'Content title',
+    defaultMessage: 'Content title',
+  },
 });
 
 function usePrevious(value) {
@@ -153,6 +157,7 @@ export const TitleBlockEdit = (props) => {
         renderElement={renderElement}
         onFocus={handleFocus}
         aria-multiline="false"
+        aria-label={intl.formatMessage(messages.editable_title)}
       ></Editable>
     </Slate>
   );
