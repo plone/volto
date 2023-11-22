@@ -2444,9 +2444,9 @@ msgid "Ok"
 msgstr "Ok"
 
 #: components/manage/Widgets/IdWidget
-# defaultMessage: Only 7-bit bytes characters are allowed. Cannot contain characters like: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: REQUEST, ., .., "". Cannot contain new lines.
-msgid "Only 7-bit bytes characters are allowed. Cannot contain characters like: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: REQUEST, ., .., "". Cannot contain new lines."
-msgstr "Somente caracteres de bytes de 7 bits são permitidos. Não pode conter caracteres como: <, >, &, #, /, ?, ou outros que são ilegais em URLs. Não pode começar com: _, aq_, @@, ++. Não pode terminar com __. Não pode ser: REQUEST, ., .., "". Não pode conter novas linhas."
+# defaultMessage: Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines.
+msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines."
+msgstr ""
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar

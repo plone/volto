@@ -21,9 +21,9 @@ const messages = defineMessages({
     defaultMessage: "This is a reserved name and can't be used",
   },
   invalidCharacters: {
-    id: 'Only 7-bit bytes characters are allowed. Cannot contain characters like: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: REQUEST, ., .., "". Cannot contain new lines.',
+    id: 'Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines.',
     defaultMessage:
-      'Only 7-bit bytes characters are allowed. Cannot contain characters like: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: REQUEST, ., .., "". Cannot contain new lines.',
+      'Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines.',
   },
 });
 
@@ -142,7 +142,7 @@ class IdWidget extends Component {
     // Check invalid characters
     if (
       // eslint-disable-next-line no-control-regex
-      !/^(?!\+\+)(?!@@)(?!.*REQUEST)(?!aq_)(?!.*__)(?!_)(?!((^|\/)\.\.?($|\/)|^"\s*"$))(?:(?![\r\n<>/?&#\x00-\x1F\x7F])['\x00-\x7F\u0080-\uFFFF. _])*$/.test(
+      !/^(?!\+\+)(?!@@)(?!.*request)(?!.*contributors)(?!aq_)(?!.*__)(?!_)(?!((^|\/)\.\.?($|\/)|^"\s*"$))(?!.*[A-Z])(?:(?![\r\n<>/?&#\x00-\x1F\x7F])['\x00-\x7F\u0080-\uFFFF. _])*$/.test(
         value,
       )
     ) {
