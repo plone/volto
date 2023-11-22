@@ -332,7 +332,9 @@ This is a major change and should be planned in advance before you install 16.0.
 ```
 
 ```{note}
-Volto 16 is intended to be the long-term support (LTS) version used when Plone 6 Final is released.
+Volto 16 is the version used in Plone 6.0.x.
+Volto 16 has the [same maintenance and support schedule as Plone 6.0](https://plone.org/download/release-schedule).
+
 Although `draftJS` text block deployments are now deprecated, they are supported in Volto 16, will be supported in Volto 17, but will be removed in Volto 18.
 As such, you are strongly encouraged to migrate existing sites that use `draftJS` text blocks to `slate` text blocks.
 
