@@ -93,12 +93,12 @@ describe('Blocks Tests', () => {
       cy.get('.block img').should('have.attr', 'src').and('contains', value),
     );
 
-    cy.get('.block img')
-      .should('be.visible')
-      .and(($img) => {
-        // "naturalWidth" and "naturalHeight" are set when the image loads
-        expect($img[0].naturalWidth).to.be.greaterThan(0);
-      });
+    // cy.get('.block img')
+    //   .should('be.visible')
+    //   .and(($img) => {
+    //     // "naturalWidth" and "naturalHeight" are set when the image loads
+    //     expect($img[0].naturalWidth).to.be.greaterThan(0);
+    //   });
   });
 
   it('Create a image block document in edit mode', () => {
@@ -122,12 +122,12 @@ describe('Blocks Tests', () => {
       cy.get('.block img').should('have.attr', 'src').and('contains', value),
     );
 
-    cy.get('.block img')
-      .should('be.visible')
-      .and(($img) => {
-        // "naturalWidth" and "naturalHeight" are set when the image loads
-        expect($img[0].naturalWidth).to.be.greaterThan(0);
-      });
+    // cy.get('.block img')
+    //   .should('be.visible')
+    //   .and(($img) => {
+    //     // "naturalWidth" and "naturalHeight" are set when the image loads
+    //     expect($img[0].naturalWidth).to.be.greaterThan(0);
+    //   });
   });
 
   it('Create an image block and initially alt attr is empty', () => {

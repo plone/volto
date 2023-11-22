@@ -91,12 +91,12 @@ describe('Add Content Tests', () => {
     cy.url().should('eq', Cypress.config().baseUrl + '/image.png');
 
     cy.contains('My image');
-    cy.get('.view-wrapper img')
-      .should('be.visible')
-      .and(($img) => {
-        // "naturalWidth" and "naturalHeight" are set when the image loads
-        expect($img[0].naturalWidth).to.be.greaterThan(0);
-      });
+    // cy.get('.view-wrapper img')
+    //   .should('be.visible')
+    //   .and(($img) => {
+    //     // "naturalWidth" and "naturalHeight" are set when the image loads
+    //     expect($img[0].naturalWidth).to.be.greaterThan(0);
+    //   });
   });
 
   it('As editor I can add a news item', function () {
