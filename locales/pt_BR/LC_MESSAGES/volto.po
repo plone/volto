@@ -633,6 +633,11 @@ msgstr "Limpar"
 msgid "Clear filters"
 msgstr "Limpar filtros"
 
+#: components/manage/BlockChooser/BlockChooserSearch
+# defaultMessage: Clear search
+msgid "Clear search"
+msgstr "Limpar pesquisa"
+
 #: components/theme/View/ImageView
 # defaultMessage: Click to download full sized image
 msgid "Click to download full sized image"
