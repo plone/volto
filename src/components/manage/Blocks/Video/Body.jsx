@@ -20,6 +20,8 @@ const Body = ({ data, isEditMode }) => {
       if (data.url.match('list')) {
         const matches = data.url.match(/^.*\?list=(.*)|^.*&list=(.*)$/);
         listID = matches[1] || matches[2];
+      } else if (data.url.match('live')) {
+        videoID = data.url.match(/^.*\/live\/(.*)/)[1];
       } else {
         videoID = data.url.match(/.be\//)
           ? data.url.match(/^.*\.be\/(.*)/)[1]
