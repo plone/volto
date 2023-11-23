@@ -1,57 +1,53 @@
 # volto-volto-project
 
-## Introduction
-
-## Development
-
-You can develop an add-on in isolation using the boilerplate already provided by the add-on generator.
-The project is configured to have the current add-on installed and ready to work with.
+You can develop an add-on in isolation using the boilerplate provided by the add-on generator.
+The project is configured with the current add-on installed and ready to work with.
 This is useful to bootstrap an isolated environment that can be used to quickly develop the add-on or for demo purposes.
 It's also useful when testing an add-on in a CI environment.
 
-```{note}
-It's quite similar when you develop a Plone backend add-on in the Python side, and embed a ready to use Plone build (using buildout or pip) in order to develop and test the package.
-```
+This process is similar to when you develop a Plone backend add-on in Python, then embed a ready to use Plone build (using buildout or pip) to develop and test the package.
 
-The dockerized approach performs all these actions in a custom built docker environment:
+The Dockerized approach performs all these actions in a custom built Docker environment:
 
-1. Generates a vanilla project using the official Volto Yo Generator (@plone/generator-volto)
-2. Configures it to use the add-on with the name stated in the `package.json`
-3. Links the root of the add-on inside the created project
+1.  generates a vanilla project using the official Volto Yo Generator (`@plone/generator-volto`)
+2.  configures it to use the add-on with the name stated in the `package.json`
+3.  links the root of the add-on inside the created project
 
-After that you can use the inner dockerized project, and run any standard Volto command for linting, acceptance test or unit tests using Makefile commands provided for your convenience.
+After that you can use the inner Dockerized project, and run any standard Volto command for linting, acceptance test, or unit tests using Makefile commands provided for your convenience.
 
-### Setup the environment
 
-Run once
+## Set up the environment
+
+Run once:
 
 ```shell
 make dev
 ```
 
-which will build and launch the backend and frontend containers.
-There's no need to build them again after doing it the first time unless something has changed from the container setup.
+This will build and launch the backend and frontend containers.
+There's no need to build them again after the first time, unless something has changed from the container setup.
 
-In order to make the local IDE play well with this setup, is it required to run once `yarn` to install locally the required packages (ESlint, Prettier, Stylelint).
-
-Run
+To make your IDE play well with this setup, you must run `yarn` once to install the required packages:
 
 ```shell
 yarn
 ```
 
-### Build the containers manually
 
-Run
+## Development
+
+This section describes various Makefile commands to ease development.
+
+
+### Build the containers manually
 
 ```shell
 make build-backend
 make build-addon
 ```
 
-### Run the containers
 
-Run
+### Run the containers
 
 ```shell
 make start-dev
@@ -59,91 +55,80 @@ make start-dev
 
 This will start both the frontend and backend containers.
 
-### Stop Backend (Docker)
 
-After developing, in order to stop the running backend, don't forget to run:
+### Stop backend (Docker)
 
-Run
+After developing, you should stop the running backend.
 
 ```shell
 make stop-backend
 ```
 
-### Linting
 
-Run
+### Linting
 
 ```shell
 make lint
 ```
 
-### Formatting
 
-Run
+### Formatting
 
 ```shell
 make format
 ```
 
-### i18n
 
-Run
+### i18n
 
 ```shell
 make i18n
 ```
 
-### Unit tests
 
-Run
+### Unit tests
 
 ```shell
 make test
 ```
 
+
 ### Acceptance tests
 
-Run once
+First install requirements to run acceptance tests with the following command.
+Run it only once.
 
 ```shell
 make install-acceptance
 ```
 
-For starting the servers
-
-Run
+The frontend runs in development mode to allow development while writing.
+To start the servers:
 
 ```shell
 make start-test-acceptance-server
 ```
 
-The frontend is run in dev mode, so development while writing tests is possible.
-
-Run
+To run Cypress tests after you finish development:
 
 ```shell
 make test-acceptance
 ```
 
-To run Cypress tests afterwards.
-
-When finished, don't forget to shutdown the backend server.
+Shut down the backend server after you complete development with tests.
 
 ```shell
 make stop-test-acceptance-server
 ```
 
-### Release
 
-Run
+## Release
 
 ```shell
 make release
 ```
 
-For releasing a RC version
-
-Run
+To release a release candidate (rc) version:
 
 ```shell
 make release-rc
