@@ -1,28 +1,33 @@
 ---
 myst:
   html_meta:
-    "description": "Learn how to setup an environment ready to develop Volto core and the basics of the Volto monorepo."
-    "property=og:description": "Learn how to setup an environment ready to develop Volto core and the basics of the Volto monorepo."
-    "property=og:title": "How to develop Volto core"
+    "description": "Learn how to set up an environment to develop Volto core and the basics of the Volto monorepo."
+    "property=og:description": "Learn how to set up an environment to develop Volto core and the basics of the Volto monorepo."
+    "property=og:title": "Develop Volto core"
     "keywords": "pnpm, monorepo, develop, core, Volto, Plone, frontend, typescript"
 ---
 
-# How to develop Volto core
+# Develop Volto core
 
-The Volto core repository has the shape of a monorepo ("mono" meaning 'single' and "repo" being short for 'repository').
+The Volto core repository has the shape of a monorepo, where "mono" means "single" and "repo" is short for "repository".
 This means that several apps and libraries related to each other are stored in the same repository.
 They are managed together but released individually.
-This allows the code to be shared effectively and keep tracking the changes across all of them in a unified way.
-This monorepo uses `pnpm` as a package manager and uses extensively the workspaces feature.
-It's organized in two folders, depending if it's a library (package) or an app.
-They are located respectively in the `packages` or `apps` folder abd they are declared as `pnpm` workspaces.
+This allows the code to be shared effectively, and unifies tracking of changes across all of the apps and libraries.
+
+This monorepo uses pnpm as a package manager, extensively using the workspaces feature.
+It's organized in two folders, depending on whether it's a library (package) or an app.
+They are located in the `packages` or `apps` folder.
+They are declared as pnpm workspaces.
 This means they can be managed from the root, using the package manager `--filter` feature.
 
-For more information about `pnpm` workspaces: [https://pnpm.io/workspaces](https://pnpm.io/workspaces)
+```{seealso}
+For more information about pnpm workspaces, read the [documentation of pnpm workspaces](https://pnpm.io/workspaces).
+```
+
 
 ## Folder layout
 
-```txt
+```text
 (volto-monorepo)/
 ├─ apps/
 │  ├─ plone
@@ -49,19 +54,23 @@ For more information about `pnpm` workspaces: [https://pnpm.io/workspaces](https
 ├─ ...
 ```
 
-## Setup requirements
+## Development requirements
 
-For setting up a Volto core development environment, you need `Node.js` installed in your system. Then, setup the package manager `pnpm`.
-You can install `Node.js` using `brew` or other package installer, but the recommended way is the following, using `nvm`.
+To set up a Volto core development environment, you need Node.js installed in your system.
+Then, set up the package manager pnpm.
+
+We recommend that you install Node.js using nvm.
+Alternatively you can install Node.js using Homebrew or other package installer.
+
 
 ### nvm
 
-The following terminal session commands use `bash` for the shell.
+The following terminal session commands use bash for the shell.
 Adapt them for your flavor of shell.
 
 ```{seealso}
-See the [`nvm` install and update script documentation](https://github.com/nvm-sh/nvm#install--update-script).
-For the `fish` shell, see [`nvm.fish`](https://github.com/jorgebucaran/nvm.fish).
+See the [nvm install and update script documentation](https://github.com/nvm-sh/nvm#install--update-script).
+For the fish shell, see [nvm.fish](https://github.com/jorgebucaran/nvm.fish).
 ```
 
 1.  Create your shell profile, if it does not exist.
@@ -70,7 +79,7 @@ For the `fish` shell, see [`nvm.fish`](https://github.com/jorgebucaran/nvm.fish)
     touch ~/.bash_profile
     ```
 
-2.  Download and run the `nvm` install and update script, and pipe it into `bash`.
+2.  Download and run the nvm install and update script, and pipe it into bash.
 
     ```shell
     curl -o- https://raw.githubusercontent.com/creationix/nvm/v{NVM_VERSION}/install.sh | bash
@@ -83,11 +92,12 @@ For the `fish` shell, see [`nvm.fish`](https://github.com/jorgebucaran/nvm.fish)
     source ~/.bash_profile
     ```
 
-4.  Verify that the `nvm` version is that which you just installed or updated:
+4.  Verify that the nvm version is that which you just installed or updated:
 
     ```shell
     nvm --version
     ```
+
 
 ### Node.js
 
@@ -104,7 +114,8 @@ For the `fish` shell, see [`nvm.fish`](https://github.com/jorgebucaran/nvm.fish)
     node -v
     ```
 
-### Install `pnpm`
+
+### Install pnpm
 
 Using corepack:
 
@@ -118,11 +129,14 @@ or using `npm`:
 npm install -g pnpm
 ```
 
-For more information follow: [https://pnpm.io/installation](https://pnpm.io/installation).
+```{seealso}
+[pnpm installation](https://pnpm.io/installation).
+```
 
-## Setup the environment
 
-Clone the Volto repo and change to the directory of the cloned repository:
+## Set up the environment
+
+Clone the Volto repo, and change your working directory to the cloned repository:
 
 ```shell
 git clone https://github.com/plone/volto.git
@@ -135,30 +149,30 @@ Install dependencies:
 pnpm install
 ```
 
+
 ## Running commands
 
-`pnpm` has the concept of `workspaces`.
-Every package or app located in the `packages` or `apps` folder are declared as a `pnpm` workspace.
-They can be managed using the `pnpm` `--filter` feature, as follows:
+pnpm has the concept of `workspaces`.
+Every package or app located in the `packages` or `apps` folders are declared as a pnpm workspace.
+They can be managed using the pnpm `--filter` feature, with either of the following commands:
 
 ```shell
 pnpm --filter @plone/volto start
 ```
 
-or
-
 ```shell
 pnp --filter @plone/registry build
 ```
+
 
 ## Developing Volto
 
 The Volto core code is located in the `packages/volto` folder.
 
 ````{versionchanged} 18.x.x
-If you are a seasoned Volto core developer, since December 2023, the Volto repository is now a monorepo.
+Since December 2023, the Volto repository is now a monorepo.
 Volto is located now in the `packages/volto` folder.
-You can run all the usual commands from inside that folder, but swapping `yarn` to `pnpm`, since they have similar commands and features.
+You can run all the usual commands from inside that folder, but replacing `yarn` with `pnpm`, since they have similar commands and features.
 For example, to start Volto:
 
 ```shell
@@ -168,9 +182,10 @@ pnpm start
 
 You can also run commands of specific workspaces using the `--filter` feature as shown in the previous section.
 
+
 ## Developing other libraries
 
-If a package is dependent of another package in the monorepo, and it's declared as a workspace, they can be declared as normal in the `package.json` as follows:
+If a package is a dependency of another package in the monorepo, and it's declared as a workspace, they can be declared as usual in the {file}`package.json` as follows:
 
 ```json
 "dependencies": {
@@ -178,8 +193,15 @@ If a package is dependent of another package in the monorepo, and it's declared 
 }
 ```
 
-For more information about `pnpm` workspaces: [https://pnpm.io/workspaces](https://pnpm.io/workspaces)
+```{seealso}
+[pnpm workspaces](https://pnpm.io/workspaces)
+```
+
 
 ## TypeScript
 
-By default, the use of TypeScript is required in Plone frontend libraries, being Volto itself an exception. See {ref}`typescript-policy-in-core-reference`.
+By default, the use of TypeScript is required in Plone frontend libraries, Volto itself being an exception.
+
+```{seealso}
+{ref}`typescript-policy-in-core-label`.
+```
