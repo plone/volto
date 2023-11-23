@@ -259,7 +259,7 @@ describe('Test if different forms of Linking content appear in links and referen
   });
 
   // Test currently disabled as it seems not possible to set an image override on teaser blocks in test setup
-  /*
+
   it('As an Editor I can see if my document is linked somewhere via teaser block', () => {
     cy.createContent({
       contentType: 'Document',
@@ -295,15 +295,15 @@ describe('Test if different forms of Linking content appear in links and referen
               image_field: 'image',
               mime_type: 'text/plain',
               title: 'Document linked',
-              preview_image: [
-                {
-                  '@id': '/image-linked',
-                  '@type': 'Image',
-                  image_field: 'image',
-                  Title: 'Image linked',
-                  Type: 'Image',
-                },
-              ],
+              // preview_image: [
+              //   {
+              //     '@id': '/image-linked',
+              //     '@type': 'Image',
+              //     image_field: 'image',
+              //     Title: 'Image linked',
+              //     Type: 'Image',
+              //   },
+              // ],
             },
           ],
           title: 'Document linked',
@@ -313,14 +313,20 @@ describe('Test if different forms of Linking content appear in links and referen
         return body;
       },
     });
+    cy.visit('document-linking/edit');
+    cy.get('.block.teaser .content').click();
+    cy.get(
+      '.field-wrapper-preview_image > .grid > .stretched > .eight > .objectbrowser-field > .button',
+    ).click();
+    cy.get('.raised > .secondary > .ui > :nth-child(1)').click();
+    cy.get('[aria-label="Select Image that is linked"]').click();
+    cy.get('#toolbar-save').click();
 
     cy.visit('/image-linked/links-to-item');
-    cy.visit('document-linking');
-    // cy.get('tbody > :nth-child(2) > :nth-child(1)').contains(
-    //   'Document that is linking via teaser block',
-    // );
+    cy.get('tbody > :nth-child(2) > :nth-child(1)').contains(
+      'Document that is linking via teaser block',
+    );
   });
-  */
 
   it('As an Editor I can see if my image is linked somewhere via image block', () => {
     cy.createContent({
@@ -352,7 +358,7 @@ describe('Test if different forms of Linking content appear in links and referen
     );
   });
 
-  it('As an Editor I can see if my image is linked somewhere via image block', () => {
+  it('As an Editor I can see if my document is linked somewhere via link in image block', () => {
     cy.createContent({
       contentType: 'Image',
       contentTitle: 'Image that is linked',
