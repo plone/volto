@@ -399,4 +399,61 @@ describe('Test if different forms of Linking content appear in links and referen
       'Document that is linking via image block',
     );
   });
+
+  it.only('As an Editor I can see if my document is linked somewhere via teaser block inside a grid block', () => {
+    cy.createContent({
+      contentType: 'Document',
+      contentTitle: 'Document that is linked',
+      contentId: 'document-linked',
+    });
+
+    cy.createContent({
+      contentType: 'Document',
+      contentTitle: 'Document that is linking via teaser block in grid',
+      contentId: 'document-linking',
+      bodyModifier(body) {
+        body.blocks['abc'] = {
+          '@type': 'gridBlock',
+          blocks: {
+            xyz: {
+              '@type': 'teaser',
+              description: 'linked',
+              styles: {
+                align: 'left',
+              },
+              href: [
+                {
+                  '@id': '/document-linked',
+                  '@type': 'Document',
+                  Description: '',
+                  Title: 'Document linked',
+                  effective: '2023-08-14T22:00:42+00:00',
+                  getObjSize: '0 KB',
+                  hasPreviewImage: null,
+                  head_title: null,
+                  image_field: '',
+                  mime_type: 'text/plain',
+                  title: 'Document linked',
+                },
+              ],
+              title: 'Document linked',
+            },
+          },
+          blocks_layout: {
+            items: ['xyz'],
+          },
+        };
+        body.blocks_layout.items.push('abc');
+
+        return body;
+      },
+    });
+
+    cy.visit('/document-linking');
+
+    cy.visit('/document-linked/links-to-item');
+    cy.get('tbody > :nth-child(2) > :nth-child(1)').contains(
+      'Document that is linking via teaser block',
+    );
+  });
 });
