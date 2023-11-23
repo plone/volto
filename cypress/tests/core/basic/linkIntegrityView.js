@@ -352,7 +352,7 @@ describe('Test if different forms of Linking content appear in links and referen
     );
   });
 
-  it.only('As an Editor I can see if my image is linked somewhere via image block', () => {
+  it('As an Editor I can see if my image is linked somewhere via image block', () => {
     cy.createContent({
       contentType: 'Image',
       contentTitle: 'Image that is linked',
