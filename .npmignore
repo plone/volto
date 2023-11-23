@@ -120,13 +120,10 @@ styleguide.config
 .vscode
 packages/*
 !packages/volto-slate
+!packages/scripts
+!packages/registry
+!packages/types
 .tx
 
 # yarn 3
 .yarn
-.yarn/cache
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions

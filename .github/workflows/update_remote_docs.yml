@@ -3,7 +3,7 @@ name: Trigger build and deploy of Plone 6 documentation
 on:
   push:
     branches:
-      - "master"
+      - "main"
     paths:
       - "docs/*"
 

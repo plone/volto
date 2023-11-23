@@ -8,7 +8,7 @@
     "mocha": true,
     "jasmine": true
   },
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
   "parserOptions": {
     "ecmaVersion": 6,
     "sourceType": "module",
@@ -35,17 +35,42 @@
         "map": [
           ["@plone/volto", "./src"],
           ["@plone/volto-slate", "./packages/volto-slate/src"],
+          ["@plone/registry", "./packages/registry/src"],
+          ["@plone/types", "./packages/types"],
           ["@package", "./src"],
           ["@root", "./src"]
         ],
-        "extensions": [".js", ".jsx", ".json"]
+        "extensions": [".js", ".jsx", ".ts", ".tsx", ".json"]
       },
       "babel-plugin-root-import": {
         "rootPathSuffix": "src"
       }
     },
-    "import/core-modules": ["load-volto-addons"]
+    "import/core-modules": ["load-volto-addons"],
+    "react": {
+      "version": "detect"
+    }
   },
+  "overrides": [
+    {
+      "files": ["**/*.ts", "**/*.tsx"],
+      // "react-app" already loads plugin:@typescript-eslint/eslint-plugin
+      // and it complains on having two different versions around.
+      // Re-add it if at some point, we stop relying on it
+      "extends": ["react-app", "prettier", "plugin:jsx-a11y/recommended"],
+      "plugins": ["prettier", "react-hooks", "jsx-a11y"],
+      "parser": "@typescript-eslint/parser"
+    },
+    {
+      "files": [
+        "**/*.stories.js",
+        "**/*.stories.jsx"
+      ],
+      "rules": {
+        "import/no-anonymous-default-export": "off"
+      }
+    }
+  ],
   "globals": {
     "root": true,
     "__DEVELOPMENT__": true,

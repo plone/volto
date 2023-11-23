@@ -83,18 +83,15 @@ linkcheck_ignore = [
     r"http://localhost",
     r"http://0.0.0.0",
     r"http://127.0.0.1",
-    r"https://www.linode.com/",
-    r"https://github.com/plone/documentation/issues/new/choose",  # requires auth
-    # Ignore specific anchors
+    # Ignore pages that require authentication
+    r"https://github.com/orgs/plone/teams/",  # requires auth
+    r"https://github.com/plone/volto/issues/new/choose",  # requires auth
+    # Ignore github.com pages with anchors
+    r"https://github.com/.*#.*",
+    # Ignore other specific anchors
     r"https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors#Identifying_the_issue",
     r"https://docs.cypress.io/guides/references/migration-guide#Migrating-to-Cypress-version-10-0",
-    r"https://github.com/browserslist/browserslist#queries",
-    r"https://github.com/nodejs/release#release-schedule",
-    r"https://github.com/plone/plone.docker#for-basic-usage",
-    r"https://github.com/plone/plone.rest#cors",
-    r"https://github.com/plone/plone.volto/blob/6f5382c74f668935527e962490b81cb72bf3bc94/src/kitconcept/volto/upgrades.py#L6-L54",
-    r"https://github.com/plone/volto/issues/new/choose",
-    r"https://github.com/tc39/proposals/blob/HEAD/finished-proposals.md#finished-proposals",
+    r"https://www.youtube.com/playlist",  # TODO uncomment after installing sphinxcontrib.youtube
 ]
 linkcheck_anchors = True
 linkcheck_timeout = 10
@@ -107,6 +104,11 @@ spelling_ignore_pypi_package_names = True
 # The suffix of source filenames.
 source_suffix = {
     ".md": "markdown",
+    ".bugfix": "markdown",
+    ".breaking": "markdown",
+    ".documentation": "markdown",
+    ".feature": "markdown",
+    ".internal": "markdown",
 }
 
 # The master toctree document.
@@ -117,9 +119,12 @@ master_doc = "index"
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = [
     "spelling_wordlist.txt",
-    "**/CHANGES.rst",
-    "**/LICENSE.rst",
     "contributing/branch-policy.md",
+]
+
+suppress_warnings = [
+    # "toc.excluded",  # Suppress `WARNING: document isn't included in any toctree`
+    "toc.not_readable",  # Suppress `WARNING: toctree contains reference to nonexisting document 'news*'`
 ]
 
 html_extra_path = [
@@ -178,11 +183,6 @@ ogp_type = "website"
 ogp_custom_meta_tags = [
     '<meta property="og:locale" content="en_US" />',
 ]
-
-
-# -- sphinx_copybutton -----------------------
-copybutton_prompt_text = r"^ {0,2}\d{1,3}"
-copybutton_prompt_is_regexp = True
 
 
 # -- Options for HTML output -------------------------------------------------
