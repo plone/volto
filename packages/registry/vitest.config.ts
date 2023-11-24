@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitest/config';
+import { test, it } from 'vitest';
 
 export default defineConfig({
   test: {
