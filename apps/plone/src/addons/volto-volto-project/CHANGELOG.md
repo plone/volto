@@ -1,9 +1,9 @@
 # Release Notes
 
-<!-- You should *NOT* be adding new change log entries to this file.
-     You should create a file in the news directory instead.
-     For helpful instructions, please see:
-     https://6.docs.plone.org/contributing/index.html?highlight=towncrier#change-log-entry
+<!-- Do *NOT* add new change log entries to this file.
+     Instead create a file in the news directory.
+     For helpful instructions, see:
+     https://6.docs.plone.org/contributing/index.html#change-log-entry
 -->
 
 <!-- towncrier release notes start -->

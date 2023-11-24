@@ -1,9 +1,9 @@
 # @plone/volto-slate Release Notes
 
-<!-- You should *NOT* be adding new change log entries to this file.
-     You should create a file in the news directory instead.
-     For helpful instructions, please see:
-     https://6.docs.plone.org/volto/developer-guidelines/contributing.html#create-a-pull-request
+<!-- Do *NOT* add new change log entries to this file.
+     Instead create a file in the news directory.
+     For helpful instructions, see:
+     https://6.docs.plone.org/contributing/index.html#change-log-entry
 -->
 
 <!-- towncrier release notes start -->

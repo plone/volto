@@ -10,7 +10,8 @@
 
 ## Introduction
 
-[Volto](https://github.com/plone/volto) is a ReactJS-based frontend for the [Plone](https://plone.org) Content Management System. It is the default frontend starting with the Plone 6 release.
+[Volto](https://github.com/plone/volto) is a ReactJS-based frontend for the [Plone](https://plone.org) Content Management System.
+It is the default frontend starting with the Plone 6 release.
 
 [Plone](https://plone.org) is a CMS built on Python with more than 20 years of history and experience.
 
@@ -45,10 +46,10 @@ For links to trainings and videos, see [Other learning resources](https://6.docs
 ## Supported Node.js versions
 
 Volto runs using [Node.js](https://nodejs.org/).
-We recommend using the current LTS version (18.x).
+We recommend using the current LTS version.
 
-- Node.js 20: Supported since Volto 17.
-- Node.js 18 (LTS): Supported since Volto 17.
+- Node.js 20 LTS: Supported since Volto 17.
+- Node.js 18 LTS: Supported since Volto 17.
 - Node.js 16: No longer supported. It was supported from Volto 14 - 16.
 - Node.js 14: No longer supported. It was supported from Volto 8.8.0 - 16.
 - Node.js 12: No longer supported. It was supported from Volto 4 - 15.
@@ -80,9 +81,9 @@ On Plone 6, we recommend using the known good set (KGS) of package versions that
 
 On Plone 5, Volto is currently tested with the following packages pinned to specific versions, and we recommend using the same versions, which are:
 
-- plone.restapi 8.32.6
-- plone.rest 2.0.0
-- plone.volto 4.0.3
+-   `plone.restapi` 8.32.6
+-   `plone.rest` 2.0.0
+-   `plone.volto` 4.0.3
 
 ## Volto in Production
 
