@@ -21,6 +21,7 @@ build
 !.yarn/versions
 
 # Other
+.vscode
 /cache
 .yarn/
 .DS_Store
