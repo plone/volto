@@ -11,7 +11,7 @@ exports[`BlocksChooserSearch renders a BlockChooserSearch component 1`] = `
       style="border-left: 0; height: 2em; padding: 0px;"
     >
       <div
-        class="ui transparent input"
+        class="ui input"
       >
         <input
           aria-label="Search"
