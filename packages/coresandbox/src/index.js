@@ -2,10 +2,8 @@ import ListingBlockVariationTeaserContent from './components/Blocks/Listing/List
 import NewsAndEvents from './components/Views/NewsAndEvents';
 import TestBlockView from './components/Blocks/TestBlock/View';
 import TestBlockEdit from './components/Blocks/TestBlock/Edit';
-import {
-  multipleFieldsetsSchema,
-  SliderSchema as TestBlockSchema,
-} from './components/Blocks/TestBlock/schema';
+import { SliderSchema as TestBlockSchema } from './components/Blocks/TestBlock/schema';
+import { multipleFieldsetsSchema } from './components/Blocks/TestBlock/schema';
 import codeSVG from '@plone/volto/icons/code.svg';
 
 const testBlock = {
