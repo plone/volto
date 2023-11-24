@@ -19,6 +19,10 @@ const messages = defineMessages({
     id: 'Breadcrumbs',
     defaultMessage: 'Breadcrumbs',
   },
+  controlpanel: {
+    id: 'Controlpanel',
+    defaultMessage: 'Controlpanel',
+  },
 });
 
 const BreadcrumbsComponent = ({ pathname }) => {
@@ -28,7 +32,7 @@ const BreadcrumbsComponent = ({ pathname }) => {
   const controlpanelItems = [
     {
       url: '/controlpanel',
-      title: 'Controlpanel',
+      title: intl.formatMessage(messages.controlpanel),
     },
   ];
 
