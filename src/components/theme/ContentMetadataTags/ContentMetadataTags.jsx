@@ -98,7 +98,8 @@ const ContentMetadataTags = (props) => {
           property="twitter:url"
           content={seo_canonical_url || toPublicURL(props.content['@id'])}
         />
-        <meta property="twitter:site" content={'@ericof'} />
+        {/* TODO: Improve SEO backend metadata providers by adding the twitter handler */}
+        {/* <meta property="twitter:site" content={'@my_twitter_handler'} /> */}
         <meta
           property="twitter:title"
           content={opengraph_title || seo_title || title}
