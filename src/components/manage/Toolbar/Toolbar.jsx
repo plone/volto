@@ -73,7 +73,7 @@ const messages = defineMessages({
   },
   expandToolbar: {
     id: 'Expand toolbar',
-    defaultMessage: 'Expand toolbar'
+    defaultMessage: 'Expand toolbar',
   },
   personalInformation: {
     id: 'Personal Information',
