@@ -783,6 +783,11 @@ msgstr "Il tipo di contenuto è stato eliminato"
 msgid "Contents"
 msgstr "Contenuti"
 
+#: components/theme/Breadcrumbs/Breadcrumbs
+# defaultMessage: Controlpanel
+msgid "Controlpanel"
+msgstr ""
+
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Controls
 msgid "Controls"

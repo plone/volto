@@ -800,6 +800,11 @@ msgstr "Type de contenu supprimé"
 msgid "Contents"
 msgstr "Contenus"
 
+#: components/theme/Breadcrumbs/Breadcrumbs
+# defaultMessage: Controlpanel
+msgid "Controlpanel"
+msgstr ""
+
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Controls
 msgid "Controls"

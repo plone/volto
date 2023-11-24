@@ -789,6 +789,11 @@ msgstr "内容类型已删除"
 msgid "Contents"
 msgstr "内容"
 
+#: components/theme/Breadcrumbs/Breadcrumbs
+# defaultMessage: Controlpanel
+msgid "Controlpanel"
+msgstr ""
+
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Controls
 msgid "Controls"

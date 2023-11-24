@@ -791,6 +791,11 @@ msgstr "コンテンツタイプが削除されました"
 msgid "Contents"
 msgstr "コンテンツ"
 
+#: components/theme/Breadcrumbs/Breadcrumbs
+# defaultMessage: Controlpanel
+msgid "Controlpanel"
+msgstr ""
+
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Controls
 msgid "Controls"

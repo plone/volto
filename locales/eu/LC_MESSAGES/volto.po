@@ -790,6 +790,11 @@ msgstr "Elementu-mota ezabatu da"
 msgid "Contents"
 msgstr "Edukiak"
 
+#: components/theme/Breadcrumbs/Breadcrumbs
+# defaultMessage: Controlpanel
+msgid "Controlpanel"
+msgstr ""
+
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Controls
 msgid "Controls"

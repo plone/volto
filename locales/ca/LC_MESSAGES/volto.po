@@ -792,6 +792,11 @@ msgstr "S'ha suprimit el tipus de contingut"
 msgid "Contents"
 msgstr "Continguts"
 
+#: components/theme/Breadcrumbs/Breadcrumbs
+# defaultMessage: Controlpanel
+msgid "Controlpanel"
+msgstr ""
+
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Controls
 msgid "Controls"
