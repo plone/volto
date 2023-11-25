@@ -182,7 +182,7 @@ Array [
       className="toolbar-handler"
     >
       <button
-        aria-label="Shrink toolbar"
+        aria-label="Expand toolbar"
         className=""
         onClick={[Function]}
       />
@@ -376,7 +376,7 @@ Array [
       className="toolbar-handler"
     >
       <button
-        aria-label="Shrink toolbar"
+        aria-label="Expand toolbar"
         className=""
         onClick={[Function]}
       />
