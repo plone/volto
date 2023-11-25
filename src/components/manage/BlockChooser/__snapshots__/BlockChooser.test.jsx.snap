@@ -14,7 +14,7 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
         style="border-left: 0; height: 2em; padding: 0px;"
       >
         <div
-          class="ui transparent input"
+          class="ui input"
         >
           <input
             aria-label="Search"
@@ -353,7 +353,7 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
         style="border-left: 0; height: 2em; padding: 0px;"
       >
         <div
-          class="ui transparent input"
+          class="ui input"
         >
           <input
             aria-label="Search"
