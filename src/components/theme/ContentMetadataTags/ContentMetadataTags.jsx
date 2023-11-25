@@ -1,4 +1,3 @@
-import React from 'react';
 import { toPublicURL, Helmet } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
@@ -16,8 +15,21 @@ const ContentMetadataTags = (props) => {
 
   const getContentImageInfo = () => {
     const { contentMetadataTagsImageField } = config.settings;
-    const image = props.content[contentMetadataTagsImageField];
+    const image_field = props.content[contentMetadataTagsImageField];
+    const preview_image = props.content.preview_image;
+    const preview_image_link = props.content.preview_image_link;
     const { opengraph_image } = props.content;
+    let image = undefined;
+
+    if (opengraph_image !== undefined && opengraph_image) {
+      image = opengraph_image;
+    } else if (preview_image_link !== undefined && preview_image_link) {
+      image = preview_image_link[contentMetadataTagsImageField];
+    } else if (preview_image !== undefined && preview_image) {
+      image = preview_image;
+    } else if (image_field !== undefined && image_field) {
+      image = image_field;
+    }
 
     const contentImageInfo = {
       contentHasImage: false,
@@ -25,10 +37,7 @@ const ContentMetadataTags = (props) => {
       height: null,
       width: null,
     };
-    contentImageInfo.contentHasImage =
-      opengraph_image?.scales?.large?.download ||
-      image?.scales?.large?.download ||
-      false;
+    contentImageInfo.contentHasImage = image?.scales?.large?.download || false;
 
     if (contentImageInfo.contentHasImage && opengraph_image?.scales?.large) {
       contentImageInfo.url = opengraph_image.scales.large.download;
@@ -54,6 +63,7 @@ const ContentMetadataTags = (props) => {
           property="og:title"
           content={opengraph_title || seo_title || title}
         />
+        <meta property="og:type" content={'website'} />
         <meta
           property="og:url"
           content={seo_canonical_url || toPublicURL(props.content['@id'])}
@@ -62,6 +72,12 @@ const ContentMetadataTags = (props) => {
         {contentImageInfo.contentHasImage && (
           <meta
             property="og:image"
+            content={toPublicURL(contentImageInfo.url)}
+          />
+        )}
+        {contentImageInfo.contentHasImage && (
+          <meta
+            property="twitter:image"
             content={toPublicURL(contentImageInfo.url)}
           />
         )}
@@ -78,6 +94,21 @@ const ContentMetadataTags = (props) => {
           />
         )}
         <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          property="twitter:url"
+          content={seo_canonical_url || toPublicURL(props.content['@id'])}
+        />
+        {/* TODO: Improve SEO backend metadata providers by adding the twitter handler */}
+        {/* <meta property="twitter:site" content={'@my_twitter_handler'} /> */}
+        <meta
+          property="twitter:title"
+          content={opengraph_title || seo_title || title}
+        />
+        <meta
+          property="twitter:description"
+          content={seo_description || description}
+        />
+        <meta property="twitter:domain" content={config.settings.publicURL} />
       </Helmet>
     </>
   );
