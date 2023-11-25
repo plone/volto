@@ -17,6 +17,19 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 17.6.0 (2023-11-25)
+
+### Feature
+
+- Use container from component registry in sitemap component and also refactor the class
+  to functional component. @iRohitSingh [#5418](https://github.com/plone/volto/issues/5418)
+- Improvements and completeness of the ContentMetadataTags component @ericof @sneridagh [#5433](https://github.com/plone/volto/issues/5433)
+
+### Bugfix
+
+- Searchbox and clear button inside blocks-chooser with visible focus and fixed the clear button label - @Wagner3UB [#5335](https://github.com/plone/volto/issues/5335)
+- Fix image paths in development mode. @robgietema [#5429](https://github.com/plone/volto/issues/5429)
+
 ## 17.5.0 (2023-11-10)
 
 ### Feature
