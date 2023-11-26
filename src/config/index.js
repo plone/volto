@@ -36,6 +36,7 @@ import { richtextEditorSettings, richtextViewSettings } from './RichTextEditor';
 import applyAddonConfiguration, { addonsInfo } from 'load-volto-addons';
 
 import ConfigRegistry from '@plone/volto/registry';
+import { getSystemInformation, listControlpanels } from '@plone/volto/actions';
 
 import { getSiteAsyncPropExtender } from '@plone/volto/helpers';
 
@@ -53,6 +54,7 @@ const getServerURL = (url) => {
     apiPathURL.port ? `:${apiPathURL.port}` : ''
   }`;
 };
+const prefixPath = process.env.RAZZLE_PREFIX_PATH;
 
 // Sensible defaults for publicURL
 // if RAZZLE_PUBLIC_URL is present, use it
@@ -246,6 +248,48 @@ config.settings.apiExpanders = [
     }),
   },
 ];
+
+if (prefixPath) {
+  const ControlPanelAsyncPropExtender = {
+    path: `${prefixPath}/controlpanel`,
+    extend: (dispatchActions) => {
+      if (
+        dispatchActions.filter(
+          (asyncAction) => asyncAction.key === 'controlpanels',
+        ).length === 0
+      ) {
+        dispatchActions.push({
+          key: 'controlpanels',
+          promise: ({ location, store: { dispatch } }) =>
+            __SERVER__ && dispatch(listControlpanels()),
+        });
+      }
+      return dispatchActions;
+    },
+  };
+  const SystemInfoAsyncPropExtender = {
+    path: `${prefixPath}/controlpanel`,
+    extend: (dispatchActions) => {
+      if (
+        dispatchActions.filter(
+          (asyncAction) => asyncAction.key === 'systemInformation',
+        ).length === 0
+      ) {
+        dispatchActions.push({
+          key: 'systemInformation',
+          promise: ({ location, store: { dispatch } }) =>
+            __SERVER__ && dispatch(getSystemInformation()),
+        });
+      }
+      return dispatchActions;
+    },
+  };
+  config.settings.asyncPropsExtenders = [
+    ...(config.settings.asyncPropsExtenders || []),
+    ControlPanelAsyncPropExtender,
+    SystemInfoAsyncPropExtender,
+  ];
+}
 
 ConfigRegistry.settings = config.settings;
 ConfigRegistry.experimental = config.experimental;
