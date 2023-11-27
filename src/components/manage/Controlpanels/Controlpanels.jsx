@@ -136,7 +136,7 @@ function Controlpanels(props) {
     : [];
   const { filterControlPanels } = config.settings;
 
-  if (controlpanels.length) {
+  if (controlpanels?.length) {
     filteredControlPanels = map(
       concat(filterControlPanels(controlpanels), customcontrolpanels, [
         {

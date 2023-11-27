@@ -20,28 +20,30 @@ jest.mock('./VersionOverview', () =>
 describe('Controlpanels', () => {
   it('renders a controlpanels component', () => {
     const store = mockStore({
-      controlpanels: [
-        {
-          '@id': 'http://localhost:8080/Plone/@controlpanels/date-and-time',
-          group: 'General',
-          title: 'Date and Time',
-        },
-        {
-          '@id': 'http://localhost:8080/Plone/@controlpanels/lang',
-          group: 'General',
-          title: 'Language',
-        },
-        {
-          '@id': 'http://localhost:8080/Plone/@controlpanels/editing',
-          group: 'Content',
-          title: 'Editing',
-        },
-        {
-          '@id': 'http://localhost:8080/Plone/@controlpanels/security',
-          group: 'Security',
-          title: 'test',
-        },
-      ],
+      controlpanels: {
+        controlpanels: [
+          {
+            '@id': 'http://localhost:8080/Plone/@controlpanels/date-and-time',
+            group: 'General',
+            title: 'Date and Time',
+          },
+          {
+            '@id': 'http://localhost:8080/Plone/@controlpanels/lang',
+            group: 'General',
+            title: 'Language',
+          },
+          {
+            '@id': 'http://localhost:8080/Plone/@controlpanels/editing',
+            group: 'Content',
+            title: 'Editing',
+          },
+          {
+            '@id': 'http://localhost:8080/Plone/@controlpanels/security',
+            group: 'Security',
+            title: 'test',
+          },
+        ],
+      },
       reduxAsyncConnect: {
         // Mocked in redux async connect as it isn't fetch client-side.
         controlpanels: [
@@ -86,13 +88,15 @@ describe('Controlpanels', () => {
 
   it('renders an additional control panel', () => {
     const store = mockStore({
-      controlpanels: [
-        {
-          '@id': 'http://localhost:8080/Plone/@controlpanels/security',
-          group: 'Security',
-          title: 'test',
-        },
-      ],
+      controlpanels: {
+        controlpanels: [
+          {
+            '@id': 'http://localhost:8080/Plone/@controlpanels/security',
+            group: 'Security',
+            title: 'test',
+          },
+        ],
+      },
       reduxAsyncConnect: {
         // Mocked in redux async connect as it isn't fetch client-side.
         controlpanels: [
