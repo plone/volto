@@ -783,11 +783,6 @@ msgstr "Il tipo di contenuto è stato eliminato"
 msgid "Contents"
 msgstr "Contenuti"
 
-#: components/theme/Breadcrumbs/Breadcrumbs
-# defaultMessage: Controlpanel
-msgid "Controlpanel"
-msgstr ""
-
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Controls
 msgid "Controls"
@@ -3285,6 +3280,7 @@ msgstr "Amministratore del sito"
 
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Toolbar/PersonalTools
+#: components/theme/Breadcrumbs/Breadcrumbs
 # defaultMessage: Site Setup
 msgid "Site Setup"
 msgstr "Configurazione del sito"

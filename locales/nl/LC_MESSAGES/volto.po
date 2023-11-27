@@ -802,11 +802,6 @@ msgstr ""
 msgid "Contents"
 msgstr "Inhoud"
 
-#: components/theme/Breadcrumbs/Breadcrumbs
-# defaultMessage: Controlpanel
-msgid "Controlpanel"
-msgstr ""
-
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Controls
 msgid "Controls"
@@ -3304,6 +3299,7 @@ msgstr "Sitebeheerder"
 
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Toolbar/PersonalTools
+#: components/theme/Breadcrumbs/Breadcrumbs
 # defaultMessage: Site Setup
 msgid "Site Setup"
 msgstr ""

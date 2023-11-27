@@ -20,8 +20,8 @@ const messages = defineMessages({
     defaultMessage: 'Breadcrumbs',
   },
   controlpanel: {
-    id: 'Controlpanel',
-    defaultMessage: 'Controlpanel',
+    id: 'Site Setup',
+    defaultMessage: 'Site Setup',
   },
 });
 

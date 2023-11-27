@@ -800,11 +800,6 @@ msgstr "Type de contenu supprimé"
 msgid "Contents"
 msgstr "Contenus"
 
-#: components/theme/Breadcrumbs/Breadcrumbs
-# defaultMessage: Controlpanel
-msgid "Controlpanel"
-msgstr ""
-
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Controls
 msgid "Controls"
@@ -3302,6 +3297,7 @@ msgstr "Administration du site"
 
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Toolbar/PersonalTools
+#: components/theme/Breadcrumbs/Breadcrumbs
 # defaultMessage: Site Setup
 msgid "Site Setup"
 msgstr "Configuration du site"
