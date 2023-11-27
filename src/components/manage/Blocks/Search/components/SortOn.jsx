@@ -13,7 +13,6 @@ import { selectTheme, sortOnSelectStyles } from './SelectStyling';
 
 import upSVG from '@plone/volto/icons/sort-up.svg';
 import downSVG from '@plone/volto/icons/sort-down.svg';
-import { de } from '@plone/volto/constants/Languages';
 
 const messages = defineMessages({
   noSelection: {
