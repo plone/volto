@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Breadcrumb, Container, Segment } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
@@ -19,13 +19,30 @@ const messages = defineMessages({
     id: 'Breadcrumbs',
     defaultMessage: 'Breadcrumbs',
   },
+  controlpanel: {
+    id: 'Site Setup',
+    defaultMessage: 'Site Setup',
+  },
 });
 
 const BreadcrumbsComponent = ({ pathname }) => {
   const intl = useIntl();
   const dispatch = useDispatch();
+  const { pathname: realPath } = useLocation();
+  const controlpanelItems = [
+    {
+      url: '/controlpanel',
+      title: intl.formatMessage(messages.controlpanel),
+    },
+  ];
 
-  const items = useSelector((state) => state.breadcrumbs.items, shallowEqual);
+  const items = useSelector(
+    (state) =>
+      realPath.startsWith('/controlpanel')
+        ? controlpanelItems
+        : state.breadcrumbs.items,
+    shallowEqual,
+  );
   const root = useSelector((state) => state.breadcrumbs.root);
 
   useEffect(() => {
