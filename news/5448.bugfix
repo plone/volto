@@ -1,0 +1,1 @@
+Replaced `toNumber` with `parseFloat` to avoid an error when validating the `plone.restapi` version. @shibbu264
