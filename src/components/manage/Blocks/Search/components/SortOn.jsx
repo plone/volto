@@ -13,6 +13,7 @@ import { selectTheme, sortOnSelectStyles } from './SelectStyling';
 
 import upSVG from '@plone/volto/icons/sort-up.svg';
 import downSVG from '@plone/volto/icons/sort-down.svg';
+import { de } from '@plone/volto/constants/Languages';
 
 const messages = defineMessages({
   noSelection: {
@@ -73,7 +74,10 @@ const SortOn = (props) => {
           placeholder={intl.formatMessage(messages.sortOn)}
           styles={sortOnSelectStyles}
           theme={selectTheme}
-          label={intl.formatMessage('Sort by selected option')}
+          label={intl.formatMessage({
+            id: 'sort_by_selected_option',
+            defaultMessage: 'Sort by selected option',
+          })}
           components={{ DropdownIndicator, Option }}
           options={[
             ...sortOnOptions.map((k) => ({
