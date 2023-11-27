@@ -17,6 +17,21 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.3 (2023-11-27)
+
+### Feature
+
+- Use special breadcrumb in control panel @tiberiuichim [#5292](https://github.com/plone/volto/issues/5292)
+
+### Bugfix
+
+- Refactoring the code for extraction of videoDetails from the video URL, adding code for extracting videoDetails from youtube video URLs with '/live/' in its URL which previously used to throw an error and adding jest tests for same. @IshaanDasgupta [#5416](https://github.com/plone/volto/issues/5416)
+- Revert "Improvements and completeness of the ContentMetadataTags component (#5433) @sneridagh [#5449](https://github.com/plone/volto/issues/5449)
+
+### Internal
+
+- Updated yarnhook to 0.6.1 in order to support pnpm 8 @sneridagh [#5444](https://github.com/plone/volto/issues/5444)
+
 ## 18.0.0-alpha.2 (2023-11-25)
 
 ### Feature
