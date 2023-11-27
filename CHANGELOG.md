@@ -17,6 +17,12 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 17.6.1 (2023-11-27)
+
+### Bugfix
+
+- Revert "Improvements and completeness of the ContentMetadataTags component (#5433) @sneridagh [#5450](https://github.com/plone/volto/issues/5450)
+
 ## 17.6.0 (2023-11-25)
 
 ### Feature
