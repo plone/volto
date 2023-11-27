@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 16.27.0 (2023-11-27)
+
+### Feature
+
+- Improvements and completeness of the ContentMetadataTags component @ericof @sneridagh [#5433](https://github.com/plone/volto/issues/5433)
+
 ## 16.26.1 (2023-11-10)
 
 ### Bugfix
