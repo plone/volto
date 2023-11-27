@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a error message for invalid video URL in edit mode 1`] = `
+<div
+  className="video-inner"
+>
+  <div>
+    <div
+      className="ui message"
+    >
+      <center>
+        Please enter a valid URL by deleting the block and adding a new video block.
+      </center>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders a youtube video body component 1`] = `
+<div
+  className="video-inner"
+>
+  <div
+    className="ui 16:9 embed"
+    onClick={[Function]}
+    onKeyPress={[Function]}
+    tabIndex={0}
+  >
+    <i
+      aria-hidden="true"
+      className="play icon"
+      onClick={[Function]}
+    />
+    <img
+      className="placeholder"
+      src="https://img.youtube.com/vi/KwRSRRyuk-Q/sddefault.jpg"
+    />
+  </div>
+</div>
+`;
+
+exports[`renders a youtube video body component in edit mode 1`] = `
+<div
+  className="video-inner"
+>
+  <div
+    className="ui 16:9 embed"
+    onClick={[Function]}
+    onKeyPress={[Function]}
+    tabIndex={0}
+  >
+    <i
+      aria-hidden="true"
+      className="play icon"
+      onClick={[Function]}
+    />
+    <img
+      className="placeholder"
+      src="https://img.youtube.com/vi/KwRSRRyuk-Q/sddefault.jpg"
+    />
+  </div>
+</div>
+`;
+
+exports[`renders invalid video body component with invalid URL 1`] = `
+<div
+  className="video-inner"
+>
+  <div
+    className="invalidVideoFormat"
+  />
+</div>
+`;
