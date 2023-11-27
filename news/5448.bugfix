@@ -1,1 +1,1 @@
-Use `parseFloat` to check the plone.restapi version. @shibbu264
+Replaced `toNumber` with `parseFloat` to avoid an error when validating the `plone.restapi` version. @shibbu264
