@@ -1,7 +1,11 @@
 const path = require('path');
 const chalk = require('chalk');
 const Generator = require('yeoman-generator');
+const _ = require('lodash');
 const utils = require('./utils');
+
+// bring in the deprecated install method from the yeoman-generator/lib/actions/install.js
+_.extend(Generator.prototype, require('yeoman-generator/lib/actions/install'));
 
 const currentDir = path.basename(process.cwd());
 

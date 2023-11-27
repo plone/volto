@@ -36,7 +36,7 @@ export const getAPIResourceWithAuth = (req) =>
     }
 
     const request = superagent
-      .get(`${apiPath}${APISUFIX}${path}`)
+      .get(`${apiPath}${__DEVELOPMENT__ ? '' : APISUFIX}${path}`)
       .maxResponseSize(settings.maxResponseSize)
       .responseType('blob');
     const authToken = req.universalCookies.get('auth_token');
