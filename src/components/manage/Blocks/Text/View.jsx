@@ -1,18 +1,8 @@
-/**
- * View text block.
- * @module components/manage/Blocks/Text/View
- */
-
 import PropTypes from 'prop-types';
 import redraft from 'redraft';
 import React from 'react';
 import config from '@plone/volto/registry';
 
-/**
- * View text block class.
- * @class View
- * @extends Component
- */
 const View = ({ data }) =>
   data.text ? (
     redraft(

@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "17.0.1",
+  "version": "18.0.0-alpha.2",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -32,12 +32,14 @@
       "package": "@plone/volto-slate"
     }
   },
+  "types": "types/index.d.ts",
   "scripts": {
     "postinstall": "make patches",
     "analyze": "BUNDLE_ANALYZE=true razzle build",
     "start": "razzle start",
     "start:coresandbox": "ADDONS=coresandbox razzle start",
     "build": "razzle build --noninteractive",
+    "build:types": "tsc src/**/*.{js,jsx} --declaration --allowJs --emitDeclarationOnly --outDir types --skipLibCheck",
     "prepare": "husky install",
     "test": "razzle test --maxWorkers=50%",
     "test:ci": "CI=true NODE_ICU_DATA=node_modules/full-icu razzle test",
@@ -51,7 +53,7 @@
     "stylelint:fix": "yarn stylelint --fix && yarn stylelint:overrides --fix",
     "lint": "./node_modules/eslint/bin/eslint.js --max-warnings=0 'src/**/*.{js,jsx,ts,tsx,json}'",
     "lint:fix": "./node_modules/eslint/bin/eslint.js --fix 'src/**/*.{js,jsx,ts,tsx,json}'",
-    "i18n": "rm -rf build/messages && NODE_ENV=production i18n",
+    "i18n": "rm -rf build/messages && NODE_ENV=production node packages/scripts/i18n.cjs",
     "i18n:ci": "yarn i18n && git diff -G'^[^\"POT]' --exit-code",
     "typecheck": "tsc --project tsconfig.json --noEmit",
     "dry-release": "release-it --dry-run",
@@ -71,8 +73,7 @@
   },
   "jest": {
     "modulePathIgnorePatterns": [
-      "api",
-      "packages"
+      "api"
     ],
     "transform": {
       "^.+\\.js(x)?$": "babel-jest",
@@ -86,6 +87,8 @@
       "@plone/volto/babel": "<rootDir>/babel.js",
       "@plone/volto/(.*)$": "<rootDir>/src/$1",
       "@plone/volto-slate/(.*)$": "<rootDir>/packages/volto-slate/src/$1",
+      "@plone/registry": "<rootDir>/packages/registry/src",
+      "@plone/registry/(.*)$": "<rootDir>/packages/registry/src/$1",
       "~/config": "<rootDir>/src/config",
       "~/../locales/${lang}.json": "<rootDir>/locales/en.json",
       "(.*)/locales/(.*)": "<rootDir>/locales/$2",
@@ -116,7 +119,8 @@
       "<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs,ts,tsx}",
       "<rootDir>/src/**/?(*.)(spec|test).{js,jsx,mjs,ts,tsx}",
       "<rootDir>/__tests__/**/?(*.)(spec|test).{js,jsx,mjs,ts,tsx}",
-      "<rootDir>/packages/volto-slate/src/**/?(*.)(spec|test).{js,jsx,mjs,ts,tsx}"
+      "<rootDir>/packages/volto-slate/src/**/?(*.)(spec|test).{js,jsx,mjs,ts,tsx}",
+      "<rootDir>/packages/registry/src/**/?(*.)(spec|test).{js,jsx,mjs,ts,tsx}"
     ]
   },
   "prettier": {
@@ -184,10 +188,14 @@
   "release-it": {
     "hooks": {
       "before:bump": [
-        "yarn i18n",
-        "git add locales"
+        "yarn i18n"
       ],
-      "after:bump": "pipx run towncrier build --draft --yes --version ${version} > .changelog.draft && pipx run towncrier build --yes --version ${version} && make corepackagebump VERSION=${version}",
+      "after:bump": [
+        "pipx run towncrier build --draft --yes --version ${version} > .changelog.draft && pipx run towncrier build --yes --version ${version}",
+        "make corepackagebump VERSION=${version}",
+        "make copyreleasenotestodocs",
+        "yarn build:types"
+      ],
       "after:release": "rm .changelog.draft"
     },
     "git": {
@@ -316,7 +324,7 @@
     "moment-locales-webpack-plugin": "1.2.0",
     "object-assign": "4.1.1",
     "pofile": "1.0.10",
-    "postcss": "8.4.13",
+    "postcss": "8.4.31",
     "postcss-flexbugs-fixes": "5.0.2",
     "postcss-less": "6.0.0",
     "postcss-load-config": "3.1.4",
@@ -380,9 +388,9 @@
     "semantic-ui-less": "2.4.1",
     "semantic-ui-react": "2.0.3",
     "serialize-javascript": "3.1.0",
-    "slate": "0.84.0",
-    "slate-hyperscript": "0.81.3",
-    "slate-react": "0.83.2",
+    "slate": "0.100.0",
+    "slate-hyperscript": "0.100.0",
+    "slate-react": "0.98.4",
     "start-server-and-test": "1.14.0",
     "style-loader": "3.3.1",
     "stylelint": "15.10.3",
@@ -448,7 +456,7 @@
     "@typescript-eslint/parser": "6.7.0"
   },
   "volta": {
-    "node": "18.13.0"
+    "node": "20.9.0"
   },
   "packageManager": "yarn@3.2.3"
 }

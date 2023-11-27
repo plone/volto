@@ -17,17 +17,17 @@ Since Volto have its own set of default blocks, you should extend them by adding
 So we add these lines to the `src/config.js`:
 
 ```js
-import MainSliderViewBlock from '@package/components/Blocks/MainSlider/View';
-import MainSliderEditBlock from '@package/components/Blocks/MainSlider/Edit';
+import MainSliderViewBlock from '@root/components/Blocks/MainSlider/View';
+import MainSliderEditBlock from '@root/components/Blocks/MainSlider/Edit';
 import sliderSVG from '@plone/volto/icons/slider.svg';
 
-import SimpleTeaserView from '@package/components/Blocks/SimpleTeaserView';
-import CardTeaserView from '@package/components/Blocks/CardTeaserView';
-import DefaultColumnRenderer from '@package/components/Blocks/DefaultColumnRenderer';
-import NumberColumnRenderer from '@package/components/Blocks/NumberColumnRenderer';
-import ColoredColumnRenderer from '@package/components/Blocks/ColoredColumnRenderer';
+import SimpleTeaserView from '@root/components/Blocks/SimpleTeaserView';
+import CardTeaserView from '@root/components/Blocks/CardTeaserView';
+import DefaultColumnRenderer from '@root/components/Blocks/DefaultColumnRenderer';
+import NumberColumnRenderer from '@root/components/Blocks/NumberColumnRenderer';
+import ColoredColumnRenderer from '@root/components/Blocks/ColoredColumnRenderer';
 
-import CustomSchemaEnhancer from '@package/components/Blocks/CustomSchemaEnhancer';
+import CustomSchemaEnhancer from '@root/components/Blocks/CustomSchemaEnhancer';
 
 [...]
 
@@ -114,7 +114,7 @@ export const blocks = {
 We start by importing both view and edit components of our recently created custom block.
 
 ```{note}
-Notice the `@package` alias.
+Notice the `@root` alias.
 You can use it when importing modules/components from your own project.
 ```
 
@@ -136,6 +136,35 @@ defineMessages({
 ```
 
 Our new block should be ready to use in the editor.
+
+## Common block options
+
+It is a common pattern to use the block configuration to allow customization of a block's behavior or to provide block-specific implementation of various Volto mechanisms.
+Some of these common options are described in the following sections.
+
+### `blockHasValue`
+
+`blockHasValue` returns `true` if the provided block data represents a value for the current block.
+Required for alternate default block types implementations.
+
+```{seealso}
+See also [Settings reference](../configuration/settings-reference).
+```
+
+### `initialValue`
+
+`initialValue` is a function that can be used to get the initial value for a block.
+It has the following signature.
+
+```jsx
+initialValue({id, value, formData, intl}) => newFormData
+```
+
+### `blockSchema`
+
+A must-have for modern Volto blocks, `blockSchema` is a function, or directly the schema object, that returns the schema for the block data.
+Although it's not required, defining the schema enables the block to have its initial value based on the default values declared in the schema.
+
 
 ## Other block options
 

@@ -1,1 +1,0 @@
-Emit a proper URL for the Plone root in a listing, we use the `config.publicURL` for it @tiberiuichim
