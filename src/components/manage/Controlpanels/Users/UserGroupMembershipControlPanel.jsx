@@ -38,7 +38,7 @@ const UserGroupMembershipPanel = () => {
     (state) => state.controlpanels.systeminformation,
   );
   const can_use_group_membership_panel = systeminformation
-    ? toNumber(systeminformation?.plone_restapi_version.slice(0, 4)) >= 8.24
+    ? parseFloat(systeminformation?.plone_restapi_version.slice(0, 4)) >= 8.24
     : false;
   const actions = useSelector((state) => state.actions?.actions ?? {});
   const ploneSetupAction = find(actions.user, {
