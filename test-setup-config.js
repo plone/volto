@@ -10,9 +10,6 @@ import React from 'react';
 import config from '@plone/volto/registry';
 import { loadables } from '@plone/volto/config/Loadables';
 import { nonContentRoutes } from '@plone/volto/config/NonContentRoutes';
-import ToHTMLRenderers, {
-  options as ToHTMLOptions,
-} from '@plone/volto/config/RichTextEditor/ToHTML';
 import {
   extendedBlockRenderMap,
   blockStyleFn,
@@ -47,9 +44,23 @@ const richtextEditorSettings = (props) => {
   };
 };
 
+// we need to do a redefinition here because of circular import issues
+// because draftjs-based components are not really tested, this is basically
+// dummy code.
 const richtextViewSettings = {
-  ToHTMLRenderers,
-  ToHTMLOptions,
+  ToHTMLRenderers: {
+    inline: null,
+    blocks: {
+      'header-two': (children, { keys }) =>
+        children.map((child, i) => (
+          <h2 id={keys[i]} key={keys[i]}>
+            {child}
+          </h2>
+        )),
+    },
+    entities: null,
+  },
+  //ToHTMLOptions,
 };
 
 config.set('settings', {
