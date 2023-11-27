@@ -1,1 +1,1 @@
---changed toNumber to parseFloat in UserGroupMembershipControlPanel and removed ToNumber import @shibbu264
+Use `parseFloat` to check the plone.restapi version. @shibbu264
