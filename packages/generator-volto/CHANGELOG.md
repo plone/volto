@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 8.0.3 (2023-11-25)
+
+### Bugfix
+
+- Bring back deprecated Yeoman install method used for running yarnInstall @ichim-david [#5436](https://github.com/plone/volto/issues/5436)
+
 ## 8.0.2 (2023-11-16)
 
 ### Bugfix
