@@ -53,6 +53,9 @@ importers:
       vitest:
         specifier: ^0.34.6
         version: 0.34.6
+      yarnhook:
+        specifier: 0.6.1
+        version: 0.6.1
 
   apps/plone:
     dependencies:
@@ -15415,7 +15418,6 @@ packages:
 
   /find-parent-dir@0.3.1:
     resolution: {integrity: sha512-o4UcykWV/XN9wm+jMEtWLPlV8RXCZnMhQI6F6OdHeSez7iiJWePw8ijOlskJZMsaQoGR/b7dH6lO02HhaTN7+A==}
-    dev: false
 
   /find-root@1.1.0:
     resolution: {integrity: sha512-NKfW6bec6GfKc0SGx1e07QZY9PE99u0Bft/0rzSD5k3sO/vwkVUpDUKVm5Gpp5Ue3YfShPFTX2070tDs5kB9Ng==}
@@ -28874,6 +28876,14 @@ packages:
       execa: 4.1.0
       find-parent-dir: 0.3.1
     dev: false
+
+  /yarnhook@0.6.1:
+    resolution: {integrity: sha512-dfsDNNDQE+3fh8ugRATeDO/KRSAeDfLcMn9C0tXXOdzEFpycVGsgK87wZpKa2fgJXM1KI94u04K19XrYFK1sig==}
+    hasBin: true
+    dependencies:
+      execa: 4.1.0
+      find-parent-dir: 0.3.1
+    dev: true
 
   /yauzl@2.10.0:
     resolution: {integrity: sha512-p4a9I6X6nu6IhoGmBqAcbJy1mlC4j27vEPZX9F4L4/vZT3Lyq1VkFHw/V/PUcB9Buo+DG3iHkT0x3Qya58zc3g==}

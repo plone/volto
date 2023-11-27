@@ -17,6 +17,30 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.2 (2023-11-25)
+
+### Feature
+
+- Plone type definitions in its own package @sneridagh [#5397](https://github.com/plone/volto/issues/5397)
+- Use container from component registry in sitemap component and also refactor the class
+  to functional component. @iRohitSingh [#5418](https://github.com/plone/volto/issues/5418)
+- Improvements and completeness of the ContentMetadataTags component @ericof @sneridagh [#5433](https://github.com/plone/volto/issues/5433)
+
+### Bugfix
+
+- Searchbox and clear button inside blocks-chooser with visible focus and fixed the clear button label - @Wagner3UB [#5335](https://github.com/plone/volto/issues/5335)
+- Fix image paths in development mode. @robgietema [#5429](https://github.com/plone/volto/issues/5429)
+- Bring back deprecated Yeoman install method used for running yarnInstall @ichim-david [#5436](https://github.com/plone/volto/issues/5436)
+
+### Documentation
+
+- Remove mention of LTS in Volto #4905. @stevepiercy [#4905](https://github.com/plone/volto/issues/4905)
+- Added documentation to contributing. @stevepiercy [#5377](https://github.com/plone/volto/issues/5377)
+- Remove orphans and move branch, version, and support policies into better locations in documentation. @stevepiercy [#5385](https://github.com/plone/volto/issues/5385)
+- Updated Node.js version required for Volto. @Noobham [#5389](https://github.com/plone/volto/issues/5389)
+- Fixed reference link to configuration/settings. @stevepiercy [#5410](https://github.com/plone/volto/issues/5410)
+- JSX is now an official lexer in Pygments. @stevepiercy [#5412](https://github.com/plone/volto/issues/5412)
+
 ## 18.0.0-alpha.1 (2023-11-07)
 
 ### Feature

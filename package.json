@@ -32,7 +32,8 @@
     "tsconfig": "workspace:*",
     "turbo": "latest",
     "typescript": "5.2.2",
-    "vitest": "^0.34.6"
+    "vitest": "^0.34.6",
+    "yarnhook": "0.6.1"
   },
   "workspaces": [
     "apps/*",
