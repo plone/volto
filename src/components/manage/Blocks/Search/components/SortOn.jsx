@@ -73,7 +73,7 @@ const SortOn = (props) => {
           placeholder={intl.formatMessage(messages.sortOn)}
           styles={sortOnSelectStyles}
           theme={selectTheme}
-          label={'Sort by selected option'}
+          label={intl.formatMessage('Sort by selected option')}
           components={{ DropdownIndicator, Option }}
           options={[
             ...sortOnOptions.map((k) => ({
