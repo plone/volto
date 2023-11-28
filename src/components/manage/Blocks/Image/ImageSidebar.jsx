@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { Segment, Button } from 'semantic-ui-react';
 import { useIntl, FormattedMessage, defineMessages } from 'react-intl';
-import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers';
+import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers';
 import { BlockDataForm, Icon, Image } from '@plone/volto/components';
 import { ImageSchema } from './schema';
 import imageSVG from '@plone/volto/icons/image.svg';

@@ -135,7 +135,6 @@ class Edit extends Component {
             alt={altText}
           />
         )}
-
         <SidebarPortal selected={this.props.selected}>
           <LeadImageSidebar {...this.props} />
         </SidebarPortal>

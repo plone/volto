@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+
 import config from '@plone/volto/registry';
 
 import DefaultImageSVG from '@plone/volto/components/manage/Blocks/Listing/default-image.svg';

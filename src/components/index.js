@@ -10,7 +10,6 @@ import loadable from '@loadable/component';
 //  Do not lazy load them, since it has not much sense (they will live in the main chunk)
 // The App and View component are deliberatelly left out of this index.js file!
 // They should be used by Volto and only by Volto internally
-
 export { default as AppExtras } from '@plone/volto/components/theme/AppExtras/AppExtras';
 export { default as Header } from '@plone/volto/components/theme/Header/Header';
 export { default as Logo } from '@plone/volto/components/theme/Logo/Logo';
