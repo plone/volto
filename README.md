@@ -109,9 +109,9 @@ On Plone 6, we recommend using the known good set (KGS) of package versions that
 
 On Plone 5, Volto is currently tested with the following packages pinned to specific versions, and we recommend using the same versions, which are:
 
-- plone.restapi 8.30.0
-- plone.rest 2.0.0a5
-- plone.volto 4.0.0a13
+- plone.restapi 9.2.0
+- plone.rest 3.0.1
+- plone.volto 4.1.0
 
 ## Volto in Production
 
