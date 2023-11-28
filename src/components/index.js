@@ -107,6 +107,7 @@ export History from '@plone/volto/components/manage/History/History';
 export Sharing from '@plone/volto/components/manage/Sharing/Sharing';
 export Rules from '@plone/volto/components/manage/Rules/Rules';
 export Aliases from '@plone/volto/components/manage/Aliases/Aliases';
+export LinksToItem from '@plone/volto/components/manage/LinksToItem/LinksToItem';
 export Workflow from '@plone/volto/components/manage/Workflow/Workflow';
 export Messages from '@plone/volto/components/manage/Messages/Messages';
 export BlockChooser from '@plone/volto/components/manage/BlockChooser/BlockChooser';

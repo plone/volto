@@ -40,7 +40,7 @@ contentIcons
     With this property you can configure Content Types icons.
     Those are visible in Contents view (ex "Folder contents").  The default
     ones are in
-    [config/ContentIcons.jsx](https://github.com/plone/volto/blob/master/src/config/ContentIcons.jsx)
+    [config/ContentIcons.jsx](https://github.com/plone/volto/blob/main/src/config/ContentIcons.jsx)
     and you can extend them in your project's config for custom content types
     using `settings.contentIcons`.
 
@@ -381,6 +381,12 @@ additionalToolbarComponents
 blockSettingsTabFieldsetsInitialStateOpen
     A Boolean, `true` by default.
     The fieldsets in the blocks settings tab start by default as non-collapsed (opened), you can decide to have them collapsed (closed) by default setting this to `false`.
+
+excludeLinksAndReferencesMenuItem
+    A Boolean, `false` by default.
+    The content menu links to the {guilabel}`Links and references` view per default.
+    Exclude this menu item by setting `excludeLinksAndReferencesMenuItem` to `true`.
+    For Volto 16 series it's excluded by default.
 
 excludeLinksAndReferencesMenuItem
     A Boolean, `false` by default.
