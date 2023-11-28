@@ -31,10 +31,10 @@ const messages = defineMessages({
     id: 'Descending',
     defaultMessage: 'Descending',
   },
-  label:{
+  label: {
     id: 'Sort by selected option',
     defaultMessage: 'Sort by selected option',
-  }
+  },
 });
 
 const SortOn = (props) => {
