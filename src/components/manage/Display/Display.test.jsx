@@ -79,4 +79,60 @@ describe('Display', () => {
     await waitFor(() => {});
     expect(container).toMatchSnapshot();
   });
+
+  describe('when layout is an empty string ', () => {
+    it('multiple options ', async () => {
+      const store = mockStore({
+        content: {
+          update: { loaded: true },
+          data: { layout: '', '@type': 'Folder' },
+        },
+        schema: {
+          schema: {
+            layouts: ['summary_view', 'listing_view'],
+          },
+        },
+        intl: {
+          locale: 'en',
+          messages: {},
+        },
+      });
+
+      const { container } = render(
+        <Provider store={store}>
+          <Display pathname="/test" />
+        </Provider>,
+      );
+
+      await waitFor(() => {});
+      expect(container).toMatchSnapshot();
+    });
+
+    it('one option', async () => {
+      const store = mockStore({
+        content: {
+          update: { loaded: true },
+          data: { layout: '', '@type': 'Folder' },
+        },
+        schema: {
+          schema: {
+            layouts: ['summary_view', 'listing_view'],
+          },
+        },
+        intl: {
+          locale: 'en',
+          messages: {},
+        },
+      });
+
+      const { container } = render(
+        <Provider store={store}>
+          <Display pathname="/test" />
+        </Provider>,
+      );
+
+      await waitFor(() => {});
+      expect(container).toMatchSnapshot();
+    });
+  });
 });
