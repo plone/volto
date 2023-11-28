@@ -3351,6 +3351,11 @@ msgid "Sort By:"
 msgstr "Järjestys:"
 
 #: components/manage/Blocks/Search/components/SortOn
+# defaultMessage: Sort by selected option
+msgid "Sort by selected option"
+msgstr ""
+
+#: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Widgets/QuerySortOnWidget
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Sort on
