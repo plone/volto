@@ -31,6 +31,10 @@ const messages = defineMessages({
     id: 'Descending',
     defaultMessage: 'Descending',
   },
+  label:{
+    id: 'Sort by selected option',
+    defaultMessage: 'Sort by selected option',
+  }
 });
 
 const SortOn = (props) => {
@@ -73,10 +77,7 @@ const SortOn = (props) => {
           placeholder={intl.formatMessage(messages.sortOn)}
           styles={sortOnSelectStyles}
           theme={selectTheme}
-          label={intl.formatMessage({
-            id: 'sort_by_selected_option',
-            defaultMessage: 'Sort by selected option',
-          })}
+          label={intl.formatMessage(messages.label)}
           components={{ DropdownIndicator, Option }}
           options={[
             ...sortOnOptions.map((k) => ({
