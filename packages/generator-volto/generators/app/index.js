@@ -113,7 +113,6 @@ Run "npm install -g @plone/generator-volto" to update.`,
       this.log(`Using latest canary (alpha) Volto version: ${voltoVersion}`);
     } else if (this.opts.volto === '.') {
       voltoVersion = '*';
-      // this.voltoYarnLock = this.fs.read('yarn.lock');
     } else if (this.opts.volto) {
       voltoVersion = this.opts.volto;
       this.log(`Using chosen Volto version: ${voltoVersion}`);
@@ -121,11 +120,6 @@ Run "npm install -g @plone/generator-volto" to update.`,
       this.log(chalk.red('Getting latest Volto version'));
       voltoVersion = await utils.getLatestVoltoVersion();
       this.log(`Using latest released Volto version: ${voltoVersion}`);
-    }
-
-    if (!this.voltoYarnLock) {
-      this.log(chalk.red("Retrieving Volto's yarn.lock"));
-      // this.voltoYarnLock = await utils.getVoltoYarnLock(voltoVersion);
     }
 
     this.globals = {
@@ -238,7 +232,6 @@ Run "npm install -g @plone/generator-volto" to update.`,
       this.destinationPath(base, '.gitignore'),
       this.globals,
     );
-    // this.fs.write(this.destinationPath(base, 'yarn.lock'), this.voltoYarnLock);
 
     this.fs.copy(this.templatePath(), this.destinationPath(base), {
       globOptions: {
