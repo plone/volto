@@ -2,6 +2,7 @@
   "name": "plone-frontend",
   "private": true,
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "build:registry": "turbo run build --filter @plone/registry",
     "build": "turbo run build --filter @plone/volto",
     "start": "turbo run start --filter @plone/volto",
