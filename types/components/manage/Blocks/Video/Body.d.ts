@@ -8,3 +8,8 @@ declare namespace Body {
         let data: any;
     }
 }
+export function getVideoIDAndPlaceholder(url: any): {
+    videoID: any;
+    listID: any;
+    thumbnailURL: string;
+};

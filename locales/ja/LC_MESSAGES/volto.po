@@ -631,6 +631,11 @@ msgstr "クリア"
 msgid "Clear filters"
 msgstr ""
 
+#: components/manage/BlockChooser/BlockChooserSearch
+# defaultMessage: Clear search
+msgid "Clear search"
+msgstr ""
+
 #: components/theme/View/ImageView
 # defaultMessage: Click to download full sized image
 msgid "Click to download full sized image"
@@ -1016,6 +1021,11 @@ msgstr ""
 #: components/manage/Controlpanels/Rules/Rules
 # defaultMessage: Deleted
 msgid "Deleted"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: Deleting this item breaks {brokenReferences} {variation}.
+msgid "Deleting this item breaks {brokenReferences} {variation}."
 msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
@@ -3288,6 +3298,7 @@ msgstr "サイト管理"
 
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Toolbar/PersonalTools
+#: components/theme/Breadcrumbs/Breadcrumbs
 # defaultMessage: Site Setup
 msgid "Site Setup"
 msgstr "サイト設定"
@@ -3685,11 +3696,6 @@ msgstr ""
 #: components/manage/Contents/Contents
 # defaultMessage: This item is also a folder.
 msgid "This item is also a folder."
-msgstr ""
-
-#: components/manage/Contents/Contents
-# defaultMessage: This item is referenced by other items. By deleting it {brokenReferences} {variation} will be broken.
-msgid "This item is referenced by other items. By deleting it {brokenReferences} {variation} will be broken."
 msgstr ""
 
 #: components/manage/LockingToastsFactory/LockingToastsFactory
@@ -4100,15 +4106,15 @@ msgstr "ビデオURL"
 msgid "View"
 msgstr "表示"
 
-#: components/manage/Contents/Contents
-# defaultMessage: View broken links list
-msgid "View broken links list"
-msgstr ""
-
 #: components/manage/History/History
 # defaultMessage: View changes
 msgid "View changes"
 msgstr "表示"
+
+#: components/manage/Contents/Contents
+# defaultMessage: View links and references to this item
+msgid "View links and references to this item"
+msgstr ""
 
 #: components/manage/History/History
 # defaultMessage: View this revision

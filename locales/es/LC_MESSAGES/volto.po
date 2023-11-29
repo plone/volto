@@ -634,6 +634,11 @@ msgstr "Limpiar"
 msgid "Clear filters"
 msgstr "Limpiar filtros"
 
+#: components/manage/BlockChooser/BlockChooserSearch
+# defaultMessage: Clear search
+msgid "Clear search"
+msgstr ""
+
 #: components/theme/View/ImageView
 # defaultMessage: Click to download full sized image
 msgid "Click to download full sized image"
@@ -1020,6 +1025,11 @@ msgstr "¿Eliminar este elemento?"
 # defaultMessage: Deleted
 msgid "Deleted"
 msgstr "Eliminado"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Deleting this item breaks {brokenReferences} {variation}.
+msgid "Deleting this item breaks {brokenReferences} {variation}."
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Depth
@@ -3291,6 +3301,7 @@ msgstr "Administrador del sitio"
 
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Toolbar/PersonalTools
+#: components/theme/Breadcrumbs/Breadcrumbs
 # defaultMessage: Site Setup
 msgid "Site Setup"
 msgstr "Configuración del sitio"
@@ -3689,11 +3700,6 @@ msgstr "Es una copia de trabajo de {title}"
 # defaultMessage: This item is also a folder.
 msgid "This item is also a folder."
 msgstr "Este elemento también es una carpeta."
-
-#: components/manage/Contents/Contents
-# defaultMessage: This item is referenced by other items. By deleting it {brokenReferences} {variation} will be broken.
-msgid "This item is referenced by other items. By deleting it {brokenReferences} {variation} will be broken."
-msgstr "Este elemento está referenciado por otros elementos. Al eliminarlo, {brokenReferences} {variation} se romperá."
 
 #: components/manage/LockingToastsFactory/LockingToastsFactory
 # defaultMessage: This item was locked by {creator} on {date}
@@ -4103,15 +4109,15 @@ msgstr "URL del vídeo"
 msgid "View"
 msgstr "Ver"
 
-#: components/manage/Contents/Contents
-# defaultMessage: View broken links list
-msgid "View broken links list"
-msgstr "Ver la lista de enlaces rotos"
-
 #: components/manage/History/History
 # defaultMessage: View changes
 msgid "View changes"
 msgstr "Mostrar los cambios"
+
+#: components/manage/Contents/Contents
+# defaultMessage: View links and references to this item
+msgid "View links and references to this item"
+msgstr ""
 
 #: components/manage/History/History
 # defaultMessage: View this revision

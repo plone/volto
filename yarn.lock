@@ -2962,6 +2962,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@juggle/resize-observer@npm:^3.4.0":
+  version: 3.4.0
+  resolution: "@juggle/resize-observer@npm:3.4.0"
+  checksum: 2505028c05cc2e17639fcad06218b1c4b60f932a4ebb4b41ab546ef8c157031ae377e3f560903801f6d01706dbefd4943b6c4704bf19ed86dfa1c62f1473a570
+  languageName: node
+  linkType: hard
+
 "@kwsites/file-exists@npm:^1.1.1":
   version: 1.1.1
   resolution: "@kwsites/file-exists@npm:1.1.1"
@@ -3551,9 +3558,9 @@ __metadata:
     semantic-ui-react: 2.0.3
     semver: ^7.5.4
     serialize-javascript: 3.1.0
-    slate: 0.84.0
-    slate-hyperscript: 0.81.3
-    slate-react: 0.83.2
+    slate: 0.100.0
+    slate-hyperscript: 0.100.0
+    slate-react: 0.98.4
     start-server-and-test: 1.14.0
     style-loader: 3.3.1
     stylelint: 15.10.3
@@ -3579,7 +3586,7 @@ __metadata:
     webpack-node-externals: 3.0.0
     why: 0.6.2
     xmlrpc: 1.3.2
-    yarnhook: 0.5.1
+    yarnhook: 0.6.1
   languageName: unknown
   linkType: soft
 
@@ -5361,9 +5368,9 @@ __metadata:
   linkType: hard
 
 "@types/is-hotkey@npm:^0.1.1":
-  version: 0.1.7
-  resolution: "@types/is-hotkey@npm:0.1.7"
-  checksum: bce7c8874b30f346f20cf6cfcf4a10372962924f0e1b1a925a279004faeb276242ebfbfee47bd48df57e1021f2e3078c34e25837e226960c418d5f78f83dacea
+  version: 0.1.8
+  resolution: "@types/is-hotkey@npm:0.1.8"
+  checksum: a80320d50774f8619f3c27beba5cd72452c59a3a0d5716032b540126975d6a7010af6ce660b906cb5ea6532949ca7a2830a96d75a1bbc0118020ba647a50dd5c
   languageName: node
   linkType: hard
 
@@ -14513,7 +14520,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"immer@npm:^9.0.6, immer@npm:^9.0.7":
+"immer@npm:^10.0.3":
+  version: 10.0.3
+  resolution: "immer@npm:10.0.3"
+  checksum: 76acabe6f40e752028313762ba477a5d901e57b669f3b8fb406b87b9bb9b14e663a6fbbf5a6d1ab323737dd38f4b2494a4e28002045b88948da8dbf482309f28
+  languageName: node
+  linkType: hard
+
+"immer@npm:^9.0.7":
   version: 9.0.19
   resolution: "immer@npm:9.0.19"
   checksum: f02ee53989989c287cd548a3d817fccf0bfe56db919755ee94a72ea3ae78a00363fba93ee6c010fe54a664380c29c53d44ed4091c6a86cae60957ad2cfabc010
@@ -23496,21 +23510,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"slate-hyperscript@npm:0.81.3":
-  version: 0.81.3
-  resolution: "slate-hyperscript@npm:0.81.3"
+"slate-hyperscript@npm:0.100.0":
+  version: 0.100.0
+  resolution: "slate-hyperscript@npm:0.100.0"
   dependencies:
     is-plain-object: ^5.0.0
   peerDependencies:
     slate: ">=0.65.3"
-  checksum: cc3ba04d14e20c66eee5e5b0ca2d60fe92c0d38caf9b412153453d42f32d90bce61d57e3a00b2a4c30a7b15408bf8b14132871fd3c00f75de6ca4b49387637fe
+  checksum: 25c88fea4b9c6a8a57b2b6d5b1151190af815e84ebed76f43cc3c13b4831f26f55196a2a85a832692f3b6c9937aa9e75ee5db92fa603522c3ebdeecc692ff908
   languageName: node
   linkType: hard
 
-"slate-react@npm:0.83.2":
-  version: 0.83.2
-  resolution: "slate-react@npm:0.83.2"
+"slate-react@npm:0.98.4":
+  version: 0.98.4
+  resolution: "slate-react@npm:0.98.4"
   dependencies:
+    "@juggle/resize-observer": ^3.4.0
     "@types/is-hotkey": ^0.1.1
     "@types/lodash": ^4.14.149
     direction: ^1.0.3
@@ -23523,18 +23538,18 @@ __metadata:
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
     slate: ">=0.65.3"
-  checksum: 0c18b9dfeab9d0e3baf5b22efb2df3216be326da886bdddab5ccce3d5291cc44229664f582a86936ba51d61efcdb80d13f75dbe5fe4b903f27b3bf5baa6fff48
+  checksum: d47c01e92595870585879fd0a6fcbda7825e5ea3a4a22eca6704a2b6b91a2db4fb45c9f0ba6be648dceb5fca71211163c2fb0901614754feb448da583fee584c
   languageName: node
   linkType: hard
 
-"slate@npm:0.84.0":
-  version: 0.84.0
-  resolution: "slate@npm:0.84.0"
+"slate@npm:0.100.0":
+  version: 0.100.0
+  resolution: "slate@npm:0.100.0"
   dependencies:
-    immer: ^9.0.6
+    immer: ^10.0.3
     is-plain-object: ^5.0.0
     tiny-warning: ^1.0.3
-  checksum: d74de16a40571b2513dbd96efee8fe891909357a7011131f8fae738a0eace5b3c7c2da1c0ebfb1ffe66c8c933507ca618772fb607fbc9e44aa5158d3d874c5a2
+  checksum: 2e12f46e5147c4d000995769041d51fa18735d28b4c734d43c48931daf01c164e820631e54ec355fc4d5d09f9fff6687782412d01f6841b6078c753fd61e60e4
   languageName: node
   linkType: hard
 
@@ -27134,15 +27149,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yarnhook@npm:0.5.1":
-  version: 0.5.1
-  resolution: "yarnhook@npm:0.5.1"
+"yarnhook@npm:0.6.1":
+  version: 0.6.1
+  resolution: "yarnhook@npm:0.6.1"
   dependencies:
     execa: ^4.0.3
     find-parent-dir: ^0.3.0
   bin:
     yarnhook: index.js
-  checksum: 8af2420e392c13792a6c8a44688c830a27661d917954d87faacab732299e79bf0cdefb55d68affc2543bcb65b0404e96dacd5230c92dd838026c4eed26409fef
+  checksum: d1676eea01546b208aa734adf604f2a252ac9992559c7c549b91b1af7dc309c9036da6a4532d3b0ce2e32d1df2c7ea0644ff39b90bee7ce5606d8b07924400dd
   languageName: node
   linkType: hard
 

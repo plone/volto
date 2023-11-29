@@ -10,7 +10,7 @@
     }
   ],
   "license": "MIT",
-  "version": "8.0.0",
+  "version": "8.0.3",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/plone/generator-volto.git"
@@ -113,7 +113,7 @@
     "promise": "7.1.1",
     "semver": "^7.5.4",
     "update-notifier": "^5.0.1",
-    "yeoman-generator": "^4.12.0"
+    "yeoman-generator": "5.10.0"
   },
   "devDependencies": {
     "coveralls": "^3.0.7",

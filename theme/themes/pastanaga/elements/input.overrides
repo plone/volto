@@ -95,8 +95,21 @@ of an error is present, it overrides a default from SemanticUI grid definitions.
     cursor: pointer;
     text-align: initial;
 
-    &:focus {
-      outline: none;
+    &.clear-search-button {
+      //needed for focus
+      margin-left: 0.1em;
+
+      svg.icon {
+        margin: auto;
+      }
+
+      &:focus,
+      &:hover {
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        color: @pink !important;
+        outline: 1px solid @pink;
+      }
     }
   }
 }

@@ -17,6 +17,66 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.3 (2023-11-27)
+
+### Feature
+
+- Use special breadcrumb in control panel @tiberiuichim [#5292](https://github.com/plone/volto/issues/5292)
+
+### Bugfix
+
+- Refactoring the code for extraction of videoDetails from the video URL, adding code for extracting videoDetails from youtube video URLs with '/live/' in its URL which previously used to throw an error and adding jest tests for same. @IshaanDasgupta [#5416](https://github.com/plone/volto/issues/5416)
+- Revert "Improvements and completeness of the ContentMetadataTags component (#5433) @sneridagh [#5449](https://github.com/plone/volto/issues/5449)
+
+### Internal
+
+- Updated yarnhook to 0.6.1 in order to support pnpm 8 @sneridagh [#5444](https://github.com/plone/volto/issues/5444)
+
+## 18.0.0-alpha.2 (2023-11-25)
+
+### Feature
+
+- Plone type definitions in its own package @sneridagh [#5397](https://github.com/plone/volto/issues/5397)
+- Use container from component registry in sitemap component and also refactor the class
+  to functional component. @iRohitSingh [#5418](https://github.com/plone/volto/issues/5418)
+- Improvements and completeness of the ContentMetadataTags component @ericof @sneridagh [#5433](https://github.com/plone/volto/issues/5433)
+
+### Bugfix
+
+- Searchbox and clear button inside blocks-chooser with visible focus and fixed the clear button label - @Wagner3UB [#5335](https://github.com/plone/volto/issues/5335)
+- Fix image paths in development mode. @robgietema [#5429](https://github.com/plone/volto/issues/5429)
+- Bring back deprecated Yeoman install method used for running yarnInstall @ichim-david [#5436](https://github.com/plone/volto/issues/5436)
+
+### Documentation
+
+- Remove mention of LTS in Volto #4905. @stevepiercy [#4905](https://github.com/plone/volto/issues/4905)
+- Added documentation to contributing. @stevepiercy [#5377](https://github.com/plone/volto/issues/5377)
+- Remove orphans and move branch, version, and support policies into better locations in documentation. @stevepiercy [#5385](https://github.com/plone/volto/issues/5385)
+- Updated Node.js version required for Volto. @Noobham [#5389](https://github.com/plone/volto/issues/5389)
+- Fixed reference link to configuration/settings. @stevepiercy [#5410](https://github.com/plone/volto/issues/5410)
+- JSX is now an official lexer in Pygments. @stevepiercy [#5412](https://github.com/plone/volto/issues/5412)
+
+## 18.0.0-alpha.1 (2023-11-07)
+
+### Feature
+
+- List plone.app.linkintegrity breaches with links to the pages in the delete confirmation modal.
+  @jaroel [#5234](https://github.com/plone/volto/issues/5234)
+
+### Bugfix
+
+- Fix empty link element left hanging when hit enter at end of link. @iFlameing @tiberiuichim [#5291](https://github.com/plone/volto/issues/5291)
+
+### Internal
+
+- Update internal Plone version to 6.0.8 @sneridagh [#5384](https://github.com/plone/volto/issues/5384)
+
+### Documentation
+
+- Improved the Makefil to check for the existence of a symlink from docs to news, and create one only if it exists, else do nothing. @stevepiercy [#5375](https://github.com/plone/volto/issues/5375)
+- Improved wording in branch policy. @stevepiercy [#5376](https://github.com/plone/volto/issues/5376)
+- Simplify linkcheck configuration with a regex. @stevepiercy [#5378](https://github.com/plone/volto/issues/5378)
+
 ## 18.0.0-alpha.0 (2023-11-06)
 
 ### Breaking
@@ -2236,6 +2296,7 @@ See https://6.docs.plone.org/volto/upgrade-guide/index.html for more information
 
 ### Bugfix
 
+- Sort control panels alphabetically within each group @JeffersonBledsoe #3737
 - Fix UniversalLink storybook @tiberiuichim
 - Fix logout to stay on the same page where the user was @reebalazs
 - Change sentry chunk name to avoid ad blockers. Only load sentry if env vars exist @tiberiuichim
