@@ -286,6 +286,7 @@ class Edit extends Component {
       <Form
         isEditForm
         ref={this.form}
+        navRoot={this.props.content['@components']?.navroot?.navroot || {}}
         schema={this.props.schema}
         type={this.props.content?.['@type']}
         formData={this.props.content}

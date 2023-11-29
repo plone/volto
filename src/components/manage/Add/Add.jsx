@@ -315,6 +315,7 @@ class Add extends Component {
           <Form
             ref={this.form}
             key="translated-or-new-content-form"
+            navRoot={this.props.content['@components']?.navroot || {}}
             schema={this.props.schema}
             type={this.props.type}
             formData={{

@@ -38,12 +38,19 @@ function getBlocksConfig(props) {
   return blocks?.blocksConfig;
 }
 
-export function getVariations({ variations, schema, formData, properties }) {
+export function getVariations({
+  variations,
+  schema,
+  formData,
+  properties,
+  contentType,
+  navRoot,
+}) {
   return variations.filter((variation) => {
     if (variation.enabled !== undefined) {
       if (typeof variation.enabled === 'function') {
         const variationFunc = variation.enabled;
-        variationFunc({ schema, formData, properties });
+        variationFunc({ schema, formData, properties, contentType, navRoot });
       } else {
         return variation.enabled;
       }
@@ -262,7 +269,13 @@ export const applySchemaEnhancer = ({
  * - adds the variation selection input (as a choice widget)
  */
 export const withVariationSchemaEnhancer = (FormComponent) => (props) => {
-  const { formData, schema: originalSchema, properties } = props;
+  const {
+    formData,
+    schema: originalSchema,
+    properties,
+    contentType,
+    navRoot,
+  } = props;
   const intl = useIntl();
 
   const blocksConfig = getBlocksConfig(props);
@@ -282,6 +295,8 @@ export const withVariationSchemaEnhancer = (FormComponent) => (props) => {
     schema,
     formData,
     properties,
+    contentType,
+    navRoot,
   });
 
   if (variations.length > 1) {
