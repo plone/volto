@@ -27,7 +27,7 @@
     "plone",
     "react"
   ],
-  "packagesFolderAddons": {
+  "coreAddons": {
     "volto-slate": {
       "package": "@plone/volto-slate"
     }

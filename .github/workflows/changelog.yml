@@ -21,81 +21,71 @@ jobs:
         run: pip install towncrier
 
       - uses: dorny/paths-filter@v2
-            id: filter
-            with:
-              filters: |
-                volto:
-                  - 'packages/volto/**'
-                registry:
-                  - 'packages/registry/**'
-                generator:
-                  - 'packages/generator-volto/**'
-                scripts:
-                  - 'packages/scripts/**'
-                voltoSlate:
-                  - 'packages/volto-slate/**'
+        id: filter
+        with:
+          filters: |
+            volto:
+              - 'packages/volto/**'
+            registry:
+              - 'packages/registry/**'
+            generator:
+              - 'packages/generator-volto/**'
+            scripts:
+              - 'packages/scripts/**'
+            voltoSlate:
+              - 'packages/volto-slate/**'
 
       - name: Volto changelog check
         if: steps.filter.outputs.volto == 'true'
-        working-directory: 'packages/volto'
         run: |
           # Fetch the pull request' base branch so towncrier will be able to
           # compare the current branch with the base branch.
           # Source: https://github.com/actions/checkout/#fetch-all-branches.
           git fetch --no-tags origin main
-          towncrier check --compare-with origin/main
+          towncrier check --compare-with origin/main --dir packages/volto
         env:
           BASE_BRANCH: ${{ github.base_ref }}
-        if: github.event_name == 'pull_request'
 
       - name: Registry changelog check
-        if: steps.filter.outputs.volto == 'true'
-        working-directory: 'packages/registry'
+        if: steps.filter.outputs.registry == 'true'
         run: |
           # Fetch the pull request' base branch so towncrier will be able to
           # compare the current branch with the base branch.
           # Source: https://github.com/actions/checkout/#fetch-all-branches.
           git fetch --no-tags origin main
-          towncrier check --compare-with origin/main
+          towncrier check --compare-with origin/main --dir packages/registry
         env:
           BASE_BRANCH: ${{ github.base_ref }}
-        if: github.event_name == 'pull_request'
 
       - name: Generator changelog check
         if: steps.filter.outputs.generator == 'true'
-        working-directory: 'packages/generator-volto'
         run: |
           # Fetch the pull request' base branch so towncrier will be able to
           # compare the current branch with the base branch.
           # Source: https://github.com/actions/checkout/#fetch-all-branches.
           git fetch --no-tags origin main
-          towncrier check --compare-with origin/main
+          towncrier check --compare-with origin/main --dir packages/generator-volto
         env:
           BASE_BRANCH: ${{ github.base_ref }}
-        if: github.event_name == 'pull_request'
 
       - name: scripts changelog check
         if: steps.filter.outputs.scripts == 'true'
-        working-directory: 'packages/scripts'
         run: |
           # Fetch the pull request' base branch so towncrier will be able to
           # compare the current branch with the base branch.
           # Source: https://github.com/actions/checkout/#fetch-all-branches.
           git fetch --no-tags origin main
-          towncrier check --compare-with origin/main
+          towncrier check --compare-with origin/main --dir packages/scripts
         env:
           BASE_BRANCH: ${{ github.base_ref }}
-        if: github.event_name == 'pull_request'
 
       - name: volto-slate changelog check
         if: steps.filter.outputs.voltoSlate == 'true'
-        working-directory: 'packages/volto-slate'
         run: |
           # Fetch the pull request' base branch so towncrier will be able to
           # compare the current branch with the base branch.
           # Source: https://github.com/actions/checkout/#fetch-all-branches.
           git fetch --no-tags origin main
-          towncrier check --compare-with origin/main
+          towncrier check --compare-with origin/main --dir packages/volto-slate
         env:
           BASE_BRANCH: ${{ github.base_ref }}
-        if: github.event_name == 'pull_request'
