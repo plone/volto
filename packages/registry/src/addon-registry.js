@@ -6,15 +6,6 @@ const debug = require('debug')('shadowing');
 const { map } = require('lodash');
 const { DepGraph } = require('dependency-graph');
 
-const excludedCompilerOptionsPaths = [
-  '@plone/volto/*',
-  '@plone/volto-slate/*',
-  '@plone/registry/*',
-  '@plone/registry',
-  '@plone/types/*',
-  '@root/*',
-];
-
 function getPackageBasePath(base) {
   while (!fs.existsSync(`${base}/package.json`)) {
     base = path.join(base, '../');
@@ -164,9 +155,9 @@ class AddonConfigurationRegistry {
   }
 
   /**
-   * Use tsconfig.json or jsconfig.json to get paths for "development" packages/addons
-   * (coming from mrs.developer.json)
-   * Not all of these packages have to be Volto addons.
+   * Volto is able to register packages while in development thanks to
+   * `mrs-developer`. It uses the JS/TS environment config `compilerOptions.paths`
+   * to resolve them through the system.
    */
   initDevelopmentPackages() {
     let configFile;
@@ -179,7 +170,14 @@ class AddonConfigurationRegistry {
       const jsConfig = require(configFile).compilerOptions;
       const pathsConfig = jsConfig.paths;
 
-      Object.keys(pathsConfig).forEach((name) => {
+      // We only initialize the development addons present in `compilerOptions.paths`
+      // configured by `mrs-developer` filtered by the add-ons registered (via config)
+      // since we can have other paths there that are not addons
+      const developmentAddons = this.addonNames.filter((key) =>
+        pathsConfig.hasOwnProperty(key),
+      );
+
+      developmentAddons.forEach((name) => {
         const packagePath = `${this.projectRootPath}/${jsConfig.baseUrl}/${pathsConfig[name][0]}`;
         const packageJsonPath = `${getPackageBasePath(
           packagePath,
@@ -204,10 +202,7 @@ class AddonConfigurationRegistry {
           addons: require(packageJsonPath).addons || [],
         };
 
-        // Removed excluded paths from CompilerOptions
-        if (!excludedCompilerOptionsPaths.includes(name)) {
-          this.packages[name] = Object.assign(this.packages[name] || {}, pkg);
-        }
+        this.packages[name] = Object.assign(this.packages[name] || {}, pkg);
       });
     }
   }
