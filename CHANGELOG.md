@@ -8,6 +8,17 @@
 
 <!-- towncrier release notes start -->
 
+## 16.28.0 (2023-11-30)
+
+### Feature
+
+- Backport `References and Links` menu from 17 series. The feature is opt-in using the `config.settings.excludeLinksAndReferencesMenuItem` setting in the configuration object.
+  Improvements to link integrity detection on content deletion @ksuess @pgrunewald @danlavrz @jaroel @stevepiercy @sneridagh [#5399](https://github.com/plone/volto/issues/5399)
+
+### Internal
+
+- Update README and Makefile for Plone 5 KGS @sneridagh [#5453](https://github.com/plone/volto/issues/5453)
+
 ## 16.27.0 (2023-11-27)
 
 ### Feature
