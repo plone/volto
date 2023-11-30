@@ -38,20 +38,6 @@ function getBlocksConfig(props) {
   return blocks?.blocksConfig;
 }
 
-export function getVariations({ variations, schema, formData, properties }) {
-  return variations.filter((variation) => {
-    if (variation.enabled !== undefined) {
-      if (typeof variation.enabled === 'function') {
-        const variationFunc = variation.enabled;
-        variationFunc({ schema, formData, properties });
-      } else {
-        return variation.enabled;
-      }
-    }
-    return true;
-  });
-}
-
 /**
  * Utility function that adds the Select dropdown field to a schema
  */
@@ -262,7 +248,7 @@ export const applySchemaEnhancer = ({
  * - adds the variation selection input (as a choice widget)
  */
 export const withVariationSchemaEnhancer = (FormComponent) => (props) => {
-  const { formData, schema: originalSchema, properties } = props;
+  const { formData, schema: originalSchema } = props;
   const intl = useIntl();
 
   const blocksConfig = getBlocksConfig(props);
@@ -277,18 +263,11 @@ export const withVariationSchemaEnhancer = (FormComponent) => (props) => {
     blocksConfig,
   });
 
-  const resolvedVariations = getVariations({
-    variations,
-    schema,
-    formData,
-    properties,
-  });
-
   if (variations.length > 1) {
     addExtensionFieldToSchema({
       schema,
       name: 'variation',
-      items: resolvedVariations,
+      items: variations,
       intl,
       title: messages.variation,
       insertFieldToOrder: _addField,
