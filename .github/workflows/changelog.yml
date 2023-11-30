@@ -21,19 +21,19 @@ jobs:
         run: pip install towncrier
 
       - uses: dorny/paths-filter@v2
-            id: filter
-            with:
-              filters: |
-                volto:
-                  - 'packages/volto/**'
-                registry:
-                  - 'packages/registry/**'
-                generator:
-                  - 'packages/generator-volto/**'
-                scripts:
-                  - 'packages/scripts/**'
-                voltoSlate:
-                  - 'packages/volto-slate/**'
+        id: filter
+        with:
+          filters: |
+            volto:
+              - 'packages/volto/**'
+            registry:
+              - 'packages/registry/**'
+            generator:
+              - 'packages/generator-volto/**'
+            scripts:
+              - 'packages/scripts/**'
+            voltoSlate:
+              - 'packages/volto-slate/**'
 
       - name: Volto changelog check
         if: steps.filter.outputs.volto == 'true'
