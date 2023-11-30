@@ -199,8 +199,7 @@ export const autoformatBlock = (editor, type, at, { preFormat, format }) => {
   if (!format) {
     Transforms.setNodes(
       editor,
-      { type },
-      { match: (n) => Editor.isBlock(editor, n) },
+      { type }
     );
   } else {
     format(editor);
