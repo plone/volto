@@ -1,0 +1,17 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": ["**/.env.*local"],
+  "pipeline": {
+    "build:next": {
+      "dependsOn": ["^build"],
+      "outputs": [".next/**", "!.next/cache/**"]
+    },
+    "build": {},
+    "lint": {},
+    "start": {},
+    "prettier": {},
+    "test:ci": {},
+    "i18n": {},
+    "i18n:ci": {}
+  }
+}

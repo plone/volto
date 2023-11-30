@@ -13,6 +13,10 @@ type ConfigData = {
   experimental: configTypes.ExperimentalConfig;
 };
 
+type GetComponentResult = {
+  component: React.ComponentType;
+};
+
 class Config {
   public _data: ConfigData | Record<string, never>;
   static instance: InstanceType<typeof Config>;
@@ -111,7 +115,7 @@ class Config {
 
   getComponent(
     options: { name: string; dependencies: string[] | string } | string,
-  ) {
+  ): GetComponentResult {
     if (typeof options === 'object') {
       const { name, dependencies = '' } = options;
       let depsString: string = '';

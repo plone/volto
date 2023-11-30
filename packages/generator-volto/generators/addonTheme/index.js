@@ -54,9 +54,8 @@ module.exports = class extends Generator {
     this.globals.addonName = this.opts.addonName;
 
     if (this.globals.addonName.includes('/')) {
-      [this.globals.scope, this.globals.name] = this.globals.addonName.split(
-        '/',
-      );
+      [this.globals.scope, this.globals.name] =
+        this.globals.addonName.split('/');
       this.globals.normalizedName = `${this.globals.scope.replace(
         '@',
         '',

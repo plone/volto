@@ -1,4 +1,3 @@
-import React from 'react';
 import { searchContent } from '@plone/volto/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { Container } from 'semantic-ui-react';
