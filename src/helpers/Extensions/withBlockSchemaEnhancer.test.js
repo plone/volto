@@ -3,7 +3,6 @@ import {
   applySchemaEnhancer,
   composeSchema,
   addStyling,
-  getVariations,
 } from './withBlockSchemaEnhancer';
 
 import config from '@plone/volto/registry';

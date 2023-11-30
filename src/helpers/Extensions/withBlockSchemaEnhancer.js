@@ -248,7 +248,7 @@ export const applySchemaEnhancer = ({
  * - adds the variation selection input (as a choice widget)
  */
 export const withVariationSchemaEnhancer = (FormComponent) => (props) => {
-  const { formData, schema: originalSchema, contentType, navRoot } = props;
+  const { formData, schema: originalSchema } = props;
   const intl = useIntl();
 
   const blocksConfig = getBlocksConfig(props);
