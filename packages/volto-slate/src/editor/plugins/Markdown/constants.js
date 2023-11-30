@@ -1,6 +1,6 @@
 import { toggleList, unwrapList } from './utils';
 import { isBlockActive } from '@plone/volto-slate/utils';
-import { UL, OL, LI } from '@plone/volto-slate/constants';
+import { UL, OL, LI, H2, H3 } from '@plone/volto-slate/constants';
 
 /**
  * Uses the old toggleList function to toggle lists on or off or from a type to another.
@@ -18,15 +18,14 @@ export const localToggleList = (editor, format) => {
 /**
  * The autoformat rules created by this plugin for the Markdown language.
  *
- * @todo Use constants instead of the remaining hard-coded types (h2, h3 etc.).
  */
 export const autoformatRules = [
   {
-    type: 'h2',
+    type: H2,
     markup: '#',
   },
   {
-    type: 'h3',
+    type: H3,
     markup: '##',
   },
   {

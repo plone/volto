@@ -23,6 +23,9 @@ export const LI = 'li';
 export const UL = 'ul';
 export const OL = 'ol';
 
+export const H2 = 'h2'
+export const H3 = 'h3'
+
 // dom parsing node information
 export const TEXT_NODE = 3;
 export const ELEMENT_NODE = 1;
