@@ -122,11 +122,11 @@ class AddonConfigurationRegistry {
         ? `${projectRootPath}`
         : `${projectRootPath}/node_modules/@plone/volto`;
 
-    this.packagesFolderAddons =
+    this.coreAddons =
       packageJson.name === '@plone/volto'
-        ? packageJson.packagesFolderAddons || {}
+        ? packageJson.coreAddons || {}
         : require(`${getPackageBasePath(this.voltoPath)}/package.json`)
-            .packagesFolderAddons || {};
+            .coreAddons || {};
 
     this.resultantMergedAddons = [
       ...(packageJson.addons || []),
@@ -148,8 +148,8 @@ class AddonConfigurationRegistry {
 
     this.dependencyGraph = buildDependencyGraph(
       [
-        ...(Object.keys(this.packagesFolderAddons).map(
-          (key) => this.packagesFolderAddons[key].package,
+        ...(Object.keys(this.coreAddons).map(
+          (key) => this.coreAddons[key].package,
         ) || []),
         ...this.resultantMergedAddons,
         ...(process.env.ADDONS ? process.env.ADDONS.split(';') : []),
@@ -210,43 +210,6 @@ class AddonConfigurationRegistry {
         }
       });
     }
-    this.initPackagesFolder();
-  }
-
-  initPackagesFolder() {
-    // TODO: Monorepo => this can be spared, not needed anymore
-    const registerPackageFolder = (packageFolderName, packageInfo) => {
-      const packageName = packageInfo.package;
-      if (this.packages[packageName]) return;
-
-      const packagePath = path.normalize(
-        `${this.voltoPath}/packages/${packageFolderName}/src`,
-      );
-      const packageJsonPath = path.normalize(
-        `${this.voltoPath}/packages/${packageFolderName}/package.json`,
-      );
-
-      // some tests set the root in a location that doesn't have the packages
-      if (!fs.existsSync(packagePath)) return;
-
-      this.packages[packageName] = {
-        modulePath: packagePath,
-        packageJson: packageJsonPath,
-        version: require(packageJsonPath).version,
-        isPublishedPackage: false,
-        isRegisteredAddon: false,
-        name: packageName,
-        addons: [],
-      };
-      this.addonNames.push(packageName);
-    };
-
-    Object.keys(this.packagesFolderAddons).forEach((packageFolderName) => {
-      registerPackageFolder(
-        packageFolderName,
-        this.packagesFolderAddons[packageFolderName],
-      );
-    });
   }
 
   /**
@@ -295,35 +258,8 @@ class AddonConfigurationRegistry {
   }
 
   initAddonFromEnvVar(name) {
-    // TODO: Monorepo => this can be spared, not needed anymore
-    // First lookup in the packages folder, local to the root (either vanilla Volto or project)
     const normalizedAddonName = name.split(':')[0];
-    const testingPackagePath = `${this.projectRootPath}/packages/${normalizedAddonName}/src`;
-    if (fs.existsSync(testingPackagePath)) {
-      const basePath = getPackageBasePath(testingPackagePath);
-      const packageJson = path.join(basePath, 'package.json');
-
-      if (!this.addonNames.includes(normalizedAddonName))
-        this.addonNames.push(normalizedAddonName);
-      const pkg = {
-        modulePath: testingPackagePath,
-        version: require(packageJson).version,
-        packageJson: packageJson,
-        isPublishedPackage: false,
-        isRegisteredAddon: this.addonNames.includes(name),
-        name: normalizedAddonName,
-        addons: require(packageJson).addons || [],
-      };
-
-      this.packages[normalizedAddonName] = Object.assign(
-        this.packages[normalizedAddonName] || {},
-        pkg,
-      );
-    } else {
-      // Fallback in case the addon is released (not in packages folder nor in development, but in node_modules)
-      const normalizedAddonName = name.split(':')[0];
-      this.initPublishedPackage(normalizedAddonName);
-    }
+    this.initPublishedPackage(normalizedAddonName);
   }
 
   /**
