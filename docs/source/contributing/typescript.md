@@ -17,7 +17,10 @@ ESlint has been configured in order to accept code base written both in JavaScri
 TypeScript in projects and add-ons has been supported since Volto 14.
 It is now supported in the project generator by default.
 
-## TypeScript in core
+
+(typescript-policy-in-core-label)=
+
+## TypeScript policy in core
 
 The internal policy for TypeScript support in Volto core will be as follows.
 
