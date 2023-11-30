@@ -132,8 +132,8 @@ Components include widgets, blocks, and basic and structural items.
 When you develop a component, we encourage you to create or update its [Volto Storybook](https://6.docs.plone.org/storybook/) entry.
 As an example of how to do that, you can copy the existing Storybook entry for the `RichTextWidget` component.
 
-- https://github.com/plone/volto/blob/main/src/components/theme/Widgets/RichTextWidget.stories.jsx#L3
-- https://github.com/plone/volto/blob/main/src/components/theme/Widgets/RichTextWidget.jsx
+-   https://github.com/plone/volto/blob/main/packages/volto/src/components/theme/Widgets/RichTextWidget.stories.jsx#L3
+-   https://github.com/plone/volto/blob/main/packages/volto/src/components/theme/Widgets/RichTextWidget.jsx
 
 To build the Volto Storybook locally and test your entry, run the following command from the repository root.
 

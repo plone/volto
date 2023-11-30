@@ -1,5 +1,3 @@
-import React from 'react';
-
 const TestBlockView = (props) => {
   return (
     <div className="test-block">

@@ -125,7 +125,8 @@ export const workingCopyFixture = (config) => {
 
 const applyConfig = (config) => {
   config.blocks.blocksConfig.testBlock = testBlock;
-  config.blocks.blocksConfig.testBlockMultipleFieldsets = testBlockMultipleFieldsets;
+  config.blocks.blocksConfig.testBlockMultipleFieldsets =
+    testBlockMultipleFieldsets;
   config.blocks.blocksConfig.testBlockDefaultEdit = testBlockDefaultEdit;
   config.blocks.blocksConfig.testBlockDefaultView = testBlockDefaultView;
   config.blocks.blocksConfig.listing = listing(config);
