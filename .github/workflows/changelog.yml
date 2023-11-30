@@ -46,7 +46,6 @@ jobs:
           towncrier check --compare-with origin/main
         env:
           BASE_BRANCH: ${{ github.base_ref }}
-        if: github.event_name == 'pull_request'
 
       - name: Registry changelog check
         if: steps.filter.outputs.volto == 'true'
@@ -59,7 +58,6 @@ jobs:
           towncrier check --compare-with origin/main
         env:
           BASE_BRANCH: ${{ github.base_ref }}
-        if: github.event_name == 'pull_request'
 
       - name: Generator changelog check
         if: steps.filter.outputs.generator == 'true'
@@ -72,7 +70,6 @@ jobs:
           towncrier check --compare-with origin/main
         env:
           BASE_BRANCH: ${{ github.base_ref }}
-        if: github.event_name == 'pull_request'
 
       - name: scripts changelog check
         if: steps.filter.outputs.scripts == 'true'
@@ -85,7 +82,6 @@ jobs:
           towncrier check --compare-with origin/main
         env:
           BASE_BRANCH: ${{ github.base_ref }}
-        if: github.event_name == 'pull_request'
 
       - name: volto-slate changelog check
         if: steps.filter.outputs.voltoSlate == 'true'
@@ -98,4 +94,3 @@ jobs:
           towncrier check --compare-with origin/main
         env:
           BASE_BRANCH: ${{ github.base_ref }}
-        if: github.event_name == 'pull_request'
