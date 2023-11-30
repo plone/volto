@@ -199,6 +199,8 @@ export const applySchemaEnhancer = ({
   formData,
   intl,
   blocksConfig = config.blocks.blocksConfig,
+  navRoot,
+  contentType,
 }) => {
   let schema, schemaEnhancer;
 
@@ -215,6 +217,8 @@ export const applySchemaEnhancer = ({
         schema: cloneDeepSchema(originalSchema),
         formData,
         intl,
+        navRoot,
+        contentType,
       });
     return schema || originalSchema;
   }
@@ -230,12 +234,15 @@ export const applySchemaEnhancer = ({
         schema: cloneDeepSchema(originalSchema),
         formData,
         intl,
+        navRoot,
+        contentType,
       })
     : cloneDeepSchema(originalSchema);
 
   // Finalize the schema with a schemaEnhancer in the block config;
   schemaEnhancer = blocksConfig?.[blockType]?.schemaEnhancer;
-  if (schemaEnhancer) schema = schemaEnhancer({ schema, formData, intl });
+  if (schemaEnhancer)
+    schema = schemaEnhancer({ schema, formData, intl, navRoot, contentType });
 
   return schema || originalSchema;
 };
@@ -248,7 +255,7 @@ export const applySchemaEnhancer = ({
  * - adds the variation selection input (as a choice widget)
  */
 export const withVariationSchemaEnhancer = (FormComponent) => (props) => {
-  const { formData, schema: originalSchema } = props;
+  const { formData, schema: originalSchema, navRoot, contentType } = props;
   const intl = useIntl();
 
   const blocksConfig = getBlocksConfig(props);
@@ -261,6 +268,8 @@ export const withVariationSchemaEnhancer = (FormComponent) => (props) => {
     formData,
     intl,
     blocksConfig,
+    navRoot,
+    contentType,
   });
 
   if (variations.length > 1) {

@@ -517,7 +517,10 @@ export function applySchemaDefaults({ data = {}, schema, intl }) {
  * @param {Object} params An object with data, intl and anything else
  * @return {Object} Derived data, with the defaults extracted from the schema
  */
-export function applyBlockDefaults({ data, intl, ...rest }, blocksConfig) {
+export function applyBlockDefaults(
+  { data, intl, navRoot, contentType, ...rest },
+  blocksConfig,
+) {
   // We pay attention to not break on a missing (invalid) block.
   const block_type = data?.['@type'];
   const { blockSchema } =
@@ -528,7 +531,13 @@ export function applyBlockDefaults({ data, intl, ...rest }, blocksConfig) {
     typeof blockSchema === 'function'
       ? blockSchema({ data, intl, ...rest })
       : blockSchema;
-  schema = applySchemaEnhancer({ schema, formData: data, intl });
+  schema = applySchemaEnhancer({
+    schema,
+    formData: data,
+    intl,
+    navRoot,
+    contentType,
+  });
 
   return applySchemaDefaults({ data, schema, intl });
 }
