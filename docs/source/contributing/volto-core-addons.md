@@ -3,9 +3,9 @@
 Volto has the concept of "core add-ons".
 They are add-ons that are always installed in Volto.
 They are located separately from the main code in the `packages` folder.
-If Volto uses them directly, these add-ons must be released as standalone add-ons.
+If Volto uses them directly, these add-ons must be released as stand-alone add-ons.
 You can use these packages released as standalone add-ons installed in your old Volto projects to test them or to have a bleeding edge feature without having to upgrade to the latest Volto version.
-You can add them to non-Volto projects in order to get a piece of Volto feature set outside the main project.
+You can add them to non-Volto projects to get parts of the Volto feature set outside of the main project.
 
 ## Enabling a core add-on
 
