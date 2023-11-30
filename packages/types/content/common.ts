@@ -1,7 +1,7 @@
-import { BreadcrumbsResponse } from '../breadcrumbs';
-import { NavigationResponse } from '../navigation';
-import { ActionsResponse } from '../actions';
-import { GetTypesResponse } from '../types';
+import type { BreadcrumbsResponse } from '../breadcrumbs';
+import type { NavigationResponse } from '../navigation';
+import type { ActionsResponse } from '../actions';
+import type { GetTypesResponse } from '../types';
 
 export interface Expanders {
   [key: string]: unknown;

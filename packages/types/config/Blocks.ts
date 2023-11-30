@@ -1,5 +1,5 @@
-import { GetContentResponse } from '../content/get';
-import type { BlockViewProps } from '@plone/types/Blocks/View';
+import type { GetContentResponse } from '../content/get';
+import type { BlockViewProps } from '../Blocks/View';
 
 export interface BlocksConfig {
   [key: string]: BlockConfigBase | undefined;
