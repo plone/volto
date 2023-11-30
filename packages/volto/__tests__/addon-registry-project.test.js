@@ -12,7 +12,7 @@ describe('AddonConfigurationRegistry - Project', () => {
     )}/node_modules/@plone/volto/package.json`,
     () => ({
       // TODO: mock the packages folder inside the mocked @plone/volto to work with resolves
-      packagesFolderAddons: {},
+      coreAddons: {},
     }),
     { virtual: true },
   );
