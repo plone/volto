@@ -47,7 +47,7 @@ jobs:
           BASE_BRANCH: ${{ github.base_ref }}
 
       - name: Registry changelog check
-        if: steps.filter.outputs.volto == 'true'
+        if: steps.filter.outputs.registry == 'true'
         run: |
           # Fetch the pull request' base branch so towncrier will be able to
           # compare the current branch with the base branch.
