@@ -5,7 +5,7 @@
     "preinstall": "npx only-allow pnpm",
     "build:registry": "turbo run build --filter @plone/registry",
     "build": "turbo run build --filter @plone/volto",
-    "start": "turbo run start --filter @plone/volto",
+    "start": "pnpm build:registry && pnpm --filter @plone/volto start",
     "start:project": "turbo run start --filter plone",
     "lint": "eslint --max-warnings=0 'packages/**/*.{js,jsx,ts,tsx}'",
     "lint:volto": "turbo run lint --filter @plone/volto",
@@ -15,7 +15,7 @@
     "prettier": "prettier --check '{apps,packages}/**/*.{js,jsx,ts,tsx}'",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "lint-staged": "lint-staged",
-    "_prepare": "husky install",
+    "prepare": "husky install",
     "husky:uninstall": "husky uninstall"
   },
   "devDependencies": {
