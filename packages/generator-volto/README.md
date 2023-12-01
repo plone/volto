@@ -15,13 +15,13 @@ npm install -g @plone/generator-volto
 
 | Generator version | Volto version |
 |-------------------|---------------|
-| 9.x               | >=18.0.0      |
+| 9.x               | 18.x.x        |
 | 7.x and 8.x       | 17.x.x        |
 | 6.x               | 16.x.x        |
 
 ## Usage
 
-### Creating a new Volto project using `npm init`
+### Create a new Volto project using `npm init`
 
 ```bash
 npm init yo @plone/volto
@@ -130,9 +130,9 @@ Arguments:
   addonName  # Addon name, e.g.: @plone-collective/volto-custom-block  Type: String  Required: false
 ```
 
-### Enabling an existing add-on as a theme add-on
+### Enable an existing add-on as a theme add-on
 
-If you want one of your add-ons to be a theme, you can run this template on the top of your add-on.
+If you want one of your add-ons to be a theme, you can run this template on top of your add-on.
 Use the configuration option `outputpath` for the path of your add-on.
 Assuming your add-on is located at `./testaddon` folder, you would issue the following shell command.
 
@@ -176,12 +176,11 @@ Please note that you have to run a Plone backend as well.
 E.g. with docker:
 
 ```shell
-docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e PROFILES="plone.volto:default-homepage" plone/plone-backend:6.0.7
+docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e PROFILES="plone.volto:default-homepage" plone/plone-backend:6.0.8
 ```
 
-Consult the Plone frontend Volto docs for further details:
+Consult the [Plone frontend Volto documentation](https://6.docs.plone.org/volto/index.html) for further details.
 
-https://6.docs.plone.org/volto/index.html
 
 ### Build a production build with `yarn build`
 
