@@ -35,7 +35,7 @@ jobs:
             voltoSlate:
               - 'packages/volto-slate/**'
             wrongNews:
-              - 'news/**'
+              - added|modified: 'news/**'
 
       - name: Volto changelog check
         if: steps.filter.outputs.volto == 'true'
