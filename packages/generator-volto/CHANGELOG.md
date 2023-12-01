@@ -8,6 +8,13 @@
 
 <!-- towncrier release notes start -->
 
+## 8.1.0 (2023-12-01)
+
+### Bugfix
+
+- Fix and update generator for Volto 17 - 8.x.x series @sneridagh
+  This generator version is no longer compatible with Volto 18 and above. [#5465](https://github.com/plone/volto/issues/5465)
+
 ## 8.0.3 (2023-11-25)
 
 ### Bugfix
