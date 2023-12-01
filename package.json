@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "preinstall": "npx only-allow pnpm",
+    "watch": "turbo run watch",
     "build:registry": "turbo run build --filter @plone/registry",
     "build": "turbo run build --filter @plone/volto",
     "start": "pnpm build:registry && pnpm --filter @plone/volto start",

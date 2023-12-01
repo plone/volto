@@ -1,5 +1,5 @@
 {
-  "**/*.{js,jsx,ts,tsx,json}": [
+  "**/*.{js,jsx,ts,tsx}": [
     "pnpm eslint --max-warnings=0 --fix",
     "pnpm prettier --single-quote --write"
   ],
