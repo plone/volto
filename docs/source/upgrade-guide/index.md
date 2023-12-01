@@ -1709,7 +1709,7 @@ Since Volto 9.2.0 the next step IS NOT required anymore.
 ```
 
 ~~Copy (and overwrite) the `patches` folder into your local project
-https://github.com/plone/volto/tree/main/patches or, if you want to be more accurate,
+or, if you want to be more accurate,
 just copy `patches/razzle-plugins.patch` file and overwrite `patches/patchit.sh` file.~~
 
 ### Babel config housekeeping

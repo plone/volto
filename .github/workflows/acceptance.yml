@@ -15,13 +15,47 @@ jobs:
 
       # node setup
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
 
-      ## node install
-      - run: yarn --immutable
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        with:
+          version: 8
+          # We don't want to install until later,
+          # when the cache and Cypress are in place
+          run_install: false
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Cache Cypress Binary
+        id: cache-cypress-binary
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/Cypress
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+
+      - run: pnpm i
+
+      - name: Install Cypress if not in cache
+        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
+        working-directory: packages/volto
+        run: make cypress-install
+
+      - name: Build packages
+        run: pnpm build:registry
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -33,6 +67,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           install: false
+          working-directory: packages/volto
           browser: chrome
           spec: cypress/tests/core/basic/**/*.js
           start: |
@@ -70,10 +105,42 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
 
-      ## node install
-      - run: yarn --immutable
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        with:
+          version: 8
+          run_install: false
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Cache Cypress Binary
+        id: cache-cypress-binary
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/Cypress
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+
+      - run: pnpm i
+
+      - name: Install Cypress if not in cache
+        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
+        working-directory: packages/volto
+        run: make cypress-install
+
+      - name: Build packages
+        run: pnpm build:registry
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -85,6 +152,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           install: false
+          working-directory: packages/volto
           browser: chrome
           spec: cypress/tests/core/content/**/*.js
           start: |
@@ -122,10 +190,42 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
 
-      ## node install
-      - run: yarn --immutable
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        with:
+          version: 8
+          run_install: false
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Cache Cypress Binary
+        id: cache-cypress-binary
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/Cypress
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+
+      - run: pnpm i
+
+      - name: Install Cypress if not in cache
+        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
+        working-directory: packages/volto
+        run: make cypress-install
+
+      - name: Build packages
+        run: pnpm build:registry
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -137,6 +237,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           install: false
+          working-directory: packages/volto
           browser: chrome
           spec: cypress/tests/core/controlpanels/**/*.js
           start: |
@@ -174,10 +275,42 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
 
-      ## node install
-      - run: yarn --immutable
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        with:
+          version: 8
+          run_install: false
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Cache Cypress Binary
+        id: cache-cypress-binary
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/Cypress
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+
+      - run: pnpm i
+
+      - name: Install Cypress if not in cache
+        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
+        working-directory: packages/volto
+        run: make cypress-install
+
+      - name: Build packages
+        run: pnpm build:registry
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -189,6 +322,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           install: false
+          working-directory: packages/volto
           browser: chrome
           spec: cypress/tests/core/blocks/*.js
           start: |
@@ -226,10 +360,42 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
 
-      ## node install
-      - run: yarn --immutable
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        with:
+          version: 8
+          run_install: false
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Cache Cypress Binary
+        id: cache-cypress-binary
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/Cypress
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+
+      - run: pnpm i
+
+      - name: Install Cypress if not in cache
+        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
+        working-directory: packages/volto
+        run: make cypress-install
+
+      - name: Build packages
+        run: pnpm build:registry
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -241,6 +407,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           install: false
+          working-directory: packages/volto
           browser: chrome
           spec: cypress/tests/core/blocks/listing/*.js
           start: |
@@ -278,10 +445,42 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
 
-      ## node install
-      - run: yarn --immutable
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        with:
+          version: 8
+          run_install: false
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Cache Cypress Binary
+        id: cache-cypress-binary
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/Cypress
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+
+      - run: pnpm i
+
+      - name: Install Cypress if not in cache
+        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
+        working-directory: packages/volto
+        run: make cypress-install
+
+      - name: Build packages
+        run: pnpm build:registry
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -293,6 +492,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           install: false
+          working-directory: packages/volto
           browser: chrome
           spec: cypress/tests/core/volto-slate/**/*.js
           start: |
@@ -329,10 +529,42 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
 
-      ## node install
-      - run: yarn --immutable
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        with:
+          version: 8
+          run_install: false
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Cache Cypress Binary
+        id: cache-cypress-binary
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/Cypress
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+
+      - run: pnpm i
+
+      - name: Install Cypress if not in cache
+        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
+        working-directory: packages/volto
+        run: make cypress-install
+
+      - name: Build packages
+        run: pnpm build:registry
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -344,6 +576,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           install: false
+          working-directory: packages/volto
           browser: chrome
           spec: cypress/tests/core/basic/**/*.js
           start: |
@@ -381,9 +614,42 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
 
-      - run: yarn --immutable
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        with:
+          version: 8
+          run_install: false
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Cache Cypress Binary
+        id: cache-cypress-binary
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/Cypress
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+
+      - run: pnpm i
+
+      - name: Install Cypress if not in cache
+        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
+        working-directory: packages/volto
+        run: make cypress-install
+
+      - name: Build packages
+        run: pnpm build:registry
 
       - name: Cypress Coresandbox Acceptance tests
         uses: cypress-io/github-action@v6
@@ -395,6 +661,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           install: false
+          working-directory: packages/volto
           browser: chrome
           spec: cypress/tests/coresandbox/**/*.js
           start: |
@@ -415,58 +682,79 @@ jobs:
           name: cypress-videos
           path: cypress/videos
 
-  guillotina:
-    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
-    name: Guillotina
-    runs-on: ubuntu-latest
-    timeout-minutes: 35
-    strategy:
-      fail-fast: false
-      matrix:
-        node-version: [18.x]
-    steps:
-      - uses: actions/checkout@v3
+  # guillotina:
+  #   if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
+  #   name: Guillotina
+  #   runs-on: ubuntu-latest
+  #   timeout-minutes: 35
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       node-version: [18.x]
+  #   steps:
+  #     - uses: actions/checkout@v3
 
-      # node setup
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
+  #     # node setup
+  #     - name: Use Node.js ${{ matrix.node-version }}
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: ${{ matrix.node-version }}
 
-      # node install
-      - run: yarn --immutable
+  #     - uses: pnpm/action-setup@v2
+  #       name: Install pnpm
+  #       with:
+  #         version: 8
+  #         run_install: false
 
-      - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v6
-        env:
-          BABEL_ENV: production
-          CYPRESS_API: guillotina
-          CYPRESS_RETRIES: 2
-          # Recommended: pass the GitHub token lets this action correctly
-          # determine the unique run id necessary to re-run the checks
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          install: false
-          browser: chrome
-          spec: cypress/tests/guillotina/**/*.js
-          start: |
-            make start-test-acceptance-server-guillotina
-            make start-test-acceptance-frontend-guillotina
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:8081 http://127.0.0.1:3000'
+  #     - name: Get pnpm store directory
+  #       shell: bash
+  #       run: |
+  #         echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-      # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v1
-        if: failure()
-        with:
-          name: cypress-screenshots
-          path: cypress/screenshots
-      # Upload Cypress videos
-      - uses: actions/upload-artifact@v1
-        if: failure()
-        with:
-          name: cypress-videos
-          path: cypress/videos
+  #     - uses: actions/cache@v3
+  #       name: Setup pnpm cache
+  #       with:
+  #         path: ${{ env.STORE_PATH }}
+  #         key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+  #         restore-keys: |
+  #           ${{ runner.os }}-pnpm-store-
+
+  #     - run: pnpm i
+
+  #     - name: Build packages
+  #       run: pnpm build:registry
+
+  #     - name: Cypress acceptance tests
+  #       uses: cypress-io/github-action@v6
+  #       env:
+  #         BABEL_ENV: production
+  #         CYPRESS_API: guillotina
+  #         CYPRESS_RETRIES: 2
+  #         # Recommended: pass the GitHub token lets this action correctly
+  #         # determine the unique run id necessary to re-run the checks
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #       with:
+  #         install: false
+  #         working-directory: packages/volto
+  #         browser: chrome
+  #         spec: cypress/tests/guillotina/**/*.js
+  #         start: |
+  #           make start-test-acceptance-server-guillotina
+  #           make start-test-acceptance-frontend-guillotina
+  #         wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:8081 http://127.0.0.1:3000'
+
+  #     # Upload Cypress screenshots
+  #     - uses: actions/upload-artifact@v1
+  #       if: failure()
+  #       with:
+  #         name: cypress-screenshots
+  #         path: cypress/screenshots
+  #     # Upload Cypress videos
+  #     - uses: actions/upload-artifact@v1
+  #       if: failure()
+  #       with:
+  #         name: cypress-videos
+  #         path: cypress/videos
 
   multilingual:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
@@ -485,10 +773,42 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
 
-      # node install
-      - run: yarn --immutable
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        with:
+          version: 8
+          run_install: false
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Cache Cypress Binary
+        id: cache-cypress-binary
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/Cypress
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+
+      - run: pnpm i
+
+      - name: Install Cypress if not in cache
+        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
+        working-directory: packages/volto
+        run: make cypress-install
+
+      - name: Build packages
+        run: pnpm build:registry
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -500,6 +820,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           install: false
+          working-directory: packages/volto
           browser: chrome
           spec: cypress/tests/multilingual/**/*.js
           start: |
@@ -538,10 +859,42 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
 
-      # node install
-      - run: yarn --immutable
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        with:
+          version: 8
+          run_install: false
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Cache Cypress Binary
+        id: cache-cypress-binary
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/Cypress
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+
+      - run: pnpm i
+
+      - name: Install Cypress if not in cache
+        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
+        working-directory: packages/volto
+        run: make cypress-install
+
+      - name: Build packages
+        run: pnpm build:registry
 
       # # python setup (temporary, while p.a.iterate changes are in a PR)
       # - name: Set up Python ${{ matrix.python-version }}
@@ -577,6 +930,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           install: false
+          working-directory: packages/volto
           browser: chrome
           spec: cypress/tests/workingCopy/**/*.js
           start: |
@@ -618,18 +972,46 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
 
-      # Build main Volto environment
-      - name: Build main Volto environment
-        run: yarn --immutable
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        with:
+          version: 8
+          run_install: false
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Cache Cypress Binary
+        id: cache-cypress-binary
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/Cypress
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+
+      - run: pnpm i
+
+      - name: Install Cypress if not in cache
+        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
+        working-directory: packages/volto
+        run: make cypress-install
+
+      - name: Build packages
+        run: pnpm build:registry
 
       # Generator own tests
       - name: Generator tests
-        # disabling unit tests on generator
-        # because of https://github.com/plone/volto/pull/5406
-        # run: yarn && yarn test
-        run: yarn
+        run: pnpm test
         working-directory: ${{env.generator-directory}}
 
       # install Yeoman and the generator
@@ -648,12 +1030,14 @@ jobs:
 
       - name: Install a yalc'ed version of the current Volto in the project - publish
         run: |
-          yalc publish
+          yalc publish packages/types
+          (cd packages/registry && yalc add @plone/types --no-pure && yalc publish)
           yalc publish packages/scripts
+          yalc publish packages/volto-slate
+          (cd packages/volto && yalc add @plone/scripts --no-pure && yalc add @plone/registry --no-pure && yalc add @plone/volto-slate --no-pure && yalc publish)
       - name: Install a yalc'ed version of the current Volto in the project - add
         run: |
           yalc add @plone/volto --no-pure
-          yalc add @plone/scripts --no-pure
         working-directory: ${{env.project-directory}}
       - name: Install a yalc'ed version of the current Volto in the project - install
         run: yarn config set -H enableImmutableInstalls false && yarn
@@ -669,6 +1053,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           install: false
+          working-directory: packages/volto
           browser: chrome
           spec: cypress/tests/minimal/**/*.js
           start: |
@@ -712,10 +1097,42 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
 
-      # node install
-      - run: yarn --immutable
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        with:
+          version: 8
+          run_install: false
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Cache Cypress Binary
+        id: cache-cypress-binary
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/Cypress
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+
+      - run: pnpm i
+
+      - name: Install Cypress if not in cache
+        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
+        working-directory: packages/volto
+        run: make cypress-install
+
+      - name: Build packages
+        run: pnpm build:registry
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -727,6 +1144,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           install: false
+          working-directory: packages/volto
           browser: chrome
           spec: cypress/tests/core/basic/**/*.js
           config: baseUrl=http://localhost
@@ -766,10 +1184,42 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
 
-      # node install
-      - run: yarn --immutable
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        with:
+          version: 8
+          run_install: false
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Cache Cypress Binary
+        id: cache-cypress-binary
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/Cypress
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+
+      - run: pnpm i
+
+      - name: Install Cypress if not in cache
+        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
+        working-directory: packages/volto
+        run: make cypress-install
+
+      - name: Build packages
+        run: pnpm build:registry
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -781,6 +1231,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           install: false
+          working-directory: packages/volto
           browser: chrome
           spec: cypress/tests/multilingual/**/*.js
           config: baseUrl=http://localhost

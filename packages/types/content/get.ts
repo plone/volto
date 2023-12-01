@@ -1,4 +1,4 @@
-import { Expanders, Item, PreviewImage, RelatedItem } from './common';
+import type { Expanders, Item, PreviewImage, RelatedItem } from './common';
 
 export interface GetContentResponse {
   '@components': Expanders;
