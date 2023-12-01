@@ -1,6 +1,5 @@
 node_modules
 build
-packages/generator-volto
 packages/volto-slate
 packages/volto
 packages/volto-testing
