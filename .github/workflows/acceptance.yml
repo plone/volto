@@ -656,6 +656,18 @@ jobs:
         run: yarn config set -H enableImmutableInstalls false && yarn
         working-directory: ${{env.project-directory}}
 
+      - name: Running lint on a project works
+        run: yarn lint
+        working-directory: ${{env.project-directory}}
+
+      - name: Running prettier on a project works
+        run: yarn prettier
+        working-directory: ${{env.project-directory}}
+
+      - name: Running stylelint on a project works
+        run: yarn stylelint
+        working-directory: ${{env.project-directory}}
+
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
         env:

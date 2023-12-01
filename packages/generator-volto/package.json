@@ -37,7 +37,7 @@
   ],
   "scripts": {
     "pretest": "eslint .",
-    "test": "jest --watchAll",
+    "test": "jest",
     "cypress:run": "CYPRESS_API=plone cypress run",
     "cypress:run:guillotina": "CYPRESS_API=guillotina cypress run",
     "cy:install": "cypress install",
