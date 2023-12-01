@@ -1,0 +1,1 @@
+Initialize only the development addons present in `compilerOptions.paths` filtered by the add-ons registered @sneridagh
