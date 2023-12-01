@@ -1,11 +1,9 @@
 {
-  "src/**/*.{js,jsx,ts,tsx,json}": [
+  "**/*.{js,jsx,ts,tsx,json}": [
     "pnpm eslint --max-warnings=0 --fix",
     "pnpm prettier --single-quote --write"
   ],
-  "src/**/*.{jsx, tsx}": ["pnpm i18n"],
-  "theme/**/*.{css,less,scss}": ["pnpm stylelint --fix"],
-  "src/**/*.{css,less,scss}": ["pnpm stylelint --fix"],
-  "theme/**/*.overrides": ["pnpm stylelint --fix"],
-  "src/**/*.overrides": ["pnpm stylelint --fix"]
+  "packages/volto/src/**/*.{jsx, tsx}": ["pnpm i18n"],
+  "**/*.{css,less,scss}": ["pnpm stylelint --fix"],
+  "packages/volto/**/*.overrides": ["pnpm stylelint --fix"]
 }
