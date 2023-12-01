@@ -36,9 +36,5 @@
     "vitest": "^0.34.6",
     "yarnhook": "0.6.1"
   },
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
   "packageManager": "pnpm@8.9.0"
 }
