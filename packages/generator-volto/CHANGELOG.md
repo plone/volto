@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 9.0.0-alpha.0 (2023-12-01)
+
+### Breaking
+
+- Release an alpha version only compatible with Volto 18. @sneridagh [#5468](https://github.com/plone/volto/issues/5468)
+
 ## 8.0.3 (2023-11-25)
 
 ### Bugfix
