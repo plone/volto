@@ -92,8 +92,8 @@ jobs:
         env:
           BASE_BRANCH: ${{ github.base_ref }}
 
-      - name: Wrong news changelog check
+      - name: Wrong location of news changelog check
         if: steps.filter.outputs.wrongNews == 'true'
-        run: echo "Wrongly placed news item in root. Please place it in the appropiate folder." && exit 1
+        run: echo "News items should be moved from the repository root to the appropriate package root in `packages/package-name`." && exit 1
         env:
           BASE_BRANCH: ${{ github.base_ref }}
