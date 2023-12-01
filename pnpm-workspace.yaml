@@ -7,4 +7,3 @@ packages:
   # exclude packages that are inside test directories
   - '!**/test/**'
   - '!packages/volto-guillotina'
-  - '!packages/volto-testing'
