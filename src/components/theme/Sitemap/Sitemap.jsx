@@ -34,7 +34,7 @@ export function getSitemapPath(pathname = '', lang) {
  * @returns {JSX.Element} - Rendered component.
  */
 function Sitemap(props) {
-  const { language, getNavigation, navroot } = props;
+  const { getNavigation, navroot } = props;
 
   useEffect(() => {
     const { settings } = config;
@@ -42,7 +42,7 @@ function Sitemap(props) {
       flattenToAppURL(navroot?.navroot?.['@id']),
       settings.siteMapDepth,
     );
-  }, [navroot, language, getNavigation]);
+  }, [navroot, getNavigation]);
 
   const renderItems = (items) => {
     return (
@@ -78,8 +78,8 @@ Sitemap.propTypes = {
   getNavigation: PropTypes.func.isRequired,
   location: PropTypes.object.isRequired,
   intl: PropTypes.object.isRequired,
-  lang: PropTypes.string.isRequired,
   items: PropTypes.array.isRequired,
+  navroot: PropTypes.object.isRequired,
 };
 
 export const __test__ = compose(
