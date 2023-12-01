@@ -37,7 +37,7 @@
   ],
   "scripts": {
     "pretest": "eslint .",
-    "test": "jest",
+    "test": "jest --watchAll",
     "cypress:run": "CYPRESS_API=plone cypress run",
     "cypress:run:guillotina": "CYPRESS_API=guillotina cypress run",
     "cy:install": "cypress install",
@@ -128,6 +128,7 @@
     "prettier": "3.0.3",
     "release-it": "^16.1.3",
     "yeoman-assert": "^3.1.0",
+    "yeoman-environment": "3.19.3",
     "yeoman-test": "^6.1.0"
   },
   "resolutions": {
