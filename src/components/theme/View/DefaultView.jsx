@@ -5,25 +5,23 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { defineMessages, injectIntl } from 'react-intl';
-
-import { Container, Image } from 'semantic-ui-react';
-import { map } from 'lodash';
-import config from '@plone/volto/registry';
+import { injectIntl } from 'react-intl';
 
 import {
-  getBlocksFieldname,
-  getBlocksLayoutFieldname,
-  hasBlocksData,
-  getBaseUrl,
-} from '@plone/volto/helpers';
+  Container as SemanticContainer,
+  Segment,
+  Grid,
+  Label,
+} from 'semantic-ui-react';
+import config from '@plone/volto/registry';
+import { getSchema } from '@plone/volto/actions';
+import { getWidget } from '@plone/volto/helpers/Widget/utils';
+import RenderBlocks from './RenderBlocks';
 
-const messages = defineMessages({
-  unknownBlock: {
-    id: 'Unknown Block',
-    defaultMessage: 'Unknown Block {block}',
-  },
-});
+import { hasBlocksData, getBaseUrl } from '@plone/volto/helpers';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { isEqual } from 'lodash';
 
 /**
  * Component to display the default view.
@@ -31,62 +29,82 @@ const messages = defineMessages({
  * @param {Object} content Content object.
  * @returns {string} Markup of the component.
  */
-const DefaultView = ({ content, intl, location }) => {
-  const blocksFieldname = getBlocksFieldname(content);
-  const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
-
-  return hasBlocksData(content) ? (
-    <div id="page-document" className="ui container">
-      {map(content[blocksLayoutFieldname].items, (block) => {
-        const Block =
-          config.blocks.blocksConfig[
-            content[blocksFieldname]?.[block]?.['@type']
-          ]?.['view'] || null;
-        return Block !== null ? (
-          <Block
-            key={block}
-            id={block}
-            properties={content}
-            data={content[blocksFieldname][block]}
-            path={getBaseUrl(location?.pathname || '')}
-          />
-        ) : (
-          <div key={block}>
-            {intl.formatMessage(messages.unknownBlock, {
-              block: content[blocksFieldname]?.[block]?.['@type'],
-            })}
-          </div>
-        );
-      })}
-    </div>
-  ) : (
-    <Container id="page-document">
-      <h1 className="documentFirstHeading">{content.title}</h1>
-      {content.description && (
-        <p className="documentDescription">{content.description}</p>
-      )}
-      {content.image && (
-        <Image
-          className="document-image"
-          src={content.image.scales.thumb.download}
-          floated="right"
-        />
-      )}
-      {content.remoteUrl && (
-        <span>
-          The link address is:
-          <a href={content.remoteUrl}>{content.remoteUrl}</a>
-        </span>
-      )}
-      {content.text && (
-        <div
-          dangerouslySetInnerHTML={{
-            __html: content.text.data,
-          }}
-        />
-      )}
-    </Container>
+const DefaultView = (props) => {
+  const { content, location } = props;
+  const path = getBaseUrl(location?.pathname || '');
+  const dispatch = useDispatch();
+  const { views } = config.widgets;
+  const contentSchema = useSelector((state) => state.schema?.schema);
+  const fieldsetsToExclude = [
+    'categorization',
+    'dates',
+    'ownership',
+    'settings',
+  ];
+  const fieldsets = contentSchema?.fieldsets.filter(
+    (fs) => !fieldsetsToExclude.includes(fs.id),
   );
+
+  // TL;DR: There is a flash of the non block-based view because of the reset
+  // of the content on route change. Subscribing to the content change at this
+  // level has nasty implications, so we can't watch the Redux state for loaded
+  // content flag here (because it forces an additional component update)
+  // Instead, we can watch if the content is "empty", but this has a drawback
+  // since the locking mechanism inserts a `lock` key before the content is there.
+  // So "empty" means `content` is present, but only with a `lock` key, thus the next
+  // ugly condition comes to life
+  const contentLoaded = content && !isEqual(Object.keys(content), ['lock']);
+
+  React.useEffect(() => {
+    content?.['@type'] &&
+      !hasBlocksData(content) &&
+      dispatch(getSchema(content['@type'], location.pathname));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const Container =
+    config.getComponent({ name: 'Container' }).component || SemanticContainer;
+
+  // If the content is not yet loaded, then do not show anything
+  return contentLoaded ? (
+    hasBlocksData(content) ? (
+      <Container id="page-document">
+        <RenderBlocks {...props} path={path} />
+      </Container>
+    ) : (
+      <Container id="page-document">
+        {fieldsets?.map((fs) => {
+          return (
+            <div className="fieldset" key={fs.id}>
+              {fs.id !== 'default' && <h2>{fs.title}</h2>}
+              {fs.fields?.map((f, key) => {
+                let field = {
+                  ...contentSchema?.properties[f],
+                  id: f,
+                  widget: getWidget(f, contentSchema?.properties[f]),
+                };
+                let Widget = views?.getWidget(field);
+                return f !== 'title' ? (
+                  <Grid celled="internally" key={key}>
+                    <Grid.Row>
+                      <Label title={field.id}>{field.title}:</Label>
+                    </Grid.Row>
+                    <Grid.Row>
+                      <Segment basic>
+                        <Widget value={content[f]} />
+                      </Segment>
+                    </Grid.Row>
+                  </Grid>
+                ) : (
+                  <Widget key={key} value={content[f]} />
+                );
+              })}
+            </div>
+          );
+        })}
+      </Container>
+    )
+  ) : null;
 };
 
 /**

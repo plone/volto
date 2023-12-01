@@ -1,6 +1,13 @@
-import React from 'react';
-import { toPublicURL, Helmet } from '@plone/volto/helpers';
+import React, { useEffect } from 'react';
+import {
+  toPublicURL,
+  Helmet,
+  hasApiExpander,
+  getBaseUrl,
+} from '@plone/volto/helpers';
+import { getNavroot } from '@plone/volto/actions';
 import config from '@plone/volto/registry';
+import { useDispatch, useSelector } from 'react-redux';
 
 const ContentMetadataTags = (props) => {
   const {
@@ -9,9 +16,21 @@ const ContentMetadataTags = (props) => {
     seo_title,
     seo_description,
     seo_canonical_url,
+    seo_noindex,
     title,
     description,
   } = props.content;
+
+  const dispatch = useDispatch();
+  const pathname = useSelector((state) => state.router.location.pathname);
+  const navroot = useSelector((state) => state.navroot?.data?.navroot);
+  const site = useSelector((state) => state.site?.data);
+
+  useEffect(() => {
+    if (pathname && !hasApiExpander('navroot', getBaseUrl(pathname))) {
+      dispatch(getNavroot(getBaseUrl(pathname)));
+    }
+  }, [dispatch, pathname]);
 
   const getContentImageInfo = () => {
     const { contentMetadataTagsImageField } = config.settings;
@@ -44,10 +63,30 @@ const ContentMetadataTags = (props) => {
 
   const contentImageInfo = getContentImageInfo();
 
+  const getTitle = () => {
+    const includeSiteTitle =
+      config?.settings?.siteTitleFormat?.includeSiteTitle || false;
+    const titleAndSiteTitleSeparator =
+      config?.settings?.titleAndSiteTitleSeparator || '-';
+    const navRootTitle = navroot?.title;
+    const siteRootTitle = site?.['plone.site_title'];
+    const titlePart = navRootTitle || siteRootTitle;
+
+    if (includeSiteTitle && titlePart && titlePart !== title) {
+      return seo_title || `${title} ${titleAndSiteTitleSeparator} ${titlePart}`;
+    } else {
+      return seo_title || title;
+    }
+  };
+
   return (
     <>
       <Helmet>
-        <title>{seo_title || title}</title>
+        <title>{getTitle()?.replace(/\u00AD/g, '')}</title>
+        <link
+          rel="canonical"
+          href={seo_canonical_url || toPublicURL(props.content['@id'])}
+        />
         <meta name="description" content={seo_description || description} />
         <meta
           property="og:title"
@@ -57,6 +96,7 @@ const ContentMetadataTags = (props) => {
           property="og:url"
           content={seo_canonical_url || toPublicURL(props.content['@id'])}
         />
+        {seo_noindex && <meta name="robots" content="noindex" />}
         {contentImageInfo.contentHasImage && (
           <meta
             property="og:image"

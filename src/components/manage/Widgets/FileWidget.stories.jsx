@@ -8,7 +8,7 @@ export const File = WidgetStory.bind({
 });
 
 export default {
-  title: 'Widgets/File',
+  title: 'Edit Widgets/File',
   component: FileWidget,
   decorators: [
     (Story) => (

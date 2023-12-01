@@ -27,6 +27,7 @@ import {
   MenuList,
   SortableMultiValue,
   SortableMultiValueLabel,
+  MultiValueContainer,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
 
 import { FormFieldWrapper } from '@plone/volto/components';
@@ -162,6 +163,8 @@ class ArrayWidget extends Component {
     choices: PropTypes.arrayOf(
       PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
     ),
+    vocabLoading: PropTypes.bool,
+    vocabLoaded: PropTypes.bool,
     items: PropTypes.shape({
       vocabulary: PropTypes.object,
     }),
@@ -171,6 +174,7 @@ class ArrayWidget extends Component {
     value: PropTypes.arrayOf(
       PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     ),
+    placeholder: PropTypes.string,
     onChange: PropTypes.func.isRequired,
     wrapped: PropTypes.bool,
     creatable: PropTypes.bool, //if widget has no vocab and you want to be creatable
@@ -222,7 +226,23 @@ class ArrayWidget extends Component {
       this.props.getVocabulary({
         vocabNameOrURL: this.props.vocabBaseUrl,
         size: -1,
-        subrequest: this.props.intl.locale,
+        subrequest: this.props.lang,
+      });
+    }
+  }
+
+  componentDidUpdate() {
+    if (
+      !this.props.items?.choices?.length &&
+      !this.props.choices?.length &&
+      this.props.vocabLoading === undefined &&
+      !this.props.vocabLoaded &&
+      this.props.vocabBaseUrl
+    ) {
+      this.props.getVocabulary({
+        vocabNameOrURL: this.props.vocabBaseUrl,
+        size: -1,
+        subrequest: this.props.lang,
       });
     }
   }
@@ -287,6 +307,7 @@ class ArrayWidget extends Component {
           // react-sortable-hoc props:
           axis="xy"
           onSortEnd={this.onSortEnd}
+          menuShouldScrollIntoView={false}
           distance={4}
           // small fix for https://github.com/clauderic/react-sortable-hoc/pull/352:
           getHelperDimensions={({ node }) => node.getBoundingClientRect()}
@@ -295,13 +316,18 @@ class ArrayWidget extends Component {
           isDisabled={this.props.disabled || this.props.isDisabled}
           className="react-select-container"
           classNamePrefix="react-select"
+          /* eslint-disable jsx-a11y/no-autofocus */
+          autoFocus={this.props.focus}
+          /* eslint-enable jsx-a11y/no-autofocus */
           options={
             this.props.vocabBaseUrl
               ? choices
               : this.props.choices
               ? [
                   ...choices,
-                  ...(this.props.noValueOption && !this.props.default
+                  ...(this.props.noValueOption &&
+                  (this.props.default === undefined ||
+                    this.props.default === null)
                     ? [
                         {
                           label: this.props.intl.formatMessage(
@@ -325,6 +351,7 @@ class ArrayWidget extends Component {
             ...(this.props.choices?.length > 25 && {
               MenuList,
             }),
+            MultiValueContainer,
             MultiValue: SortableMultiValue,
             MultiValueLabel: SortableMultiValueLabel,
             DropdownIndicator,
@@ -332,7 +359,10 @@ class ArrayWidget extends Component {
             Option,
           }}
           value={selectedOption || []}
-          placeholder={this.props.intl.formatMessage(messages.select)}
+          placeholder={
+            this.props.placeholder ??
+            this.props.intl.formatMessage(messages.select)
+          }
           onChange={this.handleChange}
           isValidNewOption={(
             inputValue,
@@ -371,21 +401,25 @@ export default compose(
         getVocabFromItems(props);
 
       const vocabState =
-        state.vocabularies?.[vocabBaseUrl]?.subrequests?.[props.intl.locale];
+        state.vocabularies?.[vocabBaseUrl]?.subrequests?.[state.intl.locale];
 
       // If the schema already has the choices in it, then do not try to get the vocab,
       // even if there is one
       if (props.items?.choices) {
         return {
           choices: props.items.choices,
+          lang: state.intl.locale,
         };
       } else if (vocabState) {
         return {
           choices: vocabState.items,
           vocabBaseUrl,
+          vocabLoading: vocabState.loading,
+          vocabLoaded: vocabState.loaded,
+          lang: state.intl.locale,
         };
       }
-      return { vocabBaseUrl };
+      return { vocabBaseUrl, lang: state.intl.locale };
     },
     { getVocabulary },
   ),

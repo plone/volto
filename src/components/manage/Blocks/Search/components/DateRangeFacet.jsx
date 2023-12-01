@@ -4,6 +4,8 @@ import { defineMessages, injectIntl } from 'react-intl';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import { compose } from 'redux';
 import { Icon } from '@plone/volto/components';
+import { toBackendLang } from '@plone/volto/helpers/Utils/Utils';
+import { connect } from 'react-redux';
 
 import leftKey from '@plone/volto/icons/left-key.svg';
 import rightKey from '@plone/volto/icons/right-key.svg';
@@ -59,7 +61,7 @@ const NextIcon = () => (
 const CloseIcon = () => <Icon name={clearSVG} size="24px" className="close" />;
 
 const DateRangeFacet = (props) => {
-  const { facet, isEditMode, onChange, value, reactDates, intl } = props;
+  const { facet, isEditMode, onChange, value, reactDates, intl, lang } = props;
   const moment = props.moment.default;
   const { DateRangePicker } = reactDates;
   const [focused, setFocused] = useState(null);
@@ -81,7 +83,9 @@ const DateRangeFacet = (props) => {
             noBorder
             showClearDates
             customCloseIcon={<CloseIcon />}
-            displayFormat={moment.localeData(intl.locale).longDateFormat('L')}
+            displayFormat={moment
+              .localeData(toBackendLang(lang))
+              .longDateFormat('L')}
             focusedInput={focused}
             onFocusChange={(focusedInput) => setFocused(focusedInput)}
             onDatesChange={({ startDate, endDate }) => {
@@ -116,5 +120,8 @@ DateRangeFacet.valueToQuery = ({ value, facet }) => {
 
 export default compose(
   injectLazyLibs(['reactDates', 'moment']),
+  connect((state) => ({
+    lang: state.intl.locale,
+  })),
   injectIntl,
 )(DateRangeFacet);

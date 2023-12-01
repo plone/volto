@@ -1,3 +1,4 @@
+import React from 'react';
 import config from '@plone/volto/registry';
 import {
   applyConfig,
@@ -5,12 +6,15 @@ import {
   getColor,
   getInitials,
   hasApiExpander,
-  normalizeLanguageName,
+  toGettextLang,
   parseDateTime,
   removeFromArray,
   reorderArray,
   replaceItemOfArray,
   safeWrapper,
+  slugify,
+  cloneDeepSchema,
+  normalizeString,
 } from './Utils';
 import moment from 'moment';
 import deepFreeze from 'deep-freeze';
@@ -281,12 +285,12 @@ describe('Utils tests', () => {
     });
   });
 
-  describe('normalizeLanguageName', () => {
+  describe('toGettextLang', () => {
     it('Normalizes an extended language (pt_BR)', () => {
-      expect(normalizeLanguageName('pt-br')).toStrictEqual('pt_BR');
+      expect(toGettextLang('pt-br')).toStrictEqual('pt_BR');
     });
     it('Normalizes a simple language (ca)', () => {
-      expect(normalizeLanguageName('ca')).toStrictEqual('ca');
+      expect(toGettextLang('ca')).toStrictEqual('ca');
     });
   });
 
@@ -380,6 +384,96 @@ describe('Utils tests', () => {
       deepFreeze(array);
       const result = reorderArray(array, 2, 0);
       expect(result).toEqual(['c', 'a', 'b']);
+    });
+  });
+
+  describe('normalizeString', () => {
+    it('normalizeString no diacritics', () => {
+      const str = `my string without diacritics`;
+      expect(normalizeString(str)).toBe('my string without diacritics');
+    });
+
+    it('normalizeString with diacritics', () => {
+      const str = `my Ü Ú é à ñ string with diacritics`;
+      expect(normalizeString(str)).toBe('my U U e a n string with diacritics');
+    });
+  });
+
+  describe('slugify', () => {
+    it('slugifies a standard string', () => {
+      expect(slugify('Content Type')).toBe('content_type');
+    });
+    it('slugifies a standard string with several whitespaces', () => {
+      expect(slugify('This is a test')).toBe('this_is_a_test');
+    });
+    it('slugifies a standard string with strange chars', () => {
+      expect(slugify('This is a test?')).toBe('this_is_a_test');
+    });
+    it('slugifies a standard string with dashes', () => {
+      expect(slugify('This is a-test')).toBe('this_is_a_test');
+    });
+  });
+
+  describe('cloneDeepSchema', () => {
+    it('clone an object with JSX on it', () => {
+      const schema = {
+        fieldsets: [
+          {
+            id: 'default',
+            title: 'Default',
+            fields: ['url', 'alt'],
+          },
+        ],
+        properties: {
+          url: {
+            title: 'url',
+            widget: 'url',
+          },
+          alt: {
+            title: 'alt',
+            description: (
+              <>
+                <a
+                  href="https://www.w3.org/WAI/tutorials/images/decision-tree/"
+                  title=""
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Alt text
+                </a>{' '}
+                Alt hint
+              </>
+            ),
+          },
+        },
+        required: [],
+      };
+
+      expect(cloneDeepSchema(schema)).toStrictEqual({
+        fieldsets: [
+          { fields: ['url', 'alt'], id: 'default', title: 'Default' },
+        ],
+        properties: {
+          alt: {
+            description: (
+              <React.Fragment>
+                <a
+                  href="https://www.w3.org/WAI/tutorials/images/decision-tree/"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  title=""
+                >
+                  Alt text
+                </a>{' '}
+                Alt hint
+              </React.Fragment>
+            ),
+            title: 'alt',
+          },
+          url: { title: 'url', widget: 'url' },
+        },
+        required: [],
+      });
     });
   });
 });

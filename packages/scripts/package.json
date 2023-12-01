@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "1.4.1",
+  "version": "3.0.1",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -18,6 +18,7 @@
     "url": "https://github.com/plone/volto/issues",
     "email": "plone-developers@lists.sourceforge.net"
   },
+  "type": "module",
   "homepage": "https://plone.org",
   "keywords": [
     "volto",
@@ -33,17 +34,17 @@
     "release-alpha": "release-it --preRelease=alpha"
   },
   "bin": {
-    "i18n": "./i18n.js",
-    "changelogupdater": "./changelogupdater.js",
-    "addon": "./addon.js"
+    "addon": "./addon/index.js",
+    "changelogupdater": "./changelogupdater.cjs",
+    "i18n": "./i18n.cjs"
   },
   "release-it": {
     "hooks": {
-      "after:bump": "node ./changelogupdater.js bump ${version}",
-      "after:release": "node ./changelogupdater.js back ${version} && git commit -am 'Back to development (@plone/scripts)' && git push"
+      "after:bump": "pipx run towncrier build --draft --yes --version ${version} > .changelog.draft && pipx run towncrier build --yes --version ${version}",
+      "after:release": "rm .changelog.draft"
     },
     "git": {
-      "changelog": "node ./changelogupdater.js excerpt",
+      "changelog": "pipx run towncrier build --draft --yes --version 0.0.0",
       "requireUpstream": false,
       "requireCleanWorkingDir": false,
       "commitMessage": "Release @plone/scripts ${version}",
@@ -53,7 +54,7 @@
     "github": {
       "release": true,
       "releaseName": "@plone/scripts ${version}",
-      "releaseNotes": "node ./changelogupdater.js excerpt"
+      "releaseNotes": "cat .changelog.draft"
     }
   },
   "publishConfig": {
@@ -61,15 +62,15 @@
   },
   "dependencies": {
     "babel-plugin-react-intl": "5.1.17",
-    "babel-preset-razzle": "3.4.5",
+    "babel-preset-razzle": "4.2.17",
+    "chalk": "4",
     "commander": "8.2.0",
-    "git-url-parse": "^11.6.0",
+    "fs-extra": "10.1.0",
+    "git-url-parse": "^13.1.0",
     "mrs-developer": "*",
-    "pofile": "1.0.10",
-    "razzle": "3.4.5",
-    "simple-git": "3.5.0"
+    "pofile": "1.0.10"
   },
   "devDependencies": {
-    "release-it": "14.2.1"
+    "release-it": "^16.1.3"
   }
 }

@@ -70,6 +70,38 @@ describe('IdWidget', () => {
     await waitFor(() => {});
     expect(container).toMatchSnapshot();
   });
+  test('renders an id widget with a valid dot character', async () => {
+    const store = mockStore({
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+      querystring: {
+        indexes: {},
+      },
+    });
+    config.settings = {
+      reservedIds: ['login'],
+    };
+
+    const { container } = render(
+      <Provider store={store}>
+        <IdWidget
+          id="my-field.jpg"
+          title="My field"
+          fieldSet="default"
+          onChange={() => {}}
+          onBlur={() => {}}
+          onClick={() => {}}
+          value="test-id"
+        />
+      </Provider>,
+    );
+
+    await waitFor(() => {});
+    expect(container).toMatchSnapshot();
+  });
+
   test('renders an id widget with invalid characters', async () => {
     const store = mockStore({
       intl: {

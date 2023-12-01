@@ -119,7 +119,7 @@ Disabled.args = {
 };
 
 export default {
-  title: 'Widgets/Token',
+  title: 'Edit Widgets/Token',
   component: TokenWidget,
   decorators: [
     (Story) => (

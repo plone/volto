@@ -1,16 +1,11 @@
-/**
- * Login container.
- * @module components/theme/Sitemap/Sitemap
- */
-
-import React, { Component } from 'react';
+import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { asyncConnect } from '@plone/volto/helpers';
 import { defineMessages, injectIntl } from 'react-intl';
-import { Container } from 'semantic-ui-react';
-import { Helmet } from '@plone/volto/helpers';
+import { Container as SemanticContainer } from 'semantic-ui-react';
+import { Helmet, toBackendLang } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
 import config from '@plone/volto/registry';
 
@@ -22,37 +17,34 @@ const messages = defineMessages({
     defaultMessage: 'Sitemap',
   },
 });
+
+export function getSitemapPath(pathname = '', lang) {
+  const prefix = pathname.replace(/\/sitemap$/gm, '').replace(/^\//, '');
+  const path = prefix || lang || '';
+  return path;
+}
+
 /**
- * Sitemap class.
- * @class Sitemap
- * @extends Component
+ * Sitemap function component.
+ * @function Sitemap
+ * @param {Object} props - Component properties.
+ * @returns {JSX.Element} - Rendered component.
  */
-class Sitemap extends Component {
-  /**
-   * Property types.
-   * @property {Object} propTypes Property types.
-   * @static
-   */
-  static propTypes = {
-    getNavigation: PropTypes.func.isRequired,
-  };
+function Sitemap(props) {
+  const {
+    location: { pathname },
+    language,
+    getNavigation,
+  } = props;
 
-  componentDidMount() {
+  useEffect(() => {
     const { settings } = config;
-    if (settings.isMultilingual) {
-      this.props.getNavigation(`${this.props.lang}`, 4);
-    } else {
-      this.props.getNavigation('', 4);
-    }
-  }
+    const lang = settings.isMultilingual ? `${toBackendLang(language)}` : null;
+    const path = getSitemapPath(pathname, lang);
+    getNavigation(path, 4);
+  }, [pathname, language, getNavigation]);
 
-  /**
-   * Render method.
-   * @method render
-   * @returns {string} Markup for the component.
-   */
-
-  renderItems = (items) => {
+  const renderItems = (items) => {
     return (
       <ul>
         {items.map((item) => (
@@ -61,25 +53,34 @@ class Sitemap extends Component {
             className={item.items?.length > 0 ? 'with-children' : ''}
           >
             <Link to={item.url}>{item.title}</Link>
-            {item.items && this.renderItems(item.items)}
+            {item.items && renderItems(item.items)}
           </li>
         ))}
       </ul>
     );
   };
-  render() {
-    const { items } = this.props;
-    return (
-      <div id="page-sitemap">
-        <Helmet title={this.props.intl.formatMessage(messages.Sitemap)} />
-        <Container className="view-wrapper">
-          <h1>{this.props.intl.formatMessage(messages.Sitemap)} </h1>
-          {items && this.renderItems(items)}
-        </Container>
-      </div>
-    );
-  }
+
+  const Container =
+    config.getComponent({ name: 'Container' }).component || SemanticContainer;
+
+  return (
+    <div id="page-sitemap">
+      <Helmet title={props.intl.formatMessage(messages.Sitemap)} />
+      <Container className="view-wrapper">
+        <h1>{props.intl.formatMessage(messages.Sitemap)} </h1>
+        {props.items && renderItems(props.items)}
+      </Container>
+    </div>
+  );
 }
+
+Sitemap.propTypes = {
+  getNavigation: PropTypes.func.isRequired,
+  location: PropTypes.object.isRequired,
+  intl: PropTypes.object.isRequired,
+  lang: PropTypes.string.isRequired,
+  items: PropTypes.array.isRequired,
+};
 
 export const __test__ = compose(
   injectIntl,
@@ -105,13 +106,15 @@ export default compose(
     {
       key: 'navigation',
       promise: ({ location, store: { dispatch, getState } }) => {
+        if (!__SERVER__) return;
         const { settings } = config;
-        const lang = getState().intl.locale;
-        if (settings.isMultilingual) {
-          return __SERVER__ && dispatch(getNavigation(`${lang}`, 4));
-        } else {
-          return __SERVER__ && dispatch(getNavigation('', 4));
-        }
+        const path = getSitemapPath(
+          location.pathname,
+          settings.isMultilingual
+            ? toBackendLang(getState().intl.locale)
+            : null,
+        );
+        return dispatch(getNavigation(path, 4));
       },
     },
   ]),

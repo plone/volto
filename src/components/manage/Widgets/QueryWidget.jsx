@@ -12,9 +12,9 @@ import { filter, remove, toPairs, groupBy, isEmpty, map } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 import { getQuerystring } from '@plone/volto/actions';
 import { Icon, ObjectBrowserWidget } from '@plone/volto/components';
-import { format, parse } from 'date-fns';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import cx from 'classnames';
+import config from '@plone/volto/registry';
 
 import {
   Option,
@@ -141,11 +141,7 @@ export class QuerystringWidgetComponent extends Component {
       case 'DateWidget':
         return (
           <Form.Field style={{ flex: '1 0 auto' }}>
-            <Input
-              type="date"
-              {...props}
-              value={format(parse(row.v), 'YYYY-MM-DD')}
-            />
+            <Input type="date" {...props} value={row.v} />
           </Form.Field>
         );
       case 'DateRangeWidget': // 2 date inputs
@@ -155,7 +151,7 @@ export class QuerystringWidgetComponent extends Component {
               <Input
                 type="date"
                 {...props}
-                value={format(parse(row.v[0]), 'YYYY-MM-DD')}
+                value={row.v[0]}
                 onChange={(data) =>
                   this.onChangeValue(index, [data.target.value, row.v[1]])
                 }
@@ -165,7 +161,7 @@ export class QuerystringWidgetComponent extends Component {
               <Input
                 type="date"
                 {...props}
-                value={format(parse(row.v[1]), 'YYYY-MM-DD')}
+                value={row.v[1]}
                 onChange={(data) =>
                   this.onChangeValue(index, [row.v[0], data.target.value])
                 }
@@ -269,6 +265,24 @@ export class QuerystringWidgetComponent extends Component {
             />
           </Form.Field>
         );
+      case 'autocomplete':
+        const AutoCompleteComponent = config.widgets.widget.autocomplete;
+        const vocabulary = { '@id': this.props.indexes[row.i].vocabulary };
+        return (
+          <Form.Field style={{ flex: '1 0 auto', maxWidth: '92%' }}>
+            <AutoCompleteComponent
+              {...props}
+              vocabulary={vocabulary}
+              wrapped={false}
+              id={`id-${index}`}
+              title={`title-${index}`}
+              onChange={(_d, data) => {
+                this.onChangeValue(index, data);
+              }}
+            />
+          </Form.Field>
+        );
+      case 'ReferenceWidget':
       default:
         // if (row.o === 'plone.app.querystring.operation.string.relativePath') {
         //   props.onChange = data => this.onChangeValue(index, data.target.value);
@@ -365,10 +379,17 @@ export class QuerystringWidgetComponent extends Component {
                             ),
                             (group) => ({
                               label: group[0],
-                              options: map(group[1], (field) => ({
-                                label: field[1].title,
-                                value: field[0],
-                              })),
+                              options: map(
+                                filter(group[1], (item) => item[1].enabled),
+                                (field) => ({
+                                  label: field[1].title,
+                                  value: field[0],
+                                  isDisabled: (value || []).some(
+                                    (v) =>
+                                      v['i'] !== 'path' && v['i'] === field[0],
+                                  ),
+                                }),
+                              ),
                             }),
                           )}
                           styles={customSelectStyles}
@@ -403,7 +424,7 @@ export class QuerystringWidgetComponent extends Component {
                           className="react-select-container"
                           classNamePrefix="react-select"
                           options={map(
-                            indexes[row.i].operations,
+                            indexes[row.i]?.operations ?? [],
                             (operation) => ({
                               value: operation,
                               label: indexes[row.i].operators[operation].title,
@@ -495,6 +516,12 @@ export class QuerystringWidgetComponent extends Component {
                           (field) => ({
                             label: field[1].title,
                             value: field[0],
+                            // disable selecting indexes that are already used,
+                            // except for path, which has explicit support
+                            // in the backend for multipath queries
+                            isDisabled: (value || []).some(
+                              (v) => v['i'] !== 'path' && v['i'] === field[0],
+                            ),
                           }),
                         ),
                       }),

@@ -18,7 +18,11 @@ import {
   SET_APIERROR,
 } from '@plone/volto/constants/ActionTypes';
 import { changeLanguage } from '@plone/volto/actions';
-import { normalizeLanguageName, getCookieOptions } from '@plone/volto/helpers';
+import {
+  toGettextLang,
+  toReactIntlLang,
+  getCookieOptions,
+} from '@plone/volto/helpers';
 let socket = null;
 
 /**
@@ -36,20 +40,22 @@ let socket = null;
  * @param {*} type The action type
  * @returns {string} The url/path with the configured expanders added to the query string
  */
-export function addExpandersToPath(path, type) {
+export function addExpandersToPath(path, type, isAnonymous) {
   const { settings } = config;
   const { apiExpanders = [] } = settings;
 
   const {
     url,
     query: { expand, ...query },
-  } = qs.parseUrl(path);
+  } = qs.parseUrl(path, { decode: false });
 
   const expandersFromConfig = apiExpanders
     .filter((expand) => matchPath(url, expand.match) && expand[type])
     .map((expand) => expand[type]);
 
-  const expandMerge = compact(union([expand, ...flatten(expandersFromConfig)]));
+  const expandMerge = compact(
+    union([expand, ...flatten(expandersFromConfig)]),
+  ).filter((item) => !(item === 'types' && isAnonymous)); // Remove types expander if isAnonymous
 
   const stringifiedExpand = qs.stringify(
     { expand: expandMerge },
@@ -59,7 +65,21 @@ export function addExpandersToPath(path, type) {
     },
   );
 
-  const stringifiedQuery = qs.stringify(query, {
+  const querystringFromConfig = apiExpanders
+    .filter((expand) => matchPath(url, expand.match) && expand[type])
+    .reduce((acc, expand) => {
+      let querystring = expand?.['querystring'];
+      // The querystring accepts being a function to be able to take other
+      // config parameters
+      if (typeof querystring === 'function') {
+        querystring = querystring(config);
+      }
+      return { ...acc, ...querystring };
+    }, {});
+
+  const queryMerge = { ...query, ...querystringFromConfig };
+
+  const stringifiedQuery = qs.stringify(queryMerge, {
     encode: false,
   });
 
@@ -105,161 +125,166 @@ function sendOnSocket(request) {
  * @param {Object} api Api object.
  * @returns {Promise} Action promise.
  */
-export default (api) => ({ dispatch, getState }) => (next) => (action) => {
-  const { settings } = config;
+const apiMiddlewareFactory =
+  (api) =>
+  ({ dispatch, getState }) =>
+  (next) =>
+  (action) => {
+    const { settings } = config;
 
-  if (typeof action === 'function') {
-    return action(dispatch, getState);
-  }
+    const token = getState().userSession.token;
+    let isAnonymous = true;
+    if (token) {
+      const tokenExpiration = jwtDecode(token).exp;
+      const currentTime = new Date().getTime() / 1000;
+      isAnonymous = !token || currentTime > tokenExpiration;
+    }
 
-  const { request, type, mode = 'parallel', ...rest } = action;
-  const { subrequest } = action; // We want subrequest remains in `...rest` above
+    if (typeof action === 'function') {
+      return action(dispatch, getState);
+    }
 
-  let actionPromise;
+    const { request, type, mode = 'parallel', ...rest } = action;
+    const { subrequest } = action; // We want subrequest remains in `...rest` above
 
-  if (!request) {
-    return next(action);
-  }
+    let actionPromise;
 
-  next({ ...rest, type: `${type}_PENDING` });
+    if (!request) {
+      return next(action);
+    }
 
-  if (socket) {
-    actionPromise = Array.isArray(request)
-      ? Promise.all(
-          request.map((item) =>
-            sendOnSocket({
-              ...item,
-              path: addExpandersToPath(item.path, type),
-              id: type,
-            }),
-          ),
-        )
-      : sendOnSocket({
-          ...request,
-          path: addExpandersToPath(request.path, type),
-          id: type,
-        });
-  } else {
-    actionPromise = Array.isArray(request)
-      ? mode === 'serial'
-        ? request.reduce((prevPromise, item) => {
-            return prevPromise.then((acc) => {
-              return api[item.op](addExpandersToPath(item.path, type), {
-                data: item.data,
-                type: item.type,
-                headers: item.headers,
-                params: request.params,
-                checkUrl: settings.actions_raising_api_errors.includes(
-                  action.type,
-                ),
-              }).then((reqres) => {
-                return [...acc, reqres];
-              });
-            });
-          }, Promise.resolve([]))
-        : Promise.all(
+    next({ ...rest, type: `${type}_PENDING` });
+
+    if (socket) {
+      actionPromise = Array.isArray(request)
+        ? Promise.all(
             request.map((item) =>
-              api[item.op](addExpandersToPath(item.path, type), {
-                data: item.data,
-                type: item.type,
-                headers: item.headers,
-                params: request.params,
-                checkUrl: settings.actions_raising_api_errors.includes(
-                  action.type,
-                ),
+              sendOnSocket({
+                ...item,
+                path: addExpandersToPath(item.path, type, isAnonymous),
+                id: type,
               }),
             ),
           )
-      : api[request.op](addExpandersToPath(request.path, type), {
-          data: request.data,
-          type: request.type,
-          headers: request.headers,
-          params: request.params,
-          checkUrl: settings.actions_raising_api_errors.includes(action.type),
-        });
-    actionPromise.then(
-      (result) => {
-        const { settings } = config;
-        if (getState().apierror.connectionRefused) {
-          next({
-            ...rest,
-            type: RESET_APIERROR,
+        : sendOnSocket({
+            ...request,
+            path: addExpandersToPath(request.path, type, isAnonymous),
+            id: type,
           });
-        }
-        if (type === GET_CONTENT) {
-          const lang = result?.language?.token;
-          if (
-            lang &&
-            getState().intl.language !== lang &&
-            !subrequest &&
-            config.settings.supportedLanguages.includes(lang)
-          ) {
-            const langFileName = normalizeLanguageName(lang);
-            import('~/../locales/' + langFileName + '.json').then((locale) => {
-              dispatch(changeLanguage(lang, locale.default));
+    } else {
+      actionPromise = Array.isArray(request)
+        ? mode === 'serial'
+          ? request.reduce((prevPromise, item) => {
+              return prevPromise.then((acc) => {
+                return api[item.op](
+                  addExpandersToPath(item.path, type, isAnonymous),
+                  {
+                    data: item.data,
+                    type: item.type,
+                    headers: item.headers,
+                    params: request.params,
+                    checkUrl: settings.actions_raising_api_errors.includes(
+                      action.type,
+                    ),
+                  },
+                ).then((reqres) => {
+                  return [...acc, reqres];
+                });
+              });
+            }, Promise.resolve([]))
+          : Promise.all(
+              request.map((item) =>
+                api[item.op](addExpandersToPath(item.path, type, isAnonymous), {
+                  data: item.data,
+                  type: item.type,
+                  headers: item.headers,
+                  params: request.params,
+                  checkUrl: settings.actions_raising_api_errors.includes(
+                    action.type,
+                  ),
+                }),
+              ),
+            )
+        : api[request.op](addExpandersToPath(request.path, type, isAnonymous), {
+            data: request.data,
+            type: request.type,
+            headers: request.headers,
+            params: request.params,
+            checkUrl: settings.actions_raising_api_errors.includes(action.type),
+          });
+      actionPromise.then(
+        (result) => {
+          const { settings } = config;
+          if (getState().apierror.connectionRefused) {
+            next({
+              ...rest,
+              type: RESET_APIERROR,
             });
           }
-        }
-        if (type === LOGIN && settings.websockets) {
-          const cookies = new Cookies();
-          cookies.set(
-            'auth_token',
-            result.token,
-            getCookieOptions({
-              expires: new Date(jwtDecode(result.token).exp * 1000),
-            }),
-          );
-          api.get('/@wstoken').then((res) => {
-            socket = new WebSocket(
-              `${settings.apiPath.replace('http', 'ws')}/@ws?ws_token=${
-                res.token
-              }`,
+          if (type === GET_CONTENT) {
+            const lang = result?.language?.token;
+            if (
+              lang &&
+              getState().intl.locale !== toReactIntlLang(lang) &&
+              !subrequest &&
+              config.settings.supportedLanguages.includes(lang)
+            ) {
+              const langFileName = toGettextLang(lang);
+              import('~/../locales/' + langFileName + '.json').then(
+                (locale) => {
+                  dispatch(changeLanguage(lang, locale.default));
+                },
+              );
+            }
+          }
+          if (type === LOGIN && settings.websockets) {
+            const cookies = new Cookies();
+            cookies.set(
+              'auth_token',
+              result.token,
+              getCookieOptions({
+                expires: new Date(jwtDecode(result.token).exp * 1000),
+              }),
             );
-            socket.onmessage = (message) => {
-              const packet = JSON.parse(message.data);
-              if (packet.error) {
-                dispatch({
-                  type: `${packet.id}_FAIL`,
-                  error: packet.error,
-                });
-              } else {
-                dispatch({
-                  type: `${packet.id}_SUCCESS`,
-                  result: JSON.parse(packet.data),
-                });
-              }
-            };
-          });
-        }
-        return next({ ...rest, result, type: `${type}_SUCCESS` });
-      },
-      (error) => {
-        // Only SRR can set ECONNREFUSED
-        if (error.code === 'ECONNREFUSED') {
-          next({
-            ...rest,
-            error,
-            statusCode: error.code,
-            connectionRefused: true,
-            type: SET_APIERROR,
-          });
-        }
-
-        // Response error is marked crossDomain if CORS error happen
-        else if (error.crossDomain) {
-          next({
-            ...rest,
-            error,
-            statusCode: 'CORSERROR',
-            connectionRefused: false,
-            type: SET_APIERROR,
-          });
-        }
-
-        // Check for actions who can raise api errors
-        if (settings.actions_raising_api_errors.includes(action.type)) {
-          // Gateway timeout
-          if (error?.response?.statusCode === 504) {
+            api.get('/@wstoken').then((res) => {
+              socket = new WebSocket(
+                `${settings.apiPath.replace('http', 'ws')}/@ws?ws_token=${
+                  res.token
+                }`,
+              );
+              socket.onmessage = (message) => {
+                const packet = JSON.parse(message.data);
+                if (packet.error) {
+                  dispatch({
+                    type: `${packet.id}_FAIL`,
+                    error: packet.error,
+                  });
+                } else {
+                  dispatch({
+                    type: `${packet.id}_SUCCESS`,
+                    result: JSON.parse(packet.data),
+                  });
+                }
+              };
+            });
+          }
+          try {
+            return next({ ...rest, result, type: `${type}_SUCCESS` });
+          } catch (error) {
+            // There was an exception while processing reducers or downstream middleware.
+            next({
+              ...rest,
+              error: { status: 500, error },
+              type: `${type}_FAIL`,
+            });
+            // Rethrow the original exception on the client side only,
+            // so it doesn't fall through to express on the server.
+            if (__CLIENT__) throw error;
+          }
+        },
+        (error) => {
+          // Only SSR can set ECONNREFUSED
+          if (error.code === 'ECONNREFUSED') {
             next({
               ...rest,
               error,
@@ -269,33 +294,70 @@ export default (api) => ({ dispatch, getState }) => (next) => (action) => {
             });
           }
 
-          // Redirect
-          else if (error?.code === 301) {
+          // Response error is marked crossDomain if CORS error happen
+          else if (error.crossDomain) {
             next({
               ...rest,
               error,
-              statusCode: error.code,
+              statusCode: 'CORSERROR',
               connectionRefused: false,
               type: SET_APIERROR,
             });
           }
 
-          // Unauthorized
-          else if (error?.response?.statusCode === 401) {
-            next({
-              ...rest,
-              error,
-              statusCode: error.response,
-              message: error.response.body.message,
-              connectionRefused: false,
-              type: SET_APIERROR,
-            });
-          }
-        }
-        return next({ ...rest, error, type: `${type}_FAIL` });
-      },
-    );
-  }
+          // Check for actions who can raise api errors
+          if (settings.actions_raising_api_errors.includes(action.type)) {
+            // Gateway timeout
+            if (error?.response?.statusCode === 504) {
+              next({
+                ...rest,
+                error,
+                statusCode: error.code,
+                connectionRefused: true,
+                type: SET_APIERROR,
+              });
+            }
 
-  return actionPromise;
-};
+            // Redirect
+            else if (error?.code === 301) {
+              next({
+                ...rest,
+                error,
+                statusCode: error.code,
+                connectionRefused: false,
+                type: SET_APIERROR,
+              });
+            }
+
+            // Redirect
+            else if (error?.code === 408) {
+              next({
+                ...rest,
+                error,
+                statusCode: error.code,
+                connectionRefused: false,
+                type: SET_APIERROR,
+              });
+            }
+
+            // Unauthorized
+            else if (error?.response?.statusCode === 401) {
+              next({
+                ...rest,
+                error,
+                statusCode: error.response,
+                message: error.response.body.message,
+                connectionRefused: false,
+                type: SET_APIERROR,
+              });
+            }
+          }
+          return next({ ...rest, error, type: `${type}_FAIL` });
+        },
+      );
+    }
+
+    return actionPromise;
+  };
+
+export default apiMiddlewareFactory;

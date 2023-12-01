@@ -246,7 +246,7 @@ CustomOptions.args = {
 };
 
 export default {
-  title: 'Widgets/Select Widget',
+  title: 'Edit Widgets/Select Widget',
   component: SelectWidgetComponent,
   decorators: [
     (Story) => (

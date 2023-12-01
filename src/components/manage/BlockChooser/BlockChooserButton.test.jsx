@@ -6,6 +6,8 @@ import { render } from '@testing-library/react';
 
 import config from '@plone/volto/registry';
 
+config.experimental = { addBlockButton: { enabled: false } };
+
 config.blocks.blocksConfig.text = {
   id: 'text',
   title: 'Text',
@@ -24,23 +26,6 @@ config.blocks.blocksConfig.text = {
 config.settings.defaultBlockType = 'text';
 
 const mockStore = configureStore();
-
-test('Does not render if the block is not empty', () => {
-  const store = mockStore({
-    intl: {
-      locale: 'en',
-      messages: {},
-    },
-  });
-
-  const data = {}; // Volto plays safe with unknown data
-  const { container } = render(
-    <Provider store={store}>
-      <BlockChooserButton data={data} block="123" />
-    </Provider>,
-  );
-  expect(container).toMatchSnapshot();
-});
 
 test('Renders a button', () => {
   const store = mockStore({

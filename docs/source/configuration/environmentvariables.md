@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Environment variables allow configuration of your Volto application at runtime."
-  "property=og:description": "Environment variables allow configuration of your Volto application at runtime."
-  "property=og:title": "Environment variables"
-  "keywords": "Volto, React, Plone, Environment variables, Razzle,"
+myst:
+  html_meta:
+    "description": "Environment variables allow configuration of your Volto application at runtime."
+    "property=og:description": "Environment variables allow configuration of your Volto application at runtime."
+    "property=og:title": "Environment variables"
+    "keywords": "Volto, React, Plone, Environment variables, Razzle,"
 ---
 
 # Environment variables
@@ -92,7 +93,15 @@ also
 DEBUG=volto:* yarn start
 ```
 
-#### Component Shadowing errors (shadowing)
+#### `DEBUG_ADDONS_LOADER`
+
+Set `DEBUG_ADDONS_LOADER=true` to have Volto generate a file, `addon-dependency-graph.dot` which contains a graph of all the loaded addons. You can use [Graphviz](https://graphviz.org/) to convert this file to an image with:
+
+```
+dot addon-dependency-graph.dot -Tsvg -o out.svg
+```
+
+#### Component shadowing errors (shadowing)
 
 It displays the errors of the non-compliant customizations (in server console) if you are experiencing problems with a customization not working.
 
@@ -179,7 +188,7 @@ As a result, your app will load the add-ons in the following order:
 - `volto-slate`
 
 ```{important}
-The `ADDONS` key is a Volto specific configuration. Simply setting `ADDONS` doesn't download the javascript package. This has to be covered by another way, either installing the addon package (with yarn add) or loading it as a development package with mrs-developer.
+The `ADDONS` key is a Volto specific configuration. Simply setting `ADDONS` doesn't download the JavaScript package. This has to be covered by another way, either installing the addon package (with yarn add) or loading it as a development package with mrs-developer.
 ```
 
 ## BUILD_DIR
@@ -189,11 +198,4 @@ This is a runtime-only environment variable that directs the build to run Volto 
 ```bash
 yarn
 BUILD_DIR=dist node dist/server.js
-```
-
-or
-
-```bash
-yarn
-yarn start:dist
 ```

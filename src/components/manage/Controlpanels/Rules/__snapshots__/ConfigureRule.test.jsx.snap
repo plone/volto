@@ -1,0 +1,184 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConfigureRule renders rules configure interface 1`] = `
+<div
+  id="page-rule-configure"
+>
+  <div
+    className="ui container"
+  >
+    <article
+      id="content"
+    >
+      <div
+        className="ui raised segments"
+      >
+        <div
+          className="ui segment primary"
+        >
+          Configure Content Rule: 
+          <q>
+            
+          </q>
+        </div>
+        <div
+          className="ui segment secondary"
+        >
+          Rules execute when a triggering event occurs. Rule actions will only be invoked if all the rule's conditions are met. You can add new actions and conditions using the buttons below.
+        </div>
+        <div
+          className="ui segment"
+        >
+          <div
+            className="ui grid"
+          >
+            <div
+              className="row"
+            >
+              <div
+                className="six wide computer six wide large screen sixteen wide mobile sixteen wide tablet column"
+              >
+                <h4>
+                  If all of the following conditions are met:
+                </h4>
+                <div
+                  className="row"
+                >
+                  <h4
+                    style={
+                      Object {
+                        "marginTop": "15px",
+                      }
+                    }
+                  >
+                    Condition: 
+                  </h4>
+                  <div
+                    aria-expanded={false}
+                    className="ui fluid selection dropdown"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    onMouseDown={[Function]}
+                    role="listbox"
+                    style={
+                      Object {
+                        "margin": "5px 0",
+                      }
+                    }
+                    tabIndex={0}
+                  >
+                    <div
+                      aria-atomic={true}
+                      aria-live="polite"
+                      className="divider default text"
+                      role="alert"
+                    >
+                      Select condition
+                    </div>
+                    <i
+                      aria-hidden="true"
+                      className="dropdown icon"
+                      onClick={[Function]}
+                    />
+                    <div
+                      className="menu transition"
+                    />
+                  </div>
+                  <button
+                    className="ui compact primary button"
+                    onClick={[Function]}
+                  >
+                    Add
+                  </button>
+                </div>
+              </div>
+              <div
+                className="six wide computer six wide large screen sixteen wide mobile sixteen wide tablet column"
+              >
+                <h4>
+                  Perform the following actions:
+                </h4>
+                <div
+                  className="row"
+                >
+                  <h4
+                    style={
+                      Object {
+                        "marginTop": "15px",
+                      }
+                    }
+                  >
+                    Action: 
+                  </h4>
+                  <div
+                    aria-expanded={false}
+                    className="ui fluid selection dropdown"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    onMouseDown={[Function]}
+                    role="listbox"
+                    style={
+                      Object {
+                        "margin": "5px 0",
+                      }
+                    }
+                    tabIndex={0}
+                  >
+                    <div
+                      aria-atomic={true}
+                      aria-live="polite"
+                      className="divider default text"
+                      role="alert"
+                    >
+                      Select action
+                    </div>
+                    <i
+                      aria-hidden="true"
+                      className="dropdown icon"
+                      onClick={[Function]}
+                    />
+                    <div
+                      className="menu transition"
+                    />
+                  </div>
+                  <button
+                    className="ui compact primary button"
+                    onClick={[Function]}
+                  >
+                    Add
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div
+              className="stretched row"
+            >
+              <div
+                className="column"
+              >
+                <h4>
+                  Assignments
+                </h4>
+                This rule is assigned to the following locations:
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+  
+  
+  
+  
+  <div
+    id="Portal"
+  />
+</div>
+`;

@@ -2,7 +2,7 @@
 
 exports[`renders an event view component with all props 1`] = `
 <div
-  className="ui container viewwrapper event-view"
+  className="ui container view-wrapper event-view"
   id="page-document"
 >
   <div
@@ -251,7 +251,7 @@ exports[`renders an event view component with all props 1`] = `
           />
           <a
             className="ics-download"
-            href="http://localhost:8080/Ploneundefined/ics_view"
+            href="http://localhost:8080/Plone/++api++/my-page/ics_view"
             rel="noreferrer"
             target="_blank"
           >
@@ -287,7 +287,7 @@ exports[`renders an event view component with all props 1`] = `
 
 exports[`renders an event view component with only required props 1`] = `
 <div
-  className="ui container viewwrapper event-view"
+  className="ui container view-wrapper event-view"
   id="page-document"
 >
   <div
@@ -357,7 +357,7 @@ exports[`renders an event view component with only required props 1`] = `
           />
           <a
             className="ics-download"
-            href="http://localhost:8080/Ploneundefined/ics_view"
+            href="http://localhost:8080/Plone/++api++/my-page/ics_view"
             rel="noreferrer"
             target="_blank"
           >
@@ -381,7 +381,7 @@ exports[`renders an event view component with only required props 1`] = `
 
 exports[`renders an event view component without links to api in the text 1`] = `
 <div
-  className="ui container viewwrapper event-view"
+  className="ui container view-wrapper event-view"
   id="page-document"
 >
   <div
@@ -458,7 +458,7 @@ exports[`renders an event view component without links to api in the text 1`] = 
           />
           <a
             className="ics-download"
-            href="http://localhost:8080/Ploneundefined/ics_view"
+            href="http://localhost:8080/Plone/++api++/my-page/ics_view"
             rel="noreferrer"
             target="_blank"
           >

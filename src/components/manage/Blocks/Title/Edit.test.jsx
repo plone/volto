@@ -2,43 +2,53 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
+import { JSDOM } from 'jsdom';
 
 import Edit from './Edit';
 
-jest.mock('@plone/volto/helpers/Loadable/Loadable');
-beforeAll(
-  async () =>
-    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
-);
-
 const mockStore = configureStore();
 
-global.__SERVER__ = true; // eslint-disable-line no-underscore-dangle
-
-test('renders an edit title block component', () => {
-  const store = mockStore({
-    intl: {
-      locale: 'en',
-      messages: {},
-    },
+describe('renders edit blocks', () => {
+  beforeEach(() => {
+    const jsdom = new JSDOM();
+    global.window = jsdom.window;
+    global.document = jsdom.window.document;
+    global.Document = document.constructor;
   });
-  const component = renderer.create(
-    <Provider store={store}>
-      <Edit
-        properties={{ title: 'My Title' }}
-        selected={false}
-        block="1234"
-        onAddBlock={() => {}}
-        onChangeField={() => {}}
-        onSelectBlock={() => {}}
-        onDeleteBlock={() => {}}
-        onFocusPreviousBlock={() => {}}
-        onFocusNextBlock={() => {}}
-        handleKeyDown={() => {}}
-        index={1}
-      />
-    </Provider>,
-  );
-  const json = component.toJSON();
-  expect(json).toMatchSnapshot();
+
+  test('renders an edit title block component', () => {
+    const store = mockStore({
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+    const component = renderer.create(
+      <Provider store={store}>
+        <Edit
+          properties={{ title: 'My Title' }}
+          selected={false}
+          block="1234"
+          onAddBlock={() => {}}
+          onChangeField={() => {}}
+          onSelectBlock={() => {}}
+          onDeleteBlock={() => {}}
+          onFocusPreviousBlock={() => {}}
+          onFocusNextBlock={() => {}}
+          handleKeyDown={() => {}}
+          index={1}
+          blockNode={{ current: null }}
+          data={{ disableNewBlocks: false }}
+        />
+      </Provider>,
+      {
+        createNodeMock: () => ({
+          ownerDocument: global.document,
+          getRootNode: () => global.document,
+        }),
+      },
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
 });

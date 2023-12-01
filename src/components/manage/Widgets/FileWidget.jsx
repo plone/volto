@@ -11,7 +11,7 @@ import { injectIntl } from 'react-intl';
 import deleteSVG from '@plone/volto/icons/delete.svg';
 import { Icon, FormFieldWrapper } from '@plone/volto/components';
 import loadable from '@loadable/component';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { flattenToAppURL, validateFileUploadSize } from '@plone/volto/helpers';
 import { defineMessages, useIntl } from 'react-intl';
 
 const imageMimetypes = [
@@ -71,7 +71,7 @@ const messages = defineMessages({
  *
  */
 const FileWidget = (props) => {
-  const { id, value, onChange } = props;
+  const { id, value, onChange, isDisabled } = props;
   const [fileType, setFileType] = React.useState(false);
   const intl = useIntl();
 
@@ -95,6 +95,7 @@ const FileWidget = (props) => {
    */
   const onDrop = (files) => {
     const file = files[0];
+    if (!validateFileUploadSize(file, intl.formatMessage)) return;
     readAsDataURL(file).then((data) => {
       const fields = data.match(/^data:(.*);(.*),(.*)$/);
       onChange(id, {
@@ -163,6 +164,7 @@ const FileWidget = (props) => {
               id={`field-${id}`}
               name={id}
               type="file"
+              disabled={isDisabled}
             />
           </div>
         )}
@@ -175,6 +177,7 @@ const FileWidget = (props) => {
             basic
             className="delete-button"
             aria-label="delete file"
+            disabled={isDisabled}
             onClick={() => {
               onChange(id, null);
               setFileType(false);

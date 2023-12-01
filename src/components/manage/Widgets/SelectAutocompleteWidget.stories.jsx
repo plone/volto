@@ -134,7 +134,7 @@ ManyOptions1000.args = {
 };
 
 export default {
-  title: 'Widgets/SelectAutocomplete Widget',
+  title: 'Edit Widgets/SelectAutocomplete Widget',
   component: SelectAutoCompleteComponent,
   decorators: [
     (Story) => (

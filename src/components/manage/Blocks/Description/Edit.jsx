@@ -1,16 +1,17 @@
-/**
- * Edit description block.
- * @module components/manage/Blocks/Description/Edit
- */
-
-import React, { Component } from 'react';
-import { compose } from 'redux';
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
+import { Editor, Node, Transforms, Range, createEditor } from 'slate';
+import { ReactEditor, Editable, Slate, withReact } from 'slate-react';
 import PropTypes from 'prop-types';
-import { isEqual } from 'lodash';
-import { defineMessages, injectIntl } from 'react-intl';
-import cx from 'classnames';
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import { defineMessages, useIntl } from 'react-intl';
 import config from '@plone/volto/registry';
+import { P } from '@plone/volto-slate/constants';
+import cx from 'classnames';
 
 const messages = defineMessages({
   description: {
@@ -19,222 +20,183 @@ const messages = defineMessages({
   },
 });
 
-/**
- * Edit description block class.
- * @class Edit
- * @extends Component
- */
-class Edit extends Component {
-  /**
-   * Property types.
-   * @property {Object} propTypes Property types.
-   * @static
-   */
-  static propTypes = {
-    properties: PropTypes.objectOf(PropTypes.any).isRequired,
-    selected: PropTypes.bool.isRequired,
-    block: PropTypes.string.isRequired,
-    index: PropTypes.number.isRequired,
-    onChangeField: PropTypes.func.isRequired,
-    onSelectBlock: PropTypes.func.isRequired,
-    onDeleteBlock: PropTypes.func.isRequired,
-    onAddBlock: PropTypes.func.isRequired,
-    onFocusPreviousBlock: PropTypes.func.isRequired,
-    onFocusNextBlock: PropTypes.func.isRequired,
-    editable: PropTypes.bool,
-  };
+function usePrevious(value) {
+  const ref = useRef();
 
-  /**
-   * Default properties
-   * @property {Object} defaultProps Default properties.
-   * @static
-   */
-  static defaultProps = {
-    editable: true,
-  };
+  useEffect(() => {
+    ref.current = value;
+  }, [value]);
 
-  /**
-   * Constructor
-   * @method constructor
-   * @param {Object} props Component properties
-   * @constructs WysiwygEditor
-   */
-  constructor(props) {
-    super(props);
-
-    if (!__SERVER__) {
-      const { Editor, EditorState, DefaultDraftBlockRenderMap } = props.draftJs;
-      const { Map } = props.immutableLib;
-
-      this.Editor = Editor;
-      this.EditorState = EditorState;
-      this.stateFromHTML = props.draftJsImportHtml.stateFromHTML;
-
-      const blockRenderMap = Map({
-        unstyled: {
-          element: 'div',
-        },
-      });
-
-      this.extendedBlockRenderMap = DefaultDraftBlockRenderMap.merge(
-        blockRenderMap,
-      );
-
-      let editorState;
-      if (props.properties && props.properties.description) {
-        const contentState = this.stateFromHTML(props.properties.description);
-        editorState = this.EditorState.createWithContent(contentState);
-      } else {
-        editorState = this.EditorState.createEmpty();
-      }
-      this.state = { editorState, focus: false };
-    }
-
-    this.onChange = this.onChange.bind(this);
-  }
-
-  /**
-   * Component did mount lifecycle method
-   * @method componentDidMount
-   * @returns {undefined}
-   */
-  componentDidMount() {
-    if (this.node) {
-      this.node._onBlur = () => this.setState({ focus: false });
-      this.node._onFocus = () => this.setState({ focus: true });
-    }
-  }
-
-  /**
-   * Component will receive props
-   * @method componentWillReceiveProps
-   * @param {Object} nextProps Next properties
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (
-      nextProps.properties.description &&
-      this.props.properties.description !== nextProps.properties.description &&
-      !this.state.focus
-    ) {
-      const contentState = this.stateFromHTML(nextProps.properties.description);
-      this.setState({
-        editorState: nextProps.properties.description
-          ? this.EditorState.createWithContent(contentState)
-          : this.EditorState.createEmpty(),
-      });
-    }
-
-    if (!this.props.selected && nextProps.selected) {
-      this.node.focus();
-      this.setState({ focus: true });
-    }
-  }
-
-  /**
-   * @param {*} nextProps
-   * @param {*} nextState
-   * @returns {boolean}
-   * @memberof Edit
-   */
-  shouldComponentUpdate(nextProps) {
-    return (
-      this.props.selected ||
-      !isEqual(
-        this.props.properties.description,
-        nextProps.properties.description,
-      )
-    );
-  }
-
-  /**
-   * Change handler
-   * @method onChange
-   * @param {object} editorState Editor state.
-   * @returns {undefined}
-   */
-  onChange(editorState) {
-    this.setState({ editorState }, () => {
-      this.props.onChangeField(
-        'description',
-        editorState.getCurrentContent().getPlainText(),
-      );
-    });
-  }
-
-  /**
-   * Render method.
-   * @method render
-   * @returns {string} Markup for the component.
-   */
-  render() {
-    if (__SERVER__) {
-      return <div />;
-    }
-
-    const Editor = this.Editor;
-
-    return (
-      <div
-        className={cx('block description', { selected: this.props.selected })}
-      >
-        <Editor
-          onChange={this.onChange}
-          editorState={this.state.editorState}
-          readOnly={!this.props.editable}
-          blockRenderMap={this.extendedBlockRenderMap}
-          handleReturn={() => {
-            if (this.props.data?.disableNewBlocks) {
-              return 'handled';
-            }
-            this.props.onSelectBlock(
-              this.props.onAddBlock(
-                config.settings.defaultBlockType,
-                this.props.index + 1,
-              ),
-            );
-            return 'handled';
-          }}
-          handleKeyCommand={(command, editorState) => {
-            if (
-              command === 'backspace' &&
-              editorState.getCurrentContent().getPlainText().length === 0
-            ) {
-              this.props.onDeleteBlock(this.props.block, true);
-            }
-          }}
-          placeholder={this.props.intl.formatMessage(messages.description)}
-          blockStyleFn={() => 'documentDescription'}
-          onUpArrow={() => {
-            const selectionState = this.state.editorState.getSelection();
-            const { editorState } = this.state;
-            if (
-              editorState.getCurrentContent().getBlockMap().first().getKey() ===
-              selectionState.getFocusKey()
-            ) {
-              this.props.onFocusPreviousBlock(this.props.block, this.node);
-            }
-          }}
-          onDownArrow={() => {
-            const selectionState = this.state.editorState.getSelection();
-            const { editorState } = this.state;
-            if (
-              editorState.getCurrentContent().getBlockMap().last().getKey() ===
-              selectionState.getFocusKey()
-            ) {
-              this.props.onFocusNextBlock(this.props.block, this.node);
-            }
-          }}
-          ref={(node) => {
-            this.node = node;
-          }}
-        />
-      </div>
-    );
-  }
+  return ref.current;
 }
 
-export default compose(
-  injectLazyLibs(['draftJs', 'immutableLib', 'draftJsImportHtml']),
-  injectIntl,
-)(Edit);
+export const DescriptionBlockEdit = (props) => {
+  const {
+    block,
+    blockNode,
+    data,
+    detached,
+    editable,
+    index,
+    metadata,
+    onAddBlock,
+    onChangeField,
+    onDeleteBlock,
+    onFocusNextBlock,
+    onFocusPreviousBlock,
+    onSelectBlock,
+    properties,
+    selected,
+  } = props;
+
+  const [editor] = useState(withReact(createEditor()));
+  const [initialValue] = useState([
+    {
+      type: P,
+      children: [
+        {
+          text: metadata?.['description'] || properties?.['description'] || '',
+        },
+      ],
+    },
+  ]);
+
+  const intl = useIntl();
+
+  const prevSelected = usePrevious(selected);
+
+  const text = useMemo(
+    () => metadata?.['description'] || properties?.['description'] || '',
+    [metadata, properties],
+  );
+
+  const placeholder = useMemo(
+    () => data.placeholder || intl.formatMessage(messages['description']),
+    [data.placeholder, intl],
+  );
+  const disableNewBlocks = useMemo(() => detached, [detached]);
+
+  useEffect(() => {
+    if (!prevSelected && selected) {
+      if (editor.selection && Range.isCollapsed(editor.selection)) {
+        // keep selection
+        ReactEditor.focus(editor);
+      } else {
+        // nothing is selected, move focus to end
+        ReactEditor.focus(editor);
+        Transforms.select(editor, Editor.end(editor, []));
+      }
+    }
+  }, [prevSelected, selected, editor]);
+
+  useEffect(() => {
+    // undo/redo handlerr
+    const oldText = Node.string(editor);
+    if (oldText !== text) {
+      Transforms.insertText(editor, text, {
+        at: [0, 0],
+      });
+    }
+  }, [editor, text]);
+
+  const handleChange = useCallback(() => {
+    const newText = Node.string(editor);
+    if (newText !== text) {
+      onChangeField('description', newText);
+    }
+  }, [editor, onChangeField, text]);
+
+  const handleKeyDown = useCallback(
+    (ev) => {
+      if (ev.key === 'Backspace' && Node.string(editor).length === 0) {
+        ev.preventDefault();
+        onDeleteBlock(block, true);
+      } else if (ev.key === 'Return' || ev.key === 'Enter') {
+        ev.preventDefault();
+        if (!disableNewBlocks) {
+          onSelectBlock(
+            onAddBlock(config.settings.defaultBlockType, index + 1),
+          );
+        }
+      } else if (ev.key === 'ArrowUp') {
+        ev.preventDefault();
+        onFocusPreviousBlock(block, blockNode.current);
+      } else if (ev.key === 'ArrowDown') {
+        ev.preventDefault();
+        onFocusNextBlock(block, blockNode.current);
+      }
+    },
+    [
+      index,
+      blockNode,
+      editor,
+      onDeleteBlock,
+      disableNewBlocks,
+      onSelectBlock,
+      onAddBlock,
+      onFocusPreviousBlock,
+      onFocusNextBlock,
+      block,
+    ],
+  );
+
+  const handleFocus = useCallback(() => {
+    onSelectBlock(block);
+  }, [block, onSelectBlock]);
+
+  const renderElement = useCallback(({ attributes, children }) => {
+    return (
+      <div {...attributes} className="documentDescription">
+        {children}
+      </div>
+    );
+  }, []);
+
+  if (typeof window.__SERVER__ !== 'undefined') {
+    return <div />;
+  }
+
+  return (
+    <Slate
+      editor={editor}
+      onChange={handleChange}
+      initialValue={initialValue}
+      className={cx('block description', {
+        selected: selected,
+      })}
+    >
+      <Editable
+        readOnly={!editable}
+        onKeyDown={handleKeyDown}
+        placeholder={placeholder}
+        renderElement={renderElement}
+        onFocus={handleFocus}
+        aria-multiline="false"
+      ></Editable>
+    </Slate>
+  );
+};
+
+DescriptionBlockEdit.propTypes = {
+  properties: PropTypes.objectOf(PropTypes.any).isRequired,
+  selected: PropTypes.bool.isRequired,
+  block: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
+  onChangeField: PropTypes.func.isRequired,
+  onSelectBlock: PropTypes.func.isRequired,
+  onDeleteBlock: PropTypes.func.isRequired,
+  onAddBlock: PropTypes.func.isRequired,
+  onFocusPreviousBlock: PropTypes.func.isRequired,
+  onFocusNextBlock: PropTypes.func.isRequired,
+  data: PropTypes.objectOf(PropTypes.any).isRequired,
+  editable: PropTypes.bool,
+  detached: PropTypes.bool,
+  blockNode: PropTypes.any,
+};
+
+DescriptionBlockEdit.defaultProps = {
+  detached: false,
+  editable: true,
+};
+
+export default DescriptionBlockEdit;

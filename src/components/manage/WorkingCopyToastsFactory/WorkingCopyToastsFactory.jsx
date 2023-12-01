@@ -6,7 +6,7 @@ import { useLocation } from 'react-router-dom';
 import { defineMessages, useIntl } from 'react-intl';
 import { Toast } from '@plone/volto/components';
 import { flattenToAppURL } from '@plone/volto/helpers';
-import { parse } from 'date-fns';
+import { FormattedDate } from '@plone/volto/components';
 import config from '@plone/volto/registry';
 import useDeepCompareEffect from 'use-deep-compare-effect';
 
@@ -69,8 +69,11 @@ const WorkingCopyToastsFactory = (props) => {
                 })}
                 content={intl.formatMessage(messages.workingCopyCreatedBy, {
                   creator: working_copy?.creator_name,
-                  date: new Intl.DateTimeFormat(lang, dateOptions).format(
-                    parse(working_copy?.created),
+                  date: (
+                    <FormattedDate
+                      date={working_copy?.created}
+                      format={dateOptions}
+                    />
                   ),
                 })}
               />
@@ -85,8 +88,11 @@ const WorkingCopyToastsFactory = (props) => {
               })}
               content={intl.formatMessage(messages.workingCopyCreatedBy, {
                 creator: working_copy?.creator_name,
-                date: new Intl.DateTimeFormat(lang, dateOptions).format(
-                  parse(working_copy?.created),
+                date: (
+                  <FormattedDate
+                    date={working_copy?.created}
+                    format={dateOptions}
+                  />
                 ),
               })}
             />,

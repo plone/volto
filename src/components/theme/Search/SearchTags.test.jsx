@@ -13,7 +13,7 @@ describe('SearchTags', () => {
     const store = mockStore({
       vocabularies: {
         'plone.app.vocabularies.Keywords': {
-          terms: [{ title: 'Tag 1' }, { title: 'Tag 2' }],
+          items: [{ label: 'Tag 1' }, { label: 'Tag 2' }],
         },
       },
     });

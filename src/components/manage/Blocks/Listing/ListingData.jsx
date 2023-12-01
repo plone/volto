@@ -2,12 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 import { BlockDataForm } from '@plone/volto/components';
-import { schemaListing } from './schema';
 
 const ListingData = (props) => {
-  const { data, block, onChangeBlock } = props;
+  const { data, block, blocksConfig, onChangeBlock } = props;
   const intl = useIntl();
-  const schema = schemaListing({ ...props, intl });
+  const schema = blocksConfig.listing.blockSchema({
+    ...props,
+    intl,
+  });
 
   return (
     <BlockDataForm
@@ -19,7 +21,9 @@ const ListingData = (props) => {
           [id]: value,
         });
       }}
+      onChangeBlock={onChangeBlock}
       formData={data}
+      blocksConfig={blocksConfig}
       block={block}
     />
   );

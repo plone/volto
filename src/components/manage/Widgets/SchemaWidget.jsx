@@ -12,6 +12,7 @@ import move from 'lodash-move';
 import { Confirm, Form, Grid, Icon, Message, Segment } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import { slugify } from '@plone/volto/helpers/Utils/Utils';
 
 import {
   Field,
@@ -488,10 +489,9 @@ class SchemaWidget extends Component {
    * @returns {undefined}
    */
   onAddField(values) {
-    const fieldId = values.title.trim().replace(' ', '_');
-    const currentFieldsetFields = this.props.value.fieldsets[
-      this.state.currentFieldset
-    ].fields;
+    const fieldId = slugify(values.title);
+    const currentFieldsetFields =
+      this.props.value.fieldsets[this.state.currentFieldset].fields;
     const hasChangeNote = currentFieldsetFields.indexOf('changeNote') > -1;
     const newFieldsetFields = hasChangeNote
       ? [
@@ -697,9 +697,8 @@ class SchemaWidget extends Component {
       const newParentFieldsetIndex = fieldsets.findIndex(
         (field) => field.id === parentFieldSet,
       );
-      const indexOfChangeNote = fieldsets[
-        newParentFieldsetIndex
-      ].fields.indexOf('changeNote');
+      const indexOfChangeNote =
+        fieldsets[newParentFieldsetIndex].fields.indexOf('changeNote');
       // remove from current fieldset
       const fieldsetsWithoutField = [
         ...slice(fieldsets, 0, currentFieldset),
@@ -1362,9 +1361,8 @@ class SchemaWidget extends Component {
               required:
                 this.props.value.required.indexOf(this.state.editField.id) !==
                 -1,
-              parentFieldSet: this.props.value.fieldsets[
-                this.state.currentFieldset
-              ].id,
+              parentFieldSet:
+                this.props.value.fieldsets[this.state.currentFieldset].id,
               values: formatArrayToTextarea(
                 this.props.value.properties[this.state.editField.id],
               ),

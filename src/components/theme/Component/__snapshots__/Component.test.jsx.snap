@@ -8,6 +8,14 @@ exports[`Component component :P Render a Component in the registry 1`] = `
 </div>
 `;
 
+exports[`Component component :P Render a Component in the registry using dependencies array 1`] = `
+<div>
+  <div>
+    this is the Teaser component
+  </div>
+</div>
+`;
+
 exports[`Component component :P Renders a Component in the registry - passes props correctly 1`] = `
 <div>
   <div>

@@ -13,10 +13,7 @@ describe('Sharing Tests', () => {
     // I add a page
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-document').click();
-    cy.get('.documentFirstHeading > .public-DraftStyleDefault-block')
-      .type('My Page')
-      .get('.documentFirstHeading span[data-text]')
-      .contains('My Page');
+    cy.getSlateTitle().focus().click().type('My Page').contains('My Page');
 
     // then a new page has been created
     cy.get('#toolbar-save').click();

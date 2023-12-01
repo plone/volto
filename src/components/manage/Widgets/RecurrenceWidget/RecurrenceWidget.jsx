@@ -6,7 +6,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
-import { RRule, RRuleSet, rrulestr } from 'rrule';
+//import { RRule, RRuleSet, rrulestr } from 'rrule';
+import { connect } from 'react-redux';
 
 import cx from 'classnames';
 import { isEqual, map, find, concat, remove } from 'lodash';
@@ -22,6 +23,7 @@ import {
 } from 'semantic-ui-react';
 
 import { SelectWidget, Icon, DatetimeWidget } from '@plone/volto/components';
+import { toBackendLang } from '@plone/volto/helpers';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 import saveSVG from '@plone/volto/icons/save.svg';
@@ -179,9 +181,10 @@ class RecurrenceWidget extends Component {
    */
   constructor(props, intl) {
     super(props);
+    const { RRuleSet, rrulestr } = props.rrule;
 
     this.moment = this.props.moment.default;
-    this.moment.locale(this.props.intl.locale);
+    this.moment.locale(toBackendLang(this.props.lang));
 
     let rruleSet = this.props.value
       ? rrulestr(props.value, {
@@ -199,7 +202,11 @@ class RecurrenceWidget extends Component {
       open: false,
       rruleSet: rruleSet,
       formValues: this.getFormValues(rruleSet),
-      RRULE_LANGUAGE: rrulei18n(this.props.intl, this.moment),
+      RRULE_LANGUAGE: rrulei18n(
+        this.props.intl,
+        this.moment,
+        toBackendLang(this.props.lang),
+      ),
     };
   }
 
@@ -420,7 +427,7 @@ class RecurrenceWidget extends Component {
           break;
       }
 
-      if (value) {
+      if (value === 0 || value) {
         //set value
         values[field] = value;
       } else {
@@ -447,6 +454,8 @@ class RecurrenceWidget extends Component {
       field === 'rdates' ? value : Object.assign([], rruleSet.rdates());
 
     rruleOptions.dtstart = dstart;
+
+    const { RRule, RRuleSet } = this.props.rrule;
 
     let set = new RRuleSet();
     //set.dtstart(dstart);
@@ -713,6 +722,7 @@ class RecurrenceWidget extends Component {
   };
 
   remove = () => {
+    const { RRuleSet } = this.props.rrule;
     this.props.onChange(this.props.id, null);
     let rruleSet = new RRuleSet();
     this.setState({
@@ -724,15 +734,8 @@ class RecurrenceWidget extends Component {
   render() {
     const { open, dimmer, rruleSet, formValues, RRULE_LANGUAGE } = this.state;
 
-    const {
-      id,
-      title,
-      required,
-      description,
-      error,
-      fieldSet,
-      intl,
-    } = this.props;
+    const { id, title, required, description, error, fieldSet, intl } =
+      this.props;
 
     return (
       <Form.Field
@@ -963,6 +966,9 @@ class RecurrenceWidget extends Component {
 }
 
 export default compose(
-  injectLazyLibs(['moment']),
+  injectLazyLibs(['moment', 'rrule']),
+  connect((state) => ({
+    lang: state.intl.locale,
+  })),
   injectIntl,
 )(RecurrenceWidget);

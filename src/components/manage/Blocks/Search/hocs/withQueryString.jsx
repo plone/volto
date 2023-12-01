@@ -10,11 +10,14 @@ function getDisplayName(WrappedComponent) {
  * A HOC that injects querystring metadata information from the backend.
  *
  */
-export default (WrappedComponent) => {
+export default function withQueryString(WrappedComponent) {
   function WithQueryString(props) {
     const dispatch = useDispatch();
 
     const qs = useSelector((state) => state.querystring);
+    // This showed up after updating eslint-plugin-react-hooks
+    // TODO: fix it properly
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const indexes = qs?.indexes || {};
 
     React.useEffect(() => {
@@ -29,4 +32,4 @@ export default (WrappedComponent) => {
     WrappedComponent,
   )})`;
   return WithQueryString;
-};
+}

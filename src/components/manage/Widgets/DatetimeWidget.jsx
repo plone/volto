@@ -6,10 +6,11 @@ import React, { Component } from 'react';
 import { compose } from 'redux';
 import PropTypes from 'prop-types';
 import { defineMessages, injectIntl } from 'react-intl';
+import { connect } from 'react-redux';
 import loadable from '@loadable/component';
 import cx from 'classnames';
 import { Icon, FormFieldWrapper } from '@plone/volto/components';
-import { parseDateTime } from '@plone/volto/helpers';
+import { parseDateTime, toBackendLang } from '@plone/volto/helpers';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 import leftKey from '@plone/volto/icons/left-key.svg';
@@ -100,7 +101,7 @@ export class DatetimeWidgetComponent extends Component {
       // if passed value matches the construction time, we guess it's a default
       isDefault:
         parseDateTime(
-          this.props.intl.locale,
+          toBackendLang(this.props.lang),
           this.props.value,
           undefined,
           this.moment,
@@ -110,7 +111,7 @@ export class DatetimeWidgetComponent extends Component {
 
   getInternalValue() {
     return parseDateTime(
-      this.props.intl.locale,
+      toBackendLang(this.props.lang),
       this.props.value,
       undefined,
       this.moment,
@@ -178,7 +179,8 @@ export class DatetimeWidgetComponent extends Component {
   onFocusChange = ({ focused }) => this.setState({ focused });
 
   render() {
-    const { id, resettable, intl, reactDates, widgetOptions } = this.props;
+    const { id, resettable, intl, reactDates, widgetOptions, lang } =
+      this.props;
     const noPastDates =
       this.props.noPastDates || widgetOptions?.pattern_options?.noPastDates;
     const moment = this.props.moment.default;
@@ -203,7 +205,9 @@ export class DatetimeWidgetComponent extends Component {
               {...(noPastDates ? {} : { isOutsideRange: () => false })}
               onFocusChange={this.onFocusChange}
               noBorder
-              displayFormat={moment.localeData(intl.locale).longDateFormat('L')}
+              displayFormat={moment
+                .localeData(toBackendLang(lang))
+                .longDateFormat('L')}
               navPrev={<PrevIcon />}
               navNext={<NextIcon />}
               id={`${id}-date`}
@@ -223,9 +227,11 @@ export class DatetimeWidgetComponent extends Component {
                 onChange={this.onTimeChange}
                 allowEmpty={false}
                 showSecond={false}
-                use12Hours={intl.locale === 'en'}
+                use12Hours={lang === 'en'}
                 id={`${id}-time`}
-                format={moment.localeData(intl.locale).longDateFormat('LT')}
+                format={moment
+                  .localeData(toBackendLang(lang))
+                  .longDateFormat('LT')}
                 placeholder={intl.formatMessage(messages.time)}
                 focusOnOpen
                 placement="bottomRight"
@@ -234,6 +240,8 @@ export class DatetimeWidgetComponent extends Component {
           )}
           {resettable && (
             <button
+              // FF needs that the type is "button" in order to not POST the form
+              type="button"
               disabled={this.props.isDisabled || !datetime}
               onClick={() => this.onResetDates()}
               className="item ui noborder button"
@@ -283,5 +291,8 @@ DatetimeWidgetComponent.defaultProps = {
 
 export default compose(
   injectLazyLibs(['reactDates', 'moment']),
+  connect((state) => ({
+    lang: state.intl.locale,
+  })),
   injectIntl,
 )(DatetimeWidgetComponent);

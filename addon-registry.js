@@ -6,6 +6,12 @@ const debug = require('debug')('shadowing');
 const { map } = require('lodash');
 const { DepGraph } = require('dependency-graph');
 
+const excludedCompilerOptionsPaths = [
+  '@plone/volto/*',
+  '@plone/volto-slate/*',
+  '@root/*',
+];
+
 function getPackageBasePath(base) {
   while (!fs.existsSync(`${base}/package.json`)) {
     base = path.join(base, '../');
@@ -24,10 +30,10 @@ function fromEntries(pairs) {
 function buildDependencyGraph(addons, extractDependency) {
   // getAddonsLoaderChain
   const graph = new DepGraph({ circular: true });
-  graph.addNode('@package');
+  graph.addNode('@root');
 
-  const seen = ['@package'];
-  const stack = [['@package', addons]];
+  const seen = ['@root'];
+  const stack = [['@root', addons]];
 
   while (stack.length > 0) {
     const [pkgName, addons] = stack.shift();
@@ -70,7 +76,7 @@ function buildDependencyGraph(addons, extractDependency) {
  * a resolved chain of dependencies
  */
 function getAddonsLoaderChain(graph) {
-  return graph.dependenciesOf('@package').map((name) => {
+  return graph.dependenciesOf('@root').map((name) => {
     const extras = graph.getNodeData(name) || [].join(',');
     return extras.length ? `${name}:${extras}` : name;
   });
@@ -95,32 +101,43 @@ function getAddonsLoaderChain(graph) {
  */
 class AddonConfigurationRegistry {
   constructor(projectRootPath) {
-    const packageJson = (this.packageJson = require(path.join(
-      projectRootPath,
-      'package.json',
-    )));
+    const packageJson = (this.packageJson = require(
+      path.join(projectRootPath, 'package.json'),
+    ));
     // Loads the dynamic config, if any
     if (fs.existsSync(path.join(projectRootPath, 'volto.config.js'))) {
-      this.voltoConfigJS = require(path.join(
-        projectRootPath,
-        'volto.config.js',
-      ));
+      this.voltoConfigJS = require(
+        path.join(projectRootPath, 'volto.config.js'),
+      );
     } else {
       this.voltoConfigJS = [];
     }
-    this.resultantMergedAddons = [
-      ...(packageJson.addons || []),
-      ...(this.voltoConfigJS.addons || []),
-    ];
 
     this.projectRootPath = projectRootPath;
     this.voltoPath =
       packageJson.name === '@plone/volto'
         ? `${projectRootPath}`
         : `${projectRootPath}/node_modules/@plone/volto`;
+
+    this.packagesFolderAddons =
+      packageJson.name === '@plone/volto'
+        ? packageJson.packagesFolderAddons || {}
+        : require(`${getPackageBasePath(this.voltoPath)}/package.json`)
+            .packagesFolderAddons || {};
+
+    this.resultantMergedAddons = [
+      ...(packageJson.addons || []),
+      ...(this.voltoConfigJS.addons || []),
+    ];
+
     this.addonNames = this.resultantMergedAddons.map((s) => s.split(':')[0]);
     this.packages = {};
     this.customizations = new Map();
+
+    // Theme from a package.json key, from volto.config.js or from an ENV VAR
+    // Programatically via volto.config.js wins or the ENV VAR if present
+    this.theme =
+      packageJson.theme || this.voltoConfigJS.theme || process.env.THEME;
 
     this.initDevelopmentPackages();
     this.initPublishedPackages();
@@ -128,6 +145,9 @@ class AddonConfigurationRegistry {
 
     this.dependencyGraph = buildDependencyGraph(
       [
+        ...(Object.keys(this.packagesFolderAddons).map(
+          (key) => this.packagesFolderAddons[key].package,
+        ) || []),
         ...this.resultantMergedAddons,
         ...(process.env.ADDONS ? process.env.ADDONS.split(';') : []),
       ],
@@ -137,7 +157,7 @@ class AddonConfigurationRegistry {
       },
     );
 
-    this.initRazzleExtenders();
+    this.initAddonExtenders();
   }
 
   /**
@@ -181,9 +201,48 @@ class AddonConfigurationRegistry {
           addons: require(packageJsonPath).addons || [],
         };
 
-        this.packages[name] = Object.assign(this.packages[name] || {}, pkg);
+        // Removed excluded paths from CompilerOptions
+        if (!excludedCompilerOptionsPaths.includes(name)) {
+          this.packages[name] = Object.assign(this.packages[name] || {}, pkg);
+        }
       });
     }
+    this.initPackagesFolder();
+  }
+
+  initPackagesFolder() {
+    const registerPackageFolder = (packageFolderName, packageInfo) => {
+      const packageName = packageInfo.package;
+      if (this.packages[packageName]) return;
+
+      const packagePath = path.normalize(
+        `${this.voltoPath}/packages/${packageFolderName}/src`,
+      );
+      const packageJsonPath = path.normalize(
+        `${this.voltoPath}/packages/${packageFolderName}/package.json`,
+      );
+
+      // some tests set the root in a location that doesn't have the packages
+      if (!fs.existsSync(packagePath)) return;
+
+      this.packages[packageName] = {
+        modulePath: packagePath,
+        packageJson: packageJsonPath,
+        version: require(packageJsonPath).version,
+        isPublishedPackage: false,
+        isRegisteredAddon: false,
+        name: packageName,
+        addons: [],
+      };
+      this.addonNames.push(packageName);
+    };
+
+    Object.keys(this.packagesFolderAddons).forEach((packageFolderName) => {
+      registerPackageFolder(
+        packageFolderName,
+        this.packagesFolderAddons[packageFolderName],
+      );
+    });
   }
 
   /**
@@ -263,17 +322,25 @@ class AddonConfigurationRegistry {
   }
 
   /**
-   * Allow addons to provide razzle.config extenders. These extenders
-   * modules (named razzle.extend.js) need to provide two functions:
+   * Allow addons to provide various extenders.
+   *
+   * The razzle.extend.js modules (named razzle.extend.js) needs to provide
+   * two functions:
    * `plugins(defaultPlugins) => plugins` and
    * `modify(...) => config`
+   *
+   * The eslint.extend.js
    */
-  initRazzleExtenders() {
+  initAddonExtenders() {
     this.getAddons().forEach((addon) => {
       const base = path.dirname(addon.packageJson);
       const razzlePath = path.resolve(`${base}/razzle.extend.js`);
       if (fs.existsSync(razzlePath)) {
         addon.razzleExtender = razzlePath;
+      }
+      const eslintPath = path.resolve(`${base}/eslint.extend.js`);
+      if (fs.existsSync(eslintPath)) {
+        addon.eslintExtender = eslintPath;
       }
     });
   }
@@ -283,7 +350,7 @@ class AddonConfigurationRegistry {
    */
   getAddons() {
     return this.dependencyGraph
-      .dependenciesOf('@package')
+      .dependenciesOf('@root')
       .map((name) => this.packages[name]);
   }
 
@@ -293,14 +360,52 @@ class AddonConfigurationRegistry {
       .filter((e) => e);
   }
 
+  getEslintExtenders() {
+    return this.getAddons()
+      .map((o) => o.eslintExtender)
+      .filter((e) => e);
+  }
+
+  getCustomThemeAddons() {
+    const customThemeAddonsInfo = {
+      variables: [],
+      main: [],
+    };
+
+    this.getAddonDependencies().forEach((addon) => {
+      const normalizedAddonName = addon.split(':')[0];
+      // We have two possible insertion points, variables and main
+
+      const customThemeVariables = `${this.packages[normalizedAddonName].modulePath}/theme/_variables.scss`;
+      const customThemeMain = `${this.packages[normalizedAddonName].modulePath}/theme/_main.scss`;
+      if (
+        fs.existsSync(customThemeVariables) &&
+        normalizedAddonName !== this.theme
+      ) {
+        customThemeAddonsInfo.variables.push(normalizedAddonName);
+      }
+      if (
+        fs.existsSync(customThemeMain) &&
+        normalizedAddonName !== this.theme
+      ) {
+        customThemeAddonsInfo.main.push(normalizedAddonName);
+      }
+    });
+
+    return customThemeAddonsInfo;
+  }
+
   /**
    * Returns a mapping name:diskpath to be uses in webpack's resolve aliases
    */
   getResolveAliases() {
-    const pairs = Object.keys(this.packages).map((o) => [
-      o,
-      this.packages[o].modulePath,
-    ]);
+    const pairs = [
+      ...Object.keys(this.packages).map((o) => [
+        o,
+        this.packages[o].modulePath,
+      ]),
+    ];
+
     return fromEntries(pairs);
   }
 
@@ -345,6 +450,16 @@ class AddonConfigurationRegistry {
         }
       });
 
+      // allow customization of modules in the `@root` namespace from addons,
+      // by creating a folder called `@root`.
+      const rootBase = path.join(base, '@root');
+      if (fs.existsSync(rootBase))
+        reg.push({
+          customPath: rootBase,
+          sourcePath: `${this.projectRootPath}/src`,
+          name: '@root',
+        });
+
       reg.push(
         fs.existsSync(path.join(base, 'volto'))
           ? {
@@ -363,12 +478,16 @@ class AddonConfigurationRegistry {
 
       reg.forEach(({ customPath, name, sourcePath }) => {
         map(
-          glob(`${customPath}/**/*.*(svg|png|jpg|jpeg|gif|ico|less|js|jsx)`),
+          glob(
+            `${customPath}/**/*.*(svg|png|jpg|jpeg|gif|ico|less|js|jsx|ts|tsx)`,
+          ),
           (filename) => {
             const targetPath = filename.replace(customPath, sourcePath);
             if (fs.existsSync(targetPath)) {
               aliases[
-                filename.replace(customPath, name).replace(/\.(js|jsx)$/, '')
+                filename
+                  .replace(customPath, name)
+                  .replace(/\.(js|jsx|ts|tsx)$/, '')
               ] = path.resolve(filename);
             } else {
               debug(
@@ -442,6 +561,37 @@ class AddonConfigurationRegistry {
    */
   getAddonDependencies() {
     return getAddonsLoaderChain(this.dependencyGraph);
+  }
+
+  getDotDependencyGraph() {
+    const seen = new Set();
+    let out = `digraph {
+  layout="fdp"
+  beautify=true
+  sep="+10"
+  splines=curved
+
+  "@root" [color = red fillcolor=yellow style=filled]
+`;
+    let queue = ['@root'];
+    let name;
+
+    while (queue.length > 0) {
+      name = queue.pop();
+
+      const deps = this.dependencyGraph.directDependenciesOf(name);
+      for (let i = 0; i < deps.length; i++) {
+        const dep = deps[i];
+
+        if (!seen.has(dep)) {
+          seen.add(dep);
+          queue.push(dep);
+        }
+        out += `    "${name}" -> "${dep}"\n`;
+      }
+    }
+    out += '}';
+    return out;
   }
 }
 

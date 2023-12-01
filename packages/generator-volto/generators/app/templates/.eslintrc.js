@@ -27,19 +27,22 @@ const addonAliases = Object.keys(reg.packages).map((o) => [
   reg.packages[o].modulePath,
 ]);
 
-module.exports = {
+const addonExtenders = reg.getEslintExtenders().map((m) => require(m));
+
+const defaultConfig = {
   extends: `${voltoPath}/.eslintrc`,
   settings: {
     'import/resolver': {
       alias: {
         map: [
           ['@plone/volto', '@plone/volto/src'],
+          ['@plone/volto-slate', '@plone/volto/packages/volto-slate/src'],
           ...addonAliases,
           ['@package', `${__dirname}/src`],
           ['@root', `${__dirname}/src`],
           ['~', `${__dirname}/src`],
         ],
-        extensions: ['.js', '.jsx', '.json'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
       },
       'babel-plugin-root-import': {
         rootPathSuffix: 'src',
@@ -47,3 +50,10 @@ module.exports = {
     },
   },
 };
+
+const config = addonExtenders.reduce(
+  (acc, extender) => extender.modify(acc),
+  defaultConfig,
+);
+
+module.exports = config;

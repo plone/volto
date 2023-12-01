@@ -1,5 +1,7 @@
 describe('Block Indexing Tests', () => {
   beforeEach(() => {
+    cy.intercept('GET', `/**/*?expand*`).as('content');
+    cy.intercept('GET', '/**/Document').as('schema');
     cy.autologin();
     cy.createContent({
       contentType: 'Document',
@@ -7,21 +9,16 @@ describe('Block Indexing Tests', () => {
       contentTitle: 'My Page',
     });
     cy.visit('/my-page');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
-    cy.waitForResourceToLoad('my-page');
+    cy.wait('@content');
     cy.navigate('/my-page/edit');
+    cy.wait('@schema');
   });
 
   it('Index Text Block', () => {
     // GIVEN: A page with a text block with the content 'Noam Avram Chomsky'
-    cy.get('.block.inner.text .public-DraftEditor-content')
-      .click()
-      .type('Noam Avram Chomsky')
-      .get('span[data-text]')
-      .contains('Noam Avram Chomsky');
+    cy.getSlateEditorAndType('Noam Avram Chomsky').contains(
+      'Noam Avram Chomsky',
+    );
     cy.get('#toolbar-save').click();
 
     // WHEN: I search for Avram

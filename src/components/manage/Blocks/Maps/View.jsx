@@ -4,16 +4,11 @@
  */
 
 import React from 'react';
-import { defineMessages, injectIntl } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-
-const messages = defineMessages({
-  EmbededGoogleMaps: {
-    id: 'Embeded Google Maps',
-    defaultMessage: 'Embeded Google Maps',
-  },
-});
+import { compose } from 'redux';
+import { withBlockExtensions } from '@plone/volto/helpers';
 
 /**
  * View image block class.
@@ -37,7 +32,7 @@ const View = ({ data, intl }) => (
       })}
     >
       <iframe
-        title={intl.formatMessage(messages.EmbededGoogleMaps)}
+        title={data.title}
         src={data.url}
         className="google-map"
         frameBorder="0"
@@ -56,4 +51,4 @@ View.propTypes = {
   data: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
-export default injectIntl(View);
+export default compose(injectIntl, withBlockExtensions)(View);

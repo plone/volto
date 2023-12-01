@@ -25,6 +25,7 @@ describe('ContentsItem', () => {
               title: 'Blog',
               is_folderish: false,
               '@type': 'Document',
+              Type: 'Pagina',
             }}
             selected={false}
             onClick={() => {}}

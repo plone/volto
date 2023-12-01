@@ -1,9 +1,9 @@
 /**
  * Layouts.
- * @module constants/Layouts
+ * @module constants/indexes
  */
 
-export default {
+const Indexes = {
   sortable_title: { label: 'Title', type: 'string', sort_on: 'sortable_title' },
   review_state: { label: 'Review state', type: 'string' },
   ModificationDate: {
@@ -34,6 +34,8 @@ export default {
   start: { label: 'Start Date', type: 'date' },
   Type: { label: 'Type', type: 'string' },
 };
+
+export default Indexes;
 
 export const defaultIndexes = [
   'review_state',

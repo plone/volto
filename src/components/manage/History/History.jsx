@@ -9,18 +9,28 @@ import { Helmet } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { Container, Dropdown, Icon, Segment, Table } from 'semantic-ui-react';
-import { concat, map, reverse } from 'lodash';
+import {
+  Container as SemanticContainer,
+  Dropdown,
+  Icon,
+  Segment,
+  Table,
+} from 'semantic-ui-react';
+import { concat, map, reverse, find } from 'lodash';
 import { Portal } from 'react-portal';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
+import { asyncConnect } from '@plone/volto/helpers';
 
 import {
-  FormattedRelativeDate,
+  FormattedDate,
   Icon as IconNext,
   Toolbar,
+  Forbidden,
+  Unauthorized,
 } from '@plone/volto/components';
-import { getHistory, revertHistory } from '@plone/volto/actions';
+import { getHistory, revertHistory, listActions } from '@plone/volto/actions';
 import { getBaseUrl } from '@plone/volto/helpers';
+import config from '@plone/volto/registry';
 
 import backSVG from '@plone/volto/icons/back.svg';
 
@@ -113,20 +123,55 @@ class History extends Component {
     this.props.revertHistory(getBaseUrl(this.props.pathname), value);
   }
 
-  /**
-   * Render method.
-   * @method render
-   * @returns {string} Markup for the component.
-   */
-  render() {
+  processHistoryEntries = () => {
+    // Getting the history entries from the props
+    // No clue why the reverse(concat()) is necessary
     const entries = reverse(concat(this.props.entries));
     let title = entries.length > 0 ? entries[0].state_title : '';
     for (let x = 1; x < entries.length; x += 1) {
       entries[x].prev_state_title = title;
       title = entries[x].state_title || title;
     }
+    // We reverse them again
     reverse(entries);
-    return (
+
+    // We identify the latest 'versioning' entry and mark it
+    const current_version = find(entries, (item) => item.type === 'versioning');
+    if (current_version) {
+      current_version.is_current = true;
+    }
+    return entries;
+  };
+
+  /**
+   * Render method.
+   * @method render
+   * @returns {string} Markup for the component.
+   */
+  render() {
+    const historyAction = find(this.props.objectActions, {
+      id: 'history',
+    });
+    const entries = this.processHistoryEntries();
+
+    const Container =
+      config.getComponent({ name: 'Container' }).component || SemanticContainer;
+
+    return !historyAction ? (
+      <>
+        {this.props.token ? (
+          <Forbidden
+            pathname={this.props.pathname}
+            staticContext={this.props.staticContext}
+          />
+        ) : (
+          <Unauthorized
+            pathname={this.props.pathname}
+            staticContext={this.props.staticContext}
+          />
+        )}
+      </>
+    ) : (
       <Container id="page-history">
         <Helmet title={this.props.intl.formatMessage(messages.history)} />
         <Segment.Group raised>
@@ -209,7 +254,7 @@ class History extends Component {
                   </Table.Cell>
                   <Table.Cell>{entry.actor.fullname}</Table.Cell>
                   <Table.Cell>
-                    <FormattedRelativeDate date={entry.time} />
+                    <FormattedDate date={entry.time} />
                   </Table.Cell>
                   <Table.Cell>{entry.comments}</Table.Cell>
                   <Table.Cell>
@@ -246,18 +291,20 @@ class History extends Component {
                               />
                             </Link>
                           )}
-                          {'version' in entry && (
-                            <Dropdown.Item
-                              value={entry.version}
-                              onClick={this.onRevert}
-                            >
-                              <Icon name="undo" />{' '}
-                              <FormattedMessage
-                                id="Revert to this revision"
-                                defaultMessage="Revert to this revision"
-                              />
-                            </Dropdown.Item>
-                          )}
+                          {'version' in entry &&
+                            entry.may_revert &&
+                            !entry.is_current && (
+                              <Dropdown.Item
+                                value={entry.version}
+                                onClick={this.onRevert}
+                              >
+                                <Icon name="undo" />{' '}
+                                <FormattedMessage
+                                  id="Revert to this revision"
+                                  defaultMessage="Revert to this revision"
+                                />
+                              </Dropdown.Item>
+                            )}
                         </Dropdown.Menu>
                       </Dropdown>
                     )}
@@ -295,11 +342,22 @@ class History extends Component {
 
 export default compose(
   injectIntl,
+  asyncConnect([
+    {
+      key: 'actions',
+      // Dispatch async/await to make the operation syncronous, otherwise it returns
+      // before the promise is resolved
+      promise: async ({ location, store: { dispatch } }) =>
+        await dispatch(listActions(getBaseUrl(location.pathname))),
+    },
+  ]),
   connect(
     (state, props) => ({
+      objectActions: state.actions.actions.object,
+      token: state.userSession.token,
       entries: state.history.entries,
       pathname: props.location.pathname,
-      title: state.content.data.title,
+      title: state.content.data?.title,
       revertRequest: state.history.revert,
     }),
     { getHistory, revertHistory },

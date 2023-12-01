@@ -151,12 +151,16 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
       opacity: 0;
       // Removing this because is causing grey scroll appears
       // overflow-y: scroll;
-      transition: @max-height-transition, opacity 0.3s 0.3s;
+      transition:
+        @max-height-transition,
+        opacity 0.3s 0.3s;
 
       &.show {
         max-height: 900px;
         opacity: 1;
-        transition: @max-height-transition, opacity 0.3s 0.3s;
+        transition:
+          @max-height-transition,
+          opacity 0.3s 0.3s;
       }
     }
 
@@ -295,8 +299,8 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
 
   .toolbar-content {
     z-index: 3;
+    overflow: auto;
     box-shadow: 0 1px 2px 0 #c7d5d8;
-    overflow-y: auto;
   }
 
   .pusher-puller {
@@ -674,18 +678,15 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
 
     .state-select,
     .display-select {
-      display: flex;
-      width: 100%;
+      .inline.field .wrapper {
+        min-height: unset;
+      }
 
       .react-select-container {
         flex: 1 0 75%;
       }
 
       label {
-        flex: 1 0 25%;
-        padding-top: 18px;
-        border-bottom: 1px solid #edf1f2;
-        margin-right: 5px;
         font-size: 14px;
         font-weight: 500;
         text-transform: uppercase;
@@ -721,6 +722,18 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
     }
   }
 }
+
+// Reasoning: This is to allow scrolling inside the types
+// You can't make this to happen in a fixed element that does not have
+// fixed height, so for small viewports height, we are forcing the container
+// to have a full height, then the inner container knows when
+// and how to scroll.
+@media only screen and (max-height: 400px) {
+  #toolbar .toolbar-content.show {
+    height: 100%;
+  }
+}
+
 // Orphaned CSS
 .ui.dropdown .menu.left {
   right: 0;

@@ -9,7 +9,6 @@
 // Pastanaga variable
 @inputFontWeight: 300;
 
-
 /*-------------------
         Types
 --------------------*/
@@ -19,7 +18,6 @@
 /* Circular Icon Input */
 
 /* Labeled Input */
-
 
 /*-------------------
         States
@@ -34,7 +32,6 @@
 /* Error */
 
 /* Loader */
-
 
 /*-------------------
       Variations

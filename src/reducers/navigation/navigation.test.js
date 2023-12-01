@@ -1,6 +1,9 @@
+import {
+  GET_CONTENT,
+  GET_NAVIGATION,
+} from '@plone/volto/constants/ActionTypes';
 import config from '@plone/volto/registry';
 import navigation from './navigation';
-import { GET_NAVIGATION } from '@plone/volto/constants/ActionTypes';
 
 const { settings } = config;
 
@@ -35,6 +38,8 @@ describe('Navigation reducer', () => {
           items: [
             {
               title: 'Welcome to Plone!',
+              description:
+                'Congratulations! You have successfully installed Plone.',
               '@id': `${settings.apiPath}/front-page`,
             },
           ],
@@ -45,6 +50,8 @@ describe('Navigation reducer', () => {
       items: [
         {
           title: 'Welcome to Plone!',
+          description:
+            'Congratulations! You have successfully installed Plone.',
           url: '/front-page',
         },
       ],
@@ -61,14 +68,18 @@ describe('Navigation reducer', () => {
           items: [
             {
               title: 'Welcome to Plone!',
+              description:
+                'Congratulations! You have successfully installed Plone.',
               '@id': `${settings.apiPath}/front-page`,
             },
             {
               title: 'Folder1',
+              description: 'Folder description',
               '@id': `${settings.apiPath}/folder1`,
               items: [
                 {
                   title: 'FolderInFolder1',
+                  description: 'Sub-folder description',
                   '@id': `${settings.apiPath}/folderinfolder1`,
                 },
               ],
@@ -81,14 +92,18 @@ describe('Navigation reducer', () => {
       items: [
         {
           title: 'Welcome to Plone!',
+          description:
+            'Congratulations! You have successfully installed Plone.',
           url: '/front-page',
         },
         {
           title: 'Folder1',
+          description: 'Folder description',
           url: '/folder1',
           items: [
             {
               title: 'FolderInFolder1',
+              description: 'Sub-folder description',
               url: '/folderinfolder1',
             },
           ],
@@ -109,6 +124,81 @@ describe('Navigation reducer', () => {
       error: 'failed',
       items: [],
       loaded: false,
+      loading: false,
+    });
+  });
+});
+
+describe('Navigation reducer (NAVIGATION)GET_CONTENT', () => {
+  beforeEach(() => {
+    config.settings.apiExpanders = [
+      {
+        match: '',
+        GET_CONTENT: ['navigation'],
+      },
+    ];
+  });
+
+  it('should handle (NAVIGATION)GET_CONTENT_SUCCESS', () => {
+    expect(
+      navigation(undefined, {
+        type: `${GET_CONTENT}_SUCCESS`,
+        result: {
+          '@components': {
+            navigation: {
+              items: [
+                {
+                  title: 'Welcome to Plone!',
+                  description:
+                    'Congratulations! You have successfully installed Plone.',
+                  '@id': `${settings.apiPath}/front-page`,
+                },
+              ],
+            },
+          },
+        },
+      }),
+    ).toEqual({
+      error: null,
+      items: [
+        {
+          title: 'Welcome to Plone!',
+          description:
+            'Congratulations! You have successfully installed Plone.',
+          url: '/front-page',
+        },
+      ],
+      loaded: true,
+      loading: false,
+    });
+  });
+
+  it('should handle (NAVIGATION)GET_NAVIGATION_SUCCESS (standalone with apiExpander enabled)', () => {
+    expect(
+      navigation(undefined, {
+        type: `${GET_NAVIGATION}_SUCCESS`,
+        result: {
+          items: [
+            {
+              title: 'Welcome to Plone!',
+              description:
+                'Congratulations! You have successfully installed Plone.',
+              '@id': `${settings.apiPath}/front-page`,
+            },
+          ],
+        },
+      }),
+    ).toEqual({
+      error: null,
+      items: [
+        {
+          title: 'Welcome to Plone!',
+          description:
+            'Congratulations! You have successfully installed Plone.',
+          url: '/front-page',
+        },
+      ],
+      loaded: true,
       loading: false,
     });
   });

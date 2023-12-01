@@ -19,16 +19,23 @@ function NewBaseWidget(name) {
   );
 }
 
-const withStateManagement = (Component) => ({ ...props }) => {
-  const [formData, setFormData] = React.useState(props.formData || {});
-  const onChangeField = (id, value) => {
-    setFormData({ ...formData, [id]: value });
-  };
+const withStateManagement =
+  (Component) =>
+  ({ ...props }) => {
+    const [formData, onChangeFormData] = React.useState(props.formData || {});
+    const onChangeField = (id, value) => {
+      onChangeFormData({ ...formData, [id]: value });
+    };
 
-  return (
-    <Component {...props} onChangeField={onChangeField} formData={formData} />
-  );
-};
+    return (
+      <Component
+        {...props}
+        onChangeField={onChangeField}
+        onChangeFormData={onChangeFormData}
+        formData={formData}
+      />
+    );
+  };
 
 beforeAll(() => {
   config.widgets.default = NewBaseWidget('default');
@@ -114,6 +121,7 @@ describe('Form', () => {
 
     expect(container).toMatchSnapshot();
   });
+
   it('renders a form component with defaults in the schema - Checkboxes', () => {
     const store = mockStore({
       intl: {
@@ -163,7 +171,6 @@ describe('Form', () => {
         />
       </Provider>,
     );
-
     expect(container).toMatchSnapshot();
   });
   it('renders a form component with defaults in the schema - Number field', () => {

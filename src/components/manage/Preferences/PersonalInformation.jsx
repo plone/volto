@@ -7,78 +7,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { defineMessages, injectIntl } from 'react-intl';
+import { injectIntl } from 'react-intl';
+import { withRouter } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
 import { toast } from 'react-toastify';
-
+import { messages } from '@plone/volto/helpers';
 import { Form, Toast } from '@plone/volto/components';
-import { getUser, updateUser } from '@plone/volto/actions';
-
-const messages = defineMessages({
-  personalInformation: {
-    id: 'Personal Information',
-    defaultMessage: 'Personal Information',
-  },
-  default: {
-    id: 'Default',
-    defaultMessage: 'Default',
-  },
-  fullnameTitle: {
-    id: 'Full Name',
-    defaultMessage: 'Full Name',
-  },
-  fullnameDescription: {
-    id: 'Enter full name, e.g. John Smith.',
-    defaultMessage: 'Enter full name, e.g. John Smith.',
-  },
-  emailTitle: {
-    id: 'E-mail',
-    defaultMessage: 'E-mail',
-  },
-  emailDescription: {
-    id: 'We will use this address if you need to recover your password',
-    defaultMessage:
-      'We will use this address if you need to recover your password',
-  },
-  portraitTitle: {
-    id: 'Portrait',
-    defaultMessage: 'Portrait',
-  },
-  portraitDescription: {
-    id: 'The user portrait/avatar',
-    defaultMessage: 'The user portrait/avatar',
-  },
-  homePageTitle: {
-    id: 'Home page',
-    defaultMessage: 'Home page',
-  },
-  homePageDescription: {
-    id: 'The URL for your external home page, if you have one.',
-    defaultMessage: 'The URL for your external home page, if you have one.',
-  },
-  locationTitle: {
-    id: 'Location',
-    defaultMessage: 'Location',
-  },
-  locationDescription: {
-    id:
-      'Your location - either city and country - or in a company setting, where your office is located.',
-    defaultMessage:
-      'Your location - either city and country - or in a company setting, where your office is located.',
-  },
-  saved: {
-    id: 'Changes saved',
-    defaultMessage: 'Changes saved',
-  },
-  back: {
-    id: 'Back',
-    defaultMessage: 'Back',
-  },
-  success: {
-    id: 'Success',
-    defaultMessage: 'Success',
-  },
-});
+import { getUser, updateUser, getUserSchema } from '@plone/volto/actions';
 
 /**
  * PersonalInformation class.
@@ -103,7 +38,8 @@ class PersonalInformation extends Component {
     userId: PropTypes.string.isRequired,
     loaded: PropTypes.bool.isRequired,
     loading: PropTypes.bool,
-    closeMenu: PropTypes.func.isRequired,
+    closeMenu: PropTypes.func,
+    getUserSchema: PropTypes.func.isRequired,
   };
 
   /**
@@ -120,6 +56,7 @@ class PersonalInformation extends Component {
 
   componentDidMount() {
     this.props.getUser(this.props.userId);
+    this.props.getUserSchema();
   }
 
   /**
@@ -143,7 +80,7 @@ class PersonalInformation extends Component {
         content={this.props.intl.formatMessage(messages.saved)}
       />,
     );
-    this.props.closeMenu();
+    if (this.props.closeMenu) this.props.closeMenu();
   }
 
   /**
@@ -152,7 +89,8 @@ class PersonalInformation extends Component {
    * @returns {undefined}
    */
   onCancel() {
-    this.props.closeMenu();
+    if (this.props.closeMenu) this.props.closeMenu();
+    else this.props.history.goBack();
   }
 
   /**
@@ -162,70 +100,21 @@ class PersonalInformation extends Component {
    */
   render() {
     return (
-      <Form
-        formData={this.props.user}
-        schema={{
-          fieldsets: [
-            {
-              id: 'default',
-              title: this.props.intl.formatMessage(messages.default),
-              fields: [
-                'fullname',
-                'email',
-                'portrait',
-                'home_page',
-                'location',
-              ],
-            },
-          ],
-          properties: {
-            fullname: {
-              description: this.props.intl.formatMessage(
-                messages.fullnameDescription,
-              ),
-              title: this.props.intl.formatMessage(messages.fullnameTitle),
-              type: 'string',
-            },
-            email: {
-              description: this.props.intl.formatMessage(
-                messages.emailDescription,
-              ),
-              title: this.props.intl.formatMessage(messages.emailTitle),
-              type: 'string',
-            },
-            portrait: {
-              description: this.props.intl.formatMessage(
-                messages.portraitDescription,
-              ),
-              title: this.props.intl.formatMessage(messages.portraitTitle),
-              type: 'object',
-            },
-            home_page: {
-              description: this.props.intl.formatMessage(
-                messages.homePageDescription,
-              ),
-              title: this.props.intl.formatMessage(messages.homePageTitle),
-              type: 'string',
-            },
-            location: {
-              description: this.props.intl.formatMessage(
-                messages.locationDescription,
-              ),
-              title: this.props.intl.formatMessage(messages.locationTitle),
-              type: 'string',
-            },
-          },
-          required: ['email'],
-        }}
-        onSubmit={this.onSubmit}
-        onCancel={this.onCancel}
-        loading={this.props.loading}
-      />
+      this.props?.userschema?.loaded && (
+        <Form
+          formData={this.props.user}
+          schema={this.props?.userschema.userschema}
+          onSubmit={this.onSubmit}
+          onCancel={this.onCancel}
+          loading={this.props.loading}
+        />
+      )
     );
   }
 }
 
 export default compose(
+  withRouter,
   injectIntl,
   connect(
     (state, props) => ({
@@ -235,7 +124,8 @@ export default compose(
         : '',
       loaded: state.users.get.loaded,
       loading: state.users.update.loading,
+      userschema: state.userschema,
     }),
-    { getUser, updateUser },
+    { getUser, updateUser, getUserSchema },
   ),
 )(PersonalInformation);

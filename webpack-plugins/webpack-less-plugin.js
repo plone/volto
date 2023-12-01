@@ -4,6 +4,24 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const PostCssFlexBugFixes = require('postcss-flexbugs-fixes');
 const postcssLoadConfig = require('postcss-load-config');
 
+const interpolateName = require('loader-utils').interpolateName;
+
+function normalizePath(file) {
+  return path.sep === '\\' ? file.replace(/\\/g, '/') : file;
+}
+
+// Custom function to not use 'loaderContext._module.matchResource' in hashing CSS class name.
+function getLocalIdent(loaderContext, localIdentName, localName, options) {
+  const relativeResourcePath = normalizePath(
+    path.relative(options.context, loaderContext.resourcePath),
+  );
+
+  // eslint-disable-next-line no-param-reassign
+  options.content = `${options.hashPrefix}${relativeResourcePath}\x00${localName}`;
+
+  return interpolateName(loaderContext, localIdentName, options);
+}
+
 const hasPostCssConfig = () => {
   try {
     return !!postcssLoadConfig.sync();
@@ -52,6 +70,7 @@ const defaultOptions = {
       modules: {
         auto: true,
         localIdentName: '[name]__[local]___[hash:base64:5]',
+        getLocalIdent: getLocalIdent,
       },
     },
   },
@@ -99,11 +118,13 @@ module.exports = (userOptions = {}) => ({
 
     const postCssLoader = {
       loader: require.resolve('postcss-loader'),
-      options: hasPostCssConfig()
-        ? undefined
-        : Object.assign({}, options.postcss[constantEnv], {
-            plugins: () => options.postcss.plugins,
-          }),
+      options: {
+        postcssOptions: hasPostCssConfig()
+          ? undefined
+          : Object.assign({}, options.postcss[constantEnv], {
+              plugins: options.postcss.plugins,
+            }),
+      },
     };
 
     const lessLoader = {
@@ -128,7 +149,9 @@ module.exports = (userOptions = {}) => ({
               {
                 loader: require.resolve('css-loader'),
                 options: Object.assign({}, options.css[constantEnv], {
-                  onlyLocals: true,
+                  modules: Object.assign({}, options.css[constantEnv].modules, {
+                    exportOnlyLocals: true,
+                  }),
                 }),
               },
               // resolveUrlLoader,

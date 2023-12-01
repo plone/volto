@@ -25,6 +25,7 @@ import {
   Option,
   selectTheme,
   MenuList,
+  MultiValueContainer,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
@@ -119,6 +120,7 @@ class SelectWidget extends Component {
     noValueOption: PropTypes.bool,
     customOptionStyling: PropTypes.any,
     isMulti: PropTypes.bool,
+    placeholder: PropTypes.string,
   };
 
   /**
@@ -160,7 +162,20 @@ class SelectWidget extends Component {
       this.props.getVocabulary({
         vocabNameOrURL: this.props.vocabBaseUrl,
         size: -1,
-        subrequest: this.props.intl.locale,
+        subrequest: this.props.lang,
+      });
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (
+      this.props.vocabBaseUrl !== prevProps.vocabBaseUrl &&
+      (!this.props.choices || this.props.choices?.length === 0)
+    ) {
+      this.props.getVocabulary({
+        vocabNameOrURL: this.props.vocabBaseUrl,
+        size: -1,
+        subrequest: this.props.lang,
       });
     }
   }
@@ -188,7 +203,8 @@ class SelectWidget extends Component {
           })),
           // Only set "no-value" option if there's no default in the field
           // TODO: also if this.props.defaultValue?
-          ...(this.props.noValueOption && !this.props.default
+          ...(this.props.noValueOption &&
+          (this.props.default === undefined || this.props.default === null)
             ? [
                 {
                   label: this.props.intl.formatMessage(messages.no_value),
@@ -200,7 +216,7 @@ class SelectWidget extends Component {
 
     const isMulti = this.props.isMulti
       ? this.props.isMulti
-      : id === 'roles' || id === 'groups';
+      : id === 'roles' || id === 'groups' || this.props.type === 'array';
 
     return (
       <FormFieldWrapper {...this.props}>
@@ -208,6 +224,7 @@ class SelectWidget extends Component {
           id={`field-${id}`}
           key={choices}
           name={id}
+          menuShouldScrollIntoView={false}
           isDisabled={disabled}
           isSearchable={true}
           className="react-select-container"
@@ -220,6 +237,7 @@ class SelectWidget extends Component {
             ...(options?.length > 25 && {
               MenuList,
             }),
+            MultiValueContainer,
             DropdownIndicator,
             ClearIndicator,
             Option: this.props.customOptionStyling || Option,
@@ -263,27 +281,30 @@ export default compose(
         : '';
 
       const vocabState =
-        state.vocabularies?.[vocabBaseUrl]?.subrequests?.[props.intl.locale];
+        state.vocabularies?.[vocabBaseUrl]?.subrequests?.[state.intl.locale];
 
       // If the schema already has the choices in it, then do not try to get the vocab,
       // even if there is one
       if (props.choices) {
         return {
           choices: props.choices,
+          lang: state.intl.locale,
         };
       } else if (vocabState) {
         return {
           vocabBaseUrl,
           choices: vocabState?.items ?? [],
+          lang: state.intl.locale,
         };
         // There is a moment that vocabState is not there yet, so we need to pass the
         // vocabBaseUrl to the component.
       } else if (vocabBaseUrl) {
         return {
           vocabBaseUrl,
+          lang: state.intl.locale,
         };
       }
-      return {};
+      return { lang: state.intl.locale };
     },
     { getVocabulary, getVocabularyTokenTitle },
   ),

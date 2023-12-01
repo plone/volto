@@ -14,6 +14,7 @@ import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import { Form } from '@plone/volto/components';
 import { setInitialPassword } from '@plone/volto/actions';
+import config from '@plone/volto/registry';
 
 const messages = defineMessages({
   title: {
@@ -28,29 +29,29 @@ const messages = defineMessages({
     id: 'Default',
     defaultMessage: 'Default',
   },
-  fullnameTitle: {
-    id: 'Full Name',
-    defaultMessage: 'Full Name',
-  },
-  fullnameDescription: {
-    id: 'Enter full name, e.g. John Smith.',
-    defaultMessage: 'Enter full name, e.g. John Smith.',
+  usernameTitle: {
+    id: 'My username is',
+    defaultMessage: 'My user name is',
   },
   emailTitle: {
-    id: 'My email address is',
-    defaultMessage: 'My email address is',
+    id: 'My email is',
+    defaultMessage: 'My email is',
+  },
+  usernameDescription: {
+    id: 'Enter your username for verification.',
+    defaultMessage: 'Enter your username for verification.',
   },
   emailDescription: {
-    id: 'Enter your email address for verification.',
-    defaultMessage: 'Enter your email address for verification.',
+    id: 'Enter your email for verification.',
+    defaultMessage: 'Enter your email for verification.',
   },
   passwordTitle: {
     id: 'New password',
     defaultMessage: 'New password',
   },
   passwordDescription: {
-    id: 'Enter your new password. Minimum 5 characters.',
-    defaultMessage: 'Enter your new password. Minimum 5 characters.',
+    id: 'Enter your new password. Minimum 8 characters.',
+    defaultMessage: 'Enter your new password. Minimum 8 characters.',
   },
   passwordRepeatTitle: {
     id: 'Confirm password',
@@ -78,8 +79,7 @@ const messages = defineMessages({
     defaultMessage: 'Account activation completed',
   },
   successRedirectToLoginBody: {
-    id:
-      'Your password has been set successfully. You may now {link} with your new password.',
+    id: 'Your password has been set successfully. You may now {link} with your new password.',
     defaultMessage:
       'Your password has been set successfully. You may now {link} with your new password.',
   },
@@ -131,6 +131,20 @@ class PasswordReset extends Component {
       error: null,
       isSuccessful: false,
     };
+
+    this.identifierField = config.settings.useEmailAsLogin
+      ? 'email'
+      : 'username';
+
+    this.identifierTitle =
+      this.identifierField === 'email'
+        ? this.props.intl.formatMessage(messages.emailTitle)
+        : this.props.intl.formatMessage(messages.usernameTitle);
+
+    this.identifierDescription =
+      this.identifierField === 'email'
+        ? this.props.intl.formatMessage(messages.emailDescription)
+        : this.props.intl.formatMessage(messages.usernameDescription);
   }
 
   /**
@@ -155,7 +169,7 @@ class PasswordReset extends Component {
   onSubmit(data) {
     if (data.password === data.passwordRepeat) {
       this.props.setInitialPassword(
-        data.email,
+        data[this.identifierField],
         this.props.token,
         data.password,
       );
@@ -212,6 +226,9 @@ class PasswordReset extends Component {
       );
     }
     if (this.props.token) {
+      const errmsg = this.props.error
+        ? this.props.error.response.body.error
+        : null;
       return (
         <div id="page-password-reset">
           <Helmet
@@ -223,22 +240,24 @@ class PasswordReset extends Component {
               description={this.props.intl.formatMessage(messages.description)}
               onSubmit={this.onSubmit}
               onCancel={this.onCancel}
-              error={this.state.error || this.props.error}
+              error={this.state.error || errmsg}
               schema={{
                 fieldsets: [
                   {
                     id: 'default',
                     title: this.props.intl.formatMessage(messages.default),
-                    fields: ['email', 'password', 'passwordRepeat'],
+                    fields: [
+                      this.identifierField,
+                      'password',
+                      'passwordRepeat',
+                    ],
                   },
                 ],
                 properties: {
-                  email: {
+                  [this.identifierField]: {
                     type: 'string',
-                    title: this.props.intl.formatMessage(messages.emailTitle),
-                    description: this.props.intl.formatMessage(
-                      messages.emailDescription,
-                    ),
+                    title: this.identifierTitle,
+                    description: this.identifierDescription,
                   },
                   password: {
                     description: this.props.intl.formatMessage(
@@ -264,7 +283,7 @@ class PasswordReset extends Component {
                 submitLabel: this.props.intl.formatMessage(
                   messages.setMyPassword,
                 ),
-                required: ['fullname', 'password', 'passwordRepeat'],
+                required: [this.identifierField, 'password', 'passwordRepeat'],
               }}
             />
           </Container>

@@ -3,7 +3,7 @@ export function setupGuillotina() {
     Authorization: 'Basic cm9vdDpyb290',
     'Content-Type': 'application/json',
   };
-  const api_url = 'http://localhost:8081/db';
+  const api_url = 'http://127.0.0.1:8081/db';
 
   cy.request({
     method: 'POST',
@@ -62,7 +62,7 @@ export function tearDownGuillotina({ allowFail = false } = {}) {
     Authorization: 'Basic cm9vdDpyb290',
     'Content-Type': 'application/json',
   };
-  const api_url = 'http://localhost:8081/db';
+  const api_url = 'http://127.0.0.1:8081/db';
 
   cy.request({
     method: 'DELETE',

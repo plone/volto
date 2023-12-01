@@ -1,19 +1,17 @@
-/**
- * Workflow component.
- * @module components/manage/Workflow/Workflow
- */
-
-import React, { Component, Fragment } from 'react';
+import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { uniqBy } from 'lodash';
 import { toast } from 'react-toastify';
-import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import getWorkflowMapping from '@plone/volto/constants/Workflows';
-import { Icon, Toast } from '@plone/volto/components';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { defineMessages, useIntl } from 'react-intl';
 
+import { FormFieldWrapper, Icon, Toast } from '@plone/volto/components';
+import {
+  flattenToAppURL,
+  getWorkflowOptions,
+  getCurrentStateMapping,
+} from '@plone/volto/helpers';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 import {
@@ -21,7 +19,6 @@ import {
   getWorkflow,
   transitionWorkflow,
 } from '@plone/volto/actions';
-
 import downSVG from '@plone/volto/icons/down-key.svg';
 import upSVG from '@plone/volto/icons/up-key.svg';
 import checkSVG from '@plone/volto/icons/check.svg';
@@ -35,11 +32,14 @@ const messages = defineMessages({
     id: 'No workflow',
     defaultMessage: 'No workflow',
   },
+  state: {
+    id: 'State',
+    defaultMessage: 'State',
+  },
 });
 
 const SingleValue = injectLazyLibs('reactSelect')(({ children, ...props }) => {
   const stateDecorator = {
-    marginLeft: '10px',
     marginRight: '10px',
     display: 'inline-block',
     backgroundColor: props.selectProps.value.color || null,
@@ -59,7 +59,6 @@ const SingleValue = injectLazyLibs('reactSelect')(({ children, ...props }) => {
 
 const Option = injectLazyLibs('reactSelect')((props) => {
   const stateDecorator = {
-    marginLeft: '10px',
     marginRight: '10px',
     display: 'inline-block',
     backgroundColor:
@@ -82,9 +81,9 @@ const Option = injectLazyLibs('reactSelect')((props) => {
       <span style={stateDecorator} />
       <div style={{ marginRight: 'auto' }}>{props.label}</div>
       {props.isFocused && !props.isSelected && (
-        <Icon name={checkSVG} size="24px" color="#b8c6c8" />
+        <Icon name={checkSVG} size="18px" color="#b8c6c8" />
       )}
-      {props.isSelected && <Icon name={checkSVG} size="24px" color="#007bc1" />}
+      {props.isSelected && <Icon name={checkSVG} size="18px" color="#007bc1" />}
     </Option>
   );
 });
@@ -133,15 +132,16 @@ const customSelectStyles = {
   }),
   valueContainer: (styles) => ({
     ...styles,
+    padding: 0,
   }),
   option: (styles, state) => ({
     ...styles,
     backgroundColor: null,
-    height: '50px',
+    minHeight: '50px',
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: '14px 12px',
+    padding: '12px 12px',
     color: state.isSelected
       ? '#007bc1'
       : state.isFocused
@@ -150,197 +150,97 @@ const customSelectStyles = {
     ':active': {
       backgroundColor: null,
     },
+    span: {
+      flex: '0 0 auto',
+    },
+    svg: {
+      flex: '0 0 auto',
+    },
   }),
 };
 
-/**
- * Workflow container class.
- * @class Workflow
- * @extends Component
- */
-class Workflow extends Component {
-  /**
-   * Property types.
-   * @property {Object} propTypes Property types.
-   * @static
-   */
-  static propTypes = {
-    getContent: PropTypes.func.isRequired,
-    getWorkflow: PropTypes.func.isRequired,
-    transitionWorkflow: PropTypes.func.isRequired,
-    loaded: PropTypes.bool.isRequired,
-    pathname: PropTypes.string.isRequired,
-    history: PropTypes.arrayOf(
-      PropTypes.shape({
-        review_state: PropTypes.string,
-      }),
-    ),
-    transitions: PropTypes.arrayOf(
-      PropTypes.shape({
-        '@id': PropTypes.string,
-        title: PropTypes.string,
-      }),
-    ),
-  };
+function useWorkflow() {
+  const history = useSelector((state) => state.workflow.history, shallowEqual);
+  const transitions = useSelector(
+    (state) => state.workflow.transitions,
+    shallowEqual,
+  );
+  const loaded = useSelector((state) => state.workflow.transition.loaded);
+  const currentStateValue = useSelector(
+    (state) => getCurrentStateMapping(state.workflow.currentState),
+    shallowEqual,
+  );
 
-  /**
-   * Default properties
-   * @property {Object} defaultProps Default properties.
-   * @static
-   */
-  static defaultProps = {
-    history: [],
-    transitions: [],
-  };
+  return { loaded, history, transitions, currentStateValue };
+}
 
-  state = {
-    selectedOption: this.props.content.review_state
-      ? getWorkflowMapping(null, this.props.content.review_state)
-      : {},
-  };
+const Workflow = (props) => {
+  const intl = useIntl();
+  const dispatch = useDispatch();
+  const { loaded, transitions, currentStateValue } = useWorkflow();
+  const content = useSelector((state) => state.content?.data, shallowEqual);
+  const { pathname } = props;
 
-  componentDidMount() {
-    this.props.getWorkflow(this.props.pathname);
-  }
+  useEffect(() => {
+    dispatch(getWorkflow(pathname));
+    dispatch(getContent(pathname));
+  }, [dispatch, pathname, loaded]);
 
-  /**
-   * Component will receive props
-   * @method componentWillReceiveProps
-   * @param {Object} nextProps Next properties
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.pathname !== this.props.pathname) {
-      this.props.getWorkflow(nextProps.pathname);
-    }
-    if (!this.props.loaded && nextProps.loaded) {
-      this.props.getWorkflow(nextProps.pathname);
-      this.props.getContent(nextProps.pathname);
-    }
-  }
-
-  /**
-   * On transition handler
-   * @method transition
-   * @param {string} event Event object
-   * @returns {undefined}
-   */
-  transition = (selectedOption) => {
-    this.props.transitionWorkflow(flattenToAppURL(selectedOption.url));
-    this.setState({ selectedOption });
+  const transition = (selectedOption) => {
+    dispatch(transitionWorkflow(flattenToAppURL(selectedOption.url)));
     toast.success(
       <Toast
         success
-        title={this.props.intl.formatMessage(messages.messageUpdated)}
+        title={intl.formatMessage(messages.messageUpdated)}
+        content=""
       />,
     );
   };
 
-  selectValue = (option) => {
-    const stateDecorator = {
-      marginLeft: '10px',
-      marginRight: '10px',
-      display: 'inline-block',
-      backgroundColor: option.color || null,
-      content: ' ',
-      height: '10px',
-      width: '10px',
-      borderRadius: '50%',
-    };
-    return (
-      <Fragment>
-        <span style={stateDecorator} />
-        <span className="Select-value-label">{option.label}</span>
-      </Fragment>
-    );
-  };
+  const { Placeholder } = props.reactSelect.components;
+  const Select = props.reactSelect.default;
 
-  optionRenderer = (option) => {
-    const stateDecorator = {
-      marginLeft: '10px',
-      marginRight: '10px',
-      display: 'inline-block',
-      backgroundColor:
-        this.state.selectedOption.value === option.value ? option.color : null,
-      content: ' ',
-      height: '10px',
-      width: '10px',
-      borderRadius: '50%',
-      border:
-        this.state.selectedOption.value !== option.value
-          ? `1px solid ${option.color}`
-          : null,
-    };
+  return (
+    <FormFieldWrapper
+      id="state-select"
+      title={intl.formatMessage(messages.state)}
+      intl={intl}
+      {...props}
+    >
+      <Select
+        name="state-select"
+        className="react-select-container"
+        classNamePrefix="react-select"
+        isDisabled={!content.review_state || transitions.length === 0}
+        options={uniqBy(
+          transitions.map((transition) => getWorkflowOptions(transition)),
+          'label',
+        ).concat(currentStateValue)}
+        styles={customSelectStyles}
+        theme={selectTheme}
+        components={{
+          DropdownIndicator,
+          Placeholder,
+          Option,
+          SingleValue,
+        }}
+        onChange={transition}
+        value={
+          content.review_state
+            ? currentStateValue
+            : {
+                label: intl.formatMessage(messages.messageNoWorkflow),
+                value: 'noworkflow',
+              }
+        }
+        isSearchable={false}
+      />
+    </FormFieldWrapper>
+  );
+};
 
-    return (
-      <Fragment>
-        <span style={stateDecorator} />
-        <span style={{ marginRight: 'auto' }}>{option.label}</span>
-        <Icon name={checkSVG} size="24px" />
-      </Fragment>
-    );
-  };
+Workflow.propTypes = {
+  pathname: PropTypes.string.isRequired,
+};
 
-  render() {
-    const { selectedOption } = this.state;
-    const { Placeholder } = this.props.reactSelect.components;
-    const Select = this.props.reactSelect.default;
-
-    return (
-      <Fragment>
-        <label htmlFor="state-select">
-          <FormattedMessage id="State" defaultMessage="State" />
-        </label>
-        <Select
-          name="state-select"
-          className="react-select-container"
-          classNamePrefix="react-select"
-          isDisabled={
-            !this.props.content.review_state ||
-            this.props.transitions.length === 0
-          }
-          options={uniqBy(
-            this.props.transitions.map((transition) =>
-              getWorkflowMapping(transition['@id']),
-            ),
-            'label',
-          ).concat(selectedOption)}
-          styles={customSelectStyles}
-          theme={selectTheme}
-          components={{
-            DropdownIndicator,
-            Placeholder,
-            Option,
-            SingleValue,
-          }}
-          onChange={this.transition}
-          defaultValue={
-            this.props.content.review_state
-              ? selectedOption
-              : {
-                  label: this.props.intl.formatMessage(
-                    messages.messageNoWorkflow,
-                  ),
-                  value: 'noworkflow',
-                }
-          }
-          isSearchable={false}
-        />
-      </Fragment>
-    );
-  }
-}
-
-export default compose(
-  injectIntl,
-  injectLazyLibs(['reactSelect']),
-  connect(
-    (state) => ({
-      loaded: state.workflow.transition.loaded,
-      content: state.content.data,
-      history: state.workflow.history,
-      transitions: state.workflow.transitions,
-    }),
-    { getContent, getWorkflow, transitionWorkflow },
-  ),
-)(Workflow);
+export default compose(injectLazyLibs(['reactSelect']))(Workflow);

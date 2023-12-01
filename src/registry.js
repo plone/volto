@@ -1,3 +1,5 @@
+import { isArray } from 'lodash';
+
 class Config {
   constructor() {
     if (!Config.instance) {
@@ -22,6 +24,14 @@ class Config {
 
   set settings(settings) {
     this._data.settings = settings;
+  }
+
+  get experimental() {
+    return this._data.experimental;
+  }
+
+  set experimental(experimental) {
+    this._data.experimental = experimental;
   }
 
   get blocks() {
@@ -64,14 +74,6 @@ class Config {
     this._data.addonRoutes = addonRoutes;
   }
 
-  get appExtras() {
-    return this._data.appExtras;
-  }
-
-  set appExtras(appExtras) {
-    this._data.appExtras = appExtras;
-  }
-
   get slots() {
     return this._data.slots;
   }
@@ -88,12 +90,55 @@ class Config {
     this._data.components = components;
   }
 
-  resolve(component) {
-    return this._data.components[component] || {};
+  getComponent({ name, dependencies = '' }) {
+    if (typeof arguments[0] === 'object') {
+      let depsString;
+      if (dependencies && isArray(dependencies)) {
+        depsString = dependencies.join('+');
+      } else {
+        depsString = dependencies;
+      }
+      const componentName = `${name}${depsString ? `|${depsString}` : ''}`;
+
+      return this._data.components[componentName] || {};
+    } else {
+      // Shortcut notation, accepting a lonely string as argument
+      return this._data.components[arguments[0]] || {};
+    }
   }
 
-  register(name, component) {
-    this._data.components[name] = component;
+  registerComponent({ name, component, dependencies = '' }) {
+    let depsString;
+    if (!component) {
+      throw new Error('No component provided');
+    } else {
+      if (dependencies && isArray(dependencies)) {
+        depsString = dependencies.join('+');
+      } else {
+        depsString = dependencies;
+      }
+      const componentName = `${name}${depsString ? `|${depsString}` : ''}`;
+
+      this._data.components[componentName] = { component };
+      // Try to set a displayName (useful for React dev tools) for the registered component
+      // Only if it's a function and it's not set previously
+      try {
+        const displayName =
+          this._data.components[componentName].component.displayName;
+
+        if (
+          !displayName &&
+          typeof this._data.components[componentName].component === 'function'
+        ) {
+          this._data.components[componentName].component.displayName = name;
+        }
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.warning(
+          `Not setting the component displayName because ${error}`,
+        );
+      }
+    }
   }
 }
 

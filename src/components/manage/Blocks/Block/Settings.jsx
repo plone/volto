@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
-import InlineForm from '@plone/volto/components/manage/Form/InlineForm';
+import BlockDataForm from '@plone/volto/components/manage/Form/BlockDataForm';
 
 const Settings = ({ data, block, onChangeBlock, schema }) => {
   return (
-    <InlineForm
+    <BlockDataForm
       schema={schema}
       title={schema.title}
       onChangeField={(id, value) => {
@@ -14,7 +14,9 @@ const Settings = ({ data, block, onChangeBlock, schema }) => {
           [id]: value,
         });
       }}
+      onChangeBlock={onChangeBlock}
       formData={data}
+      applySchemaEnhancers={false}
     />
   );
 };

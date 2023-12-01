@@ -33,8 +33,13 @@ describe('Comments', () => {
             text: { data: 'Some comment' },
             is_deletable: true,
             is_editable: true,
+            can_reply: true,
           },
         ],
+        permissions: {
+          view_comments: true,
+          can_reply: true,
+        },
         add: {
           loading: false,
           loaded: true,

@@ -4,9 +4,16 @@
  */
 
 import { map } from 'lodash';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import {
+  flattenToAppURL,
+  getBaseUrl,
+  hasApiExpander,
+} from '@plone/volto/helpers';
 
-import { GET_NAVIGATION } from '@plone/volto/constants/ActionTypes';
+import {
+  GET_CONTENT,
+  GET_NAVIGATION,
+} from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
   error: null,
@@ -25,6 +32,7 @@ const initialState = {
 function getRecursiveItems(items) {
   return map(items, (item) => ({
     title: item.title,
+    description: item.description,
     url: flattenToAppURL(item['@id']),
     ...(item.items && { items: getRecursiveItems(item.items) }),
   }));
@@ -38,6 +46,7 @@ function getRecursiveItems(items) {
  * @returns {Object} New state.
  */
 export default function navigation(state = initialState, action = {}) {
+  let hasExpander;
   switch (action.type) {
     case `${GET_NAVIGATION}_PENDING`:
       return {
@@ -46,14 +55,38 @@ export default function navigation(state = initialState, action = {}) {
         loaded: false,
         loading: true,
       };
+    case `${GET_CONTENT}_SUCCESS`:
+      hasExpander = hasApiExpander(
+        'navigation',
+        getBaseUrl(flattenToAppURL(action.result['@id'])),
+      );
+      if (hasExpander && !action.subrequest) {
+        return {
+          ...state,
+          error: null,
+          items: getRecursiveItems(
+            action.result['@components'].navigation.items,
+          ),
+          loaded: true,
+          loading: false,
+        };
+      }
+      return state;
     case `${GET_NAVIGATION}_SUCCESS`:
-      return {
-        ...state,
-        error: null,
-        items: getRecursiveItems(action.result.items),
-        loaded: true,
-        loading: false,
-      };
+      // Even if the expander is set or not, if the GET_NAVIGATION is
+      // called, we want it to store the data if the actions data is
+      // not set in the expander data (['@components']) but in the "normal"
+      // action result (we look for the object property returned by the endpoint)
+      if (!action.result?.['@components'] && action.result?.items) {
+        return {
+          ...state,
+          error: null,
+          items: getRecursiveItems(action.result.items),
+          loaded: true,
+          loading: false,
+        };
+      }
+      return state;
     case `${GET_NAVIGATION}_FAIL`:
       return {
         ...state,

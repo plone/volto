@@ -54,11 +54,11 @@ export function resolveExtension(name, extensions, data) {
  *   fields hold the coresponding definition object from the block's
  *   configuration.
  */
-export function resolveBlockExtensions(data) {
+export function resolveBlockExtensions(data, blocksConfig) {
   const block_type = data['@type'];
-  const { extensions = {}, variations = [] } = config.blocks.blocksConfig[
-    block_type
-  ];
+
+  const { extensions = {}, variations = [] } =
+    blocksConfig?.[block_type] || config.blocks.blocksConfig[block_type];
 
   const resolvedExtensions = Object.assign(
     {},
@@ -83,8 +83,12 @@ export function resolveBlockExtensions(data) {
 }
 
 const withBlockExtensions = (WrappedComponent) => (props) => {
-  const { data } = props;
-  const { extensions, resolvedExtensions } = resolveBlockExtensions(data);
+  const { data, blocksConfig } = props;
+
+  const { extensions, resolvedExtensions } = resolveBlockExtensions(
+    data,
+    blocksConfig,
+  );
   return (
     <WrappedComponent
       {...resolvedExtensions}

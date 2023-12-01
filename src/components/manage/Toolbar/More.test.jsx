@@ -79,6 +79,16 @@ const store = mockStore({
           id: 'ical_import_enable',
           title: 'Enable icalendar import',
         },
+        {
+          icon: 'plone-redirection',
+          id: 'redirection',
+          title: 'URL Management',
+        },
+        {
+          icon: '',
+          id: 'rules',
+          title: 'Rules',
+        },
       ],
       portal_tabs: [],
       site_actions: [

@@ -3,10 +3,11 @@
  * @module helpers/Url
  */
 
-import { last, memoize } from 'lodash';
+import { last, memoize, isArray, isObject, isString } from 'lodash';
 import { urlRegex, telRegex, mailRegex } from './urlRegex';
 import prependHttp from 'prepend-http';
 import config from '@plone/volto/registry';
+import { matchPath } from 'react-router';
 
 /**
  * Get base url.
@@ -175,6 +176,37 @@ export function addAppURL(url) {
 }
 
 /**
+ * Given a URL expands it to the backend URL
+ * Useful when you have to actually call the backend from the
+ * frontend code (eg. ICS calendar download)
+ * It is seamless mode aware
+ * @method expandToBackendURL
+ * @param {string} url URL or path of the object
+ * @returns {string} New URL with the backend URL
+ */
+export function expandToBackendURL(path) {
+  const { settings } = config;
+  const APISUFIX = settings.legacyTraverse ? '' : '/++api++';
+  let adjustedPath;
+  if (path.startsWith('http://') || path.startsWith('https://')) {
+    // flattenToAppURL first if we get a full URL
+    adjustedPath = flattenToAppURL(path);
+  } else {
+    // Next adds a / in front if not a full URL to make sure it's a valid relative path
+    adjustedPath = path[0] !== '/' ? `/${path}` : path;
+  }
+
+  let apiPath = '';
+  if (settings.internalApiPath && __SERVER__) {
+    apiPath = settings.internalApiPath;
+  } else if (settings.apiPath) {
+    apiPath = settings.apiPath;
+  }
+
+  return `${apiPath}${APISUFIX}${adjustedPath}`;
+}
+
+/**
  * Check if internal url
  * @method isInternalURL
  * @param {string} url URL of the object
@@ -182,7 +214,17 @@ export function addAppURL(url) {
  */
 export function isInternalURL(url) {
   const { settings } = config;
-  return (
+
+  const isMatch = (config.settings.externalRoutes ?? []).find((route) => {
+    if (typeof route === 'object') {
+      return matchPath(flattenToAppURL(url), route.match);
+    }
+    return matchPath(flattenToAppURL(url), route);
+  });
+
+  const isExcluded = isMatch && Object.keys(isMatch)?.length > 0;
+
+  const internalURL =
     url &&
     (url.indexOf(settings.publicURL) !== -1 ||
       (settings.internalApiPath &&
@@ -190,8 +232,13 @@ export function isInternalURL(url) {
       url.indexOf(settings.apiPath) !== -1 ||
       url.charAt(0) === '/' ||
       url.charAt(0) === '.' ||
-      url.startsWith('#'))
-  );
+      url.startsWith('#'));
+
+  if (internalURL && isExcluded) {
+    return false;
+  }
+
+  return internalURL;
 }
 
 /**
@@ -203,6 +250,27 @@ export function isInternalURL(url) {
 export function isUrl(url) {
   return urlRegex().test(url);
 }
+
+/**
+ * Get field url
+ * @method getFieldURL
+ * @param {object} data
+ * @returns {string | any} URL string value if field is of url type or any.
+ */
+export const getFieldURL = (data) => {
+  let url = data;
+  const _isObject = data && isObject(data) && !isArray(data);
+  if (_isObject && data['@type'] === 'URL') {
+    url = data['value'] ?? data['url'] ?? data['href'] ?? data;
+  } else if (_isObject) {
+    url = data['@id'] ?? data['url'] ?? data['href'] ?? data;
+  }
+  if (isArray(data)) {
+    url = data.map((item) => getFieldURL(item));
+  }
+  if (isString(url) && isInternalURL(url)) return flattenToAppURL(url);
+  return url;
+};
 
 /**
  * Normalize URL, adds protocol (if required eg. user has not entered the protocol)
@@ -233,14 +301,14 @@ export function isTelephone(text) {
 }
 
 export function normaliseMail(email) {
-  if (email.toLowerCase().startsWith('mailto:')) {
+  if (email?.toLowerCase()?.startsWith('mailto:')) {
     return email;
   }
   return `mailto:${email}`;
 }
 
 export function normalizeTelephone(tel) {
-  if (tel.toLowerCase().startsWith('tel:')) {
+  if (tel?.toLowerCase()?.startsWith('tel:')) {
     return tel;
   }
   return `tel:${tel}`;
@@ -263,12 +331,17 @@ export function checkAndNormalizeUrl(url) {
     res.url = URLUtils.normalizeTelephone(url);
   } else {
     //url
-    if (!res.url.startsWith('/') && !res.url.startsWith('#')) {
+    if (
+      res.url?.length >= 0 &&
+      !res.url.startsWith('/') &&
+      !res.url.startsWith('#')
+    ) {
       res.url = URLUtils.normalizeUrl(url);
       if (!URLUtils.isUrl(res.url)) {
         res.isValid = false;
       }
     }
+    if (res.url === undefined || res.url === null) res.isValid = false;
   }
   return res;
 }
@@ -282,3 +355,32 @@ export const URLUtils = {
   isUrl,
   checkAndNormalizeUrl,
 };
+
+/**
+ * Given an image info object, it does flatten all the scales information to
+ * match the ones stored in the catalog
+ * 'http://localhost:3000/{path}/@@images/{scalefile}' -> '@images/{scalefile}'
+ * @function flattenScales
+ * @param {string} path path of the content object
+ * @param {object} image image information object
+ * @returns {object} New object with the flattened scale URLs
+ */
+export function flattenScales(path, image) {
+  function removeObjectIdFromURL(path, scale) {
+    return scale.replace(`${path}/`, '');
+  }
+  if (!image) return;
+
+  const imageInfo = {
+    ...image,
+    download: flattenToAppURL(removeObjectIdFromURL(path, image.download)),
+  };
+
+  Object.keys(imageInfo.scales).forEach((key) => {
+    imageInfo.scales[key].download = flattenToAppURL(
+      removeObjectIdFromURL(path, image.scales[key].download),
+    );
+  });
+
+  return imageInfo;
+}

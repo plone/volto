@@ -5,11 +5,12 @@
 
 import React from 'react';
 import { map } from 'lodash';
-import { useIntl } from 'react-intl';
 import { Days } from './Utils';
 import SelectInput from './SelectInput';
 import { Form } from 'semantic-ui-react';
+import { toBackendLang } from '@plone/volto/helpers';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import { useSelector } from 'react-redux';
 
 /**
  * WeekdayOfTheMonthField component class.
@@ -19,10 +20,10 @@ import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 const WeekdayOfTheMonthField = (props) => {
   const { disabled = false, moment: momentlib } = props;
-  const intl = useIntl();
+  const lang = useSelector((state) => state.intl.locale);
 
   const moment = momentlib.default;
-  moment.locale(intl.locale);
+  moment.locale(toBackendLang(lang));
 
   const weekdayOfTheMonthList = [
     ...map(Object.keys(Days), (d) => ({

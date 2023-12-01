@@ -11,10 +11,14 @@ import { compose } from 'redux';
 import { Link, withRouter } from 'react-router-dom';
 import { find } from 'lodash';
 import { toast } from 'react-toastify';
-import { parse } from 'date-fns';
 import { Toast } from '@plone/volto/components';
 import { Pluggable, Plug } from '@plone/volto/components/manage/Pluggable';
-import { Icon, Display, Workflow } from '@plone/volto/components';
+import {
+  FormattedDate,
+  Icon,
+  Display,
+  Workflow,
+} from '@plone/volto/components';
 import {
   applyWorkingCopy,
   createWorkingCopy,
@@ -41,9 +45,25 @@ const messages = defineMessages({
     id: 'Sharing',
     defaultMessage: 'Sharing',
   },
+  rules: {
+    id: 'Rules',
+    defaultMessage: 'Rules',
+  },
+  aliases: {
+    id: 'URL Management',
+    defaultMessage: 'URL Management',
+  },
+  linkstoitem: {
+    id: 'Links and references',
+    defaultMessage: 'Links and references',
+  },
   ManageTranslations: {
     id: 'Manage Translations',
     defaultMessage: 'Manage Translations',
+  },
+  manageContent: {
+    id: 'Manage content…',
+    defaultMessage: 'Manage content…',
   },
   CreateWorkingCopy: {
     id: 'Create working copy',
@@ -66,14 +86,29 @@ const messages = defineMessages({
     defaultMessage: 'Changes applied',
   },
   workingCopyAppliedBy: {
-    id:
-      'Made by {creator} on {date}. This is not a working copy anymore, but the main content.',
+    id: 'Made by {creator} on {date}. This is not a working copy anymore, but the main content.',
     defaultMessage:
       'Made by {creator} on {date}. This is not a working copy anymore, but the main content.',
   },
   workingCopyRemovedTitle: {
     id: 'The working copy was discarded',
     defaultMessage: 'The working copy was discarded',
+  },
+  Unauthorized: {
+    id: 'Unauthorized',
+    defaultMessage: 'Unauthorized',
+  },
+  workingCopyErrorUnauthorized: {
+    id: 'workingCopyErrorUnauthorized',
+    defaultMessage: 'You are not authorized to perform this operation.',
+  },
+  Error: {
+    id: 'Error',
+    defaultMessage: 'Error',
+  },
+  workingCopyGenericError: {
+    id: 'workingCopyGenericError',
+    defaultMessage: 'An error occurred while performing this operation.',
   },
 });
 
@@ -122,6 +157,59 @@ class More extends Component {
     document.removeEventListener('mousedown', this.handleClickOutside, false);
   };
 
+  componentDidUpdate(prevProps, prevState) {
+    let erroredAction = '';
+    if (
+      prevProps.workingCopy.apply.loading &&
+      this.props.workingCopy.apply.error
+    ) {
+      erroredAction = 'apply';
+    } else if (
+      prevProps.workingCopy.create.loading &&
+      this.props.workingCopy.create.error
+    ) {
+      erroredAction = 'create';
+    } else if (
+      prevProps.workingCopy.remove.loading &&
+      this.props.workingCopy.remove.error
+    ) {
+      erroredAction = 'remove';
+    }
+
+    if (erroredAction) {
+      const errorStatus = this.props.workingCopy[erroredAction].error.status;
+      if (errorStatus === 401 || errorStatus === 403) {
+        toast.error(
+          <Toast
+            error
+            title={this.props.intl.formatMessage(messages.Unauthorized)}
+            content={this.props.intl.formatMessage(
+              messages.workingCopyErrorUnauthorized,
+            )}
+          />,
+          {
+            toastId: 'workingCopyErrorUnauthorized',
+            autoClose: 10000,
+          },
+        );
+      } else {
+        toast.error(
+          <Toast
+            error
+            title={this.props.intl.formatMessage(messages.Error)}
+            content={this.props.intl.formatMessage(
+              messages.workingCopyGenericError,
+            )}
+          />,
+          {
+            toastId: 'workingCopyGenericError',
+            autoClose: 10000,
+          },
+        );
+      }
+    }
+  }
+
   /**
    * Render method.
    * @method render
@@ -134,7 +222,17 @@ class More extends Component {
     const sharingAction = find(this.props.actions.object, {
       id: 'local_roles',
     });
-    const { content, intl, lang } = this.props;
+
+    const rulesAction = find(this.props.actions.object, {
+      id: 'contentrules',
+    });
+
+    const aliasesAction = find(this.props.actions.object_buttons, {
+      id: 'redirection',
+    });
+
+    const { content, intl } = this.props;
+
     const dateOptions = {
       year: 'numeric',
       month: 'long',
@@ -190,7 +288,7 @@ class More extends Component {
               {this.props.content['@type'] !== 'Plone Site' && (
                 // Plone Site does not have history (yet)
                 <li>
-                  <Link to={`${path}/history`}>
+                  <Link to={`${path}/historyview`}>
                     <div>
                       <span className="pastanaga-menu-label">
                         {historyAction?.title ||
@@ -213,6 +311,37 @@ class More extends Component {
                 </li>
               )}
             </Plug>
+            <Plug pluggable="toolbar-more-menu-list" id="aliases">
+              {aliasesAction && (
+                <li>
+                  <Link to={`${path}/aliases`}>
+                    {this.props.intl.formatMessage(messages.aliases)}
+                    <Icon name={rightArrowSVG} size="24px" />
+                  </Link>
+                </li>
+              )}
+            </Plug>
+            {path !== '' &&
+              !config.settings.excludeLinksAndReferencesMenuItem && (
+                <Plug pluggable="toolbar-more-menu-list" id="linkstoitems">
+                  <li>
+                    <Link to={`${path}/links-to-item`}>
+                      {this.props.intl.formatMessage(messages.linkstoitem)}
+                      <Icon name={rightArrowSVG} size="24px" />
+                    </Link>
+                  </li>
+                </Plug>
+              )}
+            <Plug pluggable="toolbar-more-menu-list" id="rules">
+              {rulesAction && (
+                <li>
+                  <Link to={`${path}/rules`}>
+                    {this.props.intl.formatMessage(messages.rules)}
+                    <Icon name={rightArrowSVG} size="24px" />
+                  </Link>
+                </li>
+              )}
+            </Plug>
           </ul>
         </div>
         <Pluggable name="toolbar-more-manage-content">
@@ -221,7 +350,9 @@ class More extends Component {
               {pluggables.length > 0 && (
                 <>
                   <header>
-                    <h2>Manage content...</h2>
+                    <h2>
+                      {this.props.intl.formatMessage(messages.manageContent)}
+                    </h2>
                   </header>
                   <div className="pastanaga-menu-list">
                     <ul>
@@ -292,11 +423,11 @@ class More extends Component {
                                   messages.workingCopyAppliedBy,
                                   {
                                     creator: content.working_copy?.creator_name,
-                                    date: new Intl.DateTimeFormat(
-                                      lang,
-                                      dateOptions,
-                                    ).format(
-                                      parse(content.working_copy?.created),
+                                    date: (
+                                      <FormattedDate
+                                        date={content.working_copy?.created}
+                                        format={dateOptions}
+                                      />
                                     ),
                                   },
                                 )}
@@ -416,6 +547,7 @@ export default compose(
       pathname: props.pathname,
       content: state.content.data,
       lang: state.intl.locale,
+      workingCopy: state.workingCopy,
     }),
     { applyWorkingCopy, createWorkingCopy, removeWorkingCopy },
   ),

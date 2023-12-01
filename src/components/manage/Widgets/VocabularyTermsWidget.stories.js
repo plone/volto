@@ -36,7 +36,7 @@ export const VocabularyTerms = WidgetStory.bind({
 VocabularyTerms.args = {};
 
 export default {
-  title: 'Widgets/VocabularyTerms',
+  title: 'Edit Widgets/VocabularyTerms',
   component: VocabularyTermsWidget,
   argTypes: {},
   decorators: [

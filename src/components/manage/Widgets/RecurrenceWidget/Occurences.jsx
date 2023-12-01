@@ -11,8 +11,10 @@ import { List, Button, Header, Label } from 'semantic-ui-react';
 import { Icon } from '@plone/volto/components';
 import addSVG from '@plone/volto/icons/circle-plus.svg';
 import trashSVG from '@plone/volto/icons/delete.svg';
+import { toBackendLang } from '@plone/volto/helpers';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
+import { useSelector } from 'react-redux';
 import { toISOString } from './Utils';
 
 const messages = defineMessages({
@@ -42,7 +44,7 @@ const messages = defineMessages({
   },
   include: {
     id: 'Include this occurence',
-    defaultMessage: 'Include this occurence',
+    defaultMessage: 'Include this occurrence',
   },
 });
 
@@ -66,7 +68,8 @@ const Occurences_ = ({
   moment: momentlib,
 }) => {
   const moment = momentlib.default;
-  moment.locale(intl.locale);
+  const lang = useSelector((state) => state.intl.locale);
+  moment.locale(toBackendLang(lang));
   let all = [];
   const isExcluded = (date) => {
     var dateISO = toISOString(date);

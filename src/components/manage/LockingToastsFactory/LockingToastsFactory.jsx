@@ -1,12 +1,9 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { defineMessages, useIntl } from 'react-intl';
-import { Toast } from '@plone/volto/components';
-// import { flattenToAppURL } from '@plone/volto/helpers';
-import { parse } from 'date-fns';
+import { FormattedDate, Toast } from '@plone/volto/components';
 import useDeepCompareEffect from 'use-deep-compare-effect';
 
 const messages = defineMessages({
@@ -15,8 +12,7 @@ const messages = defineMessages({
     defaultMessage: 'This item was locked by {creator} on {date}',
   },
   unlockItem: {
-    id:
-      'If you are certain this user has abandoned the object, you may unlock the object. You will then be able to edit it.',
+    id: 'If you are certain this user has abandoned the object, you may unlock the object. You will then be able to edit it.',
     defaultMessage:
       'If you are certain this user has abandoned the object, you may unlock the object. You will then be able to edit it.',
   },
@@ -29,7 +25,6 @@ const LockingToastsFactory = (props) => {
   const { content, user } = props;
   const lock = content?.lock;
   const creator = lock?.creator_name || lock?.creator || '';
-  // const creator_url = locking?.creator_url || '';
   const date = lock?.created || '';
   const dateOptions = {
     year: 'numeric',
@@ -49,9 +44,7 @@ const LockingToastsFactory = (props) => {
                 info
                 title={intl.formatMessage(messages.thisItemIsLocked, {
                   creator: creator,
-                  date: new Intl.DateTimeFormat(lang, dateOptions).format(
-                    parse(date),
-                  ),
+                  date: <FormattedDate date={date} format={dateOptions} />,
                 })}
                 content={intl.formatMessage(messages.unlockItem, {})}
               />
@@ -63,9 +56,7 @@ const LockingToastsFactory = (props) => {
               info
               title={intl.formatMessage(messages.thisItemIsLocked, {
                 creator: creator,
-                date: new Intl.DateTimeFormat(lang, dateOptions).format(
-                  parse(date),
-                ),
+                date: <FormattedDate date={date} format={dateOptions} />,
               })}
               content={intl.formatMessage(messages.unlockItem, {})}
             />,

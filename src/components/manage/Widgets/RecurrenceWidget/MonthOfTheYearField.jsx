@@ -6,10 +6,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { map } from 'lodash';
-import { useIntl } from 'react-intl';
 import { Form } from 'semantic-ui-react';
 import SelectInput from './SelectInput';
+import { toBackendLang } from '@plone/volto/helpers';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import { useSelector } from 'react-redux';
 
 /**
  * MonthOfTheYearField component class.
@@ -24,8 +25,8 @@ const MonthOfTheYearField = ({
   moment: momentlib,
 }) => {
   const moment = momentlib.default;
-  const intl = useIntl();
-  moment.locale(intl.locale);
+  const lang = useSelector((state) => state.intl.locale);
+  moment.locale(toBackendLang(lang));
   const monthList = [
     ...map(moment.months(), (m, i) => ({
       value: i + 1,

@@ -5,15 +5,16 @@
  */
 
 // export { injectLazyLibs } from './Loadable/Loadable';
-export Api from '@plone/volto/helpers/Api/Api';
+export { default as Api } from '@plone/volto/helpers/Api/Api';
 export { getAPIResourceWithAuth } from '@plone/volto/helpers/Api/APIResourceWithAuth';
-export Html from '@plone/volto/helpers/Html/Html';
+export { default as Html } from '@plone/volto/helpers/Html/Html';
 export {
   getAuthToken,
   persistAuthToken,
 } from '@plone/volto/helpers/AuthToken/AuthToken';
 export {
   addAppURL,
+  expandToBackendURL,
   flattenHTMLToAppURL,
   flattenToAppURL,
   stripQuerystring,
@@ -28,8 +29,8 @@ export {
   normalizeUrl,
   removeProtocol,
   URLUtils,
+  flattenScales,
 } from '@plone/volto/helpers/Url/Url';
-export { generateSitemap } from '@plone/volto/helpers/Sitemap/Sitemap';
 export { generateRobots } from '@plone/volto/helpers/Robots/Robots';
 export {
   nestContent,
@@ -54,9 +55,14 @@ export {
   previousBlockId,
   applyBlockDefaults,
   applySchemaDefaults,
+  blocksFormGenerator,
+  buildStyleClassNamesFromData,
+  buildStyleClassNamesExtenders,
+  getPreviousNextBlock,
+  findBlocks,
 } from '@plone/volto/helpers/Blocks/Blocks';
-export BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
-export ScrollToTop from '@plone/volto/helpers/ScrollToTop/ScrollToTop';
+export { default as BodyClass } from '@plone/volto/helpers/BodyClass/BodyClass';
+export { default as ScrollToTop } from '@plone/volto/helpers/ScrollToTop/ScrollToTop';
 export {
   getBoolean,
   getVocabName,
@@ -66,9 +72,10 @@ export {
   getFieldsVocabulary,
 } from '@plone/volto/helpers/Vocabularies/Vocabularies';
 
-export langmap from './LanguageMap/LanguageMap';
-export Helmet from './Helmet/Helmet';
-export FormValidation from './FormValidation/FormValidation';
+export { default as langmap } from './LanguageMap/LanguageMap';
+export { default as Helmet } from './Helmet/Helmet';
+export { default as FormValidation } from './FormValidation/FormValidation';
+export { validateFileUploadSize } from './FormValidation/FormValidation';
 export {
   difference,
   getColor,
@@ -77,9 +84,19 @@ export {
   applyConfig,
   withServerErrorCode,
   parseDateTime,
-  normalizeLanguageName,
+  toGettextLang,
+  normalizeLanguageName, // old name for toGettextLang
+  toReactIntlLang,
+  toLangUnderscoreRegion, // old name for toReactIntlLang
+  toBackendLang,
   hasApiExpander,
   replaceItemOfArray,
+  cloneDeepSchema,
+  arrayRange,
+  reorderArray,
+  isInteractiveElement,
+  slugify,
+  normalizeString,
 } from '@plone/volto/helpers/Utils/Utils';
 export { messages } from './MessageLabels/MessageLabels';
 export {
@@ -88,12 +105,22 @@ export {
   withBlockExtensions,
   applySchemaEnhancer,
   resolveExtension,
+  resolveBlockExtensions,
+  addStyling,
+  composeSchema,
 } from './Extensions';
 export { asyncConnect } from './AsyncConnect';
 export { userHasRoles } from './User/User';
 // export { injectLazyLibs } from './Loadable/Loadable';
 export { useDetectClickOutside } from './Utils/useDetectClickOutside';
+export { useEvent } from './Utils/useEvent';
 export { usePrevious } from './Utils/usePrevious';
 export { usePagination } from './Utils/usePagination';
-export useUndoManager from './UndoManager/useUndoManager';
+export { default as useUndoManager } from './UndoManager/useUndoManager';
 export { getCookieOptions } from './Cookies/cookies';
+export { getWidgetView } from './Widget/widget';
+export {
+  getCurrentStateMapping,
+  getWorkflowOptions,
+} from './Workflows/Workflows';
+export { getSiteAsyncPropExtender } from './Site';

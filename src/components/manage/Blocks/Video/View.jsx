@@ -5,7 +5,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import Body from '@plone/volto/components/manage/Blocks/Video/Body.jsx';
+import Body from '@plone/volto/components/manage/Blocks/Video/Body';
+import { withBlockExtensions } from '@plone/volto/helpers';
 import cx from 'classnames';
 
 /**
@@ -13,7 +14,8 @@ import cx from 'classnames';
  * @class View
  * @extends Component
  */
-const View = ({ data }) => {
+const View = (props) => {
+  const { data, className } = props;
   return (
     <div
       className={cx(
@@ -22,6 +24,7 @@ const View = ({ data }) => {
           center: !Boolean(data.align),
         },
         data.align,
+        className,
       )}
     >
       <Body data={data} />
@@ -38,4 +41,4 @@ View.propTypes = {
   data: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
-export default View;
+export default withBlockExtensions(View);

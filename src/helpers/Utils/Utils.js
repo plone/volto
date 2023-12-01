@@ -1,4 +1,4 @@
-import { flatten, isEqual, isObject, transform } from 'lodash';
+import { cloneDeepWith, flatten, isEqual, isObject, transform } from 'lodash';
 import React from 'react';
 import { matchPath } from 'react-router';
 import config from '@plone/volto/registry';
@@ -154,7 +154,7 @@ export const getColor = (name) => {
  */
 export const parseDateTime = (locale, value, format, moment) => {
   //  Used to set a server timezone or UTC as default
-  moment.defineLocale(locale, moment.localeData(locale)._config); // copy locale to moment-timezone
+  moment.updateLocale(locale, moment.localeData(locale)._config); // copy locale to moment-timezone
   let datetime = null;
 
   if (value) {
@@ -174,11 +174,13 @@ export const parseDateTime = (locale, value, format, moment) => {
 };
 
 /**
- * Normalizes a language to match the i18n format from the Plone lang names
- * @param {string} language Language to be normalized
- * @returns {string} Language normalized
+ * Converts a language code like pt-br to the format `pt_BR` (`lang_region`)
+ * Useful for passing from Plone's i18n lang names to Xnix locale names
+ * eg. LC_MESSAGES/lang_region.po filenames. Also used in the I18N_LANGUAGE cookie.
+ * @param {string} language Language to be converted
+ * @returns {string} Language converted
  */
-export const normalizeLanguageName = (language) => {
+export const toGettextLang = (language) => {
   if (language.includes('-')) {
     let normalizedLang = language.split('-');
     normalizedLang = `${normalizedLang[0]}_${normalizedLang[1].toUpperCase()}`;
@@ -187,11 +189,42 @@ export const normalizeLanguageName = (language) => {
 
   return language;
 };
+export const normalizeLanguageName = toGettextLang;
 
 /**
- * Lookup if a given expander is set in apiExpanders
- * @param {string} language Language to be normalized
- * @returns {string} Language normalized
+ * Converts a language code like pt-br or pt_BR to the format `pt-BR`.
+ * `react-intl` only supports this syntax. We also use it for the locales
+ * in the volto Redux store.
+ * @param {string} language Language to be converted
+ * @returns {string} Language converted
+ */
+export const toReactIntlLang = (language) => {
+  if (language.includes('_') || language.includes('-')) {
+    let langCode = language.split(/[-_]/);
+    langCode = `${langCode[0]}-${langCode[1].toUpperCase()}`;
+    return langCode;
+  }
+
+  return language;
+};
+export const toLangUnderscoreRegion = toReactIntlLang; // old name for backwards-compat
+
+/**
+ * Converts a language code like pt_BR or pt-BR to the format `pt-br`.
+ * This format is used on the backend and in volto config settings.
+ * @param {string} language Language to be converted
+ * @returns {string} Language converted
+ */
+export const toBackendLang = (language) => {
+  return toReactIntlLang(language).toLowerCase();
+};
+
+/**
+ * Lookup if a given expander is set in apiExpanders for the given path and action type
+ * @param {string} expander The id literal of the expander eg. `navigation`
+ * @param {string} path The path (no URL) to check if the expander has effect
+ * @param {string} type The Redux action type
+ * @returns {boolean} Return if the expander is present for the path and the type given
  */
 export const hasApiExpander = (expander, path = '', type = 'GET_CONTENT') => {
   return flatten(
@@ -237,11 +270,11 @@ export const removeFromArray = (array, index) => {
 };
 
 /**
- * Reorder array
+ * Moves an item from origin to target inside an array in an immutable way
  * @param {Array} array Array with data
- * @param {number} origin Index of item to be reordered
- * @param {number} target Index of item to be reordered to
- * @returns {Array} Array with reordered elements
+ * @param {number} origin Index of item to be moved from
+ * @param {number} target Index of item to be moved to
+ * @returns {Array} Resultant array
  */
 export const reorderArray = (array, origin, target) => {
   const result = Array.from(array);
@@ -250,3 +283,79 @@ export const reorderArray = (array, origin, target) => {
 
   return result;
 };
+
+/**
+ * Normalize (unicode) string to a normalized plain ascii string
+ * @method normalizeString
+ * @param {string} str The string to be normalized
+ * @returns {string} Normalized plain ascii string
+ */
+export function normalizeString(str) {
+  return str.normalize('NFD').replace(/\p{Diacritic}/gu, '');
+}
+
+/**
+ * Slugify a string: remove whitespaces, special chars and replace with _
+ * @param {string} string String to be slugified
+ * @returns {string} Slugified string
+ */
+export const slugify = (string) => {
+  return string
+    .toLowerCase()
+    .replace(/[\s-]+/g, '_')
+    .replace(/[^\w]+/g, '');
+};
+
+/**
+ * cloneDeep an object with support for JSX nodes on it
+ * Somehow, in a browser it fails with a "Illegal invocation" error
+ * but in node (Jest test) it doesn't. This does the trick.
+ * @param {object} object object to be cloned
+ * @returns {object} deep cloned object
+ */
+export const cloneDeepSchema = (object) => {
+  return cloneDeepWith(object, (value) => {
+    if (React.isValidElement(value)) {
+      // If a JSX valid element, just return it, do not try to deep clone it
+      return value;
+    }
+  });
+};
+
+/**
+ * Creates an array given a range of numbers
+ * @param {number} start start number from
+ * @param {number} stop stop number at
+ * @param {number} step step every each number in the sequence
+ * @returns {array} The result, eg. [0, 1, 2, 3, 4]
+ */
+export const arrayRange = (start, stop, step) =>
+  Array.from(
+    { length: (stop - start) / step + 1 },
+    (value, index) => start + index * step,
+  );
+
+/**
+ * Given an event target element returns if it's an interactive element
+ * of the one in the list.
+ * @param {node} element event.target element type
+ * @returns {boolean} If it's an interactive element of the list
+ */
+export function isInteractiveElement(
+  element,
+  interactiveElements = [
+    'button',
+    'input',
+    'textarea',
+    'select',
+    'option',
+    'svg',
+    'path',
+  ],
+) {
+  if (interactiveElements.includes(element.tagName.toLowerCase())) {
+    return true;
+  }
+
+  return false;
+}

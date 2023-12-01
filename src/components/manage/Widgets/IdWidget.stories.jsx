@@ -8,7 +8,7 @@ export const Text = WidgetStory.bind({
 });
 
 export default {
-  title: 'Widgets/Id',
+  title: 'Edit Widgets/Id',
   component: IdWidget,
   decorators: [
     (Story) => (

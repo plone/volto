@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Getting started with Volto"
-  "property=og:description": "Getting started with Volto"
-  "property=og:title": "Getting Started Introduction"
-  "keywords": "Volto, Plone, frontend, React, Getting, Started"
+myst:
+  html_meta:
+    "description": "Getting started with Volto"
+    "property=og:description": "Getting started with Volto"
+    "property=og:title": "Getting Started Introduction"
+    "keywords": "Volto, Plone, frontend, React, Getting, Started"
 ---
 
 # Introduction
@@ -11,7 +12,6 @@ html_meta:
 ```{toctree}
 :maxdepth: 1
 
-install
 roadmap
 others
 ```

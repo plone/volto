@@ -1,13 +1,18 @@
-import { defineMessages } from 'react-intl';
 import React from 'react';
+import { defineMessages } from 'react-intl';
 import { useIntl } from 'react-intl';
+import { find, isEmpty } from 'lodash';
 import config from '@plone/volto/registry';
-import { cloneDeep } from 'lodash';
+import { cloneDeepSchema } from '@plone/volto/helpers/Utils/Utils';
 
 const messages = defineMessages({
   variation: {
     id: 'Variation',
     defaultMessage: 'Variation',
+  },
+  styling: {
+    id: 'Styling',
+    defaultMessage: 'Styling',
   },
 });
 
@@ -18,6 +23,19 @@ function _addField(schema, name) {
   if (schema.fieldsets[0].fields.indexOf(name) === -1) {
     schema.fieldsets[0].fields.unshift(name);
   }
+}
+
+/**
+ * Gets the blocksConfig from the props or from the global config object
+ */
+function getBlocksConfig(props) {
+  const { blocks } = config;
+
+  if (props.blocksConfig) {
+    return props.blocksConfig;
+  }
+
+  return blocks?.blocksConfig;
 }
 
 /**
@@ -92,57 +110,59 @@ export const addExtensionFieldToSchema = ({
  *  }
  * ```
  */
-export const withBlockSchemaEnhancer = (
-  FormComponent,
-  extensionName = 'vendor',
-  insertFieldToOrder = _addField,
-) => ({ ...props }) => {
-  const { formData, schema: originalSchema } = props;
-  const intl = useIntl();
+export const withBlockSchemaEnhancer =
+  (FormComponent, extensionName = 'vendor', insertFieldToOrder = _addField) =>
+  ({ ...props }) => {
+    const { formData, schema: originalSchema } = props;
+    const intl = useIntl();
 
-  const { blocks } = config;
+    const blocksConfig = getBlocksConfig(props);
 
-  const blockType = formData['@type'];
-  const extensionConfig =
-    blocks?.blocksConfig[blockType]?.extensions?.[extensionName];
+    const blockType = formData['@type'];
+    const extensionConfig =
+      blocksConfig?.[blockType]?.extensions?.[extensionName];
 
-  if (!extensionConfig)
-    return <FormComponent {...props} schema={originalSchema} />;
+    if (!extensionConfig)
+      return <FormComponent {...props} schema={originalSchema} />;
 
-  const activeItemName = formData?.[extensionName];
-  let activeItem = extensionConfig.items?.find(
-    (item) => item.id === activeItemName,
-  );
-  if (!activeItem)
-    activeItem = extensionConfig.items?.find((item) => item.isDefault);
+    const activeItemName = formData?.[extensionName];
+    let activeItem = extensionConfig.items?.find(
+      (item) => item.id === activeItemName,
+    );
+    if (!activeItem)
+      activeItem = extensionConfig.items?.find((item) => item.isDefault);
 
-  const schemaEnhancer =
-    // For the main "variation" of blocks, allow simply passing a
-    // schemaEnhancer in the block configuration
-    activeItem?.['schemaEnhancer'] ||
-    (extensionName === 'variation' &&
-      blocks.blocksConfig?.[blockType]?.schemaEnhancer);
+    const schemaEnhancer =
+      // For the main "variation" of blocks, allow simply passing a
+      // schemaEnhancer in the block configuration
+      activeItem?.['schemaEnhancer'] ||
+      (extensionName === 'variation' &&
+        blocksConfig?.[blockType]?.schemaEnhancer);
 
-  let schema = schemaEnhancer
-    ? schemaEnhancer({ schema: cloneDeep(originalSchema), formData, intl })
-    : cloneDeep(originalSchema);
+    let schema = schemaEnhancer
+      ? schemaEnhancer({
+          schema: cloneDeepSchema(originalSchema),
+          formData,
+          intl,
+        })
+      : cloneDeepSchema(originalSchema);
 
-  const { title = messages.variation, description } = extensionConfig;
+    const { title = messages.variation, description } = extensionConfig;
 
-  if (extensionConfig.items?.length > 1) {
-    addExtensionFieldToSchema({
-      schema,
-      name: extensionName,
-      items: extensionConfig.items || [],
-      intl,
-      title,
-      description,
-      insertFieldToOrder,
-    });
-  }
+    if (extensionConfig.items?.length > 1) {
+      addExtensionFieldToSchema({
+        schema,
+        name: extensionName,
+        items: extensionConfig.items || [],
+        intl,
+        title,
+        description,
+        insertFieldToOrder,
+      });
+    }
 
-  return <FormComponent {...props} schema={schema} />;
-};
+    return <FormComponent {...props} schema={schema} />;
+  };
 
 /**
  * Apply block variation schema enhancers to the provided schema, using block
@@ -178,20 +198,21 @@ export const applySchemaEnhancer = ({
   schema: originalSchema,
   formData,
   intl,
+  blocksConfig = config.blocks.blocksConfig,
 }) => {
   let schema, schemaEnhancer;
-  const { blocks } = config;
 
   const blockType = formData['@type'];
-  const variations = blocks?.blocksConfig[blockType]?.variations || [];
+  const variations = blocksConfig?.[blockType]?.variations || [];
 
   if (variations.length === 0) {
     // No variations present but we finalize the schema with a schemaEnhancer
     // in the block config (if present)
-    schemaEnhancer = blocks.blocksConfig?.[blockType]?.schemaEnhancer;
+    schemaEnhancer = blocksConfig?.[blockType]?.schemaEnhancer;
+
     if (schemaEnhancer)
       schema = schemaEnhancer({
-        schema: cloneDeep(originalSchema),
+        schema: cloneDeepSchema(originalSchema),
         formData,
         intl,
       });
@@ -205,11 +226,15 @@ export const applySchemaEnhancer = ({
   schemaEnhancer = activeItem?.['schemaEnhancer'];
 
   schema = schemaEnhancer
-    ? schemaEnhancer({ schema: cloneDeep(originalSchema), formData, intl })
-    : cloneDeep(originalSchema);
+    ? schemaEnhancer({
+        schema: cloneDeepSchema(originalSchema),
+        formData,
+        intl,
+      })
+    : cloneDeepSchema(originalSchema);
 
   // Finalize the schema with a schemaEnhancer in the block config;
-  schemaEnhancer = blocks.blocksConfig?.[blockType]?.schemaEnhancer;
+  schemaEnhancer = blocksConfig?.[blockType]?.schemaEnhancer;
   if (schemaEnhancer) schema = schemaEnhancer({ schema, formData, intl });
 
   return schema || originalSchema;
@@ -226,12 +251,17 @@ export const withVariationSchemaEnhancer = (FormComponent) => (props) => {
   const { formData, schema: originalSchema } = props;
   const intl = useIntl();
 
-  const { blocks } = config;
+  const blocksConfig = getBlocksConfig(props);
 
   const blockType = formData['@type'];
-  const variations = blocks?.blocksConfig[blockType]?.variations || [];
+  const variations = blocksConfig[blockType]?.variations || [];
 
-  let schema = applySchemaEnhancer({ schema: originalSchema, formData, intl });
+  let schema = applySchemaEnhancer({
+    schema: originalSchema,
+    formData,
+    intl,
+    blocksConfig,
+  });
 
   if (variations.length > 1) {
     addExtensionFieldToSchema({
@@ -246,3 +276,58 @@ export const withVariationSchemaEnhancer = (FormComponent) => (props) => {
 
   return <FormComponent {...props} schema={schema} />;
 };
+
+export const EMPTY_STYLES_SCHEMA = {
+  fieldsets: [
+    {
+      id: 'default',
+      title: 'Default',
+      fields: [],
+    },
+  ],
+  properties: {},
+  required: [],
+};
+
+/**
+ * Adds the `styles` field and 'styling' fieldset in a given schema
+ */
+export const addStyling = ({ schema, formData, intl }) => {
+  if (isEmpty(find(schema.fieldsets, { id: 'styling' }))) {
+    schema.fieldsets.push({
+      id: 'styling',
+      title: intl.formatMessage(messages.styling),
+      fields: ['styles'],
+    });
+
+    schema.properties.styles = {
+      widget: 'object',
+      title: intl.formatMessage(messages.styling),
+      schema: cloneDeepSchema(EMPTY_STYLES_SCHEMA),
+    };
+  }
+
+  return schema;
+};
+
+/**
+ * Allows compose-like declaration of schema enhancers
+ *
+ * Example usage:
+ * const schemaEnhancer = composeSchema(schemaEnhancerA, schemaEnhancerB)
+ *
+ * where each enhancer is a function with signature
+ * ({schema, formData, ...rest}) => schema
+ *
+ */
+export function composeSchema() {
+  const enhancers = Array.from(arguments);
+  const composer = (args) => {
+    const props = enhancers.reduce(
+      (acc, enhancer) => (enhancer ? { ...acc, schema: enhancer(acc) } : acc),
+      { ...args },
+    );
+    return props.schema;
+  };
+  return composer;
+}

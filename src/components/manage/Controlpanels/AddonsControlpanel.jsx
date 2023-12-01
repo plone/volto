@@ -17,6 +17,8 @@ import {
   Label,
   Message,
   Segment,
+  Dimmer,
+  Loader,
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
@@ -27,10 +29,11 @@ import {
   upgradeAddon,
 } from '@plone/volto/actions';
 import { Helmet } from '@plone/volto/helpers';
-import { Icon, Toolbar } from '@plone/volto/components';
+import { Icon, Toolbar, Toast } from '@plone/volto/components';
 import circleBottomSVG from '@plone/volto/icons/circle-bottom.svg';
 import circleTopSVG from '@plone/volto/icons/circle-top.svg';
 import backSVG from '@plone/volto/icons/back.svg';
+import { toast } from 'react-toastify';
 
 const messages = defineMessages({
   activateAndDeactivate: {
@@ -40,7 +43,7 @@ const messages = defineMessages({
   addAddons: {
     id: 'Add Addons',
     defaultMessage:
-      'To make new add-ons show up here, add them to your buildout configuration, run buildout, and restart the server process. For detailed instructions see',
+      'To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see',
   },
   addonsSettings: {
     id: 'Add-ons Settings',
@@ -85,6 +88,46 @@ const messages = defineMessages({
   uninstall: {
     id: 'Uninstall',
     defaultMessage: 'Uninstall',
+  },
+  addOns: {
+    id: 'Add-ons',
+    defaultMessage: 'Add-ons',
+  },
+  installingAnAddon: {
+    id: 'Installing a third party add-on',
+    defaultMessage: 'Installing a third party add-on',
+  },
+  success: {
+    id: 'Success',
+    defaultMessage: 'Success',
+  },
+  error: {
+    id: 'Error',
+    defaultMessage: 'Error',
+  },
+  addonUpgraded: {
+    id: 'Addon upgraded succesfuly',
+    defaultMessage: 'Addon upgraded succesfuly',
+  },
+  addonNotUpgraded: {
+    id: 'Addon could not be upgraded',
+    defaultMessage: 'Addon could not be upgraded',
+  },
+  addonInstalled: {
+    id: 'Addon installed succesfuly',
+    defaultMessage: 'Addon installed succesfuly',
+  },
+  addonNotInstalled: {
+    id: 'Addon could not be installed',
+    defaultMessage: 'Addon could not be installed',
+  },
+  addonUninstalled: {
+    id: 'Addon uninstalled succesfuly',
+    defaultMessage: 'Addon uninstalled succesfuly',
+  },
+  addonNotUninstalled: {
+    id: 'Addon could not be uninstalled',
+    defaultMessage: 'Addon could not be uninstalled',
   },
 });
 
@@ -184,7 +227,29 @@ class AddonsControlpanel extends Component {
    */
   onInstall(event, { value }) {
     event.preventDefault();
-    this.props.installAddon(value).then(() => this.props.listAddons());
+    this.props
+      .installAddon(value)
+      .then(() => {
+        toast.success(
+          <Toast
+            success
+            title={this.props.intl.formatMessage(messages.success)}
+            content={this.props.intl.formatMessage(messages.addonInstalled, {
+              title: this.props.title,
+            })}
+          />,
+        );
+      })
+      .catch(() => {
+        toast.error(
+          <Toast
+            error
+            title={this.props.intl.formatMessage(messages.error)}
+            content={this.props.intl.formatMessage(messages.addonNotInstalled)}
+          />,
+        );
+      })
+      .finally(() => this.props.listAddons());
   }
 
   /**
@@ -196,7 +261,32 @@ class AddonsControlpanel extends Component {
    */
   onUninstall(event, { value }) {
     event.preventDefault();
-    this.props.uninstallAddon(value).then(() => this.props.listAddons());
+    this.props
+      .uninstallAddon(value)
+      .then(() => {
+        toast.success(
+          <Toast
+            success
+            title={this.props.intl.formatMessage(messages.success)}
+            content={this.props.intl.formatMessage(messages.addonUninstalled)}
+          />,
+        );
+      })
+      .catch(() => {
+        toast.error(
+          <Toast
+            error
+            title={this.props.intl.formatMessage(messages.error)}
+            content={this.props.intl.formatMessage(
+              messages.addonNotUninstalled,
+              {
+                title: this.props.title,
+              },
+            )}
+          />,
+        );
+      })
+      .finally(() => this.props.listAddons());
   }
 
   /**
@@ -208,7 +298,27 @@ class AddonsControlpanel extends Component {
    */
   onUpgrade(event, { value }) {
     event.preventDefault();
-    this.props.upgradeAddon(value).then(() => this.props.listAddons());
+    this.props
+      .upgradeAddon(value)
+      .then(() => {
+        toast.success(
+          <Toast
+            success
+            title={this.props.intl.formatMessage(messages.success)}
+            content={this.props.intl.formatMessage(messages.addonUpgraded)}
+          />,
+        );
+      })
+      .catch(() => {
+        toast.error(
+          <Toast
+            error
+            title={this.props.intl.formatMessage(messages.error)}
+            content={this.props.intl.formatMessage(messages.addonNotUpgraded)}
+          />,
+        );
+      })
+      .finally(() => this.props.listAddons());
   }
 
   /**
@@ -232,7 +342,7 @@ class AddonsControlpanel extends Component {
   render() {
     return (
       <Container id="page-addons" className="controlpanel-addons">
-        <Helmet title="Addons" />
+        <Helmet title={this.props.intl.formatMessage(messages.addOns)} />
         <Segment.Group raised>
           <Segment className="primary">
             <FormattedMessage
@@ -240,195 +350,204 @@ class AddonsControlpanel extends Component {
               defaultMessage="Add-ons Settings"
             />
           </Segment>
-          {this.props.upgradableAddons.length > 0 && (
-            <Message attached>
-              <Message.Header>
+
+          {this.props.loadingAddons ? (
+            <Dimmer active>
+              <Loader />
+            </Dimmer>
+          ) : (
+            <>
+              {this.props.upgradableAddons.length > 0 && (
+                <Message attached>
+                  <Message.Header>
+                    <FormattedMessage
+                      id="Updates available"
+                      defaultMessage="Updates available"
+                    />
+                  </Message.Header>
+                  <FormattedMessage
+                    id="Update installed addons"
+                    defaultMessage="Update installed addons"
+                  />
+                </Message>
+              )}
+              <Segment>
+                <Header as="h3">
+                  <FormattedMessage
+                    id="Activate and deactivate"
+                    defaultMessage="Activate and deactivate add-ons in the lists below."
+                  />
+                </Header>
                 <FormattedMessage
-                  id="Updates available"
-                  defaultMessage="Updates available"
+                  id="Add Addons"
+                  defaultMessage="To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see"
                 />
-              </Message.Header>
-              <FormattedMessage
-                id="Update installed addons"
-                defaultMessage="Update installed addons"
-              />
-            </Message>
-          )}
-
-          <Segment>
-            <Header as="h3">
-              <FormattedMessage
-                id="Activate and deactivate"
-                defaultMessage="Activate and deactivate add-ons in the lists below."
-              />
-            </Header>
-            <FormattedMessage
-              id="Add Addons"
-              defaultMessage="To make new add-ons show up here, add them to your buildout configuration, run buildout, and restart the server process. For detailed instructions see"
-            />
-            &nbsp;
-            <a
-              href="http://docs.plone.org/manage/installing/installing_addons.html"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Installing a third party add-on
-            </a>
-            .
-          </Segment>
-
-          <Segment key="header-available" secondary>
-            <FormattedMessage id="Available" defaultMessage="Available" />:
-            <Label circular>{this.props.availableAddons.length}</Label>
-          </Segment>
-
-          <Segment key="body-available" attached>
-            <Accordion>
-              <Divider />
-              {this.props.availableAddons.map((item) => (
-                <div key={item.id}>
-                  <Accordion.Title
-                    active={this.state.activeIndex === item.id}
-                    index={item.id}
-                    onClick={this.onAccordionClick}
-                  >
-                    {item.title}
-                    <Icon
-                      name={
-                        this.state.activeIndex === item.id
-                          ? circleTopSVG
-                          : circleBottomSVG
-                      }
-                      size="23px"
-                      className={`accordionToggle ${item.title}`}
-                    />
-                  </Accordion.Title>
-                  <Accordion.Content
-                    active={this.state.activeIndex === item.id}
-                  >
-                    <div className="description">{item.description}</div>
-                    {item.uninstall_profile_id === '' && (
-                      <div>
-                        <Message icon="warning" warning>
-                          <FormattedMessage
-                            id="No uninstall profile"
-                            defaultMessage="This addon does not provide an uninstall profile."
-                          />
-                        </Message>
-                      </div>
-                    )}
-                    <Button.Group floated="right">
-                      <Button
-                        primary
-                        basic
-                        onClick={this.onInstall}
-                        value={item.id}
-                        className="installAction"
+                &nbsp;
+                <a
+                  href="https://6.docs.plone.org/install/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {this.props.intl.formatMessage(messages.installingAnAddon)}
+                </a>
+                .
+              </Segment>
+              <Segment key="header-available" secondary>
+                <FormattedMessage id="Available" defaultMessage="Available" />:
+                <Label circular>{this.props.availableAddons.length}</Label>
+              </Segment>
+              <Segment key="body-available" attached>
+                <Accordion>
+                  <Divider />
+                  {this.props.availableAddons.map((item) => (
+                    <div key={item.id}>
+                      <Accordion.Title
+                        active={this.state.activeIndex === item.id}
+                        index={item.id}
+                        onClick={this.onAccordionClick}
                       >
-                        <FormattedMessage
-                          id="Install"
-                          defaultMessage="Install"
-                          className="button-label"
+                        {item.title}
+                        <Icon
+                          name={
+                            this.state.activeIndex === item.id
+                              ? circleTopSVG
+                              : circleBottomSVG
+                          }
+                          size="23px"
+                          className={`accordionToggle ${item.title}`}
                         />
-                      </Button>
-                    </Button.Group>
-                    <div className="version">
-                      <FormattedMessage
-                        id="Latest version"
-                        defaultMessage="Latest version"
-                      />
-                      : &nbsp;
-                      {item.version}
-                    </div>
-                  </Accordion.Content>
-                  <Divider />
-                </div>
-              ))}
-            </Accordion>
-          </Segment>
-
-          <Segment key="header-installed" secondary>
-            <FormattedMessage id="Installed" defaultMessage="Installed" />:
-            <Label circular>{this.props.installedAddons.length}</Label>
-          </Segment>
-
-          <Segment key="body-installed" attached>
-            <Accordion>
-              <Divider />
-              {this.props.installedAddons.map((item) => (
-                <div key={item.id}>
-                  <Accordion.Title
-                    active={this.state.activeIndex === item.id}
-                    index={item.id}
-                    onClick={this.onAccordionClick}
-                    className={
-                      item.upgrade_info.available ? 'updateAvailable' : ''
-                    }
-                  >
-                    {item.title}
-                    {item.upgrade_info.available && (
-                      <span className="updateText">
-                        <FormattedMessage id="Update" defaultMessage="Update" />
-                      </span>
-                    )}
-                    <Icon
-                      name={
-                        this.state.activeIndex === item.id
-                          ? circleTopSVG
-                          : circleBottomSVG
-                      }
-                      size="24px"
-                      className={`accordionToggle ${item.title}`}
-                      color="#878f93"
-                    />
-                  </Accordion.Title>
-                  <Accordion.Content
-                    active={this.state.activeIndex === item.id}
-                  >
-                    <div className="description">{item.description}</div>
-                    <Button.Group floated="right">
-                      {item.upgrade_info.available && (
-                        <Button
-                          primary
-                          basic
-                          onClick={this.onUpgrade}
-                          value={item.id}
-                        >
+                      </Accordion.Title>
+                      <Accordion.Content
+                        active={this.state.activeIndex === item.id}
+                      >
+                        <div className="description">{item.description}</div>
+                        {item.uninstall_profile_id === '' && (
+                          <div>
+                            <Message icon="warning" warning>
+                              <FormattedMessage
+                                id="No uninstall profile"
+                                defaultMessage="This addon does not provide an uninstall profile."
+                              />
+                            </Message>
+                          </div>
+                        )}
+                        <Button.Group floated="right">
+                          <Button
+                            primary
+                            onClick={this.onInstall}
+                            value={item.id}
+                            className="installAction"
+                          >
+                            <FormattedMessage
+                              id="Install"
+                              defaultMessage="Install"
+                              className="button-label"
+                            />
+                          </Button>
+                        </Button.Group>
+                        <div className="version">
                           <FormattedMessage
-                            id="Update"
-                            defaultMessage="Update"
+                            id="Latest version"
+                            defaultMessage="Latest version"
                           />
-                        </Button>
-                      )}
-                      {item.uninstall_profile_id && (
-                        <Button
-                          negative
-                          basic
-                          onClick={this.onUninstall}
-                          value={item.id}
-                          className="uninstallAction"
-                        >
-                          <FormattedMessage
-                            id="Uninstall"
-                            defaultMessage="Uninstall"
-                            className="button-label"
-                          />
-                        </Button>
-                      )}
-                    </Button.Group>
-                    <div className="version">
-                      <FormattedMessage
-                        id="Installed version"
-                        defaultMessage="Installed version"
-                      />
-                      : &nbsp; {item.version}
+                          : &nbsp;
+                          {item.version}
+                        </div>
+                      </Accordion.Content>
+                      <Divider />
                     </div>
-                  </Accordion.Content>
+                  ))}
+                </Accordion>
+              </Segment>
+              <Segment key="header-installed" secondary>
+                <FormattedMessage id="Installed" defaultMessage="Installed" />:
+                <Label circular>{this.props.installedAddons.length}</Label>
+              </Segment>
+              <Segment key="body-installed" attached>
+                <Accordion>
                   <Divider />
-                </div>
-              ))}
-            </Accordion>
-          </Segment>
+                  {this.props.installedAddons.map((item) => (
+                    <div key={item.id}>
+                      <Accordion.Title
+                        active={this.state.activeIndex === item.id}
+                        index={item.id}
+                        onClick={this.onAccordionClick}
+                        className={
+                          item.upgrade_info.available ? 'updateAvailable' : ''
+                        }
+                      >
+                        {item.title}
+
+                        {item.upgrade_info.available && (
+                          <Label>
+                            <FormattedMessage
+                              id="Update"
+                              defaultMessage="Update"
+                            />
+                          </Label>
+                        )}
+                        <Icon
+                          name={
+                            this.state.activeIndex === item.id
+                              ? circleTopSVG
+                              : circleBottomSVG
+                          }
+                          size="24px"
+                          className={`accordionToggle ${item.title}`}
+                          color="#878f93"
+                        />
+                      </Accordion.Title>
+                      <Accordion.Content
+                        active={this.state.activeIndex === item.id}
+                      >
+                        <div className="description">{item.description}</div>
+                        <Button.Group floated="right">
+                          {item.upgrade_info.available && (
+                            <Button
+                              primary
+                              onClick={this.onUpgrade}
+                              value={item.id}
+                            >
+                              <FormattedMessage
+                                id="upgradeVersions"
+                                defaultMessage="Update from version {origin} to {destination}"
+                                values={{
+                                  origin: item.upgrade_info.installedVersion,
+                                  destination: item.upgrade_info.newVersion,
+                                }}
+                              />
+                            </Button>
+                          )}
+                          {item.uninstall_profile_id && (
+                            <Button
+                              negative
+                              onClick={this.onUninstall}
+                              value={item.id}
+                              className="uninstallAction"
+                            >
+                              <FormattedMessage
+                                id="Uninstall"
+                                defaultMessage="Uninstall"
+                                className="button-label"
+                              />
+                            </Button>
+                          )}
+                        </Button.Group>
+                        <div className="version">
+                          <FormattedMessage
+                            id="Installed version"
+                            defaultMessage="Installed version"
+                          />
+                          : &nbsp; {item.version}
+                        </div>
+                      </Accordion.Content>
+                      <Divider />
+                    </div>
+                  ))}
+                </Accordion>
+              </Segment>
+            </>
+          )}
         </Segment.Group>
 
         {this.state.isClient && (
@@ -464,6 +583,7 @@ export default compose(
       installedAddons: state.addons.installedAddons,
       availableAddons: state.addons.availableAddons,
       upgradableAddons: state.addons.upgradableAddons,
+      loadingAddons: state.addons.loading,
       pathname: props.location.pathname,
     }),
     { installAddon, listAddons, uninstallAddon, upgradeAddon },

@@ -10,9 +10,20 @@ import {
   isCmsUi,
   isInternalURL,
   isUrl,
+  getFieldURL,
   normalizeUrl,
   removeProtocol,
+  addAppURL,
+  expandToBackendURL,
+  checkAndNormalizeUrl,
+  normaliseMail,
+  normalizeTelephone,
+  flattenScales,
 } from './Url';
+
+beforeEach(() => {
+  config.settings.legacyTraverse = false;
+});
 
 const { settings } = config;
 
@@ -31,10 +42,10 @@ describe('Url', () => {
       expect(getBaseUrl('/register')).toBe('');
     });
     it('can remove a view name from a relative url', () => {
-      expect(getBaseUrl('/password-reset')).toBe('');
+      expect(getBaseUrl('/passwordreset')).toBe('');
     });
     it('can remove a view name from a relative url', () => {
-      expect(getBaseUrl('/password-reset/token')).toBe('');
+      expect(getBaseUrl('/passwordreset/token')).toBe('');
     });
     it('can remove a view name from a controlpanel url', () => {
       expect(getBaseUrl('/controlpanel/date-time')).toBe('');
@@ -54,6 +65,17 @@ describe('Url', () => {
     });
     it('return empty string if no url is empty string', () => {
       expect(getBaseUrl('')).toBe('');
+    });
+    it('return a null/undefined mailto adress ', () => {
+      expect(normaliseMail(null)).toBe('mailto:null');
+      expect(normaliseMail(undefined)).toBe('mailto:undefined');
+    });
+    it('return a null/undefined telephone number', () => {
+      expect(normalizeTelephone(null)).toBe('tel:null');
+      expect(normalizeTelephone(undefined)).toBe('tel:undefined');
+    });
+    it('null returns an invalid link', () => {
+      expect(checkAndNormalizeUrl(null).isValid).toBe(false);
     });
   });
 
@@ -185,6 +207,7 @@ describe('Url', () => {
       expect(isInternalURL(href)).toBe(false);
       settings.internalApiPath = saved;
     });
+
     it('tells if an URL is internal if it is an anchor', () => {
       const href = '#anchor';
       expect(isInternalURL(href)).toBe(true);
@@ -204,6 +227,17 @@ describe('Url', () => {
     it('Behave if URL is not a string II', () => {
       const href = undefined;
       expect(isInternalURL(href)).toBe(undefined);
+    });
+    it('tells if an  URL is external if settings.externalroutes is persent.', () => {
+      const url = `https://localhost:3000/fb/my-page/contents`;
+      const blacklistedurl = '/blacklisted';
+      settings.externalRoutes = [
+        { title: 'My Page', match: '/fb' },
+        '/blacklisted',
+      ];
+      settings.publicURL = 'https://localhost:3000';
+      expect(isInternalURL(url)).toBe(false);
+      expect(isInternalURL(blacklistedurl)).toBe(false);
     });
   });
   describe('isUrl', () => {
@@ -228,6 +262,46 @@ describe('Url', () => {
       expect(isUrl(href)).toBe(false);
     });
   });
+  describe('getFieldURL', () => {
+    it('returns app URL if the field is a string', () => {
+      const field = `${settings.apiPath}/foo/bar`;
+      expect(getFieldURL(field)).toBe('/foo/bar');
+    });
+    it('returns app URL if the field is an object with "@id"', () => {
+      const field = { '@id': '/foo/bar' };
+      expect(getFieldURL(field)).toBe('/foo/bar');
+    });
+    it('returns app URL if the field is an object with type URL', () => {
+      const field = { '@type': 'URL', value: '/foo/bar' };
+      expect(getFieldURL(field)).toBe('/foo/bar');
+    });
+    it('returns app URL if the field is an object with url or href properties', () => {
+      const fieldUrl = { url: '/foo/bar' };
+      const fieldHref = { href: '/foo/bar' };
+      expect(getFieldURL(fieldUrl)).toBe('/foo/bar');
+      expect(getFieldURL(fieldHref)).toBe('/foo/bar');
+    });
+    it('returns array of app URL if the field is an array of strings', () => {
+      const field = [
+        `${settings.apiPath}/foo/bar/1`,
+        `${settings.apiPath}/foo/bar/2`,
+      ];
+      expect(getFieldURL(field)).toStrictEqual(['/foo/bar/1', '/foo/bar/2']);
+    });
+    it('returns array of app URL if the field is an array of objects', () => {
+      const field = [
+        {
+          '@type': 'URL',
+          value: `${settings.apiPath}/foo/bar/1`,
+        },
+        {
+          '@type': 'URL',
+          value: `${settings.apiPath}/foo/bar/2`,
+        },
+      ];
+      expect(getFieldURL(field)).toStrictEqual(['/foo/bar/1', '/foo/bar/2']);
+    });
+  });
   describe('normalizeUrl', () => {
     it('normalizeUrl test', () => {
       const href = `www.example.com`;
@@ -242,6 +316,142 @@ describe('Url', () => {
     it('removeProtocol test http', () => {
       const href = `http://www.example.com`;
       expect(removeProtocol(href)).toBe('www.example.com');
+    });
+  });
+  describe('addAppURL', () => {
+    it('addAppURL test https', () => {
+      const href = `/ca/my-page`;
+      expect(addAppURL(href)).toBe('http://localhost:8080/Plone/ca/my-page');
+    });
+  });
+  describe('expandToBackendURL', () => {
+    it('expandToBackendURL test with path', () => {
+      const href = `/ca/my-page`;
+      expect(expandToBackendURL(href)).toBe(
+        'http://localhost:8080/Plone/++api++/ca/my-page',
+      );
+    });
+    it('expandToBackendURL test full URL', () => {
+      const href = `http://localhost:8080/Plone/ca/my-page`;
+      expect(expandToBackendURL(href)).toBe(
+        'http://localhost:8080/Plone/++api++/ca/my-page',
+      );
+    });
+    it('expandToBackendURL test full URL - legacyTraverse true', () => {
+      settings.apiPath = 'https://plone.org/api';
+      settings.legacyTraverse = true;
+      const href = `https://plone.org/api/ca/my-page`;
+      expect(expandToBackendURL(href)).toBe('https://plone.org/api/ca/my-page');
+    });
+    it('expandToBackendURL test full URL - deployed seamless', () => {
+      settings.apiPath = 'https://plone.org';
+      const href = `https://plone.org/ca/my-page`;
+      expect(expandToBackendURL(href)).toBe(
+        'https://plone.org/++api++/ca/my-page',
+      );
+    });
+  });
+  describe('flattenScales', () => {
+    it('flattenScales image is not set', () => {
+      const id = '/halfdome2022-2.jpg';
+      const image = undefined;
+      expect(flattenScales(id, image)).toBe(undefined);
+    });
+
+    it('flattenScales test from the catalog', () => {
+      const id = '/halfdome2022-2.jpg';
+      const image = {
+        'content-type': 'image/jpeg',
+        download: '@@images/image-1182-cf763ae23c52340d8a17a7afdb26c8cb.jpeg',
+        filename: 'halfdome2022.jpg',
+        height: 665,
+        scales: {
+          great: {
+            download:
+              '@@images/image-1200-539ab119ebadc7d011798980a4a5e8d4.jpeg',
+            height: 665,
+            width: 1182,
+          },
+          huge: {
+            download:
+              '@@images/image-1600-188968febc677890c1b99d5339f9bef1.jpeg',
+            height: 665,
+            width: 1182,
+          },
+        },
+        size: 319364,
+        width: 1182,
+      };
+      expect(flattenScales(id, image)).toStrictEqual({
+        'content-type': 'image/jpeg',
+        download: '@@images/image-1182-cf763ae23c52340d8a17a7afdb26c8cb.jpeg',
+        filename: 'halfdome2022.jpg',
+        height: 665,
+        scales: {
+          great: {
+            download:
+              '@@images/image-1200-539ab119ebadc7d011798980a4a5e8d4.jpeg',
+            height: 665,
+            width: 1182,
+          },
+          huge: {
+            download:
+              '@@images/image-1600-188968febc677890c1b99d5339f9bef1.jpeg',
+            height: 665,
+            width: 1182,
+          },
+        },
+        size: 319364,
+        width: 1182,
+      });
+    });
+    it('flattenScales test from serialization', () => {
+      const id = 'http://localhost:3000/halfdome2022-2.jpg';
+      const image = {
+        'content-type': 'image/jpeg',
+        download:
+          'http://localhost:3000/halfdome2022-2.jpg/@@images/image-1182-cf763ae23c52340d8a17a7afdb26c8cb.jpeg',
+        filename: 'halfdome2022.jpg',
+        height: 665,
+        scales: {
+          great: {
+            download:
+              'http://localhost:3000/halfdome2022-2.jpg/@@images/image-1200-539ab119ebadc7d011798980a4a5e8d4.jpeg',
+            height: 665,
+            width: 1182,
+          },
+          huge: {
+            download:
+              'http://localhost:3000/halfdome2022-2.jpg/@@images/image-1600-188968febc677890c1b99d5339f9bef1.jpeg',
+            height: 665,
+            width: 1182,
+          },
+        },
+        size: 319364,
+        width: 1182,
+      };
+      expect(flattenScales(id, image)).toStrictEqual({
+        'content-type': 'image/jpeg',
+        download: '@@images/image-1182-cf763ae23c52340d8a17a7afdb26c8cb.jpeg',
+        filename: 'halfdome2022.jpg',
+        height: 665,
+        scales: {
+          great: {
+            download:
+              '@@images/image-1200-539ab119ebadc7d011798980a4a5e8d4.jpeg',
+            height: 665,
+            width: 1182,
+          },
+          huge: {
+            download:
+              '@@images/image-1600-188968febc677890c1b99d5339f9bef1.jpeg',
+            height: 665,
+            width: 1182,
+          },
+        },
+        size: 319364,
+        width: 1182,
+      });
     });
   });
 });

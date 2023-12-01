@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Volto development recipes"
-  "property=og:description": "Volto development recipes"
-  "property=og:title": "Development recipes"
-  "keywords": "Volto, Plone, frontend, React, development, recipes"
+myst:
+  html_meta:
+    "description": "Volto development recipes"
+    "property=og:description": "Volto development recipes"
+    "property=og:title": "Development recipes"
+    "keywords": "Volto, Plone, frontend, React, development, recipes"
 ---
 
 # Development recipes
@@ -17,6 +18,7 @@ environment-variables
 customizing-components
 customizing-views
 creating-views
+images
 i18n
 express
 lazyload

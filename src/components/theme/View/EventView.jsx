@@ -6,32 +6,41 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { hasBlocksData, flattenHTMLToAppURL } from '@plone/volto/helpers';
-import { Image, Grid } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 import RenderBlocks from '@plone/volto/components/theme/View/RenderBlocks';
 import { EventDetails } from '@plone/volto/components';
+import { Container as SemanticContainer } from 'semantic-ui-react';
+import config from '@plone/volto/registry';
 
-const EventTextfieldView = ({ content }) => (
-  <React.Fragment>
-    {content.title && <h1 className="documentFirstHeading">{content.title}</h1>}
-    {content.description && (
-      <p className="documentDescription">{content.description}</p>
-    )}
-    {content.image && (
-      <Image
-        className="document-image"
-        src={content.image.scales.thumb.download}
-        floated="right"
-      />
-    )}
-    {content.text && (
-      <div
-        dangerouslySetInnerHTML={{
-          __html: flattenHTMLToAppURL(content.text.data),
-        }}
-      />
-    )}
-  </React.Fragment>
-);
+const EventTextfieldView = ({ content }) => {
+  const Image = config.getComponent({ name: 'Image' }).component;
+
+  return (
+    <React.Fragment>
+      {content.title && (
+        <h1 className="documentFirstHeading">{content.title}</h1>
+      )}
+      {content.description && (
+        <p className="documentDescription">{content.description}</p>
+      )}
+      {content.image && (
+        <Image
+          className="document-image ui right floated image"
+          item={content}
+          imageField="image"
+          alt=""
+        />
+      )}
+      {content.text && (
+        <div
+          dangerouslySetInnerHTML={{
+            __html: flattenHTMLToAppURL(content.text.data),
+          }}
+        />
+      )}
+    </React.Fragment>
+  );
+};
 
 /**
  * EventView view component class.
@@ -41,9 +50,11 @@ const EventTextfieldView = ({ content }) => (
  */
 const EventView = (props) => {
   const { content } = props;
+  const Container =
+    config.getComponent({ name: 'Container' }).component || SemanticContainer;
 
   return (
-    <div id="page-document" className="ui container viewwrapper event-view">
+    <Container id="page-document" className="view-wrapper event-view">
       <Grid>
         <Grid.Column width={7} className="mobile hidden">
           {hasBlocksData(content) ? (
@@ -83,7 +94,7 @@ const EventView = (props) => {
           )}
         </Grid.Column>
       </Grid>
-    </div>
+    </Container>
   );
 };
 

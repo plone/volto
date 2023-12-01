@@ -13,10 +13,7 @@ describe('Add Content Tests', () => {
     // when I add a page
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-document').click();
-    cy.get('.documentFirstHeading > .public-DraftStyleDefault-block')
-      .type('My Page')
-      .get('.documentFirstHeading span[data-text]')
-      .contains('My Page');
+    cy.getSlateTitle().focus().click().type('My Page').contains('My Page');
 
     // then I a new page has been created
     cy.get('#toolbar-save').click();
@@ -27,14 +24,8 @@ describe('Add Content Tests', () => {
     // when I add a page with a text block
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-document').click();
-    cy.get('.documentFirstHeading > .public-DraftStyleDefault-block')
-      .type('My Page')
-      .get('.documentFirstHeading span[data-text]')
-      .contains('My Page');
-    cy.get('.block.inner.text .public-DraftEditor-content')
-      .type('This is the text.')
-      .get('span[data-text]')
-      .contains('This is the text');
+    cy.getSlateTitle().focus().click().type('My Page').contains('My Page');
+    cy.getSlateEditorAndType('This is the text').contains('This is the text');
     cy.get('#toolbar-save').click();
     cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
 
@@ -105,9 +96,10 @@ describe('Add Content Tests', () => {
       cy.visit('/');
       cy.get('#toolbar-add').click();
       cy.get('#toolbar-add-cmsfolder').click();
-      cy.get('.documentFirstHeading > .public-DraftStyleDefault-block')
+      cy.getSlateTitle()
+        .focus()
+        .click()
         .type('This is a guillotina folder')
-        .get('.documentFirstHeading span[data-text]')
         .contains('This is a guillotina folder');
 
       cy.get('#toolbar-save').click();

@@ -15,6 +15,14 @@ describe('SearchWidget', () => {
         locale: 'en',
         messages: {},
       },
+      navroot: {
+        data: {
+          '@id': 'http://localhost:3000/@navroot',
+          navroot: {
+            '@id': 'http://localhost:3000',
+          },
+        },
+      },
     });
     const component = renderer.create(
       <Provider store={store}>

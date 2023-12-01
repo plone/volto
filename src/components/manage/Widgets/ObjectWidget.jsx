@@ -34,14 +34,13 @@ const FieldSet = ({
   id,
 }) => {
   return data.fields.map((field, idx) => {
-    const v = value?.[field] || schema.properties[field].defaultValue;
     return (
       <Field
         {...schema.properties[field]}
         id={`${field}-${idx}-${id}`}
         fieldSet={data.title.toLowerCase()}
         block={block}
-        value={v}
+        value={value?.[field]}
         objectvalue={value}
         required={schema.required?.indexOf(field) !== -1}
         onChange={(field2, fieldvalue) => {

@@ -1,7 +1,7 @@
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import config from '@plone/volto/registry';
-import { matchRoutes } from 'react-router-config';
+import { matchAllRoutes } from './utils';
 
 import {
   load,
@@ -57,7 +57,7 @@ const wrapWithDispatch = (Component, asyncItems = []) => {
 
 const applyExtenders = (asyncItems, pathname) => {
   const { asyncPropsExtenders = [] } = config.settings;
-  const extenders = matchRoutes(asyncPropsExtenders, pathname);
+  const extenders = matchAllRoutes(asyncPropsExtenders, pathname);
 
   const foundAsyncItems = extenders.reduce(
     (acc, extender) => extender.route.extend(acc),

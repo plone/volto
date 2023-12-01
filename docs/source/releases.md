@@ -1,11 +1,10 @@
 ---
-html_meta:
-  "description": "Volto release management uses
-Semantic Versioning to communicate bugfixes, new features, and breaking changes."
-  "property=og:description": "Volto release management uses
-Semantic Versioning to communicate bugfixes, new features, and breaking changes."
-  "property=og:title": "Versioning policy"
-  "keywords": "Volto, Plone, frontend, React, Release, Version, Semantic"
+myst:
+  html_meta:
+    "description": "Volto release management uses Semantic Versioning to communicate bugfixes, new features, and breaking changes."
+    "property=og:description": "Volto release management uses Semantic Versioning to communicate bugfixes, new features, and breaking changes."
+    "property=og:title": "Versioning policy"
+    "keywords": "Volto, Plone, frontend, React, Release, Version, Semantic"
 ---
 
 ```{eval-rst}
@@ -18,7 +17,7 @@ Semantic Versioning to communicate bugfixes, new features, and breaking changes.
 
 What you can expect from Volto releases and the Volto release management. Volto uses
 Semantic Versioning to communicate bugfixes, new features, and breaking changes. It
-supports Plone 5.2.x on Python 3, Plone 6, and LTS versions of NodeJS.
+supports Plone 5.2.x on Python 3, Plone 6, and LTS versions of Node.js.
 
 ## Semantic Versioning
 
@@ -66,6 +65,6 @@ Volto relies on Plone (core) and [Plone REST API](https://pypi.org/project/plone
 
 Volto should work on old Plone versions as well since Plone REST API supports Plone back to version 4.3 (including Archetypes). Though, we do not actively support versions or test Plone versions that have been released long before Volto existed.
 
-## NodeJS
+## Node.js
 
-Volto always supports only LTS versions of [NodeJS](https://nodejs.org/en/about/releases/).
+Volto always supports only LTS versions of [Node.js ](https://github.com/nodejs/release#release-schedule).

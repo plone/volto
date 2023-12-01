@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { List } from 'semantic-ui-react';
-import { useIntl } from 'react-intl';
 import cx from 'classnames';
-import { RRule, rrulestr } from 'rrule';
+
+import { toBackendLang } from '@plone/volto/helpers';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import { useSelector } from 'react-redux';
 
 export const datesForDisplay = (start, end, moment) => {
   const mStart = moment(start);
@@ -25,10 +26,10 @@ export const datesForDisplay = (start, end, moment) => {
 };
 
 const When_ = ({ start, end, whole_day, open_end, moment: momentlib }) => {
-  const intl = useIntl();
+  const lang = useSelector((state) => state.intl.locale);
 
   const moment = momentlib.default;
-  moment.locale(intl.locale);
+  moment.locale(toBackendLang(lang));
 
   const datesInfo = datesForDisplay(start, end, moment);
   if (!datesInfo) {
@@ -108,26 +109,32 @@ When.propTypes = {
   open_end: PropTypes.bool,
 };
 
-export const Recurrence_ = ({ recurrence, start, moment: momentlib }) => {
+export const Recurrence_ = ({
+  recurrence,
+  start,
+  moment: momentlib,
+  rrule,
+}) => {
   const moment = momentlib.default;
+  const { RRule, rrulestr } = rrule;
   if (recurrence.indexOf('DTSTART') < 0) {
     var dtstart = RRule.optionsToString({
       dtstart: new Date(start),
     });
     recurrence = dtstart + '\n' + recurrence;
   }
-  const rrule = rrulestr(recurrence, { unfold: true, forceset: true });
+  const rule = rrulestr(recurrence, { unfold: true, forceset: true });
 
   return (
     <List
-      items={rrule
+      items={rule
         .all()
         .map((date) => datesForDisplay(date, undefined, moment))
         .map((date) => date.startDate)}
     />
   );
 };
-export const Recurrence = injectLazyLibs(['moment'])(Recurrence_);
+export const Recurrence = injectLazyLibs(['moment', 'rrule'])(Recurrence_);
 
 Recurrence.propTypes = {
   recurrence: PropTypes.string.isRequired,

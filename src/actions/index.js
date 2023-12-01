@@ -36,6 +36,7 @@ export {
   updateColumnsContent,
   lockContent,
   unlockContent,
+  linkIntegrityCheck,
 } from '@plone/volto/actions/content/content';
 export {
   getControlpanel,
@@ -61,11 +62,22 @@ export {
   revertHistory,
 } from '@plone/volto/actions/history/history';
 export {
+  getTransactions,
+  revertTransactions,
+} from '@plone/volto/actions/transactions/transactions';
+export {
   addMessage,
   removeMessage,
   purgeMessages,
 } from '@plone/volto/actions/messages/messages';
 export { getNavigation } from '@plone/volto/actions/navigation/navigation';
+export {
+  createRelations,
+  deleteRelations,
+  queryRelations,
+  getRelationStats,
+} from '@plone/volto/actions/relations/relations';
+export { rebuildRelations } from '@plone/volto/actions/relations/rebuild';
 export { listRoles } from '@plone/volto/actions/roles/roles';
 export {
   getSchema,
@@ -74,6 +86,31 @@ export {
   updateSchema,
 } from '@plone/volto/actions/schema/schema';
 export {
+  addRule,
+  moveRuleCondition,
+  moveRuleAction,
+  getRules,
+  enableRules,
+  disableRules,
+  applyRulesToSubfolders,
+  unapplyRulesToSubfolders,
+  removeRules,
+  getControlPanelRule,
+  getControlPanelRules,
+  deleteControlPanelRule,
+  getContentRulesEvents,
+  addNewRule,
+  editRule,
+  removeCondition,
+  addCondition,
+  editCondition,
+  getCondition,
+  removeAction,
+  addAction,
+  editAction,
+  getAction,
+} from '@plone/volto/actions/rules/rules';
+export {
   resetSearchContent,
   searchContent,
 } from '@plone/volto/actions/search/search';
@@ -81,6 +118,11 @@ export {
   updateSharing,
   getSharing,
 } from '@plone/volto/actions/sharing/sharing';
+export {
+  getAliases,
+  addAliases,
+  removeAliases,
+} from '@plone/volto/actions/aliases/aliases';
 export { getTypes } from '@plone/volto/actions/types/types';
 export {
   createUser,
@@ -96,6 +138,7 @@ export {
   login,
   loginRenew,
   logout,
+  resetLoginRequest,
 } from '@plone/volto/actions/userSession/userSession';
 export {
   getVocabulary,
@@ -127,3 +170,7 @@ export {
   createWorkingCopy,
   removeWorkingCopy,
 } from './workingcopy/workingcopy';
+export { getUserSchema } from './userschema/userschema';
+export { getUpgradeInformation, runUpgrade } from './upgrade/upgrade';
+export { getSite } from './site/site';
+export { getNavroot } from './navroot/navroot';

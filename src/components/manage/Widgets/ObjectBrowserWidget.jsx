@@ -65,6 +65,7 @@ export class ObjectBrowserWidgetComponent extends Component {
     description: PropTypes.string,
     mode: PropTypes.string, // link, image, multiple
     return: PropTypes.string, // single, multiple
+    initialPath: PropTypes.string,
     required: PropTypes.bool,
     error: PropTypes.arrayOf(PropTypes.string),
     value: PropTypes.oneOfType([
@@ -74,6 +75,7 @@ export class ObjectBrowserWidgetComponent extends Component {
     onChange: PropTypes.func.isRequired,
     openObjectBrowser: PropTypes.func.isRequired,
     allowExternals: PropTypes.bool,
+    placeholder: PropTypes.string,
   };
 
   /**
@@ -88,6 +90,7 @@ export class ObjectBrowserWidgetComponent extends Component {
     value: [],
     mode: 'multiple',
     return: 'multiple',
+    initialPath: '',
     allowExternals: false,
   };
 
@@ -148,7 +151,10 @@ export class ObjectBrowserWidgetComponent extends Component {
   };
 
   onChange = (item) => {
-    let value = this.props.mode === 'multiple' ? [...this.props.value] : [];
+    let value =
+      this.props.mode === 'multiple' && this.props.value
+        ? [...this.props.value]
+        : [];
     value = value.filter((item) => item != null);
     const maxSize =
       this.props.widgetOptions?.pattern_options?.maximumSelectionSize || -1;
@@ -273,15 +279,17 @@ export class ObjectBrowserWidgetComponent extends Component {
     ev.preventDefault();
     this.props.openObjectBrowser({
       mode: this.props.mode,
-      currentPath: this.props.location.pathname,
+      currentPath: this.props.initialPath || this.props.location.pathname,
       propDataName: 'value',
       onSelectItem: (url, item) => {
         this.onChange(item);
       },
-      selectableTypes: this.props.widgetOptions?.pattern_options
-        ?.selectableTypes,
-      maximumSelectionSize: this.props.widgetOptions?.pattern_options
-        ?.maximumSelectionSize,
+      selectableTypes:
+        this.props.widgetOptions?.pattern_options?.selectableTypes ||
+        this.props.selectableTypes,
+      maximumSelectionSize:
+        this.props.widgetOptions?.pattern_options?.maximumSelectionSize ||
+        this.props.maximumSelectionSize,
     });
   };
 
@@ -304,15 +312,8 @@ export class ObjectBrowserWidgetComponent extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const {
-      id,
-      description,
-      fieldSet,
-      value,
-      mode,
-      onChange,
-      isDisabled,
-    } = this.props;
+    const { id, description, fieldSet, value, mode, onChange, isDisabled } =
+      this.props;
 
     let items = compact(!isArray(value) && value ? [value] : value || []);
 
@@ -349,7 +350,8 @@ export class ObjectBrowserWidgetComponent extends Component {
 
             {items.length === 0 && (
               <div className="placeholder" ref={this.placeholderRef}>
-                {this.props.intl.formatMessage(messages.placeholder)}
+                {this.props.placeholder ??
+                  this.props.intl.formatMessage(messages.placeholder)}
               </div>
             )}
             {this.props.allowExternals &&
@@ -359,9 +361,10 @@ export class ObjectBrowserWidgetComponent extends Component {
                   onKeyDown={this.onKeyDownManualLink}
                   onChange={this.onManualLinkInput}
                   value={this.state.manualLinkInput}
-                  placeholder={this.props.intl.formatMessage(
-                    messages.placeholder,
-                  )}
+                  placeholder={
+                    this.props.placeholder ??
+                    this.props.intl.formatMessage(messages.placeholder)
+                  }
                 />
               )}
           </div>

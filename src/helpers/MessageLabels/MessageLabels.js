@@ -33,6 +33,10 @@ export const messages = defineMessages({
     id: 'Save',
     defaultMessage: 'Save',
   },
+  saved: {
+    id: 'Saved',
+    defaultMessage: 'Saved',
+  },
   isNumber: {
     id: 'number',
     defaultMessage: 'Input must be number',
@@ -70,6 +74,10 @@ export const messages = defineMessages({
     id: 'Search group…',
     defaultMessage: 'Search group…',
   },
+  filterByGroups: {
+    id: 'Filter users by groups',
+    defaultMessage: 'Filter users by groups',
+  },
   back: {
     id: 'Back',
     defaultMessage: 'Back',
@@ -106,6 +114,24 @@ export const messages = defineMessages({
     id: 'Username',
     defaultMessage: 'Username',
   },
+  addUserFormUsernameDescription: {
+    id: 'addUserFormUsernameDescription',
+    defaultMessage:
+      'Enter a user name, usually something like "jsmith". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in.',
+  },
+  addUserFormFullnameDescription: {
+    id: 'addUserFormFullnameDescription',
+    defaultMessage: 'Enter full name, e.g. John Smith.',
+  },
+  addUserFormEmailDescription: {
+    id: 'addUserFormEmailDescription',
+    defaultMessage:
+      'Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.',
+  },
+  addUserFormPasswordDescription: {
+    id: 'addUserFormPasswordDescription',
+    defaultMessage: 'Enter your new password. Minimum 8 characters.',
+  },
   addGroupsFormTitleTitle: {
     id: 'Title',
     defaultMessage: 'Title',
@@ -138,9 +164,34 @@ export const messages = defineMessages({
     id: 'Password',
     defaultMessage: 'Password',
   },
+  addUserFormSendPasswordResetTitle: {
+    id: 'Send a confirmation mail with a link to set the password.',
+    defaultMessage: 'Send a confirmation mail with a link to set the password.',
+  },
   addUserFormRolesTitle: {
     id: 'Roles',
     defaultMessage: 'Roles',
+  },
+  addUserFormPasswordAndSendPasswordTogetherNotAllowed: {
+    id: 'It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them.',
+    defaultMessage:
+      'It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them.',
+  },
+  userSearchNoResults: {
+    id: 'There are no users with the searched criteria',
+    defaultMessage: 'There are no users with the searched criteria',
+  },
+  groupSearchNoResults: {
+    id: 'There are no groups with the searched criteria',
+    defaultMessage: 'There are no groups with the searched criteria',
+  },
+  updateUserFormTitle: {
+    id: 'Update User',
+    defaultMessage: 'Update User',
+  },
+  updateUserSuccess: {
+    id: 'User updated successfuly',
+    defaultMessage: 'User updated successfuly',
   },
   updateRoles: {
     id: 'User roles updated',
@@ -170,25 +221,53 @@ export const messages = defineMessages({
     id: 'Users',
     defaultMessage: 'Users',
   },
+  usergroup: {
+    id: 'User Group Settings',
+    defaultMessage: 'User Group Settings',
+  },
+  usergroupmemberbership: {
+    id: 'User Group Membership',
+    defaultMessage: 'User Group Membership',
+  },
+  membershipUpdated: {
+    id: 'Membership updated',
+    defaultMessage: 'Membership updated',
+  },
+  noUserFound: {
+    id: 'No user found',
+    defaultMessage: 'No user found',
+  },
+  pleaseSearchOrFilterUsers: {
+    id: 'Please search for users or use the filters on the side.',
+    defaultMessage: 'Please search for users or use the filters on the side.',
+  },
+  addUsersToGroup: {
+    id: 'Add users to group',
+    defaultMessage: 'Add users to group',
+  },
+  removeUsersFromGroup: {
+    id: 'Remove users from group',
+    defaultMessage: 'Remove users from group',
+  },
   groups: {
     id: 'Groups',
     defaultMessage: 'Groups',
   },
   copyBlocks: {
     id: 'Copy blocks',
-    defaultMesages: 'Copy blocks',
+    defaultMessage: 'Copy blocks',
   },
   cutBlocks: {
     id: 'Cut blocks',
-    defaultMesages: 'Cut blocks',
+    defaultMessage: 'Cut blocks',
   },
   pasteBlocks: {
     id: 'Paste blocks',
-    defaultMesages: 'Paste blocks',
+    defaultMessage: 'Paste blocks',
   },
   deleteBlocks: {
     id: 'Delete blocks',
-    defaultMesages: 'Delete blocks',
+    defaultMessage: 'Delete blocks',
   },
   showAllUserButton: {
     id: 'Show All',
@@ -197,5 +276,95 @@ export const messages = defineMessages({
   showAllUserText: {
     id: "Enter a username above to search or click 'Show All'",
     defaultMessage: "Enter a username above to search or click 'Show All'",
+  },
+  addJoinedGroups: {
+    id: 'Show groups of users below',
+    defaultMessage: 'Show groups of users below',
+  },
+  urlClipboardCopy: {
+    id: 'Link copied to clipboard',
+    defaultMessage: 'Anchor link copied to the clipboard',
+  },
+  inspectRelations: {
+    id: 'Inspect relations',
+    defaultMessage: 'Inspect relations',
+  },
+  relations: {
+    id: 'Relations',
+    defaultMessage: 'Relations',
+  },
+  fixRelations: {
+    id: 'Fix relations',
+    defaultMessage: 'Fix relations',
+  },
+  searchRelationSource: {
+    id: 'Search sources by title or path',
+    defaultMessage: 'Search sources by title or path',
+  },
+  searchRelationTarget: {
+    id: 'Search targets by title or path',
+    defaultMessage: 'Search targets by title or path',
+  },
+  createOrDeleteRelationsToTarget: {
+    id: 'Create or delete relations to target',
+    defaultMessage: 'Create or delete relations to target',
+  },
+  relationName: {
+    id: 'Relation name',
+    defaultMessage: 'relation',
+  },
+  selectRelation: {
+    id: 'Select relation',
+    defaultMessage: 'Select relation',
+  },
+  norelationfound: {
+    id: 'No relation found',
+    defaultMessage: 'No relation found',
+  },
+  toomanyrelationsfound: {
+    id: 'Many relations found. Please search.',
+    defaultMessage: 'Many relations found. Please search.',
+  },
+  rebuildRelations: {
+    id: 'rebuild relations',
+    defaultMessage: 'rebuild relations',
+  },
+  flushAndRebuildRelations: {
+    id: 'flush intIds and rebuild relations',
+    defaultMessage: 'flush intIds and rebuild relations',
+  },
+  flushAndRebuildRelationsHints: {
+    id: 'flushAndRebuildRelationsHints',
+    defaultMessage:
+      '<ul><li>Regenerate intIds (tokens of relations in relation catalog)</li><li>Rebuild relations</li></ul><p>Check the log for details!</p><p><b>Warning</b>: If you have add-ons relying on intIds, you should not flush them.</p>',
+  },
+
+  addPotentialTargetsPath: {
+    id: 'target path',
+    defaultMessage: 'target path',
+  },
+  addPotentialSourcesPath: {
+    id: 'sources path',
+    defaultMessage: 'sources path',
+  },
+  relationsUpdated: {
+    id: 'Relations updated',
+    defaultMessage: 'Relations updated',
+  },
+  select: {
+    id: 'Select',
+    defaultMessage: 'Select',
+  },
+  selected: {
+    id: 'Selected',
+    defaultMessage: 'Selected',
+  },
+  filter: {
+    id: 'Filter',
+    defaultMessage: 'Filter',
+  },
+  fileTooLarge: {
+    id: 'fileTooLarge',
+    defaultMessage: 'This website does not accept files larger than {limit}',
   },
 });

@@ -3,12 +3,32 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { waitFor } from '@testing-library/react';
+import { getImageBlockSizes } from './utils';
+import config from '@plone/volto/registry';
 
 import Edit from './Edit';
 
 const mockStore = configureStore();
 
 const blockId = '1234';
+
+config.blocks.blocksConfig = {
+  image: {
+    id: 'image',
+    title: 'Image',
+    group: 'media',
+    extensions: {},
+    variations: [],
+    restricted: false,
+    mostUsed: true,
+    sidebarTab: 1,
+    security: {
+      addPermission: [],
+      view: [],
+    },
+    getSizes: getImageBlockSizes,
+  },
+};
 
 test('renders an edit image block component', async () => {
   const store = mockStore({
@@ -27,7 +47,7 @@ test('renders an edit image block component', async () => {
   const component = renderer.create(
     <Provider store={store}>
       <Edit
-        data={{ url: 'image' }}
+        data={{ url: 'image', '@type': 'image' }}
         selected={false}
         block={blockId}
         content={{}}

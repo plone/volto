@@ -2,7 +2,7 @@
 
 exports[`Navigation renders a navigation component including external links 1`] = `
 <nav
-  aria-label="navigation"
+  aria-label="Site"
   className="navigation"
   id="navigation"
 >
@@ -49,6 +49,7 @@ exports[`Navigation renders a navigation component including external links 1`] 
       className="item"
       href="https://store.plone.org"
       rel="noopener noreferrer"
+      target="_self"
     >
       Store
     </a>
@@ -58,7 +59,7 @@ exports[`Navigation renders a navigation component including external links 1`] 
 
 exports[`Navigation renders a navigation component with an active item 1`] = `
 <nav
-  aria-label="navigation"
+  aria-label="Site"
   className="navigation"
   id="navigation"
 >
@@ -108,7 +109,7 @@ exports[`Navigation renders a navigation component with an active item 1`] = `
 
 exports[`Navigation renders a navigation component with an active item when its subchildren are accessed 1`] = `
 <nav
-  aria-label="navigation"
+  aria-label="Site"
   className="navigation"
   id="navigation"
 >
@@ -158,7 +159,7 @@ exports[`Navigation renders a navigation component with an active item when its 
 
 exports[`Navigation renders a navigation component with only one active item even if there are similar item names 1`] = `
 <nav
-  aria-label="navigation"
+  aria-label="Site"
   className="navigation"
   id="navigation"
 >
@@ -216,7 +217,7 @@ exports[`Navigation renders a navigation component with only one active item eve
 
 exports[`Navigation renders a navigation component without active items 1`] = `
 <nav
-  aria-label="navigation"
+  aria-label="Site"
   className="navigation"
   id="navigation"
 >

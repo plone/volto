@@ -3,6 +3,7 @@ import { Button, Input } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
 import { Icon } from '@plone/volto/components';
 import loupeSVG from '@plone/volto/icons/zoom.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
   search: {
@@ -12,7 +13,14 @@ const messages = defineMessages({
 });
 
 const SearchInput = (props) => {
-  const { data, searchText, setSearchText, isLive, onTriggerSearch } = props;
+  const {
+    data,
+    searchText,
+    setSearchText,
+    isLive,
+    onTriggerSearch,
+    removeSearchQuery,
+  } = props;
   const intl = useIntl();
 
   return (
@@ -34,11 +42,30 @@ const SearchInput = (props) => {
           }
         }}
       />
-      {isLive && (
-        <Button basic icon className="search-input-live-icon-button">
-          <Icon name={loupeSVG} />
-        </Button>
-      )}
+
+      <div className="search-input-actions">
+        {searchText && (
+          <Button
+            basic
+            icon
+            className="search-input-clear-icon-button"
+            onClick={() => {
+              setSearchText('');
+              removeSearchQuery();
+            }}
+          >
+            <Icon name={clearSVG} />
+          </Button>
+        )}
+        {isLive && (
+          <>
+            <div className="divider" />
+            <Button basic icon className="search-input-live-icon-button">
+              <Icon name={loupeSVG} />
+            </Button>
+          </>
+        )}
+      </div>
     </div>
   );
 };

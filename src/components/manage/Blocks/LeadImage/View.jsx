@@ -1,57 +1,53 @@
-/**
- * View image block.
- * @module components/manage/Blocks/Image/View
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { UniversalLink } from '@plone/volto/components';
 import cx from 'classnames';
+import config from '@plone/volto/registry';
 
-import { flattenToAppURL } from '@plone/volto/helpers';
+const View = ({ data, properties }) => {
+  const Image = config.getComponent({ name: 'Image' }).component;
 
-/**
- * View image block class.
- * @class View
- * @extends Component
- */
-const View = ({ data, properties }) => (
-  <p
-    className={cx(
-      'block image align',
-      {
-        center: !Boolean(data.align),
-      },
-      data.align,
-    )}
-  >
-    {properties.image && (
-      <>
-        {(() => {
-          const image = (
-            <img
-              className={cx({ 'full-width': data.align === 'full' })}
-              src={flattenToAppURL(properties.image.download)}
-              alt={properties.image_caption || ''}
-            />
-          );
-          if (data.href) {
-            return (
-              <UniversalLink
-                href={data.href}
-                openLinkInNewTab={data.openLinkInNewTab}
-              >
-                {image}
-              </UniversalLink>
+  return (
+    <p
+      className={cx(
+        'block image align',
+        {
+          center: !Boolean(data.align),
+        },
+        data.align,
+      )}
+    >
+      {properties.image && (
+        <>
+          {(() => {
+            const image = (
+              <Image
+                className={cx({ 'full-width': data.align === 'full' })}
+                item={properties}
+                imageField="image"
+                sizes={config.blocks.blocksConfig.leadimage.getSizes(data)}
+                alt={properties.image_caption || ''}
+                responsive={true}
+              />
             );
-          } else {
-            return image;
-          }
-        })()}
-      </>
-    )}
-  </p>
-);
+            if (data.href) {
+              return (
+                <UniversalLink
+                  href={data.href}
+                  openLinkInNewTab={data.openLinkInNewTab}
+                >
+                  {image}
+                </UniversalLink>
+              );
+            } else {
+              return image;
+            }
+          })()}
+        </>
+      )}
+    </p>
+  );
+};
 
 /**
  * Property types.

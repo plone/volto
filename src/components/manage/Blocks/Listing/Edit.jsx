@@ -26,24 +26,10 @@ const messages = defineMessages({
 const Edit = React.memo(
   (props) => {
     const { data, onChangeBlock, block, selected, pathname } = props;
-
     const intl = useIntl();
-
-    // componentDidMount
-    React.useEffect(() => {
-      if (!data.query) {
-        onChangeBlock(block, {
-          ...data,
-          query: [],
-          block,
-        });
-      }
-      /* eslint-disable react-hooks/exhaustive-deps */
-    }, []);
-
     const placeholder =
       data.placeholder ||
-      (data?.query?.length
+      (data?.querystring?.query?.length
         ? intl.formatMessage(messages.results)
         : intl.formatMessage(messages.items));
 

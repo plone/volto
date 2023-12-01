@@ -1,30 +1,37 @@
-/**
- * Edit toc block.
- * @module components/manage/Blocks/ToC/Edit
- */
+import React, { Component } from 'react';
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import { SidebarPortal } from '@plone/volto/components';
+import BlockDataForm from '@plone/volto/components/manage/Form/BlockDataForm';
 
-import View from '@plone/volto/components/manage/Blocks/ToC/View';
+import TableOfContentsSchema from './Schema';
+import View from './View';
 
-/**
- * Edit toc block class.
- * @class Edit
- * @extends Component
- */
-const Edit = ({ properties, data }) => (
-  <View properties={properties} data={data} />
-);
+class Edit extends Component {
+  render() {
+    const schema = TableOfContentsSchema(this.props);
 
-/**
- * Property types.
- * @property {Object} propTypes Property types.
- * @static
- */
-Edit.propTypes = {
-  properties: PropTypes.objectOf(PropTypes.any).isRequired,
-  data: PropTypes.objectOf(PropTypes.any),
-};
+    return (
+      <>
+        <View {...this.props} mode="edit" />
+
+        <SidebarPortal selected={this.props.selected}>
+          <BlockDataForm
+            schema={schema}
+            title={schema.title}
+            onChangeField={(id, value) => {
+              this.props.onChangeBlock(this.props.block, {
+                ...this.props.data,
+                [id]: value,
+              });
+            }}
+            onChangeBlock={this.props.onChangeBlock}
+            formData={this.props.data}
+            block={this.props.block}
+          />
+        </SidebarPortal>
+      </>
+    );
+  }
+}
 
 export default Edit;

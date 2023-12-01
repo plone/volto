@@ -31,10 +31,10 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
       >
         Activate and deactivate add-ons in the lists below.
       </h3>
-      To make new add-ons show up here, add them to your buildout configuration, run buildout, and restart the server process. For detailed instructions see
+      To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see
        
       <a
-        href="http://docs.plone.org/manage/installing/installing_addons.html"
+        href="https://6.docs.plone.org/install/"
         rel="noopener noreferrer"
         target="_blank"
       >
@@ -100,7 +100,7 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
               className="ui right floated buttons"
             >
               <button
-                className="ui basic primary button installAction"
+                className="ui primary button installAction"
                 onClick={[Function]}
                 value="plone.app.somethingelse"
               >
@@ -148,11 +148,12 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
             onClick={[Function]}
           >
             Whatever
-            <span
-              className="updateText"
+            <div
+              className="ui label"
+              onClick={[Function]}
             >
               Update
-            </span>
+            </div>
             <svg
               className="icon accordionToggle Whatever"
               dangerouslySetInnerHTML={
@@ -184,14 +185,14 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
               className="ui right floated buttons"
             >
               <button
-                className="ui basic primary button"
+                className="ui primary button"
                 onClick={[Function]}
                 value="plone.app.whatever"
               >
-                Update
+                Update from version  to 
               </button>
               <button
-                className="ui basic negative button uninstallAction"
+                className="ui negative button uninstallAction"
                 onClick={[Function]}
                 value="plone.app.whatever"
               >

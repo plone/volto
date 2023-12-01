@@ -46,7 +46,7 @@ exports[`Toolbar More component renders a Toolbar More component 1`] = `
         </li>
         <li>
           <a
-            href="/blah/history"
+            href="/blah/historyview"
           >
             <div>
               <span
@@ -71,6 +71,32 @@ exports[`Toolbar More component renders a Toolbar More component 1`] = `
             href="/blah/sharing"
           >
             Sharing
+            <svg
+              class="icon"
+              style="height: 24px; width: auto; fill: currentColor;"
+              viewBox=""
+              xmlns=""
+            />
+          </a>
+        </li>
+        <li>
+          <a
+            href="/blah/aliases"
+          >
+            URL Management
+            <svg
+              class="icon"
+              style="height: 24px; width: auto; fill: currentColor;"
+              viewBox=""
+              xmlns=""
+            />
+          </a>
+        </li>
+        <li>
+          <a
+            href="/blah/links-to-item"
+          >
+            Links and references
             <svg
               class="icon"
               style="height: 24px; width: auto; fill: currentColor;"
@@ -131,7 +157,7 @@ exports[`Toolbar More component renders a Toolbar More component with manage con
         </li>
         <li>
           <a
-            href="/blah/history"
+            href="/blah/historyview"
           >
             <div>
               <span
@@ -164,11 +190,37 @@ exports[`Toolbar More component renders a Toolbar More component with manage con
             />
           </a>
         </li>
+        <li>
+          <a
+            href="/blah/aliases"
+          >
+            URL Management
+            <svg
+              class="icon"
+              style="height: 24px; width: auto; fill: currentColor;"
+              viewBox=""
+              xmlns=""
+            />
+          </a>
+        </li>
+        <li>
+          <a
+            href="/blah/links-to-item"
+          >
+            Links and references
+            <svg
+              class="icon"
+              style="height: 24px; width: auto; fill: currentColor;"
+              viewBox=""
+              xmlns=""
+            />
+          </a>
+        </li>
       </ul>
     </div>
     <header>
       <h2>
-        Manage content...
+        Manage content…
       </h2>
     </header>
     <div

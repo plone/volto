@@ -8,7 +8,7 @@ export const Password = WidgetStory.bind({
 });
 
 export default {
-  title: 'Widgets/Password',
+  title: 'Edit Widgets/Password',
   component: PasswordWidget,
   decorators: [
     (Story) => (

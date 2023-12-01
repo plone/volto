@@ -8,6 +8,26 @@ import { Provider } from 'react-intl-redux';
 
 const mockStore = configureStore();
 
+const withStateManagement =
+  (Component) =>
+  ({ ...props }) => {
+    const [formData, onChangeFormData] = React.useState(props.formData || {});
+    const onChangeField = (id, value) => {
+      onChangeFormData({ ...formData, [id]: value });
+    };
+
+    // NOTE: onChangeBlock here is not "really" implemented
+
+    return (
+      <Component
+        {...props}
+        onChangeField={onChangeField}
+        onChangeBlock={(block, data) => onChangeFormData(data)}
+        formData={formData}
+      />
+    );
+  };
+
 beforeAll(() => {
   config.widgets = {
     id: {},
@@ -54,7 +74,8 @@ beforeAll(() => {
 });
 
 describe('BlockDataForm', () => {
-  it('should does not add variations to schema when unneeded', () => {
+  it('should not add variations to schema when unneeded', () => {
+    const WrappedBlockDataForm = withStateManagement(BlockDataForm);
     const store = mockStore({
       intl: {
         locale: 'en',
@@ -71,7 +92,7 @@ describe('BlockDataForm', () => {
     };
     const { container } = render(
       <Provider store={store}>
-        <BlockDataForm
+        <WrappedBlockDataForm
           formData={formData}
           schema={testSchema}
           onChangeField={(id, value) => {}}
@@ -84,7 +105,8 @@ describe('BlockDataForm', () => {
     expect(testSchema.fieldsets[0].fields).toStrictEqual([]);
   });
 
-  it('should does not add variations when only one variation', () => {
+  it('should not add variations when only one variation', () => {
+    const WrappedBlockDataForm = withStateManagement(BlockDataForm);
     const store = mockStore({
       intl: {
         locale: 'en',
@@ -101,7 +123,7 @@ describe('BlockDataForm', () => {
     };
     const { container } = render(
       <Provider store={store}>
-        <BlockDataForm
+        <WrappedBlockDataForm
           formData={formData}
           schema={testSchema}
           onChangeField={(id, value) => {}}
@@ -115,6 +137,7 @@ describe('BlockDataForm', () => {
   });
 
   it('should add variations to schema', () => {
+    const WrappedBlockDataForm = withStateManagement(BlockDataForm);
     const store = mockStore({
       intl: {
         locale: 'en',
@@ -131,10 +154,42 @@ describe('BlockDataForm', () => {
     };
     const { container } = render(
       <Provider store={store}>
-        <BlockDataForm
+        <WrappedBlockDataForm
           formData={formData}
           schema={testSchema}
           onChangeField={(id, value) => {}}
+        />
+      </Provider>,
+    );
+    expect(container).toMatchSnapshot();
+
+    // schema is cloned, not mutated in place
+    expect(testSchema.fieldsets[0].fields).toStrictEqual([]);
+  });
+
+  it('should not add variations to schema when explicitly disabled', () => {
+    const WrappedBlockDataForm = withStateManagement(BlockDataForm);
+    const store = mockStore({
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+    const testSchema = {
+      fieldsets: [{ title: 'Default', id: 'default', fields: [] }],
+      properties: {},
+      required: [],
+    };
+    const formData = {
+      '@type': 'testBlock',
+    };
+    const { container } = render(
+      <Provider store={store}>
+        <WrappedBlockDataForm
+          formData={formData}
+          schema={testSchema}
+          onChangeField={(id, value) => {}}
+          applySchemaEnhancers={false}
         />
       </Provider>,
     );

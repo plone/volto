@@ -19,7 +19,11 @@ describe('SearchDetails', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <SearchDetails text="test" total="10"></SearchDetails>
+        <SearchDetails
+          text="test"
+          total="10"
+          data={{ showTotalResults: true }}
+        ></SearchDetails>
       </Provider>,
     );
     const json = component.toJSON();

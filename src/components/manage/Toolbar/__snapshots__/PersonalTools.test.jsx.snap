@@ -1,5 +1,181 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools component - in a non-root path 1`] = `
+<div
+  className="personal-tools pastanaga-menu"
+  style={
+    Object {
+      "flex": "0 0 320px",
+    }
+  }
+>
+  <header
+    className="header"
+  >
+    <button
+      className="back"
+      onClick={[Function]}
+    >
+      <svg
+        className="icon"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "<title>Back</title>undefined",
+          }
+        }
+        onClick={null}
+        style={
+          Object {
+            "fill": "currentColor",
+            "height": "30px",
+            "width": "auto",
+          }
+        }
+        viewBox=""
+        xmlns=""
+      />
+    </button>
+    <div
+      className="vertical divider"
+    />
+    <h2>
+      admin
+    </h2>
+    <a
+      href="/en/blog/logout"
+      id="toolbar-logout"
+      onClick={[Function]}
+    >
+      <svg
+        className="icon logout"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "<title>Logout</title>undefined",
+          }
+        }
+        onClick={null}
+        style={
+          Object {
+            "fill": "currentColor",
+            "height": "30px",
+            "width": "auto",
+          }
+        }
+        viewBox=""
+        xmlns=""
+      />
+    </a>
+  </header>
+  <div
+    className="avatar default"
+  >
+    <svg
+      className="icon"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": undefined,
+        }
+      }
+      onClick={null}
+      style={
+        Object {
+          "fill": "currentColor",
+          "height": "96px",
+          "width": "auto",
+        }
+      }
+      viewBox=""
+      xmlns=""
+    />
+  </div>
+  <div
+    className="pastanaga-menu-list"
+  >
+    <ul>
+      <li>
+        <a
+          href="/personal-information"
+          id="Profile"
+          onClick={[Function]}
+        >
+          Profile
+          <svg
+            className="icon"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "currentColor",
+                "height": "24px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
+          />
+        </a>
+      </li>
+      <li>
+        <button
+          aria-label="Preferences"
+          onClick={[Function]}
+        >
+          Preferences
+          <svg
+            className="icon"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "currentColor",
+                "height": "24px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
+          />
+        </button>
+      </li>
+      <li>
+        <a
+          href="/controlpanel"
+          onClick={[Function]}
+        >
+          Site Setup
+          <svg
+            className="icon"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "currentColor",
+                "height": "24px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
+          />
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+`;
+
 exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools component 1`] = `
 <div
   className="personal-tools pastanaga-menu"
@@ -93,8 +269,9 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
   >
     <ul>
       <li>
-        <button
-          aria-label="Profile"
+        <a
+          href="/personal-information"
+          id="Profile"
           onClick={[Function]}
         >
           Profile
@@ -116,7 +293,169 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
             viewBox=""
             xmlns=""
           />
+        </a>
+      </li>
+      <li>
+        <button
+          aria-label="Preferences"
+          onClick={[Function]}
+        >
+          Preferences
+          <svg
+            className="icon"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "currentColor",
+                "height": "24px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
+          />
         </button>
+      </li>
+      <li>
+        <a
+          href="/controlpanel"
+          onClick={[Function]}
+        >
+          Site Setup
+          <svg
+            className="icon"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "currentColor",
+                "height": "24px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
+          />
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools component with portrait set 1`] = `
+<div
+  className="personal-tools pastanaga-menu"
+  style={
+    Object {
+      "flex": "0 0 320px",
+    }
+  }
+>
+  <header
+    className="header"
+  >
+    <button
+      className="back"
+      onClick={[Function]}
+    >
+      <svg
+        className="icon"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "<title>Back</title>undefined",
+          }
+        }
+        onClick={null}
+        style={
+          Object {
+            "fill": "currentColor",
+            "height": "30px",
+            "width": "auto",
+          }
+        }
+        viewBox=""
+        xmlns=""
+      />
+    </button>
+    <div
+      className="vertical divider"
+    />
+    <h2>
+      admin
+    </h2>
+    <a
+      href="/logout"
+      id="toolbar-logout"
+      onClick={[Function]}
+    >
+      <svg
+        className="icon logout"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "<title>Logout</title>undefined",
+          }
+        }
+        onClick={null}
+        style={
+          Object {
+            "fill": "currentColor",
+            "height": "30px",
+            "width": "auto",
+          }
+        }
+        viewBox=""
+        xmlns=""
+      />
+    </a>
+  </header>
+  <div
+    className="avatar"
+  >
+    <img
+      alt="user avatar"
+      src="/@portrait/admin"
+    />
+  </div>
+  <div
+    className="pastanaga-menu-list"
+  >
+    <ul>
+      <li>
+        <a
+          href="/personal-information"
+          id="Profile"
+          onClick={[Function]}
+        >
+          Profile
+          <svg
+            className="icon"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "currentColor",
+                "height": "24px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
+          />
+        </a>
       </li>
       <li>
         <button

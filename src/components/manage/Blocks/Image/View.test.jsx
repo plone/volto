@@ -4,7 +4,9 @@ import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { Provider } from 'react-intl-redux';
 import configureStore from 'redux-mock-store';
-import View from './View';
+import { getImageBlockSizes } from './utils';
+import config from '@plone/volto/registry';
+import { View } from './View';
 
 const mockStore = configureStore();
 
@@ -14,6 +16,24 @@ const store = mockStore({
     messages: {},
   },
 });
+
+config.blocks.blocksConfig = {
+  image: {
+    id: 'image',
+    title: 'Image',
+    group: 'media',
+    extensions: {},
+    variations: [],
+    restricted: false,
+    mostUsed: true,
+    sidebarTab: 1,
+    security: {
+      addPermission: [],
+      view: [],
+    },
+    getSizes: getImageBlockSizes,
+  },
+};
 
 describe('Image View Component', () => {
   test('renders a view image component with a local image', () => {
@@ -26,7 +46,9 @@ describe('Image View Component', () => {
     const { container, getByRole } = render(
       <Provider store={store}>
         <MemoryRouter>
-          <View data={{ url: '/image.jpg', href: '/front-page' }} />
+          <View
+            data={{ url: '/image.jpg', href: [{ '@id': '/front-page' }] }}
+          />
         </MemoryRouter>
       </Provider>,
     );
@@ -50,7 +72,7 @@ describe('Image View Component', () => {
         <View
           data={{
             url: 'https://plone.org/logo.jpg',
-            href: 'http://front-page',
+            href: [{ '@id': 'http://front-page' }],
           }}
         />
       </Provider>,
