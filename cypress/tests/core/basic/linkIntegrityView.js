@@ -271,7 +271,6 @@ describe('Test if different forms of Linking content appear in links and referen
       contentId: 'image-linked',
     });
 
-    // TODO: get the content creation with image override to work here
     cy.createContent({
       contentType: 'Document',
       contentTitle: 'Document that is linking via teaser block',
@@ -293,6 +292,7 @@ describe('Test if different forms of Linking content appear in links and referen
               image_field: 'image',
               mime_type: 'text/plain',
               title: 'Document linked',
+              // commented out as I was not able to get the image override to work from the function
               // preview_image: [
               //   {
               //     '@id': '/image-linked',
@@ -311,6 +311,7 @@ describe('Test if different forms of Linking content appear in links and referen
         return body;
       },
     });
+    // Manually adding the preview image override
     cy.visit('document-linking/edit');
     cy.get('.block.teaser .content').click();
     cy.get(
