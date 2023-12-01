@@ -34,6 +34,8 @@ jobs:
               - 'packages/scripts/**'
             voltoSlate:
               - 'packages/volto-slate/**'
+            wrongNews:
+              - 'news/**'
 
       - name: Volto changelog check
         if: steps.filter.outputs.volto == 'true'
@@ -87,5 +89,11 @@ jobs:
           # Source: https://github.com/actions/checkout/#fetch-all-branches.
           git fetch --no-tags origin main
           towncrier check --compare-with origin/main --dir packages/volto-slate
+        env:
+          BASE_BRANCH: ${{ github.base_ref }}
+
+      - name: Wrong news changelog check
+        if: steps.filter.outputs.wrongNews == 'true'
+        run: echo "Wrongly placed news item in root. Please place it in the appropiate folder." && exit 1
         env:
           BASE_BRANCH: ${{ github.base_ref }}
