@@ -263,17 +263,10 @@ export const withVariationSchemaEnhancer = (FormComponent) => (props) => {
   const blockType = formData['@type'];
   const variations = blocksConfig[blockType]?.variations || [];
 
-  let schema = applySchemaEnhancer({
-    schema: originalSchema,
-    formData,
-    intl,
-    blocksConfig,
-    navRoot,
-    contentType,
-  });
+  let schema = originalSchema;
 
   if (variations.length > 1) {
-    addExtensionFieldToSchema({
+    schema = addExtensionFieldToSchema({
       schema,
       name: 'variation',
       items: variations,
@@ -282,6 +275,15 @@ export const withVariationSchemaEnhancer = (FormComponent) => (props) => {
       insertFieldToOrder: _addField,
     });
   }
+
+  schema = applySchemaEnhancer({
+    schema,
+    formData,
+    intl,
+    blocksConfig,
+    navRoot,
+    contentType,
+  });
 
   return <FormComponent {...props} schema={schema} />;
 };
