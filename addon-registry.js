@@ -154,57 +154,8 @@ class AddonConfigurationRegistry {
     this.initAddonExtenders();
   }
 
-  /**
-   * Gets the `tsconfig.json` `compilerOptions.baseUrl` and `compilerOptions.paths`
-   * Returns a tuple `[baseUrl, pathsConfig]`
-   *
-   */
-  getTSConfigPaths() {
-    let configFile;
-    if (fs.existsSync(`${this.projectRootPath}/tsconfig.json`))
-      configFile = `${this.projectRootPath}/tsconfig.json`;
-    else if (fs.existsSync(`${this.projectRootPath}/jsconfig.json`))
-      configFile = `${this.projectRootPath}/jsconfig.json`;
-
-    let pathsConfig;
-    let baseUrl;
-    if (configFile) {
-      const jsConfig = require(configFile).compilerOptions;
-      pathsConfig = jsConfig.paths;
-      baseUrl = jsConfig.baseUrl;
-    }
-
-    return [baseUrl, pathsConfig];
-  }
-
-  /**
-   * Volto is able to register packages while in development thanks to
-   * `mrs-developer`. It uses the JS/TS environment config `compilerOptions.paths`
-   * to resolve them through the system.
-   */
-  initDevelopmentPackages() {
-    const [, pathsConfig] = this.getTSConfigPaths();
-    if (pathsConfig) {
-      // We only initialize the development addons present in `compilerOptions.paths`
-      // configured by `mrs-developer` filtered by the add-ons registered (via config)
-      // since we can have other paths there that are not addons
-      const developmentAddons = this.addonNames.filter((key) =>
-        pathsConfig.hasOwnProperty(key),
-      );
-      // Extract this one and call it from both published nad here
-      developmentAddons.forEach((name) => {
-        this.initDevelopmentPackage(name);
-      });
-    }
-  }
-
-  /**
-   * Given an add-on name, it registers it as a development package
-   *
-   */
   initDevelopmentPackage(name) {
-    const [baseUrl, pathsConfig] = this.getTSConfigPaths();
-    const packagePath = `${this.projectRootPath}/${baseUrl}/${pathsConfig[name][0]}`;
+    const packagePath = `${this.projectRootPath}/${jsConfig.baseUrl}/${pathsConfig[name][0]}`;
     const packageJsonPath = `${getPackageBasePath(packagePath)}/package.json`;
     const innerAddons = require(packageJsonPath).addons || [];
     const innerAddonsNormalized = innerAddons.map((s) => s.split(':')[0]);
@@ -227,6 +178,35 @@ class AddonConfigurationRegistry {
   }
 
   /**
+   * Volto is able to register packages while in development thanks to
+   * `mrs-developer`. It uses the JS/TS environment config `compilerOptions.paths`
+   * to resolve them through the system.
+   */
+  initDevelopmentPackages() {
+    let configFile;
+    if (fs.existsSync(`${this.projectRootPath}/tsconfig.json`))
+      configFile = `${this.projectRootPath}/tsconfig.json`;
+    else if (fs.existsSync(`${this.projectRootPath}/jsconfig.json`))
+      configFile = `${this.projectRootPath}/jsconfig.json`;
+
+    if (configFile) {
+      const jsConfig = require(configFile).compilerOptions;
+      const pathsConfig = jsConfig.paths;
+
+      // We only initialize the development addons present in `compilerOptions.paths`
+      // configured by `mrs-developer` filtered by the add-ons registered (via config)
+      // since we can have other paths there that are not addons
+      const developmentAddons = this.addonNames.filter((key) =>
+        pathsConfig.hasOwnProperty(key),
+      );
+      // Extract this one and call it from both published nad here
+      developmentAddons.forEach((name) => {
+        this.initDevelopmentPackage(name);
+      });
+    }
+  }
+
+  /**
    * Add path to the "src" of npm-released packages. These packages can
    * release their source code in src, or transpile. The "main" of their
    * package.json needs to point to the module that exports `applyConfig` as
@@ -237,10 +217,8 @@ class AddonConfigurationRegistry {
   }
 
   initPublishedPackage(name) {
-    // I am in the paths list, if so, register it as a development package
-    // instead than a published one
-    const [, pathsConfig] = this.getTSConfigPaths();
-    if (pathsConfig.hasOwnProperty(name)) {
+    // I am in the paths list?
+    if (pathsConfig.hasOwnProperty(key)) {
       this.initDevelopmentPackage(name);
     }
 

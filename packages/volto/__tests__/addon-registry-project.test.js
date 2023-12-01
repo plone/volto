@@ -36,15 +36,6 @@ describe('AddonConfigurationRegistry - Project', () => {
     ]);
 
     expect(reg.packages).toEqual({
-      'non-volto-addon-lib': {
-        addons: [],
-        isPublishedPackage: false,
-        isRegisteredAddon: false,
-        modulePath: `${base}/addons/non-volto-addon-lib/src`,
-        name: 'non-volto-addon-lib',
-        packageJson: `${base}/addons/non-volto-addon-lib/package.json`,
-        version: '0.0.0',
-      },
       'test-addon': {
         isPublishedPackage: false,
         modulePath: `${base}/addons/test-addon/src`,
@@ -107,7 +98,6 @@ describe('AddonConfigurationRegistry - Project', () => {
     const base = path.join(__dirname, 'fixtures', 'test-volto-project');
     const reg = new AddonConfigurationRegistry(base);
     expect(reg.getResolveAliases()).toStrictEqual({
-      'non-volto-addon-lib': `${base}/addons/non-volto-addon-lib/src`,
       'my-volto-config-addon': `${base}/addons/my-volto-config-addon/src`,
       'test-addon': `${base}/addons/test-addon/src`,
       'test-released-addon': `${base}/node_modules/test-released-addon`,
