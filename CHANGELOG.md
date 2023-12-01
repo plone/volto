@@ -1,3 +1,12 @@
+---
+myst:
+  html_meta:
+    "description": "Volto Release Notes for the Plone content management system"
+    "property=og:description": "Volto Release Notes for the Plone content management system"
+    "property=og:title": "Volto Release Notes"
+    "keywords": "Volto, Plone, frontend, Release Notes, change log, changelog, change history"
+---
+
 # Volto Release Notes
 
 <!-- You should *NOT* be adding new change log entries to this file.
@@ -7,6 +16,86 @@
 -->
 
 <!-- towncrier release notes start -->
+
+## 17.6.1 (2023-11-27)
+
+### Bugfix
+
+- Revert "Improvements and completeness of the ContentMetadataTags component (#5433) @sneridagh [#5450](https://github.com/plone/volto/issues/5450)
+
+## 17.6.0 (2023-11-25)
+
+### Feature
+
+- Use container from component registry in sitemap component and also refactor the class
+  to functional component. @iRohitSingh [#5418](https://github.com/plone/volto/issues/5418)
+- Improvements and completeness of the ContentMetadataTags component @ericof @sneridagh [#5433](https://github.com/plone/volto/issues/5433)
+
+### Bugfix
+
+- Searchbox and clear button inside blocks-chooser with visible focus and fixed the clear button label - @Wagner3UB [#5335](https://github.com/plone/volto/issues/5335)
+- Fix image paths in development mode. @robgietema [#5429](https://github.com/plone/volto/issues/5429)
+
+## 17.5.0 (2023-11-10)
+
+### Feature
+
+- List plone.app.linkintegrity breaches with links to the pages in the delete confirmation modal.
+  @jaroel [#5234](https://github.com/plone/volto/issues/5234)
+
+### Bugfix
+
+- Fix empty link element left hanging when hit enter at end of link. @iFlameing @tiberiuichim [#5291](https://github.com/plone/volto/issues/5291)
+
+### Internal
+
+- Added shim to keep working with value instead of initialValue after Slate upgrade @davisagli [#5291](https://github.com/plone/volto/issues/5291)
+- Update internal Plone version to 6.0.8 @sneridagh [#5384](https://github.com/plone/volto/issues/5384)
+
+## 17.4.0 (2023-11-04)
+
+### Feature
+
+- add cypress test for search block via url - @ionlizarazu [#5298](https://github.com/plone/volto/issues/5298)
+- Add type definitions for Volto Javascript files @sneridagh [#5355](https://github.com/plone/volto/issues/5355)
+
+### Bugfix
+
+- Add support for TS files in add-on registry shadowing system @sneridagh [#5354](https://github.com/plone/volto/issues/5354)
+
+### Documentation
+
+- Fix Sphinx toctree warnings from included `CHANGELOG.md`. @stevepiercy [#5135](https://github.com/plone/volto/issues/5135)
+- Remove regular expression from `sphinx-copybutton` configuration, now that `linenos` are excluded by default. @stevepiercy [#5346](https://github.com/plone/volto/issues/5346)
+
+## 17.3.0 (2023-10-27)
+
+### Feature
+
+- Updated aria-label for landmarks @ichim-david
+  Added landmark on sidebar @ichim-david
+  Added Pluggable section for skiplinks @ichim-david [#5290](https://github.com/plone/volto/issues/5290)
+
+### Bugfix
+
+- (FIX): put padding so the text is not clipped #5305 @dobri1408 [#5305](https://github.com/plone/volto/issues/5305)
+- Fix compare translations view @sneridagh [#5327](https://github.com/plone/volto/issues/5327)
+- Fix DatetimeWidget on FF, the button default if no type is set is sending the form. @sneridagh
+  See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#formmethod [#5343](https://github.com/plone/volto/issues/5343)
+
+### Internal
+
+- For blocks that define their `blockSchema`, call `applyBlockDefaults` when creating the initial data for the blocks form.
+  It is now possible to define a block configuration function, `initialValue` that returns the initial value for a block. This is useful in use cases such as container blocks that want to create a complex initial data structure, to avoid the need to call `React.useEffect` on their initial block rendering and thus, avoid complex async "concurent" state mutations.
+  The `addBlock`, `mutateBlock`, `insertBlock` now allow passing a `blocksConfig` configuration object
+
+  @tiberiuichim [#5320](https://github.com/plone/volto/issues/5320)
+- Add a new set of acceptance tests with the multilingual fixture using seamless mode. @sneridagh [#5332](https://github.com/plone/volto/issues/5332)
+
+### Documentation
+
+- Fix reference link to installation. @stevepiercy [#5328](https://github.com/plone/volto/issues/5328)
+- Add upgrade docs for users of `@kitconcept/volto-blocks-grid` addon @sneridagh [#5333](https://github.com/plone/volto/issues/5333)
 
 ## 17.2.0 (2023-10-16)
 

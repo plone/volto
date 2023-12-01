@@ -1,15 +1,10 @@
-/**
- * Login container.
- * @module components/theme/Sitemap/Sitemap
- */
-
-import React, { Component } from 'react';
+import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { asyncConnect, flattenToAppURL } from '@plone/volto/helpers';
 import { defineMessages, injectIntl } from 'react-intl';
-import { Container } from 'semantic-ui-react';
+import { Container as SemanticContainer } from 'semantic-ui-react';
 import { Helmet } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
 import config from '@plone/volto/registry';
@@ -33,34 +28,23 @@ export function getSitemapPath(pathname = '', lang) {
 }
 
 /**
- * Sitemap class.
- * @class Sitemap
- * @extends Component
+ * Sitemap function component.
+ * @function Sitemap
+ * @param {Object} props - Component properties.
+ * @returns {JSX.Element} - Rendered component.
  */
-class Sitemap extends Component {
-  /**
-   * Property types.
-   * @property {Object} propTypes Property types.
-   * @static
-   */
-  static propTypes = {
-    getNavigation: PropTypes.func.isRequired,
-  };
+function Sitemap(props) {
+  const { language, getNavigation, navroot } = props;
 
-  componentDidMount() {
-    this.props.getNavigation(
-      flattenToAppURL(this.props.navroot?.navroot?.['@id']),
-      config.settings.siteMapDepth,
+  useEffect(() => {
+    const { settings } = config;
+    getNavigation(
+      flattenToAppURL(navroot?.navroot?.['@id']),
+      settings.siteMapDepth,
     );
-  }
+  }, [navroot, language, getNavigation]);
 
-  /**
-   * Render method.
-   * @method render
-   * @returns {string} Markup for the component.
-   */
-
-  renderItems = (items) => {
+  const renderItems = (items) => {
     return (
       <ul>
         {items.map((item) => (
@@ -69,25 +53,34 @@ class Sitemap extends Component {
             className={item.items?.length > 0 ? 'with-children' : ''}
           >
             <Link to={item.url}>{item.title}</Link>
-            {item.items && this.renderItems(item.items)}
+            {item.items && renderItems(item.items)}
           </li>
         ))}
       </ul>
     );
   };
-  render() {
-    const { items } = this.props;
-    return (
-      <div id="page-sitemap">
-        <Helmet title={this.props.intl.formatMessage(messages.Sitemap)} />
-        <Container className="view-wrapper">
-          <h1>{this.props.intl.formatMessage(messages.Sitemap)} </h1>
-          {items && this.renderItems(items)}
-        </Container>
-      </div>
-    );
-  }
+
+  const Container =
+    config.getComponent({ name: 'Container' }).component || SemanticContainer;
+
+  return (
+    <div id="page-sitemap">
+      <Helmet title={props.intl.formatMessage(messages.Sitemap)} />
+      <Container className="view-wrapper">
+        <h1>{props.intl.formatMessage(messages.Sitemap)} </h1>
+        {props.items && renderItems(props.items)}
+      </Container>
+    </div>
+  );
 }
+
+Sitemap.propTypes = {
+  getNavigation: PropTypes.func.isRequired,
+  location: PropTypes.object.isRequired,
+  intl: PropTypes.object.isRequired,
+  lang: PropTypes.string.isRequired,
+  items: PropTypes.array.isRequired,
+};
 
 export const __test__ = compose(
   injectIntl,

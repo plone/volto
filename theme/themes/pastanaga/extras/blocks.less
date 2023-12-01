@@ -42,6 +42,15 @@
   border-color: rgba(120, 192, 215, 0.75);
 }
 
+.block-editor-title,
+.block-editor-slate,
+.block-editor-slateTable,
+.slate-editor.selected {
+  :focus-visible {
+    outline: none;
+  }
+}
+
 .block .block:hover::before {
   border-color: rgba(120, 192, 215, 0.375);
 }
@@ -522,14 +531,6 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
   }
 }
 
-.block .clear-search-button {
-  &:hover,
-  &:focus {
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    color: #e40166 !important;
-  }
-}
 // .ui.basic.button.block-delete-button {
 //   top: 22px;
 //   right: 0;
@@ -782,6 +783,14 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
   .ui.accordion .accordion .title ~ .content {
     // reseting the default Accordion behavior
     display: initial;
+  }
+  .ui.form .ui.input input {
+    //reset for semantic-ui outline:none
+    border-width: @1px;
+    border-color: transparent;
+    &:focus {
+      border-color: @focusedFormBorderColor;
+    }
   }
 }
 

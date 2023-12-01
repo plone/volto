@@ -8,6 +8,38 @@
 
 <!-- towncrier release notes start -->
 
+## 8.1.0 (2023-12-01)
+
+### Bugfix
+
+- Fix and update generator for Volto 17 - 8.x.x series @sneridagh
+  This generator version is no longer compatible with Volto 18 and above. [#5465](https://github.com/plone/volto/issues/5465)
+
+## 8.0.3 (2023-11-25)
+
+### Bugfix
+
+- Bring back deprecated Yeoman install method used for running yarnInstall @ichim-david [#5436](https://github.com/plone/volto/issues/5436)
+
+## 8.0.2 (2023-11-16)
+
+### Bugfix
+
+- Added `postcss-less` package to the default add-on, since the builds were complaining @sneridagh [#5408](https://github.com/plone/volto/issues/5408)
+
+## 8.0.1 (2023-11-15)
+
+### Bugfix
+
+- Update `yeoman-generator` to match changes in latest `yo` breaking version @sneridagh
+  This fixes the errors in the generator if a fresh version of yo (5) is installed [#5406](https://github.com/plone/volto/issues/5406)
+
+## 8.0.0 (2023-11-06)
+
+### Breaking
+
+- Clean up the generator boilerplate in favor of the recommended add-on driven approach, and add documentation for how to develop a Volto project as an add-on. @sneridagh [#5297](https://github.com/plone/volto/issues/5297)
+
 ## 7.0.1 (2023-09-30)
 
 ### Internal
