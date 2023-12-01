@@ -14,6 +14,20 @@ myst:
 This chapter describes the versions of software that Volto supports and how Volto communicates its releases through its branch policy.
 
 
+(volto-generator-compatibility-with-volto-label)=
+
+## `volto-generator` compatibility with Volto
+
+`volto-generator` is a tool that generates a Volto project.
+The following table describes the compatibility between versions of `volto-generator` and Volto.
+
+| Generator version | Volto version |
+|-------------------|---------------|
+| 9.x               | 18.x.x        |
+| 7.x and 8.x       | 17.x.x        |
+| 6.x               | 16.x.x        |
+
+
 ## Plone and Plone REST API
 
 Volto relies on [Plone core (`Products.CMFPlone`)](https://github.com/plone/Products.CMFPlone) and [Plone REST API](https://github.com/plone/plone.restapi).

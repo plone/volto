@@ -34,7 +34,6 @@ DOCS_DIR        = ./docs/source/
 BUILDDIR        = ../_build/
 ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(SPHINXOPTS) .
 VALEFILES       := $(shell find $(DOCS_DIR) -type f -name "*.md" -print)
-VOLTO_NEWS_SYMLINK = ./docs/source/news
 
 # Recipe snippets for reuse
 
@@ -105,7 +104,6 @@ bin/python:
 	@echo "Python environment created."
 	bin/pip install -r requirements-docs.txt
 	@echo "Requirements installed."
-	if [ ! -L $(VOLTO_NEWS_SYMLINK) ] && [ ! -e $(VOLTO_NEWS_SYMLINK) ]; then ln -s ../../news $(VOLTO_NEWS_SYMLINK) && echo "Symlink to Volto news created."; else echo "Symlink to Volto news exists."; fi
 
 .PHONY: clean
 clean:
@@ -120,27 +118,31 @@ docs-clean:  ## Clean current and legacy docs build directories, and Python virt
 	rm -rf docs/_build
 	cd $(DOCS_DIR) && rm -rf $(BUILDDIR)/
 
+.PHONY: docs-news
+docs-news:  ## Create or update the symlink from docs to volto package
+	ln -snf ../../packages/volto/news docs/source/news && echo "Symlink to Volto news created or updated.";
+
 .PHONY: docs-html
-docs-html: bin/python  ## Build html
+docs-html: bin/python docs-news  ## Build html
 	cd $(DOCS_DIR) && $(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
 
 .PHONY: docs-livehtml
-docs-livehtml: bin/python  ## Rebuild Sphinx documentation on changes, with live-reload in the browser
+docs-livehtml: bin/python docs-news  ## Rebuild Sphinx documentation on changes, with live-reload in the browser
 	cd "$(DOCS_DIR)" && ${SPHINXAUTOBUILD} \
 		--ignore "*.swp" \
 		-b html . "$(BUILDDIR)/html" $(SPHINXOPTS)
 
 .PHONY: docs-linkcheck
-docs-linkcheck: bin/python  ## Run linkcheck
+docs-linkcheck: bin/python docs-news  ## Run linkcheck
 	cd $(DOCS_DIR) && $(SPHINXBUILD) -b linkcheck $(ALLSPHINXOPTS) $(BUILDDIR)/linkcheck
 	@echo
 	@echo "Link check complete; look for any errors in the above output " \
 		"or in $(BUILDDIR)/linkcheck/ ."
 
 .PHONY: docs-linkcheckbroken
-docs-linkcheckbroken: bin/python  ## Run linkcheck and show only broken links
+docs-linkcheckbroken: bin/python docs-news  ## Run linkcheck and show only broken links
 	cd $(DOCS_DIR) && $(SPHINXBUILD) -b linkcheck $(ALLSPHINXOPTS) $(BUILDDIR)/linkcheck | GREP_COLORS='0;31' grep -wi "broken\|redirect" --color=always | GREP_COLORS='0;31' grep -vi "https://github.com/plone/volto/issues/" --color=always && if test $$? -eq 0; then exit 1; fi || test $$? -ne 0
 
 .PHONY: docs-vale
@@ -161,7 +163,7 @@ docs-test: docs-clean docs-linkcheckbroken docs-vale  ## Clean docs build, then 
 # TODO: Revisit it
 .PHONY: storybook-build
 storybook-build:
-	(cd packages/volto && pnpm build-storybook -o docs/_build/storybook)
+	(cd packages/volto && pnpm build-storybook -o ../../docs/_build/storybook)
 
 .PHONY: patches
 patches:

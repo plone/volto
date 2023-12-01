@@ -1,7 +1,6 @@
 node_modules
 build
-packages/generator-volto
 packages/volto-slate
 packages/volto
-packages/volto-testing
 packages/volto-guillotina
+packages/generator-volto/generators/app/templates

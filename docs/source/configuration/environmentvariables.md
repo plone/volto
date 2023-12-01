@@ -49,7 +49,7 @@ This brings you a lot of power since you don't have to rebuild on every config c
 
 ### RAZZLE_LEGACY_TRAVERSE
 
-From Volto 14 onwards, Seamless mode is the recommended way of setting up your depoloyments. However, it forces you to upgrade several packages in the backend (`plone.restapi` and `plone.rest`) and adjust your web server configuration accordingly.
+From Volto 14 onwards, Seamless mode is the recommended way of setting up your deployments. However, it forces you to upgrade several packages in the backend (`plone.restapi` and `plone.rest`) and adjust your web server configuration accordingly.
 
 In case you can't afford or change your deployment, you can still upgrade Volto by using the `RAZZLE_LEGACY_TRAVERSE` flag.
 

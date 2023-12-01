@@ -106,6 +106,24 @@ It's important to have the generators updated!
 Run "npm install -g @plone/generator-volto" to update.`,
     });
 
+    this.log(
+      chalk.green(
+        'This version of the generator works for Volto version 18.x.x.',
+      ),
+    );
+    this.log(
+      chalk.green(
+        'If you want to generate a project for another version of Volto',
+      ),
+    );
+    this.log(chalk.green('then use the appropriate version.'));
+    this.log(
+      chalk.green(
+        'See https://6.docs.plone.org/volto/contributing/version-policy.html#volto-generator-compatibility-with-volto-label.',
+      ),
+    );
+    this.log(chalk.green());
+
     let voltoVersion;
     if (this.opts.canary) {
       this.log(chalk.red('Getting latest canary (alpha) Volto version'));
