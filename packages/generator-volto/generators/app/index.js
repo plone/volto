@@ -119,7 +119,7 @@ Run "npm install -g @plone/generator-volto" to update.`,
     this.log(chalk.green('then use the appropriate version.'));
     this.log(
       chalk.green(
-        'See https://6.docs.plone.org/volto/contributing/version-policy.html#volto-generator-label.',
+        'See https://6.docs.plone.org/volto/contributing/version-policy.html#volto-generator-compatibility-with-volto-label.',
       ),
     );
     this.log(chalk.green());
