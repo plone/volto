@@ -15,7 +15,6 @@ npm install -g @plone/generator-volto
 
 | Generator version | Volto version |
 |-------------------|---------------|
-| 9.x               | 18.x.x        |
 | 7.x and 8.x       | 17.x.x        |
 | 6.x               | 16.x.x        |
 
