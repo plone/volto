@@ -9,7 +9,7 @@ import { Helmet } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
 import config from '@plone/volto/registry';
 
-import { getNavigation, getNavroot } from '@plone/volto/actions';
+import { getNavigation } from '@plone/volto/actions';
 
 const messages = defineMessages({
   Sitemap: {
@@ -89,7 +89,7 @@ export const __test__ = compose(
       items: state.navigation.items,
       navroot: state.navroot.data,
     }),
-    { getNavigation, getNavroot },
+    { getNavigation },
   ),
 )(Sitemap);
 
@@ -100,7 +100,7 @@ export default compose(
       items: state.navigation.items,
       navroot: state.navroot.data,
     }),
-    { getNavigation, getNavroot },
+    { getNavigation },
   ),
   asyncConnect([
     {
