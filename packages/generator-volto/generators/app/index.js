@@ -1,7 +1,11 @@
 const path = require('path');
 const chalk = require('chalk');
 const Generator = require('yeoman-generator');
+const _ = require('lodash');
 const utils = require('./utils');
+
+// bring in the deprecated install method from the yeoman-generator/lib/actions/install.js
+_.extend(Generator.prototype, require('yeoman-generator/lib/actions/install'));
 
 const currentDir = path.basename(process.cwd());
 
@@ -27,7 +31,7 @@ const addonPrompt = [
     type: 'input',
     name: 'addonName',
     message:
-      'Addon name, plus extra loaders, like: volto-addon:loadExtra,loadAnotherExtra',
+      'Addon name, plus extra loaders. Example: volto-addon:loadExtra,loadAnotherExtra',
     default: '',
     validate: validateAddonName,
   },
@@ -48,8 +52,7 @@ module.exports = class extends Generator {
     });
     this.option('volto', {
       type: String,
-      desc:
-        'Desired Volto version, if not provided, the most recent will be used',
+      desc: 'Desired Volto version, if not provided, the most recent will be used',
     });
     this.option('canary', {
       type: Boolean,
@@ -67,16 +70,19 @@ module.exports = class extends Generator {
     });
     this.option('addon', {
       type: (arr) => arr,
-      desc:
-        'Addon loader string, like: some-volto-addon:loadExtra,loadOtherExtra',
+      desc: 'Addon loader string. Example: some-volto-addon:loadExtra,loadOtherExtra',
     });
     this.option('workspace', {
       type: (arr) => arr,
-      desc: 'Yarn workspace, like: src/addons/some-volto-addon',
+      desc: 'Yarn workspace. Example: src/addons/some-volto-addon',
     });
     this.option('description', {
       type: String,
       desc: 'Project description',
+    });
+    this.option('defaultAddonName', {
+      type: String,
+      desc: `The default add-on's name to be added to the generated project.`,
     });
 
     this.args = args;
@@ -99,6 +105,24 @@ It's important to have the generators updated!
 
 Run "npm install -g @plone/generator-volto" to update.`,
     });
+
+    this.log(
+      chalk.green(
+        'This version of the generator works for Volto version 17.x.x.',
+      ),
+    );
+    this.log(
+      chalk.green(
+        'If you want to generate a project for another version of Volto',
+      ),
+    );
+    this.log(chalk.green('then use the appropriate version.'));
+    this.log(
+      chalk.green(
+        'See https://6.docs.plone.org/volto/contributing/version-policy.html#volto-generator-compatibility-with-volto-label.',
+      ),
+    );
+    this.log(chalk.green());
 
     let voltoVersion;
     if (this.opts.canary) {
@@ -253,6 +277,23 @@ Run "npm install -g @plone/generator-volto" to update.`,
   }
 
   end() {
+    const base =
+      currentDir === this.globals.projectName ? '.' : this.globals.projectName;
+    this.composeWith(require.resolve('../addon'), {
+      addonName: this.opts.defaultAddonName
+        ? this.opts.defaultAddonName
+        : `volto-${this.globals.projectName}`,
+      outputpath: base,
+      interactive: false,
+    });
+    // Upgrade it as theme
+    this.composeWith(require.resolve('../addonTheme'), {
+      addonName: this.opts.defaultAddonName
+        ? this.opts.defaultAddonName
+        : `volto-${this.globals.projectName}`,
+      outputpath: path.resolve(base),
+    });
+
     if (!this.opts['skip-install']) {
       this.log(
         `
