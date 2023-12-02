@@ -12,9 +12,7 @@ class PrePublishReleaseItPlugin extends Plugin {
         type: 'confirm',
         message: (context) =>
           `Are you sure you want to publish ${context.npm.name}${
-            context.npm.tag === null || context.npm.tag === 'latest'
-              ? ''
-              : `@${context.npm.tag}`
+            context.isPreRelease ? `@${context.preReleaseId}` : 'latest'
           } to npm?`,
         default: true,
       },
@@ -33,10 +31,7 @@ class PrePublishReleaseItPlugin extends Plugin {
 
   async beforeRelease() {
     const context = this.config.getContext();
-    const tag =
-      context.npm.tag === null || context.npm.tag === 'latest'
-        ? ''
-        : context.npm.tag;
+    const tag = context.isPreRelease ? context.preReleaseId : 'latest';
 
     await this.step({
       enabled: true,
