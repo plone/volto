@@ -13,11 +13,7 @@ npm install -g @plone/generator-volto
 
 ## Compatibility
 
-| Generator version | Volto version |
-|-------------------|---------------|
-| 9.x               | 18.x.x        |
-| 7.x and 8.x       | 17.x.x        |
-| 6.x               | 16.x.x        |
+See [`volto-generator` compatibility with Volto](https://6.docs.plone.org/volto/contributing/version-policy.html#volto-generator-compatibility-with-volto-label).
 
 ## Usage
 
