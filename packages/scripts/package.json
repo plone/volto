@@ -66,6 +66,7 @@
     "babel-preset-razzle": "4.2.17",
     "chalk": "4",
     "commander": "8.2.0",
+    "comment-json": "^4.2.3",
     "fs-extra": "10.1.0",
     "git-url-parse": "^13.1.0",
     "glob": "7.1.6",
