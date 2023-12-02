@@ -625,9 +625,6 @@ importers:
 
   packages/registry:
     dependencies:
-      '@plone/types':
-        specifier: workspace:*
-        version: link:../types
       crypto-random-string:
         specifier: 3.2.0
         version: 3.2.0
@@ -656,6 +653,9 @@ importers:
       '@parcel/transformer-typescript-types':
         specifier: 2.10.2
         version: 2.10.2(@parcel/core@2.10.3)(typescript@5.2.2)
+      '@plone/types':
+        specifier: workspace:*
+        version: link:../types
       '@types/lodash':
         specifier: ^4.14.201
         version: 4.14.201
