@@ -181,8 +181,8 @@ corepackagebump:
 
 .PHONY: copyreleasenotestodocs
 copyreleasenotestodocs:
-	cp CHANGELOG.md docs/source/release-notes/index.md
-	git add docs/source/release-notes/index.md
+	cp CHANGELOG.md ../../docs/source/release-notes/index.md
+	git add ../../docs/source/release-notes/index.md
 
 ##### Docker containers
 
