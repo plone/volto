@@ -41,12 +41,9 @@ class PrePublishReleaseItPlugin extends Plugin {
     await this.step({
       enabled: true,
       task: () =>
-        this.exec(
-          `pnpm publish${tag ? ` --tag ${tag}` : ''} --dry-run --no-git-checks`,
-          {
-            options: { write: false },
-          },
-        ).then(() => {
+        this.exec(`pnpm publish${tag ? ` --tag ${tag}` : ''} --no-git-checks`, {
+          options: { write: false },
+        }).then(() => {
           this.setContext({ isReleased: true });
         }),
       label: 'Publishing to npm...',
