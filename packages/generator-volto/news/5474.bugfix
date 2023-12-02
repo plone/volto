@@ -1,1 +1,0 @@
-Fix the generator for add-ons when killing the backend if CTRL+C while developing with the docker approach @sneridagh
