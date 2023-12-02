@@ -52,7 +52,7 @@ const config = {
   },
   overrides: [
     {
-      files: ['**/*.jsx'],
+      files: ['**/*.js', '**/*.jsx'],
       rules: {
         'react/prop-types': 0,
         'react/no-unescaped-entities': 0,
