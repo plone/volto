@@ -35,6 +35,14 @@
   "main": "dist/main.js",
   "module": "dist/module.js",
   "types": "dist/types.d.ts",
+  "exports": {
+    "./src/*": "./src/*.js",
+    ".": {
+      "types": "./dist/types.d.ts",
+      "import": "./dist/module.js",
+      "require": "./dist/main.js"
+    }
+  },
   "targets": {
     "main": {
       "includeNodeModules": false
