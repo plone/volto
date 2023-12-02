@@ -1,0 +1,4 @@
+{
+  // This is needed for VSCode to detect eslint configs not in the root
+  "eslint.workingDirectories": [{ "mode": "auto" }]
+}
