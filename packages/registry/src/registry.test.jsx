@@ -1,4 +1,5 @@
 import config from './index';
+import { describe, expect, it } from 'vitest';
 
 config.set('components', {
   Toolbar: { component: 'this is the Toolbar component' },
@@ -53,14 +54,14 @@ describe('registry', () => {
   it('registers and gets a component by name (as an object) - check displayName', () => {
     config.registerComponent({
       name: 'Toolbar.Bar',
-      component: (props) => <div>Hello</div>,
+      component: () => <div>Hello</div>,
     });
     expect(config.getComponent('Toolbar.Bar').component.displayName).toEqual(
       'Toolbar.Bar',
     );
   });
   it('registers and gets a component by name (as an object) - check displayName if it has already one, it does not overwrite it', () => {
-    const TestComponent = (props) => <div>Hello</div>;
+    const TestComponent = () => <div>Hello</div>;
     TestComponent.displayName = 'DisplayNameAlreadySet';
     config.registerComponent({
       name: 'Toolbar.Bar',
