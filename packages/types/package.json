@@ -35,7 +35,6 @@
     }
   },
   "scripts": {
-    "watch": "parcel watch",
     "build": "parcel build",
     "dry-release": "release-it --dry-run",
     "release": "release-it",

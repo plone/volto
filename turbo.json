@@ -12,6 +12,7 @@
     "prettier": {},
     "test:ci": {},
     "i18n": {},
-    "i18n:ci": {}
+    "i18n:ci": {},
+    "watch": {}
   }
 }
