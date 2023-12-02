@@ -110,6 +110,11 @@ clean:
 	$(MAKE) -C "./api/" clean
 	rm -rf node_modules
 
+.PHONY: setup
+setup:
+	# Setup ESlint for VSCode
+	node packages/scripts/vscodesettings.js
+
 ##### Documentation
 
 .PHONY: docs-clean
