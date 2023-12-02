@@ -191,7 +191,7 @@ class AddonConfigurationRegistry {
       const developmentAddons = this.addonNames.filter((key) =>
         pathsConfig.hasOwnProperty(key),
       );
-      // Extract this one and call it from both published nad here
+
       developmentAddons.forEach((name) => {
         this.initDevelopmentPackage(name);
       });
@@ -241,7 +241,7 @@ class AddonConfigurationRegistry {
     // instead than a published one
     const [, pathsConfig] = this.getTSConfigPaths();
     if (pathsConfig.hasOwnProperty(name)) {
-      this.initDevelopmentPackage(name);
+      return this.initDevelopmentPackage(name);
     }
 
     if (!Object.keys(this.packages).includes(name)) {
