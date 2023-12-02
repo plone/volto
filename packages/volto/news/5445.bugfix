@@ -1,1 +1,0 @@
-Initialize data in form before the checks for the `blocks` and `blocks_layout` are done This fix an edge case when the data from the server content is empty, then the fields are populated, but the initialized data is snapshot after the check (and amendments) are done. @sneridagh

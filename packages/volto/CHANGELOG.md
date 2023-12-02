@@ -17,6 +17,31 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.4 (2023-12-02)
+
+### Feature
+
+- New monorepo @sneridagh [#5409](https://github.com/plone/volto/issues/5409)
+
+### Bugfix
+
+- Fix the right order of parameters in normalizeExternalData.js @dobri1408 [#5347](https://github.com/plone/volto/issues/5347)
+- Initialize data in form before the checks for the `blocks` and `blocks_layout` are done This fix an edge case when the data from the server content is empty, then the fields are populated, but the initialized data is snapshot after the check (and amendments) are done. @sneridagh [#5445](https://github.com/plone/volto/issues/5445)
+- Replaced `toNumber` with `parseFloat` to avoid an error when validating the `plone.restapi` version. @shibbu264 [#5448](https://github.com/plone/volto/issues/5448)
+- Initialize only the development addons present in `compilerOptions.paths` filtered by the add-ons registered @sneridagh [#5463](https://github.com/plone/volto/issues/5463)
+
+### Internal
+
+- Cleaned up Registry and renamed `packagesFolderAddons` to `coreAddons`. @sneridagh [#5464](https://github.com/plone/volto/issues/5464)
+- Deleted wrongly placed news items, added a check for them, issue a nice message in CI @sneridagh [#5470](https://github.com/plone/volto/issues/5470)
+
+### Documentation
+
+- Fixed broken links after monorepo merge. @stevepiercy [#5459](https://github.com/plone/volto/issues/5459)
+- Added `volto-generator` compatibility with Volto to documentation. @stevepiercy [#5467](https://github.com/plone/volto/issues/5467)
+- Updated the symlink from `docs/source/news` to point to `packages/volto/news`. @stevepiercy [#5471](https://github.com/plone/volto/issues/5471)
+- Remove outdated note from upgrade guide for 17 related to ipv6 preferred by Node 18 @sneridagh [#5481](https://github.com/plone/volto/issues/5481)
+
 ## 18.0.0-alpha.3 (2023-11-27)
 
 ### Feature
