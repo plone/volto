@@ -1433,6 +1433,9 @@ importers:
       jest-environment-jsdom:
         specifier: ^26
         version: 26.6.2
+      jsdom:
+        specifier: ^16.7.0
+        version: 16.7.0
       jsonwebtoken:
         specifier: 9.0.0
         version: 9.0.0
@@ -14114,6 +14117,7 @@ packages:
   /domexception@2.0.1:
     resolution: {integrity: sha512-yxJ2mFy/sibVQlu5qHjOkf9J3K6zgmCxgJ94u2EdvDOV09H+32LtRswEcUsmUWN72pVLOEnTSRaIVVzVQgS0dg==}
     engines: {node: '>=8'}
+    deprecated: Use your platform's native DOMException instead
     dependencies:
       webidl-conversions: 5.0.0
 
