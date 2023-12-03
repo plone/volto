@@ -1,0 +1,108 @@
+{
+  "name": "@plone/client",
+  "description": "JavaScript Plone REST API client - JS framework agnostic library based on TanStack Query",
+  "maintainers": [
+    {
+      "name": "Plone Foundation",
+      "url": "http://plone.org"
+    }
+  ],
+  "license": "MIT",
+  "version": "1.0.0-alpha.10",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:plone/volto.git"
+  },
+  "bugs": {
+    "url": "https://github.com/plone/volto/issues"
+  },
+  "type": "module",
+  "files": [
+    "dist",
+    "src",
+    "README.md"
+  ],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./provider": {
+      "import": "./dist/provider.js"
+    },
+    "./src/*": "./src/*"
+  },
+  "typesVersions": {
+    "*": {
+      "provider": [
+        "dist/provider.d.ts"
+      ]
+    }
+  },
+  "homepage": "https://plone.org",
+  "keywords": [
+    "volto",
+    "plone",
+    "plone6",
+    "react",
+    "cms",
+    "client",
+    "query",
+    "react-query"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "test": "node testRunner.js",
+    "check-ts": "tsc --project tsconfig.json",
+    "coverage": "vitest run --coverage --no-threads",
+    "lint": "eslint 'src/**/*.{js,ts,tsx}' --quiet",
+    "lint:fix": "eslint 'src/**/*.{js,ts,tsx}' --quiet --fix",
+    "prettier": "prettier --check 'src/**/*.{js,jsx,ts,tsx}'",
+    "prettier:fix": "prettier --write 'src/**/*.{js,jsx,ts,tsx}'",
+    "dry-release": "release-it --dry-run",
+    "release": "release-it",
+    "release-major-alpha": "release-it major --preRelease=alpha",
+    "release-alpha": "release-it --preRelease=alpha"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "5.16.5",
+    "@testing-library/react": "13.4.0",
+    "@types/react": "18.2.27",
+    "@types/react-dom": "18.2.12",
+    "@types/uuid": "^9.0.2",
+    "@vitejs/plugin-react": "^4.1.0",
+    "@vitest/coverage-c8": "0.28.5",
+    "jsdom": "^21.1.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "release-it": "16.2.1",
+    "typescript": "5.2.2",
+    "uuid": "^9.0.0",
+    "vite": "^4.4.11",
+    "vite-plugin-dts": "^3.6.0",
+    "vitest": "^0.34.6",
+    "wait-on": "^7.0.1"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "5.0.5",
+    "axios": "^1.5.1",
+    "query-string": "^8.1.0",
+    "zod": "^3.21.4"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react-dom": {
+      "optional": true
+    }
+  }
+}

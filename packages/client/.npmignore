@@ -1,0 +1,28 @@
+news
+towncrier.toml
+.changelog.draft
+node_modules/
+.vscode
+.github
+coverage
+
+# yarn 3
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# docs
+_build/
+bin/
+build/
+include/
+lib/
+lib64/
+local/
+share
+pyvenv.cfg
+styles

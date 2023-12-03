@@ -3,15 +3,6 @@
 /** @type {import('eslint').Linter.Config} */
 const config = {
   parser: '@typescript-eslint/parser', // Specifies the ESLint parser
-  extends: [
-    'plugin:react/recommended',
-    // 'plugin:import/recommended',
-    'plugin:import/typescript',
-    'plugin:prettier/recommended',
-    'plugin:react/jsx-runtime',
-    // 'plugin:storybook/recommended',
-  ],
-  plugins: ['import'],
   parserOptions: {
     ecmaVersion: 'ESNext', // Allows for the parsing of modern ECMAScript features
     sourceType: 'module', // Allows for the use of imports
@@ -19,7 +10,6 @@ const config = {
       jsx: true, // Allows for the parsing of JSX
     },
   },
-
   rules: {
     // 'import/no-unresolved': ['error', { ignore: ['^@plone/'] }],
     // 'import/extensions': 'off',
@@ -52,7 +42,29 @@ const config = {
   },
   overrides: [
     {
+      files: ['**/*.ts', '**/*.tsx'],
+      plugins: ['@typescript-eslint', 'import'],
+      extends: [
+        'plugin:react/recommended',
+        // 'plugin:@typescript-eslint/eslint-recommended',
+        // 'plugin:@typescript-eslint/recommended',
+        // 'plugin:import/recommended',
+        'plugin:import/typescript',
+        'plugin:prettier/recommended',
+        'plugin:react/jsx-runtime',
+        // 'plugin:storybook/recommended',
+      ],
+    },
+    {
       files: ['**/*.js', '**/*.jsx'],
+      plugins: ['import'],
+      extends: [
+        'plugin:react/recommended',
+        // 'plugin:import/recommended',
+        'plugin:prettier/recommended',
+        'plugin:react/jsx-runtime',
+        // 'plugin:storybook/recommended',
+      ],
       rules: {
         'react/prop-types': 0,
         'react/no-unescaped-entities': 0,
