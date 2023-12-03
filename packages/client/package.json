@@ -79,6 +79,7 @@
     "@types/uuid": "^9.0.2",
     "@vitejs/plugin-react": "^4.1.0",
     "@vitest/coverage-c8": "0.28.5",
+    "glob": "7.1.6",
     "jsdom": "^21.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

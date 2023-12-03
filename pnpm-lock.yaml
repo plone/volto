@@ -580,6 +580,9 @@ importers:
       '@vitest/coverage-c8':
         specifier: 0.28.5
         version: 0.28.5(jsdom@21.1.2)
+      glob:
+        specifier: 7.1.6
+        version: 7.1.6
       jsdom:
         specifier: ^21.1.1
         version: 21.1.2
