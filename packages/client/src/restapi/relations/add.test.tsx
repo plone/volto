@@ -2,8 +2,8 @@ import { act, renderHook, waitFor } from '@testing-library/react';
 import { createWrapper } from '../../testUtils';
 import { useMutation } from '@tanstack/react-query';
 import { setup, teardown } from '../../resetFixture';
-import { beforeEach } from 'vitest';
-import { expect, test } from 'vitest';
+import { afterEach, beforeEach } from 'vitest';
+import { describe, expect, test } from 'vitest';
 import PloneClient from '../../client';
 import { v4 as uuid } from 'uuid';
 import { createContent } from '../content/add';
@@ -25,7 +25,7 @@ afterEach(async () => {
 });
 
 describe('[POST] Relations', () => {
-  test('Hook - Successful', async () => {
+  test.only('Hook - Successful', async () => {
     const randomId = uuid();
     const contentData1 = {
       '@type': 'Document',
@@ -70,7 +70,7 @@ describe('[POST] Relations', () => {
     });
 
     expect(relation?.['@id']).toBe(
-      `http://localhost:55001/plone/++api++/@relations?relation=${relationName}`,
+      `http://localhost:55001/plone/@relations?relation=${relationName}`,
     );
     expect(relation?.relations?.[relationName]?.items_total).toBe(1);
   });

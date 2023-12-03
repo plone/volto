@@ -57,6 +57,7 @@
   "scripts": {
     "build": "vite build",
     "test": "node testRunner.js",
+    "vitest": "vitest",
     "check-ts": "tsc --project tsconfig.json",
     "coverage": "vitest run --coverage --no-threads",
     "lint": "eslint 'src/**/*.{js,ts,tsx}' --quiet",
