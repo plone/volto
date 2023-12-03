@@ -1484,9 +1484,15 @@ importers:
       jsdom:
         specifier: ^16.6.0
         version: 16.7.0
+      react:
+        specifier: 17.0.2
+        version: 17.0.2
+      react-dom:
+        specifier: 17.0.2
+        version: 17.0.2(react@17.0.2)
       react-intersection-observer:
-        specifier: ^8.32.0
-        version: 8.34.0(react@18.2.0)
+        specifier: 9.1.0
+        version: 9.1.0(react@17.0.2)
       slate:
         specifier: 0.100.0
         version: 0.100.0
@@ -1498,14 +1504,14 @@ importers:
         version: 0.100.0(slate@0.100.0)
       slate-react:
         specifier: 0.98.4
-        version: 0.98.4(react-dom@18.2.0)(react@18.2.0)(slate@0.100.0)
+        version: 0.98.4(react-dom@17.0.2)(react@17.0.2)(slate@0.100.0)
       weak-key:
         specifier: ^1.0.2
         version: 1.0.3
     devDependencies:
       '@testing-library/react':
         specifier: 9.5.0
-        version: 9.5.0(react-dom@18.2.0)(react@18.2.0)
+        version: 9.5.0(react-dom@17.0.2)(react@17.0.2)
       babel-plugin-transform-class-properties:
         specifier: ^6.24.1
         version: 6.24.1
@@ -8931,7 +8937,7 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: true
 
-  /@testing-library/react@9.5.0(react-dom@18.2.0)(react@18.2.0):
+  /@testing-library/react@9.5.0(react-dom@17.0.2)(react@17.0.2):
     resolution: {integrity: sha512-di1b+D0p+rfeboHO5W7gTVeZDIK5+maEgstrZbWZSSvxDyfDRkkyBE1AJR5Psd6doNldluXlCWqXriUfqu/9Qg==}
     engines: {node: '>=8'}
     peerDependencies:
@@ -8941,8 +8947,8 @@ packages:
       '@babel/runtime': 7.20.6
       '@testing-library/dom': 6.16.0
       '@types/testing-library__react': 9.1.3
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
+      react: 17.0.2
+      react-dom: 17.0.2(react@17.0.2)
     dev: true
 
   /@tootallnate/once@1.1.2:
@@ -24193,14 +24199,6 @@ packages:
       react: 17.0.2
     dev: true
 
-  /react-intersection-observer@8.34.0(react@18.2.0):
-    resolution: {integrity: sha512-TYKh52Zc0Uptp5/b4N91XydfSGKubEhgZRtcg1rhTKABXijc4Sdr1uTp5lJ8TN27jwUsdXxjHXtHa0kPj704sw==}
-    peerDependencies:
-      react: ^15.0.0 || ^16.0.0 || ^17.0.0|| ^18.0.0
-    dependencies:
-      react: 18.2.0
-    dev: false
-
   /react-intersection-observer@9.1.0(react@17.0.2):
     resolution: {integrity: sha512-XSDWQGzgJ4/B4eW39+qa3S+uc4Gb+m6lxXR54m/uD5lqeL5sLrgYdntbjl4BlTYAblgUhz+JB5obINhZaD+c0Q==}
     peerDependencies:
@@ -26113,27 +26111,6 @@ packages:
       lodash: 4.17.21
       react: 17.0.2
       react-dom: 17.0.2(react@17.0.2)
-      scroll-into-view-if-needed: 2.2.31
-      slate: 0.100.0
-      tiny-invariant: 1.0.6
-    dev: false
-
-  /slate-react@0.98.4(react-dom@18.2.0)(react@18.2.0)(slate@0.100.0):
-    resolution: {integrity: sha512-8Of3v9hFuX8rIRc86LuuBhU9t8ps+9ARKL4yyhCrKQYZ93Ep/LFA3GvPGvtf3zYuVadZ8tkhRH8tbHOGNAndLw==}
-    peerDependencies:
-      react: '>=16.8.0'
-      react-dom: '>=16.8.0'
-      slate: '>=0.65.3'
-    dependencies:
-      '@juggle/resize-observer': 3.4.0
-      '@types/is-hotkey': 0.1.9
-      '@types/lodash': 4.14.201
-      direction: 1.0.4
-      is-hotkey: 0.1.8
-      is-plain-object: 5.0.0
-      lodash: 4.17.21
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
       scroll-into-view-if-needed: 2.2.31
       slate: 0.100.0
       tiny-invariant: 1.0.6
