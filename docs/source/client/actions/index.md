@@ -14,7 +14,7 @@ myst:
 This part of the documentation explains the client actions related to each endpoint of Plone REST API.
 
 ```{toctree}
-:caption: Table of Contents
+:caption: Contents
 :maxdepth: 2
 
 actions
@@ -43,6 +43,7 @@ querystringsearch
 registry
 relations
 roles
+rules
 search
 site
 sources

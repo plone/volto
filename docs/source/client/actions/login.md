@@ -1,6 +1,6 @@
 # Login
 
-### Query function
+## Query function
 
 Use the `loginQuery` function to get the query for logging in a user.
 

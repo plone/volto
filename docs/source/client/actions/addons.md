@@ -5,7 +5,7 @@ In order to address a specific record, the profile ID has to be passed as a path
 
 Reading or writing add-ons metadata requires the `cmf.ManagePortal` permission.
 
-## Get Addons list
+## Get add-ons list
 
 ### Query function
 
@@ -15,7 +15,7 @@ Use the `getAddonsQuery` function to get the query for fetching the add-ons at a
 
 Use the `useGetAddons` hook to get the add-ons at a given path.
 
-## Get Addon
+## Get add-on
 
 ### Query function
 
@@ -31,7 +31,7 @@ Use the `useGetAddon` hook to get an add-on at a given path.
 
   - **Required**: Yes
 
-## Install Addons
+## Install add-ons
 
 ### Mutation function
 
@@ -47,7 +47,7 @@ Use the `useInstallAddon` hook to install an add-on at a given path.
 
   - **Required**: Yes
 
-## Uninstall Addons
+## Uninstall add-ons
 
 ### Mutation function
 
@@ -63,7 +63,7 @@ Use the `useUninstallAddon` hook to uninstall an add-on at a given path.
 
   - **Required**: Yes
 
-## Install Addons profile
+## Install add-ons profile
 
 ### Mutation function
 
@@ -83,7 +83,7 @@ Use the `useInstallProfileAddon` hook to install an add-on profile at a given pa
 
   - **Required**: Yes
 
-## Upgrade Addons
+## Upgrade add-ons
 
 ### Mutation function
 

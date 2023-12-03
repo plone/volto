@@ -9,10 +9,11 @@ myst:
 
 # Plone REST API JavaScript client
 
-This is the documentation for the Plone REST API JavaScript client
+This part of the documentation describes the Plone REST API JavaScript client.
+It is a framework agnostic library based on [TanStack Query](https://tanstack.com/query/latest).
 
 ```{toctree}
-:caption: Overview
+:caption: Contents
 :maxdepth: 2
 
 quick-start

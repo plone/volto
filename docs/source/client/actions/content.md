@@ -136,7 +136,7 @@ Use the `useCreateContent` hook to add content at a given path.
 
         - **Required**: Yes
 
-    `relatedItems: array`([RelatedObject](#relatedobject))
+    `relatedItems: array` ({ref}`relatedobject`)
 
     - **Required**: No
 
@@ -238,7 +238,7 @@ Use the `useUpdateContent` hook to update content at a given path.
 
         - **Required**: Yes
 
-    `relatedItems: array`([RelatedObject](#relatedobject))
+    `relatedItems: array` ({ref}`relatedobject`)
 
     - **Required**: No
 
@@ -276,9 +276,9 @@ Use the `useDeleteContent` hook to delete content at a given path.
 
 ---
 
----
-
 ### Detailed types reference
+
+(relatedobject)=
 
 #### RelatedObject
 
