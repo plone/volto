@@ -25,7 +25,7 @@ afterEach(async () => {
 });
 
 describe('[POST] Relations', () => {
-  test.only('Hook - Successful', async () => {
+  test('Hook - Successful', async () => {
     const randomId = uuid();
     const contentData1 = {
       '@type': 'Document',
