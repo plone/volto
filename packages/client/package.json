@@ -57,6 +57,7 @@
   "scripts": {
     "build": "vite build",
     "test": "node testRunner.js",
+    "vitest": "vitest",
     "check-ts": "tsc --project tsconfig.json",
     "coverage": "vitest run --coverage --no-threads",
     "lint": "eslint 'src/**/*.{js,ts,tsx}' --quiet",
@@ -79,6 +80,7 @@
     "@types/uuid": "^9.0.2",
     "@vitejs/plugin-react": "^4.1.0",
     "@vitest/coverage-c8": "0.28.5",
+    "glob": "7.1.6",
     "jsdom": "^21.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

@@ -29,7 +29,7 @@ directories.forEach((dir) => {
     // if there are any matches, run vitest on this directory
     if (matches.length > 0) {
       console.log(`Running vitest on src/${dir}`);
-      execSync(`yarn vitest "src/${dir}/*/.test.{ts,tsx,js,jsx}"`, {
+      execSync(`pnpm vitest "src/${dir}/*/.test.{ts,tsx,js,jsx}"`, {
         stdio: 'inherit',
       });
     }
@@ -46,7 +46,7 @@ directories.forEach((dir) => {
     // if there are any matches, run vitest on this directory
     if (matches.length > 0) {
       console.log(`Running vitest on src/${dir}`);
-      execSync(`yarn vitest run src/restapi/${dir} --no-threads`, {
+      execSync(`pnpm vitest run src/restapi/${dir} --no-threads`, {
         stdio: 'inherit',
       });
     }
