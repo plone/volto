@@ -92,4 +92,4 @@ jobs:
 
       - run: make start-test-acceptance-server-detached
 
-      - run: npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone && pnpm test
+      - run: npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone && pnpm --filter @plone/client test
