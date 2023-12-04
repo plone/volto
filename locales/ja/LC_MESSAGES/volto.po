@@ -2338,6 +2338,7 @@ msgid "No items found in this container."
 msgstr "アイテムが見つかりませんでした"
 
 #: components/manage/Widgets/ObjectBrowserWidget
+#: components/manage/Widgets/QueryWidget
 # defaultMessage: No items selected
 msgid "No items selected"
 msgstr "未選択"

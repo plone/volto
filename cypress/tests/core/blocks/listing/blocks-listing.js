@@ -768,9 +768,14 @@ describe('Listing Block Tests', () => {
       .click();
 
     //insert relative path
-    cy.get('.querystring-widget .fields:first-of-type > .field input')
-      .clear()
-      .type('.');
+    cy.get(
+      '.querystring-widget .fields:first-of-type > .field:last-of-type',
+    ).click();
+    cy.get(
+      '.querystring-widget .fields:first-of-type > .field:last-of-type .react-select__menu .react-select__option',
+    )
+      .contains('./')
+      .click();
 
     // verify if in list there's a page with name "Document within Folder"
     cy.get(`.block.listing .listing-body:first-of-type`).contains(

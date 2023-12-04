@@ -2330,6 +2330,7 @@ msgid "No items found in this container."
 msgstr "Nessun elemento trovato in questo contenitore."
 
 #: components/manage/Widgets/ObjectBrowserWidget
+#: components/manage/Widgets/QueryWidget
 # defaultMessage: No items selected
 msgid "No items selected"
 msgstr "Nessun elemento selezionato"

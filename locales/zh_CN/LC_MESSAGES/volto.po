@@ -2336,6 +2336,7 @@ msgid "No items found in this container."
 msgstr "在此容器中没有发现条目。"
 
 #: components/manage/Widgets/ObjectBrowserWidget
+#: components/manage/Widgets/QueryWidget
 # defaultMessage: No items selected
 msgid "No items selected"
 msgstr "未选择条目"
@@ -4650,6 +4651,16 @@ msgstr "保密"
 # defaultMessage: Published
 msgid "published"
 msgstr "已发布"
+
+#: components/manage/Widgets/QueryWidget
+# defaultMessage: Current path (./)
+msgid "query-widget-currentPath"
+msgstr ""
+
+#: components/manage/Widgets/QueryWidget
+# defaultMessage: Parent path (../)
+msgid "query-widget-parentPath"
+msgstr ""
 
 #: components/manage/Widgets/QueryWidget
 # defaultMessage: Select…

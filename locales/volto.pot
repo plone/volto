@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2023-11-25T21:29:22.807Z\n"
+"POT-Creation-Date: 2023-12-04T12:30:45.573Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -39,7 +39,7 @@ msgid "Action changed"
 msgstr ""
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
-# defaultMessage: Action:
+# defaultMessage: Action: 
 msgid "Action: "
 msgstr ""
 
@@ -693,7 +693,7 @@ msgid "Condition changed"
 msgstr ""
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
-# defaultMessage: Condition:
+# defaultMessage: Condition: 
 msgid "Condition: "
 msgstr ""
 
@@ -2332,6 +2332,7 @@ msgid "No items found in this container."
 msgstr ""
 
 #: components/manage/Widgets/ObjectBrowserWidget
+#: components/manage/Widgets/QueryWidget
 # defaultMessage: No items selected
 msgid "No items selected"
 msgstr ""
