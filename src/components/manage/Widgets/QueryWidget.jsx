@@ -122,7 +122,7 @@ export class QuerystringWidgetComponent extends Component {
   }
 
   loadReferenceWidgetItem(v) {
-    const loading = this.props.reference?.loading ?? false;
+    const loading = this.props.reference_request?.loading ?? false;
     if (!loading && v?.length > 0) {
       this.props.getQueryStringResults(
         '/',
@@ -132,7 +132,7 @@ export class QuerystringWidgetComponent extends Component {
             {
               i: 'path',
               o: 'plone.app.querystring.operation.string.absolutePath',
-              v: v,
+              v: v + '::0',
             },
           ],
         },
@@ -594,6 +594,8 @@ export default compose(
     (state, props) => {
       return {
         indexes: state.querystring.indexes,
+        reference_request:
+          state.querystringsearch.subrequests[props.block + '_query_reference'],
         reference:
           state.querystringsearch.subrequests[props.block + '_query_reference']
             ?.items?.[0],
