@@ -26,6 +26,8 @@ jobs:
           filters: |
             volto:
               - 'packages/volto/**'
+            client:
+              - 'packages/client/**'
             registry:
               - 'packages/registry/**'
             generator:
@@ -45,6 +47,17 @@ jobs:
           # Source: https://github.com/actions/checkout/#fetch-all-branches.
           git fetch --no-tags origin main
           towncrier check --compare-with origin/main --dir packages/volto
+        env:
+          BASE_BRANCH: ${{ github.base_ref }}
+
+      - name: Client changelog check
+        if: steps.filter.outputs.client == 'true'
+        run: |
+          # Fetch the pull request' base branch so towncrier will be able to
+          # compare the current branch with the base branch.
+          # Source: https://github.com/actions/checkout/#fetch-all-branches.
+          git fetch --no-tags origin main
+          towncrier check --compare-with origin/main --dir packages/client
         env:
           BASE_BRANCH: ${{ github.base_ref }}
 
