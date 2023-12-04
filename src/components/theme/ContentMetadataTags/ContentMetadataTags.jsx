@@ -24,7 +24,7 @@ const ContentMetadataTags = (props) => {
     if (opengraph_image !== undefined && opengraph_image) {
       image = opengraph_image;
     } else if (preview_image_link !== undefined && preview_image_link) {
-      image = preview_image_link[contentMetadataTagsImageField];
+      image = preview_image_link.image_scales[contentMetadataTagsImageField][0];
     } else if (preview_image !== undefined && preview_image) {
       image = preview_image;
     } else if (image_field !== undefined && image_field) {
