@@ -8,6 +8,13 @@
 
 <!-- towncrier release notes start -->
 
+## 16.28.1 (2023-12-04)
+
+### Bugfix
+
+- Adjust DNS resolution to prefer IPv4 addresses when both IPv4 and IPv6 are resolved. @davisagli [#5261](https://github.com/plone/volto/issues/5261)
+- Fix the right order of parameters in normalizeExternalData.js @dobri1408 [#5475](https://github.com/plone/volto/issues/5475)
+
 ## 16.28.0 (2023-11-30)
 
 ### Feature
