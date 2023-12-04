@@ -1,0 +1,1 @@
+Add explicit dependency on the correct React (17.0.2) that Volto is using. Update dependency on `react-intersection-observer` @sneridagh

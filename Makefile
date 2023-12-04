@@ -382,3 +382,9 @@ full-test-acceptance-guillotina: ## Runs the Guillotina Full Acceptance Testing 
 .PHONY: start-test-acceptance-server-5
 start-test-acceptance-server-5: ## Start Test Acceptance Server Main Fixture Plone 5 (docker container)
 	docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e ADDONS='$(KGS5) $(TESTING_ADDONS)' -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors $(DOCKER_IMAGE5) ./bin/robot-server plone.app.robotframework.testing.VOLTO_ROBOT_TESTING
+
+######### @plone/client
+
+.PHONY: start-test-acceptance-server-detached
+start-test-acceptance-server-detached: ## Start Test Acceptance Server Main Fixture (docker container) in a detached (daemon) mode
+	docker run -d --name plone-client-acceptance-server -i --rm -p 55001:55001 $(DOCKER_IMAGE_ACCEPTANCE)
