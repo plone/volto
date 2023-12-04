@@ -7,10 +7,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import { Button, Form, Grid, Input, Label } from 'semantic-ui-react';
 import { filter, remove, toPairs, groupBy, isEmpty, map } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
-import { getQuerystring } from '@plone/volto/actions';
+import { getQuerystring, getQueryStringResults } from '@plone/volto/actions';
 import { Icon, ObjectBrowserWidget } from '@plone/volto/components';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import cx from 'classnames';
@@ -73,6 +74,7 @@ export class QuerystringWidgetComponent extends Component {
     onEdit: PropTypes.func,
     onDelete: PropTypes.func,
     getQuerystring: PropTypes.func.isRequired,
+    getQueryStringResults: PropTypes.func.isRequired,
   };
 
   /**
@@ -104,6 +106,7 @@ export class QuerystringWidgetComponent extends Component {
     };
     this.onChangeValue = this.onChangeValue.bind(this);
     this.getWidget = this.getWidget.bind(this);
+    this.loadReferenceWidgetItem = this.loadReferenceWidgetItem.bind(this);
   }
 
   /**
@@ -118,6 +121,25 @@ export class QuerystringWidgetComponent extends Component {
     this.props.getQuerystring();
   }
 
+  loadReferenceWidgetItem(v) {
+    const loading = this.props.reference?.loading ?? false;
+    if (!loading && v?.length > 0) {
+      this.props.getQueryStringResults(
+        '/',
+        {
+          b_size: 1,
+          query: [
+            {
+              i: 'path',
+              o: 'plone.app.querystring.operation.string.absolutePath',
+              v: v,
+            },
+          ],
+        },
+        this.props.block + '_query_reference',
+      );
+    }
+  }
   /**
    * Get correct widget
    * @method getWidget
@@ -208,26 +230,27 @@ export class QuerystringWidgetComponent extends Component {
             />
           </Form.Field>
         );
-      case 'ObjectBrowserWidget':
+      case 'ReferenceWidget':
+        if (!this.props.reference) {
+          this.loadReferenceWidgetItem(props.value);
+        }
+
         return (
           <Form.Field style={{ flex: '1 0 auto', maxWidth: '92%' }}>
             <ObjectBrowserWidget
               style={{ flex: '1 0 auto' }}
               onChange={(id, data) => {
-                this.onChangeValue(
-                  index,
-                  data.map((d) => {
-                    return {
-                      '@id': d['@id'],
-                      UID: d.UID,
-                      title: d.title,
-                      getPath: d.getPath,
-                    };
-                  }),
-                );
+                const itemSelected = data.length > 0 ? data[0] : {};
+
+                this.onChangeValue(index, itemSelected.UID ?? '');
+                this.loadReferenceWidgetItem(itemSelected.UID);
               }}
               placeholder={intl.formatMessage(messages.no_items_selected)}
-              value={props.value ?? []}
+              value={
+                props.value && this.props.reference
+                  ? [this.props.reference]
+                  : []
+              }
               mode="link"
               wrapped={false}
             />
@@ -282,7 +305,7 @@ export class QuerystringWidgetComponent extends Component {
             />
           </Form.Field>
         );
-      case 'ReferenceWidget':
+
       default:
         // if (row.o === 'plone.app.querystring.operation.string.relativePath') {
         //   props.onChange = data => this.onChangeValue(index, data.target.value);
@@ -566,10 +589,16 @@ export class QuerystringWidgetComponent extends Component {
 export default compose(
   injectIntl,
   injectLazyLibs(['reactSelect']),
+  withRouter,
   connect(
-    (state) => ({
-      indexes: state.querystring.indexes,
-    }),
-    { getQuerystring },
+    (state, props) => {
+      return {
+        indexes: state.querystring.indexes,
+        reference:
+          state.querystringsearch.subrequests[props.block + '_query_reference']
+            ?.items?.[0],
+      };
+    },
+    { getQuerystring, getQueryStringResults },
   ),
 )(QuerystringWidgetComponent);

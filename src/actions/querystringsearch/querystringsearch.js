@@ -17,14 +17,7 @@ export function getQueryStringResults(path, data, subrequest, page) {
     delete requestData.depth;
     requestData.query.forEach((q) => {
       if (q.i === 'path') {
-        if (
-          q.o ===
-          'plone.app.querystring.operation.string.objectBrowserReference'
-        ) {
-          q.v = { object: q.v[0], depth: data.depth };
-        } else {
-          q.v += '::' + data.depth;
-        }
+        q.v += '::' + data.depth;
       }
     });
   }
