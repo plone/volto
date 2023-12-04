@@ -35,7 +35,6 @@
     }
   },
   "scripts": {
-    "watch": "parcel watch",
     "build": "parcel build",
     "dry-release": "release-it --dry-run",
     "release": "release-it",
@@ -59,6 +58,7 @@
     "@types/react-dom": "^17",
     "parcel": "2.10.2",
     "release-it": "16.2.1",
+    "tsconfig": "workspace:*",
     "typescript": "5.2.2"
   }
 }

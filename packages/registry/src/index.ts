@@ -1,5 +1,5 @@
 import { isArray } from 'lodash';
-import * as configTypes from '@plone/types/config';
+import type * as configTypes from '@plone/types/config';
 
 type ConfigData = {
   settings: configTypes.SettingsConfig;
@@ -11,6 +11,10 @@ type ConfigData = {
   slots: configTypes.SlotsConfig;
   components: configTypes.ComponentsConfig;
   experimental: configTypes.ExperimentalConfig;
+};
+
+type GetComponentResult = {
+  component: React.ComponentType;
 };
 
 class Config {
@@ -111,7 +115,7 @@ class Config {
 
   getComponent(
     options: { name: string; dependencies: string[] | string } | string,
-  ) {
+  ): GetComponentResult {
     if (typeof options === 'object') {
       const { name, dependencies = '' } = options;
       let depsString: string = '';
