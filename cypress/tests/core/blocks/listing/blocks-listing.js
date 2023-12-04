@@ -578,9 +578,14 @@ describe('Listing Block Tests', () => {
       .click();
 
     //insert relative path
-    cy.get('.querystring-widget .fields:first-of-type > .field input')
-      .clear()
-      .type('../my-folder');
+    cy.get(
+      '.querystring-widget .fields:first-of-type > .field:last-of-type',
+    ).click();
+    cy.get(
+      '.querystring-widget .fields:first-of-type > .field:last-of-type .react-select__menu .react-select__option',
+    )
+      .contains('./')
+      .click();
 
     // verify if in list there's a page with name "Document within Folder"
     cy.get(`.block.listing .listing-body:first-of-type`).contains(
@@ -667,9 +672,14 @@ describe('Listing Block Tests', () => {
       .click();
 
     //insert absolute path
-    cy.get('.querystring-widget .fields:first-of-type > .field input')
-      .clear()
-      .type('/my-page/my-folder');
+    cy.get(
+      '.querystring-widget .fields:first-of-type > .field .objectbrowser-field button[aria-label="Open object browser"]',
+    ).click();
+    cy.get('.sidebar-container button[aria-label="Search SVG"]').click();
+    cy.get(
+      '.sidebar-container .input.search input[placeholder="Search content"]',
+    ).type('My Folder');
+    cy.get('[aria-label="Select My Folder"]').dblclick();
 
     // verify if in list there's a page with name "Document within Folder"
     cy.get(`.block.listing .listing-body:first-of-type`).contains(
