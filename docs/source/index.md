@@ -36,6 +36,7 @@ theming/index
 recipes/index
 blocks/index
 addons/index
+client/index
 backend/index
 deploying/index
 upgrade-guide/index

@@ -52,12 +52,6 @@ Volto 17 no longer supports Node.js 14 or 16.
 Please update your projects to a supported Node.js version (18 or 20).
 Version 18 is recommended, as the current LTS version of Node.js.
 
-#### localhost now resolves to an IPv6 address
-
-Node.js 18 prefers to resolve `localhost` to an IPv6 address instead of IPv4.
-If you are setting `RAZZLE_API_PATH` to a URL that includes `localhost`,
-change the hostname to `127.0.0.1` instead.
-
 ### Webpack 5
 
 Volto 17 now uses Webpack 5.
@@ -332,7 +326,9 @@ This is a major change and should be planned in advance before you install 16.0.
 ```
 
 ```{note}
-Volto 16 is intended to be the long-term support (LTS) version used when Plone 6 Final is released.
+Volto 16 is the version used in Plone 6.0.x.
+Volto 16 has the [same maintenance and support schedule as Plone 6.0](https://plone.org/download/release-schedule).
+
 Although `draftJS` text block deployments are now deprecated, they are supported in Volto 16, will be supported in Volto 17, but will be removed in Volto 18.
 As such, you are strongly encouraged to migrate existing sites that use `draftJS` text blocks to `slate` text blocks.
 
@@ -1707,7 +1703,7 @@ Since Volto 9.2.0 the next step IS NOT required anymore.
 ```
 
 ~~Copy (and overwrite) the `patches` folder into your local project
-https://github.com/plone/volto/tree/main/patches or, if you want to be more accurate,
+or, if you want to be more accurate,
 just copy `patches/razzle-plugins.patch` file and overwrite `patches/patchit.sh` file.~~
 
 ### Babel config housekeeping
