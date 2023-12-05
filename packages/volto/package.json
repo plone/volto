@@ -373,6 +373,7 @@
     "identity-obj-proxy": "3.0.0",
     "jest": "26.6.3",
     "jest-environment-jsdom": "^26",
+    "jsdom": "^16.7.0",
     "jsonwebtoken": "9.0.0",
     "react-error-overlay": "6.0.9",
     "react-is": "^16.13.1",
