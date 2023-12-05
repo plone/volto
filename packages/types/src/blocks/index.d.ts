@@ -1,4 +1,4 @@
-import type { GetContentResponse } from '../content/get';
+import type { GetContentResponse } from '../content';
 import type { BlocksConfig } from '../config/Blocks';
 
 export interface BlockViewProps {

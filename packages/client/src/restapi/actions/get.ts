@@ -1,6 +1,6 @@
 import { apiRequest, ApiRequestParams } from '../../API';
 import { PloneClientConfig } from '../../interfaces/config';
-import { ActionsResponse } from '../../interfaces/actions';
+import { ActionsResponse } from '@plone/types';
 import { z } from 'zod';
 
 const getActionsSchema = z.object({

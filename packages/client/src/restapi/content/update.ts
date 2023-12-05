@@ -4,10 +4,8 @@ import {
   PloneClientConfigSchema,
 } from '../../interfaces/config';
 import { z } from 'zod';
-import {
-  updateContentDataSchema,
-  UpdateContentResponse,
-} from '../../interfaces/content/update';
+import { updateContentDataSchema } from '../../interfaces/content/update';
+import { UpdateContentResponse } from '@plone/types';
 
 export const updateContentArgsSchema = z.object({
   path: z.string(),

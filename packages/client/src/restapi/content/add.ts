@@ -4,10 +4,8 @@ import {
   PloneClientConfig,
   PloneClientConfigSchema,
 } from '../../interfaces/config';
-import {
-  createContentDataSchema,
-  CreateContentResponse,
-} from '../../interfaces/content/add';
+import { createContentDataSchema } from '../../interfaces/content/add';
+import { CreateContentResponse } from '@plone/types';
 
 export const createContentArgsSchema = z.object({
   path: z.string(),

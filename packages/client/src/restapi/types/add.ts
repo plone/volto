@@ -4,10 +4,8 @@ import {
   PloneClientConfig,
   PloneClientConfigSchema,
 } from '../../interfaces/config';
-import {
-  CreateTypeFieldResponse,
-  createTypeFieldDataSchema,
-} from '../../interfaces/types';
+import { createTypeFieldDataSchema } from '../../interfaces/types';
+import { CreateTypeFieldResponse } from '@plone/types';
 
 export const createTypeFieldArgsSchema = z.object({
   contentPath: z.string(),

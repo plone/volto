@@ -1,11 +1,5 @@
 import { z } from 'zod';
-import {
-  Expanders,
-  Item,
-  PreviewImage,
-  RelatedItem,
-  RelatedItemPayloadSchema,
-} from './common';
+import { RelatedItemPayloadSchema } from './common';
 
 export const createContentDataSchema = z.object({
   '@id': z.string().optional(),
@@ -36,66 +30,3 @@ export const createContentDataSchema = z.object({
   title: z.string(),
   versioning_enabled: z.boolean().optional(),
 });
-
-export interface CreateContentResponse {
-  '@components': Expanders;
-  '@id': string;
-  '@type': string;
-  UID: string;
-  allow_discussion: boolean;
-  blocks: unknown;
-  blocks_layout: {
-    [k in string]: {
-      items: string[];
-    } & Record<string, unknown>;
-  };
-  contributors: string[];
-  creators: string[];
-  description: string;
-  effective: string | null;
-  exclude_from_nav: boolean;
-  expires: string | null;
-  id: string;
-  is_folderish: boolean;
-  items: Item[];
-  items_total: number;
-  language: {
-    title: string;
-    token: string;
-  };
-  layout: string;
-  lock: {
-    locked: boolean;
-    stealable: boolean;
-  };
-  modified: string;
-  next_item: {
-    '@id': string;
-    '@type': string;
-    description: string;
-    title: string;
-  };
-  parent: {
-    '@id': string;
-    '@type': string;
-    description: string;
-    title: string;
-  };
-  preview_caption: string | null;
-  preview_image: PreviewImage;
-  previous_item: {
-    '@id': string;
-    '@type': string;
-    description: string;
-    title: string;
-  };
-  relatedItems: RelatedItem[];
-  review_state: string | null;
-  rights: string;
-  subjects: [];
-  title: string;
-  version: string;
-  versioning_enabled: boolean | null;
-  working_copy: unknown;
-  working_copy_of: unknown;
-}

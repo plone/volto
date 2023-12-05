@@ -559,6 +559,9 @@ importers:
         specifier: ^3.21.4
         version: 3.22.4
     devDependencies:
+      '@plone/types':
+        specifier: 'workspace: *'
+        version: link:../types
       '@testing-library/jest-dom':
         specifier: 5.16.5
         version: 5.16.5

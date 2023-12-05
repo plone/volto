@@ -1,4 +1,4 @@
-export interface Item {
+export interface NavigationItem {
   '@id': string;
   description: string;
   items: unknown[];
@@ -8,5 +8,5 @@ export interface Item {
 
 export interface NavigationResponse {
   '@id': string;
-  items: Item[];
+  items: NavigationItem[];
 }

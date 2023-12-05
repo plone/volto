@@ -1,18 +1,31 @@
-import { Expanders, Item, PreviewImage, RelatedItem } from './common';
+import type {
+  Expanders,
+  ContainedItem,
+  PreviewImage,
+  RelatedItem,
+} from './common';
 
 export interface GetContentResponse {
   '@components': Expanders;
   '@id': string;
   '@type': string;
   UID: string;
-  allow_discussion: boolean;
+  allow_discussion:
+    | boolean
+    | {
+        title: string;
+        token: boolean;
+      };
   blocks: {
     [k in string]: {
       '@id': string;
+      '@type': string;
     } & Record<string, unknown>;
   };
   blocks_layout: {
-    items: string[];
+    [k in string]: {
+      items: string[];
+    } & Record<string, unknown>;
   };
   contributors: string[];
   creators: string[];
@@ -22,14 +35,27 @@ export interface GetContentResponse {
   expires: string | null;
   id: string;
   is_folderish: boolean;
-  items: Item[];
+  items: ContainedItem[];
   items_total: number;
   language: unknown;
   layout: string | null;
-  lock: {
-    locked: boolean;
-    stealable: boolean;
-  };
+  lock:
+    | {
+        locked: boolean;
+        stealable: boolean;
+      }
+    | {
+        created: string;
+        creator: string;
+        creator_name: string;
+        creator_url: string;
+        locked: boolean;
+        name: string;
+        stealable: boolean;
+        time: number;
+        timeout: number;
+        token: string;
+      };
   modified: string;
   next_item: {
     '@id': string;
@@ -63,3 +89,6 @@ export interface GetContentResponse {
   working_copy: unknown;
   working_copy_of: unknown;
 }
+
+export interface CreateContentResponse extends GetContentResponse {}
+export interface UpdateContentResponse extends GetContentResponse {}

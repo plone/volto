@@ -1,7 +1,7 @@
 import { apiRequest, ApiRequestParams } from '../../API';
 import { PloneClientConfig } from '../../interfaces/config';
 import { z } from 'zod';
-import { GetTypeResponse } from '../../interfaces/types';
+import { GetTypeResponse } from '@plone/types';
 
 const getTypeSchema = z.object({
   contentPath: z.string(),

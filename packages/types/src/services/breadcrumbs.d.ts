@@ -1,10 +1,10 @@
-interface Item {
+interface BreadcrumbItem {
   '@id': string;
   title: string;
 }
 
 export interface BreadcrumbsResponse {
   '@id': string;
-  items: Item[];
+  items: BreadcrumbItem[];
   root: string;
 }

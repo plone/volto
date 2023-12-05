@@ -1,17 +1,23 @@
-import type { BreadcrumbsResponse } from '../breadcrumbs';
-import type { NavigationResponse } from '../navigation';
-import type { ActionsResponse } from '../actions';
-import type { GetTypesResponse } from '../types';
+import type { BreadcrumbsResponse } from '../services/breadcrumbs';
+import type { NavigationResponse } from '../services/navigation';
+import type { ActionsResponse } from '../services/actions';
+import type { GetTypesResponse } from '../services/types';
+import type { GetAliasesResponse } from '../services/aliases';
+import type { ContextNavigationResponse } from '../services/contextnavigation';
+import type { WorkflowResponse } from '../services/workflow';
 
 export interface Expanders {
   [key: string]: unknown;
   actions: ActionsResponse;
+  aliases: GetAliasesResponse;
   breadcrumbs: BreadcrumbsResponse;
+  contextnavigation: ContextNavigationResponse;
   navigation: NavigationResponse;
   types: GetTypesResponse;
+  workflow: WorkflowResponse;
 }
 
-export type Item = {
+export type ContainedItem = {
   '@id': string;
   '@type': string;
   description: string;
