@@ -1,1 +1,1 @@
-Fixed markup shortcut for heading and blockquote @kHAPPY2004
+Fixed markup shortcut for heading and blockquote by passing 'at' to Transforms.setNodes api call for location of node @kHAPPY2004
