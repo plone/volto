@@ -1,1 +1,1 @@
-Added conditional variations support @sneridagh @robgietema
+Added conditional variations support. @sneridagh @robgietema
