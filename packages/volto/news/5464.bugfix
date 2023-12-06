@@ -1,1 +1,1 @@
-Fix pagination in search results by passing pageSize explicity to all search api calls @EshaanAgg
+Fixed pagination in search results by passing `pageSize` explicitly to all search API calls. @EshaanAgg
