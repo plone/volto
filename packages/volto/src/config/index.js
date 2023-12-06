@@ -117,6 +117,7 @@ let config = {
     defaultPageSize: 25,
     supportedLanguages: Object.keys(languages),
     navDepth: 1,
+    siteMapDepth: 4,
     expressMiddleware: serverConfig.expressMiddleware, // BBB
     defaultBlockType: 'slate',
     verticalFormTabs: false,
