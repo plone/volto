@@ -111,8 +111,8 @@ class Search extends Component {
     options['use_site_search_settings'] = 1;
     const { settings } = config;
     this.props.searchContent('', {
-      ...options,
       b_size: settings.defaultPageSize,
+      ...options,
     });
   };
 
@@ -124,8 +124,8 @@ class Search extends Component {
 
     this.setState({ currentPage: activePage }, () => {
       this.props.searchContent('', {
-        ...options,
         b_size: settings.defaultPageSize,
+        ...options,
         b_start: (this.state.currentPage - 1) * settings.defaultPageSize,
       });
     });
