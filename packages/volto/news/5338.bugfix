@@ -1,0 +1,2 @@
+Do not send sorting information in the sarch block if no sort_on setting is configured
+[erral]
