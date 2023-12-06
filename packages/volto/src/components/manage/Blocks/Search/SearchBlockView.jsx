@@ -50,8 +50,20 @@ const applyDefaults = (data, root) => {
     },
   ];
 
-  const sort_on = data?.sort_on ? { sort_on: data.sort_on } : {};
-  const sort_order = data?.sort_order ? { sort_order: data.sort_order } : {};
+  const searchBySearchableText = data.query.filter(
+    (item) => item['i'] === 'SearchableText',
+  ).length;
+
+  const sort_on = data?.sort_on
+    ? { sort_on: data.sort_on }
+    : searchBySearchableText === 0
+    ? { sort_on: 'effective' }
+    : {};
+  const sort_order = data?.sort_order
+    ? { sort_order: data.sort_order }
+    : searchBySearchableText === 0
+    ? { sort_order: 'descending' }
+    : {};
 
   return {
     ...data,
