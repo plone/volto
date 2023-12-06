@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
-import { connect } from 'react-redux';
-import { asyncConnect } from '@plone/volto/helpers';
+import { connect, useSelector } from 'react-redux';
+import { asyncConnect, expandToBackendURL } from '@plone/volto/helpers';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Container as SemanticContainer } from 'semantic-ui-react';
-import { Helmet, toBackendLang } from '@plone/volto/helpers';
+import { Helmet } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
 import config from '@plone/volto/registry';
 
@@ -19,6 +19,9 @@ const messages = defineMessages({
 });
 
 export function getSitemapPath(pathname = '', lang) {
+  /* This function is deprecated
+   * We keep it for backwards compatibility.
+   */
   const prefix = pathname.replace(/\/sitemap$/gm, '').replace(/^\//, '');
   const path = prefix || lang || '';
   return path;
@@ -31,18 +34,14 @@ export function getSitemapPath(pathname = '', lang) {
  * @returns {JSX.Element} - Rendered component.
  */
 function Sitemap(props) {
-  const {
-    location: { pathname },
-    lang,
-    getNavigation,
-  } = props;
-
+  const { getNavigation, navroot } = props;
   useEffect(() => {
     const { settings } = config;
-    const language = settings.isMultilingual ? `${toBackendLang(lang)}` : null;
-    const path = getSitemapPath(pathname, language);
-    getNavigation(path, 4);
-  }, [pathname, lang, getNavigation]);
+    getNavigation(
+      `${expandToBackendURL(navroot?.navroot?.['@id'])}`,
+      settings.siteMapDepth,
+    );
+  }, [navroot, getNavigation]);
 
   const renderItems = (items) => {
     return (
@@ -63,12 +62,13 @@ function Sitemap(props) {
   const Container =
     config.getComponent({ name: 'Container' }).component || SemanticContainer;
 
+  const items = useSelector((state) => state.navigation.items);
   return (
     <div id="page-sitemap">
       <Helmet title={props.intl.formatMessage(messages.Sitemap)} />
       <Container className="view-wrapper">
         <h1>{props.intl.formatMessage(messages.Sitemap)} </h1>
-        {props.items && renderItems(props.items)}
+        {items && renderItems(props.items)}
       </Container>
     </div>
   );
@@ -78,7 +78,6 @@ Sitemap.propTypes = {
   getNavigation: PropTypes.func.isRequired,
   location: PropTypes.object.isRequired,
   intl: PropTypes.object.isRequired,
-  lang: PropTypes.string.isRequired,
   items: PropTypes.array.isRequired,
 };
 
@@ -87,7 +86,7 @@ export const __test__ = compose(
   connect(
     (state) => ({
       items: state.navigation.items,
-      lang: state.intl.locale,
+      navroot: state.navroot.data,
     }),
     { getNavigation },
   ),
@@ -98,7 +97,7 @@ export default compose(
   connect(
     (state) => ({
       items: state.navigation.items,
-      lang: state.intl.locale,
+      navroot: state.navroot.data,
     }),
     { getNavigation },
   ),
@@ -107,14 +106,11 @@ export default compose(
       key: 'navigation',
       promise: ({ location, store: { dispatch, getState } }) => {
         if (!__SERVER__) return;
+        const navroot = getState().navroot.data?.navroot?.['@id'];
         const { settings } = config;
-        const path = getSitemapPath(
-          location.pathname,
-          settings.isMultilingual
-            ? toBackendLang(getState().intl.locale)
-            : null,
+        return dispatch(
+          getNavigation(expandToBackendURL(navroot), settings.siteMapDepth),
         );
-        return dispatch(getNavigation(path, 4));
       },
     },
   ]),
