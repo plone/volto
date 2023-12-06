@@ -22,7 +22,6 @@ import { SearchTags, Toolbar, Icon } from '@plone/volto/components';
 
 import paginationLeftSVG from '@plone/volto/icons/left-key.svg';
 import paginationRightSVG from '@plone/volto/icons/right-key.svg';
-import settings from '@plone/volto/config/server';
 
 const messages = defineMessages({
   Search: {
@@ -110,6 +109,7 @@ class Search extends Component {
     const options = qs.parse(this.props.history.location.search);
     this.setState({ currentPage: 1 });
     options['use_site_search_settings'] = 1;
+    const { settings } = config;
     this.props.searchContent('', {
       ...options,
       b_size: settings.defaultPageSize,
