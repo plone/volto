@@ -172,6 +172,63 @@ blocksConfig.dataTable.schemaEnhancer = composeSchema(
   oldEnhancer, addTitleField, addStandardStyling);
 ```
 
+(extensions-changing-variations)=
+
+## Changing variations
+
+Apart from the form data and the schema, the schema enhancers will also get passed the navigation root and content type.
+These values can be used to dynamically change the variations to be used by the block.
+
+For example:
+
+```jsx
+const messages = defineMessages({
+  title: {
+    id: 'Column renderer',
+    defaultMessage: 'Column renderer',
+  },
+});
+
+export default (config) => {
+  config.blocks.blocksConfig.dataTable.extensions = {
+    ...config.blocks.blocksConfig.dataTable.extensions,
+    columnRenderers: {
+      title: messages.title,
+      items: [
+        {
+          id: 'default',
+          title: 'Default',
+          isDefault: true,
+          template: DefaultColumnRenderer,
+        },
+        {
+          id: 'number',
+          title: 'Number',
+          template: NumberColumnRenderer,
+        },
+        {
+          id: 'colored',
+          title: 'Colored',
+          template: ColoredColumnRenderer,
+          schemaEnhancer: ({
+            formData,
+            schema,
+            intl,
+            navRoot,
+            contentType,
+          }) => {
+            if (contentType === 'News Item' && navRoot.id === 'my-nav-root') {
+              // Change variations to your liking here
+            }
+            return schema;
+          },
+        },
+      ],
+    },
+  };
+};
+```
+
 (extensions-consuming-extensions)=
 
 ## Consuming the extensions
