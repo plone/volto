@@ -1,0 +1,1 @@
+Fix pagination in search results by passing pageSize explicity to all search api calls @EshaanAgg
