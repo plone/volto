@@ -40,7 +40,7 @@ THEME='volto-my-theme' yarn start
 
 ```less
 /*******************************
-*       Theme Selection
+        Theme Selection
 *******************************/
 
 /* To override a theme for an individual element specify theme name below */
@@ -116,7 +116,7 @@ THEME='volto-my-theme' yarn start
 @siteFolder  : "<name_of_your_theme>/theme";
 
 /*******************************
-*        Import Theme
+         Import Theme
 *******************************/
 
 @import (multiple) "~semantic-ui-less/theme.less";
