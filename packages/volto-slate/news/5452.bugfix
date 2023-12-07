@@ -1,1 +1,1 @@
-Fixed markup shortcut for heading and blockquote by passing 'at' to Transforms.setNodes api call for location of node @kHAPPY2004
+In the Slate text block, the markup shortcuts for heading and blockquote work again. @kHAPPY2004
