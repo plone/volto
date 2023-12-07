@@ -9,7 +9,8 @@ import imageSVG from '@plone/volto/icons/image.svg';
 import trashSVG from '@plone/volto/icons/delete.svg';
 
 const ImageSidebar = (props) => {
-  const { blocksConfig, data, block, onChangeBlock } = props;
+  const { blocksConfig, data, block, onChangeBlock, navRoot, contentType } =
+    props;
   const intl = useIntl();
   const schema = ImageSchema({ formData: data, intl });
   return (
@@ -94,6 +95,8 @@ const ImageSidebar = (props) => {
         formData={data}
         block={block}
         blocksConfig={blocksConfig}
+        navRoot={navRoot}
+        contentType={contentType}
       />
     </>
   );
