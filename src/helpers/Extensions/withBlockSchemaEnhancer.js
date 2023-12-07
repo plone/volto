@@ -201,6 +201,8 @@ export const applySchemaEnhancer = ({
   formData,
   intl,
   blocksConfig = config.blocks.blocksConfig,
+  navRoot,
+  contentType,
 }) => {
   let schema, schemaEnhancer;
 
@@ -217,6 +219,8 @@ export const applySchemaEnhancer = ({
         schema: cloneDeepSchema(originalSchema),
         formData,
         intl,
+        navRoot,
+        contentType,
       });
     return schema || originalSchema;
   }
@@ -232,12 +236,15 @@ export const applySchemaEnhancer = ({
         schema: cloneDeepSchema(originalSchema),
         formData,
         intl,
+        navRoot,
+        contentType,
       })
     : cloneDeepSchema(originalSchema);
 
   // Finalize the schema with a schemaEnhancer in the block config;
   schemaEnhancer = blocksConfig?.[blockType]?.schemaEnhancer;
-  if (schemaEnhancer) schema = schemaEnhancer({ schema, formData, intl });
+  if (schemaEnhancer)
+    schema = schemaEnhancer({ schema, formData, intl, navRoot, contentType });
 
   return schema || originalSchema;
 };
@@ -250,7 +257,7 @@ export const applySchemaEnhancer = ({
  * - adds the variation selection input (as a choice widget)
  */
 export const withVariationSchemaEnhancer = (FormComponent) => (props) => {
-  const { formData, schema: originalSchema } = props;
+  const { formData, schema: originalSchema, navRoot, contentType } = props;
   const intl = useIntl();
 
   const blocksConfig = getBlocksConfig(props);
@@ -258,15 +265,10 @@ export const withVariationSchemaEnhancer = (FormComponent) => (props) => {
   const blockType = formData['@type'];
   const variations = blocksConfig[blockType]?.variations || [];
 
-  let schema = applySchemaEnhancer({
-    schema: originalSchema,
-    formData,
-    intl,
-    blocksConfig,
-  });
+  let schema = cloneDeepSchema(originalSchema);
 
   if (variations.length > 1) {
-    addExtensionFieldToSchema({
+    schema = addExtensionFieldToSchema({
       schema,
       name: 'variation',
       items: variations,
@@ -275,6 +277,15 @@ export const withVariationSchemaEnhancer = (FormComponent) => (props) => {
       insertFieldToOrder: _addField,
     });
   }
+
+  schema = applySchemaEnhancer({
+    schema,
+    formData,
+    intl,
+    blocksConfig,
+    navRoot,
+    contentType,
+  });
 
   return <FormComponent {...props} schema={schema} />;
 };

@@ -158,6 +158,9 @@ context('Special fields Acceptance Tests', () => {
 
   describe('Variation field', () => {
     beforeEach(() => {
+      cy.intercept('GET', `/**/*?expand*`).as('content');
+      cy.intercept('GET', '/**/Document').as('schema');
+      cy.intercept('GET', '/**/Event').as('schemaEvent');
       // given a logged in editor and a page in edit mode
       cy.visit('/');
       cy.autologin();
@@ -184,6 +187,42 @@ context('Special fields Acceptance Tests', () => {
       cy.get('#field-variation').click();
       cy.findByText('Custom').click();
       cy.findByText('Custom');
+    });
+
+    it('As editor I can change a variation for a block (that has conditional variations) but not in a Document', function () {
+      cy.getSlate().click();
+      cy.get('.button .block-add-button').click({ force: true });
+      cy.get(
+        '.blocks-chooser .mostUsed .button.testBlockWithConditionalVariations',
+      ).click();
+
+      cy.get('#field-variation').click();
+      cy.findByText('Custom').click();
+      cy.findByText('Custom');
+    });
+
+    it('As editor I can change a variation for a block (that has conditional variations)', function () {
+      cy.createContent({
+        contentType: 'Event',
+        contentId: 'event',
+        contentTitle: 'Test event',
+      });
+      cy.navigate('/event');
+      cy.wait('@content');
+      cy.navigate('/event/edit');
+      cy.wait('@schemaEvent');
+
+      cy.getSlateTitle();
+
+      cy.getSlate().click();
+      cy.get('.button .block-add-button').click({ force: true });
+      cy.get(
+        '.blocks-chooser .mostUsed .button.testBlockWithConditionalVariations',
+      ).click();
+
+      cy.get('#field-variation').click();
+      cy.findByText('Custom modified variation').click();
+      cy.findByText('Custom modified variation');
     });
   });
 
