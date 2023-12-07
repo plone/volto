@@ -12,3 +12,4 @@ sphinx-togglebutton
 sphinxcontrib-spelling
 sphinxext-opengraph
 sphinxcontrib-video
+vale
