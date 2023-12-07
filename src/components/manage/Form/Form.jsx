@@ -541,7 +541,13 @@ class Form extends Component {
    */
   render() {
     const { settings } = config;
-    const { schema: originalSchema, onCancel, onSubmit } = this.props;
+    const {
+      schema: originalSchema,
+      onCancel,
+      onSubmit,
+      navRoot,
+      type,
+    } = this.props;
     const { formData } = this.state;
     const schema = this.removeBlocksLayoutFields(originalSchema);
     const Container =
@@ -590,6 +596,8 @@ class Form extends Component {
             onChangeField={this.onChangeField}
             onSelectBlock={this.onSelectBlock}
             properties={formData}
+            navRoot={navRoot}
+            type={type}
             pathname={this.props.pathname}
             selectedBlock={this.state.selected}
             multiSelected={this.state.multiSelected}
