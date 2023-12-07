@@ -431,7 +431,7 @@ class Edit extends Component {
                     />
                   </Button>
 
-                  {config.settings.isMultilingual && (
+                  {this.props.isMultilingual && (
                     <CompareLanguages
                       content={this.props.content}
                       visual={this.state.visual}
@@ -468,6 +468,7 @@ export const __test__ = compose(
       createRequest: state.content.create,
       pathname: props.location.pathname,
       returnUrl: qs.parse(props.location.search).return_url,
+      isMultilingual: state.addons.isMultilingual,
     }),
     {
       updateContent,

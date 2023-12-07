@@ -67,6 +67,9 @@ const ManageTranslations = (props) => {
   const { isObjectBrowserOpen, openObjectBrowser } = props;
 
   const currentSelectedItem = React.useRef(null);
+  const availableLanguages = useSelector(
+    (state) => state.site.data['plone.available_languages'],
+  );
 
   React.useEffect(() => {
     if (!content) {
@@ -180,7 +183,7 @@ const ManageTranslations = (props) => {
               </Table.Row>
             </Table.Header>
             <Table.Body>
-              {config.settings.supportedLanguages.map((lang) => (
+              {availableLanguages.map((lang) => (
                 <Table.Row key={lang}>
                   <Table.Cell collapsing>
                     {lang === content.language.token ? (

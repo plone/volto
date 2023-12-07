@@ -133,6 +133,8 @@ const apiMiddlewareFactory =
     const { settings } = config;
 
     const token = getState().userSession.token;
+    const availableLanguages =
+      getState().site.data['plone.available_languages'];
     let isAnonymous = true;
     if (token) {
       const tokenExpiration = jwtDecode(token).exp;
@@ -227,7 +229,7 @@ const apiMiddlewareFactory =
               lang &&
               getState().intl.locale !== toReactIntlLang(lang) &&
               !subrequest &&
-              config.settings.supportedLanguages.includes(lang)
+              availableLanguages.includes(lang)
             ) {
               const langFileName = toGettextLang(lang);
               import('@root/../locales/' + langFileName + '.json').then(

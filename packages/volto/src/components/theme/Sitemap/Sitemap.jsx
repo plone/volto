@@ -35,14 +35,14 @@ function Sitemap(props) {
     location: { pathname },
     language,
     getNavigation,
+    isMultilingual,
   } = props;
 
   useEffect(() => {
-    const { settings } = config;
-    const lang = settings.isMultilingual ? `${toBackendLang(language)}` : null;
+    const lang = isMultilingual ? `${toBackendLang(language)}` : null;
     const path = getSitemapPath(pathname, lang);
     getNavigation(path, 4);
-  }, [pathname, language, getNavigation]);
+  }, [pathname, isMultilingual, language, getNavigation]);
 
   const renderItems = (items) => {
     return (
@@ -88,6 +88,7 @@ export const __test__ = compose(
     (state) => ({
       items: state.navigation.items,
       lang: state.intl.locale,
+      isMultilingual: state.addons.isMultilingual,
     }),
     { getNavigation },
   ),
@@ -99,6 +100,7 @@ export default compose(
     (state) => ({
       items: state.navigation.items,
       lang: state.intl.locale,
+      isMultilingual: state.addons.isMultilingual,
     }),
     { getNavigation },
   ),

@@ -33,7 +33,10 @@ import applyAddonConfiguration, { addonsInfo } from 'load-volto-addons';
 
 import ConfigRegistry from '@plone/volto/registry';
 
-import { getSiteAsyncPropExtender } from '@plone/volto/helpers';
+import {
+  getSiteAsyncPropExtender,
+  getMultilingualInstalledAsyncPropExtender,
+} from '@plone/volto/helpers';
 
 const host = process.env.HOST || 'localhost';
 const port = process.env.PORT || '3000';
@@ -122,8 +125,8 @@ let config = {
     openExternalLinkInNewTab: false,
     notSupportedBrowsers: ['ie'],
     defaultPageSize: 25,
-    isMultilingual: false,
-    supportedLanguages: ['en'],
+    isMultilingual: true, // deprecated, install plone.app.multilingual in backend
+    supportedLanguages: ['en'], // deprecated, set your languages in backend
     defaultLanguage: 'en',
     navDepth: 1,
     expressMiddleware: serverConfig.expressMiddleware, // BBB
@@ -132,7 +135,10 @@ let config = {
     useEmailAsLogin: false,
     persistentReducers: ['blocksClipboard'],
     initialReducersBlacklist: [], // reducers in this list won't be hydrated in windows.__data
-    asyncPropsExtenders: [getSiteAsyncPropExtender], // per route asyncConnect customizers
+    asyncPropsExtenders: [
+      getSiteAsyncPropExtender,
+      getMultilingualInstalledAsyncPropExtender,
+    ], // per route asyncConnect customizers
     contentIcons: contentIcons,
     loadables,
     lazyBundles: {
@@ -231,7 +237,13 @@ config.settings.apiExpanders = [
   ...config.settings.apiExpanders,
   {
     match: '',
-    GET_CONTENT: ['breadcrumbs', 'actions', 'types', 'navroot'],
+    GET_CONTENT: [
+      'breadcrumbs',
+      'actions',
+      'types',
+      'navroot',
+      config.settings.isMultilingual && 'translations',
+    ],
   },
   {
     match: '',

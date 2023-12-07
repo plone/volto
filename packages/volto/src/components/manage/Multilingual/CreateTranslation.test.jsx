@@ -7,11 +7,6 @@ import config from '@plone/volto/registry';
 
 import CreateTranslation from './CreateTranslation';
 
-beforeAll(() => {
-  config.settings.isMultilingual = true;
-  config.settings.supportedLanguages = ['de', 'es'];
-});
-
 const mockStore = configureStore();
 
 describe('CreateTranslation', () => {
@@ -23,6 +18,12 @@ describe('CreateTranslation', () => {
       },
       translations: {
         translationLocation: '/es',
+      },
+      site: {
+        'plone.availableLanguages': ['de', 'es'],
+      },
+      addons: {
+        isMultilingual: true,
       },
     });
     const component = renderer.create(

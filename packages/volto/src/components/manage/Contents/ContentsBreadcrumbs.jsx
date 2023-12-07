@@ -2,6 +2,7 @@ import React from 'react';
 import { Breadcrumb } from 'semantic-ui-react';
 import { Link, useLocation } from 'react-router-dom';
 import { defineMessages, useIntl } from 'react-intl';
+import { useSelector } from 'react-redux';
 import { langmap } from '@plone/volto/helpers';
 import ContentsBreadcrumbsRootItem from '@plone/volto/components/manage/Contents/ContentsBreadcrumbsRootItem';
 import ContentsBreadcrumbsHomeItem from '@plone/volto/components/manage/Contents/ContentsBreadcrumbsHomeItem';
@@ -20,15 +21,15 @@ const messages = defineMessages({
 });
 
 const ContentsBreadcrumbs = (props) => {
-  const { settings } = config;
   const { items } = props;
   const intl = useIntl();
   const pathname = useLocation().pathname;
-  const lang = pathname.split('/')[1];
+  const isMultilingual = useSelector((state) => state.addons.isMultilingual);
+  const navroot = useSelector((state) => state.navroot.data.navroot);
 
   return (
     <Breadcrumb>
-      {settings.isMultilingual && (
+      {isMultilingual && (
         <>
           <Link
             to="/contents"
@@ -40,16 +41,16 @@ const ContentsBreadcrumbs = (props) => {
           <Breadcrumb.Divider />
         </>
       )}
-      {settings.isMultilingual && pathname?.split('/')?.length > 2 && (
+      {isMultilingual && pathname?.split('/')?.length > 2 && (
         <Link
-          to={`/${lang}/contents`}
+          href={`/${navroot['@id']}/contents`}
           className="section"
           title={intl.formatMessage(messages.home)}
         >
-          {langmap?.[lang]?.nativeName ?? lang}
+          {navroot['title']}
         </Link>
       )}
-      {!settings.isMultilingual && (
+      {!isMultilingual && (
         <Link
           to="/contents"
           className="section"

@@ -85,7 +85,7 @@ class PersonalPreferences extends Component {
    */
   onSubmit(data) {
     let language = data.language || 'en';
-    if (config.settings.supportedLanguages.includes(language)) {
+    if (availableLanguages.includes(language)) {
       const langFileName = toGettextLang(language);
       import('@root/../locales/' + langFileName + '.json').then((locale) => {
         this.props.changeLanguage(language, locale.default);

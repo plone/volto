@@ -124,3 +124,4 @@ export {
   getWorkflowOptions,
 } from './Workflows/Workflows';
 export { getSiteAsyncPropExtender } from './Site';
+export { getMultilingualInstalledAsyncPropExtender } from './Multilingual';
