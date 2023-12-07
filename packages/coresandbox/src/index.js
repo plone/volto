@@ -4,6 +4,7 @@ import TestBlockView from './components/Blocks/TestBlock/View';
 import TestBlockEdit from './components/Blocks/TestBlock/Edit';
 import { SliderSchema as TestBlockSchema } from './components/Blocks/TestBlock/schema';
 import { multipleFieldsetsSchema } from './components/Blocks/TestBlock/schema';
+import { conditionalVariationsSchemaEnhancer } from './components/Blocks/schemaEnhancers';
 import codeSVG from '@plone/volto/icons/code.svg';
 
 const testBlock = {
@@ -28,6 +29,13 @@ const testBlock = {
     },
   ],
   extensions: {},
+};
+
+const testBlockWithConditionalVariations = {
+  ...testBlock,
+  id: 'testBlockWithConditionalVariations',
+  title: 'Test Block with Conditional Variations',
+  schemaEnhancer: conditionalVariationsSchemaEnhancer,
 };
 
 const testBlockMultipleFieldsets = {
@@ -125,7 +133,10 @@ export const workingCopyFixture = (config) => {
 
 const applyConfig = (config) => {
   config.blocks.blocksConfig.testBlock = testBlock;
-  config.blocks.blocksConfig.testBlockMultipleFieldsets = testBlockMultipleFieldsets;
+  config.blocks.blocksConfig.testBlockWithConditionalVariations =
+    testBlockWithConditionalVariations;
+  config.blocks.blocksConfig.testBlockMultipleFieldsets =
+    testBlockMultipleFieldsets;
   config.blocks.blocksConfig.testBlockDefaultEdit = testBlockDefaultEdit;
   config.blocks.blocksConfig.testBlockDefaultView = testBlockDefaultView;
   config.blocks.blocksConfig.listing = listing(config);
