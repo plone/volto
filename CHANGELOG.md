@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 16.29.0 (2023-12-07)
+
+### Feature
+
+- Added conditional variations support. @sneridagh @robgietema [#5424](https://github.com/plone/volto/issues/5424)
+
 ## 16.28.1 (2023-12-04)
 
 ### Bugfix
