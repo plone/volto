@@ -35,9 +35,11 @@ The {doc}`plone:index` also provides excellent references for writing high quali
 
 ### Building and checking the quality of narrative documentation
 
-We use Make commands to run Sphinx to build and check documentation.
+You can use Make commands to run Sphinx to build and check documentation.
 All build and check documentation commands use the file `Makefile`.
+
 In Volto, all documentation commands are prefixed with `docs-`.
+You should run these commands from the root of the `volto` repository.
 
 To see the all Make commands, use the following command.
 
