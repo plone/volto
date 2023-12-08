@@ -26,6 +26,8 @@ const SearchBlockEdit = (props) => {
     data,
     selected,
     intl,
+    navRoot,
+    contentType,
     onTriggerSearch,
     querystring = {},
   } = props;
@@ -83,6 +85,8 @@ const SearchBlockEdit = (props) => {
           }}
           onChangeBlock={onChangeBlock}
           formData={data}
+          navRoot={navRoot}
+          contentType={contentType}
         />
       </SidebarPortal>
     </>
