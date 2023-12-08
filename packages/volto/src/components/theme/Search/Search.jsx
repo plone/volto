@@ -71,6 +71,7 @@ class Search extends Component {
 
   constructor(props) {
     super(props);
+    this.defaultPageSize = config.settings.defaultPageSize;
     this.state = { currentPage: 1, isClient: false, active: 'relevance' };
   }
 
@@ -109,24 +110,22 @@ class Search extends Component {
     const options = qs.parse(this.props.history.location.search);
     this.setState({ currentPage: 1 });
     options['use_site_search_settings'] = 1;
-    const { settings } = config;
     this.props.searchContent('', {
-      b_size: settings.defaultPageSize,
+      b_size: this.defaultPageSize,
       ...options,
     });
   };
 
   handleQueryPaginationChange = (e, { activePage }) => {
-    const { settings } = config;
     window.scrollTo(0, 0);
     let options = qs.parse(this.props.history.location.search);
     options['use_site_search_settings'] = 1;
 
     this.setState({ currentPage: activePage }, () => {
       this.props.searchContent('', {
-        b_size: settings.defaultPageSize,
+        b_size: this.defaultPageSize,
         ...options,
-        b_start: (this.state.currentPage - 1) * settings.defaultPageSize,
+        b_start: (this.state.currentPage - 1) * this.defaultPageSize,
       });
     });
   };
@@ -154,7 +153,6 @@ class Search extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { settings } = config;
     return (
       <Container id="page-search">
         <Helmet title={this.props.intl.formatMessage(messages.Search)} />
@@ -287,7 +285,7 @@ class Search extends Component {
                   <Pagination
                     activePage={this.state.currentPage}
                     totalPages={Math.ceil(
-                      this.props.search.items_total / settings.defaultPageSize,
+                      this.props.search.items_total / this.defaultPageSize,
                     )}
                     onPageChange={this.handleQueryPaginationChange}
                     firstItem={null}
