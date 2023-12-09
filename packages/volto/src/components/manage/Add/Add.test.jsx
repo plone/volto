@@ -38,7 +38,8 @@ describe('Add', () => {
         messages: {},
       },
       site: {
-        "plone.available_languages":  ['de']
+        'plone.available_languages': ['de'],
+      },
     });
     const component = renderer.create(
       <Provider store={store}>
