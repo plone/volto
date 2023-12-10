@@ -1,5 +1,3 @@
-import { z } from 'zod';
-
 type CommentText = {
   data: string;
   'mime-type': string;
@@ -32,7 +30,3 @@ export interface GetCommentsResponse {
     view_comments: boolean;
   };
 }
-
-export const newCommentDataSchema = z.object({
-  text: z.string(),
-});

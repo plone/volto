@@ -1,5 +1,3 @@
-import { z } from 'zod';
-
 interface UpgradeSteps {
   [step: string]: Array<{
     id: string;
@@ -15,10 +13,6 @@ export interface GetUpgradeResponse {
     instance: string;
   };
 }
-
-export const runUpgradeDataSchema = z.object({
-  dry_run: z.boolean(),
-});
 
 export interface RunUpgradeResponse {
   '@id': string;

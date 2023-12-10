@@ -5,7 +5,7 @@ import type {
   RelatedItem,
 } from './common';
 
-export interface GetContentResponse {
+export interface Content {
   '@components': Expanders;
   '@id': string;
   '@type': string;
@@ -90,5 +90,5 @@ export interface GetContentResponse {
   working_copy_of: unknown;
 }
 
-export interface CreateContentResponse extends GetContentResponse {}
-export interface UpdateContentResponse extends GetContentResponse {}
+export interface CreateContentResponse extends Content {}
+export interface UpdateContentResponse extends Content {}

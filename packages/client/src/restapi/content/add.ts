@@ -3,8 +3,8 @@ import { apiRequest, ApiRequestParams } from '../../API';
 import {
   PloneClientConfig,
   PloneClientConfigSchema,
-} from '../../interfaces/config';
-import { createContentDataSchema } from '../../interfaces/content/add';
+} from '../../validation/config';
+import { createContentDataSchema } from '../../validation/content';
 import { CreateContentResponse } from '@plone/types';
 
 export const createContentArgsSchema = z.object({

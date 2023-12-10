@@ -1,5 +1,3 @@
-import { z } from 'zod';
-
 export interface GetTranslationResponse {
   '@id': string;
   items: Array<{
@@ -12,11 +10,3 @@ export interface GetTranslationResponse {
 interface RootLanguages {
   [key: string]: string;
 }
-
-export const linkTranslationDataSchema = z.object({
-  id: z.string(),
-});
-
-export const unlinkTranslationDataSchema = z.object({
-  language: z.string(),
-});

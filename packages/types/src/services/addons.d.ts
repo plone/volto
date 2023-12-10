@@ -37,7 +37,7 @@ interface UninstallProfile {
   post_handler: string | null;
 }
 
-export interface GetAddonsResponse {
+export interface Addons {
   '@id': string;
   items: Addon[];
   items_total: number;

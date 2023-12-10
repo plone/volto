@@ -1,5 +1,3 @@
-import { z } from 'zod';
-
 interface Transaction {
   description: string;
   id: string;
@@ -9,10 +7,6 @@ interface Transaction {
 }
 
 export interface GetTransactionsResponse extends Array<Transaction> {}
-
-export const revertTransactionsDataSchema = z.object({
-  transaction_ids: z.array(z.string()),
-});
 
 export interface RevertTransactionsResponse {
   message: string;

@@ -1,20 +1,5 @@
 import { z } from 'zod';
 
-export interface QuerystringSearchResponse {
-  '@id': string;
-  items: Item[];
-  items_total: number;
-}
-
-interface Item {
-  '@id': string;
-  '@type': string;
-  description: string;
-  review_state: string;
-  title: string;
-  type_title: string;
-}
-
 const query = z.object({
   i: z.string(),
   o: z.string(),

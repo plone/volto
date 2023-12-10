@@ -1,4 +1,4 @@
-import type { GetContentResponse } from '../content';
+import type { Content } from '../content';
 import type { BlockViewProps } from '../blocks';
 
 export interface BlocksConfig {
@@ -50,7 +50,7 @@ interface BlockConfigBase {
    * the current object data and `block` is the block being evaluated in `BlockChooser`.
    */
   restricted: (args: {
-    properties: GetContentResponse;
+    properties: Content;
     block: BlockConfigBase; // TODO: This has to be extendable
   }) => boolean;
   /**

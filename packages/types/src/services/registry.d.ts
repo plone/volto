@@ -1,5 +1,3 @@
-import { z } from 'zod';
-
 interface Batching {
   '@id': string;
   first: string;
@@ -14,7 +12,7 @@ interface SchemaProperties {
   type: string;
 }
 
-interface Item {
+interface RegistryItem {
   name: string;
   schema: {
     properties: SchemaProperties;
@@ -25,8 +23,6 @@ interface Item {
 export interface GetRegistriesResponse {
   '@id': string;
   batching: Batching;
-  items: Item[];
+  items: RegistryItem[];
   items_total: number;
 }
-
-export const updateRegistryDataSchema = z.record(z.any());

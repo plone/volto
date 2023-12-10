@@ -1,11 +1,5 @@
 import { z } from 'zod';
 
-export interface GetSearchResponse {
-  '@id': string;
-  items: any[];
-  items_total: number;
-}
-
 export const querySchema = z
   .object({
     path: z

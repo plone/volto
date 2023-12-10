@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
-import { PloneClientConfig } from './interfaces/config';
+import { PloneClientConfig } from './validation/config';
 import qs from 'query-string';
 
 const debug = require('debug')('axios');
