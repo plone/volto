@@ -165,7 +165,8 @@ netlify:
 .PHONY: docs-test
 docs-test: docs-clean docs-linkcheckbroken docs-vale  ## Clean docs build, then run linkcheckbroken, vale
 
-# TODO: Revisit it
+##### Build
+
 .PHONY: storybook-build
 storybook-build:
 	pnpm build:registry
@@ -178,6 +179,10 @@ patches:
 .PHONY: cypress-install
 cypress-install:
 	$(NODEBIN)/cypress install
+
+.PHONY: build-deps
+build-deps:
+	pnpm build:deps
 
 ##### Release
 
@@ -212,7 +217,7 @@ stop-backend-docker-guillotina:
 ######### Dev mode Acceptance tests
 
 .PHONY: start-test-acceptance-frontend-dev
-start-test-acceptance-frontend-dev: ## Start the Core Acceptance Frontend Fixture in dev mode
+start-test-acceptance-frontend-dev: build-deps ## Start the Core Acceptance Frontend Fixture in dev mode
 	(cd packages/volto && RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm start)
 
 ######### Core Acceptance tests
@@ -222,7 +227,7 @@ start-test-acceptance-server test-acceptance-server: ## Start Test Acceptance Se
 	docker run -i --rm -p 55001:55001 $(DOCKER_IMAGE_ACCEPTANCE)
 
 .PHONY: start-test-acceptance-frontend
-start-test-acceptance-frontend: ## Start the Core Acceptance Frontend Fixture
+start-test-acceptance-frontend: build-deps ## Start the Core Acceptance Frontend Fixture
 	(cd packages/volto && RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod)
 
 .PHONY: test-acceptance
@@ -240,7 +245,7 @@ full-test-acceptance: ## Runs Core Full Acceptance Testing in headless mode
 ######### Seamless Core Acceptance tests
 
 .PHONY: start-test-acceptance-frontend-seamless
-start-test-acceptance-frontend-seamless: ## Start the Seamless Core Acceptance Frontend Fixture
+start-test-acceptance-frontend-seamless: build-deps ## Start the Seamless Core Acceptance Frontend Fixture
 	(cd packages/volto && pnpm build && pnpm start:prod)
 
 .PHONY: test-acceptance-seamless
@@ -258,7 +263,7 @@ full-test-acceptance-seamless: ## Runs Seamless Core Full Acceptance Testing in 
 ######### Project Acceptance tests
 
 .PHONY: start-test-acceptance-frontend-project
-start-test-acceptance-frontend-project: ## Start the Project Acceptance Frontend Fixture
+start-test-acceptance-frontend-project: build-deps ## Start the Project Acceptance Frontend Fixture
 	(cd ../../my-volto-app && RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod)
 
 ######### CoreSandbox Acceptance tests
@@ -269,11 +274,11 @@ start-test-acceptance-server-coresandbox test-acceptance-server-coresandbox: ## 
 	# ZSERVER_PORT=55001 CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors,plone.volto.coresandbox APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage,plone.volto:coresandbox ./api/bin/robot-server plone.app.robotframework.testing.VOLTO_ROBOT_TESTING
 
 .PHONY: start-test-acceptance-frontend-coresandbox
-start-test-acceptance-frontend-coresandbox: ## Start the CoreSandbox Acceptance Frontend Fixture
+start-test-acceptance-frontend-coresandbox: build-deps ## Start the CoreSandbox Acceptance Frontend Fixture
 	(cd packages/volto && ADDONS=@plone/volto-coresandbox RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod)
 
 .PHONY: start-test-acceptance-frontend-coresandbox-dev
-start-test-acceptance-frontend-coresandbox-dev: ## Start the CoreSandbox Acceptance Frontend Fixture in dev mode
+start-test-acceptance-frontend-coresandbox-dev: build-deps ## Start the CoreSandbox Acceptance Frontend Fixture in dev mode
 	(cd packages/volto && ADDONS=@plone/volto-coresandbox RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm start)
 
 .PHONY: test-acceptance-coresandbox
@@ -295,7 +300,7 @@ start-test-acceptance-server-multilingual test-acceptance-server-multilingual: #
 	docker run -i --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:multilingual $(DOCKER_IMAGE_ACCEPTANCE)
 
 .PHONY: start-test-acceptance-frontend-multilingual
-start-test-acceptance-frontend-multilingual: ## Start the Multilingual Acceptance Frontend Fixture
+start-test-acceptance-frontend-multilingual: build-deps ## Start the Multilingual Acceptance Frontend Fixture
 	(cd packages/volto && ADDONS=@plone/volto-coresandbox:multilingualFixture RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod)
 
 .PHONY: test-acceptance-multilingual
@@ -317,7 +322,7 @@ start-test-acceptance-server-seamless-multilingual test-acceptance-server-seamle
 	docker run -i --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:multilingual $(DOCKER_IMAGE_ACCEPTANCE)
 
 .PHONY: start-test-acceptance-frontend-seamless-multilingual
-start-test-acceptance-frontend-seamless-multilingual: ## Start the Seamless Multilingual Acceptance Frontend Fixture
+start-test-acceptance-frontend-seamless-multilingual: build-deps ## Start the Seamless Multilingual Acceptance Frontend Fixture
 	(cd packages/volto && ADDONS=@plone/volto-coresandbox:multilingualFixture pnpm build && pnpm start:prod)
 
 .PHONY: test-acceptance-seamless-multilingual
@@ -340,7 +345,7 @@ start-test-acceptance-server-workingcopy test-acceptance-server-workingcopy : ##
 	# ZSERVER_PORT=55001 CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.app.iterate,plone.volto,plone.volto.cors APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.app.iterate:default,plone.volto:default-homepage ./api/bin/robot-server plone.app.robotframework.testing.VOLTO_ROBOT_TESTING
 
 .PHONY: start-test-acceptance-frontend-workingcopy
-start-test-acceptance-frontend-workingcopy: ## Start the WorkingCopy Acceptance Frontend Fixture
+start-test-acceptance-frontend-workingcopy: build-deps ## Start the WorkingCopy Acceptance Frontend Fixture
 	(cd packages/volto && ADDONS=@plone/volto-coresandbox:workingCopyFixture RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod)
 
 .PHONY: test-acceptance-workingcopy
@@ -362,7 +367,7 @@ start-test-acceptance-server-guillotina: ## Start Guillotina Test Acceptance Ser
 	docker-compose -f g-api/docker-compose.yml up > /dev/null
 
 .PHONY: start-test-acceptance-frontend-guillotina
-start-test-acceptance-frontend-guillotina: ## Start the Guillotina Acceptance Frontend Fixture
+start-test-acceptance-frontend-guillotina: build-deps ## Start the Guillotina Acceptance Frontend Fixture
 	(cd packages/volto && ADDONS=volto-guillotina RAZZLE_API_PATH=http://127.0.0.1:8081/db/web RAZZLE_LEGACY_TRAVERSE=true pnpm build && pnpm start:prod)
 
 .PHONY: test-acceptance-guillotina

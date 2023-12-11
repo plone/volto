@@ -54,9 +54,6 @@ jobs:
         working-directory: packages/volto
         run: make cypress-install
 
-      - name: Build packages
-        run: pnpm build:registry
-
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
         env:
@@ -138,9 +135,6 @@ jobs:
         if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
         working-directory: packages/volto
         run: make cypress-install
-
-      - name: Build packages
-        run: pnpm build:registry
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -224,9 +218,6 @@ jobs:
         working-directory: packages/volto
         run: make cypress-install
 
-      - name: Build packages
-        run: pnpm build:registry
-
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
         env:
@@ -308,9 +299,6 @@ jobs:
         if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
         working-directory: packages/volto
         run: make cypress-install
-
-      - name: Build packages
-        run: pnpm build:registry
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -394,9 +382,6 @@ jobs:
         working-directory: packages/volto
         run: make cypress-install
 
-      - name: Build packages
-        run: pnpm build:registry
-
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
         env:
@@ -479,9 +464,6 @@ jobs:
         working-directory: packages/volto
         run: make cypress-install
 
-      - name: Build packages
-        run: pnpm build:registry
-
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
         env:
@@ -562,9 +544,6 @@ jobs:
         if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
         working-directory: packages/volto
         run: make cypress-install
-
-      - name: Build packages
-        run: pnpm build:registry
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -648,9 +627,6 @@ jobs:
         working-directory: packages/volto
         run: make cypress-install
 
-      - name: Build packages
-        run: pnpm build:registry
-
       - name: Cypress Coresandbox Acceptance tests
         uses: cypress-io/github-action@v6
         env:
@@ -720,9 +696,6 @@ jobs:
   #           ${{ runner.os }}-pnpm-store-
 
   #     - run: pnpm i
-
-  #     - name: Build packages
-  #       run: pnpm build:registry
 
   #     - name: Cypress acceptance tests
   #       uses: cypress-io/github-action@v6
@@ -807,9 +780,6 @@ jobs:
         working-directory: packages/volto
         run: make cypress-install
 
-      - name: Build packages
-        run: pnpm build:registry
-
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
         env:
@@ -892,9 +862,6 @@ jobs:
         if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
         working-directory: packages/volto
         run: make cypress-install
-
-      - name: Build packages
-        run: pnpm build:registry
 
       # # python setup (temporary, while p.a.iterate changes are in a PR)
       # - name: Set up Python ${{ matrix.python-version }}
@@ -1005,9 +972,6 @@ jobs:
         if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
         working-directory: packages/volto
         run: make cypress-install
-
-      - name: Build packages
-        run: pnpm build:registry
 
       # Generator own tests
       - name: Generator tests
@@ -1131,9 +1095,6 @@ jobs:
         working-directory: packages/volto
         run: make cypress-install
 
-      - name: Build packages
-        run: pnpm build:registry
-
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
         env:
@@ -1217,9 +1178,6 @@ jobs:
         if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
         working-directory: packages/volto
         run: make cypress-install
-
-      - name: Build packages
-        run: pnpm build:registry
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
