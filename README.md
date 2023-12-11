@@ -78,7 +78,7 @@ See [Supported browsers](https://6.docs.plone.org/volto/contributing/version-pol
 
 Volto is actively developed since 2017.
 It has been used in production since 2018 on numerous websites.
-See [Awesome Volto](https://github.com/collective/awesome-volto) to add your website to the growing list.
+See [Awesome Volto](https://github.com/collective/awesome-volto#websites-built-with-volto) to add your website to the growing list.
 
 
 ## Contributors
