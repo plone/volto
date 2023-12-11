@@ -42,7 +42,7 @@ jobs:
 
       - name: Cache Cypress Binary
         id: cache-cypress-binary
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ~/.cache/Cypress
           key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
@@ -80,13 +80,13 @@ jobs:
         if: failure()
         with:
           name: cypress-screenshots
-          path: cypress/screenshots
+          path: packages/volto/cypress/screenshots
       # Upload Cypress videos
       - uses: actions/upload-artifact@v1
         if: failure()
         with:
           name: cypress-videos
-          path: cypress/videos
+          path: packages/volto/cypress/videos
 
   corecontent:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
@@ -127,7 +127,7 @@ jobs:
 
       - name: Cache Cypress Binary
         id: cache-cypress-binary
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ~/.cache/Cypress
           key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
@@ -165,13 +165,13 @@ jobs:
         if: failure()
         with:
           name: cypress-screenshots
-          path: cypress/screenshots
+          path: packages/volto/cypress/screenshots
       # Upload Cypress videos
       - uses: actions/upload-artifact@v1
         if: failure()
         with:
           name: cypress-videos
-          path: cypress/videos
+          path: packages/volto/cypress/videos
 
   corecontrolpanels:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
@@ -212,7 +212,7 @@ jobs:
 
       - name: Cache Cypress Binary
         id: cache-cypress-binary
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ~/.cache/Cypress
           key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
@@ -250,13 +250,13 @@ jobs:
         if: failure()
         with:
           name: cypress-screenshots
-          path: cypress/screenshots
+          path: packages/volto/cypress/screenshots
       # Upload Cypress videos
       - uses: actions/upload-artifact@v1
         if: failure()
         with:
           name: cypress-videos
-          path: cypress/videos
+          path: packages/volto/cypress/videos
 
   coreblocks:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
@@ -297,7 +297,7 @@ jobs:
 
       - name: Cache Cypress Binary
         id: cache-cypress-binary
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ~/.cache/Cypress
           key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
@@ -335,13 +335,13 @@ jobs:
         if: failure()
         with:
           name: cypress-screenshots
-          path: cypress/screenshots
+          path: packages/volto/cypress/screenshots
       # Upload Cypress videos
       - uses: actions/upload-artifact@v1
         if: failure()
         with:
           name: cypress-videos
-          path: cypress/videos
+          path: packages/volto/cypress/videos
 
   coreblockslisting:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
@@ -382,7 +382,7 @@ jobs:
 
       - name: Cache Cypress Binary
         id: cache-cypress-binary
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ~/.cache/Cypress
           key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
@@ -420,13 +420,13 @@ jobs:
         if: failure()
         with:
           name: cypress-screenshots
-          path: cypress/screenshots
+          path: packages/volto/cypress/screenshots
       # Upload Cypress videos
       - uses: actions/upload-artifact@v1
         if: failure()
         with:
           name: cypress-videos
-          path: cypress/videos
+          path: packages/volto/cypress/videos
 
   corevoltoslate:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
@@ -467,7 +467,7 @@ jobs:
 
       - name: Cache Cypress Binary
         id: cache-cypress-binary
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ~/.cache/Cypress
           key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
@@ -505,13 +505,13 @@ jobs:
         if: failure()
         with:
           name: cypress-screenshots
-          path: cypress/screenshots
+          path: packages/volto/cypress/screenshots
       # Upload Cypress videos
       - uses: actions/upload-artifact@v1
         if: failure()
         with:
           name: cypress-videos
-          path: cypress/videos
+          path: packages/volto/cypress/videos
 
   core5:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
@@ -551,7 +551,7 @@ jobs:
 
       - name: Cache Cypress Binary
         id: cache-cypress-binary
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ~/.cache/Cypress
           key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
@@ -589,13 +589,13 @@ jobs:
         if: failure()
         with:
           name: cypress-screenshots
-          path: cypress/screenshots
+          path: packages/volto/cypress/screenshots
       # Upload Cypress videos
       - uses: actions/upload-artifact@v1
         if: failure()
         with:
           name: cypress-videos
-          path: cypress/videos
+          path: packages/volto/cypress/videos
 
   coresandbox:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
@@ -636,7 +636,7 @@ jobs:
 
       - name: Cache Cypress Binary
         id: cache-cypress-binary
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ~/.cache/Cypress
           key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
@@ -674,13 +674,13 @@ jobs:
         if: failure()
         with:
           name: cypress-screenshots
-          path: cypress/screenshots
+          path: packages/volto/cypress/screenshots
       # Upload Cypress videos
       - uses: actions/upload-artifact@v1
         if: failure()
         with:
           name: cypress-videos
-          path: cypress/videos
+          path: packages/volto/cypress/videos
 
   # guillotina:
   #   if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
@@ -748,13 +748,13 @@ jobs:
   #       if: failure()
   #       with:
   #         name: cypress-screenshots
-  #         path: cypress/screenshots
+  #         path: packages/volto/cypress/screenshots
   #     # Upload Cypress videos
   #     - uses: actions/upload-artifact@v1
   #       if: failure()
   #       with:
   #         name: cypress-videos
-  #         path: cypress/videos
+  #         path: packages/volto/cypress/videos
 
   multilingual:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
@@ -795,7 +795,7 @@ jobs:
 
       - name: Cache Cypress Binary
         id: cache-cypress-binary
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ~/.cache/Cypress
           key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
@@ -833,13 +833,13 @@ jobs:
         if: failure()
         with:
           name: cypress-screenshots
-          path: cypress/screenshots
+          path: packages/volto/cypress/screenshots
       # Upload Cypress videos
       - uses: actions/upload-artifact@v1
         if: failure()
         with:
           name: cypress-videos
-          path: cypress/videos
+          path: packages/volto/cypress/videos
 
   workingcopy:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
@@ -881,7 +881,7 @@ jobs:
 
       - name: Cache Cypress Binary
         id: cache-cypress-binary
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ~/.cache/Cypress
           key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
@@ -943,13 +943,13 @@ jobs:
         if: failure()
         with:
           name: cypress-screenshots
-          path: cypress/screenshots
+          path: packages/volto/cypress/screenshots
       # Upload Cypress videos
       - uses: actions/upload-artifact@v1
         if: failure()
         with:
           name: cypress-videos
-          path: cypress/videos
+          path: packages/volto/cypress/videos
 
   generator:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
@@ -994,7 +994,7 @@ jobs:
 
       - name: Cache Cypress Binary
         id: cache-cypress-binary
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ~/.cache/Cypress
           key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
@@ -1066,14 +1066,14 @@ jobs:
         if: failure()
         with:
           name: cypress-screenshots
-          path: cypress/screenshots
+          path: packages/volto/cypress/screenshots
 
       # Upload Cypress videos
       - uses: actions/upload-artifact@v1
         if: failure()
         with:
           name: cypress-videos
-          path: cypress/videos
+          path: packages/volto/cypress/videos
 
       - name: Test if npm packs correctly
         run: npm pack --dry-run
@@ -1119,7 +1119,7 @@ jobs:
 
       - name: Cache Cypress Binary
         id: cache-cypress-binary
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ~/.cache/Cypress
           key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
@@ -1159,13 +1159,13 @@ jobs:
         if: failure()
         with:
           name: cypress-screenshots
-          path: cypress/screenshots
+          path: packages/volto/cypress/screenshots
       # Upload Cypress videos
       - uses: actions/upload-artifact@v1
         if: failure()
         with:
           name: cypress-videos
-          path: cypress/videos
+          path: packages/volto/cypress/videos
 
   multilingualseamless:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
@@ -1206,7 +1206,7 @@ jobs:
 
       - name: Cache Cypress Binary
         id: cache-cypress-binary
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ~/.cache/Cypress
           key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
@@ -1246,10 +1246,10 @@ jobs:
         if: failure()
         with:
           name: cypress-screenshots
-          path: cypress/screenshots
+          path: packages/volto/cypress/screenshots
       # Upload Cypress videos
       - uses: actions/upload-artifact@v1
         if: failure()
         with:
           name: cypress-videos
-          path: cypress/videos
+          path: packages/volto/cypress/videos
