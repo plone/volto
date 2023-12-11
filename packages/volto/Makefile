@@ -17,7 +17,6 @@ DOCKER_IMAGE=plone/server-dev:6.0.8
 DOCKER_IMAGE_ACCEPTANCE=plone/server-acceptance:6.0.8
 KGS=plone.restapi==9.2.0
 NODEBIN = ./node_modules/.bin
-SCRIPTSPACKAGE = ./packages/scripts
 
 # Plone 5 legacy
 DOCKER_IMAGE5=plone/plone-backend:5.2.12

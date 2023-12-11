@@ -10,7 +10,7 @@ SHELL:=bash
 MAKEFLAGS+=--warn-undefined-variables
 MAKEFLAGS+=--no-builtin-rules
 
-# Project settings
+# Project settings - Update also `packages/volto/Makefile` to keep both in sync
 
 INSTANCE_PORT=8080
 DOCKER_IMAGE=plone/server-dev:6.0.8
