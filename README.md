@@ -41,21 +41,12 @@ You can try a Volto online demo at [https://demo.plone.org/](https://demo.plone.
 To start a new project using Volto, follow the [Plone installation documentation](https://6.docs.plone.org/install/install-from-packages.html).
 
 
-## Contributing to Volto
-
-To contribute to the Volto project by writing code, documentation, translations, and so on, please read [Contributing to Plone](https://6.docs.plone.org/contributing/index.html) and [Contributing to Volto](https://6.docs.plone.org/volto/contributing/index.html).
-
-For newcomers to Volto, Plone, or open source software, you must read and follow [First-time contributors](https://6.docs.plone.org/contributing/first-time.html).
-
-Since December 2023, this repository has a monorepo structure.
-Volto itself is treated as a library and you can find it in the `packages/volto` folder.
-
-
 ## Documentation
 
 You can find the latest documentation at [https://6.docs.plone.org/](https://6.docs.plone.org/volto/index.html).
 
 For links to trainings and videos, see [Other learning resources](https://6.docs.plone.org/volto/getting-started/others.html).
+
 
 ## Supported Plone, Python, and Plone REST API versions
 
@@ -79,6 +70,16 @@ See [Supported browsers](https://6.docs.plone.org/volto/contributing/version-pol
 Volto is actively developed since 2017.
 It has been used in production since 2018 on numerous websites.
 See [Awesome Volto](https://github.com/collective/awesome-volto#websites-built-with-volto) to add your website to the growing list.
+
+
+## Contributing
+
+To contribute to the Volto project by writing code, documentation, translations, and so on, please read [Contributing to Plone](https://6.docs.plone.org/contributing/index.html) and [Contributing to Volto](https://6.docs.plone.org/volto/contributing/index.html).
+
+For newcomers to Volto, Plone, or open source software, you must read and follow [First-time contributors](https://6.docs.plone.org/contributing/first-time.html).
+
+Since December 2023, this repository has a monorepo structure.
+Volto itself is treated as a library and you can find it in the `packages/volto` folder.
 
 
 ## Contributors
