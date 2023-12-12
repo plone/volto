@@ -155,6 +155,8 @@ class Search extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const options = qs.parse(this.props.history.location.search);
+
     return (
       <Container id="page-search">
         <Helmet title={this.props.intl.formatMessage(messages.Search)} />
@@ -287,7 +289,8 @@ class Search extends Component {
                   <Pagination
                     activePage={this.state.currentPage}
                     totalPages={Math.ceil(
-                      this.props.search.items_total / this.defaultPageSize,
+                      this.props.search.items_total /
+                        (options.b_size || this.defaultPageSize),
                     )}
                     onPageChange={this.handleQueryPaginationChange}
                     firstItem={null}
