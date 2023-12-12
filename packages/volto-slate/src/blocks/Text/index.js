@@ -118,6 +118,27 @@ export default function applyConfig(config) {
       addPermission: [],
       view: [],
     },
+    cloneData: (data) => {
+      return [
+        uuid(),
+        {
+          ...data,
+          value: [
+            ...data.value.map((c) => {
+              return {
+                ...c,
+                children: c.children.map((childrenData) => {
+                  return {
+                    ...childrenData,
+                    data: { ...childrenData.data, uid: nanoid(5) },
+                  };
+                }),
+              };
+            }),
+          ],
+        },
+      ];
+    },
     blockHasValue: (data) => {
       // TODO: this should be handled better
       return data && !!data.plaintext?.trim();
