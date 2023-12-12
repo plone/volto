@@ -366,19 +366,20 @@ export const URLUtils = {
  * @returns {object} New object with the flattened scale URLs
  */
 export function flattenScales(path, image) {
-  function removeObjectIdFromURL(path, scale) {
-    return scale.replace(`${path}/`, '');
+  function removeObjectIdFromURL(basePath, scale) {
+    return scale.replace(`${basePath}/`, '');
   }
   if (!image) return;
 
+  const basePath = image.base_path || path;
   const imageInfo = {
     ...image,
-    download: flattenToAppURL(removeObjectIdFromURL(path, image.download)),
+    download: flattenToAppURL(removeObjectIdFromURL(basePath, image.download)),
   };
 
   Object.keys(imageInfo.scales).forEach((key) => {
     imageInfo.scales[key].download = flattenToAppURL(
-      removeObjectIdFromURL(path, image.scales[key].download),
+      removeObjectIdFromURL(basePath, image.scales[key].download),
     );
   });
 
