@@ -31,6 +31,8 @@ const BlockChooser = ({
   blocksConfig = config.blocks.blocksConfig,
   blockChooserRef,
   properties = {},
+  navRoot,
+  contentType,
 }) => {
   const intl = useIntl();
   const hasAllowedBlocks = !isEmpty(allowedBlocks);
@@ -55,7 +57,7 @@ const BlockChooser = ({
         // depending on this function, given properties (current present blocks) and the
         // block being evaluated
         return typeof item.restricted === 'function'
-          ? !item.restricted({ properties, block: item })
+          ? !item.restricted({ properties, block: item, navRoot, contentType })
           : !item.restricted;
       }
     }
