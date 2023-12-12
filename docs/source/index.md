@@ -25,6 +25,11 @@ To start developing a new Volto project you should have minimal React and modern
 ```{toctree}
 :maxdepth: 2
 
+guides/index
+reference/index
+explanation/index
+tutorials/index
+
 getting-started/index
 configuration/index
 theming/index
@@ -39,6 +44,17 @@ user-manual/index
 contributing/index
 release-notes/index
 ```
+
+
+# Diataxis-based future structure
+
+Tutorials:
+
+  - getting-started
+    - create a volto project
+    - theme the project
+    - create a volto addon
+
 
 % Only check change log entries in Volto documentation—not when it is included in the main Plone documentation—to ensure links work and do not redirect.
 % It is OK to ignore warnings, such as the following:

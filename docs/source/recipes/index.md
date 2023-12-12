@@ -11,21 +11,5 @@ myst:
 
 ```{toctree}
 :maxdepth: 1
-
-creating-project
 developing-a-project
-folder-structure
-environment-variables
-customizing-components
-customizing-views
-creating-views
-images
-i18n
-express
-lazyload
-appextras
-contextnavigation
-pluggables
-widget
-ie11compat
 ```
