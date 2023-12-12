@@ -1,7 +1,7 @@
 import { apiRequest, ApiRequestParams } from '../../API';
-import { PloneClientConfig } from '../../interfaces/config';
+import { PloneClientConfig } from '../../validation/config';
 import { z } from 'zod';
-import { GetQuerysourceResponse } from '../../interfaces/querysources';
+import { GetQuerysourceResponse } from '@plone/types';
 
 const getQuerysourceSchema = z.object({
   path: z.string(),

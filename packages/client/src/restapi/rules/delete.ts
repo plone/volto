@@ -3,8 +3,8 @@ import { z } from 'zod';
 import {
   PloneClientConfig,
   PloneClientConfigSchema,
-} from '../../interfaces/config';
-import { deleteRulesDataSchema } from '../../interfaces/rules';
+} from '../../validation/config';
+import { deleteRulesDataSchema } from '../../validation/rules';
 
 export const deleteRulesArgsSchema = z.object({
   data: deleteRulesDataSchema,

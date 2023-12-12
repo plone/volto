@@ -3,7 +3,7 @@ import { ApiRequestParams, apiRequest } from '../../API';
 import {
   PloneClientConfig,
   PloneClientConfigSchema,
-} from '../../interfaces/config';
+} from '../../validation/config';
 
 export const updateControlpanelArgsSchema = z.object({
   path: z.string(),
