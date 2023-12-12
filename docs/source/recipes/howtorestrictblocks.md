@@ -4,15 +4,15 @@ myst:
     "description": "How to Restrict blocks per content type or path"
     "property=og:description": "How to Restrict blocks per content type or path"
     "property=og:title": "How to Restrict blocks"
-    "keywords": "Volto, Plone, frontend, React, blocks"
+    "keywords": "Volto, Plone, frontend, React, blocks, restrict"
 ---
 
-# How to Restrict blocks
+# How to restrict blocks
 
 You can restrict blocks from being added to a content type using the `restrict` key in the configuration object.
 This key can be a boolean or a function.
 If the block is restricted, it won't show in the chooser.
-However, it can be still added programatically or using directly the RESTAPI, so this restriction only applies to the user interface.
+However, it can still be added either programatically or by directly using the REST API, so this restriction only applies to the user interface.
 The function has this signature:
 
 ```ts
@@ -29,7 +29,7 @@ The function has this signature:
 Where `properties` is the current object data and `block` is the block being evaluated in `BlockChooser`.
 `navRoot` is the nearest navigation root object and `contentType` is the current content type.
 
-You can restrict a block from showing only in `News Items` and for all content types from a specific location in the content tree by configuring:
+In the following configuration example, you can restrict a block from showing in both the `News Item`s and for all content types in a specific path in the content tree (`/folder`):
 
 ```ts
 const testBlockConditional = {
