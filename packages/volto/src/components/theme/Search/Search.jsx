@@ -125,7 +125,9 @@ class Search extends Component {
       this.props.searchContent('', {
         b_size: this.defaultPageSize,
         ...options,
-        b_start: (this.state.currentPage - 1) * this.defaultPageSize,
+        b_start:
+          (this.state.currentPage - 1) *
+          (options.b_size || this.defaultPageSize),
       });
     });
   };
