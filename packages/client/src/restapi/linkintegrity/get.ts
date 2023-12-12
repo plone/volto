@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { apiRequest, ApiRequestParams } from '../../API';
-import { PloneClientConfigSchema } from '../../interfaces/config';
+import { PloneClientConfigSchema } from '../../validation/config';
 
 const getLinkintegriyArgsSchema = z.object({
   uids: z.string(),

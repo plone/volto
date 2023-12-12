@@ -3,7 +3,7 @@ import { apiRequest, ApiRequestParams } from '../../API';
 import {
   PloneClientConfig,
   PloneClientConfigSchema,
-} from '../../interfaces/config';
+} from '../../validation/config';
 
 const emailNotificationDataSchema = z.object({
   name: z.string(),

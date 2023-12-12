@@ -3,8 +3,8 @@ import { ApiRequestParams, apiRequest } from '../../API';
 import {
   PloneClientConfig,
   PloneClientConfigSchema,
-} from '../../interfaces/config';
-import { resetPasswordWithTokenDataSchema } from '../../interfaces/users';
+} from '../../validation/config';
+import { resetPasswordWithTokenDataSchema } from '../../validation/users';
 
 export const resetPasswordWithTokenArgsSchema = z.object({
   userId: z.string(),

@@ -3,8 +3,8 @@ import { ApiRequestParams, apiRequest } from '../../API';
 import {
   PloneClientConfig,
   PloneClientConfigSchema,
-} from '../../interfaces/config';
-import { unlinkTranslationDataSchema } from '../../interfaces/translations';
+} from '../../validation/config';
+import { unlinkTranslationDataSchema } from '../../validation/translations';
 
 export const unlinkTranslationArgsSchema = z.object({
   path: z.string(),
