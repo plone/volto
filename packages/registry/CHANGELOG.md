@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 1.1.0 (2023-12-13)
+
+### Internal
+
+- Move and unify Types under @plone/types @sneridagh [#5493](https://github.com/plone/volto/issues/5493)
+
 ## 1.0.1 (2023-12-02)
 
 ### Bugfix
