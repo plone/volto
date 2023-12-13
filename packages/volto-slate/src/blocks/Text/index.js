@@ -122,22 +122,32 @@ export default function applyConfig(config) {
       view: [],
     },
     cloneData: (data) => {
+      const replaceAllUidsWithNewOnes = (value) => {
+        if (value?.children?.length > 0) {
+          const newChildren = value.children.map((childrenData) => {
+            if (childrenData?.data?.uid) {
+              return {
+                ...childrenData,
+                data: { ...childrenData.data, uid: nanoid(5) },
+              };
+            }
+            return childrenData;
+          });
+          return {
+            ...value,
+            children: newChildren,
+          };
+        }
+        return value;
+      };
       return [
         uuid(),
         {
           ...data,
           value: [
-            ...(data?.value || []).map((c) => {
-              return {
-                ...c,
-                children: (c?.children || []).map((childrenData) => {
-                  return {
-                    ...childrenData,
-                    data: { ...childrenData.data, uid: nanoid(5) },
-                  };
-                }),
-              };
-            }),
+            ...(data?.value || []).map((value) =>
+              replaceAllUidsWithNewOnes(value),
+            ),
           ],
         },
       ];
