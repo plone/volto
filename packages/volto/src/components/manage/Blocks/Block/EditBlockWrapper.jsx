@@ -47,7 +47,10 @@ const EditBlockWrapper = (props) => {
     editable,
     properties,
     showBlockChooser,
+    navRoot,
+    contentType,
   } = blockProps;
+
   const visible = selected && !hideHandler(data);
 
   const required = isBoolean(data.required)
@@ -107,6 +110,8 @@ const EditBlockWrapper = (props) => {
               blocksConfig={blocksConfig}
               size="24px"
               properties={properties}
+              navRoot={navRoot}
+              contentType={contentType}
             />
           )}
         </div>
