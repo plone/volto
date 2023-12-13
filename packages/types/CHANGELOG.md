@@ -7,3 +7,9 @@
 -->
 
 <!-- towncrier release notes start -->
+
+## 1.0.0-alpha.0 (2023-12-13)
+
+### Feature
+
+- Fist release of @plone/types @sneridagh [#1](https://github.com/plone/volto/issues/1)
