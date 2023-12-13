@@ -17,6 +17,21 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 17.7.0 (2023-12-13)
+
+### Feature
+
+- Added conditional variations support. @sneridagh @robgietema [#5424](https://github.com/plone/volto/issues/5424)
+- Added `navRoot` and `contentType` to `restricted` key in blocks configuration. @sneridagh [#5517](https://github.com/plone/volto/issues/5517)
+- Add support for `preview_image_link` behavior in Volto Image component @sneridagh [#5523](https://github.com/plone/volto/issues/5523)
+
+### Bugfix
+
+- Fix the right order of parameters in normalizeExternalData.js @dobri1408 [#5347](https://github.com/plone/volto/issues/5347)
+- Refactoring the code for extraction of videoDetails from the video URL, adding code for extracting videoDetails from youtube video URLs with '/live/' in its URL which previously used to throw an error and adding jest tests for same. @IshaanDasgupta [#5416](https://github.com/plone/volto/issues/5416)
+- Initialize data in form before the checks for the `blocks` and `blocks_layout` are done This fix an edge case when the data from the server content is empty, then the fields are populated, but the initialized data is snapshot after the check (and amendments) are done. @sneridagh [#5445](https://github.com/plone/volto/issues/5445)
+- Replaced `toNumber` with `parseFloat` to avoid an error when validating the `plone.restapi` version. @shibbu264 [#5448](https://github.com/plone/volto/issues/5448)
+
 ## 17.6.1 (2023-11-27)
 
 ### Bugfix

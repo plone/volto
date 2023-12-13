@@ -133,7 +133,7 @@ export function applySchemaDefaults({ data, schema, intl }: {
  * @param {Object} params An object with data, intl and anything else
  * @return {Object} Derived data, with the defaults extracted from the schema
  */
-export function applyBlockDefaults({ data, intl, ...rest }: any, blocksConfig: any): any;
+export function applyBlockDefaults({ data, intl, navRoot, contentType, ...rest }: any, blocksConfig: any): any;
 /**
  * Given a `block` object and a list of block types, return a list of block ids matching the types
  *
