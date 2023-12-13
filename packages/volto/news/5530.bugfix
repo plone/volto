@@ -1,0 +1,1 @@
+Do not pin the `eslint-plugin-jsx-a11y` version in Volto. Fixed generator ESlint config. Added tests and docs. @sneridagh
