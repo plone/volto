@@ -12,6 +12,18 @@ exports[`renders an image component from a catalog brain 1`] = `
 />
 `;
 
+exports[`renders an image component from a catalog brain using \`preview_image_link\` 1`] = `
+<img
+  alt="alt text"
+  className=""
+  fetchpriority="high"
+  height={400}
+  src="/image.png/@@images/image.png"
+  srcSet="/image.png/@@images/image-400.png 400w"
+  width={400}
+/>
+`;
+
 exports[`renders an image component from a string src 1`] = `
 <img
   alt="alt text"

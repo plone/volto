@@ -3,7 +3,7 @@ import { z } from 'zod';
 import {
   PloneClientConfig,
   PloneClientConfigSchema,
-} from '../../interfaces/config';
+} from '../../validation/config';
 
 export const deleteContentArgsSchema = z.object({
   path: z.string(),

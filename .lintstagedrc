@@ -1,9 +1,13 @@
 {
-  "**/*.{js,jsx,ts,tsx}": [
+  "packages/!volto/**/*.{js,jsx,ts,tsx}": [
     "pnpm eslint --max-warnings=0 --fix",
     "pnpm prettier --single-quote --write"
   ],
-  "packages/volto/src/**/*.{jsx, tsx}": ["pnpm i18n"],
+  "packages/volto/**/*.{js,jsx,ts,tsx}": [
+    "pnpm --filter @plone/volto lint:husky",
+    "pnpm --filter @plone/volto prettier:husky"
+  ],
+  "packages/volto/src/**/*.{jsx, tsx}": ["pnpm --filter @plone/volto i18n"],
   "**/*.{css,less,scss}": ["pnpm stylelint --fix"],
   "packages/volto/**/*.overrides": ["pnpm stylelint --fix"]
 }

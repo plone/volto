@@ -1,7 +1,7 @@
 import { apiRequest, ApiRequestParams } from '../../API';
-import { PloneClientConfig } from '../../interfaces/config';
+import { PloneClientConfig } from '../../validation/config';
 import { z } from 'zod';
-import { GetGroupResponse } from '../../interfaces/groups';
+import { GetGroupResponse } from '@plone/types';
 
 const getGroupSchema = z.object({
   groupId: z.string(),

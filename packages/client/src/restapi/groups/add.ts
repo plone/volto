@@ -3,11 +3,9 @@ import { ApiRequestParams, apiRequest } from '../../API';
 import {
   PloneClientConfig,
   PloneClientConfigSchema,
-} from '../../interfaces/config';
-import {
-  CreateGroupResponse,
-  createGroupDataSchema,
-} from '../../interfaces/groups';
+} from '../../validation/config';
+import { createGroupDataSchema } from '../../validation/groups';
+import { CreateGroupResponse } from '@plone/types';
 
 export const createGroupArgsSchema = z.object({
   data: createGroupDataSchema,

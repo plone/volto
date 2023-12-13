@@ -3,11 +3,9 @@ import { apiRequest, ApiRequestParams } from '../../API';
 import {
   PloneClientConfig,
   PloneClientConfigSchema,
-} from '../../interfaces/config';
-import {
-  updateRulesDataSchema,
-  RuleRespose as UpdateRuleRespose,
-} from '../../interfaces/rules';
+} from '../../validation/config';
+import { updateRulesDataSchema } from '../../validation/rules';
+import { RuleRespose as UpdateRuleRespose } from '@plone/types';
 
 export const updateRulesArgsSchema = z.object({
   data: updateRulesDataSchema,
