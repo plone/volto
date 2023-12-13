@@ -12,6 +12,7 @@ import ViewHeroImageLeftBlock from '@plone/volto/components/manage/Blocks/HeroIm
 import ViewMapBlock from '@plone/volto/components/manage/Blocks/Maps/View';
 import ViewHTMLBlock from '@plone/volto/components/manage/Blocks/HTML/View';
 import ViewTableBlock from '@plone/volto/components/manage/Blocks/Table/View';
+import ViewAnnounceBlock from '@plone/volto/components/manage/Blocks/Announce/view';
 
 import EditTitleBlock from '@plone/volto/components/manage/Blocks/Title/Edit';
 import EditDescriptionBlock from '@plone/volto/components/manage/Blocks/Description/Edit';
@@ -29,6 +30,7 @@ import EditHeroImageLeftBlock from '@plone/volto/components/manage/Blocks/HeroIm
 import EditMapBlock from '@plone/volto/components/manage/Blocks/Maps/Edit';
 import EditHTMLBlock from '@plone/volto/components/manage/Blocks/HTML/Edit';
 import EditTableBlock from '@plone/volto/components/manage/Blocks/Table/Edit';
+import EditAnnounceBlock from '@plone/volto/components/manage/Blocks/Announce/edit';
 
 import descriptionSVG from '@plone/volto/icons/description.svg';
 import titleSVG from '@plone/volto/icons/text.svg';
@@ -90,6 +92,7 @@ import TeaserEditBlock from '@plone/volto/components/manage/Blocks/Teaser/Edit';
 import TeaserBlockDefaultBody from '@plone/volto/components/manage/Blocks/Teaser/DefaultBody';
 import { TeaserSchema } from '@plone/volto/components/manage/Blocks/Teaser/schema';
 import { TeaserBlockDataAdapter } from '@plone/volto/components/manage/Blocks/Teaser/adapter';
+import { AnnounceBlockSchema } from '../components/manage/Blocks/Announce/Schema';
 
 defineMessages({
   title: {
@@ -139,6 +142,10 @@ defineMessages({
   listing: {
     id: 'listing',
     defaultMessage: 'Listing',
+  },
+  announce: {
+    id: 'announce',
+    defaultMessage: 'PloneAnnouncement',
   },
   // Groups
   mostUsed: {
@@ -322,6 +329,19 @@ const blocksConfig = {
     mostUsed: true,
     sidebarTab: 1,
   },
+  announce: {
+    id: 'announce',
+    title: 'announce',
+    icon: heroSVG,
+    group: 'common',
+    view: ViewAnnounceBlock,
+    edit: EditAnnounceBlock,
+    blockSchema: AnnounceBlockSchema,
+    restricted: false,
+    mostUsed: true,
+    sidebarTab: 1,
+  },
+
   toc: {
     id: 'toc',
     title: 'Table of Contents',

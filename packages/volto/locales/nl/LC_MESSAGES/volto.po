@@ -4355,6 +4355,11 @@ msgstr ""
 msgid "addUserFormUsernameDescription"
 msgstr ""
 
+#: config/Blocks
+# defaultMessage: PloneAnnouncement
+msgid "announce"
+msgstr ""
+
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Available views
 msgid "availableViews"

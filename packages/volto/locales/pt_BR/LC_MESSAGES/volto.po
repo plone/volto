@@ -4346,6 +4346,11 @@ msgstr "Informe a sua nova senha. Mínimo de 8 caracteres."
 msgid "addUserFormUsernameDescription"
 msgstr "Informe o nome do usuário que você deseja, geralmente algo como 'jsilva'. Não use espaços ou caracteres especiais. Nomes de usuários e senhas são sensíveis a letras maiúsculas e minúsculas, certifique-se que a tecla Caps Lock não esteja ativada. Esse é o nome que você usará para acessar."
 
+#: config/Blocks
+# defaultMessage: PloneAnnouncement
+msgid "announce"
+msgstr ""
+
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Available views
 msgid "availableViews"

@@ -4347,6 +4347,11 @@ msgstr "Lisää salasana. Minimissään 8 merkkiä."
 msgid "addUserFormUsernameDescription"
 msgstr "Lisää käyttäjätunnus, esim. mameikal. Älä käytä erikoismerkkejä."
 
+#: config/Blocks
+# defaultMessage: PloneAnnouncement
+msgid "announce"
+msgstr ""
+
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Available views
 msgid "availableViews"

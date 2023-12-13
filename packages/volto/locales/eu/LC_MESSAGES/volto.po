@@ -4343,6 +4343,11 @@ msgstr "Idatzi zure pasahitz berria. Gutxienez 8 karaktere."
 msgid "addUserFormUsernameDescription"
 msgstr "Idatzi zure erabiltzaile izena, "jgarmendia" moduko zerbait. Ez da onartzen espaziorik edo karaktere berezirik. Erabiltzaile izenak eta pasahitzak letra larri eta xeheak bereizten dituzte. Hau da webgunera sartzeko erabiliko den izena."
 
+#: config/Blocks
+# defaultMessage: PloneAnnouncement
+msgid "announce"
+msgstr ""
+
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Available views
 msgid "availableViews"

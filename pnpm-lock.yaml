@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
     devDependencies:
       '@typescript-eslint/eslint-plugin':
         specifier: 6.7.0

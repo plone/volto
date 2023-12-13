@@ -4347,6 +4347,11 @@ msgstr "Introduzca su nueva contraseña. Mínimo 8 caracteres."
 msgid "addUserFormUsernameDescription"
 msgstr "Introduzca el nombre de usuario que desee utilizar. Generalmente algo como "jperez" o "jose_perez". No están permitidos caracteres especiales o espacios en el nombre de usuario. Los nombres de usuario y las contraseñas son sensibles a mayúsculas y minúsculas, asegúrese que la tecla de bloqueo de mayúsculas no está activada ('caps lock'). Este es el nombre que utilizará para identificarse."
 
+#: config/Blocks
+# defaultMessage: PloneAnnouncement
+msgid "announce"
+msgstr ""
+
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Available views
 msgid "availableViews"

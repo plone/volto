@@ -189,6 +189,7 @@ export { default as EditHeroImageLeftBlock } from '@plone/volto/components/manag
 export { default as ViewHeroImageLeftBlock } from '@plone/volto/components/manage/Blocks/HeroImageLeft/View';
 export { default as EditMapBlock } from '@plone/volto/components/manage/Blocks/Maps/Edit';
 export { default as EditHTMLBlock } from '@plone/volto/components/manage/Blocks/HTML/Edit';
+export { default as EditAnnounceBlock } from '@plone/volto/components/manage/Blocks/Announce/edit';
 
 export { default as ViewDefaultBlock } from '@plone/volto/components/manage/Blocks/Block/DefaultView';
 export { default as ViewDescriptionBlock } from '@plone/volto/components/manage/Blocks/Description/View';
@@ -200,6 +201,7 @@ export { default as ViewListingBlock } from '@plone/volto/components/manage/Bloc
 export { default as ViewVideoBlock } from '@plone/volto/components/manage/Blocks/Video/View';
 export { default as ViewMapBlock } from '@plone/volto/components/manage/Blocks/Maps/View';
 export { default as ViewHTMLBlock } from '@plone/volto/components/manage/Blocks/HTML/View';
+export { default as ViewAnnounceBlock } from '@plone/volto/components/manage/Blocks/Announce/view';
 
 export { default as ListingBlockBody } from '@plone/volto/components/manage/Blocks/Listing/ListingBody';
 export { default as ListingBlockData } from '@plone/volto/components/manage/Blocks/Listing/ListingData';

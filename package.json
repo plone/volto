@@ -10,7 +10,9 @@
     "build": "pnpm build:registry && pnpm --filter @plone/volto build",
     "start": "pnpm build:registry && pnpm --filter @plone/volto start",
     "start:project": "turbo run start --filter plone",
-    "lint": "eslint --max-warnings=0 'packages/**/*.{js,jsx,ts,tsx}'",
+    "lint": "./node_modules/eslint/bin/eslint.js --max-warnings=0 'src/**/*.{js,jsx,ts,tsx,json}'",
+    "lint:fix": "./node_modules/eslint/bin/eslint.js --fix 'src/**/*.{js,jsx,ts,tsx,json}'",
+    "lint:ci": "./node_modules/eslint/bin/eslint.js --max-warnings=0 -f checkstyle 'src/**/*.{js,jsx,ts,tsx,json}' > eslint.xml",
     "lint:volto": "turbo run lint --filter @plone/volto",
     "test": "turbo run test:ci --filter @plone/volto",
     "i18n": "turbo run i18n --filter @plone/volto",
@@ -22,8 +24,12 @@
     "husky:uninstall": "husky uninstall"
   },
   "devDependencies": {
+    "@plone/scripts": "^3.0.0",
     "@typescript-eslint/eslint-plugin": "6.7.0",
     "@typescript-eslint/parser": "6.7.0",
+    "stylelint-prettier": "1.1.2",
+    "ts-jest": "^26.4.2",
+    "ts-loader": "9.4.4",
     "eslint": "^8.48.0",
     "eslint-config-prettier": "9.0.0",
     "eslint-import-resolver-typescript": "^3.6.1",
@@ -39,5 +45,13 @@
     "vitest": "^0.34.6",
     "yarnhook": "0.6.1"
   },
-  "packageManager": "pnpm@8.9.0"
+  "packageManager": "pnpm@8.9.0",
+  "dependencies": {
+    "react": "^18.2.0"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }  
 }

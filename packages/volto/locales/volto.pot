@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2023-11-27T07:34:40.957Z\n"
+"POT-Creation-Date: 2023-12-13T10:51:17.710Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -4340,6 +4340,11 @@ msgstr ""
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Enter a user name, usually something like "jsmith". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in.
 msgid "addUserFormUsernameDescription"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: PloneAnnouncement
+msgid "announce"
 msgstr ""
 
 #: components/manage/Blocks/Search/schema
