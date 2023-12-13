@@ -1,0 +1,1 @@
+When copying a text block—implemented in Slate—using the sidebar that contains UUIDs attached to elements in the data, the UUIDs get copied into the new block, making them not unique. Now instead of duplicating the UUIDs, a unique nanoid will be generated and assigned to the copy, preserving uniqueness. @dobr1408
