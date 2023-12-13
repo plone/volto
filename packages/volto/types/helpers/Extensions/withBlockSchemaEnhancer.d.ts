@@ -21,11 +21,13 @@ export function addExtensionFieldToSchema({ schema, name, items, intl, title, de
 export function withBlockSchemaEnhancer(FormComponent: any, extensionName?: string, insertFieldToOrder?: typeof _addField): ({ ...props }: {
     [x: string]: any;
 }) => JSX.Element;
-export function applySchemaEnhancer({ schema: originalSchema, formData, intl, blocksConfig, }: {
+export function applySchemaEnhancer({ schema: originalSchema, formData, intl, blocksConfig, navRoot, contentType, }: {
     schema: any;
     formData: any;
     intl: any;
     blocksConfig?: any;
+    navRoot: any;
+    contentType: any;
 }): any;
 export function withVariationSchemaEnhancer(FormComponent: any): (props: any) => JSX.Element;
 export namespace EMPTY_STYLES_SCHEMA {

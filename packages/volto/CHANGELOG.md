@@ -17,6 +17,27 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.5 (2023-12-13)
+
+### Feature
+
+- Added conditional variations support. @sneridagh @robgietema [#5424](https://github.com/plone/volto/issues/5424)
+- Added `navRoot` and `contentType` to `restricted` key in blocks configuration. @sneridagh [#5517](https://github.com/plone/volto/issues/5517)
+- Add support for `preview_image_link` behavior in Volto Image component @sneridagh [#5523](https://github.com/plone/volto/issues/5523)
+
+### Internal
+
+- Add missing dependency on jsdom @sneridagh [#5490](https://github.com/plone/volto/issues/5490)
+- Fix cypress artifacts path in acceptance tests. @davisagli [#5498](https://github.com/plone/volto/issues/5498)
+- Make sure that the dependencies are built and available on all processes @sneridagh [#5514](https://github.com/plone/volto/issues/5514)
+
+### Documentation
+
+- Less comment blocks must have `*` as the first character on the second and subsequent lines, else the Pygments lexer fails. @stevepiercy [#5500](https://github.com/plone/volto/issues/5500)
+- Revert #5500. See #5499 for actual cause of Pygments failure. @stevepiercy [#5504](https://github.com/plone/volto/issues/5504)
+- Clarified where to run Make commands for building documentation. @stevepiercy [#5505](https://github.com/plone/volto/issues/5505)
+- Changed installation of Vale from manual to automatic via `make docs-vale`. @stevepiercy [#5508](https://github.com/plone/volto/issues/5508)
+
 ## 18.0.0-alpha.4 (2023-12-02)
 
 ### Feature
