@@ -42,7 +42,9 @@ context('Conditional Blocks and Variations Acceptance Tests', () => {
 
       cy.getSlate().click();
       cy.get('.button .block-add-button').click({ force: true });
-      cy.get('.blocks-chooser .mostUsed .button.testBlockConditional').click();
+      cy.get('.blocks-chooser .mostUsed .button.testBlockConditional').click({
+        force: true,
+      });
     });
 
     it('As editor I cannot add a block restricted only to News Items in a Document', function () {
@@ -72,7 +74,9 @@ context('Conditional Blocks and Variations Acceptance Tests', () => {
 
       cy.getSlate().click();
       cy.get('.button .block-add-button').click({ force: true });
-      cy.get('.blocks-chooser .mostUsed .button.testBlockConditional').click();
+      cy.get('.blocks-chooser .mostUsed .button.testBlockConditional').click({
+        force: true,
+      });
     });
   });
 
