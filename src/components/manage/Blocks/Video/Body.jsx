@@ -5,6 +5,58 @@ import { Embed, Message } from 'semantic-ui-react';
 import cx from 'classnames';
 import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers';
 
+//Extracting videoID, listID and thumbnailURL from the video URL
+const getVideoIDAndPlaceholder = (url) => {
+  let videoID = null;
+  let listID = null;
+  let thumbnailURL = null;
+
+  if (url) {
+    if (url.match('youtu')) {
+      if (url.match('list')) {
+        const matches = url.match(/^.*\?list=(.*)|^.*&list=(.*)$/);
+        listID = matches[1] || matches[2];
+
+        let thumbnailID = null;
+        if (url.match(/\?v=(.*)&list/)) {
+          thumbnailID = url.match(/^.*\?v=(.*)&list(.*)/)[1];
+        }
+        if (url.match(/\?v=(.*)\?list/)) {
+          thumbnailID = url.match(/^.*\?v=(.*)\?list(.*)/)[1];
+        }
+        thumbnailURL =
+          'https://img.youtube.com/vi/' + thumbnailID + '/sddefault.jpg';
+      } else if (url.match('live')) {
+        videoID = url.match(/^.*\/live\/(.*)/)[1];
+      } else if (url.match(/\.be\//)) {
+        videoID = url.match(/^.*\.be\/(.*)/)[1];
+      } else if (url.match(/\?v=/)) {
+        videoID = url.match(/^.*\?v=(.*)$/)[1];
+      }
+
+      if (videoID) {
+        let thumbnailID = videoID;
+        if (videoID.match(/\?si=/)) {
+          thumbnailID = videoID.match(/(.*)\?si=(.*)/)[1];
+        }
+        //load video preview image from youtube
+        thumbnailURL =
+          'https://img.youtube.com/vi/' + thumbnailID + '/sddefault.jpg';
+      }
+    } else if (url.match('vimeo')) {
+      videoID = url.match(/^.*\.com\/(.*)/)[1];
+      if (videoID) {
+        let thumbnailID = videoID;
+        if (videoID.match(/\?si=/)) {
+          thumbnailID = videoID.match(/(.*)\?si=(.*)/)[1];
+        }
+        thumbnailURL = 'https://vumbnail.com/' + thumbnailID + '.jpg';
+      }
+    }
+  }
+  return { videoID, listID, thumbnailURL };
+};
+
 const Body = ({ data, isEditMode }) => {
   let placeholder = data.preview_image
     ? isInternalURL(data.preview_image)
@@ -12,32 +64,9 @@ const Body = ({ data, isEditMode }) => {
       : data.preview_image
     : null;
 
-  let videoID = null;
-  let listID = null;
+  const { videoID, listID, thumbnailURL } = getVideoIDAndPlaceholder(data.url);
 
-  if (data.url) {
-    if (data.url.match('youtu')) {
-      if (data.url.match('list')) {
-        const matches = data.url.match(/^.*\?list=(.*)|^.*&list=(.*)$/);
-        listID = matches[1] || matches[2];
-      } else {
-        videoID = data.url.match(/.be\//)
-          ? data.url.match(/^.*\.be\/(.*)/)[1]
-          : data.url.match(/^.*\?v=(.*)$/)[1];
-      }
-
-      if (!placeholder) {
-        //load video preview image from youtube
-        placeholder =
-          'https://img.youtube.com/vi/' + videoID + '/sddefault.jpg';
-      }
-    } else if (data.url.match('vimeo')) {
-      videoID = data.url.match(/^.*\.com\/(.*)/)[1];
-      if (!placeholder) {
-        placeholder = 'https://vumbnail.com/' + videoID + '.jpg';
-      }
-    }
-  }
+  placeholder = !placeholder ? thumbnailURL : placeholder;
 
   const ref = React.createRef();
   const onKeyDown = (e) => {
@@ -130,3 +159,4 @@ Body.propTypes = {
 };
 
 export default Body;
+export { getVideoIDAndPlaceholder };
