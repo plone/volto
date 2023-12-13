@@ -46,12 +46,16 @@ interface BlockConfigBase {
   }) => Record<string, unknown>;
   /**
    * If the block is restricted, it won't show in the chooser.
-   * The function signature is `({properties, block})` where `properties` is
-   * the current object data and `block` is the block being evaluated in `BlockChooser`.
+   * The function signature is `({properties, block, navRoot, contentType})` where
+   * `properties` is the current object data and `block` is the block being evaluated
+   * in `BlockChooser`, `navRoot` is the nearest navigation root object and
+   * `contentType` is the current content type.
    */
   restricted: (args: {
     properties: Content;
     block: BlockConfigBase; // TODO: This has to be extendable
+    navRoot: Content;
+    contentType: string;
   }) => boolean;
   /**
    * A meta group `most used`, appearing at the top of the chooser
@@ -74,6 +78,8 @@ interface BlockConfigBase {
     schema: JSONSchema;
     formData: BlockConfigBase; // Not sure, if so, has to be extendable
     intl: unknown;
+    navRoot: Content;
+    contentType: string;
   }) => JSONSchema;
 }
 
