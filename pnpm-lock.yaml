@@ -7,14 +7,7 @@ settings:
 importers:
 
   .:
-    dependencies:
-      react:
-        specifier: ^18.2.0
-        version: 18.2.0
     devDependencies:
-      '@plone/scripts':
-        specifier: ^3.0.0
-        version: link:packages/scripts
       '@typescript-eslint/eslint-plugin':
         specifier: 6.7.0
         version: 6.7.0(@typescript-eslint/parser@6.7.0)(eslint@8.53.0)(typescript@5.2.2)
@@ -48,15 +41,6 @@ importers:
       prettier:
         specifier: 3.0.3
         version: 3.0.3
-      stylelint-prettier:
-        specifier: 1.1.2
-        version: 1.1.2(prettier@3.0.3)(stylelint@15.10.3)
-      ts-jest:
-        specifier: ^26.4.2
-        version: 26.5.6(jest@26.6.3)(typescript@5.2.2)
-      ts-loader:
-        specifier: 9.4.4
-        version: 9.4.4(typescript@5.2.2)(webpack@5.76.1)
       tsconfig:
         specifier: workspace:*
         version: link:packages/tsconfig
@@ -26982,18 +26966,6 @@ packages:
       postcss: 8.4.31
       postcss-sorting: 7.0.1(postcss@8.4.31)
       stylelint: 15.10.3(typescript@5.2.2)
-
-  /stylelint-prettier@1.1.2(prettier@3.0.3)(stylelint@15.10.3):
-    resolution: {integrity: sha512-8QZ+EtBpMCXYB6cY0hNE3aCDKMySIx4Q8/malLaqgU/KXXa6Cj2KK8ulG1AJvUMD5XSSP8rOotqaCzR/BW6qAA==}
-    engines: {node: '>=6'}
-    peerDependencies:
-      prettier: '>= 0.11.0'
-      stylelint: '>= 9.2.1'
-    dependencies:
-      prettier: 3.0.3
-      prettier-linter-helpers: 1.0.0
-      stylelint: 15.10.3(typescript@5.2.2)
-    dev: true
 
   /stylelint-prettier@4.0.2(prettier@3.0.3)(stylelint@15.10.3):
     resolution: {integrity: sha512-EoHnR2PiaWgpGtoI4VW7AzneMfwmwQsNwQ+3/E2k/a+ju5yO6rfPfop4vzPQKcJN4ZM1YbspEOPu88D8538sbg==}
