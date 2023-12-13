@@ -127,10 +127,10 @@ export default function applyConfig(config) {
         {
           ...data,
           value: [
-            ...data.value.map((c) => {
+            ...(data?.value || []).map((c) => {
               return {
                 ...c,
-                children: c.children.map((childrenData) => {
+                children: (c?.children || []).map((childrenData) => {
                   return {
                     ...childrenData,
                     data: { ...childrenData.data, uid: nanoid(5) },
