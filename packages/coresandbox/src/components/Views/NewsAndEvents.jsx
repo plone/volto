@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect } from 'react';
 import { searchContent } from '@plone/volto/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { Container } from 'semantic-ui-react';
@@ -9,7 +9,7 @@ const NewsAndEvents = () => {
   );
   const dispatch = useDispatch();
 
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(
       searchContent(
         '/',
