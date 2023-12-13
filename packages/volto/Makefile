@@ -79,6 +79,13 @@ cypress-install:
 build-deps:
 	if [ ! -d $$(pwd)/../registry/dist ]; then (cd ../../ && pnpm build:deps); fi
 
+##### Release (it runs the one inside)
+
+.PHONY: copyreleasenotestodocs
+copyreleasenotestodocs:
+	cp CHANGELOG.md docs/source/release-notes/index.md
+	git add docs/source/release-notes/index.md
+
 ##### Docker containers
 
 .PHONY: start-backend-docker
