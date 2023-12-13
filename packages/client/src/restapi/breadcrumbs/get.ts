@@ -1,6 +1,6 @@
 import { apiRequest, ApiRequestParams } from '../../API';
-import { PloneClientConfig } from '../../interfaces/config';
-import { BreadcrumbsResponse } from '../../interfaces/breadcrumbs';
+import { PloneClientConfig } from '../../validation/config';
+import { BreadcrumbsResponse } from '@plone/types';
 import { z } from 'zod';
 
 const getBreadcrumbsSchema = z.object({

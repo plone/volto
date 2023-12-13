@@ -1,5 +1,5 @@
 import { apiRequest, ApiRequestParams } from '../../API';
-import { PloneClientConfig } from '../../interfaces/config';
+import { PloneClientConfig } from '../../validation/config';
 import { z } from 'zod';
 
 const installAddonProfileSchema = z.object({
