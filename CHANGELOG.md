@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 16.30.0 (2023-12-13)
+
+### Feature
+
+- Added `navRoot` and `contentType` to `restricted` key in blocks configuration. @sneridagh [#5517](https://github.com/plone/volto/issues/5517)
+
 ## 16.29.0 (2023-12-07)
 
 ### Feature
