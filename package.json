@@ -37,7 +37,7 @@
     "turbo": "latest",
     "typescript": "5.2.2",
     "vitest": "^0.34.6",
-    "yarnhook": "0.6.1"
+    "yarnhook": "0.6.1" 
   },
   "packageManager": "pnpm@8.9.0"
 }
