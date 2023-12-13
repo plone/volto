@@ -28,6 +28,32 @@ Thus it is safe to run it on top of your project and answer the prompts.
 
 ## Upgrading to Volto 18.x.x
 
+### ESlint project configuration update
+
+Since `@plone/registry` and other Volto dependencies packages are now released as standalone, it is needed to update some configurations files from your projects. In `.eslintrc.js`:
+
+```diff
+@@ -18,9 +19,6 @@ if (configFile) {
+     voltoPath = `./${jsConfig.baseUrl}/${pathsConfig['@plone/volto'][0]}`;
+ }
+
+-const AddonConfigurationRegistry = require(
+-  `${voltoPath}/packages/registry/addon-registry.js`,
+-);
+const AddonConfigurationRegistry = require('@plone/registry/src/addon-registry');
+
+@@ -38,9 +36,7 @@ const defaultConfig = {
+       alias: {
+         map: [
+           ['@plone/volto', '@plone/volto/src'],
+-          ['@plone/volto-slate', '@plone/volto/packages/volto-slate/src'],
+-          ['@plone/registry', '@plone/volto/packages/registry/src'],
+-          ['@plone/types', '@plone/volto/packages/types'],
++          ['@plone/volto-slate', '@plone/volto-slate/src'],
+           ...addonAliases,
+           ['@package', `${__dirname}/src`],
+```
+
 ### Upgraded Slate libraries
 
 The support libraries for Slate integration have been upgraded, mainly for bug fixes.
