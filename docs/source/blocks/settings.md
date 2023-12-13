@@ -39,7 +39,7 @@ const customBlocks = {
     group: 'common', // The group (blocks can be grouped, displayed in the chooser)
     view: MainSliderViewBlock, // The view mode component
     edit: MainSliderEditBlock, // The edit mode component
-    restricted: false, // {Boolean|function} If the block is restricted, it won't show in the chooser. The function signature is `({properties, block})` where `properties` is the current object data and `block` is the block being evaluated in `BlockChooser`.
+    restricted: false, // {Boolean|function} If the block is restricted, it won't show in the chooser. The function signature is `({properties, block, navRoot, contentType})` where `properties` is the current object data and `block` is the block being evaluated in `BlockChooser`. `navRoot` is the nearest navigation root object and `contentType` is the current content type.
     mostUsed: true, // A meta group `most used`, appearing at the top of the chooser
     blockHasOwnFocusManagement: false, // Set this to true if the block manages its own focus
     sidebarTab: 0, // The sidebar tab you want to be selected when selecting the block

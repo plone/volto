@@ -338,6 +338,9 @@ class Add extends Component {
               // Copy the Language Independent Fields values from the to-be translated content
               // into the default values of the translated content Add form.
               ...lifData(),
+              parent: {
+                '@id': this.props.content?.['@id'] || '',
+              },
             }}
             requestError={this.state.error}
             onSubmit={this.onSubmit}
