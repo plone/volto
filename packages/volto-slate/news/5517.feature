@@ -1,1 +1,1 @@
-Improve `restricted` key in blocks config to include `navRoot` and `contentType` @sneridagh
+Added `navRoot` and `contentType` to `restricted` key in blocks configuration. @sneridagh

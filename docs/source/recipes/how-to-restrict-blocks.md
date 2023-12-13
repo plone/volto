@@ -9,8 +9,8 @@ myst:
 
 # How to restrict blocks
 
-You can restrict blocks from being added to a content type using the `restrict` key in the configuration object.
-This key can be a boolean or a function.
+You can restrict blocks from being added to a content type using the `restricted` key in the configuration object.
+This key can be a boolean or a function that returns a boolean.
 If the block is restricted, it won't show in the chooser.
 However, it can still be added either programatically or by directly using the REST API, so this restriction only applies to the user interface.
 The function has this signature:
@@ -29,7 +29,7 @@ The function has this signature:
 Where `properties` is the current object data and `block` is the block being evaluated in `BlockChooser`.
 `navRoot` is the nearest navigation root object and `contentType` is the current content type.
 
-In the following configuration example, you can restrict a block from showing in both the `News Item`s and for all content types in a specific path in the content tree (`/folder`):
+In the following configuration example, you can restrict a block so that it cannot be added unless the content type is `News Item` or the content item is in a specific path in the content tree (`/folder`):
 
 ```ts
 const testBlockConditional = {
