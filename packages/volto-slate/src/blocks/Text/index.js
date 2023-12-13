@@ -4,6 +4,9 @@ import TextBlockView from './TextBlockView';
 import TextBlockEdit from './TextBlockEdit';
 import TextBlockSchema from './TextBlockSchema';
 
+import { nanoid } from '@plone/volto-slate/utils';
+import { v4 as uuid } from 'uuid';
+
 import {
   goDown,
   goUp,
