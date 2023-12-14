@@ -1,1 +1,1 @@
-I've added a Cypress Test to check if the Modal for Deleting linked Items pops up correctly @Molochem
+Added Cypress tests to verify that the modal dialog for deleting linked items pops up correctly. @Molochem
