@@ -8,6 +8,34 @@
 
 <!-- towncrier release notes start -->
 
+## 9.0.0-alpha.2 (2023-12-14)
+
+### Bugfix
+
+- Fixed the project generator's ESLint configuration, added code quality checks to the CI to ensure a generated project can run these checks, and added documentation for how to reconfigure ESLint in projects. @sneridagh [#5530](https://github.com/plone/volto/issues/5530)
+
+## 9.0.0-alpha.1 (2023-12-02)
+
+### Bugfix
+
+- Fix the generator for add-ons when killing the backend if CTRL+C while developing with the docker approach @sneridagh [#5474](https://github.com/plone/volto/issues/5474)
+
+### Documentation
+
+- Replaced table with link to documentation for compatibility section in README. @stevepiercy [#5480](https://github.com/plone/volto/issues/5480)
+
+## 9.0.0-alpha.0 (2023-12-01)
+
+### Breaking
+
+- Release an alpha version only compatible with Volto 18. @sneridagh [#5468](https://github.com/plone/volto/issues/5468)
+
+## 8.0.3 (2023-11-25)
+
+### Bugfix
+
+- Bring back deprecated Yeoman install method used for running yarnInstall @ichim-david [#5436](https://github.com/plone/volto/issues/5436)
+
 ## 8.0.2 (2023-11-16)
 
 ### Bugfix

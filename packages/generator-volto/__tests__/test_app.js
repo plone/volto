@@ -6,28 +6,25 @@ const fs = require('fs-extra');
 let tmpDir;
 
 jest.mock('https', () => ({
-  methodToMock: {},
+  ...jest.requireActual('https'),
+  get: jest.fn().mockImplementation((url, headers, cb) => {
+    const Stream = require('stream');
+    let streamStream = new Stream();
+    cb(streamStream);
+
+    const json = JSON.stringify({
+      name: '@plone/volto',
+      'dist-tags': {
+        latest: '16.3.0',
+        alpha: '16.0.0-alpha.53',
+        rc: '16.0.0-rc.3',
+      },
+    });
+
+    streamStream.emit('data', json);
+    streamStream.emit('end');
+  }),
 }));
-const httpsMock = require('https');
-
-const Stream = require('stream');
-
-httpsMock.get = jest.fn().mockImplementation((url, headers, cb) => {
-  let streamStream = new Stream();
-  cb(streamStream);
-
-  const json = JSON.stringify({
-    name: '@plone/volto',
-    'dist-tags': {
-      latest: '16.3.0',
-      alpha: '16.0.0-alpha.53',
-      rc: '16.0.0-rc.3',
-    },
-  });
-
-  streamStream.emit('data', json);
-  streamStream.emit('end');
-});
 
 describe('generator-create-volto-app:app', () => {
   beforeAll(() => {
@@ -44,12 +41,9 @@ describe('generator-create-volto-app:app', () => {
 
   it('creates files', () => {
     assert.file([
-      '../../../package.json',
-      '../../../yarn.lock',
-      '../../../.gitignore',
-      '../volto-test-volto/package.json',
-      '../volto-test-volto/yarn.lock',
-      '../volto-test-volto/.gitignore',
+      'test-volto/package.json',
+      'test-volto/yarn.lock',
+      'test-volto/.gitignore',
     ]);
   });
 
@@ -81,12 +75,9 @@ describe('generator-create-volto-app:app with canary option', () => {
 
   it('creates files', () => {
     assert.file([
-      '../../../package.json',
-      '../../../yarn.lock',
-      '../../../.gitignore',
-      '../volto-test-volto/package.json',
-      '../volto-test-volto/yarn.lock',
-      '../volto-test-volto/.gitignore',
+      'test-volto/package.json',
+      'test-volto/yarn.lock',
+      'test-volto/.gitignore',
     ]);
   });
 
@@ -117,12 +108,9 @@ describe('generator-create-volto-app:app with volto from Github branch', () => {
 
   it('creates files', () => {
     assert.file([
-      '../../../package.json',
-      '../../../yarn.lock',
-      '../../../.gitignore',
-      '../volto-test-volto/package.json',
-      '../volto-test-volto/yarn.lock',
-      '../volto-test-volto/.gitignore',
+      'test-volto/package.json',
+      'test-volto/yarn.lock',
+      'test-volto/.gitignore',
     ]);
   });
 

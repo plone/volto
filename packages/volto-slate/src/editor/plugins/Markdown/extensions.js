@@ -267,68 +267,70 @@ export const getRangeFromBlockStart = (editor, options = {}) => {
  * Enables support for autoformatting actions.
  * Once a markup rule is validated, it does not check the following rules.
  */
-export const withAutoformat = ({ rules }) => (editor) => {
-  const { insertText } = editor;
+export const withAutoformat =
+  ({ rules }) =>
+  (editor) => {
+    const { insertText } = editor;
 
-  editor.insertText = (text) => {
-    if (!isCollapsed(editor.selection)) return insertText(text);
+    editor.insertText = (text) => {
+      if (!isCollapsed(editor.selection)) return insertText(text);
 
-    for (const {
-      trigger = ' ',
-      type,
-      markup,
-      preFormat,
-      format,
-      mode,
-      between,
-      ignoreTrim,
-      insertTrigger,
-    } of rules) {
-      const triggers = castArray(trigger);
+      for (const {
+        trigger = ' ',
+        type,
+        markup,
+        preFormat,
+        format,
+        mode,
+        between,
+        ignoreTrim,
+        insertTrigger,
+      } of rules) {
+        const triggers = castArray(trigger);
 
-      // Check trigger
-      if (!triggers.includes(text)) continue;
+        // Check trigger
+        if (!triggers.includes(text)) continue;
 
-      const markups = castArray(markup);
+        const markups = castArray(markup);
 
-      const rangeFromBlockStart = getRangeFromBlockStart(editor);
-      const textFromBlockStart = getText(editor, rangeFromBlockStart);
+        const rangeFromBlockStart = getRangeFromBlockStart(editor);
+        const textFromBlockStart = getText(editor, rangeFromBlockStart);
 
-      const valid = () => insertTrigger && insertText(text);
+        const valid = () => insertTrigger && insertText(text);
 
-      if (markups.includes(textFromBlockStart)) {
-        // Start of the block
-        autoformatBlock(editor, type, rangeFromBlockStart, {
-          preFormat,
-          format,
-        });
-        return valid();
-      }
-
-      if (mode === 'inline-block') {
-        if (
-          autoformatInlineBlock(editor, { preFormat, markup, format, type })
-        ) {
+        if (markups.includes(textFromBlockStart)) {
+          // Start of the block
+          autoformatBlock(editor, type, rangeFromBlockStart, {
+            preFormat,
+            format,
+          });
           return valid();
+        }
+
+        if (mode === 'inline-block') {
+          if (
+            autoformatInlineBlock(editor, { preFormat, markup, format, type })
+          ) {
+            return valid();
+          }
+        }
+
+        if (mode === 'inline') {
+          if (
+            autoformatInline(editor, {
+              type,
+              between,
+              ignoreTrim,
+              markup: Array.isArray(markup) ? markup[0] : markup,
+            })
+          ) {
+            return valid();
+          }
         }
       }
 
-      if (mode === 'inline') {
-        if (
-          autoformatInline(editor, {
-            type,
-            between,
-            ignoreTrim,
-            markup: Array.isArray(markup) ? markup[0] : markup,
-          })
-        ) {
-          return valid();
-        }
-      }
-    }
+      insertText(text);
+    };
 
-    insertText(text);
+    return editor;
   };
-
-  return editor;
-};

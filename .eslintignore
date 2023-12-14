@@ -1,0 +1,5 @@
+node_modules
+build
+packages/volto
+packages/volto-guillotina
+packages/generator-volto/generators/app/templates
