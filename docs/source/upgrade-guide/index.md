@@ -30,7 +30,9 @@ Thus it is safe to run it on top of your project and answer the prompts.
 
 ### ESlint project configuration update
 
-Since `@plone/registry` and other Volto dependencies packages are now released as standalone, it is needed to update some configurations files from your projects. In `.eslintrc.js`:
+`@plone/registry` and [other packages on which Volto depends](https://github.com/plone/volto/tree/main/packages) are now stand-alone releases in the monorepo structure released in 18.0.0-alpha.4.
+
+You must update the configuration file {file}`.eslintrc.js` in your projects, according to the following `git diff` patch.
 
 ```diff
 @@ -18,9 +19,6 @@ if (configFile) {

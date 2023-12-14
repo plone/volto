@@ -1,1 +1,1 @@
-Do not pin the `eslint-plugin-jsx-a11y` version in Volto. Fixed generator ESlint config. Added tests and docs. @sneridagh
+Fixed the project generator's ESLint configuration, added code quality checks to the CI to ensure a generated project can run these checks, and added documentation for how to reconfigure ESLint in projects. @sneridagh
