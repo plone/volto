@@ -1,9 +1,7 @@
 const path = require('path');
 const AddonConfigurationRegistry = require('../addon-registry');
-const {
-  buildDependencyGraph,
-  getAddonsLoaderChain,
-} = AddonConfigurationRegistry;
+const { buildDependencyGraph, getAddonsLoaderChain } =
+  AddonConfigurationRegistry;
 
 describe('AddonConfigurationRegistry - Project', () => {
   jest.mock(
@@ -143,7 +141,9 @@ describe('AddonConfigurationRegistry - Project', () => {
     const base = path.join(__dirname, 'fixtures', 'test-volto-project');
     const reg = new AddonConfigurationRegistry(base);
     expect(reg.getProjectCustomizationPaths()).toStrictEqual({
+      '@plone/volto/TSComponent': `${base}/src/customizations/TSComponent.jsx`,
       '@plone/volto/client': `${base}/src/customizations/client.js`,
+      '@plone/volto/routes': `${base}/src/customizations/routes.tsx`,
       'test-addon/testaddon': `${base}/src/custom-addons/test-addon/testaddon.js`,
       '@plone/volto/server': `${base}/src/customizations/server.jsx`,
     });
@@ -153,7 +153,9 @@ describe('AddonConfigurationRegistry - Project', () => {
     const base = path.join(__dirname, 'fixtures', 'test-volto-project');
     const reg = new AddonConfigurationRegistry(base);
     expect(reg.getAddonCustomizationPaths()).toStrictEqual({
+      '@plone/volto/TSComponent': `${base}/node_modules/test-released-source-addon/src/customizations/TSComponent.jsx`,
       '@plone/volto/client': `${base}/node_modules/test-released-source-addon/src/customizations/client.js`,
+      '@plone/volto/routes': `${base}/node_modules/test-released-source-addon/src/customizations/routes.tsx`,
       '@plone/volto/server': `${base}/addons/test-addon/src/custom-addons/volto/server.jsx`,
       '@root/marker': `${base}/node_modules/test-released-source-addon/src/customizations/@root/marker.js`,
       'test-released-source-addon/index': `${base}/addons/test-addon/src/custom-addons/test-released-source-addon/index.js`,
