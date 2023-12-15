@@ -117,7 +117,7 @@ const Login = (props) => {
     history,
     returnUrl,
     props.isLogout,
-    location.state.isLogout,
+    location?.state?.isLogout,
   ]);
 
   const onLogin = (event) => {
