@@ -79,7 +79,7 @@ const Login = (props) => {
     '/';
 
   useEffect(() => {
-    if (token && !(props.isLogout || location.state.isLogout)) {
+    if (token && !(props.isLogout || location?.state?.isLogout)) {
       history.push(returnUrl || '/');
       if (toast.isActive('loggedOut')) {
         toast.dismiss('loggedOut');
