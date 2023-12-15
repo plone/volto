@@ -1,9 +1,9 @@
-# 
+#
 # Translators:
 # Petri Savolainen <petri.savolainen@iki.fi>, 2020
 # Asko Soukka <asko.soukka@iki.fi>, 2020
 # Rikupekka Oksanen <rioksane@gmail.com>, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
@@ -23,32 +23,32 @@ msgstr ""
 "Preferred-Encodings: utf-8\n"
 
 #: components/manage/Blocks/HTML/Edit
-# defaultMessage: <p>Add some HTML here</p>
+#. Default: "<p>Add some HTML here</p>"
 msgid "<p>Add some HTML here</p>"
 msgstr "<p>Kirjoita tähän HTML-koodia</p>"
 
 #: components/theme/Register/Register
-# defaultMessage: Account Registration Completed
+#. Default: "Account Registration Completed"
 msgid "Account Registration Completed"
 msgstr "Käyttäjätunnuksen rekisteröinti on valmis"
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Account activation completed
+#. Default: "Account activation completed"
 msgid "Account activation completed"
 msgstr "Käyttäjätunnuksen aktivointi on valmis"
 
 #: components/manage/Controlpanels/ModerateComments
-# defaultMessage: Action
+#. Default: "Action"
 msgid "Action"
 msgstr "Toiminto"
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
-# defaultMessage: Action changed
+#. Default: "Action changed"
 msgid "Action changed"
 msgstr "Toiminto muutettu"
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
-# defaultMessage: Action:
+#. Default: "Action:"
 msgid "Action: "
 msgstr "Toiminto"
 
@@ -58,22 +58,22 @@ msgstr "Toiminto"
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 #: components/manage/Controlpanels/Rules/Rules
 #: components/manage/Controlpanels/Users/UsersControlpanel
-# defaultMessage: Actions
+#. Default: "Actions"
 msgid "Actions"
 msgstr "Toiminnot"
 
 #: components/manage/Controlpanels/AddonsControlpanel
-# defaultMessage: Activate and deactivate add-ons in the lists below.
+#. Default: "Activate and deactivate add-ons in the lists below."
 msgid "Activate and deactivate"
 msgstr "Ota käyttöön ja poista käytöstä"
 
 #: components/manage/Rules/Rules
-# defaultMessage: Active
+#. Default: "Active"
 msgid "Active"
 msgstr "Aktiivinen"
 
 #: components/manage/Rules/Rules
-# defaultMessage: Active content rules in this Page
+#. Default: "Active content rules in this Page"
 msgid "Active content rules in this Page"
 msgstr "Aktiiviset sisältösäännöt tällä sivulla"
 
@@ -85,233 +85,233 @@ msgstr "Aktiiviset sisältösäännöt tällä sivulla"
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/SchemaWidget
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Add
+#. Default: "Add"
 msgid "Add"
 msgstr "Lisää"
 
 #: components/manage/Widgets/ObjectListWidget
-# defaultMessage: Add
+#. Default: "Add"
 msgid "Add (object list)"
 msgstr "Lisää (objektilista)"
 
 #: components/manage/Controlpanels/AddonsControlpanel
-# defaultMessage: To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see
+#. Default: "To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see"
 msgid "Add Addons"
 msgstr "Lisää laajennoksia"
 
 #: components/manage/Toolbar/Types
-# defaultMessage: Add Content…
+#. Default: "Add Content…"
 msgid "Add Content"
 msgstr "Lisää sisältöä"
 
 #: components/manage/Controlpanels/Rules/AddRule
-# defaultMessage: Add Content Rule
+#. Default: "Add Content Rule"
 msgid "Add Content Rule"
 msgstr "Lisää sisältösääntö"
 
 #: components/manage/Controlpanels/Rules/AddRule
-# defaultMessage: Add Rule
+#. Default: "Add Rule"
 msgid "Add Rule"
 msgstr "Lisää sääntö"
 
 #: components/manage/Toolbar/Types
-# defaultMessage: Add Translation…
+#. Default: "Add Translation…"
 msgid "Add Translation…"
 msgstr "Lisää käännös…"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Add User
+#. Default: "Add User"
 msgid "Add User"
 msgstr "Lisää käyttäjä"
 
 #: components/manage/Blocks/Description/Edit
-# defaultMessage: Add a description…
+#. Default: "Add a description…"
 msgid "Add a description…"
 msgstr "Lisää kuvaus…"
 
 #: components/manage/Aliases/Aliases
-# defaultMessage: Add a new alternative url
+#. Default: "Add a new alternative url"
 msgid "Add a new alternative url"
 msgstr "Lisää vaihtoehtoinen URL"
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
-# defaultMessage: Action added
+#. Default: "Action added"
 msgid "Add action"
 msgstr "Lisää toiminto"
 
 #: components/manage/BlockChooser/BlockChooserButton
-# defaultMessage: Add block
+#. Default: "Add block"
 msgid "Add block"
 msgstr "Lisää palikka"
 
 #: components/manage/Blocks/Container/NewBlockAddButton
-# defaultMessage: Add block in position {index}
+#. Default: "Add block in position {index}"
 msgid "Add block in position {index}"
 msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Add block…
+#. Default: "Add block…"
 msgid "Add block…"
 msgstr "Add palikka…"
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
-# defaultMessage: Condition added
+#. Default: "Condition added"
 msgid "Add condition"
 msgstr "Lisää ehto"
 
 #: components/manage/Controlpanels/Rules/Rules
-# defaultMessage: Add content rule
+#. Default: "Add content rule"
 msgid "Add content rule"
 msgstr "Lisää sisältösääntö"
 
 #: components/manage/Widgets/QueryWidget
-# defaultMessage: Add criteria
+#. Default: "Add criteria"
 msgid "Add criteria"
 msgstr "Lisää ehto"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
-# defaultMessage: Add date
+#. Default: "Add date"
 msgid "Add date"
 msgstr "Lisää päivä"
 
 #: components/manage/Blocks/Container/SimpleContainerToolbar
-# defaultMessage: Add element to container
+#. Default: "Add element to container"
 msgid "Add element to container"
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
-# defaultMessage: Add field
+#. Default: "Add field"
 msgid "Add field"
 msgstr "Lisää kenttä"
 
 #: components/manage/Widgets/SchemaWidget
-# defaultMessage: Add fieldset
+#. Default: "Add fieldset"
 msgid "Add fieldset"
 msgstr "Lisää kenttäryhmä"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Add group
+#. Default: "Add group"
 msgid "Add group"
 msgstr "Lisää ryhmä"
 
 #: components/manage/Controlpanels/ContentTypes
-# defaultMessage: Add new content type
+#. Default: "Add new content type"
 msgid "Add new content type"
 msgstr "Lisää uusi sisältötyyppi"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Add new group
+#. Default: "Add new group"
 msgid "Add new group"
 msgstr "Lisää uusi ryhmä"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Add new user
+#. Default: "Add new user"
 msgid "Add new user"
 msgstr "Lisää uusi käyttäjä"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Add to Groups
+#. Default: "Add to Groups"
 msgid "Add to Groups"
 msgstr "Lisää ryhmiin"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Add users to group
+#. Default: "Add users to group"
 msgid "Add users to group"
 msgstr "Lisää käyttäjiä ryhmään"
 
 #: components/manage/Widgets/VocabularyTermsWidget
-# defaultMessage: Add term
+#. Default: "Add term"
 msgid "Add vocabulary term"
 msgstr "Lisää sanastotermi"
 
 #: components/manage/Add/Add
-# defaultMessage: Add {type}
+#. Default: "Add {type}"
 msgid "Add {type}"
 msgstr "Lisää {type}"
 
 #: components/manage/Controlpanels/Controlpanels
-# defaultMessage: Add-Ons
+#. Default: "Add-Ons"
 msgid "Add-Ons"
 msgstr "Laajennokset"
 
 #: components/manage/Controlpanels/Controlpanels
-# defaultMessage: Add-on Configuration
+#. Default: "Add-on Configuration"
 msgid "Add-on Configuration"
 msgstr "Laajennosten asetukset"
 
 #: components/manage/Controlpanels/AddonsControlpanel
-# defaultMessage: Add-ons
+#. Default: "Add-ons"
 msgid "Add-ons"
 msgstr "Laajennokset"
 
 #: components/manage/Controlpanels/AddonsControlpanel
-# defaultMessage: Add-ons Settings
+#. Default: "Add-ons Settings"
 msgid "Add-ons Settings"
 msgstr "Laajennoksien asetukset"
 
 #: components/manage/Rules/Rules
-# defaultMessage: Added
+#. Default: "Added"
 msgid "Added"
 msgstr "Lisätty"
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
-# defaultMessage: Additional date
+#. Default: "Additional date"
 msgid "Additional date"
 msgstr "Erillinen päivä"
 
 #: components/manage/Controlpanels/AddonsControlpanel
-# defaultMessage: Addon could not be installed
+#. Default: "Addon could not be installed"
 msgid "Addon could not be installed"
 msgstr "Laajennosta ei voitu asentaa"
 
 #: components/manage/Controlpanels/AddonsControlpanel
-# defaultMessage: Addon could not be uninstalled
+#. Default: "Addon could not be uninstalled"
 msgid "Addon could not be uninstalled"
 msgstr "Laajennosta ei voitu poistaa"
 
 #: components/manage/Controlpanels/AddonsControlpanel
-# defaultMessage: Addon could not be upgraded
+#. Default: "Addon could not be upgraded"
 msgid "Addon could not be upgraded"
 msgstr "Laajennosta ei voitu päivittää"
 
 #: components/manage/Controlpanels/AddonsControlpanel
-# defaultMessage: Addon installed succesfuly
+#. Default: "Addon installed succesfuly"
 msgid "Addon installed succesfuly"
 msgstr "Laajennos asennettu onnistuneesti"
 
 #: components/manage/Controlpanels/AddonsControlpanel
-# defaultMessage: Addon uninstalled succesfuly
+#. Default: "Addon uninstalled succesfuly"
 msgid "Addon uninstalled succesfuly"
 msgstr "Laajennos poistettu onnistuneesti"
 
 #: components/manage/Controlpanels/AddonsControlpanel
-# defaultMessage: Addon upgraded succesfuly
+#. Default: "Addon upgraded succesfuly"
 msgid "Addon upgraded succesfuly"
 msgstr "Laajennos päivitetty onnistuneesti"
 
 #: components/manage/Blocks/Search/schema
-# defaultMessage: Advanced facet?
+#. Default: "Advanced facet?"
 msgid "Advanced facet?"
 msgstr ""
 
 #: components/manage/Blocks/Search/schema
-# defaultMessage: Advanced facets are initially hidden and displayed on demand
+#. Default: "Advanced facets are initially hidden and displayed on demand"
 msgid "Advanced facets are initially hidden and displayed on demand"
 msgstr ""
 
 #: config/Views
-# defaultMessage: Album view
+#. Default: "Album view"
 msgid "Album view"
 msgstr "Albuminäkymä"
 
 #: components/manage/Controlpanels/Aliases
-# defaultMessage: Alias
+#. Default: "Alias"
 msgid "Alias"
 msgstr "Alias"
 
 #: components/manage/Aliases/Aliases
 #: components/manage/Controlpanels/Aliases
-# defaultMessage: Alias has been added
+#. Default: "Alias has been added"
 msgid "Alias has been added"
 msgstr "Alias on lisätty"
 
@@ -320,116 +320,116 @@ msgstr "Alias on lisätty"
 #: components/manage/Blocks/Maps/schema
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Blocks/Video/schema
-# defaultMessage: Alignment
+#. Default: "Alignment"
 msgid "Alignment"
 msgstr "Asettelu"
 
 #: components/manage/Contents/Contents
-# defaultMessage: All
+#. Default: "All"
 msgid "All"
 msgstr "Kaikki"
 
 #: config/Views
-# defaultMessage: All content
+#. Default: "All content"
 msgid "All content"
 msgstr "Kaikki sisältö"
 
 #: components/manage/Controlpanels/Aliases
-# defaultMessage: All existing alternative urls for this site
+#. Default: "All existing alternative urls for this site"
 msgid "All existing alternative urls for this site"
 msgstr "Kaikki vaihtoehtoiset URL:t tälle sivustolle"
 
 #: components/theme/Search/Search
-# defaultMessage: Alphabetically
+#. Default: "Alphabetically"
 msgid "Alphabetically"
 msgstr "Aakkosjärjestys"
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/schema
-# defaultMessage: Alt text
+#. Default: "Alt text"
 msgid "Alt text"
 msgstr "Kuvaus"
 
 #: components/manage/Blocks/Image/schema
-# defaultMessage: Leave empty if the image is purely decorative.
+#. Default: "Leave empty if the image is purely decorative."
 msgid "Alt text hint"
 msgstr "Kuvaustekstin vihje"
 
 #: components/manage/Blocks/Image/schema
-# defaultMessage: Describe the purpose of the image.
+#. Default: "Describe the purpose of the image."
 msgid "Alt text hint link text"
 msgstr "Kuvaustekstin vihjeen linkkiteksti"
 
 #: components/manage/Controlpanels/Aliases
-# defaultMessage: Alternative url path (Required)
+#. Default: "Alternative url path (Required)"
 msgid "Alternative url path (Required)"
 msgstr "Vaihtoehtoinen URL-polku (pakollinen)"
 
 #: components/manage/Aliases/Aliases
 #: components/manage/Controlpanels/Aliases
-# defaultMessage: Alternative url path must start with a slash.
+#. Default: "Alternative url path must start with a slash."
 msgid "Alternative url path must start with a slash."
 msgstr "Vaihtoehtoisen URL-polun pitää alkaa kauttaviivalla"
 
 #: components/manage/Controlpanels/Aliases
-# defaultMessage: Alternative url path → target url path (date and time of creation, manually created yes/no)
+#. Default: "Alternative url path → target url path (date and time of creation, manually created yes/no)"
 msgid "Alternative url path → target url path (date and time of creation, manually created yes/no)"
 msgstr "Vaihtoehtoinen URL-polku -> kohteen URL-polku (päivämäärä ja luontiaika, käsin luotu kyllä/ei)"
 
 #: components/manage/Rules/Rules
-# defaultMessage: Applied to subfolders
+#. Default: "Applied to subfolders"
 msgid "Applied to subfolders"
 msgstr "Koskee alikansioita"
 
 #: components/manage/Rules/Rules
-# defaultMessage: Applies to subfolders?
+#. Default: "Applies to subfolders?"
 msgid "Applies to subfolders?"
 msgstr "Koskee alikansioita"
 
 #: components/manage/Rules/Rules
-# defaultMessage: Apply to subfolders
+#. Default: "Apply to subfolders"
 msgid "Apply to subfolders"
 msgstr "Kohdista alikansioihin"
 
 #: components/manage/Toolbar/More
-# defaultMessage: Apply working copy
+#. Default: "Apply working copy"
 msgid "Apply working copy"
 msgstr "Kohdista työkopio"
 
 #: components/manage/Widgets/SchemaWidget
-# defaultMessage: Are you sure you want to delete this field?
+#. Default: "Are you sure you want to delete this field?"
 msgid "Are you sure you want to delete this field?"
 msgstr "Haluatko varmasti poistaa tämän kentän?"
 
 #: components/manage/Widgets/SchemaWidget
-# defaultMessage: Are you sure you want to delete this fieldset including all fields?
+#. Default: "Are you sure you want to delete this fieldset including all fields?"
 msgid "Are you sure you want to delete this fieldset including all fields?"
 msgstr "Haluatko varmasti poistaa tämän kenttäryhmän ja kaikki sen kentät?"
 
 #: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents
-# defaultMessage: Ascending
+#. Default: "Ascending"
 msgid "Ascending"
 msgstr "Nouseva"
 
 #: components/manage/Sharing/Sharing
-# defaultMessage: Assign the {role} role to {entry}
+#. Default: "Assign the {role} role to {entry}"
 msgid "Assign the {role} role to {entry}"
 msgstr ""
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
-# defaultMessage: Assignments
+#. Default: "Assignments"
 msgid "Assignments"
 msgstr "Tehtävät"
 
 #: components/manage/Controlpanels/AddonsControlpanel
-# defaultMessage: Available
+#. Default: "Available"
 msgid "Available"
 msgstr "Saatavilla"
 
 #: components/manage/Rules/Rules
-# defaultMessage: Available content rules:
+#. Default: "Available content rules:"
 msgid "Available content rules:"
 msgstr "Saatavilla olevat sisältösäännöt:"
 
@@ -463,69 +463,69 @@ msgstr "Saatavilla olevat sisältösäännöt:"
 #: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Back
+#. Default: "Back"
 msgid "Back"
 msgstr "Takaisin"
 
 #: components/manage/Diff/Diff
-# defaultMessage: Base
+#. Default: "Base"
 msgid "Base"
 msgstr "Vertailukohta"
 
 #: components/manage/Blocks/Search/schema
-# defaultMessage: Base search query
+#. Default: "Base search query"
 msgid "Base search query"
 msgstr ""
 
 #: components/manage/Sidebar/Sidebar
-# defaultMessage: Block
+#. Default: "Block"
 msgid "Block"
 msgstr "Palikka"
 
 #: components/theme/Login/Login
-# defaultMessage: Both email address and password are case sensitive, check that caps lock is not enabled.
+#. Default: "Both email address and password are case sensitive, check that caps lock is not enabled."
 msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
 msgstr "Tarkista, että caps lock ei ole päällä. Sekä sähköpostiosoitteessa että salasanassa myös kirjainten koko tarkistetaan."
 
 #: components/theme/Breadcrumbs/Breadcrumbs
-# defaultMessage: Breadcrumbs
+#. Default: "Breadcrumbs"
 msgid "Breadcrumbs"
 msgstr "Leivänmurut"
 
 #: components/manage/Controlpanels/Relations/BrokenRelations
-# defaultMessage: Broken relations
+#. Default: "Broken relations"
 msgid "Broken relations"
 msgstr ""
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Sidebar/ObjectBrowserNav
-# defaultMessage: Browse
+#. Default: "Browse"
 msgid "Browse"
 msgstr "Selaa"
 
 #: components/manage/Blocks/Image/Edit
-# defaultMessage: Browse the site, drop an image, or type an URL
+#. Default: "Browse the site, drop an image, or type an URL"
 msgid "Browse the site, drop an image, or type an URL"
 msgstr "Selaa sivustoa, raahaa ja pudota kuva, tai syötä URL"
 
 #: components/manage/Sharing/Sharing
-# defaultMessage: By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator.
+#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 msgstr "Oletuksena käyttöoikeudet peritään aina edeltävältä sisältötasolta. Jos tämä valinta poistetaan, vain tällä tasolla erikseen määritellyt käyttöoikeudet ovat voimassa. {inherited} tarkoittaa perittyä käyttöoikeutta. {global} tarkoittaa ylläpitäjän myöntämää sivustonlaajuista käyttöoikeutta."
 
 #: components/manage/Controlpanels/DatabaseInformation
-# defaultMessage: Cache Name
+#. Default: "Cache Name"
 msgid "Cache Name"
 msgstr "Välimuistin nimi"
 
 #: components/manage/Controlpanels/ContentTypeLayout
-# defaultMessage: Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled
+#. Default: "Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled"
 msgid "Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled"
 msgstr "Sisältötyypin <strong>{type}</strong> asettelua ei voi muokata, koska sisältötyyppi ei tue <strong>Volto-palikoita</strong>"
 
 #: components/manage/Controlpanels/ContentTypeLayout
-# defaultMessage: Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>
+#. Default: "Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>"
 msgid "Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>"
 msgstr "Sisältötyypin <strong>{type}</strong> asettelua ei voi muokata, koska sisältötyypille ei ole aktivoitu <strong>Volto-palikoita</strong>"
 
@@ -543,50 +543,50 @@ msgstr "Sisältötyypin <strong>{type}</strong> asettelua ei voi muokata, koska 
 #: components/manage/Sharing/Sharing
 #: components/theme/Login/Login
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Cancel
+#. Default: "Cancel"
 msgid "Cancel"
 msgstr "Peruuta"
 
 #: components/manage/Blocks/Table/Edit
-# defaultMessage: Cell
+#. Default: "Cell"
 msgid "Cell"
 msgstr "Sarake"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 #: components/manage/Widgets/AlignWidget
-# defaultMessage: Center
+#. Default: "Center"
 msgid "Center"
 msgstr "Keskellä"
 
 #: components/manage/History/History
-# defaultMessage: Change Note
+#. Default: "Change Note"
 msgid "Change Note"
 msgstr "Muutoskommentti"
 
 #: components/manage/Preferences/ChangePassword
-# defaultMessage: Change Password
+#. Default: "Change Password"
 msgid "Change Password"
 msgstr "Vaida salasana"
 
 #: components/manage/Contents/ContentsWorkflowModal
-# defaultMessage: Change State
+#. Default: "Change State"
 msgid "Change State"
 msgstr "Muuta julkisuutta"
 
 #: components/manage/Contents/ContentsWorkflowModal
-# defaultMessage: Change workflow state recursively
+#. Default: "Change workflow state recursively"
 msgid "Change workflow state recursively"
 msgstr "Muuta työnkulun tila rekursiivisesti"
 
 #: components/manage/Toolbar/More
-# defaultMessage: Changes applied
+#. Default: "Changes applied"
 msgid "Changes applied."
 msgstr "Muutokset toteutettu."
 
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalPreferences
-# defaultMessage: Changes saved
+#. Default: "Changes saved"
 msgid "Changes saved"
 msgstr "Muutokset tallennettu"
 
@@ -594,340 +594,340 @@ msgstr "Muutokset tallennettu"
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
-# defaultMessage: Changes saved.
+#. Default: "Changes saved."
 msgid "Changes saved."
 msgstr "Muutokset tallennettu"
 
 #: components/manage/Widgets/SchemaWidget
-# defaultMessage: Checkbox
+#. Default: "Checkbox"
 msgid "Checkbox"
 msgstr "Valinta"
 
 #: components/manage/Widgets/SelectWidget
-# defaultMessage: Choices
+#. Default: "Choices"
 msgid "Choices"
 msgstr "Luettelo"
 
 #: components/manage/Sidebar/ObjectBrowserBody
-# defaultMessage: Choose Image
+#. Default: "Choose Image"
 msgid "Choose Image"
 msgstr "Valitse kuva"
 
 #: components/manage/Sidebar/ObjectBrowserBody
-# defaultMessage: Choose Target
+#. Default: "Choose Target"
 msgid "Choose Target"
 msgstr "Valitse sisältö"
 
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
-# defaultMessage: Choose a file
+#. Default: "Choose a file"
 msgid "Choose a file"
 msgstr "Valitse tiedosto"
 
 #: components/manage/Blocks/HTML/Edit
-# defaultMessage: Clear
+#. Default: "Clear"
 msgid "Clear"
 msgstr "Tyhjennä"
 
 #: components/manage/Blocks/Search/components/FilterList
-# defaultMessage: Clear filters
+#. Default: "Clear filters"
 msgid "Clear filters"
 msgstr "Tyhjennä suodattimet"
 
 #: components/manage/BlockChooser/BlockChooserSearch
-# defaultMessage: Clear search
+#. Default: "Clear search"
 msgid "Clear search"
 msgstr ""
 
 #: components/theme/View/ImageView
-# defaultMessage: Click to download full sized image
+#. Default: "Click to download full sized image"
 msgid "Click to download full sized image"
 msgstr "Lataa täysikokoinen kuva"
 
 #: components/manage/Widgets/SelectWidget
-# defaultMessage: Close
+#. Default: "Close"
 msgid "Close"
 msgstr "Sulje"
 
 #: components/theme/Navigation/Navigation
-# defaultMessage: Close menu
+#. Default: "Close menu"
 msgid "Close menu"
 msgstr "Sulje valikko"
 
 #: components/manage/Blocks/HTML/Edit
-# defaultMessage: Code
+#. Default: "Code"
 msgid "Code"
 msgstr "Koodi"
 
 #: components/manage/Widgets/ObjectListWidget
-# defaultMessage: Collapse item
+#. Default: "Collapse item"
 msgid "Collapse item"
 msgstr "Sulje kohde"
 
 #: components/manage/Toolbar/Toolbar
-# defaultMessage: Collection
+#. Default: "Collection"
 msgid "Collection"
 msgstr "Kokoelma"
 
 #: components/manage/Widgets/ColorPickerWidget
-# defaultMessage: Color
+#. Default: "Color"
 msgid "Color"
 msgstr "Väri"
 
 #: components/manage/Controlpanels/ModerateComments
 #: components/theme/Comments/CommentEditModal
 #: components/theme/Comments/Comments
-# defaultMessage: Comment
+#. Default: "Comment"
 msgid "Comment"
 msgstr "Kommentti"
 
 #: components/manage/Controlpanels/ModerateComments
-# defaultMessage: Commenter
+#. Default: "Commenter"
 msgid "Commenter"
 msgstr "Kommentoija"
 
 #: components/theme/Comments/Comments
-# defaultMessage: Comments
+#. Default: "Comments"
 msgid "Comments"
 msgstr "Kommentit"
 
 #: components/manage/Diff/Diff
-# defaultMessage: Compare
+#. Default: "Compare"
 msgid "Compare"
 msgstr "Vertaile"
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
-# defaultMessage: Condition changed
+#. Default: "Condition changed"
 msgid "Condition changed"
 msgstr "Ehto muutettu"
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
-# defaultMessage: Condition:
+#. Default: "Condition:"
 msgid "Condition: "
 msgstr "Ehto: "
 
 #: components/manage/Controlpanels/UpgradeControlPanel
-# defaultMessage: Configuration Versions
+#. Default: "Configuration Versions"
 msgid "Configuration Versions"
 msgstr "Konfiguraation versiot"
 
 #: components/manage/Controlpanels/Rules/EditRule
-# defaultMessage: Configure Content Rule
+#. Default: "Configure Content Rule"
 msgid "Configure Content Rule"
 msgstr "Määrittele sisältösääntö"
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
-# defaultMessage: Configure Content Rule: {title}
+#. Default: "Configure Content Rule: {title}"
 msgid "Configure Content Rule: {title}"
 msgstr "Määrittele sisältösääntö: {title}"
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
-# defaultMessage: Configure content rule
+#. Default: "Configure content rule"
 msgid "Configure content rule"
 msgstr "Määrittele sisältösääntö"
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Confirm password
+#. Default: "Confirm password"
 msgid "Confirm password"
 msgstr "Vahvista salasana"
 
 #: components/theme/ConnectionRefused/ConnectionRefused
-# defaultMessage: Connection refused
+#. Default: "Connection refused"
 msgid "Connection refused"
 msgstr "Yhteys epäonnistui"
 
 #: components/theme/ContactForm/ContactForm
-# defaultMessage: Contact form
+#. Default: "Contact form"
 msgid "Contact form"
 msgstr "Yhteydenottolomake"
 
 #: components/manage/Blocks/Listing/Edit
-# defaultMessage: Contained items
+#. Default: "Contained items"
 msgid "Contained items"
 msgstr "Sisältö"
 
 #: components/manage/Blocks/Container/SimpleContainerToolbar
-# defaultMessage: Container settings
+#. Default: "Container settings"
 msgid "Container settings"
 msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
-# defaultMessage: Content
+#. Default: "Content"
 msgid "Content"
 msgstr "Sisältö"
 
 #: components/manage/Controlpanels/Rules/Rules
-# defaultMessage: Content Rule
+#. Default: "Content Rule"
 msgid "Content Rule"
 msgstr "Sisältösääntö"
 
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/Rules/Rules
-# defaultMessage: Content Rules
+#. Default: "Content Rules"
 msgid "Content Rules"
 msgstr "Sisältösäännöt"
 
 #: components/manage/Rules/Rules
-# defaultMessage: Content rules for {title}
+#. Default: "Content rules for {title}"
 msgid "Content rules for {title}"
 msgstr "Sisältösäännöt kohteelle {title} "
 
 #: components/manage/Rules/Rules
-# defaultMessage: Content rules from parent folders
+#. Default: "Content rules from parent folders"
 msgid "Content rules from parent folders"
 msgstr "Sisältösäännöt ylemmistä kansioista"
 
 #: components/manage/LinksToItem/LinksToItem
-# defaultMessage: Content that links to or references {title}
+#. Default: "Content that links to or references {title}"
 msgid "Content that links to or references {title}"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
-# defaultMessage: Content type created
+#. Default: "Content type created"
 msgid "Content type created"
 msgstr "Luotiin sisältötyyppi"
 
 #: components/manage/Controlpanels/ContentTypes
-# defaultMessage: Content type deleted
+#. Default: "Content type deleted"
 msgid "Content type deleted"
 msgstr "Poistettiin sisältötyyppi"
 
 #: components/manage/Contents/Contents
 #: components/manage/Toolbar/Toolbar
-# defaultMessage: Contents
+#. Default: "Contents"
 msgid "Contents"
 msgstr "Sisältö"
 
 #: components/manage/Blocks/Search/schema
-# defaultMessage: Controls
+#. Default: "Controls"
 msgid "Controls"
 msgstr "Kontrollit"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
-# defaultMessage: Copy
+#. Default: "Copy"
 msgid "Copy"
 msgstr "Kopioi"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Copy blocks
+#. Default: "Copy blocks"
 msgid "Copy blocks"
 msgstr "Kopioi palikat"
 
 #: components/theme/Footer/Footer
-# defaultMessage: Copyright
+#. Default: "Copyright"
 msgid "Copyright"
 msgstr "Tekijänoikeudet"
 
 #: components/manage/Contents/ContentsPropertiesModal
-# defaultMessage: Copyright statement or other rights information on this item.
+#. Default: "Copyright statement or other rights information on this item."
 msgid "Copyright statement or other rights information on this item."
 msgstr "Tekijänoikeuslauseke tai muu sisällön tekijänoikeuksia kuvaava tieto."
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Create or delete relations to target
+#. Default: "Create or delete relations to target"
 msgid "Create or delete relations to target"
 msgstr ""
 
 #: components/manage/Toolbar/More
-# defaultMessage: Create working copy
+#. Default: "Create working copy"
 msgid "Create working copy"
 msgstr "Luo työkopio"
 
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
-# defaultMessage: Created by {creator} on {date}
+#. Default: "Created by {creator} on {date}"
 msgid "Created by {creator} on {date}"
 msgstr "Luotu {creator} toimesta {date} "
 
 #: components/manage/Contents/Contents
-# defaultMessage: Created on
+#. Default: "Created on"
 msgid "Created on"
 msgstr "Luotu"
 
 #: components/manage/Contents/Contents
-# defaultMessage: Creator
+#. Default: "Creator"
 msgid "Creator"
 msgstr "Tekijä"
 
 #: components/manage/Contents/ContentsPropertiesModal
-# defaultMessage: Creators
+#. Default: "Creators"
 msgid "Creators"
 msgstr "Tekijät"
 
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/QueryWidget
-# defaultMessage: Criteria
+#. Default: "Criteria"
 msgid "Criteria"
 msgstr "Hakuehdot"
 
 #: components/manage/Controlpanels/UpgradeControlPanel
-# defaultMessage: Current active configuration
+#. Default: "Current active configuration"
 msgid "Current active configuration"
 msgstr "Tämänhetkinen aktiivinen määritys"
 
 #: components/manage/Blocks/Search/components/FilterList
-# defaultMessage: Current filters applied
+#. Default: "Current filters applied"
 msgid "Current filters applied"
 msgstr "Käytössä olevat suodattimet"
 
 #: components/manage/Preferences/ChangePassword
-# defaultMessage: Current password
+#. Default: "Current password"
 msgid "Current password"
 msgstr "Nykyinen salasana"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
-# defaultMessage: Cut
+#. Default: "Cut"
 msgid "Cut"
 msgstr "Leikkaa"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Cut blocks
+#. Default: "Cut blocks"
 msgid "Cut blocks"
 msgstr "Leikkaa palikat"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
-# defaultMessage: Daily
+#. Default: "Daily"
 msgid "Daily"
 msgstr "Päivittäin"
 
 #: components/manage/Controlpanels/Controlpanels
-# defaultMessage: Database
+#. Default: "Database"
 msgid "Database"
 msgstr "Tietokanta"
 
 #: components/manage/Controlpanels/DatabaseInformation
-# defaultMessage: Database Information
+#. Default: "Database Information"
 msgid "Database Information"
 msgstr "Tietokannan tiedot"
 
 #: components/manage/Controlpanels/DatabaseInformation
-# defaultMessage: Database Location
+#. Default: "Database Location"
 msgid "Database Location"
 msgstr "Tietokannan sijainti"
 
 #: components/manage/Controlpanels/DatabaseInformation
-# defaultMessage: Database Size
+#. Default: "Database Size"
 msgid "Database Size"
 msgstr "Tietokannan koko"
 
 #: components/manage/Controlpanels/DatabaseInformation
-# defaultMessage: Database main
+#. Default: "Database main"
 msgid "Database main"
 msgstr "Päätietokanta"
 
 #: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Widgets/DatetimeWidget
-# defaultMessage: Date
+#. Default: "Date"
 msgid "Date"
 msgstr "Päiväys"
 
 #: components/theme/Search/Search
-# defaultMessage: Date (newest first)
+#. Default: "Date (newest first)"
 msgid "Date (newest first)"
 msgstr "Päivä (uusin ensin)"
 
@@ -947,12 +947,12 @@ msgstr "Päivä (uusin ensin)"
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/PasswordReset/RequestPasswordReset
 #: components/theme/Register/Register
-# defaultMessage: Default
+#. Default: "Default"
 msgid "Default"
 msgstr "Oletus"
 
 #: config/Views
-# defaultMessage: Default view
+#. Default: "Default view"
 msgid "Default view"
 msgstr "Oletusnäkymä"
 
@@ -967,78 +967,78 @@ msgstr "Oletusnäkymä"
 #: components/manage/Widgets/ObjectBrowserWidget
 #: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/Comments
-# defaultMessage: Delete
+#. Default: "Delete"
 msgid "Delete"
 msgstr "Poista"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Delete Group
+#. Default: "Delete Group"
 msgid "Delete Group"
 msgstr "Poista ryhmä"
 
 #: components/manage/Controlpanels/ContentTypes
-# defaultMessage: Delete Type
+#. Default: "Delete Type"
 msgid "Delete Type"
 msgstr "Poista sisältötyyppi"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Delete User
+#. Default: "Delete User"
 msgid "Delete User"
 msgstr "Poista käyttäjä"
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
-# defaultMessage: Action deleted
+#. Default: "Action deleted"
 msgid "Delete action"
 msgstr "Poista toiminto"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Delete blocks
+#. Default: "Delete blocks"
 msgid "Delete blocks"
 msgstr "Poista palikat"
 
 #: components/manage/Blocks/Table/Edit
-# defaultMessage: Delete col
+#. Default: "Delete col"
 msgid "Delete col"
 msgstr "Poista sarake"
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
-# defaultMessage: Condition deleted
+#. Default: "Condition deleted"
 msgid "Delete condition"
 msgstr "Poista ehto"
 
 #: components/manage/Blocks/Table/Edit
-# defaultMessage: Delete row
+#. Default: "Delete row"
 msgid "Delete row"
 msgstr "Poista valittu rivi"
 
 #: components/manage/Contents/Contents
-# defaultMessage: Delete selected items?
+#. Default: "Delete selected items?"
 msgid "Delete selected items?"
 msgstr ""
 
 #: components/manage/Contents/Contents
-# defaultMessage: Delete this item?
+#. Default: "Delete this item?"
 msgid "Delete this item?"
 msgstr ""
 
 #: components/manage/Controlpanels/Rules/Rules
-# defaultMessage: Deleted
+#. Default: "Deleted"
 msgid "Deleted"
 msgstr "Poistettu"
 
 #: components/manage/Contents/Contents
-# defaultMessage: Deleting this item breaks {brokenReferences} {variation}.
+#. Default: "Deleting this item breaks {brokenReferences} {variation}."
 msgid "Deleting this item breaks {brokenReferences} {variation}."
 msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
-# defaultMessage: Depth
+#. Default: "Depth"
 msgid "Depth"
 msgstr "Syvyys"
 
 #: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents
-# defaultMessage: Descending
+#. Default: "Descending"
 msgid "Descending"
 msgstr "Laskeva"
 
@@ -1050,121 +1050,121 @@ msgstr "Laskeva"
 #: components/manage/Widgets/WysiwygWidget
 #: components/theme/View/TabularView
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Description
+#. Default: "Description"
 msgid "Description"
 msgstr "Kuvaus"
 
 #: components/manage/Diff/Diff
-# defaultMessage: Diff
+#. Default: "Diff"
 msgid "Diff"
 msgstr "Vertailu"
 
 #: components/manage/Diff/Diff
-# defaultMessage: Difference between revision {one} and {two} of {title}
+#. Default: "Difference between revision {one} and {two} of {title}"
 msgid "Difference between revision {one} and {two} of {title}"
 msgstr "{title} muutokset versiosta {one} versioon {two}"
 
 #: components/manage/Rules/Rules
-# defaultMessage: Disable
+#. Default: "Disable"
 msgid "Disable"
 msgstr "Poista käytöstä"
 
 #: components/manage/Rules/Rules
-# defaultMessage: Disable apply to subfolders
+#. Default: "Disable apply to subfolders"
 msgid "Disable apply to subfolders"
 msgstr "Poista käytöstä alikansioissa"
 
 #: components/manage/Rules/Rules
-# defaultMessage: Disabled
+#. Default: "Disabled"
 msgid "Disabled"
 msgstr "Poistettu käytöstä"
 
 #: components/manage/Rules/Rules
-# defaultMessage: Disabled apply to subfolders
+#. Default: "Disabled apply to subfolders"
 msgid "Disabled apply to subfolders"
 msgstr "Poistettu käytöstä alikansioissa"
 
 #: components/theme/Footer/Footer
-# defaultMessage: Distributed under the {license}.
+#. Default: "Distributed under the {license}."
 msgid "Distributed under the {license}."
 msgstr "Julkaistu {license} -lisenssillä."
 
 #: components/manage/Blocks/Table/Edit
-# defaultMessage: Add border to inner columns
+#. Default: "Add border to inner columns"
 msgid "Divide each row into separate cells"
 msgstr "Erottuvat sarakkeet"
 
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
-# defaultMessage: Do you really want to delete the group {groupname}?
+#. Default: "Do you really want to delete the group {groupname}?"
 msgid "Do you really want to delete the group {groupname}?"
 msgstr "Haluatko varmasti poistaa ryhmän {groupname}?"
 
 #: components/manage/Controlpanels/ContentTypes
-# defaultMessage: Do you really want to delete type {typename}?
+#. Default: "Do you really want to delete type {typename}?"
 msgid "Do you really want to delete the type {typename}?"
 msgstr "Haluatko varmasti poistaa sisältötyypin {typename}?"
 
 #: components/manage/Controlpanels/Users/UsersControlpanel
-# defaultMessage: Do you really want to delete the user {username}?
+#. Default: "Do you really want to delete the user {username}?"
 msgid "Do you really want to delete the user {username}?"
 msgstr "Haluatko varmasti poistaa käyttäjän {username}?"
 
 #: components/manage/Delete/Delete
-# defaultMessage: Do you really want to delete this item?
+#. Default: "Do you really want to delete this item?"
 msgid "Do you really want to delete this item?"
 msgstr "Haluatko varmasti poistaa tämän sisällön?"
 
 #: components/manage/Multilingual/TranslationObject
 #: components/manage/Sidebar/Sidebar
-# defaultMessage: Document
+#. Default: "Document"
 msgid "Document"
 msgstr "Sivu"
 
 #: config/Views
-# defaultMessage: Document view
+#. Default: "Document view"
 msgid "Document view"
 msgstr "Dokumenttinäkymä"
 
 #: components/theme/EventDetails/EventDetails
-# defaultMessage: Download Event
+#. Default: "Download Event"
 msgid "Download Event"
 msgstr "Lataa tapahtuma"
 
 #: components/manage/Contents/ContentsUploadModal
-# defaultMessage: Drag and drop files from your computer onto this area or click the “Browse” button.
+#. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "Raahaa ja pudota tiedostoja tietokoneeltasi tähän tai paina “Selaa”."
 
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
-# defaultMessage: Drop file here to replace the existing file
+#. Default: "Drop file here to replace the existing file"
 msgid "Drop file here to replace the existing file"
 msgstr "Pudota tiedosto tähän korvataksesi olemassaolevan tiedoston"
 
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
-# defaultMessage: Drop file here to upload a new file
+#. Default: "Drop file here to upload a new file"
 msgid "Drop file here to upload a new file"
 msgstr "Pudota tiedosto tähän ladataksesi uuden tiedoston"
 
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
-# defaultMessage: Drop files here ...
+#. Default: "Drop files here ..."
 msgid "Drop files here ..."
 msgstr "Pudota tiedosto tänne... "
 
 #: components/manage/Controlpanels/UpgradeControlPanel
-# defaultMessage: Dry run selected, transaction aborted.
+#. Default: "Dry run selected, transaction aborted."
 msgid "Dry run selected, transaction aborted."
 msgstr "Koeajo valittu, toiminto keskeytetty."
 
 #: components/theme/Register/Register
-# defaultMessage: E-mail
+#. Default: "E-mail"
 msgid "E-mail"
 msgstr "Sähköposti"
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: E-mail addresses do not match.
+#. Default: "E-mail addresses do not match."
 msgid "E-mail addresses do not match."
 msgstr "Sähköpostiosoitteet eivät olleet identtiset."
 
@@ -1177,155 +1177,155 @@ msgstr "Sähköpostiosoitteet eivät olleet identtiset."
 #: components/manage/Widgets/FormFieldWrapper
 #: components/manage/Widgets/ObjectBrowserWidget
 #: components/theme/Comments/Comments
-# defaultMessage: Edit
+#. Default: "Edit"
 msgid "Edit"
 msgstr "Muokkaa"
 
 #: components/manage/Controlpanels/Rules/EditRule
-# defaultMessage: Edit Rule
+#. Default: "Edit Rule"
 msgid "Edit Rule"
 msgstr "Muokkaa sääntöä"
 
 #: components/theme/Comments/CommentEditModal
-# defaultMessage: Edit comment
+#. Default: "Edit comment"
 msgid "Edit comment"
 msgstr "Muokkaa kommenttia"
 
 #: components/manage/Widgets/SchemaWidget
-# defaultMessage: Edit field
+#. Default: "Edit field"
 msgid "Edit field"
 msgstr "Muokkaa kenttää"
 
 #: components/manage/Widgets/SchemaWidget
-# defaultMessage: Edit fieldset
+#. Default: "Edit fieldset"
 msgid "Edit fieldset"
 msgstr "Muokkaa kenttäryhmää"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
-# defaultMessage: Edit recurrence
+#. Default: "Edit recurrence"
 msgid "Edit recurrence"
 msgstr "Muokkaa toistuvuutta"
 
 #: components/manage/Form/InlineForm
-# defaultMessage: Edit values
+#. Default: "Edit values"
 msgid "Edit values"
 msgstr "Muokkaa arvoja"
 
 #: components/manage/Edit/Edit
-# defaultMessage: Edit {title}
+#. Default: "Edit {title}"
 msgid "Edit {title}"
 msgstr "Muokkaa {title}"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Email
+#. Default: "Email"
 msgid "Email"
 msgstr "Sähköposti"
 
 #: components/theme/ContactForm/ContactForm
-# defaultMessage: Email sent
+#. Default: "Email sent"
 msgid "Email sent"
 msgstr "Sähköposti lähetetty"
 
 #: components/manage/Blocks/Maps/Edit
-# defaultMessage: Embed code error, please follow the instructions and try again.
+#. Default: "Embed code error, please follow the instructions and try again."
 msgid "Embed code error, please follow the instructions and try again."
 msgstr "Virhe upotuskoodissa. Seuraa ohjeita ja yritä uudelleen."
 
 #: components/manage/Widgets/ObjectListWidget
-# defaultMessage: Empty object list
+#. Default: "Empty object list"
 msgid "Empty object list"
 msgstr "Tyhjä kohdelista"
 
 #: components/manage/Rules/Rules
-# defaultMessage: Enable
+#. Default: "Enable"
 msgid "Enable"
 msgstr "Aktivoi"
 
 #: components/manage/Controlpanels/ContentTypeLayout
-# defaultMessage: Enable editable Blocks
+#. Default: "Enable editable Blocks"
 msgid "Enable editable Blocks"
 msgstr "Salli palikoiden muokkaus"
 
 #: components/manage/Rules/Rules
-# defaultMessage: Enabled
+#. Default: "Enabled"
 msgid "Enabled"
 msgstr "Aktivoitu"
 
 #: components/manage/Rules/Rules
-# defaultMessage: Enabled here?
+#. Default: "Enabled here?"
 msgid "Enabled here?"
 msgstr "Aktivoi tänne?"
 
 #: components/manage/Rules/Rules
-# defaultMessage: Enabled?
+#. Default: "Enabled?"
 msgid "Enabled?"
 msgstr "Aktivoitu?"
 
 #: components/manage/Blocks/Search/components/DateRangeFacet
 #: components/manage/Contents/Contents
-# defaultMessage: End Date
+#. Default: "End Date"
 msgid "End Date"
 msgstr "Päättymispäivä"
 
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
-# defaultMessage: Enter URL or select an item
+#. Default: "Enter URL or select an item"
 msgid "Enter URL or select an item"
 msgstr "Syötä URL-osoite tai valitse kohde"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Enter a username above to search or click 'Show All'
+#. Default: "Enter a username above to search or click 'Show All'"
 msgid "Enter a username above to search or click 'Show All'"
 msgstr "Syötä yläpuolelle etsittävä käyttäjähimi tai valitse 'Näytä kaikki'"
 
 #: components/theme/Register/Register
-# defaultMessage: Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.
+#. Default: "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 msgstr "Syötä sähköpostiosoite, jota haluat käyttää kirjautumistunnuksena. Me kunnioitamme yksityisyyttäsi, emmekä jaa sähköpostiosoitettasi kenellekään muulle tai julkaise sitä missään."
 
 #: components/theme/Register/Register
-# defaultMessage: Enter full name, e.g. John Smith.
+#. Default: "Enter full name, e.g. John Smith."
 msgid "Enter full name, e.g. John Smith."
 msgstr "Syötä koko nimi, esimerkiksi Lumi Vuorinen."
 
 #: components/manage/Blocks/Maps/Edit
-# defaultMessage: Enter map Embed Code
+#. Default: "Enter map Embed Code"
 msgid "Enter map Embed Code"
 msgstr "Syötä Google Maps -upotuskoodi"
 
 #: components/manage/Controlpanels/Aliases
-# defaultMessage: Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target.
+#. Default: "Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target."
 msgid "Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target."
 msgstr "Syötä kohteen osoite. Osoitteen tulee alkaa merkillä '/'. Kohteen tulee olla olemassa tai sen tulee olla olemassaoleva vaihtoehtoinen URL-polku kohteelle."
 
 #: components/manage/Aliases/Aliases
 #: components/manage/Controlpanels/Aliases
-# defaultMessage: Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring.
+#. Default: "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
 msgid "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
 msgstr ""
 
 #: components/manage/Preferences/ChangePassword
-# defaultMessage: Enter your current password.
+#. Default: "Enter your current password."
 msgid "Enter your current password."
 msgstr "Syötä nykyinen salasanasi."
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Enter your email for verification.
+#. Default: "Enter your email for verification."
 msgid "Enter your email for verification."
 msgstr "Syötä sähköpostiosoitteesi vahvistusta varten."
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Enter your new password. Minimum 8 characters.
+#. Default: "Enter your new password. Minimum 8 characters."
 msgid "Enter your new password. Minimum 8 characters."
 msgstr "Syötä uusi salasanasi, jossa on vähintään viisi (8) merkkiä."
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Enter your username for verification.
+#. Default: "Enter your username for verification."
 msgid "Enter your username for verification."
 msgstr "Syötä käyttäjätunnuksesi vahvistusta varten."
 
 #: components/manage/Blocks/ToC/Schema
-# defaultMessage: Entries
+#. Default: "Entries"
 msgid "Entries"
 msgstr ""
 
@@ -1340,335 +1340,335 @@ msgstr ""
 #: components/theme/ContactForm/ContactForm
 #: components/theme/Login/Login
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Error
+#. Default: "Error"
 msgid "Error"
 msgstr "Virhe"
 
 #: components/manage/Controlpanels/Aliases
-# defaultMessage: Error
+#. Default: "Error"
 msgid "ErrorHeader"
 msgstr ""
 
 #: components/manage/Controlpanels/Rules/Rules
-# defaultMessage: Event
+#. Default: "Event"
 msgid "Event"
 msgstr "Tapahtuma"
 
 #: config/Views
-# defaultMessage: Event listing
+#. Default: "Event listing"
 msgid "Event listing"
 msgstr "Tapahtumalista"
 
 #: config/Views
-# defaultMessage: Event view
+#. Default: "Event view"
 msgid "Event view"
 msgstr "Tapahtuman näkymä"
 
 #: components/manage/Contents/ContentsPropertiesModal
-# defaultMessage: Exclude from navigation
+#. Default: "Exclude from navigation"
 msgid "Exclude from navigation"
 msgstr "Piilota navigoinnista"
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
-# defaultMessage: Exclude this occurence
+#. Default: "Exclude this occurence"
 msgid "Exclude this occurence"
 msgstr "Jätä pois tämä päivä"
 
 #: components/manage/Contents/Contents
-# defaultMessage: Excluded from navigation
+#. Default: "Excluded from navigation"
 msgid "Excluded from navigation"
 msgstr "Piilota navigoinnista"
 
 #: components/manage/Aliases/Aliases
-# defaultMessage: Existing alternative urls for this item
+#. Default: "Existing alternative urls for this item"
 msgid "Existing alternative urls for this item"
 msgstr "Voimassaolevat vaihtoehtoiset URL:t tälle kohteelle"
 
 #: components/manage/Sidebar/Sidebar
-# defaultMessage: Expand sidebar
+#. Default: "Expand sidebar"
 msgid "Expand sidebar"
 msgstr "Laajenna sivupalkki"
 
 #: components/manage/Contents/ContentsPropertiesModal
-# defaultMessage: Expiration Date
+#. Default: "Expiration Date"
 msgid "Expiration Date"
 msgstr "Erääntyminen"
 
 #: components/manage/Contents/Contents
-# defaultMessage: Expiration date
+#. Default: "Expiration date"
 msgid "Expiration date"
 msgstr "Erääntymispäivä"
 
 #: components/manage/Contents/ContentsItem
-# defaultMessage: Expired
+#. Default: "Expired"
 msgid "Expired"
 msgstr "Erääntynyt"
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-# defaultMessage: External URL
+#. Default: "External URL"
 msgid "External URL"
 msgstr "Ulkoinen URL"
 
 #: components/manage/Blocks/Search/schema
-# defaultMessage: Facet
+#. Default: "Facet"
 msgid "Facet"
 msgstr ""
 
 #: components/manage/Blocks/Search/schema
-# defaultMessage: Facet widget
+#. Default: "Facet widget"
 msgid "Facet widget"
 msgstr "Fasettilohko"
 
 #: components/manage/Blocks/Search/schema
-# defaultMessage: Facets
+#. Default: "Facets"
 msgid "Facets"
 msgstr "Fasetit"
 
 #: config/Blocks
-# defaultMessage: Facets on left side
+#. Default: "Facets on left side"
 msgid "Facets on left side"
 msgstr "Fasetit vasemmalla "
 
 #: config/Blocks
-# defaultMessage: Facets on right side
+#. Default: "Facets on right side"
 msgid "Facets on right side"
 msgstr "Fasetit oikealla"
 
 #: config/Blocks
-# defaultMessage: Facets on top
+#. Default: "Facets on top"
 msgid "Facets on top"
 msgstr "Fasetit ylälaidassa"
 
 #: components/manage/Controlpanels/UndoControlpanel
-# defaultMessage: Failed to undo transactions
+#. Default: "Failed to undo transactions"
 msgid "Failed To Undo Transactions"
 msgstr "Tapahtumien peruutus epäonnistui"
 
 #: components/manage/Blocks/Search/schema
-# defaultMessage: Field
+#. Default: "Field"
 msgid "Field"
 msgstr "Kenttä"
 
 #: components/manage/Toolbar/Toolbar
-# defaultMessage: File
+#. Default: "File"
 msgid "File"
 msgstr "Tiedosto"
 
 #: components/manage/Contents/ContentsUploadModal
-# defaultMessage: File size
+#. Default: "File size"
 msgid "File size"
 msgstr "Tiedoston koko"
 
 #: config/Views
-# defaultMessage: File view
+#. Default: "File view"
 msgid "File view"
 msgstr "Tiedostonäkymä"
 
 #: components/manage/Contents/ContentsUploadModal
-# defaultMessage: Filename
+#. Default: "Filename"
 msgid "Filename"
 msgstr "Tiedostonimi"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Filter
+#. Default: "Filter"
 msgid "Filter"
 msgstr ""
 
 #: components/manage/Controlpanels/Rules/Rules
-# defaultMessage: Filter Rules:
+#. Default: "Filter Rules:"
 msgid "Filter Rules:"
 msgstr "Suodata säännöt:"
 
 #: components/manage/Controlpanels/Aliases
-# defaultMessage: Filter by prefix
+#. Default: "Filter by prefix"
 msgid "Filter by prefix"
 msgstr "Suodata alkutunnisteen perusteella"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Filter users by groups
+#. Default: "Filter users by groups"
 msgid "Filter users by groups"
 msgstr "Suodata käyttäjiä ryhmittäin"
 
 #: components/manage/Contents/Contents
-# defaultMessage: Filter…
+#. Default: "Filter…"
 msgid "Filter…"
 msgstr "Suodattimet…"
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
-# defaultMessage: First
+#. Default: "First"
 msgid "First"
 msgstr "Ensimmäinen"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Fix relations
+#. Default: "Fix relations"
 msgid "Fix relations"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
-# defaultMessage: Fixed width columns
+#. Default: "Fixed width columns"
 msgid "Fixed width table cells"
 msgstr "Kiinteälevyiset sarakkeet"
 
 #: components/manage/BlockChooser/BlockChooser
-# defaultMessage: Fold
+#. Default: "Fold"
 msgid "Fold"
 msgstr "Sulje"
 
 #: components/manage/Contents/Contents
-# defaultMessage: Folder
+#. Default: "Folder"
 msgid "Folder"
 msgstr "Kansio"
 
 #: config/Views
-# defaultMessage: Folder listing
+#. Default: "Folder listing"
 msgid "Folder listing"
 msgstr "Kansiolistaus"
 
 #: components/theme/Forbidden/Forbidden
-# defaultMessage: Forbidden
+#. Default: "Forbidden"
 msgid "Forbidden"
 msgstr "Ei pääsyä"
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
-# defaultMessage: Fourth
+#. Default: "Fourth"
 msgid "Fourth"
 msgstr "Neljäs"
 
 #: components/theme/ContactForm/ContactForm
-# defaultMessage: From
+#. Default: "From"
 msgid "From"
 msgstr "Sähköposti"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 #: components/manage/Widgets/AlignWidget
-# defaultMessage: Full
+#. Default: "Full"
 msgid "Full"
 msgstr "Kokoleveästi"
 
 #: components/theme/Register/Register
-# defaultMessage: Full Name
+#. Default: "Full Name"
 msgid "Full Name"
 msgstr "Koko nimi"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Fullname
+#. Default: "Fullname"
 msgid "Fullname"
 msgstr "Koko nimi"
 
 #: components/theme/Footer/Footer
-# defaultMessage: GNU GPL license
+#. Default: "GNU GPL license"
 msgid "GNU GPL license"
 msgstr "GNU GPL -lisenssi"
 
 #: components/manage/Controlpanels/Controlpanels
-# defaultMessage: General
+#. Default: "General"
 msgid "General"
 msgstr "Yleinen"
 
 #: components/manage/Sharing/Sharing
-# defaultMessage: Global role
+#. Default: "Global role"
 msgid "Global role"
 msgstr "Sivustonlaajuinen rooli"
 
 #: components/manage/Blocks/Maps/Edit
-# defaultMessage: Google Maps Embedded Block
+#. Default: "Google Maps Embedded Block"
 msgid "Google Maps Embedded Block"
 msgstr "Google Maps -upotuspalikka"
 
 #: components/manage/Blocks/Grid/schema
-# defaultMessage: Grid
+#. Default: "Grid"
 msgid "Grid"
 msgstr ""
 
 #: components/manage/Sharing/Sharing
-# defaultMessage: Group
+#. Default: "Group"
 msgid "Group"
 msgstr "Ryhmä"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Group created
+#. Default: "Group created"
 msgid "Group created"
 msgstr "Ryhmä luotu"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Group roles updated
+#. Default: "Group roles updated"
 msgid "Group roles updated"
 msgstr "Ryhmän roolit päivitetty"
 
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Groupname
+#. Default: "Groupname"
 msgid "Groupname"
 msgstr "Ryhmän nimi"
 
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Groups
+#. Default: "Groups"
 msgid "Groups"
 msgstr "Ryhmät"
 
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
-# defaultMessage: Groups are logical collections of users, such as departments and business units. Groups are not directly related to permissions on a global level, you normally use Roles for that - and let certain Groups have a particular role. The symbol{plone_svg}indicates a role inherited from membership in another group.
+#. Default: "Groups are logical collections of users, such as departments and business units. Groups are not directly related to permissions on a global level, you normally use Roles for that - and let certain Groups have a particular role. The symbol{plone_svg}indicates a role inherited from membership in another group."
 msgid "Groups are logical collections of users, such as departments and business units. Groups are not directly related to permissions on a global level, you normally use Roles for that - and let certain Groups have a particular role. The symbol{plone_svg}indicates a role inherited from membership in another group."
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
-# defaultMessage: Header cell
+#. Default: "Header cell"
 msgid "Header cell"
 msgstr "Otsikkosolu"
 
 #: components/manage/Blocks/Grid/schema
 #: components/manage/Blocks/Listing/schema
 #: components/manage/Blocks/Search/schema
-# defaultMessage: Headline
+#. Default: "Headline"
 msgid "Headline"
 msgstr "Otsikko"
 
 #: components/manage/Blocks/Listing/schema
-# defaultMessage: Headline level
+#. Default: "Headline level"
 msgid "Headline level"
 msgstr "Otsikon taso"
 
 #: components/manage/Blocks/Search/schema
-# defaultMessage: Hidden facets will still filter the results if proper parameters are passed in URLs
+#. Default: "Hidden facets will still filter the results if proper parameters are passed in URLs"
 msgid "Hidden facets will still filter the results if proper parameters are passed in URLs"
 msgstr "Piilotetut fasetit suodattavat tuloksia jos sopivat parametrit syötetään URL:n mukana"
 
 #: components/theme/Comments/Comments
-# defaultMessage: Hide Replies
+#. Default: "Hide Replies"
 msgid "Hide Replies"
 msgstr "Piilota vastaukset"
 
 #: components/manage/Blocks/Search/schema
-# defaultMessage: Hide facet?
+#. Default: "Hide facet?"
 msgid "Hide facet?"
 msgstr "Piilota fasetti?"
 
 #: components/manage/Blocks/Search/components/Facets
-# defaultMessage: Hide filters
+#. Default: "Hide filters"
 msgid "Hide filters"
 msgstr ""
 
 #: components/manage/Blocks/ToC/Schema
-# defaultMessage: Hide title
+#. Default: "Hide title"
 msgid "Hide title"
 msgstr ""
 
 #: components/manage/History/History
 #: components/manage/Toolbar/More
-# defaultMessage: History
+#. Default: "History"
 msgid "History"
 msgstr "Muutoshistoria"
 
 #: components/manage/History/History
-# defaultMessage: #
+#. Default: "#"
 msgid "History Version Number"
 msgstr "Historian versionumero"
 
 #: components/manage/History/History
-# defaultMessage: History of {title}
+#. Default: "History of {title}"
 msgid "History of {title}"
 msgstr "{title} – muutoshistoria"
 
@@ -1676,38 +1676,38 @@ msgstr "{title} – muutoshistoria"
 #: components/manage/Contents/ContentsBreadcrumbs
 #: components/manage/Contents/ContentsBreadcrumbsHomeItem
 #: components/theme/Breadcrumbs/Breadcrumbs
-# defaultMessage: Home
+#. Default: "Home"
 msgid "Home"
 msgstr "Etusivu"
 
 #: components/manage/Contents/Contents
-# defaultMessage: ID
+#. Default: "ID"
 msgid "ID"
 msgstr "ID"
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
-# defaultMessage: If all of the following conditions are met:
+#. Default: "If all of the following conditions are met:"
 msgid "If all of the following conditions are met:"
 msgstr "Jos kaikki seuraavat ehdot täyttyvät:"
 
 #: components/manage/Contents/ContentsPropertiesModal
-# defaultMessage: If selected, this item will not appear in the navigation tree
+#. Default: "If selected, this item will not appear in the navigation tree"
 msgid "If selected, this item will not appear in the navigation tree"
 msgstr "Kun tämä on valittuna, tämä sisältö ei näy navigoinnissa"
 
 #: components/manage/Contents/ContentsPropertiesModal
-# defaultMessage: If this date is in the future, the content will not show up in listings and searches until this date.
+#. Default: "If this date is in the future, the content will not show up in listings and searches until this date."
 msgid "If this date is in the future, the content will not show up in listings and searches until this date."
 msgstr "Kun voimaantuloaika on tulevaisuudessa, tämä sisältö ei näy navigoinnissa, sisältölistauksissa tai hakutuloksissa ennen valittua aikaa."
 
 #: components/manage/LockingToastsFactory/LockingToastsFactory
-# defaultMessage: If you are certain this user has abandoned the object, you may unlock the object. You will then be able to edit it.
+#. Default: "If you are certain this user has abandoned the object, you may unlock the object. You will then be able to edit it."
 msgid "If you are certain this user has abandoned the object, you may unlock the object. You will then be able to edit it."
 msgstr "Jos olet varma, että käyttäjä ei muokkaa kohdetta, voit avata lukituksen. Sen jälkeen voit itse muokata kohdetta."
 
 #: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized
-# defaultMessage: If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}.
+#. Default: "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
 msgstr "Jos olet vakuuttunut, että tämä sivu pitäisi olla olemassa, ota yhteyttä sivuston ylläpitoon: {site_admin}."
 
@@ -1715,32 +1715,32 @@ msgstr "Jos olet vakuuttunut, että tämä sivu pitäisi olla olemassa, ota yhte
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-# defaultMessage: Image
+#. Default: "Image"
 msgid "Image"
 msgstr "Kuva"
 
 #: config/Blocks
-# defaultMessage: Image gallery
+#. Default: "Image gallery"
 msgid "Image gallery"
 msgstr "Kuvagalleria"
 
 #: components/manage/Blocks/Teaser/schema
-# defaultMessage: Image override
+#. Default: "Image override"
 msgid "Image override"
 msgstr ""
 
 #: components/manage/Blocks/Image/schema
-# defaultMessage: Image size
+#. Default: "Image size"
 msgid "Image size"
 msgstr "Kuvan koko"
 
 #: config/Views
-# defaultMessage: Image view
+#. Default: "Image view"
 msgid "Image view"
 msgstr "Kuvanäkymä"
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
-# defaultMessage: Include this occurrence
+#. Default: "Include this occurrence"
 msgid "Include this occurence"
 msgstr "Sisällytä tämä päivä"
 
@@ -1748,244 +1748,244 @@ msgstr "Sisällytä tämä päivä"
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
-# defaultMessage: Info
+#. Default: "Info"
 msgid "Info"
 msgstr "Tiedot"
 
 #: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
-# defaultMessage: You have selected the option 'many users' or 'many groups'. Thus this control panel asks for input to show users and groups. If you want to see users and groups instantaneous, head over to user group settings. See the button on the left.
+#. Default: "You have selected the option 'many users' or 'many groups'. Thus this control panel asks for input to show users and groups. If you want to see users and groups instantaneous, head over to user group settings. See the button on the left."
 msgid "InfoUserGroupSettings"
 msgstr ""
 
 #: components/manage/Sharing/Sharing
-# defaultMessage: Inherit permissions from higher levels
+#. Default: "Inherit permissions from higher levels"
 msgid "Inherit permissions from higher levels"
 msgstr "Peri oikeudet edeltävältä sisältötasolta"
 
 #: components/manage/Sharing/Sharing
-# defaultMessage: Inherited value
+#. Default: "Inherited value"
 msgid "Inherited value"
 msgstr "Peritty arvo"
 
 #: components/manage/Blocks/Table/Edit
-# defaultMessage: Insert col after
+#. Default: "Insert col after"
 msgid "Insert col after"
 msgstr "Lisää sarake valinnan jälkeen"
 
 #: components/manage/Blocks/Table/Edit
-# defaultMessage: Insert col before
+#. Default: "Insert col before"
 msgid "Insert col before"
 msgstr "Lisää sarake ennen valintaa"
 
 #: components/manage/Blocks/Table/Edit
-# defaultMessage: Insert row after
+#. Default: "Insert row after"
 msgid "Insert row after"
 msgstr "Lisää rivi valinnan jälkeen"
 
 #: components/manage/Blocks/Table/Edit
-# defaultMessage: Insert row before
+#. Default: "Insert row before"
 msgid "Insert row before"
 msgstr "Lisää rivi ennen valintaa"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Inspect relations
+#. Default: "Inspect relations"
 msgid "Inspect relations"
 msgstr ""
 
 #: components/manage/Controlpanels/AddonsControlpanel
-# defaultMessage: Install
+#. Default: "Install"
 msgid "Install"
 msgstr "Asenna"
 
 #: components/manage/Controlpanels/AddonsControlpanel
-# defaultMessage: Installed
+#. Default: "Installed"
 msgid "Installed"
 msgstr "Asennettu"
 
 #: components/manage/Controlpanels/AddonsControlpanel
-# defaultMessage: Installed version
+#. Default: "Installed version"
 msgid "Installed version"
 msgstr "Asennettu versio"
 
 #: components/manage/Controlpanels/AddonsControlpanel
-# defaultMessage: Installing a third party add-on
+#. Default: "Installing a third party add-on"
 msgid "Installing a third party add-on"
 msgstr "Asennetaan kolmannen osapuolen laajennos"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
-# defaultMessage: days
+#. Default: "days"
 msgid "Interval Daily"
 msgstr "Toista päivittäin"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
-# defaultMessage: Month(s)
+#. Default: "Month(s)"
 msgid "Interval Monthly"
 msgstr "Toista kuukausittain"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
-# defaultMessage: week(s)
+#. Default: "week(s)"
 msgid "Interval Weekly"
 msgstr "Toista viikoittain"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
-# defaultMessage: year(s)
+#. Default: "year(s)"
 msgid "Interval Yearly"
 msgstr "Toista vuosittain"
 
 #: components/manage/Blocks/Block/DefaultView
 #: components/theme/View/RenderBlocks
-# defaultMessage: Invalid block - Will be removed on saving
+#. Default: "Invalid block - Will be removed on saving"
 msgid "Invalid Block"
 msgstr "Virheellinen palikka"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them.
+#. Default: "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
 msgid "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
 msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
-# defaultMessage: Item batch size
+#. Default: "Item batch size"
 msgid "Item batch size"
 msgstr "Sivun koko"
 
 #: components/manage/Contents/Contents
-# defaultMessage: Item successfully moved.
+#. Default: "Item successfully moved."
 msgid "Item succesfully moved."
 msgstr "Sisällön siirto onnistui."
 
 #: components/manage/Contents/Contents
-# defaultMessage: Item(s) copied.
+#. Default: "Item(s) copied."
 msgid "Item(s) copied."
 msgstr "Sisältö kopioitu."
 
 #: components/manage/Contents/Contents
-# defaultMessage: Item(s) cut.
+#. Default: "Item(s) cut."
 msgid "Item(s) cut."
 msgstr "Sisältö leikattu."
 
 #: components/manage/Contents/Contents
-# defaultMessage: Item(s) has been updated.
+#. Default: "Item(s) has been updated."
 msgid "Item(s) has been updated."
 msgstr "Sisältö on päivitetty."
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
-# defaultMessage: Item(s) pasted.
+#. Default: "Item(s) pasted."
 msgid "Item(s) pasted."
 msgstr "Sisältö liitetty."
 
 #: components/manage/Contents/Contents
-# defaultMessage: Item(s) state has been updated.
+#. Default: "Item(s) state has been updated."
 msgid "Item(s) state has been updated."
 msgstr "Kohteiden tila on päivitetty."
 
 #: components/manage/Controlpanels/ContentTypes
-# defaultMessage: Items
+#. Default: "Items"
 msgid "Items"
 msgstr "Sisältö"
 
 #: components/manage/Form/ModalForm
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Items must be unique.
+#. Default: "Items must be unique."
 msgid "Items must be unique."
 msgstr "Kohteiden täytyy olla ainutkertaisia."
 
 #: components/manage/Blocks/Search/schema
-# defaultMessage: Label
+#. Default: "Label"
 msgid "Label"
 msgstr "Nimike"
 
 #: components/manage/Preferences/PersonalPreferences
-# defaultMessage: Language
+#. Default: "Language"
 msgid "Language"
 msgstr "Kieli"
 
 #: components/manage/Widgets/FormFieldWrapper
-# defaultMessage: Language independent field.
+#. Default: "Language independent field."
 msgid "Language independent field."
 msgstr "Kieliriippumaton kenttä"
 
 #: components/manage/Widgets/ImageSizeWidget
-# defaultMessage: Large
+#. Default: "Large"
 msgid "Large"
 msgstr "Suuri"
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
-# defaultMessage: Last
+#. Default: "Last"
 msgid "Last"
 msgstr "Viimeinen"
 
 #: components/manage/Contents/Contents
-# defaultMessage: Last comment date
+#. Default: "Last comment date"
 msgid "Last comment date"
 msgstr "Viimeisin kommentti"
 
 #: components/manage/Contents/ContentsUploadModal
-# defaultMessage: Last modified
+#. Default: "Last modified"
 msgid "Last modified"
 msgstr "Muokattu viimeksi"
 
 #: components/manage/Controlpanels/UpgradeControlPanel
-# defaultMessage: Latest available configuration
+#. Default: "Latest available configuration"
 msgid "Latest available configuration"
 msgstr "Viimeisin saatavilla oleva konfiguraatio"
 
 #: components/manage/Controlpanels/AddonsControlpanel
-# defaultMessage: Latest version
+#. Default: "Latest version"
 msgid "Latest version"
 msgstr "Viimeisin versio"
 
 #: components/manage/Controlpanels/ContentTypesActions
-# defaultMessage: Layout
+#. Default: "Layout"
 msgid "Layout"
 msgstr "Asettelu"
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-# defaultMessage: Lead Image
+#. Default: "Lead Image"
 msgid "Lead Image"
 msgstr "Nostokuva"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 #: components/manage/Widgets/AlignWidget
-# defaultMessage: Left
+#. Default: "Left"
 msgid "Left"
 msgstr "Vasemmalla"
 
 #: components/manage/Blocks/Search/components/Facets
-# defaultMessage: Less filters
+#. Default: "Less filters"
 msgid "Less filters"
 msgstr ""
 
 #: components/manage/Toolbar/Toolbar
-# defaultMessage: Link
+#. Default: "Link"
 msgid "Link"
 msgstr "Linkki"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Anchor link copied to the clipboard
+#. Default: "Anchor link copied to the clipboard"
 msgid "Link copied to clipboard"
 msgstr ""
 
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
-# defaultMessage: Link more
+#. Default: "Link more"
 msgid "Link more"
 msgstr "Lisää"
 
 #: config/Views
-# defaultMessage: Link redirect view
+#. Default: "Link redirect view"
 msgid "Link redirect view"
 msgstr "Linkin uudelleenohjauksen näkymä"
 
 #: components/manage/Blocks/Image/schema
-# defaultMessage: Link settings
+#. Default: "Link settings"
 msgid "Link settings"
 msgstr ""
 
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
-# defaultMessage: Link Title
+#. Default: "Link Title"
 msgid "Link title"
 msgstr "Otsikko"
 
@@ -1993,370 +1993,370 @@ msgstr "Otsikko"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema
-# defaultMessage: Link to
+#. Default: "Link to"
 msgid "Link to"
 msgstr "Linkin kohde"
 
 #: components/manage/Multilingual/ManageTranslations
-# defaultMessage: Link translation for
+#. Default: "Link translation for"
 msgid "Link translation for"
 msgstr "Linkin käännös kohteelle"
 
 #: components/manage/LinksToItem/LinksToItem
-# defaultMessage: Linking this item with hyperlink in text
+#. Default: "Linking this item with hyperlink in text"
 msgid "Linking this item with hyperlink in text"
 msgstr ""
 
 #: components/manage/LinksToItem/LinksToItem
 #: components/manage/Toolbar/More
-# defaultMessage: Links and references
+#. Default: "Links and references"
 msgid "Links and references"
 msgstr ""
 
 #: components/manage/Blocks/Listing/schema
-# defaultMessage: Listing
+#. Default: "Listing"
 msgid "Listing"
 msgstr "Luettelo"
 
 #: config/Views
-# defaultMessage: Listing view
+#. Default: "Listing view"
 msgid "Listing view"
 msgstr "Luettelonäkymä"
 
 #: components/theme/Comments/Comments
-# defaultMessage: Load more...
+#. Default: "Load more..."
 msgid "Load more"
 msgstr "Lataa lisää"
 
 #: components/manage/Form/ModalForm
-# defaultMessage: Loading.
+#. Default: "Loading."
 msgid "Loading"
 msgstr "Ladataan"
 
 #: components/theme/Login/Login
-# defaultMessage: Login
+#. Default: "Login"
 msgid "Log In"
 msgstr "Kirjaudu"
 
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
-# defaultMessage: Log in
+#. Default: "Log in"
 msgid "Log in"
 msgstr "Kirjaudu"
 
 #: components/theme/Logout/Logout
-# defaultMessage: Logged out
+#. Default: "Logged out"
 msgid "Logged out"
 msgstr "Kirjauduttu ulos"
 
 #: components/theme/Login/Login
-# defaultMessage: Login
+#. Default: "Login"
 msgid "Login"
 msgstr "Kirjaudu"
 
 #: components/theme/Login/Login
-# defaultMessage: Login Failed
+#. Default: "Login Failed"
 msgid "Login Failed"
 msgstr "Kirjautuminen epäonnistui"
 
 #: components/theme/Login/Login
-# defaultMessage: Login Name
+#. Default: "Login Name"
 msgid "Login Name"
 msgstr "Tunnus"
 
 #: components/manage/Toolbar/PersonalTools
-# defaultMessage: Logout
+#. Default: "Logout"
 msgid "Logout"
 msgstr "Kirjaudu ulos"
 
 #: components/manage/Toolbar/More
-# defaultMessage: Made by {creator} on {date}. This is not a working copy anymore, but the main content.
+#. Default: "Made by {creator} on {date}. This is not a working copy anymore, but the main content."
 msgid "Made by {creator} on {date}. This is not a working copy anymore, but the main content."
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
-# defaultMessage: Reduce cell padding
+#. Default: "Reduce cell padding"
 msgid "Make the table compact"
 msgstr "Tiivisrivinen taulukko"
 
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Toolbar/More
-# defaultMessage: Manage Translations
+#. Default: "Manage Translations"
 msgid "Manage Translations"
 msgstr "Hallitse käännöksiä"
 
 #: components/manage/Toolbar/More
-# defaultMessage: Manage content…
+#. Default: "Manage content…"
 msgid "Manage content…"
 msgstr "Hallitse sisältöä..."
 
 #: components/manage/Multilingual/ManageTranslations
-# defaultMessage: Manage translations for {title}
+#. Default: "Manage translations for {title}"
 msgid "Manage translations for {title}"
 msgstr "Hallitse käännöksiä: {title}"
 
 #: components/manage/Controlpanels/Aliases
-# defaultMessage: Manual
+#. Default: "Manual"
 msgid "Manual"
 msgstr "Manuaalinen"
 
 #: components/manage/Controlpanels/Aliases
-# defaultMessage: Manually or automatically added?
+#. Default: "Manually or automatically added?"
 msgid "Manually or automatically added?"
 msgstr "Manuaalisesti vai automaattisesti lisätty?"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Many relations found. Please search.
+#. Default: "Many relations found. Please search."
 msgid "Many relations found. Please search."
 msgstr ""
 
 #: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Maps/schema
-# defaultMessage: Maps
+#. Default: "Maps"
 msgid "Maps"
 msgstr "Kartat"
 
 #: components/manage/Blocks/Maps/schema
-# defaultMessage: Maps URL
+#. Default: "Maps URL"
 msgid "Maps URL"
 msgstr "Kartan URL"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Maximum length is {len}.
+#. Default: "Maximum length is {len}."
 msgid "Maximum length is {len}."
 msgstr "Suurin mahdollinen pituus on {len}."
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Maximum value is {len}.
+#. Default: "Maximum value is {len}."
 msgid "Maximum value is {len}."
 msgstr "Suurin mahdollinen arvo on {len}."
 
 #: components/manage/Widgets/ImageSizeWidget
-# defaultMessage: Medium
+#. Default: "Medium"
 msgid "Medium"
 msgstr "Keskikokoinen"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Membership updated
+#. Default: "Membership updated"
 msgid "Membership updated"
 msgstr "Jäsenyys päivitetty"
 
 #: components/theme/ContactForm/ContactForm
-# defaultMessage: Message
+#. Default: "Message"
 msgid "Message"
 msgstr "Viesti"
 
 #: components/manage/Form/ModalForm
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Minimum length is {len}.
+#. Default: "Minimum length is {len}."
 msgid "Minimum length is {len}."
 msgstr "Vähimmäispituus on {len} merkkiä."
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Minimum value is {len}.
+#. Default: "Minimum value is {len}."
 msgid "Minimum value is {len}."
 msgstr "Pienin mahdollinen arvo on {len}."
 
 #: components/manage/Controlpanels/Controlpanels
-# defaultMessage: Moderate Comments
+#. Default: "Moderate Comments"
 msgid "Moderate Comments"
 msgstr "Kommenttien moderointi"
 
 #: components/manage/Controlpanels/ModerateComments
-# defaultMessage: Moderate comments
+#. Default: "Moderate comments"
 msgid "Moderate comments"
 msgstr "Kommenttien moderointi"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
-# defaultMessage: Monday and Friday
+#. Default: "Monday and Friday"
 msgid "Monday and Friday"
 msgstr "Maanantai ja perjantai"
 
 #: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
-# defaultMessage: Day
+#. Default: "Day"
 msgid "Month day"
 msgstr "Kuukaudenpäivä"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
-# defaultMessage: Monthly
+#. Default: "Monthly"
 msgid "Monthly"
 msgstr "Kuukausittain"
 
 #: components/manage/Toolbar/Toolbar
-# defaultMessage: More
+#. Default: "More"
 msgid "More"
 msgstr "Lisää"
 
 #: components/manage/Blocks/Search/components/Facets
-# defaultMessage: More filters
+#. Default: "More filters"
 msgid "More filters"
 msgstr ""
 
 #: components/manage/Controlpanels/UpgradeControlPanel
-# defaultMessage: More information about the upgrade procedure can be found in the documentation section of plone.org in the Upgrade Guide.
+#. Default: "More information about the upgrade procedure can be found in the documentation section of plone.org in the Upgrade Guide."
 msgid "More information about the upgrade procedure can be found in the documentation section of plone.org in the Upgrade Guide."
 msgstr ""
 
 #: config/Views
-# defaultMessage: Mosaic layout
+#. Default: "Mosaic layout"
 msgid "Mosaic layout"
 msgstr "Mosaic-asettelu"
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
-# defaultMessage: Move down
+#. Default: "Move down"
 msgid "Move down"
 msgstr "Siirrä alaspäin"
 
 #: components/manage/Contents/ContentsItem
-# defaultMessage: Move to bottom of folder
+#. Default: "Move to bottom of folder"
 msgid "Move to bottom of folder"
 msgstr "Siirrä kansion pohjalle"
 
 #: components/manage/Contents/ContentsItem
-# defaultMessage: Move to top of folder
+#. Default: "Move to top of folder"
 msgid "Move to top of folder"
 msgstr "Siirrä kansion pinnalle"
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
-# defaultMessage: Move up
+#. Default: "Move up"
 msgid "Move up"
 msgstr "Siirrä ylöspäin"
 
 #: components/manage/Blocks/Search/schema
-# defaultMessage: Multiple choices?
+#. Default: "Multiple choices?"
 msgid "Multiple choices?"
 msgstr "Monivalinta?"
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: My email is
+#. Default: "My email is"
 msgid "My email is"
 msgstr "Sähköpostiosoitteeni on"
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: My user name is
+#. Default: "My user name is"
 msgid "My username is"
 msgstr "Käyttäjätunnukseni on"
 
 #: components/manage/Sharing/Sharing
 #: components/theme/ContactForm/ContactForm
-# defaultMessage: Name
+#. Default: "Name"
 msgid "Name"
 msgstr "Nimi"
 
 #: components/manage/Widgets/AlignWidget
-# defaultMessage: Narrow
+#. Default: "Narrow"
 msgid "Narrow"
 msgstr "Kavenna"
 
 #: error
-# defaultMessage: Navigate back
+#. Default: "Navigate back"
 msgid "Navigate back"
 msgstr "Takaisin"
 
 #: components/theme/Navigation/ContextNavigation
-# defaultMessage: Navigation
+#. Default: "Navigation"
 msgid "Navigation"
 msgstr "Navigaatio"
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: New password
+#. Default: "New password"
 msgid "New password"
 msgstr "Uusi salasana"
 
 #: components/manage/Toolbar/Toolbar
-# defaultMessage: News Item
+#. Default: "News Item"
 msgid "News Item"
 msgstr "Uutinen"
 
 #: config/Views
-# defaultMessage: News item view
+#. Default: "News item view"
 msgid "News item view"
 msgstr "Uutisnäkymä"
 
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypes
-# defaultMessage: No
+#. Default: "No"
 msgid "No"
 msgstr "Ei"
 
 #: components/manage/Controlpanels/UndoControlpanel
-# defaultMessage: No transactions found
+#. Default: "No transactions found"
 msgid "No Transactions Found"
 msgstr "Käännöksiä ei löytynyt"
 
 #: components/manage/Controlpanels/UndoControlpanel
-# defaultMessage: No transactions selected
+#. Default: "No transactions selected"
 msgid "No Transactions Selected"
 msgstr "Käännöksiä ei valittu"
 
 #: components/manage/Controlpanels/UndoControlpanel
-# defaultMessage: No transactions selected to do undo
+#. Default: "No transactions selected to do undo"
 msgid "No Transactions Selected To Do Undo"
 msgstr "Käännöksiä ei valittu peruutusta varten"
 
 #: components/manage/Blocks/Video/VideoSidebar
-# defaultMessage: No Video selected
+#. Default: "No Video selected"
 msgid "No Video selected"
 msgstr "Videota ei valittu"
 
 #: components/manage/Controlpanels/VersionOverview
-# defaultMessage: No addons found
+#. Default: "No addons found"
 msgid "No addons found"
 msgstr "Lisäosia ei löytynyt"
 
 #: components/manage/Controlpanels/Relations/RelationsMatrix
-# defaultMessage: No broken relations found.
+#. Default: "No broken relations found."
 msgid "No broken relations found."
 msgstr ""
 
 #: components/theme/RequestTimeout/RequestTimeout
-# defaultMessage: There is no connection to the server, due to a timeout o no network connection.
+#. Default: "There is no connection to the server, due to a timeout o no network connection."
 msgid "No connection to the server"
 msgstr "Ei yhteyttä palvelimeen"
 
 #: components/manage/Blocks/Image/ImageSidebar
-# defaultMessage: No image selected
+#. Default: "No image selected"
 msgid "No image selected"
 msgstr "Kuvaa ei ole määritety"
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-# defaultMessage: No image set in Lead Image content field
+#. Default: "No image set in Lead Image content field"
 msgid "No image set in Lead Image content field"
 msgstr "Sisällöstä puuttuu nostokuva"
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-# defaultMessage: No image set in image content field
+#. Default: "No image set in image content field"
 msgid "No image set in image content field"
 msgstr "Kuva puuttuu"
 
 #: components/manage/Blocks/Listing/GalleryNoResultsComponent
-# defaultMessage: No images found.
+#. Default: "No images found."
 msgid "No images found."
 msgstr ""
 
 #: components/manage/Blocks/Listing/ListingBody
-# defaultMessage: No items found in this container.
+#. Default: "No items found in this container."
 msgid "No items found in this container."
 msgstr "Ei sisältöä"
 
 #: components/manage/Widgets/ObjectBrowserWidget
-# defaultMessage: No items selected
+#. Default: "No items selected"
 msgid "No items selected"
 msgstr "Sisältöä ei ole valittu"
 
 #: components/manage/LinksToItem/LinksToItem
-# defaultMessage: No links to this item found.
+#. Default: "No links to this item found."
 msgid "No links to this item found."
 msgstr ""
 
 #: components/manage/Blocks/Maps/MapsSidebar
-# defaultMessage: No map selected
+#. Default: "No map selected"
 msgid "No map selected"
 msgstr "Karttaa ei ole määritetty"
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
-# defaultMessage: No occurences set
+#. Default: "No occurences set"
 msgid "No occurences set"
 msgstr "Toistumista ei ole määritetty"
 
@@ -2364,41 +2364,41 @@ msgstr "Toistumista ei ole määritetty"
 #: components/manage/Widgets/SelectAutoComplete
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TokenWidget
-# defaultMessage: No options
+#. Default: "No options"
 msgid "No options"
 msgstr "Ei vaihtoehtoja"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: No relation found
+#. Default: "No relation found"
 msgid "No relation found"
 msgstr ""
 
 #: components/manage/BlockChooser/BlockChooser
 #: components/theme/Search/Search
-# defaultMessage: No results found
+#. Default: "No results found"
 msgid "No results found"
 msgstr "Yhtään tulosta ei löytynyt"
 
 #: components/manage/Blocks/Listing/DefaultNoResultsComponent
 #: components/manage/Widgets/ReferenceWidget
-# defaultMessage: No results found.
+#. Default: "No results found."
 msgid "No results found."
 msgstr "Ei tuloksia"
 
 #: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Widgets/QuerySortOnWidget
 #: components/manage/Widgets/QuerystringWidget
-# defaultMessage: No selection
+#. Default: "No selection"
 msgid "No selection"
 msgstr "Ei valintaa"
 
 #: components/manage/Controlpanels/AddonsControlpanel
-# defaultMessage: This addon does not provide an uninstall profile.
+#. Default: "This addon does not provide an uninstall profile."
 msgid "No uninstall profile"
 msgstr "Ei sisällä asennuksen poistamista"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: No user found
+#. Default: "No user found"
 msgid "No user found"
 msgstr ""
 
@@ -2406,564 +2406,564 @@ msgstr ""
 #: components/manage/Widgets/ReferenceWidget
 #: components/manage/Widgets/SelectUtils
 #: components/manage/Widgets/SelectWidget
-# defaultMessage: No value
+#. Default: "No value"
 msgid "No value"
 msgstr "Ei arvoa"
 
 #: components/manage/Workflow/Workflow
-# defaultMessage: No workflow
+#. Default: "No workflow"
 msgid "No workflow"
 msgstr "Ei työnkulkua"
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
-# defaultMessage: None
+#. Default: "None"
 msgid "None"
 msgstr "Ei mitään"
 
 #: components/manage/Controlpanels/UndoControlpanel
-# defaultMessage: Note
+#. Default: "Note"
 msgid "Note"
 msgstr "Muistiinpano"
 
 #: components/manage/Controlpanels/Users/UsersControlpanel
-# defaultMessage: Note that roles set here apply directly to a user. The symbol{plone_svg}indicates a role inherited from membership in a group.
+#. Default: "Note that roles set here apply directly to a user. The symbol{plone_svg}indicates a role inherited from membership in a group."
 msgid "Note that roles set here apply directly to a user. The symbol{plone_svg}indicates a role inherited from membership in a group."
 msgstr "Huomioi, että tässä määritellyt roolit kohdistuvat suoraan käyttäjään. Symboli {plone_svg} kertoo että käyttäjälle periytyy rooli ryhmästä."
 
 #: components/manage/Controlpanels/DatabaseInformation
-# defaultMessage: Number of active objects
+#. Default: "Number of active objects"
 msgid "Number of active objects"
 msgstr "Aktiivisten kohteiden määrä"
 
 #: components/manage/Contents/Contents
-# defaultMessage: Object Size
+#. Default: "Object Size"
 msgid "Object Size"
 msgstr "Koko"
 
 #: components/manage/Widgets/RecurrenceWidget/EndField
-# defaultMessage: occurrence(s)
+#. Default: "occurrence(s)"
 msgid "Occurences"
 msgstr "Toistuminen"
 
 #: components/manage/Delete/Delete
-# defaultMessage: Ok
+#. Default: "Ok"
 msgid "Ok"
 msgstr "Ok"
 
 #: components/manage/Widgets/IdWidget
-# defaultMessage: Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed.
+#. Default: "Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed."
 msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed."
 msgstr "Ainostaan pienet kirjaimet (a-z), numerot (0-9) ja merkit "-", "_", ja "." ovat sallittuja. "
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Teaser/schema
-# defaultMessage: Open in a new tab
+#. Default: "Open in a new tab"
 msgid "Open in a new tab"
 msgstr "Avaa uudella välilehdellä"
 
 #: components/theme/Navigation/Navigation
-# defaultMessage: Open menu
+#. Default: "Open menu"
 msgid "Open menu"
 msgstr "Avaa valikko"
 
 #: components/manage/Widgets/ObjectBrowserWidget
-# defaultMessage: Open object browser
+#. Default: "Open object browser"
 msgid "Open object browser"
 msgstr ""
 
 #: components/manage/Blocks/ToC/Schema
-# defaultMessage: Ordered
+#. Default: "Ordered"
 msgid "Ordered"
 msgstr ""
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-# defaultMessage: Origin
+#. Default: "Origin"
 msgid "Origin"
 msgstr "Kuva"
 
 #: components/manage/LinksToItem/LinksToItem
-# defaultMessage: Overview of relations of all content items
+#. Default: "Overview of relations of all content items"
 msgid "Overview of relations of all content items"
 msgstr ""
 
 #: components/manage/Toolbar/Toolbar
-# defaultMessage: Page
+#. Default: "Page"
 msgid "Page"
 msgstr "Sivu"
 
 #: components/manage/Widgets/SchemaWidget
-# defaultMessage: Parent fieldset
+#. Default: "Parent fieldset"
 msgid "Parent fieldset"
 msgstr "Kenttäjoukko"
 
 #: components/theme/Login/Login
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Password
+#. Default: "Password"
 msgid "Password"
 msgstr "Salasana"
 
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/PasswordReset/RequestPasswordReset
-# defaultMessage: Password reset
+#. Default: "Password reset"
 msgid "Password reset"
 msgstr "Salasanan vaihto"
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Passwords do not match.
+#. Default: "Passwords do not match."
 msgid "Passwords do not match."
 msgstr "Salasanat eivät olleet identtiset."
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
-# defaultMessage: Paste
+#. Default: "Paste"
 msgid "Paste"
 msgstr "Liitä"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Paste blocks
+#. Default: "Paste blocks"
 msgid "Paste blocks"
 msgstr ""
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
-# defaultMessage: Perform the following actions:
+#. Default: "Perform the following actions:"
 msgid "Perform the following actions:"
 msgstr ""
 
 #: components/manage/Sharing/Sharing
-# defaultMessage: Permissions have been updated successfully
+#. Default: "Permissions have been updated successfully"
 msgid "Permissions have been updated successfully"
 msgstr ""
 
 #: components/manage/Sharing/Sharing
-# defaultMessage: Permissions updated
+#. Default: "Permissions updated"
 msgid "Permissions updated"
 msgstr ""
 
 #: components/manage/Toolbar/Toolbar
-# defaultMessage: Personal Information
+#. Default: "Personal Information"
 msgid "Personal Information"
 msgstr "Henkilötiedot"
 
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Toolbar/Toolbar
-# defaultMessage: Personal Preferences
+#. Default: "Personal Preferences"
 msgid "Personal Preferences"
 msgstr "Omat asetukset"
 
 #: components/manage/Toolbar/More
 #: components/manage/Toolbar/Toolbar
-# defaultMessage: Personal tools
+#. Default: "Personal tools"
 msgid "Personal tools"
 msgstr "Omat työkalut"
 
 #: components/manage/Contents/ContentsPropertiesModal
-# defaultMessage: Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first.
+#. Default: "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
 msgstr "Tämän sisällön tuottamiseen osallistuneet käyttäjät. Syötä Yksi käyttäjätunus per rivi. Syötä ensisijainen tekijä ensimmäisenä."
 
 #: components/manage/Blocks/Teaser/DefaultBody
-# defaultMessage: Please choose an existing content as source for this element
+#. Default: "Please choose an existing content as source for this element"
 msgid "Please choose an existing content as source for this element"
 msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
-# defaultMessage: Please continue with the upgrade.
+#. Default: "Please continue with the upgrade."
 msgid "Please continue with the upgrade."
 msgstr "Ole hyvä ja jatka päivitystä."
 
 #: components/manage/Controlpanels/UpgradeControlPanel
-# defaultMessage: Please ensure you have a backup of your site before performing the upgrade.
+#. Default: "Please ensure you have a backup of your site before performing the upgrade."
 msgid "Please ensure you have a backup of your site before performing the upgrade."
 msgstr "Varmista, että sinulla on varmuuskopio sivustosta ennen päivityksen suorittamista."
 
 #: components/manage/Blocks/Video/Body
-# defaultMessage: Please enter a valid URL by deleting the block and adding a new video block.
+#. Default: "Please enter a valid URL by deleting the block and adding a new video block."
 msgid "Please enter a valid URL by deleting the block and adding a new video block."
 msgstr "Syötä toimiva osoite poistamalla tämä palikka ja lisäämällä sitten uusi videopalikka."
 
 #: components/manage/Blocks/Maps/Edit
-# defaultMessage: Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it.
+#. Default: "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
 msgid "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
 msgstr "Syötä Google Maps -upotuskoodi. Koodin tulee sisältää <frame>-tagi. Löydät koodin Google Maps -palvelusta valitsemalla: Jaa tai upota kartta -> Upota."
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Please fill out the form below to set your password.
+#. Default: "Please fill out the form below to set your password."
 msgid "Please fill out the form below to set your password."
 msgstr "Voit vaihtaa salasanan täytämällä oheisen lomakkeen."
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Please search for users or use the filters on the side.
+#. Default: "Please search for users or use the filters on the side."
 msgid "Please search for users or use the filters on the side."
 msgstr "Etsi käyttäjiä tai käytä suodattimia."
 
 #: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
-# defaultMessage: Please upgrade to plone.restapi >= 8.24.0.
+#. Default: "Please upgrade to plone.restapi >= 8.24.0."
 msgid "Please upgrade to plone.restapi >= 8.24.0."
 msgstr "Päivitä plone.restapi"
 
 #: components/manage/Controlpanels/Relations/Relations
-# defaultMessage: Please upgrade to plone.restapi >= 8.39.0.
+#. Default: "Please upgrade to plone.restapi >= 8.39.0."
 msgid "Please upgrade to plone.restapi >= 8.39.0."
 msgstr ""
 
 #: components/theme/Footer/Footer
-# defaultMessage: Plone Foundation
+#. Default: "Plone Foundation"
 msgid "Plone Foundation"
 msgstr "Plone-säätiön"
 
 #: components/theme/Footer/Footer
-# defaultMessage: Plone{reg} Open Source CMS/WCM
+#. Default: "Plone{reg} Open Source CMS/WCM"
 msgid "Plone{reg} Open Source CMS/WCM"
 msgstr "Plone{reg} avoimen lähdenkoodin sisällönhallintajärjestelmä CMS/WCM"
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
-# defaultMessage: Position changed
+#. Default: "Position changed"
 msgid "Position changed"
 msgstr "Järjestystä muutettu"
 
 #: components/manage/Widgets/SchemaWidget
-# defaultMessage: Possible values (Enter allowed choices one per line).
+#. Default: "Possible values (Enter allowed choices one per line)."
 msgid "Possible values"
 msgstr "Mahdolliset arvot"
 
 #: components/theme/Footer/Footer
-# defaultMessage: Powered by Plone & Python
+#. Default: "Powered by Plone & Python"
 msgid "Powered by Plone & Python"
 msgstr "Voimanlähteenä Plone & Python"
 
 #: components/manage/Toolbar/PersonalTools
-# defaultMessage: Preferences
+#. Default: "Preferences"
 msgid "Preferences"
 msgstr "Asetukset"
 
 #: components/manage/Blocks/HTML/Edit
-# defaultMessage: Prettify your code
+#. Default: "Prettify your code"
 msgid "Prettify your code"
 msgstr "Siisti koodisi"
 
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
-# defaultMessage: Preview
+#. Default: "Preview"
 msgid "Preview"
 msgstr "Esikatselu"
 
 #: components/manage/Blocks/Video/schema
-# defaultMessage: Preview Image URL
+#. Default: "Preview Image URL"
 msgid "Preview Image URL"
 msgstr "Esikatselukuvan URL-osoite"
 
 #: components/manage/Toolbar/PersonalTools
-# defaultMessage: Profile
+#. Default: "Profile"
 msgid "Profile"
 msgstr "Profiili"
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsPropertiesModal
-# defaultMessage: Properties
+#. Default: "Properties"
 msgid "Properties"
 msgstr "Ominaisuudet"
 
 #: components/manage/Contents/Contents
-# defaultMessage: Publication date
+#. Default: "Publication date"
 msgid "Publication date"
 msgstr "Julkaisupäivä"
 
 #: components/manage/Contents/ContentsPropertiesModal
-# defaultMessage: Publishing Date
+#. Default: "Publishing Date"
 msgid "Publishing Date"
 msgstr "Voimaantulo"
 
 #: components/manage/Blocks/Listing/schema
-# defaultMessage: Query
+#. Default: "Query"
 msgid "Query"
 msgstr "Kysely"
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Re-enter the password. Make sure the passwords are identical.
+#. Default: "Re-enter the password. Make sure the passwords are identical."
 msgid "Re-enter the password. Make sure the passwords are identical."
 msgstr "Syötä salasana uudelleen. Syötettyjen salasanojen tulee olla identtiset."
 
 #: components/theme/Search/Search
 #: components/theme/View/SummaryView
-# defaultMessage: Read More…
+#. Default: "Read More…"
 msgid "Read More…"
 msgstr "Lue lisää…"
 
 #: components/manage/Controlpanels/Relations/RelationsListing
-# defaultMessage: Read only for this type of relation.
+#. Default: "Read only for this type of relation."
 msgid "Read only for this type of relation."
 msgstr ""
 
 #: components/manage/Contents/Contents
-# defaultMessage: Rearrange items by…
+#. Default: "Rearrange items by…"
 msgid "Rearrange items by…"
 msgstr "Järjestä sisältö…"
 
 #: components/manage/Widgets/RecurrenceWidget/EndField
-# defaultMessage: Ends
+#. Default: "Ends"
 msgid "Recurrence ends"
 msgstr "Toistuminen päättyy"
 
 #: components/manage/Widgets/RecurrenceWidget/EndField
-# defaultMessage: after
+#. Default: "after"
 msgid "Recurrence ends after"
 msgstr "Toistumisen viimeinen päivä"
 
 #: components/manage/Widgets/RecurrenceWidget/EndField
-# defaultMessage: on
+#. Default: "on"
 msgid "Recurrence ends on"
 msgstr "Toistuminen päättyy"
 
 #: components/manage/Form/UndoToolbar
-# defaultMessage: Redo
+#. Default: "Redo"
 msgid "Redo"
 msgstr "Toista"
 
 #: components/manage/Blocks/Table/Edit
-# defaultMessage: Minimalistic table design
+#. Default: "Minimalistic table design"
 msgid "Reduce complexity"
 msgstr "Yksinkertainen taulukko"
 
 #: components/manage/LinksToItem/LinksToItem
-# defaultMessage: Referencing this item as related item
+#. Default: "Referencing this item as related item"
 msgid "Referencing this item as related item"
 msgstr ""
 
 #: components/manage/LinksToItem/LinksToItem
-# defaultMessage: Referencing this item with {relationship}
+#. Default: "Referencing this item with {relationship}"
 msgid "Referencing this item with {relationship}"
 msgstr ""
 
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
 #: components/theme/Register/Register
-# defaultMessage: Register
+#. Default: "Register"
 msgid "Register"
 msgstr "Rekisteröidy"
 
 #: components/theme/Register/Register
-# defaultMessage: Registration form
+#. Default: "Registration form"
 msgid "Registration form"
 msgstr "Rekisteröitymislomake"
 
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Relation
+#. Default: "Relation"
 msgid "Relation name"
 msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/Relations/Relations
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Relations
+#. Default: "Relations"
 msgid "Relations"
 msgstr ""
 
 #: components/manage/Controlpanels/Relations/RelationsListing
-# defaultMessage: Relations are editable with plone.api >= 2.0.3.
+#. Default: "Relations are editable with plone.api >= 2.0.3."
 msgid "Relations are editable with plone.api >= 2.0.3."
 msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Relations updated
+#. Default: "Relations updated"
 msgid "Relations updated"
 msgstr ""
 
 #: components/theme/Search/Search
-# defaultMessage: Relevance
+#. Default: "Relevance"
 msgid "Relevance"
 msgstr "Osuvuus"
 
 #: components/manage/Aliases/Aliases
-# defaultMessage: Remove
+#. Default: "Remove"
 msgid "Remove"
 msgstr "Poista"
 
 #: components/manage/Blocks/Container/EditBlockWrapper
-# defaultMessage: Remove element {index}
+#. Default: "Remove element {index}"
 msgid "Remove element {index}"
 msgstr ""
 
 #: components/manage/Widgets/ObjectListWidget
-# defaultMessage: Remove item
+#. Default: "Remove item"
 msgid "Remove item"
 msgstr "Poista kohde"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
-# defaultMessage: Remove
+#. Default: "Remove"
 msgid "Remove recurrence"
 msgstr "Poista toistuminen"
 
 #: components/manage/Controlpanels/Aliases
-# defaultMessage: Remove selected
+#. Default: "Remove selected"
 msgid "Remove selected"
 msgstr "Poista valitut"
 
 #: components/manage/Widgets/VocabularyTermsWidget
-# defaultMessage: Remove term
+#. Default: "Remove term"
 msgid "Remove term"
 msgstr "Poista termi"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Remove users from group
+#. Default: "Remove users from group"
 msgid "Remove users from group"
 msgstr "Poista käyttäjät ryhmästä"
 
 #: components/manage/Toolbar/More
-# defaultMessage: Remove working copy
+#. Default: "Remove working copy"
 msgid "Remove working copy"
 msgstr "Poista työkopio"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
-# defaultMessage: Rename
+#. Default: "Rename"
 msgid "Rename"
 msgstr "Nimeä uudelleen"
 
 #: components/manage/Contents/ContentsRenameModal
-# defaultMessage: Renaming items...
+#. Default: "Renaming items..."
 msgid "Rename Items Loading Message"
 msgstr "Kohteita nimetään uudelleen"
 
 #: components/manage/Contents/ContentsRenameModal
-# defaultMessage: Rename items
+#. Default: "Rename items"
 msgid "Rename items"
 msgstr "Nimeä uudelleen"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
-# defaultMessage: Repeat
+#. Default: "Repeat"
 msgid "Repeat"
 msgstr "Toista"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
-# defaultMessage: Repeat every
+#. Default: "Repeat every"
 msgid "Repeat every"
 msgstr "Toista joka"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
-# defaultMessage: Repeat on
+#. Default: "Repeat on"
 msgid "Repeat on"
 msgstr "Toista"
 
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
-# defaultMessage: Replace existing file
+#. Default: "Replace existing file"
 msgid "Replace existing file"
 msgstr "Korvaa olemassaoleva tiedosto"
 
 #: components/theme/Comments/Comments
-# defaultMessage: Reply
+#. Default: "Reply"
 msgid "Reply"
 msgstr "Vastaa"
 
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
-# defaultMessage: Required
+#. Default: "Required"
 msgid "Required"
 msgstr "Pakollinen"
 
 #: components/manage/Form/ModalForm
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Required input is missing.
+#. Default: "Required input is missing."
 msgid "Required input is missing."
 msgstr "Pakollista tietoa puuttuu."
 
 #: components/manage/Blocks/Container/EditBlockWrapper
-# defaultMessage: Reset element {index}
+#. Default: "Reset element {index}"
 msgid "Reset element {index}"
 msgstr ""
 
 #: components/manage/Widgets/VocabularyTermsWidget
-# defaultMessage: Reset title
+#. Default: "Reset title"
 msgid "Reset term title"
 msgstr "Tyhjennä termin otsikko"
 
 #: components/manage/Blocks/Teaser/Data
-# defaultMessage: Reset the block
+#. Default: "Reset the block"
 msgid "Reset the block"
 msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
-# defaultMessage: Results limit
+#. Default: "Results limit"
 msgid "Results limit"
 msgstr "Tulosten määrä"
 
 #: components/manage/Blocks/Listing/Edit
-# defaultMessage: Results preview
+#. Default: "Results preview"
 msgid "Results preview"
 msgstr "Tulosten esikatselu"
 
 #: components/manage/Blocks/Search/SearchBlockEdit
-# defaultMessage: Results template
+#. Default: "Results template"
 msgid "Results template"
 msgstr "Tulospohja"
 
 #: components/manage/Widgets/QuerystringWidget
-# defaultMessage: Reversed order
+#. Default: "Reversed order"
 msgid "Reversed order"
 msgstr "Käänteinen järjestys"
 
 #: components/manage/History/History
-# defaultMessage: Revert to this revision
+#. Default: "Revert to this revision"
 msgid "Revert to this revision"
 msgstr "Palauta tämä versio"
 
 #: components/manage/Contents/Contents
 #: components/manage/LinksToItem/LinksToItem
-# defaultMessage: Review state
+#. Default: "Review state"
 msgid "Review state"
 msgstr "Julkaisutila"
 
 #: components/manage/Widgets/SchemaWidget
-# defaultMessage: Richtext
+#. Default: "Richtext"
 msgid "Richtext"
 msgstr "Muotoiltu teksti"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 #: components/manage/Widgets/AlignWidget
-# defaultMessage: Right
+#. Default: "Right"
 msgid "Right"
 msgstr "Oikealla"
 
 #: components/manage/Contents/ContentsPropertiesModal
-# defaultMessage: Rights
+#. Default: "Rights"
 msgid "Rights"
 msgstr "Oikeudet"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Roles
+#. Default: "Roles"
 msgid "Roles"
 msgstr "Roolit"
 
 #: components/manage/Contents/ContentsBreadcrumbs
 #: components/manage/Contents/ContentsBreadcrumbsRootItem
-# defaultMessage: Root
+#. Default: "Root"
 msgid "Root"
 msgstr "Juuri"
 
 #: components/manage/Controlpanels/Rules/AddRule
-# defaultMessage: Rule added
+#. Default: "Rule added"
 msgid "Rule added"
 msgstr "Sääntö lisätty"
 
 #: components/manage/Controlpanels/Rules/Rules
-# defaultMessage: Rule enable changed
+#. Default: "Rule enable changed"
 msgid "Rule enable changed"
 msgstr "Säännön aktivointi muutettu"
 
 #: components/manage/Rules/Rules
 #: components/manage/Toolbar/More
-# defaultMessage: Rules
+#. Default: "Rules"
 msgid "Rules"
 msgstr "Säännöt"
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
-# defaultMessage: Rules execute when a triggering event occurs. Rule actions will only be invoked if all the rule's conditions are met. You can add new actions and conditions using the buttons below.
+#. Default: "Rules execute when a triggering event occurs. Rule actions will only be invoked if all the rule's conditions are met. You can add new actions and conditions using the buttons below."
 msgid "Rules execute when a triggering event occurs. Rule actions will only be invoked if all the rule's conditions are met. You can add new actions and conditions using the buttons below."
 msgstr ""
 
@@ -2978,32 +2978,32 @@ msgstr ""
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Save
+#. Default: "Save"
 msgid "Save"
 msgstr "Tallenna"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
-# defaultMessage: Save
+#. Default: "Save"
 msgid "Save recurrence"
 msgstr "Tallenna toistuminen"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Saved
+#. Default: "Saved"
 msgid "Saved"
 msgstr "Tallennettu"
 
 #: components/manage/Contents/ContentsItem
-# defaultMessage: Scheduled
+#. Default: "Scheduled"
 msgid "Scheduled"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypesActions
-# defaultMessage: Schema
+#. Default: "Schema"
 msgid "Schema"
 msgstr "Skeema"
 
 #: components/manage/Controlpanels/ContentTypeSchema
-# defaultMessage: Schema updates
+#. Default: "Schema updates"
 msgid "Schema updates"
 msgstr "Skeemapäivitykset"
 
@@ -3016,88 +3016,88 @@ msgstr "Skeemapäivitykset"
 #: components/manage/Sharing/Sharing
 #: components/theme/Search/Search
 #: components/theme/SearchWidget/SearchWidget
-# defaultMessage: Search
+#. Default: "Search"
 msgid "Search"
 msgstr "Haku"
 
 #: components/manage/Sidebar/ObjectBrowserBody
-# defaultMessage: Search SVG
+#. Default: "Search SVG"
 msgid "Search SVG"
 msgstr "Etsi SVG"
 
 #: components/theme/SearchWidget/SearchWidget
-# defaultMessage: Search Site
+#. Default: "Search Site"
 msgid "Search Site"
 msgstr "Hae sisältöä"
 
 #: components/manage/Blocks/Search/schema
-# defaultMessage: Search block
+#. Default: "Search block"
 msgid "Search block"
 msgstr "Haku"
 
 #: components/manage/Blocks/Search/schema
-# defaultMessage: Search button label
+#. Default: "Search button label"
 msgid "Search button label"
 msgstr "Hakunapin nimike"
 
 #: components/manage/Sidebar/ObjectBrowserBody
-# defaultMessage: Search content
+#. Default: "Search content"
 msgid "Search content"
 msgstr "Hae sisältöä"
 
 #: components/manage/Sharing/Sharing
-# defaultMessage: Search for user or group
+#. Default: "Search for user or group"
 msgid "Search for user or group"
 msgstr "Hae käyttäjiä tai ryhmiä"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Search group…
+#. Default: "Search group…"
 msgid "Search group…"
 msgstr "Etsi ryhmää…"
 
 #: components/manage/Blocks/Search/schema
-# defaultMessage: Search input label
+#. Default: "Search input label"
 msgid "Search input label"
 msgstr "Hakukentän nimike"
 
 #: components/manage/Blocks/Search/components/SearchDetails
 #: components/theme/Search/Search
-# defaultMessage: Search results
+#. Default: "Search results"
 msgid "Search results"
 msgstr "Hakutulokset"
 
 #: components/theme/Search/Search
-# defaultMessage: Search results for {term}
+#. Default: "Search results for {term}"
 msgid "Search results for {term}"
 msgstr "Hakutulokset: {term}"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Search sources by title or path
+#. Default: "Search sources by title or path"
 msgid "Search sources by title or path"
 msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Search targets by title or path
+#. Default: "Search targets by title or path"
 msgid "Search targets by title or path"
 msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Search users…
+#. Default: "Search users…"
 msgid "Search users…"
 msgstr "Etsi käyttäjiä…"
 
 #: components/manage/Blocks/Search/components/SearchDetails
-# defaultMessage: Searched for: <em>{searchedtext}</em>.
+#. Default: "Searched for: <em>{searchedtext}</em>."
 msgid "Searched for: <em>{searchedtext}</em>."
 msgstr "Etsi: <em>{searchedtext}</em>."
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
-# defaultMessage: Second
+#. Default: "Second"
 msgid "Second"
 msgstr "Sekunti"
 
 #: components/manage/Blocks/Search/schema
-# defaultMessage: Section title
+#. Default: "Section title"
 msgid "Section title"
 msgstr "Osion otsikko"
 
@@ -3105,52 +3105,52 @@ msgstr "Osion otsikko"
 #: components/manage/Rules/Rules
 #: components/manage/Sidebar/ObjectBrowserNav
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Select
+#. Default: "Select"
 msgid "Select"
 msgstr "Valitse"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
-# defaultMessage: Select a date to add to recurrence
+#. Default: "Select a date to add to recurrence"
 msgid "Select a date to add to recurrence"
 msgstr "Valitse toistumiseen lisättävä päivä"
 
 #: components/manage/Contents/Contents
-# defaultMessage: Select columns to show
+#. Default: "Select columns to show"
 msgid "Select columns to show"
 msgstr "Näytettävät sarakkeet"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Select relation
+#. Default: "Select relation"
 msgid "Select relation"
 msgstr ""
 
 #: components/manage/Contents/ContentsWorkflowModal
-# defaultMessage: Select the transition to be used for modifying the items state.
+#. Default: "Select the transition to be used for modifying the items state."
 msgid "Select the transition to be used for modifying the items state."
 msgstr "Valitse tilasiirtymä, jolla sisällön julkisuutta muutetaan."
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Selected
+#. Default: "Selected"
 msgid "Selected"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
-# defaultMessage: Selected dates
+#. Default: "Selected dates"
 msgid "Selected dates"
 msgstr "Valitse päivät"
 
 #: components/manage/Sidebar/ObjectBrowserBody
-# defaultMessage: Selected items
+#. Default: "Selected items"
 msgid "Selected items"
 msgstr "Valitse sisältö"
 
 #: components/manage/Sidebar/ObjectBrowserBody
-# defaultMessage: of
+#. Default: "of"
 msgid "Selected items - x of y"
 msgstr "Valittu sisältö"
 
 #: components/manage/Widgets/SchemaWidget
-# defaultMessage: Selection
+#. Default: "Selection"
 msgid "Selection"
 msgstr "Valinta"
 
@@ -3160,291 +3160,291 @@ msgstr "Valinta"
 #: components/manage/Widgets/SelectAutoComplete
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TokenWidget
-# defaultMessage: Select…
+#. Default: "Select…"
 msgid "Select…"
 msgstr "Valitse…"
 
 #: components/theme/ContactForm/ContactForm
-# defaultMessage: Send
+#. Default: "Send"
 msgid "Send"
 msgstr "Lähetä"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Send a confirmation mail with a link to set the password.
+#. Default: "Send a confirmation mail with a link to set the password."
 msgid "Send a confirmation mail with a link to set the password."
 msgstr "Lähetä vahvistusviesti ja linkki salasanan asettamista varten."
 
 #: components/theme/Error/ServerError
-# defaultMessage: Server Error
+#. Default: "Server Error"
 msgid "Server Error"
 msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Set my password
+#. Default: "Set my password"
 msgid "Set my password"
 msgstr "Vaihda salasanani"
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Set your password
+#. Default: "Set your password"
 msgid "Set your password"
 msgstr "Vaihda salasanasi"
 
 #: components/manage/Sidebar/Sidebar
-# defaultMessage: Settings
+#. Default: "Settings"
 msgid "Settings"
 msgstr "Asetukset"
 
 #: components/manage/Sharing/Sharing
 #: components/manage/Toolbar/More
-# defaultMessage: Sharing
+#. Default: "Sharing"
 msgid "Sharing"
 msgstr "Käyttöoikeudet"
 
 #: components/manage/Sharing/Sharing
-# defaultMessage: Sharing for {title}
+#. Default: "Sharing for {title}"
 msgid "Sharing for {title}"
 msgstr "{title} – käyttöoikeudet"
 
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
-# defaultMessage: Short Name
+#. Default: "Short Name"
 msgid "Short Name"
 msgstr "Lyhyt nimi"
 
 #: components/manage/Contents/ContentsRenameModal
-# defaultMessage: Short name
+#. Default: "Short name"
 msgid "Short name"
 msgstr "Lyhyt nimi"
 
 #: components/manage/Controlpanels/Aliases
 #: components/theme/Pagination/Pagination
-# defaultMessage: Show
+#. Default: "Show"
 msgid "Show"
 msgstr "Näytä"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Show All
+#. Default: "Show All"
 msgid "Show All"
 msgstr "Näytä kaikki"
 
 #: components/theme/Comments/Comments
-# defaultMessage: Show Replies
+#. Default: "Show Replies"
 msgid "Show Replies"
 msgstr "Näytä vastaukset"
 
 #: components/manage/Blocks/Search/components/Facets
-# defaultMessage: Show filters
+#. Default: "Show filters"
 msgid "Show filters"
 msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Show groups of users below
+#. Default: "Show groups of users below"
 msgid "Show groups of users below"
 msgstr "Näytä käyttäjäryhmät alapuolella"
 
 #: components/manage/Widgets/ObjectListWidget
-# defaultMessage: Show item
+#. Default: "Show item"
 msgid "Show item"
 msgstr "Näytä kohde"
 
 #: components/manage/Controlpanels/Relations/RelationsMatrix
-# defaultMessage: Show potential sources. Not only objects that are source of some relation.
+#. Default: "Show potential sources. Not only objects that are source of some relation."
 msgid "Show potential sources. Not only objects that are source of some relation."
 msgstr ""
 
 #: components/manage/Controlpanels/Relations/RelationsMatrix
-# defaultMessage: Show potential targets. Not only objects that are target of some relation.
+#. Default: "Show potential targets. Not only objects that are target of some relation."
 msgid "Show potential targets. Not only objects that are target of some relation."
 msgstr ""
 
 #: components/manage/Blocks/Search/schema
-# defaultMessage: Show search button?
+#. Default: "Show search button?"
 msgid "Show search button?"
 msgstr "Näytä hakupainike?"
 
 #: components/manage/Blocks/Search/schema
-# defaultMessage: Show search input?
+#. Default: "Show search input?"
 msgid "Show search input?"
 msgstr "Näytä hakukenttä?"
 
 #: components/manage/Blocks/Search/schema
-# defaultMessage: Show sorting?
+#. Default: "Show sorting?"
 msgid "Show sorting?"
 msgstr "Näytä lajittelu?"
 
 #: components/manage/Blocks/Search/schema
-# defaultMessage: Show total results
+#. Default: "Show total results"
 msgid "Show total results"
 msgstr "Näytä tulokset"
 
 #: components/manage/Sidebar/Sidebar
-# defaultMessage: Shrink sidebar
+#. Default: "Shrink sidebar"
 msgid "Shrink sidebar"
 msgstr "Kutista sivupalkki"
 
 #: components/manage/Toolbar/Toolbar
-# defaultMessage: Shrink toolbar
+#. Default: "Shrink toolbar"
 msgid "Shrink toolbar"
 msgstr "Kutista työkalupalkki"
 
 #: components/theme/Login/Login
-# defaultMessage: Sign in to start session
+#. Default: "Sign in to start session"
 msgid "Sign in to start session"
 msgstr "Kirjaudu sisään"
 
 #: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized
-# defaultMessage: Site Administration
+#. Default: "Site Administration"
 msgid "Site Administration"
 msgstr "Sivuston ylläpito"
 
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Toolbar/PersonalTools
 #: components/theme/Breadcrumbs/Breadcrumbs
-# defaultMessage: Site Setup
+#. Default: "Site Setup"
 msgid "Site Setup"
 msgstr "Sivuston asetukset"
 
 #: components/theme/Sitemap/Sitemap
-# defaultMessage: Sitemap
+#. Default: "Sitemap"
 msgid "Sitemap"
 msgstr "Sivukartta"
 
 #: components/theme/View/ImageView
-# defaultMessage: Size: {size}
+#. Default: "Size: {size}"
 msgid "Size: {size}"
 msgstr "Koko: {size}"
 
 #: components/manage/Widgets/ImageSizeWidget
-# defaultMessage: Small
+#. Default: "Small"
 msgid "Small"
 msgstr "Pieni"
 
 #: components/manage/Contents/Contents
-# defaultMessage: Some items are also a folder.
+#. Default: "Some items are also a folder."
 msgid "Some items are also a folder."
 msgstr ""
 
 #: components/manage/Contents/Contents
-# defaultMessage: Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken.
+#. Default: "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
 msgid "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
 msgstr ""
 
 #: components/manage/Controlpanels/Relations/Relations
-# defaultMessage: Some relations are broken. Please fix.
+#. Default: "Some relations are broken. Please fix."
 msgid "Some relations are broken. Please fix."
 msgstr ""
 
 #: error
-# defaultMessage: Sorry, something went wrong with your request
+#. Default: "Sorry, something went wrong with your request"
 msgid "Sorry, something went wrong with your request"
 msgstr "Anteeksi, sivua ladattaessa jotain meni pieleen."
 
 #: components/manage/Controlpanels/UndoControlpanel
-# defaultMessage: Sort by
+#. Default: "Sort by"
 msgid "Sort By"
 msgstr "Lajittele"
 
 #: components/theme/Search/Search
-# defaultMessage: Sort by:
+#. Default: "Sort by:"
 msgid "Sort By:"
 msgstr "Järjestys:"
 
 #: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Widgets/QuerySortOnWidget
 #: components/manage/Widgets/QuerystringWidget
-# defaultMessage: Sort on
+#. Default: "Sort on"
 msgid "Sort on"
 msgstr "Järjestys"
 
 #: components/manage/Blocks/Search/schema
-# defaultMessage: Sort on options
+#. Default: "Sort on options"
 msgid "Sort on options"
 msgstr "Lajittelun vaihtoehdot"
 
 #: components/manage/Controlpanels/UndoControlpanel
-# defaultMessage: Sort transactions by User-Name, Path or Date
+#. Default: "Sort transactions by User-Name, Path or Date"
 msgid "Sort transactions by User-Name, Path or Date"
 msgstr "Lajittele nimen, polun tai päivämäärän perusteella"
 
 #: components/manage/Controlpanels/UndoControlpanel
-# defaultMessage: Sorted
+#. Default: "Sorted"
 msgid "Sorted"
 msgstr "Lajiteltu"
 
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Controlpanels/Relations/BrokenRelations
 #: components/manage/Controlpanels/Relations/RelationsMatrix
-# defaultMessage: Source
+#. Default: "Source"
 msgid "Source"
 msgstr "Lähde"
 
 #: components/manage/Blocks/Video/Edit
-# defaultMessage: Specify a youtube video or playlist url
+#. Default: "Specify a youtube video or playlist url"
 msgid "Specify a youtube video or playlist url"
 msgstr "Syötä Youtube-videon tai soittolistan URL."
 
 #: components/manage/Diff/Diff
-# defaultMessage: Split
+#. Default: "Split"
 msgid "Split"
 msgstr "Halkaise"
 
 #: components/manage/Blocks/Search/components/DateRangeFacet
 #: components/manage/Contents/Contents
-# defaultMessage: Start Date
+#. Default: "Start Date"
 msgid "Start Date"
 msgstr "Aloituspäivä"
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
-# defaultMessage: Start of the recurrence
+#. Default: "Start of the recurrence"
 msgid "Start of the recurrence"
 msgstr "Toistumisen aloituspäivä"
 
 #: components/theme/PasswordReset/RequestPasswordReset
-# defaultMessage: Start password reset
+#. Default: "Start password reset"
 msgid "Start password reset"
 msgstr "Aloita salasanan vaihtaminen"
 
 #: components/manage/Contents/Contents
 #: components/manage/Workflow/Workflow
 #: components/theme/View/TabularView
-# defaultMessage: State
+#. Default: "State"
 msgid "State"
 msgstr "Julkisuus"
 
 #: components/manage/Controlpanels/Rules/Rules
-# defaultMessage: Status
+#. Default: "Status"
 msgid "Status"
 msgstr "Tila"
 
 #: components/manage/Blocks/ToC/Schema
-# defaultMessage: Sticky
+#. Default: "Sticky"
 msgid "Sticky"
 msgstr ""
 
 #: components/manage/Multilingual/CompareLanguages
-# defaultMessage: Stop compare
+#. Default: "Stop compare"
 msgid "Stop compare"
 msgstr "Lopeta vertailu"
 
 #: components/manage/Widgets/SchemaWidget
-# defaultMessage: String
+#. Default: "String"
 msgid "String"
 msgstr "Merkkijono"
 
 #: components/manage/Blocks/Table/Edit
-# defaultMessage: Alternate row background color
+#. Default: "Alternate row background color"
 msgid "Stripe alternate rows with color"
 msgstr "Väritä joka toinen rivi"
 
 #: helpers/Extensions/withBlockSchemaEnhancer
-# defaultMessage: Styling
+#. Default: "Styling"
 msgid "Styling"
 msgstr "Tyyli"
 
 #: components/theme/ContactForm/ContactForm
-# defaultMessage: Subject
+#. Default: "Subject"
 msgid "Subject"
 msgstr "Aihe"
 
@@ -3466,59 +3466,59 @@ msgstr "Aihe"
 #: components/manage/Rules/Rules
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Success
+#. Default: "Success"
 msgid "Success"
 msgstr "Onnistui"
 
 #: components/manage/Controlpanels/UndoControlpanel
-# defaultMessage: Successfully undone transactions
+#. Default: "Successfully undone transactions"
 msgid "Successfully Undone Transactions"
 msgstr "Toiminnot peruttu onnistuneesti"
 
 #: config/Blocks
-# defaultMessage: Summary
+#. Default: "Summary"
 msgid "Summary"
 msgstr "Yhteenveto"
 
 #: config/Views
-# defaultMessage: Summary view
+#. Default: "Summary view"
 msgid "Summary view"
 msgstr "Yhteenvetonäkymä"
 
 #: components/theme/LanguageSelector/LanguageSelector
-# defaultMessage: Switch to
+#. Default: "Switch to"
 msgid "Switch to"
 msgstr "Vaihda"
 
 #: components/manage/Blocks/Table/Edit
-# defaultMessage: Table
+#. Default: "Table"
 msgid "Table"
 msgstr "Taulukkoa"
 
 #: components/manage/Blocks/ToC/variations/DefaultTocRenderer
 #: components/manage/Blocks/ToC/variations/HorizontalMenu
-# defaultMessage: Table of Contents
+#. Default: "Table of Contents"
 msgid "Table of Contents"
 msgstr "Sisällys"
 
 #: config/Views
-# defaultMessage: Tabular view
+#. Default: "Tabular view"
 msgid "Tabular view"
 msgstr "Taulukkonäkymä"
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsTagsModal
-# defaultMessage: Tags
+#. Default: "Tags"
 msgid "Tags"
 msgstr "Tagit eli avainsanat"
 
 #: components/manage/Contents/ContentsTagsModal
-# defaultMessage: Tags to add
+#. Default: "Tags to add"
 msgid "Tags to add"
 msgstr "Lisättävät tagit"
 
 #: components/manage/Contents/ContentsTagsModal
-# defaultMessage: Tags to remove
+#. Default: "Tags to remove"
 msgid "Tags to remove"
 msgstr "Poistettavat tagit"
 
@@ -3526,37 +3526,37 @@ msgstr "Poistettavat tagit"
 #: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/Relations/BrokenRelations
 #: components/manage/Controlpanels/Relations/RelationsMatrix
-# defaultMessage: Target
+#. Default: "Target"
 msgid "Target"
 msgstr "Kohde"
 
 #: components/manage/Controlpanels/Aliases
-# defaultMessage: Target Path (Required)
+#. Default: "Target Path (Required)"
 msgid "Target Path (Required)"
 msgstr "Kohteen polku (pakollinen)"
 
 #: components/manage/Controlpanels/DatabaseInformation
-# defaultMessage: Target memory size per cache in bytes
+#. Default: "Target memory size per cache in bytes"
 msgid "Target memory size per cache in bytes"
 msgstr "Välimuistin tavoitekoko tavuina"
 
 #: components/manage/Controlpanels/DatabaseInformation
-# defaultMessage: Target number of objects in memory per cache
+#. Default: "Target number of objects in memory per cache"
 msgid "Target number of objects in memory per cache"
 msgstr "Välimuistin tavoitekoko olioiden määrässä"
 
 #: components/manage/Controlpanels/Aliases
-# defaultMessage: Target url path must start with a slash.
+#. Default: "Target url path must start with a slash."
 msgid "Target url path must start with a slash."
 msgstr "Kohdeosoitteen tulee alkaa kauttaviivalla."
 
 #: components/manage/Blocks/Teaser/schema
-# defaultMessage: Teaser
+#. Default: "Teaser"
 msgid "Teaser"
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
-# defaultMessage: Text
+#. Default: "Text"
 msgid "Text"
 msgstr "Teksti"
 
@@ -3565,164 +3565,164 @@ msgstr "Teksti"
 #: components/theme/NotFound/NotFound
 #: components/theme/RequestTimeout/RequestTimeout
 #: components/theme/Unauthorized/Unauthorized
-# defaultMessage: Thank you.
+#. Default: "Thank you."
 msgid "Thank you."
 msgstr "Kiitos."
 
 #: components/manage/Controlpanels/DatabaseInformation
-# defaultMessage: The Database Manager allow you to view database status information
+#. Default: "The Database Manager allow you to view database status information"
 msgid "The Database Manager allow you to view database status information"
 msgstr "Tietokantamanageri sallii sinun katsoa tietokannan tilannetietoa."
 
 #: components/theme/RequestTimeout/RequestTimeout
-# defaultMessage: The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again.
+#. Default: "The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again."
 msgid "The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again."
 msgstr "Sivuston taustapalvelu ei vastaa, johtuen aikakatkaisusta tai verkkovirheestä laitteessasi. Varmista yhteyden toimivuus ja kokeile uudelleen."
 
 #: components/theme/ConnectionRefused/ConnectionRefused
-# defaultMessage: The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable.
+#. Default: "The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable."
 msgid "The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable."
 msgstr ""
 
 #: components/theme/CorsError/CorsError
-# defaultMessage: The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources.
+#. Default: "The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources."
 msgid "The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources."
 msgstr ""
 
 #: components/theme/CorsError/CorsError
-# defaultMessage: The backend server of your website is not answering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators.
+#. Default: "The backend server of your website is not answering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
 msgid "The backend server of your website is not answering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
 msgstr ""
 
 #: components/manage/Blocks/Search/schema
-# defaultMessage: The button presence disables the live search, the query is issued when you press ENTER
+#. Default: "The button presence disables the live search, the query is issued when you press ENTER"
 msgid "The button presence disables the live search, the query is issued when you press ENTER"
 msgstr "Napin näyttäminen poistaa live-haun käytöstä. Haku käynnistetään kun painat ENTER"
 
 #: components/manage/Rules/Rules
-# defaultMessage: The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones.
+#. Default: "The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones."
 msgid "The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones."
 msgstr "Seuraavat sisältösäännöt ovat voimassa tällä sivulla. Käytä sisältösääntöjen hallintapaneelia luodaksesi uusia sääntöjä tai poistaaksesi olemassa olevia. "
 
 #: components/manage/Controlpanels/UpgradeControlPanel
-# defaultMessage: The following list shows which upgrade steps are going to be run. Upgrading sometimes performs a catalog/security update, which may take a long time on large sites. Be patient.
+#. Default: "The following list shows which upgrade steps are going to be run. Upgrading sometimes performs a catalog/security update, which may take a long time on large sites. Be patient."
 msgid "The following list shows which upgrade steps are going to be run. Upgrading sometimes performs a catalog/security update, which may take a long time on large sites. Be patient."
 msgstr ""
 
 #: components/manage/Contents/Contents
-# defaultMessage: The item could not be deleted.
+#. Default: "The item could not be deleted."
 msgid "The item could not be deleted."
 msgstr "Tätä kohdetta ei voitu poistaa."
 
 #: components/theme/View/LinkView
-# defaultMessage: The link address is:
+#. Default: "The link address is:"
 msgid "The link address is:"
 msgstr "Linkin osoite on:"
 
 #: components/manage/Aliases/Aliases
-# defaultMessage: The provided alternative url already exists!
+#. Default: "The provided alternative url already exists!"
 msgid "The provided alternative url already exists!"
 msgstr "Ehdotettu vaihtoehtoinen URL on jo olemassa!"
 
 #: components/theme/Register/Register
-# defaultMessage: The registration process has been successful. Please check your e-mail inbox for information on how activate your account.
+#. Default: "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
 msgstr "Rekisteröinti onnistui. Tarkista, saitko sähköpostiisi ohjeet käyttäjätunnuksesi aktivoimiseksi."
 
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/UpgradeControlPanel
-# defaultMessage: The site configuration is outdated and needs to be upgraded.
+#. Default: "The site configuration is outdated and needs to be upgraded."
 msgid "The site configuration is outdated and needs to be upgraded."
 msgstr "Sivuston konfiguraatio on vanhentunut ja se pitää päivittää."
 
 #: components/manage/Toolbar/More
-# defaultMessage: The working copy was discarded
+#. Default: "The working copy was discarded"
 msgid "The working copy was discarded"
 msgstr "Työkopio poistettiin"
 
 #: components/theme/Footer/Footer
-# defaultMessage: The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends.
+#. Default: "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
 msgstr "{plonecms} {copyright} 2000-{current_year} {plonefoundation} ja ystävien toimesta."
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: There are no groups with the searched criteria
+#. Default: "There are no groups with the searched criteria"
 msgid "There are no groups with the searched criteria"
 msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: There are no users with the searched criteria
+#. Default: "There are no users with the searched criteria"
 msgid "There are no users with the searched criteria"
 msgstr ""
 
 #: components/theme/CorsError/CorsError
-# defaultMessage: There is a configuration problem on the backend
+#. Default: "There is a configuration problem on the backend"
 msgid "There is a configuration problem on the backend"
 msgstr "Taustapalvelussa havaittiin konfiguraatio-ongelma"
 
 #: components/manage/Controlpanels/UpgradeControlPanel
-# defaultMessage: There was an error with the upgrade.
+#. Default: "There was an error with the upgrade."
 msgid "There was an error with the upgrade."
 msgstr "Päivityksessä tapahtui virhe."
 
 #: components/manage/Form/InlineForm
-# defaultMessage: There were some errors
+#. Default: "There were some errors"
 msgid "There were some errors"
 msgstr "Lomakkeesta löytyi virheitä"
 
 #: components/manage/Form/ModalForm
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: There were some errors.
+#. Default: "There were some errors."
 msgid "There were some errors."
 msgstr "Löytyi joitakin puutteita tai virheitä."
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
-# defaultMessage: Third
+#. Default: "Third"
 msgid "Third"
 msgstr "Kolmas"
 
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
-# defaultMessage: This has an ongoing working copy in {title}
+#. Default: "This has an ongoing working copy in {title}"
 msgid "This has an ongoing working copy in {title}"
 msgstr ""
 
 #: components/manage/Widgets/IdWidget
-# defaultMessage: This is a reserved name and can't be used
+#. Default: "This is a reserved name and can't be used"
 msgid "This is a reserved name and can't be used"
 msgstr ""
 
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
-# defaultMessage: This is a working copy of {title}
+#. Default: "This is a working copy of {title}"
 msgid "This is a working copy of {title}"
 msgstr ""
 
 #: components/manage/Contents/Contents
-# defaultMessage: This item is also a folder.
+#. Default: "This item is also a folder."
 msgid "This item is also a folder."
 msgstr ""
 
 #: components/manage/LockingToastsFactory/LockingToastsFactory
-# defaultMessage: This item was locked by {creator} on {date}
+#. Default: "This item was locked by {creator} on {date}"
 msgid "This item was locked by {creator} on {date}"
 msgstr "Tämä kohde oli lukittu {creator} toimesta {date}"
 
 #: components/manage/Contents/ContentsRenameModal
-# defaultMessage: This name will be displayed in the URL.
+#. Default: "This name will be displayed in the URL."
 msgid "This name will be displayed in the URL."
 msgstr "Tämä on osa sivun näkyvää osoitetta selaimen osoiterivillä."
 
 #: components/theme/NotFound/NotFound
-# defaultMessage: This page does not seem to exist…
+#. Default: "This page does not seem to exist…"
 msgid "This page does not seem to exist…"
 msgstr "Tätä sivua ei näytä olevan olemassa…"
 
 #: components/manage/Controlpanels/Rules/ConfigureRule
-# defaultMessage: This rule is assigned to the following locations:
+#. Default: "This rule is assigned to the following locations:"
 msgid "This rule is assigned to the following locations:"
 msgstr "Tämä sääntö on kohdistettu seuraaviin sijainteihin:"
 
 #: components/manage/Widgets/DatetimeWidget
-# defaultMessage: Time
+#. Default: "Time"
 msgid "Time"
 msgstr "Aika"
 
@@ -3737,80 +3737,80 @@ msgstr "Aika"
 #: components/manage/Widgets/WysiwygWidget
 #: components/theme/View/TabularView
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Title
+#. Default: "Title"
 msgid "Title"
 msgstr "Nimike"
 
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
-# defaultMessage: Title field error. Value not provided or already existing.
+#. Default: "Title field error. Value not provided or already existing."
 msgid "Title field error. Value not provided or already existing."
 msgstr "Otsikkovirhe. Arvoa ei syötetty tai se on jo olemassa."
 
 #: components/manage/Controlpanels/DatabaseInformation
-# defaultMessage: Total active and non-active objects
+#. Default: "Total active and non-active objects"
 msgid "Total active and non-active objects"
 msgstr "Aktiivisten ja ei-aktiivisten kohteiden määrä"
 
 #: components/manage/Contents/Contents
-# defaultMessage: Total comments
+#. Default: "Total comments"
 msgid "Total comments"
 msgstr "Kommentteja"
 
 #: components/manage/Controlpanels/DatabaseInformation
-# defaultMessage: Total number of objects in each cache
+#. Default: "Total number of objects in each cache"
 msgid "Total number of objects in each cache"
 msgstr "Jokaisessa välimuistissa olevien kohteiden määrä"
 
 #: components/manage/Controlpanels/DatabaseInformation
-# defaultMessage: Total number of objects in memory from all caches
+#. Default: "Total number of objects in memory from all caches"
 msgid "Total number of objects in memory from all caches"
 msgstr "Kaikissa välimuisteissa olevien kohteiden yhteismäärä"
 
 #: components/manage/Controlpanels/DatabaseInformation
-# defaultMessage: Total number of objects in the database
+#. Default: "Total number of objects in the database"
 msgid "Total number of objects in the database"
 msgstr "Tietokannassa olevien kohteiden määrä"
 
 #: components/manage/Controlpanels/UndoControlpanel
-# defaultMessage: Transactions
+#. Default: "Transactions"
 msgid "Transactions"
 msgstr "Toiminnot"
 
 #: components/manage/Controlpanels/UndoControlpanel
-# defaultMessage: #
+#. Default: "#"
 msgid "Transactions Checkbox"
 msgstr "Toiminnot"
 
 #: components/manage/Controlpanels/UndoControlpanel
-# defaultMessage: Transactions have been sorted
+#. Default: "Transactions have been sorted"
 msgid "Transactions Have Been Sorted"
 msgstr "Toiminnot on lajiteltu"
 
 #: components/manage/Controlpanels/UndoControlpanel
-# defaultMessage: Transactions have been unsorted
+#. Default: "Transactions have been unsorted"
 msgid "Transactions Have Been Unsorted"
 msgstr "Toimintojen lajittelu on purettu"
 
 #: components/manage/Add/Add
 #: components/manage/Toolbar/Types
-# defaultMessage: Translate to {lang}
+#. Default: "Translate to {lang}"
 msgid "Translate to {lang}"
 msgstr "Käännä kielelle {lang}"
 
 #: components/manage/Multilingual/ManageTranslations
-# defaultMessage: Translation linked
+#. Default: "Translation linked"
 msgid "Translation linked"
 msgstr "Käännös linkitetty"
 
 #: components/manage/Multilingual/ManageTranslations
-# defaultMessage: Translation linking removed
+#. Default: "Translation linking removed"
 msgid "Translation linking removed"
 msgstr "Käännöksen linkitys poistettu"
 
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
-# defaultMessage: Triggering event field error. Please select a value
+#. Default: "Triggering event field error. Please select a value"
 msgid "Triggering event field error. Please select a value"
 msgstr "Käynnistä tapahtumakentän virhe. Valtse arvo"
 
@@ -3818,37 +3818,37 @@ msgstr "Käynnistä tapahtumakentän virhe. Valtse arvo"
 #: components/manage/LinksToItem/LinksToItem
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
-# defaultMessage: Type
+#. Default: "Type"
 msgid "Type"
 msgstr "Sisältötyyppi"
 
 #: components/manage/Blocks/Video/Edit
-# defaultMessage: Type a Video (YouTube, Vimeo or mp4) URL
+#. Default: "Type a Video (YouTube, Vimeo or mp4) URL"
 msgid "Type a Video (YouTube, Vimeo or mp4) URL"
 msgstr "Syötä videon URL (YouTube, Vimeo tai mp4)"
 
 #: components/manage/Widgets/SelectAutoComplete
-# defaultMessage: Type text...
+#. Default: "Type text..."
 msgid "Type text..."
 msgstr "Syötä tekstiä..."
 
 #: components/manage/Blocks/Text/Edit
-# defaultMessage: Type text…
+#. Default: "Type text…"
 msgid "Type text…"
 msgstr "Syötä tekstiä…"
 
 #: components/manage/TextLineEdit/TextLineEdit
-# defaultMessage: Type the heading…
+#. Default: "Type the heading…"
 msgid "Type the heading…"
 msgstr "Syötä otsikko..."
 
 #: components/manage/Blocks/Title/Edit
-# defaultMessage: Type the title…
+#. Default: "Type the title…"
 msgid "Type the title…"
 msgstr "Syötä nimike tai otsikko…"
 
 #: components/manage/Contents/Contents
-# defaultMessage: UID
+#. Default: "UID"
 msgid "UID"
 msgstr "UID"
 
@@ -3856,1141 +3856,1141 @@ msgstr "UID"
 #: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Toolbar/More
-# defaultMessage: URL Management
+#. Default: "URL Management"
 msgid "URL Management"
 msgstr "URL-osoitteiden hallinta"
 
 #: components/manage/Aliases/Aliases
-# defaultMessage: URL Management for {title}
+#. Default: "URL Management for {title}"
 msgid "URL Management for {title}"
 msgstr "URL-osoitteiden hallinta kohteelle {title}"
 
 #: components/manage/Rules/Rules
-# defaultMessage: Unassign
+#. Default: "Unassign"
 msgid "Unassign"
 msgstr "Poista kohdistus"
 
 #: components/manage/Rules/Rules
-# defaultMessage: Unassigned
+#. Default: "Unassigned"
 msgid "Unassigned"
 msgstr "Kohdistus poistettu"
 
 #: components/manage/Toolbar/More
 #: components/theme/Unauthorized/Unauthorized
-# defaultMessage: Unauthorized
+#. Default: "Unauthorized"
 msgid "Unauthorized"
 msgstr "Ei pääsyä"
 
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Form/UndoToolbar
-# defaultMessage: Undo
+#. Default: "Undo"
 msgid "Undo"
 msgstr "Peruuta"
 
 #: components/manage/Controlpanels/UndoControlpanel
-# defaultMessage: Undo Controlpanel
+#. Default: "Undo Controlpanel"
 msgid "Undo Controlpanel"
 msgstr "Peruutukset"
 
 #: components/manage/BlockChooser/BlockChooser
-# defaultMessage: Unfold
+#. Default: "Unfold"
 msgid "Unfold"
 msgstr "Avaa"
 
 #: components/manage/Diff/Diff
-# defaultMessage: Unified
+#. Default: "Unified"
 msgid "Unified"
 msgstr "Yhdistetty"
 
 #: components/manage/Controlpanels/AddonsControlpanel
-# defaultMessage: Uninstall
+#. Default: "Uninstall"
 msgid "Uninstall"
 msgstr "Poista asennus"
 
 #: components/manage/Blocks/Block/DefaultView
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/RenderBlocks
-# defaultMessage: Unknown Block {block}
+#. Default: "Unknown Block {block}"
 msgid "Unknown Block"
 msgstr "Tunnistamaton palikka"
 
 #: components/manage/Multilingual/ManageTranslations
-# defaultMessage: Unlink translation for
+#. Default: "Unlink translation for"
 msgid "Unlink translation for"
 msgstr "Poista käännöksen linkitys"
 
 #: components/manage/Toolbar/Toolbar
-# defaultMessage: Unlock
+#. Default: "Unlock"
 msgid "Unlock"
 msgstr "Avaa"
 
 #: components/manage/Controlpanels/UndoControlpanel
-# defaultMessage: Unsorted
+#. Default: "Unsorted"
 msgid "Unsorted"
 msgstr "Lajittelu poistettu"
 
 #: components/manage/Controlpanels/AddonsControlpanel
-# defaultMessage: Update
+#. Default: "Update"
 msgid "Update"
 msgstr "Päivitä"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Update User
+#. Default: "Update User"
 msgid "Update User"
 msgstr ""
 
 #: components/manage/Controlpanels/AddonsControlpanel
-# defaultMessage: Update installed addons
+#. Default: "Update installed addons"
 msgid "Update installed addons"
 msgstr "Päivitä asennettuja laajennoksia"
 
 #: components/manage/Controlpanels/AddonsControlpanel
-# defaultMessage: Update installed addons:
+#. Default: "Update installed addons:"
 msgid "Update installed addons:"
 msgstr "Päivitä asennetut lisäosat:"
 
 #: components/manage/Controlpanels/AddonsControlpanel
-# defaultMessage: Updates available
+#. Default: "Updates available"
 msgid "Updates available"
 msgstr "Päivityksiä saatavilla"
 
 #: components/manage/Controlpanels/UpgradeControlPanel
-# defaultMessage: Upgrade
+#. Default: "Upgrade"
 msgid "Upgrade"
 msgstr "Päivitä"
 
 #: components/manage/Controlpanels/UpgradeControlPanel
-# defaultMessage: Upgrade Plone Site
+#. Default: "Upgrade Plone Site"
 msgid "Upgrade Plone Site"
 msgstr "Päivitä Plone-sivusto"
 
 #: components/manage/Controlpanels/UpgradeControlPanel
-# defaultMessage: Upgrade Report
+#. Default: "Upgrade Report"
 msgid "Upgrade Report"
 msgstr "Päivitysraportti"
 
 #: components/manage/Controlpanels/UpgradeControlPanel
-# defaultMessage: Upgrade Steps
+#. Default: "Upgrade Steps"
 msgid "Upgrade Steps"
 msgstr "Päivityksen vaiheet"
 
 #: components/manage/Contents/Contents
-# defaultMessage: Upload
+#. Default: "Upload"
 msgid "Upload"
 msgstr "Siirrä palvelimelle"
 
 #: components/manage/Blocks/LeadImage/Edit
-# defaultMessage: Upload a lead image in the 'Lead Image' content field.
+#. Default: "Upload a lead image in the 'Lead Image' content field."
 msgid "Upload a lead image in the 'Lead Image' content field."
 msgstr "Tallenna nostokuva sisällön 'Nostokuva'-kentään"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
-# defaultMessage: Upload a new image
+#. Default: "Upload a new image"
 msgid "Upload a new image"
 msgstr "Siirrä palvelimelle uusi kuva"
 
 #: components/manage/Contents/ContentsUploadModal
-# defaultMessage: Upload files
+#. Default: "Upload files"
 msgid "Upload files"
 msgstr "Lähetä palvelimelle tiedostoja"
 
 #: components/manage/Contents/ContentsUploadModal
-# defaultMessage: Uploading files
+#. Default: "Uploading files"
 msgid "Uploading files"
 msgstr "Lähetetään tiedostoja"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/Edit
-# defaultMessage: Uploading image
+#. Default: "Uploading image"
 msgid "Uploading image"
 msgstr "Kuvaa ladataan"
 
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
-# defaultMessage: Use the form below to define the new content rule
+#. Default: "Use the form below to define the new content rule"
 msgid "Use the form below to define the new content rule"
 msgstr "Käytä alla olevaa lomaketta uuden sisältösäännön määrittelyyn"
 
 #: components/manage/Controlpanels/Rules/Rules
-# defaultMessage: Use the form below to define, change or remove content rules. Rules will automatically perform actions on content when certain triggers take place. After defining rules, you may want to go to a folder to assign them, using the 'rules' item in the actions menu.
+#. Default: "Use the form below to define, change or remove content rules. Rules will automatically perform actions on content when certain triggers take place. After defining rules, you may want to go to a folder to assign them, using the 'rules' item in the actions menu."
 msgid "Use the form below to define, change or remove content rules. Rules will automatically perform actions on content when certain triggers take place. After defining rules, you may want to go to a folder to assign them, using the 'rules' item in the actions menu."
 msgstr "Käytä allaolevaa lomaketta sisältösääntöjen määrittelyyn, muuttamiseen ja poistoon. Säännöt suorittavat automaattisesti toimintoja tiettyjen ehtojen perusteella. Kun sääntö on luotu ja määriteelty, voit mennä kansioon tai sivuun kohdistamaan ne käyttämällä Säännöt-kohtaa valikossa."
 
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/WysiwygWidget
-# defaultMessage: Used for programmatic access to the fieldset.
+#. Default: "Used for programmatic access to the fieldset."
 msgid "Used for programmatic access to the fieldset."
 msgstr "Tiedon koneellisessa luvussa käytettävä tekninen tunniste."
 
 #: components/manage/Sharing/Sharing
-# defaultMessage: User
+#. Default: "User"
 msgid "User"
 msgstr "Käyttäjä"
 
 #: components/manage/Controlpanels/Controlpanels
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: User Group Membership
+#. Default: "User Group Membership"
 msgid "User Group Membership"
 msgstr "Käyttäjän ryhmäjäsenyys"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: User Group Settings
+#. Default: "User Group Settings"
 msgid "User Group Settings"
 msgstr "Käyttäjän ryhmän asetukset"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: User created
+#. Default: "User created"
 msgid "User created"
 msgstr "Käyttäjä luotu"
 
 #: components/manage/Controlpanels/Users/UsersControlpanel
-# defaultMessage: User name
+#. Default: "User name"
 msgid "User name"
 msgstr "Käyttäjän nimi"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: User roles updated
+#. Default: "User roles updated"
 msgid "User roles updated"
 msgstr "Käyttäjän roolit päivitetty"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: User updated successfuly
+#. Default: "User updated successfuly"
 msgid "User updated successfuly"
 msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Username
+#. Default: "Username"
 msgid "Username"
 msgstr "Käyttäjätunnus"
 
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/Users/UsersControlpanel
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Users
+#. Default: "Users"
 msgid "Users"
 msgstr "Käyttäjät"
 
 #: components/manage/Controlpanels/Controlpanels
-# defaultMessage: Users and Groups
+#. Default: "Users and Groups"
 msgid "Users and Groups"
 msgstr "Käyttäjät ja ryhmät"
 
 #: components/manage/Aliases/Aliases
-# defaultMessage: Using this form, you can manage alternative urls for an item. This is an easy way to make an item available under two different URLs.
+#. Default: "Using this form, you can manage alternative urls for an item. This is an easy way to make an item available under two different URLs."
 msgid "Using this form, you can manage alternative urls for an item. This is an easy way to make an item available under two different URLs."
 msgstr "Tämän lomakkeen avulla voit hallita vaihtoehtoisia URL-osoitteita kohteelle. Tämä on helppo tapa saada kohde näkyviin useassa osoitteessa."
 
 #: helpers/Extensions/withBlockSchemaEnhancer
-# defaultMessage: Variation
+#. Default: "Variation"
 msgid "Variation"
 msgstr "Variaatio"
 
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/UpgradeControlPanel
-# defaultMessage: Version Overview
+#. Default: "Version Overview"
 msgid "Version Overview"
 msgstr "Versiot"
 
 #: components/manage/Blocks/Video/schema
 #: components/manage/Blocks/Video/VideoSidebar
-# defaultMessage: Video
+#. Default: "Video"
 msgid "Video"
 msgstr "Video"
 
 #: components/manage/Blocks/Video/schema
-# defaultMessage: Video URL
+#. Default: "Video URL"
 msgid "Video URL"
 msgstr "Videon URL"
 
 #: components/manage/Contents/ContentsItem
-# defaultMessage: View
+#. Default: "View"
 msgid "View"
 msgstr "Näytä"
 
 #: components/manage/History/History
-# defaultMessage: View changes
+#. Default: "View changes"
 msgid "View changes"
 msgstr "Näytä muutokset"
 
 #: components/manage/Contents/Contents
-# defaultMessage: View links and references to this item
+#. Default: "View links and references to this item"
 msgid "View links and references to this item"
 msgstr ""
 
 #: components/manage/History/History
-# defaultMessage: View this revision
+#. Default: "View this revision"
 msgid "View this revision"
 msgstr "Näytä tämä versio"
 
 #: components/manage/Toolbar/More
-# defaultMessage: View working copy
+#. Default: "View working copy"
 msgid "View working copy"
 msgstr ""
 
 #: components/manage/Display/Display
-# defaultMessage: View
+#. Default: "View"
 msgid "Viewmode"
 msgstr "Näkymä"
 
 #: components/manage/Widgets/VocabularyTermsWidget
-# defaultMessage: Vocabulary term
+#. Default: "Vocabulary term"
 msgid "Vocabulary term"
 msgstr "Sanastotermi"
 
 #: components/manage/Widgets/VocabularyTermsWidget
-# defaultMessage: Title
+#. Default: "Title"
 msgid "Vocabulary term title"
 msgstr "Sanastotermin otsikko"
 
 #: components/manage/Widgets/VocabularyTermsWidget
-# defaultMessage: Vocabulary terms
+#. Default: "Vocabulary terms"
 msgid "Vocabulary terms"
 msgstr "Sanastotermit"
 
 #: components/manage/Controlpanels/VersionOverview
-# defaultMessage: You are running in 'debug mode'. This mode is intended for sites that are under development. This allows many configuration changes to be immediately visible, but will make your site run more slowly. To turn off debug mode, stop the server, set 'debug-mode=off' in your buildout.cfg, re-run bin/buildout and then restart the server process.
+#. Default: "You are running in 'debug mode'. This mode is intended for sites that are under development. This allows many configuration changes to be immediately visible, but will make your site run more slowly. To turn off debug mode, stop the server, set 'debug-mode=off' in your buildout.cfg, re-run bin/buildout and then restart the server process."
 msgid "Warning Regarding debug mode"
 msgstr "Varoitus debug-tilaa koskien"
 
 #: components/theme/ConnectionRefused/ConnectionRefused
-# defaultMessage: We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later.
+#. Default: "We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later."
 msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later."
 msgstr "Olemme pahoillamme, mutta taustajärjestelmä ei vastaa. Ole hyvä ja kokeile myöhemmin uudelleen."
 
 #: components/theme/NotFound/NotFound
-# defaultMessage: We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for.
+#. Default: "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
 msgstr "Olemme pahoillamme, mutta tästä osoitteesta ei löytynyt mitään sisältöä."
 
 #: components/theme/Error/ServerError
-# defaultMessage: We apologize for the inconvenience, but there was an unexpected error on the server.
+#. Default: "We apologize for the inconvenience, but there was an unexpected error on the server."
 msgid "We apologize for the inconvenience, but there was an unexpected error on the server."
 msgstr ""
 
 #: components/theme/Forbidden/Forbidden
-# defaultMessage: We apologize for the inconvenience, but you don't have permissions on this resource.
+#. Default: "We apologize for the inconvenience, but you don't have permissions on this resource."
 msgid "We apologize for the inconvenience, but you don't have permissions on this resource."
 msgstr "Olemma pahoillamme, mutta emme löytäneet oikeutta päästä tälle sivulle."
 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
-# defaultMessage: The
+#. Default: "The"
 msgid "Weeek day of month"
 msgstr "Viikonpäivä"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
-# defaultMessage: Weekday
+#. Default: "Weekday"
 msgid "Weekday"
 msgstr "Viikonpäivä"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
-# defaultMessage: Weekly
+#. Default: "Weekly"
 msgid "Weekly"
 msgstr "Viikottain"
 
 #: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/History/History
-# defaultMessage: What
+#. Default: "What"
 msgid "What"
 msgstr "Mitä"
 
 #: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/History/History
-# defaultMessage: When
+#. Default: "When"
 msgid "When"
 msgstr "Milloin"
 
 #: components/manage/Contents/ContentsPropertiesModal
-# defaultMessage: When this date is reached, the content will nolonger be visible in listings and searches.
+#. Default: "When this date is reached, the content will nolonger be visible in listings and searches."
 msgid "When this date is reached, the content will nolonger be visible in listings and searches."
 msgstr "Kun tähän valittu erääntymisaika koittaa, tämä sisältö poistuu navigoinnista, sisältölistauksista ja hakutuloksissa."
 
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
-# defaultMessage: Whether or not execution of further rules should stop after this rule is executed
+#. Default: "Whether or not execution of further rules should stop after this rule is executed"
 msgid "Whether or not execution of further rules should stop after this rule is executed"
 msgstr "Pitäisikö sääntöjen suorittaminen pysäyttää tämän säännön suorittamisen jälkeen"
 
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
-# defaultMessage: Whether or not other rules should be triggered by the actions launched by this rule. Activate this only if you are sure this won't create infinite loops
+#. Default: "Whether or not other rules should be triggered by the actions launched by this rule. Activate this only if you are sure this won't create infinite loops"
 msgid "Whether or not other rules should be triggered by the actions launched by this rule. Activate this only if you are sure this won't create infinite loops"
 msgstr "Pitäisikö muiden sääntöjen käynnistyä tämän säännön toimintojen perusteella. Aktivoi ainoastaan, jos olet varma ettei tämä luo loppumattomia silmukoita"
 
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
-# defaultMessage: Whether or not the rule is currently enabled
+#. Default: "Whether or not the rule is currently enabled"
 msgid "Whether or not the rule is currently enabled"
 msgstr "Onko sääntö voimassa vai ei"
 
 #: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/History/History
-# defaultMessage: Who
+#. Default: "Who"
 msgid "Who"
 msgstr "Kuka"
 
 #: components/manage/Sidebar/AlignBlock
 #: components/manage/Widgets/AlignWidget
-# defaultMessage: Wide
+#. Default: "Wide"
 msgid "Wide"
 msgstr "Leveä"
 
 #: components/manage/Contents/ContentsWorkflowModal
-# defaultMessage: Updating workflow states...
+#. Default: "Updating workflow states..."
 msgid "Workflow Change Loading Message"
 msgstr "Työnkulkuja päivitetään"
 
 #: components/manage/Workflow/Workflow
-# defaultMessage: Workflow updated.
+#. Default: "Workflow updated."
 msgid "Workflow updated."
 msgstr "Sisällön tila on päivitetty."
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
-# defaultMessage: Yearly
+#. Default: "Yearly"
 msgid "Yearly"
 msgstr "Vuosittain"
 
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypes
-# defaultMessage: Yes
+#. Default: "Yes"
 msgid "Yes"
 msgstr "Kyllä"
 
 #: components/theme/Unauthorized/Unauthorized
-# defaultMessage: You are trying to access a protected resource, please {login} first.
+#. Default: "You are trying to access a protected resource, please {login} first."
 msgid "You are trying to access a protected resource, please {login} first."
 msgstr "Ole hyvä ja {login} nähdäksesi tämän sivun."
 
 #: components/theme/OutdatedBrowser/OutdatedBrowser
-# defaultMessage: You are using an outdated browser
+#. Default: "You are using an outdated browser"
 msgid "You are using an outdated browser"
 msgstr "Käytät vanhentunutta selainta"
 
 #: components/theme/Comments/Comments
-# defaultMessage: You can add a comment by filling out the form below. Plain text formatting.
+#. Default: "You can add a comment by filling out the form below. Plain text formatting."
 msgid "You can add a comment by filling out the form below. Plain text formatting."
 msgstr "Kommentoi sisältöä täyttämällä oheinen lomake."
 
 #: components/manage/Sharing/Sharing
-# defaultMessage: You can control who can view and edit your item using the list below.
+#. Default: "You can control who can view and edit your item using the list below."
 msgid "You can control who can view and edit your item using the list below."
 msgstr "Tällä sivulla voit hallita, kuka voi nähdä tai muokata sisältöä."
 
 #: components/manage/Diff/Diff
-# defaultMessage: You can view the difference of the revisions below.
+#. Default: "You can view the difference of the revisions below."
 msgid "You can view the difference of the revisions below."
 msgstr "Tällä sivulla voit selata sisältöön tehtyjä muutoksia."
 
 #: components/manage/History/History
-# defaultMessage: You can view the history of your item below.
+#. Default: "You can view the history of your item below."
 msgid "You can view the history of your item below."
 msgstr "Tällä sivulla näet sisällön muutoshistorian."
 
 #: components/manage/Contents/Contents
-# defaultMessage: You can't paste this content here
+#. Default: "You can't paste this content here"
 msgid "You can't paste this content here"
 msgstr "Liitettävä sisältö ei sopinut tänne"
 
 #: components/theme/Logout/Logout
-# defaultMessage: You have been logged out from the site.
+#. Default: "You have been logged out from the site."
 msgid "You have been logged out from the site."
 msgstr "Olet kirjautunut ulos sivustolta."
 
 #: components/manage/Controlpanels/Relations/Relations
-# defaultMessage: You have not the required permission for this control panel.
+#. Default: "You have not the required permission for this control panel."
 msgid "You have not the required permission for this control panel."
 msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
-# defaultMessage: Your email is required for reset your password.
+#. Default: "Your email is required for reset your password."
 msgid "Your email is required for reset your password."
 msgstr "Salasanavaihto ei ole mahdollista ilman toimivaa sähköpostiosoitetta."
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Your password has been set successfully. You may now {link} with your new password.
+#. Default: "Your password has been set successfully. You may now {link} with your new password."
 msgid "Your password has been set successfully. You may now {link} with your new password."
 msgstr "Salasanasi on nyt vaihdettu. Voit nyt {link} uudella salasanalla."
 
 #: components/manage/Preferences/PersonalPreferences
-# defaultMessage: Your preferred language
+#. Default: "Your preferred language"
 msgid "Your preferred language"
 msgstr "Käyttämäsi kieli"
 
 #: components/manage/Controlpanels/UpgradeControlPanel
-# defaultMessage: Your site is up to date.
+#. Default: "Your site is up to date."
 msgid "Your site is up to date."
 msgstr "Sivustosi on ajan tasalla."
 
 #: components/theme/PasswordReset/RequestPasswordReset
-# defaultMessage: Your username is required for reset your password.
+#. Default: "Your username is required for reset your password."
 msgid "Your usernaame is required for reset your password."
 msgstr "Käyttäjätunnuksesi tarvitaan salasanan palautusta varten."
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.
+#. Default: "Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 msgid "addUserFormEmailDescription"
 msgstr "Syötä sähköpostiosoitteesi. Tämä tarvitaan mahdollista salasanan palauttamista varten. Kunnioitamme yksityisyyttäsi emmekä jaa osoitetta kolmansille osapuolille tai paljasta sitä missään."
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Enter full name, e.g. John Smith.
+#. Default: "Enter full name, e.g. John Smith."
 msgid "addUserFormFullnameDescription"
 msgstr "Syökä koko nimi, esim. Matti Meikäläinen."
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Enter your new password. Minimum 8 characters.
+#. Default: "Enter your new password. Minimum 8 characters."
 msgid "addUserFormPasswordDescription"
 msgstr "Lisää salasana. Minimissään 8 merkkiä."
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Enter a user name, usually something like "jsmith". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in.
+#. Default: "Enter a user name, usually something like "jsmith". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in."
 msgid "addUserFormUsernameDescription"
 msgstr "Lisää käyttäjätunnus, esim. mameikal. Älä käytä erikoismerkkejä."
 
 #: components/manage/Blocks/Search/schema
-# defaultMessage: Available views
+#. Default: "Available views"
 msgid "availableViews"
 msgstr "Saatavilla olevat näkymät"
 
 #: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
-# defaultMessage: Forgot your password?
+#. Default: "Forgot your password?"
 msgid "box_forgot_password_option"
 msgstr "Unohditko salasanasi?"
 
 #: config/Blocks
-# defaultMessage: Checkbox
+#. Default: "Checkbox"
 msgid "checkboxFacet"
 msgstr "Valintaruutu"
 
 #: components/manage/Blocks/Grid/templates
-# defaultMessage: column
+#. Default: "column"
 msgid "column"
 msgstr ""
 
 #: components/manage/Blocks/Grid/templates
-# defaultMessage: columns
+#. Default: "columns"
 msgid "columns"
 msgstr ""
 
 #: config/Blocks
-# defaultMessage: Common
+#. Default: "Common"
 msgid "common"
 msgstr "yleiset"
 
 #: components/manage/Multilingual/CompareLanguages
-# defaultMessage: Compare to language
+#. Default: "Compare to language"
 msgid "compare_to"
 msgstr "Vertaa"
 
 #: components/manage/Controlpanels/Relations/BrokenRelations
-# defaultMessage: {countofrelation} broken {countofrelation, plural, one {relation} other {relations}} of type {typeofrelation}
+#. Default: "{countofrelation} broken {countofrelation, plural, one {relation} other {relations}} of type {typeofrelation}"
 msgid "countBrokenRelations"
 msgstr ""
 
 #: config/Blocks
-# defaultMessage: Date Range
+#. Default: "Date Range"
 msgid "daterangeFacet"
 msgstr "Päivämäärä"
 
 #: components/manage/Blocks/Block/EditBlockWrapper
-# defaultMessage: delete
+#. Default: "delete"
 msgid "delete"
 msgstr "poista"
 
 #: components/theme/OutdatedBrowser/OutdatedBrowser
-# defaultMessage: You are using {browsername} {browserversion} which is deprecated by its vendor. That means that it does not get security updates and it is not ready for current modern web features, which deteriorates the user experience. Please upgrade to a modern browser.
+#. Default: "You are using {browsername} {browserversion} which is deprecated by its vendor. That means that it does not get security updates and it is not ready for current modern web features, which deteriorates the user experience. Please upgrade to a modern browser."
 msgid "deprecated_browser_notice_message"
 msgstr ""
 
 #: config/Blocks
-# defaultMessage: Description
+#. Default: "Description"
 msgid "description"
 msgstr "kuvaus"
 
 #: components/theme/PasswordReset/RequestPasswordReset
-# defaultMessage: For security reasons, we store your password encrypted, and cannot mail it to you. If you would like to reset your password, fill out the form below and we will send you an email at the address you gave when you registered to start the process of resetting your password.
+#. Default: "For security reasons, we store your password encrypted, and cannot mail it to you. If you would like to reset your password, fill out the form below and we will send you an email at the address you gave when you registered to start the process of resetting your password."
 msgid "description_lost_password"
 msgstr "Salasanat tallennetaan salattuina, eikä unohtuneen salasanan palauttaminen ole mahdollista. Voit kuitenkin vaihtaa salasanasi uuteen täyttämällä alla olevan lomakkeen. Lähetämme käyttäjätietojesi mukaiseen sähkpostiosoitteesen ohjeet salasanan vaihtamiseksi."
 
 #: components/theme/PasswordReset/RequestPasswordReset
-# defaultMessage: Your password reset request has been mailed. It should arrive in your mailbox shortly. When you receive the message, visit the address it contains to reset your password.
+#. Default: "Your password reset request has been mailed. It should arrive in your mailbox shortly. When you receive the message, visit the address it contains to reset your password."
 msgid "description_sent_password"
 msgstr "Lähetimme sinulle sähköpostilla ohjeet salasanan vaihtamiseksi. Sen pitäisi tulla sähköpostiisi pian. Kun saat sähköpostin, ole hyvä ja kopioi sen sisältämä osoite selaimesi osoiteriville. Osoite avaa lomakkeen salasanan vaihtamiseksi."
 
 #: components/manage/Contents/ContentsItem
-# defaultMessage: Draft
+#. Default: "Draft"
 msgid "draft"
 msgstr "luonnos"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Input must be valid email (something@domain.com)
+#. Default: "Input must be valid email (something@domain.com)"
 msgid "email"
 msgstr "sähköposti"
 
 #: components/theme/EventDetails/EventDetails
-# defaultMessage: All dates
+#. Default: "All dates"
 msgid "event_alldates"
 msgstr "Päivät"
 
 #: components/theme/EventDetails/EventDetails
-# defaultMessage: Attendees
+#. Default: "Attendees"
 msgid "event_attendees"
 msgstr "Osallistujat"
 
 #: components/theme/EventDetails/EventDetails
-# defaultMessage: Contact Name
+#. Default: "Contact Name"
 msgid "event_contactname"
 msgstr "Yhteyshenkilö"
 
 #: components/theme/EventDetails/EventDetails
-# defaultMessage: Contact Phone
+#. Default: "Contact Phone"
 msgid "event_contactphone"
 msgstr "Puhelinnumero"
 
 #: components/theme/EventDetails/EventDetails
-# defaultMessage: Website
+#. Default: "Website"
 msgid "event_website"
 msgstr "Lisätietoja"
 
 #: components/theme/EventDetails/EventDetails
-# defaultMessage: What
+#. Default: "What"
 msgid "event_what"
 msgstr "Mitä"
 
 #: components/theme/EventDetails/EventDetails
-# defaultMessage: When
+#. Default: "When"
 msgid "event_when"
 msgstr "Milloin"
 
 #: components/theme/EventDetails/EventDetails
-# defaultMessage: Where
+#. Default: "Where"
 msgid "event_where"
 msgstr "Missä"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: This website does not accept files larger than {limit}
+#. Default: "This website does not accept files larger than {limit}"
 msgid "fileTooLarge"
 msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: flush intIds and rebuild relations
+#. Default: "flush intIds and rebuild relations"
 msgid "flush intIds and rebuild relations"
 msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: <ul><li>Regenerate intIds (tokens of relations in relation catalog)</li><li>Rebuild relations</li></ul><p>Check the log for details!</p><p><b>Warning</b>: If you have add-ons relying on intIds, you should not flush them.</p>
+#. Default: "<ul><li>Regenerate intIds (tokens of relations in relation catalog)</li><li>Rebuild relations</li></ul><p>Check the log for details!</p><p><b>Warning</b>: If you have add-ons relying on intIds, you should not flush them.</p>"
 msgid "flushAndRebuildRelationsHints"
 msgstr ""
 
 #: components/manage/Blocks/Teaser/schema
-# defaultMessage: Head title
+#. Default: "Head title"
 msgid "head_title"
 msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
-# defaultMessage: Password reset confirmation sent
+#. Default: "Password reset confirmation sent"
 msgid "heading_sent_password"
 msgstr "Sähköposti salasanan vaihtamiseksi lähetetty"
 
 #: config/Blocks
-# defaultMessage: Hero
+#. Default: "Hero"
 msgid "hero"
 msgstr "nosto"
 
 #: config/Blocks
-# defaultMessage: HTML
+#. Default: "HTML"
 msgid "html"
 msgstr "HTML"
 
 #: config/Blocks
-# defaultMessage: Image
+#. Default: "Image"
 msgid "image"
 msgstr "kuva"
 
 #: components/manage/Blocks/Image/ImageSidebar
-# defaultMessage: Clear image
+#. Default: "Clear image"
 msgid "image_block_clear"
 msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
-# defaultMessage: Image preview
+#. Default: "Image preview"
 msgid "image_block_preview"
 msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Input must be integer
+#. Default: "Input must be integer"
 msgid "integer"
 msgstr "numero"
 
 #: components/manage/Contents/ContentsItem
-# defaultMessage: Intranet
+#. Default: "Intranet"
 msgid "intranet"
 msgstr "inranet"
 
 #: components/manage/Contents/Contents
-# defaultMessage: item
+#. Default: "item"
 msgid "item"
 msgstr ""
 
 #: components/manage/Contents/Contents
-# defaultMessage: items
+#. Default: "items"
 msgid "items"
 msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
-# defaultMessage: My email is
+#. Default: "My email is"
 msgid "label_my_email_is"
 msgstr "Sähköpostiosoitteeni"
 
 #: components/theme/PasswordReset/RequestPasswordReset
-# defaultMessage: My user name is
+#. Default: "My user name is"
 msgid "label_my_username_is"
 msgstr "Käyttäjätunnukseni"
 
 #: config/Blocks
-# defaultMessage: Lead Image Field
+#. Default: "Lead Image Field"
 msgid "leadimage"
 msgstr "nostokuva"
 
 #: config/Blocks
-# defaultMessage: Listing
+#. Default: "Listing"
 msgid "listing"
 msgstr "luettelo"
 
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Contents/Contents
-# defaultMessage: Loading
+#. Default: "Loading"
 msgid "loading"
 msgstr "ladataan"
 
 #: components/theme/Unauthorized/Unauthorized
-# defaultMessage: log in
+#. Default: "log in"
 msgid "log in"
 msgstr "kirjaudu"
 
 #: config/Blocks
-# defaultMessage: Maps
+#. Default: "Maps"
 msgid "maps"
 msgstr "kartta"
 
 #: components/manage/Widgets/SchemaWidget
-# defaultMessage: Maximum Length
+#. Default: "Maximum Length"
 msgid "maxLength"
 msgstr "Maksimipituus"
 
 #: components/manage/Widgets/SchemaWidget
-# defaultMessage: End of the range (including the value itself)
+#. Default: "End of the range (including the value itself)"
 msgid "maximum"
 msgstr "maksimi"
 
 #: config/Blocks
-# defaultMessage: Media
+#. Default: "Media"
 msgid "media"
 msgstr "media"
 
 #: components/manage/Widgets/SchemaWidget
-# defaultMessage: Minimum Length
+#. Default: "Minimum Length"
 msgid "minLength"
 msgstr "Minimipituus"
 
 #: components/manage/Widgets/SchemaWidget
-# defaultMessage: Start of the range
+#. Default: "Start of the range"
 msgid "minimum"
 msgstr "minimi"
 
 #: config/Blocks
-# defaultMessage: Most used
+#. Default: "Most used"
 msgid "mostUsed"
 msgstr "käytetyimmät"
 
 #: components/manage/Controlpanels/Relations/RelationsListing
-# defaultMessage: Found {sources} sources and {targets} targets. Narrow down to {max}!
+#. Default: "Found {sources} sources and {targets} targets. Narrow down to {max}!"
 msgid "narrowDownRelations"
 msgstr ""
 
 #: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
 #: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
 #: components/theme/Widgets/BooleanWidget
-# defaultMessage: No
+#. Default: "No"
 msgid "no"
 msgstr "Ei"
 
 #: components/manage/Contents/ContentsItem
-# defaultMessage: No workflow state
+#. Default: "No workflow state"
 msgid "no workflow state"
 msgstr "ei julkaisutilaa"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Input must be number
+#. Default: "Input must be number"
 msgid "number"
 msgstr "numero"
 
 #: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
 #: components/manage/Widgets/RecurrenceWidget/ByYearField
-# defaultMessage: of the month
+#. Default: "of the month"
 msgid "of the month"
 msgstr "kuukaudessa"
 
 #: error
-# defaultMessage: or try a different page.
+#. Default: "or try a different page."
 msgid "or try a different page."
 msgstr "kokeile jotain muuta sivua."
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
-# defaultMessage: others
+#. Default: "others"
 msgid "others"
 msgstr "muut"
 
 #: components/manage/Contents/ContentsItem
-# defaultMessage: Pending
+#. Default: "Pending"
 msgid "pending"
 msgstr "odottaa"
 
 #: components/manage/Contents/ContentsItem
-# defaultMessage: Private
+#. Default: "Private"
 msgid "private"
 msgstr "yksityinen"
 
 #: components/manage/Contents/ContentsItem
-# defaultMessage: Published
+#. Default: "Published"
 msgid "published"
 msgstr "julkaistu"
 
 #: components/manage/Widgets/QueryWidget
-# defaultMessage: Select…
+#. Default: "Select…"
 msgid "querystring-widget-select"
 msgstr "Valitse..."
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: rebuild relations
+#. Default: "rebuild relations"
 msgid "rebuild relations"
 msgstr ""
 
 #: components/manage/Contents/Contents
-# defaultMessage: reference
+#. Default: "reference"
 msgid "reference"
 msgstr ""
 
 #: components/manage/Contents/Contents
-# defaultMessage: references
+#. Default: "references"
 msgid "references"
 msgstr ""
 
 #: components/theme/Search/Search
-# defaultMessage: results
+#. Default: "results"
 msgid "results found"
 msgstr "hakutulosta"
 
 #: error
-# defaultMessage: return to the site root
+#. Default: "return to the site root"
 msgid "return to the site root"
 msgstr "Palaa sivuston juureen"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
-# defaultMessage: and
+#. Default: "and"
 msgid "rrule_and"
 msgstr "ja"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
-# defaultMessage: (~approximate)
+#. Default: "(~approximate)"
 msgid "rrule_approximate"
 msgstr "noin"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
-# defaultMessage: at
+#. Default: "at"
 msgid "rrule_at"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
-# defaultMessage: [month] [day], [year]
+#. Default: "[month] [day], [year]"
 msgid "rrule_dateFormat"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
-# defaultMessage: day
+#. Default: "day"
 msgid "rrule_day"
 msgstr "päivä"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
-# defaultMessage: days
+#. Default: "days"
 msgid "rrule_days"
 msgstr "päiviä"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
-# defaultMessage: every
+#. Default: "every"
 msgid "rrule_every"
 msgstr "joka"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
-# defaultMessage: for
+#. Default: "for"
 msgid "rrule_for"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
-# defaultMessage: hour
+#. Default: "hour"
 msgid "rrule_hour"
 msgstr "tunti"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
-# defaultMessage: hours
+#. Default: "hours"
 msgid "rrule_hours"
 msgstr "tunteja"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
-# defaultMessage: in
+#. Default: "in"
 msgid "rrule_in"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
-# defaultMessage: last
+#. Default: "last"
 msgid "rrule_last"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
-# defaultMessage: minutes
+#. Default: "minutes"
 msgid "rrule_minutes"
 msgstr "minuutteja"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
-# defaultMessage: month
+#. Default: "month"
 msgid "rrule_month"
 msgstr "kuukausi"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
-# defaultMessage: months
+#. Default: "months"
 msgid "rrule_months"
 msgstr "kuukausia"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
-# defaultMessage: nd
+#. Default: "nd"
 msgid "rrule_nd"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
-# defaultMessage: on
+#. Default: "on"
 msgid "rrule_on"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
-# defaultMessage: on the
+#. Default: "on the"
 msgid "rrule_on the"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
-# defaultMessage: or
+#. Default: "or"
 msgid "rrule_or"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
-# defaultMessage: rd
+#. Default: "rd"
 msgid "rrule_rd"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
-# defaultMessage: st
+#. Default: "st"
 msgid "rrule_st"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
-# defaultMessage: th
+#. Default: "th"
 msgid "rrule_th"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
-# defaultMessage: the
+#. Default: "the"
 msgid "rrule_the"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
-# defaultMessage: time
+#. Default: "time"
 msgid "rrule_time"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
-# defaultMessage: times
+#. Default: "times"
 msgid "rrule_times"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
-# defaultMessage: until
+#. Default: "until"
 msgid "rrule_until"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
-# defaultMessage: week
+#. Default: "week"
 msgid "rrule_week"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
-# defaultMessage: weekday
+#. Default: "weekday"
 msgid "rrule_weekday"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
-# defaultMessage: weekdays
+#. Default: "weekdays"
 msgid "rrule_weekdays"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
-# defaultMessage: weeks
+#. Default: "weeks"
 msgid "rrule_weeks"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
-# defaultMessage: year
+#. Default: "year"
 msgid "rrule_year"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
-# defaultMessage: years
+#. Default: "years"
 msgid "rrule_years"
 msgstr ""
 
 #: config/Blocks
-# defaultMessage: Select
+#. Default: "Select"
 msgid "selectFacet"
 msgstr "Valitse"
 
 #: components/manage/Blocks/Search/components/ViewSwitcher
-# defaultMessage: Select view
+#. Default: "Select view"
 msgid "selectView"
 msgstr "Valitse näkymä"
 
 #: components/theme/SkipLinks/SkipLinks
-# defaultMessage: Skip to footer
+#. Default: "Skip to footer"
 msgid "skiplink-footer"
 msgstr "Siirry alatunnisteeseen"
 
 #: components/theme/SkipLinks/SkipLinks
-# defaultMessage: Skip to main content
+#. Default: "Skip to main content"
 msgid "skiplink-main-content"
 msgstr "Siirry sisältöön"
 
 #: components/theme/SkipLinks/SkipLinks
-# defaultMessage: Skip to navigation
+#. Default: "Skip to navigation"
 msgid "skiplink-navigation"
 msgstr "Siirry navigointiin"
 
 #: components/manage/Contents/Contents
-# defaultMessage: sort
+#. Default: "sort"
 msgid "sort"
 msgstr "järjestys"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: sources path
+#. Default: "sources path"
 msgid "sources path"
 msgstr ""
 
 #: config/Blocks
-# defaultMessage: Table
+#. Default: "Table"
 msgid "table"
 msgstr "taulukko"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: target path
+#. Default: "target path"
 msgid "target path"
 msgstr ""
 
 #: config/Blocks
-# defaultMessage: Text
+#. Default: "Text"
 msgid "text"
 msgstr "teksti"
 
 #: config/Blocks
-# defaultMessage: Title
+#. Default: "Title"
 msgid "title"
 msgstr "nimike"
 
 #: components/manage/Blocks/ToC/Schema
 #: config/Blocks
-# defaultMessage: Table of Contents
+#. Default: "Table of Contents"
 msgid "toc"
 msgstr "sisällys"
 
 #: config/Blocks
-# defaultMessage: Toggle
+#. Default: "Toggle"
 msgid "toggleFacet"
 msgstr ""
 
 #: components/manage/Controlpanels/AddonsControlpanel
-# defaultMessage: Update from version {origin} to {destination}
+#. Default: "Update from version {origin} to {destination}"
 msgid "upgradeVersions"
 msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: Input must be valid url (www.something.com or http(s)://www.something.com)
+#. Default: "Input must be valid url (www.something.com or http(s)://www.something.com)"
 msgid "url"
 msgstr "URL"
 
 #: components/manage/Toolbar/PersonalTools
-# defaultMessage: user avatar
+#. Default: "user avatar"
 msgid "user avatar"
 msgstr "käyttäjäkuva"
 
 #: config/Blocks
-# defaultMessage: Video
+#. Default: "Video"
 msgid "video"
 msgstr "video"
 
 #: components/manage/Blocks/Search/schema
-# defaultMessage: Views
+#. Default: "Views"
 msgid "views"
 msgstr "Näkymät"
 
 #: components/theme/EventDetails/EventDetails
-# defaultMessage: Visit external website
+#. Default: "Visit external website"
 msgid "visit_external_website"
 msgstr "Tapahtuman linkki tai nettisivu"
 
 #: components/manage/Toolbar/More
-# defaultMessage: You are not authorized to perform this operation.
+#. Default: "You are not authorized to perform this operation."
 msgid "workingCopyErrorUnauthorized"
 msgstr "Sinulla ei ole oikeutta tehdä tätä"
 
 #: components/manage/Toolbar/More
-# defaultMessage: An error occurred while performing this operation.
+#. Default: "An error occurred while performing this operation."
 msgid "workingCopyGenericError"
 msgstr "Virhe"
 
 #: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
 #: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
 #: components/theme/Widgets/BooleanWidget
-# defaultMessage: Yes
+#. Default: "Yes"
 msgid "yes"
 msgstr "Kyllä"
 
 #: components/manage/Contents/ContentsUploadModal
-# defaultMessage: {count, plural, one {Upload {count} file} other {Upload {count} files}}
+#. Default: "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 msgstr ""
 
 #: components/manage/Contents/Contents
-# defaultMessage: {count} selected
+#. Default: "{count} selected"
 msgid "{count} selected"
 msgstr "{count} valittu"
 
 #: components/manage/Controlpanels/ContentType
-# defaultMessage: {id} Content Type
+#. Default: "{id} Content Type"
 msgid "{id} Content Type"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypeSchema
-# defaultMessage: {id} Schema
+#. Default: "{id} Schema"
 msgid "{id} Schema"
 msgstr ""
 
 #: components/manage/Actions/Actions
-# defaultMessage: {title} copied.
+#. Default: "{title} copied."
 msgid "{title} copied."
 msgstr "{title} on kopioitu."
 
 #: components/manage/Actions/Actions
-# defaultMessage: {title} cut.
+#. Default: "{title} cut."
 msgid "{title} cut."
 msgstr "{title} on leikattu."
 
 #: components/manage/Actions/Actions
-# defaultMessage: {title} has been deleted.
+#. Default: "{title} has been deleted."
 msgid "{title} has been deleted."
 msgstr "{title} on poistettu."
