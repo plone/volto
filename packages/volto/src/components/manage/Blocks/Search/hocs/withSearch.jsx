@@ -96,9 +96,25 @@ function normalizeState({
   const { types: facetWidgetTypes } =
     config.blocks.blocksConfig.search.extensions.facetWidgets;
 
+  // Here we are removing the QueryString of the Listing ones which is persent in the Facet
+  // because we already initialize the facet with those value.
+  const configuredFacets =
+    facetSettings.map((facet) => facet?.field?.value) || [];
+
+  let copyOfQuery = [...query.query];
+
+  for (let value of configuredFacets) {
+    const queryStringIndex = copyOfQuery.findIndex(
+      (query) => query.i === value,
+    );
+    if (queryStringIndex >= 0) {
+      copyOfQuery.splice(queryStringIndex, 1);
+    }
+  }
+
   const params = {
     query: [
-      ...(query.query || []),
+      ...(copyOfQuery || []),
       ...(facetSettings || []).map((facet) => {
         if (!facet?.field) return null;
 
@@ -261,14 +277,32 @@ const withSearch = (options) => (WrappedComponent) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const configuredFacets =
       data.facets?.map((facet) => facet?.field?.value) || [];
+
+    // Here we are getting the initial value of the facet if Listing Query contains the same criteria as
+    // facet.
+    const queryData = deserializeQuery(JSON.stringify(data.query.query));
+
+    let intializeFacetWithQueryValue = [];
+
+    for (let value of configuredFacets) {
+      const queryString = queryData.find((item) => item.i === value);
+      if (queryString) {
+        intializeFacetWithQueryValue = [
+          ...intializeFacetWithQueryValue,
+          { [queryString.i]: queryString.v },
+        ];
+      }
+    }
+
     const multiFacets = data.facets
       ?.filter((facet) => facet?.multiple)
       .map((facet) => facet?.field?.value);
     const [facets, setFacets] = React.useState(
       Object.assign(
         {},
-        ...urlQuery.map(({ i, v }) => ({ [i]: v })), // TODO: the 'o' should be kept. This would be a major refactoring of the facets
-
+        ...urlQuery.map(({ i, v }) => ({ [i]: v })),
+        // TODO: the 'o' should be kept. This would be a major refactoring of the facets
+        ...intializeFacetWithQueryValue,
         // support for simple filters like ?Subject=something
         // TODO: since the move to hash params this is no longer working.
         // We'd have to treat the location.search and manage it just like the
@@ -289,7 +323,10 @@ const withSearch = (options) => (WrappedComponent) => {
     const previousUrlQuery = usePrevious(urlQuery);
 
     React.useEffect(() => {
-      if (!isEqual(urlQuery, previousUrlQuery)) {
+      if (
+        !isEqual(urlQuery, previousUrlQuery) &&
+        previousUrlQuery !== undefined
+      ) {
         setFacets(
           Object.assign(
             {},
