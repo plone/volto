@@ -77,8 +77,9 @@ const Login = (props) => {
     qs.parse(props.location?.search ?? location.search).return_url ||
     location.pathname.replace(/\/login\/?$/, '').replace(/\/logout\/?$/, '') ||
     '/';
+
   useEffect(() => {
-    if (token && !props.isLogout) {
+    if (token && !(props.isLogout || location.state.isLogout)) {
       history.push(returnUrl || '/');
       if (toast.isActive('loggedOut')) {
         toast.dismiss('loggedOut');
@@ -108,7 +109,16 @@ const Login = (props) => {
         dispatch(resetLoginRequest());
       }
     };
-  }, [dispatch, token, error, intl, history, returnUrl, props.isLogout]);
+  }, [
+    dispatch,
+    token,
+    error,
+    intl,
+    history,
+    returnUrl,
+    props.isLogout,
+    location.state.isLogout,
+  ]);
 
   const onLogin = (event) => {
     dispatch(
