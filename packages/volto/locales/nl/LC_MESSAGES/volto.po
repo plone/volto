@@ -1,18 +1,3 @@
-#. Translators:
-#. Fred van Dijk <info@zestsoftware.nl>, 2016
-#. Coen van der Kamp <c.van.der.kamp@zestsoftware.nl>, 2015
-#. Danny Bloemendaal <danny.bloemendaal@informaat.nl>, 2007
-#. Diederik Veeze <diederik_24@hotmail.com>, 2015
-#. Duco Dokter <dokter@w20e.com>, 2007
-#. Esther Ladage <e.ladage@zestsoftware.nl>, 2005
-#. Jean-Paul Ladage <j.ladage@zestsoftware.nl>, 2017
-#. Kees Hink <hink@gw20e.com>, 2010
-#. Maarten Kling <maarten@fourdigits.nl>, 2013
-#. Mark van Lent <m.vanlent@zestsoftware.nl>, 2007
-#. Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>, 2005
-#. Reinout van Rees <reinout@zestsoftware.nl>, 2008
-#. Roel Bruggink <roel@fourdigits.nl>, 2009
-#. Wietze Helmantel <helmantel@goldmund-wyldebeast-wunderliebe.com>, 2007
 msgid ""
 msgstr ""
 "Project-Id-Version: PlonenPOT-Creation-Date: 2017-04-27T19:30:59.079Z\n"
