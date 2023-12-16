@@ -23,9 +23,7 @@ export interface Content {
     } & Record<string, unknown>;
   };
   blocks_layout: {
-    [k in string]: {
-      items: string[];
-    } & Record<string, unknown>;
+    items: string[];
   };
   contributors: string[];
   creators: string[];
