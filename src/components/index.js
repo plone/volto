@@ -75,16 +75,52 @@ export { default as AlbumView } from '@plone/volto/components/theme/View/AlbumVi
 
 export { default as Actions } from '@plone/volto/components/manage/Actions/Actions';
 export { default as Add } from '@plone/volto/components/manage/Add/Add';
+export {
+  Controlpanels,
+  Controlpanel,
+  RulesControlpanel,
+  AddRuleControlpanel,
+  EditRuleControlpanel,
+  ConfigureRuleControlpanel,
+  UsersControlpanel,
+  RenderUsers,
+  UserGroupMembershipControlPanel,
+  GroupsControlpanel,
+  RenderGroups,
+  RelationsControlpanel,
+  AliasesControlpanel,
+  UndoControlpanel,
+  AddonsControlpanel,
+  ContentType,
+  ContentTypeLayout,
+  ContentTypeSchema,
+  ContentTypes,
+  VersionOverview,
+  UpgradeControlPanel,
+  ModerateComments,
+  DatabaseInformation,
+} from '@plone/volto/components/manage/Controlpanels';
+
 export { default as Circle } from '@plone/volto/components/manage/Contents/circle';
 
 export { default as Delete } from '@plone/volto/components/manage/Delete/Delete';
 export const Diff = loadable(() =>
-  import('@plone/volto/components/manage/Diff/Diff'),
+  import(
+    /* webpackChunkName: "Diff" */ '@plone/volto/components/manage/Diff/Diff'
+  ),
+);
+export const DiffField = loadable(() =>
+  import(
+    /* webpackChunkName: "Diff" */ '@plone/volto/components/manage/Diff/DiffField'
+  ),
 );
 export { default as Display } from '@plone/volto/components/manage/Display/Display';
 export { default as Edit } from '@plone/volto/components/manage/Edit/Edit';
 export { default as History } from '@plone/volto/components/manage/History/History';
 export { default as Sharing } from '@plone/volto/components/manage/Sharing/Sharing';
+export const Rules = loadable(() =>
+  import('@plone/volto/components/manage/Rules/Rules'),
+);
 export { default as Aliases } from '@plone/volto/components/manage/Aliases/Aliases';
 export { default as LinksToItem } from '@plone/volto/components/manage/LinksToItem/LinksToItem';
 export { default as Workflow } from '@plone/volto/components/manage/Workflow/Workflow';
@@ -101,8 +137,73 @@ export { default as Types } from '@plone/volto/components/manage/Toolbar/Types';
 export { default as Toast } from '@plone/volto/components/manage/Toast/Toast';
 export { default as ManageTranslations } from '@plone/volto/components/manage/Multilingual/ManageTranslations';
 
+export {
+  Field,
+  InlineForm,
+  ModalForm,
+  UndoToolbar,
+  BlocksToolbar,
+  BlockDataForm,
+  BlocksForm,
+  Form,
+} from '@plone/volto/components/manage/Form';
 export { default as SearchTags } from '@plone/volto/components/theme/Search/SearchTags';
+export { CommentEditModal } from '@plone/volto/components/theme/Comments';
+export {
+  Contents,
+  ContentsBreadcrumbs,
+  ContentsIndexHeader,
+  ContentsItem,
+  ContentsUploadModal,
+  ContentsPropertiesModal,
+  ContentsRenameModal,
+  ContentsWorkflowModal,
+  ContentsTagsModal,
+} from '@plone/volto/components/manage/Contents';
 export { default as DragDropList } from '@plone/volto/components/manage/DragDropList/DragDropList';
+
+export {
+  AlignWidget,
+  ButtonsWidget,
+  ArrayWidget,
+  CheckboxWidget,
+  FileWidget,
+  IdWidget,
+  PasswordWidget,
+  QueryWidget,
+  QuerySortOnWidget,
+  QuerystringWidget,
+  SchemaWidget,
+  SelectWidget,
+  TextareaWidget,
+  TextWidget,
+  TokenWidget,
+  WysiwygWidget,
+  UrlWidget,
+  InternalUrlWidget,
+  EmailWidget,
+  NumberWidget,
+  ImageSizeWidget,
+  RegistryImageWidget,
+  ReferenceWidget,
+  ObjectBrowserWidget,
+  ObjectWidget,
+  ObjectListWidget,
+  VocabularyTermsWidget,
+  SelectMetadataWidget,
+  SelectAutoComplete,
+  ColorPickerWidget,
+  DatetimeWidget,
+  RecurrenceWidget,
+  FormFieldWrapper,
+} from '@plone/volto/components/manage/Widgets';
+
+export const SchemaWidgetFieldset = loadable(() =>
+  import('@plone/volto/components/manage/Widgets/SchemaWidgetFieldset'),
+);
+export const ObjectBrowserWidgetMode = loadable(() =>
+  import('@plone/volto/components/manage/Widgets/ObjectBrowserWidget'),
+);
 
 export { default as EditDefaultBlock } from '@plone/volto/components/manage/Blocks/Block/DefaultEdit';
 export { default as EditDescriptionBlock } from '@plone/volto/components/manage/Blocks/Description/Edit';

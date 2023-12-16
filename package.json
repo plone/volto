@@ -260,7 +260,6 @@
     "babel-plugin-lodash": "3.3.4",
     "babel-plugin-react-intl": "5.1.17",
     "babel-plugin-root-import": "6.1.0",
-    "babel-plugin-transform-imports": "2.0.0",
     "babel-preset-razzle": "4.2.17",
     "circular-dependency-plugin": "5.2.2",
     "classnames": "2.2.6",

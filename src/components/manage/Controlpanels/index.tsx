@@ -51,7 +51,14 @@ export const ConfigureRuleControlpanel = loadable(
 export const UsersControlpanel = loadable(
   () =>
     import(
-      '@plone/volto/components/manage/Controlpanels/Users/UsersControlpanel'
+      /* webpackChunkName: "UsersControlpanel" */ '@plone/volto/components/manage/Controlpanels/Users/UsersControlpanel'
+    ),
+);
+
+export const RenderUsers = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "UsersControlpanel" */ '@plone/volto/components/manage/Controlpanels/Users/RenderUsers'
     ),
 );
 
@@ -65,7 +72,14 @@ export const UserGroupMembershipControlPanel = loadable(
 export const GroupsControlpanel = loadable(
   () =>
     import(
-      '@plone/volto/components/manage/Controlpanels/Groups/GroupsControlpanel'
+      /* webpackChunkName: "GroupsControlpanel" */ '@plone/volto/components/manage/Controlpanels/Groups/GroupsControlpanel'
+    ),
+);
+
+export const RenderGroups = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "GroupsControlpanel" */ '@plone/volto/components/manage/Controlpanels/Groups/RenderGroups'
     ),
 );
 

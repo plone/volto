@@ -1,5 +1,3 @@
-const transformModulesMapper = require('./webpack-plugins/babel-transform-modules');
-
 module.exports = function (api) {
   api.cache(true);
   const presets = [
@@ -20,22 +18,6 @@ module.exports = function (api) {
       'babel-plugin-root-import', // Required for the ~ imports to work
       {
         rootPathSuffix: 'src',
-      },
-    ],
-    // this transform-imports config is read by jest and breaks webpack
-    [
-      'transform-imports',
-      {
-        '@plone/volto/components': {
-          transform: (importName) => {
-            const voltoTransforms =
-              transformModulesMapper['@plone/volto/components'];
-            if (voltoTransforms[importName]) {
-              return voltoTransforms[importName];
-            }
-            return '@plone/volto/components';
-          },
-        },
       },
     ],
     [
