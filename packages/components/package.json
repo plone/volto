@@ -47,6 +47,7 @@
   ],
   "scripts": {
     "build": "parcel build",
+    "check-ts": "tsc --project tsconfig.json",
     "test": "vitest --no-threads --passWithNoTests",
     "coverage": "vitest run --coverage --no-threads",
     "lint": "pnpm eslint && pnpm prettier && pnpm stylelint",
@@ -71,6 +72,7 @@
     "@parcel/packager-ts": "2.10.3",
     "@parcel/transformer-typescript-types": "2.10.3",
     "@plone/types": "workspace: *",
+    "@react-types/shared": "^3.22.0",
     "@storybook/addon-essentials": "^7.5.1",
     "@storybook/addon-interactions": "^7.5.1",
     "@storybook/addon-links": "^7.5.1",
