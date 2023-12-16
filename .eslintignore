@@ -1,5 +1,7 @@
 node_modules
 build
+storybook-static
 packages/volto
 packages/volto-guillotina
 packages/generator-volto/generators/app/templates
+!.*
