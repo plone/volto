@@ -22,6 +22,8 @@
     "husky:uninstall": "husky uninstall"
   },
   "devDependencies": {
+    "@parcel/packager-ts": "2.10.3",
+    "@parcel/transformer-typescript-types": "2.10.3",
     "@typescript-eslint/eslint-plugin": "^6.8.0",
     "@typescript-eslint/parser": "^6.8.0",
     "eslint": "^8.53.0",
