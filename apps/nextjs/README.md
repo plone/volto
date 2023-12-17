@@ -1,19 +1,21 @@
-# plone-nextjs
+# Plone on NextJS
 
-This is a PoC of a NextJS 13 app using the app router and the upcoming `@plone/client` and `@plone/components`. This is intended to serve as playground for the development of both packages.
+This is a PoC of a [NextJS](https://nextjs.org) app using the app router and the `@plone/client` and `@plone/components` library. This is intended to serve as playground for the development of both packages and as demo of Plone using NextJS.
 
 ## Development
 
-This repo uses `mrs-developer` to pull these two packages.
-
-Run
+To start, from the root of the monorepo:
 
 ```shell
-yarn
-yarn develop
+pnpm install
+pnpm --filter plone-nextjs run dev
 ```
 
-to pull the repos and make them available to the build.
+A running Plone backend instance should be running:
+
+```shell
+make start-backend-docker
+```
 
 ## Deployment at Vercel
 
@@ -75,7 +77,7 @@ If we are using `traefik`:
         - traefik.http.routers.rt-backend-api.middlewares=gzip,mw-backend-vhm-api
 ```
 
-## Introduction
+## About this app
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
@@ -84,10 +86,6 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 First, run the development server:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
 pnpm dev
 ```
 
