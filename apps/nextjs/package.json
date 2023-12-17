@@ -9,8 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "prettier": "prettier --check 'src/**/*.{js,jsx,ts,tsx}'",
-    "prettier:fix": "prettier --write 'src/**/*.{js,jsx,ts,tsx}'",
-    "develop": "missdev --output=lib --fetch-https"
+    "prettier:fix": "prettier --write 'src/**/*.{js,jsx,ts,tsx}'"
   },
   "dependencies": {
     "@plone/client": "workspace: *",
