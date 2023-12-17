@@ -1,6 +1,6 @@
-# Plone on NextJS
+# Plone on Next.js
 
-This is a PoC of a [NextJS](https://nextjs.org) app using the app router and the `@plone/client` and `@plone/components` library. This is intended to serve as playground for the development of both packages and as demo of Plone using NextJS.
+This is a proof of concept of a [Next.js](https://nextjs.org) app, using the app router and the `@plone/client` and `@plone/components` library. This is intended to serve as both a playground for the development of both packages and as demo of Plone using Next.js.
 
 ## Development
 
@@ -11,7 +11,7 @@ pnpm install
 pnpm --filter plone-nextjs run dev
 ```
 
-A running Plone backend instance should be running:
+Then start the Plone backend:
 
 ```shell
 make start-backend-docker
@@ -19,16 +19,15 @@ make start-backend-docker
 
 ## Deployment at Vercel
 
-### Vercel
 
-We are introducing an environment variable `API_SERVER_URL`.
-We have to create this environment variable in the Vercel deployment's control panel, specifying the URL where your backend API server is deployed and the route where the api is located (see next section). (eg. API_SERVER_URL=https://my_server_DNS_name/api).
+We introduce an environment variable `API_SERVER_URL`.
+We have to create this environment variable in the Vercel deployment's control panel, specifying the URL where your backend API server is deployed and the route where the API is located, such as `API_SERVER_URL=https://my_server_DNS_name/api`.
 
-### Application rewrite config
+### Application rewrite configuragtion
 
-In order to avoid CORS and maintain the server counterpart private, our NextJS app should have a rewrite and should be configured as follows:
+To avoid issues with CORS and maintain the server counterpart private, our Next.js app should have a rewrite, configured as follows:
 
-```
+```jsx
 const nextConfig = {
   // Rewrite to the backend to avoid CORS
   async rewrites() {
@@ -47,24 +46,24 @@ const nextConfig = {
 };
 ```
 
-Plone Client is using the `++api++` prefix as default, so we should create a redirect in our app pointing to the api server, but using the traditional Plone's VHM config.
+Plone Client uses the `++api++` prefix as default, so we should create a redirect in our app pointing to the API server, but using Plone's traditional virtual host management configuration.
 
-NextJS rewrites are picky on the `destination` field because the library that is used for it does not support URLS with regex operators.
+Next.js rewrites are picky on the `destination` field, because its rewrite library does not support URLs with regular expression operators.
 Therefore, we can't use the usual `++api++` route for the rewrite.
-This will allow us to infer the current server URL (even in deployed branches/PRs) without touching the rewrite rules.
+This will allow us to infer the current server URL—even in deployed branches and pull requests—without touching the rewrite rules.
 We will fallback to configure a `api` route in our reverse proxy of choice.
 
 ### Plone backend
 
 You have to deploy the Plone backend elsewhere, since Vercel is serverless oriented.
-We need to setup the rewrite rule in NextJS's `rewrite` feature as shown in the previous section.
+We need to set up the rewrite rule in Next.js's `rewrite` feature as shown in the previous section.
 
-We will fallback to configure a `api` route in our reverse proxy of choice.
+We will fallback to configure an `api` route in our reverse proxy of choice.
 
-If we are using `traefik`:
+For example, if we use `traefik`:
 
 ```
-        ## VHM rewrite /api/ (Plone NextJS)
+        ## VHM rewrite /api/ (Plone Next.js)
         - "traefik.http.middlewares.mw-backend-vhm-api.replacepathregex.regex=^/api($$|/.*)"
         ## We remove the incoming /api and just use the path
         - "traefik.http.middlewares.mw-backend-vhm-api.replacepathregex.replacement=$$1"
@@ -81,7 +80,7 @@ If we are using `traefik`:
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## Getting started
 
 First, run the development server:
 
@@ -106,6 +105,6 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
