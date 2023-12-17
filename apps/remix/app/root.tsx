@@ -1,5 +1,5 @@
-import { cssBundleHref } from "@remix-run/css-bundle";
-import type { LinksFunction } from "@remix-run/node";
+import { cssBundleHref } from '@remix-run/css-bundle';
+import type { LinksFunction } from '@remix-run/node';
 import {
   Links,
   LiveReload,
@@ -7,15 +7,15 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-} from "@remix-run/react";
-import { useState } from "react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { PloneClientProvider } from "@plone/client/provider";
-import PloneClient from "@plone/client";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+} from '@remix-run/react';
+import { useState } from 'react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { PloneClientProvider } from '@plone/client/provider';
+import PloneClient from '@plone/client';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 export const links: LinksFunction = () => [
-  ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
+  ...(cssBundleHref ? [{ rel: 'stylesheet', href: cssBundleHref }] : []),
 ];
 
 export default function App() {
@@ -29,13 +29,13 @@ export default function App() {
             staleTime: 60 * 1000,
           },
         },
-      })
+      }),
   );
 
   const [ploneClient] = useState(() =>
     PloneClient.initialize({
-      apiPath: "http://localhost:8080/Plone",
-    })
+      apiPath: 'http://localhost:8080/Plone',
+    }),
   );
 
   return (

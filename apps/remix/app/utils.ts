@@ -1,4 +1,4 @@
-import config from "./config";
+import config from './config';
 
 /**
  * Flatten to app server URL - Given a URL if it starts with the API server URL
@@ -11,7 +11,7 @@ export function flattenToAppURL(url: string) {
   const { settings } = config;
   return (
     (url &&
-      url.replace(settings.apiPath, "").replace("http://localhost:3000", "")) ||
-    "/"
+      url.replace(settings.apiPath, '').replace('http://localhost:3000', '')) ||
+    '/'
   );
 }

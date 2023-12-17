@@ -1,5 +1,5 @@
 const settings = {
-  apiPath: "http://localhost:8080/Plone",
+  apiPath: 'http://localhost:8080/Plone',
 };
 
 const config = {
