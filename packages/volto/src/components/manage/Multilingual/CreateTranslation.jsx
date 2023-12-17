@@ -15,6 +15,9 @@ const CreateTranslation = (props) => {
   const [translationLocation, setTranslationLocation] = React.useState(null);
   const [translationObject, setTranslationObject] = React.useState(null);
   const languageFrom = useSelector((state) => state.intl.locale);
+  const availableLanguages = useSelector(
+    (state) => state.site.data['plone.available_languages'],
+  );
 
   React.useEffect(() => {
     // Only on mount, we dispatch the locator query
@@ -32,7 +35,7 @@ const CreateTranslation = (props) => {
     // On unmount we dispatch the language change
     return () => {
       // We change the interface language
-      if (config.settings.supportedLanguages.includes(language)) {
+      if (availableLanguages.includes(language)) {
         const langFileName = toGettextLang(language);
         import('@root/../locales/' + langFileName + '.json').then((locale) => {
           dispatch(changeLanguage(language, locale.default));

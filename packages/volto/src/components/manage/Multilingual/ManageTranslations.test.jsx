@@ -7,11 +7,6 @@ import config from '@plone/volto/registry';
 
 import ManageTranslations from './ManageTranslations';
 
-beforeAll(() => {
-  config.settings.isMultilingual = true;
-  config.settings.supportedLanguages = ['de', 'es'];
-});
-
 jest.mock('react-portal', () => ({
   Portal: jest.fn(() => <div id="Portal" />),
 }));
@@ -34,6 +29,12 @@ describe('ManageTranslations', () => {
           '@id': 'http://localhost:8080/Plone/my-page',
           language: 'en',
         },
+      },
+      site: {
+        'plone.available_languages': ['de', 'es'],
+      },
+      addons: {
+        isMultilingual: true,
       },
     });
     const component = renderer.create(

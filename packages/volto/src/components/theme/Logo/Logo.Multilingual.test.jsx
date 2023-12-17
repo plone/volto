@@ -7,10 +7,6 @@ import config from '@plone/volto/registry';
 
 import Logo from './Logo';
 
-beforeAll(() => {
-  config.settings.isMultilingual = true;
-});
-
 const mockStore = configureStore();
 
 describe('Multilingual Logo', () => {
@@ -31,6 +27,9 @@ describe('Multilingual Logo', () => {
       },
       site: {
         data: {},
+      },
+      addons: {
+        isMultilingual: true,
       },
     });
     const component = renderer.create(
@@ -63,6 +62,9 @@ describe('Multilingual Logo', () => {
         data: {
           'plone.site_title': 'Plone Site',
         },
+      },
+      addons: {
+        isMultilingual: true,
       },
     });
     const component = renderer.create(
@@ -97,6 +99,9 @@ describe('Multilingual Logo', () => {
             'http://localhost:3000/@@site-logo/logo.cab945d8.svg',
         },
       },
+      addons: {
+        isMultilingual: true,
+      },
     });
     const component = renderer.create(
       <Provider store={store}>
@@ -129,6 +134,9 @@ describe('Multilingual Logo', () => {
           'plone.site_logo':
             'http://localhost:3000/@@site-logo/logo.cab945d8.svg',
         },
+      },
+      addons: {
+        isMultilingual: true,
       },
     });
     const component = renderer.create(

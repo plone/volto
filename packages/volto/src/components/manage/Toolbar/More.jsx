@@ -522,7 +522,7 @@ class More extends Component {
                 )}
             </>
           )}
-        {editAction && config.settings.isMultilingual && (
+        {editAction && this.props.isMultilingual && (
           <Plug pluggable="toolbar-more-manage-content" id="multilingual">
             <li>
               <Link to={`${path}/manage-translations`}>
@@ -548,6 +548,7 @@ export default compose(
       content: state.content.data,
       lang: state.intl.locale,
       workingCopy: state.workingCopy,
+      isMultilingual: state.addons.isMultilingual,
     }),
     { applyWorkingCopy, createWorkingCopy, removeWorkingCopy },
   ),

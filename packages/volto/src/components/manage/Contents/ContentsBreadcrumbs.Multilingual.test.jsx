@@ -7,10 +7,6 @@ import config from '@plone/volto/registry';
 
 import ContentsBreadcrumbs from './ContentsBreadcrumbs';
 
-beforeAll(() => {
-  config.settings.isMultilingual = true;
-});
-
 const mockStore = configureStore();
 
 describe('ContentsBreadcrumbs Multilingual', () => {
@@ -23,6 +19,9 @@ describe('ContentsBreadcrumbs Multilingual', () => {
       intl: {
         locale: 'en',
         messages: {},
+      },
+      addons: {
+        isMultilingual: true,
       },
     });
     const component = renderer.create(
@@ -48,6 +47,9 @@ describe('ContentsBreadcrumbs Multilingual', () => {
       intl: {
         locale: 'en',
         messages: {},
+      },
+      addons: {
+        isMultilingual: true,
       },
     });
     const component = renderer.create(

@@ -9,7 +9,6 @@ import Add from './Add';
 const mockStore = configureStore();
 
 beforeAll(() => {
-  config.settings.supportedLanguages = ['de'];
   config.settings.lazyBundles = {
     cms: [],
   };
@@ -37,6 +36,9 @@ describe('Add', () => {
       intl: {
         locale: 'en',
         messages: {},
+      },
+      site: {
+        'plone.available_languages': ['de'],
       },
     });
     const component = renderer.create(

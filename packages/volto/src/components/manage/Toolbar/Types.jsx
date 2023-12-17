@@ -7,10 +7,17 @@ import { FormattedMessage } from 'react-intl';
 import { flattenToAppURL, langmap, toBackendLang } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
-const Types = ({ types, pathname, content, currentLanguage }) => {
+const Types = ({
+  types,
+  pathname,
+  content,
+  currentLanguage,
+  availableLanguages,
+  isMultilingual,
+}) => {
   const { settings } = config;
   return types.length > 0 ||
-    (settings.isMultilingual && content['@components'].translations) ? (
+    (isMultilingual && content['@components'].translations) ? (
     <div className="menu-more pastanaga-menu">
       {types.length > 0 && (
         <>
@@ -48,11 +55,11 @@ const Types = ({ types, pathname, content, currentLanguage }) => {
           </div>
         </>
       )}
-      {settings.isMultilingual &&
+      {isMultilingual &&
         content['@components'].translations &&
         (() => {
           const translationsLeft = filter(
-            settings.supportedLanguages,
+            availableLanguages,
             (lang) =>
               !Boolean(
                 content['@components'].translations &&
@@ -123,6 +130,8 @@ export default connect(
   (state) => ({
     types: filter(state.types.types, 'addable'),
     currentLanguage: state.intl.locale,
+    availableLanguages: state.site.data['plone.available_languages'],
+    isMultilingual: state.addons.isMultilingual,
   }),
   {},
 )(Types);

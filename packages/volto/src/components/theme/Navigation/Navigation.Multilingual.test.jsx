@@ -7,10 +7,6 @@ import config from '@plone/volto/registry';
 
 import Navigation from './Navigation';
 
-beforeAll(() => {
-  config.settings.isMultilingual = true;
-});
-
 const mockStore = configureStore();
 
 describe('Navigation Multilingual', () => {
@@ -27,6 +23,9 @@ describe('Navigation Multilingual', () => {
       intl: {
         locale: 'en',
         messages: {},
+      },
+      addons: {
+        isMultilingual: true,
       },
     });
     const component = renderer.create(
@@ -54,6 +53,9 @@ describe('Navigation Multilingual', () => {
         locale: 'en',
         messages: {},
       },
+      addons: {
+        isMultilingual: true,
+      },
     });
     const component = renderer.create(
       <Provider store={store}>
@@ -79,6 +81,9 @@ describe('Navigation Multilingual', () => {
       intl: {
         locale: 'en',
         messages: {},
+      },
+      addons: {
+        isMultilingual: true,
       },
     });
     const component = renderer.create(
@@ -106,6 +111,9 @@ describe('Navigation Multilingual', () => {
       intl: {
         locale: 'en',
         messages: {},
+      },
+      addons: {
+        isMultilingual: true,
       },
     });
     const component = renderer.create(
