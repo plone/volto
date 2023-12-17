@@ -7,3 +7,5 @@ export { default as Select } from './components/Select/Select';
 export { default as TextArea } from './components/TextArea/TextArea';
 export { default as RenderBlocks } from './Views/RenderBlocks/RenderBlocks';
 export { default as DefaultBlockView } from './Views/RenderBlocks/DefaultBlockView';
+export { FlattenToAppURLProvider } from './providers/flattenToAppURL';
+export { useFlattenToAppURL } from './providers/flattenToAppURL';
