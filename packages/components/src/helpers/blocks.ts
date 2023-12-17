@@ -1,7 +1,7 @@
-import type { GetContentResponse } from '@plone/types/content/get';
+import type { Content } from '@plone/types';
 import { find, keys, endsWith } from 'lodash';
 
-export function hasBlocksData(content: GetContentResponse) {
+export function hasBlocksData(content: Content) {
   return (
     find(
       keys(content),
