@@ -62,7 +62,7 @@ We will fallback to configure an `api` route in our reverse proxy of choice.
 
 For example, if we use `traefik`:
 
-```
+```yaml
         ## VHM rewrite /api/ (Plone Next.js)
         - "traefik.http.middlewares.mw-backend-vhm-api.replacepathregex.regex=^/api($$|/.*)"
         ## We remove the incoming /api and just use the path
