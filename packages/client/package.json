@@ -55,8 +55,8 @@
     "react-query"
   ],
   "scripts": {
-    "build": "vite build",
-    "tbuild": "tsup",
+    "vbuild": "vite build",
+    "build": "tsup",
     "test": "node testRunner.js",
     "vitest": "vitest",
     "check-ts": "tsc --project tsconfig.json",
