@@ -1,5 +1,12 @@
+/**
+ * This is intended to be a basic starting point for linting in your app.
+ * It relies on recommended configs out of the box for simplicity, but you can
+ * and should modify this configuration to best suit your team's needs.
+ */
+
 /** @type {import('eslint').Linter.Config} */
 module.exports = {
+  root: true,
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
@@ -19,7 +26,7 @@ module.exports = {
   overrides: [
     // React
     {
-      files: ['**/*.{ts,tsx}'],
+      files: ['**/*.{js,jsx,ts,tsx}'],
       plugins: ['react', 'jsx-a11y'],
       extends: [
         'plugin:react/recommended',
@@ -31,6 +38,11 @@ module.exports = {
         react: {
           version: 'detect',
         },
+        formComponents: ['Form'],
+        linkComponents: [
+          { name: 'Link', linkAttribute: 'to' },
+          { name: 'NavLink', linkAttribute: 'to' },
+        ],
       },
     },
 
@@ -40,6 +52,7 @@ module.exports = {
       plugins: ['@typescript-eslint', 'import'],
       parser: '@typescript-eslint/parser',
       settings: {
+        'import/internal-regex': '^~/',
         'import/resolver': {
           node: {
             extensions: ['.ts', '.tsx'],
@@ -58,13 +71,9 @@ module.exports = {
 
     // Node
     {
-      files: ['.eslintrc.js', 'src/*.js'],
+      files: ['.eslintrc.js'],
       env: {
         node: true,
-        es6: true,
-      },
-      rules: {
-        'no-prototype-builtins': 0,
       },
     },
   ],

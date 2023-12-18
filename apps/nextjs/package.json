@@ -9,8 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "prettier": "prettier --check 'src/**/*.{js,jsx,ts,tsx}'",
-    "prettier:fix": "prettier --write 'src/**/*.{js,jsx,ts,tsx}'",
-    "develop": "missdev --output=lib --fetch-https"
+    "prettier:fix": "prettier --write 'src/**/*.{js,jsx,ts,tsx}'"
   },
   "dependencies": {
     "@plone/client": "workspace: *",
@@ -27,7 +26,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
-    "eslint-config-next": "14.0.1",
+    "eslint-config-next": "14.0.4",
     "mrs-developer": "^2.1.1",
     "prettier": "3.0.3",
     "sass": "^1.69.1",
