@@ -373,7 +373,7 @@ test-acceptance-prefixed: ## Start Prefixed Cypress Acceptance Tests
 
 .PHONY: start-test-acceptance-webserver-prefixed
 start-test-acceptance-webserver-prefixed: ## Start the prefixed webserver
-	cd cypress/docker && docker-compose -f prefixed.yml up
+	cd packages/volto/cypress/docker && docker-compose -f prefixed.yml up
 
 ######### Guillotina Acceptance tests
 
