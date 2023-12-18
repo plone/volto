@@ -106,8 +106,8 @@ importers:
         specifier: ^8
         version: 8.53.0
       eslint-config-next:
-        specifier: 14.0.1
-        version: 14.0.1(eslint@8.53.0)(typescript@5.2.2)
+        specifier: 14.0.4
+        version: 14.0.4(eslint@8.53.0)(typescript@5.2.2)
       mrs-developer:
         specifier: ^2.1.1
         version: 2.1.1
@@ -403,6 +403,24 @@ importers:
         specifier: workspace:*
         version: link:src/addons/volto-volto-project
     devDependencies:
+      '@babel/plugin-proposal-export-default-from':
+        specifier: 7.18.10
+        version: 7.18.10(@babel/core@7.23.3)
+      '@babel/plugin-proposal-export-namespace-from':
+        specifier: 7.18.9
+        version: 7.18.9(@babel/core@7.23.3)
+      '@babel/plugin-proposal-json-strings':
+        specifier: 7.18.6
+        version: 7.18.6(@babel/core@7.23.3)
+      '@babel/plugin-proposal-nullish-coalescing-operator':
+        specifier: 7.18.6
+        version: 7.18.6(@babel/core@7.23.3)
+      '@babel/plugin-proposal-throw-expressions':
+        specifier: 7.18.6
+        version: 7.18.6(@babel/core@7.23.3)
+      '@babel/plugin-syntax-export-namespace-from':
+        specifier: 7.8.3
+        version: 7.8.3(@babel/core@7.23.3)
       '@loadable/babel-plugin':
         specifier: 5.13.2
         version: 5.13.2(@babel/core@7.23.3)
@@ -442,6 +460,18 @@ importers:
       autoprefixer:
         specifier: 10.4.8
         version: 10.4.8(postcss@8.4.31)
+      babel-plugin-add-module-exports:
+        specifier: 0.2.1
+        version: 0.2.1
+      babel-plugin-lodash:
+        specifier: 3.3.4
+        version: 3.3.4
+      babel-plugin-react-intl:
+        specifier: 5.1.17
+        version: 5.1.17
+      babel-plugin-root-import:
+        specifier: 6.1.0
+        version: 6.1.0
       css-loader:
         specifier: 5.2.7
         version: 5.2.7(webpack@5.76.1)
@@ -459,7 +489,7 @@ importers:
         version: 1.1.2(eslint-plugin-import@2.28.1)
       eslint-import-resolver-babel-plugin-root-import:
         specifier: 1.1.1
-        version: 1.1.1(babel-plugin-root-import@5.1.0)(eslint-plugin-import@2.28.1)
+        version: 1.1.1(babel-plugin-root-import@6.1.0)(eslint-plugin-import@2.28.1)
       eslint-plugin-import:
         specifier: 2.28.1
         version: 2.28.1(@typescript-eslint/parser@6.7.0)(eslint-import-resolver-typescript@3.6.1)(eslint@8.49.0)
@@ -2266,7 +2296,6 @@ packages:
       '@babel/core': 7.23.3
       '@babel/helper-plugin-utils': 7.22.5
       '@babel/plugin-syntax-export-namespace-from': 7.8.3(@babel/core@7.23.3)
-    dev: false
 
   /@babel/plugin-proposal-json-strings@7.18.6(@babel/core@7.23.3):
     resolution: {integrity: sha512-lr1peyn9kOdbYc0xr0OdHTZ5FMqS6Di+H0Fz2I/JwMzGmzJETNeOFq2pBySw6X/KFL5EWDjlJuMsUGRFb8fQgQ==}
@@ -2277,7 +2306,6 @@ packages:
       '@babel/core': 7.23.3
       '@babel/helper-plugin-utils': 7.22.5
       '@babel/plugin-syntax-json-strings': 7.8.3(@babel/core@7.23.3)
-    dev: false
 
   /@babel/plugin-proposal-nullish-coalescing-operator@7.18.6(@babel/core@7.23.3):
     resolution: {integrity: sha512-wQxQzxYeJqHcfppzBDnm1yAY0jSRkUXR2z8RePZYrKwMKgMlE8+Z6LUno+bd6LvbGh8Gltvy74+9pIYkr+XkKA==}
@@ -2380,7 +2408,6 @@ packages:
       '@babel/core': 7.23.3
       '@babel/helper-plugin-utils': 7.22.5
       '@babel/plugin-syntax-throw-expressions': 7.23.3(@babel/core@7.23.3)
-    dev: false
 
   /@babel/plugin-syntax-async-generators@7.8.4(@babel/core@7.23.3):
     resolution: {integrity: sha512-tycmZxkGfZaxhMRbXlPXuVFpdWlXpir2W4AMhSJgRKzk/eDlIXOhb2LHWoLpDF7TEHylV5zNhykX6KAgHJmTNw==}
@@ -2584,7 +2611,6 @@ packages:
     dependencies:
       '@babel/core': 7.23.3
       '@babel/helper-plugin-utils': 7.22.5
-    dev: false
 
   /@babel/plugin-syntax-top-level-await@7.14.5(@babel/core@7.23.3):
     resolution: {integrity: sha512-hx++upLv5U1rgYfwe1xBQUhRmU41NEvpUvrp8jkrSCdvGSnM5/qdRMtylJ6PG5OFkBaHkbTAKTnd3/YyESRHFw==}
@@ -4461,7 +4487,6 @@ packages:
     deprecated: We have renamed the package to @formatjs/intl-numberformat
     dependencies:
       '@formatjs/intl-utils': 2.3.0
-    dev: false
 
   /@formatjs/intl-utils@1.6.0:
     resolution: {integrity: sha512-5D0C4tQgNFJNaJ17BYum0GfAcKNK3oa1VWzgkv/AN7i52fg4r69ZLcpEGpf6tZiX9Qld8CDwTQOeFt6fuOqgVw==}
@@ -4471,7 +4496,6 @@ packages:
   /@formatjs/intl-utils@2.3.0:
     resolution: {integrity: sha512-KWk80UPIzPmUg+P0rKh6TqspRw0G6eux1PuJr+zz47ftMaZ9QDwbGzHZbtzWkl5hgayM/qrKRutllRC7D/vVXQ==}
     deprecated: the package is rather renamed to @formatjs/ecma-abstract with some changes in functionality (primarily selectUnit is removed and we don't plan to make any further changes to this package
-    dev: false
 
   /@formatjs/macro@0.2.8:
     resolution: {integrity: sha512-5IBdn5+D8VGdi6Px0M/PidtqzHVrOj3dVJdV+YmWNRaWHdSvBd1wUd0gMcZnQXAxN+RzlGS/ddfOxFkjSlyQuA==}
@@ -5382,8 +5406,8 @@ packages:
     resolution: {integrity: sha512-irQnbMLbUNQpP1wcE5NstJtbuA/69kRfzBrpAD7Gsn8zm/CY6YQYc3HQBz8QPxwISG26tIm5afvvVbu508oBeQ==}
     dev: false
 
-  /@next/eslint-plugin-next@14.0.1:
-    resolution: {integrity: sha512-bLjJMwXdzvhnQOnxvHoTTUh/+PYk6FF/DCgHi4BXwXCINer+o1ZYfL9aVeezj/oI7wqGJOqwGIXrlBvPbAId3w==}
+  /@next/eslint-plugin-next@14.0.4:
+    resolution: {integrity: sha512-U3qMNHmEZoVmHA0j/57nRfi3AscXNvkOnxDmle/69Jz/G0o/gWjXTDdlgILZdrxQ0Lw/jv2mPW8PGy0EGIHXhQ==}
     dependencies:
       glob: 7.1.7
     dev: true
@@ -13596,7 +13620,6 @@ packages:
 
   /@types/schema-utils@1.0.0:
     resolution: {integrity: sha512-YesPanU1+WCigC/Aj1Mga8UCOjHIfMNHZ3zzDsUY7lI8GlKnh/Kv2QwJOQ+jNQ36Ru7IfzSedlG14hppYaN13A==}
-    dev: false
 
   /@types/semver@7.5.5:
     resolution: {integrity: sha512-+d+WYC1BxJ6yVOgUgzK8gWvp5qF8ssV5r4nsDcZWKRWcDQLQ619tvWAxJQYGgBrO1MnLJC7a5GtiYsAoQ47dJg==}
@@ -15633,7 +15656,6 @@ packages:
 
   /babel-plugin-add-module-exports@0.2.1:
     resolution: {integrity: sha1-mumh9KjcZ/DN7E9K7aHkOl/2XiU=}
-    dev: false
 
   /babel-plugin-add-react-displayname@0.0.5:
     resolution: {integrity: sha512-LY3+Y0XVDYcShHHorshrDbt4KFWL4bSeniCtl4SYZbask+Syngk1uMPCeN9+nSiZo6zX5s0RTq/J9Pnaaf/KHw==}
@@ -15718,7 +15740,6 @@ packages:
       glob: 7.1.6
       lodash: 4.17.21
       require-package-name: 2.0.1
-    dev: false
 
   /babel-plugin-macros@2.8.0:
     resolution: {integrity: sha512-SEP5kJpfGYqYKpBrj5XU3ahw5p5GOHJ0U5ssOSQ/WBVdwkD2Dzlce95exQTs3jOVWPPKLBN2rlEWkCK7dSmLvg==}
@@ -15808,19 +15829,11 @@ packages:
       schema-utils: 2.7.1
     transitivePeerDependencies:
       - supports-color
-    dev: false
-
-  /babel-plugin-root-import@5.1.0:
-    resolution: {integrity: sha512-9VYUlnHtM7zjM9vM3kFClUDH7jjhqnvQwxWYGP18EciPsPZYZD9wGqVGwry6gQv0UdZS0+WmbPSlKSjKv1wZFw==}
-    dependencies:
-      slash: 1.0.0
-    dev: true
 
   /babel-plugin-root-import@6.1.0:
     resolution: {integrity: sha512-7pFBKr83H7S4mjLICsHENXm8oZ//sTdrjlxP20y7wWAmDl8N1IRtUVAGJDCTk3E9E3LOyRdiPb9znoweDVCrFg==}
     dependencies:
       slash: 1.0.0
-    dev: false
 
   /babel-plugin-syntax-class-properties@6.13.0:
     resolution: {integrity: sha512-chI3Rt9T1AbrQD1s+vxw3KcwC9yHtF621/MacuItITfZX344uhQoANjpoSJZleAmW2tjlolqB/f+h7jIqXa7pA==}
@@ -19441,8 +19454,8 @@ packages:
     optionalDependencies:
       source-map: 0.6.1
 
-  /eslint-config-next@14.0.1(eslint@8.53.0)(typescript@5.2.2):
-    resolution: {integrity: sha512-QfIFK2WD39H4WOespjgf6PLv9Bpsd7KGGelCtmq4l67nGvnlsGpuvj0hIT+aIy6p5gKH+lAChYILsyDlxP52yg==}
+  /eslint-config-next@14.0.4(eslint@8.53.0)(typescript@5.2.2):
+    resolution: {integrity: sha512-9/xbOHEQOmQtqvQ1UsTQZpnA7SlDMBtuKJ//S4JnoyK3oGLhILKXdBgu/UO7lQo/2xOykQULS1qQ6p2+EpHgAQ==}
     peerDependencies:
       eslint: ^7.23.0 || ^8.0.0
       typescript: '>=3.3.1'
@@ -19450,7 +19463,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@next/eslint-plugin-next': 14.0.1
+      '@next/eslint-plugin-next': 14.0.4
       '@rushstack/eslint-patch': 1.5.1
       '@typescript-eslint/parser': 6.8.0(eslint@8.53.0)(typescript@5.2.2)
       eslint: 8.53.0
@@ -19525,20 +19538,6 @@ packages:
     dependencies:
       eslint-plugin-import: 2.28.1(@typescript-eslint/parser@6.7.0)(eslint-import-resolver-typescript@3.6.1)(eslint@8.49.0)
 
-  /eslint-import-resolver-babel-plugin-root-import@1.1.1(babel-plugin-root-import@5.1.0)(eslint-plugin-import@2.28.1):
-    resolution: {integrity: sha512-ZZxdV9AxzL2WFVggDxZ36xodPg2+BTrkhhMf/of+BxSVh/GKLGCs17EDq5b61wqC7/oQsA2h1RtH1fV7HOUV/w==}
-    peerDependencies:
-      babel-plugin-root-import: ^5.1.0
-      eslint-plugin-import: '>=1.9.2'
-    dependencies:
-      babel-plugin-root-import: 5.1.0
-      eslint-import-resolver-node: 0.2.3
-      eslint-plugin-import: 2.28.1(@typescript-eslint/parser@6.7.0)(eslint-import-resolver-typescript@3.6.1)(eslint@8.49.0)
-      json5: 0.5.1
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
   /eslint-import-resolver-babel-plugin-root-import@1.1.1(babel-plugin-root-import@6.1.0)(eslint-plugin-import@2.28.1):
     resolution: {integrity: sha512-ZZxdV9AxzL2WFVggDxZ36xodPg2+BTrkhhMf/of+BxSVh/GKLGCs17EDq5b61wqC7/oQsA2h1RtH1fV7HOUV/w==}
     peerDependencies:
@@ -19551,7 +19550,6 @@ packages:
       json5: 0.5.1
     transitivePeerDependencies:
       - supports-color
-    dev: false
 
   /eslint-import-resolver-node@0.2.3:
     resolution: {integrity: sha512-HI8ShtDIy7gON76Nr3bu4zl0DuCLPo1Fud9P2lltOQKeiAS2r5/o/l3y+V8HJ1cDLFSz+tHu7/V9fI5jirwlbw==}
@@ -22742,7 +22740,6 @@ packages:
     deprecated: We've written a new parser that's 6x faster and is backwards compatible. Please use @formatjs/icu-messageformat-parser
     dependencies:
       '@formatjs/intl-unified-numberformat': 3.3.7
-    dev: false
 
   /intl-messageformat@10.5.8:
     resolution: {integrity: sha512-NRf0jpBWV0vd671G5b06wNofAN8tp7WWDogMZyaU8GUAsmbouyvgwmFJI7zLjfAMpm3zK+vSwRP3jzaoIcMbaA==}
@@ -31647,7 +31644,6 @@ packages:
 
   /require-package-name@2.0.1:
     resolution: {integrity: sha512-uuoJ1hU/k6M0779t3VMVIYpb2VMJk05cehCaABFhXaibcbvfgR8wKiozLjVFSzJPmQMRqIcO0HMyTFqfV09V6Q==}
-    dev: false
 
   /requireindex@1.2.0:
     resolution: {integrity: sha512-L9jEkOi3ASd9PYit2cwRfyppc9NoABujTP8/5gFcbERmo5jUoAKovIC3fsF17pkTnGsrByysqX+Kxd2OTNI1ww==}
