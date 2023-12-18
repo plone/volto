@@ -98,10 +98,11 @@ function normalizeState({
 
   // Here we are removing the QueryString of the Listing ones which is persent in the Facet
   // because we already initialize the facet with those value.
-  const configuredFacets =
-    facetSettings.map((facet) => facet?.field?.value) || [];
+  const configuredFacets = facetSettings
+    ? facetSettings.map((facet) => facet?.field?.value)
+    : [];
 
-  let copyOfQuery = [...query.query];
+  let copyOfQuery = query.query ? [...query.query] : [];
 
   for (let value of configuredFacets) {
     const queryStringIndex = copyOfQuery.findIndex(
@@ -280,7 +281,9 @@ const withSearch = (options) => (WrappedComponent) => {
 
     // Here we are getting the initial value of the facet if Listing Query contains the same criteria as
     // facet.
-    const queryData = deserializeQuery(JSON.stringify(data.query.query));
+    const queryData = data?.query?.query
+      ? deserializeQuery(JSON.stringify(data?.query?.query))
+      : [];
 
     let intializeFacetWithQueryValue = [];
 
@@ -322,10 +325,16 @@ const withSearch = (options) => (WrappedComponent) => {
     );
     const previousUrlQuery = usePrevious(urlQuery);
 
+    // During first render the previousUrlQuery is undefined and urlQuery
+    // is empty so it ressetting the facet when you are navigating but during reload we have urlQuery and we need
+    // to set the facet at first render.
+    const preventOverrideOfFacetState =
+      previousUrlQuery === undefined && urlQuery.length === 0;
+
     React.useEffect(() => {
       if (
         !isEqual(urlQuery, previousUrlQuery) &&
-        previousUrlQuery !== undefined
+        !preventOverrideOfFacetState
       ) {
         setFacets(
           Object.assign(
@@ -356,6 +365,7 @@ const withSearch = (options) => (WrappedComponent) => {
       locationSearchData,
       multiFacets,
       previousUrlQuery,
+      preventOverrideOfFacetState,
     ]);
 
     const [sortOn, setSortOn] = React.useState(data?.query?.sort_on);
