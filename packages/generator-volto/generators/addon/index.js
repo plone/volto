@@ -138,9 +138,8 @@ Run "npm install -g @plone/generator-volto" to update.`,
     }
 
     if (this.globals.addonName.includes('/')) {
-      [this.globals.scope, this.globals.name] = this.globals.addonName.split(
-        '/',
-      );
+      [this.globals.scope, this.globals.name] =
+        this.globals.addonName.split('/');
       this.globals.normalizedName = `${this.globals.scope.replace(
         '@',
         '',
