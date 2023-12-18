@@ -96,26 +96,21 @@ function normalizeState({
   const { types: facetWidgetTypes } =
     config.blocks.blocksConfig.search.extensions.facetWidgets;
 
-  // Here we are removing the QueryString of the Listing ones which is persent in the Facet
-  // because we already initialize the facet with those value.
+  // Here, we are removing the QueryString of the Listing ones, which is present in the Facet
+  // because we already initialize the facet with those values.
   const configuredFacets = facetSettings
     ? facetSettings.map((facet) => facet?.field?.value)
     : [];
 
   let copyOfQuery = query.query ? [...query.query] : [];
 
-  for (let value of configuredFacets) {
-    const queryStringIndex = copyOfQuery.findIndex(
-      (query) => query.i === value,
-    );
-    if (queryStringIndex >= 0) {
-      copyOfQuery.splice(queryStringIndex, 1);
-    }
-  }
+  const queryWithoutFacet = copyOfQuery.filter((query) => {
+    return !configuredFacets.includes(query.i);
+  });
 
   const params = {
     query: [
-      ...(copyOfQuery || []),
+      ...(queryWithoutFacet || []),
       ...(facetSettings || []).map((facet) => {
         if (!facet?.field) return null;
 
