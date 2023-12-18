@@ -11,7 +11,7 @@ import type {
   WidgetsConfig,
 } from '@plone/types';
 
-type ConfigData = {
+export type ConfigData = {
   settings: SettingsConfig;
   blocks: BlocksConfig;
   views: ViewsConfig;

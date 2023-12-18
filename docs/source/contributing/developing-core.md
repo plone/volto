@@ -161,7 +161,7 @@ pnpm --filter @plone/volto start
 ```
 
 ```shell
-pnp --filter @plone/registry build
+pnpm --filter @plone/registry build
 ```
 
 

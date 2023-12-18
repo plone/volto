@@ -1,6 +1,6 @@
-import config from '@plone/registry';
+import type { ConfigData } from '@plone/registry';
 
-const applyConfig = (config: any) => {
+const applyConfig = (config: ConfigData) => {
   return config;
 };
 
