@@ -351,6 +351,7 @@ describe('Url', () => {
       );
     });
   });
+
   describe('flattenScales', () => {
     it('flattenScales image is not set', () => {
       const id = '/halfdome2022-2.jpg';
@@ -405,6 +406,57 @@ describe('Url', () => {
         width: 1182,
       });
     });
+
+    it('[preview_image_link] flattenScales test from the catalog', () => {
+      const id = '/halfdome2022-2.jpg';
+      const image = {
+        base_path: '/broccoli.jpg',
+        'content-type': 'image/jpeg',
+        download: '@@images/image-1182-cf763ae23c52340d8a17a7afdb26c8cb.jpeg',
+        filename: 'halfdome2022.jpg',
+        height: 665,
+        scales: {
+          great: {
+            download:
+              '@@images/image-1200-539ab119ebadc7d011798980a4a5e8d4.jpeg',
+            height: 665,
+            width: 1182,
+          },
+          huge: {
+            download:
+              '@@images/image-1600-188968febc677890c1b99d5339f9bef1.jpeg',
+            height: 665,
+            width: 1182,
+          },
+        },
+        size: 319364,
+        width: 1182,
+      };
+      expect(flattenScales(id, image)).toStrictEqual({
+        base_path: '/broccoli.jpg',
+        'content-type': 'image/jpeg',
+        download: '@@images/image-1182-cf763ae23c52340d8a17a7afdb26c8cb.jpeg',
+        filename: 'halfdome2022.jpg',
+        height: 665,
+        scales: {
+          great: {
+            download:
+              '@@images/image-1200-539ab119ebadc7d011798980a4a5e8d4.jpeg',
+            height: 665,
+            width: 1182,
+          },
+          huge: {
+            download:
+              '@@images/image-1600-188968febc677890c1b99d5339f9bef1.jpeg',
+            height: 665,
+            width: 1182,
+          },
+        },
+        size: 319364,
+        width: 1182,
+      });
+    });
+
     it('flattenScales test from serialization', () => {
       const id = 'http://localhost:3000/halfdome2022-2.jpg';
       const image = {

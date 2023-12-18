@@ -9,7 +9,7 @@ const DEFAULT_TIMEOUT = 500;
 const SidebarPopup = (props) => {
   const { children, open, onClose, overlay } = props;
 
-  const asideElement = React.createRef();
+  const asideElement = React.useRef();
 
   const handleClickOutside = (e) => {
     if (asideElement && doesNodeContainClick(asideElement.current, e)) return;

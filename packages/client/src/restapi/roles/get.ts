@@ -1,6 +1,6 @@
 import { apiRequest, ApiRequestParams } from '../../API';
-import { PloneClientConfig } from '../../interfaces/config';
-import { GetRolesResponse } from '../../interfaces/roles';
+import { PloneClientConfig } from '../../validation/config';
+import { GetRolesResponse } from '@plone/types';
 
 export type GetRolesArgs = {
   config: PloneClientConfig;

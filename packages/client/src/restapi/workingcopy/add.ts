@@ -3,8 +3,8 @@ import { apiRequest, ApiRequestParams } from '../../API';
 import {
   PloneClientConfig,
   PloneClientConfigSchema,
-} from '../../interfaces/config';
-import { CreateWorkingcopyResponse } from '../../interfaces/workingcopy';
+} from '../../validation/config';
+import { CreateWorkingcopyResponse } from '@plone/types';
 
 export const createWorkingcopyArgsSchema = z.object({
   path: z.string(),
