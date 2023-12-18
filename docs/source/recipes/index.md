@@ -27,5 +27,6 @@ appextras
 contextnavigation
 pluggables
 widget
+how-to-restrict-blocks
 ie11compat
 ```
