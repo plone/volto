@@ -312,6 +312,24 @@ test-acceptance-multilingual-headless: ## Start Multilingual Cypress Acceptance 
 full-test-acceptance-multilingual: ## Runs Multilingual Full Acceptance Testing in headless mode
 	$(MAKE) -C "./packages/volto/" full-test-acceptance-multilingual
 
+######### Prefixed Core Acceptance tests
+
+.PHONY: start-test-acceptance-frontend-prefixed
+start-test-acceptance-frontend-prefixed: ## Start the prefixed Core Acceptance Frontend Fixture
+	$(MAKE) -C "./packages/volto/" start-test-acceptance-frontend-prefixed
+
+.PHONY: full-test-acceptance-prefixed
+full-test-acceptance-prefixed: ## Runs prefixed Core Full Acceptance Testing in headless mode
+	$(MAKE) -C "./packages/volto/" full-test-acceptance-prefixed
+
+.PHONY: test-acceptance-prefixed
+test-acceptance-prefixed: ## Start Prefixed Cypress Acceptance Tests
+	$(MAKE) -C "./packages/volto/" test-acceptance-prefixed
+
+.PHONY: start-test-acceptance-webserver-prefixed
+start-test-acceptance-webserver-prefixed: ## Start the prefixed webserver
+	$(MAKE) -C "./packages/volto/" start-test-acceptance-webserver-prefixed
+
 ######### Seamless Multilingual Acceptance tests
 
 .PHONY: start-test-acceptance-server-seamless-multilingual test-acceptance-server-seamless-multilingual
