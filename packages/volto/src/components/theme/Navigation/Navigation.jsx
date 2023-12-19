@@ -51,7 +51,9 @@ const Navigation = (props) => {
 
   return (
     <nav className="navigation" id="navigation" aria-label="Site">
-      <div className="hamburger-wrapper mobile tablet only">
+    {items.length === 1 && items[0].title === "Home" ? null 
+    :
+    (<div className="hamburger-wrapper mobile tablet only">
         <button
           className={cx('hamburger hamburger--spin', {
             'is-active': isMobileMenuOpen,
@@ -81,7 +83,9 @@ const Navigation = (props) => {
             <span className="hamburger-inner" />
           </span>
         </button>
-      </div>
+      </div>)
+     }
+      
       <Menu
         stackable
         pointing
