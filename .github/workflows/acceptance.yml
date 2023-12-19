@@ -1282,18 +1282,14 @@ jobs:
         uses: cypress-io/github-action@v6
         env:
           BABEL_ENV: production
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           CYPRESS_RETRIES: 2
           # Recommended: pass the GitHub token lets this action correctly
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          record: true
           install: false
-          parallel: false
           working-directory: packages/volto
           browser: chrome
-          group: Prefix
           spec: cypress/tests/minimal/**/*.js
           config: baseUrl=http://localhost/foo
           env: prefixPath=/foo
@@ -1304,13 +1300,13 @@ jobs:
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000/foo http://localhost/foo'
 
       # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v1
         if: failure()
         with:
           name: cypress-screenshots
           path: packages/volto/cypress/screenshots
       # Upload Cypress videos
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v1
         if: failure()
         with:
           name: cypress-videos
