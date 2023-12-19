@@ -1279,7 +1279,7 @@ jobs:
         run: make cypress-install
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v5
+        uses: cypress-io/github-action@v6
         env:
           BABEL_ENV: production
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -1289,6 +1289,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           record: true
+          install: false
           parallel: false
           working-directory: packages/volto
           browser: chrome
