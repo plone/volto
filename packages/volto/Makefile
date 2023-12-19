@@ -254,7 +254,7 @@ full-test-acceptance-workingcopy: ## Runs WorkingCopy Full Acceptance Testing in
 ######### Prefixed Core Acceptance tests
 
 .PHONY: start-test-acceptance-frontend-prefixed
-start-test-acceptance-frontend-prefixed: ## Start the prefixed Core Acceptance Frontend Fixture
+start-test-acceptance-frontend-prefixed: build-deps ## Start the prefixed Core Acceptance Frontend Fixture
 	RAZZLE_PREFIX_PATH=/foo RAZZLE_API_PATH=http://localhost/foo pnpm build && pnpm start:prod
 
 .PHONY: full-test-acceptance-prefixed
