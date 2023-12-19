@@ -106,12 +106,12 @@ export { default as Circle } from '@plone/volto/components/manage/Contents/circl
 export { default as Delete } from '@plone/volto/components/manage/Delete/Delete';
 export const Diff = loadable(() =>
   import(
-    /* webpackChunkName: "Diff" */ '@plone/volto/components/manage/Diff/Diff'
+    /* webpackChunkName: "HistoryView" */ '@plone/volto/components/manage/Diff/Diff'
   ),
 );
 export const DiffField = loadable(() =>
   import(
-    /* webpackChunkName: "Diff" */ '@plone/volto/components/manage/Diff/DiffField'
+    /* webpackChunkName: "HistoryView" */ '@plone/volto/components/manage/Diff/DiffField'
   ),
 );
 export { default as Display } from '@plone/volto/components/manage/Display/Display';
