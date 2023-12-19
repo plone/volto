@@ -1,1 +1,0 @@
-enable cypress tests in prefix-path router @sneridagh @nileshgulia1

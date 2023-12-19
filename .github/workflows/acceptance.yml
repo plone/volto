@@ -1290,9 +1290,10 @@ jobs:
         with:
           record: true
           parallel: false
+          working-directory: packages/volto
           browser: chrome
           group: Prefix
-          spec: packages/volto/cypress/tests/minimal/**/*.js
+          spec: cypress/tests/minimal/**/*.js
           config: baseUrl=http://localhost/foo
           env: prefixPath=/foo
           start: |
