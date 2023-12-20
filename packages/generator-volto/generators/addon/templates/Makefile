@@ -62,7 +62,7 @@ build-addon: ## Build Addon dev
 .PHONY: start-dev
 start-dev: ## Starts Dev container
 	@echo "$(GREEN)==> Start Addon Development container $(RESET)"
-	${DEV_COMPOSE} up addon-dev
+	${DEV_COMPOSE} up addon-dev backend
 
 .PHONY: dev
 dev: ## Develop the addon

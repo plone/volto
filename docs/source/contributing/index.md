@@ -148,6 +148,7 @@ Specifically:
 ```{toctree}
 :maxdepth: 1
 
+developing-core
 design-principles
 style-guide
 language-features

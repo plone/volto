@@ -19,7 +19,7 @@ const messages = defineMessages({
   },
 });
 
-export default (config) => {
+export default function advancedLink(config) {
   const { slate } = config.settings;
 
   slate.toolbarButtons = [...(slate.toolbarButtons || []), LINK];
@@ -47,4 +47,4 @@ export default (config) => {
   config = installLinkEditor(config);
 
   return config;
-};
+}
