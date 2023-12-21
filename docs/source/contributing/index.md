@@ -125,6 +125,7 @@ For the fish shell, see [nvm.fish](https://github.com/jorgebucaran/nvm.fish).
 1.  Install or update the supported LTS versions of Node.js, then activate the version supported in Volto.
 
 (for latest versions)
+
     ```shell
     nvm install "lts/*"
     ```
