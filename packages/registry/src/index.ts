@@ -1,16 +1,26 @@
 import { isArray } from 'lodash';
-import type * as configTypes from '@plone/types/config';
+import type {
+  AddonReducersConfig,
+  AddonRoutesConfig,
+  BlocksConfig,
+  ComponentsConfig,
+  ExperimentalConfig,
+  SettingsConfig,
+  SlotsConfig,
+  ViewsConfig,
+  WidgetsConfig,
+} from '@plone/types';
 
-type ConfigData = {
-  settings: configTypes.SettingsConfig;
-  blocks: configTypes.BlocksConfig;
-  views: configTypes.ViewsConfig;
-  widgets: configTypes.WidgetsConfig;
-  addonReducers: configTypes.AddonReducersConfig;
-  addonRoutes: configTypes.AddonRoutesConfig;
-  slots: configTypes.SlotsConfig;
-  components: configTypes.ComponentsConfig;
-  experimental: configTypes.ExperimentalConfig;
+export type ConfigData = {
+  settings: SettingsConfig;
+  blocks: BlocksConfig;
+  views: ViewsConfig;
+  widgets: WidgetsConfig;
+  addonReducers: AddonReducersConfig;
+  addonRoutes: AddonRoutesConfig;
+  slots: SlotsConfig;
+  components: ComponentsConfig;
+  experimental: ExperimentalConfig;
 };
 
 type GetComponentResult = {

@@ -1,6 +1,6 @@
 import { apiRequest, ApiRequestParams } from '../../API';
-import { PloneClientConfig } from '../../interfaces/config';
-import { GetSiteResponse } from '../../interfaces/site';
+import { PloneClientConfig } from '../../validation/config';
+import { GetSiteResponse } from '@plone/types';
 
 export type SiteArgs = {
   config: PloneClientConfig;

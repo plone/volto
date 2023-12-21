@@ -3,8 +3,8 @@ import { ApiRequestParams, apiRequest } from '../../API';
 import {
   PloneClientConfig,
   PloneClientConfigSchema,
-} from '../../interfaces/config';
-import { RuleRespose as CreateRuleResponse } from '../../interfaces/rules';
+} from '../../validation/config';
+import { RuleRespose as CreateRuleResponse } from '@plone/types';
 
 export const createRuleArgsSchema = z.object({
   ruleId: z.string(),

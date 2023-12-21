@@ -3,11 +3,9 @@ import { ApiRequestParams, apiRequest } from '../../API';
 import {
   PloneClientConfig,
   PloneClientConfigSchema,
-} from '../../interfaces/config';
-import {
-  createLockDataSchema,
-  CreateLockResponse,
-} from '../../interfaces/lock';
+} from '../../validation/config';
+import { createLockDataSchema } from '../../validation/lock';
+import { CreateLockResponse } from '@plone/types';
 
 export const createLockArgsSchema = z.object({
   path: z.string(),
