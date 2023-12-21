@@ -124,9 +124,9 @@ For the fish shell, see [nvm.fish](https://github.com/jorgebucaran/nvm.fish).
 
 1.  Install or update the supported LTS versions of Node.js, then activate the version supported in Volto.
 
+(for latest versions)
     ```shell
     nvm install "lts/*"
-    nvm use 20
     ```
 
 2.  Verify that the supported version of Node.js is activated.
@@ -134,6 +134,7 @@ For the fish shell, see [nvm.fish](https://github.com/jorgebucaran/nvm.fish).
     ```shell
     node -v
     ```
+    expected 21.2.0
 
 
 ### Install pnpm
@@ -147,7 +148,13 @@ corepack prepare pnpm@latest --activate
 or using `npm`:
 
 ```shell
-npm install -g pnpm
+npm install -g pnpm@latest
+```
+
+version check:
+
+```shell
+$ pnpm --version
 ```
 
 ```{seealso}
