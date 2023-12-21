@@ -156,6 +156,7 @@ version check:
 ```shell
 $ pnpm --version
 ```
+expected 8.9.0
 
 ```{seealso}
 [pnpm installation](https://pnpm.io/installation).
