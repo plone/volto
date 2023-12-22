@@ -13,6 +13,7 @@ myst:
 :maxdepth: 1
 
 creating-project
+developing-a-project
 folder-structure
 environment-variables
 customizing-components
@@ -26,5 +27,6 @@ appextras
 contextnavigation
 pluggables
 widget
+how-to-restrict-blocks
 ie11compat
 ```

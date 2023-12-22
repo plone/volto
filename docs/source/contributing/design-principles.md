@@ -110,8 +110,3 @@ Volto is a frontend UI implementation of a CMS backend. We need to focus on this
 of focusing on the relationship with the backend(s). JS world advances quick, and we
 have to keep pace with it. React's own async (Suspense) mode it's on its way, and that
 will change enough things in React world and we have to keep up with these changes.
-
-## Semantic versioning
-
-Volto follows semantic versioning policy. So everybody can easily tell if a released
-version contains a breaking change, a feature or a minor fix.
