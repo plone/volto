@@ -70,7 +70,7 @@ Adapt them for your flavor of shell.
 
 ```{seealso}
 See the [nvm install and update script documentation](https://github.com/nvm-sh/nvm#install--update-script).
-For the fish shell, see [nvm.fish](https://github.com/jorgebucaran/nvm.fish).
+For the fish shell, see [nvm.fish](https://github.com/foldmap/nvm.fish).
 ```
 
 1.  Create your shell profile, if it does not exist.
