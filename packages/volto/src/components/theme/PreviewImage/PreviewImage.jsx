@@ -13,7 +13,7 @@ function PreviewImage({ item, alt, image_field, showDefault = true, ...rest }) {
   const image = (
     <Image
       item={item}
-      image_field={image_field || item?.image_field}
+      image_field={image_field || item.image_field}
       alt={alt}
       {...rest}
     />
