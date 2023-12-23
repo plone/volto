@@ -8,6 +8,16 @@
 
 <!-- towncrier release notes start -->
 
+## 8.1.1 (2023-12-13)
+
+### Bugfix
+
+- Fix the generator for add-ons when killing the backend if CTRL+C while developing with the docker approach @sneridagh [#5474](https://github.com/plone/volto/issues/5474)
+
+### Documentation
+
+- Replace table with link to documentation for compatibility. @stevepiercy [#5489](https://github.com/plone/volto/issues/5489)
+
 ## 8.1.0 (2023-12-01)
 
 ### Bugfix

@@ -315,6 +315,9 @@ class Add extends Component {
           <Form
             ref={this.form}
             key="translated-or-new-content-form"
+            navRoot={
+              this.props.content?.['@components']?.navroot?.navroot || {}
+            }
             schema={this.props.schema}
             type={this.props.type}
             formData={{
@@ -334,6 +337,9 @@ class Add extends Component {
               // Copy the Language Independent Fields values from the to-be translated content
               // into the default values of the translated content Add form.
               ...lifData(),
+              parent: {
+                '@id': this.props.content?.['@id'] || '',
+              },
             }}
             requestError={this.state.error}
             onSubmit={this.onSubmit}

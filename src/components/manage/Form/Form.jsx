@@ -148,7 +148,10 @@ class Form extends Component {
         ...formData,
       };
     }
-    // defaults for block editor; should be moved to schema on server side
+
+    // We initialize the formData snapshot in here, before the initial data checks
+    const initialFormData = cloneDeep(formData);
+
     // Adding fallback in case the fields are empty, so we are sure that the edit form
     // shows at least the default blocks
     if (
@@ -200,7 +203,7 @@ class Form extends Component {
 
     this.state = {
       formData,
-      initialFormData: cloneDeep(formData),
+      initialFormData,
       errors: {},
       selected: selectedBlock,
       multiSelected: [],
@@ -541,7 +544,13 @@ class Form extends Component {
    */
   render() {
     const { settings } = config;
-    const { schema: originalSchema, onCancel, onSubmit } = this.props;
+    const {
+      schema: originalSchema,
+      onCancel,
+      onSubmit,
+      navRoot,
+      type,
+    } = this.props;
     const { formData } = this.state;
     const schema = this.removeBlocksLayoutFields(originalSchema);
     const Container =
@@ -590,6 +599,8 @@ class Form extends Component {
             onChangeField={this.onChangeField}
             onSelectBlock={this.onSelectBlock}
             properties={formData}
+            navRoot={navRoot}
+            type={type}
             pathname={this.props.pathname}
             selectedBlock={this.state.selected}
             multiSelected={this.state.multiSelected}
