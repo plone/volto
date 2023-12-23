@@ -1,1 +1,1 @@
-fixed expand/shrink toolbar accessibility and ui of toolbar-handler - cms ui @Noobham
+Improved toolbar accessibility. Added hover effect on toolbar-handler, Increased its contrast, and now the value for `aria-label` toggles correctly for both the expand and shrink statuses. @Noobham
