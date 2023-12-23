@@ -1724,6 +1724,9 @@ importers:
       '@types/jest':
         specifier: ^29.5.8
         version: 29.5.8
+      '@types/loadable__component':
+        specifier: ^5.13.8
+        version: 5.13.8
       '@types/react':
         specifier: ^17.0.52
         version: 17.0.70
@@ -13444,6 +13447,12 @@ packages:
     dependencies:
       '@types/node': 20.9.0
     dev: false
+
+  /@types/loadable__component@5.13.8:
+    resolution: {integrity: sha512-0FF/WihuPkR5IFOHiBzC95bSACvgQNUQCuNy1WF8F/lCBBHgS2SxarIk4CTjWM10A72ovpmXZDRcuAXZNS+/kQ==}
+    dependencies:
+      '@types/react': 18.2.27
+    dev: true
 
   /@types/lodash@4.14.201:
     resolution: {integrity: sha512-y9euML0cim1JrykNxADLfaG0FgD1g/yTHwUs/Jg9ZIU7WKj2/4IW9Lbb1WZbvck78W/lfGXFfe+u2EGfIJXdLQ==}
