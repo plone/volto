@@ -2,6 +2,7 @@ import '@plone/volto/config'; // This is the bootstrap for the global config - c
 import React from 'react';
 import { StaticRouter } from 'react-router-dom';
 import { IntlProvider } from 'react-intl';
+// eslint-disable-next-line import/no-unresolved
 import enMessages from '@root/../locales/en.json';
 
 import '@root/theme';

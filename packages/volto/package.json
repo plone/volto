@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "18.0.0-alpha.4",
+  "version": "18.0.0-alpha.5",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -47,11 +47,13 @@
     "start:prod": "NODE_ENV=production node build/server.js",
     "prettier": "./node_modules/.bin/prettier --single-quote --check '{src,cypress}/**/*.{js,jsx,ts,tsx}' --check '*.js'",
     "prettier:fix": "./node_modules/.bin/prettier --single-quote --write '{src,cypress}/**/*.{js,jsx,ts,tsx}' --write '*.js'",
+    "prettier:husky": "prettier --single-quote --write",
     "stylelint": "./node_modules/.bin/stylelint 'theme/**/*.{css,less}' 'src/**/*.{css,less}'",
     "stylelint:overrides": "./node_modules/.bin/stylelint 'theme/**/*.overrides' 'src/**/*.overrides'",
     "stylelint:fix": "yarn stylelint --fix && yarn stylelint:overrides --fix",
     "lint": "./node_modules/eslint/bin/eslint.js --max-warnings=0 'src/**/*.{js,jsx,ts,tsx,json}'",
     "lint:fix": "./node_modules/eslint/bin/eslint.js --fix 'src/**/*.{js,jsx,ts,tsx,json}'",
+    "lint:husky": "eslint --max-warnings=0 --fix",
     "i18n": "rm -rf build/messages && NODE_ENV=production i18n",
     "i18n:ci": "pnpm i18n && git diff -G'^[^\"POT]' --exit-code",
     "typecheck": "tsc --project tsconfig.json --noEmit",
@@ -220,7 +222,7 @@
     "eslint-import-resolver-alias": "1.1.2",
     "eslint-import-resolver-babel-plugin-root-import": "1.1.1",
     "eslint-plugin-import": "2.28.1",
-    "eslint-plugin-jsx-a11y": "6.7.1",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-prettier": "5.0.0",
     "eslint-plugin-react": "7.33.2",
     "eslint-plugin-react-hooks": "4.6.0",

@@ -1,6 +1,6 @@
 import { apiRequest, ApiRequestParams } from '../../API';
-import { PloneClientConfig } from '../../interfaces/config';
-import { GetGroupsResponse } from '../../interfaces/groups';
+import { PloneClientConfig } from '../../validation/config';
+import { GetGroupsResponse } from '@plone/types';
 
 export type GroupsArgs = {
   config: PloneClientConfig;

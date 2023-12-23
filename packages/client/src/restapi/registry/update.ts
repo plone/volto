@@ -3,8 +3,8 @@ import { apiRequest, ApiRequestParams } from '../../API';
 import {
   PloneClientConfig,
   PloneClientConfigSchema,
-} from '../../interfaces/config';
-import { updateRegistryDataSchema } from '../../interfaces/registry';
+} from '../../validation/config';
+import { updateRegistryDataSchema } from '../../validation/registry';
 
 export const updateRegistryArgsSchema = z.object({
   data: updateRegistryDataSchema,

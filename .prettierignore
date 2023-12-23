@@ -5,3 +5,4 @@
 styles/rules/*
 node_modules
 packages/volto/types/*
+storybook-static
