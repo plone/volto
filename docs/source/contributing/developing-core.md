@@ -113,10 +113,9 @@ For the fish shell, see [nvm.fish](https://github.com/joxji/nvm.fish).
     ```shell
     node -v
     ```
-    
 
 
-### Install pnpm
+### pnpm
 
 Using corepack:
 
@@ -138,7 +137,6 @@ pnpm --version
 
 Compare the output to the [latest pnpm release number](https://www.npmjs.com/package/pnpm).
 
-
 ```{seealso}
 [pnpm installation](https://pnpm.io/installation).
 ```
@@ -153,25 +151,32 @@ git clone https://github.com/plone/volto.git
 cd volto
 ```
 
-Running the backend.
+You will need to create two terminal sessions, one for the backend and one for the frontend.
+Both sessions have their working directory in the root of your Volto clone.
+
+In the first session, start the backend.
 
 ```shell
-make-start-backend-docker
+make start-backend-docker
 ```
 
-See the backend running at [http://localhost:8080](http://localhost:8080)
+See the backend running at http://localhost:8080.
 
-In a new shell/terminal:
-
-```shell
-cd volto
-```
-
-Install dependencies:
+In the second session, install the frontend dependencies one time only.
 
 ```shell
 pnpm install
 ```
+
+Next start the frontend:
+
+```shell
+pnpm start
+```
+
+Browse to http://localhost:3000.
+
+To stop either the backend or frontend, use {kbd}`ctrl-c`.
 
 
 ## Running commands
@@ -187,10 +192,6 @@ pnpm --filter @plone/volto start
 ```shell
 pnpm --filter @plone/registry build
 ```
-
-### Open Volto in your browser
-
-Browse to [http://localhost:3000](http://localhost:3000).
 
 
 ## Developing Volto
