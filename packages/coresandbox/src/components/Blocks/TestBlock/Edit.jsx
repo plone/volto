@@ -1,4 +1,3 @@
-import React from 'react';
 import { SidebarPortal } from '@plone/volto/components';
 import Data from './Data';
 

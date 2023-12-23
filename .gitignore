@@ -21,12 +21,12 @@ build
 !.yarn/versions
 
 # Other
+.vscode
 /cache
 .yarn/
 .DS_Store
 .idea
 lighthouse-report.html
-.vscode/
 .#*
 *~
 /.settings/
@@ -86,3 +86,7 @@ docs/_build/
 /.python-version
 /.tool-versions
 docs/source/news
+
+.turbo
+.parcel-cache/
+tsconfig.tsbuildinfo

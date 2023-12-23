@@ -66,6 +66,8 @@ export const DefaultTextBlockEditor = (props) => {
     allowedBlocks,
     formTitle,
     formDescription,
+    navRoot,
+    contentType,
   } = props;
 
   const { slate } = config.settings;
@@ -263,6 +265,8 @@ export const DefaultTextBlockEditor = (props) => {
               blocksConfig={blocksConfig}
               size="24px"
               properties={properties}
+              navRoot={navRoot}
+              contentType={contentType}
             />
           )}
 
