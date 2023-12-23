@@ -47,7 +47,7 @@ Use the `useLinkTranslation` hook to link a translation to the given path.
 
 ### Mutation function
 
-Use the `unlinkTranslationMutation` function to get the mutation for unlinking a translation from the given path.
+Use the `unlinkTranslationMutation` function to get the mutation for `unlinking` a translation from the given path.
 
 ### Hook
 

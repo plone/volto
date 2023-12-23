@@ -28,7 +28,7 @@ Use the `useCreateRule` hook to add a content-rule to a page.
 
 ### Parameters
 
-- **ruleId**: string
+- `ruleId`: string
 
   - **Required:** Yes
 

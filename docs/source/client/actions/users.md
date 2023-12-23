@@ -19,7 +19,7 @@ Use the `useGetUsers` hook to get the list of all users in the portal.
 
   - **Required**: No
 
-- **groupsFilter**: string[]
+- `groupsFilter`: string[]
 
   - **Required**: No
 

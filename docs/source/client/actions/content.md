@@ -26,7 +26,7 @@ Use the `useGetContent` hook to get the content at a given path.
 
   - **Required:** No
 
-- **fullObjects:** boolean
+- `fullObjects: boolean`
 
   - **Required:** No
 

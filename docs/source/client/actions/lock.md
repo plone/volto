@@ -70,7 +70,7 @@ Use the `useUpdateLock` hook to update a lock for a page.
 
   - **Required:** Yes
 
-- **locktoken**: string
+- `locktoken`: string
 
   - **Required:** Yes
 

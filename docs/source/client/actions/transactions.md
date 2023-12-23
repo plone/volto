@@ -31,6 +31,6 @@ Use the `useRevertTransactions` hook to revert transactions in the portal.
   - **Required**: Yes
   - It can have the following fields:
 
-    - **transactionIds**: string[]
+    - `transactionIds`: string[]
 
       - **Required**: Yes

@@ -24,7 +24,7 @@ Use the `useGetType` hook to get the information about the content type provided
 
 ### Parameters
 
-- **contentPath**: string
+- `contentPath`: string
 
   - **Required:** Yes
 
@@ -56,7 +56,7 @@ Use the `useCreateTypeField` hook to add a field/fieldset to the type provided.
 
 ### Parameters
 
-- **contentPath**: string
+- `contentPath`: string
 
   - **Required:** Yes
 
@@ -93,7 +93,7 @@ Use the `useUpdateTypeField` hook to update a field/fieldset of the type provide
 
 ### Parameters
 
-- **contentPath**: string
+- `contentPath`: string
 
   - **Required:** Yes
 

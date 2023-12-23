@@ -38,7 +38,7 @@ Use the `useCreateComment` hook to add a comment for a page.
 
   - **Required:** Yes
 
-- **reply_id**: string
+- `reply_id`: string
 
   - **Required:** No
   - The id of the comment to which you want to reply
@@ -69,7 +69,7 @@ Use the `useUpdateComment` hook to update a comment for the given id and path.
 
   - **Required:** Yes
 
-- **comment_id**: string
+- `comment_id`: string
 
   - **Required:** Yes
 
@@ -99,6 +99,6 @@ Use the `useDeleteComment` hook to delete a comment for the given id and path.
 
   - **Required:** Yes
 
-- **comment_id**: string
+- `comment_id`: string
 
   - **Required:** Yes

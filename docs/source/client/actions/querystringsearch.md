@@ -1,16 +1,16 @@
-# Querystring Search
+# `Querystring` Search
 
-The `@querystring-search` endpoint returns search results that can be filtered on search criteria.
+The `@ Querystring -search` endpoint returns search results that can be filtered on search criteria.
 
-## Get Querystring Search
+## Get `Querystring` Search
 
 ### Query function
 
-Use the `getQuerystringSearchQuery` function to get the query for fetching the search results for a page.
+Use the `get Querystring SearchQuery` function to get the query for fetching the search results for a page.
 
 ### Hook
 
-Use the `useGetQuerystringSearch` hook to get the search results for a page.
+Use the `useGet Querystring Search` hook to get the search results for a page.
 
 ### Parameters
 
@@ -34,11 +34,11 @@ Use the `useGetQuerystringSearch` hook to get the search results for a page.
       - **Required**: Yes
       - The value of the filter.
 
-- **b_start**: string
+- `b_start`: string
 
   - **Required**: No
 
-- **b_size**: string
+- `b_size`: string
 
   - **Required**: No
 
@@ -46,27 +46,27 @@ Use the `useGetQuerystringSearch` hook to get the search results for a page.
 
   - **Required**: No
 
-- **sort_on**: string
+- `sort_on`: string
 
   - **Required**: No
 
-- **sort_order**: string
+- `sort_order`: string
 
   - **Required**: No
 
-- **fullobjects**: boolean
+- `fullobjects`: `boolean`
 
   - **Required**: No
 
-## Get Querystring Search Using POST request
+## Get `Querystring` Search Using POST request
 
 ### Mutation function
 
-Use the `postQuerystringSearchMutation` function to get the mutation for fetching the search results for a page.
+Use the `post Querystring SearchMutation` function to get the mutation for fetching the search results for a page.
 
 ### Hook
 
-Use the `usePostQuerystringSearch` hook to get the search results for a page.
+Use the `usePost Querystring Search` hook to get the search results for a page.
 
 ### Parameters
 
@@ -95,12 +95,12 @@ Use the `usePostQuerystringSearch` hook to get the search results for a page.
         - **Required**: Yes
         - The value of the filter.
 
-    - `b_start: string`
+    - `b_start:` string
 
       - **Required**: No
       - The start index of the search results.
 
-    - `b_size: string`
+    - `b_size:` string
 
       - **Required**: No
       - The size of the search results.
@@ -110,17 +110,17 @@ Use the `usePostQuerystringSearch` hook to get the search results for a page.
       - **Required**: No
       - The limit of the search results.
 
-    - `sort_on: string`
+    - `sort_on:` string
 
       - **Required**: No
       - The field to sort on.
 
-    - `sort_order: string`
+    - `sort_order`: string
 
       - **Required**: No
       - The order to sort on.
 
-    - `fullobjects: boolean`
+    - `fullobjects`: `boolean`
 
       - **Required**: No
       - Whether to return the full objects or not.

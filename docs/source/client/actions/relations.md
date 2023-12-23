@@ -40,7 +40,7 @@ Use the `useGetRelations` hook to get the relations for the given parameters.
 
   - **Required**: No
 
-- **onlyBroken**: boolean
+- `onlyBroken : boolean`
 
   - **Required**: No
 
