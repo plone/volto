@@ -111,7 +111,7 @@ For the fish shell, see [nvm.fish](https://github.com/foldmap/nvm.fish).
 2.  Verify that the supported version of Node.js is activated.
 
     ```shell
-    node -verion
+    node -v
     ```
     
 
