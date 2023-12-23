@@ -1,11 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-<<<<<<< HEAD:locales/volto.pot
-"POT-Creation-Date: 2023-11-25T14:15:32.688Z\n"
-=======
-"POT-Creation-Date: 2023-11-27T07:34:40.957Z\n"
->>>>>>> fix/toolbar:packages/volto/locales/volto.pot
+"POT-Creation-Date: 2023-12-23T14:39:48.467Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
