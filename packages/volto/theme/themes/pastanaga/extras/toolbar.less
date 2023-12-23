@@ -130,7 +130,7 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
 
     .toolbar-handler {
       button {
-        opacity: 0.3;
+        opacity: 0.65;
       }
 
       // State colors
@@ -259,6 +259,12 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
           height: 4px;
           background-color: red;
           content: '';
+        }
+
+        &:hover {
+          &::before {
+            background-color: @darkHotPink;
+          }
         }
       }
     }
