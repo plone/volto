@@ -104,16 +104,16 @@ For the fish shell, see [nvm.fish](https://github.com/foldmap/nvm.fish).
 1.  Install or update the supported LTS versions of Node.js, then activate the version supported in Volto.
 
     ```shell
-    nvm install 21.5.0
-    nvm use 21.5.0
+    nvm install "lts/*"
+    nvm use 20
     ```
 
 2.  Verify that the supported version of Node.js is activated.
 
     ```shell
-    node -v
+    node -verion
     ```
-    should see 21.5.0(latest)
+    
 
 
 ### Install pnpm
@@ -133,9 +133,10 @@ npm install -g pnpm@latest
 Verify the latest version.
 
 ```shell
-  pnpm --version
+pnpm --version
 ```
-should see 8.9.0
+Compare the output to the [latest pnpm release number](https://www.npmjs.com/package/pnpm).
+
 
 ```{seealso}
 [pnpm installation](https://pnpm.io/installation).

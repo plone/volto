@@ -47,11 +47,11 @@ The Volto Team reviews pull requests only from people with a GitHub account who 
 ```{include} ./branch-policy.md
 ```
 
-(contributing-developing-core-volto)=
+(contributing-install-volto-for-development-label)=
 
-## Developing Core Volto
+## Install Volto for development
 
-For developing core volto , please follow every step in flow as mentioned in [Develop Volto Core](../contributing/developing-core.md).
+For developing Volto, follow {doc}`developing-core`.
 
 (contributing-translations-label)=
 
