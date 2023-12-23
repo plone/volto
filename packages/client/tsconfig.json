@@ -18,6 +18,6 @@
     "types": ["vite", "vitest/globals"]
   },
   "exclude": ["node_modules", "dist", "coverage", "src/**/*.test.{ts,tsx}"],
-  "include": ["src/**/*.{ts,tsx}"],
+  "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

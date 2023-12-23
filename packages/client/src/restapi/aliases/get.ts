@@ -1,6 +1,6 @@
 import { apiRequest, ApiRequestParams } from '../../API';
-import { PloneClientConfig } from '../../interfaces/config';
-import { GetAliasesResponse } from '../../interfaces/aliases';
+import { PloneClientConfig } from '../../validation/config';
+import { GetAliasesResponse } from '@plone/types';
 import { z } from 'zod';
 
 const getAliasesSchema = z.object({

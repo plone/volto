@@ -3,11 +3,9 @@ import { z } from 'zod';
 import {
   PloneClientConfig,
   PloneClientConfigSchema,
-} from '../../interfaces/config';
-import {
-  deleteLockDataSchema,
-  LockInfo as DeleteLockResponse,
-} from '../../interfaces/lock';
+} from '../../validation/config';
+import { deleteLockDataSchema } from '../../validation/lock';
+import { LockInfo as DeleteLockResponse } from '@plone/types';
 
 export const deleteLockArgsSchema = z.object({
   path: z.string(),

@@ -1,6 +1,6 @@
 import { apiRequest, ApiRequestParams } from '../../API';
-import { PloneClientConfig } from '../../interfaces/config';
-import { GetNavrootResponse } from '../../interfaces/navroot';
+import { PloneClientConfig } from '../../validation/config';
+import { GetNavrootResponse } from '@plone/types';
 import { z } from 'zod';
 
 const getNavrootSchema = z.object({

@@ -1,6 +1,6 @@
 import { apiRequest, ApiRequestParams } from '../../API';
-import { PloneClientConfig } from '../../interfaces/config';
-import { ContextNavigationResponse } from '../../interfaces/contextnavigation';
+import { PloneClientConfig } from '../../validation/config';
+import { ContextNavigationResponse } from '@plone/types';
 import { z } from 'zod';
 
 const getContextNavigationSchema = z.object({

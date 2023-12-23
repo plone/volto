@@ -3,8 +3,8 @@ import { ApiRequestParams, apiRequest } from '../../API';
 import {
   PloneClientConfig,
   PloneClientConfigSchema,
-} from '../../interfaces/config';
-import { createRelationsDataSchema } from '../../interfaces/relations';
+} from '../../validation/config';
+import { createRelationsDataSchema } from '../../validation/relations';
 
 export const createRelationsArgsSchema = z.object({
   data: createRelationsDataSchema,
