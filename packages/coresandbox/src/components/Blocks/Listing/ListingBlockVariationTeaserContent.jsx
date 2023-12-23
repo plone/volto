@@ -1,4 +1,3 @@
-import React from 'react';
 import RenderBlocks from '@plone/volto/components/theme/View/RenderBlocks';
 
 const ListingBlockVariationTeaserContent = ({ items }) => {

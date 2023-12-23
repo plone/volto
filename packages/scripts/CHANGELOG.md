@@ -1,4 +1,4 @@
-# Volto Scripts Release Notes
+# @plone/scripts Release Notes
 
 <!-- You should *NOT* be adding new change log entries to this file.
      You should create a file in the news directory instead.
@@ -7,6 +7,13 @@
 -->
 
 <!-- towncrier release notes start -->
+
+## 3.1.0 (2023-12-02)
+
+### Feature
+
+- Added a pre-publish plugin for release-it @sneridagh [#5473](https://github.com/plone/volto/issues/5473)
+- Added script to add necessary VSCode `.vscode/settings.json` to detect ESlint projects inside the monorepo @sneridagh [#5483](https://github.com/plone/volto/issues/5483)
 
 ## 3.0.1 (2023-10-06)
 

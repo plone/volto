@@ -31,10 +31,12 @@ year = str(now.year)
 # built documents.
 #
 
-with open(os.path.join(os.path.abspath('.'), '../../package.json'), 'r') as package_json:
-    data=package_json.read()
+with open(
+    os.path.join(os.path.abspath("."), "../../packages/volto/package.json"), "r"
+) as package_json:
+    data = package_json.read()
 
-version_from_package_json = json.loads(data)['version']
+version_from_package_json = json.loads(data)["version"]
 
 if version_from_package_json:
     # The short X.Y version.
@@ -70,7 +72,7 @@ extensions = [
 # to convert quotes and dashes to typographically correct entities.
 # Note to maintainers: setting this to `True` will cause contractions and
 # hyphenated words to be marked as misspelled by spellchecker.
-smartquotes=False
+smartquotes = False
 
 # The name of the Pygments (syntax highlighting) style to use.
 # pygments_style = "sphinx.pygments_styles.PyramidStyle"
@@ -141,10 +143,10 @@ html_static_path = [
 # https://myst-parser.readthedocs.io/en/latest/syntax/optional.html
 myst_enable_extensions = [
     "deflist",  # You will be able to utilise definition lists
-                # https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#definition-lists
+    # https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#definition-lists
     "linkify",  # Identify “bare” web URLs and add hyperlinks.
     "colon_fence",  # You can also use ::: delimiters to denote code fences,\
-                    #  instead of ```.
+    #  instead of ```.
     "html_image",
 ]
 
@@ -195,8 +197,7 @@ html_theme = "sphinx_book_theme"
 html_logo = "_static/logo.svg"
 html_favicon = "_static/favicon.ico"
 
-html_css_files = ["custom.css",
-                  ("print.css", {"media": "print"})]
+html_css_files = ["custom.css", ("print.css", {"media": "print"})]
 
 # See http://sphinx-doc.org/ext/todo.html#confval-todo_include_todos
 todo_include_todos = True
@@ -243,13 +244,19 @@ htmlhelp_basename = "VoltoDocumentation"
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual])
 latex_documents = [
-    ("index", "VoltoDocumentation.tex", "Volto Documentation",
-     "The Plone community", "manual"),
+    (
+        "index",
+        "VoltoDocumentation.tex",
+        "Volto Documentation",
+        "The Plone community",
+        "manual",
+    ),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
 # the title page.
 latex_logo = "_static/logo_2x.png"
+
 
 def setup(app):
     app.add_config_value("context", "volto", "env")

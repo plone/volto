@@ -28,6 +28,34 @@ Thus it is safe to run it on top of your project and answer the prompts.
 
 ## Upgrading to Volto 18.x.x
 
+### ESlint project configuration update
+
+`@plone/registry` and [other packages on which Volto depends](https://github.com/plone/volto/tree/main/packages) are now stand-alone releases in the monorepo structure released in 18.0.0-alpha.4.
+
+You must update the configuration file {file}`.eslintrc.js` in your projects, according to the following `git diff` patch.
+
+```diff
+@@ -18,9 +19,6 @@ if (configFile) {
+     voltoPath = `./${jsConfig.baseUrl}/${pathsConfig['@plone/volto'][0]}`;
+ }
+
+-const AddonConfigurationRegistry = require(
+-  `${voltoPath}/packages/registry/addon-registry.js`,
+-);
+const AddonConfigurationRegistry = require('@plone/registry/src/addon-registry');
+
+@@ -38,9 +36,7 @@ const defaultConfig = {
+       alias: {
+         map: [
+           ['@plone/volto', '@plone/volto/src'],
+-          ['@plone/volto-slate', '@plone/volto/packages/volto-slate/src'],
+-          ['@plone/registry', '@plone/volto/packages/registry/src'],
+-          ['@plone/types', '@plone/volto/packages/types'],
++          ['@plone/volto-slate', '@plone/volto-slate/src'],
+           ...addonAliases,
+           ['@package', `${__dirname}/src`],
+```
+
 ### Upgraded Slate libraries
 
 The support libraries for Slate integration have been upgraded, mainly for bug fixes.
@@ -51,12 +79,6 @@ Long Term Support for Node.js 16 by the Node.js community ended in September 202
 Volto 17 no longer supports Node.js 14 or 16.
 Please update your projects to a supported Node.js version (18 or 20).
 Version 18 is recommended, as the current LTS version of Node.js.
-
-#### localhost now resolves to an IPv6 address
-
-Node.js 18 prefers to resolve `localhost` to an IPv6 address instead of IPv4.
-If you are setting `RAZZLE_API_PATH` to a URL that includes `localhost`,
-change the hostname to `127.0.0.1` instead.
 
 ### Webpack 5
 
@@ -1709,7 +1731,7 @@ Since Volto 9.2.0 the next step IS NOT required anymore.
 ```
 
 ~~Copy (and overwrite) the `patches` folder into your local project
-https://github.com/plone/volto/tree/main/patches or, if you want to be more accurate,
+or, if you want to be more accurate,
 just copy `patches/razzle-plugins.patch` file and overwrite `patches/patchit.sh` file.~~
 
 ### Babel config housekeeping
