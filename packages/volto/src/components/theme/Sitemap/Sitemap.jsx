@@ -33,16 +33,16 @@ export function getSitemapPath(pathname = '', lang) {
 function Sitemap(props) {
   const {
     location: { pathname },
-    language,
+    lang,
     getNavigation,
   } = props;
 
   useEffect(() => {
     const { settings } = config;
-    const lang = settings.isMultilingual ? `${toBackendLang(language)}` : null;
-    const path = getSitemapPath(pathname, lang);
+    const language = settings.isMultilingual ? `${toBackendLang(lang)}` : null;
+    const path = getSitemapPath(pathname, language);
     getNavigation(path, 4);
-  }, [pathname, language, getNavigation]);
+  }, [pathname, lang, getNavigation]);
 
   const renderItems = (items) => {
     return (
