@@ -58,7 +58,7 @@ For more information about pnpm workspaces, read the [documentation of pnpm work
 
 To set up a Volto core development environment, your system must satisfy the following pre-requisites.
 
-```{include} ../volto/contributing/install-operating-system.md
+```{include} ./install-operating-system.md
 ```
 
 -   {term}`nvm`
