@@ -27,7 +27,7 @@ const Navigation = (props) => {
   const dispatch = useDispatch();
   const { pathname, type } = props;
   const [isMobileMenuOpen, setisMobileMenuOpen] = useState(null);
-  const [showHamburger, setShowHamburger] = useState(true)
+  const [showHamburger, setShowHamburger] = useState(true);
   const token = useSelector((state) => state.userSession.token, shallowEqual);
   const items = useSelector((state) => state.navigation.items, shallowEqual);
   const lang = useSelector((state) => state.intl.locale);
@@ -50,50 +50,45 @@ const Navigation = (props) => {
   };
 
   if (items.length < 1 || typeof items === 'undefined' || items === undefined) {
-    setShowHamburger(false)
-  }
-  else {
-    setShowHamburger(true)
+    setShowHamburger(false);
+  } else {
+    setShowHamburger(true);
   }
   return (
     <nav className="navigation" id="navigation" aria-label="Site">
-      {showHamburger ?
-        (
-          <div className="hamburger-wrapper mobile tablet only">
-            <button
-              className={cx('hamburger hamburger--spin', {
-                'is-active': isMobileMenuOpen,
-              })}
-              aria-label={
-                isMobileMenuOpen
-                  ? intl.formatMessage(messages.closeMobileMenu, {
+      {showHamburger ? (
+        <div className="hamburger-wrapper mobile tablet only">
+          <button
+            className={cx('hamburger hamburger--spin', {
+              'is-active': isMobileMenuOpen,
+            })}
+            aria-label={
+              isMobileMenuOpen
+                ? intl.formatMessage(messages.closeMobileMenu, {
                     type: type,
                   })
-                  : intl.formatMessage(messages.openMobileMenu, {
+                : intl.formatMessage(messages.openMobileMenu, {
                     type: type,
                   })
-              }
-              title={
-                isMobileMenuOpen
-                  ? intl.formatMessage(messages.closeMobileMenu, {
+            }
+            title={
+              isMobileMenuOpen
+                ? intl.formatMessage(messages.closeMobileMenu, {
                     type: type,
                   })
-                  : intl.formatMessage(messages.openMobileMenu, {
+                : intl.formatMessage(messages.openMobileMenu, {
                     type: type,
                   })
-              }
-              type="button"
-              onClick={toggleMobileMenu}
-            >
-              <span className="hamburger-box">
-                <span className="hamburger-inner" />
-              </span>
-            </button>
-          </div>
-        )
-        :
-        null
-      }
+            }
+            type="button"
+            onClick={toggleMobileMenu}
+          >
+            <span className="hamburger-box">
+              <span className="hamburger-inner" />
+            </span>
+          </button>
+        </div>
+      ) : null}
 
       <Menu
         stackable
