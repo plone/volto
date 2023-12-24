@@ -31,12 +31,23 @@ const Navigation = (props) => {
   const token = useSelector((state) => state.userSession.token, shallowEqual);
   const items = useSelector((state) => state.navigation.items, shallowEqual);
   const lang = useSelector((state) => state.intl.locale);
+
   useEffect(() => {
     const { settings } = config;
     if (!hasApiExpander('navigation', getBaseUrl(pathname))) {
       dispatch(getNavigation(getBaseUrl(pathname), settings.navDepth));
     }
-  }, [pathname, token, dispatch]);
+
+    if (
+      items?.length < 1 ||
+      typeof items === 'undefined' ||
+      items === undefined
+    ) {
+      setShowHamburger(false);
+    } else {
+      setShowHamburger(true);
+    }
+  }, [pathname, token, dispatch, items]);
 
   const toggleMobileMenu = () => {
     setisMobileMenuOpen(!isMobileMenuOpen);
@@ -48,16 +59,6 @@ const Navigation = (props) => {
     }
     setisMobileMenuOpen(false);
   };
-
-  if (
-    items?.length < 1 ||
-    typeof items === 'undefined' ||
-    items === undefined
-  ) {
-    setShowHamburger(false);
-  } else {
-    setShowHamburger(true);
-  }
   return (
     <nav className="navigation" id="navigation" aria-label="Site">
       {showHamburger ? (
