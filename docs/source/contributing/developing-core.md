@@ -56,7 +56,7 @@ For more information about pnpm workspaces, read the [documentation of pnpm work
 
 ## Development requirements
 
-To set up a Volto core development environment, you need Node.js installed in your system.
+To set up a Volto core development environment, you need to install Node.js in your system.
 Then, set up the package manager pnpm.
 
 We recommend that you install Node.js using nvm.
@@ -65,58 +65,15 @@ Alternatively you can install Node.js using Homebrew or other package installer.
 
 ### nvm
 
-The following terminal session commands use bash for the shell.
-Adapt them for your flavor of shell.
-
-```{seealso}
-See the [nvm install and update script documentation](https://github.com/nvm-sh/nvm#install--update-script).
-For the `fish` shell, see [nvm.fish](https://github.com/joxji/nvm.fish).
+```{include} ./install-nvm.md
 ```
-
-1.  Create your shell profile, if it does not exist.
-
-    ```shell
-    touch ~/.bash_profile
-    ```
-
-2.  Download and run the nvm install and update script, and pipe it into bash.
-
-    ```shell
-    curl -o- https://raw.githubusercontent.com/creationix/nvm/v{NVM_VERSION}/install.sh | bash
-    ```
-
-3.  Source your profile.
-    Alternatively close the session and open a new one.
-
-    ```shell
-    source ~/.bash_profile
-    ```
-
-4.  Verify that the nvm version is that which you just installed or updated:
-
-    ```shell
-    nvm --version
-    ```
-
 
 ### Node.js
 
-1.  Install or update the supported LTS versions of Node.js, then activate the version supported in Volto.
+```{include} ./install-nodejs.md
+```
 
-    ```shell
-    nvm install "lts/*"
-    nvm use 20
-    ```
-
-2.  Verify that the supported version of Node.js is activated.
-
-    ```shell
-    node -v
-    ```
-    
-
-
-### Install pnpm
+### pnpm
 
 Using corepack:
 
@@ -141,6 +98,12 @@ Compare the output to the [latest pnpm release number](https://www.npmjs.com/pac
 
 ```{seealso}
 [pnpm installation](https://pnpm.io/installation).
+```
+
+
+### Make
+
+```{include} ./install-make.md
 ```
 
 
