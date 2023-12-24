@@ -49,7 +49,11 @@ const Navigation = (props) => {
     setisMobileMenuOpen(false);
   };
 
-  if (items.length < 1 || typeof items === 'undefined' || items === undefined) {
+  if (
+    items?.length < 1 ||
+    typeof items === 'undefined' ||
+    items === undefined
+  ) {
     setShowHamburger(false);
   } else {
     setShowHamburger(true);
