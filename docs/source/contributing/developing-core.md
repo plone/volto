@@ -170,6 +170,8 @@ Compare the output to the [latest pnpm release number](https://www.npmjs.com/pac
 
 ## Set up the environment
 
+You need to perform the steps in this section only once to set up your environment.
+
 Clone the Volto repo, and change your working directory to the cloned repository:
 
 ```shell
@@ -177,8 +179,17 @@ git clone https://github.com/plone/volto.git
 cd volto
 ```
 
-You will need to create two terminal sessions, one for the backend and one for the frontend.
-Both sessions have their working directory in the root of your Volto clone.
+Install the frontend dependencies.
+
+```shell
+pnpm install
+```
+
+
+## Run the environment
+
+Every time you want to run Volto for core development, you will need to create two terminal sessions, one for the backend and one for the frontend.
+For both sessions, change your working directory to the root of your Volto clone.
 
 In the first session, start the backend.
 
@@ -186,21 +197,16 @@ In the first session, start the backend.
 make start-backend-docker
 ```
 
-See the backend running at http://localhost:8080.
+When you run this command for the first time, it will download Docker images, configure the backend, and start the backend.
+Browse to the backend running at http://localhost:8080.
 
-In the second session, install the frontend dependencies one time only.
-
-```shell
-pnpm install
-```
-
-Next start the frontend:
+In the second session, start the frontend.
 
 ```shell
 pnpm start
 ```
 
-Browse to http://localhost:3000.
+Browse to the frontend running at http://localhost:3000.
 
 To stop either the backend or frontend, use {kbd}`ctrl-c`.
 
