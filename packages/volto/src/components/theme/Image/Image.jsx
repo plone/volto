@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { flattenToAppURL, flattenScales } from '@plone/volto/helpers';
+import config from '@plone/volto/registry';
 
 /**
  * Image component
@@ -54,7 +55,16 @@ export default function Image({
     attrs.className = cx(className, { responsive });
 
     if (!isSvg && image.scales && Object.keys(image.scales).length > 0) {
-      const sortedScales = Object.values(image.scales).sort((a, b) => {
+      const filteredScalesList = Object.keys(image.scales).reduce(
+        (scales, key) => {
+          if (!config.settings.images.blacklistedScales.includes(key)) {
+            return [...scales, image.scales[key]];
+          }
+          return scales;
+        },
+        [],
+      );
+      const sortedScales = filteredScalesList.sort((a, b) => {
         if (a.width > b.width) return 1;
         else if (a.width < b.width) return -1;
         else return 0;

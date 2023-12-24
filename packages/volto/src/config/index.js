@@ -196,6 +196,9 @@ let config = {
       includeSiteTitle: false,
       titleAndSiteTitleSeparator: '-',
     },
+    images: {
+      blacklistedScales: ['listing', 'icon', 'tile'],
+    },
   },
   experimental: {
     addBlockButton: {
