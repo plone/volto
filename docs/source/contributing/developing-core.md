@@ -54,15 +54,17 @@ For more information about pnpm workspaces, read the [documentation of pnpm work
 ├─ ...
 ```
 
-## Development requirements
+## Development pre-requisites
 
-To set up a Volto core development environment, you need to install Node.js in your system.
-Then, set up the package manager pnpm.
+To set up a Volto core development environment, your system must satisfy the following pre-requisites.
 
-We recommend that you install Node.js using nvm.
-Alternatively you can install Node.js using Homebrew or other package installer.
+```{include} ../volto/contributing/install-operating-system.md
+```
 
-Finally, you need to install {term}`Make` on your system, if it is not already installed.
+-   {term}`nvm`
+-   {term}`Node.js` LTS 20.x
+-   {term}`pnpm`
+-   {term}`GNU make`
 
 
 ### nvm
@@ -102,6 +104,9 @@ For the `fish` shell, see [`nvm.fish`](https://github.com/joxji/nvm.fish).
 
 
 ### Node.js
+
+We recommend that you install Node.js using nvm.
+Alternatively you can install Node.js using Homebrew or other package installer.
 
 ```{include} ./install-nodejs.md
 ```
