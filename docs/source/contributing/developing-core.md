@@ -9,6 +9,13 @@ myst:
 
 # Develop Volto core
 
+This chapter describes how to develop Volto core and its libraries, packages, and apps as open source software contributions.
+
+For how to develop a project using Volto, see {doc}`plone:install/index`.
+
+
+## Monorepo structure
+
 The Volto core repository has the shape of a monorepo, where "mono" means "single" and "repo" is short for "repository".
 This means that several apps and libraries related to each other are stored in the same repository.
 They are managed together but released individually.
@@ -25,14 +32,16 @@ For more information about pnpm workspaces, read the [documentation of pnpm work
 ```
 
 
-## Folder layout
+### Folder layout
+
+Volto has the following folder structure.
 
 ```text
 (volto-monorepo)/
 ├─ apps/
 │  ├─ plone
 │  ├─ nextjs
-│  ├─ remix
+│  └─ remix
 ├─ packages/
 │  ├─ volto
 │  ├─ client
@@ -45,7 +54,7 @@ For more information about pnpm workspaces, read the [documentation of pnpm work
 │  ├─ tsconfig
 │  ├─ volto-guillotina
 │  ├─ volto-slate
-│  ├─ volto-testing
+│  └─ volto-testing
 ├─ .gitignore
 ├─ package.json
 ├─ pnpm-workspace.yaml
@@ -53,6 +62,7 @@ For more information about pnpm workspaces, read the [documentation of pnpm work
 ├─ tsconfig.json
 ├─ ...
 ```
+
 
 ## Development pre-requisites
 
