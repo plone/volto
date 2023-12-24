@@ -62,6 +62,8 @@ Then, set up the package manager pnpm.
 We recommend that you install Node.js using nvm.
 Alternatively you can install Node.js using Homebrew or other package installer.
 
+Finally, you need to install {term}`Make` on your system, if it is not already installed.
+
 
 ### nvm
 
