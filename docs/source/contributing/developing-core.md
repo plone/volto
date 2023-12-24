@@ -152,7 +152,7 @@ cd volto
 Running the backend.
 
 ```shell
-make-start-backend-docker
+make start-backend-docker
 ```
 
 See the backend running at [http://localhost:8080](http://localhost:8080)
