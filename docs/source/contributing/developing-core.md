@@ -75,6 +75,7 @@ To set up a Volto core development environment, your system must satisfy the fol
 -   {term}`Node.js` LTS 20.x
 -   {term}`pnpm`
 -   {term}`GNU make`
+-   {term}`Docker`
 
 ```{note}
 When developing Volto core, pnpm is required.
@@ -158,6 +159,12 @@ Compare the output to the [latest pnpm release number](https://www.npmjs.com/pac
 ### Make
 
 ```{include} ./install-make.md
+```
+
+
+### Docker
+
+```{include} ./install-docker.md
 ```
 
 
