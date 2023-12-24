@@ -76,6 +76,11 @@ To set up a Volto core development environment, your system must satisfy the fol
 -   {term}`pnpm`
 -   {term}`GNU make`
 
+```{note}
+When developing Volto core, pnpm is required.
+When developing a project using Plone, Yarn or other package managers may be used.
+```
+
 
 ### nvm
 
