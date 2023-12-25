@@ -186,7 +186,7 @@ pnpm install
 ```
 
 
-## Run the environment
+## Start the backend and Volto
 
 Every time you want to run Volto for core development, you will need to create two terminal sessions, one for the backend and one for the frontend.
 For both sessions, change your working directory to the root of your Volto clone.
