@@ -2,7 +2,7 @@
 
 Get the data for a specific content given its path.
 
-## Get Content
+## Get content
 
 ### Query options function
 
@@ -26,7 +26,7 @@ Use the `useGetContent` hook to get the content at a given path.
 
   - **Required:** No
 
-- **fullObjects:** boolean
+- **`fullObjects`:** `boolean`
 
   - **Required:** No
 
@@ -34,7 +34,7 @@ Use the `useGetContent` hook to get the content at a given path.
 
   - **Required:** No
 
-## Add Content
+## Add content
 
 ### Mutation options function
 
@@ -152,7 +152,7 @@ Use the `useCreateContent` hook to add content at a given path.
 
     - **Required:** No
 
-## Update Content
+## Update content
 
 ### Mutation function
 
@@ -258,7 +258,7 @@ Use the `useUpdateContent` hook to update content at a given path.
 
     - **Required**: No
 
-## Delete Content
+## Delete content
 
 ### Mutation function
 
@@ -280,7 +280,7 @@ Use the `useDeleteContent` hook to delete content at a given path.
 
 (relatedobject)=
 
-#### RelatedObject
+#### `RelatedObject`
 
 `@id: string`
 

@@ -5,9 +5,9 @@ Currently the workflow support is limited to executing transitions on content.
 ```
 
 In Plone, content almost always has a {term}`workflow` attached.
-We can get the current state and history of an object by issuing a `GET` request for any context:
+Retrieve an object's current state and history by sending a `GET` request for any context:
 
-## Get Workflow
+## Get workflow
 
 ### Query function
 
@@ -23,7 +23,7 @@ Use the `useGetWorkflow` hook to get the workflow for the given path.
 
   - **Required:** Yes
 
-## Add Workflow
+## Add workflow
 
 ### Mutation function
 

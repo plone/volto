@@ -1,8 +1,8 @@
-# Context Navigation
+# Context navigation
 
-The `@contextnavigation` endpoint uses the same semantics as the classic Plone navigation portlet. Instead of storing the portlet configuration in a portlet assignment storage, you can pass these as parameters to the service or expand the component.
+The `@contextnavigation` endpoint uses the same semantics as the classic Plone navigation `portlet`. Instead of storing the `portlet` configuration in a `portlet` assignment storage, you can pass these as parameters to the service or expand the part.
 
-## Get Context Navigation
+## Get context navigation
 
 ### Query function
 

@@ -1,0 +1,1 @@
+Fixed documentation errors and improved documentation in the "docs/source/client" directory, specifically changing inline literals formatting to exact matches instead of bold, and ensuring all headings are in sentence case to reduce spelling errors. See https://6.docs.plone.org/volto/client/index.html for usage. @Hrittik20

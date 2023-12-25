@@ -2,9 +2,10 @@
 
 A mechanism to redirect old URLs to new ones.
 
-When an object is moved (renamed or cut/pasted into a different location), the redirection storage will remember the old path. It is smart enough to deal with transitive references (if we have a -> b and then add b -> c, it is replaced by a reference a -> c) and circular references (attempting to add a -> a does nothing).
+When an object is moved (renamed or cut/pasted into a different location), the redirection storage will remember the old path. 
+Handles transitive references (for example a -> b, b -> c becomes a -> c) and ignores circular ones (for example attempting a -> a has no effect).
 
-## Get Aliases List
+## Get aliases list
 
 ### Query function
 
@@ -14,7 +15,7 @@ Use the `getAliasesListQuery` function to get the query for fetching the aliases
 
 Use the `useGetAliasesList` hook to get the aliases list.
 
-## Get Aliases
+## Get aliases
 
 ### Query function
 
@@ -30,15 +31,15 @@ Use the `useGetAliases` hook to get the aliases for a page.
 
   - **Required:** Yes
 
-## Add Aliases for Multiple Pages
+## Add aliases for many pages
 
 ### Mutation function
 
-Use the `createAliasesMutation` function to get the mutation for adding aliases for multiple pages.
+Use the `createAliasesMutation` function to get the mutation for adding aliases for many pages.
 
 ### Hook
 
-Use the `useCreateAliases` hook to add aliases for multiple pages.
+Use the `useCreateAliases` hook to add aliases for many pages.
 
 ### Parameters
 
@@ -64,7 +65,7 @@ Use the `useCreateAliases` hook to add aliases for multiple pages.
 
       - **Required:** Yes
 
-## Add Aliases for a Page
+## Add aliases for a page
 
 ### Mutation function
 
@@ -94,7 +95,7 @@ Use the `useCreateAliases` hook to add aliases for a page.
 
       - **Required:** Yes
 
-## Delete Aliases
+## Delete aliases
 
 ### Mutation function
 
