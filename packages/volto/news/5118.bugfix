@@ -1,1 +1,1 @@
-Improved toolbar accessibility. Added hover effect on toolbar-handler, Increased its contrast, and now the value for `aria-label` toggles correctly for both the expand and shrink statuses. @Noobham
+Improved toolbar button accessibility by adding a hover effect and increasing its contrast, and now its value for `aria-label` toggles correctly for both its expand and shrink statuses. @Noobham
