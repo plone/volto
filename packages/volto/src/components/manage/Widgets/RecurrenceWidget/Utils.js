@@ -1,5 +1,7 @@
 import { RRule } from 'rrule';
 import { defineMessages } from 'react-intl';
+import moment from 'moment';
+import { isEqual } from 'lodash';
 
 export const Days = {
   MO: RRule.MO,
@@ -126,3 +128,35 @@ export const rrulei18n = (intl, moment, lang) => {
   };
   return LANGUAGE;
 };
+
+export const getUTCDate = (date) => {
+  return date.match(/T(.)*(-|\+|Z)/g)
+    ? moment(date).utc()
+    : moment(`${date}Z`).utc();
+};
+
+export function getWeekday(number) {
+  var day = null;
+  const n = number === -1 ? 6 : number; //because sunday for moment has index 0, but for rrule has index 6
+  Object.keys(Days).forEach((d) => {
+    if (Days[d].weekday === n) {
+      day = Days[d];
+    }
+  });
+  return day;
+}
+
+export function getFreq(number, weekdays) {
+  let freq = FREQUENCES.DAILY;
+  Object.entries(OPTIONS.frequences).forEach(([f, o]) => {
+    if (o.rrule === number) {
+      freq = f;
+    }
+  });
+  if (freq === FREQUENCES.WEEKLY && weekdays) {
+    if (isEqual(weekdays.sort(), WEEKLY_DAYS.map((w) => w.weekday).sort())) {
+      freq = FREQUENCES.WEEKDAYS;
+    }
+  }
+  return freq;
+}
