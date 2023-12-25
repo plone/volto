@@ -27,7 +27,6 @@ const Navigation = (props) => {
   const dispatch = useDispatch();
   const { pathname, type } = props;
   const [isMobileMenuOpen, setisMobileMenuOpen] = useState(null);
-  const [showHamburger, setShowHamburger] = useState(true);
   const token = useSelector((state) => state.userSession.token, shallowEqual);
   const items = useSelector((state) => state.navigation.items, shallowEqual);
   const lang = useSelector((state) => state.intl.locale);
@@ -37,17 +36,7 @@ const Navigation = (props) => {
     if (!hasApiExpander('navigation', getBaseUrl(pathname))) {
       dispatch(getNavigation(getBaseUrl(pathname), settings.navDepth));
     }
-
-    if (
-      items?.length < 1 ||
-      typeof items === 'undefined' ||
-      items === undefined
-    ) {
-      setShowHamburger(false);
-    } else {
-      setShowHamburger(true);
-    }
-  }, [pathname, token, dispatch, items]);
+  }, [pathname, token, dispatch]);
 
   const toggleMobileMenu = () => {
     setisMobileMenuOpen(!isMobileMenuOpen);
@@ -61,7 +50,7 @@ const Navigation = (props) => {
   };
   return (
     <nav className="navigation" id="navigation" aria-label="Site">
-      {showHamburger ? (
+      {items?.length ? (
         <div className="hamburger-wrapper mobile tablet only">
           <button
             className={cx('hamburger hamburger--spin', {
