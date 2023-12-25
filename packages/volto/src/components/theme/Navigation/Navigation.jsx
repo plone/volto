@@ -26,7 +26,7 @@ const Navigation = (props) => {
   const intl = useIntl();
   const dispatch = useDispatch();
   const { pathname, type } = props;
-  const [isMobileMenuOpen, setisMobileMenuOpen] = useState(null);
+  const [isMobileMenuOpen, setisMobileMenuOpen] = useState(false);
   const token = useSelector((state) => state.userSession.token, shallowEqual);
   const items = useSelector((state) => state.navigation.items, shallowEqual);
   const lang = useSelector((state) => state.intl.locale);
