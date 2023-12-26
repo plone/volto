@@ -151,24 +151,6 @@ const widgetValidation = {
     maximum: (value, itemObj, intlFunc) =>
       isMaxPropertyValid(value, itemObj.maximum, 'maximum', intlFunc),
   },
-  textarea: {
-    // Example textarea-specific validation
-    // You can add more validations as needed
-    minLength: (value, itemObj, intlFunc) =>
-      isMinPropertyValid(
-        value.length,
-        itemObj.minLength,
-        'minLength',
-        intlFunc,
-      ),
-    maxLength: (value, itemObj, intlFunc) =>
-      isMaxPropertyValid(
-        value.length,
-        itemObj.maxLength,
-        'maxLength',
-        intlFunc,
-      ),
-  },
 };
 
 /**
