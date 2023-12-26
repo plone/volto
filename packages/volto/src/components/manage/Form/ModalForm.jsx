@@ -15,7 +15,6 @@ import {
   Modal,
   Dimmer,
   Loader,
-  TextArea,
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import { FormValidation } from '@plone/volto/helpers';
@@ -214,21 +213,15 @@ class ModalForm extends Component {
     const { schema, onCancel } = this.props;
     const currentFieldset = schema.fieldsets[this.state.currentTab];
 
-    const fields = map(currentFieldset.fields, (field) => {
-      const fieldConfig = schema.properties[field];
-      const isTextArea = fieldConfig.type === 'textarea';
-
-      return {
-        ...fieldConfig,
-        id: field,
-        value: this.state.formData[field],
-        required: schema.required.indexOf(field) !== -1,
-        onChange: this.onChangeField,
-        onBlur: this.onBlurField,
-        onClick: this.onClickInput,
-        as: isTextArea ? TextArea : undefined, // Use TextArea component for the text field
-      };
-    });
+    const fields = map(currentFieldset.fields, (field) => ({
+      ...schema.properties[field],
+      id: field,
+      value: this.state.formData[field],
+      required: schema.required.indexOf(field) !== -1,
+      onChange: this.onChangeField,
+      onBlur: this.onBlurField,
+      onClick: this.onClickInput,
+    }));
 
     const state_errors = keys(this.state.errors).length > 0;
     return (
