@@ -43,7 +43,7 @@ export default function Breadcrumbs({
     <nav aria-label="breadcrumbs" role="navigation">
       <RACBreadcrumbs className="q breadcrumbs" items={itemsWithRoot || items}>
         {(item) => (
-          <Breadcrumb key={item['@id']} className="q breadcrumb">
+          <Breadcrumb id={item['@id']} className="q breadcrumb">
             <Link href={item['@id']}>
               {item['@id'] === (root || '/') && <HomeIcon size="S" />}
               {item.title}
