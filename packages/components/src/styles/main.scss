@@ -9,6 +9,7 @@
 }
 
 @import 'typography';
+@import 'RACTheme';
 
 // Fundamentals
 // Basic elements to build other complex components
@@ -19,6 +20,7 @@
 @import 'fundamentals/inputs/fields'; // Mandatory
 @import 'fundamentals/inputs/textarea'; // Mandatory
 @import 'fundamentals/inputs/dropdown'; // Mandatory
+@import 'fundamentals/controls/checkboxes'; // Mandatory
 
 @import 'components/breadcrumbs'; // Optional
 @import 'components/icons'; // Optional
