@@ -13,9 +13,9 @@ MAKEFLAGS+=--no-builtin-rules
 # Project settings - Update also `packages/volto/Makefile` to keep both in sync
 
 INSTANCE_PORT=8080
-DOCKER_IMAGE=plone/server-dev:6.0.8
-DOCKER_IMAGE_ACCEPTANCE=plone/server-acceptance:6.0.8
-KGS=plone.restapi==9.2.0
+DOCKER_IMAGE=plone/server-dev:6.0.9
+DOCKER_IMAGE_ACCEPTANCE=plone/server-acceptance:6.0.9
+KGS=
 NODEBIN = ./node_modules/.bin
 SCRIPTSPACKAGE = ./packages/scripts
 
