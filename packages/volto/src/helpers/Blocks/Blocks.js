@@ -563,7 +563,7 @@ export const styleToClassName = (key, value, prefix = '') => {
 };
 
 export const buildStyleClassNamesFromData = (obj = {}, prefix = '') => {
-  // styles has the form:
+  // style wrapper object has the form:
   // const styles = {
   //   color: 'red',
   //   backgroundColor: '#AABBCC',
@@ -599,6 +599,61 @@ export const buildStyleClassNamesExtenders = ({
   return config.settings.styleClassNameExtenders.reduce(
     (acc, extender) => extender({ block, content, data, classNames: acc }),
     classNames,
+  );
+};
+
+const camelToKebabCase = (str) =>
+  str.replace(/[A-Z]/g, (letter) => `-${letter.toLowerCase()}`);
+
+/**
+ * Converts a name+value style pair (ex: color/red) to a pair of [k, v],
+ * such as ["color", "red"] so it can be converted back to an object.
+ * For now, only covering the 'CSSProperty' use case.
+ */
+export const styleDataToStyleObject = (key, value, prefix = '') => {
+  const [name, converterID] = key.split(':');
+  if (converterID === 'CSSProperty') {
+    return [`--${prefix}${camelToKebabCase(name)}`, value];
+  }
+};
+
+/**
+ * Generate styles object from data
+ *
+ * @function buildStyleObjectFromData
+ * @param {Object} obj A style wrapper object data
+ * @param {string} prefix The prefix (could be dragged from a recursive call, initially empty)
+ * @return {Object} The style object ready to be passed as prop
+ */
+export const buildStyleObjectFromData = (obj = {}, prefix = '') => {
+  // style wrapper object has the form:
+  // const styles = {
+  //   color: 'red',
+  //   'backgroundColor:style': '#AABBCC',
+  // }
+  // Returns: {'--backgroundColor: 'AABBCC'}
+
+  return Object.fromEntries(
+    Object.entries(obj)
+      .reduce(
+        (acc, [k, v]) => [
+          ...acc,
+          // Kept for easy debugging
+          // ...(() => {
+          //   if (isObject(v)) {
+          //     return Object.entries(
+          //       buildStyleObjectFromData(v, `${prefix}${k}--`),
+          //     );
+          //   }
+          //   return [styleDataToStyleObject(k, v, prefix)];
+          // })(),
+          ...(isObject(v)
+            ? Object.entries(buildStyleObjectFromData(v, `${prefix}${k}--`))
+            : [styleDataToStyleObject(k, v, prefix)]),
+        ],
+        [],
+      )
+      .filter((v) => !!v),
   );
 };
 

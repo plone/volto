@@ -18,6 +18,7 @@ import {
   applySchemaDefaults,
   buildStyleClassNamesFromData,
   buildStyleClassNamesExtenders,
+  buildStyleObjectFromData,
   getPreviousNextBlock,
   blocksFormGenerator,
   findBlocks,
@@ -1065,6 +1066,61 @@ describe('Blocks', () => {
         },
       };
       expect(buildStyleClassNamesFromData(styles)).toEqual([]);
+    });
+
+    it('It does not output any className for style converter values', () => {
+      const styles = {
+        color: 'red',
+        'backgroundColor:CSSProperty': '#FFF',
+      };
+      expect(buildStyleClassNamesFromData(styles)).toEqual(['has--color--red']);
+    });
+
+    it.skip('It does not output any className for unknown converter values', () => {
+      const styles = {
+        color: 'red',
+        'backgroundColor:style': '#FFF',
+      };
+      expect(buildStyleClassNamesFromData(styles)).toEqual(['has--color--red']);
+    });
+  });
+
+  describe('buildStyleObjectFromData', () => {
+    it('Understands style converter for style values, no styles found', () => {
+      const styles = {
+        color: 'red',
+        backgroundColor: '#FFF',
+      };
+      expect(buildStyleObjectFromData(styles)).toEqual({});
+    });
+    it('Understands style converter for style values', () => {
+      const styles = {
+        color: 'red',
+        'backgroundColor:CSSProperty': '#FFF',
+      };
+      expect(buildStyleObjectFromData(styles)).toEqual({
+        '--background-color': '#FFF',
+      });
+    });
+
+    it('Supports multiple nested levels', () => {
+      const styles = {
+        'color:CSSProperty': 'red',
+        backgroundColor: '#AABBCC',
+        nested: {
+          l1: 'white',
+          'foo:CSSProperty': 'white',
+          level2: {
+            'foo:CSSProperty': '#fff',
+            bar: '#000',
+          },
+        },
+      };
+      expect(buildStyleObjectFromData(styles)).toEqual({
+        '--color': 'red',
+        '--nested--foo': 'white',
+        '--nested--level2--foo': '#fff',
+      });
     });
   });
 

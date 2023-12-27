@@ -109,7 +109,7 @@ config.blocks.blocksConfig.listing.schemaEnhancer = composeSchema(
 
 The `styles` field is mapped to an `objectWidget`.
 The following is an example of a possible set of styles.
-The style wrapper will read the styles and inject them into the edit and view components as shown in the next sections.
+The style wrapper will read the styles and inject the resultant class names into the edit and view components as shown in the next sections.
 
 ```json
 {
@@ -127,7 +127,7 @@ The style wrapper will read the styles and inject them into the edit and view co
 ## Using the injected class names in your block
 
 The resultant class names are injected as a `className` prop into the wrapped block.
-Thus you can use it in the root component of your block view and edit components as follows:
+Thus you can use it in the root component of your block view component as follows:
 
 ```jsx
 const BlockView = (props)=> (
@@ -149,6 +149,8 @@ The resultant HTML would be the following:
 ```
 Then it's at your discretion how you define the CSS class names in your theme.
 
+## Customize the injected class names
+
 If you need other style of classnames generated, you can use the classname
 converters defined in `config.settings.styleClassNameConverters`, by
 registering fieldnames suffixed with the converter name. For example, a style
@@ -164,6 +166,54 @@ data like:
 ```
 
 will generate classnames `primary inverted`
+
+## Injecting custom CSS properties
+
+The style wrapper also allows to inject custom CSS properties, using the converter syntax.
+This use case is useful in some scenarios where the property that you are injecting is generic, customizable per project.
+
+```
+{
+  "styles": {
+    "backgroundColor:CSSProperty": "#222",
+  }
+}
+```
+
+will inject a style object prop in the component:
+
+```html
+<div class="block teaser" style="--background-color: #222">
+```
+
+```{note}
+Please notice that the resultant variable is transformed from camel case to kebab case.
+```
+
+Then, provided that you have the following CSS in place:
+
+```css
+.block.teaser {
+  background-color: var(--background-color);
+}
+```
+
+It will apply the variable value injected by the style wrapper for the teaser block.
+
+If you want to use it in your custom components, you need to apply it in the root of your block's view component as follows:
+
+```jsx
+const BlockView = (props)=> (
+  <div style={props.style}>
+    // Block's view component code
+  </div>
+)
+```
+
+```{note}
+You need to manually add the above code in your view component block code in order to benefit from the style injection.
+The styles in the block edit component are injected automatically into the blocks engine editor wrappers, so you don't have to take any action.
+```
 
 ## Align class injection
 
