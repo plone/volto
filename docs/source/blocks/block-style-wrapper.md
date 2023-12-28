@@ -11,6 +11,9 @@ myst:
 
 # Block style wrapper
 
+```{versionadded} 16.0.0
+```
+
 The block style wrapper is part of a block anatomy.
 It allows you to inject styles from the block schema into the block wrapper in the form of class names.
 It wraps the block edit and the view components.
@@ -150,9 +153,6 @@ The resultant HTML would be the following:
 Then it's at your discretion how you define the CSS class names in your theme.
 
 ## Customize the injected class names
-
-```{versionadded} 16.0.0
-```
 
 If you need other style of classnames generated, you can use the classname
 converters defined in `config.settings.styleClassNameConverters`, by
