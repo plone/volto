@@ -248,7 +248,7 @@ export const ContentsItemComponent = ({
                 <Icon name={showSVG} color="#007eb1" size="24px" />{' '}
                 <FormattedMessage id="View" defaultMessage="View" />
               </Link>
-              <Divider />
+              <Divider fitted />
               <Menu.Item
                 onClick={onCut}
                 value={item['@id']}
@@ -273,7 +273,7 @@ export const ContentsItemComponent = ({
                 <Icon name={deleteSVG} color="#e40166" size="24px" />{' '}
                 <FormattedMessage id="Delete" defaultMessage="Delete" />
               </Menu.Item>
-              <Divider />
+              <Divider fitted />
               <Menu.Item
                 onClick={onMoveToTop}
                 value={order}
