@@ -1071,7 +1071,7 @@ describe('Blocks', () => {
     it('It does not output any className for style converter values', () => {
       const styles = {
         color: 'red',
-        'backgroundColor:CSSProperty': '#FFF',
+        '--background-color': '#FFF',
       };
       expect(buildStyleClassNamesFromData(styles)).toEqual(['has--color--red']);
     });
@@ -1093,10 +1093,11 @@ describe('Blocks', () => {
       };
       expect(buildStyleObjectFromData(styles)).toEqual({});
     });
+
     it('Understands style converter for style values', () => {
       const styles = {
         color: 'red',
-        'backgroundColor:CSSProperty': '#FFF',
+        '--background-color': '#FFF',
       };
       expect(buildStyleObjectFromData(styles)).toEqual({
         '--background-color': '#FFF',
@@ -1105,13 +1106,13 @@ describe('Blocks', () => {
 
     it('Supports multiple nested levels', () => {
       const styles = {
-        'color:CSSProperty': 'red',
+        '--color': 'red',
         backgroundColor: '#AABBCC',
         nested: {
           l1: 'white',
-          'foo:CSSProperty': 'white',
+          '--foo': 'white',
           level2: {
-            'foo:CSSProperty': '#fff',
+            '--foo': '#fff',
             bar: '#000',
           },
         },

@@ -151,7 +151,7 @@ Then it's at your discretion how you define the CSS class names in your theme.
 
 ## Customize the injected class names
 
-```{versionadded} release-version-number
+```{versionadded} 16.0.0
 ```
 
 If you need other style of classnames generated, you can use the classname
@@ -172,7 +172,7 @@ will generate classnames `primary inverted`
 
 ## Injecting custom CSS properties
 
-```{versionadded} release-version-number
+```{versionadded} 17.8.0
 ```
 
 The style wrapper also allows to inject custom CSS properties, using the converter syntax.
@@ -181,7 +181,7 @@ This use case is useful in some scenarios where the property that you are inject
 ```css
 {
   "styles": {
-    "backgroundColor:CSSProperty": "#222",
+    "--background-color": "#222",
   }
 }
 ```
@@ -190,10 +190,6 @@ The above style will inject a style object property in the following component:
 
 ```html
 <div class="block teaser" style="--background-color: #222">
-```
-
-```{note}
-Please notice that the resultant variable is transformed from camel case to kebab case.
 ```
 
 Then, provided that you have the following CSS in place:

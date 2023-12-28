@@ -571,6 +571,7 @@ export const buildStyleClassNamesFromData = (obj = {}, prefix = '') => {
   // Returns: ['has--color--red', 'has--backgroundColor--AABBCC']
 
   return Object.entries(obj)
+    .filter(([k, v]) => !k.startsWith('--'))
     .reduce(
       (acc, [k, v]) => [
         ...acc,
@@ -602,18 +603,16 @@ export const buildStyleClassNamesExtenders = ({
   );
 };
 
-const camelToKebabCase = (str) =>
-  str.replace(/[A-Z]/g, (letter) => `-${letter.toLowerCase()}`);
-
 /**
  * Converts a name+value style pair (ex: color/red) to a pair of [k, v],
  * such as ["color", "red"] so it can be converted back to an object.
  * For now, only covering the 'CSSProperty' use case.
  */
 export const styleDataToStyleObject = (key, value, prefix = '') => {
-  const [name, converterID] = key.split(':');
-  if (converterID === 'CSSProperty') {
-    return [`--${prefix}${camelToKebabCase(name)}`, value];
+  if (prefix) {
+    return [`--${prefix}${key.replace('--', '')}`, value];
+  } else {
+    return [key, value];
   }
 };
 
@@ -629,12 +628,13 @@ export const buildStyleObjectFromData = (obj = {}, prefix = '') => {
   // style wrapper object has the form:
   // const styles = {
   //   color: 'red',
-  //   'backgroundColor:style': '#AABBCC',
+  //   '--background-color': '#AABBCC',
   // }
-  // Returns: {'--backgroundColor: 'AABBCC'}
+  // Returns: {'--background-color: '#AABBCC'}
 
   return Object.fromEntries(
     Object.entries(obj)
+      .filter(([k, v]) => k.startsWith('--') || isObject(v))
       .reduce(
         (acc, [k, v]) => [
           ...acc,

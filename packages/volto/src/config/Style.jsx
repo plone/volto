@@ -6,7 +6,6 @@ export const styleClassNameConverters = {
   },
   noprefix: (name, value) => value,
   bool: (name, value) => (value ? name : ''),
-  CSSProperty: (name, value) => {},
 };
 
 export const styleClassNameExtenders = [];
