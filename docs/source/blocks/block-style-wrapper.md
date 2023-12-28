@@ -170,13 +170,13 @@ data like:
 
 will generate classnames `primary inverted`
 
-## Injecting custom CSS properties
+## Inject custom CSS properties
 
 ```{versionadded} 17.8.0
 ```
 
 The style wrapper also allows to inject custom CSS properties, using the converter syntax.
-This use case is useful in some scenarios where the property that you are injecting is generic, customizable per project.
+This is useful where the property that you want to inject is customizable per project.
 
 ```css
 {
