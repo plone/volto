@@ -151,6 +151,9 @@ Then it's at your discretion how you define the CSS class names in your theme.
 
 ## Customize the injected class names
 
+```{versionadded} release-version-number
+```
+
 If you need other style of classnames generated, you can use the classname
 converters defined in `config.settings.styleClassNameConverters`, by
 registering fieldnames suffixed with the converter name. For example, a style
@@ -169,10 +172,13 @@ will generate classnames `primary inverted`
 
 ## Injecting custom CSS properties
 
+```{versionadded} release-version-number
+```
+
 The style wrapper also allows to inject custom CSS properties, using the converter syntax.
 This use case is useful in some scenarios where the property that you are injecting is generic, customizable per project.
 
-```
+```css
 {
   "styles": {
     "backgroundColor:CSSProperty": "#222",
@@ -180,7 +186,7 @@ This use case is useful in some scenarios where the property that you are inject
 }
 ```
 
-will inject a style object prop in the component:
+The above style will inject a style object property in the following component:
 
 ```html
 <div class="block teaser" style="--background-color: #222">
@@ -211,7 +217,7 @@ const BlockView = (props)=> (
 ```
 
 ```{note}
-You need to manually add the above code in your view component block code in order to benefit from the style injection.
+You need to manually add the above code in your view component block code to benefit from the style injection.
 The styles in the block edit component are injected automatically into the blocks engine editor wrappers, so you don't have to take any action.
 ```
 
