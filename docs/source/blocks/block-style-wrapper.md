@@ -175,32 +175,50 @@ will generate classnames `primary inverted`
 ```{versionadded} 17.8.0
 ```
 
-The style wrapper also allows to inject custom CSS properties, using the converter syntax.
+The style wrapper also allows to inject custom CSS properties.
 This is useful where the property that you want to inject is customizable per project.
+For example, imagine we have in place a global CSS custom property `--image-aspect-ratio` so all the images in blocks (teasers, listings too) use it. The idea was that someone in his customized theme could set it and change them all in runtime, because this is how custom CSS properties work.
+The key feature of custom CSS properties is that they can be applied also using the cascade.
+This means that they can be placed anywhere in the CSS definitions or in the HTML structure, and they will be applied only in the context they are defined.
 
-```css
-{
-  "styles": {
-    "--background-color": "#222",
-  }
-}
+When the feature in this PR is used combined with the above you can enhance a block's schema (eg. teaser) as follows:
+
+```js
+  schema.properties.styles.schema.fieldsets[0].fields = [
+    ...schema.properties.styles.schema.fieldsets[0].fields,
+    '--image-aspect-ratio',
+  ];
+
+  // We use a select widget and set a default
+  schema.properties.styles.schema.properties['--image-aspect-ratio'] = {
+    widget: 'select',
+    title: 'Aspect Ratio',
+    choices: [
+      ['1', '1:1'],
+      ['16 / 9', '16/9'],
+    ],
+    default: '1',
+  };
 ```
 
-The above style will inject a style object property in the following component:
+Then, the markup of the block will contain the custom property:
 
 ```html
-<div class="block teaser" style="--background-color: #222">
+<div class="block teaser" style="--image-aspect-ratio: 1">
+...
+</div>
 ```
 
-Then, provided that you have the following CSS in place:
+and if we have this CSS definitions in place:
 
 ```css
-.block.teaser {
-  background-color: var(--background-color);
+.block.teaser img {
+  aspect-ratio: var(--image-aspect-ratio, 16 / 9);
 }
 ```
 
-It will apply the variable value injected by the style wrapper for the teaser block.
+The custom CSS property definition will only apply within the div that it's defined.
+Then the CSS where it's used will apply that custom CSS property value for only that div.
 
 If you want to use it in your custom components, you need to apply it in the root of your block's view component as follows:
 
