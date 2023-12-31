@@ -182,6 +182,14 @@ Then in your customized theme, you could set CSS attributes for this property, c
 The key feature of custom CSS properties is that they can be applied also using the cascade.
 This means that they can be placed anywhere in either CSS definitions or HTML structure, and they will be applied only in the context where they are defined.
 
+As an example, first define the style of a teaser block image as follows.
+
+```css
+.block.teaser img {
+  aspect-ratio: var(--image-aspect-ratio, 16 / 9);
+}
+```
+
 Next, you can enhance a block's schema by injecting the custom CSS property as follows.
 
 ```js
@@ -208,14 +216,6 @@ Finally the markup of the block will contain the custom property as shown.
 <div class="block teaser" style="--image-aspect-ratio: 1">
 ...
 </div>
-```
-
-As an example, first define the style of a teaser block image as follows.
-
-```css
-.block.teaser img {
-  aspect-ratio: var(--image-aspect-ratio, 16 / 9);
-}
 ```
 
 The custom CSS property definition will only apply within the div that it's defined.
