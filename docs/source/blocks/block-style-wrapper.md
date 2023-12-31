@@ -177,11 +177,12 @@ will generate classnames `primary inverted`
 
 The style wrapper also allows to inject custom CSS properties.
 This is useful where the property that you want to inject is customizable per project.
-For example, imagine we have in place a global CSS custom property `--image-aspect-ratio` so all the images in blocks (teasers, listings too) use it. The idea was that someone in his customized theme could set it and change them all in runtime, because this is how custom CSS properties work.
+For example, imagine you have an existing global CSS custom property `--image-aspect-ratio` that you use for all images in all blocks.
+Then in your customized theme, you could set CSS attributes for this property, changing it in runtime.
 The key feature of custom CSS properties is that they can be applied also using the cascade.
-This means that they can be placed anywhere in the CSS definitions or in the HTML structure, and they will be applied only in the context they are defined.
+This means that they can be placed anywhere in either CSS definitions or HTML structure, and they will be applied only in the context where they are defined.
 
-When the feature in this PR is used combined with the above you can enhance a block's schema (eg. teaser) as follows:
+Next, you can enhance a block's schema by injecting the custom CSS property as follows.
 
 ```js
   schema.properties.styles.schema.fieldsets[0].fields = [
@@ -201,7 +202,7 @@ When the feature in this PR is used combined with the above you can enhance a bl
   };
 ```
 
-Then, the markup of the block will contain the custom property:
+Finally the markup of the block will contain the custom property as shown.
 
 ```html
 <div class="block teaser" style="--image-aspect-ratio: 1">
@@ -209,7 +210,7 @@ Then, the markup of the block will contain the custom property:
 </div>
 ```
 
-and if we have this CSS definitions in place:
+As an example, first define the style of a teaser block image as follows.
 
 ```css
 .block.teaser img {
@@ -218,7 +219,7 @@ and if we have this CSS definitions in place:
 ```
 
 The custom CSS property definition will only apply within the div that it's defined.
-Then the CSS where it's used will apply that custom CSS property value for only that div.
+As you can see, the custom CSS property applies only within the `div` in which it is defined.
 
 If you want to use it in your custom components, you need to apply it in the root of your block's view component as follows:
 
