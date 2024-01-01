@@ -210,7 +210,7 @@ Next, you can enhance a block's schema by injecting the custom CSS property as f
   };
 ```
 
-Finally the markup of the block will contain the custom property as shown.
+Finally, assuming that you select the default value for the {guilabel}`Aspect Ratio` for the custom CSS property, then the markup of the block will contain the custom property as shown.
 
 ```html
 <div class="block teaser" style="--image-aspect-ratio: 1">
