@@ -214,7 +214,7 @@ Finally the markup of the block will contain the custom property as shown.
 
 ```html
 <div class="block teaser" style="--image-aspect-ratio: 1">
-...
+<img src="example.png">
 </div>
 ```
 
