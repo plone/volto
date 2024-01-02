@@ -9,7 +9,7 @@ import {
 } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
-export const View = ({ className, data, detached, properties }) => {
+export const View = ({ className, data, detached, properties, style }) => {
   const href = data?.href?.[0]?.['@id'] || '';
 
   const Image = config.getComponent({ name: 'Image' }).component;
@@ -25,6 +25,7 @@ export const View = ({ className, data, detached, properties }) => {
         data.align,
         className,
       )}
+      style={style}
     >
       {data.url && (
         <>
