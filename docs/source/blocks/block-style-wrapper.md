@@ -236,6 +236,83 @@ You need to manually add the above code in your view component block code to ben
 The styles in the block edit component are injected automatically into the blocks engine editor wrappers, so you don't have to take any action.
 ```
 
+## Nested custom CSS properties
+
+Given this block enhancer:
+
+```js
+  schema.properties.styles.schema.fieldsets[0].fields = [
+    ...schema.properties.styles.schema.fieldsets[0].fields,
+    'theme',
+  ];
+
+  schema.properties.styles.schema.properties['theme'] = {
+    widget: 'color_picker',
+    title: "Theme",
+    colors,
+    default: defaultBGColor,
+  };
+```
+
+It will generate this values for the StyleWrapper to use:
+
+```js
+{
+  "styles": {
+    "theme": {
+      "--background-color": "#222",
+      "--font-color": "white"
+    }
+  }
+}
+```
+
+The resultant injected custom CSS properties will have prefixed the name of the key.
+
+```html
+<div class="block teaser" style="--theme--background-color: #222, --theme--font-color: white">
+ ...
+</div>
+```
+
+There are use cases that you want this not to happen since you want to use exactly the names defined in your custom CSS properties.
+If you want the StyleWrapper not to build the injected name using the key as prefix, you can bail off the feature by appending the suffix `:noprefix`.
+
+```js
+  schema.properties.styles.schema.fieldsets[0].fields = [
+    ...schema.properties.styles.schema.fieldsets[0].fields,
+    'theme:noprefix',
+  ];
+
+  schema.properties.styles.schema.properties['theme:noprefix'] = {
+    widget: 'color_picker',
+    title: "Theme",
+    colors,
+    default: defaultBGColor,
+  };
+```
+
+It will generate this values for the StyleWrapper to use:
+
+```js
+{
+  "styles": {
+    "theme:noprefix": {
+      "--background-color": "#222",
+      "--font-color": "white"
+    }
+  }
+}
+```
+
+Then the resultant injection:
+
+```html
+<div class="block teaser" style="--background-color: #222, --font-color: white">
+ ...
+</div>
+```
+
 ## Align class injection
 
 There is an automatic class name injection happening at the same time the style wrapper class names injection.
