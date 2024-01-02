@@ -221,7 +221,7 @@ Finally, assuming that you select the default value for the {guilabel}`Aspect Ra
 As you can see, the custom CSS declaration applies only in the `div` where you inject the property.
 
 ```{seealso}
-[CSS basics](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/CSS_basics)
+[CSS custom properties basics](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties)
 ```
 
 If you want to use it in your custom components, you need to apply it in the root of your block's view component as follows:
