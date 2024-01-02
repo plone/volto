@@ -24,7 +24,7 @@ describe('Folder Contents Tests', () => {
   });
 
   it('Should render Summary template', () => {
-    // when inserting image and selecting image gallery listing
+    // when inserting image and selecting summary listing
     cy.createContent({
       contentType: 'Image',
       path: '/my-folder/my-document',
@@ -47,6 +47,38 @@ describe('Folder Contents Tests', () => {
     cy.get('.listing-item img')
       .should('have.attr', 'src')
       .and('contain', '/my-folder/my-document/my-image/@@images/image-');
+    cy.get('.listing-item img')
+      .should('be.visible')
+      .and(($img) => {
+        // "naturalWidth" and "naturalHeight" are set when the image loads
+        expect($img[0].naturalWidth).to.be.greaterThan(0);
+      });
+  });
+
+  it('Summary listing should render default preview images', () => {
+    // when inserting document without a preview image/image
+    cy.createContent({
+      contentType: 'Document',
+      path: '/my-folder/my-document',
+      contentId: 'my-document',
+      contentTitle: 'My Document',
+    });
+
+    cy.visit('/my-folder/my-document');
+    cy.get('.edit').click();
+    cy.getSlate().click();
+    cy.get('button.block-add-button').click();
+    cy.get(
+      '[style="transition: opacity 500ms ease 0ms;"] > :nth-child(2) > .ui',
+    ).click();
+    cy.get('#field-variation').click().type('summary{enter}');
+    cy.get('#toolbar-save').click();
+    cy.wait('@content');
+
+    cy.url().should('eq', Cypress.config().baseUrl + '/my-folder/my-document');
+    cy.get('.listing-item img')
+      .should('have.attr', 'src')
+      .and('contain', '/static/media/default-image');
     cy.get('.listing-item img')
       .should('be.visible')
       .and(($img) => {
