@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.12 (2024-01-02)
+
+### Internal
+
+- Re-release alpha.11 as alpha.12 with fixed deps @sneridagh [#0](https://github.com/plone/volto/pull/0)
+
 ## 1.0.0-alpha.11 (2024-01-02)
 
 ### Internal
