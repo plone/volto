@@ -44,21 +44,24 @@ const ColorPickerWidget = (props) => {
 
               <div className="buttons">
                 {colors.map((color) => {
+                  const colorName = color?.style?.name || color.name;
+                  const colorValue = color.style || color.name;
                   return (
                     <Button
-                      key={id + color.name}
-                      className={color.name}
+                      key={id + colorName}
+                      className={colorName}
                       onClick={(e) => {
                         e.preventDefault();
                         e.stopPropagation();
                         onChange(
                           id,
-                          value === color.name
+                          value === colorValue
                             ? props.missing_value
-                            : color.name,
+                            : colorValue,
                         );
                       }}
-                      active={value === color.name}
+                      style={color.style}
+                      active={value === colorValue}
                       circular
                       aria-label={color.label}
                       title={color.label}

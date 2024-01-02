@@ -16,6 +16,23 @@ Default.args = {
   ],
 };
 
+export const WithEnhancedStyleConfig = WidgetStory.bind({
+  widget: ColorPickerWidget,
+});
+
+WithEnhancedStyleConfig.args = {
+  id: 'favoriteColor',
+  title: 'Favorite Color',
+  colors: [
+    { style: { name: 'red', '--background-color': 'red' }, label: 'red' },
+    {
+      style: { name: 'yellow', '--background-color': 'yellow' },
+      label: 'yellow',
+    },
+    { name: 'green', label: 'green' },
+  ],
+};
+
 export default {
   title: 'Edit Widgets/ColorPicker',
   component: Default,
