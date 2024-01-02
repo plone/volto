@@ -238,6 +238,15 @@ The styles in the block edit component are injected automatically into the block
 
 ## Nested custom CSS properties
 
+This section describes how to work with nested custom CSS properties.
+You can inject custom CSS properties in a nested manner.
+You can also avoid some nesting, where useful.
+
+
+(inject-nested-custom-css-properties)=
+
+### Inject nested custom CSS properties
+
 Given this block enhancer:
 
 ```js
@@ -248,13 +257,13 @@ Given this block enhancer:
 
   schema.properties.styles.schema.properties['theme'] = {
     widget: 'color_picker',
-    title: "Theme",
+    title: 'Theme',
     colors,
     default: defaultBGColor,
   };
 ```
 
-It will generate this values for the StyleWrapper to use:
+It will generate these values for the `StyleWrapper` to use:
 
 ```js
 {
@@ -267,7 +276,7 @@ It will generate this values for the StyleWrapper to use:
 }
 ```
 
-The resultant injected custom CSS properties will have prefixed the name of the key.
+The resultant injected custom CSS properties will be prefixed with two dashes plus the name of the key, `--theme` in this example.
 
 ```html
 <div class="block teaser" style="--theme--background-color: #222, --theme--font-color: white">
@@ -275,8 +284,11 @@ The resultant injected custom CSS properties will have prefixed the name of the 
 </div>
 ```
 
-There are use cases that you want this not to happen since you want to use exactly the names defined in your custom CSS properties.
-If you want the StyleWrapper not to build the injected name using the key as prefix, you can bail off the feature by appending the suffix `:noprefix`.
+
+### Avoid injecting nested custom CSS properties
+
+Sometimes you might not want to build the custom CSS property name with a prefix in a nested structure, as described in {ref}`inject-nested-custom-css-properties`, because you want to use the exact names defined in your custom CSS properties.
+To avoid building a prefix, you can append the suffix `:noprefix` in your block enhancer.
 
 ```js
   schema.properties.styles.schema.fieldsets[0].fields = [
@@ -292,7 +304,7 @@ If you want the StyleWrapper not to build the injected name using the key as pre
   };
 ```
 
-It will generate this values for the StyleWrapper to use:
+It will generate these values for the `StyleWrapper` to use:
 
 ```js
 {
@@ -305,7 +317,7 @@ It will generate this values for the StyleWrapper to use:
 }
 ```
 
-Then the resultant injection:
+This will yield the resultant markup without a prefix.
 
 ```html
 <div class="block teaser" style="--background-color: #222, --font-color: white">
