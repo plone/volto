@@ -218,8 +218,11 @@ Finally, assuming that you select the default value for the {guilabel}`Aspect Ra
 </div>
 ```
 
-The custom CSS property definition will only apply within the div that it's defined.
-As you can see, the custom CSS property applies only within the `div` in which it is defined.
+As you can see, the custom CSS declaration applies only in the `div` where you inject the property.
+
+```{seealso}
+[CSS basics](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/CSS_basics)
+```
 
 If you want to use it in your custom components, you need to apply it in the root of your block's view component as follows:
 
