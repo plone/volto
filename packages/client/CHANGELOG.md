@@ -8,6 +8,14 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.11 (2024-01-02)
+
+### Internal
+
+- Transfer @plone/client into the Volto monorepo @sneridagh [#5490](https://github.com/plone/volto/pull/5490)
+- Move and unify Types under @plone/types @sneridagh [#5493](https://github.com/plone/volto/pull/5493)
+- ESlint general improvements @sneridagh [#5548](https://github.com/plone/volto/pull/5548)
+
 ## 1.0.0-alpha.10 (2023-10-28)
 
 ### Bugfix
