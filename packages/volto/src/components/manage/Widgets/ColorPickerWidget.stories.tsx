@@ -2,7 +2,7 @@ import ColorPickerWidget from './ColorPickerWidget';
 import WidgetStory from './story';
 import type { Meta, StoryObj } from '@storybook/react';
 
-const meta: Meta<typeof Button> = {
+const meta: Meta<typeof ColorPickerWidget> = {
   title: 'Edit Widgets/ColorPicker',
   component: WidgetStory.bind({
     widget: ColorPickerWidget,
@@ -36,10 +36,11 @@ export const WithEnhancedStyleConfig: Story = {
     id: 'favoriteColor',
     title: 'Favorite Color',
     colors: [
-      { style: { name: 'red', '--background-color': 'red' }, label: 'red' },
+      { name: 'red', label: 'red', style: { '--background-color': 'red' } },
       {
-        style: { name: 'yellow', '--background-color': 'yellow' },
+        name: 'yellow',
         label: 'yellow',
+        style: { '--background-color': 'yellow' },
       },
       { name: 'green', label: 'green' },
     ],

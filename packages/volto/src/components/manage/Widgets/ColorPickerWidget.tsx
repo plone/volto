@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form } from 'semantic-ui-react';
 import { Grid, Button } from 'semantic-ui-react';
+import { isEqual } from 'lodash';
 import { defineMessages, useIntl } from 'react-intl';
 
 const messages = defineMessages({
@@ -12,8 +13,9 @@ const messages = defineMessages({
 
 type Color =
   | {
+      name: string;
       label: string;
-      style: Record<`--${string}`, string> & { name: string };
+      style: Record<`--${string}`, string>;
     }
   | {
       name: string;
@@ -67,12 +69,11 @@ const ColorPickerWidget = (props: ColorPickerWidgetProps) => {
 
               <div className="buttons">
                 {colors.map((color) => {
-                  let colorName: string, colorValue: string | Color['style'];
+                  let colorValue: string | Color['style'];
+                  const colorName = color.name;
                   if (color.style !== undefined) {
-                    colorName = color?.style?.name;
                     colorValue = color.style;
                   } else {
-                    colorName = color.name;
                     colorValue = color.name;
                   }
                   return (
@@ -90,7 +91,7 @@ const ColorPickerWidget = (props: ColorPickerWidgetProps) => {
                         );
                       }}
                       style={color.style}
-                      active={value === colorValue}
+                      active={isEqual(value, colorValue)}
                       circular
                       aria-label={color.label}
                       title={color.label}

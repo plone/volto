@@ -77,19 +77,24 @@ This is the signature of the object:
 ```ts
 type Color =
   | {
+      name: string;
       label: string;
-      style: Record<`--${string}`, string> & { name: string };
+      style: Record<`--${string}`, string>;
     }
   | {
       name: string;
       label: string;
+      style: undefined;
     };
 
 const colors: Color[] = [
-  { style: { name: 'red', '--background-color': 'red' }, label: 'red' },
+  { name: 'red',
+    label: 'red',
+    style: { '--background-color': 'red' } },
   {
-    style: { name: 'yellow', '--background-color': 'yellow' },
+    name: 'yellow',
     label: 'yellow',
+    style: {  '--background-color': 'yellow' },
   },
   { name: 'green', label: 'green' },
 ]
@@ -103,7 +108,7 @@ You can use it on your own code by reading it from the resultant data and use it
 When combined with the `StyleWrapper`, the value will be injected as a class name of the form `has--PROPERTY_NAME--PROPERTY_VALUE`:
 
 ```html
-<div class="has--backgroundColor--ee22ee">
+<div class="has--backgroundColor--green">
   ...
 </div>
 ```
@@ -128,7 +133,6 @@ They will be injected by the `StyleWrapper` as style definitions, so you can use
 ```
 
 The `name` key is mandatory in order to generate proper markup in the resultant HTML in both forms.
-It is also included by the `StyleWrapper` as an injected class name, in case you need it in your CSS selectors.
 
 You can also use this selector, where an element with class names `block` and `teaser` with a child element whose HTML attribute `style` contains the value of `--background-color`:
 

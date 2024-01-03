@@ -361,6 +361,7 @@
     "@testing-library/react": "12.1.5",
     "@testing-library/react-hooks": "8.0.1",
     "@types/jest": "^29.5.8",
+    "@types/lodash": "^4.14.201",
     "@types/react": "^17.0.52",
     "@types/react-dom": "^17",
     "@types/react-test-renderer": "18.0.1",
