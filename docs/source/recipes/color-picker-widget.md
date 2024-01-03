@@ -14,7 +14,7 @@ It allows to pick a color from a preset list of colors.
 This preset list of colors is passed using the `colors` prop.
 You can [try a demo of the default color picker](https://6.docs.plone.org/storybook/?path=/story/edit-widgets-colorpicker--default).
 You can combine the color picker widget with the {doc}`../blocks/block-style-wrapper` to have a powerful, yet simple way to manage color properties in your blocks.
-You can use it either in your custom block's setting's schema or enhance an existing block as follows:
+You can use it either in your custom block's styles schema or enhance an existing block as follows:
 
 ```{code-block} js
 :emphasize-lines: 13-16, 31-42
