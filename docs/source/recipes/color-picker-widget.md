@@ -88,15 +88,19 @@ type Color =
     };
 
 const colors: Color[] = [
-  { name: 'red',
+  {
+    name: 'red',
     label: 'red',
     style: { '--background-color': 'red' } },
   {
     name: 'yellow',
     label: 'yellow',
-    style: {  '--background-color': 'yellow' },
+    style: { '--background-color': 'yellow' },
   },
-  { name: 'green', label: 'green' },
+  {
+    name: 'green',
+    label: 'green'
+  },
 ]
 ```
 
