@@ -18,6 +18,7 @@ type Color =
   | {
       name: string;
       label: string;
+      style: undefined;
     };
 
 export type ColorPickerWidgetProps = {
@@ -66,8 +67,14 @@ const ColorPickerWidget = (props: ColorPickerWidgetProps) => {
 
               <div className="buttons">
                 {colors.map((color) => {
-                  const colorName = color?.style?.name || color.name;
-                  const colorValue = color.style || color.name;
+                  let colorName: string, colorValue: string | Color['style'];
+                  if (color.style !== undefined) {
+                    colorName = color?.style?.name;
+                    colorValue = color.style;
+                  } else {
+                    colorName = color.name;
+                    colorValue = color.name;
+                  }
                   return (
                     <Button
                       key={id + colorName}
@@ -98,21 +105,5 @@ const ColorPickerWidget = (props: ColorPickerWidgetProps) => {
     </Form.Field>
   ) : null;
 };
-
-// ColorPickerWidget.propTypes = {
-//   id: PropTypes.string.isRequired,
-//   title: PropTypes.string.isRequired,
-//   required: PropTypes.bool,
-//   value: PropTypes.string,
-//   onChange: PropTypes.func,
-//   colors: PropTypes.array,
-// };
-
-// ColorPickerWidget.defaultProps = {
-//   required: false,
-//   value: null,
-//   onChange: null,
-//   colors: [],
-// };
 
 export default ColorPickerWidget;
