@@ -157,10 +157,9 @@ docs-vale: bin/python docs-news  ## Install (once) and run Vale style, grammar, 
 .PHONY: netlify
 netlify:
 	pip install -r requirements-docs.txt
-	cd $(DOCS_DIR) && sphinx-build -b html $(ALLSPHINXOPTS) ../$(BUILDDIR)/html
-	cd ../../
-	pnpm build:registry
-	(cd packages/volto && pnpm build-storybook -o ../../docs/_build/html/storybook)
+	cd $(DOCS_DIR) && pwd && sphinx-build -b html $(ALLSPHINXOPTS) ../$(BUILDDIR)/html
+	cd ../../ && pwd && pnpm build:registry
+	(cd packages/volto && pwd && pnpm build-storybook -o ../../docs/_build/html/storybook)
 
 .PHONY: docs-test
 docs-test: docs-clean docs-linkcheckbroken docs-vale  ## Clean docs build, then run linkcheckbroken, vale
