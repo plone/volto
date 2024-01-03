@@ -7,14 +7,14 @@ myst:
     "keywords": "Volto, Plone, frontend, React, blocks, forms, widget, color, picker"
 ---
 
-# How to use the color picker widget
+# Color picker widget
 
 Volto comes with a color picker widget that can be used in any Volto form.
-The most common use case is use this value along with the blocks StyleWrapper as show in the example. See {ref}`block-style-wrapper-label` for more background about how the blocks StyleWrapper works.
-Combined with the blocks StyleWrapper you can have a powerful, yet simple way to manage color properties in your blocks.
-It can be used in your custom block settings schema or enhance an existing block as follows:
+You can combine the color picker widget with the {doc}`../blocks/block-style-wrapper` to have a powerful, yet simple way to manage color properties in your blocks.
+You can use it either in your custom block's setting's schema or enhance an existing block as follows:
 
-```js hl_lines="13-16, 31-42"
+```js
+:emphasize-lines: 13-16, 31-42
 import { addStyling } from '@plone/volto/helpers/Extensions/withBlockSchemaEnhancer';
 import { defineMessages } from 'react-intl';
 import config from '@plone/volto/registry';
@@ -41,16 +41,16 @@ export const defaultStylingSchema = ({ schema, formData, intl }) => {
   const defaultBGColor =
     config.blocks?.blocksConfig?.[formData['@type']]?.defaultBGColor;
 
-  // This adds the StylingWrapper support to your block
+  // This adds the StyleWrapper support to your block
   addStyling({ schema, intl });
 
-  // Then we add the field to the fieldset inside the StylingWrapper `styles` field schema fieldset array
+  // Then we add the field to the fieldset inside the StyleWrapper `styles` field schema fieldset array
   schema.properties.styles.schema.fieldsets[0].fields = [
     ...schema.properties.styles.schema.fieldsets[0].fields,
     'backGroundColor',
   ];
 
-  // and finally, we add the field to the StylingWrapper `styles` object field schema properties
+  // and finally, we add the field to the StyleWrapper `styles` object field schema properties
   schema.properties.styles.schema.properties['backGroundColor'] = {
     widget: 'color_picker',
     title: intl.formatMessage(messages.backgroundColor),
@@ -65,7 +65,9 @@ export const defaultStylingSchema = ({ schema, formData, intl }) => {
 The widget name the color picker widget uses is `color_picker`.
 
 ## Color definitions
-
+```{versionchanged} 17.x.x
+Enhanced `ColorPickerWidget` with additional color definitions, saving it as an object instead of a string.
+```
 The `colors` property of the widget controls which colors are available to choose in the widget.
 This is the signature of the object:
 
@@ -90,12 +92,12 @@ const colors: Color[] = [
 ]
 ```
 
-## Using basic definitions
+### Basic color definition
 
 The basic color definition is the one that saves a string label as the widget value.
 You can use it on your own code by reading it from the resultant data and use it according your designed solution.
 
-In the case of using it along with the StyleWrapper, the value will be injected as a class name of the form:
+When combined with the `StyleWrapper`, the value will be injected as a class name of the form `has--PROPERTY_NAME--PROPERTY_VALUE`:
 
 ```html
 <div class="has--backgroundColor--ee22ee">
@@ -105,13 +107,13 @@ In the case of using it along with the StyleWrapper, the value will be injected 
 
 Then you should create the CSS rules according to these injected class names.
 
-## Using custom CSS properties as color definitions
+### Custom CSS properties as color definitions
 
-The `style` key defines a set of custom CSS properties to be saved as widget value.
-They will be injected by the StyleWrapper as style definitions and you will be able to use them in your CSS rules.
+The `style` key defines a set of custom CSS properties to be added as the value to the HTML attribute `style`.
+They will be injected by the `StyleWrapper` as style definitions, so you can use them in your CSS rules.
 
 ```html
-<div class="block teaser" style="--background-color': 'red'">
+<div class="block teaser" style="--background-color: red">
 ...
 </div>
 ```
@@ -123,9 +125,9 @@ They will be injected by the StyleWrapper as style definitions and you will be a
 ```
 
 The `name` key is mandatory in order to generate proper markup in the resultant HTML in both forms.
-It is also included by the StyleWrapper as a injected class name, in case you need it too in your CSS selectors.
+It is also included by the `StyleWrapper` as an injected class name, in case you need it in your CSS selectors.
 
-You can also use this selector in case it comes in handy:
+You can also use this selector, where an element with class names `block` and `teaser` with a child element whose HTML attribute `style` contains the value of `--background-color`:
 
 ```css
 .block.teaser {
@@ -134,6 +136,15 @@ You can also use this selector in case it comes in handy:
  }
  ```
 
+```{seealso}
+See the MDN CSS Reference for selectors.
+
+- [Attribute selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors)
+- [`&` nesting selector](https://developer.mozilla.org/en-US/docs/Web/CSS/Nesting_selector)
+```
+
+
 ## Use both basic and custom CSS properties definitions
 
-You can combine both basic and style definitions, it's up to you how to mix and match them.
+You can combine both basic and custom CSS properties definitions.
+It's up to you how to mix and match them.

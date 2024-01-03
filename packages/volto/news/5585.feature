@@ -1,1 +1,1 @@
-Enhance `ColorPickerWidget` with additional color definitions and save an object instead of a string @sneridagh
+Enhanced `ColorPickerWidget` with additional color definitions, saving it as an object instead of a string. @sneridagh
