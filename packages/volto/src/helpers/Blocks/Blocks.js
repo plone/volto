@@ -642,13 +642,21 @@ export const buildStyleObjectFromData = (obj = {}, prefix = '') => {
           // ...(() => {
           //   if (isObject(v)) {
           //     return Object.entries(
-          //       buildStyleObjectFromData(v, `${prefix}${k}--`),
+          //       buildStyleObjectFromData(
+          //         v,
+          //         `${k.endsWith(':noprefix') ? '' : `${prefix}${k}--`}`,
+          //       ),
           //     );
           //   }
           //   return [styleDataToStyleObject(k, v, prefix)];
           // })(),
           ...(isObject(v)
-            ? Object.entries(buildStyleObjectFromData(v, `${prefix}${k}--`))
+            ? Object.entries(
+                buildStyleObjectFromData(
+                  v,
+                  `${k.endsWith(':noprefix') ? '' : `${prefix}${k}--`}`, // We don't add a prefix if the key ends with the marker suffix
+                ),
+              )
             : [styleDataToStyleObject(k, v, prefix)]),
         ],
         [],
