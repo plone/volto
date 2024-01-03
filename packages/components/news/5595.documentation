@@ -1,0 +1,1 @@
+Attempt to build the volto/components Storybook only when something changes in its directory. @stevepiercy
