@@ -10,6 +10,7 @@ myst:
 # Color picker widget
 
 Volto comes with a color picker widget that can be used in any Volto form.
+You can [try a demo of the default color picker](https://6.docs.plone.org/storybook/?path=/story/edit-widgets-colorpicker--default).
 You can combine the color picker widget with the {doc}`../blocks/block-style-wrapper` to have a powerful, yet simple way to manage color properties in your blocks.
 You can use it either in your custom block's setting's schema or enhance an existing block as follows:
 
@@ -62,12 +63,14 @@ export const defaultStylingSchema = ({ schema, formData, intl }) => {
 };
 ```
 
-The widget name the color picker widget uses is `color_picker`.
+The color picker widget's discriminator is `color_picker`.
 
 ## Color definitions
+
 ```{versionchanged} 17.9.0
 Enhanced `ColorPickerWidget` with additional color definitions, saving it as an object instead of a string.
 ```
+
 The `colors` property of the widget controls which colors are available to choose in the widget.
 This is the signature of the object:
 
