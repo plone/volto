@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Form } from 'semantic-ui-react';
 import { Grid, Button } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
@@ -11,7 +10,29 @@ const messages = defineMessages({
   },
 });
 
-const ColorPickerWidget = (props) => {
+type Color =
+  | {
+      label: string;
+      style: Record<`--${string}`, string> & { name: string };
+    }
+  | {
+      name: string;
+      label: string;
+    };
+
+export type ColorPickerWidgetProps = {
+  id: string;
+  title: string;
+  value: string;
+  default: string;
+  required: boolean;
+  missing_value: unknown;
+  className: string;
+  onChange: (id: string, value: any) => void;
+  colors: Color[];
+};
+
+const ColorPickerWidget = (props: ColorPickerWidgetProps) => {
   const { id, title, required, value, onChange, colors, className } = props;
 
   const intl = useIntl();
@@ -30,6 +51,7 @@ const ColorPickerWidget = (props) => {
       className={className}
       id={'field-' + id}
     >
+      {/* @ts-ignore */}
       <Grid>
         <Grid.Row>
           <Grid.Column
@@ -77,20 +99,20 @@ const ColorPickerWidget = (props) => {
   ) : null;
 };
 
-ColorPickerWidget.propTypes = {
-  id: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  required: PropTypes.bool,
-  value: PropTypes.string,
-  onChange: PropTypes.func,
-  colors: PropTypes.array,
-};
+// ColorPickerWidget.propTypes = {
+//   id: PropTypes.string.isRequired,
+//   title: PropTypes.string.isRequired,
+//   required: PropTypes.bool,
+//   value: PropTypes.string,
+//   onChange: PropTypes.func,
+//   colors: PropTypes.array,
+// };
 
-ColorPickerWidget.defaultProps = {
-  required: false,
-  value: null,
-  onChange: null,
-  colors: [],
-};
+// ColorPickerWidget.defaultProps = {
+//   required: false,
+//   value: null,
+//   onChange: null,
+//   colors: [],
+// };
 
 export default ColorPickerWidget;

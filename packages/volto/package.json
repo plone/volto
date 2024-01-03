@@ -377,6 +377,7 @@
     "jest-environment-jsdom": "^26",
     "jsdom": "^16.7.0",
     "jsonwebtoken": "9.0.0",
+    "react-docgen-typescript-plugin": "^1.0.5",
     "react-error-overlay": "6.0.9",
     "react-is": "^16.13.1",
     "release-it": "^16.2.1",
