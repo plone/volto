@@ -65,7 +65,7 @@ export const defaultStylingSchema = ({ schema, formData, intl }) => {
 The widget name the color picker widget uses is `color_picker`.
 
 ## Color definitions
-```{versionchanged} 17.x.x
+```{versionchanged} 17.9.0
 Enhanced `ColorPickerWidget` with additional color definitions, saving it as an object instead of a string.
 ```
 The `colors` property of the widget controls which colors are available to choose in the widget.
