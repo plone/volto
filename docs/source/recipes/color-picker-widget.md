@@ -10,6 +10,8 @@ myst:
 # Color picker widget
 
 Volto comes with a color picker widget that can be used in any Volto form.
+It allows to pick a color from a preset list of colors.
+This preset list of colors is passed using the `colors` prop.
 You can [try a demo of the default color picker](https://6.docs.plone.org/storybook/?path=/story/edit-widgets-colorpicker--default).
 You can combine the color picker widget with the {doc}`../blocks/block-style-wrapper` to have a powerful, yet simple way to manage color properties in your blocks.
 You can use it either in your custom block's setting's schema or enhance an existing block as follows:
@@ -72,7 +74,7 @@ Enhanced `ColorPickerWidget` with additional color definitions, saving it as an 
 ```
 
 The `colors` property of the widget controls which colors are available to choose in the widget.
-This is the signature of the object:
+This is the signature of the object along with an example:
 
 ```ts
 type Color =
@@ -106,7 +108,8 @@ const colors: Color[] = [
 
 ### Basic color definition
 
-The basic color definition is the one that saves a string label as the widget value.
+The basic color definition is the one that saves a string as the widget value.
+This string is the one defined by the `name` key.
 You can use it on your own code by reading it from the resultant data and use it according your designed solution.
 
 When combined with the `StyleWrapper`, the value will be injected as a class name of the form `has--PROPERTY_NAME--PROPERTY_VALUE`:
