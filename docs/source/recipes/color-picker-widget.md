@@ -13,7 +13,7 @@ Volto comes with a color picker widget that can be used in any Volto form.
 You can combine the color picker widget with the {doc}`../blocks/block-style-wrapper` to have a powerful, yet simple way to manage color properties in your blocks.
 You can use it either in your custom block's setting's schema or enhance an existing block as follows:
 
-```js
+```{code-block} js
 :emphasize-lines: 13-16, 31-42
 import { addStyling } from '@plone/volto/helpers/Extensions/withBlockSchemaEnhancer';
 import { defineMessages } from 'react-intl';
