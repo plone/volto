@@ -1,1 +1,1 @@
-Support for TS/TSX files in i18n machinery @sneridagh
+Added support for TS/TSX files in i18n machinery. @sneridagh
