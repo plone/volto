@@ -17,6 +17,20 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 17.9.0 (2024-01-04)
+
+### Feature
+
+- Allow to opt out of the nested prefixed name build in the custom CSS properties style name generator if an object is found in the style wrapper object. @sneridagh [#5586](https://github.com/plone/volto/issues/5586)
+
+### Bugfix
+
+- Refactoring the code for extraction of videoDetails from the video URL, adding code for extracting videoDetails from youtube video URLs with '/live/' in its URL which previously used to throw an error and adding jest tests for same. @IshaanDasgupta [#5416](https://github.com/plone/volto/issues/5416)
+
+### Internal
+
+- Pin mrs-developer to latest version, not to star @sneridagh [#5593](https://github.com/plone/volto/issues/5593)
+
 ## 17.8.0 (2024-01-02)
 
 ### Feature
