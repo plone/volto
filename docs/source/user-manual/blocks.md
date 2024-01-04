@@ -11,6 +11,8 @@ myst:
 
 # Edit content using blocks
 
+Test of [color picker widget link](/storybook/index.html?path=/story/edit-widgets-colorpicker--default).
+
 Volto features the [Pastanaga UI](https://github.com/plone/pastanaga), allowing you to visually compose a page using blocks.
 The blocks editor allows you to add, modify, reorder, and delete blocks given your requirements.
 Blocks provide the user the ability to display content in a specific way, although they can also define behavior and have specific features.
