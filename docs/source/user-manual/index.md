@@ -12,13 +12,7 @@ myst:
 
 # User Manual
 
-Test of [color picker widget link](/storybook/index.html?path=/story/edit-widgets-colorpicker--default).
-
-Test double-slash of [color picker widget link](//storybook/index.html?path=/story/edit-widgets-colorpicker--default).
-
-Test double-slash with protocol of [color picker widget link](https://storybook/index.html?path=/story/edit-widgets-colorpicker--default).
-
-Test double-slash with protocol of [color picker widget link](</storybook/index.html?path=/story/edit-widgets-colorpicker--default>).
+Test with raw HTML syntax of <a href="/storybook/index.html?path=/story/edit-widgets-colorpicker--default">color picker widget link</a>.
 
 This is the user manual for Volto, the Plone 6 frontend.
 
