@@ -169,7 +169,7 @@ docs-test: docs-clean docs-linkcheckbroken docs-vale  ## Clean docs build, then 
 .PHONY: storybook-build
 storybook-build:
 	pnpm build:registry
-	(cd packages/volto && pnpm build-storybook -o ../../docs/_build/storybook)
+	(cd packages/volto && pnpm build-storybook -o ../../docs/_build/html/storybook)
 
 .PHONY: patches
 patches:
