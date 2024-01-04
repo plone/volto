@@ -11,7 +11,11 @@ myst:
 
 # Edit content using blocks
 
-Test of [color picker widget link](/storybook/index.html?path=/story/edit-widgets-colorpicker--default).
+Test1 of [color picker widget link](/storybook/index.html?path=/story/edit-widgets-colorpicker--default).
+
+Test double-slash of [color picker widget link](//storybook/index.html?path=/story/edit-widgets-colorpicker--default).
+
+Test parent relative path [color picker widget link](../storybook/index.html?path=/story/edit-widgets-colorpicker--default). This won't work for main documenation.
 
 Volto features the [Pastanaga UI](https://github.com/plone/pastanaga), allowing you to visually compose a page using blocks.
 The blocks editor allows you to add, modify, reorder, and delete blocks given your requirements.
