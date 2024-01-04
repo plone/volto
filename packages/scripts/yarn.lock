@@ -2398,7 +2398,7 @@ __metadata:
     commander: 8.2.0
     fs-extra: 10.1.0
     git-url-parse: ^13.1.0
-    mrs-developer: "*"
+    mrs-developer: ^2.1.1
     pofile: 1.0.10
     release-it: ^16.1.3
   bin:
@@ -4961,16 +4961,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mrs-developer@npm:*":
-  version: 2.1.0
-  resolution: "mrs-developer@npm:2.1.0"
+"mrs-developer@npm:^2.1.1":
+  version: 2.1.1
+  resolution: "mrs-developer@npm:2.1.1"
   dependencies:
     async: ^3.2.4
     chalk: ^2.4.2
     simple-git: ^3.3.0
   bin:
     missdev: src/command.js
-  checksum: 11a47dee219fb4986a591195ea18d47602741f90d66ccb94378d619979c0bc52284590cc11f48da60fbbd463765904fc60a3800fb5f786caa9c5a5610cbece86
+  checksum: 3529adc18d4beff3cbb6974043b7f10bc3281d1173119f02b82d990875a4a70760f4c3c2f3b22c4c4ff016413dd30975fbc1cf5fb76f3feb031d859d0f436136
   languageName: node
   linkType: hard
 
