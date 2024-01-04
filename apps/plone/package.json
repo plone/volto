@@ -271,7 +271,7 @@
     "jest-junit": "8.0.0",
     "less": "3.11.1",
     "less-loader": "11.1.0",
-    "mrs-developer": "*",
+    "mrs-developer": "^2.1.1",
     "postcss": "8.4.31",
     "postcss-flexbugs-fixes": "5.0.2",
     "postcss-less": "6.0.0",
