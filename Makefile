@@ -157,7 +157,7 @@ docs-vale: bin/python docs-news  ## Install (once) and run Vale style, grammar, 
 .PHONY: netlify
 netlify:
 	pnpm build:registry
-	(cd packages/volto && pnpm build-storybook -o ../../docs/_build/html/storybook)
+	(cd packages/volto && pnpm build-storybook -o ../../_build/html/storybook)
 	pwd && pip install -r requirements-docs.txt
 	cd $(DOCS_DIR) && pwd && sphinx-build -b html $(ALLSPHINXOPTS) ../$(BUILDDIR)/html
 
