@@ -146,4 +146,6 @@ export function getBlocks(properties: any): any[];
 export function styleToClassName(key: any, value: any, prefix?: string): any;
 export function buildStyleClassNamesFromData(obj?: {}, prefix?: string): any;
 export function buildStyleClassNamesExtenders({ block, content, data, classNames, }: any): any[];
+export function styleDataToStyleObject(key: any, value: any, prefix?: string): any[];
+export function buildStyleObjectFromData(obj?: any, prefix?: string): any;
 export function getPreviousNextBlock({ content, block }: any): any[];

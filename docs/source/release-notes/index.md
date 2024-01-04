@@ -17,6 +17,28 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 17.8.0 (2024-01-02)
+
+### Feature
+
+- Added support for custom CSS properties in the `StyleWrapper`. @sneridagh [#5581](https://github.com/plone/volto/issues/5581)
+
+### Bugfix
+
+- Fixed utc problems in RecurrenceWidget [#5002](https://github.com/plone/volto/issues/5002)
+- The hamburger icon to open the mobile/tablet navigation is now hidden if there are no navigation items. @Aarav238 [#5353](https://github.com/plone/volto/issues/5353)
+- Fix preview image component @steffenri [#5379](https://github.com/plone/volto/issues/5379)
+- Fix autopopulated value of facet when settings the value for another one. @iFlameing [#5432](https://github.com/plone/volto/issues/5432)
+- Fix sitemap for multilingual sites
+  [erral] [#5501](https://github.com/plone/volto/issues/5501)
+- Replace createRef with useRef in SidebarPopup
+  [razvanMiu] [#5519](https://github.com/plone/volto/issues/5519)
+- Fixed edge case error in Unauthorised page and Login route behavior @sneridagh [#5536](https://github.com/plone/volto/issues/5536)
+
+### Internal
+
+- Update Plone to 6.0.9 @sneridagh [#5562](https://github.com/plone/volto/issues/5562)
+
 ## 17.7.0 (2023-12-13)
 
 ### Feature

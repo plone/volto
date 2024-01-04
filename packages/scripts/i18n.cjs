@@ -30,7 +30,7 @@ function extractMessages() {
     // If so, we should do it in the config object or somewhere else
     // We also ignore the addons folder since they are populated using
     // their own locales files and taken care separatedly in this script
-    glob('src/**/*.js?(x)', {
+    glob('src/**/*.{js,jsx,ts,tsx}', {
       ignore: ['src/customizations/**', 'src/addons/**'],
     }),
     (filename) => {
@@ -164,8 +164,9 @@ function poToJson({ registry, addonMode }) {
 
   map(glob('locales/**/*.po'), (filename) => {
     let { items } = Pofile.parse(fs.readFileSync(filename, 'utf8'));
-    const projectLocalesItems = Pofile.parse(fs.readFileSync(filename, 'utf8'))
-      .items;
+    const projectLocalesItems = Pofile.parse(
+      fs.readFileSync(filename, 'utf8'),
+    ).items;
     const lang = filename.match(/locales\/(.*)\/LC_MESSAGES\//)[1];
     const result = {};
 
@@ -274,10 +275,9 @@ function main({ addonMode }) {
       if (fs.existsSync(`${projectRootPath}/node_modules/@plone/volto`)) {
         AddonConfigurationRegistry = require('@plone/volto/addon-registry');
       } else {
-        AddonConfigurationRegistry = require(path.join(
-          projectRootPath,
-          'addon-registry',
-        ));
+        AddonConfigurationRegistry = require(
+          path.join(projectRootPath, 'addon-registry'),
+        );
       }
     } catch {
       console.log(
