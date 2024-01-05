@@ -7,120 +7,59 @@ Handles transitive references (for example a -> b, b -> c becomes a -> c) and ig
 
 ## Get aliases list
 
-### Query function
+```{js:function} getAliasesListQuery
 
 Use the `getAliasesListQuery` function to get the query for fetching the aliases list.
 
-### Hook
-
-Use the `useGetAliasesList` hook to get the aliases list.
+:hook: `useGetAliasesList`
+```
 
 ## Get aliases
 
-### Query function
+```{js:function} getAliasesQuery(path)
 
 Use the `getAliasesQuery` function to get the query for fetching the aliases for a page.
 
-### Hook
-
-Use the `useGetAliases` hook to get the aliases for a page.
-
-### Parameters
-
-- **path**: string
-
-  - **Required:** Yes
+:arg string path: Description of the `path` parameter.
+:hook: `useGetAliases`
+```
 
 ## Add aliases for many pages
 
-### Mutation function
+```{js:function} createAliasesMutation(data)
 
 Use the `createAliasesMutation` function to get the mutation for adding aliases for many pages.
 
-### Hook
-
-Use the `useCreateAliases` hook to add aliases for many pages.
-
-### Parameters
-
-- **data**: object
-
-  - **Required:** Yes
-  - It can have the following fields:
-
-    `items: object[]`:
-
-    - **Required:** Yes
-    - An array of objects with the following fields:
-
-      `path: string`
-
-      - **Required:** Yes
-
-      `datetime: string`
-
-      - **Required:** No
-
-      `redirect_to: string`
-
-      - **Required:** Yes
+:arg object data : It can have the following fields:
+  :arg object[] items: An array of objects with the following fields:
+    :arg string path:
+    :arg string redirect_to:
+    :arg string [datetime]:
+:hook: `useCreateAliases`
+```
 
 ## Add aliases for a page
 
-### Mutation function
+```{js:function} createAliasesMutation(path, data)
 
 Use the `createAliasesMutation` function to get the mutation for adding aliases for a page.
 
-### Hook
-
-Use the `useCreateAliases` hook to add aliases for a page.
-
-### Parameters
-
-- **path**: string
-
-  - **Required:** Yes
-
-- **data**: object
-
-  - **Required:** Yes
-  - It can have the following fields:
-
-    `items: object[]`:
-
-    - **Required:** Yes
-    - An array of objects with the following fields:
-
-      `path: string`
-
-      - **Required:** Yes
+:arg string path: Description of the `path` parameter.
+:arg object data: It can have the following fields:
+  :arg object[] items: An array of objects with the following fields:
+    :arg string path:
+:hook: `useCreateAliases`
+```
 
 ## Delete aliases
 
-### Mutation function
+```{js:function} deleteAliasesMutation(path, data)
 
 Use the `deleteAliasesMutation` function to get the mutation for deleting aliases for a page.
 
-### Hook
-
-Use the `useDeleteAliases` hook to delete aliases for a page.
-
-### Parameters
-
-- **path**: string
-
-  - **Required:** Yes
-
-- **data**: object
-
-  - **Required:** Yes
-  - It can have the following fields:
-
-    `items: object[]`:
-
-    - **Required:** Yes
-    - An array of objects with the following fields:
-
-      `path: string`
-
-      - **Required:** Yes
+:arg string path: Description of the `path` parameter.
+:arg object data: It can have the following fields:
+  :arg object[] items: An array of objects with the following fields:
+    :arg string path:
+:hook: `useDeleteAliases`
+```
