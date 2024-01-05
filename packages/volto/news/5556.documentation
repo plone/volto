@@ -1,1 +1,0 @@
-Point developers to correct installation documentation, replaced yarn commands with pnpm, and correct some misspellings. We also now use includes to keep instructions consistent within Volto and in the main Plone 6 documentation. Finally the `NVM_VERSION` substitution now works. @ujjwaleee26 @stevepiercy
