@@ -2,8 +2,8 @@
 
 A mechanism to redirect old URLs to new ones.
 
-When an object is moved (renamed or cut/pasted into a different location), the redirection storage will remember the old path. 
-Handles transitive references (for example a -> b, b -> c becomes a -> c) and ignores circular ones (for example attempting a -> a has no effect).
+When an object is moved (renamed or cut-and-pasted into a different location), the redirection storage will remember the old path. 
+It handles transitive references intelligently (for example a -> b, b -> c becomes a -> c), ignoring circular ones (for example attempting a -> a has no effect).
 
 ## Get aliases list
 
@@ -30,11 +30,11 @@ Use the `getAliasesQuery` function to get the query for fetching the aliases for
 
 Use the `createAliasesMutation` function to get the mutation for adding aliases for many pages.
 
-:arg object data : It can have the following fields:
-  :arg object[] items: An array of objects with the following fields:
-    :arg string path:
-    :arg string redirect_to:
-    :arg string [datetime]:
+:arg array data: It can have the following fields:
+  - items: An array of objects with the following fields:
+    - path: string
+    - redirect_to: string
+    - [datetime]: string
 :hook: `useCreateAliases`
 ```
 
@@ -46,8 +46,8 @@ Use the `createAliasesMutation` function to get the mutation for adding aliases 
 
 :arg string path: Description of the `path` parameter.
 :arg object data: It can have the following fields:
-  :arg object[] items: An array of objects with the following fields:
-    :arg string path:
+  -items: An array of objects with the following fields:
+    -path: string
 :hook: `useCreateAliases`
 ```
 
@@ -59,7 +59,7 @@ Use the `deleteAliasesMutation` function to get the mutation for deleting aliase
 
 :arg string path: Description of the `path` parameter.
 :arg object data: It can have the following fields:
-  :arg object[] items: An array of objects with the following fields:
-    :arg string path:
+  -items: An array of objects with the following fields:
+    -path: string
 :hook: `useDeleteAliases`
 ```
