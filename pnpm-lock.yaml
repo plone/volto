@@ -518,7 +518,7 @@ importers:
         specifier: 11.1.0
         version: 11.1.0(less@3.11.1)(webpack@5.76.1)
       mrs-developer:
-        specifier: '*'
+        specifier: ^2.1.1
         version: 2.1.1
       postcss:
         specifier: 8.4.31
@@ -1114,7 +1114,7 @@ importers:
         specifier: 4.17.21
         version: 4.17.21
       mrs-developer:
-        specifier: '*'
+        specifier: ^2.1.1
         version: 2.1.1
       pofile:
         specifier: 1.0.10

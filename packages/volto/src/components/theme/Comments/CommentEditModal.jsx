@@ -60,6 +60,7 @@ const CommentEditModal = (props) => {
             text: {
               title: intl.formatMessage(messages.comment),
               type: 'string',
+              widget: 'textarea',
               description: '',
             },
           },
