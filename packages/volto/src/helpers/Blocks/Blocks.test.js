@@ -18,6 +18,7 @@ import {
   applySchemaDefaults,
   buildStyleClassNamesFromData,
   buildStyleClassNamesExtenders,
+  buildStyleObjectFromData,
   getPreviousNextBlock,
   blocksFormGenerator,
   findBlocks,
@@ -1065,6 +1066,82 @@ describe('Blocks', () => {
         },
       };
       expect(buildStyleClassNamesFromData(styles)).toEqual([]);
+    });
+
+    it('It does not output any className for style converter values', () => {
+      const styles = {
+        color: 'red',
+        '--background-color': '#FFF',
+      };
+      expect(buildStyleClassNamesFromData(styles)).toEqual(['has--color--red']);
+    });
+
+    it.skip('It does not output any className for unknown converter values', () => {
+      const styles = {
+        color: 'red',
+        'backgroundColor:style': '#FFF',
+      };
+      expect(buildStyleClassNamesFromData(styles)).toEqual(['has--color--red']);
+    });
+  });
+
+  describe('buildStyleObjectFromData', () => {
+    it('Understands style converter for style values, no styles found', () => {
+      const styles = {
+        color: 'red',
+        backgroundColor: '#FFF',
+      };
+      expect(buildStyleObjectFromData(styles)).toEqual({});
+    });
+
+    it('Understands style converter for style values', () => {
+      const styles = {
+        color: 'red',
+        '--background-color': '#FFF',
+      };
+      expect(buildStyleObjectFromData(styles)).toEqual({
+        '--background-color': '#FFF',
+      });
+    });
+
+    it('Supports multiple nested levels', () => {
+      const styles = {
+        '--color': 'red',
+        backgroundColor: '#AABBCC',
+        nested: {
+          l1: 'white',
+          '--foo': 'white',
+          level2: {
+            '--foo': '#fff',
+            bar: '#000',
+          },
+        },
+      };
+      expect(buildStyleObjectFromData(styles)).toEqual({
+        '--color': 'red',
+        '--nested--foo': 'white',
+        '--nested--level2--foo': '#fff',
+      });
+    });
+
+    it('Supports multiple nested levels and optional inclusion of the name of the level', () => {
+      const styles = {
+        '--color': 'red',
+        backgroundColor: '#AABBCC',
+        'nested:noprefix': {
+          l1: 'white',
+          '--foo': 'white',
+          level2: {
+            '--foo': '#fff',
+            bar: '#000',
+          },
+        },
+      };
+      expect(buildStyleObjectFromData(styles)).toEqual({
+        '--color': 'red',
+        '--foo': 'white',
+        '--level2--foo': '#fff',
+      });
     });
   });
 
