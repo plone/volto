@@ -170,7 +170,7 @@ export const autoformatInline = (
 
   // add mark to the text between the markups
   Transforms.select(editor, markupRange);
-  Transforms.wrapNodes(editor, { type, children: [] }, { split: true })
+  Transforms.wrapNodes(editor, { type, children: [] }, { split: true });
   Transforms.collapse(editor, { edge: 'end' });
 
   // delete start markup
@@ -268,68 +268,68 @@ export const getRangeFromBlockStart = (editor, options = {}) => {
  */
 export const withAutoformat =
   ({ rules }) =>
-    (editor) => {
-      const { insertText } = editor;
+  (editor) => {
+    const { insertText } = editor;
 
-      editor.insertText = (text) => {
-        if (!isCollapsed(editor.selection)) return insertText(text);
+    editor.insertText = (text) => {
+      if (!isCollapsed(editor.selection)) return insertText(text);
 
-        for (const {
-          trigger = ' ',
-          type,
-          markup,
-          preFormat,
-          format,
-          mode,
-          between,
-          ignoreTrim,
-          insertTrigger,
-        } of rules) {
-          const triggers = castArray(trigger);
+      for (const {
+        trigger = ' ',
+        type,
+        markup,
+        preFormat,
+        format,
+        mode,
+        between,
+        ignoreTrim,
+        insertTrigger,
+      } of rules) {
+        const triggers = castArray(trigger);
 
-          // Check trigger
-          if (!triggers.includes(text)) continue;
+        // Check trigger
+        if (!triggers.includes(text)) continue;
 
-          const markups = castArray(markup);
+        const markups = castArray(markup);
 
-          const rangeFromBlockStart = getRangeFromBlockStart(editor);
-          const textFromBlockStart = getText(editor, rangeFromBlockStart);
+        const rangeFromBlockStart = getRangeFromBlockStart(editor);
+        const textFromBlockStart = getText(editor, rangeFromBlockStart);
 
-          const valid = () => insertTrigger && insertText(text);
+        const valid = () => insertTrigger && insertText(text);
 
-          if (markups.includes(textFromBlockStart)) {
-            // Start of the block
-            autoformatBlock(editor, type, rangeFromBlockStart, {
-              preFormat,
-              format,
-            });
+        if (markups.includes(textFromBlockStart)) {
+          // Start of the block
+          autoformatBlock(editor, type, rangeFromBlockStart, {
+            preFormat,
+            format,
+          });
+          return valid();
+        }
+
+        if (mode === 'inline-block') {
+          if (
+            autoformatInlineBlock(editor, { preFormat, markup, format, type })
+          ) {
             return valid();
-          }
-
-          if (mode === 'inline-block') {
-            if (
-              autoformatInlineBlock(editor, { preFormat, markup, format, type })
-            ) {
-              return valid();
-            }
-          }
-
-          if (mode === 'inline') {
-            if (
-              autoformatInline(editor, {
-                type,
-                between,
-                ignoreTrim,
-                markup: Array.isArray(markup) ? markup[0] : markup,
-              })
-            ) {
-              return valid();
-            }
           }
         }
 
-        insertText(text);
-      };
+        if (mode === 'inline') {
+          if (
+            autoformatInline(editor, {
+              type,
+              between,
+              ignoreTrim,
+              markup: Array.isArray(markup) ? markup[0] : markup,
+            })
+          ) {
+            return valid();
+          }
+        }
+      }
 
-      return editor;
+      insertText(text);
     };
+
+    return editor;
+  };
