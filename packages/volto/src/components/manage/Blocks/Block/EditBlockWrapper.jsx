@@ -3,6 +3,7 @@ import { Icon } from '@plone/volto/components';
 import {
   blockHasValue,
   buildStyleClassNamesFromData,
+  buildStyleObjectFromData,
 } from '@plone/volto/helpers';
 import dragSVG from '@plone/volto/icons/drag.svg';
 import { Button } from 'semantic-ui-react';
@@ -47,14 +48,18 @@ const EditBlockWrapper = (props) => {
     editable,
     properties,
     showBlockChooser,
+    navRoot,
+    contentType,
   } = blockProps;
+
   const visible = selected && !hideHandler(data);
 
   const required = isBoolean(data.required)
     ? data.required
     : includes(config.blocks.requiredBlocks, type);
 
-  const styles = buildStyleClassNamesFromData(data.styles);
+  const classNames = buildStyleClassNamesFromData(data.styles);
+  const style = buildStyleObjectFromData(data.styles);
 
   return (
     <div
@@ -63,9 +68,10 @@ const EditBlockWrapper = (props) => {
       // Right now, we can have the alignment information in the styles property or in the
       // block data root, we inject the classname here for having control over the whole
       // Block Edit wrapper
-      className={cx(`block-editor-${data['@type']}`, styles, {
+      className={cx(`block-editor-${data['@type']}`, classNames, {
         [data.align]: data.align,
       })}
+      style={style}
     >
       <div style={{ position: 'relative' }}>
         <div
@@ -107,6 +113,8 @@ const EditBlockWrapper = (props) => {
               blocksConfig={blocksConfig}
               size="24px"
               properties={properties}
+              navRoot={navRoot}
+              contentType={contentType}
             />
           )}
         </div>

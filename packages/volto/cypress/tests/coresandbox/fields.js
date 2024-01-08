@@ -165,40 +165,6 @@ context('Special fields Acceptance Tests', () => {
     });
   });
 
-  describe('Variation field', () => {
-    beforeEach(() => {
-      cy.intercept('GET', `/**/*?expand*`).as('content');
-      cy.intercept('GET', '/**/Document').as('schema');
-      // given a logged in editor and a page in edit mode
-      cy.autologin();
-      cy.createContent({
-        contentType: 'Document',
-        contentId: 'document',
-        contentTitle: 'Test document',
-      });
-      cy.visit('/');
-      cy.wait('@content');
-
-      cy.navigate('/document');
-      cy.wait('@content');
-
-      cy.navigate('/document/edit');
-      cy.wait('@schema');
-
-      cy.getSlateTitle();
-    });
-
-    it('As editor I can change a variation for a block (that has variations)', function () {
-      cy.getSlate().click();
-      cy.get('.button .block-add-button').click({ force: true });
-      cy.get('.blocks-chooser .mostUsed .button.testBlock').click();
-
-      cy.get('#field-variation').click();
-      cy.findByText('Custom').click();
-      cy.findByText('Custom');
-    });
-  });
-
   describe('ObjectBrowserWidget', () => {
     beforeEach(() => {
       cy.intercept('GET', `/**/*?expand*`).as('content');

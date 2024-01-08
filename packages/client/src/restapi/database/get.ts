@@ -1,6 +1,6 @@
 import { apiRequest, ApiRequestParams } from '../../API';
-import { PloneClientConfig } from '../../interfaces/config';
-import { DatabaseResponse } from '../../interfaces/database';
+import { PloneClientConfig } from '../../validation/config';
+import { DatabaseResponse } from '@plone/types';
 
 export type DatabaseArgs = {
   config: PloneClientConfig;

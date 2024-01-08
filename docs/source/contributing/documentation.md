@@ -110,10 +110,7 @@ Open `/docs/_build/linkcheck/output.txt` for a list of broken links.
 
 #### `docs-vale`
 
-See {ref}`plone:setup-build-installation-vale-label` for how to install Vale.
-
 `docs-vale` checks for American English spelling, grammar, syntax, and the Microsoft Developer Style Guide.
-See {ref}`plone:authors-english-label` for configuration.
 
 ```shell
 make docs-vale
@@ -121,6 +118,11 @@ make docs-vale
 
 See the output on the console for suggestions.
 
+```{seealso}
+See {ref}`plone:authors-english-label` for basic usage.
+
+See {ref}`plone:authors-advanced-vale-usage-label` for Vale configuration, integration with popular IDEs, and other tips.
+```
 
 
 (volto-documentation-storybook-label)=

@@ -9,6 +9,13 @@ myst:
 
 # Develop Volto core
 
+This chapter describes how to develop Volto core and its libraries, packages, and apps as open source software contributions.
+
+For how to develop a project using Volto, see {doc}`plone:install/index`.
+
+
+## Monorepo structure
+
 The Volto core repository has the shape of a monorepo, where "mono" means "single" and "repo" is short for "repository".
 This means that several apps and libraries related to each other are stored in the same repository.
 They are managed together but released individually.
@@ -25,14 +32,16 @@ For more information about pnpm workspaces, read the [documentation of pnpm work
 ```
 
 
-## Folder layout
+### Folder layout
+
+Volto has the following folder structure.
 
 ```text
 (volto-monorepo)/
 ├─ apps/
 │  ├─ plone
 │  ├─ nextjs
-│  ├─ remix
+│  └─ remix
 ├─ packages/
 │  ├─ volto
 │  ├─ client
@@ -45,7 +54,7 @@ For more information about pnpm workspaces, read the [documentation of pnpm work
 │  ├─ tsconfig
 │  ├─ volto-guillotina
 │  ├─ volto-slate
-│  ├─ volto-testing
+│  └─ volto-testing
 ├─ .gitignore
 ├─ package.json
 ├─ pnpm-workspace.yaml
@@ -54,23 +63,34 @@ For more information about pnpm workspaces, read the [documentation of pnpm work
 ├─ ...
 ```
 
-## Development requirements
 
-To set up a Volto core development environment, you need Node.js installed in your system.
-Then, set up the package manager pnpm.
+## Development pre-requisites
 
-We recommend that you install Node.js using nvm.
-Alternatively you can install Node.js using Homebrew or other package installer.
+To set up a Volto core development environment, your system must satisfy the following pre-requisites.
+
+```{include} ./install-operating-system.md
+```
+
+-   {term}`nvm`
+-   {term}`Node.js` LTS 20.x
+-   {term}`pnpm`
+-   {term}`GNU make`
+-   {term}`Docker`
+
+```{note}
+When developing Volto core, pnpm is required.
+When developing a project using Plone, Yarn or other package managers may be used.
+```
 
 
 ### nvm
 
-The following terminal session commands use bash for the shell.
+The following terminal session commands use `bash` for the shell.
 Adapt them for your flavor of shell.
 
 ```{seealso}
-See the [nvm install and update script documentation](https://github.com/nvm-sh/nvm#install--update-script).
-For the fish shell, see [nvm.fish](https://github.com/jorgebucaran/nvm.fish).
+See the [`nvm` install and update script documentation](https://github.com/nvm-sh/nvm#install--update-script).
+For the `fish` shell, see [`nvm.fish`](https://github.com/jorgebucaran/nvm.fish).
 ```
 
 1.  Create your shell profile, if it does not exist.
@@ -79,7 +99,7 @@ For the fish shell, see [nvm.fish](https://github.com/jorgebucaran/nvm.fish).
     touch ~/.bash_profile
     ```
 
-2.  Download and run the nvm install and update script, and pipe it into bash.
+2.  Download and run the `nvm` install and update script, and pipe it into `bash`.
 
     ```shell
     curl -o- https://raw.githubusercontent.com/creationix/nvm/v{NVM_VERSION}/install.sh | bash
@@ -92,7 +112,7 @@ For the fish shell, see [nvm.fish](https://github.com/jorgebucaran/nvm.fish).
     source ~/.bash_profile
     ```
 
-4.  Verify that the nvm version is that which you just installed or updated:
+4.  Verify that the `nvm` version is that which you just installed or updated:
 
     ```shell
     nvm --version
@@ -101,21 +121,14 @@ For the fish shell, see [nvm.fish](https://github.com/jorgebucaran/nvm.fish).
 
 ### Node.js
 
-1.  Install or update the supported LTS versions of Node.js, then activate the version supported in Volto.
+We recommend that you install Node.js using nvm.
+Alternatively you can install Node.js using Homebrew or other package installer.
 
-    ```shell
-    nvm install "lts/*"
-    nvm use 20
-    ```
-
-2.  Verify that the supported version of Node.js is activated.
-
-    ```shell
-    node -v
-    ```
+```{include} ./install-nodejs.md
+```
 
 
-### Install pnpm
+### pnpm
 
 Using corepack:
 
@@ -126,15 +139,38 @@ corepack prepare pnpm@latest --activate
 or using `npm`:
 
 ```shell
-npm install -g pnpm
+npm install -g pnpm@latest
 ```
+
+Verify the latest version.
+
+```shell
+pnpm --version
+```
+
+Compare the output to the [latest pnpm release number](https://www.npmjs.com/package/pnpm).
+
 
 ```{seealso}
 [pnpm installation](https://pnpm.io/installation).
 ```
 
 
+### Make
+
+```{include} ./install-make.md
+```
+
+
+### Docker
+
+```{include} ./install-docker.md
+```
+
+
 ## Set up the environment
+
+You need to perform the steps in this section only once to set up your environment.
 
 Clone the Volto repo, and change your working directory to the cloned repository:
 
@@ -143,11 +179,36 @@ git clone https://github.com/plone/volto.git
 cd volto
 ```
 
-Install dependencies:
+Install the frontend dependencies.
 
 ```shell
 pnpm install
 ```
+
+
+## Start the backend and Volto
+
+Every time you want to run Volto for core development, you will need to create two terminal sessions, one for the backend and one for the frontend.
+For both sessions, change your working directory to the root of your Volto clone.
+
+In the first session, start the backend.
+
+```shell
+make start-backend-docker
+```
+
+When you run this command for the first time, it will download Docker images, configure the backend, and start the backend.
+Browse to the backend running at http://localhost:8080.
+
+In the second session, start the frontend.
+
+```shell
+pnpm start
+```
+
+Browse to the frontend running at http://localhost:3000.
+
+To stop either the backend or frontend, use {kbd}`ctrl-c`.
 
 
 ## Running commands
@@ -161,7 +222,7 @@ pnpm --filter @plone/volto start
 ```
 
 ```shell
-pnp --filter @plone/registry build
+pnpm --filter @plone/registry build
 ```
 
 

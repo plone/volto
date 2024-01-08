@@ -89,3 +89,4 @@ docs/source/news
 
 .turbo
 .parcel-cache/
+tsconfig.tsbuildinfo

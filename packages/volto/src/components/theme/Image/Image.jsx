@@ -45,8 +45,10 @@ export default function Image({
     if (!image) return null;
 
     const isSvg = image['content-type'] === 'image/svg+xml';
+    // In case `base_path` is present (`preview_image_link`) use it as base path
+    const basePath = image.base_path || item['@id'];
 
-    attrs.src = `${flattenToAppURL(item['@id'])}/${image.download}`;
+    attrs.src = `${flattenToAppURL(basePath)}/${image.download}`;
     attrs.width = image.width;
     attrs.height = image.height;
     attrs.className = cx(className, { responsive });
@@ -61,7 +63,7 @@ export default function Image({
       attrs.srcSet = sortedScales
         .map(
           (scale) =>
-            `${flattenToAppURL(item['@id'])}/${scale.download} ${scale.width}w`,
+            `${flattenToAppURL(basePath)}/${scale.download} ${scale.width}w`,
         )
         .join(', ');
     }
