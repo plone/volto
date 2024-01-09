@@ -499,7 +499,13 @@ msgstr ""
 msgid "Browse"
 msgstr "浏览"
 
+#: components/manage/Widgets/ImageWidget
+# defaultMessage: Browse the site
+msgid "Browse the site"
+msgstr ""
+
 #: components/manage/Blocks/Image/Edit
+#: components/manage/Widgets/ImageWidget
 # defaultMessage: Browse the site, drop an image, or type an URL
 msgid "Browse the site, drop an image, or type an URL"
 msgstr "浏览网站，放入一张图片，或者输入一个URL"

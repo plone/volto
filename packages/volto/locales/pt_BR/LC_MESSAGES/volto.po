@@ -503,7 +503,13 @@ msgstr "Relacionamentos rompidos"
 msgid "Browse"
 msgstr "Procurar"
 
+#: components/manage/Widgets/ImageWidget
+# defaultMessage: Browse the site
+msgid "Browse the site"
+msgstr ""
+
 #: components/manage/Blocks/Image/Edit
+#: components/manage/Widgets/ImageWidget
 # defaultMessage: Browse the site, drop an image, or type an URL
 msgid "Browse the site, drop an image, or type an URL"
 msgstr "Navegue no site, arraste uma imagem ou digite uma URL"
