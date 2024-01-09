@@ -240,7 +240,7 @@ const ImageWidget = (props) => {
                           e.preventDefault();
                           openObjectBrowser({
                             onSelectItem: (url, image) => {
-                              onChange(id, image);
+                              onChange(id, image.getURL);
                             },
                           });
                         }}

@@ -9,6 +9,7 @@ import { Icon, SidebarPortal, MapsSidebar } from '@plone/volto/components';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import mapsBlockSVG from '@plone/volto/components/manage/Blocks/Maps/block-maps.svg';
+import ImageWidget from '../../Widgets/ImageWidget';
 
 const messages = defineMessages({
   MapsBlockInputPlaceholder: {
@@ -42,7 +43,7 @@ const Edit = React.memo((props) => {
   const [url, setUrl] = useState('');
   const [error, setError] = useState(null);
 
-  const { onChangeBlock, data, block, selected } = props;
+  const { onChangeBlock, data, block, selected, onSelectBlock } = props;
   const onChangeUrl = ({ target }) => {
     setUrl(target.value);
   };
@@ -174,6 +175,12 @@ const Edit = React.memo((props) => {
           </center>
         </Message>
       )}
+      <ImageWidget
+        onSelectBlock={onSelectBlock}
+        onChange={(e, id) => {
+          console.log(e, id);
+        }}
+      />
       {!selected && <div className="map-overlay" />}
       <SidebarPortal selected={selected}>
         <MapsSidebar {...props} resetSubmitUrl={resetSubmitUrl} />
