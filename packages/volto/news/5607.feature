@@ -1,1 +1,1 @@
-Add ImageWidget with upload/drop/external and inline/widget capabilities @sneridagh @dobri1408
+Added `ImageWidget` with upload, drop, external, and inline capabilities. @sneridagh @dobri1408
