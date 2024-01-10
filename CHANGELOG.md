@@ -8,6 +8,14 @@
 
 <!-- towncrier release notes start -->
 
+## 16.30.1 (2024-01-10)
+
+### Bugfix
+
+- Fix autopopulated value of facet when settings the value for another one. @iFlameing [#5432](https://github.com/plone/volto/issues/5432)
+- Replace createRef with useRef in SidebarPopup
+  [razvanMiu] [#5519](https://github.com/plone/volto/issues/5519)
+
 ## 16.30.0 (2023-12-13)
 
 ### Feature
