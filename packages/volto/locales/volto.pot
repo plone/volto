@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2023-11-27T07:34:40.957Z\n"
+"POT-Creation-Date: 2023-12-23T14:39:48.467Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -1378,6 +1378,11 @@ msgstr ""
 #: components/manage/Sidebar/Sidebar
 # defaultMessage: Expand sidebar
 msgid "Expand sidebar"
+msgstr ""
+
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: Expand toolbar
+msgid "Expand toolbar"
 msgstr ""
 
 #: components/manage/Contents/ContentsPropertiesModal

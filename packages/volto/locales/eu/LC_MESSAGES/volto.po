@@ -1385,6 +1385,11 @@ msgstr "Elementu honentzako ordezko helbidea"
 msgid "Expand sidebar"
 msgstr "Alboko barra zabaldu"
 
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: Expand toolbar
+msgid "Expand toolbar"
+msgstr ""
+
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: Expiration Date
 msgid "Expiration Date"

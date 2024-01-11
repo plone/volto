@@ -71,6 +71,10 @@ const messages = defineMessages({
     id: 'Shrink toolbar',
     defaultMessage: 'Shrink toolbar',
   },
+  expandToolbar: {
+    id: 'Expand toolbar',
+    defaultMessage: 'Expand toolbar',
+  },
   personalInformation: {
     id: 'Personal Information',
     defaultMessage: 'Personal Information',
@@ -587,9 +591,11 @@ class Toolbar extends Component {
             </div>
             <div className="toolbar-handler">
               <button
-                aria-label={this.props.intl.formatMessage(
-                  messages.shrinkToolbar,
-                )}
+                aria-label={
+                  expanded
+                    ? this.props.intl.formatMessage(messages.expandToolbar)
+                    : this.props.intl.formatMessage(messages.shrinkToolbar)
+                }
                 className={cx({
                   [this.props.content?.review_state]:
                     this.props.content?.review_state,
