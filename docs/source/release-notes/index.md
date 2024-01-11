@@ -17,6 +17,16 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 17.10.0 (2024-01-11)
+
+### Feature
+
+- Enhanced `ColorPickerWidget` with additional color definitions, saving it as an object instead of a string. @sneridagh [#5585](https://github.com/plone/volto/issues/5585)
+
+### Internal
+
+- Update to latest @plone/scripts @sneridagh [#5612](https://github.com/plone/volto/issues/5612)
+
 ## 17.9.0 (2024-01-04)
 
 ### Feature
