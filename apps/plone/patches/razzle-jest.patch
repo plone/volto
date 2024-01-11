@@ -1,0 +1,10 @@
+--- node_modules/razzle/config/createJestConfig.js	2020-05-09 19:48:07.276871617 +0200
++++ patched.js	2020-05-09 19:50:07.049471664 +0200
+@@ -60,6 +60,7 @@
+     'moduleDirectories',
+     'moduleFileExtensions',
+     'moduleNameMapper',
++    'modulePathIgnorePatterns',
+     'modulePaths',
+     'snapshotSerializers',
+     'setupFiles',

@@ -4,7 +4,7 @@
 
 ## Installation
 
-First, install [Yeoman](http://yeoman.io) and @plone/generator-volto using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
+First, install [Yeoman](http://yeoman.io) and @plone/generator-volto using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/en)).
 
 ```bash
 npm install -g yo
@@ -13,14 +13,11 @@ npm install -g @plone/generator-volto
 
 ## Compatibility
 
-| Plone version | Volto version |
-|----------|--------------|
-| 7.x      | >=17.0.0     |
-| 6.x      | 16.x.x       |
+See [`volto-generator` compatibility with Volto](https://6.docs.plone.org/volto/contributing/version-policy.html#volto-generator-compatibility-with-volto-label).
 
 ## Usage
 
-### Creating a new Volto project using `npm init`
+### Create a new Volto project using `npm init`
 
 ```bash
 npm init yo @plone/volto
@@ -129,9 +126,9 @@ Arguments:
   addonName  # Addon name, e.g.: @plone-collective/volto-custom-block  Type: String  Required: false
 ```
 
-### Enabling an existing add-on as a theme add-on
+### Enable an existing add-on as a theme add-on
 
-If you want one of your add-ons to be a theme, you can run this template on the top of your add-on.
+If you want one of your add-ons to be a theme, you can run this template on top of your add-on.
 Use the configuration option `outputpath` for the path of your add-on.
 Assuming your add-on is located at `./testaddon` folder, you would issue the following shell command.
 
@@ -175,12 +172,11 @@ Please note that you have to run a Plone backend as well.
 E.g. with docker:
 
 ```shell
-docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e PROFILES="plone.volto:default-homepage" plone/plone-backend:6.0.7
+docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e PROFILES="plone.volto:default-homepage" plone/plone-backend:6.0.8
 ```
 
-Consult the Plone frontend Volto docs for further details:
+Consult the [Plone frontend Volto documentation](https://6.docs.plone.org/volto/index.html) for further details.
 
-https://6.docs.plone.org/volto/index.html
 
 ### Build a production build with `yarn build`
 
