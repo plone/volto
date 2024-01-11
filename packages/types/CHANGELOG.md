@@ -8,6 +8,16 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.1 (2024-01-02)
+
+### Feature
+
+- Improve exports, include the main ConfigData definition from registry @sneridagh [#5587](https://github.com/plone/volto/issues/5587)
+
+### Bugfix
+
+- Fixed `blocks_layout` in `Content` interface @sneridagh [#5544](https://github.com/plone/volto/issues/5544)
+
 ## 1.0.0-alpha.0 (2023-12-13)
 
 ### Feature

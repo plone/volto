@@ -149,4 +149,16 @@ module.exports = {
   core: {
     builder: 'webpack5',
   },
+  typescript: {
+    check: false,
+    checkOptions: {},
+    reactDocgen: 'react-docgen-typescript-plugin',
+    reactDocgenTypescriptOptions: {
+      compilerOptions: {
+        allowSyntheticDefaultImports: false,
+        esModuleInterop: false,
+      },
+      propFilter: () => true,
+    },
+  },
 };
