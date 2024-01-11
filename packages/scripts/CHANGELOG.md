@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 3.2.1 (2024-01-11)
+
+### Bugfix
+
+- Fix the package to work with Volto 17 and below @sneridagh [#5613](https://github.com/plone/volto/issues/5613)
+
 ## 3.2.0 (2024-01-11)
 
 ### Feature
