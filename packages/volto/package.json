@@ -349,6 +349,7 @@
   "devDependencies": {
     "@jest/globals": "^29.7.0",
     "@plone/volto-coresandbox": "workspace:*",
+    "@sinonjs/fake-timers": "^11.2.2",
     "@storybook/addon-actions": "^6.5.15",
     "@storybook/addon-controls": "6.5.15",
     "@storybook/addon-essentials": "^6.5.15",
@@ -362,6 +363,7 @@
     "@testing-library/react-hooks": "8.0.1",
     "@types/jest": "^29.5.8",
     "@types/loadable__component": "^5.13.8",
+    "@types/lodash": "^4.14.201",
     "@types/react": "^17.0.52",
     "@types/react-dom": "^17",
     "@types/react-test-renderer": "18.0.1",
@@ -378,6 +380,7 @@
     "jest-environment-jsdom": "^26",
     "jsdom": "^16.7.0",
     "jsonwebtoken": "9.0.0",
+    "react-docgen-typescript-plugin": "^1.0.5",
     "react-error-overlay": "6.0.9",
     "react-is": "^16.13.1",
     "release-it": "^16.2.1",

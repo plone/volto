@@ -1,8 +1,8 @@
 const webpack = require('webpack');
 const fs = require('fs');
 const path = require('path');
-const makeLoaderFinder = require('razzle-dev-utils/makeLoaderFinder');
-const fileLoaderFinder = makeLoaderFinder('file-loader');
+// const makeLoaderFinder = require('razzle-dev-utils/makeLoaderFinder');
+// const fileLoaderFinder = makeLoaderFinder('file-loader');
 const projectRootPath = path.resolve('.');
 const lessPlugin = require('../webpack-plugins/webpack-less-plugin');
 const createConfig = require('../node_modules/razzle/config/createConfigAsync.js');
@@ -148,5 +148,17 @@ module.exports = {
   },
   core: {
     builder: 'webpack5',
+  },
+  typescript: {
+    check: false,
+    checkOptions: {},
+    reactDocgen: 'react-docgen-typescript-plugin',
+    reactDocgenTypescriptOptions: {
+      compilerOptions: {
+        allowSyntheticDefaultImports: false,
+        esModuleInterop: false,
+      },
+      propFilter: () => true,
+    },
   },
 };
