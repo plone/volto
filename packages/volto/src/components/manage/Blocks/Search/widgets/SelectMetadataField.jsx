@@ -35,12 +35,6 @@ const messages = defineMessages({
  * @returns {string} Markup of the component.
  */
 const SelectWidget = (props) => {
-  // const [selectedOption, setSelectedOption] = useState(
-  //   props.value
-  //     ? { label: props.value.title, value: props.value.value }
-  //     : {}
-  // );
-
   const { choices, vocabBaseUrl, getVocabulary } = props;
 
   useEffect(() => {
@@ -48,40 +42,6 @@ const SelectWidget = (props) => {
       getVocabulary({ vocabNameOrURL: vocabBaseUrl });
     }
   }, [choices, vocabBaseUrl, getVocabulary]);
-
-  // const loadOptions = (search, previousOptions, additional) => {
-  //   let hasMore = props.itemsTotal > previousOptions.length;
-  //   if (hasMore) {
-  //     const offset = selectedOption.search !== search ? 0 : additional.offset;
-  //     props.getVocabulary({
-  //       vocabNameOrURL: props.vocabBaseUrl,
-  //       query: search,
-  //       start: offset,
-  //     });
-  //     setSelectedOption({ search });
-
-  //     return {
-  //       options:
-  //         intersection(previousOptions, props.choices).length ===
-  //           props.choices.length
-  //           ? []
-  //           : props.choices,
-  //       hasMore: hasMore,
-  //       additional: {
-  //         offset: offset === additional.offset ? offset + 25 : offset,
-  //       },
-  //     };
-  //   }
-  //   return null;
-  // };
-
-  // const handleChange = (selectedOption) => {
-  //   setSelectedOption(selectedOption);
-  //   props.onChange(props.id, {
-  //     value: selectedOption.value,
-  //     title: selectedOption.label,
-  //   });
-  // };
 
   const {
     id,
