@@ -1,1 +1,1 @@
-Refactored src/components/manage/Blocks/Search/widgets/SelectMetadataField.jsx to functional component. @lorstenoplo
+Refactored the `SelectWidget` component to a functional component. @lorstenoplo
