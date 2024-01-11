@@ -30,7 +30,7 @@ function extractMessages() {
     // If so, we should do it in the config object or somewhere else
     // We also ignore the addons folder since they are populated using
     // their own locales files and taken care separatedly in this script
-    glob('src/**/*.js?(x)', {
+    glob('src/**/*.{js,jsx,ts,tsx}', {
       ignore: ['src/customizations/**', 'src/addons/**'],
     }),
     (filename) => {
@@ -271,12 +271,27 @@ function main({ addonMode }) {
   if (!addonMode) {
     let AddonConfigurationRegistry;
     try {
-      AddonConfigurationRegistry = require(
-        path.join(
-          projectRootPath,
-          '/node_modules/@plone/registry/src/addon-registry',
-        ),
-      );
+      // Detect where is the registry (if we are in Volto 18 or above)
+      if (
+        fs.existsSync(
+          path.join(
+            projectRootPath,
+            '/node_modules/@plone/registry/src/addon-registry.js',
+          ),
+        )
+      ) {
+        AddonConfigurationRegistry = require(
+          path.join(
+            projectRootPath,
+            '/node_modules/@plone/registry/src/addon-registry',
+          ),
+        );
+      } else {
+        // We are in Volto 17 or below
+        AddonConfigurationRegistry = require(
+          path.join(projectRootPath, 'addon-registry'),
+        );
+      }
     } catch {
       console.log(
         chalk.red(

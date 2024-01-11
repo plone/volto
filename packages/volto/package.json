@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "18.0.0-alpha.5",
+  "version": "18.0.0-alpha.6",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -361,6 +361,7 @@
     "@testing-library/react": "12.1.5",
     "@testing-library/react-hooks": "8.0.1",
     "@types/jest": "^29.5.8",
+    "@types/lodash": "^4.14.201",
     "@types/react": "^17.0.52",
     "@types/react-dom": "^17",
     "@types/react-test-renderer": "18.0.1",
@@ -377,6 +378,7 @@
     "jest-environment-jsdom": "^26",
     "jsdom": "^16.7.0",
     "jsonwebtoken": "9.0.0",
+    "react-docgen-typescript-plugin": "^1.0.5",
     "react-error-overlay": "6.0.9",
     "react-is": "^16.13.1",
     "release-it": "^16.2.1",
