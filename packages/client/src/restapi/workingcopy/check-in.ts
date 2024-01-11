@@ -3,7 +3,7 @@ import { apiRequest, ApiRequestParams } from '../../API';
 import {
   PloneClientConfig,
   PloneClientConfigSchema,
-} from '../../interfaces/config';
+} from '../../validation/config';
 
 export const checkInWorkingcopyArgsSchema = z.object({
   path: z.string(),

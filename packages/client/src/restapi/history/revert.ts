@@ -3,8 +3,8 @@ import { apiRequest, ApiRequestParams } from '../../API';
 import {
   PloneClientConfig,
   PloneClientConfigSchema,
-} from '../../interfaces/config';
-import { revertHistoryDataSchema } from '../../interfaces/history';
+} from '../../validation/config';
+import { revertHistoryDataSchema } from '../../validation/history';
 
 export const revertHistoryArgsSchema = z.object({
   path: z.string(),

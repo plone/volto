@@ -1,6 +1,6 @@
 import { apiRequest, ApiRequestParams } from '../../API';
-import { PloneClientConfig } from '../../interfaces/config';
-import { GetAliasesListResponse } from '../../interfaces/aliases';
+import { PloneClientConfig } from '../../validation/config';
+import { GetAliasesListResponse } from '@plone/types';
 
 export type AliasesListArgs = {
   config: PloneClientConfig;

@@ -1,7 +1,7 @@
 import { apiRequest, ApiRequestParams } from '../../API';
-import { PloneClientConfig } from '../../interfaces/config';
+import { PloneClientConfig } from '../../validation/config';
 import { z } from 'zod';
-import { GetRelationsResponse } from '../../interfaces/relations';
+import { GetRelationsResponse } from '@plone/types';
 
 export const getRelationsSchema = z
   .object({

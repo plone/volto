@@ -3,11 +3,9 @@ import { ApiRequestParams, apiRequest } from '../../API';
 import {
   PloneClientConfig,
   PloneClientConfigSchema,
-} from '../../interfaces/config';
-import {
-  copyMoveDataSchema as copyDataSchema,
-  CopyMoveResponse as CopyResponse,
-} from '../../interfaces/copymove';
+} from '../../validation/config';
+import { copyMoveDataSchema as copyDataSchema } from '../../validation/copymove';
+import { CopyMoveResponse as CopyResponse } from '@plone/types';
 
 export const copyArgsSchema = z.object({
   data: copyDataSchema,
