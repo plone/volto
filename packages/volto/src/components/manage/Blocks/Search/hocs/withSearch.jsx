@@ -23,6 +23,22 @@ const SEARCH_ENDPOINT_FIELDS = [
 const PAQO = 'plone.app.querystring.operation';
 
 /**
+ * Remove the query which is also present in facet.
+ * @function removeQueryOfFacet
+ */
+
+function removeQueryOfFacet(facetSettings, query) {
+  const configuredFacets = facetSettings
+    ? facetSettings.map((facet) => facet?.field?.value)
+    : [];
+  let copyOfQuery = query ? [...query] : [];
+
+  return copyOfQuery.filter((query) => {
+    return !configuredFacets.includes(query.i);
+  });
+}
+
+/**
  * Based on URL state, gets an initial internal state for the search
  *
  * @function getInitialState
@@ -40,9 +56,14 @@ function getInitialState(
     config.blocks.blocksConfig.search.extensions.facetWidgets;
   const facetSettings = data?.facets || [];
 
+  const queryWithoutFacet = removeQueryOfFacet(
+    facetSettings,
+    data?.query?.query,
+  );
+
   return {
     query: [
-      ...(data.query?.query || []),
+      ...(queryWithoutFacet || []),
       ...(facetSettings || [])
         .map((facet) => {
           if (!facet?.field) return null;
@@ -98,15 +119,8 @@ function normalizeState({
 
   // Here, we are removing the QueryString of the Listing ones, which is present in the Facet
   // because we already initialize the facet with those values.
-  const configuredFacets = facetSettings
-    ? facetSettings.map((facet) => facet?.field?.value)
-    : [];
 
-  let copyOfQuery = query.query ? [...query.query] : [];
-
-  const queryWithoutFacet = copyOfQuery.filter((query) => {
-    return !configuredFacets.includes(query.i);
-  });
+  const queryWithoutFacet = removeQueryOfFacet(facetSettings, query.query);
 
   const params = {
     query: [
