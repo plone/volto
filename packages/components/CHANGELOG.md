@@ -8,6 +8,21 @@
 
 <!-- towncrier release notes start -->
 
+## 1.7.0 (2023-12-25)
+
+### Feature
+
+- Introduce support views - Add `RenderBlocks` view @sneridagh [#16](https://github.com/plone/volto/issues/16)
+- Transfer `@plone/components` to the Volto monorepo @sneridagh [#5544](https://github.com/plone/volto/issues/5544)
+
+### Bugfix
+
+- Fixed some imports, build was failing @sneridagh [#5545](https://github.com/plone/volto/issues/5545)
+
+### Internal
+
+- ESlint general improvements @sneridagh [#5548](https://github.com/plone/volto/issues/5548)
+
 ## 1.6.0 (2023-11-12)
 
 ### Internal

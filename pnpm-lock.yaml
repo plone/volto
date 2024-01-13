@@ -518,7 +518,7 @@ importers:
         specifier: 11.1.0
         version: 11.1.0(less@3.11.1)(webpack@5.76.1)
       mrs-developer:
-        specifier: '*'
+        specifier: ^2.1.1
         version: 2.1.1
       postcss:
         specifier: 8.4.31
@@ -1114,7 +1114,7 @@ importers:
         specifier: 4.17.21
         version: 4.17.21
       mrs-developer:
-        specifier: '*'
+        specifier: ^2.1.1
         version: 2.1.1
       pofile:
         specifier: 1.0.10
@@ -1724,6 +1724,9 @@ importers:
       '@types/jest':
         specifier: ^29.5.8
         version: 29.5.8
+      '@types/lodash':
+        specifier: ^4.14.201
+        version: 4.14.201
       '@types/react':
         specifier: ^17.0.52
         version: 17.0.70
@@ -1769,6 +1772,9 @@ importers:
       jsonwebtoken:
         specifier: 9.0.0
         version: 9.0.0
+      react-docgen-typescript-plugin:
+        specifier: ^1.0.5
+        version: 1.0.5(typescript@5.2.2)(webpack@5.76.1)
       react-error-overlay:
         specifier: 6.0.9
         version: 6.0.9
@@ -30195,6 +30201,25 @@ packages:
       recompose: 0.27.1(react@17.0.2)
       shallowequal: 1.1.0
     dev: false
+
+  /react-docgen-typescript-plugin@1.0.5(typescript@5.2.2)(webpack@5.76.1):
+    resolution: {integrity: sha512-Ds6s2ioyIlH45XSfEVMNwRcDkzuff3xQCPxDFOzTc8GEshy+hksas8RYlmV4JEQREI+OGEGybhMCJk3vFbQZNQ==}
+    peerDependencies:
+      typescript: '>= 4.x'
+      webpack: '>= 4'
+    dependencies:
+      debug: 4.3.2(supports-color@8.1.1)
+      endent: 2.1.0
+      find-cache-dir: 3.3.2
+      flat-cache: 3.2.0
+      micromatch: 4.0.5
+      react-docgen-typescript: 2.2.2(typescript@5.2.2)
+      tslib: 2.6.2
+      typescript: 5.2.2
+      webpack: 5.76.1
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
 
   /react-docgen-typescript@2.2.2(typescript@5.2.2):
     resolution: {integrity: sha512-tvg2ZtOpOi6QDwsb3GZhOjDkkX0h8Z2gipvTg6OVMUyoYoURhEiRNePT8NZItTVCDh39JJHnLdfCOkzoLbFnTg==}
