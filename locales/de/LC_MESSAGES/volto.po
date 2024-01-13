@@ -2336,6 +2336,7 @@ msgid "No items found in this container."
 msgstr "Keine Elemente gefunden"
 
 #: components/manage/Widgets/ObjectBrowserWidget
+#: components/manage/Widgets/QueryWidget
 # defaultMessage: No items selected
 msgid "No items selected"
 msgstr "Kein Element ausgewählt"
@@ -4650,6 +4651,16 @@ msgstr "Privat"
 # defaultMessage: Published
 msgid "published"
 msgstr "Veröffentlicht"
+
+#: components/manage/Widgets/QueryWidget
+# defaultMessage: Current path (./)
+msgid "query-widget-currentPath"
+msgstr ""
+
+#: components/manage/Widgets/QueryWidget
+# defaultMessage: Parent path (../)
+msgid "query-widget-parentPath"
+msgstr ""
 
 #: components/manage/Widgets/QueryWidget
 # defaultMessage: Select…

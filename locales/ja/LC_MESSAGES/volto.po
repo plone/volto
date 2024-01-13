@@ -2338,6 +2338,7 @@ msgid "No items found in this container."
 msgstr "アイテムが見つかりませんでした"
 
 #: components/manage/Widgets/ObjectBrowserWidget
+#: components/manage/Widgets/QueryWidget
 # defaultMessage: No items selected
 msgid "No items selected"
 msgstr "未選択"
@@ -4652,6 +4653,16 @@ msgstr "非表示"
 # defaultMessage: Published
 msgid "published"
 msgstr "公開中"
+
+#: components/manage/Widgets/QueryWidget
+# defaultMessage: Current path (./)
+msgid "query-widget-currentPath"
+msgstr ""
+
+#: components/manage/Widgets/QueryWidget
+# defaultMessage: Parent path (../)
+msgid "query-widget-parentPath"
+msgstr ""
 
 #: components/manage/Widgets/QueryWidget
 # defaultMessage: Select…
