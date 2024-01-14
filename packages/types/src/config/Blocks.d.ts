@@ -2,13 +2,34 @@ import type { Content } from '../content';
 import type { BlockViewProps } from '../blocks';
 
 export interface BlocksConfig {
-  [key: string]: BlockConfigBase | undefined;
-  title?: BlockConfigBase;
-  description?: BlockConfigBase;
-  slate?: SlateBlock;
+  blocksConfig: BlocksConfigData;
+  groupBlocksOrder: { id: string; title: string };
+  requiredBlocks: string[];
+  initialBlocks: Record<string, string>;
+  initialBlocksFocus: Record<string, string>;
 }
 
-interface BlockConfigBase {
+export interface BlocksConfigData {
+  [key: string]: BlockConfigBase | undefined;
+  title: BlockConfigBase;
+  description: BlockConfigBase;
+  slate: SlateBlock;
+  text: BlockConfigBase;
+  image: BlockConfigBase;
+  leadimage: BlockConfigBase;
+  listing: BlockConfigBase;
+  video: BlockConfigBase;
+  toc: BlockConfigBase;
+  hero: BlockConfigBase;
+  maps: BlockConfigBase;
+  html: BlockConfigBase;
+  table: BlockConfigBase;
+  search: BlockConfigBase;
+  gridBlock: BlockConfigBase;
+  teaser: BlockConfigBase;
+}
+
+export interface BlockConfigBase {
   /**
    * The programmatic id of the block
    */
@@ -28,11 +49,11 @@ interface BlockConfigBase {
   /**
    * The view mode component
    */
-  view: React.ComponentType<BlockViewProps>;
+  view?: React.ComponentType<BlockViewProps>;
   /**
    * The edit mode component
    */
-  edit: React.ComponentType;
+  edit?: React.ComponentType;
   /**
    * The group (blocks can be grouped, displayed in the chooser)
    */
@@ -41,8 +62,8 @@ interface BlockConfigBase {
    * The group of the block
    */
   blockSchema?: (args: {
-    props: unknown;
-    intl: unknown;
+    props?: unknown;
+    intl?: unknown;
   }) => Record<string, unknown>;
   /**
    * If the block is restricted, it won't show in the chooser.
@@ -51,39 +72,67 @@ interface BlockConfigBase {
    * in `BlockChooser`, `navRoot` is the nearest navigation root object and
    * `contentType` is the current content type.
    */
-  restricted: (args: {
-    properties: Content;
-    block: BlockConfigBase; // TODO: This has to be extendable
-    navRoot: Content;
-    contentType: string;
-  }) => boolean;
+  restricted:
+    | ((args: {
+        properties: Content;
+        block: BlockConfigBase; // TODO: This has to be extendable
+        navRoot: Content;
+        contentType: string;
+      }) => boolean)
+    | boolean;
+
   /**
    * A meta group `most used`, appearing at the top of the chooser
    */
-  mostUsed: false;
+  mostUsed: boolean;
   /**
    * Set this to true if the block manages its own focus
    */
-  blockHasOwnFocusManagement: true;
+  blockHasOwnFocusManagement?: boolean;
   /**
    * The sidebar tab you want to be selected when selecting the block
    */
-  sidebarTab: 0;
+  sidebarTab: boolean | 0 | 1;
   /**
    * A block can have an schema enhancer function with the signature: (schema) => schema
    * It can be either be at block level (it's applied always), at a variation level
    * or both. It's up to the developer to make them work nicely (not conflict) between them
    */
-  schemaEnhancer: (args: {
+  schemaEnhancer?: (args: {
     schema: JSONSchema;
     formData: BlockConfigBase; // Not sure, if so, has to be extendable
     intl: unknown;
     navRoot: Content;
     contentType: string;
   }) => JSONSchema;
+  /**
+   * A block can define variations (it should include the stock, default one)
+   */
+  variations?: BlockExtensions;
+  /**
+   * A block can define extensions that enhance the default stock block
+   */
+  // TODO: Improve extensions shape
+  extensions?: Record<string, BlockExtensions>;
 }
 
-interface SlateBlock extends BlockConfigBase {
+export type BlockExtensions = ((
+  | {
+      id: string;
+      isDefault: true;
+      title: string;
+    }
+  | {
+      id: string;
+      title: string;
+    }
+) & {
+  template?: React.ComponentType<any>;
+  render?: React.ComponentType<any>;
+  fullobjects?: boolean;
+})[];
+
+export interface SlateBlock extends BlockConfigBase {
   /**
    * Returns true if the provided block data represents a value for the current block.
    * Required for alternate default block types implementations.
@@ -129,20 +178,20 @@ export interface ContainerBlock extends BlockConfigBase {
 // myObject.bar = 42;
 // myObject.baz = { someProp: 'someValue' };
 
-type JSONSchemaFieldsets = {
+export type JSONSchemaFieldsets = {
   id: string;
   title: string;
   fields: string[];
 };
 
-type JSONSchema = {
+export type JSONSchema = {
   title: string;
   fieldsets: JSONSchemaFieldsets[];
   properties: object;
   required: string[];
 };
 
-type BlocksData = {
+export type BlocksData = {
   blocks: {
     [key: string]: object;
   };
@@ -151,7 +200,7 @@ type BlocksData = {
   };
 };
 
-interface TemplateDefaultBlocksData {
+export interface TemplateDefaultBlocksData {
   image: string;
   id: string;
   title: string;

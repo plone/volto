@@ -949,6 +949,9 @@ importers:
       react:
         specifier: 17.0.2
         version: 17.0.2
+      react-dom:
+        specifier: 17.0.2
+        version: 17.0.2(react@17.0.2)
       react-intl:
         specifier: 3.8.0
         version: 3.8.0(react@17.0.2)
@@ -958,6 +961,19 @@ importers:
       semantic-ui-react:
         specifier: 2.0.3
         version: 2.0.3(react-dom@17.0.2)(react@17.0.2)
+    devDependencies:
+      '@plone/types':
+        specifier: workspace:*
+        version: link:../types
+      '@types/react':
+        specifier: ^17.0.52
+        version: 17.0.70
+      '@types/react-dom':
+        specifier: ^17
+        version: 17.0.23
+      '@types/react-redux':
+        specifier: ^7.1.33
+        version: 7.1.33
 
   packages/generator-volto:
     dependencies:
@@ -13373,7 +13389,6 @@ packages:
     dependencies:
       '@types/react': 18.2.27
       hoist-non-react-statics: 3.3.2
-    dev: false
 
   /@types/html-minifier-terser@5.1.2:
     resolution: {integrity: sha512-h4lTMgMJctJybDp8CQrxTUiiYmedihHWkjnF/8Pxseu2S6Nlfcy8kwboQ8yejh456rP2yWoEVm1sS/FVsfM48w==}
@@ -13581,6 +13596,15 @@ packages:
       hoist-non-react-statics: 3.3.2
       redux: 4.1.0
     dev: false
+
+  /@types/react-redux@7.1.33:
+    resolution: {integrity: sha512-NF8m5AjWCkert+fosDsN3hAlHzpjSiXlVy9EgQEmLoBhaNXbmyeGs/aj5dQzKuF+/q+S7JQagorGDW8pJ28Hmg==}
+    dependencies:
+      '@types/hoist-non-react-statics': 3.3.5
+      '@types/react': 18.2.27
+      hoist-non-react-statics: 3.3.2
+      redux: 4.1.0
+    dev: true
 
   /@types/react-syntax-highlighter@11.0.5:
     resolution: {integrity: sha512-VIOi9i2Oj5XsmWWoB72p3KlZoEbdRAcechJa8Ztebw7bDl2YmR+odxIqhtJGp1q2EozHs02US+gzxJ9nuf56qg==}
@@ -31241,7 +31265,6 @@ packages:
     resolution: {integrity: sha512-uI2dQN43zqLWCt6B/BMGRMY6db7TTY4qeHHfGeKb3EOhmOKjU3KdWvNLJyqaHRksv/ErdNH7cFZWg9jXtewy4g==}
     dependencies:
       '@babel/runtime': 7.20.6
-    dev: false
 
   /reflect.getprototypeof@1.0.4:
     resolution: {integrity: sha512-ECkTw8TmJwW60lOTR+ZkODISW6RQ8+2CL3COqtiJKLd6MmB45hN51HprHFziKLGkAuTGQhBb91V8cy+KHlaCjw==}
