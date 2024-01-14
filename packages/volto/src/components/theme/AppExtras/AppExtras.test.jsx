@@ -9,8 +9,9 @@ beforeAll(() => {
       match: {
         path: '',
       },
+      exclude: '/blog',
       component: jest.fn((props) => (
-        <div className="everywhere">{props.pathname}</div>
+        <div className="everywhere-except-blog">{props.pathname}</div>
       )),
     },
     {
