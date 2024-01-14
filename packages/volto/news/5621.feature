@@ -1,0 +1,1 @@
+Added exclude Property to Rule Configuration: Enhanced flexibility in rule application by introducing an exclude property. This new feature allows for specifying exceptions to rules that are applied to all routes. It's particularly useful for cases where a rule should apply universally, except for specific pages. @dobri1408
