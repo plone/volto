@@ -70,3 +70,16 @@
     }
   }
 }
+
+.popperJs-dropdown-popup {
+  > .menu {
+    .item {
+      display: flex !important;
+      align-items: center;
+
+      > .icon {
+        margin-right: 1rem;
+      }
+    }
+  }
+}
