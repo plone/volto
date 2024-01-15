@@ -146,17 +146,11 @@ export const workingCopyFixture = (config: ConfigData) => {
   return config;
 };
 
-// export interface CustomBlocksConfigData extends BlocksConfigData {
-//   testBlock: BlockConfigBase;
-// }
-
-// export interface CustomBlocksConfig extends BlocksConfig {
-//   blocksConfig: CustomBlocksConfigData;
-// }
-
-// export interface CustomConfigData extends ConfigData {
-//   blocks: CustomBlocksConfig;
-// }
+declare module '@plone/types' {
+  export interface BlocksConfigData {
+    testBlock: BlockConfigBase;
+  }
+}
 
 const applyConfig = (config: ConfigData) => {
   config.blocks.blocksConfig.testBlock = testBlock;

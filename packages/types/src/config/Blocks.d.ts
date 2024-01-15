@@ -1,5 +1,6 @@
 import type { Content } from '../content';
-import type { BlockViewProps } from '../blocks';
+import type { BlockViewProps, BlockEditProps } from '../blocks';
+import type { IntlShape } from 'react-intl';
 
 export interface BlocksConfig {
   blocksConfig: BlocksConfigData;
@@ -53,7 +54,7 @@ export interface BlockConfigBase {
   /**
    * The edit mode component
    */
-  edit?: React.ComponentType;
+  edit?: React.ComponentType<BlockEditProps>;
   /**
    * The group (blocks can be grouped, displayed in the chooser)
    */
@@ -61,9 +62,9 @@ export interface BlockConfigBase {
   /**
    * The group of the block
    */
-  blockSchema?: (args: {
-    props?: unknown;
-    intl?: unknown;
+  blockSchema: (args: {
+    props: unknown;
+    intl: IntlShape;
   }) => Record<string, unknown>;
   /**
    * If the block is restricted, it won't show in the chooser.
@@ -101,22 +102,22 @@ export interface BlockConfigBase {
   schemaEnhancer?: (args: {
     schema: JSONSchema;
     formData: BlockConfigBase; // Not sure, if so, has to be extendable
-    intl: unknown;
+    intl: IntlShape;
     navRoot: Content;
     contentType: string;
   }) => JSONSchema;
   /**
    * A block can define variations (it should include the stock, default one)
    */
-  variations?: BlockExtensions;
+  variations?: BlockExtension[];
   /**
    * A block can define extensions that enhance the default stock block
    */
   // TODO: Improve extensions shape
-  extensions?: Record<string, BlockExtensions>;
+  extensions?: Record<string, BlockExtension>;
 }
 
-export type BlockExtensions = ((
+export type BlockExtension = (
   | {
       id: string;
       isDefault: true;
@@ -130,7 +131,7 @@ export type BlockExtensions = ((
   template?: React.ComponentType<any>;
   render?: React.ComponentType<any>;
   fullobjects?: boolean;
-})[];
+};
 
 export interface SlateBlock extends BlockConfigBase {
   /**
@@ -156,7 +157,7 @@ export interface ContainerBlock extends BlockConfigBase {
   /**
    * The available templates for the TemplateChooser generator
    */
-  templates: (type: string) => (intl: unknown) => TemplateDefaultBlocksData;
+  templates: (type: string) => (intl: IntlShape) => TemplateDefaultBlocksData;
   /**
    * Maximum number of blocks in the container
    */
