@@ -1,4 +1,4 @@
 export function authenticatedRole(role: any): {
-    type: any;
+    type: string;
     result: any;
 };
