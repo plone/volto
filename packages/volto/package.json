@@ -39,7 +39,7 @@
     "start": "razzle start",
     "start:coresandbox": "ADDONS=coresandbox razzle start",
     "build": "razzle build --noninteractive",
-    "build:types": "tsc src/**/*.{js,jsx} --declaration --allowJs --emitDeclarationOnly --outDir types --skipLibCheck",
+    "build:types": "tsc --project tsconfig.declarations.json",
     "test": "razzle test --maxWorkers=50%",
     "test:ci": "CI=true NODE_ICU_DATA=node_modules/full-icu razzle test",
     "test:husky": "CI=true yarn test --bail --findRelatedTests",

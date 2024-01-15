@@ -1,7 +1,7 @@
 /**
  * Widget for a querystring value, to define a catalog search criteria.
  */
-export class QuerystringWidgetComponent extends Component<any, any, any> {
+export class QuerystringWidgetComponent extends React.Component<any, any, any> {
     /**
      * Property types.
      * @property {Object} propTypes Property types.
@@ -74,8 +74,8 @@ export class QuerystringWidgetComponent extends Component<any, any, any> {
      */
     render(): string;
 }
-declare const _default: import("react").ForwardRefExoticComponent<Pick<import("react-intl").WithIntlProps<import("react-intl").WrappedComponentProps<string>>, string> & import("react").RefAttributes<import("react").ComponentType<import("react-intl").WrappedComponentProps<string>>>> & {
-    WrappedComponent: import("react").ComponentType<import("react-intl").WrappedComponentProps<string>>;
+declare const _default: React.ForwardRefExoticComponent<Omit<import("react-intl").WithIntlProps<import("react-intl").WrappedComponentProps<string>>, "ref"> & React.RefAttributes<React.ComponentType<import("react-intl").WrappedComponentProps<string>>>> & {
+    WrappedComponent: React.ComponentType<import("react-intl").WrappedComponentProps<string>>;
 };
 export default _default;
-import { Component } from 'react';
+import React from 'react';
