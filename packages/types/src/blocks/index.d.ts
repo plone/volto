@@ -1,12 +1,20 @@
 import type { Content } from '../content';
-import type { BlockExtension, BlocksConfigData } from '../config/Blocks';
+import type {
+  AvailableBlocks,
+  BlockExtension,
+  BlocksConfigData,
+} from '../config/Blocks';
 import type { IntlShape } from 'react-intl';
 import type { Location, History } from 'history';
+
+export interface BlocksFormData {
+  '@type': AvailableBlocks;
+}
 
 export interface BlockViewProps {
   blocksConfig: BlocksConfigData;
   content: Content; // WTF? Drilled down by withBlockExtensions?
-  data: any;
+  data: BlocksFormData;
   extensions: {}; // Needs to be defined
   id: string;
   location: Location;
@@ -30,7 +38,7 @@ export interface BlockEditProps {
   blocksConfig: BlocksConfigData;
   closeObjectBrowser: () => void;
   contentType: string;
-  data: any;
+  data: BlocksFormData;
   detached: boolean;
   editable: boolean;
   extensions: {}; // Needs to be defined

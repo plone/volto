@@ -6,7 +6,7 @@ const TestBlockData = (props: BlockEditProps) => {
   const { block, blocksConfig, contentType, data, navRoot, onChangeBlock } =
     props;
   const intl = useIntl();
-  const schema = blocksConfig[data['@type']]!.blockSchema({ intl, props });
+  const schema = blocksConfig[data['@type']].blockSchema({ intl, props });
 
   return (
     <BlockDataForm

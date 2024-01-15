@@ -11,7 +11,6 @@ export interface BlocksConfig {
 }
 
 export interface BlocksConfigData {
-  [key: string]: BlockConfigBase | undefined;
   title: BlockConfigBase;
   description: BlockConfigBase;
   slate: SlateBlock;
@@ -29,6 +28,8 @@ export interface BlocksConfigData {
   gridBlock: BlockConfigBase;
   teaser: BlockConfigBase;
 }
+
+export type AvailableBlocks = keyof BlocksConfigData;
 
 export interface BlockConfigBase {
   /**

@@ -146,9 +146,15 @@ export const workingCopyFixture = (config: ConfigData) => {
   return config;
 };
 
+// We extend the block types with the custom ones
 declare module '@plone/types' {
   export interface BlocksConfigData {
     testBlock: BlockConfigBase;
+    testBlockConditional: BlockConfigBase;
+    testBlockWithConditionalVariations: BlockConfigBase;
+    testBlockMultipleFieldsets: BlockConfigBase;
+    testBlockDefaultEdit: BlockConfigBase;
+    testBlockDefaultView: BlockConfigBase;
   }
 }
 
