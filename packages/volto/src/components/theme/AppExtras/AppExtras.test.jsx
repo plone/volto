@@ -9,9 +9,8 @@ beforeAll(() => {
       match: {
         path: '',
       },
-      exclude: '/blog',
       component: jest.fn((props) => (
-        <div className="everywhere-except-blog">{props.pathname}</div>
+        <div className="everywhere">{props.pathname}</div>
       )),
     },
     {
@@ -45,6 +44,13 @@ beforeAll(() => {
       match: '/something',
       component: jest.fn((props) => (
         <div className="something">{JSON.stringify(props.match)}</div>
+      )),
+    },
+    {
+      match: '/test-exclude',
+      exclude: '/test-exclude/edit',
+      component: jest.fn((props) => (
+        <div className="test-exclude-edit">{JSON.stringify(props.match)}</div>
       )),
     },
   ];
@@ -85,5 +91,18 @@ describe('AppExtras', () => {
     );
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
+  });
+  it('exclude property works', () => {
+    const componentView = renderer.create(
+      <AppExtras pathname="/test-exclude"></AppExtras>,
+    );
+    const componentEdit = renderer.create(
+      <AppExtras pathname="/test-exclude/edit"></AppExtras>,
+    );
+
+    const jsonView = componentView.toJSON();
+    expect(jsonView).toMatchSnapshot();
+    const jsonEdit = componentEdit.toJSON();
+    expect(jsonEdit).toMatchSnapshot();
   });
 });
