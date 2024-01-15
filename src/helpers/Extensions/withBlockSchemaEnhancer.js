@@ -47,7 +47,7 @@ export const addExtensionFieldToSchema = ({
   items,
   intl,
   title,
-  description,
+  description = '',
   insertFieldToOrder = _addField,
 }) => {
   const _ = intl.formatMessage;

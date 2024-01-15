@@ -4,9 +4,11 @@ declare function Header({ pathname }: {
 }): JSX.Element;
 declare namespace Header {
     namespace propTypes {
-        let token: any;
-        let pathname: any;
-        let content: any;
+        let token: PropTypes.Requireable<string>;
+        let pathname: PropTypes.Validator<string>;
+        let content: PropTypes.Requireable<{
+            [x: string]: any;
+        }>;
     }
     namespace defaultProps {
         let token_1: any;
@@ -15,3 +17,4 @@ declare namespace Header {
         export { content_1 as content };
     }
 }
+import PropTypes from 'prop-types';

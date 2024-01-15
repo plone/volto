@@ -4,6 +4,7 @@ declare function BreadcrumbsComponent({ pathname }: {
 }): JSX.Element;
 declare namespace BreadcrumbsComponent {
     namespace propTypes {
-        let pathname: any;
+        let pathname: PropTypes.Validator<string>;
     }
 }
+import PropTypes from 'prop-types';

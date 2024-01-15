@@ -3,33 +3,39 @@
  * @class Edit
  * @extends Component
  */
-export class EditComponent extends Component<any, any, any> {
+export class EditComponent extends React.Component<any, any, any> {
     /**
      * Property types.
      * @property {Object} propTypes Property types.
      * @static
      */
     static propTypes: {
-        data: any;
-        detached: any;
-        index: any;
-        selected: any;
-        block: any;
-        onAddBlock: any;
-        onInsertBlock: any;
-        onChangeBlock: any;
-        onDeleteBlock: any;
-        onMutateBlock: any;
-        onFocusPreviousBlock: any;
-        onFocusNextBlock: any;
-        onSelectBlock: any;
-        editable: any;
-        allowedBlocks: any;
-        showRestricted: any;
-        formTitle: any;
-        formDescription: any;
-        blocksConfig: any;
-        properties: any;
+        data: PropTypes.Validator<{
+            [x: string]: any;
+        }>;
+        detached: PropTypes.Requireable<boolean>;
+        index: PropTypes.Validator<number>;
+        selected: PropTypes.Validator<boolean>;
+        block: PropTypes.Validator<string>;
+        onAddBlock: PropTypes.Validator<(...args: any[]) => any>;
+        onInsertBlock: PropTypes.Validator<(...args: any[]) => any>;
+        onChangeBlock: PropTypes.Validator<(...args: any[]) => any>;
+        onDeleteBlock: PropTypes.Validator<(...args: any[]) => any>;
+        onMutateBlock: PropTypes.Validator<(...args: any[]) => any>;
+        onFocusPreviousBlock: PropTypes.Validator<(...args: any[]) => any>;
+        onFocusNextBlock: PropTypes.Validator<(...args: any[]) => any>;
+        onSelectBlock: PropTypes.Validator<(...args: any[]) => any>;
+        editable: PropTypes.Requireable<boolean>;
+        allowedBlocks: PropTypes.Requireable<string[]>;
+        showRestricted: PropTypes.Requireable<boolean>;
+        formTitle: PropTypes.Requireable<string>;
+        formDescription: PropTypes.Requireable<string>;
+        blocksConfig: PropTypes.Requireable<{
+            [x: string]: any;
+        }>;
+        properties: PropTypes.Requireable<{
+            [x: string]: any;
+        }>;
     };
     /**
      * Default properties
@@ -84,9 +90,8 @@ export class EditComponent extends Component<any, any, any> {
     render(): string;
     node: any;
 }
-export const Edit: import("react").ForwardRefExoticComponent<Pick<import("react-intl").WithIntlProps<import("react-intl").WrappedComponentProps<string>>, string> & import("react").RefAttributes<import("react").ComponentType<import("react-intl").WrappedComponentProps<string>>>> & {
-    WrappedComponent: import("react").ComponentType<import("react-intl").WrappedComponentProps<string>>;
-};
+export const Edit: any;
 export default Preloader;
-import { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 declare function Preloader(props: any): JSX.Element;

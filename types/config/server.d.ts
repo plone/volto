@@ -1,6 +1,6 @@
 export default settings;
 declare namespace settings {
-    let expressMiddleware: any[];
+    let expressMiddleware: import("express-serve-static-core").Router[];
     let criticalCssPath: string;
     let readCriticalCss: any;
     namespace extractScripts {

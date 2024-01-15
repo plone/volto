@@ -1,17 +1,17 @@
-export function connectAppComponent(AppComponent: any): any;
+export function connectAppComponent(AppComponent: any): import("react-redux").ConnectedComponent<any, any>;
 /**
  * @export
  * @class App
  * @extends {Component}
  */
-export class App extends Component<any, any, any> {
+export class App extends React.Component<any, any, any> {
     /**
      * Property types.
      * @property {Object} propTypes Property types.
      * @static
      */
     static propTypes: {
-        pathname: any;
+        pathname: PropTypes.Validator<string>;
     };
     constructor(props: any);
     state: {
@@ -19,7 +19,7 @@ export class App extends Component<any, any, any> {
         error: any;
         errorInfo: any;
     };
-    mainRef: any;
+    mainRef: React.RefObject<any>;
     /**
      * @method componentWillReceiveProps
      * @param {Object} nextProps Next properties
@@ -42,11 +42,12 @@ export class App extends Component<any, any, any> {
      */
     render(): string;
 }
-export const __test__: import("react-redux").ConnectedComponent<import("react").JSXElementConstructor<never>, never>;
+export const __test__: import("react-redux").ConnectedComponent<React.JSXElementConstructor<never>, never>;
 export function fetchContent({ store, location }: {
     store: any;
     location: any;
 }): Promise<any>;
-declare const _default: any;
+declare const _default: import("react-redux").ConnectedComponent<any, any>;
 export default _default;
-import { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';

@@ -1,1 +1,1 @@
-export default function devProxyMiddleware(): any;
+export default function devProxyMiddleware(): import("express-serve-static-core").Router;

@@ -5,7 +5,8 @@ declare function TemplateChooser({ templates, onSelectTemplate }: {
 }): JSX.Element;
 declare namespace TemplateChooser {
     namespace propTypes {
-        let templates: any;
-        let onSelectTemplate: any;
+        let templates: PropTypes.Validator<(...args: any[]) => any>;
+        let onSelectTemplate: PropTypes.Validator<(...args: any[]) => any>;
     }
 }
+import PropTypes from 'prop-types';

@@ -22,6 +22,6 @@ export default routes;
  */
 declare const routes: {
     path: string;
-    component: any;
+    component: import("react-redux").ConnectedComponent<any, any>;
     routes: any[];
 }[];

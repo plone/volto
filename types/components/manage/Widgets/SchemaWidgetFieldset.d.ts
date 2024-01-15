@@ -12,16 +12,17 @@ export function SchemaWidgetFieldsetComponent({ title, order, active, onShowEdit
 }): string;
 export namespace SchemaWidgetFieldsetComponent {
     namespace propTypes {
-        let order: any;
-        let active: any;
-        let onOrderFieldset: any;
-        let onShowEditFieldset: any;
-        let onShowDeleteFieldset: any;
-        let onClick: any;
-        let getItemStyle: any;
-        let isDraggable: any;
-        let isDisabled: any;
+        let order: PropTypes.Validator<number>;
+        let active: PropTypes.Validator<boolean>;
+        let onOrderFieldset: PropTypes.Validator<(...args: any[]) => any>;
+        let onShowEditFieldset: PropTypes.Validator<(...args: any[]) => any>;
+        let onShowDeleteFieldset: PropTypes.Validator<(...args: any[]) => any>;
+        let onClick: PropTypes.Validator<(...args: any[]) => any>;
+        let getItemStyle: PropTypes.Validator<(...args: any[]) => any>;
+        let isDraggable: PropTypes.Requireable<boolean>;
+        let isDisabled: PropTypes.Requireable<boolean>;
     }
 }
-declare const _default: any;
+declare const _default: ((props: any) => JSX.Element) & import("hoist-non-react-statics").NonReactStatics<any, {}>;
 export default _default;
+import PropTypes from 'prop-types';

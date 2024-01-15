@@ -4,6 +4,7 @@ declare function ImageGalleryTemplate({ items }: {
 }): JSX.Element;
 declare namespace ImageGalleryTemplate {
     namespace propTypes {
-        let items: any;
+        let items: PropTypes.Validator<any[]>;
     }
 }
+import PropTypes from 'prop-types';

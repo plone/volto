@@ -10,6 +10,13 @@ declare function NewsItemView({ content }: {
 }): string;
 declare namespace NewsItemView {
     namespace propTypes {
-        let content: any;
+        let content: PropTypes.Validator<NonNullable<PropTypes.InferProps<{
+            title: PropTypes.Requireable<string>;
+            description: PropTypes.Requireable<string>;
+            text: PropTypes.Requireable<PropTypes.InferProps<{
+                data: PropTypes.Requireable<string>;
+            }>>;
+        }>>>;
     }
 }
+import PropTypes from 'prop-types';

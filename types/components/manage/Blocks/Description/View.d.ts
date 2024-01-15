@@ -5,7 +5,12 @@ declare function DescriptionBlockView({ properties, metadata }: {
 }): JSX.Element;
 declare namespace DescriptionBlockView {
     namespace propTypes {
-        let properties: any;
-        let metadata: any;
+        let properties: PropTypes.Validator<{
+            [x: string]: any;
+        }>;
+        let metadata: PropTypes.Requireable<{
+            [x: string]: any;
+        }>;
     }
 }
+import PropTypes from 'prop-types';

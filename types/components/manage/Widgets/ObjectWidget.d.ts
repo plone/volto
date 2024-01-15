@@ -18,14 +18,15 @@ declare function ObjectWidget({ block, schema, value, onChange, errors, id, ...p
 }): JSX.Element;
 declare namespace ObjectWidget {
     namespace propTypes {
-        let id: any;
-        let schema: any;
-        let errors: any;
-        let value: any;
-        let onChange: any;
+        let id: PropTypes.Validator<string>;
+        let schema: PropTypes.Validator<object>;
+        let errors: PropTypes.Requireable<object>;
+        let value: PropTypes.Requireable<object>;
+        let onChange: PropTypes.Validator<(...args: any[]) => any>;
     }
     namespace defaultProps {
         let value_1: any;
         export { value_1 as value };
     }
 }
+import PropTypes from 'prop-types';

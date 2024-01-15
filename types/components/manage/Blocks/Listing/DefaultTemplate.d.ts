@@ -8,8 +8,9 @@ declare function DefaultTemplate({ headlineTag, items, linkTitle, linkHref, isEd
 }): JSX.Element;
 declare namespace DefaultTemplate {
     namespace propTypes {
-        let items: any;
-        let linkMore: any;
-        let isEditMode: any;
+        let items: PropTypes.Validator<any[]>;
+        let linkMore: PropTypes.Requireable<any>;
+        let isEditMode: PropTypes.Requireable<boolean>;
     }
 }
+import PropTypes from 'prop-types';

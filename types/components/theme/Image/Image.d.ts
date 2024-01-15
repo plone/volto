@@ -11,13 +11,19 @@
 declare function Image({ item, imageField, src, alt, loading, responsive, className, ...imageProps }: object): JSX.Element;
 declare namespace Image {
     namespace propTypes {
-        let item: any;
-        let imageField: any;
-        let src: any;
-        let alt: any;
-        let loading: any;
-        let responsive: any;
-        let className: any;
+        let item: PropTypes.Requireable<PropTypes.InferProps<{
+            '@id': PropTypes.Requireable<string>;
+            image_field: PropTypes.Requireable<string>;
+            image_scales: PropTypes.Requireable<object>;
+            image: PropTypes.Requireable<object>;
+        }>>;
+        let imageField: PropTypes.Requireable<string>;
+        let src: PropTypes.Requireable<string>;
+        let alt: PropTypes.Validator<string>;
+        let loading: PropTypes.Requireable<string>;
+        let responsive: PropTypes.Requireable<boolean>;
+        let className: PropTypes.Requireable<string>;
     }
 }
 export default Image;
+import PropTypes from 'prop-types';

@@ -1,24 +1,24 @@
 /**
  * Widget for a querystring value, to define a catalog search criteria.
  */
-export class QuerystringWidgetComponent extends Component<any, any, any> {
+export class QuerystringWidgetComponent extends React.Component<any, any, any> {
     /**
      * Property types.
      * @property {Object} propTypes Property types.
      * @static
      */
     static propTypes: {
-        id: any;
-        title: any;
-        description: any;
-        required: any;
-        error: any;
-        value: any;
-        focus: any;
-        onChange: any;
-        onEdit: any;
-        onDelete: any;
-        getQuerystring: any;
+        id: PropTypes.Validator<string>;
+        title: PropTypes.Validator<string>;
+        description: PropTypes.Requireable<string>;
+        required: PropTypes.Requireable<boolean>;
+        error: PropTypes.Requireable<string[]>;
+        value: PropTypes.Requireable<any[]>;
+        focus: PropTypes.Requireable<boolean>;
+        onChange: PropTypes.Requireable<(...args: any[]) => any>;
+        onEdit: PropTypes.Requireable<(...args: any[]) => any>;
+        onDelete: PropTypes.Requireable<(...args: any[]) => any>;
+        getQuerystring: PropTypes.Validator<(...args: any[]) => any>;
     };
     /**
      * Default properties.
@@ -74,8 +74,7 @@ export class QuerystringWidgetComponent extends Component<any, any, any> {
      */
     render(): string;
 }
-declare const _default: import("react").ForwardRefExoticComponent<Pick<import("react-intl").WithIntlProps<import("react-intl").WrappedComponentProps<string>>, string> & import("react").RefAttributes<import("react").ComponentType<import("react-intl").WrappedComponentProps<string>>>> & {
-    WrappedComponent: import("react").ComponentType<import("react-intl").WrappedComponentProps<string>>;
-};
+declare const _default: any;
 export default _default;
-import { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';

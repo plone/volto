@@ -10,8 +10,9 @@ export default SocialSharing;
 declare function SocialSharing({ url, title, description }: string): string;
 declare namespace SocialSharing {
     namespace propTypes {
-        let url: any;
-        let title: any;
-        let description: any;
+        let url: PropTypes.Validator<string>;
+        let title: PropTypes.Validator<string>;
+        let description: PropTypes.Validator<string>;
     }
 }
+import PropTypes from 'prop-types';

@@ -33,12 +33,16 @@ declare function Icon({ name, size, color, className, title, onClick, style, id,
 }): string;
 declare namespace Icon {
     namespace propTypes {
-        let name: any;
-        let size: any;
-        let color: any;
-        let className: any;
-        let title: any;
-        let onClick: any;
+        let name: PropTypes.Validator<NonNullable<PropTypes.InferProps<{
+            xmlns: PropTypes.Requireable<string>;
+            viewBox: PropTypes.Requireable<string>;
+            content: PropTypes.Requireable<string>;
+        }>>>;
+        let size: PropTypes.Requireable<string>;
+        let color: PropTypes.Requireable<string>;
+        let className: PropTypes.Requireable<string>;
+        let title: PropTypes.Requireable<string>;
+        let onClick: PropTypes.Requireable<(...args: any[]) => any>;
     }
     namespace defaultProps {
         export { defaultSize as size };
@@ -52,4 +56,5 @@ declare namespace Icon {
         export { onClick_1 as onClick };
     }
 }
+import PropTypes from 'prop-types';
 declare const defaultSize: "36px";
