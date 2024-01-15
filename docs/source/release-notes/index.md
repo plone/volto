@@ -17,6 +17,12 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 17.11.0 (2024-01-15)
+
+### Feature
+
+- Improve generation of types declarations @sneridagh [#5626](https://github.com/plone/volto/issues/5626)
+
 ## 17.10.0 (2024-01-11)
 
 ### Feature
