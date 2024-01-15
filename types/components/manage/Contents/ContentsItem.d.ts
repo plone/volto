@@ -16,22 +16,31 @@ export function ContentsItemComponent({ item, selected, onClick, indexes, onCut,
 }): string;
 export namespace ContentsItemComponent {
     namespace propTypes {
-        let item: any;
-        let selected: any;
-        let onClick: any;
-        let indexes: any;
-        let onCut: any;
-        let onCopy: any;
-        let onDelete: any;
-        let onMoveToTop: any;
-        let onMoveToBottom: any;
-        let connectDragPreview: any;
-        let connectDragSource: any;
-        let connectDropTarget: any;
-        let isDragging: any;
-        let order: any;
-        let onOrderItem: any;
+        let item: PropTypes.Validator<NonNullable<PropTypes.InferProps<{
+            '@id': PropTypes.Requireable<string>;
+            title: PropTypes.Requireable<string>;
+            is_folderish: PropTypes.Requireable<boolean>;
+            '@type': PropTypes.Requireable<string>;
+        }>>>;
+        let selected: PropTypes.Validator<boolean>;
+        let onClick: PropTypes.Validator<(...args: any[]) => any>;
+        let indexes: PropTypes.Validator<PropTypes.InferProps<{
+            id: PropTypes.Requireable<string>;
+            type: PropTypes.Requireable<string>;
+        }>[]>;
+        let onCut: PropTypes.Validator<(...args: any[]) => any>;
+        let onCopy: PropTypes.Validator<(...args: any[]) => any>;
+        let onDelete: PropTypes.Validator<(...args: any[]) => any>;
+        let onMoveToTop: PropTypes.Validator<(...args: any[]) => any>;
+        let onMoveToBottom: PropTypes.Validator<(...args: any[]) => any>;
+        let connectDragPreview: PropTypes.Validator<(...args: any[]) => any>;
+        let connectDragSource: PropTypes.Validator<(...args: any[]) => any>;
+        let connectDropTarget: PropTypes.Validator<(...args: any[]) => any>;
+        let isDragging: PropTypes.Validator<boolean>;
+        let order: PropTypes.Validator<number>;
+        let onOrderItem: PropTypes.Validator<(...args: any[]) => any>;
     }
 }
-declare const _default: any;
+declare const _default: ((props: any) => JSX.Element) & import("hoist-non-react-statics").NonReactStatics<any, {}>;
 export default _default;
+import PropTypes from 'prop-types';

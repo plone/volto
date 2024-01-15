@@ -5,6 +5,9 @@ declare function LinkMore({ data, isEditMode }: {
 }): JSX.Element;
 declare namespace LinkMore {
     namespace propTypes {
-        let data: any;
+        let data: PropTypes.Validator<{
+            [x: string]: any;
+        }>;
     }
 }
+import PropTypes from 'prop-types';

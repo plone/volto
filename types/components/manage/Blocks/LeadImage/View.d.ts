@@ -5,7 +5,12 @@ declare function View({ data, properties }: {
 }): JSX.Element;
 declare namespace View {
     namespace propTypes {
-        let data: any;
-        let properties: any;
+        let data: PropTypes.Validator<{
+            [x: string]: any;
+        }>;
+        let properties: PropTypes.Validator<{
+            [x: string]: any;
+        }>;
     }
 }
+import PropTypes from 'prop-types';

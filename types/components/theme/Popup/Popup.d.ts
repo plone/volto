@@ -6,6 +6,7 @@ export default Popup;
 declare function Popup(props: any): JSX.Element;
 declare namespace Popup {
     namespace propTypes {
-        let menu: any;
+        let menu: PropTypes.Requireable<boolean>;
     }
 }
+import PropTypes from 'prop-types';

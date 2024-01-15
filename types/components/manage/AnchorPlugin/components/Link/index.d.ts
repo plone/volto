@@ -15,12 +15,13 @@ declare namespace Link {
     }
 }
 declare namespace propTypes {
-    let className_1: any;
+    let className_1: PropTypes.Requireable<string>;
     export { className_1 as className };
-    export let children: any;
-    let entityKey_1: any;
+    export let children: PropTypes.Validator<NonNullable<PropTypes.ReactNodeLike>>;
+    let entityKey_1: PropTypes.Requireable<string>;
     export { entityKey_1 as entityKey };
-    export let getEditorState: any;
-    let target_1: any;
+    export let getEditorState: PropTypes.Validator<(...args: any[]) => any>;
+    let target_1: PropTypes.Requireable<string>;
     export { target_1 as target };
 }
+import PropTypes from 'prop-types';

@@ -9,12 +9,12 @@ declare function Avatar({ src, title, text, size, color, className }: {
 }): JSX.Element;
 declare namespace Avatar {
     namespace propTypes {
-        let src: any;
-        let title: any;
-        let text: any;
-        let size: any;
-        let color: any;
-        let className: any;
+        let src: PropTypes.Requireable<string>;
+        let title: PropTypes.Requireable<string>;
+        let text: PropTypes.Requireable<string>;
+        let size: PropTypes.Requireable<number>;
+        let color: PropTypes.Requireable<string>;
+        let className: PropTypes.Requireable<string>;
     }
     namespace defaultProps {
         let src_1: any;
@@ -28,6 +28,7 @@ declare namespace Avatar {
         export { defaultClassName as className };
     }
 }
+import PropTypes from 'prop-types';
 declare const defaultSize: 30;
 declare const defaultColor: "Teal";
 declare const defaultClassName: "avatar circular";

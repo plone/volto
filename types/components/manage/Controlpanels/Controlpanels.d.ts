@@ -1,17 +1,2 @@
-declare const _default: import("react-redux").ConnectedComponent<import("react").JSXElementConstructor<import("react-redux").Matching<{
-    controlpanels: any;
-    controlpanelsRequest: any;
-    pathname: any;
-    systemInformation: any;
-} & import("react-redux").DispatchProp<import("dnd-core/node_modules/redux").AnyAction>, unknown>>, import("react-redux").Omit<import("react-redux").Matching<{
-    controlpanels: any;
-    controlpanelsRequest: any;
-    pathname: any;
-    systemInformation: any;
-} & import("react-redux").DispatchProp<import("dnd-core/node_modules/redux").AnyAction>, unknown>, never> | import("react-redux").Omit<import("react").ClassAttributes<import("react").Component<any, any, any>> & import("react-redux").Matching<{
-    controlpanels: any;
-    controlpanelsRequest: any;
-    pathname: any;
-    systemInformation: any;
-} & import("react-redux").DispatchProp<import("dnd-core/node_modules/redux").AnyAction>, unknown>, never>>;
+declare const _default: import("react-redux").ConnectedComponent<import("react-redux").ConnectedComponent<any, any>, import("react-redux").Omit<any, "pathname" | "dispatch" | "controlpanels" | "controlpanelsRequest" | "systemInformation">>;
 export default _default;

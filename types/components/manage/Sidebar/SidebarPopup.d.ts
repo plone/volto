@@ -2,9 +2,9 @@ export default SidebarPopup;
 declare function SidebarPopup(props: any): JSX.Element;
 declare namespace SidebarPopup {
     namespace propTypes {
-        let open: any;
-        let onClose: any;
-        let overlay: any;
+        let open: PropTypes.Requireable<boolean>;
+        let onClose: PropTypes.Requireable<(...args: any[]) => any>;
+        let overlay: PropTypes.Requireable<boolean>;
     }
     namespace defaultProps {
         let open_1: boolean;
@@ -15,3 +15,4 @@ declare namespace SidebarPopup {
         export { overlay_1 as overlay };
     }
 }
+import PropTypes from 'prop-types';

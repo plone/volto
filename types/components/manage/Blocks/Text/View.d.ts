@@ -4,6 +4,9 @@ declare function View({ data }: {
 }): any;
 declare namespace View {
     namespace propTypes {
-        let data: any;
+        let data: PropTypes.Validator<{
+            [x: string]: any;
+        }>;
     }
 }
+import PropTypes from 'prop-types';

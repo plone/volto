@@ -29,16 +29,22 @@ export default Html;
  * @class Html
  * @extends Component
  */
-declare class Html extends Component<any, any, any> {
+declare class Html extends React.Component<any, any, any> {
     /**
      * Property types.
      * @property {Object} propTypes Property types.
      * @static
      */
     static propTypes: {
-        extractor: any;
-        markup: any;
-        store: any;
+        extractor: PropTypes.Validator<NonNullable<PropTypes.InferProps<{
+            getLinkElements: PropTypes.Validator<(...args: any[]) => any>;
+            getScriptElements: PropTypes.Validator<(...args: any[]) => any>;
+            getStyleElements: PropTypes.Validator<(...args: any[]) => any>;
+        }>>>;
+        markup: PropTypes.Validator<string>;
+        store: PropTypes.Validator<NonNullable<PropTypes.InferProps<{
+            getState: PropTypes.Requireable<(...args: any[]) => any>;
+        }>>>;
     };
     constructor(props: any);
     constructor(props: any, context: any);
@@ -49,4 +55,5 @@ declare class Html extends Component<any, any, any> {
      */
     render(): string;
 }
-import { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';

@@ -12,10 +12,10 @@ declare function IntervalField({ label, labelAfter, value, onChange }: {
 }): string;
 declare namespace IntervalField {
     namespace propTypes {
-        let label: any;
-        let labelAfter: any;
-        let value: any;
-        let onChange: any;
+        let label: PropTypes.Validator<string>;
+        let labelAfter: PropTypes.Requireable<string>;
+        let value: PropTypes.Requireable<any>;
+        let onChange: PropTypes.Requireable<(...args: any[]) => any>;
     }
     namespace defaultProps {
         let label_1: any;
@@ -26,3 +26,4 @@ declare namespace IntervalField {
         export { onChange_1 as onChange };
     }
 }
+import PropTypes from 'prop-types';

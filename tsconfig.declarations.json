@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "outDir": "types",
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "jsx": "react-jsx",
+    "preserveSymlinks": true,
+    "paths": {
+      "@plone/volto/*": ["./src/*"],
+    }
+  },
+  "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.tsx"],
+}

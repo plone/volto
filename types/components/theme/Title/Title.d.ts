@@ -11,6 +11,7 @@ declare function Title({ title }: {
 }): string;
 declare namespace Title {
     namespace propTypes {
-        let title: any;
+        let title: PropTypes.Validator<string>;
     }
 }
+import PropTypes from 'prop-types';

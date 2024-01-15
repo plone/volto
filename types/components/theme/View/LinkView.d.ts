@@ -5,8 +5,12 @@ declare function LinkView({ token, content }: {
 }): JSX.Element;
 declare namespace LinkView {
     namespace propTypes {
-        let content: any;
-        let token: any;
+        let content: PropTypes.Requireable<PropTypes.InferProps<{
+            title: PropTypes.Requireable<string>;
+            description: PropTypes.Requireable<string>;
+            remoteUrl: PropTypes.Requireable<string>;
+        }>>;
+        let token: PropTypes.Requireable<string>;
     }
     namespace defaultProps {
         let content_1: any;
@@ -15,3 +19,4 @@ declare namespace LinkView {
         export { token_1 as token };
     }
 }
+import PropTypes from 'prop-types';
