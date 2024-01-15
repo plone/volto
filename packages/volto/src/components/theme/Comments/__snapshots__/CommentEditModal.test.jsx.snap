@@ -18,6 +18,7 @@ exports[`CommentEditModal renders a comment edit modal component 1`] = `
           "description": "",
           "title": "Comment",
           "type": "string",
+          "widget": "textarea",
         },
       },
       "required": Array [
