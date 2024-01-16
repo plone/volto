@@ -20,15 +20,14 @@ import {
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
-import { Icon, Toolbar } from '@plone/volto/components';
+import { Icon, Toolbar, Toast } from '@plone/volto/components';
+import { Field } from '@plone/volto/components/manage/Form';
 import {
   getControlPanelRule,
   editRule,
   getContentRulesEvents,
 } from '@plone/volto/actions';
 import { toast } from 'react-toastify';
-import { Toast } from '@plone/volto/components';
-import { Field } from '@plone/volto/components/manage/Form';
 
 import backSVG from '@plone/volto/icons/back.svg';
 

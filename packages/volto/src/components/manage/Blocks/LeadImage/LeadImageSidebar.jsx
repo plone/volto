@@ -8,8 +8,8 @@ import {
   CheckboxWidget,
   TextWidget,
 } from '@plone/volto/components/manage/Widgets';
-import AlignBlock from '@plone/volto/components/manage/Sidebar/AlignBlock';
 import { flattenToAppURL } from '@plone/volto/helpers';
+import AlignBlock from '@plone/volto/components/manage/Sidebar/AlignBlock';
 
 import imageSVG from '@plone/volto/icons/image.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';

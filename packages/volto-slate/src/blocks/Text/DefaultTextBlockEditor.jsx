@@ -13,6 +13,7 @@ import {
 } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 import { SidebarPortal, BlockChooserButton } from '@plone/volto/components';
+import { BlockDataForm } from '@plone/volto/components/manage/Form';
 
 import { SlateEditor } from '@plone/volto-slate/editor';
 import { serializeNodesToText } from '@plone/volto-slate/editor/render';
@@ -30,7 +31,7 @@ import { handleKey } from './keyboard';
 import TextBlockSchema from './schema';
 
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
-import { BlockDataForm } from '@plone/volto/components/manage/Form';
+
 import './css/editor.css';
 
 // TODO: refactor dropzone to separate component wrapper

@@ -19,6 +19,7 @@ import {
   Error,
 } from '@plone/volto/components';
 import RenderGroups from '@plone/volto/components/manage/Controlpanels/Groups/RenderGroups';
+import { ModalForm } from '@plone/volto/components/manage/Form';
 import { Link } from 'react-router-dom';
 import { Helmet, messages } from '@plone/volto/helpers';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -43,7 +44,6 @@ import {
   Segment,
   Table,
 } from 'semantic-ui-react';
-import { ModalForm } from '@plone/volto/components/manage/Form';
 
 /**
  * GroupsControlpanel class.

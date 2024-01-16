@@ -2,8 +2,8 @@ import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { Button } from 'semantic-ui-react';
 import { Icon } from '@plone/volto/components';
-import { isEmpty } from 'lodash';
 import { BlockDataForm } from '@plone/volto/components/manage/Form';
+import { isEmpty } from 'lodash';
 
 import trashSVG from '@plone/volto/icons/delete.svg';
 

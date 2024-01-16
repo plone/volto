@@ -1,0 +1,1 @@
+Reduced JavaScript bundle size of the production build. Code split several internal modules: Controlpanels, Form, Widgets among other small ones. @pnicolli @deodorhunter

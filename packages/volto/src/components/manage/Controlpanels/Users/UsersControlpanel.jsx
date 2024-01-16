@@ -20,6 +20,8 @@ import {
   Pagination,
   Error,
 } from '@plone/volto/components';
+import { ModalForm } from '@plone/volto/components/manage/Form';
+import RenderUsers from '@plone/volto/components/manage/Controlpanels/Users/RenderUsers';
 import { Link } from 'react-router-dom';
 import { Helmet, messages } from '@plone/volto/helpers';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -43,8 +45,6 @@ import {
   Segment,
   Table,
 } from 'semantic-ui-react';
-import { ModalForm } from '@plone/volto/components/manage/Form';
-import RenderUsers from '@plone/volto/components/manage/Controlpanels/Users/RenderUsers';
 
 /**
  * UsersControlpanel class.

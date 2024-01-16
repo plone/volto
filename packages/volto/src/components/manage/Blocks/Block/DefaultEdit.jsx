@@ -2,8 +2,8 @@ import React from 'react';
 import config from '@plone/volto/registry';
 import { useIntl } from 'react-intl';
 import { SidebarPortal } from '@plone/volto/components';
-import DefaultBlockView from './DefaultView';
 import { BlockDataForm } from '@plone/volto/components/manage/Form';
+import DefaultBlockView from './DefaultView';
 
 const DefaultBlockEdit = (props) => {
   const { blocksConfig = config.blocks.blocksConfig } = props;
