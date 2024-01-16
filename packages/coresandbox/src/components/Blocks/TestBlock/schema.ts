@@ -1,4 +1,5 @@
 import { defineMessages } from 'react-intl';
+import type { BlockConfigBase } from '@plone/types';
 
 const messages = defineMessages({
   Source: {
@@ -35,9 +36,7 @@ const messages = defineMessages({
   },
 });
 
-const itemSchema = (props) => {
-  const { intl } = props;
-
+const itemSchema: BlockConfigBase['blockSchema'] = ({ intl }) => {
   return {
     title: intl.formatMessage(messages.item),
     addMessage: intl.formatMessage(messages.addItem),
@@ -89,8 +88,8 @@ const itemSchema = (props) => {
   };
 };
 
-export const SliderSchema = (props) => ({
-  title: props.intl.formatMessage(messages.Slider),
+export const SliderSchema: BlockConfigBase['blockSchema'] = ({ intl }) => ({
+  title: intl.formatMessage(messages.Slider),
   fieldsets: [
     {
       id: 'default',
@@ -108,14 +107,14 @@ export const SliderSchema = (props) => ({
   properties: {
     slides: {
       widget: 'object_list',
-      title: props.intl.formatMessage(messages.items),
+      title: intl.formatMessage(messages.items),
       schema: itemSchema,
     },
     fieldAfterObjectList: {
       title: 'Field after OL',
     },
     href: {
-      title: props.intl.formatMessage(messages.Source),
+      title: intl.formatMessage(messages.Source),
       widget: 'object_browser',
       mode: 'link',
       selectedItemAttrs: [
@@ -158,8 +157,10 @@ export const SliderSchema = (props) => ({
   required: [],
 });
 
-export const multipleFieldsetsSchema = (props) => ({
-  title: props.intl.formatMessage(messages.Slider),
+export const multipleFieldsetsSchema: BlockConfigBase['blockSchema'] = ({
+  intl,
+}) => ({
+  title: intl.formatMessage(messages.Slider),
   fieldsets: [
     {
       id: 'default',
@@ -185,14 +186,14 @@ export const multipleFieldsetsSchema = (props) => ({
   properties: {
     slides: {
       widget: 'object_list',
-      title: props.intl.formatMessage(messages.items),
+      title: intl.formatMessage(messages.items),
       schema: itemSchema,
     },
     fieldAfterObjectList: {
       title: 'Field after OL',
     },
     href: {
-      title: props.intl.formatMessage(messages.Source),
+      title: intl.formatMessage(messages.Source),
       widget: 'object_browser',
       mode: 'link',
       selectedItemAttrs: [

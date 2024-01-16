@@ -1,9 +1,9 @@
 export const contentIcons: {
-    Document: any;
-    Folder: any;
-    'News Item': any;
-    Event: any;
-    Image: any;
-    File: any;
-    Link: any;
+    Document: string;
+    Folder: string;
+    'News Item': string;
+    Event: string;
+    Image: string;
+    File: string;
+    Link: string;
 };

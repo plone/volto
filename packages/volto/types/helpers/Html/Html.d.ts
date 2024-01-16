@@ -29,7 +29,7 @@ export default Html;
  * @class Html
  * @extends Component
  */
-declare class Html extends Component<any, any, any> {
+declare class Html extends React.Component<any, any, any> {
     /**
      * Property types.
      * @property {Object} propTypes Property types.
@@ -49,4 +49,4 @@ declare class Html extends Component<any, any, any> {
      */
     render(): string;
 }
-import { Component } from 'react';
+import React from 'react';
