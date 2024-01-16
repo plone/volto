@@ -30,7 +30,7 @@ const TabularView = ({ content }) => {
           )}
         </header>
         <section id="content-core">
-          <Table celled padded>
+          <Table celled padded aria-live="polite">
             <Table.Header>
               <Table.Row>
                 <Table.HeaderCell>
