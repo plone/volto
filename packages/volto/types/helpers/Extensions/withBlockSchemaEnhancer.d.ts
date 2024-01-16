@@ -25,7 +25,7 @@ export function applySchemaEnhancer({ schema: originalSchema, formData, intl, bl
     schema: any;
     formData: any;
     intl: any;
-    blocksConfig?: any;
+    blocksConfig?: import("@plone/registry/node_modules/@plone/types").BlocksConfigData;
     navRoot: any;
     contentType: any;
 }): any;

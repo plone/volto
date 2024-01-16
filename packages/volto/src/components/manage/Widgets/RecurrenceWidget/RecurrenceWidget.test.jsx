@@ -14,7 +14,7 @@ beforeAll(
 
 const mockStore = configureStore();
 
-test('renders a recurrence widget component', async () => {
+test('renders a recurrence widget component with aligned columns', async () => {
   const store = mockStore({
     intl: {
       locale: 'en',

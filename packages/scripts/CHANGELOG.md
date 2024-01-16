@@ -8,6 +8,23 @@
 
 <!-- towncrier release notes start -->
 
+## 3.2.1 (2024-01-11)
+
+### Bugfix
+
+- Fix the package to work with Volto 17 and below @sneridagh [#5613](https://github.com/plone/volto/issues/5613)
+
+## 3.2.0 (2024-01-11)
+
+### Feature
+
+- Added support for TS/TSX files in i18n machinery. @sneridagh [#5585](https://github.com/plone/volto/issues/5585)
+
+### Internal
+
+- ESlint general improvements @sneridagh [#5548](https://github.com/plone/volto/issues/5548)
+- Pin mrs.developer to an updated version, never to star. @sneridagh [#5593](https://github.com/plone/volto/issues/5593)
+
 ## 3.1.0 (2023-12-02)
 
 ### Feature

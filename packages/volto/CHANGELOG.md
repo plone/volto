@@ -17,6 +17,40 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.6 (2024-01-02)
+
+### Feature
+
+- Added support for custom CSS properties in the `StyleWrapper`. @sneridagh [#5581](https://github.com/plone/volto/issues/5581)
+
+### Bugfix
+
+- Use a textarea in the form for editing an existing comment. @Ravi-kumar9347 [#5265](https://github.com/plone/volto/issues/5265)
+- The hamburger icon to open the mobile/tablet navigation is now hidden if there are no navigation items. @Aarav238 [#5353](https://github.com/plone/volto/issues/5353)
+- Fix preview image component @steffenri [#5379](https://github.com/plone/volto/issues/5379)
+- Fix autopopulated value of facet when settings the value for another one. @iFlameing [#5432](https://github.com/plone/volto/issues/5432)
+- Fix sitemap for multilingual sites
+  [erral] [#5501](https://github.com/plone/volto/issues/5501)
+- Replace createRef with useRef in SidebarPopup
+  [razvanMiu] [#5519](https://github.com/plone/volto/issues/5519)
+- Fixed the project generator's ESLint configuration, added code quality checks to the CI to ensure a generated project can run these checks, and added documentation for how to reconfigure ESLint in projects. @sneridagh [#5530](https://github.com/plone/volto/issues/5530)
+- Fixed edge case error in Unauthorised page and Login route behavior @sneridagh [#5536](https://github.com/plone/volto/issues/5536)
+- changed typo of pnp to pnpm. @ujjwaleee26 [#5537](https://github.com/plone/volto/issues/5537)
+
+### Internal
+
+- Added Cypress tests to verify that the modal dialog for deleting linked items pops up correctly. @Molochem [#5529](https://github.com/plone/volto/issues/5529)
+- Fix stylelint violations @sneridagh [#5544](https://github.com/plone/volto/issues/5544)
+- Update Plone to 6.0.9 @sneridagh [#5562](https://github.com/plone/volto/issues/5562)
+
+### Documentation
+
+- Removed outdated acceptance tests docs @sneridagh [#5533](https://github.com/plone/volto/issues/5533)
+- Add `how-to-restrict-blocks` to `recipes/index.md`, avoiding Sphinx warning. @stevepiercy [#5546](https://github.com/plone/volto/issues/5546)
+- Point developers to correct installation documentation, replaced yarn commands with pnpm, and correct some misspellings. We also now use includes to keep instructions consistent within Volto and in the main Plone 6 documentation. Finally the `NVM_VERSION` substitution now works. @ujjwaleee26 @stevepiercy [#5556](https://github.com/plone/volto/issues/5556)
+- Fix redirects. @stevepiercy [#5563](https://github.com/plone/volto/issues/5563)
+- Fix redirect for `nvm.fish`. @stevepiercy [#5569](https://github.com/plone/volto/issues/5569)
+
 ## 18.0.0-alpha.5 (2023-12-13)
 
 ### Feature
