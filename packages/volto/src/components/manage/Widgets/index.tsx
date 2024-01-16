@@ -1,5 +1,16 @@
 import loadable from '@loadable/component';
 
+import UrlWidget from '@plone/volto/components/manage/Widgets/UrlWidget';
+// TODO: No overload matches this call error in TypeScript
+// export const UrlWidget = loadable(
+//   () =>
+//     import(
+//       /* webpackChunkName: "Widgets" */ '@plone/volto/components/manage/Widgets/UrlWidget'
+//     ),
+// );
+
+import InternalUrlWidget from '@plone/volto/components/manage/Widgets/InternalUrlWidget';
+
 export const AlignWidget = loadable(
   () =>
     import(
@@ -111,20 +122,15 @@ export const WysiwygWidget = loadable(
       /* webpackChunkName: "Widgets" */ '@plone/volto/components/manage/Widgets/WysiwygWidget'
     ),
 );
-
-export const UrlWidget = loadable(
-  () =>
-    import(
-      /* webpackChunkName: "Widgets" */ '@plone/volto/components/manage/Widgets/UrlWidget'
-    ),
-);
-
-export const InternalUrlWidget = loadable(
-  () =>
-    import(
-      /* webpackChunkName: "Widgets" */ '@plone/volto/components/manage/Widgets/InternalUrlWidget'
-    ),
-);
+export { UrlWidget };
+export { InternalUrlWidget };
+// TODO: No overload matches this call error in TypeScript
+// export const InternalUrlWidget = loadable(
+//   () =>
+//     import(
+//       /* webpackChunkName: "Widgets" */ '@plone/volto/components/manage/Widgets/InternalUrlWidget'
+//     ),
+// );
 
 export const EmailWidget = loadable(
   () =>
