@@ -322,7 +322,6 @@ describe('Test if different forms of Linking content appear in links and referen
     });
     // Manually adding the preview image override
     cy.visit('document-linking/edit');
-    cy.pause();
     cy.get('.block.teaser .content').click();
     cy.get(
       '.field-wrapper-preview_image > .grid > .stretched > .eight > .objectbrowser-field > .button',
