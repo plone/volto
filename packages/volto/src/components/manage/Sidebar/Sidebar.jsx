@@ -34,12 +34,23 @@ const messages = defineMessages({
     id: 'Expand sidebar',
     defaultMessage: 'Expand sidebar',
   },
+  layout: {
+    id: 'Layout',
+    defaultMessage: 'Layout',
+  },
 });
 
 const Sidebar = (props) => {
   const dispatch = useDispatch();
   const intl = useIntl();
-  const { cookies, content, documentTab, blockTab, settingsTab } = props;
+  const {
+    cookies,
+    content,
+    documentTab,
+    blockTab,
+    settingsTab,
+    layoutTab = true,
+  } = props;
   const [expanded, setExpanded] = useState(
     cookies.get('sidebar_expanded') !== 'false',
   );
@@ -163,6 +174,22 @@ const Sidebar = (props) => {
                   key="properties"
                   className="tab-wrapper"
                   id="sidebar-properties"
+                >
+                  <Icon
+                    className="tab-forbidden"
+                    name={forbiddenSVG}
+                    size="48px"
+                  />
+                </Tab.Pane>
+              ),
+            },
+            !!layoutTab && {
+              menuItem: intl.formatMessage(messages.layout),
+              pane: (
+                <Tab.Pane
+                  key="layout"
+                  className="tab-wrapper"
+                  id="sidebar-layout"
                 >
                   <Icon
                     className="tab-forbidden"
