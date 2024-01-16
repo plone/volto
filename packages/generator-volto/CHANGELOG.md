@@ -8,6 +8,17 @@
 
 <!-- towncrier release notes start -->
 
+## 9.0.0-alpha.3 (2024-01-15)
+
+### Internal
+
+- ESlint general improvements @sneridagh [#5548](https://github.com/plone/volto/issues/5548)
+- Pin mrs.developer to an updated version, never to star. @sneridagh [#5593](https://github.com/plone/volto/issues/5593)
+
+### Documentation
+
+- Fix redirects. @stevepiercy [#5563](https://github.com/plone/volto/issues/5563)
+
 ## 9.0.0-alpha.2 (2023-12-14)
 
 ### Bugfix

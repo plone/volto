@@ -3,9 +3,24 @@ import { searchContent } from '@plone/volto/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { Container } from 'semantic-ui-react';
 
+type RootState = {
+  search: {
+    subrequests: {
+      newsandevents: {
+        items: {
+          '@id': string;
+          '@type': string;
+          title: string;
+          subject: string[];
+        }[];
+      };
+    };
+  };
+};
+
 const NewsAndEvents = () => {
   const newsandevents = useSelector(
-    (state) => state.search.subrequests.newsandevents?.items,
+    (state: RootState) => state.search.subrequests.newsandevents?.items,
   );
   const dispatch = useDispatch();
 

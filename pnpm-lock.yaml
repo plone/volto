@@ -949,6 +949,9 @@ importers:
       react:
         specifier: 17.0.2
         version: 17.0.2
+      react-dom:
+        specifier: 17.0.2
+        version: 17.0.2(react@17.0.2)
       react-intl:
         specifier: 3.8.0
         version: 3.8.0(react@17.0.2)
@@ -958,6 +961,19 @@ importers:
       semantic-ui-react:
         specifier: 2.0.3
         version: 2.0.3(react-dom@17.0.2)(react@17.0.2)
+    devDependencies:
+      '@plone/types':
+        specifier: workspace:*
+        version: link:../types
+      '@types/react':
+        specifier: ^17.0.52
+        version: 17.0.70
+      '@types/react-dom':
+        specifier: ^17
+        version: 17.0.23
+      '@types/react-redux':
+        specifier: ^7.1.33
+        version: 7.1.33
 
   packages/generator-volto:
     dependencies:
@@ -1130,10 +1146,10 @@ importers:
     dependencies:
       react:
         specifier: ^16.8.0 || ^17.0.0 || ^18.0.0
-        version: 17.0.2
+        version: 16.14.0
       react-dom:
         specifier: ^16.8.0 || ^17.0.0 || ^18.0.0
-        version: 17.0.2(react@17.0.2)
+        version: 17.0.2(react@16.14.0)
     devDependencies:
       '@parcel/packager-ts':
         specifier: 2.10.2
@@ -1147,9 +1163,15 @@ importers:
       '@types/react-dom':
         specifier: ^17
         version: 17.0.23
+      history:
+        specifier: ^5.3.0
+        version: 5.3.0
       parcel:
         specifier: 2.10.2
         version: 2.10.2(postcss@8.4.31)(typescript@5.2.2)
+      react-intl:
+        specifier: 3.8.0
+        version: 3.8.0(react@16.14.0)
       release-it:
         specifier: 16.2.1
         version: 16.2.1(typescript@5.2.2)
@@ -4473,7 +4495,6 @@ packages:
     resolution: {integrity: sha512-WNMQlEg0e50VZrGIkgD5n7+DAMGt3boKi1GJALfhFMymslJb5i+5WzWxyj/3a929Z6MAFsmzRIJjKuv+BxKAOQ==}
     dependencies:
       '@formatjs/intl-utils': 2.3.0
-    dev: false
 
   /@formatjs/intl-localematcher@0.5.2:
     resolution: {integrity: sha512-txaaE2fiBMagLrR4jYhxzFO6wEdEG4TPMqrzBAcbr4HFUYzH/YC+lg6OIzKCHm8WgDdyQevxbAAV1OgcXctuGw==}
@@ -4485,14 +4506,12 @@ packages:
     resolution: {integrity: sha512-IQ0haY97oHAH5OYUdykNiepdyEWj3SAT+Fp9ZpR85ov2JNiFx+12WWlxlVS8ehdyncC2ZMt/SwFIy2huK2+6/A==}
     dependencies:
       '@formatjs/intl-utils': 2.3.0
-    dev: false
 
   /@formatjs/intl-unified-numberformat@2.2.0:
     resolution: {integrity: sha512-A9ov4uO04pSHG5Iqcrc457hvsq3lz/oWQ3B0I03zbL1rnBC8ttrZEobw3X3k/tWYPXeNJbRtsSbXqzJo55NeBw==}
     deprecated: We have renamed the package to @formatjs/intl-numberformat
     dependencies:
       '@formatjs/intl-utils': 1.6.0
-    dev: false
 
   /@formatjs/intl-unified-numberformat@3.3.7:
     resolution: {integrity: sha512-KnWgLRHzCAgT9eyt3OS34RHoyD7dPDYhRcuKn+/6Kv2knDF8Im43J6vlSW6Hm1w63fNq3ZIT1cFk7RuVO3Psag==}
@@ -4503,7 +4522,6 @@ packages:
   /@formatjs/intl-utils@1.6.0:
     resolution: {integrity: sha512-5D0C4tQgNFJNaJ17BYum0GfAcKNK3oa1VWzgkv/AN7i52fg4r69ZLcpEGpf6tZiX9Qld8CDwTQOeFt6fuOqgVw==}
     deprecated: the package is rather renamed to @formatjs/ecma-abstract with some changes in functionality (primarily selectUnit is removed and we don't plan to make any further changes to this package
-    dev: false
 
   /@formatjs/intl-utils@2.3.0:
     resolution: {integrity: sha512-KWk80UPIzPmUg+P0rKh6TqspRw0G6eux1PuJr+zz47ftMaZ9QDwbGzHZbtzWkl5hgayM/qrKRutllRC7D/vVXQ==}
@@ -4511,7 +4529,6 @@ packages:
 
   /@formatjs/macro@0.2.8:
     resolution: {integrity: sha512-5IBdn5+D8VGdi6Px0M/PidtqzHVrOj3dVJdV+YmWNRaWHdSvBd1wUd0gMcZnQXAxN+RzlGS/ddfOxFkjSlyQuA==}
-    dev: false
 
   /@gar/promisify@1.1.3:
     resolution: {integrity: sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==}
@@ -13385,7 +13402,6 @@ packages:
     dependencies:
       '@types/react': 18.2.27
       hoist-non-react-statics: 3.3.2
-    dev: false
 
   /@types/html-minifier-terser@5.1.2:
     resolution: {integrity: sha512-h4lTMgMJctJybDp8CQrxTUiiYmedihHWkjnF/8Pxseu2S6Nlfcy8kwboQ8yejh456rP2yWoEVm1sS/FVsfM48w==}
@@ -13408,7 +13424,6 @@ packages:
 
   /@types/invariant@2.2.37:
     resolution: {integrity: sha512-IwpIMieE55oGWiXkQPSBY1nw1nFs6bsKXTFskNY8sdS17K24vyEBRQZEwlRS7ZmXCWnJcQtbxWzly+cODWGs2A==}
-    dev: false
 
   /@types/is-function@1.0.3:
     resolution: {integrity: sha512-/CLhCW79JUeLKznI6mbVieGbl4QU5Hfn+6udw1YHZoofASjbQ5zaP5LzAUZYDpRYEjS4/P+DhEgyJ/PQmGGTWw==}
@@ -13599,6 +13614,15 @@ packages:
       hoist-non-react-statics: 3.3.2
       redux: 4.1.0
     dev: false
+
+  /@types/react-redux@7.1.33:
+    resolution: {integrity: sha512-NF8m5AjWCkert+fosDsN3hAlHzpjSiXlVy9EgQEmLoBhaNXbmyeGs/aj5dQzKuF+/q+S7JQagorGDW8pJ28Hmg==}
+    dependencies:
+      '@types/hoist-non-react-statics': 3.3.5
+      '@types/react': 18.2.27
+      hoist-non-react-statics: 3.3.2
+      redux: 4.1.0
+    dev: true
 
   /@types/react-syntax-highlighter@11.0.5:
     resolution: {integrity: sha512-VIOi9i2Oj5XsmWWoB72p3KlZoEbdRAcechJa8Ztebw7bDl2YmR+odxIqhtJGp1q2EozHs02US+gzxJ9nuf56qg==}
@@ -22752,12 +22776,10 @@ packages:
 
   /intl-format-cache@4.3.1:
     resolution: {integrity: sha512-OEUYNA7D06agqPOYhbTkl0T8HA3QKSuwWh1HiClEnpd9vw7N+3XsQt5iZ0GUEchp5CW1fQk/tary+NsbF3yQ1Q==}
-    dev: false
 
   /intl-locales-supported@1.8.12:
     resolution: {integrity: sha512-FJPl7p1LYO/C+LpwlDcvVpq7AeFTdFgwnq1JjdNYKjb51xkIxssXRR8LaA0fJFogjwRRztqw1ahgSJMSZsSFdw==}
     deprecated: bad publish
-    dev: false
 
   /intl-messageformat-parser@3.6.4:
     resolution: {integrity: sha512-RgPGwue0mJtoX2Ax8EmMzJzttxjnva7gx0Q7mKJ4oALrTZvtmCeAw5Msz2PcjW4dtCh/h7vN/8GJCxZO1uv+OA==}
@@ -22779,7 +22801,6 @@ packages:
     dependencies:
       intl-format-cache: 4.3.1
       intl-messageformat-parser: 3.6.4
-    dev: false
 
   /invariant@2.2.4:
     resolution: {integrity: sha512-phJfQVBuaJM5raOpJjSfkiD6BpbCE4Ns//LaXl6wGYtUBY83nWS6Rf9tXm2e8VaK60JEjYldbPif/A2B1C2gNA==}
@@ -30284,6 +30305,17 @@ packages:
       - supports-color
     dev: true
 
+  /react-dom@17.0.2(react@16.14.0):
+    resolution: {integrity: sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA==}
+    peerDependencies:
+      react: 17.0.2
+    dependencies:
+      loose-envify: 1.4.0
+      object-assign: 4.1.1
+      react: 16.14.0
+      scheduler: 0.20.2
+    dev: false
+
   /react-dom@17.0.2(react@17.0.2):
     resolution: {integrity: sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA==}
     peerDependencies:
@@ -30407,6 +30439,27 @@ packages:
       react-intl: 3.8.0(react@17.0.2)
       react-redux: 7.2.4(react-dom@17.0.2)(react@17.0.2)
     dev: false
+
+  /react-intl@3.8.0(react@16.14.0):
+    resolution: {integrity: sha512-jWSbc7PUJOpmy0gC9LzTyERpt/auYmMyY0jtCmczgmRns5MIKG9Bav+NpCyZ6XG2jJQgJNWpLkMFy8u7MgjuqA==}
+    peerDependencies:
+      react: ^16.3.0
+    dependencies:
+      '@formatjs/intl-listformat': 1.4.8
+      '@formatjs/intl-relativetimeformat': 4.5.16
+      '@formatjs/intl-unified-numberformat': 2.2.0
+      '@formatjs/macro': 0.2.8
+      '@types/hoist-non-react-statics': 3.3.5
+      '@types/invariant': 2.2.37
+      hoist-non-react-statics: 3.3.2
+      intl-format-cache: 4.3.1
+      intl-locales-supported: 1.8.12
+      intl-messageformat: 7.8.4
+      intl-messageformat-parser: 3.6.4
+      invariant: 2.2.4
+      react: 16.14.0
+      shallow-equal: 1.2.1
+    dev: true
 
   /react-intl@3.8.0(react@17.0.2):
     resolution: {integrity: sha512-jWSbc7PUJOpmy0gC9LzTyERpt/auYmMyY0jtCmczgmRns5MIKG9Bav+NpCyZ6XG2jJQgJNWpLkMFy8u7MgjuqA==}
@@ -30943,6 +30996,14 @@ packages:
       react-with-direction: 1.4.0(react-dom@17.0.2)(react@17.0.2)
     dev: false
 
+  /react@16.14.0:
+    resolution: {integrity: sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g==}
+    engines: {node: '>=0.10.0'}
+    dependencies:
+      loose-envify: 1.4.0
+      object-assign: 4.1.1
+      prop-types: 15.7.2
+
   /react@17.0.2:
     resolution: {integrity: sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA==}
     engines: {node: '>=0.10.0'}
@@ -31259,7 +31320,6 @@ packages:
     resolution: {integrity: sha512-uI2dQN43zqLWCt6B/BMGRMY6db7TTY4qeHHfGeKb3EOhmOKjU3KdWvNLJyqaHRksv/ErdNH7cFZWg9jXtewy4g==}
     dependencies:
       '@babel/runtime': 7.20.6
-    dev: false
 
   /reflect.getprototypeof@1.0.4:
     resolution: {integrity: sha512-ECkTw8TmJwW60lOTR+ZkODISW6RQ8+2CL3COqtiJKLd6MmB45hN51HprHFziKLGkAuTGQhBb91V8cy+KHlaCjw==}
@@ -32344,7 +32404,6 @@ packages:
 
   /shallow-equal@1.2.1:
     resolution: {integrity: sha512-S4vJDjHHMBaiZuT9NPb616CSmLf618jawtv3sufLl6ivK8WocjAo58cXwbRV1cgqxH0Qbv+iUt6m05eqEa2IRA==}
-    dev: false
 
   /shallowequal@1.1.0:
     resolution: {integrity: sha512-y0m1JoUZSlPAjXVtPPW70aZWfIL/dSP7AFkRnniLCrK/8MDKog3TySTBmckD+RObVxH0v4Tox67+F14PdED2oQ==}

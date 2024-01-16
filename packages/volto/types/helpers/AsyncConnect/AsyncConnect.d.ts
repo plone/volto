@@ -1,4 +1,4 @@
-export class AsyncConnect extends Component<any, any, any> {
+export class AsyncConnect extends React.Component<any, any, any> {
     constructor(props: any);
     state: {
         previousLocation: any;
@@ -46,4 +46,4 @@ export namespace AsyncConnectWithContext {
     }
     export { propTypes_1 as propTypes };
 }
-import { Component } from 'react';
+import React from 'react';
