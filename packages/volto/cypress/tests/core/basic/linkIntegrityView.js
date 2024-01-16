@@ -31,6 +31,7 @@ describe('Link Integrity View for different content types', () => {
   };
 
   beforeEach(() => {
+    cy.intercept('GET', `/**/@relations*`).as('relations');
     cy.autologin();
     cy.visit('/');
   });
@@ -69,6 +70,7 @@ describe('Link Integrity View for different content types', () => {
 
     //Test if link appears in links and references view
     cy.visit('/document-linked/links-to-item');
+    cy.wait('@relations');
     cy.get('tbody > :nth-child(2) > :nth-child(1)').contains(
       'Document that is linking a document',
     );
@@ -95,6 +97,7 @@ describe('Link Integrity View for different content types', () => {
 
     //Test if link appears in links and references view
     cy.visit('/news-item-linked/links-to-item');
+    cy.wait('@relations');
     cy.get('tbody > :nth-child(2) > :nth-child(1)').contains(
       'Document that is linking a News Item',
     );
@@ -121,6 +124,7 @@ describe('Link Integrity View for different content types', () => {
 
     //Test if link appears in links and references view
     cy.visit('/event-linked/links-to-item');
+    cy.wait('@relations');
     cy.get('tbody > :nth-child(2) > :nth-child(1)').contains(
       'Document that is linking an Event',
     );
@@ -147,6 +151,7 @@ describe('Link Integrity View for different content types', () => {
     //Test if link appears in links and references view
 
     cy.visit('/file-linked/links-to-item');
+    cy.wait('@relations');
     cy.get('tbody > :nth-child(2) > :nth-child(1)').contains(
       'Document that is linking a File',
     );
@@ -173,6 +178,7 @@ describe('Link Integrity View for different content types', () => {
     //Test if link appears in links and references view
 
     cy.visit('/image-linked/links-to-item');
+    cy.wait('@relations');
     cy.get('tbody > :nth-child(2) > :nth-child(1)').contains(
       'Document that is linking an Image',
     );
@@ -202,6 +208,7 @@ describe('Link Integrity View for different content types', () => {
     });
     //Test if link appears in links and references view
     cy.visit('/link-linked/links-to-item');
+    cy.wait('@relations');
     cy.get('tbody > :nth-child(2) > :nth-child(1)').contains(
       'Document that is linking a Link',
     );
@@ -210,6 +217,7 @@ describe('Link Integrity View for different content types', () => {
 
 describe('Test if different forms of Linking content appear in links and references View', () => {
   beforeEach(() => {
+    cy.intercept('GET', `/**/@relations*`).as('relations');
     cy.autologin();
     cy.visit('/');
   });
@@ -253,6 +261,7 @@ describe('Test if different forms of Linking content appear in links and referen
     });
 
     cy.visit('/document-linked/links-to-item');
+    cy.wait('@relations');
     cy.get('tbody > :nth-child(2) > :nth-child(1)').contains(
       'Document that is linking via teaser block',
     );
@@ -322,6 +331,7 @@ describe('Test if different forms of Linking content appear in links and referen
     cy.get('#toolbar-save').click();
 
     cy.visit('/image-linked/links-to-item');
+    cy.wait('@relations');
     cy.get('tbody > :nth-child(2) > :nth-child(1)').contains(
       'Document that is linking via teaser block',
     );
@@ -352,6 +362,7 @@ describe('Test if different forms of Linking content appear in links and referen
     });
 
     cy.visit('/image-linked/links-to-item');
+    cy.wait('@relations');
     cy.get('tbody > :nth-child(2) > :nth-child(1)').contains(
       'Document that is linking via image block',
     );
@@ -394,6 +405,7 @@ describe('Test if different forms of Linking content appear in links and referen
     });
 
     cy.visit('/document-linked/links-to-item');
+    cy.wait('@relations');
     cy.get('tbody > :nth-child(2) > :nth-child(1)').contains(
       'Document that is linking via image block',
     );
@@ -451,6 +463,7 @@ describe('Test if different forms of Linking content appear in links and referen
     cy.visit('/document-linking');
 
     cy.visit('/document-linked/links-to-item');
+    cy.wait('@relations');
     cy.get('tbody > :nth-child(2) > :nth-child(1)').contains(
       'Document that is linking via teaser block',
     );
