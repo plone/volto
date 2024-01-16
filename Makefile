@@ -10,8 +10,7 @@ SHELL:=bash
 MAKEFLAGS+=--warn-undefined-variables
 MAKEFLAGS+=--no-builtin-rules
 
-# Project settings - Update also `packages/volto/Makefile` to keep both in sync
-
+# Project settings
 include variables.mk
 
 # Sphinx variables
