@@ -267,7 +267,7 @@ describe('Test if different forms of Linking content appear in links and referen
     );
   });
 
-  it.only('As an Editor I can see if my image is linked somewhere via override image in teaser block', () => {
+  it('As an Editor I can see if my image is linked somewhere via override image in teaser block', () => {
     cy.createContent({
       contentType: 'Document',
       contentTitle: 'Document that is linked',
@@ -322,7 +322,6 @@ describe('Test if different forms of Linking content appear in links and referen
     });
     // Manually adding the preview image override
     cy.visit('document-linking/edit');
-    cy.pause();
     cy.get('.block.teaser .content').click();
     cy.get(
       '.field-wrapper-preview_image > .grid > .stretched > .eight > .objectbrowser-field > .button',
@@ -331,8 +330,6 @@ describe('Test if different forms of Linking content appear in links and referen
     cy.get('[aria-label="Select Image that is linked"]').click();
     cy.get('#toolbar-save').click();
 
-    cy.visit('/controlpanel');
-    cy.screenshot();
     cy.visit('/image-linked/links-to-item');
     cy.wait('@relations');
     cy.get('tbody > :nth-child(2) > :nth-child(1)').contains(
