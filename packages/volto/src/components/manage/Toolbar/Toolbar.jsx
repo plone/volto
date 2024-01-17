@@ -10,12 +10,10 @@ import { Link } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import { withCookies } from 'react-cookie';
 import { filter, find } from 'lodash';
 import cx from 'classnames';
 import config from '@plone/volto/registry';
-
 import More from '@plone/volto/components/manage/Toolbar/More';
 import PersonalTools from '@plone/volto/components/manage/Toolbar/PersonalTools';
 import Types from '@plone/volto/components/manage/Toolbar/Types';
@@ -185,6 +183,7 @@ class Toolbar extends Component {
 
   constructor(props) {
     super(props);
+    this.userButtonRef = React.createRef();
     const { cookies } = props;
     this.state = {
       expanded: cookies.get('toolbar_expanded') !== 'false',
@@ -314,10 +313,15 @@ class Toolbar extends Component {
   };
 
   handleClickOutside = (e) => {
-    if (this.pusher && doesNodeContainClick(this.pusher, e)) return;
-    this.closeMenu();
+    if (
+      this.toolbarWindow.current &&
+      !this.toolbarWindow.current.contains(e.target) &&
+      (!this.userButtonRef.current ||
+        !this.userButtonRef.current.contains(e.target))
+    ) {
+      this.closeMenu();
+    }
   };
-
   unlock = (e) => {
     this.props.unlockContent(getBaseUrl(this.props.pathname), true);
   };
@@ -573,6 +577,7 @@ class Toolbar extends Component {
                     onClick={(e) => this.toggleMenu(e, 'personalTools')}
                     tabIndex={0}
                     id="toolbar-personal"
+                    ref={this.userButtonRef}
                   >
                     <Icon
                       name={userSVG}
