@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 3.3.0 (2024-01-17)
+
+### Internal
+
+- Polish po file handling @erral [#5542](https://github.com/plone/volto/issues/5542)
+
 ## 3.2.1 (2024-01-11)
 
 ### Bugfix
