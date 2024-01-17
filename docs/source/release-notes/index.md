@@ -17,6 +17,12 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 17.11.1 (2024-01-17)
+
+### Bugfix
+
+- Fix order of preference in addons-registry for the theme definition (THEME, volto.config.js, package.json) @sneridagh [#5650](https://github.com/plone/volto/issues/5650)
+
 ## 17.11.0 (2024-01-15)
 
 ### Feature
