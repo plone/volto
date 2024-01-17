@@ -10,19 +10,8 @@ SHELL:=bash
 MAKEFLAGS+=--warn-undefined-variables
 MAKEFLAGS+=--no-builtin-rules
 
-# Project settings - Update also `packages/volto/Makefile` to keep both in sync
-
-INSTANCE_PORT=8080
-DOCKER_IMAGE=plone/server-dev:6.0.9
-DOCKER_IMAGE_ACCEPTANCE=plone/server-acceptance:6.0.9
-KGS=
-NODEBIN = ./node_modules/.bin
-SCRIPTSPACKAGE = ./packages/scripts
-
-# Plone 5 legacy
-DOCKER_IMAGE5=plone/plone-backend:5.2.12
-KGS5=plone.restapi==9.2.0 plone.volto==4.1.0 plone.rest==3.0.1
-TESTING_ADDONS=plone.app.robotframework==2.0.0 plone.app.testing==7.0.0
+# Project settings
+include variables.mk
 
 # Sphinx variables
 # You can set these variables from the command line.
