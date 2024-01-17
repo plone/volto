@@ -17,6 +17,31 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.7 (2024-01-17)
+
+### Feature
+
+- Enhanced `ColorPickerWidget` with additional color definitions, saving it as an object instead of a string. @sneridagh [#5585](https://github.com/plone/volto/issues/5585)
+- Allow to opt out of the nested prefixed name build in the custom CSS properties style name generator if an object is found in the style wrapper object. @sneridagh [#5586](https://github.com/plone/volto/issues/5586)
+
+### Bugfix
+
+- In the recurrence widget, set the vertical alignment of the `edit` button to `middle`. @Ravi-kumar9347 [#5359](https://github.com/plone/volto/issues/5359)
+- Improve generation of type declarations. Fixes some key types propagation. @sneridagh [#5624](https://github.com/plone/volto/issues/5624)
+- Unify start command, trigger `build:deps` command @sneridagh [#5633](https://github.com/plone/volto/issues/5633)
+- Merge the StyleWrapper styles with the draggable props from b-D&D. @sneridagh
+  This fixes the D&D bug introduced in https://github.com/plone/volto/pull/5581 [#5652](https://github.com/plone/volto/issues/5652)
+
+### Internal
+
+- Add cypress tests for the "links-to-item" view of content items @jackahl [#5427](https://github.com/plone/volto/issues/5427)
+- Polish po file handling @erral [#5542](https://github.com/plone/volto/issues/5542)
+- Unify variables in `Makefile`s. @sneridagh [#5637](https://github.com/plone/volto/issues/5637)
+
+### Documentation
+
+- Clarified how CSS properties work. @stevepiercy [#5591](https://github.com/plone/volto/issues/5591)
+
 ## 18.0.0-alpha.6 (2024-01-02)
 
 ### Feature

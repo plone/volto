@@ -15,7 +15,7 @@ export function addExtensionFieldToSchema({ schema, name, items, intl, title, de
     items: any;
     intl: any;
     title: any;
-    description: any;
+    description?: string;
     insertFieldToOrder?: typeof _addField;
 }): any;
 export function withBlockSchemaEnhancer(FormComponent: any, extensionName?: string, insertFieldToOrder?: typeof _addField): ({ ...props }: {
