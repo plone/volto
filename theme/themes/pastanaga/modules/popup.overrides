@@ -1,9 +1,0 @@
-/*******************************
-         Theme Overrides
-*******************************/
-.ui.popup {
-  svg.icon {
-    line-height: 1rem;
-    vertical-align: middle;
-  }
-}

@@ -1,20 +1,21 @@
 ---
-html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+myst:
+  html_meta:
+    "description": "Volto is based on React, Redux, and React-Router and follows its convention of resource location."
+    "property=og:description": "Volto is based on React, Redux, and React-Router and follows its convention of resource location."
+    "property=og:title": "Folder structure"
+    "keywords": "Volto, Plone, frontend, React, folder structure"
 ---
 
 # Folder structure
 
-Volto is based on React, Redux, and React-Router. All of the
+Volto is based on React, {term}`Redux`, and React-Router. All of the
 code is located in the `src` folder. The following convention for locating
 resources is used.
 
 ## Actions
 
-`actions` contains all the redux actions for fetching all backend data like
+`actions` contains all the Redux actions for fetching all backend data like
 content, users and external resources that are pulled into our app in general.
 
 ## Components

@@ -1,46 +1,33 @@
 ---
-html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+myst:
+  html_meta:
+    "description": "Volto development recipes"
+    "property=og:description": "Volto development recipes"
+    "property=og:title": "Development recipes"
+    "keywords": "Volto, Plone, frontend, React, development, recipes"
 ---
 
 # Development recipes
 
-
 ```{toctree}
-:maxdepth: 3
-:hidden: true
+:maxdepth: 1
 
-./creating-project.md
-./folder-structure.md
-./environment-variables.md
-./customizing-components.md
-./customizing-views.md
-./creating-views.md
-./i18n.md
-./express.md
-./lazyload.md
-./appextras.md
-./contextnavigation.md
-./pluggables.md
-./widget.md
-./ie11compat.md
-
+creating-project
+developing-a-project
+folder-structure
+environment-variables
+customizing-components
+customizing-views
+creating-views
+images
+i18n
+express
+lazyload
+appextras
+contextnavigation
+pluggables
+widget
+how-to-restrict-blocks
+color-picker-widget
+ie11compat
 ```
-
-- [Creating a project](./creating-project.md)
-- [Folder structure](./folder-structure.md)
-- [How to use environment variables](./environment-variables.md)
-- [Customizing components](./customizing-components.md)
-- [Customizing views](./customizing-views.md)
-- [Creating new views](./creating-views.md)
-- [Internationalization](./i18n.md)
-- [Express middleware](./express.md)
-- [Lazy loading and code splitting](./lazyload.md)
-- [App component insertion point](./appextras.md)
-- [Context navigation component](./contextnavigation.md)
-- [Pluggables](./pluggables.md)
-- [Forms and widgets](./widget.md)
-- [Legacy Browser Support](./ie11compat.md)

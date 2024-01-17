@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextBlockEdit renders w/o errors 1`] = `
+<DocumentFragment>
+  <div
+    class="text-slate-editor-inner"
+  >
+    <div
+      class="slate-editor selected"
+      tabindex="-1"
+    >
+      <div
+        class="toolbar-wrapper"
+      />
+      <div
+        aria-multiline="false"
+        autocapitalize="false"
+        autocorrect="false"
+        contenteditable="false"
+        data-slate-editor="true"
+        data-slate-node="value"
+        spellcheck="false"
+        style="position: relative; white-space: pre-wrap; word-wrap: break-word;"
+        tabindex="0"
+        zindex="-1"
+      >
+        <p
+          data-slate-node="element"
+        >
+          <span
+            data-slate-node="text"
+          >
+            <span
+              class=""
+              data-slate-leaf="true"
+            >
+              <span
+                data-slate-length="0"
+                data-slate-zero-width="n"
+              >
+                ﻿
+                <br />
+              </span>
+            </span>
+          </span>
+        </p>
+      </div>
+    </div>
+    <button
+      class="ui basic icon button block-add-button"
+      title="Add block"
+    >
+      <svg
+        class="icon block-add-button"
+        style="height: 24px; width: auto; fill: currentColor;"
+        viewBox=""
+        xmlns=""
+      />
+    </button>
+  </div>
+</DocumentFragment>
+`;

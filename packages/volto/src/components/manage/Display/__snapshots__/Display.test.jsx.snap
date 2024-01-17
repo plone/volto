@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Display renders a Display component empty in case that there is only one option 1`] = `<div />`;
+
+exports[`Display renders a Display component with more than one option 1`] = `
+<div>
+  <div
+    class="inline field field-wrapper-display-select"
+  >
+    <div
+      class="ui grid"
+    >
+      <div
+        class="stretched row"
+      >
+        <div
+          class="four wide column"
+        >
+          <div
+            class="wrapper"
+          >
+            <label
+              for="field-display-select"
+              id="fieldset-undefined-field-label-display-select"
+            >
+              View
+            </label>
+          </div>
+        </div>
+        <div
+          class="eight wide column"
+        >
+          <div
+            class="react-select-container css-2b097c-container"
+          >
+            <span
+              aria-atomic="false"
+              aria-live="polite"
+              aria-relevant="additions text"
+              class="css-1f43avz-a11yText-A11yText"
+            />
+            <div
+              class="react-select__control css-yjz7n5-control"
+            >
+              <div
+                class="react-select__value-container react-select__value-container--has-value css-86rg1c-ValueContainer"
+              >
+                <div
+                  class="react-select__single-value css-1uccc91-singleValue"
+                >
+                  Summary view
+                </div>
+                <input
+                  aria-autocomplete="list"
+                  class="css-wmatm6-dummyInput-DummyInput"
+                  id="react-select-2-input"
+                  readonly=""
+                  tabindex="0"
+                  value=""
+                />
+              </div>
+              <div
+                class="react-select__indicators css-1hb7zxy-IndicatorsContainer"
+              >
+                <span
+                  class="react-select__indicator-separator css-6fp5c8-indicatorSeparator"
+                />
+                <div
+                  aria-hidden="true"
+                  class="react-select__indicator react-select__dropdown-indicator css-tlfecz-indicatorContainer"
+                >
+                  <svg
+                    class="icon"
+                    style="height: 24px; width: auto; fill: #007bc1;"
+                    viewBox=""
+                    xmlns=""
+                  />
+                </div>
+              </div>
+            </div>
+            <input
+              name="display-select"
+              type="hidden"
+              value="summary_view"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+myst:
+  html_meta:
+    "description": "Legacy browser support with polyfills, babel-env, and pre- and post-transpiling"
+    "property=og:description": "Legacy browser support with polyfills, babel-env, and pre- and post-transpiling"
+    "property=og:title": "Legacy Browser Support (IE11 compatibility)"
+    "keywords": "Volto, Plone, frontend, React, IE11 compatability, polyfills, legacy browser support"
 ---
 
 # Legacy Browser Support (IE11 compatibility)
@@ -18,7 +19,7 @@ This documentation is orientative. Volto does NOT support legacy or vendor depre
 
 These package versions should be pinned to this especific versions, unless
 their code or dependencies have some es6 only compatible, because their
-maintainers mainly target the node world.
+maintainers mainly target the Node.js world.
 
 * "query-string": "4.1.0"
 * "superagent": "3.8.2"
@@ -38,7 +39,7 @@ import '@babel/polyfill';
 ```
 
 ```{seealso}
-See https://babeljs.io/docs/en/babel-polyfill for more updated information
+See https://babeljs.io/docs/babel-polyfill for more updated information
 ```
 
 ## babel-env

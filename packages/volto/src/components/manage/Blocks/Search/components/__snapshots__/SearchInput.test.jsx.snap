@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchInput renders a search input component 1`] = `
+<div
+  className="search-input"
+>
+  <div
+    className="ui fluid input"
+  >
+    <input
+      id="undefined-searchtext"
+      onChange={[Function]}
+      onKeyPress={[Function]}
+      placeholder="Search!!!"
+      type="text"
+      value="hello"
+    />
+  </div>
+  <div
+    className="search-input-actions"
+  >
+    <button
+      className="ui basic icon button search-input-clear-icon-button"
+      onClick={[Function]}
+    >
+      <svg
+        className="icon"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": undefined,
+          }
+        }
+        onClick={null}
+        style={
+          Object {
+            "fill": "currentColor",
+            "height": "36px",
+            "width": "auto",
+          }
+        }
+        viewBox=""
+        xmlns=""
+      />
+    </button>
+  </div>
+</div>
+`;

@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+myst:
+  html_meta:
+    "description": "Customizing the theme of a Volto website based on a mockup sketch."
+    "property=og:description": "Customizing the theme of a Volto website based on a mockup sketch."
+    "property=og:title": "Theming Strategy"
+    "keywords": "Volto, Plone, frontend, React, Theming, Strategy"
 ---
 
 # Theming Strategy
@@ -12,7 +13,7 @@ One approaches the theming of a Volto site usually with a predefined mockup or
 design from a design agency or an UX/UI designer in the form of Sketch files
 (a common design and prototyping tool), a series of photoshop or PDFs with the
 desired result on how the site would look like showing the homepage, landing
-pages, different views, inner pages, etc.
+pages, different views, inner pages, and so on.
 
 The strategy is to try to map what Volto already provides like the headers,
 breadcrumbs, footer, main content area, etc to the mockup ones. Then decide
@@ -35,14 +36,14 @@ is built. Take a look at its building blocks in order to not repeat yourself.
 Take a tour inside the `components` folder, and try to map all the components
 with Volto page. Try to figure out what is the frame, the part that is constant
 (header, content area, footer), the moving parts, then go to the more complex
-ones (widgets, forms, etc). Then start theming the components per blocks 
+ones (widgets, forms, etc). Then start theming the components per blocks
 (header, content area, footer).
 
 Try to stick with the container and grid model of Semantic UI, including its
 breakpoints (and helpers). Use React Semantic UI building blocks whenever it's
-possible since it will help you things fit together easily.
+possible since it will help you fit things together easily.
 
-# Talks
+## Talks
 
 You might find interesting this talk as resource on how theming works in Volto:
 

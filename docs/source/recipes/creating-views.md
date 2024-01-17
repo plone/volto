@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+myst:
+  html_meta:
+    "description": "Creating Volto views"
+    "property=og:description": "Creating Volto views"
+    "property=og:title": "Creating Volto Views"
+    "keywords": "Volto, Plone, frontend, React, views"
 ---
 
 # Creating Volto Views
@@ -23,7 +24,7 @@ We start by creating a file called: `components/FullView/FullView.jsx`.
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { UniversalLink } from '@plone/volto/components';
 import { Container, Image } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
 
@@ -43,12 +44,12 @@ const FullView = ({ content }) => (
         )}
       </header>
       <section id="content-core">
-        {content.items.map(item => (
+        {content.items.map((item) => (
           <article key={item.url}>
             <h2>
-              <Link to={item.url} title={item['@type']}>
+              <UniversalLink href={item.url} title={item['@type']}>
                 {item.title}
-              </Link>
+              </UniversalLink>
             </h2>
             {item.image && (
               <Image
@@ -141,13 +142,18 @@ called `layoutViews` which registers all the layout views. We will add the `full
 ```js
 import { FullView } from './components';
 
-export const views = {
-  ...defaultViews,
-  layoutViews: {
-    ...defaultViews.layoutViews,
-    full_view: FullView,
-  },
-};
+export default function applyConfig(config) {
+  const defaultViews = config.views
+  // Add here your project's configuration here by modifying `config` accordingly
+  config.views = {
+    ...defaultViews,
+    layoutViews: {
+      ...defaultViewslayoutViews,
+      full_view: FullView,
+    },
+  };
+  return config;
+}
 ```
 
 ## Registering a new view called Album View
@@ -163,7 +169,7 @@ class from `semantic-ui`, `components/AlbumView/AlbumView.jsx`:
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { UniversalLink } from '@plone/volto/components';
 import { Card, Container, Image } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
 
@@ -184,7 +190,7 @@ const AlbumView = ({ content }) => (
       </header>
       <section id="content-core">
         <Card.Group>
-          {content.items.map(item => (
+          {content.items.map((item) => (
             <Card key={item.url}>
               {item.image && (
                 <Image
@@ -194,9 +200,9 @@ const AlbumView = ({ content }) => (
               )}
               <Card.Content>
                 <Card.Header>
-                  <Link to={item.url} title={item['@type']}>
+                  <UniversalLink href={item.url} title={item['@type']}>
                     {item.title}
-                  </Link>
+                  </UniversalLink>
                 </Card.Header>
               </Card.Content>
             </Card>
@@ -289,45 +295,33 @@ And in `config.js`:
  * Add your config changes here.
  * @module config
  * @example
- * export const settings = {
- *   ...defaultSettings,
- *   port: 4300,
- *   listBlockTypes: {
- *     ...defaultSettings.listBlockTypes,
- *     'my-list-item',
- *   }
+ * export default function applyConfig(config) {
+ *   config.settings = {
+ *     ...config.settings,
+ *     port: 4300,
+ *     listBlockTypes: {
+ *       ...config.settings.listBlockTypes,
+ *       'my-list-item',
+ *    }
  * }
  */
 
-import {
-  settings as defaultSettings,
-  views as defaultViews,
-  widgets as defaultWidgets,
-  blocks as defaultBlocks,
-} from '@plone/volto/config';
-
+// All your imports required for the config here BEFORE this line
+import '@plone/volto/config';
 import { AlbumView, FullView } from './components';
 
-export const settings = {
-  ...defaultSettings,
-};
+export default function applyConfig(config) {
+  const defaultViews = config.views
+  // Add here your project's configuration here by modifying `config` accordingly
+  config.views = {
+    ...defaultViews,
+    layoutViews: {
+      ...defaultViews.layoutViews,
+      album_view: AlbumView,
+      full_view: FullView,
+    },
+  };
+  return config;
+}
 
-export const views = {
-  ...defaultViews,
-  layoutViews: {
-    ...defaultViews.layoutViews,
-    album_view: AlbumView,
-    full_view: FullView,
-  },
-};
-
-export const widgets = {
-  ...defaultWidgets,
-};
-
-export const blocks = {
-  ...defaultBlocks,
-};
-
-export default SummaryView;
 ```

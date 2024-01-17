@@ -1,0 +1,72 @@
+/*******************************
+         Theme Overrides
+*******************************/
+.ui.popup {
+  svg.icon {
+    line-height: 1rem;
+    vertical-align: middle;
+  }
+}
+
+.dropdown-popup-trigger {
+  cursor: pointer;
+}
+
+.dropdown-popup {
+  z-index: 2000 !important;
+
+  .ui.popup {
+    padding: 0;
+    margin: 0;
+
+    > .menu {
+      &,
+      & > .menu {
+        position: inherit;
+        top: inherit;
+        display: block;
+      }
+    }
+
+    .menu {
+      &:extend(.ui.dropdown .menu);
+
+      & > .header {
+        &:extend(.ui.dropdown .menu > .header);
+        &:extend(.ui.basic.segment .header);
+      }
+
+      & > .item {
+        &:extend(.ui.dropdown .menu > .item all);
+      }
+
+      & > .dropdown {
+        &.item {
+          display: flex !important;
+          align-items: center;
+          margin: 0;
+
+          > .icon.left {
+            order: 0;
+            margin-right: 1rem;
+            margin-left: 0;
+          }
+
+          > .text {
+            order: 1;
+          }
+
+          > .menu {
+            top: 0 !important;
+          }
+        }
+
+        &:hover {
+          & > .menu {
+            top: 0 !important;
+          }
+        }
+      }
+    }
+  }
+}

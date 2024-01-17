@@ -1,0 +1,207 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`datetime widget converts UTC date and adapt to local datetime 1`] = `
+<div>
+  <div
+    class="inline field field-wrapper-my-field"
+  >
+    <div
+      class="ui grid"
+    >
+      <div
+        class="stretched row"
+      >
+        <div
+          class="four wide column"
+        >
+          <div
+            class="wrapper"
+          >
+            <label
+              for="field-my-field"
+              id="fieldset-undefined-field-label-my-field"
+            >
+              My field
+            </label>
+          </div>
+        </div>
+        <div
+          class="eight wide column"
+        >
+          <div
+            class="date-time-widget-wrapper"
+          >
+            <div
+              class="ui input date-input"
+            >
+              <div
+                class="SingleDatePicker SingleDatePicker_1"
+              >
+                <div>
+                  <div
+                    class="SingleDatePickerInput SingleDatePickerInput_1"
+                  >
+                    <div
+                      class="DateInput DateInput_1"
+                    >
+                      <input
+                        aria-describedby="DateInput__screen-reader-message-my-field-date"
+                        aria-label="Date"
+                        autocomplete="off"
+                        class="DateInput_input DateInput_input_1"
+                        id="my-field-date"
+                        name="my-field-date"
+                        placeholder="Date"
+                        type="text"
+                        value="02/10/2020"
+                      />
+                      <p
+                        class="DateInput_screenReaderMessage DateInput_screenReaderMessage_1"
+                        id="DateInput__screen-reader-message-my-field-date"
+                      >
+                        Navigate forward to interact with the calendar and select a date. Press the question mark key to get the keyboard shortcuts for changing dates.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="ui input time-input"
+            >
+              <span
+                class="rc-time-picker"
+              >
+                <input
+                  class="rc-time-picker-input"
+                  id="my-field-time"
+                  placeholder="Time"
+                  type="text"
+                  value="3:01 PM"
+                />
+                <span
+                  class="rc-time-picker-icon"
+                />
+              </span>
+            </div>
+            <button
+              class="item ui noborder button"
+              type="button"
+            >
+              <svg
+                class="icon close"
+                style="height: 24px; width: auto; fill: currentColor;"
+                viewBox=""
+                xmlns=""
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders a datetime widget component 1`] = `
+<div>
+  <div
+    class="inline field field-wrapper-my-field"
+  >
+    <div
+      class="ui grid"
+    >
+      <div
+        class="stretched row"
+      >
+        <div
+          class="four wide column"
+        >
+          <div
+            class="wrapper"
+          >
+            <label
+              for="field-my-field"
+              id="fieldset-default-field-label-my-field"
+            >
+              My field
+            </label>
+          </div>
+        </div>
+        <div
+          class="eight wide column"
+        >
+          <div
+            class="date-time-widget-wrapper"
+          >
+            <div
+              class="ui input date-input"
+            >
+              <div
+                class="SingleDatePicker SingleDatePicker_1"
+              >
+                <div>
+                  <div
+                    class="SingleDatePickerInput SingleDatePickerInput_1"
+                  >
+                    <div
+                      class="DateInput DateInput_1"
+                    >
+                      <input
+                        aria-describedby="DateInput__screen-reader-message-my-field-date"
+                        aria-label="Date"
+                        autocomplete="off"
+                        class="DateInput_input DateInput_input_1"
+                        id="my-field-date"
+                        name="my-field-date"
+                        placeholder="Date"
+                        type="text"
+                        value="10/21/2019"
+                      />
+                      <p
+                        class="DateInput_screenReaderMessage DateInput_screenReaderMessage_1"
+                        id="DateInput__screen-reader-message-my-field-date"
+                      >
+                        Navigate forward to interact with the calendar and select a date. Press the question mark key to get the keyboard shortcuts for changing dates.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="ui input time-input"
+            >
+              <span
+                class="rc-time-picker"
+              >
+                <input
+                  class="rc-time-picker-input"
+                  id="my-field-time"
+                  placeholder="Time"
+                  type="text"
+                  value="12:00 AM"
+                />
+                <span
+                  class="rc-time-picker-icon"
+                />
+              </span>
+            </div>
+            <button
+              class="item ui noborder button"
+              type="button"
+            >
+              <svg
+                class="icon close"
+                style="height: 24px; width: auto; fill: currentColor;"
+                viewBox=""
+                xmlns=""
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

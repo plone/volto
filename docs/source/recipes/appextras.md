@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": ""
-  "property=og:description": ""
-  "property=og:title": ""
-  "keywords": ""
+myst:
+  html_meta:
+    "description": "The `AppExtras` component is a general use insertion point for general purpose code spanning the whole application or for third party services code."
+    "property=og:description": "The `AppExtras` component is a general use insertion point for general purpose code spanning the whole application or for third party services code."
+    "property=og:title": "AppExtras component"
+    "keywords": "Volto, Plone, frontend, React, app extra component"
 ---
 
 # AppExtras component
@@ -15,7 +16,7 @@ component.
 
 ## How to use it
 
-You can either use it by overriding it via Component Shadowing by placing
+You can either use it by overriding it via {term}`component shadowing` by placing
 a custom `src/customizations/components/theme/AppExtras/AppExtras.jsx`...
 
 Or you can use the new key of `config.settings`, the `appExtras`. This is
