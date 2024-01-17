@@ -17,6 +17,13 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 17.11.2 (2024-01-17)
+
+### Bugfix
+
+- Merge the StyleWrapper styles with the draggable props from b-D&D. @sneridagh
+  This fixes the D&D bug introduced in https://github.com/plone/volto/pull/5581 [#5652](https://github.com/plone/volto/issues/5652)
+
 ## 17.11.1 (2024-01-17)
 
 ### Bugfix
