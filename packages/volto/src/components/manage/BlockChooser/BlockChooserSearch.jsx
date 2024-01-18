@@ -20,8 +20,11 @@ const BlockChooserSearch = ({ onChange, searchValue }) => {
   const searchInput = useRef(null);
 
   return (
-    <Form>
-      <Form.Field className="searchbox">
+    <Form style={{ padding: '0.5em' }}>
+      <Form.Field
+        className="searchbox"
+        style={{ borderLeft: 0, height: '2em', padding: 0 }}
+      >
         {/* eslint-disable jsx-a11y/no-autofocus */}
         <Input
           aria-label={intl.formatMessage(messages.search)}

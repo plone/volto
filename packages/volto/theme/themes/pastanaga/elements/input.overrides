@@ -96,16 +96,11 @@ of an error is present, it overrides a default from SemanticUI grid definitions.
     text-align: initial;
 
     &.clear-search-button {
-      position: absolute;
-      top: 15px;
-      right: 8px;
       //needed for focus
       margin-left: 0.1em;
-
       svg.icon {
         margin: auto;
       }
-
       &:focus,
       &:hover {
         -webkit-box-shadow: none;
