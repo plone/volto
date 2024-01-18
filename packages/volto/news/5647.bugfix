@@ -1,0 +1,3 @@
+Increased blocks chooser z-index value so it appear above the sidebar container when opened. @sneridagh
+Improved block chooser search section padding and margin to better match block chooser popup. @ichim-david
+Removed inline styles from BlockChooserSearch, use blocks.less to style the search section. @ichim-david

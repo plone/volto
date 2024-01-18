@@ -785,11 +785,17 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
     display: initial;
   }
 
+  .ui.form .field {
+    padding-left: 0;
+    border: 0;
+  }
+
   .ui.form .ui.input input {
-    padding-left: 5px;
+    padding: 0.5em 0.75em;
     //reset for semantic-ui outline:none
     border-width: @1px;
     border-color: transparent;
+    margin-bottom: 3px;
 
     &:focus {
       border-color: @focusedFormBorderColor;
