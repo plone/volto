@@ -222,7 +222,6 @@ server.get('/*', (req, res) => {
 
   loadOnServer({ store, location, routes, api })
     .then(() => {
-      console.log(url);
       const initialLang =
         req.universalCookies.get('I18N_LANGUAGE') ||
         config.settings.defaultLanguage ||
