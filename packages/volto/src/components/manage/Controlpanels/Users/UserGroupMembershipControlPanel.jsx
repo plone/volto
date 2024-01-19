@@ -2,7 +2,7 @@
  * User Control Panel [user group membership management]
  * TODO Enrich with features of user control panel. Then replace user control panel.
  */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { find } from 'lodash';
 import { Portal } from 'react-portal';
 import { useHistory } from 'react-router';
@@ -45,6 +45,12 @@ const UserGroupMembershipPanel = () => {
     id: 'plone_setup',
   });
 
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   useEffect(() => {
     dispatch(listActions('/'));
   }, [dispatch]);
@@ -57,7 +63,7 @@ const UserGroupMembershipPanel = () => {
     dispatch(getSystemInformation());
   }, [dispatch]);
 
-  if (__CLIENT__ && !ploneSetupAction) {
+  if (isClient && !ploneSetupAction) {
     return <Unauthorized />;
   }
 
@@ -108,7 +114,7 @@ const UserGroupMembershipPanel = () => {
         </Segment.Group>
       </div>
 
-      {__CLIENT__ && (
+      {isClient && (
         <Portal node={document.getElementById('toolbar')}>
           <Toolbar
             pathname={pathname}

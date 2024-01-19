@@ -2,7 +2,7 @@
  * LinksToItem component
  * @module components/manage/LinksToItem/LinksToItem
  */
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { find } from 'lodash';
 import { Helmet } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
@@ -11,6 +11,7 @@ import { Container, Segment, Table } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 import { getContent, queryRelations } from '@plone/volto/actions';
+import { asyncConnect } from '@plone/volto/helpers';
 import {
   Icon as IconNext,
   Toolbar,
@@ -50,6 +51,12 @@ const LinksToItem = (props) => {
   const ploneSetupAction = find(actions.user, {
     id: 'plone_setup',
   });
+
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   useEffect(() => {
     dispatch(queryRelations(null, false, itempath, null, [itempath]));
@@ -164,7 +171,7 @@ const LinksToItem = (props) => {
           </Segment>
         )}
       </Segment.Group>
-      {__CLIENT__ && (
+      {isClient && (
         <Portal node={document.getElementById('toolbar')}>
           <Toolbar
             pathname={pathname}
@@ -206,4 +213,25 @@ const LinksToItem = (props) => {
   );
 };
 
-export default LinksToItem;
+export default asyncConnect([
+  {
+    key: 'content',
+    // Dispatch async/await to make the operation synchronous, otherwise it returns
+    // before the promise is resolved
+    promise: async ({ location, store: { dispatch } }) => {
+      const pathname = getBaseUrl(location.pathname);
+      return await dispatch(getContent(pathname));
+    },
+  },
+  {
+    key: 'relations',
+    // Dispatch async/await to make the operation synchronous, otherwise it returns
+    // before the promise is resolved
+    promise: async ({ location, store: { dispatch } }) => {
+      const pathname = getBaseUrl(location.pathname);
+      return await dispatch(
+        queryRelations(null, false, pathname, null, [pathname]),
+      );
+    },
+  },
+])(LinksToItem);

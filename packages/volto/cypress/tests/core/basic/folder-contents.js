@@ -149,6 +149,9 @@ describe('Folder Contents Tests', () => {
 
     // after adding 56 page I need to add a final page to move around.
     // when I add a page
+    cy.visit('/my-folder');
+    cy.wait('@content');
+
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-document').click();
     cy.getSlateTitle()

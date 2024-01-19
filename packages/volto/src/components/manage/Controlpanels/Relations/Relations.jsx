@@ -1,7 +1,7 @@
 /**
  * Relations Control Panel
  */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { find } from 'lodash';
 import { useSelector } from 'react-redux';
 import { Portal } from 'react-portal';
@@ -22,6 +22,12 @@ const RelationsControlPanel = () => {
   const history = useHistory();
   const location = useLocation();
   const dispatch = useDispatch();
+
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const brokenRelations = useSelector(
     (state) => state.relations?.stats?.data?.broken,
@@ -88,7 +94,7 @@ const RelationsControlPanel = () => {
         )}
       </div>
 
-      {__CLIENT__ && (
+      {isClient && (
         <Portal node={document.getElementById('toolbar')}>
           <Toolbar
             pathname={location.pathname}

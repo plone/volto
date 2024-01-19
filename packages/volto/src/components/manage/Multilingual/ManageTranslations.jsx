@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Container, Segment, Table } from 'semantic-ui-react';
 import { Helmet } from '@plone/volto/helpers';
 import { flattenToAppURL, getBaseUrl, langmap } from '@plone/volto/helpers';
@@ -63,6 +63,12 @@ const ManageTranslations = (props) => {
   const pathname = useLocation().pathname;
   const content = useSelector((state) => state.content.data);
   const dispatch = useDispatch();
+
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const { isObjectBrowserOpen, openObjectBrowser } = props;
 
@@ -269,7 +275,7 @@ const ManageTranslations = (props) => {
             </Table.Body>
           </Table>
         )}
-        {__CLIENT__ && (
+        {isClient && (
           <Portal node={document.getElementById('toolbar')}>
             <Toolbar
               pathname={pathname}

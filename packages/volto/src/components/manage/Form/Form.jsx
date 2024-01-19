@@ -612,7 +612,10 @@ class Form extends Component {
           />
           {this.state.isClient && this.props.editable && (
             <Portal
-              node={__CLIENT__ && document.getElementById('sidebar-metadata')}
+              node={
+                this.state.isClient &&
+                document.getElementById('sidebar-metadata')
+              }
             >
               <UiForm
                 method="post"
