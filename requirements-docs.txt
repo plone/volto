@@ -11,5 +11,10 @@ sphinx-sitemap
 sphinx-togglebutton
 sphinxcontrib-spelling
 sphinxext-opengraph
+sphinxcontrib-applehelp==1.0.4  # https://github.com/plone/documentation/issues/1604
+sphinxcontrib-devhelp==1.0.2  # https://github.com/plone/documentation/issues/1604
+sphinxcontrib-htmlhelp==2.0.1  # https://github.com/plone/documentation/issues/1604
+sphinxcontrib-qthelp==1.0.3  # https://github.com/plone/documentation/issues/1604
+sphinxcontrib-serializinghtml==1.1.5  # https://github.com/plone/documentation/issues/1604
 sphinxcontrib-video
-vale
+vale==2.30.0

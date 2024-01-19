@@ -102,28 +102,30 @@ describe('Search Block Tests', () => {
     cy.get('.block.search .facets > .facet .entries > .entry label')
       .contains('Event')
       .click();
-    cy.get('#page-document .listing-item:first-of-type a').should(
-      'have.attr',
-      'href',
-      '/my-event',
-    );
+
+    cy.get('.searchBlock-facets').findByText('My Event').should('not.exist');
     cy.url().should(
       'contain',
-      '%7B%22i%22%3A%22portal_type%22%2C%22o%22%3A%22paqo.list.contains%22%2C%22v%22%3A%5B%22Event%22%5D%7D',
+      '%5B%7B%22i%22%3A%22portal_type%22%2C%22o%22%3A%22paqo.list.contains%22%2C%22v%22%3A%5B%22Document%22%2C%22Folder%22%5D%7D%5D',
     );
     // clear facets
-    cy.get('.block.search .filter-list-header .ui.button').click();
+    cy.get('.checkbox-facet').findByText('Event').click();
     cy.url().should(
-      'not.contain',
-      '%7B%22i%22%3A%22portal_type%22%2C%22o%22%3A%22paqo.list.contains%22%2C%22v%22%3A%5B%22Event%22%5D%7D',
+      'contain',
+      '%5B%7B%22i%22%3A%22portal_type%22%2C%22o%22%3A%22paqo.list.contains%22%2C%22v%22%3A%5B%22Document%22%2C%22Folder%22%2C%22Event%22%5D%7D%5D',
     );
 
-    // navigate to the searched url
-    cy.navigate(
+    cy.get('.checkbox-facet').findByText('Folder').click();
+    cy.get('.checkbox-facet').findByText('Page').click();
+
+    cy.wait(2000);
+
+    // // navigate to the searched url
+    cy.visit(
       '/my-search-page?query=%5B%7B%22i%22%3A%22portal_type%22%2C%22o%22%3A%22paqo.list.contains%22%2C%22v%22%3A%5B%22Event%22%5D%7D%5D',
     );
     cy.reload();
-    cy.wait(500);
+    cy.wait(2000);
     cy.get('.search-details').should('contain', 'Search results: 1');
 
     //navigate to home

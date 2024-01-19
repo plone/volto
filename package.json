@@ -20,7 +20,8 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "lint-staged": "lint-staged",
     "prepare": "husky install",
-    "husky:uninstall": "husky uninstall"
+    "husky:uninstall": "husky uninstall",
+    "prereleaser": "node packages/scripts/preleaser.js"
   },
   "devDependencies": {
     "@parcel/packager-ts": "2.10.3",

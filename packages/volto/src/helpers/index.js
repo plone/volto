@@ -59,6 +59,7 @@ export {
   blocksFormGenerator,
   buildStyleClassNamesFromData,
   buildStyleClassNamesExtenders,
+  buildStyleObjectFromData,
   getPreviousNextBlock,
   findBlocks,
 } from '@plone/volto/helpers/Blocks/Blocks';

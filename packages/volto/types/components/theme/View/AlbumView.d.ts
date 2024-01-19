@@ -5,7 +5,7 @@ export default AlbumView;
  * @param {Object} content Content object.
  * @returns {string} Markup of the component.
  */
-declare class AlbumView {
+declare class AlbumView extends React.Component<any, any, any> {
     constructor(props: any);
     state: {
         openIndex: any;
@@ -20,3 +20,4 @@ declare namespace AlbumView {
         let content: any;
     }
 }
+import React from 'react';
