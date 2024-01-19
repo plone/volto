@@ -215,6 +215,7 @@ const LinksToItem = (props) => {
   );
 };
 
+export const __test__ = LinksToItem;
 export default compose(
   asyncConnect([
     {
