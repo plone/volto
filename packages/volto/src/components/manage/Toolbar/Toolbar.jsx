@@ -314,7 +314,7 @@ class Toolbar extends Component {
   };
 
   handleClickOutside = (e) => {
-    if (e.target.tagName==='svg'){
+    if (e.target.tagName === 'svg') {
       return;
     }
     if (this.pusher && doesNodeContainClick(this.pusher, e)) return;
