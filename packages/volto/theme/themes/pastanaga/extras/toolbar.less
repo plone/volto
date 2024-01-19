@@ -99,7 +99,6 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
     flex-direction: column;
     background-color: #fff;
     box-shadow: 0 1px 2px 0 #c7d5d8;
-    transition: @height-transition;
 
     &.expanded {
       height: 100px;
@@ -151,16 +150,10 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
       opacity: 0;
       // Removing this because is causing grey scroll appears
       // overflow-y: scroll;
-      transition:
-        @max-height-transition,
-        opacity 0.3s 0.3s;
 
       &.show {
         max-height: 900px;
         opacity: 1;
-        transition:
-          @max-height-transition,
-          opacity 0.3s 0.3s;
       }
     }
 
