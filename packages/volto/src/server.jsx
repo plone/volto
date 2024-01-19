@@ -222,6 +222,7 @@ server.get('/*', (req, res) => {
 
   loadOnServer({ store, location, routes, api })
     .then(() => {
+      console.log(url);
       const initialLang =
         req.universalCookies.get('I18N_LANGUAGE') ||
         config.settings.defaultLanguage ||
@@ -239,7 +240,7 @@ server.get('/*', (req, res) => {
         : store.getState().content.data?.language?.token ||
           config.settings.defaultLanguage;
 
-      if (toBackendLang(initialLang) !== contentLang) {
+      if (toBackendLang(initialLang) !== contentLang && url !== '/') {
         const newLang = toReactIntlLang(
           new locale.Locales(contentLang).best(supported).toString(),
         );
