@@ -1,0 +1,1 @@
+Enabled hyperlinking from narrative documentation to Storybook entries while developing, in Netlify preview builds, and when deployed to the main production Plone documentation. Documented usage and syntax in {ref}`link-to-storybook-entries-from-documentation`. @stevepiercy
