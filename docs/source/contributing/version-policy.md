@@ -68,7 +68,7 @@ See also [Plone REST API Python and Plone compatability](https://github.com/plon
 
 ## Node.js
 
-Volto runs using [Node.js](https://nodejs.org/).
+Volto runs using [Node.js](https://nodejs.org/en).
 Volto always supports only [LTS versions of Node.js](https://github.com/nodejs/release#release-schedule).
 We recommend using the current LTS version.
 
