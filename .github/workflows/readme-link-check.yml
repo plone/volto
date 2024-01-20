@@ -1,6 +1,6 @@
 # Check links in all README.mds with awesome_bot
 # https://github.com/dkhamsing/awesome_bot
-name: CI
+name: readme-link-check
 
 on:
   push:
