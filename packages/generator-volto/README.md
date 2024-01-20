@@ -4,7 +4,7 @@
 
 ## Installation
 
-First, install [Yeoman](http://yeoman.io) and @plone/generator-volto using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/en)).
+First, install [Yeoman](https://yeoman.io/) and @plone/generator-volto using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/en)).
 
 ```bash
 npm install -g yo

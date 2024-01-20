@@ -38,7 +38,7 @@ You can try a Volto online demo at [https://demo.plone.org/](https://demo.plone.
 
 ## Create a Volto project
 
-To start a new project using Volto, follow the [Plone installation documentation](https://6.docs.plone.org/install/install-from-packages.html).
+To start a new project using Volto, follow the [Plone installation documentation](https://6.docs.plone.org/install/create-project.html).
 
 
 ## Documentation
@@ -105,7 +105,7 @@ To ensure your website gets the greatest exposure, add it both to [Awesome Volto
 - [Biblioteche Pianura Est](https://bibest.it/it) (Website of the Associated libraries of eastern plain. Developed by [RedTurtle](https://www.redturtle.it/), 2021)
 - [BISE](https://biodiversity.europa.eu) (Biodiversity Information System for Europe, developed by [Eau de Web](https://eaudeweb.ro/), 2019)
 - [Camera di Commercio dell'Umbria](https://www.umbria.camcom.it) (Website Chamber of Commerce of Umbria. Developed by [RedTurtle](https://www.redturtle.it), 2021)
-- [Camera di Commercio di Reggio Emilia](https://www.re.camcom.gov.it/) (Website Chamber of Commerce of Reggio Emilia. Developed by [RedTurtle](https://www.redturtle.it), 2021)
+- [Camera di Commercio di Reggio Emilia](https://www.emilia.camcom.it) (Website Chamber of Commerce of Reggio Emilia. Developed by [RedTurtle](https://www.redturtle.it), 2021)
 - [Comune di Camposanto](https://www.comune.camposanto.mo.it/) (Website of the Municipality of Camposanto. Developed by [RedTurtle](https://www.redturtle.it), 2021)
 - [Comune di Cantagallo](https://www.comune.cantagallo.po.it/) (Website of the Municipality of Cantagallo. Developed by [RedTurtle](https://www.redturtle.it), 2021)
 - [Comune di Medolla](https://www.comune.medolla.mo.it/) (Website of the Municipality of Medolla. Developed by [RedTurtle](https://www.redturtle.it), 2021)
