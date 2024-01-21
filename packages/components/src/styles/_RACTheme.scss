@@ -1,7 +1,7 @@
 /* color themes for dark and light modes, generated with Leonardo.
  * Light: https://leonardocolor.io/theme.html?name=Light&config=%7B%22baseScale%22%3A%22Gray%22%2C%22colorScales%22%3A%5B%7B%22name%22%3A%22Gray%22%2C%22colorKeys%22%3A%5B%22%23000000%22%5D%2C%22colorspace%22%3A%22RGB%22%2C%22ratios%22%3A%5B%22-1.12%22%2C%221.45%22%2C%222.05%22%2C%223.02%22%2C%224.54%22%2C%227%22%2C%2210.86%22%5D%2C%22smooth%22%3Afalse%7D%2C%7B%22name%22%3A%22Purple%22%2C%22colorKeys%22%3A%5B%22%235e30eb%22%5D%2C%22colorspace%22%3A%22RGB%22%2C%22ratios%22%3A%5B%22-1.12%22%2C%221.45%22%2C%222.05%22%2C%223.02%22%2C%224.54%22%2C%227%22%2C%2210.86%22%5D%2C%22smooth%22%3Afalse%7D%2C%7B%22name%22%3A%22Red%22%2C%22colorKeys%22%3A%5B%22%23e32400%22%5D%2C%22colorspace%22%3A%22RGB%22%2C%22ratios%22%3A%5B%22-1.12%22%2C%221.45%22%2C%222.05%22%2C%223.02%22%2C%224.54%22%2C%227%22%2C%2210.86%22%5D%2C%22smooth%22%3Afalse%7D%5D%2C%22lightness%22%3A98%2C%22contrast%22%3A1%2C%22saturation%22%3A100%2C%22formula%22%3A%22wcag2%22%7D */
 :root {
-  --background-color: #f8f8f8;
+  --background-color: var(--air);
   --gray-50: #ffffff;
   --gray-100: #d0d0d0;
   --gray-200: #afafaf;
@@ -23,6 +23,8 @@
   --red-600: #731200;
   --highlight-hover: rgb(0 0 0 / 0.07);
   --highlight-pressed: rgb(0 0 0 / 0.15);
+  --shadow-exo: 0px 6px 12px 0px rgba(2, 19, 34, 0.06),
+    0px 9px 18px 0px rgba(2, 19, 34, 0.18);
 }
 
 /* Dark: https://leonardocolor.io/theme.html?name=Dark&config=%7B%22baseScale%22%3A%22Gray%22%2C%22colorScales%22%3A%5B%7B%22name%22%3A%22Gray%22%2C%22colorKeys%22%3A%5B%22%23000000%22%5D%2C%22colorspace%22%3A%22RGB%22%2C%22ratios%22%3A%5B%22-1.12%22%2C%221.45%22%2C%222.05%22%2C%223.02%22%2C%224.54%22%2C%227%22%2C%2210.86%22%5D%2C%22smooth%22%3Afalse%7D%2C%7B%22name%22%3A%22Purple%22%2C%22colorKeys%22%3A%5B%22%235e30eb%22%5D%2C%22colorspace%22%3A%22RGB%22%2C%22ratios%22%3A%5B%22-1.12%22%2C%221.45%22%2C%222.05%22%2C%223.02%22%2C%224.54%22%2C%227%22%2C%2210.86%22%5D%2C%22smooth%22%3Afalse%7D%2C%7B%22name%22%3A%22Red%22%2C%22colorKeys%22%3A%5B%22%23e32400%22%5D%2C%22colorspace%22%3A%22RGB%22%2C%22ratios%22%3A%5B%22-1.12%22%2C%221.45%22%2C%222.05%22%2C%223.02%22%2C%224.54%22%2C%227%22%2C%2210.86%22%5D%2C%22smooth%22%3Afalse%7D%5D%2C%22lightness%22%3A11%2C%22contrast%22%3A1%2C%22saturation%22%3A100%2C%22formula%22%3A%22wcag2%22%7D */
@@ -71,14 +73,18 @@
   --field-background: var(--gray-50);
   --field-text-color: var(--gray-600);
   --overlay-background: var(--gray-50);
-  --button-background: var(--gray-50);
+  // --button-background: var(--gray-50);
+  --button-background: transparent;
   --button-background-pressed: var(--background-color);
   /* these colors are the same between light and dark themes
    * to ensure contrast with the foreground color */
-  --highlight-background: #6f46ed; /* purple-300 from dark theme, 3.03:1 against background-color */
-  --highlight-background-pressed: #522acd; /* purple-200 from dark theme */
+  // --highlight-background: #6f46ed; /* purple-300 from dark theme, 3.03:1 against background-color */
+  --highlight-background: var(--smoke);
+  // --highlight-background-pressed: #522acd; /* purple-200 from dark theme */
+  --highlight-background-pressed: var(--silver);
   --highlight-background-invalid: #cc2000; /* red-300 from dark theme */
-  --highlight-foreground: white; /* 5.56:1 against highlight-background */
+  // --highlight-foreground: white; /* 5.56:1 against highlight-background */
+  --highlight-foreground: var(--denim);
   --highlight-foreground-pressed: #ddd;
   --highlight-overlay: rgb(from #6f46ed r g b / 15%);
   --invalid-color: var(--red-400);

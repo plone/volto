@@ -9,7 +9,7 @@ export interface SelectItemObject {
 
 // More on how to set up stories at: https://storybook.js.org/docs/7.0/react/writing-stories/introduction
 const meta = {
-  title: 'Select',
+  title: 'Widgets/Select',
   component: Select,
   tags: ['autodocs'],
   decorators: [
