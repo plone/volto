@@ -452,6 +452,10 @@ querystringSearchGet
     [See an explanation of character limits in URLs](https://stackoverflow.com/questions/417142/what-is-the-maximum-length-of-a-url-in-different-browsers/417184#417184).
     Please test this setting properly before enabling in a production site.
 
+openExternalLinkInNewTab 
+    A Boolean, `false` by default.
+    If openExternalLinkInNewTab is true and the URL is not an internal one, or if the target is '_blank', the openLinkInNewTab will be true, indicating that the link should be opened in a new tab.
+
 ```
 
 ## Views settings
