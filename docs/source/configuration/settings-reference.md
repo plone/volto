@@ -454,7 +454,7 @@ querystringSearchGet
 
 openExternalLinkInNewTab 
     A Boolean, `false` by default.
-    If openExternalLinkInNewTab is true and the URL is not an internal one, or if the target is '_blank', the openLinkInNewTab will be true, indicating that the link should be opened in a new tab.
+    If either `openExternalLinkInNewTab` is `true` and the URL is external, or if `target` is `_blank`, then `openLinkInNewTab` will be `true`, indicating that the link, when clicked, will open in a new tab.
 
 ```
 
