@@ -1242,7 +1242,7 @@ msgstr "Saisissez un nom d'utilisateur ci-dessus à rechercher ou cliquez sur 'A
 #: components/theme/Register/Register
 # defaultMessage: Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
-msgstr "Saisissez votre adresse e-mail. Elle sera votre nom d'utilisateur. Nous respectons votre vie privée, nous ne donnerons pas votre adresse à un tiers et elle ne sera pas exposée.<<<<<<< HEAD"
+msgstr "Saisissez votre adresse e-mail. Elle sera votre nom d'utilisateur. Nous respectons votre vie privée, nous ne donnerons pas votre adresse à un tiers et elle ne sera pas exposée."
 
 #: components/theme/Register/Register
 # defaultMessage: Enter full name, e.g. John Smith.
@@ -1506,7 +1506,7 @@ msgstr "De"
 #: components/manage/Widgets/AlignWidget
 # defaultMessage: Full
 msgid "Full"
-msgstr "Complet<<<<<<< HEAD"
+msgstr "Complet"
 
 #: components/theme/Register/Register
 # defaultMessage: Full Name
@@ -3459,7 +3459,7 @@ msgstr "Merci."
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: The Database Manager allow you to view database status information
 msgid "The Database Manager allow you to view database status information"
-msgstr "Le gestionnaire de base de données vous permet d'afficher les informations d'état de la base de données<<<<<<< HEAD======="
+msgstr "Le gestionnaire de base de données vous permet d'afficher les informations d'état de la base de données"
 
 #: components/theme/RequestTimeout/RequestTimeout
 # defaultMessage: The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again.
