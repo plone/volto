@@ -147,9 +147,7 @@ exports[`History renders a history component 1`] = `
           </td>
           <td
             className=""
-          >
-            
-          </td>
+          />
           <td
             className=""
           />
@@ -248,9 +246,7 @@ exports[`History renders a history component 1`] = `
           </td>
           <td
             className=""
-          >
-            
-          </td>
+          />
           <td
             className=""
           />

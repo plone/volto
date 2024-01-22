@@ -320,7 +320,6 @@ exports[`Contents renders a folder contents view component 1`] = `
                       value=""
                     />
                   </div>
-                  
                   <svg
                     className="icon zoom"
                     dangerouslySetInnerHTML={

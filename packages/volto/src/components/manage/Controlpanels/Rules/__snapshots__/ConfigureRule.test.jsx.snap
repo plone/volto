@@ -17,9 +17,7 @@ exports[`ConfigureRule renders rules configure interface 1`] = `
           className="ui segment primary"
         >
           Configure Content Rule: 
-          <q>
-            
-          </q>
+          <q />
         </div>
         <div
           className="ui segment secondary"
@@ -173,10 +171,6 @@ exports[`ConfigureRule renders rules configure interface 1`] = `
       </div>
     </article>
   </div>
-  
-  
-  
-  
   <div
     id="Portal"
   />

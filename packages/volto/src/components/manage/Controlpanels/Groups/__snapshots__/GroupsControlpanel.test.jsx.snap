@@ -106,7 +106,6 @@ exports[`UsersControlpanel renders a user control component 1`] = `
             data-group="groups"
           />
         </table>
-        
       </div>
       <div
         className="contents-pagination"

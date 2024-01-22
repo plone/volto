@@ -104,9 +104,7 @@ exports[`UndoControlpanel renders undo controlpanel component 1`] = `
             </td>
             <td
               className="three wide"
-            >
-              
-            </td>
+            />
           </tr>
           <tr
             className=""
@@ -142,9 +140,7 @@ exports[`UndoControlpanel renders undo controlpanel component 1`] = `
             </td>
             <td
               className="three wide"
-            >
-              
-            </td>
+            />
           </tr>
           <tr
             className=""
@@ -180,9 +176,7 @@ exports[`UndoControlpanel renders undo controlpanel component 1`] = `
             </td>
             <td
               className="three wide"
-            >
-              
-            </td>
+            />
           </tr>
           <tr
             className=""
@@ -218,9 +212,7 @@ exports[`UndoControlpanel renders undo controlpanel component 1`] = `
             </td>
             <td
               className="three wide"
-            >
-              
-            </td>
+            />
           </tr>
           <tr
             className=""
@@ -256,9 +248,7 @@ exports[`UndoControlpanel renders undo controlpanel component 1`] = `
             </td>
             <td
               className="three wide"
-            >
-              
-            </td>
+            />
           </tr>
           <tr
             className=""
@@ -294,9 +284,7 @@ exports[`UndoControlpanel renders undo controlpanel component 1`] = `
             </td>
             <td
               className="three wide"
-            >
-              
-            </td>
+            />
           </tr>
           <tr
             className=""
@@ -317,9 +305,7 @@ exports[`UndoControlpanel renders undo controlpanel component 1`] = `
             <td
               className="three wide"
               title=""
-            >
-              
-            </td>
+            />
             <td
               className="three wide"
             >
@@ -332,9 +318,7 @@ exports[`UndoControlpanel renders undo controlpanel component 1`] = `
             </td>
             <td
               className="three wide"
-            >
-              
-            </td>
+            />
           </tr>
           <tr
             className=""
@@ -370,9 +354,7 @@ exports[`UndoControlpanel renders undo controlpanel component 1`] = `
             </td>
             <td
               className="three wide"
-            >
-              
-            </td>
+            />
           </tr>
         </tbody>
         <tfoot

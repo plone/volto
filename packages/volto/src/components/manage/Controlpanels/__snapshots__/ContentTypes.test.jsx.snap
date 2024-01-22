@@ -70,9 +70,7 @@ exports[`ContentTypes renders dexterity content-types controlpanel component 1`]
               </td>
               <td
                 className=""
-              >
-                
-              </td>
+              />
               <td
                 className=""
               >
@@ -220,9 +218,7 @@ exports[`ContentTypes renders dexterity content-types controlpanel component 1`]
               </td>
               <td
                 className=""
-              >
-                
-              </td>
+              />
               <td
                 className=""
               >
