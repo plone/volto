@@ -133,7 +133,7 @@ export function applySchemaDefaults({ data, schema, intl }: {
  * @param {Object} params An object with data, intl and anything else
  * @return {Object} Derived data, with the defaults extracted from the schema
  */
-export function applyBlockDefaults({ data, intl, ...rest }: any, blocksConfig: any): any;
+export function applyBlockDefaults({ data, intl, navRoot, contentType, ...rest }: any, blocksConfig: any): any;
 /**
  * Given a `block` object and a list of block types, return a list of block ids matching the types
  *
@@ -146,4 +146,6 @@ export function getBlocks(properties: any): any[];
 export function styleToClassName(key: any, value: any, prefix?: string): any;
 export function buildStyleClassNamesFromData(obj?: {}, prefix?: string): any;
 export function buildStyleClassNamesExtenders({ block, content, data, classNames, }: any): any[];
+export function styleDataToStyleObject(key: any, value: any, prefix?: string): any[];
+export function buildStyleObjectFromData(obj?: any, prefix?: string): any;
 export function getPreviousNextBlock({ content, block }: any): any[];
