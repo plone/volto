@@ -110,7 +110,7 @@ describe('Listing Block Tests', () => {
     );
   });
 
-  it.only('Listing block SSR renders components', () => {
+  it('Listing block SSR renders components', () => {
     cy.intercept('PATCH', '/**/my-page').as('save');
     cy.intercept('GET', '/**/my-page').as('content');
     cy.intercept('GET', '/**/@types/Document').as('schema');
@@ -166,14 +166,17 @@ describe('Listing Block Tests', () => {
       '/my-page/my-page-test',
     );
 
-    const api_url = 'http://127.0.0.1:3000';
-    cy.request({
-      method: 'GET',
-      url: `${api_url}/my-page`,
-    }).then((response) => {
-      const html = Cypress.$(response.body);
-      // Check that the HTML contains a component with a specific content
-      expect(html.find('.listing-item:eq(1) h3').text()).to.contain('My News');
+    cy.url().then((currentUrl) => {
+      cy.request({
+        method: 'GET',
+        url: currentUrl,
+      }).then((response) => {
+        const html = Cypress.$(response.body);
+        // Check that the current page HTML contains the listing block results
+        expect(html.find('.listing-item:eq(1) h3').text()).to.contain(
+          'My News',
+        );
+      });
     });
   });
 
