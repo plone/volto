@@ -5,6 +5,7 @@
 import { useEffect } from 'react';
 import { Helmet } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
+import { find } from 'lodash';
 import { Portal } from 'react-portal';
 import { Container, Segment, Table } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
