@@ -115,24 +115,31 @@ exports[`ContentsItem renders a contents item component 1`] = `
   <td
     className="right aligned"
   >
-    <svg
-      className="icon dropdown-popup-trigger"
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": undefined,
-        }
-      }
-      onClick={[Function]}
-      style={
-        Object {
-          "fill": "#007eb1",
-          "height": "24px",
-          "width": "auto",
-        }
-      }
-      viewBox=""
-      xmlns=""
-    />
+    <div>
+      <button
+        className="ui basic icon button add-block-button"
+        onClick={[Function]}
+      >
+        <svg
+          className="icon dropdown-popup-trigger"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": undefined,
+            }
+          }
+          onClick={null}
+          style={
+            Object {
+              "fill": "#007eb1",
+              "height": "24px",
+              "width": "auto",
+            }
+          }
+          viewBox=""
+          xmlns=""
+        />
+      </button>
+    </div>
   </td>
 </tr>
 `;
