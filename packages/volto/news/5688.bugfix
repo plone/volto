@@ -1,0 +1,1 @@
+Fixed listing SSR rendering by sending subrequestId instead of id only within getAsyncData the same way it happens when calling getQueryStringResults directly. @ichim-david 
