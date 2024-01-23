@@ -270,7 +270,7 @@ function main({ addonMode }) {
   if (!addonMode) {
     let AddonConfigurationRegistry;
     try {
-      // Detect where is the registry (if we are in Volto 18 or above)
+      // Detect where is the registry (if we are in Volto 18 or above for either core and projects)
       if (
         fs.existsSync(
           path.join(
@@ -279,10 +279,33 @@ function main({ addonMode }) {
           ),
         )
       ) {
-        AddonConfigurationRegistry = require('@plone/registry/src/addon-registry');
+        AddonConfigurationRegistry = require(
+          path.join(
+            projectRootPath,
+            '/node_modules/@plone/registry/src/addon-registry',
+          ),
+        );
       } else {
         // We are in Volto 17 or below
-        AddonConfigurationRegistry = require('@plone/volto/addon-registry');
+        // Check if core Volto or project
+        if (
+          fs.existsSync(
+            path.join(projectRootPath, '/node_modules/@plone/volto'),
+          )
+        ) {
+          // We are in a project
+          AddonConfigurationRegistry = require(
+            path.join(
+              projectRootPath,
+              '/node_modules/@plone/volto/addon-registry',
+            ),
+          );
+        } else {
+          // We are in core (17 or below)
+          AddonConfigurationRegistry = require(
+            path.join(projectRootPath, 'addon-registry'),
+          );
+        }
       }
     } catch {
       console.log(
