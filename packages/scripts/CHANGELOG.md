@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 3.3.1 (2024-01-23)
+
+### Internal
+
+- Fix `@plone/scripts` requires @sneridagh [#5687](https://github.com/plone/volto/issues/5687)
+
 ## 3.3.0 (2024-01-17)
 
 ### Internal
