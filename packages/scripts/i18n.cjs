@@ -279,14 +279,10 @@ function main({ addonMode }) {
           ),
         )
       ) {
-        AddonConfigurationRegistry = require(
-          path.join('@plone/registry/src/addon-registry'),
-        );
+        AddonConfigurationRegistry = require('@plone/registry/src/addon-registry');
       } else {
         // We are in Volto 17 or below
-        AddonConfigurationRegistry = require(
-          path.join('@plone/volto/addon-registry'),
-        );
+        AddonConfigurationRegistry = require('@plone/volto/addon-registry');
       }
     } catch {
       console.log(
