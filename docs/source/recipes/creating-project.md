@@ -11,7 +11,7 @@ myst:
 
 ```{seealso}
 This document shows how to create a Volto project with the frontend only.
-To create a full Plone project with both frontend and backend, see {doc}`plone:install/install-from-packages` instead.
+To create a full Plone project with both frontend and backend, see {doc}`plone:install/create-project` instead.
 ```
 
 For using Volto for a project—in other words, use Volto as a library—you should use Volto's project generator `@plone/generator-volto`.
