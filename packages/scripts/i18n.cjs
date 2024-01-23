@@ -280,7 +280,7 @@ function main({ addonMode }) {
         )
       ) {
         AddonConfigurationRegistry = require(
-          path.join(projectRootPath, '@plone/registry/src/addon-registry'),
+          path.join('@plone/registry/src/addon-registry'),
         );
       } else {
         // We are in Volto 17 or below
