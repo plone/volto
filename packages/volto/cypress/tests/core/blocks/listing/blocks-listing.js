@@ -110,6 +110,73 @@ describe('Listing Block Tests', () => {
     );
   });
 
+  it.only('Listing block SSR renders components', () => {
+    cy.intercept('PATCH', '/**/my-page').as('save');
+    cy.intercept('GET', '/**/my-page').as('content');
+    cy.intercept('GET', '/**/@types/Document').as('schema');
+
+    // Given One Document My Page Test and One News Item MY News and One Folder My Folder
+    cy.createContent({
+      contentType: 'Document',
+      contentId: 'my-page-test',
+      contentTitle: 'My Page Test',
+      path: 'my-page',
+    });
+    cy.createContent({
+      contentType: 'News Item',
+      contentId: 'my-news',
+      contentTitle: 'My News',
+      path: 'my-page',
+    });
+    cy.createContent({
+      contentType: 'Document',
+      contentId: 'my-folder',
+      contentTitle: 'My Folder',
+      path: 'my-page',
+    });
+
+    cy.navigate('/my-page');
+    cy.wait('@content');
+
+    cy.navigate('/my-page/edit');
+    cy.wait('@schema');
+
+    cy.clearSlateTitle().type('My title');
+
+    //add listing block
+    cy.addNewBlock('listing');
+
+    //verify before save
+    cy.get(`.block.listing .listing-body:first-of-type`).contains(
+      'My Page Test',
+    );
+
+    //save
+    cy.get('#toolbar-save').click();
+    cy.wait('@save');
+    cy.wait('@content');
+
+    //test after save
+    cy.get('#page-document .listing-body:first-of-type').contains(
+      'My Page Test',
+    );
+    cy.get('#page-document .listing-item:first-of-type a').should(
+      'have.attr',
+      'href',
+      '/my-page/my-page-test',
+    );
+
+    const api_url = 'http://127.0.0.1:3000';
+    cy.request({
+      method: 'GET',
+      url: `${api_url}/my-page`,
+    }).then((response) => {
+      const html = Cypress.$(response.body);
+      // Check that the HTML contains a component with a specific content
+      expect(html.find('.listing-item:eq(1) h3').text()).to.contain('My News');
+    });
+  });
+
   it('Add Listing block - containing items', () => {
     cy.intercept('PATCH', '/**/my-page').as('save');
     cy.intercept('GET', '/**/my-page').as('content');
