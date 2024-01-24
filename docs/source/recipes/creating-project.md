@@ -65,4 +65,4 @@ In addition to bootstrapping stand-alone Volto projects, it can also bootstrap V
     yarn start
     ```
 
-    This starts the development server, and compiles and serves the app at http://localhost:3000.
+    This starts the development server, which compiles the project code, and when done, it serves the app at http://localhost:3000.
