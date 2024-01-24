@@ -55,7 +55,7 @@ In addition to bootstrapping stand-alone Volto projects, it can also bootstrap V
 3.  Change your working directory to the newly created folder `myvoltoproject` (or whatever name you entered).
 
     ```shell
-    cd myvoltoapp
+    cd myvoltoproject
     ```
 
 4.  `@plone/generator-volto` installed the dependencies for you.
