@@ -11,7 +11,9 @@ myst:
 
 This chapter describes how to develop Volto core and its libraries, packages, and apps as open source software contributions.
 
-For how to develop a project using Volto, see {doc}`plone:install/index`.
+```{seealso}
+To create a full Plone project with both frontend and backend, see {doc}`plone:install/create-project` instead.
+```
 
 
 ## Monorepo structure
