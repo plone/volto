@@ -1,1 +1,1 @@
-Resolved the positioning issue of the dropdown pop on the contents page by implementing dropdown pop with PopperJS. @kanhaiya04
+Implemented PopperJS to correctly position the pop-up menu on the contents page. @kanhaiya04
