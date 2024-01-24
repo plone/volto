@@ -1,7 +1,3 @@
-#. Translators:
-#. Léu Almeida <leo@webid.net.br>, 2019
-#. Emanuel Angelo, emansije <emanuel.angelo@gmail.com>, 2019
-#. Érico Andrei <ericof@plone.org>, 2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
