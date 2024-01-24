@@ -11,7 +11,7 @@ myst:
 
 # Developing a project
 
-When you start developing a Plone project, it is recommended that you use Plone's cookiecutter boilerplate generator.
+When you start developing a Plone project, it is recommended that you use Plone's cookiecutter boilerplate project generator.
 See {doc}`plone:install/create-project` for more information.
 
 The generator will output the project folder structure.
