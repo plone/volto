@@ -8,6 +8,16 @@
 
 <!-- towncrier release notes start -->
 
+## 16.30.2 (2024-01-24)
+
+### Bugfix
+
+- Removed git merge conflicts from french, english and brazilian volto.po locale files. @ichim-david [#5682](https://github.com/plone/volto/issues/5682)
+
+### Internal
+
+- Update versions of deps for Plone 5 @sneridagh [#5686](https://github.com/plone/volto/issues/5686)
+
 ## 16.30.1 (2024-01-10)
 
 ### Bugfix
