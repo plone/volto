@@ -110,7 +110,7 @@ describe('Listing Block Tests', () => {
     );
   });
 
-  it('Listing block SSR renders components', () => {
+  it('Listing block SSR renders folderish content', () => {
     cy.intercept('PATCH', '/**/my-page').as('save');
     cy.intercept('GET', '/**/my-page').as('content');
     cy.intercept('GET', '/**/@types/Document').as('schema');
@@ -175,6 +175,83 @@ describe('Listing Block Tests', () => {
         // Check that the current page HTML contains the listing block results
         expect(html.find('.listing-item:eq(1) h3').text()).to.contain(
           'My News',
+        );
+      });
+    });
+  });
+
+  it('Listing block SSR renders components with query parameters', () => {
+    cy.intercept('PATCH', '/**/my-page').as('save');
+    cy.intercept('GET', '/**/my-page').as('content');
+    cy.intercept('GET', '/**/@types/Document').as('schema');
+
+    // Given One Document My Page Test and One News Item MY News
+    cy.createContent({
+      contentType: 'Document',
+      contentId: 'my-page-test',
+      contentTitle: 'My Page Test',
+      path: 'my-page',
+    });
+    cy.createContent({
+      contentType: 'News Item',
+      contentId: 'my-news',
+      contentTitle: 'My News',
+      path: 'my-page',
+    });
+
+    cy.navigate('/my-page');
+    cy.wait('@content');
+
+    cy.navigate('/my-page/edit');
+    cy.wait('@schema');
+
+    cy.clearSlateTitle().type('My title');
+
+    //add listing block
+    cy.addNewBlock('listing');
+
+    cy.get('.sidebar-container .tabs-wrapper .menu .item')
+      .contains('Block')
+      .click();
+    cy.get('.querystring-widget .fields').contains('Add criteria').click();
+    cy.get(
+      '.querystring-widget .fields:first-of-type .field:first-of-type .react-select__menu .react-select__option',
+    )
+      .contains('Type')
+      .click();
+
+    //insert Page query parameter for listing criteria
+    cy.get('.querystring-widget .fields:first-of-type > .field').click();
+    cy.get(
+      '.querystring-widget .fields:first-of-type > .field .react-select__menu .react-select__option',
+    )
+      .contains('Page')
+      .click();
+
+    //verify before save
+    cy.get(`.block.listing .listing-body:first-of-type`).contains(
+      'My Page Test',
+    );
+
+    //save
+    cy.get('#toolbar-save').click();
+    cy.wait('@save');
+    cy.wait('@content');
+
+    //test after save
+    cy.get('#page-document .listing-body:first-of-type').contains(
+      'My Page Test',
+    );
+
+    cy.url().then((currentUrl) => {
+      cy.request({
+        method: 'GET',
+        url: currentUrl,
+      }).then((response) => {
+        const html = Cypress.$(response.body);
+        // Check that the current page HTML contains the listing block results
+        expect(html.find('.listing-item:eq(0) h3').text()).to.contain(
+          'My Page Test',
         );
       });
     });
