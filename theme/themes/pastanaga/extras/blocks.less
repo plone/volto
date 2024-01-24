@@ -785,6 +785,7 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
     display: initial;
   }
   .ui.form .ui.input input {
+    padding-left: 5px;
     //reset for semantic-ui outline:none
     border-width: @1px;
     border-color: transparent;
@@ -1185,6 +1186,12 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
       align-items: center;
     }
   }
+}
+
+// If using popperjs, we need also to set preference too to the
+// popperjs container. The sidebar container has 150, so it has to be higher.
+[data-popper-placement] {
+  z-index: 200;
 }
 
 @import 'teaser';
