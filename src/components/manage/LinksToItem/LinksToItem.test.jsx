@@ -4,7 +4,7 @@ import { Provider } from 'react-intl-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
-import LinksToItem from './LinksToItem';
+import { __test__ as LinksToItem } from './LinksToItem';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -17,6 +17,18 @@ jest.mock('../Toolbar/More', () => jest.fn(() => <div className="More" />));
 describe('LinksToItem', () => {
   it('renders "links and references" view', () => {
     const store = mockStore({
+      actions: {
+        actions: {
+          document_actions: [],
+          object: [
+            {
+              icon: '',
+              id: 'edit',
+              title: 'Edit',
+            },
+          ],
+        },
+      },
       relations: {
         subrequests: {
           '/page-1': {
