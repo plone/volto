@@ -454,8 +454,11 @@ querystringSearchGet
 
 openExternalLinkInNewTab 
     A Boolean, `false` by default.
-    If either `openExternalLinkInNewTab` is `true` and the URL is external, or if `target` is `_blank`, then `openLinkInNewTab` will be `true`, indicating that the link, when clicked, will open in a new tab.
+    openExternalLinkInNewTab allows the user to control whether links are opened in a new tab or the current tab, based on their settings.
 
+    ```jsx
+     target={settings.openExternalLinkInNewTab ? '_blank' : '_self'}
+    ```
 ```
 
 ## Views settings
