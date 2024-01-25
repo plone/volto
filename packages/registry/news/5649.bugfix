@@ -1,1 +1,0 @@
-Fix order of preference in addons-registry for the theme definition (THEME, volto.config.js, package.json) @sneridagh

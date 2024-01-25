@@ -1,2 +1,0 @@
-Merge the StyleWrapper styles with the draggable props from b-D&D. @sneridagh
-This fixes the D&D bug introduced in https://github.com/plone/volto/pull/5581
