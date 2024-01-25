@@ -3359,9 +3359,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@plone/scripts@npm:^3.2.1":
-  version: 3.2.1
-  resolution: "@plone/scripts@npm:3.2.1"
+"@plone/scripts@npm:^3.3.1":
+  version: 3.3.1
+  resolution: "@plone/scripts@npm:3.3.1"
   dependencies:
     "@babel/core": ^7.0.0
     babel-plugin-react-intl: 5.1.17
@@ -3379,7 +3379,7 @@ __metadata:
     addon: addon/index.js
     changelogupdater: changelogupdater.cjs
     i18n: i18n.cjs
-  checksum: e0d2fc60945e545db034724979f20e30d37039f00a86428eb3d0ee256103c6b062e6136520643649be3614816abc4effae063d2a9c84be42e0af03b829bc9b9e
+  checksum: ca61990664378456f3ea97f3cbd00ed9c805990edc6a3d4d452e6a858ff21297e24bede4706307136506399898fdbb8934f8af55de9848a1adb9235295cda8db
   languageName: node
   linkType: hard
 
@@ -3401,7 +3401,7 @@ __metadata:
     "@loadable/component": 5.14.1
     "@loadable/server": 5.14.0
     "@loadable/webpack-plugin": 5.15.2
-    "@plone/scripts": ^3.2.1
+    "@plone/scripts": ^3.3.1
     "@storybook/addon-actions": ^6.5.15
     "@storybook/addon-controls": 6.5.15
     "@storybook/addon-essentials": ^6.5.15
