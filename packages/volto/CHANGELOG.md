@@ -17,6 +17,30 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.8 (2024-01-25)
+
+### Feature
+
+- Add image preview in object browser widget. @robgietema [#5658](https://github.com/plone/volto/issues/5658)
+
+### Bugfix
+
+- Fix multilingual redirector where it doesn't take into account the stored cookie in SSR. @robgietema [#5628](https://github.com/plone/volto/issues/5628)
+- Fix blocks chooser index and add a bit of breath to the left in the search input @sneridagh [#5647](https://github.com/plone/volto/issues/5647)
+- Fix `links-to-item` should be a protected route. @iFlameing [#5666](https://github.com/plone/volto/issues/5666)
+- Removed git merge conflicts from french volto.po locale file. @ichim-david [#5681](https://github.com/plone/volto/issues/5681)
+
+### Documentation
+
+- Clarify how to create a Volto project with the frontend only when you have your own existing backend. @stevepiercy [#3723](https://github.com/plone/volto/issues/3723)
+- Enabled hyperlinking from narrative documentation to Storybook entries while developing, in Netlify preview builds, and when deployed to the main production Plone documentation. Documented usage and syntax in {ref}`link-to-storybook-entries-from-documentation`. @stevepiercy [#5599](https://github.com/plone/volto/issues/5599)
+- Update cross-reference to main documentation from `install-from-packages` to `create-project`. @stevepiercy [#5654](https://github.com/plone/volto/issues/5654)
+- Temporarily pin `sphinxcontrib-*help` dependencies so documentation can build. @stevepiercy [#5655](https://github.com/plone/volto/issues/5655)
+- Pin Vale to 2.30.0 to allow build of documentation until we can upgrade to v3.x. @stevepiercy [#5656](https://github.com/plone/volto/issues/5656)
+- Use correct Pygments lexer for SCSS. @stevepiercy [#5673](https://github.com/plone/volto/issues/5673)
+- Fixed a broken reference to create a project in documentation. @stevepiercy [#5692](https://github.com/plone/volto/issues/5692)
+- Align the project names in "Create a Volto project without a backend". @stevepiercy [#5694](https://github.com/plone/volto/issues/5694)
+
 ## 18.0.0-alpha.7 (2024-01-17)
 
 ### Feature
