@@ -17,6 +17,16 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 17.11.3 (2024-01-25)
+
+### Bugfix
+
+- Removed git merge conflicts from french volto.po locale file. @ichim-david [#5681](https://github.com/plone/volto/issues/5681)
+
+### Internal
+
+- Polish po file handling @erral [#5542](https://github.com/plone/volto/issues/5542)
+
 ## 17.11.2 (2024-01-17)
 
 ### Bugfix
