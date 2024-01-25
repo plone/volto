@@ -17,6 +17,20 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 17.11.4 (2024-01-25)
+
+### Bugfix
+
+- In the recurrence widget, set the vertical alignment of the `edit` button to `middle`. @Ravi-kumar9347 [#5359](https://github.com/plone/volto/issues/5359)
+- Fix multilingual redirector where it doesn't take into account the stored cookie in SSR. @robgietema [#5628](https://github.com/plone/volto/issues/5628)
+-  [#5647](https://github.com/plone/volto/issues/5647)
+- Fix `links-to-item` should be a protected route. @iFlameing [#5666](https://github.com/plone/volto/issues/5666)
+- Removed git merge conflicts from french volto.po locale file. @ichim-david [#5681](https://github.com/plone/volto/issues/5681)
+
+### Internal
+
+- Add cypress tests for the "links-to-item" view of content items @jackahl [#5427](https://github.com/plone/volto/issues/5427)
+
 ## 17.11.3 (2024-01-25)
 
 ### Bugfix
