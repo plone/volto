@@ -143,12 +143,13 @@ The `name` key is mandatory in order to generate proper markup in the resultant 
 
 You can also use this selector, where an element with class names `block` and `teaser` with a child element whose HTML attribute `style` contains the value of `--background-color`:
 
-```css
+```scss
 .block.teaser {
   &[style*='--background-color'] {
-     padding: 20px 0;
- }
- ```
+    padding: 20px 0;
+  }
+}
+```
 
 ```{seealso}
 See the MDN CSS Reference for selectors.

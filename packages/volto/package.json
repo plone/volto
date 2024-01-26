@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "18.0.0-alpha.6",
+  "version": "18.0.0-alpha.8",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -36,10 +36,10 @@
   "types": "types/index.d.ts",
   "scripts": {
     "analyze": "BUNDLE_ANALYZE=true razzle build",
-    "start": "razzle start",
-    "start:coresandbox": "ADDONS=coresandbox razzle start",
-    "build": "razzle build --noninteractive",
-    "build:types": "tsc src/**/*.{js,jsx} --declaration --allowJs --emitDeclarationOnly --outDir types --skipLibCheck",
+    "start": "make build-deps && razzle start",
+    "start:coresandbox": "make build-deps && ADDONS=coresandbox razzle start",
+    "build": "make build-deps && razzle build --noninteractive",
+    "build:types": "tsc --project tsconfig.declarations.json",
     "test": "razzle test --maxWorkers=50%",
     "test:ci": "CI=true NODE_ICU_DATA=node_modules/full-icu razzle test",
     "test:husky": "CI=true yarn test --bail --findRelatedTests",
@@ -272,7 +272,6 @@
     "query-string": "7.1.0",
     "razzle": "4.2.18",
     "razzle-dev-utils": "4.2.18",
-    "razzle-plugin-bundle-analyzer": "4.2.18",
     "razzle-plugin-scss": "4.2.18",
     "rc-time-picker": "3.7.3",
     "react": "17.0.2",
@@ -319,7 +318,7 @@
     "redux-thunk": "2.3.0",
     "rrule": "2.7.1",
     "semantic-ui-less": "2.4.1",
-    "semantic-ui-react": "2.0.3",
+    "semantic-ui-react": "2.1.5",
     "serialize-javascript": "3.1.0",
     "slate": "0.100.0",
     "slate-hyperscript": "0.100.0",
@@ -343,6 +342,7 @@
     "webpack": "5.76.1",
     "webpack-dev-server": "4.11.1",
     "webpack-node-externals": "3.0.0",
+    "webpack-bundle-analyzer": "4.10.1",
     "xmlrpc": "1.3.2",
     "yarnhook": "0.5.1"
   },

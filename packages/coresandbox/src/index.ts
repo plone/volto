@@ -7,8 +7,9 @@ import { SliderSchema as TestBlockSchema } from './components/Blocks/TestBlock/s
 import { multipleFieldsetsSchema } from './components/Blocks/TestBlock/schema';
 import { conditionalVariationsSchemaEnhancer } from './components/Blocks/schemaEnhancers';
 import codeSVG from '@plone/volto/icons/code.svg';
+import type { BlockConfigBase, ConfigData } from '@plone/types';
 
-const testBlock = {
+const testBlock: BlockConfigBase = {
   id: 'testBlock',
   title: 'testBlock',
   icon: codeSVG,
@@ -33,7 +34,7 @@ const testBlock = {
   extensions: {},
 };
 
-const testBlockConditional = {
+const testBlockConditional: BlockConfigBase = {
   ...testBlock,
   id: 'testBlockConditional',
   title: 'Test Conditional Block',
@@ -47,14 +48,14 @@ const testBlockConditional = {
   },
 };
 
-const testBlockWithConditionalVariations = {
+const testBlockWithConditionalVariations: BlockConfigBase = {
   ...testBlock,
   id: 'testBlockWithConditionalVariations',
   title: 'Test Block with Conditional Variations',
   schemaEnhancer: conditionalVariationsSchemaEnhancer,
 };
 
-const testBlockMultipleFieldsets = {
+const testBlockMultipleFieldsets: BlockConfigBase = {
   id: 'testBlockMultipleFieldsets',
   title: 'testBlockMultipleFieldsets',
   icon: codeSVG,
@@ -67,7 +68,7 @@ const testBlockMultipleFieldsets = {
   sidebarTab: 1,
 };
 
-const testBlockDefaultEdit = {
+const testBlockDefaultEdit: BlockConfigBase = {
   id: 'testBlockDefaultEdit',
   title: 'testBlockDefaultEdit',
   icon: codeSVG,
@@ -90,7 +91,7 @@ const testBlockDefaultEdit = {
   extensions: {},
 };
 
-const testBlockDefaultView = {
+const testBlockDefaultView: BlockConfigBase = {
   id: 'testBlockDefaultView',
   title: 'testBlockDefaultView',
   icon: codeSVG,
@@ -112,21 +113,19 @@ const testBlockDefaultView = {
   extensions: {},
 };
 
-const listing = (config) => {
+const listing = (config: ConfigData) => {
   return {
     ...config.blocks.blocksConfig.listing,
     variations: [
-      ...config.blocks.blocksConfig.listing.variations,
+      ...(config.blocks.blocksConfig.listing.variations || []),
       {
         id: 'listingBlockVariationWithFullobjectsAndData',
-        isDefault: false,
         title: 'Listing with items content',
         template: ListingBlockVariationTeaserContent,
         fullobjects: true,
       },
       {
         id: 'listingBlockVariationWithFullobjectsButNoData',
-        isDefault: false,
         title: 'Listing without items content',
         template: ListingBlockVariationTeaserContent,
       },
@@ -134,20 +133,32 @@ const listing = (config) => {
   };
 };
 
-export const multilingualFixture = (config) => {
+export const multilingualFixture = (config: ConfigData) => {
   config.settings.isMultilingual = true;
   config.settings.supportedLanguages = ['en', 'it'];
 
   return config;
 };
 
-export const workingCopyFixture = (config) => {
+export const workingCopyFixture = (config: ConfigData) => {
   config.settings.hasWorkingCopySupport = true;
 
   return config;
 };
 
-const applyConfig = (config) => {
+// We extend the block types with the custom ones
+declare module '@plone/types' {
+  export interface BlocksConfigData {
+    testBlock: BlockConfigBase;
+    testBlockConditional: BlockConfigBase;
+    testBlockWithConditionalVariations: BlockConfigBase;
+    testBlockMultipleFieldsets: BlockConfigBase;
+    testBlockDefaultEdit: BlockConfigBase;
+    testBlockDefaultView: BlockConfigBase;
+  }
+}
+
+const applyConfig = (config: ConfigData) => {
   config.blocks.blocksConfig.testBlock = testBlock;
   config.blocks.blocksConfig.testBlockConditional = testBlockConditional;
   config.blocks.blocksConfig.testBlockWithConditionalVariations =
