@@ -17,6 +17,16 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 17.11.5 (2024-01-26)
+
+### Bugfix
+
+- handle addons that have not been migrated to the new structure of po files @erral [#5704](https://github.com/plone/volto/issues/5704)
+
+### Internal
+
+- Upgrade to @plone/scripts 3.3.2 @sneridagh [#5706](https://github.com/plone/volto/issues/5706)
+
 ## 17.11.4 (2024-01-25)
 
 ### Bugfix
