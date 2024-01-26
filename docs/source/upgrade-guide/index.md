@@ -148,10 +148,10 @@ Edit your {file}`package.json`:
 
 ```diff
 "devDependencies": {
-+     "@plone/scripts": ^3.0.0,
++     "@plone/scripts": "^3.0.0",
 +     "@typescript-eslint/eslint-plugin": "6.7.0",
 +     "@typescript-eslint/parser": "6.7.0",
-+     "stylelint-prettier": "1.1.2",
++     "stylelint-prettier": "4.0.2",
 +     "ts-jest": "^26.4.2",
 +     "ts-loader": "9.4.4",
 +     "typescript": "5.2.2"
