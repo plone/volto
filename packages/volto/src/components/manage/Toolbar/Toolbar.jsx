@@ -313,7 +313,9 @@ class Toolbar extends Component {
   };
 
   handleClickOutside = (e) => {
-    if (this.pusher && !e.target.classList.contains('icon')) this.closeMenu();
+    if (this.pusher && !e.target.classList.contains('icon')) {
+      this.closeMenu();
+    }
   };
 
   unlock = (e) => {
