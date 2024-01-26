@@ -13614,15 +13614,6 @@ packages:
       '@types/react': 18.2.27
     dev: true
 
-  /@types/react-redux@7.1.30:
-    resolution: {integrity: sha512-i2kqM6YaUwFKduamV6QM/uHbb0eCP8f8ZQ/0yWf+BsAVVsZPRYJ9eeGWZ3uxLfWwwA0SrPRMTPTqsPFkY3HZdA==}
-    dependencies:
-      '@types/hoist-non-react-statics': 3.3.5
-      '@types/react': 18.2.27
-      hoist-non-react-statics: 3.3.2
-      redux: 4.1.0
-    dev: false
-
   /@types/react-redux@7.1.33:
     resolution: {integrity: sha512-NF8m5AjWCkert+fosDsN3hAlHzpjSiXlVy9EgQEmLoBhaNXbmyeGs/aj5dQzKuF+/q+S7JQagorGDW8pJ28Hmg==}
     dependencies:
@@ -13630,7 +13621,6 @@ packages:
       '@types/react': 18.2.27
       hoist-non-react-statics: 3.3.2
       redux: 4.1.0
-    dev: true
 
   /@types/react-syntax-highlighter@11.0.5:
     resolution: {integrity: sha512-VIOi9i2Oj5XsmWWoB72p3KlZoEbdRAcechJa8Ztebw7bDl2YmR+odxIqhtJGp1q2EozHs02US+gzxJ9nuf56qg==}
@@ -13742,7 +13732,7 @@ packages:
     resolution: {integrity: sha512-mj1aH4cj3XUpMEgVpognma5kHVtbm6U6cHZmEFzCRiXPvKkuHrFr3+yXdGLXvfFRBaQIVshPGHI+hGTOJlhS/g==}
     deprecated: This is a stub types definition. testing-library__dom provides its own type definitions, so you do not need this installed.
     dependencies:
-      '@testing-library/dom': 8.20.1
+      '@testing-library/dom': 9.3.3
     dev: true
 
   /@types/testing-library__jest-dom@5.14.9:
@@ -30567,7 +30557,7 @@ packages:
         optional: true
     dependencies:
       '@babel/runtime': 7.20.6
-      '@types/react-redux': 7.1.30
+      '@types/react-redux': 7.1.33
       hoist-non-react-statics: 3.3.2
       loose-envify: 1.4.0
       prop-types: 15.7.2
@@ -30977,7 +30967,6 @@ packages:
       loose-envify: 1.4.0
       object-assign: 4.1.1
       prop-types: 15.7.2
-    bundledDependencies: false
 
   /react@17.0.2:
     resolution: {integrity: sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA==}

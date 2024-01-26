@@ -17,6 +17,25 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.9 (2024-01-26)
+
+### Feature
+
+- Improve validation of IdWidget @tedw [#3716](https://github.com/plone/volto/issues/3716)
+
+### Bugfix
+
+- Removed unmaintained and unused razzle-plugin-bundle-analyze in favor of webpack-bundle-analyzer. @ichim-david
+  Updated extending Razzle from an add-on section to remove code that didn't belong to that recipe. @ichim-david [#5671](https://github.com/plone/volto/issues/5671)
+
+### Internal
+
+- Upgade `semantic-ui-react` to latest version (2.1.5) @sneridagh [#5632](https://github.com/plone/volto/issues/5632)
+
+### Documentation
+
+- Fixed redirect of `https://tanstack.com/query/v4/docs/react/guides/ssr` to `https://tanstack.com/query/v4/docs/framework/react/guides/ssr`. @stevepiercy [#5700](https://github.com/plone/volto/issues/5700)
+
 ## 18.0.0-alpha.8 (2024-01-25)
 
 ### Feature
