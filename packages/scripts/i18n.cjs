@@ -152,8 +152,11 @@ function poToJson({ registry, addonMode }) {
         result[item.msgid] =
           language === 'en'
             ? item.msgstr[0] ||
-              (item.comments[0]
+              (item.comments[0] && item.comments[0].startsWith('. Default: ')
                 ? item.comments[0].replace('. Default: ', '')
+                : item.comments[0] &&
+                  item.comments[0].startsWith('defaultMessage:')
+                ? item.comments[0].replace('defaultMessage: ', '')
                 : '')
             : item.msgstr[0];
       }
