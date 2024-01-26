@@ -2445,10 +2445,10 @@ msgstr "Vorkommen"
 msgid "Ok"
 msgstr "OK"
 
-#. Default: "Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed."
+#. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines."
 #: components/manage/Widgets/IdWidget
-msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed."
-msgstr "Nur Kleinbuchstaben (a-z) ohne Umlaute oder Sonderzeichen, Zahlen (0-9) und die beiden Zeichen "-" und "_", und "." sind erlaubt."
+msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines."
+msgstr ""
 
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
