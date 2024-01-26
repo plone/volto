@@ -47,7 +47,12 @@ beforeAll(() => {
       )),
     },
     {
-      match: '/test-exclude',
+      match: '/frontpage',
+      exclude: '/frontpage/images',
+      component: jest.fn((props) => (
+        <div className="frontpage-content">{JSON.stringify(props.match)}</div>
+      )),
+    },
       exclude: '/test-exclude/edit',
       component: jest.fn((props) => (
         <div className="test-exclude-edit">{JSON.stringify(props.match)}</div>
