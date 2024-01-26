@@ -48,14 +48,9 @@ beforeAll(() => {
     },
     {
       match: '/frontpage',
-      exclude: '/frontpage/images',
+      ignore: '/frontpage/images',
       component: jest.fn((props) => (
         <div className="frontpage-content">{JSON.stringify(props.match)}</div>
-      )),
-    },
-      exclude: '/test-exclude/edit',
-      component: jest.fn((props) => (
-        <div className="test-exclude-edit">{JSON.stringify(props.match)}</div>
       )),
     },
   ];
@@ -97,12 +92,12 @@ describe('AppExtras', () => {
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });
-  it('exclude property works', () => {
+  it('ignore property works', () => {
     const componentView = renderer.create(
-      <AppExtras pathname="/test-exclude"></AppExtras>,
+      <AppExtras pathname="/frontpage"></AppExtras>,
     );
     const componentEdit = renderer.create(
-      <AppExtras pathname="/test-exclude/edit"></AppExtras>,
+      <AppExtras pathname="/frontpage/images"></AppExtras>,
     );
 
     const jsonView = componentView.toJSON();
