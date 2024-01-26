@@ -3,20 +3,22 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-03 03:20-0400\n"
-"PO-Revision-Date: 2023-09-20 00:35-0400\n"
-"Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
+"PO-Revision-Date: 2024-01-26 12:01+0000\n"
+"Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
+"Language-Team: Spanish <https://hosted.weblate.org/projects/plone/volto-main/"
+"es/>\n"
 "Language: es\n"
-"Language-Team: ES <LL@li.org>\n"
+"MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"MIME-Version: 1.0\n"
-"X-Generator: Poedit 3.3.2\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.4-dev\n"
 "Language-Code: es\n"
 "Language-Name: Español\n"
 "Preferred-Encodings: utf-8\n"
 "Domain: volto\n"
-"X-Is-Fallback-For: es-ar es-bo es-cl es-co es-cr es-do es-ec es-es es-sv es-gt es-hn es-mx es-ni es-pa es-py es-pe es-pr es-us es-uy es-ve\n"
+"X-Is-Fallback-For: es-ar es-bo es-cl es-co es-cr es-do es-ec es-es es-sv es-"
+"gt es-hn es-mx es-ni es-pa es-py es-pe es-pr es-us es-uy es-ve\n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
@@ -412,7 +414,7 @@ msgstr "Ascendente"
 #. Default: "Assign the {role} role to {entry}"
 #: components/manage/Sharing/Sharing
 msgid "Assign the {role} role to {entry}"
-msgstr ""
+msgstr "Asignar la función {role} a {entry}"
 
 #. Default: "Assignments"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -633,7 +635,7 @@ msgstr "Limpiar filtros"
 #. Default: "Clear search"
 #: components/manage/BlockChooser/BlockChooserSearch
 msgid "Clear search"
-msgstr ""
+msgstr "Borrar búsqueda"
 
 #. Default: "Click to download full sized image"
 #: components/theme/View/ImageView
@@ -1025,7 +1027,7 @@ msgstr "Eliminado"
 #. Default: "Deleting this item breaks {brokenReferences} {variation}."
 #: components/manage/Contents/Contents
 msgid "Deleting this item breaks {brokenReferences} {variation}."
-msgstr ""
+msgstr "Borrar este elemento rompe {brokenReferences} {variation}."
 
 #. Default: "Depth"
 #: components/manage/Widgets/QuerystringWidget
@@ -2451,6 +2453,11 @@ msgstr "Ok"
 #: components/manage/Widgets/IdWidget
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines."
 msgstr ""
+"Sólo se permiten caracteres de 7 bits. No puede contener letras mayúsculas, "
+"caracteres especiales: <, >, &, #, /, ? u otros que sean ilegales en las "
+"URL. No se puede empezar con: _, aq_, @@, ++. No puede terminar con __. No "
+"puede ser: solicitud, colaboradores, ., .., \"\". No puede contener nuevas "
+"líneas."
 
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
@@ -3321,6 +3328,8 @@ msgstr "Pequeño"
 #: components/manage/Contents/Contents
 msgid "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
 msgstr ""
+"Algunos elementos también son una carpeta. Al eliminarlos, eliminará "
+"{containedItemsToDelete} {variation} dentro de las carpetas."
 
 #. Default: "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
 #: components/manage/Contents/Contents
@@ -3696,6 +3705,8 @@ msgstr "Es una copia de trabajo de {title}"
 #: components/manage/Contents/Contents
 msgid "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
 msgstr ""
+"Este elemento también es una carpeta. Al eliminarlo, eliminará "
+"{containedItemsToDelete} {variation} dentro de la carpeta."
 
 #. Default: "This item was locked by {creator} on {date}"
 #: components/manage/LockingToastsFactory/LockingToastsFactory
@@ -4113,7 +4124,7 @@ msgstr "Mostrar los cambios"
 #. Default: "View links and references to this item"
 #: components/manage/Contents/Contents
 msgid "View links and references to this item"
-msgstr ""
+msgstr "Ver enlaces y referencias a este artículo."
 
 #. Default: "View this revision"
 #: components/manage/History/History
