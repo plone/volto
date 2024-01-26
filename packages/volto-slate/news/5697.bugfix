@@ -1,0 +1,1 @@
+Fixed creation of both a slate block and a (proper) image block on pasting an image directly from the clipboard in a slate block. @AnshulKahar2729
