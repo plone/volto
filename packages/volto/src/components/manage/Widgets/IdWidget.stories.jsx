@@ -2,10 +2,23 @@ import React from 'react';
 import IdWidget from './IdWidget';
 import WidgetStory from './story';
 
-export const Text = WidgetStory.bind({
-  props: { id: 'text', title: 'Text' },
+export const Default = WidgetStory.bind({
   widget: IdWidget,
 });
+
+Default.args = {
+  id: 'text',
+  title: 'Text',
+};
+
+export const Errored = WidgetStory.bind({
+  widget: IdWidget,
+});
+Errored.args = {
+  id: 'field-errored',
+  title: 'Errored field title',
+  value: '@@name',
+};
 
 export default {
   title: 'Edit Widgets/Id',
