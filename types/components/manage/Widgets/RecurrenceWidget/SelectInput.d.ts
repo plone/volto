@@ -13,11 +13,11 @@ declare function SelectInput({ name, disabled, options, value, onChange }: {
 }): string;
 declare namespace SelectInput {
     namespace propTypes {
-        let name: any;
-        let options: any;
-        let disabled: any;
-        let value: any;
-        let onChange: any;
+        let name: PropTypes.Validator<string>;
+        let options: PropTypes.Validator<any[]>;
+        let disabled: PropTypes.Requireable<boolean>;
+        let value: PropTypes.Requireable<any>;
+        let onChange: PropTypes.Requireable<(...args: any[]) => any>;
     }
     namespace defaultProps {
         let name_1: string;
@@ -32,3 +32,4 @@ declare namespace SelectInput {
         export { onChange_1 as onChange };
     }
 }
+import PropTypes from 'prop-types';

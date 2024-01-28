@@ -1,1 +1,1 @@
-export default function imagesMiddleware(): any;
+export default function imagesMiddleware(): import("express-serve-static-core").Router;

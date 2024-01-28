@@ -23,7 +23,15 @@ export namespace blocksConfig {
                     id: string;
                     isDefault: boolean;
                     title: string;
-                    template: any;
+                    template: {
+                        (props: any): JSX.Element;
+                        propTypes: {
+                            data: import("prop-types").Validator<{
+                                [x: string]: any;
+                            }>;
+                            isEditMode: import("prop-types").Requireable<boolean>;
+                        };
+                    };
                 }[];
             }
             namespace image {
@@ -51,3 +59,13 @@ export namespace blocksConfig {
 }
 export const initialBlocks: {};
 export const initialBlocksFocus: {};
+import { gridTeaserDisableStylingSchema } from '@plone/volto/components/manage/Blocks/Teaser/schema';
+import TeaserViewBlock from '@plone/volto/components/manage/Blocks/Teaser/View';
+import TeaserEditBlock from '@plone/volto/components/manage/Blocks/Teaser/Edit';
+import { TeaserSchema } from '@plone/volto/components/manage/Blocks/Teaser/schema';
+import { TeaserBlockDataAdapter } from '@plone/volto/components/manage/Blocks/Teaser/adapter';
+import { gridImageDisableSizeAndPositionHandlersSchema } from '@plone/volto/components/manage/Blocks/Image/schema';
+import ViewImageBlock from '@plone/volto/components/manage/Blocks/Image/View';
+import EditImageBlock from '@plone/volto/components/manage/Blocks/Image/Edit';
+import ImageSettingsSchema from '@plone/volto/components/manage/Blocks/Image/LayoutSchema';
+import { getImageBlockSizes } from '@plone/volto/components/manage/Blocks/Image/utils';

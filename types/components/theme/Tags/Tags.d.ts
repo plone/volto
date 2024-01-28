@@ -8,10 +8,11 @@ export default Tags;
 declare function Tags({ tags }: any[]): string;
 declare namespace Tags {
     namespace propTypes {
-        let tags: any;
+        let tags: PropTypes.Requireable<string[]>;
     }
     namespace defaultProps {
         let tags_1: any;
         export { tags_1 as tags };
     }
 }
+import PropTypes from 'prop-types';

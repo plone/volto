@@ -104,8 +104,8 @@ function getMessages() {
 function messagesToPot(messages) {
   return map(keys(messages).sort(), (key) =>
     [
+      `#. Default: "${messages[key].defaultMessage.trim()}"`,
       ...map(messages[key].filenames, (filename) => `#: ${filename}`),
-      `# defaultMessage: ${messages[key].defaultMessage}`,
       `msgid "${key}"`,
       'msgstr ""',
     ].join('\n'),
@@ -124,10 +124,10 @@ msgstr ""
 "POT-Creation-Date: ${new Date().toISOString()}\\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\\n"
-"MIME-Version: 1.0\\n"
 "Content-Type: text/plain; charset=utf-8\\n"
 "Content-Transfer-Encoding: 8bit\\n"
 "Plural-Forms: nplurals=1; plural=0;\\n"
+"MIME-Version: 1.0\\n"
 "Language-Code: en\\n"
 "Language-Name: English\\n"
 "Preferred-Encodings: utf-8\\n"
@@ -152,7 +152,10 @@ function poToJson({ registry, addonMode }) {
         result[item.msgid] =
           language === 'en'
             ? item.msgstr[0] ||
-              (item.comments[0]
+              (item.comments[0] && item.comments[0].startsWith('. Default: ')
+                ? item.comments[0].replace('. Default: ', '')
+                : item.comments[0] &&
+                  item.comments[0].startsWith('defaultMessage:')
                 ? item.comments[0].replace('defaultMessage: ', '')
                 : '')
             : item.msgstr[0];
@@ -212,7 +215,7 @@ function poToJson({ registry, addonMode }) {
  */
 function formatHeader(comments, headers) {
   return [
-    ...map(comments, (comment) => `# ${comment}`),
+    ...map(comments, (comment) => `#. ${comment}`),
     'msgid ""',
     'msgstr ""',
     ...map(keys(headers), (key) => `"${key}: ${headers[key]}\\n"`),
@@ -227,7 +230,6 @@ function formatHeader(comments, headers) {
  */
 function syncPoByPot() {
   const pot = Pofile.parse(fs.readFileSync('locales/volto.pot', 'utf8'));
-
   map(glob('locales/**/*.po'), (filename) => {
     const po = Pofile.parse(fs.readFileSync(filename, 'utf8'));
 
@@ -237,8 +239,8 @@ function syncPoByPot() {
 ${map(pot.items, (item) => {
   const poItem = find(po.items, { msgid: item.msgid });
   return [
+    `#. ${item.extractedComments[0]}`,
     `${map(item.references, (ref) => `#: ${ref}`).join('\n')}`,
-    `# ${item.comments[0]}`,
     `msgid "${item.msgid}"`,
     `msgstr "${poItem ? poItem.msgstr : ''}"`,
   ].join('\n');

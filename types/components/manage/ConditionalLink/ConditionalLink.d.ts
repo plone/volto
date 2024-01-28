@@ -7,9 +7,13 @@ declare function ConditionalLink({ condition, to, item, ...props }: {
 }): any;
 declare namespace ConditionalLink {
     namespace propTypes {
-        let condition: any;
-        let to: any;
-        let item: any;
-        let children: any;
+        let condition: PropTypes.Requireable<boolean>;
+        let to: PropTypes.Requireable<string>;
+        let item: PropTypes.Requireable<PropTypes.InferProps<{
+            '@id': PropTypes.Requireable<string>;
+            remoteUrl: PropTypes.Requireable<string>;
+        }>>;
+        let children: PropTypes.Requireable<PropTypes.ReactNodeLike>;
     }
 }
+import PropTypes from 'prop-types';

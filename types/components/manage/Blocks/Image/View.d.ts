@@ -7,8 +7,11 @@ export function View({ className, data, detached, properties, style }: {
 }): JSX.Element;
 export namespace View {
     namespace propTypes {
-        let data: any;
+        let data: PropTypes.Validator<{
+            [x: string]: any;
+        }>;
     }
 }
-declare const _default: any;
+declare const _default: (props: any) => JSX.Element;
 export default _default;
+import PropTypes from 'prop-types';

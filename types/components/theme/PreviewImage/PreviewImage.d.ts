@@ -11,7 +11,14 @@ declare function PreviewImage({ item, alt, image_field, showDefault, ...rest }: 
 }): JSX.Element;
 declare namespace PreviewImage {
     namespace propTypes {
-        let item: any;
-        let alt: any;
+        let item: PropTypes.Requireable<PropTypes.InferProps<{
+            '@id': PropTypes.Validator<string>;
+            title: PropTypes.Validator<string>;
+            image_field: PropTypes.Requireable<string>;
+            image_scales: PropTypes.Requireable<object>;
+            showDefault: PropTypes.Requireable<boolean>;
+        }>>;
+        let alt: PropTypes.Validator<string>;
     }
 }
+import PropTypes from 'prop-types';

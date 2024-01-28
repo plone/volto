@@ -81,7 +81,7 @@ export function lockContent(urls: string): any;
  */
 export function unlockContent(urls: string | any[], force?: boolean): any;
 export function linkIntegrityCheck(selection: any): {
-    type: any;
+    type: string;
     mode: string;
     request: {
         op: string;

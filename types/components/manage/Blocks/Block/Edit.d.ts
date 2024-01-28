@@ -3,25 +3,29 @@
  * @class Edit
  * @extends Component
  */
-export class Edit extends Component<any, any, any> {
+export class Edit extends React.Component<any, any, any> {
     /**
      * Property types.
      * @property {Object} propTypes Property types.
      * @static
      */
     static propTypes: {
-        type: any;
-        data: any;
-        properties: any;
-        selected: any;
-        multiSelected: any;
-        index: any;
-        id: any;
-        manage: any;
-        onMoveBlock: any;
-        onDeleteBlock: any;
-        editable: any;
-        pathname: any;
+        type: PropTypes.Validator<string>;
+        data: PropTypes.Validator<{
+            [x: string]: any;
+        }>;
+        properties: PropTypes.Validator<{
+            [x: string]: any;
+        }>;
+        selected: PropTypes.Validator<boolean>;
+        multiSelected: PropTypes.Requireable<boolean>;
+        index: PropTypes.Validator<number>;
+        id: PropTypes.Validator<string>;
+        manage: PropTypes.Requireable<boolean>;
+        onMoveBlock: PropTypes.Validator<(...args: any[]) => any>;
+        onDeleteBlock: PropTypes.Validator<(...args: any[]) => any>;
+        editable: PropTypes.Requireable<boolean>;
+        pathname: PropTypes.Validator<string>;
     };
     /**
      * Default properties.
@@ -36,7 +40,7 @@ export class Edit extends Component<any, any, any> {
     constructor(props: any, context: any);
     componentDidMount(): void;
     UNSAFE_componentWillReceiveProps(nextProps: any): void;
-    blockNode: any;
+    blockNode: React.RefObject<any>;
     /**
      * Render method.
      * @method render
@@ -44,8 +48,7 @@ export class Edit extends Component<any, any, any> {
      */
     render(): string;
 }
-declare const _default: import("react").ForwardRefExoticComponent<Pick<import("react-intl").WithIntlProps<import("react-intl").WrappedComponentProps<string>>, string> & import("react").RefAttributes<import("react").ComponentType<import("react-intl").WrappedComponentProps<string>>>> & {
-    WrappedComponent: import("react").ComponentType<import("react-intl").WrappedComponentProps<string>>;
-};
+declare const _default: any;
 export default _default;
-import { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';

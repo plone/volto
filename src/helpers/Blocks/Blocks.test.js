@@ -1123,6 +1123,26 @@ describe('Blocks', () => {
         '--nested--level2--foo': '#fff',
       });
     });
+
+    it('Supports multiple nested levels and optional inclusion of the name of the level', () => {
+      const styles = {
+        '--color': 'red',
+        backgroundColor: '#AABBCC',
+        'nested:noprefix': {
+          l1: 'white',
+          '--foo': 'white',
+          level2: {
+            '--foo': '#fff',
+            bar: '#000',
+          },
+        },
+      };
+      expect(buildStyleObjectFromData(styles)).toEqual({
+        '--color': 'red',
+        '--foo': 'white',
+        '--level2--foo': '#fff',
+      });
+    });
   });
 
   describe('getPreviousNextBlock', () => {

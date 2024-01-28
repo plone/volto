@@ -17,6 +17,83 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 17.11.5 (2024-01-26)
+
+### Bugfix
+
+- handle addons that have not been migrated to the new structure of po files @erral [#5704](https://github.com/plone/volto/issues/5704)
+
+### Internal
+
+- Upgrade to @plone/scripts 3.3.2 @sneridagh [#5706](https://github.com/plone/volto/issues/5706)
+
+## 17.11.4 (2024-01-25)
+
+### Bugfix
+
+- In the recurrence widget, set the vertical alignment of the `edit` button to `middle`. @Ravi-kumar9347 [#5359](https://github.com/plone/volto/issues/5359)
+- Fix multilingual redirector where it doesn't take into account the stored cookie in SSR. @robgietema [#5628](https://github.com/plone/volto/issues/5628)
+-  [#5647](https://github.com/plone/volto/issues/5647)
+- Fix `links-to-item` should be a protected route. @iFlameing [#5666](https://github.com/plone/volto/issues/5666)
+- Removed git merge conflicts from french volto.po locale file. @ichim-david [#5681](https://github.com/plone/volto/issues/5681)
+
+### Internal
+
+- Add cypress tests for the "links-to-item" view of content items @jackahl [#5427](https://github.com/plone/volto/issues/5427)
+
+## 17.11.3 (2024-01-25)
+
+### Bugfix
+
+- Removed git merge conflicts from french volto.po locale file. @ichim-david [#5681](https://github.com/plone/volto/issues/5681)
+
+### Internal
+
+- Polish po file handling @erral [#5542](https://github.com/plone/volto/issues/5542)
+
+## 17.11.2 (2024-01-17)
+
+### Bugfix
+
+- Merge the StyleWrapper styles with the draggable props from b-D&D. @sneridagh
+  This fixes the D&D bug introduced in https://github.com/plone/volto/pull/5581 [#5652](https://github.com/plone/volto/issues/5652)
+
+## 17.11.1 (2024-01-17)
+
+### Bugfix
+
+- Fix order of preference in addons-registry for the theme definition (THEME, volto.config.js, package.json) @sneridagh [#5650](https://github.com/plone/volto/issues/5650)
+
+## 17.11.0 (2024-01-15)
+
+### Feature
+
+- Improve generation of types declarations @sneridagh [#5626](https://github.com/plone/volto/issues/5626)
+
+## 17.10.0 (2024-01-11)
+
+### Feature
+
+- Enhanced `ColorPickerWidget` with additional color definitions, saving it as an object instead of a string. @sneridagh [#5585](https://github.com/plone/volto/issues/5585)
+
+### Internal
+
+- Update to latest @plone/scripts @sneridagh [#5612](https://github.com/plone/volto/issues/5612)
+
+## 17.9.0 (2024-01-04)
+
+### Feature
+
+- Allow to opt out of the nested prefixed name build in the custom CSS properties style name generator if an object is found in the style wrapper object. @sneridagh [#5586](https://github.com/plone/volto/issues/5586)
+
+### Bugfix
+
+- Refactoring the code for extraction of videoDetails from the video URL, adding code for extracting videoDetails from youtube video URLs with '/live/' in its URL which previously used to throw an error and adding jest tests for same. @IshaanDasgupta [#5416](https://github.com/plone/volto/issues/5416)
+
+### Internal
+
+- Pin mrs-developer to latest version, not to star @sneridagh [#5593](https://github.com/plone/volto/issues/5593)
+
 ## 17.8.0 (2024-01-02)
 
 ### Feature

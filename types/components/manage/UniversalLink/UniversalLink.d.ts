@@ -11,12 +11,16 @@ declare function UniversalLink({ href, item, openLinkInNewTab, download, childre
 }): JSX.Element;
 declare namespace UniversalLink {
     namespace propTypes {
-        let href: any;
-        let openLinkInNewTab: any;
-        let download: any;
-        let className: any;
-        let title: any;
-        let item: any;
-        let children: any;
+        let href: PropTypes.Requireable<string>;
+        let openLinkInNewTab: PropTypes.Requireable<boolean>;
+        let download: PropTypes.Requireable<boolean>;
+        let className: PropTypes.Requireable<string>;
+        let title: PropTypes.Requireable<string>;
+        let item: PropTypes.Requireable<PropTypes.InferProps<{
+            '@id': PropTypes.Validator<string>;
+            remoteUrl: PropTypes.Requireable<string>;
+        }>>;
+        let children: PropTypes.Requireable<NonNullable<PropTypes.ReactNodeLike>>;
     }
 }
+import PropTypes from 'prop-types';

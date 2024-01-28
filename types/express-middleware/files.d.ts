@@ -1,1 +1,1 @@
-export default function filesMiddleware(): any;
+export default function filesMiddleware(): import("express-serve-static-core").Router;

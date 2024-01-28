@@ -8,14 +8,15 @@ export function ContentsIndexHeaderComponent({ intl, width, label, connectDragSo
 }): string;
 export namespace ContentsIndexHeaderComponent {
     namespace propTypes {
-        let width: any;
-        let label: any;
-        let connectDragSource: any;
-        let connectDropTarget: any;
-        let isDragging: any;
-        let order: any;
-        let onOrderIndex: any;
+        let width: PropTypes.Validator<number>;
+        let label: PropTypes.Validator<string>;
+        let connectDragSource: PropTypes.Validator<(...args: any[]) => any>;
+        let connectDropTarget: PropTypes.Validator<(...args: any[]) => any>;
+        let isDragging: PropTypes.Validator<boolean>;
+        let order: PropTypes.Validator<number>;
+        let onOrderIndex: PropTypes.Validator<(...args: any[]) => any>;
     }
 }
-declare const _default: any;
+declare const _default: ((props: any) => JSX.Element) & import("hoist-non-react-statics").NonReactStatics<any, {}>;
 export default _default;
+import PropTypes from 'prop-types';

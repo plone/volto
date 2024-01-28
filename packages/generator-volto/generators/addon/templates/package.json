@@ -22,7 +22,7 @@
     "release-rc": "release-it --preRelease=rc"
   },
   "devDependencies": {
-    "@plone/scripts": "^3.0.0",
+    "@plone/scripts": "^3.3.2",
     "@babel/eslint-parser": "7.22.15",
     "eslint": "8.49.0",
     "eslint-config-prettier": "9.0.0",

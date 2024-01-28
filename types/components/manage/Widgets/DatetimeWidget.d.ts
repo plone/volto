@@ -12,7 +12,7 @@
  * }
  * ```
  */
-export class DatetimeWidgetComponent extends Component<any, any, any> {
+export class DatetimeWidgetComponent extends React.Component<any, any, any> {
     /**
      * Constructor
      * @method constructor
@@ -53,17 +53,17 @@ export class DatetimeWidgetComponent extends Component<any, any, any> {
 }
 export namespace DatetimeWidgetComponent {
     namespace propTypes {
-        let id: any;
-        let title: any;
-        let description: any;
-        let required: any;
-        let error: any;
-        let dateOnly: any;
-        let noPastDates: any;
-        let value: any;
-        let onChange: any;
-        let wrapped: any;
-        let resettable: any;
+        let id: PropTypes.Validator<string>;
+        let title: PropTypes.Validator<string>;
+        let description: PropTypes.Requireable<string>;
+        let required: PropTypes.Requireable<boolean>;
+        let error: PropTypes.Requireable<string[]>;
+        let dateOnly: PropTypes.Requireable<boolean>;
+        let noPastDates: PropTypes.Requireable<boolean>;
+        let value: PropTypes.Requireable<string>;
+        let onChange: PropTypes.Validator<(...args: any[]) => any>;
+        let wrapped: PropTypes.Requireable<boolean>;
+        let resettable: PropTypes.Requireable<boolean>;
     }
     namespace defaultProps {
         let description_1: any;
@@ -82,6 +82,7 @@ export namespace DatetimeWidgetComponent {
         export { resettable_1 as resettable };
     }
 }
-declare const _default: any;
+declare const _default: ((props: any) => JSX.Element) & import("hoist-non-react-statics").NonReactStatics<any, {}>;
 export default _default;
-import { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';

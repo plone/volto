@@ -3,16 +3,16 @@
  * @class Wrapper
  * @extends Component
  */
-export default class Wrapper extends Component<any, any, any> {
+export default class Wrapper extends React.Component<any, any, any> {
     /**
      * Property types.
      * @property {Object} propTypes Property types.
      * @static
      */
     static propTypes: {
-        pathname: any;
-        anonymous: any;
-        customStore: any;
+        pathname: PropTypes.Requireable<string>;
+        anonymous: PropTypes.Requireable<boolean>;
+        customStore: PropTypes.Requireable<object>;
     };
     constructor(props: any);
     constructor(props: any, context: any);
@@ -1051,16 +1051,16 @@ export default class Wrapper extends Component<any, any, any> {
     };
     render(): JSX.Element;
 }
-export class RealStoreWrapper extends Component<any, any, any> {
+export class RealStoreWrapper extends React.Component<any, any, any> {
     /**
      * Property types.
      * @property {Object} propTypes Property types.
      * @static
      */
     static propTypes: {
-        pathname: any;
-        anonymous: any;
-        customStore: any;
+        pathname: PropTypes.Requireable<string>;
+        anonymous: PropTypes.Requireable<boolean>;
+        customStore: PropTypes.Requireable<object>;
     };
     constructor(props: any);
     constructor(props: any, context: any);
@@ -2104,4 +2104,5 @@ export function FormUndoWrapper({ initialState, children, showControls, }: {
     children: any;
     showControls?: boolean;
 }): JSX.Element;
-import { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';

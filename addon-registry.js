@@ -134,10 +134,10 @@ class AddonConfigurationRegistry {
     this.packages = {};
     this.customizations = new Map();
 
-    // Theme from a package.json key, from volto.config.js or from an ENV VAR
-    // Programatically via volto.config.js wins or the ENV VAR if present
+    // Theme from an ENV VAR, from volto.config.js or from a package.json key
+    // in this order of preference
     this.theme =
-      packageJson.theme || this.voltoConfigJS.theme || process.env.THEME;
+      process.env.THEME || this.voltoConfigJS.theme || packageJson.theme;
 
     this.initDevelopmentPackages();
     this.initPublishedPackages();

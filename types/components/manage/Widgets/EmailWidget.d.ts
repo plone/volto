@@ -13,18 +13,18 @@ export default EmailWidget;
 declare function EmailWidget(props: any): JSX.Element;
 declare namespace EmailWidget {
     namespace propTypes {
-        let id: any;
-        let title: any;
-        let description: any;
-        let required: any;
-        let error: any;
-        let value: any;
-        let onChange: any;
-        let onBlur: any;
-        let onClick: any;
-        let minLength: any;
-        let maxLength: any;
-        let placeholder: any;
+        let id: PropTypes.Validator<string>;
+        let title: PropTypes.Validator<string>;
+        let description: PropTypes.Requireable<string>;
+        let required: PropTypes.Requireable<boolean>;
+        let error: PropTypes.Requireable<string[]>;
+        let value: PropTypes.Requireable<string>;
+        let onChange: PropTypes.Validator<(...args: any[]) => any>;
+        let onBlur: PropTypes.Requireable<(...args: any[]) => any>;
+        let onClick: PropTypes.Requireable<(...args: any[]) => any>;
+        let minLength: PropTypes.Requireable<number>;
+        let maxLength: PropTypes.Requireable<number>;
+        let placeholder: PropTypes.Requireable<string>;
     }
     namespace defaultProps {
         let description_1: any;
@@ -47,3 +47,4 @@ declare namespace EmailWidget {
         export { maxLength_1 as maxLength };
     }
 }
+import PropTypes from 'prop-types';

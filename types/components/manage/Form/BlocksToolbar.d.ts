@@ -1,4 +1,4 @@
-export class BlocksToolbarComponent {
+export class BlocksToolbarComponent extends React.Component<any, any, any> {
     constructor(props: any);
     copyBlocksToClipboard(): void;
     cutBlocksToClipboard(): void;
@@ -12,3 +12,4 @@ export class BlocksToolbarComponent {
 }
 declare const _default: any;
 export default _default;
+import React from 'react';

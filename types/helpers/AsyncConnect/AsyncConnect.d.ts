@@ -1,4 +1,4 @@
-export class AsyncConnect extends Component<any, any, any> {
+export class AsyncConnect extends React.Component<any, any, any> {
     constructor(props: any);
     state: {
         previousLocation: any;
@@ -17,15 +17,15 @@ export class AsyncConnect extends Component<any, any, any> {
 }
 export namespace AsyncConnect {
     namespace propTypes {
-        let render: any;
-        let beginGlobalLoad: any;
-        let endGlobalLoad: any;
-        let reloadOnPropsChange: any;
-        let routes: any;
-        let location: any;
-        let match: any;
-        let helpers: any;
-        let reduxConnectStore: any;
+        let render: PropTypes.Requireable<(...args: any[]) => any>;
+        let beginGlobalLoad: PropTypes.Validator<(...args: any[]) => any>;
+        let endGlobalLoad: PropTypes.Validator<(...args: any[]) => any>;
+        let reloadOnPropsChange: PropTypes.Requireable<(...args: any[]) => any>;
+        let routes: PropTypes.Validator<any[]>;
+        let location: PropTypes.Validator<object>;
+        let match: PropTypes.Validator<object>;
+        let helpers: PropTypes.Requireable<any>;
+        let reduxConnectStore: PropTypes.Validator<object>;
     }
     namespace defaultProps {
         let helpers_1: {};
@@ -42,8 +42,9 @@ export function AsyncConnectWithContext({ context, ...otherProps }: {
 }): JSX.Element;
 export namespace AsyncConnectWithContext {
     export namespace propTypes_1 {
-        let context: any;
+        let context: PropTypes.Requireable<object>;
     }
     export { propTypes_1 as propTypes };
 }
-import { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';

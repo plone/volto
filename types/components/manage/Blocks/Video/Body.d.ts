@@ -5,7 +5,9 @@ declare function Body({ data, isEditMode }: {
 }): JSX.Element;
 declare namespace Body {
     namespace propTypes {
-        let data: any;
+        let data: PropTypes.Validator<{
+            [x: string]: any;
+        }>;
     }
 }
 export function getVideoIDAndPlaceholder(url: any): {
@@ -13,3 +15,4 @@ export function getVideoIDAndPlaceholder(url: any): {
     listID: any;
     thumbnailURL: string;
 };
+import PropTypes from 'prop-types';
