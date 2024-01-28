@@ -1,6 +1,6 @@
 # Yeoman Volto App Generator
 
-@plone/generator-volto is a Yeoman generator that helps you to set up Volto via the command line.
+@plone/generator-volto is a Yeoman generator that helps you to set up a Volto project via the command line.
 
 ## Installation
 
@@ -23,9 +23,10 @@ See [`volto-generator` compatibility with Volto](https://6.docs.plone.org/volto/
 npm init yo @plone/volto
 ```
 
-This is the shortcut for using `npm init` command. It uses Yeoman (`yo`) and `@plone/generator-volto` and `npm` executes the commands without having the need for the packages to be installed globally.
+This is the shortcut for using `npm init` command.
+It uses Yeoman (`yo`) and `@plone/generator-volto`, and `npm` executes the commands without having the need for the packages to be installed globally.
 
-Answer the prompt questions to complete the generation process.
+Answer the prompts to complete the generation process.
 
 ### Creating a new Volto project
 
@@ -33,8 +34,8 @@ Answer the prompt questions to complete the generation process.
 yo @plone/volto
 ```
 
-This will bootstrap a new Volto project inside the current folder. It will ask
-a few questions: project name, project description and a list of add-ons. 
+This will bootstrap a new Volto project inside the current folder.
+It will ask a few questions for the project name, project description, and a list of add-ons. 
 
 Run:
 
@@ -66,13 +67,12 @@ Arguments:
 to see a full list of options and arguments.
 
 > [!NOTE]  
-> Besides the Volto project the generator also generates a theme add-on inside `src/addons`
-> with the default name of `volto-[<project-name>]`.
+> In addition to the Volto project, the generator creates a theme add-on inside `src/addons` with the default name of `volto-[<project-name>]`.
 > You can provide a specific name for the theme add-on that is created on project generation like:
-> ```bash
+> ```shell
 > yo @plone/volto --defaultAddonName="volto-project-theme"
 > ```
-> If you've used the example project name `myvoltoproject` inside `src/addons` you will find the Volto theme add-on named `volto-project-theme` instead of the default generator name `volto-myvoltoproject`.
+> If you've used the example project name `myvoltoproject` inside `src/addons`, you will find the Volto theme add-on named `volto-project-theme` instead of the default generator name `volto-myvoltoproject`.
 
 You can provide a specific Volto version like:
 
