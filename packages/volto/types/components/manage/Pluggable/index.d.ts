@@ -11,10 +11,10 @@ export function usePlug({ pluggable, id, renderer, dependencies, options }: {
     options: any;
 }): void;
 export function createPluggable(name: any): {
-    (props: any): any;
+    (props: any): React.FunctionComponentElement<any>;
     pluggableName: any;
     Plug: {
-        (props: any): any;
+        (props: any): React.FunctionComponentElement<any>;
         displayName: string;
     };
 };
@@ -22,17 +22,17 @@ export function createPluggable(name: any): {
  * Creates a Pluggable + Plug pair
  */
 export function createPluggableAndPlug(name: any): ({
-    (props: any): any;
+    (props: any): React.FunctionComponentElement<any>;
     pluggableName: any;
     Plug: {
-        (props: any): any;
+        (props: any): React.FunctionComponentElement<any>;
         displayName: string;
     };
 } | {
-    (props: any): any;
+    (props: any): React.FunctionComponentElement<any>;
     displayName: string;
 })[];
-export const context: any;
+export const context: React.Context<any>;
 export function Plug({ pluggable, id, dependencies, children, ...options }: {
     [x: string]: any;
     pluggable: any;
@@ -42,5 +42,6 @@ export function Plug({ pluggable, id, dependencies, children, ...options }: {
 }): any;
 export function PluggablesProvider({ children }: {
     children: any;
-}): any;
+}): React.FunctionComponentElement<React.ProviderProps<any>>;
 export default Pluggable;
+import React from 'react';

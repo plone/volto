@@ -1,7 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Form } from 'semantic-ui-react';
 import { Grid, Button } from 'semantic-ui-react';
+import { isEqual } from 'lodash';
 import { defineMessages, useIntl } from 'react-intl';
 
 const messages = defineMessages({
@@ -11,7 +11,31 @@ const messages = defineMessages({
   },
 });
 
-const ColorPickerWidget = (props) => {
+type Color =
+  | {
+      name: string;
+      label: string;
+      style: Record<`--${string}`, string>;
+    }
+  | {
+      name: string;
+      label: string;
+      style: undefined;
+    };
+
+export type ColorPickerWidgetProps = {
+  id: string;
+  title: string;
+  value: string;
+  default: string;
+  required: boolean;
+  missing_value: unknown;
+  className: string;
+  onChange: (id: string, value: any) => void;
+  colors: Color[];
+};
+
+const ColorPickerWidget = (props: ColorPickerWidgetProps) => {
   const { id, title, required, value, onChange, colors, className } = props;
 
   const intl = useIntl();
@@ -30,6 +54,7 @@ const ColorPickerWidget = (props) => {
       className={className}
       id={'field-' + id}
     >
+      {/* @ts-ignore */}
       <Grid>
         <Grid.Row>
           <Grid.Column
@@ -44,21 +69,29 @@ const ColorPickerWidget = (props) => {
 
               <div className="buttons">
                 {colors.map((color) => {
+                  let colorValue: string | Color['style'];
+                  const colorName = color.name;
+                  if (color.style !== undefined) {
+                    colorValue = color.style;
+                  } else {
+                    colorValue = color.name;
+                  }
                   return (
                     <Button
-                      key={id + color.name}
-                      className={color.name}
+                      key={id + colorName}
+                      className={colorName}
                       onClick={(e) => {
                         e.preventDefault();
                         e.stopPropagation();
                         onChange(
                           id,
-                          value === color.name
+                          value === colorValue
                             ? props.missing_value
-                            : color.name,
+                            : colorValue,
                         );
                       }}
-                      active={value === color.name}
+                      style={color.style}
+                      active={isEqual(value, colorValue)}
                       circular
                       aria-label={color.label}
                       title={color.label}
@@ -72,22 +105,6 @@ const ColorPickerWidget = (props) => {
       </Grid>
     </Form.Field>
   ) : null;
-};
-
-ColorPickerWidget.propTypes = {
-  id: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  required: PropTypes.bool,
-  value: PropTypes.string,
-  onChange: PropTypes.func,
-  colors: PropTypes.array,
-};
-
-ColorPickerWidget.defaultProps = {
-  required: false,
-  value: null,
-  onChange: null,
-  colors: [],
 };
 
 export default ColorPickerWidget;
