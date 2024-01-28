@@ -1,0 +1,1 @@
+Change target="_blank" to target={setting.openExternalLinkInNewTab ? '_blank' : '_self'} in ALL files of Repository to enable option for user to open a link to same or new tab.
