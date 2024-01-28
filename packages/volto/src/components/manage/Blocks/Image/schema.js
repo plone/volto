@@ -1,3 +1,4 @@
+import config from '@plone/volto/registry';
 import { defineMessages } from 'react-intl';
 
 const messages = defineMessages({
@@ -40,6 +41,7 @@ const messages = defineMessages({
 });
 
 export function ImageSchema({ formData, intl }) {
+  const { settings } = config;
   return {
     fieldsets: [
       {
@@ -65,7 +67,7 @@ export function ImageSchema({ formData, intl }) {
             <a
               href="https://www.w3.org/WAI/tutorials/images/decision-tree/"
               title={intl.formatMessage(messages.openLinkInNewTab)}
-              target="_blank"
+              target={settings.openExternalLinkInNewTab ? '_blank' : '_self'}
               rel="noopener noreferrer"
             >
               {intl.formatMessage(messages.AltTextHintLinkText)}

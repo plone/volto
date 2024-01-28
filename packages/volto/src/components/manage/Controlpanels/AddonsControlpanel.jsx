@@ -34,6 +34,7 @@ import circleBottomSVG from '@plone/volto/icons/circle-bottom.svg';
 import circleTopSVG from '@plone/volto/icons/circle-top.svg';
 import backSVG from '@plone/volto/icons/back.svg';
 import { toast } from 'react-toastify';
+import config from '@plone/volto/registry';
 
 const messages = defineMessages({
   activateAndDeactivate: {
@@ -340,6 +341,7 @@ class AddonsControlpanel extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const { settings } = config;
     return (
       <Container id="page-addons" className="controlpanel-addons">
         <Helmet title={this.props.intl.formatMessage(messages.addOns)} />
@@ -385,7 +387,9 @@ class AddonsControlpanel extends Component {
                 &nbsp;
                 <a
                   href="https://6.docs.plone.org/install/"
-                  target="_blank"
+                  target={
+                    settings.openExternalLinkInNewTab ? '_blank' : '_self'
+                  }
                   rel="noopener noreferrer"
                 >
                   {this.props.intl.formatMessage(messages.installingAnAddon)}

@@ -99,7 +99,7 @@ exports[`renders event details component with all props 1`] = `
     <a
       href="https://www.example.com"
       rel="noopener noreferrer"
-      target="_blank"
+      target={settings.openExternalLinkInNewTab ? '_blank' : '_self'}
     >
       Visit external website
     </a>
@@ -129,7 +129,7 @@ exports[`renders event details component with all props 1`] = `
       className="ics-download"
       href="http://localhost:8080/Plone/++api++/my-page/ics_view"
       rel="noreferrer"
-      target="_blank"
+      target={settings.openExternalLinkInNewTab ? '_blank' : '_self'}
     >
       Download Event
     </a>
@@ -171,7 +171,7 @@ exports[`renders event details component with only required props 1`] = `
       className="ics-download"
       href="http://localhost:8080/Plone/++api++/my-page/ics_view"
       rel="noreferrer"
-      target="_blank"
+      target={settings.openExternalLinkInNewTab ? '_blank' : '_self'}
     >
       Download Event
     </a>
@@ -213,7 +213,7 @@ exports[`renders event details component without links to api in the text 1`] = 
       className="ics-download"
       href="http://localhost:8080/Plone/++api++/my-page/ics_view"
       rel="noreferrer"
-      target="_blank"
+      target={settings.openExternalLinkInNewTab ? '_blank' : '_self'}
     >
       Download Event
     </a>

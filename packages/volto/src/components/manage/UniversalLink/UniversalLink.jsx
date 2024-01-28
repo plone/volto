@@ -69,7 +69,7 @@ const UniversalLink = ({
   }
 
   const isExternal = !isInternalURL(url);
-
+  const { settings } = config;
   const isDownload = (!isExternal && url.includes('@@download')) || download;
   const isDisplayFile =
     (!isExternal && url.includes('@@display-file')) || false;
@@ -123,7 +123,7 @@ const UniversalLink = ({
       <a
         href={flattenToAppURL(url)}
         title={title}
-        target="_blank"
+        target={settings.openExternalLinkInNewTab ? '_blank' : '_self'}
         rel="noopener noreferrer"
         className={className}
         {...props}

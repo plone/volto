@@ -5,7 +5,7 @@ exports[`UrlWidget renders an URL view widget component 1`] = `
   className="external metadata url widget"
   href="http://foobar.com"
   rel="noopener noreferrer"
-  target="_blank"
+  target={settings.openExternalLinkInNewTab ? '_blank' : '_self'}
   title={null}
 >
   http://foobar.com
@@ -17,7 +17,7 @@ exports[`UrlWidget renders an URL view widget component with children 1`] = `
   className="external metadata url widget"
   href="http://foobar.com"
   rel="noopener noreferrer"
-  target="_blank"
+  target={settings.openExternalLinkInNewTab ? '_blank' : '_self'}
   title={null}
 >
   <strong>
