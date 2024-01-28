@@ -15,7 +15,7 @@ export function addExtensionFieldToSchema({ schema, name, items, intl, title, de
     items: any;
     intl: any;
     title: any;
-    description: any;
+    description?: string;
     insertFieldToOrder?: typeof _addField;
 }): any;
 export function withBlockSchemaEnhancer(FormComponent: any, extensionName?: string, insertFieldToOrder?: typeof _addField): ({ ...props }: {
@@ -25,7 +25,7 @@ export function applySchemaEnhancer({ schema: originalSchema, formData, intl, bl
     schema: any;
     formData: any;
     intl: any;
-    blocksConfig?: any;
+    blocksConfig?: import("@plone/registry/node_modules/@plone/types").BlocksConfigData;
     navRoot: any;
     contentType: any;
 }): any;

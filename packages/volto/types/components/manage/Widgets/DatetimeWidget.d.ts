@@ -12,7 +12,7 @@
  * }
  * ```
  */
-export class DatetimeWidgetComponent extends Component<any, any, any> {
+export class DatetimeWidgetComponent extends React.Component<any, any, any> {
     /**
      * Constructor
      * @method constructor
@@ -84,4 +84,4 @@ export namespace DatetimeWidgetComponent {
 }
 declare const _default: any;
 export default _default;
-import { Component } from 'react';
+import React from 'react';

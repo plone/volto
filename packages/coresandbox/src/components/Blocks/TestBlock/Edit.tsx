@@ -1,7 +1,8 @@
 import { SidebarPortal } from '@plone/volto/components';
 import Data from './Data';
+import type { BlockEditProps } from '@plone/types';
 
-const TestBlockEdit = (props) => {
+const TestBlockEdit = (props: BlockEditProps) => {
   const { selected } = props;
 
   return (
