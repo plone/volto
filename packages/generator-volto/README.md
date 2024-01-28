@@ -34,7 +34,9 @@ yo @plone/volto
 ```
 
 This will bootstrap a new Volto project inside the current folder. It will ask
-a few questions: project name, project description and a list of add-ons. Run:
+a few questions: project name, project description and a list of add-ons. 
+
+Run:
 
 ```console
 $ yo @plone/volto --help
@@ -62,6 +64,15 @@ Arguments:
 ```
 
 to see a full list of options and arguments.
+
+> [!NOTE]  
+> Besides the Volto project the generator also generates a theme add-on inside `src/addons`
+> with the default name of `volto-[<project-name>]`.
+> You can provide a specific name for the theme add-on that is created on project generation like:
+> ```bash
+> yo @plone/volto --defaultAddonName="volto-project-theme"
+> ```
+> If you've used the example project name `myvoltoproject` inside `src/addons` you will find `volto-project-theme` instead of `volto-myvoltoproject`
 
 You can provide a specific Volto version like:
 

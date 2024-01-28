@@ -1,2 +1,3 @@
 Clarify the default value of the --defaultAddonName @ichim-david
 Clarify that the default add-on is always added when project is generated @ichim-david
+Added note about how --defaultAddonName affects the always added theme add-on on project generation @ichim-david
