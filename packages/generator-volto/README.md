@@ -72,7 +72,7 @@ to see a full list of options and arguments.
 > ```bash
 > yo @plone/volto --defaultAddonName="volto-project-theme"
 > ```
-> If you've used the example project name `myvoltoproject` inside `src/addons` you will find `volto-project-theme` instead of `volto-myvoltoproject`
+> If you've used the example project name `myvoltoproject` inside `src/addons` you will find the Volto theme add-on named `volto-project-theme` instead of the default generator name `volto-myvoltoproject`.
 
 You can provide a specific Volto version like:
 
