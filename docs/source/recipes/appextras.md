@@ -29,7 +29,6 @@ a list of registrations, each registration is an object with:
 - `match`: The `match` key is for objects compatible with [react-router's `matchPath`](https://v5.reactrouter.com/web/api/matchPath). It can be either a string or a [`match`](https://v5.reactrouter.com/web/api/match) object.
 - `ignore`: The `ignore` key is for routes compatible with the [react-router's `matchPath`](https://v5.reactrouter.com/web/api/matchPath) property, and ignores all the results in the `ignore` rule.
   It can be either a string or a [`match`](https://v5.reactrouter.com/web/api/match) object.
-  ignores all the results that are also compatible with the ignore rule.
 - `component`. Use the `component` to link the component to be used.
 - `props`: Extra props to be injected into the actual component used.
 
