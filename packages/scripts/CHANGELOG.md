@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 3.3.2 (2024-01-26)
+
+### Bugfix
+
+- handle addons that have not been migrated to the new structure of po files @erral [#5704](https://github.com/plone/volto/issues/5704)
+
 ## 3.3.1 (2024-01-23)
 
 ### Internal

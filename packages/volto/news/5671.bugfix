@@ -1,2 +1,0 @@
-Removed unmaintained and unused razzle-plugin-bundle-analyze in favor of webpack-bundle-analyzer. @ichim-david
-Updated extending Razzle from an add-on section to remove code that didn't belong to that recipe. @ichim-david
