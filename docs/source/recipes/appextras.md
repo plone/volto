@@ -9,7 +9,7 @@ myst:
 
 # AppExtras component
 
-```{versionchanged}17.x.x and 16.x.x
+```{versionchanged} 17.11.6 and 16.30.3
 Added the `ignore` property.
 ```
 
