@@ -70,5 +70,10 @@ export settings = {
 }
 ```
 
-You can use this to render, for example, `<Portal>` components to be inserted
+The above example will apply the rules to their respective routes.
+
+-   Insert a Google Analytics tag everywhere.
+-   Insert the `WordClouds` component to the `/blogs` route.
+-   Insert the `ExtraToolbarButton` component when editing objects under the path `/blog/**/edit`.
+-   Insert the `FrontPage` component to the `frontpage` route, except under `/frontpage/images`.
 somewhere on the website.
