@@ -259,6 +259,12 @@ test-acceptance-prefixed: ## Start Prefixed Cypress Acceptance Tests
 start-test-acceptance-webserver-prefixed: ## Start the prefixed webserver
 	cd cypress/docker && docker-compose -f prefixed.yml up
 
+######### Prefixed Multilingual Acceptance tests
+
+.PHONY: start-test-acceptance-frontend-prefixed-multilingual
+start-test-acceptance-frontend-prefixed-multilingual: build-deps ## Start the prefixed Core Acceptance Frontend Fixture
+	ADDONS=@plone/volto-coresandbox:multilingualFixture RAZZLE_PREFIX_PATH=/foo RAZZLE_API_PATH=http://localhost/foo pnpm build && pnpm start:prod
+
 ######### Guillotina Acceptance tests
 
 .PHONY: start-test-acceptance-server-guillotina
