@@ -4,7 +4,6 @@
  */
 
 import React, { useState } from 'react';
-import { compose } from 'redux';
 import PropTypes from 'prop-types';
 import { Input, Button } from 'semantic-ui-react';
 import { Icon } from '@plone/volto/components';
@@ -183,4 +182,4 @@ UrlWidget.defaultProps = {
   maxLength: null,
 };
 
-export default compose(withObjectBrowser)(UrlWidget);
+export default withObjectBrowser(UrlWidget);
