@@ -139,88 +139,89 @@ export const _isActiveElement = (elementType) => (editor) => {
  * @param {string|Object[]} elementType - this can be a string or an array of strings
  * @returns {Object|null} - found node
  */
-export const _getActiveElement = (elementType) => (
-  editor,
-  direction = 'any',
-) => {
-  const selection = editor.selection || editor.getSavedSelection();
-  let found = [];
+export const _getActiveElement =
+  (elementType) =>
+  (editor, direction = 'any') => {
+    const selection = editor.selection || editor.getSavedSelection();
+    let found = [];
 
-  try {
-    found = Array.from(
-      Editor.nodes(editor, {
-        match: (n) =>
-          Array.isArray(elementType)
-            ? elementType.includes(n.type)
-            : n.type === elementType,
-        at: selection,
-      }),
-    );
-  } catch (e) {
+    try {
+      found = Array.from(
+        Editor.nodes(editor, {
+          match: (n) =>
+            Array.isArray(elementType)
+              ? elementType.includes(n.type)
+              : n.type === elementType,
+          at: selection,
+        }),
+      );
+    } catch (e) {
+      return null;
+    }
+
+    if (found.length) return found[0];
+
+    if (!selection) return null;
+
+    if (direction === 'any' || direction === 'backward') {
+      const { path } = selection.anchor;
+      const isAtStart =
+        selection.anchor.offset === 0 && selection.focus.offset === 0;
+
+      if (isAtStart) {
+        let found;
+        try {
+          found = Editor.previous(editor, {
+            at: path,
+          });
+        } catch (ex) {
+          // eslint-disable-next-line no-console
+          console.warn('Unable to find previous node', editor, path);
+          return;
+        }
+        if (found && found[0] && found[0].type === elementType) {
+          if (
+            (Array.isArray(elementType) &&
+              elementType.includes(found[0].type)) ||
+            found[0].type === elementType
+          ) {
+            return found;
+          }
+        } else {
+          return null;
+        }
+      }
+    }
+
+    if (direction === 'any' || direction === 'forward') {
+      const { path } = selection.anchor;
+      const isAtStart =
+        selection.anchor.offset === 0 && selection.focus.offset === 0;
+
+      if (isAtStart) {
+        let found;
+        try {
+          found = Editor.next(editor, {
+            at: path,
+          });
+        } catch (e) {
+          // eslint-disable-next-line
+          console.warn('Unable to find next node', editor, path);
+          return;
+        }
+        if (found && found[0] && found[0].type === elementType) {
+          if (
+            (Array.isArray(elementType) &&
+              elementType.includes(found[0].type)) ||
+            found[0].type === elementType
+          ) {
+            return found;
+          }
+        } else {
+          return null;
+        }
+      }
+    }
+
     return null;
-  }
-
-  if (found.length) return found[0];
-
-  if (!selection) return null;
-
-  if (direction === 'any' || direction === 'backward') {
-    const { path } = selection.anchor;
-    const isAtStart =
-      selection.anchor.offset === 0 && selection.focus.offset === 0;
-
-    if (isAtStart) {
-      let found;
-      try {
-        found = Editor.previous(editor, {
-          at: path,
-        });
-      } catch (ex) {
-        // eslint-disable-next-line no-console
-        console.warn('Unable to find previous node', editor, path);
-        return;
-      }
-      if (found && found[0] && found[0].type === elementType) {
-        if (
-          (Array.isArray(elementType) && elementType.includes(found[0].type)) ||
-          found[0].type === elementType
-        ) {
-          return found;
-        }
-      } else {
-        return null;
-      }
-    }
-  }
-
-  if (direction === 'any' || direction === 'forward') {
-    const { path } = selection.anchor;
-    const isAtStart =
-      selection.anchor.offset === 0 && selection.focus.offset === 0;
-
-    if (isAtStart) {
-      let found;
-      try {
-        found = Editor.next(editor, {
-          at: path,
-        });
-      } catch (e) {
-        // eslint-disable-next-line
-        console.warn('Unable to find next node', editor, path);
-        return;
-      }
-      if (found && found[0] && found[0].type === elementType) {
-        if (
-          (Array.isArray(elementType) && elementType.includes(found[0].type)) ||
-          found[0].type === elementType
-        ) {
-          return found;
-        }
-      } else {
-        return null;
-      }
-    }
-  }
-
-  return null;
-};
+  };

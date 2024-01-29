@@ -27,5 +27,7 @@ appextras
 contextnavigation
 pluggables
 widget
+how-to-restrict-blocks
+color-picker-widget
 ie11compat
 ```
