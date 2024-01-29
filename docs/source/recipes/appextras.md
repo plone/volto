@@ -76,4 +76,3 @@ The above example will apply the rules to their respective routes.
 -   Insert the `WordClouds` component to the `/blogs` route.
 -   Insert the `ExtraToolbarButton` component when editing objects under the path `/blog/**/edit`.
 -   Insert the `FrontPage` component to the `frontpage` route, except under `/frontpage/images`.
-somewhere on the website.
