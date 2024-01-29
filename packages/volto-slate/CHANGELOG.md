@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.6 (2024-01-25)
+
+### Bugfix
+
+- Fix code button in slate. @pbauer [#5668](https://github.com/plone/volto/issues/5668)
+
 ## 18.0.0-alpha.5 (2023-12-13)
 
 ### Feature
