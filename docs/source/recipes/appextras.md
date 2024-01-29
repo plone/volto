@@ -27,7 +27,6 @@ Or you can use the new key of `config.settings`, the `appExtras`. This is
 a list of registrations, each registration is an object with:
 
 - `match`: The `match` key is for objects compatible with [react-router's `matchPath`](https://v5.reactrouter.com/web/api/matchPath). It can be either a string or a [`match`](https://v5.reactrouter.com/web/api/match) object.
-  matchPath](https://v5.reactrouter.com/web/api/matchPath), so it can be either
   a simple string or a match object.
 - `ignore`: The `ignore` key is for routes compatible with the match property from above and
   ignores all the results that are also compatible with the ignore rule.
