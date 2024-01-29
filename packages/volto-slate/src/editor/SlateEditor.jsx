@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom';
 import cx from 'classnames';
-import { isEqual } from 'lodash';
+import isEqual from 'lodash/isEqual';
 import { Transforms, Editor } from 'slate'; // , Transforms
 import { Slate, Editable, ReactEditor } from 'slate-react';
 import React, { Component } from 'react'; // , useState

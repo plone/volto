@@ -13,16 +13,15 @@ import {
 } from '@plone/volto/helpers';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
-import {
-  findIndex,
-  isEmpty,
-  keys,
-  map,
-  mapValues,
-  pickBy,
-  without,
-  cloneDeep,
-} from 'lodash';
+import findIndex from 'lodash/findIndex';
+import isEmpty from 'lodash/isEmpty';
+import keys from 'lodash/keys';
+import map from 'lodash/map';
+import mapValues from 'lodash/mapValues';
+import pickBy from 'lodash/pickBy';
+import without from 'lodash/without';
+import cloneDeep from 'lodash/cloneDeep';
+
 import isBoolean from 'lodash/isBoolean';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';

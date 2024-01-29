@@ -13,7 +13,7 @@ import { defineMessages, injectIntl } from 'react-intl';
 import { Button, Grid, Menu } from 'semantic-ui-react';
 import { Portal } from 'react-portal';
 import qs from 'query-string';
-import { find } from 'lodash';
+import find from 'lodash/find';
 import { toast } from 'react-toastify';
 
 import {

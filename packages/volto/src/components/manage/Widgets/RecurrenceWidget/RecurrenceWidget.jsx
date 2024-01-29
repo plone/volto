@@ -10,7 +10,12 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 
 import cx from 'classnames';
-import { isEqual, map, find, concat, remove } from 'lodash';
+import isEqual from 'lodash/isEqual';
+import map from 'lodash/map';
+import find from 'lodash/find';
+import concat from 'lodash/concat';
+import remove from 'lodash/remove';
+
 import { defineMessages, injectIntl } from 'react-intl';
 import {
   Form,

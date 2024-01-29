@@ -8,7 +8,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Label, Dropdown, Popup, Icon } from 'semantic-ui-react';
-import { compact, concat, fromPairs, map, values, uniqBy } from 'lodash';
+import compact from 'lodash/compact';
+import concat from 'lodash/concat';
+import fromPairs from 'lodash/fromPairs';
+import map from 'lodash/map';
+import values from 'lodash/values';
+import uniqBy from 'lodash/uniqBy';
 import { defineMessages, injectIntl } from 'react-intl';
 
 import { FormFieldWrapper } from '@plone/volto/components';

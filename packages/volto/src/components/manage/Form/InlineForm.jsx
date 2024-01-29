@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 import { Accordion, Segment, Message } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import AnimateHeight from 'react-animate-height';
-import { keys, map, isEqual } from 'lodash';
+import keys from 'lodash/keys';
+import map from 'lodash/map';
+import isEqual from 'lodash/isEqual';
+
 import { useAtom } from 'jotai';
 import { inlineFormFieldsetsState } from './InlineFormState';
 import {

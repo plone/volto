@@ -10,7 +10,7 @@ import { connect, Provider } from 'react-redux';
 import { compose } from 'redux';
 import redraft from 'redraft';
 import { Form, Label, TextArea } from 'semantic-ui-react';
-import { map } from 'lodash';
+import map from 'lodash/map';
 import { defineMessages, injectIntl } from 'react-intl';
 import configureStore from 'redux-mock-store';
 import { MemoryRouter } from 'react-router-dom';

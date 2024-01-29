@@ -3,7 +3,7 @@
  * @module reducers/users/users
  */
 
-import { startsWith } from 'lodash';
+import startsWith from 'lodash/startsWith';
 
 import {
   CREATE_USER,

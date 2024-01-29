@@ -1,7 +1,8 @@
 import React from 'react';
 import { defineMessages } from 'react-intl';
 import { useIntl } from 'react-intl';
-import { find, isEmpty } from 'lodash';
+import find from 'lodash/find';
+import isEmpty from 'lodash/isEmpty';
 import config from '@plone/volto/registry';
 import { cloneDeepSchema } from '@plone/volto/helpers/Utils/Utils';
 

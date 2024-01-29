@@ -16,7 +16,11 @@ import {
   Segment,
   Table,
 } from 'semantic-ui-react';
-import { concat, map, reverse, find } from 'lodash';
+import concat from 'lodash/concat';
+import map from 'lodash/map';
+import reverse from 'lodash/reverse';
+import find from 'lodash/find';
+
 import { Portal } from 'react-portal';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import { asyncConnect } from '@plone/volto/helpers';

@@ -6,7 +6,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
-import { compact, includes, isArray, isEmpty, remove } from 'lodash';
+import compact from 'lodash/compact';
+import includes from 'lodash/includes';
+import isArray from 'lodash/isArray';
+import isEmpty from 'lodash/isEmpty';
+import remove from 'lodash/remove';
 import { connect } from 'react-redux';
 import { Image, Label, Popup, Button } from 'semantic-ui-react';
 import {

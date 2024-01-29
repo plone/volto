@@ -3,7 +3,9 @@
  * @module reducers/content/content
  */
 
-import { map, mapKeys, omit } from 'lodash';
+import map from 'lodash/map';
+import mapKeys from 'lodash/mapKeys';
+import omit from 'lodash/omit';
 
 import { flattenToAppURL } from '@plone/volto/helpers';
 

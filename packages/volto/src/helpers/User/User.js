@@ -2,7 +2,7 @@
  * User helper.
  * @module helpers/AuthToken
  */
-import { intersection } from 'lodash';
+import intersection from 'lodash/intersection';
 
 /**
  * Checks if the user has one or more given roles.

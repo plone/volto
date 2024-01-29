@@ -9,7 +9,8 @@ import { Link } from 'react-router-dom';
 
 import { useSelector } from 'react-redux';
 import cx from 'classnames';
-import { find, map } from 'lodash';
+import find from 'lodash/find';
+import map from 'lodash/map';
 
 import {
   Helmet,

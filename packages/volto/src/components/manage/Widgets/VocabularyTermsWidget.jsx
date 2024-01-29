@@ -84,7 +84,9 @@ def TalkTypesVocabulary(context):
 
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { find, findIndex, remove } from 'lodash';
+import find from 'lodash/find';
+import findIndex from 'lodash/findIndex';
+import remove from 'lodash/remove';
 import { defineMessages, useIntl } from 'react-intl';
 import { v4 as uuid } from 'uuid';
 

@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { map } from 'lodash';
+import map from 'lodash/map';
 import { Days } from './Utils';
 import SelectInput from './SelectInput';
 import { Form } from 'semantic-ui-react';

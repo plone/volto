@@ -8,7 +8,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Input } from 'semantic-ui-react';
-import { compact, concat, keys, map, union, uniq } from 'lodash';
+import compact from 'lodash/compact';
+import concat from 'lodash/concat';
+import keys from 'lodash/keys';
+import map from 'lodash/map';
+import union from 'lodash/union';
+import uniq from 'lodash/uniq';
 
 import { defineMessages, injectIntl } from 'react-intl';
 import { Icon, FormFieldWrapper } from '@plone/volto/components';

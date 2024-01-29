@@ -5,7 +5,8 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { map, remove } from 'lodash';
+import map from 'lodash/map';
+import remove from 'lodash/remove';
 import { Button, Table } from 'semantic-ui-react';
 import cx from 'classnames';
 import { defineMessages, injectIntl } from 'react-intl';

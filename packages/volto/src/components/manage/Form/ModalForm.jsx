@@ -5,7 +5,9 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { keys, map } from 'lodash';
+import keys from 'lodash/keys';
+import map from 'lodash/map';
+
 import {
   Button,
   Form as UiForm,

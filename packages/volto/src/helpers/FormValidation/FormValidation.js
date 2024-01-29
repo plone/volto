@@ -1,4 +1,8 @@
-import { map, uniq, keys, intersection, isEmpty } from 'lodash';
+import map from 'lodash/map';
+import uniq from 'lodash/uniq';
+import keys from 'lodash/keys';
+import intersection from 'lodash/intersection';
+import isEmpty from 'lodash/isEmpty';
 import { messages } from '../MessageLabels/MessageLabels';
 import config from '@plone/volto/registry';
 import { toast } from 'react-toastify';

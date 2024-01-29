@@ -11,7 +11,9 @@ import { Icon } from '@plone/volto/components';
 import { Plug } from '@plone/volto/components/manage/Pluggable';
 import { v4 as uuid } from 'uuid';
 import { load } from 'redux-localstorage-simple';
-import { isEqual, omit, without } from 'lodash';
+import isEqual from 'lodash/isEqual';
+import omit from 'lodash/omit';
+import without from 'lodash/without';
 
 import { setBlocksClipboard, resetBlocksClipboard } from '@plone/volto/actions';
 import config from '@plone/volto/registry';
