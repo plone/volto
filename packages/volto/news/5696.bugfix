@@ -1,0 +1,1 @@
+Replaced "doesNodeContainClick" with a simpler condition to close the menu when clicking outside, excluding clicks on elements with the 'icon' class. @vikash-prem123
