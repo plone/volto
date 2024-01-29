@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Table } from 'semantic-ui-react';
-import { map } from 'lodash';
+import map from 'lodash/map';
 import redraft from 'redraft';
 import config from '@plone/volto/registry';
 

@@ -12,7 +12,8 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import { withCookies } from 'react-cookie';
-import { filter, find } from 'lodash';
+import filter from 'lodash/filter';
+import find from 'lodash/find';
 import cx from 'classnames';
 import config from '@plone/volto/registry';
 

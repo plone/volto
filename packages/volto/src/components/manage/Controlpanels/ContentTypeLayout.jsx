@@ -18,7 +18,8 @@ import { Portal } from 'react-portal';
 import { Button, Segment } from 'semantic-ui-react';
 import { toast } from 'react-toastify';
 import { defineMessages, injectIntl, FormattedMessage } from 'react-intl';
-import { nth, join } from 'lodash';
+import nth from 'lodash/nth';
+import join from 'lodash/join';
 import {
   Error,
   Form,

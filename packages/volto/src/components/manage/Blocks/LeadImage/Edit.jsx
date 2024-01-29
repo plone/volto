@@ -9,7 +9,7 @@ import { compose } from 'redux';
 import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
 import { Message } from 'semantic-ui-react';
-import { isEqual } from 'lodash';
+import isEqual from 'lodash/isEqual';
 
 import { LeadImageSidebar, SidebarPortal } from '@plone/volto/components';
 import config from '@plone/volto/registry';

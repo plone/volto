@@ -349,7 +349,7 @@ form.widget(
 You can render a blocks engine form with the `BlocksForm` component.
 
 ```jsx
-import { isEmpty } from 'lodash';
+import isEmpty from 'lodash/isEmpty';
 import BlocksForm from '@plone/volto/components/manage/Blocks/BlocksForm';
 import { emptyBlocksForm } from '@plone/volto/helpers/Blocks/Blocks';
 import config from '@plone/volto/registry';

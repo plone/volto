@@ -1,6 +1,5 @@
 import glob from 'glob';
-import lodash from 'lodash';
-const { map } = lodash;
+import map from 'lodash/map';
 
 // const voltoCorePackages = [
 //   'packages/volto-slate',

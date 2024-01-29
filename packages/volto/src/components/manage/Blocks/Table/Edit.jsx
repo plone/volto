@@ -6,7 +6,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
-import { map, remove } from 'lodash';
+import map from 'lodash/map';
+import remove from 'lodash/remove';
 import { Button, Segment, Table, Form } from 'semantic-ui-react';
 import { Portal } from 'react-portal';
 import cx from 'classnames';

@@ -133,7 +133,7 @@ The following is the default adapter.
 You should stick to this signature in your custom adapters.
 
 ```js
-import { isEmpty } from 'lodash';
+import isEmpty from 'lodash/isEmpty';
 
 export const GridBlockDataAdapter = ({
   block,

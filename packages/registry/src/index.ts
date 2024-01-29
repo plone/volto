@@ -1,4 +1,4 @@
-import { isArray } from 'lodash';
+import isArray from 'lodash/isArray';
 import type {
   AddonReducersConfig,
   AddonRoutesConfig,

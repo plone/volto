@@ -5,7 +5,12 @@
  * @module scripts/i18n
  */
 
-const { find, keys, map, concat, reduce } = require('lodash');
+const find = require('lodash/find');
+const keys = require('lodash/keys');
+const map = require('lodash/map');
+const concat = require('lodash/concat');
+const reduce = require('lodash/reduce');
+
 const glob = require('glob').sync;
 const fs = require('fs');
 const Pofile = require('pofile');

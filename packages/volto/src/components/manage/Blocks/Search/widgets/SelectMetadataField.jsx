@@ -3,7 +3,12 @@
  * @module components/manage/Widgets/SelectWidget
  */
 
-import { map, intersection, filter, toPairs, groupBy } from 'lodash';
+import map from 'lodash/map';
+import intersection from 'lodash/intersection';
+import filter from 'lodash/filter';
+import toPairs from 'lodash/toPairs';
+import groupBy from 'lodash/groupBy';
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';

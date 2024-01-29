@@ -12,7 +12,7 @@ import { Container, Segment, Table, Menu, Input } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import { Icon, Toolbar, Form, Toast } from '@plone/volto/components';
 import backSVG from '@plone/volto/icons/back.svg';
-import { map } from 'lodash';
+import map from 'lodash/map';
 import { Helmet } from '@plone/volto/helpers';
 import nextIcon from '@plone/volto/icons/right-key.svg';
 import prevIcon from '@plone/volto/icons/left-key.svg';

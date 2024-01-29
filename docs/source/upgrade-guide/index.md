@@ -2190,7 +2190,8 @@ Due to the inactivity of the Helmet project, we decided to fork it to the core. 
 +import { Helmet } from '@plone/volto/helpers';
  import { defineMessages, injectIntl, FormattedMessage } from 'react-intl';
  import { format, parse } from 'date-fns';
- import { filter, map } from 'lodash';
+ import filter from 'lodash/filter';
+import map from 'lodash/map';
 ```
 
 ### Alpha 16 is a brownbag release

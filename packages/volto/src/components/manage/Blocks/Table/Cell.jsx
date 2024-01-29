@@ -5,7 +5,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { includes } from 'lodash';
+import includes from 'lodash/includes';
 import config from '@plone/volto/registry';
 
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';

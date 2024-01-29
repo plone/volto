@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { readAsDataURL } from 'promise-file-reader';
 import { Button, Dimmer, Loader, Message } from 'semantic-ui-react';
-import { isEqual } from 'lodash';
+import isEqual from 'lodash/isEqual';
 import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
 

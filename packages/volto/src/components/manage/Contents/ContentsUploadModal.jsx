@@ -19,7 +19,10 @@ import {
   Segment,
 } from 'semantic-ui-react';
 import loadable from '@loadable/component';
-import { concat, filter, map } from 'lodash';
+import concat from 'lodash/concat';
+import filter from 'lodash/filter';
+import map from 'lodash/map';
+
 import filesize from 'filesize';
 import { readAsDataURL } from 'promise-file-reader';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { capitalize, find } from 'lodash';
+import capitalize from 'lodash/capitalize';
+import find from 'lodash/find';
 import { compose } from 'redux';
 import { useSelector, useDispatch } from 'react-redux';
 import { FormattedMessage, useIntl } from 'react-intl';

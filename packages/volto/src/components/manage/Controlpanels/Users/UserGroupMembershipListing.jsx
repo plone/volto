@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { cloneDeep, uniqBy } from 'lodash';
+import cloneDeep from 'lodash/cloneDeep';
+import uniqBy from 'lodash/uniqBy';
 import { useIntl } from 'react-intl';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';

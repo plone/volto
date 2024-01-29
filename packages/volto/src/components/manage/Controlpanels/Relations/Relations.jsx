@@ -2,7 +2,7 @@
  * Relations Control Panel
  */
 import React, { useEffect } from 'react';
-import { find } from 'lodash';
+import find from 'lodash/find';
 import { useSelector } from 'react-redux';
 import { Portal } from 'react-portal';
 import { useHistory } from 'react-router';

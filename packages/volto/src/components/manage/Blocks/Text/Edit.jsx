@@ -8,7 +8,8 @@ import PropTypes from 'prop-types';
 import { compose } from 'redux';
 
 import { defineMessages, injectIntl } from 'react-intl';
-import { includes, isEqual } from 'lodash';
+import includes from 'lodash/includes';
+import isEqual from 'lodash/isEqual';
 import config from '@plone/volto/registry';
 
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';

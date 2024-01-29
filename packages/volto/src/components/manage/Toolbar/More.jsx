@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link, withRouter } from 'react-router-dom';
-import { find } from 'lodash';
+import find from 'lodash/find';
 import { toast } from 'react-toastify';
 import { Toast } from '@plone/volto/components';
 import { Pluggable, Plug } from '@plone/volto/components/manage/Pluggable';

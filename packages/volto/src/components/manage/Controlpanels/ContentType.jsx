@@ -12,7 +12,10 @@ import { Portal } from 'react-portal';
 import { Button, Header } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import { toast } from 'react-toastify';
-import { last, nth, join } from 'lodash';
+import last from 'lodash/last';
+import nth from 'lodash/nth';
+import join from 'lodash/join';
+
 import { Error, Form, Icon, Toolbar, Toast } from '@plone/volto/components';
 import { getControlpanel, updateControlpanel } from '@plone/volto/actions';
 

@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 // import { defineMessages, useIntl } from 'react-intl';
 
-import { map } from 'lodash';
+import map from 'lodash/map';
 import { hasBlocksData } from '../../helpers/blocks';
 import DefaultBlockView from './DefaultBlockView';
 import type { Content } from '@plone/types';

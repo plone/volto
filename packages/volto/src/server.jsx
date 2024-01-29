@@ -8,7 +8,7 @@ import express from 'express';
 import { renderToString } from 'react-dom/server';
 import { createMemoryHistory } from 'history';
 import { parse as parseUrl } from 'url';
-import { keys } from 'lodash';
+import keys from 'lodash/keys';
 import locale from 'locale';
 import { detect } from 'detect-browser';
 import path from 'path';

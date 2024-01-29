@@ -10,7 +10,7 @@ import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 import { getParentUrl } from '@plone/volto/helpers';
 import { Portal } from 'react-portal';
-import { last } from 'lodash';
+import last from 'lodash/last';
 import { Confirm, Container, Table, Button, Header } from 'semantic-ui-react';
 import { toast } from 'react-toastify';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';

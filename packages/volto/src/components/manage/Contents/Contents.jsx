@@ -22,16 +22,15 @@ import {
   Loader,
   Dimmer,
 } from 'semantic-ui-react';
-import {
-  concat,
-  filter,
-  find,
-  indexOf,
-  keys,
-  map,
-  mapValues,
-  pull,
-} from 'lodash';
+import concat from 'lodash/concat';
+import filter from 'lodash/filter';
+import find from 'lodash/find';
+import indexOf from 'lodash/indexOf';
+import keys from 'lodash/keys';
+import map from 'lodash/map';
+import mapValues from 'lodash/mapValues';
+import pull from 'lodash/pull';
+
 import move from 'lodash-move';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import { asyncConnect } from '@plone/volto/helpers';

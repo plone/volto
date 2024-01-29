@@ -30,7 +30,7 @@ import DatetimeWidget from '@plone/volto/components/manage/Widgets/DatetimeWidge
 import { Icon, Toolbar } from '@plone/volto/components';
 
 import backSVG from '@plone/volto/icons/back.svg';
-import { map } from 'lodash';
+import map from 'lodash/map';
 import { toast } from 'react-toastify';
 import { Toast } from '@plone/volto/components';
 
