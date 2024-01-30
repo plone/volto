@@ -170,7 +170,7 @@ cypress-install:
 
 .PHONY: build-deps
 build-deps:
-	pnpm build:deps
+	if [ ! -d $$(pwd)/registry/dist ]; then (pnpm build:deps); fi
 
 ##### Release
 
