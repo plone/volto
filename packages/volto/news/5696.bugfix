@@ -1,1 +1,1 @@
-Added a simple condition to not excute the "closeMenu" in handleClickOutside function when click on the "icon" because it will excute by toggleMenu function. @vikash-prem123
+Added a simple condition to not execute the "closeMenu" in handleClickOutside function when click on the "icon" because it will execute by toggleMenu function. @vikash-prem123
