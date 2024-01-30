@@ -15,7 +15,8 @@ import { Container } from 'semantic-ui-react';
 import jwtDecode from 'jwt-decode';
 import { toast } from 'react-toastify';
 
-import { Form, Icon, Toast, Toolbar } from '@plone/volto/components';
+import { Icon, Toast, Toolbar } from '@plone/volto/components';
+import { Form } from '@plone/volto/components/manage/Form';
 import { updatePassword } from '@plone/volto/actions';
 import { getBaseUrl } from '@plone/volto/helpers';
 

@@ -6,6 +6,8 @@ import { render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import ObjectWidget from './ObjectWidget';
 
+jest.mock('@plone/volto/components/manage/Form');
+
 const mockStore = configureStore();
 
 const LinkSchema = {

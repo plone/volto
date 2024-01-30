@@ -6,8 +6,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Tab } from 'semantic-ui-react';
-
-import Field from '@plone/volto/components/manage/Form/Field';
+import { Field } from '@plone/volto/components/manage/Form';
 
 /**
  * Renders a field set. Passes some of the values in the schema to the Field

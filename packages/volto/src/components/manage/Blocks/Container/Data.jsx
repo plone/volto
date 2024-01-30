@@ -1,5 +1,5 @@
 import { useIntl } from 'react-intl';
-import { BlockDataForm } from '@plone/volto/components';
+import { BlockDataForm } from '@plone/volto/components/manage/Form';
 
 const ContainerData = (props) => {
   const { block, blocksConfig, data, onChangeBlock, navRoot, contentType } =

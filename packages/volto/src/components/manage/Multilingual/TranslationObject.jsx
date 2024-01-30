@@ -3,7 +3,7 @@ import { map } from 'lodash';
 import { defineMessages, useIntl } from 'react-intl';
 import { Form as UiForm, Menu, Segment } from 'semantic-ui-react';
 import { Provider } from 'react-intl-redux';
-import { Form, Field } from '@plone/volto/components';
+import { Form, Field } from '@plone/volto/components/manage/Form';
 import config from '@plone/volto/registry';
 import configureStore from '@plone/volto/store';
 import {
@@ -14,6 +14,7 @@ import {
   toReactIntlLang,
 } from '@plone/volto/helpers';
 import { createBrowserHistory } from 'history';
+
 const messages = defineMessages({
   document: {
     id: 'Document',

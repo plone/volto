@@ -7,7 +7,8 @@ import { toast } from 'react-toastify';
 
 import { emailNotification } from '@plone/volto/actions';
 import { useDispatch, useSelector } from 'react-redux';
-import { Form, Toolbar, Toast } from '@plone/volto/components';
+import { Toolbar, Toast } from '@plone/volto/components';
+import { Form } from '@plone/volto/components/manage/Form';
 import { getBaseUrl, Helmet, usePrevious } from '@plone/volto/helpers';
 import { useClient } from '@plone/volto/hooks';
 

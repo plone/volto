@@ -11,7 +11,7 @@ const mockStore = configureStore();
 jest.mock('react-portal', () => ({
   Portal: jest.fn(() => <div id="Portal" />),
 }));
-jest.mock('../Form/Form', () => jest.fn(() => <div className="Form" />));
+jest.mock('@plone/volto/components/manage/Form');
 
 describe('Edit', () => {
   it('renders an empty edit component', () => {

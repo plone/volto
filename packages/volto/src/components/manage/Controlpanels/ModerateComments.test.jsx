@@ -10,9 +10,7 @@ const mockStore = configureStore();
 jest.mock('react-portal', () => ({
   Portal: jest.fn(() => <div id="Portal" />),
 }));
-jest.mock('../../theme/Comments/CommentEditModal', () =>
-  jest.fn(() => <div id="modal" />),
-);
+jest.mock('@plone/volto/components/theme/Comments');
 
 describe('ModerateComments', () => {
   it('renders a moderate comments component', () => {

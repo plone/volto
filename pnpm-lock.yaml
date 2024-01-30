@@ -1710,6 +1710,9 @@ importers:
       '@plone/volto-coresandbox':
         specifier: workspace:*
         version: link:../coresandbox
+      '@sinonjs/fake-timers':
+        specifier: ^11.2.2
+        version: 11.2.2
       '@storybook/addon-actions':
         specifier: ^6.5.15
         version: 6.5.16(react-dom@17.0.2)(react@17.0.2)
@@ -1746,6 +1749,9 @@ importers:
       '@types/jest':
         specifier: ^29.5.8
         version: 29.5.8
+      '@types/loadable__component':
+        specifier: ^5.13.8
+        version: 5.13.8
       '@types/lodash':
         specifier: ^4.14.201
         version: 4.14.201
@@ -10197,6 +10203,12 @@ packages:
       '@sinonjs/commons': 3.0.0
     dev: true
 
+  /@sinonjs/fake-timers@11.2.2:
+    resolution: {integrity: sha512-G2piCSxQ7oWOxwGSAyFHfPIsyeJGXYtc6mFbnFA+kRXkiEnTl8c/8jul2S329iFBnDI9HGoeWWAZvuvOkZccgw==}
+    dependencies:
+      '@sinonjs/commons': 3.0.0
+    dev: true
+
   /@sinonjs/fake-timers@6.0.1:
     resolution: {integrity: sha512-MZPUxrmFubI36XS1DI3qmI0YdN1gks62JtFZvxR67ljjSNCeK6U08Zx4msEWOXuofgqUt6zPHSi1H9fbjR/NRA==}
     dependencies:
@@ -13491,6 +13503,12 @@ packages:
     dependencies:
       '@types/node': 20.9.0
     dev: false
+
+  /@types/loadable__component@5.13.8:
+    resolution: {integrity: sha512-0FF/WihuPkR5IFOHiBzC95bSACvgQNUQCuNy1WF8F/lCBBHgS2SxarIk4CTjWM10A72ovpmXZDRcuAXZNS+/kQ==}
+    dependencies:
+      '@types/react': 18.2.27
+    dev: true
 
   /@types/lodash@4.14.201:
     resolution: {integrity: sha512-y9euML0cim1JrykNxADLfaG0FgD1g/yTHwUs/Jg9ZIU7WKj2/4IW9Lbb1WZbvck78W/lfGXFfe+u2EGfIJXdLQ==}

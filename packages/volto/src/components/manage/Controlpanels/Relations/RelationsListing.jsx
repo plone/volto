@@ -15,7 +15,7 @@ import {
   searchContent,
 } from '@plone/volto/actions';
 
-const ListingTemplate = ({
+const RelationsListing = ({
   relationtype,
   query_source,
   query_target,
@@ -477,4 +477,4 @@ const ListingTemplate = ({
     </>
   );
 };
-export default ListingTemplate;
+export default RelationsListing;

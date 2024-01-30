@@ -39,7 +39,7 @@ describe('Upgrade Site Tests', () => {
       body: {
         ...getUpgradeNeedsUpgrade,
       },
-    }).as('getSystemNeedsUpdate');
+    }).as('getUpgradeNeedsUpgrade');
     cy.navigate('controlpanel');
     cy.wait('@getSystemNeedsUpdate');
 

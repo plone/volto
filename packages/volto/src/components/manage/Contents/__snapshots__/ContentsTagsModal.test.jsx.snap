@@ -2,6 +2,39 @@
 
 exports[`ContentsTagsModal renders a contents tags modal component 1`] = `
 <div
-  id="modalform"
+  data-schema={
+    Object {
+      "fieldsets": Array [
+        Object {
+          "fields": Array [
+            "tags_to_remove",
+            "tags_to_add",
+          ],
+          "id": "default",
+          "title": "Default",
+        },
+      ],
+      "properties": Object {
+        "tags_to_add": Object {
+          "items": Object {
+            "vocabulary": Object {
+              "@id": "plone.app.vocabularies.Keywords",
+            },
+          },
+          "title": "Tags to add",
+          "type": "array",
+          "widget": "token",
+        },
+        "tags_to_remove": Object {
+          "choices": Array [],
+          "title": "Tags to remove",
+          "type": "array",
+          "widget": "array",
+        },
+      },
+      "required": Array [],
+    }
+  }
+  id="ModalForm"
 />
 `;

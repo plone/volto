@@ -1,9 +1,9 @@
 import React from 'react';
 import { MapsSchema } from './schema';
-import { BlockDataForm } from '@plone/volto/components';
 import { useIntl, defineMessages } from 'react-intl';
 import globeSVG from '@plone/volto/icons/globe.svg';
 import { Icon } from '@plone/volto/components';
+import { BlockDataForm } from '@plone/volto/components/manage/Form';
 import { Segment } from 'semantic-ui-react';
 
 const messages = defineMessages({

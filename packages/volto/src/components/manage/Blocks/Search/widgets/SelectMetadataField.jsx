@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import { compose } from 'redux';
 
-import { FormFieldWrapper } from '@plone/volto/components';
+import { FormFieldWrapper } from '@plone/volto/components/manage/Widgets';
 import withQueryString from './../hocs/withQueryString';
 import { defineMessages } from 'react-intl';
 

@@ -16,7 +16,7 @@ import configureStore from 'redux-mock-store';
 import { MemoryRouter } from 'react-router-dom';
 import config from '@plone/volto/registry';
 
-import { FormFieldWrapper } from '@plone/volto/components';
+import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 
 import loadable from '@loadable/component';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';

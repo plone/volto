@@ -8,6 +8,7 @@ import Display from './Display';
 
 const mockStore = configureStore();
 
+jest.mock('@plone/volto/components/manage/Widgets');
 jest.mock('@plone/volto/helpers/Loadable/Loadable');
 beforeAll(
   async () =>

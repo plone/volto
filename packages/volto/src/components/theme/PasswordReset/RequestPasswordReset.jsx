@@ -5,7 +5,7 @@ import { Container } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 
 import { Helmet, usePrevious } from '@plone/volto/helpers';
-import { Form } from '@plone/volto/components';
+import { Form } from '@plone/volto/components/manage/Form';
 import { resetPassword } from '@plone/volto/actions';
 import config from '@plone/volto/registry';
 

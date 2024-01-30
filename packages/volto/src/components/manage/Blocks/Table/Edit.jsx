@@ -13,7 +13,8 @@ import cx from 'classnames';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import Cell from '@plone/volto/components/manage/Blocks/Table/Cell';
-import { Field, Icon } from '@plone/volto/components';
+import { Icon } from '@plone/volto/components';
+import { Field } from '@plone/volto/components/manage/Form';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 import rowBeforeSVG from '@plone/volto/icons/row-before.svg';

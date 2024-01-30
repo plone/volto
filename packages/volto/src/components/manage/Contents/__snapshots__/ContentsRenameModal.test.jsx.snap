@@ -2,6 +2,33 @@
 
 exports[`ContentsRenameModal renders a contents rename modal component 1`] = `
 <div
-  id="modalform"
+  data-schema={
+    Object {
+      "fieldsets": Array [
+        Object {
+          "fields": Array [
+            "0_title",
+            "0_id",
+          ],
+          "id": "default",
+          "title": "Default",
+        },
+      ],
+      "properties": Object {
+        "0_id": Object {
+          "description": "This name will be displayed in the URL.",
+          "title": "Short name",
+          "type": "id",
+        },
+        "0_title": Object {
+          "description": "",
+          "title": "Title",
+          "type": "string",
+        },
+      },
+      "required": Array [],
+    }
+  }
+  id="ModalForm"
 />
 `;

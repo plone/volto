@@ -349,6 +349,7 @@
   "devDependencies": {
     "@jest/globals": "^29.7.0",
     "@plone/volto-coresandbox": "workspace:*",
+    "@sinonjs/fake-timers": "^11.2.2",
     "@storybook/addon-actions": "^6.5.15",
     "@storybook/addon-controls": "6.5.15",
     "@storybook/addon-essentials": "^6.5.15",
@@ -361,6 +362,7 @@
     "@testing-library/react": "12.1.5",
     "@testing-library/react-hooks": "8.0.1",
     "@types/jest": "^29.5.8",
+    "@types/loadable__component": "^5.13.8",
     "@types/lodash": "^4.14.201",
     "@types/react": "^17.0.52",
     "@types/react-dom": "^17",

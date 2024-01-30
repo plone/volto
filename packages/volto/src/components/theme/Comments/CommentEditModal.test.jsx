@@ -7,9 +7,7 @@ import CommentEditModal from './CommentEditModal';
 
 const mockStore = configureStore();
 
-jest.mock('../../manage/Form/ModalForm', () =>
-  jest.fn(() => <div id="modalform" />),
-);
+jest.mock('@plone/volto/components/manage/Form');
 
 describe('CommentEditModal', () => {
   it('renders a comment edit modal component', () => {

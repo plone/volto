@@ -14,14 +14,8 @@ import { last } from 'lodash';
 import { Confirm, Container, Table, Button, Header } from 'semantic-ui-react';
 import { toast } from 'react-toastify';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import {
-  Error,
-  Icon,
-  ModalForm,
-  Toolbar,
-  Toast,
-  ContentTypesActions,
-} from '@plone/volto/components';
+import { Error, Icon, Toolbar, Toast } from '@plone/volto/components';
+import ContentTypesActions from '@plone/volto/components/manage/Controlpanels/ContentTypesActions';
 import {
   getControlpanel,
   postControlpanel,
@@ -31,6 +25,7 @@ import { getId } from '@plone/volto/helpers';
 
 import addSVG from '@plone/volto/icons/add-document.svg';
 import backSVG from '@plone/volto/icons/back.svg';
+import { ModalForm } from '@plone/volto/components/manage/Form';
 
 const messages = defineMessages({
   add: {

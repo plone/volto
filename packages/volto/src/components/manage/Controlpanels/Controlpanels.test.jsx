@@ -13,9 +13,9 @@ jest.mock('react-portal', () => ({
   Portal: jest.fn(() => <div id="Portal" />),
 }));
 
-jest.mock('./VersionOverview', () =>
-  jest.fn(() => <div className="VersionOverview" />),
-);
+jest.mock('@plone/volto/components/manage/Controlpanels', () => ({
+  VersionOverview: jest.fn(() => <div className="VersionOverview" />),
+}));
 
 describe('Controlpanels', () => {
   it('renders a controlpanels component', () => {

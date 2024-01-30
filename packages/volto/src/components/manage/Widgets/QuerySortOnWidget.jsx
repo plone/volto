@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormFieldWrapper } from '@plone/volto/components';
+import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 import { toPairs, groupBy, map } from 'lodash';
 import { defineMessages, useIntl } from 'react-intl';
 import { useSelector } from 'react-redux';

@@ -58,125 +58,71 @@ Array [
     />
   </div>,
   <div
-    className="ui form"
-  >
-    <div
-      id="blockform-fieldset-default"
-    >
-      <div
-        className="ui segment form attached"
-      >
-        <div
-          className="mocked-default-widget"
-          id="mocked-field-alt"
-        >
-          Alt text
-           - 
-          <a
-            href="https://www.w3.org/WAI/tutorials/images/decision-tree/"
-            rel="noopener noreferrer"
-            target="_blank"
-            title="Open in a new tab"
-          >
-            Describe the purpose of the image.
-          </a>
-           
-          Leave empty if the image is purely decorative.
-        </div>
-        <div
-          className="mocked-align-widget"
-          id="mocked-field-align"
-        >
-          Alignment
-           - 
-          No description
-        </div>
-        <div
-          className="mocked-default-widget"
-          id="mocked-field-size"
-        >
-          Image size
-           - 
-          No description
-        </div>
-      </div>
-    </div>
-    <div
-      className="accordion ui fluid styled form"
-    >
-      <div
-        id="blockform-fieldset-link_settings"
-      >
-        <div
-          className="active title"
-          onClick={[Function]}
-        >
-          Link settings
-          <svg
-            className="icon"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": undefined,
-              }
-            }
-            onClick={null}
-            style={
-              Object {
-                "fill": "currentColor",
-                "height": "20px",
-                "width": "auto",
-              }
-            }
-            viewBox=""
-            xmlns=""
-          />
-        </div>
-        <div
-          className="content active"
-        >
-          <div
-            aria-hidden={false}
-            className="rah-static rah-static--height-auto"
-            style={
-              Object {
-                "height": "auto",
-                "overflow": "visible",
-              }
-            }
-          >
-            <div
-              style={
-                Object {
-                  "WebkitTransition": "opacity 500ms ease 0ms",
-                  "transition": "opacity 500ms ease 0ms",
-                }
-              }
-            >
-              <div
-                className="ui segment attached"
+    data-schema={
+      Object {
+        "fieldsets": Array [
+          Object {
+            "fields": Array [
+              "alt",
+              "align",
+              "size",
+            ],
+            "id": "default",
+            "title": "Default",
+          },
+          Object {
+            "fields": Array [
+              "href",
+              "openLinkInNewTab",
+            ],
+            "id": "link_settings",
+            "title": "Link settings",
+          },
+        ],
+        "properties": Object {
+          "align": Object {
+            "title": "Alignment",
+            "widget": "align",
+          },
+          "alt": Object {
+            "description": <React.Fragment>
+              <a
+                href="https://www.w3.org/WAI/tutorials/images/decision-tree/"
+                rel="noopener noreferrer"
+                target="_blank"
+                title="Open in a new tab"
               >
-                <div
-                  className="mocked-object_browser-widget"
-                  id="mocked-field-href"
-                >
-                  Link to
-                   - 
-                  No description
-                </div>
-                <div
-                  className="mocked-boolean-widget"
-                  id="mocked-field-openLinkInNewTab"
-                >
-                  Open in a new tab
-                   - 
-                  No description
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>,
+                Describe the purpose of the image.
+              </a>
+               
+              Leave empty if the image is purely decorative.
+            </React.Fragment>,
+            "title": "Alt text",
+          },
+          "href": Object {
+            "allowExternals": true,
+            "mode": "link",
+            "selectedItemAttrs": Array [
+              "Title",
+              "Description",
+              "hasPreviewImage",
+            ],
+            "title": "Link to",
+            "widget": "object_browser",
+          },
+          "openLinkInNewTab": Object {
+            "title": "Open in a new tab",
+            "type": "boolean",
+          },
+          "size": Object {
+            "title": "Image size",
+            "widget": "image_size",
+          },
+        },
+        "required": Array [],
+      }
+    }
+    id="BlockDataForm"
+  />,
 ]
 `;

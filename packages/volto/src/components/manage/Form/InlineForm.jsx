@@ -11,7 +11,8 @@ import {
   removeFromArray,
   arrayRange,
 } from '@plone/volto/helpers/Utils/Utils';
-import { Field, Icon } from '@plone/volto/components';
+import { Icon } from '@plone/volto/components';
+import { Field } from '@plone/volto/components/manage/Form';
 import { applySchemaDefaults } from '@plone/volto/helpers';
 
 import upSVG from '@plone/volto/icons/up-key.svg';

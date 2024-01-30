@@ -9,7 +9,8 @@ import { defineMessages, injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
 import loadable from '@loadable/component';
 import cx from 'classnames';
-import { Icon, FormFieldWrapper } from '@plone/volto/components';
+import { Icon } from '@plone/volto/components';
+import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 import { parseDateTime, toBackendLang } from '@plone/volto/helpers';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 

@@ -176,10 +176,10 @@ exports[`renders an object list widget component 1`] = `
                   class="ui bottom attached segment active tab"
                 >
                   <div
-                    class="mocked-default-widget"
-                    id="mocked-field-internal_link-0-my-widget-0"
+                    class="Field"
+                    id="internal_link-0-my-widget-0"
                   >
-                    Internal link - No description
+                    Internal link
                   </div>
                 </div>
               </div>
@@ -271,10 +271,10 @@ exports[`renders an object list widget component 1`] = `
                   class="ui bottom attached segment active tab"
                 >
                   <div
-                    class="mocked-default-widget"
-                    id="mocked-field-internal_link-0-my-widget-1"
+                    class="Field"
+                    id="internal_link-0-my-widget-1"
                   >
-                    Internal link - No description
+                    Internal link
                   </div>
                 </div>
               </div>

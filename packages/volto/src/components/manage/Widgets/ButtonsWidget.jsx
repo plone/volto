@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormFieldWrapper } from '@plone/volto/components';
+import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 import { Icon } from '@plone/volto/components';
 import { Button } from 'semantic-ui-react';
 

@@ -22,8 +22,8 @@ import {
   queryRelations,
   rebuildRelations,
 } from '@plone/volto/actions';
-import RelationsListing from './RelationsListing';
-import BrokenRelations from './BrokenRelations';
+import RelationsListing from '@plone/volto/components/manage/Controlpanels/Relations/RelationsListing';
+import BrokenRelations from '@plone/volto/components/manage/Controlpanels/Relations/BrokenRelations';
 import helpSVG from '@plone/volto/icons/help.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import navTreeSVG from '@plone/volto/icons/nav.svg';

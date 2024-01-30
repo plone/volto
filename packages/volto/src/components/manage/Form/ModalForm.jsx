@@ -18,7 +18,8 @@ import {
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import { FormValidation } from '@plone/volto/helpers';
-import { Field, Icon } from '@plone/volto/components';
+import { Icon } from '@plone/volto/components';
+import { Field } from '@plone/volto/components/manage/Form';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 
