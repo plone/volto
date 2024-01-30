@@ -1,1 +1,1 @@
-Replaced "doesNodeContainClick" with a simpler condition to close the menu when clicking outside, excluding clicks on elements with the 'icon' class. @vikash-prem123
+Added a simple condition to not excute the "closeMenu" in handleClickOutside function when click on the "icon" because it will excute by toggleMenu function. @vikash-prem123

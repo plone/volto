@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
+import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import { withCookies } from 'react-cookie';
 import { filter, find } from 'lodash';
 import cx from 'classnames';
@@ -313,7 +314,9 @@ class Toolbar extends Component {
   };
 
   handleClickOutside = (e) => {
-    if (this.pusher && !e.target.classList.contains('icon')) this.closeMenu();
+    if (e.target.classList.contains('icon')) return;
+    if (this.pusher && doesNodeContainClick(this.pusher, e)) return;
+    this.closeMenu();
   };
 
   unlock = (e) => {
