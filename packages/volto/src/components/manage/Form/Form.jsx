@@ -858,7 +858,7 @@ const FormIntl = injectIntl(Form, { forwardRef: true });
 export default compose(
   connect(
     (state, props) => ({
-      globalData: state.form.global,
+      globalData: state.form?.global,
     }),
     { setSidebarTab, setFormData },
     null,
