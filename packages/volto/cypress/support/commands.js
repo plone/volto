@@ -719,7 +719,7 @@ Cypress.Commands.add('clearSlate', (selector) => {
   return cy
     .get(selector)
     .focus()
-    .click()
+    .click({ force: true }) // fix sporadic failure this element is currently animating
     .wait(1000)
     .type('{selectAll}')
     .wait(1000)
