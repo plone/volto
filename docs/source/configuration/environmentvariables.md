@@ -24,6 +24,8 @@ In the frontend we can access this variable with:
 window.env.RAZZLE_MY_VARIABLE
 ```
 
+For more detailed information about environment variables and other configurations, you can refer to the [Razzle Documentation](https://razzlejs.org/docs/environment-variables).
+
 ## Runtime environment variables
 
 All the environment variables that are configurable work at runtime, not only at build time. This works since Volto 13 onwards.
