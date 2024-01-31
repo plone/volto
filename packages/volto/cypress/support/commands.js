@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { getIfExists } from '../helpers';
 import { ploneAuth } from './constants';
 
@@ -843,7 +844,6 @@ function getTextNode(el, match) {
     return walk.nextNode();
   }
 
-  const nodes = [];
   let node;
   while ((node = walk.nextNode())) {
     if (node.wholeText.includes(match)) {
