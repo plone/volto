@@ -205,7 +205,7 @@ const initialBlocks = {
 };
 ```
 
-you can also pass the full config for the block, using an object:
+You can also pass the full configuration for the block using an object:
 
 ```js
 const initialBlocks = {
