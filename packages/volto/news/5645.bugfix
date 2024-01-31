@@ -1,1 +1,1 @@
-Added a simple condition to not execute the "closeMenu" in handleClickOutside function when click on the "icon" because it will execute by toggleMenu function. @vikash-prem123
+The user personal tools menu now closes when clicked a second time or when clicking outside of the component. @vikash-prem123
