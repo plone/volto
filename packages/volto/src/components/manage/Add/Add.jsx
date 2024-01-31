@@ -249,11 +249,11 @@ class Add extends Component {
           [initialBlocks, initialBlocksLayout] = getSimpleDefaultBlocks(
             initialContentTypeBlocks,
           );
+        } else {
+          [initialBlocks, initialBlocksLayout] = getDefaultBlocks(
+            initialContentTypeBlocks,
+          );
         }
-      } else {
-        [initialBlocks, initialBlocksLayout] = getDefaultBlocks(
-          initialContentTypeBlocks,
-        );
       }
 
       // Lookup initialBlocks and initialBlocksLayout within schema, if any
