@@ -462,6 +462,11 @@ msgstr "可用的内容规则"
 msgid "Back"
 msgstr "返回"
 
+#. Default: "Back to homepage"
+#: components/theme/Logo/Logo
+msgid "Back to homepage"
+msgstr "返回首页"
+
 #. Default: "Base"
 #: components/manage/Diff/Diff
 msgid "Base"

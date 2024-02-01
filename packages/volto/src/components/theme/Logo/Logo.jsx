@@ -2,6 +2,7 @@
  * Logo component.
  * @module components/theme/Logo/Logo
  */
+import { defineMessages, useIntl } from 'react-intl';
 import { useEffect } from 'react';
 import { Image } from 'semantic-ui-react';
 import { ConditionalLink } from '@plone/volto/components';
@@ -26,6 +27,14 @@ const Logo = () => {
   const site = useSelector((state) => state.site.data);
   const navroot = useSelector((state) => state.navroot.data);
   const dispatch = useDispatch();
+  const intl = useIntl();
+
+  const messages = defineMessages({
+    homepage: {
+      id: 'Back to homepage',
+      defaultMessage: 'Back to homepage',
+    },
+  });
 
   useEffect(() => {
     if (pathname && !hasApiExpander('navroot', getBaseUrl(pathname))) {
@@ -50,8 +59,8 @@ const Logo = () => {
             ? flattenToAppURL(site['plone.site_logo'])
             : LogoImage
         }
-        alt={navroot?.navroot?.title}
-        title={navroot?.navroot?.title}
+        alt={intl.formatMessage(messages.homepage)}
+        title={intl.formatMessage(messages.homepage)}
       />
     </ConditionalLink>
   );

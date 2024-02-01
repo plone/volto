@@ -462,6 +462,11 @@ msgstr ""
 msgid "Back"
 msgstr "Enrere"
 
+#. Default: "Back to homepage"
+#: components/theme/Logo/Logo
+msgid "Back to homepage"
+msgstr "Torna a la pàgina d'inici"
+
 #. Default: "Base"
 #: components/manage/Diff/Diff
 msgid "Base"
