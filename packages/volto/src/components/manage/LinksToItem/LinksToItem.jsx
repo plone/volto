@@ -2,7 +2,7 @@
  * LinksToItem component
  * @module components/manage/LinksToItem/LinksToItem
  */
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { find } from 'lodash';
 import { Helmet } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
@@ -106,41 +106,46 @@ const LinksToItem = (props) => {
           <Table selectable compact singleLine attached>
             {
               <Table.Body>
-                {Object.keys(links_ordered).map((relationtype) => {
+                {Object.keys(links_ordered).map((relationtype, index) => {
+                  // TODO: keys driven by links_ordered[relationtype][index]['@id'])
                   return [].concat(
                     [
-                      <Table.Row>
-                        <Table.HeaderCell>
-                          {relationtype === 'isReferencing' ? (
-                            <FormattedMessage
-                              id="Linking this item with hyperlink in text"
-                              defaultMessage="Linking this item with hyperlink in text"
-                            />
-                          ) : relationtype === 'relatedItems' ? (
-                            <FormattedMessage
-                              id="Referencing this item as related item"
-                              defaultMessage="Referencing this item as related item"
-                            />
-                          ) : (
-                            <>
+                      <React.Fragment key={index}>
+                        <Table.Row>
+                          <Table.HeaderCell>
+                            {relationtype === 'isReferencing' ? (
                               <FormattedMessage
-                                id="Referencing this item with {relationship}"
-                                defaultMessage="Referencing this item with {relationship}"
-                                values={{ relationship: <q>{relationtype}</q> }}
+                                id="Linking this item with hyperlink in text"
+                                defaultMessage="Linking this item with hyperlink in text"
                               />
-                            </>
-                          )}
-                        </Table.HeaderCell>
-                        <Table.HeaderCell>
-                          <FormattedMessage
-                            id="Review state"
-                            defaultMessage="Review state"
-                          />
-                        </Table.HeaderCell>
-                        <Table.HeaderCell>
-                          <FormattedMessage id="Type" defaultMessage="Type" />
-                        </Table.HeaderCell>
-                      </Table.Row>,
+                            ) : relationtype === 'relatedItems' ? (
+                              <FormattedMessage
+                                id="Referencing this item as related item"
+                                defaultMessage="Referencing this item as related item"
+                              />
+                            ) : (
+                              <>
+                                <FormattedMessage
+                                  id="Referencing this item with {relationship}"
+                                  defaultMessage="Referencing this item with {relationship}"
+                                  values={{
+                                    relationship: <q>{relationtype}</q>,
+                                  }}
+                                />
+                              </>
+                            )}
+                          </Table.HeaderCell>
+                          <Table.HeaderCell>
+                            <FormattedMessage
+                              id="Review state"
+                              defaultMessage="Review state"
+                            />
+                          </Table.HeaderCell>
+                          <Table.HeaderCell>
+                            <FormattedMessage id="Type" defaultMessage="Type" />
+                          </Table.HeaderCell>
+                        </Table.Row>
+                      </React.Fragment>,
                     ],
                     links_ordered[relationtype].map((link) => {
                       return (
