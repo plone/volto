@@ -461,6 +461,11 @@ msgstr "Saatavilla olevat sisältösäännöt:"
 msgid "Back"
 msgstr "Takaisin"
 
+#. Default: "Back to homepage"
+#: components/theme/Logo/Logo
+msgid "Back to homepage"
+msgstr "Takaisin kotisivulle"
+
 #. Default: "Base"
 #: components/manage/Diff/Diff
 msgid "Base"
@@ -2445,10 +2450,10 @@ msgstr "Toistuminen"
 msgid "Ok"
 msgstr "Ok"
 
-#. Default: "Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed."
+#. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines."
 #: components/manage/Widgets/IdWidget
-msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed."
-msgstr "Ainostaan pienet kirjaimet (a-z), numerot (0-9) ja merkit "-", "_", ja "." ovat sallittuja. "
+msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines."
+msgstr ""
 
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema

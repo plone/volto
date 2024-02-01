@@ -456,6 +456,11 @@ msgstr "Regole di contenuto disponibili:"
 msgid "Back"
 msgstr "Indietro"
 
+#. Default: "Back to homepage"
+#: components/theme/Logo/Logo
+msgid "Back to homepage"
+msgstr "Torna alla home page"
+
 #. Default: "Base"
 #: components/manage/Diff/Diff
 msgid "Base"
@@ -2440,10 +2445,10 @@ msgstr "occorrenze"
 msgid "Ok"
 msgstr "Ok"
 
-#. Default: "Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed."
+#. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines."
 #: components/manage/Widgets/IdWidget
-msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed."
-msgstr "Solo lettere minuscole (a-z) senza accenti, numeri (0-9). I caratteri '-', "_", e "." sono consentiti."
+msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines."
+msgstr ""
 
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
