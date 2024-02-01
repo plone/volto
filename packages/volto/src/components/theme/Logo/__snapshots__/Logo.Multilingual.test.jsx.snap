@@ -2,10 +2,10 @@
 
 exports[`Multilingual Logo renders a logo component in a multilingual site language root 1`] = `
 <img
-  alt="Back to homepage"
+  alt="English"
   className="ui image"
   src="Logo.svg"
-  title="Back to homepage"
+  title="English"
 />
 `;
 
@@ -18,20 +18,20 @@ exports[`Multilingual Logo renders a logo component in a multilingual site root 
   title="Plone Site"
 >
   <img
-    alt="Back to homepage"
+    alt="Plone Site"
     className="ui image"
     src="Logo.svg"
-    title="Back to homepage"
+    title="Plone Site"
   />
 </a>
 `;
 
 exports[`Multilingual Logo renders a logo component with a custom logo in a non-root url 1`] = `
 <img
-  alt="Back to homepage"
+  alt="English"
   className="ui image"
   src="/@@site-logo/logo.cab945d8.svg"
-  title="Back to homepage"
+  title="English"
 />
 `;
 
@@ -44,10 +44,10 @@ exports[`Multilingual Logo renders a logo component with a custom logo in a non-
   title="English"
 >
   <img
-    alt="Back to homepage"
+    alt="English"
     className="ui image"
     src="/@@site-logo/logo.cab945d8.svg"
-    title="Back to homepage"
+    title="English"
   />
 </a>
 `;

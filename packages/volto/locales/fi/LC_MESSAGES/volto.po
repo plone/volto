@@ -461,11 +461,6 @@ msgstr "Saatavilla olevat sisältösäännöt:"
 msgid "Back"
 msgstr "Takaisin"
 
-#. Default: "Back to homepage"
-#: components/theme/Logo/Logo
-msgid "Back to homepage"
-msgstr "Takaisin kotisivulle"
-
 #. Default: "Base"
 #: components/manage/Diff/Diff
 msgid "Base"
