@@ -110,6 +110,9 @@
       "./test-setup-config.js"
     ],
     "globalSetup": "./global-test-setup.js",
+    "setupFilesAfterEnv": [
+      "<rootDir>/jest-setup-afterenv.js"
+    ],
     "globals": {
       "__DEV__": true
     },
