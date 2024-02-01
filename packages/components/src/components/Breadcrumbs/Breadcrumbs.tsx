@@ -1,6 +1,6 @@
 import {
   Breadcrumbs as RACBreadcrumbs,
-  Breadcrumb,
+  Breadcrumb as RACBreadcrumb,
 } from 'react-aria-components';
 import Link from '../Link/Link';
 import HomeIcon from './HomeIcon';
@@ -43,12 +43,12 @@ export default function Breadcrumbs({
     <nav aria-label="breadcrumbs" role="navigation">
       <RACBreadcrumbs className="q breadcrumbs" items={itemsWithRoot || items}>
         {(item) => (
-          <Breadcrumb id={item['@id']} className="q breadcrumb">
+          <RACBreadcrumb id={item['@id']} className="q breadcrumb">
             <Link href={item['@id']}>
               {item['@id'] === (root || '/') && <HomeIcon size="S" />}
               {item.title}
             </Link>
-          </Breadcrumb>
+          </RACBreadcrumb>
         )}
       </RACBreadcrumbs>
     </nav>

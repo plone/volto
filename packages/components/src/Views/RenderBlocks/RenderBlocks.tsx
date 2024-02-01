@@ -5,7 +5,7 @@ import { map } from 'lodash';
 import { hasBlocksData } from '../../helpers/blocks';
 import DefaultBlockView from './DefaultBlockView';
 import type { Content } from '@plone/types';
-import type { BlocksConfig } from '@plone/types';
+import type { BlocksConfigData } from '@plone/types';
 import type { Location } from 'history';
 
 type RenderBlocksProps = {
@@ -17,7 +17,7 @@ type RenderBlocksProps = {
    * Current blocks configuration object
    * From the registry or local to this instance (eg. in a blocks in block container)
    */
-  blocksConfig: BlocksConfig;
+  blocksConfig: BlocksConfigData;
   /**
    * Wrap the blocks in an enclosing tag
    * From the registry or local to this instance (eg. in a blocks in block container)
@@ -44,6 +44,7 @@ const RenderBlocks = (props: RenderBlocksProps) => {
       {map(content.blocks_layout.items, (block) => {
         const blockData = content.blocks?.[block];
         const blockType = blockData?.['@type'];
+        // @ts-ignore
         const Block = blocksConfig[blockType]?.view || DefaultBlockView;
 
         return Block ? (

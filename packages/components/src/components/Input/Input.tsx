@@ -1,3 +1,4 @@
+import React from 'react';
 import type { TextFieldProps } from 'react-aria-components';
 import {
   FieldError,
