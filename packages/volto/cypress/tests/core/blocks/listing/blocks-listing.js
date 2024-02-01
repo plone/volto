@@ -100,6 +100,12 @@ describe('Listing Block Tests', () => {
     cy.wait('@content');
 
     //test after save
+    // test SSR results first
+    cy.isInHTML({
+      parent: '#page-document .listing-body:first-of-type',
+      content: 'My Page Test',
+    });
+
     cy.get('#page-document .listing-body:first-of-type').contains(
       'My Page Test',
     );
@@ -108,76 +114,6 @@ describe('Listing Block Tests', () => {
       'href',
       '/my-page/my-page-test',
     );
-  });
-
-  it('Listing block SSR renders folderish content', () => {
-    cy.intercept('PATCH', '/**/my-page').as('save');
-    cy.intercept('GET', '/**/my-page').as('content');
-    cy.intercept('GET', '/**/@types/Document').as('schema');
-
-    // Given One Document My Page Test and One News Item MY News and One Folder My Folder
-    cy.createContent({
-      contentType: 'Document',
-      contentId: 'my-page-test',
-      contentTitle: 'My Page Test',
-      path: 'my-page',
-    });
-    cy.createContent({
-      contentType: 'News Item',
-      contentId: 'my-news',
-      contentTitle: 'My News',
-      path: 'my-page',
-    });
-    cy.createContent({
-      contentType: 'Document',
-      contentId: 'my-folder',
-      contentTitle: 'My Folder',
-      path: 'my-page',
-    });
-
-    cy.navigate('/my-page');
-    cy.wait('@content');
-
-    cy.navigate('/my-page/edit');
-    cy.wait('@schema');
-
-    cy.clearSlateTitle().type('My title');
-
-    //add listing block
-    cy.addNewBlock('listing');
-
-    //verify before save
-    cy.get(`.block.listing .listing-body:first-of-type`).contains(
-      'My Page Test',
-    );
-
-    //save
-    cy.get('#toolbar-save').click();
-    cy.wait('@save');
-    cy.wait('@content');
-
-    //test after save
-    cy.get('#page-document .listing-body:first-of-type').contains(
-      'My Page Test',
-    );
-    cy.get('#page-document .listing-item:first-of-type a').should(
-      'have.attr',
-      'href',
-      '/my-page/my-page-test',
-    );
-
-    cy.url().then((currentUrl) => {
-      cy.request({
-        method: 'GET',
-        url: currentUrl,
-      }).then((response) => {
-        const html = Cypress.$(response.body);
-        // Check that the current page HTML contains the listing block results
-        expect(html.find('.listing-item:eq(1) h3').text()).to.contain(
-          'My News',
-        );
-      });
-    });
   });
 
   it('Listing block SSR renders components with query parameters', () => {
@@ -210,23 +146,7 @@ describe('Listing Block Tests', () => {
     //add listing block
     cy.addNewBlock('listing');
 
-    cy.get('.sidebar-container .tabs-wrapper .menu .item')
-      .contains('Block')
-      .click();
-    cy.get('.querystring-widget .fields').contains('Add criteria').click();
-    cy.get(
-      '.querystring-widget .fields:first-of-type .field:first-of-type .react-select__menu .react-select__option',
-    )
-      .contains('Type')
-      .click();
-
-    //insert Page query parameter for listing criteria
-    cy.get('.querystring-widget .fields:first-of-type > .field').click();
-    cy.get(
-      '.querystring-widget .fields:first-of-type > .field .react-select__menu .react-select__option',
-    )
-      .contains('Page')
-      .click();
+    cy.configureListingWith('Page');
 
     //verify before save
     cy.get(`.block.listing .listing-body:first-of-type`).contains(
@@ -239,22 +159,15 @@ describe('Listing Block Tests', () => {
     cy.wait('@content');
 
     //test after save
+    // test SSR results first
+    cy.isInHTML({
+      parent: '#page-document .listing-body:first-of-type',
+      content: 'My Page Test',
+    });
+
     cy.get('#page-document .listing-body:first-of-type').contains(
       'My Page Test',
     );
-
-    cy.url().then((currentUrl) => {
-      cy.request({
-        method: 'GET',
-        url: currentUrl,
-      }).then((response) => {
-        const html = Cypress.$(response.body);
-        // Check that the current page HTML contains the listing block results
-        expect(html.find('.listing-item:eq(0) h3').text()).to.contain(
-          'My Page Test',
-        );
-      });
-    });
   });
 
   it('Add Listing block - containing items', () => {
@@ -305,6 +218,12 @@ describe('Listing Block Tests', () => {
     cy.wait('@content');
 
     //test after save
+    // test SSR results first
+    cy.isInHTML({
+      parent: '#page-document .listing-body:first-of-type',
+      content: 'My Page Test',
+    });
+
     cy.get('#page-document .listing-body:first-of-type').contains(
       'My Page Test',
     );
@@ -346,23 +265,8 @@ describe('Listing Block Tests', () => {
     //add listing block
     cy.addNewBlock('listing');
 
-    cy.get('.sidebar-container .tabs-wrapper .menu .item')
-      .contains('Block')
-      .click();
-    cy.get('.querystring-widget .fields').contains('Add criteria').click();
-    cy.get(
-      '.querystring-widget .fields:first-of-type .field:first-of-type .react-select__menu .react-select__option',
-    )
-      .contains('Type')
-      .click();
-
-    //insert Page
-    cy.get('.querystring-widget .fields:first-of-type > .field').click();
-    cy.get(
-      '.querystring-widget .fields:first-of-type > .field .react-select__menu .react-select__option',
-    )
-      .contains('Page')
-      .click();
+    // set Type criteria filter to Page
+    cy.configureListingWith('Page');
 
     //verify before save
     cy.get(`.block.listing .listing-body:first-of-type`).contains(
@@ -376,6 +280,12 @@ describe('Listing Block Tests', () => {
     cy.wait('@content');
 
     //test after save
+    // test SSR results first
+    cy.isInHTML({
+      parent: '#page-document .listing-body:first-of-type',
+      content: 'My Page Test',
+    });
+
     cy.get('#page-document .listing-body:first-of-type').contains(
       'My Page Test',
     );
@@ -434,6 +344,12 @@ describe('Listing Block Tests', () => {
     cy.wait('@content');
 
     //test after save
+    // test SSR results first
+    cy.isInHTML({
+      parent: '#page-document h2.headline',
+      content: 'This is a headline',
+    });
+
     cy.get('#page-document h2.headline').contains('This is a headline');
   });
 
@@ -507,6 +423,12 @@ describe('Listing Block Tests', () => {
     cy.wait('@content');
 
     //test after save
+    // test SSR results first
+    cy.isInHTML({
+      parent: '#page-document .listing-body:first-of-type',
+      content: 'Page Two',
+    });
+
     cy.get('#page-document .listing-body:first-of-type').contains('Page Two');
     cy.get('#page-document .listing-item:first-of-type a').should(
       'have.attr',
@@ -538,24 +460,8 @@ describe('Listing Block Tests', () => {
     cy.scrollTo('bottom');
     cy.addNewBlock('listing', true);
 
-    //********  add Type criteria filter
-    cy.get('.sidebar-container .tabs-wrapper .menu .item')
-      .contains('Block')
-      .click();
-    cy.get('.querystring-widget .fields').contains('Add criteria').click();
-    cy.get(
-      '.querystring-widget .fields:first-of-type .field:first-of-type .react-select__menu .react-select__option',
-    )
-      .contains('Type')
-      .click();
-
-    //insert Page
-    cy.get('.querystring-widget .fields:first-of-type > .field').click();
-    cy.get(
-      '.querystring-widget .fields:first-of-type > .field .react-select__menu .react-select__option',
-    )
-      .contains('Page')
-      .click();
+    //********  add Page Type criteria filter
+    cy.configureListingWith('Page');
 
     //before save, verify if in list there's a page with id my-page-test
     cy.get(`.block.listing .listing-body:first-of-type`).contains('My Page');
@@ -569,6 +475,12 @@ describe('Listing Block Tests', () => {
 
     cy.wait('@save');
     cy.wait('@content');
+
+    // test SSR results first
+    cy.isInHTML({
+      parent: '#page-document .listing-body:first-of-type',
+      content: 'My Page',
+    });
 
     cy.get('#page-document .listing-body:first-of-type').contains('My Page');
     cy.get('#page-document .listing-item:first-of-type a').should(
@@ -653,6 +565,12 @@ describe('Listing Block Tests', () => {
     cy.wait('@content');
 
     //test short-name criteria after save
+    // test SSR results first
+    cy.isInHTML({
+      parent: '#page-document .listing-body:first-of-type',
+      content: 'My Page Test',
+    });
+
     cy.get('#page-document .listing-body:first-of-type').contains(
       'My Page Test',
     );
@@ -704,30 +622,8 @@ describe('Listing Block Tests', () => {
     //add listing block
     cy.addNewBlock('listing');
 
-    //********  add location criteria filter
-    cy.get('.sidebar-container .tabs-wrapper .menu .item')
-      .contains('Block')
-      .click();
-    cy.get('.querystring-widget .fields').contains('Add criteria').click();
-    cy.get(
-      '.querystring-widget .fields:first-of-type .field:first-of-type .react-select__menu .react-select__option',
-    )
-      .contains('Location')
-      .click();
-    //location relative..
-    cy.get(
-      '.querystring-widget .fields:first-of-type .main-fields-wrapper .field:last-of-type',
-    ).click();
-    cy.get(
-      '.querystring-widget .fields:first-of-type .main-fields-wrapper .field:last-of-type .react-select__menu .react-select__option',
-    )
-      .contains('Relative path')
-      .click();
-
-    //insert relative path
-    cy.get('.querystring-widget .fields:first-of-type > .field input')
-      .clear()
-      .type('../my-folder');
+    //********  add relative location criteria filter
+    cy.addLocationQuerystring('Relative path', '../my-folder');
 
     // verify if in list there's a page with name "Document within Folder"
     cy.get(`.block.listing .listing-body:first-of-type`).contains(
@@ -744,6 +640,12 @@ describe('Listing Block Tests', () => {
     cy.wait('@content');
 
     //test location relative criteria after save
+    // test SSR results first
+    cy.isInHTML({
+      parent: '#page-document .listing-body:first-of-type',
+      content: 'Document within Folder',
+    });
+
     cy.get('#page-document .listing-body:first-of-type').contains(
       'Document within Folder',
     );
@@ -793,30 +695,8 @@ describe('Listing Block Tests', () => {
     //add listing block
     cy.addNewBlock('listing');
 
-    //********  add location criteria filter
-    cy.get('.sidebar-container .tabs-wrapper .menu .item')
-      .contains('Block')
-      .click();
-    cy.get('.querystring-widget .fields').contains('Add criteria').click();
-    cy.get(
-      '.querystring-widget .fields:first-of-type .field:first-of-type .react-select__menu .react-select__option',
-    )
-      .contains('Location')
-      .click();
-    //location absolute..
-    cy.get(
-      '.querystring-widget .fields:first-of-type .main-fields-wrapper .field:last-of-type',
-    ).click();
-    cy.get(
-      '.querystring-widget .fields:first-of-type .main-fields-wrapper .field:last-of-type .react-select__menu .react-select__option',
-    )
-      .contains('Absolute path')
-      .click();
-
-    //insert absolute path
-    cy.get('.querystring-widget .fields:first-of-type > .field input')
-      .clear()
-      .type('/my-page/my-folder');
+    //********  add absolute location criteria filter
+    cy.addLocationQuerystring('Absolute path', '/my-page/my-folder');
 
     // verify if in list there's a page with name "Document within Folder"
     cy.get(`.block.listing .listing-body:first-of-type`).contains(
@@ -833,6 +713,12 @@ describe('Listing Block Tests', () => {
     cy.wait('@content');
 
     //test location absolute criteria after save
+    // test SSR results first
+    cy.isInHTML({
+      parent: '#page-document .listing-body:first-of-type',
+      content: 'Document within Folder',
+    });
+
     cy.get('#page-document .listing-body:first-of-type').contains(
       'Document within Folder',
     );
@@ -885,29 +771,7 @@ describe('Listing Block Tests', () => {
     cy.addNewBlock('listing');
 
     //********  add location criteria filter
-    cy.get('.sidebar-container .tabs-wrapper .menu .item')
-      .contains('Block')
-      .click();
-    cy.get('.querystring-widget .fields').contains('Add criteria').click();
-    cy.get(
-      '.querystring-widget .fields:first-of-type .field:first-of-type .react-select__menu .react-select__option',
-    )
-      .contains('Location')
-      .click();
-    //location relative..
-    cy.get(
-      '.querystring-widget .fields:first-of-type .main-fields-wrapper .field:last-of-type',
-    ).click();
-    cy.get(
-      '.querystring-widget .fields:first-of-type .main-fields-wrapper .field:last-of-type .react-select__menu .react-select__option',
-    )
-      .contains('Relative path')
-      .click();
-
-    //insert relative path
-    cy.get('.querystring-widget .fields:first-of-type > .field input')
-      .clear()
-      .type('.');
+    cy.addLocationQuerystring('Relative path', '.');
 
     // verify if in list there's a page with name "Document within Folder"
     cy.get(`.block.listing .listing-body:first-of-type`).contains(
@@ -924,6 +788,11 @@ describe('Listing Block Tests', () => {
     cy.wait('@content');
 
     //test location relative criteria after save
+    // test SSR results first
+    cy.isInHTML({
+      parent: '#page-document .listing-body:first-of-type',
+      content: 'News Item One',
+    });
     cy.get(`.block.listing .listing-body:first-of-type`).contains(
       'News Item One',
     );
@@ -970,23 +839,7 @@ describe('Listing Block Tests', () => {
     //verify before save
     cy.get(`.block.listing .listing-body:first-of-type`).contains('My Folder');
 
-    cy.get('.sidebar-container .tabs-wrapper .menu .item')
-      .contains('Block')
-      .click();
-    cy.get('.querystring-widget .fields').contains('Add criteria').click();
-    cy.get(
-      '.querystring-widget .fields:first-of-type .field:first-of-type .react-select__menu .react-select__option',
-    )
-      .contains('Type')
-      .click();
-
-    //insert Page
-    cy.get('.querystring-widget .fields:first-of-type > .field').click();
-    cy.get(
-      '.querystring-widget .fields:first-of-type > .field .react-select__menu .react-select__option',
-    )
-      .contains('Page')
-      .click();
+    cy.configureListingWith('Page');
 
     cy.get('#field-limit-3-querystring').click().type('2');
 
@@ -996,6 +849,12 @@ describe('Listing Block Tests', () => {
     cy.wait('@content');
 
     //test after save
+    // test SSR results first
+    cy.isInHTML({
+      parent: '#page-document .listing-item:first-of-type a',
+      content: 'My Folder',
+    });
+
     cy.get('#page-document .listing-item:first-of-type a').should(
       'have.attr',
       'href',
@@ -1058,23 +917,7 @@ describe('Listing Block Tests', () => {
     //verify before save
     cy.get(`.block.listing .listing-body:first-of-type`).contains('My Folder');
 
-    cy.get('.sidebar-container .tabs-wrapper .menu .item')
-      .contains('Block')
-      .click();
-    cy.get('.querystring-widget .fields').contains('Add criteria').click();
-    cy.get(
-      '.querystring-widget .fields:first-of-type .field:first-of-type .react-select__menu .react-select__option',
-    )
-      .contains('Type')
-      .click();
-
-    //insert Page
-    cy.get('.querystring-widget .fields:first-of-type > .field').click();
-    cy.get(
-      '.querystring-widget .fields:first-of-type > .field .react-select__menu .react-select__option',
-    )
-      .contains('Page')
-      .click();
+    cy.configureListingWith('Page');
 
     cy.get('#field-limit-3-querystring').click().type('2');
 
@@ -1084,6 +927,9 @@ describe('Listing Block Tests', () => {
     cy.wait('@save');
     cy.wait('@content');
     //test second pagination click
+    // test SSR results first
+    cy.isInHTML({ parent: '.ui.pagination.menu', content: '.item' });
+
     cy.get('.ui.pagination.menu a[value="1"][type="pageItem"]')
       .first()
       .click({ force: true });
@@ -1363,6 +1209,12 @@ describe('Listing Block Tests', () => {
       path: 'my-page',
     });
     cy.navigate('/my-page');
+
+    // test SSR results first
+    cy.isInHTML({
+      parent: '#page-document .listing-body:first-of-type',
+      content: 'My News Item',
+    });
 
     cy.get('#page-document .listing-body:first-of-type').contains(
       'My News Item',
