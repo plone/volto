@@ -34,6 +34,8 @@ import {
   getLanguageIndependentFields,
   langmap,
   toGettextLang,
+  getSimpleDefaultBlocks,
+  getDefaultBlocks,
 } from '@plone/volto/helpers';
 
 import { preloadLazyLibs } from '@plone/volto/helpers/Loadable';
@@ -123,18 +125,6 @@ class Add extends Component {
     this.onCancel = this.onCancel.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
-    if (config.blocks?.initialBlocks[props.type]) {
-      this.initialBlocksLayout = config.blocks.initialBlocks[props.type].map(
-        (item) => uuid(),
-      );
-      this.initialBlocks = this.initialBlocksLayout.reduce(
-        (acc, value, index) => ({
-          ...acc,
-          [value]: { '@type': config.blocks.initialBlocks[props.type][index] },
-        }),
-        {},
-      );
-    }
     this.state = {
       isClient: false,
       error: null,
@@ -249,13 +239,28 @@ class Add extends Component {
         ? langmap?.[this.props.location?.state?.language]?.nativeName
         : null;
 
-      // Lookup initialBlocks and initialBlocksLayout within schema
+      // Get initial blocks from local config, if any
+      let initialBlocks, initialBlocksLayout;
+      const initialContentTypeBlocks =
+        config.blocks?.initialBlocks[this.props.type];
+      if (initialContentTypeBlocks) {
+        if (typeof initialContentTypeBlocks?.[0] === 'string') {
+          // Simple (legacy) default blocks definition
+          [initialBlocks, initialBlocksLayout] = getSimpleDefaultBlocks(
+            initialContentTypeBlocks,
+          );
+        } else {
+          [initialBlocks, initialBlocksLayout] = getDefaultBlocks(
+            initialContentTypeBlocks,
+          );
+        }
+      }
+
+      // Lookup initialBlocks and initialBlocksLayout within schema, if any
       const schemaBlocks =
         this.props.schema.properties[blocksFieldname]?.default;
       const schemaBlocksLayout =
         this.props.schema.properties[blocksLayoutFieldname]?.default?.items;
-      let initialBlocks = this.initialBlocks;
-      let initialBlocksLayout = this.initialBlocksLayout;
 
       if (!isEmpty(schemaBlocksLayout) && !isEmpty(schemaBlocks)) {
         initialBlocks = {};
@@ -272,6 +277,7 @@ class Add extends Component {
           }
         });
       }
+
       //copy blocks from translationObject
       if (translationObject && blocksFieldname && blocksLayoutFieldname) {
         initialBlocks = {};
