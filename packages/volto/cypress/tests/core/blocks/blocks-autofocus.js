@@ -15,6 +15,8 @@ describe('New Block Auto Focus Tests', () => {
     cy.visit('/my-page');
     cy.wait('@content');
 
+    cy.wait(500);
+
     cy.navigate('/my-page/edit');
     cy.wait('@schema');
   });
@@ -23,6 +25,7 @@ describe('New Block Auto Focus Tests', () => {
     cy.addNewBlock('description');
     cy.get('.documentDescription').first().click().type('{enter}');
     cy.get('.block-editor-description + .block-editor-slate');
+    cy.wait(500);
     cy.get('*[class^="block-editor"]')
       .eq(2)
       .within(() => {
@@ -36,6 +39,7 @@ describe('New Block Auto Focus Tests', () => {
     cy.get('.blocks-chooser .title').contains('Text').click({ force: true });
     cy.get('.blocks-chooser .text').contains('Text').click({ force: true });
     cy.get('.text-slate-editor-inner').first().click().type('{enter}');
+    cy.wait(500);
     cy.get('.block-editor-slate + .block-editor-slate');
     cy.get('*[class^="block-editor"]')
       .eq(2)
@@ -54,6 +58,7 @@ describe('New Block Auto Focus Tests', () => {
         expect($img[0].naturalWidth).to.be.greaterThan(0);
       });
     cy.get('.block-editor-image').wait(500).click('topLeft').type('{enter}');
+    cy.wait(500);
     cy.get('*[class^="block-editor"]')
       .eq(2)
       .within(() => {
@@ -70,6 +75,8 @@ describe('New Block Auto Focus Tests', () => {
         expect($img[0].naturalWidth).to.be.greaterThan(0);
       });
     cy.get('.block-editor-video').first().click().type('{enter}');
+    cy.get('.block-editor-slate + .block-editor-slate');
+    cy.wait(500);
     cy.get('*[class^="block-editor"]')
       .eq(2)
       .within(() => {
@@ -80,6 +87,7 @@ describe('New Block Auto Focus Tests', () => {
   it('Press Enter on a listing block adds new autofocused default block', () => {
     cy.addNewBlock('listing');
     cy.get('.block-editor-listing').first().click().type('{enter}');
+    cy.wait(500);
     cy.get('*[class^="block-editor"]')
       .eq(2)
       .within(() => {
@@ -90,6 +98,7 @@ describe('New Block Auto Focus Tests', () => {
   it('Press Enter on a table of contents block adds new autofocused default block', () => {
     cy.addNewBlock('contents');
     cy.get('.block-editor-toc').first().click().type('{enter}');
+    cy.wait(500);
     cy.get('*[class^="block-editor"]')
       .eq(2)
       .within(() => {
@@ -106,6 +115,7 @@ describe('New Block Auto Focus Tests', () => {
         expect($img[0].naturalWidth).to.be.greaterThan(0);
       });
     cy.get('.block-editor-maps').first().click().type('{enter}');
+    cy.wait(500);
     cy.get('*[class^="block-editor"]')
       .eq(2)
       .within(() => {
@@ -116,6 +126,7 @@ describe('New Block Auto Focus Tests', () => {
   it('Press Enter on a html block adds new autofocused default block', () => {
     cy.addNewBlock('html');
     cy.get('.block-editor-html').first().click().type('{enter}');
+    cy.wait(500);
     cy.get('*[class^="block-editor"]')
       .eq(2)
       .within(() => {
@@ -126,6 +137,7 @@ describe('New Block Auto Focus Tests', () => {
   it('Press Enter on a search block adds new autofocused default block', () => {
     cy.addNewBlock('search');
     cy.get('.block-editor-search').first().click().type('{enter}');
+    cy.wait(500);
     cy.get('*[class^="block-editor"]')
       .eq(2)
       .within(() => {
