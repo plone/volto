@@ -463,11 +463,6 @@ msgstr "Erabilgarri dauden eduki-erregelak:"
 msgid "Back"
 msgstr "Atzera"
 
-#. Default: "Back to homepage"
-#: components/theme/Logo/Logo
-msgid "Back to homepage"
-msgstr "Itzuli hasierako orrialdera"
-
 #. Default: "Base"
 #: components/manage/Diff/Diff
 msgid "Base"
