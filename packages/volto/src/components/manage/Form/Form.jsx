@@ -626,10 +626,10 @@ class Form extends Component {
             }}
             enableHotKeys
             onUndoRedo={({ state }) => {
-              this.setState(state);
               if (this.props.global) {
                 this.props.setFormData(state.formData);
               }
+              return this.setState(state);
             }}
           />
           <BlocksForm
