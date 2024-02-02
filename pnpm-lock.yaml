@@ -1053,9 +1053,6 @@ importers:
       glob:
         specifier: 7.1.6
         version: 7.1.6
-      lodash:
-        specifier: 4.17.21
-        version: 4.17.21
       react:
         specifier: ^16.8.0 || ^17.0.0 || ^18.0.0
         version: 17.0.2
