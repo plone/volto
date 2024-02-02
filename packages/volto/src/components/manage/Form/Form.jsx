@@ -625,7 +625,12 @@ class Form extends Component {
               multiSelected: this.state.multiSelected,
             }}
             enableHotKeys
-            onUndoRedo={({ state }) => this.setState(state)}
+            onUndoRedo={({ state }) => {
+              this.setState(state);
+              if (this.props.global) {
+                this.props.setFormData(state.formData);
+              }
+            }}
           />
           <BlocksForm
             onChangeFormData={(newData) => {
