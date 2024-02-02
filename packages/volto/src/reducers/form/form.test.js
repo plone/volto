@@ -6,7 +6,7 @@ describe('Form reducer', () => {
     expect(form()).toEqual({ global: {} });
   });
 
-  it('should handle SET_SIDEBAR_TAB', () => {
+  it('should handle SET_FORM_DATA', () => {
     expect(
       form(undefined, {
         type: SET_FORM_DATA,
