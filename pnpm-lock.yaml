@@ -1053,9 +1053,6 @@ importers:
       glob:
         specifier: 7.1.6
         version: 7.1.6
-      lodash:
-        specifier: 4.17.21
-        version: 4.17.21
     devDependencies:
       '@parcel/packager-ts':
         specifier: 2.10.2
@@ -1706,6 +1703,9 @@ importers:
       '@jest/globals':
         specifier: ^29.7.0
         version: 29.7.0
+      '@plone/types':
+        specifier: workspace:*
+        version: link:../types
       '@plone/volto-coresandbox':
         specifier: workspace:*
         version: link:../coresandbox
@@ -1763,6 +1763,9 @@ importers:
       '@types/react-test-renderer':
         specifier: 18.0.7
         version: 18.0.7
+      '@types/uuid':
+        specifier: ^9.0.2
+        version: 9.0.7
       '@typescript-eslint/eslint-plugin':
         specifier: 6.7.0
         version: 6.7.0(@typescript-eslint/parser@6.7.0)(eslint@8.49.0)(typescript@5.2.2)

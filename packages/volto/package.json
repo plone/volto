@@ -351,6 +351,7 @@
   },
   "devDependencies": {
     "@jest/globals": "^29.7.0",
+    "@plone/types": "workspace:*",
     "@plone/volto-coresandbox": "workspace:*",
     "@sinonjs/fake-timers": "^6.0.1",
     "@storybook/addon-actions": "^6.5.15",
@@ -370,6 +371,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@types/react-test-renderer": "18.0.7",
+    "@types/uuid": "^9.0.2",
     "@typescript-eslint/eslint-plugin": "6.7.0",
     "@typescript-eslint/parser": "6.7.0",
     "babel-loader": "9.1.0",
