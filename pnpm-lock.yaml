@@ -1053,9 +1053,6 @@ importers:
       glob:
         specifier: 7.1.6
         version: 7.1.6
-      lodash:
-        specifier: 4.17.21
-        version: 4.17.21
       react:
         specifier: ^16.8.0 || ^17.0.0 || ^18.0.0
         version: 17.0.2
@@ -1072,9 +1069,6 @@ importers:
       '@plone/types':
         specifier: workspace:*
         version: link:../types
-      '@types/lodash':
-        specifier: ^4.14.201
-        version: 4.14.201
       '@types/react':
         specifier: ^17.0.52
         version: 17.0.70
@@ -1707,15 +1701,24 @@ importers:
       '@jest/globals':
         specifier: ^29.7.0
         version: 29.7.0
+      '@plone/types':
+        specifier: workspace:*
+        version: link:../types
       '@plone/volto-coresandbox':
         specifier: workspace:*
         version: link:../coresandbox
+      '@sinonjs/fake-timers':
+        specifier: ^6.0.1
+        version: 6.0.1
       '@storybook/addon-actions':
         specifier: ^6.5.15
         version: 6.5.16(react-dom@17.0.2)(react@17.0.2)
       '@storybook/addon-controls':
         specifier: 6.5.15
         version: 6.5.15(eslint@8.49.0)(react-dom@17.0.2)(react@17.0.2)(typescript@5.2.2)
+      '@storybook/addon-docs':
+        specifier: ^6.5.15
+        version: 6.5.16(@babel/core@7.23.3)(eslint@8.49.0)(react-dom@17.0.2)(react@17.0.2)(typescript@5.2.2)(webpack@5.76.1)
       '@storybook/addon-essentials':
         specifier: ^6.5.15
         version: 6.5.16(@babel/core@7.23.3)(@storybook/builder-webpack5@6.5.16)(eslint@8.49.0)(react-dom@17.0.2)(react@17.0.2)(typescript@5.2.2)(webpack@5.76.1)
@@ -1758,6 +1761,9 @@ importers:
       '@types/react-test-renderer':
         specifier: 18.0.1
         version: 18.0.1
+      '@types/uuid':
+        specifier: ^9.0.2
+        version: 9.0.7
       '@typescript-eslint/eslint-plugin':
         specifier: 6.7.0
         version: 6.7.0(@typescript-eslint/parser@6.7.0)(eslint@8.49.0)(typescript@5.2.2)
