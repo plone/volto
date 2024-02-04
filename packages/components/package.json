@@ -16,21 +16,20 @@
   "bugs": {
     "url": "https://github.com/plone/components/issues"
   },
-  "type": "module",
   "files": [
     "dist",
     "src",
     "README.md"
   ],
   "source": "./src/index.ts",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
+  "main": "./dist/main.js",
+  "module": "./dist/module.mjs",
   "types": "./dist/src/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/src/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "import": "./dist/module.mjs",
+      "require": "./dist/main.js"
     },
     "./src/*": "./src/*"
   },
@@ -46,7 +45,7 @@
     "react-query"
   ],
   "scripts": {
-    "build": "parcel build",
+    "build": "parcel build --no-cache --no-optimize",
     "check-ts": "tsc --project tsconfig.json",
     "test": "vitest --no-threads --passWithNoTests",
     "coverage": "vitest run --coverage --no-threads",
@@ -68,9 +67,18 @@
   "publishConfig": {
     "access": "public"
   },
+  "browserslist": [
+    ">0.5%",
+    "last 2 versions",
+    "not dead"
+  ],
   "devDependencies": {
-    "@parcel/packager-ts": "2.10.3",
-    "@parcel/transformer-typescript-types": "2.10.3",
+    "@parcel/config-default": "2.11.0",
+    "@parcel/core": "^2.11.0",
+    "@parcel/packager-ts": "^2.11.0",
+    "@parcel/transformer-js": "^2.11.0",
+    "@parcel/transformer-react-refresh-wrap": "^2.11.0",
+    "@parcel/transformer-typescript-types": "^2.11.0",
     "@plone/types": "workspace: *",
     "@react-types/shared": "^3.22.0",
     "@storybook/addon-essentials": "^7.5.1",
@@ -97,7 +105,8 @@
     "history": "^5.3.0",
     "jest-axe": "^8.0.0",
     "jsdom": "^22.1.0",
-    "parcel": "^2.10.3",
+    "parcel": "^2.11.0",
+    "parcel-optimizer-react-client": "workspace:^",
     "postcss-scss": "4.0.9",
     "prettier": "3.0.3",
     "release-it": "16.2.1",
@@ -119,9 +128,7 @@
     "classnames": "^2.3.2",
     "clsx": "^2.0.0",
     "lodash": "^4.17.21",
-    "react": "18.2.0",
-    "react-aria-components": "^1.0.1",
-    "react-dom": "18.2.0"
+    "react-aria-components": "^1.0.1"
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
