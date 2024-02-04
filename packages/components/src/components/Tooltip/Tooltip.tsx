@@ -5,8 +5,6 @@ import {
   TooltipProps as AriaTooltipProps,
 } from 'react-aria-components';
 
-import './Tooltip.css';
-
 export interface TooltipProps extends Omit<AriaTooltipProps, 'children'> {
   children: React.ReactNode;
 }

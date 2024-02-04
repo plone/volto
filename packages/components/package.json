@@ -45,7 +45,8 @@
     "react-query"
   ],
   "scripts": {
-    "build": "parcel build --no-cache --no-optimize",
+    "build": "parcel build --no-cache --no-optimize && pnpm build-css",
+    "build-css": "lightningcss --browserslist --bundle --sourcemap src/styles/basiq/main.css -o dist/basiq.css",
     "check-ts": "tsc --project tsconfig.json",
     "test": "vitest --no-threads --passWithNoTests",
     "coverage": "vitest run --coverage --no-threads",
@@ -105,6 +106,8 @@
     "history": "^5.3.0",
     "jest-axe": "^8.0.0",
     "jsdom": "^22.1.0",
+    "lightningcss": "^1.23.0",
+    "lightningcss-cli": "^1.23.0",
     "parcel": "^2.11.0",
     "parcel-optimizer-react-client": "workspace:^",
     "postcss-scss": "4.0.9",

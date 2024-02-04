@@ -10,16 +10,18 @@ import {
 } from 'react-aria-components';
 import { Menu, MenuItem } from '../Menu/Menu';
 
-import BoldIcon from '../Icons/BoldIcon';
-import ItalicIcon from '../Icons/ItalicIcon';
-import LinkIcon from '../Icons/LinkIcon';
+import { BoldIcon } from '../Icons/BoldIcon';
+import { ItalicIcon } from '../Icons/ItalicIcon';
+import { LinkIcon } from '../Icons/LinkIcon';
 
 import type { Meta } from '@storybook/react';
-import SettingsIcon from '../Icons/SettingsIcon';
-import RowBeforeIcon from '../Icons/RowbeforeIcon';
-import RowAfterIcon from '../Icons/RowafterIcon';
-import MoreoptionsIcon from '../Icons/MoreoptionsIcon';
-import BinIcon from '../Icons/BinIcon';
+import { SettingsIcon } from '../Icons/SettingsIcon';
+import { RowbeforeIcon } from '../Icons/RowbeforeIcon';
+import { RowafterIcon } from '../Icons/RowafterIcon';
+import { MoreoptionsIcon } from '../Icons/MoreoptionsIcon';
+import { BinIcon } from '../Icons/BinIcon';
+
+import '../../styles/basiq/BlockToolbar.css';
 
 const meta: Meta<typeof BlockToolbar> = {
   component: BlockToolbar,
@@ -51,11 +53,11 @@ export const Example = (args: any) => (
         <Text slot="label">Settings</Text>
       </MenuItem>
       <MenuItem>
-        <RowBeforeIcon />
+        <RowbeforeIcon />
         <Text slot="label">Insert block before</Text>
       </MenuItem>
       <MenuItem>
-        <RowAfterIcon />
+        <RowafterIcon />
         <Text slot="label">Insert block after</Text>
       </MenuItem>
       <Separator />

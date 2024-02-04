@@ -4,8 +4,6 @@ import {
   SwitchProps as AriaSwitchProps,
 } from 'react-aria-components';
 
-import './Switch.css';
-
 export interface SwitchProps extends Omit<AriaSwitchProps, 'children'> {
   children: React.ReactNode;
 }

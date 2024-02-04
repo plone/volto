@@ -8,7 +8,6 @@ import {
 } from 'react-aria-components';
 
 import Checkbox from '../Checkbox/Checkbox';
-import './GridList.css';
 
 export function GridList<T extends object>({
   children,

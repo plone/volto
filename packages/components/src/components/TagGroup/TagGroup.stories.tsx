@@ -3,6 +3,8 @@ import { Tag, TagGroup } from './TagGroup';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
+import '../../styles/basiq/TagGroup.css';
+
 const meta = {
   component: TagGroup,
   parameters: {

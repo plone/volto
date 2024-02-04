@@ -3,6 +3,8 @@ import { ListBox, ListBoxItem } from './ListBox';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
+import '../../styles/basiq/ListBox.css';
+
 const meta = {
   component: ListBox,
   parameters: {

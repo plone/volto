@@ -10,7 +10,6 @@ import {
   PressEvent,
 } from 'react-aria-components';
 
-import './Menu.css';
 import { Button } from '../Button/Button';
 
 export interface MenuButtonProps<T>

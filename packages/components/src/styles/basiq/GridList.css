@@ -1,23 +1,23 @@
-@import '../Button/Button.css';
-@import '../Checkbox/Checkbox.css';
-@import '../ToggleButton/ToggleButton.css';
+@import './Button.css';
+@import './Checkbox.css';
+@import './ToggleButton.css';
 
 .react-aria-GridList {
   display: flex;
-  flex-direction: column;
-  gap: 2px;
-  max-height: inherit;
   overflow: auto;
+  width: 250px;
+  min-height: 100px;
+  max-height: inherit;
+  max-height: 300px;
+  box-sizing: border-box;
+  flex-direction: column;
   padding: 4px;
   border: 1px solid var(--border-color);
   border-radius: 6px;
   background: var(--overlay-background);
   forced-color-adjust: none;
+  gap: 2px;
   outline: none;
-  width: 250px;
-  max-height: 300px;
-  min-height: 100px;
-  box-sizing: border-box;
 
   &[data-focus-visible] {
     outline: 2px solid var(--focus-ring-color);
@@ -25,17 +25,17 @@
   }
 
   .react-aria-GridListItem {
+    position: relative;
     display: flex;
-    align-items: center;
-    gap: 0.571rem;
     min-height: 28px;
+    align-items: center;
     padding: 0.286rem 0.286rem 0.286rem 0.571rem;
     border-radius: 6px;
-    outline: none;
-    cursor: default;
     color: var(--text-color);
+    cursor: default;
     font-size: 1.072rem;
-    position: relative;
+    gap: 0.571rem;
+    outline: none;
     transform: translateZ(0);
 
     &[data-focus-visible] {
@@ -73,11 +73,11 @@
     }
 
     .react-aria-Button {
-      background: transparent;
+      padding: 0.286rem 0.429rem;
       border: none;
+      background: transparent;
       font-size: 1.2rem;
       line-height: 1.2em;
-      padding: 0.286rem 0.429rem;
       transition: background 200ms;
 
       &[data-hovered] {
@@ -99,16 +99,16 @@
     .react-aria-GridListItem[data-selected]:has(
         + .react-aria-DropIndicator + [data-selected]
       ) {
-      border-end-start-radius: 0;
       border-end-end-radius: 0;
+      border-end-start-radius: 0;
     }
 
     .react-aria-GridListItem[data-selected] + [data-selected],
     .react-aria-GridListItem[data-selected]
       + .react-aria-DropIndicator
       + [data-selected] {
-      border-start-start-radius: 0;
       border-start-end-radius: 0;
+      border-start-start-radius: 0;
     }
   }
 
@@ -165,14 +165,14 @@
 }
 
 .react-aria-GridList[data-drop-target] {
+  background: var(--highlight-overlay);
   outline: 2px solid var(--highlight-background);
   outline-offset: -1px;
-  background: var(--highlight-overlay);
 }
 
 .react-aria-GridListItem[data-drop-target] {
-  outline: 2px solid var(--highlight-background);
   background: var(--highlight-overlay);
+  outline: 2px solid var(--highlight-background);
 }
 
 .react-aria-DropIndicator {

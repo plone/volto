@@ -1,6 +1,6 @@
-@import '../Checkbox/Checkbox.css';
-@import '../Button/Button.css';
-@import '../ToggleButton/ToggleButton.css';
+@import './Checkbox.css';
+@import './Button.css';
+@import './ToggleButton.css';
 
 .blocks-toolbar {
   display: flex;

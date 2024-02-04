@@ -1,4 +1,4 @@
-@import '../Button/Button.css';
+@import './Button.css';
 
 .react-aria-Tooltip {
   max-width: 150px;

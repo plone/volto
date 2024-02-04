@@ -3,6 +3,8 @@ import { Switch } from './Switch';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
+import '../../styles/basiq/Switch.css';
+
 const meta: Meta<typeof Switch> = {
   title: 'Widgets/Switch',
   component: Switch,

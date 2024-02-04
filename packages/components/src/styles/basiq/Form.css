@@ -1,5 +1,5 @@
-@import '../TextField/TextField.css';
-@import '../Button/Button.css';
+@import './TextField.css';
+@import './Button.css';
 
 .react-aria-Form {
   display: flex;

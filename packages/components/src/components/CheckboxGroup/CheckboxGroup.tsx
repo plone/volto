@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   CheckboxGroup as AriaCheckboxGroup,
   CheckboxGroupProps as AriaCheckboxGroupProps,
@@ -6,8 +7,6 @@ import {
   Text,
   ValidationResult,
 } from 'react-aria-components';
-
-import './CheckboxGroup.css';
 
 export interface CheckboxGroupProps
   extends Omit<AriaCheckboxGroupProps, 'children'> {

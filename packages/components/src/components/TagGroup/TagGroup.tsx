@@ -11,8 +11,6 @@ import {
   Text,
 } from 'react-aria-components';
 
-import './TagGroup.css';
-
 export interface TagGroupProps<T>
   extends Omit<AriaTagGroupProps, 'children'>,
     Pick<TagListProps<T>, 'items' | 'children' | 'renderEmptyState'> {

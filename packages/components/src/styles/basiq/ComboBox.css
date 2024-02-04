@@ -1,8 +1,8 @@
-@import '../Checkbox/Checkbox.css';
-@import '../ListBox/ListBox.css';
-@import '../Popover/Popover.css';
-@import '../Form/Form.css';
-@import '../Button/Button.css';
+@import './Checkbox.css';
+@import './ListBox.css';
+@import './Popover.css';
+@import './Form.css';
+@import './Button.css';
 
 .react-aria-ComboBox {
   color: var(--text-color);

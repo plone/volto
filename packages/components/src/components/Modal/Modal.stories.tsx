@@ -13,6 +13,8 @@ import {
 
 import type { Meta, StoryObj } from '@storybook/react';
 
+import '../../styles/basiq/Modal.css';
+
 const meta = {
   component: Modal,
   parameters: {

@@ -10,6 +10,8 @@ import {
 
 import type { Meta, StoryObj } from '@storybook/react';
 
+import '../../styles/basiq/Form.css';
+
 const meta = {
   title: 'Widgets/Form',
   component: Form,

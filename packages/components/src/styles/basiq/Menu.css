@@ -1,5 +1,5 @@
-@import '../Button/Button.css';
-@import '../Popover/Popover.css';
+@import './Button.css';
+@import './Popover.css';
 
 .react-aria-Menu {
   overflow: auto;

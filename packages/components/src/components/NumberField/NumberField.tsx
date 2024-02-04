@@ -11,8 +11,6 @@ import {
   ValidationResult,
 } from 'react-aria-components';
 
-import './NumberField.css';
-
 export interface NumberFieldProps extends AriaNumberFieldProps {
   label?: string;
   description?: string;

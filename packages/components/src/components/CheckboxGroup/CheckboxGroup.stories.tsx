@@ -4,6 +4,8 @@ import { CheckboxGroup } from './CheckboxGroup';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
+import '../../styles/basiq/CheckboxGroup.css';
+
 const meta = {
   title: 'Widgets/CheckboxGroup',
   component: CheckboxGroup,

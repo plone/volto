@@ -12,6 +12,8 @@ import {
 
 import type { Meta, StoryObj } from '@storybook/react';
 
+import '../../styles/basiq/Dialog.css';
+
 const meta = {
   component: Dialog,
   parameters: {

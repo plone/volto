@@ -1,6 +1,6 @@
-@import '../Button/Button.css';
-@import '../Dialog/Dialog.css';
-@import '../Switch/Switch.css';
+@import './Button.css';
+@import './Dialog.css';
+@import './Switch.css';
 
 .react-aria-Popover {
   --background-color: var(--overlay-background);

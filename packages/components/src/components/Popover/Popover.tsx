@@ -6,8 +6,6 @@ import {
   PopoverProps as AriaPopoverProps,
 } from 'react-aria-components';
 
-import './Popover.css';
-
 export interface PopoverProps extends Omit<AriaPopoverProps, 'children'> {
   children: React.ReactNode;
 }

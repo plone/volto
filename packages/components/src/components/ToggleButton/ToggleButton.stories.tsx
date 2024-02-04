@@ -1,8 +1,10 @@
 import React from 'react';
 import { ToggleButton } from './ToggleButton';
-import BoldIcon from '../Icons/BoldIcon';
+import { BoldIcon } from '../Icons/BoldIcon';
 
 import type { Meta, StoryObj } from '@storybook/react';
+
+import '../../styles/basiq/ToggleButton.css';
 
 const meta = {
   component: ToggleButton,

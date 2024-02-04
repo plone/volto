@@ -1,4 +1,4 @@
-@import '../ToggleButton/ToggleButton.css';
+@import './ToggleButton.css';
 
 .react-aria-TagGroup {
   display: flex;

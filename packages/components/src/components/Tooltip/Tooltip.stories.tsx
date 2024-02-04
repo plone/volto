@@ -4,6 +4,8 @@ import { Button, TooltipTrigger } from 'react-aria-components';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
+import '../../styles/basiq/Tooltip.css';
+
 const meta = {
   component: Tooltip,
   parameters: {

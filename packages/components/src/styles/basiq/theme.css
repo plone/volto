@@ -1,9 +1,9 @@
 /* Base styles */
 :root {
+  background: var(--background-color);
   font-family: system-ui;
   font-size: 14px;
   line-height: 1.5;
-  background: var(--background-color);
 }
 
 /* color themes for dark and light modes, generated with Leonardo.

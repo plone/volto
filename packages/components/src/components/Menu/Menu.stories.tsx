@@ -8,9 +8,11 @@ import {
   Separator,
   Text,
 } from 'react-aria-components';
-import SettingsIcon from '../Icons/SettingsIcon';
+import { SettingsIcon } from '../Icons/SettingsIcon';
 import type {} from 'react-aria-components';
 import type { Meta, StoryObj } from '@storybook/react';
+
+import '../../styles/basiq/Menu.css';
 
 const meta = {
   component: Menu,

@@ -9,11 +9,13 @@ import {
 } from 'react-aria-components';
 import { Menu, MenuItem } from '../Menu/Menu';
 
-import BoldIcon from '../Icons/BoldIcon';
-import ItalicIcon from '../Icons/ItalicIcon';
-import LinkIcon from '../Icons/LinkIcon';
+import { BoldIcon } from '../Icons/BoldIcon';
+import { ItalicIcon } from '../Icons/ItalicIcon';
+import { LinkIcon } from '../Icons/LinkIcon';
 
 import type { Meta } from '@storybook/react';
+
+import '../../styles/basiq/Toolbar.css';
 
 const meta: Meta<typeof Toolbar> = {
   component: Toolbar,

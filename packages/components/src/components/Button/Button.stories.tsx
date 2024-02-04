@@ -2,9 +2,11 @@ import React from 'react';
 import { Button } from './Button';
 import { Link } from '../Link/Link';
 import { Text } from 'react-aria-components';
-import AddIcon from '../Icons/AddIcon';
+import { AddIcon } from '../Icons/AddIcon';
 
 import type { Meta, StoryObj } from '@storybook/react';
+
+import '../../styles/basiq/Button.css';
 
 const meta = {
   title: 'Components/Button',
