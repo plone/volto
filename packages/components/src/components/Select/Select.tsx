@@ -11,8 +11,8 @@ import {
   Text,
 } from 'react-aria-components';
 import cx from 'classnames';
-import ChevrondownIcon from '../Icons/ChevrondownIcon';
-import ChevronupIcon from '../Icons/ChevronupIcon';
+import { ChevrondownIcon } from '../Icons/ChevrondownIcon';
+import { ChevronupIcon } from '../Icons/ChevronupIcon';
 
 interface SelectProps<T extends object>
   extends Omit<RACSelectProps<T>, 'children'> {

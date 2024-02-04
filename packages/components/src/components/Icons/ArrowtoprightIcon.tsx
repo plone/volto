@@ -1,7 +1,8 @@
-import Icon from '../Icon/Icon';
+import React from 'react';
+import { Icon } from '../Icon/Icon';
 import type { IconPropsWithoutChildren } from '../Icon/Icon';
 
-const Arrowtopright = (props: IconPropsWithoutChildren) => {
+export const ArrowtoprightIcon = (props: IconPropsWithoutChildren) => {
   return (
     <Icon {...props}>
       <svg
@@ -15,5 +16,3 @@ const Arrowtopright = (props: IconPropsWithoutChildren) => {
     </Icon>
   );
 };
-
-export default Arrowtopright;
