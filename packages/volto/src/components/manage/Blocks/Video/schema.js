@@ -47,3 +47,4 @@ export const VideoBlockSchema = (props) => ({
 });
 
 export default VideoBlockSchema;
+
