@@ -24,8 +24,8 @@
     "prereleaser": "node packages/scripts/preleaser.js"
   },
   "devDependencies": {
-    "@parcel/packager-ts": "2.10.3",
-    "@parcel/transformer-typescript-types": "2.10.3",
+    "@parcel/packager-ts": "2.11.0",
+    "@parcel/transformer-typescript-types": "2.11.0",
     "@typescript-eslint/eslint-plugin": "^6.8.0",
     "@typescript-eslint/parser": "^6.8.0",
     "eslint": "^8.53.0",
@@ -44,5 +44,10 @@
     "vitest": "^0.34.6",
     "yarnhook": "0.6.1"
   },
-  "packageManager": "pnpm@8.9.0"
+  "packageManager": "pnpm@8.9.0",
+  "pnpm": {
+    "overrides": {
+      "webpack": "5.90.1"
+    }
+  }
 }
