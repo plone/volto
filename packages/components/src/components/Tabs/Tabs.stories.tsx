@@ -1,3 +1,4 @@
+import React from 'react';
 import { Tabs } from './Tabs';
 import { Tab, TabList, TabPanel } from 'react-aria-components';
 

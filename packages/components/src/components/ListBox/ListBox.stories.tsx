@@ -1,3 +1,4 @@
+import React from 'react';
 import { ListBox, ListBoxItem } from './ListBox';
 
 import type { Meta, StoryObj } from '@storybook/react';

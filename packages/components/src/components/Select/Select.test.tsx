@@ -1,7 +1,8 @@
+import React from 'react';
 import { expect, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import Select from './Select';
+import { Select } from './Select';
 import { SelectItem } from './SelectItem';
 
 expect.extend(toHaveNoViolations);

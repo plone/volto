@@ -1,3 +1,4 @@
+import React from 'react';
 import Checkbox from '../Checkbox/Checkbox';
 import { CheckboxGroup } from './CheckboxGroup';
 

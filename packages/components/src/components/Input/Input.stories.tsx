@@ -1,4 +1,5 @@
-import InputComponent from './Input';
+import React from 'react';
+import { Input as InputComponent } from './Input';
 
 import type { Meta, StoryObj } from '@storybook/react';
 

@@ -1,3 +1,4 @@
+import React from 'react';
 import { ComboBox, ComboBoxItem } from './ComboBox';
 
 import type { Meta, StoryObj } from '@storybook/react';

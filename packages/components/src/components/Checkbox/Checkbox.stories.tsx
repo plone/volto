@@ -1,3 +1,4 @@
+import React from 'react';
 import CheckboxComponent from './Checkbox';
 
 import type { Meta, StoryObj } from '@storybook/react';

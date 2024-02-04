@@ -1,3 +1,4 @@
+import React from 'react';
 import cx from 'classnames';
 import type { CheckboxProps as RACCheckboxProps } from 'react-aria-components';
 import { Checkbox as RACCheckbox, Text } from 'react-aria-components';
@@ -15,7 +16,6 @@ export default function Checkbox({
   description,
   ...props
 }: CheckboxProps) {
-  console.log(error);
   return (
     <>
       <div className={cx('q field', `field-${props.name}`)}>

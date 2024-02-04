@@ -1,5 +1,6 @@
+import React from 'react';
 import { Button } from './Button';
-import Link from '../Link/Link';
+import { Link } from '../Link/Link';
 import { Text } from 'react-aria-components';
 import AddIcon from '../Icons/AddIcon';
 

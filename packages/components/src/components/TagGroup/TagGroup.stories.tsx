@@ -1,3 +1,4 @@
+import React from 'react';
 import { Tag, TagGroup } from './TagGroup';
 
 import type { Meta, StoryObj } from '@storybook/react';

@@ -1,3 +1,4 @@
+import React from 'react';
 import type { SelectProps as RACSelectProps } from 'react-aria-components';
 import {
   Button,
@@ -37,7 +38,7 @@ interface SelectProps<T extends object>
  * the data.
  *
  */
-export default function Select<T extends object>({
+export function Select<T extends object>({
   title,
   description,
   error,

@@ -1,3 +1,4 @@
+import React from 'react';
 import { ToggleButton } from './ToggleButton';
 import BoldIcon from '../Icons/BoldIcon';
 

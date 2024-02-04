@@ -1,4 +1,5 @@
-import BreadcrumbsComponent from './Breadcrumbs';
+import React from 'react';
+import { Breadcrumbs as BreadcrumbsComponent } from './Breadcrumbs';
 
 import type { Meta, StoryObj } from '@storybook/react';
 

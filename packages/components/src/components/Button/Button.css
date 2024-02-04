@@ -1,3 +1,5 @@
+@import '../theme.css';
+
 @layer components {
   .react-aria-Button {
     padding: 8px 8px;

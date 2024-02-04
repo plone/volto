@@ -1,3 +1,4 @@
+import React from 'react';
 import { NumberField } from './NumberField';
 
 import type { Meta, StoryObj } from '@storybook/react';

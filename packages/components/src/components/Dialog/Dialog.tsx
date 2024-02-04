@@ -1,3 +1,4 @@
+import React from 'react';
 import { Dialog as RACDialog, DialogProps } from 'react-aria-components';
 import './Dialog.css';
 

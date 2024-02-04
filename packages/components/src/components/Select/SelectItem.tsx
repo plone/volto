@@ -1,3 +1,4 @@
+import React from 'react';
 import type { ListBoxItemProps } from 'react-aria-components';
 import { ListBoxItem as RACListBoxItem } from 'react-aria-components';
 import cx from 'classnames';

@@ -16,12 +16,7 @@ interface InputProps extends TextFieldProps {
   placeholder: string;
 }
 
-export default function Input({
-  title,
-  description,
-  error,
-  ...props
-}: InputProps) {
+export function Input({ title, description, error, ...props }: InputProps) {
   return (
     <TextField
       {...props}

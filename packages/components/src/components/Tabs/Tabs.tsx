@@ -1,3 +1,4 @@
+import React from 'react';
 import { Tabs as RACTabs, TabsProps } from 'react-aria-components';
 import './Tabs.css';
 

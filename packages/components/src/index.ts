@@ -1,11 +1,13 @@
-export { default as Breadcrumbs } from './components/Breadcrumbs/Breadcrumbs';
-export { default as Container } from './components/Container/Container';
-export { default as Icon } from './components/Icon/Icon';
-export { default as Input } from './components/Input/Input';
-export { default as Link } from './components/Link/Link';
-export { default as Select } from './components/Select/Select';
-export { default as TextArea } from './components/TextArea/TextArea';
-export { default as RenderBlocks } from './Views/RenderBlocks/RenderBlocks';
-export { default as DefaultBlockView } from './Views/RenderBlocks/DefaultBlockView';
+export { Breadcrumbs } from './components/Breadcrumbs/Breadcrumbs';
+export { Container } from './components/Container/Container';
+export { Icon } from './components/Icon/Icon';
+export { Input } from './components/Input/Input';
+export { Link } from './components/Link/Link';
+export { Select } from './components/Select/Select';
+export { TextArea } from './components/TextArea/TextArea';
+export { RenderBlocks } from './Views/RenderBlocks/RenderBlocks';
+export { DefaultBlockView } from './Views/RenderBlocks/DefaultBlockView';
 export { FlattenToAppURLProvider } from './providers/flattenToAppURL';
 export { useFlattenToAppURL } from './providers/flattenToAppURL';
+
+export { TextField } from './components/TextField/TextField';

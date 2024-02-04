@@ -1,3 +1,4 @@
+import React from 'react';
 import { Modal as RACModal, ModalOverlayProps } from 'react-aria-components';
 import './Modal.css';
 

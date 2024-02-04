@@ -1,9 +1,10 @@
+import React from 'react';
 import {
   Breadcrumbs as RACBreadcrumbs,
   Breadcrumb as RACBreadcrumb,
 } from 'react-aria-components';
-import Link from '../Link/Link';
-import HomeIcon from './HomeIcon';
+import { Link } from '../Link/Link';
+import { HomeIcon } from './HomeIcon';
 import type { BreadcrumbsProps as RACBreadcrumbsProps } from 'react-aria-components';
 
 type Breadcrumb = {
@@ -25,7 +26,7 @@ interface BreadcrumbsProps<T> extends RACBreadcrumbsProps<T> {
 /**
  * Breadcrumbs display a hierarchy of links to the current page or resource in an application.
  */
-export default function Breadcrumbs({
+export function Breadcrumbs({
   items,
   root,
   includeRoot,

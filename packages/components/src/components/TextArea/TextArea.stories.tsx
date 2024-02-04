@@ -1,4 +1,5 @@
-import TextAreaComponent from './TextArea';
+import React from 'react';
+import { TextArea as TextAreaComponent } from './TextArea';
 
 import type { Meta, StoryObj } from '@storybook/react';
 

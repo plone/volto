@@ -1,9 +1,9 @@
-import { Fragment } from 'react';
+import React, { Fragment } from 'react';
 // import { defineMessages, useIntl } from 'react-intl';
 
 import { map } from 'lodash';
 import { hasBlocksData } from '../../helpers/blocks';
-import DefaultBlockView from './DefaultBlockView';
+import { DefaultBlockView } from './DefaultBlockView';
 import type { Content } from '@plone/types';
 import type { BlocksConfigData } from '@plone/types';
 import type { Location } from 'history';
@@ -35,7 +35,7 @@ type RenderBlocksProps = {
   metadata?: Content;
 };
 
-const RenderBlocks = (props: RenderBlocksProps) => {
+export const RenderBlocks = (props: RenderBlocksProps) => {
   const { blocksConfig, content, location, metadata } = props;
   const CustomTag = props.as || Fragment;
 
@@ -67,5 +67,3 @@ const RenderBlocks = (props: RenderBlocksProps) => {
     ''
   );
 };
-
-export default RenderBlocks;

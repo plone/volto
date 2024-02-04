@@ -1,3 +1,4 @@
+import React from 'react';
 import { GridList, GridListItem } from './GridList';
 
 import type { Meta, StoryObj } from '@storybook/react';

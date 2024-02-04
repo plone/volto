@@ -1,3 +1,4 @@
+import React from 'react';
 import type { TextFieldProps } from 'react-aria-components';
 import {
   FieldError,
@@ -15,12 +16,7 @@ interface InputProps extends TextFieldProps {
   placeholder: string;
 }
 
-export default function Input({
-  title,
-  description,
-  error,
-  ...props
-}: InputProps) {
+export function TextArea({ title, description, error, ...props }: InputProps) {
   return (
     <TextField {...props} className={cx('q field', `field-${props.name}`)}>
       <RACTextArea className={cx('q textarea input', { error: error })} />

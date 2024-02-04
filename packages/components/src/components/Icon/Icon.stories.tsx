@@ -1,4 +1,5 @@
-import Icon from './Icon';
+import React from 'react';
+import { Icon } from './Icon';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
