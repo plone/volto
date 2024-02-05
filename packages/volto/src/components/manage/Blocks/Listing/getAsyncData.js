@@ -1,7 +1,7 @@
 import { getQueryStringResults } from '@plone/volto/actions';
 import { resolveBlockExtensions } from '@plone/volto/helpers';
 import qs from 'query-string';
-import { slugify } from '@plone/volto/helpers';
+import { slugify } from '@plone/volto/helpers/Utils/Utils';
 
 const getCurrentPage = (location, id) => {
   const pageQueryParam = qs.parse(location.search);
