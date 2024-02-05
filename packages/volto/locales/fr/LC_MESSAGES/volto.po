@@ -1,13 +1,3 @@
-# Translation of plone.pot to French
-# French Translation Team <plone-i18n@lists.sourceforge.net>, 2003-2006.
-# Sebastien Douche <sdouche@gmail.com>, 2005-2007.
-# Encolpe Degoute <encolpe.degoute@ingeniweb.com>, 2006, 2007, 2008.
-# Gilles Lenfant <gilles.lenfant@ingeniweb.com>, 2008.
-# Encolpe Degoute <encolpe@gmail.com>, 2008.
-# Vincent Fretin <vincent.fretin@gmail.com>, 2009.
-# Kevin Deldycke <kevin@deldycke.com>, 2009.
-# JeanMichel FRANCOIS <toutpt@gmail.com>, 2010.
-# Denis Bitouzé <denis.bitouze@univ-littoral.fr>, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: volto-fr\n"
@@ -1292,7 +1282,7 @@ msgstr "Saisissez un nom d'utilisateur ci-dessus à rechercher ou cliquez sur 'A
 #: components/theme/Register/Register
 # defaultMessage: Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
-msgstr "Saisissez votre adresse e-mail. Elle sera votre nom d'utilisateur. Nous respectons votre vie privée, nous ne donnerons pas votre adresse à un tiers et elle ne sera pas exposée.<<<<<<< HEAD"
+msgstr "Saisissez votre adresse e-mail. Elle sera votre nom d'utilisateur. Nous respectons votre vie privée, nous ne donnerons pas votre adresse à un tiers et elle ne sera pas exposée."
 
 #: components/theme/Register/Register
 # defaultMessage: Enter full name, e.g. John Smith.
@@ -1556,7 +1546,7 @@ msgstr "De"
 #: components/manage/Widgets/AlignWidget
 # defaultMessage: Full
 msgid "Full"
-msgstr "Complet<<<<<<< HEAD"
+msgstr "Complet"
 
 #: components/theme/Register/Register
 # defaultMessage: Full Name
@@ -2466,7 +2456,7 @@ msgstr "Ok"
 #: components/manage/Widgets/IdWidget
 # defaultMessage: Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed.
 msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed."
-msgstr "Uniquement des caractères en minuscules (a-z) sans accents, chiffres (0-9), et les caractères "-", "_", and "." sont autorisés."
+msgstr ""
 
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -3584,7 +3574,7 @@ msgstr "Merci."
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: The Database Manager allow you to view database status information
 msgid "The Database Manager allow you to view database status information"
-msgstr "Le gestionnaire de base de données vous permet d'afficher les informations d'état de la base de données<<<<<<< HEAD======="
+msgstr "Le gestionnaire de base de données vous permet d'afficher les informations d'état de la base de données"
 
 #: components/theme/RequestTimeout/RequestTimeout
 # defaultMessage: The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again.

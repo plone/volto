@@ -1,6 +1,3 @@
-# Translation of plone.pot to Catalan
-# Ramon Navarro Bosch <bloodbare a plone.org>, 2021
-# Víctor Fernández de Alba <victor a plone.org>, 2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
