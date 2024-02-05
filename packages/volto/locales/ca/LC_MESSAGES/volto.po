@@ -499,8 +499,14 @@ msgstr ""
 msgid "Browse"
 msgstr "Navegui"
 
+#. Default: "Browse the site"
+#: components/manage/Widgets/ImageWidget
+msgid "Browse the site"
+msgstr ""
+
 #. Default: "Browse the site, drop an image, or type an URL"
 #: components/manage/Blocks/Image/Edit
+#: components/manage/Widgets/ImageWidget
 msgid "Browse the site, drop an image, or type an URL"
 msgstr "Navegueu pel lloc, deixeu anar una imatge o escriviu un URL"
 

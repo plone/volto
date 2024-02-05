@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2024-01-12T09:21:12.378Z\n"
+"POT-Creation-Date: 2024-02-05T08:22:01.385Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -495,8 +495,14 @@ msgstr ""
 msgid "Browse"
 msgstr ""
 
+#. Default: "Browse the site"
+#: components/manage/Widgets/ImageWidget
+msgid "Browse the site"
+msgstr ""
+
 #. Default: "Browse the site, drop an image, or type an URL"
 #: components/manage/Blocks/Image/Edit
+#: components/manage/Widgets/ImageWidget
 msgid "Browse the site, drop an image, or type an URL"
 msgstr ""
 
