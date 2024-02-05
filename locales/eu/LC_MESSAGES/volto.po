@@ -2447,10 +2447,10 @@ msgstr "agerpenen ondoren"
 msgid "Ok"
 msgstr "Ados"
 
-#. Default: "Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed."
+#. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines."
 #: components/manage/Widgets/IdWidget
-msgid "Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed."
-msgstr "Letra xeheak (a-z), karaktere berezi gabe, zenbakiak (0-9) eta "-", "_" eta "." ikurrak bakarrik erabili daitezke."
+msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines."
+msgstr ""
 
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
