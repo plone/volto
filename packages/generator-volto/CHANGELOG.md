@@ -8,6 +8,14 @@
 
 <!-- towncrier release notes start -->
 
+## 9.0.0-alpha.4 (2024-02-02)
+
+### Bugfix
+
+- Clarify the default value of `--defaultAddonName`. @ichim-david
+  Clarify that the default add-on is always added when a project is generated. @ichim-david
+  Added note about how `--defaultAddonName` affects the always added theme add-on on project generation. @ichim-david [#5439](https://github.com/plone/volto/issues/5439)
+
 ## 9.0.0-alpha.3 (2024-01-15)
 
 ### Internal

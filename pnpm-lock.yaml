@@ -1063,9 +1063,6 @@ importers:
       '@plone/types':
         specifier: workspace:*
         version: link:../types
-      '@types/lodash':
-        specifier: ^4.14.201
-        version: 4.14.201
       '@types/react':
         specifier: ^18
         version: 18.2.27
