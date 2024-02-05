@@ -17,6 +17,21 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 17.12.0 (2024-02-05)
+
+### Feature
+
+- Improve validation of IdWidget @tedw [#3716](https://github.com/plone/volto/issues/3716)
+- Support for passing whole data object of the initial blocks in local config. Refactor initial block type to its own helpers. @sneridagh [#5718](https://github.com/plone/volto/issues/5718)
+
+### Bugfix
+
+- Fixed wrong conditional proprieties on `ObjectBrowser` for multiple selection. @deodorhunter @Wagner3UB [#4190](https://github.com/plone/volto/issues/4190)
+
+### Documentation
+
+- Temporarily pin `sphinxcontrib-*help` dependencies so documentation can build. @stevepiercy [#5655](https://github.com/plone/volto/issues/5655)
+
 ## 17.11.5 (2024-01-26)
 
 ### Bugfix
