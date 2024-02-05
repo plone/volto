@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2024-01-12T09:21:12.378Z\n"
+"POT-Creation-Date: 2024-02-05T15:09:34.846Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -2552,6 +2552,11 @@ msgstr ""
 #. Default: "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
+msgstr ""
+
+#. Default: "Play Video"
+#: components/manage/Blocks/Video/Body
+msgid "Play Video"
 msgstr ""
 
 #. Default: "Please choose an existing content as source for this element"

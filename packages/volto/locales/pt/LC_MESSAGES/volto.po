@@ -2557,6 +2557,11 @@ msgstr ""
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
 msgstr "Pessoas responsáveis pela criação de conteúdo deste item. Pro favor escreva uma lista de nomes de utilizador, um por linha. O criador principal deve estar em primeiro lugar."
 
+#. Default: "Play Video"
+#: components/manage/Blocks/Video/Body
+msgid "Play Video"
+msgstr ""
+
 #. Default: "Please choose an existing content as source for this element"
 #: components/manage/Blocks/Teaser/DefaultBody
 msgid "Please choose an existing content as source for this element"
