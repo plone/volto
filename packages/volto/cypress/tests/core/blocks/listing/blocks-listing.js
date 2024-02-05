@@ -1084,7 +1084,7 @@ describe('Listing Block Tests', () => {
     cy.get('.ui.pagination.menu a[value="2"]').first().click();
     //test f5
     cy.reload();
-    cy.isInHTML({ parent: '.listing-item', content: 'My Folder 2' });
+    cy.isInHTML({ parent: '.listing-item', content: 'My Folder 3' });
     cy.url().should('include', '=2');
     // const listing2 = cy.get('.ui.pagination.menu').last();
     //test third pagination click on second listing
@@ -1104,8 +1104,10 @@ describe('Listing Block Tests', () => {
     cy.get('.ui.pagination.menu a[value="2"]').first().click({ force: true });
     cy.get('.ui.pagination.menu a[value="3"]').first().click({ force: true });
     cy.go(-1);
+    cy.isInHTML({ parent: '.listing-item', content: 'My Folder 3' });
     cy.url().should('not.include', '=3');
     cy.go(-1);
+    cy.isInHTML({ parent: '.listing-item', content: 'My Folder 2' });
     cy.url().should('not.include', '=2');
     cy.url().should('not.include', '=3');
   });
