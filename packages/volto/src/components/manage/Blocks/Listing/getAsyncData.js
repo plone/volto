@@ -5,10 +5,15 @@ import { slugify } from '@plone/volto/helpers/Utils/Utils';
 
 const getCurrentPage = (location, id) => {
   const pageQueryParam = qs.parse(location.search);
-  const hasMultiplePaginations = Object.keys(pageQueryParam).length > 1;
-  return hasMultiplePaginations
-    ? parseInt(pageQueryParam[slugify(`page-${id}`)])
-    : pageQueryParam['page'] || 1;
+  switch (Object.keys(pageQueryParam).length) {
+    case 0:
+      return 1;
+    case 1:
+      // when there is only one query param, it could be the simple page number or the sluggified block id
+      return pageQueryParam['page'] || pageQueryParam[slugify(`page-${id}`)];
+    default:
+      return pageQueryParam[slugify(`page-${id}`)];
+  }
 };
 
 export default function getListingBlockAsyncData(props) {
