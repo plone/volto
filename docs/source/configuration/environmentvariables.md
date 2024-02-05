@@ -44,6 +44,20 @@ yarn build && RAZZLE_API_PATH=https://plone.org yarn start:prod
 ```
 ````
 
+`process.env.HOST`: Represents the host or IP address on which a server should listen, default is port 0.0.0.0.
+
+`process.env.PORT`: Used to specify the port on which a web server should listen for incoming requests, default is port 3000.
+
+`process.env.RAZZLE_API_PATH`: Used to configure the API path for the application.
+
+`process.env.RAZZLE_PUBLIC_URL`: Used specify the base URL or path where static assets (such as images, stylesheets, and other resources) are hosted or served.
+
+`process.env.RAZZLE_DEV_PROXY_API_PATH`: Used during development to configure a proxy for API requests.
+
+`process.env.RAZZLE_INTERNAL_API_PATH`: Used to specify the path to an internal API that the server-rendered application should use.
+
+`process.env.RAZZLE_PROXY_REWRITE_TARGET`: Used to specify the target URL for a proxy server.
+
 This brings you a lot of power since you don't have to rebuild on every config change. You can also generate builds on your CI, then deploy them anywhere.
 
 
