@@ -1,18 +1,19 @@
 import { useIntl } from 'react-intl';
 import { BlockDataForm } from '@plone/volto/components';
+import type { BlockEditProps } from '@plone/types';
 
-const TestBlockData = (props) => {
+const TestBlockData = (props: BlockEditProps) => {
   const { block, blocksConfig, contentType, data, navRoot, onChangeBlock } =
     props;
   const intl = useIntl();
-  const schema = blocksConfig[data['@type']].blockSchema({ intl });
+  const schema = blocksConfig[data['@type']].blockSchema({ intl, props });
 
   return (
     <BlockDataForm
       block={block}
       schema={schema}
       title={schema.title}
-      onChangeField={(id, value) => {
+      onChangeField={(id: string, value: any) => {
         onChangeBlock(block, {
           ...data,
           [id]: value,

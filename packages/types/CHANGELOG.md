@@ -8,6 +8,18 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.3 (2024-02-02)
+
+### Bugfix
+
+- Enhance the `initialBlocks` typings @sneridagh [#5718](https://github.com/plone/volto/issues/5718)
+
+## 1.0.0-alpha.2 (2024-01-15)
+
+### Feature
+
+- Complete missing types, fix some other that were wrong. @sneridagh [#5624](https://github.com/plone/volto/issues/5624)
+
 ## 1.0.0-alpha.1 (2024-01-02)
 
 ### Feature

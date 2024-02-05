@@ -33,3 +33,4 @@ export type ConfigData = {
 };
 
 export { SettingsConfig, BlocksConfig, ViewsConfig, WidgetsConfig };
+export * from './Blocks';

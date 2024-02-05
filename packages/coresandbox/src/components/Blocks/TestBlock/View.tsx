@@ -1,4 +1,6 @@
-const TestBlockView = (props) => {
+import type { BlockViewProps } from '@plone/types';
+
+const TestBlockView = (props: BlockViewProps) => {
   return (
     <div className="test-block">
       <div>Test Block</div>
