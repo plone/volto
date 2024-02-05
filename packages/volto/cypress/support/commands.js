@@ -872,7 +872,7 @@ function createHtmlPasteEvent(htmlContent) {
 
 Cypress.Commands.add('addNewBlock', (blockName, createNewSlate = false) => {
   let block;
-  block = cy.getSlate(createNewSlate).type(`/${blockName}{enter}`);
+  block = cy.getSlate(createNewSlate).click().type(`/${blockName}{enter}`);
   return block;
 });
 
