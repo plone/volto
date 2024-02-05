@@ -461,11 +461,6 @@ msgstr "Verfügbare Inhaltsregeln:"
 msgid "Back"
 msgstr "Zurück"
 
-#. Default: "Back to homepage"
-#: components/theme/Logo/Logo
-msgid "Back to homepage"
-msgstr "Zurück zur Startseite"
-
 #. Default: "Base"
 #: components/manage/Diff/Diff
 msgid "Base"

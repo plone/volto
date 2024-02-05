@@ -6,7 +6,7 @@ export interface BlocksConfig {
   blocksConfig: BlocksConfigData;
   groupBlocksOrder: { id: string; title: string };
   requiredBlocks: string[];
-  initialBlocks: Record<string, string>;
+  initialBlocks: Record<string, string[]> | Record<string, object[]>;
   initialBlocksFocus: Record<string, string>;
 }
 

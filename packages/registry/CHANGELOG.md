@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 1.2.2 (2024-02-02)
+
+### Bugfix
+
+- Remove `lodash` as a dependency @sneridagh [#5726](https://github.com/plone/volto/issues/5726)
+
 ## 1.2.1 (2024-01-17)
 
 ### Bugfix
