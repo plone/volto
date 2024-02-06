@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 8.1.2 (2024-02-06)
+
+### Bugfix
+
+- Fix tests in projects that involves TS files @sneridagh [#5738](https://github.com/plone/volto/issues/5738)
+
 ## 8.1.1 (2023-12-13)
 
 ### Bugfix
