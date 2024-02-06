@@ -14,7 +14,7 @@ export function addComment(url: string, text: string, commentId: any): any;
  */
 export function listComments(url: string): any;
 export function listMoreComments(url: any): {
-    type: any;
+    type: string;
     request: {
         op: string;
         path: string;

@@ -9,7 +9,7 @@
 
 The Javascript Plone client is an agnostic library that provides easy access to the Plone REST API from a client written in TypeScript.
 This client can be used as an alternative to directly interacting with the Plone REST API.
-It is based on the foundations that [@tanstack/query](https://tanstack.com/query) lays off.
+It is based on the foundations that [@tanstack/query](https://tanstack.com/query/latest) lays off.
 It should be possible to use it in React/Vue/Solid/Svelte projects.
 It provides the artifacts that TanStack Query requires to work:
 

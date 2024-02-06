@@ -8,6 +8,24 @@
 
 <!-- towncrier release notes start -->
 
+## 3.3.2 (2024-01-26)
+
+### Bugfix
+
+- handle addons that have not been migrated to the new structure of po files @erral [#5704](https://github.com/plone/volto/issues/5704)
+
+## 3.3.1 (2024-01-23)
+
+### Internal
+
+- Fix `@plone/scripts` requires @sneridagh [#5687](https://github.com/plone/volto/issues/5687)
+
+## 3.3.0 (2024-01-17)
+
+### Internal
+
+- Polish po file handling @erral [#5542](https://github.com/plone/volto/issues/5542)
+
 ## 3.2.1 (2024-01-11)
 
 ### Bugfix

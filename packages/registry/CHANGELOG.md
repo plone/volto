@@ -8,6 +8,18 @@
 
 <!-- towncrier release notes start -->
 
+## 1.2.2 (2024-02-02)
+
+### Bugfix
+
+- Remove `lodash` as a dependency @sneridagh [#5726](https://github.com/plone/volto/issues/5726)
+
+## 1.2.1 (2024-01-17)
+
+### Bugfix
+
+- Fix order of preference in addons-registry for the theme definition (THEME, volto.config.js, package.json) @sneridagh [#5649](https://github.com/plone/volto/issues/5649)
+
 ## 1.2.0 (2024-01-02)
 
 ### Feature

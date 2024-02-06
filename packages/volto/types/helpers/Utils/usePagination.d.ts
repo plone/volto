@@ -1,4 +1,4 @@
 export function usePagination(id?: any, defaultPage?: number): {
-    currentPage: any;
+    currentPage: number;
     setCurrentPage: (page: any) => void;
 };

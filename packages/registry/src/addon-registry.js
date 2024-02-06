@@ -3,7 +3,6 @@ const glob = require('glob').sync;
 const path = require('path');
 const fs = require('fs');
 const debug = require('debug')('shadowing');
-const { map } = require('lodash');
 const { DepGraph } = require('dependency-graph');
 
 function getPackageBasePath(base) {
@@ -128,10 +127,10 @@ class AddonConfigurationRegistry {
     this.packages = {};
     this.customizations = new Map();
 
-    // Theme from a package.json key, from volto.config.js or from an ENV VAR
-    // Programatically via volto.config.js wins or the ENV VAR if present
+    // Theme from an ENV VAR, from volto.config.js or from a package.json key
+    // in this order of preference
     this.theme =
-      packageJson.theme || this.voltoConfigJS.theme || process.env.THEME;
+      process.env.THEME || this.voltoConfigJS.theme || packageJson.theme;
 
     this.initDevelopmentPackages();
     this.initPublishedPackages();
@@ -440,58 +439,55 @@ class AddonConfigurationRegistry {
       );
 
       reg.forEach(({ customPath, name, sourcePath }) => {
-        map(
-          glob(
-            `${customPath}/**/*.*(svg|png|jpg|jpeg|gif|ico|less|js|jsx|ts|tsx)`,
-          ),
-          (filename) => {
-            function changeFileExtension(filePath) {
-              // Extract the current file extension
-              const currentExtension = filePath.split('.').pop();
+        glob(
+          `${customPath}/**/*.*(svg|png|jpg|jpeg|gif|ico|less|js|jsx|ts|tsx)`,
+        ).map((filename) => {
+          function changeFileExtension(filePath) {
+            // Extract the current file extension
+            const currentExtension = filePath.split('.').pop();
 
-              // Define the mapping between file extensions
-              const extensionMapping = {
-                jsx: 'tsx',
-                tsx: 'jsx',
-                js: 'ts',
-                ts: 'js',
-              };
+            // Define the mapping between file extensions
+            const extensionMapping = {
+              jsx: 'tsx',
+              tsx: 'jsx',
+              js: 'ts',
+              ts: 'js',
+            };
 
-              // Check if the current extension is in the mapping
-              if (currentExtension in extensionMapping) {
-                // Replace the current extension with the corresponding one from the mapping
-                const newExtension = extensionMapping[currentExtension];
-                const newPath = filePath.replace(
-                  `.${currentExtension}`,
-                  `.${newExtension}`,
-                );
-                return newPath;
-              } else {
-                // If the current extension is not in the mapping, return the original path
-                return filePath;
-              }
-            }
-
-            const targetPath = filename.replace(customPath, sourcePath);
-            // We try to find the source to shadow with the exact path
-            // and we try also with the extension changed in search for JS<->TS
-            // correspondence
-            if (
-              fs.existsSync(targetPath) ||
-              fs.existsSync(changeFileExtension(targetPath))
-            ) {
-              aliases[
-                filename
-                  .replace(customPath, name)
-                  .replace(/\.(js|jsx|ts|tsx)$/, '')
-              ] = path.resolve(filename);
-            } else {
-              debug(
-                `The file ${filename} doesn't exist in the ${name} (${targetPath}), unable to customize.`,
+            // Check if the current extension is in the mapping
+            if (currentExtension in extensionMapping) {
+              // Replace the current extension with the corresponding one from the mapping
+              const newExtension = extensionMapping[currentExtension];
+              const newPath = filePath.replace(
+                `.${currentExtension}`,
+                `.${newExtension}`,
               );
+              return newPath;
+            } else {
+              // If the current extension is not in the mapping, return the original path
+              return filePath;
             }
-          },
-        );
+          }
+
+          const targetPath = filename.replace(customPath, sourcePath);
+          // We try to find the source to shadow with the exact path
+          // and we try also with the extension changed in search for JS<->TS
+          // correspondence
+          if (
+            fs.existsSync(targetPath) ||
+            fs.existsSync(changeFileExtension(targetPath))
+          ) {
+            aliases[
+              filename
+                .replace(customPath, name)
+                .replace(/\.(js|jsx|ts|tsx)$/, '')
+            ] = path.resolve(filename);
+          } else {
+            debug(
+              `The file ${filename} doesn't exist in the ${name} (${targetPath}), unable to customize.`,
+            );
+          }
+        });
       });
     });
 

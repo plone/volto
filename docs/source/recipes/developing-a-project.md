@@ -11,8 +11,8 @@ myst:
 
 # Developing a project
 
-When you start developing a Plone project, it is recommended that you use Plone's cookiecutter boilerplate generator.
-See {doc}`plone:install/install-from-packages` for more information.
+When you start developing a Plone project, it is recommended that you use Plone's cookiecutter boilerplate project generator.
+See {doc}`plone:install/create-project` for more information.
 
 The generator will output the project folder structure.
 It is organized in three folders named `frontend`, `backend`, and `devops`, each of which corresponds to its primary use.

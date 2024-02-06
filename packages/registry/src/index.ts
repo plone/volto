@@ -1,4 +1,3 @@
-import { isArray } from 'lodash';
 import type {
   AddonReducersConfig,
   AddonRoutesConfig,
@@ -129,7 +128,7 @@ class Config {
     if (typeof options === 'object') {
       const { name, dependencies = '' } = options;
       let depsString: string = '';
-      if (dependencies && isArray(dependencies)) {
+      if (dependencies && Array.isArray(dependencies)) {
         depsString = dependencies.join('+');
       } else if (typeof dependencies === 'string') {
         depsString = dependencies;
@@ -154,7 +153,7 @@ class Config {
     if (!component) {
       throw new Error('No component provided');
     } else {
-      if (dependencies && isArray(dependencies)) {
+      if (dependencies && Array.isArray(dependencies)) {
         depsString = dependencies.join('+');
       } else if (typeof dependencies === 'string') {
         depsString = dependencies;
