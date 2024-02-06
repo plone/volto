@@ -256,18 +256,8 @@ class Form extends Component {
     }
 
     if (this.props.onChangeFormData) {
-      if (
-        !this.props.global &&
-        !isEqual(prevState?.formData, this.state.formData)
-      ) {
+      if (!isEqual(prevState?.formData, this.state.formData)) {
         this.props.onChangeFormData(this.state.formData);
-      }
-
-      if (
-        this.props.global &&
-        !isEqual(prevProps?.globalData, this.props.globalData)
-      ) {
-        this.props.onChangeFormData(this.props.globalData);
       }
     }
   }
@@ -303,9 +293,7 @@ class Form extends Component {
     if (!this.state.isFormPristine) {
       const errors = FormValidation.validateFieldsPerFieldset({
         schema: this.props.schema,
-        formData: this.props.global
-          ? this.props.globalData
-          : this.state.formData,
+        formData: this.state.formData,
         formatMessage: this.props.intl.formatMessage,
         touchedField: { [id]: value },
       });
@@ -346,7 +334,7 @@ class Form extends Component {
     this.setState((prevState) => {
       const { errors, formData } = prevState;
       const newFormData = {
-        ...(this.props.global ? this.props.globalData : formData),
+        ...formData,
         // We need to catch also when the value equals false this fixes #888
         [id]: value || (value !== undefined && isBoolean(value)) ? value : null,
       };
@@ -378,9 +366,7 @@ class Form extends Component {
   onSelectBlock(id, isMultipleSelection, event) {
     let multiSelected = [];
     let selected = id;
-    const formData = this.props.global
-      ? this.props.globalData
-      : this.state.formData;
+    const formData = this.state.formData;
 
     if (isMultipleSelection) {
       selected = null;
@@ -460,9 +446,7 @@ class Form extends Component {
    * @returns {undefined}
    */
   onSubmit(event) {
-    const formData = this.props.global
-      ? this.props.globalData
-      : this.state.formData;
+    const formData = this.state.formData;
 
     if (event) {
       event.preventDefault();
@@ -506,7 +490,7 @@ class Form extends Component {
       if (this.props.isEditForm) {
         this.props.onSubmit(this.getOnlyFormModifiedValues());
       } else {
-        this.props.onSubmit(this.state.formData);
+        this.props.onSubmit(formData);
       }
       if (this.props.resetAfterSubmit) {
         this.setState({
@@ -529,9 +513,7 @@ class Form extends Component {
    * @returns {undefined}
    */
   getOnlyFormModifiedValues = () => {
-    const formData = this.props.global
-      ? this.props.globalData
-      : this.state.formData;
+    const formData = this.state.formData;
 
     const fieldsModified = Object.keys(
       difference(formData, this.state.initialFormData),
@@ -585,9 +567,7 @@ class Form extends Component {
       navRoot,
       type,
     } = this.props;
-    const formData = this.props.global
-      ? this.props.globalData
-      : this.state.formData;
+    const formData = this.state.formData;
     const schema = this.removeBlocksLayoutFields(originalSchema);
     const Container =
       config.getComponent({ name: 'Container' }).component || SemanticContainer;
