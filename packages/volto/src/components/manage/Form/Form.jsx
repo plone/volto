@@ -260,7 +260,10 @@ class Form extends Component {
         this.props.onChangeFormData(this.state.formData);
       }
     }
-    if (!isEqual(this.props.globalData, this.state.formData)) {
+    if (
+      this.props.global &&
+      !isEqual(this.props.globalData, this.state.formData)
+    ) {
       this.setState({
         formData: this.props.globalData,
       });
