@@ -17,6 +17,12 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 17.12.1 (2024-02-06)
+
+### Bugfix
+
+- Move @types/uuid as a direct dependency (for projects) @sneridagh [#0](https://github.com/plone/volto/issues/0)
+
 ## 17.12.0 (2024-02-05)
 
 ### Feature
