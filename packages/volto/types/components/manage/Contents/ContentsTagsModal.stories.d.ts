@@ -16,4 +16,3 @@ declare namespace _default {
     }
 }
 export default _default;
-import { bool } from 'prop-types';

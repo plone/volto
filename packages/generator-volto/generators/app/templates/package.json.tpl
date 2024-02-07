@@ -34,6 +34,7 @@
     ],
     "transform": {
       "^.+\\.js(x)?$": "babel-jest",
+      "^.+\\.ts(x)?$": "ts-jest",
       "^.+\\.(png)$": "jest-file",
       "^.+\\.(jpg)$": "jest-file",
       "^.+\\.(svg)$": "./node_modules/@plone/volto/jest-svgsystem-transform.js"
@@ -148,7 +149,7 @@
     "@typescript-eslint/eslint-plugin": "6.7.0",
     "@typescript-eslint/parser": "6.7.0",
     "jest-junit": "8.0.0",
-    "mrs-developer": "*",
+    "mrs-developer": "^2.1.1",
     "postcss": "8.4.13",
     "prettier": "3.0.3",
     "razzle": "4.2.18",

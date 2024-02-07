@@ -164,7 +164,7 @@ Run "npm install -g @plone/generator-volto" to update.`,
           {
             type: 'input',
             name: 'projectName',
-            message: 'Project name (e.g. my-volto-project)',
+            message: 'Project name (e.g. myvoltoproject)',
             default: path.basename(process.cwd()),
           },
         ]);

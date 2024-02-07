@@ -451,7 +451,7 @@ const blocksConfig = {
           },
           {
             id: 'daterangeFacet',
-            title: 'Date range',
+            title: 'Date Range',
             view: DateRangeFacet,
             isDefault: false,
             stateToValue: DateRangeFacet.stateToValue,

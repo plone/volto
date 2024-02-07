@@ -1191,7 +1191,11 @@ class Contents extends Component {
     return this.props.token && this.props.objectActions?.length > 0 ? (
       <>
         {folderContentsAction ? (
-          <Container id="page-contents" className="folder-contents">
+          <Container
+            id="page-contents"
+            className="folder-contents"
+            aria-live="polite"
+          >
             <Dimmer.Dimmable as="div" blurring dimmed={loading}>
               <Dimmer active={loading} inverted>
                 <Loader indeterminate size="massive">
@@ -1226,10 +1230,8 @@ class Contents extends Component {
                           this.state.containedItemsToDelete > 0 ? (
                             <>
                               <FormattedMessage
-                                id="Some items are also a folder.
-                              By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
-                                defaultMessage="Some items are also a folder.
-                              By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
+                                id="Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
+                                defaultMessage="Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
                                 values={{
                                   containedItemsToDelete: (
                                     <span>
@@ -1323,10 +1325,8 @@ class Contents extends Component {
                         ) : this.state.containedItemsToDelete > 0 ? (
                           <>
                             <FormattedMessage
-                              id="This item is also a folder.
-                            By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
-                              defaultMessage="This item is also a folder.
-                            By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
+                              id="This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
+                              defaultMessage="This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
                               values={{
                                 containedItemsToDelete: (
                                   <span>
