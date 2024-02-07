@@ -1,3 +1,4 @@
+import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import * as Icons from './Icons';
 
@@ -136,7 +137,7 @@ const IconsList: React.FC = () => {
           >
             <QuantaIcon size="L" />
             <br />
-            {QuantaIcon.name}
+            {QuantaIcon.name.replace('Icon', '')}
           </span>
         </div>
       ))}

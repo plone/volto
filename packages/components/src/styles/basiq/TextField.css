@@ -26,12 +26,12 @@
   .react-aria-Input,
   .react-aria-TextArea {
     &[data-invalid] {
-      border-color: var(--invalid-color);
+      border-color: var(--color-invalid);
     }
   }
 
   .react-aria-FieldError {
-    color: var(--invalid-color);
+    color: var(--color-invalid);
     font-size: 12px;
   }
 
