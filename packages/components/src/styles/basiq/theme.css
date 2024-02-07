@@ -74,7 +74,7 @@
   --text-color: var(--basiq-slate-950); /* --gray-600 */
   --text-color-base: var(--gray-500);
   --text-color-hover: var(--gray-600);
-  --text-color-disabled: var(--gray-200);
+  --text-color-disabled: var(--basiq-slate-400); /* --gray-200 */
   --text-color-placeholder: var(--gray-400);
   /* Link */
   --link-color: var(--purple-500);
@@ -83,23 +83,29 @@
   /* Border */
   --border-color: var(--basiq-slate-400); /* --gray-300 */
   --border-color-hover: var(--gray-400);
-  --border-color-pressed: var(--gray-400);
+  --border-color-pressed: var(--basiq-slate-500); /* --gray-400 */
   --border-color-disabled: var(--basiq-slate-300); /* --gray-100 */
   /* Input */
   --focus-ring-color: var(--basiq-slate-400); /* --purple-400 */
   --field-background: var(--basiq-slate-50); /* --purple-400 */
   --field-text-color: var(--basiq-slate-950); /* --purple-600 */
   /* Button */
-  --button-background: var(--gray-50);
-  --button-background-pressed: var(--background-color);
+  --button-background: var(--basiq-slate-50); /* --gray-50 */
+  --button-background-pressed: var(--background-color); /* --background-color */
 
   --overlay-background: var(--gray-50);
   /* these colors are the same between light and dark themes
    * to ensure contrast with the foreground color */
-  --highlight-background: #6f46ed; /* purple-300 from dark theme, 3.03:1 against background-color */
-  --highlight-background-pressed: #522acd; /* purple-200 from dark theme */
+  --highlight-background: var(
+    --basiq-slate-600
+  ); /* #6f46ed purple-300 from dark theme, 3.03:1 against background-color */
+  --highlight-background-pressed: var(
+    --basiq-slate-800
+  ); /* #522acd purple-200 from dark theme */
   --highlight-background-invalid: #cc2000; /* red-300 from dark theme */
-  --highlight-foreground: white; /* 5.56:1 against highlight-background */
+  --highlight-foreground: var(
+    --basiq-slate-50
+  ); /* white 5.56:1 against highlight-background */
   --highlight-foreground-pressed: #ddd;
   --highlight-overlay: rgb(from #6f46ed r g b / 15%);
   --invalid-color: var(--red-400); /* To remove in favor of the next one*/
