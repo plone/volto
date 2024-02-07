@@ -4,7 +4,11 @@
  * @module reducers/form/form
  */
 
-const initialState = {};
+import { SET_FORM_DATA } from '@plone/volto/constants/ActionTypes';
+
+const initialState = {
+  global: {},
+};
 
 /**
  * Form reducer.
@@ -12,6 +16,14 @@ const initialState = {};
  * @param {Object} state Current state.
  * @returns {Object} New state.
  */
-export default function form(state = initialState) {
-  return state;
+export default function form(state = initialState, action = {}) {
+  switch (action.type) {
+    case SET_FORM_DATA:
+      return {
+        ...state,
+        global: action.data,
+      };
+    default:
+      return state;
+  }
 }
