@@ -49,7 +49,9 @@ You can also generate builds on your continuous integration, then deploy them an
 ````{glossary}
 :sorted:
 `RAZZLE_LEGACY_TRAVERSE`
-    {doc}`../deploying/seamless-mode` is the recommended way of setting up your deployments since Volto 14.
+    If `true`, Volto will construct API URLs without the `/++api++` prefix.
+
+    This is not needed if you are using {doc}`../deploying/seamless-mode`, which is the recommended way to set up your deployments since Volto 14.
 
     However, if you are not able to upgrade the packages `plone.restapi` (8.12.1 or greater) and `plone.rest` (2.0.0a1 or greater) in the backend, you can adjust your web server configuration and use the `RAZZLE_LEGACY_TRAVERSE` flag.
 
