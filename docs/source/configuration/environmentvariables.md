@@ -12,22 +12,6 @@ myst:
 This page describes environment variables and their usage for configuration of your Volto application at runtime.
 
 
-## Access environment variables
-
-All environment variables defined at runtime with the "RAZZLE_" prefix are available in your browser under the `window.env` global object.
-For example, start the application with an environment variable as shown.
-
-```shell
-RAZZLE_MY_VARIABLE=some_value build/server.js
-```
-
-In the frontend, you can access this variable in your code with the following.
-
-```shell
-window.env.RAZZLE_MY_VARIABLE
-```
-
-
 ## Runtime environment variables
 
 ```{versionadded} 13
@@ -198,3 +182,19 @@ You can also generate builds on your continuous integration, then deploy them an
     BUILD_DIR=dist node dist/server.js
     ```
 ````
+
+
+## Access environment variables in a browser
+
+All environment variables defined at runtime with the "RAZZLE_" prefix are available in your browser under the `window.env` global object.
+For example, start the application with an environment variable as shown.
+
+```shell
+RAZZLE_MY_VARIABLE=some_value build/server.js
+```
+
+In the frontend, you can access this variable in your code with the following.
+
+```shell
+window.env.RAZZLE_MY_VARIABLE
+```
