@@ -16,6 +16,7 @@ import clearSVG from '@plone/volto/icons/clear.svg';
 import {
   findIndex,
   isEmpty,
+  isEqual,
   keys,
   map,
   mapValues,
@@ -40,7 +41,7 @@ import {
 import { v4 as uuid } from 'uuid';
 import { toast } from 'react-toastify';
 import { BlocksToolbar, UndoToolbar } from '@plone/volto/components';
-import { setSidebarTab } from '@plone/volto/actions';
+import { setSidebarTab, setFormData } from '@plone/volto/actions';
 import { compose } from 'redux';
 import config from '@plone/volto/registry';
 
@@ -69,6 +70,7 @@ class Form extends Component {
       required: PropTypes.arrayOf(PropTypes.string),
     }),
     formData: PropTypes.objectOf(PropTypes.any),
+    globalData: PropTypes.objectOf(PropTypes.any),
     pathname: PropTypes.string,
     onSubmit: PropTypes.func,
     onCancel: PropTypes.func,
@@ -93,6 +95,7 @@ class Form extends Component {
     requestError: PropTypes.string,
     allowedBlocks: PropTypes.arrayOf(PropTypes.string),
     showRestricted: PropTypes.bool,
+    global: PropTypes.bool,
   };
 
   /**
@@ -123,6 +126,7 @@ class Form extends Component {
     editable: true,
     requestError: null,
     allowedBlocks: null,
+    global: false,
   };
 
   /**
@@ -201,6 +205,12 @@ class Form extends Component {
       }
     }
 
+    // Sync state to global state
+    if (this.props.global) {
+      this.props.setFormData(formData);
+    }
+
+    // Set initial state
     this.state = {
       formData,
       initialFormData,
@@ -246,13 +256,17 @@ class Form extends Component {
     }
 
     if (this.props.onChangeFormData) {
-      if (
-        // TODO: use fast-deep-equal
-        JSON.stringify(prevState?.formData) !==
-        JSON.stringify(this.state.formData)
-      ) {
+      if (!isEqual(prevState?.formData, this.state.formData)) {
         this.props.onChangeFormData(this.state.formData);
       }
+    }
+    if (
+      this.props.global &&
+      !isEqual(this.props.globalData, this.state.formData)
+    ) {
+      this.setState({
+        formData: this.props.globalData,
+      });
     }
   }
 
@@ -327,15 +341,18 @@ class Form extends Component {
   onChangeField(id, value) {
     this.setState((prevState) => {
       const { errors, formData } = prevState;
+      const newFormData = {
+        ...formData,
+        // We need to catch also when the value equals false this fixes #888
+        [id]: value || (value !== undefined && isBoolean(value)) ? value : null,
+      };
       delete errors[id];
+      if (this.props.global) {
+        this.props.setFormData(newFormData);
+      }
       return {
         errors,
-        formData: {
-          ...formData,
-          // We need to catch also when the value equals false this fixes #888
-          [id]:
-            value || (value !== undefined && isBoolean(value)) ? value : null,
-        },
+        formData: newFormData,
         // Changing the form data re-renders the select widget which causes the
         // focus to get lost. To circumvent this, we set the focus back to
         // the input.
@@ -357,14 +374,13 @@ class Form extends Component {
   onSelectBlock(id, isMultipleSelection, event) {
     let multiSelected = [];
     let selected = id;
+    const formData = this.state.formData;
 
     if (isMultipleSelection) {
       selected = null;
-      const blocksLayoutFieldname = getBlocksLayoutFieldname(
-        this.state.formData,
-      );
+      const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
 
-      const blocks_layout = this.state.formData[blocksLayoutFieldname].items;
+      const blocks_layout = formData[blocksLayoutFieldname].items;
 
       if (event.shiftKey) {
         const anchor =
@@ -424,6 +440,9 @@ class Form extends Component {
       this.setState({
         formData: this.props.formData,
       });
+      if (this.props.global) {
+        this.props.setFormData(this.props.formData);
+      }
     }
     this.props.onCancel(event);
   }
@@ -435,6 +454,8 @@ class Form extends Component {
    * @returns {undefined}
    */
   onSubmit(event) {
+    const formData = this.state.formData;
+
     if (event) {
       event.preventDefault();
     }
@@ -442,7 +463,7 @@ class Form extends Component {
     const errors = this.props.schema
       ? FormValidation.validateFieldsPerFieldset({
           schema: this.props.schema,
-          formData: this.state.formData,
+          formData,
           formatMessage: this.props.intl.formatMessage,
         })
       : {};
@@ -477,12 +498,15 @@ class Form extends Component {
       if (this.props.isEditForm) {
         this.props.onSubmit(this.getOnlyFormModifiedValues());
       } else {
-        this.props.onSubmit(this.state.formData);
+        this.props.onSubmit(formData);
       }
       if (this.props.resetAfterSubmit) {
         this.setState({
           formData: this.props.formData,
         });
+        if (this.props.global) {
+          this.props.setFormData(this.props.formData);
+        }
       }
     }
   }
@@ -497,15 +521,15 @@ class Form extends Component {
    * @returns {undefined}
    */
   getOnlyFormModifiedValues = () => {
+    const formData = this.state.formData;
+
     const fieldsModified = Object.keys(
-      difference(this.state.formData, this.state.initialFormData),
+      difference(formData, this.state.initialFormData),
     );
     return {
-      ...pickBy(this.state.formData, (value, key) =>
-        fieldsModified.includes(key),
-      ),
-      ...(this.state.formData['@static_behaviors'] && {
-        '@static_behaviors': this.state.formData['@static_behaviors'],
+      ...pickBy(formData, (value, key) => fieldsModified.includes(key)),
+      ...(formData['@static_behaviors'] && {
+        '@static_behaviors': formData['@static_behaviors'],
       }),
     };
   };
@@ -551,7 +575,7 @@ class Form extends Component {
       navRoot,
       type,
     } = this.props;
-    const { formData } = this.state;
+    const formData = this.state.formData;
     const schema = this.removeBlocksLayoutFields(originalSchema);
     const Container =
       config.getComponent({ name: 'Container' }).component || SemanticContainer;
@@ -562,17 +586,21 @@ class Form extends Component {
       this.state.isClient && (
         <Container>
           <BlocksToolbar
-            formData={this.state.formData}
+            formData={formData}
             selectedBlock={this.state.selected}
             selectedBlocks={this.state.multiSelected}
-            onChangeBlocks={(newBlockData) =>
+            onChangeBlocks={(newBlockData) => {
+              const newFormData = {
+                ...formData,
+                ...newBlockData,
+              };
               this.setState({
-                formData: {
-                  ...formData,
-                  ...newBlockData,
-                },
-              })
-            }
+                formData: newFormData,
+              });
+              if (this.props.global) {
+                this.props.setFormData(newFormData);
+              }
+            }}
             onSetSelectedBlocks={(blockIds) =>
               this.setState({ multiSelected: blockIds })
             }
@@ -580,22 +608,31 @@ class Form extends Component {
           />
           <UndoToolbar
             state={{
-              formData: this.state.formData,
+              formData,
               selected: this.state.selected,
               multiSelected: this.state.multiSelected,
             }}
             enableHotKeys
-            onUndoRedo={({ state }) => this.setState(state)}
+            onUndoRedo={({ state }) => {
+              if (this.props.global) {
+                this.props.setFormData(state.formData);
+              }
+              return this.setState(state);
+            }}
           />
           <BlocksForm
-            onChangeFormData={(newFormData) =>
+            onChangeFormData={(newData) => {
+              const newFormData = {
+                ...formData,
+                ...newData,
+              };
               this.setState({
-                formData: {
-                  ...formData,
-                  ...newFormData,
-                },
-              })
-            }
+                formData: newFormData,
+              });
+              if (this.props.global) {
+                this.props.setFormData(newFormData);
+              }
+            }}
             onChangeField={this.onChangeField}
             onSelectBlock={this.onSelectBlock}
             properties={formData}
@@ -635,9 +672,9 @@ class Form extends Component {
                           {...schema.properties[field]}
                           id={field}
                           fieldSet={item.title.toLowerCase()}
-                          formData={this.state.formData}
+                          formData={formData}
                           focus={this.state.inFocus[field]}
-                          value={this.state.formData?.[field]}
+                          value={formData?.[field]}
                           required={schema.required.indexOf(field) !== -1}
                           onChange={this.onChangeField}
                           onBlur={this.onBlurField}
@@ -700,10 +737,10 @@ class Form extends Component {
                             {...schema.properties[field]}
                             isDisabled={!this.props.editable}
                             id={field}
-                            formData={this.state.formData}
+                            formData={formData}
                             fieldSet={item.title.toLowerCase()}
                             focus={this.state.inFocus[field]}
-                            value={this.state.formData?.[field]}
+                            value={formData?.[field]}
                             required={schema.required.indexOf(field) !== -1}
                             onChange={this.onChangeField}
                             onBlur={this.onBlurField}
@@ -751,7 +788,7 @@ class Form extends Component {
                     <Field
                       {...schema.properties[field]}
                       id={field}
-                      value={this.state.formData?.[field]}
+                      value={formData?.[field]}
                       required={schema.required.indexOf(field) !== -1}
                       onChange={this.onChangeField}
                       onBlur={this.onBlurField}
@@ -812,5 +849,12 @@ class Form extends Component {
 const FormIntl = injectIntl(Form, { forwardRef: true });
 
 export default compose(
-  connect(null, { setSidebarTab }, null, { forwardRef: true }),
+  connect(
+    (state, props) => ({
+      globalData: state.form?.global,
+    }),
+    { setSidebarTab, setFormData },
+    null,
+    { forwardRef: true },
+  ),
 )(FormIntl);
