@@ -50,18 +50,18 @@
 
   &[data-invalid] {
     &:before {
-      border-color: var(--invalid-color);
+      border-color: var(--color-invalid);
     }
 
     &[data-pressed]:before {
-      border-color: var(--invalid-color-pressed);
+      border-color: var(--color-invalid-pressed);
     }
   }
 }
 
 .react-aria-RadioGroup {
   .react-aria-FieldError {
-    color: var(--invalid-color);
+    color: var(--color-invalid);
     font-size: 12px;
   }
 

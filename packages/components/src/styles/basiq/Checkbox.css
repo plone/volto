@@ -68,21 +68,21 @@
   &[data-invalid] {
     .checkbox {
       --checkmark-color: var(--gray-50);
-      border-color: var(--invalid-color);
+      border-color: var(--color-invalid);
     }
 
     &[data-pressed] .checkbox {
-      border-color: var(--invalid-color-pressed);
+      border-color: var(--color-invalid-pressed);
     }
 
     &[data-selected],
     &[data-indeterminate] {
       .checkbox {
-        background: var(--invalid-color);
+        background: var(--color-invalid);
       }
 
       &[data-pressed] .checkbox {
-        background: var(--invalid-color-pressed);
+        background: var(--color-invalid-pressed);
       }
     }
   }

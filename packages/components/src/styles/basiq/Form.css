@@ -11,7 +11,7 @@
 .react-aria-Form [role='alert'] {
   max-width: 250px;
   padding: 12px;
-  border: 2px solid var(--invalid-color);
+  border: 2px solid var(--color-invalid);
   border-radius: 6px;
   background: var(--overlay-background);
   outline: none;

@@ -9,7 +9,7 @@
   gap: 0.571rem;
 
   .react-aria-FieldError {
-    color: var(--invalid-color);
+    color: var(--color-invalid);
     font-size: 12px;
   }
 

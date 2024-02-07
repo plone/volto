@@ -24,7 +24,7 @@
 
 .react-aria-Modal {
   max-width: 300px;
-  border: 1px solid var(--gray-400);
+  border: 1px solid var(--border-color);
   border-radius: 6px;
   background: var(--overlay-background);
   box-shadow: 0 8px 20px rgba(0 0 0 / 0.1);

@@ -84,7 +84,7 @@
   }
 
   [slot='errorMessage'] {
-    color: var(--invalid-color);
+    color: var(--color-invalid);
     font-size: 12px;
   }
 }

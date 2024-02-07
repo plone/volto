@@ -1,6 +1,8 @@
 import React from 'react';
 import { Tooltip } from './Tooltip';
-import { Button, TooltipTrigger } from 'react-aria-components';
+import { TooltipTrigger } from 'react-aria-components';
+import { ToggleButton } from '../ToggleButton/ToggleButton';
+import { BoldIcon } from '../Icons/BoldIcon';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
@@ -20,8 +22,10 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: (args: any) => (
     <TooltipTrigger>
-      <Button>💾</Button>
-      <Tooltip {...args}>Save</Tooltip>
+      <ToggleButton {...args}>
+        <BoldIcon size="S" />
+      </ToggleButton>
+      <Tooltip {...args}>Bold</Tooltip>
     </TooltipTrigger>
   ),
   args: {},

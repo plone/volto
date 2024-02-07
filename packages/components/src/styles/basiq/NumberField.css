@@ -8,7 +8,7 @@
   .react-aria-Group {
     display: flex;
     width: fit-content;
-    border-radius: 4px;
+    border-radius: 6px;
 
     &[data-focus-within] {
       outline: 1px solid var(--focus-ring-color);
@@ -21,7 +21,6 @@
 
   .react-aria-Button {
     width: 2.3rem;
-    padding: 0;
     font-size: 1.4rem;
 
     &[slot='decrement'] {
@@ -52,7 +51,7 @@
   &[data-invalid] {
     .react-aria-Input,
     .react-aria-Button {
-      border-color: var(--invalid-color);
+      border-color: var(--color-invalid);
     }
 
     &:focus-within {
@@ -64,7 +63,7 @@
   }
 
   .react-aria-FieldError {
-    color: var(--invalid-color);
+    color: var(--color-invalid);
     font-size: 12px;
   }
 

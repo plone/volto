@@ -16,7 +16,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Dwefault: Story = {
+export const Default: Story = {
   render: (args: any) => (
     <TagGroup {...args}>
       <Tag>Chocolate</Tag>

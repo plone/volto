@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Button,
+  Button as bn,
   FieldError,
   Group,
   Input,
@@ -10,6 +10,9 @@ import {
   Text,
   ValidationResult,
 } from 'react-aria-components';
+import { Button } from '../Button/Button';
+import { AddIcon } from '../Icons/AddIcon';
+import { DashIcon } from '../Icons/DashIcon';
 
 export interface NumberFieldProps extends AriaNumberFieldProps {
   label?: string;
@@ -27,9 +30,13 @@ export function NumberField({
     <AriaNumberField {...props}>
       <Label>{label}</Label>
       <Group>
-        <Button slot="decrement">-</Button>
+        <Button slot="decrement">
+          <DashIcon size="XS" />
+        </Button>
         <Input />
-        <Button slot="increment">+</Button>
+        <Button slot="increment">
+          <AddIcon size="XS" />
+        </Button>
       </Group>
       {description && <Text slot="description">{description}</Text>}
       <FieldError>{errorMessage}</FieldError>
