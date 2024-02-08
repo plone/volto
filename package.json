@@ -44,5 +44,9 @@
     "vitest": "^0.34.6",
     "yarnhook": "0.6.1"
   },
-  "packageManager": "pnpm@8.9.0"
+  "packageManager": "pnpm@8.9.0",
+  "dependencies": {
+    "docker": "^1.0.0",
+    "make": "^0.8.1"
+  }
 }

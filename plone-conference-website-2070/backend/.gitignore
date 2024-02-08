@@ -1,0 +1,43 @@
+.coverage
+*.egg-info
+*.log
+*.mo
+*.py?
+*.swp
+# dirs
+bin/
+buildout-cache/
+data/*.json
+develop-eggs/
+eggs/
+etc/
+htmlcov/
+include/
+instance/
+lib/
+lib64/
+local/
+node_modules/
+parts/
+src/plone_conference_website_2070/setuphandlers/data/*.json
+dist/*
+test.plone_addon/
+var/
+# files
+.installed.cfg
+.mr.developer.cfg
+lib64
+log.html
+output.xml
+pip-selfcheck.json
+report.html
+.vscode/
+.tox/
+reports/
+venv/
+*-mxdev.txt
+# excludes
+live.cfg
+inituser
+pip-wheel-metadata
+pyvenv.cfg

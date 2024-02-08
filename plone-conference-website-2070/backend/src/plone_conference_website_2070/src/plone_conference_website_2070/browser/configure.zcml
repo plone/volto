@@ -1,0 +1,15 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="plone_conference_website_2070"
+    >
+
+  <!-- Publish static files -->
+  <plone:static
+      directory="static"
+      name="plone_conference_website_2070"
+      type="plone"
+      />
+
+</configure>

@@ -1,0 +1,7 @@
+---
+project_folders:
+  # Path to store plone-conference-website-2070.example.com postgres data
+  - path: "/srv/plone-conference-website-2070/data"
+    owner: 999
+    group: 999
+    mode: "0750"

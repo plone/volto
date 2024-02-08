@@ -1,0 +1,31 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="plone_conference_website_2070"
+    >
+
+  <i18n:registerTranslations directory="locales" />
+
+  <include
+      package="Products.CMFCore"
+      file="permissions.zcml"
+      />
+  <include
+      package="plone.behavior"
+      file="meta.zcml"
+      />
+
+  <include file="dependencies.zcml" />
+
+  <include file="permissions.zcml" />
+  <include file="profiles.zcml" />
+
+  <include package=".indexers" />
+  <include package=".vocabularies" />
+  <include package=".behaviors" />
+  <include package=".browser" />
+  <include package=".serializers" />
+  <include package=".services" />
+  <include package=".subscribers" />
+
+</configure>

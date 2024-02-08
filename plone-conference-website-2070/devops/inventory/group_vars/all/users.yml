@@ -1,0 +1,6 @@
+---
+users:
+  default:
+    name: plone
+    group: sudo
+    additional_keys: []

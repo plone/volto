@@ -1,0 +1,15 @@
+---
+# Allow installing packages into system python
+#
+- name: "Base: Allow installing packages into system Python"
+  ansible.builtin.file:
+    name: "/usr/lib/python{{ item }}/EXTERNALLY-MANAGED"
+    state: absent
+  with_items:
+    - '3.7'
+    - '3.8'
+    - '3.9'
+    - '3.10'
+    - '3.11'
+  tags:
+    - base

@@ -1,0 +1,6 @@
+graft src/plone_conference_website_2070
+graft docs
+include *.rst
+include *.md
+include *.cfg
+global-exclude *.pyc

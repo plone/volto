@@ -1,0 +1,19 @@
+{
+  "portal": [
+    {
+      "email": "elli@plone.org",
+      "properties": {
+        "fullname": "Plone Conference Website 2070",
+        "location": "World"
+      },
+      "groups": [
+      ],
+      "roles": [
+        "Member"
+      ],
+      "username": "plone-conference-website-2070"
+    }
+  ],
+    "team": [
+  ]
+}

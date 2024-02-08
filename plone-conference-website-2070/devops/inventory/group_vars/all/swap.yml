@@ -1,0 +1,5 @@
+---
+swap_file_path: /swapfile
+swap_file_size_mb: "2048"
+swap_swappiness: "60"
+swap_file_state: present

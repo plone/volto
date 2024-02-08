@@ -1,0 +1,10 @@
+.docker
+.env
+.env_gha
+bin
+etc/keys/*_prod_deploy_rsa
+include
+lib
+lib64
+pyvenv.cfg
+roles

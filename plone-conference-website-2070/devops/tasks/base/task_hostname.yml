@@ -1,0 +1,20 @@
+---
+- name: "Configure hostname"
+  block:
+
+    # Add the host to the /etc/hosts
+    - name: "Add {{ host }} and {{ hostname }} to /etc/hosts"
+      ansible.builtin.lineinfile:
+        dest: /etc/hosts
+        line: "127.0.0.1 {{ host }} {{ hostname }}"
+        state: present
+        backup: true
+
+    - name: "Configure server hostname"
+      ansible.builtin.command:
+        cmd: "hostnamectl set-hostname {{ host }}"
+      register: output
+      changed_when: output.rc != 0
+
+  tags:
+    - hostname

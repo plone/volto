@@ -1,0 +1,72 @@
+{
+  "blocks": {
+    "94b9fb26-041d-438c-981a-671a89854cbe": {
+      "@type": "slate",
+      "plaintext": "Welcome to Plone Conference Website 2070",
+      "value": [
+        {
+          "children": [
+            {
+              "text": ""
+            },
+            {
+              "children": [
+                {
+                  "text": "Welcome to Plone Conference Website 2070"
+                }
+              ],
+              "type": "b"
+            }
+          ],
+          "type": "p"
+        }
+      ]
+    },
+    "1006adfe-d9b1-4e70-9b32-a9158310723d": {
+      "@type": "slate",
+      "plaintext": "Plone is an enterprise CMS built with Python.",
+      "value": [
+        {
+          "children": [
+            {
+              "text": ""
+            },
+            {
+              "children": [
+                {
+                  "text": "Plone"
+                }
+              ],
+              "type": "b"
+            },
+            {
+              "text": " is an enterprise CMS built with "
+            },
+            {
+              "children": [
+                {
+                  "text": "Python"
+                }
+              ],
+              "data": {
+                "url": "https://python.org"
+              },
+              "type": "link"
+            },
+            {
+              "text": "."
+            }
+          ],
+          "type": "p"
+        }
+      ]
+    }
+  },
+  "blocks_layout": {
+    "items": [
+      "94b9fb26-041d-438c-981a-671a89854cbe",
+      "1006adfe-d9b1-4e70-9b32-a9158310723d"
+    ]
+  },
+  "title": "Plone Conference Website 2070"
+}

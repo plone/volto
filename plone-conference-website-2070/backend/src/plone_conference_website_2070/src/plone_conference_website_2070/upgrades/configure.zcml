@@ -1,0 +1,19 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    >
+
+  <!-- Example upgrade step
+  <genericsetup:upgradeSteps
+      profile="plone_conference_website_2070:default"
+      source="20240129001"
+      destination="20230229001"
+      >
+    <genericsetup:upgradeDepends
+        title="Update registry value"
+        import_steps="plone.app.registry"
+        />
+  </genericsetup:upgradeSteps>
+  -->
+
+</configure>

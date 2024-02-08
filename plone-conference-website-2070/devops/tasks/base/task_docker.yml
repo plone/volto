@@ -1,0 +1,140 @@
+---
+# Setup Docker
+#
+- name: "Docker: Ensure dependencies are installed"
+  ansible.builtin.apt:
+    name:
+      - apt-transport-https
+      - ca-certificates
+    state: present
+  tags:
+    - docker
+
+- name: "Docker: Install support Python Packages"
+  ansible.builtin.pip:
+    name:
+      - docker
+      - jsondiff
+    state: present
+  tags:
+    - docker
+
+- name: "Docker: Create /etc/docker/"
+  ansible.builtin.file:
+    dest: "/etc/docker/"
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+
+- name: "Docker: Create /etc/docker/daemon.json"
+  ansible.builtin.template:
+    src: ../../etc/docker/daemon/daemon.json.j2
+    dest: "/etc/docker/daemon.json"
+    owner: root
+    group: root
+    mode: 0755
+  notify:
+    - systemd daemon reload
+    - restart docker
+
+- name: "Docker: Setup Repository"
+  block:
+    - name: "Docker: Add GnuPG key"
+      ansible.builtin.apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: "Docker: Add Repository (amd64)"
+      ansible.builtin.apt_repository:
+        repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_lsb.codename }} stable"
+        state: present
+        filename: 'docker'
+
+    - name: "Docker: Add Repository (arm64)"
+      ansible.builtin.apt_repository:
+        repo: "deb [arch=arm64] https://download.docker.com/linux/ubuntu {{ ansible_lsb.codename }} stable"
+        state: present
+        filename: 'docker'
+  tags:
+    - docker
+
+- name: "Docker: Setup Packages"
+  block:
+    - name: "Docker: Remove old packages"
+      ansible.builtin.apt:
+        name:
+          - docker
+          - docker-engine
+        state: absent
+
+    - name: "Docker: Install packages"
+      ansible.builtin.apt:
+        name:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+          - docker-compose
+        state: present
+        update_cache: true
+  tags:
+    - docker
+
+- name: "Docker: Setup Service"
+  block:
+    - name: "Docker: Service is started and enabled at boot"
+      ansible.builtin.service:
+        name: docker
+        state: started
+        enabled: true
+  tags:
+    - docker
+
+- name: "Docker: Add {{ users.default.name }} user to docker group"
+  ansible.builtin.user:
+    name: "{{ users.default.name }}"
+    group: docker
+    state: present
+  tags:
+    - docker
+
+- name: "Docker: Setup docker_gwbridge"
+  community.docker.docker_network:
+    name: "docker_gwbridge"
+    driver: bridge
+    driver_options:
+      "com.docker.network.bridge.enable_icc": false
+      "com.docker.network.bridge.enable_ip_masquerade": true
+      "com.docker.network.bridge.name": "docker_gwbridge"
+      "com.docker.network.driver.mtu": "{{ docker.network.mtu }}"
+    ipam_config:
+      - subnet: 172.30.0.1/16
+  when: docker.network.custom
+  tags:
+    - docker
+    - docker_gwbridge
+
+- name: "Docker: Setup Proxy"
+  block:
+    - name: "Docker: Create /etc/systemd/system/docker.service.d/ folder"
+      ansible.builtin.file:
+        dest: "/etc/systemd/system/docker.service.d"
+        state: directory
+        owner: root
+        group: root
+        mode: 0755
+
+    - name: "Docker: Create /etc/systemd/system/docker.service.d/http-proxy.conf"
+      ansible.builtin.template:
+        src: ../../etc/docker/systemd/http-proxy.conf.j2
+        dest: "/etc/systemd/system/docker.service.d/http-proxy.conf"
+        owner: root
+        group: root
+        mode: 0755
+      notify:
+        - systemd daemon reload
+        - restart docker
+
+  when: proxy is defined and proxy.https_proxy is defined
+  tags:
+    - docker

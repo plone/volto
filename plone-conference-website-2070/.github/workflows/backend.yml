@@ -1,0 +1,158 @@
+name: Backend CI
+
+on:
+  push:
+    paths:
+      - "backend/**"
+      - ".github/workflows/backend.yml"
+  workflow_dispatch:
+
+env:
+  IMAGE_NAME_PREFIX: ghcr.io/ellizurigo/plone-conference-website-2070
+  IMAGE_NAME_SUFFIX: backend
+  PYTHON_VERSION: "3.11"
+
+jobs:
+
+  meta:
+    runs-on: ubuntu-latest
+    outputs:
+      PLONE_VERSION: ${{ steps.vars.outputs.PLONE_VERSION }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set Env Vars
+        id: vars
+        run: |
+          echo "PLONE_VERSION=$(cat backend/version.txt)" >> $GITHUB_OUTPUT
+
+  black:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout codebase
+        uses: actions/checkout@v4
+
+      - name: Run check
+        uses: plone/code-analysis-action@v2
+        with:
+          base_dir: 'backend'
+          check: 'black'
+
+  flake8:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout codebase
+        uses: actions/checkout@v4
+
+      - name: Run check
+        uses: plone/code-analysis-action@v2
+        with:
+          base_dir: 'backend'
+          check: 'flake8'
+
+  isort:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout codebase
+        uses: actions/checkout@v4
+
+      - name: Run check
+        uses: plone/code-analysis-action@v2
+        with:
+          base_dir: 'backend'
+          check: 'isort'
+
+  zpretty:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout codebase
+        uses: actions/checkout@v4
+
+      - name: Run check
+        uses: plone/code-analysis-action@v2
+        with:
+          base_dir: 'backend'
+          check: 'zpretty'
+
+  tests:
+    runs-on: ubuntu-latest
+    needs:
+      - meta
+    defaults:
+      run:
+        working-directory: ./backend
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Plone ${{ needs.meta.outputs.PLONE_VERSION }} with Python ${{ env.PYTHON_VERSION }}
+        uses: plone/setup-plone@v2.0.0
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          plone-version: ${{ needs.meta.outputs.PLONE_VERSION }}
+
+      - name: Install package
+        run: |
+          pip install mxdev
+          mxdev -c mx.ini
+          pip install -r requirements-mxdev.txt
+
+      - name: Run tests
+        run: |
+          pytest --disable-warnings src/plone_conference_website_2070/tests
+
+  release:
+    runs-on: ubuntu-latest
+    needs:
+      - black
+      - flake8
+      - isort
+      - zpretty
+      - tests
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: |
+            ${{ env.IMAGE_NAME_PREFIX }}-${{ env.IMAGE_NAME_SUFFIX }}
+          labels: |
+            org.label-schema.docker.cmd=docker run -d -p 8080:8080 ${{ env.IMAGE_NAME_PREFIX }}-${{ env.IMAGE_NAME_SUFFIX }}:latest
+          flavor:
+            latest=false
+          tags: |
+            type=ref,event=branch
+            type=sha
+            type=raw,value=latest,enable={{is_default_branch}}
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v4
+        with:
+          platforms: linux/amd64
+          context: backend
+          file: backend/Dockerfile
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}

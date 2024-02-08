@@ -1,0 +1,138 @@
+---
+# Playbook: playbooks/setup.yml
+# Description: Server setup
+#
+# Usage:
+#
+#  # Group of servers
+#  ./bin/ansible-playbook playbooks/setup.yml
+#
+- hosts: "all"
+  gather_facts: true
+  become: true
+  pre_tasks:
+
+    - name: "Base Packages: Setup"
+      ansible.builtin.import_tasks: ../tasks/base/task_base_packages.yml
+
+    - name: "Base Python: Setup"
+      ansible.builtin.import_tasks: ../tasks/base/task_base_python.yml
+
+
+  roles:
+    - role: geerlingguy.swap
+
+  tasks:
+
+    - name: "Hostname"
+      ansible.builtin.import_tasks: ../tasks/base/task_hostname.yml
+      tags:
+        - base
+        - hostname
+
+    - name: "User {{ users.default.name }}: Setup"
+      tags:
+        - base
+        - users
+      block:
+        - name: "Add user {{ users.default.name }}"
+          ansible.builtin.user:
+            name: "{{ users.default.name }}"
+            shell: /bin/bash
+            generate_ssh_key: true
+            ssh_key_bits: 4096
+            ssh_key_file: .ssh/id_rsa
+
+        - name: "Allow user {{ users.default.name }} to sudo without password"
+          ansible.builtin.copy:
+            content: "{{ users.default.name }} ALL=(ALL) NOPASSWD: ALL"
+            dest: /etc/sudoers.d/{{ users.default.name }}
+            mode: 0640
+
+    - name: "SSH: Setup"
+      tags:
+        - base
+        - ssh
+      block:
+
+        - name: "SSH: Generate a deployment key"
+          community.crypto.openssh_keypair:
+            path: ../etc/keys/{{ users.default.name }}_prod_deploy_rsa
+          delegate_to: localhost
+          become: false
+
+        - name: "SSH: Read authorized_keys from root"
+          ansible.builtin.command:
+            cmd: cat /root/.ssh/authorized_keys
+          become_user: "root"
+          become: true
+          register: root_keys
+          changed_when: false
+
+        - name: "SSH: Set root keys for the new user"
+          ansible.builtin.authorized_key:
+            user: "{{ users.default.name }}"
+            key: "{{ item }}"
+          loop: "{{ root_keys.stdout_lines }}"
+          become_user: "{{ users.default.name }}"
+          become: true
+
+        - name: "SSH: Additional keys"
+          ansible.builtin.authorized_key:
+            user: "{{ users.default.name }}"
+            key: "{{ lookup('file', item) }}"
+          with_fileglob:
+            - ../etc/keys/*.pub
+          become_user: "{{ users.default.name }}"
+          become: true
+
+        - name: "SSH: Disallow password authentication"
+          ansible.builtin.lineinfile:
+            path: /etc/ssh/sshd_config
+            regexp: "^PasswordAuthentication"
+            line: "PasswordAuthentication no"
+            state: present
+
+        - name: "SSH: Set AllowUsers"
+          ansible.builtin.lineinfile:
+            path: /etc/ssh/sshd_config
+            insertafter: "^# Authentication"
+            line: "AllowUsers {{ users.default.name }} root"
+          notify: restart ssh
+
+        - name: "SSH: Listen to port {{ sshd.port }}"
+          ansible.builtin.lineinfile:
+            path: /etc/ssh/sshd_config
+            insertafter: "^#Port 22"
+            line: "Port {{ sshd.port }}"
+          notify: restart ssh
+
+    - name: "Docker: Setup"
+      ansible.builtin.import_tasks: ../tasks/base/task_docker.yml
+      tags:
+        - base
+        - docker
+
+    - name: "Docker Swarm: Setup"
+      ansible.builtin.import_tasks: ../tasks/swarm/task_swarm.yml
+      tags:
+        - base
+        - swarm
+
+    - name: "Project Structure"
+      tags:
+        - base
+        - project
+      block:
+        - name: "Project: Create folder structure"
+          ansible.builtin.file:
+            dest: "{{ item.path }}"
+            state: directory
+            owner: "{{ item.owner }}"
+            group: "{{ item.group }}"
+            mode: "{{ item.mode }}"
+          with_items: "{{ project_folders }}"
+
+  handlers:
+    - name: "Include default handlers"
+      ansible.builtin.import_tasks: ../tasks/handlers/common.yml

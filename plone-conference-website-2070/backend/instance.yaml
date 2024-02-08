@@ -1,0 +1,8 @@
+default_context:
+    initial_user_name: 'admin'
+    initial_user_password: 'admin'
+
+    load_zcml:
+        package_includes: ['plone_conference_website_2070']
+
+    db_storage: direct

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+  <version>20240129001</version>
+  <dependencies>
+    <dependency>profile-plone.volto:default</dependency>
+  </dependencies>
+</metadata>

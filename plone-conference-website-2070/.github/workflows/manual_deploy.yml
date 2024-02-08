@@ -1,0 +1,49 @@
+name: Manual Deployment of plone-conference-website-2070.example.com
+
+on:
+  workflow_dispatch:
+
+
+jobs:
+
+  meta:
+    runs-on: ubuntu-latest
+    outputs:
+      ENVIRONMENT: ${{ steps.vars.outputs.ENVIRONMENT }}
+      STACK_NAME: ${{ steps.vars.outputs.STACK_NAME }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set Env Vars
+        id: vars
+        run: |
+          ENVIRONMENT=${{ vars.LIVE_ENV }}
+          echo "ENVIRONMENT=${ENVIRONMENT}" >> $GITHUB_OUTPUT
+          echo "STACK_NAME=${ENVIRONMENT//./-}" >> $GITHUB_OUTPUT
+
+  deploy:
+    if: ${{ github.ref == 'refs/heads/main' }}
+    needs:
+      - meta
+    runs-on: ubuntu-latest
+    environment: ${{ needs.meta.outputs.ENVIRONMENT }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy to cluster
+        uses: kitconcept/docker-stack-deploy@v1.2.0
+        with:
+          registry: "ghcr.io"
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          remote_host: ${{ secrets.DEPLOY_HOST }}
+          remote_port: ${{ secrets.DEPLOY_PORT }}
+          remote_user: ${{ secrets.DEPLOY_USER }}
+          remote_private_key: ${{ secrets.DEPLOY_SSH }}
+          stack_file: devops/stacks/${{ needs.meta.outputs.ENVIRONMENT }}.yml
+          stack_name: ${{ needs.meta.outputs.STACK_NAME }}
+          stack_param: ${{ github.ref_name }}
+          env_file: ${{ secrets.ENV_FILE }}
+          deploy_timeout: 480

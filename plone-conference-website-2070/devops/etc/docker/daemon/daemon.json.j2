@@ -1,0 +1,16 @@
+{
+  "data-root": "{{ docker.storage.root }}",
+  {%- if docker.network.custom %}
+  "bip": "{{ docker.network.bip }}",
+  "default-address-pools": [
+    { "base": "{{ docker.network.default_address_pool.base }}", "size": {{ docker.network.default_address_pool.size }} }
+  ],
+  "mtu": {{ docker.network.mtu }},
+  {%- endif %}
+  "log-driver": "{{ docker.logs.driver | default('json-file') }}",
+  "log-opts": {
+    "labels": "{{ docker.log.opt.labels | default('com.docker.swarm.service.name') }}",
+    "max-size": "{{ docker.log.opt.max_size | default('10m') }}",
+    "max-file": "{{ docker.log.opt.max_file | default('5') }}"
+  }
+}

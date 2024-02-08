@@ -1,0 +1,38 @@
+# syntax=docker/dockerfile:1
+ARG PLONE_VERSION=6.0.9
+FROM plone/server-builder:${PLONE_VERSION} as builder
+
+WORKDIR /app
+
+# Add local code
+COPY . .
+
+# Install local requirements and pre-compile mo files
+RUN <<EOT
+    set -e
+    bin/pip install mxdev
+    mv requirements-docker.txt requirements.txt
+    sed -i 's/-e src\/plone_conference_website_2070\[test\]/src\/plone_conference_website_2070/g' mx.ini
+    bin/mxdev -c mx.ini
+    bin/pip install -r requirements-mxdev.txt
+    bin/pip install plone.app.robotframework>=2.0.0
+    bin/python /compile_mo.py
+    rm -Rf src/
+EOT
+
+FROM plone/server-acceptance:${PLONE_VERSION}
+
+LABEL maintainer="Elli <elli@plone.org>" \
+      org.label-schema.name="plone-conference-website-2070-acceptance" \
+      org.label-schema.description="Plone Conference Website 2070 backend acceptance image." \
+      org.label-schema.vendor="Elli"
+
+ENV CONFIGURE_PACKAGES="plone.restapi,plone.volto,plone.volto.cors,plone_conference_website_2070"
+ENV APPLY_PROFILES="plone_conference_website_2070:default"
+
+# Copy /app from builder
+COPY --from=builder /app /app
+
+RUN <<EOT
+    ln -s /data /app/var
+EOT

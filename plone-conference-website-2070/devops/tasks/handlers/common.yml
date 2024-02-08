@@ -1,0 +1,27 @@
+---
+- name: systemd daemon reload
+  ansible.builtin.systemd:
+    daemon_reload: true
+  become_user: root
+  become: true
+
+- name: restart ufw
+  ansible.builtin.service:
+    name: ufw
+    state: restarted
+  become: true
+  become_user: root
+
+- name: restart ssh
+  ansible.builtin.service:
+    name: ssh
+    state: restarted
+  become: true
+  become_user: root
+
+- name: restart docker
+  ansible.builtin.service:
+    name: docker
+    state: restarted
+  become_user: root
+  become: true

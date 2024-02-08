@@ -1,0 +1,10 @@
+<configure xmlns="http://namespaces.zope.org/zope">
+
+  <!-- Example vocabulary
+  <utility
+      name="plone_conference_website_2070.vocabulary.vocabulary"
+      component=".industries_vocabulary"
+      />
+   -->
+
+</configure>

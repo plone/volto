@@ -1,0 +1,10 @@
+---
+base_packages:
+  - apt-transport-https
+  - ca-certificates
+  - acl
+  - aptitude
+  - curl
+  - python3-apt
+  - python3-minimal
+  - python3-pip

@@ -1,0 +1,8 @@
+ansible
+ansible-lint
+lxml
+passlib
+python-gitlab
+requests
+yamllint
+dnspython

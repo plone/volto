@@ -1,0 +1,16 @@
+---
+docker:
+  storage:
+    root: "/var/lib/docker"
+  network:
+    custom: false
+    mtu: 1450
+    bip: "10.0.1.1/24"
+    default_address_pool:
+      base: "172.17.0.0/12"
+      size: 20
+  log:
+    driver: "json-file"
+    opt:
+      max_size: "5m"
+      max_file: "3"
