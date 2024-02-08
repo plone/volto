@@ -156,3 +156,4 @@ Volto itself is treated as a library and you can find it in the `packages/volto`
 MIT License. Copyrights held by the [Plone Foundation](https://plone.org/foundation).
 
 See [LICENSE.md](LICENSE.md) for details.
+# plone-volto
