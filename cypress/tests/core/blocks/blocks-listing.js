@@ -239,7 +239,7 @@ describe('Listing Block Tests', () => {
     );
   });
 
-  it.only('Add Listing block - results preview', () => {
+  it('Add Listing block - results preview', () => {
     cy.intercept('PATCH', '/**/my-page').as('save');
     cy.intercept('GET', '/**/my-page').as('content');
     cy.intercept('GET', '/**/@types/Document').as('schema');
