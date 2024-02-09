@@ -8,6 +8,9 @@ const meta = {
   title: 'Viewlets/Breadcrumbs',
   component: BreadcrumbsComponent,
   tags: ['autodocs'],
+  parameters: {
+    layout: 'centered',
+  },
   decorators: [
     (Story) => (
       <div style={{ width: '400px' }}>

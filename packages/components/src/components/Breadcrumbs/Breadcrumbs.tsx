@@ -7,6 +7,8 @@ import { Link } from '../Link/Link';
 import { HomeIcon } from './HomeIcon';
 import type { BreadcrumbsProps as RACBreadcrumbsProps } from 'react-aria-components';
 
+import '../../styles/basiq/Breadcrumbs.css';
+
 type Breadcrumb = {
   '@id': string;
   title: string;
@@ -42,9 +44,9 @@ export function Breadcrumbs({
 
   return (
     <nav aria-label="breadcrumbs" role="navigation">
-      <RACBreadcrumbs className="q breadcrumbs" items={itemsWithRoot || items}>
+      <RACBreadcrumbs items={itemsWithRoot || items}>
         {(item) => (
-          <RACBreadcrumb id={item['@id']} className="q breadcrumb">
+          <RACBreadcrumb id={item['@id']}>
             <Link href={item['@id']}>
               {item['@id'] === (root || '/') && <HomeIcon size="S" />}
               {item.title}
