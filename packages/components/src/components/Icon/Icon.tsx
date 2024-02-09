@@ -45,7 +45,7 @@ export interface IconProps extends DOMProps, AriaLabelingProps, StyleProps {
 export type IconPropsWithoutChildren = Omit<IconProps, 'children'>;
 
 function iconColorValue(value: IconColorValue) {
-  return `var(--semantic-${value}-color-icon)`;
+  return `var(--quanta-color-icon-${value})`;
 }
 
 const iconStyleProps: StyleHandlers = {
