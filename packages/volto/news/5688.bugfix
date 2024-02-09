@@ -1,1 +1,3 @@
 Fixed listing SSR rendering by sending `subrequestId` instead of `id` only within `getAsyncData`, similar to calling `getQueryStringResults` directly. @ichim-david 
+Fixed listing SSR pagination rendering by sending `currentPage` value besides the `subrequestId`. @ichim-david  
+Added testing for SSR rendering for all of the listing block tests. @ichim-david
