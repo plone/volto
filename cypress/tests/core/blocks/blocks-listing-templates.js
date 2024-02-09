@@ -48,7 +48,7 @@ describe('Folder Contents Tests', () => {
     cy.url().should('eq', Cypress.config().baseUrl + '/my-folder/my-document');
     cy.get('.listing-item img')
       .should('have.attr', 'src')
-      .and('contain', '/my-folder/my-document/my-image/@@images/image-');
+      .and('contain', '/my-folder/my-document/my-image/@@images/image/preview');
     cy.get('.listing-item img')
       .should('be.visible')
       .and(($img) => {
@@ -83,7 +83,6 @@ describe('Folder Contents Tests', () => {
     ).click();
     cy.get('#field-variation').click().type('summary{enter}');
     cy.get('#toolbar-save').click();
-    cy.wait('@content');
 
     cy.url().should('eq', Cypress.config().baseUrl + '/my-folder/my-document');
     cy.get('.listing-item img')
