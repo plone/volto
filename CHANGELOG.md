@@ -17,6 +17,12 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 17.13.0 (2024-02-09)
+
+### Feature
+
+- Add global form state. @robgietema [#5721](https://github.com/plone/volto/issues/5721)
+
 ## 17.12.1 (2024-02-06)
 
 ### Bugfix
