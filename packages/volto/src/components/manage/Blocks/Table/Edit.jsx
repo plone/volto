@@ -630,6 +630,7 @@ class Edit extends Component {
             celled={this.props.data.table.celled}
             inverted={this.props.data.table.inverted}
             striped={this.props.data.table.striped}
+            unstackable
           >
             <Table.Body>
               {map(this.props.data.table.rows, (row, rowIndex) => (
