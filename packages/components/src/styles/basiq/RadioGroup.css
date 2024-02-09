@@ -54,7 +54,7 @@
     }
 
     &[data-pressed]:before {
-      border-color: var(--color-invalid-pressed);
+      border-color: var(--color-pressed-invalid);
     }
   }
 }

@@ -7,12 +7,21 @@
   text-decoration: underline;
   transition: all 200ms;
 
-  &[data-hovered] {
+  /* TODO: review, but removing the fancyness for now */
+  /* &[data-hovered] {
     text-decoration-style: wavy;
-  }
+  } */
 
   &[data-pressed] {
     color: var(--link-color-pressed);
+  }
+
+  &[data-hovered] {
+    color: var(--link-color-secondary);
+  }
+
+  &[data-focused] {
+    color: var(--link-color-secondary);
   }
 
   &[data-focus-visible]:after {

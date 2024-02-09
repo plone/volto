@@ -101,7 +101,9 @@
 
     &[data-hovered] {
       & img {
-        box-shadow: 0 0 8px rgb(from slateblue r g b / 0.5);
+        /* TODO: review */
+        /* box-shadow: 0 0 8px rgb(from slateblue r g b / 0.5); */
+        box-shadow: 0 0 8px var(--highlight-background-hover);
       }
     }
 
@@ -110,7 +112,9 @@
       color: inherit;
 
       & img {
-        box-shadow: 0 0 12px rgb(from slateblue r g b / 0.8);
+        /* TODO: review */
+        /* box-shadow: 0 0 12px rgb(from slateblue r g b / 0.8); */
+        box-shadow: 0 0 12px var(--highlight-background-hover);
       }
 
       &:after {

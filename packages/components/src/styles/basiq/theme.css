@@ -47,7 +47,8 @@
   --basiq-slate-900: #0f172a;
   --basiq-slate-950: #020617;
 
-  --background: hsl(0 0% 100%);
+  /* New York Theme */
+  /* --background: hsl(0 0% 100%);
   --foreground: hsl(240 10% 3.9%);
   --card: hsl(0 0% 100%);
   --card-foreground: hsl(240 10% 3.9%);
@@ -65,7 +66,15 @@
   --destructive-foreground: hsl(0 0% 98%);
   --border: hsl(240 5.9% 90%);
   --input: hsl(240 5.9% 90%);
-  --ring: #a1a1aa;
+  --ring: #a1a1aa; */
+}
+
+/* Quanta Theme*/
+:root {
+  --quanta-sapphire: #0b78d0;
+  --quanta-royal: #085696;
+  --quanta-cobalt: #2597f4;
+  --quanta-candy: #d0220b;
 }
 
 /* Semantic colors */
@@ -77,9 +86,9 @@
   --text-color-disabled: var(--basiq-slate-400); /* --gray-200 */
   --text-color-placeholder: var(--gray-400);
   /* Link */
-  --link-color: var(--purple-500);
-  --link-color-secondary: var(--gray-500);
-  --link-color-pressed: var(--purple-600);
+  --link-color: var(--quanta-sapphire);
+  --link-color-secondary: var(--quanta-royal);
+  --link-color-pressed: var(--quanta-cobalt);
   /* Border */
   --border-color: var(--basiq-slate-400); /* --gray-300 */
   --border-color-hover: var(--basiq-slate-500); /* --gray-400 */
@@ -100,15 +109,16 @@
   --highlight-background-pressed: var(
     --basiq-slate-800
   ); /* #522acd purple-200 */
-  --highlight-background-invalid: #cc2000; /* red-300 from dark theme */
+  --highlight-background-invalid: var(
+    --quanta-candy
+  ); /* red-300 from dark theme */
+  --highlight-background-hover: var(--basiq-slate-400); /* #6f46ed purple-300 */
   --highlight-foreground: var(--basiq-slate-50); /* white */
-  --highlight-foreground-pressed: #ddd;
-  --highlight-overlay: rgb(from #6f46ed r g b / 15%);
-  --invalid-color: var(--red-400); /* To remove in favor of the next one*/
+  --highlight-foreground-pressed: var(--basiq-slate-200); /* #ddd */
+  --highlight-overlay: var(
+    --basiq-slate-400
+  ); /* rgb(from #6f46ed r g b / 15%) */
   --color-invalid: var(--red-400); /* Renamed */
-  --color-invalid-pressed: var(
-    --red-500
-  ); /* To remove in favor of the next one*/
   --color-pressed-invalid: var(--red-500); /* Renamed */
 }
 
@@ -140,7 +150,7 @@
     --highlight-foreground: HighlightText;
     --highlight-foreground-pressed: HighlightText;
     --color-invalid: LinkText;
-    --color-invalid-pressed: LinkText;
+    --color-pressed-invalid: LinkText;
   }
 }
 

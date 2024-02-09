@@ -44,7 +44,7 @@
     }
 
     &[data-pressed] {
-      background: var(--gray-100);
+      background: var(---basiq-slate-300);
     }
 
     &[data-selected] {

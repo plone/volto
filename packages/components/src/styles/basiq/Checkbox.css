@@ -72,7 +72,7 @@
     }
 
     &[data-pressed] .checkbox {
-      border-color: var(--color-invalid-pressed);
+      border-color: var(--color-pressed-invalid);
     }
 
     &[data-selected],
@@ -82,7 +82,7 @@
       }
 
       &[data-pressed] .checkbox {
-        background: var(--color-invalid-pressed);
+        background: var(--color-pressed-invalid);
       }
     }
   }
