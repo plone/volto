@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "18.0.0-alpha.9",
+  "version": "18.0.0-alpha.10",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -348,6 +348,7 @@
   },
   "devDependencies": {
     "@jest/globals": "^29.7.0",
+    "@plone/types": "workspace:*",
     "@plone/volto-coresandbox": "workspace:*",
     "@sinonjs/fake-timers": "^6.0.1",
     "@storybook/addon-actions": "^6.5.15",
@@ -367,6 +368,7 @@
     "@types/react": "^17.0.52",
     "@types/react-dom": "^17",
     "@types/react-test-renderer": "18.0.1",
+    "@types/uuid": "^9.0.2",
     "@typescript-eslint/eslint-plugin": "6.7.0",
     "@typescript-eslint/parser": "6.7.0",
     "babel-loader": "9.1.0",

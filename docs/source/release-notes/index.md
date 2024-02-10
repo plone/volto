@@ -17,6 +17,23 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.10 (2024-02-02)
+
+### Feature
+
+- Allow editor to edit metadata during bulk upload. @iFlameing [#5549](https://github.com/plone/volto/issues/5549)
+- Added `aria-live="polite"` in `Contents.jsx` to improve accessibility for the Contents page. @Hrittik20 [#5617](https://github.com/plone/volto/issues/5617)
+- Support for passing whole data object of the initial blocks in local config. Refactor initial block type to its own helpers. @sneridagh [#5718](https://github.com/plone/volto/issues/5718)
+
+### Bugfix
+
+- Fixed wrong conditional proprieties on `ObjectBrowser` for multiple selection. @deodorhunter @Wagner3UB [#4190](https://github.com/plone/volto/issues/4190)
+- Remove turbo from monorepo commands until it's really necessary @sneridagh [#5715](https://github.com/plone/volto/issues/5715)
+
+### Documentation
+
+- Block search engines from indexing content on Netlify preview builds. @stevepiercy [#5725](https://github.com/plone/volto/issues/5725)
+
 ## 18.0.0-alpha.9 (2024-01-26)
 
 ### Feature
