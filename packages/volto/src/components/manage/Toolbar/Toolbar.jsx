@@ -314,7 +314,12 @@ class Toolbar extends Component {
   };
 
   handleClickOutside = (e) => {
-    if (e.target.classList.contains('icon')) return;
+    if (
+      ['icon-path', 'icon'].some((className) =>
+        e.target.classList.contains(className),
+      )
+    )
+      return;
     if (this.pusher && doesNodeContainClick(this.pusher, e)) return;
     this.closeMenu();
   };
