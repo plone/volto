@@ -16,6 +16,7 @@ import { Route as ErrorImport } from './routes/error'
 import { Route as IndexImport } from './routes/index'
 import { Route as PostsIndexImport } from './routes/posts/index'
 import { Route as PostsPostIdImport } from './routes/posts/$postId'
+import { Route as SplatEditImport } from './routes/$.edit'
 
 // Create/Update Routes
 
@@ -44,6 +45,11 @@ const PostsPostIdRoute = PostsPostIdImport.update({
   getParentRoute: () => PostsRoute,
 } as any)
 
+const SplatEditRoute = SplatEditImport.update({
+  path: '/$/edit',
+  getParentRoute: () => rootRoute,
+} as any)
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
@@ -58,6 +64,10 @@ declare module '@tanstack/react-router' {
     }
     '/posts': {
       preLoaderRoute: typeof PostsImport
+      parentRoute: typeof rootRoute
+    }
+    '/$/edit': {
+      preLoaderRoute: typeof SplatEditImport
       parentRoute: typeof rootRoute
     }
     '/posts/$postId': {
@@ -77,6 +87,7 @@ export const routeTree = rootRoute.addChildren([
   IndexRoute,
   ErrorRoute,
   PostsRoute.addChildren([PostsPostIdRoute, PostsIndexRoute]),
+  SplatEditRoute,
 ])
 
 /* prettier-ignore-end */

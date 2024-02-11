@@ -1,8 +1,8 @@
-import ReactDOM from 'react-dom/client'
+import ReactDOM from 'react-dom/client';
 
-import { StartClient } from '@tanstack/react-router-server/client'
-import { createRouter } from './router'
+import { StartClient } from '@tanstack/react-router-server/client';
+import { createRouter } from './router';
 
-const router = createRouter()
+const router = createRouter();
 
-ReactDOM.hydrateRoot(document, <StartClient router={router} />)
+ReactDOM.hydrateRoot(document, <StartClient router={router} />);

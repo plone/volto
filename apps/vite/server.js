@@ -1,3 +1,4 @@
+import fs from 'node:fs/promises';
 import express from 'express';
 import getPort, { portNumbers } from 'get-port';
 
@@ -9,6 +10,10 @@ export async function createServer(
   hmrPort,
 ) {
   const app = express();
+
+  const prodIndexHtml = isProd
+    ? await fs.readFile('./dist/client/index.html', 'utf-8')
+    : '';
 
   /**
    * @type {import('vite').ViteDevServer}
@@ -37,7 +42,9 @@ export async function createServer(
     // use vite's connect instance as middleware
     app.use(vite.middlewares);
   } else {
+    const sirv = (await import('sirv')).default;
     app.use((await import('compression')).default());
+    app.use('/', sirv('./dist/client', { extensions: [] }));
   }
 
   app.use('*', async (req, res) => {
@@ -57,8 +64,7 @@ export async function createServer(
             url,
             `<html><head></head><body></body></html>`,
           )
-        : '';
-      console.log(viteHead);
+        : prodIndexHtml;
 
       viteHead = viteHead.substring(
         viteHead.indexOf('<head>') + 6,
@@ -74,7 +80,7 @@ export async function createServer(
       })();
 
       console.log('Rendering: ', url, '...');
-      entry.render({ req, res, url, head: viteHead });
+      entry.render({ req, res, url, head: isProd ? viteHead : '' });
     } catch (e) {
       !isProd && vite.ssrFixStacktrace(e);
       console.log(e.stack);
