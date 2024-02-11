@@ -121,8 +121,7 @@ You can also generate builds on your continuous integration, then deploy them an
     If you need to specify several add-ons, separate them with a semicolon (`;`):
 
     ```shell
-    yarn add volto-slate
-    ADDONS="test-addon:asDefault;test-addon2" yarn start
+    ADDONS="test-addon;test-addon2" yarn start
     ```
 
     
