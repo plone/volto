@@ -313,8 +313,21 @@ class Toolbar extends Component {
     this.loadComponent(selector);
   };
 
+  findAncestor = (el, sel) => {
+    while (
+      (el = el.parentElement) &&
+      !(el.matches || el.matchesSelector).call(el, sel)
+    );
+    return el;
+  };
+
   handleClickOutside = (e) => {
+    const target = e.target;
     if (this.pusher && doesNodeContainClick(this.pusher, e)) return;
+
+    // if the click is on a button, do not close the menu as it may be the toggleMenu action
+    if (this.findAncestor(target, 'button')) return;
+
     this.closeMenu();
   };
 
