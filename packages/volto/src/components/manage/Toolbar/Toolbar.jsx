@@ -182,6 +182,7 @@ class Toolbar extends Component {
   };
 
   toolbarWindow = React.createRef();
+  buttonRef = React.createRef();
 
   constructor(props) {
     super(props);
@@ -262,8 +263,10 @@ class Toolbar extends Component {
     );
   };
 
-  closeMenu = () =>
+  closeMenu = () => {
     this.setState(() => ({ showMenu: false, loadedComponents: [] }));
+    this.buttonRef.current?.setAttribute('aria-pressed', 'false');
+  };
 
   loadComponent = (type) => {
     const { loadedComponents } = this.state;
@@ -283,6 +286,26 @@ class Toolbar extends Component {
           state.loadedComponents[state.loadedComponents.length - 2]
         ].hideToolbarBody || false,
     }));
+  };
+
+  toggleButtonPressed = (e) => {
+    const target = e.target;
+    const button =
+      target.tagName === 'BUTTON'
+        ? target
+        : this.findAncestor(e.target, 'button');
+    if (button) {
+      const ariaPressed = button.getAttribute('aria-pressed') === 'true';
+      button.setAttribute('aria-pressed', !ariaPressed ? 'true' : 'false');
+      this.buttonRef.current = button;
+      if (!ariaPressed) {
+        window.setTimeout(() => {
+          let menuList = this.pusher.querySelector('.pastanaga-menu');
+          menuList.setAttribute('tabindex', '0');
+          menuList.focus();
+        }, 250);
+      }
+    }
   };
 
   toggleMenu = (e, selector) => {
@@ -310,6 +333,7 @@ class Toolbar extends Component {
         menuStyle: { top: 0 },
       }));
     }
+    this.toggleButtonPressed(e);
     this.loadComponent(selector);
   };
 
@@ -325,8 +349,10 @@ class Toolbar extends Component {
     const target = e.target;
     if (this.pusher && doesNodeContainClick(this.pusher, e)) return;
 
-    // if the click is on a button, do not close the menu as it may be the toggleMenu action
-    if (this.findAncestor(target, 'button')) return;
+    // if the click is on the same button, do not close the menu as it
+    // may be handled by the toggleMenu action
+    const button = this.findAncestor(target, 'button');
+    if (button && button === this.buttonRef.current) return;
 
     this.closeMenu();
   };
@@ -529,6 +555,7 @@ class Toolbar extends Component {
                           aria-label={this.props.intl.formatMessage(
                             messages.add,
                           )}
+                          aria-pressed={false}
                           onClick={(e) => this.toggleMenu(e, 'types')}
                           tabIndex={0}
                           id="toolbar-add"
@@ -544,6 +571,7 @@ class Toolbar extends Component {
                     <button
                       className="more"
                       aria-label={this.props.intl.formatMessage(messages.more)}
+                      aria-pressed={false}
                       onClick={(e) => this.toggleMenu(e, 'more')}
                       tabIndex={0}
                       id="toolbar-more"
@@ -583,6 +611,7 @@ class Toolbar extends Component {
                     aria-label={this.props.intl.formatMessage(
                       messages.personalTools,
                     )}
+                    aria-pressed={false}
                     onClick={(e) => this.toggleMenu(e, 'personalTools')}
                     tabIndex={0}
                     id="toolbar-personal"
