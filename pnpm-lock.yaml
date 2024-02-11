@@ -707,6 +707,12 @@ importers:
 
   apps/vite:
     dependencies:
+      '@plone/client':
+        specifier: workspace:*
+        version: link:../../packages/client
+      '@tanstack/react-query':
+        specifier: 5.0.5
+        version: 5.0.5(react-dom@18.2.0)(react@18.2.0)
       '@tanstack/react-router':
         specifier: ^1.16.0
         version: 1.16.0(react-dom@18.2.0)(react@18.2.0)
@@ -744,6 +750,9 @@ importers:
       '@rollup/plugin-babel':
         specifier: ^6.0.4
         version: 6.0.4(@babel/core@7.23.9)
+      '@tanstack/react-query-devtools':
+        specifier: ^5.20.1
+        version: 5.20.1(@tanstack/react-query@5.0.5)(react@18.2.0)
       '@types/express':
         specifier: ^4.17.21
         version: 4.17.21
@@ -14942,11 +14951,14 @@ packages:
 
   /@tanstack/query-core@5.0.5:
     resolution: {integrity: sha512-MThCETMkHDHTnFZHp71L+SqTtD5d6XHftFCVR1xRJdWM3qGrlQ2VCXaj0SKVcyJej2e1Opa2c7iknu1llxCDNQ==}
-    dev: false
 
   /@tanstack/query-devtools@5.13.5:
     resolution: {integrity: sha512-effSYz9AWcZ6sNd+c8LCBYFIuDZApoCTXEpRlEYChBZpMz9QUUVMLToThwCyUY49+T5pANL3XxgZf3HV7hwJlg==}
     dev: false
+
+  /@tanstack/query-devtools@5.20.1:
+    resolution: {integrity: sha512-sSYo+GW7tx28M6FpcGqzo/zblbTEKrCG8THXOPoNy+EL1Z7kX4JXhRcihyKu3mY8MS/wsGghrZ/R0VTt6JXmBA==}
+    dev: true
 
   /@tanstack/react-cross-context@1.15.10(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-rKH0S3+QOzwh/xn1q+kk/9YsnBRyw+FTdP3NbkRBH2kNar7BIfyR49vX16uNvN5uUajHNGX063IwjzBWzYCUhg==}
@@ -14980,6 +14992,17 @@ packages:
       react: 18.2.0
     dev: false
 
+  /@tanstack/react-query-devtools@5.20.1(@tanstack/react-query@5.0.5)(react@18.2.0):
+    resolution: {integrity: sha512-VMjNjWLTu4+k0pGAhcsI8igtUI93ksrn4QDruaxbXdvLE3Yvfj8eaDVCemkmAySk7pCQJf4hhdByB/yOKSmIsg==}
+    peerDependencies:
+      '@tanstack/react-query': ^5.20.1
+      react: ^18.0.0
+    dependencies:
+      '@tanstack/query-devtools': 5.20.1
+      '@tanstack/react-query': 5.0.5(react-dom@18.2.0)(react@18.2.0)
+      react: 18.2.0
+    dev: true
+
   /@tanstack/react-query@5.0.5(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-ZG0Q4HZ0iuI8mWiZ2/MdVYPHbrmAVhMn7+gLOkxJh6zLIgCL4luSZlohzN5Xt4MjxfxxWioO1nemwpudaTsmQg==}
     peerDependencies:
@@ -14995,7 +15018,6 @@ packages:
       '@tanstack/query-core': 5.0.5
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /@tanstack/react-router-server@1.16.0(preact@10.19.4)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-s8J459JlF13WKtUJZDgDQQbWDZkCw8EezHJnso5q66KKH6Kru1Wr/Le34fqzZ9dCsRY7trCZvs3AG9YOkDKZsA==}
