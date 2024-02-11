@@ -118,16 +118,18 @@ You can also generate builds on your continuous integration, then deploy them an
     ADDONS=coresandbox:multilingualFixture yarn start
     ```
 
-    You can specify multiple add-ons, seperated by commas:
-    
+    If you need to specify several add-ons, separate them with a semicolon (`;`):
+
     ```shell
-    ADDONS=test-addon,test-addon2 yarn start
+    yarn add volto-slate
+    ADDONS="test-addon:asDefault;test-addon2" yarn start
     ```
+
     
     You can specify profiles for installation:
     
     ```shell
-    ADDONS=test-addon:profile1,test-addon2:profile2 yarn start
+    ADDONS="test-addon:profile1;test-addon2:profile2" yarn start
     ```
 
     The following code snippets demonstrate how to configure add-ons.
@@ -153,13 +155,6 @@ You can also generate builds on your continuous integration, then deploy them an
     ```shell
     yarn add volto-slate
     ADDONS=volto-slate:asDefault yarn start
-    ```
-
-    If you need to specify several add-ons, separate them with a semicolon (`;`):
-
-    ```shell
-    yarn add volto-slate
-    ADDONS="volto-slate:asDefault;@kitconcept/volto-blocks-grid" yarn start
     ```
 
     As a result, your app will load the add-ons in the following order:
