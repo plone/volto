@@ -1,8 +1,14 @@
-import { QueryClient, dehydrate, hydrate } from '@tanstack/react-query';
+import {
+  QueryClient,
+  QueryClientProvider,
+  dehydrate,
+  hydrate,
+} from '@tanstack/react-query';
 import PloneClient from '@plone/client';
 import { createRouter as createReactRouter } from '@tanstack/react-router';
 
 import { routeTree } from './routeTree.gen';
+import { PloneClientProvider } from '@plone/client/provider';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -34,6 +40,15 @@ export function createRouter() {
     },
     hydrate: (dehydrated) => {
       hydrate(queryClient, dehydrated.queryClientState);
+    },
+    Wrap: ({ children }: { children: any }) => {
+      return (
+        <PloneClientProvider client={ploneClient}>
+          <QueryClientProvider client={queryClient}>
+            {children}
+          </QueryClientProvider>
+        </PloneClientProvider>
+      );
     },
   });
 }

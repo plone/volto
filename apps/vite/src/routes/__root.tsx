@@ -8,9 +8,6 @@ import {
 } from '@tanstack/react-router';
 import { DehydrateRouter } from '@tanstack/react-router-server/client';
 import { RouterContext } from '../routerContext';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { PloneClientProvider } from '@plone/client/provider';
-import PloneClient from '@plone/client';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 export const Route = createRootRouteWithContext<RouterContext>()({
@@ -19,11 +16,6 @@ export const Route = createRootRouteWithContext<RouterContext>()({
 
 function RootComponent() {
   const router = useRouter();
-  const [ploneClient] = React.useState(() =>
-    PloneClient.initialize({
-      apiPath: 'http://localhost:8080/Plone',
-    }),
-  );
 
   return (
     <html lang="en">
@@ -88,12 +80,8 @@ function RootComponent() {
           </Link>
         </div>
         <hr />
-        <PloneClientProvider client={ploneClient}>
-          <QueryClientProvider client={router.options.context.queryClient}>
-            <Outlet /> {/* Start rendering router matches */}
-            <ReactQueryDevtools buttonPosition="top-right" />
-          </QueryClientProvider>
-        </PloneClientProvider>
+        <Outlet /> {/* Start rendering router matches */}
+        <ReactQueryDevtools buttonPosition="top-right" />
         <TanStackRouterDevtools position="bottom-right" />
         <DehydrateRouter />
       </body>

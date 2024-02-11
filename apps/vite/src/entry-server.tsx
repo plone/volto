@@ -5,8 +5,6 @@ import { ServerResponse } from 'http';
 import express from 'express';
 import { StartServer } from '@tanstack/react-router-server/server';
 import { createRouter } from './router';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { PloneClientProvider } from '@plone/client/provider';
 
 // index.js
 import './fetch-polyfill';
@@ -37,11 +35,7 @@ export async function render(opts: {
 
   // Render the app
   const appHtml = ReactDOMServer.renderToString(
-    <PloneClientProvider client={router.options.context.ploneClient}>
-      <QueryClientProvider client={router.options.context.queryClient}>
-        <StartServer router={router} />
-      </QueryClientProvider>
-    </PloneClientProvider>,
+    <StartServer router={router} />,
   );
 
   opts.res.statusCode = 200;

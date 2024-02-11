@@ -7,11 +7,10 @@ import { usePloneClient } from '@plone/client/provider';
 const expand = ['breadcrumbs', 'navigation'];
 
 export const Route = createFileRoute('/')({
-  loader: ({ context: { queryClient, ploneClient }, params }) => {
-    console.log(params);
+  loader: ({ context: { queryClient, ploneClient }, location }) => {
     const { getContentQuery } = ploneClient;
     return queryClient.ensureQueryData(
-      getContentQuery({ path: flattenToAppURL('/'), expand }),
+      getContentQuery({ path: flattenToAppURL(location.pathname), expand }),
     );
   },
   component: IndexComponent,
