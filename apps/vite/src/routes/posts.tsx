@@ -1,27 +1,27 @@
-import * as React from 'react'
-import { createFileRoute, Link, Outlet } from '@tanstack/react-router'
+import * as React from 'react';
+import { createFileRoute, Link, Outlet } from '@tanstack/react-router';
 
 export type PostType = {
-  id: string
-  title: string
-  body: string
-}
+  id: string;
+  title: string;
+  body: string;
+};
 
 export const Route = createFileRoute('/posts')({
   loader: async () => {
-    console.log('Fetching posts...')
+    console.log('Fetching posts...');
     await new Promise((r) =>
       setTimeout(r, 300 + Math.round(Math.random() * 300)),
-    )
+    );
     return fetch('https://jsonplaceholder.typicode.com/posts')
       .then((d) => d.json() as Promise<PostType[]>)
-      .then((d) => d.slice(0, 10))
+      .then((d) => d.slice(0, 10));
   },
   component: PostsComponent,
-})
+});
 
 function PostsComponent() {
-  const posts = Route.useLoaderData()
+  const posts = Route.useLoaderData();
 
   return (
     <div className="p-2 flex gap-2">
@@ -40,11 +40,11 @@ function PostsComponent() {
                 <div>{post.title.substring(0, 20)}</div>
               </Link>
             </li>
-          )
+          );
         })}
       </ul>
       <hr />
       <Outlet />
     </div>
-  )
+  );
 }

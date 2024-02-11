@@ -1,3 +1,3 @@
 export type RouterContext = {
-  head: string
-}
+  head: string;
+};
