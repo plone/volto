@@ -4,6 +4,7 @@ import {
   setBaseAndExtent,
   createHtmlPasteEvent,
 } from '../helpers';
+/* eslint-disable no-console */
 import { ploneAuth } from './constants';
 
 const HOSTNAME = Cypress.env('BACKEND_HOST') || '127.0.0.1';
@@ -41,6 +42,30 @@ Cypress.Commands.add('isInViewport', (element) => {
     expect(rect.left).to.be.at.least(0);
     expect(rect.right).to.be.lessThan(rightBoundOfWindow);
     expect(rect.bottom).to.be.lessThan(bottomBoundOfWindow);
+  });
+});
+
+// --- isInHTML ----------------------------------------------------------
+Cypress.Commands.add('isInHTML', ({ parent = 'body', content }) => {
+  cy.url().then((currentUrl) => {
+    // sometimes the cy command is called when the url is still at content/edit
+    // we want to query the html markup of the content, not the edit form
+    const url =
+      currentUrl.indexOf('/edit') !== -1
+        ? currentUrl.split('/edit')[0]
+        : currentUrl;
+    cy.request({
+      method: 'GET',
+      url: url,
+    }).then((response) => {
+      const html = Cypress.$(response.body);
+      if (content.startsWith('.') || content.startsWith('#')) {
+        return expect(html.find(parent)).to.have.descendants(content);
+      } else {
+        // check if parent contains the content text string in its HTML output
+        return expect(html.find(parent)).to.contain(content);
+      }
+    });
   });
 });
 
@@ -700,7 +725,7 @@ Cypress.Commands.add('clearSlate', (selector) => {
   return cy
     .get(selector)
     .focus()
-    .click()
+    .click({ force: true }) // fix sporadic failure this element is currently animating
     .wait(1000)
     .type('{selectAll}')
     .wait(1000)
@@ -828,7 +853,7 @@ Cypress.Commands.add('addBaseUrl', (url) => {
 
 Cypress.Commands.add('addNewBlock', (blockName, createNewSlate = false) => {
   let block;
-  block = cy.getSlate(createNewSlate).type(`/${blockName}{enter}`);
+  block = cy.getSlate(createNewSlate).click().type(`/${blockName}{enter}`);
   return block;
 });
 
@@ -882,8 +907,32 @@ Cypress.Commands.add('configureListingWith', (contentType) => {
     '.querystring-widget .fields:first-of-type > .field .react-select__menu .react-select__option',
   )
     .contains(contentType)
+
     .click();
 });
+
+Cypress.Commands.add(
+  'addLocationQuerystring',
+  (option = 'Relative path', value) => {
+    cy.get('.block-editor-listing').click();
+    cy.get('.querystring-widget .fields').contains('Add criteria').click();
+    cy.get('.querystring-widget .react-select__menu .react-select__option')
+      .contains('Location')
+      .click();
+
+    cy.get('.querystring-widget .fields').contains('Absolute path').click();
+    cy.get(
+      '.querystring-widget .fields .react-select__menu .react-select__option',
+    )
+      .contains(option)
+      .click();
+    if (value) {
+      cy.get('.querystring-widget .fields .input')
+        .click()
+        .type(`${value}{enter}`);
+    }
+  },
+);
 
 Cypress.Commands.add('queryCounter', (path, steps, number = 1) => {
   cy.intercept(path, cy.spy().as('counterName'));
