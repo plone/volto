@@ -104,19 +104,7 @@ class AddonConfigurationRegistry {
         console.log(`Using volto.config.js in: ${voltoConfigPath}`);
         this.voltoConfigJS = require(voltoConfigPath);
       }
-    } else if (
-      fs.existsSync(
-        path.resolve(path.join(projectRootPath, '../../../volto.config.js')),
-      )
-    ) {
-      // Try three directories above (project monorepo)
-      const voltoConfigPath = path.resolve(
-        path.join(projectRootPath, '../../../volto.config.js'),
-      );
-      console.log(`Using volto.config.js in: ${voltoConfigPath}`);
-      this.voltoConfigJS = require(voltoConfigPath);
     } else if (fs.existsSync(path.join(projectRootPath, 'volto.config.js'))) {
-      // Try locally
       this.voltoConfigJS = require(
         path.join(projectRootPath, 'volto.config.js'),
       );
