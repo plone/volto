@@ -98,7 +98,25 @@ class AddonConfigurationRegistry {
       path.join(projectRootPath, 'package.json'),
     ));
     // Loads the dynamic config, if any
-    if (fs.existsSync(path.join(projectRootPath, 'volto.config.js'))) {
+    if (process.env.VOLTOCONFIG) {
+      if (fs.existsSync(path.resolve(process.env.VOLTOCONFIG))) {
+        const voltoConfigPath = path.resolve(process.env.VOLTOCONFIG);
+        console.log(`Using volto.config.js in: ${voltoConfigPath}`);
+        this.voltoConfigJS = require(voltoConfigPath);
+      }
+    } else if (
+      fs.existsSync(
+        path.resolve(path.join(projectRootPath, '../../../volto.config.js')),
+      )
+    ) {
+      // Try three directories above (project monorepo)
+      const voltoConfigPath = path.resolve(
+        path.join(projectRootPath, '../../../volto.config.js'),
+      );
+      console.log(`Using volto.config.js in: ${voltoConfigPath}`);
+      this.voltoConfigJS = require(voltoConfigPath);
+    } else if (fs.existsSync(path.join(projectRootPath, 'volto.config.js'))) {
+      // Try locally
       this.voltoConfigJS = require(
         path.join(projectRootPath, 'volto.config.js'),
       );
