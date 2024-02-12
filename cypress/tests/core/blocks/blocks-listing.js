@@ -1128,10 +1128,11 @@ describe('Listing Block Tests', () => {
     cy.url().should('not.include', '=3');
     //test back button
     cy.navigate('/my-page');
-    cy.wait('@content');
+    cy.wait(1000);
     cy.get('.ui.pagination.menu a[value="2"]').first().click({ force: true });
     cy.get('.ui.pagination.menu a[value="3"]').first().click({ force: true });
     cy.go(-1);
+    cy.wait(1000);
     cy.isInHTML({ parent: '.listing-item', content: 'My Folder 3' });
     cy.url().should('not.include', '=3');
     cy.go(-1);
