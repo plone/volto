@@ -191,6 +191,16 @@ As a result, your app will load the add-ons in the following order:
 The `ADDONS` key is a Volto specific configuration. Simply setting `ADDONS` doesn't download the JavaScript package. This has to be covered by another way, either installing the addon package (with yarn add) or loading it as a development package with mrs-developer.
 ```
 
+## VOLTOCONFIG
+
+You can also provide a custom location for `volto.config.js` via an environment variable.
+
+It can be relative to the current project or absolute.
+
+```shell
+VOLTOCONFIG=../../volto.config.js yarn start
+```
+
 ## BUILD_DIR
 
 This is a runtime-only environment variable that directs the build to run Volto from an especific location, other than the default folder `build`.

@@ -62,3 +62,23 @@ module.exports = {
   theme
 };
 ```
+
+## Using `VOLTOCONFIG` environment variable
+
+You can also provide a custom location for `volto.config.js` via an environment variable.
+
+It can be relative to the current project or absolute.
+
+```shell
+VOLTOCONFIG=../../volto.config.js yarn start
+```
+
+```shell
+VOLTOCONFIG=$(pwd)/volto.config.js yarn start
+```
+
+you can also do it in core (monorepo):
+
+```shell
+VOLTOCONFIG=../../volto.config.js pnpm --filter @plone/volto start
+```
