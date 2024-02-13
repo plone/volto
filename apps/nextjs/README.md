@@ -21,7 +21,11 @@ make start-backend-docker
 
 
 We introduce an environment variable `API_SERVER_URL`.
-We have to create this environment variable in the Vercel deployment's control panel, specifying the URL where your backend API server is deployed and the route where the API is located, such as `API_SERVER_URL=https://my_server_DNS_name/api`.
+You need to create this environment variable in the Vercel deployment's control panel, specifying the URL where your backend API server is deployed, and the route where the API is located, as shown.
+
+```shell
+API_SERVER_URL=https://my_server_DNS_name/api
+```
 
 ### Application rewrite configuragtion
 
