@@ -52,8 +52,6 @@ describe('Sidebar reducer', () => {
       ),
     ).toEqual({
       metadataFieldFocus: '',
-      metadataFieldsets: [],
-      tab: 0,
     });
   });
 
