@@ -9,6 +9,8 @@ import {
 describe('Sidebar reducer', () => {
   it('should return the initial state', () => {
     expect(sidebar()).toEqual({
+      metadataFieldFocus: '',
+      metadataFieldsets: [],
       tab: 0,
     });
   });
@@ -20,7 +22,9 @@ describe('Sidebar reducer', () => {
         fieldsets: ['default'],
       }),
     ).toEqual({
-      fieldsets: ['default'],
+      metadataFieldFocus: '',
+      metadataFieldsets: ['default'],
+      tab: 0,
     });
   });
 
@@ -32,8 +36,9 @@ describe('Sidebar reducer', () => {
         field: 'title',
       }),
     ).toEqual({
+      metadataFieldFocus: 'title',
       metadataFieldsets: ['default'],
-      title: 'title',
+      tab: 0,
     });
   });
 
@@ -47,6 +52,8 @@ describe('Sidebar reducer', () => {
       ),
     ).toEqual({
       metadataFieldFocus: '',
+      metadataFieldsets: [],
+      tab: 0,
     });
   });
 
@@ -57,6 +64,8 @@ describe('Sidebar reducer', () => {
         index: 1,
       }),
     ).toEqual({
+      metadataFieldFocus: '',
+      metadataFieldsets: [],
       tab: 1,
     });
   });

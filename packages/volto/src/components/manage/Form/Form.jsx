@@ -929,8 +929,8 @@ export default compose(
   connect(
     (state, props) => ({
       globalData: state.form?.global,
-      metadataFieldsets: state.sidebar.metadataFieldsets,
-      metadataFieldFocus: state.sidebar.metadataFieldFocus,
+      metadataFieldsets: state.sidebar?.metadataFieldsets,
+      metadataFieldFocus: state.sidebar?.metadataFieldFocus,
     }),
     {
       setMetadataFieldsets,
