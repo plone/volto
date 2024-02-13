@@ -1,10 +1,10 @@
 ---
 myst:
   html_meta:
-    'description': 'User manual on how to find all links and relations to the current item.'
-    'property=og:description': 'User manual on how to find all links and relations to the current item.'
-    'property=og:title': 'Finding links and relations to the current item.'
-    'keywords': 'Volto, Plone, frontend, React, User manual, links, relations, references, related content'
+    "description": "User manual on how to find all links and relations to the current item."
+    "property=og:description": "User manual on how to find all links and relations to the current item."
+    "property=og:title": "Finding links and relations to the current item."
+    "keywords": "Volto, Plone, frontend, React, User manual, links, relations, references, related content"
 ---
 
 (links-to-item-label)=
