@@ -1,1 +1,1 @@
-Add VOLTOCONFIG environment variable @sneridagh
+Add `VOLTOCONFIG` environment variable. @sneridagh
