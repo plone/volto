@@ -32,6 +32,15 @@ An item references another item by creating a hyperlink to this item, using the 
 In the toolbar on the left side, you can click on the item with the three horizontally aligned dots, called {guilabel}`More menu`.
 Click then on the item labeled {guilabel}`Links and references`.
 
+````{note}
+If you do not see {guilabel}`Links and references`, then you either have a version of Volto that does not support this feature, or this feature has not been enabled on your site.
+In either case, contact your site administrator for assistance.
+
+```{seealso}
+{term}`excludeLinksAndReferencesMenuItem`
+```
+````
+
 You can see now a table displaying all links to and references of the current item.
 
 ```{image} ../_static/user-manual/manage/link-to-items.png
