@@ -1,10 +1,10 @@
 ---
 myst:
   html_meta:
-    "description": "User manual on how to find all links and relations to the current item."
-    "property=og:description": "User manual on how to find all links and relations to the current item."
-    "property=og:title": "Finding links and relations to the current item."
-    "keywords": "Volto, Plone, frontend, React, User manual, links, relations, references, related content"
+    'description': 'User manual on how to find all links and relations to the current item.'
+    'property=og:description': 'User manual on how to find all links and relations to the current item.'
+    'property=og:title': 'Finding links and relations to the current item.'
+    'keywords': 'Volto, Plone, frontend, React, User manual, links, relations, references, related content'
 ---
 
 (links-to-item-label)=
@@ -19,10 +19,15 @@ For this situation, you can visit the {guilabel}`Links and references` page, whi
 An item references another item by creating a hyperlink to this item, using the item in a block, referencing it in the {guilabel}`Related Items` field, or referencing it in a relation field.
 ```
 
-```{versionadded} Volto 17.0.0-alpha.19
+## {guilabel}`Links and references` view
+
+```{versionadded} Volto 16.28.0
+This feature was added in Volto 16.28.0, but it was disabled by default.
 ```
 
-## {guilabel}`Links and references` view
+```{versionchanged} Volto 17.0.0-alpha.19
+This feature is now enabled by default.
+```
 
 In the toolbar on the left side, you can click on the item with the three horizontally aligned dots, called {guilabel}`More menu`.
 Click then on the item labeled {guilabel}`Links and references`.
