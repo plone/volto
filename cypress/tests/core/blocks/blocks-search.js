@@ -376,6 +376,8 @@ describe('Search Block Tests', () => {
 
     // uncheck showSearchButton
     cy.get('.ui.accordion #blockform-fieldset-controls .title').click();
+    // insert a wait here to avoid flakiness
+    cy.wait(500);
     cy.get('label[for=field-showSearchButton]').click();
     cy.get('.search-wrapper .ui.button').should('contain', 'Search');
 
