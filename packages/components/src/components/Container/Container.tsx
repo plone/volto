@@ -10,9 +10,9 @@ type ContainerProps = {
   /** Additional classes. */
   className: string;
   /** Layout size */
-  layout: boolean;
+  layout?: boolean;
   /** Narrow size. */
-  narrow: boolean;
+  narrow?: boolean;
 };
 
 const Container = (props: ContainerProps) => {

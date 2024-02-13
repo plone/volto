@@ -12,6 +12,7 @@ interface InputProps extends TextFieldProps {
   title?: string;
   description?: string;
   error?: string[];
+  className?: string;
   placeholder: string;
 }
 
@@ -19,12 +20,13 @@ export default function Input({
   title,
   description,
   error,
+  className,
   ...props
 }: InputProps) {
   return (
     <TextField
       {...props}
-      className={cx('q field', `field-${props.name}`)}
+      className={cx('q field', `field-${props.name}`, className)}
       data-required={props.isRequired || undefined}
     >
       <RACInput className={cx('q input', { error: error })} />

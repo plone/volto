@@ -1,0 +1,11 @@
+.topbar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.search-input {
+  // TODO fixme
+  margin-top: 0 !important;
+  margin-inline-start: auto;
+}

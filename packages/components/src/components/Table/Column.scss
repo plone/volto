@@ -1,0 +1,9 @@
+.react-aria-Column {
+  .sort-indicator {
+    padding: 0 2px;
+  }
+
+  &:not([data-sort-direction]) .sort-indicator {
+    visibility: hidden;
+  }
+}
