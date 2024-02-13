@@ -24,7 +24,7 @@ We introduce an environment variable `API_SERVER_URL`.
 You need to create this environment variable in the Vercel deployment's control panel, specifying the URL where your backend API server is deployed, and the route where the API is located, as shown.
 
 ```shell
-API_SERVER_URL=https://my_server_DNS_name/api
+API_SERVER_URL=https://my-server-DNS-name.tld/api
 ```
 
 ### Application rewrite configuragtion
