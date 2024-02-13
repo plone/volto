@@ -98,35 +98,34 @@ $puya:     hsl($temperature-base - (calc($s-rotate / 5)), 60%, 23%);
     --turquoise:    #{$turquoise};
     --puya:         #{$puya};
 }
-/*
-@media (prefers-color-scheme: dark) {
-:root {
-    --air:          #{$space};
-    --space:        #{$air};
-    --denim:        #{$snow};
 
-    --snow:         #{$denim};
-    --smoke:        #{$iron};
-    --silver:       #{$pigeon};
-    --dolphin:      #{$dolphin};
-    --pigeon:       #{$silver};
-    --iron:         #{$smoke};
+// @media (prefers-color-scheme: dark) {
+//     :root {
+//         --air:          #{$space};
+//         --space:        #{$air};
+//         --denim:        #{$snow};
 
-    --arctic:       #{$royal};
-    --sky:          #{$sapphire};
-    --azure:        #{$cobalt};
-    --cobalt:       #{$azure};
-    --sapphire:     #{$sky};
-    --royal:        #{$arctic};
+//         --snow:         #{$denim};
+//         --smoke:        #{$iron};
+//         --silver:       #{$pigeon};
+//         --dolphin:      #{$dolphin};
+//         --pigeon:       #{$silver};
+//         --iron:         #{$smoke};
 
-    --flamingo:     #{$candy};
-    --poppy:        #{$rose};
-    --rose:         #{$poppy};
-    --candy:        #{$flamingo};
-    --wine:         #{$ballet};
-}
-}
-*/
+//         --arctic:       #{$royal};
+//         --sky:          #{$sapphire};
+//         --azure:        #{$cobalt};
+//         --cobalt:       #{$azure};
+//         --sapphire:     #{$sky};
+//         --royal:        #{$arctic};
+
+//         --flamingo:     #{$candy};
+//         --poppy:        #{$rose};
+//         --rose:         #{$poppy};
+//         --candy:        #{$flamingo};
+//         --wine:         #{$ballet};
+//     }
+// }
 
 
 //*// TRANSPARENCIES //*//

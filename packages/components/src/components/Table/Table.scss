@@ -1,11 +1,15 @@
 .react-aria-Table {
-  --border-color: var(--smoke);
+  --q-table-border: 0 none;
+  --q-table-padding: 0.286rem;
+  --q-table-header-color: var(--sapphire);
+  --q-table-header-border-bottom: 1px solid var(--border-color);
+  --q-table-row-pressed: var(--highlight-pressed);
   // min-height: 100px;
   // align-self: start;
   max-width: 100%;
 
-  padding: 0.286rem;
-  border: 1px solid var(--border-color);
+  padding: var(--q-table-padding);
+  border: var(--q-table-border);
   border-spacing: 0;
   forced-color-adjust: none;
   // border-radius: 6px;
@@ -19,32 +23,32 @@
   }
 
   .react-aria-TableHeader {
-    color: var(--text-color);
+    color: var(--q-table-header-color);
 
-    &:after {
-      display: table-row;
-      height: 2px;
-      content: '';
-    }
+    // &:after {
+    //   content: '';
+    //   display: table-row;
+    //   height: 2px;
+    // }
 
     & tr:last-child .react-aria-Column {
-      border-bottom: 1px solid var(--border-color);
+      border-bottom: var(--q-table-header-border-bottom);
       cursor: default;
     }
   }
 
   .react-aria-Row {
-    --radius-top: 6px;
-    --radius-bottom: 6px;
-    --radius: var(--radius-top) var(--radius-top) var(--radius-bottom)
-      var(--radius-bottom);
+    // color: var(--text-color);
+    // font-size: 1.072rem;
     position: relative;
-    border-radius: var(--radius);
-    clip-path: inset(0 round var(--radius)); /* firefox */
-    color: var(--text-color);
+    // --radius-top: 6px;
+    // --radius-bottom: 6px;
+    // --radius: var(--radius-top) var(--radius-top) var(--radius-bottom)
+    //   var(--radius-bottom);
+    // border-radius: var(--radius);
+    // clip-path: inset(0 round var(--radius)); /* firefox */
+    // outline: none;
     cursor: default;
-    font-size: 1.072rem;
-    outline: none;
     transform: scale(1);
 
     &[data-focus-visible] {
@@ -53,7 +57,7 @@
     }
 
     &[data-pressed] {
-      background: var(--gray-100);
+      background: var(--q-table-row-pressed);
     }
 
     &[data-selected] {
@@ -87,31 +91,31 @@
   .react-aria-Cell {
     transform: translateZ(0);
 
-    &:first-child {
-      border-radius: var(--radius-top) 0 0 var(--radius-bottom);
-    }
+    // &:first-child {
+    //   border-radius: var(--radius-top) 0 0 var(--radius-bottom);
+    // }
 
-    &:last-child {
-      border-radius: 0 var(--radius-top) var(--radius-bottom) 0;
-    }
+    // &:last-child {
+    //   border-radius: 0 var(--radius-top) var(--radius-bottom) 0;
+    // }
   }
 
   /* join selected items if :has selector is supported */
-  @supports selector(:has(.foo)) {
-    .react-aria-Row[data-selected]:has(+ [data-selected]),
-    .react-aria-Row[data-selected]:has(
-        + .react-aria-DropIndicator + [data-selected]
-      ) {
-      --radius-bottom: 0px;
-    }
+  // @supports selector(:has(.foo)) {
+  //   .react-aria-Row[data-selected]:has(+ [data-selected]),
+  //   .react-aria-Row[data-selected]:has(
+  //       + .react-aria-DropIndicator + [data-selected]
+  //     ) {
+  //     --radius-bottom: 0px;
+  //   }
 
-    .react-aria-Row[data-selected] + [data-selected],
-    .react-aria-Row[data-selected]
-      + .react-aria-DropIndicator
-      + [data-selected] {
-      --radius-top: 0px;
-    }
-  }
+  //   .react-aria-Row[data-selected] + [data-selected],
+  //   .react-aria-Row[data-selected]
+  //     + .react-aria-DropIndicator
+  //     + [data-selected] {
+  //     --radius-top: 0px;
+  //   }
+  // }
 }
 
 :where(.react-aria-Row) .react-aria-Checkbox {
@@ -132,9 +136,9 @@
   position: relative;
   // max-width: 400px;
   overflow: auto;
-  border: 1px solid var(--border-color);
-  border-radius: 6px;
-  background: var(--background-color);
+  border: var(--q-table-border);
+  // border-radius: 6px;
+  // background: var(--background-color);
 
   .react-aria-Table {
     border: none;
@@ -145,6 +149,8 @@
     align-items: center;
   }
 
+  // TODO double check these styles to strip out unnecessary ones
+  // and keep only the bare minimum
   .column-name,
   .react-aria-Button {
     --background-color: var(--overlay-background);
@@ -170,6 +176,8 @@
     }
   }
 
+  // TODO double check these styles to strip out unnecessary ones
+  // and keep only the bare minimum
   .react-aria-ColumnResizer {
     width: 15px;
     height: 25px;
@@ -235,25 +243,6 @@
   transform: translateZ(0);
 }
 
-.drag-preview {
-  display: flex;
-  width: 150px;
-  align-items: center;
-  justify-content: space-between;
-  padding: 4px 8px;
-  border-radius: 4px;
-  background: var(--highlight-background);
-  color: white;
-  gap: 4px;
-
-  .badge {
-    padding: 0 8px;
-    border-radius: 4px;
-    background: var(--highlight-foreground);
-    color: var(--highlight-background);
-  }
-}
-
 .react-aria-Table[data-drop-target] {
   background: var(--highlight-overlay);
   outline: 2px solid var(--highlight-background);
@@ -263,21 +252,4 @@
 .react-aria-Row[data-drop-target] {
   background: var(--highlight-overlay);
   outline: 2px solid var(--highlight-background);
-}
-
-.react-aria-DropIndicator[data-drop-target] {
-  outline: 1px solid var(--highlight-background);
-  transform: translateZ(0);
-}
-
-.my-drop-indicator.active {
-  outline: 1px solid #e70073;
-  transform: translateZ(0);
-}
-
-.react-aria-Cell img {
-  display: block;
-  width: 30px;
-  height: 30px;
-  object-fit: cover;
 }

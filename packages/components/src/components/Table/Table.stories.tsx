@@ -25,3 +25,24 @@ export const Default: Story = {
     ],
   },
 };
+
+export const SingleSelection: Story = {
+  args: {
+    ...Default.args,
+    selectionMode: 'single',
+  },
+};
+
+export const MultipleSelection: Story = {
+  args: {
+    ...Default.args,
+    selectionMode: 'multiple',
+  },
+};
+
+export const Resizable: Story = {
+  args: {
+    ...Default.args,
+    resizableColumns: true,
+  },
+};

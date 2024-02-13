@@ -1,10 +1,7 @@
 .react-aria-Checkbox {
-  // TODO improve available colors
-  --border-color: var(--denim);
-  --border-color-pressed: var(--space);
-  --selected-color: var(--denim);
-  --selected-color-pressed: var(--space);
-  --checkmark-color: var(--air);
+  --selected-color: var(--highlight-background);
+  --selected-color-pressed: var(--highlight-background-pressed);
+  --checkmark-color: var(--highlight-foreground);
 
   display: flex;
   align-items: center;
@@ -71,21 +68,21 @@
   &[data-invalid] {
     .checkbox {
       --checkmark-color: var(--gray-50);
-      border-color: var(--invalid-color);
+      border-color: var(--color-invalid);
     }
 
     &[data-pressed] .checkbox {
-      border-color: var(--invalid-color-pressed);
+      border-color: var(--color-pressed-invalid);
     }
 
     &[data-selected],
     &[data-indeterminate] {
       .checkbox {
-        background: var(--invalid-color);
+        background: var(--color-invalid);
       }
 
       &[data-pressed] .checkbox {
-        background: var(--invalid-color-pressed);
+        background: var(--color-pressed-invalid);
       }
     }
   }
