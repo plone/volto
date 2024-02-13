@@ -175,6 +175,15 @@ You can also generate builds on your continuous integration, then deploy them an
     yarn
     BUILD_DIR=dist node dist/server.js
     ```
+
+`VOLTOCONFIG`
+    This environment variable allows you to specify a custom location for {file}`volto.config.js`.
+
+    It can be relative to the current project or absolute.
+
+    ```shell
+    VOLTOCONFIG=../../volto.config.js yarn start
+    ```
 ````
 
 
