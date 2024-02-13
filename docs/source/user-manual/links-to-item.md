@@ -19,6 +19,9 @@ For this situation, you can visit the {guilabel}`Links and references` page, whi
 An item references another item by creating a hyperlink to this item, using the item in a block, referencing it in the {guilabel}`Related Items` field, or referencing it in a relation field.
 ```
 
+```{versionadded} Volto 17.0.0-alpha.19
+```
+
 ## {guilabel}`Links and references` view
 
 In the toolbar on the left side, you can click on the item with the three horizontally aligned dots, called {guilabel}`More menu`.
