@@ -1,4 +1,5 @@
-.q.react-aria-TextField {
+.q.react-aria-TextField,
+.q.react-aria-TextAreaField {
   position: relative;
 
   .react-aria-Label {
@@ -12,14 +13,20 @@
     user-select: none;
   }
 
-  .react-aria-Label:has(+ .react-aria-Input) {
+  .react-aria-Label:has(+ .react-aria-Input, + .react-aria-TextArea) {
     position: absolute;
     top: 10px;
     left: 12px;
   }
 
-  .react-aria-Label:has(+ .react-aria-Input[data-focused]),
-  .react-aria-Label:has(+ .react-aria-Input:not(:placeholder-shown)) {
+  .react-aria-Label:has(
+      + .react-aria-Input[data-focused],
+      + .react-aria-TextArea[data-focused]
+    ),
+  .react-aria-Label:has(
+      + .react-aria-Input:not(:placeholder-shown),
+      + .react-aria-TextArea:not(:placeholder-shown)
+    ) {
     margin-top: -30px;
     margin-left: -12px;
     transform: scale(0.8571428571, 0.8571428571);
@@ -29,24 +36,36 @@
   .react-aria-Label:has(
       + .react-aria-Input:not(:placeholder-shown):not(:hover):not(:active):not(
           :focus
-        )
+        ),
+      + .react-aria-TextArea:not(:placeholder-shown):not(:hover):not(
+          :active
+        ):not(:focus)
     ) {
     color: var(--basiq-slate-500);
   }
 
-  .react-aria-Label:has(+ .react-aria-Input[required])::after {
+  .react-aria-Label:has(
+      + .react-aria-Input[required],
+      + .react-aria-TextArea[required]
+    )::after {
     content: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"><path fill="hsl(7, 90%, 59%)" d="M12 18a6 6 0 100-12 6 6 0 000 12z"/></svg>');
   }
 
   .react-aria-Label:has(
       + .react-aria-Input[required]:not(:placeholder-shown):not(:hover):not(
           :active
+        ):not(:focus),
+      + .react-aria-TextArea[required]:not(:placeholder-shown):not(:hover):not(
+          :active
         ):not(:focus)
     )::after {
     filter: grayscale(1);
   }
 
-  .react-aria-Label:has(+ .react-aria-Input[data-invalid]) {
+  .react-aria-Label:has(
+      + .react-aria-Input[data-invalid],
+      + .react-aria-TextArea[data-invalid]
+    ) {
     color: var(--quanta-candy) !important;
 
     &::after {
@@ -54,15 +73,22 @@
     }
   }
 
-  .react-aria-Label:has(+ .react-aria-Input[data-disabled]) {
+  .react-aria-Label:has(
+      + .react-aria-Input[data-disabled],
+      + .react-aria-TextArea[data-disabled]
+    ) {
     color: var(--basiq-slate-400) !important;
   }
 
-  .react-aria-Label:has(+ .react-aria-Input[readonly]) {
+  .react-aria-Label:has(
+      + .react-aria-Input[readonly],
+      + .react-aria-TextArea[readonly]
+    ) {
     color: var(--basiq-slate-500);
   }
 
-  .react-aria-Input {
+  .react-aria-Input,
+  .react-aria-TextArea {
     width: 100%;
     padding: 12px;
     border: 0;
