@@ -1,18 +1,15 @@
 import React from 'react';
-import { Input as InputComponent } from './Input';
+import { TextArea as TextAreaComponent } from './TextArea';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../styles/main.scss';
+import '../../../../styles/main.scss';
 
 // More on how to set up stories at: https://storybook.js.org/docs/7.0/react/writing-stories/introduction
 const meta = {
-  title: 'Widgets/Input',
-  component: InputComponent,
+  title: 'Widgets/TextArea',
+  component: TextAreaComponent,
   tags: ['autodocs'],
-  parameters: {
-    layout: 'centered',
-  },
   decorators: [
     (Story) => (
       <div style={{ width: '400px' }}>
@@ -28,7 +25,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof InputComponent>;
+} satisfies Meta<typeof TextAreaComponent>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

@@ -1,27 +1,24 @@
 import React from 'react';
+import type { SelectProps as RACSelectProps } from 'react-aria-components';
 import {
   Button,
   FieldError,
   Label,
   ListBox,
-  ListBoxItem,
-  ListBoxItemProps,
   Popover,
   Select as RACSelect,
-  SelectProps as RACSelectProps,
   SelectValue,
   Text,
-  ValidationResult,
 } from 'react-aria-components';
+import cx from 'classnames';
+import { ChevrondownIcon } from '../../../Icons/ChevrondownIcon';
+import { ChevronupIcon } from '../../../Icons/ChevronupIcon';
 
-import { ChevrondownIcon } from '../Icons/ChevrondownIcon';
-import { ChevronupIcon } from '../Icons/ChevronupIcon';
-
-export interface SelectProps<T extends object>
+interface SelectProps<T extends object>
   extends Omit<RACSelectProps<T>, 'children'> {
-  label?: string;
+  title?: string;
   description?: string;
-  errorMessage?: string | ((validation: ValidationResult) => string);
+  error?: string[];
   items?: Iterable<T>;
   children: React.ReactNode | ((item: T) => React.ReactNode);
 }
@@ -42,36 +39,38 @@ export interface SelectProps<T extends object>
  *
  */
 export function Select<T extends object>({
-  label,
+  title,
   description,
-  errorMessage,
+  error,
   children,
   items,
   ...props
 }: SelectProps<T>) {
   return (
-    <RACSelect {...props}>
+    <RACSelect {...props} className={cx('q field', `field-${props.name}`)}>
       {({ isOpen }) => (
         <>
-          <Label>{label}</Label>
-          <Button>
+          <Button className={cx('q input', { error: error })}>
             <SelectValue />
             {/* Next span is flexed to position the icon just in the middle */}
             <span aria-hidden="true" style={{ display: 'flex' }}>
               {isOpen ? <ChevronupIcon /> : <ChevrondownIcon />}
             </span>
           </Button>
-          {description && <Text slot="description">{description}</Text>}
-          <FieldError>{errorMessage}</FieldError>
-          <Popover>
-            <ListBox items={items}>{children}</ListBox>
+          <Label className="q label">{title}</Label>
+          <FieldError className="q assist">{error}</FieldError>
+          {description && (
+            <Text slot="description" className="q hint">
+              {description}
+            </Text>
+          )}
+          <Popover offset={1}>
+            <ListBox className="q dropdown" items={items}>
+              {children}
+            </ListBox>
           </Popover>
         </>
       )}
     </RACSelect>
   );
-}
-
-export function SelectItem(props: ListBoxItemProps) {
-  return <ListBoxItem {...props} />;
 }
