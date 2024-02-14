@@ -71,9 +71,11 @@
 
 /* Quanta Theme*/
 :root {
+  --quanta-cobalt: #2597f4;
   --quanta-sapphire: #0b78d0;
   --quanta-royal: #085696;
-  --quanta-cobalt: #2597f4;
+  --quanta-ballet: #fee9e7;
+  --quanta-rose: #f54e38;
   --quanta-candy: #d0220b;
   --quanta-neon: #3da72a;
   --quanta-lemmon: #f6d355;
