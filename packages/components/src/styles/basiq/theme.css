@@ -104,7 +104,7 @@
   --button-background: var(--basiq-slate-50); /* --gray-50 */
   --button-background-pressed: var(--background-color); /* --background-color */
 
-  --overlay-background: var(-basiq-slate-50); /* --gray-50 */
+  --overlay-background: var(--basiq-slate-50); /* --gray-50 */
   /* these colors are the same between light and dark themes
    * to ensure contrast with the foreground color */
   --highlight-background: var(--basiq-slate-600); /* #6f46ed purple-300 */

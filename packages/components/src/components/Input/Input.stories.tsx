@@ -3,11 +3,16 @@ import { Input as InputComponent } from './Input';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
+import '../../styles/main.scss';
+
 // More on how to set up stories at: https://storybook.js.org/docs/7.0/react/writing-stories/introduction
 const meta = {
   title: 'Widgets/Input',
   component: InputComponent,
   tags: ['autodocs'],
+  parameters: {
+    layout: 'centered',
+  },
   decorators: [
     (Story) => (
       <div style={{ width: '400px' }}>

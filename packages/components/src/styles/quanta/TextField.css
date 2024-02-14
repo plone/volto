@@ -1,0 +1,48 @@
+.q.react-aria-TextField {
+  position: relative;
+
+  .react-aria-Label {
+    color: var(--quanta-sapphire);
+    pointer-events: none;
+    touch-action: none;
+    transition:
+      margin-top 0.15s ease-in-out,
+      margin-left 0.15s ease-in-out,
+      transform 0.15s ease-in-out;
+    user-select: none;
+  }
+
+  .react-aria-Label:has(+ .react-aria-Input) {
+    position: absolute;
+    top: 4px;
+    left: 12px;
+  }
+
+  .react-aria-Label:has(+ .react-aria-Input[data-focused]) {
+    margin-top: -30px;
+    margin-left: -12px;
+    transform: scale(0.8571428571, 0.8571428571);
+    transform-origin: 0 0;
+  }
+
+  .react-aria-Label:has(
+      + .react-aria-Input:not(:placeholder-shown):not(:hover):not(:active):not(
+          :focus
+        )
+    ) {
+    color: var(--basiq-slate-500);
+  }
+
+  .react-aria-Input {
+    &::placeholder {
+      color: var(--basiq-slate-400);
+      opacity: 0;
+      transition: opacity $time-tiny ease-in-out;
+    }
+
+    &:active::placeholder,
+    &:focus::placeholder {
+      opacity: 1;
+    }
+  }
+}
