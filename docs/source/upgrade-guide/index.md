@@ -68,7 +68,7 @@ If you use this component in your add-ons or projects directly, you need to repl
 In your add-ons and projects, we advise you to always use the public components provided by Volto, instead of directly using the support libraries packaged in Volto.
 ```
 
-### Remove the isDisabled from fields in the source content in babel view
+### Remove the disabled property from fields in the source content in babel view
 
 This change improves UX of the Babel view (translation form) since a disabled field cannot be selected to be copied over.
 
