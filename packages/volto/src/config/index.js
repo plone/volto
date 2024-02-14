@@ -122,9 +122,9 @@ let config = {
     openExternalLinkInNewTab: false,
     notSupportedBrowsers: ['ie'],
     defaultPageSize: 25,
-    isMultilingual: true,
-    supportedLanguages: ['en', 'de'],
-    defaultLanguage: 'de',
+    isMultilingual: false,
+    supportedLanguages: ['en'],
+    defaultLanguage: 'en',
     navDepth: 1,
     expressMiddleware: serverConfig.expressMiddleware, // BBB
     defaultBlockType: 'slate',
