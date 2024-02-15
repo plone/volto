@@ -126,6 +126,13 @@
   --color-pressed-invalid: var(--red-500); /* Renamed */
 }
 
+/* Layout properties */
+:root {
+  --layout-container-width: 1440px;
+  --default-container-width: 940px;
+  --narrow-container-width: 620px;
+}
+
 /* Windows high contrast mode overrides */
 @media (forced-colors: active) {
   :root {

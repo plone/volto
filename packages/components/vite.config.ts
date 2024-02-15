@@ -1,6 +1,8 @@
 import path from 'path';
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
+import { browserslistToTargets } from 'lightningcss';
+import browserslist from 'browserslist';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -10,6 +12,7 @@ export default defineConfig({
       entry: [path.resolve(__dirname, 'src/index.ts')],
       name: 'PloneComponents',
     },
+    cssMinify: 'lightningcss',
     rollupOptions: {
       external: [
         'react',
@@ -27,5 +30,8 @@ export default defineConfig({
         },
       },
     },
+  },
+  css: {
+    transformer: 'lightningcss',
   },
 });
