@@ -40,9 +40,8 @@
     "plone6",
     "react",
     "cms",
-    "client",
-    "query",
-    "react-query"
+    "components",
+    "quanta"
   ],
   "scripts": {
     "build": "parcel build --no-cache && pnpm build:srctypes && pnpm build:css",
