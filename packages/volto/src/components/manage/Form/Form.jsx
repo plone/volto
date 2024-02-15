@@ -735,14 +735,17 @@ class Form extends Component {
                         ...map(item.fields, (field, index) => (
                           <Field
                             {...schema.properties[field]}
-                            isDisabled={!this.props.editable}
                             id={field}
                             formData={formData}
                             fieldSet={item.title.toLowerCase()}
                             focus={this.state.inFocus[field]}
                             value={formData?.[field]}
                             required={schema.required.indexOf(field) !== -1}
-                            onChange={this.onChangeField}
+                            onChange={
+                              this.props.editable
+                                ? this.onChangeField
+                                : () => {}
+                            }
                             onBlur={this.onBlurField}
                             onClick={this.onClickInput}
                             key={field}
