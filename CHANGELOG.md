@@ -8,6 +8,14 @@
 
 <!-- towncrier release notes start -->
 
+## 16.30.3 (2024-02-15)
+
+### Bugfix
+
+- Fix `links-to-item` should be a protected route. @iFlameing [#5666](https://github.com/plone/volto/issues/5666)
+- Fixed listing SSR rendering by sending `subrequestId` instead of `id` only within `getAsyncData`, similar to calling `getQueryStringResults` directly. @ichim-david [#5688](https://github.com/plone/volto/issues/5688)
+- Add extra wait calls to listing block tests to avoid sporadic failures. @ichim-david [#5753](https://github.com/plone/volto/issues/5753)
+
 ## 16.30.2 (2024-01-24)
 
 ### Bugfix
