@@ -1,1 +1,1 @@
-Update Makefile paths to address whitespace compatibility issues: "$(realpath bin/sphinx-build)", "$(realpath bin/sphinx-autobuild)", "$(shell basename $(shell realpath ./))", "$(shell realpath $(CHECKOUT_TMP))". @Vivek-04022001
+Enhanced Makefile paths to address whitespace compatibility issues. @Vivek-04022001
