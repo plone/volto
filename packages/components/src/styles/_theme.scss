@@ -57,38 +57,39 @@
 
 /* Semantic colors */
 :root {
-  --focus-ring-color: var(--purple-400);
-  --text-color: var(--gray-600);
-  --text-color-base: var(--gray-500);
-  --text-color-hover: var(--gray-600);
-  --text-color-disabled: var(--gray-200);
-  --text-color-placeholder: var(--gray-400);
-  --link-color: var(--purple-500);
-  --link-color-secondary: var(--gray-500);
-  --link-color-pressed: var(--purple-600);
-  --border-color: var(--gray-300);
-  --border-color-hover: var(--gray-400);
-  --border-color-pressed: var(--gray-400);
-  --border-color-disabled: var(--gray-100);
-  --field-background: var(--gray-50);
-  --field-text-color: var(--gray-600);
-  --overlay-background: var(--gray-50);
+  --focus-ring-color: var(--cobalt);
+  --text-color: var(--denim);
+  --text-color-base: var(--pigeon);
+  --text-color-hover: var(--iron);
+  --text-color-disabled: var(--silver);
+  --text-color-placeholder: var(--dolphin);
+  --link-color: var(--sapphire);
+  --link-color-secondary: var(--pigeon);
+  --link-color-pressed: var(--royal);
+  --border-color: var(--silver);
+  --border-color-hover: var(--dolphin);
+  --border-color-pressed: var(--dolphin);
+  --border-color-disabled: var(--snow);
+  --field-background: var(--air);
+  --field-text-color: var(--iron); // denim?
+  --overlay-background: var(--air);
   // --button-background: var(--gray-50);
   --button-background: transparent;
   --button-background-pressed: var(--background-color);
   /* these colors are the same between light and dark themes
    * to ensure contrast with the foreground color */
   // --highlight-background: #6f46ed; /* purple-300 from dark theme, 3.03:1 against background-color */
-  --highlight-background: var(--smoke);
+  --highlight-background: var(--azure);
   // --highlight-background-pressed: #522acd; /* purple-200 from dark theme */
-  --highlight-background-pressed: var(--silver);
-  --highlight-background-invalid: #cc2000; /* red-300 from dark theme */
+  --highlight-background-pressed: var(--sky);
+  // --highlight-background-invalid: #cc2000; /* red-300 from dark theme */
+  --highlight-background-invalid: var(--poppy);
   // --highlight-foreground: white; /* 5.56:1 against highlight-background */
-  --highlight-foreground: var(--denim);
+  --highlight-foreground: var(--air);
   --highlight-foreground-pressed: #ddd;
   --highlight-overlay: rgb(from #6f46ed r g b / 15%);
-  --invalid-color: var(--red-400);
-  --invalid-color-pressed: var(--red-500);
+  --invalid-color: var(--rose);
+  --invalid-color-pressed: var(--candy);
 }
 
 /* Windows high contrast mode overrides */

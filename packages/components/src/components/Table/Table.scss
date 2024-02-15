@@ -220,24 +220,6 @@
   }
 }
 
-.react-aria-Row {
-  &[data-dragging] {
-    opacity: 0.6;
-    transform: translateZ(0);
-  }
-
-  [slot='drag'] {
-    all: unset;
-    width: 15px;
-    text-align: center;
-
-    &[data-focus-visible] {
-      border-radius: 4px;
-      outline: 2px solid var(--focus-ring-color);
-    }
-  }
-}
-
 .react-aria-DropIndicator[data-drop-target] {
   outline: 1px solid var(--highlight-background);
   transform: translateZ(0);

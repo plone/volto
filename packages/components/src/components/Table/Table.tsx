@@ -5,7 +5,6 @@ import {
   Table as RACTable,
   TableBody,
   Cell,
-  useDragAndDrop,
 } from 'react-aria-components';
 import './Table.scss';
 import TableHeader from './TableHeader';
@@ -41,22 +40,8 @@ export default function Table<C extends ColumnType, R extends RowType>({
   resizableColumns,
   ...otherProps
 }: TableProps<C, R>) {
-  const { dragAndDropHooks } = useDragAndDrop({
-    getItems: (keys) =>
-      [...keys].map((key) => ({
-        'text/plain': rows.find((row) => row.id === key)?.name || '',
-      })),
-    onReorder(e) {
-      if (e.target.dropPosition === 'before') {
-        console.log('moveBefore: key ', e.target.key, ', keys ', e.keys);
-      } else if (e.target.dropPosition === 'after') {
-        console.log('moveAfter: key ', e.target.key, ', keys ', e.keys);
-      }
-    },
-  });
-
   const table = (
-    <RACTable dragAndDropHooks={dragAndDropHooks} {...otherProps}>
+    <RACTable {...otherProps}>
       <TableHeader columns={columns}>
         {(column) => (
           <Column isRowHeader={column.isRowHeader}>

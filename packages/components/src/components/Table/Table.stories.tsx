@@ -1,3 +1,4 @@
+import { useDragAndDrop } from 'react-aria-components';
 import Table from './Table';
 import type { Meta, StoryObj } from '@storybook/react';
 
@@ -26,6 +27,10 @@ export const Default: Story = {
   },
 };
 
+/**
+ * For more fine grained control over the selection mode,
+ * see https://react-spectrum.adobe.com/react-aria/Table.html#single-selection
+ */
 export const SingleSelection: Story = {
   args: {
     ...Default.args,
@@ -33,6 +38,10 @@ export const SingleSelection: Story = {
   },
 };
 
+/**
+ * For more fine grained control over the selection mode,
+ * see https://react-spectrum.adobe.com/react-aria/Table.html#multiple-selection
+ */
 export const MultipleSelection: Story = {
   args: {
     ...Default.args,
@@ -40,7 +49,49 @@ export const MultipleSelection: Story = {
   },
 };
 
-export const Resizable: Story = {
+/**
+ * In order to make the rows draggable, you need to pass
+ * the `dragAndDropHooks` prop to the Table component.
+ * This prop has to be generated using the `useDragAndDrop` hook,
+ * passing the `getItems` and `onReorder` functions.
+ *
+ * See here for more information:
+ * https://react-spectrum.adobe.com/react-aria/Table.html#drag-and-drop
+ */
+export const DraggableRows: Story = {
+  decorators: [
+    (Story) => {
+      const { dragAndDropHooks } = useDragAndDrop({
+        getItems: (keys) =>
+          [...keys].map((key) => ({
+            'text/plain':
+              Default.args.rows.find((row) => row.id === key)?.name || '',
+          })),
+        onReorder(e) {
+          if (e.target.dropPosition === 'before') {
+            console.log('moveBefore: key ', e.target.key, ', keys ', e.keys);
+          } else if (e.target.dropPosition === 'after') {
+            console.log('moveAfter: key ', e.target.key, ', keys ', e.keys);
+          }
+        },
+      });
+
+      return (
+        <>
+          <Story args={{ ...Default.args, dragAndDropHooks }} />
+        </>
+      );
+    },
+  ],
+  args: {
+    ...Default.args,
+  },
+};
+
+/**
+ * Use the `resizableColumns` prop to make the columns resizable.
+ */
+export const ResizableColumns: Story = {
   args: {
     ...Default.args,
     resizableColumns: true,

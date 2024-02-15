@@ -6,7 +6,9 @@ import {
   useTableOptions,
   Button,
 } from 'react-aria-components';
+import './Row.scss';
 import Checkbox from '../Checkbox/Checkbox';
+import Draggable from '../Icons/DraggableIcon';
 
 export default function Row<T extends object>({
   id,
@@ -20,7 +22,9 @@ export default function Row<T extends object>({
     <RACRow id={id} {...otherProps}>
       {allowsDragging && (
         <Cell>
-          <Button slot="drag">≡</Button>
+          <Button slot="drag" aria-label="Drag">
+            <Draggable />
+          </Button>
         </Cell>
       )}
       {selectionBehavior === 'toggle' && (
