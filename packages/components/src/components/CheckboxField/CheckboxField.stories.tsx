@@ -1,14 +1,12 @@
 import React from 'react';
-import { TextArea as TextAreaComponent } from './TextArea';
+import CheckboxComponent from './CheckboxField';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../../../styles/main.scss';
-
 // More on how to set up stories at: https://storybook.js.org/docs/7.0/react/writing-stories/introduction
 const meta = {
-  title: 'Widgets/TextArea',
-  component: TextAreaComponent,
+  title: 'Forms/CheckboxField',
+  component: CheckboxComponent,
   tags: ['autodocs'],
   decorators: [
     (Story) => (
@@ -25,26 +23,24 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof TextAreaComponent>;
+} satisfies Meta<typeof CheckboxComponent>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 // More on writing stories with args: https://storybook.js.org/docs/7.0/react/writing-stories/args
 export const Default: Story = {
-  // render: (args) => <InputRender {...args} />,
   args: {
-    name: 'field-empty',
-    title: 'field 1 title',
+    name: 'empty',
+    label: 'field 1 title',
     description: 'Optional help text',
-    placeholder: 'Type something…',
   },
 };
 
 export const Required: Story = {
   args: {
     ...Default.args,
-    name: 'field-required',
+    name: 'required',
     isRequired: true,
   },
 };
@@ -53,8 +49,8 @@ export const Filled: Story = {
   args: {
     ...Default.args,
     name: 'field-filled',
-    title: 'Filled field title',
-    value: 'Filled with value A',
+    label: 'Filled field title',
+    defaultSelected: true,
     isRequired: true,
   },
 };
@@ -63,9 +59,8 @@ export const Errored: Story = {
   args: {
     ...Default.args,
     name: 'field-errored',
-    title: 'Errored field title',
-    value: 'Filled with value A',
-    error: ['This is the error'],
+    label: 'I accept the terms and conditions',
+    errorMessage: 'You should agree with the terms and conditions',
     isInvalid: true,
     isRequired: true,
   },

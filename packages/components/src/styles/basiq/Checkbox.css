@@ -66,6 +66,8 @@
   }
 
   &[data-invalid] {
+    color: var(--color-invalid);
+
     .checkbox {
       --checkmark-color: var(--gray-50);
       border-color: var(--color-invalid);
@@ -93,5 +95,27 @@
     .checkbox {
       border-color: var(--border-color-disabled);
     }
+
+    & + [slot='description'] {
+      color: var(--text-color-disabled);
+    }
+  }
+
+  &[data-required]::after {
+    content: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"><path fill="hsl(7, 90%, 59%)" d="M12 18a6 6 0 100-12 6 6 0 000 12z"/></svg>');
+  }
+}
+
+.react-aria-CheckboxField {
+  [slot='description'] {
+    /* For now, we want the error in under the description */
+    display: block;
+    padding-top: 3px;
+    font-size: 12px;
+  }
+
+  [slot='errorMessage'] {
+    color: var(--color-invalid);
+    font-size: 12px;
   }
 }

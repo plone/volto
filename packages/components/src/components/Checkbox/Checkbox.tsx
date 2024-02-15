@@ -1,9 +1,16 @@
 import React from 'react';
-import { Checkbox as AriaCheckbox, CheckboxProps } from 'react-aria-components';
+import {
+  Checkbox as RACCheckbox,
+  CheckboxProps as RACCheckboxProps,
+} from 'react-aria-components';
+
+interface CheckboxProps extends RACCheckboxProps {
+  label?: string;
+}
 
 export function Checkbox({ children, ...props }: CheckboxProps) {
   return (
-    <AriaCheckbox {...props}>
+    <RACCheckbox {...props}>
       {({ isIndeterminate }) => (
         <>
           <div className="checkbox">
@@ -15,9 +22,9 @@ export function Checkbox({ children, ...props }: CheckboxProps) {
               )}
             </svg>
           </div>
-          {children}
+          {props.label || children}
         </>
       )}
-    </AriaCheckbox>
+    </RACCheckbox>
   );
 }

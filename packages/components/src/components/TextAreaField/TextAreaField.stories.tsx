@@ -1,24 +1,24 @@
 import React from 'react';
-import { TextField } from './TextField';
+import { TextAreaField } from './TextAreaField';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
 import '../../styles/basiq/TextField.css';
 
-const meta: Meta<typeof TextField> = {
-  title: 'Forms/TextField',
-  component: TextField,
+const meta: Meta<typeof TextAreaField> = {
+  title: 'Forms/TextAreaField',
+  component: TextAreaField,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof TextField>;
+} satisfies Meta<typeof TextAreaField>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: (args: any) => <TextField {...args} />,
+  render: (args: any) => <TextAreaField {...args} />,
   args: {
     label: 'Name',
   },
