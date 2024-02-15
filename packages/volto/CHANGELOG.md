@@ -17,6 +17,91 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.10 (2024-02-02)
+
+### Feature
+
+- Allow editor to edit metadata during bulk upload. @iFlameing [#5549](https://github.com/plone/volto/issues/5549)
+- Added `aria-live="polite"` in `Contents.jsx` to improve accessibility for the Contents page. @Hrittik20 [#5617](https://github.com/plone/volto/issues/5617)
+- Support for passing whole data object of the initial blocks in local config. Refactor initial block type to its own helpers. @sneridagh [#5718](https://github.com/plone/volto/issues/5718)
+
+### Bugfix
+
+- Fixed wrong conditional proprieties on `ObjectBrowser` for multiple selection. @deodorhunter @Wagner3UB [#4190](https://github.com/plone/volto/issues/4190)
+- Remove turbo from monorepo commands until it's really necessary @sneridagh [#5715](https://github.com/plone/volto/issues/5715)
+
+### Documentation
+
+- Block search engines from indexing content on Netlify preview builds. @stevepiercy [#5725](https://github.com/plone/volto/issues/5725)
+
+## 18.0.0-alpha.9 (2024-01-26)
+
+### Feature
+
+- Improve validation of IdWidget @tedw [#3716](https://github.com/plone/volto/issues/3716)
+
+### Bugfix
+
+- Removed unmaintained and unused razzle-plugin-bundle-analyze in favor of webpack-bundle-analyzer. @ichim-david
+  Updated extending Razzle from an add-on section to remove code that didn't belong to that recipe. @ichim-david [#5671](https://github.com/plone/volto/issues/5671)
+
+### Internal
+
+- Upgade `semantic-ui-react` to latest version (2.1.5) @sneridagh [#5632](https://github.com/plone/volto/issues/5632)
+
+### Documentation
+
+- Fixed redirect of `https://tanstack.com/query/v4/docs/react/guides/ssr` to `https://tanstack.com/query/v4/docs/framework/react/guides/ssr`. @stevepiercy [#5700](https://github.com/plone/volto/issues/5700)
+
+## 18.0.0-alpha.8 (2024-01-25)
+
+### Feature
+
+- Add image preview in object browser widget. @robgietema [#5658](https://github.com/plone/volto/issues/5658)
+
+### Bugfix
+
+- Fix multilingual redirector where it doesn't take into account the stored cookie in SSR. @robgietema [#5628](https://github.com/plone/volto/issues/5628)
+- Fix blocks chooser index and add a bit of breath to the left in the search input @sneridagh [#5647](https://github.com/plone/volto/issues/5647)
+- Fix `links-to-item` should be a protected route. @iFlameing [#5666](https://github.com/plone/volto/issues/5666)
+- Removed git merge conflicts from french volto.po locale file. @ichim-david [#5681](https://github.com/plone/volto/issues/5681)
+
+### Documentation
+
+- Clarify how to create a Volto project with the frontend only when you have your own existing backend. @stevepiercy [#3723](https://github.com/plone/volto/issues/3723)
+- Enabled hyperlinking from narrative documentation to Storybook entries while developing, in Netlify preview builds, and when deployed to the main production Plone documentation. Documented usage and syntax in {ref}`link-to-storybook-entries-from-documentation`. @stevepiercy [#5599](https://github.com/plone/volto/issues/5599)
+- Update cross-reference to main documentation from `install-from-packages` to `create-project`. @stevepiercy [#5654](https://github.com/plone/volto/issues/5654)
+- Temporarily pin `sphinxcontrib-*help` dependencies so documentation can build. @stevepiercy [#5655](https://github.com/plone/volto/issues/5655)
+- Pin Vale to 2.30.0 to allow build of documentation until we can upgrade to v3.x. @stevepiercy [#5656](https://github.com/plone/volto/issues/5656)
+- Use correct Pygments lexer for SCSS. @stevepiercy [#5673](https://github.com/plone/volto/issues/5673)
+- Fixed a broken reference to create a project in documentation. @stevepiercy [#5692](https://github.com/plone/volto/issues/5692)
+- Align the project names in "Create a Volto project without a backend". @stevepiercy [#5694](https://github.com/plone/volto/issues/5694)
+
+## 18.0.0-alpha.7 (2024-01-17)
+
+### Feature
+
+- Enhanced `ColorPickerWidget` with additional color definitions, saving it as an object instead of a string. @sneridagh [#5585](https://github.com/plone/volto/issues/5585)
+- Allow to opt out of the nested prefixed name build in the custom CSS properties style name generator if an object is found in the style wrapper object. @sneridagh [#5586](https://github.com/plone/volto/issues/5586)
+
+### Bugfix
+
+- In the recurrence widget, set the vertical alignment of the `edit` button to `middle`. @Ravi-kumar9347 [#5359](https://github.com/plone/volto/issues/5359)
+- Improve generation of type declarations. Fixes some key types propagation. @sneridagh [#5624](https://github.com/plone/volto/issues/5624)
+- Unify start command, trigger `build:deps` command @sneridagh [#5633](https://github.com/plone/volto/issues/5633)
+- Merge the StyleWrapper styles with the draggable props from b-D&D. @sneridagh
+  This fixes the D&D bug introduced in https://github.com/plone/volto/pull/5581 [#5652](https://github.com/plone/volto/issues/5652)
+
+### Internal
+
+- Add cypress tests for the "links-to-item" view of content items @jackahl [#5427](https://github.com/plone/volto/issues/5427)
+- Polish po file handling @erral [#5542](https://github.com/plone/volto/issues/5542)
+- Unify variables in `Makefile`s. @sneridagh [#5637](https://github.com/plone/volto/issues/5637)
+
+### Documentation
+
+- Clarified how CSS properties work. @stevepiercy [#5591](https://github.com/plone/volto/issues/5591)
+
 ## 18.0.0-alpha.6 (2024-01-02)
 
 ### Feature
