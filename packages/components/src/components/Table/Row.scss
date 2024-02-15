@@ -1,4 +1,45 @@
 .react-aria-Row {
+  --q-table-row-color: var(--text-color);
+  --q-table-row-font-size: 1rem;
+  --q-table-row-pressed: var(--highlight-pressed);
+  position: relative;
+
+  color: var(--q-table-row-color);
+  cursor: default;
+  font-size: var(--q-table-row-font-size);
+  // --radius-top: 6px;
+  // --radius-bottom: 6px;
+  // --radius: var(--radius-top) var(--radius-top) var(--radius-bottom)
+  //   var(--radius-bottom);
+  // border-radius: var(--radius);
+  // clip-path: inset(0 round var(--radius)); /* firefox */
+  outline: none;
+  transform: scale(1);
+
+  &[data-focus-visible] {
+    outline: 2px solid var(--focus-ring-color);
+    outline-offset: -2px;
+  }
+
+  &[data-pressed] {
+    background: var(--q-table-row-pressed);
+  }
+
+  &[data-selected] {
+    background: var(--highlight-background);
+    color: var(--highlight-foreground);
+    --focus-ring-color: var(--highlight-foreground);
+
+    &[data-focus-visible],
+    .react-aria-Cell[data-focus-visible] {
+      outline-offset: -4px;
+    }
+  }
+
+  &[data-disabled] {
+    color: var(--text-color-disabled);
+  }
+
   &[data-dragging] {
     opacity: 0.6;
     transform: translateZ(0);

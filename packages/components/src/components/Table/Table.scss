@@ -1,12 +1,20 @@
 .react-aria-Table {
   --q-table-border: 0 none;
   --q-table-padding: 0.286rem;
+  --q-table-width: initial;
+  --q-table-max-width: 100%;
+
   --q-table-header-color: var(--sapphire);
+  --q-table-header-font-size: 1rem;
   --q-table-header-border-bottom: 1px solid var(--border-color);
-  --q-table-row-pressed: var(--highlight-pressed);
+
+  --q-table-cell-padding: 18px 12px;
+  --q-table-cell-border-bottom: 1px solid var(--smoke);
+
   // min-height: 100px;
   // align-self: start;
-  max-width: 100%;
+  width: var(--q-table-width);
+  max-width: var(--q-table-max-width);
 
   padding: var(--q-table-padding);
   border: var(--q-table-border);
@@ -24,6 +32,7 @@
 
   .react-aria-TableHeader {
     color: var(--q-table-header-color);
+    font-size: var(--q-table-header-font-size);
 
     // &:after {
     //   content: '';
@@ -37,48 +46,9 @@
     }
   }
 
-  .react-aria-Row {
-    // color: var(--text-color);
-    // font-size: 1.072rem;
-    position: relative;
-    // --radius-top: 6px;
-    // --radius-bottom: 6px;
-    // --radius: var(--radius-top) var(--radius-top) var(--radius-bottom)
-    //   var(--radius-bottom);
-    // border-radius: var(--radius);
-    // clip-path: inset(0 round var(--radius)); /* firefox */
-    // outline: none;
-    cursor: default;
-    transform: scale(1);
-
-    &[data-focus-visible] {
-      outline: 2px solid var(--focus-ring-color);
-      outline-offset: -2px;
-    }
-
-    &[data-pressed] {
-      background: var(--q-table-row-pressed);
-    }
-
-    &[data-selected] {
-      background: var(--highlight-background);
-      color: var(--highlight-foreground);
-      --focus-ring-color: var(--highlight-foreground);
-
-      &[data-focus-visible],
-      .react-aria-Cell[data-focus-visible] {
-        outline-offset: -4px;
-      }
-    }
-
-    &[data-disabled] {
-      color: var(--text-color-disabled);
-    }
-  }
-
   .react-aria-Cell,
   .react-aria-Column {
-    padding: 4px 8px;
+    padding: var(--q-table-cell-padding);
     outline: none;
     text-align: left;
 
@@ -89,6 +59,7 @@
   }
 
   .react-aria-Cell {
+    border-bottom: var(--q-table-cell-border-bottom);
     transform: translateZ(0);
 
     // &:first-child {
