@@ -24,10 +24,10 @@
   "source": "./src/index.ts",
   "main": "./dist/main.js",
   "module": "./dist/module.mjs",
-  "types": "./dist/src/index.d.ts",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/src/index.d.ts",
+      "types": "./dist/index.d.ts",
       "import": "./dist/module.mjs",
       "require": "./dist/main.js"
     },
@@ -45,8 +45,11 @@
     "react-query"
   ],
   "scripts": {
-    "build": "parcel build --no-cache --no-optimize && pnpm build-css",
-    "build-css": "lightningcss --browserslist --bundle --sourcemap src/styles/basiq/main.css -o dist/basiq.css",
+    "build": "parcel build --no-cache && pnpm build:srctypes && pnpm build:css",
+    "build:css": "pnpm build:basiq && pnpm build:quanta",
+    "build:basiq": "lightningcss --browserslist --bundle --sourcemap src/styles/basiq/main.css -o dist/basiq.css",
+    "build:quanta": "lightningcss --browserslist --bundle --sourcemap src/styles/quanta/main.css -o dist/quanta.css",
+    "build:srctypes": "mkdir -p dist/src && cp dist/index.d.ts dist/src/index.d.ts",
     "check-ts": "tsc --project tsconfig.json",
     "test": "vitest --no-threads --passWithNoTests",
     "coverage": "vitest run --coverage --no-threads",

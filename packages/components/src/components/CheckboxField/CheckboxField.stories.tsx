@@ -1,12 +1,12 @@
 import React from 'react';
-import CheckboxComponent from './CheckboxField';
+import { CheckboxField } from './CheckboxField';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
 // More on how to set up stories at: https://storybook.js.org/docs/7.0/react/writing-stories/introduction
 const meta = {
   title: 'Forms/CheckboxField',
-  component: CheckboxComponent,
+  component: CheckboxField,
   tags: ['autodocs'],
   decorators: [
     (Story) => (
@@ -23,7 +23,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof CheckboxComponent>;
+} satisfies Meta<typeof CheckboxField>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -70,7 +70,7 @@ export const Disabled: Story = {
   args: {
     ...Default.args,
     name: 'field-disabled',
-    title: 'Disabled field title',
+    label: 'Disabled field title',
     isDisabled: true,
   },
 };

@@ -7,8 +7,6 @@ import { Link } from '../Link/Link';
 import { HomeIcon } from './HomeIcon';
 import type { BreadcrumbsProps as RACBreadcrumbsProps } from 'react-aria-components';
 
-import '../../styles/basiq/Breadcrumbs.css';
-
 type Breadcrumb = {
   '@id': string;
   title: string;

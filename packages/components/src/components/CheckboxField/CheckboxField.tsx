@@ -9,7 +9,7 @@ interface CheckboxProps extends RACCheckboxProps {
   errorMessage?: string;
 }
 
-export default function CheckboxField({
+export function CheckboxField({
   children,
   errorMessage,
   description,

@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import CheckboxField from './CheckboxField';
+import { CheckboxField } from './CheckboxField';
 
 expect.extend(toHaveNoViolations);
 
@@ -9,7 +9,7 @@ it('CheckboxField basic a11y test', async () => {
   const { container } = render(
     <CheckboxField
       name="field1"
-      title="field 1 title"
+      label="field 1 title"
       description="Optional help text"
       isRequired
     />,
