@@ -61,7 +61,8 @@
   }
 
   &[data-required] .react-aria-Label::after {
-    content: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"><path fill="hsl(7, 90%, 59%)" d="M12 18a6 6 0 100-12 6 6 0 000 12z"/></svg>');
+    /* https://yoksel.github.io/url-encoder/ */
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpath fill='hsl(7, 90%25, 59%25)' d='M12 18a6 6 0 100-12 6 6 0 000 12z'/%3E%3C/svg%3E");
   }
 }
 
