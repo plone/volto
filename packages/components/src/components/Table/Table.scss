@@ -1,4 +1,4 @@
-.react-aria-Table {
+:root {
   --q-table-border: 0 none;
   --q-table-padding: 0.286rem;
   --q-table-width: initial;
@@ -10,7 +10,9 @@
 
   --q-table-cell-padding: 18px 12px;
   --q-table-cell-border-bottom: 1px solid var(--smoke);
+}
 
+.react-aria-Table {
   // min-height: 100px;
   // align-self: start;
   width: var(--q-table-width);

@@ -1,3 +1,4 @@
+import { type ReactNode } from 'react';
 import {
   type TableProps as RACTableProps,
   ResizableTableContainer,
@@ -20,13 +21,14 @@ interface ColumnType {
 
 interface RowType {
   id: string;
-  [key: string]: string; // TODO can we make this more specific?
+  [key: string]: ReactNode; // TODO can we make this more specific?
 }
 
 interface TableProps<C, R> extends RACTableProps {
   columns: C[];
   rows: R[];
   resizableColumns?: boolean;
+  // TODO maybe a custom "selectall" component? Is it doable with react-aria-components?
 }
 
 /**

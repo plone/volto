@@ -1,7 +1,7 @@
 'use client';
 
 import type { ActionsResponse } from '@plone/types';
-import { useState } from 'react';
+import { ComponentProps, ReactNode, useState } from 'react';
 import {
   Button,
   // OverlayArrow,
@@ -9,17 +9,23 @@ import {
   TooltipTrigger,
 } from 'react-aria-components';
 import cx from 'classnames';
+import type { Brain } from '@plone/types/src/content/brains';
 import styles from './Contents.module.scss';
 import Add from '../Icons/AddIcon';
 import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
 import Container from '../Container/Container';
 import Input from '../Input/Input';
+import Table from '../Table/Table';
+import ContentsCell from './ContentsCell';
+import { indexes, defaultIndexes } from '../../helpers/indexes';
+import type { ArrayElement } from '../../helpers/types';
 
 interface ContentsProps {
   pathname: string;
   objectActions: ActionsResponse['object'];
   loading: boolean;
   title: string;
+  items: Brain[];
 }
 
 /**
@@ -33,6 +39,7 @@ export default function Contents({
   objectActions,
   loading,
   title,
+  items,
 }: ContentsProps) {
   const [selected, setSelected] = useState<string[]>([]);
   // const path = getBaseUrl(pathname);
@@ -48,6 +55,34 @@ export default function Contents({
     // and this remained null
     return null;
   }
+
+  const columns = [
+    {
+      id: 'title',
+      name: 'Title',
+      isRowHeader: true,
+    },
+    ...defaultIndexes.map((index) => ({
+      id: index,
+      name: indexes[index].label,
+    })),
+    {
+      id: '_actions',
+      name: 'Actions',
+    },
+  ] as const;
+
+  const rows = items.map((item) =>
+    columns.reduce<ArrayElement<ComponentProps<typeof Table>['rows']>>(
+      (cells, column) => ({
+        ...cells,
+        [column.id]: (
+          <ContentsCell key={column.id} item={item} column={column.id} />
+        ),
+      }),
+      { id: item['@id'] },
+    ),
+  );
 
   return (
     <Container
@@ -76,6 +111,18 @@ export default function Contents({
             </Button>
             <Tooltip placement="bottom">Add content</Tooltip>
           </TooltipTrigger>
+        </section>
+        <section className={cx('contents-table', styles['contents-table'])}>
+          <Table
+            columns={[...columns]}
+            rows={rows}
+            // onSortEnd={onSortEnd}
+            // onRowClick={onRowClick}
+            // onRowDoubleClick={onRowDoubleClick}
+            // onRowSelection={onRowSelection}
+            // resizableColumns={true}
+            // isMultiselect={true}
+          />
         </section>
       </article>
     </Container>

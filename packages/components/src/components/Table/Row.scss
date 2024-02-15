@@ -1,7 +1,10 @@
-.react-aria-Row {
+:root {
   --q-table-row-color: var(--text-color);
   --q-table-row-font-size: 1rem;
   --q-table-row-pressed: var(--highlight-pressed);
+}
+
+.react-aria-Row {
   position: relative;
 
   color: var(--q-table-row-color);

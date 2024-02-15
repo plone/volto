@@ -1,5 +1,9 @@
+:root {
+  --q-table-column-font-weight: 500;
+}
+
 .react-aria-Column {
-  font-weight: 500;
+  font-weight: var(--q-table-column-font-weight);
 
   .sort-indicator {
     padding: 0 2px;

@@ -65,7 +65,7 @@ export const DraggableRows: Story = {
         getItems: (keys) =>
           [...keys].map((key) => ({
             'text/plain':
-              Default.args.rows.find((row) => row.id === key)?.name || '',
+              Default.args.rows.find((row) => row.id === key)?.id || '',
           })),
         onReorder(e) {
           if (e.target.dropPosition === 'before') {
