@@ -60,11 +60,20 @@ const supported = new locale.Locales(keys(languages), 'en');
 
 const server = express()
   .disable('x-powered-by')
-  .head('/*', function (req, res) {
-    // Support for HEAD requests. Required by start-test utility in CI.
-    res.send('');
+  .head('/*', function (next,req, res) {
+    if (req.method === 'HEAD') {
+      // Handling HEAD request
+      res.status(404).end(); // Respond with 404 status
+    } else {
+      // Pass control to the next middleware
+      next();
+    }
   })
   .use(cookiesMiddleware());
+App.use(head)
+app.get('/dummy', (req, res) => {
+  res.send('This is a dummy handler');
+});
 
 const middleware = (config.settings.expressMiddleware || []).filter((m) => m);
 
