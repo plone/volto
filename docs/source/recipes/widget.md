@@ -254,3 +254,15 @@ See [Storybook](https://6.docs.plone.org/storybook) with available widgets.
 ```{note}
 Please contribute to this section!
 ```
+
+## Sidebar
+
+In the edit form a sidebar is used when the form contains block data. There are some helper actions methods which can be used to change the form state.
+
+### Setting tab
+
+You can use the `setSidebarTab` action to set the current active tab (metadata or block).
+
+### Setting focus
+
+You can use the `setMetadataFocus` action to set the current field by specifying the fieldset and the field name.
