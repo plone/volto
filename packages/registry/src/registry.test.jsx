@@ -7,6 +7,8 @@ config.set('components', {
   'Teaser|News Item': { component: 'This is the News Item Teaser component' },
 });
 
+config.set('slots', {});
+
 describe('registry', () => {
   it('get components', () => {
     expect(config.getComponent('Toolbar').component).toEqual(
@@ -108,5 +110,26 @@ describe('registry', () => {
         dependencies: ['News Item', 'StringFieldWidget'],
       }).component,
     ).toEqual('this is a Bar component');
+  });
+
+  it('registers a slot', () => {
+    config.registerSlot({
+      name: 'aboveContent',
+      component: 'this is a Bar component',
+      dependencies: ['News Item'],
+      route: '/folder/path',
+    });
+    expect(
+      config.getSlot({
+        name: 'aboveContent',
+        dependencies: 'News Item',
+      }).component,
+    ).toEqual('this is a Bar component');
+    expect(
+      config.getSlot({
+        name: 'aboveContent',
+        dependencies: 'News Item',
+      }).route,
+    ).toEqual('/folder/path');
   });
 });

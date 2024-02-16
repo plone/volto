@@ -5,6 +5,7 @@ import type {
   ComponentsConfig,
   ExperimentalConfig,
   SettingsConfig,
+  Slot,
   SlotsConfig,
   ViewsConfig,
   WidgetsConfig,
@@ -176,6 +177,79 @@ class Config {
       } catch (error) {
         // eslint-disable-next-line no-console
         console.warn(`Not setting the component displayName because ${error}`);
+      }
+    }
+  }
+
+  getSlot(
+    options: { name: string; dependencies: string[] | string } | string,
+  ): Slot | undefined {
+    if (typeof options === 'object') {
+      const { name, dependencies = '' } = options;
+      let depsString: string = '';
+      if (dependencies && Array.isArray(dependencies)) {
+        depsString = dependencies.join('+');
+      } else if (typeof dependencies === 'string') {
+        depsString = dependencies;
+      }
+      const slotComponentName = `${name}${depsString ? `|${depsString}` : ''}`;
+      const currentSlot = this._data.slots[name];
+
+      return currentSlot.get(slotComponentName);
+    } else {
+      // Shortcut notation, accepting a lonely string as argument
+      const name = options;
+      const currentSlot = this._data.slots[name];
+      return currentSlot.get(name);
+    }
+  }
+
+  registerSlot(options: {
+    name: string;
+    dependencies: string[] | string;
+    component: React.ComponentType;
+    route: string;
+  }) {
+    const { name, component, dependencies = '', route } = options;
+    let depsString: string = '';
+    if (!component) {
+      throw new Error('No component provided');
+    } else {
+      if (dependencies && Array.isArray(dependencies)) {
+        depsString = dependencies.join('+');
+      } else if (typeof dependencies === 'string') {
+        depsString = dependencies;
+      }
+      const slotComponentName = `${name}${depsString ? `|${depsString}` : ''}`;
+
+      let currentSlot = this._data.slots[name];
+      if (!currentSlot) {
+        this._data.slots[name] = new Map();
+        currentSlot = this._data.slots[name];
+      }
+
+      currentSlot.set(slotComponentName, {
+        component,
+        dependencies,
+        route,
+      });
+      // Try to set a displayName (useful for React dev tools) for the registered component
+      // Only if it's a function and it's not set previously
+      try {
+        const displayName =
+          currentSlot.get(slotComponentName)!.component.displayName;
+
+        if (
+          !displayName &&
+          typeof currentSlot.get(slotComponentName)?.component === 'function'
+        ) {
+          currentSlot.get(slotComponentName)!.component.displayName = name;
+        }
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.warn(
+          `Not setting the slot component displayName because ${error}`,
+        );
       }
     }
   }

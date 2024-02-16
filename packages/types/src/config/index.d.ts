@@ -11,7 +11,13 @@ export type AddonRoutesConfig = {
   component: React.ComponentType;
 }[];
 
-export type SlotsConfig = Record<string, unknown>;
+export type Slot = {
+  component: React.ComponentType;
+  route: string;
+  dependencies: string[] | string;
+};
+
+export type SlotsConfig = Record<string, Map<string, Slot>>;
 
 export type ComponentsConfig = Record<
   string,
