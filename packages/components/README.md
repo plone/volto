@@ -9,27 +9,30 @@ This package contains ReactJS components for use Plone as a headless CMS.
 
 The purpose of this package is to provide an agnostic set of baseline components to build sites upon.
 
-## Design decissions and assumptions
+## Design decisions and assumptions
 
-The package will provide a set of simple, ready to use components:
+The package provides a set of simple, ready to use components with the following features:
 
 - Agnostic (not tied to any known design system)
 - Composable (they are ready to be the building blocks of other complex components)
+- Theme-able (they can be themed, using the provided basic theme as baseline and custom CSS properties)
 - Data-driven-less (they are dumb, presentational components)
 - i18n-less (they do not provide i18n machinery or attached to any i18n framework/library)
 - Built on a renowned headless CMS components library: React Aria Components (RAC) (https://react-spectrum.adobe.com/react-aria/components.html)
 
-Since we are using RAC as base, the styling of this package components are done via the RAC styling options (https://react-spectrum.adobe.com/react-aria/styling.html)
+Since we are using RAC as base, the styling of this package components are done via the RAC styling options (https://react-spectrum.adobe.com/react-aria/styling.html).
+See below for more information about RAC.
 This package provides a simple and basic set of CSS rules to start build upon.
 Alternatively, you can bring your own styles, removing the basic styling or complement it, building on the top of it.
-You can even use RAC to use other CSS utility libraries like Tailwind.
+You can even use RAC to use other CSS utility libraries like TailwindCSS.
 
-## Styling components
+## Styling
 
 This package provide a basic set of CSS rules, we called them BasiQ (the Q for Quanta).
 You should add them to your project build in order to make the components to be styled properly.
-You can use all the CSS bundled in a single file, or using the specific file for the component you are using.
-They are distributed along with the components as a library.
+However, you could bring your own also, but the CSS you provide should replace what BasiQ does and style the bare components from scratch.
+You can use the CSS bundled for all components in a single file, or using the specific file(s) for the component(s) you are using.
+They are distributed along with the components code in the `dist` folder of the library.
 
 ```js
 import '@plone/components/basiq.css';
@@ -41,35 +44,42 @@ or selectively:
 import '@plone/components/src/styles/basiq/TextField.css';
 ```
 
-## Themes
+## Theming
 
-The idea is that you can use these basic styles while building the theme of your site.
+The idea is that you can use the BasiQ styles as baseline while building the theme of your site.
 You can take advantage of them as they are very thin and basic (almost vanilla CSS for the components).
 Using them as a baseline will allow you to quickly build your theme around them.
-BasiQ provides a simple, yet powerful set of tokenized custom CSS properties that will help you customize your own styles on the top of BasiQ. You can override them in your classes while maintaining them for others.
+BasiQ provides a simple, yet powerful set of tokenized custom CSS properties that will help you customize your own styles on the top of BasiQ.
+You can override them in your classes while maintaining them for others.
 
-An example of these, are the Quanta components. These components use BasiQ as baseline, so they are built upon it and reusing the CSS and custom CSS properties in there. Quanta is built upon the basic styles of BasiQ in an additive way, so the use of the Quanta CSS implies to use it upon BasiQ styling. You could take Quanta as example to build your own layer of styles over BasiQ for your theme.
+### Quanta
 
-In order to use a theme built upon BasiQ, you need to import both BasiQ and Quanta CSS:
+This package also features the Quanta components.
+The Quanta theme is an example of it.
+These components use BasiQ as baseline (not only in styling, but also in the component side), so they are built upon it and reusing the CSS and custom CSS properties in there.
+Quanta is built upon the basic styles of BasiQ in an additive way, so the use of the Quanta CSS implies to use it upon BasiQ styling.
+You could take Quanta as example to build your own layer of styles over BasiQ for your theme.
+
+In order to use a theme built upon BasiQ, you need to import both BasiQ and the theme CSS, in this order:
 
 ```js
 import '@plone/components/basiq.css';
 import '@plone/components/quanta.css';
 ```
 
-You have the option of doing it selectively too:
+You have the option of doing it selectively per component too:
 
 ```js
 import '@plone/components/src/styles/basiq/TextField.css';
 import '@plone/components/src/styles/quanta/TextField.css';
 ```
 
-Take a look at the implementation of the Quanta components, using the BasiQ ones as baseline.
+Take a look at the implementation of the Quanta components, using the BasiQ ones as baseline in the `quanta` folders.
 
 Alternatively, as RAC allows, you can also drop your own basic set of styles.
 You can take the BasiQ styles as reference.
 You can even bring your own CSS framework and make BasiQ get the styling in there using the utilities of your choice.
-It's even possible to use Tailwind for styling the components in this package, using the RAC styling approaches.
+It's even possible to use TailwindCSS for styling the components in this package, using the RAC styling approach.
 
 ## Components list
 
@@ -180,7 +190,8 @@ https://plone-components.netlify.app/
 This package follows a style guide (Storybook) driven development.
 The components are developed in isolation, given their own Storybook stories.
 
-The components are expected to be data-driven-less. So they won't rely internally in any data retrieval facility or utilities (as in i18n).
+The components are expected to be data-driven-less.
+So they won't rely internally in any data retrieval facility or utilities (as in i18n).
 They are expected to receive all the necessary data as props from the parent components.
 In that regard, they should be "dumb" components that only take care of rendering.
 
@@ -197,14 +208,16 @@ https://medium.com/@nirbenyair/headless-components-in-react-and-why-i-stopped-us
 
 ### `react-aria-components`
 
-`@plone/components` is based on Adobe's [`react-aria-components` library](https://react-spectrum.adobe.com/react-aria/react-aria-components.html). React Aria Components is a library of unstyled components built on top of the React Aria hooks. It provides a simpler way to build accessible components with custom styles, while offering the flexibility to drop down to hooks for even more customizability where needed.
+`@plone/components` is based on Adobe's [`react-aria-components` library](https://react-spectrum.adobe.com/react-aria/react-aria-components.html).
+React Aria Components is a library of unstyled components built on top of the React Aria library.
+It provides a simpler way to build accessible components with custom styles, while offering the flexibility to drop down to hooks for even more customizability where needed.
 
 ## Releases
 
 The release policy for this package follows a quick 1.0.0 release, as opposed to have a excessive long lasted alpha/beta road to 1.0.0. This is because the development of this package is expected to happen during the next years.
 
 Breaking changes will be stated properly using semantic versioning, however an upgrade guide won't be supplied until the package is considered "ready for production".
-The team will communicate this state properly when the moment comes.
+The Volto Team will communicate this state properly when the moment comes.
 
 ## PLIP #4352
 
