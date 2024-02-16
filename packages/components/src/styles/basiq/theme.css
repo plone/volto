@@ -1,3 +1,5 @@
+@import '../quanta/colors.css';
+
 /* Base styles */
 :root {
   background: var(--background-color);
@@ -9,7 +11,7 @@
 /* color themes for dark and light modes, generated with Leonardo.
  * Light: https://leonardocolor.io/theme.html?name=Light&config=%7B%22baseScale%22%3A%22Gray%22%2C%22colorScales%22%3A%5B%7B%22name%22%3A%22Gray%22%2C%22colorKeys%22%3A%5B%22%23000000%22%5D%2C%22colorspace%22%3A%22RGB%22%2C%22ratios%22%3A%5B%22-1.12%22%2C%221.45%22%2C%222.05%22%2C%223.02%22%2C%224.54%22%2C%227%22%2C%2210.86%22%5D%2C%22smooth%22%3Afalse%7D%2C%7B%22name%22%3A%22Purple%22%2C%22colorKeys%22%3A%5B%22%235e30eb%22%5D%2C%22colorspace%22%3A%22RGB%22%2C%22ratios%22%3A%5B%22-1.12%22%2C%221.45%22%2C%222.05%22%2C%223.02%22%2C%224.54%22%2C%227%22%2C%2210.86%22%5D%2C%22smooth%22%3Afalse%7D%2C%7B%22name%22%3A%22Red%22%2C%22colorKeys%22%3A%5B%22%23e32400%22%5D%2C%22colorspace%22%3A%22RGB%22%2C%22ratios%22%3A%5B%22-1.12%22%2C%221.45%22%2C%222.05%22%2C%223.02%22%2C%224.54%22%2C%227%22%2C%2210.86%22%5D%2C%22smooth%22%3Afalse%7D%5D%2C%22lightness%22%3A98%2C%22contrast%22%3A1%2C%22saturation%22%3A100%2C%22formula%22%3A%22wcag2%22%7D */
 :root {
-  --background-color: #f8f8f8; /* Change to --basiq-slate-50 ? or to pure white? */
+  --background-color: #fff;
   --gray-50: #ffffff;
   --gray-100: #d0d0d0;
   --gray-200: #afafaf;
@@ -35,7 +37,7 @@
 
 /* ShadCN slate theme */
 :root {
-  --basiq-slate-50: #f8fafc;
+  --basiq-slate-50: #fff; /* was #f8fafc */
   --basiq-slate-100: #f1f5f9;
   --basiq-slate-200: #e2e8f0;
   --basiq-slate-300: #cbd5e1;
@@ -46,39 +48,6 @@
   --basiq-slate-800: #1e293b;
   --basiq-slate-900: #0f172a;
   --basiq-slate-950: #020617;
-
-  /* New York Theme */
-  /* --background: hsl(0 0% 100%);
-  --foreground: hsl(240 10% 3.9%);
-  --card: hsl(0 0% 100%);
-  --card-foreground: hsl(240 10% 3.9%);
-  --popover: hsl(0 0% 100%);
-  --popover-foreground: hsl(240 10% 3.9%);
-  --primary: hsl(240 5.9% 10%);
-  --primary-foreground: hsl(0 0% 98%);
-  --secondary: hsl(240 4.8% 95.9%);
-  --secondary-foreground: hsl(240 5.9% 10%);
-  --muted: hsl(240 4.8% 95.9%);
-  --muted-foreground: hsl(240 3.8% 46.1%);
-  --accent: hsl(240 4.8% 95.9%);
-  --accent-foreground: hsl(240 5.9% 10%);
-  --destructive: hsl(0 72.22% 50.59%);
-  --destructive-foreground: hsl(0 0% 98%);
-  --border: hsl(240 5.9% 90%);
-  --input: hsl(240 5.9% 90%);
-  --ring: #a1a1aa; */
-}
-
-/* Quanta Theme*/
-:root {
-  --quanta-cobalt: #2597f4;
-  --quanta-sapphire: #0b78d0;
-  --quanta-royal: #085696;
-  --quanta-ballet: #fee9e7;
-  --quanta-rose: #f54e38;
-  --quanta-candy: #d0220b;
-  --quanta-neon: #3da72a;
-  --quanta-lemmon: #f6d355;
 }
 
 /* Semantic colors */
@@ -162,33 +131,5 @@
     --highlight-foreground-pressed: HighlightText;
     --color-invalid: LinkText;
     --color-pressed-invalid: LinkText;
-  }
-}
-
-/* Dark: https://leonardocolor.io/theme.html?name=Dark&config=%7B%22baseScale%22%3A%22Gray%22%2C%22colorScales%22%3A%5B%7B%22name%22%3A%22Gray%22%2C%22colorKeys%22%3A%5B%22%23000000%22%5D%2C%22colorspace%22%3A%22RGB%22%2C%22ratios%22%3A%5B%22-1.12%22%2C%221.45%22%2C%222.05%22%2C%223.02%22%2C%224.54%22%2C%227%22%2C%2210.86%22%5D%2C%22smooth%22%3Afalse%7D%2C%7B%22name%22%3A%22Purple%22%2C%22colorKeys%22%3A%5B%22%235e30eb%22%5D%2C%22colorspace%22%3A%22RGB%22%2C%22ratios%22%3A%5B%22-1.12%22%2C%221.45%22%2C%222.05%22%2C%223.02%22%2C%224.54%22%2C%227%22%2C%2210.86%22%5D%2C%22smooth%22%3Afalse%7D%2C%7B%22name%22%3A%22Red%22%2C%22colorKeys%22%3A%5B%22%23e32400%22%5D%2C%22colorspace%22%3A%22RGB%22%2C%22ratios%22%3A%5B%22-1.12%22%2C%221.45%22%2C%222.05%22%2C%223.02%22%2C%224.54%22%2C%227%22%2C%2210.86%22%5D%2C%22smooth%22%3Afalse%7D%5D%2C%22lightness%22%3A11%2C%22contrast%22%3A1%2C%22saturation%22%3A100%2C%22formula%22%3A%22wcag2%22%7D */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background-color: #1d1d1d;
-    --gray-50: #101010;
-    --gray-100: #393939;
-    --gray-200: #4f4f4f;
-    --gray-300: #686868;
-    --gray-400: #848484;
-    --gray-500: #a7a7a7;
-    --gray-600: #cfcfcf;
-    --purple-100: #3c1e95;
-    --purple-200: #522acd;
-    --purple-300: #6f46ed;
-    --purple-400: #8e6ef1;
-    --purple-500: #b099f5;
-    --purple-600: #d5c8fa;
-    --red-100: #721200;
-    --red-200: #9c1900;
-    --red-300: #cc2000;
-    --red-400: #e95034;
-    --red-500: #f08c79;
-    --red-600: #f7c3ba;
-    --highlight-hover: rgb(255 255 255 / 0.1);
-    --highlight-pressed: rgb(255 255 255 / 0.2);
   }
 }

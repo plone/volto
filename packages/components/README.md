@@ -142,9 +142,7 @@ import { ChevronupIcon } from '../Icons/ChevronupIcon';
 
 const MyComponent = (props) => (
   <Button>
-    <span aria-hidden="true" style={{ display: 'flex' }}>
-      {props.isOpen ? <ChevronupIcon /> : <ChevrondownIcon />}
-    </span>
+    {props.isOpen ? <ChevronupIcon aria-label="Collapse" /> : <ChevrondownIcon aria-label="Unfold" />}
   </Button>
 )
 ```
@@ -158,7 +156,7 @@ This helper can be different across platforms or frameworks, since the way to pr
 
 ```tsx
 import { FlattenToAppURLProvider } from '@plone/components';
-import {flattenToAppURL} from './utils';
+import { flattenToAppURL } from './utils';
 
 const rootApp = (
   <FlattenToAppURLProvider flattenToAppURL={flattenToAppURL}>

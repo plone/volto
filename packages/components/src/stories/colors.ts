@@ -74,3 +74,236 @@ export const colors = slate.reduce(
   }),
   {},
 );
+
+const _quantaSlate = [
+  {
+    name: '--quanta-denim',
+    hex: '#021322',
+  },
+  {
+    name: '--quanta-air',
+    hex: '#fff',
+  },
+  {
+    name: '--quanta-space',
+    hex: '#000',
+  },
+];
+
+export const quantaColors = _quantaSlate.reduce(
+  (acc, value, index) => ({
+    ...acc,
+    [value.name]: value.hex,
+  }),
+  {},
+);
+
+const _quantaGreys = [
+  {
+    name: '--quanta-snow',
+    hex: '#f3f5f7',
+  },
+  {
+    name: '--quanta-smoke',
+    hex: '#e4e8ec',
+  },
+  {
+    name: '--quanta-silver',
+    hex: '#c3cdd5',
+  },
+  {
+    name: '--quanta-dolphin',
+    hex: '#8296a6',
+  },
+  {
+    name: '--quanta-pigeon',
+    hex: '#617789',
+  },
+  {
+    name: '--quanta-iron',
+    hex: '#4a5b68',
+  },
+];
+
+export const quantaGreys = _quantaGreys.reduce(
+  (acc, value, index) => ({
+    ...acc,
+    [value.name]: value.hex,
+  }),
+  {},
+);
+
+const _quantaBlues = [
+  {
+    name: '--quanta-arctic',
+    hex: '#e2f1fd',
+  },
+  {
+    name: '--quanta-sky',
+    hex: '#c5e3fc',
+  },
+  {
+    name: '--quanta-azure',
+    hex: '#7cc0f8',
+  },
+  {
+    name: '--quanta-cobalt',
+    hex: '#2597f4',
+  },
+  {
+    name: '--quanta-sapphire',
+    hex: '#0b78d0',
+  },
+  {
+    name: '--quanta-royal',
+    hex: '#085696',
+  },
+];
+
+export const quantaBlues = _quantaBlues.reduce(
+  (acc, value, index) => ({
+    ...acc,
+    [value.name]: value.hex,
+  }),
+  {},
+);
+
+const _quantaReds = [
+  {
+    name: '--quanta-ballet',
+    hex: '#fee9e7',
+  },
+  {
+    name: '--quanta-flamingo',
+    hex: '#fcd0ca',
+  },
+  {
+    name: '--quanta-poppy',
+    hex: '#f9a094',
+  },
+  {
+    name: '--quanta-rose',
+    hex: '#f54e38',
+  },
+  {
+    name: '--quanta-candy',
+    hex: '#d0220b',
+  },
+  {
+    name: '--quanta-wine',
+    hex: '#a91c09',
+  },
+];
+
+export const quantaReds = _quantaReds.reduce(
+  (acc, value, index) => ({
+    ...acc,
+    [value.name]: value.hex,
+  }),
+  {},
+);
+
+const _quantaYellows = [
+  {
+    name: '--quanta-cream',
+    hex: '#fcf3cf',
+  },
+  {
+    name: '--quanta-banana',
+    hex: '#faeaad',
+  },
+  {
+    name: '--quanta-lemmon',
+    hex: '#f6d355',
+  },
+  {
+    name: '--quanta-gold',
+    hex: '#b48f09',
+  },
+  {
+    name: '--quanta-dijon',
+    hex: '#917308',
+  },
+  {
+    name: '--quanta-bronze',
+    hex: '#6b5506',
+  },
+];
+
+export const quantaYellows = _quantaYellows.reduce(
+  (acc, value, index) => ({
+    ...acc,
+    [value.name]: value.hex,
+  }),
+  {},
+);
+
+const _quantaGreens = [
+  {
+    name: '--quanta-daiquiri',
+    hex: '#e2f7de',
+  },
+  {
+    name: '--quanta-mint',
+    hex: '#c5efbe',
+  },
+  {
+    name: '--quanta-celery',
+    hex: '#8bde7c',
+  },
+  {
+    name: '--quanta-neon',
+    hex: '#3da72a',
+  },
+  {
+    name: '--quanta-emerald',
+    hex: '#318722',
+  },
+  {
+    name: '--quanta-turtle',
+    hex: '#256619',
+  },
+];
+
+export const quantaGreens = _quantaGreens.reduce(
+  (acc, value, index) => ({
+    ...acc,
+    [value.name]: value.hex,
+  }),
+  {},
+);
+
+const _quantaBlueGreens = [
+  {
+    name: '--quanta-aqua',
+    hex: '#d6f5f2',
+  },
+  {
+    name: '--quanta-spa',
+    hex: '#baeee9',
+  },
+  {
+    name: '--quanta-tiffany',
+    hex: '#74dcd4',
+  },
+  {
+    name: '--quanta-turquoise',
+    hex: '#29a399',
+  },
+  {
+    name: '--quanta-peacock',
+    hex: '#207e77',
+  },
+  {
+    name: '--quanta-puya',
+    hex: '#175e58',
+  },
+];
+
+export const quantaBlueGreens = _quantaBlueGreens.reduce(
+  (acc, value, index) => ({
+    ...acc,
+    [value.name]: value.hex,
+  }),
+  {},
+);

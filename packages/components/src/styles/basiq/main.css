@@ -1,3 +1,5 @@
+@import './theme.css';
+
 @import './Link.css';
 @import './Button.css';
 @import './ToggleButton.css';
@@ -26,3 +28,5 @@
 
 @import './Breadcrumbs.css';
 @import './BlockToolbar.css';
+
+@import './icons.css';
