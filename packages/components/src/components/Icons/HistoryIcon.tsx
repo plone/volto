@@ -1,7 +1,8 @@
-import Icon from '../Icon/Icon';
+import React from 'react';
+import { Icon } from '../Icon/Icon';
 import type { IconPropsWithoutChildren } from '../Icon/Icon';
 
-const History = (props: IconPropsWithoutChildren) => {
+export const HistoryIcon = (props: IconPropsWithoutChildren) => {
   return (
     <Icon {...props}>
       <svg
@@ -16,5 +17,3 @@ const History = (props: IconPropsWithoutChildren) => {
     </Icon>
   );
 };
-
-export default History;
