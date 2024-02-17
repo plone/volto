@@ -140,8 +140,8 @@ They can be used directly in your components as:
 import { ChevronupIcon } from '../Icons/ChevronupIcon';
 
 const MyComponent = (props) => (
-  <Button>
-    {props.isOpen ? <ChevronupIcon aria-label="Collapse" /> : <ChevrondownIcon aria-label="Unfold" />}
+  <Button aria-label="Unfold/Collapse">
+    {props.isOpen ? <ChevronupIcon /> : <ChevrondownIcon />}
   </Button>
 )
 ```
