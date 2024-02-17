@@ -8,6 +8,20 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.0 (2024-02-17)
+
+### Breaking
+
+- Move to only CSS-based approach
+  Removal of SCSS in favor of the above
+  New Basic components, based in React Aria Components
+
+  @sneridagh [#5766](https://github.com/plone/volto/issues/5766)
+
+### Documentation
+
+- Build the `volto/components` Storybook only when its source files change. @stevepiercy [#5601](https://github.com/plone/volto/issues/5601)
+
 ## 1.7.0 (2023-12-25)
 
 ### Feature
