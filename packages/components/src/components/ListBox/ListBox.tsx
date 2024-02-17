@@ -1,7 +1,7 @@
 import React from 'react';
 import {
-  ListBox as AriaListBox,
-  ListBoxItem as AriaListBoxItem,
+  ListBox as RACListBox,
+  ListBoxItem as RACListBoxItem,
   ListBoxItemProps,
   ListBoxProps,
 } from 'react-aria-components';
@@ -10,9 +10,9 @@ export function ListBox<T extends object>({
   children,
   ...props
 }: ListBoxProps<T>) {
-  return <AriaListBox {...props}>{children}</AriaListBox>;
+  return <RACListBox {...props}>{children}</RACListBox>;
 }
 
 export function ListBoxItem(props: ListBoxItemProps) {
-  return <AriaListBoxItem {...props} />;
+  return <RACListBoxItem {...props} />;
 }

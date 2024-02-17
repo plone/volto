@@ -1,17 +1,17 @@
 import React from 'react';
 import {
   Label,
-  Meter as AriaMeter,
-  MeterProps as AriaMeterProps,
+  Meter as RACMeter,
+  MeterProps as RACMeterProps,
 } from 'react-aria-components';
 
-export interface MeterProps extends AriaMeterProps {
+export interface MeterProps extends RACMeterProps {
   label?: string;
 }
 
 export function Meter({ label, ...props }: MeterProps) {
   return (
-    <AriaMeter {...props}>
+    <RACMeter {...props}>
       {({ percentage, valueText }) => (
         <>
           <Label>{label}</Label>
@@ -21,6 +21,6 @@ export function Meter({ label, ...props }: MeterProps) {
           </div>
         </>
       )}
-    </AriaMeter>
+    </RACMeter>
   );
 }

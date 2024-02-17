@@ -1,15 +1,14 @@
 import React from 'react';
 import {
-  CheckboxGroup as AriaCheckboxGroup,
-  CheckboxGroupProps as AriaCheckboxGroupProps,
-  CheckboxProps as AriaCheckboxProps,
+  CheckboxGroup as RACCheckboxGroup,
+  CheckboxGroupProps as RACCheckboxGroupProps,
   FieldError,
   Text,
   ValidationResult,
 } from 'react-aria-components';
 
 export interface CheckboxGroupProps
-  extends Omit<AriaCheckboxGroupProps, 'children'> {
+  extends Omit<RACCheckboxGroupProps, 'children'> {
   children?: React.ReactNode;
   label?: string;
   description?: string;
@@ -24,11 +23,11 @@ export function CheckboxGroup({
   ...props
 }: CheckboxGroupProps) {
   return (
-    <AriaCheckboxGroup {...props}>
+    <RACCheckboxGroup {...props}>
       {label}
       {children}
       {description && <Text slot="description">{description}</Text>}
       <FieldError>{errorMessage}</FieldError>
-    </AriaCheckboxGroup>
+    </RACCheckboxGroup>
   );
 }

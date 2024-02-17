@@ -1,8 +1,8 @@
 import React from 'react';
 import {
   Button,
-  ComboBox as AriaComboBox,
-  ComboBoxProps as AriaComboBoxProps,
+  ComboBox as RACComboBox,
+  ComboBoxProps as RACComboBoxProps,
   FieldError,
   Input,
   Label,
@@ -15,7 +15,7 @@ import {
 } from 'react-aria-components';
 
 export interface ComboBoxProps<T extends object>
-  extends Omit<AriaComboBoxProps<T>, 'children'> {
+  extends Omit<RACComboBoxProps<T>, 'children'> {
   label?: string;
   description?: string | null;
   errorMessage?: string | ((validation: ValidationResult) => string);
@@ -30,7 +30,7 @@ export function ComboBox<T extends object>({
   ...props
 }: ComboBoxProps<T>) {
   return (
-    <AriaComboBox {...props}>
+    <RACComboBox {...props}>
       <Label>{label}</Label>
       <div className="my-combobox-container">
         <Input />
@@ -41,7 +41,7 @@ export function ComboBox<T extends object>({
       <Popover>
         <ListBox>{children}</ListBox>
       </Popover>
-    </AriaComboBox>
+    </RACComboBox>
   );
 }
 
