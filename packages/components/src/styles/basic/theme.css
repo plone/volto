@@ -2,9 +2,11 @@
 
 /* Base styles */
 :root {
+  --basic-font-family: system-ui;
+  --basic-font-size: 14px;
   background: var(--background-color);
-  font-family: system-ui;
-  font-size: 14px;
+  font-family: var(--basic-font-family);
+  font-size: var(--basic-font-size);
   line-height: 1.5;
 }
 
