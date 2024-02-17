@@ -137,7 +137,7 @@ This package provides an implementation of the Quanta Icon set in React componen
 They can be used directly in your components as:
 
 ```tsx
-import { ChevronupIcon } from '../Icons/ChevronupIcon';
+import { ChevronupIcon, ChevrondownIcon, Button } from '@plone/components';
 
 const MyComponent = (props) => (
   <Button aria-label="Unfold/Collapse">
@@ -167,14 +167,14 @@ const rootApp = (
 Then from your components:
 
 ```tsx
-import { useFlattenToAppURL } from '@plone/components';
+import { Link, useFlattenToAppURL } from '@plone/components';
 
 const Link = (props: LinkProps, ref: ForwardedRef<HTMLAnchorElement>) => {
   const { flattenToAppURL } = useFlattenToAppURL();
   const flattenedURL = flattenToAppURL(props.href);
 
   return (
-    <RACLink ref={ref} {...props} href={flattenedURL}>
+    <Link {...props} href={flattenedURL}>
       {props.children}
     </RACLink>
   );
