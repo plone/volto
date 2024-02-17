@@ -1,5 +1,5 @@
 /* Quanta does not have to redefine colors, but it has to override the original ones coming
-from basic. Then if people override the basic ones, then they won't get overriden in quanta */
+from the basic styles. Then, if people override the basic ones, then they won't get overridden in Quanta. */
 .react-aria-Select {
   .react-aria-Label {
     color: var(--quanta-sapphire);
