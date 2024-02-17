@@ -167,14 +167,15 @@ const rootApp = (
 Then from your components:
 
 ```tsx
-import { Link, useFlattenToAppURL } from '@plone/components';
+import { useFlattenToAppURL } from '@plone/components';
+import { Link as RACLink } from 'react-aria-components';
 
 const Link = (props: LinkProps, ref: ForwardedRef<HTMLAnchorElement>) => {
   const { flattenToAppURL } = useFlattenToAppURL();
   const flattenedURL = flattenToAppURL(props.href);
 
   return (
-    <Link {...props} href={flattenedURL}>
+    <RACLink {...props} href={flattenedURL}>
       {props.children}
     </RACLink>
   );
