@@ -4,12 +4,12 @@ import {
   Input,
   Label,
   Text,
-  TextField as AriaTextField,
-  TextFieldProps as AriaTextFieldProps,
+  TextField as RACTextField,
+  TextFieldProps as RACTextFieldProps,
   ValidationResult,
 } from 'react-aria-components';
 
-export interface TextFieldProps extends AriaTextFieldProps {
+export interface TextFieldProps extends RACTextFieldProps {
   label?: string;
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);
@@ -23,11 +23,11 @@ export function TextField({
   ...props
 }: TextFieldProps) {
   return (
-    <AriaTextField {...props}>
+    <RACTextField {...props}>
       <Label>{label}</Label>
       <Input />
       {description && <Text slot="description">{description}</Text>}
       <FieldError>{errorMessage}</FieldError>
-    </AriaTextField>
+    </RACTextField>
   );
 }

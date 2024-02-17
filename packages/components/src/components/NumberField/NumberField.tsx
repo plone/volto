@@ -1,12 +1,11 @@
 import React from 'react';
 import {
-  Button as bn,
   FieldError,
   Group,
   Input,
   Label,
-  NumberField as AriaNumberField,
-  NumberFieldProps as AriaNumberFieldProps,
+  NumberField as RACNumberField,
+  NumberFieldProps as RACNumberFieldProps,
   Text,
   ValidationResult,
 } from 'react-aria-components';
@@ -14,7 +13,7 @@ import { Button } from '../Button/Button';
 import { AddIcon } from '../Icons/AddIcon';
 import { DashIcon } from '../Icons/DashIcon';
 
-export interface NumberFieldProps extends AriaNumberFieldProps {
+export interface NumberFieldProps extends RACNumberFieldProps {
   label?: string;
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);
@@ -27,7 +26,7 @@ export function NumberField({
   ...props
 }: NumberFieldProps) {
   return (
-    <AriaNumberField {...props}>
+    <RACNumberField {...props}>
       <Label>{label}</Label>
       <Group>
         <Button slot="decrement">
@@ -40,6 +39,6 @@ export function NumberField({
       </Group>
       {description && <Text slot="description">{description}</Text>}
       <FieldError>{errorMessage}</FieldError>
-    </AriaNumberField>
+    </RACNumberField>
   );
 }

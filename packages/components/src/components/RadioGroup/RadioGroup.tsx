@@ -2,13 +2,13 @@ import React from 'react';
 import {
   FieldError,
   Label,
-  RadioGroup as AriaRadioGroup,
-  RadioGroupProps as AriaRadioGroupProps,
+  RadioGroup as RACRadioGroup,
+  RadioGroupProps as RACRadioGroupProps,
   Text,
   ValidationResult,
 } from 'react-aria-components';
 
-export interface RadioGroupProps extends Omit<AriaRadioGroupProps, 'children'> {
+export interface RadioGroupProps extends Omit<RACRadioGroupProps, 'children'> {
   children?: React.ReactNode;
   label?: string;
   description?: string;
@@ -23,11 +23,11 @@ export function RadioGroup({
   ...props
 }: RadioGroupProps) {
   return (
-    <AriaRadioGroup {...props}>
+    <RACRadioGroup {...props}>
       <Label>{label}</Label>
       {children}
       {description && <Text slot="description">{description}</Text>}
       <FieldError>{errorMessage}</FieldError>
-    </AriaRadioGroup>
+    </RACRadioGroup>
   );
 }

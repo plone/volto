@@ -2,9 +2,9 @@ import React from 'react';
 import {
   Button,
   Label,
-  Tag as AriaTag,
-  TagGroup as AriaTagGroup,
-  TagGroupProps as AriaTagGroupProps,
+  Tag as RACTag,
+  TagGroup as RACTagGroup,
+  TagGroupProps as RACTagGroupProps,
   TagList,
   TagListProps,
   TagProps,
@@ -12,7 +12,7 @@ import {
 } from 'react-aria-components';
 
 export interface TagGroupProps<T>
-  extends Omit<AriaTagGroupProps, 'children'>,
+  extends Omit<RACTagGroupProps, 'children'>,
     Pick<TagListProps<T>, 'items' | 'children' | 'renderEmptyState'> {
   label?: string;
   description?: string;
@@ -29,27 +29,27 @@ export function TagGroup<T extends object>({
   ...props
 }: TagGroupProps<T>) {
   return (
-    <AriaTagGroup {...props}>
+    <RACTagGroup {...props}>
       <Label>{label}</Label>
       <TagList items={items} renderEmptyState={renderEmptyState}>
         {children}
       </TagList>
       {description && <Text slot="description">{description}</Text>}
       {errorMessage && <Text slot="errorMessage">{errorMessage}</Text>}
-    </AriaTagGroup>
+    </RACTagGroup>
   );
 }
 
 export function Tag({ children, ...props }: TagProps) {
   let textValue = typeof children === 'string' ? children : undefined;
   return (
-    <AriaTag textValue={textValue} {...props}>
+    <RACTag textValue={textValue} {...props}>
       {({ allowsRemoving }) => (
         <>
           {children}
           {allowsRemoving && <Button slot="remove">ⓧ</Button>}
         </>
       )}
-    </AriaTag>
+    </RACTag>
   );
 }

@@ -1,18 +1,18 @@
 import React from 'react';
 import {
-  Switch as AriaSwitch,
-  SwitchProps as AriaSwitchProps,
+  Switch as RACSwitch,
+  SwitchProps as RACSwitchProps,
 } from 'react-aria-components';
 
-export interface SwitchProps extends Omit<AriaSwitchProps, 'children'> {
+export interface SwitchProps extends Omit<RACSwitchProps, 'children'> {
   children: React.ReactNode;
 }
 
 export function Switch({ children, ...props }: SwitchProps) {
   return (
-    <AriaSwitch {...props}>
+    <RACSwitch {...props}>
       <div className="indicator" />
       {children}
-    </AriaSwitch>
+    </RACSwitch>
   );
 }
