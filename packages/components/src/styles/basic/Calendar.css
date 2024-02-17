@@ -1,4 +1,5 @@
 @import './Button.css';
+@import './theme.css';
 
 .react-aria-Calendar {
   width: fit-content;

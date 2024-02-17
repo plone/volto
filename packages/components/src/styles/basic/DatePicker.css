@@ -4,6 +4,7 @@
 @import './DateField.css';
 @import './Calendar.css';
 @import './Form.css';
+@import './theme.css';
 
 .react-aria-DatePicker {
   color: var(--text-color);

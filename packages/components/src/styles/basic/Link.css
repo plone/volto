@@ -1,3 +1,5 @@
+@import './theme.css';
+
 .react-aria-Link {
   position: relative;
   color: var(--link-color);

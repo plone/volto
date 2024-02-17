@@ -1,3 +1,5 @@
+@import './theme.css';
+
 .react-aria-ToggleButton {
   padding: 8px 8px;
   border: 1px solid var(--border-color);

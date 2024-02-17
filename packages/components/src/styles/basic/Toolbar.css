@@ -1,6 +1,7 @@
 @import './Checkbox.css';
 @import './Button.css';
 @import './ToggleButton.css';
+@import './theme.css';
 
 .react-aria-Toolbar {
   display: flex;

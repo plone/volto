@@ -2,6 +2,7 @@
 @import './Popover.css';
 @import './Button.css';
 @import './Form.css';
+@import './theme.css';
 
 .react-aria-Select {
   color: var(--text-color);

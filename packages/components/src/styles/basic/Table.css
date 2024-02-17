@@ -3,6 +3,7 @@
 @import './Checkbox.css';
 @import './Popover.css';
 @import './Menu.css';
+@import './theme.css';
 
 .react-aria-Table {
   max-width: 100%;

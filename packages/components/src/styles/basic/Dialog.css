@@ -1,6 +1,7 @@
 @import './Button.css';
 @import './TextField.css';
 @import './Modal.css';
+@import './theme.css';
 
 .react-aria-Dialog {
   padding: 30px;

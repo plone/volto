@@ -1,5 +1,6 @@
 @import './Button.css';
 @import './Form.css';
+@import './theme.css';
 
 .react-aria-SearchField {
   display: grid;
