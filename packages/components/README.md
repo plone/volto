@@ -90,7 +90,7 @@ Take a look at the implementation of the Quanta components, using the basic ones
 
 Alternatively, as RAC allows, you can also drop your own basic set of styles.
 You can take the basic styles as reference.
-You can even bring your own CSS framework and make basic get the styling in there using the utilities of your choice.
+You can even remove the basic styling completely and bring your own CSS framework and push a new styling from scratch in there using the utilities of your choice, targeting the default RAC class names.
 It's even possible to use TailwindCSS for styling the components in this package, using the RAC styling approach.
 
 ## Components list
