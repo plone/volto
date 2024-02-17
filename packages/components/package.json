@@ -45,8 +45,8 @@
   ],
   "scripts": {
     "build": "parcel build --no-cache && pnpm build:srctypes && pnpm build:css",
-    "build:css": "pnpm build:basiq && pnpm build:quanta",
-    "build:basiq": "lightningcss --browserslist --bundle --sourcemap src/styles/basiq/main.css -o dist/basiq.css",
+    "build:css": "pnpm build:basic && pnpm build:quanta",
+    "build:basic": "lightningcss --browserslist --bundle --sourcemap src/styles/basic/main.css -o dist/basic.css",
     "build:quanta": "lightningcss --browserslist --bundle --sourcemap src/styles/quanta/main.css -o dist/quanta.css",
     "build:srctypes": "mkdir -p dist/src && cp dist/index.d.ts dist/src/index.d.ts",
     "check-ts": "tsc --project tsconfig.json",

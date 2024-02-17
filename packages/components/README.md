@@ -29,66 +29,65 @@ You can even use RAC to use other CSS utility libraries, like TailwindCSS.
 ## Styling
 
 This package provide a basic set of CSS rules.
-We call them "BasiQ" (the "Q" is for "Quanta").
 You should add them to your project build to make the components properly styled.
 
-You can bring your own styles, but the CSS you provide should replace what BasiQ does and style the bare components from scratch.
+You can bring your own styles, but the CSS you provide should replace what the basic stylying does and style the bare components from scratch.
 
 You can use the CSS bundled for all components in a single file, or use the specific files for your components.
 They are distributed along with the components code in the `dist` folder of the library.
 
 ```js
-import '@plone/components/basiq.css';
+import '@plone/components/basic.css';
 ```
 
 or selectively:
 
 ```js
-import '@plone/components/src/styles/basiq/TextField.css';
+import '@plone/components/src/styles/basic/TextField.css';
 ```
 
 ## Theming
 
-You can use the BasiQ styles as a baseline while building the theme of your site.
+You can use the basic styles as a baseline while building the theme of your site.
 You can take advantage of them, as they are very thin and basic (almost vanilla CSS for the components).
 Using them as a baseline will allow you to quickly build your theme around them.
-BasiQ provides a simple, yet powerful, set of tokenized custom CSS properties that will help you customize your own styles on the top of BasiQ.
+`@plone/components` basic styles provide a simple, yet powerful, set of tokenized custom CSS properties that will help you customize your own styles on the top of the basic styling.
 You can override them in your classes while maintaining them for others.
 
 ### Quanta
 
 This package also features the Quanta components.
 The Quanta theme is an example of it.
-These components use BasiQ as a baseline, not only in styling, but also in the component side, reusing the CSS and custom CSS properties in it.
+These components use the basic styling as a baseline, not only in styling, but also in the component side, reusing the CSS and custom CSS properties in it.
 
-Quanta is built upon the basic styles of BasiQ in an additive way.
-The use of the Quanta CSS implies using it upon BasiQ styling.
-You could take Quanta as example to build your own layer of styles over BasiQ for your theme.
+Quanta is built upon the basic styles in an additive way.
+The use of the Quanta CSS implies using it upon basic styling.
+You could take Quanta as example to build your own layer of styles over basic styling for your theme.
 
-To use a theme built upon BasiQ, you need to import both BasiQ and the theme CSS, in this order:
+To use a theme built upon the basic styling, you need to import both the basic and the theme CSS, in this order:
 
 ```js
-import '@plone/components/basiq.css';
+import '@plone/components/basic.css';
 import '@plone/components/quanta.css';
 ```
 
 You have the option of doing it selectively per component, too:
 
 ```js
-import '@plone/components/src/styles/basiq/TextField.css';
+import '@plone/components/src/styles/basic/TextField.css';
 import '@plone/components/src/styles/quanta/TextField.css';
 ```
 
-Take a look at the implementation of the Quanta components, using the BasiQ ones as baseline in the `quanta` folders.
+Take a look at the implementation of the Quanta components, using the basic ones as baseline in the `quanta` folders.
 
 Alternatively, as RAC allows, you can also drop your own basic set of styles.
-You can take the BasiQ styles as reference.
-You can even bring your own CSS framework and make BasiQ get the styling in there using the utilities of your choice.
+You can take the basic styles as reference.
+You can even bring your own CSS framework and make basic get the styling in there using the utilities of your choice.
 It's even possible to use TailwindCSS for styling the components in this package, using the RAC styling approach.
 
 ## Components list
 
-### BasiQ
+### Basic
 
 - Button
 - Checkbox
