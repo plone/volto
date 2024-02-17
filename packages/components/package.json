@@ -131,7 +131,7 @@
     "classnames": "^2.3.2",
     "clsx": "^2.0.0",
     "lodash": "^4.17.21",
-    "react-aria-components": "^1.0.1"
+    "react-aria-components": "^1.1.1"
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
