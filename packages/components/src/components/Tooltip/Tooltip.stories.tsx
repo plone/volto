@@ -6,7 +6,7 @@ import { BoldIcon } from '../Icons/BoldIcon';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../styles/basiq/Tooltip.css';
+import '../../styles/basic/Tooltip.css';
 
 const meta = {
   component: Tooltip,

@@ -3,7 +3,7 @@ import { Checkbox } from './Checkbox';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../styles/basiq/Checkbox.css';
+import '../../styles/basic/Checkbox.css';
 
 const meta = {
   title: 'Components/Checkbox',

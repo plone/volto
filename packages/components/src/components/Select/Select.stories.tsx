@@ -2,7 +2,7 @@ import React from 'react';
 import { Select, SelectItem } from './Select';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../styles/basiq/Select.css';
+import '../../styles/basic/Select.css';
 
 export interface SelectItemObject {
   label: string;

@@ -12,7 +12,7 @@ import {
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../styles/basiq/Dialog.css';
+import '../../styles/basic/Dialog.css';
 
 const meta = {
   component: Dialog,

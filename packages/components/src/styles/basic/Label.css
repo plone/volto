@@ -9,7 +9,7 @@
     /* Marks after Label (Required, etc) */
     display: inline-block;
     margin-left: 3px;
-    color: var(--basiq-slate-600);
+    color: var(--basic-600);
     line-height: 0;
     vertical-align: middle;
   }

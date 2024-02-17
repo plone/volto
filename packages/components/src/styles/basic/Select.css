@@ -33,11 +33,11 @@
 
   &[data-disabled] {
     .react-aria-Label {
-      color: var(--basiq-slate-400);
+      color: var(--basic-400);
     }
 
     [slot='description'] {
-      color: var(--basiq-slate-400);
+      color: var(--basic-400);
     }
   }
 

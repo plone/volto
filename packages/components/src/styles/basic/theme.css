@@ -37,60 +37,56 @@
 
 /* ShadCN slate theme */
 :root {
-  --basiq-slate-50: #fff; /* was #f8fafc */
-  --basiq-slate-100: #f1f5f9;
-  --basiq-slate-200: #e2e8f0;
-  --basiq-slate-300: #cbd5e1;
-  --basiq-slate-400: #94a3b8;
-  --basiq-slate-500: #64748b;
-  --basiq-slate-600: #475569;
-  --basiq-slate-700: #334155;
-  --basiq-slate-800: #1e293b;
-  --basiq-slate-900: #0f172a;
-  --basiq-slate-950: #020617;
+  --basic-50: #fff; /* was #f8fafc */
+  --basic-100: #f1f5f9;
+  --basic-200: #e2e8f0;
+  --basic-300: #cbd5e1;
+  --basic-400: #94a3b8;
+  --basic-500: #64748b;
+  --basic-600: #475569;
+  --basic-700: #334155;
+  --basic-800: #1e293b;
+  --basic-900: #0f172a;
+  --basic-950: #020617;
 }
 
 /* Semantic colors */
 :root {
   /* Text */
-  --text-color: var(--basiq-slate-950); /* --gray-600 */
-  --text-color-base: var(--basiq-slate-600); /* --gray-500 */
-  --text-color-hover: var(--basiq-slate-950); /* --gray-600 */
-  --text-color-disabled: var(--basiq-slate-400); /* --gray-200 */
+  --text-color: var(--basic-950); /* --gray-600 */
+  --text-color-base: var(--basic-600); /* --gray-500 */
+  --text-color-hover: var(--basic-950); /* --gray-600 */
+  --text-color-disabled: var(--basic-400); /* --gray-200 */
   --text-color-placeholder: var(--gray-400);
   /* Link */
   --link-color: var(--quanta-sapphire);
   --link-color-secondary: var(--quanta-royal);
   --link-color-pressed: var(--quanta-cobalt);
   /* Border */
-  --border-color: var(--basiq-slate-400); /* --gray-300 */
-  --border-color-hover: var(--basiq-slate-500); /* --gray-400 */
-  --border-color-pressed: var(--basiq-slate-500); /* --gray-400 */
-  --border-color-disabled: var(--basiq-slate-300); /* --gray-100 */
+  --border-color: var(--basic-400); /* --gray-300 */
+  --border-color-hover: var(--basic-500); /* --gray-400 */
+  --border-color-pressed: var(--basic-500); /* --gray-400 */
+  --border-color-disabled: var(--basic-300); /* --gray-100 */
   /* Input */
-  --focus-ring-color: var(--basiq-slate-400); /* --purple-400 */
-  --field-background: var(--basiq-slate-50); /* --purple-400 */
-  --field-text-color: var(--basiq-slate-950); /* --purple-600 */
+  --focus-ring-color: var(--basic-400); /* --purple-400 */
+  --field-background: var(--basic-50); /* --purple-400 */
+  --field-text-color: var(--basic-950); /* --purple-600 */
   /* Button */
-  --button-background: var(--basiq-slate-50); /* --gray-50 */
+  --button-background: var(--basic-50); /* --gray-50 */
   --button-background-pressed: var(--background-color); /* --background-color */
 
-  --overlay-background: var(--basiq-slate-50); /* --gray-50 */
+  --overlay-background: var(--basic-50); /* --gray-50 */
   /* these colors are the same between light and dark themes
    * to ensure contrast with the foreground color */
-  --highlight-background: var(--basiq-slate-600); /* #6f46ed purple-300 */
-  --highlight-background-pressed: var(
-    --basiq-slate-800
-  ); /* #522acd purple-200 */
+  --highlight-background: var(--basic-600); /* #6f46ed purple-300 */
+  --highlight-background-pressed: var(--basic-800); /* #522acd purple-200 */
   --highlight-background-invalid: var(
     --quanta-candy
   ); /* red-300 from dark theme */
-  --highlight-background-hover: var(--basiq-slate-400); /* #6f46ed purple-300 */
-  --highlight-foreground: var(--basiq-slate-50); /* white */
-  --highlight-foreground-pressed: var(--basiq-slate-200); /* #ddd */
-  --highlight-overlay: var(
-    --basiq-slate-400
-  ); /* rgb(from #6f46ed r g b / 15%) */
+  --highlight-background-hover: var(--basic-400); /* #6f46ed purple-300 */
+  --highlight-foreground: var(--basic-50); /* white */
+  --highlight-foreground-pressed: var(--basic-200); /* #ddd */
+  --highlight-overlay: var(--basic-400); /* rgb(from #6f46ed r g b / 15%) */
   --color-invalid: var(--red-400); /* Renamed */
   --color-pressed-invalid: var(--red-500); /* Renamed */
 }

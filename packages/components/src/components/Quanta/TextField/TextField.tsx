@@ -1,14 +1,11 @@
 import React from 'react';
 import { TextFieldContext } from 'react-aria-components';
-import {
-  TextField as BasiqTextField,
-  TextFieldProps as BasiqTextFieldProps,
-} from '../../TextField/TextField';
+import { TextField, TextFieldProps } from '../../TextField/TextField';
 
-export function TextField(props: BasiqTextFieldProps) {
+export function QuantaTextField(props: TextFieldProps) {
   return (
     <TextFieldContext.Provider value={{ className: 'q react-aria-TextField' }}>
-      <BasiqTextField {...props} />
+      <TextField {...props} />
     </TextFieldContext.Provider>
   );
 }

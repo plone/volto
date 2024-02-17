@@ -4,7 +4,7 @@ import { Tab, TabList, TabPanel } from 'react-aria-components';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../styles/basiq/Tabs.css';
+import '../../styles/basic/Tabs.css';
 
 const meta: Meta<typeof Tabs> = {
   component: Tabs,

@@ -1,25 +1,25 @@
 import React from 'react';
-import { TextField } from './TextField';
+import { QuantaTextField } from './TextField';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../../styles/basiq/TextField.css';
+import '../../../styles/basic/TextField.css';
 import '../../../styles/quanta/TextField.css';
 
-const meta: Meta<typeof TextField> = {
-  title: 'Quanta/TextField',
-  component: TextField,
+const meta: Meta<typeof QuantaTextField> = {
+  title: 'Quanta/QuantaTextField',
+  component: QuantaTextField,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof TextField>;
+} satisfies Meta<typeof QuantaTextField>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: (args: any) => <TextField {...args} />,
+  render: (args: any) => <QuantaTextField {...args} />,
   args: {
     name: 'fieldname',
     label: 'Field label',

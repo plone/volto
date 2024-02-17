@@ -1,13 +1,13 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { TextAreaField } from './TextAreaField';
+import { QuantaTextAreaField } from './TextAreaField';
 
 expect.extend(toHaveNoViolations);
 
-it('TextAreaField basic a11y test', async () => {
+it('QuantaTextAreaField basic a11y test', async () => {
   const { container } = render(
-    <TextAreaField
+    <QuantaTextAreaField
       name="field1"
       label="field 1 title"
       placeholder="Type something…"

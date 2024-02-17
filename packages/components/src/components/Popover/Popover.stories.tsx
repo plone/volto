@@ -5,7 +5,7 @@ import { DialogTrigger, Heading } from 'react-aria-components';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../styles/basiq/Popover.css';
+import '../../styles/basic/Popover.css';
 import { InfoIcon } from '../Icons/InfoIcon';
 
 const meta = {

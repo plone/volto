@@ -21,7 +21,7 @@ import { RowafterIcon } from '../Icons/RowafterIcon';
 import { MoreoptionsIcon } from '../Icons/MoreoptionsIcon';
 import { BinIcon } from '../Icons/BinIcon';
 
-import '../../styles/basiq/BlockToolbar.css';
+import '../../styles/basic/BlockToolbar.css';
 
 const meta: Meta<typeof BlockToolbar> = {
   component: BlockToolbar,

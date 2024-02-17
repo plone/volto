@@ -10,10 +10,10 @@ import {
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../styles/basiq/Form.css';
+import '../../styles/basic/Form.css';
 
 const meta = {
-  title: 'Widgets/Form',
+  title: 'Forms/Form',
   component: Form,
   parameters: {
     layout: 'centered',

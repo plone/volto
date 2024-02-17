@@ -6,7 +6,7 @@ import { AddIcon } from '../Icons/AddIcon';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../styles/basiq/Button.css';
+import '../../styles/basic/Button.css';
 
 const meta = {
   title: 'Components/Button',

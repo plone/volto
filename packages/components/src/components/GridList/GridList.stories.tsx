@@ -3,7 +3,7 @@ import { GridList, GridListItem } from './GridList';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../styles/basiq/GridList.css';
+import '../../styles/basic/GridList.css';
 
 const meta = {
   component: GridList,

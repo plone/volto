@@ -4,7 +4,7 @@ import { Radio } from 'react-aria-components';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../styles/basiq/RadioGroup.css';
+import '../../styles/basic/RadioGroup.css';
 
 const meta = {
   title: 'Widgets/RadioGroup',

@@ -3,7 +3,7 @@ import { TextField } from './TextField';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../styles/basiq/TextField.css';
+import '../../styles/basic/TextField.css';
 
 const meta: Meta<typeof TextField> = {
   title: 'Forms/TextField',

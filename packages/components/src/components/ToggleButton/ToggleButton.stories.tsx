@@ -4,7 +4,7 @@ import { BoldIcon } from '../Icons/BoldIcon';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../styles/basiq/ToggleButton.css';
+import '../../styles/basic/ToggleButton.css';
 
 const meta = {
   component: ToggleButton,

@@ -3,7 +3,7 @@ import { ListBox, ListBoxItem } from './ListBox';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../styles/basiq/ListBox.css';
+import '../../styles/basic/ListBox.css';
 
 const meta = {
   component: ListBox,

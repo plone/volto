@@ -1,9 +1,9 @@
 import React from 'react';
-import { Select, SelectItem } from './Select';
+import { QuantaSelect, SelectItem } from './Select';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../../styles/basiq/Select.css';
+import '../../../styles/basic/Select.css';
 import '../../../styles/quanta/Select.css';
 
 export interface SelectItemObject {
@@ -11,14 +11,14 @@ export interface SelectItemObject {
   value: string;
 }
 
-const meta: Meta<typeof Select> = {
+const meta: Meta<typeof QuantaSelect> = {
   title: 'Quanta/Select',
-  component: Select,
+  component: QuantaSelect,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof Select>;
+} satisfies Meta<typeof QuantaSelect>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -47,11 +47,11 @@ export const Default: Story = {
 export const Items: Story = {
   render: (args) => (
     // @ts-ignore I assume this is a storybook bug when passing args
-    <Select {...args}>
+    <QuantaSelect {...args}>
       {(item: SelectItemObject) => (
         <SelectItem id={item.label}>{item.value}</SelectItem>
       )}
-    </Select>
+    </QuantaSelect>
   ),
   args: {
     name: 'field-empty',
@@ -77,11 +77,11 @@ export const Items: Story = {
 export const LotsOfItems: Story = {
   render: (args) => (
     // @ts-ignore I assume this is a storybook bug when passing args
-    <Select {...args}>
+    <QuantaSelect {...args}>
       {(item: SelectItemObject) => (
         <SelectItem id={item.label}>{item.value}</SelectItem>
       )}
-    </Select>
+    </QuantaSelect>
   ),
   args: {
     name: 'field-empty',

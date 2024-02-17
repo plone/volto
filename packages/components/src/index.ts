@@ -34,6 +34,6 @@ export { FlattenToAppURLProvider } from './providers/flattenToAppURL';
 export { useFlattenToAppURL } from './providers/flattenToAppURL';
 
 // Quanta components
-export { TextField as QuantaTextField } from './components/quanta/TextField/TextField';
-export { TextAreaField as QuantaTextAreaField } from './components/quanta/TextAreaField/TextAreaField';
-export { Select as QuantaSelect } from './components/quanta/Select/Select';
+export { QuantaTextField } from './components/quanta/TextField/TextField';
+export { QuantaTextAreaField } from './components/quanta/TextAreaField/TextAreaField';
+export { QuantaSelect } from './components/quanta/Select/Select';

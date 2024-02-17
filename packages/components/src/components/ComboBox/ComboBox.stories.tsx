@@ -3,7 +3,7 @@ import { ComboBox, ComboBoxItem } from './ComboBox';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../styles/basiq/ComboBox.css';
+import '../../styles/basic/ComboBox.css';
 
 const meta = {
   title: 'Widgets/ComboBox',

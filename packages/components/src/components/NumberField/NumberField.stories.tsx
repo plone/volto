@@ -3,10 +3,10 @@ import { NumberField } from './NumberField';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import '../../styles/basiq/NumberField.css';
+import '../../styles/basic/NumberField.css';
 
 const meta = {
-  title: 'Widgets/NumberField',
+  title: 'Forms/NumberField',
   component: NumberField,
   parameters: {
     layout: 'centered',
