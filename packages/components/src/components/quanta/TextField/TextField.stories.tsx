@@ -7,7 +7,7 @@ import '../../../styles/basic/TextField.css';
 import '../../../styles/quanta/TextField.css';
 
 const meta: Meta<typeof QuantaTextField> = {
-  title: 'Quanta/QuantaTextField',
+  title: 'Quanta/TextField',
   component: QuantaTextField,
   parameters: {
     layout: 'centered',
