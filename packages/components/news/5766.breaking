@@ -1,5 +1,5 @@
 - Move to only CSS-based approach
 - Removal of SCSS in favor of the above
-- New BasiQ components, based in React Aria Components
+- New Basic components, based in React Aria Components
 
 @sneridagh
