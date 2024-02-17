@@ -1,4 +1,4 @@
-/* Quanta does not have to redefine colors, it has to override the originals coming
+/* Quanta does not have to redefine colors, but it has to override the original ones coming
 from basic. Then if people override the basic ones, then they won't get overriden in quanta */
 .react-aria-Select {
   .react-aria-Label {
