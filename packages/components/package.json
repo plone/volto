@@ -31,6 +31,8 @@
       "import": "./dist/module.mjs",
       "require": "./dist/main.js"
     },
+    "./basic.css": "./dist/basic.css",
+    "./quanta.css": "./dist/quanta.css",
     "./src/*": "./src/*"
   },
   "homepage": "https://plone.org",
