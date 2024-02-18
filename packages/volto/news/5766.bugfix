@@ -1,3 +1,0 @@
-Add @plone/components as external library.
-Make the Terser plugin accept ESNext features.
-Fix inline `svg` elements in LESS files. @sneridagh
