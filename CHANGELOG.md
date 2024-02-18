@@ -17,6 +17,19 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 17.14.0 (2024-02-18)
+
+### Feature
+
+- Added the `ignore` property to allow exceptions to rules that are applied to all routes. @dobri1408 [#5621](https://github.com/plone/volto/issues/5621)
+
+### Bugfix
+
+- Fixed listing SSR rendering by sending `subrequestId` instead of `id` only within `getAsyncData`, similar to calling `getQueryStringResults` directly. @ichim-david 
+  Fixed listing SSR pagination rendering by sending `currentPage` value besides the `subrequestId`. @ichim-david  
+  Added testing for SSR rendering for all of the listing block tests. @ichim-david [#5688](https://github.com/plone/volto/issues/5688)
+- Add extra wait calls to listing block tests to avoid sporadic failures. @ichim-david [#5753](https://github.com/plone/volto/issues/5753)
+
 ## 17.13.0 (2024-02-09)
 
 ### Feature
