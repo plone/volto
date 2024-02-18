@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.1 (2024-02-18)
+
+### Bugfix
+
+- Add import path for bundled CSS @sneridagh [#5770](https://github.com/plone/volto/issues/5770)
+
 ## 2.0.0-alpha.0 (2024-02-17)
 
 ### Breaking
