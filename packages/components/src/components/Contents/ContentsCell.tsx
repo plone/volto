@@ -1,4 +1,6 @@
+import cx from 'classnames';
 import { Brain } from '@plone/types/src/content/brains';
+import styles from './ContentsCell.module.css';
 import Link from '../Link/Link';
 import Page from '../Icons/PageIcon';
 import { indexes } from '../../helpers/indexes';
@@ -12,7 +14,7 @@ export default function ContentsCell({ item, column }: Props) {
   if (column === 'title') {
     return (
       <Link
-        className="title-link"
+        className={cx('title-link', styles['title-link'])}
         href={`${item['@id']}${item.is_folderish ? '/contents' : ''}`}
       >
         <Page />

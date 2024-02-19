@@ -7,6 +7,7 @@ import {
   // OverlayArrow,
   Tooltip,
   TooltipTrigger,
+  useDragAndDrop,
 } from 'react-aria-components';
 import cx from 'classnames';
 import type { Brain } from '@plone/types/src/content/brains';
@@ -17,6 +18,7 @@ import Container from '../Container/Container';
 import Input from '../Input/Input';
 import Table from '../Table/Table';
 import ContentsCell from './ContentsCell';
+import { AddContentPopover } from './AddContentPopover';
 import { indexes, defaultIndexes } from '../../helpers/indexes';
 import type { ArrayElement } from '../../helpers/types';
 
@@ -26,6 +28,8 @@ interface ContentsProps {
   loading: boolean;
   title: string;
   items: Brain[];
+  orderContent: (baseUrl: string, id: string, delta: number) => Promise<void>;
+  addableTypes: ComponentProps<typeof AddContentPopover>['addableTypes'];
 }
 
 /**
@@ -40,6 +44,8 @@ export default function Contents({
   loading,
   title,
   items,
+  orderContent,
+  addableTypes,
 }: ContentsProps) {
   const [selected, setSelected] = useState<string[]>([]);
   // const path = getBaseUrl(pathname);
@@ -84,6 +90,32 @@ export default function Contents({
     ),
   );
 
+  const { dragAndDropHooks } = useDragAndDrop({
+    getItems: (keys) =>
+      [...keys].map((key) => ({
+        'text/plain': key.toString(),
+      })),
+    onReorder(e) {
+      if (e.keys.size !== 1) {
+        console.error('Only one item can be moved at a time');
+      }
+      const item = items.find((item) => item['@id'] === [...e.keys][0]);
+      if (!item) return;
+
+      const initialPosition = rows.findIndex((row) => row.id === item['@id']);
+      if (initialPosition === -1) return;
+
+      let finalPosition = rows.findIndex((row) => row.id === e.target.key);
+      if (e.target.dropPosition === 'after') finalPosition += 1;
+
+      orderContent(
+        path,
+        item.id.replace(/^.*\//, ''),
+        finalPosition - initialPosition,
+      );
+    },
+  });
+
   return (
     <Container
       as="div"
@@ -106,22 +138,22 @@ export default function Contents({
             className={cx('search-input', styles['search-input'])}
           />
           <TooltipTrigger>
-            <Button>
+            <Button className={styles.add}>
               <Add />
             </Button>
-            <Tooltip placement="bottom">Add content</Tooltip>
+            <Tooltip className={styles.tooltip} placement="bottom">
+              Add content
+            </Tooltip>
           </TooltipTrigger>
         </section>
         <section className={cx('contents-table', styles['contents-table'])}>
           <Table
             columns={[...columns]}
             rows={rows}
-            // onSortEnd={onSortEnd}
-            // onRowClick={onRowClick}
-            // onRowDoubleClick={onRowDoubleClick}
+            selectionMode="multiple"
+            dragAndDropHooks={dragAndDropHooks}
             // onRowSelection={onRowSelection}
             // resizableColumns={true}
-            // isMultiselect={true}
           />
         </section>
       </article>

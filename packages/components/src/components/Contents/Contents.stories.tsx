@@ -23,6 +23,15 @@ export const Default: Story = {
       },
     ],
     loading: false,
+    orderContent: async (baseUrl, id, delta) => {
+      console.log(`now PATCH https://api${baseUrl} with payload:
+{
+  "ordering": {
+    "obj_id": "${id}",
+    "delta": ${delta},
+  },
+}`);
+    },
     items: [
       {
         '@id': 'https://demo.plone.org/images',
