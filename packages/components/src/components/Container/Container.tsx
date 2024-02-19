@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { getElementType } from '../helpers';
 import cx from 'classnames';
 
@@ -15,7 +15,7 @@ type ContainerProps = {
   narrow?: boolean;
 };
 
-const Container = (props: ContainerProps) => {
+export const Container = (props: ContainerProps) => {
   const { children, className, layout, narrow, ...rest } = props;
   const classes = cx('a', 'container', className, { layout, narrow });
 
@@ -26,5 +26,3 @@ const Container = (props: ContainerProps) => {
     </Component>
   );
 };
-
-export default Container;

@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   type RowProps,
   Row as RACRow,
@@ -6,11 +7,10 @@ import {
   useTableOptions,
   Button,
 } from 'react-aria-components';
-import './Row.scss';
-import Checkbox from '../Checkbox/Checkbox';
-import Draggable from '../Icons/DraggableIcon';
+import { Checkbox } from '../Checkbox/Checkbox';
+import { DraggableIcon } from '../Icons';
 
-export default function Row<T extends object>({
+export function Row<T extends object>({
   id,
   columns,
   children,
@@ -23,7 +23,7 @@ export default function Row<T extends object>({
       {allowsDragging && (
         <Cell>
           <Button slot="drag" aria-label="Drag">
-            <Draggable />
+            <DraggableIcon />
           </Button>
         </Cell>
       )}

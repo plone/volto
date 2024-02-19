@@ -1,10 +1,14 @@
+import React from 'react';
 import {
-  type CheckboxProps,
   Checkbox as RACCheckbox,
+  CheckboxProps as RACCheckboxProps,
 } from 'react-aria-components';
-import './Checkbox.scss';
 
-export default function Checkbox({ children, ...props }: CheckboxProps) {
+interface CheckboxProps extends RACCheckboxProps {
+  label?: string;
+}
+
+export function Checkbox({ children, ...props }: CheckboxProps) {
   return (
     <RACCheckbox {...props}>
       {({ isIndeterminate }) => (
@@ -18,7 +22,7 @@ export default function Checkbox({ children, ...props }: CheckboxProps) {
               )}
             </svg>
           </div>
-          {children}
+          {props.label || children}
         </>
       )}
     </RACCheckbox>

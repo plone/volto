@@ -1,0 +1,74 @@
+@import './theme.css';
+
+.react-aria-Switch {
+  display: flex;
+  align-items: center;
+  color: var(--text-color);
+  font-size: 1.143rem;
+  forced-color-adjust: none;
+  gap: 0.571rem;
+
+  .indicator {
+    width: 2rem;
+    height: 1.143rem;
+    border: 2px solid var(--border-color);
+    border-radius: 1.143rem;
+    background: var(--background-color);
+    transition: all 200ms;
+
+    &:before {
+      display: block;
+      width: 0.857rem;
+      height: 0.857rem;
+      border-radius: 16px;
+      margin: 0.143rem;
+      background: var(--highlight-background);
+      content: '';
+      transition: all 200ms;
+    }
+  }
+
+  &[data-pressed] .indicator {
+    border-color: var(--border-color-pressed);
+
+    &:before {
+      background: var(--highlight-background-pressed);
+    }
+  }
+
+  &[data-selected] {
+    .indicator {
+      border-color: var(--highlight-background);
+      background: var(--highlight-background);
+
+      &:before {
+        background: var(--field-background);
+        transform: translateX(100%);
+      }
+    }
+
+    &[data-pressed] {
+      .indicator {
+        border-color: var(--highlight-background-pressed);
+        background: var(--highlight-background-pressed);
+      }
+    }
+  }
+
+  &[data-focus-visible] .indicator {
+    outline: 2px solid var(--focus-ring-color);
+    outline-offset: 2px;
+  }
+
+  &[data-disabled] {
+    color: var(--text-color-disabled);
+
+    .indicator {
+      border-color: var(--border-color-disabled);
+
+      &:before {
+        background: var(--border-color-disabled);
+      }
+    }
+  }
+}

@@ -1,10 +1,19 @@
-import { useDragAndDrop } from 'react-aria-components';
-import Table from './Table';
+import React from 'react';
+import { Cell, TableBody, useDragAndDrop } from 'react-aria-components';
+import { Table } from './Table';
+import { TableHeader } from './TableHeader';
+import { Column } from './Column';
+import { Row } from './Row';
 import type { Meta, StoryObj } from '@storybook/react';
 
+import '../../styles/basic/Table.css';
+
 const meta = {
-  title: 'Table',
+  title: 'Components/Table',
   component: Table,
+  parameters: {
+    layout: 'centered',
+  },
   tags: ['autodocs'],
 } satisfies Meta<typeof Table>;
 
@@ -13,6 +22,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
+    'aria-label': 'Files',
     columns: [
       { name: 'Name', id: 'name', isRowHeader: true },
       { name: 'Type', id: 'type' },
@@ -94,5 +104,43 @@ export const ResizableColumns: Story = {
   args: {
     ...Default.args,
     resizableColumns: true,
+  },
+  parameters: {
+    layout: 'fullscreen',
+  },
+};
+
+/**
+ * Create a table with manually inserted cells.
+ */
+export const Manual: Story = {
+  render: (args: any) => (
+    <Table {...args}>
+      <TableHeader>
+        <Column isRowHeader>Name</Column>
+        <Column>Type</Column>
+        <Column>Date Modified</Column>
+      </TableHeader>
+      <TableBody>
+        <Row>
+          <Cell>Games</Cell>
+          <Cell>File folder</Cell>
+          <Cell>6/7/2020</Cell>
+        </Row>
+        <Row>
+          <Cell>Program Files</Cell>
+          <Cell>File folder</Cell>
+          <Cell>4/7/2021</Cell>
+        </Row>
+        <Row>
+          <Cell>bootmgr</Cell>
+          <Cell>System file</Cell>
+          <Cell>11/20/2010</Cell>
+        </Row>
+      </TableBody>
+    </Table>
+  ),
+  args: {
+    'aria-label': 'Files',
   },
 };

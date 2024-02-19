@@ -1,7 +1,8 @@
-import Icon from '../Icon/Icon';
+import React from 'react';
+import { Icon } from '../Icon/Icon';
 import type { IconPropsWithoutChildren } from '../Icon/Icon';
 
-const Dash = (props: IconPropsWithoutChildren) => {
+export const DashIcon = (props: IconPropsWithoutChildren) => {
   return (
     <Icon {...props}>
       <svg
@@ -15,5 +16,3 @@ const Dash = (props: IconPropsWithoutChildren) => {
     </Icon>
   );
 };
-
-export default Dash;

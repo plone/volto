@@ -1,7 +1,7 @@
+import React from 'react';
 import { type ColumnProps, Column as RACColumn } from 'react-aria-components';
-import './Column.scss';
 
-export default function Column(props: ColumnProps) {
+export function Column(props: ColumnProps) {
   return (
     <RACColumn {...props}>
       {({ allowsSorting, sortDirection }) => (

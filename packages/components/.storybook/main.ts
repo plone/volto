@@ -1,4 +1,5 @@
 import type { StorybookConfig } from '@storybook/react-vite';
+const { mergeConfig } = require('vite');
 
 const config: StorybookConfig = {
   // For some reason the property does not allow negation
@@ -26,6 +27,13 @@ const config: StorybookConfig = {
       },
       propFilter: () => true,
     },
+  },
+  async viteFinal(config) {
+    return mergeConfig(config, {
+      build: {
+        minify: false,
+      },
+    });
   },
 };
 export default config;

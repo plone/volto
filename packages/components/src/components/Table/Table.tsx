@@ -1,4 +1,4 @@
-import { type ReactNode } from 'react';
+import React, { type ReactNode } from 'react';
 import {
   type TableProps as RACTableProps,
   ResizableTableContainer,
@@ -7,10 +7,9 @@ import {
   TableBody,
   Cell,
 } from 'react-aria-components';
-import './Table.scss';
-import TableHeader from './TableHeader';
-import Column from './Column';
-import Row from './Row';
+import { TableHeader } from './TableHeader';
+import { Column } from './Column';
+import { Row } from './Row';
 
 interface ColumnType {
   id: string;
@@ -25,8 +24,8 @@ interface RowType {
 }
 
 interface TableProps<C, R> extends RACTableProps {
-  columns: C[];
-  rows: R[];
+  columns?: C[];
+  rows?: R[];
   resizableColumns?: boolean;
   // TODO maybe a custom "selectall" component? Is it doable with react-aria-components?
 }
@@ -36,38 +35,49 @@ interface TableProps<C, R> extends RACTableProps {
  *
  * See https://react-spectrum.adobe.com/react-aria/Table.html
  */
-export default function Table<C extends ColumnType, R extends RowType>({
+export function Table<C extends ColumnType, R extends RowType>({
   columns,
   rows,
   resizableColumns,
   ...otherProps
 }: TableProps<C, R>) {
-  const table = (
-    <RACTable {...otherProps}>
-      <TableHeader columns={columns}>
-        {(column) => (
-          <Column isRowHeader={column.isRowHeader}>
-            {resizableColumns && (
-              <div className="flex-wrapper">
-                <span tabIndex={-1} className="column-name">
-                  {column.name}
-                </span>
-                <ColumnResizer />
-              </div>
-            )}
-            {!resizableColumns && column.name}
-          </Column>
-        )}
-      </TableHeader>
-      <TableBody items={rows}>
-        {(item) => (
-          <Row columns={columns}>
-            {(column) => <Cell>{item[column.id]}</Cell>}
-          </Row>
-        )}
-      </TableBody>
-    </RACTable>
-  );
+  let table = null;
+  if (Array.isArray(columns) && Array.isArray(rows)) {
+    table = (
+      <RACTable {...otherProps}>
+        <TableHeader columns={columns}>
+          {(column) => (
+            <Column isRowHeader={column.isRowHeader}>
+              {resizableColumns && (
+                <div className="flex-wrapper">
+                  <span tabIndex={-1} className="column-name">
+                    {column.name}
+                  </span>
+                  <ColumnResizer />
+                </div>
+              )}
+              {!resizableColumns && column.name}
+            </Column>
+          )}
+        </TableHeader>
+        <TableBody items={rows}>
+          {(item) => (
+            <Row columns={columns}>
+              {(column) => <Cell>{item[column.id]}</Cell>}
+            </Row>
+          )}
+        </TableBody>
+      </RACTable>
+    );
+  } else {
+    table = <RACTable {...otherProps} />;
+
+    if (Array.isArray(columns)) {
+      console.warn('The Table component was given columns but no rows');
+    } else if (Array.isArray(rows)) {
+      console.warn('The Table component was given rows but no columns');
+    }
+  }
 
   if (resizableColumns) {
     return <ResizableTableContainer>{table}</ResizableTableContainer>;

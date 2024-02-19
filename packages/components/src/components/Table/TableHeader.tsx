@@ -1,13 +1,14 @@
+import React from 'react';
 import {
   type TableHeaderProps,
   TableHeader as RACTableHeader,
   useTableOptions,
   Collection,
 } from 'react-aria-components';
-import Checkbox from '../Checkbox/Checkbox';
-import Column from './Column';
+import { Checkbox } from '../Checkbox/Checkbox';
+import { Column } from './Column';
 
-export default function TableHeader<T extends object>({
+export function TableHeader<T extends object>({
   columns,
   children,
 }: TableHeaderProps<T>) {
