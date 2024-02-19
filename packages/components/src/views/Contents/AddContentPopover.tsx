@@ -1,5 +1,7 @@
 import React from 'react';
-import { Dialog, Heading, Popover, Switch } from 'react-aria-components';
+import { Link } from '../../components/Link/Link';
+import { ChevronrightIcon } from '../../components/Icons';
+import { Popover } from '../../components/Popover/Popover';
 
 interface Props {
   addableTypes: {
@@ -10,13 +12,20 @@ interface Props {
 }
 
 export const AddContentPopover = ({ addableTypes }: Props) => {
-  const page = addableTypes.find((type) => type.id === 'Document');
+  // const page = addableTypes.find((type) => type.id === 'Document');
 
   return (
-    <Popover>
-      <Dialog>
-        <div className="flex-wrapper">Link ai CT</div>
-      </Dialog>
+    <Popover className="react-aria-Popover add-content-popover">
+      <ul className="add-content-list">
+        {addableTypes.map((type) => (
+          <li key={type.id} className="add-content-list-item">
+            <Link href={type['@id']}>
+              {type.title}
+              <ChevronrightIcon />
+            </Link>
+          </li>
+        ))}
+      </ul>
     </Popover>
   );
 };

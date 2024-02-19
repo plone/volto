@@ -35,7 +35,33 @@ export const Default: Story = {
   },
 }`);
     },
-    addableTypes: [],
+    addableTypes: [
+      {
+        '@id': 'https://demo.plone.org/@types/Document',
+        id: 'Document',
+        title: 'Page',
+      },
+      {
+        '@id': 'https://demo.plone.org/@types/Event',
+        id: 'Event',
+        title: 'Event',
+      },
+      {
+        '@id': 'https://demo.plone.org/@types/Image',
+        id: 'Image',
+        title: 'Image',
+      },
+      {
+        '@id': 'https://demo.plone.org/@types/Link',
+        id: 'Link',
+        title: 'Link',
+      },
+      {
+        '@id': 'https://demo.plone.org/@types/News Item',
+        id: 'News Item',
+        title: 'News Item',
+      },
+    ],
     items: [
       {
         '@id': 'https://demo.plone.org/images',

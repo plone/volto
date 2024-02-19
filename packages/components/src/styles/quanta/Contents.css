@@ -43,3 +43,52 @@
     align-items: center;
   }
 }
+
+.add-content-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.add-content-list-item {
+  padding: 12px;
+
+  & + .add-content-list-item {
+    border-top: 1px solid var(--quanta-smoke);
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    color: var(--quanta-sapphire);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--quanta-royal);
+      text-decoration: underline;
+    }
+  }
+
+  .icon {
+    margin-inline-start: auto;
+  }
+}
+
+.item-actions-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.item-actions-list-item {
+  padding: 12px 0;
+
+  .view,
+  .move-to-bottom {
+    border-bottom: 1px solid var(--quanta-smoke);
+  }
+
+  .icon {
+    margin-inline-end: 1rem;
+  }
+}

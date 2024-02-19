@@ -1,8 +1,11 @@
 import React from 'react';
+import { DialogTrigger } from 'react-aria-components';
 import { Brain } from '@plone/types/src/content/brains';
+import { Button } from '../../components/Button/Button';
 import { Link } from '../../components/Link/Link';
-import { PageIcon } from '../../components/Icons';
+import { MoreoptionsIcon, PageIcon } from '../../components/Icons';
 import { indexes } from '../../helpers/indexes';
+import { ItemActionsPopover } from './ItemActionsPopover';
 
 interface Props {
   item: Brain;
@@ -29,8 +32,22 @@ export function ContentsCell({ item, column }: Props) {
       </Link>
     );
   } else if (column === '_actions') {
-    // TODO
-    return null;
+    return (
+      <DialogTrigger>
+        <Button aria-label="More options">
+          <MoreoptionsIcon />
+        </Button>
+        <ItemActionsPopover
+          editLink={`${item['@id']}/edit`}
+          viewLink={item['@id']}
+          onMoveToBottom={async () => {}}
+          onMoveToTop={async () => {}}
+          onCopy={async () => {}}
+          onCut={async () => {}}
+          onDelete={async () => {}}
+        />
+      </DialogTrigger>
+    );
   } else {
     if (indexes[column].type === 'boolean') {
       return item[column] ? 'Yes' : 'No';
