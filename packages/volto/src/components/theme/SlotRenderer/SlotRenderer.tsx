@@ -1,10 +1,10 @@
 import { v4 as uuid } from 'uuid';
 import config from '@plone/volto/registry';
-import type { Content, SlotComponent } from '@plone/types';
+import type { Content } from '@plone/types';
 
-```
+/*
 <SlotRenderer name="aboveContent" content={content} route={} />
-```;
+*/
 
 const SlotRenderer = ({
   name,
@@ -13,13 +13,13 @@ const SlotRenderer = ({
   name: string;
   content: Content;
 }) => {
-  let slots = config.getSlot<{ content: Content }>(name) as SlotComponent[];
+  let slots = config.getSlot<{ content: Content }>(name, { content });
 
   if (!slots) {
     return null;
   }
 
-  return slots.map(({ component }: SlotComponent) => {
+  return slots.map((component) => {
     const id = uuid();
     const SlotComponent = component;
     return <SlotComponent key={id} id={id} />;
