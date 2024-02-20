@@ -1,7 +1,8 @@
-import Icon from '../Icon/Icon';
+import React from 'react';
+import { Icon } from '../Icon/Icon';
 import type { IconPropsWithoutChildren } from '../Icon/Icon';
 
-const Social = (props: IconPropsWithoutChildren) => {
+export const SocialIcon = (props: IconPropsWithoutChildren) => {
   return (
     <Icon {...props}>
       <svg
@@ -24,5 +25,3 @@ const Social = (props: IconPropsWithoutChildren) => {
     </Icon>
   );
 };
-
-export default Social;
