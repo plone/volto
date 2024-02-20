@@ -48,7 +48,7 @@ const Logo = () => {
   return (
     <ConditionalLink
       href={navRootPath}
-      aria-label={intl.formatMessage(messages.homepage)}
+      aria-label={intl.formatMessage(messages.frontpage)}
       // In case that the content returns 404, there is no information about the portal
       // then render the link anyways to get out of the Unauthorized page
       condition={!navroot || currentURLIsNavRoot}
