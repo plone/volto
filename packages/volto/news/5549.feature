@@ -1,1 +1,0 @@
-Allow editor to edit metadata during bulk upload. @iFlameing

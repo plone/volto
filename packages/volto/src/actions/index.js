@@ -151,6 +151,7 @@ export {
 export { getQuerystring } from '@plone/volto/actions/querystring/querystring';
 export { getQueryStringResults } from '@plone/volto/actions/querystringsearch/querystringsearch';
 export { setSidebarTab } from '@plone/volto/actions/sidebar/sidebar';
+export { setFormData } from '@plone/volto/actions/form/form';
 export {
   deleteLinkTranslation,
   getTranslationLocator,
