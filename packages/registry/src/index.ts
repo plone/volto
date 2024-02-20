@@ -1,4 +1,3 @@
-import { isArray } from 'lodash';
 import type {
   AddonReducersConfig,
   AddonRoutesConfig,
@@ -27,9 +26,11 @@ type GetComponentResult = {
   component: React.ComponentType;
 };
 
+export type ConfigType = InstanceType<typeof Config>;
+
 class Config {
   public _data: ConfigData | Record<string, never>;
-  static instance: InstanceType<typeof Config>;
+  static instance: ConfigType;
 
   constructor() {
     if (!Config.instance) {
@@ -129,7 +130,7 @@ class Config {
     if (typeof options === 'object') {
       const { name, dependencies = '' } = options;
       let depsString: string = '';
-      if (dependencies && isArray(dependencies)) {
+      if (dependencies && Array.isArray(dependencies)) {
         depsString = dependencies.join('+');
       } else if (typeof dependencies === 'string') {
         depsString = dependencies;
@@ -154,7 +155,7 @@ class Config {
     if (!component) {
       throw new Error('No component provided');
     } else {
-      if (dependencies && isArray(dependencies)) {
+      if (dependencies && Array.isArray(dependencies)) {
         depsString = dependencies.join('+');
       } else if (typeof dependencies === 'string') {
         depsString = dependencies;

@@ -8,6 +8,18 @@
 
 <!-- towncrier release notes start -->
 
+## 1.3.0 (2024-02-18)
+
+### Feature
+
+- Add `VOLTOCONFIG` environment variable. @sneridagh [#5752](https://github.com/plone/volto/issues/5752)
+
+## 1.2.2 (2024-02-02)
+
+### Bugfix
+
+- Remove `lodash` as a dependency @sneridagh [#5726](https://github.com/plone/volto/issues/5726)
+
 ## 1.2.1 (2024-01-17)
 
 ### Bugfix

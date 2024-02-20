@@ -307,6 +307,7 @@ class Edit extends Component {
         onSelectForm={() => {
           this.setState({ formSelected: 'editForm' });
         }}
+        global
       />
     );
 
