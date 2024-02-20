@@ -126,7 +126,7 @@ class Config {
   }
 
   getComponent(
-    options: { name: string; dependencies: string[] | string } | string,
+    options: { name: string; dependencies?: string[] | string } | string,
   ): GetComponentResult {
     if (typeof options === 'object') {
       const { name, dependencies = '' } = options;
@@ -148,7 +148,7 @@ class Config {
 
   registerComponent(options: {
     name: string;
-    dependencies: string[] | string;
+    dependencies?: string[] | string;
     component: React.ComponentType;
   }) {
     const { name, component, dependencies = '' } = options;
@@ -192,9 +192,8 @@ class Config {
       // TODO: Cover ZCA use case, where if more predicates, more specificity wins if all true.
       // Let's keep it simple here and stick to the registered order.
       for (const slotComponent of data[slotName].toReversed()) {
-        const isPredicateTrueFound = slotComponent.predicates.reduce(
-          (acc, value) => acc && value(args),
-          true,
+        const isPredicateTrueFound = slotComponent.predicates.every(
+          (predicate) => predicate(args),
         );
         // If all the predicates are truthy
         if (isPredicateTrueFound) {

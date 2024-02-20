@@ -139,10 +139,14 @@ describe.only('Slots registry', () => {
   });
 
   // type Predicate = (predicateValues: unknown) = (predicateValues, args) => boolean
-  const RouteConditionTrue = () => () => true;
-  const RouteConditionFalse = () => () => false;
-  const ContentTypeConditionTrue = () => () => true;
-  const ContentTypeConditionFalse = () => () => false;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const RouteConditionTrue = (route) => () => true;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const RouteConditionFalse = (route) => () => false;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const ContentTypeConditionTrue = (contentType) => () => true;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const ContentTypeConditionFalse = (contentType) => () => false;
 
   it('registers two slot components with predicates - registered components order is respected', () => {
     config.registerSlotComponent({
@@ -187,7 +191,7 @@ describe.only('Slots registry', () => {
       ],
     });
 
-    expect(config.getSlot('toolbar')).toEqual([
+    expect(config.getSlot('toolbar', {})).toEqual([
       'this is a toolbar component with two truth-ish predicates',
     ]);
   });
@@ -210,7 +214,7 @@ describe.only('Slots registry', () => {
       ],
     });
 
-    expect(config.getSlot('toolbar')).toEqual([]);
+    expect(config.getSlot('toolbar', {})).toEqual([]);
   });
 
   it('registers 2 + 2 slot components with predicates - No registered component have a truthy predicate', () => {
@@ -247,7 +251,7 @@ describe.only('Slots registry', () => {
         ContentTypeConditionFalse(['News Item']),
       ],
     });
-    expect(config.getSlot('toolbar')).toEqual([]);
+    expect(config.getSlot('toolbar', {})).toEqual([]);
   });
 
   it('registers 2 + 2 slot components with predicates - One truthy predicate per set', () => {
@@ -284,7 +288,7 @@ describe.only('Slots registry', () => {
         ContentTypeConditionTrue(['News Item']),
       ],
     });
-    expect(config.getSlot('toolbar')).toEqual([
+    expect(config.getSlot('toolbar', {})).toEqual([
       'this is a toolbar save component with a true predicate',
       'this is a toolbar edit component with true predicate',
     ]);
