@@ -1,63 +1,57 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders a view video component 1`] = `
-Array [
+<div
+  className="block video align center"
+>
   <div
-    className="block video align center"
+    className="video-inner"
   >
     <div
-      className="video-inner"
+      aria-label="Play Video"
+      className="ui 16:9 embed"
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      tabIndex={0}
     >
-      <div
-        aria-label="Play Video"
-        className="ui 16:9 embed"
+      <i
+        aria-hidden="true"
+        className="play icon"
         onClick={[Function]}
-        onKeyPress={[Function]}
-        tabIndex={0}
-      >
-        <i
-          aria-hidden="true"
-          className="play icon"
-          onClick={[Function]}
-        />
-        <img
-          className="placeholder"
-          src="https://img.youtube.com/vi/KqjeO_ekW3g/sddefault.jpg"
-        />
-      </div>
+      />
+      <img
+        className="placeholder"
+        src="https://img.youtube.com/vi/KqjeO_ekW3g/sddefault.jpg"
+      />
     </div>
-  </div>,
-  ",",
-]
+  </div>
+</div>
 `;
 
 exports[`renders a view video component with placeholder 1`] = `
-Array [
+<div
+  className="block video align center"
+>
   <div
-    className="block video align center"
+    className="video-inner"
   >
     <div
-      className="video-inner"
+      aria-label="Play Video"
+      className="ui 16:9 embed"
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      tabIndex={0}
     >
-      <div
-        aria-label="Play Video"
-        className="ui 16:9 embed"
+      <i
+        aria-hidden="true"
+        className="play icon"
         onClick={[Function]}
-        onKeyPress={[Function]}
-        tabIndex={0}
-      >
-        <i
-          aria-hidden="true"
-          className="play icon"
-          onClick={[Function]}
-        />
-        <img
-          className="placeholder"
-          src="https://github.com/plone/volto/raw/main/logos/volto-colorful.png"
-        />
-      </div>
+      />
+      <img
+        className="placeholder"
+        src="https://github.com/plone/volto/raw/main/logos/volto-colorful.png"
+      />
     </div>
-  </div>,
-  ",",
-]
+  </div>
+</div>
 `;
