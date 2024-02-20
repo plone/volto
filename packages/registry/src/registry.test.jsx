@@ -1,5 +1,5 @@
 import config from './index';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, afterEach } from 'vitest';
 
 config.set('components', {
   Toolbar: { component: 'this is the Toolbar component' },
@@ -9,7 +9,7 @@ config.set('components', {
 
 config.set('slots', {});
 
-describe('registry', () => {
+describe('Component registry', () => {
   it('get components', () => {
     expect(config.getComponent('Toolbar').component).toEqual(
       'this is the Toolbar component',
@@ -111,25 +111,182 @@ describe('registry', () => {
       }).component,
     ).toEqual('this is a Bar component');
   });
+});
 
-  it('registers a slot', () => {
-    config.registerSlot({
-      name: 'aboveContent',
-      component: 'this is a Bar component',
-      dependencies: ['News Item'],
-      route: '/folder/path',
+describe.only('Slots registry', () => {
+  // config.slots.toolbar = [ // viewlets.xml
+  //   'save',
+  //   'edit',
+  // ]
+
+  // config.slots.toolbar.save = [
+  //   {
+  //     predicates: [RouteCondition('/de')],
+  //     component: 'this is a Bar component',
+  //   },
+  //   {
+  //     predicates: [RouteCondition('/de'), ContentTypeCondition(['News Item'])],
+  //     component: 'this is a Bar component',
+  //   },
+  //   {
+  //     predicates: [RouteCondition('/de/path/folder'), ContentTypeCondition(['News Item']), TrueCondition()],
+  //     component: 'this is a Bar component',
+  //   },
+  // ]
+
+  afterEach(() => {
+    config.set('slots', {});
+  });
+
+  // type Predicate = (predicateValues: unknown) = (predicateValues, args) => boolean
+  const RouteConditionTrue = () => () => true;
+  const RouteConditionFalse = () => () => false;
+  const ContentTypeConditionTrue = () => () => true;
+  const ContentTypeConditionFalse = () => () => false;
+
+  it('registers two slot components with predicates - registered components order is respected', () => {
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: 'save',
+      component:
+        'this is a toolbar component with only a truth-ish route condition',
+      predicates: [RouteConditionTrue('/de')],
     });
-    expect(
-      config.getSlot({
-        name: 'aboveContent',
-        dependencies: 'News Item',
-      }).component,
-    ).toEqual('this is a Bar component');
-    expect(
-      config.getSlot({
-        name: 'aboveContent',
-        dependencies: 'News Item',
-      }).route,
-    ).toEqual('/folder/path');
+
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: 'save',
+      component: 'this is a Bar component with a false predicate and one true',
+      predicates: [
+        RouteConditionFalse('/folder/path'),
+        ContentTypeConditionTrue(['News Item']),
+      ],
+    });
+
+    expect(config.getSlot('toolbar')).toEqual([
+      'this is a toolbar component with only a truth-ish route condition',
+    ]);
+  });
+
+  it('registers two slot components with predicates - All registered components predicates are truthy, the last one registered wins', () => {
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: 'save',
+      component:
+        'this is a toolbar component with only a truth-ish route condition',
+      predicates: [RouteConditionTrue('/de')],
+    });
+
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: 'save',
+      component: 'this is a toolbar component with two truth-ish predicates',
+      predicates: [
+        RouteConditionTrue('/folder/path'),
+        ContentTypeConditionTrue(['News Item']),
+      ],
+    });
+
+    expect(config.getSlot('toolbar')).toEqual([
+      'this is a toolbar component with two truth-ish predicates',
+    ]);
+  });
+
+  it('registers two slot components with predicates - No registered component have a truthy predicate', () => {
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: 'save',
+      component: 'this is a toolbar component with a false predicate',
+      predicates: [RouteConditionFalse('/de')],
+    });
+
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: 'save',
+      component: 'this is a toolbar component with two false predicate',
+      predicates: [
+        RouteConditionFalse('/folder/path'),
+        ContentTypeConditionFalse(['News Item']),
+      ],
+    });
+
+    expect(config.getSlot('toolbar')).toEqual([]);
+  });
+
+  it('registers 2 + 2 slot components with predicates - No registered component have a truthy predicate', () => {
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: 'save',
+      component: 'this is a toolbar component with a false predicate',
+      predicates: [RouteConditionFalse('/de')],
+    });
+
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: 'save',
+      component: 'this is a toolbar component with two false predicate',
+      predicates: [
+        RouteConditionFalse('/folder/path'),
+        ContentTypeConditionFalse(['News Item']),
+      ],
+    });
+
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: 'edit',
+      component: 'this is a toolbar component with a false predicate',
+      predicates: [RouteConditionFalse('/de')],
+    });
+
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: 'edit',
+      component: 'this is a toolbar component with two false predicate',
+      predicates: [
+        RouteConditionFalse('/folder/path'),
+        ContentTypeConditionFalse(['News Item']),
+      ],
+    });
+    expect(config.getSlot('toolbar')).toEqual([]);
+  });
+
+  it('registers 2 + 2 slot components with predicates - One truthy predicate per set', () => {
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: 'save',
+      component: 'this is a toolbar save component with a true predicate',
+      predicates: [RouteConditionTrue('/de')],
+    });
+
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: 'save',
+      component: 'this is a toolbar component with two false predicate',
+      predicates: [
+        RouteConditionFalse('/folder/path'),
+        ContentTypeConditionFalse(['News Item']),
+      ],
+    });
+
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: 'edit',
+      component: 'this is a toolbar component with a false predicate',
+      predicates: [RouteConditionFalse('/de')],
+    });
+
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: 'edit',
+      component: 'this is a toolbar edit component with true predicate',
+      predicates: [
+        RouteConditionTrue('/folder/path'),
+        ContentTypeConditionTrue(['News Item']),
+      ],
+    });
+    expect(config.getSlot('toolbar')).toEqual([
+      'this is a toolbar save component with a true predicate',
+      'this is a toolbar edit component with true predicate',
+    ]);
   });
 });

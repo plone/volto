@@ -11,13 +11,17 @@ export type AddonRoutesConfig = {
   component: React.ComponentType;
 }[];
 
-export type Slot = {
-  component: React.ComponentType;
-  route: string;
-  dependencies: string[] | string;
+export type SlotComponent = {
+  component: React.ComponentType<any>;
+  predicates: ((...args: any[]) => boolean)[];
 };
 
-export type SlotsConfig = Record<string, Map<string, Slot>>;
+export type SlotManager = {
+  slots: string[];
+  data: Record<string, SlotComponent[]>;
+};
+
+export type SlotsConfig = Record<string, SlotManager>;
 
 export type ComponentsConfig = Record<
   string,

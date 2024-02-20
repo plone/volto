@@ -5,7 +5,7 @@ import type {
   ComponentsConfig,
   ExperimentalConfig,
   SettingsConfig,
-  Slot,
+  SlotComponent,
   SlotsConfig,
   ViewsConfig,
   WidgetsConfig,
@@ -181,69 +181,72 @@ class Config {
     }
   }
 
-  getSlot(
-    options: { name: string; dependencies: string[] | string } | string,
-  ): Slot | undefined {
-    if (typeof options === 'object') {
-      const { name, dependencies = '' } = options;
-      let depsString: string = '';
-      if (dependencies && Array.isArray(dependencies)) {
-        depsString = dependencies.join('+');
-      } else if (typeof dependencies === 'string') {
-        depsString = dependencies;
+  getSlot<T>(name: string, args: T): SlotComponent['component'][] | undefined {
+    const { slots, data } = this._data.slots[name];
+    const slotComponents = [];
+    // For all enabled slots
+    for (const slotName of slots) {
+      // For all registered components for that slot, inversed, since the last one registered wins
+      // TODO: Cover ZCA use case, where if more predicates, more specificity wins if all true.
+      // Let's keep it simple here and stick to the registered order.
+      for (const slotComponent of data[slotName].toReversed()) {
+        const isPredicateTrueFound = slotComponent.predicates.reduce(
+          (acc, value) => acc && value(args),
+          true,
+        );
+        // If all the predicates are truthy
+        if (isPredicateTrueFound) {
+          slotComponents.push(slotComponent.component);
+          break;
+        }
       }
-      const slotComponentName = `${name}${depsString ? `|${depsString}` : ''}`;
-      const currentSlot = this._data.slots[name];
-
-      return currentSlot.get(slotComponentName);
-    } else {
-      // Shortcut notation, accepting a lonely string as argument
-      const name = options;
-      const currentSlot = this._data.slots[name];
-      return currentSlot.get(name);
     }
+
+    return slotComponents;
   }
 
-  registerSlot(options: {
+  registerSlotComponent(options: {
+    slot: string;
     name: string;
-    dependencies: string[] | string;
+    predicates: ((...args: unknown[]) => boolean)[];
     component: React.ComponentType;
-    route: string;
   }) {
-    const { name, component, dependencies = '', route } = options;
-    let depsString: string = '';
+    const { name, component, predicates, slot } = options;
+
     if (!component) {
       throw new Error('No component provided');
     } else {
-      if (dependencies && Array.isArray(dependencies)) {
-        depsString = dependencies.join('+');
-      } else if (typeof dependencies === 'string') {
-        depsString = dependencies;
-      }
-      const slotComponentName = `${name}${depsString ? `|${depsString}` : ''}`;
-
-      let currentSlot = this._data.slots[name];
+      let currentSlot = this._data.slots[slot];
       if (!currentSlot) {
-        this._data.slots[name] = new Map();
-        currentSlot = this._data.slots[name];
+        this._data.slots[slot] = {
+          slots: [],
+          data: {},
+        };
+        currentSlot = this._data.slots[slot];
+      }
+      if (!currentSlot.data[name]) {
+        currentSlot.data[name] = [];
       }
 
-      currentSlot.set(slotComponentName, {
+      const currentSlotComponent = currentSlot.data[name];
+      if (!currentSlot.slots.includes(name)) {
+        currentSlot.slots.push(name);
+      }
+      const slotComponentData = {
         component,
-        dependencies,
-        route,
-      });
+        predicates,
+      };
+
       // Try to set a displayName (useful for React dev tools) for the registered component
       // Only if it's a function and it's not set previously
       try {
-        const displayName =
-          currentSlot.get(slotComponentName)!.component.displayName;
+        const displayName = slotComponentData.component.displayName;
 
         if (
           !displayName &&
-          typeof currentSlot.get(slotComponentName)?.component === 'function'
+          typeof slotComponentData?.component === 'function'
         ) {
-          currentSlot.get(slotComponentName)!.component.displayName = name;
+          slotComponentData.component.displayName = name;
         }
       } catch (error) {
         // eslint-disable-next-line no-console
@@ -251,6 +254,8 @@ class Config {
           `Not setting the slot component displayName because ${error}`,
         );
       }
+
+      currentSlotComponent.push(slotComponentData);
     }
   }
 }
