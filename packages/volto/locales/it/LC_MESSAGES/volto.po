@@ -456,11 +456,6 @@ msgstr "Regole di contenuto disponibili:"
 msgid "Back"
 msgstr "Indietro"
 
-#. Default: "Back to homepage"
-#: components/theme/Logo/Logo
-msgid "Back to homepage"
-msgstr "Torna alla home page"
-
 #. Default: "Base"
 #: components/manage/Diff/Diff
 msgid "Base"
@@ -1532,6 +1527,11 @@ msgstr "Quarto"
 #: components/theme/ContactForm/ContactForm
 msgid "From"
 msgstr "Da"
+
+#. Default: "Front Page"
+#: components/theme/Logo/Logo
+msgid "Front Page"
+msgstr ""
 
 #. Default: "Full"
 #: components/manage/Blocks/Maps/Edit

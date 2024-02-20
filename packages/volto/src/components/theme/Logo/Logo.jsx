@@ -30,9 +30,9 @@ const Logo = () => {
   const intl = useIntl();
 
   const messages = defineMessages({
-    homepage: {
-      id: 'Back to homepage',
-      defaultMessage: 'Back to homepage',
+    frontpage: {
+      id: 'Front Page',
+      defaultMessage: 'Front Page',
     },
   });
 
@@ -48,7 +48,7 @@ const Logo = () => {
   return (
     <ConditionalLink
       href={navRootPath}
-      title={navroot?.navroot?.title}
+      aria-label={intl.formatMessage(messages.homepage)}
       // In case that the content returns 404, there is no information about the portal
       // then render the link anyways to get out of the Unauthorized page
       condition={!navroot || currentURLIsNavRoot}
@@ -59,8 +59,7 @@ const Logo = () => {
             ? flattenToAppURL(site['plone.site_logo'])
             : LogoImage
         }
-        alt={intl.formatMessage(messages.homepage)}
-        title={intl.formatMessage(messages.homepage)}
+        alt={navroot?.navroot?.title}
       />
     </ConditionalLink>
   );

@@ -461,11 +461,6 @@ msgstr "Saatavilla olevat sisältösäännöt:"
 msgid "Back"
 msgstr "Takaisin"
 
-#. Default: "Back to homepage"
-#: components/theme/Logo/Logo
-msgid "Back to homepage"
-msgstr "Takaisin kotisivulle"
-
 #. Default: "Base"
 #: components/manage/Diff/Diff
 msgid "Base"
@@ -1537,6 +1532,11 @@ msgstr "Neljäs"
 #: components/theme/ContactForm/ContactForm
 msgid "From"
 msgstr "Sähköposti"
+
+#. Default: "Front Page"
+#: components/theme/Logo/Logo
+msgid "Front Page"
+msgstr ""
 
 #. Default: "Full"
 #: components/manage/Blocks/Maps/Edit

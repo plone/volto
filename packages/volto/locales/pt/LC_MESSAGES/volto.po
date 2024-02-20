@@ -461,11 +461,6 @@ msgstr ""
 msgid "Back"
 msgstr "Voltar"
 
-#. Default: "Back to homepage"
-#: components/theme/Logo/Logo
-msgid "Back to homepage"
-msgstr "Voltar à página inicial"
-
 #. Default: "Base"
 #: components/manage/Diff/Diff
 msgid "Base"
@@ -1537,6 +1532,11 @@ msgstr ""
 #: components/theme/ContactForm/ContactForm
 msgid "From"
 msgstr "De"
+
+#. Default: "Front Page"
+#: components/theme/Logo/Logo
+msgid "Front Page"
+msgstr ""
 
 #. Default: "Full"
 #: components/manage/Blocks/Maps/Edit

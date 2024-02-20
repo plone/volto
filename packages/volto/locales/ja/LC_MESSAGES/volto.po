@@ -461,11 +461,6 @@ msgstr ""
 msgid "Back"
 msgstr "戻る"
 
-#. Default: "Back to homepage"
-#: components/theme/Logo/Logo
-msgid "Back to homepage"
-msgstr "ホームページに戻ります"
-
 #. Default: "Base"
 #: components/manage/Diff/Diff
 msgid "Base"
@@ -1537,6 +1532,11 @@ msgstr "第4"
 #: components/theme/ContactForm/ContactForm
 msgid "From"
 msgstr "メールアドレス"
+
+#. Default: "Front Page"
+#: components/theme/Logo/Logo
+msgid "Front Page"
+msgstr ""
 
 #. Default: "Full"
 #: components/manage/Blocks/Maps/Edit
