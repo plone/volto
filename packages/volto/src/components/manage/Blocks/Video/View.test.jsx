@@ -40,7 +40,6 @@ test('renders a view video component', () => {
           url: 'https://youtu.be/KqjeO_ekW3g',
         }}
       />
-      ,
     </Provider>,
   );
   const json = component.toJSON();
@@ -58,7 +57,6 @@ test('renders a view video component with placeholder', () => {
             'https://github.com/plone/volto/raw/main/logos/volto-colorful.png',
         }}
       />
-      ,
     </Provider>,
   );
   const json = component.toJSON();
