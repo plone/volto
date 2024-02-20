@@ -11,6 +11,7 @@ export { getTypes } from "@plone/volto/actions/types/types";
 export { getQuerystring } from "@plone/volto/actions/querystring/querystring";
 export { getQueryStringResults } from "@plone/volto/actions/querystringsearch/querystringsearch";
 export { setSidebarTab } from "@plone/volto/actions/sidebar/sidebar";
+export { setFormData } from "@plone/volto/actions/form/form";
 export { loadLazyLibrary } from "@plone/volto/actions/lazyLibraries/lazyLibraries";
 export { getContextNavigation } from "@plone/volto/actions/contextNavigation/contextNavigation";
 export { authenticatedRole } from "@plone/volto/actions/authRole/authRole";

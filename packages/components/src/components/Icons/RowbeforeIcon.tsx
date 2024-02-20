@@ -1,7 +1,8 @@
-import Icon from '../Icon/Icon';
+import React from 'react';
+import { Icon } from '../Icon/Icon';
 import type { IconPropsWithoutChildren } from '../Icon/Icon';
 
-const Rowbefore = (props: IconPropsWithoutChildren) => {
+export const RowbeforeIcon = (props: IconPropsWithoutChildren) => {
   return (
     <Icon {...props}>
       <svg
@@ -20,5 +21,3 @@ const Rowbefore = (props: IconPropsWithoutChildren) => {
     </Icon>
   );
 };
-
-export default Rowbefore;

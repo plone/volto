@@ -1,7 +1,8 @@
-import Icon from '../Icon/Icon';
+import React from 'react';
+import { Icon } from '../Icon/Icon';
 import type { IconPropsWithoutChildren } from '../Icon/Icon';
 
-const Aligncenter = (props: IconPropsWithoutChildren) => {
+export const AligncenterIcon = (props: IconPropsWithoutChildren) => {
   return (
     <Icon {...props}>
       <svg
@@ -15,5 +16,3 @@ const Aligncenter = (props: IconPropsWithoutChildren) => {
     </Icon>
   );
 };
-
-export default Aligncenter;
