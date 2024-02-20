@@ -1,1 +1,1 @@
-Fixed the missing aira-label on Video-Blocks @Molochem
+Added the missing `aria-label` in video blocks. @Molochem
