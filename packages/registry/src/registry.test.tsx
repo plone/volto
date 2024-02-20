@@ -113,7 +113,7 @@ describe('Component registry', () => {
   });
 });
 
-describe.only('Slots registry', () => {
+describe('Slots registry', () => {
   // config.slots.toolbar = [ // viewlets.xml
   //   'save',
   //   'edit',
@@ -148,6 +148,18 @@ describe.only('Slots registry', () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const ContentTypeConditionFalse = (contentType) => () => false;
 
+  it('registers a single slot component with no predicate', () => {
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: 'save',
+      component: 'this is a toolbar component with no predicate',
+    });
+
+    expect(config.getSlot('toolbar', {})).toEqual([
+      'this is a toolbar component with no predicate',
+    ]);
+  });
+
   it('registers two slot components with predicates - registered components order is respected', () => {
     config.registerSlotComponent({
       slot: 'toolbar',
@@ -167,7 +179,7 @@ describe.only('Slots registry', () => {
       ],
     });
 
-    expect(config.getSlot('toolbar')).toEqual([
+    expect(config.getSlot('toolbar', {})).toEqual([
       'this is a toolbar component with only a truth-ish route condition',
     ]);
   });
@@ -215,6 +227,72 @@ describe.only('Slots registry', () => {
     });
 
     expect(config.getSlot('toolbar', {})).toEqual([]);
+  });
+
+  it('registers two slot components one without predicates - registered component with predicates are truthy, the last one registered wins', () => {
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: 'save',
+      component: 'this is a toolbar component with no predicate',
+    });
+
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: 'save',
+      component: 'this is a toolbar component with two truth-ish predicates',
+      predicates: [
+        RouteConditionTrue('/folder/path'),
+        ContentTypeConditionTrue(['News Item']),
+      ],
+    });
+
+    expect(config.getSlot('toolbar', {})).toEqual([
+      'this is a toolbar component with two truth-ish predicates',
+    ]);
+  });
+
+  it('registers two slot components one without predicates - registered components predicates are falsy, the one with no predicates wins', () => {
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: 'save',
+      component: 'this is a toolbar component with no predicate',
+    });
+
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: 'save',
+      component: 'this is a toolbar component with two truth-ish predicates',
+      predicates: [
+        RouteConditionFalse('/folder/path'),
+        ContentTypeConditionTrue(['News Item']),
+      ],
+    });
+
+    expect(config.getSlot('toolbar', {})).toEqual([
+      'this is a toolbar component with no predicate',
+    ]);
+  });
+
+  it('registers two slot components one without predicates - registered components predicates are truthy, the one with predicates wins', () => {
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: 'save',
+      component: 'this is a toolbar component with two truth-ish predicates',
+      predicates: [
+        RouteConditionTrue('/folder/path'),
+        ContentTypeConditionTrue(['News Item']),
+      ],
+    });
+
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: 'save',
+      component: 'this is a toolbar component with no predicate',
+    });
+
+    expect(config.getSlot('toolbar', {})).toEqual([
+      'this is a toolbar component with two truth-ish predicates',
+    ]);
   });
 
   it('registers 2 + 2 slot components with predicates - No registered component have a truthy predicate', () => {

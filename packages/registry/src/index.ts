@@ -191,15 +191,29 @@ class Config {
       // For all registered components for that slot, inversed, since the last one registered wins
       // TODO: Cover ZCA use case, where if more predicates, more specificity wins if all true.
       // Let's keep it simple here and stick to the registered order.
+      let noPredicateComponent: SlotComponent | undefined;
       for (const slotComponent of data[slotName].toReversed()) {
-        const isPredicateTrueFound = slotComponent.predicates.every(
-          (predicate) => predicate(args),
-        );
+        let isPredicateTrueFound: boolean = false;
+        if (slotComponent.predicates) {
+          isPredicateTrueFound = slotComponent.predicates.every((predicate) =>
+            predicate(args),
+          );
+        } else {
+          // We mark the one with no predicates
+          noPredicateComponent = slotComponent;
+        }
+
         // If all the predicates are truthy
         if (isPredicateTrueFound) {
           slotComponents.push(slotComponent.component);
+          // We "reset" the marker, we already found a candidate
+          noPredicateComponent = undefined;
           break;
         }
+      }
+
+      if (noPredicateComponent) {
+        slotComponents.push(noPredicateComponent.component);
       }
     }
 
@@ -209,55 +223,64 @@ class Config {
   registerSlotComponent(options: {
     slot: string;
     name: string;
-    predicates: ((...args: unknown[]) => boolean)[];
+    predicates?: ((...args: unknown[]) => boolean)[];
     component: React.ComponentType;
   }) {
     const { name, component, predicates, slot } = options;
 
     if (!component) {
       throw new Error('No component provided');
-    } else {
-      let currentSlot = this._data.slots[slot];
-      if (!currentSlot) {
-        this._data.slots[slot] = {
-          slots: [],
-          data: {},
-        };
-        currentSlot = this._data.slots[slot];
-      }
-      if (!currentSlot.data[name]) {
-        currentSlot.data[name] = [];
-      }
-
-      const currentSlotComponent = currentSlot.data[name];
-      if (!currentSlot.slots.includes(name)) {
-        currentSlot.slots.push(name);
-      }
-      const slotComponentData = {
-        component,
-        predicates,
-      };
-
-      // Try to set a displayName (useful for React dev tools) for the registered component
-      // Only if it's a function and it's not set previously
-      try {
-        const displayName = slotComponentData.component.displayName;
-
-        if (
-          !displayName &&
-          typeof slotComponentData?.component === 'function'
-        ) {
-          slotComponentData.component.displayName = name;
-        }
-      } catch (error) {
-        // eslint-disable-next-line no-console
-        console.warn(
-          `Not setting the slot component displayName because ${error}`,
+    }
+    if (!predicates) {
+      // Test if there's already one registered, we only support one
+      const hasRegisteredNoPredicatesComponent = this._data.slots?.[
+        slot
+      ]?.data?.[name]?.find(({ predicates }) => !predicates);
+      console.log(hasRegisteredNoPredicatesComponent);
+      if (hasRegisteredNoPredicatesComponent) {
+        throw new Error(
+          `There is already registered a component ${name} for the slot ${slot}. You can only register one slot component with no predicates per slot.`,
         );
       }
-
-      currentSlotComponent.push(slotComponentData);
     }
+
+    let currentSlot = this._data.slots[slot];
+    if (!currentSlot) {
+      this._data.slots[slot] = {
+        slots: [],
+        data: {},
+      };
+      currentSlot = this._data.slots[slot];
+    }
+    if (!currentSlot.data[name]) {
+      currentSlot.data[name] = [];
+    }
+
+    const currentSlotComponent = currentSlot.data[name];
+    if (!currentSlot.slots.includes(name)) {
+      currentSlot.slots.push(name);
+    }
+    const slotComponentData = {
+      component,
+      predicates,
+    };
+
+    // Try to set a displayName (useful for React dev tools) for the registered component
+    // Only if it's a function and it's not set previously
+    try {
+      const displayName = slotComponentData.component.displayName;
+
+      if (!displayName && typeof slotComponentData?.component === 'function') {
+        slotComponentData.component.displayName = name;
+      }
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.warn(
+        `Not setting the slot component displayName because ${error}`,
+      );
+    }
+
+    currentSlotComponent.push(slotComponentData);
   }
 }
 
