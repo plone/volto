@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 1.3.1 (2024-02-20)
+
+### Bugfix
+
+- Export ConfigType @sneridagh [#5774](https://github.com/plone/volto/issues/5774)
+
 ## 1.3.0 (2024-02-18)
 
 ### Feature
