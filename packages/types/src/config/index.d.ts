@@ -11,9 +11,11 @@ export type AddonRoutesConfig = {
   component: React.ComponentType;
 }[];
 
+export type SlotPredicate = (args: any) => boolean;
+
 export type SlotComponent = {
   component: React.ComponentType<any>;
-  predicates?: ((...args: any[]) => boolean)[];
+  predicates?: SlotPredicate[];
 };
 
 export type SlotManager = {

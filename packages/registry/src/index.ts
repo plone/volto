@@ -6,6 +6,7 @@ import type {
   ExperimentalConfig,
   SettingsConfig,
   SlotComponent,
+  SlotPredicate,
   SlotsConfig,
   ViewsConfig,
   WidgetsConfig,
@@ -184,6 +185,9 @@ class Config {
   }
 
   getSlot<T>(name: string, args: T): SlotComponent['component'][] | undefined {
+    if (!this._data.slots[name]) {
+      return;
+    }
     const { slots, data } = this._data.slots[name];
     const slotComponents = [];
     // For all enabled slots
@@ -223,9 +227,9 @@ class Config {
   registerSlotComponent(options: {
     slot: string;
     name: string;
-    predicates?: ((...args: unknown[]) => boolean)[];
-    component: React.ComponentType;
-  }) {
+    predicates?: SlotPredicate[];
+    component: SlotComponent['component'];
+  }): void {
     const { name, component, predicates, slot } = options;
 
     if (!component) {
@@ -236,7 +240,6 @@ class Config {
       const hasRegisteredNoPredicatesComponent = this._data.slots?.[
         slot
       ]?.data?.[name]?.find(({ predicates }) => !predicates);
-      console.log(hasRegisteredNoPredicatesComponent);
       if (hasRegisteredNoPredicatesComponent) {
         throw new Error(
           `There is already registered a component ${name} for the slot ${slot}. You can only register one slot component with no predicates per slot.`,

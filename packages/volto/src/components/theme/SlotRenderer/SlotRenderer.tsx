@@ -1,5 +1,6 @@
 import { v4 as uuid } from 'uuid';
 import config from '@plone/volto/registry';
+import { useLocation } from 'react-router-dom';
 import type { Content } from '@plone/types';
 
 /*
@@ -13,17 +14,26 @@ const SlotRenderer = ({
   name: string;
   content: Content;
 }) => {
-  let slots = config.getSlot<{ content: Content }>(name, { content });
+  const pathname = useLocation().pathname;
+
+  let slots = config.getSlot<{ content: Content; pathname: string }>(name, {
+    content,
+    pathname,
+  });
 
   if (!slots) {
     return null;
   }
 
-  return slots.map((component) => {
-    const id = uuid();
-    const SlotComponent = component;
-    return <SlotComponent key={id} id={id} />;
-  });
+  return (
+    <>
+      {slots.map((component) => {
+        const id = uuid();
+        const SlotComponent = component as React.ElementType;
+        return <SlotComponent key={id} id={id} />;
+      })}
+    </>
+  );
 };
 
 export default SlotRenderer;

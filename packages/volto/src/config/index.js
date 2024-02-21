@@ -223,6 +223,7 @@ let config = {
   },
   addonRoutes: [],
   addonReducers: {},
+  slots: {},
   components,
 };
 
@@ -250,5 +251,6 @@ ConfigRegistry.widgets = config.widgets;
 ConfigRegistry.addonRoutes = config.addonRoutes;
 ConfigRegistry.addonReducers = config.addonReducers;
 ConfigRegistry.components = config.components;
+ConfigRegistry.slots = config.slots;
 
 applyAddonConfiguration(ConfigRegistry);
