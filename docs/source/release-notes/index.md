@@ -17,6 +17,12 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.12 (2024-02-21)
+
+### Feature
+
+- Add accordion to metadata form. @robgietema [#5760](https://github.com/plone/volto/issues/5760)
+
 ## 18.0.0-alpha.11 (2024-02-18)
 
 ### Breaking
