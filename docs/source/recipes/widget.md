@@ -176,7 +176,7 @@ directives.widget(
 )
 ```
 
-It is recommended to define the vocabulary as a named `StaticCatalogVocabulary` with the field/relation name as its name.  
+It is recommended to define the vocabulary as a named `StaticCatalogVocabulary` with the field/relation name as its name.
 This allows the {guilabel}`relations` control panel to respect the defined restrictions to potential relation targets.
 
 {file}`vocabularies.py`
@@ -267,3 +267,23 @@ You can use the `setSidebarTab` action to set the current active tab, either via
 ### Setting focus
 
 You can use the `setMetadataFocus` action to set the current field by specifying the fieldset and the field name.
+
+```jsx
+import { useDispatch } from 'react-redux';
+import { setSidebarTab, setMetadataFocus } from '@plone/volto/actions';
+
+const dispatch = useDispatch()
+
+return (
+// ...
+<button
+    onClick={() => {
+        dispatch(setSidebarTab(0));
+        dispatch(setMetadataFocus('ownership', 'allow_discussion'));
+    }}
+>
+    This button will change the sidebar to the content form and focus ownership fieldset and the allow_discussion field
+</button>
+// ...
+)
+```
