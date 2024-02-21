@@ -308,7 +308,7 @@ importers:
         version: 2.4.3(react-router-dom@5.2.0)(react@17.0.2)
       react-select:
         specifier: 4.3.1
-        version: 4.3.1(@types/react@17.0.70)(react-dom@17.0.2)(react@17.0.2)
+        version: 4.3.1(@types/react@18.2.57)(react-dom@17.0.2)(react@17.0.2)
       react-select-async-paginate:
         specifier: 0.5.3
         version: 0.5.3(react-dom@17.0.2)(react-select@4.3.1)(react@17.0.2)
@@ -1344,6 +1344,12 @@ importers:
       '@plone/volto-slate':
         specifier: workspace:*
         version: link:../volto-slate
+      '@types/react':
+        specifier: ^18.2.57
+        version: 18.2.57
+      '@types/react-dom':
+        specifier: ^18.2.19
+        version: 18.2.19
       autoprefixer:
         specifier: 10.4.8
         version: 10.4.8(postcss@8.4.31)
@@ -1673,7 +1679,7 @@ importers:
         version: 2.4.3(react-router-dom@5.2.0)(react@17.0.2)
       react-select:
         specifier: 4.3.1
-        version: 4.3.1(@types/react@17.0.70)(react-dom@17.0.2)(react@17.0.2)
+        version: 4.3.1(@types/react@18.2.57)(react-dom@17.0.2)(react@17.0.2)
       react-select-async-paginate:
         specifier: 0.5.3
         version: 0.5.3(react-dom@17.0.2)(react-select@4.3.1)(react@17.0.2)
@@ -1860,19 +1866,13 @@ importers:
         version: 12.1.5(react-dom@17.0.2)(react@17.0.2)
       '@testing-library/react-hooks':
         specifier: 8.0.1
-        version: 8.0.1(@types/react@17.0.70)(react-dom@17.0.2)(react-test-renderer@17.0.2)(react@17.0.2)
+        version: 8.0.1(@types/react@18.2.57)(react-dom@17.0.2)(react-test-renderer@17.0.2)(react@17.0.2)
       '@types/jest':
         specifier: ^29.5.8
         version: 29.5.8
       '@types/lodash':
         specifier: ^4.14.201
         version: 4.14.201
-      '@types/react':
-        specifier: ^17.0.52
-        version: 17.0.70
-      '@types/react-dom':
-        specifier: ^17
-        version: 17.0.23
       '@types/react-router-dom':
         specifier: ^5.3.3
         version: 5.3.3
@@ -3004,7 +3004,6 @@ packages:
     dependencies:
       '@babel/core': 7.23.3
       '@babel/helper-plugin-utils': 7.22.5
-    dev: true
 
   /@babel/plugin-syntax-flow@7.23.3(@babel/core@7.23.9):
     resolution: {integrity: sha512-YZiAIpkJAwQXBJLIQbRFayR5c+gJ35Vcz3bg954k7cd73zqjvhacJuL9RbrzPz8qPmZdgqP6EUKwy0PCNhaaPA==}
@@ -3102,7 +3101,6 @@ packages:
     dependencies:
       '@babel/core': 7.23.3
       '@babel/helper-plugin-utils': 7.22.5
-    dev: true
 
   /@babel/plugin-syntax-jsx@7.23.3(@babel/core@7.23.9):
     resolution: {integrity: sha512-EB2MELswq55OHUoRZLGg/zC7QWUKfNLpE57m/S2yr1uEneIgsTgrSzXP3NXEsMkVn76OlaVVnzN+ugObuYGwhg==}
@@ -4212,7 +4210,6 @@ packages:
       '@babel/helper-plugin-utils': 7.22.5
       '@babel/plugin-syntax-jsx': 7.23.3(@babel/core@7.23.3)
       '@babel/types': 7.23.3
-    dev: true
 
   /@babel/plugin-transform-react-jsx@7.22.15(@babel/core@7.23.9):
     resolution: {integrity: sha512-oKckg2eZFa8771O/5vi7XeTvmM6+O9cxZu+kanTU7tD4sin5nO/G8jGJhq8Hvt2Z0kUoEDRayuZLaUlYl8QuGA==}
@@ -5071,7 +5068,7 @@ packages:
     resolution: {integrity: sha512-W2P2c/VRW1/1tLox0mVUalvnWXxavmv/Oum2aPsRcoDJuob75FC3Y8FbpfLwUegRcxINtGUMPq0tFCvYNTBXNA==}
     dev: false
 
-  /@emotion/react@11.11.1(@types/react@17.0.70)(react@17.0.2):
+  /@emotion/react@11.11.1(@types/react@18.2.57)(react@17.0.2):
     resolution: {integrity: sha512-5mlW1DquU5HaxjLkfkGN1GA/fvVGdyHURRiX/0FHl2cfIfRxSOfmxEH5YS43edp0OldZrZ+dkBKbngxcNCdZvA==}
     peerDependencies:
       '@types/react': '*'
@@ -5087,7 +5084,7 @@ packages:
       '@emotion/use-insertion-effect-with-fallbacks': 1.0.1(react@17.0.2)
       '@emotion/utils': 1.2.1
       '@emotion/weak-memoize': 0.3.1
-      '@types/react': 17.0.70
+      '@types/react': 18.2.57
       hoist-non-react-statics: 3.3.2
       react: 17.0.2
     dev: false
@@ -6781,7 +6778,7 @@ packages:
       react: '>=16'
     dependencies:
       '@types/mdx': 2.0.10
-      '@types/react': 18.2.55
+      '@types/react': 18.2.57
       react: 18.2.0
     dev: true
 
@@ -16846,7 +16843,7 @@ packages:
       vitest: 0.34.6(jsdom@22.1.0)(lightningcss@1.23.0)
     dev: true
 
-  /@testing-library/react-hooks@8.0.1(@types/react@17.0.70)(react-dom@17.0.2)(react-test-renderer@17.0.2)(react@17.0.2):
+  /@testing-library/react-hooks@8.0.1(@types/react@18.2.57)(react-dom@17.0.2)(react-test-renderer@17.0.2)(react@17.0.2):
     resolution: {integrity: sha512-Aqhl2IVmLt8IovEVarNDFuJDVWVvhnr9/GCU6UUnrYXwgDFF9h2L2o2P9KBni1AST5sT6riAyoukFLyjQUgD/g==}
     engines: {node: '>=12'}
     peerDependencies:
@@ -16863,7 +16860,7 @@ packages:
         optional: true
     dependencies:
       '@babel/runtime': 7.20.6
-      '@types/react': 17.0.70
+      '@types/react': 18.2.57
       react: 17.0.2
       react-dom: 17.0.2(react@17.0.2)
       react-error-boundary: 3.1.4(react@17.0.2)
@@ -17168,7 +17165,7 @@ packages:
   /@types/hoist-non-react-statics@3.3.5:
     resolution: {integrity: sha512-SbcrWzkKBw2cdwRTwQAswfpB9g9LJWfjtUeW/jvNwbhC8cpmmNYVePa+ncbUe0rGTQ7G3Ff6mYUN2VMfLVr+Sg==}
     dependencies:
-      '@types/react': 18.2.55
+      '@types/react': 18.2.57
       hoist-non-react-statics: 3.3.2
 
   /@types/html-minifier-terser@5.1.2:
@@ -17360,7 +17357,7 @@ packages:
   /@types/reach__router@1.3.14:
     resolution: {integrity: sha512-2iOQZbwfw1ZYwYK+dRp7D1b8kU6GlFPJ/iEt33zDYxfId5CAKT7vX3lN/XmJ+FaMZ3FyB99tPgfajcmZnTqdtg==}
     dependencies:
-      '@types/react': 18.2.55
+      '@types/react': 18.2.57
     dev: true
 
   /@types/react-dom@17.0.23:
@@ -17371,20 +17368,19 @@ packages:
   /@types/react-dom@18.2.12:
     resolution: {integrity: sha512-QWZuiA/7J/hPIGocXreCRbx7wyoeet9ooxfbSA+zbIWqyQEE7GMtRn4A37BdYyksnN+/NDnWgfxZH9UVGDw1hg==}
     dependencies:
-      '@types/react': 18.2.27
+      '@types/react': 18.2.57
     dev: true
 
   /@types/react-dom@18.2.19:
     resolution: {integrity: sha512-aZvQL6uUbIJpjZk4U8JZGbau9KDeAwMfmhyWorxgBkqDIEf6ROjRozcmPIicqsUwPUjbkDfHKgGee1Lq65APcA==}
     dependencies:
-      '@types/react': 18.2.55
-    dev: true
+      '@types/react': 18.2.57
 
   /@types/react-redux@7.1.30:
     resolution: {integrity: sha512-i2kqM6YaUwFKduamV6QM/uHbb0eCP8f8ZQ/0yWf+BsAVVsZPRYJ9eeGWZ3uxLfWwwA0SrPRMTPTqsPFkY3HZdA==}
     dependencies:
       '@types/hoist-non-react-statics': 3.3.5
-      '@types/react': 18.2.55
+      '@types/react': 18.2.57
       hoist-non-react-statics: 3.3.2
       redux: 4.1.0
     dev: false
@@ -17393,7 +17389,7 @@ packages:
     resolution: {integrity: sha512-NF8m5AjWCkert+fosDsN3hAlHzpjSiXlVy9EgQEmLoBhaNXbmyeGs/aj5dQzKuF+/q+S7JQagorGDW8pJ28Hmg==}
     dependencies:
       '@types/hoist-non-react-statics': 3.3.5
-      '@types/react': 18.2.55
+      '@types/react': 18.2.57
       hoist-non-react-statics: 3.3.2
       redux: 4.1.0
     dev: true
@@ -17402,7 +17398,7 @@ packages:
     resolution: {integrity: sha512-kpqnYK4wcdm5UaWI3fLcELopqLrHgLqNsdpHauzlQktfkHL3npOSwtj1Uz9oKBAzs7lFtVkV8j83voAz2D8fhw==}
     dependencies:
       '@types/history': 4.7.11
-      '@types/react': 18.2.55
+      '@types/react': 18.2.57
       '@types/react-router': 5.1.20
     dev: true
 
@@ -17410,19 +17406,19 @@ packages:
     resolution: {integrity: sha512-jGjmu/ZqS7FjSH6owMcD5qpq19+1RS9DeVRqfl1FeBMxTDQAGwlMWOcs52NDoXaNKyG3d1cYQFMs9rCrb88o9Q==}
     dependencies:
       '@types/history': 4.7.11
-      '@types/react': 18.2.55
+      '@types/react': 18.2.57
     dev: true
 
   /@types/react-syntax-highlighter@11.0.5:
     resolution: {integrity: sha512-VIOi9i2Oj5XsmWWoB72p3KlZoEbdRAcechJa8Ztebw7bDl2YmR+odxIqhtJGp1q2EozHs02US+gzxJ9nuf56qg==}
     dependencies:
-      '@types/react': 18.2.55
+      '@types/react': 18.2.57
     dev: true
 
   /@types/react-test-renderer@18.0.1:
     resolution: {integrity: sha512-LjEF+jTUCjzd+Qq4eWqsmZvEWPA/l4L0my+YWN5US8Fo3wZOMiyrpBshHDFbkO8usjdO1B430mEWNU/i1MF7Qg==}
     dependencies:
-      '@types/react': 18.2.55
+      '@types/react': 18.2.57
     dev: true
 
   /@types/react@17.0.70:
@@ -17442,6 +17438,14 @@ packages:
 
   /@types/react@18.2.55:
     resolution: {integrity: sha512-Y2Tz5P4yz23brwm2d7jNon39qoAtMMmalOQv6+fEFt1mT+FcM3D841wDpoUvFXhaYenuROCy3FZYqdTjM7qVyA==}
+    dependencies:
+      '@types/prop-types': 15.7.10
+      '@types/scheduler': 0.16.6
+      csstype: 3.1.2
+    dev: true
+
+  /@types/react@18.2.57:
+    resolution: {integrity: sha512-ZvQsktJgSYrQiMirAN60y4O/LRevIV8hUzSOSNB6gfR3/o3wCBFQx3sPwIYtuDMeiVgsSS3UzCV26tEzgnfvQw==}
     dependencies:
       '@types/prop-types': 15.7.10
       '@types/scheduler': 0.16.6
@@ -23766,8 +23770,8 @@ packages:
       '@babel/plugin-transform-react-jsx': ^7.14.9
       eslint: ^8.1.0
     dependencies:
-      '@babel/plugin-syntax-flow': 7.23.3(@babel/core@7.23.9)
-      '@babel/plugin-transform-react-jsx': 7.22.15(@babel/core@7.23.9)
+      '@babel/plugin-syntax-flow': 7.23.3(@babel/core@7.23.3)
+      '@babel/plugin-transform-react-jsx': 7.22.15(@babel/core@7.23.3)
       eslint: 8.49.0
       lodash: 4.17.21
       string-natural-compare: 3.0.1
@@ -35321,13 +35325,13 @@ packages:
       '@seznam/compose-react-refs': 1.0.6
       react: 17.0.2
       react-is-mounted-hook: 1.1.2(react-dom@17.0.2)(react@17.0.2)
-      react-select: 4.3.1(@types/react@17.0.70)(react-dom@17.0.2)(react@17.0.2)
+      react-select: 4.3.1(@types/react@18.2.57)(react-dom@17.0.2)(react@17.0.2)
       sleep-promise: 9.1.0
     transitivePeerDependencies:
       - react-dom
     dev: false
 
-  /react-select@4.3.1(@types/react@17.0.70)(react-dom@17.0.2)(react@17.0.2):
+  /react-select@4.3.1(@types/react@18.2.57)(react-dom@17.0.2)(react@17.0.2):
     resolution: {integrity: sha512-HBBd0dYwkF5aZk1zP81Wx5UsLIIT2lSvAY2JiJo199LjoLHoivjn9//KsmvQMEFGNhe58xyuOITjfxKCcGc62Q==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0
@@ -35335,7 +35339,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.20.6
       '@emotion/cache': 11.11.0
-      '@emotion/react': 11.11.1(@types/react@17.0.70)(react@17.0.2)
+      '@emotion/react': 11.11.1(@types/react@18.2.57)(react@17.0.2)
       memoize-one: 5.2.1
       prop-types: 15.7.2
       react: 17.0.2
