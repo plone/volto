@@ -30,9 +30,7 @@ We define a {ref}`release-management-public-api` and a {ref}`release-management-
 The public API is composed of the following Volto components:
 
 - Public Components (`./src/components/theme`)
-- CMS user interface fundamental components (`./src/components/manage`)
 - Current list of default Blocks included in Volto
-- CMS user interface control panels
 - Volto helpers (`./src/helpers`)
 
 The following section describes the changes that are considered "breaking" in the Volto Public API.
@@ -61,9 +59,23 @@ The private API is everything that is considered "internal" to Volto and it is i
 
 The following Volto components are considered Private API:
 
+- CMS user interface fundamental components (`./src/components/manage`)
+- CMS user interface control panels
 - Libraries used by Volto
 
-### Example
+```{note}
+In general, the CMSUI is not considered public API, because the customization/modification in a project is not usual, and the overall experience is tied to these components.
+So we prefer give preference to maintain a good user experience over not backporting changes that could be breaking to the product but could be beneficial for the vast majority of use cases.
+For example, if a bug is fixed in the CMSUI and it would be declared as breaking, it would never make it to older versions.
+Same for a useful improvement to any CMSUI feature or a new feature, they would never be able to make it to older versions.
+```
+
+### Examples
+
+If there is a change in the CMS user interface that implies a change of behavior and/or change of markup that improves the overall user experience, it's not considered a breaking change.
+It will be properly expressed and notified in the changelog notes of a minor change.
+
+Any change to a control panel.
 
 If a bug is found in the text block, and the solution involves an upgrade of the Slate library, then it won't be considered a breaking change.
 This is true, even if that upgrade implies a breaking change in itself.
