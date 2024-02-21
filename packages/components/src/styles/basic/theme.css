@@ -1,0 +1,133 @@
+@import '../quanta/colors.css';
+
+/* Base styles */
+:root {
+  --basic-font-family: system-ui;
+  --basic-font-size: 14px;
+  background: var(--background-color);
+  font-family: var(--basic-font-family);
+  font-size: var(--basic-font-size);
+  line-height: 1.5;
+}
+
+/* color themes for dark and light modes, generated with Leonardo.
+ * Light: https://leonardocolor.io/theme.html?name=Light&config=%7B%22baseScale%22%3A%22Gray%22%2C%22colorScales%22%3A%5B%7B%22name%22%3A%22Gray%22%2C%22colorKeys%22%3A%5B%22%23000000%22%5D%2C%22colorspace%22%3A%22RGB%22%2C%22ratios%22%3A%5B%22-1.12%22%2C%221.45%22%2C%222.05%22%2C%223.02%22%2C%224.54%22%2C%227%22%2C%2210.86%22%5D%2C%22smooth%22%3Afalse%7D%2C%7B%22name%22%3A%22Purple%22%2C%22colorKeys%22%3A%5B%22%235e30eb%22%5D%2C%22colorspace%22%3A%22RGB%22%2C%22ratios%22%3A%5B%22-1.12%22%2C%221.45%22%2C%222.05%22%2C%223.02%22%2C%224.54%22%2C%227%22%2C%2210.86%22%5D%2C%22smooth%22%3Afalse%7D%2C%7B%22name%22%3A%22Red%22%2C%22colorKeys%22%3A%5B%22%23e32400%22%5D%2C%22colorspace%22%3A%22RGB%22%2C%22ratios%22%3A%5B%22-1.12%22%2C%221.45%22%2C%222.05%22%2C%223.02%22%2C%224.54%22%2C%227%22%2C%2210.86%22%5D%2C%22smooth%22%3Afalse%7D%5D%2C%22lightness%22%3A98%2C%22contrast%22%3A1%2C%22saturation%22%3A100%2C%22formula%22%3A%22wcag2%22%7D */
+:root {
+  --background-color: #fff;
+  --gray-50: #ffffff;
+  --gray-100: #d0d0d0;
+  --gray-200: #afafaf;
+  --gray-300: #8f8f8f;
+  --gray-400: #717171;
+  --gray-500: #555555;
+  --gray-600: #393939;
+  --purple-100: #d5c9fa;
+  --purple-200: #b8a3f6;
+  --purple-300: #997cf2;
+  --purple-400: #7a54ef;
+  --purple-500: #582ddc;
+  --purple-600: #3c1e95;
+  --red-100: #f7c4ba;
+  --red-200: #f29887;
+  --red-300: #eb664d;
+  --red-400: #de2300;
+  --red-500: #a81b00;
+  --red-600: #731200;
+  --highlight-hover: rgb(0 0 0 / 0.07);
+  --highlight-pressed: rgb(0 0 0 / 0.15);
+}
+
+/* ShadCN slate theme */
+:root {
+  --basic-50: #fff; /* was #f8fafc */
+  --basic-100: #f1f5f9;
+  --basic-200: #e2e8f0;
+  --basic-300: #cbd5e1;
+  --basic-400: #94a3b8;
+  --basic-500: #64748b;
+  --basic-600: #475569;
+  --basic-700: #334155;
+  --basic-800: #1e293b;
+  --basic-900: #0f172a;
+  --basic-950: #020617;
+}
+
+/* Semantic colors */
+:root {
+  /* Text */
+  --text-color: var(--basic-950); /* --gray-600 */
+  --text-color-base: var(--basic-600); /* --gray-500 */
+  --text-color-hover: var(--basic-950); /* --gray-600 */
+  --text-color-disabled: var(--basic-400); /* --gray-200 */
+  --text-color-placeholder: var(--gray-400);
+  /* Link */
+  --link-color: var(--quanta-sapphire);
+  --link-color-secondary: var(--quanta-royal);
+  --link-color-pressed: var(--quanta-cobalt);
+  /* Border */
+  --border-color: var(--basic-400); /* --gray-300 */
+  --border-color-hover: var(--basic-500); /* --gray-400 */
+  --border-color-pressed: var(--basic-500); /* --gray-400 */
+  --border-color-disabled: var(--basic-300); /* --gray-100 */
+  /* Input */
+  --focus-ring-color: var(--basic-400); /* --purple-400 */
+  --field-background: var(--basic-50); /* --purple-400 */
+  --field-text-color: var(--basic-950); /* --purple-600 */
+  /* Button */
+  --button-background: var(--basic-50); /* --gray-50 */
+  --button-background-pressed: var(--background-color); /* --background-color */
+
+  --overlay-background: var(--basic-50); /* --gray-50 */
+  /* these colors are the same between light and dark themes
+   * to ensure contrast with the foreground color */
+  --highlight-background: var(--basic-600); /* #6f46ed purple-300 */
+  --highlight-background-pressed: var(--basic-800); /* #522acd purple-200 */
+  --highlight-background-invalid: var(
+    --quanta-candy
+  ); /* red-300 from dark theme */
+  --highlight-background-hover: var(--basic-400); /* #6f46ed purple-300 */
+  --highlight-foreground: var(--basic-50); /* white */
+  --highlight-foreground-pressed: var(--basic-200); /* #ddd */
+  --highlight-overlay: var(--basic-400); /* rgb(from #6f46ed r g b / 15%) */
+  --color-invalid: var(--red-400); /* Renamed */
+  --color-pressed-invalid: var(--red-500); /* Renamed */
+}
+
+/* Layout properties */
+:root {
+  --layout-container-width: 1440px;
+  --default-container-width: 940px;
+  --narrow-container-width: 620px;
+}
+
+/* Windows high contrast mode overrides */
+@media (forced-colors: active) {
+  :root {
+    --background-color: Canvas;
+    --focus-ring-color: Highlight;
+    --text-color: ButtonText;
+    --text-color-base: ButtonText;
+    --text-color-hover: ButtonText;
+    --text-color-disabled: GrayText;
+    --text-color-placeholder: ButtonText;
+    --link-color: LinkText;
+    --link-color-secondary: LinkText;
+    --link-color-pressed: LinkText;
+    --border-color: ButtonBorder;
+    --border-color-hover: ButtonBorder;
+    --border-color-pressed: ButtonBorder;
+    --border-color-disabled: GrayText;
+    --field-background: Field;
+    --field-text-color: FieldText;
+    --overlay-background: Canvas;
+    --button-background: ButtonFace;
+    --button-background-pressed: ButtonFace;
+    --highlight-background: Highlight;
+    --highlight-background-pressed: Highlight;
+    --highlight-background-invalid: LinkText;
+    --highlight-foreground: HighlightText;
+    --highlight-foreground-pressed: HighlightText;
+    --color-invalid: LinkText;
+    --color-pressed-invalid: LinkText;
+  }
+}
