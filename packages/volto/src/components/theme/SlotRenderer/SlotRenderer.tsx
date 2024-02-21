@@ -30,6 +30,7 @@ const SlotRenderer = ({
       {slots.map((component) => {
         const id = uuid();
         const SlotComponent = component as React.ElementType;
+        //@ts-ignore - Probably related to an old @types/react dep :(
         return <SlotComponent key={id} id={id} />;
       })}
     </>
