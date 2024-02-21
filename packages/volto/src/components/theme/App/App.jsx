@@ -20,7 +20,6 @@ import config from '@plone/volto/registry';
 import { PluggablesProvider } from '@plone/volto/components/manage/Pluggable';
 import { visitBlocks } from '@plone/volto/helpers/Blocks/Blocks';
 import { injectIntl } from 'react-intl';
-import { setSidebarTab, setMetadataFocus } from '@plone/volto/actions';
 
 import Error from '@plone/volto/error';
 
@@ -187,14 +186,6 @@ export class App extends Component {
             </main>
           </Segment>
         </MultilingualRedirector>
-        <button
-          onClick={() => {
-            this.props.setSidebarTab(0);
-            this.props.setMetadataFocus('ownership', 'allow_discussion');
-          }}
-        >
-          focus!
-        </button>
         <Footer />
         <LockingToastsFactory
           content={this.props.content}
@@ -336,7 +327,7 @@ export function connectAppComponent(AppComponent) {
         apiError: state.apierror.error,
         connectionRefused: state.apierror.connectionRefused,
       }),
-      { setSidebarTab, setMetadataFocus },
+      null,
     ),
   )(AppComponent);
 }
