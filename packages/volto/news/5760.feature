@@ -1,1 +1,1 @@
-Ad accordion to metadata form. @robgietema
+Add accordion to metadata form. @robgietema

@@ -257,11 +257,12 @@ Please contribute to this section!
 
 ## Sidebar
 
-In the edit form a sidebar is used when the form contains block data. There are some helper actions methods which can be used to change the form state.
+In the edit form, a sidebar is used when the form contains block data.
+You can use the following helper action methods to change the form state.
 
 ### Setting tab
 
-You can use the `setSidebarTab` action to set the current active tab (metadata or block).
+You can use the `setSidebarTab` action to set the current active tab, either via metadata or a block.
 
 ### Setting focus
 
