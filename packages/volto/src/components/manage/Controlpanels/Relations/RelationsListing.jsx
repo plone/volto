@@ -14,6 +14,7 @@ import {
   resetSearchContent,
   searchContent,
 } from '@plone/volto/actions';
+import config from '@plone/volto/registry';
 
 const ListingTemplate = ({
   relationtype,
@@ -25,7 +26,7 @@ const ListingTemplate = ({
 }) => {
   const intl = useIntl();
   const dispatch = useDispatch();
-
+  const { settings } = config;
   const MAX = 40; // Maximum of rows and columns
   const MAX_RELATIONS = 1000;
 
@@ -335,7 +336,9 @@ const ListingTemplate = ({
                             ? 'not-published'
                             : ''
                         }
-                        target="_blank"
+                        target={
+                          settings.openExternalLinkInNewTab ? '_blank' : '_self'
+                        }
                       >
                         <span className="label" title={matrix_option.label}>
                           {matrix_option.label.length > 30
@@ -416,7 +419,11 @@ const ListingTemplate = ({
                               ? 'not-published'
                               : ''
                           }
-                          target="_blank"
+                          target={
+                            settings.openExternalLinkInNewTab
+                              ? '_blank'
+                              : '_self'
+                          }
                         >
                           {item.label.length > 25
                             ? item.label.slice(0, 22) + '...'

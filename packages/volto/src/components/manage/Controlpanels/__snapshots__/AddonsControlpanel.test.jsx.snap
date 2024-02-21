@@ -36,7 +36,7 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
       <a
         href="https://6.docs.plone.org/install/"
         rel="noopener noreferrer"
-        target="_blank"
+        target={settings.openExternalLinkInNewTab ? '_blank' : '_self'}
       >
         Installing a third party add-on
       </a>

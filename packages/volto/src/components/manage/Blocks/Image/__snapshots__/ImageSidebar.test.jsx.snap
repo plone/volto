@@ -75,7 +75,7 @@ Array [
           <a
             href="https://www.w3.org/WAI/tutorials/images/decision-tree/"
             rel="noopener noreferrer"
-            target="_blank"
+            target={settings.openExternalLinkInNewTab ? '_blank' : '_self'}
             title="Open in a new tab"
           >
             Describe the purpose of the image.

@@ -9,6 +9,7 @@ import { Icon } from '@plone/volto/components';
 import { expandToBackendURL } from '@plone/volto/helpers';
 
 import calendarSVG from '@plone/volto/icons/calendar.svg';
+import config from '@plone/volto/registry';
 
 const messages = defineMessages({
   what: {
@@ -55,6 +56,7 @@ const messages = defineMessages({
 
 const EventDetails = ({ content, display_as = 'aside' }) => {
   const intl = useIntl();
+  const { settings } = config;
   return (
     <Segment
       as={display_as}
@@ -133,7 +135,7 @@ const EventDetails = ({ content, display_as = 'aside' }) => {
           <p>
             <a
               href={content.event_url}
-              target="_blank"
+              target={settings.openExternalLinkInNewTab ? '_blank' : '_self'}
               rel="noopener noreferrer"
             >
               {intl.formatMessage(messages.visitWebsite)}
@@ -145,7 +147,7 @@ const EventDetails = ({ content, display_as = 'aside' }) => {
         <Icon name={calendarSVG} />
         <a
           className="ics-download"
-          target="_blank"
+          target={settings.openExternalLinkInNewTab ? '_blank' : '_self'}
           rel="noreferrer"
           href={`${expandToBackendURL(content['@id'])}/ics_view`}
         >

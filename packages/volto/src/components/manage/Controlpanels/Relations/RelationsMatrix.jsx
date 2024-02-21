@@ -27,11 +27,12 @@ import BrokenRelations from './BrokenRelations';
 import helpSVG from '@plone/volto/icons/help.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import navTreeSVG from '@plone/volto/icons/nav.svg';
+import config from '@plone/volto/registry';
 
 const RelationsMatrix = (props) => {
   const intl = useIntl();
   const dispatch = useDispatch();
-
+  const { settings } = config;
   const [query_source, setQuery_source] = useState('');
   const [query_target, setQuery_target] = useState('');
   const [potential_targets_path, setPotential_targets_path] = useState('');
@@ -415,7 +416,11 @@ const RelationsMatrix = (props) => {
                             trigger={
                               <a
                                 href="https://6.docs.plone.org/volto/recipes/widget.html#restricting-potential-targets"
-                                target="_blank"
+                                target={
+                                  settings.openExternalLinkInNewTab
+                                    ? '_blank'
+                                    : '_self'
+                                }
                                 rel="noopener noreferrer"
                               >
                                 <Icon name={helpSVG} size="16px" />
