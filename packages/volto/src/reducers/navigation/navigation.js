@@ -1,8 +1,4 @@
-/**
- * Navigation reducer.
- * @module reducers/navigation/navigation
- */
-
+// Importing necessary functions and constants from external modules
 import { map } from 'lodash';
 import {
   flattenToAppURL,
@@ -15,6 +11,7 @@ import {
   GET_NAVIGATION,
 } from '@plone/volto/constants/ActionTypes';
 
+// Initial state for the navigation reducer
 const initialState = {
   error: null,
   items: [],
@@ -22,32 +19,49 @@ const initialState = {
   loading: false,
 };
 
-/**
- * Recursive function that process the items returned by the navigation
- * endpoint
- * @function getRecursiveItems
- * @param {array} items The items inside a navigation response.
- * @returns {*} The navigation items object (recursive)
- */
-function getRecursiveItems(items) {
-  return map(items, (item) => ({
-    title: item.title,
-    description: item.description,
-    url: flattenToAppURL(item['@id']),
-    ...(item.items && { items: getRecursiveItems(item.items) }),
-  }));
+// Function to transform navigation items recursively
+function transformItems(items) {
+  // Using a stack-based approach for recursive transformation
+  const stack = [...items];
+  const transformedItems = [];
+
+  // Iterating through items in the stack
+  while (stack.length > 0) {
+    const currentItem = stack.pop();
+    // Transforming the current item
+    const transformedItem = {
+      ...currentItem,
+      // Flattening the URL to be app-relative
+      url: flattenToAppURL(currentItem['@id']),
+      // Including any extra behavior fields or information passed from the endpoint
+      // Example: extraField: currentItem.extraField,
+    };
+
+    // Checking if the current item has sub-items
+    if (currentItem.items) {
+      // Transforming sub-items
+      transformedItem.items = currentItem.items.map((item) => ({
+        ...item,
+        url: flattenToAppURL(item['@id']),
+        // Including any extra behavior fields or information for sub-items
+        // Example: extraField: item.extraField,
+      }));
+      // Adding sub-items to the stack for further processing
+      stack.push(...currentItem.items);
+    }
+
+    // Adding the transformed item to the result array
+    transformedItems.push(transformedItem);
+  }
+
+  // Returning the transformed items
+  return transformedItems;
 }
 
-/**
- * Navigation reducer.
- * @function navigation
- * @param {Object} state Current state.
- * @param {Object} action Action to be handled.
- * @returns {Object} New state.
- */
+// Reducer function for navigation state management
 export default function navigation(state = initialState, action = {}) {
-  let hasExpander;
   switch (action.type) {
+    // Handling pending navigation request
     case `${GET_NAVIGATION}_PENDING`:
       return {
         ...state,
@@ -55,16 +69,20 @@ export default function navigation(state = initialState, action = {}) {
         loaded: false,
         loading: true,
       };
+    // Handling successful content retrieval
     case `${GET_CONTENT}_SUCCESS`:
-      hasExpander = hasApiExpander(
+      // Checking if the retrieved content has a navigation expander
+      const hasExpander = hasApiExpander(
         'navigation',
         getBaseUrl(flattenToAppURL(action.result['@id'])),
       );
+      // Checking if the action is not a subrequest and the content has an expander
       if (hasExpander && !action.subrequest) {
         return {
           ...state,
           error: null,
-          items: getRecursiveItems(
+          // Transforming and updating the navigation items
+          items: transformItems(
             action.result['@components'].navigation.items,
           ),
           loaded: true,
@@ -72,29 +90,30 @@ export default function navigation(state = initialState, action = {}) {
         };
       }
       return state;
+    // Handling successful navigation retrieval
     case `${GET_NAVIGATION}_SUCCESS`:
-      // Even if the expander is set or not, if the GET_NAVIGATION is
-      // called, we want it to store the data if the actions data is
-      // not set in the expander data (['@components']) but in the "normal"
-      // action result (we look for the object property returned by the endpoint)
+      // Checking if the retrieved navigation has items
       if (!action.result?.['@components'] && action.result?.items) {
         return {
           ...state,
           error: null,
-          items: getRecursiveItems(action.result.items),
+          // Transforming and updating the navigation items
+          items: transformItems(action.result.items),
           loaded: true,
           loading: false,
         };
       }
       return state;
+    // Handling failed navigation retrieval
     case `${GET_NAVIGATION}_FAIL`:
       return {
         ...state,
         error: action.error,
-        items: [],
+        items: [], // Clearing items in case of failure
         loaded: false,
         loading: false,
       };
+    // Default case: returning current state
     default:
       return state;
   }
