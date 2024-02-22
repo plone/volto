@@ -39,13 +39,16 @@ Thus, when either the route is `/de/about` or the content type is either a `Docu
 It would not display elsewhere.
 
 The order in which the components render is governed by the order in which they were registered.
+
+```{todo}
 You can change the order of the defined slot components for a different slot using the API. (pending)
-You can even delete the rendering of a registered slot component using the API (pending)
+You can even delete the rendering of a registered slot component using the API. (pending)
 
 Slot (eg. `toolbar`)
   - `edit`
   - `contents`
   - `more`
+```
 
 Volto renders the slots using the `SlotRenderer` component.
 You can add insertion points in your code, as shown in the following example.
