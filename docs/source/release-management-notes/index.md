@@ -65,7 +65,7 @@ The following Volto components are considered Private API:
 
 ```{note}
 In general, the CMSUI is not considered public API, because the customization/modification in a project is not usual, and the overall experience is tied to these components.
-So we prefer give preference to maintain a good user experience over not backporting changes that could be breaking to the product but could be beneficial for the vast majority of use cases.
+So we give preference to maintain a good user experience over not backporting changes that could be breaking to the product but could be beneficial for the vast majority of use cases.
 For example, if a bug is fixed in the CMSUI and it would be declared as breaking, it would never make it to older versions.
 Same for a useful improvement to any CMSUI feature or a new feature, they would never be able to make it to older versions.
 ```
