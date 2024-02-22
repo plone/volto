@@ -86,7 +86,11 @@ You register a slot component using the configuration registry:
     export type SlotPredicate = (args: any) => boolean;
     ```
 
+
+## Predicate helpers
+
 There are two predicate helpers available in the Volto helpers.
+
 
 ### `RouteCondition`
 
