@@ -176,7 +176,7 @@ const applyConfig = (config: ConfigType) => {
 
   config.registerSlotComponent({
     slot: 'aboveContent',
-    name: 'hello.aboveFooter',
+    name: 'testSlotComponent',
     component: SlotComponentTest,
     predicates: [ContentTypeCondition(['Document']), RouteCondition('/hello')],
   });
