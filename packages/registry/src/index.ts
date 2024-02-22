@@ -259,7 +259,7 @@ class Config {
       currentSlot.data[name] = [];
     }
 
-    const currentSlotComponent = currentSlot.data[name];
+    const currentSlotComponents = currentSlot.data[name];
     if (!currentSlot.slots.includes(name)) {
       currentSlot.slots.push(name);
     }
@@ -283,7 +283,51 @@ class Config {
       );
     }
 
-    currentSlotComponent.push(slotComponentData);
+    currentSlotComponents.push(slotComponentData);
+  }
+
+  getSlotComponent(slot: string, name: string) {
+    const currentSlot = this._data.slots[slot];
+    if (!slot || !currentSlot) {
+      throw new Error(`No slot ${slot} found`);
+    }
+    const currentSlotComponents = currentSlot.data[name];
+    if (!currentSlotComponents) {
+      throw new Error(`No slot component ${name} in slot ${slot} found`);
+    }
+    return currentSlotComponents;
+  }
+
+  getSlotComponents(slot: string) {
+    const currentSlot = this._data.slots[slot];
+    if (!slot || !currentSlot) {
+      throw new Error(`No slot ${slot} found`);
+    }
+    return currentSlot.slots;
+  }
+
+  reorderSlotComponent(slot: string, name: string, position: number) {
+    const currentSlot = this._data.slots[slot];
+    if (!slot || !currentSlot) {
+      throw new Error(`No slot ${slot} found`);
+    }
+
+    const origin = currentSlot.slots.indexOf(name);
+    currentSlot.slots = currentSlot.slots
+      .toSpliced(origin, 1)
+      .toSpliced(position, 0, name);
+  }
+
+  unRegisterSlotComponent(slot: string, name: string, position: number) {
+    const currentSlot = this._data.slots[slot];
+    if (!slot || !currentSlot) {
+      throw new Error(`No slot ${slot} found`);
+    }
+    const currentSlotComponents = currentSlot.data[name];
+    if (!currentSlotComponents) {
+      throw new Error(`No slot component ${name} in slot ${slot} found`);
+    }
+    currentSlot.data[name] = currentSlotComponents.toSpliced(position, 1);
   }
 }
 
