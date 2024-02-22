@@ -139,17 +139,20 @@ You can create your own predicate helpers to determine whether your slot compone
 The `SlotRenderer` will pass down the current `content` and the `pathname` into your custom predicate helper.
 You can also tailor your own `SlotRenderer`s, or shadow the original `SlotRenderer`, to satisfy your requirements.
 
+
 ## Manage registered slots and slot components
+
+You can manage registered slots and slot components through the slots API.
+
 
 ### `getSlotComponents`
 
-It returns the list of components registered per slot.
-This is useful to debug what is registered an in what order, and later change the order, if needed.
+`getSlotComponents` returns the list of components registered per slot.
+This is useful to debug what is registered and in what order, informing you whether you need to change their order.
 This is the signature:
 
 ```ts
 config.getSlotComponents(slot: string): string[]
-
 ```
 
 `slot`
@@ -160,7 +163,7 @@ config.getSlotComponents(slot: string): string[]
 
 ### `reorderSlotComponent`
 
-It reorders the list of components registered per slot.
+`reorderSlotComponent` reorders the list of slot components registered per slot.
 This is the signature:
 
 ```ts
@@ -188,8 +191,8 @@ config.reorderSlotComponent(slot: string, name: string, position: number): void
 
 ### `getSlotComponent`
 
-It returns the list of registered components per slot component name.
-This is useful to debug what is registered an in what order, and later remove a registration, if needed.
+`getSlotComponent` returns the list of registered components under the given slot component name.
+This is useful to debug what is registered and in what order, and later remove a component's registration, if needed.
 This is the signature:
 
 ```ts
@@ -235,16 +238,16 @@ config.unRegisterSlotComponent(slot: string, name: string, position: number): vo
 
 ### `getSlot`
 
-It returns the components that should be rendered per named slot.
-You should use this method in case you are building you own slot renderer, or customizing the existing one (`SlotRenderer`).
-You can take the implementation of `SlotRenderer` as template.
+`getSlot` returns the components to be rendered for the given named slot.
+You should use this method while building you own slot renderer or customizing the existing `SlotRenderer`.
+You can use the implementation of `SlotRenderer` as a template.
 This is the signature:
 
 ```ts
 config.getSlot<T>(name: string, args: T): SlotComponent['component'][] | undefined
 ```
 
-It must have the following parameters.
+It has the following parameters.
 
 `name`
 :   String.
