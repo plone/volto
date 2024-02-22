@@ -114,26 +114,6 @@ describe('Component registry', () => {
 });
 
 describe('Slots registry', () => {
-  // config.slots.toolbar = [ // viewlets.xml
-  //   'save',
-  //   'edit',
-  // ]
-
-  // config.slots.toolbar.save = [
-  //   {
-  //     predicates: [RouteCondition('/de')],
-  //     component: 'this is a Bar component',
-  //   },
-  //   {
-  //     predicates: [RouteCondition('/de'), ContentTypeCondition(['News Item'])],
-  //     component: 'this is a Bar component',
-  //   },
-  //   {
-  //     predicates: [RouteCondition('/de/path/folder'), ContentTypeCondition(['News Item']), TrueCondition()],
-  //     component: 'this is a Bar component',
-  //   },
-  // ]
-
   afterEach(() => {
     config.set('slots', {});
   });
