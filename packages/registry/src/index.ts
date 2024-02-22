@@ -195,7 +195,10 @@ class Config {
       // For all registered components for that slot, inversed, since the last one registered wins
       // TODO: Cover ZCA use case, where if more predicates, more specificity wins if all true.
       // Let's keep it simple here and stick to the registered order.
-      console.log(slotName);
+      console.log('slot', name);
+      console.log('data', data);
+      console.log('slotName', slotName);
+      console.log('data per slotname', data[slotName]);
       let noPredicateComponent: SlotComponent | undefined;
       for (const slotComponent of data[slotName].toReversed()) {
         let isPredicateTrueFound: boolean = false;
