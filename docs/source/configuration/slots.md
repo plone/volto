@@ -210,7 +210,7 @@ config.getSlotComponent(slot: string, name: string): SlotComponent[]
     The name of the slot component to retrieve.
 
 
-### `unRegisterSlotComponent`
+### `unregisterSlotComponent`
 
 It removes a registration for a specific component, given its registration position.
 This is the signature:
