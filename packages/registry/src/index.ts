@@ -199,6 +199,11 @@ class Config {
       console.log('data', data);
       console.log('slotName', slotName);
       console.log('data per slotname', data[slotName]);
+      console.log('data per slotname reversed', data[slotName].toReversed());
+      console.log(
+        'type data per slotname reversed',
+        typeof data[slotName].toReversed(),
+      );
       let noPredicateComponent: SlotComponent | undefined;
       for (const slotComponent of data[slotName].toReversed()) {
         let isPredicateTrueFound: boolean = false;
