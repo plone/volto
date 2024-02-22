@@ -17,6 +17,12 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 17.15.1 (2024-02-22)
+
+### Bugfix
+
+- Fix sidebar form update. @robgietema [#5779](https://github.com/plone/volto/issues/5779)
+
 ## 17.15.0 (2024-02-21)
 
 ### Feature
