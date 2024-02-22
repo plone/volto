@@ -19,13 +19,24 @@ Slot components are also named, and they are registered in the configuration reg
 The main trait of a slot component is that its renderer is controlled by a list of conditions called {term}`predicates`.
 Multiple slot components can be registered under the same name, as long as they have different predicates.
 
-Slot (eg. `toolbar`)
-  - SlotComponent (eg. `edit`)
-    - predicates (eg. only appear in `/de/about`)
-    - predicates (eg. only appear if content type is one of `Document` or `News Item`)
-    - no predicates (eg. always appear)
-  - SlotComponent (eg. `contents`)
-  - SlotComponent (eg. `more`)
+The following tree structure diagram illustrates these concepts.
+
+```text
+Slot (`toolbar`)
+├── SlotComponent (`edit`)
+│   ├── predicates (only appear in `/de/about`)
+│   ├── predicates (only appear if the content type is either a `Document` or `News Item`)
+│   └── no predicates (default when all predicates return `false`)
+├── SlotComponent (`contents`)
+└── SlotComponent (`more`)
+```
+
+At the root of the tree, there is a slot named `toolbar`.
+It contains three slot components, named `edit`, `contents`, and `more`.
+`edit` contains two predicates and a default for when all of its predicates return `false`.
+
+Thus, when either the route is `/de/about` or the content type is either a `Document` or `News Item`, then the `edit` slot component would appear in the slot `about`.
+It would not display elsewhere.
 
 The order in which the components render is governed by the order in which they were registered.
 You can change the order of the defined slot components for a different slot using the API. (pending)
