@@ -196,7 +196,8 @@ class Config {
       // TODO: Cover ZCA use case, where if more predicates, more specificity wins if all true.
       // Let's keep it simple here and stick to the registered order.
       let noPredicateComponent: SlotComponent | undefined;
-      for (const slotComponent of data[slotName].toReversed()) {
+      const reversedSlotComponents = data[slotName].slice().reverse(); // Immutable reversed copy
+      for (const slotComponent of reversedSlotComponents) {
         let isPredicateTrueFound: boolean = false;
         if (slotComponent.predicates) {
           isPredicateTrueFound = slotComponent.predicates.every((predicate) =>
@@ -311,11 +312,12 @@ class Config {
     if (!slot || !currentSlot) {
       throw new Error(`No slot ${slot} found`);
     }
-
     const origin = currentSlot.slots.indexOf(name);
-    currentSlot.slots = currentSlot.slots
-      .toSpliced(origin, 1)
-      .toSpliced(position, 0, name);
+    const result = Array.from(currentSlot.slots);
+    const [removed] = result.splice(origin, 1);
+    result.splice(position, 0, removed);
+
+    currentSlot.slots = result;
   }
 
   unRegisterSlotComponent(slot: string, name: string, position: number) {
@@ -327,7 +329,8 @@ class Config {
     if (!currentSlotComponents) {
       throw new Error(`No slot component ${name} in slot ${slot} found`);
     }
-    currentSlot.data[name] = currentSlotComponents.toSpliced(position, 1);
+    const result = currentSlotComponents.slice();
+    currentSlot.data[name] = result.splice(position, 1);
   }
 }
 
