@@ -70,14 +70,21 @@ You register a slot component using the configuration registry:
     });
 ```
 
-`slot`: The name of the slot, where the slot components are stored
-`name`: The name of the slot component that we are registering
-`component`: The component that we want to render in the slot
-`predicates`: A list of functions that return a function with this signature:
+`slot`
+:   The name of the slot, where the slot components are stored.
+    
+`name`
+:   The name of the slot component that we are registering.
 
-```ts
-export type SlotPredicate = (args: any) => boolean;
-```
+`component`
+:   The component that we want to render in the slot.
+
+`predicates`
+:   A list of functions that return a function with this signature.
+
+    ```ts
+    export type SlotPredicate = (args: any) => boolean;
+    ```
 
 There are two predicate helpers available in the Volto helpers.
 
