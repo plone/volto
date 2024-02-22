@@ -156,6 +156,7 @@ start-test-acceptance-server-coresandbox test-acceptance-server-coresandbox: ## 
 
 .PHONY: start-test-acceptance-frontend-coresandbox
 start-test-acceptance-frontend-coresandbox: build-deps ## Start the CoreSandbox Acceptance Frontend Fixture
+	pnpm --filter @plone/registry build
 	ADDONS=@plone/volto-coresandbox RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod
 
 .PHONY: start-test-acceptance-frontend-coresandbox-dev
