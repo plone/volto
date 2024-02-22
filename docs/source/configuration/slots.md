@@ -101,8 +101,15 @@ export function RouteCondition(path: string, exact?: boolean) {
 }
 ```
 
-It renders a slot if the specified route matches.
-It takes the route and if the route match should be exact or not.
+The `RouteCondition` predicate helper renders a slot if the specified route matches.
+It accepts the following parameters.
+ 
+`path`
+:   Required. String. The route.
+
+`exact`
+:   Optional. Boolean. If `true`, then the match will be exact, else matches "begins with", for the given string from `path`.
+
 
 ### `ContentTypeCondition`
 
