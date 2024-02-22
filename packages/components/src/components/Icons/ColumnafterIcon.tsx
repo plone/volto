@@ -1,7 +1,8 @@
-import Icon from '../Icon/Icon';
+import React from 'react';
+import { Icon } from '../Icon/Icon';
 import type { IconPropsWithoutChildren } from '../Icon/Icon';
 
-const Columnafter = (props: IconPropsWithoutChildren) => {
+export const ColumnafterIcon = (props: IconPropsWithoutChildren) => {
   return (
     <Icon {...props}>
       <svg
@@ -21,5 +22,3 @@ const Columnafter = (props: IconPropsWithoutChildren) => {
     </Icon>
   );
 };
-
-export default Columnafter;

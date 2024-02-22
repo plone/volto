@@ -1,0 +1,84 @@
+@import './Button.css';
+@import './Form.css';
+@import './theme.css';
+
+.react-aria-SearchField {
+  display: grid;
+  width: fit-content;
+  align-items: center;
+  color: var(--text-color);
+  grid-template-areas:
+    'label label'
+    'input button'
+    'help  help';
+  grid-template-columns: 1fr auto;
+
+  .react-aria-Input {
+    padding: 0.286rem 1.714rem 0.286rem 0.286rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    margin: 0;
+    background: var(--field-background);
+    color: var(--field-text-color);
+    font-size: 1.143rem;
+    grid-area: input;
+
+    &::-webkit-search-cancel-button,
+    &::-webkit-search-decoration {
+      -webkit-appearance: none;
+    }
+
+    &[data-focused] {
+      outline: 2px solid var(--focus-ring-color);
+      outline-offset: -1px;
+    }
+  }
+
+  .react-aria-Button {
+    width: 1.143rem;
+    height: 1.143rem;
+    padding: 0;
+    border: none;
+    border-radius: 1.143rem;
+    margin-left: -1.429rem;
+    background: var(--gray-500);
+    color: var(--gray-50);
+    font-size: 0.857rem;
+    grid-area: button;
+    line-height: 0.857rem;
+    text-align: center;
+    vertical-align: middle;
+
+    &[data-pressed] {
+      background: var(--gray-600);
+    }
+  }
+
+  &[data-empty] button {
+    display: none;
+  }
+
+  .react-aria-Input {
+    &[data-invalid] {
+      border-color: var(--color-invalid);
+    }
+  }
+
+  .react-aria-FieldError {
+    color: var(--color-invalid);
+    font-size: 12px;
+    grid-area: help;
+  }
+
+  [slot='description'] {
+    font-size: 12px;
+    grid-area: help;
+  }
+
+  .react-aria-Input {
+    &[data-disabled] {
+      border-color: var(--border-color-disabled);
+      color: var(--text-color-disabled);
+    }
+  }
+}

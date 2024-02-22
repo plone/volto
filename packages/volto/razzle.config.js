@@ -166,6 +166,19 @@ const defaultModify = ({
       }),
     );
 
+    // Make the TerserPlugin accept ESNext features, since we are in 2024
+    // If this is not true, libraries already compiled for using only ESNext features
+    // won't work (eg. using a chaining operator)
+    config.optimization = Object.assign({}, config.optimization, {
+      minimizer: [
+        new TerserPlugin({
+          terserOptions: {
+            parse: { ecma: 'ESNext' },
+          },
+        }),
+      ],
+    });
+
     // Razzle sets some of its basic env vars in the default config injecting them (for
     // the client use, mainly) in a `DefinePlugin` instance. However, this also ends in
     // the server build, removing the ability of the server node process to read from
@@ -328,6 +341,7 @@ const defaultModify = ({
               // Add support for addons to include externals (ie. node_modules npm published packages)
               ...addonsAsExternals,
               /^@plone\/volto/,
+              /^@plone\/components/,
             ].filter(Boolean),
           }),
         ]
