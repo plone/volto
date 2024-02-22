@@ -233,7 +233,7 @@ config.unRegisterSlotComponent(slot: string, name: string, position: number): vo
 :   Number.
     Required.
     The component position to remove in the slot component registration.
-    Use {ref}`slots-getSlotComponent-label` to find the position of the registered component to remove.
+    Use {ref}`slots-getSlotComponent-label` to find the zero-indexed position of the registered component to remove.
 
 
 ### `getSlot`
