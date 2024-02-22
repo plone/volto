@@ -89,7 +89,7 @@ export function ContentTypeCondition(contentType: string[]) {
 ```
 
 The `ContentTypeCondition` helper predicate allows you to render a slot when the given content type matches the current content type.
-It takes a list of possible content types.
+It accepts a list of possible content types.
 
 ### Custom predicates
 
