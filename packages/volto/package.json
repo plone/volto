@@ -75,7 +75,12 @@
   "jest": {
     "transform": {
       "^.+\\.js(x)?$": "babel-jest",
-      "^.+\\.ts(x)?$": "ts-jest",
+      "^.+\\.ts(x)?$": [
+        "ts-jest",
+        {
+          "diagnostics": false
+        }
+      ],
       "^.+\\.(png)$": "jest-file",
       "^.+\\.(jpg)$": "jest-file",
       "^.+\\.(svg)$": "./jest-svgsystem-transform.js"
