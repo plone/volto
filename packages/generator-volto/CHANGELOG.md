@@ -8,6 +8,22 @@
 
 <!-- towncrier release notes start -->
 
+## 9.0.0-alpha.6 (2024-02-18)
+
+### Bugfix
+
+- Fix @plone/volto-slate path in moduleNameMapper. @wesleybl [#5743](https://github.com/plone/volto/issues/5743)
+
+## 9.0.0-alpha.5 (2024-02-06)
+
+### Bugfix
+
+- Fix tests in projects that involves TS files @sneridagh [#5738](https://github.com/plone/volto/issues/5738)
+
+### Documentation
+
+- Reorganize `README.md`, merging content into authoritative locations. Add `awesome_bot` to check links in all READMEs. @stevepiercy [#5437](https://github.com/plone/volto/issues/5437)
+
 ## 9.0.0-alpha.4 (2024-02-02)
 
 ### Bugfix

@@ -1,7 +1,8 @@
-import Icon from '../Icon/Icon';
+import React from 'react';
+import { Icon } from '../Icon/Icon';
 import type { IconPropsWithoutChildren } from '../Icon/Icon';
 
-const Toc = (props: IconPropsWithoutChildren) => {
+export const TocIcon = (props: IconPropsWithoutChildren) => {
   return (
     <Icon {...props}>
       <svg
@@ -19,5 +20,3 @@ const Toc = (props: IconPropsWithoutChildren) => {
     </Icon>
   );
 };
-
-export default Toc;

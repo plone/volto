@@ -1,6 +1,8 @@
-import Select from './Select';
-import { SelectItem } from './SelectItem';
+import React from 'react';
+import { Select, SelectItem } from './Select';
 import type { Meta, StoryObj } from '@storybook/react';
+
+import '../../styles/basic/Select.css';
 
 export interface SelectItemObject {
   label: string;
@@ -9,8 +11,11 @@ export interface SelectItemObject {
 
 // More on how to set up stories at: https://storybook.js.org/docs/7.0/react/writing-stories/introduction
 const meta = {
-  title: 'Select',
+  title: 'Forms/Select',
   component: Select,
+  parameters: {
+    layout: 'centered',
+  },
   tags: ['autodocs'],
   decorators: [
     (Story) => (
@@ -29,8 +34,8 @@ type Story = StoryObj<typeof meta>;
  */
 export const Default: Story = {
   args: {
-    name: 'field-empty',
-    title: 'field 1 title',
+    name: 'empty',
+    label: 'field 1 title',
     description: 'Optional help text',
     placeholder: 'Select...',
     children: (
@@ -56,7 +61,7 @@ export const Items: Story = {
   ),
   args: {
     name: 'field-empty',
-    title: 'field 1 title',
+    label: 'field 1 title',
     description: 'Optional help text',
     placeholder: 'Select...',
     items: [
@@ -86,7 +91,7 @@ export const LotsOfItems: Story = {
   ),
   args: {
     name: 'field-empty',
-    title: 'field 1 title',
+    label: 'field 1 title',
     description: 'Optional help text',
     placeholder: 'Select...',
     items: [
@@ -139,7 +144,7 @@ export const Filled: Story = {
   args: {
     ...Items.args,
     name: 'field-filled',
-    title: 'Filled field title',
+    label: 'Filled field title',
     defaultSelectedKey: '10',
     isRequired: true,
   },
@@ -150,9 +155,9 @@ export const Errored: Story = {
   args: {
     ...Items.args,
     name: 'field-errored',
-    title: 'Errored field title',
+    label: 'Errored field title',
     defaultSelectedKey: '10',
-    error: ['This is the error'],
+    errorMessage: 'This is the error',
     isInvalid: true,
     isRequired: true,
   },
@@ -163,7 +168,7 @@ export const Disabled: Story = {
   args: {
     ...Items.args,
     name: 'field-disabled',
-    title: 'Disabled field title',
+    label: 'Disabled field title',
     isDisabled: true,
   },
 };
