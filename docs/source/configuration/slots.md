@@ -110,10 +110,14 @@ The `RouteCondition` predicate helper renders a slot if the specified route matc
 It accepts the following parameters.
 
 `path`
-:   Required. String. The route.
+:   String.
+    Required.
+    The route.
 
 `exact`
-:   Optional. Boolean. If `true`, then the match will be exact, else matches "begins with", for the given string from `path`.
+:   Boolean.
+    Optional.
+    If `true`, then the match will be exact, else matches "begins with", for the given string from `path`.
 
 
 ### `ContentTypeCondition`
@@ -149,7 +153,10 @@ config.getSlotComponents(slot: string): string[]
 ```
 
 `slot`
-:   The name of the slot, where the slot components are stored.
+:   String.
+    Required.
+    The name of the slot, where the slot components are stored.
+
 
 ### `reorderSlotComponent`
 
@@ -161,14 +168,23 @@ config.reorderSlotComponent(slot: string, name: string, position: number): void
 ```
 
 `slot`
-:   The name of the slot, where the slot components are stored.
+:   String.
+    Required.
+    The name of the slot where the slot components are stored.
 
 `name`
-:   The name of the slot component we want to reorder.
+:   String.
+    Required.
+    The name of the slot component to reposition in the list of slot components.
 
 `position`
-:   The destination position in the registered list of slot components that we want to move the slot component.
+:   Number.
+    Required.
+    The destination position in the registered list of slot components.
+    The position is zero-indexed.
 
+
+(slots-getSlotComponent-label)=
 
 ### `getSlotComponent`
 
@@ -181,10 +197,15 @@ config.getSlotComponent(slot: string, name: string): SlotComponent[]
 ```
 
 `slot`
-:   The name of the slot, where the slot components are stored.
+:   String.
+    Required.
+    The name of the slot where the slot components are stored.
 
 `name`
-:   The name of the slot component we want to retrieve.
+:   String.
+    Required.
+    The name of the slot component to retrieve.
+
 
 ### `unRegisterSlotComponent`
 
@@ -196,13 +217,21 @@ config.unRegisterSlotComponent(slot: string, name: string, position: number): vo
 ```
 
 `slot`
-:   The name of the slot, where the slot components are stored.
+:   String.
+    Required.
+    The name of the slot that contains the slot component to unregister.
 
 `name`
-:   The name of the slot component inside it's the component we want to unregister.
+:   String.
+    Required.
+    The name of the slot component to unregister inside the component.
 
 `position`
-:   The component position that we want to remove in the slot component registration. Use `getSlotComponent` to find out the position of the registered component that you want to remove.
+:   Number.
+    Required.
+    The component position to remove in the slot component registration.
+    Use {ref}`slots-getSlotComponent-label` to find the position of the registered component to remove.
+
 
 ### `getSlot`
 
@@ -218,7 +247,11 @@ config.getSlot<T>(name: string, args: T): SlotComponent['component'][] | undefin
 It must have the following parameters.
 
 `name`
-:   The name of the slot we want to render.
+:   String.
+    Required.
+    The name of the slot we want to render.
 
 `options`
-:   An object containing the arguments that you want to pass to the predicates.
+:   Object.
+    Required.
+    An object containing the arguments to pass to the predicates.
