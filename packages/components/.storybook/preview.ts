@@ -1,3 +1,5 @@
+import './storybook-base.css';
+
 export const parameters = {
   backgrounds: {
     default: 'light',
