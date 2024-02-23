@@ -1,0 +1,1 @@
+Pin `eslint-plugin-jsx-a11y` to version `^6.7.0` to fix ESLint couldn't determine the plugin "jsx-a11y". @ichim-david
