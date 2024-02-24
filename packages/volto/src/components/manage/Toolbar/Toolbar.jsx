@@ -549,7 +549,6 @@ class Toolbar extends Component {
                           aria-label={this.props.intl.formatMessage(
                             messages.add,
                           )}
-                          aria-pressed={false}
                           onClick={(e) => this.toggleMenu(e, 'types')}
                           tabIndex={0}
                           id="toolbar-add"
@@ -565,7 +564,6 @@ class Toolbar extends Component {
                     <button
                       className="more"
                       aria-label={this.props.intl.formatMessage(messages.more)}
-                      aria-pressed={false}
                       onClick={(e) => this.toggleMenu(e, 'more')}
                       tabIndex={0}
                       id="toolbar-more"
@@ -605,7 +603,6 @@ class Toolbar extends Component {
                     aria-label={this.props.intl.formatMessage(
                       messages.personalTools,
                     )}
-                    aria-pressed={false}
                     onClick={(e) => this.toggleMenu(e, 'personalTools')}
                     tabIndex={0}
                     id="toolbar-personal"
