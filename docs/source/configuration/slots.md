@@ -37,7 +37,7 @@ At the root of the tree, there is a slot named `toolbar`.
 It contains three slot components, named `edit`, `contents`, and `more`.
 `edit` contains two predicates and a default for when all of its predicates return `false`.
 
-Thus, when either the route is `/de/about` or the content type is either a `Document` or `News Item`, then the `edit` slot component would appear in the slot `about`.
+Thus, when either the route is `/de/about` or the content type is either a `Document` or `News Item`, then the `edit` slot component would appear in the slot `toolbar`.
 It would not display elsewhere.
 
 The order in which the components render is governed by the order in which they were registered.
