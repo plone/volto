@@ -13,6 +13,8 @@
   },
   "dependencies": {
     "@plone/client": "workspace:*",
+    "@plone/components": "workspace:*",
+    "@plone/registry": "workspace:*",
     "@tanstack/react-query": "5.0.5",
     "@tanstack/react-router": "^1.16.0",
     "@tanstack/react-router-server": "^1.16.0",
@@ -21,6 +23,7 @@
     "axios": "^1.6.5",
     "get-port": "^7.0.0",
     "react": "^18.2.0",
+    "react-aria-components": "^1.1.1",
     "react-dom": "^18.2.0",
     "sirv": "^2.0.4"
   },
@@ -39,7 +42,7 @@
     "node-fetch": "^3.3.2",
     "serve-static": "^1.15.0",
     "typescript": "^5.3.3",
-    "vite": "^5.0.12",
+    "vite": "^5.1.4",
     "vite-plugin-babel": "^1.2.0"
   }
 }

@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 // import { defineMessages, useIntl } from 'react-intl';
 
-import { map } from 'lodash';
 import { hasBlocksData } from '../../helpers/blocks';
 import { DefaultBlockView } from './DefaultBlockView';
 import type { Content } from '@plone/types';
@@ -41,7 +40,7 @@ export const RenderBlocks = (props: RenderBlocksProps) => {
 
   return hasBlocksData(content) ? (
     <CustomTag>
-      {map(content.blocks_layout.items, (block) => {
+      {content.blocks_layout.items.map((block) => {
         const blockData = content.blocks?.[block];
         const blockType = blockData?.['@type'];
         // @ts-ignore
