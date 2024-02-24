@@ -9,7 +9,7 @@ myst:
 
 # Slots
 
-Slots are insertion points in the Volto rendering tree structure.
+Slots provide a way for Volto add-ons to insert their own components at predefined locations in the rendered page.
 This concept is inherited from the Plone Classic UI {doc}`plone:classic-ui/viewlets`.
 
 
