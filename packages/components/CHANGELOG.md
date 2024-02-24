@@ -8,6 +8,36 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.2 (2024-02-23)
+
+### Bugfix
+
+- Move basic general CSS rules to StoryBook so we don't spoil the build @sneridagh [#5791](https://github.com/plone/volto/issues/5791)
+
+### Internal
+
+- Improve StoryBook look and feel @sneridagh [#5791](https://github.com/plone/volto/issues/5791)
+
+## 2.0.0-alpha.1 (2024-02-18)
+
+### Bugfix
+
+- Add import path for bundled CSS @sneridagh [#5770](https://github.com/plone/volto/issues/5770)
+
+## 2.0.0-alpha.0 (2024-02-17)
+
+### Breaking
+
+- Move to only CSS-based approach
+  Removal of SCSS in favor of the above
+  New Basic components, based in React Aria Components
+
+  @sneridagh [#5766](https://github.com/plone/volto/issues/5766)
+
+### Documentation
+
+- Build the `volto/components` Storybook only when its source files change. @stevepiercy [#5601](https://github.com/plone/volto/issues/5601)
+
 ## 1.7.0 (2023-12-25)
 
 ### Feature

@@ -1,4 +1,4 @@
-import '../src/styles/main.scss';
+import './storybook-base.css';
 
 export const parameters = {
   backgrounds: {
