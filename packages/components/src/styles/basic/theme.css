@@ -1,15 +1,5 @@
 @import '../quanta/colors.css';
 
-/* Base styles */
-:root {
-  --basic-font-family: system-ui;
-  --basic-font-size: 14px;
-  background: var(--background-color);
-  font-family: var(--basic-font-family);
-  font-size: var(--basic-font-size);
-  line-height: 1.5;
-}
-
 /* color themes for dark and light modes, generated with Leonardo.
  * Light: https://leonardocolor.io/theme.html?name=Light&config=%7B%22baseScale%22%3A%22Gray%22%2C%22colorScales%22%3A%5B%7B%22name%22%3A%22Gray%22%2C%22colorKeys%22%3A%5B%22%23000000%22%5D%2C%22colorspace%22%3A%22RGB%22%2C%22ratios%22%3A%5B%22-1.12%22%2C%221.45%22%2C%222.05%22%2C%223.02%22%2C%224.54%22%2C%227%22%2C%2210.86%22%5D%2C%22smooth%22%3Afalse%7D%2C%7B%22name%22%3A%22Purple%22%2C%22colorKeys%22%3A%5B%22%235e30eb%22%5D%2C%22colorspace%22%3A%22RGB%22%2C%22ratios%22%3A%5B%22-1.12%22%2C%221.45%22%2C%222.05%22%2C%223.02%22%2C%224.54%22%2C%227%22%2C%2210.86%22%5D%2C%22smooth%22%3Afalse%7D%2C%7B%22name%22%3A%22Red%22%2C%22colorKeys%22%3A%5B%22%23e32400%22%5D%2C%22colorspace%22%3A%22RGB%22%2C%22ratios%22%3A%5B%22-1.12%22%2C%221.45%22%2C%222.05%22%2C%223.02%22%2C%224.54%22%2C%227%22%2C%2210.86%22%5D%2C%22smooth%22%3Afalse%7D%5D%2C%22lightness%22%3A98%2C%22contrast%22%3A1%2C%22saturation%22%3A100%2C%22formula%22%3A%22wcag2%22%7D */
 :root {

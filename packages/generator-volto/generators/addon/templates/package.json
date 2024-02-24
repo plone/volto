@@ -43,6 +43,6 @@
     "stylelint-prettier": "4.0.2"
   },
   "peerDependencies": {
-    "@plone/volto": "^17.0.0"
+    "@plone/volto": "^18.0.0"
   }
 }
