@@ -17,6 +17,12 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 17.15.2 (2024-02-24)
+
+### Bugfix
+
+- Pin `eslint-plugin-jsx-a11y` to version `^6.7.0` to fix ESLint couldn't determine the plugin "jsx-a11y". @ichim-david [#5785](https://github.com/plone/volto/issues/5785)
+
 ## 17.15.1 (2024-02-22)
 
 ### Bugfix
