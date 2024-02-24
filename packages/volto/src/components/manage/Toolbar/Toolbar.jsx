@@ -181,6 +181,7 @@ class Toolbar extends Component {
     types: [],
   };
 
+  toolbarRef = React.createRef();
   toolbarWindow = React.createRef();
   buttonRef = React.createRef();
 
@@ -265,7 +266,6 @@ class Toolbar extends Component {
 
   closeMenu = () => {
     this.setState(() => ({ showMenu: false, loadedComponents: [] }));
-    this.buttonRef.current?.setAttribute('aria-pressed', 'false');
   };
 
   loadComponent = (type) => {
@@ -294,18 +294,7 @@ class Toolbar extends Component {
       target.tagName === 'BUTTON'
         ? target
         : this.findAncestor(e.target, 'button');
-    if (button) {
-      const ariaPressed = button.getAttribute('aria-pressed') === 'true';
-      button.setAttribute('aria-pressed', !ariaPressed ? 'true' : 'false');
-      this.buttonRef.current = button;
-      if (!ariaPressed) {
-        window.setTimeout(() => {
-          let menuList = this.pusher.querySelector('.pastanaga-menu');
-          menuList.setAttribute('tabindex', '0');
-          menuList.focus();
-        }, 250);
-      }
-    }
+    this.buttonRef.current = button;
   };
 
   toggleMenu = (e, selector) => {
@@ -351,7 +340,9 @@ class Toolbar extends Component {
 
     // if the click is on the same button, do not close the menu as it
     // may be handled by the toggleMenu action
-    const button = this.findAncestor(target, 'button');
+    const button =
+      doesNodeContainClick(this.toolbarRef.current, e) &&
+      this.findAncestor(target, 'button');
     if (button && button === this.buttonRef.current) return;
 
     this.closeMenu();
@@ -466,7 +457,10 @@ class Toolbar extends Component {
               )}
             </div>
           </div>
-          <div className={this.state.expanded ? 'toolbar expanded' : 'toolbar'}>
+          <div
+            className={this.state.expanded ? 'toolbar expanded' : 'toolbar'}
+            ref={this.toolbarRef}
+          >
             <div className="toolbar-body">
               <div className="toolbar-actions">
                 {this.props.hideDefaultViewButtons && this.props.inner && (
