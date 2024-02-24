@@ -20,7 +20,6 @@ export const Route = createFileRoute('/$')({
 
 function SplatRouteComponent() {
   const { _splat: path } = Route.useParams();
-  console.log(config.settings);
   const { getContentQuery } = usePloneClient();
   const { data } = useSuspenseQuery(
     getContentQuery({ path: flattenToAppURL(`/${path}`), expand }),
