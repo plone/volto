@@ -10,7 +10,10 @@ myst:
 # Slots
 
 Slots provide a way for Volto add-ons to insert their own components at predefined locations in the rendered page.
-This concept is inherited from the Plone Classic UI {doc}`plone:classic-ui/viewlets`.
+
+```{note}
+This concept is inspired by the Plone Classic UI {doc}`plone:classic-ui/viewlets`.
+```
 
 
 ## Anatomy
