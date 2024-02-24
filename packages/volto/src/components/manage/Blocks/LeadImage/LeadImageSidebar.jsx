@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { LeadImageSchema } from './schema';
+import { BlockDataForm } from '@plone/volto/components';
 import { Form } from 'semantic-ui-react';
 import { Accordion, Grid, Segment } from 'semantic-ui-react';
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
@@ -64,7 +66,7 @@ const LeadImageSidebar = ({
   intl,
 }) => {
   const [activeAccIndex, setActiveAccIndex] = useState(0);
-
+  const schema = LeadImageSchema({ ...props, intl });
   function handleAccClick(e, titleProps) {
     const { index } = titleProps;
     const newIndex = activeAccIndex === index ? -1 : index;
@@ -156,55 +158,31 @@ const LeadImageSidebar = ({
             </Form.Field>
           </Segment>
           <Accordion fluid styled className="form">
-            <Accordion.Title
-              active={activeAccIndex === 0}
-              index={0}
-              onClick={handleAccClick}
-            >
-              Link Settings
-              {activeAccIndex === 0 ? (
-                <Icon name={upSVG} size="20px" />
-              ) : (
-                <Icon name={downSVG} size="20px" />
-              )}
-            </Accordion.Title>
-            <Accordion.Content active={activeAccIndex === 0}>
-              <TextWidget
-                id="link"
-                title={intl.formatMessage(messages.LinkTo)}
-                required={false}
-                value={flattenToAppURL(data.href)}
-                icon={data.href ? clearSVG : navTreeSVG}
-                iconAction={
-                  data.href
-                    ? () => {
-                        onChangeBlock(block, {
-                          ...data,
-                          href: '',
-                        });
-                      }
-                    : () => openObjectBrowser({ mode: 'link' })
-                }
-                onChange={(name, value) => {
-                  onChangeBlock(block, {
-                    ...data,
-                    href: flattenToAppURL(value),
-                  });
-                }}
-              />
-              <CheckboxWidget
-                id="openLinkInNewTab"
-                title={intl.formatMessage(messages.openLinkInNewTab)}
-                value={data.openLinkInNewTab ? data.openLinkInNewTab : false}
-                onChange={(name, value) => {
-                  onChangeBlock(block, {
-                    ...data,
-                    openLinkInNewTab: value,
-                  });
-                }}
-              />
-            </Accordion.Content>
-          </Accordion>
+                        <Accordion.Title
+                            active={activeAccIndex === 0}
+                            index={0}
+                            onClick={handleAccClick}
+                        >
+                            Link Settings
+                            {activeAccIndex === 0 ? (
+                                <Icon name={upSVG} size="20px" />
+                            ) : (
+                                <Icon name={downSVG} size="20px" />
+                            )}
+                        </Accordion.Title>
+                        <Accordion.Content active={activeAccIndex === 0}>
+                            <BlockDataForm
+                                schema={schema}
+                                formData={data}
+                                onChangeField={(id, value) => {
+                                    onChangeBlock(block, {
+                                        ...data,
+                                        [id]: id === 'link' ? flattenToAppURL(value) : value,
+                                    });
+                                }}
+                            />
+                        </Accordion.Content>
+                    </Accordion>
         </>
       )}
     </Segment.Group>
