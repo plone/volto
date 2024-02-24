@@ -16,7 +16,7 @@ This concept is inherited from the Plone Classic UI {doc}`plone:classic-ui/viewl
 ## Anatomy
 
 Slots are named, and they can contain a list of different slot components.
-Slot components are also named, and they are registered in the configuration registry using a specific API for slots.
+Slot components are also named, and they are registered in the {ref}`configuration registry using a specific API for slots <configuration-registry-for-slot-components>`.
 
 The main trait of a slot component is that its renderer is controlled by a list of conditions called {term}`predicates`.
 Multiple slot components can be registered under the same name, as long as they have different predicates.
@@ -60,7 +60,9 @@ You can add insertion points in your code, as shown in the following example.
 ```
 
 
-## Register a slot component
+(configuration-registry-for-slot-components)=
+
+## Configuration registry for slot components
 
 You register a slot component using the configuration registry:
 
