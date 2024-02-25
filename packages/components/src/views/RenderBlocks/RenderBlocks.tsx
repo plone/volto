@@ -5,7 +5,6 @@ import { hasBlocksData } from '../../helpers/blocks';
 import { DefaultBlockView } from './DefaultBlockView';
 import type { Content } from '@plone/types';
 import type { BlocksConfigData } from '@plone/types';
-import type { Location } from 'history';
 
 type RenderBlocksProps = {
   /**
@@ -21,11 +20,11 @@ type RenderBlocksProps = {
    * Wrap the blocks in an enclosing tag
    * From the registry or local to this instance (eg. in a blocks in block container)
    */
-  as: React.ElementType;
+  as?: React.ElementType;
   /**
    * Router location object
    */
-  location: Location;
+  pathname: string;
   /**
    * Metadata object
    * In case of the blocks in block container use case, it's the metadata (content data)
@@ -35,7 +34,7 @@ type RenderBlocksProps = {
 };
 
 export const RenderBlocks = (props: RenderBlocksProps) => {
-  const { blocksConfig, content, location, metadata } = props;
+  const { blocksConfig, content, pathname, metadata } = props;
   const CustomTag = props.as || Fragment;
 
   return hasBlocksData(content) ? (
@@ -48,11 +47,12 @@ export const RenderBlocks = (props: RenderBlocksProps) => {
 
         return Block ? (
           <Block
+            key={block}
             id={block}
             metadata={metadata}
             properties={content}
             data={blockData}
-            path={location?.pathname || ''}
+            path={pathname || ''}
             blocksConfig={blocksConfig}
           />
         ) : blockData ? (

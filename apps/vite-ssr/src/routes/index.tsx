@@ -3,7 +3,8 @@ import * as React from 'react';
 import { flattenToAppURL } from '../utils';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { usePloneClient } from '@plone/client/provider';
-import { Breadcrumbs } from '@plone/components';
+import { Breadcrumbs, RenderBlocks } from '@plone/components';
+import config from '@plone/registry';
 
 const expand = ['breadcrumbs', 'navigation'];
 
@@ -30,7 +31,11 @@ function IndexComponent() {
         includeRoot
       />
 
-      <h1> {data.title}</h1>
+      <RenderBlocks
+        content={data}
+        blocksConfig={config.blocks.blocksConfig}
+        pathname="/"
+      />
     </div>
   );
 }

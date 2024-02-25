@@ -4,7 +4,6 @@ import { flattenToAppURL } from '../utils';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { usePloneClient } from '@plone/client/provider';
 import { Breadcrumbs } from '@plone/components';
-import config from '@plone/registry';
 
 const expand = ['breadcrumbs', 'navigation'];
 
