@@ -120,13 +120,13 @@ describe('Slots registry', () => {
 
   // type Predicate = (predicateValues: unknown) = (predicateValues, args) => boolean
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const RouteConditionTrue = (route) => () => true;
+  const RouteConditionTrue = (route: string) => () => true;
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const RouteConditionFalse = (route) => () => false;
+  const RouteConditionFalse = (route: string) => () => false;
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const ContentTypeConditionTrue = (contentType) => () => true;
+  const ContentTypeConditionTrue = (contentType: string[]) => () => true;
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const ContentTypeConditionFalse = (contentType) => () => false;
+  const ContentTypeConditionFalse = (contentType: string[]) => () => false;
 
   it('registers a single slot component with no predicate', () => {
     config.registerSlotComponent({
