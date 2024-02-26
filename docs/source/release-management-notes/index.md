@@ -11,6 +11,11 @@ myst:
 
 This chapter describes how maintainers manage the releases of Volto.
 
+```{seealso}
+Read the [Plone Release Schedule](https://plone.org/download/release-schedule) for details of how Volto's release management works in Plone.
+```
+
+
 ## Definition of breaking
 
 A breaking change refers to a modification, enhancement, or update made to Volto's code base that has the potential to disrupt or "break" an existing Volto-based project's functionality, tests, or customizations.
