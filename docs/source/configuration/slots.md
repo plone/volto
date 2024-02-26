@@ -29,16 +29,17 @@ The following tree structure diagram illustrates these concepts.
 ```text
 Slot (`toolbar`)
 ├── SlotComponent (`edit`)
-│   ├── predicates (only appear in `/de/about`)
-│   ├── predicates (only appear if the content type is either a `Document` or `News Item`)
-│   └── no predicates (default when all predicates return `false`)
+│   ├── predicate (only appear in `/de/about`)
+│   ├── predicate (only appear if the content type is either a `Document` or `News Item`)
+│   └── no predicate (default when all predicates return `false`)
 ├── SlotComponent (`contents`)
 └── SlotComponent (`more`)
 ```
 
 At the root of the tree, there is a slot named `toolbar`.
 It contains three slot components, named `edit`, `contents`, and `more`.
-`edit` contains two predicates and a default for when all of its predicates return `false`.
+`edit` contains three slot components, two of which have a predicate and a third without a predicate.
+When the slots with predicates both return `false`, then the third slot is returned.
 
 Thus, when either the route is `/de/about` or the content type is either a `Document` or `News Item`, then the `edit` slot component would appear in the slot `toolbar`.
 It would not display elsewhere.
