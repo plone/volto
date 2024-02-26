@@ -8,7 +8,7 @@
     }
   ],
   "license": "MIT",
-  "version": "2.0.0-alpha.1",
+  "version": "2.0.0-alpha.2",
   "repository": {
     "type": "git",
     "url": "http://github.com/plone/components.git"
@@ -91,9 +91,11 @@
     "@storybook/addon-links": "^7.5.1",
     "@storybook/addon-mdx-gfm": "^7.5.1",
     "@storybook/blocks": "^7.5.1",
+    "@storybook/manager-api": "^7.6.17",
     "@storybook/react": "^7.5.1",
     "@storybook/react-vite": "^7.5.1",
     "@storybook/testing-library": "^0.2.2",
+    "@storybook/theming": "^7.6.17",
     "@testing-library/jest-dom": "6.1.4",
     "@testing-library/react": "14.0.0",
     "@types/jest-axe": "^3.5.7",
