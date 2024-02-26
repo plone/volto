@@ -55,6 +55,10 @@ You can add insertion points in your code, as shown in the following example.
 <SlotRenderer name="toolbar" content={content} />
 ```
 
+## Slots included in Plone Volto by default
+
+- aboveContent
+- belowContent
 
 (configuration-registry-for-slot-components)=
 
