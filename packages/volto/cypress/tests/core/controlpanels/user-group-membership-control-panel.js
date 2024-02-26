@@ -41,41 +41,33 @@ describe('User Group Membership Control Panel test for NOT many users and many g
     cy.visit('/controlpanel/usergroupmembership');
     cy.wait('@usergroup');
 
-    cy.get('.usergroupmembership').then(($segmentUsergroupmembership) => {
-      if ($segmentUsergroupmembership.hasClass('upgrade-info')) {
-        // Panel not supported.
-      } else {
-        cy.get('#source-row-max div.checkbox_cooks input').check({
-          force: true,
-        });
-        cy.reload();
-        cy.get('#source-row-max div.checkbox_cooks input').should('be.checked');
-      }
+    cy.get('.usergroupmembership').then(() => {
+      cy.get('#source-row-max div.checkbox_cooks input').check({
+        force: true,
+      });
+      cy.reload();
+      cy.get('#source-row-max div.checkbox_cooks input').should('be.checked');
     });
   });
   it('I can search for a user and show his groups', () => {
     cy.visit('/controlpanel/usergroupmembership');
     cy.wait('@usergroup');
 
-    cy.get('.usergroupmembership').then(($segmentUsergroupmembership) => {
-      if ($segmentUsergroupmembership.hasClass('upgrade-info')) {
-        // Panel not supported.
-      } else {
-        // Show user
-        cy.get('#user-search-input').type('fröhlich');
-        cy.contains('Max');
+    cy.get('.usergroupmembership').then(() => {
+      // Show user
+      cy.get('#user-search-input').type('fröhlich');
+      cy.contains('Max');
 
-        // Show membership of group "Administrators"
-        cy.get('input[id="group-search-input"]').type('Adm');
-        cy.contains('Administrators');
-        cy.get('.label-options').should('not.contain', 'teachers');
+      // Show membership of group "Administrators"
+      cy.get('input[id="group-search-input"]').type('Adm');
+      cy.contains('Administrators');
+      cy.get('.label-options').should('not.contain', 'teachers');
 
-        // Show also groups membersip of groups of users
-        cy.get('input[name="addJoinedGroups"]').check({
-          force: true,
-        });
-        cy.get('.label-options').contains('teachers');
-      }
+      // Show also groups membersip of groups of users
+      cy.get('input[name="addJoinedGroups"]').check({
+        force: true,
+      });
+      cy.get('.label-options').contains('teachers');
     });
   });
 });
@@ -157,6 +149,29 @@ describe('User Group Membership Control Panel test for MANY users and MANY group
         });
         cy.get('#toolbar-save').click();
       }
+    });
+  });
+});
+
+describe('User Group Membership Control Panel test for non-manager', () => {
+  beforeEach(() => {
+    init();
+    cy.createUser({
+      username: 'siteadmin',
+      fullname: 'Sven Siteadministrator',
+      roles: ['Site Administrator'],
+    });
+    cy.autologin('siteadmin', 'password');
+  });
+  it('Non-manager is not allowed to edit managers', () => {
+    cy.visit('/controlpanel/usergroupmembership');
+    cy.wait('@usergroup');
+
+    // Editing checkboxes for Administrators group are disabled.
+    cy.get('.usergroupmembership').then(() => {
+      cy.get('#source-row-max div.checkbox_Administrators input').should(
+        'be.disabled',
+      ); // TODO Test if checkbox is disabled
     });
   });
 });
