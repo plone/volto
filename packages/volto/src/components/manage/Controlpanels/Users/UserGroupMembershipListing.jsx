@@ -201,10 +201,6 @@ const UserGroupMembershipListing = ({
 
   return (
     <div className="administration_matrix">
-      <div>
-        <b>DEBUG current user:</b>
-        {JSON.stringify(user)}
-      </div>
       {matrix_options && matrix_options?.length > 0 && (
         <div className="label-options">
           <div className="target-labels">
