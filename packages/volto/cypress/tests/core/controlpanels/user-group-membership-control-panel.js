@@ -153,6 +153,7 @@ describe('User Group Membership Control Panel test for MANY users and MANY group
   });
 });
 
+// TODO Test should not fail with GET @users and @groups unauthorized for user with role "Site Administrator".
 describe('User Group Membership Control Panel test for non-manager', () => {
   beforeEach(() => {
     init();
@@ -171,7 +172,7 @@ describe('User Group Membership Control Panel test for non-manager', () => {
     cy.get('.usergroupmembership').then(() => {
       cy.get('#source-row-max div.checkbox_Administrators input').should(
         'be.disabled',
-      ); // TODO Test if checkbox is disabled
+      );
     });
   });
 });
