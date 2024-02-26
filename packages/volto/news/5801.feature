@@ -1,0 +1,1 @@
+Add test for non-manager user editing group memberships. @ksuess
