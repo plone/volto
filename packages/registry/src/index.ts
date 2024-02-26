@@ -315,7 +315,33 @@ class Config {
     return currentSlot.slots;
   }
 
-  reorderSlotComponent(slot: string, name: string, position: number) {
+  reorderSlotComponent({
+    slot,
+    name,
+    position,
+    action,
+    target,
+  }: {
+    slot: string;
+    name: string;
+    position?: number;
+    action?: 'after' | 'before' | 'first' | 'last';
+    target?: string;
+  }) {
+    if (!position && !action) {
+      throw new Error(`At least a position or action is required as argument`);
+    }
+    if (position && target) {
+      throw new Error(
+        `You should provide only one of position or action as arguments`,
+      );
+    }
+    if (action && action !== 'first' && action !== 'last' && !target) {
+      throw new Error(
+        `No action target set. You should provide the name of a slot component as target when action is 'after' or 'before'.`,
+      );
+    }
+
     const currentSlot = this._data.slots[slot];
     if (!slot || !currentSlot) {
       throw new Error(`No slot ${slot} found`);
@@ -323,7 +349,34 @@ class Config {
     const origin = currentSlot.slots.indexOf(name);
     const result = Array.from(currentSlot.slots);
     const [removed] = result.splice(origin, 1);
-    result.splice(position, 0, removed);
+
+    if (action) {
+      let targetIdx = 0;
+      if (target) {
+        targetIdx = currentSlot.slots.indexOf(target);
+      }
+      switch (action) {
+        case 'after':
+          result.splice(targetIdx, 0, removed);
+          break;
+        case 'before':
+          result.splice(targetIdx - 1, 0, removed);
+          break;
+        case 'last':
+          result.push(removed);
+          break;
+        case 'first':
+          result.unshift(removed);
+          break;
+
+        default:
+          break;
+      }
+    }
+
+    if (position) {
+      result.splice(position, 0, removed);
+    }
 
     currentSlot.slots = result;
   }

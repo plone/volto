@@ -166,10 +166,19 @@ config.getSlotComponents(slot: string): string[]
 ### `reorderSlotComponent`
 
 `reorderSlotComponent` reorders the list of slot components registered per slot.
+You can choose between specify the desired destination position for `name` in the `slot` or perform an action on it.
+The actions available are `after`, `before`, `first` or `last`.
+The `first` and `last` does not take any `target`.
 This is the signature:
 
 ```ts
-config.reorderSlotComponent(slot: string, name: string, position: number): void
+config.reorderSlotComponent({ slot, name, position, action, target, }: {
+    slot: string;
+    name: string;
+    position?: number | undefined;
+    action?: "after" | "before" | "first" | "last" | undefined;
+    target?: string | undefined;
+}): void
 ```
 
 `slot`
@@ -184,10 +193,19 @@ config.reorderSlotComponent(slot: string, name: string, position: number): void
 
 `position`
 :   Number.
-    Required.
+    Optional.
     The destination position in the registered list of slot components.
     The position is zero-indexed.
 
+`action`
+:   Enum: "after" | "before" | "first" | "last" | undefined
+    Optional.
+    The action of to perform with 'name'.
+
+`target`
+:   String.
+    Optional.
+    The name of the slot component target of the action.
 
 (slots-getSlotComponent-label)=
 

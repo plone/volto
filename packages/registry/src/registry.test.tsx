@@ -432,7 +432,7 @@ describe('Slots registry', () => {
     );
   });
 
-  it('reorderSlotComponent - registers 2 + 2 slot components with predicates', () => {
+  it('reorderSlotComponent - position', () => {
     config.registerSlotComponent({
       slot: 'toolbar',
       name: 'save',
@@ -470,8 +470,226 @@ describe('Slots registry', () => {
     expect(config.getSlotComponent('toolbar', 'save')[0].component).toEqual(
       'this is a toolbar save component with a true predicate',
     );
-    config.reorderSlotComponent('toolbar', 'save', 1);
+    config.reorderSlotComponent({ slot: 'toolbar', name: 'save', position: 1 });
     expect(config.getSlotComponents('toolbar')).toEqual(['edit', 'save']);
+  });
+
+  it('reorderSlotComponent - after', () => {
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: 'save',
+      component: 'this is a toolbar save component with a true predicate',
+      predicates: [RouteConditionTrue('/de')],
+    });
+
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: 'edit',
+      component: 'this is a toolbar component with a false predicate',
+      predicates: [RouteConditionFalse('/de')],
+    });
+
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: 'cancel',
+      component: 'this is a toolbar edit component with true predicate',
+      predicates: [
+        RouteConditionTrue('/folder/path'),
+        ContentTypeConditionTrue(['News Item']),
+      ],
+    });
+
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: 'bold',
+      component: 'this is a toolbar edit component with true predicate',
+      predicates: [
+        RouteConditionTrue('/folder/path'),
+        ContentTypeConditionTrue(['News Item']),
+      ],
+    });
+
+    expect(config.getSlotComponents('toolbar')).toEqual([
+      'save',
+      'edit',
+      'cancel',
+      'bold',
+    ]);
+    config.reorderSlotComponent({
+      slot: 'toolbar',
+      name: 'save',
+      action: 'after',
+      target: 'cancel',
+    });
+    expect(config.getSlotComponents('toolbar')).toEqual([
+      'edit',
+      'cancel',
+      'save',
+      'bold',
+    ]);
+  });
+
+  it('reorderSlotComponent - before', () => {
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: 'save',
+      component: 'this is a toolbar save component with a true predicate',
+      predicates: [RouteConditionTrue('/de')],
+    });
+
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: 'edit',
+      component: 'this is a toolbar component with a false predicate',
+      predicates: [RouteConditionFalse('/de')],
+    });
+
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: 'cancel',
+      component: 'this is a toolbar edit component with true predicate',
+      predicates: [
+        RouteConditionTrue('/folder/path'),
+        ContentTypeConditionTrue(['News Item']),
+      ],
+    });
+
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: 'bold',
+      component: 'this is a toolbar edit component with true predicate',
+      predicates: [
+        RouteConditionTrue('/folder/path'),
+        ContentTypeConditionTrue(['News Item']),
+      ],
+    });
+
+    expect(config.getSlotComponents('toolbar')).toEqual([
+      'save',
+      'edit',
+      'cancel',
+      'bold',
+    ]);
+    config.reorderSlotComponent({
+      slot: 'toolbar',
+      name: 'save',
+      action: 'before',
+      target: 'cancel',
+    });
+    expect(config.getSlotComponents('toolbar')).toEqual([
+      'edit',
+      'save',
+      'cancel',
+      'bold',
+    ]);
+  });
+
+  it('reorderSlotComponent - last', () => {
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: 'save',
+      component: 'this is a toolbar save component with a true predicate',
+      predicates: [RouteConditionTrue('/de')],
+    });
+
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: 'edit',
+      component: 'this is a toolbar component with a false predicate',
+      predicates: [RouteConditionFalse('/de')],
+    });
+
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: 'cancel',
+      component: 'this is a toolbar edit component with true predicate',
+      predicates: [
+        RouteConditionTrue('/folder/path'),
+        ContentTypeConditionTrue(['News Item']),
+      ],
+    });
+
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: 'bold',
+      component: 'this is a toolbar edit component with true predicate',
+      predicates: [
+        RouteConditionTrue('/folder/path'),
+        ContentTypeConditionTrue(['News Item']),
+      ],
+    });
+
+    expect(config.getSlotComponents('toolbar')).toEqual([
+      'save',
+      'edit',
+      'cancel',
+      'bold',
+    ]);
+    config.reorderSlotComponent({
+      slot: 'toolbar',
+      name: 'save',
+      action: 'last',
+    });
+    expect(config.getSlotComponents('toolbar')).toEqual([
+      'edit',
+      'cancel',
+      'bold',
+      'save',
+    ]);
+  });
+
+  it('reorderSlotComponent - first', () => {
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: 'save',
+      component: 'this is a toolbar save component with a true predicate',
+      predicates: [RouteConditionTrue('/de')],
+    });
+
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: 'edit',
+      component: 'this is a toolbar component with a false predicate',
+      predicates: [RouteConditionFalse('/de')],
+    });
+
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: 'cancel',
+      component: 'this is a toolbar edit component with true predicate',
+      predicates: [
+        RouteConditionTrue('/folder/path'),
+        ContentTypeConditionTrue(['News Item']),
+      ],
+    });
+
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: 'bold',
+      component: 'this is a toolbar edit component with true predicate',
+      predicates: [
+        RouteConditionTrue('/folder/path'),
+        ContentTypeConditionTrue(['News Item']),
+      ],
+    });
+
+    expect(config.getSlotComponents('toolbar')).toEqual([
+      'save',
+      'edit',
+      'cancel',
+      'bold',
+    ]);
+    config.reorderSlotComponent({
+      slot: 'toolbar',
+      name: 'bold',
+      action: 'first',
+    });
+    expect(config.getSlotComponents('toolbar')).toEqual([
+      'bold',
+      'save',
+      'edit',
+      'cancel',
+    ]);
   });
 
   it('unRegisterSlotComponent - registers 2 + 2 slot components with predicates', () => {
