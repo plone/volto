@@ -135,9 +135,9 @@ describe('Slots registry', () => {
       component: 'this is a toolbar component with no predicate',
     });
 
-    expect(config.getSlot('toolbar', {})).toEqual([
+    expect(config.getSlot('toolbar', {})![0].component).toEqual(
       'this is a toolbar component with no predicate',
-    ]);
+    );
   });
 
   it('registers two slot components with predicates - registered components order is respected', () => {
@@ -159,9 +159,9 @@ describe('Slots registry', () => {
       ],
     });
 
-    expect(config.getSlot('toolbar', {})).toEqual([
+    expect(config.getSlot('toolbar', {})![0].component).toEqual(
       'this is a toolbar component with only a truth-ish route condition',
-    ]);
+    );
   });
 
   it('registers two slot components with predicates - All registered components predicates are truthy, the last one registered wins', () => {
@@ -183,9 +183,9 @@ describe('Slots registry', () => {
       ],
     });
 
-    expect(config.getSlot('toolbar', {})).toEqual([
+    expect(config.getSlot('toolbar', {})![0].component).toEqual(
       'this is a toolbar component with two truth-ish predicates',
-    ]);
+    );
   });
 
   it('registers two slot components with predicates - No registered component have a truthy predicate', () => {
@@ -226,9 +226,9 @@ describe('Slots registry', () => {
       ],
     });
 
-    expect(config.getSlot('toolbar', {})).toEqual([
+    expect(config.getSlot('toolbar', {})![0].component).toEqual(
       'this is a toolbar component with two truth-ish predicates',
-    ]);
+    );
   });
 
   it('registers two slot components one without predicates - registered components predicates are falsy, the one with no predicates wins', () => {
@@ -248,9 +248,9 @@ describe('Slots registry', () => {
       ],
     });
 
-    expect(config.getSlot('toolbar', {})).toEqual([
+    expect(config.getSlot('toolbar', {})![0].component).toEqual(
       'this is a toolbar component with no predicate',
-    ]);
+    );
   });
 
   it('registers two slot components one without predicates - registered components predicates are truthy, the one with predicates wins', () => {
@@ -270,9 +270,9 @@ describe('Slots registry', () => {
       component: 'this is a toolbar component with no predicate',
     });
 
-    expect(config.getSlot('toolbar', {})).toEqual([
+    expect(config.getSlot('toolbar', {})![0].component).toEqual(
       'this is a toolbar component with two truth-ish predicates',
-    ]);
+    );
   });
 
   it('registers 2 + 2 slot components with predicates - No registered component have a truthy predicate', () => {
@@ -346,10 +346,12 @@ describe('Slots registry', () => {
         ContentTypeConditionTrue(['News Item']),
       ],
     });
-    expect(config.getSlot('toolbar', {})).toEqual([
+    expect(config.getSlot('toolbar', {})![0].component).toEqual(
       'this is a toolbar save component with a true predicate',
+    );
+    expect(config.getSlot('toolbar', {})![1].component).toEqual(
       'this is a toolbar edit component with true predicate',
-    ]);
+    );
   });
 
   it('getSlotComponents - registers 2 + 2 slot components with predicates', () => {
