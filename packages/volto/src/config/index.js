@@ -75,7 +75,7 @@ let config = {
     okRoute: '/ok',
     apiPath,
     apiExpanders: [
-      // Added here for documentation purposes, addded at the end because it
+      // Added here for documentation purposes, added at the end because it
       // depends on a value of this object.
       // Add the following expanders for only issuing a single request.
       // https://6.docs.plone.org/volto/configuration/settings-reference.html#term-apiExpanders

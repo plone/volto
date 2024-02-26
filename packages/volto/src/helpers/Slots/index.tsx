@@ -8,5 +8,5 @@ export function RouteCondition(path: string, exact?: boolean) {
 
 export function ContentTypeCondition(contentType: string[]) {
   return ({ content }: { content: Content }) =>
-    contentType.includes(content['@type']);
+    contentType.includes(content?.['@type']);
 }

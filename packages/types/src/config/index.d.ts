@@ -2,6 +2,7 @@ import type { SettingsConfig } from './Settings';
 import type { BlocksConfig } from './Blocks';
 import type { ViewsConfig } from './Views';
 import type { WidgetsConfig } from './Widgets';
+import type { SlotsConfig } from './Slots';
 
 export type AddonReducersConfig = Record<string, Function>;
 
@@ -10,20 +11,6 @@ export type AddonRoutesConfig = {
   exact: boolean;
   component: React.ComponentType;
 }[];
-
-export type SlotPredicate = (args: any) => boolean;
-
-export type SlotComponent = {
-  component: React.ComponentType<any>;
-  predicates?: SlotPredicate[];
-};
-
-export type SlotManager = {
-  slots: string[];
-  data: Record<string, SlotComponent[]>;
-};
-
-export type SlotsConfig = Record<string, SlotManager>;
 
 export type ComponentsConfig = Record<
   string,
@@ -46,3 +33,4 @@ export type ConfigData = {
 
 export { SettingsConfig, BlocksConfig, ViewsConfig, WidgetsConfig };
 export * from './Blocks';
+export * from './Slots';

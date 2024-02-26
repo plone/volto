@@ -5,6 +5,8 @@ import type {
   ComponentsConfig,
   ExperimentalConfig,
   SettingsConfig,
+  GetSlotArgs,
+  GetSlotReturn,
   SlotComponent,
   SlotPredicate,
   SlotsConfig,
@@ -184,10 +186,7 @@ class Config {
     }
   }
 
-  getSlot<T>(
-    name: string,
-    args: T,
-  ): { component: SlotComponent['component']; name: string }[] | undefined {
+  getSlot(name: string, args: GetSlotArgs): GetSlotReturn {
     if (!this._data.slots[name]) {
       return;
     }
