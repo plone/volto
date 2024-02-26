@@ -171,13 +171,16 @@ config.getSlotComponents(slot: string): string[]
 ### `reorderSlotComponent`
 
 `reorderSlotComponent` reorders the list of slot components registered per slot.
-You can choose between specify the desired destination position for `name` in the `slot` or perform an action on it.
-The actions available are `after`, `before`, `first` or `last`.
-The `first` and `last` does not take any `target`.
+
+Given a `slot` and the `name` of a slot component, you must either specify the desired `position` or perform an `action` to reposition the slot component in the given slot, but not both.
+
+The available actions are `"after"`, `"before"`, `"first"`, and `"last"`.
+`"first"` and `"last"` do not accept a `target`.
+
 This is the signature:
 
 ```ts
-config.reorderSlotComponent({ slot, name, position, action, target, }: {
+config.reorderSlotComponent({ slot, name, position, action, target }: {
     slot: string;
     name: string;
     position?: number | undefined;
@@ -198,19 +201,26 @@ config.reorderSlotComponent({ slot, name, position, action, target, }: {
 
 `position`
 :   Number.
-    Optional.
+    Exactly one of `position` or `action` is required.
     The destination position in the registered list of slot components.
     The position is zero-indexed.
 
 `action`
-:   Enum: "after" | "before" | "first" | "last" | undefined
-    Optional.
-    The action of to perform with 'name'.
+:   Enum: `"after"` | `"before"` | `"first"` | `"last"` | undefined.
+    Exactly one of `position` or `action` is required.
+    The action to perform on `name`.
+
+    When using either the `"after"` or `"before"` values, a `target` is required.
+    The slot component will be repositioned relative to the `target`.
+
+    When using either the `"first"` and `"last"` values, a `target` must not be used.
+    The slot component will be repositioned to either the first or last position.
 
 `target`
 :   String.
-    Optional.
-    The name of the slot component target of the action.
+    Required when `action` is either `"after"` or `"before"`, else must not be provided.
+    The name of the slot component targeted for the given `action`.
+
 
 (slots-getSlotComponent-label)=
 
