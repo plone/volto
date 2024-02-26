@@ -40,15 +40,6 @@ contributing/index
 release-notes/index
 ```
 
-% When editing glossary entries locally to Volto, you must also edit them in the main Plone Documentation repository.
-```{toctree}
-:caption: Appendices
-:maxdepth: 1
-:hidden: true
-
-glossary
-```
-
 % Only check change log entries in Volto documentation—not when it is included in the main Plone documentation—to ensure links work and do not redirect.
 % It is OK to ignore warnings, such as the following:
 % docs/source/news/5280.bugfix: WARNING: document isn't included in any toctree
