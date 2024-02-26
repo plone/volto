@@ -56,10 +56,14 @@ You can add insertion points in your code, as shown in the following example.
 <SlotRenderer name="toolbar" content={content} />
 ```
 
-## Slots included in Plone Volto by default
 
-- aboveContent
-- belowContent
+## Default slots
+
+Volto comes with the following default slots.
+
+-   `aboveContent`
+-   `belowContent`
+
 
 (configuration-registry-for-slot-components)=
 
@@ -150,7 +154,7 @@ You can manage registered slots and slot components through the slots API.
 
 ### `getSlotComponents`
 
-`getSlotComponents` returns the list of components registered per slot.
+`getSlotComponents` returns the list of components registered in a given slot.
 This is useful to debug what is registered and in what order, informing you whether you need to change their order.
 This is the signature:
 
