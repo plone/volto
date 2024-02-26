@@ -1,7 +1,8 @@
-import Icon from '../Icon/Icon';
+import React from 'react';
+import { Icon } from '../Icon/Icon';
 import type { IconPropsWithoutChildren } from '../Icon/Icon';
 
-const Thumbnails = (props: IconPropsWithoutChildren) => {
+export const ThumbnailsIcon = (props: IconPropsWithoutChildren) => {
   return (
     <Icon {...props}>
       <svg
@@ -19,5 +20,3 @@ const Thumbnails = (props: IconPropsWithoutChildren) => {
     </Icon>
   );
 };
-
-export default Thumbnails;
