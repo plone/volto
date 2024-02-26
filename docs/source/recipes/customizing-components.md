@@ -12,7 +12,7 @@ myst:
 You are able to customize the existing Volto components using a pattern called
 {term}`component shadowing` using the `customizations` folder. You have to identify and locate
 the component that you want to customize, let's say the Logo component in [Volto source
-code](https://github.com/plone/volto/tree/main/src).
+code](https://github.com/plone/volto/tree/main/packages/volto/src).
 
 ```{tip}
 Those familiar with Plone's JBOT customizing add-on will recognize this pattern
@@ -26,8 +26,7 @@ adapt it to your needs, without touching the original (source) counterparts.
 Components are named in a semantic and approachable way.
 
 In order to identify them, you can use several approaches the main one using
-[React Developer
-Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
+[React Developer Tools](https://chromewebstore.google.com/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi)
 then you can inspect the app and find out the name of the component (the name
 of the tag), then search for it in the Volto source code.
 

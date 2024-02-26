@@ -20,7 +20,7 @@ Thanks to the use of the Plone REST API, it is fully compatible with Plone's con
 
 Thanks to their simplicity and easy access to advanced frontend integration, Volto blocks can provide a fast development experience that reduces developer frustration and improves end-user experience.
 
-To start developing a new Volto project you should have minimal React and modern JavaScript knowledge. Follow the {doc}`plone:install/install-from-packages` guide to bootstrap a new Volto project and start hacking!
+To start developing a new Volto project you should have minimal React and modern JavaScript knowledge. Follow the {doc}`plone:install/create-project` guide to bootstrap a new Volto project and start hacking!
 
 ```{toctree}
 :maxdepth: 2
@@ -31,12 +31,14 @@ theming/index
 recipes/index
 blocks/index
 addons/index
+client/index
 backend/index
 deploying/index
 upgrade-guide/index
 user-manual/index
 contributing/index
 release-notes/index
+release-management-notes/index
 ```
 
 % Only check change log entries in Volto documentation—not when it is included in the main Plone documentation—to ensure links work and do not redirect.

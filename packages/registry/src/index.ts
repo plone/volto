@@ -1,21 +1,36 @@
-import { isArray } from 'lodash';
-import * as configTypes from './types/config';
+import type {
+  AddonReducersConfig,
+  AddonRoutesConfig,
+  BlocksConfig,
+  ComponentsConfig,
+  ExperimentalConfig,
+  SettingsConfig,
+  SlotsConfig,
+  ViewsConfig,
+  WidgetsConfig,
+} from '@plone/types';
 
-type ConfigData = {
-  settings: configTypes.SettingsConfig;
-  blocks: configTypes.BlocksConfig;
-  views: configTypes.ViewsConfig;
-  widgets: configTypes.WidgetsConfig;
-  addonReducers: configTypes.AddonReducersConfig;
-  addonRoutes: configTypes.AddonRoutesConfig;
-  slots: configTypes.SlotsConfig;
-  components: configTypes.ComponentsConfig;
-  experimental: configTypes.ExperimentalConfig;
+export type ConfigData = {
+  settings: SettingsConfig;
+  blocks: BlocksConfig;
+  views: ViewsConfig;
+  widgets: WidgetsConfig;
+  addonReducers: AddonReducersConfig;
+  addonRoutes: AddonRoutesConfig;
+  slots: SlotsConfig;
+  components: ComponentsConfig;
+  experimental: ExperimentalConfig;
 };
+
+type GetComponentResult = {
+  component: React.ComponentType;
+};
+
+export type ConfigType = InstanceType<typeof Config>;
 
 class Config {
   public _data: ConfigData | Record<string, never>;
-  static instance: InstanceType<typeof Config>;
+  static instance: ConfigType;
 
   constructor() {
     if (!Config.instance) {
@@ -111,11 +126,11 @@ class Config {
 
   getComponent(
     options: { name: string; dependencies: string[] | string } | string,
-  ) {
+  ): GetComponentResult {
     if (typeof options === 'object') {
       const { name, dependencies = '' } = options;
       let depsString: string = '';
-      if (dependencies && isArray(dependencies)) {
+      if (dependencies && Array.isArray(dependencies)) {
         depsString = dependencies.join('+');
       } else if (typeof dependencies === 'string') {
         depsString = dependencies;
@@ -140,7 +155,7 @@ class Config {
     if (!component) {
       throw new Error('No component provided');
     } else {
-      if (dependencies && isArray(dependencies)) {
+      if (dependencies && Array.isArray(dependencies)) {
         depsString = dependencies.join('+');
       } else if (typeof dependencies === 'string') {
         depsString = dependencies;

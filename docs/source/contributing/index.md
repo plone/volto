@@ -51,43 +51,7 @@ The Volto Team reviews pull requests only from people with a GitHub account who 
 
 ## Install Volto for development
 
-To make changes to Volto, you need to run it from a copy of the [`plone/volto` GitHub repository](https://github.com/plone/volto/).
-
-### Prerequisites
-
-You need all the requirements already mentioned in {doc}`plone:install/install-from-packages`.
-
-### Clone the Volto repository
-
-```shell
-git clone https://github.com/plone/volto.git
-```
-
-### Start the Plone backend
-
-While developing Volto, you need to have the Plone backend running.
-If you don't already have the backend installed, the easiest way is to run the following command inside the Volto repository:
-
-```shell
-make start-backend-docker
-```
-
-### Install Node.js dependencies
-
-```shell
-yarn
-```
-
-### Start Volto
-
-```
-yarn start
-```
-
-### Open Volto in your browser
-
-Browse to [http://localhost:3000](http://localhost:3000).
-
+For developing Volto, follow {doc}`developing-core`.
 
 (contributing-translations-label)=
 
@@ -121,7 +85,7 @@ For details see {ref}`contributing-change-log-label`.
 
 (contributing-documenting-your-changes-label)=
 
-## Document your changes
+## Document breaking changes
 
 If the feature includes a breaking change, you must include instructions for how to upgrade in the [upgrade guide](../upgrade-guide/index.md).
 
@@ -138,6 +102,7 @@ Specifically:
 -   {doc}`./linting`
 -   {doc}`./testing`
 -   {doc}`./acceptance-tests`
+-   {doc}`./documentation`
 
 
 (contributing-developer-guidelines-label)=
@@ -147,19 +112,22 @@ Specifically:
 ```{toctree}
 :maxdepth: 1
 
+developing-core
 design-principles
 style-guide
 language-features
 linting
+testing
+acceptance-tests
+documentation
 react
 redux
 routing
 icons
-testing
-acceptance-tests
 accessibility-guidelines
 typescript
 volto-core-addons
+version-policy
 ```
 
 
