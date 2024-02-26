@@ -2,7 +2,7 @@
 
 exports[`Multilingual Logo renders a logo component in a multilingual site language root 1`] = `
 <img
-  alt="English"
+  alt="Logo of Plone Site"
   className="ui image"
   src="Logo.svg"
 />
@@ -10,7 +10,7 @@ exports[`Multilingual Logo renders a logo component in a multilingual site langu
 
 exports[`Multilingual Logo renders a logo component in a multilingual site root 1`] = `
 <a
-  aria-label="Front Page"
+  aria-label="Home"
   className={null}
   href="/en"
   onClick={[Function]}
@@ -18,7 +18,7 @@ exports[`Multilingual Logo renders a logo component in a multilingual site root 
   title={null}
 >
   <img
-    alt="Plone Site"
+    alt="Logo of undefined"
     className="ui image"
     src="Logo.svg"
   />
@@ -27,7 +27,7 @@ exports[`Multilingual Logo renders a logo component in a multilingual site root 
 
 exports[`Multilingual Logo renders a logo component with a custom logo in a non-root url 1`] = `
 <img
-  alt="English"
+  alt="Logo of undefined"
   className="ui image"
   src="/@@site-logo/logo.cab945d8.svg"
 />
@@ -35,7 +35,7 @@ exports[`Multilingual Logo renders a logo component with a custom logo in a non-
 
 exports[`Multilingual Logo renders a logo component with a custom logo in a non-root url with path 1`] = `
 <a
-  aria-label="Front Page"
+  aria-label="Home"
   className={null}
   href="/en"
   onClick={[Function]}
@@ -43,7 +43,7 @@ exports[`Multilingual Logo renders a logo component with a custom logo in a non-
   title={null}
 >
   <img
-    alt="English"
+    alt="Logo of undefined"
     className="ui image"
     src="/@@site-logo/logo.cab945d8.svg"
   />
