@@ -8,6 +8,13 @@
 
 <!-- towncrier release notes start -->
 
+## 16.31.0 (2024-02-26)
+
+### Feature
+
+- Allow editor to edit metadata during bulk upload. @iFlameing [#5549](https://github.com/plone/volto/issues/5549)
+- Add global form state. @robgietema [#5721](https://github.com/plone/volto/issues/5721)
+
 ## 16.30.3 (2024-02-15)
 
 ### Bugfix
