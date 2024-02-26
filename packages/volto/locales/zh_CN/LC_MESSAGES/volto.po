@@ -1534,11 +1534,6 @@ msgstr "第四"
 msgid "From"
 msgstr ""
 
-#. Default: "Front Page"
-#: components/theme/Logo/Logo
-msgid "Front Page"
-msgstr ""
-
 #. Default: "Full"
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
@@ -1677,6 +1672,7 @@ msgstr "历史{title}"
 #: components/manage/Contents/ContentsBreadcrumbs
 #: components/manage/Contents/ContentsBreadcrumbsHomeItem
 #: components/theme/Breadcrumbs/Breadcrumbs
+#: components/theme/Logo/Logo
 msgid "Home"
 msgstr "首页"
 
@@ -2063,6 +2059,11 @@ msgstr "登陆失败"
 #: components/theme/Login/Login
 msgid "Login Name"
 msgstr "登录名"
+
+#. Default: "Logo of"
+#: components/theme/Logo/Logo
+msgid "Logo of"
+msgstr ""
 
 #. Default: "Logout"
 #: components/manage/Toolbar/PersonalTools

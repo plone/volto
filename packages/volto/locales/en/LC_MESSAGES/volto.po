@@ -1528,11 +1528,6 @@ msgstr ""
 msgid "From"
 msgstr ""
 
-#. Default: "Front Page"
-#: components/theme/Logo/Logo
-msgid "Front Page"
-msgstr ""
-
 #. Default: "Full"
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
@@ -1671,6 +1666,7 @@ msgstr ""
 #: components/manage/Contents/ContentsBreadcrumbs
 #: components/manage/Contents/ContentsBreadcrumbsHomeItem
 #: components/theme/Breadcrumbs/Breadcrumbs
+#: components/theme/Logo/Logo
 msgid "Home"
 msgstr ""
 
@@ -2056,6 +2052,11 @@ msgstr ""
 #. Default: "Login Name"
 #: components/theme/Login/Login
 msgid "Login Name"
+msgstr ""
+
+#. Default: "Logo of"
+#: components/theme/Logo/Logo
+msgid "Logo of"
 msgstr ""
 
 #. Default: "Logout"

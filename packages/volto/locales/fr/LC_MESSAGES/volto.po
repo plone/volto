@@ -1535,11 +1535,6 @@ msgstr "Quatrième"
 msgid "From"
 msgstr "De"
 
-#. Default: "Front Page"
-#: components/theme/Logo/Logo
-msgid "Front Page"
-msgstr ""
-
 #. Default: "Full"
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
@@ -1678,6 +1673,7 @@ msgstr "Historique de {title}"
 #: components/manage/Contents/ContentsBreadcrumbs
 #: components/manage/Contents/ContentsBreadcrumbsHomeItem
 #: components/theme/Breadcrumbs/Breadcrumbs
+#: components/theme/Logo/Logo
 msgid "Home"
 msgstr "Accueil"
 
@@ -2064,6 +2060,11 @@ msgstr "Echec de la connexion"
 #: components/theme/Login/Login
 msgid "Login Name"
 msgstr "Identifiant"
+
+#. Default: "Logo of"
+#: components/theme/Logo/Logo
+msgid "Logo of"
+msgstr ""
 
 #. Default: "Logout"
 #: components/manage/Toolbar/PersonalTools

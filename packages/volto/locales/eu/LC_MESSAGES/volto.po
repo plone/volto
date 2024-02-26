@@ -1535,11 +1535,6 @@ msgstr "Laugarren"
 msgid "From"
 msgstr "Nok"
 
-#. Default: "Front Page"
-#: components/theme/Logo/Logo
-msgid "Front Page"
-msgstr ""
-
 #. Default: "Full"
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
@@ -1678,6 +1673,7 @@ msgstr "{title} elementuaren historia"
 #: components/manage/Contents/ContentsBreadcrumbs
 #: components/manage/Contents/ContentsBreadcrumbsHomeItem
 #: components/theme/Breadcrumbs/Breadcrumbs
+#: components/theme/Logo/Logo
 msgid "Home"
 msgstr "Hasiera"
 
@@ -2064,6 +2060,11 @@ msgstr "Sartzeak huts egin du"
 #: components/theme/Login/Login
 msgid "Login Name"
 msgstr "Erabiltzaile-izena"
+
+#. Default: "Logo of"
+#: components/theme/Logo/Logo
+msgid "Logo of"
+msgstr ""
 
 #. Default: "Logout"
 #: components/manage/Toolbar/PersonalTools

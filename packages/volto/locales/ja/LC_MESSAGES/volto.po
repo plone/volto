@@ -1533,11 +1533,6 @@ msgstr "第4"
 msgid "From"
 msgstr "メールアドレス"
 
-#. Default: "Front Page"
-#: components/theme/Logo/Logo
-msgid "Front Page"
-msgstr ""
-
 #. Default: "Full"
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
@@ -1676,6 +1671,7 @@ msgstr "{title} の履歴"
 #: components/manage/Contents/ContentsBreadcrumbs
 #: components/manage/Contents/ContentsBreadcrumbsHomeItem
 #: components/theme/Breadcrumbs/Breadcrumbs
+#: components/theme/Logo/Logo
 msgid "Home"
 msgstr "ホーム"
 
@@ -2062,6 +2058,11 @@ msgstr "ログインに失敗しました"
 #: components/theme/Login/Login
 msgid "Login Name"
 msgstr "ログイン名"
+
+#. Default: "Logo of"
+#: components/theme/Logo/Logo
+msgid "Logo of"
+msgstr ""
 
 #. Default: "Logout"
 #: components/manage/Toolbar/PersonalTools
