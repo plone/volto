@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.7 (2024-02-22)
+
+### Bugfix
+
+- Fix sidebar form update. @robgietema [#5779](https://github.com/plone/volto/issues/5779)
+
 ## 18.0.0-alpha.6 (2024-01-25)
 
 ### Bugfix

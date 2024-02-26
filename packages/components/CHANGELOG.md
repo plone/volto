@@ -8,6 +8,16 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.2 (2024-02-23)
+
+### Bugfix
+
+- Move basic general CSS rules to StoryBook so we don't spoil the build @sneridagh [#5791](https://github.com/plone/volto/issues/5791)
+
+### Internal
+
+- Improve StoryBook look and feel @sneridagh [#5791](https://github.com/plone/volto/issues/5791)
+
 ## 2.0.0-alpha.1 (2024-02-18)
 
 ### Bugfix
