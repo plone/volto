@@ -359,6 +359,7 @@ class Add extends Component {
             onSelectForm={() => {
               this.setState({ formSelected: 'addForm' });
             }}
+            global
           />
           {this.state.isClient && (
             <Portal node={document.getElementById('toolbar')}>
