@@ -59,6 +59,7 @@ It is not considered a breaking change when the change to the DOM is the additio
 ## Private API
 
 The private API is everything that is considered "internal" to Volto, and it is intended only to be used by Volto itself.
+Therefore, changes to the private API are non-breaking changes.
 
 The following Volto components are considered private API:
 
@@ -67,7 +68,7 @@ The following Volto components are considered private API:
 -   Libraries used by Volto
 
 ```{note}
-In general, the CMS user interface is not considered public API, because the customization or modification in a project is not usual, and the overall experience is tied to these components.
+In general, the CMS user interface is not considered public API, but is private API, because the customization or modification in a project is not usual, and the overall experience is tied to these components.
 Thus we give preference to maintaining a good user experience over not backporting changes that could be breaking to the product but could be beneficial for the vast majority of use cases.
 
 For example, if a bug is fixed in the CMS user interface and it would be declared as breaking, it would never get backported to older versions.
@@ -75,12 +76,12 @@ Similarly for a useful improvement to any CMS user interface feature, or a new f
 ```
 
 
-## Examples of breaking and non-breaking changes
+### Examples
 
-If there is a change in the CMS user interface that implies either a change of behavior or change of markup that improves the overall user experience, it's not a breaking change.
+If there is a change in the CMS user interface that implies either a change of behavior or change of markup that improves the overall user experience, it's a non-breaking change.
 It will be properly identified in the {doc}`../release-notes/index` as a minor change.
 
-Any change to a control panel is a breaking change.
+Any change to a control panel is a non-breaking change.
 
-If a bug is found in the text block, and the solution involves an upgrade of the Slate library, then it is not a breaking change.
+If a bug is found in the text block, and the solution involves an upgrade of the Slate library, then it is a non-breaking change.
 This is true, even if that upgrade implies a breaking change in itself.
