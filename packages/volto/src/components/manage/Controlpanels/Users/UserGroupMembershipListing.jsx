@@ -12,7 +12,7 @@ import { updateGroup, listUsers } from '@plone/volto/actions';
 
 import down_key from '@plone/volto/icons/down-key.svg';
 
-const ListingTemplate = ({
+const UserGroupMembershipListing = ({
   query_user, // Show users on y-axis that match
   query_group, // Show groups on y-axis that match
   groups_filter, // show members of these groups
@@ -201,6 +201,10 @@ const ListingTemplate = ({
 
   return (
     <div className="administration_matrix">
+      <div>
+        <b>current user:</b>
+        {JSON.stringify(user)}
+      </div>
       {matrix_options && matrix_options?.length > 0 && (
         <div className="label-options">
           <div className="target-labels">
@@ -314,4 +318,4 @@ const ListingTemplate = ({
     </div>
   );
 };
-export default ListingTemplate;
+export default UserGroupMembershipListing;
