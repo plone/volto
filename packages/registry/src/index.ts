@@ -184,7 +184,10 @@ class Config {
     }
   }
 
-  getSlot<T>(name: string, args: T): SlotComponent['component'][] | undefined {
+  getSlot<T>(
+    name: string,
+    args: T,
+  ): { component: SlotComponent['component']; name: string }[] | undefined {
     if (!this._data.slots[name]) {
       return;
     }
@@ -210,7 +213,10 @@ class Config {
 
         // If all the predicates are truthy
         if (isPredicateTrueFound) {
-          slotComponents.push(slotComponent.component);
+          slotComponents.push({
+            component: slotComponent.component,
+            name: slotName,
+          });
           // We "reset" the marker, we already found a candidate
           noPredicateComponent = undefined;
           break;
@@ -218,7 +224,10 @@ class Config {
       }
 
       if (noPredicateComponent) {
-        slotComponents.push(noPredicateComponent.component);
+        slotComponents.push({
+          component: noPredicateComponent.component,
+          name: slotName,
+        });
       }
     }
 

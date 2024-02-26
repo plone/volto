@@ -45,15 +45,8 @@ It would not display elsewhere.
 
 The order in which the components render is governed by the order in which they were registered.
 
-```{todo}
-You can change the order of the defined slot components for a different slot using the API. (pending)
-You can even delete the rendering of a registered slot component using the API. (pending)
-
-Slot (eg. `toolbar`)
-  - `edit`
-  - `contents`
-  - `more`
-```
+You can change the order of the defined slot components for a different slot using the API.
+You can even delete the rendering of a registered slot component using the API.
 
 Volto renders slots using the `SlotRenderer` component.
 You can add insertion points in your code, as shown in the following example.
@@ -74,7 +67,7 @@ You register a slot component using the configuration registry:
       slot: 'toolbar',
       name: 'save',
       component: 'this is a toolbar save component with a true predicate',
-      predicates: [RouteConditionTrue('/de')],
+      predicates: [RouteCondition('/de')],
     });
 ```
 

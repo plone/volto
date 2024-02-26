@@ -1,6 +1,6 @@
-import { v4 as uuid } from 'uuid';
-import config from '@plone/volto/registry';
 import { useLocation } from 'react-router-dom';
+import config from '@plone/volto/registry';
+
 import type { Content } from '@plone/types';
 
 /*
@@ -27,12 +27,19 @@ const SlotRenderer = ({
 
   return (
     <>
-      {slots.map((component: React.ComponentType<any>) => {
-        // Weird compilation issue, ^^ that forced to re-declare the type above
-        const id = uuid();
-        const SlotComponent = component;
-        return <SlotComponent key={id} id={id} />;
-      })}
+      {slots.map(
+        ({
+          component,
+          name,
+        }: {
+          component: React.ComponentType<any>;
+          name: string;
+        }) => {
+          // ^^ Weird compilation issue for Jest tests, that forced to re-declare the type above
+          const SlotComponent = component;
+          return <SlotComponent key={name} />;
+        },
+      )}
     </>
   );
 };
