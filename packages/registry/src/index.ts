@@ -336,7 +336,7 @@ class Config {
         `You should provide only one of position or action as arguments`,
       );
     }
-    if (action && action !== 'first' && action !== 'last' && !target) {
+    if ((action == 'after' || action == 'before') && !target) {
       throw new Error(
         `No action target set. You should provide the name of a slot component as target when action is 'after' or 'before'.`,
       );
