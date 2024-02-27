@@ -306,7 +306,9 @@ class ArrayWidget extends Component {
           useDragHandle
           // react-sortable-hoc props:
           axis="xy"
-          onSortEnd={this.onSortEnd}
+          onSortEnd={(sortProp) => {
+            this.onSortEnd(selectedOption, sortProp);
+          }}
           menuShouldScrollIntoView={false}
           distance={4}
           // small fix for https://github.com/clauderic/react-sortable-hoc/pull/352:
