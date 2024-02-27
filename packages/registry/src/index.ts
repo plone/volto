@@ -331,7 +331,7 @@ class Config {
     if (!position && !action) {
       throw new Error(`At least a position or action is required as argument`);
     }
-    if (position && target) {
+    if (position && action) {
       throw new Error(
         `You should provide only one of position or action as arguments`,
       );
