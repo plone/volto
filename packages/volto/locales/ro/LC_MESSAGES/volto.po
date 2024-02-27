@@ -1666,6 +1666,7 @@ msgstr "Istoricul {title}"
 #: components/manage/Contents/ContentsBreadcrumbs
 #: components/manage/Contents/ContentsBreadcrumbsHomeItem
 #: components/theme/Breadcrumbs/Breadcrumbs
+#: components/theme/Logo/Logo
 msgid "Home"
 msgstr "Acasă"
 
@@ -2052,6 +2053,11 @@ msgstr "Autentificare eșuată"
 #: components/theme/Login/Login
 msgid "Login Name"
 msgstr "Nume de autentificare"
+
+#. Default: "Logo of"
+#: components/theme/Logo/Logo
+msgid "Logo of"
+msgstr ""
 
 #. Default: "Logout"
 #: components/manage/Toolbar/PersonalTools

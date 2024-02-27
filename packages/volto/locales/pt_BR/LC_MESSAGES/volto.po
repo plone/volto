@@ -1672,6 +1672,7 @@ msgstr "Histórico de {title}"
 #: components/manage/Contents/ContentsBreadcrumbs
 #: components/manage/Contents/ContentsBreadcrumbsHomeItem
 #: components/theme/Breadcrumbs/Breadcrumbs
+#: components/theme/Logo/Logo
 msgid "Home"
 msgstr "Início"
 
@@ -2058,6 +2059,11 @@ msgstr "Falha na autenticação"
 #: components/theme/Login/Login
 msgid "Login Name"
 msgstr "Nome de usuário"
+
+#. Default: "Logo of"
+#: components/theme/Logo/Logo
+msgid "Logo of"
+msgstr ""
 
 #. Default: "Logout"
 #: components/manage/Toolbar/PersonalTools
