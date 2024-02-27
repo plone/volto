@@ -185,6 +185,7 @@ let config = {
     querystringSearchGet: false,
     blockSettingsTabFieldsetsInitialStateOpen: true,
     excludeLinksAndReferencesMenuItem: true,
+    containerBlockTypes: [],
   },
   experimental: {
     addBlockButton: {

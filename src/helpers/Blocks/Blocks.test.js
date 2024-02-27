@@ -19,6 +19,7 @@ import {
   buildStyleClassNamesFromData,
   buildStyleClassNamesExtenders,
   getPreviousNextBlock,
+  findBlocks,
 } from './Blocks';
 
 import config from '@plone/volto/registry';
@@ -1224,5 +1225,41 @@ describe('Blocks', () => {
         'next--has--different--backgroundColor',
       ]);
     });
+  });
+});
+
+describe('findBlocks', () => {
+  it('Get all blocks in the first level (main block container)', () => {
+    const blocks = {
+      '1': { title: 'title', '@type': 'title' },
+      '2': { title: 'an image', '@type': 'image' },
+      '3': { title: 'description', '@type': 'description' },
+      '4': { title: 'a text', '@type': 'slate' },
+    };
+    const types = ['description'];
+    expect(findBlocks(blocks, types)).toStrictEqual(['3']);
+  });
+
+  it('Get all blocks in the first level (main block container) given a list', () => {
+    const blocks = {
+      '1': { title: 'title', '@type': 'title' },
+      '2': { title: 'an image', '@type': 'image' },
+      '3': { title: 'description', '@type': 'description' },
+      '4': { title: 'a text', '@type': 'slate' },
+    };
+    const types = ['description', 'slate'];
+    expect(findBlocks(blocks, types)).toStrictEqual(['3', '4']);
+  });
+
+  it('Get all blocks in the first level (main block container) given a list', () => {
+    const blocks = {
+      '1': { title: 'title', '@type': 'title' },
+      '2': { title: 'an image', '@type': 'image' },
+      '3': { title: 'description', '@type': 'description' },
+      '4': { title: 'a text', '@type': 'slate' },
+      '5': { title: 'a text', '@type': 'slate' },
+    };
+    const types = ['description', 'slate'];
+    expect(findBlocks(blocks, types)).toStrictEqual(['3', '4', '5']);
   });
 });
