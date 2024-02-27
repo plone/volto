@@ -19,7 +19,6 @@ import {
   buildStyleClassNamesFromData,
   buildStyleClassNamesExtenders,
   getPreviousNextBlock,
-  blocksFormGenerator,
   findBlocks,
 } from './Blocks';
 
