@@ -31,8 +31,7 @@
       "import": "./dist/module.mjs",
       "require": "./dist/main.js"
     },
-    "./basic.css": "./dist/basic.css",
-    "./quanta.css": "./dist/quanta.css",
+    "./dist/*.css": "./dist/*.css",
     "./src/*": "./src/*"
   },
   "homepage": "https://plone.org",
@@ -48,8 +47,8 @@
   "scripts": {
     "build": "parcel build --no-cache && pnpm build:srctypes && pnpm build:css",
     "build:css": "pnpm build:basic && pnpm build:quanta",
-    "build:basic": "lightningcss --browserslist --bundle --sourcemap src/styles/basic/main.css -o dist/basic.css",
-    "build:quanta": "lightningcss --browserslist --bundle --sourcemap src/styles/quanta/main.css -o dist/quanta.css",
+    "build:basic": "lightningcss --browserslist --bundle --sourcemap src/styles/basic/main.css -o basic.css && mv basic.css* dist/.",
+    "build:quanta": "lightningcss --browserslist --bundle --sourcemap src/styles/quanta/main.css -o quanta.css && mv quanta.css* dist/.",
     "build:srctypes": "mkdir -p dist/src && cp dist/index.d.ts dist/src/index.d.ts",
     "check-ts": "tsc --project tsconfig.json",
     "test": "vitest --no-threads --passWithNoTests",
@@ -110,7 +109,6 @@
     "eslint": "^8.53.0",
     "eslint-plugin-storybook": "^0.6.15",
     "globby": "^14.0.0",
-    "history": "^5.3.0",
     "jest-axe": "^8.0.0",
     "jsdom": "^22.1.0",
     "lightningcss": "^1.23.0",
