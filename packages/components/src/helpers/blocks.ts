@@ -1,5 +1,7 @@
 import type { Content } from '@plone/types';
-import { find, keys, endsWith } from 'lodash';
+import find from 'lodash/find';
+import keys from 'lodash/keys';
+import endsWith from 'lodash/endsWith';
 
 export function hasBlocksData(content: Content) {
   return (

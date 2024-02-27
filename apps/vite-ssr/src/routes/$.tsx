@@ -3,25 +3,25 @@ import * as React from 'react';
 import { flattenToAppURL } from '../utils';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { usePloneClient } from '@plone/client/provider';
-import { Breadcrumbs, RenderBlocks } from '@plone/components';
-import config from '@plone/registry';
+import { Breadcrumbs } from '@plone/components';
 
 const expand = ['breadcrumbs', 'navigation'];
 
-export const Route = createFileRoute('/')({
+export const Route = createFileRoute('/$')({
   loader: ({ context: { queryClient, ploneClient }, location }) => {
     const { getContentQuery } = ploneClient;
     return queryClient.ensureQueryData(
       getContentQuery({ path: flattenToAppURL(location.pathname), expand }),
     );
   },
-  component: IndexComponent,
+  component: SplatRouteComponent,
 });
 
-function IndexComponent() {
+function SplatRouteComponent() {
+  const { _splat: path } = Route.useParams();
   const { getContentQuery } = usePloneClient();
   const { data } = useSuspenseQuery(
-    getContentQuery({ path: flattenToAppURL('/'), expand }),
+    getContentQuery({ path: flattenToAppURL(`/${path}`), expand }),
   );
   return (
     <div className="p-2">
@@ -31,11 +31,7 @@ function IndexComponent() {
         includeRoot
       />
 
-      <RenderBlocks
-        content={data}
-        blocksConfig={config.blocks.blocksConfig}
-        pathname="/"
-      />
+      <h1> {data.title}</h1>
     </div>
   );
 }
