@@ -5,7 +5,6 @@
 import { defineMessages, useIntl } from 'react-intl';
 import { useEffect } from 'react';
 import { Image } from 'semantic-ui-react';
-import { ConditionalLink } from '@plone/volto/components';
 import LogoImage from '@plone/volto/components/theme/Logo/Logo.svg';
 import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
@@ -47,16 +46,9 @@ const Logo = () => {
   }, [dispatch, pathname]);
 
   const navRootPath = flattenToAppURL(navroot?.navroot?.['@id']) || '/';
-  const currentURLIsNavRoot = pathname !== navRootPath;
 
   return (
-    <ConditionalLink
-      href={navRootPath}
-      aria-label={intl.formatMessage(messages.home)}
-      // In case that the content returns 404, there is no information about the portal
-      // then render the link anyways to get out of the Unauthorized page
-      condition={!navroot || currentURLIsNavRoot}
-    >
+    <a href={navRootPath} aria-label={intl.formatMessage(messages.home)}>
       <Image
         src={
           site['plone.site_logo']
@@ -67,7 +59,7 @@ const Logo = () => {
           intl.formatMessage(messages.logoOf) + ' ' + site['plone.site_title']
         }
       />
-    </ConditionalLink>
+    </a>
   );
 };
 
