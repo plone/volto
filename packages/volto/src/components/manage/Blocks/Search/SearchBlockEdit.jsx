@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { defineMessages } from 'react-intl';
 import { compose } from 'redux';
 
@@ -28,6 +28,7 @@ const SearchBlockEdit = (props) => {
     intl,
     navRoot,
     contentType,
+    onTriggerSearch,
     querystring = {},
   } = props;
   const { sortable_indexes = {} } = querystring;
@@ -58,6 +59,18 @@ const SearchBlockEdit = (props) => {
       sortable_indexes[k].title,
     ]),
   };
+
+  const { query = {} } = data || {};
+  // We don't need deep compare here, as this is just json serializable data.
+  const deepQuery = JSON.stringify(query);
+  useEffect(() => {
+    onTriggerSearch(
+      '',
+      data?.facets,
+      data?.query?.sort_on,
+      data?.query?.sort_order,
+    );
+  }, [deepQuery, onTriggerSearch, data]);
 
   return (
     <>
