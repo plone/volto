@@ -125,17 +125,36 @@ Thus the example slot renderer will have the following behavior.
     In our example, if we had not registered the third slot component—the one without predicates—and when either of the first two slot components' predicates return `false`, then no component would render.
     ```
 
-```{todo}
-The order in which the slot components render is governed by the order in which they were registered.
+Within a slot, slot components are grouped by their name.
+The order in which the grouped slot components are evaluated is governed by the order in which they are registered.
 
-You can change the order of the defined slot components for a different slot using the API.
-You can even delete the rendering of a registered slot component using the API.
+Extending our previous example, let's register another slot component with a different name.
 
-[@sneridagh, this section needs to be explicit.
-From our conversation yesterday, I think you said that the last slot component registered *per slot* wins.
-Is that correct?
-This has further implications, such as whether this rule applies per slot component's name, component, and predicates. --@stevepiercy]
+```ts
+config.registerSlotComponent({
+  slot: 'aboveContent',
+  name: 'subheader',
+  component: PageSubHeader,
+  predicates: [ContentTypeCondition(['Document', 'News Item'])],
+});
 ```
+
+Thus the order of evaluation of the slot components would be `header`, `subheader`.
+As each group of slot components is evaluated, their component and predicates will determine what is rendered in their position.
+
+You can change the order of the defined slot components for a different slot using the {ref}`slots-reorderSlotComponent-label` API.
+In our example, you can reorder the `subheading` before the `heading`, although it would probably look strange.
+
+```ts
+config.reorderSlotComponent({
+  slot: 'aboveContent',
+  name: 'subheader',
+  action: 'before',
+  target: 'header',
+});
+```
+
+You can even delete the rendering of a registered slot component using the {ref}`slots-unregisterSlotComponent-label` API.
 
 
 ## Default slots
@@ -252,6 +271,8 @@ config.getSlotComponents(slot: string): string[]
     The name of the slot, where the slot components are stored.
 
 
+(slots-reorderSlotComponent-label)=
+
 ### `reorderSlotComponent`
 
 `reorderSlotComponent` reorders the list of slot components registered per slot.
@@ -329,6 +350,8 @@ config.getSlotComponent(slot: string, name: string): SlotComponent[]
     The name of the slot component to retrieve.
 
 
+(slots-unregisterSlotComponent-label)=
+
 ### `unregisterSlotComponent`
 
 It removes a registration for a specific component, given its registration position.
@@ -354,6 +377,8 @@ config.unRegisterSlotComponent(slot: string, name: string, position: number): vo
     The component position to remove in the slot component registration.
     Use {ref}`slots-getSlotComponent-label` to find the zero-indexed position of the registered component to remove.
 
+
+(slots-getSlot-label)=
 
 ### `getSlot`
 
