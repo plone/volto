@@ -1,53 +1,53 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Logo renders a logo component with a custom logo 1`] = `
-<img
-  alt="Plone Site"
-  className="ui image"
-  src="/@@site-logo/logo.cab945d8.svg"
-  title="Plone Site"
-/>
+<a
+  aria-label="Home"
+  href="/"
+>
+  <img
+    alt="Logo of Plone Site"
+    className="ui image"
+    src="/@@site-logo/logo.cab945d8.svg"
+  />
+</a>
 `;
 
 exports[`Logo renders a logo component with a custom logo in a non-root url 1`] = `
 <a
-  className={null}
+  aria-label="Home"
   href="/"
-  onClick={[Function]}
-  target={null}
-  title="Plone Site"
 >
   <img
-    alt="Plone Site"
+    alt="Logo of Plone Site"
     className="ui image"
     src="/@@site-logo/logo.cab945d8.svg"
-    title="Plone Site"
   />
 </a>
 `;
 
 exports[`Logo renders a logo component with default config 1`] = `
-<img
-  alt="Plone Site"
-  className="ui image"
-  src="Logo.svg"
-  title="Plone Site"
-/>
+<a
+  aria-label="Home"
+  href="/"
+>
+  <img
+    alt="Logo of Plone Site"
+    className="ui image"
+    src="Logo.svg"
+  />
+</a>
 `;
 
 exports[`Logo renders a logo component with default config in a non-root url 1`] = `
 <a
-  className={null}
+  aria-label="Home"
   href="/"
-  onClick={[Function]}
-  target={null}
-  title="Plone Site"
 >
   <img
-    alt="Plone Site"
+    alt="Logo of Plone Site"
     className="ui image"
     src="/@@site-logo/logo.cab945d8.svg"
-    title="Plone Site"
   />
 </a>
 `;

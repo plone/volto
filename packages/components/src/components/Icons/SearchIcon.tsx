@@ -1,7 +1,8 @@
-import Icon from '../Icon/Icon';
+import React from 'react';
+import { Icon } from '../Icon/Icon';
 import type { IconPropsWithoutChildren } from '../Icon/Icon';
 
-const Search = (props: IconPropsWithoutChildren) => {
+export const SearchIcon = (props: IconPropsWithoutChildren) => {
   return (
     <Icon {...props}>
       <svg
@@ -19,5 +20,3 @@ const Search = (props: IconPropsWithoutChildren) => {
     </Icon>
   );
 };
-
-export default Search;

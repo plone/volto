@@ -1,7 +1,8 @@
-import Icon from '../Icon/Icon';
+import React from 'react';
+import { Icon } from '../Icon/Icon';
 import type { IconPropsWithoutChildren } from '../Icon/Icon';
 
-const HomeIcon = (props: IconPropsWithoutChildren) => {
+export const HomeIcon = (props: IconPropsWithoutChildren) => {
   return (
     <Icon {...props}>
       <svg
@@ -21,5 +22,3 @@ const HomeIcon = (props: IconPropsWithoutChildren) => {
     </Icon>
   );
 };
-
-export default HomeIcon;

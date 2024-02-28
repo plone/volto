@@ -1,7 +1,8 @@
-import Icon from '../Icon/Icon';
+import React from 'react';
+import { Icon } from '../Icon/Icon';
 import type { IconPropsWithoutChildren } from '../Icon/Icon';
 
-const Alignright = (props: IconPropsWithoutChildren) => {
+export const AlignrightIcon = (props: IconPropsWithoutChildren) => {
   return (
     <Icon {...props}>
       <svg
@@ -15,5 +16,3 @@ const Alignright = (props: IconPropsWithoutChildren) => {
     </Icon>
   );
 };
-
-export default Alignright;

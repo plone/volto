@@ -26,9 +26,11 @@ type GetComponentResult = {
   component: React.ComponentType;
 };
 
+export type ConfigType = InstanceType<typeof Config>;
+
 class Config {
   public _data: ConfigData | Record<string, never>;
-  static instance: InstanceType<typeof Config>;
+  static instance: ConfigType;
 
   constructor() {
     if (!Config.instance) {

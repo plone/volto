@@ -17,8 +17,8 @@ include variables.mk
 # You can set these variables from the command line.
 SPHINXOPTS      ?=
 # Internal variables.
-SPHINXBUILD     = $(realpath bin/sphinx-build)
-SPHINXAUTOBUILD = $(realpath bin/sphinx-autobuild)
+SPHINXBUILD     = "$(realpath bin/sphinx-build)"
+SPHINXAUTOBUILD = "$(realpath bin/sphinx-autobuild)"
 DOCS_DIR        = ./docs/source/
 BUILDDIR        = ../_build/
 ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(SPHINXOPTS) .
@@ -26,10 +26,10 @@ VALEFILES       := $(shell find $(DOCS_DIR) -type f -name "*.md" -print)
 
 # Recipe snippets for reuse
 
-CHECKOUT_BASENAME=$(shell basename $(shell realpath ./))
+CHECKOUT_BASENAME="$(shell basename $(shell realpath ./))"
 CHECKOUT_BRANCH=$(shell git branch --show-current)
 CHECKOUT_TMP=../$(CHECKOUT_BASENAME).tmp
-CHECKOUT_TMP_ABS=$(shell realpath $(CHECKOUT_TMP))
+CHECKOUT_TMP_ABS="$(shell realpath $(CHECKOUT_TMP))"
 
 # We like colors
 # From: https://coderwall.com/p/izxssa/colored-makefile-for-golang-projects
@@ -190,7 +190,7 @@ start-backend-docker:
 	docker run -it --rm --name=backend -p 8080:8080 -e SITE=Plone -e ADDONS='$(KGS)' $(DOCKER_IMAGE)
 
 .PHONY: start-backend-docker-no-cors
-start-backend-docker-nocors:
+start-backend-docker-no-cors:
 	docker run -it --rm --name=backend -p 8080:8080 -e SITE=Plone -e ADDONS='$(KGS)' -e CORS_=true $(DOCKER_IMAGE)
 
 .PHONY: start-frontend-docker

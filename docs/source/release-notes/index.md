@@ -17,6 +17,49 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.13 (2024-02-22)
+
+### Bugfix
+
+- Fix sidebar form update. @robgietema [#5779](https://github.com/plone/volto/issues/5779)
+
+## 18.0.0-alpha.12 (2024-02-21)
+
+### Feature
+
+- Add accordion to metadata form. @robgietema [#5760](https://github.com/plone/volto/issues/5760)
+
+## 18.0.0-alpha.11 (2024-02-18)
+
+### Breaking
+
+- Remove the isDisabled from all fields in the left side form of the babel view, make them read only instead @sneridagh [#5762](https://github.com/plone/volto/issues/5762)
+
+### Feature
+
+- Added the `ignore` property to allow exceptions to rules that are applied to all routes. @dobri1408 [#5621](https://github.com/plone/volto/issues/5621)
+- Add global form state. @robgietema [#5721](https://github.com/plone/volto/issues/5721)
+
+### Bugfix
+
+- Fixed listing SSR rendering by sending `subrequestId` instead of `id` only within `getAsyncData`, similar to calling `getQueryStringResults` directly. @ichim-david [#5688](https://github.com/plone/volto/issues/5688)
+- Enhanced Makefile paths to address whitespace compatibility issues. @Vivek-04022001 [#5715](https://github.com/plone/volto/issues/5715)
+- Fix console logging in acceptance server Makefile commands. @davisagli [#5748](https://github.com/plone/volto/issues/5748)
+- Add extra wait calls to listing block tests to avoid sporadic failures. @ichim-david [#5753](https://github.com/plone/volto/issues/5753)
+- Add @plone/components as external library.
+  Make the Terser plugin accept ESNext features.
+  Fix inline `svg` elements in LESS files. @sneridagh [#5766](https://github.com/plone/volto/issues/5766)
+
+### Documentation
+
+- Overhaul environment variables documentation. @stevepiercy [#4581](https://github.com/plone/volto/issues/4581)
+- Reorganize `README.md`, merging content into authoritative locations. Add `awesome_bot` to check links in all READMEs. @stevepiercy [#5437](https://github.com/plone/volto/issues/5437)
+- Replace outdated diff with a link to current file. @stevepiercy [#5703](https://github.com/plone/volto/issues/5703)
+- Document when the 'links and references' view was added. @davisagli [#5756](https://github.com/plone/volto/issues/5756)
+- Update links to Redux and React developer extensions for Chrome. @stevepiercy [#5757](https://github.com/plone/volto/issues/5757)
+- Chromewebstore recently changed its URL and has "too many redirects", so it needs to be excluded from linkcheck. @stevepiercy [#5761](https://github.com/plone/volto/issues/5761)
+- Add Git as a pre-requisite. @stevepiercy [#5769](https://github.com/plone/volto/issues/5769)
+
 ## 18.0.0-alpha.10 (2024-02-02)
 
 ### Feature
