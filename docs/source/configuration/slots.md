@@ -69,15 +69,18 @@ Volto comes with the following default slots.
 
 ## Configuration registry for slot components
 
-You register a slot component using the configuration registry:
+You register a slot component using the configuration registry, as shown.
 
 ```ts
-    config.registerSlotComponent({
-      slot: 'toolbar',
-      name: 'save',
-      component: 'this is a toolbar save component with a true predicate',
-      predicates: [RouteCondition('/de')],
-    });
+config.registerSlotComponent({
+  slot: 'toolbar',
+  name: 'save',
+  component: '@sneridagh this needs a component',
+  predicates: [
+    RouteCondition('/de'),
+    ContentTypeCondition(['Document', 'News Item'])
+  ],
+});
 ```
 
 A slot component must have the following parameters.
@@ -181,11 +184,11 @@ This is the signature:
 
 ```ts
 config.reorderSlotComponent({ slot, name, position, action, target }: {
-    slot: string;
-    name: string;
-    position?: number | undefined;
-    action?: "after" | "before" | "first" | "last" | undefined;
-    target?: string | undefined;
+  slot: string;
+  name: string;
+  position?: number | undefined;
+  action?: "after" | "before" | "first" | "last" | undefined;
+  target?: string | undefined;
 }): void
 ```
 
