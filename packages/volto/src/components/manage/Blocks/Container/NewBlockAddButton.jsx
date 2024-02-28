@@ -75,7 +75,7 @@ const NewBlockAddButton = (props) => {
                 ref={blockChooserRef}
               />
             </div>,
-            document.getElementById('body'),
+            document.body,
           )
         : null}
     </>

@@ -9,9 +9,8 @@ import VariableModal from './VariableModal';
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-jest.mock('react-portal', () => ({
-  Portal: jest.fn(() => <div id="Portal" />),
-}));
+jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+
 
 describe('VariableModal', () => {
   it('renders rules add interface', () => {

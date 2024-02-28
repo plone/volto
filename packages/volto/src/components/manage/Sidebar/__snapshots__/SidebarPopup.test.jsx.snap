@@ -8,8 +8,9 @@ exports[`sidebar popup is not rendered when the block is not selected 1`] = `
     timeout={500}
     unmountOnExit={true}
   >
-    <Portal>
-      <aside
+    Object {
+      "$$typeof": Symbol(react.portal),
+      "children": <aside
         className="sidebar-container"
         onClick={[Function]}
         onKeyDown={[Function]}
@@ -23,8 +24,11 @@ exports[`sidebar popup is not rendered when the block is not selected 1`] = `
         <p>
           Tested, but you shouldn't see this in the snapshot!
         </p>
-      </aside>
-    </Portal>
+      </aside>,
+      "containerInfo": <body />,
+      "implementation": null,
+      "key": null,
+    }
   </CSSTransition>
 </React.Fragment>
 `;
@@ -37,8 +41,9 @@ exports[`sidebar popup is rendered when the block is selected 1`] = `
     timeout={500}
     unmountOnExit={true}
   >
-    <Portal>
-      <aside
+    Object {
+      "$$typeof": Symbol(react.portal),
+      "children": <aside
         className="sidebar-container"
         onClick={[Function]}
         onKeyDown={[Function]}
@@ -52,8 +57,11 @@ exports[`sidebar popup is rendered when the block is selected 1`] = `
         <p>
           Tested!
         </p>
-      </aside>
-    </Portal>
+      </aside>,
+      "containerInfo": <body />,
+      "implementation": null,
+      "key": null,
+    }
   </CSSTransition>
 </React.Fragment>
 `;

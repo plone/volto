@@ -7,9 +7,8 @@ import { MemoryRouter } from 'react-router-dom';
 import UserGroupMembershipControlPanel from './UserGroupMembershipControlPanel';
 
 const mockStore = configureStore();
-jest.mock('react-portal', () => ({
-  Portal: jest.fn(() => <div id="Portal" />),
-}));
+jest.mock('../../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+
 describe('UserGroupMembershipControlPanel', () => {
   it('renders a user group membership control component', () => {
     const store = mockStore({
@@ -53,6 +52,7 @@ describe('UserGroupMembershipControlPanel', () => {
       <Provider store={store}>
         <MemoryRouter>
           <UserGroupMembershipControlPanel />
+          <div id="toolbar"></div>
         </MemoryRouter>
       </Provider>,
     );

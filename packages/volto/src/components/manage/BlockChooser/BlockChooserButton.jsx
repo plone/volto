@@ -149,7 +149,7 @@ const BlockChooserButton = (props) => {
               contentType={contentType}
             />
           </div>,
-          document.getElementById('body'),
+          document.body,
         )}
     </>
   );

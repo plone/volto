@@ -1,51 +1,76 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`View renders a document view 1`] = `
-<div
-  id="view"
->
+<div>
   <div
-    id="ContentMetadataTags"
-  />
+    id="view"
+  >
+    <div
+      id="ContentMetadataTags"
+    />
+    <div
+      id="DefaultView"
+    />
+  </div>
   <div
-    id="DefaultView"
-  />
-  <div
-    id="Portal"
-  />
+    id="toolbar"
+  >
+    <div
+      id="Portal"
+    />
+  </div>
 </div>
 `;
 
 exports[`View renders a summary view 1`] = `
-<div
-  id="view"
->
+<div>
   <div
-    id="ContentMetadataTags"
-  />
+    id="view"
+  >
+    <div
+      id="ContentMetadataTags"
+    />
+    <div
+      id="SummaryView"
+    />
+  </div>
   <div
-    id="SummaryView"
-  />
-  <div
-    id="Portal"
-  />
+    id="toolbar"
+  >
+    <div
+      id="Portal"
+    />
+  </div>
 </div>
 `;
 
 exports[`View renders a tabular view 1`] = `
-<div
-  id="view"
->
+<div>
   <div
-    id="ContentMetadataTags"
-  />
+    id="view"
+  >
+    <div
+      id="ContentMetadataTags"
+    />
+    <div
+      id="TabularView"
+    />
+  </div>
   <div
-    id="TabularView"
-  />
-  <div
-    id="Portal"
-  />
+    id="toolbar"
+  >
+    <div
+      id="Portal"
+    />
+  </div>
 </div>
 `;
 
-exports[`View renders an empty view 1`] = `<span />`;
+exports[`View renders an empty view 1`] = `
+<div>
+  <span />
+  <div
+    id="toolbar"
+  />
+</div>
+`;

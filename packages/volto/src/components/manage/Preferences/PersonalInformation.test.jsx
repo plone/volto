@@ -18,9 +18,7 @@ const userSchema = {
   loading: false,
 };
 
-jest.mock('react-portal', () => ({
-  Portal: jest.fn(() => <div id="Portal" />),
-}));
+jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
 
 describe('PersonalInformation', () => {
   it('renders a personal information component', async () => {

@@ -10,9 +10,8 @@ import { __test__ as LinksToItem } from './LinksToItem';
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-jest.mock('react-portal', () => ({
-  Portal: jest.fn(() => <div id="Portal" />),
-}));
+jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+
 jest.mock('../Toolbar/More', () => jest.fn(() => <div className="More" />));
 
 describe('LinksToItem', () => {
@@ -103,6 +102,7 @@ describe('LinksToItem', () => {
       <Provider store={store}>
         <MemoryRouter>
           <LinksToItem location={{ pathname: '/page-1/links-to-item' }} />
+          <div id="toolbar"></div>
         </MemoryRouter>
       </Provider>,
     );

@@ -130,6 +130,10 @@ exports[`LinksToItem renders "links and references" view 1`] = `
         </tbody>
       </table>
     </div>
+  </div>
+  <div
+    id="toolbar"
+  >
     <div
       id="Portal"
     />

@@ -61,6 +61,7 @@ const SidebarPopup = (props) => {
           >
             {children}
           </aside>,
+          document.body,
         )}
       </CSSTransition>
     </>
