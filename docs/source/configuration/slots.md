@@ -77,7 +77,7 @@ config.registerSlotComponent({
   name: 'save',
   component: '@sneridagh this needs a component',
   predicates: [
-    RouteCondition('/de'),
+    RouteCondition('/de/about'),
     ContentTypeCondition(['Document', 'News Item'])
   ],
 });
