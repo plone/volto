@@ -554,5 +554,8 @@ describe('Search Block Tests', () => {
     cy.wait(5000);
 
     cy.get('.listing-item').first().contains('My page');
+    //save page
+    cy.get('#toolbar-save > .icon').click();
+    cy.wait(500);
   });
 });
