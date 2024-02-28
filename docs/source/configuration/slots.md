@@ -89,7 +89,7 @@ Finally, let's register another slot component in the same slot, with the same n
 config.registerSlotComponent({
   slot: 'aboveContent',
   name: 'header',
-  component: '@sneridagh what goes here as a different component?',
+  component: 'DefaultHeader',
 });
 ```
 
@@ -110,7 +110,7 @@ Slot (`name`=`aboveContent`)
 └── SlotComponent
     ├── `slot`=`aboveContent`
     ├── `name`=`header`
-    └── `component`=`@sneridagh what goes here as a different component?`
+    └── `component`=`DefaultHeader`
 ```
 
 When the slot components with the same name and component under a given slot have all of their predicates return `true`, then that component will render in the slot.
@@ -119,7 +119,7 @@ Else, if there are slot components with the same name, but with a different comp
 Thus the example slot renderer will have the following behavior.
 
 -   When both a user visits the route beginning with `/de/about`, and the content type is either a Document or News Item, then the component `PageHeader` will render in the `aboveContent` slot.
--   When one or both of the predicates are false, then the component `@sneridagh what goes here as a different component?` will render in the `aboveContent` slot.
+-   When one or both of the predicates are false, then the component `DefaultHeader` will render in the `aboveContent` slot.
 
     ```{tip}
     In our example, if we had not registered the third slot component—the one without predicates—and when either of the first two slot components' predicates return `false`, then no component would render.
