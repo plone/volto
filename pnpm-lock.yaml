@@ -1750,9 +1750,6 @@ importers:
       react-popper:
         specifier: ^2.3.0
         version: 2.3.0(@popperjs/core@2.11.8)(react-dom@18.2.0)(react@18.2.0)
-      react-portal:
-        specifier: 4.2.1
-        version: 4.2.1(react-dom@18.2.0)(react@18.2.0)
       react-redux:
         specifier: 8.1.2
         version: 8.1.2(@types/react-dom@18.2.12)(@types/react@18.2.27)(react-dom@18.2.0)(react@18.2.0)(redux@4.2.1)
@@ -3098,7 +3095,6 @@ packages:
     dependencies:
       '@babel/core': 7.23.3
       '@babel/helper-plugin-utils': 7.22.5
-    dev: true
 
   /@babel/plugin-syntax-flow@7.23.3(@babel/core@7.23.9):
     resolution: {integrity: sha512-YZiAIpkJAwQXBJLIQbRFayR5c+gJ35Vcz3bg954k7cd73zqjvhacJuL9RbrzPz8qPmZdgqP6EUKwy0PCNhaaPA==}
@@ -3196,7 +3192,6 @@ packages:
     dependencies:
       '@babel/core': 7.23.3
       '@babel/helper-plugin-utils': 7.22.5
-    dev: true
 
   /@babel/plugin-syntax-jsx@7.23.3(@babel/core@7.23.9):
     resolution: {integrity: sha512-EB2MELswq55OHUoRZLGg/zC7QWUKfNLpE57m/S2yr1uEneIgsTgrSzXP3NXEsMkVn76OlaVVnzN+ugObuYGwhg==}
@@ -4306,7 +4301,6 @@ packages:
       '@babel/helper-plugin-utils': 7.22.5
       '@babel/plugin-syntax-jsx': 7.23.3(@babel/core@7.23.3)
       '@babel/types': 7.23.3
-    dev: true
 
   /@babel/plugin-transform-react-jsx@7.22.15(@babel/core@7.23.9):
     resolution: {integrity: sha512-oKckg2eZFa8771O/5vi7XeTvmM6+O9cxZu+kanTU7tD4sin5nO/G8jGJhq8Hvt2Z0kUoEDRayuZLaUlYl8QuGA==}
@@ -7227,7 +7221,7 @@ packages:
       read-package-json-fast: 2.0.3
       readdir-scoped-modules: 1.1.0
       rimraf: 3.0.2
-      semver: 7.5.4
+      semver: 7.6.0
       ssri: 8.0.1
       treeverse: 1.0.4
       walk-up-path: 1.0.0
@@ -7263,7 +7257,7 @@ packages:
       npm-pick-manifest: 6.1.1
       promise-inflight: 1.0.1
       promise-retry: 2.0.1
-      semver: 7.5.4
+      semver: 7.6.0
       which: 2.0.2
     transitivePeerDependencies:
       - bluebird
@@ -7315,7 +7309,7 @@ packages:
       cacache: 15.3.0
       json-parse-even-better-errors: 2.3.1
       pacote: 12.0.3
-      semver: 7.5.4
+      semver: 7.6.0
     transitivePeerDependencies:
       - bluebird
       - supports-color
@@ -9498,6 +9492,7 @@ packages:
     dependencies:
       is-glob: 4.0.3
       micromatch: 4.0.5
+      napi-wasm: 1.1.0
     dev: false
     bundledDependencies:
       - napi-wasm
@@ -9508,6 +9503,7 @@ packages:
     dependencies:
       is-glob: 4.0.3
       micromatch: 4.0.5
+      napi-wasm: 1.1.0
     dev: false
     bundledDependencies:
       - napi-wasm
@@ -16435,9 +16431,9 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@babel/core': 7.23.3
-      '@babel/plugin-transform-template-literals': 7.23.3(@babel/core@7.23.3)
-      '@babel/preset-react': 7.23.3(@babel/core@7.23.3)
+      '@babel/core': 7.23.9
+      '@babel/plugin-transform-template-literals': 7.23.3(@babel/core@7.23.9)
+      '@babel/preset-react': 7.23.3(@babel/core@7.23.9)
       '@storybook/addons': 6.5.16(react-dom@17.0.2)(react@17.0.2)
       '@storybook/core-client': 6.5.16(react-dom@17.0.2)(react@17.0.2)(typescript@5.2.2)(webpack@5.90.1)
       '@storybook/core-common': 6.5.16(eslint@8.49.0)(react-dom@17.0.2)(react@17.0.2)(typescript@5.2.2)
@@ -16445,12 +16441,12 @@ packages:
       '@storybook/theming': 6.5.16(react-dom@17.0.2)(react@17.0.2)
       '@storybook/ui': 6.5.16(react-dom@17.0.2)(react@17.0.2)
       '@types/node': 16.18.61
-      babel-loader: 8.3.0(@babel/core@7.23.3)(webpack@5.90.1)
+      babel-loader: 8.3.0(@babel/core@7.23.9)(webpack@5.90.1)
       case-sensitive-paths-webpack-plugin: 2.4.0
       chalk: 4.1.2
       core-js: 3.33.2
       css-loader: 5.2.7(webpack@5.90.1)
-      express: 4.17.3
+      express: 4.18.2
       find-up: 5.0.0
       fs-extra: 9.1.0
       html-webpack-plugin: 5.5.0(webpack@5.90.1)
@@ -24142,7 +24138,7 @@ packages:
       draft-js: '>=0.10.0'
       immutable: 3.x.x
     dependencies:
-      draft-js: 0.10.5(react-dom@17.0.2)(react@17.0.2)
+      draft-js: 0.10.5(react-dom@18.2.0)(react@18.2.0)
       draft-js-utils: 1.4.1(draft-js@0.10.5)(immutable@3.8.2)
       immutable: 3.8.2
       synthetic-dom: 1.4.0
@@ -24154,7 +24150,7 @@ packages:
       draft-js: '>=0.10.0'
       immutable: 3.x.x
     dependencies:
-      draft-js: 0.10.5(react-dom@17.0.2)(react@17.0.2)
+      draft-js: 0.10.5(react-dom@18.2.0)(react@18.2.0)
       draft-js-import-element: 1.4.0(draft-js@0.10.5)(immutable@3.8.2)
       immutable: 3.8.2
     dev: false
@@ -24238,7 +24234,7 @@ packages:
     peerDependencies:
       draft-js: ^0.10.1
     dependencies:
-      draft-js: 0.10.5(react-dom@17.0.2)(react@17.0.2)
+      draft-js: 0.10.5(react-dom@18.2.0)(react@18.2.0)
     dev: false
 
   /draft-js-utils@1.4.1(draft-js@0.10.5)(immutable@3.8.2):
@@ -24247,7 +24243,7 @@ packages:
       draft-js: '>=0.10.0'
       immutable: 3.x.x
     dependencies:
-      draft-js: 0.10.5(react-dom@17.0.2)(react@17.0.2)
+      draft-js: 0.10.5(react-dom@18.2.0)(react@18.2.0)
       immutable: 3.8.2
     dev: false
 
@@ -24282,7 +24278,7 @@ packages:
     peerDependencies:
       draft-js: ^0.10.4 || ^0.11.0
     dependencies:
-      draft-js: 0.10.5(react-dom@17.0.2)(react@17.0.2)
+      draft-js: 0.10.5(react-dom@18.2.0)(react@18.2.0)
     dev: false
 
   /dts-buddy@0.2.5:
@@ -25059,8 +25055,8 @@ packages:
       '@babel/plugin-transform-react-jsx': ^7.14.9
       eslint: ^8.1.0
     dependencies:
-      '@babel/plugin-syntax-flow': 7.23.3(@babel/core@7.23.9)
-      '@babel/plugin-transform-react-jsx': 7.22.15(@babel/core@7.23.9)
+      '@babel/plugin-syntax-flow': 7.23.3(@babel/core@7.23.3)
+      '@babel/plugin-transform-react-jsx': 7.22.15(@babel/core@7.23.3)
       eslint: 8.49.0
       lodash: 4.17.21
       string-natural-compare: 3.0.1
@@ -26277,7 +26273,7 @@ packages:
     peerDependencies:
       draft-js: ^0.10.5
     dependencies:
-      draft-js: 0.10.5(react-dom@17.0.2)(react@17.0.2)
+      draft-js: 0.10.5(react-dom@18.2.0)(react@18.2.0)
     dev: false
 
   /find-yarn-workspace-root2@1.2.16:
@@ -32824,6 +32820,10 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
+  /napi-wasm@1.1.0:
+    resolution: {integrity: sha512-lHwIAJbmLSjF9VDRm9GoVOy9AGp3aIvkjv+Kvz9h16QR3uSVYH78PNQUnT2U4X53mhlnV2M7wrhibQ3GHicDmg==}
+    dev: false
+
   /native-url@0.2.6:
     resolution: {integrity: sha512-k4bDC87WtgrdD362gZz6zoiXQrl40kYlBmpfmSjwRO1VU0V5ccwJTlxuE72F6m3V0vc1xOf6n3UCP9QyerRqmA==}
     dependencies:
@@ -33099,7 +33099,7 @@ packages:
       nopt: 5.0.0
       npmlog: 6.0.2
       rimraf: 3.0.2
-      semver: 7.5.4
+      semver: 7.6.0
       tar: 6.2.0
       which: 2.0.2
     transitivePeerDependencies:
@@ -33260,7 +33260,7 @@ packages:
     resolution: {integrity: sha512-09OmyDkNLYwqKPOnbI8exiOZU2GVVmQp7tgez2BPi5OZC8M82elDAps7sxC4l//uSUtotWqoEIDwjRvWH4qz8w==}
     engines: {node: '>=10'}
     dependencies:
-      semver: 7.5.4
+      semver: 7.6.0
 
   /npm-install-checks@6.3.0:
     resolution: {integrity: sha512-W29RiK/xtpCGqn6f3ixfRYGk+zRyr+Ew9F2E20BfXxT5/euLdA/Nm7fO7OeTGuAmTs30cpgInyJ0cYe708YTZw==}
@@ -33293,7 +33293,7 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       hosted-git-info: 4.1.0
-      semver: 7.5.4
+      semver: 7.6.0
       validate-npm-package-name: 3.0.0
 
   /npm-packlist@3.0.0:
@@ -33318,7 +33318,7 @@ packages:
       npm-install-checks: 4.0.0
       npm-normalize-package-bin: 1.0.1
       npm-package-arg: 8.1.5
-      semver: 7.5.4
+      semver: 7.6.0
 
   /npm-pick-manifest@8.0.2:
     resolution: {integrity: sha512-1dKY+86/AIiq1tkKVD3l0WI+Gd3vkknVGAggsFeBkTvbhMQ1OND/LKkYv4JtXPKUJ8bOTCyLiqEg2P6QNdK+Gg==}
@@ -37486,7 +37486,7 @@ packages:
       '@babel/runtime': 7.20.6
       array.prototype.flat: 1.3.2
       global-cache: 1.2.1
-      react-with-styles: 4.2.0(@babel/runtime@7.20.6)(react-with-direction@1.4.0)(react@17.0.2)
+      react-with-styles: 4.2.0(@babel/runtime@7.20.6)(react-with-direction@1.4.0)(react@18.2.0)
     dev: false
 
   /react-with-styles@4.2.0(@babel/runtime@7.20.6)(react-with-direction@1.4.0)(react@17.0.2):
@@ -39009,7 +39009,6 @@ packages:
     hasBin: true
     dependencies:
       lru-cache: 6.0.0
-    dev: true
 
   /send@0.17.2:
     resolution: {integrity: sha512-UJYB6wFSJE3G00nEivR5rgWp8c2xXvJ3OPWPhmuteU0IKj8nKbG3DrjiOmLwpnHGYWAVwA69zmTm++YG0Hmwww==}
@@ -43985,7 +43984,7 @@ packages:
       preferred-pm: 3.1.2
       pretty-bytes: 5.3.0
       readable-stream: 4.4.2
-      semver: 7.5.4
+      semver: 7.6.0
       slash: 3.0.0
       strip-ansi: 6.0.1
       text-table: 0.2.0

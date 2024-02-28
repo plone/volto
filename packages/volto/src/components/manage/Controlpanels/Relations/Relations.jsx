@@ -4,7 +4,7 @@
 import React, { useEffect, useState } from 'react';
 import { find } from 'lodash';
 import { useSelector } from 'react-redux';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import { useHistory } from 'react-router';
 import { Link, useLocation } from 'react-router-dom';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -94,8 +94,8 @@ const RelationsControlPanel = () => {
         )}
       </div>
 
-      {isClient && (
-        <Portal node={document.getElementById('toolbar')}>
+      {isClient &&
+        createPortal(
           <Toolbar
             pathname={location.pathname}
             hideDefaultViewButtons
@@ -110,9 +110,9 @@ const RelationsControlPanel = () => {
                 <Icon name={backSVG} className="contents circled" size="30px" />
               </Link>
             }
-          />
-        </Portal>
-      )}
+          />,
+          document.getElementById('toolbar'),
+        )}
     </>
   );
 };

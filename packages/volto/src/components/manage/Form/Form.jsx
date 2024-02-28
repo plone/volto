@@ -31,7 +31,7 @@ import isBoolean from 'lodash/isBoolean';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { injectIntl } from 'react-intl';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import { connect } from 'react-redux';
 import {
   Accordion,
@@ -679,6 +679,7 @@ class Form extends Component {
           />
           <BlocksForm
             onChangeFormData={(newData) => {
+              // debugger;
               const newFormData = {
                 ...formData,
                 ...newData,
@@ -704,13 +705,9 @@ class Form extends Component {
             editable={this.props.editable}
             isMainForm={this.props.editable}
           />
-          {this.state.isClient && this.props.editable && (
-            <Portal
-              node={
-                this.state.isClient &&
-                document.getElementById('sidebar-metadata')
-              }
-            >
+          {this.state.isClient &&
+            this.props.editable &&
+            createPortal(
               <UiForm
                 method="post"
                 onSubmit={this.onSubmit}
@@ -765,9 +762,9 @@ class Form extends Component {
                       </div>
                     </Accordion>
                   ))}
-              </UiForm>
-            </Portal>
-          )}
+              </UiForm>,
+              document.getElementById('sidebar-metadata'),
+            )}
         </Container>
       )
     ) : (

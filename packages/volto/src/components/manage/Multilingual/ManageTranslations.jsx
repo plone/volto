@@ -15,7 +15,7 @@ import {
 } from '@plone/volto/actions';
 import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
 import { useSelector, useDispatch } from 'react-redux';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import { toast } from 'react-toastify';
 
 import addSVG from '@plone/volto/icons/add.svg';
@@ -275,8 +275,8 @@ const ManageTranslations = (props) => {
             </Table.Body>
           </Table>
         )}
-        {isClient && (
-          <Portal node={document.getElementById('toolbar')}>
+        {isClient &&
+          createPortal(
             <Toolbar
               pathname={pathname}
               hideDefaultViewButtons
@@ -290,9 +290,9 @@ const ManageTranslations = (props) => {
                   />
                 </Link>
               }
-            />
-          </Portal>
-        )}
+            />,
+            document.getElementById('toolbar'),
+          )}
       </Segment.Group>
     </Container>
   );

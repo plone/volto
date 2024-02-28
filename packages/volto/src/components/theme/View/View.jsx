@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Redirect } from 'react-router-dom';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import { injectIntl } from 'react-intl';
 import qs from 'query-string';
 
@@ -266,11 +266,11 @@ class View extends Component {
         {this.props.content.allow_discussion && (
           <Comments pathname={this.props.pathname} />
         )}
-        {this.state.isClient && (
-          <Portal node={document.getElementById('toolbar')}>
-            <Toolbar pathname={this.props.pathname} inner={<span />} />
-          </Portal>
-        )}
+        {this.state.isClient &&
+          createPortal(
+            <Toolbar pathname={this.props.pathname} inner={<span />} />,
+            document.getElementById('toolbar'),
+          )}
       </div>
     );
   }

@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react';
 import { find } from 'lodash';
 import { Helmet } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import { Container, Segment, Table } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
@@ -183,8 +183,8 @@ const LinksToItem = (props) => {
           </Segment>
         )}
       </Segment.Group>
-      {isClient && (
-        <Portal node={document.getElementById('toolbar')}>
+      {isClient &&
+        createPortal(
           <Toolbar
             pathname={pathname}
             hideDefaultViewButtons
@@ -218,9 +218,9 @@ const LinksToItem = (props) => {
                 </>
               </>
             }
-          />
-        </Portal>
-      )}
+          />,
+          document.getElementById('toolbar'),
+        )}
     </Container>
   );
 };

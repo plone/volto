@@ -4,7 +4,7 @@
  */
 import React, { useEffect, useState } from 'react';
 import { find } from 'lodash';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import { useHistory } from 'react-router';
 import { Link, useLocation } from 'react-router-dom';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -114,8 +114,8 @@ const UserGroupMembershipPanel = () => {
         </Segment.Group>
       </div>
 
-      {isClient && (
-        <Portal node={document.getElementById('toolbar')}>
+      {isClient &&
+        createPortal(
           <Toolbar
             pathname={pathname}
             hideDefaultViewButtons
@@ -145,9 +145,9 @@ const UserGroupMembershipPanel = () => {
                 </Link>
               </>
             }
-          />
-        </Portal>
-      )}
+          />,
+          document.getElementById('toolbar'),
+        )}
     </>
   );
 };
