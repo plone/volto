@@ -169,7 +169,12 @@ Volto comes with the following default slots.
 
 ## Configuration registry for slot components
 
-You register a slot component using the configuration registry, as shown.
+You can manage slot components using the configuration registry for slot components and its API.
+
+
+### `registerSlotComponent`
+
+You can register a slot component as shown.
 
 ```ts
 config.registerSlotComponent({
@@ -202,12 +207,13 @@ A slot component must have the following parameters.
     ```
 
 
-## Predicate helpers
+#### Predicate helpers
 
 There are two predicate helpers available in the Volto helpers.
+You can also create custom predicate helpers.
 
 
-### `RouteCondition`
+##### `RouteCondition`
 
 ```ts
 export function RouteCondition(path: string, exact?: boolean) {
@@ -230,7 +236,7 @@ It accepts the following parameters.
     If `true`, then the match will be exact, else matches "begins with", for the given string from `path`.
 
 
-### `ContentTypeCondition`
+##### `ContentTypeCondition`
 
 ```ts
 export function ContentTypeCondition(contentType: string[]) {
@@ -243,16 +249,11 @@ The `ContentTypeCondition` helper predicate allows you to render a slot when the
 It accepts a list of possible content types.
 
 
-### Custom predicates
+##### Custom predicates
 
 You can create your own predicate helpers to determine whether your slot component should render.
 The `SlotRenderer` will pass down the current `content` and the `pathname` into your custom predicate helper.
 You can also tailor your own `SlotRenderer`s, or shadow the original `SlotRenderer`, to satisfy your requirements.
-
-
-## Manage registered slots and slot components
-
-You can manage registered slots and slot components through the slots API.
 
 
 ### `getSlotComponents`
