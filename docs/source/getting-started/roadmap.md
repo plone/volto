@@ -89,3 +89,16 @@ Not really advanced but perhaps less common, here's some stuff you can do:
 - Customize Volto's Webpack configuration or project loader using Razzle
 - Write a Redux middleware
 - Start hacking on Volto.
+
+## Add-on first approach
+
+Developing for Plone's frontend means to add code to a Volto project.
+The frontend files of the project are created in the `frontend` folder.
+The generator also creates a default add-on in the `frontend/src/addons` folder.
+The project is already configured to use this add-on.
+Add your code and customizations to this add-on, and Volto will load them on start up or a restart.
+This add-on is configured as a theme add-on, so you are able to customize the look and feel of your site as well.
+
+```{seealso}
+For more information about how to develop a Volto project as an add-on, see {doc}`training:voltoaddons/index`.
+```
