@@ -1,13 +1,13 @@
 ---
 myst:
   html_meta:
-    "description": "Volto development recipes"
-    "property=og:description": "Volto development recipes"
-    "property=og:title": "Development recipes"
-    "keywords": "Volto, Plone, frontend, React, development, recipes"
+    "description": "Volto development"
+    "property=og:description": "Volto development"
+    "property=og:title": "Development"
+    "keywords": "Volto, Plone, frontend, React, development"
 ---
 
-# Development recipes
+# Development
 
 ```{toctree}
 :maxdepth: 1
