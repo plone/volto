@@ -276,9 +276,9 @@ config.getSlotComponents(slot: string): string[]
 
 ### `reorderSlotComponent`
 
-`reorderSlotComponent` reorders the list of slot components registered per slot.
+`reorderSlotComponent` reorders the list of named group of slot components registered per slot.
 
-Given a `slot` and the `name` of a slot component, you must either specify the desired `position` or perform an `action` to reposition the slot component in the given slot, but not both.
+Given a `slot` and the `name` of grouped slot components, you must either specify the desired `position` or perform an `action` to reposition the slot component group in the given slot, but not both.
 
 The available actions are `"after"`, `"before"`, `"first"`, and `"last"`.
 `"first"` and `"last"` do not accept a `target`.
