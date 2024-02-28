@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 9.0.0-alpha.6 (2024-02-18)
+
+### Bugfix
+
+- Fix @plone/volto-slate path in moduleNameMapper. @wesleybl [#5743](https://github.com/plone/volto/issues/5743)
+
 ## 9.0.0-alpha.5 (2024-02-06)
 
 ### Bugfix

@@ -10,6 +10,7 @@ export default defineConfig({
       entry: [path.resolve(__dirname, 'src/index.ts')],
       name: 'PloneComponents',
     },
+    cssMinify: 'lightningcss',
     rollupOptions: {
       external: [
         'react',
@@ -27,5 +28,8 @@ export default defineConfig({
         },
       },
     },
+  },
+  css: {
+    transformer: 'lightningcss',
   },
 });

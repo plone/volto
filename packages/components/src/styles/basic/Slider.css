@@ -1,0 +1,107 @@
+@import './NumberField.css';
+@import './theme.css';
+
+.react-aria-Slider {
+  display: grid;
+  max-width: 300px;
+  color: var(--text-color);
+  grid-template-areas:
+    'label output'
+    'track track';
+  grid-template-columns: 1fr auto;
+
+  .react-aria-Label {
+    grid-area: label;
+  }
+
+  .react-aria-SliderOutput {
+    grid-area: output;
+  }
+
+  .react-aria-SliderTrack {
+    position: relative;
+    grid-area: track;
+
+    /* track line */
+    &:before {
+      position: absolute;
+      display: block;
+      background: var(--border-color);
+      content: '';
+    }
+  }
+
+  .react-aria-SliderThumb {
+    width: 1.429rem;
+    height: 1.429rem;
+    border: 2px solid var(--background-color);
+    border-radius: 50%;
+    background: var(--highlight-background);
+    forced-color-adjust: none;
+
+    &[data-dragging] {
+      background: var(--highlight-background-pressed);
+    }
+
+    &[data-focus-visible] {
+      outline: 2px solid var(--focus-ring-color);
+    }
+  }
+
+  &[data-orientation='horizontal'] {
+    width: 300px;
+    flex-direction: column;
+
+    .react-aria-SliderTrack {
+      width: 100%;
+      height: 30px;
+
+      &:before {
+        top: 50%;
+        width: 100%;
+        height: 3px;
+        transform: translateY(-50%);
+      }
+    }
+
+    .react-aria-SliderThumb {
+      top: 50%;
+    }
+  }
+
+  &[data-orientation='vertical'] {
+    display: block;
+    height: 150px;
+
+    .react-aria-Label,
+    .react-aria-SliderOutput {
+      display: none;
+    }
+
+    .react-aria-SliderTrack {
+      width: 30px;
+      height: 100%;
+
+      &:before {
+        left: 50%;
+        width: 3px;
+        height: 100%;
+        transform: translateX(-50%);
+      }
+    }
+
+    .react-aria-SliderThumb {
+      left: 50%;
+    }
+  }
+
+  &[data-disabled] {
+    .react-aria-SliderTrack:before {
+      background: var(--border-color-disabled);
+    }
+
+    .react-aria-SliderThumb {
+      background: var(--border-color-disabled);
+    }
+  }
+}

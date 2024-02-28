@@ -36,6 +36,7 @@
     "@plone/types": "workspace:*",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@plone/registry": "workspace:*",
     "@types/react-redux": "^7.1.33"
   }
 }

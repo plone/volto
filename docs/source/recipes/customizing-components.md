@@ -26,8 +26,7 @@ adapt it to your needs, without touching the original (source) counterparts.
 Components are named in a semantic and approachable way.
 
 In order to identify them, you can use several approaches the main one using
-[React Developer
-Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
+[React Developer Tools](https://chromewebstore.google.com/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi)
 then you can inspect the app and find out the name of the component (the name
 of the tag), then search for it in the Volto source code.
 

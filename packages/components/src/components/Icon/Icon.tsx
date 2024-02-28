@@ -1,3 +1,4 @@
+import React, { ReactElement } from 'react';
 import type {
   AriaLabelingProps,
   DOMProps,
@@ -11,7 +12,6 @@ import {
   useStyleProps,
 } from '@react-spectrum/utils';
 import { filterDOMProps } from '@react-aria/utils';
-import React, { ReactElement } from 'react';
 import _clsx from 'clsx';
 
 export interface IconProps extends DOMProps, AriaLabelingProps, StyleProps {
@@ -45,7 +45,7 @@ export interface IconProps extends DOMProps, AriaLabelingProps, StyleProps {
 export type IconPropsWithoutChildren = Omit<IconProps, 'children'>;
 
 function iconColorValue(value: IconColorValue) {
-  return `var(--semantic-${value}-color-icon)`;
+  return `var(--quanta-color-icon-${value})`;
 }
 
 const iconStyleProps: StyleHandlers = {
@@ -56,7 +56,7 @@ const iconStyleProps: StyleHandlers = {
 /**
  * Spectrum icons are clear, minimal, and consistent across platforms. They follow the focused and rational principles of the design system in both metaphor and style.
  */
-export default function Icon(props: IconProps) {
+export function Icon(props: IconProps) {
   props = useSlotProps(props, 'icon');
   let {
     children,
