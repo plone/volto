@@ -1,4 +1,5 @@
-import config from './config';
+// import config from './config';
+import config from '@plone/registry';
 
 /**
  * Flatten to app server URL - Given a URL if it starts with the API server URL
@@ -7,7 +8,7 @@ import config from './config';
  * directory other than /, eg. /myapp)
  * @method flattenToAppURL
  */
-export function flattenToAppURL(url: string) {
+export function flattenToAppURL(url: string | undefined) {
   const { settings } = config;
   return (
     (url &&
