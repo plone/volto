@@ -83,6 +83,7 @@ const View = ({ data }) => {
           striped={data.table.striped}
           sortable={data.table.sortable}
           className="slate-table-block"
+          unstackable
         >
           {!data.table.hideHeaders ? (
             <Table.Header>

@@ -15,6 +15,7 @@ const View = ({ data }) =>
       celled={data.table.celled}
       inverted={data.table.inverted}
       striped={data.table.striped}
+      unstackable
     >
       <Table.Body>
         {map(data.table.rows, (row) => (

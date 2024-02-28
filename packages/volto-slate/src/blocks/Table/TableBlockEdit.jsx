@@ -584,6 +584,7 @@ class Edit extends Component {
             inverted={this.props.data.table.inverted}
             striped={this.props.data.table.striped}
             className="slate-table-block"
+            unstackable
           >
             {!this.props.data.table.hideHeaders ? (
               <Table.Header>
