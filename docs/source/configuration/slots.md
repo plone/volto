@@ -24,7 +24,7 @@ Volto renders slots using the `SlotRenderer` component.
 You can add slot insertion points in your code, as shown in the following example.
 
 ```ts
-<SlotRenderer name="toolbar" content={content} />
+<SlotRenderer name="aboveContent" content={content} />
 ```
 
 Slot components consist of a data structure with key/value pairs, where the keys are the parent's slot name, the slot component's name, the component to render in the slot, and optional predicates.
@@ -34,13 +34,13 @@ The renderer of a slot component is controlled by the presence or absence of a l
 
 You can register multiple slot components with the same name under the same slot, as long as they have different predicates or components.
 
-To illustrate how slots are structured and work, let's register a slot component, where the component is `@sneridagh what goes here?`, and the predicate matches a route that begins with `/de/about`.
+To illustrate how slots are structured and work, let's register a slot component, where the component is `PageHeader`, and the predicate matches a route that begins with `/de/about`.
 
 ```ts
 config.registerSlotComponent({
-  slot: 'toolbar',
-  name: 'save',
-  component: '@sneridagh what goes here?',
+  slot: 'aboveContent',
+  name: 'header',
+  component: PageHeader,
   predicates: [RouteCondition('/de/about')],
 });
 ```
@@ -48,11 +48,11 @@ config.registerSlotComponent({
 The following tree structure diagram illustrates the resultant registration.
 
 ```text
-Slot (`name`=`toolbar`)
+Slot (`name`=`aboveContent`)
 └── SlotComponent
-    ├── `slot`=`toolbar`
-    ├── `name`=`save`
-    ├── `component`=`@sneridagh what goes here?`
+    ├── `slot`=`aboveContent`
+    ├── `name`=`header`
+    ├── `component`=PageHeader
     └── predicate of "only appear under `/de/about`"
 ```
 
@@ -60,9 +60,9 @@ Next, let's register another slot component in the same slot, with the same name
 
 ```ts
 config.registerSlotComponent({
-  slot: 'toolbar',
-  name: 'save',
-  component: '@sneridagh what goes here?',
+  slot: 'aboveContent',
+  name: 'header',
+  component: PageHeader,
   predicates: [ContentTypeCondition(['Document', 'News Item'])],
 });
 ```
@@ -70,16 +70,16 @@ config.registerSlotComponent({
 The following tree structure diagram illustrates the result of the second registration.
 
 ```text
-Slot (`name`=`toolbar`)
+Slot (`name`=`aboveContent`)
 ├── SlotComponent
-│   ├── `slot`=`toolbar`
-│   ├── `name`=`save`
-│   ├── `component`=`@sneridagh what goes here?`
+│   ├── `slot`=`aboveContent`
+│   ├── `name`=`header`
+│   ├── `component`=PageHeader
 │   └── predicate of "only appear under `/de/about`"
 └── SlotComponent
-    ├── `slot`=`toolbar`
-    ├── `name`=`save`
-    ├── `component`=`@sneridagh what goes here?`
+    ├── `slot`=`aboveContent`
+    ├── `name`=`header`
+    ├── `component`=PageHeader
     └── predicate of "only appear when the content type is either a Document or News Item"
 ```
 
@@ -87,8 +87,8 @@ Finally, let's register another slot component in the same slot, with the same n
 
 ```ts
 config.registerSlotComponent({
-  slot: 'toolbar',
-  name: 'save',
+  slot: 'aboveContent',
+  name: 'header',
   component: '@sneridagh what goes here as a different component?',
 });
 ```
@@ -96,20 +96,20 @@ config.registerSlotComponent({
 The following tree structure diagram illustrates the result of the third registration.
 
 ```text
-Slot (`name`=`toolbar`)
+Slot (`name`=`aboveContent`)
 ├── SlotComponent
-│   ├── `slot`=`toolbar`
-│   ├── `name`=`save`
-│   ├── `component`=`@sneridagh what goes here?`
+│   ├── `slot`=`aboveContent`
+│   ├── `name`=`header`
+│   ├── `component`=PageHeader
 │   └── predicate of "only appear under `/de/about`"
 ├── SlotComponent
-│   ├── `slot`=`toolbar`
-│   ├── `name`=`save`
-│   ├── `component`=`@sneridagh what goes here?`
+│   ├── `slot`=`aboveContent`
+│   ├── `name`=`header`
+│   ├── `component`=PageHeader
 │   └── predicate of "only appear when the content type is either a Document or News Item"
 └── SlotComponent
-    ├── `slot`=`toolbar`
-    ├── `name`=`save`
+    ├── `slot`=`aboveContent`
+    ├── `name`=`header`
     └── `component`=`@sneridagh what goes here as a different component?`
 ```
 
@@ -118,8 +118,8 @@ Else, if there are slot components with the same name, but with a different comp
 
 Thus the example slot renderer will have the following behavior.
 
--   When both a user visits the route beginning with `/de/about`, and the content type is either a Document or News Item, then the component `@sneridagh what goes here?` will render in the `toolbar` slot.
--   When one or both of the predicates are false, then the component `@sneridagh what goes here as a different component?` will render in the `toolbar` slot.
+-   When both a user visits the route beginning with `/de/about`, and the content type is either a Document or News Item, then the component `PageHeader` will render in the `aboveContent` slot.
+-   When one or both of the predicates are false, then the component `@sneridagh what goes here as a different component?` will render in the `aboveContent` slot.
 
     ```{tip}
     In our example, if we had not registered the third slot component—the one without predicates—and when either of the first two slot components' predicates return `false`, then no component would render.
@@ -154,8 +154,8 @@ You register a slot component using the configuration registry, as shown.
 
 ```ts
 config.registerSlotComponent({
-  slot: 'toolbar',
-  name: 'save',
+  slot: 'aboveContent',
+  name: 'header',
   component: '@sneridagh this needs a component',
   predicates: [
     RouteCondition('/de/about'),
