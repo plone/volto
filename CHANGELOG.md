@@ -8,6 +8,13 @@
 
 <!-- towncrier release notes start -->
 
+## 16.31.1 (2024-02-28)
+
+### Bugfix
+
+- Fix the condition deciding on listing pagination format so it takes into account container blocks as well @sneridagh [#4978](https://github.com/plone/volto/issues/4978)
+- Enhance findBlocks to check for blocks also in data for add-ons such as @eeacms/volto-tabs-block. @ichim-david [#5796](https://github.com/plone/volto/issues/5796)
+
 ## 16.31.0 (2024-02-26)
 
 ### Feature
