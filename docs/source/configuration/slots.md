@@ -156,7 +156,7 @@ You register a slot component using the configuration registry, as shown.
 config.registerSlotComponent({
   slot: 'aboveContent',
   name: 'header',
-  component: '@sneridagh this needs a component',
+  component: PageHeader,
   predicates: [
     RouteCondition('/de/about'),
     ContentTypeCondition(['Document', 'News Item'])
