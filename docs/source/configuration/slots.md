@@ -256,6 +256,34 @@ The `SlotRenderer` will pass down the current `content` and the `pathname` into 
 You can also tailor your own `SlotRenderer`s, or shadow the original `SlotRenderer`, to satisfy your requirements.
 
 
+(slots-getSlot-label)=
+
+### `getSlot`
+
+`getSlot` returns the components to be rendered for the given named slot.
+You should use this method while building you own slot renderer or customizing the existing `SlotRenderer`.
+You can use the implementation of `SlotRenderer` as a template.
+This is the signature:
+
+```ts
+config.getSlot<T>(name: string, args: T): SlotComponent['component'][] | undefined
+```
+
+It has the following parameters.
+
+`name`
+:   String.
+    Required.
+    The name of the slot we want to render.
+
+`options`
+:   Object.
+    Required.
+    An object containing the arguments to pass to the predicates.
+
+
+(slots-getSlotComponents-label)=
+
 ### `getSlotComponents`
 
 `getSlotComponents` returns the list of components registered in a given slot.
@@ -269,7 +297,30 @@ config.getSlotComponents(slot: string): string[]
 `slot`
 :   String.
     Required.
-    The name of the slot, where the slot components are stored.
+    The name of the slot where the slot components are stored.
+
+
+(slots-getSlotComponent-label)=
+
+### `getSlotComponent`
+
+`getSlotComponent` returns the list of registered components under the given slot component name.
+This is useful to debug what is registered and in what order, and later remove a component's registration, if needed.
+This is the signature:
+
+```ts
+config.getSlotComponent(slot: string, name: string): SlotComponent[]
+```
+
+`slot`
+:   String.
+    Required.
+    The name of the slot where the slot components are stored.
+
+`name`
+:   String.
+    Required.
+    The name of the slot component to retrieve.
 
 
 (slots-reorderSlotComponent-label)=
@@ -328,29 +379,6 @@ config.reorderSlotComponent({ slot, name, position, action, target }: {
     The name of the slot component targeted for the given `action`.
 
 
-(slots-getSlotComponent-label)=
-
-### `getSlotComponent`
-
-`getSlotComponent` returns the list of registered components under the given slot component name.
-This is useful to debug what is registered and in what order, and later remove a component's registration, if needed.
-This is the signature:
-
-```ts
-config.getSlotComponent(slot: string, name: string): SlotComponent[]
-```
-
-`slot`
-:   String.
-    Required.
-    The name of the slot where the slot components are stored.
-
-`name`
-:   String.
-    Required.
-    The name of the slot component to retrieve.
-
-
 (slots-unregisterSlotComponent-label)=
 
 ### `unregisterSlotComponent`
@@ -377,29 +405,3 @@ config.unRegisterSlotComponent(slot: string, name: string, position: number): vo
     Required.
     The component position to remove in the slot component registration.
     Use {ref}`slots-getSlotComponent-label` to find the zero-indexed position of the registered component to remove.
-
-
-(slots-getSlot-label)=
-
-### `getSlot`
-
-`getSlot` returns the components to be rendered for the given named slot.
-You should use this method while building you own slot renderer or customizing the existing `SlotRenderer`.
-You can use the implementation of `SlotRenderer` as a template.
-This is the signature:
-
-```ts
-config.getSlot<T>(name: string, args: T): SlotComponent['component'][] | undefined
-```
-
-It has the following parameters.
-
-`name`
-:   String.
-    Required.
-    The name of the slot we want to render.
-
-`options`
-:   Object.
-    Required.
-    An object containing the arguments to pass to the predicates.
