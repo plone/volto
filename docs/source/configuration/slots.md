@@ -18,42 +18,123 @@ This concept is inspired by the Plone Classic UI {doc}`plone:classic-ui/viewlets
 
 ## Anatomy
 
-Slots are named, and they can contain a list of different slot components.
-Slot components are also named, and they are registered in the {ref}`configuration registry using a specific API for slots <configuration-registry-for-slot-components>`.
+Slots have a name, and they contain a list of slot components.
 
-The main trait of a slot component is that its renderer is controlled by a list of conditions called {term}`predicates`.
-Multiple slot components can be registered under the same name, as long as they have different predicates.
+Volto renders slots using the `SlotRenderer` component.
+You can add slot insertion points in your code, as shown in the following example.
 
-The following tree structure diagram illustrates these concepts.
-
-```text
-Slot (`toolbar`)
-├── SlotComponent (`edit`)
-│   ├── predicate (only appear in `/de/about`)
-│   ├── predicate (only appear if the content type is either a `Document` or `News Item`)
-│   └── no predicate (default when all predicates return `false`)
-├── SlotComponent (`contents`)
-└── SlotComponent (`more`)
+```ts
+<SlotRenderer name="toolbar" content={content} />
 ```
 
-At the root of the tree, there is a slot named `toolbar`.
-It contains three slot components, named `edit`, `contents`, and `more`.
-`edit` contains three slot components, two of which have a predicate and a third without a predicate.
-When the slots with predicates both return `false`, then the third slot is returned.
+Slot components consist of a data structure with key/value pairs, where the keys are the parent's slot name, the slot component's name, the component to render in the slot, and optional predicates.
+They are registered in the {ref}`configuration registry using a specific API for slots <configuration-registry-for-slot-components>`.
 
-Thus, when either the route is `/de/about` or the content type is either a `Document` or `News Item`, then the `edit` slot component would appear in the slot `toolbar`.
-It would not display elsewhere.
+The renderer of a slot component is controlled by the presence or absence of a list of conditions called {term}`predicates`.
 
-The order in which the components render is governed by the order in which they were registered.
+You can register multiple slot components with the same name under the same slot, as long as they have different predicates or components.
+
+To illustrate how slots are structured and work, let's register a slot component, where the component is `@sneridagh what goes here?`, and the predicate matches a route that begins with `/de/about`.
+
+```ts
+config.registerSlotComponent({
+  slot: 'toolbar',
+  name: 'save',
+  component: '@sneridagh what goes here?',
+  predicates: [RouteCondition('/de/about')],
+});
+```
+
+The following tree structure diagram illustrates the resultant registration.
+
+```text
+Slot (`name`=`toolbar`)
+└── SlotComponent
+    ├── `slot`=`toolbar`
+    ├── `name`=`save`
+    ├── `component`=`@sneridagh what goes here?`
+    └── predicate of "only appear under `/de/about`"
+```
+
+Next, let's register another slot component in the same slot, with the same name and component, but with a different predicate where the content type matches either `Document` or `News Item`.
+
+```ts
+config.registerSlotComponent({
+  slot: 'toolbar',
+  name: 'save',
+  component: '@sneridagh what goes here?',
+  predicates: [ContentTypeCondition(['Document', 'News Item'])],
+});
+```
+
+The following tree structure diagram illustrates the result of the second registration.
+
+```text
+Slot (`name`=`toolbar`)
+├── SlotComponent
+│   ├── `slot`=`toolbar`
+│   ├── `name`=`save`
+│   ├── `component`=`@sneridagh what goes here?`
+│   └── predicate of "only appear under `/de/about`"
+└── SlotComponent
+    ├── `slot`=`toolbar`
+    ├── `name`=`save`
+    ├── `component`=`@sneridagh what goes here?`
+    └── predicate of "only appear when the content type is either a Document or News Item"
+```
+
+Finally, let's register another slot component in the same slot, with the same name, but with a different component and without a predicate.
+
+```ts
+config.registerSlotComponent({
+  slot: 'toolbar',
+  name: 'save',
+  component: '@sneridagh what goes here as a different component?',
+});
+```
+
+The following tree structure diagram illustrates the result of the third registration.
+
+```text
+Slot (`name`=`toolbar`)
+├── SlotComponent
+│   ├── `slot`=`toolbar`
+│   ├── `name`=`save`
+│   ├── `component`=`@sneridagh what goes here?`
+│   └── predicate of "only appear under `/de/about`"
+├── SlotComponent
+│   ├── `slot`=`toolbar`
+│   ├── `name`=`save`
+│   ├── `component`=`@sneridagh what goes here?`
+│   └── predicate of "only appear when the content type is either a Document or News Item"
+└── SlotComponent
+    ├── `slot`=`toolbar`
+    ├── `name`=`save`
+    └── `component`=`@sneridagh what goes here as a different component?`
+```
+
+When the slot components with the same name and component under a given slot have all of their predicates return `true`, then that component will render in the slot.
+Else, if there are slot components with the same name, but with a different component, and without predicates, then that different component will render.
+
+Thus the example slot renderer will have the following behavior.
+
+-   When both a user visits the route beginning with `/de/about`, and the content type is either a Document or News Item, then the component `@sneridagh what goes here?` will render in the `toolbar` slot.
+-   When one or both of the predicates are false, then the component `@sneridagh what goes here as a different component?` will render in the `toolbar` slot.
+
+    ```{tip}
+    In our example, if we had not registered the third slot component—the one without predicates—and when either of the first two slot components' predicates return `false`, then no component would render.
+    ```
+
+```{todo}
+The order in which the slot components render is governed by the order in which they were registered.
 
 You can change the order of the defined slot components for a different slot using the API.
 You can even delete the rendering of a registered slot component using the API.
 
-Volto renders slots using the `SlotRenderer` component.
-You can add insertion points in your code, as shown in the following example.
-
-```ts
-<SlotRenderer name="toolbar" content={content} />
+[@sneridagh, this section needs to be explicit.
+From our conversation yesterday, I think you said that the last slot component registered *per slot* wins.
+Is that correct?
+This has further implications, such as whether this rule applies per slot component's name, component, and predicates. --@stevepiercy]
 ```
 
 
