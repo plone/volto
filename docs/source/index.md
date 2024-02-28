@@ -59,7 +59,7 @@ A user of Volto is someone who edits content in a Plone content management syste
 getting-started/index
 configuration/index
 theming/index
-recipes/index
+development/index
 blocks/index
 addons/index
 client/index
