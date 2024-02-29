@@ -237,6 +237,7 @@ class Form extends Component {
       isClient: false,
       // Ensure focus remain in field after change
       inFocus: {},
+      sidebarMetadataIsAvailable: false,
     };
     this.onChangeField = this.onChangeField.bind(this);
     this.onSelectBlock = this.onSelectBlock.bind(this);
@@ -311,6 +312,13 @@ class Form extends Component {
 
       // Reset focus field
       this.props.resetMetadataFocus();
+    }
+
+    if (
+      !this.state.sidebarMetadataIsAvailable &&
+      document.getElementById('sidebar-metadata')
+    ) {
+      this.setState(() => ({ sidebarMetadataIsAvailable: true }));
     }
   }
 
@@ -706,6 +714,7 @@ class Form extends Component {
             isMainForm={this.props.editable}
           />
           {this.state.isClient &&
+            this.state.sidebarMetadataIsAvailable &&
             this.props.editable &&
             createPortal(
               <UiForm

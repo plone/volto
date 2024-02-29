@@ -136,7 +136,7 @@ function TestComponentWithPortalAndPopper(props) {
             />
           )}
         </div>,
-        document.getElementById('body'),
+        document.body,
       )}
     </div>
   );

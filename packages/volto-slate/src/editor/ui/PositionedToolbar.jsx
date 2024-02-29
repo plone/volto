@@ -24,6 +24,7 @@ const PositionedToolbar = ({ toggleButton, className, children, position }) => {
     <BasicToolbar className={`slate-inline-toolbar ${className}`} ref={ref}>
       {children}
     </BasicToolbar>,
+    document.body,
   );
 };
 

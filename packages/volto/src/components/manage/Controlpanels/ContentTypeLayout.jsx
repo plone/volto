@@ -343,7 +343,7 @@ class ContentTypeLayout extends Component {
               content={this.props.intl.formatMessage(messages.enable)}
             />
           </Segment>
-          {this.state.isClient &
+          {this.state.isClient &&
             createPortal(
               <Toolbar
                 pathname={this.props.pathname}
@@ -396,7 +396,7 @@ class ContentTypeLayout extends Component {
               content={this.props.intl.formatMessage(messages.enable)}
             />
           </Segment>
-          {this.state.isClient &
+          {this.state.isClient &&
             createPortal(
               <Toolbar
                 pathname={this.props.pathname}
@@ -457,12 +457,12 @@ class ContentTypeLayout extends Component {
           visual={this.state.visual}
           hideActions
         />
-        {this.state.isClient &
+        {this.state.isClient &&
           createPortal(
             <Sidebar settingsTab={true} documentTab={false} />,
             document.getElementById('sidebar'),
           )}
-        {this.state.isClient &
+        {this.state.isClient &&
           createPortal(
             <Toolbar
               pathname={this.props.pathname}

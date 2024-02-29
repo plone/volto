@@ -45,24 +45,26 @@ const SidebarPopup = (props) => {
         classNames="sidebar-container"
         unmountOnExit
       >
-        {createPortal(
-          <aside
-            role="presentation"
-            onClick={(e) => {
-              e.stopPropagation();
-            }}
-            onKeyDown={(e) => {
-              e.stopPropagation();
-            }}
-            ref={asideElement}
-            key="sidebarpopup"
-            className="sidebar-container"
-            style={{ overflowY: 'auto' }}
-          >
-            {children}
-          </aside>,
-          document.body,
-        )}
+        <>
+          {createPortal(
+            <aside
+              role="presentation"
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
+              onKeyDown={(e) => {
+                e.stopPropagation();
+              }}
+              ref={asideElement}
+              key="sidebarpopup"
+              className="sidebar-container"
+              style={{ overflowY: 'auto' }}
+            >
+              {children}
+            </aside>,
+            document.body,
+          )}
+        </>
       </CSSTransition>
     </>
   );

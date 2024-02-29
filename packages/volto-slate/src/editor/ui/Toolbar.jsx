@@ -95,6 +95,7 @@ const Toolbar = ({
         </>
       )}
     </BasicToolbar>,
+    document.body,
   );
 };
 
