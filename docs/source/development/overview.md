@@ -1,94 +1,92 @@
 ---
 myst:
   html_meta:
-    "description": "Volto developer roadmap"
-    "property=og:description": "Volto developer roadmap"
-    "property=og:title": "Developer roadmap"
-    "keywords": "Volto, Plone, frontend, React, developer roadmap, development basic"
+    "description": "Volto development overview"
+    "property=og:description": "Volto development overview"
+    "property=og:title": "Volto development overview"
+    "keywords": "Volto, Plone, frontend, React, development, overview"
 ---
 
-# Developer roadmap
+# Overview
 
-If you're coming to Volto as a backend Plone developer, you'll have to learn
-and adjust to the new frontend-centered development.
+If you're coming to Volto as a backend or Classic UI Plone developer, you'll need to learn and adjust to the new frontend-centered development.
 
-But if you already have some frontend development experience any JS frameworks
-such as AngularJS, Vue or React, you'll find that Volto is a relatively shallow
-framework, structured as a typical {term}`Redux`-centered React application. Although
-there will be Volto-specific knowledge to be gained along the way, you can be
-productive in a short time.
+If you already have some frontend development experience with any JavaScript framework such as AngularJS, Vue, or React, then you'll find that Volto is a relatively shallow framework, structured as a typical {term}`Redux`-centered React application.
+Although there will be Volto-specific knowledge to be gained along the way, you can be productive in a short time.
 
-As a reference, here's an overview of knowledge and frameworks, for a more
-complete and accurate picture of the Volto framework.
+As a reference, here's an overview of knowledge and frameworks, to give a more complete and accurate picture of the Volto framework.
 
-## The foundation
 
-As is the case with similar modern JavaScript-based applications, you should know:
+## Foundation
 
-- Modern JavaScript development. Volto uses next-generation JavaScript. Follow
-  the [ES6 guide](https://flaviocopes.com/es6/) to get up to speed.
-- React knowledge - [basic level is
-  fine](https://react.dev/learn/tutorial-tic-tac-toe) for the beginning, you'll progress
-  along the way. React itself is a simple and well documented framework.
-- A basic understanding of JavaScript
-  [CommonJS](https://flaviocopes.com/commonjs/),
-  [npm packages](https://flaviocopes.com/npm/),
-  [Yarn](https://flaviocopes.com/yarn/),
-  [Babel](https://flaviocopes.com/babel/) and
-  [Webpack](https://flaviocopes.com/webpack/).
+As is the case with similar modern JavaScript-based applications, you should be familiar the following foundational topics.
+
+-   Modern JavaScript development.
+    Volto uses next-generation JavaScript.
+    Follow the [ES6 guide](https://flaviocopes.com/es6/) to get up to speed.
+-   [Basic React knowledge](https://react.dev/learn/tutorial-tic-tac-toe) to start.
+    You'll progress along the way.
+    React itself is a simple and well documented framework.
+-   A basic understanding of JavaScript.
+    [CommonJS](https://flaviocopes.com/commonjs/),
+    [npm packages](https://flaviocopes.com/npm/),
+    [Yarn](https://flaviocopes.com/yarn/),
+    [Babel](https://flaviocopes.com/babel/), and
+    [Webpack](https://flaviocopes.com/webpack/).
+
 
 ## Basic Volto development
 
-Once you've bootstrapped your Volto project you can already start hacking. Some
-of the things you can do at this stage:
+Once you've {doc}`bootstrapped your Volto project <plone:install/create-project>`, you can immediately start hacking.
+The following is a list of some the things you can do at this stage.
 
-- Configure your text editor for JavaScript and Volto development
-- Volto project-based development
-- Understand and debug React errors
-- Understand React component lifecycle
-- Customize (shadow) Volto's builtin components
-- Write a new block
-- Adjust Volto's builtin settings
-- Extend the Pastanaga theme
-- Extend the richtext editor capabilities with new buttons and styles
-- Use the Redux store
-- Deploy your first project
+-   Configure your text editor for JavaScript and Volto development
+-   Volto project-based development
+-   Understand and debug React errors
+-   Understand the React component lifecycle
+-   Customize (shadow) Volto's built-in components
+-   Write a new {doc}`block <../blocks/index>`
+-   Adjust Volto's {doc}`built-in settings <../configuration/index>`
+-   Extend the Pastanaga {doc}`theme <../theming/index>`
+-   Extend the {doc}`richtext editor capabilities <../configuration/volto-slate/index>` with new buttons and styles
+-   Use the Redux store
+-   {doc}`Deploy <../deploying/index>` your first project
 
-After you've mastered the foundation and basic Volto development, the
-learning-curve smoothes out. Volto uses simple and familiar concepts,
-there is nothing on the level of ZCA that needs to be internalized before you
-can be really productive.
+After you've mastered the foundation and basic Volto development, the learning curve smoothes out.
+Volto uses simple and familiar concepts.
+There is nothing on the complexity level of ZCA that you would need to internalize before you can be really productive.
 
-## Normal, everyday Volto development
 
-- Write new Redux actions and reducers
-- Create new views for Plone content.
-- Install and integrate new JavaScript libraries or third-party React
-  components
-- Create a new Volto addon
-- Integrate addon LESS with Volto's theme variables
-- Use schema-based forms to write block components
-- Write new form widgets
-- Write tests for jest
-- Write integration tests for Cypress
-- Split your code and lazy-load libraries, to improve performance
-- Use more advanced React concepts: hooks, context providers, etc.
-- Make your code reusable, separate business logic and repeated behaviors as
-  Higher Order Components (HOCs)
-- Write extensible blocks
+## Routine Volto development
 
-## Advanced
+While developing a project using Volto, you might perform the following routine tasks.
 
-Not really advanced but perhaps less common, here's some stuff you can do:
+-   Write new Redux actions and reducers
+-   Create new views for Plone content
+-   Install and integrate new JavaScript libraries or third-party React components
+-   Create a new Volto add-on
+-   Integrate an add-on's LESS statements with Volto's theme variables
+-   Use schema-based forms to write block components
+-   Write new form widgets
+-   Write tests in Jest
+-   Write integration tests in Cypress
+-   Split your code and lazy-load libraries to improve performance
+-   Use more advanced React concepts, including hooks, context providers, and other topics
+-   Make your code reusable by separating business logic and repeated behaviors as Higher Order Components (HOCs)
+-   Write extensible blocks
 
-- Provide backend-based integration to your Volto code, write `plone.restapi`
-  endpoints, adapters and other extensions
-- Custom integration for blocks to the backend using the block transformers
-  concept
-- Write Express middleware for Volto's server
-- Customize Volto's Webpack configuration or project loader using Razzle
-- Write a Redux middleware
-- Start hacking on Volto.
+
+## Occasional Volto development
+
+From time to time, you might perform the following tasks.
+
+-   Provide backend-based integration for your Volto code by writing `plone.restapi` endpoints, adapters, and other extensions
+-   Custom integration for blocks to the backend using the block transformers concept
+-   Write Express middleware for Volto's server
+-   Customize Volto's Webpack configuration or project loader using Razzle
+-   Write a Redux middleware
+-   Start hacking on Volto
+
 
 ## Add-on first approach
 
