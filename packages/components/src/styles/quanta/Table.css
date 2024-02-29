@@ -1,0 +1,4 @@
+:root {
+  --plone-table-header-color: var(--quanta-sapphire);
+  --plone-table-cell-border-bottom: 1px solid var(--quanta-smoke);
+}

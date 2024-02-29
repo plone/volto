@@ -4,6 +4,7 @@ import type {
   PreviewImage,
   RelatedItem,
 } from './common';
+import type { Brain } from './brains';
 
 export interface Content {
   '@components': Expanders;
