@@ -687,7 +687,6 @@ class Form extends Component {
           />
           <BlocksForm
             onChangeFormData={(newData) => {
-              // debugger;
               const newFormData = {
                 ...formData,
                 ...newData,
