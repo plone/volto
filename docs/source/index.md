@@ -42,6 +42,7 @@ An integrator is someone who uses Volto in their client projects.
 
 -   {doc}`plone:install/create-project` is a guide to bootstrap a new Volto project and start hacking.
 -   {doc}`development/overview` is intended for integrators to assess their knowledge and determine what gaps they would like to fill through available resources.
+-   {doc}`tutorials/index` lists several tutorials and references for further research and learning.
 
 
 ### Users
@@ -56,18 +57,18 @@ A user of Volto is someone who edits content in a Plone content management syste
 ```{toctree}
 :maxdepth: 2
 
-getting-started/index
+development/index
 configuration/index
 theming/index
-development/index
 blocks/index
 addons/index
 client/index
 backend/index
 deploying/index
-upgrade-guide/index
 user-manual/index
+tutorials/index
 contributing/index
+upgrade-guide/index
 release-notes/index
 release-management-notes/index
 ```
