@@ -32,11 +32,13 @@ const SidebarPopup = (props) => {
           classNames="overlay-container"
           unmountOnExit
         >
-          {document?.body &&
-            createPortal(
-              <div className="overlay-container"></div>,
-              document?.body,
-            )}
+          <>
+            {document?.body &&
+              createPortal(
+                <div className="overlay-container"></div>,
+                document?.body,
+              )}
+          </>
         </CSSTransition>
       )}
       <CSSTransition
