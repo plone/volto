@@ -28,6 +28,7 @@ import {
 } from '@plone/volto/helpers';
 
 import config from '@plone/volto/registry';
+import SlotRenderer from '../SlotRenderer/SlotRenderer';
 
 /**
  * View container class.
@@ -244,6 +245,7 @@ class View extends Component {
               : null
           }
         />
+        <SlotRenderer name="aboveContent" content={this.props.content} />
         <RenderedView
           key={this.props.content['@id']}
           content={this.props.content}
@@ -251,6 +253,7 @@ class View extends Component {
           token={this.props.token}
           history={this.props.history}
         />
+        <SlotRenderer name="belowContent" content={this.props.content} />
         {config.settings.showTags &&
           this.props.content.subjects &&
           this.props.content.subjects.length > 0 && (
