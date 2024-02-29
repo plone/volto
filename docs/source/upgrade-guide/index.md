@@ -30,19 +30,20 @@ Thus it is safe to run it on top of your project and answer the prompts.
 
 ### Volto runs now on React 18.2.0
 
-We have updated Volto for use React 18. This has been the latest published stable version since June 2022.
+We have updated Volto to use React 18.
+This has been the latest published stable version since June 2022.
 This aligns Volto with the latests developments in the React ecosystem and opens the door to up to date software and React features, like client side `Suspense` and others:
 
 - Concurrent rendering in client (Suspense)
 - Automatic batching updates
 - Transitions
-- New hooks (useId, useTransition, useDeferredValue, useSyncExternalStore and others)
+- New hooks `useId`, `useTransition`, `useDeferredValue`, `useSyncExternalStore`, and other hooks
 
 ### `react-portal` dependency removed
 
 `react-portal` is deprecated and it was removed from Volto.
-The Volto code that relied on it was mainly CMSUI components.
-If your project relies on it either your code or the shadowed components you may have, you should update to use the standard React API: `createPortal`.
+The Volto code that relied on it was mainly CMS UI components.
+If your project relies on it, either in your code or the shadowed components you may have, you should update to use the standard React API, `createPortal`.
 You can update your shadows taking the modified components as templates.
 As a last resort, you can install `react-portal` as a dependency of your project.
 However, this is discouraged, because the React 18 rendering could have unexpected side effects.
