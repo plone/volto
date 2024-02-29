@@ -9,7 +9,14 @@ myst:
 
 # Development
 
+This part of the documentation describes how to develop projects using Volto.
+
+See {doc}`overview` for a reference of technologies used within the Volto stack, and for suggested topics for further research.
+
+Or jump in to any topic listed below.
+
 ```{toctree}
+:caption: Table of Contents
 :maxdepth: 1
 
 creating-project
