@@ -13,8 +13,16 @@ import {
 } from './base';
 
 const SelectFacet = (props) => {
-  const { facet, choices, reactSelect, isMulti, onChange, value, isEditMode } =
-    props;
+  const {
+    facet,
+    facetCount,
+    choices,
+    reactSelect,
+    isMulti,
+    onChange,
+    value,
+    isEditMode,
+  } = props;
   const Select = reactSelect.default;
   const v = Array.isArray(value) && value.length === 0 ? null : value;
 
@@ -42,6 +50,9 @@ const SelectFacet = (props) => {
       isMulti={facet.multiple}
       isClearable
       value={v}
+      getOptionLabel={({ label, value }) => {
+        return `${label} (${facetCount?.data?.[value] || 0})`;
+      }}
     />
   );
 };
