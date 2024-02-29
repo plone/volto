@@ -9,7 +9,13 @@ exports[`View renders a document view 1`] = `
       id="ContentMetadataTags"
     />
     <div
+      id="SlotRenderer"
+    />
+    <div
       id="DefaultView"
+    />
+    <div
+      id="SlotRenderer"
     />
   </div>
   <div
@@ -31,7 +37,13 @@ exports[`View renders a summary view 1`] = `
       id="ContentMetadataTags"
     />
     <div
+      id="SlotRenderer"
+    />
+    <div
       id="SummaryView"
+    />
+    <div
+      id="SlotRenderer"
     />
   </div>
   <div
@@ -53,7 +65,13 @@ exports[`View renders a tabular view 1`] = `
       id="ContentMetadataTags"
     />
     <div
+      id="SlotRenderer"
+    />
+    <div
       id="TabularView"
+    />
+    <div
+      id="SlotRenderer"
     />
   </div>
   <div

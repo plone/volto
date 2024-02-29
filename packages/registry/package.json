@@ -50,7 +50,7 @@
   },
   "scripts": {
     "watch": "parcel watch",
-    "build": "parcel build",
+    "build": "parcel build --no-cache",
     "test": "vitest",
     "dry-release": "release-it --dry-run",
     "release": "release-it",

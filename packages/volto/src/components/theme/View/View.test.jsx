@@ -34,6 +34,9 @@ jest.mock('../SocialSharing/SocialSharing', () =>
 );
 jest.mock('../Comments/Comments', () => jest.fn(() => <div id="Comments" />));
 jest.mock('../Tags/Tags', () => jest.fn(() => <div id="Tags" />));
+jest.mock('../SlotRenderer/SlotRenderer', () =>
+  jest.fn(() => <div id="SlotRenderer" />),
+);
 jest.mock('../ContentMetadataTags/ContentMetadataTags', () =>
   jest.fn(() => <div id="ContentMetadataTags" />),
 );

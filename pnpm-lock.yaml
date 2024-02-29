@@ -1441,6 +1441,12 @@ importers:
       '@plone/volto-slate':
         specifier: workspace:*
         version: link:../volto-slate
+      '@types/react':
+        specifier: ^18.2.57
+        version: 18.2.60
+      '@types/react-dom':
+        specifier: ^18.2.19
+        version: 18.2.19
       autoprefixer:
         specifier: 10.4.8
         version: 10.4.8(postcss@8.4.31)
@@ -1752,7 +1758,7 @@ importers:
         version: 2.3.0(@popperjs/core@2.11.8)(react-dom@18.2.0)(react@18.2.0)
       react-redux:
         specifier: 8.1.2
-        version: 8.1.2(@types/react-dom@18.2.12)(@types/react@18.2.27)(react-dom@18.2.0)(react@18.2.0)(redux@4.2.1)
+        version: 8.1.2(@types/react-dom@18.2.19)(@types/react@18.2.60)(react-dom@18.2.0)(react@18.2.0)(redux@4.2.1)
       react-router:
         specifier: 5.2.0
         version: 5.2.0(react@18.2.0)
@@ -1767,7 +1773,7 @@ importers:
         version: 2.4.3(react-router-dom@5.2.0)(react@18.2.0)
       react-select:
         specifier: 4.3.1
-        version: 4.3.1(@types/react@18.2.27)(react-dom@18.2.0)(react@18.2.0)
+        version: 4.3.1(@types/react@18.2.60)(react-dom@18.2.0)(react@18.2.0)
       react-select-async-paginate:
         specifier: 0.5.3
         version: 0.5.3(react-dom@18.2.0)(react-select@4.3.1)(react@18.2.0)
@@ -1954,19 +1960,16 @@ importers:
         version: 14.2.0(react-dom@18.2.0)(react@18.2.0)
       '@testing-library/react-hooks':
         specifier: 8.0.1
-        version: 8.0.1(@types/react@18.2.27)(react-dom@18.2.0)(react-test-renderer@18.2.0)(react@18.2.0)
+        version: 8.0.1(@types/react@18.2.60)(react-dom@18.2.0)(react-test-renderer@18.2.0)(react@18.2.0)
       '@types/jest':
         specifier: ^29.5.8
         version: 29.5.8
       '@types/lodash':
         specifier: ^4.14.201
         version: 4.14.201
-      '@types/react':
-        specifier: ^18
-        version: 18.2.27
-      '@types/react-dom':
-        specifier: ^18
-        version: 18.2.12
+      '@types/react-router-dom':
+        specifier: ^5.3.3
+        version: 5.3.3
       '@types/react-test-renderer':
         specifier: 18.0.7
         version: 18.0.7
@@ -3095,6 +3098,7 @@ packages:
     dependencies:
       '@babel/core': 7.23.3
       '@babel/helper-plugin-utils': 7.22.5
+    dev: true
 
   /@babel/plugin-syntax-flow@7.23.3(@babel/core@7.23.9):
     resolution: {integrity: sha512-YZiAIpkJAwQXBJLIQbRFayR5c+gJ35Vcz3bg954k7cd73zqjvhacJuL9RbrzPz8qPmZdgqP6EUKwy0PCNhaaPA==}
@@ -3192,6 +3196,7 @@ packages:
     dependencies:
       '@babel/core': 7.23.3
       '@babel/helper-plugin-utils': 7.22.5
+    dev: true
 
   /@babel/plugin-syntax-jsx@7.23.3(@babel/core@7.23.9):
     resolution: {integrity: sha512-EB2MELswq55OHUoRZLGg/zC7QWUKfNLpE57m/S2yr1uEneIgsTgrSzXP3NXEsMkVn76OlaVVnzN+ugObuYGwhg==}
@@ -4301,6 +4306,7 @@ packages:
       '@babel/helper-plugin-utils': 7.22.5
       '@babel/plugin-syntax-jsx': 7.23.3(@babel/core@7.23.3)
       '@babel/types': 7.23.3
+    dev: true
 
   /@babel/plugin-transform-react-jsx@7.22.15(@babel/core@7.23.9):
     resolution: {integrity: sha512-oKckg2eZFa8771O/5vi7XeTvmM6+O9cxZu+kanTU7tD4sin5nO/G8jGJhq8Hvt2Z0kUoEDRayuZLaUlYl8QuGA==}
@@ -5159,7 +5165,7 @@ packages:
     resolution: {integrity: sha512-W2P2c/VRW1/1tLox0mVUalvnWXxavmv/Oum2aPsRcoDJuob75FC3Y8FbpfLwUegRcxINtGUMPq0tFCvYNTBXNA==}
     dev: false
 
-  /@emotion/react@11.11.1(@types/react@18.2.27)(react@18.2.0):
+  /@emotion/react@11.11.1(@types/react@18.2.60)(react@18.2.0):
     resolution: {integrity: sha512-5mlW1DquU5HaxjLkfkGN1GA/fvVGdyHURRiX/0FHl2cfIfRxSOfmxEH5YS43edp0OldZrZ+dkBKbngxcNCdZvA==}
     peerDependencies:
       '@types/react': '*'
@@ -5175,7 +5181,7 @@ packages:
       '@emotion/use-insertion-effect-with-fallbacks': 1.0.1(react@18.2.0)
       '@emotion/utils': 1.2.1
       '@emotion/weak-memoize': 0.3.1
-      '@types/react': 18.2.27
+      '@types/react': 18.2.60
       hoist-non-react-statics: 3.3.2
       react: 18.2.0
     dev: false
@@ -17909,7 +17915,7 @@ packages:
       vitest: 0.34.6(jsdom@21.1.2)
     dev: true
 
-  /@testing-library/react-hooks@8.0.1(@types/react@18.2.27)(react-dom@18.2.0)(react-test-renderer@18.2.0)(react@18.2.0):
+  /@testing-library/react-hooks@8.0.1(@types/react@18.2.60)(react-dom@18.2.0)(react-test-renderer@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-Aqhl2IVmLt8IovEVarNDFuJDVWVvhnr9/GCU6UUnrYXwgDFF9h2L2o2P9KBni1AST5sT6riAyoukFLyjQUgD/g==}
     engines: {node: '>=12'}
     peerDependencies:
@@ -17926,7 +17932,7 @@ packages:
         optional: true
     dependencies:
       '@babel/runtime': 7.20.6
-      '@types/react': 18.2.27
+      '@types/react': 18.2.60
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       react-error-boundary: 3.1.4(react@18.2.0)
@@ -18239,6 +18245,10 @@ packages:
       '@types/unist': 2.0.10
     dev: true
 
+  /@types/history@4.7.11:
+    resolution: {integrity: sha512-qjDJRrmvBMiTx+jyLxvLfJU7UznFuokDv4f3WRuriHKERccVpFU+8XMQUAbDzoiJCsmexxRExQeMwwCdamSKDA==}
+    dev: true
+
   /@types/hoist-non-react-statics@3.3.5:
     resolution: {integrity: sha512-SbcrWzkKBw2cdwRTwQAswfpB9g9LJWfjtUeW/jvNwbhC8cpmmNYVePa+ncbUe0rGTQ7G3Ff6mYUN2VMfLVr+Sg==}
     dependencies:
@@ -18447,12 +18457,12 @@ packages:
     resolution: {integrity: sha512-QWZuiA/7J/hPIGocXreCRbx7wyoeet9ooxfbSA+zbIWqyQEE7GMtRn4A37BdYyksnN+/NDnWgfxZH9UVGDw1hg==}
     dependencies:
       '@types/react': 18.2.27
+    dev: true
 
   /@types/react-dom@18.2.19:
     resolution: {integrity: sha512-aZvQL6uUbIJpjZk4U8JZGbau9KDeAwMfmhyWorxgBkqDIEf6ROjRozcmPIicqsUwPUjbkDfHKgGee1Lq65APcA==}
     dependencies:
       '@types/react': 18.2.60
-    dev: true
 
   /@types/react-redux@7.1.30:
     resolution: {integrity: sha512-i2kqM6YaUwFKduamV6QM/uHbb0eCP8f8ZQ/0yWf+BsAVVsZPRYJ9eeGWZ3uxLfWwwA0SrPRMTPTqsPFkY3HZdA==}
@@ -18470,6 +18480,21 @@ packages:
       '@types/react': 18.2.60
       hoist-non-react-statics: 3.3.2
       redux: 4.1.0
+    dev: true
+
+  /@types/react-router-dom@5.3.3:
+    resolution: {integrity: sha512-kpqnYK4wcdm5UaWI3fLcELopqLrHgLqNsdpHauzlQktfkHL3npOSwtj1Uz9oKBAzs7lFtVkV8j83voAz2D8fhw==}
+    dependencies:
+      '@types/history': 4.7.11
+      '@types/react': 18.2.60
+      '@types/react-router': 5.1.20
+    dev: true
+
+  /@types/react-router@5.1.20:
+    resolution: {integrity: sha512-jGjmu/ZqS7FjSH6owMcD5qpq19+1RS9DeVRqfl1FeBMxTDQAGwlMWOcs52NDoXaNKyG3d1cYQFMs9rCrb88o9Q==}
+    dependencies:
+      '@types/history': 4.7.11
+      '@types/react': 18.2.60
     dev: true
 
   /@types/react-syntax-highlighter@11.0.5:
@@ -18498,6 +18523,7 @@ packages:
       '@types/prop-types': 15.7.10
       '@types/scheduler': 0.16.6
       csstype: 3.1.2
+    dev: true
 
   /@types/react@18.2.60:
     resolution: {integrity: sha512-dfiPj9+k20jJrLGOu9Nf6eqxm2EyJRrq2NvwOFsfbb7sFExZ9WELPs67UImHj3Ayxg8ruTtKtNnbjaF8olPq0A==}
@@ -22630,7 +22656,7 @@ packages:
       immutable: 3.8.2
       prop-types: 15.7.2
       react: 18.2.0
-      react-redux: 8.1.2(@types/react-dom@18.2.12)(@types/react@18.2.27)(react-dom@18.2.0)(react@18.2.0)(redux@4.2.1)
+      react-redux: 8.1.2(@types/react-dom@18.2.19)(@types/react@18.2.60)(react-dom@18.2.0)(react@18.2.0)(redux@4.2.1)
       react-router: 5.2.0(react@18.2.0)
       redux: 4.2.1
       seamless-immutable: 7.1.4
@@ -24138,7 +24164,7 @@ packages:
       draft-js: '>=0.10.0'
       immutable: 3.x.x
     dependencies:
-      draft-js: 0.10.5(react-dom@18.2.0)(react@18.2.0)
+      draft-js: 0.10.5(react-dom@17.0.2)(react@17.0.2)
       draft-js-utils: 1.4.1(draft-js@0.10.5)(immutable@3.8.2)
       immutable: 3.8.2
       synthetic-dom: 1.4.0
@@ -24150,7 +24176,7 @@ packages:
       draft-js: '>=0.10.0'
       immutable: 3.x.x
     dependencies:
-      draft-js: 0.10.5(react-dom@18.2.0)(react@18.2.0)
+      draft-js: 0.10.5(react-dom@17.0.2)(react@17.0.2)
       draft-js-import-element: 1.4.0(draft-js@0.10.5)(immutable@3.8.2)
       immutable: 3.8.2
     dev: false
@@ -24234,7 +24260,7 @@ packages:
     peerDependencies:
       draft-js: ^0.10.1
     dependencies:
-      draft-js: 0.10.5(react-dom@18.2.0)(react@18.2.0)
+      draft-js: 0.10.5(react-dom@17.0.2)(react@17.0.2)
     dev: false
 
   /draft-js-utils@1.4.1(draft-js@0.10.5)(immutable@3.8.2):
@@ -24243,7 +24269,7 @@ packages:
       draft-js: '>=0.10.0'
       immutable: 3.x.x
     dependencies:
-      draft-js: 0.10.5(react-dom@18.2.0)(react@18.2.0)
+      draft-js: 0.10.5(react-dom@17.0.2)(react@17.0.2)
       immutable: 3.8.2
     dev: false
 
@@ -24278,7 +24304,7 @@ packages:
     peerDependencies:
       draft-js: ^0.10.4 || ^0.11.0
     dependencies:
-      draft-js: 0.10.5(react-dom@18.2.0)(react@18.2.0)
+      draft-js: 0.10.5(react-dom@17.0.2)(react@17.0.2)
     dev: false
 
   /dts-buddy@0.2.5:
@@ -25055,8 +25081,8 @@ packages:
       '@babel/plugin-transform-react-jsx': ^7.14.9
       eslint: ^8.1.0
     dependencies:
-      '@babel/plugin-syntax-flow': 7.23.3(@babel/core@7.23.3)
-      '@babel/plugin-transform-react-jsx': 7.22.15(@babel/core@7.23.3)
+      '@babel/plugin-syntax-flow': 7.23.3(@babel/core@7.23.9)
+      '@babel/plugin-transform-react-jsx': 7.22.15(@babel/core@7.23.9)
       eslint: 8.49.0
       lodash: 4.17.21
       string-natural-compare: 3.0.1
@@ -26273,7 +26299,7 @@ packages:
     peerDependencies:
       draft-js: ^0.10.5
     dependencies:
-      draft-js: 0.10.5(react-dom@18.2.0)(react@18.2.0)
+      draft-js: 0.10.5(react-dom@17.0.2)(react@17.0.2)
     dev: false
 
   /find-yarn-workspace-root2@1.2.16:
@@ -36578,7 +36604,7 @@ packages:
       prop-types: 15.7.2
       react: 18.2.0
       react-intl: 3.8.0(react@18.2.0)
-      react-redux: 8.1.2(@types/react-dom@18.2.12)(@types/react@18.2.27)(react-dom@18.2.0)(react@18.2.0)(redux@4.2.1)
+      react-redux: 8.1.2(@types/react-dom@18.2.19)(@types/react@18.2.60)(react-dom@18.2.0)(react@18.2.0)(redux@4.2.1)
     dev: false
 
   /react-intl@3.8.0(react@17.0.2):
@@ -36826,7 +36852,7 @@ packages:
       react-is: 16.13.1
     dev: false
 
-  /react-redux@8.1.2(@types/react-dom@18.2.12)(@types/react@18.2.27)(react-dom@18.2.0)(react@18.2.0)(redux@4.2.1):
+  /react-redux@8.1.2(@types/react-dom@18.2.19)(@types/react@18.2.60)(react-dom@18.2.0)(react@18.2.0)(redux@4.2.1):
     resolution: {integrity: sha512-xJKYI189VwfsFc4CJvHqHlDrzyFTY/3vZACbE+rr/zQ34Xx1wQfB4OTOSeOSNrF6BDVe8OOdxIrAnMGXA3ggfw==}
     peerDependencies:
       '@types/react': ^16.8 || ^17.0 || ^18.0
@@ -36849,8 +36875,8 @@ packages:
     dependencies:
       '@babel/runtime': 7.20.6
       '@types/hoist-non-react-statics': 3.3.5
-      '@types/react': 18.2.27
-      '@types/react-dom': 18.2.12
+      '@types/react': 18.2.60
+      '@types/react-dom': 18.2.19
       '@types/use-sync-external-store': 0.0.3
       hoist-non-react-statics: 3.3.2
       react: 18.2.0
@@ -37068,13 +37094,13 @@ packages:
       '@seznam/compose-react-refs': 1.0.6
       react: 18.2.0
       react-is-mounted-hook: 1.1.2(react-dom@18.2.0)(react@18.2.0)
-      react-select: 4.3.1(@types/react@18.2.27)(react-dom@18.2.0)(react@18.2.0)
+      react-select: 4.3.1(@types/react@18.2.60)(react-dom@18.2.0)(react@18.2.0)
       sleep-promise: 9.1.0
     transitivePeerDependencies:
       - react-dom
     dev: false
 
-  /react-select@4.3.1(@types/react@18.2.27)(react-dom@18.2.0)(react@18.2.0):
+  /react-select@4.3.1(@types/react@18.2.60)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-HBBd0dYwkF5aZk1zP81Wx5UsLIIT2lSvAY2JiJo199LjoLHoivjn9//KsmvQMEFGNhe58xyuOITjfxKCcGc62Q==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0
@@ -37082,7 +37108,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.20.6
       '@emotion/cache': 11.11.0
-      '@emotion/react': 11.11.1(@types/react@18.2.27)(react@18.2.0)
+      '@emotion/react': 11.11.1(@types/react@18.2.60)(react@18.2.0)
       memoize-one: 5.2.1
       prop-types: 15.7.2
       react: 18.2.0
@@ -37486,7 +37512,7 @@ packages:
       '@babel/runtime': 7.20.6
       array.prototype.flat: 1.3.2
       global-cache: 1.2.1
-      react-with-styles: 4.2.0(@babel/runtime@7.20.6)(react-with-direction@1.4.0)(react@18.2.0)
+      react-with-styles: 4.2.0(@babel/runtime@7.20.6)(react-with-direction@1.4.0)(react@17.0.2)
     dev: false
 
   /react-with-styles@4.2.0(@babel/runtime@7.20.6)(react-with-direction@1.4.0)(react@17.0.2):
@@ -37847,7 +37873,7 @@ packages:
     dependencies:
       prop-types: 15.7.2
       react: 18.2.0
-      react-redux: 8.1.2(@types/react-dom@18.2.12)(@types/react@18.2.27)(react-dom@18.2.0)(react@18.2.0)(redux@4.2.1)
+      react-redux: 8.1.2(@types/react-dom@18.2.19)(@types/react@18.2.60)(react-dom@18.2.0)(react@18.2.0)(redux@4.2.1)
       react-router: 5.2.0(react@18.2.0)
       react-router-config: 5.1.1(react-router@5.2.0)(react@18.2.0)
       react-router-dom: 5.2.0(react@18.2.0)

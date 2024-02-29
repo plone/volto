@@ -26,6 +26,13 @@ describe('ChangePassword', () => {
           loading: false,
         },
       },
+      content: {
+        data: {},
+        create: {
+          loading: false,
+          loaded: true,
+        },
+      },
     });
     const { container } = render(
       <Provider store={store}>

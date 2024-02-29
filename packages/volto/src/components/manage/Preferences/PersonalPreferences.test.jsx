@@ -29,6 +29,13 @@ describe('PersonalPreferences', () => {
           itemsTotal: 1,
         },
       },
+      content: {
+        data: {},
+        create: {
+          loading: false,
+          loaded: true,
+        },
+      },
     });
     const { container } = render(
       <Provider store={store}>
