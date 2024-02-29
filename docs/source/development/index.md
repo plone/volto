@@ -11,7 +11,7 @@ myst:
 
 This part of the documentation describes how to develop projects using Volto.
 
-See {doc}`overview` for a reference of technologies used within the Volto stack, and for suggested topics for further research.
+See {doc}`overview` for a reference of technologies used within the Volto stack, and for suggested topics for further learning and research.
 
 Or jump in to any topic listed below.
 
@@ -19,6 +19,7 @@ Or jump in to any topic listed below.
 :caption: Table of Contents
 :maxdepth: 1
 
+overview
 creating-project
 folder-structure
 environment-variables

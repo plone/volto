@@ -41,7 +41,7 @@ A contributor is someone who writes code or documentation for the Volto core pac
 An integrator is someone who uses Volto in their client projects.
 
 -   {doc}`plone:install/create-project` is a guide to bootstrap a new Volto project and start hacking.
--   {doc}`getting-started/roadmap` is intended for integrators to assess their knowledge and determine what gaps they would like to fill through available resources.
+-   {doc}`development/overview` is intended for integrators to assess their knowledge and determine what gaps they would like to fill through available resources.
 
 
 ### Users
