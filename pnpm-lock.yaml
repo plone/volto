@@ -1909,9 +1909,6 @@ importers:
       xmlrpc:
         specifier: 1.3.2
         version: 1.3.2
-      yarnhook:
-        specifier: 0.5.1
-        version: 0.5.1
     devDependencies:
       '@jest/globals':
         specifier: ^29.7.0
@@ -26267,6 +26264,7 @@ packages:
 
   /find-parent-dir@0.3.1:
     resolution: {integrity: sha512-o4UcykWV/XN9wm+jMEtWLPlV8RXCZnMhQI6F6OdHeSez7iiJWePw8ijOlskJZMsaQoGR/b7dH6lO02HhaTN7+A==}
+    dev: true
 
   /find-root@1.1.0:
     resolution: {integrity: sha512-NKfW6bec6GfKc0SGx1e07QZY9PE99u0Bft/0rzSD5k3sO/vwkVUpDUKVm5Gpp5Ue3YfShPFTX2070tDs5kB9Ng==}
@@ -43943,14 +43941,6 @@ packages:
       string-width: 4.2.3
       y18n: 5.0.8
       yargs-parser: 21.1.1
-    dev: false
-
-  /yarnhook@0.5.1:
-    resolution: {integrity: sha512-YPLLXO/PzsFXKvRfsOG/r60WBz8RT7VbkkQv2oHDb6o+EjX0vcUSeA3aw5el2AEWjbcg1sgemjHyCwRIvQxZWw==}
-    hasBin: true
-    dependencies:
-      execa: 4.1.0
-      find-parent-dir: 0.3.1
     dev: false
 
   /yarnhook@0.6.1:
