@@ -18,8 +18,6 @@ export default defineConfig({
         'react-aria',
         'react-aria-components',
         '@react-spectrum/utils',
-        'classnames',
-        'lodash',
       ],
       output: {
         globals: {
