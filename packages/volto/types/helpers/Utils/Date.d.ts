@@ -8,14 +8,14 @@ export function formatDate({ date, format, locale, long, includeTime, formatToPa
     long: any;
     includeTime: any;
     formatToParts?: boolean;
-}): any;
+}): string | Intl.DateTimeFormatPart[];
 export function formatRelativeDate({ date, locale, relativeTo, style, formatToParts, }: {
     date: any;
     locale?: string;
     relativeTo: any;
     style?: string;
     formatToParts?: boolean;
-}): any;
+}): string | Intl.RelativeTimeFormatPart[];
 export namespace short_date_format {
     let year: string;
     let month: string;

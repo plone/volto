@@ -1,5 +1,5 @@
 export default ContentsPropertiesModal;
-declare function ContentsPropertiesModal(props: any): JSX.Element;
+declare function ContentsPropertiesModal(props: any): import("react/jsx-runtime").JSX.Element;
 declare namespace ContentsPropertiesModal {
     namespace propTypes {
         let items: any;

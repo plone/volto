@@ -3,4 +3,4 @@ declare function RelationWidget({ value, children, className }: {
     value: any;
     children: any;
     className: any;
-}): JSX.Element | "";
+}): import("react/jsx-runtime").JSX.Element | "";

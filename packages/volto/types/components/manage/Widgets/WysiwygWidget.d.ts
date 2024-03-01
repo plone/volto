@@ -3,4 +3,4 @@ export const WysiwygWidget: React.ForwardRefExoticComponent<Omit<import("react-i
 };
 export default Preloader;
 import React from 'react';
-declare function Preloader(props: any): JSX.Element;
+declare function Preloader(props: any): import("react/jsx-runtime").JSX.Element;
