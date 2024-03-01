@@ -46,10 +46,7 @@ export const onImageLoad = (editor, reader) => () => {
     },
   };
 
-  uploadContent(url, content, block).then((data) => {
-    const dlUrl = data.image.download;
-    insertImage(editor, dlUrl);
-  });
+  uploadContent(url, content, block);
 };
 
 export const withDeserializers = (editor) => {
