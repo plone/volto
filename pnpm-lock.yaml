@@ -1441,6 +1441,9 @@ importers:
       '@plone/volto-slate':
         specifier: workspace:*
         version: link:../volto-slate
+      '@redux-devtools/extension':
+        specifier: ^3.3.0
+        version: 3.3.0(redux@4.2.1)
       '@types/react':
         specifier: ^18.2.57
         version: 18.2.60
@@ -1813,9 +1816,6 @@ importers:
       redux-connect:
         specifier: 10.0.0
         version: 10.0.0(prop-types@15.7.2)(react-redux@8.1.2)(react-router-config@5.1.1)(react-router-dom@5.2.0)(react-router@5.2.0)(react@18.2.0)(redux-actions@3.0.0)
-      redux-devtools-extension:
-        specifier: 2.13.9
-        version: 2.13.9(redux@4.2.1)
       redux-localstorage-simple:
         specifier: 2.5.1
         version: 2.5.1
@@ -3098,7 +3098,6 @@ packages:
     dependencies:
       '@babel/core': 7.23.3
       '@babel/helper-plugin-utils': 7.22.5
-    dev: true
 
   /@babel/plugin-syntax-flow@7.23.3(@babel/core@7.23.9):
     resolution: {integrity: sha512-YZiAIpkJAwQXBJLIQbRFayR5c+gJ35Vcz3bg954k7cd73zqjvhacJuL9RbrzPz8qPmZdgqP6EUKwy0PCNhaaPA==}
@@ -3196,7 +3195,6 @@ packages:
     dependencies:
       '@babel/core': 7.23.3
       '@babel/helper-plugin-utils': 7.22.5
-    dev: true
 
   /@babel/plugin-syntax-jsx@7.23.3(@babel/core@7.23.9):
     resolution: {integrity: sha512-EB2MELswq55OHUoRZLGg/zC7QWUKfNLpE57m/S2yr1uEneIgsTgrSzXP3NXEsMkVn76OlaVVnzN+ugObuYGwhg==}
@@ -4306,7 +4304,6 @@ packages:
       '@babel/helper-plugin-utils': 7.22.5
       '@babel/plugin-syntax-jsx': 7.23.3(@babel/core@7.23.3)
       '@babel/types': 7.23.3
-    dev: true
 
   /@babel/plugin-transform-react-jsx@7.22.15(@babel/core@7.23.9):
     resolution: {integrity: sha512-oKckg2eZFa8771O/5vi7XeTvmM6+O9cxZu+kanTU7tD4sin5nO/G8jGJhq8Hvt2Z0kUoEDRayuZLaUlYl8QuGA==}
@@ -12912,6 +12909,16 @@ packages:
       '@react-types/overlays': 3.8.5(react@18.2.0)
       '@react-types/shared': 3.22.1(react@18.2.0)
       react: 18.2.0
+    dev: false
+
+  /@redux-devtools/extension@3.3.0(redux@4.2.1):
+    resolution: {integrity: sha512-X34S/rC8S/M1BIrkYD1mJ5f8vlH0BDqxXrs96cvxSBo4FhMdbhU+GUGsmNYov1xjSyLMHgo8NYrUG8bNX7525g==}
+    peerDependencies:
+      redux: ^3.1.0 || ^4.0.0 || ^5.0.0
+    dependencies:
+      '@babel/runtime': 7.23.2
+      immutable: 4.3.4
+      redux: 4.2.1
     dev: false
 
   /@remix-run/css-bundle@2.4.0:
@@ -24164,7 +24171,7 @@ packages:
       draft-js: '>=0.10.0'
       immutable: 3.x.x
     dependencies:
-      draft-js: 0.10.5(react-dom@17.0.2)(react@17.0.2)
+      draft-js: 0.10.5(react-dom@18.2.0)(react@18.2.0)
       draft-js-utils: 1.4.1(draft-js@0.10.5)(immutable@3.8.2)
       immutable: 3.8.2
       synthetic-dom: 1.4.0
@@ -24176,7 +24183,7 @@ packages:
       draft-js: '>=0.10.0'
       immutable: 3.x.x
     dependencies:
-      draft-js: 0.10.5(react-dom@17.0.2)(react@17.0.2)
+      draft-js: 0.10.5(react-dom@18.2.0)(react@18.2.0)
       draft-js-import-element: 1.4.0(draft-js@0.10.5)(immutable@3.8.2)
       immutable: 3.8.2
     dev: false
@@ -24260,7 +24267,7 @@ packages:
     peerDependencies:
       draft-js: ^0.10.1
     dependencies:
-      draft-js: 0.10.5(react-dom@17.0.2)(react@17.0.2)
+      draft-js: 0.10.5(react-dom@18.2.0)(react@18.2.0)
     dev: false
 
   /draft-js-utils@1.4.1(draft-js@0.10.5)(immutable@3.8.2):
@@ -24269,7 +24276,7 @@ packages:
       draft-js: '>=0.10.0'
       immutable: 3.x.x
     dependencies:
-      draft-js: 0.10.5(react-dom@17.0.2)(react@17.0.2)
+      draft-js: 0.10.5(react-dom@18.2.0)(react@18.2.0)
       immutable: 3.8.2
     dev: false
 
@@ -24304,7 +24311,7 @@ packages:
     peerDependencies:
       draft-js: ^0.10.4 || ^0.11.0
     dependencies:
-      draft-js: 0.10.5(react-dom@17.0.2)(react@17.0.2)
+      draft-js: 0.10.5(react-dom@18.2.0)(react@18.2.0)
     dev: false
 
   /dts-buddy@0.2.5:
@@ -25081,8 +25088,8 @@ packages:
       '@babel/plugin-transform-react-jsx': ^7.14.9
       eslint: ^8.1.0
     dependencies:
-      '@babel/plugin-syntax-flow': 7.23.3(@babel/core@7.23.9)
-      '@babel/plugin-transform-react-jsx': 7.22.15(@babel/core@7.23.9)
+      '@babel/plugin-syntax-flow': 7.23.3(@babel/core@7.23.3)
+      '@babel/plugin-transform-react-jsx': 7.22.15(@babel/core@7.23.3)
       eslint: 8.49.0
       lodash: 4.17.21
       string-natural-compare: 3.0.1
@@ -26299,7 +26306,7 @@ packages:
     peerDependencies:
       draft-js: ^0.10.5
     dependencies:
-      draft-js: 0.10.5(react-dom@17.0.2)(react@17.0.2)
+      draft-js: 0.10.5(react-dom@18.2.0)(react@18.2.0)
     dev: false
 
   /find-yarn-workspace-root2@1.2.16:
@@ -37512,7 +37519,7 @@ packages:
       '@babel/runtime': 7.20.6
       array.prototype.flat: 1.3.2
       global-cache: 1.2.1
-      react-with-styles: 4.2.0(@babel/runtime@7.20.6)(react-with-direction@1.4.0)(react@17.0.2)
+      react-with-styles: 4.2.0(@babel/runtime@7.20.6)(react-with-direction@1.4.0)(react@18.2.0)
     dev: false
 
   /react-with-styles@4.2.0(@babel/runtime@7.20.6)(react-with-direction@1.4.0)(react@17.0.2):
@@ -37887,15 +37894,6 @@ packages:
       redux: ^3.1.0 || ^4.0.0
     dependencies:
       redux: 4.1.0
-    dev: false
-
-  /redux-devtools-extension@2.13.9(redux@4.2.1):
-    resolution: {integrity: sha512-cNJ8Q/EtjhQaZ71c8I9+BPySIBVEKssbPpskBfsXqb8HJ002A3KRVHfeRzwRo6mGPqsm7XuHTqNSNeS1Khig0A==}
-    deprecated: Package moved to @redux-devtools/extension.
-    peerDependencies:
-      redux: ^3.1.0 || ^4.0.0
-    dependencies:
-      redux: 4.2.1
     dev: false
 
   /redux-localstorage-simple@2.3.1:
