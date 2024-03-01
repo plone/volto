@@ -17,6 +17,7 @@ export { default as useUndoManager } from "./UndoManager/useUndoManager";
 export { getCookieOptions } from "./Cookies/cookies";
 export { getWidgetView } from "./Widget/widget";
 export { getSiteAsyncPropExtender } from "./Site";
+export { ContentTypeCondition } from "./Slots";
 export { getAuthToken, persistAuthToken } from "@plone/volto/helpers/AuthToken/AuthToken";
 export { addAppURL, expandToBackendURL, flattenHTMLToAppURL, flattenToAppURL, stripQuerystring, toPublicURL, isInternalURL, getParentUrl, getBaseUrl, getView, isCmsUi, getId, isUrl, normalizeUrl, removeProtocol, URLUtils, flattenScales } from "@plone/volto/helpers/Url/Url";
 export { nestContent, getLayoutFieldname, getContentIcon, getLanguageIndependentFields } from "@plone/volto/helpers/Content/Content";
