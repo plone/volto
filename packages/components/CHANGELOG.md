@@ -8,6 +8,16 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.3 (2024-03-01)
+
+### Breaking
+
+- Use `pathname` instead of the full location as prop in `BlocksRenderer` @sneridagh [#5798](https://github.com/plone/volto/issues/5798)
+
+### Bugfix
+
+- Fix `lodash` imports for bundling @sneridagh [#5798](https://github.com/plone/volto/issues/5798)
+
 ## 2.0.0-alpha.2 (2024-02-23)
 
 ### Bugfix

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ImageWidget renders an empty image view widget component 1`] = `""`;
+exports[`ImageWidget renders an empty image view widget component 1`] = `null`;
 
 exports[`ImageWidget renders an image view widget component 1`] = `
 <span

@@ -2,130 +2,99 @@
 
 exports[`renders a schema widget component 1`] = `
 <div>
-  <div
-    className="ui segments"
-    style={
-      Object {
-        "margin": "-1rem",
-      }
-    }
-  >
+  <div>
     <div
-      className="ui pointing secondary attached tabular menu"
-      role="tablist"
-      style={
-        Object {
-          "background": "transparent",
-          "display": "flex",
-          "flexDirection": "row",
-          "flexWrap": "wrap",
-        }
-      }
+      class="ui segments"
+      style="margin: -1rem;"
     >
       <div
-        className="item active"
-        data-rbd-draggable-context-id="0"
-        onClick={[Function]}
-        onTransitionEnd={null}
-        style={
-          Object {
-            "background": "transparent",
-            "transform": null,
-            "transition": null,
-            "userSelect": "none",
-          }
-        }
-      >
-        <i
-          aria-describedby="rbd-hidden-text-0-hidden-text-0"
-          aria-hidden="true"
-          className="grey bars icon drag handle"
-          data-rbd-drag-handle-context-id="0"
-          draggable={false}
-          onDragStart={[Function]}
-          role="button"
-          tabIndex={0}
-        />
-        <button
-          className="item ui noborder button"
-          onClick={[Function]}
-        >
-          <i
-            aria-hidden="true"
-            className="blue write square large icon"
-            onClick={[Function]}
-          />
-        </button>
-        <button
-          className="item ui noborder button"
-          onClick={[Function]}
-        >
-          <i
-            aria-hidden="true"
-            className="red close large icon"
-            onClick={[Function]}
-          />
-        </button>
-      </div>
-      <div
-        className="item item-add"
-      >
-        <button
-          aria-label="Add"
-          className="item ui noborder button"
-          onClick={[Function]}
-        >
-          <i
-            aria-hidden="true"
-            className="plus large icon"
-            onClick={[Function]}
-          />
-        </button>
-      </div>
-    </div>
-    <div
-      style={
-        Object {
-          "background": "transparent",
-        }
-      }
-    />
-    <div
-      className="inline field"
-    >
-      <div
-        className="ui grid"
+        class="ui pointing secondary attached tabular menu"
+        role="tablist"
+        style="background: transparent; display: flex; flex-direction: row; flex-wrap: wrap;"
       >
         <div
-          className="stretched row"
+          class="item active"
+          data-rbd-draggable-context-id="0"
+          style="user-select: none; background: transparent;"
+        >
+          <i
+            aria-describedby="rbd-hidden-text-0-hidden-text-0"
+            aria-hidden="true"
+            class="grey bars icon drag handle"
+            data-rbd-drag-handle-context-id="0"
+            draggable="false"
+            role="button"
+            tabindex="0"
+          />
+          <button
+            class="item ui noborder button"
+          >
+            <i
+              aria-hidden="true"
+              class="blue write square large icon"
+            />
+          </button>
+          <button
+            class="item ui noborder button"
+          >
+            <i
+              aria-hidden="true"
+              class="red close large icon"
+            />
+          </button>
+        </div>
+        <div
+          class="item item-add"
+        >
+          <button
+            aria-label="Add"
+            class="item ui noborder button"
+          >
+            <i
+              aria-hidden="true"
+              class="plus large icon"
+            />
+          </button>
+        </div>
+      </div>
+      <div
+        style="background: transparent;"
+      />
+      <div
+        class="inline field"
+      >
+        <div
+          class="ui grid"
         >
           <div
-            className="twelve wide column"
+            class="stretched row"
           >
             <div
-              className="wrapper"
+              class="twelve wide column"
             >
-              <label
-                htmlFor="addfield"
+              <div
+                class="wrapper"
               >
-                Add field
-              </label>
-            </div>
-            <div
-              className="toolbar"
-            >
-              <button
-                aria-label="Add"
-                className="item ui noborder button"
-                id="addfield"
-                onClick={[Function]}
+                <label
+                  for="addfield"
+                >
+                  Add field
+                </label>
+              </div>
+              <div
+                class="toolbar"
               >
-                <i
-                  aria-hidden="true"
-                  className="blue plus large icon"
-                  onClick={[Function]}
-                />
-              </button>
+                <button
+                  aria-label="Add"
+                  class="item ui noborder button"
+                  id="addfield"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="blue plus large icon"
+                  />
+                </button>
+              </div>
             </div>
           </div>
         </div>
