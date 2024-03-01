@@ -124,7 +124,6 @@ const BlocksForm = (props) => {
   };
 
   const onInsertBlock = (id, value, current) => {
-    // debugger;
     const [newId, newFormData] = insertBlock(
       properties,
       id,
