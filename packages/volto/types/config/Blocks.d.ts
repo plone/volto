@@ -25,7 +25,7 @@ export namespace blocksConfig {
                     isDefault: boolean;
                     title: string;
                     template: {
-                        (props: any): JSX.Element;
+                        (props: any): import("react/jsx-runtime").JSX.Element;
                         propTypes: {
                             data: any;
                             isEditMode: any;

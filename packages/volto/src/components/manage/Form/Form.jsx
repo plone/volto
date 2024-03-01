@@ -53,6 +53,7 @@ import {
 } from '@plone/volto/actions';
 import { compose } from 'redux';
 import config from '@plone/volto/registry';
+import SlotRenderer from '../../theme/SlotRenderer/SlotRenderer';
 
 /**
  * Form container class.
@@ -641,131 +642,147 @@ class Form extends Component {
       // Removing this from SSR is important, since react-beautiful-dnd supports SSR,
       // but draftJS don't like it much and the hydration gets messed up
       this.state.isClient && (
-        <Container>
-          <BlocksToolbar
-            formData={formData}
-            selectedBlock={this.state.selected}
-            selectedBlocks={this.state.multiSelected}
-            onChangeBlocks={(newBlockData) => {
-              const newFormData = {
-                ...formData,
-                ...newBlockData,
-              };
-              this.setState({
-                formData: newFormData,
-              });
-              if (this.props.global) {
-                this.props.setFormData(newFormData);
-              }
-            }}
-            onSetSelectedBlocks={(blockIds) =>
-              this.setState({ multiSelected: blockIds })
-            }
-            onSelectBlock={this.onSelectBlock}
-          />
-          <UndoToolbar
-            state={{
-              formData,
-              selected: this.state.selected,
-              multiSelected: this.state.multiSelected,
-            }}
-            enableHotKeys
-            onUndoRedo={({ state }) => {
-              if (this.props.global) {
-                this.props.setFormData(state.formData);
-              }
-              return this.setState(state);
-            }}
-          />
-          <BlocksForm
-            onChangeFormData={(newData) => {
-              const newFormData = {
-                ...formData,
-                ...newData,
-              };
-              this.setState({
-                formData: newFormData,
-              });
-              if (this.props.global) {
-                this.props.setFormData(newFormData);
-              }
-            }}
-            onChangeField={this.onChangeField}
-            onSelectBlock={this.onSelectBlock}
-            properties={formData}
+        <>
+          <SlotRenderer
+            name="aboveContent"
+            content={this.props.content}
             navRoot={navRoot}
-            type={type}
-            pathname={this.props.pathname}
-            selectedBlock={this.state.selected}
-            multiSelected={this.state.multiSelected}
-            manage={this.props.isAdminForm}
-            allowedBlocks={this.props.allowedBlocks}
-            showRestricted={this.props.showRestricted}
-            editable={this.props.editable}
-            isMainForm={this.props.editable}
           />
-          {this.state.isClient && this.props.editable && (
-            <Portal
-              node={__CLIENT__ && document.getElementById('sidebar-metadata')}
-            >
-              <UiForm
-                method="post"
-                onSubmit={this.onSubmit}
-                error={keys(this.state.errors).length > 0}
+
+          <Container>
+            <BlocksToolbar
+              formData={formData}
+              selectedBlock={this.state.selected}
+              selectedBlocks={this.state.multiSelected}
+              onChangeBlocks={(newBlockData) => {
+                const newFormData = {
+                  ...formData,
+                  ...newBlockData,
+                };
+                this.setState({
+                  formData: newFormData,
+                });
+                if (this.props.global) {
+                  this.props.setFormData(newFormData);
+                }
+              }}
+              onSetSelectedBlocks={(blockIds) =>
+                this.setState({ multiSelected: blockIds })
+              }
+              onSelectBlock={this.onSelectBlock}
+            />
+            <UndoToolbar
+              state={{
+                formData,
+                selected: this.state.selected,
+                multiSelected: this.state.multiSelected,
+              }}
+              enableHotKeys
+              onUndoRedo={({ state }) => {
+                if (this.props.global) {
+                  this.props.setFormData(state.formData);
+                }
+                return this.setState(state);
+              }}
+            />
+            <BlocksForm
+              onChangeFormData={(newData) => {
+                const newFormData = {
+                  ...formData,
+                  ...newData,
+                };
+                this.setState({
+                  formData: newFormData,
+                });
+                if (this.props.global) {
+                  this.props.setFormData(newFormData);
+                }
+              }}
+              onChangeField={this.onChangeField}
+              onSelectBlock={this.onSelectBlock}
+              properties={formData}
+              navRoot={navRoot}
+              type={type}
+              pathname={this.props.pathname}
+              selectedBlock={this.state.selected}
+              multiSelected={this.state.multiSelected}
+              manage={this.props.isAdminForm}
+              allowedBlocks={this.props.allowedBlocks}
+              showRestricted={this.props.showRestricted}
+              editable={this.props.editable}
+              isMainForm={this.props.editable}
+            />
+            {this.state.isClient && this.props.editable && (
+              <Portal
+                node={__CLIENT__ && document.getElementById('sidebar-metadata')}
               >
-                {schema &&
-                  map(schema.fieldsets, (fieldset) => (
-                    <Accordion
-                      fluid
-                      styled
-                      className="form"
-                      key={fieldset.title}
-                    >
-                      <div
-                        key={fieldset.id}
-                        id={`metadataform-fieldset-${fieldset.id}`}
+                <UiForm
+                  method="post"
+                  onSubmit={this.onSubmit}
+                  error={keys(this.state.errors).length > 0}
+                >
+                  {schema &&
+                    map(schema.fieldsets, (fieldset) => (
+                      <Accordion
+                        fluid
+                        styled
+                        className="form"
+                        key={fieldset.title}
                       >
-                        <Accordion.Title
-                          active={metadataFieldsets.includes(fieldset.id)}
-                          index={fieldset.id}
-                          onClick={this.onToggleMetadataFieldset}
+                        <div
+                          key={fieldset.id}
+                          id={`metadataform-fieldset-${fieldset.id}`}
                         >
-                          {fieldset.title}
-                          {metadataFieldsets.includes(fieldset.id) ? (
-                            <Icon name={upSVG} size="20px" />
-                          ) : (
-                            <Icon name={downSVG} size="20px" />
-                          )}
-                        </Accordion.Title>
-                        <Accordion.Content
-                          active={metadataFieldsets.includes(fieldset.id)}
-                        >
-                          <Segment className="attached">
-                            {map(fieldset.fields, (field, index) => (
-                              <Field
-                                {...schema.properties[field]}
-                                id={field}
-                                fieldSet={fieldset.title.toLowerCase()}
-                                formData={formData}
-                                focus={this.state.inFocus[field]}
-                                value={formData?.[field]}
-                                required={schema.required.indexOf(field) !== -1}
-                                onChange={this.onChangeField}
-                                onBlur={this.onBlurField}
-                                onClick={this.onClickInput}
-                                key={field}
-                                error={this.state.errors[field]}
-                              />
-                            ))}
-                          </Segment>
-                        </Accordion.Content>
-                      </div>
-                    </Accordion>
-                  ))}
-              </UiForm>
-            </Portal>
-          )}
-        </Container>
+                          <Accordion.Title
+                            active={metadataFieldsets.includes(fieldset.id)}
+                            index={fieldset.id}
+                            onClick={this.onToggleMetadataFieldset}
+                          >
+                            {fieldset.title}
+                            {metadataFieldsets.includes(fieldset.id) ? (
+                              <Icon name={upSVG} size="20px" />
+                            ) : (
+                              <Icon name={downSVG} size="20px" />
+                            )}
+                          </Accordion.Title>
+                          <Accordion.Content
+                            active={metadataFieldsets.includes(fieldset.id)}
+                          >
+                            <Segment className="attached">
+                              {map(fieldset.fields, (field, index) => (
+                                <Field
+                                  {...schema.properties[field]}
+                                  id={field}
+                                  fieldSet={fieldset.title.toLowerCase()}
+                                  formData={formData}
+                                  focus={this.state.inFocus[field]}
+                                  value={formData?.[field]}
+                                  required={
+                                    schema.required.indexOf(field) !== -1
+                                  }
+                                  onChange={this.onChangeField}
+                                  onBlur={this.onBlurField}
+                                  onClick={this.onClickInput}
+                                  key={field}
+                                  error={this.state.errors[field]}
+                                />
+                              ))}
+                            </Segment>
+                          </Accordion.Content>
+                        </div>
+                      </Accordion>
+                    ))}
+                </UiForm>
+              </Portal>
+            )}
+
+            <SlotRenderer
+              name="belowContent"
+              content={this.props.content}
+              navRoot={navRoot}
+            />
+          </Container>
+        </>
       )
     ) : (
       <Container>
@@ -931,6 +948,7 @@ const FormIntl = injectIntl(Form, { forwardRef: true });
 export default compose(
   connect(
     (state, props) => ({
+      content: state.content.data,
       globalData: state.form?.global,
       metadataFieldsets: state.sidebar?.metadataFieldsets,
       metadataFieldFocus: state.sidebar?.metadataFieldFocus,

@@ -2,6 +2,7 @@ import type { SettingsConfig } from './Settings';
 import type { BlocksConfig } from './Blocks';
 import type { ViewsConfig } from './Views';
 import type { WidgetsConfig } from './Widgets';
+import type { SlotsConfig } from './Slots';
 
 export type AddonReducersConfig = Record<string, Function>;
 
@@ -10,8 +11,6 @@ export type AddonRoutesConfig = {
   exact: boolean;
   component: React.ComponentType;
 }[];
-
-export type SlotsConfig = Record<string, unknown>;
 
 export type ComponentsConfig = Record<
   string,
@@ -34,3 +33,4 @@ export type ConfigData = {
 
 export { SettingsConfig, BlocksConfig, ViewsConfig, WidgetsConfig };
 export * from './Blocks';
+export * from './Slots';

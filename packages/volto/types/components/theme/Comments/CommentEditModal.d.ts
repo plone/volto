@@ -1,5 +1,5 @@
 export default CommentEditModal;
-declare function CommentEditModal(props: any): JSX.Element;
+declare function CommentEditModal(props: any): import("react/jsx-runtime").JSX.Element;
 declare namespace CommentEditModal {
     namespace propTypes {
         let id: any;
