@@ -4,6 +4,8 @@ import { Provider } from 'react-intl-redux';
 import { render } from '@testing-library/react';
 import config from '@plone/volto/registry';
 import TextBlockEdit from './TextBlockEdit';
+import { nanoid } from '@plone/volto-slate/utils';
+import { v4 as uuid } from 'uuid';
 import { mockAllIsIntersecting } from 'react-intersection-observer/test-utils';
 
 const mockStore = configureStore();
@@ -47,6 +49,37 @@ beforeAll(() => {
     restricted: false,
     mostUsed: false,
     blockHasOwnFocusManagement: true,
+    cloneData: (data) => {
+      const replaceAllUidsWithNewOnes = (value) => {
+        if (value?.children?.length > 0) {
+          const newChildren = value.children.map((childrenData) => {
+            if (childrenData?.data?.uid) {
+              return {
+                ...childrenData,
+                data: { ...childrenData.data, uid: nanoid(5) },
+              };
+            }
+            return childrenData;
+          });
+          return {
+            ...value,
+            children: newChildren,
+          };
+        }
+        return value;
+      };
+      return [
+        uuid(),
+        {
+          ...data,
+          value: [
+            ...(data?.value || []).map((value) =>
+              replaceAllUidsWithNewOnes(value),
+            ),
+          ],
+        },
+      ];
+    },
     sidebarTab: 1,
     security: {
       addPermission: [],
@@ -103,5 +136,20 @@ describe('TextBlockEdit', () => {
     );
 
     expect(asFragment()).toMatchSnapshot();
+  });
+  it('clone data gives another uid', async () => {
+    // TODO: also test for the initial contents: My first paragraph.
+    expect(1 === 0);
+    console.log('3');
+    console.log(
+      config.blocks.blocksConfig.slate.cloneData([
+        {
+          type: 'p',
+          children: [
+            { text: '' /* My first paragraph. */, data: { uid: 'xf63f' } },
+          ],
+        },
+      ]),
+    );
   });
 });
