@@ -65,9 +65,6 @@ importers:
       vitest:
         specifier: ^0.34.6
         version: 0.34.6(jsdom@21.1.2)
-      yarnhook:
-        specifier: 0.6.1
-        version: 0.6.1
 
   apps/nextjs:
     dependencies:
@@ -1324,6 +1321,12 @@ importers:
       comment-json:
         specifier: ^4.2.3
         version: 4.2.3
+      execa:
+        specifier: 0.6.3
+        version: 0.6.3
+      find-parent-dir:
+        specifier: ^0.3.1
+        version: 0.3.1
       fs-extra:
         specifier: 10.1.0
         version: 10.1.0
@@ -3095,6 +3098,7 @@ packages:
     dependencies:
       '@babel/core': 7.23.3
       '@babel/helper-plugin-utils': 7.22.5
+    dev: true
 
   /@babel/plugin-syntax-flow@7.23.3(@babel/core@7.23.9):
     resolution: {integrity: sha512-YZiAIpkJAwQXBJLIQbRFayR5c+gJ35Vcz3bg954k7cd73zqjvhacJuL9RbrzPz8qPmZdgqP6EUKwy0PCNhaaPA==}
@@ -3192,6 +3196,7 @@ packages:
     dependencies:
       '@babel/core': 7.23.3
       '@babel/helper-plugin-utils': 7.22.5
+    dev: true
 
   /@babel/plugin-syntax-jsx@7.23.3(@babel/core@7.23.9):
     resolution: {integrity: sha512-EB2MELswq55OHUoRZLGg/zC7QWUKfNLpE57m/S2yr1uEneIgsTgrSzXP3NXEsMkVn76OlaVVnzN+ugObuYGwhg==}
@@ -4301,6 +4306,7 @@ packages:
       '@babel/helper-plugin-utils': 7.22.5
       '@babel/plugin-syntax-jsx': 7.23.3(@babel/core@7.23.3)
       '@babel/types': 7.23.3
+    dev: true
 
   /@babel/plugin-transform-react-jsx@7.22.15(@babel/core@7.23.9):
     resolution: {integrity: sha512-oKckg2eZFa8771O/5vi7XeTvmM6+O9cxZu+kanTU7tD4sin5nO/G8jGJhq8Hvt2Z0kUoEDRayuZLaUlYl8QuGA==}
@@ -24168,7 +24174,7 @@ packages:
       draft-js: '>=0.10.0'
       immutable: 3.x.x
     dependencies:
-      draft-js: 0.10.5(react-dom@18.2.0)(react@18.2.0)
+      draft-js: 0.10.5(react-dom@17.0.2)(react@17.0.2)
       draft-js-utils: 1.4.1(draft-js@0.10.5)(immutable@3.8.2)
       immutable: 3.8.2
       synthetic-dom: 1.4.0
@@ -24180,7 +24186,7 @@ packages:
       draft-js: '>=0.10.0'
       immutable: 3.x.x
     dependencies:
-      draft-js: 0.10.5(react-dom@18.2.0)(react@18.2.0)
+      draft-js: 0.10.5(react-dom@17.0.2)(react@17.0.2)
       draft-js-import-element: 1.4.0(draft-js@0.10.5)(immutable@3.8.2)
       immutable: 3.8.2
     dev: false
@@ -24264,7 +24270,7 @@ packages:
     peerDependencies:
       draft-js: ^0.10.1
     dependencies:
-      draft-js: 0.10.5(react-dom@18.2.0)(react@18.2.0)
+      draft-js: 0.10.5(react-dom@17.0.2)(react@17.0.2)
     dev: false
 
   /draft-js-utils@1.4.1(draft-js@0.10.5)(immutable@3.8.2):
@@ -24273,7 +24279,7 @@ packages:
       draft-js: '>=0.10.0'
       immutable: 3.x.x
     dependencies:
-      draft-js: 0.10.5(react-dom@18.2.0)(react@18.2.0)
+      draft-js: 0.10.5(react-dom@17.0.2)(react@17.0.2)
       immutable: 3.8.2
     dev: false
 
@@ -24308,7 +24314,7 @@ packages:
     peerDependencies:
       draft-js: ^0.10.4 || ^0.11.0
     dependencies:
-      draft-js: 0.10.5(react-dom@18.2.0)(react@18.2.0)
+      draft-js: 0.10.5(react-dom@17.0.2)(react@17.0.2)
     dev: false
 
   /dts-buddy@0.2.5:
@@ -25085,8 +25091,8 @@ packages:
       '@babel/plugin-transform-react-jsx': ^7.14.9
       eslint: ^8.1.0
     dependencies:
-      '@babel/plugin-syntax-flow': 7.23.3(@babel/core@7.23.3)
-      '@babel/plugin-transform-react-jsx': 7.22.15(@babel/core@7.23.3)
+      '@babel/plugin-syntax-flow': 7.23.3(@babel/core@7.23.9)
+      '@babel/plugin-transform-react-jsx': 7.22.15(@babel/core@7.23.9)
       eslint: 8.49.0
       lodash: 4.17.21
       string-natural-compare: 3.0.1
@@ -26264,7 +26270,7 @@ packages:
 
   /find-parent-dir@0.3.1:
     resolution: {integrity: sha512-o4UcykWV/XN9wm+jMEtWLPlV8RXCZnMhQI6F6OdHeSez7iiJWePw8ijOlskJZMsaQoGR/b7dH6lO02HhaTN7+A==}
-    dev: true
+    dev: false
 
   /find-root@1.1.0:
     resolution: {integrity: sha512-NKfW6bec6GfKc0SGx1e07QZY9PE99u0Bft/0rzSD5k3sO/vwkVUpDUKVm5Gpp5Ue3YfShPFTX2070tDs5kB9Ng==}
@@ -26304,7 +26310,7 @@ packages:
     peerDependencies:
       draft-js: ^0.10.5
     dependencies:
-      draft-js: 0.10.5(react-dom@18.2.0)(react@18.2.0)
+      draft-js: 0.10.5(react-dom@17.0.2)(react@17.0.2)
     dev: false
 
   /find-yarn-workspace-root2@1.2.16:
@@ -34079,9 +34085,6 @@ packages:
     resolution: {integrity: sha512-wRvsK9v12Nt2/EIjLp/uvxd3UeRSN9DRoSofDn21Ot+rEw4e98ODvbdSHi6dYr82s4oo6mF823ACmOp1hXd4wg==}
     engines: {node: '>= 12.0.0'}
     hasBin: true
-    peerDependenciesMeta:
-      '@parcel/core':
-        optional: true
     dependencies:
       '@parcel/config-default': 2.10.2(@parcel/core@2.10.2)(postcss@8.4.31)(typescript@5.2.2)
       '@parcel/core': 2.10.2
@@ -34113,9 +34116,6 @@ packages:
     resolution: {integrity: sha512-H/RI1/DmuOkL8RuG/EpNPvtzrbF+7jA/R56ydEEm+lqFbYktKB4COR7JXdHkZXRgbSJyimrFB8d0r9+SaRnj0Q==}
     engines: {node: '>= 12.0.0'}
     hasBin: true
-    peerDependenciesMeta:
-      '@parcel/core':
-        optional: true
     dependencies:
       '@parcel/config-default': 2.11.0(@parcel/core@2.11.0)(postcss@8.4.31)(typescript@5.2.2)
       '@parcel/core': 2.11.0
@@ -37517,7 +37517,7 @@ packages:
       '@babel/runtime': 7.20.6
       array.prototype.flat: 1.3.2
       global-cache: 1.2.1
-      react-with-styles: 4.2.0(@babel/runtime@7.20.6)(react-with-direction@1.4.0)(react@18.2.0)
+      react-with-styles: 4.2.0(@babel/runtime@7.20.6)(react-with-direction@1.4.0)(react@17.0.2)
     dev: false
 
   /react-with-styles@4.2.0(@babel/runtime@7.20.6)(react-with-direction@1.4.0)(react@17.0.2):
@@ -43942,14 +43942,6 @@ packages:
       y18n: 5.0.8
       yargs-parser: 21.1.1
     dev: false
-
-  /yarnhook@0.6.1:
-    resolution: {integrity: sha512-dfsDNNDQE+3fh8ugRATeDO/KRSAeDfLcMn9C0tXXOdzEFpycVGsgK87wZpKa2fgJXM1KI94u04K19XrYFK1sig==}
-    hasBin: true
-    dependencies:
-      execa: 4.1.0
-      find-parent-dir: 0.3.1
-    dev: true
 
   /yauzl@2.10.0:
     resolution: {integrity: sha512-p4a9I6X6nu6IhoGmBqAcbJy1mlC4j27vEPZX9F4L4/vZT3Lyq1VkFHw/V/PUcB9Buo+DG3iHkT0x3Qya58zc3g==}
