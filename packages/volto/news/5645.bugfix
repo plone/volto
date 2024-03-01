@@ -1,2 +1,0 @@
-Fixed toolbar menus not closing when clicking again on the toolbar buttons that show menus. @ichim-david
-Add focus-visible rule to toolbar buttons so that it's visible to the user what button is focused when using tab navigation @ichim-david
