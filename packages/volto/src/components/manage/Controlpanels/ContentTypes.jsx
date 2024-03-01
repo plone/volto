@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 import { getParentUrl } from '@plone/volto/helpers';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import { last } from 'lodash';
 import { Confirm, Container, Table, Button, Header } from 'semantic-ui-react';
 import { toast } from 'react-toastify';
@@ -457,8 +457,8 @@ class ContentTypes extends Component {
             </section>
           </article>
         </Container>
-        {this.state.isClient && (
-          <Portal node={document.getElementById('toolbar')}>
+        {this.state.isClient &&
+          createPortal(
             <Toolbar
               pathname={this.props.pathname}
               hideDefaultViewButtons
@@ -490,9 +490,9 @@ class ContentTypes extends Component {
                   </Button>
                 </>
               }
-            />
-          </Portal>
-        )}
+            />,
+            document.getElementById('toolbar'),
+          )}
       </Container>
     );
   }

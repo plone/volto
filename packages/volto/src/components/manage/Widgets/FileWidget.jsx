@@ -112,7 +112,7 @@ const FileWidget = (props) => {
       if (imageMimetypes.includes(fields[1])) {
         setFileType(true);
         let imagePreview = document.getElementById(`field-${id}-image`);
-        imagePreview.src = reader.result;
+        if (imagePreview) imagePreview.src = reader.result;
       } else {
         setFileType(false);
       }

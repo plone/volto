@@ -8,9 +8,7 @@ import PersonalPreferences from './PersonalPreferences';
 
 const mockStore = configureStore();
 
-jest.mock('react-portal', () => ({
-  Portal: jest.fn(() => <div id="Portal" />),
-}));
+jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
 
 jest.mock('@plone/volto/helpers/Loadable/Loadable');
 beforeAll(
