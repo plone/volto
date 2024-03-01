@@ -19,7 +19,7 @@
     "prettier:fix": "prettier --write '{apps,packages}/**/*.{js,jsx,ts,tsx}' ",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "lint-staged": "lint-staged",
-    "lockhook": "node ./packages/scripts/lockfile.js",
+    "lockhook": "node ./packages/scripts/lockhook.js",
     "prepare": "husky install",
     "husky:uninstall": "husky uninstall",
     "prereleaser": "node packages/scripts/preleaser.js"
