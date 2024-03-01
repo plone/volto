@@ -34,6 +34,7 @@ function getRecursiveItems(items) {
     title: item.title,
     description: item.description,
     url: flattenToAppURL(item['@id']),
+    ...item,
     ...(item.items && { items: getRecursiveItems(item.items) }),
   }));
 }
