@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.4 (2024-03-01)
+
+### Feature
+
+- Support for slots @sneridagh [#5775](https://github.com/plone/volto/issues/5775)
+
 ## 1.0.0-alpha.3 (2024-02-02)
 
 ### Bugfix
