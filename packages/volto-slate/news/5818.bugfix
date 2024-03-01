@@ -1,1 +1,1 @@
-Fix issue of duplicated blocks upon pasting an image into the Slate Editor. @aryan7081
+When pasting an image into a Slate block, now only an image block is created, instead of both a Slate block and an image block. @aryan7081
