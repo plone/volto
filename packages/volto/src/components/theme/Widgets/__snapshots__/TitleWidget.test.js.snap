@@ -18,4 +18,4 @@ exports[`TitleWidget renders a title view widget component with children 1`] = `
 </h1>
 `;
 
-exports[`TitleWidget renders an empty title view widget component 1`] = `""`;
+exports[`TitleWidget renders an empty title view widget component 1`] = `null`;

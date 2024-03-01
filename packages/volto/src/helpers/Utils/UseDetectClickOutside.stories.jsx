@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDetectClickOutside } from './useDetectClickOutside';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import { usePopper } from 'react-popper';
 import { BlockChooser } from '@plone/volto/components';
 
@@ -44,10 +44,9 @@ function OpenedChooserWithPortal(props) {
     triggerKeys: ['Escape'],
   });
 
-  return (
-    <Portal node={document.getElementById('body')}>
-      <div ref={blockChooserRef}>{`Hello ${props.id}`}</div>
-    </Portal>
+  return createPortal(
+    <div ref={blockChooserRef}>{`Hello ${props.id}`}</div>,
+    document.getElementById('body'),
   );
 }
 
@@ -124,7 +123,7 @@ function TestComponentWithPortalAndPopper(props) {
         ref={setReferenceElement}
         onClick={() => setOpenMenu(true)}
       >{`Click me ${props.id}`}</button>
-      <Portal node={document.getElementById('body')}>
+      {createPortal(
         <div
           ref={setPopperElement}
           style={styles.popper}
@@ -136,8 +135,9 @@ function TestComponentWithPortalAndPopper(props) {
               setOpenMenu={setOpenMenu}
             />
           )}
-        </div>
-      </Portal>
+        </div>,
+        document.body,
+      )}
     </div>
   );
 }

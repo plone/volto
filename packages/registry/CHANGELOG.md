@@ -8,6 +8,30 @@
 
 <!-- towncrier release notes start -->
 
+## 1.5.0 (2024-03-01)
+
+### Feature
+
+- Upgrade Volto core to use React 18.2.0 @sneridagh [#3221](https://github.com/plone/volto/issues/3221)
+
+## 1.4.0 (2024-03-01)
+
+### Feature
+
+- Support for slots @tiberiuichim @sneridagh [#5775](https://github.com/plone/volto/issues/5775)
+
+## 1.3.1 (2024-02-20)
+
+### Bugfix
+
+- Export ConfigType @sneridagh [#5774](https://github.com/plone/volto/issues/5774)
+
+## 1.3.0 (2024-02-18)
+
+### Feature
+
+- Add `VOLTOCONFIG` environment variable. @sneridagh [#5752](https://github.com/plone/volto/issues/5752)
+
 ## 1.2.2 (2024-02-02)
 
 ### Bugfix

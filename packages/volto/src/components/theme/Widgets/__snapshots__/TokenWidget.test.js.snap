@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TokenWidget renders an empty tags view widget component 1`] = `""`;
+exports[`TokenWidget renders an empty tags view widget component 1`] = `null`;
 
 exports[`TokenWidget renders tags view widget component 1`] = `
 <span

@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ContentsPropertiesModal renders a contents properties modal component 1`] = `
-<div
-  id="modalform"
-/>
+<div>
+  <div
+    id="modalform"
+  />
+</div>
 `;

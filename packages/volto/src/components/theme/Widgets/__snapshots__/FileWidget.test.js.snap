@@ -47,4 +47,4 @@ exports[`FileWidget renders a simple file view widget component 1`] = `
 </a>
 `;
 
-exports[`FileWidget renders an empty file view widget component 1`] = `""`;
+exports[`FileWidget renders an empty file view widget component 1`] = `null`;

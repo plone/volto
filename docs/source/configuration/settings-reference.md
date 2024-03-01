@@ -415,6 +415,10 @@ excludeLinksAndReferencesMenuItem
     The content menu links to the {guilabel}`Links and references` view per default.
     Exclude this menu item by setting `excludeLinksAndReferencesMenuItem` to `true`.
 
+    ```{seealso}
+    {doc}`../user-manual/links-to-item`
+    ```
+
 okRoute
     Volto provides an `/ok` URL where it responds with a `text/plain ok` response, with an `HTTP 200` status code, to signal third party health check services that the Volto process is running correctly.
 

@@ -1,7 +1,8 @@
-import Icon from '../Icon/Icon';
+import React from 'react';
+import { Icon } from '../Icon/Icon';
 import type { IconPropsWithoutChildren } from '../Icon/Icon';
 
-const Imageleft = (props: IconPropsWithoutChildren) => {
+export const ImageleftIcon = (props: IconPropsWithoutChildren) => {
   return (
     <Icon {...props}>
       <svg
@@ -20,5 +21,3 @@ const Imageleft = (props: IconPropsWithoutChildren) => {
     </Icon>
   );
 };
-
-export default Imageleft;

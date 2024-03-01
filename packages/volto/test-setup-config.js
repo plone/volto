@@ -188,3 +188,4 @@ config.set('experimental', {
     enabled: false,
   },
 });
+config.set('slots', {});
