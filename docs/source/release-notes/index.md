@@ -17,6 +17,12 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.15 (2024-03-01)
+
+### Breaking
+
+- Upgrade Volto core to use React 18.2.0 @sneridagh [#3221](https://github.com/plone/volto/issues/3221)
+
 ## 18.0.0-alpha.14 (2024-03-01)
 
 ### Breaking
@@ -42,7 +48,7 @@ myst:
 
 - Added Release Management Notes. @sneridagh @stevepiercy [#5358](https://github.com/plone/volto/issues/5358)
 - Delete redundant `developing-a-project.md`. @stevepiercy [#5675](https://github.com/plone/volto/issues/5675)
-- Removed Memori and TwinCreator websites from README.md no longer made using Volto and giving 404 error. @ichim-david [#5802](https://github.com/plone/volto/issues/5802)
+- Removed Memori and TwinCreator websites from `README.md` no longer made using Volto and giving 404 error. @ichim-david [#5802](https://github.com/plone/volto/issues/5802)
 
 ## 18.0.0-alpha.13 (2024-02-22)
 

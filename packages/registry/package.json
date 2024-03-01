@@ -9,7 +9,7 @@
   ],
   "funding": "https://github.com/sponsors/plone",
   "license": "MIT",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/plone/volto.git"
@@ -73,12 +73,12 @@
     "glob": "7.1.6"
   },
   "devDependencies": {
-    "@parcel/packager-ts": "2.10.2",
-    "@parcel/transformer-typescript-types": "2.10.2",
+    "@parcel/packager-ts": "^2.12.0",
+    "@parcel/transformer-typescript-types": "^2.12.0",
     "@plone/types": "workspace:*",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "parcel": "2.10.2",
+    "parcel": "^2.12.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "release-it": "16.2.1",

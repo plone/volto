@@ -1,12 +1,12 @@
 import React from 'react';
-import { TextFieldContext } from 'react-aria-components';
+import { SelectContext } from 'react-aria-components';
 import { Select, SelectItem, SelectProps } from '../../Select/Select';
 
 export function QuantaSelect<T extends object>(props: SelectProps<T>) {
   return (
-    <TextFieldContext.Provider value={{ className: 'q react-aria-Select' }}>
+    <SelectContext.Provider value={{ className: 'q react-aria-Select' }}>
       <Select {...props} />
-    </TextFieldContext.Provider>
+    </SelectContext.Provider>
   );
 }
 
