@@ -17,6 +17,17 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.16 (2024-03-02)
+
+### Internal
+
+- Update dependencies
+  Fix prettier due to new version @sneridagh [#5815](https://github.com/plone/volto/issues/5815)
+
+### Documentation
+
+- Linkcheck thinks `README.md` is `http://README.md`. Bad linkcheck, no more 🍺 for you. @stevepiercy [#5816](https://github.com/plone/volto/issues/5816)
+
 ## 18.0.0-alpha.15 (2024-03-01)
 
 ### Breaking
