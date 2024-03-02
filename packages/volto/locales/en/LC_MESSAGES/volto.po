@@ -412,6 +412,11 @@ msgstr ""
 msgid "Assignments"
 msgstr ""
 
+#. Default: "Autosaved content found"
+#: helpers/Utils/withSaveAsDraft
+msgid "Autosaved content found"
+msgstr ""
+
 #. Default: "Available"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Available"
@@ -1101,6 +1106,11 @@ msgstr ""
 #. Default: "Do you really want to delete this item?"
 #: components/manage/Delete/Delete
 msgid "Do you really want to delete this item?"
+msgstr ""
+
+#. Default: "Do you want to restore the autosaved content?"
+#: helpers/Utils/withSaveAsDraft
+msgid "Do you want to restore the autosaved content?"
 msgstr ""
 
 #. Default: "Document"
@@ -3628,6 +3638,11 @@ msgstr ""
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "The site configuration is outdated and needs to be upgraded."
+msgstr ""
+
+#. Default: "The version of the autosaved content I found in your browser is older than that stored on the server. Do you want to restore the autosaved content? (You can undo the autosaved content and revert to the server version.)"
+#: helpers/Utils/withSaveAsDraft
+msgid "The version of the autosaved content I found in your browser is older than that stored on the server. Do you want to restore the autosaved content? (You can undo the autosaved content and revert to the server version.)"
 msgstr ""
 
 #. Default: "The working copy was discarded"

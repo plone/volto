@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2024-02-26T09:23:35.781Z\n"
+"POT-Creation-Date: 2024-03-02T17:43:06.261Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -412,6 +412,11 @@ msgstr ""
 #. Default: "Assignments"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Assignments"
+msgstr ""
+
+#. Default: "Autosaved content found"
+#: helpers/Utils/withSaveAsDraft
+msgid "Autosaved content found"
 msgstr ""
 
 #. Default: "Available"
@@ -1103,6 +1108,11 @@ msgstr ""
 #. Default: "Do you really want to delete this item?"
 #: components/manage/Delete/Delete
 msgid "Do you really want to delete this item?"
+msgstr ""
+
+#. Default: "Do you want to restore the autosaved content?"
+#: helpers/Utils/withSaveAsDraft
+msgid "Do you want to restore the autosaved content?"
 msgstr ""
 
 #. Default: "Document"
@@ -3630,6 +3640,11 @@ msgstr ""
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "The site configuration is outdated and needs to be upgraded."
+msgstr ""
+
+#. Default: "The version of the autosaved content I found in your browser is older than that stored on the server. Do you want to restore the autosaved content? (You can undo the autosaved content and revert to the server version.)"
+#: helpers/Utils/withSaveAsDraft
+msgid "The version of the autosaved content I found in your browser is older than that stored on the server. Do you want to restore the autosaved content? (You can undo the autosaved content and revert to the server version.)"
 msgstr ""
 
 #. Default: "The working copy was discarded"

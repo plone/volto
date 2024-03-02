@@ -418,6 +418,11 @@ msgstr ""
 msgid "Assignments"
 msgstr "分配"
 
+#. Default: "Autosaved content found"
+#: helpers/Utils/withSaveAsDraft
+msgid "Autosaved content found"
+msgstr ""
+
 #. Default: "Available"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Available"
@@ -1108,6 +1113,11 @@ msgstr "确定要删除这个用户 {username}吗？"
 #: components/manage/Delete/Delete
 msgid "Do you really want to delete this item?"
 msgstr "确定要删除这个条目吗"
+
+#. Default: "Do you want to restore the autosaved content?"
+#: helpers/Utils/withSaveAsDraft
+msgid "Do you want to restore the autosaved content?"
+msgstr ""
 
 #. Default: "Document"
 #: components/manage/Multilingual/TranslationObject
@@ -3635,6 +3645,11 @@ msgstr "注册过程成功完成。请在您的电子邮箱中查看有关如何
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "The site configuration is outdated and needs to be upgraded."
 msgstr "网站配置已过时，需要升级。"
+
+#. Default: "The version of the autosaved content I found in your browser is older than that stored on the server. Do you want to restore the autosaved content? (You can undo the autosaved content and revert to the server version.)"
+#: helpers/Utils/withSaveAsDraft
+msgid "The version of the autosaved content I found in your browser is older than that stored on the server. Do you want to restore the autosaved content? (You can undo the autosaved content and revert to the server version.)"
+msgstr ""
 
 #. Default: "The working copy was discarded"
 #: components/manage/Toolbar/More

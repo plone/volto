@@ -15,6 +15,7 @@ import aheadSVG from '@plone/volto/icons/ahead.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import upSVG from '@plone/volto/icons/up-key.svg';
 import downSVG from '@plone/volto/icons/down-key.svg';
+import withSaveAsDraft from '@plone/volto/helpers/Utils/withSaveAsDraft';
 import {
   findIndex,
   isEmpty,
@@ -248,6 +249,18 @@ class Form extends Component {
     this.onBlurField = this.onBlurField.bind(this);
     this.onClickInput = this.onClickInput.bind(this);
     this.onToggleMetadataFieldset = this.onToggleMetadataFieldset.bind(this);
+    this.updateFormDataWithSaved = this.updateFormDataWithSaved.bind(this);
+  }
+
+  /**
+   * Function sent as callback to saveAsDraft when user
+   * choses to load local data
+   * @param {Object} savedFormData
+   */
+  updateFormDataWithSaved(savedFormData) {
+    if (savedFormData) {
+      this.setState({ formData: savedFormData });
+    }
   }
 
   /**
@@ -257,6 +270,13 @@ class Form extends Component {
    * @param {Object} prevProps
    */
   async componentDidUpdate(prevProps, prevState) {
+    // schema was just received async and plugged as prop
+    if (!prevProps.schema && this.props.schema) {
+      this.props.checkSavedDraft(
+        this.state.formData,
+        this.updateFormDataWithSaved,
+      );
+    }
     let { requestError } = this.props;
     let errors = {};
     let activeIndex = 0;
@@ -280,6 +300,12 @@ class Form extends Component {
         this.props.onChangeFormData(this.state.formData);
       }
     }
+
+    // on each formData update it will save the form to the localStorage
+    if (!isEqual(prevState?.formData, this.state.formData)) {
+      this.props.onSaveDraft(this.state.formData);
+    }
+
     if (
       this.props.global &&
       !isEqual(this.props.globalData, prevProps.globalData)
@@ -365,6 +391,9 @@ class Form extends Component {
     }
   }
 
+  // !! componentDidMount is called twice for Add
+  // setState passed through callback (updateFormDataWithSaved) is ignored for the first call
+  // only for the second call it will execute the setState
   /**
    * Component did mount
    * @method componentDidMount
@@ -372,6 +401,15 @@ class Form extends Component {
    */
   componentDidMount() {
     this.setState({ isClient: true });
+
+    // schema already exists in redux store
+    if (this.props.schema) {
+      this.props.checkSavedDraft(
+        this.state.formData,
+        this.updateFormDataWithSaved,
+      );
+      return;
+    }
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -548,6 +586,8 @@ class Form extends Component {
     } else {
       // Get only the values that have been modified (Edit forms), send all in case that
       // it's an add form
+      this.props.onCancelDraft();
+
       if (this.props.isEditForm) {
         this.props.onSubmit(this.getOnlyFormModifiedValues());
       } else {
@@ -970,4 +1010,5 @@ export default compose(
     null,
     { forwardRef: true },
   ),
+  withSaveAsDraft({ forwardRef: true }),
 )(FormIntl);

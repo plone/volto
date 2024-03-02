@@ -31,5 +31,6 @@ Note that the audience for these sources may be a Developer, not an Editor, and 
 
 blocks
 copy-paste-blocks
+autosave
 links-to-item
 ```
