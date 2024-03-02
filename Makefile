@@ -385,3 +385,7 @@ start-test-acceptance-server-5: ## Start Test Acceptance Server Main Fixture Plo
 .PHONY: start-test-acceptance-server-detached
 start-test-acceptance-server-detached: ## Start Test Acceptance Server Main Fixture (docker container) in a detached (daemon) mode
 	docker run -d --name plone-client-acceptance-server -i --rm -p 55001:55001 $(DOCKER_IMAGE_ACCEPTANCE)
+
+.PHONY: stop-test-acceptance-server-detached
+stop-test-acceptance-server-detached: ## Stop Test Acceptance Server Main Fixture (docker container) in a detached (daemon) mode
+	docker kill plone-client-acceptance-server
