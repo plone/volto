@@ -20,7 +20,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "lint-staged": "lint-staged",
     "lockhook": "node packages/scripts/lockhook.js",
-    "prepare": "husky install",
+    "prepare": "husky",
     "husky:uninstall": "husky uninstall",
     "prereleaser": "node packages/scripts/preleaser.js"
   },
@@ -37,7 +37,7 @@
     "eslint-plugin-prettier": "5.0.0",
     "eslint-plugin-react": "7.33.2",
     "husky": "^8.0.3",
-    "lint-staged": "15.0.2",
+    "lint-staged": "15.2.2",
     "prettier": "3.0.3",
     "stylelint": "^15.11.0",
     "tsconfig": "workspace:*",
