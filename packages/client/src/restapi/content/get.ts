@@ -1,4 +1,3 @@
-import { queryOptions } from '@tanstack/react-query';
 import { apiRequest, ApiRequestParams } from '../../API';
 import { PloneClientConfig } from '../../validation/config';
 import { Content } from '@plone/types';
@@ -65,9 +64,8 @@ export const getContentQuery = ({
   fullObjects,
   expand,
   config,
-}: ContentArgs) =>
-  queryOptions({
-    queryKey: [path, 'get', 'content'],
-    queryFn: () =>
-      getContent({ path, expand, version, page, fullObjects, config }),
-  });
+}: ContentArgs) => ({
+  queryKey: [path, 'get', 'content'],
+  queryFn: () =>
+    getContent({ path, expand, version, page, fullObjects, config }),
+});
