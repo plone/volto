@@ -24,8 +24,8 @@ const BooleanWidget = ({ value, children, className, intl }) => {
               : intl.formatMessage(messages.no),
           )
         : value
-        ? intl.formatMessage(messages.yes)
-        : intl.formatMessage(messages.no)}
+          ? intl.formatMessage(messages.yes)
+          : intl.formatMessage(messages.no)}
     </span>
   ) : (
     ''

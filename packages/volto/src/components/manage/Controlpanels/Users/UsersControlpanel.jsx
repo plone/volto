@@ -338,8 +338,8 @@ class UsersControlpanel extends Component {
           entry.id === name && !entry.roles.includes(value)
             ? [...entry.roles, value]
             : entry.id !== name
-            ? entry.roles
-            : pull(entry.roles, value),
+              ? entry.roles
+              : pull(entry.roles, value),
       })),
     });
   }
