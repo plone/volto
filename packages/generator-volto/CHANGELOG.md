@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 9.0.0-alpha.8 (2024-03-02)
+
+### Internal
+
+- Update dependencies @sneridagh [#5815](https://github.com/plone/volto/issues/5815)
+
 ## 9.0.0-alpha.7 (2024-03-01)
 
 ### Bugfix
