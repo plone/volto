@@ -42,7 +42,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Start backend
-        run: make start-backend-docker
+        run: make start-backend-docker-detached
 
       - name: Build
         run: pnpm --filter plone-vite-ssr build
@@ -53,3 +53,5 @@ jobs:
       - name: Run tests
         run: node packages/scripts/check_deployment.js
 
+      - name: Stop backend
+        run: make stop-backend-docker-detached
