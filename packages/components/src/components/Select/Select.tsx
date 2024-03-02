@@ -52,7 +52,7 @@ export function Select<T extends object>({
   ...props
 }: SelectProps<T>) {
   // In case that we want to customize the Popover, we proxy the PopoverContext props down
-  const [popOverProps] = useContextProps({}, null, PopoverContext);
+  const [popoverProps] = useContextProps({}, null, PopoverContext);
 
   return (
     <RACSelect {...props}>
@@ -68,7 +68,7 @@ export function Select<T extends object>({
           </Button>
           {description && <Text slot="description">{description}</Text>}
           <FieldError>{errorMessage}</FieldError>
-          <Popover {...popOverProps}>
+          <Popover {...popoverProps}>
             <ListBox items={items}>{children}</ListBox>
           </Popover>
         </>
