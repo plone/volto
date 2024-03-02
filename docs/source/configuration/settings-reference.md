@@ -40,7 +40,7 @@ contentIcons
     With this property you can configure Content Types icons.
     Those are visible in Contents view (ex "Folder contents").  The default
     ones are in
-    [config/ContentIcons.jsx](https://github.com/plone/volto/blob/master/src/config/ContentIcons.jsx)
+    [config/ContentIcons.jsx](https://github.com/plone/volto/blob/main/packages/volto/src/config/ContentIcons.jsx)
     and you can extend them in your project's config for custom content types
     using `settings.contentIcons`.
 
@@ -414,6 +414,10 @@ excludeLinksAndReferencesMenuItem
     A Boolean, `false` by default.
     The content menu links to the {guilabel}`Links and references` view per default.
     Exclude this menu item by setting `excludeLinksAndReferencesMenuItem` to `true`.
+
+    ```{seealso}
+    {doc}`../user-manual/links-to-item`
+    ```
 
 okRoute
     Volto provides an `/ok` URL where it responds with a `text/plain ok` response, with an `HTTP 200` status code, to signal third party health check services that the Volto process is running correctly.

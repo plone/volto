@@ -1,0 +1,264 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Contact form renders a contact form 1`] = `
+<div>
+  <div
+    id="contact-form"
+  >
+    <div
+      class="ui container"
+      id="view"
+    >
+      <div
+        class="ui icon negative attached message"
+      >
+        <i
+          aria-hidden="true"
+          class="warning icon"
+        />
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            Error
+          </div>
+        </div>
+      </div>
+      <div
+        class="ui container"
+      >
+        <form
+          class="ui form"
+          method="post"
+        >
+          <fieldset
+            class="invisible"
+          >
+            <div
+              class="ui raised segments"
+            >
+              <div
+                class="ui segment"
+              >
+                <div
+                  class="ui segment primary"
+                >
+                  <h1
+                    style="font-size: 16px;"
+                  >
+                     
+                    Contact form
+                  </h1>
+                </div>
+                <div
+                  class="mocked-default-widget"
+                  id="mocked-field-name"
+                >
+                  Name
+                   - 
+                  No description
+                </div>
+                <div
+                  class="mocked-default-widget"
+                  id="mocked-field-from"
+                >
+                  From
+                   - 
+                  No description
+                </div>
+                <div
+                  class="mocked-default-widget"
+                  id="mocked-field-subject"
+                >
+                  Subject
+                   - 
+                  No description
+                </div>
+                <div
+                  class="mocked-textarea-widget"
+                  id="mocked-field-message"
+                >
+                  Message
+                   - 
+                  No description
+                </div>
+              </div>
+              <div
+                class="ui clearing segment actions"
+              >
+                <button
+                  aria-label="Send"
+                  class="ui basic primary right floated button"
+                  title="Send"
+                  type="submit"
+                >
+                  <svg
+                    class="icon circled"
+                    style="height: 30px; width: auto; fill: currentColor;"
+                    viewBox=""
+                    xmlns=""
+                  />
+                </button>
+                <button
+                  aria-label="Cancel"
+                  class="ui basic secondary right floated button"
+                  title="Cancel"
+                >
+                  <svg
+                    class="icon circled"
+                    style="height: 30px; width: auto; fill: currentColor;"
+                    viewBox=""
+                    xmlns=""
+                  />
+                </button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div
+    id="toolbar"
+  >
+    <div
+      id="Portal"
+    />
+  </div>
+</div>
+`;
+
+exports[`Contact form renders a contact form with error message 1`] = `
+<div>
+  <div
+    id="contact-form"
+  >
+    <div
+      class="ui container"
+      id="view"
+    >
+      <div
+        class="ui icon negative attached message"
+      >
+        <i
+          aria-hidden="true"
+          class="warning icon"
+        />
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            Error
+          </div>
+          <p>
+            Error foo
+          </p>
+        </div>
+      </div>
+      <div
+        class="ui container"
+      >
+        <form
+          class="ui form"
+          method="post"
+        >
+          <fieldset
+            class="invisible"
+          >
+            <div
+              class="ui raised segments"
+            >
+              <div
+                class="ui segment"
+              >
+                <div
+                  class="ui segment primary"
+                >
+                  <h1
+                    style="font-size: 16px;"
+                  >
+                     
+                    Contact form
+                  </h1>
+                </div>
+                <div
+                  class="mocked-default-widget"
+                  id="mocked-field-name"
+                >
+                  Name
+                   - 
+                  No description
+                </div>
+                <div
+                  class="mocked-default-widget"
+                  id="mocked-field-from"
+                >
+                  From
+                   - 
+                  No description
+                </div>
+                <div
+                  class="mocked-default-widget"
+                  id="mocked-field-subject"
+                >
+                  Subject
+                   - 
+                  No description
+                </div>
+                <div
+                  class="mocked-textarea-widget"
+                  id="mocked-field-message"
+                >
+                  Message
+                   - 
+                  No description
+                </div>
+              </div>
+              <div
+                class="ui clearing segment actions"
+              >
+                <button
+                  aria-label="Send"
+                  class="ui basic primary right floated button"
+                  title="Send"
+                  type="submit"
+                >
+                  <svg
+                    class="icon circled"
+                    style="height: 30px; width: auto; fill: currentColor;"
+                    viewBox=""
+                    xmlns=""
+                  />
+                </button>
+                <button
+                  aria-label="Cancel"
+                  class="ui basic secondary right floated button"
+                  title="Cancel"
+                >
+                  <svg
+                    class="icon circled"
+                    style="height: 30px; width: auto; fill: currentColor;"
+                    viewBox=""
+                    xmlns=""
+                  />
+                </button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div
+    id="toolbar"
+  >
+    <div
+      id="Portal"
+    />
+  </div>
+</div>
+`;

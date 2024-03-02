@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Rules renders rules control panel control 1`] = `
+<div>
+  <div
+    id="page-rules"
+  >
+    <div
+      class="ui container"
+    >
+      <article
+        id="content"
+      >
+        <div
+          class="ui raised segments"
+        >
+          <div
+            class="ui segment primary"
+          >
+            Content Rules
+          </div>
+          <div
+            class="ui segment secondary"
+          >
+            Use the form below to define, change or remove content rules. Rules will automatically perform actions on content when certain triggers take place. After defining rules, you may want to go to a folder to assign them, using the 'rules' item in the actions menu.
+          </div>
+          <div
+            class="ui segment"
+          >
+            <div
+              class="ui small header"
+            >
+              Filter Rules:
+            </div>
+            <form
+              class="ui form"
+            >
+              <div
+                style="display: flex; flex-wrap: wrap;"
+              />
+            </form>
+            <table
+              class="ui table"
+            >
+              <tbody
+                class=""
+              >
+                <tr
+                  class=""
+                >
+                  <th
+                    class=""
+                  >
+                    Content Rule
+                  </th>
+                  <th
+                    class=""
+                  >
+                    Event
+                  </th>
+                  <th
+                    class=""
+                  >
+                    Status
+                  </th>
+                  <th
+                    class=""
+                  >
+                    Actions
+                  </th>
+                </tr>
+              </tbody>
+            </table>
+            <button
+              class="ui primary button"
+            >
+              Add content rule
+            </button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+  <div
+    id="toolbar"
+  >
+    <div
+      id="Portal"
+    />
+  </div>
+</div>
+`;

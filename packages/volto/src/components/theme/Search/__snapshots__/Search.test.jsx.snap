@@ -1,0 +1,126 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search renders a search component 1`] = `
+<div>
+  <div
+    class="ui container"
+    id="page-search"
+  >
+    <div
+      class="container"
+    >
+      <article
+        id="content"
+      >
+        <header>
+          <h1
+            class="documentFirstHeading"
+          >
+            Search results for 
+            <q>
+              blog
+            </q>
+          </h1>
+          <div
+            id="search-tags"
+          />
+          <div>
+            No results found
+          </div>
+        </header>
+        <section
+          id="content-core"
+        >
+          <article
+            class="tileItem"
+          >
+            <h2
+              class="tileHeadline"
+            >
+              <a
+                class="summary url"
+                href="/blog"
+                title="Folder"
+              >
+                Blog
+              </a>
+            </h2>
+            <div
+              class="tileBody"
+            >
+              <span
+                class="description"
+              >
+                My blog
+              </span>
+            </div>
+            <div
+              class="tileFooter"
+            >
+              <a
+                href="/blog"
+              >
+                Read More…
+              </a>
+            </div>
+            <div
+              class="visualClear"
+            />
+          </article>
+        </section>
+      </article>
+    </div>
+  </div>
+  <div
+    id="toolbar"
+  >
+    <div
+      id="Portal"
+    />
+  </div>
+</div>
+`;
+
+exports[`Search renders an empty search component 1`] = `
+<div>
+  <div
+    class="ui container"
+    id="page-search"
+  >
+    <div
+      class="container"
+    >
+      <article
+        id="content"
+      >
+        <header>
+          <h1
+            class="documentFirstHeading"
+          >
+            Search results for 
+            <q>
+              blog
+            </q>
+          </h1>
+          <div
+            id="search-tags"
+          />
+          <div>
+            No results found
+          </div>
+        </header>
+        <section
+          id="content-core"
+        />
+      </article>
+    </div>
+  </div>
+  <div
+    id="toolbar"
+  >
+    <div
+      id="Portal"
+    />
+  </div>
+</div>
+`;

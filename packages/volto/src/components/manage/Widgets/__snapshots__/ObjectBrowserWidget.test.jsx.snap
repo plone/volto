@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a objectBrowser widget component 1`] = `
+<div>
+  <div
+    class="inline field text field-wrapper-my-field"
+  >
+    <div
+      class="ui grid"
+    >
+      <div
+        class="stretched row"
+      >
+        <div
+          class="four wide column"
+        >
+          <div
+            class="wrapper"
+          >
+            <label
+              for="field-my-field"
+              id="fieldset-default-field-label-my-field"
+            >
+              My field
+            </label>
+          </div>
+        </div>
+        <div
+          class="eight wide column"
+        >
+          <div
+            aria-labelledby="fieldset-default-field-label-my-field"
+            class="objectbrowser-field"
+          >
+            <div
+              class="selected-values"
+              role="searchbox"
+              tabindex="0"
+            >
+              <div
+                class="placeholder"
+              >
+                No items selected
+              </div>
+            </div>
+            <button
+              aria-label="Open object browser"
+              class="ui button action"
+            >
+              <svg
+                class="icon"
+                style="height: 18px; width: auto; fill: currentColor;"
+                viewBox=""
+                xmlns=""
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

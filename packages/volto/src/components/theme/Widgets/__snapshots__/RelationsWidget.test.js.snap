@@ -1,0 +1,267 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RelationsWidget renders a full vocabulary array view widget component 1`] = `
+<ul
+  className="metadata relations widget"
+>
+  <li>
+    <a
+      className="metadata relation widget"
+      href="/"
+      onClick={[Function]}
+      target={null}
+      title=""
+    >
+      <svg
+        className="icon icon-margin"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": undefined,
+          }
+        }
+        onClick={null}
+        style={
+          Object {
+            "fill": "#878f93",
+            "height": "20px",
+            "width": "auto",
+          }
+        }
+        viewBox=""
+        xmlns=""
+      />
+      Foo
+    </a>
+  </li>
+  <li>
+    <a
+      className="metadata relation widget"
+      href="/"
+      onClick={[Function]}
+      target={null}
+      title=""
+    >
+      <svg
+        className="icon icon-margin"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": undefined,
+          }
+        }
+        onClick={null}
+        style={
+          Object {
+            "fill": "#878f93",
+            "height": "20px",
+            "width": "auto",
+          }
+        }
+        viewBox=""
+        xmlns=""
+      />
+      Bar
+    </a>
+  </li>
+</ul>
+`;
+
+exports[`RelationsWidget renders a full vocabulary relations view widget component with children 1`] = `
+<ul
+  className="metadata relations widget"
+>
+  <li>
+    <a
+      className="metadata relation widget Foo private"
+      href="/foo-page"
+      onClick={[Function]}
+      target={null}
+      title="A Foo"
+    >
+      <svg
+        className="icon icon-margin"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "<title>Foo</title>undefined",
+          }
+        }
+        onClick={null}
+        style={
+          Object {
+            "fill": "#878f93",
+            "height": "20px",
+            "width": "auto",
+          }
+        }
+        viewBox=""
+        xmlns=""
+      />
+      <strong>
+        Foo
+      </strong>
+    </a>
+  </li>
+  <li>
+    <a
+      className="metadata relation widget Bar published"
+      href="/bar-page"
+      onClick={[Function]}
+      target={null}
+      title="A Bar"
+    >
+      <svg
+        className="icon icon-margin"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "<title>Bar</title>undefined",
+          }
+        }
+        onClick={null}
+        style={
+          Object {
+            "fill": "#878f93",
+            "height": "20px",
+            "width": "auto",
+          }
+        }
+        viewBox=""
+        xmlns=""
+      />
+      <strong>
+        Bar
+      </strong>
+    </a>
+  </li>
+</ul>
+`;
+
+exports[`RelationsWidget renders a simple relations view widget component 1`] = `
+<ul
+  className="metadata relations widget"
+>
+  <li>
+    <a
+      className="metadata relation widget"
+      href="/"
+      onClick={[Function]}
+      target={null}
+      title=""
+    >
+      <svg
+        className="icon icon-margin"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": undefined,
+          }
+        }
+        onClick={null}
+        style={
+          Object {
+            "fill": "#878f93",
+            "height": "20px",
+            "width": "auto",
+          }
+        }
+        viewBox=""
+        xmlns=""
+      />
+      foo
+    </a>
+  </li>
+  <li>
+    <a
+      className="metadata relation widget"
+      href="/"
+      onClick={[Function]}
+      target={null}
+      title=""
+    >
+      <svg
+        className="icon icon-margin"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": undefined,
+          }
+        }
+        onClick={null}
+        style={
+          Object {
+            "fill": "#878f93",
+            "height": "20px",
+            "width": "auto",
+          }
+        }
+        viewBox=""
+        xmlns=""
+      />
+      bar
+    </a>
+  </li>
+</ul>
+`;
+
+exports[`RelationsWidget renders a vocabulary relations view widget component 1`] = `
+<ul
+  className="metadata relations widget"
+>
+  <li>
+    <a
+      className="metadata relation widget"
+      href="/"
+      onClick={[Function]}
+      target={null}
+      title=""
+    >
+      <svg
+        className="icon icon-margin"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": undefined,
+          }
+        }
+        onClick={null}
+        style={
+          Object {
+            "fill": "#878f93",
+            "height": "20px",
+            "width": "auto",
+          }
+        }
+        viewBox=""
+        xmlns=""
+      />
+      Foo
+    </a>
+  </li>
+  <li>
+    <a
+      className="metadata relation widget"
+      href="/"
+      onClick={[Function]}
+      target={null}
+      title=""
+    >
+      <svg
+        className="icon icon-margin"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": undefined,
+          }
+        }
+        onClick={null}
+        style={
+          Object {
+            "fill": "#878f93",
+            "height": "20px",
+            "width": "auto",
+          }
+        }
+        viewBox=""
+        xmlns=""
+      />
+      Bar
+    </a>
+  </li>
+</ul>
+`;
+
+exports[`RelationsWidget renders an empty relations view widget component 1`] = `null`;

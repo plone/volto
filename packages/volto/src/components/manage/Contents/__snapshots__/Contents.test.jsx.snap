@@ -1,0 +1,603 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Contents renders a folder contents view component 1`] = `
+<div>
+  <div
+    aria-live="polite"
+    class="ui container folder-contents"
+    id="page-contents"
+  >
+    <div
+      class="blurring dimmable"
+    >
+      <div
+        class="ui inverted dimmer"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="ui massive indeterminate text loader"
+          >
+            Loading
+          </div>
+        </div>
+      </div>
+      <div
+        class="container"
+      >
+        <article
+          id="content"
+        >
+          <div
+            class="UploadModal"
+          />
+          <section
+            id="content-core"
+          >
+            <div
+              class="ui raised segments"
+            >
+              <div
+                class="ui secondary attached top-menu menu"
+              >
+                <div
+                  class="menu top-menu-menu"
+                >
+                  <button
+                    aria-label="Upload"
+                    class="ui button icon item upload"
+                  >
+                    <svg
+                      class="icon upload"
+                      style="height: 24px; width: auto; fill: #007eb1;"
+                      viewBox=""
+                      xmlns=""
+                    />
+                  </button>
+                </div>
+                <div
+                  class="menu top-menu-menu"
+                >
+                  <button
+                    aria-label="Rename"
+                    class="ui button disabled icon item"
+                  >
+                    <svg
+                      class="icon rename"
+                      style="height: 24px; width: auto; fill: grey;"
+                      viewBox=""
+                      xmlns=""
+                    />
+                  </button>
+                  <button
+                    aria-label="State"
+                    class="ui button disabled icon item"
+                  >
+                    <svg
+                      class="icon semaphore"
+                      style="height: 24px; width: auto; fill: grey;"
+                      viewBox=""
+                      xmlns=""
+                    />
+                  </button>
+                  <button
+                    aria-label="Tags"
+                    class="ui button disabled icon item"
+                  >
+                    <svg
+                      class="icon tag"
+                      style="height: 24px; width: auto; fill: grey;"
+                      viewBox=""
+                      xmlns=""
+                    />
+                  </button>
+                  <button
+                    aria-label="Properties"
+                    class="ui button disabled icon item"
+                  >
+                    <svg
+                      class="icon properties"
+                      style="height: 24px; width: auto; fill: grey;"
+                      viewBox=""
+                      xmlns=""
+                    />
+                  </button>
+                </div>
+                <div
+                  class="menu top-menu-menu"
+                >
+                  <button
+                    aria-label="Cut"
+                    class="ui button disabled icon item"
+                  >
+                    <svg
+                      class="icon cut"
+                      style="height: 24px; width: auto; fill: grey;"
+                      viewBox=""
+                      xmlns=""
+                    />
+                  </button>
+                  <button
+                    aria-label="Copy"
+                    class="ui button disabled icon item"
+                  >
+                    <svg
+                      class="icon copy"
+                      style="height: 24px; width: auto; fill: grey;"
+                      viewBox=""
+                      xmlns=""
+                    />
+                  </button>
+                  <button
+                    aria-label="Paste"
+                    class="ui button icon item"
+                  >
+                    <svg
+                      class="icon paste"
+                      style="height: 24px; width: auto; fill: grey;"
+                      viewBox=""
+                      xmlns=""
+                    />
+                  </button>
+                  <button
+                    aria-label="Delete"
+                    class="ui button disabled icon item"
+                  >
+                    <svg
+                      class="icon delete"
+                      style="height: 24px; width: auto; fill: grey;"
+                      viewBox=""
+                      xmlns=""
+                    />
+                  </button>
+                </div>
+                <div
+                  class="right menu top-menu-searchbox"
+                >
+                  <div
+                    class="ui right aligned category search item"
+                  >
+                    <div
+                      class="ui small transparent input"
+                    >
+                      <input
+                        placeholder="Filter…"
+                        type="text"
+                        value=""
+                      />
+                    </div>
+                    <svg
+                      class="icon zoom"
+                      style="height: 30px; width: auto; fill: #007eb1; flex-shrink: 0;"
+                      viewBox=""
+                      xmlns=""
+                    />
+                    <div
+                      class="results"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ui secondary attached segment contents-breadcrumbs"
+              >
+                <div
+                  class="ui breadcrumb"
+                >
+                  <a
+                    class="section"
+                    href="/contents"
+                    title="Home"
+                  >
+                    Home
+                  </a>
+                  <div
+                    class="divider"
+                  >
+                    /
+                  </div>
+                  <div
+                    class="active section"
+                  >
+                    Blog
+                  </div>
+                </div>
+                <div
+                  aria-expanded="false"
+                  class="ui item dropdown right floating selectIndex"
+                  role="listbox"
+                  tabindex="0"
+                >
+                  <svg
+                    class="icon"
+                    style="height: 24px; width: auto; fill: #826a6a;"
+                    viewBox=""
+                    xmlns=""
+                  />
+                  <div
+                    class="menu transition left"
+                  >
+                    <div
+                      class="header"
+                    >
+                      Select columns to show
+                    </div>
+                    <div
+                      class="scrolling menu transition"
+                    >
+                      <div
+                        class="item iconAlign"
+                        role="option"
+                      >
+                        <svg
+                          class="icon Review state"
+                          style="height: 24px; width: auto; fill: #007eb1;"
+                          viewBox=""
+                          xmlns=""
+                        />
+                        <span>
+                           
+                          Review state
+                        </span>
+                      </div>
+                      <div
+                        class="item iconAlign"
+                        role="option"
+                      >
+                        <svg
+                          class="icon Last modified"
+                          style="height: 24px; width: auto; fill: #007eb1;"
+                          viewBox=""
+                          xmlns=""
+                        />
+                        <span>
+                           
+                          Last modified
+                        </span>
+                      </div>
+                      <div
+                        class="item iconAlign"
+                        role="option"
+                      >
+                        <svg
+                          class="icon Publication date"
+                          style="height: 24px; width: auto; fill: #007eb1;"
+                          viewBox=""
+                          xmlns=""
+                        />
+                        <span>
+                           
+                          Publication date
+                        </span>
+                      </div>
+                      <div
+                        class="item iconAlign"
+                        role="option"
+                      >
+                        <svg
+                          class="icon ID"
+                          style="height: 24px; width: auto; fill: currentColor;"
+                          viewBox=""
+                          xmlns=""
+                        />
+                        <span>
+                           
+                          ID
+                        </span>
+                      </div>
+                      <div
+                        class="item iconAlign"
+                        role="option"
+                      >
+                        <svg
+                          class="icon Expiration date"
+                          style="height: 24px; width: auto; fill: currentColor;"
+                          viewBox=""
+                          xmlns=""
+                        />
+                        <span>
+                           
+                          Expiration date
+                        </span>
+                      </div>
+                      <div
+                        class="item iconAlign"
+                        role="option"
+                      >
+                        <svg
+                          class="icon Created on"
+                          style="height: 24px; width: auto; fill: currentColor;"
+                          viewBox=""
+                          xmlns=""
+                        />
+                        <span>
+                           
+                          Created on
+                        </span>
+                      </div>
+                      <div
+                        class="item iconAlign"
+                        role="option"
+                      >
+                        <svg
+                          class="icon Tags"
+                          style="height: 24px; width: auto; fill: currentColor;"
+                          viewBox=""
+                          xmlns=""
+                        />
+                        <span>
+                           
+                          Tags
+                        </span>
+                      </div>
+                      <div
+                        class="item iconAlign"
+                        role="option"
+                      >
+                        <svg
+                          class="icon Type"
+                          style="height: 24px; width: auto; fill: currentColor;"
+                          viewBox=""
+                          xmlns=""
+                        />
+                        <span>
+                           
+                          Type
+                        </span>
+                      </div>
+                      <div
+                        class="item iconAlign"
+                        role="option"
+                      >
+                        <svg
+                          class="icon Folder"
+                          style="height: 24px; width: auto; fill: currentColor;"
+                          viewBox=""
+                          xmlns=""
+                        />
+                        <span>
+                           
+                          Folder
+                        </span>
+                      </div>
+                      <div
+                        class="item iconAlign"
+                        role="option"
+                      >
+                        <svg
+                          class="icon Excluded from navigation"
+                          style="height: 24px; width: auto; fill: currentColor;"
+                          viewBox=""
+                          xmlns=""
+                        />
+                        <span>
+                           
+                          Excluded from navigation
+                        </span>
+                      </div>
+                      <div
+                        class="item iconAlign"
+                        role="option"
+                      >
+                        <svg
+                          class="icon Object Size"
+                          style="height: 24px; width: auto; fill: currentColor;"
+                          viewBox=""
+                          xmlns=""
+                        />
+                        <span>
+                           
+                          Object Size
+                        </span>
+                      </div>
+                      <div
+                        class="item iconAlign"
+                        role="option"
+                      >
+                        <svg
+                          class="icon Last comment date"
+                          style="height: 24px; width: auto; fill: currentColor;"
+                          viewBox=""
+                          xmlns=""
+                        />
+                        <span>
+                           
+                          Last comment date
+                        </span>
+                      </div>
+                      <div
+                        class="item iconAlign"
+                        role="option"
+                      >
+                        <svg
+                          class="icon Total comments"
+                          style="height: 24px; width: auto; fill: currentColor;"
+                          viewBox=""
+                          xmlns=""
+                        />
+                        <span>
+                           
+                          Total comments
+                        </span>
+                      </div>
+                      <div
+                        class="item iconAlign"
+                        role="option"
+                      >
+                        <svg
+                          class="icon End Date"
+                          style="height: 24px; width: auto; fill: currentColor;"
+                          viewBox=""
+                          xmlns=""
+                        />
+                        <span>
+                           
+                          End Date
+                        </span>
+                      </div>
+                      <div
+                        class="item iconAlign"
+                        role="option"
+                      >
+                        <svg
+                          class="icon Description"
+                          style="height: 24px; width: auto; fill: currentColor;"
+                          viewBox=""
+                          xmlns=""
+                        />
+                        <span>
+                           
+                          Description
+                        </span>
+                      </div>
+                      <div
+                        class="item iconAlign"
+                        role="option"
+                      >
+                        <svg
+                          class="icon Creator"
+                          style="height: 24px; width: auto; fill: currentColor;"
+                          viewBox=""
+                          xmlns=""
+                        />
+                        <span>
+                           
+                          Creator
+                        </span>
+                      </div>
+                      <div
+                        class="item iconAlign"
+                        role="option"
+                      >
+                        <svg
+                          class="icon Location"
+                          style="height: 24px; width: auto; fill: currentColor;"
+                          viewBox=""
+                          xmlns=""
+                        />
+                        <span>
+                           
+                          Location
+                        </span>
+                      </div>
+                      <div
+                        class="item iconAlign"
+                        role="option"
+                      >
+                        <svg
+                          class="icon UID"
+                          style="height: 24px; width: auto; fill: currentColor;"
+                          viewBox=""
+                          xmlns=""
+                        />
+                        <span>
+                           
+                          UID
+                        </span>
+                      </div>
+                      <div
+                        class="item iconAlign"
+                        role="option"
+                      >
+                        <svg
+                          class="icon Start Date"
+                          style="height: 24px; width: auto; fill: currentColor;"
+                          viewBox=""
+                          xmlns=""
+                        />
+                        <span>
+                           
+                          Start Date
+                        </span>
+                      </div>
+                      <div
+                        class="item iconAlign"
+                        role="option"
+                      >
+                        <svg
+                          class="icon Type"
+                          style="height: 24px; width: auto; fill: currentColor;"
+                          viewBox=""
+                          xmlns=""
+                        />
+                        <span>
+                           
+                          Type
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="contents-table-wrapper"
+              >
+                <table
+                  class="ui selectable single line attached compact table"
+                >
+                  <thead
+                    class=""
+                  >
+                    <tr
+                      class=""
+                    >
+                      <th
+                        class=""
+                      >
+                        <svg
+                          class="icon dropdown-popup-trigger configuration-svg"
+                          style="height: 24px; width: auto; fill: #826a6a;"
+                          viewBox=""
+                          xmlns=""
+                        />
+                      </th>
+                      <th
+                        class=""
+                      >
+                        <svg
+                          class="icon dropdown-popup-trigger"
+                          style="height: 24px; width: auto; fill: #826a6a;"
+                          viewBox=""
+                          xmlns=""
+                        />
+                      </th>
+                      <th
+                        class="four wide"
+                      >
+                        Title
+                      </th>
+                      <th
+                        class="right aligned"
+                      >
+                        Actions
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody
+                    class=""
+                  />
+                </table>
+              </div>
+              <div
+                class="contents-pagination"
+              >
+                <div
+                  class="Pagination"
+                />
+              </div>
+            </div>
+          </section>
+        </article>
+      </div>
+    </div>
+  </div>
+  <div
+    id="toolbar"
+  >
+    <div
+      id="Portal"
+    />
+  </div>
+</div>
+`;

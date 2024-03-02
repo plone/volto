@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BooleanWidget renders a boolean false view widget component 1`] = `
+<span
+  className="metadata boolean widget"
+>
+  No
+</span>
+`;
+
+exports[`BooleanWidget renders a boolean false view widget component with children 1`] = `
+<span
+  className="metadata boolean widget"
+>
+  <strong>
+    No
+  </strong>
+</span>
+`;
+
+exports[`BooleanWidget renders a boolean true view widget component 1`] = `
+<span
+  className="metadata boolean widget"
+>
+  Yes
+</span>
+`;
+
+exports[`BooleanWidget renders a boolean true view widget component with children 1`] = `
+<span
+  className="metadata boolean widget"
+>
+  <strong>
+    Yes
+  </strong>
+</span>
+`;
+
+exports[`BooleanWidget renders an empty boolean view widget component 1`] = `null`;

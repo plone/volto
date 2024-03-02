@@ -1,0 +1,834 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Controlpanels renders a controlpanels component 1`] = `
+<div>
+  <div
+    class="view-wrapper"
+  >
+    <div
+      class="ui container controlpanel"
+    >
+      <div
+        class="ui raised segments"
+      >
+        <div
+          class="ui segment primary"
+        >
+          Site Setup
+        </div>
+        <div
+          class="ui secondary segment"
+        >
+          General
+        </div>
+        <div
+          class="ui attached segment"
+        >
+          <div
+            class="ui doubling six column grid"
+          >
+            <div
+              class="row"
+            >
+              <div
+                class="column"
+              >
+                <a
+                  href="/controlpanel/addons"
+                >
+                  <h3
+                    class="ui icon center aligned header"
+                  >
+                    <svg
+                      class="icon"
+                      style="height: 48px; width: auto; fill: currentColor;"
+                      viewBox=""
+                      xmlns=""
+                    />
+                    <div
+                      class="content"
+                    >
+                      Add-Ons
+                    </div>
+                  </h3>
+                </a>
+              </div>
+              <div
+                class="column"
+              >
+                <a
+                  href="/controlpanel/database"
+                >
+                  <h3
+                    class="ui icon center aligned header"
+                  >
+                    <svg
+                      class="icon"
+                      style="height: 48px; width: auto; fill: currentColor;"
+                      viewBox=""
+                      xmlns=""
+                    />
+                    <div
+                      class="content"
+                    >
+                      Database
+                    </div>
+                  </h3>
+                </a>
+              </div>
+              <div
+                class="column"
+              >
+                <a
+                  href="/controlpanel/date-and-time"
+                >
+                  <h3
+                    class="ui icon center aligned header"
+                  >
+                    <svg
+                      class="icon"
+                      style="height: 48px; width: auto; fill: currentColor;"
+                      viewBox=""
+                      xmlns=""
+                    />
+                    <div
+                      class="content"
+                    >
+                      Date and Time
+                    </div>
+                  </h3>
+                </a>
+              </div>
+              <div
+                class="column"
+              >
+                <a
+                  href="/controlpanel/lang"
+                >
+                  <h3
+                    class="ui icon center aligned header"
+                  >
+                    <svg
+                      class="icon"
+                      style="height: 48px; width: auto; fill: currentColor;"
+                      viewBox=""
+                      xmlns=""
+                    />
+                    <div
+                      class="content"
+                    >
+                      Language
+                    </div>
+                  </h3>
+                </a>
+              </div>
+              <div
+                class="column"
+              >
+                <a
+                  href="/controlpanel/aliases"
+                >
+                  <h3
+                    class="ui icon center aligned header"
+                  >
+                    <svg
+                      class="icon"
+                      style="height: 48px; width: auto; fill: currentColor;"
+                      viewBox=""
+                      xmlns=""
+                    />
+                    <div
+                      class="content"
+                    >
+                      URL Management
+                    </div>
+                  </h3>
+                </a>
+              </div>
+              <div
+                class="column"
+              >
+                <a
+                  href="/controlpanel/undo"
+                >
+                  <h3
+                    class="ui icon center aligned header"
+                  >
+                    <svg
+                      class="icon"
+                      style="height: 48px; width: auto; fill: currentColor;"
+                      viewBox=""
+                      xmlns=""
+                    />
+                    <div
+                      class="content"
+                    >
+                      Undo
+                    </div>
+                  </h3>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ui secondary segment"
+        >
+          Content
+        </div>
+        <div
+          class="ui attached segment"
+        >
+          <div
+            class="ui doubling six column grid"
+          >
+            <div
+              class="row"
+            >
+              <div
+                class="column"
+              >
+                <a
+                  href="/controlpanel/rules"
+                >
+                  <h3
+                    class="ui icon center aligned header"
+                  >
+                    <svg
+                      class="icon"
+                      style="height: 48px; width: auto; fill: currentColor;"
+                      viewBox=""
+                      xmlns=""
+                    />
+                    <div
+                      class="content"
+                    >
+                      Content Rules
+                    </div>
+                  </h3>
+                </a>
+              </div>
+              <div
+                class="column"
+              >
+                <a
+                  href="/controlpanel/editing"
+                >
+                  <h3
+                    class="ui icon center aligned header"
+                  >
+                    <svg
+                      class="icon"
+                      style="height: 48px; width: auto; fill: currentColor;"
+                      viewBox=""
+                      xmlns=""
+                    />
+                    <div
+                      class="content"
+                    >
+                      Editing
+                    </div>
+                  </h3>
+                </a>
+              </div>
+              <div
+                class="column"
+              >
+                <a
+                  href="/controlpanel/moderate-comments"
+                >
+                  <h3
+                    class="ui icon center aligned header"
+                  >
+                    <svg
+                      class="icon"
+                      style="height: 48px; width: auto; fill: currentColor;"
+                      viewBox=""
+                      xmlns=""
+                    />
+                    <div
+                      class="content"
+                    >
+                      Moderate Comments
+                    </div>
+                  </h3>
+                </a>
+              </div>
+              <div
+                class="column"
+              >
+                <a
+                  href="/controlpanel/relations"
+                >
+                  <h3
+                    class="ui icon center aligned header"
+                  >
+                    <svg
+                      class="icon"
+                      style="height: 48px; width: auto; fill: currentColor;"
+                      viewBox=""
+                      xmlns=""
+                    />
+                    <div
+                      class="content"
+                    >
+                      Relations
+                    </div>
+                  </h3>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ui secondary segment"
+        >
+          Security
+        </div>
+        <div
+          class="ui attached segment"
+        >
+          <div
+            class="ui doubling six column grid"
+          >
+            <div
+              class="row"
+            >
+              <div
+                class="column"
+              >
+                <a
+                  href="/controlpanel/security"
+                >
+                  <h3
+                    class="ui icon center aligned header"
+                  >
+                    <svg
+                      class="icon"
+                      style="height: 48px; width: auto; fill: currentColor;"
+                      viewBox=""
+                      xmlns=""
+                    />
+                    <div
+                      class="content"
+                    >
+                      test
+                    </div>
+                  </h3>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ui secondary segment"
+        >
+          Users
+        </div>
+        <div
+          class="ui attached segment"
+        >
+          <div
+            class="ui doubling six column grid"
+          >
+            <div
+              class="row"
+            >
+              <div
+                class="column"
+              >
+                <a
+                  href="/controlpanel/groups"
+                >
+                  <h3
+                    class="ui icon center aligned header"
+                  >
+                    <svg
+                      class="icon"
+                      style="height: 48px; width: auto; fill: currentColor;"
+                      viewBox=""
+                      xmlns=""
+                    />
+                    <div
+                      class="content"
+                    >
+                      Groups
+                    </div>
+                  </h3>
+                </a>
+              </div>
+              <div
+                class="column"
+              >
+                <a
+                  href="/controlpanel/usergroupmembership"
+                >
+                  <h3
+                    class="ui icon center aligned header"
+                  >
+                    <svg
+                      class="icon"
+                      style="height: 48px; width: auto; fill: currentColor;"
+                      viewBox=""
+                      xmlns=""
+                    />
+                    <div
+                      class="content"
+                    >
+                      User Group Membership
+                    </div>
+                  </h3>
+                </a>
+              </div>
+              <div
+                class="column"
+              >
+                <a
+                  href="/controlpanel/users"
+                >
+                  <h3
+                    class="ui icon center aligned header"
+                  >
+                    <svg
+                      class="icon"
+                      style="height: 48px; width: auto; fill: currentColor;"
+                      viewBox=""
+                      xmlns=""
+                    />
+                    <div
+                      class="content"
+                    >
+                      Users
+                    </div>
+                  </h3>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="ui raised segments"
+      >
+        <div
+          class="ui segment primary"
+        >
+          Version Overview
+        </div>
+        <div
+          class="ui attached segment"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    id="toolbar"
+  >
+    <div
+      id="Portal"
+    />
+  </div>
+</div>
+`;
+
+exports[`Controlpanels renders an additional control panel 1`] = `
+<div>
+  <div
+    class="view-wrapper"
+  >
+    <div
+      class="ui container controlpanel"
+    >
+      <div
+        class="ui raised segments"
+      >
+        <div
+          class="ui segment primary"
+        >
+          Site Setup
+        </div>
+        <div
+          class="ui secondary segment"
+        >
+          Security
+        </div>
+        <div
+          class="ui attached segment"
+        >
+          <div
+            class="ui doubling six column grid"
+          >
+            <div
+              class="row"
+            >
+              <div
+                class="column"
+              >
+                <a
+                  href="/controlpanel/security"
+                >
+                  <h3
+                    class="ui icon center aligned header"
+                  >
+                    <svg
+                      class="icon"
+                      style="height: 48px; width: auto; fill: currentColor;"
+                      viewBox=""
+                      xmlns=""
+                    />
+                    <div
+                      class="content"
+                    >
+                      test
+                    </div>
+                  </h3>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ui secondary segment"
+        >
+          Add-on Configuration
+        </div>
+        <div
+          class="ui attached segment"
+        >
+          <div
+            class="ui doubling six column grid"
+          >
+            <div
+              class="row"
+            >
+              <div
+                class="column"
+              >
+                <a
+                  href="/controlpanel/manage-myaddon-foo"
+                >
+                  <h3
+                    class="ui icon center aligned header"
+                  >
+                    <svg
+                      class="icon"
+                      style="height: 48px; width: auto; fill: currentColor;"
+                      viewBox=""
+                      xmlns=""
+                    />
+                    <div
+                      class="content"
+                    >
+                      Foo Management
+                    </div>
+                  </h3>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ui secondary segment"
+        >
+          General
+        </div>
+        <div
+          class="ui attached segment"
+        >
+          <div
+            class="ui doubling six column grid"
+          >
+            <div
+              class="row"
+            >
+              <div
+                class="column"
+              >
+                <a
+                  href="/controlpanel/addons"
+                >
+                  <h3
+                    class="ui icon center aligned header"
+                  >
+                    <svg
+                      class="icon"
+                      style="height: 48px; width: auto; fill: currentColor;"
+                      viewBox=""
+                      xmlns=""
+                    />
+                    <div
+                      class="content"
+                    >
+                      Add-Ons
+                    </div>
+                  </h3>
+                </a>
+              </div>
+              <div
+                class="column"
+              >
+                <a
+                  href="/controlpanel/database"
+                >
+                  <h3
+                    class="ui icon center aligned header"
+                  >
+                    <svg
+                      class="icon"
+                      style="height: 48px; width: auto; fill: currentColor;"
+                      viewBox=""
+                      xmlns=""
+                    />
+                    <div
+                      class="content"
+                    >
+                      Database
+                    </div>
+                  </h3>
+                </a>
+              </div>
+              <div
+                class="column"
+              >
+                <a
+                  href="/controlpanel/aliases"
+                >
+                  <h3
+                    class="ui icon center aligned header"
+                  >
+                    <svg
+                      class="icon"
+                      style="height: 48px; width: auto; fill: currentColor;"
+                      viewBox=""
+                      xmlns=""
+                    />
+                    <div
+                      class="content"
+                    >
+                      URL Management
+                    </div>
+                  </h3>
+                </a>
+              </div>
+              <div
+                class="column"
+              >
+                <a
+                  href="/controlpanel/undo"
+                >
+                  <h3
+                    class="ui icon center aligned header"
+                  >
+                    <svg
+                      class="icon"
+                      style="height: 48px; width: auto; fill: currentColor;"
+                      viewBox=""
+                      xmlns=""
+                    />
+                    <div
+                      class="content"
+                    >
+                      Undo
+                    </div>
+                  </h3>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ui secondary segment"
+        >
+          Content
+        </div>
+        <div
+          class="ui attached segment"
+        >
+          <div
+            class="ui doubling six column grid"
+          >
+            <div
+              class="row"
+            >
+              <div
+                class="column"
+              >
+                <a
+                  href="/controlpanel/rules"
+                >
+                  <h3
+                    class="ui icon center aligned header"
+                  >
+                    <svg
+                      class="icon"
+                      style="height: 48px; width: auto; fill: currentColor;"
+                      viewBox=""
+                      xmlns=""
+                    />
+                    <div
+                      class="content"
+                    >
+                      Content Rules
+                    </div>
+                  </h3>
+                </a>
+              </div>
+              <div
+                class="column"
+              >
+                <a
+                  href="/controlpanel/moderate-comments"
+                >
+                  <h3
+                    class="ui icon center aligned header"
+                  >
+                    <svg
+                      class="icon"
+                      style="height: 48px; width: auto; fill: currentColor;"
+                      viewBox=""
+                      xmlns=""
+                    />
+                    <div
+                      class="content"
+                    >
+                      Moderate Comments
+                    </div>
+                  </h3>
+                </a>
+              </div>
+              <div
+                class="column"
+              >
+                <a
+                  href="/controlpanel/relations"
+                >
+                  <h3
+                    class="ui icon center aligned header"
+                  >
+                    <svg
+                      class="icon"
+                      style="height: 48px; width: auto; fill: currentColor;"
+                      viewBox=""
+                      xmlns=""
+                    />
+                    <div
+                      class="content"
+                    >
+                      Relations
+                    </div>
+                  </h3>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ui secondary segment"
+        >
+          Users
+        </div>
+        <div
+          class="ui attached segment"
+        >
+          <div
+            class="ui doubling six column grid"
+          >
+            <div
+              class="row"
+            >
+              <div
+                class="column"
+              >
+                <a
+                  href="/controlpanel/groups"
+                >
+                  <h3
+                    class="ui icon center aligned header"
+                  >
+                    <svg
+                      class="icon"
+                      style="height: 48px; width: auto; fill: currentColor;"
+                      viewBox=""
+                      xmlns=""
+                    />
+                    <div
+                      class="content"
+                    >
+                      Groups
+                    </div>
+                  </h3>
+                </a>
+              </div>
+              <div
+                class="column"
+              >
+                <a
+                  href="/controlpanel/usergroupmembership"
+                >
+                  <h3
+                    class="ui icon center aligned header"
+                  >
+                    <svg
+                      class="icon"
+                      style="height: 48px; width: auto; fill: currentColor;"
+                      viewBox=""
+                      xmlns=""
+                    />
+                    <div
+                      class="content"
+                    >
+                      User Group Membership
+                    </div>
+                  </h3>
+                </a>
+              </div>
+              <div
+                class="column"
+              >
+                <a
+                  href="/controlpanel/users"
+                >
+                  <h3
+                    class="ui icon center aligned header"
+                  >
+                    <svg
+                      class="icon"
+                      style="height: 48px; width: auto; fill: currentColor;"
+                      viewBox=""
+                      xmlns=""
+                    />
+                    <div
+                      class="content"
+                    >
+                      Users
+                    </div>
+                  </h3>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="ui raised segments"
+      >
+        <div
+          class="ui segment primary"
+        >
+          Version Overview
+        </div>
+        <div
+          class="ui attached segment"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    id="toolbar"
+  >
+    <div
+      id="Portal"
+    />
+  </div>
+</div>
+`;

@@ -1,0 +1,296 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`No 'No value' option when default value is 0 1`] = `
+<div>
+  <div
+    class="inline field field-wrapper-my-field"
+  >
+    <div
+      class="ui grid"
+    >
+      <div
+        class="stretched row"
+      >
+        <div
+          class="four wide column"
+        >
+          <div
+            class="wrapper"
+          >
+            <label
+              for="field-my-field"
+              id="fieldset-default-field-label-my-field"
+            >
+              My field
+            </label>
+          </div>
+        </div>
+        <div
+          class="eight wide column"
+        >
+          <div
+            class="react-select-container css-2b097c-container"
+            id="field-my-field"
+          >
+            <span
+              aria-atomic="false"
+              aria-live="polite"
+              aria-relevant="additions text"
+              class="css-1f43avz-a11yText-A11yText"
+            >
+              <span
+                id="aria-selection"
+              />
+              <span
+                id="aria-context"
+              >
+                option 0 focused, 1 of 2. 2 results available. Use Up and Down to choose options, press Enter to select the currently focused option, press Escape to exit the menu, press Tab to select the option and exit the menu.
+              </span>
+            </span>
+            <div
+              class="react-select__control react-select__control--is-focused react-select__control--menu-is-open css-1ptmoe7-control"
+            >
+              <div
+                class="react-select__value-container react-select__value-container--is-multi css-1a9cv00-ValueContainer"
+              >
+                <div
+                  class="react-select__placeholder css-1wa3eu0-placeholder"
+                >
+                  Select…
+                </div>
+                <div
+                  class="css-b8ldur-Input"
+                >
+                  <div
+                    class="react-select__input"
+                    style="display: inline-block;"
+                  >
+                    <input
+                      aria-autocomplete="list"
+                      autocapitalize="none"
+                      autocomplete="off"
+                      autocorrect="off"
+                      id="react-select-3-input"
+                      spellcheck="false"
+                      style="box-sizing: content-box; width: 2px; border: 0px; opacity: 1; outline: 0; padding: 0px;"
+                      tabindex="0"
+                      type="text"
+                      value=""
+                    />
+                    <div
+                      style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-family: -webkit-small-control; letter-spacing: normal; text-transform: none;"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                class="react-select__indicators css-1hb7zxy-IndicatorsContainer"
+              >
+                <span
+                  class="react-select__indicator-separator css-6fp5c8-indicatorSeparator"
+                />
+                <div
+                  aria-hidden="true"
+                  class="react-select__indicator react-select__dropdown-indicator css-7hdh9a-DropdownIndicator"
+                >
+                  <svg
+                    class="icon"
+                    style="height: 24px; width: auto; fill: #007bc1;"
+                    viewBox=""
+                    xmlns=""
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class="react-select__menu css-109xf7j-menu"
+            >
+              <div
+                class="react-select__menu-list react-select__menu-list--is-multi css-4ljt47-MenuList"
+              >
+                <div
+                  class="react-select__option react-select__option--is-focused css-p2m0aa-option"
+                  id="react-select-3-option-0"
+                  tabindex="-1"
+                >
+                  <div>
+                    0
+                  </div>
+                  <svg
+                    class="icon"
+                    style="height: 20px; width: auto; fill: #b8c6c8;"
+                    viewBox=""
+                    xmlns=""
+                  />
+                </div>
+                <div
+                  class="react-select__option css-4khget-option"
+                  id="react-select-3-option-1"
+                  tabindex="-1"
+                >
+                  <div>
+                    One
+                  </div>
+                  <svg
+                    class="icon"
+                    style="height: 20px; width: auto; fill: #007bc1;"
+                    viewBox=""
+                    xmlns=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders an array widget component 1`] = `
+<div
+  className="inline field field-wrapper-my-field"
+>
+  <div
+    className="ui grid"
+  >
+    <div
+      className="stretched row"
+    >
+      <div
+        className="four wide column"
+      >
+        <div
+          className="wrapper"
+        >
+          <label
+            htmlFor="field-my-field"
+            id="fieldset-default-field-label-my-field"
+          >
+            My field
+          </label>
+        </div>
+      </div>
+      <div
+        className="eight wide column"
+      >
+        <div
+          className="react-select-container css-2b097c-container"
+          id="field-my-field"
+          onKeyDown={[Function]}
+        >
+          <span
+            aria-atomic="false"
+            aria-live="polite"
+            aria-relevant="additions text"
+            className="css-1f43avz-a11yText-A11yText"
+          />
+          <div
+            className="react-select__control css-1ard45z-control"
+            onMouseDown={[Function]}
+            onTouchEnd={[Function]}
+          >
+            <div
+              className="react-select__value-container react-select__value-container--is-multi css-1a9cv00-ValueContainer"
+            >
+              <div
+                className="react-select__placeholder css-1wa3eu0-placeholder"
+              >
+                Select…
+              </div>
+              <div
+                className="css-b8ldur-Input"
+              >
+                <div
+                  className="react-select__input"
+                  style={
+                    Object {
+                      "display": "inline-block",
+                    }
+                  }
+                >
+                  <input
+                    aria-autocomplete="list"
+                    autoCapitalize="none"
+                    autoComplete="off"
+                    autoCorrect="off"
+                    disabled={false}
+                    id="react-select-2-input"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    spellCheck="false"
+                    style={
+                      Object {
+                        "background": 0,
+                        "border": 0,
+                        "boxSizing": "content-box",
+                        "color": "inherit",
+                        "fontSize": "inherit",
+                        "label": "input",
+                        "opacity": 1,
+                        "outline": 0,
+                        "padding": 0,
+                        "width": "1px",
+                      }
+                    }
+                    tabIndex="0"
+                    type="text"
+                    value=""
+                  />
+                  <div
+                    style={
+                      Object {
+                        "height": 0,
+                        "left": 0,
+                        "overflow": "scroll",
+                        "position": "absolute",
+                        "top": 0,
+                        "visibility": "hidden",
+                        "whiteSpace": "pre",
+                      }
+                    }
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              className="react-select__indicators css-1hb7zxy-IndicatorsContainer"
+            >
+              <span
+                className="react-select__indicator-separator css-6fp5c8-indicatorSeparator"
+              />
+              <div
+                aria-hidden="true"
+                className="react-select__indicator react-select__dropdown-indicator css-7hdh9a-DropdownIndicator"
+                onMouseDown={[Function]}
+                onTouchEnd={[Function]}
+              >
+                <svg
+                  className="icon"
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": undefined,
+                    }
+                  }
+                  onClick={null}
+                  style={
+                    Object {
+                      "fill": "#007bc1",
+                      "height": "24px",
+                      "width": "auto",
+                    }
+                  }
+                  viewBox=""
+                  xmlns=""
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

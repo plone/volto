@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`sidebar portal is not rendered when the block is not selected 1`] = `<React.Fragment />`;
+
+exports[`sidebar portal is rendered when the block is selected 1`] = `<React.Fragment />`;
