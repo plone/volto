@@ -42,7 +42,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Start backend
-        run: make start-docker-backend
+        run: make start-backend-docker
 
       - name: Build
         run: pnpm --filter plone-vite-ssr build
