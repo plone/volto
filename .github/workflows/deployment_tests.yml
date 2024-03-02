@@ -41,6 +41,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Build packages
+        run: pnpm build:deps && pnpm build:components
+
       - name: Start backend
         run: make start-backend-docker-detached
 

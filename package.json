@@ -7,6 +7,7 @@
     "watch": "pnpm --filter @plone/registry watch",
     "build:deps": "pnpm --filter @plone/registry --filter @plone/client build",
     "build:registry": "pnpm --filter @plone/registry run build",
+    "build:components": "pnpm --filter @plone/components run build",
     "build": "pnpm build:deps && pnpm --filter @plone/volto build",
     "start": "pnpm build:deps && pnpm --filter @plone/volto start",
     "start:project": "pnpm --filter plone run start",
