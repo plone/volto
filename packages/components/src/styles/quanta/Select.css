@@ -1,6 +1,6 @@
 /* Quanta does not have to redefine colors, but it has to override the original ones coming
 from the basic styles. Then, if people override the basic ones, then they won't get overridden in Quanta. */
-.react-aria-Select {
+.q.react-aria-Select {
   .react-aria-Label {
     color: var(--quanta-sapphire);
   }
@@ -30,7 +30,7 @@ from the basic styles. Then, if people override the basic ones, then they won't 
   }
 }
 
-.react-aria-Popover[data-trigger='Select'] {
+.q.react-aria-Popover[data-trigger='Select'] {
   .react-aria-ListBoxItem {
     --highlight-background: var(--basic-300);
     --highlight-foreground: var(--text-color);

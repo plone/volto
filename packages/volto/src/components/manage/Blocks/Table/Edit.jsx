@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { map, remove } from 'lodash';
 import { Button, Segment, Table, Form } from 'semantic-ui-react';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import cx from 'classnames';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
@@ -670,8 +670,9 @@ class Edit extends Component {
             </Table.Body>
           </Table>
         )}
-        {this.props.selected && this.state.isClient && (
-          <Portal node={document.getElementById('sidebar-properties')}>
+        {this.props.selected &&
+          this.state.isClient &&
+          createPortal(
             <Form
               method="post"
               onSubmit={(event) => {
@@ -736,9 +737,9 @@ class Edit extends Component {
                   onChange={this.toggleCellType}
                 />
               </Segment>
-            </Form>
-          </Portal>
-        )}
+            </Form>,
+            document.getElementById('sidebar-properties'),
+          )}
       </div>
     );
   }
