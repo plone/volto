@@ -111,9 +111,6 @@ importers:
       mrs-developer:
         specifier: ^2.1.1
         version: 2.1.1
-      prettier:
-        specifier: 3.2.5
-        version: 3.2.5
       typescript:
         specifier: 5.2.2
         version: 5.2.2
