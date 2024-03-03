@@ -8,7 +8,7 @@
     "build": "npm run build:client && npm run build:server",
     "build:client": "vite build --outDir dist/client",
     "build:server": "vite build --ssr src/entry-server.tsx --outDir dist/server",
-    "serve": "NODE_ENV=production node server",
+    "start:prod": "NODE_ENV=production node server",
     "debug": "node --inspect-brk server"
   },
   "dependencies": {

@@ -5,7 +5,7 @@ export const WithPortalAndPopperUsingBlockChooser: any;
 declare namespace _default {
     export let title: string;
     export { TestComponent as component };
-    export let decorators: ((Story: any) => JSX.Element)[];
+    export let decorators: ((Story: any) => import("react/jsx-runtime").JSX.Element)[];
 }
 export default _default;
-declare function TestComponent(props: any): JSX.Element;
+declare function TestComponent(props: any): import("react/jsx-runtime").JSX.Element;

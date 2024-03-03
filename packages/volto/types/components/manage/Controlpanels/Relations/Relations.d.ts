@@ -1,2 +1,2 @@
 export default RelationsControlPanel;
-declare function RelationsControlPanel(): JSX.Element;
+declare function RelationsControlPanel(): import("react/jsx-runtime").JSX.Element;

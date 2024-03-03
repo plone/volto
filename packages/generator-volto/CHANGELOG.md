@@ -8,6 +8,18 @@
 
 <!-- towncrier release notes start -->
 
+## 9.0.0-alpha.8 (2024-03-02)
+
+### Internal
+
+- Update dependencies @sneridagh [#5815](https://github.com/plone/volto/issues/5815)
+
+## 9.0.0-alpha.7 (2024-03-01)
+
+### Bugfix
+
+- Switch peerDependencies to Volto 18 for generator-volto alpha's/latest. [#5780](https://github.com/plone/volto/issues/5780)
+
 ## 9.0.0-alpha.6 (2024-02-18)
 
 ### Bugfix

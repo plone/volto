@@ -1,7 +1,7 @@
 import { useEffect, useState, useMemo, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { compose } from 'redux';
 import { Button, Comment, Container, Icon } from 'semantic-ui-react';
@@ -356,19 +356,18 @@ const Comments = (props) => {
         </Button>
       )}
 
-      {replyTo && (
-        <Portal
-          node={document && document.getElementById(`reply-place-${replyTo}`)}
-        >
+      {replyTo &&
+        document &&
+        createPortal(
           <Form
             onSubmit={onSubmit}
             onCancel={onEditCancel}
             submitLabel={intl.formatMessage(messages.comment)}
             resetAfterSubmit
             schema={makeFormSchema(intl)}
-          />
-        </Portal>
-      )}
+          />,
+          document.getElementById(`reply-place-${replyTo}`),
+        )}
     </Container>
   );
 };
