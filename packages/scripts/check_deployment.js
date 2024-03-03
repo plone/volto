@@ -1,7 +1,7 @@
 import http from 'http';
 import waitOn from 'wait-on';
 
-const url = new URL('http://127.0.0.1:3000'); // replace with your service URL
+const url = new URL('http://localhost:3000'); // replace with your service URL
 const searchString = 'Welcome to Plone2'; // replace with the string you want to search for
 
 // Wait for the service to be available

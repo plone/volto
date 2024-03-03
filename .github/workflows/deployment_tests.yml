@@ -53,11 +53,6 @@ jobs:
       - name: Start server
         run: nohup pnpm --filter plone-vite-ssr start:prod &
 
-      - name: Run tests
-        run: curl http://127.0.0.1:3000
-
-      - name: Run tests
-        run: curl http://localhost:3000
 
       - name: Run tests
         run: node packages/scripts/check_deployment.js
