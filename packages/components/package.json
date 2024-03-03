@@ -47,8 +47,8 @@
   "scripts": {
     "build": "parcel build --no-cache && pnpm build:css",
     "build:css": "mkdir -p dist && pnpm build:basic && pnpm build:quanta",
-    "build:basic": "RUST_BACKTRACE=1 lightningcss --browserslist --bundle --sourcemap src/styles/basic/main.css -o basic.css && mv basic.css* dist/.",
-    "build:quanta": "lightningcss --browserslist --bundle --sourcemap src/styles/quanta/main.css -o quanta.css && mv quanta.css* dist/.",
+    "build:basic": "lightningcss --browserslist --bundle --sourcemap $(pwd)/src/styles/basic/main.css -o basic.css && mv basic.css* dist/.",
+    "build:quanta": "lightningcss --browserslist --bundle --sourcemap $(pwd)/src/styles/quanta/main.css -o quanta.css && mv quanta.css* dist/.",
     "check-ts": "tsc --project tsconfig.json",
     "test": "vitest --passWithNoTests",
     "coverage": "vitest run --coverage --no-threads",
