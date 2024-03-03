@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2024-02-02T15:43:45.656Z\n"
+"POT-Creation-Date: 2024-03-05T13:17:03.192Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -3643,6 +3643,12 @@ msgstr ""
 #. Default: "There are no users with the searched criteria"
 #: helpers/MessageLabels/MessageLabels
 msgid "There are no users with the searched criteria"
+msgstr ""
+
+#. Default: "There are some errors."
+#: components/manage/Add/Add
+#: components/manage/Edit/Edit
+msgid "There are some errors."
 msgstr ""
 
 #. Default: "There is a configuration problem on the backend"
