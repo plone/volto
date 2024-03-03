@@ -53,11 +53,17 @@ jobs:
       - name: Start server
         run: nohup pnpm --filter plone-vite-ssr start:prod &
 
-      - name: Run tests
-        run: curl http://0.0.0.0:3000 || true
+      - name: Wait
+        run: pnpm wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
+
+      - name: /etc/hosts
+        run: cat /etc/hosts
 
       - name: Run tests
-        run: wget http://127.0.0.1:3000 || true
+        run: curl http://localhost:3000 || true
+
+      - name: Run tests
+        run: curl http://127.0.0.1:3000 || true
 
       - name: Stop backend
         run: make stop-backend-docker-detached
