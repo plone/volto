@@ -5,7 +5,7 @@ jobs:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     runs-on: ubuntu-latest
     name: Vite SSR
-    timeout-minutes: 45
+    timeout-minutes: 5
     strategy:
       fail-fast: false
     steps:
@@ -51,7 +51,7 @@ jobs:
         run: pnpm --filter plone-vite-ssr build
 
       - name: Start server
-        run: pnpm --filter plone-vite-ssr start:prod
+        run: pnpm --filter plone-vite-ssr start:prod &
 
       - name: Run tests
         run: node packages/scripts/check_deployment.js
