@@ -54,10 +54,10 @@ jobs:
         run: nohup pnpm --filter plone-vite-ssr start:prod &
 
       - name: Run tests
-        run: curl http://localhost:3000 || true
+        run: curl http://0.0.0.0:3000 || true
 
       - name: Run tests
-        run: wget http://localhost:3000 || true
+        run: wget http://127.0.0.1:3000 || true
 
       - name: Stop backend
         run: make stop-backend-docker-detached
