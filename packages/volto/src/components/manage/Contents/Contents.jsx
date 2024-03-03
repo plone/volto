@@ -1989,9 +1989,9 @@ class Contents extends Component {
                                         this.state.selected.length === 0
                                           ? checkboxUncheckedSVG
                                           : this.state.selected.length ===
-                                            this.state.items.length
-                                          ? checkboxCheckedSVG
-                                          : checkboxIndeterminateSVG
+                                              this.state.items.length
+                                            ? checkboxCheckedSVG
+                                            : checkboxIndeterminateSVG
                                       }
                                       color={
                                         this.state.selected.length > 0

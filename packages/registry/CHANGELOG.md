@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 1.5.1 (2024-03-02)
+
+### Bugfix
+
+- Upgrade parcel @sneridagh [#5822](https://github.com/plone/volto/issues/5822)
+
 ## 1.5.0 (2024-03-01)
 
 ### Feature

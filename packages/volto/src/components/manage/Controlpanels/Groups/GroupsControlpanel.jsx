@@ -258,16 +258,16 @@ class GroupsControlpanel extends Component {
           entry.id === name && !entry.roles.includes(value)
             ? [...entry.roles, value]
             : entry.id !== name
-            ? entry.roles
-            : pull(entry.roles, value),
+              ? entry.roles
+              : pull(entry.roles, value),
       })),
       authenticatedRole:
         name === 'AuthenticatedUsers' &&
         !prevState.authenticatedRole.includes(value)
           ? [...prevState.authenticatedRole, value]
           : name !== 'AuthenticatedUsers'
-          ? prevState.authenticatedRole
-          : pull(prevState.authenticatedRole, value),
+            ? prevState.authenticatedRole
+            : pull(prevState.authenticatedRole, value),
     }));
   }
   /**

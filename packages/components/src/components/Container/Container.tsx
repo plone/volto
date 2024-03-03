@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { getElementType } from '../helpers';
-import cx from 'classnames';
+import cx from 'clsx';
 
 type ContainerProps = {
   /** Primary content. */

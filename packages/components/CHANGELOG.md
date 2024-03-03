@@ -8,6 +8,18 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.4 (2024-03-02)
+
+### Bugfix
+
+- Remove `lodash` dependency.
+  Several packages upgrades and general cleanup. @sneridagh [#5822](https://github.com/plone/volto/issues/5822)
+- Proxy the `PopoverContext` inside the `Select` component, to be able to override it from the outside @sneridagh [#5823](https://github.com/plone/volto/issues/5823)
+
+### Internal
+
+- Update dependencies @sneridagh [#5815](https://github.com/plone/volto/issues/5815)
+
 ## 2.0.0-alpha.3 (2024-03-01)
 
 ### Breaking
