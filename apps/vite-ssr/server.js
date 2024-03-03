@@ -6,13 +6,13 @@ import dns from 'dns';
 const isTest = process.env.NODE_ENV === 'test' || !!process.env.VITE_TEST_BUILD;
 
 // If DNS returns both ipv4 and ipv6 addresses, prefer ipv4
-dns.setDefaultResultOrder('ipv4first');
 
 export async function createServer(
   root = process.cwd(),
   isProd = process.env.NODE_ENV === 'production',
   hmrPort,
 ) {
+  dns.setDefaultResultOrder('ipv4first');
   const app = express();
 
   const prodIndexHtml = isProd

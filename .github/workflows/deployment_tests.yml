@@ -57,7 +57,7 @@ jobs:
         run: cat /etc/hosts
 
       - name: Wait
-        run: packages/scripts/node_modules/.bin/wait-on --httpTimeout 20000 http-get://127.0.0.1:8080/plone
+        run: packages/scripts/node_modules/.bin/wait-on --httpTimeout 20000 http-get://127.0.0.1:8080/Plone
 
       - name: Run tests
         run: curl http://localhost:3000 || true
