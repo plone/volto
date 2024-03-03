@@ -51,7 +51,7 @@ jobs:
         run: pnpm --filter plone-vite-ssr build
 
       - name: Start server
-        run: pnpm --filter plone-vite-ssr start
+        run: pnpm --filter plone-vite-ssr start:prod
 
       - name: Run tests
         run: node packages/scripts/check_deployment.js
