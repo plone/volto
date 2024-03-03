@@ -93,8 +93,12 @@ export async function createServer(
 
 if (!isTest) {
   createServer().then(async ({ app }) =>
-    app.listen(await getPort({ port: portNumbers(3000, 3100) }), () => {
-      console.log('Client Server: http://localhost:3000');
-    }),
+    app.listen(
+      await getPort({ port: portNumbers(3000, 3100) }),
+      '0.0.0.0',
+      () => {
+        console.log('Client Server: http://localhost:3000');
+      },
+    ),
   );
 }
