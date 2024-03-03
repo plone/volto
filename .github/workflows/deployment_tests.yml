@@ -53,12 +53,11 @@ jobs:
       - name: Start server
         run: nohup pnpm --filter plone-vite-ssr start:prod &
 
+      - name: Wait for it
+        run: packages/scripts/node_modules/.bin/wait-on --httpTimeout 20000 http-get://127.0.0.1:8080/Plone http://127.0.0.1:3000
 
       - name: Run tests
         run: node packages/scripts/check_deployment.js
-
-      - name: Wait for it
-        run: packages/scripts/node_modules/.bin/wait-on --httpTimeout 20000 http-get://127.0.0.1:8080/Plone http-get://127.0.0.1:3000
 
       - name: Stop backend
         run: make stop-backend-docker-detached
