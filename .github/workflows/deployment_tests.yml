@@ -40,8 +40,6 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-      - name: Debug directory
-        run: ls -la packages/components/src/styles && ls -la packages/components/src/styles/basic
 
       - name: Build packages
         run: pnpm build:deps && pnpm build:components
