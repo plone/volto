@@ -7,7 +7,7 @@ This document describes the packages that come with Volto, the default frontend 
 
 Plone types is a special development package.
 It contains the Plone typings for TypeScript.
-It's considered a core package, and it's the only package that the other core packages can rely on as 
+It's considered a core package, and it's the only package that the other core packages can rely on as
 a `devDependency` in your project configuration.
 
 This package contains `.d.ts` typing definitions, curated by hand.
@@ -26,8 +26,7 @@ It's published "as is", so you can import the type definitions from anywhere in 
 
 Core packages must not depend on any other `@plone/*` package, with only one exception, `@plone/types`.
 They must be published and bundled in a traditional (transpiled) way.
-The bundle of these packages must work on both CommonJS and ESM environments.
-
+The bundle of these packages must work on both CommonJS and ECMAScript Module (ESM) environments.
 
 ## Feature packages
 
