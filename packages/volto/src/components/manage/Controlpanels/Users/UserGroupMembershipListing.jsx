@@ -5,7 +5,7 @@ import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import jwtDecode from 'jwt-decode';
 import { toast } from 'react-toastify';
 import { Button, Checkbox } from 'semantic-ui-react';
-import { messages, isManager, canAssingGroup } from '@plone/volto/helpers';
+import { messages, isManager, canAssignGroup } from '@plone/volto/helpers';
 import { listGroups, getUser } from '@plone/volto/actions';
 import { Icon, Toast } from '@plone/volto/components';
 import { updateGroup, listUsers } from '@plone/volto/actions';
@@ -236,7 +236,7 @@ const ListingTemplate = ({
                           checked,
                         )
                       }
-                      disabled={!canAssingGroup(isUserManager, matrix_option)}
+                      disabled={!canAssignGroup(isUserManager, matrix_option)}
                     />
                   </div>
                 ))}
@@ -279,7 +279,7 @@ const ListingTemplate = ({
                             true,
                           );
                         }}
-                        disabled={!canAssingGroup(isUserManager, matrix_option)}
+                        disabled={!canAssignGroup(isUserManager, matrix_option)}
                       />
                     ))}
                   </div>

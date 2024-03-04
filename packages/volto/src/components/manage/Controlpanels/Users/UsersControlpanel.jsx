@@ -29,7 +29,7 @@ import {
   Helmet,
   messages,
   isManager,
-  canAssingGroup,
+  canAssignGroup,
 } from '@plone/volto/helpers';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import addUserSvg from '@plone/volto/icons/add-user.svg';
@@ -359,8 +359,8 @@ class UsersControlpanel extends Component {
           entry.id === name && !entry.roles.includes(value)
             ? [...entry.roles, value]
             : entry.id !== name
-              ? entry.roles
-              : pull(entry.roles, value),
+            ? entry.roles
+            : pull(entry.roles, value),
       })),
     });
   }
@@ -501,7 +501,7 @@ class UsersControlpanel extends Component {
         title: this.props.intl.formatMessage(messages.addUserGroupNameTitle),
         type: 'array',
         choices: this.props.groups
-          .filter((group) => canAssingGroup(isUserManager, group))
+          .filter((group) => canAssignGroup(isUserManager, group))
           .map((group) => [group.id, group.id]),
         noValueOption: false,
       };

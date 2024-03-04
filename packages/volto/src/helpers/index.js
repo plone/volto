@@ -119,7 +119,7 @@ export { asyncConnect } from './AsyncConnect';
 export {
   userHasRoles,
   isManager,
-  canAssingGroup,
+  canAssignGroup,
   canAssignRole,
 } from './User/User';
 // export { injectLazyLibs } from './Loadable/Loadable';

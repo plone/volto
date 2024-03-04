@@ -24,10 +24,10 @@ export function isManager(user) {
 
 /**
  * Checks if the user can assing group.
- * @method canAssingGroup
+ * @method canAssignGroup
  * @returns {boolean}
  */
-export function canAssingGroup(isManager, group) {
+export function canAssignGroup(isManager, group) {
   if (isManager) return true;
   return !group.roles.includes('Manager');
 }
