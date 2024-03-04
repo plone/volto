@@ -16,7 +16,12 @@ import { v4 as uuid } from 'uuid';
 import qs from 'query-string';
 import { toast } from 'react-toastify';
 
-import { createContent, getSchema, changeLanguage } from '@plone/volto/actions';
+import {
+  createContent,
+  getSchema,
+  changeLanguage,
+  setFormData,
+} from '@plone/volto/actions';
 import {
   Form,
   Icon,
@@ -154,6 +159,7 @@ class Add extends Component {
       nextProps.createRequest.loaded &&
       nextProps.content['@type'] === this.props.type
     ) {
+      this.props.setFormData({});
       this.props.history.push(
         this.props.returnUrl || flattenToAppURL(nextProps.content['@id']),
       );
@@ -207,6 +213,7 @@ class Add extends Component {
    * @returns {undefined}
    */
   onCancel() {
+    this.props.setFormData({});
     if (this.props.location?.state?.translationOf) {
       const language = this.props.location.state.languageFrom;
       const langFileName = toGettextLang(language);
@@ -470,7 +477,7 @@ export default compose(
       returnUrl: qs.parse(props.location.search).return_url,
       type: qs.parse(props.location.search).type,
     }),
-    { createContent, getSchema, changeLanguage },
+    { createContent, getSchema, changeLanguage, setFormData },
   ),
   preloadLazyLibs('cms'),
 )(Add);
