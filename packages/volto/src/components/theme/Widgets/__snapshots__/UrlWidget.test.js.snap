@@ -26,4 +26,4 @@ exports[`UrlWidget renders an URL view widget component with children 1`] = `
 </a>
 `;
 
-exports[`UrlWidget renders an empty URL view widget component 1`] = `""`;
+exports[`UrlWidget renders an empty URL view widget component 1`] = `null`;

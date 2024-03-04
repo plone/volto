@@ -11,7 +11,7 @@ import { compose } from 'redux';
 import { keys, isEmpty } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Button, Grid, Menu } from 'semantic-ui-react';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import { v4 as uuid } from 'uuid';
 import qs from 'query-string';
 import { toast } from 'react-toastify';
@@ -39,6 +39,7 @@ import {
 } from '@plone/volto/helpers';
 
 import { preloadLazyLibs } from '@plone/volto/helpers/Loadable';
+import { tryParseJSON } from '@plone/volto/helpers';
 
 import config from '@plone/volto/registry';
 
@@ -65,6 +66,10 @@ const messages = defineMessages({
   translateTo: {
     id: 'Translate to {lang}',
     defaultMessage: 'Translate to {lang}',
+  },
+  someErrors: {
+    id: 'There are some errors.',
+    defaultMessage: 'There are some errors.',
   },
 });
 
@@ -168,13 +173,30 @@ class Add extends Component {
         new DOMParser().parseFromString(message, 'text/html')?.all[0]
           ?.textContent || message;
 
+      const errorsList = tryParseJSON(error);
+      let erroMessage;
+      if (Array.isArray(errorsList)) {
+        const invariantErrors = errorsList
+          .filter((errorItem) => !('field' in errorItem))
+          .map((errorItem) => errorItem['message']);
+        if (invariantErrors.length > 0) {
+          // Plone invariant validation message.
+          erroMessage = invariantErrors.join(' - ');
+        } else {
+          // Error in specific field.
+          erroMessage = this.props.intl.formatMessage(messages.someErrors);
+        }
+      } else {
+        erroMessage = error;
+      }
+
       this.setState({ error: error });
 
       toast.error(
         <Toast
           error
           title={this.props.intl.formatMessage(messages.error)}
-          content={`${nextProps.createRequest.error.status}:  ${error}`}
+          content={erroMessage}
         />,
       );
     }
@@ -366,8 +388,8 @@ class Add extends Component {
             }}
             global
           />
-          {this.state.isClient && (
-            <Portal node={document.getElementById('toolbar')}>
+          {this.state.isClient &&
+            createPortal(
               <Toolbar
                 pathname={this.props.pathname}
                 hideDefaultViewButtons
@@ -400,14 +422,12 @@ class Add extends Component {
                     </Button>
                   </>
                 }
-              />
-            </Portal>
-          )}
-          {visual && this.state.isClient && (
-            <Portal node={document.getElementById('sidebar')}>
-              <Sidebar />
-            </Portal>
-          )}
+              />,
+              document.getElementById('toolbar'),
+            )}
+          {visual &&
+            this.state.isClient &&
+            createPortal(<Sidebar />, document.getElementById('sidebar'))}
         </div>
       );
 

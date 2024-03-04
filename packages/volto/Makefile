@@ -67,7 +67,10 @@ cypress-install:
 
 .PHONY: build-deps
 build-deps:
-	if [ ! -d $$(pwd)/../registry/dist ]; then (cd ../../ && pnpm build:deps); fi
+	@if [ ! -d $$(pwd)/../registry/dist ] || [ $$(find $$(pwd)/../registry -newer $$(pwd)/../registry/dist -print -quit) ]; then \
+		(cd ../../ && pnpm build:deps); \
+	fi
+
 
 ##### Release (it runs the one inside)
 

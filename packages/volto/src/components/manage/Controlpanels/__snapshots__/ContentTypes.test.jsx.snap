@@ -1,367 +1,249 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ContentTypes renders dexterity content-types controlpanel component 1`] = `
-<div
-  className="ui container types-control-panel"
->
+<div>
   <div
-    className="container"
-  />
-  <div
-    className="ui container"
+    class="ui container types-control-panel"
   >
-    <article
-      id="content"
+    <div
+      class="container"
+    />
+    <div
+      class="ui container"
     >
-      <div
-        className="ui disabled header"
+      <article
+        id="content"
       >
-        Dexterity Content Types
-      </div>
-      <section
-        id="content-core"
-      >
-        <table
-          className="ui single line striped compact table"
+        <div
+          class="ui disabled header"
         >
-          <thead
-            className=""
+          Dexterity Content Types
+        </div>
+        <section
+          id="content-core"
+        >
+          <table
+            class="ui single line striped compact table"
           >
-            <tr
-              className=""
+            <thead
+              class=""
             >
-              <th
-                className=""
+              <tr
+                class=""
               >
-                Type
-              </th>
-              <th
-                className=""
-              >
-                Description
-              </th>
-              <th
-                className=""
-              >
-                Items
-              </th>
-              <th
-                className="right aligned"
-              >
-                Actions
-              </th>
-            </tr>
-          </thead>
-          <tbody
-            className=""
-          >
-            <tr
-              className=""
+                <th
+                  class=""
+                >
+                  Type
+                </th>
+                <th
+                  class=""
+                >
+                  Description
+                </th>
+                <th
+                  class=""
+                >
+                  Items
+                </th>
+                <th
+                  class="right aligned"
+                >
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody
+              class=""
             >
-              <td
-                className=""
+              <tr
+                class=""
               >
-                <a
-                  href="/controlpanel/dexterity-types/Document"
-                  onClick={[Function]}
+                <td
+                  class=""
                 >
-                  Page
-                </a>
-              </td>
-              <td
-                className=""
-              >
-                
-              </td>
-              <td
-                className=""
-              >
-                0
-              </td>
-              <td
-                className="right aligned"
-              >
-                <div
-                  aria-expanded={false}
-                  className="ui dropdown actions-Document"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onMouseDown={[Function]}
-                  role="listbox"
-                  tabIndex={0}
-                >
-                  <i
-                    aria-hidden="true"
-                    className="ellipsis horizontal icon"
-                    onClick={[Function]}
-                  />
-                  <div
-                    className="menu transition left"
+                  <a
+                    href="/controlpanel/dexterity-types/Document"
                   >
+                    Page
+                  </a>
+                </td>
+                <td
+                  class=""
+                />
+                <td
+                  class=""
+                >
+                  0
+                </td>
+                <td
+                  class="right aligned"
+                >
+                  <div
+                    aria-expanded="false"
+                    class="ui dropdown actions-Document"
+                    role="listbox"
+                    tabindex="0"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="ellipsis horizontal icon"
+                    />
                     <div
-                      className="item edit-Document"
-                      onClick={[Function]}
-                      role="option"
+                      class="menu transition left"
                     >
-                      <svg
-                        className="icon"
-                        dangerouslySetInnerHTML={
-                          Object {
-                            "__html": undefined,
-                          }
-                        }
-                        onClick={null}
-                        style={
-                          Object {
-                            "fill": "currentColor",
-                            "height": "15px",
-                            "width": "auto",
-                          }
-                        }
-                        viewBox=""
-                        xmlns=""
-                      />
-                      Edit
-                    </div>
-                    <div
-                      className="item"
-                      onClick={[Function]}
-                      role="option"
-                    >
-                      <svg
-                        className="icon"
-                        dangerouslySetInnerHTML={
-                          Object {
-                            "__html": undefined,
-                          }
-                        }
-                        onClick={null}
-                        style={
-                          Object {
-                            "fill": "currentColor",
-                            "height": "15px",
-                            "width": "auto",
-                          }
-                        }
-                        viewBox=""
-                        xmlns=""
-                      />
-                      Schema
-                    </div>
-                    <div
-                      className="item layout-Document"
-                      onClick={[Function]}
-                      role="option"
-                    >
-                      <svg
-                        className="icon"
-                        dangerouslySetInnerHTML={
-                          Object {
-                            "__html": undefined,
-                          }
-                        }
-                        onClick={null}
-                        style={
-                          Object {
-                            "fill": "currentColor",
-                            "height": "15px",
-                            "width": "auto",
-                          }
-                        }
-                        viewBox=""
-                        xmlns=""
-                      />
-                      Layout
-                    </div>
-                    <div
-                      className="item delete-Document"
-                      onClick={[Function]}
-                      role="option"
-                    >
-                      <svg
-                        className="icon"
-                        dangerouslySetInnerHTML={
-                          Object {
-                            "__html": undefined,
-                          }
-                        }
-                        onClick={null}
-                        style={
-                          Object {
-                            "fill": "currentColor",
-                            "height": "15px",
-                            "width": "auto",
-                          }
-                        }
-                        viewBox=""
-                        xmlns=""
-                      />
-                      Delete
+                      <div
+                        class="item edit-Document"
+                        role="option"
+                      >
+                        <svg
+                          class="icon"
+                          style="height: 15px; width: auto; fill: currentColor;"
+                          viewBox=""
+                          xmlns=""
+                        />
+                        Edit
+                      </div>
+                      <div
+                        class="item"
+                        role="option"
+                      >
+                        <svg
+                          class="icon"
+                          style="height: 15px; width: auto; fill: currentColor;"
+                          viewBox=""
+                          xmlns=""
+                        />
+                        Schema
+                      </div>
+                      <div
+                        class="item layout-Document"
+                        role="option"
+                      >
+                        <svg
+                          class="icon"
+                          style="height: 15px; width: auto; fill: currentColor;"
+                          viewBox=""
+                          xmlns=""
+                        />
+                        Layout
+                      </div>
+                      <div
+                        class="item delete-Document"
+                        role="option"
+                      >
+                        <svg
+                          class="icon"
+                          style="height: 15px; width: auto; fill: currentColor;"
+                          viewBox=""
+                          xmlns=""
+                        />
+                        Delete
+                      </div>
                     </div>
                   </div>
-                </div>
-              </td>
-            </tr>
-            <tr
-              className=""
-            >
-              <td
-                className=""
+                </td>
+              </tr>
+              <tr
+                class=""
               >
-                <a
-                  href="/controlpanel/dexterity-types/Folder"
-                  onClick={[Function]}
+                <td
+                  class=""
                 >
-                  Folder
-                </a>
-              </td>
-              <td
-                className=""
-              >
-                
-              </td>
-              <td
-                className=""
-              >
-                0
-              </td>
-              <td
-                className="right aligned"
-              >
-                <div
-                  aria-expanded={false}
-                  className="ui dropdown actions-Folder"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onMouseDown={[Function]}
-                  role="listbox"
-                  tabIndex={0}
-                >
-                  <i
-                    aria-hidden="true"
-                    className="ellipsis horizontal icon"
-                    onClick={[Function]}
-                  />
-                  <div
-                    className="menu transition left"
+                  <a
+                    href="/controlpanel/dexterity-types/Folder"
                   >
+                    Folder
+                  </a>
+                </td>
+                <td
+                  class=""
+                />
+                <td
+                  class=""
+                >
+                  0
+                </td>
+                <td
+                  class="right aligned"
+                >
+                  <div
+                    aria-expanded="false"
+                    class="ui dropdown actions-Folder"
+                    role="listbox"
+                    tabindex="0"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="ellipsis horizontal icon"
+                    />
                     <div
-                      className="item edit-Folder"
-                      onClick={[Function]}
-                      role="option"
+                      class="menu transition left"
                     >
-                      <svg
-                        className="icon"
-                        dangerouslySetInnerHTML={
-                          Object {
-                            "__html": undefined,
-                          }
-                        }
-                        onClick={null}
-                        style={
-                          Object {
-                            "fill": "currentColor",
-                            "height": "15px",
-                            "width": "auto",
-                          }
-                        }
-                        viewBox=""
-                        xmlns=""
-                      />
-                      Edit
-                    </div>
-                    <div
-                      className="item"
-                      onClick={[Function]}
-                      role="option"
-                    >
-                      <svg
-                        className="icon"
-                        dangerouslySetInnerHTML={
-                          Object {
-                            "__html": undefined,
-                          }
-                        }
-                        onClick={null}
-                        style={
-                          Object {
-                            "fill": "currentColor",
-                            "height": "15px",
-                            "width": "auto",
-                          }
-                        }
-                        viewBox=""
-                        xmlns=""
-                      />
-                      Schema
-                    </div>
-                    <div
-                      className="item layout-Folder"
-                      onClick={[Function]}
-                      role="option"
-                    >
-                      <svg
-                        className="icon"
-                        dangerouslySetInnerHTML={
-                          Object {
-                            "__html": undefined,
-                          }
-                        }
-                        onClick={null}
-                        style={
-                          Object {
-                            "fill": "currentColor",
-                            "height": "15px",
-                            "width": "auto",
-                          }
-                        }
-                        viewBox=""
-                        xmlns=""
-                      />
-                      Layout
-                    </div>
-                    <div
-                      className="item delete-Folder"
-                      onClick={[Function]}
-                      role="option"
-                    >
-                      <svg
-                        className="icon"
-                        dangerouslySetInnerHTML={
-                          Object {
-                            "__html": undefined,
-                          }
-                        }
-                        onClick={null}
-                        style={
-                          Object {
-                            "fill": "currentColor",
-                            "height": "15px",
-                            "width": "auto",
-                          }
-                        }
-                        viewBox=""
-                        xmlns=""
-                      />
-                      Delete
+                      <div
+                        class="item edit-Folder"
+                        role="option"
+                      >
+                        <svg
+                          class="icon"
+                          style="height: 15px; width: auto; fill: currentColor;"
+                          viewBox=""
+                          xmlns=""
+                        />
+                        Edit
+                      </div>
+                      <div
+                        class="item"
+                        role="option"
+                      >
+                        <svg
+                          class="icon"
+                          style="height: 15px; width: auto; fill: currentColor;"
+                          viewBox=""
+                          xmlns=""
+                        />
+                        Schema
+                      </div>
+                      <div
+                        class="item layout-Folder"
+                        role="option"
+                      >
+                        <svg
+                          class="icon"
+                          style="height: 15px; width: auto; fill: currentColor;"
+                          viewBox=""
+                          xmlns=""
+                        />
+                        Layout
+                      </div>
+                      <div
+                        class="item delete-Folder"
+                        role="option"
+                      >
+                        <svg
+                          class="icon"
+                          style="height: 15px; width: auto; fill: currentColor;"
+                          viewBox=""
+                          xmlns=""
+                        />
+                        Delete
+                      </div>
                     </div>
                   </div>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-    </article>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </article>
+    </div>
   </div>
   <div
-    id="Portal"
-  />
+    id="toolbar"
+  >
+    <div
+      id="Portal"
+    />
+  </div>
 </div>
 `;

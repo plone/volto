@@ -8,7 +8,7 @@
  * @param {boolean} responsive - (default: false) set to `true` to add the `responsive` class to the image
  * @param {string} className - Additional classes to add to the image
  */
-declare function Image({ item, imageField, src, alt, loading, responsive, className, ...imageProps }: object): JSX.Element;
+declare function Image({ item, imageField, src, alt, loading, responsive, className, ...imageProps }: object): import("react/jsx-runtime").JSX.Element;
 declare namespace Image {
     namespace propTypes {
         let item: any;

@@ -37,7 +37,7 @@ import { find, map, pull } from 'lodash';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import { connect } from 'react-redux';
 
 import { toast } from 'react-toastify';
@@ -279,16 +279,16 @@ class GroupsControlpanel extends Component {
           entry.id === name && !entry.roles.includes(value)
             ? [...entry.roles, value]
             : entry.id !== name
-            ? entry.roles
-            : pull(entry.roles, value),
+              ? entry.roles
+              : pull(entry.roles, value),
       })),
       authenticatedRole:
         name === 'AuthenticatedUsers' &&
         !prevState.authenticatedRole.includes(value)
           ? [...prevState.authenticatedRole, value]
           : name !== 'AuthenticatedUsers'
-          ? prevState.authenticatedRole
-          : pull(prevState.authenticatedRole, value),
+            ? prevState.authenticatedRole
+            : pull(prevState.authenticatedRole, value),
     }));
   }
   /**
@@ -598,8 +598,8 @@ class GroupsControlpanel extends Component {
             </div>
           </Form>
         </Segment.Group>
-        {this.state.isClient && (
-          <Portal node={document.getElementById('toolbar')}>
+        {this.state.isClient &&
+          createPortal(
             <Toolbar
               pathname={this.props.pathname}
               hideDefaultViewButtons
@@ -651,9 +651,9 @@ class GroupsControlpanel extends Component {
                   </Button>
                 </>
               }
-            />
-          </Portal>
-        )}
+            />,
+            document.getElementById('toolbar'),
+          )}
       </Container>
     );
   }

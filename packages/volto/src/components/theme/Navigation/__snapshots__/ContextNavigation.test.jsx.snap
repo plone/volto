@@ -25,11 +25,8 @@ exports[`ContextNavigation renders a navigation component with an active item 1`
             class="contenttype-undefined"
             href="/front-page"
           >
-            
             Welcome to Plone!
-            
           </a>
-          
         </div>
       </div>
       <div
@@ -43,7 +40,6 @@ exports[`ContextNavigation renders a navigation component with an active item 1`
             class="contenttype-undefined in_path"
             href="/blog"
           >
-            
             Blog
             <div
               class="content active-indicator"
@@ -56,7 +52,6 @@ exports[`ContextNavigation renders a navigation component with an active item 1`
               />
             </div>
           </a>
-          
         </div>
       </div>
       <div
@@ -70,11 +65,8 @@ exports[`ContextNavigation renders a navigation component with an active item 1`
             class="contenttype-undefined"
             href="/users"
           >
-            
             Users
-            
           </a>
-          
         </div>
       </div>
     </div>
@@ -108,11 +100,8 @@ exports[`ContextNavigation renders a navigation component with an active item wh
             href="/folder2/folder21"
             title=""
           >
-            
             Folder21
-            
           </a>
-          
         </div>
       </div>
       <div
@@ -127,11 +116,8 @@ exports[`ContextNavigation renders a navigation component with an active item wh
             href="/folder2/folder21/doc211"
             title=""
           >
-            
             Doc211
-            
           </a>
-          
         </div>
       </div>
       <div
@@ -146,7 +132,6 @@ exports[`ContextNavigation renders a navigation component with an active item wh
             href="/folder2/folder21/doc212"
             title=""
           >
-            
             Doc212
             <div
               class="content active-indicator"
@@ -159,7 +144,6 @@ exports[`ContextNavigation renders a navigation component with an active item wh
               />
             </div>
           </a>
-          
         </div>
       </div>
     </div>
@@ -167,11 +151,7 @@ exports[`ContextNavigation renders a navigation component with an active item wh
 </div>
 `;
 
-exports[`ContextNavigation renders a navigation component with only one active item even if there are similar item names 1`] = `
-<div>
-  
-</div>
-`;
+exports[`ContextNavigation renders a navigation component with only one active item even if there are similar item names 1`] = `<div />`;
 
 exports[`ContextNavigation renders a navigation slot component without active items 1`] = `
 <div>
@@ -198,11 +178,8 @@ exports[`ContextNavigation renders a navigation slot component without active it
             class="contenttype-undefined"
             href="/front-page"
           >
-            
             Welcome to Plone!
-            
           </a>
-          
         </div>
       </div>
       <div
@@ -216,11 +193,8 @@ exports[`ContextNavigation renders a navigation slot component without active it
             class="contenttype-undefined"
             href="/blog"
           >
-            
             Blog
-            
           </a>
-          
         </div>
       </div>
       <div
@@ -234,11 +208,8 @@ exports[`ContextNavigation renders a navigation slot component without active it
             class="contenttype-undefined"
             href="/users"
           >
-            
             Users
-            
           </a>
-          
         </div>
       </div>
     </div>

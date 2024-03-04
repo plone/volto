@@ -1,5 +1,5 @@
 export function getExternalRoutes(): {
-    component: (props: any) => JSX.Element;
+    component: (props: any) => import("react/jsx-runtime").JSX.Element;
 }[];
 /**
  * Default routes array.
@@ -24,7 +24,7 @@ export const defaultRoutes: ({
     component: any;
     exact: boolean;
 } | {
-    component: (props: any) => JSX.Element;
+    component: (props: any) => import("react/jsx-runtime").JSX.Element;
 } | {
     path: string[];
     component: any;
@@ -47,7 +47,7 @@ declare const routes: {
         component: any;
         exact: boolean;
     } | {
-        component: (props: any) => JSX.Element;
+        component: (props: any) => import("react/jsx-runtime").JSX.Element;
     } | {
         path: string[];
         component: any;

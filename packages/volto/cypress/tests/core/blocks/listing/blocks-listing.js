@@ -445,7 +445,9 @@ describe('Listing Block Tests', () => {
 
     //add listing block
     cy.scrollTo('bottom');
-    cy.addNewBlock('listing', true);
+    cy.getSlate().click();
+    cy.get('.ui.basic.icon.button.block-add-button').click();
+    cy.get('.ui.basic.icon.button.listing').contains('Listing').click();
 
     //********  add Page Type criteria filter
     cy.configureListingWith('Page');

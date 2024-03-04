@@ -7,4 +7,4 @@ declare function ObjectBrowserNav({ currentSearchResults, selected, handleClickO
     mode: any;
     navigateTo: any;
     isSelectable: any;
-}): JSX.Element;
+}): import("react/jsx-runtime").JSX.Element;
