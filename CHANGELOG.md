@@ -17,6 +17,14 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 17.15.3 (2024-03-04)
+
+### Bugfix
+
+- Enhance findBlocks to check for blocks also in data for add-ons such as @eeacms/volto-tabs-block. @ichim-david [#5796](https://github.com/plone/volto/issues/5796)
+- Fixed ArrayWidget sorting items. @giuliaghisini [#5804](https://github.com/plone/volto/issues/5804)
+- Reset global Form state onSubmit and onCancel in Add and Edit forms @sneridagh [#5827](https://github.com/plone/volto/issues/5827)
+
 ## 17.15.2 (2024-02-24)
 
 ### Bugfix
