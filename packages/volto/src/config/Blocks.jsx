@@ -3,7 +3,6 @@ import { defineMessages } from 'react-intl';
 import ViewTitleBlock from '@plone/volto/components/manage/Blocks/Title/View';
 import ViewDescriptionBlock from '@plone/volto/components/manage/Blocks/Description/View';
 import ViewToCBlock from '@plone/volto/components/manage/Blocks/ToC/View';
-import ViewTextBlock from '@plone/volto/components/manage/Blocks/Text/View';
 import ViewImageBlock from '@plone/volto/components/manage/Blocks/Image/View';
 import ViewLeadImageBlock from '@plone/volto/components/manage/Blocks/LeadImage/View';
 import ViewListingBlock from '@plone/volto/components/manage/Blocks/Listing/View';
@@ -16,7 +15,6 @@ import ViewTableBlock from '@plone/volto/components/manage/Blocks/Table/View';
 import EditTitleBlock from '@plone/volto/components/manage/Blocks/Title/Edit';
 import EditDescriptionBlock from '@plone/volto/components/manage/Blocks/Description/Edit';
 import EditToCBlock from '@plone/volto/components/manage/Blocks/ToC/Edit';
-import EditTextBlock from '@plone/volto/components/manage/Blocks/Text/Edit';
 import EditImageBlock from '@plone/volto/components/manage/Blocks/Image/Edit';
 import EditLeadImageBlock from '@plone/volto/components/manage/Blocks/LeadImage/Edit';
 import EditListingBlock from '@plone/volto/components/manage/Blocks/Listing/Edit';
@@ -32,7 +30,6 @@ import EditTableBlock from '@plone/volto/components/manage/Blocks/Table/Edit';
 
 import descriptionSVG from '@plone/volto/icons/description.svg';
 import titleSVG from '@plone/volto/icons/text.svg';
-import textSVG from '@plone/volto/icons/subtext.svg';
 import cameraSVG from '@plone/volto/icons/camera.svg';
 import videoSVG from '@plone/volto/icons/videocamera.svg';
 import globeSVG from '@plone/volto/icons/globe.svg';
@@ -47,7 +44,6 @@ import imagesSVG from '@plone/volto/icons/images.svg';
 
 import ImageGalleryListingBlockTemplate from '@plone/volto/components/manage/Blocks/Listing/ImageGallery';
 import BlockSettingsSchema from '@plone/volto/components/manage/Blocks/Block/Schema';
-import TextSettingsSchema from '@plone/volto/components/manage/Blocks/Text/Schema';
 import ImageSettingsSchema from '@plone/volto/components/manage/Blocks/Image/LayoutSchema';
 import ToCSettingsSchema from '@plone/volto/components/manage/Blocks/ToC/Schema';
 
@@ -99,10 +95,6 @@ defineMessages({
   description: {
     id: 'description',
     defaultMessage: 'Description',
-  },
-  text: {
-    id: 'text',
-    defaultMessage: 'Text',
   },
   toc: {
     id: 'toc',
@@ -229,25 +221,6 @@ const blocksConfig = {
     mostUsed: false,
     blockHasOwnFocusManagement: true,
     sidebarTab: 0,
-  },
-  text: {
-    id: 'text',
-    title: 'Text',
-    icon: textSVG,
-    group: 'text',
-    view: ViewTextBlock,
-    edit: EditTextBlock,
-    schema: TextSettingsSchema,
-    restricted: false,
-    mostUsed: false,
-    blockHasOwnFocusManagement: true,
-    sidebarTab: 0,
-    blockHasValue: (data) => {
-      const isEmpty =
-        !data.text ||
-        (data.text?.blocks?.length === 1 && data.text.blocks[0].text === '');
-      return !isEmpty;
-    },
   },
   image: {
     id: 'image',
