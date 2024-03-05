@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 16.31.2 (2024-03-05)
+
+### Bugfix
+
+- Fix translation error message. @robgietema [#5835](https://github.com/plone/volto/issues/5835)
+
 ## 16.31.1 (2024-02-28)
 
 ### Bugfix
