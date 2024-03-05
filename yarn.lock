@@ -2915,7 +2915,7 @@ __metadata:
     react-simple-code-editor: 0.7.1
     react-sortable-hoc: 2.0.0
     react-test-renderer: 17.0.2
-    react-toastify: 5.4.1
+    react-toastify: 5.5.0
     react-transition-group: 4.4.5
     react-virtualized: 9.22.3
     redraft: 0.10.2
@@ -20842,9 +20842,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-toastify@npm:5.4.1":
-  version: 5.4.1
-  resolution: "react-toastify@npm:5.4.1"
+"react-toastify@npm:5.5.0":
+  version: 5.5.0
+  resolution: "react-toastify@npm:5.5.0"
   dependencies:
     "@babel/runtime": ^7.4.2
     classnames: ^2.2.6
@@ -20853,7 +20853,7 @@ __metadata:
   peerDependencies:
     react: ">=15.0.0"
     react-dom: ">=15.0.0"
-  checksum: 684b918284b6579affdfcafdbc84979827afe91894cd73ad7bf7d7ff260a78804bd8497041269bfa5634f616a3a11765b1a8df76c1364937086115f79f214838
+  checksum: 9759c59371ad1ccf36ba5779bd6132061afd10bb30f2ea0038ddf2ab077a1957e7aa361c959f0f7656481734cb1b01f10d254c3f76cb6a2bd0f8c183414d78e2
   languageName: node
   linkType: hard
 
