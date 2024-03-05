@@ -18,4 +18,4 @@ exports[`DescriptionWidget renders a description view widget component with chil
 </p>
 `;
 
-exports[`DescriptionWidget renders an empty description view widget component 1`] = `""`;
+exports[`DescriptionWidget renders an empty description view widget component 1`] = `null`;

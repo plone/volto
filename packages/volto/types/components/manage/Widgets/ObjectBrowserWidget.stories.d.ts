@@ -63,14 +63,14 @@ declare namespace _default {
         }
     }
     export { OBC as component };
-    export let decorators: ((Story: any) => JSX.Element)[];
+    export let decorators: ((Story: any) => import("react/jsx-runtime").JSX.Element)[];
     export let excludeStories: string[];
 }
 export default _default;
-export function Connected(): JSX.Element;
-export function SingleElement(): JSX.Element;
-export function Placeholder(): JSX.Element;
-export function Image(): JSX.Element;
-export function InitalPath(): JSX.Element;
-export function SelectableType(): JSX.Element;
+export function Connected(): import("react/jsx-runtime").JSX.Element;
+export function SingleElement(): import("react/jsx-runtime").JSX.Element;
+export function Placeholder(): import("react/jsx-runtime").JSX.Element;
+export function Image(): import("react/jsx-runtime").JSX.Element;
+export function InitalPath(): import("react/jsx-runtime").JSX.Element;
+export function SelectableType(): import("react/jsx-runtime").JSX.Element;
 import { ObjectBrowserWidgetComponent as OBC } from './ObjectBrowserWidget';

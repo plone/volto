@@ -1666,6 +1666,7 @@ msgstr "Cronologia di {title}"
 #: components/manage/Contents/ContentsBreadcrumbs
 #: components/manage/Contents/ContentsBreadcrumbsHomeItem
 #: components/theme/Breadcrumbs/Breadcrumbs
+#: components/theme/Logo/Logo
 msgid "Home"
 msgstr "Home"
 
@@ -2052,6 +2053,11 @@ msgstr "Accesso fallito"
 #: components/theme/Login/Login
 msgid "Login Name"
 msgstr "Nome utente"
+
+#. Default: "Logo of"
+#: components/theme/Logo/Logo
+msgid "Logo of"
+msgstr ""
 
 #. Default: "Logout"
 #: components/manage/Toolbar/PersonalTools
@@ -3647,6 +3653,12 @@ msgstr ""
 #. Default: "There are no users with the searched criteria"
 #: helpers/MessageLabels/MessageLabels
 msgid "There are no users with the searched criteria"
+msgstr ""
+
+#. Default: "There are some errors."
+#: components/manage/Add/Add
+#: components/manage/Edit/Edit
+msgid "There are some errors."
 msgstr ""
 
 #. Default: "There is a configuration problem on the backend"

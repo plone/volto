@@ -1673,6 +1673,7 @@ msgstr "Historial de {title}"
 #: components/manage/Contents/ContentsBreadcrumbs
 #: components/manage/Contents/ContentsBreadcrumbsHomeItem
 #: components/theme/Breadcrumbs/Breadcrumbs
+#: components/theme/Logo/Logo
 msgid "Home"
 msgstr "Inicio"
 
@@ -2059,6 +2060,11 @@ msgstr "Inicio de Sesión fallo"
 #: components/theme/Login/Login
 msgid "Login Name"
 msgstr "Nombre de usuario"
+
+#. Default: "Logo of"
+#: components/theme/Logo/Logo
+msgid "Logo of"
+msgstr ""
 
 #. Default: "Logout"
 #: components/manage/Toolbar/PersonalTools
@@ -3655,6 +3661,12 @@ msgstr "No hay grupos con los criterios buscados."
 #: helpers/MessageLabels/MessageLabels
 msgid "There are no users with the searched criteria"
 msgstr "No hay usuarios con los criterios buscados"
+
+#. Default: "There are some errors."
+#: components/manage/Add/Add
+#: components/manage/Edit/Edit
+msgid "There are some errors."
+msgstr ""
 
 #. Default: "There is a configuration problem on the backend"
 #: components/theme/CorsError/CorsError

@@ -483,26 +483,26 @@ export function applySchemaDefaults({ data = {}, schema, intl }) {
             [currentField]: schema.properties[currentField].default,
           }
         : intl &&
-          schema.properties[currentField].schema &&
-          !(schema.properties[currentField].widget === 'object_list') // TODO: this should be renamed as itemSchema
-        ? {
-            ...accumulator,
-            [currentField]: {
-              ...applySchemaDefaults({
-                data: { ...data[currentField], ...accumulator[currentField] },
-                schema:
-                  typeof schema.properties[currentField].schema === 'function'
-                    ? schema.properties[currentField].schema({
-                        data: accumulator[currentField],
-                        formData: accumulator[currentField],
-                        intl,
-                      })
-                    : schema.properties[currentField].schema,
-                intl,
-              }),
-            },
-          }
-        : accumulator;
+            schema.properties[currentField].schema &&
+            !(schema.properties[currentField].widget === 'object_list') // TODO: this should be renamed as itemSchema
+          ? {
+              ...accumulator,
+              [currentField]: {
+                ...applySchemaDefaults({
+                  data: { ...data[currentField], ...accumulator[currentField] },
+                  schema:
+                    typeof schema.properties[currentField].schema === 'function'
+                      ? schema.properties[currentField].schema({
+                          data: accumulator[currentField],
+                          formData: accumulator[currentField],
+                          intl,
+                        })
+                      : schema.properties[currentField].schema,
+                  intl,
+                }),
+              },
+            }
+          : accumulator;
     }, {}),
     data,
   );
@@ -701,10 +701,13 @@ export function findBlocks(blocks, types, result = []) {
 
   Object.keys(blocks).forEach((blockId) => {
     const block = blocks[blockId];
+    // check blocks from data as well since some add-ons use that
+    // such as @eeacms/volto-tabs-block
+    const child_blocks = block.blocks || block.data?.blocks;
     if (types.includes(block['@type'])) {
       result.push(blockId);
-    } else if (containerBlockTypes.includes(block['@type']) || block.blocks) {
-      findBlocks(block.blocks, types, result);
+    } else if (containerBlockTypes.includes(block['@type']) || child_blocks) {
+      findBlocks(child_blocks, types, result);
     }
   });
 

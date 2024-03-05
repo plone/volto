@@ -13,6 +13,8 @@ import {
 } from '@plone/volto/helpers';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
+import upSVG from '@plone/volto/icons/up-key.svg';
+import downSVG from '@plone/volto/icons/down-key.svg';
 import {
   findIndex,
   isEmpty,
@@ -23,14 +25,16 @@ import {
   pickBy,
   without,
   cloneDeep,
+  xor,
 } from 'lodash';
 import isBoolean from 'lodash/isBoolean';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { injectIntl } from 'react-intl';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import { connect } from 'react-redux';
 import {
+  Accordion,
   Button,
   Container as SemanticContainer,
   Form as UiForm,
@@ -41,9 +45,15 @@ import {
 import { v4 as uuid } from 'uuid';
 import { toast } from 'react-toastify';
 import { BlocksToolbar, UndoToolbar } from '@plone/volto/components';
-import { setSidebarTab, setFormData } from '@plone/volto/actions';
+import {
+  setMetadataFieldsets,
+  resetMetadataFocus,
+  setSidebarTab,
+  setFormData,
+} from '@plone/volto/actions';
 import { compose } from 'redux';
 import config from '@plone/volto/registry';
+import SlotRenderer from '../../theme/SlotRenderer/SlotRenderer';
 
 /**
  * Form container class.
@@ -71,6 +81,8 @@ class Form extends Component {
     }),
     formData: PropTypes.objectOf(PropTypes.any),
     globalData: PropTypes.objectOf(PropTypes.any),
+    metadataFieldsets: PropTypes.arrayOf(PropTypes.string),
+    metadataFieldFocus: PropTypes.string,
     pathname: PropTypes.string,
     onSubmit: PropTypes.func,
     onCancel: PropTypes.func,
@@ -141,9 +153,15 @@ class Form extends Component {
       title: uuid(),
       text: uuid(),
     };
-    let { formData } = props;
+    let { formData, schema: originalSchema } = props;
     const blocksFieldname = getBlocksFieldname(formData);
     const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
+
+    const schema = this.removeBlocksLayoutFields(originalSchema);
+
+    this.props.setMetadataFieldsets(
+      schema?.fieldsets ? schema.fieldsets.map((fieldset) => fieldset.id) : [],
+    );
 
     if (!props.isEditForm) {
       // It's a normal (add form), get defaults from schema
@@ -220,6 +238,7 @@ class Form extends Component {
       isClient: false,
       // Ensure focus remain in field after change
       inFocus: {},
+      sidebarMetadataIsAvailable: false,
     };
     this.onChangeField = this.onChangeField.bind(this);
     this.onSelectBlock = this.onSelectBlock.bind(this);
@@ -228,6 +247,7 @@ class Form extends Component {
     this.onTabChange = this.onTabChange.bind(this);
     this.onBlurField = this.onBlurField.bind(this);
     this.onClickInput = this.onClickInput.bind(this);
+    this.onToggleMetadataFieldset = this.onToggleMetadataFieldset.bind(this);
   }
 
   /**
@@ -262,11 +282,44 @@ class Form extends Component {
     }
     if (
       this.props.global &&
-      !isEqual(this.props.globalData, this.state.formData)
+      !isEqual(this.props.globalData, prevProps.globalData)
     ) {
       this.setState({
         formData: this.props.globalData,
       });
+    }
+
+    if (!isEqual(prevProps.schema, this.props.schema)) {
+      this.props.setMetadataFieldsets(
+        this.removeBlocksLayoutFields(this.props.schema).fieldsets.map(
+          (fieldset) => fieldset.id,
+        ),
+      );
+    }
+
+    if (
+      this.props.metadataFieldFocus !== '' &&
+      !isEqual(prevProps.metadataFieldFocus, this.props.metadataFieldFocus)
+    ) {
+      // Scroll into view
+      document
+        .querySelector(`.field-wrapper-${this.props.metadataFieldFocus}`)
+        .scrollIntoView();
+
+      // Set focus to first input if available
+      document
+        .querySelector(`.field-wrapper-${this.props.metadataFieldFocus} input`)
+        .focus();
+
+      // Reset focus field
+      this.props.resetMetadataFocus();
+    }
+
+    if (
+      !this.state.sidebarMetadataIsAvailable &&
+      document.getElementById('sidebar-metadata')
+    ) {
+      this.setState(() => ({ sidebarMetadataIsAvailable: true }));
     }
   }
 
@@ -562,6 +615,18 @@ class Form extends Component {
   };
 
   /**
+   * Toggle metadata fieldset handler
+   * @method onToggleMetadataFieldset
+   * @param {Object} event Event object.
+   * @param {Object} blockProps Block properties.
+   * @returns {undefined}
+   */
+  onToggleMetadataFieldset(event, blockProps) {
+    const { index } = blockProps;
+    this.props.setMetadataFieldsets(xor(this.props.metadataFieldsets, [index]));
+  }
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -574,6 +639,7 @@ class Form extends Component {
       onSubmit,
       navRoot,
       type,
+      metadataFieldsets,
     } = this.props;
     const formData = this.state.formData;
     const schema = this.removeBlocksLayoutFields(originalSchema);
@@ -584,111 +650,147 @@ class Form extends Component {
       // Removing this from SSR is important, since react-beautiful-dnd supports SSR,
       // but draftJS don't like it much and the hydration gets messed up
       this.state.isClient && (
-        <Container>
-          <BlocksToolbar
-            formData={formData}
-            selectedBlock={this.state.selected}
-            selectedBlocks={this.state.multiSelected}
-            onChangeBlocks={(newBlockData) => {
-              const newFormData = {
-                ...formData,
-                ...newBlockData,
-              };
-              this.setState({
-                formData: newFormData,
-              });
-              if (this.props.global) {
-                this.props.setFormData(newFormData);
-              }
-            }}
-            onSetSelectedBlocks={(blockIds) =>
-              this.setState({ multiSelected: blockIds })
-            }
-            onSelectBlock={this.onSelectBlock}
-          />
-          <UndoToolbar
-            state={{
-              formData,
-              selected: this.state.selected,
-              multiSelected: this.state.multiSelected,
-            }}
-            enableHotKeys
-            onUndoRedo={({ state }) => {
-              if (this.props.global) {
-                this.props.setFormData(state.formData);
-              }
-              return this.setState(state);
-            }}
-          />
-          <BlocksForm
-            onChangeFormData={(newData) => {
-              const newFormData = {
-                ...formData,
-                ...newData,
-              };
-              this.setState({
-                formData: newFormData,
-              });
-              if (this.props.global) {
-                this.props.setFormData(newFormData);
-              }
-            }}
-            onChangeField={this.onChangeField}
-            onSelectBlock={this.onSelectBlock}
-            properties={formData}
+        <>
+          <SlotRenderer
+            name="aboveContent"
+            content={this.props.content}
             navRoot={navRoot}
-            type={type}
-            pathname={this.props.pathname}
-            selectedBlock={this.state.selected}
-            multiSelected={this.state.multiSelected}
-            manage={this.props.isAdminForm}
-            allowedBlocks={this.props.allowedBlocks}
-            showRestricted={this.props.showRestricted}
-            editable={this.props.editable}
-            isMainForm={this.props.editable}
           />
-          {this.state.isClient && this.props.editable && (
-            <Portal
-              node={__CLIENT__ && document.getElementById('sidebar-metadata')}
-            >
-              <UiForm
-                method="post"
-                onSubmit={this.onSubmit}
-                error={keys(this.state.errors).length > 0}
-              >
-                {schema &&
-                  map(schema.fieldsets, (item) => [
-                    <Segment
-                      secondary
-                      attached
-                      className={`fieldset-${item.id}`}
-                      key={item.title}
-                    >
-                      {item.title}
-                    </Segment>,
-                    <Segment attached key={`fieldset-contents-${item.title}`}>
-                      {map(item.fields, (field, index) => (
-                        <Field
-                          {...schema.properties[field]}
-                          id={field}
-                          fieldSet={item.title.toLowerCase()}
-                          formData={formData}
-                          focus={this.state.inFocus[field]}
-                          value={formData?.[field]}
-                          required={schema.required.indexOf(field) !== -1}
-                          onChange={this.onChangeField}
-                          onBlur={this.onBlurField}
-                          onClick={this.onClickInput}
-                          key={field}
-                          error={this.state.errors[field]}
-                        />
-                      ))}
-                    </Segment>,
-                  ])}
-              </UiForm>
-            </Portal>
-          )}
-        </Container>
+
+          <Container>
+            <BlocksToolbar
+              formData={formData}
+              selectedBlock={this.state.selected}
+              selectedBlocks={this.state.multiSelected}
+              onChangeBlocks={(newBlockData) => {
+                const newFormData = {
+                  ...formData,
+                  ...newBlockData,
+                };
+                this.setState({
+                  formData: newFormData,
+                });
+                if (this.props.global) {
+                  this.props.setFormData(newFormData);
+                }
+              }}
+              onSetSelectedBlocks={(blockIds) =>
+                this.setState({ multiSelected: blockIds })
+              }
+              onSelectBlock={this.onSelectBlock}
+            />
+            <UndoToolbar
+              state={{
+                formData,
+                selected: this.state.selected,
+                multiSelected: this.state.multiSelected,
+              }}
+              enableHotKeys
+              onUndoRedo={({ state }) => {
+                if (this.props.global) {
+                  this.props.setFormData(state.formData);
+                }
+                return this.setState(state);
+              }}
+            />
+            <BlocksForm
+              onChangeFormData={(newData) => {
+                const newFormData = {
+                  ...formData,
+                  ...newData,
+                };
+                this.setState({
+                  formData: newFormData,
+                });
+                if (this.props.global) {
+                  this.props.setFormData(newFormData);
+                }
+              }}
+              onChangeField={this.onChangeField}
+              onSelectBlock={this.onSelectBlock}
+              properties={formData}
+              navRoot={navRoot}
+              type={type}
+              pathname={this.props.pathname}
+              selectedBlock={this.state.selected}
+              multiSelected={this.state.multiSelected}
+              manage={this.props.isAdminForm}
+              allowedBlocks={this.props.allowedBlocks}
+              showRestricted={this.props.showRestricted}
+              editable={this.props.editable}
+              isMainForm={this.props.editable}
+            />
+            {this.state.isClient &&
+              this.state.sidebarMetadataIsAvailable &&
+              this.props.editable &&
+              createPortal(
+                <UiForm
+                  method="post"
+                  onSubmit={this.onSubmit}
+                  error={keys(this.state.errors).length > 0}
+                >
+                  {schema &&
+                    map(schema.fieldsets, (fieldset) => (
+                      <Accordion
+                        fluid
+                        styled
+                        className="form"
+                        key={fieldset.title}
+                      >
+                        <div
+                          key={fieldset.id}
+                          id={`metadataform-fieldset-${fieldset.id}`}
+                        >
+                          <Accordion.Title
+                            active={metadataFieldsets.includes(fieldset.id)}
+                            index={fieldset.id}
+                            onClick={this.onToggleMetadataFieldset}
+                          >
+                            {fieldset.title}
+                            {metadataFieldsets.includes(fieldset.id) ? (
+                              <Icon name={upSVG} size="20px" />
+                            ) : (
+                              <Icon name={downSVG} size="20px" />
+                            )}
+                          </Accordion.Title>
+                          <Accordion.Content
+                            active={metadataFieldsets.includes(fieldset.id)}
+                          >
+                            <Segment className="attached">
+                              {map(fieldset.fields, (field, index) => (
+                                <Field
+                                  {...schema.properties[field]}
+                                  id={field}
+                                  fieldSet={fieldset.title.toLowerCase()}
+                                  formData={formData}
+                                  focus={this.state.inFocus[field]}
+                                  value={formData?.[field]}
+                                  required={
+                                    schema.required.indexOf(field) !== -1
+                                  }
+                                  onChange={this.onChangeField}
+                                  onBlur={this.onBlurField}
+                                  onClick={this.onClickInput}
+                                  key={field}
+                                  error={this.state.errors[field]}
+                                />
+                              ))}
+                            </Segment>
+                          </Accordion.Content>
+                        </div>
+                      </Accordion>
+                    ))}
+                </UiForm>,
+                document.getElementById('sidebar-metadata'),
+              )}
+
+            <SlotRenderer
+              name="belowContent"
+              content={this.props.content}
+              navRoot={navRoot}
+            />
+          </Container>
+        </>
       )
     ) : (
       <Container>
@@ -854,9 +956,17 @@ const FormIntl = injectIntl(Form, { forwardRef: true });
 export default compose(
   connect(
     (state, props) => ({
+      content: state.content.data,
       globalData: state.form?.global,
+      metadataFieldsets: state.sidebar?.metadataFieldsets,
+      metadataFieldFocus: state.sidebar?.metadataFieldFocus,
     }),
-    { setSidebarTab, setFormData },
+    {
+      setMetadataFieldsets,
+      setSidebarTab,
+      setFormData,
+      resetMetadataFocus,
+    },
     null,
     { forwardRef: true },
   ),

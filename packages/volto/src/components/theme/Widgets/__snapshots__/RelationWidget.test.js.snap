@@ -92,4 +92,4 @@ exports[`RelationWidget renders a relation view widget component 1`] = `
 </a>
 `;
 
-exports[`RelationWidget renders an empty relation view widget component 1`] = `""`;
+exports[`RelationWidget renders an empty relation view widget component 1`] = `null`;

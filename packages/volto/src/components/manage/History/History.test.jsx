@@ -1,5 +1,5 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { StaticRouter } from 'react-router-dom';
 import { Provider } from 'react-intl-redux';
@@ -9,9 +9,7 @@ import FakeTimers from '@sinonjs/fake-timers';
 import History from './History';
 
 const mockStore = configureStore();
-jest.mock('react-portal', () => ({
-  Portal: jest.fn(() => <div id="Portal" />),
-}));
+jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
 
 const FIXED_SYSTEM_TIME = '2017-04-23T15:38:00.000Z';
 
@@ -87,13 +85,14 @@ describe('History', () => {
         messages: {},
       },
     });
-    const component = renderer.create(
+    const { container } = render(
       <Provider store={store}>
         <History location={{ pathname: '/blog' }} />
+        <div id="toolbar"></div>
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+
+    expect(container).toMatchSnapshot();
   });
 
   it('redirects if unassigned', () => {
@@ -153,13 +152,14 @@ describe('History', () => {
         messages: {},
       },
     });
-    const component = renderer.create(
+    const { container } = render(
       <Provider store={store}>
         <History location={{ pathname: '/blog' }} />
+        <div id="toolbar"></div>
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+
+    expect(container).toMatchSnapshot();
   });
 
   it('redirects if unassigned, no token gives unauthorized', () => {
@@ -217,14 +217,15 @@ describe('History', () => {
         messages: {},
       },
     });
-    const component = renderer.create(
+    const { container } = render(
       <Provider store={store}>
         <StaticRouter context={{}} location={'/blog'}>
           <History location={{ pathname: '/blog' }} />
+          <div id="toolbar"></div>
         </StaticRouter>
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+
+    expect(container).toMatchSnapshot();
   });
 });

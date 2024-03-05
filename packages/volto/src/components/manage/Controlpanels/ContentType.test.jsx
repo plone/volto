@@ -1,16 +1,14 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter, Route } from 'react-router-dom';
+import { render } from '@testing-library/react';
 
 import ContentType from './ContentType';
 
 const mockStore = configureStore();
 
-jest.mock('react-portal', () => ({
-  Portal: jest.fn(() => <div id="Portal" />),
-}));
+jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
 jest.mock('../Form/Form', () => jest.fn(() => <div id="form" />));
 
 describe('ContentType', () => {
@@ -35,7 +33,8 @@ describe('ContentType', () => {
         messages: {},
       },
     });
-    const component = renderer.create(
+
+    const { container } = render(
       <Provider store={store}>
         <MemoryRouter
           initialEntries={['/controlpanel/dexterity-types/Document']}
@@ -44,10 +43,11 @@ describe('ContentType', () => {
             path={'/controlpanel/dexterity-types/:id'}
             component={ContentType}
           />
+          <div id="toolbar"></div>
         </MemoryRouter>
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+
+    expect(container).toMatchSnapshot();
   });
 });
