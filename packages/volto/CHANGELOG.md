@@ -17,6 +17,22 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.18 (2024-03-05)
+
+### Bugfix
+
+- Fix translation error message. @robgietema [#5835](https://github.com/plone/volto/issues/5835)
+- Pass down content, pathname and navRoot to the `SlotComponent` for convenience @sneridagh [#5841](https://github.com/plone/volto/issues/5841)
+- Fix `setMetadataFocus` so it does not break if the element to be focused is not an `input` @sneridagh [#5843](https://github.com/plone/volto/issues/5843)
+
+### Internal
+
+- Add new readmes to CI. @stevepiercy [#5837](https://github.com/plone/volto/issues/5837)
+
+### Documentation
+
+- Fix linkcheckbroken of `README.md` at the source of the file. @stevepiercy [#5834](https://github.com/plone/volto/issues/5834)
+
 ## 18.0.0-alpha.17 (2024-03-05)
 
 ### Bugfix
