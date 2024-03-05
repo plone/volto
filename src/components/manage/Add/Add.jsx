@@ -37,6 +37,7 @@ import {
 } from '@plone/volto/helpers';
 
 import { preloadLazyLibs } from '@plone/volto/helpers/Loadable';
+import { tryParseJSON } from '@plone/volto/helpers';
 
 import config from '@plone/volto/registry';
 
@@ -124,9 +125,9 @@ class Add extends Component {
     this.onSubmit = this.onSubmit.bind(this);
 
     if (config.blocks?.initialBlocks[props.type]) {
-      this.initialBlocksLayout = config.blocks.initialBlocks[
-        props.type
-      ].map((item) => uuid());
+      this.initialBlocksLayout = config.blocks.initialBlocks[props.type].map(
+        (item) => uuid(),
+      );
       this.initialBlocks = this.initialBlocksLayout.reduce(
         (acc, value, index) => ({
           ...acc,
@@ -178,13 +179,29 @@ class Add extends Component {
         new DOMParser().parseFromString(message, 'text/html')?.all[0]
           ?.textContent || message;
 
-      this.setState({ error: error });
+      const errorsList = tryParseJSON(error);
+      let erroMessage;
+      if (Array.isArray(errorsList)) {
+        const invariantErrors = errorsList
+          .filter((errorItem) => !('field' in errorItem))
+          .map((errorItem) => errorItem['message']);
+        if (invariantErrors.length > 0) {
+          // Plone invariant validation message.
+          erroMessage = invariantErrors.join(' - ');
+        } else {
+          // Error in specific field.
+          erroMessage = this.props.intl.formatMessage(messages.someErrors);
+        }
+      } else {
+        erroMessage = errorsList.error?.message || error;
+      }
 
+      this.setState({ error: error });
       toast.error(
         <Toast
           error
           title={this.props.intl.formatMessage(messages.error)}
-          content={`${nextProps.createRequest.error.status}:  ${error}`}
+          content={erroMessage}
         />,
       );
     }
@@ -250,11 +267,10 @@ class Add extends Component {
         : null;
 
       // Lookup initialBlocks and initialBlocksLayout within schema
-      const schemaBlocks = this.props.schema.properties[blocksFieldname]
-        ?.default;
-      const schemaBlocksLayout = this.props.schema.properties[
-        blocksLayoutFieldname
-      ]?.default?.items;
+      const schemaBlocks =
+        this.props.schema.properties[blocksFieldname]?.default;
+      const schemaBlocksLayout =
+        this.props.schema.properties[blocksLayoutFieldname]?.default?.items;
       let initialBlocks = this.initialBlocks;
       let initialBlocksLayout = this.initialBlocksLayout;
 
