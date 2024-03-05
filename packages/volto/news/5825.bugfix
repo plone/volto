@@ -1,1 +1,0 @@
-Modified build-deps make command to check if registry files are newer than dist to force rebuild. @ichim-david
