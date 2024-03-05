@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 8.1.4 (2024-03-05)
+
+### Bugfix
+
+- Ensure hidden files get added to new addon projects in generator-volto @instification [#5719](https://github.com/plone/volto/issues/5719)
+
 ## 8.1.3 (2024-02-23)
 
 ### Bugfix
