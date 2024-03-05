@@ -3833,11 +3833,6 @@ msgstr "Digita l'URL di un Video (YouTube, Vimeo or mp4)"
 msgid "Type text..."
 msgstr "Digita il testo..."
 
-#. Default: "Type text…"
-#: components/manage/Blocks/Text/Edit
-msgid "Type text…"
-msgstr "Digita il testo…"
-
 #. Default: "Type the heading…"
 #: components/manage/TextLineEdit/TextLineEdit
 msgid "Type the heading…"
@@ -4892,11 +4887,6 @@ msgstr "Tabella"
 #: helpers/MessageLabels/MessageLabels
 msgid "target path"
 msgstr "percorso di destinazione"
-
-#. Default: "Text"
-#: config/Blocks
-msgid "text"
-msgstr "Testo"
 
 #. Default: "Title"
 #: config/Blocks

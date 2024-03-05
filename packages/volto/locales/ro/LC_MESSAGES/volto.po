@@ -3833,11 +3833,6 @@ msgstr "Introduceți un URL video (YouTube, Vimeo sau mp4)"
 msgid "Type text..."
 msgstr "Tastați text..."
 
-#. Default: "Type text…"
-#: components/manage/Blocks/Text/Edit
-msgid "Type text…"
-msgstr "Tastați textul …"
-
 #. Default: "Type the heading…"
 #: components/manage/TextLineEdit/TextLineEdit
 msgid "Type the heading…"
@@ -4892,11 +4887,6 @@ msgstr "Tabel"
 #: helpers/MessageLabels/MessageLabels
 msgid "target path"
 msgstr ""
-
-#. Default: "Text"
-#: config/Blocks
-msgid "text"
-msgstr "Text"
 
 #. Default: "Title"
 #: config/Blocks

@@ -3840,11 +3840,6 @@ msgstr "Idatzi bideo baten URLa (YouTube, Vimeo edo mp4)"
 msgid "Type text..."
 msgstr "Idatzi testua..."
 
-#. Default: "Type text…"
-#: components/manage/Blocks/Text/Edit
-msgid "Type text…"
-msgstr "Idatzi testua..."
-
 #. Default: "Type the heading…"
 #: components/manage/TextLineEdit/TextLineEdit
 msgid "Type the heading…"
@@ -4899,11 +4894,6 @@ msgstr "Taula"
 #: helpers/MessageLabels/MessageLabels
 msgid "target path"
 msgstr ""
-
-#. Default: "Text"
-#: config/Blocks
-msgid "text"
-msgstr "Testua"
 
 #. Default: "Title"
 #: config/Blocks

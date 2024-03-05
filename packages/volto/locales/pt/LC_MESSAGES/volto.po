@@ -3838,11 +3838,6 @@ msgstr ""
 msgid "Type text..."
 msgstr ""
 
-#. Default: "Type text…"
-#: components/manage/Blocks/Text/Edit
-msgid "Type text…"
-msgstr "Escreva texto…"
-
 #. Default: "Type the heading…"
 #: components/manage/TextLineEdit/TextLineEdit
 msgid "Type the heading…"
@@ -4897,11 +4892,6 @@ msgstr "tabela"
 #: helpers/MessageLabels/MessageLabels
 msgid "target path"
 msgstr ""
-
-#. Default: "Text"
-#: config/Blocks
-msgid "text"
-msgstr "texto"
 
 #. Default: "Title"
 #: config/Blocks

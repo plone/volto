@@ -3838,11 +3838,6 @@ msgstr "ビデオURLを入力 (YouTube, Vimeo or mp4)"
 msgid "Type text..."
 msgstr ""
 
-#. Default: "Type text…"
-#: components/manage/Blocks/Text/Edit
-msgid "Type text…"
-msgstr "テキストを入力…"
-
 #. Default: "Type the heading…"
 #: components/manage/TextLineEdit/TextLineEdit
 msgid "Type the heading…"
@@ -4897,11 +4892,6 @@ msgstr "テーブル"
 #: helpers/MessageLabels/MessageLabels
 msgid "target path"
 msgstr ""
-
-#. Default: "Text"
-#: config/Blocks
-msgid "text"
-msgstr "テキスト"
 
 #. Default: "Title"
 #: config/Blocks

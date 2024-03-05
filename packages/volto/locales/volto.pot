@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2024-02-26T19:56:41.001Z\n"
+"POT-Creation-Date: 2024-03-05T22:17:41.127Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -3835,11 +3835,6 @@ msgstr ""
 msgid "Type text..."
 msgstr ""
 
-#. Default: "Type text…"
-#: components/manage/Blocks/Text/Edit
-msgid "Type text…"
-msgstr ""
-
 #. Default: "Type the heading…"
 #: components/manage/TextLineEdit/TextLineEdit
 msgid "Type the heading…"
@@ -4893,11 +4888,6 @@ msgstr ""
 #. Default: "target path"
 #: helpers/MessageLabels/MessageLabels
 msgid "target path"
-msgstr ""
-
-#. Default: "Text"
-#: config/Blocks
-msgid "text"
 msgstr ""
 
 #. Default: "Title"

@@ -3839,11 +3839,6 @@ msgstr "输入一个视频(YouTube, Vimeo or mp4)的URL"
 msgid "Type text..."
 msgstr "输入文本..."
 
-#. Default: "Type text…"
-#: components/manage/Blocks/Text/Edit
-msgid "Type text…"
-msgstr "输入文本"
-
 #. Default: "Type the heading…"
 #: components/manage/TextLineEdit/TextLineEdit
 msgid "Type the heading…"
@@ -4898,11 +4893,6 @@ msgstr "表格"
 #: helpers/MessageLabels/MessageLabels
 msgid "target path"
 msgstr ""
-
-#. Default: "Text"
-#: config/Blocks
-msgid "text"
-msgstr "文本"
 
 #. Default: "Title"
 #: config/Blocks
