@@ -161,7 +161,9 @@
     "typescript": "5.2.2"
   },
   "resolutions": {
-    "react-error-overlay": "6.0.9"
+    "@pmmmwh/react-refresh-webpack-plugin": "0.5.11",
+    "react-error-overlay": "6.0.9",
+    "react-refresh": "0.14.0"
   },
   "packageManager": "yarn@3.2.3"
 }
