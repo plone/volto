@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.5 (2024-03-05)
+
+### Bugfix
+
+- Fix some case inconsistencies in CSS declarations @sneridagh [#5824](https://github.com/plone/volto/issues/5824)
+
 ## 2.0.0-alpha.4 (2024-03-02)
 
 ### Bugfix

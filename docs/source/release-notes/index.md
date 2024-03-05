@@ -17,6 +17,25 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.17 (2024-03-05)
+
+### Bugfix
+
+- Show validation error message as string instead of list. @wesleybl [#1868](https://github.com/plone/volto/issues/1868)
+- Removed css from `contents.less` that made the Contents table break words in tiny sections due to small table headers such as `ID` or `UID`.  @ichim.david [#5742](https://github.com/plone/volto/issues/5742)
+- Fix Link to Item and Aliases view not updating content in multilingual site. @iFlameing [#5820](https://github.com/plone/volto/issues/5820)
+- Modified build-deps make command to check if registry files are newer than dist to force rebuild. @ichim-david [#5825](https://github.com/plone/volto/issues/5825)
+- Reset global Form state onSubmit and onCancel in Add and Edit forms @sneridagh [#5827](https://github.com/plone/volto/issues/5827)
+- Fix HMR problems, upgrade react-refresh and @pmmmwh/react-refresh-webpack-plugin to latest @sneridagh [#5833](https://github.com/plone/volto/issues/5833)
+
+### Internal
+
+- Uses Plone 6.0.10.1 in tests. @wesleybl [#5830](https://github.com/plone/volto/issues/5830)
+
+### Documentation
+
+- Improve wayfinding for various Volto audiences. @stevepiercy [#5730](https://github.com/plone/volto/issues/5730)
+
 ## 18.0.0-alpha.16 (2024-03-02)
 
 ### Internal
@@ -59,7 +78,7 @@ myst:
 
 - Added Release Management Notes. @sneridagh @stevepiercy [#5358](https://github.com/plone/volto/issues/5358)
 - Delete redundant `developing-a-project.md`. @stevepiercy [#5675](https://github.com/plone/volto/issues/5675)
-- Removed Memori and TwinCreator websites from README.md no longer made using Volto and giving 404 error. @ichim-david [#5802](https://github.com/plone/volto/issues/5802)
+- Removed Memori and TwinCreator websites from `README.md` no longer made using Volto and giving 404 error. @ichim-david [#5802](https://github.com/plone/volto/issues/5802)
 
 ## 18.0.0-alpha.13 (2024-02-22)
 

@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 1.5.2 (2024-03-05)
+
+### Bugfix
+
+- Fix issue with HMR and register the same predicate-less component again @sneridagh [#5832](https://github.com/plone/volto/issues/5832)
+
 ## 1.5.1 (2024-03-02)
 
 ### Bugfix

@@ -1214,6 +1214,9 @@ importers:
       release-it:
         specifier: 17.1.1
         version: 17.1.1(typescript@5.2.2)
+      tsconfig:
+        specifier: workspace:*
+        version: link:../tsconfig
       typescript:
         specifier: 5.2.2
         version: 5.2.2
