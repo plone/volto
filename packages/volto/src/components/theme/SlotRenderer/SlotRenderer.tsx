@@ -44,7 +44,14 @@ const SlotRenderer = ({
         }) => {
           // ^^ Weird compilation issue for Jest tests, that forced to re-declare the type above
           const SlotComponent = component;
-          return <SlotComponent key={name} />;
+          return (
+            <SlotComponent
+              key={name}
+              content={content}
+              pathname={pathname}
+              navRoot={navRoot}
+            />
+          );
         },
       )}
     </>
