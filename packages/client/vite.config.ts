@@ -23,6 +23,7 @@ export default defineConfig({
           '@tanstack/react-query': 'reactQuery',
           axios: 'axios',
           zod: 'zod',
+          'query-string': 'queryString',
         },
       },
     },

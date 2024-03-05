@@ -37,12 +37,12 @@ export const defaultView: import("react").FC<import("react-intl").WithIntlProps<
     WrappedComponent: import("react").ComponentType<any>;
 };
 export const errorViews: {
-    404: (props: any) => JSX.Element;
-    401: (props: any) => JSX.Element;
-    403: (props: any) => JSX.Element;
+    404: (props: any) => import("react/jsx-runtime").JSX.Element;
+    401: (props: any) => import("react/jsx-runtime").JSX.Element;
+    403: (props: any) => import("react/jsx-runtime").JSX.Element;
     408: () => string;
-    500: (props: any) => JSX.Element;
-    ECONNREFUSED: () => JSX.Element;
+    500: (props: any) => import("react/jsx-runtime").JSX.Element;
+    ECONNREFUSED: () => import("react/jsx-runtime").JSX.Element;
     corsError: () => string;
 };
 export namespace layoutViewsNamesMapping {

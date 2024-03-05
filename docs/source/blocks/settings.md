@@ -205,6 +205,18 @@ const initialBlocks = {
 };
 ```
 
+You can also pass the full configuration for the block using an object:
+
+```js
+const initialBlocks = {
+  Document: [
+    { '@type': 'leadImage', fixed: true, required: true },
+    { '@type': 'title' },
+    { '@type': 'slate', value: 'My default text', plaintext: 'My default text' },
+  ],
+};
+```
+
 ## Listing block configuration
 
 `allowed_headline_tags`

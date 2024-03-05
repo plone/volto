@@ -1,7 +1,8 @@
-import Icon from '../Icon/Icon';
+import React from 'react';
+import { Icon } from '../Icon/Icon';
 import type { IconPropsWithoutChildren } from '../Icon/Icon';
 
-const Cut = (props: IconPropsWithoutChildren) => {
+export const CutIcon = (props: IconPropsWithoutChildren) => {
   return (
     <Icon {...props}>
       <svg
@@ -19,5 +20,3 @@ const Cut = (props: IconPropsWithoutChildren) => {
     </Icon>
   );
 };
-
-export default Cut;

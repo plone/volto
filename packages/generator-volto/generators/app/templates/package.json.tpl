@@ -34,6 +34,7 @@
     ],
     "transform": {
       "^.+\\.js(x)?$": "babel-jest",
+      "^.+\\.ts(x)?$": "ts-jest",
       "^.+\\.(png)$": "jest-file",
       "^.+\\.(jpg)$": "jest-file",
       "^.+\\.(svg)$": "./node_modules/@plone/volto/jest-svgsystem-transform.js"
@@ -47,7 +48,7 @@
       "@plone/volto/webpack-plugins/webpack-less-plugin": "<rootDir>/node_modules/@plone/volto/webpack-plugins/webpack-less-plugin",
       "@plone/volto/babel": "<rootDir>/node_modules/@plone/volto/babel",
       "@plone/volto/(.*)$": "<rootDir>/node_modules/@plone/volto/src/$1",
-      "@plone/volto-slate/(.*)$": "<rootDir>/node_modules/@plone/volto/packages/volto-slate/src/$1",
+      "@plone/volto-slate/(.*)$": "<rootDir>/node_modules/@plone/volto-slate/src/$1",
       "load-volto-addons": "<rootDir>/node_modules/@plone/volto/jest-addons-loader.js",
       "@package/(.*)$": "<rootDir>/src/$1",
       "@root/(.*)$": "<rootDir>/src/$1",
@@ -150,11 +151,11 @@
     "jest-junit": "8.0.0",
     "mrs-developer": "^2.1.1",
     "postcss": "8.4.13",
-    "prettier": "3.0.3",
+    "prettier": "3.2.5",
     "razzle": "4.2.18",
-    "stylelint": "15.10.3",
-    "stylelint-config-idiomatic-order": "9.0.0",
-    "stylelint-prettier": "4.0.2",
+    "stylelint": "^16.2.1",
+    "stylelint-config-idiomatic-order": "10.0.0",
+    "stylelint-prettier": "5.0.0",
     "ts-jest": "^26.4.2",
     "ts-loader": "9.4.4",
     "typescript": "5.2.2"

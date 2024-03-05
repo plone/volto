@@ -39,22 +39,22 @@ export const loadables = {
   // draftjs libs
   immutableLib: loadable.lib(() => import('immutable')),
   draftJs: loadable.lib(() => import('draft-js')),
-  draftJsLibIsSoftNewlineEvent: loadable.lib(() =>
-    import('draft-js/lib/isSoftNewlineEvent'),
+  draftJsLibIsSoftNewlineEvent: loadable.lib(
+    () => import('draft-js/lib/isSoftNewlineEvent'),
   ),
   draftJsFilters: loadable.lib(() => import('draftjs-filters')),
-  draftJsInlineToolbarPlugin: loadable.lib(() =>
-    import('draft-js-inline-toolbar-plugin'),
+  draftJsInlineToolbarPlugin: loadable.lib(
+    () => import('draft-js-inline-toolbar-plugin'),
   ),
   draftJsImportHtml: loadable.lib(() => import('draft-js-import-html')),
-  draftJsBlockBreakoutPlugin: loadable.lib(() =>
-    import('draft-js-block-breakout-plugin'),
+  draftJsBlockBreakoutPlugin: loadable.lib(
+    () => import('draft-js-block-breakout-plugin'),
   ),
-  draftJsCreateInlineStyleButton: loadable.lib(() =>
-    import('draft-js-buttons/lib/utils/createInlineStyleButton'),
+  draftJsCreateInlineStyleButton: loadable.lib(
+    () => import('draft-js-buttons/lib/utils/createInlineStyleButton'),
   ),
-  draftJsCreateBlockStyleButton: loadable.lib(() =>
-    import('draft-js-buttons/lib/utils/createBlockStyleButton'),
+  draftJsCreateBlockStyleButton: loadable.lib(
+    () => import('draft-js-buttons/lib/utils/createBlockStyleButton'),
   ),
   draftJsPluginsUtils: loadable.lib(() => import('draft-js-plugins-utils')),
 };
