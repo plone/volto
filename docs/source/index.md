@@ -49,7 +49,7 @@ A contributor is someone who writes code or documentation for the Volto core pac
 
 -   {doc}`plone:contributing/first-time` is for people who have not yet made a contribution to Plone, Volto, or open source software.
 -   {doc}`plone:contributing/index` is for people who have not yet signed the Plone Contributor Agreement or contributed to any other project under the GitHub Plone organization, including Volto.
--   {doc}`plone:contributing/volto` is for people who want to contribute to Volto.
+-   {doc}`contributing/index` is for people who want to contribute to Volto.
 
 
 ## Table of Contents
