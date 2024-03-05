@@ -5,6 +5,8 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
+  '@pmmmwh/react-refresh-webpack-plugin': 0.5.11
+  react-refresh: 0.14.0
   webpack: 5.90.1
 
 importers:
@@ -8807,7 +8809,7 @@ packages:
       '@parcel/plugin': 2.10.2(@parcel/core@2.10.2)
       '@parcel/utils': 2.10.2
       react-error-overlay: 6.0.9
-      react-refresh: 0.9.0
+      react-refresh: 0.14.0
     transitivePeerDependencies:
       - '@parcel/core'
     dev: true
@@ -8819,7 +8821,7 @@ packages:
       '@parcel/plugin': 2.12.0(@parcel/core@2.12.0)
       '@parcel/utils': 2.12.0
       react-error-overlay: 6.0.9
-      react-refresh: 0.9.0
+      react-refresh: 0.14.0
     transitivePeerDependencies:
       - '@parcel/core'
       - '@swc/helpers'
@@ -9140,7 +9142,7 @@ packages:
     dependencies:
       '@parcel/plugin': 2.10.2(@parcel/core@2.10.2)
       '@parcel/utils': 2.10.2
-      react-refresh: 0.9.0
+      react-refresh: 0.14.0
     transitivePeerDependencies:
       - '@parcel/core'
     dev: true
@@ -9151,7 +9153,7 @@ packages:
     dependencies:
       '@parcel/plugin': 2.12.0(@parcel/core@2.12.0)
       '@parcel/utils': 2.12.0
-      react-refresh: 0.9.0
+      react-refresh: 0.14.0
     transitivePeerDependencies:
       - '@parcel/core'
       - '@swc/helpers'
@@ -9638,48 +9640,12 @@ packages:
       tslib: 2.6.2
     dev: true
 
-  /@pmmmwh/react-refresh-webpack-plugin@0.4.3(react-refresh@0.9.0)(webpack-dev-server@4.11.1)(webpack@5.90.1):
-    resolution: {integrity: sha512-br5Qwvh8D2OQqSXpd1g/xqXKnK0r+Jz6qVKBbWmpUcrbGOxUrf39V5oZ1876084CGn18uMdR5uvPqBv9UqtBjQ==}
-    engines: {node: '>= 10.x'}
-    peerDependencies:
-      '@types/webpack': 4.x
-      react-refresh: '>=0.8.3 <0.10.0'
-      sockjs-client: ^1.4.0
-      type-fest: ^0.13.1
-      webpack: 5.90.1
-      webpack-dev-server: 3.x
-      webpack-hot-middleware: 2.x
-      webpack-plugin-serve: 0.x || 1.x
-    peerDependenciesMeta:
-      '@types/webpack':
-        optional: true
-      sockjs-client:
-        optional: true
-      type-fest:
-        optional: true
-      webpack-dev-server:
-        optional: true
-      webpack-hot-middleware:
-        optional: true
-      webpack-plugin-serve:
-        optional: true
-    dependencies:
-      ansi-html: 0.0.7
-      error-stack-parser: 2.1.4
-      html-entities: 1.4.0
-      native-url: 0.2.6
-      react-refresh: 0.9.0
-      schema-utils: 2.7.1
-      source-map: 0.7.4
-      webpack: 5.90.1
-      webpack-dev-server: 4.11.1(debug@4.3.2)(webpack@5.90.1)
-
-  /@pmmmwh/react-refresh-webpack-plugin@0.5.11(react-refresh@0.11.0)(webpack-dev-server@4.11.1)(webpack@5.90.1):
+  /@pmmmwh/react-refresh-webpack-plugin@0.5.11(react-refresh@0.14.0)(webpack-dev-server@4.11.1)(webpack@5.90.1):
     resolution: {integrity: sha512-7j/6vdTym0+qZ6u4XbSAxrWBGYSdCfTzySkj7WAFgDLmSyWlOrWvpyzxlFh5jtw9dn0oL/jtW+06XfFiisN3JQ==}
     engines: {node: '>= 10.13'}
     peerDependencies:
       '@types/webpack': 4.x || 5.x
-      react-refresh: '>=0.10.0 <1.0.0'
+      react-refresh: 0.14.0
       sockjs-client: ^1.4.0
       type-fest: '>=0.17.0 <5.0.0'
       webpack: 5.90.1
@@ -9707,12 +9673,11 @@ packages:
       find-up: 5.0.0
       html-entities: 2.4.0
       loader-utils: 2.0.4
-      react-refresh: 0.11.0
+      react-refresh: 0.14.0
       schema-utils: 3.3.0
       source-map: 0.7.4
       webpack: 5.90.1
       webpack-dev-server: 4.11.1(debug@4.3.2)(webpack@5.90.1)
-    dev: true
 
   /@pnpm/config.env-replace@1.1.0:
     resolution: {integrity: sha512-htyl8TWnKL7K/ESFa1oW2UB5lVDxuF5DpM7tBi6Hu2LNL3mWkIzNLG6N4zoCUP1lCKNxWy/3iu8mS8MvToGd6w==}
@@ -15522,7 +15487,7 @@ packages:
       '@babel/core': 7.23.3
       '@babel/preset-flow': 7.23.3(@babel/core@7.23.3)
       '@babel/preset-react': 7.23.3(@babel/core@7.23.3)
-      '@pmmmwh/react-refresh-webpack-plugin': 0.5.11(react-refresh@0.11.0)(webpack-dev-server@4.11.1)(webpack@5.90.1)
+      '@pmmmwh/react-refresh-webpack-plugin': 0.5.11(react-refresh@0.14.0)(webpack-dev-server@4.11.1)(webpack@5.90.1)
       '@storybook/addons': 6.5.16(react-dom@18.2.0)(react@18.2.0)
       '@storybook/builder-webpack5': 6.5.16(eslint@8.49.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.2.2)
       '@storybook/client-logger': 6.5.16
@@ -15553,7 +15518,7 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       react-element-to-jsx-string: 14.3.4(react-dom@18.2.0)(react@18.2.0)
-      react-refresh: 0.11.0
+      react-refresh: 0.14.0
       read-pkg-up: 7.0.1
       regenerator-runtime: 0.13.11
       require-from-string: 2.0.2
@@ -15613,7 +15578,7 @@ packages:
       '@babel/core': 7.23.9
       '@babel/preset-flow': 7.23.3(@babel/core@7.23.9)
       '@babel/preset-react': 7.23.3(@babel/core@7.23.9)
-      '@pmmmwh/react-refresh-webpack-plugin': 0.5.11(react-refresh@0.11.0)(webpack-dev-server@4.11.1)(webpack@5.90.1)
+      '@pmmmwh/react-refresh-webpack-plugin': 0.5.11(react-refresh@0.14.0)(webpack-dev-server@4.11.1)(webpack@5.90.1)
       '@storybook/addons': 6.5.16(react-dom@17.0.2)(react@17.0.2)
       '@storybook/builder-webpack5': 6.5.16(eslint@8.57.0)(react-dom@17.0.2)(react@17.0.2)(typescript@5.2.2)
       '@storybook/client-logger': 6.5.16
@@ -15644,7 +15609,7 @@ packages:
       react: 17.0.2
       react-dom: 17.0.2(react@17.0.2)
       react-element-to-jsx-string: 14.3.4(react-dom@17.0.2)(react@17.0.2)
-      react-refresh: 0.11.0
+      react-refresh: 0.14.0
       read-pkg-up: 7.0.1
       regenerator-runtime: 0.13.11
       require-from-string: 2.0.2
@@ -19016,11 +18981,6 @@ packages:
     engines: {'0': node >= 0.8.0}
     hasBin: true
 
-  /ansi-html@0.0.7:
-    resolution: {integrity: sha512-JoAxEa1DfP9m2xfB/y2r/aKcwXNlltr4+0QSBC4TrLfcxyvepX2Pv0t/xpgGV5bGsDzCYV8SzjWgyCW0T9yYbA==}
-    engines: {'0': node >= 0.8.0}
-    hasBin: true
-
   /ansi-regex@2.1.1:
     resolution: {integrity: sha512-TIGnTpdo+E3+pCyAluZvtED5p5wCqLdezCyhPZzKPcxvFplEt4i+W7OONCKgeZFT3+y5NZZfOOS/Bdcanm1MYA==}
     engines: {node: '>=0.10.0'}
@@ -21434,7 +21394,6 @@ packages:
 
   /common-path-prefix@3.0.0:
     resolution: {integrity: sha512-QE33hToZseCH3jS0qN96O/bSh3kaw/h+Tq7ngyY9eWDUnTlTNUyqfqvCXioLe5Na5jFsL78ra/wuBU4iuEgd4w==}
-    dev: true
 
   /common-tags@1.8.2:
     resolution: {integrity: sha512-gk/Z852D2Wtb//0I+kRFNKKE9dIIVirjoqPoA1wJU+XePVXZfGeBpk45+A1rKO4Q43prqWBNY/MiIeRLbPWUaA==}
@@ -21718,7 +21677,6 @@ packages:
   /core-js-pure@3.33.2:
     resolution: {integrity: sha512-a8zeCdyVk7uF2elKIGz67AjcXOxjRbwOLz8SbklEso1V+2DoW4OkAMZN9S9GBgvZIaqQi/OemFX4OiSoQEmg1Q==}
     requiresBuild: true
-    dev: true
 
   /core-js@1.2.7:
     resolution: {integrity: sha512-ZiPp9pZlgxpWRu0M+YWbm6+aQ84XEfH1JRXvfOc/fILWI0VKhLC2LX13X1NYq4fULzLMq7Hfh43CSo2/aIaUPA==}
@@ -27134,9 +27092,6 @@ packages:
       whatwg-encoding: 2.0.0
     dev: true
 
-  /html-entities@1.4.0:
-    resolution: {integrity: sha512-8nxjcBcd8wovbeKx7h3wTji4e6+rhaVuPNpMqwWgnHh+N9ToqsCs6XztWRBPQ+UtzsoMAdKZtUENoVzU/EMtZA==}
-
   /html-entities@2.3.3:
     resolution: {integrity: sha512-DV5Ln36z34NNTDgnz0EWGBLZENelNAtkiFA4kyNOG2tDI6Mz1uSWiq1wAKdyjnJwyDiDO7Fa2SO1CTxPXL8VxA==}
     dev: false
@@ -32274,11 +32229,6 @@ packages:
     resolution: {integrity: sha512-lHwIAJbmLSjF9VDRm9GoVOy9AGp3aIvkjv+Kvz9h16QR3uSVYH78PNQUnT2U4X53mhlnV2M7wrhibQ3GHicDmg==}
     dev: false
 
-  /native-url@0.2.6:
-    resolution: {integrity: sha512-k4bDC87WtgrdD362gZz6zoiXQrl40kYlBmpfmSjwRO1VU0V5ccwJTlxuE72F6m3V0vc1xOf6n3UCP9QyerRqmA==}
-    dependencies:
-      querystring: 0.2.1
-
   /natural-compare-lite@1.4.0:
     resolution: {integrity: sha512-Tj+HTDSJJKaZnfiuw+iaF9skdPpTo2GtEly5JHnWV/hfv2Qj/9RKsGISQtLh2ox3l5EAGw487hnBee0sIJ6v2g==}
 
@@ -34968,11 +34918,6 @@ packages:
       split-on-first: 3.0.0
     dev: false
 
-  /querystring@0.2.1:
-    resolution: {integrity: sha512-wkvS7mL/JMugcup3/rMitHmd9ecIGd2lhFhK9N3UUQ450h66d1r3Y9nvXzQAW1Lq+wyx61k/1pfKS5KuKiyEbg==}
-    engines: {node: '>=0.4.x'}
-    deprecated: The querystring API is considered Legacy. new code should use the URLSearchParams API instead.
-
   /querystringify@2.2.0:
     resolution: {integrity: sha512-FIqgj2EUvTa7R50u0rGsyTftzjYmv/a3hO345bZNrqabNqjtgiDMgmo4mkUjd+nzU5oF3dClKqFIPUKybUyqoQ==}
 
@@ -35146,7 +35091,7 @@ packages:
       webpack-dev-server: ^3.11.0||~4
     dependencies:
       '@babel/plugin-transform-modules-commonjs': 7.23.3(@babel/core@7.23.3)
-      '@pmmmwh/react-refresh-webpack-plugin': 0.4.3(react-refresh@0.9.0)(webpack-dev-server@4.11.1)(webpack@5.90.1)
+      '@pmmmwh/react-refresh-webpack-plugin': 0.5.11(react-refresh@0.14.0)(webpack-dev-server@4.11.1)(webpack@5.90.1)
       autoprefixer: 10.4.8(postcss@8.4.31)
       babel-jest: 26.6.3(@babel/core@7.23.3)
       babel-loader: 8.3.0(@babel/core@7.23.3)(webpack@5.90.1)
@@ -35177,7 +35122,7 @@ packages:
       razzle-dev-utils: 4.2.18(eslint@8.49.0)(typescript@5.2.2)(webpack-dev-server@4.11.1)(webpack@5.90.1)
       razzle-start-server-webpack-plugin: 4.2.18(webpack@5.90.1)
       react-dev-utils: 11.0.4(eslint@8.49.0)(typescript@5.2.2)(webpack@5.90.1)
-      react-refresh: 0.9.0
+      react-refresh: 0.14.0
       resolve: 1.22.8
       sade: 1.8.1
       source-map-support: 0.5.21
@@ -35221,7 +35166,7 @@ packages:
       webpack-dev-server: ^3.11.0||~4
     dependencies:
       '@babel/plugin-transform-modules-commonjs': 7.23.3(@babel/core@7.23.9)
-      '@pmmmwh/react-refresh-webpack-plugin': 0.4.3(react-refresh@0.9.0)(webpack-dev-server@4.11.1)(webpack@5.90.1)
+      '@pmmmwh/react-refresh-webpack-plugin': 0.5.11(react-refresh@0.14.0)(webpack-dev-server@4.11.1)(webpack@5.90.1)
       autoprefixer: 10.4.8(postcss@8.4.31)
       babel-jest: 26.6.3(@babel/core@7.23.9)
       babel-loader: 8.3.0(@babel/core@7.23.9)(webpack@5.90.1)
@@ -35252,7 +35197,7 @@ packages:
       razzle-dev-utils: 4.2.18(eslint@8.57.0)(typescript@5.2.2)(webpack-dev-server@4.11.1)(webpack@5.90.1)
       razzle-start-server-webpack-plugin: 4.2.18(webpack@5.90.1)
       react-dev-utils: 11.0.4(eslint@8.57.0)(typescript@5.2.2)(webpack@5.90.1)
-      react-refresh: 0.9.0
+      react-refresh: 0.14.0
       resolve: 1.22.8
       sade: 1.8.1
       source-map-support: 0.5.21
@@ -36341,18 +36286,8 @@ packages:
       use-sync-external-store: 1.2.0(react@18.2.0)
     dev: false
 
-  /react-refresh@0.11.0:
-    resolution: {integrity: sha512-F27qZr8uUqwhWZboondsPx8tnC3Ct3SxZA3V5WyEvujRyyNv0VYPhoBg1gZ8/MV5tubQp76Trw8lTv9hzRBa+A==}
-    engines: {node: '>=0.10.0'}
-    dev: true
-
   /react-refresh@0.14.0:
     resolution: {integrity: sha512-wViHqhAd8OHeLS/IRMJjTSDHF3U9eWi62F/MledQGPdJGDhodXJ9PBLNGr6WWL7qlH12Mt3TyTpbS+hGXMjCzQ==}
-    engines: {node: '>=0.10.0'}
-    dev: true
-
-  /react-refresh@0.9.0:
-    resolution: {integrity: sha512-Gvzk7OZpiqKSkxsQvO/mbTN1poglhmAV7gR/DdIrRrSMXraRQQlfikRJOr3Nb9GTMPC5kof948Zy6jJZIFtDvQ==}
     engines: {node: '>=0.10.0'}
 
   /react-remove-scroll-bar@2.3.4(@types/react@18.2.27)(react@18.2.0):

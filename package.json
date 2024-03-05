@@ -50,6 +50,8 @@
   "packageManager": "pnpm@8.15.4",
   "pnpm": {
     "overrides": {
+      "@pmmmwh/react-refresh-webpack-plugin": "0.5.11",
+      "react-refresh": "0.14.0",
       "webpack": "5.90.1"
     }
   }
