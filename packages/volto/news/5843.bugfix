@@ -1,0 +1,1 @@
+Fix `setMetadataFocus` so it does not break if the element to be focused is not an `input` @sneridagh
