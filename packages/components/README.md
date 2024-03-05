@@ -45,7 +45,7 @@ You can use the CSS bundled for all components in a single file, or use the spec
 They are distributed along with the components code in the `dist` folder of the library.
 
 ```js
-import '@plone/components/basic.css';
+import '@plone/components/dist/basic.css';
 ```
 
 or selectively:
@@ -75,8 +75,8 @@ You could take Quanta as example to build your own layer of styles over basic st
 To use a theme built upon the basic styling, you need to import both the basic and the theme CSS, in this order:
 
 ```js
-import '@plone/components/basic.css';
-import '@plone/components/quanta.css';
+import '@plone/components/dist/basic.css';
+import '@plone/components/dist/quanta.css';
 ```
 
 You have the option of doing it selectively per component, too:

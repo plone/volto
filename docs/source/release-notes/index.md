@@ -17,6 +17,50 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.16 (2024-03-02)
+
+### Internal
+
+- Update dependencies
+  Fix prettier due to new version @sneridagh [#5815](https://github.com/plone/volto/issues/5815)
+
+### Documentation
+
+- Linkcheck thinks `README.md` is `http://README.md`. Bad linkcheck, no more 🍺 for you. @stevepiercy [#5816](https://github.com/plone/volto/issues/5816)
+
+## 18.0.0-alpha.15 (2024-03-01)
+
+### Breaking
+
+- Upgrade Volto core to use React 18.2.0 @sneridagh [#3221](https://github.com/plone/volto/issues/3221)
+
+## 18.0.0-alpha.14 (2024-03-01)
+
+### Breaking
+
+- Improved accessibility of logo component. @Molochem [#5776](https://github.com/plone/volto/issues/5776)
+
+### Feature
+
+- Support for slots @sneridagh [#5775](https://github.com/plone/volto/issues/5775)
+
+### Bugfix
+
+- Fixed toolbar menus not closing when clicking again on the toolbar buttons that show menus. @ichim-david
+  Add focus-visible rule to toolbar buttons so that it's visible to the user what button is focused when using tab navigation @ichim-david [#5645](https://github.com/plone/volto/issues/5645)
+- Enhance findBlocks to check for blocks also in data for add-ons such as @eeacms/volto-tabs-block. @ichim-david [#5796](https://github.com/plone/volto/issues/5796)
+- Fixed ArrayWidget sorting items. @giuliaghisini [#5805](https://github.com/plone/volto/issues/5805)
+
+### Internal
+
+- New types declarations with @types/react@18 - make tsc happy @sneridagh [#5814](https://github.com/plone/volto/issues/5814)
+
+### Documentation
+
+- Added Release Management Notes. @sneridagh @stevepiercy [#5358](https://github.com/plone/volto/issues/5358)
+- Delete redundant `developing-a-project.md`. @stevepiercy [#5675](https://github.com/plone/volto/issues/5675)
+- Removed Memori and TwinCreator websites from README.md no longer made using Volto and giving 404 error. @ichim-david [#5802](https://github.com/plone/volto/issues/5802)
+
 ## 18.0.0-alpha.13 (2024-02-22)
 
 ### Bugfix
@@ -6368,7 +6412,7 @@ https://6.docs.plone.org/volto/upgrade-guide/index.html
 - Added item type as a tooltip in contents @nzambello
 - Added Italian translations and translated array, token and select widget. @giuliaghisini
 - Added uploading image preview in FileWidget @iFlameing
-- Allow custom express middleware declared with `settings.expressMiddleware`. See [Custom Express middleware](https://6.docs.plone.org/volto/recipes/express.html) @tiberiuichim
+- Allow custom express middleware declared with `settings.expressMiddleware`. See [Custom Express middleware](https://6.docs.plone.org/volto/development/express.html) @tiberiuichim
 
 ### Bugfix
 

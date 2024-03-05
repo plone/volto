@@ -9,6 +9,8 @@ import { createRouter as createReactRouter } from '@tanstack/react-router';
 
 import { routeTree } from './routeTree.gen';
 import { PloneClientProvider } from '@plone/client/provider';
+import { FlattenToAppURLProvider } from '@plone/components';
+import { flattenToAppURL } from './utils';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -45,7 +47,9 @@ export function createRouter() {
       return (
         <PloneClientProvider client={ploneClient}>
           <QueryClientProvider client={queryClient}>
-            {children}
+            <FlattenToAppURLProvider flattenToAppURL={flattenToAppURL}>
+              {children}
+            </FlattenToAppURLProvider>
           </QueryClientProvider>
         </PloneClientProvider>
       );

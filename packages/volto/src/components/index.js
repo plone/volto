@@ -64,8 +64,8 @@ export { default as FileView } from '@plone/volto/components/theme/View/FileView
 export { default as ImageView } from '@plone/volto/components/theme/View/ImageView';
 export { default as NewsItemView } from '@plone/volto/components/theme/View/NewsItemView';
 
-export const EventView = loadable(() =>
-  import('@plone/volto/components/theme/View/EventView'),
+export const EventView = loadable(
+  () => import('@plone/volto/components/theme/View/EventView'),
 );
 
 export { default as ListingView } from '@plone/volto/components/theme/View/ListingView';
@@ -152,13 +152,14 @@ export { default as FormFieldWrapper } from '@plone/volto/components/manage/Widg
 export { default as ArrayWidget } from '@plone/volto/components/manage/Widgets/ArrayWidget';
 export { default as CheckboxWidget } from '@plone/volto/components/manage/Widgets/CheckboxWidget';
 
-export const DatetimeWidget = loadable(() =>
-  import('@plone/volto/components/manage/Widgets/DatetimeWidget'),
+export const DatetimeWidget = loadable(
+  () => import('@plone/volto/components/manage/Widgets/DatetimeWidget'),
 );
-export const RecurrenceWidget = loadable(() =>
-  import(
-    '@plone/volto/components/manage/Widgets/RecurrenceWidget/RecurrenceWidget'
-  ),
+export const RecurrenceWidget = loadable(
+  () =>
+    import(
+      '@plone/volto/components/manage/Widgets/RecurrenceWidget/RecurrenceWidget'
+    ),
 );
 
 export { default as FileWidget } from '@plone/volto/components/manage/Widgets/FileWidget';

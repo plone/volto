@@ -70,4 +70,4 @@ have to support.
 However, Volto (or its dependencies) might not be compatible with old browsers anyways,
 and you might need to provide some other workarounds to make the build work (and the
 deprecated browser not crash). You can refer to {doc}`this (outdated)
-document <../recipes/ie11compat>` in order to get some hints on how to do it.
+document <../development/ie11compat>` in order to get some hints on how to do it.

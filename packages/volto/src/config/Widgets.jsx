@@ -56,13 +56,14 @@ import TokenViewWidget from '@plone/volto/components/theme/Widgets/TokenWidget';
 import UrlViewWidget from '@plone/volto/components/theme/Widgets/UrlWidget';
 import ImageWidget from '@plone/volto/components/theme/Widgets/ImageWidget';
 
-export const DatetimeWidget = loadable(() =>
-  import('@plone/volto/components/manage/Widgets/DatetimeWidget'),
+export const DatetimeWidget = loadable(
+  () => import('@plone/volto/components/manage/Widgets/DatetimeWidget'),
 );
-export const RecurrenceWidget = loadable(() =>
-  import(
-    '@plone/volto/components/manage/Widgets/RecurrenceWidget/RecurrenceWidget'
-  ),
+export const RecurrenceWidget = loadable(
+  () =>
+    import(
+      '@plone/volto/components/manage/Widgets/RecurrenceWidget/RecurrenceWidget'
+    ),
 );
 
 // Widgets mapping

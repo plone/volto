@@ -144,8 +144,8 @@ const Facets = (props) => {
                 ? intl.formatMessage(messages.showFilters)
                 : intl.formatMessage(messages.moreFilters)
               : advancedFilters === 2
-              ? intl.formatMessage(messages.hideFilters)
-              : intl.formatMessage(messages.lessFilters)}
+                ? intl.formatMessage(messages.hideFilters)
+                : intl.formatMessage(messages.lessFilters)}
           </Button>
         </Grid.Column>
       )}

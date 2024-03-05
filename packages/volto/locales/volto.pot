@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2024-02-05T08:22:01.385Z\n"
+"POT-Creation-Date: 2024-02-26T19:56:41.001Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -1674,6 +1674,7 @@ msgstr ""
 #: components/manage/Contents/ContentsBreadcrumbs
 #: components/manage/Contents/ContentsBreadcrumbsHomeItem
 #: components/theme/Breadcrumbs/Breadcrumbs
+#: components/theme/Logo/Logo
 msgid "Home"
 msgstr ""
 
@@ -2059,6 +2060,11 @@ msgstr ""
 #. Default: "Login Name"
 #: components/theme/Login/Login
 msgid "Login Name"
+msgstr ""
+
+#. Default: "Logo of"
+#: components/theme/Logo/Logo
+msgid "Logo of"
 msgstr ""
 
 #. Default: "Logout"
@@ -3650,6 +3656,12 @@ msgstr ""
 #. Default: "There are no users with the searched criteria"
 #: helpers/MessageLabels/MessageLabels
 msgid "There are no users with the searched criteria"
+msgstr ""
+
+#. Default: "There are some errors."
+#: components/manage/Add/Add
+#: components/manage/Edit/Edit
+msgid "There are some errors."
 msgstr ""
 
 #. Default: "There is a configuration problem on the backend"

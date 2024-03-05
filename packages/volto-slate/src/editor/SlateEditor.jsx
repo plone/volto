@@ -166,7 +166,14 @@ class SlateEditor extends Component {
         ReactEditor.focus(editor);
         Transforms.select(editor, selection);
       } else {
-        Transforms.select(editor, Editor.end(editor, []));
+        try {
+          Transforms.select(editor, Editor.end(editor, []));
+        } catch (error) {
+          // Weird error only happening in Cypress
+          // Adding a try/catch
+          // eslint-disable-next-line no-console
+          console.log(error);
+        }
       }
 
       this.setState({

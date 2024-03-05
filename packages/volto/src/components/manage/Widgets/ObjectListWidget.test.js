@@ -2,7 +2,6 @@ import React from 'react';
 import { Provider } from 'react-intl-redux';
 import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
-import '@testing-library/jest-dom/extend-expect';
 import ObjectListWidget from './ObjectListWidget';
 
 jest.mock('@plone/volto/helpers/Loadable/Loadable');

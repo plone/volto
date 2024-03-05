@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { flattenToAppURL } from './utils';
 import { usePloneClient } from '@plone/client/provider';
 import { Breadcrumbs } from '@plone/components';
-import '@plone/components/src/styles/main.scss';
+import '@plone/components/dist/basic.css';
 
 export default function Content() {
   const { getContentQuery } = usePloneClient();
