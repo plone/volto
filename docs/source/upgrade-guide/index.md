@@ -39,6 +39,14 @@ This aligns Volto with the latests developments in the React ecosystem and opens
 - Transitions
 - New hooks `useId`, `useTransition`, `useDeferredValue`, `useSyncExternalStore`, and other hooks
 
+### `draftJS` dependency and `text`, `table`, and `hero` block removed
+
+The `text` block powered by `draftJS` library was deprecated in Volto 16, and announced that it will be removed from Volto in 18.
+The other two blocks powered by `draftJs` (`table` and `hero`).
+
+If you still need them in your site, you can still copy over the block code and settings in your project to bring them back.
+You can also migrate these blocks to use `slate`, and `slateTable` blocks.
+
 ### `react-portal` dependency removed
 
 `react-portal` is deprecated and it was removed from Volto.
