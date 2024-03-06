@@ -29,8 +29,8 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-intl": "3.8.0",
-    "react-redux": "7.2.4",
-    "semantic-ui-react": "2.0.3"
+    "react-redux": "8.1.2",
+    "semantic-ui-react": "2.1.5"
   },
   "devDependencies": {
     "@plone/types": "workspace:*",

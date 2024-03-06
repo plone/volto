@@ -116,7 +116,6 @@
     "storybook": "^7.6.17",
     "stylelint": "16.2.1",
     "stylelint-config-idiomatic-order": "10.0.0",
-    "stylelint-config-prettier": "9.0.5",
     "stylelint-prettier": "5.0.0",
     "typescript": "5.2.2",
     "vite": "^5.1.4",
