@@ -42,10 +42,11 @@ This aligns Volto with the latests developments in the React ecosystem and opens
 ### `draftJS` dependency and `text`, `table`, and `hero` blocks removed
 
 In Volto 16, the `text` block powered by the `Draft.js` library was deprecated, and it was announced that it would be removed in Volto 18.
-The other two blocks powered by `draftJs` (`table` and `hero`).
+The other two blocks powered by `Draft.js` (`table` and `hero`) were also removed because they also relied on `Draft.js`.
 
 If you still need these blocks in your site, you can copy over the block code and settings into your project.
 You can also migrate these blocks to use either `slate` or `slateTable` blocks.
+The `hero` block can be replaced by the `teaser` block as a replacement, but a migration is also needed.
 
 ### `react-portal` dependency removed
 
