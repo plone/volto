@@ -1,3 +1,0 @@
-Refactor the `Container` component.
-The inference for the `as` prop is complete.
-Replace the internal `className` to be `q container` @sneridagh
