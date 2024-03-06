@@ -442,6 +442,8 @@ For projects already using `volto-slate`, take the following steps in your proje
 + import { DetachedTextBlockEditor } from '@plone/volto-slate/blocks/Text/DetachedTextBlockEditor';
 ```
 
+(existing-projects-using-core-draftjs-opting-to-migrate-to-slate)=
+
 #### Existing projects using core `draftJS`, opting to continue using `draftJS`
 
 You will have to configure your project to continue using `draftJS`, for example, in your `config.js` or in your add-on:
