@@ -45,6 +45,9 @@ export default function applyConfig(config) {
     ...config.views,
   };
 
+  // BBB compatibility with existing legacy WYSIWYG widgets
+  config.widgets.widget.richtext = RichTextWidget;
+
   config.widgets.widget.slate = RichTextWidget;
   config.widgets.widget.slate_richtext = RichTextWidget;
   config.widgets.widget.slate_html = HtmlSlateWidget;

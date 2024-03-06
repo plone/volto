@@ -10,7 +10,6 @@ import ViewVideoBlock from '@plone/volto/components/manage/Blocks/Video/View';
 import ViewHeroImageLeftBlock from '@plone/volto/components/manage/Blocks/HeroImageLeft/View';
 import ViewMapBlock from '@plone/volto/components/manage/Blocks/Maps/View';
 import ViewHTMLBlock from '@plone/volto/components/manage/Blocks/HTML/View';
-import ViewTableBlock from '@plone/volto/components/manage/Blocks/Table/View';
 
 import EditTitleBlock from '@plone/volto/components/manage/Blocks/Title/Edit';
 import EditDescriptionBlock from '@plone/volto/components/manage/Blocks/Description/Edit';
@@ -26,7 +25,6 @@ import EditVideoBlock from '@plone/volto/components/manage/Blocks/Video/Edit';
 import EditHeroImageLeftBlock from '@plone/volto/components/manage/Blocks/HeroImageLeft/Edit';
 import EditMapBlock from '@plone/volto/components/manage/Blocks/Maps/Edit';
 import EditHTMLBlock from '@plone/volto/components/manage/Blocks/HTML/Edit';
-import EditTableBlock from '@plone/volto/components/manage/Blocks/Table/Edit';
 
 import descriptionSVG from '@plone/volto/icons/description.svg';
 import titleSVG from '@plone/volto/icons/text.svg';
@@ -35,7 +33,6 @@ import videoSVG from '@plone/volto/icons/videocamera.svg';
 import globeSVG from '@plone/volto/icons/globe.svg';
 import codeSVG from '@plone/volto/icons/code.svg';
 import heroSVG from '@plone/volto/icons/hero.svg';
-import tableSVG from '@plone/volto/icons/table.svg';
 import listingBlockSVG from '@plone/volto/icons/content-listing.svg';
 import tocSVG from '@plone/volto/icons/list-bullet.svg';
 import searchSVG from '@plone/volto/icons/zoom.svg';
@@ -350,19 +347,6 @@ const blocksConfig = {
     restricted: false,
     mostUsed: false,
     sidebarTab: 0,
-  },
-  table: {
-    id: 'table',
-    title: 'Table',
-    icon: tableSVG,
-    group: 'common',
-    view: ViewTableBlock,
-    edit: EditTableBlock,
-    schema: BlockSettingsSchema,
-    restricted: false,
-    mostUsed: false,
-    blockHasOwnFocusManagement: true,
-    sidebarTab: 1,
   },
   search: {
     id: 'search',

@@ -1,5 +1,4 @@
 import React from 'react';
-import redraft from 'redraft';
 import TextBlockView from './TextBlockView';
 import TextBlockEdit from './TextBlockEdit';
 import TextBlockSchema from './TextBlockSchema';
