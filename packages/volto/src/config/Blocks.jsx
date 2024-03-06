@@ -7,7 +7,6 @@ import ViewImageBlock from '@plone/volto/components/manage/Blocks/Image/View';
 import ViewLeadImageBlock from '@plone/volto/components/manage/Blocks/LeadImage/View';
 import ViewListingBlock from '@plone/volto/components/manage/Blocks/Listing/View';
 import ViewVideoBlock from '@plone/volto/components/manage/Blocks/Video/View';
-import ViewHeroImageLeftBlock from '@plone/volto/components/manage/Blocks/HeroImageLeft/View';
 import ViewMapBlock from '@plone/volto/components/manage/Blocks/Maps/View';
 import ViewHTMLBlock from '@plone/volto/components/manage/Blocks/HTML/View';
 
@@ -22,7 +21,6 @@ import GalleryNoResultsComponent from '@plone/volto/components/manage/Blocks/Lis
 import DefaultListingBlockTemplate from '@plone/volto/components/manage/Blocks/Listing/DefaultTemplate';
 import SummaryListingBlockTemplate from '@plone/volto/components/manage/Blocks/Listing/SummaryTemplate';
 import EditVideoBlock from '@plone/volto/components/manage/Blocks/Video/Edit';
-import EditHeroImageLeftBlock from '@plone/volto/components/manage/Blocks/HeroImageLeft/Edit';
 import EditMapBlock from '@plone/volto/components/manage/Blocks/Maps/Edit';
 import EditHTMLBlock from '@plone/volto/components/manage/Blocks/HTML/Edit';
 
@@ -32,7 +30,6 @@ import cameraSVG from '@plone/volto/icons/camera.svg';
 import videoSVG from '@plone/volto/icons/videocamera.svg';
 import globeSVG from '@plone/volto/icons/globe.svg';
 import codeSVG from '@plone/volto/icons/code.svg';
-import heroSVG from '@plone/volto/icons/hero.svg';
 import listingBlockSVG from '@plone/volto/icons/content-listing.svg';
 import tocSVG from '@plone/volto/icons/list-bullet.svg';
 import searchSVG from '@plone/volto/icons/zoom.svg';
@@ -72,7 +69,6 @@ import { getImageBlockSizes } from '@plone/volto/components/manage/Blocks/Image/
 import { getLeadImageBlockSizes } from '@plone/volto/components/manage/Blocks/LeadImage/utils';
 
 // block sidebar schemas (not the Dexterity Layout block settings schemas)
-import HeroImageLeftBlockSchema from '@plone/volto/components/manage/Blocks/HeroImageLeft/schema';
 import ListingBlockSchema from '@plone/volto/components/manage/Blocks/Listing/schema';
 import SearchBlockSchema from '@plone/volto/components/manage/Blocks/Search/schema';
 
@@ -366,21 +362,6 @@ const blocksConfig = {
     mostUsed: false,
     sidebarTab: 1,
   },
-  hero: {
-    id: 'hero',
-    title: 'Hero',
-    icon: heroSVG,
-    group: 'common',
-    view: ViewHeroImageLeftBlock,
-    edit: EditHeroImageLeftBlock,
-    schema: BlockSettingsSchema,
-    blockSchema: HeroImageLeftBlockSchema,
-    restricted: false,
-    mostUsed: false,
-    blockHasOwnFocusManagement: true,
-    sidebarTab: 1,
-  },
-
   maps: {
     id: 'maps',
     title: 'Maps',
