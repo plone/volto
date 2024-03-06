@@ -67,7 +67,8 @@ const Facets = (props) => {
           const isAdvanced = facetSettings?.advanced;
           const index = querystring.indexes[field] || {};
           const { values = {} } = index;
-          const facetCount = props.facetsCount?.[facetSettings.field.value];
+          const facetCount =
+            props.facetsCount?.[facetSettings?.field?.value] || 0;
 
           let choices = Object.keys(values)
             .map((name) => ({
@@ -116,7 +117,13 @@ const Facets = (props) => {
               <FacetWidget
                 facet={facetSettings}
                 facetCount={facetCount}
-                choices={rewriteOptions(facetSettings?.field?.value, choices)}
+                choices={rewriteOptions(
+                  facetSettings?.field?.value,
+                  choices,
+                ).filter(
+                  ({ label, value }) =>
+                    facetCount?.data?.[value]?.count_criteria > 0,
+                )}
                 isMulti={isMulti}
                 value={value}
                 isEditMode={isEditMode}

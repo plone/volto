@@ -26,7 +26,7 @@ const CheckboxFacet = (props) => {
             <div className="entry" key={value}>
               <Checkbox
                 disabled={isEditMode}
-                label={`${label} (${count})`}
+                label={`${label} (${count.count || 0})`}
                 radio={!isMulti}
                 checked={
                   isMulti

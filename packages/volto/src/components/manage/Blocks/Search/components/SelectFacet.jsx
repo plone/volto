@@ -51,7 +51,7 @@ const SelectFacet = (props) => {
       isClearable
       value={v}
       getOptionLabel={({ label, value }) => {
-        return `${label} (${facetCount?.data?.[value] || 0})`;
+        return `${label} (${facetCount?.data?.[value]?.count || 0})`;
       }}
     />
   );
