@@ -133,24 +133,6 @@ export default function applyConfig(config) {
     },
   };
 
-  // Make draft js compatible with ToC
-  config.blocks.blocksConfig.text = {
-    ...config.blocks.blocksConfig.text,
-    restricted: true,
-    tocEntry: (block = {}) => {
-      const draft = redraft(
-        block.text,
-        config.settings.richtextViewSettings.ToHTMLRenderers,
-        config.settings.richtextViewSettings.ToHTMLOptions,
-      );
-      const type = draft?.[0]?.[0]?.type;
-
-      return config.settings.slate.topLevelTargetElements.includes(type)
-        ? [parseInt(type.slice(1)), block.text.blocks[0].text]
-        : null;
-    },
-  };
-
   config.blocks.blocksConfig.slate = slateBlockConfig;
   config.blocks.blocksConfig.detachedSlate = {
     ...config.blocks.blocksConfig.slate,

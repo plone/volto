@@ -4888,6 +4888,11 @@ msgstr "Tabella"
 msgid "target path"
 msgstr "percorso di destinazione"
 
+#. Default: "Text"
+#: config/Blocks
+msgid "text"
+msgstr ""
+
 #. Default: "Title"
 #: config/Blocks
 msgid "title"

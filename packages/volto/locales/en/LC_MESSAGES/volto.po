@@ -4888,6 +4888,11 @@ msgstr ""
 msgid "target path"
 msgstr ""
 
+#. Default: "Text"
+#: config/Blocks
+msgid "text"
+msgstr ""
+
 #. Default: "Title"
 #: config/Blocks
 msgid "title"
