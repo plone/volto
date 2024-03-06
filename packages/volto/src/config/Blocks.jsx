@@ -96,6 +96,10 @@ defineMessages({
     id: 'description',
     defaultMessage: 'Description',
   },
+  text: {
+    id: 'text',
+    defaultMessage: 'Text',
+  },
   toc: {
     id: 'toc',
     defaultMessage: 'Table of Contents',
