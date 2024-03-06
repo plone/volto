@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 16.31.3 (2024-03-06)
+
+### Bugfix
+
+- Fix multilingual redirector where it doesn't take into account the stored cookie in SSR. @robgietema [#5628](https://github.com/plone/volto/issues/5628)
+
 ## 16.31.2 (2024-03-05)
 
 ### Bugfix

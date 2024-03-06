@@ -1,1 +1,0 @@
-Fix multilingual redirector where it doesn't take into account the stored cookie in SSR. @robgietema
