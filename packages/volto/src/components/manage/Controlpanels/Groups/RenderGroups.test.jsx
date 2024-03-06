@@ -49,6 +49,27 @@ describe('UsersControlpanelGroups', () => {
           group={testGroups}
           roles={testRoles}
           onDelete={() => {}}
+          isUserManager={true}
+        />
+      </Provider>,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
+  it('renders a UsersControlpanelGroups component with no Manager user', () => {
+    const store = mockStore({
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+    const component = renderer.create(
+      <Provider store={store}>
+        <RenderGroups
+          group={testGroups}
+          roles={testRoles}
+          onDelete={() => {}}
+          isUserManager={false}
         />
       </Provider>,
     );
