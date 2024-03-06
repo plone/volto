@@ -184,6 +184,63 @@ defineMessages({
     id: 'toggleFacet',
     defaultMessage: 'Toggle',
   },
+  // BBB Table messages
+  Table: {
+    id: 'Table',
+    defaultMessage: 'Table',
+  },
+  cell: {
+    id: 'Cell',
+    defaultMessage: 'Cell',
+  },
+  insertRowBefore: {
+    id: 'Insert row before',
+    defaultMessage: 'Insert row before',
+  },
+  insertRowAfter: {
+    id: 'Insert row after',
+    defaultMessage: 'Insert row after',
+  },
+  deleteRow: {
+    id: 'Delete row',
+    defaultMessage: 'Delete row',
+  },
+  insertColBefore: {
+    id: 'Insert col before',
+    defaultMessage: 'Insert col before',
+  },
+  insertColAfter: {
+    id: 'Insert col after',
+    defaultMessage: 'Insert col after',
+  },
+  deleteCol: {
+    id: 'Delete col',
+    defaultMessage: 'Delete col',
+  },
+  fixed: {
+    id: 'Fixed width table cells',
+    defaultMessage: 'Fixed width columns',
+  },
+  compact: {
+    id: 'Make the table compact',
+    defaultMessage: 'Reduce cell padding',
+  },
+  basic: {
+    id: 'Reduce complexity',
+    defaultMessage: 'Minimalistic table design',
+  },
+  celled: {
+    id: 'Divide each row into separate cells',
+    defaultMessage: 'Add border to inner columns',
+  },
+  striped: {
+    id: 'Stripe alternate rows with color',
+    defaultMessage: 'Alternate row background color',
+  },
+  headerCell: {
+    id: 'Header cell',
+    defaultMessage: 'Header cell',
+  },
 });
 
 const groupBlocksOrder = [

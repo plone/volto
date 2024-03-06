@@ -544,7 +544,7 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 #. Default: "Cell"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Cell"
 msgstr "Celda"
 
@@ -937,7 +937,6 @@ msgstr "Fecha (primero los más recientes)"
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/CommentEditModal
 #: components/theme/Comments/Comments
 #: components/theme/ContactForm/ContactForm
@@ -962,7 +961,6 @@ msgstr "Vista por defecto"
 #: components/manage/Delete/Delete
 #: components/manage/Widgets/FormFieldWrapper
 #: components/manage/Widgets/ObjectBrowserWidget
-#: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/Comments
 msgid "Delete"
 msgstr "Eliminar"
@@ -993,7 +991,7 @@ msgid "Delete blocks"
 msgstr "Eliminar bloques"
 
 #. Default: "Delete col"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Delete col"
 msgstr "Eliminar columna"
 
@@ -1003,7 +1001,7 @@ msgid "Delete condition"
 msgstr "Eliminar condición"
 
 #. Default: "Delete row"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Delete row"
 msgstr "Eliminar fila"
 
@@ -1044,7 +1042,6 @@ msgstr "Descendente"
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 #: components/theme/View/TabularView
 #: helpers/MessageLabels/MessageLabels
 msgid "Description"
@@ -1086,7 +1083,7 @@ msgid "Distributed under the {license}."
 msgstr "Distribuido bajo la {license}."
 
 #. Default: "Add border to inner columns"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Divide each row into separate cells"
 msgstr "Divide cada fila en celdas separadas"
 
@@ -1501,7 +1498,7 @@ msgid "Fix relations"
 msgstr "Corregir relaciones"
 
 #. Default: "Fixed width columns"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Fixed width table cells"
 msgstr "Celdas de tabla de ancho fijo"
 
@@ -1611,7 +1608,7 @@ msgid "Groups are logical collections of users, such as departments and business
 msgstr "Los grupos son colecciones lógicas de usuarios, como departamentos o unidades de negocio. Los grupos no están asociados a permisos, para ello se utilizan los roles y algunos grupos tienen un rol determinado. El símbolo {plone_svg} indica que el rol se adquiere por ser miembro de otro grupo."
 
 #. Default: "Header cell"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Header cell"
 msgstr "Celda de cabecera"
 
@@ -1765,22 +1762,22 @@ msgid "Inherited value"
 msgstr "Valor heredado"
 
 #. Default: "Insert col after"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Insert col after"
 msgstr "Insertar columna después"
 
 #. Default: "Insert col before"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Insert col before"
 msgstr "Insertar columna antes"
 
 #. Default: "Insert row after"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Insert row after"
 msgstr "Insertar fila después"
 
 #. Default: "Insert row before"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Insert row before"
 msgstr "Insertar fila antes"
 
@@ -2077,7 +2074,7 @@ msgid "Made by {creator} on {date}. This is not a working copy anymore, but the 
 msgstr "Hecho por {creator} el {date}. Esta no es una copia de trabajo, sino el contenido principal."
 
 #. Default: "Reduce cell padding"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Make the table compact"
 msgstr "Hacer la tabla compacta"
 
@@ -2725,7 +2722,7 @@ msgid "Redo"
 msgstr "Rehacer"
 
 #. Default: "Minimalistic table design"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Reduce complexity"
 msgstr "Reducir complejidad"
 
@@ -2864,7 +2861,6 @@ msgstr "Responder"
 #. Default: "Required"
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 msgid "Required"
 msgstr "Obligatorio"
 
@@ -3210,7 +3206,6 @@ msgstr "Compartir para {title}"
 #. Default: "Short Name"
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 msgid "Short Name"
 msgstr "Nombre Corto"
 
@@ -3436,7 +3431,7 @@ msgid "String"
 msgstr "Cadena de texto"
 
 #. Default: "Alternate row background color"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Stripe alternate rows with color"
 msgstr "Raya las filas alternas con color"
 
@@ -3493,7 +3488,7 @@ msgid "Switch to"
 msgstr "Cambiar a"
 
 #. Default: "Table"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Table"
 msgstr "Tabla"
 
@@ -3743,7 +3738,6 @@ msgstr "Hora"
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 #: components/theme/View/TabularView
 #: helpers/MessageLabels/MessageLabels
 msgid "Title"
@@ -4023,7 +4017,6 @@ msgstr "Utilice el siguiente formulario para definir, cambiar o eliminar reglas 
 #. Default: "Used for programmatic access to the fieldset."
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 msgid "Used for programmatic access to the fieldset."
 msgstr "Usado para acceso programático al conjunto de campos."
 

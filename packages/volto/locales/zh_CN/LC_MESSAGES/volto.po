@@ -543,7 +543,7 @@ msgid "Cancel"
 msgstr "取消"
 
 #. Default: "Cell"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Cell"
 msgstr "单元格"
 
@@ -936,7 +936,6 @@ msgstr "日期（最新在前）"
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/CommentEditModal
 #: components/theme/Comments/Comments
 #: components/theme/ContactForm/ContactForm
@@ -961,7 +960,6 @@ msgstr "默认视图"
 #: components/manage/Delete/Delete
 #: components/manage/Widgets/FormFieldWrapper
 #: components/manage/Widgets/ObjectBrowserWidget
-#: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/Comments
 msgid "Delete"
 msgstr "删除"
@@ -992,7 +990,7 @@ msgid "Delete blocks"
 msgstr "删除块"
 
 #. Default: "Delete col"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Delete col"
 msgstr "删除 col"
 
@@ -1002,7 +1000,7 @@ msgid "Delete condition"
 msgstr "删除条件"
 
 #. Default: "Delete row"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Delete row"
 msgstr "删除条件"
 
@@ -1043,7 +1041,6 @@ msgstr "降序"
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 #: components/theme/View/TabularView
 #: helpers/MessageLabels/MessageLabels
 msgid "Description"
@@ -1085,7 +1082,7 @@ msgid "Distributed under the {license}."
 msgstr "使用{license} 发布"
 
 #. Default: "Add border to inner columns"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Divide each row into separate cells"
 msgstr "将每一行分成独立的单元格"
 
@@ -1500,7 +1497,7 @@ msgid "Fix relations"
 msgstr ""
 
 #. Default: "Fixed width columns"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Fixed width table cells"
 msgstr "固定表格单元格宽度"
 
@@ -1610,7 +1607,7 @@ msgid "Groups are logical collections of users, such as departments and business
 msgstr "组是用户的逻辑集合，如部门和商务小组。他们不直接和某个权限关联，您应该用角色分配权限，然后让组拥有某个角色。符号{plone_svg}表示从另一个组的成员继承的角色"
 
 #. Default: "Header cell"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Header cell"
 msgstr "标题单元格"
 
@@ -1764,22 +1761,22 @@ msgid "Inherited value"
 msgstr "继承的值"
 
 #. Default: "Insert col after"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Insert col after"
 msgstr "在后面插入col"
 
 #. Default: "Insert col before"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Insert col before"
 msgstr "在前面插入col"
 
 #. Default: "Insert row after"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Insert row after"
 msgstr "在后面插入行"
 
 #. Default: "Insert row before"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Insert row before"
 msgstr "在前面插入行"
 
@@ -2076,7 +2073,7 @@ msgid "Made by {creator} on {date}. This is not a working copy anymore, but the 
 msgstr "由{creator}在{date}时创建。这不再是一个工作副本，而是一个主要内容。"
 
 #. Default: "Reduce cell padding"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Make the table compact"
 msgstr "使表格紧凑"
 
@@ -2724,7 +2721,7 @@ msgid "Redo"
 msgstr "重做"
 
 #. Default: "Minimalistic table design"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Reduce complexity"
 msgstr "减少复杂性"
 
@@ -2863,7 +2860,6 @@ msgstr "回复"
 #. Default: "Required"
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 msgid "Required"
 msgstr ""
 
@@ -3209,7 +3205,6 @@ msgstr ""
 #. Default: "Short Name"
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 msgid "Short Name"
 msgstr ""
 
@@ -3435,7 +3430,7 @@ msgid "String"
 msgstr ""
 
 #. Default: "Alternate row background color"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Stripe alternate rows with color"
 msgstr ""
 
@@ -3492,7 +3487,7 @@ msgid "Switch to"
 msgstr "切换到"
 
 #. Default: "Table"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Table"
 msgstr "表格"
 
@@ -3742,7 +3737,6 @@ msgstr "时间"
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 #: components/theme/View/TabularView
 #: helpers/MessageLabels/MessageLabels
 msgid "Title"
@@ -4022,7 +4016,6 @@ msgstr "使用下面的表单定义、更改或删除内容规则。触发事件
 #. Default: "Used for programmatic access to the fieldset."
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 msgid "Used for programmatic access to the fieldset."
 msgstr "用于对字段集的编程访问。"
 
