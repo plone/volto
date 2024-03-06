@@ -117,7 +117,14 @@ const Facets = (props) => {
               <FacetWidget
                 facet={facetSettings}
                 facetCount={facetCount}
-                choices={rewriteOptions(facetSettings?.field?.value, choices)}
+                choices={rewriteOptions(
+                  facetSettings?.field?.value,
+                  choices,
+                ).filter(({ _, value }) =>
+                  Object.keys(facetCount?.data || {}).find(
+                    (key) => key === value,
+                  ),
+                )}
                 isMulti={isMulti}
                 value={value}
                 isEditMode={isEditMode}
