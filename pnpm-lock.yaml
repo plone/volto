@@ -735,7 +735,7 @@ importers:
         specifier: ^6.0.4
         version: 6.0.4(@babel/core@7.23.9)
       '@tanstack/react-query-devtools':
-        specifier: ^5.25.0
+        specifier: ^5.24.1
         version: 5.25.0(@tanstack/react-query@5.24.1)(react@18.2.0)
       '@types/express':
         specifier: ^4.17.21
@@ -1420,8 +1420,8 @@ importers:
         specifier: 6.1.0
         version: 6.1.0
       babel-preset-razzle:
-        specifier: 4.2.17
-        version: 4.2.17
+        specifier: 4.2.18
+        version: 4.2.18
       circular-dependency-plugin:
         specifier: 5.2.2
         version: 5.2.2(webpack@5.90.1)
@@ -1622,7 +1622,7 @@ importers:
         version: 7.1.0
       razzle:
         specifier: 4.2.18
-        version: 4.2.18(@babel/core@7.23.3)(babel-preset-razzle@4.2.17)(eslint@8.49.0)(html-webpack-plugin@5.5.0)(mini-css-extract-plugin@2.7.2)(razzle-dev-utils@4.2.18)(typescript@5.2.2)(webpack-dev-server@4.11.1)(webpack@5.90.1)
+        version: 4.2.18(@babel/core@7.23.3)(babel-preset-razzle@4.2.18)(eslint@8.49.0)(html-webpack-plugin@5.5.0)(mini-css-extract-plugin@2.7.2)(razzle-dev-utils@4.2.18)(typescript@5.2.2)(webpack-dev-server@4.11.1)(webpack@5.90.1)
       razzle-dev-utils:
         specifier: 4.2.18
         version: 4.2.18(eslint@8.49.0)(typescript@5.2.2)(webpack-dev-server@4.11.1)(webpack@5.90.1)
@@ -2319,7 +2319,7 @@ packages:
       '@babel/core': ^7.4.0-0
     dependencies:
       '@babel/core': 7.23.9
-      '@babel/helper-compilation-targets': 7.22.15
+      '@babel/helper-compilation-targets': 7.23.6
       '@babel/helper-module-imports': 7.22.15
       '@babel/helper-plugin-utils': 7.22.5
       '@babel/traverse': 7.23.3
@@ -2337,7 +2337,7 @@ packages:
       '@babel/core': ^7.4.0 || ^8.0.0-0 <8.0.0
     dependencies:
       '@babel/core': 7.23.3
-      '@babel/helper-compilation-targets': 7.22.15
+      '@babel/helper-compilation-targets': 7.23.6
       '@babel/helper-plugin-utils': 7.22.5
       debug: 4.3.4(supports-color@8.1.1)
       lodash.debounce: 4.0.8
@@ -2352,7 +2352,7 @@ packages:
       '@babel/core': ^7.4.0 || ^8.0.0-0 <8.0.0
     dependencies:
       '@babel/core': 7.23.9
-      '@babel/helper-compilation-targets': 7.22.15
+      '@babel/helper-compilation-targets': 7.23.6
       '@babel/helper-plugin-utils': 7.22.5
       debug: 4.3.4(supports-color@8.1.1)
       lodash.debounce: 4.0.8
@@ -2500,7 +2500,7 @@ packages:
     resolution: {integrity: sha512-n0H99E/K+Bika3++WNL17POvo4rKWZ7lZEp1Q+fStVbUi8nxPQEBOlTmCOxW/0JsS56SKKQ+ojAe2pHKJHN35w==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/types': 7.23.3
+      '@babel/types': 7.23.9
 
   /@babel/helper-skip-transparent-expression-wrappers@7.22.5:
     resolution: {integrity: sha512-tK14r66JZKiC43p8Ki33yLBVJKlQDFoA8GYN67lWCDCqoL6EMMSuM9b+Iff2jHaM/RRFYl7K+iiru7hbRqNx8Q==}
@@ -2539,7 +2539,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/helper-function-name': 7.23.0
-      '@babel/template': 7.22.15
+      '@babel/template': 7.23.9
       '@babel/types': 7.23.9
 
   /@babel/helpers@7.23.2:
@@ -3497,7 +3497,7 @@ packages:
     dependencies:
       '@babel/core': 7.23.3
       '@babel/helper-annotate-as-pure': 7.22.5
-      '@babel/helper-compilation-targets': 7.22.15
+      '@babel/helper-compilation-targets': 7.23.6
       '@babel/helper-environment-visitor': 7.22.20
       '@babel/helper-function-name': 7.23.0
       '@babel/helper-optimise-call-expression': 7.22.5
@@ -3515,7 +3515,7 @@ packages:
     dependencies:
       '@babel/core': 7.23.9
       '@babel/helper-annotate-as-pure': 7.22.5
-      '@babel/helper-compilation-targets': 7.22.15
+      '@babel/helper-compilation-targets': 7.23.6
       '@babel/helper-environment-visitor': 7.22.20
       '@babel/helper-function-name': 7.23.0
       '@babel/helper-optimise-call-expression': 7.22.5
@@ -3714,7 +3714,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.23.3
-      '@babel/helper-compilation-targets': 7.22.15
+      '@babel/helper-compilation-targets': 7.23.6
       '@babel/helper-function-name': 7.23.0
       '@babel/helper-plugin-utils': 7.22.5
     dev: true
@@ -3726,7 +3726,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.23.9
-      '@babel/helper-compilation-targets': 7.22.15
+      '@babel/helper-compilation-targets': 7.23.6
       '@babel/helper-function-name': 7.23.0
       '@babel/helper-plugin-utils': 7.22.5
 
@@ -3987,9 +3987,9 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/compat-data': 7.23.3
+      '@babel/compat-data': 7.23.5
       '@babel/core': 7.23.3
-      '@babel/helper-compilation-targets': 7.22.15
+      '@babel/helper-compilation-targets': 7.23.6
       '@babel/helper-plugin-utils': 7.22.5
       '@babel/plugin-syntax-object-rest-spread': 7.8.3(@babel/core@7.23.3)
       '@babel/plugin-transform-parameters': 7.23.3(@babel/core@7.23.3)
@@ -4001,9 +4001,9 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/compat-data': 7.23.3
+      '@babel/compat-data': 7.23.5
       '@babel/core': 7.23.9
-      '@babel/helper-compilation-targets': 7.22.15
+      '@babel/helper-compilation-targets': 7.23.6
       '@babel/helper-plugin-utils': 7.22.5
       '@babel/plugin-syntax-object-rest-spread': 7.8.3(@babel/core@7.23.9)
       '@babel/plugin-transform-parameters': 7.23.3(@babel/core@7.23.9)
@@ -4539,11 +4539,11 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/compat-data': 7.23.3
+      '@babel/compat-data': 7.23.5
       '@babel/core': 7.23.3
-      '@babel/helper-compilation-targets': 7.22.15
+      '@babel/helper-compilation-targets': 7.23.6
       '@babel/helper-plugin-utils': 7.22.5
-      '@babel/helper-validator-option': 7.22.15
+      '@babel/helper-validator-option': 7.23.5
       '@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression': 7.23.3(@babel/core@7.23.3)
       '@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining': 7.23.3(@babel/core@7.23.3)
       '@babel/plugin-bugfix-v8-static-class-fields-redefine-readonly': 7.23.3(@babel/core@7.23.3)
@@ -4630,11 +4630,11 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/compat-data': 7.23.3
+      '@babel/compat-data': 7.23.5
       '@babel/core': 7.23.9
-      '@babel/helper-compilation-targets': 7.22.15
+      '@babel/helper-compilation-targets': 7.23.6
       '@babel/helper-plugin-utils': 7.22.5
-      '@babel/helper-validator-option': 7.22.15
+      '@babel/helper-validator-option': 7.23.5
       '@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression': 7.23.3(@babel/core@7.23.9)
       '@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining': 7.23.3(@babel/core@7.23.9)
       '@babel/plugin-bugfix-v8-static-class-fields-redefine-readonly': 7.23.3(@babel/core@7.23.9)
@@ -19020,7 +19020,7 @@ packages:
     peerDependencies:
       '@babel/core': ^7.4.0 || ^8.0.0-0 <8.0.0
     dependencies:
-      '@babel/compat-data': 7.23.3
+      '@babel/compat-data': 7.23.5
       '@babel/core': 7.23.3
       '@babel/helper-define-polyfill-provider': 0.4.3(@babel/core@7.23.3)
       semver: 6.3.1
@@ -19033,7 +19033,7 @@ packages:
     peerDependencies:
       '@babel/core': ^7.4.0 || ^8.0.0-0 <8.0.0
     dependencies:
-      '@babel/compat-data': 7.23.3
+      '@babel/compat-data': 7.23.5
       '@babel/core': 7.23.9
       '@babel/helper-define-polyfill-provider': 0.4.3(@babel/core@7.23.9)
       semver: 6.3.1
@@ -19278,7 +19278,6 @@ packages:
       chalk: 4.1.2
     transitivePeerDependencies:
       - supports-color
-    dev: true
 
   /babel-preset-react-app@10.0.1:
     resolution: {integrity: sha512-b0D9IZ1WhhCWkrTXyFuIIgqGzSkRIH5D5AmB0bXbzYAB1OBAwHcUeyWW2LorutLWF5btNo/N7r/cIdmvvKJlYg==}
@@ -27580,7 +27579,7 @@ packages:
     dependencies:
       '@babel/generator': 7.23.6
       '@babel/parser': 7.23.9
-      '@babel/template': 7.22.15
+      '@babel/template': 7.23.9
       '@babel/traverse': 7.23.3
       '@babel/types': 7.20.5
       istanbul-lib-coverage: 2.0.5
@@ -34104,7 +34103,7 @@ packages:
       postcss-load-config: 3.1.4(postcss@8.4.31)
       postcss-loader: 4.3.0(postcss@8.4.31)(webpack@5.90.1)
       postcss-scss: 3.0.5
-      razzle: 4.2.18(@babel/core@7.23.3)(babel-preset-razzle@4.2.17)(eslint@8.49.0)(html-webpack-plugin@5.5.0)(mini-css-extract-plugin@2.7.2)(razzle-dev-utils@4.2.18)(typescript@5.2.2)(webpack-dev-server@4.11.1)(webpack@5.90.1)
+      razzle: 4.2.18(@babel/core@7.23.3)(babel-preset-razzle@4.2.18)(eslint@8.49.0)(html-webpack-plugin@5.5.0)(mini-css-extract-plugin@2.7.2)(razzle-dev-utils@4.2.18)(typescript@5.2.2)(webpack-dev-server@4.11.1)(webpack@5.90.1)
       razzle-dev-utils: 4.2.18(eslint@8.49.0)(typescript@5.2.2)(webpack-dev-server@4.11.1)(webpack@5.90.1)
       resolve-url-loader: 3.1.5
       sass: 1.69.5
@@ -34124,7 +34123,7 @@ packages:
     dependencies:
       webpack: 5.90.1
 
-  /razzle@4.2.18(@babel/core@7.23.3)(babel-preset-razzle@4.2.17)(eslint@8.49.0)(html-webpack-plugin@5.5.0)(mini-css-extract-plugin@2.7.2)(razzle-dev-utils@4.2.18)(typescript@5.2.2)(webpack-dev-server@4.11.1)(webpack@5.90.1):
+  /razzle@4.2.18(@babel/core@7.23.3)(babel-preset-razzle@4.2.18)(eslint@8.49.0)(html-webpack-plugin@5.5.0)(mini-css-extract-plugin@2.7.2)(razzle-dev-utils@4.2.18)(typescript@5.2.2)(webpack-dev-server@4.11.1)(webpack@5.90.1):
     resolution: {integrity: sha512-lgumXubb/rs5oQVcmu3UDSObbWQ2H1FLf2/VLal25yusotEbyePVLAw9f9QGu+bbUohvEY0rfYyJtnQNE8J4Og==}
     hasBin: true
     peerDependencies:
@@ -34141,7 +34140,7 @@ packages:
       babel-jest: 26.6.3(@babel/core@7.23.3)
       babel-loader: 8.3.0(@babel/core@7.23.3)(webpack@5.90.1)
       babel-plugin-transform-define: 2.1.4
-      babel-preset-razzle: 4.2.17
+      babel-preset-razzle: 4.2.18
       buffer: 6.0.3
       chalk: 4.1.2
       clean-css: 5.3.2
