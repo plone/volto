@@ -1,6 +1,4 @@
-@import 'layout';
-
-.a.container {
+.q.container {
   container-type: inline-size;
 
   &.layout {
