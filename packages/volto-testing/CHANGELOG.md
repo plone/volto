@@ -10,7 +10,7 @@
 
 ## 4.0.0 (2023-09-30)
 
-
+- Final release @sneridagh
 
 
 ## 4.0.0-alpha.1 (2023-09-13)
