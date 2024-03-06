@@ -117,13 +117,7 @@ const Facets = (props) => {
               <FacetWidget
                 facet={facetSettings}
                 facetCount={facetCount}
-                choices={rewriteOptions(
-                  facetSettings?.field?.value,
-                  choices,
-                ).filter(
-                  ({ label, value }) =>
-                    facetCount?.data?.[value]?.count_criteria > 0,
-                )}
+                choices={rewriteOptions(facetSettings?.field?.value, choices)}
                 isMulti={isMulti}
                 value={value}
                 isEditMode={isEditMode}
