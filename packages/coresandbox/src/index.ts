@@ -9,6 +9,9 @@ import { conditionalVariationsSchemaEnhancer } from './components/Blocks/schemaE
 import codeSVG from '@plone/volto/icons/code.svg';
 import type { BlockConfigBase } from '@plone/types';
 import type { ConfigType } from '@plone/registry';
+import SlotComponentTest from './components/Slots/SlotTest';
+import { ContentTypeCondition } from '@plone/volto/helpers';
+import { RouteCondition } from '@plone/volto/helpers/Slots';
 
 const testBlock: BlockConfigBase = {
   id: 'testBlock',
@@ -170,6 +173,13 @@ const applyConfig = (config: ConfigType) => {
   config.blocks.blocksConfig.testBlockDefaultView = testBlockDefaultView;
   config.blocks.blocksConfig.listing = listing(config);
   config.views.contentTypesViews.Folder = NewsAndEvents;
+
+  config.registerSlotComponent({
+    slot: 'aboveContent',
+    name: 'testSlotComponent',
+    component: SlotComponentTest,
+    predicates: [ContentTypeCondition(['Document']), RouteCondition('/hello')],
+  });
 
   return config;
 };

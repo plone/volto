@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 import { compose } from 'redux';
@@ -268,8 +268,8 @@ function Controlpanels(props) {
           </Segment>
         </Segment.Group>
       </Container>
-      {isClient && (
-        <Portal node={document.getElementById('toolbar')}>
+      {isClient &&
+        createPortal(
           <Toolbar
             pathname={pathname}
             hideDefaultViewButtons
@@ -283,9 +283,9 @@ function Controlpanels(props) {
                 />
               </Link>
             }
-          />
-        </Portal>
-      )}
+          />,
+          document.getElementById('toolbar'),
+        )}
     </div>
   );
 }

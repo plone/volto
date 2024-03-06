@@ -154,8 +154,8 @@ class Html extends Component {
               rel: !criticalCss
                 ? elem.props.rel
                 : elem.props.as === 'style'
-                ? 'prefetch'
-                : elem.props.rel,
+                  ? 'prefetch'
+                  : elem.props.rel,
             }),
           )}
           {/* Styles in development are loaded with Webpack's style-loader, in production,

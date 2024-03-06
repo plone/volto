@@ -107,7 +107,7 @@ initialReducersBlacklist
 loadables
     A mapping of loadable libraries that can be injected into components using
     the `injectLazyLibs` HOC wrapper. See the [Lazy
-    loading](../recipes/lazyload) page for more details.
+    loading](../development/lazyload) page for more details.
 
 lazyBundles
     A mapping of bundles to list of lazy library names. Create new bundles (or
@@ -514,7 +514,7 @@ in the `config.settings.serverConfig` object.
 
 expressMiddleware
     A list of ExpressJs middleware that can extend the built-in functionality of
-    Volto's server. See the [Express](../recipes/express) section for more details.
+    Volto's server. See the [Express](../development/express) section for more details.
 
 criticalCssPath
     A path relative to the project root that points to an optional CSS file. If

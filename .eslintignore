@@ -3,3 +3,4 @@ build
 packages/volto
 packages/volto-guillotina
 !.*
+dist

@@ -1,5 +1,5 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import jwt from 'jsonwebtoken';
@@ -8,9 +8,9 @@ import { __test__ as Edit } from './Edit';
 
 const mockStore = configureStore();
 
-jest.mock('react-portal', () => ({
-  Portal: jest.fn(() => <div id="Portal" />),
-}));
+jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+jest.mock('../Sidebar/Sidebar', () => jest.fn(() => <div id="Sidebar" />));
+
 jest.mock('../Form/Form', () => jest.fn(() => <div className="Form" />));
 
 describe('Edit', () => {
@@ -50,13 +50,15 @@ describe('Edit', () => {
         messages: {},
       },
     });
-    const component = renderer.create(
+    const { container } = render(
       <Provider store={store}>
+        <div id="toolbar"></div>
         <Edit location={{ pathname: '/blog', search: {} }} />
+        <div id="sidebar"></div>
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+
+    expect(container).toMatchSnapshot();
   });
 
   it('renders an edit component', () => {
@@ -97,12 +99,14 @@ describe('Edit', () => {
         messages: {},
       },
     });
-    const component = renderer.create(
+    const { container } = render(
       <Provider store={store}>
+        <div id="toolbar"></div>
         <Edit location={{ pathname: '/blog', search: {} }} />
+        <div id="sidebar"></div>
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+
+    expect(container).toMatchSnapshot();
   });
 });

@@ -146,22 +146,24 @@
     "@storybook/builder-webpack5": "^6.5.15",
     "@storybook/manager-webpack5": "^6.5.15",
     "@storybook/react": "^6.3.0",
-    "@typescript-eslint/eslint-plugin": "6.7.0",
-    "@typescript-eslint/parser": "6.7.0",
+    "@typescript-eslint/eslint-plugin": "7.1.1",
+    "@typescript-eslint/parser": "7.1.1",
     "jest-junit": "8.0.0",
     "mrs-developer": "^2.1.1",
     "postcss": "8.4.13",
-    "prettier": "3.0.3",
+    "prettier": "3.2.5",
     "razzle": "4.2.18",
-    "stylelint": "15.10.3",
-    "stylelint-config-idiomatic-order": "9.0.0",
-    "stylelint-prettier": "4.0.2",
+    "stylelint": "^16.2.1",
+    "stylelint-config-idiomatic-order": "10.0.0",
+    "stylelint-prettier": "5.0.0",
     "ts-jest": "^26.4.2",
     "ts-loader": "9.4.4",
-    "typescript": "5.2.2"
+    "typescript": "5.3.3"
   },
   "resolutions": {
-    "react-error-overlay": "6.0.9"
+    "@pmmmwh/react-refresh-webpack-plugin": "0.5.11",
+    "react-error-overlay": "6.0.9",
+    "react-refresh": "0.14.0"
   },
   "packageManager": "yarn@3.2.3"
 }
