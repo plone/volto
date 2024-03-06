@@ -1,5 +1,4 @@
 import React from 'react';
-import redraft from 'redraft';
 import TextBlockView from './TextBlockView';
 import TextBlockEdit from './TextBlockEdit';
 import TextBlockSchema from './TextBlockSchema';
@@ -130,24 +129,6 @@ export default function applyConfig(config) {
         : config.settings.slate.topLevelTargetElements.includes(type)
           ? [parseInt(type.slice(1)), plaintext]
           : null;
-    },
-  };
-
-  // Make draft js compatible with ToC
-  config.blocks.blocksConfig.text = {
-    ...config.blocks.blocksConfig.text,
-    restricted: true,
-    tocEntry: (block = {}) => {
-      const draft = redraft(
-        block.text,
-        config.settings.richtextViewSettings.ToHTMLRenderers,
-        config.settings.richtextViewSettings.ToHTMLOptions,
-      );
-      const type = draft?.[0]?.[0]?.type;
-
-      return config.settings.slate.topLevelTargetElements.includes(type)
-        ? [parseInt(type.slice(1)), block.text.blocks[0].text]
-        : null;
     },
   };
 

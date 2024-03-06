@@ -8,6 +8,18 @@
 
 <!-- towncrier release notes start -->
 
+## 9.0.0-alpha.10 (2024-03-05)
+
+### Bugfix
+
+- Add new forced resolutions to projects too @sneridagh [#5839](https://github.com/plone/volto/issues/5839)
+
+## 9.0.0-alpha.9 (2024-03-05)
+
+### Bugfix
+
+- Ensure hidden files get added to new addon projects in generator-volto @instification [#5719](https://github.com/plone/volto/issues/5719)
+
 ## 9.0.0-alpha.8 (2024-03-02)
 
 ### Internal
