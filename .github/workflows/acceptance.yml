@@ -1274,7 +1274,7 @@ jobs:
       - run: pnpm i
 
       - name: Install Cypress if not in cache
-        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
+        # if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
         working-directory: packages/volto
         run: make cypress-install
 
@@ -1359,7 +1359,7 @@ jobs:
       - run: pnpm i
 
       - name: Install Cypress if not in cache
-        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
+        # if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
         working-directory: packages/volto
         run: make cypress-install
 
