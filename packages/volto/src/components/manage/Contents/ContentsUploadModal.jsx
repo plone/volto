@@ -17,6 +17,7 @@ import {
   Modal,
   Table,
   Segment,
+  Input,
 } from 'semantic-ui-react';
 import loadable from '@loadable/component';
 import { concat, filter, map } from 'lodash';
@@ -149,7 +150,27 @@ class ContentsUploadModal extends Component {
   }
 
   /**
-   * Submit handler
+   * Name change handler
+   * @method onChangeFileName
+   * @returns {undefined}
+   */
+
+  onChangeFileName(e, index) {
+    let copyOfFiles = [...this.state.files];
+    let originalFile = this.state.files[index];
+    let newFile = new File([originalFile], e.target.value, {
+      type: originalFile.type,
+    });
+    newFile.preview = originalFile.preview;
+    newFile.path = e.target.value;
+    copyOfFiles[index] = newFile;
+    this.setState({
+      files: copyOfFiles,
+    });
+  }
+
+  /**
+   * Submit handlers
    * @method onSubmit
    * @returns {undefined}
    */
@@ -186,7 +207,7 @@ class ContentsUploadModal extends Component {
   render() {
     return (
       this.props.open && (
-        <Modal open={this.props.open}>
+        <Modal className="contents-upload-modal" open={this.props.open}>
           <Header>
             <FormattedMessage id="Upload files" defaultMessage="Upload files" />
           </Header>
@@ -268,8 +289,14 @@ class ContentsUploadModal extends Component {
                 </Table.Header>
                 <Table.Body>
                   {map(this.state.files, (file, index) => (
-                    <Table.Row className="upload-row" key={file.name}>
-                      <Table.Cell>{file.name}</Table.Cell>
+                    <Table.Row className="upload-row" key={index}>
+                      <Table.Cell>
+                        <Input
+                          className="file-name"
+                          value={file.name}
+                          onChange={(e) => this.onChangeFileName(e, index)}
+                        />
+                      </Table.Cell>
                       <Table.Cell>
                         {file.lastModifiedDate && (
                           <FormattedRelativeDate date={file.lastModifiedDate} />

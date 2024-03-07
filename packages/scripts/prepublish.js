@@ -12,7 +12,7 @@ class PrePublishReleaseItPlugin extends Plugin {
         type: 'confirm',
         message: (context) =>
           `Are you sure you want to publish ${context.npm.name}${
-            context.isPreRelease ? `@${context.preReleaseId}` : 'latest'
+            context.isPreRelease ? `@${context.preReleaseId}` : '@latest'
           } to npm?`,
         default: true,
       },

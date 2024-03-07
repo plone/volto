@@ -41,4 +41,4 @@ export function resolveBlockExtensions(data: any, blocksConfig: any): {
     resolvedExtensions: any;
 };
 export default withBlockExtensions;
-declare function withBlockExtensions(WrappedComponent: any): (props: any) => JSX.Element;
+declare function withBlockExtensions(WrappedComponent: any): (props: any) => import("react/jsx-runtime").JSX.Element;

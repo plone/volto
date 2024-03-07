@@ -136,7 +136,7 @@ THEME='volto-my-theme' yarn start
 
 ## Using your own theming escape hatch
 
-Volto theming uses SemanticUI theming capabilities to define and extend a theme for your site.
+Volto theming uses Semantic UI theming capabilities to define and extend a theme for your site.
 However, while maintaining and playing well with the Semantic UI Volto base, using a traditional CSS approach can be done using the LESS preprocessor-based `extras` escape hatch.
 
 At the same time, one can either discard or complement the extras escape hatch and add your own, by customizing the `theme.js` module in Volto.
@@ -168,10 +168,10 @@ However, there is a problem with this approach.
 You cannot use existing theme variables, including breakpoints, on these new styles.
 Similarly, it gets somewhat detached from the normal flow of the loaded theme.
 The same applies for add-ons, as they are detached from the current theme.
-One could use a SemanticUI approach for making this work, but it's SemanticUI bound.
+One could use a Semantic UI approach for making this work, but it's Semantic UI bound.
 
 ```{warning}
-This is only possible when using your own escape hatch, and works only with SCSS-based themes, and not with SemanticUI themes, since it enables a couple of entry points that only support SCSS files.
+This is only possible when using your own escape hatch, and works only with SCSS-based themes, and not with Semantic UI themes, since it enables a couple of entry points that only support SCSS files.
 For an example of how it could be used, see: https://github.com/kitconcept/volto-light-theme
 ```
 

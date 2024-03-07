@@ -1,5 +1,5 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import ObjectBrowserWidget from './ObjectBrowserWidget';
@@ -14,7 +14,7 @@ test('renders a objectBrowser widget component', () => {
       messages: {},
     },
   });
-  const component = renderer.create(
+  const { container } = render(
     <Provider store={store}>
       <MemoryRouter>
         <ObjectBrowserWidget
@@ -26,6 +26,6 @@ test('renders a objectBrowser widget component', () => {
       </MemoryRouter>
     </Provider>,
   );
-  const json = component.toJSON();
-  expect(json).toMatchSnapshot();
+
+  expect(container).toMatchSnapshot();
 });

@@ -17,6 +17,164 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.18 (2024-03-05)
+
+### Bugfix
+
+- Fix translation error message. @robgietema [#5835](https://github.com/plone/volto/issues/5835)
+- Pass down content, pathname and navRoot to the `SlotComponent` for convenience @sneridagh [#5841](https://github.com/plone/volto/issues/5841)
+- Fix `setMetadataFocus` so it does not break if the element to be focused is not an `input` @sneridagh [#5843](https://github.com/plone/volto/issues/5843)
+
+### Internal
+
+- Add new readmes to CI. @stevepiercy [#5837](https://github.com/plone/volto/issues/5837)
+
+### Documentation
+
+- Fix linkcheckbroken of `README.md` at the source of the file. @stevepiercy [#5834](https://github.com/plone/volto/issues/5834)
+
+## 18.0.0-alpha.17 (2024-03-05)
+
+### Bugfix
+
+- Show validation error message as string instead of list. @wesleybl [#1868](https://github.com/plone/volto/issues/1868)
+- Removed css from `contents.less` that made the Contents table break words in tiny sections due to small table headers such as `ID` or `UID`.  @ichim.david [#5742](https://github.com/plone/volto/issues/5742)
+- Fix Link to Item and Aliases view not updating content in multilingual site. @iFlameing [#5820](https://github.com/plone/volto/issues/5820)
+- Modified build-deps make command to check if registry files are newer than dist to force rebuild. @ichim-david [#5825](https://github.com/plone/volto/issues/5825)
+- Reset global Form state onSubmit and onCancel in Add and Edit forms @sneridagh [#5827](https://github.com/plone/volto/issues/5827)
+- Fix HMR problems, upgrade react-refresh and @pmmmwh/react-refresh-webpack-plugin to latest @sneridagh [#5833](https://github.com/plone/volto/issues/5833)
+
+### Internal
+
+- Uses Plone 6.0.10.1 in tests. @wesleybl [#5830](https://github.com/plone/volto/issues/5830)
+
+### Documentation
+
+- Improve wayfinding for various Volto audiences. @stevepiercy [#5730](https://github.com/plone/volto/issues/5730)
+
+## 18.0.0-alpha.16 (2024-03-02)
+
+### Internal
+
+- Update dependencies
+  Fix prettier due to new version @sneridagh [#5815](https://github.com/plone/volto/issues/5815)
+
+### Documentation
+
+- Linkcheck thinks `README.md` is `http://README.md`. Bad linkcheck, no more 🍺 for you. @stevepiercy [#5816](https://github.com/plone/volto/issues/5816)
+
+## 18.0.0-alpha.15 (2024-03-01)
+
+### Breaking
+
+- Upgrade Volto core to use React 18.2.0 @sneridagh [#3221](https://github.com/plone/volto/issues/3221)
+
+## 18.0.0-alpha.14 (2024-03-01)
+
+### Breaking
+
+- Improved accessibility of logo component. @Molochem [#5776](https://github.com/plone/volto/issues/5776)
+
+### Feature
+
+- Support for slots @sneridagh [#5775](https://github.com/plone/volto/issues/5775)
+
+### Bugfix
+
+- Fixed toolbar menus not closing when clicking again on the toolbar buttons that show menus. @ichim-david
+  Add focus-visible rule to toolbar buttons so that it's visible to the user what button is focused when using tab navigation @ichim-david [#5645](https://github.com/plone/volto/issues/5645)
+- Enhance findBlocks to check for blocks also in data for add-ons such as @eeacms/volto-tabs-block. @ichim-david [#5796](https://github.com/plone/volto/issues/5796)
+- Fixed ArrayWidget sorting items. @giuliaghisini [#5805](https://github.com/plone/volto/issues/5805)
+
+### Internal
+
+- New types declarations with @types/react@18 - make tsc happy @sneridagh [#5814](https://github.com/plone/volto/issues/5814)
+
+### Documentation
+
+- Added Release Management Notes. @sneridagh @stevepiercy [#5358](https://github.com/plone/volto/issues/5358)
+- Delete redundant `developing-a-project.md`. @stevepiercy [#5675](https://github.com/plone/volto/issues/5675)
+- Removed Memori and TwinCreator websites from `README.md` no longer made using Volto and giving 404 error. @ichim-david [#5802](https://github.com/plone/volto/issues/5802)
+
+## 18.0.0-alpha.13 (2024-02-22)
+
+### Bugfix
+
+- Fix sidebar form update. @robgietema [#5779](https://github.com/plone/volto/issues/5779)
+
+## 18.0.0-alpha.12 (2024-02-21)
+
+### Feature
+
+- Add accordion to metadata form. @robgietema [#5760](https://github.com/plone/volto/issues/5760)
+
+## 18.0.0-alpha.11 (2024-02-18)
+
+### Breaking
+
+- Remove the isDisabled from all fields in the left side form of the babel view, make them read only instead @sneridagh [#5762](https://github.com/plone/volto/issues/5762)
+
+### Feature
+
+- Added the `ignore` property to allow exceptions to rules that are applied to all routes. @dobri1408 [#5621](https://github.com/plone/volto/issues/5621)
+- Add global form state. @robgietema [#5721](https://github.com/plone/volto/issues/5721)
+
+### Bugfix
+
+- Fixed listing SSR rendering by sending `subrequestId` instead of `id` only within `getAsyncData`, similar to calling `getQueryStringResults` directly. @ichim-david [#5688](https://github.com/plone/volto/issues/5688)
+- Enhanced Makefile paths to address whitespace compatibility issues. @Vivek-04022001 [#5715](https://github.com/plone/volto/issues/5715)
+- Fix console logging in acceptance server Makefile commands. @davisagli [#5748](https://github.com/plone/volto/issues/5748)
+- Add extra wait calls to listing block tests to avoid sporadic failures. @ichim-david [#5753](https://github.com/plone/volto/issues/5753)
+- Add @plone/components as external library.
+  Make the Terser plugin accept ESNext features.
+  Fix inline `svg` elements in LESS files. @sneridagh [#5766](https://github.com/plone/volto/issues/5766)
+
+### Documentation
+
+- Overhaul environment variables documentation. @stevepiercy [#4581](https://github.com/plone/volto/issues/4581)
+- Reorganize `README.md`, merging content into authoritative locations. Add `awesome_bot` to check links in all READMEs. @stevepiercy [#5437](https://github.com/plone/volto/issues/5437)
+- Replace outdated diff with a link to current file. @stevepiercy [#5703](https://github.com/plone/volto/issues/5703)
+- Document when the 'links and references' view was added. @davisagli [#5756](https://github.com/plone/volto/issues/5756)
+- Update links to Redux and React developer extensions for Chrome. @stevepiercy [#5757](https://github.com/plone/volto/issues/5757)
+- Chromewebstore recently changed its URL and has "too many redirects", so it needs to be excluded from linkcheck. @stevepiercy [#5761](https://github.com/plone/volto/issues/5761)
+- Add Git as a pre-requisite. @stevepiercy [#5769](https://github.com/plone/volto/issues/5769)
+
+## 18.0.0-alpha.10 (2024-02-02)
+
+### Feature
+
+- Allow editor to edit metadata during bulk upload. @iFlameing [#5549](https://github.com/plone/volto/issues/5549)
+- Added `aria-live="polite"` in `Contents.jsx` to improve accessibility for the Contents page. @Hrittik20 [#5617](https://github.com/plone/volto/issues/5617)
+- Support for passing whole data object of the initial blocks in local config. Refactor initial block type to its own helpers. @sneridagh [#5718](https://github.com/plone/volto/issues/5718)
+
+### Bugfix
+
+- Fixed wrong conditional proprieties on `ObjectBrowser` for multiple selection. @deodorhunter @Wagner3UB [#4190](https://github.com/plone/volto/issues/4190)
+- Remove turbo from monorepo commands until it's really necessary @sneridagh [#5715](https://github.com/plone/volto/issues/5715)
+
+### Documentation
+
+- Block search engines from indexing content on Netlify preview builds. @stevepiercy [#5725](https://github.com/plone/volto/issues/5725)
+
+## 18.0.0-alpha.9 (2024-01-26)
+
+### Feature
+
+- Improve validation of IdWidget @tedw [#3716](https://github.com/plone/volto/issues/3716)
+
+### Bugfix
+
+- Removed unmaintained and unused razzle-plugin-bundle-analyze in favor of webpack-bundle-analyzer. @ichim-david
+  Updated extending Razzle from an add-on section to remove code that didn't belong to that recipe. @ichim-david [#5671](https://github.com/plone/volto/issues/5671)
+
+### Internal
+
+- Upgade `semantic-ui-react` to latest version (2.1.5) @sneridagh [#5632](https://github.com/plone/volto/issues/5632)
+
+### Documentation
+
+- Fixed redirect of `https://tanstack.com/query/v4/docs/react/guides/ssr` to `https://tanstack.com/query/v4/docs/framework/react/guides/ssr`. @stevepiercy [#5700](https://github.com/plone/volto/issues/5700)
+
 ## 18.0.0-alpha.8 (2024-01-25)
 
 ### Feature
@@ -6289,7 +6447,7 @@ https://6.docs.plone.org/volto/upgrade-guide/index.html
 - Added item type as a tooltip in contents @nzambello
 - Added Italian translations and translated array, token and select widget. @giuliaghisini
 - Added uploading image preview in FileWidget @iFlameing
-- Allow custom express middleware declared with `settings.expressMiddleware`. See [Custom Express middleware](https://6.docs.plone.org/volto/recipes/express.html) @tiberiuichim
+- Allow custom express middleware declared with `settings.expressMiddleware`. See [Custom Express middleware](https://6.docs.plone.org/volto/development/express.html) @tiberiuichim
 
 ### Bugfix
 
@@ -6829,7 +6987,7 @@ refer to all of them in https://github.com/plone/volto/releases
 ### Internal
 
 - Added `forest.eea.europa.eu` as deployed Volto in production @tiberiuichim
-- Add SemanticUI responsive variables to the responsive utils @sneridagh
+- Add Semantic UI responsive variables to the responsive utils @sneridagh
 - Added `yarnhook` to the build @sneridagh
 
 ## 4.0.0-alpha.36 (2020-02-03)

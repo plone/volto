@@ -1,212 +1,160 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ManageTranslations renders a ManageTranslations component 1`] = `
-<div
-  className="ui container"
-  id="page-manage-translations"
->
+<div>
   <div
-    className="ui raised segments"
+    class="ui container"
+    id="page-manage-translations"
   >
     <div
-      className="ui segment primary"
+      class="ui raised segments"
     >
-      Manage translations for 
-      <q>
-        My page
-      </q>
+      <div
+        class="ui segment primary"
+      >
+        Manage translations for 
+        <q>
+          My page
+        </q>
+      </div>
+      <table
+        class="ui selectable single line attached compact table"
+      >
+        <thead
+          class=""
+        >
+          <tr
+            class=""
+          >
+            <th
+              class=""
+            >
+              Language
+            </th>
+            <th
+              class=""
+            >
+              Path
+            </th>
+            <th
+              class="right aligned"
+            >
+              Tools
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          class=""
+        >
+          <tr
+            class=""
+          >
+            <td
+              class="collapsing"
+            >
+              Deutsch
+            </td>
+            <td
+              class=""
+            >
+              <a
+                href="/"
+              />
+            </td>
+            <td
+              class="right aligned manage-multilingual-tools"
+            >
+              <div
+                class="ui buttons"
+              >
+                <a
+                  class="ui basic icon button"
+                  href="//create-translation"
+                  role="button"
+                >
+                  <svg
+                    class="icon"
+                    style="height: 24px; width: auto; fill: currentColor;"
+                    viewBox=""
+                    xmlns=""
+                  />
+                </a>
+              </div>
+              <div
+                class="ui buttons"
+              >
+                <button
+                  aria-label="Link translation for deutsch"
+                  class="ui basic icon button"
+                >
+                  <svg
+                    class="icon"
+                    style="height: 24px; width: auto; fill: currentColor;"
+                    viewBox=""
+                    xmlns=""
+                  />
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr
+            class=""
+          >
+            <td
+              class="collapsing"
+            >
+              Español
+            </td>
+            <td
+              class=""
+            >
+              <a
+                href="/"
+              />
+            </td>
+            <td
+              class="right aligned manage-multilingual-tools"
+            >
+              <div
+                class="ui buttons"
+              >
+                <a
+                  class="ui basic icon button"
+                  href="//create-translation"
+                  role="button"
+                >
+                  <svg
+                    class="icon"
+                    style="height: 24px; width: auto; fill: currentColor;"
+                    viewBox=""
+                    xmlns=""
+                  />
+                </a>
+              </div>
+              <div
+                class="ui buttons"
+              >
+                <button
+                  aria-label="Link translation for español"
+                  class="ui basic icon button"
+                >
+                  <svg
+                    class="icon"
+                    style="height: 24px; width: auto; fill: currentColor;"
+                    viewBox=""
+                    xmlns=""
+                  />
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <table
-      className="ui selectable single line attached compact table"
-    >
-      <thead
-        className=""
-      >
-        <tr
-          className=""
-        >
-          <th
-            className=""
-          >
-            Language
-          </th>
-          <th
-            className=""
-          >
-            Path
-          </th>
-          <th
-            className="right aligned"
-          >
-            Tools
-          </th>
-        </tr>
-      </thead>
-      <tbody
-        className=""
-      >
-        <tr
-          className=""
-        >
-          <td
-            className="collapsing"
-          >
-            Deutsch
-          </td>
-          <td
-            className=""
-          >
-            <a
-              href="/"
-              onClick={[Function]}
-            >
-              
-            </a>
-          </td>
-          <td
-            className="right aligned manage-multilingual-tools"
-          >
-            <div
-              className="ui buttons"
-            >
-              <a
-                className="ui basic icon button"
-                href="//create-translation"
-                onClick={[Function]}
-                role="button"
-              >
-                <svg
-                  className="icon"
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": undefined,
-                    }
-                  }
-                  onClick={null}
-                  style={
-                    Object {
-                      "fill": "currentColor",
-                      "height": "24px",
-                      "width": "auto",
-                    }
-                  }
-                  viewBox=""
-                  xmlns=""
-                />
-              </a>
-            </div>
-            <div
-              className="ui buttons"
-            >
-              <button
-                aria-label="Link translation for deutsch"
-                className="ui basic icon button"
-                onClick={[Function]}
-              >
-                <svg
-                  className="icon"
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": undefined,
-                    }
-                  }
-                  onClick={null}
-                  style={
-                    Object {
-                      "fill": "currentColor",
-                      "height": "24px",
-                      "width": "auto",
-                    }
-                  }
-                  viewBox=""
-                  xmlns=""
-                />
-              </button>
-            </div>
-          </td>
-        </tr>
-        <tr
-          className=""
-        >
-          <td
-            className="collapsing"
-          >
-            Español
-          </td>
-          <td
-            className=""
-          >
-            <a
-              href="/"
-              onClick={[Function]}
-            >
-              
-            </a>
-          </td>
-          <td
-            className="right aligned manage-multilingual-tools"
-          >
-            <div
-              className="ui buttons"
-            >
-              <a
-                className="ui basic icon button"
-                href="//create-translation"
-                onClick={[Function]}
-                role="button"
-              >
-                <svg
-                  className="icon"
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": undefined,
-                    }
-                  }
-                  onClick={null}
-                  style={
-                    Object {
-                      "fill": "currentColor",
-                      "height": "24px",
-                      "width": "auto",
-                    }
-                  }
-                  viewBox=""
-                  xmlns=""
-                />
-              </a>
-            </div>
-            <div
-              className="ui buttons"
-            >
-              <button
-                aria-label="Link translation for español"
-                className="ui basic icon button"
-                onClick={[Function]}
-              >
-                <svg
-                  className="icon"
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": undefined,
-                    }
-                  }
-                  onClick={null}
-                  style={
-                    Object {
-                      "fill": "currentColor",
-                      "height": "24px",
-                      "width": "auto",
-                    }
-                  }
-                  viewBox=""
-                  xmlns=""
-                />
-              </button>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  </div>
+  <div
+    id="toolbar"
+  >
     <div
       id="Portal"
     />

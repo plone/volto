@@ -58,7 +58,7 @@ For developing Volto, follow {doc}`developing-core`.
 ## Translations
 
 All text that can be shown in a browser must be translatable.
-Please mark all such strings as translatable as defined in the [i18n guide](../recipes/i18n.md).
+Please mark all such strings as translatable as defined in the [i18n guide](../development/i18n.md).
 
 
 (contributing-branch-policy-for-translations-label)=

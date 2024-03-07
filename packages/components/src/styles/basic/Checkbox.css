@@ -1,0 +1,123 @@
+@import './theme.css';
+
+.react-aria-Checkbox {
+  --selected-color: var(--highlight-background);
+  --selected-color-pressed: var(--highlight-background-pressed);
+  --checkmark-color: var(--highlight-foreground);
+
+  display: flex;
+  align-items: center;
+  color: var(--text-color);
+  font-size: 1.143rem;
+  forced-color-adjust: none;
+  gap: 0.571rem;
+
+  .checkbox {
+    display: flex;
+    width: 1.143rem;
+    height: 1.143rem;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--border-color);
+    border-radius: 4px;
+    transition: all 200ms;
+  }
+
+  svg {
+    width: 1rem;
+    height: 1rem;
+    fill: none;
+    stroke: var(--checkmark-color);
+    stroke-dasharray: 22px;
+    stroke-dashoffset: 66;
+    stroke-width: 3px;
+    transition: all 200ms;
+  }
+
+  &[data-pressed] .checkbox {
+    border-color: var(--border-color-pressed);
+  }
+
+  &[data-focus-visible] .checkbox {
+    outline: 2px solid var(--focus-ring-color);
+    outline-offset: 2px;
+  }
+
+  &[data-selected],
+  &[data-indeterminate] {
+    .checkbox {
+      border-color: var(--selected-color);
+      background: var(--selected-color);
+    }
+
+    &[data-pressed] .checkbox {
+      border-color: var(--selected-color-pressed);
+      background: var(--selected-color-pressed);
+    }
+
+    svg {
+      stroke-dashoffset: 44;
+    }
+  }
+
+  &[data-indeterminate] {
+    & svg {
+      fill: var(--checkmark-color);
+      stroke: none;
+    }
+  }
+
+  &[data-invalid] {
+    color: var(--color-invalid);
+
+    .checkbox {
+      --checkmark-color: var(--gray-50);
+      border-color: var(--color-invalid);
+    }
+
+    &[data-pressed] .checkbox {
+      border-color: var(--color-pressed-invalid);
+    }
+
+    &[data-selected],
+    &[data-indeterminate] {
+      .checkbox {
+        background: var(--color-invalid);
+      }
+
+      &[data-pressed] .checkbox {
+        background: var(--color-pressed-invalid);
+      }
+    }
+  }
+
+  &[data-disabled] {
+    color: var(--text-color-disabled);
+
+    .checkbox {
+      border-color: var(--border-color-disabled);
+    }
+
+    & + [slot='description'] {
+      color: var(--text-color-disabled);
+    }
+  }
+
+  &[data-required]::after {
+    content: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"><path fill="hsl(7, 90%, 59%)" d="M12 18a6 6 0 100-12 6 6 0 000 12z"/></svg>');
+  }
+}
+
+.react-aria-CheckboxField {
+  [slot='description'] {
+    /* For now, we want the error in under the description */
+    display: block;
+    padding-top: 3px;
+    font-size: 12px;
+  }
+
+  [slot='errorMessage'] {
+    color: var(--color-invalid);
+    font-size: 12px;
+  }
+}
