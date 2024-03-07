@@ -46,7 +46,7 @@ function getInitialState(
       ...(data.query?.query.map((q) => {
         return {
           ...q,
-          criteria: true,
+          mandatory: true,
         };
       }) || []),
       ...(facetSettings || [])
