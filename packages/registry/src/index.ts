@@ -249,7 +249,10 @@ class Config {
       const hasRegisteredNoPredicatesComponent = this._data.slots?.[
         slot
       ]?.data?.[name]?.find(({ predicates }) => !predicates);
-      if (hasRegisteredNoPredicatesComponent) {
+      if (
+        hasRegisteredNoPredicatesComponent &&
+        component !== hasRegisteredNoPredicatesComponent.component
+      ) {
         throw new Error(
           `There is already registered a component ${name} for the slot ${slot}. You can only register one slot component with no predicates per slot.`,
         );

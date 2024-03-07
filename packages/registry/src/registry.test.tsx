@@ -901,4 +901,21 @@ describe('Slots registry', () => {
     config.unRegisterSlotComponent('toolbar', 'save', 1);
     expect(config.getSlotComponent('toolbar', 'save').length).toEqual(1);
   });
+
+  // The next one fixes the issue when HMR kicks in and tries to register the same component again
+  it('registerSlotComponent - registers the same named slot component twice, does not break', () => {
+    const TestComponent = () => <div>Hello</div>;
+
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: 'save',
+      component: TestComponent,
+    });
+
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: 'save',
+      component: TestComponent,
+    });
+  });
 });

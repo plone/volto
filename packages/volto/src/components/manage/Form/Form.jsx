@@ -309,7 +309,7 @@ class Form extends Component {
       // Set focus to first input if available
       document
         .querySelector(`.field-wrapper-${this.props.metadataFieldFocus} input`)
-        .focus();
+        ?.focus();
 
       // Reset focus field
       this.props.resetMetadataFocus();
