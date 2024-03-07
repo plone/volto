@@ -349,6 +349,7 @@ class Config {
     const origin = currentSlot.slots.indexOf(name);
     const result = Array.from(currentSlot.slots);
     const [removed] = result.splice(origin, 1);
+
     if (action) {
       let targetIdx = 0;
       if (target) {
@@ -356,11 +357,27 @@ class Config {
       }
       switch (action) {
         case 'after':
-          result.splice(targetIdx, 0, removed);
-          break;
+          if (targetIdx === origin) {
+            result.splice(targetIdx, 0, removed);
+            break;
+          } else if (targetIdx < origin) {
+            result.splice(targetIdx + 1, 0, removed);
+            break;
+          } else {
+            result.splice(targetIdx, 0, removed);
+            break;
+          }
         case 'before':
-          result.splice(targetIdx, 0, removed);
-          break;
+          if (targetIdx === origin) {
+            result.splice(targetIdx, 0, removed);
+            break;
+          } else if (targetIdx > origin) {
+            result.splice(targetIdx - 1, 0, removed);
+            break;
+          } else {
+            result.splice(targetIdx, 0, removed);
+            break;
+          }
         case 'last':
           result.push(removed);
           break;
