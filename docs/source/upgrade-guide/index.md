@@ -2110,7 +2110,7 @@ diffing the new ones with your versions.
 ### Testing lazy loaded components
 
 The whole process has been designed to have a minimal impact in existing projects.
-However, only one thing should be changed in your components tests, especially if your components are composed of original Volto components (not SemanticUI ones, though).
+However, only one thing should be changed in your components tests, especially if your components are composed of original Volto components (not Semantic UI ones, though).
 
 You should adapt them by mocking the Volto component or resolve (await) in an
 async construction before the test is fired. See this Codepen example:
