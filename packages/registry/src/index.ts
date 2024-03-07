@@ -360,10 +360,7 @@ class Config {
       }
       switch (action) {
         case 'after':
-          if (targetIdx === origin) {
-            result.splice(targetIdx, 0, removed);
-            break;
-          } else if (targetIdx < origin) {
+          if (targetIdx < origin) {
             result.splice(targetIdx + 1, 0, removed);
             break;
           } else {
@@ -371,10 +368,7 @@ class Config {
             break;
           }
         case 'before':
-          if (targetIdx === origin) {
-            result.splice(targetIdx, 0, removed);
-            break;
-          } else if (targetIdx > origin) {
+          if (targetIdx > origin) {
             result.splice(targetIdx - 1, 0, removed);
             break;
           } else {
