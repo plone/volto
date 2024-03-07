@@ -3,6 +3,7 @@ import redraft from 'redraft';
 import TextBlockView from './TextBlockView';
 import TextBlockEdit from './TextBlockEdit';
 import TextBlockSchema from './TextBlockSchema';
+import { cloneDeep } from 'lodash';
 
 import {
   goDown,
@@ -164,7 +165,9 @@ export default function applyConfig(config) {
     // This is required in order to initialize the inner blocksConfig
     // for the grid block, since the slate block lives in an add-on
     // it should be responsible to fill itself into the grid configuration
-    config.blocks.blocksConfig.gridBlock.blocksConfig.slate = slateBlockConfig;
+    // The cloneDeep is mandatory in order to not mess with pass by reference problems
+    config.blocks.blocksConfig.gridBlock.blocksConfig.slate =
+      cloneDeep(slateBlockConfig);
   }
 
   return config;
