@@ -30,7 +30,6 @@ exports[`Pagination renders no pagination when only 1 page 1`] = `
         viewBox=""
         xmlns=""
       />
-      
     </a>
     <a
       className="item"
@@ -73,7 +72,6 @@ exports[`Pagination renders page size options when specified 1`] = `
         viewBox=""
         xmlns=""
       />
-      
     </a>
     <a
       className="item"
@@ -148,7 +146,6 @@ exports[`Pagination renders pagination when multiple pages are specified 1`] = `
         viewBox=""
         xmlns=""
       />
-      
     </a>
     <a
       className="item"
@@ -234,7 +231,6 @@ exports[`Pagination renders pagination when multiple pages are specified 1`] = `
         viewBox=""
         xmlns=""
       />
-      
     </a>
   </div>
 </div>

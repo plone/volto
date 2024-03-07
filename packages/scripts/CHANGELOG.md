@@ -8,6 +8,26 @@
 
 <!-- towncrier release notes start -->
 
+## 3.5.0 (2024-03-05)
+
+### Feature
+
+- Add `check_deployments.js` script - Test simple deployments setups when Cypress is too much @sneridagh [#5824](https://github.com/plone/volto/issues/5824)
+
+### Documentation
+
+- Improve wayfinding for various Volto audiences. @stevepiercy [#5730](https://github.com/plone/volto/issues/5730)
+
+## 3.4.0 (2024-03-02)
+
+### Feature
+
+- New `lockhook.js` script for replacing `yarnhook` @sneridagh [#5815](https://github.com/plone/volto/issues/5815)
+
+### Internal
+
+- Update dependencies @sneridagh [#5815](https://github.com/plone/volto/issues/5815)
+
 ## 3.3.2 (2024-01-26)
 
 ### Bugfix

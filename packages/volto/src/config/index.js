@@ -27,8 +27,6 @@ import {
   filterControlPanelsSchema,
 } from './ControlPanels';
 
-import { richtextEditorSettings, richtextViewSettings } from './RichTextEditor';
-
 import applyAddonConfiguration, { addonsInfo } from 'load-volto-addons';
 
 import ConfigRegistry from '@plone/volto/registry';
@@ -75,7 +73,7 @@ let config = {
     okRoute: '/ok',
     apiPath,
     apiExpanders: [
-      // Added here for documentation purposes, addded at the end because it
+      // Added here for documentation purposes, added at the end because it
       // depends on a value of this object.
       // Add the following expanders for only issuing a single request.
       // https://6.docs.plone.org/volto/configuration/settings-reference.html#term-apiExpanders
@@ -112,8 +110,6 @@ let config = {
     legacyTraverse: process.env.RAZZLE_LEGACY_TRAVERSE || false,
     cookieExpires: 15552000, //in seconds. Default is 6 month (15552000)
     nonContentRoutes,
-    richtextEditorSettings, // Part of draftjs support, to be removed
-    richtextViewSettings, // Part of draftjs support, to be removed
     imageObjects: ['Image'],
     reservedIds: ['login', 'layout', 'plone', 'zip', 'properties'],
     downloadableObjects: ['File'], //list of content-types for which the direct download of the file will be carried out if the user is not authenticated
@@ -144,15 +140,6 @@ let config = {
         'reactSelect',
         'reactBeautifulDnd',
         // 'diffLib',
-      ],
-      draftEditor: [
-        'immutableLib',
-        'draftJs',
-        'draftJsLibIsSoftNewlineEvent',
-        'draftJsFilters',
-        'draftJsInlineToolbarPlugin',
-        'draftJsImportHtml',
-        'draftJsBlockBreakoutPlugin',
       ],
     },
     appExtras: [],
@@ -223,6 +210,7 @@ let config = {
   },
   addonRoutes: [],
   addonReducers: {},
+  slots: {},
   components,
 };
 
@@ -250,5 +238,6 @@ ConfigRegistry.widgets = config.widgets;
 ConfigRegistry.addonRoutes = config.addonRoutes;
 ConfigRegistry.addonReducers = config.addonReducers;
 ConfigRegistry.components = config.components;
+ConfigRegistry.slots = config.slots;
 
 applyAddonConfiguration(ConfigRegistry);

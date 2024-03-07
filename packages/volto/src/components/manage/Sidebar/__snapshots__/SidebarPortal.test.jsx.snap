@@ -2,34 +2,4 @@
 
 exports[`sidebar portal is not rendered when the block is not selected 1`] = `<React.Fragment />`;
 
-exports[`sidebar portal is rendered when the block is selected 1`] = `
-<React.Fragment>
-  <Portal
-    node={null}
-  >
-    <div
-      role="form"
-      style={
-        Object {
-          "height": "100%",
-        }
-      }
-    >
-      <div
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        role="presentation"
-        style={
-          Object {
-            "height": "100%",
-          }
-        }
-      >
-        <p>
-          Tested!
-        </p>
-      </div>
-    </div>
-  </Portal>
-</React.Fragment>
-`;
+exports[`sidebar portal is rendered when the block is selected 1`] = `<React.Fragment />`;

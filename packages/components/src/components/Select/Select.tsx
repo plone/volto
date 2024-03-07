@@ -7,10 +7,12 @@ import {
   ListBoxItem,
   ListBoxItemProps,
   Popover,
+  PopoverContext,
   Select as RACSelect,
   SelectProps as RACSelectProps,
   SelectValue,
   Text,
+  useContextProps,
   ValidationResult,
 } from 'react-aria-components';
 
@@ -49,6 +51,9 @@ export function Select<T extends object>({
   items,
   ...props
 }: SelectProps<T>) {
+  // In case that we want to customize the Popover, we proxy the PopoverContext props down
+  const [popoverProps] = useContextProps({}, null, PopoverContext);
+
   return (
     <RACSelect {...props}>
       {({ isOpen }) => (
@@ -63,7 +68,7 @@ export function Select<T extends object>({
           </Button>
           {description && <Text slot="description">{description}</Text>}
           <FieldError>{errorMessage}</FieldError>
-          <Popover>
+          <Popover {...popoverProps}>
             <ListBox items={items}>{children}</ListBox>
           </Popover>
         </>

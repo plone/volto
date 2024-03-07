@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Container, Segment, Table } from 'semantic-ui-react';
 import { Helmet } from '@plone/volto/helpers';
 import { flattenToAppURL, getBaseUrl, langmap } from '@plone/volto/helpers';
@@ -15,7 +15,7 @@ import {
 } from '@plone/volto/actions';
 import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
 import { useSelector, useDispatch } from 'react-redux';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import { toast } from 'react-toastify';
 
 import addSVG from '@plone/volto/icons/add.svg';
@@ -63,6 +63,12 @@ const ManageTranslations = (props) => {
   const pathname = useLocation().pathname;
   const content = useSelector((state) => state.content.data);
   const dispatch = useDispatch();
+
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const { isObjectBrowserOpen, openObjectBrowser } = props;
 
@@ -269,8 +275,8 @@ const ManageTranslations = (props) => {
             </Table.Body>
           </Table>
         )}
-        {__CLIENT__ && (
-          <Portal node={document.getElementById('toolbar')}>
+        {isClient &&
+          createPortal(
             <Toolbar
               pathname={pathname}
               hideDefaultViewButtons
@@ -284,9 +290,9 @@ const ManageTranslations = (props) => {
                   />
                 </Link>
               }
-            />
-          </Portal>
-        )}
+            />,
+            document.getElementById('toolbar'),
+          )}
       </Segment.Group>
     </Container>
   );

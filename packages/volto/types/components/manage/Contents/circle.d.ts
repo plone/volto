@@ -1,4 +1,4 @@
 export default Circle;
 declare function Circle({ color }: {
     color: any;
-}): JSX.Element;
+}): import("react/jsx-runtime").JSX.Element;

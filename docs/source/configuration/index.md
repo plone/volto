@@ -26,4 +26,5 @@ workingcopy
 environmentvariables
 expanders
 locking
+slots
 ```
