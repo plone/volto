@@ -532,21 +532,74 @@ describe('Slots registry', () => {
   it('reorderSlotComponent - before', () => {
     config.registerSlotComponent({
       slot: 'toolbar',
-      name: 'save',
+      name: '1 - save',
       component: 'this is a toolbar save component with a true predicate',
       predicates: [RouteConditionTrue('/de')],
     });
 
     config.registerSlotComponent({
       slot: 'toolbar',
-      name: 'edit',
+      name: '2 - edit',
       component: 'this is a toolbar component with a false predicate',
       predicates: [RouteConditionFalse('/de')],
     });
 
     config.registerSlotComponent({
       slot: 'toolbar',
-      name: 'cancel',
+      name: '3 - cancel',
+      component: 'this is a toolbar edit component with true predicate',
+      predicates: [RouteConditionFalse('/de')],
+    });
+
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: '4 - bold',
+      component: 'this is a toolbar edit component with true predicate',
+      predicates: [RouteConditionFalse('/de')],
+    });
+
+    expect(config.getSlotComponents('toolbar')).toEqual([
+      '1 - save',
+      '2 - edit',
+      '3 - cancel',
+      '4 - bold',
+    ]);
+    // Reorder Slot with original position 4 - bold before Slot with position 3 - cancel
+    // Before reordering the positions should be ["1 - save", "2 - edit", "3 - cancel", "4 - bold"]
+    // After the reordering the positions should be ["1 - save", "2 - edit", "4 - bold", "3 - cancel"]
+    config.reorderSlotComponent({
+      slot: 'toolbar',
+      name: '4 - bold',
+      action: 'before',
+      target: '3 - cancel',
+    });
+
+    expect(config.getSlotComponents('toolbar')).toEqual([
+      '1 - save',
+      '2 - edit',
+      '4 - bold',
+      '3 - cancel',
+    ]);
+  });
+
+  it('reorderSlotComponent - before (Test 2)', () => {
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: ' 1 - save',
+      component: 'this is a toolbar save component with a true predicate',
+      predicates: [RouteConditionTrue('/de')],
+    });
+
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: '2 - edit',
+      component: 'this is a toolbar component with a false predicate',
+      predicates: [RouteConditionFalse('/de')],
+    });
+
+    config.registerSlotComponent({
+      slot: 'toolbar',
+      name: '3 - cancel',
       component: 'this is a toolbar edit component with true predicate',
       predicates: [
         RouteConditionTrue('/folder/path'),
@@ -556,7 +609,7 @@ describe('Slots registry', () => {
 
     config.registerSlotComponent({
       slot: 'toolbar',
-      name: 'bold',
+      name: '4 - bold',
       component: 'this is a toolbar edit component with true predicate',
       predicates: [
         RouteConditionTrue('/folder/path'),
@@ -565,22 +618,26 @@ describe('Slots registry', () => {
     });
 
     expect(config.getSlotComponents('toolbar')).toEqual([
-      'save',
-      'edit',
-      'cancel',
-      'bold',
+      '1 - save',
+      '2 - edit',
+      '3 - cancel',
+      '4 - bold',
     ]);
+    // Reorder Slot with original position 1 - save before Slot with position 3 - cancel
+    // Before reordering the positions should be ["1 - save", "2 - edit", "3 - cancel", "4 - bold"]
+    // After the reordering the positions should be ["2 - edit", "1 - save", "3 - cancel", "4 - bold"]
     config.reorderSlotComponent({
       slot: 'toolbar',
-      name: 'save',
+      name: '1 - save',
       action: 'before',
-      target: 'cancel',
+      target: '3 - cancel',
     });
+
     expect(config.getSlotComponents('toolbar')).toEqual([
-      'edit',
-      'save',
-      'cancel',
-      'bold',
+      '2 - edit',
+      '1 - save',
+      '3 - cancel',
+      '4 - bold',
     ]);
   });
 
