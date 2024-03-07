@@ -532,74 +532,64 @@ describe('Slots registry', () => {
   it('reorderSlotComponent - before', () => {
     config.registerSlotComponent({
       slot: 'toolbar',
-      name: '1 - save',
+      name: '1',
       component: 'this is a toolbar save component with a true predicate',
       predicates: [RouteConditionTrue('/de')],
     });
 
     config.registerSlotComponent({
       slot: 'toolbar',
-      name: '2 - edit',
+      name: '2',
       component: 'this is a toolbar component with a false predicate',
       predicates: [RouteConditionFalse('/de')],
     });
 
     config.registerSlotComponent({
       slot: 'toolbar',
-      name: '3 - cancel',
+      name: '3',
       component: 'this is a toolbar edit component with true predicate',
       predicates: [RouteConditionFalse('/de')],
     });
 
     config.registerSlotComponent({
       slot: 'toolbar',
-      name: '4 - bold',
+      name: '4',
       component: 'this is a toolbar edit component with true predicate',
       predicates: [RouteConditionFalse('/de')],
     });
 
-    expect(config.getSlotComponents('toolbar')).toEqual([
-      '1 - save',
-      '2 - edit',
-      '3 - cancel',
-      '4 - bold',
-    ]);
-    // Reorder Slot with original position 4 - bold before Slot with position 3 - cancel
-    // Before reordering the positions should be ["1 - save", "2 - edit", "3 - cancel", "4 - bold"]
-    // After the reordering the positions should be ["1 - save", "2 - edit", "4 - bold", "3 - cancel"]
+    expect(config.getSlotComponents('toolbar')).toEqual(['1', '2', '3', '4']);
+    // Reorder Slot with original position 4 before Slot with position 3
+    // Before reordering the positions should be ["1", "2", "3", "4"]
+    // After the reordering the positions should be ["1", "2", "4", "3 "]
     config.reorderSlotComponent({
       slot: 'toolbar',
-      name: '4 - bold',
+      name: '4',
       action: 'before',
-      target: '3 - cancel',
+      target: '3',
     });
 
-    expect(config.getSlotComponents('toolbar')).toEqual([
-      '1 - save',
-      '2 - edit',
-      '4 - bold',
-      '3 - cancel',
-    ]);
+    expect(config.getSlotComponents('toolbar')).toEqual(['1', '2', '4', '3']);
   });
 
   it('reorderSlotComponent - before (Test 2)', () => {
     config.registerSlotComponent({
       slot: 'toolbar',
-      name: ' 1 - save',
+      name: ' 1',
       component: 'this is a toolbar save component with a true predicate',
       predicates: [RouteConditionTrue('/de')],
     });
 
     config.registerSlotComponent({
       slot: 'toolbar',
-      name: '2 - edit',
+      name: '2',
       component: 'this is a toolbar component with a false predicate',
       predicates: [RouteConditionFalse('/de')],
     });
 
     config.registerSlotComponent({
       slot: 'toolbar',
-      name: '3 - cancel',
+      name: '3',
       component: 'this is a toolbar edit component with true predicate',
       predicates: [
         RouteConditionTrue('/folder/path'),
@@ -609,7 +599,7 @@ describe('Slots registry', () => {
 
     config.registerSlotComponent({
       slot: 'toolbar',
-      name: '4 - bold',
+      name: '4',
       component: 'this is a toolbar edit component with true predicate',
       predicates: [
         RouteConditionTrue('/folder/path'),
@@ -617,28 +607,18 @@ describe('Slots registry', () => {
       ],
     });
 
-    expect(config.getSlotComponents('toolbar')).toEqual([
-      '1 - save',
-      '2 - edit',
-      '3 - cancel',
-      '4 - bold',
-    ]);
-    // Reorder Slot with original position 1 - save before Slot with position 3 - cancel
-    // Before reordering the positions should be ["1 - save", "2 - edit", "3 - cancel", "4 - bold"]
-    // After the reordering the positions should be ["2 - edit", "1 - save", "3 - cancel", "4 - bold"]
+    expect(config.getSlotComponents('toolbar')).toEqual(['1', '2', '3', '4']);
+    // Reorder Slot with original position 1 before Slot with position 3
+    // Before reordering the positions should be ["1", "2", "3", "4"]
+    // After the reordering the positions should be ["2", "1", "3", "4"]
     config.reorderSlotComponent({
       slot: 'toolbar',
-      name: '1 - save',
+      name: '1',
       action: 'before',
-      target: '3 - cancel',
+      target: '3',
     });
 
-    expect(config.getSlotComponents('toolbar')).toEqual([
-      '2 - edit',
-      '1 - save',
-      '3 - cancel',
-      '4 - bold',
-    ]);
+    expect(config.getSlotComponents('toolbar')).toEqual(['2', '1', '3', '4']);
   });
 
   it('reorderSlotComponent - last', () => {
