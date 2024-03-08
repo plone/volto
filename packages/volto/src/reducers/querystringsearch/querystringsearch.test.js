@@ -9,6 +9,7 @@ describe('Querystring reducer', () => {
       total: 0,
       loaded: false,
       loading: false,
+      facets_count: {},
       batching: {},
       subrequests: {},
     });
@@ -23,6 +24,7 @@ describe('Querystring reducer', () => {
       error: null,
       items: [],
       total: 0,
+      facets_count: {},
       loaded: false,
       loading: true,
       batching: {},
@@ -51,6 +53,7 @@ describe('Querystring reducer', () => {
       loading: false,
       items: [],
       total: 0,
+      facets_count: {},
       batching: {},
       subrequests: {
         'my-subrequest': {
@@ -82,6 +85,7 @@ describe('Querystring reducer', () => {
       loading: false,
       batching: {},
       subrequests: {},
+      facets_count: {},
       items: [],
       total: 0,
     });
