@@ -1,76 +1,93 @@
-import { getQueryStringResults } from './querystringsearch';
+import querystringsearch from './querystringsearch';
 import { GET_QUERYSTRING_RESULTS } from '@plone/volto/constants/ActionTypes';
 
-describe('querystringsearch action', () => {
-  describe('getQueryStringResults', () => {
-    it('should create an action to get the querystring results', () => {
-      const data = {
-        query: [
-          {
-            i: 'portal_type',
-            o: 'plone.app.querystring.operation.selection.any',
-            v: ['Document'],
-          },
-        ],
-      };
-      const action = getQueryStringResults('', data);
-
-      expect(action.type).toEqual(GET_QUERYSTRING_RESULTS);
-      expect(action.request.op).toEqual('post');
-      expect(action.request.path).toEqual('/@querystring-search');
-    });
-    it('should create an action to get the querystring results with a page', () => {
-      const data = {
-        query: [
-          {
-            i: 'portal_type',
-            o: 'plone.app.querystring.operation.selection.any',
-            v: ['Document'],
-          },
-        ],
-      };
-      const action = getQueryStringResults('', data, null, 2);
-
-      expect(action.type).toEqual(GET_QUERYSTRING_RESULTS);
-      expect(action.request.op).toEqual('post');
-      expect(action.request.path).toEqual('/@querystring-search');
-      expect(action.request.data).toEqual({ ...data, b_size: 25, b_start: 25 });
+describe('Querystring reducer', () => {
+  it('should return the initial state', () => {
+    expect(querystringsearch()).toEqual({
+      error: null,
+      items: [],
+      total: 0,
+      loaded: false,
+      loading: false,
+      facets_count: {},
+      batching: {},
+      subrequests: {},
     });
   });
-  it('should create an action to get the querystring results - context aware', () => {
-    const data = {
-      query: [
-        {
-          i: 'portal_type',
-          o: 'plone.app.querystring.operation.selection.any',
-          v: ['Document'],
-        },
-      ],
-    };
-    const action = getQueryStringResults('/folder1/folder2/object1', data);
 
-    expect(action.type).toEqual(GET_QUERYSTRING_RESULTS);
-    expect(action.request.op).toEqual('post');
-    expect(action.request.path).toEqual(
-      '/folder1/folder2/object1/@querystring-search',
-    );
+  it('should handle GET_QUERYSTRING_RESULTS_PENDING', () => {
+    expect(
+      querystringsearch(undefined, {
+        type: `${GET_QUERYSTRING_RESULTS}_PENDING`,
+      }),
+    ).toEqual({
+      error: null,
+      items: [],
+      total: 0,
+      facets_count: {},
+      loaded: false,
+      loading: true,
+      batching: {},
+      subrequests: {},
+    });
   });
-  it('should create an action to get the querystring results fixing sort_order', () => {
-    const data = {
-      query: [
-        {
-          i: 'portal_type',
-          o: 'plone.app.querystring.operation.selection.any',
-          v: ['Document'],
-        },
-      ],
-      sort_order: true,
-    };
-    const action = getQueryStringResults('', data);
 
-    expect(action.type).toEqual(GET_QUERYSTRING_RESULTS);
-    expect(action.request.op).toEqual('post');
-    expect(action.request.path).toEqual('/@querystring-search');
-    expect(action.request.data.sort_order).toEqual('descending');
+  it('should handle GET_QUERYSTRING_RESULTS_SUCCESS', () => {
+    expect(
+      querystringsearch(undefined, {
+        type: `${GET_QUERYSTRING_RESULTS}_SUCCESS`,
+        subrequest: 'my-subrequest',
+        result: {
+          items_total: 1,
+          items: [
+            {
+              title: 'My content',
+              '@id': 'http://my-content',
+            },
+          ],
+        },
+      }),
+    ).toEqual({
+      error: null,
+      loaded: false,
+      loading: false,
+      items: [],
+      total: 0,
+      facets_count: {},
+      batching: {},
+      subrequests: {
+        'my-subrequest': {
+          error: null,
+          items: [
+            {
+              title: 'My content',
+              '@id': 'http://my-content',
+            },
+          ],
+          total: 1,
+          loaded: true,
+          loading: false,
+          batching: {},
+        },
+      },
+    });
+  });
+
+  it('should handle GET_QUERYSTRING_RESULTS_FAIL', () => {
+    expect(
+      querystringsearch(undefined, {
+        type: `${GET_QUERYSTRING_RESULTS}_FAIL`,
+        error: 'failed',
+      }),
+    ).toEqual({
+      error: 'failed',
+      loaded: false,
+      loading: false,
+      batching: {},
+      subrequests: {},
+      facets_count: {},
+      items: [],
+      total: 0,
+    });
   });
 });
