@@ -45,7 +45,7 @@ You can use the CSS bundled for all components in a single file, or use the spec
 They are distributed along with the components code in the `dist` folder of the library.
 
 ```js
-import '@plone/components/basic.css';
+import '@plone/components/dist/basic.css';
 ```
 
 or selectively:
@@ -75,8 +75,8 @@ You could take Quanta as example to build your own layer of styles over basic st
 To use a theme built upon the basic styling, you need to import both the basic and the theme CSS, in this order:
 
 ```js
-import '@plone/components/basic.css';
-import '@plone/components/quanta.css';
+import '@plone/components/dist/basic.css';
+import '@plone/components/dist/quanta.css';
 ```
 
 You have the option of doing it selectively per component, too:
@@ -97,33 +97,51 @@ It's even possible to use TailwindCSS for styling the components in this package
 
 ### Basic
 
+- BlockToolbar
 - Button
 - Checkbox
-- CheckboxField
-- CheckboxGroup
-- Combobox
 - Container
 - Dialog
-- Form
 - GridList
 - Icon
 - Link
-- Listbox
+- ListBox
 - Menu
 - Modal
-- NumberField
 - Popover
-- RadioGroup
-- Select
-- Switch
+- Slider
+- Table
 - Tabs
 - TagGroup
-- TextField
-- TextAreaField
 - ToggleButton
 - Toolbar
-- BlockToolbar
 - Tooltip
+
+### Forms
+
+- CheckboxField
+- Form
+- Meter
+- NumberField
+- SearchField
+- Select
+- TextAreaField
+- TextField
+- TimeField
+
+### Widgets
+
+- Calendar
+- CheckboxField
+- CheckboxGroup
+- ComboBox
+- DateField
+- DatePicker
+- DateRangePicker
+- ProgressBar
+- RadioGroup
+- RangeCalendar
+- Switch
 
 ### Viewlets
 
@@ -138,6 +156,7 @@ It's even possible to use TailwindCSS for styling the components in this package
 
 - TextField
 - TextAreaField
+- Select
 
 ## Quanta icons
 

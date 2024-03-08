@@ -47,7 +47,33 @@ describe('UsersControlpanelUser', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <RenderUsers user={testUser} roles={testRoles} onDelete={() => {}} />
+        <RenderUsers
+          user={testUser}
+          roles={testRoles}
+          onDelete={() => {}}
+          isUserManager={true}
+        />
+      </Provider>,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
+
+  it('renders a UsersControlpanelUser component with options disabled if not allowed', () => {
+    const store = mockStore({
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+    const component = renderer.create(
+      <Provider store={store}>
+        <RenderUsers
+          user={testUser}
+          roles={testRoles}
+          onDelete={() => {}}
+          isUserManager={false}
+        />
       </Provider>,
     );
     const json = component.toJSON();

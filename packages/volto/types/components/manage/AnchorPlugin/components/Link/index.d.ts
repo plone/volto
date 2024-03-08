@@ -5,7 +5,7 @@ declare function Link({ children, className, entityKey, getEditorState, target }
     entityKey: any;
     getEditorState: any;
     target: any;
-}): JSX.Element;
+}): import("react/jsx-runtime").JSX.Element;
 declare namespace Link {
     export { propTypes };
     export namespace defaultProps {

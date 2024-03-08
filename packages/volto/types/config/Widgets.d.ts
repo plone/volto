@@ -46,9 +46,7 @@ export namespace widgetMapping {
         'Relation List': import("react").ForwardRefExoticComponent<Omit<import("react-intl").WithIntlProps<import("react-intl").WrappedComponentProps<string>>, "ref"> & import("react").RefAttributes<import("react").ComponentType<import("react-intl").WrappedComponentProps<string>>>> & {
             WrappedComponent: import("react").ComponentType<import("react-intl").WrappedComponentProps<string>>;
         };
-        'Relation Choice': import("react").ForwardRefExoticComponent<Omit<import("react-intl").WithIntlProps<import("react-intl").WrappedComponentProps<string>>, "ref"> & import("react").RefAttributes<import("react").ComponentType<import("react-intl").WrappedComponentProps<string>>>> & {
-            WrappedComponent: import("react").ComponentType<import("react-intl").WrappedComponentProps<string>>;
-        };
+        'Relation Choice': any;
     };
     export { SelectWidget as choices };
     export namespace type {

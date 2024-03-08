@@ -1,5 +1,5 @@
 export default ContentsTagsModal;
-declare function ContentsTagsModal(props: any): JSX.Element;
+declare function ContentsTagsModal(props: any): import("react/jsx-runtime").JSX.Element;
 declare namespace ContentsTagsModal {
     namespace propTypes {
         let items: any;

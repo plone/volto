@@ -1,13 +1,13 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
 import ContactForm from './ContactForm';
 
-jest.mock('react-portal', () => ({
-  Portal: jest.fn(() => <div id="Portal" />),
-}));
+jest.mock('../../manage/Toolbar/Toolbar', () =>
+  jest.fn(() => <div id="Portal" />),
+);
 
 const mockStore = configureStore();
 describe('Contact form', () => {
@@ -25,15 +25,16 @@ describe('Contact form', () => {
       userSession: {},
       content: {},
     });
-    const component = renderer.create(
+    const { container } = render(
       <Provider store={store}>
         <MemoryRouter>
           <ContactForm />
+          <div id="toolbar"></div>
         </MemoryRouter>
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+
+    expect(container).toMatchSnapshot();
   });
 
   it('renders a contact form with error message', () => {
@@ -52,14 +53,15 @@ describe('Contact form', () => {
       userSession: {},
       content: {},
     });
-    const component = renderer.create(
+    const { container } = render(
       <Provider store={store}>
         <MemoryRouter>
           <ContactForm />
+          <div id="toolbar"></div>
         </MemoryRouter>
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+
+    expect(container).toMatchSnapshot();
   });
 });

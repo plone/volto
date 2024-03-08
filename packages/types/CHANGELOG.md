@@ -8,6 +8,18 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.5 (2024-03-01)
+
+### Feature
+
+- Upgrade Volto core to use React 18.2.0 @sneridagh [#3221](https://github.com/plone/volto/issues/3221)
+
+## 1.0.0-alpha.4 (2024-03-01)
+
+### Feature
+
+- Support for slots @sneridagh [#5775](https://github.com/plone/volto/issues/5775)
+
 ## 1.0.0-alpha.3 (2024-02-02)
 
 ### Bugfix
