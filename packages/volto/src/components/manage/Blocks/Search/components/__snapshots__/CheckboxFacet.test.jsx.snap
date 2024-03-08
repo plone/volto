@@ -30,7 +30,7 @@ exports[`CheckboxFacet renders a facet component with checkboxes 1`] = `
           type="checkbox"
         />
         <label>
-          First (0)
+          First
         </label>
       </div>
     </div>
@@ -52,7 +52,7 @@ exports[`CheckboxFacet renders a facet component with checkboxes 1`] = `
           type="checkbox"
         />
         <label>
-          Second (0)
+          Second
         </label>
       </div>
     </div>
