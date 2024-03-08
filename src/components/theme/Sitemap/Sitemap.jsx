@@ -44,7 +44,6 @@ function Sitemap(props) {
     );
   }, [navroot, getNavigation]);
 
-
   const renderItems = (items) => {
     return (
       <ul>
