@@ -67,7 +67,7 @@ export default function Image({
       attrs.srcSet = sortedScales
         .map(
           (scale) =>
-            `${flattenToAppURL(basePath)}/${scale.download} ${scale.width}w`,
+            `${addPrefixPath(flattenToAppURL(basePath))}/${scale.download} ${scale.width}w`,
         )
         .join(', ');
     }
