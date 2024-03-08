@@ -7,7 +7,6 @@ describe('Querystring reducer', () => {
       error: null,
       items: [],
       total: 0,
-      facets_count:{},
       loaded: false,
       loading: false,
       facets_count: {},
