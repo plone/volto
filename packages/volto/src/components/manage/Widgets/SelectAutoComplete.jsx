@@ -277,12 +277,12 @@ export default compose(
       return props.items?.choices
         ? { choices: props.items.choices, lang: state.intl.locale }
         : vocabState
-        ? {
-            choices: vocabState,
-            vocabBaseUrl,
-            lang: state.intl.locale,
-          }
-        : { vocabBaseUrl, lang: state.intl.locale };
+          ? {
+              choices: vocabState,
+              vocabBaseUrl,
+              lang: state.intl.locale,
+            }
+          : { vocabBaseUrl, lang: state.intl.locale };
     },
     { getVocabulary, getVocabularyTokenTitle },
   ),

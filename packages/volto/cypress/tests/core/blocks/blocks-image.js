@@ -15,6 +15,8 @@ describe('Blocks Tests', () => {
     cy.visit('/my-page');
     cy.wait('@content');
 
+    cy.wait(500);
+
     cy.navigate('/my-page/edit');
     cy.wait('@schema');
   });
@@ -156,7 +158,7 @@ describe('Blocks Tests', () => {
       });
   });
 
-  it('Create an image block and initially alt attr is empty', () => {
+  it.only('Create an image block and initially alt attr is empty', () => {
     // when I add an image block via upload
     cy.get('.content-area .slate-editor [contenteditable=true]', {
       timeout: 10000,

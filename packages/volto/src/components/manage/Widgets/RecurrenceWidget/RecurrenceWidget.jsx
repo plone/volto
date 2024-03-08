@@ -445,8 +445,8 @@ class RecurrenceWidget extends Component {
       field === 'dtstart'
         ? value
         : rruleSet.dtstart()
-        ? rruleSet.dtstart()
-        : this.moment().utc().toDate();
+          ? rruleSet.dtstart()
+          : this.moment().utc().toDate();
     var exdates =
       field === 'exdates' ? value : Object.assign([], rruleSet.exdates());
 

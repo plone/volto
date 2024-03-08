@@ -1,0 +1,102 @@
+@import './Button.css';
+@import './Link.css';
+@import './theme.css';
+
+.react-aria-Tabs {
+  display: flex;
+  color: var(--text-color);
+
+  &[data-orientation='horizontal'] {
+    flex-direction: column;
+  }
+}
+
+.react-aria-TabList {
+  display: flex;
+
+  &[data-orientation='horizontal'] {
+    border-bottom: 1px solid var(--border-color);
+
+    .react-aria-Tab {
+      border-bottom: 3px solid var(--border-color);
+    }
+  }
+}
+
+.react-aria-Tab {
+  position: relative;
+  padding: 10px;
+  color: var(--text-color-base);
+  cursor: default;
+  forced-color-adjust: none;
+  outline: none;
+  transition: color 200ms;
+  --border-color: transparent;
+
+  &[data-hovered],
+  &[data-focused] {
+    color: var(--text-color-hover);
+  }
+
+  &[data-selected] {
+    --border-color: var(--highlight-background);
+    color: var(--text-color);
+  }
+
+  &[data-disabled] {
+    color: var(--text-color-disabled);
+    &[data-selected] {
+      --border-color: var(--text-color-disabled);
+    }
+  }
+
+  &[data-focus-visible]:after {
+    position: absolute;
+    border: 2px solid var(--focus-ring-color);
+    border-radius: 4px;
+    content: '';
+    inset: 4px;
+  }
+}
+
+.react-aria-TabPanel {
+  padding: 10px;
+  border-radius: 4px;
+  margin-top: 4px;
+  outline: none;
+
+  &[data-focus-visible] {
+    outline: 2px solid var(--focus-ring-color);
+  }
+}
+
+.react-aria-Tabs {
+  &[data-orientation='vertical'] {
+    flex-direction: row;
+  }
+}
+
+.react-aria-TabList {
+  &[data-orientation='vertical'] {
+    flex-direction: column;
+    border-inline-end: 1px solid gray;
+
+    .react-aria-Tab {
+      border-inline-end: 3px solid var(--border-color, transparent);
+    }
+  }
+}
+
+.react-aria-Tab {
+  &[data-disabled] {
+    color: var(--text-color-disabled);
+    &[data-selected] {
+      --border-color: var(--border-color-disabled);
+    }
+  }
+}
+
+.react-aria-Tab[href] {
+  cursor: pointer;
+  text-decoration: none;
+}

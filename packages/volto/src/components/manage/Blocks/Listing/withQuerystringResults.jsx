@@ -67,19 +67,19 @@ export default function withQuerystringResults(WrappedComponent) {
     const totalPages = showAsFolderListing
       ? Math.ceil(content.items_total / b_size)
       : showAsQueryListing
-      ? Math.ceil(querystringResults[subrequestID].total / b_size)
-      : 0;
+        ? Math.ceil(querystringResults[subrequestID].total / b_size)
+        : 0;
 
     const prevBatch = showAsFolderListing
       ? content.batching?.prev
       : showAsQueryListing
-      ? querystringResults[subrequestID].batching?.prev
-      : null;
+        ? querystringResults[subrequestID].batching?.prev
+        : null;
     const nextBatch = showAsFolderListing
       ? content.batching?.next
       : showAsQueryListing
-      ? querystringResults[subrequestID].batching?.next
-      : null;
+        ? querystringResults[subrequestID].batching?.next
+        : null;
 
     const isImageGallery =
       (!data.variation && data.template === 'imageGallery') ||

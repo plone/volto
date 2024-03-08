@@ -494,7 +494,6 @@ msgid "Broken relations"
 msgstr ""
 
 #. Default: "Browse"
-#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Sidebar/ObjectBrowserNav
 msgid "Browse"
@@ -544,7 +543,7 @@ msgid "Cancel"
 msgstr "Utzi"
 
 #. Default: "Cell"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Cell"
 msgstr "Zelda"
 
@@ -937,7 +936,6 @@ msgstr "Data (berriena lehenengo)"
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/CommentEditModal
 #: components/theme/Comments/Comments
 #: components/theme/ContactForm/ContactForm
@@ -962,7 +960,6 @@ msgstr "Defektuzko bista"
 #: components/manage/Delete/Delete
 #: components/manage/Widgets/FormFieldWrapper
 #: components/manage/Widgets/ObjectBrowserWidget
-#: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/Comments
 msgid "Delete"
 msgstr "Ezabatu"
@@ -993,7 +990,7 @@ msgid "Delete blocks"
 msgstr "Ezabatu blokeak"
 
 #. Default: "Delete col"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Delete col"
 msgstr "Ezabatu zutabea"
 
@@ -1003,7 +1000,7 @@ msgid "Delete condition"
 msgstr "Ezabatu baldintza"
 
 #. Default: "Delete row"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Delete row"
 msgstr "Ezabatu errenkada"
 
@@ -1039,12 +1036,10 @@ msgid "Descending"
 msgstr "Beheraka"
 
 #. Default: "Description"
-#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 #: components/theme/View/TabularView
 #: helpers/MessageLabels/MessageLabels
 msgid "Description"
@@ -1086,7 +1081,7 @@ msgid "Distributed under the {license}."
 msgstr "{license} lizentziapean banatuta."
 
 #. Default: "Add border to inner columns"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Divide each row into separate cells"
 msgstr "Errenkada bakoitza zeldatan banatu"
 
@@ -1501,7 +1496,7 @@ msgid "Fix relations"
 msgstr ""
 
 #. Default: "Fixed width columns"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Fixed width table cells"
 msgstr "Tamaina finkoko taularen zeldak"
 
@@ -1611,7 +1606,7 @@ msgid "Groups are logical collections of users, such as departments and business
 msgstr "Taldeak erabiltzaileen multzo logikoak dira. Taldeak ez daude baimenei era orokorrean lotuta, horretarako rolak erabiltzen dira eta taldeei esleitzen zaizkie. {plone_svg} ikurrak, rola beste talde baten kide izateagatik heredatu dela adierazten du."
 
 #. Default: "Header cell"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Header cell"
 msgstr "Goiburuko gelaxka"
 
@@ -1673,6 +1668,7 @@ msgstr "{title} elementuaren historia"
 #: components/manage/Contents/ContentsBreadcrumbs
 #: components/manage/Contents/ContentsBreadcrumbsHomeItem
 #: components/theme/Breadcrumbs/Breadcrumbs
+#: components/theme/Logo/Logo
 msgid "Home"
 msgstr "Hasiera"
 
@@ -1708,7 +1704,6 @@ msgid "If you are certain you have the correct web address but are encountering 
 msgstr "Ziurtatu helbide zuzenean zaudena, hala ere errorea baduzu jarri kontaktuan {site_admin}."
 
 #. Default: "Image"
-#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -1764,22 +1759,22 @@ msgid "Inherited value"
 msgstr "Heredatutako balioa"
 
 #. Default: "Insert col after"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Insert col after"
 msgstr "Sartu zutabea ondoren"
 
 #. Default: "Insert col before"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Insert col before"
 msgstr "Sartu zutabea aurretik"
 
 #. Default: "Insert row after"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Insert row after"
 msgstr "Sartu errenkada ondoren"
 
 #. Default: "Insert row before"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Insert row before"
 msgstr "Sartu errendaka aurretik"
 
@@ -1964,7 +1959,6 @@ msgid "Link copied to clipboard"
 msgstr ""
 
 #. Default: "Link more"
-#: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
 msgid "Link more"
 msgstr "Gehiago estekatu"
@@ -1980,13 +1974,11 @@ msgid "Link settings"
 msgstr ""
 
 #. Default: "Link Title"
-#: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
 msgid "Link title"
 msgstr "Izenburua estekatu"
 
 #. Default: "Link to"
-#: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema
@@ -2060,6 +2052,11 @@ msgstr "Sartzeak huts egin du"
 msgid "Login Name"
 msgstr "Erabiltzaile-izena"
 
+#. Default: "Logo of"
+#: components/theme/Logo/Logo
+msgid "Logo of"
+msgstr ""
+
 #. Default: "Logout"
 #: components/manage/Toolbar/PersonalTools
 msgid "Logout"
@@ -2071,7 +2068,7 @@ msgid "Made by {creator} on {date}. This is not a working copy anymore, but the 
 msgstr "Sortzailea {creator} Data {date}. Hau ez da lan-bertsioa, ikusgai dagoen edukia baizik."
 
 #. Default: "Reduce cell padding"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Make the table compact"
 msgstr "Taula trinkotu"
 
@@ -2719,7 +2716,7 @@ msgid "Redo"
 msgstr "Berregin"
 
 #. Default: "Minimalistic table design"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Reduce complexity"
 msgstr "Konplexutasuna gutxitu"
 
@@ -2858,7 +2855,6 @@ msgstr "Erantzun"
 #. Default: "Required"
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 msgid "Required"
 msgstr "Beharrezkoa"
 
@@ -3204,7 +3200,6 @@ msgstr "{title} elementuaren partekatze-aukerak"
 #. Default: "Short Name"
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 msgid "Short Name"
 msgstr "Izen-laburra"
 
@@ -3430,7 +3425,7 @@ msgid "String"
 msgstr "Karaktere-katea"
 
 #. Default: "Alternate row background color"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Stripe alternate rows with color"
 msgstr "Errenkaden koloreak aldatzen joan"
 
@@ -3487,7 +3482,7 @@ msgid "Switch to"
 msgstr "Aldatu hona"
 
 #. Default: "Table"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Table"
 msgstr "Taula"
 
@@ -3651,6 +3646,12 @@ msgstr ""
 msgid "There are no users with the searched criteria"
 msgstr ""
 
+#. Default: "There are some errors."
+#: components/manage/Add/Add
+#: components/manage/Edit/Edit
+msgid "There are some errors."
+msgstr ""
+
 #. Default: "There is a configuration problem on the backend"
 #: components/theme/CorsError/CorsError
 msgid "There is a configuration problem on the backend"
@@ -3723,7 +3724,6 @@ msgid "Time"
 msgstr "Ordua"
 
 #. Default: "Title"
-#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Blocks/ToC/Schema
 #: components/manage/Contents/Contents
@@ -3731,7 +3731,6 @@ msgstr "Ordua"
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 #: components/theme/View/TabularView
 #: helpers/MessageLabels/MessageLabels
 msgid "Title"
@@ -3826,11 +3825,6 @@ msgstr "Idatzi bideo baten URLa (YouTube, Vimeo edo mp4)"
 #. Default: "Type text..."
 #: components/manage/Widgets/SelectAutoComplete
 msgid "Type text..."
-msgstr "Idatzi testua..."
-
-#. Default: "Type text…"
-#: components/manage/Blocks/Text/Edit
-msgid "Type text…"
 msgstr "Idatzi testua..."
 
 #. Default: "Type the heading…"
@@ -3981,11 +3975,6 @@ msgstr "Kargatu"
 msgid "Upload a lead image in the 'Lead Image' content field."
 msgstr "Kargatu irudia"
 
-#. Default: "Upload a new image"
-#: components/manage/Blocks/HeroImageLeft/Edit
-msgid "Upload a new image"
-msgstr "Kargatu irudi berria"
-
 #. Default: "Upload files"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Upload files"
@@ -3997,7 +3986,6 @@ msgid "Uploading files"
 msgstr "Fitxategiak kargatzen"
 
 #. Default: "Uploading image"
-#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/Edit
 msgid "Uploading image"
 msgstr "Irudia kargatzen"
@@ -4016,7 +4004,6 @@ msgstr "Erabili formulario hau erregela berriak sortu, aldatu edo ezabatzeko. Er
 #. Default: "Used for programmatic access to the fieldset."
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 msgid "Used for programmatic access to the fieldset."
 msgstr "Eremu-multzoa programaziotik atzitzeko izena"
 
@@ -4891,7 +4878,7 @@ msgstr ""
 #. Default: "Text"
 #: config/Blocks
 msgid "text"
-msgstr "Testua"
+msgstr ""
 
 #. Default: "Title"
 #: config/Blocks
