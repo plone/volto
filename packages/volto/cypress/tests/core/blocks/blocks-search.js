@@ -143,358 +143,358 @@ describe('Search Block Tests', () => {
     cy.get('.search-details').should('contain', 'Search results: 1');
   });
 
-  // it('Search block - test date range facet', () => {
-  //   cy.visit('/');
-  //   cy.get('#toolbar-add > .icon').click();
-  //   cy.get('#toolbar-add-document').click();
-  //   cy.getSlateTitle().focus().click().type('My Search Page');
+  it('Search block - test date range facet', () => {
+    cy.visit('/');
+    cy.get('#toolbar-add > .icon').click();
+    cy.get('#toolbar-add-document').click();
+    cy.getSlateTitle().focus().click().type('My Search Page');
 
-  //   // Add Search listing block
-  //   cy.addNewBlock('search');
+    // Add Search listing block
+    cy.addNewBlock('search');
 
-  //   // Add search query criteria
-  //   cy.get('#default-query-0-query .react-select__value-container').click();
-  //   cy.get('#default-query-0-query .react-select__option')
-  //     .contains('Type')
-  //     .click();
+    // Add search query criteria
+    cy.get('#default-query-0-query .react-select__value-container').click();
+    cy.get('#default-query-0-query .react-select__option')
+      .contains('Type')
+      .click();
 
-  //   cy.get('#default-query-0-query .fields:first-of-type > .field').click();
-  //   cy.get(
-  //     '#default-query-0-query .fields:first-of-type > .field .react-select__option',
-  //   )
-  //     .contains('Page')
-  //     .click();
+    cy.get('#default-query-0-query .fields:first-of-type > .field').click();
+    cy.get(
+      '#default-query-0-query .fields:first-of-type > .field .react-select__option',
+    )
+      .contains('Page')
+      .click();
 
-  //   cy.get('#default-query-0-query .fields:first-of-type > .field').click();
-  //   cy.get(
-  //     '#default-query-0-query .fields:first-of-type > .field .react-select__option',
-  //   )
-  //     .contains('Folder')
-  //     .click();
+    cy.get('#default-query-0-query .fields:first-of-type > .field').click();
+    cy.get(
+      '#default-query-0-query .fields:first-of-type > .field .react-select__option',
+    )
+      .contains('Folder')
+      .click();
 
-  //   cy.get('#default-query-0-query .fields:first-of-type > .field').click();
-  //   cy.get(
-  //     '#default-query-0-query .fields:first-of-type > .field .react-select__option',
-  //   )
-  //     .contains('Event')
-  //     .click();
+    cy.get('#default-query-0-query .fields:first-of-type > .field').click();
+    cy.get(
+      '#default-query-0-query .fields:first-of-type > .field .react-select__option',
+    )
+      .contains('Event')
+      .click();
 
-  //   //  Add data range facet
-  //   cy.get('.add-item-button-wrapper > button').click();
-  //   cy.get('#field-field-1-facets-0 .react-select__value-container').click();
-  //   cy.get('.react-select__option').contains('Effective date').click();
-  //   cy.get('#field-title-0-facets-0').type('Effective date');
-  //   cy.get('#field-type-2-facets-0').click();
-  //   cy.get('.react-select__option').contains('Date Range').click();
+    //  Add data range facet
+    cy.get('.add-item-button-wrapper > button').click();
+    cy.get('#field-field-1-facets-0 .react-select__value-container').click();
+    cy.get('.react-select__option').contains('Effective date').click();
+    cy.get('#field-title-0-facets-0').type('Effective date');
+    cy.get('#field-type-2-facets-0').click();
+    cy.get('.react-select__option').contains('Date Range').click();
 
-  //   // TODO: test if date range facet works
+    // TODO: test if date range facet works
 
-  //   // Save the page
-  //   cy.get('#toolbar-save > .icon').click();
+    // Save the page
+    cy.get('#toolbar-save > .icon').click();
 
-  //   cy.wait(500);
+    cy.wait(500);
 
-  //   // test search results number
-  //   cy.get('.search-details').should(
-  //     'contain',
-  //     `Search results: ${results_number}`,
-  //   );
-  // });
+    // test search results number
+    cy.get('.search-details').should(
+      'contain',
+      `Search results: ${results_number}`,
+    );
+  });
 
-  // it('Search block - test live searchbox', () => {
-  //   cy.visit('/');
-  //   cy.get('#toolbar-add > .icon').click();
-  //   cy.get('#toolbar-add-document').click();
-  //   cy.getSlateTitle().focus().click().type('My Search Page');
+  it('Search block - test live searchbox', () => {
+    cy.visit('/');
+    cy.get('#toolbar-add > .icon').click();
+    cy.get('#toolbar-add-document').click();
+    cy.getSlateTitle().focus().click().type('My Search Page');
 
-  //   // Add Search listing block
-  //   cy.addNewBlock('search');
+    // Add Search listing block
+    cy.addNewBlock('search');
 
-  //   // Add search query criteria
-  //   cy.get('#default-query-0-query .react-select__value-container').click();
-  //   cy.get('#default-query-0-query .react-select__option')
-  //     .contains('Type')
-  //     .click();
+    // Add search query criteria
+    cy.get('#default-query-0-query .react-select__value-container').click();
+    cy.get('#default-query-0-query .react-select__option')
+      .contains('Type')
+      .click();
 
-  //   cy.get('#default-query-0-query .fields:first-of-type > .field').click();
-  //   cy.get(
-  //     '#default-query-0-query .fields:first-of-type > .field .react-select__option',
-  //   )
-  //     .contains('Page')
-  //     .click();
+    cy.get('#default-query-0-query .fields:first-of-type > .field').click();
+    cy.get(
+      '#default-query-0-query .fields:first-of-type > .field .react-select__option',
+    )
+      .contains('Page')
+      .click();
 
-  //   cy.get('#default-query-0-query .fields:first-of-type > .field').click();
-  //   cy.get(
-  //     '#default-query-0-query .fields:first-of-type > .field .react-select__option',
-  //   )
-  //     .contains('Folder')
-  //     .click();
+    cy.get('#default-query-0-query .fields:first-of-type > .field').click();
+    cy.get(
+      '#default-query-0-query .fields:first-of-type > .field .react-select__option',
+    )
+      .contains('Folder')
+      .click();
 
-  //   cy.get('#default-query-0-query .fields:first-of-type > .field').click();
-  //   cy.get(
-  //     '#default-query-0-query .fields:first-of-type > .field .react-select__option',
-  //   )
-  //     .contains('Event')
-  //     .click();
+    cy.get('#default-query-0-query .fields:first-of-type > .field').click();
+    cy.get(
+      '#default-query-0-query .fields:first-of-type > .field .react-select__option',
+    )
+      .contains('Event')
+      .click();
 
-  //   // Save the page
-  //   cy.get('#toolbar-save > .icon').click();
-  //   cy.wait('@content');
+    // Save the page
+    cy.get('#toolbar-save > .icon').click();
+    cy.wait('@content');
 
-  //   cy.wait(500);
+    cy.wait(500);
 
-  //   // test search results number
-  //   cy.get('.search-details').should(
-  //     'contain',
-  //     `Search results: ${results_number}`,
-  //   );
+    // test search results number
+    cy.get('.search-details').should(
+      'contain',
+      `Search results: ${results_number}`,
+    );
 
-  //   cy.queryCounter('/**/@querystring-search', [
-  //     () => cy.get('.search-wrapper .search-input input').focus().type('Event'),
-  //     () =>
-  //       cy
-  //         .get('#page-document .listing-item:first-of-type a')
-  //         .should('have.attr', 'href', '/my-event'),
-  //     () =>
-  //       cy
-  //         .get('.search-results-count-sort .search-details em')
-  //         .should('contain', 'Event'),
-  //     () =>
-  //       cy
-  //         .url()
-  //         .should(
-  //           'contain',
-  //           '%7B%22i%22%3A%22SearchableText%22%2C%22o%22%3A%22paqo.string.contains%22%2C%22v%22%3A%22Event%22%7D',
-  //         ),
-  //   ]);
+    cy.queryCounter('/**/@querystring-search', [
+      () => cy.get('.search-wrapper .search-input input').focus().type('Event'),
+      () =>
+        cy
+          .get('#page-document .listing-item:first-of-type a')
+          .should('have.attr', 'href', '/my-event'),
+      () =>
+        cy
+          .get('.search-results-count-sort .search-details em')
+          .should('contain', 'Event'),
+      () =>
+        cy
+          .url()
+          .should(
+            'contain',
+            '%7B%22i%22%3A%22SearchableText%22%2C%22o%22%3A%22paqo.string.contains%22%2C%22v%22%3A%22Event%22%7D',
+          ),
+    ]);
 
-  //   // test removing one char
-  //   cy.queryCounter(
-  //     '/**/@querystring-search',
-  //     [
-  //       () =>
-  //         cy
-  //           .get('.search-wrapper .search-input input')
-  //           .focus()
-  //           .type('{backspace}'),
-  //       () =>
-  //         cy
-  //           .get('.search-results-count-sort .search-details em')
-  //           .should('not.contain', 'Event')
-  //           .and('contain', 'Even'),
-  //       () =>
-  //         cy
-  //           .url()
-  //           .should(
-  //             'contain',
-  //             '%7B%22i%22%3A%22SearchableText%22%2C%22o%22%3A%22paqo.string.contains%22%2C%22v%22%3A%22Even%22%7D',
-  //           ),
-  //     ],
-  //     1,
-  //   );
+    // test removing one char
+    cy.queryCounter(
+      '/**/@querystring-search',
+      [
+        () =>
+          cy
+            .get('.search-wrapper .search-input input')
+            .focus()
+            .type('{backspace}'),
+        () =>
+          cy
+            .get('.search-results-count-sort .search-details em')
+            .should('not.contain', 'Event')
+            .and('contain', 'Even'),
+        () =>
+          cy
+            .url()
+            .should(
+              'contain',
+              '%7B%22i%22%3A%22SearchableText%22%2C%22o%22%3A%22paqo.string.contains%22%2C%22v%22%3A%22Even%22%7D',
+            ),
+      ],
+      1,
+    );
 
-  //   // test removing the text with the button
-  //   cy.get(
-  //     '.search-wrapper .search-input .search-input-actions button.search-input-clear-icon-button',
-  //   ).click();
-  //   cy.get('.search-results-count-sort .search-details').should(
-  //     'not.contain',
-  //     'Searched for:',
-  //   );
-  //   cy.url().should('not.contain', '%22SearchableText%22');
+    // test removing the text with the button
+    cy.get(
+      '.search-wrapper .search-input .search-input-actions button.search-input-clear-icon-button',
+    ).click();
+    cy.get('.search-results-count-sort .search-details').should(
+      'not.contain',
+      'Searched for:',
+    );
+    cy.url().should('not.contain', '%22SearchableText%22');
 
-  //   // test search results number
-  //   cy.get('.search-details').should(
-  //     'contain',
-  //     `Search results: ${results_number}`,
-  //   );
+    // test search results number
+    cy.get('.search-details').should(
+      'contain',
+      `Search results: ${results_number}`,
+    );
 
-  //   // test searching for Event
-  //   cy.get('.search-wrapper .search-input input').focus().type('Event');
-  //   cy.get('#page-document .listing-item:first-of-type a').should(
-  //     'have.attr',
-  //     'href',
-  //     '/my-event',
-  //   );
-  //   cy.get('.search-results-count-sort .search-details em').should(
-  //     'contain',
-  //     'Event',
-  //   );
-  //   cy.url().should(
-  //     'contain',
-  //     '%7B%22i%22%3A%22SearchableText%22%2C%22o%22%3A%22paqo.string.contains%22%2C%22v%22%3A%22Event%22%7D',
-  //   );
+    // test searching for Event
+    cy.get('.search-wrapper .search-input input').focus().type('Event');
+    cy.get('#page-document .listing-item:first-of-type a').should(
+      'have.attr',
+      'href',
+      '/my-event',
+    );
+    cy.get('.search-results-count-sort .search-details em').should(
+      'contain',
+      'Event',
+    );
+    cy.url().should(
+      'contain',
+      '%7B%22i%22%3A%22SearchableText%22%2C%22o%22%3A%22paqo.string.contains%22%2C%22v%22%3A%22Event%22%7D',
+    );
 
-  //   // test search results number
-  //   cy.get('.search-details').should('contain', 'Search results: 1');
+    // test search results number
+    cy.get('.search-details').should('contain', 'Search results: 1');
 
-  //   // test removing one char
-  //   cy.get('.search-wrapper .search-input input').focus().type('{backspace}');
-  //   cy.get('.search-results-count-sort .search-details em')
-  //     .should('not.contain', 'Event')
-  //     .and('contain', 'Even');
-  //   cy.url().should(
-  //     'contain',
-  //     '%7B%22i%22%3A%22SearchableText%22%2C%22o%22%3A%22paqo.string.contains%22%2C%22v%22%3A%22Even%22%7D',
-  //   );
+    // test removing one char
+    cy.get('.search-wrapper .search-input input').focus().type('{backspace}');
+    cy.get('.search-results-count-sort .search-details em')
+      .should('not.contain', 'Event')
+      .and('contain', 'Even');
+    cy.url().should(
+      'contain',
+      '%7B%22i%22%3A%22SearchableText%22%2C%22o%22%3A%22paqo.string.contains%22%2C%22v%22%3A%22Even%22%7D',
+    );
 
-  //   // test removing the whole text from the keyboard
-  //   cy.get('.search-wrapper .search-input input')
-  //     .focus()
-  //     .type('{selectAll}{del}');
-  //   cy.get('.search-results-count-sort .search-details').should(
-  //     'not.contain',
-  //     'Searched for:',
-  //   );
-  //   cy.url().should('not.contain', '%22SearchableText%22');
-  // });
+    // test removing the whole text from the keyboard
+    cy.get('.search-wrapper .search-input input')
+      .focus()
+      .type('{selectAll}{del}');
+    cy.get('.search-results-count-sort .search-details').should(
+      'not.contain',
+      'Searched for:',
+    );
+    cy.url().should('not.contain', '%22SearchableText%22');
+  });
 
-  // it('Search block - test searchbox', () => {
-  //   cy.visit('/');
-  //   cy.get('#toolbar-add > .icon').click();
-  //   cy.get('#toolbar-add-document').click();
-  //   cy.getSlateTitle().focus().click().type('My Search Page');
+  it('Search block - test searchbox', () => {
+    cy.visit('/');
+    cy.get('#toolbar-add > .icon').click();
+    cy.get('#toolbar-add-document').click();
+    cy.getSlateTitle().focus().click().type('My Search Page');
 
-  //   // Add Search listing block
-  //   cy.addNewBlock('search');
+    // Add Search listing block
+    cy.addNewBlock('search');
 
-  //   // Add search query criteria
-  //   cy.get('#default-query-0-query .react-select__value-container').click();
-  //   cy.get('#default-query-0-query .react-select__option')
-  //     .contains('Type')
-  //     .click();
+    // Add search query criteria
+    cy.get('#default-query-0-query .react-select__value-container').click();
+    cy.get('#default-query-0-query .react-select__option')
+      .contains('Type')
+      .click();
 
-  //   cy.get('#default-query-0-query .fields:first-of-type > .field').click();
-  //   cy.get(
-  //     '#default-query-0-query .fields:first-of-type > .field .react-select__option',
-  //   )
-  //     .contains('Page')
-  //     .click();
+    cy.get('#default-query-0-query .fields:first-of-type > .field').click();
+    cy.get(
+      '#default-query-0-query .fields:first-of-type > .field .react-select__option',
+    )
+      .contains('Page')
+      .click();
 
-  //   cy.get('#default-query-0-query .fields:first-of-type > .field').click();
-  //   cy.get(
-  //     '#default-query-0-query .fields:first-of-type > .field .react-select__option',
-  //   )
-  //     .contains('Folder')
-  //     .click();
+    cy.get('#default-query-0-query .fields:first-of-type > .field').click();
+    cy.get(
+      '#default-query-0-query .fields:first-of-type > .field .react-select__option',
+    )
+      .contains('Folder')
+      .click();
 
-  //   cy.get('#default-query-0-query .fields:first-of-type > .field').click();
-  //   cy.get(
-  //     '#default-query-0-query .fields:first-of-type > .field .react-select__option',
-  //   )
-  //     .contains('Event')
-  //     .click();
+    cy.get('#default-query-0-query .fields:first-of-type > .field').click();
+    cy.get(
+      '#default-query-0-query .fields:first-of-type > .field .react-select__option',
+    )
+      .contains('Event')
+      .click();
 
-  //   // uncheck showSearchButton
-  //   cy.get('label[for=field-showSearchButton]').click();
-  //   cy.get('.search-wrapper .ui.button').should('contain', 'Search');
+    // uncheck showSearchButton
+    cy.get('label[for=field-showSearchButton]').click();
+    cy.get('.search-wrapper .ui.button').should('contain', 'Search');
 
-  //   // Save the page
-  //   cy.get('#toolbar-save > .icon').click();
+    // Save the page
+    cy.get('#toolbar-save > .icon').click();
 
-  //   cy.wait(500);
+    cy.wait(500);
 
-  //   // test search results number
-  //   cy.get('.search-details').should(
-  //     'contain',
-  //     `Search results: ${results_number}`,
-  //   );
+    // test search results number
+    cy.get('.search-details').should(
+      'contain',
+      `Search results: ${results_number}`,
+    );
 
-  //   // test searching for Event
-  //   cy.get('.search-wrapper .search-input input').focus().type('Event');
-  //   cy.get('.search-wrapper > .ui.button').click();
+    // test searching for Event
+    cy.get('.search-wrapper .search-input input').focus().type('Event');
+    cy.get('.search-wrapper > .ui.button').click();
 
-  //   cy.get('#page-document .listing-item:first-of-type a').should(
-  //     'have.attr',
-  //     'href',
-  //     '/my-event',
-  //   );
-  //   cy.get('.search-results-count-sort .search-details em').should(
-  //     'contain',
-  //     'Event',
-  //   );
-  //   cy.url().should(
-  //     'contain',
-  //     '%7B%22i%22%3A%22SearchableText%22%2C%22o%22%3A%22paqo.string.contains%22%2C%22v%22%3A%22Event%22%7D',
-  //   );
+    cy.get('#page-document .listing-item:first-of-type a').should(
+      'have.attr',
+      'href',
+      '/my-event',
+    );
+    cy.get('.search-results-count-sort .search-details em').should(
+      'contain',
+      'Event',
+    );
+    cy.url().should(
+      'contain',
+      '%7B%22i%22%3A%22SearchableText%22%2C%22o%22%3A%22paqo.string.contains%22%2C%22v%22%3A%22Event%22%7D',
+    );
 
-  //   // test search results number
-  //   cy.get('.search-details').should('contain', 'Search results: 1');
+    // test search results number
+    cy.get('.search-details').should('contain', 'Search results: 1');
 
-  //   // test removing one char
-  //   cy.get('.search-wrapper .search-input input').focus().type('{backspace}');
-  //   cy.get('.search-wrapper > .ui.button').click();
-  //   cy.get('.search-results-count-sort .search-details em')
-  //     .should('not.contain', 'Event')
-  //     .and('contain', 'Even');
-  //   cy.url().should(
-  //     'contain',
-  //     '%7B%22i%22%3A%22SearchableText%22%2C%22o%22%3A%22paqo.string.contains%22%2C%22v%22%3A%22Even%22%7D',
-  //   );
+    // test removing one char
+    cy.get('.search-wrapper .search-input input').focus().type('{backspace}');
+    cy.get('.search-wrapper > .ui.button').click();
+    cy.get('.search-results-count-sort .search-details em')
+      .should('not.contain', 'Event')
+      .and('contain', 'Even');
+    cy.url().should(
+      'contain',
+      '%7B%22i%22%3A%22SearchableText%22%2C%22o%22%3A%22paqo.string.contains%22%2C%22v%22%3A%22Even%22%7D',
+    );
 
-  //   // test removing the text with the button
-  //   cy.get(
-  //     '.search-wrapper .search-input .search-input-actions button.search-input-clear-icon-button',
-  //   ).click();
-  //   cy.get('.search-wrapper > .ui.button').click();
-  //   cy.get('.search-results-count-sort .search-details').should(
-  //     'not.contain',
-  //     'Searched for:',
-  //   );
-  //   cy.url().should('not.contain', '%22SearchableText%22');
+    // test removing the text with the button
+    cy.get(
+      '.search-wrapper .search-input .search-input-actions button.search-input-clear-icon-button',
+    ).click();
+    cy.get('.search-wrapper > .ui.button').click();
+    cy.get('.search-results-count-sort .search-details').should(
+      'not.contain',
+      'Searched for:',
+    );
+    cy.url().should('not.contain', '%22SearchableText%22');
 
-  //   // test search results number
-  //   cy.get('.search-details').should(
-  //     'contain',
-  //     `Search results: ${results_number}`,
-  //   );
+    // test search results number
+    cy.get('.search-details').should(
+      'contain',
+      `Search results: ${results_number}`,
+    );
 
-  //   // test searching for Event
-  //   cy.get('.search-wrapper .search-input input').focus().type('Event');
-  //   cy.get('.search-wrapper > .ui.button').click();
-  //   cy.get('#page-document .listing-item:first-of-type a').should(
-  //     'have.attr',
-  //     'href',
-  //     '/my-event',
-  //   );
-  //   cy.get('.search-results-count-sort .search-details em').should(
-  //     'contain',
-  //     'Event',
-  //   );
-  //   cy.url().should(
-  //     'contain',
-  //     '%7B%22i%22%3A%22SearchableText%22%2C%22o%22%3A%22paqo.string.contains%22%2C%22v%22%3A%22Event%22%7D',
-  //   );
+    // test searching for Event
+    cy.get('.search-wrapper .search-input input').focus().type('Event');
+    cy.get('.search-wrapper > .ui.button').click();
+    cy.get('#page-document .listing-item:first-of-type a').should(
+      'have.attr',
+      'href',
+      '/my-event',
+    );
+    cy.get('.search-results-count-sort .search-details em').should(
+      'contain',
+      'Event',
+    );
+    cy.url().should(
+      'contain',
+      '%7B%22i%22%3A%22SearchableText%22%2C%22o%22%3A%22paqo.string.contains%22%2C%22v%22%3A%22Event%22%7D',
+    );
 
-  //   // test search results number
-  //   cy.get('.search-details').should('contain', 'Search results: 1');
+    // test search results number
+    cy.get('.search-details').should('contain', 'Search results: 1');
 
-  //   // test removing one char
-  //   cy.get('.search-wrapper .search-input input').focus().type('{backspace}');
-  //   cy.get('.search-wrapper > .ui.button').click();
-  //   cy.get('.search-results-count-sort .search-details em')
-  //     .should('not.contain', 'Event')
-  //     .and('contain', 'Even');
-  //   cy.url().should(
-  //     'contain',
-  //     '%7B%22i%22%3A%22SearchableText%22%2C%22o%22%3A%22paqo.string.contains%22%2C%22v%22%3A%22Even%22%7D',
-  //   );
+    // test removing one char
+    cy.get('.search-wrapper .search-input input').focus().type('{backspace}');
+    cy.get('.search-wrapper > .ui.button').click();
+    cy.get('.search-results-count-sort .search-details em')
+      .should('not.contain', 'Event')
+      .and('contain', 'Even');
+    cy.url().should(
+      'contain',
+      '%7B%22i%22%3A%22SearchableText%22%2C%22o%22%3A%22paqo.string.contains%22%2C%22v%22%3A%22Even%22%7D',
+    );
 
-  //   // test removing the whole text from the keyboard
-  //   cy.get('.search-wrapper .search-input input')
-  //     .focus()
-  //     .type('{selectAll}{del}');
-  //   cy.get('.search-wrapper > .ui.button').click();
-  //   cy.get('.search-results-count-sort .search-details').should(
-  //     'not.contain',
-  //     'Searched for:',
-  //   );
-  //   cy.url().should('not.contain', '%22SearchableText%22');
+    // test removing the whole text from the keyboard
+    cy.get('.search-wrapper .search-input input')
+      .focus()
+      .type('{selectAll}{del}');
+    cy.get('.search-wrapper > .ui.button').click();
+    cy.get('.search-results-count-sort .search-details').should(
+      'not.contain',
+      'Searched for:',
+    );
+    cy.url().should('not.contain', '%22SearchableText%22');
 
-  //   // test search results number
-  //   cy.get('.search-details').should(
-  //     'contain',
-  //     `Search results: ${results_number}`,
-  //   );
-  // });
+    // test search results number
+    cy.get('.search-details').should(
+      'contain',
+      `Search results: ${results_number}`,
+    );
+  });
 });
