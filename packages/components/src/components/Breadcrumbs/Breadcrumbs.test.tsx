@@ -1,6 +1,7 @@
+import React from 'react';
 import { render } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import Breadcrumbs from './Breadcrumbs';
+import { Breadcrumbs } from './Breadcrumbs';
 
 expect.extend(toHaveNoViolations);
 

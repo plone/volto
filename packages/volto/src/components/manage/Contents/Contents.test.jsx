@@ -1,5 +1,5 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
@@ -14,9 +14,8 @@ beforeAll(
     await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
 );
 
-jest.mock('react-portal', () => ({
-  Portal: jest.fn(() => <div id="Portal" />),
-}));
+jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+
 jest.mock('../../theme/Pagination/Pagination', () =>
   jest.fn(() => <div className="Pagination" />),
 );
@@ -91,14 +90,15 @@ describe('Contents', () => {
         messages: {},
       },
     });
-    const component = renderer.create(
+    const { container } = render(
       <Provider store={store}>
         <MemoryRouter>
           <Contents location={{ pathname: '/blog' }} />
+          <div id="toolbar"></div>
         </MemoryRouter>
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+
+    expect(container).toMatchSnapshot();
   });
 });

@@ -492,7 +492,6 @@ msgid "Broken relations"
 msgstr ""
 
 #. Default: "Browse"
-#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Sidebar/ObjectBrowserNav
 msgid "Browse"
@@ -542,7 +541,7 @@ msgid "Cancel"
 msgstr "キャンセル"
 
 #. Default: "Cell"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Cell"
 msgstr "セル"
 
@@ -935,7 +934,6 @@ msgstr "日付 (新しい順)"
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/CommentEditModal
 #: components/theme/Comments/Comments
 #: components/theme/ContactForm/ContactForm
@@ -960,7 +958,6 @@ msgstr ""
 #: components/manage/Delete/Delete
 #: components/manage/Widgets/FormFieldWrapper
 #: components/manage/Widgets/ObjectBrowserWidget
-#: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/Comments
 msgid "Delete"
 msgstr "削除"
@@ -991,7 +988,7 @@ msgid "Delete blocks"
 msgstr "ブロックを削除"
 
 #. Default: "Delete col"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Delete col"
 msgstr "列を削除"
 
@@ -1001,7 +998,7 @@ msgid "Delete condition"
 msgstr ""
 
 #. Default: "Delete row"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Delete row"
 msgstr "行を削除"
 
@@ -1037,12 +1034,10 @@ msgid "Descending"
 msgstr "降順"
 
 #. Default: "Description"
-#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 #: components/theme/View/TabularView
 #: helpers/MessageLabels/MessageLabels
 msgid "Description"
@@ -1084,7 +1079,7 @@ msgid "Distributed under the {license}."
 msgstr "{license} の下で配布されています。"
 
 #. Default: "Add border to inner columns"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Divide each row into separate cells"
 msgstr "列の区切り線を表示"
 
@@ -1499,7 +1494,7 @@ msgid "Fix relations"
 msgstr ""
 
 #. Default: "Fixed width columns"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Fixed width table cells"
 msgstr "テーブルのセル幅を固定"
 
@@ -1609,7 +1604,7 @@ msgid "Groups are logical collections of users, such as departments and business
 msgstr ""
 
 #. Default: "Header cell"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Header cell"
 msgstr "見出しセル"
 
@@ -1671,6 +1666,7 @@ msgstr "{title} の履歴"
 #: components/manage/Contents/ContentsBreadcrumbs
 #: components/manage/Contents/ContentsBreadcrumbsHomeItem
 #: components/theme/Breadcrumbs/Breadcrumbs
+#: components/theme/Logo/Logo
 msgid "Home"
 msgstr "ホーム"
 
@@ -1706,7 +1702,6 @@ msgid "If you are certain you have the correct web address but are encountering 
 msgstr "確かに正しいURLを入力したのにエラーになってしまう場合は、 {site_admin} に連絡してください。"
 
 #. Default: "Image"
-#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -1762,22 +1757,22 @@ msgid "Inherited value"
 msgstr "継承された値"
 
 #. Default: "Insert col after"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Insert col after"
 msgstr "右に列を追加"
 
 #. Default: "Insert col before"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Insert col before"
 msgstr "左に列を追加"
 
 #. Default: "Insert row after"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Insert row after"
 msgstr "下に行を追加"
 
 #. Default: "Insert row before"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Insert row before"
 msgstr "上に行を追加"
 
@@ -1962,7 +1957,6 @@ msgid "Link copied to clipboard"
 msgstr ""
 
 #. Default: "Link more"
-#: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
 msgid "Link more"
 msgstr "「もっと見る」の設定"
@@ -1978,13 +1972,11 @@ msgid "Link settings"
 msgstr ""
 
 #. Default: "Link Title"
-#: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
 msgid "Link title"
 msgstr "リンクタイトル"
 
 #. Default: "Link to"
-#: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema
@@ -2058,6 +2050,11 @@ msgstr "ログインに失敗しました"
 msgid "Login Name"
 msgstr "ログイン名"
 
+#. Default: "Logo of"
+#: components/theme/Logo/Logo
+msgid "Logo of"
+msgstr ""
+
 #. Default: "Logout"
 #: components/manage/Toolbar/PersonalTools
 msgid "Logout"
@@ -2069,7 +2066,7 @@ msgid "Made by {creator} on {date}. This is not a working copy anymore, but the 
 msgstr ""
 
 #. Default: "Reduce cell padding"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Make the table compact"
 msgstr "コンパクトな表示"
 
@@ -2717,7 +2714,7 @@ msgid "Redo"
 msgstr ""
 
 #. Default: "Minimalistic table design"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Reduce complexity"
 msgstr "見出し行の背景色を変更しない"
 
@@ -2856,7 +2853,6 @@ msgstr ""
 #. Default: "Required"
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 msgid "Required"
 msgstr "必須"
 
@@ -3202,7 +3198,6 @@ msgstr "「{title}」の共有"
 #. Default: "Short Name"
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 msgid "Short Name"
 msgstr "ショートネーム"
 
@@ -3428,7 +3423,7 @@ msgid "String"
 msgstr "String (未翻訳)"
 
 #. Default: "Alternate row background color"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Stripe alternate rows with color"
 msgstr "一行おきに背景色を付加"
 
@@ -3485,7 +3480,7 @@ msgid "Switch to"
 msgstr ""
 
 #. Default: "Table"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Table"
 msgstr "テーブル"
 
@@ -3649,6 +3644,12 @@ msgstr ""
 msgid "There are no users with the searched criteria"
 msgstr ""
 
+#. Default: "There are some errors."
+#: components/manage/Add/Add
+#: components/manage/Edit/Edit
+msgid "There are some errors."
+msgstr ""
+
 #. Default: "There is a configuration problem on the backend"
 #: components/theme/CorsError/CorsError
 msgid "There is a configuration problem on the backend"
@@ -3721,7 +3722,6 @@ msgid "Time"
 msgstr "時刻"
 
 #. Default: "Title"
-#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Blocks/ToC/Schema
 #: components/manage/Contents/Contents
@@ -3729,7 +3729,6 @@ msgstr "時刻"
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 #: components/theme/View/TabularView
 #: helpers/MessageLabels/MessageLabels
 msgid "Title"
@@ -3825,11 +3824,6 @@ msgstr "ビデオURLを入力 (YouTube, Vimeo or mp4)"
 #: components/manage/Widgets/SelectAutoComplete
 msgid "Type text..."
 msgstr ""
-
-#. Default: "Type text…"
-#: components/manage/Blocks/Text/Edit
-msgid "Type text…"
-msgstr "テキストを入力…"
 
 #. Default: "Type the heading…"
 #: components/manage/TextLineEdit/TextLineEdit
@@ -3979,11 +3973,6 @@ msgstr "アップロード"
 msgid "Upload a lead image in the 'Lead Image' content field."
 msgstr "リード画像をコンテンツのフィールドにアップロード"
 
-#. Default: "Upload a new image"
-#: components/manage/Blocks/HeroImageLeft/Edit
-msgid "Upload a new image"
-msgstr "画像をアップロード"
-
 #. Default: "Upload files"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Upload files"
@@ -3995,7 +3984,6 @@ msgid "Uploading files"
 msgstr "ファイルをアップロードしています"
 
 #. Default: "Uploading image"
-#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/Edit
 msgid "Uploading image"
 msgstr ""
@@ -4014,7 +4002,6 @@ msgstr ""
 #. Default: "Used for programmatic access to the fieldset."
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 msgid "Used for programmatic access to the fieldset."
 msgstr "Used for programmatic access to the fieldset. (未翻訳)"
 
@@ -4889,7 +4876,7 @@ msgstr ""
 #. Default: "Text"
 #: config/Blocks
 msgid "text"
-msgstr "テキスト"
+msgstr ""
 
 #. Default: "Title"
 #: config/Blocks

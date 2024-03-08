@@ -6,4 +6,4 @@ declare function TranslationObject({ translationObject, schema, pathname, visual
     visual: any;
     isFormSelected: any;
     onSelectForm: any;
-}): JSX.Element;
+}): import("react/jsx-runtime").JSX.Element;

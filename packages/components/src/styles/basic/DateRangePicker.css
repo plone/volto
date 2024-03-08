@@ -1,0 +1,104 @@
+@import './Button.css';
+@import './Popover.css';
+@import './Dialog.css';
+@import './DateField.css';
+@import './RangeCalendar.css';
+@import './Form.css';
+@import './theme.css';
+
+.react-aria-DateRangePicker {
+  color: var(--text-color);
+
+  .react-aria-Group {
+    position: relative;
+    display: flex;
+    overflow: auto;
+    width: fit-content;
+    min-width: 220px;
+    max-width: 100%;
+    box-sizing: border-box;
+    align-items: center;
+    padding: 4px 4px 4px 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: var(--field-background);
+    white-space: nowrap;
+
+    &[data-pressed] {
+      background: var(--highlight-background);
+      box-shadow: none;
+    }
+
+    &[data-focus-within] {
+      outline: 2px solid var(--focus-ring-color);
+      outline-offset: -1px;
+    }
+  }
+
+  [slot='start'] + span {
+    padding: 0 4px;
+  }
+
+  [slot='end'] {
+    flex: 1;
+    margin-right: 2rem;
+  }
+
+  .react-aria-Button {
+    position: sticky;
+    right: 0;
+    width: 1.429rem;
+    height: 1.429rem;
+    box-sizing: content-box;
+    flex-shrink: 0;
+    padding: 0;
+    border: 2px solid var(--field-background);
+    border: none;
+    border-radius: 4px;
+    margin-left: auto;
+    background: var(--highlight-background);
+    color: var(--highlight-foreground);
+    font-size: 0.857rem;
+    forced-color-adjust: none;
+
+    &[data-focus-visible] {
+      outline: 2px solid var(--focus-ring-color);
+      outline-offset: 2px;
+    }
+  }
+
+  .react-aria-DateInput {
+    width: unset;
+    min-width: unset;
+    padding: unset;
+    border: unset;
+    outline: unset;
+  }
+}
+
+.react-aria-Popover[data-trigger='DateRangePicker'] {
+  max-width: unset;
+}
+
+.react-aria-DateRangePicker {
+  &[data-invalid] {
+    [slot='end']:after {
+      flex: 1;
+      margin-right: -1.5rem;
+      margin-left: 1.5rem;
+      alt: ' ';
+      content: '🚫' / '';
+      content: '🚫';
+      text-align: end;
+    }
+  }
+
+  .react-aria-FieldError {
+    color: var(--color-invalid);
+    font-size: 12px;
+  }
+
+  [slot='description'] {
+    font-size: 12px;
+  }
+}

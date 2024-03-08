@@ -8,11 +8,6 @@ exports[`Html renders a html component 1`] = `
     <meta
       charSet="utf-8"
     />
-    
-    
-    
-    
-    
     <script
       dangerouslySetInnerHTML={
         Object {
@@ -105,11 +100,6 @@ exports[`Html renders a html component with apiPath present 1`] = `
     <meta
       charSet="utf-8"
     />
-    
-    
-    
-    
-    
     <script
       dangerouslySetInnerHTML={
         Object {
