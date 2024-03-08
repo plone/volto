@@ -17,6 +17,84 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 17.15.5 (2024-03-07)
+
+### Bugfix
+
+- Fix other occurrences of mutable (referenced) objects when assigning the default inner `blocksConfig` object for the `grid` block, pass by value instead. sneridagh [#5859](https://github.com/plone/volto/issues/5859)
+
+## 17.15.4 (2024-03-06)
+
+### Bugfix
+
+- Fix the introduction of a mutable (referenced) object when assigning the default inner `blocksConfig` object for the `grid` block, pass by value instead. sneridagh [#5850](https://github.com/plone/volto/issues/5850)
+
+## 17.15.3 (2024-03-04)
+
+### Bugfix
+
+- Enhance findBlocks to check for blocks also in data for add-ons such as @eeacms/volto-tabs-block. @ichim-david [#5796](https://github.com/plone/volto/issues/5796)
+- Fixed ArrayWidget sorting items. @giuliaghisini [#5804](https://github.com/plone/volto/issues/5804)
+- Reset global Form state onSubmit and onCancel in Add and Edit forms @sneridagh [#5827](https://github.com/plone/volto/issues/5827)
+
+## 17.15.2 (2024-02-24)
+
+### Bugfix
+
+- Pin `eslint-plugin-jsx-a11y` to version `^6.7.0` to fix ESLint couldn't determine the plugin "jsx-a11y". @ichim-david [#5785](https://github.com/plone/volto/issues/5785)
+
+## 17.15.1 (2024-02-22)
+
+### Bugfix
+
+- Fix sidebar form update. @robgietema [#5779](https://github.com/plone/volto/issues/5779)
+
+## 17.15.0 (2024-02-21)
+
+### Feature
+
+- Add accordion to metadata form. @robgietema [#5760](https://github.com/plone/volto/issues/5760)
+
+## 17.14.0 (2024-02-18)
+
+### Feature
+
+- Added the `ignore` property to allow exceptions to rules that are applied to all routes. @dobri1408 [#5621](https://github.com/plone/volto/issues/5621)
+
+### Bugfix
+
+- Fixed listing SSR rendering by sending `subrequestId` instead of `id` only within `getAsyncData`, similar to calling `getQueryStringResults` directly. @ichim-david 
+  Fixed listing SSR pagination rendering by sending `currentPage` value besides the `subrequestId`. @ichim-david  
+  Added testing for SSR rendering for all of the listing block tests. @ichim-david [#5688](https://github.com/plone/volto/issues/5688)
+- Add extra wait calls to listing block tests to avoid sporadic failures. @ichim-david [#5753](https://github.com/plone/volto/issues/5753)
+
+## 17.13.0 (2024-02-09)
+
+### Feature
+
+- Add global form state. @robgietema [#5721](https://github.com/plone/volto/issues/5721)
+
+## 17.12.1 (2024-02-06)
+
+### Bugfix
+
+- Move @types/uuid as a direct dependency (for projects) @sneridagh [#0](https://github.com/plone/volto/issues/0)
+
+## 17.12.0 (2024-02-05)
+
+### Feature
+
+- Improve validation of IdWidget @tedw [#3716](https://github.com/plone/volto/issues/3716)
+- Support for passing whole data object of the initial blocks in local config. Refactor initial block type to its own helpers. @sneridagh [#5718](https://github.com/plone/volto/issues/5718)
+
+### Bugfix
+
+- Fixed wrong conditional proprieties on `ObjectBrowser` for multiple selection. @deodorhunter @Wagner3UB [#4190](https://github.com/plone/volto/issues/4190)
+
+### Documentation
+
+- Temporarily pin `sphinxcontrib-*help` dependencies so documentation can build. @stevepiercy [#5655](https://github.com/plone/volto/issues/5655)
+
 ## 17.11.5 (2024-01-26)
 
 ### Bugfix
