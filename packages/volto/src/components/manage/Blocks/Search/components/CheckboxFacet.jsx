@@ -11,8 +11,16 @@ import {
  * filtering
  */
 const CheckboxFacet = (props) => {
-  const { facet, facetCount, choices, isMulti, onChange, value, isEditMode } =
-    props;
+  const {
+    facet,
+    facetCount,
+    choices,
+    isMulti,
+    onChange,
+    value,
+    isEditMode,
+    isFacetCountEnabled,
+  } = props;
   const facetValue = value;
 
   return (
@@ -24,31 +32,59 @@ const CheckboxFacet = (props) => {
 
           return (
             <div className="entry" key={value}>
-              <Checkbox
-                disabled={isEditMode}
-                label={`${label} (${count})`}
-                radio={!isMulti}
-                checked={
-                  isMulti
-                    ? !!facetValue?.find((f) => f.value === value)
-                    : facetValue && facetValue.value === value
-                }
-                onChange={(e, { checked }) =>
-                  onChange(
-                    facet.field.value,
+              {isFacetCountEnabled === true ? (
+                <Checkbox
+                  disabled={isEditMode}
+                  label={`${label} (${count})`}
+                  radio={!isMulti}
+                  checked={
                     isMulti
-                      ? [
-                          ...facetValue
-                            .filter((f) => f.value !== value)
-                            .map((f) => f.value),
-                          ...(checked ? [value] : []),
-                        ]
-                      : checked
-                        ? value
-                        : null,
-                  )
-                }
-              />
+                      ? !!facetValue?.find((f) => f.value === value)
+                      : facetValue && facetValue.value === value
+                  }
+                  onChange={(e, { checked }) =>
+                    onChange(
+                      facet.field.value,
+                      isMulti
+                        ? [
+                            ...facetValue
+                              .filter((f) => f.value !== value)
+                              .map((f) => f.value),
+                            ...(checked ? [value] : []),
+                          ]
+                        : checked
+                          ? value
+                          : null,
+                    )
+                  }
+                />
+              ) : (
+                <Checkbox
+                  disabled={isEditMode}
+                  label={label}
+                  radio={!isMulti}
+                  checked={
+                    isMulti
+                      ? !!facetValue?.find((f) => f.value === value)
+                      : facetValue && facetValue.value === value
+                  }
+                  onChange={(e, { checked }) =>
+                    onChange(
+                      facet.field.value,
+                      isMulti
+                        ? [
+                            ...facetValue
+                              .filter((f) => f.value !== value)
+                              .map((f) => f.value),
+                            ...(checked ? [value] : []),
+                          ]
+                        : checked
+                          ? value
+                          : null,
+                    )
+                  }
+                />
+              )}
             </div>
           );
         })}
