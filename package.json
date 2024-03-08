@@ -19,7 +19,7 @@
     "prettier": "prettier --check '{apps,packages}/**/*.{js,jsx,ts,tsx}'",
     "prettier:fix": "prettier --write '{apps,packages}/**/*.{js,jsx,ts,tsx}' ",
     "stylelint": "stylelint '{apps,packages}/**/*.{css,scss,less}'",
-    "stylelint:fix": "stylelint '{packages}/**/*.{css,scss,less}' --fix",
+    "stylelint:fix": "stylelint '{apps,packages}/**/*.{css,scss,less}' --fix",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "lint-staged": "lint-staged",
     "lockhook": "node packages/scripts/lockhook.js",

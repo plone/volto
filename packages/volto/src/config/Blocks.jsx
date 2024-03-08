@@ -520,14 +520,10 @@ const blocksConfig = {
 // block behave in it (= no schemaEnhancer fields for teasers inside a grid)
 // Afterwards, it can be further customized in add-ons using the same technique.
 blocksConfig.gridBlock.blocksConfig = cloneDeep(blocksConfig);
-blocksConfig.gridBlock.blocksConfig.teaser = {
-  ...blocksConfig.teaser,
-  schemaEnhancer: gridTeaserDisableStylingSchema,
-};
-blocksConfig.gridBlock.blocksConfig.image = {
-  ...blocksConfig.image,
-  schemaEnhancer: gridImageDisableSizeAndPositionHandlersSchema,
-};
+blocksConfig.gridBlock.blocksConfig.teaser.schemaEnhancer =
+  gridTeaserDisableStylingSchema;
+blocksConfig.gridBlock.blocksConfig.image.schemaEnhancer =
+  gridImageDisableSizeAndPositionHandlersSchema;
 
 const requiredBlocks = ['title'];
 

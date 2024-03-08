@@ -49,7 +49,7 @@ Inside you can find the `theme.config` file that is used to set the theme
 general settings.
 
 The site customizations also should be located inside this folder following
-[SemanticUI folder naming](https://github.com/Semantic-Org/Semantic-UI/tree/master/src/themes/default).
+[Semantic UI folder naming](https://github.com/Semantic-Org/Semantic-UI/tree/master/src/themes/default).
 
  * assets
  * collections
