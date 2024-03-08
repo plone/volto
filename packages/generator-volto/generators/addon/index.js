@@ -206,24 +206,22 @@ Run "npm install -g @plone/generator-volto" to update.`,
 
   install() {
     // copy dotfiles
-    this.fs.copyTpl(
-      this.templatePath('.github/workflows'),
-      this.destinationPath('.github/workflows'),
-      this.globals,
-    );
-    this.fs.copyTpl(
-      this.templatePath('.yarn/releases'),
-      this.destinationPath('.yarn/releases'),
-      this.globals,
-    );
+    this.fs.copyTpl(this.templatePath('**/.*'), this.destinationPath(), {
+      ignore: ['**/*.tpl', '**/*~', '**/.gitignorefile'],
+    });
+
+    // Copy .gitignorefile to .gitignore
     this.fs.copyTpl(
       this.templatePath('.gitignorefile'),
       this.destinationPath('.gitignore'),
       this.globals,
     );
+    this.fs.delete('.gitignorefile');
+
+    // Copy and parse the rest of the template files
     this.fs.copyTpl(this.templatePath(), this.destinationPath(), {
       ...this.globals,
-      ignore: ['**/*.tpl', '**/*~', '**/.gitignorefile'],
+      ignore: ['**/*.tpl', '**/*~'],
       dot: true,
     });
   }

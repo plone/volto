@@ -1,7 +1,8 @@
-import Icon from '../Icon/Icon';
+import React from 'react';
+import { Icon } from '../Icon/Icon';
 import type { IconPropsWithoutChildren } from '../Icon/Icon';
 
-const Leadingimage = (props: IconPropsWithoutChildren) => {
+export const LeadingimageIcon = (props: IconPropsWithoutChildren) => {
   return (
     <Icon {...props}>
       <svg
@@ -19,5 +20,3 @@ const Leadingimage = (props: IconPropsWithoutChildren) => {
     </Icon>
   );
 };
-
-export default Leadingimage;

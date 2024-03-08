@@ -5,7 +5,7 @@ import { BlockChooser, Icon } from '@plone/volto/components';
 import { useDetectClickOutside } from '@plone/volto/helpers';
 import addSVG from '@plone/volto/icons/add.svg';
 import { usePopper } from 'react-popper';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 
 const messages = defineMessages({
   addBlock: {
@@ -59,24 +59,25 @@ const NewBlockAddButton = (props) => {
           <Icon name={addSVG} className="circled" size="24px" />
         </Button>
       </Ref>
-      {isOpenMenu ? (
-        <Portal node={document.getElementById('body')}>
-          <div
-            ref={setPopperElement}
-            style={styles.popper}
-            {...attributes.popper}
-            className="container-chooser-wrapper"
-          >
-            <BlockChooser
-              onMutateBlock={onMutateBlock}
-              currentBlock={block}
-              showRestricted
-              blocksConfig={blocksConfig}
-              ref={blockChooserRef}
-            />
-          </div>
-        </Portal>
-      ) : null}
+      {isOpenMenu
+        ? createPortal(
+            <div
+              ref={setPopperElement}
+              style={styles.popper}
+              {...attributes.popper}
+              className="container-chooser-wrapper"
+            >
+              <BlockChooser
+                onMutateBlock={onMutateBlock}
+                currentBlock={block}
+                showRestricted
+                blocksConfig={blocksConfig}
+                ref={blockChooserRef}
+              />
+            </div>,
+            document.body,
+          )
+        : null}
     </>
   );
 };

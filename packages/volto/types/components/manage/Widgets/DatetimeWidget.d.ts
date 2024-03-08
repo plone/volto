@@ -49,7 +49,7 @@ export class DatetimeWidgetComponent extends React.Component<any, any, any> {
      * @returns {undefined}
      */
     onFocusChange: ({ focused }: boolean) => undefined;
-    render(): JSX.Element;
+    render(): import("react/jsx-runtime").JSX.Element;
 }
 export namespace DatetimeWidgetComponent {
     namespace propTypes {

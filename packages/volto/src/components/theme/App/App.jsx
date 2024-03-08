@@ -242,6 +242,7 @@ export const fetchContent = async ({ store, location }) => {
         id,
         data,
         blocksConfig,
+        content,
       });
       if (!p?.length) {
         throw new Error(

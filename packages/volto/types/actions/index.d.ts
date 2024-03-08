@@ -10,7 +10,7 @@ export { listRoles } from "@plone/volto/actions/roles/roles";
 export { getTypes } from "@plone/volto/actions/types/types";
 export { getQuerystring } from "@plone/volto/actions/querystring/querystring";
 export { getQueryStringResults } from "@plone/volto/actions/querystringsearch/querystringsearch";
-export { setSidebarTab } from "@plone/volto/actions/sidebar/sidebar";
+export { setFormData } from "@plone/volto/actions/form/form";
 export { loadLazyLibrary } from "@plone/volto/actions/lazyLibraries/lazyLibraries";
 export { getContextNavigation } from "@plone/volto/actions/contextNavigation/contextNavigation";
 export { authenticatedRole } from "@plone/volto/actions/authRole/authRole";
@@ -37,6 +37,7 @@ export { createUser, deleteUser, getUser, listUsers, setInitialPassword, resetPa
 export { login, loginRenew, logout, resetLoginRequest } from "@plone/volto/actions/userSession/userSession";
 export { getVocabulary, getVocabularyTokenTitle } from "@plone/volto/actions/vocabularies/vocabularies";
 export { getWorkflow, transitionWorkflow } from "@plone/volto/actions/workflow/workflow";
+export { setMetadataFieldsets, setMetadataFocus, resetMetadataFocus, setSidebarTab } from "@plone/volto/actions/sidebar/sidebar";
 export { deleteLinkTranslation, getTranslationLocator, linkTranslation } from "@plone/volto/actions/translations/translations";
 export { setBlocksClipboard, resetBlocksClipboard } from "@plone/volto/actions/blocksClipboard/blocksClipboard";
 export { changeLanguage, changeLanguageCookies } from "./language/language";

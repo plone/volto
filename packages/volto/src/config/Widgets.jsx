@@ -18,7 +18,6 @@ import SelectWidget from '@plone/volto/components/manage/Widgets/SelectWidget';
 import TextareaWidget from '@plone/volto/components/manage/Widgets/TextareaWidget';
 import TextWidget from '@plone/volto/components/manage/Widgets/TextWidget';
 import TokenWidget from '@plone/volto/components/manage/Widgets/TokenWidget';
-import WysiwygWidget from '@plone/volto/components/manage/Widgets/WysiwygWidget';
 import UrlWidget from '@plone/volto/components/manage/Widgets/UrlWidget';
 import InternalUrlWidget from '@plone/volto/components/manage/Widgets/InternalUrlWidget';
 import EmailWidget from '@plone/volto/components/manage/Widgets/EmailWidget';
@@ -55,13 +54,14 @@ import TitleViewWidget from '@plone/volto/components/theme/Widgets/TitleWidget';
 import TokenViewWidget from '@plone/volto/components/theme/Widgets/TokenWidget';
 import UrlViewWidget from '@plone/volto/components/theme/Widgets/UrlWidget';
 
-export const DatetimeWidget = loadable(() =>
-  import('@plone/volto/components/manage/Widgets/DatetimeWidget'),
+export const DatetimeWidget = loadable(
+  () => import('@plone/volto/components/manage/Widgets/DatetimeWidget'),
 );
-export const RecurrenceWidget = loadable(() =>
-  import(
-    '@plone/volto/components/manage/Widgets/RecurrenceWidget/RecurrenceWidget'
-  ),
+export const RecurrenceWidget = loadable(
+  () =>
+    import(
+      '@plone/volto/components/manage/Widgets/RecurrenceWidget/RecurrenceWidget'
+    ),
 );
 
 // Widgets mapping
@@ -76,7 +76,6 @@ export const widgetMapping = {
     site_logo: RegistryImageWidget,
   },
   widget: {
-    richtext: WysiwygWidget,
     textarea: TextareaWidget,
     datetime: DatetimeWidget,
     date: DatetimeWidget,

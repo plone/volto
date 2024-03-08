@@ -26,4 +26,4 @@ exports[`SelectWidget renders a select view widget component 1`] = `
 </span>
 `;
 
-exports[`SelectWidget renders an empty select view widget component 1`] = `""`;
+exports[`SelectWidget renders an empty select view widget component 1`] = `null`;
