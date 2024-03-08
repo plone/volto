@@ -9,7 +9,6 @@ describe('Querystring reducer', () => {
       total: 0,
       loaded: false,
       loading: false,
-      facets_count: {},
       batching: {},
       subrequests: {},
     });
