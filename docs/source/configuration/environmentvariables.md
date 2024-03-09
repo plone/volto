@@ -11,8 +11,8 @@ myst:
 
 This page describes environment variables and their usage for configuration of your Volto application at runtime.
 
-
 For more detailed information about environment variables and other configurations, you can refer to the [Razzle Documentation](https://razzlejs.org/docs/environment-variables).
+
 
 ## Runtime environment variables
 
@@ -26,9 +26,13 @@ You could, for example, build your Volto application, then start it in productio
 yarn build && RAZZLE_API_PATH=https://plone.org yarn start:prod
 ```
 
-`process.env.HOST`: Represents the host or IP address on which a server should listen, default is port 0.0.0.0.
+`process.env.HOST`
+    Represents the host or IP address on which a server should listen.
+    Default is `0.0.0.0`.
 
-`process.env.PORT`: Used to specify the port on which a web server should listen for incoming requests, default is port 3000.
+`process.env.PORT`
+    Used to specify the port on which a web server should listen for incoming requests.
+    Default is `3000`.
 
 `process.env.RAZZLE_API_PATH`: Used to configure the API path for the application.
 
