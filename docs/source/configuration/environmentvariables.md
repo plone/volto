@@ -26,6 +26,8 @@ You could, for example, build your Volto application, then start it in productio
 yarn build && RAZZLE_API_PATH=https://plone.org yarn start:prod
 ```
 
+```{glossary}
+:sorted:
 `HOST`
     Represents the host or IP address on which a server should listen.
     Default is `0.0.0.0`.
@@ -34,22 +36,29 @@ yarn build && RAZZLE_API_PATH=https://plone.org yarn start:prod
     Used to specify the port on which a web server should listen for incoming requests.
     Default is `3000`.
 
-`RAZZLE_API_PATH`: Used to configure the API path for the application.
+`RAZZLE_API_PATH`
+    Used to configure the API path for the application.
 
-`RAZZLE_PUBLIC_URL`: Used specify the base URL or path where static assets (such as images, stylesheets, and other resources) are hosted or served.
+`RAZZLE_PUBLIC_URL`
+    Used to specify the base URL or path where static assets—such as images, stylesheets, and other resources—are hosted or served.
 
-`RAZZLE_DEV_PROXY_API_PATH`: Used during development to configure a proxy for API requests.
+`RAZZLE_DEV_PROXY_API_PATH`
+    Used during development to configure a proxy for API requests.
 
-`RAZZLE_INTERNAL_API_PATH`: Used to specify the path to an internal API that the server-rendered application should use.
+`RAZZLE_INTERNAL_API_PATH`
+    Used to specify the path to an internal API that the server-rendered application should use.
 
-`RAZZLE_PROXY_REWRITE_TARGET`: Used to specify the target URL for a proxy server.
+`RAZZLE_PROXY_REWRITE_TARGET`
+    Used to specify the target URL for a proxy server.
+```
 
 This brings you a lot of power since you don't have to rebuild on every configuration change.
 You can also generate builds on your continuous integration, then deploy them anywhere.
 
+
 ## Environment variable reference
 
-````{glossary}
+```{glossary}
 :sorted:
 `RAZZLE_LEGACY_TRAVERSE`
     If `true`, Volto will construct API URLs without the `/++api++` prefix.
@@ -203,7 +212,7 @@ You can also generate builds on your continuous integration, then deploy them an
     ```shell
     VOLTOCONFIG=../../volto.config.js yarn start
     ```
-````
+```
 
 
 ## Access environment variables in a browser
