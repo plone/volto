@@ -128,6 +128,7 @@ const ContainerBlockEdit = (props) => {
         blocksConfig={allowedBlocksConfig}
         title={data.placeholder}
         isContainer
+        isMainForm={false}
         stopPropagation={selectedBlock}
         disableAddBlockOnEnterKey
         onSelectBlock={(id) => {
