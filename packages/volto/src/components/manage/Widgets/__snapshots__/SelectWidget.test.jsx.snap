@@ -70,7 +70,7 @@ exports[`No 'No value' option when default value is 0 1`] = `
                       autocapitalize="none"
                       autocomplete="off"
                       autocorrect="off"
-                      id="react-select-3-input"
+                      id="react-select-2-input"
                       spellcheck="false"
                       style="box-sizing: content-box; width: 2px; border: 0px; opacity: 1; outline: 0; padding: 0px;"
                       tabindex="0"
@@ -107,44 +107,6 @@ exports[`No 'No value' option when default value is 0 1`] = `
                   <svg
                     class="icon"
                     style="height: 24px; width: auto; fill: #007bc1;"
-                    viewBox=""
-                    xmlns=""
-                  />
-                </div>
-              </div>
-            </div>
-            <div
-              class="react-select__menu css-109xf7j-menu"
-            >
-              <div
-                class="react-select__menu-list css-4ljt47-MenuList"
-              >
-                <div
-                  class="react-select__option react-select__option--is-focused react-select__option--is-selected css-zq2nh-option"
-                  id="react-select-3-option-0"
-                  tabindex="-1"
-                >
-                  <div>
-                    0
-                  </div>
-                  <svg
-                    class="icon"
-                    style="height: 20px; width: auto; fill: #007bc1;"
-                    viewBox=""
-                    xmlns=""
-                  />
-                </div>
-                <div
-                  class="react-select__option css-4khget-option"
-                  id="react-select-3-option-1"
-                  tabindex="-1"
-                >
-                  <div>
-                    One
-                  </div>
-                  <svg
-                    class="icon"
-                    style="height: 20px; width: auto; fill: #007bc1;"
                     viewBox=""
                     xmlns=""
                   />

@@ -233,6 +233,7 @@ class SelectWidget extends Component {
           options={options}
           styles={customSelectStyles}
           theme={selectTheme}
+          menuPortalTarget={document.body}
           components={{
             ...(options?.length > 25 && {
               MenuList,
