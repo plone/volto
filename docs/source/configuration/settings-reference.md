@@ -27,7 +27,7 @@ navDepth
 
 defaultBlockType
     The name of the default block type used when a new block is added.
-    The default value of this setting is "slate", which uses the current Slate-based implementation for the rich-text editor.
+    The default value of this setting is `slate`, which uses the current Slate-based implementation for the rich text editor.
     If you change this to a different type of block, make sure the block configuration includes the {ref}`blockHasValue` function.
 
 sentryOptions
