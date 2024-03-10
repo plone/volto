@@ -76,9 +76,7 @@ function Sitemap(props) {
 
 Sitemap.propTypes = {
   getNavigation: PropTypes.func.isRequired,
-  location: PropTypes.object.isRequired,
-  intl: PropTypes.object.isRequired,
-  items: PropTypes.array.isRequired,
+  navroot: PropTypes.object.isRequired,
 };
 
 export const __test__ = compose(
@@ -107,9 +105,11 @@ export default compose(
       promise: ({ location, store: { dispatch, getState } }) => {
         if (!__SERVER__) return;
         const navroot = getState().navroot.data?.navroot?.['@id'];
-        const { settings } = config;
         return dispatch(
-          getNavigation(expandToBackendURL(navroot), settings.siteMapDepth),
+          getNavigation(
+            expandToBackendURL(navroot),
+            config.settings.siteMapDepth,
+          ),
         );
       },
     },
