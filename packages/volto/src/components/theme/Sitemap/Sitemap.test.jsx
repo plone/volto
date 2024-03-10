@@ -99,6 +99,11 @@ describe('Sitemap in a multilingual site', () => {
         locale: 'en',
         messages: {},
       },
+      navroot: {
+        navroot: {
+          '@id': 'http://localhost:8080/Plone/en',
+        },
+      },
     });
     const component = renderer.create(
       <Provider store={store}>
