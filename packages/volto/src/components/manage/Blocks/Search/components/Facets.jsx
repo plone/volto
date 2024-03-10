@@ -82,7 +82,11 @@ const Facets = (props) => {
             );
 
           choices = choices.sort((a, b) =>
-            a.label.localeCompare(b.label, 'en', { sensitivity: 'base' }),
+            typeof a.label === 'string' && typeof b.label === 'string'
+              ? a.label.localeCompare(b.label, 'en', { sensitivity: 'base' })
+              : typeof a.label === 'number' && typeof b.label == 'number'
+                ? a - b
+                : 0,
           );
 
           const isMulti = facetSettings.multiple;
