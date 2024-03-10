@@ -1,22 +1,22 @@
 import { defineMessages } from 'react-intl';
 
 const messages = defineMessages({
-    Image: {
-      id: 'Image',
-      defaultMessage: 'Image',
-    },
-    Origin: {
-      id: 'Origin',
-      defaultMessage: 'Origin',
-    },
-    AltText: {
-      id: 'Alt text',
-      defaultMessage: 'Alt text',
-    },
+  Image: {
+    id: 'Image',
+    defaultMessage: 'Image',
+  },
+  Origin: {
+    id: 'Origin',
+    defaultMessage: 'Origin',
+  },
+  AltText: {
+    id: 'Alt text',
+    defaultMessage: 'Alt text',
+  },
 });
 
 export const LeadImageSchema = (props) => ({
-  title: intl.formatMessage(messages.Image),
+  title: props.intl.formatMessage(messages.Image),
   block: 'Image',
   fieldsets: [
     {
@@ -28,17 +28,17 @@ export const LeadImageSchema = (props) => ({
 
   properties: {
     image: {
-        title: intl.formatMessage(messages.Image),
-        type: 'string',
-      },
-      origin: {
-        title: intl.formatMessage(messages.Origin),
-        type: 'string',
-      },
-      altText: {
-        title: intl.formatMessage(messages.AltText),
-        type: 'string',
-      },
+      title: props.intl.formatMessage(messages.Image),
+      type: 'string',
+    },
+    origin: {
+      title: props.intl.formatMessage(messages.Origin),
+      type: 'string',
+    },
+    altText: {
+      title: props.intl.formatMessage(messages.AltText),
+      type: 'string',
+    },
   },
   required: [],
 });

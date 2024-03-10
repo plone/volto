@@ -5,12 +5,7 @@ import { BlockDataForm } from '@plone/volto/components';
 import { Form } from 'semantic-ui-react';
 import { Accordion, Grid, Segment } from 'semantic-ui-react';
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
-import {
-  CheckboxWidget,
-  Icon,
-  Image,
-  TextWidget,
-} from '@plone/volto/components';
+import { Icon, Image, TextWidget } from '@plone/volto/components';
 import { flattenToAppURL } from '@plone/volto/helpers';
 import AlignBlock from '@plone/volto/components/manage/Sidebar/AlignBlock';
 
@@ -18,7 +13,6 @@ import imageSVG from '@plone/volto/icons/image.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import upSVG from '@plone/volto/icons/up-key.svg';
 import downSVG from '@plone/volto/icons/down-key.svg';
-import navTreeSVG from '@plone/volto/icons/nav.svg';
 
 const messages = defineMessages({
   Image: {
@@ -55,16 +49,16 @@ const messages = defineMessages({
   },
 });
 
-const LeadImageSidebar = ({
-  properties,
-  data,
-  block,
-  onChangeBlock,
-  openObjectBrowser,
-  required = false,
-  onChangeField,
-  intl,
-}) => {
+const LeadImageSidebar = (props) => {
+  const {
+    properties,
+    data,
+    block,
+    onChangeBlock,
+    required = false,
+    onChangeField,
+    intl,
+  } = props;
   const [activeAccIndex, setActiveAccIndex] = useState(0);
   const schema = LeadImageSchema({ ...props, intl });
   function handleAccClick(e, titleProps) {
@@ -158,31 +152,31 @@ const LeadImageSidebar = ({
             </Form.Field>
           </Segment>
           <Accordion fluid styled className="form">
-                        <Accordion.Title
-                            active={activeAccIndex === 0}
-                            index={0}
-                            onClick={handleAccClick}
-                        >
-                            Link Settings
-                            {activeAccIndex === 0 ? (
-                                <Icon name={upSVG} size="20px" />
-                            ) : (
-                                <Icon name={downSVG} size="20px" />
-                            )}
-                        </Accordion.Title>
-                        <Accordion.Content active={activeAccIndex === 0}>
-                            <BlockDataForm
-                                schema={schema}
-                                formData={data}
-                                onChangeField={(id, value) => {
-                                    onChangeBlock(block, {
-                                        ...data,
-                                        [id]: id === 'link' ? flattenToAppURL(value) : value,
-                                    });
-                                }}
-                            />
-                        </Accordion.Content>
-                    </Accordion>
+            <Accordion.Title
+              active={activeAccIndex === 0}
+              index={0}
+              onClick={handleAccClick}
+            >
+              Link Settings
+              {activeAccIndex === 0 ? (
+                <Icon name={upSVG} size="20px" />
+              ) : (
+                <Icon name={downSVG} size="20px" />
+              )}
+            </Accordion.Title>
+            <Accordion.Content active={activeAccIndex === 0}>
+              <BlockDataForm
+                schema={schema}
+                formData={data}
+                onChangeField={(id, value) => {
+                  onChangeBlock(block, {
+                    ...data,
+                    [id]: id === 'link' ? flattenToAppURL(value) : value,
+                  });
+                }}
+              />
+            </Accordion.Content>
+          </Accordion>
         </>
       )}
     </Segment.Group>
