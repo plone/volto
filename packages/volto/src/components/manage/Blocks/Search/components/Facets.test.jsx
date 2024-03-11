@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { sortFacetChoices } from './Facets';
 
 describe('sortFacetChoices', () => {
