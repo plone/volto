@@ -138,7 +138,7 @@
   },
   "dependencies": <%- dependencies %>,
   "devDependencies": {
-    "@plone/scripts": "^3.0.0",
+    "@plone/scripts": "^3.5.0",
     "@storybook/addon-actions": "^6.3.0",
     "@storybook/addon-controls": "6.3.0",
     "@storybook/addon-essentials": "^6.3.0",
@@ -148,6 +148,15 @@
     "@storybook/react": "^6.3.0",
     "@typescript-eslint/eslint-plugin": "7.1.1",
     "@typescript-eslint/parser": "7.1.1",
+    "eslint": "8.49.0",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-config-react-app": "7.0.1",
+    "eslint-import-resolver-alias": "1.1.2",
+    "eslint-plugin-import": "2.29.1",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-prettier": "5.1.3",
+    "eslint-plugin-react": "7.33.2",
+    "eslint-plugin-react-hooks": "4.6.0",
     "jest-junit": "8.0.0",
     "mrs-developer": "^2.1.1",
     "postcss": "8.4.13",
@@ -158,7 +167,7 @@
     "stylelint-prettier": "5.0.0",
     "ts-jest": "^26.4.2",
     "ts-loader": "9.4.4",
-    "typescript": "5.3.3"
+    "typescript": "5.4.2"
   },
   "resolutions": {
     "@pmmmwh/react-refresh-webpack-plugin": "0.5.11",
