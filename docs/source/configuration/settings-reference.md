@@ -26,7 +26,7 @@ navDepth
     Navigation levels depth used in the navigation endpoint calls. Increasing this is useful for implementing fat navigation menus. Defaults to `1`.
 
 defaultBlockType
-    The default block type in Volto is "text", which uses the current DraftJS-based implementation for the rich text editor. Future alternative rich text editors will need to use this setting and replace it with their block type. The block definition should also include the `blockHasValue` function, which is needed to activate the Block Chooser functionality. See this function signature in [Blocks > Settings](../blocks/settings.md).
+    The default block type in Volto is "text," utilizing the existing implementation of the rich text editor based on DraftJS. Any prospective alternative rich text editors must adhere to this setting and substitute it with their block type. The block definition must encompass the blockHasValue function, crucial for activating the Block Chooser functionality. Refer to the function signature in Blocks > Settings for more details.
 
 
 sentryOptions
