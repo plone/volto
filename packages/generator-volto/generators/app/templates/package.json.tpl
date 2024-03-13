@@ -70,7 +70,7 @@
     "globals": {
       "__DEV__": true
     }
-  }
+  },
   "engines": {
     "node": "^18 || ^20"
   },
