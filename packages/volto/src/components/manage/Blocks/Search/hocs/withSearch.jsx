@@ -412,12 +412,12 @@ const withSearch = (options) => (WrappedComponent) => {
               query: data.query || {},
               facets: toSearchFacets || facets,
               searchText: toSearchText ? toSearchText.trim() : '',
-              sortOn: toSortOn || sortOn,
+              sortOn: toSortOn || undefined,
               sortOrder: toSortOrder || sortOrder,
               facetSettings,
             });
             if (toSearchFacets) setFacets(toSearchFacets);
-            if (toSortOn) setSortOn(toSortOn);
+            if (toSortOn) setSortOn(toSortOn || undefined);
             if (toSortOrder) setSortOrder(toSortOrder);
             setSearchData(newSearchData);
             setLocationSearchData(getSearchFields(newSearchData));
