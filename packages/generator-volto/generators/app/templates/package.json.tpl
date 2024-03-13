@@ -85,6 +85,8 @@
     "@storybook/builder-webpack5": "^6.5.15",
     "@storybook/manager-webpack5": "^6.5.15",
     "@storybook/react": "^6.3.0",
+    "@types/react-router-dom": "^5.3.3",
+    "@types/uuid": "^9.0.8",
     "@typescript-eslint/eslint-plugin": "7.1.1",
     "@typescript-eslint/parser": "7.1.1",
     "eslint": "8.49.0",
