@@ -497,4 +497,65 @@ describe('Search Block Tests', () => {
       `Search results: ${results_number}`,
     );
   });
+
+  it('Search block - test on edit sort on and sort order', () => {
+    cy.visit('/');
+    cy.get('#toolbar-add > .icon').click();
+    cy.get('#toolbar-add-document').click();
+    cy.getSlateTitle().focus().click().type('My Search Page');
+
+    // Add Search listing block
+    cy.addNewBlock('search');
+
+    // Add search query criteria
+    cy.get('#default-query-0-query .react-select__value-container').click();
+    cy.get('#default-query-0-query .react-select__option')
+      .contains('Type')
+      .click();
+
+    cy.get('#default-query-0-query .fields:first-of-type > .field').click();
+    cy.get(
+      '#default-query-0-query .fields:first-of-type > .field .react-select__option',
+    )
+      .contains('Page')
+      .click();
+
+    cy.get('#default-query-0-query .fields:first-of-type > .field').click();
+    cy.get(
+      '#default-query-0-query .fields:first-of-type > .field .react-select__option',
+    )
+      .contains('Folder')
+      .click();
+
+    cy.get('#default-query-0-query .fields:first-of-type > .field').click();
+    cy.get(
+      '#default-query-0-query .fields:first-of-type > .field .react-select__option',
+    )
+      .contains('Event')
+      .click();
+
+    // uncheck showSearchButton
+    cy.get('label[for=field-showSearchButton]').click();
+    cy.get('.search-wrapper .ui.button').should('contain', 'Search');
+    // reverse order
+    cy.get('label[for=field-sort_order_boolean-2-query]').click();
+    //check if the sorting order is working
+    cy.get('.listing-item').first().contains('My Event');
+    cy.get('#select-listingblock-sort-on').click();
+    cy.get('.react-select__menu .react-select__group')
+      .first()
+      .children()
+      .first()
+      .next()
+      .children()
+      .first()
+      .next()
+      .click();
+    cy.wait(5000);
+
+    cy.get('.listing-item').first().contains('My page');
+    //save page
+    cy.get('#toolbar-save > .icon').click();
+    cy.wait(500);
+  });
 });
