@@ -70,75 +70,14 @@
     "globals": {
       "__DEV__": true
     }
-  },
-  "prettier": {
-    "trailingComma": "all",
-    "singleQuote": true,
-    "overrides": [
-      {
-        "files": "*.overrides",
-        "options": {
-          "parser": "less"
-        }
-      }
-    ]
-  },
-  "stylelint": {
-    "extends": [
-      "stylelint-config-idiomatic-order"
-    ],
-    "plugins": [
-      "stylelint-prettier"
-    ],
-    "overrides": [
-      {
-        "files": [
-          "**/*.less"
-        ],
-        "customSyntax": "postcss-less"
-      },
-      {
-        "files": [
-          "**/*.overrides"
-        ],
-        "customSyntax": "postcss-less"
-      },
-      {
-        "files": [
-          "**/*.scss"
-        ],
-        "customSyntax": "postcss-scss"
-      }
-    ],
-    "rules": {
-      "prettier/prettier": true,
-      "rule-empty-line-before": [
-        "always-multi-line",
-        {
-          "except": [
-            "first-nested"
-          ],
-          "ignore": [
-            "after-comment"
-          ]
-        }
-      ]
-    },
-    "ignoreFiles": "theme/themes/default/**/*.overrides"
-  },
-  "browserslist": [
-    ">1%",
-    "last 4 versions",
-    "Firefox ESR",
-    "not ie 11",
-    "not dead"
-  ],
+  }
   "engines": {
-    "node": "^16 || ^18 || ^20"
+    "node": "^18 || ^20"
   },
   "dependencies": <%- dependencies %>,
   "devDependencies": {
     "@plone/scripts": "^3.5.0",
+    "@plone/types": "^1.0.0-alpha.5",
     "@storybook/addon-actions": "^6.3.0",
     "@storybook/addon-controls": "6.3.0",
     "@storybook/addon-essentials": "^6.3.0",
