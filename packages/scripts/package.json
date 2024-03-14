@@ -36,7 +36,8 @@
   "bin": {
     "addon": "./addon/index.js",
     "changelogupdater": "./changelogupdater.cjs",
-    "i18n": "./i18n.cjs"
+    "i18n": "./i18n.cjs",
+    "depssync": "./deps_sync.js"
   },
   "publishConfig": {
     "access": "public"
