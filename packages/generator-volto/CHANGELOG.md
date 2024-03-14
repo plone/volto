@@ -8,6 +8,100 @@
 
 <!-- towncrier release notes start -->
 
+## 9.0.0-alpha.11 (2024-03-14)
+
+### Bugfix
+
+- Upgrade all versions in generator templates @sneridagh [#5844](https://github.com/plone/volto/issues/5844)
+- Improve deps in project generator. @sneridagh @wesleybl [#5870](https://github.com/plone/volto/issues/5870)
+
+## 9.0.0-alpha.10 (2024-03-05)
+
+### Bugfix
+
+- Add new forced resolutions to projects too @sneridagh [#5839](https://github.com/plone/volto/issues/5839)
+
+## 9.0.0-alpha.9 (2024-03-05)
+
+### Bugfix
+
+- Ensure hidden files get added to new addon projects in generator-volto @instification [#5719](https://github.com/plone/volto/issues/5719)
+
+## 9.0.0-alpha.8 (2024-03-02)
+
+### Internal
+
+- Update dependencies @sneridagh [#5815](https://github.com/plone/volto/issues/5815)
+
+## 9.0.0-alpha.7 (2024-03-01)
+
+### Bugfix
+
+- Switch peerDependencies to Volto 18 for generator-volto alpha's/latest. [#5780](https://github.com/plone/volto/issues/5780)
+
+## 9.0.0-alpha.6 (2024-02-18)
+
+### Bugfix
+
+- Fix @plone/volto-slate path in moduleNameMapper. @wesleybl [#5743](https://github.com/plone/volto/issues/5743)
+
+## 9.0.0-alpha.5 (2024-02-06)
+
+### Bugfix
+
+- Fix tests in projects that involves TS files @sneridagh [#5738](https://github.com/plone/volto/issues/5738)
+
+### Documentation
+
+- Reorganize `README.md`, merging content into authoritative locations. Add `awesome_bot` to check links in all READMEs. @stevepiercy [#5437](https://github.com/plone/volto/issues/5437)
+
+## 9.0.0-alpha.4 (2024-02-02)
+
+### Bugfix
+
+- Clarify the default value of `--defaultAddonName`. @ichim-david
+  Clarify that the default add-on is always added when a project is generated. @ichim-david
+  Added note about how `--defaultAddonName` affects the always added theme add-on on project generation. @ichim-david [#5439](https://github.com/plone/volto/issues/5439)
+
+## 9.0.0-alpha.3 (2024-01-15)
+
+### Internal
+
+- ESlint general improvements @sneridagh [#5548](https://github.com/plone/volto/issues/5548)
+- Pin mrs.developer to an updated version, never to star. @sneridagh [#5593](https://github.com/plone/volto/issues/5593)
+
+### Documentation
+
+- Fix redirects. @stevepiercy [#5563](https://github.com/plone/volto/issues/5563)
+
+## 9.0.0-alpha.2 (2023-12-14)
+
+### Bugfix
+
+- Fixed the project generator's ESLint configuration, added code quality checks to the CI to ensure a generated project can run these checks, and added documentation for how to reconfigure ESLint in projects. @sneridagh [#5530](https://github.com/plone/volto/issues/5530)
+
+## 9.0.0-alpha.1 (2023-12-02)
+
+### Bugfix
+
+- Fix the generator for add-ons when killing the backend if CTRL+C while developing with the docker approach @sneridagh [#5474](https://github.com/plone/volto/issues/5474)
+
+### Documentation
+
+- Replaced table with link to documentation for compatibility section in README. @stevepiercy [#5480](https://github.com/plone/volto/issues/5480)
+
+## 9.0.0-alpha.0 (2023-12-01)
+
+### Breaking
+
+- Release an alpha version only compatible with Volto 18. @sneridagh [#5468](https://github.com/plone/volto/issues/5468)
+
+## 8.0.3 (2023-11-25)
+
+### Bugfix
+
+- Bring back deprecated Yeoman install method used for running yarnInstall @ichim-david [#5436](https://github.com/plone/volto/issues/5436)
+
 ## 8.0.2 (2023-11-16)
 
 ### Bugfix

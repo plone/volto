@@ -44,13 +44,8 @@ function getPositionStyle(rect) {
 }
 
 const LinkEditor = (props) => {
-  const {
-    editor,
-    pluginId,
-    getActiveElement,
-    unwrapElement,
-    insertElement,
-  } = props;
+  const { editor, pluginId, getActiveElement, unwrapElement, insertElement } =
+    props;
   const pid = `${editor.uid}-${pluginId}`;
   const showEditor = useSelector((state) => {
     return state['slate_plugins']?.[pid]?.show_sidebar_editor;

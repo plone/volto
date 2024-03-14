@@ -1,6 +1,6 @@
 /* eslint no-console: 0 */
 import https from 'https';
-import { execSync, exec } from 'child_process';
+import { execSync } from 'child_process';
 
 if (process.argv.length < 2) {
   console.log(process.argv.length);
@@ -10,7 +10,7 @@ if (process.argv.length < 2) {
 const pr = process.argv[2];
 const URL = `https://api.github.com/repos/plone/volto/pulls/${pr}`;
 
-function getPRInfo(pr) {
+function getPRInfo() {
   return new Promise((resolve, reject) => {
     https
       .get(
@@ -57,8 +57,8 @@ function execCommand(command) {
   });
 }
 
-async function main(params) {
-  const PRInfo = await getPRInfo(pr);
+async function main() {
+  const PRInfo = await getPRInfo();
 
   // const currentBranch = execCommand(
   //   `git rev-parse --abbrev-ref HEAD`,

@@ -11,9 +11,13 @@ myst:
 
 ## About design systems
 
-A Design System is the single source of truth which groups all the elements that will allow the teams to design, realize and develop a product. So a Design System is not a deliverable, but a set of deliverables. It will evolve constantly with the product, the tools and the new technologies.
+A Design System is the single source of truth which groups all the elements that will allow the teams to design, realize and develop a product.
+So a Design System is not a deliverable, but a set of deliverables.
+It constantly evolves with the product, tools, and new technologies.
 
-Volto (and thus, Plone 6) has a design system in the making since some years ago. Albert Casado Celma (@albertcasado) has been working on it and providing with a lot of hints and advices about how Volto's UI/UX should be. As stated at the beginning, a design system is a continuous effort, that evolves over time with the users' feedback and needs.
+Volto (and thus, Plone 6) had a design system in the making for several years.
+Albert Casado Celma (@albertcasado) had been working on it, and providing a lot of hints and advice about how Volto's UI/UX should be.
+As stated at the beginning, a design system is a continuous effort, that evolves over time with the users' feedback and needs.
 
 Albert gifted the community with Pastanaga UI some years ago, which was implemented during last years as default theme UI and UX in Volto itself. Although unfinished, it provided us with endless resources and patterns that we applied to Volto bit by bit.
 

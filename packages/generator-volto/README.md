@@ -1,10 +1,10 @@
 # Yeoman Volto App Generator
 
-@plone/generator-volto is a Yeoman generator that helps you to set up Volto via command line.
+@plone/generator-volto is a Yeoman generator that helps you to set up a Volto project via the command line.
 
 ## Installation
 
-First, install [Yeoman](http://yeoman.io) and @plone/generator-volto using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
+First, install [Yeoman](https://yeoman.io/) and @plone/generator-volto using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/en)).
 
 ```bash
 npm install -g yo
@@ -13,22 +13,20 @@ npm install -g @plone/generator-volto
 
 ## Compatibility
 
-| Plone version | Volto version |
-|----------|--------------|
-| 7.x      | >=17.0.0     |
-| 6.x      | 16.x.x       |
+See [`volto-generator` compatibility with Volto](https://6.docs.plone.org/volto/contributing/version-policy.html#volto-generator-compatibility-with-volto-label).
 
 ## Usage
 
-### Creating a new Volto project using `npm init`
+### Create a new Volto project using `npm init`
 
 ```bash
 npm init yo @plone/volto
 ```
 
-This is the shortcut for using `npm init` command. It uses Yeoman (`yo`) and `@plone/generator-volto` and execute them without having to be installed globally.
+This is the shortcut for using `npm init` command.
+It uses Yeoman (`yo`) and `@plone/generator-volto`, and `npm` executes the commands without having the need for the packages to be installed globally.
 
-Answer the prompt questions to complete the generation process.
+Answer the prompts to complete the generation process.
 
 ### Creating a new Volto project
 
@@ -36,8 +34,10 @@ Answer the prompt questions to complete the generation process.
 yo @plone/volto
 ```
 
-This will bootstrap a new Volto project inside the current folder. It will ask
-a few questions: project name, project description and a list of addons. Run:
+This will bootstrap a new Volto project inside the current folder.
+It will ask a few questions for the project name, project description, and a list of add-ons. 
+
+Run:
 
 ```console
 $ yo @plone/volto --help
@@ -53,11 +53,11 @@ Options:
         --volto             # Desired Volto version, if not provided, the most recent will be used
         --canary            # Desired Volto version should be a canary (alpha)                      Default: false
         --interactive       # Enable/disable interactive prompt                                     Default: true
-        --skip-addons       # Don't ask for addons as part of the scaffolding
+        --skip-addons       # Don't ask for add-ons as part of the scaffolding
         --addon             # Add-on loader string. Example: some-volto-addon:loadExtra,loadOtherExtra
         --workspace         # Yarn workspace. Example: src/addons/some-volto-addon
         --description       # Project description
-        --defaultAddonName  # The default add-on's name to be added to the generated project.
+        --defaultAddonName  # The default add-on's name always added to the generated project       Default: volto-[<projectName>]
 
 Arguments:
   projectName    Type: String  Required: false
@@ -66,7 +66,15 @@ Arguments:
 
 to see a full list of options and arguments.
 
-You can provide an specific Volto version like:
+> [!NOTE]  
+> In addition to the Volto project, the generator creates a theme add-on inside `src/addons` with the default name of `volto-[<project-name>]`.
+> You can provide a specific name for the theme add-on that is created on project generation like:
+> ```shell
+> yo @plone/volto --defaultAddonName="volto-project-theme"
+> ```
+> If you've used the example project name `myvoltoproject` inside `src/addons`, you will find the Volto theme add-on named `volto-project-theme` instead of the default generator name `volto-myvoltoproject`.
+
+You can provide a specific Volto version like:
 
 ```bash
 yo @plone/volto --volto=12.0.0-alpha.0
@@ -90,13 +98,13 @@ You can use it in full non-interactive mode by passing something like:
 yo @plone/volto myvoltoproject --no-interactive
 ```
 
-Or by skipping specific configuration:
+Or by skipping specific configuration options:
 
 ```bash
 yo @plone/volto myvoltoproject --description "My Volto project" --skip-addons --skip-install --skip-workspaces
 ```
 
-You can also specify addons to load, like:
+You can also specify add-ons to load, like:
 
 ```bash
 yo @plone/volto myvoltoproject --description "My Volto project" --addon "volto-formbuilder:x,y" --addon "volto-slate:z,t"
@@ -126,12 +134,12 @@ Options:
         --outputpath     # Output path
 
 Arguments:
-  addonName  # Addon name, e.g.: @plone-collective/volto-custom-block  Type: String  Required: false
+  addonName  # Add-on name, e.g.: @plone-collective/volto-custom-block  Type: String  Required: false
 ```
 
-### Enabling an existing add-on as a theme add-on
+### Enable an existing add-on as a theme add-on
 
-If you want one of your add-ons to be a theme, you can run this template on the top of your add-on.
+If you want one of your add-ons to be a theme, you can run this template on top of your add-on.
 Use the configuration option `outputpath` for the path of your add-on.
 Assuming your add-on is located at `./testaddon` folder, you would issue the following shell command.
 
@@ -152,7 +160,7 @@ Options:
         --outputpath     # Output path
 
 Arguments:
-  addonName  # Addon name, e.g.: @plone-collective/volto-custom-block  Type: String  Required: false
+  addonName  # Add-on name, e.g.: @plone-collective/volto-custom-block  Type: String  Required: false
 ```
 
 You can also run the command inside the add-on folder, without passing any option.
@@ -175,12 +183,11 @@ Please note that you have to run a Plone backend as well.
 E.g. with docker:
 
 ```shell
-docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e PROFILES="plone.volto:default-homepage" plone/plone-backend:6.0.7
+docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e PROFILES="plone.volto:default-homepage" plone/plone-backend:6.0.8
 ```
 
-Consult the Plone frontend Volto docs for further details:
+Consult the [Plone frontend Volto documentation](https://6.docs.plone.org/volto/index.html) for further details.
 
-https://6.docs.plone.org/volto/index.html
 
 ### Build a production build with `yarn build`
 

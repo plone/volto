@@ -52,8 +52,7 @@ module.exports = class extends Generator {
     });
     this.option('volto', {
       type: String,
-      desc:
-        'Desired Volto version, if not provided, the most recent will be used',
+      desc: 'Desired Volto version, if not provided, the most recent will be used',
     });
     this.option('canary', {
       type: Boolean,
@@ -71,8 +70,7 @@ module.exports = class extends Generator {
     });
     this.option('addon', {
       type: (arr) => arr,
-      desc:
-        'Addon loader string. Example: some-volto-addon:loadExtra,loadOtherExtra',
+      desc: 'Addon loader string. Example: some-volto-addon:loadExtra,loadOtherExtra',
     });
     this.option('workspace', {
       type: (arr) => arr,
@@ -108,6 +106,24 @@ It's important to have the generators updated!
 Run "npm install -g @plone/generator-volto" to update.`,
     });
 
+    this.log(
+      chalk.green(
+        'This version of the generator works for Volto version 18.x.x.',
+      ),
+    );
+    this.log(
+      chalk.green(
+        'If you want to generate a project for another version of Volto',
+      ),
+    );
+    this.log(chalk.green('then use the appropriate version.'));
+    this.log(
+      chalk.green(
+        'See https://6.docs.plone.org/volto/contributing/version-policy.html#volto-generator-compatibility-with-volto-label.',
+      ),
+    );
+    this.log(chalk.green());
+
     let voltoVersion;
     if (this.opts.canary) {
       this.log(chalk.red('Getting latest canary (alpha) Volto version'));
@@ -115,7 +131,6 @@ Run "npm install -g @plone/generator-volto" to update.`,
       this.log(`Using latest canary (alpha) Volto version: ${voltoVersion}`);
     } else if (this.opts.volto === '.') {
       voltoVersion = '*';
-      this.voltoYarnLock = this.fs.read('yarn.lock');
     } else if (this.opts.volto) {
       voltoVersion = this.opts.volto;
       this.log(`Using chosen Volto version: ${voltoVersion}`);
@@ -123,11 +138,6 @@ Run "npm install -g @plone/generator-volto" to update.`,
       this.log(chalk.red('Getting latest Volto version'));
       voltoVersion = await utils.getLatestVoltoVersion();
       this.log(`Using latest released Volto version: ${voltoVersion}`);
-    }
-
-    if (!this.voltoYarnLock) {
-      this.log(chalk.red("Retrieving Volto's yarn.lock"));
-      this.voltoYarnLock = await utils.getVoltoYarnLock(voltoVersion);
     }
 
     this.globals = {
@@ -154,7 +164,7 @@ Run "npm install -g @plone/generator-volto" to update.`,
           {
             type: 'input',
             name: 'projectName',
-            message: 'Project name (e.g. my-volto-project)',
+            message: 'Project name (e.g. myvoltoproject)',
             default: path.basename(process.cwd()),
           },
         ]);
@@ -240,7 +250,6 @@ Run "npm install -g @plone/generator-volto" to update.`,
       this.destinationPath(base, '.gitignore'),
       this.globals,
     );
-    this.fs.write(this.destinationPath(base, 'yarn.lock'), this.voltoYarnLock);
 
     this.fs.copy(this.templatePath(), this.destinationPath(base), {
       globOptions: {

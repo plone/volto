@@ -15,11 +15,9 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "paths": {
-      "@plone/types/*": ["../types/*"],
-    }
+    "paths": {}
   },
-  "include": ["src"],
+  "include": ["src", "src/**/*.js"],
   "exclude": [
     "node_modules",
     "build",

@@ -14,12 +14,49 @@ myst:
 This chapter describes the versions of software that Volto supports and how Volto communicates its releases through its branch policy.
 
 
-## Plone and Plone REST API
+(volto-generator-compatibility-with-volto-label)=
+
+## `volto-generator` compatibility with Volto
+
+`volto-generator` is a tool that generates a Volto project.
+The following table describes the compatibility between versions of `volto-generator` and Volto.
+
+| Generator version | Volto version |
+|-------------------|---------------|
+| 9.x               | 18.x.x        |
+| 7.x and 8.x       | 17.x.x        |
+| 6.x               | 16.x.x        |
+
+
+(version-policy-plone-python-and-plone-rest-api-compatibility)=
+
+## Plone, Python, and Plone REST API compatibility
+
+Volto is the default UI for Plone 6.
+It will work for all released Plone 6 versions.
 
 Volto relies on [Plone core (`Products.CMFPlone`)](https://github.com/plone/Products.CMFPlone) and [Plone REST API](https://github.com/plone/plone.restapi).
 We will always support the [latest major Plone release](https://plone.org/download/releases) and the version of Plone REST API that ships with it.
 
-Volto should work on old Plone versions as well, since Plone REST API supports Plone back to version 4.3 (including Archetypes).
+The versions of Python that are supported in Volto depend on the version of Plone that you use.
+
+| Plone | Python       | Volto        |
+| ----- | ------------ | ------------ |
+| 6.0   | 3.8-3.11     | 16.0 or 17.0 |
+| 5.2   | 2.7, 3.6-3.8 | 15.0         |
+
+On Plone 6, we recommend using the known good set (KGS) of package versions that are specified in the Plone release.
+
+On Plone 5, Volto is currently tested with the following packages pinned to specific versions, and we recommend using the same versions, which are:
+
+-   `plone.restapi` 9.2.0
+-   `plone.rest` 3.0.1
+-   `plone.volto` 4.1.0
+
+For the Plone 5 series, the [latest released version of Plone 5](https://plone.org/download/releases) is recommended.
+
+Volto should work on older Plone versions as well, since Plone REST API supports Plone back to version 4.3 (including Archetypes).
+
 We do not support or test Plone versions that were released before Volto existed.
 
 ```{seealso}
@@ -27,9 +64,29 @@ See also [Plone REST API Python and Plone compatability](https://github.com/plon
 ```
 
 
+(version-policy-node-js)=
+
 ## Node.js
 
+Volto runs using [Node.js](https://nodejs.org/en).
 Volto always supports only [LTS versions of Node.js](https://github.com/nodejs/release#release-schedule).
+We recommend using the current LTS version.
+
+- Node.js 20 LTS: Supported since Volto 17.
+- Node.js 18 LTS: Supported since Volto 17.
+- Node.js 16: No longer supported. It was supported in Volto 14 - 16.
+- Node.js 14: No longer supported. It was supported in Volto 8.8.0 - 16.
+- Node.js 12: No longer supported. It was supported in Volto 4 - 15.
+- Node.js 10: No longer supported. It was supported in Volto 1 - 12.
+
+
+(version-policy-supported-browsers)=
+
+## Supported browsers
+
+Volto works well with the current version of any modern browser—including Chrome, Firefox, Safari, and Edge—as well as their mobile flavors.
+
+We do not guarantee that outdated browsers, such as Internet Explorer 11, are supported by Volto.
 
 
 ## Branch policy

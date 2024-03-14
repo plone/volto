@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "4.0.0",
+  "version": "5.0.0-alpha.0",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -33,38 +33,19 @@
     "release-major-alpha": "release-it major --preRelease=alpha",
     "release-alpha": "release-it --preRelease=alpha"
   },
-  "release-it": {
-    "hooks": {
-      "after:bump": "pipx run towncrier build --draft --yes --version ${version} > .changelog.draft && pipx run towncrier build --yes --version ${version}",
-      "after:release": "rm .changelog.draft"
-    },
-    "git": {
-      "changelog": "pipx run towncrier build --draft --yes --version 0.0.0",
-      "requireUpstream": false,
-      "requireCleanWorkingDir": false,
-      "commitMessage": "Release @plone/volto-testing ${version}",
-      "tagName": "plone-volto-testing-${version}",
-      "tagAnnotation": "Release @plone/volto-testing ${version}"
-    },
-    "github": {
-      "release": true,
-      "releaseName": "@plone/volto-testing ${version}",
-      "releaseNotes": "cat .changelog.draft"
-    }
-  },
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@testing-library/cypress": "9.0.0",
-    "@testing-library/jest-dom": "5.16.4",
+    "@testing-library/cypress": "10.0.1",
+    "@testing-library/jest-dom": "6.4.2",
     "@testing-library/react": "12.1.5",
-    "axe-core": "4.6.3",
-    "cypress": "13.1.0",
+    "axe-core": "4.8.4",
+    "cypress": "13.6.6",
     "cypress-axe": "1.5.0",
     "cypress-file-upload": "5.0.8"
   },
   "devDependencies": {
-    "release-it": "^16.1.3"
+    "release-it": "^17.1.1"
   }
 }

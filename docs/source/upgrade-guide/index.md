@@ -28,6 +28,65 @@ Thus it is safe to run it on top of your project and answer the prompts.
 
 ## Upgrading to Volto 18.x.x
 
+### Volto runs now on React 18.2.0
+
+We have updated Volto to use React 18.
+This has been the latest published stable version since June 2022.
+This aligns Volto with the latests developments in the React ecosystem and opens the door to up to date software and React features, like client side `Suspense` and others:
+
+- Concurrent rendering in client (Suspense)
+- Automatic batching updates
+- Transitions
+- New hooks `useId`, `useTransition`, `useDeferredValue`, `useSyncExternalStore`, and other hooks
+
+### `draftJS` dependency and `text`, `table`, and `hero` blocks removed
+
+In Volto 16, the `text` block powered by the `Draft.js` library was deprecated, and it was announced that it would be removed in Volto 18.
+Two other blocks, `table` and `hero`, that depended on `Draft.js` were also removed.
+
+If you still need these blocks in your site, you can copy over the block code and settings into your project.
+You can also migrate these blocks to use either `slate` or `slateTable` blocks.
+The `hero` block can be replaced by the `teaser` block, but a migration is also needed.
+See {ref}`existing-projects-using-core-draftjs-opting-to-migrate-to-slate`.
+
+### `react-portal` dependency removed
+
+`react-portal` is deprecated and it was removed from Volto.
+The Volto code that relied on it was mainly CMS UI components.
+If your project relies on it, either in your code or the shadowed components you may have, you should update to use the standard React API, `createPortal`.
+You can update your shadows taking the modified components as templates.
+As a last resort, you can install `react-portal` as a dependency of your project.
+However, this is discouraged, because the React 18 rendering could have unexpected side effects.
+It is recommended that you use the React API instead.
+
+### ESlint project configuration update
+
+`@plone/registry` and [other packages on which Volto depends](https://github.com/plone/volto/tree/main/packages) are now stand-alone releases in the monorepo structure released in 18.0.0-alpha.4.
+
+You must update the configuration file {file}`.eslintrc.js` in your projects, according to the following `git diff` patch.
+
+```diff
+@@ -18,9 +19,6 @@ if (configFile) {
+     voltoPath = `./${jsConfig.baseUrl}/${pathsConfig['@plone/volto'][0]}`;
+ }
+
+-const AddonConfigurationRegistry = require(
+-  `${voltoPath}/packages/registry/addon-registry.js`,
+-);
+const AddonConfigurationRegistry = require('@plone/registry/src/addon-registry');
+
+@@ -38,9 +36,7 @@ const defaultConfig = {
+       alias: {
+         map: [
+           ['@plone/volto', '@plone/volto/src'],
+-          ['@plone/volto-slate', '@plone/volto/packages/volto-slate/src'],
+-          ['@plone/registry', '@plone/volto/packages/registry/src'],
+-          ['@plone/types', '@plone/volto/packages/types'],
++          ['@plone/volto-slate', '@plone/volto-slate/src'],
+           ...addonAliases,
+           ['@package', `${__dirname}/src`],
+```
+
 ### Upgraded Slate libraries
 
 The support libraries for Slate integration have been upgraded, mainly for bug fixes.
@@ -40,6 +99,10 @@ If you use this component in your add-ons or projects directly, you need to repl
 In your add-ons and projects, we advise you to always use the public components provided by Volto, instead of directly using the support libraries packaged in Volto.
 ```
 
+### Remove the disabled property from fields in the source content in babel view
+
+This change improves UX of the Babel view (translation form) since a disabled field cannot be selected to be copied over.
+
 (volto-upgrade-guide-17.x.x)=
 
 ## Upgrading to Volto 17.x.x
@@ -51,12 +114,6 @@ Long Term Support for Node.js 16 by the Node.js community ended in September 202
 Volto 17 no longer supports Node.js 14 or 16.
 Please update your projects to a supported Node.js version (18 or 20).
 Version 18 is recommended, as the current LTS version of Node.js.
-
-#### localhost now resolves to an IPv6 address
-
-Node.js 18 prefers to resolve `localhost` to an IPv6 address instead of IPv4.
-If you are setting `RAZZLE_API_PATH` to a URL that includes `localhost`,
-change the hostname to `127.0.0.1` instead.
 
 ### Webpack 5
 
@@ -384,6 +441,8 @@ For projects already using `volto-slate`, take the following steps in your proje
 - import { DetachedTextBlockEditor } from 'volto-slate/blocks/Text/DetachedTextBlockEditor';
 + import { DetachedTextBlockEditor } from '@plone/volto-slate/blocks/Text/DetachedTextBlockEditor';
 ```
+
+(existing-projects-using-core-draftjs-opting-to-migrate-to-slate)=
 
 #### Existing projects using core `draftJS`, opting to continue using `draftJS`
 
@@ -1709,7 +1768,7 @@ Since Volto 9.2.0 the next step IS NOT required anymore.
 ```
 
 ~~Copy (and overwrite) the `patches` folder into your local project
-https://github.com/plone/volto/tree/main/patches or, if you want to be more accurate,
+or, if you want to be more accurate,
 just copy `patches/razzle-plugins.patch` file and overwrite `patches/patchit.sh` file.~~
 
 ### Babel config housekeeping
@@ -2051,7 +2110,7 @@ diffing the new ones with your versions.
 ### Testing lazy loaded components
 
 The whole process has been designed to have a minimal impact in existing projects.
-However, only one thing should be changed in your components tests, especially if your components are composed of original Volto components (not SemanticUI ones, though).
+However, only one thing should be changed in your components tests, especially if your components are composed of original Volto components (not Semantic UI ones, though).
 
 You should adapt them by mocking the Volto component or resolve (await) in an
 async construction before the test is fired. See this Codepen example:

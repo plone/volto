@@ -16,10 +16,6 @@
     "jsx": "react-jsx",
     "paths": {
       "@plone/volto/*": ["../node_modules/@plone/volto/src/*", "../node_modules/@plone/volto/types/*"],
-      "@plone/volto-slate/*": ["../node_modules/@plone/volto/packages/volto-slate/src/*"],
-      "@plone/registry/*": ["../node_modules/@plone/volto/packages/registry/src/*"],
-      "@plone/registry": ["../node_modules/@plone/volto/packages/registry/src"],
-      "@plone/types/*": ["../node_modules/@plone/volto/packages/types/*"],
       "@root/*": ["."]
     },
     "baseUrl": "src"

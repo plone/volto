@@ -35,9 +35,11 @@ The {doc}`plone:index` also provides excellent references for writing high quali
 
 ### Building and checking the quality of narrative documentation
 
-We use Make commands to run Sphinx to build and check documentation.
+You can use Make commands to run Sphinx to build and check documentation.
 All build and check documentation commands use the file `Makefile`.
+
 In Volto, all documentation commands are prefixed with `docs-`.
+You should run these commands from the root of the `volto` repository.
 
 To see the all Make commands, use the following command.
 
@@ -108,10 +110,7 @@ Open `/docs/_build/linkcheck/output.txt` for a list of broken links.
 
 #### `docs-vale`
 
-See {ref}`plone:setup-build-installation-vale-label` for how to install Vale.
-
 `docs-vale` checks for American English spelling, grammar, syntax, and the Microsoft Developer Style Guide.
-See {ref}`plone:authors-english-label` for configuration.
 
 ```shell
 make docs-vale
@@ -119,6 +118,11 @@ make docs-vale
 
 See the output on the console for suggestions.
 
+```{seealso}
+See {ref}`plone:authors-english-label` for basic usage.
+
+See {ref}`plone:authors-advanced-vale-usage-label` for Vale configuration, integration with popular IDEs, and other tips.
+```
 
 
 (volto-documentation-storybook-label)=
@@ -132,11 +136,35 @@ Components include widgets, blocks, and basic and structural items.
 When you develop a component, we encourage you to create or update its [Volto Storybook](https://6.docs.plone.org/storybook/) entry.
 As an example of how to do that, you can copy the existing Storybook entry for the `RichTextWidget` component.
 
-- https://github.com/plone/volto/blob/main/src/components/theme/Widgets/RichTextWidget.stories.jsx#L3
-- https://github.com/plone/volto/blob/main/src/components/theme/Widgets/RichTextWidget.jsx
+-   https://github.com/plone/volto/blob/main/packages/volto/src/components/theme/Widgets/RichTextWidget.stories.jsx#L3
+-   https://github.com/plone/volto/blob/main/packages/volto/src/components/theme/Widgets/RichTextWidget.jsx
 
 To build the Volto Storybook locally and test your entry, run the following command from the repository root.
 
 ```shell
 make storybook-build
 ```
+
+
+(link-to-storybook-entries-from-documentation)=
+
+### Link to Storybook entries from documentation
+
+To hyperlink to Storybook entries from the narrative documentation, you can use one of two syntaxes.
+
+Use HTML syntax to enable hyperlinking in development, within Netlify preview builds, and when the main Plone documenation is updated.
+Hyperlinking in development requires that you run both `make docs-html` and `make storybook-build` commands once, then whenever you update either the narrative documentation or the Storybook.
+
+```html
+<a href="/storybook/index.html?path=/story/edit-widgets-colorpicker--default">color picker widget</a>
+```
+
+<a href="/storybook/index.html?path=/story/edit-widgets-colorpicker--default">color picker widget</a>
+
+Use CommonMark syntax to point only to the main production Plone documentation.
+
+```md
+[color picker widget](https://6.docs.plone.org/storybook/index.html?path=/story/edit-widgets-colorpicker--default)
+```
+
+[color picker widget](https://6.docs.plone.org/storybook/index.html?path=/story/edit-widgets-colorpicker--default)
