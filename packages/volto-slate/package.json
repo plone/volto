@@ -1,6 +1,6 @@
 {
   "name": "@plone/volto-slate",
-  "version": "18.0.0-alpha.9",
+  "version": "18.0.0-alpha.10",
   "description": "Slate.js integration with Volto",
   "main": "src/index.js",
   "author": "European Environment Agency: IDM2 A-Team",
