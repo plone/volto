@@ -1,4 +1,5 @@
 describe('Folder Contents Tests', () => {
+  let prefixPath;
   beforeEach(() => {
     cy.intercept('GET', `/**/*?expand*`).as('content');
     // given a logged in editor
@@ -19,6 +20,7 @@ describe('Folder Contents Tests', () => {
     });
     cy.visit('/my-folder/contents');
     cy.wait('@content');
+    prefixPath = Cypress.env('prefixPath') || '';
   });
 
   it('Renaming via folder contents view', () => {
@@ -33,7 +35,7 @@ describe('Folder Contents Tests', () => {
     cy.get('#content-core table')
       .contains('Brand new document title')
       .should('have.attr', 'href')
-      .and('eq', '/my-folder/brand-new-document-title/contents');
+      .and('eq', `${prefixPath}/my-folder/brand-new-document-title/contents`);
   });
 
   it('Copying the content in the same folder', () => {

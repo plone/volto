@@ -1,4 +1,5 @@
 describe('Modal View for different content types', () => {
+  let prefixPath;
   const simpleSlateLink = (target) => {
     return {
       '@type': 'slate',
@@ -32,6 +33,7 @@ describe('Modal View for different content types', () => {
   beforeEach(() => {
     cy.autologin();
     cy.visit('/');
+    prefixPath = Cypress.env('prefixPath') || '';
   });
   it('As editor I get a warning on deleting my page when my page is referenced in the richtext', () => {
     cy.createContent({
@@ -53,7 +55,7 @@ describe('Modal View for different content types', () => {
     cy.get('[aria-label="/document-linked"] > :nth-child(2)').click();
     cy.get('[aria-label="Delete"]').click();
     cy.get('.medium > .header').should('be.visible');
-    cy.get('li > [href="/document-linked"]');
+    cy.get(`li > [href="${prefixPath}/document-linked"]`);
   });
   it('As editor I get a warning on deleting my page when my News-Item is referenced in the richtext', () => {
     cy.createContent({
@@ -76,7 +78,7 @@ describe('Modal View for different content types', () => {
     cy.get('[aria-label="/news-item-linked"] > :nth-child(2)').click();
     cy.get('[aria-label="Delete"]').click();
     cy.get('.medium > .header').should('be.visible');
-    cy.get('li > [href="/news-item-linked"]');
+    cy.get(`li > [href="${prefixPath}/news-item-linked"]`);
   });
   it('As editor I get a warning on deleting my page when my Event is referenced in the richtext', () => {
     cy.createContent({
@@ -99,7 +101,7 @@ describe('Modal View for different content types', () => {
     cy.get('[aria-label="/event-linked"] > :nth-child(2)').click();
     cy.get('[aria-label="Delete"]').click();
     cy.get('.medium > .header').should('be.visible');
-    cy.get('li > [href="/event-linked"]');
+    cy.get(`li > [href="${prefixPath}/event-linked"]`);
   });
   it('As editor I get a warning on deleting my page when my File is referenced in the richtext', () => {
     cy.createContent({
@@ -122,7 +124,7 @@ describe('Modal View for different content types', () => {
     cy.get('[aria-label="/file-linked"] > :nth-child(2)').click();
     cy.get('[aria-label="Delete"]').click();
     cy.get('.medium > .header').should('be.visible');
-    cy.get('li > [href="/file-linked"]');
+    cy.get(`li > [href="${prefixPath}/file-linked"]`);
   });
   it('As editor I get a warning on deleting my page when my Image is referenced in the richtext', () => {
     cy.createContent({
@@ -145,7 +147,7 @@ describe('Modal View for different content types', () => {
     cy.get('[aria-label="/image-linked"] > :nth-child(2)').click();
     cy.get('[aria-label="Delete"]').click();
     cy.get('.medium > .header').should('be.visible');
-    cy.get('li > [href="/image-linked"]');
+    cy.get(`li > [href="${prefixPath}/image-linked"]`);
   });
   it('As editor I get a warning on deleting my page when my Link is referenced in the richtext', () => {
     //Test Setup
@@ -173,13 +175,15 @@ describe('Modal View for different content types', () => {
     cy.get('[aria-label="/link-linked"] > :nth-child(2)').click();
     cy.get('[aria-label="Delete"]').click();
     cy.get('.medium > .header').should('be.visible');
-    cy.get('li > [href="/link-linked"]');
+    cy.get(`li > [href="${prefixPath}/link-linked"]`);
   });
 });
 describe('Test if different forms of Linking content appear in Delete Modal View', () => {
+  let prefixPath;
   beforeEach(() => {
     cy.autologin();
     cy.visit('/');
+    prefixPath = Cypress.env('prefixPath') || '';
   });
   it('As editor I get a warning on deleting my page when my Document is referenced in the Teaser Block', () => {
     cy.createContent({
@@ -220,7 +224,7 @@ describe('Test if different forms of Linking content appear in Delete Modal View
     cy.get('[aria-label="/document-linked"] > :nth-child(2)').click();
     cy.get('[aria-label="Delete"]').click();
     cy.get('.medium > .header').should('be.visible');
-    cy.get('li > [href="/document-linked"]');
+    cy.get(`li > [href="${prefixPath}/document-linked"]`);
   });
   it('As editor I get a warning on deleting my page when my Image is referenced in the Teaser Block', () => {
     cy.createContent({
@@ -281,10 +285,10 @@ describe('Test if different forms of Linking content appear in Delete Modal View
     cy.get('[aria-label="Select Image that is linked"]').click();
     cy.get('#toolbar-save').click();
     cy.visit('/contents');
-    cy.get('[aria-label="/document-linked"] > :nth-child(2)').click();
+    cy.get(`[aria-label="/document-linked"] > :nth-child(2)`).click();
     cy.get('[aria-label="Delete"]').click();
     cy.get('.medium > .header').should('be.visible');
-    cy.get('li > [href="/document-linked"]');
+    cy.get(`li > [href="${prefixPath}/document-linked"]`);
   });
   it('As editor I get a warning on deleting my Document when my Image is referenced via Image Block', () => {
     cy.createContent({
@@ -311,7 +315,7 @@ describe('Test if different forms of Linking content appear in Delete Modal View
     cy.get('[aria-label="/image-linked"] > :nth-child(2)').click();
     cy.get('[aria-label="Delete"]').click();
     cy.get('.medium > .header').should('be.visible');
-    cy.get('li > [href="/image-linked"]');
+    cy.get(`li > [href="${prefixPath}/image-linked"]`);
   });
   it('As editor I get a warning on deleting my Image when my Image is referenced in the Image Block', () => {
     cy.createContent({
@@ -349,7 +353,7 @@ describe('Test if different forms of Linking content appear in Delete Modal View
     cy.get('[aria-label="/document-linked"] > :nth-child(2)').click();
     cy.get('[aria-label="Delete"]').click();
     cy.get('.medium > .header').should('be.visible');
-    cy.get('li > [href="/document-linked"]');
+    cy.get(`li > [href="${prefixPath}/document-linked"]`);
   });
   it('As an Editor I get a warning on deleting my document when it is linked somewhere via teaser block inside a grid block', () => {
     cy.createContent({
@@ -401,6 +405,6 @@ describe('Test if different forms of Linking content appear in Delete Modal View
     cy.get('[aria-label="/document-linked"] > :nth-child(2)').click();
     cy.get('[aria-label="Delete"]').click();
     cy.get('.medium > .header').should('be.visible');
-    cy.get('li > [href="/document-linked"]');
+    cy.get(`li > [href="${prefixPath}/document-linked"]`);
   });
 });

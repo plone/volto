@@ -1227,9 +1227,9 @@ jobs:
           name: cypress-videos
           path: packages/volto/cypress/videos
 
-  prefix:
+  prefix-core:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
-    name: Prefixed site
+    name: Core Basic Prefixed Site
     runs-on: ubuntu-latest
     timeout-minutes: 35
     strategy:
@@ -1290,7 +1290,7 @@ jobs:
           install: false
           working-directory: packages/volto
           browser: chrome
-          spec: cypress/tests/minimal/**/*.js
+          spec: cypress/tests/core/basic/**/*.js
           config: baseUrl=http://localhost/foo
           env: prefixPath=/foo
           start: |
