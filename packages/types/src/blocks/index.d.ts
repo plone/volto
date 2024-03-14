@@ -31,6 +31,13 @@ export interface BlockViewProps {
 
 type SearchMetadataResultItem = {};
 
+// Should be a superset of BlockViewProps
+// ToDo: Test if true, and if not make it true
+// Seen: "is missing the following properties from type"
+//  content
+//  location
+//  history
+//  token
 export interface BlockEditProps {
   allowedBlocks: string[];
   block: string;
