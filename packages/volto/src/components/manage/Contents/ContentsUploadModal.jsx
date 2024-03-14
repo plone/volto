@@ -72,7 +72,6 @@ class ContentsUploadModal extends Component {
       PropTypes.string,
       PropTypes.arrayOf(PropTypes.string),
     ]),
-    onDrop: PropTypes.func,
   };
 
   /**
@@ -255,7 +254,7 @@ class ContentsUploadModal extends Component {
           </Dimmer>
           <Modal.Content>
             <Dropzone
-              onDrop={this.props.onDrop ?? this.onDrop}
+              onDrop={this.onDrop}
               className="dropzone"
               noDragEventsBubbling={true}
               {...dropzoneOptions}
