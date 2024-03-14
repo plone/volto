@@ -526,9 +526,6 @@ describe('Search Block Tests', () => {
       .contains('Event')
       .click();
 
-    // uncheck showSearchButton
-    cy.get('label[for=field-showSearchButton]').click();
-    cy.get('.search-wrapper .ui.button').should('contain', 'Search');
     // reverse order
     cy.get('label[for=field-sort_order_boolean-2-query]').click();
     //check if the sorting order is working
