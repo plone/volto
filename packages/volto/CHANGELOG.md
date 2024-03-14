@@ -17,6 +17,12 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.20 (2024-03-14)
+
+### Bugfix
+
+- Add BBB code for removed WysiwygWidget @sneridagh [#5874](https://github.com/plone/volto/issues/5874)
+
 ## 18.0.0-alpha.19 (2024-03-14)
 
 ### Breaking
