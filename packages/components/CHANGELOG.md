@@ -8,6 +8,16 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.7 (2024-03-14)
+
+### Bugfix
+
+- Missing CSS in build for `Container` @sneridagh [#5849](https://github.com/plone/volto/issues/5849)
+
+### Internal
+
+- Cleanup deps @sneridagh [#5846](https://github.com/plone/volto/issues/5846)
+
 ## 2.0.0-alpha.6 (2024-03-06)
 
 ### Breaking
