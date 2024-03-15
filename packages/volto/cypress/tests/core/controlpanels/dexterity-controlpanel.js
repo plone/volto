@@ -1,4 +1,5 @@
 describe('Folder Contents Tests', () => {
+  let prefixPath;
   beforeEach(() => {
     cy.intercept('GET', `/**/*?expand*`).as('content');
     // given a logged in editor
@@ -8,10 +9,13 @@ describe('Folder Contents Tests', () => {
     cy.autologin();
     cy.visit('/controlpanel/dexterity-types');
     cy.wait('@content');
+    prefixPath = Cypress.env('prefixPath') || '';
   });
 
   it('Changing name of the Page content type', () => {
-    cy.get('a[href="/controlpanel/dexterity-types/Document"]').click();
+    cy.get(
+      `a[href="${prefixPath}/controlpanel/dexterity-types/Document"]`,
+    ).click();
     cy.get('input[id="field-title"]').clear().type('Page1{enter}');
     cy.get('textarea[id="field-description"]').type(
       'This is Page Content Type{enter}',
@@ -20,9 +24,8 @@ describe('Folder Contents Tests', () => {
     cy.get('button[id="toolbar-save"]').click();
     cy.visit('/controlpanel/dexterity-types');
 
-    cy.get('a[href="/controlpanel/dexterity-types/Document"]').should(
-      'have.text',
-      'Page1',
-    );
+    cy.get(
+      `a[href="${prefixPath}/controlpanel/dexterity-types/Document"]`,
+    ).should('have.text', 'Page1');
   });
 });

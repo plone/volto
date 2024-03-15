@@ -1,4 +1,5 @@
 describe('ControlPanel: Dexterity Content-Types Schema', () => {
+  let prefixPath;
   beforeEach(() => {
     cy.intercept('GET', `/**/*?expand*`).as('content');
     // given a logged in editor
@@ -8,6 +9,7 @@ describe('ControlPanel: Dexterity Content-Types Schema', () => {
     cy.autologin();
     cy.visit('/controlpanel/dexterity-types');
     cy.wait('@content');
+    prefixPath = Cypress.env('prefixPath') || '';
   });
 
   it('Add Bike content-type with custom schema', () => {
@@ -17,7 +19,7 @@ describe('ControlPanel: Dexterity Content-Types Schema', () => {
     cy.get('input[id="field-description"]').type('Bike content-type');
     cy.get('[title=Save]').click();
 
-    cy.get('a[href="/controlpanel/dexterity-types/bike"]').should(
+    cy.get(`a[href="${prefixPath}/controlpanel/dexterity-types/bike"]`).should(
       'have.text',
       'Bike',
     );
