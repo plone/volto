@@ -45,7 +45,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
 
       - run: pnpm i
 
@@ -127,7 +127,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
 
       - run: pnpm i
 
@@ -209,7 +209,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
 
       - run: pnpm i
 
@@ -291,7 +291,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
 
       - run: pnpm i
 
@@ -373,7 +373,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
 
       - run: pnpm i
 
@@ -455,7 +455,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
 
       - run: pnpm i
 
@@ -536,7 +536,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
 
       - run: pnpm i
 
@@ -618,7 +618,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
 
       - run: pnpm i
 
@@ -771,7 +771,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
 
       - run: pnpm i
 
@@ -854,7 +854,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
 
       - run: pnpm i
 
@@ -964,7 +964,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
 
       - run: pnpm i
 
@@ -1101,7 +1101,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
 
       - run: pnpm i
 
@@ -1185,7 +1185,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
 
       - run: pnpm i
 

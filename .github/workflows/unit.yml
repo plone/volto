@@ -43,8 +43,8 @@ jobs:
 
       - run: pnpm i
 
-      # node test
-      - run: pnpm --filter @plone/volto i18n:ci
+      # Locales in place are needed for the tests to pass
+      - run: pnpm --filter @plone/volto i18n
 
       - name: Run unit tests Volto
         run: pnpm --filter @plone/volto test

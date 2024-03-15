@@ -39,6 +39,16 @@ This aligns Volto with the latests developments in the React ecosystem and opens
 - Transitions
 - New hooks `useId`, `useTransition`, `useDeferredValue`, `useSyncExternalStore`, and other hooks
 
+### `draftJS` dependency and `text`, `table`, and `hero` blocks removed
+
+In Volto 16, the `text` block powered by the `Draft.js` library was deprecated, and it was announced that it would be removed in Volto 18.
+Two other blocks, `table` and `hero`, that depended on `Draft.js` were also removed.
+
+If you still need these blocks in your site, you can copy over the block code and settings into your project.
+You can also migrate these blocks to use either `slate` or `slateTable` blocks.
+The `hero` block can be replaced by the `teaser` block, but a migration is also needed.
+See {ref}`existing-projects-using-core-draftjs-opting-to-migrate-to-slate`.
+
 ### `react-portal` dependency removed
 
 `react-portal` is deprecated and it was removed from Volto.
@@ -431,6 +441,8 @@ For projects already using `volto-slate`, take the following steps in your proje
 - import { DetachedTextBlockEditor } from 'volto-slate/blocks/Text/DetachedTextBlockEditor';
 + import { DetachedTextBlockEditor } from '@plone/volto-slate/blocks/Text/DetachedTextBlockEditor';
 ```
+
+(existing-projects-using-core-draftjs-opting-to-migrate-to-slate)=
 
 #### Existing projects using core `draftJS`, opting to continue using `draftJS`
 
@@ -2098,7 +2110,7 @@ diffing the new ones with your versions.
 ### Testing lazy loaded components
 
 The whole process has been designed to have a minimal impact in existing projects.
-However, only one thing should be changed in your components tests, especially if your components are composed of original Volto components (not SemanticUI ones, though).
+However, only one thing should be changed in your components tests, especially if your components are composed of original Volto components (not Semantic UI ones, though).
 
 You should adapt them by mocking the Volto component or resolve (await) in an
 async construction before the test is fired. See this Codepen example:

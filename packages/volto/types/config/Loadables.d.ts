@@ -17,14 +17,4 @@ export namespace loadables {
     let reactDndHtml5Backend: any;
     let reactBeautifulDnd: any;
     let rrule: any;
-    let immutableLib: any;
-    let draftJs: any;
-    let draftJsLibIsSoftNewlineEvent: any;
-    let draftJsFilters: any;
-    let draftJsInlineToolbarPlugin: any;
-    let draftJsImportHtml: any;
-    let draftJsBlockBreakoutPlugin: any;
-    let draftJsCreateInlineStyleButton: any;
-    let draftJsCreateBlockStyleButton: any;
-    let draftJsPluginsUtils: any;
 }

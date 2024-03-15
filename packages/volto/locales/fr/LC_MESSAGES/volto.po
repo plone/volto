@@ -494,7 +494,6 @@ msgid "Broken relations"
 msgstr ""
 
 #. Default: "Browse"
-#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Sidebar/ObjectBrowserNav
 msgid "Browse"
@@ -550,7 +549,7 @@ msgid "Cancel"
 msgstr "Annuler"
 
 #. Default: "Cell"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Cell"
 msgstr "Cellule"
 
@@ -943,7 +942,6 @@ msgstr "Date (le plus récent en premier)"
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/CommentEditModal
 #: components/theme/Comments/Comments
 #: components/theme/ContactForm/ContactForm
@@ -968,7 +966,6 @@ msgstr "Vue par défaut"
 #: components/manage/Delete/Delete
 #: components/manage/Widgets/FormFieldWrapper
 #: components/manage/Widgets/ObjectBrowserWidget
-#: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/Comments
 msgid "Delete"
 msgstr "Supprimer"
@@ -999,7 +996,7 @@ msgid "Delete blocks"
 msgstr "Supprimer des blocs"
 
 #. Default: "Delete col"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Delete col"
 msgstr "Supprimer la colonne"
 
@@ -1009,7 +1006,7 @@ msgid "Delete condition"
 msgstr "Condition supprimée"
 
 #. Default: "Delete row"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Delete row"
 msgstr "Supprimer la ligne"
 
@@ -1045,12 +1042,10 @@ msgid "Descending"
 msgstr "Descendant"
 
 #. Default: "Description"
-#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 #: components/theme/View/TabularView
 #: helpers/MessageLabels/MessageLabels
 msgid "Description"
@@ -1092,7 +1087,7 @@ msgid "Distributed under the {license}."
 msgstr "Distribué sous la {license}."
 
 #. Default: "Add border to inner columns"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Divide each row into separate cells"
 msgstr "Diviser chaque colonnes en cellules séparées"
 
@@ -1507,7 +1502,7 @@ msgid "Fix relations"
 msgstr ""
 
 #. Default: "Fixed width columns"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Fixed width table cells"
 msgstr "Largeur des cellules de la table fixe"
 
@@ -1617,7 +1612,7 @@ msgid "Groups are logical collections of users, such as departments and business
 msgstr "Les groupes sont des ensembles logiques d'utilisateurs, tels que des services et des unités commerciales. Les groupes ne sont pas directement liés aux autorisations au niveau global, vous utilisez normalement des rôles pour cela - et laissez certains groupes avoir un rôle particulier. Le symbole{plone_svg}indique un rôle hérité de l'appartenance à un autre groupe."
 
 #. Default: "Header cell"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Header cell"
 msgstr "Cellule d'en-tête"
 
@@ -1715,7 +1710,6 @@ msgid "If you are certain you have the correct web address but are encountering 
 msgstr "Si vous êtes certain que l'adresse est bonne, mais que vous avez un erreur, veuillez contacter le {site_admin}."
 
 #. Default: "Image"
-#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -1771,22 +1765,22 @@ msgid "Inherited value"
 msgstr "Hériter de la valeur"
 
 #. Default: "Insert col after"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Insert col after"
 msgstr "Insérer une colonne après"
 
 #. Default: "Insert col before"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Insert col before"
 msgstr "Insérer une colonne avant"
 
 #. Default: "Insert row after"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Insert row after"
 msgstr "Insérer une ligne après"
 
 #. Default: "Insert row before"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Insert row before"
 msgstr "Insérer une ligne avant"
 
@@ -1971,7 +1965,6 @@ msgid "Link copied to clipboard"
 msgstr ""
 
 #. Default: "Link more"
-#: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
 msgid "Link more"
 msgstr "Lier plus"
@@ -1987,13 +1980,11 @@ msgid "Link settings"
 msgstr ""
 
 #. Default: "Link Title"
-#: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
 msgid "Link title"
 msgstr "Titre du lien"
 
 #. Default: "Link to"
-#: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema
@@ -2083,7 +2074,7 @@ msgid "Made by {creator} on {date}. This is not a working copy anymore, but the 
 msgstr "Réalisé par {creator} le {date}. Ce n'est plus une copie de travail, mais le contenu principal."
 
 #. Default: "Reduce cell padding"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Make the table compact"
 msgstr "Faire une table compacte"
 
@@ -2731,7 +2722,7 @@ msgid "Redo"
 msgstr "Refaire"
 
 #. Default: "Minimalistic table design"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Reduce complexity"
 msgstr "Réduisez la complexité"
 
@@ -2870,7 +2861,6 @@ msgstr "Répondre"
 #. Default: "Required"
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 msgid "Required"
 msgstr "Obligatoire"
 
@@ -3216,7 +3206,6 @@ msgstr "Partage pour {title}"
 #. Default: "Short Name"
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 msgid "Short Name"
 msgstr "Nom court"
 
@@ -3442,7 +3431,7 @@ msgid "String"
 msgstr "Chaîne"
 
 #. Default: "Alternate row background color"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Stripe alternate rows with color"
 msgstr "Rayez les rangées paires/impaires avec la couleur"
 
@@ -3499,7 +3488,7 @@ msgid "Switch to"
 msgstr "Passer à"
 
 #. Default: "Table"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Table"
 msgstr "Table"
 
@@ -3741,7 +3730,6 @@ msgid "Time"
 msgstr "Temps"
 
 #. Default: "Title"
-#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Blocks/ToC/Schema
 #: components/manage/Contents/Contents
@@ -3749,7 +3737,6 @@ msgstr "Temps"
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 #: components/theme/View/TabularView
 #: helpers/MessageLabels/MessageLabels
 msgid "Title"
@@ -3845,11 +3832,6 @@ msgstr "Saisissez une URL de vidéo (YouTube, Vimeo ou mp4)"
 #: components/manage/Widgets/SelectAutoComplete
 msgid "Type text..."
 msgstr "Saisissez du texte..."
-
-#. Default: "Type text…"
-#: components/manage/Blocks/Text/Edit
-msgid "Type text…"
-msgstr "Saisissez du texte…"
 
 #. Default: "Type the heading…"
 #: components/manage/TextLineEdit/TextLineEdit
@@ -3999,11 +3981,6 @@ msgstr "Téléchargé"
 msgid "Upload a lead image in the 'Lead Image' content field."
 msgstr "Téléchargez une image de garde dans le champ «Image de garde»."
 
-#. Default: "Upload a new image"
-#: components/manage/Blocks/HeroImageLeft/Edit
-msgid "Upload a new image"
-msgstr "Charger une nouveller image"
-
 #. Default: "Upload files"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Upload files"
@@ -4015,7 +3992,6 @@ msgid "Uploading files"
 msgstr "Téléchargement de fichiers"
 
 #. Default: "Uploading image"
-#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/Edit
 msgid "Uploading image"
 msgstr "Chargement de l'image"
@@ -4034,7 +4010,6 @@ msgstr "Utilisez le formulaire ci-dessous pour définir, changer ou supprimer de
 #. Default: "Used for programmatic access to the fieldset."
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 msgid "Used for programmatic access to the fieldset."
 msgstr "Utilisé pour l'accès programmatique au groupe de champs."
 
@@ -4909,7 +4884,7 @@ msgstr ""
 #. Default: "Text"
 #: config/Blocks
 msgid "text"
-msgstr "texte"
+msgstr ""
 
 #. Default: "Title"
 #: config/Blocks

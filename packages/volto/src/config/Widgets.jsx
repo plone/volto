@@ -18,7 +18,6 @@ import SelectWidget from '@plone/volto/components/manage/Widgets/SelectWidget';
 import TextareaWidget from '@plone/volto/components/manage/Widgets/TextareaWidget';
 import TextWidget from '@plone/volto/components/manage/Widgets/TextWidget';
 import TokenWidget from '@plone/volto/components/manage/Widgets/TokenWidget';
-import WysiwygWidget from '@plone/volto/components/manage/Widgets/WysiwygWidget';
 import UrlWidget from '@plone/volto/components/manage/Widgets/UrlWidget';
 import InternalUrlWidget from '@plone/volto/components/manage/Widgets/InternalUrlWidget';
 import EmailWidget from '@plone/volto/components/manage/Widgets/EmailWidget';
@@ -78,7 +77,6 @@ export const widgetMapping = {
     site_logo: RegistryImageWidget,
   },
   widget: {
-    richtext: WysiwygWidget,
     textarea: TextareaWidget,
     datetime: DatetimeWidget,
     date: DatetimeWidget,

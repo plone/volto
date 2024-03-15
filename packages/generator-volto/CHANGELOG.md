@@ -8,6 +8,19 @@
 
 <!-- towncrier release notes start -->
 
+## 9.0.0-alpha.11 (2024-03-14)
+
+### Bugfix
+
+- Upgrade all versions in generator templates @sneridagh [#5844](https://github.com/plone/volto/issues/5844)
+- Improve deps in project generator. @sneridagh @wesleybl [#5870](https://github.com/plone/volto/issues/5870)
+
+## 9.0.0-alpha.10 (2024-03-05)
+
+### Bugfix
+
+- Add new forced resolutions to projects too @sneridagh [#5839](https://github.com/plone/volto/issues/5839)
+
 ## 9.0.0-alpha.9 (2024-03-05)
 
 ### Bugfix
