@@ -124,7 +124,7 @@ export function getExternalRoutes() {
   );
 }
 
-export const defaultRoutes = [
+const baseRoutes = [
   // redirect to external links if path is in blacklist
   ...getExternalRoutes(),
   ...((config.settings?.isMultilingual && multilingualRoutes) || []),
@@ -313,6 +313,9 @@ export const defaultRoutes = [
     component: PersonalInformation,
     exact: true,
   },
+];
+
+const fallbackRoutes = [
   {
     path: '/**',
     component: View,
@@ -321,6 +324,20 @@ export const defaultRoutes = [
     path: '*',
     component: NotFound,
   },
+];
+
+let prefixRoutes = [];
+if (config.settings.prefixPath) {
+  prefixRoutes = baseRoutes.map((route) => ({
+    ...route,
+    path: `${config.settings.prefixPath}${route['path']}`,
+  }));
+}
+
+export const defaultRoutes = [
+  ...baseRoutes,
+  ...prefixRoutes,
+  ...fallbackRoutes,
 ];
 
 /**
