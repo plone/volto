@@ -3,6 +3,7 @@ const chalk = require('chalk');
 const Generator = require('yeoman-generator');
 const _ = require('lodash');
 const utils = require('./utils');
+const fs = require('fs').promises;
 
 // bring in the deprecated install method from the yeoman-generator/lib/actions/install.js
 _.extend(Generator.prototype, require('yeoman-generator/lib/actions/install'));
@@ -301,9 +302,13 @@ Run "npm install -g @plone/generator-volto" to update.`,
     }
   }
 
-  end() {
+  async end() {
     const base =
       currentDir === this.globals.projectName ? '.' : this.globals.projectName;
+
+    // Delete the unfamous "package.json.tpl"
+    await fs.unlink(path.join(base, 'package.json.tpl'));
+
     this.composeWith(require.resolve('../addon'), {
       addonName: this.opts.defaultAddonName
         ? this.opts.defaultAddonName
