@@ -113,6 +113,44 @@ exports[`No 'No value' option when default value is 0 1`] = `
                 </div>
               </div>
             </div>
+            <div
+              class="react-select__menu css-109xf7j-menu"
+            >
+              <div
+                class="react-select__menu-list css-opcdc2-MenuList"
+              >
+                <div
+                  class="react-select__option react-select__option--is-focused react-select__option--is-selected css-zq2nh-option"
+                  id="react-select-3-option-0"
+                  tabindex="-1"
+                >
+                  <div>
+                    0
+                  </div>
+                  <svg
+                    class="icon"
+                    style="height: 20px; width: auto; fill: #007bc1;"
+                    viewBox=""
+                    xmlns=""
+                  />
+                </div>
+                <div
+                  class="react-select__option css-4khget-option"
+                  id="react-select-3-option-1"
+                  tabindex="-1"
+                >
+                  <div>
+                    One
+                  </div>
+                  <svg
+                    class="icon"
+                    style="height: 20px; width: auto; fill: #007bc1;"
+                    viewBox=""
+                    xmlns=""
+                  />
+                </div>
+              </div>
+            </div>
             <input
               name="my-field"
               type="hidden"
