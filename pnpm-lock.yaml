@@ -128,6 +128,9 @@ importers:
       '@plone/registry':
         specifier: workspace:*
         version: link:../../packages/registry
+      '@plone/scripts':
+        specifier: workspace:*
+        version: link:../../packages/scripts
       '@plone/volto':
         specifier: workspace:*
         version: link:../../packages/volto
@@ -146,6 +149,12 @@ importers:
       debug:
         specifier: 4.3.2
         version: 4.3.2
+      decorate-component-with-props:
+        specifier: 1.2.1
+        version: 1.2.1(react@18.2.0)
+      dependency-graph:
+        specifier: 0.10.0
+        version: 0.10.0
       detect-browser:
         specifier: 5.1.0
         version: 5.1.0
@@ -164,30 +173,48 @@ importers:
       history:
         specifier: 4.10.1
         version: 4.10.1
+      hoist-non-react-statics:
+        specifier: 3.3.2
+        version: 3.3.2
       http-proxy-middleware:
         specifier: 2.0.1
         version: 2.0.1(debug@4.3.2)
+      image-extensions:
+        specifier: 1.1.0
+        version: 1.1.0
       immutable:
         specifier: '3'
         version: 3.8.2
       is-hotkey:
         specifier: 0.2.0
         version: 0.2.0
+      is-url:
+        specifier: 1.2.4
+        version: 1.2.4
       jotai:
         specifier: 2.0.3
         version: 2.0.3(react@18.2.0)
       jwt-decode:
         specifier: 2.2.0
         version: 2.2.0
+      linkify-it:
+        specifier: 3.0.2
+        version: 3.0.2
       locale:
         specifier: 0.1.0
         version: 0.1.0
       lodash:
         specifier: 4.17.21
         version: 4.17.21
+      lodash-move:
+        specifier: 1.1.1
+        version: 1.1.1
       moment:
         specifier: 2.29.4
         version: 2.29.4
+      object-assign:
+        specifier: 4.1.1
+        version: 4.1.1
       prepend-http:
         specifier: '2'
         version: 2.0.0
@@ -197,6 +224,9 @@ importers:
       prismjs:
         specifier: 1.27.0
         version: 1.27.0
+      process:
+        specifier: ^0.11.10
+        version: 0.11.10
       promise-file-reader:
         specifier: 1.0.2
         version: 1.0.2
@@ -260,6 +290,9 @@ importers:
       react-medium-image-zoom:
         specifier: 3.0.15
         version: 3.0.15(prop-types@15.7.2)(react-dom@18.2.0)(react@18.2.0)
+      react-popper:
+        specifier: ^2.3.0
+        version: 2.3.0(@popperjs/core@2.11.8)(react-dom@18.2.0)(react@18.2.0)
       react-redux:
         specifier: 8.1.2
         version: 8.1.2(@types/react-dom@18.2.19)(@types/react@18.2.60)(react-dom@18.2.0)(react@18.2.0)(redux@4.2.1)
@@ -359,6 +392,9 @@ importers:
       universal-cookie-express:
         specifier: 4.0.3
         version: 4.0.3
+      url:
+        specifier: ^0.11.3
+        version: 0.11.3
       use-deep-compare-effect:
         specifier: 1.8.1
         version: 1.8.1(react@18.2.0)
@@ -408,9 +444,6 @@ importers:
       '@loadable/webpack-plugin':
         specifier: 5.15.2
         version: 5.15.2(webpack@5.90.1)
-      '@plone/scripts':
-        specifier: workspace:*
-        version: link:../../packages/scripts
       '@plone/types':
         specifier: workspace:*
         version: link:../../packages/types
@@ -28119,7 +28152,7 @@ packages:
     resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
 
   /lodash-move@1.1.1:
-    resolution: {integrity: sha1-WfduDxrFfm2Gg/UxvsB8W26k40g=}
+    resolution: {integrity: sha512-Gm8/lC16NXv2tweIiX7pYhgAQdoSwXzO/WsSmNX/un8rBQUIC7YkauFK2Sdt4NBqWV28BW25P8eDkHWPt91YqQ==}
     dependencies:
       lodash: 4.17.21
     dev: false
