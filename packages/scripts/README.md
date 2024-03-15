@@ -15,9 +15,16 @@ This script is installed in the `node_modules/.bin` directory and can be called 
 Given an existing project path, it updates the Volto `dependencies` and `devDependencies` for the existing Volto (`@plone/volto`) version in the `package.json` file.
 
 If you are in the process to upgrade your project to a given Volto version, you should update the `package.json` `@plone/volto` dependencies key to use the updated version, then run the script.
+The script is included in `@plone/scripts` package, you can run it from your project:
 
 ```shell
-pnpm run depssync
+pnpm run volto-update-deps .
+```
+
+or run it directly from the `.bin` folder.
+
+```shell
+./node_modules/.bin/volto-update-deps.js path/to/my/project
 ```
 
 ## Deprecated utilites
