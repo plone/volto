@@ -3,11 +3,6 @@
 import fs from 'fs';
 import https from 'https';
 
-// if (process.argv.length < 3) {
-//   console.log(process.argv.length);
-//   process.exit(1);
-// }
-
 function loadPackageJSON(path = '.') {
   return JSON.parse(fs.readFileSync(`${path}/package.json`, 'utf8'));
 }
