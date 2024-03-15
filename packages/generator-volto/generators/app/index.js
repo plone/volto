@@ -148,9 +148,32 @@ Run "npm install -g @plone/generator-volto" to update.`,
     };
 
     let props;
+    // dependencies
+    const VoltoPackageJSON = await utils.getVoltoPackageJSON(voltoVersion);
+    const VoltoDependencies = VoltoPackageJSON.dependencies;
+    const VoltoDevDependencies = VoltoPackageJSON.devDependencies;
 
     const dependencies = {
       '@plone/volto': voltoVersion,
+      // TODO: find a better way to specify the version of the core dependencies
+      // Since they grab "workspace: *" from the volto package.json
+      '@plone/scripts': '^3.5.0',
+      ...Object.fromEntries(
+        Object.entries(VoltoDependencies).filter(
+          ([key]) => !key.startsWith('@plone'),
+        ),
+      ),
+    };
+
+    const devDependencies = {
+      // TODO: find a better way to specify the version of the core devDependencies
+      // Since they grab "workspace: *" from the volto package.json
+      '@plone/types': '^1.0.0-alpha.6',
+      ...Object.fromEntries(
+        Object.entries(VoltoDevDependencies).filter(
+          ([key]) => !key.startsWith('@plone'),
+        ),
+      ),
     };
 
     // Project name
@@ -234,7 +257,16 @@ Run "npm install -g @plone/generator-volto" to update.`,
     }
 
     // Dependencies
-    this.globals.dependencies = JSON.stringify(dependencies, null, 4);
+    this.globals.dependencies = JSON.stringify(
+      utils.orderedDependencies(dependencies),
+      null,
+      4,
+    );
+    this.globals.devDependencies = JSON.stringify(
+      utils.orderedDependencies(devDependencies),
+      null,
+      4,
+    );
   }
 
   writing() {

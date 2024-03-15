@@ -13,7 +13,7 @@ function loadPackageJSON(path = '.') {
 }
 
 async function getVoltoPackageJSON(tag) {
-  const url = `https://raw.githubusercontent.com/plone/volto/${tag}/package.json`;
+  const url = `https://raw.githubusercontent.com/plone/volto/${tag}/packages/volto/package.json`;
   const requestContent = await new Promise((resolve, reject) => {
     https
       .get(url, {}, (resp) => {

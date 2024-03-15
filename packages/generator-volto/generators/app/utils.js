@@ -88,8 +88,39 @@ async function getLatestCanaryVoltoVersion() {
   });
 }
 
+async function getVoltoPackageJSON(tag) {
+  const url = `https://raw.githubusercontent.com/plone/volto/${tag}/packages/volto/package.json`;
+  const requestContent = await new Promise((resolve, reject) => {
+    https
+      .get(url, {}, (resp) => {
+        let data = '';
+        resp.on('data', (chunk) => {
+          data += chunk;
+        });
+        resp.on('end', () => {
+          resolve(data);
+        });
+      })
+      .on('error', (err) => {
+        reject(err);
+      });
+  });
+  return JSON.parse(requestContent);
+}
+
+function orderedDependencies(dependencies) {
+  return Object.keys(dependencies)
+    .sort()
+    .reduce((obj, key) => {
+      obj[key] = dependencies[key];
+      return obj;
+    }, {});
+}
+
 module.exports = {
   getLatestVoltoVersion,
   getLatestCanaryVoltoVersion,
   getVoltoYarnLock,
+  getVoltoPackageJSON,
+  orderedDependencies,
 };
