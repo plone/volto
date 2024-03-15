@@ -27,17 +27,22 @@ async function getVoltoPackageJSON(tag) {
   return JSON.parse(requestContent);
 }
 
-function updatePackageJSON(path = '.', packageJSON) {
-  // Sort the keys of the devDependencies object
-  const orderedDevDependencies = Object.keys(packageJSON.devDependencies)
+function orderedDependencies(dependencies) {
+  return Object.keys(dependencies)
     .sort()
     .reduce((obj, key) => {
-      obj[key] = packageJSON.devDependencies[key];
+      obj[key] = dependencies[key];
       return obj;
     }, {});
+}
 
+function updatePackageJSON(path = '.', packageJSON) {
+  // Replace the dependencies with the ordered version
+  packageJSON.dependencies = orderedDependencies(packageJSON.dependencies);
   // Replace the devDependencies with the ordered version
-  packageJSON.devDependencies = orderedDevDependencies;
+  packageJSON.devDependencies = orderedDependencies(
+    packageJSON.devDependencies,
+  );
 
   fs.writeFileSync(
     `${path}/package.json`,
@@ -47,7 +52,6 @@ function updatePackageJSON(path = '.', packageJSON) {
 
 async function main() {
   const path = process.argv[2];
-  console.log(path);
   const packageJSON = loadPackageJSON(path);
   const currentVoltoVersion = packageJSON.dependencies['@plone/volto'];
   let voltoPackageJSON;
@@ -61,7 +65,6 @@ async function main() {
   const VoltoDevDependencies = voltoPackageJSON.devDependencies;
 
   Object.entries(VoltoDevDependencies).forEach(([pkg, version]) => {
-    // console.log(`${pkg} @ ${version}`);
     if (packageJSON.devDependencies[pkg]) {
       packageJSON.devDependencies[pkg] = version;
       console.log(`Updated devDependency on ${pkg} to version ${version}`);
@@ -72,10 +75,12 @@ async function main() {
   });
 
   Object.entries(VoltoDependencies).forEach(([pkg, version]) => {
-    // console.log(`${pkg} @ ${version}`);
     if (packageJSON.dependencies[pkg]) {
       packageJSON.dependencies[pkg] = version;
       console.log(`Updated dependency on ${pkg} to version ${version}`);
+    } else {
+      packageJSON.dependencies[pkg] = version;
+      console.log(`Added dependency on ${pkg} to version ${version}`);
     }
   });
 
