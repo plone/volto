@@ -794,7 +794,7 @@ class RecurrenceWidget extends Component {
         id={`${fieldSet || 'field'}-${id}`}
       >
         <Grid>
-          <Grid.Row stretched>
+          <Grid.Row stretched verticalAlign="middle">
             <Grid.Column width="4">
               <div className="wrapper">
                 <label htmlFor={`field-${id}`}>{title}</label>

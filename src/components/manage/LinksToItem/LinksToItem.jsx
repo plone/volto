@@ -10,12 +10,16 @@ import { Portal } from 'react-portal';
 import { Container, Segment, Table } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
-import { getContent, queryRelations } from '@plone/volto/actions';
+import { getContent, queryRelations, listActions } from '@plone/volto/actions';
+import { asyncConnect } from '@plone/volto/helpers';
+
 import {
   Icon as IconNext,
   Toolbar,
   UniversalLink,
+  Unauthorized,
 } from '@plone/volto/components';
+import { compose } from 'redux';
 
 import { getBaseUrl } from '@plone/volto/helpers';
 import backSVG from '@plone/volto/icons/back.svg';
@@ -41,6 +45,8 @@ const LinksToItem = (props) => {
   const dispatch = useDispatch();
   const pathname = props.location.pathname;
   const itempath = getBaseUrl(pathname);
+  const objectActions = useSelector((state) => state.actions.actions.object);
+  const editPermission = find(objectActions, { id: 'edit' });
 
   const title = useSelector((state) => state.content.data?.title || '');
   const myrelations = useSelector(
@@ -77,6 +83,9 @@ const LinksToItem = (props) => {
   });
 
   const relations_found = Object.keys(links_ordered).length > 0;
+  if (!editPermission) {
+    return <Unauthorized />;
+  }
   return (
     <Container id="linkstoitem">
       <Helmet title={intl.formatMessage(messages.linkstoitem)} />
@@ -206,4 +215,15 @@ const LinksToItem = (props) => {
   );
 };
 
-export default LinksToItem;
+export const __test__ = LinksToItem;
+export default compose(
+  asyncConnect([
+    {
+      key: 'actions',
+      // Dispatch async/await to make the operation synchronous, otherwise it returns
+      // before the promise is resolved
+      promise: async ({ location, store: { dispatch } }) =>
+        await dispatch(listActions(getBaseUrl(location.pathname))),
+    },
+  ]),
+)(LinksToItem);

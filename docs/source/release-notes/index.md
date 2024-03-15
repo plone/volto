@@ -17,6 +17,131 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 17.15.5 (2024-03-07)
+
+### Bugfix
+
+- Fix other occurrences of mutable (referenced) objects when assigning the default inner `blocksConfig` object for the `grid` block, pass by value instead. sneridagh [#5859](https://github.com/plone/volto/issues/5859)
+
+## 17.15.4 (2024-03-06)
+
+### Bugfix
+
+- Fix the introduction of a mutable (referenced) object when assigning the default inner `blocksConfig` object for the `grid` block, pass by value instead. sneridagh [#5850](https://github.com/plone/volto/issues/5850)
+
+## 17.15.3 (2024-03-04)
+
+### Bugfix
+
+- Enhance findBlocks to check for blocks also in data for add-ons such as @eeacms/volto-tabs-block. @ichim-david [#5796](https://github.com/plone/volto/issues/5796)
+- Fixed ArrayWidget sorting items. @giuliaghisini [#5804](https://github.com/plone/volto/issues/5804)
+- Reset global Form state onSubmit and onCancel in Add and Edit forms @sneridagh [#5827](https://github.com/plone/volto/issues/5827)
+
+## 17.15.2 (2024-02-24)
+
+### Bugfix
+
+- Pin `eslint-plugin-jsx-a11y` to version `^6.7.0` to fix ESLint couldn't determine the plugin "jsx-a11y". @ichim-david [#5785](https://github.com/plone/volto/issues/5785)
+
+## 17.15.1 (2024-02-22)
+
+### Bugfix
+
+- Fix sidebar form update. @robgietema [#5779](https://github.com/plone/volto/issues/5779)
+
+## 17.15.0 (2024-02-21)
+
+### Feature
+
+- Add accordion to metadata form. @robgietema [#5760](https://github.com/plone/volto/issues/5760)
+
+## 17.14.0 (2024-02-18)
+
+### Feature
+
+- Added the `ignore` property to allow exceptions to rules that are applied to all routes. @dobri1408 [#5621](https://github.com/plone/volto/issues/5621)
+
+### Bugfix
+
+- Fixed listing SSR rendering by sending `subrequestId` instead of `id` only within `getAsyncData`, similar to calling `getQueryStringResults` directly. @ichim-david 
+  Fixed listing SSR pagination rendering by sending `currentPage` value besides the `subrequestId`. @ichim-david  
+  Added testing for SSR rendering for all of the listing block tests. @ichim-david [#5688](https://github.com/plone/volto/issues/5688)
+- Add extra wait calls to listing block tests to avoid sporadic failures. @ichim-david [#5753](https://github.com/plone/volto/issues/5753)
+
+## 17.13.0 (2024-02-09)
+
+### Feature
+
+- Add global form state. @robgietema [#5721](https://github.com/plone/volto/issues/5721)
+
+## 17.12.1 (2024-02-06)
+
+### Bugfix
+
+- Move @types/uuid as a direct dependency (for projects) @sneridagh [#0](https://github.com/plone/volto/issues/0)
+
+## 17.12.0 (2024-02-05)
+
+### Feature
+
+- Improve validation of IdWidget @tedw [#3716](https://github.com/plone/volto/issues/3716)
+- Support for passing whole data object of the initial blocks in local config. Refactor initial block type to its own helpers. @sneridagh [#5718](https://github.com/plone/volto/issues/5718)
+
+### Bugfix
+
+- Fixed wrong conditional proprieties on `ObjectBrowser` for multiple selection. @deodorhunter @Wagner3UB [#4190](https://github.com/plone/volto/issues/4190)
+
+### Documentation
+
+- Temporarily pin `sphinxcontrib-*help` dependencies so documentation can build. @stevepiercy [#5655](https://github.com/plone/volto/issues/5655)
+
+## 17.11.5 (2024-01-26)
+
+### Bugfix
+
+- handle addons that have not been migrated to the new structure of po files @erral [#5704](https://github.com/plone/volto/issues/5704)
+
+### Internal
+
+- Upgrade to @plone/scripts 3.3.2 @sneridagh [#5706](https://github.com/plone/volto/issues/5706)
+
+## 17.11.4 (2024-01-25)
+
+### Bugfix
+
+- In the recurrence widget, set the vertical alignment of the `edit` button to `middle`. @Ravi-kumar9347 [#5359](https://github.com/plone/volto/issues/5359)
+- Fix multilingual redirector where it doesn't take into account the stored cookie in SSR. @robgietema [#5628](https://github.com/plone/volto/issues/5628)
+-  [#5647](https://github.com/plone/volto/issues/5647)
+- Fix `links-to-item` should be a protected route. @iFlameing [#5666](https://github.com/plone/volto/issues/5666)
+- Removed git merge conflicts from french volto.po locale file. @ichim-david [#5681](https://github.com/plone/volto/issues/5681)
+
+### Internal
+
+- Add cypress tests for the "links-to-item" view of content items @jackahl [#5427](https://github.com/plone/volto/issues/5427)
+
+## 17.11.3 (2024-01-25)
+
+### Bugfix
+
+- Removed git merge conflicts from french volto.po locale file. @ichim-david [#5681](https://github.com/plone/volto/issues/5681)
+
+### Internal
+
+- Polish po file handling @erral [#5542](https://github.com/plone/volto/issues/5542)
+
+## 17.11.2 (2024-01-17)
+
+### Bugfix
+
+- Merge the StyleWrapper styles with the draggable props from b-D&D. @sneridagh
+  This fixes the D&D bug introduced in https://github.com/plone/volto/pull/5581 [#5652](https://github.com/plone/volto/issues/5652)
+
+## 17.11.1 (2024-01-17)
+
+### Bugfix
+
+- Fix order of preference in addons-registry for the theme definition (THEME, volto.config.js, package.json) @sneridagh [#5650](https://github.com/plone/volto/issues/5650)
+
 ## 17.11.0 (2024-01-15)
 
 ### Feature

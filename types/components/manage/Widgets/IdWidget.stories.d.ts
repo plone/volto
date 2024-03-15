@@ -1,4 +1,5 @@
-export const Text: any;
+export const Default: any;
+export const Errored: any;
 declare namespace _default {
     export let title: string;
     export { IdWidget as component };

@@ -105,7 +105,13 @@ class AddonConfigurationRegistry {
       path.join(projectRootPath, 'package.json'),
     ));
     // Loads the dynamic config, if any
-    if (fs.existsSync(path.join(projectRootPath, 'volto.config.js'))) {
+    if (process.env.VOLTOCONFIG) {
+      if (fs.existsSync(path.resolve(process.env.VOLTOCONFIG))) {
+        const voltoConfigPath = path.resolve(process.env.VOLTOCONFIG);
+        console.log(`Using volto.config.js in: ${voltoConfigPath}`);
+        this.voltoConfigJS = require(voltoConfigPath);
+      }
+    } else if (fs.existsSync(path.join(projectRootPath, 'volto.config.js'))) {
       this.voltoConfigJS = require(
         path.join(projectRootPath, 'volto.config.js'),
       );
@@ -134,10 +140,10 @@ class AddonConfigurationRegistry {
     this.packages = {};
     this.customizations = new Map();
 
-    // Theme from a package.json key, from volto.config.js or from an ENV VAR
-    // Programatically via volto.config.js wins or the ENV VAR if present
+    // Theme from an ENV VAR, from volto.config.js or from a package.json key
+    // in this order of preference
     this.theme =
-      packageJson.theme || this.voltoConfigJS.theme || process.env.THEME;
+      process.env.THEME || this.voltoConfigJS.theme || packageJson.theme;
 
     this.initDevelopmentPackages();
     this.initPublishedPackages();

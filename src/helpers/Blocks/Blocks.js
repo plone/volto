@@ -701,10 +701,13 @@ export function findBlocks(blocks, types, result = []) {
 
   Object.keys(blocks).forEach((blockId) => {
     const block = blocks[blockId];
+    // check blocks from data as well since some add-ons use that
+    // such as @eeacms/volto-tabs-block
+    const child_blocks = block.blocks || block.data?.blocks;
     if (types.includes(block['@type'])) {
       result.push(blockId);
-    } else if (containerBlockTypes.includes(block['@type']) || block.blocks) {
-      findBlocks(block.blocks, types, result);
+    } else if (containerBlockTypes.includes(block['@type']) || child_blocks) {
+      findBlocks(child_blocks, types, result);
     }
   });
 

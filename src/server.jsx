@@ -239,7 +239,7 @@ server.get('/*', (req, res) => {
         : store.getState().content.data?.language?.token ||
           config.settings.defaultLanguage;
 
-      if (toBackendLang(initialLang) !== contentLang) {
+      if (toBackendLang(initialLang) !== contentLang && url !== '/') {
         const newLang = toReactIntlLang(
           new locale.Locales(contentLang).best(supported).toString(),
         );

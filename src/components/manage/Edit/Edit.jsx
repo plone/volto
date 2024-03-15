@@ -34,6 +34,7 @@ import {
   unlockContent,
   getSchema,
   listActions,
+  setFormData,
 } from '@plone/volto/actions';
 import {
   flattenToAppURL,
@@ -182,6 +183,7 @@ class Edit extends Component {
       });
     }
     if (this.props.updateRequest.loading && nextProps.updateRequest.loaded) {
+      this.props.setFormData({});
       this.props.history.push(
         this.props.returnUrl || getBaseUrl(this.props.pathname),
       );
@@ -257,6 +259,7 @@ class Edit extends Component {
    * @returns {undefined}
    */
   onCancel() {
+    this.props.setFormData({});
     this.props.history.push(
       this.props.returnUrl || getBaseUrl(this.props.pathname),
     );
@@ -307,6 +310,7 @@ class Edit extends Component {
         onSelectForm={() => {
           this.setState({ formSelected: 'editForm' });
         }}
+        global
       />
     );
 
@@ -523,6 +527,7 @@ export default compose(
       getSchema,
       lockContent,
       unlockContent,
+      setFormData,
     },
   ),
   preloadLazyLibs('cms'),

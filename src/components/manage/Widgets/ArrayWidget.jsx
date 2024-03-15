@@ -299,14 +299,15 @@ class ArrayWidget extends Component {
       !this.props.creatable
         ? SortableContainer(Select)
         : SortableContainer(CreatableSelect);
-
     return (
       <FormFieldWrapper {...this.props}>
         <SortableSelect
           useDragHandle
           // react-sortable-hoc props:
           axis="xy"
-          onSortEnd={this.onSortEnd}
+          onSortEnd={(sortProp) => {
+            this.onSortEnd(selectedOption, sortProp);
+          }}
           menuShouldScrollIntoView={false}
           distance={4}
           // small fix for https://github.com/clauderic/react-sortable-hoc/pull/352:

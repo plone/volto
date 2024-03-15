@@ -34,6 +34,7 @@
     ],
     "transform": {
       "^.+\\.js(x)?$": "babel-jest",
+      "^.+\\.ts(x)?$": "ts-jest",
       "^.+\\.(png)$": "jest-file",
       "^.+\\.(jpg)$": "jest-file",
       "^.+\\.(svg)$": "./node_modules/@plone/volto/jest-svgsystem-transform.js"
@@ -137,7 +138,7 @@
   },
   "dependencies": <%- dependencies %>,
   "devDependencies": {
-    "@plone/scripts": "^3.0.0",
+    "@plone/scripts": "^3.3.2",
     "@storybook/addon-actions": "^6.3.0",
     "@storybook/addon-controls": "6.3.0",
     "@storybook/addon-essentials": "^6.3.0",

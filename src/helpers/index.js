@@ -62,6 +62,10 @@ export {
   getPreviousNextBlock,
   findBlocks,
 } from '@plone/volto/helpers/Blocks/Blocks';
+export {
+  getSimpleDefaultBlocks,
+  getDefaultBlocks,
+} from '@plone/volto/helpers/Blocks/defaultBlocks';
 export { default as BodyClass } from '@plone/volto/helpers/BodyClass/BodyClass';
 export { default as ScrollToTop } from '@plone/volto/helpers/ScrollToTop/ScrollToTop';
 export {

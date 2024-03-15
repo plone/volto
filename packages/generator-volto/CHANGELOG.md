@@ -8,6 +8,24 @@
 
 <!-- towncrier release notes start -->
 
+## 8.1.4 (2024-03-05)
+
+### Bugfix
+
+- Ensure hidden files get added to new addon projects in generator-volto @instification [#5719](https://github.com/plone/volto/issues/5719)
+
+## 8.1.3 (2024-02-23)
+
+### Bugfix
+
+- Pin `eslint-plugin-jsx-a11y` to version `^6.7.0` to fix ESLint couldn't determine the plugin "jsx-a11y". @ichim-david [#5785](https://github.com/plone/volto/issues/5785)
+
+## 8.1.2 (2024-02-06)
+
+### Bugfix
+
+- Fix tests in projects that involves TS files @sneridagh [#5738](https://github.com/plone/volto/issues/5738)
+
 ## 8.1.1 (2023-12-13)
 
 ### Bugfix

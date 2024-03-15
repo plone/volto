@@ -1,4 +1,5 @@
 import { defineMessages } from 'react-intl';
+import { cloneDeep } from 'lodash';
 
 import ViewTitleBlock from '@plone/volto/components/manage/Blocks/Title/View';
 import ViewDescriptionBlock from '@plone/volto/components/manage/Blocks/Description/View';
@@ -451,7 +452,7 @@ const blocksConfig = {
           },
           {
             id: 'daterangeFacet',
-            title: 'Date range',
+            title: 'Date Range',
             view: DateRangeFacet,
             isDefault: false,
             stateToValue: DateRangeFacet.stateToValue,
@@ -519,15 +520,11 @@ const blocksConfig = {
 // for the grid block, since we need to modify how the inner teaser
 // block behave in it (= no schemaEnhancer fields for teasers inside a grid)
 // Afterwards, it can be further customized in add-ons using the same technique.
-blocksConfig.gridBlock.blocksConfig = { ...blocksConfig };
-blocksConfig.gridBlock.blocksConfig.teaser = {
-  ...blocksConfig.teaser,
-  schemaEnhancer: gridTeaserDisableStylingSchema,
-};
-blocksConfig.gridBlock.blocksConfig.image = {
-  ...blocksConfig.image,
-  schemaEnhancer: gridImageDisableSizeAndPositionHandlersSchema,
-};
+blocksConfig.gridBlock.blocksConfig = cloneDeep(blocksConfig);
+blocksConfig.gridBlock.blocksConfig.teaser.schemaEnhancer =
+  gridTeaserDisableStylingSchema;
+blocksConfig.gridBlock.blocksConfig.image.schemaEnhancer =
+  gridImageDisableSizeAndPositionHandlersSchema;
 
 const requiredBlocks = ['title'];
 
