@@ -21,6 +21,7 @@ exports[`renders a youtube video body component 1`] = `
   className="video-inner"
 >
   <div
+    aria-label="Play Video"
     className="ui 16:9 embed"
     onClick={[Function]}
     onKeyPress={[Function]}
@@ -44,6 +45,7 @@ exports[`renders a youtube video body component in edit mode 1`] = `
   className="video-inner"
 >
   <div
+    aria-label="Play Video"
     className="ui 16:9 embed"
     onClick={[Function]}
     onKeyPress={[Function]}
