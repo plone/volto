@@ -11,8 +11,8 @@ myst:
 
 Volto uses [Cypress](https://www.cypress.io/) for browser-based acceptance testing.
 
-There are a number of fixtures available covering all the configuration use cases.
-These fixtures have both a specific backend and frontend configuration setup and a related set of tests.
+There are a number of tests available covering all the configuration use cases.
+These tests have both a specific backend and frontend configuration setup and a related set of tests.
 The CI infrastructure runs them all automatically on every push to a branch or PR.
 
 The tests can be run in headless mode (same as the CI does), or within the Cypress user interface.
@@ -25,37 +25,51 @@ When writing new acceptance tests, you usually want to minimize the time it take
 Being able to restart individual components also comes in handy.
 It's recommended to start three individual terminal sessions, one each for running the Plone backend, the Volto frontend, and the acceptance tests.
 
-1.  Run the backend fixture.
+1. Change directory to the Volto package
+
+    ```shell
+    cd packages/plone
+    ```
+
+1.  Start the backend server.
 
     ```shell
     make start-test-acceptance-server
     ```
 
-2.  Run the frontend fixture.
+1.  Start the frontend server.
 
     ```shell
     make start-test-acceptance-frontend-dev
     ```
 
-3.  Run the Cypress tests for that fixture.
+1.  Start the Cypress tests runner.
 
     ```shell
     make test-acceptance
     ```
 
-Available fixtures:
+1. In the Cypress pop-up test style choose `E2E Testing` since Volto's tests are end to end tests.
 
-- Core (`core` or not special naming in the test commands)
-- Multilingual (`multilingual`)
-- Working Copy (`workingCopy`)
-- Core Sandbox (`coresandbox`)
+1. In the next section select the browser you want Cypress to run in, although the core tests are using by default `headless Electron` you can choose your preferred browser for the tests development.
 
-There are convenience commands for each of these fixtures. See `Makefile` for more information.
+1. In the main Cypress runner section you will see all of the test specs that Volto developers have written in order to test Volto and it's packages.
+
+1. To run a test simply interact with the file based tree that displays all possible tests to run and click on what test spec you need to run. 
+
+We provide the following major test specs:
+
+- Core (`core` used to test the core functionality of Volto)
+- Multilingual (`multilingual` tests the multilingual support of Volto)
+- Working Copy (`workingCopy` tests the working copy feature of Volto)
+- Core Sandbox (`coresandbox` tests Volto using configuration and elements that are not present in vanilla Volto)
+
+There are convenience commands for each of these specs. See `Makefile` for more information.
 
 ### Writing new acceptance tests
 
-Go to the `cypress/tests` folder to see existing tests.
-There is a directory per fixture.
+Go to the [cypress/tests](https://github.com/plone/volto/tree/main/packages/volto/cypress/tests) folder to see existing tests.
+There is a directory per spec.
 This directory is hot reloaded with your changes as you write the tests.
 For more information on how to write Cypress tests:
 
@@ -64,7 +78,24 @@ For more information on how to write Cypress tests:
 
 ## Helper commands
 
-There are some artifacts available for the acceptance tests made accessible to Cypress.
+There are some helper [commands](https://github.com/plone/volto/blob/main/packages/volto/cypress/support/commands.js) written by us and made available for the acceptance tests using Cypress.
+
+Volto core makes heavy use of these helpers in the core tests to avoid verbose duplication and they can make your life easier as well if used.
+Example of commands made and used in tests:
+
+```js
+  beforeEach(() => {
+    cy.autologin();
+    cy.createContent({
+      contentType: 'Document',
+      contentId: 'my-page-1',
+      contentTitle: 'My Page-1',
+      allow_discussion: true,
+    });
+    cy.visit('/contents');
+  });
+```
+`cy.autologin` and `cy.createContent` are commands created by us that will auto login and will create the entered content before each test will run making it easier to focus on the act and assert actions of the tests that make use of this test hook.
 
 ### Access History, Redux Store and Settings
 
