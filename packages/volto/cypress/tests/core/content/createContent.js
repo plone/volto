@@ -1,6 +1,8 @@
 describe('createContent Tests', () => {
+  let prefixPath;
   beforeEach(() => {
     cy.autologin();
+    prefixPath = Cypress.env('prefixPath') || '';
   });
 
   it('Create document', function () {
@@ -61,7 +63,7 @@ describe('createContent Tests', () => {
     cy.get('.view-wrapper a').should(
       'have.attr',
       'href',
-      '/my-file/@@download/file',
+      `${prefixPath}/my-file/@@download/file`,
     );
     // cy.get('.view-wrapper a').click();
   });
