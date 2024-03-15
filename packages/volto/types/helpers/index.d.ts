@@ -8,7 +8,6 @@ export { default as langmap } from "./LanguageMap/LanguageMap";
 export { default as Helmet } from "./Helmet/Helmet";
 export { messages } from "./MessageLabels/MessageLabels";
 export { asyncConnect } from "./AsyncConnect";
-export { userHasRoles } from "./User/User";
 export { useDetectClickOutside } from "./Utils/useDetectClickOutside";
 export { useEvent } from "./Utils/useEvent";
 export { usePrevious } from "./Utils/usePrevious";
@@ -27,4 +26,5 @@ export { getBoolean, getVocabName, getVocabFromHint, getVocabFromField, getVocab
 export { default as FormValidation, validateFileUploadSize, tryParseJSON } from "./FormValidation/FormValidation";
 export { difference, getColor, getInitials, safeWrapper, applyConfig, withServerErrorCode, parseDateTime, toGettextLang, normalizeLanguageName, toReactIntlLang, toLangUnderscoreRegion, toBackendLang, hasApiExpander, replaceItemOfArray, cloneDeepSchema, arrayRange, reorderArray, isInteractiveElement, slugify, normalizeString } from "@plone/volto/helpers/Utils/Utils";
 export { withBlockSchemaEnhancer, withVariationSchemaEnhancer, withBlockExtensions, applySchemaEnhancer, resolveExtension, resolveBlockExtensions, addStyling, composeSchema } from "./Extensions";
+export { userHasRoles, isManager, canAssignGroup, canAssignRole } from "./User/User";
 export { getCurrentStateMapping, getWorkflowOptions } from "./Workflows/Workflows";
