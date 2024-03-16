@@ -333,6 +333,10 @@ class Edit extends Component {
           this.setState({ formSelected: 'editForm' });
         }}
         global
+        // Properties to pass to the BlocksForm to match the View ones
+        history={this.props.history}
+        location={this.props.location}
+        token={this.props.token}
       />
     );
 
