@@ -253,6 +253,10 @@ You can opt out of this feature by setting its value to `false`.
 slate.useLinkedHeadings = false
 ```
 
+```{versionchanged} Volto 17.0.0-alpha.28
+This feature is still enabled by default but has a condition to show only for logged-in users 
+```
+
 (editor-configuration-blocks-initialBlocksFocus-label)=
 
 ## `blocks.initialBlocksFocus`

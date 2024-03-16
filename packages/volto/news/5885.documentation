@@ -1,0 +1,1 @@
+Modified `slate.useLinkedHeadings` documentation to mention feature is disabled for logged-in users after #5225 changes. @ichim-david
