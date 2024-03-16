@@ -11,7 +11,7 @@ myst:
 
 # `volto-slate`
 
-`volto-slate` is an interactive default text editor for Volto, developed on top of {term}`Slate`.
+`volto-slate` is an interactive default text editor for Volto, integrated into the core system and developed on top of {term}`Slate`.
 It offers enhanced WYSIWYG functionality and behavior.
 See a [brief elevator pitch for `volto-slate`](https://www.youtube.com/watch?v=SOz-rk5e4_w).
 
@@ -23,8 +23,18 @@ Some examples of the kind of strong integration we have in mind:
 -   The text block accepts drag-and-drop images, and it will upload them as Volto image blocks.
 -   `volto-slate` has a {guilabel}`Table` button with the familiar {guilabel}`size` input, but it creates a table block.
 
-Although this add-on is in an early alpha stage, we have solved most of the big issues.
-The API has stabilized, and we have already started several add-ons based on it, including [`volto-slate-metadata-mentions`](https://github.com/eea/volto-slate-metadata-mentions/) and [`volto-slate-zotero`](https://github.com/eea/volto-slate-zotero).
+The `volto-slate` API has stabilized, and we have already started several add-ons based on it, including [`volto-slate-metadata-mentions`](https://github.com/eea/volto-slate-metadata-mentions/) and [`volto-slate-zotero`](https://github.com/eea/volto-slate-zotero).
+
+```{versionadded} 16.0.0-alpha.15
+`volto-slate` added to Volto core as the default text block.
+```
+
+```{deprecated} 16.0.0-alpha.15
+`text` text block based on `draftJS` is now deprecated and will be removed from core in Volto 18.
+``` 
+
+To migrate existing projects to `volto-slate`, check the [Upgrade Guide](https://6.docs.plone.org/volto/upgrade-guide/index.html#volto-slate-is-now-in-core) documentation.
+
 
 
 (volto-slate-why-another-wysiywg-editor-label)=
