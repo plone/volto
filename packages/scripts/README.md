@@ -19,7 +19,7 @@ The script is included in the `@plone/scripts` package.
 You can run it from inside your project's directory root.
 
 ```shell
-pnpm run volto-update-deps .
+pnpm exec volto-update-deps .
 ```
 
 Or run it directly from the `.bin` folder.
