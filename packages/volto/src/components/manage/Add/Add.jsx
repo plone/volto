@@ -394,6 +394,10 @@ class Add extends Component {
               this.setState({ formSelected: 'addForm' });
             }}
             global
+            // Properties to pass to the BlocksForm to match the View ones
+            history={this.props.history}
+            location={this.props.location}
+            token={this.props.token}
           />
           {this.state.isClient &&
             createPortal(
