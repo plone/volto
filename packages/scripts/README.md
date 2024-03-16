@@ -10,18 +10,19 @@ See https://6.docs.plone.org/volto/development/i18n.html for more information.
 
 This script is installed in the `node_modules/.bin` directory and can be called via `yarn i18n` or directly in the `scripts` `package.json` part.
 
-## depssync
+## `volto-update-deps`
 
-Given an existing project path, it updates the Volto `dependencies` and `devDependencies` for the existing Volto (`@plone/volto`) version in the `package.json` file.
+Given an existing project path, `volto-update-deps` updates the Volto `dependencies` and `devDependencies` for the existing Volto (`@plone/volto`) version in the `package.json` file.
 
-If you are in the process to upgrade your project to a given Volto version, you should update the `package.json` `@plone/volto` dependencies key to use the updated version, then run the script.
-The script is included in `@plone/scripts` package, you can run it from your project:
+If you are in the process of upgrading your project to a given Volto version, you should update the `package.json` `@plone/volto` dependencies key to use the updated version, then run the script.
+The script is included in the `@plone/scripts` package.
+You can run it from inside your project's directory root.
 
 ```shell
 pnpm run volto-update-deps .
 ```
 
-or run it directly from the `.bin` folder.
+Or run it directly from the `.bin` folder.
 
 ```shell
 ./node_modules/.bin/volto-update-deps.js path/to/my/project
@@ -29,7 +30,7 @@ or run it directly from the `.bin` folder.
 
 ## Deprecated utilites
 
-The following utilities are no longer used by core, nor in projects
+The following utilities are no longer used by core or in projects.
 
 ## changelogupdater
 

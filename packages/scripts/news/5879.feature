@@ -1,1 +1,1 @@
-Project dependencies sync utility `dep_sync` @sneridagh
+Added project dependencies sync utility `volto-update-deps`. @sneridagh
