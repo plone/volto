@@ -68,8 +68,8 @@ While developing a project using Volto, you might perform the following routine 
 -   Integrate an add-on's LESS statements with Volto's theme variables
 -   Use schema-based forms to write block components
 -   Write new form widgets
--   Write tests in Jest
--   Write integration tests in Cypress
+-   {doc}`Write tests in Jest <../contributing/testing>`
+-   {doc}`Write integration tests in Cypress <../contributing/acceptance-tests>`
 -   Split your code and lazy-load libraries to improve performance
 -   Use more advanced React concepts, including hooks, context providers, and other topics
 -   Make your code reusable by separating business logic and repeated behaviors as Higher Order Components (HOCs)
