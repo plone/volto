@@ -215,21 +215,32 @@ Browse to the frontend running at http://localhost:3000.
 To stop either the backend or frontend, use {kbd}`ctrl-c`.
 
 
-(developing-core-run-commands-in-pnpm-workspaces-label)=
+(developing-core-run-commands-for-pnpm-workspaces-label)=
 
-## Run commands in pnpm workspaces
+## Run commands for pnpm workspaces
 
 As mentioned in {ref}`developing-core-monorepo-structure-label`, pnpm has the concept of {term}`workspace`.
 Every package or app located in the `packages` or `apps` folders is declared as a pnpm workspace.
-They can be managed using the pnpm `--filter` feature, with either of the following commands:
+
+When developing Volto, you can run pnpm commands from either the repository root or inside the package's or app's workspace in `packages/<package_name>` or `apps/<app_name>`.
+
+pnpm commands will apply in the context from which they are run.
+That means when you run a pnpm command from the repository root, it will apply to all workspaces.
+It also means when you run a pnpm command from inside a workspace, it will apply only to that workspace.
+
+You can also use the pnpm `--filter` feature from the repository root to apply to only the specified workspaces, as shown in the following examples.
 
 ```shell
 pnpm --filter @plone/volto start
 ```
 
+The above command when run from the repository root will start Volto.
+
 ```shell
 pnpm --filter @plone/registry build
 ```
+
+The above command when run from the repository root will build the Volto registry.
 
 ```{seealso}
 For more information about pnpm workspaces, read the [documentation of pnpm workspaces](https://pnpm.io/workspaces).
@@ -251,7 +262,7 @@ pnpm start
 ```
 ````
 
-You can also run commands for a specific workspace using the `--filter` feature as shown in the previous section, {ref}`developing-core-run-commands-in-pnpm-workspaces-label`.
+You can also run commands for a specific workspace using the `--filter` feature as shown in the previous section, {ref}`developing-core-run-commands-for-pnpm-workspaces-label`.
 
 
 ## Develop other libraries in a workspace
