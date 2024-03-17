@@ -14,6 +14,8 @@ Volto developers can enjoy a lot of freedom in their choice of text editors and 
 Volto uses {term}`ESLint`, the advanced JavaScript linting and formatting tool, {term}`Stylelint`, and {term}`Prettier`.
 
 
+(linting-editor-integration-label)=
+
 ## Editor integration
 
 For Visual Studio Code, you'll need to install [VS Code ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).

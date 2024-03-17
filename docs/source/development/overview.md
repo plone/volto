@@ -40,7 +40,7 @@ As is the case with similar modern JavaScript-based applications, you should be 
 Once you've {doc}`bootstrapped your Volto project <plone:install/create-project>`, you can immediately start hacking.
 The following is a list of some the things you can do at this stage.
 
--   Configure your text editor for JavaScript and Volto development
+-   {ref}`Configure your text editor for JavaScript and Volto development <linting-editor-integration-label>`
 -   Volto project-based development
 -   Understand and debug React errors
 -   Understand the React component lifecycle
