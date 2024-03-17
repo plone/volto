@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { flattenToAppURL } from './utils';
-import { usePloneClient } from '@plone/client/provider';
+import { usePloneClient } from '@plone/providers';
 import { Breadcrumbs } from '@plone/components';
 import '@plone/components/dist/basic.css';
 

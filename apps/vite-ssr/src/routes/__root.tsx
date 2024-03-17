@@ -4,6 +4,7 @@ import {
   Outlet,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
 } from '@tanstack/react-router';
 import { DehydrateRouter } from '@tanstack/react-router-server/client';
 import { RouterContext } from '../routerContext';
@@ -18,7 +19,8 @@ export const Route = createRootRouteWithContext<RouterContext>()({
 
 function RootComponent() {
   const router = useRouter();
-
+  const routerState = useRouterState();
+  debugger;
   return (
     <html lang="en">
       {router.options.context.head ? (
