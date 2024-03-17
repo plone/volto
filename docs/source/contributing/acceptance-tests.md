@@ -81,7 +81,7 @@ This directory is hot reloaded with your changes as you write the tests.
 There are some helper commands in {file}`packages/volto/cypress/support/commands.js` written by Volto contributors and made available for the acceptance tests using Cypress.
 
 Volto core makes heavy use of these helpers in the core tests to avoid verbose duplication, and they can make your life easier.
-Example of commands used in tests:
+The following is an example of commands used in tests:
 
 ```js
   beforeEach(() => {
