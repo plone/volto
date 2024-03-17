@@ -131,7 +131,7 @@ npx -p @plone/scripts addon clone .
 
 This only works if you execute the command from the root of your add-on directory.
 
-### consolidate
+#### consolidate
 
 While developing, you might have done changes inside the generated project, and you most probably want to consolidate them, back into the root of the repository.
 By running this script, it copies over from `addon-testing-project/src/addons/<my-addon>` to the root of your repository.
