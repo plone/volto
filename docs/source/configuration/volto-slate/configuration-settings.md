@@ -254,7 +254,7 @@ slate.useLinkedHeadings = false
 ```
 
 ```{versionchanged} Volto 17.0.0-alpha.28
-This feature is still enabled by default but has a condition to show only for logged-in users 
+This feature is still enabled by default, but has a condition to show only for authenticated users.
 ```
 
 (editor-configuration-blocks-initialBlocksFocus-label)=
