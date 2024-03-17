@@ -9,48 +9,61 @@ myst:
 
 # Testing
 
-We use Jest for unit testing in Volto. The popular `@testing-library/react` is also
-available for writing your tests. For every feature or component, a unit test is
-mandatory in Volto core.
+We use {term}`Jest` for unit testing in Volto.
+The popular `@testing-library/react` is also available for writing your tests.
+For every feature or component, a unit test is mandatory in Volto core.
 
 ## Jest configuration
 
-Jest is configured in `package.json`, under the "jest" key.
+Jest is configured in `package.json` under the `jest` key.
 
 ## Run Jest tests on Volto core
-Volto core is running the jest test using the `CI=true` option which will run all tests and display any errors found.
 
-While that is useful for the CI testing, Jest has several modes to run such as running in watch mode or running only failed tests or running specific tests only.
-
-To get to the test runner modes choice the easiest is to simply run `pnpm test`:
-```shell
-  pnpm test
+```{note}
+All commands in this documentation run from inside the `packages/volto` directory.
+See {ref}`developing-core-run-commands-for-pnpm-workspaces-label` for other options to run tests.
 ```
-Then you can follow the Jest promps for keys that you can enter in order to trigger the running of test, here are a few examples:
+
+Jest tests must pass locally before you push commits to the remote Volto repository.
+Jest has several modes to run unit tests locally.
+You can run Jest in watch mode, run only failed tests, or run specific tests only.
+
+To get to the test runner modes choices, run the following command.
+
 ```shell
+pnpm test
+```
+
+Then you can follow the Jest prompts for keys that you can enter to trigger test execution.
+
+```console
+No tests found related to files changed since last commit.
+Press `a` to run all tests, or run Jest with `--watchAll`.
+
 Watch Usage
-> Press a to run all tests.
-> Press f to run only failed tests.
-> Press q to quit watch mode.
+ › Press a to run all tests.
+ › Press f to run only failed tests.
+ › Press p to filter by a filename regex pattern.
+ › Press t to filter by a test name regex pattern.
+ › Press q to quit watch mode.
+ › Press Enter to trigger a test run.
 ```
 
-You can also run only specific tests using the following commands:
+You can also run only specific tests using the following commands.
+
 ```shell
-  cd packages/volto
-  pnpm test src/components/theme/Image
-  # will run only the Image components tests
+pnpm test src/components/theme/Image
+# will run only the Image components tests
 ```
-If you know you have a certain test that fails running that test only in watch
-mode makes it easier to test any code changes made if it fixed the code or not.
+
+If a certain test fails, you can run that test only in watch mode.
+This makes it faster and easier to test code changes.
 
 ## Jest configuration override
 
-In CI or for testing addons, it's interesting to provide an alternate Jest configuration
-or slightly modify it. Volto provide a way to do it using a `jest.config.js` file or
-pointing the test runner to a file of your choice, using `RAZZLE_JEST_CONFIG`
-environment variable.
-Because the Volto add-ons and Volto add-ons projects are still using `yarn` you will
-run the test command using `yarn` instead of `pnpm` as used by Volto core.
+In GitHub workflows or for testing add-ons, it's useful to use an alternate Jest configuration.
+Volto provides a way to do so using a file {file}`jest.config.js`, or pointing the test runner to a file of your choice, using the `RAZZLE_JEST_CONFIG` environment variable.
+Because the Volto add-ons and Volto add-ons projects still use `yarn`, you must run the test command using `yarn` instead of `pnpm`.
 
 ```shell
 RAZZLE_JEST_CONFIG=my-custom-jest-config.js yarn test
@@ -60,15 +73,16 @@ RAZZLE_JEST_CONFIG=my-custom-jest-config.js yarn test
 Both configurations are merged in a way that the keys of the config provided override  the initial (`package.json`) default config, either in Volto or in your projects.
 ```
 
-This is specially useful in CI while developing add-ons, so you can pass an specific configuration that deals with the addon config properly.
+This is especially useful in GitHub workflows while developing add-ons.
+You can pass a specific configuration file that properly deals with the add-on configuration.
 
 ## Add add-ons via environment variable for testing purposes
 
-Sometimes you need to enable different configurations and enable optional components (for example, testing purposes).
+Sometimes you need to enable different configurations and enable optional components, for example, testing purposes.
 You can use the `ADDONS` environment variable to define them.
 
 ```bash
 ADDONS=test-addon,test-addon2 yarn start
 ```
 
- See {doc}`../configuration/environmentvariables` for more information.
+See {doc}`../configuration/environmentvariables` for more information.
