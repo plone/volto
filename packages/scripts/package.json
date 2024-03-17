@@ -36,7 +36,8 @@
   "bin": {
     "addon": "./addon/index.js",
     "changelogupdater": "./changelogupdater.cjs",
-    "i18n": "./i18n.cjs"
+    "i18n": "./i18n.cjs",
+    "volto-update-deps": "./volto-update-deps.js"
   },
   "publishConfig": {
     "access": "public"

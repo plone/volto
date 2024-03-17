@@ -9,7 +9,7 @@ import { Button, Image, Dimmer } from 'semantic-ui-react';
 import { readAsDataURL } from 'promise-file-reader';
 import { injectIntl } from 'react-intl';
 import deleteSVG from '@plone/volto/icons/delete.svg';
-import { Icon, FormFieldWrapper } from '@plone/volto/components';
+import { Icon, FormFieldWrapper, UniversalLink } from '@plone/volto/components';
 import loadable from '@loadable/component';
 import { flattenToAppURL, validateFileUploadSize } from '@plone/volto/helpers';
 import { defineMessages, useIntl } from 'react-intl';
@@ -170,7 +170,11 @@ const FileWidget = (props) => {
         )}
       </Dropzone>
       <div className="field-file-name">
-        {value && value.filename}
+        {value && (
+          <UniversalLink href={value.download} download={true}>
+            {value.filename}
+          </UniversalLink>
+        )}
         {value && (
           <Button
             icon
