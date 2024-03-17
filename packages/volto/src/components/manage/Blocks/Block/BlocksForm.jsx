@@ -48,6 +48,9 @@ const BlocksForm = (props) => {
     blocksConfig = config.blocks.blocksConfig,
     editable = true,
     direction = 'vertical',
+    history,
+    location,
+    token,
   } = props;
 
   const blockList = getBlocks(properties);
@@ -271,6 +274,11 @@ const BlocksForm = (props) => {
               editable,
               showBlockChooser: selectedBlock === childId,
               detached: isContainer,
+              // Properties to pass to the BlocksForm to match the View ones
+              content: properties,
+              history,
+              location,
+              token,
             };
             return editBlockWrapper(
               dragProps,
