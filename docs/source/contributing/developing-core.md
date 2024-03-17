@@ -16,6 +16,8 @@ To create a full Plone project with both frontend and backend, see {doc}`plone:i
 ```
 
 
+(developing-core-monorepo-structure-label)=
+
 ## Monorepo structure
 
 The Volto core repository has the shape of a monorepo, where "mono" means "single" and "repo" is short for "repository".
@@ -25,13 +27,7 @@ This allows the code to be shared effectively, and unifies tracking of changes a
 
 This monorepo uses pnpm as a package manager, extensively using the workspaces feature.
 It's organized in two folders, depending on whether it's a library (package) or an app.
-They are located in the `packages` or `apps` folder.
-They are declared as pnpm workspaces.
-This means they can be managed from the root, using the package manager `--filter` feature.
-
-```{seealso}
-For more information about pnpm workspaces, read the [documentation of pnpm workspaces](https://pnpm.io/workspaces).
-```
+The workspaces are located in the `packages` or `apps` folder.
 
 
 ### Folder layout
@@ -220,10 +216,12 @@ Browse to the frontend running at http://localhost:3000.
 To stop either the backend or frontend, use {kbd}`ctrl-c`.
 
 
-## Running commands
+(developing-core-run-commands-in-pnpm-workspaces-label)=
 
-pnpm has the concept of `workspaces`.
-Every package or app located in the `packages` or `apps` folders are declared as a pnpm workspace.
+## Run commands in pnpm workspaces
+
+As mentioned in {ref}`developing-core-monorepo-structure-label`, pnpm has the concept of `workspaces`.
+Every package or app located in the `packages` or `apps` folders is declared as a pnpm workspace.
 They can be managed using the pnpm `--filter` feature, with either of the following commands:
 
 ```shell
@@ -232,6 +230,10 @@ pnpm --filter @plone/volto start
 
 ```shell
 pnpm --filter @plone/registry build
+```
+
+```{seealso}
+For more information about pnpm workspaces, read the [documentation of pnpm workspaces](https://pnpm.io/workspaces).
 ```
 
 
@@ -250,7 +252,7 @@ pnpm start
 ```
 ````
 
-You can also run commands of specific workspaces using the `--filter` feature as shown in the previous section.
+You can also run commands of specific workspaces using the `--filter` feature as shown in the {ref}`previous section <developing-core-run-commands-label>`.
 
 ```{note}
 If you make commits and you push to GitHub take advantage of the automatic continuous integration testing and check the `details` link for the checks that have failed if you get a failure.
