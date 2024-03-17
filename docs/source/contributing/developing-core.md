@@ -252,7 +252,7 @@ pnpm start
 ```
 ````
 
-You can also run commands of specific workspaces using the `--filter` feature as shown in the {ref}`previous section <developing-core-run-commands-label>`.
+You can also run commands of specific workspaces using the `--filter` feature as shown in the previous section, {ref}`developing-core-run-commands-in-pnpm-workspaces-label`.
 
 ```{note}
 If you make commits and you push to GitHub take advantage of the automatic continuous integration testing and check the `details` link for the checks that have failed if you get a failure.
