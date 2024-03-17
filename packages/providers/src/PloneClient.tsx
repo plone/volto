@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-import type PloneClient from '@plone/client';
+import PloneClient from '@plone/client';
 
-export const PloneClientContext = React.createContext<PloneClient | undefined>(
-  undefined,
-);
+export const PloneClientContext = React.createContext<
+  InstanceType<typeof PloneClient> | undefined
+>(undefined);
 
 export const usePloneClient = () => {
   const client = React.useContext(PloneClientContext);
@@ -17,7 +17,7 @@ export const usePloneClient = () => {
 };
 
 export type PloneClientProviderProps = {
-  client: PloneClient;
+  client: InstanceType<typeof PloneClient>;
   children?: React.ReactNode;
 };
 
