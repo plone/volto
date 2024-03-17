@@ -19,8 +19,7 @@ export const Route = createRootRouteWithContext<RouterContext>()({
 
 function RootComponent() {
   const router = useRouter();
-  const routerState = useRouterState();
-  debugger;
+
   return (
     <html lang="en">
       {router.options.context.head ? (
