@@ -25,7 +25,7 @@ This means that several apps and libraries related to each other are stored in t
 They are managed together but released individually.
 This allows the code to be shared effectively, and unifies tracking of changes across all of the apps and libraries.
 
-This monorepo uses pnpm as a package manager, extensively using the workspaces feature.
+This monorepo uses pnpm as a package manager, extensively using the workspace feature.
 It's organized in two folders, depending on whether it's a library (package) or an app.
 The workspaces are located in the `packages` or `apps` folder.
 
@@ -149,7 +149,6 @@ pnpm --version
 
 Compare the output to the [latest pnpm release number](https://www.npmjs.com/package/pnpm).
 
-
 ```{seealso}
 [pnpm installation](https://pnpm.io/installation).
 ```
@@ -220,7 +219,7 @@ To stop either the backend or frontend, use {kbd}`ctrl-c`.
 
 ## Run commands in pnpm workspaces
 
-As mentioned in {ref}`developing-core-monorepo-structure-label`, pnpm has the concept of `workspaces`.
+As mentioned in {ref}`developing-core-monorepo-structure-label`, pnpm has the concept of `workspace`.
 Every package or app located in the `packages` or `apps` folders is declared as a pnpm workspace.
 They can be managed using the pnpm `--filter` feature, with either of the following commands:
 
@@ -252,7 +251,7 @@ pnpm start
 ```
 ````
 
-You can also run commands of specific workspaces using the `--filter` feature as shown in the previous section, {ref}`developing-core-run-commands-in-pnpm-workspaces-label`.
+You can also run commands for a specific workspace using the `--filter` feature as shown in the previous section, {ref}`developing-core-run-commands-in-pnpm-workspaces-label`.
 
 ```{note}
 If you make commits and you push to GitHub take advantage of the automatic continuous integration testing and check the `details` link for the checks that have failed if you get a failure.
@@ -263,7 +262,7 @@ If the failure is more complex consider running the linting and tests locally un
 ```
 
 
-## Developing other libraries
+## Develop other libraries in a workspace
 
 If a package is a dependency of another package in the monorepo, and it's declared as a workspace, they can be declared as usual in the {file}`package.json` as follows:
 
@@ -274,7 +273,7 @@ If a package is a dependency of another package in the monorepo, and it's declar
 ```
 
 ```{seealso}
-[pnpm workspaces](https://pnpm.io/workspaces)
+[Documentation of pnpm workspaces](https://pnpm.io/workspaces).
 ```
 
 
