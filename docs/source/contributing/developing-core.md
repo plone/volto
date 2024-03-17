@@ -253,14 +253,6 @@ pnpm start
 
 You can also run commands for a specific workspace using the `--filter` feature as shown in the previous section, {ref}`developing-core-run-commands-in-pnpm-workspaces-label`.
 
-```{note}
-If you make commits and you push to GitHub take advantage of the automatic continuous integration testing and check the `details` link for the checks that have failed if you get a failure.
-
-If the failure is simple and you understand it from start then it's enough to make a commit with the fix.
-
-If the failure is more complex consider running the linting and tests locally until you get no failures. Check the {ref}`linting`, {ref}`testing` and {ref}`acceptance-test` docs for more info on how todo that.
-```
-
 
 ## Develop other libraries in a workspace
 
