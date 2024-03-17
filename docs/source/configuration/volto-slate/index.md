@@ -11,7 +11,7 @@ myst:
 
 # `volto-slate`
 
-`volto-slate` is an interactive default text editor for Volto, integrated into the core system and developed on top of {term}`Slate`.
+`volto-slate` is an interactive default text editor for Volto, developed on top of {term}`Slate` and integrated into the core system.
 It offers enhanced WYSIWYG functionality and behavior.
 See a [brief elevator pitch for `volto-slate`](https://www.youtube.com/watch?v=SOz-rk5e4_w).
 
