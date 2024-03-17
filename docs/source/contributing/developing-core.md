@@ -25,7 +25,7 @@ This means that several apps and libraries related to each other are stored in t
 They are managed together but released individually.
 This allows the code to be shared effectively, and unifies tracking of changes across all of the apps and libraries.
 
-This monorepo uses pnpm as a package manager, extensively using the workspace feature.
+This monorepo uses pnpm as a package manager, extensively using its {term}`workspace` feature.
 It's organized in two folders, depending on whether it's a library (package) or an app.
 The workspaces are located in the `packages` or `apps` folder.
 
@@ -219,7 +219,7 @@ To stop either the backend or frontend, use {kbd}`ctrl-c`.
 
 ## Run commands in pnpm workspaces
 
-As mentioned in {ref}`developing-core-monorepo-structure-label`, pnpm has the concept of `workspace`.
+As mentioned in {ref}`developing-core-monorepo-structure-label`, pnpm has the concept of {term}`workspace`.
 Every package or app located in the `packages` or `apps` folders is declared as a pnpm workspace.
 They can be managed using the pnpm `--filter` feature, with either of the following commands:
 
