@@ -212,8 +212,6 @@ class ContentsUploadModal extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const dropzoneOptions = {};
-
     const {
       multiple = true,
       minSize = null,
@@ -222,21 +220,13 @@ class ContentsUploadModal extends Component {
       disabled = false,
     } = this.props;
 
-    if (multiple) {
-      dropzoneOptions['multiple'] = multiple;
-    }
-    if (minSize) {
-      dropzoneOptions['minSize'] = minSize;
-    }
-    if (maxSize) {
-      dropzoneOptions['maxSize'] = maxSize;
-    }
-    if (accept) {
-      dropzoneOptions['accept'] = accept;
-    }
-    if (disabled) {
-      dropzoneOptions['disabled'] = disabled;
-    }
+    const dropzoneOptions = {
+      multiple,
+      minSize,
+      maxSize,
+      accept,
+      disabled,
+    };
 
     return (
       this.props.open && (
