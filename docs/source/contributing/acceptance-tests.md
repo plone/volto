@@ -104,6 +104,7 @@ This makes it easier to focus on the `act` and `assert` actions of the tests tha
 
 We expose the history, {term}`Redux` store, and settings from the app (only for Cypress environments) so we can easily access them and execute actions (like navigate using the router), dispatch Redux actions, or change app settings "on the fly".
 
+
 #### Navigate using React router
 
 You can navigate using the React router without reloading the page with the following command:
