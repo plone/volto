@@ -372,7 +372,7 @@
     "tmp": "0.2.1",
     "ts-jest": "^26.4.2",
     "ts-loader": "9.4.4",
-    "typescript": "5.2.2",
+    "typescript": "^5.4.2",
     "use-trace-update": "1.3.2",
     "wait-on": "6.0.0",
     "webpack": "5.76.1",
