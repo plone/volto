@@ -1448,11 +1448,6 @@ msgstr "Dimensione del file"
 msgid "File view"
 msgstr "Vista file"
 
-#. Default: "Filename"
-#: components/manage/Contents/ContentsUploadModal
-msgid "Filename"
-msgstr "Nome del file"
-
 #. Default: "Filter"
 #: helpers/MessageLabels/MessageLabels
 msgid "Filter"
@@ -3721,6 +3716,7 @@ msgstr "Ora"
 #: components/manage/Blocks/ToC/Schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
+#: components/manage/Contents/ContentsUploadModal
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2024-03-06T08:38:38.161Z\n"
+"POT-Creation-Date: 2024-03-18T12:41:28.682Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -1448,11 +1448,6 @@ msgstr ""
 #. Default: "File view"
 #: config/Views
 msgid "File view"
-msgstr ""
-
-#. Default: "Filename"
-#: components/manage/Contents/ContentsUploadModal
-msgid "Filename"
 msgstr ""
 
 #. Default: "Filter"
@@ -3723,6 +3718,7 @@ msgstr ""
 #: components/manage/Blocks/ToC/Schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
+#: components/manage/Contents/ContentsUploadModal
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget

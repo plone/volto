@@ -1454,11 +1454,6 @@ msgstr "文件大小"
 msgid "File view"
 msgstr "文件视图"
 
-#. Default: "Filename"
-#: components/manage/Contents/ContentsUploadModal
-msgid "Filename"
-msgstr "文件名"
-
 #. Default: "Filter"
 #: helpers/MessageLabels/MessageLabels
 msgid "Filter"
@@ -3727,6 +3722,7 @@ msgstr "时间"
 #: components/manage/Blocks/ToC/Schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
+#: components/manage/Contents/ContentsUploadModal
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget

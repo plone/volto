@@ -260,14 +260,11 @@ class ContentsUploadModal extends Component {
               )}
             </Dropzone>
             {this.state.files.length > 0 && (
-              <Table compact singleLine>
+              <Table compact singleLine className="upload-table">
                 <Table.Header>
                   <Table.Row>
                     <Table.HeaderCell width={8}>
-                      <FormattedMessage
-                        id="Filename"
-                        defaultMessage="Filename"
-                      />
+                      <FormattedMessage id="Title" defaultMessage="Title" />
                     </Table.HeaderCell>
                     <Table.HeaderCell width={4}>
                       <FormattedMessage

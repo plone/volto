@@ -1455,11 +1455,6 @@ msgstr "Tamaño del archivo"
 msgid "File view"
 msgstr "Vista de archivo"
 
-#. Default: "Filename"
-#: components/manage/Contents/ContentsUploadModal
-msgid "Filename"
-msgstr "Nombre del archivo"
-
 #. Default: "Filter"
 #: helpers/MessageLabels/MessageLabels
 msgid "Filter"
@@ -3728,6 +3723,7 @@ msgstr "Hora"
 #: components/manage/Blocks/ToC/Schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
+#: components/manage/Contents/ContentsUploadModal
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
