@@ -8,6 +8,16 @@
 
 <!-- towncrier release notes start -->
 
+## 9.0.0-alpha.12 (2024-03-18)
+
+### Feature
+
+- Copy over the `dependencies` and `devDependencies` from Volto in the generated project given the version provided @sneridagh [#5879](https://github.com/plone/volto/issues/5879)
+
+### Internal
+
+- Bump @plone/scripts and @plone/types to latests @sneridagh [#5888](https://github.com/plone/volto/issues/5888)
+
 ## 9.0.0-alpha.11 (2024-03-14)
 
 ### Bugfix

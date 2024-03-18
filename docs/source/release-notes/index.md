@@ -17,6 +17,26 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.21 (2024-03-18)
+
+### Breaking
+
+- Moved `devDependencies` and `dependencies` to where they belong. @sneridagh [#5879](https://github.com/plone/volto/issues/5879)
+
+### Feature
+
+- Match props passed to the BlockView if reused from the BlockEdit @sneridagh [#5876](https://github.com/plone/volto/issues/5876)
+- Added download link to filename in file widget @sabrina-bongiovanni [#5880](https://github.com/plone/volto/issues/5880)
+
+### Internal
+
+- Bump all the versions in GitHub workflows. @stevepiercy [#5873](https://github.com/plone/volto/issues/5873)
+
+### Documentation
+
+- Update `volto-slate` configuration documentation to indicate it is now part of Volto core. @MostafaMagdyy [#5342](https://github.com/plone/volto/issues/5342)
+- Modified `slate.useLinkedHeadings` documentation to mention feature is disabled for authenticated users after #5225 changes. @ichim-david [#5885](https://github.com/plone/volto/issues/5885)
+
 ## 18.0.0-alpha.20 (2024-03-14)
 
 ### Bugfix
