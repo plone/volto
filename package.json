@@ -54,6 +54,7 @@
       "react-dev-utils": "12.0.1",
       "glob-parent": "6.0.2",
       "immer": "10.0.3",
+      "nth-check": "2.1.1",
       "trim": "1.0.1",
       "trim-newlines": "4.1.1",
       "react-refresh": "0.14.0",
