@@ -153,13 +153,16 @@ Run "npm install -g @plone/generator-volto" to update.`,
 
     // dependencies
     let VoltoPackageJSON;
+    let PloneTypesVersion;
     if (voltoVersion === '*') {
       VoltoPackageJSON = JSON.parse(
         fs.readFileSync(`packages/volto/package.json`, 'utf8'),
       );
       voltoVersion = VoltoPackageJSON.version;
+      PloneTypesVersion = await utils.getPloneTypesVersion('main');
     } else {
       VoltoPackageJSON = await utils.getVoltoPackageJSON(voltoVersion);
+      PloneTypesVersion = await utils.getPloneTypesVersion(voltoVersion);
     }
 
     const VoltoDependencies = VoltoPackageJSON.dependencies;
@@ -180,7 +183,7 @@ Run "npm install -g @plone/generator-volto" to update.`,
     const devDependencies = {
       // TODO: find a better way to specify the version of the core devDependencies
       // Since they grab "workspace: *" from the volto package.json
-      '@plone/types': '^1.0.0-alpha.7',
+      '@plone/types': PloneTypesVersion,
       ...Object.fromEntries(
         Object.entries(VoltoDevDependencies).filter(
           ([key]) => !key.startsWith('@plone'),
