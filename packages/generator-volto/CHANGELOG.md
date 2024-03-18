@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 9.0.0-alpha.13 (2024-03-18)
+
+### Bugfix
+
+- Improve the generator by getting the `@plone/types` version from GH @sneridagh [#5889](https://github.com/plone/volto/issues/5889)
+
 ## 9.0.0-alpha.12 (2024-03-18)
 
 ### Feature
