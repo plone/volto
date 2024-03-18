@@ -8,6 +8,13 @@
 
 <!-- towncrier release notes start -->
 
+## 16.31.4 (2024-03-18)
+
+### Bugfix
+
+- (fix):  make search block sort and facets work on edit @dobri1408 [#5262](https://github.com/plone/volto/issues/5262)
+- Fix Link to Item and Aliases view not updating content in multilingual site. @iFlameing [#5820](https://github.com/plone/volto/issues/5820)
+
 ## 16.31.3 (2024-03-06)
 
 ### Bugfix
