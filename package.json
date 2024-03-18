@@ -52,6 +52,7 @@
     "overrides": {
       "@pmmmwh/react-refresh-webpack-plugin": "0.5.11",
       "react-dev-utils": "12.0.1",
+      "glob-parent": "6.0.2",
       "immer": "10.0.3",
       "trim": "1.0.1",
       "trim-newlines": "4.1.1",
