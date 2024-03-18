@@ -7,12 +7,12 @@
     "start": "razzle start",
     "postinstall": "make omelette && make patches",
     "build": "razzle build --noninteractive",
-    "lint": "./node_modules/eslint/bin/eslint.js --max-warnings=0 'src/**/*.{js,jsx,ts,tsx}'",
-    "lint:fix": "./node_modules/eslint/bin/eslint.js --fix 'src/**/*.{js,jsx,ts,tsx}'",
-    "lint:ci": "./node_modules/eslint/bin/eslint.js --max-warnings=0 -f checkstyle 'src/**/*.{js,jsx,ts,tsx}' > eslint.xml",
-    "prettier": "./node_modules/.bin/prettier --single-quote --check 'src/**/*.{js,jsx,ts,tsx,css,scss}'",
-    "prettier:fix": "./node_modules/.bin/prettier --single-quote --write 'src/**/*.{js,jsx,ts,tsx,css,scss}'",
-    "prettier:ci": "./node_modules/.bin/prettier --single-quote --check 'src/**/*.{js,jsx,ts,tsx,css,scss}'",
+    "lint": "eslint --max-warnings=0 'src/**/*.{js,jsx,ts,tsx}'",
+    "lint:fix": "eslint --fix 'src/**/*.{js,jsx,ts,tsx}'",
+    "lint:ci": "eslint --max-warnings=0 -f checkstyle 'src/**/*.{js,jsx,ts,tsx}' > eslint.xml",
+    "prettier": "prettier --single-quote --check 'src/**/*.{js,jsx,ts,tsx,css,scss}'",
+    "prettier:fix": "prettier --single-quote --write 'src/**/*.{js,jsx,ts,tsx,css,scss}'",
+    "prettier:ci": "prettier --single-quote --check 'src/**/*.{js,jsx,ts,tsx,css,scss}'",
     "stylelint": "stylelint 'theme/**/*.{css,scss,less}' 'src/**/*.{css,scss,less}' --allow-empty-input",
     "stylelint:overrides": "stylelint 'theme/**/*.overrides' 'src/**/*.overrides' --allow-empty-input",
     "stylelint:fix": "yarn stylelint --fix && yarn stylelint:overrides --fix",
@@ -22,6 +22,7 @@
     "cypress:run": "test-acceptance-headless",
     "start:prod": "NODE_ENV=production node build/server.js",
     "i18n": "rm -rf build/messages && NODE_ENV=production i18n",
+    "volto-update-deps": "volto-update-deps",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -71,95 +72,11 @@
       "__DEV__": true
     }
   },
-  "prettier": {
-    "trailingComma": "all",
-    "singleQuote": true,
-    "overrides": [
-      {
-        "files": "*.overrides",
-        "options": {
-          "parser": "less"
-        }
-      }
-    ]
-  },
-  "stylelint": {
-    "extends": [
-      "stylelint-config-idiomatic-order"
-    ],
-    "plugins": [
-      "stylelint-prettier"
-    ],
-    "overrides": [
-      {
-        "files": [
-          "**/*.less"
-        ],
-        "customSyntax": "postcss-less"
-      },
-      {
-        "files": [
-          "**/*.overrides"
-        ],
-        "customSyntax": "postcss-less"
-      },
-      {
-        "files": [
-          "**/*.scss"
-        ],
-        "customSyntax": "postcss-scss"
-      }
-    ],
-    "rules": {
-      "prettier/prettier": true,
-      "rule-empty-line-before": [
-        "always-multi-line",
-        {
-          "except": [
-            "first-nested"
-          ],
-          "ignore": [
-            "after-comment"
-          ]
-        }
-      ]
-    },
-    "ignoreFiles": "theme/themes/default/**/*.overrides"
-  },
-  "browserslist": [
-    ">1%",
-    "last 4 versions",
-    "Firefox ESR",
-    "not ie 11",
-    "not dead"
-  ],
   "engines": {
-    "node": "^16 || ^18 || ^20"
+    "node": "^18 || ^20"
   },
   "dependencies": <%- dependencies %>,
-  "devDependencies": {
-    "@plone/scripts": "^3.0.0",
-    "@storybook/addon-actions": "^6.3.0",
-    "@storybook/addon-controls": "6.3.0",
-    "@storybook/addon-essentials": "^6.3.0",
-    "@storybook/addon-links": "^6.3.0",
-    "@storybook/builder-webpack5": "^6.5.15",
-    "@storybook/manager-webpack5": "^6.5.15",
-    "@storybook/react": "^6.3.0",
-    "@typescript-eslint/eslint-plugin": "7.1.1",
-    "@typescript-eslint/parser": "7.1.1",
-    "jest-junit": "8.0.0",
-    "mrs-developer": "^2.1.1",
-    "postcss": "8.4.13",
-    "prettier": "3.2.5",
-    "razzle": "4.2.18",
-    "stylelint": "^16.2.1",
-    "stylelint-config-idiomatic-order": "10.0.0",
-    "stylelint-prettier": "5.0.0",
-    "ts-jest": "^26.4.2",
-    "ts-loader": "9.4.4",
-    "typescript": "5.3.3"
-  },
+  "devDependencies": <%- devDependencies %>,
   "resolutions": {
     "@pmmmwh/react-refresh-webpack-plugin": "0.5.11",
     "react-error-overlay": "6.0.9",

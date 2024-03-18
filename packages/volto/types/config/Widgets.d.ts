@@ -11,7 +11,6 @@ export namespace widgetMapping {
         export { RegistryImageWidget as site_logo };
     }
     export namespace widget {
-        export { WysiwygWidget as richtext };
         export { TextareaWidget as textarea };
         export { DatetimeWidget as datetime };
         export { DatetimeWidget as date };
@@ -112,7 +111,6 @@ import QuerystringWidget from '@plone/volto/components/manage/Widgets/Querystrin
 import UrlWidget from '@plone/volto/components/manage/Widgets/UrlWidget';
 import IdWidget from '@plone/volto/components/manage/Widgets/IdWidget';
 import RegistryImageWidget from '@plone/volto/components/manage/Widgets/RegistryImageWidget';
-import WysiwygWidget from '@plone/volto/components/manage/Widgets/WysiwygWidget';
 import TextareaWidget from '@plone/volto/components/manage/Widgets/TextareaWidget';
 import PasswordWidget from '@plone/volto/components/manage/Widgets/PasswordWidget';
 import FileWidget from '@plone/volto/components/manage/Widgets/FileWidget';

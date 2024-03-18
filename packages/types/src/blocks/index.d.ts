@@ -111,4 +111,8 @@ export interface BlockEditProps {
   path: string;
   className: string;
   style: Record<`--${string}`, string>;
+  content: Content;
+  history: History;
+  location: Location;
+  token: string;
 }

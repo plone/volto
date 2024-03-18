@@ -17,6 +17,62 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.21 (2024-03-18)
+
+### Breaking
+
+- Moved `devDependencies` and `dependencies` to where they belong. @sneridagh [#5879](https://github.com/plone/volto/issues/5879)
+
+### Feature
+
+- Match props passed to the BlockView if reused from the BlockEdit @sneridagh [#5876](https://github.com/plone/volto/issues/5876)
+- Added download link to filename in file widget @sabrina-bongiovanni [#5880](https://github.com/plone/volto/issues/5880)
+
+### Internal
+
+- Bump all the versions in GitHub workflows. @stevepiercy [#5873](https://github.com/plone/volto/issues/5873)
+
+### Documentation
+
+- Update `volto-slate` configuration documentation to indicate it is now part of Volto core. @MostafaMagdyy [#5342](https://github.com/plone/volto/issues/5342)
+- Modified `slate.useLinkedHeadings` documentation to mention feature is disabled for authenticated users after #5225 changes. @ichim-david [#5885](https://github.com/plone/volto/issues/5885)
+
+## 18.0.0-alpha.20 (2024-03-14)
+
+### Bugfix
+
+- Add BBB code for removed WysiwygWidget @sneridagh [#5874](https://github.com/plone/volto/issues/5874)
+
+## 18.0.0-alpha.19 (2024-03-14)
+
+### Breaking
+
+- Remove legacy `text`, `table` and `hero` blocks based in `draftJS` @sneridagh [#5846](https://github.com/plone/volto/issues/5846)
+
+### Feature
+
+- Do not display options for Site Administrator to create, modify, or delete Manager users. @wesleybl [#5244](https://github.com/plone/volto/issues/5244)
+
+### Bugfix
+
+- (fix):  make search block sort and facets work on edit @dobri1408 [#5262](https://github.com/plone/volto/issues/5262)
+- Upgrade `@typescript-eslint` version @sneridagh [#5844](https://github.com/plone/volto/issues/5844)
+- Fix the introduction of a mutable (referenced) object when assigning the default inner `blocksConfig` object for the `grid` block, pass by value instead. sneridagh [#5850](https://github.com/plone/volto/issues/5850)
+- Fix other occurrences of mutable (referenced) objects when assigning the default inner `blocksConfig` object for the `grid` block, pass by value instead. sneridagh [#5859](https://github.com/plone/volto/issues/5859)
+
+### Internal
+
+- Upgrade versions of Cypress @sneridagh [#5845](https://github.com/plone/volto/issues/5845)
+
+### Documentation
+
+- Update link to cssnano documentation. @stevepiercy [#5853](https://github.com/plone/volto/issues/5853)
+- Update docs for the `defaultBlockType` setting. @davisagli [#5854](https://github.com/plone/volto/issues/5854)
+- The proper name is Semantic UI. @stevepiercy [#5855](https://github.com/plone/volto/issues/5855)
+- Add missing nextjs install step. @gomez [#5857](https://github.com/plone/volto/issues/5857)
+- Add reference to Docker installation for some Linux distributions. @stevepiercy [#5861](https://github.com/plone/volto/issues/5861)
+- Fix broken link to TanStack Query. @stevepiercy [#5871](https://github.com/plone/volto/issues/5871)
+
 ## 18.0.0-alpha.18 (2024-03-05)
 
 ### Bugfix
