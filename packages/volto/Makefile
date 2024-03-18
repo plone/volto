@@ -256,7 +256,7 @@ full-test-acceptance-prefixed: ## Runs prefixed Core Full Acceptance Testing in 
 
 .PHONY: test-acceptance-prefixed
 test-acceptance-prefixed: ## Start Prefixed Cypress Acceptance Tests
-	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config baseUrl='http://localhost/foo'
+	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config baseUrl='http://localhost/foo' --env prefixPath="/foo"
 
 .PHONY: start-test-acceptance-webserver-prefixed
 start-test-acceptance-webserver-prefixed: ## Start the prefixed webserver
