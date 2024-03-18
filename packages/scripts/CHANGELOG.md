@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 3.6.1 (2024-03-18)
+
+### Bugfix
+
+- Fix volto-update-deps script, remove `@plone` packages from the sync @sneridagh [#5889](https://github.com/plone/volto/issues/5889)
+
 ## 3.6.0 (2024-03-18)
 
 ### Feature
