@@ -169,7 +169,7 @@ Run "npm install -g @plone/generator-volto" to update.`,
       '@plone/volto': voltoVersion,
       // TODO: find a better way to specify the version of the core dependencies
       // Since they grab "workspace: *" from the volto package.json
-      '@plone/scripts': '^3.5.0',
+      '@plone/scripts': '^3.6.0',
       ...Object.fromEntries(
         Object.entries(VoltoDependencies).filter(
           ([key]) => !key.startsWith('@plone'),
@@ -180,7 +180,7 @@ Run "npm install -g @plone/generator-volto" to update.`,
     const devDependencies = {
       // TODO: find a better way to specify the version of the core devDependencies
       // Since they grab "workspace: *" from the volto package.json
-      '@plone/types': '^1.0.0-alpha.6',
+      '@plone/types': '^1.0.0-alpha.7',
       ...Object.fromEntries(
         Object.entries(VoltoDevDependencies).filter(
           ([key]) => !key.startsWith('@plone'),
