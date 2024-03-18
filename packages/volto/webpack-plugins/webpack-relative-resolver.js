@@ -5,11 +5,9 @@ class RelativeResolverPlugin {
     this.source = source || 'resolve';
     this.target = target || 'resolve';
     this.registry = registry;
-    this.voltoModulePath = require
-      .resolve('@plone/volto')
-      .split('/')
-      .slice(0, -1)
-      .join('/');
+    this.voltoModulePath = registry.isVoltoProject
+      ? require.resolve('@plone/volto').split('/').slice(0, -1).join('/')
+      : `${registry.voltoPath}/src`;
     this.voltoPaths = Object.assign(
       { '@plone/volto/': this.voltoModulePath },
       ...Object.keys(registry.packages).map((k) => ({
