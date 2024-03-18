@@ -7,6 +7,7 @@ settings:
 overrides:
   '@pmmmwh/react-refresh-webpack-plugin': 0.5.11
   react-dev-utils: 12.0.1
+  immer: 10.0.3
   react-refresh: 0.14.0
   webpack: 5.90.1
 
@@ -24910,11 +24911,6 @@ packages:
 
   /immer@10.0.3:
     resolution: {integrity: sha512-pwupu3eWfouuaowscykeckFmVTpqbzW+rXFCX8rQLkZzM9ftBmU/++Ra+o+L27mz03zJTlyV4UUr+fdKNffo4A==}
-    dev: false
-
-  /immer@9.0.21:
-    resolution: {integrity: sha512-bc4NBHqOqSfRW7POMkHd51LvClaeMXpm8dx0e8oE2GORbq5aRK7Bxl4FyzVLdGtLmvLKL7BTDBG5ACQm4HWjTA==}
-    dev: true
 
   /immutable@3.8.2:
     resolution: {integrity: sha512-15gZoQ38eYjEjxkorfbcgBKBL6R7T459OuK+CpcWt7O3KF4uPCx2tD0uFETlUDIyo+1789crbMhTvQBSR5yBMg==}
@@ -32839,7 +32835,7 @@ packages:
       global-modules: 2.0.0
       globby: 11.1.0
       gzip-size: 6.0.0
-      immer: 9.0.21
+      immer: 10.0.3
       is-root: 2.1.0
       loader-utils: 3.2.1
       open: 8.4.2
