@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.6 (2024-03-14)
+
+### Internal
+
+- Cleanup deps @sneridagh [#5846](https://github.com/plone/volto/issues/5846)
+
 ## 1.0.0-alpha.5 (2024-03-01)
 
 ### Feature
