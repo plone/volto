@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.7 (2024-03-18)
+
+### Feature
+
+- Improve @plone/types - Block*Props and Widgets @sneridagh [#5876](https://github.com/plone/volto/issues/5876)
+
 ## 1.0.0-alpha.6 (2024-03-14)
 
 ### Internal
