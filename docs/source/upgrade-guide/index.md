@@ -28,16 +28,19 @@ Thus it is safe to run it on top of your project and answer the prompts.
 
 ## Upgrading to Volto 18.x.x
 
-### Volto's internal dependencies (and devDependencies) are now properly sorted out
+### Volto's internal `dependencies` and `devDependencies` are now properly sorted out
 
 Volto internal `dependencies` and `devDependencies` have been correctly sorted out.
 This means that Volto no longer will force `devDependencies` as `dependencies` just to make sure that they get installed in Volto projects.
-This provoked undesired hoisting problems and forced the build to not behave correctly in some situations.
-This also aligns with the best practices in the JavaScript world and we make happy the packagers as well.
-This change means that the projects would have now to declare all the dependencies that they use.
-For this purpose, we have developed a new utility (see next section) that synchronizes the `dependencies` and `devDependencies` of your projects with the ones in Volto core.
-It is mandatory that you run the utility in order to make Volto > 18.0.0-alpha.21 to work in your projects.
-This opens the door to use `pnpm` in projects too and other goodies.
+This provoked undesired hoisting problems, and forced the build to not behave correctly in some situations.
+This also aligns with the best practices in the JavaScript world, and will make the packagers work better.
+
+This change means that your projects will now have to declare all their dependencies.
+For this purpose, we have developed a {ref}`new utility that synchronizes the `dependencies` and `devDependencies` <upgrade-guide-new-dependencies-synchronizer-label>` of your projects with those in Volto core.
+It is mandatory that you run the utility to make Volto version 18.0.0-alpha.21 or later work in your projects.
+This opens the door to use {term}`pnpm` in projects, too, and other goodies.
+
+(upgrade-guide-new-dependencies-synchronizer-label)=
 
 ### New dependencies synchronizer
 
@@ -47,12 +50,14 @@ This opens the door to use `pnpm` in projects too and other goodies.
 ```{versionadded} @plone/scripts 3.6.1
 ```
 
-Volto has now a script to ease the upgrades in Volto projects.
-It's called the `volto-update-deps` scripts and it's included as part of the `@plone/scripts` package.
-This script synchronizes the local dependencies of your project along with the Volto core ones.
-It preserves the ones you might have in there.
-This is the procedure, in your project's `package.json`, update the `@plone/volto` version to the one you want to upgrade (eg. `18.0.0-alpha.21`).
-Then update also the version of `@plone/scripts` to at least version `3.6.1`.
+Volto now has a script to ease the upgrades in Volto projects, called `volto-update-deps`.
+It's included as part of the `@plone/scripts` package.
+This script synchronizes the local dependencies of your project with those in Volto core.
+It preserves your dependencies.
+
+To run the procedure, in your project's `package.json`, update the `@plone/volto` version to the one to which you want to upgrade, such as `18.0.0-alpha.21`.
+Then update the version of `@plone/scripts` to at least version `3.6.1`.
+The following example shows the minimum valid versions to use under teh `dependencies` key.
 
 ```json
 dependencies: {
@@ -61,20 +66,20 @@ dependencies: {
 }
 ```
 
-then run `yarn` in your project to update the packages:
+Then run `yarn` in your project to update the packages.
 
 ```shell
 yarn
 ```
 
 After this, the `volto-update-deps` script will be available in your environment.
-Run it:
+Now you can run the script to syncrhonize dependencies:
 
 ```shell
 yarn volto-update-deps
 ```
 
-It should synchronize the versions in your project's `dependencies` and `devDependencies` with the ones in Volto core.
+It should synchronize the versions in your project's `dependencies` and `devDependencies` with those in Volto core.
 It will add the missing ones, and update the current ones.
 It will preserve the existing ones.
 It is recommended that you check the resultant changes to assess that everything is fine.
@@ -84,7 +89,7 @@ Run yarn again to update the versions.
 yarn
 ```
 
-Verify that your project works well, by running the dev server.
+Verify that your project works well by running the development server.
 
 ```shell
 yarn start
