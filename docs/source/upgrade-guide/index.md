@@ -36,7 +36,7 @@ This provoked undesired hoisting problems, and forced the build to not behave co
 This also aligns with the best practices in the JavaScript world, and will make the packagers work better.
 
 This change means that your projects will now have to declare all their dependencies.
-For this purpose, we have developed a {ref}`new utility that synchronizes the `dependencies` and `devDependencies` <upgrade-guide-new-dependencies-synchronizer-label>` of your projects with those in Volto core.
+For this purpose, we have developed a {ref}`new utility <upgrade-guide-new-dependencies-synchronizer-label>` that synchronizes the `dependencies` and `devDependencies` of your projects with those in Volto core.
 It is mandatory that you run the utility to make Volto version 18.0.0-alpha.21 or later work in your projects.
 This opens the door to use {term}`pnpm` in projects, too, and other goodies.
 
