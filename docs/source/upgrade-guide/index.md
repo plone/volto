@@ -57,7 +57,7 @@ It preserves your dependencies.
 
 To run the procedure, in your project's `package.json`, update the `@plone/volto` version to the one to which you want to upgrade, such as `18.0.0-alpha.21`.
 Then update the version of `@plone/scripts` to at least version `3.6.1`.
-The following example shows the minimum valid versions to use under teh `dependencies` key.
+The following example shows the minimum valid versions to use under the `dependencies` key.
 
 ```json
 dependencies: {
