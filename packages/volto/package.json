@@ -87,6 +87,7 @@
       "@plone/volto-slate/(.*)$": "<rootDir>/../volto-slate/src/$1",
       "@plone/registry": "<rootDir>/../registry/src",
       "@plone/registry/(.*)$": "<rootDir>/../registry/src/$1",
+      "@plone/volto": "<rootDir>/src/index.js",
       "~/config": "<rootDir>/src/config",
       "~/../locales/${lang}.json": "<rootDir>/locales/en.json",
       "(.*)/locales/(.*)": "<rootDir>/locales/$2",
