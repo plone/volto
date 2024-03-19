@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 1.5.3 (2024-03-19)
+
+### Bugfix
+
+- Cross-package manager Volto path resolver in `webpack-relative-resolver` @sneridagh [#5893](https://github.com/plone/volto/issues/5893)
+
 ## 1.5.2 (2024-03-05)
 
 ### Bugfix
