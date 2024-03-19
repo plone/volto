@@ -28,6 +28,73 @@ Thus it is safe to run it on top of your project and answer the prompts.
 
 ## Upgrading to Volto 18.x.x
 
+### Volto's internal `dependencies` and `devDependencies` are now properly sorted out
+
+Volto internal `dependencies` and `devDependencies` have been correctly sorted out.
+This means that Volto no longer will force `devDependencies` as `dependencies` just to make sure that they get installed in Volto projects.
+This provoked undesired hoisting problems, and forced the build to not behave correctly in some situations.
+This also aligns with the best practices in the JavaScript world, and will make the packagers work better.
+
+This change means that your projects will now have to declare all their dependencies.
+For this purpose, we have developed a {ref}`new utility <upgrade-guide-new-dependencies-synchronizer-label>` that synchronizes the `dependencies` and `devDependencies` of your projects with those in Volto core.
+It is mandatory that you run the utility to make Volto version 18.0.0-alpha.21 or later work in your projects.
+This opens the door to use {term}`pnpm` in projects, too, and other goodies.
+
+(upgrade-guide-new-dependencies-synchronizer-label)=
+
+### New dependencies synchronizer
+
+```{versionadded} 18.0.0-alpha.21
+```
+
+```{versionadded} @plone/scripts 3.6.1
+```
+
+Volto now has a script to ease the upgrades in Volto projects, called `volto-update-deps`.
+It's included as part of the `@plone/scripts` package.
+This script synchronizes the local dependencies of your project with those in Volto core.
+It preserves your dependencies.
+
+To run the procedure, in your project's `package.json`, update the `@plone/volto` version to the one to which you want to upgrade, such as `18.0.0-alpha.21`.
+Then update the version of `@plone/scripts` to at least version `3.6.1`.
+The following example shows the minimum valid versions to use under the `dependencies` key.
+
+```json
+dependencies: {
+  "@plone/volto": "18.0.0-alpha.21",
+  "@plone/scripts": "^3.6.1"
+}
+```
+
+Then run `yarn` in your project to update the packages.
+
+```shell
+yarn
+```
+
+After this, the `volto-update-deps` script will be available in your environment.
+Now you can run the script to syncrhonize dependencies:
+
+```shell
+yarn volto-update-deps
+```
+
+It should synchronize the versions in your project's `dependencies` and `devDependencies` with those in Volto core.
+It will add the missing ones, and update the current ones.
+It will preserve the existing ones.
+It is recommended that you check the resultant changes to assess that everything is fine.
+Run yarn again to update the versions.
+
+```shell
+yarn
+```
+
+Verify that your project works well by running the development server.
+
+```shell
+yarn start
+```
+
 ### Volto runs now on React 18.2.0
 
 We have updated Volto to use React 18.
