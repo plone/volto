@@ -11,15 +11,22 @@ jest.mock('https', () => ({
     const Stream = require('stream');
     let streamStream = new Stream();
     cb(streamStream);
-
-    const json = JSON.stringify({
-      name: '@plone/volto',
-      'dist-tags': {
-        latest: '16.3.0',
-        alpha: '16.0.0-alpha.53',
-        rc: '16.0.0-rc.3',
-      },
-    });
+    let json;
+    if (!url.includes('packages/volto/package.json')) {
+      json = JSON.stringify({
+        name: '@plone/volto',
+        'dist-tags': {
+          latest: '16.3.0',
+          alpha: '16.0.0-alpha.53',
+          rc: '16.0.0-rc.3',
+        },
+      });
+    } else {
+      json = JSON.stringify({
+        dependencies: {},
+        devDependencies: {},
+      });
+    }
 
     streamStream.emit('data', json);
     streamStream.emit('end');

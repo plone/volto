@@ -8,6 +8,22 @@
 
 <!-- towncrier release notes start -->
 
+## 9.0.0-alpha.13 (2024-03-18)
+
+### Bugfix
+
+- Improve the generator by getting the `@plone/types` version from GH @sneridagh [#5889](https://github.com/plone/volto/issues/5889)
+
+## 9.0.0-alpha.12 (2024-03-18)
+
+### Feature
+
+- Copy over the `dependencies` and `devDependencies` from Volto in the generated project given the version provided @sneridagh [#5879](https://github.com/plone/volto/issues/5879)
+
+### Internal
+
+- Bump @plone/scripts and @plone/types to latests @sneridagh [#5888](https://github.com/plone/volto/issues/5888)
+
 ## 9.0.0-alpha.11 (2024-03-14)
 
 ### Bugfix
