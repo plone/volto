@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { LeadImageSchema } from './schema';
+import { BlockDataForm } from '@plone/volto/components';
 import { Form } from 'semantic-ui-react';
 import { Accordion, Grid, Segment } from 'semantic-ui-react';
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
-import {
-  CheckboxWidget,
-  Icon,
-  Image,
-  TextWidget,
-} from '@plone/volto/components';
+import { Icon, Image, TextWidget } from '@plone/volto/components';
 import { flattenToAppURL } from '@plone/volto/helpers';
 import AlignBlock from '@plone/volto/components/manage/Sidebar/AlignBlock';
 
@@ -16,7 +13,6 @@ import imageSVG from '@plone/volto/icons/image.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import upSVG from '@plone/volto/icons/up-key.svg';
 import downSVG from '@plone/volto/icons/down-key.svg';
-import navTreeSVG from '@plone/volto/icons/nav.svg';
 
 const messages = defineMessages({
   Image: {
@@ -53,18 +49,18 @@ const messages = defineMessages({
   },
 });
 
-const LeadImageSidebar = ({
-  properties,
-  data,
-  block,
-  onChangeBlock,
-  openObjectBrowser,
-  required = false,
-  onChangeField,
-  intl,
-}) => {
+const LeadImageSidebar = (props) => {
+  const {
+    properties,
+    data,
+    block,
+    onChangeBlock,
+    required = false,
+    onChangeField,
+    intl,
+  } = props;
   const [activeAccIndex, setActiveAccIndex] = useState(0);
-
+  const schema = LeadImageSchema({ ...props, intl });
   function handleAccClick(e, titleProps) {
     const { index } = titleProps;
     const newIndex = activeAccIndex === index ? -1 : index;
@@ -169,37 +165,13 @@ const LeadImageSidebar = ({
               )}
             </Accordion.Title>
             <Accordion.Content active={activeAccIndex === 0}>
-              <TextWidget
-                id="link"
-                title={intl.formatMessage(messages.LinkTo)}
-                required={false}
-                value={flattenToAppURL(data.href)}
-                icon={data.href ? clearSVG : navTreeSVG}
-                iconAction={
-                  data.href
-                    ? () => {
-                        onChangeBlock(block, {
-                          ...data,
-                          href: '',
-                        });
-                      }
-                    : () => openObjectBrowser({ mode: 'link' })
-                }
-                onChange={(name, value) => {
+              <BlockDataForm
+                schema={schema}
+                formData={data}
+                onChangeField={(id, value) => {
                   onChangeBlock(block, {
                     ...data,
-                    href: flattenToAppURL(value),
-                  });
-                }}
-              />
-              <CheckboxWidget
-                id="openLinkInNewTab"
-                title={intl.formatMessage(messages.openLinkInNewTab)}
-                value={data.openLinkInNewTab ? data.openLinkInNewTab : false}
-                onChange={(name, value) => {
-                  onChangeBlock(block, {
-                    ...data,
-                    openLinkInNewTab: value,
+                    [id]: id === 'link' ? flattenToAppURL(value) : value,
                   });
                 }}
               />
