@@ -17,6 +17,7 @@ import { matchPath } from 'react-router';
  */
 export const getBaseUrl = memoize((url) => {
   const { settings } = config;
+  const prefix = settings.prefixPath;
   if (url === undefined) return;
 
   // We allow settings.nonContentRoutes to have strings (that are supposed to match
@@ -33,6 +34,11 @@ export const getBaseUrl = memoize((url) => {
     (acc, item) => acc.replace(item, ''),
     url,
   );
+
+  //strip prefix path from url
+  if (prefix && adjustedUrl.match(new RegExp(`^${prefix}(/|$)`))) {
+    adjustedUrl = adjustedUrl.slice(prefix.length);
+  }
 
   adjustedUrl = adjustedUrl || '/';
   return adjustedUrl === '/' ? '' : adjustedUrl;
@@ -155,11 +161,21 @@ export const isCmsUi = memoize((currentPathname) => {
  */
 export function flattenHTMLToAppURL(html) {
   const { settings } = config;
+  const replacer = config.settings.prefixPath ?? '';
   return settings.internalApiPath
     ? html
-        .replace(new RegExp(settings.internalApiPath, 'g'), '')
-        .replace(new RegExp(settings.apiPath, 'g'), '')
-    : html.replace(new RegExp(settings.apiPath, 'g'), '');
+        .replace(new RegExp(settings.internalApiPath, 'g'), replacer)
+        .replace(new RegExp(settings.apiPath, 'g'), replacer)
+    : html.replace(new RegExp(settings.apiPath, 'g'), replacer);
+}
+
+export function addPrefixPath(src) {
+  let url = src;
+  const { prefixPath } = config.settings;
+  if (isInternalURL(src) && prefixPath && !src.startsWith(prefixPath)) {
+    url = prefixPath + src; //add prefixPath to src if it's an internal url and not a static resource.
+  }
+  return url;
 }
 
 /**

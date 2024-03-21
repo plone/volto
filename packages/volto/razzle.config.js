@@ -356,6 +356,15 @@ const defaultModify = ({
     };
   }
 
+  const prefixPath = process.env.RAZZLE_PREFIX_PATH || '';
+
+  if (prefixPath) {
+    if (target === 'web' && dev) {
+      config.devServer.devMiddleware.publicPath = prefixPath;
+    }
+    const pp = config.output.publicPath;
+    config.output.publicPath = `${pp}${prefixPath.slice(1)}/`;
+  }
   return config;
 };
 
