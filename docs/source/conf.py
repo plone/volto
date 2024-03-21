@@ -146,6 +146,7 @@ html_static_path = [
 myst_enable_extensions = [
     "deflist",  # You will be able to utilise definition lists
     # https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#definition-lists
+    "fieldlist",  # For docstrings,
     "linkify",  # Identify “bare” web URLs and add hyperlinks.
     "colon_fence",  # You can also use ::: delimiters to denote code fences,\
     #  instead of ```.

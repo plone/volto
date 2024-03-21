@@ -2,7 +2,7 @@
 
 Translations endpoint is used to handle the translation information of the content objects.
 
-## Get Translation
+## Get translation
 
 ### Query function
 
@@ -18,7 +18,7 @@ Use the `useGetTranslation` hook to get the translation information of the given
 
   - **Required:** Yes
 
-## Link Translation
+## Link translation
 
 ### Mutation function
 
@@ -43,11 +43,11 @@ Use the `useLinkTranslation` hook to link a translation to the given path.
 
     - **Required:** Yes
 
-## Unlink Translation
+## Unlink translation
 
 ### Mutation function
 
-Use the `unlinkTranslationMutation` function to get the mutation for unlinking a translation from the given path.
+Use the `unlinkTranslationMutation` function to get the mutation for `unlinking` a translation from the given path.
 
 ### Hook
 

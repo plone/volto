@@ -1,13 +1,13 @@
-# Working Copy
+# Working copy
 
 ```{note}
 This feature is available only on Plone 5 or greater.
 ```
 
 Plone has a _working copy_ feature provided by the core package `plone.app.iterate`.
-It allows the users to create a working copy of a published or live content object, and work with it until it is ready to be published without having to edit the original object.
+Users can create a working copy of a live content object, allowing independent editing before publishing, without altering the original object.
 
-## Get Working Copy
+## Get working copy
 
 ### Query function
 
@@ -23,7 +23,7 @@ Use the `useGetWorkingcopy` hook to get the working copy of a content object.
 
   - **Required:** Yes
 
-## Add Working Copy
+## Add working copy
 
 ### Mutation function
 
@@ -39,7 +39,7 @@ Use the `useCreateWorkingcopy` hook to add a working copy of a content object.
 
   - **Required:** Yes
 
-## Check In Working Copy
+## Check in working copy
 
 ### Mutation function
 
@@ -55,7 +55,7 @@ Use the `useCheckinWorkingcopy` hook to check in a working copy to update the or
 
   - **Required:** Yes
 
-## Delete Working Copy
+## Delete working copy
 
 ### Mutation function
 

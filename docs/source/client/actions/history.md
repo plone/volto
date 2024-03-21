@@ -1,10 +1,10 @@
 # History
 
-The `@history` endpoint exposes history and versioning information on previous versions of the content.
+The `@history` endpoint exposes history and versioning information on earlier versions of the content.
 Each change or workflow change on a content object or file is listed.
-It also allows to revert to a previous version of the file.
+It also allows to revert to a earlier version of the file.
 
-## Get History
+## Get history
 
 ### Query function
 
@@ -20,7 +20,7 @@ Use the `useGetHistory` hook to get the history for a page.
 
   - **Required**: Yes
 
-## Get Versioned History
+## Get versioned history
 
 ### Query function
 
@@ -40,15 +40,15 @@ Use the `useGetHistoryVersioned` hook to get the versioned history for a page.
 
   - **Required**: Yes
 
-## Revert to Version
+## Revert to version
 
 ### Mutation function
 
-Use the `revertHistoryMutation` function to get the mutation for reverting to a previous version of a page.
+Use the `revertHistoryMutation` function to get the mutation for reverting to a earlier version of a page.
 
 ### Hook
 
-Use the `useRevertHistory` hook to revert to a previous version of a page.
+Use the `useRevertHistory` hook to revert to a earlier version of a page.
 
 ### Parameters
 
