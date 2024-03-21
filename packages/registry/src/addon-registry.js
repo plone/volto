@@ -113,6 +113,7 @@ class AddonConfigurationRegistry {
     }
 
     this.projectRootPath = projectRootPath;
+    this.isVoltoProject = packageJson.name !== '@plone/volto';
     this.voltoPath =
       packageJson.name === '@plone/volto'
         ? `${projectRootPath}`

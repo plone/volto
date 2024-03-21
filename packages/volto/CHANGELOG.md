@@ -17,6 +17,27 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.23 (2024-03-21)
+
+### Feature
+
+- Improve the usage of `RAZZLE_JEST_CONFIG`. @sneridagh [#5901](https://github.com/plone/volto/issues/5901)
+
+### Documentation
+
+- Updated testing and code quality with information on how to contribute to Volto core. @ichim-david [#5341](https://github.com/plone/volto/issues/5341)
+
+## 18.0.0-alpha.22 (2024-03-19)
+
+### Bugfix
+
+- Correctly sort facet values if they are numbers @erral [#5864](https://github.com/plone/volto/issues/5864)
+- Cross-package manager Volto path resolver in `webpack-relative-resolver` @sneridagh [#5893](https://github.com/plone/volto/issues/5893)
+
+### Documentation
+
+- `Volto 18.0.0-alpha.21` and `volto-update-deps` documentation @sneridagh [#5892](https://github.com/plone/volto/issues/5892)
+
 ## 18.0.0-alpha.21 (2024-03-18)
 
 ### Breaking
