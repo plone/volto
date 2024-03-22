@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+import '@testing-library/cypress/add-commands';
 import { getIfExists } from '../helpers';
 import { ploneAuth } from './constants';
 
