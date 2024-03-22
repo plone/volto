@@ -22,8 +22,6 @@ const ploneAuthObj = {
   pass: ploneAuth[1],
 };
 
-export * from './volto-slate';
-
 // --- isInViewport ----------------------------------------------------------
 Cypress.Commands.add('isInViewport', (element) => {
   cy.get(element).then(($el) => {
