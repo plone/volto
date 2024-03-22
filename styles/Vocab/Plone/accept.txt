@@ -9,9 +9,12 @@ npm
 nvm
 Pastanaga
 Plone
+pluggab(le|ility)
+programatically
 Razzle
 RichText
 Sass
+transpile[dr]{0,1}
 Volto
 Vue
 Zope

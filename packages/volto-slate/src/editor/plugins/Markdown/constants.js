@@ -1,4 +1,4 @@
-import { toggleList, unwrapList } from './utils';
+import { toggleList } from './utils';
 import { isBlockActive } from '@plone/volto-slate/utils';
 import { UL, OL, LI } from '@plone/volto-slate/constants';
 

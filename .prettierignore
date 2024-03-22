@@ -1,0 +1,9 @@
+**/.next
+**/build
+**/coverage
+**/dist
+styles/rules/*
+node_modules
+packages/volto/types/*
+storybook-static
+app/vite-ssr/src/routeTree.gen.ts

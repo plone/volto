@@ -42,9 +42,9 @@ export const withSplitBlocksOnBreak = (editor) => {
         // deconstructToVoltoBlocks
         ReactDOM.unstable_batchedUpdates(() => {
           const [top, bottom] = splitEditorInTwoFragments(editor);
-          setEditorContent(editor, top);
           // ReactEditor.blur(editor);
           createAndSelectNewBlockAfter(editor, bottom);
+          setEditorContent(editor, top);
         });
       }
       return;

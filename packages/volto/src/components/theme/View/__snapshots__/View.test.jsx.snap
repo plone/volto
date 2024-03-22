@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`View renders a document view 1`] = `
+<div>
+  <div
+    id="view"
+  >
+    <div
+      id="ContentMetadataTags"
+    />
+    <div
+      id="SlotRenderer"
+    />
+    <div
+      id="DefaultView"
+    />
+    <div
+      id="SlotRenderer"
+    />
+  </div>
+  <div
+    id="toolbar"
+  >
+    <div
+      id="Portal"
+    />
+  </div>
+</div>
+`;
+
+exports[`View renders a summary view 1`] = `
+<div>
+  <div
+    id="view"
+  >
+    <div
+      id="ContentMetadataTags"
+    />
+    <div
+      id="SlotRenderer"
+    />
+    <div
+      id="SummaryView"
+    />
+    <div
+      id="SlotRenderer"
+    />
+  </div>
+  <div
+    id="toolbar"
+  >
+    <div
+      id="Portal"
+    />
+  </div>
+</div>
+`;
+
+exports[`View renders a tabular view 1`] = `
+<div>
+  <div
+    id="view"
+  >
+    <div
+      id="ContentMetadataTags"
+    />
+    <div
+      id="SlotRenderer"
+    />
+    <div
+      id="TabularView"
+    />
+    <div
+      id="SlotRenderer"
+    />
+  </div>
+  <div
+    id="toolbar"
+  >
+    <div
+      id="Portal"
+    />
+  </div>
+</div>
+`;
+
+exports[`View renders an empty view 1`] = `
+<div>
+  <span />
+  <div
+    id="toolbar"
+  />
+</div>
+`;

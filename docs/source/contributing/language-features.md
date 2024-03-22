@@ -36,7 +36,7 @@ Babel preset-env uses `browserlist` which gives the ability to micromanage the
 transformations needed by the current project depending of the browser support you are
 currently targeting.
 
-By doing this, enables the bundles to be smaller, as the resultant code does not need to
+By doing this, it enables the bundles to be smaller, as the resulting code does not need to
 support old browsers (thus, transform your code to ES5 compatible code) as Babel will
 apply only the required transforms that your target enviroments need. For more
 information: https://babeljs.io/docs/babel-preset-env#browserslist-integration
@@ -70,4 +70,4 @@ have to support.
 However, Volto (or its dependencies) might not be compatible with old browsers anyways,
 and you might need to provide some other workarounds to make the build work (and the
 deprecated browser not crash). You can refer to {doc}`this (outdated)
-document <../recipes/ie11compat>` in order to get some hints on how to do it.
+document <../development/ie11compat>` in order to get some hints on how to do it.

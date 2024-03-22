@@ -1,0 +1,89 @@
+{
+  "name": "@plone/registry",
+  "description": "Add-on and configuration registry for Plone and for JavaScript and TypeScript-based apps.",
+  "maintainers": [
+    {
+      "name": "Plone Foundation",
+      "url": "https://plone.org"
+    }
+  ],
+  "funding": "https://github.com/sponsors/plone",
+  "license": "MIT",
+  "version": "1.5.4",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/plone/volto.git"
+  },
+  "bugs": {
+    "url": "https://github.com/plone/volto/issues"
+  },
+  "homepage": "https://plone.org",
+  "keywords": [
+    "volto",
+    "plone",
+    "plone6",
+    "react",
+    "add-ons",
+    "registry",
+    "configuration",
+    "config"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "source": "src/index.ts",
+  "main": "dist/main.js",
+  "module": "dist/module.js",
+  "types": "dist/types.d.ts",
+  "exports": {
+    "./src/*": "./src/*.js",
+    ".": {
+      "types": "./dist/types.d.ts",
+      "import": "./dist/module.js",
+      "require": "./dist/main.js"
+    }
+  },
+  "targets": {
+    "main": {
+      "includeNodeModules": false
+    }
+  },
+  "scripts": {
+    "watch": "parcel watch",
+    "build": "parcel build --no-cache",
+    "test": "vitest",
+    "dry-release": "release-it --dry-run",
+    "release": "release-it",
+    "release-major-alpha": "release-it major --preRelease=alpha",
+    "release-alpha": "release-it --preRelease=alpha"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react-dom": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "crypto-random-string": "3.2.0",
+    "debug": "4.3.2",
+    "dependency-graph": "0.10.0",
+    "glob": "7.1.6"
+  },
+  "devDependencies": {
+    "@parcel/packager-ts": "^2.12.0",
+    "@parcel/transformer-typescript-types": "^2.12.0",
+    "@plone/types": "workspace:*",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "parcel": "^2.12.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "release-it": "16.2.1",
+    "tsconfig": "workspace:*",
+    "typescript": "5.2.2",
+    "vitest": "^0.34.6"
+  }
+}

@@ -77,8 +77,8 @@ export const breakList = (editor) => {
     Editor.deleteBackward(editor, { unit: 'line' });
     // also account for empty nodes [{text: ''}]
     if (Editor.isEmpty(editor, parent)) {
-      Transforms.removeNodes(editor, { at: ref.current });
       createAndSelectNewBlockAfter(editor, [createEmptyParagraph()]);
+      Transforms.removeNodes(editor, { at: ref.current });
       return true;
     }
 
