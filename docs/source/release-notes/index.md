@@ -17,6 +17,18 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.24 (2024-03-23)
+
+### Feature
+
+- Add id attribute to discussions container and individual comments [@ericof] [#5904](https://github.com/plone/volto/issues/5904)
+
+### Internal
+
+- Move `testing-library` Cypress commands import to inner commands, so it can be imported from the outside. @sneridagh [#5906](https://github.com/plone/volto/issues/5906)
+- Add new cypress helper for slate `getSlateEditorAndType` @sneridagh [#5909](https://github.com/plone/volto/issues/5909)
+- Upgrade @typescript-eslint @sneridagh [#5910](https://github.com/plone/volto/issues/5910)
+
 ## 18.0.0-alpha.23 (2024-03-21)
 
 ### Feature

@@ -1,1 +1,0 @@
-Move `testing-library` Cypress commands import to inner commands, so it can be imported from the outside. @sneridagh
