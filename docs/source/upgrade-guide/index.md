@@ -172,17 +172,17 @@ This change improves UX of the Babel view (translation form) since a disabled fi
 
 ### `volto-slate` Cypress helpers moved to its own module
 
-There were some Cypress helpers for `volto-slate` along with the other definition of Cypress commands.
-The Cypress command definitions are intended to be only loaded once, and the helpers can be imported a number of times.
+There were some Cypress helpers for `volto-slate` along with the other definitions of Cypress commands.
+The Cypress command definitions are intended to be loaded only once, whereas the helpers can be imported any number of times.
 Therefore, we moved the helpers to its own module:
 
-```
+```js
 import { slateBeforeEach } from '@plone/volto/cypress/support/commands';
 ```
 
 becomes:
 
-```
+```js
 import { slateBeforeEach } from '@plone/volto/cypress/support/helpers';
 ```
 
