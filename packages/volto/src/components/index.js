@@ -73,91 +73,449 @@ export { default as SummaryView } from '@plone/volto/components/theme/View/Summa
 export { default as TabularView } from '@plone/volto/components/theme/View/TabularView';
 export { default as AlbumView } from '@plone/volto/components/theme/View/AlbumView';
 
-export { default as Actions } from '@plone/volto/components/manage/Actions/Actions';
-export { default as Add } from '@plone/volto/components/manage/Add/Add';
-export { default as AddonsControlpanel } from '@plone/volto/components/manage/Controlpanels/AddonsControlpanel';
-export { default as UndoControlpanel } from '@plone/volto/components/manage/Controlpanels/UndoControlpanel';
-export { default as Contents } from '@plone/volto/components/manage/Contents/Contents';
-export { default as Circle } from '@plone/volto/components/manage/Contents/circle';
-export { default as DatabaseInformation } from '@plone/volto/components/manage/Controlpanels/DatabaseInformation';
-export { default as Controlpanel } from '@plone/volto/components/manage/Controlpanels/Controlpanel';
+export const Actions = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "manage" */ '@plone/volto/components/manage/Actions/Actions'
+    ),
+);
+export const Add = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "manage" */ '@plone/volto/components/manage/Add/Add'
+    ),
+);
+
+export const AddonsControlpanel = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "controlpanels" */ '@plone/volto/components/manage/Controlpanels/AddonsControlpanel'
+    ),
+);
+export const UndoControlpanel = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "controlpanels" */ '@plone/volto/components/manage/Controlpanels/UndoControlpanel'
+    ),
+);
+export const Contents = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "contents" */ '@plone/volto/components/manage/Contents/Contents'
+    ),
+);
+export const Circle = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "contents" */ '@plone/volto/components/manage/Contents/circle'
+    ),
+);
+export const DatabaseInformation = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "controlpanels" */ '@plone/volto/components/manage/Controlpanels/DatabaseInformation'
+    ),
+);
+export const Controlpanel = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "controlpanels" */ '@plone/volto/components/manage/Controlpanels/Controlpanel'
+    ),
+);
 export { default as Controlpanels } from '@plone/volto/components/manage/Controlpanels/Controlpanels';
-export { default as AliasesControlpanel } from '@plone/volto/components/manage/Controlpanels/Aliases';
-export { default as ContentTypes } from '@plone/volto/components/manage/Controlpanels/ContentTypes';
-export { default as ContentType } from '@plone/volto/components/manage/Controlpanels/ContentType';
-export { default as ContentTypeLayout } from '@plone/volto/components/manage/Controlpanels/ContentTypeLayout';
-export { default as ContentTypeSchema } from '@plone/volto/components/manage/Controlpanels/ContentTypeSchema';
-export { default as ContentTypesActions } from '@plone/volto/components/manage/Controlpanels/ContentTypesActions';
-export { default as UsersControlpanel } from '@plone/volto/components/manage/Controlpanels/Users/UsersControlpanel';
-export { default as UserGroupMembershipControlPanel } from '@plone/volto/components/manage/Controlpanels/Users/UserGroupMembershipControlPanel';
-export { default as Relations } from '@plone/volto/components/manage/Controlpanels/Relations/Relations';
-export { default as GroupsControlpanel } from '@plone/volto/components/manage/Controlpanels/Groups/GroupsControlpanel';
-export { default as RulesControlpanel } from '@plone/volto/components/manage/Controlpanels/Rules/Rules';
-export { default as AddRuleControlpanel } from '@plone/volto/components/manage/Controlpanels/Rules/AddRule';
-export { default as EditRuleControlpanel } from '@plone/volto/components/manage/Controlpanels/Rules/EditRule';
-export { default as ConfigureRuleControlpanel } from '@plone/volto/components/manage/Controlpanels/Rules/ConfigureRule';
-export { default as UpgradeControlPanel } from '@plone/volto/components/manage/Controlpanels/UpgradeControlPanel';
-
-export { default as ModerateComments } from '@plone/volto/components/manage/Controlpanels/ModerateComments';
-export { default as VersionOverview } from '@plone/volto/components/manage/Controlpanels/VersionOverview';
-export { default as Delete } from '@plone/volto/components/manage/Delete/Delete';
-export { default as Diff } from '@plone/volto/components/manage/Diff/Diff';
-export { default as Display } from '@plone/volto/components/manage/Display/Display';
-export { default as Edit } from '@plone/volto/components/manage/Edit/Edit';
-export { default as ModalForm } from '@plone/volto/components/manage/Form/ModalForm';
-export { default as History } from '@plone/volto/components/manage/History/History';
-export { default as Sharing } from '@plone/volto/components/manage/Sharing/Sharing';
-export { default as Rules } from '@plone/volto/components/manage/Rules/Rules';
-export { default as Aliases } from '@plone/volto/components/manage/Aliases/Aliases';
-export { default as LinksToItem } from '@plone/volto/components/manage/LinksToItem/LinksToItem';
-export { default as Workflow } from '@plone/volto/components/manage/Workflow/Workflow';
-export { default as Messages } from '@plone/volto/components/manage/Messages/Messages';
-export { default as BlockChooser } from '@plone/volto/components/manage/BlockChooser/BlockChooser';
-export { default as BlockChooserButton } from '@plone/volto/components/manage/BlockChooser/BlockChooserButton';
-export { default as Toolbar } from '@plone/volto/components/manage/Toolbar/Toolbar';
-export { default as Sidebar } from '@plone/volto/components/manage/Sidebar/Sidebar';
-export { default as SidebarPopup } from '@plone/volto/components/manage/Sidebar/SidebarPopup';
-export { default as SidebarPortal } from '@plone/volto/components/manage/Sidebar/SidebarPortal';
-export { default as PersonalTools } from '@plone/volto/components/manage/Toolbar/PersonalTools';
-export { default as More } from '@plone/volto/components/manage/Toolbar/More';
-export { default as Types } from '@plone/volto/components/manage/Toolbar/Types';
-export { default as Toast } from '@plone/volto/components/manage/Toast/Toast';
-export { default as ManageTranslations } from '@plone/volto/components/manage/Multilingual/ManageTranslations';
-
+export const AliasesControlpanel = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "controlpanels" */ '@plone/volto/components/manage/Controlpanels/Aliases'
+    ),
+);
+export const ContentTypes = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "controlpanels" */ '@plone/volto/components/manage/Controlpanels/ContentTypes'
+    ),
+);
+export const ContentType = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "controlpanels" */ '@plone/volto/components/manage/Controlpanels/ContentType'
+    ),
+);
+export const ContentTypeLayout = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "controlpanels" */ '@plone/volto/components/manage/Controlpanels/ContentTypeLayout'
+    ),
+);
+export const ContentTypeSchema = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "controlpanels" */ '@plone/volto/components/manage/Controlpanels/ContentTypeSchema'
+    ),
+);
+export const ContentTypesActions = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "controlpanels" */ '@plone/volto/components/manage/Controlpanels/ContentTypesActions'
+    ),
+);
+export const UsersControlpanel = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "controlpanels" */ '@plone/volto/components/manage/Controlpanels/Users/UsersControlpanel'
+    ),
+);
+export const UserGroupMembershipControlPanel = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "controlpanels" */ '@plone/volto/components/manage/Controlpanels/Users/UserGroupMembershipControlPanel'
+    ),
+);
+export const Relations = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "controlpanels" */ '@plone/volto/components/manage/Controlpanels/Relations/Relations'
+    ),
+);
+export const GroupsControlpanel = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "controlpanels" */ '@plone/volto/components/manage/Controlpanels/Groups/GroupsControlpanel'
+    ),
+);
+export const RulesControlpanel = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "controlpanels" */ '@plone/volto/components/manage/Controlpanels/Rules/Rules'
+    ),
+);
+export const AddRuleControlpanel = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "controlpanels" */ '@plone/volto/components/manage/Controlpanels/Rules/AddRule'
+    ),
+);
+export const EditRuleControlpanel = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "controlpanels" */ '@plone/volto/components/manage/Controlpanels/Rules/EditRule'
+    ),
+);
+export const ConfigureRuleControlpanel = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "controlpanels" */ '@plone/volto/components/manage/Controlpanels/Rules/ConfigureRule'
+    ),
+);
+export const UpgradeControlPanel = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "controlpanels" */ '@plone/volto/components/manage/Controlpanels/UpgradeControlPanel'
+    ),
+);
+export const ModerateComments = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "controlpanels" */ '@plone/volto/components/manage/Controlpanels/ModerateComments'
+    ),
+);
+export const VersionOverview = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "controlpanels" */ '@plone/volto/components/manage/Controlpanels/VersionOverview'
+    ),
+);
+export const Delete = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "manage" */ '@plone/volto/components/manage/Delete/Delete'
+    ),
+);
+export const Diff = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "manage" */ '@plone/volto/components/manage/Diff/Diff'
+    ),
+);
+export const Display = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "manage" */ '@plone/volto/components/manage/Display/Display'
+    ),
+);
+export const Edit = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "manage" */ '@plone/volto/components/manage/Edit/Edit'
+    ),
+);
+export const ModalForm = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "manage" */ '@plone/volto/components/manage/Form/ModalForm'
+    ),
+);
+export const History = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "manage" */ '@plone/volto/components/manage/History/History'
+    ),
+);
+export const Sharing = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "manage" */ '@plone/volto/components/manage/Sharing/Sharing'
+    ),
+);
+export const Rules = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "manage" */ '@plone/volto/components/manage/Rules/Rules'
+    ),
+);
+export const Aliases = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "manage" */ '@plone/volto/components/manage/Aliases/Aliases'
+    ),
+);
+export const LinksToItem = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "manage" */ '@plone/volto/components/manage/LinksToItem/LinksToItem'
+    ),
+);
+export const Workflow = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "manage" */ '@plone/volto/components/manage/Workflow/Workflow'
+    ),
+);
+export const Messages = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "manage" */ '@plone/volto/components/manage/Messages/Messages'
+    ),
+);
+export const BlockChooser = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "manage" */ '@plone/volto/components/manage/BlockChooser/BlockChooser'
+    ),
+);
+export const BlockChooserButton = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "manage" */ '@plone/volto/components/manage/BlockChooser/BlockChooserButton'
+    ),
+);
+export const Toolbar = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "manage" */ '@plone/volto/components/manage/Toolbar/Toolbar'
+    ),
+);
+export const Sidebar = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "manage" */ '@plone/volto/components/manage/Sidebar/Sidebar'
+    ),
+);
+export const SidebarPopup = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "manage" */ '@plone/volto/components/manage/Sidebar/SidebarPopup'
+    ),
+);
+export const SidebarPortal = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "manage" */ '@plone/volto/components/manage/Sidebar/SidebarPortal'
+    ),
+);
+export const PersonalTools = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "manage" */ '@plone/volto/components/manage/Toolbar/PersonalTools'
+    ),
+);
+export const More = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "manage" */ '@plone/volto/components/manage/Toolbar/More'
+    ),
+);
+export const Types = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "manage" */ '@plone/volto/components/manage/Toolbar/Types'
+    ),
+);
+export const Toast = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "manage" */ '@plone/volto/components/manage/Toast/Toast'
+    ),
+);
+export const ManageTranslations = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "manage" */ '@plone/volto/components/manage/Multilingual/ManageTranslations'
+    ),
+);
 // Potentially could ve removed from index, since they are internal components and
 // we don't want them to end up in the main chunk
-export { default as Form } from '@plone/volto/components/manage/Form/Form';
-export { default as BlocksToolbar } from '@plone/volto/components/manage/Form/BlocksToolbar';
-export { default as UndoToolbar } from '@plone/volto/components/manage/Form/UndoToolbar';
-export { default as Field } from '@plone/volto/components/manage/Form/Field';
-export { default as SearchTags } from '@plone/volto/components/theme/Search/SearchTags';
-export { default as CommentEditModal } from '@plone/volto/components/theme/Comments/CommentEditModal';
-export { default as ContentsBreadcrumbs } from '@plone/volto/components/manage/Contents/ContentsBreadcrumbs';
-export { default as ContentsIndexHeader } from '@plone/volto/components/manage/Contents/ContentsIndexHeader';
-export { default as ContentsItem } from '@plone/volto/components/manage/Contents/ContentsItem';
-export { default as ContentsUploadModal } from '@plone/volto/components/manage/Contents/ContentsUploadModal';
-export { default as ContentsPropertiesModal } from '@plone/volto/components/manage/Contents/ContentsPropertiesModal';
-export { default as ContentsRenameModal } from '@plone/volto/components/manage/Contents/ContentsRenameModal';
-export { default as ContentsWorkflowModal } from '@plone/volto/components/manage/Contents/ContentsWorkflowModal';
-export { default as ContentsTagsModal } from '@plone/volto/components/manage/Contents/ContentsTagsModal';
-export { default as RenderUsers } from '@plone/volto/components/manage/Controlpanels/Users/RenderUsers';
-export { default as RenderGroups } from '@plone/volto/components/manage/Controlpanels/Groups/RenderGroups';
-export { default as DiffField } from '@plone/volto/components/manage/Diff/DiffField';
-export { default as DragDropList } from '@plone/volto/components/manage/DragDropList/DragDropList';
+export const Form = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "manage" */ '@plone/volto/components/manage/Form/Form'
+    ),
+);
+export const BlocksToolbar = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "manage" */ '@plone/volto/components/manage/Form/BlocksToolbar'
+    ),
+);
+export const UndoToolbar = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "manage" */ '@plone/volto/components/manage/Form/UndoToolbar'
+    ),
+);
+export const Field = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "manage" */ '@plone/volto/components/manage/Form/Field'
+    ),
+);
+export const SearchTags = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "manage" */ '@plone/volto/components/theme/Search/SearchTags'
+    ),
+);
+export const CommentEditModal = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "manage" */ '@plone/volto/components/theme/Comments/CommentEditModal'
+    ),
+);
+export const ContentsBreadcrumbs = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "contents" */ '@plone/volto/components/manage/Contents/ContentsBreadcrumbs'
+    ),
+);
+export const ContentsIndexHeader = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "contents" */ '@plone/volto/components/manage/Contents/ContentsIndexHeader'
+    ),
+);
+export const ContentsItem = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "contents" */ '@plone/volto/components/manage/Contents/ContentsItem'
+    ),
+);
+export const ContentsUploadModal = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "contents" */ '@plone/volto/components/manage/Contents/ContentsUploadModal'
+    ),
+);
+export const ContentsPropertiesModal = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "contents" */ '@plone/volto/components/manage/Contents/ContentsPropertiesModal'
+    ),
+);
+export const ContentsRenameModal = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "contents" */ '@plone/volto/components/manage/Contents/ContentsRenameModal'
+    ),
+);
+export const ContentsWorkflowModal = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "contents" */ '@plone/volto/components/manage/Contents/ContentsWorkflowModal'
+    ),
+);
+export const ContentsTagsModal = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "contents" */ '@plone/volto/components/manage/Contents/ContentsTagsModal'
+    ),
+);
+export const RenderUsers = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "manage" */ '@plone/volto/components/manage/Controlpanels/Users/RenderUsers'
+    ),
+);
+export const RenderGroups = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "manage" */ '@plone/volto/components/manage/Controlpanels/Groups/RenderGroups'
+    ),
+);
+export const DiffField = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "manage" */ '@plone/volto/components/manage/Diff/DiffField'
+    ),
+);
+export const DragDropList = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "manage" */ '@plone/volto/components/manage/DragDropList/DragDropList'
+    ),
+);
 export { default as InlineForm } from '@plone/volto/components/manage/Form/InlineForm';
-export { default as BlocksForm } from '@plone/volto/components/manage/Blocks/Block/BlocksForm';
-export { default as BlockDataForm } from '@plone/volto/components/manage/Form/BlockDataForm';
+export const BlocksForm = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "manage" */ '@plone/volto/components/manage/Blocks/Block/BlocksForm'
+    ),
+);
+export const BlockDataForm = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "manage" */ '@plone/volto/components/manage/Form/BlockDataForm'
+    ),
+);
 
-export { default as FormFieldWrapper } from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
-export { default as ArrayWidget } from '@plone/volto/components/manage/Widgets/ArrayWidget';
-export { default as CheckboxWidget } from '@plone/volto/components/manage/Widgets/CheckboxWidget';
+export const FormFieldWrapper = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "widgets" */ '@plone/volto/components/manage/Widgets/FormFieldWrapper'
+    ),
+);
+export const ArrayWidget = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "widgets" */ '@plone/volto/components/manage/Widgets/ArrayWidget'
+    ),
+);
+export const CheckboxWidget = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "widgets" */ '@plone/volto/components/manage/Widgets/CheckboxWidget'
+    ),
+);
 
 export const DatetimeWidget = loadable(
-  () => import('@plone/volto/components/manage/Widgets/DatetimeWidget'),
+  () =>
+    import(
+      /* webpackChunkName: "datetimewidget" */ '@plone/volto/components/manage/Widgets/DatetimeWidget'
+    ),
 );
 export const RecurrenceWidget = loadable(
   () =>
     import(
+      /* webpackChunkName: "datetimewidget" */
       '@plone/volto/components/manage/Widgets/RecurrenceWidget/RecurrenceWidget'
     ),
 );
