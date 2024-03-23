@@ -58,9 +58,14 @@ const defaultRazzleOptions = {
   ],
 };
 module.exports = {
-  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
-  addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
+  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  addons: [
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
+    '@storybook/addon-webpack5-compiler-babel',
+  ],
   staticDirs: ['./static'],
+
   webpackFinal: async (config, { configType }) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
     // You can change the configuration based on that.
@@ -125,35 +130,22 @@ module.exports = {
     const addonPaths = registry.addonNames.map((addon) =>
       fs.realpathSync(registry.packages[addon].modulePath),
     );
-    resultConfig.module.rules[1].exclude = (input) =>
+
+    resultConfig.module.rules[13].exclude = (input) =>
       // exclude every input from node_modules except from @plone/volto
       /node_modules\/(?!(@plone\/volto)\/)/.test(input) &&
+      // Storybook default exclusions
+      /storybook-config-entry\.js$/.test(input) &&
+      /storybook-stories\.js$/.test(input) &&
       // If input is in an addon, DON'T exclude it
       !addonPaths.some((p) => input.includes(p));
+
     return resultConfig;
-  },
-  babel: async (options) => {
-    return {
-      ...options,
-      plugins: [
-        ...options.plugins,
-        [
-          './node_modules/babel-plugin-root-import/build/index.js',
-          {
-            rootPathSuffix: './src',
-          },
-        ],
-      ],
-      // any extra options you want to set
-    };
-  },
-  core: {
-    builder: 'webpack5',
   },
   typescript: {
     check: false,
     checkOptions: {},
-    reactDocgen: 'react-docgen-typescript-plugin',
+    reactDocgen: 'react-docgen-typescript',
     reactDocgenTypescriptOptions: {
       compilerOptions: {
         allowSyntheticDefaultImports: false,
@@ -161,5 +153,10 @@ module.exports = {
       },
       propFilter: () => true,
     },
+  },
+
+  framework: {
+    name: '@storybook/react-webpack5',
+    options: { builder: { useSWC: true } },
   },
 };
