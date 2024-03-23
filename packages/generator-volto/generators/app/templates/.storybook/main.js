@@ -70,6 +70,18 @@ module.exports = {
     '@storybook/addon-essentials',
     // '@storybook/preset-scss',
   ],
+  typescript: {
+    check: false,
+    checkOptions: {},
+    reactDocgen: 'react-docgen-typescript-plugin',
+    reactDocgenTypescriptOptions: {
+      compilerOptions: {
+        allowSyntheticDefaultImports: false,
+        esModuleInterop: false,
+      },
+      propFilter: () => true,
+    },
+  },
   webpackFinal: async (config, { configType }) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
     // You can change the configuration based on that.
@@ -91,7 +103,7 @@ module.exports = {
       [],
       defaultRazzleOptions,
     );
-    const AddonConfigurationRegistry = require('@plone/volto/addon-registry');
+    const AddonConfigurationRegistry = require('@plone/registry/src/addon-registry');
 
     const registry = new AddonConfigurationRegistry(projectRootPath);
 
@@ -135,9 +147,10 @@ module.exports = {
     };
 
     // Addons have to be loaded with babel
-    const addonPaths = registry.addonNames.map((addon) =>
-      fs.realpathSync(registry.packages[addon].modulePath),
-    );
+    const addonPaths = registry
+      .getAddons()
+      .map((addon) => fs.realpathSync(addon.modulePath));
+
     resultConfig.module.rules[1].exclude = (input) =>
       // exclude every input from node_modules except from @plone/volto
       /node_modules\/(?!(@plone\/volto)\/)/.test(input) &&
