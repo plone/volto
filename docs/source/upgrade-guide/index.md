@@ -170,6 +170,22 @@ In your add-ons and projects, we advise you to always use the public components 
 
 This change improves UX of the Babel view (translation form) since a disabled field cannot be selected to be copied over.
 
+### `volto-slate` Cypress helpers moved to its own module
+
+There were some Cypress helpers for `volto-slate` along with the other definitions of Cypress commands.
+The Cypress command definitions are intended to be loaded only once, whereas the helpers can be imported any number of times.
+Therefore, we moved the helpers to its own module:
+
+```js
+import { slateBeforeEach } from '@plone/volto/cypress/support/commands';
+```
+
+becomes:
+
+```js
+import { slateBeforeEach } from '@plone/volto/cypress/support/helpers';
+```
+
 (volto-upgrade-guide-17.x.x)=
 
 ## Upgrading to Volto 17.x.x
