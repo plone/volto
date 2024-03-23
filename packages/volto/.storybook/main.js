@@ -65,7 +65,22 @@ module.exports = {
     '@storybook/addon-webpack5-compiler-babel',
   ],
   staticDirs: ['./static'],
-
+  framework: {
+    name: '@storybook/react-webpack5',
+    options: { builder: { useSWC: true } },
+  },
+  typescript: {
+    check: false,
+    checkOptions: {},
+    reactDocgen: 'react-docgen-typescript',
+    reactDocgenTypescriptOptions: {
+      compilerOptions: {
+        allowSyntheticDefaultImports: false,
+        esModuleInterop: false,
+      },
+      propFilter: () => true,
+    },
+  },
   webpackFinal: async (config, { configType }) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
     // You can change the configuration based on that.
@@ -141,22 +156,5 @@ module.exports = {
       !addonPaths.some((p) => input.includes(p));
 
     return resultConfig;
-  },
-  typescript: {
-    check: false,
-    checkOptions: {},
-    reactDocgen: 'react-docgen-typescript',
-    reactDocgenTypescriptOptions: {
-      compilerOptions: {
-        allowSyntheticDefaultImports: false,
-        esModuleInterop: false,
-      },
-      propFilter: () => true,
-    },
-  },
-
-  framework: {
-    name: '@storybook/react-webpack5',
-    options: { builder: { useSWC: true } },
   },
 };
