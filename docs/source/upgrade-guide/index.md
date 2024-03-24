@@ -186,6 +186,30 @@ becomes:
 import { slateBeforeEach } from '@plone/volto/cypress/support/helpers';
 ```
 
+### Storybook 8
+
+Storybook was upgraded from version 6 to 8 in core and in the project generator.
+This section is relevant if you have Storybook stories in your project or add-on.
+The versions will be upgraded automatically using the `volto-update-deps` script.
+The configuration of your project must also be updated with the new one.
+Replace the `.storybook` folder in your project with this one:
+
+https://github.com/plone/volto/tree/5605131868689778bbdca0c3003a40cb9f153c1a/packages/generator-volto/generators/app/templates/.storybook
+
+
+```{seealso}
+[Migration guide from Storybook 6.x to 8.0](https://storybook.js.org/docs/migration-guide/from-older-version)
+```
+
+If you haven't customized the configuration, the migration is straightforward.
+The stories format (CSF) is almost the same.
+However, writing stories directly in MDX was removed in Storybook 8.
+The `.stories.mdx` extension is no longer supported.
+
+```{note}
+Although it is technically possible to keep the old version running, the script `volto-update-deps` will try to update to Storybook 8 every time you run it.
+```
+
 (volto-upgrade-guide-17.x.x)=
 
 ## Upgrading to Volto 17.x.x
