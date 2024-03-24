@@ -194,7 +194,7 @@ The versions will be upgraded automatically using the `volto-update-deps` script
 The configuration of your project must also be updated with the new one.
 Replace the `.storybook` folder in your project with this one:
 
- `https://github.com/plone/volto/tree/main/packages/generator-volto/generators/app/templates/.storybook`
+https://github.com/plone/volto/tree/5605131868689778bbdca0c3003a40cb9f153c1a/packages/generator-volto/generators/app/templates/.storybook
 
 
 ```{seealso}
