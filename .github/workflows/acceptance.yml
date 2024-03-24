@@ -1022,7 +1022,7 @@ jobs:
         run: yarn stylelint
         working-directory: ${{env.project-directory}}
 
-      - name: Building StoryBook on a project works
+      - name: Build Storybook
         run: yarn build-storybook
         working-directory: ${{env.project-directory}}
 
