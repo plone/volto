@@ -17,6 +17,17 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.25 (2024-03-24)
+
+### Internal
+
+- Remove dangling unused lines in StoryBook config @sneridagh [#5911](https://github.com/plone/volto/issues/5911)
+- Upgrade Storybook to version 8. @sneridagh [#5912](https://github.com/plone/volto/issues/5912)
+
+### Documentation
+
+- Update information about Quanta plans. [@jensens] [#5903](https://github.com/plone/volto/issues/5903)
+
 ## 18.0.0-alpha.24 (2024-03-23)
 
 ### Feature
