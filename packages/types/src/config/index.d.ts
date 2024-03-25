@@ -33,4 +33,7 @@ export type ConfigData = {
 
 export { SettingsConfig, BlocksConfig, ViewsConfig, WidgetsConfig };
 export * from './Blocks';
+export * from './Settings';
 export * from './Slots';
+export * from './Views';
+export * from './Widgets';

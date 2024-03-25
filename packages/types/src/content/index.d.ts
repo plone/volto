@@ -90,3 +90,4 @@ export interface Content {
 
 export interface CreateContentResponse extends Content {}
 export interface UpdateContentResponse extends Content {}
+export * from './common';
