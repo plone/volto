@@ -220,10 +220,9 @@ Although it is technically possible to keep the old version running, the script 
 
 ### Form component passes down `id` of the current fieldset
 
-There was a bug that was provoking to have `id` attributes with spaces on it, if the a fieldset was longer than one word.
-This was because the fieldset `title` was passed down.
-The fieldset `id` is passed now instead of the `title`.
-If you rely on the fieldset's `title` attribute for selecting fields, your tests could break, in which case you should amend them to use the fieldset's `id` instead.
+A bug where a fieldset's `title` contains spaces would cause the generated `id` to be invalid.
+This has been fixed by passing down the fieldset `id` instead of the `title`.
+If your tests rely on the old fieldset's generated `id` attribute for selecting fields, your tests could break, in which case you should amend them to use the updated fieldset's `id` instead.
 
 (volto-upgrade-guide-17.x.x)=
 
