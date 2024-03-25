@@ -196,7 +196,7 @@ Replace the `.storybook` folder in your project with this one:
 
 https://github.com/plone/volto/tree/5605131868689778bbdca0c3003a40cb9f153c1a/packages/generator-volto/generators/app/templates/.storybook
 
-Then update your project's or add-on `scripts` key like:
+Finally, in your project's or add-on's {file}`package.json` file, update the `scripts` key with the key/value pairs, as shown in the following diff.
 
 ```diff
 -    "storybook": "start-storybook -p 6006",
