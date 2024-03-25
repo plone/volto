@@ -196,6 +196,14 @@ Replace the `.storybook` folder in your project with this one:
 
 https://github.com/plone/volto/tree/5605131868689778bbdca0c3003a40cb9f153c1a/packages/generator-volto/generators/app/templates/.storybook
 
+Finally, in your project's or add-on's {file}`package.json` file, update the `scripts` key with the key/value pairs, as shown in the following diff.
+
+```diff
+-    "storybook": "start-storybook -p 6006",
+-    "build-storybook": "build-storybook"
++    "storybook": "storybook dev -p 6006",
++    "build-storybook": "storybook build"
+```
 
 ```{seealso}
 [Migration guide from Storybook 6.x to 8.0](https://storybook.js.org/docs/migration-guide/from-older-version)

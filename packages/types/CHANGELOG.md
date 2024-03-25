@@ -8,6 +8,16 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.8 (2024-03-25)
+
+### Bugfix
+
+- Improve APIExpanders Types, export all @sneridagh [#5918](https://github.com/plone/volto/issues/5918)
+
+### Internal
+
+- Sync TypeScript version @sneridagh [#5912](https://github.com/plone/volto/issues/5912)
+
 ## 1.0.0-alpha.7 (2024-03-18)
 
 ### Feature
