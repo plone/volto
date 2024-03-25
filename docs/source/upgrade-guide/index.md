@@ -218,13 +218,12 @@ The `.stories.mdx` extension is no longer supported.
 Although it is technically possible to keep the old version running, the script `volto-update-deps` will try to update to Storybook 8 every time you run it.
 ```
 
-### Form component passes down the id of the current fieldset
+### Form component passes down `id` of the current fieldset
 
 There was a bug that was provoking to have `id` attributes with spaces on it, if the a fieldset was longer than one word.
 This was because the fieldset `title` was passed down.
 The fieldset `id` is passed now instead of the `title`.
-If you are relying on this for selecting fields by `id`, could be that tests could break.
-If that's the case you should amend them to use the `id`.
+If you rely on the fieldset's `title` attribute for selecting fields, your tests could break, in which case you should amend them to use the fieldset's `id` instead.
 
 (volto-upgrade-guide-17.x.x)=
 
