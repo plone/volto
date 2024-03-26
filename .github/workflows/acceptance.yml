@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v3
         name: Install pnpm
         with:
           version: 8
@@ -45,7 +45,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
 
       - run: pnpm i
 
@@ -103,7 +103,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v3
         name: Install pnpm
         with:
           version: 8
@@ -127,7 +127,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
 
       - run: pnpm i
 
@@ -185,7 +185,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v3
         name: Install pnpm
         with:
           version: 8
@@ -209,7 +209,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
 
       - run: pnpm i
 
@@ -267,7 +267,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v3
         name: Install pnpm
         with:
           version: 8
@@ -291,7 +291,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
 
       - run: pnpm i
 
@@ -349,7 +349,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v3
         name: Install pnpm
         with:
           version: 8
@@ -373,7 +373,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
 
       - run: pnpm i
 
@@ -431,7 +431,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v3
         name: Install pnpm
         with:
           version: 8
@@ -455,7 +455,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
 
       - run: pnpm i
 
@@ -512,7 +512,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v3
         name: Install pnpm
         with:
           version: 8
@@ -536,7 +536,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
 
       - run: pnpm i
 
@@ -594,7 +594,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v3
         name: Install pnpm
         with:
           version: 8
@@ -618,7 +618,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
 
       - run: pnpm i
 
@@ -676,7 +676,7 @@ jobs:
   #       with:
   #         node-version: ${{ matrix.node-version }}
 
-  #     - uses: pnpm/action-setup@v2
+  #     - uses: pnpm/action-setup@v3
   #       name: Install pnpm
   #       with:
   #         version: 8
@@ -747,7 +747,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v3
         name: Install pnpm
         with:
           version: 8
@@ -771,7 +771,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
 
       - run: pnpm i
 
@@ -830,7 +830,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v3
         name: Install pnpm
         with:
           version: 8
@@ -854,7 +854,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
 
       - run: pnpm i
 
@@ -940,7 +940,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v3
         name: Install pnpm
         with:
           version: 8
@@ -964,7 +964,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
 
       - run: pnpm i
 
@@ -1022,6 +1022,10 @@ jobs:
         run: yarn stylelint
         working-directory: ${{env.project-directory}}
 
+      - name: Build Storybook
+        run: yarn build-storybook
+        working-directory: ${{env.project-directory}}
+
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
         env:
@@ -1077,7 +1081,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v3
         name: Install pnpm
         with:
           version: 8
@@ -1101,7 +1105,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
 
       - run: pnpm i
 
@@ -1161,7 +1165,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v3
         name: Install pnpm
         with:
           version: 8
@@ -1185,7 +1189,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
 
       - run: pnpm i
 

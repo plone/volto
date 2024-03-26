@@ -8,6 +8,42 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.7 (2024-03-14)
+
+### Bugfix
+
+- Missing CSS in build for `Container` @sneridagh [#5849](https://github.com/plone/volto/issues/5849)
+
+### Internal
+
+- Cleanup deps @sneridagh [#5846](https://github.com/plone/volto/issues/5846)
+
+## 2.0.0-alpha.6 (2024-03-06)
+
+### Breaking
+
+- Refactor the `Container` component.
+  The inference for the `as` prop is complete.
+  Replace the internal `className` to be `q container` @sneridagh [#5848](https://github.com/plone/volto/issues/5848)
+
+## 2.0.0-alpha.5 (2024-03-05)
+
+### Bugfix
+
+- Fix some case inconsistencies in CSS declarations @sneridagh [#5824](https://github.com/plone/volto/issues/5824)
+
+## 2.0.0-alpha.4 (2024-03-02)
+
+### Bugfix
+
+- Remove `lodash` dependency.
+  Several packages upgrades and general cleanup. @sneridagh [#5822](https://github.com/plone/volto/issues/5822)
+- Proxy the `PopoverContext` inside the `Select` component, to be able to override it from the outside @sneridagh [#5823](https://github.com/plone/volto/issues/5823)
+
+### Internal
+
+- Update dependencies @sneridagh [#5815](https://github.com/plone/volto/issues/5815)
+
 ## 2.0.0-alpha.3 (2024-03-01)
 
 ### Breaking

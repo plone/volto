@@ -309,7 +309,7 @@ class Form extends Component {
       // Set focus to first input if available
       document
         .querySelector(`.field-wrapper-${this.props.metadataFieldFocus} input`)
-        .focus();
+        ?.focus();
 
       // Reset focus field
       this.props.resetMetadataFocus();
@@ -719,6 +719,10 @@ class Form extends Component {
               showRestricted={this.props.showRestricted}
               editable={this.props.editable}
               isMainForm={this.props.editable}
+              // Properties to pass to the BlocksForm to match the View ones
+              history={this.props.history}
+              location={this.props.location}
+              token={this.props.token}
             />
             {this.state.isClient &&
               this.state.sidebarMetadataIsAvailable &&

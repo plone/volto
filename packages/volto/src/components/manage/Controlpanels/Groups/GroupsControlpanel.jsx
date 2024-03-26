@@ -10,7 +10,9 @@ import {
   listRoles,
   updateGroup,
   authenticatedRole,
+  getUser,
 } from '@plone/volto/actions';
+import jwtDecode from 'jwt-decode';
 import {
   Icon,
   ModalForm,
@@ -21,7 +23,12 @@ import {
   Error,
 } from '@plone/volto/components';
 import { Link } from 'react-router-dom';
-import { Helmet, messages } from '@plone/volto/helpers';
+import {
+  Helmet,
+  messages,
+  isManager,
+  canAssignRole,
+} from '@plone/volto/helpers';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import addUserSvg from '@plone/volto/icons/add-user.svg';
 import saveSVG from '@plone/volto/icons/save.svg';
@@ -75,6 +82,19 @@ class GroupsControlpanel extends Component {
         groupname: PropTypes.string,
       }),
     ).isRequired,
+    user: PropTypes.shape({
+      '@id': PropTypes.string,
+      id: PropTypes.string,
+      description: PropTypes.string,
+      email: PropTypes.string,
+      fullname: PropTypes.string,
+      groups: PropTypes.object,
+      location: PropTypes.string,
+      portrait: PropTypes.string,
+      home_page: PropTypes.string,
+      roles: PropTypes.arrayOf(PropTypes.string),
+      username: PropTypes.string,
+    }).isRequired,
   };
 
   /**
@@ -118,6 +138,7 @@ class GroupsControlpanel extends Component {
         groupEntries: this.props.groups,
       });
     }
+    await this.props.getUser(this.props.userId);
   };
   /**
    * Component did mount
@@ -258,16 +279,16 @@ class GroupsControlpanel extends Component {
           entry.id === name && !entry.roles.includes(value)
             ? [...entry.roles, value]
             : entry.id !== name
-            ? entry.roles
-            : pull(entry.roles, value),
+              ? entry.roles
+              : pull(entry.roles, value),
       })),
       authenticatedRole:
         name === 'AuthenticatedUsers' &&
         !prevState.authenticatedRole.includes(value)
           ? [...prevState.authenticatedRole, value]
           : name !== 'AuthenticatedUsers'
-          ? prevState.authenticatedRole
-          : pull(prevState.authenticatedRole, value),
+            ? prevState.authenticatedRole
+            : pull(prevState.authenticatedRole, value),
     }));
   }
   /**
@@ -375,6 +396,8 @@ class GroupsControlpanel extends Component {
       ? this.state.groupToDelete.id
       : '';
 
+    const isUserManager = isManager(this.props.user);
+
     return (
       <Container className="users-control-panel">
         <Helmet title={this.props.intl.formatMessage(messages.groups)} />
@@ -460,10 +483,9 @@ class GroupsControlpanel extends Component {
                       messages.addGroupsFormRolesTitle,
                     ),
                     type: 'array',
-                    choices: this.props.roles.map((role) => [
-                      role.id,
-                      role.title,
-                    ]),
+                    choices: this.props.roles
+                      .filter((role) => canAssignRole(isUserManager, role))
+                      .map((role) => [role.id, role.title]),
                     noValueOption: false,
                     description: '',
                   },
@@ -553,6 +575,7 @@ class GroupsControlpanel extends Component {
                           group={group}
                           updateGroups={this.updateGroupRole}
                           inheritedRole={this.state.authenticatedRole}
+                          isUserManager={isUserManager}
                         />
                       ))}
                   </Table.Body>
@@ -640,6 +663,10 @@ export default compose(
   injectIntl,
   connect(
     (state, props) => ({
+      user: state.users.user,
+      userId: state.userSession.token
+        ? jwtDecode(state.userSession.token).sub
+        : '',
       roles: state.roles.roles,
       groups: state.groups.groups,
       description: state.description,
@@ -661,6 +688,7 @@ export default compose(
           createGroup,
           updateGroup,
           authenticatedRole,
+          getUser,
         },
         dispatch,
       ),

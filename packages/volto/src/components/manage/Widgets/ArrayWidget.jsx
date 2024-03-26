@@ -325,27 +325,27 @@ class ArrayWidget extends Component {
             this.props.vocabBaseUrl
               ? choices
               : this.props.choices
-              ? [
-                  ...choices,
-                  ...(this.props.noValueOption &&
-                  (this.props.default === undefined ||
-                    this.props.default === null)
-                    ? [
-                        {
-                          label: this.props.intl.formatMessage(
-                            messages.no_value,
-                          ),
-                          value: 'no-value',
-                        },
-                      ]
-                    : []),
-                ]
-              : [
-                  {
-                    label: this.props.intl.formatMessage(messages.no_value),
-                    value: 'no-value',
-                  },
-                ]
+                ? [
+                    ...choices,
+                    ...(this.props.noValueOption &&
+                    (this.props.default === undefined ||
+                      this.props.default === null)
+                      ? [
+                          {
+                            label: this.props.intl.formatMessage(
+                              messages.no_value,
+                            ),
+                            value: 'no-value',
+                          },
+                        ]
+                      : []),
+                  ]
+                : [
+                    {
+                      label: this.props.intl.formatMessage(messages.no_value),
+                      value: 'no-value',
+                    },
+                  ]
           }
           styles={customSelectStyles}
           theme={selectTheme}
