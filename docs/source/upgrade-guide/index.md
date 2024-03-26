@@ -220,9 +220,9 @@ Although it is technically possible to keep the old version running, the script 
 
 ### Form component passes down `id` of the current fieldset
 
-A bug where a fieldset's `title` contains spaces would cause the generated `id` to be invalid.
-This has been fixed by passing down the fieldset `id` instead of the `title`.
-If your tests rely on the old fieldset's generated `id` attribute for selecting fields, your tests could break, in which case you should amend them to use the updated fieldset's `id` instead.
+There was a bug where a fieldset's generated value would be not valid.
+This has been fixed by passing down the `id` instead of the `title` to the fieldset's value.
+If your tests rely on the old fieldset's generated value for selecting fields, your tests could break, in which case you should amend them to use the updated fieldset's value instead.
 
 (volto-upgrade-guide-17.x.x)=
 
