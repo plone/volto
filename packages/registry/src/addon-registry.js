@@ -109,7 +109,7 @@ class AddonConfigurationRegistry {
         path.join(projectRootPath, 'volto.config.js'),
       );
     } else {
-      this.voltoConfigJS = [];
+      this.voltoConfigJS = {};
     }
 
     this.projectRootPath = projectRootPath;
