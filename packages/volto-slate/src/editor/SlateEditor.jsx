@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
 import cx from 'classnames';
-import { isEqual } from 'lodash';
-import { Transforms, Editor } from 'slate'; // , Transforms
+import { isEqual, cloneDeep } from 'lodash';
+import { Transforms, Editor, Point } from 'slate'; // , Transforms
 import { Slate, Editable, ReactEditor } from 'slate-react';
 import React, { Component } from 'react'; // , useState
 import { v4 as uuid } from 'uuid';
@@ -10,21 +10,21 @@ import config from '@plone/volto/registry';
 
 import { Element, Leaf } from './render';
 
-import withTestingFeatures from './extensions/withTestingFeatures';
+import withTestingFeatures from '@plone/volto-slate/editor/extensions/withTestingFeatures';
 import {
   makeEditor,
   toggleInlineFormat,
   toggleMark,
   parseDefaultSelection,
 } from '@plone/volto-slate/utils';
-import { InlineToolbar } from './ui';
-import EditorContext from './EditorContext';
+import { InlineToolbar } from '@plone/volto-slate/editor/ui';
+import EditorContext from '@plone/volto-slate/editor/EditorContext';
 
 import isHotkey from 'is-hotkey';
 
-import './less/editor.less';
+import '@plone/volto-slate/editor/less/editor.less';
 
-import Toolbar from './ui/Toolbar';
+import Toolbar from '@plone/volto-slate/editor/ui/Toolbar';
 
 const handleHotKeys = (editor, event, config) => {
   let wasHotkey = false;
@@ -48,6 +48,29 @@ const handleHotKeys = (editor, event, config) => {
   return wasHotkey;
 };
 
+function resetNodes(editor, options = {}) {
+  const children = [...editor.children];
+
+  children.forEach((node) =>
+    editor.apply({ type: 'remove_node', path: [0], node }),
+  );
+
+  if (options.nodes) {
+    options.nodes.forEach((node, i) =>
+      editor.apply({ type: 'insert_node', path: [i], node: node }),
+    );
+  }
+
+  const point =
+    options.at && Point.isPoint(options.at)
+      ? options.at
+      : Editor.end(editor, []);
+
+  if (point) {
+    Transforms.select(editor, point);
+  }
+}
+
 // TODO: implement onFocus
 class SlateEditor extends Component {
   constructor(props) {
@@ -65,10 +88,14 @@ class SlateEditor extends Component {
 
     this.slateSettings = props.slateSettings || config.settings.slate;
 
+    this.initialValue = cloneDeep(
+      this.props.value || this.slateSettings.defaultValue(),
+    );
+
     this.state = {
       editor: this.createEditor(uid),
       showExpandedToolbar: config.settings.slate.showExpandedToolbar,
-      internalValue: this.props.value || this.slateSettings.defaultValue(),
+      internalValue: this.initialValue,
       uid,
     };
 
@@ -104,9 +131,10 @@ class SlateEditor extends Component {
 
   handleChange(value) {
     ReactDOM.unstable_batchedUpdates(() => {
-      this.setState({ internalValue: value });
-      if (this.props.onChange && !isEqual(value, this.props.value)) {
-        this.props.onChange(value, this.editor);
+      const newValue = cloneDeep(value);
+      this.setState({ internalValue: newValue });
+      if (this.props.onChange && !isEqual(newValue, this.props.value)) {
+        this.props.onChange(newValue, this.editor);
       }
     });
   }
@@ -154,8 +182,14 @@ class SlateEditor extends Component {
       this.props.value &&
       !isEqual(this.props.value, this.state.internalValue)
     ) {
+      const newValue = cloneDeep(this.props.value);
       const { editor } = this.state;
-      editor.children = this.props.value;
+
+      resetNodes(editor, { nodes: newValue });
+
+      this.setState({
+        internalValue: newValue,
+      });
 
       if (this.props.defaultSelection) {
         const selection = parseDefaultSelection(
@@ -175,10 +209,6 @@ class SlateEditor extends Component {
           console.log(error);
         }
       }
-
-      this.setState({
-        internalValue: this.props.value,
-      });
       return;
     }
 
@@ -266,7 +296,7 @@ class SlateEditor extends Component {
         <EditorContext.Provider value={editor}>
           <Slate
             editor={editor}
-            initialValue={this.props.value || slateSettings.defaultValue()}
+            initialValue={this.initialValue}
             onChange={this.handleChange}
           >
             {selected ? (
@@ -351,14 +381,13 @@ class SlateEditor extends Component {
               <ul>
                 <li>{selected ? 'selected' : 'no-selected'}</li>
                 <li>
+                  {ReactEditor.isFocused(editor) ? 'focused' : 'unfocused'}
+                </li>
+                <li>
                   savedSelection: {JSON.stringify(editor.getSavedSelection())}
                 </li>
                 <li>live selection: {JSON.stringify(editor.selection)}</li>
                 <li>children: {JSON.stringify(editor.children)}</li>
-                <li> {selected ? 'selected' : 'notselected'}</li>
-                <li>
-                  {ReactEditor.isFocused(editor) ? 'focused' : 'unfocused'}
-                </li>
               </ul>
             ) : (
               ''
