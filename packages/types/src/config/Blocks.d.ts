@@ -20,7 +20,6 @@ export interface BlocksConfigData {
   listing: BlockConfigBase;
   video: BlockConfigBase;
   toc: BlockConfigBase;
-  hero: BlockConfigBase;
   maps: BlockConfigBase;
   html: BlockConfigBase;
   table: BlockConfigBase;
@@ -116,6 +115,7 @@ export interface BlockConfigBase {
    */
   // TODO: Improve extensions shape
   extensions?: Record<string, BlockExtension>;
+  blocksConfig?: Partial<BlocksConfigData>;
 }
 
 export type BlockExtension = (
