@@ -45,6 +45,7 @@ const TopSideFacets = (props) => {
     data,
     totalItems,
     facets,
+    facetsCount,
     setFacets,
     setSortOn,
     setSortOrder,
@@ -140,6 +141,7 @@ const TopSideFacets = (props) => {
                   data={data}
                   querystring={querystring}
                   facets={facets}
+                  facetsCount={facetsCount}
                   setFacets={(f) => {
                     flushSync(() => {
                       setFacets(f);
