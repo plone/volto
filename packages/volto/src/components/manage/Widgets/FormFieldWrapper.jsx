@@ -107,7 +107,7 @@ class FormFieldWrapper extends Component {
       <Form.Field
         inline
         required={required}
-        error={error.length > 0}
+        error={error && error.length > 0}
         className={cx(
           description ? 'help' : '',
           className,
