@@ -31,6 +31,10 @@ describe('Blocks Tests', () => {
     cy.getSlate().click();
     cy.get('.ui.basic.icon.button.block-add-button').click();
     cy.get('.ui.basic.icon.button.image').contains('Image').click();
+    cy.get('.block-editor-image [tabindex="0"]')
+      .last()
+      .focus()
+      .should('have.css', 'outline', 'rgb(16, 16, 16) auto 1px');
     cy.get('.block.image .ui.input input[type="text"]').type(
       `https://github.com/plone/volto/raw/main/logos/volto-colorful.png{enter}`,
     );
