@@ -3977,11 +3977,6 @@ msgstr ""
 msgid "Upload files"
 msgstr "Bestanden uploaden"
 
-#. Default: "Uploading files"
-#: components/manage/Contents/ContentsUploadModal
-msgid "Uploading files"
-msgstr "Bestanden uploaden"
-
 #. Default: "Uploading image"
 #: components/manage/Blocks/Image/Edit
 msgid "Uploading image"

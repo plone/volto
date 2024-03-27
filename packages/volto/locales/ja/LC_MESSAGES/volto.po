@@ -3978,11 +3978,6 @@ msgstr "リード画像をコンテンツのフィールドにアップロード
 msgid "Upload files"
 msgstr "アップロードファイル"
 
-#. Default: "Uploading files"
-#: components/manage/Contents/ContentsUploadModal
-msgid "Uploading files"
-msgstr "ファイルをアップロードしています"
-
 #. Default: "Uploading image"
 #: components/manage/Blocks/Image/Edit
 msgid "Uploading image"

@@ -3978,11 +3978,6 @@ msgstr ""
 msgid "Upload files"
 msgstr "Enviar ficheiros"
 
-#. Default: "Uploading files"
-#: components/manage/Contents/ContentsUploadModal
-msgid "Uploading files"
-msgstr "Enviando ficheiros"
-
 #. Default: "Uploading image"
 #: components/manage/Blocks/Image/Edit
 msgid "Uploading image"

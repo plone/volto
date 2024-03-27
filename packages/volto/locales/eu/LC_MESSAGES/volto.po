@@ -3980,11 +3980,6 @@ msgstr "Kargatu irudia"
 msgid "Upload files"
 msgstr "Kargatu fitxategiak"
 
-#. Default: "Uploading files"
-#: components/manage/Contents/ContentsUploadModal
-msgid "Uploading files"
-msgstr "Fitxategiak kargatzen"
-
 #. Default: "Uploading image"
 #: components/manage/Blocks/Image/Edit
 msgid "Uploading image"

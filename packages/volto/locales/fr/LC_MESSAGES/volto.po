@@ -3980,11 +3980,6 @@ msgstr "Téléchargez une image de garde dans le champ «Image de garde»."
 msgid "Upload files"
 msgstr "Télécharger des fichiers"
 
-#. Default: "Uploading files"
-#: components/manage/Contents/ContentsUploadModal
-msgid "Uploading files"
-msgstr "Téléchargement de fichiers"
-
 #. Default: "Uploading image"
 #: components/manage/Blocks/Image/Edit
 msgid "Uploading image"

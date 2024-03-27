@@ -3978,11 +3978,6 @@ msgstr "Tallenna nostokuva sisällön 'Nostokuva'-kentään"
 msgid "Upload files"
 msgstr "Lähetä palvelimelle tiedostoja"
 
-#. Default: "Uploading files"
-#: components/manage/Contents/ContentsUploadModal
-msgid "Uploading files"
-msgstr "Lähetetään tiedostoja"
-
 #. Default: "Uploading image"
 #: components/manage/Blocks/Image/Edit
 msgid "Uploading image"

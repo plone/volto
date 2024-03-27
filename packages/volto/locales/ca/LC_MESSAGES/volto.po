@@ -3979,11 +3979,6 @@ msgstr "Pengeu una imatge principal al camp de contingut 'Imatge principal'."
 msgid "Upload files"
 msgstr "Carregueu fitxers"
 
-#. Default: "Uploading files"
-#: components/manage/Contents/ContentsUploadModal
-msgid "Uploading files"
-msgstr "Carregant fitxers"
-
 #. Default: "Uploading image"
 #: components/manage/Blocks/Image/Edit
 msgid "Uploading image"
