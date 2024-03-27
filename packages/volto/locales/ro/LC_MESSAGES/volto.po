@@ -3973,11 +3973,6 @@ msgstr "Încărcați o imagine de start în câmpul de conținut 'Imagine de sta
 msgid "Upload files"
 msgstr "Încărcați fișiere"
 
-#. Default: "Uploading files"
-#: components/manage/Contents/ContentsUploadModal
-msgid "Uploading files"
-msgstr "Încărcarea fișierelor"
-
 #. Default: "Uploading image"
 #: components/manage/Blocks/Image/Edit
 msgid "Uploading image"

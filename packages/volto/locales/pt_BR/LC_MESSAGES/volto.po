@@ -3979,11 +3979,6 @@ msgstr "Enviar uma imagem para o campo de imagem principal."
 msgid "Upload files"
 msgstr "Enviar arquivos"
 
-#. Default: "Uploading files"
-#: components/manage/Contents/ContentsUploadModal
-msgid "Uploading files"
-msgstr "Enviando arquivos"
-
 #. Default: "Uploading image"
 #: components/manage/Blocks/Image/Edit
 msgid "Uploading image"

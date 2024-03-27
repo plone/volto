@@ -13,11 +13,11 @@ import {
   Header,
   Icon,
   Image,
-  Loader,
   Modal,
   Table,
   Segment,
   Input,
+  Progress,
 } from 'semantic-ui-react';
 import loadable from '@loadable/component';
 import { concat, filter, map } from 'lodash';
@@ -25,7 +25,7 @@ import filesize from 'filesize';
 import { readAsDataURL } from 'promise-file-reader';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import { FormattedRelativeDate } from '@plone/volto/components';
-import { createContent } from '@plone/volto/actions';
+import { createContent, updateUploadedFiles } from '@plone/volto/actions';
 import { validateFileUploadSize } from '@plone/volto/helpers';
 
 const Dropzone = loadable(() => import('react-dropzone'));
@@ -65,6 +65,7 @@ class ContentsUploadModal extends Component {
     open: PropTypes.bool.isRequired,
     onOk: PropTypes.func.isRequired,
     onCancel: PropTypes.func.isRequired,
+    uploadedFiles: PropTypes.number,
   };
 
   /**
@@ -81,9 +82,9 @@ class ContentsUploadModal extends Component {
     this.onSubmit = this.onSubmit.bind(this);
     this.state = {
       files: [],
+      totalFiles: 0,
     };
   }
-
   /**
    * Component will receive props
    * @method componentWillReceiveProps
@@ -113,6 +114,7 @@ class ContentsUploadModal extends Component {
           index !== parseInt(event.target.getAttribute('value'), 10),
       ),
     });
+    this.setState((prevState) => ({ totalFiles: prevState.totalFiles - 1 }));
   }
 
   /**
@@ -135,6 +137,8 @@ class ContentsUploadModal extends Component {
     this.setState({
       files: concat(this.state.files, validFiles),
     });
+
+    this.setState({ totalFiles: validFiles.length });
   };
 
   /**
@@ -147,8 +151,8 @@ class ContentsUploadModal extends Component {
     this.setState({
       files: [],
     });
+    this.setState({ totalFiles: 0 });
   }
-
   /**
    * Name change handler
    * @method onChangeFileName
@@ -211,13 +215,13 @@ class ContentsUploadModal extends Component {
           <Header>
             <FormattedMessage id="Upload files" defaultMessage="Upload files" />
           </Header>
+
           <Dimmer active={this.props.request.loading}>
-            <Loader>
-              <FormattedMessage
-                id="Uploading files"
-                defaultMessage="Uploading files"
-              />
-            </Loader>
+            <Progress
+              className="progress-bar"
+              value={this.props.uploadedFiles}
+              total={this.state.totalFiles}
+            >{`Uploading: ${this.props.uploadedFiles} Files Out Of ${this.state.totalFiles}`}</Progress>
           </Dimmer>
           <Modal.Content>
             <Dropzone
@@ -365,7 +369,8 @@ export default compose(
   connect(
     (state) => ({
       request: state.content.subrequests?.[SUBREQUEST] || {},
+      uploadedFiles: state.content.uploadedFiles,
     }),
-    { createContent },
+    { createContent, updateUploadedFiles },
   ),
 )(ContentsUploadModal);

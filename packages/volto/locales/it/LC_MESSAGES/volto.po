@@ -3973,11 +3973,6 @@ msgstr "Carica un'Immagine di testata nel campo del contenuto."
 msgid "Upload files"
 msgstr "Carica file"
 
-#. Default: "Uploading files"
-#: components/manage/Contents/ContentsUploadModal
-msgid "Uploading files"
-msgstr "Caricamento dei files"
-
 #. Default: "Uploading image"
 #: components/manage/Blocks/Image/Edit
 msgid "Uploading image"

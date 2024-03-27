@@ -3979,11 +3979,6 @@ msgstr ""
 msgid "Upload files"
 msgstr "上传文件"
 
-#. Default: "Uploading files"
-#: components/manage/Contents/ContentsUploadModal
-msgid "Uploading files"
-msgstr "上传文件中"
-
 #. Default: "Uploading image"
 #: components/manage/Blocks/Image/Edit
 msgid "Uploading image"

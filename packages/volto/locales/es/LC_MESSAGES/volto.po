@@ -3980,11 +3980,6 @@ msgstr "Cargar una imagen principal en el campo 'Imagen Principal'."
 msgid "Upload files"
 msgstr "Cargar archivos"
 
-#. Default: "Uploading files"
-#: components/manage/Contents/ContentsUploadModal
-msgid "Uploading files"
-msgstr "Cargando archivos"
-
 #. Default: "Uploading image"
 #: components/manage/Blocks/Image/Edit
 msgid "Uploading image"
