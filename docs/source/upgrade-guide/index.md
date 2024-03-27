@@ -218,6 +218,12 @@ The `.stories.mdx` extension is no longer supported.
 Although it is technically possible to keep the old version running, the script `volto-update-deps` will try to update to Storybook 8 every time you run it.
 ```
 
+### Form component passes down `id` of the current fieldset
+
+There was a bug where a fieldset's generated value would be not valid.
+This has been fixed by passing down the `id` instead of the `title` to the fieldset's value.
+If your tests rely on the old fieldset's generated value for selecting fields, your tests could break, in which case you should amend them to use the updated fieldset's value instead.
+
 (volto-upgrade-guide-17.x.x)=
 
 ## Upgrading to Volto 17.x.x
