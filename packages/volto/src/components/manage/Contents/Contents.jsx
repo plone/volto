@@ -534,11 +534,14 @@ class Contents extends Component {
       this.props.clipboardRequest.loading &&
       nextProps.clipboardRequest.error
     ) {
+      const msgBody =
+        nextProps.clipboardRequest.error?.response?.body?.message ||
+        this.props.intl.formatMessage(messages.error);
       this.props.toastify.toast.error(
         <Toast
           error
           title={this.props.intl.formatMessage(messages.error)}
-          content={this.props.intl.formatMessage(messages.error)}
+          content={msgBody}
         />,
       );
     }
