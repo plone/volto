@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 1.5.4 (2024-03-21)
+
+### Bugfix
+
+- - Fix slots reordering function for "before" and "after" keyword @steffenri [#5840](https://github.com/plone/volto/issues/5840)
+
 ## 1.5.3 (2024-03-19)
 
 ### Bugfix

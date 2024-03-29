@@ -213,7 +213,7 @@ const Comments = (props) => {
   // recursively makes comments with their replies nested
   // each iteration will show replies to the specific comment using allCommentsWithCildren
   const commentElement = (comment) => (
-    <Comment key={comment.comment_id}>
+    <Comment key={comment.comment_id} id={comment.comment_id}>
       <Avatar
         src={flattenToAppURL(comment.author_image)}
         title={comment.author_name || 'Anonymous'}
@@ -345,7 +345,7 @@ const Comments = (props) => {
         </div>
       )}
       {/* all comments  */}
-      <Comment.Group threaded>
+      <Comment.Group threaded id={'discussion'}>
         {allPrimaryComments.map((item) => commentElement(item))}
       </Comment.Group>
 
