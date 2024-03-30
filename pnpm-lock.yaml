@@ -13,6 +13,7 @@ overrides:
   trim: 1.0.1
   trim-newlines: 4.1.1
   react-refresh: 0.14.0
+  node-fetch: 3.3.2
 
 importers:
 
@@ -962,7 +963,7 @@ importers:
         specifier: ^4.3.0
         version: 4.4.0
       node-fetch:
-        specifier: ^3.3.2
+        specifier: 3.3.2
         version: 3.3.2
       serve-static:
         specifier: ^1.15.0
@@ -5927,14 +5928,13 @@ packages:
       detect-libc: 2.0.2
       https-proxy-agent: 5.0.1
       make-dir: 3.1.0
-      node-fetch: 2.7.0
+      node-fetch: 3.3.2
       nopt: 5.0.0
       npmlog: 5.0.1
       rimraf: 3.0.2
       semver: 7.6.0
       tar: 6.2.0
     transitivePeerDependencies:
-      - encoding
       - supports-color
     dev: false
 
@@ -6492,8 +6492,6 @@ packages:
       '@octokit/types': 6.41.0
       before-after-hook: 2.2.3
       universal-user-agent: 6.0.1
-    transitivePeerDependencies:
-      - encoding
 
   /@octokit/core@4.2.4:
     resolution: {integrity: sha512-rYKilwgzQ7/imScn3M9/pFfUf4I1AZEH3KhyJmtPdE2zfaXAn2mFfUy4FbKewzc2We5y/LlKLj36fWJLKC2SIQ==}
@@ -6506,8 +6504,6 @@ packages:
       '@octokit/types': 9.3.2
       before-after-hook: 2.2.3
       universal-user-agent: 6.0.1
-    transitivePeerDependencies:
-      - encoding
     dev: true
 
   /@octokit/core@5.0.2:
@@ -6553,8 +6549,6 @@ packages:
       '@octokit/request': 5.6.3
       '@octokit/types': 6.41.0
       universal-user-agent: 6.0.1
-    transitivePeerDependencies:
-      - encoding
 
   /@octokit/graphql@5.0.6:
     resolution: {integrity: sha512-Fxyxdy/JH0MnIB5h+UQ3yCoh1FG4kWXfFKkpWqjZHw/p+Kc8Y44Hu/kCgNBT6nU1shNumEchmW/sUO1JuQnPcw==}
@@ -6563,8 +6557,6 @@ packages:
       '@octokit/request': 6.2.8
       '@octokit/types': 9.3.2
       universal-user-agent: 6.0.1
-    transitivePeerDependencies:
-      - encoding
     dev: true
 
   /@octokit/graphql@7.0.2:
@@ -6701,10 +6693,8 @@ packages:
       '@octokit/request-error': 2.1.0
       '@octokit/types': 6.41.0
       is-plain-object: 5.0.0
-      node-fetch: 2.7.0
+      node-fetch: 3.3.2
       universal-user-agent: 6.0.1
-    transitivePeerDependencies:
-      - encoding
 
   /@octokit/request@6.2.8:
     resolution: {integrity: sha512-ow4+pkVQ+6XVVsekSYBzJC0VTVvh/FCTUUgTsboGq+DTeWdyIFV8WSCdo0RIxk6wSkBTHqIK1mYuY7nOBXOchw==}
@@ -6714,10 +6704,8 @@ packages:
       '@octokit/request-error': 3.0.3
       '@octokit/types': 9.3.2
       is-plain-object: 5.0.0
-      node-fetch: 2.7.0
+      node-fetch: 3.3.2
       universal-user-agent: 6.0.1
-    transitivePeerDependencies:
-      - encoding
     dev: true
 
   /@octokit/request@8.1.6:
@@ -6737,8 +6725,6 @@ packages:
       '@octokit/plugin-paginate-rest': 2.21.3(@octokit/core@3.6.0)
       '@octokit/plugin-request-log': 1.0.4(@octokit/core@3.6.0)
       '@octokit/plugin-rest-endpoint-methods': 5.16.2(@octokit/core@3.6.0)
-    transitivePeerDependencies:
-      - encoding
 
   /@octokit/rest@19.0.13:
     resolution: {integrity: sha512-/EzVox5V9gYGdbAI+ovYj3nXQT1TtTHRT+0eZPcuC05UFSWO3mdO9UY1C0i2eLF9Un1ONJkAk+IEtYGAC+TahA==}
@@ -6748,8 +6734,6 @@ packages:
       '@octokit/plugin-paginate-rest': 6.1.2(@octokit/core@4.2.4)
       '@octokit/plugin-request-log': 1.0.4(@octokit/core@4.2.4)
       '@octokit/plugin-rest-endpoint-methods': 7.2.3(@octokit/core@4.2.4)
-    transitivePeerDependencies:
-      - encoding
     dev: true
 
   /@octokit/rest@20.0.2:
@@ -9460,7 +9444,7 @@ packages:
       lodash: 4.17.21
       lodash.debounce: 4.0.8
       minimatch: 9.0.3
-      node-fetch: 2.7.0
+      node-fetch: 3.3.2
       ora: 5.4.1
       picocolors: 1.0.0
       picomatch: 2.3.1
@@ -9484,7 +9468,6 @@ packages:
       - '@types/node'
       - bluebird
       - bufferutil
-      - encoding
       - less
       - lightningcss
       - sass
@@ -10203,7 +10186,6 @@ packages:
       ts-dedent: 2.2.0
     transitivePeerDependencies:
       - '@types/react'
-      - encoding
       - react
       - react-dom
       - supports-color
@@ -10217,7 +10199,6 @@ packages:
       ts-dedent: 2.2.0
     transitivePeerDependencies:
       - '@types/react'
-      - encoding
       - react
       - react-dom
       - supports-color
@@ -10302,7 +10283,6 @@ packages:
       rehype-slug: 6.0.0
       ts-dedent: 2.2.0
     transitivePeerDependencies:
-      - encoding
       - supports-color
     dev: true
 
@@ -10412,7 +10392,6 @@ packages:
       ts-dedent: 2.2.0
     transitivePeerDependencies:
       - '@types/react'
-      - encoding
       - react
       - react-dom
       - supports-color
@@ -10437,7 +10416,6 @@ packages:
       ts-dedent: 2.2.0
     transitivePeerDependencies:
       - '@types/react'
-      - encoding
       - react
       - react-dom
       - supports-color
@@ -10783,7 +10761,6 @@ packages:
       util-deprecate: 1.0.2
     transitivePeerDependencies:
       - '@types/react'
-      - encoding
       - supports-color
     dev: true
 
@@ -10826,7 +10803,6 @@ packages:
       util-deprecate: 1.0.2
     transitivePeerDependencies:
       - '@types/react'
-      - encoding
       - supports-color
     dev: true
 
@@ -10848,7 +10824,6 @@ packages:
       process: 0.11.10
       util: 0.12.5
     transitivePeerDependencies:
-      - encoding
       - supports-color
     dev: true
 
@@ -10887,7 +10862,6 @@ packages:
       typescript: 5.4.2
       vite: 5.1.4(lightningcss@1.24.0)
     transitivePeerDependencies:
-      - encoding
       - supports-color
     dev: true
 
@@ -11068,7 +11042,6 @@ packages:
     transitivePeerDependencies:
       - '@rspack/core'
       - '@swc/core'
-      - encoding
       - esbuild
       - supports-color
       - uglify-js
@@ -11165,7 +11138,6 @@ packages:
     transitivePeerDependencies:
       - '@babel/preset-env'
       - bufferutil
-      - encoding
       - react
       - react-dom
       - supports-color
@@ -11558,7 +11530,7 @@ packages:
       glob: 10.3.10
       handlebars: 4.7.8
       lazy-universal-dotenv: 4.0.0
-      node-fetch: 2.7.0
+      node-fetch: 3.3.2
       picomatch: 2.3.1
       pkg-dir: 5.0.0
       pretty-hrtime: 1.0.3
@@ -11569,7 +11541,6 @@ packages:
       ts-dedent: 2.2.0
       util: 0.12.5
     transitivePeerDependencies:
-      - encoding
       - supports-color
     dev: true
 
@@ -11639,7 +11610,7 @@ packages:
       globby: 11.1.0
       ip: 2.0.1
       lodash: 4.17.21
-      node-fetch: 2.7.0
+      node-fetch: 3.3.2
       open: 8.4.2
       pretty-hrtime: 1.0.3
       prompts: 2.4.2
@@ -11660,7 +11631,6 @@ packages:
       - '@storybook/mdx2-csf'
       - bluebird
       - bufferutil
-      - encoding
       - eslint
       - supports-color
       - utf-8-validate
@@ -11717,7 +11687,6 @@ packages:
       ws: 8.14.2
     transitivePeerDependencies:
       - bufferutil
-      - encoding
       - react
       - react-dom
       - supports-color
@@ -11733,7 +11702,6 @@ packages:
       '@types/node': 18.19.3
       ts-dedent: 2.2.0
     transitivePeerDependencies:
-      - encoding
       - supports-color
     dev: true
 
@@ -11766,7 +11734,6 @@ packages:
       - '@storybook/mdx2-csf'
       - bluebird
       - bufferutil
-      - encoding
       - eslint
       - supports-color
       - utf-8-validate
@@ -11874,7 +11841,6 @@ packages:
       doctrine: 3.0.0
       lodash: 4.17.21
     transitivePeerDependencies:
-      - encoding
       - supports-color
     dev: true
 
@@ -11957,7 +11923,7 @@ packages:
       find-up: 5.0.0
       fs-extra: 9.1.0
       html-webpack-plugin: 4.5.2(webpack@4.47.0)
-      node-fetch: 2.7.0
+      node-fetch: 3.3.2
       pnp-webpack-plugin: 1.6.4(typescript@5.2.2)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -11976,7 +11942,6 @@ packages:
       webpack-virtual-modules: 0.2.2
     transitivePeerDependencies:
       - bluebird
-      - encoding
       - eslint
       - supports-color
       - vue-template-compiler
@@ -12013,7 +11978,7 @@ packages:
       find-up: 5.0.0
       fs-extra: 9.1.0
       html-webpack-plugin: 5.5.0(webpack@5.90.1)
-      node-fetch: 2.7.0
+      node-fetch: 3.3.2
       process: 0.11.10
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -12031,7 +11996,6 @@ packages:
       webpack-virtual-modules: 0.4.6
     transitivePeerDependencies:
       - '@swc/core'
-      - encoding
       - esbuild
       - eslint
       - supports-color
@@ -12125,7 +12089,6 @@ packages:
       webpack: 5.90.1(esbuild@0.19.9)
     transitivePeerDependencies:
       - '@swc/core'
-      - encoding
       - esbuild
       - supports-color
       - uglify-js
@@ -12251,7 +12214,6 @@ packages:
       vite: 5.1.4(lightningcss@1.24.0)
     transitivePeerDependencies:
       - '@preact/preset-vite'
-      - encoding
       - rollup
       - supports-color
       - typescript
@@ -12279,7 +12241,6 @@ packages:
     transitivePeerDependencies:
       - '@rspack/core'
       - '@swc/core'
-      - encoding
       - esbuild
       - supports-color
       - uglify-js
@@ -12362,7 +12323,6 @@ packages:
       - '@types/webpack'
       - bluebird
       - bufferutil
-      - encoding
       - esbuild
       - eslint
       - sockjs-client
@@ -12414,7 +12374,6 @@ packages:
       typescript: 5.4.2
       util-deprecate: 1.0.2
     transitivePeerDependencies:
-      - encoding
       - supports-color
     dev: true
 
@@ -12551,7 +12510,6 @@ packages:
       read-pkg-up: 7.0.1
       regenerator-runtime: 0.13.11
     transitivePeerDependencies:
-      - encoding
       - eslint
       - react
       - react-dom
@@ -12574,7 +12532,6 @@ packages:
       fs-extra: 11.2.0
       read-pkg-up: 7.0.1
     transitivePeerDependencies:
-      - encoding
       - supports-color
     dev: true
 
@@ -12919,7 +12876,6 @@ packages:
       - '@vercel/kv'
       - bufferutil
       - debug
-      - encoding
       - idb-keyval
       - less
       - lightningcss
@@ -14989,7 +14945,6 @@ packages:
       node-gyp-build: 4.8.0
       resolve-from: 5.0.0
     transitivePeerDependencies:
-      - encoding
       - supports-color
     dev: false
 
@@ -19525,7 +19480,6 @@ packages:
   /data-uri-to-buffer@4.0.1:
     resolution: {integrity: sha512-0R9ikRb668HB7QDxT1vkpuUBtqc53YyAwMwGeUFKRojY/NWKvdZ+9UYtRfGmhqNbRkTSVpMbmyhXipFFv2cb/A==}
     engines: {node: '>= 12'}
-    dev: true
 
   /data-uri-to-buffer@6.0.1:
     resolution: {integrity: sha512-MZd3VlchQkp8rdend6vrx7MmVDJzSNTBvghvKjirLkD+WTChA3KUf0jkE68Q4UyctNqI11zZO9/x2Yx+ub5Cvg==}
@@ -20395,8 +20349,10 @@ packages:
 
   /encoding@0.1.13:
     resolution: {integrity: sha512-ETBauow1T35Y/WZMkio9jiM0Z5xjHHmJ4XmjZOq1l/dXz3lr2sRn87nJy20RupqSh1F2m3HHPSp8ShIPQJrJ3A==}
+    requiresBuild: true
     dependencies:
       iconv-lite: 0.6.3
+    optional: true
 
   /end-of-stream@1.4.4:
     resolution: {integrity: sha512-+uw1inIHVPQoaVuHzRyXd21icM+cnt4CzD5rW+NC1wjOUSTOs+Te7FOv7AhN7vS9x/oIyhLP5PR1H+phQAHu5Q==}
@@ -22504,7 +22460,6 @@ packages:
     dependencies:
       node-domexception: 1.0.0
       web-streams-polyfill: 3.2.1
-    dev: true
 
   /fetch-retry@5.0.6:
     resolution: {integrity: sha512-3yurQZ2hD9VISAhJJP9bpYFNQrHHBXE2JxxjY5aLEcDi46RmAzJE2OC9FAde0yis5ElW0jTTzs0zfg/Cca4XqQ==}
@@ -23069,7 +23024,6 @@ packages:
     engines: {node: '>=12.20.0'}
     dependencies:
       fetch-blob: 3.2.0
-    dev: true
 
   /formidable@1.2.6:
     resolution: {integrity: sha512-KcpbcpuLNOwrEjnbpMC0gS+X8ciDoZE1kkqzat4a8vrprf+s9pKNQ/QIwWfbfs4ltgmFl3MD177SNTkve3BwGQ==}
@@ -23449,8 +23403,6 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       '@octokit/rest': 18.12.0
-    transitivePeerDependencies:
-      - encoding
 
   /gitly@2.0.3:
     resolution: {integrity: sha512-xpbBJ4IZJbLXmggispcRlppo9hsYI90lxzYuLPEYQ4FaOG5j+o1K1823MD54KFIyMgBzS5lnlInvXgEibG2uuA==}
@@ -25597,17 +25549,15 @@ packages:
   /isomorphic-fetch@2.2.1:
     resolution: {integrity: sha512-9c4TNAKYXM5PRyVcwUZrF3W09nQ+sO7+jydgs4ZGW9dhsLG2VOlISJABombdQqQRXCwuYG3sYV/puGf5rp0qmA==}
     dependencies:
-      node-fetch: 1.7.3
+      node-fetch: 3.3.2
       whatwg-fetch: 3.6.19
     dev: false
 
   /isomorphic-unfetch@3.1.0:
     resolution: {integrity: sha512-geDJjpoZ8N0kWexiwkX8F9NkTsXhetLPVbZFQ+JTW239QNOwvB0gniuR1Wc6f0AMTn7/mFGyXvHTifrCp/GH8Q==}
     dependencies:
-      node-fetch: 2.7.0
+      node-fetch: 3.3.2
       unfetch: 4.2.0
-    transitivePeerDependencies:
-      - encoding
     dev: true
 
   /isstream@0.1.2:
@@ -29934,7 +29884,6 @@ packages:
       - '@planetscale/database'
       - '@upstash/redis'
       - '@vercel/kv'
-      - encoding
       - idb-keyval
       - supports-color
       - uWebSockets.js
@@ -29967,7 +29916,6 @@ packages:
   /node-domexception@1.0.0:
     resolution: {integrity: sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ==}
     engines: {node: '>=10.5.0'}
-    dev: true
 
   /node-fetch-native@1.4.1:
     resolution: {integrity: sha512-NsXBU0UgBxo2rQLOeWNZqS3fvflWePMECr8CoSWoSTqCqGbVVsvl9vZu1HfQicYN0g5piV9Gh8RTEvo/uP752w==}
@@ -29976,24 +29924,6 @@ packages:
   /node-fetch-native@1.6.2:
     resolution: {integrity: sha512-69mtXOFZ6hSkYiXAVB5SqaRvrbITC/NPyqv7yuu/qw0nmgPyYbIMYYNIDhNtwPrzk0ptrimrLz/hhjvm4w5Z+w==}
 
-  /node-fetch@1.7.3:
-    resolution: {integrity: sha512-NhZ4CsKx7cYm2vSrBAr2PvFOe6sWDf0UYLRqA6svUYg7+/TSfVAu49jYC4BvQ4Sms9SZgdqGBgroqfDhJdTyKQ==}
-    dependencies:
-      encoding: 0.1.13
-      is-stream: 1.1.0
-    dev: false
-
-  /node-fetch@2.7.0:
-    resolution: {integrity: sha512-c4FRfUm/dbcWZ7U+1Wq0AwCyFL+3nt2bEw05wfxSz+DWpWsitgmSgYmy2dQdWyKC1694ELPqMs/YzUSNozLt8A==}
-    engines: {node: 4.x || >=6.0.0}
-    peerDependencies:
-      encoding: ^0.1.0
-    peerDependenciesMeta:
-      encoding:
-        optional: true
-    dependencies:
-      whatwg-url: 5.0.0
-
   /node-fetch@3.3.2:
     resolution: {integrity: sha512-dRB78srN/l6gqWulah9SrxeYnxeddIG30+GOqK/9OlLVyLg3HPnr6SqOWTWOXKRwC2eGYCkZ59NNuSgvSrpgOA==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
@@ -30001,7 +29931,6 @@ packages:
       data-uri-to-buffer: 4.0.1
       fetch-blob: 3.2.0
       formdata-polyfill: 4.0.10
-    dev: true
 
   /node-forge@1.3.1:
     resolution: {integrity: sha512-dPEtOeMvF9VMcYV/1Wb8CPoVAXtp6MKMlcbAt4ddqmGqUJ6fQZFXkNZNkNlfevtNkGtaSoXf/vNNNSvgrdXwtA==}
@@ -34526,7 +34455,6 @@ packages:
       wildcard-match: 5.1.2
       yargs-parser: 21.1.1
     transitivePeerDependencies:
-      - encoding
       - supports-color
       - typescript
     dev: true
@@ -34564,7 +34492,6 @@ packages:
       wildcard-match: 5.1.2
       yargs-parser: 21.1.1
     transitivePeerDependencies:
-      - encoding
       - supports-color
       - typescript
     dev: true
@@ -36368,7 +36295,6 @@ packages:
     transitivePeerDependencies:
       - '@babel/preset-env'
       - bufferutil
-      - encoding
       - react
       - react-dom
       - supports-color
@@ -37766,9 +37692,6 @@ packages:
       punycode: 2.3.1
       universalify: 0.2.0
       url-parse: 1.5.10
-
-  /tr46@0.0.3:
-    resolution: {integrity: sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==}
 
   /tr46@1.0.1:
     resolution: {integrity: sha512-dTpowEjclQ7Kgx5SdBkqRzVhERQXov8/l9Ft9dVM9fmg0W0KQSVaXX9T4i6twCPNtYiZM53lpSSUAwJbFPOHxA==}
@@ -39188,7 +39111,6 @@ packages:
       - '@vercel/kv'
       - bufferutil
       - debug
-      - encoding
       - idb-keyval
       - less
       - lightningcss
@@ -39884,9 +39806,6 @@ packages:
     resolution: {integrity: sha512-e0MO3wdXWKrLbL0DgGnUV7WHVuw9OUvL4hjgnPkIeEvESk74gAITi5G606JtZPp39cd8HA9VQzCIvA49LpPN5Q==}
     engines: {node: '>= 8'}
 
-  /webidl-conversions@3.0.1:
-    resolution: {integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==}
-
   /webidl-conversions@4.0.2:
     resolution: {integrity: sha512-YQ+BmxuTgd6UXZW3+ICGfyqRyHXVlD5GtQr5+qjiNW7bF0cqrzX500HVXPBOvgXb5YnzDd+h0zqyv61KUD7+Sg==}
     dev: true
@@ -40415,12 +40334,6 @@ packages:
       tr46: 4.1.1
       webidl-conversions: 7.0.0
 
-  /whatwg-url@5.0.0:
-    resolution: {integrity: sha512-saE57nupxk6v3HY35+jzBwYa0rKSy0XR8JSxZPwgLr7ys0IBzhGviA1/TUGJLmSVqs8pb9AnvICXEuOHLprYTw==}
-    dependencies:
-      tr46: 0.0.3
-      webidl-conversions: 3.0.1
-
   /whatwg-url@6.5.0:
     resolution: {integrity: sha512-rhRZRqx/TLJQWUpQ6bmrt2UV4f0HCQ463yQuONJqC6fO2VoEb1pTYddbe59SkYq87aoM5A3bdhMZiUiVws+fzQ==}
     dependencies:
@@ -40926,7 +40839,6 @@ packages:
       yeoman-environment: 3.19.3
     transitivePeerDependencies:
       - bluebird
-      - encoding
       - mem-fs
       - supports-color
 
