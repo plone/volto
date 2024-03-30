@@ -876,7 +876,9 @@ Cypress.Commands.add('addNewBlock', (blockName, createNewSlate = false) => {
 });
 
 Cypress.Commands.add('navigate', (route = '') => {
-  return cy.window().its('appHistory').invoke('push', route);
+  cy.intercept('GET', '**/*').as('navGetCall');
+  cy.window().its('appHistory').invoke('push', route);
+  cy.wait('@navGetCall');
 });
 
 Cypress.Commands.add('store', () => {
