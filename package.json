@@ -58,7 +58,8 @@
       "trim": "1.0.1",
       "trim-newlines": "4.1.1",
       "react-refresh": "0.14.0",
-      "isomorphic-fetch": "3.0.0"
+      "isomorphic-fetch": "3.0.0",
+      "msgpackr": "1.10.1"
     }
   }
 }
