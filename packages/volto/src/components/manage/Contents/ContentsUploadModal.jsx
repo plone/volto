@@ -40,6 +40,10 @@ const messages = defineMessages({
     defaultMessage:
       '{count, plural, one {Upload {count} file} other {Upload {count} files}}',
   },
+  uploadingFiles: {
+    id: 'Uploading {uploadedFiles} Files Out of {totalFiles}',
+    defaultMessage: 'Uploading {uploadedFiles} Files Out of {totalFiles}',
+  },
 });
 
 const SUBREQUEST = 'batch-upload';
@@ -221,7 +225,12 @@ class ContentsUploadModal extends Component {
               className="progress-bar"
               value={this.props.uploadedFiles}
               total={this.state.totalFiles}
-            >{`Uploading: ${this.props.uploadedFiles} Files Out Of ${this.state.totalFiles}`}</Progress>
+            >
+              {this.props.intl.formatMessage(messages.uploadingFiles, {
+                uploadedFiles: this.props.uploadedFiles,
+                totalFiles: this.state.totalFiles,
+              })}
+            </Progress>
           </Dimmer>
           <Modal.Content>
             <Dropzone

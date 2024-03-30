@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2024-03-27T15:36:44.863Z\n"
+"POT-Creation-Date: 2024-03-30T17:00:45.772Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -3978,6 +3978,11 @@ msgstr ""
 #. Default: "Uploading image"
 #: components/manage/Blocks/Image/Edit
 msgid "Uploading image"
+msgstr ""
+
+#. Default: "Uploading {uploadedFiles} Files Out of {totalFiles}"
+#: components/manage/Contents/ContentsUploadModal
+msgid "Uploading {uploadedFiles} Files Out of {totalFiles}"
 msgstr ""
 
 #. Default: "Use the form below to define the new content rule"

@@ -3978,6 +3978,11 @@ msgstr "Carica file"
 msgid "Uploading image"
 msgstr "Caricamento dell'immagine"
 
+#. Default: "Uploading {uploadedFiles} Files Out of {totalFiles}"
+#: components/manage/Contents/ContentsUploadModal
+msgid "Uploading {uploadedFiles} Files Out of {totalFiles}"
+msgstr "Caricamento di {uploadedFiles} file su {totalFiles}"
+
 #. Default: "Use the form below to define the new content rule"
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule

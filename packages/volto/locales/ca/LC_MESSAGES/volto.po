@@ -3984,6 +3984,11 @@ msgstr "Carregueu fitxers"
 msgid "Uploading image"
 msgstr "S'està carregant la imatge"
 
+#. Default: "Uploading {uploadedFiles} Files Out of {totalFiles}"
+#: components/manage/Contents/ContentsUploadModal
+msgid "Uploading {uploadedFiles} Files Out of {totalFiles}"
+msgstr "Carregant {uploadedFiles} fitxers de {totalFiles}"
+
 #. Default: "Use the form below to define the new content rule"
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule

@@ -3978,6 +3978,11 @@ msgstr "Încărcați fișiere"
 msgid "Uploading image"
 msgstr "Se încarcă imaginea"
 
+#. Default: "Uploading {uploadedFiles} Files Out of {totalFiles}"
+#: components/manage/Contents/ContentsUploadModal
+msgid "Uploading {uploadedFiles} Files Out of {totalFiles}"
+msgstr "Se încarcă {uploadedFiles} fișiere dintr-un total de {totalFiles}"
+
 #. Default: "Use the form below to define the new content rule"
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
