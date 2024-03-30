@@ -170,6 +170,60 @@ In your add-ons and projects, we advise you to always use the public components 
 
 This change improves UX of the Babel view (translation form) since a disabled field cannot be selected to be copied over.
 
+### `volto-slate` Cypress helpers moved to its own module
+
+There were some Cypress helpers for `volto-slate` along with the other definitions of Cypress commands.
+The Cypress command definitions are intended to be loaded only once, whereas the helpers can be imported any number of times.
+Therefore, we moved the helpers to its own module:
+
+```js
+import { slateBeforeEach } from '@plone/volto/cypress/support/commands';
+```
+
+becomes:
+
+```js
+import { slateBeforeEach } from '@plone/volto/cypress/support/helpers';
+```
+
+### Storybook 8
+
+Storybook was upgraded from version 6 to 8 in core and in the project generator.
+This section is relevant if you have Storybook stories in your project or add-on.
+The versions will be upgraded automatically using the `volto-update-deps` script.
+The configuration of your project must also be updated with the new one.
+Replace the `.storybook` folder in your project with this one:
+
+https://github.com/plone/volto/tree/5605131868689778bbdca0c3003a40cb9f153c1a/packages/generator-volto/generators/app/templates/.storybook
+
+Finally, in your project's or add-on's {file}`package.json` file, update the `scripts` key with the key/value pairs, as shown in the following diff.
+
+```diff
+-    "storybook": "start-storybook -p 6006",
+-    "build-storybook": "build-storybook"
++    "storybook": "storybook dev -p 6006",
++    "build-storybook": "storybook build"
+```
+
+```{seealso}
+[Migration guide from Storybook 6.x to 8.0](https://storybook.js.org/docs/migration-guide/from-older-version)
+```
+
+If you haven't customized the configuration, the migration is straightforward.
+The stories format (CSF) is almost the same.
+However, writing stories directly in MDX was removed in Storybook 8.
+The `.stories.mdx` extension is no longer supported.
+
+```{note}
+Although it is technically possible to keep the old version running, the script `volto-update-deps` will try to update to Storybook 8 every time you run it.
+```
+
+### Form component passes down `id` of the current fieldset
+
+There was a bug where a fieldset's generated value would be not valid.
+This has been fixed by passing down the `id` instead of the `title` to the fieldset's value.
+If your tests rely on the old fieldset's generated value for selecting fields, your tests could break, in which case you should amend them to use the updated fieldset's value instead.
+
 (volto-upgrade-guide-17.x.x)=
 
 ## Upgrading to Volto 17.x.x

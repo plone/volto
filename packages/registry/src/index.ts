@@ -360,11 +360,21 @@ class Config {
       }
       switch (action) {
         case 'after':
-          result.splice(targetIdx, 0, removed);
-          break;
+          if (targetIdx < origin) {
+            result.splice(targetIdx + 1, 0, removed);
+            break;
+          } else {
+            result.splice(targetIdx, 0, removed);
+            break;
+          }
         case 'before':
-          result.splice(targetIdx - 1, 0, removed);
-          break;
+          if (targetIdx > origin) {
+            result.splice(targetIdx - 1, 0, removed);
+            break;
+          } else {
+            result.splice(targetIdx, 0, removed);
+            break;
+          }
         case 'last':
           result.push(removed);
           break;
