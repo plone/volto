@@ -58,7 +58,7 @@
       "trim": "1.0.1",
       "trim-newlines": "4.1.1",
       "react-refresh": "0.14.0",
-      "node-fetch": "3.3.2"
+      "isomorphic-fetch": "3.0.0"
     }
   }
 }
