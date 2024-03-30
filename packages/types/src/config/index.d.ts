@@ -17,8 +17,13 @@ export type ComponentsConfig = Record<
   { component: React.ComponentType }
 >;
 
-export type ExperimentalConfig = Record<string, unknown>;
+export interface ExperimentalConfig {
+  addBlockButton: {
+    enabled: boolean;
+  };
+}
 
+// This is a type because it's not supposed to be extendable
 export type ConfigData = {
   settings: SettingsConfig;
   blocks: BlocksConfig;
@@ -33,4 +38,7 @@ export type ConfigData = {
 
 export { SettingsConfig, BlocksConfig, ViewsConfig, WidgetsConfig };
 export * from './Blocks';
+export * from './Settings';
 export * from './Slots';
+export * from './Views';
+export * from './Widgets';

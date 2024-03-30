@@ -8,7 +8,7 @@
     "build:deps": "pnpm --filter @plone/registry --filter @plone/client build",
     "build:registry": "pnpm --filter @plone/registry run build",
     "build:components": "pnpm --filter @plone/components run build",
-    "build": "pnpm build:deps && pnpm --filter @plone/volto build",
+    "build": "pnpm --filter @plone/volto build",
     "start": "pnpm build:deps && pnpm --filter @plone/volto start",
     "start:project": "pnpm --filter plone run start",
     "lint": "pnpm build:deps && eslint --max-warnings=0 '{apps,packages}/**/*.{js,jsx,ts,tsx}'",
@@ -30,8 +30,8 @@
   "devDependencies": {
     "@parcel/packager-ts": "^2.12.0",
     "@parcel/transformer-typescript-types": "^2.12.0",
-    "@typescript-eslint/eslint-plugin": "7.1.1",
-    "@typescript-eslint/parser": "7.1.1",
+    "@typescript-eslint/eslint-plugin": "7.3.1",
+    "@typescript-eslint/parser": "7.3.1",
     "concurrently": "^8.2.2",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "9.1.0",
@@ -57,8 +57,7 @@
       "nth-check": "2.1.1",
       "trim": "1.0.1",
       "trim-newlines": "4.1.1",
-      "react-refresh": "0.14.0",
-      "webpack": "5.90.1"
+      "react-refresh": "0.14.0"
     }
   }
 }

@@ -79,8 +79,10 @@ describe('WebpackRelativeResolver', () => {
 
   it('handles "installed Volto" resolve requests', () => {
     const registry = makeRegistry();
-    registry.voltoPath = '/myvoltoproject/node_modules/@plone/volto';
+    registry.isVoltoProject = true;
     const resolver = new WebpackRelativeResolver(registry);
+    resolver.voltoPaths['@plone/volto/'] =
+      '/myvoltoproject/node_modules/@plone/volto/src';
 
     const req = makeInstalledVoltoRequest();
     const resolvePath = resolver.getResolvePath(req);

@@ -8,6 +8,19 @@
 
 <!-- towncrier release notes start -->
 
+## 9.0.0-alpha.14 (2024-03-24)
+
+### Internal
+
+- Fix StoryBook for project generator in Volto 18 @sneridagh [#5911](https://github.com/plone/volto/issues/5911)
+- Update project template to use Storybook 8. @sneridagh [#5912](https://github.com/plone/volto/issues/5912)
+
+## 9.0.0-alpha.13 (2024-03-18)
+
+### Bugfix
+
+- Improve the generator by getting the `@plone/types` version from GH @sneridagh [#5889](https://github.com/plone/volto/issues/5889)
+
 ## 9.0.0-alpha.12 (2024-03-18)
 
 ### Feature

@@ -1,30 +1,9 @@
-import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import UniversalLinkComponent from './UniversalLink';
 import { injectIntl } from 'react-intl';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 
-<Meta
-  title="UniversalLink"
-  argTypes={{
-    href: { control: 'text' },
-    item: { control: 'object' },
-    text: { control: 'text' },
-  }}
-  decorators={[
-    (Story) => (
-      <div style={{ width: '400px' }}>
-        <Story />
-      </div>
-    ),
-  ]}
-/>
-
-# UniversalLink
-
-Link to url or item
-
-export const UniversalLink = (args) => {
+const UniversalLink = (args) => {
   const mockStore = configureStore();
   const store = mockStore({
     userSession: {
@@ -57,8 +36,37 @@ export const UniversalLink = (args) => {
   );
 };
 
-<Story name="UniversalLink">{injectIntl(UniversalLink).bind({})}</Story>
+export default {
+  title: 'UniversalLink',
 
-# Props
+  argTypes: {
+    href: {
+      control: 'text',
+    },
 
-<ArgsTable of={UniversalLinkComponent} />
+    item: {
+      control: 'object',
+    },
+
+    text: {
+      control: 'text',
+    },
+  },
+
+  decorators: [
+    (Story) => (
+      <div
+        style={{
+          width: '400px',
+        }}
+      >
+        <Story />
+      </div>
+    ),
+  ],
+};
+
+export const UniversalLink_ = {
+  render: injectIntl(UniversalLink).bind({}),
+  name: 'UniversalLink',
+};

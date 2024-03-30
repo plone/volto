@@ -17,6 +17,50 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.25 (2024-03-24)
+
+### Internal
+
+- Remove dangling unused lines in StoryBook config @sneridagh [#5911](https://github.com/plone/volto/issues/5911)
+- Upgrade Storybook to version 8. @sneridagh [#5912](https://github.com/plone/volto/issues/5912)
+
+### Documentation
+
+- Update information about Quanta plans. [@jensens] [#5903](https://github.com/plone/volto/issues/5903)
+
+## 18.0.0-alpha.24 (2024-03-23)
+
+### Feature
+
+- Add id attribute to discussions container and individual comments [@ericof] [#5904](https://github.com/plone/volto/issues/5904)
+
+### Internal
+
+- Move `testing-library` Cypress commands import to inner commands, so it can be imported from the outside. @sneridagh [#5906](https://github.com/plone/volto/issues/5906)
+- Add new cypress helper for slate `getSlateEditorAndType` @sneridagh [#5909](https://github.com/plone/volto/issues/5909)
+- Upgrade @typescript-eslint @sneridagh [#5910](https://github.com/plone/volto/issues/5910)
+
+## 18.0.0-alpha.23 (2024-03-21)
+
+### Feature
+
+- Improve the usage of `RAZZLE_JEST_CONFIG`. @sneridagh [#5901](https://github.com/plone/volto/issues/5901)
+
+### Documentation
+
+- Updated testing and code quality with information on how to contribute to Volto core. @ichim-david [#5341](https://github.com/plone/volto/issues/5341)
+
+## 18.0.0-alpha.22 (2024-03-19)
+
+### Bugfix
+
+- Correctly sort facet values if they are numbers @erral [#5864](https://github.com/plone/volto/issues/5864)
+- Cross-package manager Volto path resolver in `webpack-relative-resolver` @sneridagh [#5893](https://github.com/plone/volto/issues/5893)
+
+### Documentation
+
+- `Volto 18.0.0-alpha.21` and `volto-update-deps` documentation @sneridagh [#5892](https://github.com/plone/volto/issues/5892)
+
 ## 18.0.0-alpha.21 (2024-03-18)
 
 ### Breaking
