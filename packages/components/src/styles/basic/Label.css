@@ -1,0 +1,18 @@
+@import './theme.css';
+
+.react-aria-Label {
+  /* TODO: Review since taken from default quanta */
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.012em;
+  line-height: 1.714285714285;
+
+  &::after {
+    /* Marks after Label (Required, etc) */
+    display: inline-block;
+    margin-left: 3px;
+    color: var(--basic-600);
+    line-height: 0;
+    vertical-align: middle;
+  }
+}

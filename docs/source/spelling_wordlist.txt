@@ -135,7 +135,7 @@ grep
 Groundwire
 gruntfile
 Gunicorn
-haproxy
+HAProxy
 Herstory
 hg
 homebrew
@@ -216,7 +216,6 @@ nametag
 nametags
 Nejc
 nginx
-Nginx
 nocall
 offline
 Ohtamaa

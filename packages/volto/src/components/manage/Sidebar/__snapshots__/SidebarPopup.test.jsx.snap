@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`sidebar popup is not rendered when the block is not selected 1`] = `
+<React.Fragment>
+  <CSSTransition
+    classNames="sidebar-container"
+    in={false}
+    timeout={500}
+    unmountOnExit={true}
+  >
+    <React.Fragment>
+      Object {
+        "$$typeof": Symbol(react.portal),
+        "children": <aside
+          className="sidebar-container"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="presentation"
+          style={
+            Object {
+              "overflowY": "auto",
+            }
+          }
+        >
+          <p>
+            Tested, but you shouldn't see this in the snapshot!
+          </p>
+        </aside>,
+        "containerInfo": <body />,
+        "implementation": null,
+        "key": null,
+      }
+    </React.Fragment>
+  </CSSTransition>
+</React.Fragment>
+`;
+
+exports[`sidebar popup is rendered when the block is selected 1`] = `
+<React.Fragment>
+  <CSSTransition
+    classNames="sidebar-container"
+    in={true}
+    timeout={500}
+    unmountOnExit={true}
+  >
+    <React.Fragment>
+      Object {
+        "$$typeof": Symbol(react.portal),
+        "children": <aside
+          className="sidebar-container"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="presentation"
+          style={
+            Object {
+              "overflowY": "auto",
+            }
+          }
+        >
+          <p>
+            Tested!
+          </p>
+        </aside>,
+        "containerInfo": <body />,
+        "implementation": null,
+        "key": null,
+      }
+    </React.Fragment>
+  </CSSTransition>
+</React.Fragment>
+`;

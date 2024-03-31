@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Volto 13 has several new features that allows zero configuration on build time, using some sensible defaults and using the current request to know in which domain Volto is being hosted and configuring itself in runtime."
-  "property=og:description": "Volto 13 has several new features that allows zero configuration on build time, using some sensible defaults and using the current request to know in which domain Volto is being hosted and configuring itself in runtime."
-  "property=og:title": "Zero configuration builds"
-  "keywords": "Volto, Plone, frontend, React, Zero, configuration, builds"
+myst:
+  html_meta:
+    "description": "Volto 13 has several new features that allows zero configuration on build time, using some sensible defaults and using the current request to know in which domain Volto is being hosted and configuring itself in runtime."
+    "property=og:description": "Volto 13 has several new features that allows zero configuration on build time, using some sensible defaults and using the current request to know in which domain Volto is being hosted and configuring itself in runtime."
+    "property=og:title": "Zero configuration builds"
+    "keywords": "Volto, Plone, frontend, React, Zero, configuration, builds"
 ---
 
 # Zero configuration builds
@@ -13,12 +14,14 @@ This feature is available since Volto 13.
 ```
 
 In the past (before Volto 13), Volto was configured in build time using several
-environment vars, commonly supplied via the command line, like:
+environment variables, commonly supplied via the command line, such as the following:
 
-`PORT=11001 RAZZLE_API_PATH=https://plone.org/api yarn build`
+```shell
+PORT=11001 RAZZLE_API_PATH=https://plone.org/api yarn build`
+```
 
-and since RAZZLE is a isomorphic app, some of these values passed on build time, were
-hardcoded in the code because the code in client and server need to know them upfront to
+and since Razzle is an isomorphic application, some of these values passed on build time, were
+hardcoded in the code because the code in client and server need to know them up front to
 in order to work.
 
 Volto 13 has several new features that allows zero configuration on build time, using
@@ -33,7 +36,7 @@ Volto is able to look into the request and infer the API path to be used. This o
 happens in seamless mode, since it assumes that the backend will be hosted in the same
 path (the root) of the request that is getting. This feature relies in the `Host` header.
 You can set this header in the webserver that you are using in front of Volto. This
-configuration is for Nginx:
+configuration is for nginx:
 
 
 ```{code-block} nginx

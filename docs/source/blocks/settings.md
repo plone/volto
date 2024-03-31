@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "How to configure custom blocks"
-  "property=og:description": "How to configure custom blocks"
-  "property=og:title": "Blocks settings"
-  "keywords": "Volto, Plone, frontend, React, Block settings"
+myst:
+  html_meta:
+    "description": "How to configure custom blocks"
+    "property=og:description": "How to configure custom blocks"
+    "property=og:title": "Blocks settings"
+    "keywords": "Volto, Plone, frontend, React, Block settings"
 ---
 
 # Blocks settings
@@ -16,18 +17,17 @@ You can extend it by adding your custom blocks in your project's configuration o
 To extend the default set of blocks, you add the following lines to the `src/config.js`:
 
 ```js
-import MainSliderViewBlock from '@package/components/Blocks/MainSlider/View';
-import MainSliderEditBlock from '@package/components/Blocks/MainSlider/Edit';
+import MainSliderViewBlock from '@root/components/Blocks/MainSlider/View';
+import MainSliderEditBlock from '@root/components/Blocks/MainSlider/Edit';
 import sliderSVG from '@plone/volto/icons/slider.svg';
 
-import SimpleTeaserView from '@package/components/Blocks/SimpleTeaserView';
-import CardTeaserView from '@package/components/Blocks/CardTeaserView';
-import DefaultColumnRenderer from '@package/components/Blocks/DefaultColumnRenderer';
-import NumberColumnRenderer from '@package/components/Blocks/NumberColumnRenderer';
-import ColoredColumnRenderer from '@package/components/Blocks/ColoredColumnRenderer';
-import CardTeaserView from '@package/components/Blocks/CardTeaserView';
+import SimpleTeaserView from '@root/components/Blocks/SimpleTeaserView';
+import CardTeaserView from '@root/components/Blocks/CardTeaserView';
+import DefaultColumnRenderer from '@root/components/Blocks/DefaultColumnRenderer';
+import NumberColumnRenderer from '@root/components/Blocks/NumberColumnRenderer';
+import ColoredColumnRenderer from '@root/components/Blocks/ColoredColumnRenderer';
 
-import CustomSchemaEnhancer from '@package/components/Blocks/CustomSchemaEnhancer';
+import CustomSchemaEnhancer from '@root/components/Blocks/CustomSchemaEnhancer';
 
 [...]
 
@@ -39,14 +39,10 @@ const customBlocks = {
     group: 'common', // The group (blocks can be grouped, displayed in the chooser)
     view: MainSliderViewBlock, // The view mode component
     edit: MainSliderEditBlock, // The edit mode component
-    restricted: false, // {Boolean|function} If the block is restricted, it won't show in the chooser. The function signature is `({properties, block})` where `properties` is the current object data and `block` is the block being evaluated in `BlockChooser`.
+    restricted: false, // {Boolean|function} If the block is restricted, it won't show in the chooser. The function signature is `({properties, block, navRoot, contentType})` where `properties` is the current object data and `block` is the block being evaluated in `BlockChooser`. `navRoot` is the nearest navigation root object and `contentType` is the current content type.
     mostUsed: true, // A meta group `most used`, appearing at the top of the chooser
     blockHasOwnFocusManagement: false, // Set this to true if the block manages its own focus
     sidebarTab: 0, // The sidebar tab you want to be selected when selecting the block
-    security: {
-      addPermission: [], // Future proof (not implemented yet) add user permission role(s)
-      view: [], // Future proof (not implemented yet) view user role(s)
-    },
     blockHasValue: (data) => {
       // Returns true if the provided block data represents a value for the current block.
       // Required for alternate default block types implementations.
@@ -118,7 +114,7 @@ export const blocks = {
 We start by importing both view and edit components of our recently created custom block.
 
 ```{note}
-Notice the `@package` alias.
+Notice the `@root` alias.
 You can use it when importing modules/components from your own project.
 ```
 
@@ -140,6 +136,38 @@ defineMessages({
 ```
 
 Our new block should be ready to use in the editor by selecting it in the editor's block chooser.
+
+## Common block options
+
+It is a common pattern to use the block configuration to allow customization of a block's behavior or to provide block-specific implementation of various Volto mechanisms.
+Some of these common options are described in the following sections.
+
+(blockHasValue)=
+
+### `blockHasValue`
+
+`blockHasValue` is a function that returns `true` if the provided block data represents a non-empty value for the current block.
+Required for alternate default block types implementations.
+It has the following signature.
+
+```jsx
+blockHasValue(data) => boolean
+```
+
+### `initialValue`
+
+`initialValue` is a function that can be used to get the initial value for a block.
+It has the following signature.
+
+```jsx
+initialValue({id, value, formData, intl}) => newFormData
+```
+
+### `blockSchema`
+
+A must-have for modern Volto blocks, `blockSchema` is a function, or directly the schema object, that returns the schema for the block data.
+Although it's not required, defining the schema enables the block to have its initial value based on the default values declared in the schema.
+
 
 ## Other block options
 
@@ -179,6 +207,31 @@ const initialBlocks = {
     Document: ['leadimage', 'title', 'text', 'listing' ]
 };
 ```
+
+You can also pass the full configuration for the block using an object:
+
+```js
+const initialBlocks = {
+  Document: [
+    { '@type': 'leadImage', fixed: true, required: true },
+    { '@type': 'title' },
+    { '@type': 'slate', value: 'My default text', plaintext: 'My default text' },
+  ],
+};
+```
+
+## Listing block configuration
+
+`allowed_headline_tags`
+: Allows you to customize the choices of the "Headline Tag" types shown in the block settings by default. It has the following syntax (a list of lists, where a list item consists of `['token', 'display_name']`):
+
+  ```js
+  allowed_headline_tags: [['h2', 'h2'], ['h3', 'h3']]
+  ```
+
+  If not specified, an internal hardcoded default is the above shown example.
+
+  If the choice is limited to one item, then the setting hides itself from the `listing` block settings list.
 
 ## Search block configuration
 

@@ -39,6 +39,53 @@ module.exports = class extends Generator {
 
     this.args = args;
     this.opts = opts;
+
+    this.addAddonToPackageJSON = async function (pkgJson) {
+      const packageJSON = JSON.parse(fs.readFileSync(pkgJson, 'utf8'));
+
+      // const packageJSON = JSON.parse(fs.readFileSync(pkgJson, 'utf8'));
+      const name = this.globals.name;
+
+      if (!packageJSON.addons) {
+        packageJSON.addons = [];
+      }
+
+      if (!packageJSON.addons.includes(name)) {
+        packageJSON.addons = [...(packageJSON.addons || []), name];
+      }
+
+      if (!packageJSON.workspaces) {
+        packageJSON.workspaces = [];
+      }
+
+      if (!packageJSON.workspaces.includes(`src/addons/${this.globals.name}`)) {
+        packageJSON.workspaces.push(`src/addons/${this.globals.name}`);
+      }
+
+      fs.writeFileSync(pkgJson, `${JSON.stringify(packageJSON, null, 2)}`);
+    };
+
+    this.addMrsDeveloperConfig = async function (mrsDeveloperJsonFile) {
+      let mrsDeveloperJson = {};
+      if (fs.existsSync(mrsDeveloperJsonFile)) {
+        mrsDeveloperJson = JSON.parse(
+          fs.readFileSync(mrsDeveloperJsonFile, 'utf8'),
+        );
+      }
+
+      const template = {
+        [this.globals.name]: { local: `addons/${this.globals.name}/src` },
+      };
+
+      fs.writeFileSync(
+        mrsDeveloperJsonFile,
+        `${JSON.stringify({ ...mrsDeveloperJson, ...template }, null, 2)}`,
+      );
+    };
+
+    this.addToIgnoreFile = async function (ignoreFile) {
+      fs.appendFileSync(ignoreFile, `\n!src/addons/${this.globals.name}`);
+    };
   }
 
   async prompting() {
@@ -69,6 +116,7 @@ Run "npm install -g @plone/generator-volto" to update.`,
     };
     let props;
 
+    this.globals.outputpath = this.opts.outputpath;
     // Add-on name
     if (this.args[0]) {
       this.globals.addonName = this.args[0];
@@ -84,16 +132,21 @@ Run "npm install -g @plone/generator-volto" to update.`,
         ]);
         this.globals.addonName = props.addonName;
       } else {
-        this.globals.addonName = path.basename(process.cwd());
+        this.globals.addonName =
+          this.opts.addonName || path.basename(process.cwd());
       }
     }
 
     if (this.globals.addonName.includes('/')) {
-      [this.globals.scope, this.globals.name] = this.globals.addonName.split(
-        '/',
-      );
+      [this.globals.scope, this.globals.name] =
+        this.globals.addonName.split('/');
+      this.globals.normalizedName = `${this.globals.scope.replace(
+        '@',
+        '',
+      )}/${this.globals.name.replace('-', '')}`;
     } else {
       this.globals.name = this.globals.addonName;
+      this.globals.normalizedName = `${this.globals.name.replace('-', '')}`;
     }
 
     // Template
@@ -102,27 +155,37 @@ Run "npm install -g @plone/generator-volto" to update.`,
     }
   }
 
-  setDestination() {
+  async setDestination() {
     this._debug('namespace', this.options.namespace);
     // if in a Volto project, generate addon in src/addons
+    const outputPath = path.resolve(this.globals.outputpath) || process.cwd();
+    this.destinationRoot(outputPath);
 
-    if (this.opts.outputpath) {
-      this._debug('set destination to:', this.opts.outputpath);
-      this.destinationRoot(this.opts.outputpath);
-      return;
-    }
-
-    const pkgJson = path.join(process.cwd(), 'package.json');
+    const pkgJson = path.join(outputPath, 'package.json');
 
     if (fs.existsSync(pkgJson)) {
+      const gitIgnore = path.join(outputPath, '.gitignore');
+      const eslintIgnore = path.join(outputPath, '.eslintignore');
+      const prettierIgnore = path.join(outputPath, '.prettierignore');
+      const mrsDeveloperJson = path.join(outputPath, 'mrs.developer.json');
+
       const destination = path.join(
-        process.cwd(),
+        outputPath,
         `./src/addons/${this.globals.name}`,
       );
 
       if (fs.existsSync(destination)) {
         return;
       }
+
+      await this.addToIgnoreFile(gitIgnore);
+      await this.addToIgnoreFile(eslintIgnore);
+      await this.addToIgnoreFile(prettierIgnore);
+      // Modifies project package.json and wires the new addon
+      await this.addAddonToPackageJSON(pkgJson);
+      // Modifies project mrs.developer.json and wires the new addon localy
+      await this.addMrsDeveloperConfig(mrsDeveloperJson);
+
       this._debug('set destination to:', destination);
       this.destinationRoot(destination);
     }
@@ -142,13 +205,25 @@ Run "npm install -g @plone/generator-volto" to update.`,
   }
 
   install() {
-    this.renderTemplate(
-      `${this.templatePath()}/**/*`,
-      this.destinationPath(),
+    // copy dotfiles
+    this.fs.copyTpl(this.templatePath('**/.*'), this.destinationPath(), {
+      ignore: ['**/*.tpl', '**/*~', '**/.gitignorefile'],
+    });
+
+    // Copy .gitignorefile to .gitignore
+    this.fs.copyTpl(
+      this.templatePath('.gitignorefile'),
+      this.destinationPath('.gitignore'),
       this.globals,
     );
-    // copy dotfiles
-    this.fs.copy(this.templatePath('.*'), this.destinationPath());
+    this.fs.delete('.gitignorefile');
+
+    // Copy and parse the rest of the template files
+    this.fs.copyTpl(this.templatePath(), this.destinationPath(), {
+      ...this.globals,
+      ignore: ['**/*.tpl', '**/*~'],
+      dot: true,
+    });
   }
 
   end() {

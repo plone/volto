@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Customizing the theme of a Volto website based on a mockup sketch."
-  "property=og:description": "Customizing the theme of a Volto website based on a mockup sketch."
-  "property=og:title": "Theming Strategy"
-  "keywords": "Volto, Plone, frontend, React, Theming, Strategy"
+myst:
+  html_meta:
+    "description": "Customizing the theme of a Volto website based on a mockup sketch."
+    "property=og:description": "Customizing the theme of a Volto website based on a mockup sketch."
+    "property=og:title": "Theming Strategy"
+    "keywords": "Volto, Plone, frontend, React, Theming, Strategy"
 ---
 
 # Theming Strategy
@@ -35,12 +36,12 @@ is built. Take a look at its building blocks in order to not repeat yourself.
 Take a tour inside the `components` folder, and try to map all the components
 with Volto page. Try to figure out what is the frame, the part that is constant
 (header, content area, footer), the moving parts, then go to the more complex
-ones (widgets, forms, etc). Then start theming the components per blocks 
+ones (widgets, forms, etc). Then start theming the components per blocks
 (header, content area, footer).
 
 Try to stick with the container and grid model of Semantic UI, including its
 breakpoints (and helpers). Use React Semantic UI building blocks whenever it's
-possible since it will help you things fit together easily.
+possible since it will help you fit things together easily.
 
 ## Talks
 

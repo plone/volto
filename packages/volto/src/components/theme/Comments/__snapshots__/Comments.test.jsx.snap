@@ -1,0 +1,205 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Comments renders a comments component 1`] = `
+<div
+  className="ui container comments"
+>
+  <div
+    id="comment-add-id"
+  >
+    <div
+      className="ui container"
+    >
+      <form
+        className="ui form"
+        method="post"
+        onSubmit={[Function]}
+      >
+        <fieldset
+          className="invisible"
+        >
+          <div
+            className="ui raised segments"
+          >
+            <div
+              className="ui segment"
+            >
+              <div
+                className="mocked-textarea-widget"
+                id="mocked-field-comment"
+              >
+                Comment
+                 - 
+                No description
+              </div>
+            </div>
+            <div
+              className="ui clearing segment actions"
+            >
+              <button
+                aria-label="Comment"
+                className="ui basic primary right floated button"
+                onClick={[Function]}
+                title="Comment"
+                type="submit"
+              >
+                <svg
+                  className="icon circled"
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": undefined,
+                    }
+                  }
+                  onClick={null}
+                  style={
+                    Object {
+                      "fill": "currentColor",
+                      "height": "30px",
+                      "width": "auto",
+                    }
+                  }
+                  viewBox=""
+                  xmlns=""
+                />
+              </button>
+              <button
+                aria-label="Cancel"
+                className="ui basic secondary right floated button"
+                onClick={[Function]}
+                title="Cancel"
+              >
+                <svg
+                  className="icon circled"
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": undefined,
+                    }
+                  }
+                  onClick={null}
+                  style={
+                    Object {
+                      "fill": "currentColor",
+                      "height": "30px",
+                      "width": "auto",
+                    }
+                  }
+                  viewBox=""
+                  xmlns=""
+                />
+              </button>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+  <div
+    className="ui threaded comments"
+    id="discussion"
+  >
+    <div
+      className="comment"
+      id="1614094601171408"
+    >
+      <div
+        className="avatar circular"
+        title="admin"
+      >
+        <svg
+          height={30}
+          width={30}
+        >
+          <circle
+            cx={15}
+            cy={15}
+            fill="Teal"
+            r={15}
+          />
+          <text
+            dy=".3em"
+            fill="white"
+            fontFamily="Arial"
+            fontSize="15px"
+            textAnchor="middle"
+            x="50%"
+            y="50%"
+          >
+            A
+          </text>
+        </svg>
+      </div>
+      <div
+        className="content"
+      >
+        <div
+          className="author"
+        >
+          admin
+        </div>
+        <div
+          className="metadata"
+        >
+          <span>
+             
+            <span
+              title="Sunday, April 23, 2017 3:38 AM"
+            >
+              a few seconds ago
+            </span>
+          </span>
+        </div>
+        <div
+          className="text"
+        >
+           
+          Some comment
+        </div>
+        <div
+          className="actions"
+        >
+          <a
+            aria-label="Reply"
+            className=""
+            onClick={[Function]}
+          >
+            Reply
+          </a>
+          <a
+            aria-label="Edit"
+            className=""
+            onClick={[Function]}
+            value={
+              Object {
+                "id": "someurl",
+                "text": "Some comment",
+              }
+            }
+          >
+            Edit
+          </a>
+          <a
+            aria-label="Delete"
+            className=""
+            color="red"
+            onClick={[Function]}
+          >
+            <i
+              aria-hidden="true"
+              className="red delete icon"
+              onClick={[Function]}
+            />
+            Delete
+          </a>
+          <a
+            className=""
+            onClick={[Function]}
+          />
+        </div>
+        <div
+          id="reply-place-1614094601171408"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -1,14 +1,15 @@
 ---
-html_meta:
-  "description": "Enable working copy support in Volto's configuration object"
-  "property=og:description": "Enable working copy support in Volto's configuration object"
-  "property=og:title": "Working copy support"
-  "keywords": "Volto, Plone, frontend, React, working copy, app iterate"
+myst:
+  html_meta:
+    "description": "Enable working copy support in Volto's configuration object"
+    "property=og:description": "Enable working copy support in Volto's configuration object"
+    "property=og:title": "Working copy support"
+    "keywords": "Volto, Plone, frontend, React, working copy, app iterate"
 ---
 
 # Working copy support
 
-Volto provide support for Plone's Working Copy feature. You need to install `plone.app.iterate` add-on in your Plone site that comes available by default. You can do that in Plone's control panel or using the Generic Setup facility.
+Volto provide support for Plone's Working Copy feature. You need to install `plone.app.iterate` add-on in your Plone site that comes available by default. You can do that in Plone's control panel or using the `GenericSetup` facility.
 
 ## Volto configuration
 

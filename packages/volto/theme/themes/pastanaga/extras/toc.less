@@ -1,0 +1,29 @@
+.table-of-contents.horizontalMenu.sticky-toc {
+  position: sticky;
+  z-index: 1;
+  top: 0;
+}
+
+.table-of-contents.horizontalMenu .hidden {
+  z-index: -1;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.table-of-contents.horizontalMenu .hidden-dropdown {
+  display: none !important;
+}
+
+.table-of-contents.horizontalMenu .item.dropdown {
+  position: absolute !important;
+  right: 0;
+}
+
+.table-of-contents.horizontalMenu > .ui.menu {
+  position: relative;
+}
+
+.table-of-contents.horizontalMenu .item.dropdown .focused > a {
+  border: 2px solid black !important;
+  border-radius: 4px;
+}

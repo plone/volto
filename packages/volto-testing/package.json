@@ -1,0 +1,51 @@
+{
+  "name": "@plone/volto-testing",
+  "description": "Volto Testing package - Contains dependencies and helpers for testing Plone 6 / Volto",
+  "maintainers": [
+    {
+      "name": "Plone Foundation",
+      "email": "plone-developers@lists.sourceforge.net",
+      "url": "http://plone.org"
+    }
+  ],
+  "license": "MIT",
+  "version": "5.0.0-alpha.0",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:plone/volto.git"
+  },
+  "bugs": {
+    "url": "https://github.com/plone/volto/issues",
+    "email": "plone-developers@lists.sourceforge.net"
+  },
+  "homepage": "https://plone.org",
+  "keywords": [
+    "volto",
+    "plone",
+    "plone6",
+    "react",
+    "cms",
+    "testing"
+  ],
+  "scripts": {
+    "dry-release": "release-it --dry-run",
+    "release": "release-it",
+    "release-major-alpha": "release-it major --preRelease=alpha",
+    "release-alpha": "release-it --preRelease=alpha"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@testing-library/cypress": "10.0.1",
+    "@testing-library/jest-dom": "6.4.2",
+    "@testing-library/react": "12.1.5",
+    "axe-core": "4.8.4",
+    "cypress": "13.6.6",
+    "cypress-axe": "1.5.0",
+    "cypress-file-upload": "5.0.8"
+  },
+  "devDependencies": {
+    "release-it": "^17.1.1"
+  }
+}

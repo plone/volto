@@ -1,0 +1,47 @@
+@import './Checkbox.css';
+@import './Button.css';
+@import './ToggleButton.css';
+@import './Menu.css';
+@import './theme.css';
+
+.react-aria-Toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+
+  &[data-orientation='horizontal'] {
+    flex-direction: row;
+  }
+
+  .react-aria-Group {
+    display: contents;
+  }
+}
+
+.react-aria-Separator {
+  align-self: stretch;
+  background-color: var(--border-color);
+
+  &[aria-orientation='vertical'] {
+    width: 1px;
+    margin: 0px 10px;
+  }
+}
+
+.react-aria-Toolbar {
+  width: fit-content;
+
+  &[data-orientation='vertical'] {
+    flex-direction: column;
+    align-items: start;
+  }
+}
+
+.react-aria-Separator {
+  &:not([aria-orientation='vertical']) {
+    width: 100%;
+    height: 1px;
+    border: none;
+    margin: 10px 0;
+  }
+}

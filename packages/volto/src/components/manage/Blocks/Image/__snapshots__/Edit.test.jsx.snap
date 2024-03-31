@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders an edit image block component 1`] = `
+<div
+  className="block image align center"
+>
+  <img
+    alt=""
+    className=""
+    loading="lazy"
+    responsive={true}
+    src="image"
+  />
+</div>
+`;

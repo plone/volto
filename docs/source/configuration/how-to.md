@@ -1,14 +1,15 @@
 ---
-html_meta:
-  "description": "Volto has a centralized configuration registry used to parameterize Volto."
-  "property=og:description": "Volto has a centralized configuration registry used to parameterize Volto."
-  "property=og:title": "The configuration registry"
-  "keywords": "Volto, Plone, frontend, React, configuration, registry"
+myst:
+  html_meta:
+    "description": "Volto has a centralized configuration registry used to parameterize Volto."
+    "property=og:description": "Volto has a centralized configuration registry used to parameterize Volto."
+    "property=og:title": "The configuration registry"
+    "keywords": "Volto, Plone, frontend, React, configuration, registry"
 ---
 
 # The configuration registry
 
-Volto has a centralized configuration registry used to parameterize Volto. It has the
+Volto has a centralized {term}`configuration registry` used to parameterize Volto. It has the
 form of a singleton that can be called and queried from anywhere in your code like this:
 
 ```js
@@ -23,7 +24,7 @@ const absoluteUrl = `${config.settings.apiPath}/${content.url}`
 ```
 
 Both the main project and individual add-ons can extend Volto's configuration registry.
-First the add-ons configuration is applied, in the order they are defined in 
+First the add-ons configuration is applied, in the order they are defined in
 `package.json`, then finally the project configuration is applied. Visualized like
 a pipe would be:
 
@@ -59,7 +60,7 @@ add-ons configuration in `config` argument. Next, perform all the required modif
 to the config and finally, return the config object.
 
 By reading Volto's
-[src/config/index.js](https://github.com/plone/volto/blob/master/src/config/index.js),
+[src/config/index.js](https://github.com/plone/volto/blob/main/packages/volto/src/config/index.js),
 you'll get to see that Volto provides some default configuration objects
 (`blocks`, `widgets`, `settings`, etc), passes them through the
 `applyAddonConfiguration()` function, which allows any installed addons to
@@ -77,12 +78,12 @@ See {doc}`settings-reference` for details.
 
 The `widgets` object holds the widget registry, used to decide which widget
 should be used when rendering forms. Check [its
-definition](https://github.com/plone/volto/blob/master/src/config/Widgets.jsx)
+definition](https://github.com/plone/volto/blob/main/packages/volto/src/config/Widgets.jsx)
 but also the [lookup
-mechanism](https://github.com/plone/volto/blob/6fd62cb2860bc7cf3cb7c36ea86bfd8bd03247d9/src/components/manage/Form/Field.jsx#L112)
+mechanism](https://github.com/plone/volto/blob/212026a39fd9aa0e1d6c324f967b51a3daa10b01/packages/volto/src/components/manage/Form/Field.jsx#L151)
 to understand how things work.
 
-See {doc}`../recipes/widget` for more information.
+See {doc}`../development/widget` for more information.
 
 ## views
 
@@ -90,7 +91,7 @@ The `views` registry allows configuration of the components that will be used
 to render the content. There are 4 types of views:
 
 - layout views, which are used based on the `layout` field of the incoming
-  content
+  content. See {doc}`./settings-reference` for more information.
 - content type views, registered view components per Plone content type
 - the default view, which can render the composite page Volto blocks
 - and the error views, to be used for regular error pages (Forbidden, Not
@@ -135,6 +136,7 @@ config.addonRoutes.push({ path: '/**/chat', component: Chat });
 ```
 
 ## cookieExpires
+
 According to the EU law on the management of the GDPR privacy and cookies, technical cookies must have a maximum expiration of 6 months.
 For sites outside the European Union, the expiration could be different.
 Expiration time is configurable in `config`, expressed in seconds:

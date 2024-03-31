@@ -1,15 +1,16 @@
 ---
-html_meta:
-  "description": "Install multilingual support to use Plone's multilingual feature"
-  "property=og:description": "Install multilingual support to use Plone's multilingual feature"
-  "property=og:title": "Multilingual"
-  "keywords": "Volto, Plone, frontend, React, multilingual"
+myst:
+  html_meta:
+    "description": "Install multilingual support to use Plone's multilingual feature"
+    "property=og:description": "Install multilingual support to use Plone's multilingual feature"
+    "property=og:title": "Multilingual"
+    "keywords": "Volto, Plone, frontend, React, multilingual"
 ---
 
 # Multilingual
 
 Volto provide support for Plone's Multilingual feature. You need to install Multiligual
-support in Plone (plone.app.multilingual add-on), that comes available by default since
+support in Plone (`plone.app.multilingual` add-on), that comes available by default since
 Plone 5 and can be installed in Plone's control panel.
 
 ## Volto configuration
