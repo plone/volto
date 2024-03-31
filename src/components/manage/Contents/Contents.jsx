@@ -1191,7 +1191,11 @@ class Contents extends Component {
     return this.props.token && this.props.objectActions?.length > 0 ? (
       <>
         {folderContentsAction ? (
-          <Container id="page-contents" className="folder-contents">
+          <Container
+            id="page-contents"
+            className="folder-contents"
+            aria-live="polite"
+          >
             <Dimmer.Dimmable as="div" blurring dimmed={loading}>
               <Dimmer active={loading} inverted>
                 <Loader indeterminate size="massive">
