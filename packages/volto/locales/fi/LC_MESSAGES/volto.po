@@ -3983,9 +3983,9 @@ msgstr "Lähetä palvelimelle tiedostoja"
 msgid "Uploading image"
 msgstr "Kuvaa ladataan"
 
-#. Default: "Uploading {uploadedFiles} Files Out of {totalFiles}"
+#. Default: "Uploading {uploadedFiles} files out of {totalFiles}"
 #: components/manage/Contents/ContentsUploadModal
-msgid "Uploading {uploadedFiles} Files Out of {totalFiles}"
+msgid "Uploading {uploadedFiles} files out of {totalFiles}"
 msgstr "Ladataan {uploadedFiles} tiedostoa {totalFiles} tiedostoista"
 
 #. Default: "Use the form below to define the new content rule"

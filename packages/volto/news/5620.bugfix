@@ -1,1 +1,1 @@
-Replaced the spinner with a progress bar that shows the number of files uploaded (Uploaded: x out of y files) and positioned the progress bar properly while uploading a large number of files. @victorchrollo14
+Replaced the spinner with a progress bar that shows the number of files being uploaded (Uploading x files out of y), and positioned the progress bar properly, while uploading a large number of files. @victorchrollo14

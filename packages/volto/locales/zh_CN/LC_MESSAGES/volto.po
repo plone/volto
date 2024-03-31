@@ -3984,9 +3984,9 @@ msgstr "上传文件"
 msgid "Uploading image"
 msgstr "上传图像中"
 
-#. Default: "Uploading {uploadedFiles} Files Out of {totalFiles}"
+#. Default: "Uploading {uploadedFiles} files out of {totalFiles}"
 #: components/manage/Contents/ContentsUploadModal
-msgid "Uploading {uploadedFiles} Files Out of {totalFiles}"
+msgid "Uploading {uploadedFiles} files out of {totalFiles}"
 msgstr "正在上传 {uploadedFiles} 个文件，共 {totalFiles} 个文件"
 
 #. Default: "Use the form below to define the new content rule"

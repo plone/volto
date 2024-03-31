@@ -3978,9 +3978,9 @@ msgstr ""
 msgid "Uploading image"
 msgstr ""
 
-#. Default: "Uploading {uploadedFiles} Files Out of {totalFiles}"
+#. Default: "Uploading {uploadedFiles} files out of {totalFiles}"
 #: components/manage/Contents/ContentsUploadModal
-msgid "Uploading {uploadedFiles} Files Out of {totalFiles}"
+msgid "Uploading {uploadedFiles} files out of {totalFiles}"
 msgstr ""
 
 #. Default: "Use the form below to define the new content rule"

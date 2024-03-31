@@ -41,8 +41,8 @@ const messages = defineMessages({
       '{count, plural, one {Upload {count} file} other {Upload {count} files}}',
   },
   uploadingFiles: {
-    id: 'Uploading {uploadedFiles} Files Out of {totalFiles}',
-    defaultMessage: 'Uploading {uploadedFiles} Files Out of {totalFiles}',
+    id: 'Uploading {uploadedFiles} files out of {totalFiles}',
+    defaultMessage: 'Uploading {uploadedFiles} files out of {totalFiles}',
   },
 });
 

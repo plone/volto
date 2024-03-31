@@ -3985,9 +3985,9 @@ msgstr "Kargatu fitxategiak"
 msgid "Uploading image"
 msgstr "Irudia kargatzen"
 
-#. Default: "Uploading {uploadedFiles} Files Out of {totalFiles}"
+#. Default: "Uploading {uploadedFiles} files out of {totalFiles}"
 #: components/manage/Contents/ContentsUploadModal
-msgid "Uploading {uploadedFiles} Files Out of {totalFiles}"
+msgid "Uploading {uploadedFiles} files out of {totalFiles}"
 msgstr "Cargando {uploadedFiles} archivos de {totalFiles}"
 
 #. Default: "Use the form below to define the new content rule"

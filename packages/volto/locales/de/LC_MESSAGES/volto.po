@@ -3983,10 +3983,10 @@ msgstr "Datei hochladen"
 msgid "Uploading image"
 msgstr "Bild hochladen"
 
-#. Default: "Uploading {uploadedFiles} Files Out of {totalFiles}"
+#. Default: "Uploading {uploadedFiles} files out of {totalFiles}"
 #: components/manage/Contents/ContentsUploadModal
-msgid "Uploading {uploadedFiles} Files Out of {totalFiles}"
-msgstr "Hochladen von {uploadedFiles} Dateien von insgesamt {totalFiles}"
+msgid "Uploading {uploadedFiles} files out of {totalFiles}"
+msgstr "Hochladen von {uploadedFiles} dateien von insgesamt {totalFiles}"
 
 #. Default: "Use the form below to define the new content rule"
 #: components/manage/Controlpanels/Rules/AddRule
