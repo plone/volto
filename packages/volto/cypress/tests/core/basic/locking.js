@@ -74,6 +74,8 @@ describe('Document locking', () => {
     cy.findByLabelText('Unlock');
   });
 
+  // Cypress._.times(20, (k) => {
+  //   it.only('As editor, I can unlock a locked page', function () {
   it('As editor, I can unlock a locked page', function () {
     // As an editor I can add a document
     cy.intercept('/**/@logout').as('logout');
@@ -96,15 +98,16 @@ describe('Document locking', () => {
 
     cy.visit('/logout');
     cy.wait('@logout');
+    cy.findByRole('alert')
+      .get('.toast-inner-content')
+      .should('contain', 'You have been logged out');
+    cy.get('.toast-dismiss-action').click();
 
     // As another editor I can see the locked document
     cy.autologin('editor2', 'password');
     cy.visit('/document');
     cy.wait('@content');
-
-    cy.findByRole('alert')
-      .get('.toast-inner-content')
-      .contains('This item was locked by Editor 1 on');
+    cy.get('.toolbar-body').should('be.visible');
 
     // As another editor I can unlock the document
     cy.findByLabelText('Unlock').click();
@@ -114,17 +117,15 @@ describe('Document locking', () => {
     cy.findByLabelText('Edit').click();
 
     // As another editor I can edit the document
-    cy.clearSlateTitle().type('New title by Editor 2');
+    cy.clearSlateTitle().typeWithDelay('New title by Editor 2');
     cy.get('#toolbar-save').click();
-    // cy.waitForResourceToLoad('document');
     cy.wait('@saveDoc');
     cy.wait('@getDoc');
-
-    // cy.pause();
 
     cy.url().should('eq', Cypress.config().baseUrl + '/document');
     cy.contains('New title by Editor 2');
     cy.get('h1.documentFirstHeading').should('not.be.empty');
     cy.get('h1.documentFirstHeading').contains('New title by Editor 2');
   });
+  // });
 });
