@@ -70,6 +70,13 @@ class ContentsUploadModal extends Component {
     onOk: PropTypes.func.isRequired,
     onCancel: PropTypes.func.isRequired,
     uploadedFiles: PropTypes.number,
+    multiple: PropTypes.bool,
+    minSize: PropTypes.number,
+    maxSize: PropTypes.number,
+    accept: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.arrayOf(PropTypes.string),
+    ]),
   };
 
   /**
@@ -213,6 +220,22 @@ class ContentsUploadModal extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const {
+      multiple = true,
+      minSize = null,
+      maxSize = null,
+      accept = null,
+      disabled = false,
+    } = this.props;
+
+    const dropzoneOptions = {
+      multiple,
+      minSize,
+      maxSize,
+      accept,
+      disabled,
+    };
+
     return (
       this.props.open && (
         <Modal className="contents-upload-modal" open={this.props.open}>
@@ -237,7 +260,7 @@ class ContentsUploadModal extends Component {
               onDrop={this.onDrop}
               className="dropzone"
               noDragEventsBubbling={true}
-              multiple={true}
+              {...dropzoneOptions}
             >
               {({ getRootProps, getInputProps }) => (
                 <div {...getRootProps({ className: 'dashed' })}>
