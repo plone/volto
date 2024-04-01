@@ -55,6 +55,7 @@ config.set('settings', {
   styleClassNameExtenders,
   blockSettingsTabFieldsetsInitialStateOpen: true,
   containerBlockTypes: [],
+  contentMetadataTagsImageField: 'image',
 });
 config.set('blocks', {
   blocksConfig: {
