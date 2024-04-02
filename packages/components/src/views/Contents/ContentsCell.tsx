@@ -16,7 +16,7 @@ export function ContentsCell({ item, column }: Props) {
   if (column === 'title') {
     return (
       <Link
-        className="title-link"
+        className="react-aria-Link title-link"
         href={`${item['@id']}${item.is_folderish ? '/contents' : ''}`}
       >
         <PageIcon />

@@ -8,10 +8,20 @@ import { Dialog } from '../Dialog/Dialog';
 
 export interface PopoverProps extends Omit<RACPopoverProps, 'children'> {
   children: React.ReactNode;
+  /** Mandatory when children don't contain a <Heading slot="title"> or dialogAriaLabelledBy */
+  dialogAriaLabel?: string;
+  /** Mandatory when children don't contain a <Heading slot="title"> or dialogAriaLabel */
+  dialogAriaLabelledby?: string;
   arrow?: boolean;
 }
 
-export function Popover({ children, arrow, ...props }: PopoverProps) {
+export function Popover({
+  children,
+  dialogAriaLabel,
+  dialogAriaLabelledby,
+  arrow,
+  ...props
+}: PopoverProps) {
   return (
     <RACPopover {...props}>
       {arrow && (
@@ -21,7 +31,12 @@ export function Popover({ children, arrow, ...props }: PopoverProps) {
           </svg>
         </OverlayArrow>
       )}
-      <Dialog>{children}</Dialog>
+      <Dialog
+        aria-label={dialogAriaLabel}
+        aria-labelledby={dialogAriaLabelledby}
+      >
+        {children}
+      </Dialog>
     </RACPopover>
   );
 }
