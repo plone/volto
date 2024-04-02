@@ -9,9 +9,8 @@ import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import { createPortal } from 'react-dom';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { compose } from 'redux';
 import { Container, Grid, Header, Message, Segment } from 'semantic-ui-react';
 
 import { getSystemInformation, listControlpanels } from '@plone/volto/actions';
@@ -100,18 +99,25 @@ const messages = defineMessages({
 /**
  * Controlpanels container class.
  */
-function Controlpanels({
-  controlpanels,
-  controlpanelsRequest,
-  systemInformation,
-  pathname,
-}) {
+function Controlpanels({ location }) {
   const intl = useIntl();
   const [isClient, setIsClient] = useState(false);
+  const dispatch = useDispatch();
+  const { pathname } = location;
+
+  const controlpanels = useSelector(
+    (state) => state.controlpanels.controlpanels,
+  );
+  const controlpanelsRequest = useSelector((state) => state.controlpanels.list);
+  const systemInformation = useSelector(
+    (state) => state.controlpanels.systeminformation,
+  );
 
   useEffect(() => {
     setIsClient(true);
-  }, []);
+    dispatch(listControlpanels());
+    dispatch(getSystemInformation());
+  }, [dispatch]);
 
   const error = controlpanelsRequest?.error;
 
@@ -299,24 +305,15 @@ Controlpanels.propTypes = {
   pathname: PropTypes.string.isRequired,
 };
 
-export default compose(
-  connect((state, props) => ({
-    controlpanels: state.controlpanels.controlpanels,
-    controlpanelsRequest: state.controlpanels.list,
-    pathname: props.location.pathname,
-    systemInformation: state.controlpanels.systeminformation,
-  })),
-
-  asyncConnect([
-    {
-      key: 'controlpanels',
-      promise: async ({ location, store: { dispatch } }) =>
-        await dispatch(listControlpanels()),
-    },
-    {
-      key: 'systemInformation',
-      promise: async ({ location, store: { dispatch } }) =>
-        await dispatch(getSystemInformation()),
-    },
-  ]),
-)(Controlpanels);
+export default asyncConnect([
+  {
+    key: 'controlpanels',
+    promise: async ({ location, store: { dispatch } }) =>
+      await dispatch(listControlpanels()),
+  },
+  {
+    key: 'systemInformation',
+    promise: async ({ location, store: { dispatch } }) =>
+      await dispatch(getSystemInformation()),
+  },
+])(Controlpanels);
