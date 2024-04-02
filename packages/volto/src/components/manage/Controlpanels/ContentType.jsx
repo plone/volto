@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { getParentUrl } from '@plone/volto/helpers';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import { Button, Header } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import { toast } from 'react-toastify';
@@ -211,8 +211,8 @@ class ContentType extends Component {
             hideActions
             loading={this.props.cpanelRequest.update.loading}
           />
-          {this.state.isClient && (
-            <Portal node={document.getElementById('toolbar')}>
+          {this.state.isClient &&
+            createPortal(
               <Toolbar
                 pathname={this.props.pathname}
                 hideDefaultViewButtons
@@ -249,9 +249,9 @@ class ContentType extends Component {
                     </Button>
                   </>
                 }
-              />
-            </Portal>
-          )}
+              />,
+              document.getElementById('toolbar'),
+            )}
         </div>
       );
     }

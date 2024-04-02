@@ -36,9 +36,11 @@ exports[`Comments renders a comments component 1`] = `
   </div>
   <div
     className="ui threaded comments"
+    id="discussion"
   >
     <div
       className="comment"
+      id="1614094601171408"
     >
       <div
         className="avatar circular"

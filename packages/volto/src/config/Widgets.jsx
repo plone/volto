@@ -14,7 +14,6 @@ import {
   TextareaWidget,
   TextWidget,
   TokenWidget,
-  WysiwygWidget,
   UrlWidget,
   InternalUrlWidget,
   EmailWidget,
@@ -64,7 +63,6 @@ export const widgetMapping = {
     site_logo: RegistryImageWidget,
   },
   widget: {
-    richtext: WysiwygWidget,
     textarea: TextareaWidget,
     datetime: DatetimeWidget,
     date: DatetimeWidget,

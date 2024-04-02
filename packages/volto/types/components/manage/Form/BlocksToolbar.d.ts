@@ -8,10 +8,8 @@ export class BlocksToolbarComponent extends React.Component<any, any, any> {
     setBlocksClipboard(actionType: any): void;
     componentDidMount(): void;
     componentWillUnmount(): void;
-    render(): JSX.Element;
+    render(): import("react/jsx-runtime").JSX.Element;
 }
-declare const _default: React.ForwardRefExoticComponent<Omit<import("react-intl").WithIntlProps<import("react-intl").WrappedComponentProps<string>>, "ref"> & React.RefAttributes<React.ComponentType<import("react-intl").WrappedComponentProps<string>>>> & {
-    WrappedComponent: React.ComponentType<import("react-intl").WrappedComponentProps<string>>;
-};
+declare const _default: any;
 export default _default;
 import React from 'react';

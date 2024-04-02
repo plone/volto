@@ -1,47 +1,44 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders a default toc renderer component 1`] = `
-Array [
-  "",
-  <ul
-    className="ui bulleted list"
-    role="list"
+<ul
+  className="ui bulleted list"
+  role="list"
+>
+  <li
+    className="item headline-2"
+    onClick={[Function]}
+    role="listitem"
   >
-    <li
-      className="item headline-2"
+    <a
+      className={null}
+      href="/#hello-this-is-a-sample-page"
       onClick={[Function]}
-      role="listitem"
+      target={null}
+      title={null}
     >
-      <a
-        className={null}
-        href="/#hello-this-is-a-sample-page"
+      Hello this is a sample page
+    </a>
+    <ul
+      className="ui bulleted list"
+      role="list"
+    >
+      <li
+        className="item headline-3"
         onClick={[Function]}
-        target={null}
-        title={null}
+        role="listitem"
       >
-        Hello this is a sample page
-      </a>
-      <ul
-        className="ui bulleted list"
-        role="list"
-      >
-        <li
-          className="item headline-3"
+        <a
+          className={null}
+          href="/#test-level-3"
           onClick={[Function]}
-          role="listitem"
+          target={null}
+          title={null}
         >
-          <a
-            className={null}
-            href="/#test-level-3"
-            onClick={[Function]}
-            target={null}
-            title={null}
-          >
-            Test level 3
-          </a>
-        </li>
-      </ul>
-    </li>
-  </ul>,
-]
+          Test level 3
+        </a>
+      </li>
+    </ul>
+  </li>
+</ul>
 `;

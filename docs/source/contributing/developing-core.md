@@ -16,6 +16,8 @@ To create a full Plone project with both frontend and backend, see {doc}`plone:i
 ```
 
 
+(developing-core-monorepo-structure-label)=
+
 ## Monorepo structure
 
 The Volto core repository has the shape of a monorepo, where "mono" means "single" and "repo" is short for "repository".
@@ -23,15 +25,9 @@ This means that several apps and libraries related to each other are stored in t
 They are managed together but released individually.
 This allows the code to be shared effectively, and unifies tracking of changes across all of the apps and libraries.
 
-This monorepo uses pnpm as a package manager, extensively using the workspaces feature.
+This monorepo uses pnpm as a package manager, extensively using its {term}`workspace` feature.
 It's organized in two folders, depending on whether it's a library (package) or an app.
-They are located in the `packages` or `apps` folder.
-They are declared as pnpm workspaces.
-This means they can be managed from the root, using the package manager `--filter` feature.
-
-```{seealso}
-For more information about pnpm workspaces, read the [documentation of pnpm workspaces](https://pnpm.io/workspaces).
-```
+The workspaces are located in the `packages` or `apps` folder.
 
 
 ### Folder layout
@@ -78,6 +74,7 @@ To set up a Volto core development environment, your system must satisfy the fol
 -   {term}`pnpm`
 -   {term}`GNU make`
 -   {term}`Docker`
+-   {term}`Git`
 
 ```{note}
 When developing Volto core, pnpm is required.
@@ -152,7 +149,6 @@ pnpm --version
 
 Compare the output to the [latest pnpm release number](https://www.npmjs.com/package/pnpm).
 
-
 ```{seealso}
 [pnpm installation](https://pnpm.io/installation).
 ```
@@ -167,6 +163,12 @@ Compare the output to the [latest pnpm release number](https://www.npmjs.com/pac
 ### Docker
 
 ```{include} ./install-docker.md
+```
+
+
+### Git
+
+```{include} ../contributing/install-git.md
 ```
 
 
@@ -213,18 +215,35 @@ Browse to the frontend running at http://localhost:3000.
 To stop either the backend or frontend, use {kbd}`ctrl-c`.
 
 
-## Running commands
+(developing-core-run-commands-for-pnpm-workspaces-label)=
 
-pnpm has the concept of `workspaces`.
-Every package or app located in the `packages` or `apps` folders are declared as a pnpm workspace.
-They can be managed using the pnpm `--filter` feature, with either of the following commands:
+## Run commands for pnpm workspaces
+
+As mentioned in {ref}`developing-core-monorepo-structure-label`, pnpm has the concept of {term}`workspace`.
+Every package or app located in the `packages` or `apps` folders is declared as a pnpm workspace.
+
+When developing Volto, you can run pnpm commands from either the repository root or inside the package's or app's workspace in `packages/<package_name>` or `apps/<app_name>`.
+
+pnpm commands will apply in the context from which they are run.
+That means when you run a pnpm command from the repository root, it will apply to all workspaces.
+It also means when you run a pnpm command from inside a workspace, it will apply only to that workspace.
+
+You can also use the pnpm `--filter` feature from the repository root to apply to only the specified workspaces, as shown in the following examples.
 
 ```shell
 pnpm --filter @plone/volto start
 ```
 
+The above command when run from the repository root will start Volto.
+
 ```shell
 pnpm --filter @plone/registry build
+```
+
+The above command when run from the repository root will build the Volto registry.
+
+```{seealso}
+For more information about pnpm workspaces, read the [documentation of pnpm workspaces](https://pnpm.io/workspaces).
 ```
 
 
@@ -243,10 +262,10 @@ pnpm start
 ```
 ````
 
-You can also run commands of specific workspaces using the `--filter` feature as shown in the previous section.
+You can also run commands for a specific workspace using the `--filter` feature as shown in the previous section, {ref}`developing-core-run-commands-for-pnpm-workspaces-label`.
 
 
-## Developing other libraries
+## Develop other libraries in a workspace
 
 If a package is a dependency of another package in the monorepo, and it's declared as a workspace, they can be declared as usual in the {file}`package.json` as follows:
 
@@ -257,7 +276,7 @@ If a package is a dependency of another package in the monorepo, and it's declar
 ```
 
 ```{seealso}
-[pnpm workspaces](https://pnpm.io/workspaces)
+[Documentation of pnpm workspaces](https://pnpm.io/workspaces).
 ```
 
 

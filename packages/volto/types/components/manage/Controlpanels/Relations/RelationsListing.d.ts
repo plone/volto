@@ -5,4 +5,4 @@ declare function ListingTemplate({ relationtype, query_source, query_target, pot
     query_target: any;
     potential_sources_path: any;
     potential_targets_path: any;
-}): JSX.Element;
+}): import("react/jsx-runtime").JSX.Element;

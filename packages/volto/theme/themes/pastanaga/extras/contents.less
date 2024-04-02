@@ -152,13 +152,6 @@
     background-color: rgb(228, 1, 102);
     color: white;
   }
-
-  @media only screen and (min-width: @largeMonitorBreakpoint) {
-    .ui.table.single.line tbody {
-      white-space: normal;
-      word-break: break-word;
-    }
-  }
 }
 
 .contents-pagination {
@@ -208,4 +201,15 @@
   display: flex;
   align-items: center;
   margin-top: 2rem;
+}
+
+/* Contents Upload Modal */
+.contents-upload-modal {
+  .file-name {
+    width: 75%;
+
+    input {
+      padding: 0.67857143em 1em;
+    }
+  }
 }

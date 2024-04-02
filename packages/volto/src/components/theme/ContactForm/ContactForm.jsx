@@ -1,5 +1,5 @@
 import { useCallback, useEffect } from 'react';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import { Container, Message, Icon } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
 import { Link, useHistory, useLocation } from 'react-router-dom';
@@ -150,8 +150,8 @@ const ContactFormComponent = () => {
             required: ['from', 'message'],
           }}
         />
-        {isClient && (
-          <Portal node={document.getElementById('toolbar')}>
+        {isClient &&
+          createPortal(
             <Toolbar
               pathname={pathname}
               hideDefaultViewButtons
@@ -165,9 +165,9 @@ const ContactFormComponent = () => {
                   />
                 </Link>
               }
-            />
-          </Portal>
-        )}
+            />,
+            document.getElementById('toolbar'),
+          )}
       </Container>
     </div>
   );

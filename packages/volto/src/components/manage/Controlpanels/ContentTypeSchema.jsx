@@ -13,7 +13,7 @@ import saveSVG from '@plone/volto/icons/save.svg';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { defineMessages, injectIntl } from 'react-intl';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
 import { compose } from 'redux';
@@ -284,8 +284,8 @@ class ContentTypeSchema extends Component {
             onCancel={this.onCancel}
             hideActions
           />
-          {this.state.isClient && (
-            <Portal node={document.getElementById('toolbar')}>
+          {this.state.isClient &&
+            createPortal(
               <Toolbar
                 pathname={this.props.pathname}
                 hideDefaultViewButtons
@@ -322,9 +322,9 @@ class ContentTypeSchema extends Component {
                     </Button>
                   </>
                 }
-              />
-            </Portal>
-          )}
+              />,
+              document.getElementById('toolbar'),
+            )}
         </div>
       );
     }

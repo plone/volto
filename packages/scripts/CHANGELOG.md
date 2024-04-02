@@ -8,6 +8,38 @@
 
 <!-- towncrier release notes start -->
 
+## 3.6.1 (2024-03-18)
+
+### Bugfix
+
+- Fix volto-update-deps script, remove `@plone` packages from the sync @sneridagh [#5889](https://github.com/plone/volto/issues/5889)
+
+## 3.6.0 (2024-03-18)
+
+### Feature
+
+- Added project dependencies sync utility `volto-update-deps`. @sneridagh [#5879](https://github.com/plone/volto/issues/5879)
+
+## 3.5.0 (2024-03-05)
+
+### Feature
+
+- Add `check_deployments.js` script - Test simple deployments setups when Cypress is too much @sneridagh [#5824](https://github.com/plone/volto/issues/5824)
+
+### Documentation
+
+- Improve wayfinding for various Volto audiences. @stevepiercy [#5730](https://github.com/plone/volto/issues/5730)
+
+## 3.4.0 (2024-03-02)
+
+### Feature
+
+- New `lockhook.js` script for replacing `yarnhook` @sneridagh [#5815](https://github.com/plone/volto/issues/5815)
+
+### Internal
+
+- Update dependencies @sneridagh [#5815](https://github.com/plone/volto/issues/5815)
+
 ## 3.3.2 (2024-01-26)
 
 ### Bugfix

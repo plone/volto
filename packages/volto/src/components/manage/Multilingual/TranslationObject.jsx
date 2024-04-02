@@ -125,7 +125,6 @@ const TranslationObject = ({
                     {map(item.fields, (field, index) => (
                       <Field
                         {...schema.properties[field]}
-                        isDisabled={true}
                         id={field}
                         formData={translationObject}
                         focus={false}

@@ -1,24 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Contact form renders a contact form 1`] = `
-<div
-  id="contact-form"
->
+<div>
   <div
-    className="ui container"
-    id="view"
+    id="contact-form"
   >
     <div
-      className="ui icon negative attached message"
+      class="ui container"
+      id="view"
     >
-      <i
-        aria-hidden="true"
-        className="warning icon"
-        onClick={[Function]}
-      />
       <div
-        className="content"
+        class="ui icon negative attached message"
       >
+        <i
+          aria-hidden="true"
+          class="warning icon"
+        />
         <div
           className="header"
         >
@@ -73,24 +70,21 @@ exports[`Contact form renders a contact form 1`] = `
 `;
 
 exports[`Contact form renders a contact form with error message 1`] = `
-<div
-  id="contact-form"
->
+<div>
   <div
-    className="ui container"
-    id="view"
+    id="contact-form"
   >
     <div
-      className="ui icon negative attached message"
+      class="ui container"
+      id="view"
     >
-      <i
-        aria-hidden="true"
-        className="warning icon"
-        onClick={[Function]}
-      />
       <div
-        className="content"
+        class="ui icon negative attached message"
       >
+        <i
+          aria-hidden="true"
+          class="warning icon"
+        />
         <div
           className="header"
         >

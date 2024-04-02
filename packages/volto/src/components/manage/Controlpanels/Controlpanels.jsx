@@ -7,8 +7,8 @@ import { Helmet } from '@plone/volto/helpers';
 import { concat, filter, last, map, sortBy, uniqBy } from 'lodash';
 import { useEffect, useState } from 'react';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
-import { Portal } from 'react-portal';
 import { useDispatch, useSelector } from 'react-redux';
+import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
 import { Container, Grid, Header, Message, Segment } from 'semantic-ui-react';
 
@@ -265,8 +265,8 @@ export default function Controlpanels({ location }) {
           </Segment>
         </Segment.Group>
       </Container>
-      {isClient && (
-        <Portal node={document.getElementById('toolbar')}>
+      {isClient &&
+        createPortal(
           <Toolbar
             pathname={pathname}
             hideDefaultViewButtons
@@ -280,9 +280,9 @@ export default function Controlpanels({ location }) {
                 />
               </Link>
             }
-          />
-        </Portal>
-      )}
+          />,
+          document.getElementById('toolbar'),
+        )}
     </div>
   );
 }

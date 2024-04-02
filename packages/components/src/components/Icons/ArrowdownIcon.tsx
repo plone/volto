@@ -1,7 +1,8 @@
-import Icon from '../Icon/Icon';
+import React from 'react';
+import { Icon } from '../Icon/Icon';
 import type { IconPropsWithoutChildren } from '../Icon/Icon';
 
-const Arrowdown = (props: IconPropsWithoutChildren) => {
+export const ArrowdownIcon = (props: IconPropsWithoutChildren) => {
   return (
     <Icon {...props}>
       <svg
@@ -15,5 +16,3 @@ const Arrowdown = (props: IconPropsWithoutChildren) => {
     </Icon>
   );
 };
-
-export default Arrowdown;

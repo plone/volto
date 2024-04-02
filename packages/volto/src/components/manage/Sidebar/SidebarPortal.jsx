@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 
 /**
  * Portal that wraps Sidebar components
@@ -16,8 +16,9 @@ const SidebarPortal = ({ children, selected, tab = 'sidebar-properties' }) => {
 
   return (
     <>
-      {selected && (
-        <Portal node={isClient && document.getElementById(tab)}>
+      {isClient &&
+        selected &&
+        createPortal(
           <div role="form" style={{ height: '100%' }}>
             <div
               style={{ height: '100%' }}
@@ -31,9 +32,9 @@ const SidebarPortal = ({ children, selected, tab = 'sidebar-properties' }) => {
             >
               {children}
             </div>
-          </div>
-        </Portal>
-      )}
+          </div>,
+          document.getElementById(tab),
+        )}
     </>
   );
 };

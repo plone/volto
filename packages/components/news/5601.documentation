@@ -1,1 +1,0 @@
-Build the `volto/components` Storybook only when its source files change. @stevepiercy

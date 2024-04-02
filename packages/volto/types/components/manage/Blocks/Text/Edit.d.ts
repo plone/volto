@@ -87,4 +87,4 @@ export class EditComponent extends React.Component<any, any, any> {
 export const Edit: any;
 export default Preloader;
 import React from 'react';
-declare function Preloader(props: any): JSX.Element;
+declare function Preloader(props: any): import("react/jsx-runtime").JSX.Element;

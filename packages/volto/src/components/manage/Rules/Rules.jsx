@@ -8,7 +8,7 @@ import { Helmet } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import {
   Button,
   Checkbox,
@@ -484,8 +484,8 @@ class Rules extends Component {
             </Button>
           </React.Fragment>
         )}
-        {this.state.isClient && (
-          <Portal node={document.getElementById('toolbar')}>
+        {this.state.isClient &&
+          createPortal(
             <Toolbar
               pathname={this.props.pathname}
               hideDefaultViewButtons
@@ -502,9 +502,9 @@ class Rules extends Component {
                   />
                 </Link>
               }
-            />
-          </Portal>
-        )}
+            />,
+            document.getElementById('toolbar'),
+          )}
       </Container>
     );
   }

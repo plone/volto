@@ -7,7 +7,11 @@ import { SliderSchema as TestBlockSchema } from './components/Blocks/TestBlock/s
 import { multipleFieldsetsSchema } from './components/Blocks/TestBlock/schema';
 import { conditionalVariationsSchemaEnhancer } from './components/Blocks/schemaEnhancers';
 import codeSVG from '@plone/volto/icons/code.svg';
-import type { BlockConfigBase, ConfigData } from '@plone/types';
+import type { BlockConfigBase } from '@plone/types';
+import type { ConfigType } from '@plone/registry';
+import SlotComponentTest from './components/Slots/SlotTest';
+import { ContentTypeCondition } from '@plone/volto/helpers';
+import { RouteCondition } from '@plone/volto/helpers/Slots';
 
 const testBlock: BlockConfigBase = {
   id: 'testBlock',
@@ -113,7 +117,7 @@ const testBlockDefaultView: BlockConfigBase = {
   extensions: {},
 };
 
-const listing = (config: ConfigData) => {
+const listing = (config: ConfigType) => {
   return {
     ...config.blocks.blocksConfig.listing,
     variations: [
@@ -133,14 +137,14 @@ const listing = (config: ConfigData) => {
   };
 };
 
-export const multilingualFixture = (config: ConfigData) => {
+export const multilingualFixture = (config: ConfigType) => {
   config.settings.isMultilingual = true;
   config.settings.supportedLanguages = ['en', 'it'];
 
   return config;
 };
 
-export const workingCopyFixture = (config: ConfigData) => {
+export const workingCopyFixture = (config: ConfigType) => {
   config.settings.hasWorkingCopySupport = true;
 
   return config;
@@ -158,7 +162,7 @@ declare module '@plone/types' {
   }
 }
 
-const applyConfig = (config: ConfigData) => {
+const applyConfig = (config: ConfigType) => {
   config.blocks.blocksConfig.testBlock = testBlock;
   config.blocks.blocksConfig.testBlockConditional = testBlockConditional;
   config.blocks.blocksConfig.testBlockWithConditionalVariations =
@@ -169,6 +173,13 @@ const applyConfig = (config: ConfigData) => {
   config.blocks.blocksConfig.testBlockDefaultView = testBlockDefaultView;
   config.blocks.blocksConfig.listing = listing(config);
   config.views.contentTypesViews.Folder = NewsAndEvents;
+
+  config.registerSlotComponent({
+    slot: 'aboveContent',
+    name: 'testSlotComponent',
+    component: SlotComponentTest,
+    predicates: [ContentTypeCondition(['Document']), RouteCondition('/hello')],
+  });
 
   return config;
 };

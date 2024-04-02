@@ -59,6 +59,13 @@ describe('Comments', () => {
         locale: 'en',
         messages: {},
       },
+      content: {
+        data: {},
+        create: {
+          loading: false,
+          loaded: true,
+        },
+      },
     });
     const component = renderer.create(
       <Provider store={store}>

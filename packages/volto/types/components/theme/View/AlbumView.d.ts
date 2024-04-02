@@ -13,7 +13,7 @@ declare class AlbumView extends React.Component<any, any, any> {
     closeModal(): void;
     nextImage(): void;
     prevImage(): void;
-    render(): JSX.Element;
+    render(): import("react/jsx-runtime").JSX.Element;
 }
 declare namespace AlbumView {
     namespace propTypes {

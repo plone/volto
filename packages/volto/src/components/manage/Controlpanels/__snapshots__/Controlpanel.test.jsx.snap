@@ -1,11 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Controlpanel renders a controlpanel component 1`] = `
-<div
-  id="page-controlpanel"
->
+<div>
   <div
-    className="ui container"
+    id="page-controlpanel"
   >
     <div
       data-schema={
@@ -18,7 +16,11 @@ exports[`Controlpanel renders a controlpanel component 1`] = `
     />
   </div>
   <div
-    id="Portal"
-  />
+    id="toolbar"
+  >
+    <div
+      id="Portal"
+    />
+  </div>
 </div>
 `;

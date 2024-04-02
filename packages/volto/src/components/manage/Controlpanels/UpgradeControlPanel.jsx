@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import {
   Button,
   Container,
@@ -312,8 +312,8 @@ class UpgradeControlPanel extends Component {
             ) : null}
           </Segment>
         </Segment.Group>
-        {this.state.isClient && (
-          <Portal node={document.getElementById('toolbar')}>
+        {this.state.isClient &&
+          createPortal(
             <Toolbar
               pathname={this.props.pathname}
               hideDefaultViewButtons
@@ -330,9 +330,9 @@ class UpgradeControlPanel extends Component {
                   </Link>
                 </>
               }
-            />
-          </Portal>
-        )}
+            />,
+            document.getElementById('toolbar'),
+          )}
       </Container>
     ) : null;
   }

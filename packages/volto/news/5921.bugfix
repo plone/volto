@@ -1,0 +1,1 @@
+Use `id` instead of `title` for the fieldset's generated value when rendering a `Field` component in a form. @sneridagh

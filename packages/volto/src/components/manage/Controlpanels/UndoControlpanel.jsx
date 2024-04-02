@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import { Container, Segment, Table, Menu, Input } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import { Icon, Toolbar, Toast } from '@plone/volto/components';
@@ -703,8 +703,8 @@ class UndoControlpanel extends Component {
             )}
           </Segment.Group>
         </Segment.Group>
-        {this.state.isClient && (
-          <Portal node={document.getElementById('toolbar')}>
+        {this.state.isClient &&
+          createPortal(
             <Toolbar
               pathname={this.props.pathname}
               hideDefaultViewButtons
@@ -721,9 +721,9 @@ class UndoControlpanel extends Component {
                   </Link>
                 </>
               }
-            />
-          </Portal>
-        )}
+            />,
+            document.getElementById('toolbar'),
+          )}
       </Container>
     );
   }

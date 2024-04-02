@@ -493,7 +493,6 @@ msgid "Broken relations"
 msgstr "Relacionamentos rompidos"
 
 #. Default: "Browse"
-#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Sidebar/ObjectBrowserNav
 msgid "Browse"
@@ -543,7 +542,7 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 #. Default: "Cell"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Cell"
 msgstr "Célula"
 
@@ -936,7 +935,6 @@ msgstr "Data (mais novo primeiro)"
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/CommentEditModal
 #: components/theme/Comments/Comments
 #: components/theme/ContactForm/ContactForm
@@ -961,7 +959,6 @@ msgstr "Visão padrão"
 #: components/manage/Delete/Delete
 #: components/manage/Widgets/FormFieldWrapper
 #: components/manage/Widgets/ObjectBrowserWidget
-#: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/Comments
 msgid "Delete"
 msgstr "Excluir"
@@ -992,7 +989,7 @@ msgid "Delete blocks"
 msgstr "Excluir blocos"
 
 #. Default: "Delete col"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Delete col"
 msgstr "Excluir coluna"
 
@@ -1002,7 +999,7 @@ msgid "Delete condition"
 msgstr "Remover condição"
 
 #. Default: "Delete row"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Delete row"
 msgstr "Excluir linha"
 
@@ -1038,12 +1035,10 @@ msgid "Descending"
 msgstr "Descendente"
 
 #. Default: "Description"
-#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 #: components/theme/View/TabularView
 #: helpers/MessageLabels/MessageLabels
 msgid "Description"
@@ -1085,7 +1080,7 @@ msgid "Distributed under the {license}."
 msgstr "Distribuído sob a licença {license}."
 
 #. Default: "Add border to inner columns"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Divide each row into separate cells"
 msgstr "Dividir cada linha em células separadas"
 
@@ -1500,7 +1495,7 @@ msgid "Fix relations"
 msgstr "Consertar relacionamentos"
 
 #. Default: "Fixed width columns"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Fixed width table cells"
 msgstr "Células de tabela de largura fixa"
 
@@ -1610,7 +1605,7 @@ msgid "Groups are logical collections of users, such as departments and business
 msgstr "Grupos são coleções lógicas de usuários, como departamentos e unidades de negócios. Os grupos não estão diretamente relacionados com permissões em nível global, você normalmente usa Funções para isso - e permite que certos Grupos tenham um papel particular. O símbolo{plone_svg}dica um papel herdado da adesão a outro grupo."
 
 #. Default: "Header cell"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Header cell"
 msgstr "Célula de cabeçalho"
 
@@ -1672,6 +1667,7 @@ msgstr "Histórico de {title}"
 #: components/manage/Contents/ContentsBreadcrumbs
 #: components/manage/Contents/ContentsBreadcrumbsHomeItem
 #: components/theme/Breadcrumbs/Breadcrumbs
+#: components/theme/Logo/Logo
 msgid "Home"
 msgstr "Início"
 
@@ -1707,7 +1703,6 @@ msgid "If you are certain you have the correct web address but are encountering 
 msgstr "Se você tiver certeza de que tem o endereço web correto, mas está encontrando um erro, entre em contato com o {site_admin}."
 
 #. Default: "Image"
-#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -1763,22 +1758,22 @@ msgid "Inherited value"
 msgstr "Herdar valor"
 
 #. Default: "Insert col after"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Insert col after"
 msgstr "Inserir coluna após"
 
 #. Default: "Insert col before"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Insert col before"
 msgstr "Inserir coluna antes"
 
 #. Default: "Insert row after"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Insert row after"
 msgstr "Inserir linha após"
 
 #. Default: "Insert row before"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Insert row before"
 msgstr "Inserir linha antes"
 
@@ -1963,7 +1958,6 @@ msgid "Link copied to clipboard"
 msgstr ""
 
 #. Default: "Link more"
-#: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
 msgid "Link more"
 msgstr "Mais"
@@ -1979,13 +1973,11 @@ msgid "Link settings"
 msgstr ""
 
 #. Default: "Link Title"
-#: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
 msgid "Link title"
 msgstr "Título do link"
 
 #. Default: "Link to"
-#: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema
@@ -2059,6 +2051,11 @@ msgstr "Falha na autenticação"
 msgid "Login Name"
 msgstr "Nome de usuário"
 
+#. Default: "Logo of"
+#: components/theme/Logo/Logo
+msgid "Logo of"
+msgstr ""
+
 #. Default: "Logout"
 #: components/manage/Toolbar/PersonalTools
 msgid "Logout"
@@ -2070,7 +2067,7 @@ msgid "Made by {creator} on {date}. This is not a working copy anymore, but the 
 msgstr "Criado por {creator} em {date}. Esta não é mais uma cópia de trabalho, mas sim o conteúdo final."
 
 #. Default: "Reduce cell padding"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Make the table compact"
 msgstr "Compactar a tabela"
 
@@ -2718,7 +2715,7 @@ msgid "Redo"
 msgstr "Refazer"
 
 #. Default: "Minimalistic table design"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Reduce complexity"
 msgstr "Reduzir complexidade"
 
@@ -2857,7 +2854,6 @@ msgstr "Responder"
 #. Default: "Required"
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 msgid "Required"
 msgstr "Obrigatório"
 
@@ -3203,7 +3199,6 @@ msgstr "Compartilhamento para {title}"
 #. Default: "Short Name"
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 msgid "Short Name"
 msgstr "Nome curto"
 
@@ -3429,7 +3424,7 @@ msgid "String"
 msgstr "Texto"
 
 #. Default: "Alternate row background color"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Stripe alternate rows with color"
 msgstr "Alternar cores das linhas"
 
@@ -3486,7 +3481,7 @@ msgid "Switch to"
 msgstr "Mudar para"
 
 #. Default: "Table"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Table"
 msgstr "Tabela"
 
@@ -3650,6 +3645,12 @@ msgstr ""
 msgid "There are no users with the searched criteria"
 msgstr ""
 
+#. Default: "There are some errors."
+#: components/manage/Add/Add
+#: components/manage/Edit/Edit
+msgid "There are some errors."
+msgstr "Existem alguns erros."
+
 #. Default: "There is a configuration problem on the backend"
 #: components/theme/CorsError/CorsError
 msgid "There is a configuration problem on the backend"
@@ -3722,7 +3723,6 @@ msgid "Time"
 msgstr "Hora"
 
 #. Default: "Title"
-#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Blocks/ToC/Schema
 #: components/manage/Contents/Contents
@@ -3730,7 +3730,6 @@ msgstr "Hora"
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 #: components/theme/View/TabularView
 #: helpers/MessageLabels/MessageLabels
 msgid "Title"
@@ -3826,11 +3825,6 @@ msgstr "Digite uma URL de vídeo (YouTube, Vimeo ou mp4)"
 #: components/manage/Widgets/SelectAutoComplete
 msgid "Type text..."
 msgstr "Digite texto..."
-
-#. Default: "Type text…"
-#: components/manage/Blocks/Text/Edit
-msgid "Type text…"
-msgstr "Digite texto…"
 
 #. Default: "Type the heading…"
 #: components/manage/TextLineEdit/TextLineEdit
@@ -3980,11 +3974,6 @@ msgstr "Enviar"
 msgid "Upload a lead image in the 'Lead Image' content field."
 msgstr "Enviar uma imagem para o campo de imagem principal."
 
-#. Default: "Upload a new image"
-#: components/manage/Blocks/HeroImageLeft/Edit
-msgid "Upload a new image"
-msgstr "Enviar uma nova imagem"
-
 #. Default: "Upload files"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Upload files"
@@ -3996,7 +3985,6 @@ msgid "Uploading files"
 msgstr "Enviando arquivos"
 
 #. Default: "Uploading image"
-#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/Edit
 msgid "Uploading image"
 msgstr "Enviando imagem"
@@ -4015,7 +4003,6 @@ msgstr "Use o formulário abaixo para definir, alterar ou remover regras de cont
 #. Default: "Used for programmatic access to the fieldset."
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 msgid "Used for programmatic access to the fieldset."
 msgstr "Usado para acesso programático ao conjunto de campos."
 
@@ -4890,7 +4877,7 @@ msgstr "caminho do destino"
 #. Default: "Text"
 #: config/Blocks
 msgid "text"
-msgstr "Texto"
+msgstr ""
 
 #. Default: "Title"
 #: config/Blocks

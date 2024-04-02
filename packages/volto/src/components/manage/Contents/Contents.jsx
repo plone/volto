@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
 import {
   Button,
@@ -534,11 +534,14 @@ class Contents extends Component {
       this.props.clipboardRequest.loading &&
       nextProps.clipboardRequest.error
     ) {
+      const msgBody =
+        nextProps.clipboardRequest.error?.response?.body?.message ||
+        this.props.intl.formatMessage(messages.error);
       this.props.toastify.toast.error(
         <Toast
           error
           title={this.props.intl.formatMessage(messages.error)}
-          content={this.props.intl.formatMessage(messages.error)}
+          content={msgBody}
         />,
       );
     }
@@ -1989,9 +1992,9 @@ class Contents extends Component {
                                         this.state.selected.length === 0
                                           ? checkboxUncheckedSVG
                                           : this.state.selected.length ===
-                                            this.state.items.length
-                                          ? checkboxCheckedSVG
-                                          : checkboxIndeterminateSVG
+                                              this.state.items.length
+                                            ? checkboxCheckedSVG
+                                            : checkboxIndeterminateSVG
                                       }
                                       color={
                                         this.state.selected.length > 0
@@ -2159,8 +2162,8 @@ class Contents extends Component {
                   </section>
                 </article>
               </div>
-              {this.state.isClient && (
-                <Portal node={document.getElementById('toolbar')}>
+              {this.state.isClient &&
+                createPortal(
                   <Toolbar
                     pathname={this.props.pathname}
                     inner={
@@ -2178,9 +2181,9 @@ class Contents extends Component {
                         />
                       </Link>
                     }
-                  />
-                </Portal>
-              )}
+                  />,
+                  document.getElementById('toolbar'),
+                )}
             </Dimmer.Dimmable>
           </Container>
         ) : (

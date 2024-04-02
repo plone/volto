@@ -1,3 +1,4 @@
+import React from 'react';
 import { createContext, ReactNode, useContext, useMemo } from 'react';
 
 interface FlattenToAppURL {

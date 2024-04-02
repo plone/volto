@@ -36,4 +36,4 @@ exports[`BooleanWidget renders a boolean true view widget component with childre
 </span>
 `;
 
-exports[`BooleanWidget renders an empty boolean view widget component 1`] = `""`;
+exports[`BooleanWidget renders an empty boolean view widget component 1`] = `null`;

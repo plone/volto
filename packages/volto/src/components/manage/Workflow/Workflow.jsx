@@ -146,8 +146,8 @@ const customSelectStyles = {
     color: state.isSelected
       ? '#007bc1'
       : state.isFocused
-      ? '#4a4a4a'
-      : 'inherit',
+        ? '#4a4a4a'
+        : 'inherit',
     ':active': {
       backgroundColor: null,
     },

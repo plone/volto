@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
-import renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 
 import config from '@plone/volto/registry';
@@ -9,9 +9,7 @@ import Controlpanels from './Controlpanels';
 
 const mockStore = configureStore();
 
-jest.mock('react-portal', () => ({
-  Portal: jest.fn(() => <div id="Portal" />),
-}));
+jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
 
 jest.mock('@plone/volto/components/manage/Controlpanels', () => ({
   VersionOverview: jest.fn(() => <div className="VersionOverview" />),
@@ -73,15 +71,16 @@ describe('Controlpanels', () => {
         messages: {},
       },
     });
-    const component = renderer.create(
+    const { container } = render(
       <Provider store={store}>
         <MemoryRouter>
           <Controlpanels location={{ pathname: '/blog' }} />
+          <div id="toolbar"></div>
         </MemoryRouter>
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+
+    expect(container).toMatchSnapshot();
   });
 
   it('renders an additional control panel', () => {
@@ -127,14 +126,15 @@ describe('Controlpanels', () => {
         component: FooComponent,
       },
     ];
-    const component = renderer.create(
+    const { container } = render(
       <Provider store={store}>
         <MemoryRouter>
           <Controlpanels location={{ pathname: '/blog' }} />
+          <div id="toolbar"></div>
         </MemoryRouter>
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+
+    expect(container).toMatchSnapshot();
   });
 });

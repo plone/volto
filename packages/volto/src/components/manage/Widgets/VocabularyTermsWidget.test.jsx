@@ -1,5 +1,5 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 
@@ -57,7 +57,7 @@ test('renders a dictionary widget component', () => {
       },
     ],
   };
-  const component = renderer.create(
+  const { container } = render(
     <Provider store={store}>
       <VocabularyTermsWidget
         id="test-dict"
@@ -70,6 +70,6 @@ test('renders a dictionary widget component', () => {
       />
     </Provider>,
   );
-  const json = component.toJSON();
-  expect(json).toMatchSnapshot();
+
+  expect(container).toMatchSnapshot();
 });

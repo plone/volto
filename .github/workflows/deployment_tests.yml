@@ -1,0 +1,197 @@
+name: Deployment Tests
+on: [push, pull_request]
+jobs:
+  vitessr:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
+    runs-on: ubuntu-latest
+    name: Vite SSR
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v4
+
+      # node setup
+      - name: Use Node.js 20.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+
+      - uses: pnpm/action-setup@v3
+        name: Install pnpm
+        with:
+          version: 8
+          # We don't want to install until later,
+          # when the cache and Cypress are in place
+          run_install: false
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v4
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build packages
+        run: pnpm build:deps && pnpm build:components
+
+      - name: Start backend
+        run: make start-backend-docker-detached
+
+      - name: Build
+        run: pnpm --filter plone-vite-ssr build
+
+      - name: Start server
+        run: nohup pnpm --filter plone-vite-ssr start:prod &
+
+      - name: Wait
+        run: packages/scripts/node_modules/.bin/wait-on --httpTimeout 20000 http-get://127.0.0.1:8080/Plone
+
+      - name: Run tests
+        run: curl http://localhost:3000 || true
+
+      - name: Run tests
+        run: curl http://127.0.0.1:3000 || true
+
+      - name: Run tests
+        run: node packages/scripts/check_deployment.js
+
+      - name: Stop backend
+        run: make stop-backend-docker-detached
+
+  nextjs:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
+    runs-on: ubuntu-latest
+    name: Next.JS
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v4
+
+      # node setup
+      - name: Use Node.js 20.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+
+      - uses: pnpm/action-setup@v3
+        name: Install pnpm
+        with:
+          version: 8
+          # We don't want to install until later,
+          # when the cache and Cypress are in place
+          run_install: false
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v4
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build packages
+        run: pnpm build:deps && pnpm build:components
+
+      - name: Start backend
+        run: make start-backend-docker-detached
+
+      - name: Build
+        run: pnpm --filter plone-nextjs build
+
+      - name: Start server
+        run: nohup pnpm --filter plone-nextjs start:prod &
+
+      - name: Wait
+        run: packages/scripts/node_modules/.bin/wait-on --httpTimeout 20000 http-get://127.0.0.1:8080/Plone
+
+      - name: Run tests
+        run: curl http://localhost:3000 || true
+
+      - name: Run tests
+        run: curl http://127.0.0.1:3000 || true
+
+      - name: Run tests
+        run: node packages/scripts/check_deployment.js
+
+      - name: Stop backend
+        run: make stop-backend-docker-detached
+
+  remix:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
+    runs-on: ubuntu-latest
+    name: Remix
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v4
+
+      # node setup
+      - name: Use Node.js 20.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+
+      - uses: pnpm/action-setup@v3
+        name: Install pnpm
+        with:
+          version: 8
+          # We don't want to install until later,
+          # when the cache and Cypress are in place
+          run_install: false
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v4
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build packages
+        run: pnpm build:deps && pnpm build:components
+
+      - name: Start backend
+        run: make start-backend-docker-detached
+
+      - name: Build
+        run: pnpm --filter plone-remix build
+
+      - name: Start server
+        run: nohup pnpm --filter plone-remix start:prod &
+
+      - name: Wait
+        run: packages/scripts/node_modules/.bin/wait-on --httpTimeout 20000 http-get://127.0.0.1:8080/Plone
+
+      - name: Run tests
+        run: node packages/scripts/check_deployment.js
+
+      - name: Stop backend
+        run: make stop-backend-docker-detached

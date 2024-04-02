@@ -14,7 +14,7 @@ import {
   getBlocksFieldname,
   getBlocksLayoutFieldname,
 } from '@plone/volto/helpers';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import { Button, Segment } from 'semantic-ui-react';
 import { toast } from 'react-toastify';
 import { defineMessages, injectIntl, FormattedMessage } from 'react-intl';
@@ -337,26 +337,30 @@ class ContentTypeLayout extends Component {
               content={this.props.intl.formatMessage(messages.enable)}
             />
           </Segment>
-          <Portal
-            node={this.state.isClient && document.getElementById('toolbar')}
-          >
-            <Toolbar
-              pathname={this.props.pathname}
-              hideDefaultViewButtons
-              inner={
-                <>
-                  <Link className="item" to="#" onClick={() => this.onCancel()}>
-                    <Icon
-                      name={backSVG}
-                      size="30px"
-                      className="contents circled"
-                      title={this.props.intl.formatMessage(messages.back)}
-                    />
-                  </Link>
-                </>
-              }
-            />
-          </Portal>
+          {this.state.isClient &&
+            createPortal(
+              <Toolbar
+                pathname={this.props.pathname}
+                hideDefaultViewButtons
+                inner={
+                  <>
+                    <Link
+                      className="item"
+                      to="#"
+                      onClick={() => this.onCancel()}
+                    >
+                      <Icon
+                        name={backSVG}
+                        size="30px"
+                        className="contents circled"
+                        title={this.props.intl.formatMessage(messages.back)}
+                      />
+                    </Link>
+                  </>
+                }
+              />,
+              document.getElementById('toolbar'),
+            )}
         </>
       );
     }
@@ -386,26 +390,30 @@ class ContentTypeLayout extends Component {
               content={this.props.intl.formatMessage(messages.enable)}
             />
           </Segment>
-          <Portal
-            node={this.state.isClient && document.getElementById('toolbar')}
-          >
-            <Toolbar
-              pathname={this.props.pathname}
-              hideDefaultViewButtons
-              inner={
-                <>
-                  <Link className="item" to="#" onClick={() => this.onCancel()}>
-                    <Icon
-                      name={backSVG}
-                      size="30px"
-                      className="contents circled"
-                      title={this.props.intl.formatMessage(messages.back)}
-                    />
-                  </Link>
-                </>
-              }
-            />
-          </Portal>
+          {this.state.isClient &&
+            createPortal(
+              <Toolbar
+                pathname={this.props.pathname}
+                hideDefaultViewButtons
+                inner={
+                  <>
+                    <Link
+                      className="item"
+                      to="#"
+                      onClick={() => this.onCancel()}
+                    >
+                      <Icon
+                        name={backSVG}
+                        size="30px"
+                        className="contents circled"
+                        title={this.props.intl.formatMessage(messages.back)}
+                      />
+                    </Link>
+                  </>
+                }
+              />,
+              document.getElementById('toolbar'),
+            )}
         </>
       );
     }
@@ -443,50 +451,50 @@ class ContentTypeLayout extends Component {
           visual={this.state.visual}
           hideActions
         />
-        <Portal
-          node={this.state.isClient && document.getElementById('sidebar')}
-        >
-          <Sidebar settingsTab={true} documentTab={false} />
-        </Portal>
-        <Portal
-          node={this.state.isClient && document.getElementById('toolbar')}
-        >
-          <Toolbar
-            pathname={this.props.pathname}
-            hideDefaultViewButtons
-            inner={
-              <>
-                <Button
-                  id="toolbar-save"
-                  className="save"
-                  aria-label={this.props.intl.formatMessage(messages.save)}
-                  onClick={() => this.form.current.onSubmit()}
-                  disabled={this.props.schemaRequest.update.loading}
-                  loading={this.props.schemaRequest.update.loading}
-                >
-                  <Icon
-                    name={saveSVG}
-                    className="circled"
-                    size="30px"
-                    title={this.props.intl.formatMessage(messages.save)}
-                  />
-                </Button>
-                <Button
-                  className="cancel"
-                  aria-label={this.props.intl.formatMessage(messages.cancel)}
-                  onClick={() => this.onCancel()}
-                >
-                  <Icon
-                    name={clearSVG}
-                    className="circled"
-                    size="30px"
-                    title={this.props.intl.formatMessage(messages.cancel)}
-                  />
-                </Button>
-              </>
-            }
-          />
-        </Portal>
+        {this.state.isClient &&
+          createPortal(
+            <Sidebar settingsTab={true} documentTab={false} />,
+            document.getElementById('sidebar'),
+          )}
+        {this.state.isClient &&
+          createPortal(
+            <Toolbar
+              pathname={this.props.pathname}
+              hideDefaultViewButtons
+              inner={
+                <>
+                  <Button
+                    id="toolbar-save"
+                    className="save"
+                    aria-label={this.props.intl.formatMessage(messages.save)}
+                    onClick={() => this.form.current.onSubmit()}
+                    disabled={this.props.schemaRequest.update.loading}
+                    loading={this.props.schemaRequest.update.loading}
+                  >
+                    <Icon
+                      name={saveSVG}
+                      className="circled"
+                      size="30px"
+                      title={this.props.intl.formatMessage(messages.save)}
+                    />
+                  </Button>
+                  <Button
+                    className="cancel"
+                    aria-label={this.props.intl.formatMessage(messages.cancel)}
+                    onClick={() => this.onCancel()}
+                  >
+                    <Icon
+                      name={clearSVG}
+                      className="circled"
+                      size="30px"
+                      title={this.props.intl.formatMessage(messages.cancel)}
+                    />
+                  </Button>
+                </>
+              }
+            />,
+            document.getElementById('toolbar'),
+          )}
       </div>
     );
   }
