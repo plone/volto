@@ -12,7 +12,7 @@
  * }
  * ```
  */
-export class DatetimeWidgetComponent extends Component<any, any, any> {
+export class DatetimeWidgetComponent extends React.Component<any, any, any> {
     /**
      * Constructor
      * @method constructor
@@ -49,7 +49,7 @@ export class DatetimeWidgetComponent extends Component<any, any, any> {
      * @returns {undefined}
      */
     onFocusChange: ({ focused }: boolean) => undefined;
-    render(): JSX.Element;
+    render(): import("react/jsx-runtime").JSX.Element;
 }
 export namespace DatetimeWidgetComponent {
     namespace propTypes {
@@ -84,4 +84,4 @@ export namespace DatetimeWidgetComponent {
 }
 declare const _default: any;
 export default _default;
-import { Component } from 'react';
+import React from 'react';

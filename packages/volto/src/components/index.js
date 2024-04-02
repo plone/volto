@@ -64,8 +64,8 @@ export { default as FileView } from '@plone/volto/components/theme/View/FileView
 export { default as ImageView } from '@plone/volto/components/theme/View/ImageView';
 export { default as NewsItemView } from '@plone/volto/components/theme/View/NewsItemView';
 
-export const EventView = loadable(() =>
-  import('@plone/volto/components/theme/View/EventView'),
+export const EventView = loadable(
+  () => import('@plone/volto/components/theme/View/EventView'),
 );
 
 export { default as ListingView } from '@plone/volto/components/theme/View/ListingView';
@@ -152,13 +152,14 @@ export { default as FormFieldWrapper } from '@plone/volto/components/manage/Widg
 export { default as ArrayWidget } from '@plone/volto/components/manage/Widgets/ArrayWidget';
 export { default as CheckboxWidget } from '@plone/volto/components/manage/Widgets/CheckboxWidget';
 
-export const DatetimeWidget = loadable(() =>
-  import('@plone/volto/components/manage/Widgets/DatetimeWidget'),
+export const DatetimeWidget = loadable(
+  () => import('@plone/volto/components/manage/Widgets/DatetimeWidget'),
 );
-export const RecurrenceWidget = loadable(() =>
-  import(
-    '@plone/volto/components/manage/Widgets/RecurrenceWidget/RecurrenceWidget'
-  ),
+export const RecurrenceWidget = loadable(
+  () =>
+    import(
+      '@plone/volto/components/manage/Widgets/RecurrenceWidget/RecurrenceWidget'
+    ),
 );
 
 export { default as FileWidget } from '@plone/volto/components/manage/Widgets/FileWidget';
@@ -170,7 +171,6 @@ export { default as SchemaWidgetFieldset } from '@plone/volto/components/manage/
 export { default as SelectWidget } from '@plone/volto/components/manage/Widgets/SelectWidget';
 export { default as TextareaWidget } from '@plone/volto/components/manage/Widgets/TextareaWidget';
 export { default as TextWidget } from '@plone/volto/components/manage/Widgets/TextWidget';
-export { default as WysiwygWidget } from '@plone/volto/components/manage/Widgets/WysiwygWidget';
 export { default as ObjectBrowserWidget } from '@plone/volto/components/manage/Widgets/ObjectBrowserWidget';
 export { default as ObjectBrowserWidgetMode } from '@plone/volto/components/manage/Widgets/ObjectBrowserWidget';
 export { default as ObjectWidget } from '@plone/volto/components/manage/Widgets/ObjectWidget';
@@ -180,13 +180,10 @@ export { default as EditDefaultBlock } from '@plone/volto/components/manage/Bloc
 export { default as EditDescriptionBlock } from '@plone/volto/components/manage/Blocks/Description/Edit';
 export { default as EditTitleBlock } from '@plone/volto/components/manage/Blocks/Title/Edit';
 export { default as EditToCBlock } from '@plone/volto/components/manage/Blocks/ToC/Edit';
-export { default as EditTextBlock } from '@plone/volto/components/manage/Blocks/Text/Edit';
 export { default as EditImageBlock } from '@plone/volto/components/manage/Blocks/Image/Edit';
 export { default as EditListingBlock } from '@plone/volto/components/manage/Blocks/Listing/Edit';
 export { default as EditVideoBlock } from '@plone/volto/components/manage/Blocks/Video/Edit';
 export { default as EditBlock } from '@plone/volto/components/manage/Blocks/Block/Edit';
-export { default as EditHeroImageLeftBlock } from '@plone/volto/components/manage/Blocks/HeroImageLeft/Edit';
-export { default as ViewHeroImageLeftBlock } from '@plone/volto/components/manage/Blocks/HeroImageLeft/View';
 export { default as EditMapBlock } from '@plone/volto/components/manage/Blocks/Maps/Edit';
 export { default as EditHTMLBlock } from '@plone/volto/components/manage/Blocks/HTML/Edit';
 
@@ -194,7 +191,6 @@ export { default as ViewDefaultBlock } from '@plone/volto/components/manage/Bloc
 export { default as ViewDescriptionBlock } from '@plone/volto/components/manage/Blocks/Description/View';
 export { default as ViewTitleBlock } from '@plone/volto/components/manage/Blocks/Title/View';
 export { default as ViewToCBlock } from '@plone/volto/components/manage/Blocks/ToC/View';
-export { default as ViewTextBlock } from '@plone/volto/components/manage/Blocks/Text/View';
 export { default as ViewImageBlock } from '@plone/volto/components/manage/Blocks/Image/View';
 export { default as ViewListingBlock } from '@plone/volto/components/manage/Blocks/Listing/View';
 export { default as ViewVideoBlock } from '@plone/volto/components/manage/Blocks/Video/View';
@@ -212,7 +208,6 @@ export { default as LeadImageSidebar } from '@plone/volto/components/manage/Bloc
 export { default as Style } from '@plone/volto/components/manage/Blocks/Block/Style';
 export { default as BlockSettingsSidebar } from '@plone/volto/components/manage/Blocks/Block/Settings';
 export { default as BlockSettingsSchema } from '@plone/volto/components/manage/Blocks/Block/Schema';
-export { default as TextSettingsSchema } from '@plone/volto/components/manage/Blocks/Text/Schema';
 export { default as ImageSettingsSchema } from '@plone/volto/components/manage/Blocks/Image/LayoutSchema';
 export { default as ToCSettingsSchema } from '@plone/volto/components/manage/Blocks/ToC/Schema';
 

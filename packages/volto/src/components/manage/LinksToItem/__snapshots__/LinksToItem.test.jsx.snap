@@ -1,142 +1,142 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`LinksToItem renders "links and references" view 1`] = `
-<div
-  className="ui container"
-  id="linkstoitem"
->
+<div>
   <div
-    className="ui raised segments"
+    class="ui container"
+    id="linkstoitem"
   >
     <div
-      className="ui segment primary"
+      class="ui raised segments"
     >
-      Content that links to or references 
-      <q>
-        page #1
-      </q>
-    </div>
-    <table
-      className="ui selectable single line attached compact table"
-    >
-      <tbody
-        className=""
+      <div
+        class="ui segment primary"
       >
-        <tr
-          className=""
+        Content that links to or references 
+        <q>
+          page #1
+        </q>
+      </div>
+      <table
+        class="ui selectable single line attached compact table"
+      >
+        <tbody
+          class=""
         >
-          <th
-            className=""
+          <tr
+            class=""
           >
-            Linking this item with hyperlink in text
-          </th>
-          <th
-            className=""
-          >
-            Review state
-          </th>
-          <th
-            className=""
-          >
-            Type
-          </th>
-        </tr>
-        <tr
-          className=""
-        >
-          <td
-            className=""
-          >
-            <a
-              className="source published"
-              href="/page-basil"
-              onClick={[Function]}
-              target={null}
-              title={null}
+            <th
+              class=""
             >
-              <span
-                className="label"
-                title="Document"
-              >
-                Basil
-              </span>
-            </a>
-          </td>
-          <td
-            className=""
-          >
-            <span>
-              published
-            </span>
-          </td>
-          <td
-            className=""
-          >
-            <span>
-              Document
-            </span>
-          </td>
-        </tr>
-        <tr
-          className=""
-        >
-          <th
-            className=""
-          >
-            Referencing this item as related item
-          </th>
-          <th
-            className=""
-          >
-            Review state
-          </th>
-          <th
-            className=""
-          >
-            Type
-          </th>
-        </tr>
-        <tr
-          className=""
-        >
-          <td
-            className=""
-          >
-            <a
-              className="source published"
-              href="/page-cucumber"
-              onClick={[Function]}
-              target={null}
-              title={null}
+              Linking this item with hyperlink in text
+            </th>
+            <th
+              class=""
             >
-              <span
-                className="label"
-                title="Document"
+              Review state
+            </th>
+            <th
+              class=""
+            >
+              Type
+            </th>
+          </tr>
+          <tr
+            class=""
+          >
+            <td
+              class=""
+            >
+              <a
+                class="source published"
+                href="/page-basil"
               >
-                Cucumber
+                <span
+                  class="label"
+                  title="Document"
+                >
+                  Basil
+                </span>
+              </a>
+            </td>
+            <td
+              class=""
+            >
+              <span>
+                published
               </span>
-            </a>
-          </td>
-          <td
-            className=""
+            </td>
+            <td
+              class=""
+            >
+              <span>
+                Document
+              </span>
+            </td>
+          </tr>
+          <tr
+            class=""
           >
-            <span>
-              published
-            </span>
-          </td>
-          <td
-            className=""
+            <th
+              class=""
+            >
+              Referencing this item as related item
+            </th>
+            <th
+              class=""
+            >
+              Review state
+            </th>
+            <th
+              class=""
+            >
+              Type
+            </th>
+          </tr>
+          <tr
+            class=""
           >
-            <span>
-              Document
-            </span>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+            <td
+              class=""
+            >
+              <a
+                class="source published"
+                href="/page-cucumber"
+              >
+                <span
+                  class="label"
+                  title="Document"
+                >
+                  Cucumber
+                </span>
+              </a>
+            </td>
+            <td
+              class=""
+            >
+              <span>
+                published
+              </span>
+            </td>
+            <td
+              class=""
+            >
+              <span>
+                Document
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
   <div
-    id="Portal"
-  />
+    id="toolbar"
+  >
+    <div
+      id="Portal"
+    />
+  </div>
 </div>
 `;

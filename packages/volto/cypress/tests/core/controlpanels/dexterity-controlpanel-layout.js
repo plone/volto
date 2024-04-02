@@ -21,7 +21,7 @@ describe('ControlPanel: Dexterity Content-Types Layout', () => {
       'Book',
     );
 
-    cy.visit('/controlpanel/dexterity-types/book/layout');
+    cy.navigate('/controlpanel/dexterity-types/book/layout');
     cy.get('#page-controlpanel-layout').contains(
       'Can not edit Layout for Book',
     );

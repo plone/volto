@@ -1,12 +1,12 @@
 export function getUpgradeInformation(): {
-    type: any;
+    type: string;
     request: {
         op: string;
         path: string;
     };
 };
 export function runUpgrade(dryRun: any): {
-    type: any;
+    type: string;
     request: {
         op: string;
         path: string;

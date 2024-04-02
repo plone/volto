@@ -9,7 +9,7 @@
   ],
   "funding": "https://github.com/sponsors/plone",
   "license": "MIT",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.8",
   "repository": {
     "type": "git",
     "url": "https://github.com/plone/volto.git"
@@ -37,23 +37,25 @@
     "release-alpha": "release-it --preRelease=alpha"
   },
   "peerDependencies": {
+    "history": "^5.3.0",
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
-    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0",
+    "react-intl": "3.8.0"
   },
   "peerDependenciesMeta": {
     "react-dom": {
       "optional": true
     }
   },
-  "dependencies": {},
   "devDependencies": {
-    "@parcel/packager-ts": "2.10.2",
-    "@parcel/transformer-typescript-types": "2.10.2",
-    "@types/react": "^17.0.52",
-    "@types/react-dom": "^17",
-    "parcel": "2.10.2",
-    "release-it": "16.2.1",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "history": "^5.3.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-intl": "3.8.0",
+    "release-it": "^17.1.1",
     "tsconfig": "workspace:*",
-    "typescript": "5.2.2"
+    "typescript": "5.4.2"
   }
 }

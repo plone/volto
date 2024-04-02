@@ -91,6 +91,9 @@ describe('Document locking', () => {
     cy.url().should('eq', Cypress.config().baseUrl + '/document/edit');
     cy.wait('@schema');
 
+    // Wait Plone to consider the content locked.
+    cy.wait(2000);
+
     cy.visit('/logout');
     cy.wait('@logout');
 

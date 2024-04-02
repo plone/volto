@@ -244,8 +244,8 @@ class ReferenceWidget extends Component {
                   )
                 : []
               : value
-              ? flattenToAppURL(value['@id'])
-              : ''
+                ? flattenToAppURL(value['@id'])
+                : ''
           }
           onChange={(event, data) => {
             return onChange(

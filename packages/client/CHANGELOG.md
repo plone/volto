@@ -8,6 +8,22 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.14 (2024-03-05)
+
+### Internal
+
+- Upgrade TSQ to latest @sneridagh [#5824](https://github.com/plone/volto/pull/5824)
+
+## 1.0.0-alpha.13 (2024-03-02)
+
+### Internal
+
+- Update dependencies @sneridagh [#5815](https://github.com/plone/volto/pull/5815)
+
+### Documentation
+
+- Reorganize `README.md`, merging content into authoritative locations. Add `awesome_bot` to check links in all READMEs. @stevepiercy [#5437](https://github.com/plone/volto/pull/5437)
+
 ## 1.0.0-alpha.12 (2024-01-02)
 
 ### Internal

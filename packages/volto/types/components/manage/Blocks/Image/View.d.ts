@@ -1,13 +1,14 @@
-export function View({ className, data, detached, properties }: {
+export function View({ className, data, detached, properties, style }: {
     className: any;
     data: any;
     detached: any;
     properties: any;
-}): JSX.Element;
+    style: any;
+}): import("react/jsx-runtime").JSX.Element;
 export namespace View {
     namespace propTypes {
         let data: any;
     }
 }
-declare const _default: any;
+declare const _default: (props: any) => import("react/jsx-runtime").JSX.Element;
 export default _default;

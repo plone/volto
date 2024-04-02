@@ -138,6 +138,7 @@ const Sidebar = (props) => {
           panes={[
             !!documentTab && {
               menuItem: {
+                key: 'documentTab',
                 as: 'button',
                 className: 'ui button',
                 content: type || intl.formatMessage(messages.document),
@@ -152,6 +153,7 @@ const Sidebar = (props) => {
             },
             !!blockTab && {
               menuItem: {
+                key: 'blockTab',
                 as: 'button',
                 className: 'ui button',
                 content: intl.formatMessage(messages.block),

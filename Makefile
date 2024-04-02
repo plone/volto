@@ -10,26 +10,15 @@ SHELL:=bash
 MAKEFLAGS+=--warn-undefined-variables
 MAKEFLAGS+=--no-builtin-rules
 
-# Project settings - Update also `packages/volto/Makefile` to keep both in sync
-
-INSTANCE_PORT=8080
-DOCKER_IMAGE=plone/server-dev:6.0.9
-DOCKER_IMAGE_ACCEPTANCE=plone/server-acceptance:6.0.9
-KGS=
-NODEBIN = ./node_modules/.bin
-SCRIPTSPACKAGE = ./packages/scripts
-
-# Plone 5 legacy
-DOCKER_IMAGE5=plone/plone-backend:5.2.12
-KGS5=plone.restapi==9.2.0 plone.volto==4.1.0 plone.rest==3.0.1
-TESTING_ADDONS=plone.app.robotframework==2.0.0 plone.app.testing==7.0.0
+# Project settings
+include variables.mk
 
 # Sphinx variables
 # You can set these variables from the command line.
 SPHINXOPTS      ?=
 # Internal variables.
-SPHINXBUILD     = $(realpath bin/sphinx-build)
-SPHINXAUTOBUILD = $(realpath bin/sphinx-autobuild)
+SPHINXBUILD     = "$(realpath bin/sphinx-build)"
+SPHINXAUTOBUILD = "$(realpath bin/sphinx-autobuild)"
 DOCS_DIR        = ./docs/source/
 BUILDDIR        = ../_build/
 ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(SPHINXOPTS) .
@@ -37,10 +26,10 @@ VALEFILES       := $(shell find $(DOCS_DIR) -type f -name "*.md" -print)
 
 # Recipe snippets for reuse
 
-CHECKOUT_BASENAME=$(shell basename $(shell realpath ./))
+CHECKOUT_BASENAME="$(shell basename $(shell realpath ./))"
 CHECKOUT_BRANCH=$(shell git branch --show-current)
 CHECKOUT_TMP=../$(CHECKOUT_BASENAME).tmp
-CHECKOUT_TMP_ABS=$(shell realpath $(CHECKOUT_TMP))
+CHECKOUT_TMP_ABS="$(shell realpath $(CHECKOUT_TMP))"
 
 # We like colors
 # From: https://coderwall.com/p/izxssa/colored-makefile-for-golang-projects
@@ -156,8 +145,10 @@ docs-vale: bin/python docs-news  ## Install (once) and run Vale style, grammar, 
 
 .PHONY: netlify
 netlify:
-	pip install -r requirements-docs.txt
-	cd $(DOCS_DIR) && sphinx-build -b html $(ALLSPHINXOPTS) ../$(BUILDDIR)/html
+	pnpm build:registry
+	(cd packages/volto && pnpm build-storybook -o ../../_build/html/storybook)
+	pwd && pip install -r requirements-docs.txt
+	cd $(DOCS_DIR) && pwd && sphinx-build -b html $(ALLSPHINXOPTS) ../$(BUILDDIR)/html
 
 .PHONY: docs-test
 docs-test: docs-clean docs-linkcheckbroken docs-vale  ## Clean docs build, then run linkcheckbroken, vale
@@ -167,7 +158,7 @@ docs-test: docs-clean docs-linkcheckbroken docs-vale  ## Clean docs build, then 
 .PHONY: storybook-build
 storybook-build:
 	pnpm build:registry
-	(cd packages/volto && pnpm build-storybook -o ../../docs/_build/storybook)
+	(cd packages/volto && pnpm build-storybook -o ../../docs/_build/html/storybook)
 
 .PHONY: patches
 patches:
@@ -179,7 +170,7 @@ cypress-install:
 
 .PHONY: build-deps
 build-deps:
-	pnpm build:deps
+	if [ ! -d $$(pwd)/registry/dist ]; then (pnpm build:deps); fi
 
 ##### Release
 
@@ -197,6 +188,18 @@ copyreleasenotestodocs:
 .PHONY: start-backend-docker
 start-backend-docker:
 	docker run -it --rm --name=backend -p 8080:8080 -e SITE=Plone -e ADDONS='$(KGS)' $(DOCKER_IMAGE)
+
+.PHONY: start-backend-docker-detached
+start-backend-docker-detached:
+	docker run -d --rm --name=backend -p 8080:8080 -e SITE=Plone -e ADDONS='$(KGS)' $(DOCKER_IMAGE)
+
+.PHONY: stop-backend-docker-detached
+stop-backend-docker-detached:
+	docker kill backend
+
+.PHONY: start-backend-docker-no-cors
+start-backend-docker-no-cors:
+	docker run -it --rm --name=backend -p 8080:8080 -e SITE=Plone -e ADDONS='$(KGS)' -e CORS_=true $(DOCKER_IMAGE)
 
 .PHONY: start-frontend-docker
 start-frontend-docker:
@@ -221,7 +224,7 @@ start-test-acceptance-frontend-dev: build-deps ## Start the Core Acceptance Fron
 
 .PHONY: start-test-acceptance-server test-acceptance-server
 start-test-acceptance-server test-acceptance-server: ## Start Test Acceptance Server Main Fixture (docker container)
-	docker run -i --rm -p 55001:55001 $(DOCKER_IMAGE_ACCEPTANCE)
+	docker run -it --rm -p 55001:55001 $(DOCKER_IMAGE_ACCEPTANCE)
 
 .PHONY: start-test-acceptance-frontend
 start-test-acceptance-frontend: build-deps ## Start the Core Acceptance Frontend Fixture
@@ -267,7 +270,7 @@ start-test-acceptance-frontend-project: build-deps ## Start the Project Acceptan
 
 .PHONY: start-test-acceptance-server-coresandbox test-acceptance-server-coresandbox
 start-test-acceptance-server-coresandbox test-acceptance-server-coresandbox: ## Start CoreSandbox Test Acceptance Server Fixture (docker container)
-	docker run -i --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage,plone.volto:coresandbox -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors,plone.volto.coresandbox $(DOCKER_IMAGE_ACCEPTANCE)
+	docker run -it --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage,plone.volto:coresandbox -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors,plone.volto.coresandbox $(DOCKER_IMAGE_ACCEPTANCE)
 	# ZSERVER_PORT=55001 CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors,plone.volto.coresandbox APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage,plone.volto:coresandbox ./api/bin/robot-server plone.app.robotframework.testing.VOLTO_ROBOT_TESTING
 
 .PHONY: start-test-acceptance-frontend-coresandbox
@@ -294,7 +297,7 @@ full-test-acceptance-coresandbox: ## Runs CoreSandbox Full Acceptance Testing in
 
 .PHONY: start-test-acceptance-server-multilingual test-acceptance-server-multilingual
 start-test-acceptance-server-multilingual test-acceptance-server-multilingual: ## Start Multilingual Acceptance Server Multilingual Fixture (docker container)
-	docker run -i --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:multilingual $(DOCKER_IMAGE_ACCEPTANCE)
+	docker run -it --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:multilingual $(DOCKER_IMAGE_ACCEPTANCE)
 
 .PHONY: start-test-acceptance-frontend-multilingual
 start-test-acceptance-frontend-multilingual: build-deps ## Start the Multilingual Acceptance Frontend Fixture
@@ -316,7 +319,7 @@ full-test-acceptance-multilingual: ## Runs Multilingual Full Acceptance Testing 
 
 .PHONY: start-test-acceptance-server-seamless-multilingual test-acceptance-server-seamless-multilingual
 start-test-acceptance-server-seamless-multilingual test-acceptance-server-seamless-multilingual: ## Start Seamless Multilingual Acceptance Server Multilingual Fixture (docker container)
-	docker run -i --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:multilingual $(DOCKER_IMAGE_ACCEPTANCE)
+	docker run -it --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:multilingual $(DOCKER_IMAGE_ACCEPTANCE)
 
 .PHONY: start-test-acceptance-frontend-seamless-multilingual
 start-test-acceptance-frontend-seamless-multilingual: build-deps ## Start the Seamless Multilingual Acceptance Frontend Fixture
@@ -338,7 +341,7 @@ full-test-acceptance-seamless-multilingual: ## Runs Seamless Multilingual Full A
 
 .PHONY: start-test-acceptance-server-workingcopy test-acceptance-server-workingcopy
 start-test-acceptance-server-workingcopy test-acceptance-server-workingcopy : ## Start the WorkingCopy Acceptance Server  Fixture (docker container)
-	docker run -i --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.app.iterate:default,plone.volto:default-homepage $(DOCKER_IMAGE_ACCEPTANCE)
+	docker run -it --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.app.iterate:default,plone.volto:default-homepage $(DOCKER_IMAGE_ACCEPTANCE)
 	# ZSERVER_PORT=55001 CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.app.iterate,plone.volto,plone.volto.cors APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.app.iterate:default,plone.volto:default-homepage ./api/bin/robot-server plone.app.robotframework.testing.VOLTO_ROBOT_TESTING
 
 .PHONY: start-test-acceptance-frontend-workingcopy
@@ -383,10 +386,14 @@ full-test-acceptance-guillotina: ## Runs the Guillotina Full Acceptance Testing 
 
 .PHONY: start-test-acceptance-server-5
 start-test-acceptance-server-5: ## Start Test Acceptance Server Main Fixture Plone 5 (docker container)
-	docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e ADDONS='$(KGS5) $(TESTING_ADDONS)' -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors $(DOCKER_IMAGE5) ./bin/robot-server plone.app.robotframework.testing.VOLTO_ROBOT_TESTING
+	docker run -it --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e ADDONS='$(KGS5) $(TESTING_ADDONS)' -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors $(DOCKER_IMAGE5) ./bin/robot-server plone.app.robotframework.testing.VOLTO_ROBOT_TESTING
 
 ######### @plone/client
 
 .PHONY: start-test-acceptance-server-detached
 start-test-acceptance-server-detached: ## Start Test Acceptance Server Main Fixture (docker container) in a detached (daemon) mode
 	docker run -d --name plone-client-acceptance-server -i --rm -p 55001:55001 $(DOCKER_IMAGE_ACCEPTANCE)
+
+.PHONY: stop-test-acceptance-server-detached
+stop-test-acceptance-server-detached: ## Stop Test Acceptance Server Main Fixture (docker container) in a detached (daemon) mode
+	docker kill plone-client-acceptance-server

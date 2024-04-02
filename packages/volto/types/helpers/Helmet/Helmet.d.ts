@@ -1,7 +1,7 @@
 export { HelmetExport as Helmet };
 export default HelmetExport;
 declare const HelmetExport: {
-    new (): {
+    new (props: any): {
         shouldComponentUpdate(nextProps: any): boolean;
         mapNestedChildrenToProps(child: any, nestedChildren: any): {
             innerHTML: any;
@@ -25,7 +25,71 @@ declare const HelmetExport: {
         mapArrayTypeChildrenToProps(arrayTypeChildren: any, newProps: any): any;
         warnOnInvalidChildren(child: any, nestedChildren: any): true | void;
         mapChildrenToProps(children: any, newProps: any): any;
-        render(): JSX.Element;
+        render(): import("react/jsx-runtime").JSX.Element;
+        context: unknown;
+        setState<K extends string | number | symbol>(state: any, callback?: () => void): void;
+        forceUpdate(callback?: () => void): void;
+        readonly props: Readonly<any>;
+        state: Readonly<any>;
+        refs: {
+            [key: string]: React.ReactInstance;
+        };
+        componentDidMount?(): void;
+        componentWillUnmount?(): void;
+        componentDidCatch?(error: Error, errorInfo: React.ErrorInfo): void;
+        getSnapshotBeforeUpdate?(prevProps: Readonly<any>, prevState: Readonly<any>): any;
+        componentDidUpdate?(prevProps: Readonly<any>, prevState: Readonly<any>, snapshot?: any): void;
+        componentWillMount?(): void;
+        UNSAFE_componentWillMount?(): void;
+        componentWillReceiveProps?(nextProps: Readonly<any>, nextContext: any): void;
+        UNSAFE_componentWillReceiveProps?(nextProps: Readonly<any>, nextContext: any): void;
+        componentWillUpdate?(nextProps: Readonly<any>, nextState: Readonly<any>, nextContext: any): void;
+        UNSAFE_componentWillUpdate?(nextProps: Readonly<any>, nextState: Readonly<any>, nextContext: any): void;
+    };
+    new (props: any, context: any): {
+        shouldComponentUpdate(nextProps: any): boolean;
+        mapNestedChildrenToProps(child: any, nestedChildren: any): {
+            innerHTML: any;
+            cssText?: undefined;
+        } | {
+            cssText: any;
+            innerHTML?: undefined;
+        };
+        flattenArrayTypeChildren({ child, arrayTypeChildren, newChildProps, nestedChildren, }: {
+            child: any;
+            arrayTypeChildren: any;
+            newChildProps: any;
+            nestedChildren: any;
+        }): any;
+        mapObjectTypeChildren({ child, newProps, newChildProps, nestedChildren }: {
+            child: any;
+            newProps: any;
+            newChildProps: any;
+            nestedChildren: any;
+        }): any;
+        mapArrayTypeChildrenToProps(arrayTypeChildren: any, newProps: any): any;
+        warnOnInvalidChildren(child: any, nestedChildren: any): true | void;
+        mapChildrenToProps(children: any, newProps: any): any;
+        render(): import("react/jsx-runtime").JSX.Element;
+        context: unknown;
+        setState<K extends string | number | symbol>(state: any, callback?: () => void): void;
+        forceUpdate(callback?: () => void): void;
+        readonly props: Readonly<any>;
+        state: Readonly<any>;
+        refs: {
+            [key: string]: React.ReactInstance;
+        };
+        componentDidMount?(): void;
+        componentWillUnmount?(): void;
+        componentDidCatch?(error: Error, errorInfo: React.ErrorInfo): void;
+        getSnapshotBeforeUpdate?(prevProps: Readonly<any>, prevState: Readonly<any>): any;
+        componentDidUpdate?(prevProps: Readonly<any>, prevState: Readonly<any>, snapshot?: any): void;
+        componentWillMount?(): void;
+        UNSAFE_componentWillMount?(): void;
+        componentWillReceiveProps?(nextProps: Readonly<any>, nextContext: any): void;
+        UNSAFE_componentWillReceiveProps?(nextProps: Readonly<any>, nextContext: any): void;
+        componentWillUpdate?(nextProps: Readonly<any>, nextState: Readonly<any>, nextContext: any): void;
+        UNSAFE_componentWillUpdate?(nextProps: Readonly<any>, nextState: Readonly<any>, nextContext: any): void;
     };
     /**
      * @param {Object} base: {"target": "_blank", "href": "http://mysite.com/"}
@@ -69,4 +133,6 @@ declare const HelmetExport: {
     peek: any;
     rewind: () => any;
     canUseDOM: any;
+    contextType?: React.Context<any>;
 };
+import React from 'react';

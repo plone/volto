@@ -8,7 +8,7 @@ import { concat, filter, last, map, sortBy, uniqBy } from 'lodash';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { compose } from 'redux';
@@ -260,8 +260,8 @@ function Controlpanels({
           </Segment>
         </Segment.Group>
       </Container>
-      {isClient && (
-        <Portal node={document.getElementById('toolbar')}>
+      {isClient &&
+        createPortal(
           <Toolbar
             pathname={pathname}
             hideDefaultViewButtons
@@ -275,9 +275,9 @@ function Controlpanels({
                 />
               </Link>
             }
-          />
-        </Portal>
-      )}
+          />,
+          document.getElementById('toolbar'),
+        )}
     </div>
   );
 }

@@ -11,7 +11,7 @@ import { compose } from 'redux';
 import { asyncConnect, hasApiExpander } from '@plone/volto/helpers';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Button, Grid, Menu } from 'semantic-ui-react';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import qs from 'query-string';
 import { find } from 'lodash';
 import { toast } from 'react-toastify';
@@ -34,6 +34,7 @@ import {
   unlockContent,
   getSchema,
   listActions,
+  setFormData,
 } from '@plone/volto/actions';
 import {
   flattenToAppURL,
@@ -41,6 +42,7 @@ import {
   hasBlocksData,
 } from '@plone/volto/helpers';
 import { preloadLazyLibs } from '@plone/volto/helpers/Loadable';
+import { tryParseJSON } from '@plone/volto/helpers';
 
 import saveSVG from '@plone/volto/icons/save.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -63,6 +65,10 @@ const messages = defineMessages({
   error: {
     id: 'Error',
     defaultMessage: 'Error',
+  },
+  someErrors: {
+    id: 'There are some errors.',
+    defaultMessage: 'There are some errors.',
   },
 });
 
@@ -182,6 +188,7 @@ class Edit extends Component {
       });
     }
     if (this.props.updateRequest.loading && nextProps.updateRequest.loaded) {
+      this.props.setFormData({});
       this.props.history.push(
         this.props.returnUrl || getBaseUrl(this.props.pathname),
       );
@@ -198,13 +205,30 @@ class Edit extends Component {
         new DOMParser().parseFromString(message, 'text/html')?.all[0]
           ?.textContent || message;
 
+      const errorsList = tryParseJSON(error);
+      let erroMessage;
+      if (Array.isArray(errorsList)) {
+        const invariantErrors = errorsList
+          .filter((errorItem) => !('field' in errorItem))
+          .map((errorItem) => errorItem['message']);
+        if (invariantErrors.length > 0) {
+          // Plone invariant validation message.
+          erroMessage = invariantErrors.join(' - ');
+        } else {
+          // Error in specific field.
+          erroMessage = this.props.intl.formatMessage(messages.someErrors);
+        }
+      } else {
+        erroMessage = error;
+      }
+
       this.setState({ error: error });
 
       toast.error(
         <Toast
           error
           title={this.props.intl.formatMessage(messages.error)}
-          content={`${nextProps.updateRequest.error.status} ${error}`}
+          content={erroMessage}
         />,
       );
     }
@@ -257,6 +281,7 @@ class Edit extends Component {
    * @returns {undefined}
    */
   onCancel() {
+    this.props.setFormData({});
     this.props.history.push(
       this.props.returnUrl || getBaseUrl(this.props.pathname),
     );
@@ -307,6 +332,11 @@ class Edit extends Component {
         onSelectForm={() => {
           this.setState({ formSelected: 'editForm' });
         }}
+        global
+        // Properties to pass to the BlocksForm to match the View ones
+        history={this.props.history}
+        location={this.props.location}
+        token={this.props.token}
       />
     );
 
@@ -374,11 +404,10 @@ class Edit extends Component {
               </>
             )}
 
-            {editPermission && this.state.visual && this.state.isClient && (
-              <Portal node={document.getElementById('sidebar')}>
-                <Sidebar />
-              </Portal>
-            )}
+            {editPermission &&
+              this.state.visual &&
+              this.state.isClient &&
+              createPortal(<Sidebar />, document.getElementById('sidebar'))}
           </>
         )}
         {!editPermission && (
@@ -396,8 +425,8 @@ class Edit extends Component {
             )}
           </>
         )}
-        {this.state.isClient && (
-          <Portal node={document.getElementById('toolbar')}>
+        {this.state.isClient &&
+          createPortal(
             <Toolbar
               pathname={this.props.pathname}
               hideDefaultViewButtons
@@ -445,9 +474,9 @@ class Edit extends Component {
                   )}
                 </>
               }
-            />
-          </Portal>
-        )}
+            />,
+            document.getElementById('toolbar'),
+          )}
       </div>
     );
   }
@@ -523,6 +552,7 @@ export default compose(
       getSchema,
       lockContent,
       unlockContent,
+      setFormData,
     },
   ),
   preloadLazyLibs('cms'),

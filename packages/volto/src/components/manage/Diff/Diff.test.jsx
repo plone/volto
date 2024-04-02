@@ -8,9 +8,7 @@ import Diff from './Diff';
 
 const mockStore = configureStore();
 
-jest.mock('react-portal', () => ({
-  Portal: jest.fn(() => <div id="Portal" />),
-}));
+jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
 
 jest.mock('@plone/volto/helpers/Loadable/Loadable');
 beforeAll(
@@ -75,6 +73,7 @@ describe('Diff', () => {
       <Provider store={store}>
         <MemoryRouter initialEntries={['/blog?one=0&two=1']}>
           <Diff />
+          <div id="toolbar"></div>
         </MemoryRouter>
       </Provider>,
     );
