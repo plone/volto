@@ -6,6 +6,13 @@ import ObjectBrowserWidget from './ObjectBrowserWidget';
 import { MemoryRouter } from 'react-router-dom';
 
 const mockStore = configureStore();
+
+jest.mock('@plone/volto/helpers/Loadable/Loadable');
+beforeAll(
+  async () =>
+    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
+);
+
 test('renders a objectBrowser widget component', () => {
   const store = mockStore({
     search: {},
