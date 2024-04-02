@@ -167,6 +167,6 @@ You should check the dependencies in their `package.json` for more details.
 - [volto-centraalmuseum-theme](https://github.com/intk/volto-centraalmuseum-theme) - Volto project for the [Centraal Museum & Rietveld](https://www.centraalmuseum.nl/nl) made for [INTK](https://www.intk.com/en).
 - [volto-eea-design-system](https://github.com/eea/volto-eea-design-system) - EEA Design System Plone 6 Kit Volto project for [European Environment Agency web sites](https://eea.github.io/volto-eea-design-system/)
 - [volto-eea-website-theme](https://github.com/eea/volto-eea-website-theme) - EEA Plone 6 Volto Theme for [European Environment Agency web sites](https://www.eea.europa.eu/en)
-- [volto-eea-kitkat](https://github.com/eea/volto-eea-kitkat) - A known good set of Volto addons to be used within all EEA projects and beyond made for [European Environment Agency](https://www.eea.europa.eu/en)
+- [volto-eea-kitkat](https://github.com/eea/volto-eea-kitkat) - A known good set of Volto add-ons to be used within all EEA projects and beyond, made for [European Environment Agency](https://www.eea.europa.eu/en)
 - [volto-rietveldschroderhuis-theme](https://github.com/intk/volto-rietveldschroderhuis-theme) - Volto project for the [Rietveld Schröder House](https://www.rietveldschroderhuis.nl/en) made for [INTK](https://www.intk.com/en).
 - [volto-zeeuwsmuseum-theme](https://github.com/intk/volto-zeeuwsmuseum-theme) - Volto project for the [Zeeuws Museum](https://www.zeeuwsmuseum.nl/en) made for [INTK](https://www.intk.com/en).
