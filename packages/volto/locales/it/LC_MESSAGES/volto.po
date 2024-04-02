@@ -804,6 +804,11 @@ msgstr "Copia"
 msgid "Copy blocks"
 msgstr "Copia blocchi"
 
+#. Default: "Copy link URL"
+#: components/manage/Widgets/ObjectBrowserWidget
+msgid "Copy link URL"
+msgstr ""
+
 #. Default: "Copyright"
 #: components/theme/Footer/Footer
 msgid "Copyright"
@@ -1945,6 +1950,11 @@ msgstr "Meno filtri"
 #: components/manage/Toolbar/Toolbar
 msgid "Link"
 msgstr "Link"
+
+#. Default: "Link URL copied."
+#: components/manage/Widgets/ObjectBrowserWidget
+msgid "Link URL copied."
+msgstr ""
 
 #. Default: "Anchor link copied to the clipboard"
 #: helpers/MessageLabels/MessageLabels
@@ -3449,6 +3459,7 @@ msgstr "Oggetto"
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Rules/Rules
+#: components/manage/Widgets/ObjectBrowserWidget
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
 msgid "Success"

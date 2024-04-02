@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2024-03-06T08:38:38.161Z\n"
+"POT-Creation-Date: 2024-04-02T13:58:02.078Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -804,6 +804,11 @@ msgstr ""
 #. Default: "Copy blocks"
 #: helpers/MessageLabels/MessageLabels
 msgid "Copy blocks"
+msgstr ""
+
+#. Default: "Copy link URL"
+#: components/manage/Widgets/ObjectBrowserWidget
+msgid "Copy link URL"
 msgstr ""
 
 #. Default: "Copyright"
@@ -1946,6 +1951,11 @@ msgstr ""
 #. Default: "Link"
 #: components/manage/Toolbar/Toolbar
 msgid "Link"
+msgstr ""
+
+#. Default: "Link URL copied."
+#: components/manage/Widgets/ObjectBrowserWidget
+msgid "Link URL copied."
 msgstr ""
 
 #. Default: "Anchor link copied to the clipboard"
@@ -3451,6 +3461,7 @@ msgstr ""
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Rules/Rules
+#: components/manage/Widgets/ObjectBrowserWidget
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
 msgid "Success"
