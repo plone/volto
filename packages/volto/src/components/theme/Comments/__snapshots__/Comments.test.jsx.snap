@@ -8,29 +8,27 @@ exports[`Comments renders a comments component 1`] = `
     id="comment-add-id"
   >
     <div
-      data-schema={
-        Object {
-          "fieldsets": Array [
-            Object {
-              "fields": Array [
-                "comment",
-              ],
-              "id": "default",
-              "title": "Default",
-            },
-          ],
-          "properties": Object {
-            "comment": Object {
-              "title": "Comment",
-              "type": "string",
-              "widget": "textarea",
-            },
-          },
-          "required": Array [
-            "comment1",
-          ],
-        }
-      }
+      data-schema="{
+  \\"fieldsets\\": [
+    {
+      \\"fields\\": [
+        \\"comment\\"
+      ],
+      \\"id\\": \\"default\\",
+      \\"title\\": \\"Default\\"
+    }
+  ],
+  \\"properties\\": {
+    \\"comment\\": {
+      \\"title\\": \\"Comment\\",
+      \\"type\\": \\"string\\",
+      \\"widget\\": \\"textarea\\"
+    }
+  },
+  \\"required\\": [
+    \\"comment1\\"
+  ]
+}"
       id="Form"
     />
   </div>

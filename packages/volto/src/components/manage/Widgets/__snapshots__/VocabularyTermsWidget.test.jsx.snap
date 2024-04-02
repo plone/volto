@@ -35,85 +35,14 @@ exports[`renders a dictionary widget component 1`] = `
               aria-label="Vocabulary term"
               class="ui button"
             >
-              <div
-                aria-describedby="rbd-hidden-text-0-hidden-text-0"
-                className="draghandlewrapper"
-                data-rbd-drag-handle-context-id="0"
-                data-rbd-drag-handle-draggable-id="talk"
-                draggable={false}
-                onDragStart={[Function]}
-                role="button"
-                tabIndex={0}
-              >
-                <svg
-                  className="icon"
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": undefined,
-                    }
-                  }
-                  onClick={null}
-                  style={
-                    Object {
-                      "fill": "currentColor",
-                      "height": "18px",
-                      "width": "auto",
-                    }
-                  }
-                  viewBox=""
-                  xmlns=""
-                />
-              </div>
-              <div
-                className="ui drag block inner"
-              >
-                <div
-                  className="Field"
-                  id="en-0-test-dict-talk"
-                >
-                  English
-                </div>
-                <div
-                  className="Field"
-                  id="de-1-test-dict-talk"
-                >
-                  Deutsch
-                </div>
-                <div
-                  className="Field"
-                  id="it-2-test-dict-talk"
-                >
-                  Italiano
-                </div>
-              </div>
-              <div>
-                <button
-                  aria-label="Remove term #talk"
-                  className="ui basic icon button delete-button"
-                  onClick={[Function]}
-                  title="Remove term"
-                >
-                  <svg
-                    className="icon"
-                    dangerouslySetInnerHTML={
-                      Object {
-                        "__html": undefined,
-                      }
-                    }
-                    onClick={null}
-                    style={
-                      Object {
-                        "fill": "#e40166",
-                        "height": "20px",
-                        "width": "auto",
-                      }
-                    }
-                    viewBox=""
-                    xmlns=""
-                  />
-                </button>
-              </div>
-            </div>
+              <svg
+                class="icon"
+                style="height: 18px; width: auto; fill: currentColor;"
+                viewBox=""
+                xmlns=""
+              />
+              Add term
+            </button>
           </div>
           <div
             data-rbd-droppable-context-id="0"
@@ -129,30 +58,13 @@ exports[`renders a dictionary widget component 1`] = `
                 style="align-items: center; display: flex;"
               >
                 <div
-                  className="Field"
-                  id="en-0-test-dict-keynote"
-                >
-                  English
-                </div>
-                <div
-                  className="Field"
-                  id="de-1-test-dict-keynote"
-                >
-                  Deutsch
-                </div>
-                <div
-                  className="Field"
-                  id="it-2-test-dict-keynote"
-                >
-                  Italiano
-                </div>
-              </div>
-              <div>
-                <button
-                  aria-label="Remove term #keynote"
-                  className="ui basic icon button delete-button"
-                  onClick={[Function]}
-                  title="Remove term"
+                  aria-describedby="rbd-hidden-text-0-hidden-text-0"
+                  class="draghandlewrapper"
+                  data-rbd-drag-handle-context-id="0"
+                  data-rbd-drag-handle-draggable-id="talk"
+                  draggable="false"
+                  role="button"
+                  tabindex="0"
                 >
                   <svg
                     class="icon"
@@ -165,28 +77,22 @@ exports[`renders a dictionary widget component 1`] = `
                   class="ui drag block inner"
                 >
                   <div
-                    class="mocked-default-widget"
-                    id="mocked-field-en-0-test-dict-talk"
+                    class="Field"
+                    id="en-0-test-dict-talk"
                   >
                     English
-                     -
-                    No description
                   </div>
                   <div
-                    class="mocked-default-widget"
-                    id="mocked-field-de-1-test-dict-talk"
+                    class="Field"
+                    id="de-1-test-dict-talk"
                   >
                     Deutsch
-                     -
-                    No description
                   </div>
                   <div
-                    class="mocked-default-widget"
-                    id="mocked-field-it-2-test-dict-talk"
+                    class="Field"
+                    id="it-2-test-dict-talk"
                   >
                     Italiano
-                     -
-                    No description
                   </div>
                 </div>
                 <div>
@@ -214,30 +120,13 @@ exports[`renders a dictionary widget component 1`] = `
                 style="align-items: center; display: flex;"
               >
                 <div
-                  className="Field"
-                  id="en-0-test-dict-lightning-talk"
-                >
-                  English
-                </div>
-                <div
-                  className="Field"
-                  id="de-1-test-dict-lightning-talk"
-                >
-                  Deutsch
-                </div>
-                <div
-                  className="Field"
-                  id="it-2-test-dict-lightning-talk"
-                >
-                  Italiano
-                </div>
-              </div>
-              <div>
-                <button
-                  aria-label="Remove term #lightning-talk"
-                  className="ui basic icon button delete-button"
-                  onClick={[Function]}
-                  title="Remove term"
+                  aria-describedby="rbd-hidden-text-0-hidden-text-0"
+                  class="draghandlewrapper"
+                  data-rbd-drag-handle-context-id="0"
+                  data-rbd-drag-handle-draggable-id="keynote"
+                  draggable="false"
+                  role="button"
+                  tabindex="0"
                 >
                   <svg
                     class="icon"
@@ -250,28 +139,22 @@ exports[`renders a dictionary widget component 1`] = `
                   class="ui drag block inner"
                 >
                   <div
-                    class="mocked-default-widget"
-                    id="mocked-field-en-0-test-dict-keynote"
+                    class="Field"
+                    id="en-0-test-dict-keynote"
                   >
                     English
-                     -
-                    No description
                   </div>
                   <div
-                    class="mocked-default-widget"
-                    id="mocked-field-de-1-test-dict-keynote"
+                    class="Field"
+                    id="de-1-test-dict-keynote"
                   >
                     Deutsch
-                     -
-                    No description
                   </div>
                   <div
-                    class="mocked-default-widget"
-                    id="mocked-field-it-2-test-dict-keynote"
+                    class="Field"
+                    id="it-2-test-dict-keynote"
                   >
                     Italiano
-                     -
-                    No description
                   </div>
                 </div>
                 <div>
@@ -318,28 +201,22 @@ exports[`renders a dictionary widget component 1`] = `
                   class="ui drag block inner"
                 >
                   <div
-                    class="mocked-default-widget"
-                    id="mocked-field-en-0-test-dict-lightning-talk"
+                    class="Field"
+                    id="en-0-test-dict-lightning-talk"
                   >
                     English
-                     -
-                    No description
                   </div>
                   <div
-                    class="mocked-default-widget"
-                    id="mocked-field-de-1-test-dict-lightning-talk"
+                    class="Field"
+                    id="de-1-test-dict-lightning-talk"
                   >
                     Deutsch
-                     -
-                    No description
                   </div>
                   <div
-                    class="mocked-default-widget"
-                    id="mocked-field-it-2-test-dict-lightning-talk"
+                    class="Field"
+                    id="it-2-test-dict-lightning-talk"
                   >
                     Italiano
-                     -
-                    No description
                   </div>
                 </div>
                 <div>

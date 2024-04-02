@@ -2,30 +2,28 @@
 
 exports[`CommentEditModal renders a comment edit modal component 1`] = `
 <div
-  data-schema={
-    Object {
-      "fieldsets": Array [
-        Object {
-          "fields": Array [
-            "text",
-          ],
-          "id": "default",
-          "title": "Default",
-        },
-      ],
-      "properties": Object {
-        "text": Object {
-          "description": "",
-          "title": "Comment",
-          "type": "string",
-          "widget": "textarea",
-        },
-      },
-      "required": Array [
-        "text",
-      ],
+  data-schema="{
+  \\"fieldsets\\": [
+    {
+      \\"id\\": \\"default\\",
+      \\"title\\": \\"Default\\",
+      \\"fields\\": [
+        \\"text\\"
+      ]
     }
-  }
+  ],
+  \\"properties\\": {
+    \\"text\\": {
+      \\"title\\": \\"Comment\\",
+      \\"type\\": \\"string\\",
+      \\"widget\\": \\"textarea\\",
+      \\"description\\": \\"\\"
+    }
+  },
+  \\"required\\": [
+    \\"text\\"
+  ]
+}"
   id="ModalForm"
 />
 `;

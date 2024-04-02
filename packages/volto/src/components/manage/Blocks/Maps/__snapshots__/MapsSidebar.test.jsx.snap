@@ -2,37 +2,35 @@
 
 exports[`renders an Image Block Sidebar component 1`] = `
 <div
-  data-schema={
-    Object {
-      "block": "Maps",
-      "fieldsets": Array [
-        Object {
-          "fields": Array [
-            "url",
-            "title",
-            "align",
-          ],
-          "id": "default",
-          "title": "Default",
-        },
-      ],
-      "properties": Object {
-        "align": Object {
-          "title": "Alignment",
-          "widget": "align",
-        },
-        "title": Object {
-          "title": "Alt text",
-        },
-        "url": Object {
-          "title": "Maps URL",
-          "widget": "url",
-        },
-      },
-      "required": Array [],
-      "title": "Maps",
+  data-schema="{
+  \\"title\\": \\"Maps\\",
+  \\"block\\": \\"Maps\\",
+  \\"fieldsets\\": [
+    {
+      \\"id\\": \\"default\\",
+      \\"title\\": \\"Default\\",
+      \\"fields\\": [
+        \\"url\\",
+        \\"title\\",
+        \\"align\\"
+      ]
     }
-  }
+  ],
+  \\"properties\\": {
+    \\"url\\": {
+      \\"title\\": \\"Maps URL\\",
+      \\"widget\\": \\"url\\"
+    },
+    \\"title\\": {
+      \\"title\\": \\"Alt text\\"
+    },
+    \\"align\\": {
+      \\"title\\": \\"Alignment\\",
+      \\"widget\\": \\"align\\"
+    }
+  },
+  \\"required\\": []
+}"
   id="BlockDataForm"
 />
 `;

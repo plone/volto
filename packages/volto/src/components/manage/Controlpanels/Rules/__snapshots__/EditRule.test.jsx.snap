@@ -37,9 +37,39 @@ exports[`EditRule renders rules edit interface 1`] = `
                   class="stretched row"
                 >
                   <div
-                    className="Field"
+                    class="column"
                   >
-                    Title
+                    <div
+                      class="Field"
+                    >
+                      Title
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="stretched row"
+                >
+                  <div
+                    class="column"
+                  >
+                    <div
+                      class="Field"
+                    >
+                      Description
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="stretched row"
+                >
+                  <div
+                    class="column"
+                  >
+                    <div
+                      class="Field"
+                    >
+                      Triggering event
+                    </div>
                   </div>
                 </div>
               </div>
@@ -54,15 +84,16 @@ exports[`EditRule renders rules edit interface 1`] = `
               <div
                 class="ui checkbox"
               >
-                <div
-                  className="column"
-                >
-                  <div
-                    className="Field"
-                  >
-                    Description
-                  </div>
-                </div>
+                <input
+                  class="hidden"
+                  readonly=""
+                  tabindex="0"
+                  type="checkbox"
+                  value=""
+                />
+                <label>
+                  Enabled
+                </label>
               </div>
               <p
                 style="color: rgb(135, 143, 147); padding-top: 0.7rem; padding-bottom: 0.7rem; font-size: 0.9rem;"
@@ -80,15 +111,16 @@ exports[`EditRule renders rules edit interface 1`] = `
               <div
                 class="ui checkbox"
               >
-                <div
-                  className="column"
-                >
-                  <div
-                    className="Field"
-                  >
-                    Triggering event
-                  </div>
-                </div>
+                <input
+                  class="hidden"
+                  readonly=""
+                  tabindex="0"
+                  type="checkbox"
+                  value=""
+                />
+                <label>
+                  Stop Executing rules
+                </label>
               </div>
               <p
                 style="color: rgb(135, 143, 147); padding-top: 0.7rem; padding-bottom: 0.7rem; font-size: 0.9rem;"

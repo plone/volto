@@ -10,61 +10,7 @@ exports[`UndoControlpanel renders undo controlpanel component 1`] = `
       class="ui raised segments"
     >
       <div
-        data-schema={
-          Object {
-            "fieldsets": Array [
-              Object {
-                "fields": Array [
-                  "sortingTypes",
-                ],
-                "id": "default",
-                "title": "Default",
-              },
-            ],
-            "properties": Object {
-              "sortByDate": Object {
-                "title": "Enter Date and Time",
-                "type": "date",
-              },
-              "sortByPath": Object {
-                "title": "Enter Path",
-                "type": "string",
-              },
-              "sortByUsername": Object {
-                "title": "Enter Username",
-                "type": "string",
-              },
-              "sortingTypes": Object {
-                "choices": Array [
-                  Array [
-                    "User Name",
-                    "User Name",
-                  ],
-                  Array [
-                    "Path",
-                    "Path",
-                  ],
-                  Array [
-                    "Date",
-                    "Date",
-                  ],
-                ],
-                "description": "Sort transactions by User-Name, Path or Date",
-                "title": "Sort by",
-                "type": "string",
-              },
-            },
-            "required": Array [],
-          }
-        }
-        id="Form"
-      />
-    </div>
-    <div
-      className="ui raised segments"
-    >
-      <div
-        className="ui segment primary"
+        class="ui segment primary"
       >
         Undo Controlpanel
       </div>
@@ -72,7 +18,52 @@ exports[`UndoControlpanel renders undo controlpanel component 1`] = `
         class="ui segment"
       >
         <div
-          id="form"
+          data-schema="{
+  \\"fieldsets\\": [
+    {
+      \\"id\\": \\"default\\",
+      \\"title\\": \\"Default\\",
+      \\"fields\\": [
+        \\"sortingTypes\\"
+      ]
+    }
+  ],
+  \\"properties\\": {
+    \\"sortingTypes\\": {
+      \\"title\\": \\"Sort by\\",
+      \\"description\\": \\"Sort transactions by User-Name, Path or Date\\",
+      \\"type\\": \\"string\\",
+      \\"choices\\": [
+        [
+          \\"User Name\\",
+          \\"User Name\\"
+        ],
+        [
+          \\"Path\\",
+          \\"Path\\"
+        ],
+        [
+          \\"Date\\",
+          \\"Date\\"
+        ]
+      ]
+    },
+    \\"sortByUsername\\": {
+      \\"title\\": \\"Enter Username\\",
+      \\"type\\": \\"string\\"
+    },
+    \\"sortByPath\\": {
+      \\"title\\": \\"Enter Path\\",
+      \\"type\\": \\"string\\"
+    },
+    \\"sortByDate\\": {
+      \\"title\\": \\"Enter Date and Time\\",
+      \\"type\\": \\"date\\"
+    }
+  },
+  \\"required\\": []
+}"
+          id="Form"
         />
       </div>
       <div

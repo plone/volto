@@ -58,70 +58,56 @@ Array [
     />
   </div>,
   <div
-    data-schema={
-      Object {
-        "fieldsets": Array [
-          Object {
-            "fields": Array [
-              "alt",
-              "align",
-              "size",
-            ],
-            "id": "default",
-            "title": "Default",
-          },
-          Object {
-            "fields": Array [
-              "href",
-              "openLinkInNewTab",
-            ],
-            "id": "link_settings",
-            "title": "Link settings",
-          },
-        ],
-        "properties": Object {
-          "align": Object {
-            "title": "Alignment",
-            "widget": "align",
-          },
-          "alt": Object {
-            "description": <React.Fragment>
-              <a
-                href="https://www.w3.org/WAI/tutorials/images/decision-tree/"
-                rel="noopener noreferrer"
-                target="_blank"
-                title="Open in a new tab"
-              >
-                Describe the purpose of the image.
-              </a>
-               
-              Leave empty if the image is purely decorative.
-            </React.Fragment>,
-            "title": "Alt text",
-          },
-          "href": Object {
-            "allowExternals": true,
-            "mode": "link",
-            "selectedItemAttrs": Array [
-              "Title",
-              "Description",
-              "hasPreviewImage",
-            ],
-            "title": "Link to",
-            "widget": "object_browser",
-          },
-          "openLinkInNewTab": Object {
-            "title": "Open in a new tab",
-            "type": "boolean",
-          },
-          "size": Object {
-            "title": "Image size",
-            "widget": "image_size",
-          },
-        },
-        "required": Array [],
-      }
+    data-schema="{
+  \\"fieldsets\\": [
+    {
+      \\"id\\": \\"default\\",
+      \\"title\\": \\"Default\\",
+      \\"fields\\": [
+        \\"alt\\",
+        \\"align\\",
+        \\"size\\"
+      ]
+    },
+    {
+      \\"id\\": \\"link_settings\\",
+      \\"title\\": \\"Link settings\\",
+      \\"fields\\": [
+        \\"href\\",
+        \\"openLinkInNewTab\\"
+      ]
     }
+  ],
+  \\"properties\\": {
+    \\"alt\\": {
+      \\"title\\": \\"Alt text\\"
+    },
+    \\"align\\": {
+      \\"title\\": \\"Alignment\\",
+      \\"widget\\": \\"align\\"
+    },
+    \\"size\\": {
+      \\"title\\": \\"Image size\\",
+      \\"widget\\": \\"image_size\\"
+    },
+    \\"href\\": {
+      \\"title\\": \\"Link to\\",
+      \\"widget\\": \\"object_browser\\",
+      \\"mode\\": \\"link\\",
+      \\"selectedItemAttrs\\": [
+        \\"Title\\",
+        \\"Description\\",
+        \\"hasPreviewImage\\"
+      ],
+      \\"allowExternals\\": true
+    },
+    \\"openLinkInNewTab\\": {
+      \\"title\\": \\"Open in a new tab\\",
+      \\"type\\": \\"boolean\\"
+    }
+  },
+  \\"required\\": []
+}"
     id="BlockDataForm"
   />,
 ]

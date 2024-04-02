@@ -3,18 +3,20 @@
 exports[`Edit renders an edit component 1`] = `
 <div>
   <div
-    data-schema={
-      Object {
-        "some": "field",
-      }
-    }
-    id="Form"
-  />
+    id="toolbar"
+  >
+    <div
+      id="Portal"
+    />
+  </div>
   <div
     id="page-edit"
   >
     <div
-      class="Form"
+      data-schema="{
+  \\"some\\": \\"field\\"
+}"
+      id="Form"
     />
   </div>
   <div
@@ -30,14 +32,18 @@ exports[`Edit renders an edit component 1`] = `
 exports[`Edit renders an empty edit component 1`] = `
 <div>
   <div
-    data-schema={null}
-    id="Form"
-  />
+    id="toolbar"
+  >
+    <div
+      id="Portal"
+    />
+  </div>
   <div
     id="page-edit"
   >
     <div
-      class="Form"
+      data-schema="null"
+      id="Form"
     />
   </div>
   <div

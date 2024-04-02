@@ -2,39 +2,37 @@
 
 exports[`ContentsTagsModal renders a contents tags modal component 1`] = `
 <div
-  data-schema={
-    Object {
-      "fieldsets": Array [
-        Object {
-          "fields": Array [
-            "tags_to_remove",
-            "tags_to_add",
-          ],
-          "id": "default",
-          "title": "Default",
-        },
-      ],
-      "properties": Object {
-        "tags_to_add": Object {
-          "items": Object {
-            "vocabulary": Object {
-              "@id": "plone.app.vocabularies.Keywords",
-            },
-          },
-          "title": "Tags to add",
-          "type": "array",
-          "widget": "token",
-        },
-        "tags_to_remove": Object {
-          "choices": Array [],
-          "title": "Tags to remove",
-          "type": "array",
-          "widget": "array",
-        },
-      },
-      "required": Array [],
+  data-schema="{
+  \\"fieldsets\\": [
+    {
+      \\"id\\": \\"default\\",
+      \\"title\\": \\"Default\\",
+      \\"fields\\": [
+        \\"tags_to_remove\\",
+        \\"tags_to_add\\"
+      ]
     }
-  }
+  ],
+  \\"properties\\": {
+    \\"tags_to_remove\\": {
+      \\"type\\": \\"array\\",
+      \\"widget\\": \\"array\\",
+      \\"title\\": \\"Tags to remove\\",
+      \\"choices\\": []
+    },
+    \\"tags_to_add\\": {
+      \\"type\\": \\"array\\",
+      \\"widget\\": \\"token\\",
+      \\"title\\": \\"Tags to add\\",
+      \\"items\\": {
+        \\"vocabulary\\": {
+          \\"@id\\": \\"plone.app.vocabularies.Keywords\\"
+        }
+      }
+    }
+  },
+  \\"required\\": []
+}"
   id="ModalForm"
 />
 `;

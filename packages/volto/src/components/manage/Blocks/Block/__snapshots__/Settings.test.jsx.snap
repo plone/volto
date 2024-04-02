@@ -3,7 +3,17 @@
 exports[`Settings renders block settings form without schema enhancers 1`] = `
 <div>
   <div
-    data-schema="[object Object]"
+    data-schema="{
+  \\"fieldsets\\": [
+    {
+      \\"title\\": \\"Default\\",
+      \\"id\\": \\"default\\",
+      \\"fields\\": []
+    }
+  ],
+  \\"properties\\": {},
+  \\"required\\": []
+}"
     id="BlockDataForm"
   />
 </div>

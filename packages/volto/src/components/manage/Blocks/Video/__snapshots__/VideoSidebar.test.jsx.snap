@@ -2,38 +2,36 @@
 
 exports[`renders an Image Block Sidebar component 1`] = `
 <div
-  data-schema={
-    Object {
-      "block": "Video",
-      "fieldsets": Array [
-        Object {
-          "fields": Array [
-            "url",
-            "preview_image",
-            "align",
-          ],
-          "id": "default",
-          "title": "Default",
-        },
-      ],
-      "properties": Object {
-        "align": Object {
-          "title": "Alignment",
-          "widget": "align",
-        },
-        "preview_image": Object {
-          "title": "Preview Image URL",
-          "widget": "url",
-        },
-        "url": Object {
-          "title": "Video URL",
-          "widget": "url",
-        },
-      },
-      "required": Array [],
-      "title": "Video",
+  data-schema="{
+  \\"title\\": \\"Video\\",
+  \\"block\\": \\"Video\\",
+  \\"fieldsets\\": [
+    {
+      \\"id\\": \\"default\\",
+      \\"title\\": \\"Default\\",
+      \\"fields\\": [
+        \\"url\\",
+        \\"preview_image\\",
+        \\"align\\"
+      ]
     }
-  }
+  ],
+  \\"properties\\": {
+    \\"url\\": {
+      \\"title\\": \\"Video URL\\",
+      \\"widget\\": \\"url\\"
+    },
+    \\"preview_image\\": {
+      \\"title\\": \\"Preview Image URL\\",
+      \\"widget\\": \\"url\\"
+    },
+    \\"align\\": {
+      \\"title\\": \\"Alignment\\",
+      \\"widget\\": \\"align\\"
+    }
+  },
+  \\"required\\": []
+}"
   id="BlockDataForm"
 />
 `;

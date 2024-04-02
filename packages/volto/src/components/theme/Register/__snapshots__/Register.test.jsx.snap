@@ -5,36 +5,34 @@ exports[`Register renders a register component 1`] = `
   id="page-register"
 >
   <div
-    data-schema={
-      Object {
-        "fieldsets": Array [
-          Object {
-            "fields": Array [
-              "fullname",
-              "email",
-            ],
-            "id": "default",
-            "title": "Default",
-          },
-        ],
-        "properties": Object {
-          "email": Object {
-            "description": "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.",
-            "title": "E-mail",
-            "type": "string",
-          },
-          "fullname": Object {
-            "description": "Enter full name, e.g. John Smith.",
-            "title": "Full Name",
-            "type": "string",
-          },
-        },
-        "required": Array [
-          "fullname",
-          "email",
-        ],
-      }
+    data-schema="{
+  \\"fieldsets\\": [
+    {
+      \\"id\\": \\"default\\",
+      \\"title\\": \\"Default\\",
+      \\"fields\\": [
+        \\"fullname\\",
+        \\"email\\"
+      ]
     }
+  ],
+  \\"properties\\": {
+    \\"fullname\\": {
+      \\"type\\": \\"string\\",
+      \\"title\\": \\"Full Name\\",
+      \\"description\\": \\"Enter full name, e.g. John Smith.\\"
+    },
+    \\"email\\": {
+      \\"type\\": \\"string\\",
+      \\"title\\": \\"E-mail\\",
+      \\"description\\": \\"Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.\\"
+    }
+  },
+  \\"required\\": [
+    \\"fullname\\",
+    \\"email\\"
+  ]
+}"
     id="Form"
   />
 </div>

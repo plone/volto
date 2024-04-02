@@ -6,14 +6,16 @@ exports[`Controlpanel renders a controlpanel component 1`] = `
     id="page-controlpanel"
   >
     <div
-      data-schema={
-        Object {
-          "fieldsets": Array [],
-          "properties": Object {},
-        }
-      }
-      id="Form"
-    />
+      class="ui container"
+    >
+      <div
+        data-schema="{
+  \\"fieldsets\\": [],
+  \\"properties\\": {}
+}"
+        id="Form"
+      />
+    </div>
   </div>
   <div
     id="toolbar"

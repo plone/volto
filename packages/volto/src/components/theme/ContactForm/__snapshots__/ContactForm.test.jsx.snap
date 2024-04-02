@@ -17,53 +17,62 @@ exports[`Contact form renders a contact form 1`] = `
           class="warning icon"
         />
         <div
-          className="header"
+          class="content"
         >
-          Error
+          <div
+            class="header"
+          >
+            Error
+          </div>
         </div>
       </div>
+      <div
+        data-schema="{
+  \\"fieldsets\\": [
+    {
+      \\"fields\\": [
+        \\"name\\",
+        \\"from\\",
+        \\"subject\\",
+        \\"message\\"
+      ],
+      \\"id\\": \\"default\\",
+      \\"title\\": \\"Default\\"
+    }
+  ],
+  \\"properties\\": {
+    \\"name\\": {
+      \\"title\\": \\"Name\\",
+      \\"type\\": \\"string\\"
+    },
+    \\"from\\": {
+      \\"title\\": \\"From\\",
+      \\"type\\": \\"email\\"
+    },
+    \\"subject\\": {
+      \\"title\\": \\"Subject\\",
+      \\"type\\": \\"string\\"
+    },
+    \\"message\\": {
+      \\"title\\": \\"Message\\",
+      \\"type\\": \\"string\\",
+      \\"widget\\": \\"textarea\\"
+    }
+  },
+  \\"required\\": [
+    \\"from\\",
+    \\"message\\"
+  ]
+}"
+        id="Form"
+      />
     </div>
+  </div>
+  <div
+    id="toolbar"
+  >
     <div
-      data-schema={
-        Object {
-          "fieldsets": Array [
-            Object {
-              "fields": Array [
-                "name",
-                "from",
-                "subject",
-                "message",
-              ],
-              "id": "default",
-              "title": "Default",
-            },
-          ],
-          "properties": Object {
-            "from": Object {
-              "title": "From",
-              "type": "email",
-            },
-            "message": Object {
-              "title": "Message",
-              "type": "string",
-              "widget": "textarea",
-            },
-            "name": Object {
-              "title": "Name",
-              "type": "string",
-            },
-            "subject": Object {
-              "title": "Subject",
-              "type": "string",
-            },
-          },
-          "required": Array [
-            "from",
-            "message",
-          ],
-        }
-      }
-      id="Form"
+      id="Portal"
     />
   </div>
 </div>
@@ -86,57 +95,63 @@ exports[`Contact form renders a contact form with error message 1`] = `
           class="warning icon"
         />
         <div
-          className="header"
+          class="content"
         >
-          Error
+          <div
+            class="header"
+          >
+            Error
+          </div>
+          <p>
+            Error foo
+          </p>
         </div>
-        <p>
-          Error foo
-        </p>
       </div>
+      <div
+        data-schema="{
+  \\"fieldsets\\": [
+    {
+      \\"fields\\": [
+        \\"name\\",
+        \\"from\\",
+        \\"subject\\",
+        \\"message\\"
+      ],
+      \\"id\\": \\"default\\",
+      \\"title\\": \\"Default\\"
+    }
+  ],
+  \\"properties\\": {
+    \\"name\\": {
+      \\"title\\": \\"Name\\",
+      \\"type\\": \\"string\\"
+    },
+    \\"from\\": {
+      \\"title\\": \\"From\\",
+      \\"type\\": \\"email\\"
+    },
+    \\"subject\\": {
+      \\"title\\": \\"Subject\\",
+      \\"type\\": \\"string\\"
+    },
+    \\"message\\": {
+      \\"title\\": \\"Message\\",
+      \\"type\\": \\"string\\",
+      \\"widget\\": \\"textarea\\"
+    }
+  },
+  \\"required\\": [
+    \\"from\\",
+    \\"message\\"
+  ]
+}"
+        id="Form"
+      />
     </div>
-    <div
-      data-schema={
-        Object {
-          "fieldsets": Array [
-            Object {
-              "fields": Array [
-                "name",
-                "from",
-                "subject",
-                "message",
-              ],
-              "id": "default",
-              "title": "Default",
-            },
-          ],
-          "properties": Object {
-            "from": Object {
-              "title": "From",
-              "type": "email",
-            },
-            "message": Object {
-              "title": "Message",
-              "type": "string",
-              "widget": "textarea",
-            },
-            "name": Object {
-              "title": "Name",
-              "type": "string",
-            },
-            "subject": Object {
-              "title": "Subject",
-              "type": "string",
-            },
-          },
-          "required": Array [
-            "from",
-            "message",
-          ],
-        }
-      }
-      id="Form"
-    />
+  </div>
+  <div
+    id="toolbar"
+  >
     <div
       id="Portal"
     />
