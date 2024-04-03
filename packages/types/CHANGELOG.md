@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.9 (2024-04-03)
+
+### Bugfix
+
+- Fix experimental settings and new button type @sneridagh [#5921](https://github.com/plone/volto/issues/5921)
+
 ## 1.0.0-alpha.8 (2024-03-25)
 
 ### Bugfix
