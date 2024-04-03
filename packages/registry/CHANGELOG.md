@@ -8,6 +8,16 @@
 
 <!-- towncrier release notes start -->
 
+## 1.5.5 (2024-04-03)
+
+### Bugfix
+
+- Fix registry wrong default primitive type @sneridagh [#5925](https://github.com/plone/volto/issues/5925)
+
+### Internal
+
+- Sync TypeScript version @sneridagh [#5912](https://github.com/plone/volto/issues/5912)
+
 ## 1.5.4 (2024-03-21)
 
 ### Bugfix
