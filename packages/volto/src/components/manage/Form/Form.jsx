@@ -843,7 +843,7 @@ class Form extends Component {
                             {...schema.properties[field]}
                             id={field}
                             formData={formData}
-                            fieldSet={item.title.toLowerCase()}
+                            fieldSet={item.id}
                             focus={this.state.inFocus[field]}
                             value={formData?.[field]}
                             required={schema.required.indexOf(field) !== -1}
