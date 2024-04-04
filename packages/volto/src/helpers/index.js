@@ -81,6 +81,7 @@ export { default as langmap } from './LanguageMap/LanguageMap';
 export { default as Helmet } from './Helmet/Helmet';
 export { default as FormValidation } from './FormValidation/FormValidation';
 export { validateFileUploadSize } from './FormValidation/FormValidation';
+export { tryParseJSON } from './FormValidation/FormValidation';
 export {
   difference,
   getColor,
@@ -115,7 +116,12 @@ export {
   composeSchema,
 } from './Extensions';
 export { asyncConnect } from './AsyncConnect';
-export { userHasRoles } from './User/User';
+export {
+  userHasRoles,
+  isManager,
+  canAssignGroup,
+  canAssignRole,
+} from './User/User';
 // export { injectLazyLibs } from './Loadable/Loadable';
 export { useDetectClickOutside } from './Utils/useDetectClickOutside';
 export { useEvent } from './Utils/useEvent';

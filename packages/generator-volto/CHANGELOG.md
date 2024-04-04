@@ -8,6 +8,48 @@
 
 <!-- towncrier release notes start -->
 
+## 9.0.0-alpha.14 (2024-03-24)
+
+### Internal
+
+- Fix StoryBook for project generator in Volto 18 @sneridagh [#5911](https://github.com/plone/volto/issues/5911)
+- Update project template to use Storybook 8. @sneridagh [#5912](https://github.com/plone/volto/issues/5912)
+
+## 9.0.0-alpha.13 (2024-03-18)
+
+### Bugfix
+
+- Improve the generator by getting the `@plone/types` version from GH @sneridagh [#5889](https://github.com/plone/volto/issues/5889)
+
+## 9.0.0-alpha.12 (2024-03-18)
+
+### Feature
+
+- Copy over the `dependencies` and `devDependencies` from Volto in the generated project given the version provided @sneridagh [#5879](https://github.com/plone/volto/issues/5879)
+
+### Internal
+
+- Bump @plone/scripts and @plone/types to latests @sneridagh [#5888](https://github.com/plone/volto/issues/5888)
+
+## 9.0.0-alpha.11 (2024-03-14)
+
+### Bugfix
+
+- Upgrade all versions in generator templates @sneridagh [#5844](https://github.com/plone/volto/issues/5844)
+- Improve deps in project generator. @sneridagh @wesleybl [#5870](https://github.com/plone/volto/issues/5870)
+
+## 9.0.0-alpha.10 (2024-03-05)
+
+### Bugfix
+
+- Add new forced resolutions to projects too @sneridagh [#5839](https://github.com/plone/volto/issues/5839)
+
+## 9.0.0-alpha.9 (2024-03-05)
+
+### Bugfix
+
+- Ensure hidden files get added to new addon projects in generator-volto @instification [#5719](https://github.com/plone/volto/issues/5719)
+
 ## 9.0.0-alpha.8 (2024-03-02)
 
 ### Internal

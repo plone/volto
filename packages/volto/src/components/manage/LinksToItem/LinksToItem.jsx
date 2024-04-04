@@ -67,8 +67,8 @@ const LinksToItem = (props) => {
   }, [dispatch, itempath]);
 
   useEffect(() => {
-    if (!title) dispatch(getContent(itempath));
-  }, [dispatch, itempath, title]);
+    dispatch(getContent(itempath));
+  }, [dispatch, itempath]);
 
   let links = {};
   if (myrelations) {

@@ -8,6 +8,34 @@
 
 <!-- towncrier release notes start -->
 
+## 1.5.5 (2024-04-03)
+
+### Bugfix
+
+- Fix registry wrong default primitive type @sneridagh [#5925](https://github.com/plone/volto/issues/5925)
+
+### Internal
+
+- Sync TypeScript version @sneridagh [#5912](https://github.com/plone/volto/issues/5912)
+
+## 1.5.4 (2024-03-21)
+
+### Bugfix
+
+- - Fix slots reordering function for "before" and "after" keyword @steffenri [#5840](https://github.com/plone/volto/issues/5840)
+
+## 1.5.3 (2024-03-19)
+
+### Bugfix
+
+- Cross-package manager Volto path resolver in `webpack-relative-resolver` @sneridagh [#5893](https://github.com/plone/volto/issues/5893)
+
+## 1.5.2 (2024-03-05)
+
+### Bugfix
+
+- Fix issue with HMR and register the same predicate-less component again @sneridagh [#5832](https://github.com/plone/volto/issues/5832)
+
 ## 1.5.1 (2024-03-02)
 
 ### Bugfix

@@ -1,8 +1,12 @@
 type apiExpandersType =
+  | { match: string; GET_CONTENT: string[] }
   | {
-      [key: string]: string[];
-    }
-  | { match: string; querystring: { [key: string]: unknown } };
+      match: string;
+      GET_CONTENT: string[];
+      querystring:
+        | { [key: string]: string }
+        | (() => { [key: string]: string });
+    };
 
 export interface SettingsConfig {
   [key: string]: unknown;

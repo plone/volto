@@ -8,6 +8,7 @@ To start, from the root of the monorepo:
 
 ```shell
 pnpm install
+pnpm build:deps && pnpm build:components
 pnpm --filter plone-nextjs run dev
 ```
 

@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.14 (2024-03-05)
+
+### Internal
+
+- Upgrade TSQ to latest @sneridagh [#5824](https://github.com/plone/volto/pull/5824)
+
 ## 1.0.0-alpha.13 (2024-03-02)
 
 ### Internal

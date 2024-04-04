@@ -8,6 +8,26 @@
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.11 (2024-04-03)
+
+### Bugfix
+
+- Fix removing an element in slate when cursor is at the end of the element to be removed; Fix losing selection when adding an element. @razvanMiu [#5928](https://github.com/plone/volto/issues/5928)
+
+## 18.0.0-alpha.10 (2024-03-14)
+
+### Breaking
+
+- Remove legacy `text`, `table` and `hero` blocks based in `draftJS` @sneridagh [#5846](https://github.com/plone/volto/issues/5846)
+
+### Bugfix
+
+- Fix other occurrences of mutable (referenced) objects when assigning the default inner `blocksConfig` object for the `grid` block, pass by value instead. sneridagh [#5859](https://github.com/plone/volto/issues/5859)
+
+### Internal
+
+- Fix CSS lint @sneridagh [#5849](https://github.com/plone/volto/issues/5849)
+
 ## 18.0.0-alpha.9 (2024-03-02)
 
 ### Internal

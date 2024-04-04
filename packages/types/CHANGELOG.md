@@ -8,6 +8,34 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.9 (2024-04-03)
+
+### Bugfix
+
+- Fix experimental settings and new button type @sneridagh [#5921](https://github.com/plone/volto/issues/5921)
+
+## 1.0.0-alpha.8 (2024-03-25)
+
+### Bugfix
+
+- Improve APIExpanders Types, export all @sneridagh [#5918](https://github.com/plone/volto/issues/5918)
+
+### Internal
+
+- Sync TypeScript version @sneridagh [#5912](https://github.com/plone/volto/issues/5912)
+
+## 1.0.0-alpha.7 (2024-03-18)
+
+### Feature
+
+- Improve @plone/types - Block*Props and Widgets @sneridagh [#5876](https://github.com/plone/volto/issues/5876)
+
+## 1.0.0-alpha.6 (2024-03-14)
+
+### Internal
+
+- Cleanup deps @sneridagh [#5846](https://github.com/plone/volto/issues/5846)
+
 ## 1.0.0-alpha.5 (2024-03-01)
 
 ### Feature

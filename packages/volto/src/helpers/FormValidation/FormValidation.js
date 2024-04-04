@@ -157,7 +157,7 @@ const widgetValidation = {
  * The string that comes my not be a valid JSON
  * @param {string} requestItem
  */
-const tryParseJSON = (requestItem) => {
+export const tryParseJSON = (requestItem) => {
   let resultObj = null;
   try {
     resultObj = JSON.parse(requestItem);

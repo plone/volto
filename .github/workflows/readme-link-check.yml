@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: Set up Ruby 3.2
       uses: ruby/setup-ruby@v1
       with:
@@ -20,4 +20,4 @@ jobs:
     - name: Check links in README.md with awesome_bot
       run: |
         gem install awesome_bot
-        awesome_bot --request-delay 1 --allow-dupe --white-list http://localhost:8080/Plone,http://localhost:3000,https://github.com/kitconcept/volto-blocks-grid.git,https://my-server-DNS-name.tld/api --files README.md,packages/client/README.md,packages/components/README.md,packages/generator-volto/README.md,packages/registry/README.md,packages/scripts/README.md,packages/types/README.md,packages/volto-slate/README.md,apps/nextjs/README.md,apps/vite-ssr/README.md
+        awesome_bot --request-delay 1 --allow-dupe --white-list http://localhost:8080/Plone,http://localhost:3000,https://github.com/kitconcept/volto-blocks-grid.git,https://my-server-DNS-name.tld/api --files PACKAGES.md,README.md,packages/blocks/README.md,packages/client/README.md,packages/components/README.md,packages/generator-volto/README.md,packages/parcel-optimizer-react-client/README.md,packages/registry/README.md,packages/scripts/README.md,packages/tsconfig/README.md,packages/types/README.md,packages/volto-slate/README.md,apps/nextjs/README.md,apps/remix/README.md,apps/vite-ssr/README.md
