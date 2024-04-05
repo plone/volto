@@ -165,7 +165,14 @@ export const tryParseJSON = (requestItem) => {
     try {
       resultObj = JSON.parse(requestItem.replace(/'/g, '"'));
     } catch (e) {
-      resultObj = null;
+      try {
+        // Treats strings like: `'String "double quotes"'`
+        resultObj = JSON.parse(
+          requestItem.replace(/"/g, '\\"').replace(/'/g, '"'),
+        );
+      } catch (e) {
+        resultObj = null;
+      }
     }
   }
   return resultObj;
