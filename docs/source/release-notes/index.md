@@ -17,6 +17,13 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.27 (2024-04-05)
+
+### Bugfix
+
+- Enhanced navigation reducer in Volto to keep items extra-data sent from the navigation endpoint @Hrittik20 [#5772](https://github.com/plone/volto/issues/5772)
+- Improve `ColorPickerWidget` typings @sneridagh [#5948](https://github.com/plone/volto/issues/5948)
+
 ## 18.0.0-alpha.26 (2024-04-03)
 
 ### Breaking
