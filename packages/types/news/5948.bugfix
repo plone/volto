@@ -1,0 +1,1 @@
+Split widgets type definitions into their own interfaces so they are extendable @sneridagh
