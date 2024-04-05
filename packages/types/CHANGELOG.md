@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.10 (2024-04-05)
+
+### Bugfix
+
+- Split widgets type definitions into their own interfaces so they are extendable @sneridagh [#5948](https://github.com/plone/volto/issues/5948)
+
 ## 1.0.0-alpha.9 (2024-04-03)
 
 ### Bugfix
