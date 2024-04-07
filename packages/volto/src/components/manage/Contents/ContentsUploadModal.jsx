@@ -25,7 +25,7 @@ import filesize from 'filesize';
 import { readAsDataURL } from 'promise-file-reader';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import { FormattedRelativeDate } from '@plone/volto/components';
-import { createContent, updateUploadedFiles } from '@plone/volto/actions';
+import { createContent } from '@plone/volto/actions';
 import { validateFileUploadSize } from '@plone/volto/helpers';
 
 const Dropzone = loadable(() => import('react-dropzone'));
@@ -403,6 +403,6 @@ export default compose(
       request: state.content.subrequests?.[SUBREQUEST] || {},
       uploadedFiles: state.content.uploadedFiles,
     }),
-    { createContent, updateUploadedFiles },
+    { createContent },
   ),
 )(ContentsUploadModal);

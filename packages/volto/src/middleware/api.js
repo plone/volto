@@ -188,7 +188,9 @@ const apiMiddlewareFactory =
                     ),
                   },
                 ).then((reqres) => {
-                  dispatch(updateUploadedFiles(uploadedFiles++));
+                  if (action.subrequest === 'batch-upload') {
+                    dispatch(updateUploadedFiles(++uploadedFiles));
+                  }
                   return [...acc, reqres];
                 });
               });
@@ -215,7 +217,10 @@ const apiMiddlewareFactory =
           });
       actionPromise.then(
         (result) => {
-          dispatch(updateUploadedFiles(0));
+          if (uploadedFiles !== 0) {
+            dispatch(updateUploadedFiles(0));
+          }
+
           const { settings } = config;
           if (getState().apierror.connectionRefused) {
             next({
