@@ -9,8 +9,9 @@ import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import { createPortal } from 'react-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { compose } from 'redux';
 import { Container, Grid, Header, Message, Segment } from 'semantic-ui-react';
 
 import { getSystemInformation, listControlpanels } from '@plone/volto/actions';
@@ -99,25 +100,22 @@ const messages = defineMessages({
 /**
  * Controlpanels container class.
  */
-function Controlpanels({ location }) {
+function Controlpanels({
+  controlpanels,
+  controlpanelsRequest,
+  systemInformation,
+  pathname,
+  listControlpanels,
+  getSystemInformation,
+}) {
   const intl = useIntl();
   const [isClient, setIsClient] = useState(false);
-  const dispatch = useDispatch();
-  const { pathname } = location;
-
-  const controlpanels = useSelector(
-    (state) => state.controlpanels.controlpanels,
-  );
-  const controlpanelsRequest = useSelector((state) => state.controlpanels.list);
-  const systemInformation = useSelector(
-    (state) => state.controlpanels.systeminformation,
-  );
 
   useEffect(() => {
     setIsClient(true);
-    dispatch(listControlpanels());
-    dispatch(getSystemInformation());
-  }, [dispatch]);
+    listControlpanels();
+    getSystemInformation();
+  }, [listControlpanels, getSystemInformation]);
 
   const error = controlpanelsRequest?.error;
 
@@ -198,6 +196,8 @@ function Controlpanels({ location }) {
   const groups = map(uniqBy(filteredControlPanels, 'group'), 'group');
   const { controlPanelsIcons: icons } = config.settings;
 
+  console.log('controlpanels', controlpanels);
+  console.log('filteredControlPanels', filteredControlPanels);
   return (
     <div className="view-wrapper">
       <Helmet title={intl.formatMessage(messages.sitesetup)} />
@@ -305,15 +305,27 @@ Controlpanels.propTypes = {
   pathname: PropTypes.string.isRequired,
 };
 
-export default asyncConnect([
+export default asyncConnect(
+  [
+    {
+      key: 'controlpanels',
+      promise: async ({ location, store: { dispatch } }) =>
+        await dispatch(listControlpanels()),
+    },
+    {
+      key: 'systemInformation',
+      promise: async ({ location, store: { dispatch } }) =>
+        await dispatch(getSystemInformation()),
+    },
+  ],
+  (state, props) => ({
+    controlpanels: state.controlpanels.controlpanels,
+    controlpanelsRequest: state.controlpanels.list,
+    pathname: props.location.pathname,
+    systemInformation: state.controlpanels.systeminformation,
+  }),
   {
-    key: 'controlpanels',
-    promise: async ({ location, store: { dispatch } }) =>
-      await dispatch(listControlpanels()),
+    listControlpanels,
+    getSystemInformation,
   },
-  {
-    key: 'systemInformation',
-    promise: async ({ location, store: { dispatch } }) =>
-      await dispatch(getSystemInformation()),
-  },
-])(Controlpanels);
+)(Controlpanels);
