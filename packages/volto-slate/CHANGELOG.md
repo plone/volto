@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.11 (2024-04-03)
+
+### Bugfix
+
+- Fix removing an element in slate when cursor is at the end of the element to be removed; Fix losing selection when adding an element. @razvanMiu [#5928](https://github.com/plone/volto/issues/5928)
+
 ## 18.0.0-alpha.10 (2024-03-14)
 
 ### Breaking
