@@ -1,13 +1,28 @@
 import loadable from '@loadable/component';
+import { getSystemInformation, listControlpanels } from '@plone/volto/actions';
+import { asyncConnect } from '@plone/volto/helpers';
 
 // CONTROLPANELS
 
-export const Controlpanels = loadable(
+const LoadableControlpanels = loadable(
   () =>
     import(
       /* webpackChunkName: "Controlpanels" */ '@plone/volto/components/manage/Controlpanels/Controlpanels'
     ),
 );
+
+export const Controlpanels = asyncConnect([
+  {
+    key: 'controlpanels',
+    promise: async ({ store: { dispatch } }: any) =>
+      await dispatch(listControlpanels()),
+  },
+  {
+    key: 'systemInformation',
+    promise: async ({ store: { dispatch } }: any) =>
+      await dispatch(getSystemInformation()),
+  },
+])(LoadableControlpanels);
 
 export const Controlpanel = loadable(
   () =>

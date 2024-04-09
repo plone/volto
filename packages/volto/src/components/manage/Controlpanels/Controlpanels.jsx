@@ -3,20 +3,16 @@
  * @module components/manage/Controlpanels/Controlpanels
  */
 
-import { Helmet, asyncConnect } from '@plone/volto/helpers';
+import { Helmet } from '@plone/volto/helpers';
 import { concat, filter, last, map, sortBy, uniqBy } from 'lodash';
-import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import { createPortal } from 'react-dom';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { compose } from 'redux';
 import { Container, Grid, Header, Message, Segment } from 'semantic-ui-react';
 
-import { getSystemInformation, listControlpanels } from '@plone/volto/actions';
-import { Error, Icon, Toolbar } from '@plone/volto/components';
-import { VersionOverview } from '@plone/volto/components/manage/Controlpanels';
+import { Error, Icon, Toolbar, VersionOverview } from '@plone/volto/components';
 
 import config from '@plone/volto/registry';
 
@@ -100,22 +96,22 @@ const messages = defineMessages({
 /**
  * Controlpanels container class.
  */
-function Controlpanels({
-  controlpanels,
-  controlpanelsRequest,
-  systemInformation,
-  pathname,
-  listControlpanels,
-  getSystemInformation,
-}) {
+export default function Controlpanels({ location }) {
   const intl = useIntl();
   const [isClient, setIsClient] = useState(false);
 
+  const { pathname } = location;
+  const controlpanels = useSelector(
+    (state) => state.controlpanels.controlpanels,
+  );
+  const controlpanelsRequest = useSelector((state) => state.controlpanels.list);
+  const systemInformation = useSelector(
+    (state) => state.controlpanels.systeminformation,
+  );
+
   useEffect(() => {
     setIsClient(true);
-    listControlpanels();
-    getSystemInformation();
-  }, [listControlpanels, getSystemInformation]);
+  }, []);
 
   const error = controlpanelsRequest?.error;
 
@@ -196,8 +192,6 @@ function Controlpanels({
   const groups = map(uniqBy(filteredControlPanels, 'group'), 'group');
   const { controlPanelsIcons: icons } = config.settings;
 
-  console.log('controlpanels', controlpanels);
-  console.log('filteredControlPanels', filteredControlPanels);
   return (
     <div className="view-wrapper">
       <Helmet title={intl.formatMessage(messages.sitesetup)} />
@@ -288,44 +282,3 @@ function Controlpanels({
     </div>
   );
 }
-
-/**
- * Property types.
- * @property {Object} propTypes Property types.
- * @static
- */
-Controlpanels.propTypes = {
-  controlpanels: PropTypes.arrayOf(
-    PropTypes.shape({
-      '@id': PropTypes.string,
-      group: PropTypes.string,
-      title: PropTypes.string,
-    }),
-  ).isRequired,
-  pathname: PropTypes.string.isRequired,
-};
-
-export default asyncConnect(
-  [
-    {
-      key: 'controlpanels',
-      promise: async ({ location, store: { dispatch } }) =>
-        await dispatch(listControlpanels()),
-    },
-    {
-      key: 'systemInformation',
-      promise: async ({ location, store: { dispatch } }) =>
-        await dispatch(getSystemInformation()),
-    },
-  ],
-  (state, props) => ({
-    controlpanels: state.controlpanels.controlpanels,
-    controlpanelsRequest: state.controlpanels.list,
-    pathname: props.location.pathname,
-    systemInformation: state.controlpanels.systeminformation,
-  }),
-  {
-    listControlpanels,
-    getSystemInformation,
-  },
-)(Controlpanels);
