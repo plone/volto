@@ -125,6 +125,7 @@ redux
 routing
 icons
 accessibility-guidelines
+performance-guidelines
 typescript
 volto-core-addons
 version-policy
