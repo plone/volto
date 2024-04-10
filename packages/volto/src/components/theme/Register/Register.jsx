@@ -132,7 +132,7 @@ class Register extends Component {
     this.props.createUser({
       fullname: data.fullname,
       email: data.email,
-      password: data.password,
+      sendPasswordReset: true,
     });
     this.setState({
       error: null,
