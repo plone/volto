@@ -11,6 +11,7 @@ import { injectIntl } from 'react-intl';
 import cx from 'classnames';
 import { ImageSidebar, SidebarPortal } from '@plone/volto/components';
 import { createContent } from '@plone/volto/actions';
+
 import {
   flattenToAppURL,
   isInternalURL,
@@ -90,7 +91,7 @@ function Edit(props) {
             responsive={true}
           />
         ) : (
-          <ImageInput onChange={handleChange} />
+          <ImageInput onChange={handleChange} restrictFileUpload={true} />
         )}
         <SidebarPortal selected={props.selected}>
           <ImageSidebar {...props} />

@@ -64,6 +64,10 @@ const UnconnectedImageInput = (props) => {
     value,
     imageSize = 'teaser',
     selected = true,
+    hideLinkPicker = false,
+    hideObjectBrowserPicker = false,
+    restrictFileUpload = false,
+    description,
   } = props;
 
   const intl = useIntl();
@@ -79,6 +83,7 @@ const UnconnectedImageInput = (props) => {
 
   const handleUpload = React.useCallback(
     (eventOrFile) => {
+      if (restrictFileUpload === true) return;
       eventOrFile.target && eventOrFile.stopPropagation();
       setUploading(true);
       const file = eventOrFile.target
@@ -109,10 +114,12 @@ const UnconnectedImageInput = (props) => {
         });
       });
     },
-    [dispatch, contextUrl, id, requestId, onChange],
+    [restrictFileUpload, dispatch, contextUrl, requestId, onChange, id],
   );
 
-  const onDragEnter = React.useCallback(() => setDragging(true), []);
+  const onDragEnter = React.useCallback(() => {
+    if (restrictFileUpload === false) setDragging(true);
+  }, [restrictFileUpload]);
   const onDragLeave = React.useCallback(() => setDragging(false), []);
 
   return value ? (
@@ -155,53 +162,60 @@ const UnconnectedImageInput = (props) => {
                 </Dimmer>
               )}
               <img src={imageBlockSVG} alt="" />
-              <div>{intl.formatMessage(messages.addImage)}</div>
+              <div>{description || intl.formatMessage(messages.addImage)}</div>
               <div className="toolbar-wrapper">
                 <div className="toolbar-inner" ref={linkEditor.anchorNode}>
-                  <Button.Group>
-                    <Button
-                      title={intl.formatMessage(messages.pickAnImage)}
-                      icon
-                      basic
-                      onClick={(e) => {
-                        onFocus && onFocus();
-                        e.preventDefault();
-                        openObjectBrowser({
-                          mode: 'link',
-                          overlay: true,
-                          onSelectItem: onChange,
-                        });
-                      }}
-                    >
-                      <Icon name={navTreeSVG} size="24px" />
-                    </Button>
-                  </Button.Group>
-                  <Button.Group>
-                    <label className="ui button compact basic icon">
-                      <Icon name={uploadSVG} size="24px" />
-                      <input
-                        {...getInputProps({
-                          type: 'file',
-                          onChange: handleUpload,
-                          style: { display: 'none' },
-                        })}
-                        title={intl.formatMessage(messages.uploadAnImage)}
-                      />
-                    </label>
-                  </Button.Group>
-                  <Button.Group>
-                    <Button
-                      icon
-                      basic
-                      title={intl.formatMessage(messages.linkAnImage)}
-                      onClick={(e) => {
-                        !props.selected && onFocus && onFocus();
-                        linkEditor.show();
-                      }}
-                    >
-                      <Icon name={linkSVG} circled size="24px" />
-                    </Button>
-                  </Button.Group>
+                  {hideObjectBrowserPicker === false && (
+                    <Button.Group>
+                      <Button
+                        title={intl.formatMessage(messages.pickAnImage)}
+                        icon
+                        basic
+                        onClick={(e) => {
+                          onFocus && onFocus();
+                          e.preventDefault();
+                          openObjectBrowser({
+                            mode: 'link',
+                            overlay: true,
+                            onSelectItem: onChange,
+                          });
+                        }}
+                      >
+                        <Icon name={navTreeSVG} size="24px" />
+                      </Button>
+                    </Button.Group>
+                  )}
+                  {restrictFileUpload === false && (
+                    <Button.Group>
+                      <label className="ui button compact basic icon">
+                        <Icon name={uploadSVG} size="24px" />
+                        <input
+                          {...getInputProps({
+                            type: 'file',
+                            onChange: handleUpload,
+                            style: { display: 'none' },
+                          })}
+                          title={intl.formatMessage(messages.uploadAnImage)}
+                        />
+                      </label>
+                    </Button.Group>
+                  )}
+
+                  {hideLinkPicker === false && (
+                    <Button.Group>
+                      <Button
+                        icon
+                        basic
+                        title={intl.formatMessage(messages.linkAnImage)}
+                        onClick={(e) => {
+                          !props.selected && onFocus && onFocus();
+                          linkEditor.show();
+                        }}
+                      >
+                        <Icon name={linkSVG} circled size="24px" />
+                      </Button>
+                    </Button.Group>
+                  )}
                 </div>
                 {linkEditor.anchorNode && (
                   <linkEditor.LinkEditor
