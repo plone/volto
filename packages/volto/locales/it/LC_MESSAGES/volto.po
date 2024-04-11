@@ -492,17 +492,6 @@ msgstr "Relazioni corrotte"
 msgid "Browse"
 msgstr "Sfoglia"
 
-#. Default: "Browse the site"
-#: components/manage/Widgets/ImageWidget
-msgid "Browse the site"
-msgstr ""
-
-#. Default: "Browse the site, drop an image, or type an URL"
-#: components/manage/Blocks/Image/Edit
-#: components/manage/Widgets/ImageWidget
-msgid "Browse the site, drop an image, or type an URL"
-msgstr "Sfoglia i contenuti, rilascia un'immagine o digita un URL"
-
 #. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
@@ -3984,11 +3973,6 @@ msgstr "Carica file"
 msgid "Uploading files"
 msgstr "Caricamento dei files"
 
-#. Default: "Uploading image"
-#: components/manage/Blocks/Image/Edit
-msgid "Uploading image"
-msgstr "Caricamento dell'immagine"
-
 #. Default: "Use the form below to define the new content rule"
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
@@ -4309,6 +4293,11 @@ msgstr "Il tuo sito è aggiornato."
 msgid "Your usernaame is required for reset your password."
 msgstr "Il tuo username è richiesto per reimpostare la tua password."
 
+#. Default: "Browse the site, drop an image, or use an URL"
+#: components/manage/Widgets/ImageWidget
+msgid "addImage"
+msgstr ""
+
 #. Default: "Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormEmailDescription"
@@ -4535,6 +4524,11 @@ msgstr "Il mio nome utente è"
 msgid "leadimage"
 msgstr "Immagine di testata"
 
+#. Default: "Enter a URL to an image"
+#: components/manage/Widgets/ImageWidget
+msgid "linkAnImage"
+msgstr ""
+
 #. Default: "Listing"
 #: config/Blocks
 msgid "listing"
@@ -4628,6 +4622,11 @@ msgstr "altre"
 #: components/manage/Contents/ContentsItem
 msgid "pending"
 msgstr "In attesa"
+
+#. Default: "Pick an existing image"
+#: components/manage/Widgets/ImageWidget
+msgid "pickAnImage"
+msgstr ""
 
 #. Default: "Private"
 #: components/manage/Contents/ContentsItem
@@ -4899,6 +4898,16 @@ msgstr "Toggle"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "upgradeVersions"
 msgstr "Aggiorna da versione {origin} a {destination}"
+
+#. Default: "Upload an image from your computer"
+#: components/manage/Widgets/ImageWidget
+msgid "uploadAnImage"
+msgstr ""
+
+#. Default: "Uploading image"
+#: components/manage/Widgets/ImageWidget
+msgid "uploadingImage"
+msgstr ""
 
 #. Default: "Input must be valid url (www.something.com or http(s)://www.something.com)"
 #: helpers/MessageLabels/MessageLabels

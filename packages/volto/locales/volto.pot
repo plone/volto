@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2024-03-06T08:38:38.161Z\n"
+"POT-Creation-Date: 2024-04-10T12:45:30.591Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -492,17 +492,6 @@ msgstr ""
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Sidebar/ObjectBrowserNav
 msgid "Browse"
-msgstr ""
-
-#. Default: "Browse the site"
-#: components/manage/Widgets/ImageWidget
-msgid "Browse the site"
-msgstr ""
-
-#. Default: "Browse the site, drop an image, or type an URL"
-#: components/manage/Blocks/Image/Edit
-#: components/manage/Widgets/ImageWidget
-msgid "Browse the site, drop an image, or type an URL"
 msgstr ""
 
 #. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
@@ -3986,11 +3975,6 @@ msgstr ""
 msgid "Uploading files"
 msgstr ""
 
-#. Default: "Uploading image"
-#: components/manage/Blocks/Image/Edit
-msgid "Uploading image"
-msgstr ""
-
 #. Default: "Use the form below to define the new content rule"
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
@@ -4311,6 +4295,11 @@ msgstr ""
 msgid "Your usernaame is required for reset your password."
 msgstr ""
 
+#. Default: "Browse the site, drop an image, or use an URL"
+#: components/manage/Widgets/ImageWidget
+msgid "addImage"
+msgstr ""
+
 #. Default: "Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormEmailDescription"
@@ -4537,6 +4526,11 @@ msgstr ""
 msgid "leadimage"
 msgstr ""
 
+#. Default: "Enter a URL to an image"
+#: components/manage/Widgets/ImageWidget
+msgid "linkAnImage"
+msgstr ""
+
 #. Default: "Listing"
 #: config/Blocks
 msgid "listing"
@@ -4629,6 +4623,11 @@ msgstr ""
 #. Default: "Pending"
 #: components/manage/Contents/ContentsItem
 msgid "pending"
+msgstr ""
+
+#. Default: "Pick an existing image"
+#: components/manage/Widgets/ImageWidget
+msgid "pickAnImage"
 msgstr ""
 
 #. Default: "Private"
@@ -4900,6 +4899,16 @@ msgstr ""
 #. Default: "Update from version {origin} to {destination}"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "upgradeVersions"
+msgstr ""
+
+#. Default: "Upload an image from your computer"
+#: components/manage/Widgets/ImageWidget
+msgid "uploadAnImage"
+msgstr ""
+
+#. Default: "Uploading image"
+#: components/manage/Widgets/ImageWidget
+msgid "uploadingImage"
 msgstr ""
 
 #. Default: "Input must be valid url (www.something.com or http(s)://www.something.com)"

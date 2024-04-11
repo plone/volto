@@ -404,6 +404,44 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
     }
   }
 
+  .toolbar-buttons {
+    // used by the ImageUploadWidget
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  .image-upload-widget-toolbar {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+
+    .icon.circled {
+      border: 1px solid #e4e8ec;
+      background: #f3f5f7;
+      box-shadow: inset 0 0 0 0.14285714rem transparent !important;
+    }
+  }
+
+  div.image-upload-widget-image {
+    position: relative;
+
+    img {
+      max-width: unset !important;
+    }
+  }
+
+  .image-upload-widget {
+    text-align: center;
+
+    .toolbar-wrapper {
+      display: flex;
+      height: 4em;
+      flex-direction: column;
+      justify-content: end;
+    }
+  }
+
   .ui.active.basic.icon.button {
     border: 1px solid #2996da;
     background: transparent !important;
