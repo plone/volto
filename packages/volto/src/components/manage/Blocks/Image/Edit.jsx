@@ -91,7 +91,7 @@ function Edit(props) {
             responsive={true}
           />
         ) : (
-          <ImageInput onChange={handleChange} restrictFileUpload={true} />
+          <ImageInput onChange={handleChange} />
         )}
         <SidebarPortal selected={props.selected}>
           <ImageSidebar {...props} />
