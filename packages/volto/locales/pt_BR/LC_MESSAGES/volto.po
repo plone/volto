@@ -4403,7 +4403,7 @@ msgstr "Rascunho"
 #. Default: "Input must be valid email (something@domain.com)"
 #: helpers/MessageLabels/MessageLabels
 msgid "email"
-msgstr "E-mail"
+msgstr "A entrada deve ser um e-mail válido (algo@dominio.com)"
 
 #. Default: "All dates"
 #: components/theme/EventDetails/EventDetails
