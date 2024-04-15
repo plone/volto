@@ -5,6 +5,7 @@ exports[`Navigation renders a navigation component including external links 1`] 
   aria-label="Site"
   className="navigation"
   id="navigation"
+  tabindex="-1"
 >
   <div
     className="hamburger-wrapper mobile tablet only"
@@ -62,6 +63,7 @@ exports[`Navigation renders a navigation component with an active item 1`] = `
   aria-label="Site"
   className="navigation"
   id="navigation"
+  tabindex="-1"
 >
   <div
     className="hamburger-wrapper mobile tablet only"
@@ -112,6 +114,7 @@ exports[`Navigation renders a navigation component with an active item when its 
   aria-label="Site"
   className="navigation"
   id="navigation"
+  tabindex="-1"
 >
   <div
     className="hamburger-wrapper mobile tablet only"
@@ -162,6 +165,7 @@ exports[`Navigation renders a navigation component with only one active item eve
   aria-label="Site"
   className="navigation"
   id="navigation"
+  tabindex="-1"
 >
   <div
     className="hamburger-wrapper mobile tablet only"
@@ -220,6 +224,7 @@ exports[`Navigation renders a navigation component without active items 1`] = `
   aria-label="Site"
   className="navigation"
   id="navigation"
+  tabindex="-1"
 >
   <div
     className="hamburger-wrapper mobile tablet only"

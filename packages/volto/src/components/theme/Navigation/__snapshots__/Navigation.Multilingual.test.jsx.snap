@@ -5,6 +5,7 @@ exports[`Navigation Multilingual renders a navigation component with an active i
   aria-label="Site"
   className="navigation"
   id="navigation"
+  tabindex="-1"
 >
   <div
     className="hamburger-wrapper mobile tablet only"
@@ -63,6 +64,7 @@ exports[`Navigation Multilingual renders a navigation component with an active i
   aria-label="Site"
   className="navigation"
   id="navigation"
+  tabindex="-1"
 >
   <div
     className="hamburger-wrapper mobile tablet only"
@@ -121,6 +123,7 @@ exports[`Navigation Multilingual renders a navigation component with only one ac
   aria-label="Site"
   className="navigation"
   id="navigation"
+  tabindex="-1"
 >
   <div
     className="hamburger-wrapper mobile tablet only"
@@ -187,6 +190,7 @@ exports[`Navigation Multilingual renders a navigation component without active i
   aria-label="Site"
   className="navigation"
   id="navigation"
+  tabindex="-1"
 >
   <div
     className="hamburger-wrapper mobile tablet only"
