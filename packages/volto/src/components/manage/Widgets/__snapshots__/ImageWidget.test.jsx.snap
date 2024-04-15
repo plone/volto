@@ -1,34 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders an image sizes widget component 1`] = `
+exports[`renders a textarea widget component 1`] = `
 <div
-  className="image-widget"
+  className="inline field image-upload-widget field-wrapper-my-field"
 >
   <div
-    className="inline field image field-wrapper-image"
+    className="ui grid"
   >
     <div
-      className="ui grid"
+      className="stretched row"
     >
       <div
-        className="stretched row"
+        className="four wide column"
       >
         <div
-          className="four wide column"
+          className="wrapper"
         >
-          <div
-            className="wrapper"
+          <label
+            htmlFor="field-my-field"
+            id="fieldset-default-field-label-my-field"
           >
-            <label
-              htmlFor={null}
-              id="fieldset-default-field-label-image"
-            >
-              Image
-            </label>
-          </div>
+            My field
+          </label>
         </div>
+      </div>
+      <div
+        className="eight wide column"
+      >
         <div
-          className="eight wide column"
+          className="image-upload-widget"
+          role="toolbar"
         />
       </div>
     </div>
