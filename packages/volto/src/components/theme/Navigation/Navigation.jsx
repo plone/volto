@@ -49,7 +49,7 @@ const Navigation = (props) => {
     setisMobileMenuOpen(false);
   };
   return (
-    <nav className="navigation" id="navigation" aria-label="Site" tabindex="-1">
+    <nav className="navigation" id="navigation" aria-label="Site" tabIndex="-1">
       {items?.length ? (
         <div className="hamburger-wrapper mobile tablet only">
           <button
