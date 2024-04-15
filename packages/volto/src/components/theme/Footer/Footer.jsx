@@ -42,6 +42,7 @@ const Footer = ({ intl }) => {
       textAlign="center"
       id="footer"
       aria-label="Footer"
+      tabindex="-1"
     >
       <Container>
         <Segment basic inverted color="grey" className="discreet">
