@@ -173,7 +173,6 @@ describe('Blocks Tests', () => {
       encoding: 'utf8',
     });
     cy.wait('@saveImage');
-
     // then in sidebar alt attr should be empty
     cy.get('#sidebar-properties .field-wrapper-alt input#field-alt')
       .should('have.attr', 'value')
