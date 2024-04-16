@@ -19,6 +19,7 @@ import rulesSVG from '@plone/volto/icons/content-existing.svg';
 import undoControlPanelSVG from '@plone/volto/icons/undo-control-panel.svg';
 import linkSVG from '@plone/volto/icons/link.svg';
 import relationsSVG from '@plone/volto/icons/ahead.svg';
+import config from '@plone/volto/registry';
 
 export const controlPanelsIcons = {
   default: settingsSVG,
@@ -93,4 +94,37 @@ export const unwantedControlPanelsFields = {
     'sort_tabs_reversed',
     'sitemap_depth',
   ],
+};
+
+// Filters props.controlpanel.schema to only valid/relevant fields
+export const filterControlPanelsSchema = (controlpanel) => {
+  const panelType = controlpanel['@id'].split('/').pop();
+
+  const { unwantedControlPanelsFields } = config.settings;
+
+  // Creates modified version of properties object
+  const newPropertiesObj = Object.fromEntries(
+    Object.entries(controlpanel.schema.properties).filter(
+      ([key, _val]) =>
+        !(unwantedControlPanelsFields[panelType] || []).includes(key),
+    ),
+  );
+  // Filters props.controlpanel.schema.fieldsets.fields to only valid/relevant fields
+  const filterFields = (fields) => {
+    return fields.filter(
+      (field) =>
+        !(unwantedControlPanelsFields[panelType] || []).includes(field),
+    );
+  };
+  // Creates modified version of fieldsets array
+  const newFieldsets = controlpanel.schema.fieldsets.map((fieldset) => {
+    return { ...fieldset, fields: filterFields(fieldset.fields) };
+  });
+
+  // Returns clone of props.controlpanel.schema, with updated properties/fieldsets
+  return {
+    ...controlpanel.schema,
+    properties: newPropertiesObj,
+    fieldsets: newFieldsets,
+  };
 };
