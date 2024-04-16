@@ -1077,11 +1077,9 @@ describe('Listing Block Tests', () => {
     cy.wait('@save');
     cy.wait('@content');
 
-    // const listing1 = cy.get('.ui.pagination.menu').first();
-    // cy.log('listing1', listing1);
     // The wait is needed to solve the flakyness introduced because that component
     // is removed momentarilly from the DOM when saving
-    cy.wait(2000);
+    cy.wait(1000);
     //test second pagination click
     cy.get('.ui.pagination.menu a[value="2"]').first().click();
     //test f5
@@ -1100,7 +1098,11 @@ describe('Listing Block Tests', () => {
     cy.get('.logo').first().click();
     cy.url().should('not.include', '=2');
     cy.url().should('not.include', '=3');
-    //test back button
+
+    // we need to wait for the page to load otherwise we navigate /my-page
+    // followed by / from the logo click
+    cy.wait(1000);
+
     cy.navigate('/my-page');
     cy.wait(1000);
     cy.get('.ui.pagination.menu a[value="2"]').first().click({ force: true });
