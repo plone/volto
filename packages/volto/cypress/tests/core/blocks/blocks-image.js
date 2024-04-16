@@ -147,7 +147,6 @@ describe('Blocks Tests', () => {
 
     cy.wait('@saveImage');
 
-
     cy.get('.block img')
       .should('have.attr', 'src')
       .and('contains', '/image.png/@@images/image-');
