@@ -3,7 +3,6 @@ describe('Blocks Tests', () => {
     cy.intercept('GET', `/**/*?expand*`).as('content');
     cy.intercept('GET', '/**/Document').as('schema');
     cy.intercept('POST', '*').as('saveImage');
-    cy.intercept('GET', '/**/image.png/@@images/image-*').as('getImage');
     // given a logged in editor and a page in edit mode
     cy.visit('/');
     cy.autologin();
@@ -118,7 +117,6 @@ describe('Blocks Tests', () => {
     cy.get('#toolbar-save').click();
 
     cy.wait('@saveImage');
-    cy.wait('@getImage');
 
     // then image src must be equal to image name
     cy.get('.block img')
@@ -148,7 +146,7 @@ describe('Blocks Tests', () => {
     });
 
     cy.wait('@saveImage');
-    cy.wait('@getImage');
+
 
     cy.get('.block img')
       .should('have.attr', 'src')
@@ -175,7 +173,6 @@ describe('Blocks Tests', () => {
       encoding: 'utf8',
     });
     cy.wait('@saveImage');
-    cy.wait('@getImage');
 
     // then in sidebar alt attr should be empty
     cy.get('#sidebar-properties .field-wrapper-alt input#field-alt')
