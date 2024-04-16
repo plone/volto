@@ -40,13 +40,14 @@ const useLinkEditor = () => {
 
   const LinkEditor = React.useCallback(
     (props) => {
-      const { id, value, onChange } = props;
+      const { id, value, onChange, placeholder } = props;
       return showLinkEditor && anchorNode.current && savedPosition.current ? (
         <PositionedToolbar
           className="add-link"
           position={savedPosition.current}
         >
           <AddLinkForm
+            placeholder={placeholder}
             data={{ url: value || '' }}
             theme={{}}
             onChangeValue={(url) => {

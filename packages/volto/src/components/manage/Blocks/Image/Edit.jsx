@@ -91,7 +91,10 @@ function Edit(props) {
             responsive={true}
           />
         ) : (
-          <ImageInput onChange={handleChange} />
+          <ImageInput
+            onChange={handleChange}
+            placeholderLinkInput={props.placeholder}
+          />
         )}
         <SidebarPortal selected={props.selected}>
           <ImageSidebar {...props} />

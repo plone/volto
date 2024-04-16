@@ -52,7 +52,8 @@ describe('ControlPanel: Dexterity Content-Types Layout', () => {
     cy.get('#toolbar-add-book').click();
     cy.get('.block.title').contains('Book title');
     cy.get('.block.slate').contains('About this book');
-    cy.get('.block.image input[type="text"]')
+    cy.get('.toolbar-inner .buttons').first().next().next().click();
+    cy.get('.ui.input.editor-link.input-anchorlink-theme')
       .should('have.attr', 'placeholder')
       .and('match', /Book cover image/);
     cy.getSlateTitle()

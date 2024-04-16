@@ -251,9 +251,10 @@ class AddLinkForm extends Component {
                 name="link"
                 value={value || ''}
                 onChange={({ target }) => this.onChange(target.value)}
-                placeholder={this.props.intl.formatMessage(
-                  messages.placeholder,
-                )}
+                placeholder={
+                  this.props.placeholder ||
+                  this.props.intl.formatMessage(messages.placeholder)
+                }
                 onKeyDown={this.onKeyDown}
                 ref={this.onRef}
               />

@@ -68,6 +68,7 @@ const UnconnectedImageInput = (props) => {
     hideObjectBrowserPicker = false,
     restrictFileUpload = false,
     description,
+    placeholderLinkInput = '',
   } = props;
 
   const intl = useIntl();
@@ -221,6 +222,7 @@ const UnconnectedImageInput = (props) => {
                   <linkEditor.LinkEditor
                     value={value}
                     onChange={onChange}
+                    placeholder={placeholderLinkInput}
                     id={id}
                   />
                 )}
