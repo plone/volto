@@ -110,7 +110,6 @@
     "lightningcss": "^1.24.0",
     "lightningcss-cli": "^1.24.0",
     "parcel": "^2.12.0",
-    "parcel-optimizer-react-client": "workspace:^",
     "prettier": "3.2.5",
     "release-it": "17.1.1",
     "storybook": "^8.0.4",

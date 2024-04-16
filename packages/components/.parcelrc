@@ -5,15 +5,5 @@
       "@parcel/transformer-js",
       "@parcel/transformer-react-refresh-wrap"
     ]
-  },
-  "optimizers": {
-    "index.js": [
-      "...",
-      "parcel-optimizer-react-client"
-    ],
-    "index.cjs": [
-      "...",
-      "parcel-optimizer-react-client"
-    ]
   }
 }
