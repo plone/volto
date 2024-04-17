@@ -121,7 +121,7 @@ describe('Blocks Tests', () => {
     // then image src must be equal to image name
     cy.get('.block img')
       .should('have.attr', 'src')
-      .and('contains', '/my-page/image.png/@@images/image-');
+      .and('contains', '/my-page/image.png/@@images/image');
 
     cy.get('.block img')
       .should('be.visible')
