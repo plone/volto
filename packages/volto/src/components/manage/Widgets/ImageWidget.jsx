@@ -176,7 +176,6 @@ const UnconnectedImageInput = (props) => {
                           onFocus && onFocus();
                           e.preventDefault();
                           openObjectBrowser({
-                            mode: 'link',
                             overlay: true,
                             onSelectItem: onChange,
                           });
