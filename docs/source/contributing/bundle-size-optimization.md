@@ -1,15 +1,15 @@
 ---
 myst:
   html_meta:
-    'description': 'Performance guidelines in Volto'
-    'property=og:description': 'Performance guidelines in Volto'
-    'property=og:title': 'Performance guidelines'
+    'description': 'Bundle size optimization in Volto'
+    'property=og:description': 'Bundle size optimization in Volto'
+    'property=og:title': 'Bundle size optimization'
     'keywords': 'Volto, Plone, frontend, React, Performance, guidelines'
 ---
 
-(performance-guidelines-label)=
+(bundle-size-optimization-label)=
 
-# Performance guidelines
+# Bundle size optimization
 
 ## Lazy loading in core
 
