@@ -44,7 +44,7 @@
     "node-fetch": "^3.3.2",
     "serve-static": "^1.15.0",
     "typescript": "^5.3.3",
-    "vite": "^5.1.5",
+    "vite": "^5.1.7",
     "vite-plugin-babel": "^1.2.0"
   }
 }
