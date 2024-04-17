@@ -22,7 +22,7 @@ context('Blocks Acceptance Tests', () => {
         contentType: 'Image',
         contentId: 'my-image',
         contentTitle: 'My Image',
-        path: '/document',
+        path: '',
       });
       cy.visit('/');
       cy.wait('@content');
