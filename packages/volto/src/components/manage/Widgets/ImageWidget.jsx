@@ -8,7 +8,11 @@ import loadable from '@loadable/component';
 import useLinkEditor from '@plone/volto/components/manage/AnchorPlugin/useLinkEditor';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 
-import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
+import {
+  flattenToAppURL,
+  getBaseUrl,
+  isInternalURL,
+} from '@plone/volto/helpers';
 import { createContent } from '@plone/volto/actions';
 import { readAsDataURL } from 'promise-file-reader';
 import { FormFieldWrapper, Icon } from '@plone/volto/components';
@@ -222,7 +226,12 @@ const UnconnectedImageInput = (props) => {
                 {linkEditor.anchorNode && (
                   <linkEditor.LinkEditor
                     value={value}
-                    onChange={(e) => onChange(props.id, flattenToAppURL(e))}
+                    onChange={(_, e) =>
+                      onChange(
+                        props.id,
+                        isInternalURL(e) ? flattenToAppURL(e) : e,
+                      )
+                    }
                     placeholder={placeholderLinkInput}
                     id={id}
                   />
