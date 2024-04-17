@@ -211,7 +211,7 @@ filterControlPanelsSchema
     It uses the `unwantedControlPanelsFields` setting.
 
 unwantedControlPanelsFields
-    Control panels fields that are not used in Volto.
+    Control panels' fields that are not used in Volto.
     It is used internally by the `filterControlPanelsSchema` function.
 
 errorHandlers
