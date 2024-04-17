@@ -1,10 +1,10 @@
 ---
 myst:
   html_meta:
-    'description': 'How to contribute to Volto, the frontend for Plone.'
-    'property=og:description': 'How to contribute to Volto, the frontend for Plone.'
-    'property=og:title': 'How to contribute to Volto, the frontend for Plone.'
-    'keywords': 'Plone, Volto, contributing, developer, guidelines'
+    "description": "How to contribute to Volto, the frontend for Plone."
+    "property=og:description": "How to contribute to Volto, the frontend for Plone."
+    "property=og:title": "How to contribute to Volto, the frontend for Plone."
+    "keywords": "Plone, Volto, contributing, developer, guidelines"
 ---
 
 (contributing-to-volto-label)=
@@ -13,6 +13,7 @@ myst:
 
 First read {doc}`plone:contributing/index`.
 Volto follows those guidelines with a few specific variations, as described in this chapter.
+
 
 (contributing-reporting-an-issue-or-making-a-feature-request-label)=
 
@@ -25,11 +26,12 @@ When in doubt, create one in the [CMFPlone issue tracker](https://github.com/plo
 
 In your report, please specify a few things:
 
-- What are the steps to reproduce the problem?
-- What do you expect when you follow those steps?
-- What do you observe?
-- Which Plone version are you using?
-- Include relevant screenshots, error messages, and stack traces.
+-   What are the steps to reproduce the problem?
+-   What do you expect when you follow those steps?
+-   What do you observe?
+-   Which Plone version are you using?
+-   Include relevant screenshots, error messages, and stack traces.
+
 
 (contributing-volto-sign-and-return-the-plone-contributor-agreement-label)=
 
@@ -37,13 +39,14 @@ In your report, please specify a few things:
 
 The Volto Team reviews pull requests only from people with a GitHub account who have signed and returned the {ref}`Plone Contributor Agreement <plone:contributing-sign-and-return-the-plone-contributor-agreement-label>`, and subsequently been assigned to a Plone Team in GitHub.
 
+
 (contributing-branch-policy-label)=
 
 ## Branch policy
 
 ```{include} ./branch-policy.md
-
 ```
+
 
 (contributing-install-volto-for-development-label)=
 
@@ -51,12 +54,14 @@ The Volto Team reviews pull requests only from people with a GitHub account who 
 
 For developing Volto, follow {doc}`developing-core`.
 
+
 (contributing-translations-label)=
 
 ## Translations
 
 All text that can be shown in a browser must be translatable.
 Please mark all such strings as translatable as defined in the [i18n guide](../development/i18n.md).
+
 
 (contributing-branch-policy-for-translations-label)=
 
@@ -66,6 +71,7 @@ Due to the nature of `main` and numbered released branches, some developments th
 This means that many translations that may come with those developments will be useless in the released branches, thus backporting them makes no sense.
 
 When contributing translations, please create a branch from the numbered released branch, and point your pull request to that branch, instead of `main`.
+
 
 (contributing-change-log-entry-label)=
 
@@ -78,11 +84,13 @@ Your attribution must be in the format of `@github_username`.
 For details see {ref}`contributing-change-log-label`.
 ```
 
+
 (contributing-documenting-your-changes-label)=
 
 ## Document breaking changes
 
 If the feature includes a breaking change, you must include instructions for how to upgrade in the [upgrade guide](../upgrade-guide/index.md).
+
 
 (contributing-code-quality-label)=
 
@@ -93,10 +101,11 @@ These checks are enforced automatically on every pull request, so you might as w
 
 Specifically:
 
-- {doc}`./linting`
-- {doc}`./testing`
-- {doc}`./acceptance-tests`
-- {doc}`./documentation`
+-   {doc}`./linting`
+-   {doc}`./testing`
+-   {doc}`./acceptance-tests`
+-   {doc}`./documentation`
+
 
 (contributing-developer-guidelines-label)=
 
@@ -123,6 +132,7 @@ typescript
 volto-core-addons
 version-policy
 ```
+
 
 (contributing-final-advice-label)=
 
