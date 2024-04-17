@@ -21,7 +21,7 @@ const TeaserDefaultTemplate = (props) => {
   const { className, data, isEditMode, style } = props;
   const intl = useIntl();
   const href = data.href?.[0];
-  const image = data.preview_image;
+  const image = data.preview_image?.[0];
 
   const Image = config.getComponent('Image').component;
   const { openExternalLinkInNewTab } = config.settings;
@@ -54,7 +54,7 @@ const TeaserDefaultTemplate = (props) => {
                 <div className="image-wrapper">
                   <Image
                     item={image || href}
-                    imageField={image || href.image_field}
+                    imageField={image ? image.image_field : href.image_field}
                     alt=""
                     loading="lazy"
                     responsive={true}
