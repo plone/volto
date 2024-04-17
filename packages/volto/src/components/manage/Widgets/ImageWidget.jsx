@@ -176,8 +176,10 @@ const UnconnectedImageInput = (props) => {
                           onFocus && onFocus();
                           e.preventDefault();
                           openObjectBrowser({
-                            overlay: true,
-                            onSelectItem: onChange,
+                            mode: 'image',
+                            onSelectItem: (e) => {
+                              onChange(props.id, flattenToAppURL(e));
+                            },
                           });
                         }}
                       >
@@ -220,7 +222,7 @@ const UnconnectedImageInput = (props) => {
                 {linkEditor.anchorNode && (
                   <linkEditor.LinkEditor
                     value={value}
-                    onChange={onChange}
+                    onChange={(e) => onChange(props.id, flattenToAppURL(e))}
                     placeholder={placeholderLinkInput}
                     id={id}
                   />
