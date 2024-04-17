@@ -149,7 +149,7 @@ describe('Blocks Tests', () => {
 
     cy.get('.block img')
       .should('have.attr', 'src')
-      .and('contains', '/image.png/@@images/image-');
+      .and('contains', '/image.png/@@images/image');
 
     cy.get('.block img')
       .should('be.visible')
