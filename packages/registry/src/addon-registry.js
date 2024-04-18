@@ -97,6 +97,7 @@ class AddonConfigurationRegistry {
     const packageJson = (this.packageJson = require(
       path.join(projectRootPath, 'package.json'),
     ));
+    this.voltoConfigJS = {};
     // Loads the dynamic config, if any
     if (process.env.VOLTOCONFIG) {
       if (fs.existsSync(path.resolve(process.env.VOLTOCONFIG))) {
