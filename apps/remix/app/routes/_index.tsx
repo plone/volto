@@ -12,7 +12,7 @@ import {
 import ploneClient from '@plone/client';
 import { flattenToAppURL } from '../utils';
 import { useLoaderData, useLocation } from '@remix-run/react';
-import { usePloneClient } from '@plone/client/provider';
+import { usePloneClient } from '@plone/providers';
 
 export const meta: MetaFunction = () => {
   return [

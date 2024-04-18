@@ -10,44 +10,44 @@
 
 // Import Routes
 
-import { Route as rootRoute } from './routes/__root';
-import { Route as ErrorImport } from './routes/error';
-import { Route as SplatImport } from './routes/$';
-import { Route as IndexImport } from './routes/index';
+import { Route as rootRoute } from './routes/__root'
+import { Route as ErrorImport } from './routes/error'
+import { Route as SplatImport } from './routes/$'
+import { Route as IndexImport } from './routes/index'
 
 // Create/Update Routes
 
 const ErrorRoute = ErrorImport.update({
   path: '/error',
   getParentRoute: () => rootRoute,
-} as any);
+} as any)
 
 const SplatRoute = SplatImport.update({
   path: '/$',
   getParentRoute: () => rootRoute,
-} as any);
+} as any)
 
 const IndexRoute = IndexImport.update({
   path: '/',
   getParentRoute: () => rootRoute,
-} as any);
+} as any)
 
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
     '/': {
-      preLoaderRoute: typeof IndexImport;
-      parentRoute: typeof rootRoute;
-    };
+      preLoaderRoute: typeof IndexImport
+      parentRoute: typeof rootRoute
+    }
     '/$': {
-      preLoaderRoute: typeof SplatImport;
-      parentRoute: typeof rootRoute;
-    };
+      preLoaderRoute: typeof SplatImport
+      parentRoute: typeof rootRoute
+    }
     '/error': {
-      preLoaderRoute: typeof ErrorImport;
-      parentRoute: typeof rootRoute;
-    };
+      preLoaderRoute: typeof ErrorImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -57,6 +57,6 @@ export const routeTree = rootRoute.addChildren([
   IndexRoute,
   SplatRoute,
   ErrorRoute,
-]);
+])
 
 /* prettier-ignore-end */
