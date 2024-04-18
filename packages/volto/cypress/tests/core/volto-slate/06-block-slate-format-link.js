@@ -4,8 +4,7 @@ describe('Block Tests: Links', () => {
   beforeEach(slateBeforeEach);
 
   it('As editor I can add links', function () {
-    cy.get('#toolbar').click();
-    cy.getSlate().type('Colorless green ideas sleep furiously.');
+    cy.getSlateEditorAndType('Colorless green ideas sleep furiously.');
 
     cy.log('Create a Link');
 
