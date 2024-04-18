@@ -1,0 +1,1 @@
+Fix flaky test 'As editor I can add links' by using getSlateEditorAndType. @ksuess
