@@ -12,14 +12,10 @@ exports[`Form renders a form component 1`] = `
         class="ui segment form attached"
       >
         <div
-          class="mocked-default-widget"
-          id="mocked-field-title"
+          class="Field"
+          id="title"
         >
           The title
-           - 
-          No description
-           -
-          No value
         </div>
       </div>
     </div>
@@ -39,34 +35,22 @@ exports[`Form renders a form component with defaults in the schema - Checkboxes 
         class="ui segment form attached"
       >
         <div
-          class="mocked-boolean-widget"
-          id="mocked-field-theCheckBox"
+          class="Field"
+          id="theCheckBox"
         >
           The checkbox
-           - 
-          No description
-           -
-          No value
         </div>
         <div
-          class="mocked-boolean-widget"
-          id="mocked-field-theTruthyCheckBox"
+          class="Field"
+          id="theTruthyCheckBox"
         >
           The truthy checkbox
-           - 
-          No description
-           -
-          true
         </div>
         <div
-          class="mocked-boolean-widget"
-          id="mocked-field-theFalsyCheckBox"
+          class="Field"
+          id="theFalsyCheckBox"
         >
           The falsy checkbox
-           - 
-          No description
-           -
-          false
         </div>
       </div>
     </div>
@@ -86,14 +70,10 @@ exports[`Form renders a form component with defaults in the schema - Default tex
         class="ui segment form attached"
       >
         <div
-          class="mocked-default-widget"
-          id="mocked-field-title"
+          class="Field"
+          id="title"
         >
           The title
-           - 
-          No description
-           -
-          This is the default
         </div>
       </div>
     </div>
@@ -113,24 +93,16 @@ exports[`Form renders a form component with defaults in the schema - Number fiel
         class="ui segment form attached"
       >
         <div
-          class="mocked-number-widget"
-          id="mocked-field-number"
+          class="Field"
+          id="number"
         >
           The number, default set
-           - 
-          No description
-           -
-          5
         </div>
         <div
-          class="mocked-number-widget"
-          id="mocked-field-numberWithValue"
+          class="Field"
+          id="numberWithValue"
         >
           The number, default with a value
-           - 
-          No description
-           -
-          10
         </div>
       </div>
     </div>
