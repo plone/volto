@@ -2045,6 +2045,9 @@ importers:
       '@types/jest':
         specifier: ^29.5.8
         version: 29.5.8
+      '@types/loadable__component':
+        specifier: ^5.13.9
+        version: 5.13.9
       '@types/lodash':
         specifier: ^4.14.201
         version: 4.14.201
@@ -14256,6 +14259,12 @@ packages:
     dependencies:
       '@types/node': 20.9.0
     dev: false
+
+  /@types/loadable__component@5.13.9:
+    resolution: {integrity: sha512-QWOtIkwZqHNdQj3nixQ8oyihQiTMKZLk/DNuvNxMSbTfxf47w+kqcbnxlUeBgAxdOtW0Dh48dTAIp83iJKtnrQ==}
+    dependencies:
+      '@types/react': 18.2.60
+    dev: true
 
   /@types/lodash@4.14.201:
     resolution: {integrity: sha512-y9euML0cim1JrykNxADLfaG0FgD1g/yTHwUs/Jg9ZIU7WKj2/4IW9Lbb1WZbvck78W/lfGXFfe+u2EGfIJXdLQ==}
@@ -31817,6 +31826,9 @@ packages:
     resolution: {integrity: sha512-W+gxAq7aQ9dJIg/XLKGcRT0cvnStFAQHPaI0pvD0U2l6IVLueUAm3nwN7lkY62zZNmlvNx6jNtE4wlbS+CyqSg==}
     engines: {node: '>= 12.0.0'}
     hasBin: true
+    peerDependenciesMeta:
+      '@parcel/core':
+        optional: true
     dependencies:
       '@parcel/config-default': 2.12.0(@parcel/core@2.12.0)(postcss@8.4.35)(typescript@5.4.2)
       '@parcel/core': 2.12.0

@@ -14,7 +14,8 @@ import { Button, Container } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import { toast } from 'react-toastify';
 
-import { Form, Icon, Toolbar, Toast } from '@plone/volto/components';
+import { Icon, Toolbar, Toast } from '@plone/volto/components';
+import { Form } from '@plone/volto/components/manage/Form';
 import { updateControlpanel, getControlpanel } from '@plone/volto/actions';
 
 import config from '@plone/volto/registry';

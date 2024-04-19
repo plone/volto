@@ -18,7 +18,6 @@ import { toast } from 'react-toastify';
 
 import {
   Forbidden,
-  Form,
   Icon,
   Sidebar,
   Toast,
@@ -27,6 +26,7 @@ import {
   CompareLanguages,
   TranslationObject,
 } from '@plone/volto/components';
+import { Form } from '@plone/volto/components/manage/Form';
 import {
   updateContent,
   getContent,

@@ -3,7 +3,53 @@
 exports[`ContentsPropertiesModal renders a contents properties modal component 1`] = `
 <div>
   <div
-    id="modalform"
+    data-schema="{
+  \\"fieldsets\\": [
+    {
+      \\"id\\": \\"default\\",
+      \\"title\\": \\"Default\\",
+      \\"fields\\": [
+        \\"effective\\",
+        \\"expires\\",
+        \\"rights\\",
+        \\"creators\\",
+        \\"exclude_from_nav\\"
+      ]
+    }
+  ],
+  \\"properties\\": {
+    \\"effective\\": {
+      \\"description\\": \\"If this date is in the future, the content will not show up in listings and searches until this date.\\",
+      \\"title\\": \\"Publishing Date\\",
+      \\"type\\": \\"string\\",
+      \\"widget\\": \\"datetime\\"
+    },
+    \\"expires\\": {
+      \\"description\\": \\"When this date is reached, the content will nolonger be visible in listings and searches.\\",
+      \\"title\\": \\"Expiration Date\\",
+      \\"type\\": \\"string\\",
+      \\"widget\\": \\"datetime\\"
+    },
+    \\"rights\\": {
+      \\"description\\": \\"Copyright statement or other rights information on this item.\\",
+      \\"title\\": \\"Rights\\",
+      \\"type\\": \\"string\\",
+      \\"widget\\": \\"textarea\\"
+    },
+    \\"creators\\": {
+      \\"description\\": \\"Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first.\\",
+      \\"title\\": \\"Creators\\",
+      \\"type\\": \\"array\\"
+    },
+    \\"exclude_from_nav\\": {
+      \\"description\\": \\"If selected, this item will not appear in the navigation tree\\",
+      \\"title\\": \\"Exclude from navigation\\",
+      \\"type\\": \\"boolean\\"
+    }
+  },
+  \\"required\\": []
+}"
+    id="ModalForm"
   />
 </div>
 `;
