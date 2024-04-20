@@ -1,3 +1,4 @@
+import React from 'react';
 import { useRouterLocation } from '@plone/providers';
 import config from '@plone/registry';
 

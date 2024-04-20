@@ -47,6 +47,7 @@
   ],
   "scripts": {
     "build": "parcel build --no-cache",
+    "build:cached": "parcel build",
     "test": "node testRunner.js",
     "vitest": "vitest",
     "check-ts": "tsc --project tsconfig.json",
