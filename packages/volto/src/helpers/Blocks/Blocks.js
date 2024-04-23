@@ -309,7 +309,7 @@ export function insertBlock(
 
   const newBlockId = uuid();
   const newFormData = applyBlockInitialValue({
-    id,
+    id: newBlockId,
     value,
     blocksConfig,
     formData: {
