@@ -1,0 +1,1 @@
+Add headers to avoid redirects being cached, eg. the ones coming from the `MultilingualRedirector` @sneridagh
