@@ -1,0 +1,1 @@
+Add possibility to pass down `locale`, `messages` and `defaultLocale` properties inside the `customStore` object to `IntlProvider`. With this change we can control react-intl language provider from inside storybook and switch for example from english to german with storybook args.
