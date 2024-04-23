@@ -1391,7 +1391,11 @@ export default class Wrapper extends Component {
     return (
       <Provider store={store}>
         <PluggablesProvider>
-          <IntlProvider locale={this.props.customStore.intl.locale ?? 'en'}>
+          <IntlProvider
+            locale={this.props.customStore.intl.locale}
+            messages={this.props.customStore.intl.messages}
+            defaultLocale={this.props.customStore.intl.defaultLocale ?? 'en'}
+          >
             <StaticRouter location={this.props.location}>
               <div className="volto-storybook-container">
                 {this.props.children}
@@ -1438,7 +1442,11 @@ export class RealStoreWrapper extends Component {
     return (
       <Provider store={store}>
         <PluggablesProvider>
-          <IntlProvider locale={this.props.customStore.intl.locale ?? 'en'}>
+          <IntlProvider
+            locale={this.props.customStore.intl.locale}
+            messages={this.props.customStore.intl.messages}
+            defaultLocale={this.props.customStore.intl.defaultLocale ?? 'en'}
+          >
             <StaticRouter location={this.props.location}>
               <div className="volto-storybook-container">
                 {this.props.children}
