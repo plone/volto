@@ -289,7 +289,6 @@ Used by Volto, you can also use it in other JavaScript frameworks and environmen
 ## Supported frameworks
 
 Plone supports several frontend implementations, the main one being Volto as the default frontend and reference React-based implementation.
-There are plans to support implementations in other frontends, including NextJS and Remix.
 
 ### Plone
 
@@ -297,13 +296,21 @@ The default frontend and reference React-based implementation in Plone is Volto.
 In the `apps` folder you'll find a Volto project scaffolding that uses Volto as a library.
 This is the same as the one that you'll have when running the Volto generator or `cookiecutter-plone-starter`.
 
-### NextJS
+### Next.js
 
-Coming soon.
+This is the proof of concept using Next.js for accessing Plone.
 
 ### Remix
 
-Coming soon.
+This is the proof of concept using Remix for accessing Plone.
+
+### Vite build (client only)
+
+This is the proof of concept using a custom client build based in Vite for accessing Plone.
+
+### Vite SSR build
+
+This is the proof of concept using a custom build based in Vite with SSR for accessing Plone.
 
 ## Support libraries
 
