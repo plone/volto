@@ -273,6 +273,10 @@ server.get('/*', (req, res) => {
       }
 
       if (context.url) {
+        // If there's a redirection, do not cache it
+        res.set({
+          'Cache-Control': 'no-cache',
+        });
         res.redirect(flattenToAppURL(context.url));
       } else if (context.error_code) {
         res.set({
