@@ -45,9 +45,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build packages
-        run: pnpm build:all
-
       - name: Start backend
         run: make start-backend-docker-detached
 
@@ -112,9 +109,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build packages
-        run: pnpm build:all
-
       - name: Start backend
         run: make start-backend-docker-detached
 
@@ -178,9 +172,6 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-
-      - name: Build packages
-        run: pnpm build:all
 
       - name: Start backend
         run: make start-backend-docker-detached

@@ -4,10 +4,10 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "postinstall": "make setup",
-    "watch": "pnpm --filter @plone/registry watch",
+    "watch": "pnpm --filter @plone/registry --filter @plone/client --filter @plone/components --filter @plone/providers watch",
     "build:deps": "pnpm --parallel --filter @plone/registry build",
     "build:all": "pnpm --parallel --filter @plone/registry --filter @plone/client --filter @plone/components --filter @plone/providers build",
-    "build:all:cached": "pnpm --parallel --filter @plone/registry --filter @plone/client --filter @plone/components --filter @plone/providers build:cached",
+    "build:all:force": "pnpm --parallel --filter @plone/registry --filter @plone/client --filter @plone/components --filter @plone/providers build:force",
     "build:registry": "pnpm --filter @plone/registry run build",
     "build:components": "pnpm --filter @plone/components run build",
     "build": "pnpm --filter @plone/volto build",
