@@ -289,6 +289,10 @@ Used by Volto, you can also use it in other JavaScript frameworks and environmen
 ## Supported frameworks
 
 Plone supports several frontend implementations, the main one being Volto as the default frontend and reference React-based implementation.
+The others are currently under heavy development, marked as experimental and for now, they remain as a proof of concept.
+Although they do work now in an acceptable way, the implementation might change in the future.
+Please note that these implementations only show how to access the public Plone content in the current site and dealing with data fetching and routing.
+They use the Plone Frontend Strategic Packages (`@plone/registry`, `@plone/client`, `@plone/components`, etc).
 
 ### Plone
 
@@ -298,19 +302,46 @@ This is the same as the one that you'll have when running the Volto generator or
 
 ### Next.js
 
-This is the proof of concept using Next.js for accessing Plone.
+This is the proof of concept using Next.js with Plone.
+
+You can try it out using:
+
+```
+pnpm --filter plone-nextjs dev
+```
 
 ### Remix
 
-This is the proof of concept using Remix for accessing Plone.
+This is the proof of concept using Remix with Plone.
+
+You can try it out using:
+
+```
+pnpm --filter plone-remix dev
+```
 
 ### Vite build (client only)
 
-This is the proof of concept using a custom client build based in Vite for accessing Plone.
+This is the proof of concept using a custom client build based in Vite with Plone.
+It uses `@tanstack/router` in combination with `@plone/client` (which in turns uses `@tanstack/query`).
+This build is suitable for applications that do not need server side generation, and it's client only.
+
+You can try it out using:
+
+```
+pnpm --filter plone-vite dev
+```
 
 ### Vite SSR build
 
-This is the proof of concept using a custom build based in Vite with SSR for accessing Plone.
+This is the proof of concept using a custom build based in Vite with SSR with Plone.
+It uses `@tanstack/router` in combination with `@plone/client` (which in turns uses `@tanstack/query`).
+
+You can try it out using:
+
+```
+pnpm --filter plone-vite-ssr dev
+```
 
 ## Support libraries
 
