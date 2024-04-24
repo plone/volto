@@ -8,7 +8,7 @@ import PloneClient from '@plone/client';
 import { createRouter as createReactRouter } from '@tanstack/react-router';
 
 import { routeTree } from './routeTree.gen';
-import { PloneClientProvider } from '@plone/client/provider';
+import { PloneClientProvider } from '@plone/providers';
 import { FlattenToAppURLProvider } from '@plone/components';
 import { flattenToAppURL } from './utils';
 

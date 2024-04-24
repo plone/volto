@@ -31,7 +31,7 @@ export const contentTypesViews: {
             content: any;
         };
     };
-    Event: any;
+    Event: import("@loadable/component").LoadableComponent<any>;
 };
 export const defaultView: import("react").FC<import("react-intl").WithIntlProps<any>> & {
     WrappedComponent: import("react").ComponentType<any>;
