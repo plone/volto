@@ -17,6 +17,17 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 17.15.6 (2024-04-24)
+
+### Bugfix
+
+- Show validation error message as string instead of list. @wesleybl [#1868](https://github.com/plone/volto/issues/1868)
+- Fixed rendering if ConditionalLink has no children @pnicolli [#5963](https://github.com/plone/volto/issues/5963)
+
+### Documentation
+
+- Block search engines from indexing content on Netlify preview builds. @stevepiercy [#5915](https://github.com/plone/volto/issues/5915)
+
 ## 17.15.5 (2024-03-07)
 
 ### Bugfix

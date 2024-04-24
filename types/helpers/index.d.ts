@@ -23,7 +23,7 @@ export { nestContent, getLayoutFieldname, getContentIcon, getLanguageIndependent
 export { addBlock, insertBlock, blockHasValue, changeBlock, deleteBlock, emptyBlocksForm, getBlocks, getBlocksFieldname, getBlocksLayoutFieldname, hasBlocksData, moveBlock, mutateBlock, nextBlockId, previousBlockId, applyBlockDefaults, applySchemaDefaults, blocksFormGenerator, buildStyleClassNamesFromData, buildStyleClassNamesExtenders, buildStyleObjectFromData, getPreviousNextBlock, findBlocks } from "@plone/volto/helpers/Blocks/Blocks";
 export { getSimpleDefaultBlocks, getDefaultBlocks } from "@plone/volto/helpers/Blocks/defaultBlocks";
 export { getBoolean, getVocabName, getVocabFromHint, getVocabFromField, getVocabFromItems, getFieldsVocabulary } from "@plone/volto/helpers/Vocabularies/Vocabularies";
-export { default as FormValidation, validateFileUploadSize } from "./FormValidation/FormValidation";
+export { default as FormValidation, validateFileUploadSize, tryParseJSON } from "./FormValidation/FormValidation";
 export { difference, getColor, getInitials, safeWrapper, applyConfig, withServerErrorCode, parseDateTime, toGettextLang, normalizeLanguageName, toReactIntlLang, toLangUnderscoreRegion, toBackendLang, hasApiExpander, replaceItemOfArray, cloneDeepSchema, arrayRange, reorderArray, isInteractiveElement, slugify, normalizeString } from "@plone/volto/helpers/Utils/Utils";
 export { withBlockSchemaEnhancer, withVariationSchemaEnhancer, withBlockExtensions, applySchemaEnhancer, resolveExtension, resolveBlockExtensions, addStyling, composeSchema } from "./Extensions";
 export { getCurrentStateMapping, getWorkflowOptions } from "./Workflows/Workflows";
