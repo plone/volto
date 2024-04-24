@@ -46,8 +46,8 @@
     "react-query"
   ],
   "scripts": {
-    "build": "parcel build --no-cache",
-    "build:cached": "parcel build",
+    "build": "parcel build",
+    "build:force": "parcel build --no-cache",
     "test": "node testRunner.js",
     "vitest": "vitest",
     "check-ts": "tsc --project tsconfig.json",

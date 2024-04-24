@@ -45,8 +45,8 @@
     "quanta"
   ],
   "scripts": {
-    "build": "parcel build --no-cache && pnpm build:css",
-    "build:cached": "parcel build && pnpm build:css",
+    "build": "parcel build && pnpm build:css",
+    "build:force": "parcel build --no-cache && pnpm build:css",
     "build:css": "pnpm build:basic && pnpm build:quanta",
     "build:basic": "lightningcss --browserslist --bundle --sourcemap src/styles/basic/main.css -o basic.css && mv basic.css* dist/.",
     "build:quanta": "lightningcss --browserslist --bundle --sourcemap src/styles/quanta/main.css -o quanta.css && mv quanta.css* dist/.",
