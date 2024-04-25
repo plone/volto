@@ -4,6 +4,7 @@ exports[`Logo renders a logo component with a custom logo 1`] = `
 <a
   aria-label="Home"
   href="/"
+  onClick={[Function]}
 >
   <img
     alt="Logo of Plone Site"
@@ -17,6 +18,7 @@ exports[`Logo renders a logo component with a custom logo in a non-root url 1`] 
 <a
   aria-label="Home"
   href="/"
+  onClick={[Function]}
 >
   <img
     alt="Logo of Plone Site"
@@ -30,6 +32,7 @@ exports[`Logo renders a logo component with default config 1`] = `
 <a
   aria-label="Home"
   href="/"
+  onClick={[Function]}
 >
   <img
     alt="Logo of Plone Site"
@@ -43,6 +46,7 @@ exports[`Logo renders a logo component with default config in a non-root url 1`]
 <a
   aria-label="Home"
   href="/"
+  onClick={[Function]}
 >
   <img
     alt="Logo of Plone Site"
