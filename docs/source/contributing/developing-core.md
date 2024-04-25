@@ -286,9 +286,18 @@ Used by Volto, you can also use it in other JavaScript frameworks and environmen
 
 `@plone/volto-slate` is the glue package that provides support for the Slate library in Volto.
 
-## Supported frameworks
 
-Plone supports several frontend implementations, the main one being Volto as the default frontend and reference React-based implementation.
+## Supported frontends
+
+Plone 6 comes with two frontend {term}`reference implementation`s.
+Volto is the default frontend, and is React-based.
+Classic UI is the Python-based, server-side rendered frontend.
+
+In Volto's `apps` folder, you'll find a Volto project scaffolding that uses Volto as a library.
+This is the same as that which you'll have when you run the Volto generator or `cookiecutter-plone-starter`.
+
+
+## Experimental frontends
 
 Other frontends are currently under heavy development.
 They are marked as experimental and, for now, they are a proof of concept demonstrating that other frontends are possible.
@@ -297,11 +306,6 @@ These implementations only show how to access the public Plone content in the cu
 All implementations are located in the `apps` directory in a subdirectory according to their implementation name.
 They use the Plone frontend strategic packages, including `@plone/registry`, `@plone/client`, and `@plone/components`.
 
-### Plone
-
-The default frontend and reference React-based implementation in Plone is Volto.
-In the `apps` folder, you'll find a Volto project scaffolding that uses Volto as a library.
-This is the same as the one that you'll have when running the Volto generator or `cookiecutter-plone-starter`.
 
 ### Next.js
 
