@@ -7,22 +7,52 @@ import { Icon, Toast } from '@plone/volto/components';
 import { Field, BlocksForm } from '@plone/volto/components/manage/Form';
 import BlocksToolbar from '@plone/volto/components/manage/Form/BlocksToolbar';
 import UndoToolbar from '@plone/volto/components/manage/Form/UndoToolbar';
-import { difference, FormValidation, getBlocksFieldname, getBlocksLayoutFieldname, messages } from '@plone/volto/helpers';
+import {
+  difference,
+  FormValidation,
+  getBlocksFieldname,
+  getBlocksLayoutFieldname,
+  messages,
+} from '@plone/volto/helpers';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import upSVG from '@plone/volto/icons/up-key.svg';
 import downSVG from '@plone/volto/icons/down-key.svg';
-import { findIndex, isEmpty, isEqual, keys, map, mapValues, pickBy, without, cloneDeep, xor } from 'lodash';
+import {
+  findIndex,
+  isEmpty,
+  isEqual,
+  keys,
+  map,
+  mapValues,
+  pickBy,
+  without,
+  cloneDeep,
+  xor,
+} from 'lodash';
 import isBoolean from 'lodash/isBoolean';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { injectIntl } from 'react-intl';
 import { createPortal } from 'react-dom';
 import { connect } from 'react-redux';
-import { Accordion, Button, Container as SemanticContainer, Form as UiForm, Message, Segment, Tab } from 'semantic-ui-react';
+import {
+  Accordion,
+  Button,
+  Container as SemanticContainer,
+  Form as UiForm,
+  Message,
+  Segment,
+  Tab,
+} from 'semantic-ui-react';
 import { v4 as uuid } from 'uuid';
 import { toast } from 'react-toastify';
-import { setMetadataFieldsets, resetMetadataFocus, setSidebarTab, setFormData } from '@plone/volto/actions';
+import {
+  setMetadataFieldsets,
+  resetMetadataFocus,
+  setSidebarTab,
+  setFormData,
+} from '@plone/volto/actions';
 import { compose } from 'redux';
 import config from '@plone/volto/registry';
 import SlotRenderer from '../../theme/SlotRenderer/SlotRenderer';
@@ -131,7 +161,9 @@ class Form extends Component {
 
     const schema = this.removeBlocksLayoutFields(originalSchema);
 
-    this.props.setMetadataFieldsets(schema?.fieldsets ? schema.fieldsets.map((fieldset) => fieldset.id) : []);
+    this.props.setMetadataFieldsets(
+      schema?.fieldsets ? schema.fieldsets.map((fieldset) => fieldset.id) : [],
+    );
 
     if (!props.isEditForm) {
       // It's a normal (add form), get defaults from schema
@@ -146,8 +178,14 @@ class Form extends Component {
 
     // Adding fallback in case the fields are empty, so we are sure that the edit form
     // shows at least the default blocks
-    if (formData.hasOwnProperty(blocksFieldname) && formData.hasOwnProperty(blocksLayoutFieldname)) {
-      if (!formData[blocksLayoutFieldname] || isEmpty(formData[blocksLayoutFieldname].items)) {
+    if (
+      formData.hasOwnProperty(blocksFieldname) &&
+      formData.hasOwnProperty(blocksLayoutFieldname)
+    ) {
+      if (
+        !formData[blocksLayoutFieldname] ||
+        isEmpty(formData[blocksLayoutFieldname].items)
+      ) {
         formData[blocksLayoutFieldname] = {
           items: [ids.title, ids.text],
         };
@@ -165,14 +203,20 @@ class Form extends Component {
     }
 
     let selectedBlock = null;
-    if (formData.hasOwnProperty(blocksLayoutFieldname) && formData[blocksLayoutFieldname].items.length > 0) {
+    if (
+      formData.hasOwnProperty(blocksLayoutFieldname) &&
+      formData[blocksLayoutFieldname].items.length > 0
+    ) {
       if (config.blocks?.initialBlocksFocus === null) {
         selectedBlock = null;
       } else if (this.props.type in config.blocks?.initialBlocksFocus) {
         // Default selected is not the first block, but the one from config.
         // TODO Select first block and not an arbitrary one.
         Object.keys(formData[blocksFieldname]).forEach((b_key) => {
-          if (formData[blocksFieldname][b_key]['@type'] === config.blocks?.initialBlocksFocus?.[this.props.type]) {
+          if (
+            formData[blocksFieldname][b_key]['@type'] ===
+            config.blocks?.initialBlocksFocus?.[this.props.type]
+          ) {
             selectedBlock = b_key;
           }
         });
@@ -220,7 +264,8 @@ class Form extends Component {
     let activeIndex = 0;
 
     if (requestError && prevProps.requestError !== requestError) {
-      errors = FormValidation.giveServerErrorsToCorrespondingFields(requestError);
+      errors =
+        FormValidation.giveServerErrorsToCorrespondingFields(requestError);
       activeIndex = FormValidation.showFirstTabWithErrors({
         errors,
         schema: this.props.schema,
@@ -237,28 +282,45 @@ class Form extends Component {
         this.props.onChangeFormData(this.state.formData);
       }
     }
-    if (this.props.global && !isEqual(this.props.globalData, prevProps.globalData)) {
+    if (
+      this.props.global &&
+      !isEqual(this.props.globalData, prevProps.globalData)
+    ) {
       this.setState({
         formData: this.props.globalData,
       });
     }
 
     if (!isEqual(prevProps.schema, this.props.schema)) {
-      this.props.setMetadataFieldsets(this.removeBlocksLayoutFields(this.props.schema).fieldsets.map((fieldset) => fieldset.id));
+      this.props.setMetadataFieldsets(
+        this.removeBlocksLayoutFields(this.props.schema).fieldsets.map(
+          (fieldset) => fieldset.id,
+        ),
+      );
     }
 
-    if (this.props.metadataFieldFocus !== '' && !isEqual(prevProps.metadataFieldFocus, this.props.metadataFieldFocus)) {
+    if (
+      this.props.metadataFieldFocus !== '' &&
+      !isEqual(prevProps.metadataFieldFocus, this.props.metadataFieldFocus)
+    ) {
       // Scroll into view
-      document.querySelector(`.field-wrapper-${this.props.metadataFieldFocus}`).scrollIntoView();
+      document
+        .querySelector(`.field-wrapper-${this.props.metadataFieldFocus}`)
+        .scrollIntoView();
 
       // Set focus to first input if available
-      document.querySelector(`.field-wrapper-${this.props.metadataFieldFocus} input`)?.focus();
+      document
+        .querySelector(`.field-wrapper-${this.props.metadataFieldFocus} input`)
+        ?.focus();
 
       // Reset focus field
       this.props.resetMetadataFocus();
     }
 
-    if (!this.state.sidebarMetadataIsAvailable && document.getElementById('sidebar-metadata')) {
+    if (
+      !this.state.sidebarMetadataIsAvailable &&
+      document.getElementById('sidebar-metadata')
+    ) {
       this.setState(() => ({ sidebarMetadataIsAvailable: true }));
     }
   }
@@ -376,7 +438,10 @@ class Form extends Component {
       const blocks_layout = formData[blocksLayoutFieldname].items;
 
       if (event.shiftKey) {
-        const anchor = this.state.multiSelected.length > 0 ? blocks_layout.indexOf(this.state.multiSelected[0]) : blocks_layout.indexOf(this.state.selected);
+        const anchor =
+          this.state.multiSelected.length > 0
+            ? blocks_layout.indexOf(this.state.multiSelected[0])
+            : blocks_layout.indexOf(this.state.selected);
         const focus = blocks_layout.indexOf(id);
 
         if (anchor === focus) {
@@ -469,7 +534,15 @@ class Form extends Component {
           activeIndex,
         },
         () => {
-          Object.keys(errors).forEach((err) => toast.error(<Toast error title={this.props.schema.properties[err].title || err} content={errors[err].join(', ')} />));
+          Object.keys(errors).forEach((err) =>
+            toast.error(
+              <Toast
+                error
+                title={this.props.schema.properties[err].title || err}
+                content={errors[err].join(', ')}
+              />,
+            ),
+          );
         },
       );
       // Changes the focus to the metadata tab in the sidebar if error
@@ -505,7 +578,9 @@ class Form extends Component {
   getOnlyFormModifiedValues = () => {
     const formData = this.state.formData;
 
-    const fieldsModified = Object.keys(difference(formData, this.state.initialFormData));
+    const fieldsModified = Object.keys(
+      difference(formData, this.state.initialFormData),
+    );
     return {
       ...pickBy(formData, (value, key) => fieldsModified.includes(key)),
       ...(formData['@static_behaviors'] && {
@@ -522,12 +597,20 @@ class Form extends Component {
    */
   removeBlocksLayoutFields = (schema) => {
     const newSchema = { ...schema };
-    const layoutFieldsetIndex = findIndex(newSchema.fieldsets, (fieldset) => fieldset.id === 'layout');
+    const layoutFieldsetIndex = findIndex(
+      newSchema.fieldsets,
+      (fieldset) => fieldset.id === 'layout',
+    );
     if (layoutFieldsetIndex > -1) {
       const layoutFields = newSchema.fieldsets[layoutFieldsetIndex].fields;
-      newSchema.fieldsets[layoutFieldsetIndex].fields = layoutFields.filter((field) => field !== 'blocks' && field !== 'blocks_layout');
+      newSchema.fieldsets[layoutFieldsetIndex].fields = layoutFields.filter(
+        (field) => field !== 'blocks' && field !== 'blocks_layout',
+      );
       if (newSchema.fieldsets[layoutFieldsetIndex].fields.length === 0) {
-        newSchema.fieldsets = [...newSchema.fieldsets.slice(0, layoutFieldsetIndex), ...newSchema.fieldsets.slice(layoutFieldsetIndex + 1)];
+        newSchema.fieldsets = [
+          ...newSchema.fieldsets.slice(0, layoutFieldsetIndex),
+          ...newSchema.fieldsets.slice(layoutFieldsetIndex + 1),
+        ];
       }
     }
     return newSchema;
@@ -552,17 +635,29 @@ class Form extends Component {
    */
   render() {
     const { settings } = config;
-    const { schema: originalSchema, onCancel, onSubmit, navRoot, type, metadataFieldsets } = this.props;
+    const {
+      schema: originalSchema,
+      onCancel,
+      onSubmit,
+      navRoot,
+      type,
+      metadataFieldsets,
+    } = this.props;
     const formData = this.state.formData;
     const schema = this.removeBlocksLayoutFields(originalSchema);
-    const Container = config.getComponent({ name: 'Container' }).component || SemanticContainer;
+    const Container =
+      config.getComponent({ name: 'Container' }).component || SemanticContainer;
 
     return this.props.visual ? (
       // Removing this from SSR is important, since react-beautiful-dnd supports SSR,
       // but draftJS don't like it much and the hydration gets messed up
       this.state.isClient && (
         <>
-          <SlotRenderer name="aboveContent" content={this.props.content} navRoot={navRoot} />
+          <SlotRenderer
+            name="aboveContent"
+            content={this.props.content}
+            navRoot={navRoot}
+          />
 
           <Container>
             <BlocksToolbar
@@ -581,7 +676,9 @@ class Form extends Component {
                   this.props.setFormData(newFormData);
                 }
               }}
-              onSetSelectedBlocks={(blockIds) => this.setState({ multiSelected: blockIds })}
+              onSetSelectedBlocks={(blockIds) =>
+                this.setState({ multiSelected: blockIds })
+              }
               onSelectBlock={this.onSelectBlock}
             />
             <UndoToolbar
@@ -633,19 +730,63 @@ class Form extends Component {
               this.state.sidebarMetadataIsAvailable &&
               this.props.editable &&
               createPortal(
-                <UiForm method="post" onSubmit={this.onSubmit} error={keys(this.state.errors).length > 0}>
+                <UiForm
+                  method="post"
+                  onSubmit={this.onSubmit}
+                  error={keys(this.state.errors).length > 0}
+                >
                   {schema &&
                     map(schema.fieldsets, (fieldset) => (
-                      <Accordion fluid styled className="form" key={fieldset.title}>
-                        <div key={fieldset.id} id={`metadataform-fieldset-${fieldset.id}`}>
-                          <Accordion.Title active={metadataFieldsets.includes(fieldset.id)} index={fieldset.id} onClick={this.onToggleMetadataFieldset}>
+                      <Accordion
+                        fluid
+                        styled
+                        className="form"
+                        key={fieldset.title}
+                      >
+                        <div
+                          key={fieldset.id}
+                          id={`metadataform-fieldset-${fieldset.id}`}
+                        >
+                          <Accordion.Title
+                            active={metadataFieldsets.includes(fieldset.id)}
+                            index={fieldset.id}
+                            onClick={this.onToggleMetadataFieldset}
+                          >
                             {fieldset.title}
-                            {metadataFieldsets.includes(fieldset.id) ? <Icon name={upSVG} size="20px" /> : <Icon name={downSVG} size="20px" />}
+                            {metadataFieldsets.includes(fieldset.id) ? (
+                              <Icon name={upSVG} size="20px" />
+                            ) : (
+                              <Icon name={downSVG} size="20px" />
+                            )}
                           </Accordion.Title>
-                          <Accordion.Content active={metadataFieldsets.includes(fieldset.id)}>
+                          <Accordion.Content
+                            active={metadataFieldsets.includes(fieldset.id)}
+                          >
                             <Segment className="attached">
                               {map(fieldset.fields, (field, index) => (
-                                <Field {...schema.properties[field]} id={field} fieldSet={fieldset.title.toLowerCase()} formData={formData} focus={this.state.isClient && document.getElementById('sidebar-metadata')?.contains(document.activeElement) ? this.state.inFocus[field] : false} value={formData?.[field]} required={schema.required.indexOf(field) !== -1} onChange={this.onChangeField} onBlur={this.onBlurField} onClick={this.onClickInput} key={field} error={this.state.errors[field]} />
+                                <Field
+                                  {...schema.properties[field]}
+                                  id={field}
+                                  fieldSet={fieldset.title.toLowerCase()}
+                                  formData={formData}
+                                  focus={
+                                    this.state.isClient &&
+                                    document
+                                      .getElementById('sidebar-metadata')
+                                      ?.contains(document.activeElement)
+                                      ? this.state.inFocus[field]
+                                      : false
+                                  }
+                                  value={formData?.[field]}
+                                  required={
+                                    schema.required.indexOf(field) !== -1
+                                  }
+                                  onChange={this.onChangeField}
+                                  onBlur={this.onBlurField}
+                                  onClick={this.onClickInput}
+                                  key={field}
+                                  error={this.state.errors[field]}
+                                />
                               ))}
                             </Segment>
                           </Accordion.Content>
@@ -656,13 +797,22 @@ class Form extends Component {
                 document.getElementById('sidebar-metadata'),
               )}
 
-            <SlotRenderer name="belowContent" content={this.props.content} navRoot={navRoot} />
+            <SlotRenderer
+              name="belowContent"
+              content={this.props.content}
+              navRoot={navRoot}
+            />
           </Container>
         </>
       )
     ) : (
       <Container>
-        <UiForm method="post" onSubmit={this.onSubmit} error={keys(this.state.errors).length > 0} className={settings.verticalFormTabs ? 'vertical-form' : ''}>
+        <UiForm
+          method="post"
+          onSubmit={this.onSubmit}
+          error={keys(this.state.errors).length > 0}
+          className={settings.verticalFormTabs ? 'vertical-form' : ''}
+        >
           <fieldset className="invisible">
             <Segment.Group raised>
               {schema && schema.fieldsets.length > 1 && (
@@ -692,8 +842,31 @@ class Form extends Component {
                             {this.props.title}
                           </Segment>
                         ),
-                        item.description && <Message attached="bottom">{item.description}</Message>,
-                        ...map(item.fields, (field, index) => <Field {...schema.properties[field]} id={field} formData={formData} fieldSet={item.id} focus={this.state.inFocus[field]} value={formData?.[field]} required={schema.required.indexOf(field) !== -1} onChange={this.props.editable ? this.onChangeField : () => {}} onBlur={this.onBlurField} onClick={this.onClickInput} key={field} error={this.state.errors[field]} />),
+                        item.description && (
+                          <Message attached="bottom">
+                            {item.description}
+                          </Message>
+                        ),
+                        ...map(item.fields, (field, index) => (
+                          <Field
+                            {...schema.properties[field]}
+                            id={field}
+                            formData={formData}
+                            fieldSet={item.id}
+                            focus={this.state.inFocus[field]}
+                            value={formData?.[field]}
+                            required={schema.required.indexOf(field) !== -1}
+                            onChange={
+                              this.props.editable
+                                ? this.onChangeField
+                                : () => {}
+                            }
+                            onBlur={this.onBlurField}
+                            onClick={this.onClickInput}
+                            key={field}
+                            error={this.state.errors[field]}
+                          />
+                        )),
                       ],
                     }))}
                   />
@@ -706,23 +879,78 @@ class Form extends Component {
                       <h1 style={{ fontSize: '16px' }}> {this.props.title}</h1>
                     </Segment>
                   )}
-                  {this.props.description && <Segment secondary>{this.props.description}</Segment>}
-                  {keys(this.state.errors).length > 0 && <Message icon="warning" negative attached header={this.props.intl.formatMessage(messages.error)} content={this.props.intl.formatMessage(messages.thereWereSomeErrors)} />}
-                  {this.props.error && <Message icon="warning" negative attached header={this.props.intl.formatMessage(messages.error)} content={this.props.error.message} />}
+                  {this.props.description && (
+                    <Segment secondary>{this.props.description}</Segment>
+                  )}
+                  {keys(this.state.errors).length > 0 && (
+                    <Message
+                      icon="warning"
+                      negative
+                      attached
+                      header={this.props.intl.formatMessage(messages.error)}
+                      content={this.props.intl.formatMessage(
+                        messages.thereWereSomeErrors,
+                      )}
+                    />
+                  )}
+                  {this.props.error && (
+                    <Message
+                      icon="warning"
+                      negative
+                      attached
+                      header={this.props.intl.formatMessage(messages.error)}
+                      content={this.props.error.message}
+                    />
+                  )}
                   {map(schema.fieldsets[0].fields, (field) => (
-                    <Field {...schema.properties[field]} id={field} value={formData?.[field]} required={schema.required.indexOf(field) !== -1} onChange={this.onChangeField} onBlur={this.onBlurField} onClick={this.onClickInput} key={field} error={this.state.errors[field]} />
+                    <Field
+                      {...schema.properties[field]}
+                      id={field}
+                      value={formData?.[field]}
+                      required={schema.required.indexOf(field) !== -1}
+                      onChange={this.onChangeField}
+                      onBlur={this.onBlurField}
+                      onClick={this.onClickInput}
+                      key={field}
+                      error={this.state.errors[field]}
+                    />
                   ))}
                 </Segment>
               )}
               {!this.props.hideActions && (
                 <Segment className="actions" clearing>
                   {onSubmit && (
-                    <Button basic primary floated="right" type="submit" aria-label={this.props.submitLabel ? this.props.submitLabel : this.props.intl.formatMessage(messages.save)} title={this.props.submitLabel ? this.props.submitLabel : this.props.intl.formatMessage(messages.save)} loading={this.props.loading}>
+                    <Button
+                      basic
+                      primary
+                      floated="right"
+                      type="submit"
+                      aria-label={
+                        this.props.submitLabel
+                          ? this.props.submitLabel
+                          : this.props.intl.formatMessage(messages.save)
+                      }
+                      title={
+                        this.props.submitLabel
+                          ? this.props.submitLabel
+                          : this.props.intl.formatMessage(messages.save)
+                      }
+                      loading={this.props.loading}
+                    >
                       <Icon className="circled" name={aheadSVG} size="30px" />
                     </Button>
                   )}
                   {onCancel && (
-                    <Button basic secondary aria-label={this.props.intl.formatMessage(messages.cancel)} title={this.props.intl.formatMessage(messages.cancel)} floated="right" onClick={this.onCancel}>
+                    <Button
+                      basic
+                      secondary
+                      aria-label={this.props.intl.formatMessage(
+                        messages.cancel,
+                      )}
+                      title={this.props.intl.formatMessage(messages.cancel)}
+                      floated="right"
+                      onClick={this.onCancel}
+                    >
                       <Icon className="circled" name={clearSVG} size="30px" />
                     </Button>
                   )}
