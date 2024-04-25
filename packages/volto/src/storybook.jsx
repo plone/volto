@@ -1392,9 +1392,9 @@ export default class Wrapper extends Component {
       <Provider store={store}>
         <PluggablesProvider>
           <IntlProvider
-            locale={this.props.customStore.intl.locale}
-            messages={this.props.customStore.intl.messages}
-            defaultLocale={this.props.customStore.intl.defaultLocale ?? 'en'}
+            locale={store.getState().intl.locale}
+            messages={store.getState().intl.messages}
+            defaultLocale={store.getState().intl.defaultLocale ?? 'en'}
           >
             <StaticRouter location={this.props.location}>
               <div className="volto-storybook-container">
