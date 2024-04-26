@@ -14,6 +14,6 @@
  * with the "object promises" and that's our "object promises" (which it calls
  * internally "asyncItems").
  */
-export function asyncConnect(asyncItems: any, mapStateToProps: any, mapDispatchToProps: any, mergeProps: any, options: any): (Component: any) => any;
+export function asyncConnect(asyncItems: any, mapStateToProps?: any, mapDispatchToProps?: any, mergeProps?: any, options?: any): (Component: any) => any;
 export const ReduxAsyncConnect: any;
 export { loadOnServer, loadAsyncConnect } from "./ssr";
