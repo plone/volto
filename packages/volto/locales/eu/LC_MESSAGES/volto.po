@@ -3,19 +3,20 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-09-15T08:53:14.294Z\n"
-"PO-Revision-Date: \n"
-"Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
+"PO-Revision-Date: 2024-04-26 11:08+0000\n"
+"Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
+"Language-Team: Basque <https://hosted.weblate.org/projects/plone/volto-main/"
+"eu/>\n"
 "Language: eu\n"
-"Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"MIME-Version: 1.0\n"
+"X-Generator: Weblate 5.5.1\n"
 "Language-Code: eu\n"
 "Language-Name: Basque\n"
 "Preferred-Encodings: utf-8\n"
 "Domain: volto\n"
-"X-Generator: Poedit 2.3\n"
 "X-Poedit-Bookmarks: -1,38,-1,-1,-1,-1,-1,-1,-1,-1\n"
 
 #. Default: "<p>Add some HTML here</p>"
@@ -143,7 +144,7 @@ msgstr "Gehitu blokea"
 #. Default: "Add block in position {index}"
 #: components/manage/Blocks/Container/NewBlockAddButton
 msgid "Add block in position {index}"
-msgstr ""
+msgstr "Gehitu blokea {index} posizioan"
 
 #. Default: "Add block…"
 #: helpers/MessageLabels/MessageLabels
@@ -173,7 +174,7 @@ msgstr "Gehitu data"
 #. Default: "Add element to container"
 #: components/manage/Blocks/Container/SimpleContainerToolbar
 msgid "Add element to container"
-msgstr ""
+msgstr "Gehitu elementua edukiontzira"
 
 #. Default: "Add field"
 #: components/manage/Widgets/SchemaWidget
@@ -288,12 +289,14 @@ msgstr "Produktu gehigarria ondo eguneratu da"
 #. Default: "Advanced facet?"
 #: components/manage/Blocks/Search/schema
 msgid "Advanced facet?"
-msgstr ""
+msgstr "Fazeta aurreratua?"
 
 #. Default: "Advanced facets are initially hidden and displayed on demand"
 #: components/manage/Blocks/Search/schema
 msgid "Advanced facets are initially hidden and displayed on demand"
 msgstr ""
+"Fazeta aurreratuak hasieran ezkutatuta daude eta eskatzen denean erakutsiko "
+"dira"
 
 #. Default: "Album view"
 #: config/Views
@@ -412,7 +415,7 @@ msgstr "Goraka"
 #. Default: "Assign the {role} role to {entry}"
 #: components/manage/Sharing/Sharing
 msgid "Assign the {role} role to {entry}"
-msgstr ""
+msgstr "Esleitu {role} rola {entry} sarrerari."
 
 #. Default: "Assignments"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -491,7 +494,7 @@ msgstr "Nabigazio arrastoa"
 #. Default: "Broken relations"
 #: components/manage/Controlpanels/Relations/BrokenRelations
 msgid "Broken relations"
-msgstr ""
+msgstr "Apurtutako erlazioak"
 
 #. Default: "Browse"
 #: components/manage/Contents/ContentsUploadModal
@@ -632,7 +635,7 @@ msgstr "Garbitu filtroak"
 #. Default: "Clear search"
 #: components/manage/BlockChooser/BlockChooserSearch
 msgid "Clear search"
-msgstr ""
+msgstr "Garbitu bilaketa"
 
 #. Default: "Click to download full sized image"
 #: components/theme/View/ImageView
@@ -745,7 +748,7 @@ msgstr "Barneko elementuak"
 #. Default: "Container settings"
 #: components/manage/Blocks/Container/SimpleContainerToolbar
 msgid "Container settings"
-msgstr ""
+msgstr "Edukiontziaren ezarpenak"
 
 #. Default: "Content"
 #: components/manage/Controlpanels/Controlpanels
@@ -776,7 +779,7 @@ msgstr "Gurasoetan dauden eduki erregelak"
 #. Default: "Content that links to or references {title}"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Content that links to or references {title}"
-msgstr ""
+msgstr "{title} elementuari esteka edo erreferentzia egiten dion edukia"
 
 #. Default: "Content type created"
 #: components/manage/Controlpanels/ContentTypes
@@ -824,7 +827,7 @@ msgstr "Elementu honen Copyright adierazpena"
 #. Default: "Create or delete relations to target"
 #: helpers/MessageLabels/MessageLabels
 msgid "Create or delete relations to target"
-msgstr ""
+msgstr "Sortu edo ezabatu helbururako erlazioak"
 
 #. Default: "Create working copy"
 #: components/manage/Toolbar/More
@@ -1007,12 +1010,12 @@ msgstr "Ezabatu errenkada"
 #. Default: "Delete selected items?"
 #: components/manage/Contents/Contents
 msgid "Delete selected items?"
-msgstr ""
+msgstr "Ezabatu aukeratutako elementuak?"
 
 #. Default: "Delete this item?"
 #: components/manage/Contents/Contents
 msgid "Delete this item?"
-msgstr ""
+msgstr "Elementu hau ezabatu?"
 
 #. Default: "Deleted"
 #: components/manage/Controlpanels/Rules/Rules
@@ -1022,7 +1025,7 @@ msgstr "Ezabatuta"
 #. Default: "Deleting this item breaks {brokenReferences} {variation}."
 #: components/manage/Contents/Contents
 msgid "Deleting this item breaks {brokenReferences} {variation}."
-msgstr ""
+msgstr "Elementu hau ezabatzean {brokenReferences} {variation} apurtuko dira."
 
 #. Default: "Depth"
 #: components/manage/Widgets/QuerystringWidget
@@ -1318,7 +1321,7 @@ msgstr "Idatzi zure erabiltzaile-izena egiaztatu dezagun."
 #. Default: "Entries"
 #: components/manage/Blocks/ToC/Schema
 msgid "Entries"
-msgstr ""
+msgstr "Sarrerak"
 
 #. Default: "Error"
 #: components/manage/Add/Add
@@ -1463,7 +1466,7 @@ msgstr "Fitxategi izena"
 #. Default: "Filter"
 #: helpers/MessageLabels/MessageLabels
 msgid "Filter"
-msgstr ""
+msgstr "Iragazi"
 
 #. Default: "Filter Rules:"
 #: components/manage/Controlpanels/Rules/Rules
@@ -1493,7 +1496,7 @@ msgstr "Lehenengo"
 #. Default: "Fix relations"
 #: helpers/MessageLabels/MessageLabels
 msgid "Fix relations"
-msgstr ""
+msgstr "Konpondu erlazioak"
 
 #. Default: "Fixed width columns"
 #: config/Blocks
@@ -1570,7 +1573,7 @@ msgstr "Google Maps itsasteko blokea"
 #. Default: "Grid"
 #: components/manage/Blocks/Grid/schema
 msgid "Grid"
-msgstr ""
+msgstr "Sareta"
 
 #. Default: "Group"
 #: components/manage/Sharing/Sharing
@@ -1640,12 +1643,12 @@ msgstr "Fazeta ezkutatu?"
 #. Default: "Hide filters"
 #: components/manage/Blocks/Search/components/Facets
 msgid "Hide filters"
-msgstr ""
+msgstr "Ezkutatu iragazkiak"
 
 #. Default: "Hide title"
 #: components/manage/Blocks/ToC/Schema
 msgid "Hide title"
-msgstr ""
+msgstr "Ezkutatu izenburua"
 
 #. Default: "History"
 #: components/manage/History/History
@@ -1718,7 +1721,7 @@ msgstr "Irudi galeria"
 #. Default: "Image override"
 #: components/manage/Blocks/Teaser/schema
 msgid "Image override"
-msgstr ""
+msgstr "Irudia gainidatzi"
 
 #. Default: "Image size"
 #: components/manage/Blocks/Image/schema
@@ -1781,7 +1784,7 @@ msgstr "Sartu errendaka aurretik"
 #. Default: "Inspect relations"
 #: helpers/MessageLabels/MessageLabels
 msgid "Inspect relations"
-msgstr ""
+msgstr "Ikuskatu erlazioak"
 
 #. Default: "Install"
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -1833,6 +1836,8 @@ msgstr "Bloke okerra"
 #: helpers/MessageLabels/MessageLabels
 msgid "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
 msgstr ""
+"Ezin duzu pasahitza ezarri eta aldi berean pasahitza berrezartzeko mezua "
+"bidaltzea eskatu. Bietako bat bakarrik aukeratu dezakezu."
 
 #. Default: "Item batch size"
 #: components/manage/Widgets/QuerystringWidget
@@ -1946,7 +1951,7 @@ msgstr "Ezkerrean"
 #. Default: "Less filters"
 #: components/manage/Blocks/Search/components/Facets
 msgid "Less filters"
-msgstr ""
+msgstr "Iragazki gutxiago"
 
 #. Default: "Link"
 #: components/manage/Toolbar/Toolbar
@@ -1956,7 +1961,7 @@ msgstr "Esteka"
 #. Default: "Anchor link copied to the clipboard"
 #: helpers/MessageLabels/MessageLabels
 msgid "Link copied to clipboard"
-msgstr ""
+msgstr "Esteka arbelera kopiatu da"
 
 #. Default: "Link more"
 #: components/manage/Blocks/Listing/schema
@@ -1971,7 +1976,7 @@ msgstr "Loturaren berbideraketa bista"
 #. Default: "Link settings"
 #: components/manage/Blocks/Image/schema
 msgid "Link settings"
-msgstr ""
+msgstr "Estekaren ezarpenak"
 
 #. Default: "Link Title"
 #: components/manage/Blocks/Listing/schema
@@ -1993,13 +1998,13 @@ msgstr "Lotu itzulpena"
 #. Default: "Linking this item with hyperlink in text"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Linking this item with hyperlink in text"
-msgstr ""
+msgstr "Elementu hau esteka eta testuaren estekatu"
 
 #. Default: "Links and references"
 #: components/manage/LinksToItem/LinksToItem
 #: components/manage/Toolbar/More
 msgid "Links and references"
-msgstr ""
+msgstr "Esteka eta erreferentziak"
 
 #. Default: "Listing"
 #: components/manage/Blocks/Listing/schema
@@ -2055,7 +2060,7 @@ msgstr "Erabiltzaile-izena"
 #. Default: "Logo of"
 #: components/theme/Logo/Logo
 msgid "Logo of"
-msgstr ""
+msgstr "Logoa"
 
 #. Default: "Logout"
 #: components/manage/Toolbar/PersonalTools
@@ -2101,7 +2106,7 @@ msgstr "Eskuz edo automatikoki gehitu da?"
 #. Default: "Many relations found. Please search."
 #: helpers/MessageLabels/MessageLabels
 msgid "Many relations found. Please search."
-msgstr ""
+msgstr "Erlazio asko aurkitu dira. Erabili bilaketa mesedez."
 
 #. Default: "Maps"
 #: components/manage/Blocks/Maps/MapsSidebar
@@ -2183,7 +2188,7 @@ msgstr "Gehiago"
 #. Default: "More filters"
 #: components/manage/Blocks/Search/components/Facets
 msgid "More filters"
-msgstr ""
+msgstr "Iragazki gehiago"
 
 #. Default: "More information about the upgrade procedure can be found in the documentation section of plone.org in the Upgrade Guide."
 #: components/manage/Controlpanels/UpgradeControlPanel
@@ -2301,7 +2306,7 @@ msgstr "Ez da gehigarririk aurkitu"
 #. Default: "No broken relations found."
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 msgid "No broken relations found."
-msgstr ""
+msgstr "Ez da apurtutako erlaziorik aurkitu."
 
 #. Default: "There is no connection to the server, due to a timeout o no network connection."
 #: components/theme/RequestTimeout/RequestTimeout
@@ -2341,7 +2346,7 @@ msgstr "Ez da elementurik aukeratu"
 #. Default: "No links to this item found."
 #: components/manage/LinksToItem/LinksToItem
 msgid "No links to this item found."
-msgstr ""
+msgstr "Ez da elementu honetarako estekarik aurkitu."
 
 #. Default: "No map selected"
 #: components/manage/Blocks/Maps/MapsSidebar
@@ -2364,7 +2369,7 @@ msgstr "Ez du aukerarik"
 #. Default: "No relation found"
 #: helpers/MessageLabels/MessageLabels
 msgid "No relation found"
-msgstr ""
+msgstr "Ez da erlazioa aurkitu"
 
 #. Default: "No results found"
 #: components/manage/BlockChooser/BlockChooser
@@ -2469,7 +2474,7 @@ msgstr "Ireki elementu bilatzailea"
 #. Default: "Ordered"
 #: components/manage/Blocks/ToC/Schema
 msgid "Ordered"
-msgstr ""
+msgstr "Ordenatuta"
 
 #. Default: "Origin"
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -2479,7 +2484,7 @@ msgstr "Jatorria"
 #. Default: "Overview of relations of all content items"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Overview of relations of all content items"
-msgstr ""
+msgstr "Elementu guztien erlazioak"
 
 #. Default: "Page"
 #: components/manage/Toolbar/Toolbar
@@ -2559,7 +2564,7 @@ msgstr "Elementu honen edukia sortzearen arduradunak. Idatzi erabiltzaile-izen b
 #. Default: "Please choose an existing content as source for this element"
 #: components/manage/Blocks/Teaser/DefaultBody
 msgid "Please choose an existing content as source for this element"
-msgstr ""
+msgstr "Aukeratu existitzen den elementu bat elementu honetarako jatorri gisa"
 
 #. Default: "Please continue with the upgrade."
 #: components/manage/Controlpanels/Controlpanels
@@ -2599,7 +2604,7 @@ msgstr "Eguneratu plone.restapi bertsioa 8.24.0 edo handiago batera"
 #. Default: "Please upgrade to plone.restapi >= 8.39.0."
 #: components/manage/Controlpanels/Relations/Relations
 msgid "Please upgrade to plone.restapi >= 8.39.0."
-msgstr ""
+msgstr "Eguneratu plone.restapi >= 8.39.0 izan dadin."
 
 #. Default: "Plone Foundation"
 #: components/theme/Footer/Footer
@@ -2723,12 +2728,12 @@ msgstr "Konplexutasuna gutxitu"
 #. Default: "Referencing this item as related item"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Referencing this item as related item"
-msgstr ""
+msgstr "Elementu hau erlazionatutako elementu gisa erreferentziatzen da"
 
 #. Default: "Referencing this item with {relationship}"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Referencing this item with {relationship}"
-msgstr ""
+msgstr "Elementu hau {relationship} erabiliz erreferentziatzen da"
 
 #. Default: "Register"
 #: components/theme/Anontools/Anontools
@@ -2746,24 +2751,24 @@ msgstr "Erregistro formularioa"
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 #: helpers/MessageLabels/MessageLabels
 msgid "Relation name"
-msgstr ""
+msgstr "Erlazioaren izena"
 
 #. Default: "Relations"
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/Relations/Relations
 #: helpers/MessageLabels/MessageLabels
 msgid "Relations"
-msgstr ""
+msgstr "Erlazioak"
 
 #. Default: "Relations are editable with plone.api >= 2.0.3."
 #: components/manage/Controlpanels/Relations/RelationsListing
 msgid "Relations are editable with plone.api >= 2.0.3."
-msgstr ""
+msgstr "Erlazioak plone.api >= 2.0.3 erabiliz editatu daitezke."
 
 #. Default: "Relations updated"
 #: helpers/MessageLabels/MessageLabels
 msgid "Relations updated"
-msgstr ""
+msgstr "Erlazioak eguneratu egin dira"
 
 #. Default: "Relevance"
 #: components/theme/Search/Search
@@ -2778,7 +2783,7 @@ msgstr "Ezabatu"
 #. Default: "Remove element {index}"
 #: components/manage/Blocks/Container/EditBlockWrapper
 msgid "Remove element {index}"
-msgstr ""
+msgstr "Ezabatu {index} elementua"
 
 #. Default: "Remove item"
 #: components/manage/Widgets/ObjectListWidget
@@ -2867,7 +2872,7 @@ msgstr "Beharrezko balioak falta dira"
 #. Default: "Reset element {index}"
 #: components/manage/Blocks/Container/EditBlockWrapper
 msgid "Reset element {index}"
-msgstr ""
+msgstr "Berrezarri {index} elementua"
 
 #. Default: "Reset title"
 #: components/manage/Widgets/VocabularyTermsWidget
@@ -2877,7 +2882,7 @@ msgstr "Berrezarri izenburua"
 #. Default: "Reset the block"
 #: components/manage/Blocks/Teaser/Data
 msgid "Reset the block"
-msgstr ""
+msgstr "Berrezarri blokea"
 
 #. Default: "Results limit"
 #: components/manage/Widgets/QuerystringWidget
@@ -2987,7 +2992,7 @@ msgstr "Gordeta"
 #. Default: "Scheduled"
 #: components/manage/Contents/ContentsItem
 msgid "Scheduled"
-msgstr ""
+msgstr "Programatuta"
 
 #. Default: "Schema"
 #: components/manage/Controlpanels/ContentTypesActions
@@ -3066,7 +3071,7 @@ msgstr "${term} bilatuz aurkitu dena"
 #. Default: "Search sources by title or path"
 #: helpers/MessageLabels/MessageLabels
 msgid "Search sources by title or path"
-msgstr ""
+msgstr "Bilatu jatorriak izenburu edo pathez"
 
 #. Default: "Search targets by title or path"
 #: helpers/MessageLabels/MessageLabels
