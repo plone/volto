@@ -17,6 +17,17 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.29 (2024-04-26)
+
+### Feature
+
+- Add Vite (client only, no SSR) build. Update Next.js 14.2.2 and Remix to 2.8.0 @sneridagh [#5970](https://github.com/plone/volto/issues/5970)
+
+### Bugfix
+
+- Add possibility to pass down `locale`, `messages` and `defaultLocale` properties inside the `customStore` object to `IntlProvider`. With this change we can control react-intl language provider from inside storybook and switch for example from english to german with storybook args. [#5976](https://github.com/plone/volto/issues/5976)
+- Fix no router link in logo @sneridagh [#5981](https://github.com/plone/volto/issues/5981)
+
 ## 18.0.0-alpha.28 (2024-04-23)
 
 ### Bugfix
