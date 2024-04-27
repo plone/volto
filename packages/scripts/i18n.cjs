@@ -18,6 +18,8 @@ const packageJson = require(path.join(projectRootPath, 'package.json'));
 const { program } = require('commander');
 const chalk = require('chalk');
 
+const fillPotPo = require('fill-pot-po');
+
 /**
  * Extract messages into separate JSON files
  * @function extractMessages
@@ -155,9 +157,9 @@ function poToJson({ registry, addonMode }) {
               (item.comments[0] && item.comments[0].startsWith('. Default: ')
                 ? item.comments[0].replace('. Default: ', '')
                 : item.comments[0] &&
-                  item.comments[0].startsWith('defaultMessage:')
-                ? item.comments[0].replace('defaultMessage: ', '')
-                : '')
+                    item.comments[0].startsWith('defaultMessage:')
+                  ? item.comments[0].replace('defaultMessage: ', '')
+                  : '')
             : item.msgstr[0];
       }
     });
@@ -229,6 +231,33 @@ function formatHeader(comments, headers) {
  * @return {undefined}
  */
 function syncPoByPot() {
+  const cb = ([result, filenames]) => {
+    result
+      ? console.log(`Writen file: ${filenames.join(', ')}`)
+      : console.log('Error');
+  };
+  // fillPotPo(cb, {
+  //   potSources: 'locales/*.pot',
+  //   poSources: 'locales/**/*.po',
+  //   writeFiles: false,
+  //   logResults: true,
+  // });
+  map(glob('locales/**/*.po'), (filename) => {
+    fillPotPo(cb, {
+      potSources: 'locales/volto.pot',
+      poSources: filename,
+      writeFiles: true,
+      destDir: `${filename}/..`,
+    });
+  });
+}
+
+/**
+ * Sync po by the pot file
+ * @function syncPoByPotOld
+ * @return {undefined}
+ */
+function syncPoByPotOld() {
   const pot = Pofile.parse(fs.readFileSync('locales/volto.pot', 'utf8'));
   map(glob('locales/**/*.po'), (filename) => {
     const po = Pofile.parse(fs.readFileSync(filename, 'utf8'));
