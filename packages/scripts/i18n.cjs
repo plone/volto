@@ -248,6 +248,7 @@ function syncPoByPot() {
       poSources: filename,
       writeFiles: true,
       destDir: `${filename}/..`,
+      includeGenerator: false,
     });
   });
 }
