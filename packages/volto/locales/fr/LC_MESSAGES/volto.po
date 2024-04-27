@@ -4328,7 +4328,7 @@ msgstr "Saisissez votre nouveau mot de passe, minimum 8 caractères."
 #. Default: "Enter a user name, usually something like "jsmith". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormUsernameDescription"
-msgstr "Saisissez un nom d'utilisateur, haituellement quelque chose comme "jdupont". Pas d'espace ou de caractères spéciaux. Les noms d'utilisateurs et mots de passes sont sensible à la casse, vérifiez que la touche verrouillage majuscule n'est pas activée. C'est le nom utilisé pour se connecté."
+msgstr "Saisissez un nom d'utilisateur, haituellement quelque chose comme \"jdupont\". Pas d'espace ou de caractères spéciaux. Les noms d'utilisateurs et mots de passes sont sensible à la casse, vérifiez que la touche verrouillage majuscule n'est pas activée. C'est le nom utilisé pour se connecté."
 
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema

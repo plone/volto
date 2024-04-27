@@ -3999,7 +3999,7 @@ msgstr "Erabili formulario hau erregela berria definitzeko"
 #. Default: "Use the form below to define, change or remove content rules. Rules will automatically perform actions on content when certain triggers take place. After defining rules, you may want to go to a folder to assign them, using the 'rules' item in the actions menu."
 #: components/manage/Controlpanels/Rules/Rules
 msgid "Use the form below to define, change or remove content rules. Rules will automatically perform actions on content when certain triggers take place. After defining rules, you may want to go to a folder to assign them, using the 'rules' item in the actions menu."
-msgstr "Erabili formulario hau erregela berriak sortu, aldatu edo ezabatzeko. Erregelek ekintza jakin batzuk gertatzean akzio jakin batzuk exekutatuko dituzte. Erregelak definitu ostean, erregelak zein tokitan esleitu aukeratu beharko duzu akzioen menuko "erregelak" erabiliz."
+msgstr "Erabili formulario hau erregela berriak sortu, aldatu edo ezabatzeko. Erregelek ekintza jakin batzuk gertatzean akzio jakin batzuk exekutatuko dituzte. Erregelak definitu ostean, erregelak zein tokitan esleitu aukeratu beharko duzu akzioen menuko \"erregelak\" erabiliz."
 
 #. Default: "Used for programmatic access to the fieldset."
 #: components/manage/Widgets/SchemaWidget
@@ -4328,7 +4328,7 @@ msgstr "Idatzi zure pasahitz berria. Gutxienez 8 karaktere."
 #. Default: "Enter a user name, usually something like "jsmith". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormUsernameDescription"
-msgstr "Idatzi zure erabiltzaile izena, "jgarmendia" moduko zerbait. Ez da onartzen espaziorik edo karaktere berezirik. Erabiltzaile izenak eta pasahitzak letra larri eta xeheak bereizten dituzte. Hau da webgunera sartzeko erabiliko den izena."
+msgstr "Idatzi zure erabiltzaile izena, \"jgarmendia\" moduko zerbait. Ez da onartzen espaziorik edo karaktere berezirik. Erabiltzaile izenak eta pasahitzak letra larri eta xeheak bereizten dituzte. Hau da webgunera sartzeko erabiliko den izena."
 
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema

@@ -3997,7 +3997,7 @@ msgstr "Nutzen Sie das folgende Formular zum Definieren neuer Inhaltsregeln"
 #. Default: "Use the form below to define, change or remove content rules. Rules will automatically perform actions on content when certain triggers take place. After defining rules, you may want to go to a folder to assign them, using the 'rules' item in the actions menu."
 #: components/manage/Controlpanels/Rules/Rules
 msgid "Use the form below to define, change or remove content rules. Rules will automatically perform actions on content when certain triggers take place. After defining rules, you may want to go to a folder to assign them, using the 'rules' item in the actions menu."
-msgstr "Nutzen Sie das folgende Formular zum Definieren, Ändern oder Entfernen von Inhaltsregeln. Inhaltsregeln führen automatische Aktionen auf Inhalten aus, wenn bestimmte Auslöser vorhanden sind. Nach dem Definieren von Regeln können Sie diese einer Seite oder einem beliebigen Inhaltselement zuweisen, indem Sie das "Inhaltsregeln" Bedienelement im Aktionsmenü nutzen."
+msgstr "Nutzen Sie das folgende Formular zum Definieren, Ändern oder Entfernen von Inhaltsregeln. Inhaltsregeln führen automatische Aktionen auf Inhalten aus, wenn bestimmte Auslöser vorhanden sind. Nach dem Definieren von Regeln können Sie diese einer Seite oder einem beliebigen Inhaltselement zuweisen, indem Sie das \"Inhaltsregeln\" Bedienelement im Aktionsmenü nutzen."
 
 #. Default: "Used for programmatic access to the fieldset."
 #: components/manage/Widgets/SchemaWidget
@@ -4326,7 +4326,7 @@ msgstr "Geben Sie Ihr neues Passwort ein. Das Passwort muss aus mindestens 8 Zei
 #. Default: "Enter a user name, usually something like "jsmith". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormUsernameDescription"
-msgstr "Geben Sie einen Nutzernamen ein, beispielsweise etwas wie "m.muster". Benutzen Sie keine Leer- oder Sonderzeichen. Bitte beachten Sie Groß- und Kleinschreibung und stellen Sie sicher, dass die Feststelltaste nicht aktiviert ist. Dieser Name wird zum Anmelden genutzt."
+msgstr "Geben Sie einen Nutzernamen ein, beispielsweise etwas wie \"m.muster\". Benutzen Sie keine Leer- oder Sonderzeichen. Bitte beachten Sie Groß- und Kleinschreibung und stellen Sie sicher, dass die Feststelltaste nicht aktiviert ist. Dieser Name wird zum Anmelden genutzt."
 
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema
