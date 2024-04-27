@@ -12,7 +12,6 @@ msgstr ""
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8\n"
 "Domain: volto\n"
-"X-Generator: fill-pot-po/3.0.4\n"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
