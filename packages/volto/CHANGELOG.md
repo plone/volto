@@ -17,6 +17,74 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.29 (2024-04-26)
+
+### Feature
+
+- Add Vite (client only, no SSR) build. Update Next.js 14.2.2 and Remix to 2.8.0 @sneridagh [#5970](https://github.com/plone/volto/issues/5970)
+
+### Bugfix
+
+- Add possibility to pass down `locale`, `messages` and `defaultLocale` properties inside the `customStore` object to `IntlProvider`. With this change we can control react-intl language provider from inside storybook and switch for example from english to german with storybook args. [#5976](https://github.com/plone/volto/issues/5976)
+- Fix no router link in logo @sneridagh [#5981](https://github.com/plone/volto/issues/5981)
+
+## 18.0.0-alpha.28 (2024-04-23)
+
+### Bugfix
+
+- Fix broken user portrait in personal tools menu. @davisagli [#2927](https://github.com/plone/volto/issues/2927)
+- Fix pt_BR translation of invalid email message. @wesleybl [#5953](https://github.com/plone/volto/issues/5953)
+- Fixed rendering if ConditionalLink has no children @pnicolli [#5963](https://github.com/plone/volto/issues/5963)
+- Fix flaky test 'As editor I can add links' by using getSlateEditorAndType. @ksuess [#5965](https://github.com/plone/volto/issues/5965)
+
+### Internal
+
+- Reduced JavaScript bundle size of the production build. Code split several internal modules: Controlpanels, Form, Widgets among other small ones. @pnicolli @deodorhunter [#5295](https://github.com/plone/volto/issues/5295)
+- Improvements to the monorepo setup with utilities, especially ESLint. Build cached option to speedup operations. @sneridagh [#5969](https://github.com/plone/volto/issues/5969)
+
+### Documentation
+
+- Put nvm installation section into a separate include file. @animus888 [#5968](https://github.com/plone/volto/issues/5968)
+
+## 18.0.0-alpha.27 (2024-04-05)
+
+### Bugfix
+
+- Enhanced navigation reducer in Volto to keep items extra-data sent from the navigation endpoint @Hrittik20 [#5772](https://github.com/plone/volto/issues/5772)
+- Improve `ColorPickerWidget` typings @sneridagh [#5948](https://github.com/plone/volto/issues/5948)
+
+## 18.0.0-alpha.26 (2024-04-03)
+
+### Breaking
+
+- Use `id` instead of `title` for the fieldset's generated value when rendering a `Field` component in a form. @sneridagh [#5921](https://github.com/plone/volto/issues/5921)
+
+### Feature
+
+- Add parameters to `ContentsUploadModal` to be reusable in different scenarios. @erral [#5881](https://github.com/plone/volto/issues/5881)
+- Print error message from request in toast, if `clipboardRequest` return an error. @cekk [#5932](https://github.com/plone/volto/issues/5932)
+
+### Bugfix
+
+- Fix edge case in search options mangling when the options are false-ish sneridagh [#5869](https://github.com/plone/volto/issues/5869)
+- Does not show borders in addon block inputs. @wesleybl [#5894](https://github.com/plone/volto/issues/5894)
+- Fix `error is null` in `FormFieldWrapper.jsx`.  @mauritsvanrees [#5919](https://github.com/plone/volto/issues/5919)
+- Updated Italian locales file `volto.po` with translation for "yes" from "si" to "sì". @yurj [#5924](https://github.com/plone/volto/issues/5924)
+- Fix self-registration form. @davisagli [#5935](https://github.com/plone/volto/issues/5935)
+
+### Internal
+
+- Changed relative path to absolute in `DefaultView.jsx` for the `RenderBlocks` component to make it easier to customize. @agan-k [#5917](https://github.com/plone/volto/issues/5917)
+- Fix cypress test "As editor, I can unlock a locked page". @wesleybl [#5933](https://github.com/plone/volto/issues/5933)
+- Fix cypress test "Navigate to different pages on two different listings". @ichim-david [#5934](https://github.com/plone/volto/issues/5934)
+- Add a new label `needs: triage` to new bug reports. @stevepiercy [#5940](https://github.com/plone/volto/issues/5940)
+
+### Documentation
+
+- Add missing step in Storybook 6 to 8 migration. @sneridagh [#5913](https://github.com/plone/volto/issues/5913)
+- Fix redirect of `https://sustainability.eionet.europa.eu` to `https://www.eea.europa.eu/en/topics/at-a-glance/sustainability/`. @stevepiercy [#5941](https://github.com/plone/volto/issues/5941)
+- Cleanup obsolete EEA projects from README and update info about EEA main website. @avoinea [#5943](https://github.com/plone/volto/issues/5943)
+
 ## 18.0.0-alpha.25 (2024-03-24)
 
 ### Internal

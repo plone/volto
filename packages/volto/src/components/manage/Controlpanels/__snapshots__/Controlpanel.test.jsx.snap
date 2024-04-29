@@ -9,7 +9,11 @@ exports[`Controlpanel renders a controlpanel component 1`] = `
       class="ui container"
     >
       <div
-        id="form"
+        data-schema="{
+  \\"fieldsets\\": [],
+  \\"properties\\": {}
+}"
+        id="Form"
       />
     </div>
   </div>

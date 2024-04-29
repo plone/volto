@@ -8,6 +8,26 @@
 
 <!-- towncrier release notes start -->
 
+## 1.5.6 (2024-04-23)
+
+### Bugfix
+
+- Remove `parcel-optimizer-react-client` plugin @sneridagh [#5887](https://github.com/plone/volto/issues/5887)
+
+### Internal
+
+- Improvements to the monorepo setup with utilities, especially ESLint. Build cached option to speedup operations. @sneridagh [#5969](https://github.com/plone/volto/issues/5969)
+
+## 1.5.5 (2024-04-03)
+
+### Bugfix
+
+- Fix registry wrong default primitive type @sneridagh [#5925](https://github.com/plone/volto/issues/5925)
+
+### Internal
+
+- Sync TypeScript version @sneridagh [#5912](https://github.com/plone/volto/issues/5912)
+
 ## 1.5.4 (2024-03-21)
 
 ### Bugfix

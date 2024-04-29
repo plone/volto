@@ -12,7 +12,8 @@ import { withCookies } from 'react-cookie';
 import { defineMessages, injectIntl } from 'react-intl';
 import { toast } from 'react-toastify';
 
-import { Form, Toast } from '@plone/volto/components';
+import { Toast } from '@plone/volto/components';
+import { Form } from '@plone/volto/components/manage/Form';
 import languages from '@plone/volto/constants/Languages';
 import { changeLanguage } from '@plone/volto/actions';
 import { toGettextLang } from '@plone/volto/helpers';

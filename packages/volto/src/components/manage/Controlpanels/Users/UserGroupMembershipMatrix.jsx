@@ -7,7 +7,7 @@ import { isEqual } from 'lodash';
 
 import { messages } from '@plone/volto/helpers';
 import { listGroups } from '@plone/volto/actions'; // getRegistry
-import UserGroupMembershipListing from './UserGroupMembershipListing';
+import UserGroupMembershipListing from '@plone/volto/components/manage/Controlpanels/Users/UserGroupMembershipListing';
 
 const UserGroupMembershipMatrix = ({ many_users, many_groups }) => {
   const intl = useIntl();
