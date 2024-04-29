@@ -714,6 +714,7 @@ class Form extends Component {
               navRoot={navRoot}
               type={type}
               pathname={this.props.pathname}
+              onTabChange={this.onTabChange}
               selectedBlock={this.state.selected}
               multiSelected={this.state.multiSelected}
               manage={this.props.isAdminForm}
