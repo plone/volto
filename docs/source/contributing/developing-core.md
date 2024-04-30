@@ -84,38 +84,8 @@ When developing a project using Plone, Yarn or other package managers may be use
 
 ### nvm
 
-The following terminal session commands use `bash` for the shell.
-Adapt them for your flavor of shell.
-
-```{seealso}
-See the [`nvm` install and update script documentation](https://github.com/nvm-sh/nvm#install--update-script).
-For the `fish` shell, see [`nvm.fish`](https://github.com/jorgebucaran/nvm.fish).
+```{include} ./install-nvm.md
 ```
-
-1.  Create your shell profile, if it does not exist.
-
-    ```shell
-    touch ~/.bash_profile
-    ```
-
-2.  Download and run the `nvm` install and update script, and pipe it into `bash`.
-
-    ```shell
-    curl -o- https://raw.githubusercontent.com/creationix/nvm/v{NVM_VERSION}/install.sh | bash
-    ```
-
-3.  Source your profile.
-    Alternatively close the session and open a new one.
-
-    ```shell
-    source ~/.bash_profile
-    ```
-
-4.  Verify that the `nvm` version is that which you just installed or updated:
-
-    ```shell
-    nvm --version
-    ```
 
 
 ### Node.js
@@ -316,24 +286,69 @@ Used by Volto, you can also use it in other JavaScript frameworks and environmen
 
 `@plone/volto-slate` is the glue package that provides support for the Slate library in Volto.
 
-## Supported frameworks
 
-Plone supports several frontend implementations, the main one being Volto as the default frontend and reference React-based implementation.
-There are plans to support implementations in other frontends, including NextJS and Remix.
+## Supported frontends
 
-### Plone
+Plone 6 comes with two frontend {term}`reference implementation`s.
+Volto is the default frontend, and is React-based.
+Classic UI is the Python-based, server-side rendered frontend.
 
-The default frontend and reference React-based implementation in Plone is Volto.
-In the `apps` folder you'll find a Volto project scaffolding that uses Volto as a library.
-This is the same as the one that you'll have when running the Volto generator or `cookiecutter-plone-starter`.
+In Volto's `apps` folder, you'll find a Volto project scaffolding that uses Volto as a library.
+This is the same as that which you'll have when you run the Volto generator or `cookiecutter-plone-starter`.
 
-### NextJS
 
-Coming soon.
+## Experimental frontends
+
+Other frontends are currently under heavy development.
+They are marked as experimental and, for now, they are a proof of concept demonstrating that other frontends are possible.
+Although they do work now in an acceptable way, the implementation might change in the future.
+These implementations only show how to access the public Plone content in the current site, dealing with data fetching and routing.
+All implementations are located in the `apps` directory in a subdirectory according to their implementation name.
+They use the Plone frontend strategic packages, including `@plone/registry`, `@plone/client`, and `@plone/components`.
+
+
+### Next.js
+
+This frontend is a proof of concept using Next.js with Plone.
+
+You can try it out using the following command.
+
+```shell
+pnpm --filter plone-nextjs dev
+```
 
 ### Remix
 
-Coming soon.
+This frontend is a proof of concept using Remix with Plone.
+
+You can try it out using the following command.
+
+```shell
+pnpm --filter plone-remix dev
+```
+
+### Vite build (client only)
+
+This frontend is a proof of concept using a custom client build based in Vite with Plone.
+It uses `@tanstack/router` in combination with `@plone/client`, which in turns uses `@tanstack/query`.
+This build is suitable for applications that do not need server side generation, and it's client only.
+
+You can try it out using the following command.
+
+```shell
+pnpm --filter plone-vite dev
+```
+
+### Vite SSR build
+
+This frontend is a proof of concept using a custom build, based in Vite with SSR with Plone.
+It uses `@tanstack/router` in combination with `@plone/client` (which in turns uses `@tanstack/query`).
+
+You can try it out using the following command.
+
+```shell
+pnpm --filter plone-vite-ssr dev
+```
 
 ## Support libraries
 

@@ -15,13 +15,13 @@ import {
 import jwtDecode from 'jwt-decode';
 import {
   Icon,
-  ModalForm,
   Toast,
   Toolbar,
-  RenderGroups,
   Pagination,
   Error,
 } from '@plone/volto/components';
+import RenderGroups from '@plone/volto/components/manage/Controlpanels/Groups/RenderGroups';
+import { ModalForm } from '@plone/volto/components/manage/Form';
 import { Link } from 'react-router-dom';
 import {
   Helmet,
