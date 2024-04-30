@@ -7,7 +7,7 @@ import {
   errorViews,
   layoutViewsNamesMapping,
 } from './Views';
-import { nonContentRoutes } from './NonContentRoutes';
+import { nonContentRoutes, contextLessRoutes } from './NonContentRoutes';
 import {
   groupBlocksOrder,
   requiredBlocks,
@@ -110,6 +110,7 @@ let config = {
     legacyTraverse: process.env.RAZZLE_LEGACY_TRAVERSE || false,
     cookieExpires: 15552000, //in seconds. Default is 6 month (15552000)
     nonContentRoutes,
+    contextLessRoutes,
     imageObjects: ['Image'],
     reservedIds: ['login', 'layout', 'plone', 'zip', 'properties'],
     downloadableObjects: ['File'], //list of content-types for which the direct download of the file will be carried out if the user is not authenticated
@@ -118,9 +119,9 @@ let config = {
     openExternalLinkInNewTab: false,
     notSupportedBrowsers: ['ie'],
     defaultPageSize: 25,
-    isMultilingual: false,
-    supportedLanguages: ['en'],
-    defaultLanguage: 'en',
+    isMultilingual: true,
+    supportedLanguages: ['de', 'en'],
+    defaultLanguage: 'de',
     navDepth: 1,
     expressMiddleware: serverConfig.expressMiddleware, // BBB
     defaultBlockType: 'slate',

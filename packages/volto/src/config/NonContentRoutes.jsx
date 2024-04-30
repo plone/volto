@@ -1,5 +1,21 @@
 import config from '@plone/volto/registry';
 
+/**
+ * Array of routes that do not require context.
+ * @type {Array<string|RegExp>}
+ */
+export const contextLessRoutes = [
+  '/sitemap',
+  '/register',
+  '/change-password',
+  /\/controlpanel\/.*$/,
+  '/controlpanel',
+  '/personal-information',
+  '/personal-preferences',
+  /\/passwordreset\/.*$/,
+  '/passwordreset',
+];
+
 // Non Content Routes/Views
 // You can include either RegEx or a string representing the ending of the
 // nonContentRoute eg. '/add' will match '/foo/bar/add'
@@ -16,21 +32,12 @@ export const nonContentRoutes = [
   '/layout',
   '/login',
   '/logout',
-  '/sitemap',
-  '/register',
   '/rules',
   '/sharing',
   '/search',
-  '/change-password',
-  /\/controlpanel\/.*$/,
-  '/controlpanel',
   '/contact-form',
-  '/personal-information',
-  '/personal-preferences',
-  '/register',
-  /\/passwordreset\/.*$/,
-  '/passwordreset',
   '/create-translation',
   '/manage-translations',
+  ...contextLessRoutes,
   ...(config.settings?.externalRoutes?.map((route) => route.match.path) || []),
 ];

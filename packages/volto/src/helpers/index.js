@@ -24,6 +24,7 @@ export {
   getBaseUrl,
   getView,
   isCmsUi,
+  isContextLessRoute,
   getId,
   isUrl,
   normalizeUrl,

@@ -134,11 +134,22 @@ export function toPublicURL(url) {
 export const isCmsUi = memoize((currentPathname) => {
   const { settings } = config;
   const fullPath = currentPathname.replace(/\?.*$/, '');
-  // WARNING:
-  // not working properly for paths like /editors or similar
-  // because the regexp test does not take that into account
-  // https://github.com/plone/volto/issues/870
   return settings.nonContentRoutes.reduce(
+    (acc, route) => acc || new RegExp(route).test(`/${fullPath}`),
+    false,
+  );
+});
+
+/**
+ * Returns true if the current view is a contextLessRoute
+ * @method isContextLessRoute
+ * @param {string} currentPathname pathname of the current view
+ * @returns {boolean} true if the current view is a contextLessRoute
+ */
+export const isContextLessRoute = memoize((currentPathname) => {
+  const { settings } = config;
+  const fullPath = currentPathname.replace(/\?.*$/, '');
+  return settings.contextLessRoutes.reduce(
     (acc, route) => acc || new RegExp(route).test(`/${fullPath}`),
     false,
   );
