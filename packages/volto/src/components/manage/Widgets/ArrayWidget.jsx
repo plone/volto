@@ -30,7 +30,7 @@ import {
   MultiValueContainer,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
 
-import { FormFieldWrapper } from '@plone/volto/components';
+import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 
 const messages = defineMessages({
   select: {
