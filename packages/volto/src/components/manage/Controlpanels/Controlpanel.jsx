@@ -8,7 +8,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
-import { Helmet, tryParseJSON } from '@plone/volto/helpers';
+import {
+  Helmet,
+  tryParseJSON,
+  extractInvariantErrors,
+} from '@plone/volto/helpers';
 import { createPortal } from 'react-dom';
 import { Button, Container } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
@@ -131,9 +135,7 @@ class Controlpanel extends Component {
       const errorsList = tryParseJSON(error);
       let invariantErrors = [];
       if (Array.isArray(errorsList)) {
-        invariantErrors = errorsList
-          .filter((errorItem) => !('field' in errorItem))
-          .map((errorItem) => errorItem['message']);
+        invariantErrors = extractInvariantErrors(errorsList);
       }
 
       this.setState({ error: error });

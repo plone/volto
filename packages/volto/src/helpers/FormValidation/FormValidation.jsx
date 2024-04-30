@@ -406,3 +406,13 @@ export const validateFileUploadSize = (file, intlFunc) => {
   }
   return isValid;
 };
+
+/**
+ * Extract invariant errors given an array of errors.
+ * @param {Array} erros
+ */
+export const extractInvariantErrors = (erros) => {
+  return erros
+    .filter((errorItem) => !('field' in errorItem))
+    .map((errorItem) => errorItem['message']);
+};
