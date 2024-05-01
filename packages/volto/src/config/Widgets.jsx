@@ -1,39 +1,36 @@
-// The Widgets are forced to be imported not from the index but from its own
-// full path due to circular import issues
-
-import loadable from '@loadable/component';
-
-import AlignWidget from '@plone/volto/components/manage/Widgets/AlignWidget';
-import ButtonsWidget from '@plone/volto/components/manage/Widgets/ButtonsWidget';
-import ArrayWidget from '@plone/volto/components/manage/Widgets/ArrayWidget';
-import CheckboxWidget from '@plone/volto/components/manage/Widgets/CheckboxWidget';
-import FileWidget from '@plone/volto/components/manage/Widgets/FileWidget';
-import IdWidget from '@plone/volto/components/manage/Widgets/IdWidget';
-import PasswordWidget from '@plone/volto/components/manage/Widgets/PasswordWidget';
-import QueryWidget from '@plone/volto/components/manage/Widgets/QueryWidget';
-import QuerySortOnWidget from '@plone/volto/components/manage/Widgets/QuerySortOnWidget';
-import QuerystringWidget from '@plone/volto/components/manage/Widgets/QuerystringWidget';
-import SchemaWidget from '@plone/volto/components/manage/Widgets/SchemaWidget';
-import SelectWidget from '@plone/volto/components/manage/Widgets/SelectWidget';
-import TextareaWidget from '@plone/volto/components/manage/Widgets/TextareaWidget';
-import TextWidget from '@plone/volto/components/manage/Widgets/TextWidget';
-import TokenWidget from '@plone/volto/components/manage/Widgets/TokenWidget';
-import UrlWidget from '@plone/volto/components/manage/Widgets/UrlWidget';
-import InternalUrlWidget from '@plone/volto/components/manage/Widgets/InternalUrlWidget';
-import EmailWidget from '@plone/volto/components/manage/Widgets/EmailWidget';
-import NumberWidget from '@plone/volto/components/manage/Widgets/NumberWidget';
-import ImageSizeWidget from '@plone/volto/components/manage/Widgets/ImageSizeWidget';
-import RegistryImageWidget from '@plone/volto/components/manage/Widgets/RegistryImageWidget';
-
-import ReferenceWidget from '@plone/volto/components/manage/Widgets/ReferenceWidget';
-import ObjectBrowserWidget from '@plone/volto/components/manage/Widgets/ObjectBrowserWidget';
-
-import ObjectWidget from '@plone/volto/components/manage/Widgets/ObjectWidget';
-import ObjectListWidget from '@plone/volto/components/manage/Widgets/ObjectListWidget';
-import VocabularyTermsWidget from '@plone/volto/components/manage/Widgets/VocabularyTermsWidget';
-import SelectMetadataWidget from '@plone/volto/components/manage/Blocks/Search/widgets/SelectMetadataField';
-import SelectAutoComplete from '@plone/volto/components/manage/Widgets/SelectAutoComplete';
-import ColorPickerWidget from '@plone/volto/components/manage/Widgets/ColorPickerWidget';
+import {
+  AlignWidget,
+  ButtonsWidget,
+  ArrayWidget,
+  CheckboxWidget,
+  FileWidget,
+  IdWidget,
+  PasswordWidget,
+  QueryWidget,
+  QuerySortOnWidget,
+  QuerystringWidget,
+  SchemaWidget,
+  SelectWidget,
+  TextareaWidget,
+  TextWidget,
+  TokenWidget,
+  UrlWidget,
+  InternalUrlWidget,
+  EmailWidget,
+  NumberWidget,
+  ImageSizeWidget,
+  RegistryImageWidget,
+  ReferenceWidget,
+  ObjectBrowserWidget,
+  ObjectWidget,
+  ObjectListWidget,
+  VocabularyTermsWidget,
+  SelectMetadataWidget,
+  SelectAutoComplete,
+  ColorPickerWidget,
+  DatetimeWidget,
+  RecurrenceWidget,
+} from '@plone/volto/components/manage/Widgets';
 
 import ArrayViewWidget from '@plone/volto/components/theme/Widgets/ArrayWidget';
 import BooleanViewWidget from '@plone/volto/components/theme/Widgets/BooleanWidget';
@@ -53,16 +50,6 @@ import TextViewWidget from '@plone/volto/components/theme/Widgets/TextWidget';
 import TitleViewWidget from '@plone/volto/components/theme/Widgets/TitleWidget';
 import TokenViewWidget from '@plone/volto/components/theme/Widgets/TokenWidget';
 import UrlViewWidget from '@plone/volto/components/theme/Widgets/UrlWidget';
-
-export const DatetimeWidget = loadable(
-  () => import('@plone/volto/components/manage/Widgets/DatetimeWidget'),
-);
-export const RecurrenceWidget = loadable(
-  () =>
-    import(
-      '@plone/volto/components/manage/Widgets/RecurrenceWidget/RecurrenceWidget'
-    ),
-);
 
 // Widgets mapping
 export const widgetMapping = {

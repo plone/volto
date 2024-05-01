@@ -702,10 +702,7 @@ Cypress.Commands.add(
   'pasteClipboard',
   { prevSubject: true },
   (query, htmlContent) => {
-    return cy
-      .wrap(query)
-      .type(' {backspace}')
-      .trigger('paste', createHtmlPasteEvent(htmlContent));
+    return cy.wrap(query).trigger('paste', createHtmlPasteEvent(htmlContent));
   },
 );
 

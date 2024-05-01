@@ -2,7 +2,7 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { PloneClientProvider } from '@plone/client/provider';
+import { PloneClientProvider } from '@plone/providers';
 import PloneClient from '@plone/client';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { RouterProvider } from 'react-aria-components';
