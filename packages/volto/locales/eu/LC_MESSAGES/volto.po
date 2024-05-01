@@ -811,6 +811,11 @@ msgstr "Kopiatu"
 msgid "Copy blocks"
 msgstr "Kopiatu blokeak"
 
+#. Default: "Copy link URL"
+#: components/manage/Widgets/ObjectBrowserWidget
+msgid "Copy link URL"
+msgstr ""
+
 #. Default: "Copyright"
 #: components/theme/Footer/Footer
 msgid "Copyright"
@@ -1952,6 +1957,11 @@ msgstr ""
 #: components/manage/Toolbar/Toolbar
 msgid "Link"
 msgstr "Esteka"
+
+#. Default: "Link URL copied."
+#: components/manage/Widgets/ObjectBrowserWidget
+msgid "Link URL copied."
+msgstr ""
 
 #. Default: "Anchor link copied to the clipboard"
 #: helpers/MessageLabels/MessageLabels
@@ -3456,6 +3466,7 @@ msgstr "Gaia"
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Rules/Rules
+#: components/manage/Widgets/ObjectBrowserWidget
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
 msgid "Success"

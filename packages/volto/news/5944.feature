@@ -1,0 +1,1 @@
+Add open/copy target in object browser widget. @robgietema

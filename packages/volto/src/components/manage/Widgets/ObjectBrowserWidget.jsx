@@ -18,9 +18,11 @@ import {
 } from '@plone/volto/helpers/Url/Url';
 import { searchContent } from '@plone/volto/actions/search/search';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
-import { defineMessages, injectIntl } from 'react-intl';
+import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
+import { Toast } from '@plone/volto/components';
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import config from '@plone/volto/registry';
 
 import navTreeSVG from '@plone/volto/icons/nav.svg';
@@ -28,6 +30,7 @@ import clearSVG from '@plone/volto/icons/clear.svg';
 import homeSVG from '@plone/volto/icons/home.svg';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import blankSVG from '@plone/volto/icons/blank.svg';
+import copySVG from '@plone/volto/icons/copy.svg';
 import { withRouter } from 'react-router';
 
 const messages = defineMessages({
@@ -46,6 +49,14 @@ const messages = defineMessages({
   openObjectBrowser: {
     id: 'Open object browser',
     defaultMessage: 'Open object browser',
+  },
+  success: {
+    id: 'Success',
+    defaultMessage: 'Success',
+  },
+  messageCopied: {
+    id: 'Link URL copied.',
+    defaultMessage: 'Link URL copied.',
   },
 });
 
@@ -105,13 +116,26 @@ export class ObjectBrowserWidgetComponent extends Component {
     this.selectedItemsRef = React.createRef();
     this.placeholderRef = React.createRef();
   }
+
+  onCopy(link) {
+    navigator.clipboard.writeText(link);
+    this.props.toastify.toast.success(
+      <Toast
+        success
+        title={this.props.intl.formatMessage(messages.success)}
+        content={this.props.intl.formatMessage(messages.messageCopied)}
+      />,
+    );
+  }
+
   renderLabel(item) {
     const href = item['@id'];
     return (
       <Popup
         key={flattenToAppURL(href)}
+        hoverable
         content={
-          <div style={{ display: 'flex' }}>
+          <div>
             {isInternalURL(href) ? (
               <Icon name={homeSVG} size="18px" />
             ) : (
@@ -119,6 +143,25 @@ export class ObjectBrowserWidgetComponent extends Component {
             )}
             &nbsp;
             {flattenToAppURL(href)}
+            <a href={flattenToAppURL(href)} target="_blank" rel="noreferrer">
+              {flattenToAppURL(href)}
+            </a>
+            <br />
+            <div
+              className="copy-link-url"
+              title={href}
+              onClick={() => this.onCopy(href)}
+              onKeydown={() => this.onCopy(href)}
+              role="button"
+              tabIndex="0"
+            >
+              <Icon name={copySVG} size="24px" />
+              &nbsp;
+              <FormattedMessage
+                id="Copy link URL"
+                defaultMessage="Copy link URL"
+              />
+            </div>
           </div>
         }
         trigger={
@@ -434,4 +477,5 @@ export default compose(
   withObjectBrowser,
   withRouter,
   connect(null, { searchContent }),
+  injectLazyLibs(['toastify']),
 )(ObjectBrowserWidgetComponent);
