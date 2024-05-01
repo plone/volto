@@ -401,3 +401,4 @@ stop-test-acceptance-server-detached: ## Stop Test Acceptance Server Main Fixtur
 
 # include local overrides if present
 -include Makefile.local
+-include ../../../Makefile.local
