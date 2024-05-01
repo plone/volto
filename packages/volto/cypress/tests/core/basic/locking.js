@@ -74,8 +74,6 @@ describe('Document locking', () => {
     cy.findByLabelText('Unlock');
   });
 
-  // Cypress._.times(20, (k) => {
-  //   it.only('As editor, I can unlock a locked page', function () {
   it('As editor, I can unlock a locked page', function () {
     // As an editor I can add a document
     cy.intercept('/**/@logout').as('logout');
@@ -127,5 +125,4 @@ describe('Document locking', () => {
     cy.get('h1.documentFirstHeading').should('not.be.empty');
     cy.get('h1.documentFirstHeading').contains('New title by Editor 2');
   });
-  // });
 });
