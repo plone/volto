@@ -60,7 +60,6 @@ Some of them are released:
 Some of them are used by the build, and separated in packages for convenience.
 
 - `tsconfig`
-- `parcel-optimizer-react-client`
 
 
 ## Volto add-ons packages

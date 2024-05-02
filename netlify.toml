@@ -4,5 +4,5 @@
   ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF ./docs/"
 [[headers]]
   for = "/*"
-  [[headers.values]]
+  [headers.values]
     X-Robots-Tag = "none"

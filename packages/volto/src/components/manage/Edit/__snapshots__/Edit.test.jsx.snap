@@ -13,7 +13,10 @@ exports[`Edit renders an edit component 1`] = `
     id="page-edit"
   >
     <div
-      class="Form"
+      data-schema="{
+  \\"some\\": \\"field\\"
+}"
+      id="Form"
     />
   </div>
   <div
@@ -39,7 +42,8 @@ exports[`Edit renders an empty edit component 1`] = `
     id="page-edit"
   >
     <div
-      class="Form"
+      data-schema="null"
+      id="Form"
     />
   </div>
   <div
