@@ -173,6 +173,7 @@ const FileWidget = (props) => {
         {value && value.filename}
         {value && (
           <Button
+            type="button"
             icon
             basic
             className="delete-button"
