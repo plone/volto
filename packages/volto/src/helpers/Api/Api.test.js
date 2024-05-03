@@ -15,6 +15,7 @@ jest.mock('superagent', () => ({
     type: jest.fn(),
     send: jest.fn(),
     end: jest.fn(),
+    redirects: jest.fn(),
   })),
 }));
 
