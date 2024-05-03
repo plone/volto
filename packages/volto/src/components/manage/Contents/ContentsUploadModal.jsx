@@ -40,9 +40,13 @@ const messages = defineMessages({
     defaultMessage:
       '{count, plural, one {Upload {count} file} other {Upload {count} files}}',
   },
-  uploadingFiles: {
-    id: 'Uploading {uploadedFiles} files out of {totalFiles}',
-    defaultMessage: 'Uploading {uploadedFiles} files out of {totalFiles}',
+  filesUploaded: {
+    id: 'Files uploaded: {uploadedFiles}',
+    defaultMessage: 'Files uploaded: {uploadedFiles}',
+  },
+  totalFilesToUpload: {
+    id: 'Total files to upload: {totalFiles}',
+    defaultMessage: 'Total files to upload: {totalFiles}',
   },
 });
 
@@ -244,16 +248,21 @@ class ContentsUploadModal extends Component {
           </Header>
 
           <Dimmer active={this.props.request.loading}>
-            <Progress
-              className="progress-bar"
-              value={this.props.uploadedFiles}
-              total={this.state.totalFiles}
-            >
-              {this.props.intl.formatMessage(messages.uploadingFiles, {
-                uploadedFiles: this.props.uploadedFiles,
-                totalFiles: this.state.totalFiles,
-              })}
-            </Progress>
+            <div className="progress-container">
+              <Progress
+                className="progress-bar"
+                value={this.props.uploadedFiles}
+                total={this.state.totalFiles}
+              >
+                {this.props.intl.formatMessage(messages.filesUploaded, {
+                  uploadedFiles: this.props.uploadedFiles,
+                })}
+                <br />
+                {this.props.intl.formatMessage(messages.totalFilesToUpload, {
+                  totalFiles: this.state.totalFiles,
+                })}
+              </Progress>
+            </div>
           </Dimmer>
           <Modal.Content>
             <Dropzone

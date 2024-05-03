@@ -1453,6 +1453,11 @@ msgstr ""
 msgid "Filename"
 msgstr "Nume fișier"
 
+#. Default: "Files uploaded: {uploadedFiles}"
+#: components/manage/Contents/ContentsUploadModal
+msgid "Files uploaded: {uploadedFiles}"
+msgstr "Fișiere încărcate: {uploadedFiles}"
+
 #. Default: "Filter"
 #: helpers/MessageLabels/MessageLabels
 msgid "Filter"
@@ -3745,6 +3750,11 @@ msgstr "Total obiecte active și inactive"
 msgid "Total comments"
 msgstr "Total comentarii"
 
+#. Default: "Total files to upload: {totalFiles}"
+#: components/manage/Contents/ContentsUploadModal
+msgid "Total files to upload: {totalFiles}"
+msgstr "Numărul total de fișiere de încărcat: {totalFiles}"
+
 #. Default: "Total number of objects in each cache"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Total number of objects in each cache"
@@ -3977,11 +3987,6 @@ msgstr "Încărcați fișiere"
 #: components/manage/Blocks/Image/Edit
 msgid "Uploading image"
 msgstr "Se încarcă imaginea"
-
-#. Default: "Uploading {uploadedFiles} files out of {totalFiles}"
-#: components/manage/Contents/ContentsUploadModal
-msgid "Uploading {uploadedFiles} files out of {totalFiles}"
-msgstr "Se încarcă {uploadedFiles} fișiere dintr-un total de {totalFiles}"
 
 #. Default: "Use the form below to define the new content rule"
 #: components/manage/Controlpanels/Rules/AddRule

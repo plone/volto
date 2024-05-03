@@ -1458,6 +1458,11 @@ msgstr ""
 msgid "Filename"
 msgstr "Nome de ficheiro"
 
+#. Default: "Files uploaded: {uploadedFiles}"
+#: components/manage/Contents/ContentsUploadModal
+msgid "Files uploaded: {uploadedFiles}"
+msgstr "Arquivos enviados: {uploadedFiles}"
+
 #. Default: "Filter"
 #: helpers/MessageLabels/MessageLabels
 msgid "Filter"
@@ -3750,6 +3755,11 @@ msgstr ""
 msgid "Total comments"
 msgstr ""
 
+#. Default: "Total files to upload: {totalFiles}"
+#: components/manage/Contents/ContentsUploadModal
+msgid "Total files to upload: {totalFiles}"
+msgstr "Total de ficheiros para carregar: {totalFiles}"
+
 #. Default: "Total number of objects in each cache"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Total number of objects in each cache"
@@ -3982,11 +3992,6 @@ msgstr "Enviar ficheiros"
 #: components/manage/Blocks/Image/Edit
 msgid "Uploading image"
 msgstr ""
-
-#. Default: "Uploading {uploadedFiles} files out of {totalFiles}"
-#: components/manage/Contents/ContentsUploadModal
-msgid "Uploading {uploadedFiles} files out of {totalFiles}"
-msgstr "Carregando {uploadedFiles} arquivos de um total de {totalFiles}"
 
 #. Default: "Use the form below to define the new content rule"
 #: components/manage/Controlpanels/Rules/AddRule
