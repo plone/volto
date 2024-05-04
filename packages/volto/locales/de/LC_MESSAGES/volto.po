@@ -3986,7 +3986,7 @@ msgstr "Laden Sie ein Lead-Bild im Feld 'Lead-Bild' hoch."
 #. Default: "Upload files"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Upload files"
-msgstr "Datei hochladen"
+msgstr "Dateien hochladen"
 
 #. Default: "Uploading image"
 #: components/manage/Blocks/Image/Edit
