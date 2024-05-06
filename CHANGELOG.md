@@ -8,6 +8,17 @@
 
 <!-- towncrier release notes start -->
 
+## 16.31.5 (2024-05-06)
+
+### Bugfix
+
+- Fix image disappears after pressing the Enter key on title field in image content-type. @iFlameing [#5973](https://github.com/plone/volto/issues/5973)
+- Fix 301 and 302 redirects. @robgietema [#6001](https://github.com/plone/volto/issues/6001)
+
+### Documentation
+
+- Block search engines from indexing content on Netlify preview builds. @stevepiercy [#5916](https://github.com/plone/volto/issues/5916)
+
 ## 16.31.4 (2024-03-18)
 
 ### Bugfix
