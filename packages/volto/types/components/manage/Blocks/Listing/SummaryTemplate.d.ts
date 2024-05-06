@@ -4,7 +4,7 @@ declare function SummaryTemplate({ items, linkTitle, linkHref, isEditMode }: {
     linkTitle: any;
     linkHref: any;
     isEditMode: any;
-}): JSX.Element;
+}): import("react/jsx-runtime").JSX.Element;
 declare namespace SummaryTemplate {
     namespace propTypes {
         let items: any;

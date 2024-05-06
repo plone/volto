@@ -5,6 +5,7 @@ import { ServerResponse } from 'http';
 import express from 'express';
 import { StartServer } from '@tanstack/react-router-server/server';
 import { createRouter } from './router';
+import './config';
 
 // index.js
 import './fetch-polyfill';

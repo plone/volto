@@ -17,7 +17,7 @@ import {
   Table,
 } from 'semantic-ui-react';
 import { concat, map, reverse, find } from 'lodash';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import { asyncConnect } from '@plone/volto/helpers';
 
@@ -314,8 +314,8 @@ class History extends Component {
             </Table.Body>
           </Table>
         </Segment.Group>
-        {this.state.isClient && (
-          <Portal node={document.getElementById('toolbar')}>
+        {this.state.isClient &&
+          createPortal(
             <Toolbar
               pathname={this.props.pathname}
               hideDefaultViewButtons
@@ -332,9 +332,9 @@ class History extends Component {
                   />
                 </Link>
               }
-            />
-          </Portal>
-        )}
+            />,
+            document.getElementById('toolbar'),
+          )}
       </Container>
     );
   }

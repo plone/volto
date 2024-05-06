@@ -9,12 +9,13 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
 import { Helmet } from '@plone/volto/helpers';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import { Button, Container } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import { toast } from 'react-toastify';
 
-import { Form, Icon, Toolbar, Toast } from '@plone/volto/components';
+import { Icon, Toolbar, Toast } from '@plone/volto/components';
+import { Form } from '@plone/volto/components/manage/Form';
 import { updateControlpanel, getControlpanel } from '@plone/volto/actions';
 
 import config from '@plone/volto/registry';
@@ -167,8 +168,8 @@ class Controlpanel extends Component {
               loading={this.props.updateRequest.loading}
             />
           </Container>
-          {this.state.isClient && (
-            <Portal node={document.getElementById('toolbar')}>
+          {this.state.isClient &&
+            createPortal(
               <Toolbar
                 pathname={this.props.pathname}
                 hideDefaultViewButtons
@@ -205,9 +206,9 @@ class Controlpanel extends Component {
                     </Button>
                   </>
                 }
-              />
-            </Portal>
-          )}
+              />,
+              document.getElementById('toolbar'),
+            )}
         </div>
       );
     }

@@ -1,10 +1,10 @@
 /**
  * Relations Control Panel
  */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { find } from 'lodash';
 import { useSelector } from 'react-redux';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import { useHistory } from 'react-router';
 import { Link, useLocation } from 'react-router-dom';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -22,6 +22,12 @@ const RelationsControlPanel = () => {
   const history = useHistory();
   const location = useLocation();
   const dispatch = useDispatch();
+
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const brokenRelations = useSelector(
     (state) => state.relations?.stats?.data?.broken,
@@ -88,8 +94,8 @@ const RelationsControlPanel = () => {
         )}
       </div>
 
-      {__CLIENT__ && (
-        <Portal node={document.getElementById('toolbar')}>
+      {isClient &&
+        createPortal(
           <Toolbar
             pathname={location.pathname}
             hideDefaultViewButtons
@@ -104,9 +110,9 @@ const RelationsControlPanel = () => {
                 <Icon name={backSVG} className="contents circled" size="30px" />
               </Link>
             }
-          />
-        </Portal>
-      )}
+          />,
+          document.getElementById('toolbar'),
+        )}
     </>
   );
 };

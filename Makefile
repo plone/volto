@@ -100,6 +100,7 @@ clean:
 setup:
 	# Setup ESlint for VSCode
 	node packages/scripts/vscodesettings.js
+	pnpm build:all
 
 ##### Documentation
 
@@ -189,8 +190,16 @@ copyreleasenotestodocs:
 start-backend-docker:
 	docker run -it --rm --name=backend -p 8080:8080 -e SITE=Plone -e ADDONS='$(KGS)' $(DOCKER_IMAGE)
 
+.PHONY: start-backend-docker-detached
+start-backend-docker-detached:
+	docker run -d --rm --name=backend -p 8080:8080 -e SITE=Plone -e ADDONS='$(KGS)' $(DOCKER_IMAGE)
+
+.PHONY: stop-backend-docker-detached
+stop-backend-docker-detached:
+	docker kill backend
+
 .PHONY: start-backend-docker-no-cors
-start-backend-docker-nocors:
+start-backend-docker-no-cors:
 	docker run -it --rm --name=backend -p 8080:8080 -e SITE=Plone -e ADDONS='$(KGS)' -e CORS_=true $(DOCKER_IMAGE)
 
 .PHONY: start-frontend-docker
@@ -385,3 +394,11 @@ start-test-acceptance-server-5: ## Start Test Acceptance Server Main Fixture Plo
 .PHONY: start-test-acceptance-server-detached
 start-test-acceptance-server-detached: ## Start Test Acceptance Server Main Fixture (docker container) in a detached (daemon) mode
 	docker run -d --name plone-client-acceptance-server -i --rm -p 55001:55001 $(DOCKER_IMAGE_ACCEPTANCE)
+
+.PHONY: stop-test-acceptance-server-detached
+stop-test-acceptance-server-detached: ## Stop Test Acceptance Server Main Fixture (docker container) in a detached (daemon) mode
+	docker kill plone-client-acceptance-server
+
+# include local overrides if present
+-include Makefile.local
+-include ../../../Makefile.local

@@ -10,7 +10,7 @@ import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 import { getBaseUrl, getParentUrl, Helmet } from '@plone/volto/helpers';
 import { removeAliases, addAliases, getAliases } from '@plone/volto/actions';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import {
   Container,
   Button,
@@ -26,7 +26,7 @@ import {
   Menu,
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import DatetimeWidget from '@plone/volto/components/manage/Widgets/DatetimeWidget';
+import { DatetimeWidget } from '@plone/volto/components/manage/Widgets';
 import { Icon, Toolbar } from '@plone/volto/components';
 
 import backSVG from '@plone/volto/icons/back.svg';
@@ -652,8 +652,8 @@ class Aliases extends Component {
             </Segment.Group>
           </article>
         </Container>
-        {this.state.isClient && (
-          <Portal node={document.getElementById('toolbar')}>
+        {this.state.isClient &&
+          createPortal(
             <Toolbar
               pathname={this.props.pathname}
               hideDefaultViewButtons
@@ -667,9 +667,9 @@ class Aliases extends Component {
                   />
                 </Link>
               }
-            />
-          </Portal>
-        )}
+            />,
+            document.getElementById('toolbar'),
+          )}
       </div>
     );
   }

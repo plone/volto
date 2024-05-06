@@ -493,7 +493,6 @@ msgid "Broken relations"
 msgstr ""
 
 #. Default: "Browse"
-#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Sidebar/ObjectBrowserNav
 msgid "Browse"
@@ -543,7 +542,7 @@ msgid "Cancel"
 msgstr "取消"
 
 #. Default: "Cell"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Cell"
 msgstr "单元格"
 
@@ -936,7 +935,6 @@ msgstr "日期（最新在前）"
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/CommentEditModal
 #: components/theme/Comments/Comments
 #: components/theme/ContactForm/ContactForm
@@ -961,7 +959,6 @@ msgstr "默认视图"
 #: components/manage/Delete/Delete
 #: components/manage/Widgets/FormFieldWrapper
 #: components/manage/Widgets/ObjectBrowserWidget
-#: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/Comments
 msgid "Delete"
 msgstr "删除"
@@ -992,7 +989,7 @@ msgid "Delete blocks"
 msgstr "删除块"
 
 #. Default: "Delete col"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Delete col"
 msgstr "删除 col"
 
@@ -1002,7 +999,7 @@ msgid "Delete condition"
 msgstr "删除条件"
 
 #. Default: "Delete row"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Delete row"
 msgstr "删除条件"
 
@@ -1038,12 +1035,10 @@ msgid "Descending"
 msgstr "降序"
 
 #. Default: "Description"
-#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 #: components/theme/View/TabularView
 #: helpers/MessageLabels/MessageLabels
 msgid "Description"
@@ -1085,7 +1080,7 @@ msgid "Distributed under the {license}."
 msgstr "使用{license} 发布"
 
 #. Default: "Add border to inner columns"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Divide each row into separate cells"
 msgstr "将每一行分成独立的单元格"
 
@@ -1464,6 +1459,11 @@ msgstr "文件视图"
 msgid "Filename"
 msgstr "文件名"
 
+#. Default: "Files uploaded: {uploadedFiles}"
+#: components/manage/Contents/ContentsUploadModal
+msgid "Files uploaded: {uploadedFiles}"
+msgstr "已上载的文件：{uploadedFiles}"
+
 #. Default: "Filter"
 #: helpers/MessageLabels/MessageLabels
 msgid "Filter"
@@ -1500,7 +1500,7 @@ msgid "Fix relations"
 msgstr ""
 
 #. Default: "Fixed width columns"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Fixed width table cells"
 msgstr "固定表格单元格宽度"
 
@@ -1610,7 +1610,7 @@ msgid "Groups are logical collections of users, such as departments and business
 msgstr "组是用户的逻辑集合，如部门和商务小组。他们不直接和某个权限关联，您应该用角色分配权限，然后让组拥有某个角色。符号{plone_svg}表示从另一个组的成员继承的角色"
 
 #. Default: "Header cell"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Header cell"
 msgstr "标题单元格"
 
@@ -1672,6 +1672,7 @@ msgstr "历史{title}"
 #: components/manage/Contents/ContentsBreadcrumbs
 #: components/manage/Contents/ContentsBreadcrumbsHomeItem
 #: components/theme/Breadcrumbs/Breadcrumbs
+#: components/theme/Logo/Logo
 msgid "Home"
 msgstr "首页"
 
@@ -1707,7 +1708,6 @@ msgid "If you are certain you have the correct web address but are encountering 
 msgstr "如果您确定访问的Web地址正确,但是遇到错误，请联系{site_admin}。"
 
 #. Default: "Image"
-#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -1763,22 +1763,22 @@ msgid "Inherited value"
 msgstr "继承的值"
 
 #. Default: "Insert col after"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Insert col after"
 msgstr "在后面插入col"
 
 #. Default: "Insert col before"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Insert col before"
 msgstr "在前面插入col"
 
 #. Default: "Insert row after"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Insert row after"
 msgstr "在后面插入行"
 
 #. Default: "Insert row before"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Insert row before"
 msgstr "在前面插入行"
 
@@ -1963,7 +1963,6 @@ msgid "Link copied to clipboard"
 msgstr ""
 
 #. Default: "Link more"
-#: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
 msgid "Link more"
 msgstr "链接更多"
@@ -1979,13 +1978,11 @@ msgid "Link settings"
 msgstr ""
 
 #. Default: "Link Title"
-#: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
 msgid "Link title"
 msgstr "链接标题"
 
 #. Default: "Link to"
-#: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema
@@ -2059,6 +2056,11 @@ msgstr "登陆失败"
 msgid "Login Name"
 msgstr "登录名"
 
+#. Default: "Logo of"
+#: components/theme/Logo/Logo
+msgid "Logo of"
+msgstr ""
+
 #. Default: "Logout"
 #: components/manage/Toolbar/PersonalTools
 msgid "Logout"
@@ -2070,7 +2072,7 @@ msgid "Made by {creator} on {date}. This is not a working copy anymore, but the 
 msgstr "由{creator}在{date}时创建。这不再是一个工作副本，而是一个主要内容。"
 
 #. Default: "Reduce cell padding"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Make the table compact"
 msgstr "使表格紧凑"
 
@@ -2718,7 +2720,7 @@ msgid "Redo"
 msgstr "重做"
 
 #. Default: "Minimalistic table design"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Reduce complexity"
 msgstr "减少复杂性"
 
@@ -2857,7 +2859,6 @@ msgstr "回复"
 #. Default: "Required"
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 msgid "Required"
 msgstr ""
 
@@ -3203,7 +3204,6 @@ msgstr ""
 #. Default: "Short Name"
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 msgid "Short Name"
 msgstr ""
 
@@ -3429,7 +3429,7 @@ msgid "String"
 msgstr ""
 
 #. Default: "Alternate row background color"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Stripe alternate rows with color"
 msgstr ""
 
@@ -3486,7 +3486,7 @@ msgid "Switch to"
 msgstr "切换到"
 
 #. Default: "Table"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Table"
 msgstr "表格"
 
@@ -3650,6 +3650,12 @@ msgstr ""
 msgid "There are no users with the searched criteria"
 msgstr ""
 
+#. Default: "There are some errors."
+#: components/manage/Add/Add
+#: components/manage/Edit/Edit
+msgid "There are some errors."
+msgstr ""
+
 #. Default: "There is a configuration problem on the backend"
 #: components/theme/CorsError/CorsError
 msgid "There is a configuration problem on the backend"
@@ -3722,7 +3728,6 @@ msgid "Time"
 msgstr "时间"
 
 #. Default: "Title"
-#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Blocks/ToC/Schema
 #: components/manage/Contents/Contents
@@ -3730,7 +3735,6 @@ msgstr "时间"
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 #: components/theme/View/TabularView
 #: helpers/MessageLabels/MessageLabels
 msgid "Title"
@@ -3751,6 +3755,11 @@ msgstr "活动和非活动对象的总数"
 #: components/manage/Contents/Contents
 msgid "Total comments"
 msgstr "全部评论"
+
+#. Default: "Total files to upload: {totalFiles}"
+#: components/manage/Contents/ContentsUploadModal
+msgid "Total files to upload: {totalFiles}"
+msgstr "总计需上传的文件：{totalFiles}"
 
 #. Default: "Total number of objects in each cache"
 #: components/manage/Controlpanels/DatabaseInformation
@@ -3826,11 +3835,6 @@ msgstr "输入一个视频(YouTube, Vimeo or mp4)的URL"
 #: components/manage/Widgets/SelectAutoComplete
 msgid "Type text..."
 msgstr "输入文本..."
-
-#. Default: "Type text…"
-#: components/manage/Blocks/Text/Edit
-msgid "Type text…"
-msgstr "输入文本"
 
 #. Default: "Type the heading…"
 #: components/manage/TextLineEdit/TextLineEdit
@@ -3980,23 +3984,12 @@ msgstr "上传"
 msgid "Upload a lead image in the 'Lead Image' content field."
 msgstr ""
 
-#. Default: "Upload a new image"
-#: components/manage/Blocks/HeroImageLeft/Edit
-msgid "Upload a new image"
-msgstr "上传一个新文件"
-
 #. Default: "Upload files"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Upload files"
 msgstr "上传文件"
 
-#. Default: "Uploading files"
-#: components/manage/Contents/ContentsUploadModal
-msgid "Uploading files"
-msgstr "上传文件中"
-
 #. Default: "Uploading image"
-#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/Edit
 msgid "Uploading image"
 msgstr "上传图像中"
@@ -4015,7 +4008,6 @@ msgstr "使用下面的表单定义、更改或删除内容规则。触发事件
 #. Default: "Used for programmatic access to the fieldset."
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 msgid "Used for programmatic access to the fieldset."
 msgstr "用于对字段集的编程访问。"
 
@@ -4890,7 +4882,7 @@ msgstr ""
 #. Default: "Text"
 #: config/Blocks
 msgid "text"
-msgstr "文本"
+msgstr ""
 
 #. Default: "Title"
 #: config/Blocks

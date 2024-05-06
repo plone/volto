@@ -12,8 +12,6 @@ import { AsyncConnectWithContext, AsyncConnect } from './AsyncConnect'; // , Asy
 import { asyncConnect, loadOnServer } from './';
 import { matchAllRoutes } from './utils';
 
-import '@testing-library/jest-dom/extend-expect';
-
 describe('<ReduxAsyncConnect />', () => {
   const initialEmptyState = {
     router: {

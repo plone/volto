@@ -20,7 +20,6 @@ export interface BlocksConfigData {
   listing: BlockConfigBase;
   video: BlockConfigBase;
   toc: BlockConfigBase;
-  hero: BlockConfigBase;
   maps: BlockConfigBase;
   html: BlockConfigBase;
   table: BlockConfigBase;
@@ -116,6 +115,7 @@ export interface BlockConfigBase {
    */
   // TODO: Improve extensions shape
   extensions?: Record<string, BlockExtension>;
+  blocksConfig?: Partial<BlocksConfigData>;
 }
 
 export type BlockExtension = (
@@ -193,10 +193,15 @@ export type JSONSchema = {
   required: string[];
 };
 
+export interface BlocksDataBlocks {
+  '@type': string;
+  styles?: any;
+}
+
+type BlocksDataBlocksType = BlocksDataBlocks & Record<string, any>;
+
 export type BlocksData = {
-  blocks: {
-    [key: string]: object;
-  };
+  blocks: Record<string, BlocksDataBlocksType>;
   blocks_layout: {
     items: string[];
   };

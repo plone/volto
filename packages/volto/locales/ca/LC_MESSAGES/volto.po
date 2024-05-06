@@ -493,7 +493,6 @@ msgid "Broken relations"
 msgstr ""
 
 #. Default: "Browse"
-#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Sidebar/ObjectBrowserNav
 msgid "Browse"
@@ -543,9 +542,9 @@ msgid "Cancel"
 msgstr "Cancel·lar"
 
 #. Default: "Cell"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Cell"
-msgstr "Cèl·lula"
+msgstr "Cel·la"
 
 #. Default: "Center"
 #: components/manage/Blocks/Maps/Edit
@@ -936,7 +935,6 @@ msgstr "Data (el més nou primer)"
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/CommentEditModal
 #: components/theme/Comments/Comments
 #: components/theme/ContactForm/ContactForm
@@ -961,7 +959,6 @@ msgstr "Per defecte"
 #: components/manage/Delete/Delete
 #: components/manage/Widgets/FormFieldWrapper
 #: components/manage/Widgets/ObjectBrowserWidget
-#: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/Comments
 msgid "Delete"
 msgstr "Suprimeix"
@@ -992,7 +989,7 @@ msgid "Delete blocks"
 msgstr "Esborra blocs"
 
 #. Default: "Delete col"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Delete col"
 msgstr "Esborra la columna"
 
@@ -1002,7 +999,7 @@ msgid "Delete condition"
 msgstr ""
 
 #. Default: "Delete row"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Delete row"
 msgstr "Suprimeix la fila"
 
@@ -1038,12 +1035,10 @@ msgid "Descending"
 msgstr "Descendent"
 
 #. Default: "Description"
-#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 #: components/theme/View/TabularView
 #: helpers/MessageLabels/MessageLabels
 msgid "Description"
@@ -1085,7 +1080,7 @@ msgid "Distributed under the {license}."
 msgstr "Distribuït sota la {license}."
 
 #. Default: "Add border to inner columns"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Divide each row into separate cells"
 msgstr "Afegeix una vora a les columnes interiors"
 
@@ -1464,6 +1459,11 @@ msgstr "Arxiu"
 msgid "Filename"
 msgstr "Nom de l'arxiu"
 
+#. Default: "Files uploaded: {uploadedFiles}"
+#: components/manage/Contents/ContentsUploadModal
+msgid "Files uploaded: {uploadedFiles}"
+msgstr "Fitxers pujats: {uploadedFiles}"
+
 #. Default: "Filter"
 #: helpers/MessageLabels/MessageLabels
 msgid "Filter"
@@ -1500,7 +1500,7 @@ msgid "Fix relations"
 msgstr ""
 
 #. Default: "Fixed width columns"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Fixed width table cells"
 msgstr "Columnes d'amplada fixa"
 
@@ -1610,7 +1610,7 @@ msgid "Groups are logical collections of users, such as departments and business
 msgstr "Els grups són col·leccions lògiques d'usuaris, com ara departaments i unitats de negoci. Els grups no estan directament relacionats amb els permisos a nivell global, normalment feu servir Rols per a això, i deixeu que determinats Grups tinguin un paper determinat. El símbol{plone_svg}indica un rol heretat de la pertinença a un altre grup."
 
 #. Default: "Header cell"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Header cell"
 msgstr "Cel·la de capçalera"
 
@@ -1672,6 +1672,7 @@ msgstr "Historial de {title}"
 #: components/manage/Contents/ContentsBreadcrumbs
 #: components/manage/Contents/ContentsBreadcrumbsHomeItem
 #: components/theme/Breadcrumbs/Breadcrumbs
+#: components/theme/Logo/Logo
 msgid "Home"
 msgstr "Inici"
 
@@ -1707,7 +1708,6 @@ msgid "If you are certain you have the correct web address but are encountering 
 msgstr "Si esteu segur que teniu l'adreça web correcta però trobeu un error, poseu-vos en contacte amb el {site_admin}."
 
 #. Default: "Image"
-#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -1763,22 +1763,22 @@ msgid "Inherited value"
 msgstr "Valor heretat"
 
 #. Default: "Insert col after"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Insert col after"
 msgstr "Inseriu col després"
 
 #. Default: "Insert col before"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Insert col before"
 msgstr "Inseriu el coll abans"
 
 #. Default: "Insert row after"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Insert row after"
 msgstr "Insereix fila després"
 
 #. Default: "Insert row before"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Insert row before"
 msgstr "Insereix fila abans"
 
@@ -1963,7 +1963,6 @@ msgid "Link copied to clipboard"
 msgstr ""
 
 #. Default: "Link more"
-#: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
 msgid "Link more"
 msgstr "Enllaça més"
@@ -1979,13 +1978,11 @@ msgid "Link settings"
 msgstr ""
 
 #. Default: "Link Title"
-#: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
 msgid "Link title"
 msgstr "Títol de l'enllaç"
 
 #. Default: "Link to"
-#: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Listing/schema
@@ -2059,6 +2056,11 @@ msgstr "Error a l'iniciar sessió"
 msgid "Login Name"
 msgstr "Nom d'usuari"
 
+#. Default: "Logo of"
+#: components/theme/Logo/Logo
+msgid "Logo of"
+msgstr ""
+
 #. Default: "Logout"
 #: components/manage/Toolbar/PersonalTools
 msgid "Logout"
@@ -2070,9 +2072,9 @@ msgid "Made by {creator} on {date}. This is not a working copy anymore, but the 
 msgstr "Fet per {creator} el {date}. Aquesta ja no és una còpia de treball, sinó el contingut principal."
 
 #. Default: "Reduce cell padding"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Make the table compact"
-msgstr "Redueix el farciment cel·lular"
+msgstr "Redueix els marges de la cel·la"
 
 #. Default: "Manage Translations"
 #: components/manage/Multilingual/ManageTranslations
@@ -2718,7 +2720,7 @@ msgid "Redo"
 msgstr ""
 
 #. Default: "Minimalistic table design"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Reduce complexity"
 msgstr "Disseny de taula minimalista"
 
@@ -2857,7 +2859,6 @@ msgstr "Respon"
 #. Default: "Required"
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 msgid "Required"
 msgstr "Obligatori"
 
@@ -3203,7 +3204,6 @@ msgstr "Compartint per a {title}"
 #. Default: "Short Name"
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 msgid "Short Name"
 msgstr "Nom curt"
 
@@ -3429,7 +3429,7 @@ msgid "String"
 msgstr "Cadena"
 
 #. Default: "Alternate row background color"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Stripe alternate rows with color"
 msgstr "Color de fons alternatiu de la fila"
 
@@ -3486,7 +3486,7 @@ msgid "Switch to"
 msgstr "Canvia a"
 
 #. Default: "Table"
-#: components/manage/Blocks/Table/Edit
+#: config/Blocks
 msgid "Table"
 msgstr "Taula"
 
@@ -3650,6 +3650,12 @@ msgstr ""
 msgid "There are no users with the searched criteria"
 msgstr ""
 
+#. Default: "There are some errors."
+#: components/manage/Add/Add
+#: components/manage/Edit/Edit
+msgid "There are some errors."
+msgstr ""
+
 #. Default: "There is a configuration problem on the backend"
 #: components/theme/CorsError/CorsError
 msgid "There is a configuration problem on the backend"
@@ -3722,7 +3728,6 @@ msgid "Time"
 msgstr "Hora"
 
 #. Default: "Title"
-#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Blocks/ToC/Schema
 #: components/manage/Contents/Contents
@@ -3730,7 +3735,6 @@ msgstr "Hora"
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 #: components/theme/View/TabularView
 #: helpers/MessageLabels/MessageLabels
 msgid "Title"
@@ -3751,6 +3755,11 @@ msgstr "Total d'objectes actius i no actius"
 #: components/manage/Contents/Contents
 msgid "Total comments"
 msgstr "Total de comentaris"
+
+#. Default: "Total files to upload: {totalFiles}"
+#: components/manage/Contents/ContentsUploadModal
+msgid "Total files to upload: {totalFiles}"
+msgstr "Total fitxers per carregar: {totalFiles}"
 
 #. Default: "Total number of objects in each cache"
 #: components/manage/Controlpanels/DatabaseInformation
@@ -3826,11 +3835,6 @@ msgstr "Escriviu un URL de vídeo (YouTube, Vimeo o mp4)."
 #: components/manage/Widgets/SelectAutoComplete
 msgid "Type text..."
 msgstr ""
-
-#. Default: "Type text…"
-#: components/manage/Blocks/Text/Edit
-msgid "Type text…"
-msgstr "Escriu text…"
 
 #. Default: "Type the heading…"
 #: components/manage/TextLineEdit/TextLineEdit
@@ -3980,23 +3984,12 @@ msgstr "Pujar"
 msgid "Upload a lead image in the 'Lead Image' content field."
 msgstr "Pengeu una imatge principal al camp de contingut 'Imatge principal'."
 
-#. Default: "Upload a new image"
-#: components/manage/Blocks/HeroImageLeft/Edit
-msgid "Upload a new image"
-msgstr "Carregueu una imatge nova"
-
 #. Default: "Upload files"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Upload files"
 msgstr "Carregueu fitxers"
 
-#. Default: "Uploading files"
-#: components/manage/Contents/ContentsUploadModal
-msgid "Uploading files"
-msgstr "Carregant fitxers"
-
 #. Default: "Uploading image"
-#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Image/Edit
 msgid "Uploading image"
 msgstr "S'està carregant la imatge"
@@ -4015,7 +4008,6 @@ msgstr ""
 #. Default: "Used for programmatic access to the fieldset."
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
-#: components/manage/Widgets/WysiwygWidget
 msgid "Used for programmatic access to the fieldset."
 msgstr "S'utilitza per a l'accés programàtic al conjunt de camps."
 
@@ -4890,7 +4882,7 @@ msgstr ""
 #. Default: "Text"
 #: config/Blocks
 msgid "text"
-msgstr "Text"
+msgstr ""
 
 #. Default: "Title"
 #: config/Blocks

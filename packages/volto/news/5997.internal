@@ -1,0 +1,1 @@
+Allow `Makefile` options to be modified by a `Makefile.local` file if present. @ichim-david

@@ -8,12 +8,13 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import { Dropdown, Table, Checkbox } from 'semantic-ui-react';
 import trashSVG from '@plone/volto/icons/delete.svg';
 import editSVG from '@plone/volto/icons/editing.svg';
-import { Icon, ModalForm, Toast } from '@plone/volto/components';
+import { Icon, Toast } from '@plone/volto/components';
+import { ModalForm } from '@plone/volto/components/manage/Form';
 import { updateUser } from '@plone/volto/actions';
 import ploneSVG from '@plone/volto/icons/plone.svg';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { messages } from '@plone/volto/helpers';
+import { messages, canAssignRole } from '@plone/volto/helpers';
 import { toast } from 'react-toastify';
 
 /**
@@ -39,6 +40,7 @@ class RenderUsers extends Component {
       }),
     ).isRequired,
     onDelete: PropTypes.func.isRequired,
+    isUserManager: PropTypes.bool.isRequired,
   };
 
   /**
@@ -110,6 +112,11 @@ class RenderUsers extends Component {
     this.setState({ user: { ...formData } });
   }
 
+  canDeleteUser() {
+    if (this.props.isUserManager) return true;
+    return !this.props.user.roles.includes('Manager');
+  }
+
   /**
    * Render method.
    * @method render
@@ -139,35 +146,38 @@ class RenderUsers extends Component {
                 checked={this.props.user.roles.includes(role.id)}
                 onChange={this.onChange}
                 value={`${this.props.user.id}&role=${role.id}`}
+                disabled={!canAssignRole(this.props.isUserManager, role)}
               />
             )}
           </Table.Cell>
         ))}
         <Table.Cell textAlign="right">
-          <Dropdown icon="ellipsis horizontal">
-            <Dropdown.Menu className="left">
-              {this.props.userschema && (
+          {this.canDeleteUser() && (
+            <Dropdown icon="ellipsis horizontal">
+              <Dropdown.Menu className="left">
+                {this.props.userschema && (
+                  <Dropdown.Item
+                    id="edit-user-button"
+                    onClick={() => {
+                      this.onClickEdit({ formData: this.props.user });
+                    }}
+                    value={this.props.user['@id']}
+                  >
+                    <Icon name={editSVG} size="15px" />
+                    <FormattedMessage id="Edit" defaultMessage="Edit" />
+                  </Dropdown.Item>
+                )}
                 <Dropdown.Item
-                  id="edit-user-button"
-                  onClick={() => {
-                    this.onClickEdit({ formData: this.props.user });
-                  }}
+                  id="delete-user-button"
+                  onClick={this.props.onDelete}
                   value={this.props.user['@id']}
                 >
-                  <Icon name={editSVG} size="15px" />
-                  <FormattedMessage id="Edit" defaultMessage="Edit" />
+                  <Icon name={trashSVG} size="15px" />
+                  <FormattedMessage id="Delete" defaultMessage="Delete" />
                 </Dropdown.Item>
-              )}
-              <Dropdown.Item
-                id="delete-user-button"
-                onClick={this.props.onDelete}
-                value={this.props.user['@id']}
-              >
-                <Icon name={trashSVG} size="15px" />
-                <FormattedMessage id="Delete" defaultMessage="Delete" />
-              </Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
+              </Dropdown.Menu>
+            </Dropdown>
+          )}
         </Table.Cell>
         {Object.keys(this.state.user).length > 0 &&
           this.props.userschema.loaded && (

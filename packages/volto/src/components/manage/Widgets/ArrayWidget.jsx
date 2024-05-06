@@ -30,7 +30,7 @@ import {
   MultiValueContainer,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
 
-import { FormFieldWrapper } from '@plone/volto/components';
+import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 
 const messages = defineMessages({
   select: {
@@ -306,7 +306,9 @@ class ArrayWidget extends Component {
           useDragHandle
           // react-sortable-hoc props:
           axis="xy"
-          onSortEnd={this.onSortEnd}
+          onSortEnd={(sortProp) => {
+            this.onSortEnd(selectedOption, sortProp);
+          }}
           menuShouldScrollIntoView={false}
           distance={4}
           // small fix for https://github.com/clauderic/react-sortable-hoc/pull/352:
@@ -323,27 +325,27 @@ class ArrayWidget extends Component {
             this.props.vocabBaseUrl
               ? choices
               : this.props.choices
-              ? [
-                  ...choices,
-                  ...(this.props.noValueOption &&
-                  (this.props.default === undefined ||
-                    this.props.default === null)
-                    ? [
-                        {
-                          label: this.props.intl.formatMessage(
-                            messages.no_value,
-                          ),
-                          value: 'no-value',
-                        },
-                      ]
-                    : []),
-                ]
-              : [
-                  {
-                    label: this.props.intl.formatMessage(messages.no_value),
-                    value: 'no-value',
-                  },
-                ]
+                ? [
+                    ...choices,
+                    ...(this.props.noValueOption &&
+                    (this.props.default === undefined ||
+                      this.props.default === null)
+                      ? [
+                          {
+                            label: this.props.intl.formatMessage(
+                              messages.no_value,
+                            ),
+                            value: 'no-value',
+                          },
+                        ]
+                      : []),
+                  ]
+                : [
+                    {
+                      label: this.props.intl.formatMessage(messages.no_value),
+                      value: 'no-value',
+                    },
+                  ]
           }
           styles={customSelectStyles}
           theme={selectTheme}

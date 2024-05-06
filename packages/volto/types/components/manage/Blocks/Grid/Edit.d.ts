@@ -1,5 +1,5 @@
 export default GridBlockEdit;
-declare function GridBlockEdit(props: any): JSX.Element;
+declare function GridBlockEdit(props: any): import("react/jsx-runtime").JSX.Element;
 declare namespace GridBlockEdit {
     namespace propTypes {
         let block: any;

@@ -1,1 +1,1 @@
-export default function blocks(state?: {}, action?: {}): any;
+export default function blocks(state?: {}, action?: {}): {};

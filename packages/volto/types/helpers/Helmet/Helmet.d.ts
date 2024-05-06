@@ -25,13 +25,11 @@ declare const HelmetExport: {
         mapArrayTypeChildrenToProps(arrayTypeChildren: any, newProps: any): any;
         warnOnInvalidChildren(child: any, nestedChildren: any): true | void;
         mapChildrenToProps(children: any, newProps: any): any;
-        render(): JSX.Element;
-        context: any;
+        render(): import("react/jsx-runtime").JSX.Element;
+        context: unknown;
         setState<K extends string | number | symbol>(state: any, callback?: () => void): void;
         forceUpdate(callback?: () => void): void;
-        readonly props: Readonly<any> & Readonly<{
-            children?: any;
-        }>;
+        readonly props: Readonly<any>;
         state: Readonly<any>;
         refs: {
             [key: string]: React.ReactInstance;
@@ -72,13 +70,11 @@ declare const HelmetExport: {
         mapArrayTypeChildrenToProps(arrayTypeChildren: any, newProps: any): any;
         warnOnInvalidChildren(child: any, nestedChildren: any): true | void;
         mapChildrenToProps(children: any, newProps: any): any;
-        render(): JSX.Element;
-        context: any;
+        render(): import("react/jsx-runtime").JSX.Element;
+        context: unknown;
         setState<K extends string | number | symbol>(state: any, callback?: () => void): void;
         forceUpdate(callback?: () => void): void;
-        readonly props: Readonly<any> & Readonly<{
-            children?: any;
-        }>;
+        readonly props: Readonly<any>;
         state: Readonly<any>;
         refs: {
             [key: string]: React.ReactInstance;

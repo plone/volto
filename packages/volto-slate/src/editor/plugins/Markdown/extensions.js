@@ -170,9 +170,8 @@ export const autoformatInline = (
 
   // add mark to the text between the markups
   Transforms.select(editor, markupRange);
-  editor.addMark(type, true);
+  Transforms.wrapNodes(editor, { type, children: [] }, { split: true });
   Transforms.collapse(editor, { edge: 'end' });
-  editor.removeMark(type);
 
   // delete start markup
   const startMarkupPointBefore = getPointBefore(editor, selection, {
