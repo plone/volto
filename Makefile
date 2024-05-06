@@ -398,3 +398,7 @@ start-test-acceptance-server-detached: ## Start Test Acceptance Server Main Fixt
 .PHONY: stop-test-acceptance-server-detached
 stop-test-acceptance-server-detached: ## Stop Test Acceptance Server Main Fixture (docker container) in a detached (daemon) mode
 	docker kill plone-client-acceptance-server
+
+# include local overrides if present
+-include Makefile.local
+-include ../../../Makefile.local
