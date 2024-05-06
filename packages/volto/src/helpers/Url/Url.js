@@ -117,8 +117,8 @@ export function stripQuerystring(url) {
  * Given a URL if it starts with the API server URL
  * this method removes the /api or the /Plone part.
  * @method toPublicURL
- * @param {string} url URL of the object
- * @returns {string} public URL
+ * @param {string | undefined} url URL of the object
+ * @returns {string | undefined} public URL
  */
 export function toPublicURL(url) {
   const { settings } = config;
