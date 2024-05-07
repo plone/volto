@@ -9,15 +9,28 @@ junit.xml
 eslint.xml
 yarn-error.log
 build
+.changelog.draft
+
+# yarn 3
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
 
 # Other
+.vscode
 /cache
+.yarn/
 .DS_Store
 .idea
 lighthouse-report.html
-.vscode/
 .#*
 *~
+/.settings/
+.*project
 
 # Python
 /api/.installed.cfg
@@ -62,6 +75,7 @@ selenium-screenshot-*.png
 /selenium/
 cypress/videos/
 cypress/screenshots
+/styles/Microsoft
 
 # Local environment setup
 .env
@@ -70,3 +84,9 @@ public/critical.css
 # Sphinx and MyST
 docs/_build/
 /.python-version
+/.tool-versions
+docs/source/news
+
+.turbo
+.parcel-cache/
+tsconfig.tsbuildinfo

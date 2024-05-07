@@ -1,0 +1,91 @@
+@import './ToggleButton.css';
+@import './theme.css';
+
+.react-aria-TagGroup {
+  display: flex;
+  flex-direction: column;
+  color: var(--text-color);
+  font-size: small;
+  gap: 2px;
+}
+
+.react-aria-TagList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.react-aria-Tag {
+  display: flex;
+  align-items: center;
+  padding: 2px 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text-color);
+  cursor: default;
+  font-size: 0.929rem;
+  forced-color-adjust: none;
+  outline: none;
+  transition: border-color 200ms;
+
+  &[data-hovered] {
+    border-color: var(--border-color-hover);
+  }
+
+  &[data-focus-visible] {
+    outline: 2px solid var(--focus-ring-color);
+    outline-offset: 2px;
+  }
+
+  &[data-selected] {
+    border-color: var(--highlight-background);
+    background: var(--highlight-background);
+    color: var(--highlight-foreground);
+  }
+
+  [slot='remove'] {
+    padding: 0;
+    border: none;
+    margin-left: 8px;
+    background: none;
+    color: var(--text-color-base);
+    font-size: 0.95em;
+    outline: none;
+    transition: color 200ms;
+
+    &[data-hovered] {
+      color: var(--text-color-hover);
+    }
+  }
+
+  &[data-selected] {
+    [slot='remove'] {
+      color: inherit;
+    }
+  }
+}
+
+.react-aria-Tag[data-href] {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.react-aria-TagList {
+  .react-aria-Tag {
+    &[data-disabled] {
+      border-color: var(--border-color-disabled);
+      color: var(--text-color-disabled);
+    }
+  }
+}
+
+.react-aria-TagGroup {
+  [slot='description'] {
+    font-size: 12px;
+  }
+
+  [slot='errorMessage'] {
+    color: var(--color-invalid);
+    font-size: 12px;
+  }
+}

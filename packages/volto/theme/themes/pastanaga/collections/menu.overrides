@@ -1,0 +1,196 @@
+/*******************************
+         Theme Overrides
+*******************************/
+
+.ui.menu .item.personal-bar {
+  position: fixed;
+  bottom: 68px;
+  width: 80px;
+}
+
+.ui.menu.left.fixed ~ .pusher {
+  margin-right: 80px;
+  transition: margin-right 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+.ui.menu.collapsed.left.fixed ~ .pusher {
+  margin-right: 20px;
+}
+
+.chevron-left-icon {
+  padding: 0.4em 0.2em !important;
+}
+
+.chevron-right-icon {
+  padding: 0.4em 0.2em !important;
+}
+
+.ui.vertical.icon.menu {
+  width: 80px;
+}
+
+.ui.vertical.icon.menu .item {
+  padding: 14px 20px;
+}
+
+.ui.menu .item.logo {
+  position: fixed;
+  bottom: 0;
+  width: 80px;
+}
+
+.ui.menu .item.logo > .image {
+  width: 64px;
+  height: 18px;
+  margin: 4px -14px 0;
+  background-repeat: no-repeat;
+  background-size: 64px 18px;
+  transition:
+    width 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045),
+    margin 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+.ui.menu.collapsed .item.logo > .image {
+  width: 10px;
+  margin: 4px -14px 0 45px;
+}
+
+.ui.menu .trigger {
+  position: absolute;
+  top: 50%;
+  left: 60px;
+  width: 20px;
+  height: 80px;
+  padding: 0;
+  border-radius: 0;
+  margin-top: -40px;
+  background: transparent;
+  opacity: 0.3;
+  transition: opacity 0.3s;
+}
+
+.ui.menu .trigger:before {
+  position: relative;
+  left: 8px;
+  display: block;
+  width: 4px;
+  height: 100%;
+  background: @blue;
+  content: '';
+}
+
+.ui.menu.collapsed .trigger {
+  opacity: 1;
+}
+
+.ui[class*='left fixed'].menu {
+  transition: left 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+.ui[class*='left fixed'].menu.collapsed {
+  left: -60px;
+}
+
+.ui.grid > .row > .logo.column {
+  padding-bottom: 0 !important;
+}
+
+.ui.grid > .row > .tools.column {
+  margin-top: 0.6em;
+}
+
+.ui.grid > .row > .search.column {
+  padding-left: 0;
+  margin-top: 0.4em;
+}
+
+.ui.grid > .row > .tools.column .ui.list {
+  @media only screen and (max-width: (@largestMobileScreen)) {
+    float: none;
+    font-size: 1em;
+  }
+}
+
+.navigation,
+.tools {
+  .ui.secondary.pointing.menu {
+    border: 0;
+    margin: 0 0 0 40px;
+
+    @media only screen and (max-width: @largestTabletScreen) {
+      margin-bottom: 20px;
+      margin-left: 0;
+    }
+
+    .item {
+      padding-top: @relativeBig;
+      margin: 0;
+      text-transform: @secondaryPointingItemTextTransform;
+
+      @media only screen and (min-width: @largestTabletScreen) {
+        padding: 1.7em 0 @relativeBig;
+        margin: 0 unit(@relativeLarge * 2, em) 0 0;
+      }
+    }
+  }
+}
+
+.tools {
+  .ui.secondary.pointing.menu {
+    margin: 0 @relativeMini 0 0;
+
+    .item {
+      // padding-top: @relativeMini;
+      // padding-bottom: 0;
+      padding: @relativeSmall 0 @relativeMini;
+      margin: 0 @relativeMini 0 0;
+      text-transform: none;
+      @media only screen and (min-width: @largestTabletScreen) {
+        padding: 1.7em 0 @relativeBig;
+      }
+    }
+  }
+}
+
+.ui.secondary.attached.pointing.menu {
+  .item {
+    padding: 1.4em 1em;
+    color: @blue;
+    font-size: @large;
+  }
+
+  .active.item {
+    border-color: @teal;
+    color: @black;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .ui.menu.stackable > .menu,
+  .ui.menu.stackable > .menu.right {
+    display: block;
+  }
+}
+
+/* Pagination */
+.pagination-wrapper {
+  text-align: center;
+}
+
+.ui.pagination.menu {
+  border: none;
+  box-shadow: none;
+
+  .item {
+    color: @linkColor;
+
+    &:before {
+      display: none;
+    }
+  }
+
+  .active.item {
+    background: none;
+    color: @textColor;
+  }
+}

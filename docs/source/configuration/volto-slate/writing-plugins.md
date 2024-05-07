@@ -152,7 +152,7 @@ export const TOOLTIP = 'tooltip';
 
 ## Volto configuration registry
 
-Finally register the plugin and the toolbar button in Volto's configuration.
+Finally register the plugin and the toolbar button in Volto's {term}`configuration registry`.
 
 ```js
 

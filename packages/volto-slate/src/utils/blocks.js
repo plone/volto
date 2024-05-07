@@ -73,7 +73,10 @@ export const normalizeExternalData = (editor, nodes) => {
   // put all the non-blocks (e.g. images which are inline Elements) inside p-s
   Editor.withoutNormalizing(fakeEditor, () => {
     //for htmlSlateWidget compatibility
-    if (nodes && !Editor.isBlock(fakeEditor, nodes[0]))
+    if (
+      nodes &&
+      (!Editor.isBlock(fakeEditor, nodes[0]) || Text.isText(nodes[0]))
+    )
       Transforms.wrapNodes(
         fakeEditor,
         { type: 'p' },
@@ -81,7 +84,8 @@ export const normalizeExternalData = (editor, nodes) => {
           at: [],
           match: (node, path) =>
             (!Editor.isEditor(node) && !Editor.isBlock(fakeEditor, node)) ||
-            fakeEditor.isInline(node),
+            fakeEditor.isInline(node) ||
+            Text.isText(node),
           mode: 'highest',
         },
       );
@@ -122,6 +126,13 @@ export function createEmptyParagraph() {
   return {
     type: config.settings.slate.defaultBlockType,
     children: [{ text: '' }],
+  };
+}
+
+export function createParagraph(text) {
+  return {
+    type: config.settings.slate.defaultBlockType,
+    children: [{ text }],
   };
 }
 
@@ -197,10 +208,41 @@ export const toggleInlineFormat = (editor, format) => {
     return;
   }
 
+  const exclusiveElements = config.settings.slate.exclusiveElements;
+  const matchedElements = exclusiveTags(exclusiveElements, format);
+  let alreadyOneIsActive =
+    !!matchedElements &&
+    (matchedElements.indexOf(format) === 0
+      ? isBlockActive(editor, matchedElements[1])
+      : isBlockActive(editor, matchedElements[0]));
+
+  if (alreadyOneIsActive) {
+    Transforms.unwrapNodes(editor, {
+      match: (n) => matchedElements.includes(n.type),
+      split: false,
+    });
+
+    const block = { type: format, children: [] };
+    Transforms.wrapNodes(editor, block, { split: true });
+    return;
+  }
+
   // `children` property is added automatically as an empty array then
   // normalized
   const block = { type: defaultFormat };
   Transforms.wrapNodes(editor, block, { split: true });
+};
+
+const exclusiveTags = (exclusiveElements, format) => {
+  let elements = null;
+  for (const item of exclusiveElements) {
+    if (item.includes(format)) {
+      elements = item;
+      break;
+    }
+  }
+
+  return elements;
 };
 
 export const toggleBlock = (editor, format, allowedChildren) => {

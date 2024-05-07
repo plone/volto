@@ -1,9 +1,11 @@
 import React from 'react';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 
 import BasicToolbar from './BasicToolbar';
 
 const PositionedToolbar = ({ toggleButton, className, children, position }) => {
+  // TODO: "position" is actually an object like `{ style: {} }`
+  // To be renamed as "attributes" or "attrs"
   const ref = React.useRef();
 
   React.useEffect(() => {
@@ -18,12 +20,11 @@ const PositionedToolbar = ({ toggleButton, className, children, position }) => {
     el.style.left = left;
   });
 
-  return (
-    <Portal>
-      <BasicToolbar className={`slate-inline-toolbar ${className}`} ref={ref}>
-        {children}
-      </BasicToolbar>
-    </Portal>
+  return createPortal(
+    <BasicToolbar className={`slate-inline-toolbar ${className}`} ref={ref}>
+      {children}
+    </BasicToolbar>,
+    document.body,
   );
 };
 

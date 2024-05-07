@@ -1,8 +1,8 @@
 import React from 'react';
-import redraft from 'redraft';
 import TextBlockView from './TextBlockView';
 import TextBlockEdit from './TextBlockEdit';
 import TextBlockSchema from './TextBlockSchema';
+import { cloneDeep } from 'lodash';
 
 import {
   goDown,
@@ -26,6 +26,7 @@ import {
   withLists,
   withSplitBlocksOnBreak,
   withIsSelected,
+  normalizeExternalData,
 } from './extensions';
 import { extractImages } from '@plone/volto-slate/editor/plugins/Image/deconstruct';
 import { extractTables } from '@plone/volto-slate/blocks/Table/deconstruct';
@@ -34,7 +35,7 @@ import textSVG from '@plone/volto/icons/subtext.svg';
 
 export { TextBlockView, TextBlockEdit, TextBlockSchema };
 
-export default (config) => {
+export default function applyConfig(config) {
   config.settings.slate = {
     // TODO: should we inverse order? First here gets executed last
     textblockExtensions: [
@@ -44,6 +45,7 @@ export default (config) => {
       withDeserializers,
       withIsSelected,
       breakList,
+      normalizeExternalData,
     ],
 
     // Pluggable handlers for the onKeyDown event of <Editable />
@@ -100,11 +102,6 @@ export default (config) => {
     ...config.settings.slate, // TODO: is this correct for volto-slate addons?
   };
 
-  config.settings.integratesBlockStyles = [
-    ...(config.settings.integratesBlockStyles || []),
-    'slate',
-  ];
-
   const slateBlockConfig = {
     id: 'slate',
     title: 'Text',
@@ -131,26 +128,8 @@ export default (config) => {
       return override_toc && level
         ? [parseInt(level.slice(1)), entry_text]
         : config.settings.slate.topLevelTargetElements.includes(type)
-        ? [parseInt(type.slice(1)), plaintext]
-        : null;
-    },
-  };
-
-  // Make draft js compatible with ToC
-  config.blocks.blocksConfig.text = {
-    ...config.blocks.blocksConfig.text,
-    restricted: true,
-    tocEntry: (block = {}) => {
-      const draft = redraft(
-        block.text,
-        config.settings.richtextViewSettings.ToHTMLRenderers,
-        config.settings.richtextViewSettings.ToHTMLOptions,
-      );
-      const type = draft?.[0]?.[0]?.type;
-
-      return config.settings.slate.topLevelTargetElements.includes(type)
-        ? [parseInt(type.slice(1)), block.text.blocks[0].text]
-        : null;
+          ? [parseInt(type.slice(1)), plaintext]
+          : null;
     },
   };
 
@@ -162,5 +141,15 @@ export default (config) => {
     edit: (props) => <TextBlockEdit {...props} detached />,
     restricted: true,
   };
+
+  if (config.blocks.blocksConfig.gridBlock) {
+    // This is required in order to initialize the inner blocksConfig
+    // for the grid block, since the slate block lives in an add-on
+    // it should be responsible to fill itself into the grid configuration
+    // The cloneDeep is mandatory in order to not mess with pass by reference problems
+    config.blocks.blocksConfig.gridBlock.blocksConfig.slate =
+      cloneDeep(slateBlockConfig);
+  }
+
   return config;
-};
+}

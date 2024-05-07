@@ -4,50 +4,92 @@ myst:
     "description": "Volto Integration with Sentry"
     "property=og:description": "Volto Integration with Sentry"
     "property=og:title": "Integration with Sentry"
-    "keywords": "Volto, Plone, frontend, React, Integration, Sentry"
+    "keywords": "Volto, Plone, frontend, React, Integration, Sentry, volto-sentry, add-on"
 ---
 
 # Integration with Sentry
 
-## Prerequisities
-1. In Sentry create a new organization, and add a project to it
-2. On the projects settings page, from Client Keys (DSN), take the SENTRY_DSN
-3. Create an API Token: on the top left corner, click on your name -> API keys and create a new token, "project:write" scope should be selected.
+Volto can be configured to work with [Sentry.io](https://sentry.io/welcome/).
+Sentry is a monitoring platform that can help identify the cause of errors in your project.
 
-**Note:**  Instructions tested with Sentry 9.1.2
+
+## Prerequisities
+
+1.  Install the add-on [`@plone-collective/volto-sentry`](https://www.npmjs.com/package/@plone-collective/volto-sentry).
+2.  In Sentry, create a new organization, and add a project to it.
+3.  On the projects settings page, from {guilabel}`Client Keys (DSN)`, take the `SENTRY_DSN`.
+4.  Create an API Token: in the top-left corner, click on {guilabel}`your name -> API keys`, and create a new token.
+    {guilabel}`project:write` scope should be selected.
+
+```{note}
+Instructions tested with Sentry 9.1.2.
+```
+
+```{versionchanged} 16.0.0.alpha.45
+Sentry was moved from Volto core and into a separate add-on [`volto-sentry`](https://github.com/collective/volto-sentry).
+```
+
 
 ## Setup
-Volto creates bundles of the source codes, if an error is sent to sentry, it will only show the traceback in the bundles. To have nice traceback, we have to upload the source code and source map in sentry.
-This doesn't have to be done manually, we can configure our volto application to do all the steps automatically.
 
-There are 2 ways to configure the application:
+Volto creates bundles of the source codes.
+If an error is sent to Sentry, it will only show the traceback in the bundles.
+To have a nice traceback, we have to upload the source code and source map to Sentry.
+This can be configured in our Volto application to do all the steps automatically.
 
-### 1. Buildtime
-This can be used when the application is deployed directly on a host machine, and built locally.
+There are 2 ways to configure the application.
 
-The configuration is done using environment variables:
 
- - SENTRY_DSN - required to enable the feature
- - SENTRY_URL - the url of sentry
- - SENTRY_AUTH_TOKEN - the authentication token for sentry
- - SENTRY_ORG - the name of the organization in sentry
- - SENTRY_PROJECT -the name of the project in sentry
- - SENTRY_RELEASE - release number
- - SENTRY_FRONTEND_CONFIG - optional, here we can specify TAGS
-   and ADDITIONAL DATA for the messages from the browser we send to sentry
- - SENTRY_BACKEND_CONFIG - same as SENTRY_FRONTEND_CONFIG, but we configure the messages from the backend
+### 1. Build time
 
-If these env variables are configured, when the app is built, a new release will be created in sentry, and the source code and source maps will be uploaded it.
-After starting the application if an error will occure, the errors will be sent to sentry, and will be linked to the specified release.
+This method can be used when the application is deployed directly on a host machine and built locally.
 
-Example of usage:
+The configuration is done using environment variables.
 
-```bash
-SENTRY_URL=https://mysentry.com SENTRY_AUTH_TOKEN=foo SENTRY_ORG=my_organization SENTRY_PROJECT=new_project SENTRY_RELEASE=2.0.0 SENTRY_DSN=https://boo@sentry.com/1 yarn build
+
+`SENTRY_DSN`
+:   Required to enable the feature.
+
+`SENTRY_URL`
+:   The URL of Sentry.
+
+`SENTRY_AUTH_TOKEN`
+:   The authentication token for Sentry.
+
+`SENTRY_ORG`
+:   The name of the organization in Sentry.
+
+`SENTRY_PROJECT`
+:   The name of the project in Sentry.
+
+`SENTRY_RELEASE`
+:   The release number.
+
+`SENTRY_FRONTEND_CONFIG`
+:   Optional, here we can specify `TAGS` and `ADDITIONAL DATA` for the messages we send to Sentry from the browser.
+
+`SENTRY_BACKEND_CONFIG`
+:   Same as `SENTRY_FRONTEND_CONFIG`, but we configure the messages from the backend.
+
+If these environment variables are configured when the app is built, a new release will be created in Sentry, and the source code and source maps will be uploaded to it.
+After starting the application, if an error occurs, the errors will be sent to Sentry, and will be linked to the specified release.
+
+Example usage:
+
+```shell
+SENTRY_URL=https://mysentry.com \
+SENTRY_AUTH_TOKEN=foo \
+SENTRY_ORG=my_organization \
+SENTRY_PROJECT=new_project \
+SENTRY_RELEASE=2.0.0 \
+SENTRY_DSN=https://boo@sentry.com/1 yarn build
 node build/server.js
 ```
+
+
 ### 2. Runtime
-Within your Volto project or a dedicated Volto add-on you can configure Sentry via `settings.sentryOptions` configuration key:
+
+Within your Volto project or a dedicated Volto add-on, you can configure Sentry via the `settings.sentryOptions` configuration key:
 
 ```js
 import {
@@ -76,31 +118,51 @@ const settings = {
     ]
   }
 };
-See more about [Sentry Custom Integrations](https://docs.sentry.io/platforms/javascript/configuration/integrations)
+```
 
-In case you plan to use the application using docker, you will not want to have the sentry setup in the docker image.
-The configuration for setting up sentry on runtime is very similar as how we set it up for buildtime, but with some small differences:
+See more about [Sentry Custom Integrations](https://docs.sentry.io/platforms/javascript/configuration/integrations/custom/).
 
- - SENTRY_URL - the url of sentry
- - SENTRY_AUTH_TOKEN - the authentication token for sentry
- - SENTRY_ORG - the name of the organization in sentry
- - SENTRY_PROJECT -the name of the project in sentry
- - SENTRY_RELEASE - release number
- - RAZZLE_SENTRY_DSN - required to enable the feature
- - RAZZLE_SENTRY_FRONTEND_CONFIG - optional, here we can specify TAGS
-   and ADDITIONAL DATA for the messages from the browser we send to sentry
- - RAZZLE_SENTRY_BACKEND_CONFIG - same as RAZZLE_SENTRY_FRONTEND_CONFIG, but we configure the messages from the backend
- - RAZZLE_SENTRY_RELEASE - release number, should be the same as SENTRY_RELEASE
+In case you plan to use the application using Docker, you will not want to have the Sentry setup in the Docker image.
+The configuration for setting up Sentry on runtime is very similar to how we set it up for build time, but with some small differences.
 
-In the entrypoint of our docker image we have to add the ./create-sentry-release.sh script. When the container is started, this script will check in sentry if the specified release already exists, if not, it will create it and upload the source code and the source maps.
-The script can be executed also manually and if we want to overwrite the existing files in sentry, we can use the --force  flag:
+`SENTRY_URL`
+:   The URL of Sentry.
 
-```bash
+`SENTRY_AUTH_TOKEN`
+:   The authentication token for Sentry.
+
+`SENTRY_ORG`
+:   The name of the organization in Sentry.
+
+`SENTRY_PROJECT`
+:   The name of the project in Sentry.
+
+`SENTRY_RELEASE`
+:   The release number.
+
+`RAZZLE_SENTRY_DSN`
+:   Required to enable the feature.
+
+`RAZZLE_SENTRY_FRONTEND_CONFIG`
+:   Optional, here we can specify `TAGS` and `ADDITIONAL DATA` for the messages we send to Sentry from the browser.
+
+`RAZZLE_SENTRY_BACKEND_CONFIG`
+:   Same as `RAZZLE_SENTRY_FRONTEND_CONFIG`, but we configure the messages from the backend.
+
+`RAZZLE_SENTRY_RELEASE`
+    The release number, which should be the same as `SENTRY_RELEASE`.
+
+In the entrypoint of our Docker image, we have to add the script `./create-sentry-release.sh`.
+When the container is started, this script will check in Sentry if the specified release already exists, and if not, it will create it and upload the source code and the source maps.
+The script can also be executed manually, and if we want to overwrite the existing files in Sentry, we can use the `--force` flag.
+
+```shell
 ./create-sentry-release.sh --force
 ```
-Example of entrypoint:
 
-```bash
+Example of entrypoint.
+
+```shell
 #!/usr/bin/env bash
 set -Ex
 
@@ -129,7 +191,7 @@ echo "Starting Volto"
 exec "$@"
 ```
 
-Starting with docker:
+Starting the container with Docker.
 
 ```shell
 docker run -p 3000:3000 -p 3001:3001 \
@@ -162,16 +224,19 @@ services:
       - RAZZLE_SENTRY_RELEASE=2.0.0
 ```
 
+
 ## Configuration options
 
-This applies to both SENTRY_FRONTEND_CONFIG and SENTRY_BACKEND_CONFIG
+This applies to both `SENTRY_FRONTEND_CONFIG` and `SENTRY_BACKEND_CONFIG`.
 
-**Note:** In case you are using buildtime configuration you have to use SENTRY_FRONTEND_CONFIG and SENTRY_BACKEND_CONFIG.
+If you are using _build time_ configuration, you have to use `SENTRY_FRONTEND_CONFIG` and `SENTRY_BACKEND_CONFIG`.
 
-But if you are using runtime configuration, use RAZZLE_SENTRY_FRONTEND_CONFIG and RAZZLE_SENTRY_BACKEND_CONFIG
+If you are using _runtime_ configuration, use `RAZZLE_SENTRY_FRONTEND_CONFIG` and `RAZZLE_SENTRY_BACKEND_CONFIG`.
 
-We have the possibility to add TAGS and ADDITIONAL DATA for our messages for categorization in SENTRY. We can configure these 2 variables separately, as we might want to separate the messages from frontend and backend.
-Example of configurations:
+We have the possibility to add `TAGS` and `ADDITIONAL DATA` for our messages for categorization in Sentry.
+We can configure these two variables separately, as we might want to separate the messages from frontend and backend.
+
+Example of configuration.
 
 ```json
 {
@@ -190,7 +255,7 @@ Example of configurations:
 }
 ```
 
-Example of usage with buildtime setup:
+Example of usage with build time setup.
 
 ```console
 SENTRY_URL=https://mysentry.com
@@ -204,7 +269,7 @@ SENTRY_BACKEND_CONFIG='{"tags":{"site":"www.test.com","app":"test_app"} yarn bui
 node build/server.js
 ```
 
-Example with Docker Compose:
+Example with Docker Compose.
 
 ```yaml
 version: '3'
@@ -226,11 +291,11 @@ services:
       - RAZZLE_SENTRY_BACKEND_CONFIG={"tags":{"site":"www.test.com","app":"test_app"},"extras":{"logger":"javascript-backend", "server":"server#1"}}
 ```
 
-## Example of messages in SENTRY
+## Example messages in Sentry
 
-1. List of messages
-![](sentry_messages.png)
-2. Messages from the frontend, with its own TAGS and ADDITIONAL DATA
-![](sentry_frontend_message.png)
-3. Messages from the backend, with its own TAGS and ADDITIONAL DATA
-![](sentry_backend_message.png)
+1.  List of messages
+    ![](sentry-messages.png)
+2.  Messages from the frontend, with its own `TAGS` and `ADDITIONAL DATA`
+    ![](sentry-frontend-message.png)
+3.  Messages from the backend, with its own `TAGS` and `ADDITIONAL DATA`
+    ![](sentry-backend-message.png)

@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a sidebar component 1`] = `
+Array [
+  <div
+    className="sidebar-container"
+    style={null}
+  >
+    <button
+      aria-label="Shrink sidebar"
+      className="ui button trigger"
+      onClick={[Function]}
+    />
+    <button
+      aria-label="full-screen-sidenav"
+      className="ui button full-size-sidenav-btn"
+      onClick={[Function]}
+    >
+      <svg
+        className="icon full-size-icon"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": undefined,
+          }
+        }
+        onClick={null}
+        style={
+          Object {
+            "fill": "currentColor",
+            "height": "36px",
+            "width": "auto",
+          }
+        }
+        viewBox=""
+        xmlns=""
+      />
+    </button>
+    <div
+      className="tabs-wrapper"
+    >
+      <div
+        className="ui pointing secondary attached tabular formtabs menu"
+      >
+        <button
+          className="active item ui button"
+          onClick={[Function]}
+        >
+          Document
+        </button>
+        <button
+          className="item ui button"
+          onClick={[Function]}
+        >
+          Block
+        </button>
+      </div>
+      <div
+        className="ui bottom attached segment active tab tab-wrapper"
+        id="sidebar-metadata"
+      />
+      <div
+        className="ui bottom attached segment tab tab-wrapper"
+        id="sidebar-properties"
+      >
+        <svg
+          className="icon tab-forbidden"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": undefined,
+            }
+          }
+          onClick={null}
+          style={
+            Object {
+              "fill": "currentColor",
+              "height": "48px",
+              "width": "auto",
+            }
+          }
+          viewBox=""
+          xmlns=""
+        />
+      </div>
+    </div>
+  </div>,
+  <div
+    className="pusher expanded"
+  />,
+]
+`;

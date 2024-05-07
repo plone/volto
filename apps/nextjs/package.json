@@ -1,0 +1,33 @@
+{
+  "name": "plone-nextjs",
+  "version": "1.0.0-alpha",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "check-ts": "tsc --project tsconfig.json",
+    "build": "next build",
+    "start:prod": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@plone/blocks": "workspace: *",
+    "@plone/client": "workspace: *",
+    "@plone/components": "workspace: *",
+    "@plone/registry": "workspace: *",
+    "@plone/providers": "workspace: *",
+    "@tanstack/react-query": "^5.24.6",
+    "@tanstack/react-query-devtools": "^5.24.6",
+    "next": "14.2.2",
+    "react": "^18",
+    "react-aria-components": "^1.1.1",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.2",
+    "typescript": "^5.4.5"
+  }
+}

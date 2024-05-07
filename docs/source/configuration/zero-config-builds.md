@@ -14,12 +14,14 @@ This feature is available since Volto 13.
 ```
 
 In the past (before Volto 13), Volto was configured in build time using several
-environment vars, commonly supplied via the command line, like:
+environment variables, commonly supplied via the command line, such as the following:
 
-`PORT=11001 RAZZLE_API_PATH=https://plone.org/api yarn build`
+```shell
+PORT=11001 RAZZLE_API_PATH=https://plone.org/api yarn build`
+```
 
-and since RAZZLE is a isomorphic app, some of these values passed on build time, were
-hardcoded in the code because the code in client and server need to know them upfront to
+and since Razzle is an isomorphic application, some of these values passed on build time, were
+hardcoded in the code because the code in client and server need to know them up front to
 in order to work.
 
 Volto 13 has several new features that allows zero configuration on build time, using
