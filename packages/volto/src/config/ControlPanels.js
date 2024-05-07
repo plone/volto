@@ -44,7 +44,7 @@ export const controlPanelsIcons = {
   relations: relationsSVG,
 };
 
-export const filterControlPanels = (controlpanels) => {
+export const filterControlPanels = (controlpanels = []) => {
   const HIDDEN_CONTROL_PANELS = ['markup', 'content-rules'];
 
   return controlpanels.filter(

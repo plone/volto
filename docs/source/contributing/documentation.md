@@ -144,3 +144,27 @@ To build the Volto Storybook locally and test your entry, run the following comm
 ```shell
 make storybook-build
 ```
+
+
+(link-to-storybook-entries-from-documentation)=
+
+### Link to Storybook entries from documentation
+
+To hyperlink to Storybook entries from the narrative documentation, you can use one of two syntaxes.
+
+Use HTML syntax to enable hyperlinking in development, within Netlify preview builds, and when the main Plone documenation is updated.
+Hyperlinking in development requires that you run both `make docs-html` and `make storybook-build` commands once, then whenever you update either the narrative documentation or the Storybook.
+
+```html
+<a href="/storybook/index.html?path=/story/edit-widgets-colorpicker--default">color picker widget</a>
+```
+
+<a href="/storybook/index.html?path=/story/edit-widgets-colorpicker--default">color picker widget</a>
+
+Use CommonMark syntax to point only to the main production Plone documentation.
+
+```md
+[color picker widget](https://6.docs.plone.org/storybook/index.html?path=/story/edit-widgets-colorpicker--default)
+```
+
+[color picker widget](https://6.docs.plone.org/storybook/index.html?path=/story/edit-widgets-colorpicker--default)

@@ -1,10 +1,11 @@
 import React from 'react';
 import BlockDataForm from './BlockDataForm';
 import { render } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
 import configureStore from 'redux-mock-store';
 import config from '@plone/volto/registry';
 import { Provider } from 'react-intl-redux';
+
+jest.mock('@plone/volto/components/manage/Form');
 
 const mockStore = configureStore();
 

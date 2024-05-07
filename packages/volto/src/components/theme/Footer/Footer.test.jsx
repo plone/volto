@@ -3,7 +3,6 @@ import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
 import { render } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
 import Footer from './Footer';
 
 const mockStore = configureStore();

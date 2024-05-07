@@ -11,20 +11,25 @@ import { compose } from 'redux';
 import { keys, isEmpty } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Button, Grid, Menu } from 'semantic-ui-react';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import { v4 as uuid } from 'uuid';
 import qs from 'query-string';
 import { toast } from 'react-toastify';
 
-import { createContent, getSchema, changeLanguage } from '@plone/volto/actions';
 import {
-  Form,
+  createContent,
+  getSchema,
+  changeLanguage,
+  setFormData,
+} from '@plone/volto/actions';
+import {
   Icon,
   Toolbar,
   Sidebar,
   Toast,
   TranslationObject,
 } from '@plone/volto/components';
+import { Form } from '@plone/volto/components/manage/Form';
 import {
   getBaseUrl,
   hasBlocksData,
@@ -34,9 +39,12 @@ import {
   getLanguageIndependentFields,
   langmap,
   toGettextLang,
+  getSimpleDefaultBlocks,
+  getDefaultBlocks,
 } from '@plone/volto/helpers';
 
 import { preloadLazyLibs } from '@plone/volto/helpers/Loadable';
+import { tryParseJSON } from '@plone/volto/helpers';
 
 import config from '@plone/volto/registry';
 
@@ -63,6 +71,10 @@ const messages = defineMessages({
   translateTo: {
     id: 'Translate to {lang}',
     defaultMessage: 'Translate to {lang}',
+  },
+  someErrors: {
+    id: 'There are some errors.',
+    defaultMessage: 'There are some errors.',
   },
 });
 
@@ -123,18 +135,6 @@ class Add extends Component {
     this.onCancel = this.onCancel.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
-    if (config.blocks?.initialBlocks[props.type]) {
-      this.initialBlocksLayout = config.blocks.initialBlocks[props.type].map(
-        (item) => uuid(),
-      );
-      this.initialBlocks = this.initialBlocksLayout.reduce(
-        (acc, value, index) => ({
-          ...acc,
-          [value]: { '@type': config.blocks.initialBlocks[props.type][index] },
-        }),
-        {},
-      );
-    }
     this.state = {
       isClient: false,
       error: null,
@@ -164,6 +164,7 @@ class Add extends Component {
       nextProps.createRequest.loaded &&
       nextProps.content['@type'] === this.props.type
     ) {
+      this.props.setFormData({});
       this.props.history.push(
         this.props.returnUrl || flattenToAppURL(nextProps.content['@id']),
       );
@@ -178,13 +179,30 @@ class Add extends Component {
         new DOMParser().parseFromString(message, 'text/html')?.all[0]
           ?.textContent || message;
 
+      const errorsList = tryParseJSON(error);
+      let erroMessage;
+      if (Array.isArray(errorsList)) {
+        const invariantErrors = errorsList
+          .filter((errorItem) => !('field' in errorItem))
+          .map((errorItem) => errorItem['message']);
+        if (invariantErrors.length > 0) {
+          // Plone invariant validation message.
+          erroMessage = invariantErrors.join(' - ');
+        } else {
+          // Error in specific field.
+          erroMessage = this.props.intl.formatMessage(messages.someErrors);
+        }
+      } else {
+        erroMessage = errorsList.error?.message || error;
+      }
+
       this.setState({ error: error });
 
       toast.error(
         <Toast
           error
           title={this.props.intl.formatMessage(messages.error)}
-          content={`${nextProps.createRequest.error.status}:  ${error}`}
+          content={erroMessage}
         />,
       );
     }
@@ -217,6 +235,7 @@ class Add extends Component {
    * @returns {undefined}
    */
   onCancel() {
+    this.props.setFormData({});
     if (this.props.location?.state?.translationOf) {
       const language = this.props.location.state.languageFrom;
       const langFileName = toGettextLang(language);
@@ -249,13 +268,28 @@ class Add extends Component {
         ? langmap?.[this.props.location?.state?.language]?.nativeName
         : null;
 
-      // Lookup initialBlocks and initialBlocksLayout within schema
+      // Get initial blocks from local config, if any
+      let initialBlocks, initialBlocksLayout;
+      const initialContentTypeBlocks =
+        config.blocks?.initialBlocks[this.props.type];
+      if (initialContentTypeBlocks) {
+        if (typeof initialContentTypeBlocks?.[0] === 'string') {
+          // Simple (legacy) default blocks definition
+          [initialBlocks, initialBlocksLayout] = getSimpleDefaultBlocks(
+            initialContentTypeBlocks,
+          );
+        } else {
+          [initialBlocks, initialBlocksLayout] = getDefaultBlocks(
+            initialContentTypeBlocks,
+          );
+        }
+      }
+
+      // Lookup initialBlocks and initialBlocksLayout within schema, if any
       const schemaBlocks =
         this.props.schema.properties[blocksFieldname]?.default;
       const schemaBlocksLayout =
         this.props.schema.properties[blocksLayoutFieldname]?.default?.items;
-      let initialBlocks = this.initialBlocks;
-      let initialBlocksLayout = this.initialBlocksLayout;
 
       if (!isEmpty(schemaBlocksLayout) && !isEmpty(schemaBlocks)) {
         initialBlocks = {};
@@ -272,6 +306,7 @@ class Add extends Component {
           }
         });
       }
+
       //copy blocks from translationObject
       if (translationObject && blocksFieldname && blocksLayoutFieldname) {
         initialBlocks = {};
@@ -358,9 +393,14 @@ class Add extends Component {
             onSelectForm={() => {
               this.setState({ formSelected: 'addForm' });
             }}
+            global
+            // Properties to pass to the BlocksForm to match the View ones
+            history={this.props.history}
+            location={this.props.location}
+            token={this.props.token}
           />
-          {this.state.isClient && (
-            <Portal node={document.getElementById('toolbar')}>
+          {this.state.isClient &&
+            createPortal(
               <Toolbar
                 pathname={this.props.pathname}
                 hideDefaultViewButtons
@@ -393,14 +433,12 @@ class Add extends Component {
                     </Button>
                   </>
                 }
-              />
-            </Portal>
-          )}
-          {visual && this.state.isClient && (
-            <Portal node={document.getElementById('sidebar')}>
-              <Sidebar />
-            </Portal>
-          )}
+              />,
+              document.getElementById('toolbar'),
+            )}
+          {visual &&
+            this.state.isClient &&
+            createPortal(<Sidebar />, document.getElementById('sidebar'))}
         </div>
       );
 
@@ -463,7 +501,7 @@ export default compose(
       returnUrl: qs.parse(props.location.search).return_url,
       type: qs.parse(props.location.search).type,
     }),
-    { createContent, getSchema, changeLanguage },
+    { createContent, getSchema, changeLanguage, setFormData },
   ),
   preloadLazyLibs('cms'),
 )(Add);

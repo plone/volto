@@ -10,7 +10,7 @@ import { compose } from 'redux';
 import { UniversalLink } from '@plone/volto/components';
 import { asyncConnect } from '@plone/volto/helpers';
 import { FormattedMessage } from 'react-intl';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import { Container, Pagination, Button, Header } from 'semantic-ui-react';
 import qs from 'query-string';
 import classNames from 'classnames';
@@ -309,15 +309,15 @@ class Search extends Component {
             </section>
           </article>
         </div>
-        {this.state.isClient && (
-          <Portal node={document.getElementById('toolbar')}>
+        {this.state.isClient &&
+          createPortal(
             <Toolbar
               pathname={this.props.pathname}
               hideDefaultViewButtons
               inner={<span />}
-            />
-          </Portal>
-        )}
+            />,
+            document.getElementById('toolbar'),
+          )}
       </Container>
     );
   }

@@ -10,7 +10,7 @@ export default EmailWidget;
  * }
  * ```
  */
-declare function EmailWidget(props: any): JSX.Element;
+declare function EmailWidget(props: any): import("react/jsx-runtime").JSX.Element;
 declare namespace EmailWidget {
     namespace propTypes {
         let id: any;

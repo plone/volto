@@ -1,3 +1,4 @@
+export function tryParseJSON(requestItem: string): any;
 export default FormValidation;
 export function validateFileUploadSize(file: File, intlFunc: Function): boolean;
 declare class FormValidation {

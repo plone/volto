@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 import { getBaseUrl, getParentUrl, Helmet } from '@plone/volto/helpers';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import {
   Button,
   Checkbox,
@@ -19,9 +19,9 @@ import {
   Segment,
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import { Icon, Toolbar, Field } from '@plone/volto/components';
+import { Icon, Toolbar, Toast } from '@plone/volto/components';
+import { Field } from '@plone/volto/components/manage/Form';
 import { toast } from 'react-toastify';
-import { Toast } from '@plone/volto/components';
 
 import { getContentRulesEvents, addNewRule } from '@plone/volto/actions';
 
@@ -331,8 +331,8 @@ class AddRule extends Component {
             </Segment.Group>
           </article>
         </Container>
-        {this.state.isClient && (
-          <Portal node={document.getElementById('toolbar')}>
+        {this.state.isClient &&
+          createPortal(
             <Toolbar
               pathname={this.props.pathname}
               hideDefaultViewButtons
@@ -346,9 +346,9 @@ class AddRule extends Component {
                   />
                 </Link>
               }
-            />
-          </Portal>
-        )}
+            />,
+            document.getElementById('toolbar'),
+          )}
       </div>
     );
   }

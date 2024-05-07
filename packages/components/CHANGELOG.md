@@ -8,6 +8,82 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.7 (2024-03-14)
+
+### Bugfix
+
+- Missing CSS in build for `Container` @sneridagh [#5849](https://github.com/plone/volto/issues/5849)
+
+### Internal
+
+- Cleanup deps @sneridagh [#5846](https://github.com/plone/volto/issues/5846)
+
+## 2.0.0-alpha.6 (2024-03-06)
+
+### Breaking
+
+- Refactor the `Container` component.
+  The inference for the `as` prop is complete.
+  Replace the internal `className` to be `q container` @sneridagh [#5848](https://github.com/plone/volto/issues/5848)
+
+## 2.0.0-alpha.5 (2024-03-05)
+
+### Bugfix
+
+- Fix some case inconsistencies in CSS declarations @sneridagh [#5824](https://github.com/plone/volto/issues/5824)
+
+## 2.0.0-alpha.4 (2024-03-02)
+
+### Bugfix
+
+- Remove `lodash` dependency.
+  Several packages upgrades and general cleanup. @sneridagh [#5822](https://github.com/plone/volto/issues/5822)
+- Proxy the `PopoverContext` inside the `Select` component, to be able to override it from the outside @sneridagh [#5823](https://github.com/plone/volto/issues/5823)
+
+### Internal
+
+- Update dependencies @sneridagh [#5815](https://github.com/plone/volto/issues/5815)
+
+## 2.0.0-alpha.3 (2024-03-01)
+
+### Breaking
+
+- Use `pathname` instead of the full location as prop in `BlocksRenderer` @sneridagh [#5798](https://github.com/plone/volto/issues/5798)
+
+### Bugfix
+
+- Fix `lodash` imports for bundling @sneridagh [#5798](https://github.com/plone/volto/issues/5798)
+
+## 2.0.0-alpha.2 (2024-02-23)
+
+### Bugfix
+
+- Move basic general CSS rules to StoryBook so we don't spoil the build @sneridagh [#5791](https://github.com/plone/volto/issues/5791)
+
+### Internal
+
+- Improve StoryBook look and feel @sneridagh [#5791](https://github.com/plone/volto/issues/5791)
+
+## 2.0.0-alpha.1 (2024-02-18)
+
+### Bugfix
+
+- Add import path for bundled CSS @sneridagh [#5770](https://github.com/plone/volto/issues/5770)
+
+## 2.0.0-alpha.0 (2024-02-17)
+
+### Breaking
+
+- Move to only CSS-based approach
+  Removal of SCSS in favor of the above
+  New Basic components, based in React Aria Components
+
+  @sneridagh [#5766](https://github.com/plone/volto/issues/5766)
+
+### Documentation
+
+- Build the `volto/components` Storybook only when its source files change. @stevepiercy [#5601](https://github.com/plone/volto/issues/5601)
+
 ## 1.7.0 (2023-12-25)
 
 ### Feature

@@ -1,7 +1,8 @@
-import Icon from '../Icon/Icon';
+import React from 'react';
+import { Icon } from '../Icon/Icon';
 import type { IconPropsWithoutChildren } from '../Icon/Icon';
 
-const Page = (props: IconPropsWithoutChildren) => {
+export const PageIcon = (props: IconPropsWithoutChildren) => {
   return (
     <Icon {...props}>
       <svg
@@ -19,5 +20,3 @@ const Page = (props: IconPropsWithoutChildren) => {
     </Icon>
   );
 };
-
-export default Page;

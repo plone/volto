@@ -1,10 +1,10 @@
 # Yeoman Volto App Generator
 
-@plone/generator-volto is a Yeoman generator that helps you to set up Volto via command line.
+@plone/generator-volto is a Yeoman generator that helps you to set up a Volto project via the command line.
 
 ## Installation
 
-First, install [Yeoman](http://yeoman.io) and @plone/generator-volto using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/en)).
+First, install [Yeoman](https://yeoman.io/) and @plone/generator-volto using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/en)).
 
 ```bash
 npm install -g yo
@@ -23,9 +23,10 @@ See [`volto-generator` compatibility with Volto](https://6.docs.plone.org/volto/
 npm init yo @plone/volto
 ```
 
-This is the shortcut for using `npm init` command. It uses Yeoman (`yo`) and `@plone/generator-volto` and execute them without having to be installed globally.
+This is the shortcut for using `npm init` command.
+It uses Yeoman (`yo`) and `@plone/generator-volto`, and `npm` executes the commands without having the need for the packages to be installed globally.
 
-Answer the prompt questions to complete the generation process.
+Answer the prompts to complete the generation process.
 
 ### Creating a new Volto project
 
@@ -33,8 +34,10 @@ Answer the prompt questions to complete the generation process.
 yo @plone/volto
 ```
 
-This will bootstrap a new Volto project inside the current folder. It will ask
-a few questions: project name, project description and a list of addons. Run:
+This will bootstrap a new Volto project inside the current folder.
+It will ask a few questions for the project name, project description, and a list of add-ons. 
+
+Run:
 
 ```console
 $ yo @plone/volto --help
@@ -50,11 +53,11 @@ Options:
         --volto             # Desired Volto version, if not provided, the most recent will be used
         --canary            # Desired Volto version should be a canary (alpha)                      Default: false
         --interactive       # Enable/disable interactive prompt                                     Default: true
-        --skip-addons       # Don't ask for addons as part of the scaffolding
+        --skip-addons       # Don't ask for add-ons as part of the scaffolding
         --addon             # Add-on loader string. Example: some-volto-addon:loadExtra,loadOtherExtra
         --workspace         # Yarn workspace. Example: src/addons/some-volto-addon
         --description       # Project description
-        --defaultAddonName  # The default add-on's name to be added to the generated project.
+        --defaultAddonName  # The default add-on's name always added to the generated project       Default: volto-[<projectName>]
 
 Arguments:
   projectName    Type: String  Required: false
@@ -63,7 +66,15 @@ Arguments:
 
 to see a full list of options and arguments.
 
-You can provide an specific Volto version like:
+> [!NOTE]  
+> In addition to the Volto project, the generator creates a theme add-on inside `src/addons` with the default name of `volto-[<project-name>]`.
+> You can provide a specific name for the theme add-on that is created on project generation like:
+> ```shell
+> yo @plone/volto --defaultAddonName="volto-project-theme"
+> ```
+> If you've used the example project name `myvoltoproject` inside `src/addons`, you will find the Volto theme add-on named `volto-project-theme` instead of the default generator name `volto-myvoltoproject`.
+
+You can provide a specific Volto version like:
 
 ```bash
 yo @plone/volto --volto=12.0.0-alpha.0
@@ -87,13 +98,13 @@ You can use it in full non-interactive mode by passing something like:
 yo @plone/volto myvoltoproject --no-interactive
 ```
 
-Or by skipping specific configuration:
+Or by skipping specific configuration options:
 
 ```bash
 yo @plone/volto myvoltoproject --description "My Volto project" --skip-addons --skip-install --skip-workspaces
 ```
 
-You can also specify addons to load, like:
+You can also specify add-ons to load, like:
 
 ```bash
 yo @plone/volto myvoltoproject --description "My Volto project" --addon "volto-formbuilder:x,y" --addon "volto-slate:z,t"
@@ -123,7 +134,7 @@ Options:
         --outputpath     # Output path
 
 Arguments:
-  addonName  # Addon name, e.g.: @plone-collective/volto-custom-block  Type: String  Required: false
+  addonName  # Add-on name, e.g.: @plone-collective/volto-custom-block  Type: String  Required: false
 ```
 
 ### Enable an existing add-on as a theme add-on
@@ -149,7 +160,7 @@ Options:
         --outputpath     # Output path
 
 Arguments:
-  addonName  # Addon name, e.g.: @plone-collective/volto-custom-block  Type: String  Required: false
+  addonName  # Add-on name, e.g.: @plone-collective/volto-custom-block  Type: String  Required: false
 ```
 
 You can also run the command inside the add-on folder, without passing any option.

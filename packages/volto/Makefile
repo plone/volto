@@ -10,18 +10,8 @@ SHELL:=bash
 MAKEFLAGS+=--warn-undefined-variables
 MAKEFLAGS+=--no-builtin-rules
 
-# Project settings
-
-INSTANCE_PORT=8080
-DOCKER_IMAGE=plone/server-dev:6.0.8
-DOCKER_IMAGE_ACCEPTANCE=plone/server-acceptance:6.0.8
-KGS=plone.restapi==9.2.0
-NODEBIN = ./node_modules/.bin
-
-# Plone 5 legacy
-DOCKER_IMAGE5=plone/plone-backend:5.2.12
-KGS5=plone.restapi==9.2.0 plone.volto==4.1.0 plone.rest==3.0.1
-TESTING_ADDONS=plone.app.robotframework==2.0.0 plone.app.testing==7.0.0
+# Project settings (read from repo root)
+include ../../variables.mk
 
 # Recipe snippets for reuse
 
@@ -77,7 +67,10 @@ cypress-install:
 
 .PHONY: build-deps
 build-deps:
-	if [ ! -d $$(pwd)/../registry/dist ]; then (cd ../../ && pnpm build:deps); fi
+	@if [ ! -d $$(pwd)/../registry/dist ] || [ $$(find $$(pwd)/../registry -newer $$(pwd)/../registry/dist -print -quit) ]; then \
+		(cd ../../ && pnpm build:deps); \
+	fi
+
 
 ##### Release (it runs the one inside)
 

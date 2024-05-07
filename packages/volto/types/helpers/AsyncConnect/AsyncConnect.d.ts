@@ -1,4 +1,4 @@
-export class AsyncConnect extends Component<any, any, any> {
+export class AsyncConnect extends React.Component<any, any, any> {
     constructor(props: any);
     state: {
         previousLocation: any;
@@ -13,7 +13,7 @@ export class AsyncConnect extends Component<any, any, any> {
         [x: string]: any;
         reduxConnectStore: any;
     }): any;
-    render(): JSX.Element;
+    render(): import("react/jsx-runtime").JSX.Element;
 }
 export namespace AsyncConnect {
     namespace propTypes {
@@ -39,11 +39,11 @@ export namespace AsyncConnect {
 export function AsyncConnectWithContext({ context, ...otherProps }: {
     [x: string]: any;
     context: any;
-}): JSX.Element;
+}): import("react/jsx-runtime").JSX.Element;
 export namespace AsyncConnectWithContext {
     export namespace propTypes_1 {
         let context: any;
     }
     export { propTypes_1 as propTypes };
 }
-import { Component } from 'react';
+import React from 'react';

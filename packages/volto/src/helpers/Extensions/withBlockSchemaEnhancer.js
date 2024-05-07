@@ -47,7 +47,7 @@ export const addExtensionFieldToSchema = ({
   items,
   intl,
   title,
-  description,
+  description = '',
   insertFieldToOrder = _addField,
 }) => {
   const _ = intl.formatMessage;
@@ -64,6 +64,8 @@ export const addExtensionFieldToSchema = ({
 
   schema.properties[name] = {
     title: _(title),
+    // TODO: is description sensible in here? The argument is not used anywhere
+    // description: _(description),
     choices: items?.map(({ id, title }) => [
       id,
       _({ id: title, defaultMessage: title }),

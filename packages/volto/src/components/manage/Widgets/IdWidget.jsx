@@ -11,7 +11,8 @@ import { Input } from 'semantic-ui-react';
 import { compact, concat, keys, map, union, uniq } from 'lodash';
 
 import { defineMessages, injectIntl } from 'react-intl';
-import { Icon, FormFieldWrapper } from '@plone/volto/components';
+import { Icon } from '@plone/volto/components';
+import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 import config from '@plone/volto/registry';
 import { getQuerystring } from '@plone/volto/actions';
 
@@ -21,9 +22,9 @@ const messages = defineMessages({
     defaultMessage: "This is a reserved name and can't be used",
   },
   invalidCharacters: {
-    id: 'Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed.',
+    id: 'Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines.',
     defaultMessage:
-      'Only lowercase letters (a-z) without accents, numbers (0-9), and the characters "-", "_", and "." are allowed.',
+      'Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines.',
   },
 });
 
@@ -140,7 +141,12 @@ class IdWidget extends Component {
     }
 
     // Check invalid characters
-    if (!/^[.a-z0-9_-]*$/.test(value)) {
+    if (
+      // eslint-disable-next-line no-control-regex
+      !/^(?!.*\\)(?!\+\+)(?!@@)(?!.*request)(?!.*contributors)(?!aq_)(?!.*__)(?!_)(?!((^|\/)\.\.?($|\/)|^"\s*"$))(?!.*[A-Z])(?:(?![\r\n<>/?&#\x00-\x1F\x7F])['\x00-\x7F\u0080-\uFFFF. _])*$/.test(
+        value,
+      )
+    ) {
       error.push(this.props.intl.formatMessage(messages.invalidCharacters));
     }
 

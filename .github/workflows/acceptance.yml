@@ -11,7 +11,7 @@ jobs:
       matrix:
         node-version: [18.x, 20.x]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       # node setup
       - name: Use Node.js ${{ matrix.node-version }}
@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v3
         name: Install pnpm
         with:
           version: 8
@@ -32,7 +32,7 @@ jobs:
         run: |
           echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         name: Setup pnpm cache
         with:
           path: ${{ env.STORE_PATH }}
@@ -42,10 +42,10 @@ jobs:
 
       - name: Cache Cypress Binary
         id: cache-cypress-binary
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
 
       - run: pnpm i
 
@@ -95,15 +95,15 @@ jobs:
       matrix:
         node-version: [18.x, 20.x]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       # node setup
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
 
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v3
         name: Install pnpm
         with:
           version: 8
@@ -114,7 +114,7 @@ jobs:
         run: |
           echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         name: Setup pnpm cache
         with:
           path: ${{ env.STORE_PATH }}
@@ -124,10 +124,10 @@ jobs:
 
       - name: Cache Cypress Binary
         id: cache-cypress-binary
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
 
       - run: pnpm i
 
@@ -177,15 +177,15 @@ jobs:
       matrix:
         node-version: [18.x, 20.x]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       # node setup
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
 
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v3
         name: Install pnpm
         with:
           version: 8
@@ -196,7 +196,7 @@ jobs:
         run: |
           echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         name: Setup pnpm cache
         with:
           path: ${{ env.STORE_PATH }}
@@ -206,10 +206,10 @@ jobs:
 
       - name: Cache Cypress Binary
         id: cache-cypress-binary
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
 
       - run: pnpm i
 
@@ -259,15 +259,15 @@ jobs:
       matrix:
         node-version: [18.x, 20.x]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       # node setup
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
 
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v3
         name: Install pnpm
         with:
           version: 8
@@ -278,7 +278,7 @@ jobs:
         run: |
           echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         name: Setup pnpm cache
         with:
           path: ${{ env.STORE_PATH }}
@@ -288,10 +288,10 @@ jobs:
 
       - name: Cache Cypress Binary
         id: cache-cypress-binary
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
 
       - run: pnpm i
 
@@ -341,15 +341,15 @@ jobs:
       matrix:
         node-version: [18.x, 20.x]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       # node setup
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
 
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v3
         name: Install pnpm
         with:
           version: 8
@@ -360,7 +360,7 @@ jobs:
         run: |
           echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         name: Setup pnpm cache
         with:
           path: ${{ env.STORE_PATH }}
@@ -370,10 +370,10 @@ jobs:
 
       - name: Cache Cypress Binary
         id: cache-cypress-binary
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
 
       - run: pnpm i
 
@@ -423,15 +423,15 @@ jobs:
       matrix:
         node-version: [18.x, 20.x]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       # node setup
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
 
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v3
         name: Install pnpm
         with:
           version: 8
@@ -442,7 +442,7 @@ jobs:
         run: |
           echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         name: Setup pnpm cache
         with:
           path: ${{ env.STORE_PATH }}
@@ -452,10 +452,10 @@ jobs:
 
       - name: Cache Cypress Binary
         id: cache-cypress-binary
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
 
       - run: pnpm i
 
@@ -504,15 +504,15 @@ jobs:
       matrix:
         node-version: [18.x]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       # node setup
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
 
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v3
         name: Install pnpm
         with:
           version: 8
@@ -523,7 +523,7 @@ jobs:
         run: |
           echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         name: Setup pnpm cache
         with:
           path: ${{ env.STORE_PATH }}
@@ -533,10 +533,10 @@ jobs:
 
       - name: Cache Cypress Binary
         id: cache-cypress-binary
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
 
       - run: pnpm i
 
@@ -586,15 +586,15 @@ jobs:
       matrix:
         node-version: [18.x]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       # node setup
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
 
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v3
         name: Install pnpm
         with:
           version: 8
@@ -605,7 +605,7 @@ jobs:
         run: |
           echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         name: Setup pnpm cache
         with:
           path: ${{ env.STORE_PATH }}
@@ -615,10 +615,10 @@ jobs:
 
       - name: Cache Cypress Binary
         id: cache-cypress-binary
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
 
       - run: pnpm i
 
@@ -668,15 +668,15 @@ jobs:
   #     matrix:
   #       node-version: [18.x]
   #   steps:
-  #     - uses: actions/checkout@v3
+  #     - uses: actions/checkout@v4
 
   #     # node setup
   #     - name: Use Node.js ${{ matrix.node-version }}
-  #       uses: actions/setup-node@v3
+  #       uses: actions/setup-node@v4
   #       with:
   #         node-version: ${{ matrix.node-version }}
 
-  #     - uses: pnpm/action-setup@v2
+  #     - uses: pnpm/action-setup@v3
   #       name: Install pnpm
   #       with:
   #         version: 8
@@ -687,7 +687,7 @@ jobs:
   #       run: |
   #         echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-  #     - uses: actions/cache@v3
+  #     - uses: actions/cache@v4
   #       name: Setup pnpm cache
   #       with:
   #         path: ${{ env.STORE_PATH }}
@@ -739,15 +739,15 @@ jobs:
       matrix:
         node-version: [18.x]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       # node setup
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
 
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v3
         name: Install pnpm
         with:
           version: 8
@@ -758,7 +758,7 @@ jobs:
         run: |
           echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         name: Setup pnpm cache
         with:
           path: ${{ env.STORE_PATH }}
@@ -768,10 +768,10 @@ jobs:
 
       - name: Cache Cypress Binary
         id: cache-cypress-binary
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
 
       - run: pnpm i
 
@@ -822,15 +822,15 @@ jobs:
         node-version: [18.x]
         # python-version: [3.7]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       # node setup
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
 
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v3
         name: Install pnpm
         with:
           version: 8
@@ -841,7 +841,7 @@ jobs:
         run: |
           echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         name: Setup pnpm cache
         with:
           path: ${{ env.STORE_PATH }}
@@ -851,10 +851,10 @@ jobs:
 
       - name: Cache Cypress Binary
         id: cache-cypress-binary
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
 
       - run: pnpm i
 
@@ -932,15 +932,15 @@ jobs:
       project-directory: ./my-volto-app
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       # node setup
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
 
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v3
         name: Install pnpm
         with:
           version: 8
@@ -951,7 +951,7 @@ jobs:
         run: |
           echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         name: Setup pnpm cache
         with:
           path: ${{ env.STORE_PATH }}
@@ -961,15 +961,12 @@ jobs:
 
       - name: Cache Cypress Binary
         id: cache-cypress-binary
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
 
       - run: pnpm i
-
-      - name: Build packages
-        run: pnpm build:registry
 
       - name: Install Cypress if not in cache
         if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
@@ -1022,6 +1019,10 @@ jobs:
         run: yarn stylelint
         working-directory: ${{env.project-directory}}
 
+      - name: Build Storybook
+        run: yarn build-storybook
+        working-directory: ${{env.project-directory}}
+
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
         env:
@@ -1069,15 +1070,15 @@ jobs:
       matrix:
         node-version: [18.x]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       # node setup
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
 
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v3
         name: Install pnpm
         with:
           version: 8
@@ -1088,7 +1089,7 @@ jobs:
         run: |
           echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         name: Setup pnpm cache
         with:
           path: ${{ env.STORE_PATH }}
@@ -1098,10 +1099,10 @@ jobs:
 
       - name: Cache Cypress Binary
         id: cache-cypress-binary
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
 
       - run: pnpm i
 
@@ -1140,7 +1141,7 @@ jobs:
       - uses: actions/upload-artifact@v1
         if: failure()
         with:
-          name: cypress-videos
+          name: cypress-videos-seamless
           path: packages/volto/cypress/videos
 
   multilingualseamless:
@@ -1153,15 +1154,15 @@ jobs:
       matrix:
         node-version: [18.x]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       # node setup
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
 
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v3
         name: Install pnpm
         with:
           version: 8
@@ -1172,7 +1173,7 @@ jobs:
         run: |
           echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         name: Setup pnpm cache
         with:
           path: ${{ env.STORE_PATH }}
@@ -1182,10 +1183,10 @@ jobs:
 
       - name: Cache Cypress Binary
         id: cache-cypress-binary
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
 
       - run: pnpm i
 

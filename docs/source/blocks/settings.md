@@ -142,13 +142,16 @@ Our new block should be ready to use in the editor.
 It is a common pattern to use the block configuration to allow customization of a block's behavior or to provide block-specific implementation of various Volto mechanisms.
 Some of these common options are described in the following sections.
 
+(blockHasValue)=
+
 ### `blockHasValue`
 
-`blockHasValue` returns `true` if the provided block data represents a value for the current block.
+`blockHasValue` is a function that returns `true` if the provided block data represents a non-empty value for the current block.
 Required for alternate default block types implementations.
+It has the following signature.
 
-```{seealso}
-See also [Settings reference](../configuration/settings-reference).
+```jsx
+blockHasValue(data) => boolean
 ```
 
 ### `initialValue`
@@ -202,6 +205,18 @@ and provide your own per content type, e.g:
 ```js
 const initialBlocks = {
     Document: ['leadimage', 'title', 'text', 'listing' ]
+};
+```
+
+You can also pass the full configuration for the block using an object:
+
+```js
+const initialBlocks = {
+  Document: [
+    { '@type': 'leadImage', fixed: true, required: true },
+    { '@type': 'title' },
+    { '@type': 'slate', value: 'My default text', plaintext: 'My default text' },
+  ],
 };
 ```
 

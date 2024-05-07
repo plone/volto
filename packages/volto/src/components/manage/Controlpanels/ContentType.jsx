@@ -8,12 +8,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { getParentUrl } from '@plone/volto/helpers';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import { Button, Header } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import { toast } from 'react-toastify';
 import { last, nth, join } from 'lodash';
-import { Error, Form, Icon, Toolbar, Toast } from '@plone/volto/components';
+import { Error, Icon, Toolbar, Toast } from '@plone/volto/components';
+import { Form } from '@plone/volto/components/manage/Form';
 import { getControlpanel, updateControlpanel } from '@plone/volto/actions';
 
 import saveSVG from '@plone/volto/icons/save.svg';
@@ -210,8 +211,8 @@ class ContentType extends Component {
             hideActions
             loading={this.props.cpanelRequest.update.loading}
           />
-          {this.state.isClient && (
-            <Portal node={document.getElementById('toolbar')}>
+          {this.state.isClient &&
+            createPortal(
               <Toolbar
                 pathname={this.props.pathname}
                 hideDefaultViewButtons
@@ -248,9 +249,9 @@ class ContentType extends Component {
                     </Button>
                   </>
                 }
-              />
-            </Portal>
-          )}
+              />,
+              document.getElementById('toolbar'),
+            )}
         </div>
       );
     }

@@ -10,16 +10,16 @@ declare namespace renderers {
 declare namespace inline {
     function BOLD(children: any, { key }: {
         key: any;
-    }): JSX.Element;
+    }): import("react/jsx-runtime").JSX.Element;
     function ITALIC(children: any, { key }: {
         key: any;
-    }): JSX.Element;
+    }): import("react/jsx-runtime").JSX.Element;
     function UNDERLINE(children: any, { key }: {
         key: any;
-    }): JSX.Element;
+    }): import("react/jsx-runtime").JSX.Element;
     function CODE(children: any, { key }: {
         key: any;
-    }): JSX.Element;
+    }): import("react/jsx-runtime").JSX.Element;
 }
 /**
  * Note that children can be maped to render a list or do other cool stuff
@@ -31,7 +31,7 @@ declare const blocks: {
     atomic: (children: any) => any;
     blockquote: (children: any, { keys }: {
         keys: any;
-    }) => JSX.Element;
+    }) => import("react/jsx-runtime").JSX.Element;
     'header-one': (children: any, { keys }: {
         keys: any;
     }) => any;
@@ -52,15 +52,15 @@ declare const blocks: {
     }) => any;
     'code-block': (children: any, { keys }: {
         keys: any;
-    }) => JSX.Element;
+    }) => import("react/jsx-runtime").JSX.Element;
     'unordered-list-item': (children: any, { depth, keys }: {
         depth: any;
         keys: any;
-    }) => JSX.Element;
+    }) => import("react/jsx-runtime").JSX.Element;
     'ordered-list-item': (children: any, { depth, keys }: {
         depth: any;
         keys: any;
-    }) => JSX.Element;
+    }) => import("react/jsx-runtime").JSX.Element;
     callout: (children: any, { keys }: {
         keys: any;
     }) => any;
@@ -68,8 +68,8 @@ declare const blocks: {
 declare namespace entities {
     function LINK(children: any, props: any, { key }: {
         key: any;
-    }): JSX.Element;
+    }): import("react/jsx-runtime").JSX.Element;
     function IMAGE(children: any, entity: any, { key }: {
         key: any;
-    }): JSX.Element;
+    }): import("react/jsx-runtime").JSX.Element;
 }

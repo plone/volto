@@ -68,4 +68,4 @@ This redefines the request path from the internal proxy of the server side Node.
 
 ### Advanced usage
 
-See {doc}`../recipes/environment-variables` for recipes for internal proxy usage.
+See {doc}`../development/environment-variables` for recipes for internal proxy usage.
