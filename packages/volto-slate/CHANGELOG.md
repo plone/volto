@@ -8,6 +8,16 @@
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.12 (2024-04-23)
+
+### Bugfix
+
+- In the Slate text block, the markup shortcuts for bold, italic and strikethrough work again. @kHAPPY2004 [#5605](https://github.com/plone/volto/issues/5605)
+
+### Internal
+
+- Update imports to work with the new code split components in Volto. @pnicolli [#5295](https://github.com/plone/volto/issues/5295)
+
 ## 18.0.0-alpha.11 (2024-04-03)
 
 ### Bugfix
