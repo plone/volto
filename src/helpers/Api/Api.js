@@ -54,7 +54,7 @@ class Api {
       ) => {
         let request;
         let promise = new Promise((resolve, reject) => {
-          request = superagent[method](formatUrl(path)).redirects(0);
+          request = superagent[method](formatUrl(path));
 
           if (params) {
             request.query(params);
