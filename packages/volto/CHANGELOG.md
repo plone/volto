@@ -17,6 +17,31 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.30 (2024-05-02)
+
+### Bugfix
+
+- Fix image disappears after pressing the Enter key on title field in image content-type. @iFlameing [#5973](https://github.com/plone/volto/issues/5973)
+- Defines the last 4 parameters of the `asyncConnect` function with optional. @wesleybl [#5985](https://github.com/plone/volto/issues/5985)
+- Fix server side sidebar rendering @sneridagh [#5993](https://github.com/plone/volto/issues/5993)
+
+### Internal
+
+- Update to use Plone 6.0.11 @sneridagh [#5989](https://github.com/plone/volto/issues/5989)
+- Flexibilize the pins for all ESlint deps, in Volto and generators @sneridagh [#5991](https://github.com/plone/volto/issues/5991)
+- Cleaned up useless injectIntl in DefaultView @pnicolli [#5994](https://github.com/plone/volto/issues/5994)
+
+## 18.0.0-alpha.29 (2024-04-26)
+
+### Feature
+
+- Add Vite (client only, no SSR) build. Update Next.js 14.2.2 and Remix to 2.8.0 @sneridagh [#5970](https://github.com/plone/volto/issues/5970)
+
+### Bugfix
+
+- Add possibility to pass down `locale`, `messages` and `defaultLocale` properties inside the `customStore` object to `IntlProvider`. With this change we can control react-intl language provider from inside storybook and switch for example from english to german with storybook args. [#5976](https://github.com/plone/volto/issues/5976)
+- Fix no router link in logo @sneridagh [#5981](https://github.com/plone/volto/issues/5981)
+
 ## 18.0.0-alpha.28 (2024-04-23)
 
 ### Bugfix

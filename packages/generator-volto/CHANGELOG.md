@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 9.0.0-alpha.15 (2024-05-02)
+
+### Internal
+
+- Flexibilize the pins for all ESlint deps, in Volto and generators @sneridagh [#5991](https://github.com/plone/volto/issues/5991)
+
 ## 9.0.0-alpha.14 (2024-03-24)
 
 ### Internal

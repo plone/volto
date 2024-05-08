@@ -1,0 +1,1 @@
+Disable `jsx-a11y/label-has-associated-control` so that we can use `eslint-plugin-jsx-a11y` version 6.8.0 if it's pulled by other dependencies. @ichim-david
