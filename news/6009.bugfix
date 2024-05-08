@@ -1,0 +1,1 @@
+Revert "Fix 301 and 302 redirects" which was not working correctly. @davisagli
