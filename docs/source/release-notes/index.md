@@ -17,6 +17,20 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.30 (2024-05-02)
+
+### Bugfix
+
+- Fix image disappears after pressing the Enter key on title field in image content-type. @iFlameing [#5973](https://github.com/plone/volto/issues/5973)
+- Defines the last 4 parameters of the `asyncConnect` function with optional. @wesleybl [#5985](https://github.com/plone/volto/issues/5985)
+- Fix server side sidebar rendering @sneridagh [#5993](https://github.com/plone/volto/issues/5993)
+
+### Internal
+
+- Update to use Plone 6.0.11 @sneridagh [#5989](https://github.com/plone/volto/issues/5989)
+- Flexibilize the pins for all ESlint deps, in Volto and generators @sneridagh [#5991](https://github.com/plone/volto/issues/5991)
+- Cleaned up useless injectIntl in DefaultView @pnicolli [#5994](https://github.com/plone/volto/issues/5994)
+
 ## 18.0.0-alpha.29 (2024-04-26)
 
 ### Feature

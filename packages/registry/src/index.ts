@@ -27,7 +27,7 @@ export type ConfigData = {
 };
 
 type GetComponentResult = {
-  component: React.ComponentType;
+  component: React.ComponentType<any>;
 };
 
 export type ConfigType = InstanceType<typeof Config>;
