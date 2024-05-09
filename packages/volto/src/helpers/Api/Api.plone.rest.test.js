@@ -3,14 +3,12 @@ import Api from './Api';
 
 jest.mock('superagent', () => ({
   get: jest.fn((url) => ({
-    redirects: jest.fn(() => ({
-      url,
-      query: jest.fn(),
-      set: jest.fn(),
-      type: jest.fn(),
-      send: jest.fn(),
-      end: jest.fn(),
-    })),
+    url,
+    query: jest.fn(),
+    set: jest.fn(),
+    type: jest.fn(),
+    send: jest.fn(),
+    end: jest.fn(),
   })),
 }));
 

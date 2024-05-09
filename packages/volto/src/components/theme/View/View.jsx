@@ -209,11 +209,6 @@ class View extends Component {
     if (this.props.error && this.props.error.code === 301) {
       const redirect = flattenToAppURL(this.props.error.url).split('?')[0];
       return <Redirect to={`${redirect}${this.props.location.search}`} />;
-    } else if (this.props.error && this.props.error.status === 302) {
-      const redirect = flattenToAppURL(
-        this.props.error.response.header.location,
-      ).split('?')[0];
-      return <Redirect to={`${redirect}${this.props.location.search}`} />;
     } else if (this.props.error && !this.props.connectionRefused) {
       let FoundView;
       if (this.props.error.status === undefined) {
