@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 16.31.6 (2024-05-09)
+
+### Bugfix
+
+- Revert "Fix 301 and 302 redirects" which was not working correctly. @davisagli [#6009](https://github.com/plone/volto/issues/6009)
+
 ## 16.31.5 (2024-05-06)
 
 ### Bugfix
