@@ -3,7 +3,7 @@
 A Plone site needs to be in sync with the version available on the file system.
 The `@upgrade` endpoint exposes upgrade information about the Plone backend, and supports running the upgrade of the site.
 
-## Get Upgrade Information
+## Get upgrade information
 
 ### Query function
 
@@ -13,7 +13,7 @@ Use the `getUpgradeQuery` function to get the query for fetching the upgrade inf
 
 Use the `useGetUpgrade` hook to get the upgrade information about the Plone backend.
 
-## Run Upgrade
+## Run upgrade
 
 ### Mutation function
 
