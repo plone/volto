@@ -8,6 +8,20 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.8 (2024-05-13)
+
+### Bugfix
+
+- Update `vite` to 5.1.5. @davisagli [#5942](https://github.com/plone/volto/issues/5942)
+
+### Internal
+
+- Remove `parcel-optimizer-react-client` plugin @sneridagh [#5887](https://github.com/plone/volto/issues/5887)
+- Upgrade Storybook to version 8. @sneridagh [#5912](https://github.com/plone/volto/issues/5912)
+- Improvements to the monorepo setup with utilities, especially ESLint. Build cached option to speedup operations. @sneridagh [#5969](https://github.com/plone/volto/issues/5969)
+- Saner defaults for building deps, switch default to cached, add `build:force` command @sneridagh [#5980](https://github.com/plone/volto/issues/5980)
+- Update to RAC 1.2.0 @sneridagh [#6014](https://github.com/plone/volto/issues/6014)
+
 ## 2.0.0-alpha.7 (2024-03-14)
 
 ### Bugfix
