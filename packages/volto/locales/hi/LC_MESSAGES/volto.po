@@ -512,6 +512,10 @@ msgstr "कैश नाम"
 msgid "Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled"
 msgstr "<strong>{type}</strong> कंटेंट प्रकार के लिए लेआउट संपादित नहीं किया जा सकता क्योंकि इसमें <strong>Volto ब्लॉक</strong> का समर्थन नहीं है"
 
+#. Default: "Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>"
+#: components/manage/Controlpanels/ContentTypeLayout
+msgid "Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>"
+msgstr ""
 
 #. Default: "Cancel"
 #: components/manage/Add/Add
