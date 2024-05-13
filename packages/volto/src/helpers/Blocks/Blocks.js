@@ -483,26 +483,26 @@ export function applySchemaDefaults({ data = {}, schema, intl }) {
             [currentField]: schema.properties[currentField].default,
           }
         : intl &&
-          schema.properties[currentField].schema &&
-          !(schema.properties[currentField].widget === 'object_list') // TODO: this should be renamed as itemSchema
-        ? {
-            ...accumulator,
-            [currentField]: {
-              ...applySchemaDefaults({
-                data: { ...data[currentField], ...accumulator[currentField] },
-                schema:
-                  typeof schema.properties[currentField].schema === 'function'
-                    ? schema.properties[currentField].schema({
-                        data: accumulator[currentField],
-                        formData: accumulator[currentField],
-                        intl,
-                      })
-                    : schema.properties[currentField].schema,
-                intl,
-              }),
-            },
-          }
-        : accumulator;
+            schema.properties[currentField].schema &&
+            !(schema.properties[currentField].widget === 'object_list') // TODO: this should be renamed as itemSchema
+          ? {
+              ...accumulator,
+              [currentField]: {
+                ...applySchemaDefaults({
+                  data: { ...data[currentField], ...accumulator[currentField] },
+                  schema:
+                    typeof schema.properties[currentField].schema === 'function'
+                      ? schema.properties[currentField].schema({
+                          data: accumulator[currentField],
+                          formData: accumulator[currentField],
+                          intl,
+                        })
+                      : schema.properties[currentField].schema,
+                  intl,
+                }),
+              },
+            }
+          : accumulator;
     }, {}),
     data,
   );
