@@ -37,6 +37,7 @@ export {
   lockContent,
   unlockContent,
   linkIntegrityCheck,
+  updateUploadedFiles,
 } from '@plone/volto/actions/content/content';
 export {
   getControlpanel,

@@ -17,6 +17,7 @@ import {
   RESET_CONTENT,
   UPDATE_CONTENT,
   UPDATECOLUMNS_CONTENT,
+  UPDATE_UPLOADED_FILES,
 } from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
@@ -62,6 +63,7 @@ const initialState = {
   },
   data: null,
   subrequests: {},
+  uploadedFiles: 0,
 };
 
 /**
@@ -350,6 +352,11 @@ export default function content(state = initialState, action = {}) {
             },
             data: null,
           };
+    case UPDATE_UPLOADED_FILES:
+      return {
+        ...state,
+        uploadedFiles: action.uploadedFiles,
+      };
     default:
       return state;
   }
