@@ -7,9 +7,8 @@ import UndoControlpanel from './UndoControlpanel';
 
 const mockStore = configureStore();
 
+jest.mock('@plone/volto/components/manage/Form');
 jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
-
-jest.mock('../Form/Form', () => jest.fn(() => <div id="form" />));
 
 describe('UndoControlpanel', () => {
   it('renders undo controlpanel component', () => {

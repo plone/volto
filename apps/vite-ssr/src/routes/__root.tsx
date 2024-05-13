@@ -4,6 +4,7 @@ import {
   Outlet,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
 } from '@tanstack/react-router';
 import { DehydrateRouter } from '@tanstack/react-router-server/client';
 import { RouterContext } from '../routerContext';

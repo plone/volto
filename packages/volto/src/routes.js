@@ -6,19 +6,10 @@ import debug from 'debug';
 import { compact } from 'lodash';
 import {
   Add,
-  AddonsControlpanel,
   Aliases,
   ChangePassword,
   ContactForm,
-  Contents,
-  ContentType,
-  ContentTypeLayout,
-  ContentTypeSchema,
-  ContentTypes,
-  Controlpanel,
-  Controlpanels,
   CreateTranslation,
-  DatabaseInformation,
   Delete,
   Diff,
   Edit,
@@ -27,28 +18,39 @@ import {
   Login,
   Logout,
   ManageTranslations,
-  ModerateComments,
   NotFound,
   PasswordReset,
-  Relations,
   Register,
-  Rules,
   RequestPasswordReset,
   Search,
   Sharing,
   Sitemap,
-  AliasesControlpanel,
-  UndoControlpanel,
-  UsersControlpanel,
-  UserGroupMembershipControlPanel,
-  GroupsControlpanel,
+  PersonalInformation,
+} from '@plone/volto/components';
+import { Contents } from '@plone/volto/components/manage/Contents';
+import { Rules } from '@plone/volto/components/manage/Rules';
+import {
   RulesControlpanel,
   AddRuleControlpanel,
   EditRuleControlpanel,
   ConfigureRuleControlpanel,
+  UsersControlpanel,
+  UserGroupMembershipControlPanel,
+  GroupsControlpanel,
+  AddonsControlpanel,
+  AliasesControlpanel,
+  ContentType,
+  ContentTypeLayout,
+  ContentTypeSchema,
+  ContentTypes,
+  Controlpanel,
+  Controlpanels,
+  DatabaseInformation,
+  ModerateComments,
+  RelationsControlpanel,
+  UndoControlpanel,
   UpgradeControlPanel,
-  PersonalInformation,
-} from '@plone/volto/components';
+} from '@plone/volto/components/manage/Controlpanels';
 
 // Deliberatelly use of absolute path of these components, since we do not want them
 // in the components/index.js file.
@@ -228,7 +230,7 @@ const baseRoutes = [
   },
   {
     path: '/controlpanel/relations',
-    component: Relations,
+    component: RelationsControlpanel,
   },
   {
     path: '/controlpanel/:id',

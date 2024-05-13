@@ -4,14 +4,14 @@
  */
 
 import { concat, filter, last, map, sortBy, uniqBy } from 'lodash';
-import PropTypes from 'prop-types';
+import { compose } from 'redux';
 import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import { createPortal } from 'react-dom';
 import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
-import { compose } from 'redux';
 import { Container, Grid, Header, Message, Segment } from 'semantic-ui-react';
 
 import { getSystemInformation, listControlpanels } from '@plone/volto/actions';

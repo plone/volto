@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 import { Image } from 'semantic-ui-react';
 import LogoImage from '@plone/volto/components/theme/Logo/Logo.svg';
 import { useSelector, useDispatch } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { getNavroot } from '@plone/volto/actions';
 import {
   addPrefixPath,
@@ -49,8 +49,8 @@ const Logo = () => {
   const navRootPath = flattenToAppURL(navroot?.navroot?.['@id']) || '/';
 
   return (
-    <a
-      href={addPrefixPath(navRootPath)}
+    <Link
+      to={addPrefixPath(navRootPath)}
       aria-label={intl.formatMessage(messages.home)}
     >
       <Image
@@ -63,7 +63,7 @@ const Logo = () => {
           intl.formatMessage(messages.logoOf) + ' ' + site['plone.site_title']
         }
       />
-    </a>
+    </Link>
   );
 };
 

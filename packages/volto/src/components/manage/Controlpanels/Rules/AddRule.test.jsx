@@ -9,6 +9,7 @@ import AddRule from './AddRule';
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
+jest.mock('@plone/volto/components/manage/Form');
 jest.mock('../../Toolbar/Toolbar', () => jest.fn(() => <div id="Toolbar" />));
 
 describe('AddRule', () => {

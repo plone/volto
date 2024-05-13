@@ -23,8 +23,8 @@
     "start:prod": "NODE_ENV=production node build/server.js",
     "i18n": "rm -rf build/messages && NODE_ENV=production i18n",
     "volto-update-deps": "volto-update-deps",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "private": <%- private %>,
   "workspaces": <%- workspaces %>,
