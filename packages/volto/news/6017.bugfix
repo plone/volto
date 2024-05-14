@@ -1,0 +1,2 @@
+Use `pnpm` 9.1.1 @sneridagh
+Remove `postinstall` script for building dependencies @sneridagh
