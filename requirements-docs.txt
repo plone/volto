@@ -2,19 +2,19 @@ docutils<0.17,>=0.15  # sphinx-book-theme 0.2.0 has requirement docutils<0.17,>=
 Sphinx<5,>=3  # sphinx-book-theme 0.3.3 has requirement sphinx<5,>=3
 lesscpy
 linkify-it-py
-myst-parser==1.0.0  # Temporary pin until theme is updated.
+myst-parser
+pydata-sphinx-theme<=0.8.99  # Build fails in 0.9.0. See https://github.com/plone/documentation/issues/1297
 sphinx-autobuild
-pydata-sphinx-theme<=0.8.99
-sphinx-book-theme==0.3.3
+sphinx-book-theme==0.3.3  # Temporary pin until we can sort out HTML refactoring.
 sphinx-copybutton
+sphinx-examples
 sphinx-sitemap
 sphinx-togglebutton
-sphinxcontrib-spelling
-sphinxext-opengraph
 sphinxcontrib-applehelp==1.0.4  # https://github.com/plone/documentation/issues/1604
 sphinxcontrib-devhelp==1.0.2  # https://github.com/plone/documentation/issues/1604
 sphinxcontrib-htmlhelp==2.0.1  # https://github.com/plone/documentation/issues/1604
 sphinxcontrib-qthelp==1.0.3  # https://github.com/plone/documentation/issues/1604
 sphinxcontrib-serializinghtml==1.1.5  # https://github.com/plone/documentation/issues/1604
 sphinxcontrib-video
+sphinxext-opengraph
 vale==2.30.0

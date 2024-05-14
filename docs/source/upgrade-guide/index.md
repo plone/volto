@@ -60,7 +60,7 @@ Then update the version of `@plone/scripts` to at least version `3.6.1`.
 The following example shows the minimum valid versions to use under the `dependencies` key.
 
 ```json
-dependencies: {
+"dependencies": {
   "@plone/volto": "18.0.0-alpha.21",
   "@plone/scripts": "^3.6.1"
 }
