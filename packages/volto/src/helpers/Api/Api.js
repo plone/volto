@@ -109,7 +109,7 @@ class Api {
               });
             }
 
-            if (err?.status[0] === 3) {
+            if ([301, 302].includes(err?.status)) {
               return reject({
                 code: err.status,
                 url: err.response.headers.location,

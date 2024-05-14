@@ -206,17 +206,10 @@ class View extends Component {
    */
   render() {
     const { views } = config;
-    const status = __SERVER__
-      ? this.props.error?.status
-      : this.props.error?.code;
-    // Checking to see if it's a 3XX HTTP status code. error.status only works on the server
-    if (status?.toString()?.[0] === '3') {
-      const redirectUrl = __SERVER__
-        ? this.props.error.response.headers.location
-        : this.props.error.url;
-      let redirect = flattenToAppURL(redirectUrl);
-      // We can hit situations where we end up being redirected to an api route. We don't want that so lets remove ++api++.
-      redirect = redirect.replace('/++api++', '');
+    if ([301, 302].includes(this.props.error?.code)) {
+      const redirect = flattenToAppURL(this.props.error.url)
+        .split('?')[0]
+        .replace('/++api++', '');
       return <Redirect to={`${redirect}${this.props.location.search}`} />;
     } else if (this.props.error && !this.props.connectionRefused) {
       let FoundView;
