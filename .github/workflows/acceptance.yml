@@ -968,6 +968,9 @@ jobs:
 
       - run: pnpm i
 
+      - name: Build dependencies
+        run: pnpm build:deps
+
       - name: Install Cypress if not in cache
         if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
         working-directory: packages/volto
