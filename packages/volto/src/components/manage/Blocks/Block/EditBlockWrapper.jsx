@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo, useCallback } from 'react';
 import { Icon } from '@plone/volto/components';
 import {
   blockHasValue,
@@ -78,29 +78,36 @@ const EditBlockWrapper = (props) => {
     },
   });
 
-  let ref0 = React.useRef(null);
-  let ref = React.useRef(null);
+  const ref0 = React.useRef(null);
+  const ref = React.useRef(null);
 
-  let useDropHook = (ref, isFirst) =>
+  const doDrop = useCallback(
+    async (e, isFirst) => {
+      let items = await Promise.all(
+        e.items
+          .filter((item) => item.kind === 'text' && item.types.has('block'))
+          .map((item) => item.getText('block')),
+      );
+      const indexDraggable = properties.blocks_layout.items.indexOf(
+        JSON.parse(items[0]).id,
+      );
+      let indexDroppable = properties.blocks_layout.items.indexOf(block);
+
+      if (isFirst) {
+        indexDroppable = 0;
+      } else if (indexDroppable < indexDraggable) {
+        indexDroppable += 1;
+      }
+      onMoveBlock(indexDraggable, indexDroppable);
+    },
+    [onMoveBlock, properties?.block_layout?.items],
+  );
+
+  const useDropHook = (ref, isFirst) =>
     useDrop({
       ref,
       async onDrop(e) {
-        let items = await Promise.all(
-          e.items
-            .filter((item) => item.kind === 'text' && item.types.has('block'))
-            .map((item) => item.getText('block')),
-        );
-        const indexDraggable = properties.blocks_layout.items.indexOf(
-          JSON.parse(items[0]).id,
-        );
-        let indexDroppable = properties.blocks_layout.items.indexOf(block);
-
-        if (isFirst) {
-          indexDroppable = 0;
-        } else if (indexDroppable < indexDraggable) {
-          indexDroppable += 1;
-        }
-        onMoveBlock(indexDraggable, indexDroppable);
+        doDrop(e, isFirst);
       },
     });
 
