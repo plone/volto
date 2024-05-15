@@ -66,13 +66,11 @@ export default TextWidget;
 TextWidget.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  description: PropTypes.string,
-  required: PropTypes.bool,
-  error: PropTypes.arrayOf(PropTypes.string),
-  focus: PropTypes.bool,
+  value: PropTypes.string,
+  isDisabled: PropTypes.bool,
+  onChange: PropTypes.func,
+  onBlur: PropTypes.func,
   onClick: PropTypes.func,
-  onEdit: PropTypes.func,
-  onDelete: PropTypes.func,
   icon: PropTypes.shape({
     xmlns: PropTypes.string,
     viewBox: PropTypes.string,
@@ -86,16 +84,10 @@ TextWidget.propTypes = {
 };
 
 TextWidget.defaultProps = {
-  description: null,
-  required: false,
-  error: [],
   value: null,
   onChange: () => {},
   onBlur: () => {},
   onClick: () => {},
-  onEdit: null,
-  onDelete: null,
-  focus: false,
   icon: null,
   iconAction: null,
   minLength: null,
