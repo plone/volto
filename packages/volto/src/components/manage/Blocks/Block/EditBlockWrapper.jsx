@@ -81,7 +81,7 @@ const EditBlockWrapper = (props) => {
   let ref0 = React.useRef(null);
   let ref = React.useRef(null);
 
-  let useDropHook = (ref) =>
+  let useDropHook = (ref, isFirst) =>
     useDrop({
       ref,
       async onDrop(e) {
@@ -94,7 +94,10 @@ const EditBlockWrapper = (props) => {
           JSON.parse(items[0]).id,
         );
         let indexDroppable = properties.blocks_layout.items.indexOf(block);
-        if (indexDroppable < indexDraggable) {
+
+        if (isFirst) {
+          indexDroppable = 0;
+        } else if (indexDroppable < indexDraggable) {
           indexDroppable += 1;
         }
         onMoveBlock(indexDraggable, indexDroppable);
@@ -113,12 +116,13 @@ const EditBlockWrapper = (props) => {
     />
   );
 
-  const DropTarget0 = () => makeDropTarget(useDropHook(ref0), ref0);
+  const DropTarget0 = () => makeDropTarget(useDropHook(ref0, true), ref0);
   const DropTarget = () => makeDropTarget(useDropHook(ref), ref);
 
+  const blockIndex = properties.blocks_layout.items.indexOf(block);
   return (
     <div>
-      <DropTarget0 />
+      {blockIndex === 0 ? <DropTarget0 /> : ''}
       <div
         {...dragProps}
         {...styleMergedWithDragProps}
