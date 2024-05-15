@@ -34,9 +34,9 @@ const messages = defineMessages({
     id: 'Expand sidebar',
     defaultMessage: 'Expand sidebar',
   },
-  layout: {
-    id: 'Layout',
-    defaultMessage: 'Layout',
+  order: {
+    id: 'Order',
+    defaultMessage: 'Order',
   },
 });
 
@@ -49,7 +49,7 @@ const Sidebar = (props) => {
     documentTab,
     blockTab,
     settingsTab,
-    layoutTab = true,
+    orderTab = true,
   } = props;
   const [expanded, setExpanded] = useState(
     cookies.get('sidebar_expanded') !== 'false',
@@ -183,13 +183,13 @@ const Sidebar = (props) => {
                 </Tab.Pane>
               ),
             },
-            !!layoutTab && {
-              menuItem: intl.formatMessage(messages.layout),
+            !!orderTab && {
+              menuItem: intl.formatMessage(messages.order),
               pane: (
                 <Tab.Pane
-                  key="layout"
+                  key="order"
                   className="tab-wrapper"
-                  id="sidebar-layout"
+                  id="sidebar-order"
                 >
                   <Icon
                     className="tab-forbidden"

@@ -26,7 +26,7 @@ import { useDetectClickOutside, useEvent } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 import { Portal } from 'react-portal';
 
-import { SortableTree } from '../Block/Tree/SortableTree.tsx';
+import { SortableTree } from '../Block/Tree/SortableTree';
 
 const BlocksForm = (props) => {
   const {
@@ -226,7 +226,7 @@ const BlocksForm = (props) => {
   return (
     <>
       {isMainForm && (
-        <Portal node={isClient && document.getElementById('sidebar-layout')}>
+        <Portal node={isClient && document.getElementById('sidebar-order')}>
           <div>
             <SortableTree
               defaultItems={getBlocksHierarchy(properties)}

@@ -1,27 +1,10 @@
-import React, { forwardRef, HTMLAttributes } from 'react';
+import React, { forwardRef } from 'react';
 import classNames from 'classnames';
 
 import { Action, Handle, Remove } from '../Item';
 import styles from './TreeItem.module.scss';
 
-export interface Props extends Omit<HTMLAttributes<HTMLLIElement>, 'id'> {
-  childCount?: number;
-  clone?: boolean;
-  collapsed?: boolean;
-  depth: number;
-  disableInteraction?: boolean;
-  disableSelection?: boolean;
-  ghost?: boolean;
-  handleProps?: any;
-  indicator?: boolean;
-  indentationWidth: number;
-  value: string;
-  onCollapse?(): void;
-  onRemove?(): void;
-  wrapperRef?(node: HTMLLIElement): void;
-}
-
-export const TreeItem = forwardRef<HTMLDivElement, Props>(
+export const TreeItem = forwardRef(
   (
     {
       childCount,
@@ -54,11 +37,9 @@ export const TreeItem = forwardRef<HTMLDivElement, Props>(
           disableInteraction && styles.disableInteraction,
         )}
         ref={wrapperRef}
-        style={
-          {
-            '--spacing': `${indentationWidth * depth}px`,
-          } as React.CSSProperties
-        }
+        style={{
+          '--spacing': `${indentationWidth * depth}px`,
+        }}
         {...props}
       >
         <div className={styles.TreeItem} ref={ref} style={style}>
