@@ -13,6 +13,7 @@ import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
 import config from '@plone/volto/registry';
 import { BlockChooserButton } from '@plone/volto/components';
+import { useDrag, useDrop } from 'react-aria';
 
 import trashSVG from '@plone/volto/icons/delete.svg';
 
@@ -32,13 +33,14 @@ const EditBlockWrapper = (props) => {
     );
   };
 
-  const { intl, blockProps, draginfo, children } = props;
+  const { intl, blockProps, children } = props;
   const {
     allowedBlocks,
     block,
     blocksConfig,
     selected,
     type,
+    onMoveBlock,
     onChangeBlock,
     onDeleteBlock,
     onInsertBlock,
@@ -66,8 +68,39 @@ const EditBlockWrapper = (props) => {
     style: { ...style },
   };
 
+  let { dragProps, isDragging } = useDrag({
+    getItems() {
+      return [
+        {
+          block: JSON.stringify({ id: block }),
+        },
+      ];
+    },
+  });
+
+  let ref = React.useRef(null);
+  let { dropProps, isDropTarget } = useDrop({
+    ref,
+    async onDrop(e) {
+      let items = await Promise.all(
+        e.items
+          .filter((item) => item.kind === 'text' && item.types.has('block'))
+          .map((item) => item.getText('block')),
+      );
+      const indexDraggable = properties.blocks_layout.items.indexOf(
+        JSON.parse(items[0]).id,
+      );
+      let indexDroppable = properties.blocks_layout.items.indexOf(block);
+      if (indexDroppable < indexDraggable) {
+        indexDroppable += 1;
+      }
+      onMoveBlock(indexDraggable, indexDroppable);
+    },
+  });
+
   return (
     <div
+      {...dragProps}
       {...styleMergedWithDragProps}
       // Right now, we can have the alignment information in the styles property or in the
       // block data root, we inject the classname here for having control over the whole
@@ -121,6 +154,15 @@ const EditBlockWrapper = (props) => {
           )}
         </div>
       </div>
+      <div
+        {...dropProps}
+        ref={ref}
+        style={{
+          border: isDropTarget ? '1px solid blue' : '1px solid transparent',
+          height: '30px',
+          backgroundColor: 'paleturquoise',
+        }}
+      />
     </div>
   );
 };
