@@ -63,13 +63,11 @@ const EditBlockWrapper = (props) => {
 
   // We need to merge the StyleWrapper styles with the draggable props from b-D&D
   const styleMergedWithDragProps = {
-    ...draginfo.draggableProps,
-    style: { ...style, ...draginfo.draggableProps.style },
+    style: { ...style },
   };
 
   return (
     <div
-      ref={draginfo.innerRef}
       {...styleMergedWithDragProps}
       // Right now, we can have the alignment information in the styles property or in the
       // block data root, we inject the classname here for having control over the whole
@@ -84,7 +82,6 @@ const EditBlockWrapper = (props) => {
             visibility: visible ? 'visible' : 'hidden',
             display: 'inline-block',
           }}
-          {...draginfo.dragHandleProps}
           className="drag handle wrapper"
         >
           <Icon name={dragSVG} size="18px" />
