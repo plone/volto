@@ -13,7 +13,7 @@ import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
 import config from '@plone/volto/registry';
 import { BlockChooserButton } from '@plone/volto/components';
-import { useDrag, useDrop } from 'react-aria';
+import { useDrag, useDrop, DragPreview } from 'react-aria';
 
 import trashSVG from '@plone/volto/icons/delete.svg';
 
@@ -68,26 +68,35 @@ const EditBlockWrapper = (props) => {
     style: { ...style },
   };
 
+  const ref0 = React.useRef(null);
+  const ref = React.useRef(null);
+  const refPreview = React.useRef(null);
+
   let { dragProps, isDragging } = useDrag({
+    preview: refPreview,
     getItems() {
+      console.log('drag', data);
       return [
         {
-          block: JSON.stringify({ id: block }),
+          blockType: JSON.stringify({
+            id: block,
+            data,
+          }),
         },
       ];
     },
   });
 
-  const ref0 = React.useRef(null);
-  const ref = React.useRef(null);
-
   const doDrop = useCallback(
     async (e, isFirst) => {
+      console.log('doDrop e.items', e.items);
       let items = await Promise.all(
         e.items
-          .filter((item) => item.kind === 'text' && item.types.has('block'))
-          .map((item) => item.getText('block')),
+          .filter((item) => item.kind === 'text' && item.types.has('blockType'))
+          .map((item) => item.getText('blockType')),
       );
+      console.log('doDrop items', items);
+
       const indexDraggable = properties.blocks_layout.items.indexOf(
         JSON.parse(items[0]).id,
       );
@@ -134,7 +143,7 @@ const EditBlockWrapper = (props) => {
 
   const blockIndex = properties.blocks_layout.items.indexOf(block);
   return (
-    <div>
+    <div style={isDragging ? { display: 'none' } : {}}>
       {blockIndex === 0 ? dropTarget0 : null}
       <div
         {...dragProps}
@@ -191,8 +200,21 @@ const EditBlockWrapper = (props) => {
             )}
           </div>
         </div>
-        {dropTarget}
       </div>
+      <DragPreview ref={refPreview}>
+        {(items) => {
+          const { '@type': type, plaintext: plainText } = JSON.parse(
+            items[0]['blockType'],
+          ).data;
+          return (
+            <div className="dnd-preview">
+              <div className={`dnd-preview-blocktype`}>{type}</div>
+              <div className={`dnd-preview-plaintext`}>{plainText}</div>
+            </div>
+          );
+        }}
+      </DragPreview>
+      {dropTarget}
     </div>
   );
 };

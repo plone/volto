@@ -1,0 +1,28 @@
+// --
+//  Styles related to the Aria dnd library setup
+// --
+
+:root {
+  --dnd-preview-border-color: #1e90ff;
+  --dnd-preview-fill-color: rgb(35 40 105);
+}
+
+.dnd-preview {
+  width: 10em;
+  border: 4px solid var(--dnd-preview-border-color);
+  border-radius: 8px;
+  background-color: var(--dnd-preview-fill-color);
+  color: white;
+  padding: 0.5em;
+  overflow: hidden;
+  .dnd-preview-blocktype,
+  .dnd-preview-plaintext {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .dnd-preview-blocktype {
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+}
