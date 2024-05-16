@@ -100,7 +100,6 @@ clean:
 setup:
 	# Setup ESlint for VSCode
 	node packages/scripts/vscodesettings.js
-	pnpm build:all
 
 ##### Documentation
 
@@ -171,7 +170,7 @@ cypress-install:
 
 .PHONY: build-deps
 build-deps:
-	if [ ! -d $$(pwd)/registry/dist ]; then (pnpm build:deps); fi
+	if [ ! -d $$(pwd)/packages/registry/dist ]; then (pnpm build:deps); fi
 
 ##### Release
 
