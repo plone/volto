@@ -88,11 +88,16 @@ const IdWidget = (props) => {
     setError(error);
   };
 
-  useEffect(() => {
-    if (focus) ref.current.focus();
-    dispatch(getQuerystring());
-    fieldValidation(value);
-  });
+  useEffect(
+    () => {
+      if (focus) ref.current.focus();
+
+      dispatch(getQuerystring());
+      fieldValidation(value);
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [focus, value, dispatch],
+  );
 
   const handleChange = ({ target }) => {
     fieldValidation(target.value);
