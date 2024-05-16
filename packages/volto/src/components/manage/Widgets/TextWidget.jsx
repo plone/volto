@@ -19,6 +19,7 @@ const TextWidget = (props) => {
     onBlur,
     onClick,
     icon,
+    focus,
     iconAction,
     minLength,
     maxLength,
@@ -26,11 +27,13 @@ const TextWidget = (props) => {
     isDisabled,
   } = props;
 
-  const ref = useRef();
+  const ref = useRef(null);
 
   useEffect(() => {
-    ref.current = value;
-  }, [value]);
+    if (focus) {
+      ref.current.focus();
+    }
+  }, [focus]);
 
   return (
     <FormFieldWrapper {...props} className="text">
@@ -69,6 +72,7 @@ TextWidget.propTypes = {
   value: PropTypes.string,
   isDisabled: PropTypes.bool,
   onChange: PropTypes.func,
+  focus: PropTypes.bool,
   onBlur: PropTypes.func,
   onClick: PropTypes.func,
   icon: PropTypes.shape({
@@ -89,6 +93,7 @@ TextWidget.defaultProps = {
   onBlur: () => {},
   onClick: () => {},
   icon: null,
+  focus: false,
   iconAction: null,
   minLength: null,
   maxLength: null,
