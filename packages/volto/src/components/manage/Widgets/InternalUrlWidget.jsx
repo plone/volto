@@ -41,6 +41,7 @@ export const InternalUrlWidget = (props) => {
 
   const [value, setValue] = useState(flattenToAppURL(propValue));
   const [isInvalid, setIsInvalid] = useState(false);
+
   useEffect(() => {
     if (propValue !== value) {
       setValue(propValue);
