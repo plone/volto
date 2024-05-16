@@ -8,6 +8,16 @@
 
 <!-- towncrier release notes start -->
 
+## 1.5.7 (2024-05-15)
+
+### Bugfix
+
+- Fix type for component registry components @sneridagh [#6002](https://github.com/plone/volto/issues/6002)
+
+### Internal
+
+- Saner defaults for building deps, switch default to cached, add `build:force` command @sneridagh [#5980](https://github.com/plone/volto/issues/5980)
+
 ## 1.5.6 (2024-04-23)
 
 ### Bugfix

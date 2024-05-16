@@ -107,10 +107,10 @@ export function emptyBlocksForm(): any;
  * (could be empty, if not type given) and the number of blocks
  * @function blocksFormGenerator
  * @param {number} number How many blocks to generate of the type (could be "empty", if no type provided)
- * @param {number} type The type of the blocks
+ * @param {string} type The type of the blocks
  * @return {Object} blocks/blocks_layout pair filled with the generated blocks
  */
-export function blocksFormGenerator(number: number, type: number): any;
+export function blocksFormGenerator(number: number, type: string): any;
 /**
  * Recursively discover blocks in data and call the provided callback
  * @function visitBlocks
