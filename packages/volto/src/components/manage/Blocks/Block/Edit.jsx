@@ -79,7 +79,11 @@ export class Edit extends Component {
       this.blockNode.current.focus();
     }
     const tab = this.props.manage ? 1 : blocksConfig?.[type]?.sidebarTab || 0;
-    if (this.props.selected && this.props.editable) {
+    if (
+      this.props.selected &&
+      this.props.editable &&
+      this.props.sidebarTab !== 2
+    ) {
       this.props.setSidebarTab(tab);
     }
   }
@@ -140,10 +144,16 @@ export class Edit extends Component {
         {Block !== null ? (
           <div
             role="presentation"
-            onMouseOver={() =>
-              this.props.setUIState({ hovered: this.props.id })
-            }
-            onFocus={() => this.props.setUIState({ hovered: this.props.id })}
+            onMouseOver={() => {
+              if (this.props.hovered !== this.props.id) {
+                this.props.setUIState({ hovered: this.props.id });
+              }
+            }}
+            onFocus={() => {
+              if (this.props.hovered !== this.props.id) {
+                this.props.setUIState({ hovered: this.props.id });
+              }
+            }}
             onMouseLeave={() => this.props.setUIState({ hovered: null })}
             onClick={(e) => {
               const isMultipleSelection = e.shiftKey || e.ctrlKey || e.metaKey;

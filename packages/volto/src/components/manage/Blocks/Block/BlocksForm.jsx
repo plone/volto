@@ -1,10 +1,12 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
+import { cloneDeep, includes, isArray, keys, map } from 'lodash';
 import EditBlock from './Edit';
 import { DragDropList } from '@plone/volto/components';
 import {
   getBlocks,
   getBlocksFieldname,
+  getBlocksLayoutFieldname,
   applyBlockDefaults,
   getBlocksHierarchy,
 } from '@plone/volto/helpers';
@@ -20,7 +22,7 @@ import {
   previousBlockId,
 } from '@plone/volto/helpers';
 import EditBlockWrapper from './EditBlockWrapper';
-import { setSidebarTab } from '@plone/volto/actions';
+import { setSidebarTab, setUIState } from '@plone/volto/actions';
 import { useDispatch } from 'react-redux';
 import { useDetectClickOutside, useEvent } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
@@ -189,8 +191,49 @@ const BlocksForm = (props) => {
   };
 
   const onMoveBlockEnhanced = ({ source, destination }) => {
-    const newFormData = moveBlockEnhanced(properties, { source, destination });
-    onChangeFormData(newFormData);
+    const newFormData = moveBlockEnhanced(cloneDeep(properties), {
+      source,
+      destination,
+    });
+    const blocksFieldname = getBlocksFieldname(newFormData);
+    const blocksLayoutFieldname = getBlocksLayoutFieldname(newFormData);
+    let error = false;
+
+    const allowedBlocks = keys(blocksConfig);
+
+    map(newFormData[blocksLayoutFieldname].items, (id) => {
+      const block = newFormData[blocksFieldname][id];
+      if (!includes(allowedBlocks, block['@type'])) {
+        error = true;
+      }
+      if (isArray(block[blocksLayoutFieldname]?.items)) {
+        const size = block[blocksLayoutFieldname].items.length;
+        const allowedSubBlocks = [
+          ...(blocksConfig[block['@type']].allowedBlocks || allowedBlocks),
+          'empty',
+        ] || ['empty'];
+        if (size < 1 || size > (blocksConfig[block['@type']].maxLength || 4)) {
+          error = true;
+        }
+        map(block[blocksLayoutFieldname].items, (subId) => {
+          const subBlock = block[blocksFieldname][subId];
+          if (!includes(allowedSubBlocks, subBlock['@type'])) {
+            error = true;
+          }
+        });
+      }
+    });
+
+    if (!error) {
+      onChangeFormData(newFormData);
+      dispatch(
+        setUIState({
+          selected: null,
+          multiSelected: [],
+          gridSelected: null,
+        }),
+      );
+    }
   };
 
   const defaultBlockWrapper = ({ draginfo }, editBlock, blockProps) => (

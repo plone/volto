@@ -199,7 +199,7 @@ export function Order({
 
       // Translate position depending on parent
       if (parentId === oldParentId) {
-        // Move from and to toplevel or move within the same grid block -> done
+        // Move from and to toplevel or move within the same grid block
 
         let destIndex = clonedItems[overIndex].index;
         if (clonedItems[overIndex].depth > clonedItems[activeIndex].depth) {
@@ -229,13 +229,18 @@ export function Order({
           },
           destination: {
             position:
-              clonedItems[overIndex > activeIndex ? overIndex + 1 : overIndex]
-                .index,
+              overIndex < activeIndex
+                ? clonedItems[overIndex - 1].parentId
+                  ? clonedItems[overIndex - 1].index + 1
+                  : clonedItems[overIndex].index
+                : overIndex + 1 < clonedItems.length
+                  ? clonedItems[overIndex + 1].index
+                  : clonedItems[overIndex].index + 1,
             parent: parentId,
           },
         });
       } else if (oldParentId) {
-        // Moving to the main container from a gridblock -> done
+        // Moving to the main container from a gridblock
 
         onMoveBlock({
           source: {
@@ -245,13 +250,16 @@ export function Order({
           },
           destination: {
             position:
-              clonedItems[overIndex > activeIndex ? overIndex + 1 : overIndex]
-                .index,
+              overIndex > activeIndex
+                ? overIndex + 1 < clonedItems.length
+                  ? clonedItems[overIndex + 1].index
+                  : clonedItems[overIndex].index + 1
+                : clonedItems[overIndex].index,
             parent: parentId,
           },
         });
       } else {
-        // Moving from the main container to a gridblock -> done
+        // Moving from the main container to a gridblock
 
         onMoveBlock({
           source: {
@@ -261,8 +269,13 @@ export function Order({
           },
           destination: {
             position:
-              clonedItems[overIndex > activeIndex ? overIndex + 1 : overIndex]
-                .index,
+              overIndex < activeIndex
+                ? clonedItems[overIndex - 1].parentId
+                  ? clonedItems[overIndex - 1].index + 1
+                  : clonedItems[overIndex].index
+                : overIndex + 1 < clonedItems.length
+                  ? clonedItems[overIndex + 1].index
+                  : clonedItems[overIndex].index + 1,
             parent: parentId,
           },
         });

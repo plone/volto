@@ -1,4 +1,7 @@
 import { arrayMove } from '@dnd-kit/sortable';
+import { isArray } from 'lodash';
+
+import { getBlocksLayoutFieldname } from '@plone/volto/helpers';
 
 function getDragDepth(offset, indentationWidth) {
   return Math.round(offset / indentationWidth);
@@ -56,8 +59,11 @@ export function getProjection(
 }
 
 function getMaxDepth({ previousItem }) {
+  const blocksLayoutFieldname = getBlocksLayoutFieldname(
+    previousItem?.data || {},
+  );
   if (previousItem) {
-    return previousItem.title === 'gridBlock'
+    return isArray(previousItem.data?.[blocksLayoutFieldname]?.items)
       ? previousItem.depth + 1
       : previousItem.depth;
   }
