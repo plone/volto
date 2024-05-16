@@ -185,15 +185,6 @@ export function flattenHTMLToAppURL(html) {
     : html.replace(new RegExp(settings.apiPath, 'g'), replacer);
 }
 
-export function addPrefixPath(src) {
-  let url = src;
-  const { prefixPath } = config.settings;
-  if (isInternalURL(src) && prefixPath && !src.startsWith(prefixPath)) {
-    url = prefixPath + src; //add prefixPath to src if it's an internal url and not a static resource.
-  }
-  return url;
-}
-
 /**
  * Add the app url
  * @method addAppURL
