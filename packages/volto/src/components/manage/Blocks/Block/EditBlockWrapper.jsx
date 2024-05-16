@@ -78,7 +78,7 @@ const EditBlockWrapper = (props) => {
       console.log('drag', data);
       return [
         {
-          blockType: JSON.stringify({
+          blocktype: JSON.stringify({
             id: block,
             data,
           }),
@@ -92,8 +92,8 @@ const EditBlockWrapper = (props) => {
       console.log('doDrop e.items', e.items);
       let items = await Promise.all(
         e.items
-          .filter((item) => item.kind === 'text' && item.types.has('blockType'))
-          .map((item) => item.getText('blockType')),
+          .filter((item) => item.kind === 'text' && item.types.has('blocktype'))
+          .map((item) => item.getText('blocktype')),
       );
       console.log('doDrop items', items);
 
@@ -204,7 +204,7 @@ const EditBlockWrapper = (props) => {
       <DragPreview ref={refPreview}>
         {(items) => {
           const { '@type': type, plaintext: plainText } = JSON.parse(
-            items[0]['blockType'],
+            items[0]['blocktype'],
           ).data;
           return (
             <div className="dnd-preview">
