@@ -50,7 +50,7 @@ const IdWidget = (props) => {
   const indexes = useSelector((state) => keys(state.querystring.indexes));
 
   const [errors, setError] = useState([]);
-  const [reserveIdState] = useState(
+  const [reservedIds] = useState(
     compact(
       uniq(
         union(
@@ -66,7 +66,7 @@ const IdWidget = (props) => {
     const error = [];
 
     // Check reserved id's
-    if (reserveIdState.indexOf(values) !== -1) {
+    if (reservedIds.indexOf(values) !== -1) {
       error.push(intl.formatMessage(messages.reservedId));
     }
 
