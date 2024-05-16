@@ -5,12 +5,10 @@ import okMiddleware from '@plone/volto/express-middleware/ok';
 import sitemapMiddleware from '@plone/volto/express-middleware/sitemap';
 import staticsMiddleware from '@plone/volto/express-middleware/static';
 import devProxyMiddleware from '@plone/volto/express-middleware/devproxy';
-import prefixPathMiddleware from '@plone/volto/express-middleware/prefixPath';
 
 const settings = {
   expressMiddleware: [
     devProxyMiddleware(),
-    prefixPathMiddleware(),
     filesMiddleware(),
     imagesMiddleware(),
     robotstxtMiddleware(),

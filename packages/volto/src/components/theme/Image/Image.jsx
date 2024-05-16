@@ -1,10 +1,6 @@
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import {
-  flattenToAppURL,
-  flattenScales,
-  addPrefixPath,
-} from '@plone/volto/helpers';
+import { flattenToAppURL, flattenScales } from '@plone/volto/helpers';
 
 /**
  * Image component
@@ -33,7 +29,7 @@ export default function Image({
   const attrs = {};
 
   if (!item && src) {
-    attrs.src = addPrefixPath(src);
+    attrs.src = src;
     attrs.className = cx(className, { responsive });
   } else {
     const isFromRealObject = !item.image_scales;
@@ -52,7 +48,7 @@ export default function Image({
     // In case `base_path` is present (`preview_image_link`) use it as base path
     const basePath = image.base_path || item['@id'];
 
-    attrs.src = addPrefixPath(`${flattenToAppURL(basePath)}/${image.download}`);
+    attrs.src = `${flattenToAppURL(basePath)}/${image.download}`;
     attrs.width = image.width;
     attrs.height = image.height;
     attrs.className = cx(className, { responsive });
@@ -67,7 +63,7 @@ export default function Image({
       attrs.srcSet = sortedScales
         .map(
           (scale) =>
-            `${addPrefixPath(flattenToAppURL(basePath))}/${scale.download} ${scale.width}w`,
+            `${flattenToAppURL(basePath)}/${scale.download} ${scale.width}w`,
         )
         .join(', ');
     }

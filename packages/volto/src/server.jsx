@@ -66,7 +66,7 @@ const server = express()
   })
   .use(cookiesMiddleware());
 
-if (process.env.RAZZLE_PREFIX_PATH) {
+if (process.env.RAZZLE_PREFIX_PATH && process.env.NODE_ENV === 'production') {
   server.use(
     process.env.RAZZLE_PREFIX_PATH,
     express.static(
@@ -269,7 +269,12 @@ server.get('/*', (req, res) => {
               <StaticRouter
                 context={context}
                 location={req.url}
-                basename={config.settings.prefixPath}
+                basename={
+                  config.settings.prefixPath &&
+                  process.env.NODE_ENV === 'production'
+                    ? config.settings.prefixPath
+                    : '/'
+                }
               >
                 <ReduxAsyncConnect routes={routes} helpers={api} />
               </StaticRouter>

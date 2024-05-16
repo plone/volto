@@ -4,7 +4,7 @@ import loadable from '@loadable/component';
 import 'react-image-gallery/styles/css/image-gallery.css';
 import { Button } from 'semantic-ui-react';
 import { Icon } from '@plone/volto/components';
-import { flattenToAppURL, addPrefixPath } from '@plone/volto/helpers';
+import { flattenToAppURL } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
 import galleryLeftSVG from '@plone/volto/icons/left-key.svg';
@@ -79,10 +79,10 @@ const ImageGalleryTemplate = ({ items }) => {
   );
   const imagesInfo = renderItems.map((item) => {
     return {
-      original: `${addPrefixPath(flattenToAppURL(item['@id']))}/@@images/${
+      original: `${flattenToAppURL(item['@id'])}/@@images/${
         item.image_field
       }/large`,
-      thumbnail: `${addPrefixPath(flattenToAppURL(item['@id']))}/@@images/${
+      thumbnail: `${flattenToAppURL(item['@id'])}/@@images/${
         item.image_field
       }/thumb`,
     };

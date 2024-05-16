@@ -10,7 +10,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import { getNavroot } from '@plone/volto/actions';
 import {
-  addPrefixPath,
   flattenToAppURL,
   hasApiExpander,
   getBaseUrl,
@@ -49,10 +48,7 @@ const Logo = () => {
   const navRootPath = flattenToAppURL(navroot?.navroot?.['@id']) || '/';
 
   return (
-    <Link
-      to={addPrefixPath(navRootPath)}
-      aria-label={intl.formatMessage(messages.home)}
-    >
+    <Link to={navRootPath} aria-label={intl.formatMessage(messages.home)}>
       <Image
         src={
           site['plone.site_logo']

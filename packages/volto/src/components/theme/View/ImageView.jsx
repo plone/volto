@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { Container as SemanticContainer } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
 import prettybytes from 'pretty-bytes';
-import { flattenToAppURL, addPrefixPath } from '@plone/volto/helpers';
+import { flattenToAppURL } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
 /**
@@ -32,7 +32,7 @@ const ImageView = ({ content }) => {
         <p className="documentDescription">{content.description}</p>
       )}
       {content?.image?.download && (
-        <a href={addPrefixPath(flattenToAppURL(content.image.download))}>
+        <a href={flattenToAppURL(content.image.download)}>
           <Image
             item={content}
             imageField="image"

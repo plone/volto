@@ -17,7 +17,6 @@ import { matchPath } from 'react-router';
  */
 export const getBaseUrl = memoize((url) => {
   const { settings } = config;
-  const prefix = settings.prefixPath;
   if (url === undefined) return;
 
   // We allow settings.nonContentRoutes to have strings (that are supposed to match
@@ -35,10 +34,11 @@ export const getBaseUrl = memoize((url) => {
     url,
   );
 
-  //strip prefix path from url
-  if (prefix && adjustedUrl.match(new RegExp(`^${prefix}(/|$)`))) {
-    adjustedUrl = adjustedUrl.slice(prefix.length);
-  }
+  //TODO: we can strip prefix from here /sharing pages
+  // //strip prefix path from url
+  // if (prefix && adjustedUrl.match(new RegExp(`^${prefix}(/|$)`))) {
+  //   adjustedUrl = adjustedUrl.slice(prefix.length);
+  // }
 
   adjustedUrl = adjustedUrl || '/';
   return adjustedUrl === '/' ? '' : adjustedUrl;
@@ -100,14 +100,30 @@ export function getView(url) {
  * @returns {string} Flattened URL to the app server
  */
 export function flattenToAppURL(url) {
+  let adjustedUrl = url;
   const { settings } = config;
-  return (
-    url &&
-    url
+  const prefix = settings.prefixPath;
+
+  adjustedUrl =
+    adjustedUrl &&
+    adjustedUrl
       .replace(settings.internalApiPath, '')
       .replace(settings.apiPath, '')
-      .replace(settings.publicURL, '')
-  );
+      .replace(settings.publicURL, '');
+  const internalURL =
+    adjustedUrl &&
+    (adjustedUrl.indexOf(settings.publicURL) !== -1 ||
+      (settings.internalApiPath &&
+        adjustedUrl.indexOf(settings.internalApiPath) !== -1) ||
+      adjustedUrl.indexOf(settings.apiPath) !== -1 ||
+      adjustedUrl.charAt(0) === '/' ||
+      adjustedUrl.charAt(0) === '.');
+  //using isInternalUrl method causes infinite loop with special externalRoutes defined in wise-marine #264955
+  if (internalURL && !adjustedUrl.startsWith('#')) {
+    if (prefix && adjustedUrl?.length && !adjustedUrl?.startsWith(prefix))
+      adjustedUrl = `${prefix}${adjustedUrl}`;
+  }
+  return adjustedUrl;
 }
 /**
  * Given a URL it remove the querystring from the URL.
