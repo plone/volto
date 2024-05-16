@@ -26,7 +26,7 @@ import { useDetectClickOutside, useEvent } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 import { createPortal } from 'react-dom';
 
-import { SortableTree } from '../Block/Tree/SortableTree';
+import { Order } from './Order/Order';
 
 const BlocksForm = (props) => {
   const {
@@ -205,12 +205,14 @@ const BlocksForm = (props) => {
   // Note they are alreaady filtered by DragDropList, but we also want them
   // to be removed when the user saves the page next. Otherwise the invalid
   // blocks would linger for ever.
+  /*
   for (const [n, v] of blockList) {
     if (!v) {
       const newFormData = deleteBlock(properties, n);
       onChangeFormData(newFormData);
     }
   }
+  */
 
   useEvent('voltoClickBelowContent', () => {
     if (!config.experimental.addBlockButton.enabled || !isMainForm) return;
@@ -225,12 +227,11 @@ const BlocksForm = (props) => {
         __CLIENT__ &&
         createPortal(
           <div>
-            <SortableTree
-              defaultItems={getBlocksHierarchy(properties)}
+            <Order
+              items={getBlocksHierarchy(properties)}
               onMoveBlock={onMoveBlockEnhanced}
               onDeleteBlock={onDeleteBlock}
-              collapsible
-              indicator
+              onSelectBlock={onSelectBlock}
               removable
             />
           </div>,

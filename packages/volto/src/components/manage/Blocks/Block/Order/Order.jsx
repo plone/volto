@@ -1,10 +1,9 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { Icon } from '@plone/volto/components';
+import { find, min } from 'lodash';
 import {
   DndContext,
   closestCenter,
-  KeyboardSensor,
   PointerSensor,
   useSensor,
   useSensors,
@@ -18,47 +17,9 @@ import {
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
 
-import {
-  buildTree,
-  flattenTree,
-  getProjection,
-  getChildCount,
-  removeItem,
-  removeChildrenOf,
-  setProperty,
-} from './utilities';
-import { sortableTreeKeyboardCoordinates } from './keyboardCoordinates';
-import { SortableTreeItem } from './components/TreeItem/SortableTreeItem';
+import { flattenTree, getProjection, removeChildrenOf } from './utilities';
+import { SortableItem } from './SortableItem';
 import { CSS } from '@dnd-kit/utilities';
-
-import config from '@plone/volto/registry';
-
-const initialItems = [
-  {
-    id: 'Home',
-    children: [],
-  },
-  {
-    id: 'Collections',
-    children: [
-      { id: 'Spring', children: [] },
-      { id: 'Summer', children: [] },
-      { id: 'Fall', children: [] },
-      { id: 'Winter', children: [] },
-    ],
-  },
-  {
-    id: 'About Us',
-    children: [],
-  },
-  {
-    id: 'My Account',
-    children: [
-      { id: 'Addresses', children: [] },
-      { id: 'Order History', children: [] },
-    ],
-  },
-];
 
 const measuring = {
   droppable: {
@@ -89,35 +50,23 @@ const dropAnimationConfig = {
   },
 };
 
-export function SortableTree({
-  collapsible,
-  defaultItems = initialItems,
+export function Order({
+  items = [],
   onMoveBlock,
   onDeleteBlock,
-  indicator = false,
-  indentationWidth = 50,
+  onSelectBlock,
+  indentationWidth = 25,
   removable,
 }) {
-  const [items, setItems] = useState(() => defaultItems);
   const [activeId, setActiveId] = useState(null);
   const [overId, setOverId] = useState(null);
   const [offsetLeft, setOffsetLeft] = useState(0);
   const [currentPosition, setCurrentPosition] = useState(null);
 
-  const flattenedItems = useMemo(() => {
-    const flattenedTree = flattenTree(items);
-
-    const collapsedItems = flattenedTree.reduce(
-      (acc, { children, collapsed, id }) =>
-        collapsed && children.length ? [...acc, id] : acc,
-      [],
-    );
-
-    return removeChildrenOf(
-      flattenedTree,
-      activeId ? [activeId, ...collapsedItems] : collapsedItems,
-    );
-  }, [activeId, items]);
+  const flattenedItems = useMemo(
+    () => removeChildrenOf(flattenTree(items), activeId ? [activeId] : []),
+    [activeId, items],
+  );
   const projected =
     activeId && overId
       ? getProjection(
@@ -132,15 +81,7 @@ export function SortableTree({
     items: flattenedItems,
     offset: offsetLeft,
   });
-  const [coordinateGetter] = useState(() =>
-    sortableTreeKeyboardCoordinates(sensorContext, indicator, indentationWidth),
-  );
-  const sensors = useSensors(
-    useSensor(PointerSensor),
-    useSensor(KeyboardSensor, {
-      coordinateGetter,
-    }),
-  );
+  const sensors = useSensors(useSensor(PointerSensor));
 
   const sortedIds = useMemo(
     () => flattenedItems.map(({ id }) => id),
@@ -188,47 +129,29 @@ export function SortableTree({
       onDragCancel={handleDragCancel}
     >
       <SortableContext items={sortedIds} strategy={verticalListSortingStrategy}>
-        {flattenedItems.map(
-          ({ id, title, children, collapsed, depth, data }) => (
-            <SortableTreeItem
-              key={id}
-              id={id}
-              value={
-                <span>
-                  <Icon
-                    name={config.blocks.blocksConfig[data['@type']].icon}
-                    size="20px"
-                    style={{ verticalAlign: 'middle' }}
-                  />{' '}
-                  {data.plaintext ||
-                    config.blocks.blocksConfig[data['@type']].title}
-                </span>
-              }
-              depth={id === activeId && projected ? projected.depth : depth}
-              indentationWidth={indentationWidth}
-              indicator={indicator}
-              collapsed={Boolean(collapsed && children.length)}
-              onCollapse={
-                collapsible && children.length
-                  ? () => handleCollapse(id)
-                  : undefined
-              }
-              onRemove={removable ? () => handleRemove(id) : undefined}
-            />
-          ),
-        )}
+        {flattenedItems.map(({ id, parentId, depth, data }) => (
+          <SortableItem
+            key={id}
+            id={id}
+            parentId={parentId}
+            data={data}
+            depth={min([
+              id === activeId && projected ? projected.depth : depth,
+              1,
+            ])}
+            indentationWidth={indentationWidth}
+            onRemove={removable ? () => handleRemove(id) : undefined}
+            onSelectBlock={onSelectBlock}
+          />
+        ))}
         {createPortal(
-          <DragOverlay
-            dropAnimation={dropAnimationConfig}
-            modifiers={indicator ? [adjustTranslate] : undefined}
-          >
+          <DragOverlay dropAnimation={dropAnimationConfig}>
             {activeId && activeItem ? (
-              <SortableTreeItem
+              <SortableItem
                 id={activeId}
                 depth={activeItem.depth}
                 clone
-                childCount={getChildCount(items, activeId) + 1}
-                value={activeId.toString()}
+                data={find(flattenedItems, { id: activeId }).data}
                 indentationWidth={indentationWidth}
               />
             ) : null}
@@ -264,11 +187,9 @@ export function SortableTree({
   }
 
   function handleDragEnd({ active, over }) {
-    resetState();
-
     if (projected && over) {
       const { depth, parentId } = projected;
-      const clonedItems = JSON.parse(JSON.stringify(flattenTree(items)));
+      const clonedItems = JSON.parse(JSON.stringify(flattenedItems));
       const overIndex = clonedItems.findIndex(({ id }) => id === over.id);
       const activeIndex = clonedItems.findIndex(({ id }) => id === active.id);
       const activeTreeItem = clonedItems[activeIndex];
@@ -276,93 +197,79 @@ export function SortableTree({
 
       clonedItems[activeIndex] = { ...activeTreeItem, depth, parentId };
 
-      const sortedItems = arrayMove(clonedItems, activeIndex, overIndex);
-      const newItems = buildTree(sortedItems);
-
       // Translate position depending on parent
       if (parentId === oldParentId) {
-        if (oldParentId) {
-          const parentIndex = clonedItems.findIndex(
-            ({ id }) => id === parentId,
-          );
-          const translatedPositionOver = clonedItems[
-            parentIndex
-          ].children.findIndex(({ id }) => id === over.id);
-          const translatedPositionActive = clonedItems[
-            parentIndex
-          ].children.findIndex(({ id }) => id === active.id);
-          onMoveBlock({
-            source: {
-              position: translatedPositionActive,
-              parent: oldParentId,
-            },
-            destination: {
-              position: translatedPositionOver,
-              parent: parentId,
-            },
-          });
-        } else {
-          // We are moving things within the main container
-          onMoveBlock({
-            source: {
-              position: activeIndex,
-              id: active.id,
-            },
-            destination: {
-              position: overIndex,
-            },
-          });
-        }
-      } else if (parentId !== oldParentId) {
-        // Containers are different
-        if (!parentId) {
-          // Moving to the main container
-          // The overIndex is valid already
-          // The activeIndex has to be translated
-          const oldParentIndex = clonedItems.findIndex(
-            ({ id }) => id === oldParentId,
-          );
-          const translatedPositionActive = clonedItems[
-            oldParentIndex
-          ].children.findIndex(({ id }) => id === active.id);
+        // Move from and to toplevel or move within the same grid block -> done
 
-          onMoveBlock({
-            source: {
-              position: translatedPositionActive,
-              parent: oldParentId,
-              id: active.id,
-            },
-            destination: {
-              position: overIndex,
-              parent: parentId,
-            },
-          });
-        } else {
-          // Moving from the main container
-          // The overIndex has to be translated
-          // The activeIndex is valid already
-          const parentIndex = clonedItems.findIndex(
-            ({ id }) => id === parentId,
-          );
-          const translatedPositionOver = clonedItems[
-            parentIndex
-          ].children.findIndex(({ id }) => id === over.id);
-
-          onMoveBlock({
-            source: {
-              position: activeIndex,
-              parent: oldParentId,
-              id: active.id,
-            },
-            destination: {
-              position: translatedPositionOver,
-              parent: parentId,
-            },
-          });
+        let destIndex = clonedItems[overIndex].index;
+        if (clonedItems[overIndex].depth > clonedItems[activeIndex].depth) {
+          destIndex = find(clonedItems, {
+            id: clonedItems[overIndex].parentId,
+          }).index;
         }
+        onMoveBlock({
+          source: {
+            position: clonedItems[activeIndex].index,
+            parent: oldParentId,
+            id: active.id,
+          },
+          destination: {
+            position: destIndex,
+            parent: parentId,
+          },
+        });
+      } else if (parentId && oldParentId) {
+        // Move from one gridblock to another
+
+        onMoveBlock({
+          source: {
+            position: clonedItems[activeIndex].index,
+            parent: oldParentId,
+            id: active.id,
+          },
+          destination: {
+            position:
+              clonedItems[overIndex > activeIndex ? overIndex + 1 : overIndex]
+                .index,
+            parent: parentId,
+          },
+        });
+      } else if (oldParentId) {
+        // Moving to the main container from a gridblock -> done
+
+        onMoveBlock({
+          source: {
+            position: clonedItems[activeIndex].index,
+            parent: oldParentId,
+            id: active.id,
+          },
+          destination: {
+            position:
+              clonedItems[overIndex > activeIndex ? overIndex + 1 : overIndex]
+                .index,
+            parent: parentId,
+          },
+        });
+      } else {
+        // Moving from the main container to a gridblock -> done
+
+        onMoveBlock({
+          source: {
+            position: clonedItems[activeIndex].index,
+            parent: oldParentId,
+            id: active.id,
+          },
+          destination: {
+            position:
+              clonedItems[overIndex > activeIndex ? overIndex + 1 : overIndex]
+                .index,
+            parent: parentId,
+          },
+        });
       }
-      setItems(newItems);
     }
+
+    resetState();
   }
 
   function handleDragCancel() {
@@ -380,15 +287,6 @@ export function SortableTree({
 
   function handleRemove(id) {
     onDeleteBlock(id);
-    setItems((items) => removeItem(items, id));
-  }
-
-  function handleCollapse(id) {
-    setItems((items) =>
-      setProperty(items, id, 'collapsed', (value) => {
-        return !value;
-      }),
-    );
   }
 
   function getMovementAnnouncement(eventName, activeId, overId) {
@@ -444,10 +342,3 @@ export function SortableTree({
     return;
   }
 }
-
-const adjustTranslate = ({ transform }) => {
-  return {
-    ...transform,
-    y: transform.y - 25,
-  };
-};

@@ -813,6 +813,35 @@ export function moveBlockEnhanced(formData, { source, destination }) {
       );
       return clonedFormData;
     }
+
+    // Move between containers
+    if (source.parent !== destination.parent) {
+      let clonedFormData = { ...formData };
+
+      const destinationContainer = findContainer(clonedFormData, {
+        containerId: destination.parent,
+      });
+      destinationContainer[blocksFieldName][source.id] =
+        formData[blocksFieldName][source.parent][blocksFieldName][source.id];
+
+      destinationContainer[blocksLayoutFieldname].items = insertInArray(
+        destinationContainer[blocksLayoutFieldname].items,
+        source.id,
+        destination.position,
+      );
+
+      // Remove the source block from the source parent
+      const sourceContainer = findContainer(clonedFormData, {
+        containerId: source.parent,
+      });
+      delete sourceContainer[blocksFieldName][source.id];
+      sourceContainer[blocksLayoutFieldname].items = removeFromArray(
+        sourceContainer[blocksLayoutFieldname].items,
+        source.position,
+      );
+
+      return clonedFormData;
+    }
   }
 
   // Default catch all, no source/destination parent specified
