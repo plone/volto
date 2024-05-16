@@ -100,7 +100,6 @@ clean:
 setup:
 	# Setup ESlint for VSCode
 	node packages/scripts/vscodesettings.js
-	pnpm build:all
 
 ##### Documentation
 

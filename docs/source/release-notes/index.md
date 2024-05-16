@@ -17,6 +17,27 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.31 (2024-05-15)
+
+### Bugfix
+
+- Replaced the spinner with a progress bar that shows the number of files being uploaded (Uploading x files out of y), and positioned the progress bar properly, while uploading a large number of files. @victorchrollo14 [#5620](https://github.com/plone/volto/issues/5620)
+- Disable `jsx-a11y/label-has-associated-control` so that we can use `eslint-plugin-jsx-a11y` version 6.8.0 if it's pulled by other dependencies. @ichim-david [#5785](https://github.com/plone/volto/issues/5785)
+- Fix some type definitions in JSDocs @sneridagh [#6014](https://github.com/plone/volto/issues/6014)
+- Use `pnpm` 9.1.1 @sneridagh
+  Remove `postinstall` script for building dependencies @sneridagh [#6017](https://github.com/plone/volto/issues/6017)
+
+### Internal
+
+- Allow `Makefile` options to be modified by a `Makefile.local` file if present. @ichim-david [#5997](https://github.com/plone/volto/issues/5997)
+- Modified `locking` and `block-listing` cypress tests 
+  to use more `assertions` instead of wait times in order to improve
+  the reliability of the tests. @ichim-david [#5998](https://github.com/plone/volto/issues/5998)
+
+### Documentation
+
+- Add sphinx-examples extension, update examples, align docs requirements with main documentation, and fix JSON example in upgrade guide. @stevepiercy [#6011](https://github.com/plone/volto/issues/6011)
+
 ## 18.0.0-alpha.30 (2024-05-02)
 
 ### Bugfix
