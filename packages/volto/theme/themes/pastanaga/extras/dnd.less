@@ -28,14 +28,20 @@
   }
 }
 
-.dnd-droptarget-accepting,
-.dnd-droptarget-inactive {
-  border-width: 1px;
+dnd-droptarget-accepting-before,
+dnd-droptarget-accepting-after,
+dnd-droptarget-inactie {
+  border-top-width: 2px;
+  border-bottom-width: 2px;
   border-style: solid;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
 }
-.dnd-droptarget-accepting {
-  border-color: var(--dnd-droptarget-border-color);
+.dnd-droptarget-accepting-before {
+  background-color: red;
+  border-top-color: var(--dnd-droptarget-border-color);
 }
-.dnd-droptarget-inactive {
-  border-color: transparent;
+.dnd-droptarget-accepting-after {
+  background-color: green;
+  border-bottom-color: var(--dnd-droptarget-border-color);
 }

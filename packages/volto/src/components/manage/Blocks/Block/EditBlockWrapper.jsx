@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback } from 'react';
+import React, { useMemo, useCallback, useState } from 'react';
 import { Icon } from '@plone/volto/components';
 import {
   blockHasValue,
@@ -68,8 +68,6 @@ const EditBlockWrapper = (props) => {
     style: { ...style },
   };
 
-  const ref0 = React.useRef(null);
-  const ref = React.useRef(null);
   const previewRef = React.useRef(null);
 
   let { dragProps, isDragging } = useDrag({
@@ -88,66 +86,12 @@ const EditBlockWrapper = (props) => {
     },
   });
 
-  const doDrop = useCallback(
-    async (e, isFirst) => {
-      console.log('doDrop e.items', e.items);
-      let items = await Promise.all(
-        e.items
-          .filter((item) => item.kind === 'text' && item.types.has('blocktype'))
-          .map((item) => item.getText('blocktype')),
-      );
-      console.log('doDrop items', items);
-
-      const indexDraggable = properties.blocks_layout.items.indexOf(
-        JSON.parse(items[0]).id,
-      );
-      let indexDroppable = properties.blocks_layout.items.indexOf(block);
-
-      if (isFirst) {
-        indexDroppable = 0;
-      } else if (indexDroppable < indexDraggable) {
-        indexDroppable += 1;
-      }
-      onMoveBlock(indexDraggable, indexDroppable);
-    },
-    [onMoveBlock, properties?.block_layout?.items],
-  );
-
-  const useDropHook = (ref, isFirst) =>
-    useDrop({
-      ref,
-      async onDrop(e) {
-        doDrop(e, isFirst);
-      },
-    });
-
-  const makeDropTarget = ({ dropProps, isDropTarget }, theRef) => (
-    <div
-      {...dropProps}
-      ref={theRef}
-      style={{
-        border: isDropTarget ? '1px solid blue' : '1px solid transparent',
-        height: '30px',
-        backgroundColor: 'paleturquoise',
-      }}
-    />
-  );
-
-  const dropTarget0 = useMemo(
-    () => makeDropTarget(useDropHook(ref0, true), ref0),
-    [useDropHook, ref0],
-  );
-  const dropTarget = useMemo(
-    () => makeDropTarget(useDropHook(ref), ref),
-    [useDropHook, ref],
-  );
-
-  // --
+  const blockRef = React.useRef(null);
 
   const shouldItDropAfter = (y) =>
-    y >= (blockRef.current ? blockRef.current.offsetHeight : 0) / 2;
+    y <= (blockRef.current ? blockRef.current.offsetHeight : 0) / 2;
 
-  const doDropX = useCallback(
+  const doDrop = useCallback(
     async (evt) => {
       let items = await Promise.all(
         evt.items
@@ -172,20 +116,50 @@ const EditBlockWrapper = (props) => {
     [onMoveBlock, properties?.block_layout?.items],
   );
 
-  const blockRef = React.useRef(null);
+  const [isDropping, setIsDropping] = useState(false);
+  const [isDroppingAfter, setIsDroppingAfter] = useState(false);
+
+  const doDropEnter = useCallback(
+    (evt) => {
+      setIsDropping(true);
+      setIsDroppingAfter(shouldItDropAfter(evt.y));
+    },
+    [setIsDropping, setIsDroppingAfter],
+  );
+
+  const doDropExit = useCallback(
+    (evt) => {
+      setIsDropping(false);
+    },
+    [setIsDropping],
+  );
 
   const { dropProps, isDropTarget } = useDrop({
     ref: blockRef,
+    onDropEnter(e) {
+      doDropEnter(e);
+    },
+    onDropExit(e) {
+      doDropExit(e);
+    },
     async onDrop(e) {
-      doDropX(e);
+      doDrop(e);
     },
   });
 
   const blockIndex = properties.blocks_layout.items.indexOf(block);
 
   return (
-    <div style={isDragging ? { display: 'none' } : {}}>
-      {blockIndex === 0 ? dropTarget0 : null}
+    <div
+      style={isDragging ? { display: 'none' } : {}}
+      className={
+        isDropping
+          ? isDroppingAfter
+            ? 'dnd-droptarget-accepting-after'
+            : 'dnd-droptarget-accepting-before'
+          : 'dnd-droptarget-inactive'
+      }
+    >
       <div
         {...dragProps}
         {...styleMergedWithDragProps}
@@ -208,11 +182,7 @@ const EditBlockWrapper = (props) => {
           </div>
           <div
             {...dropProps}
-            className={`ui drag block inner ${type} ${
-              isDropTarget
-                ? 'dnd-blocktarget-accepting'
-                : 'dnd-blocktarget-inactive'
-            }`}
+            className={`ui drag block inner ${type}`}
             ref={blockRef}
           >
             {children}
@@ -263,7 +233,6 @@ const EditBlockWrapper = (props) => {
           );
         }}
       </DragPreview>
-      {dropTarget}
     </div>
   );
 };
