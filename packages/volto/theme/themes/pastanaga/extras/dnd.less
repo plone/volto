@@ -5,6 +5,7 @@
 :root {
   --dnd-preview-border-color: #1e90ff;
   --dnd-preview-fill-color: rgb(35 40 105);
+  --dnd-droptarget-border-color: #1e90ff;
 }
 
 .dnd-preview {
@@ -25,4 +26,16 @@
     font-weight: 600;
     text-transform: uppercase;
   }
+}
+
+.dnd-droptarget-accepting,
+.dnd-droptarget-inactive {
+  border-width: 1px;
+  border-style: solid;
+}
+.dnd-droptarget-accepting {
+  border-color: var(--dnd-droptarget-border-color);
+}
+.dnd-droptarget-inactive {
+  border-color: transparent;
 }

@@ -70,14 +70,15 @@ const EditBlockWrapper = (props) => {
 
   const ref0 = React.useRef(null);
   const ref = React.useRef(null);
-  const refPreview = React.useRef(null);
+  const previewRef = React.useRef(null);
 
   let { dragProps, isDragging } = useDrag({
-    preview: refPreview,
+    preview: previewRef,
     getItems() {
       console.log('drag', data);
       return [
         {
+          // XXX No uppercase here, or you'll go crazy!
           blocktype: JSON.stringify({
             id: block,
             data,
@@ -141,7 +142,44 @@ const EditBlockWrapper = (props) => {
     [useDropHook, ref],
   );
 
+  // --
+
+  const doDropX = useCallback(
+    async (e) => {
+      let items = await Promise.all(
+        e.items
+          .filter((item) => item.kind === 'text' && item.types.has('blocktype'))
+          .map((item) => item.getText('blocktype')),
+      );
+      const indexDraggable = properties.blocks_layout.items.indexOf(
+        JSON.parse(items[0]).id,
+      );
+      let indexDroppable = properties.blocks_layout.items.indexOf(block);
+
+      const dropAfter = true;
+
+      if (dropAfter) {
+        indexDroppable += 1;
+      }
+      if (indexDroppable < indexDraggable) {
+        indexDroppable += 1;
+      }
+      onMoveBlock(indexDraggable, indexDroppable);
+    },
+    [onMoveBlock, properties?.block_layout?.items],
+  );
+
+  const blockRef = React.useRef(null);
+
+  const { dropProps, isDropTarget } = useDrop({
+    ref: blockRef,
+    async onDrop(e) {
+      doDropX(e);
+    },
+  });
+
   const blockIndex = properties.blocks_layout.items.indexOf(block);
+
   return (
     <div style={isDragging ? { display: 'none' } : {}}>
       {blockIndex === 0 ? dropTarget0 : null}
@@ -165,7 +203,15 @@ const EditBlockWrapper = (props) => {
           >
             <Icon name={dragSVG} size="18px" />
           </div>
-          <div className={`ui drag block inner ${type}`}>
+          <div
+            {...dropProps}
+            className={`ui drag block inner ${type} ${
+              isDropTarget
+                ? 'dnd-blocktarget-accepting'
+                : 'dnd-blocktarget-inactive'
+            }`}
+            ref={blockRef}
+          >
             {children}
             {selected && !required && editable && (
               <Button
@@ -201,15 +247,15 @@ const EditBlockWrapper = (props) => {
           </div>
         </div>
       </div>
-      <DragPreview ref={refPreview}>
+      <DragPreview ref={previewRef}>
         {(items) => {
           const { '@type': type, plaintext: plainText } = JSON.parse(
             items[0]['blocktype'],
           ).data;
           return (
             <div className="dnd-preview">
-              <div className={`dnd-preview-blocktype`}>{type}</div>
-              <div className={`dnd-preview-plaintext`}>{plainText}</div>
+              <div className="dnd-preview-blocktype">{type}</div>
+              <div className="dnd-preview-plaintext">{plainText}</div>
             </div>
           );
         }}
