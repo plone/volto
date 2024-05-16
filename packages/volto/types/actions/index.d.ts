@@ -21,7 +21,7 @@ export { getNavroot } from "./navroot/navroot";
 export { copy, cut, copyContent, moveContent } from "@plone/volto/actions/clipboard/clipboard";
 export { installAddon, listAddons, uninstallAddon, upgradeAddon } from "./addons/addons";
 export { addComment, deleteComment, listComments, listMoreComments, updateComment } from "@plone/volto/actions/comments/comments";
-export { createContent, deleteContent, updateContent, getContent, orderContent, sortContent, resetContent, updateColumnsContent, lockContent, unlockContent, linkIntegrityCheck } from "@plone/volto/actions/content/content";
+export { createContent, deleteContent, updateContent, getContent, orderContent, sortContent, resetContent, updateColumnsContent, lockContent, unlockContent, linkIntegrityCheck, updateUploadedFiles } from "@plone/volto/actions/content/content";
 export { getControlpanel, postControlpanel, deleteControlpanel, listControlpanels, updateControlpanel, getSystemInformation, getDatabaseInformation } from "@plone/volto/actions/controlpanels/controlpanels";
 export { createGroup, deleteGroup, getGroup, listGroups, updateGroup } from "@plone/volto/actions/groups/groups";
 export { getHistory, revertHistory } from "@plone/volto/actions/history/history";

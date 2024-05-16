@@ -17,7 +17,7 @@
     "requireUpstream": false,
     "requireCleanWorkingDir": false,
     "commitMessage": "Release @plone/providers ${version}",
-    "tagName": "plone-components-${version}",
+    "tagName": "plone-providers-${version}",
     "tagAnnotation": "Release @plone/providers ${version}"
   },
   "github": {

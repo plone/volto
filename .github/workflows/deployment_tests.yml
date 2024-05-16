@@ -24,7 +24,7 @@ jobs:
       - uses: pnpm/action-setup@v3
         name: Install pnpm
         with:
-          version: 8
+          version: 9
           # We don't want to install until later,
           # when the cache and Cypress are in place
           run_install: false
@@ -44,6 +44,9 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+
+      - name: Build dependencies
+        run: pnpm build:all
 
       - name: Start backend
         run: make start-backend-docker-detached
@@ -88,7 +91,7 @@ jobs:
       - uses: pnpm/action-setup@v3
         name: Install pnpm
         with:
-          version: 8
+          version: 9
           # We don't want to install until later,
           # when the cache and Cypress are in place
           run_install: false
@@ -108,6 +111,9 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+
+      - name: Build dependencies
+        run: pnpm build:all
 
       - name: Start backend
         run: make start-backend-docker-detached
@@ -152,7 +158,7 @@ jobs:
       - uses: pnpm/action-setup@v3
         name: Install pnpm
         with:
-          version: 8
+          version: 9
           # We don't want to install until later,
           # when the cache and Cypress are in place
           run_install: false
@@ -172,6 +178,9 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+
+      - name: Build dependencies
+        run: pnpm build:all
 
       - name: Start backend
         run: make start-backend-docker-detached
