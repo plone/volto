@@ -159,6 +159,8 @@ const EditBlockWrapper = (props) => {
             : 'dnd-droptarget-accepting-before'
           : 'dnd-droptarget-inactive'
       }
+      {...dropProps}
+      ref={blockRef}
     >
       <div
         {...dragProps}
@@ -180,11 +182,7 @@ const EditBlockWrapper = (props) => {
           >
             <Icon name={dragSVG} size="18px" />
           </div>
-          <div
-            {...dropProps}
-            className={`ui drag block inner ${type}`}
-            ref={blockRef}
-          >
+          <div className={`ui drag block inner ${type}`}>
             {children}
             {selected && !required && editable && (
               <Button
