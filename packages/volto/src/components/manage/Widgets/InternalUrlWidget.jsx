@@ -4,10 +4,10 @@
  */
 
 import React, { useState, useEffect } from 'react';
+import { compose } from 'redux';
 import PropTypes from 'prop-types';
 import { Input, Button } from 'semantic-ui-react';
-import { Icon } from '@plone/volto/components';
-import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
+import { FormFieldWrapper, Icon } from '@plone/volto/components';
 import { isInternalURL, flattenToAppURL, URLUtils } from '@plone/volto/helpers';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -35,18 +35,17 @@ export const InternalUrlWidget = (props) => {
     maxLength,
     placeholder,
     isDisabled,
+    value: propValue,
   } = props;
   const inputId = `field-${id}`;
 
-  const [value, setValue] = useState(flattenToAppURL(props.value));
+  const [value, setValue] = useState(flattenToAppURL(propValue));
   const [isInvalid, setIsInvalid] = useState(false);
-
   useEffect(() => {
-    if (props.value !== value) {
-      setValue(props.value);
+    if (propValue !== value) {
+      setValue(propValue);
     }
-  }, [props, value]);
-  
+  }, [propValue, value]);
   /**
    * Clear handler
    * @method clear
@@ -184,4 +183,4 @@ InternalUrlWidget.defaultProps = {
   maxLength: null,
 };
 
-export default withObjectBrowser(InternalUrlWidget);
+export default compose(withObjectBrowser)(InternalUrlWidget);
