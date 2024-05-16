@@ -3,7 +3,7 @@
  * @module components/manage/Widgets/UrlWidget
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Input, Button } from 'semantic-ui-react';
 import { Icon } from '@plone/volto/components';
@@ -40,6 +40,13 @@ export const InternalUrlWidget = (props) => {
 
   const [value, setValue] = useState(flattenToAppURL(props.value));
   const [isInvalid, setIsInvalid] = useState(false);
+
+  useEffect(() => {
+    if (props.value !== value) {
+      setValue(props.value);
+    }
+  }, [props, value]);
+  
   /**
    * Clear handler
    * @method clear
