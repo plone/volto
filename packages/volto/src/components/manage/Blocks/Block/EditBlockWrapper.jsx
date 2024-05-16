@@ -123,13 +123,19 @@ const EditBlockWrapper = (props) => {
     />
   );
 
-  const DropTarget0 = () => makeDropTarget(useDropHook(ref0, true), ref0);
-  const DropTarget = () => makeDropTarget(useDropHook(ref), ref);
+  const dropTarget0 = useMemo(
+    () => makeDropTarget(useDropHook(ref0, true), ref0),
+    [useDropHook, ref0],
+  );
+  const dropTarget = useMemo(
+    () => makeDropTarget(useDropHook(ref), ref),
+    [useDropHook, ref],
+  );
 
   const blockIndex = properties.blocks_layout.items.indexOf(block);
   return (
     <div>
-      {blockIndex === 0 ? <DropTarget0 /> : ''}
+      {blockIndex === 0 ? dropTarget0 : null}
       <div
         {...dragProps}
         {...styleMergedWithDragProps}
@@ -185,7 +191,7 @@ const EditBlockWrapper = (props) => {
             )}
           </div>
         </div>
-        <DropTarget />
+        {dropTarget}
       </div>
     </div>
   );
