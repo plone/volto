@@ -19,7 +19,7 @@ import { components } from './Components';
 import { loadables } from './Loadables';
 import { workflowMapping } from './Workflows';
 
-import { contentIcons } from './ContentIcons';
+import { contentIcons, quantaContentIcons } from './ContentIcons';
 import { styleClassNameConverters, styleClassNameExtenders } from './Style';
 import {
   controlPanelsIcons,
@@ -129,7 +129,8 @@ let config = {
     persistentReducers: ['blocksClipboard'],
     initialReducersBlacklist: [], // reducers in this list won't be hydrated in windows.__data
     asyncPropsExtenders: [getSiteAsyncPropExtender], // per route asyncConnect customizers
-    contentIcons: contentIcons,
+    contentIcons,
+    quantaContentIcons,
     loadables,
     lazyBundles: {
       cms: [

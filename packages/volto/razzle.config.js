@@ -287,6 +287,8 @@ const defaultModify = ({
     include.push(fs.realpathSync(`${registry.voltoPath}/src`));
   }
 
+  include.push(fs.realpathSync(`${projectRootPath}/../contents/src`));
+
   // Add babel support external (ie. node_modules npm published packages)
   const packagesNames = Object.keys(registry.packages);
   if (registry.packages && packagesNames.length > 0) {
@@ -342,6 +344,7 @@ const defaultModify = ({
               ...addonsAsExternals,
               /^@plone\/volto/,
               /^@plone\/components/,
+              /^@plone\/contents/,
             ].filter(Boolean),
           }),
         ]

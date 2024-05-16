@@ -48,7 +48,6 @@ msgstr "Toiminto"
 
 #. Default: "Actions"
 #: components/manage/Actions/Actions
-#: components/manage/Contents/Contents
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 #: components/manage/Controlpanels/Rules/Rules
@@ -403,7 +402,6 @@ msgstr "Haluatko varmasti poistaa tämän kenttäryhmän ja kaikki sen kentät?"
 
 #. Default: "Ascending"
 #: components/manage/Blocks/Search/components/SortOn
-#: components/manage/Contents/Contents
 msgid "Ascending"
 msgstr "Nouseva"
 
@@ -1029,7 +1027,6 @@ msgstr "Syvyys"
 
 #. Default: "Descending"
 #: components/manage/Blocks/Search/components/SortOn
-#: components/manage/Contents/Contents
 msgid "Descending"
 msgstr "Laskeva"
 
@@ -2412,7 +2409,6 @@ msgid "No workflow"
 msgstr "Ei työnkulkua"
 
 #. Default: "None"
-#: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
 msgid "None"
 msgstr "Ei mitään"
@@ -3315,9 +3311,9 @@ msgstr "Koko: {size}"
 msgid "Small"
 msgstr "Pieni"
 
-#. Default: "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
+#. Default: "Some items are also a folder.
 #: components/manage/Contents/Contents
-msgid "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
+msgid "Some items are also a folder."
 msgstr ""
 
 #. Default: "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
@@ -3696,9 +3692,9 @@ msgstr ""
 msgid "This is a working copy of {title}"
 msgstr ""
 
-#. Default: "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
+#. Default: "This item is also a folder.
 #: components/manage/Contents/Contents
-msgid "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
+msgid "This item is also a folder."
 msgstr ""
 
 #. Default: "This item was locked by {creator} on {date}"
@@ -3729,7 +3725,6 @@ msgstr "Aika"
 #. Default: "Title"
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Blocks/ToC/Schema
-#: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget

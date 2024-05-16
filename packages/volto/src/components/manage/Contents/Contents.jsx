@@ -10,32 +10,41 @@ import { compose } from 'redux';
 import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
 import {
-  Button,
+  // Button,
   Confirm,
-  Container as SemanticContainer,
-  Divider,
-  Dropdown,
-  Menu,
-  Input,
-  Segment,
-  Table,
+  // Container as SemanticContainer,
+  // Divider,
+  // Dropdown,
+  // Menu,
+  // Input,
+  // Segment,
+  // Table,
   Loader,
   Dimmer,
 } from 'semantic-ui-react';
 import {
-  concat,
+  // concat,
   filter,
   find,
   indexOf,
   keys,
   map,
   mapValues,
-  pull,
+  // pull,
 } from 'lodash';
 import move from 'lodash-move';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import { asyncConnect } from '@plone/volto/helpers';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { RouterProvider } from 'react-aria-components';
+import '@plone/components/src/styles/basic/main.css';
+import '@plone/components/src/styles/quanta/main.css';
+import { ContentsTable, ContentsProvider } from '@plone/contents';
+import {
+  asyncConnect,
+  Helmet,
+  getBaseUrl,
+  flattenToAppURL,
+  getContentIcon,
+} from '@plone/volto/helpers';
 
 import {
   searchContent,
@@ -54,45 +63,45 @@ import {
 import Indexes, { defaultIndexes } from '@plone/volto/constants/Indexes';
 import {
   Pagination,
-  Popup,
+  // Popup,
   Toolbar,
   Toast,
   Icon,
   Unauthorized,
 } from '@plone/volto/components';
-import ContentsBreadcrumbs from '@plone/volto/components/manage/Contents/ContentsBreadcrumbs';
-import ContentsIndexHeader from '@plone/volto/components/manage/Contents/ContentsIndexHeader';
-import ContentsItem from '@plone/volto/components/manage/Contents/ContentsItem';
+// import ContentsBreadcrumbs from '@plone/volto/components/manage/Contents/ContentsBreadcrumbs';
+// import ContentsIndexHeader from '@plone/volto/components/manage/Contents/ContentsIndexHeader';
+// import ContentsItem from '@plone/volto/components/manage/Contents/ContentsItem';
 import { ContentsRenameModal } from '@plone/volto/components/manage/Contents';
 import ContentsUploadModal from '@plone/volto/components/manage/Contents/ContentsUploadModal';
 import ContentsWorkflowModal from '@plone/volto/components/manage/Contents/ContentsWorkflowModal';
 import ContentsTagsModal from '@plone/volto/components/manage/Contents/ContentsTagsModal';
 import ContentsPropertiesModal from '@plone/volto/components/manage/Contents/ContentsPropertiesModal';
 
-import { Helmet, getBaseUrl } from '@plone/volto/helpers';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
-import config from '@plone/volto/registry';
+
+// import config from '@plone/volto/registry';
 
 import backSVG from '@plone/volto/icons/back.svg';
-import cutSVG from '@plone/volto/icons/cut.svg';
-import deleteSVG from '@plone/volto/icons/delete.svg';
-import copySVG from '@plone/volto/icons/copy.svg';
-import tagSVG from '@plone/volto/icons/tag.svg';
-import renameSVG from '@plone/volto/icons/rename.svg';
-import semaphoreSVG from '@plone/volto/icons/semaphore.svg';
-import uploadSVG from '@plone/volto/icons/upload.svg';
-import propertiesSVG from '@plone/volto/icons/properties.svg';
-import pasteSVG from '@plone/volto/icons/paste.svg';
-import zoomSVG from '@plone/volto/icons/zoom.svg';
-import checkboxUncheckedSVG from '@plone/volto/icons/checkbox-unchecked.svg';
-import checkboxCheckedSVG from '@plone/volto/icons/checkbox-checked.svg';
-import checkboxIndeterminateSVG from '@plone/volto/icons/checkbox-indeterminate.svg';
-import configurationSVG from '@plone/volto/icons/configuration-app.svg';
-import sortDownSVG from '@plone/volto/icons/sort-down.svg';
-import sortUpSVG from '@plone/volto/icons/sort-up.svg';
-import downKeySVG from '@plone/volto/icons/down-key.svg';
-import moreSVG from '@plone/volto/icons/more.svg';
-import clearSVG from '@plone/volto/icons/clear.svg';
+// import cutSVG from '@plone/volto/icons/cut.svg';
+// import deleteSVG from '@plone/volto/icons/delete.svg';
+// import copySVG from '@plone/volto/icons/copy.svg';
+// import tagSVG from '@plone/volto/icons/tag.svg';
+// import renameSVG from '@plone/volto/icons/rename.svg';
+// import semaphoreSVG from '@plone/volto/icons/semaphore.svg';
+// import uploadSVG from '@plone/volto/icons/upload.svg';
+// import propertiesSVG from '@plone/volto/icons/properties.svg';
+// import pasteSVG from '@plone/volto/icons/paste.svg';
+// import zoomSVG from '@plone/volto/icons/zoom.svg';
+// import checkboxUncheckedSVG from '@plone/volto/icons/checkbox-unchecked.svg';
+// import checkboxCheckedSVG from '@plone/volto/icons/checkbox-checked.svg';
+// import checkboxIndeterminateSVG from '@plone/volto/icons/checkbox-indeterminate.svg';
+// import configurationSVG from '@plone/volto/icons/configuration-app.svg';
+// import sortDownSVG from '@plone/volto/icons/sort-down.svg';
+// import sortUpSVG from '@plone/volto/icons/sort-up.svg';
+// import downKeySVG from '@plone/volto/icons/down-key.svg';
+// import moreSVG from '@plone/volto/icons/more.svg';
+// import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
   back: {
@@ -362,11 +371,7 @@ class Contents extends Component {
    */
   constructor(props) {
     super(props);
-    this.onDeselect = this.onDeselect.bind(this);
-    this.onSelect = this.onSelect.bind(this);
-    this.onSelectAll = this.onSelectAll.bind(this);
     this.onSelectIndex = this.onSelectIndex.bind(this);
-    this.onSelectNone = this.onSelectNone.bind(this);
     this.onDeleteOk = this.onDeleteOk.bind(this);
     this.onDeleteCancel = this.onDeleteCancel.bind(this);
     this.onUploadOk = this.onUploadOk.bind(this);
@@ -581,57 +586,26 @@ class Contents extends Component {
   }
 
   /**
-   * On deselect handler
-   * @method onDeselect
-   * @param {object} event Event object
-   * @param {string} value Value
-   * @returns {undefined}
-   */
-  onDeselect(event, { value }) {
-    this.setState({
-      selected: pull(this.state.selected, value),
-    });
-  }
-
-  /**
-   * On select handler
-   * @method onSelect
-   * @param {object} event Event object
-   * @returns {undefined}
-   */
-  onSelect(event, id) {
-    if (indexOf(this.state.selected, id) === -1) {
-      this.setState({
-        selected: concat(this.state.selected, id),
-      });
-    } else {
-      this.setState({
-        selected: pull(this.state.selected, id),
-      });
-    }
-  }
-
-  /**
    * On select all handler
    * @method onSelectAll
    * @returns {undefined}
    */
-  onSelectAll() {
+  onSelectAll = () => {
     this.setState({
       selected: map(this.state.items, (item) => item['@id']),
     });
-  }
+  };
 
   /**
    * On select none handler
    * @method onSelectNone
    * @returns {undefined}
    */
-  onSelectNone() {
+  onSelectNone = () => {
     this.setState({
       selected: [],
     });
-  }
+  };
 
   /**
    * On select index
@@ -766,11 +740,15 @@ class Contents extends Component {
    */
   onOrderItem(id, itemIndex, delta, backend) {
     if (backend) {
-      this.props.orderContent(
-        getBaseUrl(this.props.pathname),
-        id.replace(/^.*\//, ''),
-        delta,
-      );
+      this.props
+        .orderContent(
+          getBaseUrl(this.props.pathname),
+          id.replace(/^.*\//, ''),
+          delta,
+        )
+        .then(() => {
+          this.fetchContents();
+        });
     } else {
       this.setState({
         items: move(this.state.items, itemIndex, itemIndex + delta),
@@ -1174,8 +1152,8 @@ class Contents extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const selected = this.state.selected.length > 0;
-    const filteredItems = this.state.filteredItems || this.state.selected;
+    // const selected = this.state.selected.size > 0;
+    // const filteredItems = this.state.filteredItems || [...this.state.selected];
     const path = getBaseUrl(this.props.pathname);
     const folderContentsAction = find(this.props.objectActions, {
       id: 'folderContents',
@@ -1188,17 +1166,13 @@ class Contents extends Component {
       (this.props.orderRequest?.loading && !this.props.orderRequest?.error) ||
       (this.props.searchRequest?.loading && !this.props.searchRequest?.error);
 
-    const Container =
-      config.getComponent({ name: 'Container' }).component || SemanticContainer;
+    // const Container =
+    //   config.getComponent({ name: 'Container' }).component || SemanticContainer;
 
     return this.props.token && this.props.objectActions?.length > 0 ? (
       <>
         {folderContentsAction ? (
-          <Container
-            id="page-contents"
-            className="folder-contents"
-            aria-live="polite"
-          >
+          <>
             <Dimmer.Dimmable as="div" blurring dimmed={loading}>
               <Dimmer active={loading} inverted>
                 <Loader indeterminate size="massive">
@@ -1207,230 +1181,221 @@ class Contents extends Component {
               </Dimmer>
 
               <Helmet
-                title={this.props.intl.formatMessage(messages.contents)}
+                title={`${this.props.intl.formatMessage(messages.contents)} - ${this.props.title}`}
               />
-              <div className="container">
-                <article id="content">
-                  <Confirm
-                    open={this.state.showDelete}
-                    confirmButton={
-                      this.state.brokenReferences === 0
-                        ? 'Delete'
-                        : 'Delete item and break links'
+              <RouterProvider navigate={this.props.history.push}>
+                <ContentsProvider
+                  flattenToAppURL={flattenToAppURL}
+                  getBaseUrl={getBaseUrl}
+                  getContentIcon={getContentIcon}
+                  intl={this.props.intl}
+                  toast={this.props.toastify.toast}
+                >
+                  <ContentsTable
+                    pathname={getBaseUrl(this.props.pathname)}
+                    breadcrumbs={this.props.breadcrumbs.map((b) => ({
+                      '@id': `${b.url}/contents`,
+                      title: b.title,
+                    }))}
+                    objectActions={this.props.objectActions}
+                    title={this.props.title}
+                    loading={loading}
+                    canPaste={!!this.props.action}
+                    textFilter={this.state.filter}
+                    onChangeTextFilter={(value) => {
+                      this.onChangeFilter(undefined, { value });
+                    }}
+                    items={this.state.items}
+                    selected={new Set(this.state.selected)}
+                    setSelected={(selected) => {
+                      if (selected === 'all') {
+                        this.onSelectAll();
+                      } else {
+                        this.setState({ selected: [...selected] });
+                      }
+                    }}
+                    indexes={this.state.index}
+                    onSelectIndex={(index) => {
+                      this.onSelectIndex(undefined, { value: index });
+                    }}
+                    sortItems={(id) =>
+                      this.onSortItems(undefined, { value: id })
                     }
-                    header={
-                      this.state.itemsToDelete.length === 1
-                        ? this.props.intl.formatMessage(
-                            messages.deleteConfirmSingleItem,
-                          )
-                        : this.props.intl.formatMessage(
-                            messages.deleteConfirmMultipleItems,
-                          )
+                    upload={this.upload}
+                    rename={this.rename}
+                    workflow={this.workflow}
+                    tags={this.tags}
+                    properties={this.properties}
+                    cut={(id) =>
+                      Promise.resolve(this.cut(undefined, { value: id }))
                     }
-                    content={
-                      <div className="content">
-                        {this.state.itemsToDelete.length > 1 ? (
-                          this.state.containedItemsToDelete > 0 ? (
+                    copy={(id) =>
+                      Promise.resolve(this.copy(undefined, { value: id }))
+                    }
+                    paste={this.paste}
+                    deleteItem={(id) =>
+                      Promise.resolve(this.delete(undefined, { value: id }))
+                    }
+                    orderItem={(id, delta) =>
+                      Promise.resolve(
+                        this.onOrderItem(id, undefined, delta, true),
+                      )
+                    }
+                    moveToTop={(index) =>
+                      Promise.resolve(
+                        this.onMoveToTop(undefined, { value: index }),
+                      )
+                    }
+                    moveToBottom={(index) =>
+                      Promise.resolve(
+                        this.onMoveToBottom(undefined, { value: index }),
+                      )
+                    }
+                    toast={this.props.toastify.toast}
+                    // addableTypes={this.props.addableTypes}
+                  />
+                </ContentsProvider>
+              </RouterProvider>
+              <Confirm
+                open={this.state.showDelete}
+                confirmButton={
+                  this.state.brokenReferences === 0
+                    ? 'Delete'
+                    : 'Delete item and break links'
+                }
+                header={
+                  this.state.itemsToDelete.length === 1
+                    ? this.props.intl.formatMessage(
+                        messages.deleteConfirmSingleItem,
+                      )
+                    : this.props.intl.formatMessage(
+                        messages.deleteConfirmMultipleItems,
+                      )
+                }
+                content={
+                  <div className="content">
+                    {this.state.itemsToDelete.length > 1 ? (
+                      this.state.containedItemsToDelete > 0 ? (
+                        <>
+                          <FormattedMessage
+                            id="Some items are also a folder.
+                              By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
+                            defaultMessage="Some items are also a folder.
+                              By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
+                            values={{
+                              containedItemsToDelete: (
+                                <span>{this.state.containedItemsToDelete}</span>
+                              ),
+                              variation: (
+                                <span>
+                                  {this.state.containedItemsToDelete === 1 ? (
+                                    <FormattedMessage
+                                      id="item"
+                                      defaultMessage="item"
+                                    />
+                                  ) : (
+                                    <FormattedMessage
+                                      id="items"
+                                      defaultMessage="items"
+                                    />
+                                  )}
+                                </span>
+                              ),
+                            }}
+                          />
+                          {this.state.brokenReferences > 0 && (
                             <>
+                              <br />
                               <FormattedMessage
-                                id="Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
-                                defaultMessage="Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
+                                id="Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
+                                defaultMessage="Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
                                 values={{
-                                  containedItemsToDelete: (
-                                    <span>
-                                      {this.state.containedItemsToDelete}
-                                    </span>
+                                  brokenReferences: (
+                                    <span>{this.state.brokenReferences}</span>
                                   ),
                                   variation: (
                                     <span>
-                                      {this.state.containedItemsToDelete ===
-                                      1 ? (
+                                      {this.state.brokenReferences === 1 ? (
                                         <FormattedMessage
-                                          id="item"
-                                          defaultMessage="item"
+                                          id="reference"
+                                          defaultMessage="reference"
                                         />
                                       ) : (
                                         <FormattedMessage
-                                          id="items"
-                                          defaultMessage="items"
+                                          id="references"
+                                          defaultMessage="references"
                                         />
                                       )}
                                     </span>
                                   ),
                                 }}
                               />
-                              {this.state.brokenReferences > 0 && (
-                                <>
-                                  <br />
-                                  <FormattedMessage
-                                    id="Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
-                                    defaultMessage="Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
-                                    values={{
-                                      brokenReferences: (
-                                        <span>
-                                          {this.state.brokenReferences}
-                                        </span>
-                                      ),
-                                      variation: (
-                                        <span>
-                                          {this.state.brokenReferences === 1 ? (
-                                            <FormattedMessage
-                                              id="reference"
-                                              defaultMessage="reference"
-                                            />
-                                          ) : (
-                                            <FormattedMessage
-                                              id="references"
-                                              defaultMessage="references"
-                                            />
-                                          )}
-                                        </span>
-                                      ),
-                                    }}
-                                  />
-                                </>
-                              )}
                             </>
-                          ) : (
+                          )}
+                        </>
+                      ) : (
+                        <>
+                          {this.state.brokenReferences > 0 && (
                             <>
-                              {this.state.brokenReferences > 0 && (
-                                <>
-                                  <FormattedMessage
-                                    id="Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
-                                    defaultMessage="Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
-                                    values={{
-                                      brokenReferences: (
-                                        <span>
-                                          {this.state.brokenReferences}
-                                        </span>
-                                      ),
-                                      variation: (
-                                        <span>
-                                          {this.state.brokenReferences === 1 ? (
-                                            <FormattedMessage
-                                              id="reference"
-                                              defaultMessage="reference"
-                                            />
-                                          ) : (
-                                            <FormattedMessage
-                                              id="references"
-                                              defaultMessage="references"
-                                            />
-                                          )}
-                                        </span>
-                                      ),
-                                    }}
-                                  />
-                                </>
-                              )}
-                            </>
-                          )
-                        ) : this.state.containedItemsToDelete > 0 ? (
-                          <>
-                            <FormattedMessage
-                              id="This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
-                              defaultMessage="This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
-                              values={{
-                                containedItemsToDelete: (
-                                  <span>
-                                    {this.state.containedItemsToDelete}
-                                  </span>
-                                ),
-                                variation: (
-                                  <span>
-                                    {this.state.containedItemsToDelete === 1 ? (
-                                      <FormattedMessage
-                                        id="item"
-                                        defaultMessage="item"
-                                      />
-                                    ) : (
-                                      <FormattedMessage
-                                        id="items"
-                                        defaultMessage="items"
-                                      />
-                                    )}
-                                  </span>
-                                ),
-                              }}
-                            />
-                            {this.state.brokenReferences > 0 && (
-                              <>
-                                <br />
-                                <FormattedMessage
-                                  id="Deleting this item breaks {brokenReferences} {variation}."
-                                  defaultMessage="Deleting this item breaks {brokenReferences} {variation}."
-                                  values={{
-                                    brokenReferences: (
-                                      <span>{this.state.brokenReferences}</span>
-                                    ),
-                                    variation: (
-                                      <span>
-                                        {this.state.brokenReferences === 1 ? (
-                                          <FormattedMessage
-                                            id="reference"
-                                            defaultMessage="reference"
-                                          />
-                                        ) : (
-                                          <FormattedMessage
-                                            id="references"
-                                            defaultMessage="references"
-                                          />
-                                        )}
-                                      </span>
-                                    ),
-                                  }}
-                                />
-                                <div className="broken-links-list">
-                                  <FormattedMessage id="These items will have broken links" />
-                                  <ul>
-                                    {this.state.breaches.map((breach) => (
-                                      <li key={breach.source['@id']}>
-                                        <Link
-                                          to={flattenToAppURL(
-                                            breach.source['@id'],
-                                          )}
-                                          title="Navigate to this item"
-                                        >
-                                          {breach.source.title}
-                                        </Link>{' '}
-                                        refers to{' '}
-                                        {breach.targets
-                                          .map((target) => (
-                                            <Link
-                                              to={flattenToAppURL(
-                                                target['@id'],
-                                              )}
-                                              title="Navigate to this item"
-                                            >
-                                              {target.title}
-                                            </Link>
-                                          ))
-                                          .reduce((result, item) => (
-                                            <>
-                                              {result}, {item}
-                                            </>
-                                          ))}
-                                      </li>
-                                    ))}
-                                  </ul>
-                                  {this.state.linksAndReferencesViewLink && (
-                                    <Link
-                                      to={flattenToAppURL(
-                                        this.state.linksAndReferencesViewLink,
+                              <FormattedMessage
+                                id="Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
+                                defaultMessage="Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
+                                values={{
+                                  brokenReferences: (
+                                    <span>{this.state.brokenReferences}</span>
+                                  ),
+                                  variation: (
+                                    <span>
+                                      {this.state.brokenReferences === 1 ? (
+                                        <FormattedMessage
+                                          id="reference"
+                                          defaultMessage="reference"
+                                        />
+                                      ) : (
+                                        <FormattedMessage
+                                          id="references"
+                                          defaultMessage="references"
+                                        />
                                       )}
-                                    >
-                                      <FormattedMessage
-                                        id="View links and references to this item"
-                                        defaultMessage="View links and references to this item"
-                                      />
-                                    </Link>
-                                  )}
-                                </div>
-                              </>
-                            )}
-                          </>
-                        ) : this.state.brokenReferences > 0 ? (
+                                    </span>
+                                  ),
+                                }}
+                              />
+                            </>
+                          )}
+                        </>
+                      )
+                    ) : this.state.containedItemsToDelete > 0 ? (
+                      <>
+                        <FormattedMessage
+                          id="This item is also a folder.
+                            By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
+                          defaultMessage="This item is also a folder.
+                            By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
+                          values={{
+                            containedItemsToDelete: (
+                              <span>{this.state.containedItemsToDelete}</span>
+                            ),
+                            variation: (
+                              <span>
+                                {this.state.containedItemsToDelete === 1 ? (
+                                  <FormattedMessage
+                                    id="item"
+                                    defaultMessage="item"
+                                  />
+                                ) : (
+                                  <FormattedMessage
+                                    id="items"
+                                    defaultMessage="items"
+                                  />
+                                )}
+                              </span>
+                            ),
+                          }}
+                        />
+                        {this.state.brokenReferences > 0 && (
                           <>
+                            <br />
                             <FormattedMessage
                               id="Deleting this item breaks {brokenReferences} {variation}."
                               defaultMessage="Deleting this item breaks {brokenReferences} {variation}."
@@ -1446,7 +1411,10 @@ class Contents extends Component {
                                         defaultMessage="reference"
                                       />
                                     ) : (
-                                      <FormattedMessage id="references" />
+                                      <FormattedMessage
+                                        id="references"
+                                        defaultMessage="references"
+                                      />
                                     )}
                                   </span>
                                 ),
@@ -1495,672 +1463,128 @@ class Contents extends Component {
                               )}
                             </div>
                           </>
-                        ) : null}
-                      </div>
-                    }
-                    onCancel={this.onDeleteCancel}
-                    onConfirm={this.onDeleteOk}
-                    size="medium"
-                  />
-                  <ContentsUploadModal
-                    open={this.state.showUpload}
-                    onCancel={this.onUploadCancel}
-                    onOk={this.onUploadOk}
-                    pathname={getBaseUrl(this.props.pathname)}
-                  />
-                  <ContentsRenameModal
-                    open={this.state.showRename}
-                    onCancel={this.onRenameCancel}
-                    onOk={this.onRenameOk}
-                    items={map(this.state.selected, (item) => ({
-                      url: item,
-                      title: this.getFieldById(item, 'title'),
-                      id: this.getFieldById(item, 'id'),
-                    }))}
-                  />
-                  <ContentsTagsModal
-                    open={this.state.showTags}
-                    onCancel={this.onTagsCancel}
-                    onOk={this.onTagsOk}
-                    items={map(this.state.selected, (item) => ({
-                      url: item,
-                      subjects: this.getFieldById(item, 'Subject'),
-                    }))}
-                  />
-                  <ContentsPropertiesModal
-                    open={this.state.showProperties}
-                    onCancel={this.onPropertiesCancel}
-                    onOk={this.onPropertiesOk}
-                    items={this.state.selected}
-                  />
-                  {this.state.showWorkflow && (
-                    <ContentsWorkflowModal
-                      open={this.state.showWorkflow}
-                      onCancel={this.onWorkflowCancel}
-                      onOk={this.onWorkflowOk}
-                      items={this.state.selected}
-                    />
-                  )}
-                  <section id="content-core">
-                    <Segment.Group raised>
-                      <Menu secondary attached className="top-menu">
-                        <Menu.Menu className="top-menu-menu">
-                          <Popup
-                            trigger={
-                              <Menu.Item
-                                icon
-                                as={Button}
-                                onClick={this.upload}
-                                className="upload"
-                                aria-label={this.props.intl.formatMessage(
-                                  messages.upload,
+                        )}
+                      </>
+                    ) : this.state.brokenReferences > 0 ? (
+                      <>
+                        <FormattedMessage
+                          id="Deleting this item breaks {brokenReferences} {variation}."
+                          defaultMessage="Deleting this item breaks {brokenReferences} {variation}."
+                          values={{
+                            brokenReferences: (
+                              <span>{this.state.brokenReferences}</span>
+                            ),
+                            variation: (
+                              <span>
+                                {this.state.brokenReferences === 1 ? (
+                                  <FormattedMessage
+                                    id="reference"
+                                    defaultMessage="reference"
+                                  />
+                                ) : (
+                                  <FormattedMessage id="references" />
                                 )}
-                              >
-                                <Icon
-                                  name={uploadSVG}
-                                  color="#007eb1"
-                                  size="24px"
-                                  className="upload"
-                                />
-                              </Menu.Item>
-                            }
-                            position="top center"
-                            content={this.props.intl.formatMessage(
-                              messages.upload,
-                            )}
-                            size="mini"
-                          />
-                        </Menu.Menu>
-                        <Menu.Menu className="top-menu-menu">
-                          <Popup
-                            trigger={
-                              <Menu.Item
-                                icon
-                                as={Button}
-                                onClick={this.rename}
-                                disabled={!selected}
-                                aria-label={this.props.intl.formatMessage(
-                                  messages.rename,
-                                )}
-                              >
-                                <Icon
-                                  name={renameSVG}
-                                  color={selected ? '#826a6a' : 'grey'}
-                                  size="24px"
-                                  className="rename"
-                                />
-                              </Menu.Item>
-                            }
-                            position="top center"
-                            content={this.props.intl.formatMessage(
-                              messages.rename,
-                            )}
-                            size="mini"
-                          />
-                          <Popup
-                            trigger={
-                              <Menu.Item
-                                icon
-                                as={Button}
-                                onClick={this.workflow}
-                                disabled={!selected}
-                                aria-label={this.props.intl.formatMessage(
-                                  messages.state,
-                                )}
-                              >
-                                <Icon
-                                  name={semaphoreSVG}
-                                  color={selected ? '#826a6a' : 'grey'}
-                                  size="24px"
-                                  className="semaphore"
-                                />
-                              </Menu.Item>
-                            }
-                            position="top center"
-                            content={this.props.intl.formatMessage(
-                              messages.state,
-                            )}
-                            size="mini"
-                          />
-                          <Popup
-                            trigger={
-                              <Menu.Item
-                                icon
-                                as={Button}
-                                onClick={this.tags}
-                                disabled={!selected}
-                                aria-label={this.props.intl.formatMessage(
-                                  messages.tags,
-                                )}
-                              >
-                                <Icon
-                                  name={tagSVG}
-                                  color={selected ? '#826a6a' : 'grey'}
-                                  size="24px"
-                                  className="tag"
-                                />
-                              </Menu.Item>
-                            }
-                            position="top center"
-                            content={this.props.intl.formatMessage(
-                              messages.tags,
-                            )}
-                            size="mini"
-                          />
-
-                          <Popup
-                            trigger={
-                              <Menu.Item
-                                icon
-                                as={Button}
-                                onClick={this.properties}
-                                disabled={!selected}
-                                aria-label={this.props.intl.formatMessage(
-                                  messages.properties,
-                                )}
-                              >
-                                <Icon
-                                  name={propertiesSVG}
-                                  color={selected ? '#826a6a' : 'grey'}
-                                  size="24px"
-                                  className="properties"
-                                />
-                              </Menu.Item>
-                            }
-                            position="top center"
-                            content={this.props.intl.formatMessage(
-                              messages.properties,
-                            )}
-                            size="mini"
-                          />
-                        </Menu.Menu>
-                        <Menu.Menu className="top-menu-menu">
-                          <Popup
-                            trigger={
-                              <Menu.Item
-                                icon
-                                as={Button}
-                                onClick={this.cut}
-                                disabled={!selected}
-                                aria-label={this.props.intl.formatMessage(
-                                  messages.cut,
-                                )}
-                              >
-                                <Icon
-                                  name={cutSVG}
-                                  color={selected ? '#826a6a' : 'grey'}
-                                  size="24px"
-                                  className="cut"
-                                />
-                              </Menu.Item>
-                            }
-                            position="top center"
-                            content={this.props.intl.formatMessage(
-                              messages.cut,
-                            )}
-                            size="mini"
-                          />
-                          <Popup
-                            trigger={
-                              <Menu.Item
-                                icon
-                                as={Button}
-                                onClick={this.copy}
-                                disabled={!selected}
-                                aria-label={this.props.intl.formatMessage(
-                                  messages.copy,
-                                )}
-                              >
-                                <Icon
-                                  name={copySVG}
-                                  color={selected ? '#826a6a' : 'grey'}
-                                  size="24px"
-                                  className="copy"
-                                />
-                              </Menu.Item>
-                            }
-                            position="top center"
-                            content={this.props.intl.formatMessage(
-                              messages.copy,
-                            )}
-                            size="mini"
-                          />
-
-                          <Popup
-                            trigger={
-                              <Menu.Item
-                                icon
-                                as={Button}
-                                onClick={this.paste}
-                                disabled={!this.props.action}
-                                aria-label={this.props.intl.formatMessage(
-                                  messages.paste,
-                                )}
-                              >
-                                <Icon
-                                  name={pasteSVG}
-                                  color={selected ? '#826a6a' : 'grey'}
-                                  size="24px"
-                                  className="paste"
-                                />
-                              </Menu.Item>
-                            }
-                            position="top center"
-                            content={this.props.intl.formatMessage(
-                              messages.paste,
-                            )}
-                            size="mini"
-                          />
-
-                          <Popup
-                            trigger={
-                              <Menu.Item
-                                icon
-                                as={Button}
-                                onClick={this.delete}
-                                disabled={!selected}
-                                aria-label={this.props.intl.formatMessage(
-                                  messages.delete,
-                                )}
-                              >
-                                <Icon
-                                  name={deleteSVG}
-                                  color={selected ? '#e40166' : 'grey'}
-                                  size="24px"
-                                  className="delete"
-                                />
-                              </Menu.Item>
-                            }
-                            position="top center"
-                            content={this.props.intl.formatMessage(
-                              messages.delete,
-                            )}
-                            size="mini"
-                          />
-                        </Menu.Menu>
-                        <Menu.Menu
-                          position="right"
-                          className="top-menu-searchbox"
-                        >
-                          <div className="ui right aligned category search item">
-                            <Input
-                              type="text"
-                              transparent
-                              placeholder={this.props.intl.formatMessage(
-                                messages.filter,
-                              )}
-                              size="small"
-                              value={this.state.filter}
-                              onChange={this.onChangeFilter}
-                            />
-                            {this.state.filter && (
-                              <Button
-                                className="icon icon-container"
-                                onClick={() => {
-                                  this.onChangeFilter('', { value: '' });
-                                }}
-                              >
-                                <Icon
-                                  name={clearSVG}
-                                  size="30px"
-                                  color="#e40166"
-                                />
-                              </Button>
-                            )}
-                            <Icon
-                              name={zoomSVG}
-                              size="30px"
-                              color="#007eb1"
-                              className="zoom"
-                              style={{ flexShrink: '0' }}
-                            />
-                            <div className="results" />
-                          </div>
-                        </Menu.Menu>
-                      </Menu>
-                      <Segment
-                        secondary
-                        attached
-                        className="contents-breadcrumbs"
-                      >
-                        <ContentsBreadcrumbs items={this.props.breadcrumbs} />
-                        <Dropdown
-                          item
-                          upward={false}
-                          icon={
-                            <Icon name={moreSVG} size="24px" color="#826a6a" />
-                          }
-                          className="right floating selectIndex"
-                        >
-                          <Dropdown.Menu className="left">
-                            <Dropdown.Header
-                              content={this.props.intl.formatMessage(
-                                messages.selectColumns,
-                              )}
-                            />
-                            <Dropdown.Menu scrolling>
-                              {map(
-                                filter(
-                                  this.state.index.order,
-                                  (index) => index !== 'sortable_title',
-                                ),
-                                (index) => (
-                                  <Dropdown.Item
-                                    key={index}
-                                    value={index}
-                                    onClick={this.onSelectIndex}
-                                    className="iconAlign"
-                                  >
-                                    {this.state.index.values[index].selected ? (
-                                      <Icon
-                                        name={checkboxCheckedSVG}
-                                        size="24px"
-                                        color="#007eb1"
-                                        className={
-                                          this.state.index.values[index].label
-                                        }
-                                      />
-                                    ) : (
-                                      <Icon
-                                        name={checkboxUncheckedSVG}
-                                        className={
-                                          this.state.index.values[index].label
-                                        }
-                                        size="24px"
-                                      />
-                                    )}
-                                    <span>
-                                      {' '}
-                                      {this.props.intl.formatMessage({
-                                        id: this.state.index.values[index]
-                                          .label,
-                                        defaultMessage:
-                                          this.state.index.values[index].label,
-                                      })}
-                                    </span>
-                                  </Dropdown.Item>
-                                ),
-                              )}
-                            </Dropdown.Menu>
-                          </Dropdown.Menu>
-                        </Dropdown>
-                      </Segment>
-                      <div className="contents-table-wrapper">
-                        <Table selectable compact singleLine attached>
-                          <Table.Header>
-                            <Table.Row>
-                              <Table.HeaderCell>
-                                <Popup
-                                  menu={true}
-                                  position="bottom left"
-                                  flowing={true}
-                                  basic={true}
-                                  on="click"
-                                  popper={{
-                                    className: 'dropdown-popup',
-                                  }}
-                                  trigger={
-                                    <Icon
-                                      name={configurationSVG}
-                                      size="24px"
-                                      color="#826a6a"
-                                      className="dropdown-popup-trigger configuration-svg"
-                                    />
-                                  }
-                                >
-                                  <Menu vertical borderless fluid>
-                                    <Menu.Header
-                                      content={this.props.intl.formatMessage(
-                                        messages.rearrangeBy,
-                                      )}
-                                    />
-                                    {map(
-                                      [
-                                        'id',
-                                        'sortable_title',
-                                        'EffectiveDate',
-                                        'CreationDate',
-                                        'ModificationDate',
-                                        'portal_type',
-                                      ],
-                                      (index) => (
-                                        <Dropdown
-                                          key={index}
-                                          item
-                                          simple
-                                          className={`sort_${index} icon-align`}
-                                          icon={
-                                            <Icon
-                                              name={downKeySVG}
-                                              size="24px"
-                                              className="left"
-                                            />
-                                          }
-                                          text={this.props.intl.formatMessage({
-                                            id: Indexes[index].label,
-                                          })}
-                                        >
-                                          <Dropdown.Menu>
-                                            <Dropdown.Item
-                                              onClick={this.onSortItems}
-                                              value={`${Indexes[index].sort_on}|ascending`}
-                                              className={`sort_${Indexes[index].sort_on}_ascending icon-align`}
-                                            >
-                                              <Icon
-                                                name={sortDownSVG}
-                                                size="24px"
-                                              />{' '}
-                                              <FormattedMessage
-                                                id="Ascending"
-                                                defaultMessage="Ascending"
-                                              />
-                                            </Dropdown.Item>
-                                            <Dropdown.Item
-                                              onClick={this.onSortItems}
-                                              value={`${Indexes[index].sort_on}|descending`}
-                                              className={`sort_${Indexes[index].sort_on}_descending icon-align`}
-                                            >
-                                              <Icon
-                                                name={sortUpSVG}
-                                                size="24px"
-                                              />{' '}
-                                              <FormattedMessage
-                                                id="Descending"
-                                                defaultMessage="Descending"
-                                              />
-                                            </Dropdown.Item>
-                                          </Dropdown.Menu>
-                                        </Dropdown>
-                                      ),
-                                    )}
-                                  </Menu>
-                                </Popup>
-                              </Table.HeaderCell>
-                              <Table.HeaderCell>
-                                <Popup
-                                  menu={true}
-                                  position="bottom left"
-                                  flowing={true}
-                                  basic={true}
-                                  on="click"
-                                  popper={{
-                                    className: 'dropdown-popup',
-                                  }}
-                                  trigger={
-                                    <Icon
-                                      name={
-                                        this.state.selected.length === 0
-                                          ? checkboxUncheckedSVG
-                                          : this.state.selected.length ===
-                                              this.state.items.length
-                                            ? checkboxCheckedSVG
-                                            : checkboxIndeterminateSVG
-                                      }
-                                      color={
-                                        this.state.selected.length > 0
-                                          ? '#007eb1'
-                                          : '#826a6a'
-                                      }
-                                      className="dropdown-popup-trigger"
-                                      size="24px"
-                                    />
-                                  }
-                                >
-                                  <Menu vertical borderless fluid>
-                                    <Menu.Header
-                                      content={this.props.intl.formatMessage(
-                                        messages.select,
-                                      )}
-                                    />
-                                    <Menu.Item onClick={this.onSelectAll}>
-                                      <Icon
-                                        name={checkboxCheckedSVG}
-                                        color="#007eb1"
-                                        size="24px"
-                                      />{' '}
-                                      <FormattedMessage
-                                        id="All"
-                                        defaultMessage="All"
-                                      />
-                                    </Menu.Item>
-                                    <Menu.Item onClick={this.onSelectNone}>
-                                      <Icon
-                                        name={checkboxUncheckedSVG}
-                                        size="24px"
-                                      />{' '}
-                                      <FormattedMessage
-                                        id="None"
-                                        defaultMessage="None"
-                                      />
-                                    </Menu.Item>
-                                    <Divider />
-                                    <Menu.Header
-                                      content={this.props.intl.formatMessage(
-                                        messages.selected,
-                                        {
-                                          count: this.state.selected.length,
-                                        },
-                                      )}
-                                    />
-                                    <Input
-                                      icon={<Icon name={zoomSVG} size="24px" />}
-                                      iconPosition="left"
-                                      className="item search"
-                                      placeholder={this.props.intl.formatMessage(
-                                        messages.filter,
-                                      )}
-                                      value={
-                                        this.state.selectedMenuFilter || ''
-                                      }
-                                      onChange={this.onChangeSelected}
-                                      onClick={(e) => {
-                                        e.preventDefault();
-                                        e.stopPropagation();
-                                      }}
-                                    />
-                                    <Menu.Menu scrolling>
-                                      {map(filteredItems, (item) => (
-                                        <Menu.Item
-                                          key={item}
-                                          value={item}
-                                          onClick={this.onDeselect}
-                                        >
-                                          <Icon
-                                            name={deleteSVG}
-                                            color="#e40166"
-                                            size="24px"
-                                          />{' '}
-                                          {this.getFieldById(item, 'title')}
-                                        </Menu.Item>
-                                      ))}
-                                    </Menu.Menu>
-                                  </Menu>
-                                </Popup>
-                              </Table.HeaderCell>
-                              <Table.HeaderCell
-                                width={Math.ceil(
-                                  16 / this.state.index.selectedCount,
-                                )}
-                              >
-                                <FormattedMessage
-                                  id="Title"
-                                  defaultMessage="Title"
-                                />
-                              </Table.HeaderCell>
-                              {map(
-                                this.state.index.order,
-                                (index, order) =>
-                                  this.state.index.values[index].selected && (
-                                    <ContentsIndexHeader
-                                      key={index}
-                                      width={Math.ceil(
-                                        16 / this.state.index.selectedCount,
-                                      )}
-                                      label={
-                                        this.state.index.values[index].label
-                                      }
-                                      order={order}
-                                      onOrderIndex={this.onOrderIndex}
-                                    />
-                                  ),
-                              )}
-                              <Table.HeaderCell textAlign="right">
-                                <FormattedMessage
-                                  id="Actions"
-                                  defaultMessage="Actions"
-                                />
-                              </Table.HeaderCell>
-                            </Table.Row>
-                          </Table.Header>
-                          <Table.Body>
-                            {this.state.items.map((item, order) => (
-                              <ContentsItem
-                                key={item['@id']}
-                                item={item}
-                                order={order}
-                                selected={
-                                  indexOf(this.state.selected, item['@id']) !==
-                                  -1
-                                }
-                                onClick={this.onSelect}
-                                indexes={filter(
-                                  map(this.state.index.order, (index) => ({
-                                    id: index,
-                                    type: this.state.index.values[index].type,
-                                  })),
-                                  (index) =>
-                                    this.state.index.values[index.id].selected,
-                                )}
-                                onCut={this.cut}
-                                onCopy={this.copy}
-                                onDelete={this.delete}
-                                onOrderItem={this.onOrderItem}
-                                onMoveToTop={this.onMoveToTop}
-                                onMoveToBottom={this.onMoveToBottom}
-                              />
-                            ))}
-                          </Table.Body>
-                        </Table>
-                      </div>
-
-                      <div className="contents-pagination">
-                        <Pagination
-                          current={this.state.currentPage}
-                          total={Math.ceil(
-                            this.props.total / this.state.pageSize,
-                          )}
-                          pageSize={this.state.pageSize}
-                          pageSizes={[
-                            50,
-                            this.props.intl.formatMessage(messages.all),
-                          ]}
-                          onChangePage={this.onChangePage}
-                          onChangePageSize={this.onChangePageSize}
+                              </span>
+                            ),
+                          }}
                         />
-                      </div>
-                    </Segment.Group>
-                  </section>
-                </article>
+                        <div className="broken-links-list">
+                          <FormattedMessage id="These items will have broken links" />
+                          <ul>
+                            {this.state.breaches.map((breach) => (
+                              <li key={breach.source['@id']}>
+                                <Link
+                                  to={flattenToAppURL(breach.source['@id'])}
+                                  title="Navigate to this item"
+                                >
+                                  {breach.source.title}
+                                </Link>{' '}
+                                refers to{' '}
+                                {breach.targets
+                                  .map((target) => (
+                                    <Link
+                                      to={flattenToAppURL(target['@id'])}
+                                      title="Navigate to this item"
+                                    >
+                                      {target.title}
+                                    </Link>
+                                  ))
+                                  .reduce((result, item) => (
+                                    <>
+                                      {result}, {item}
+                                    </>
+                                  ))}
+                              </li>
+                            ))}
+                          </ul>
+                          {this.state.linksAndReferencesViewLink && (
+                            <Link
+                              to={flattenToAppURL(
+                                this.state.linksAndReferencesViewLink,
+                              )}
+                            >
+                              <FormattedMessage
+                                id="View links and references to this item"
+                                defaultMessage="View links and references to this item"
+                              />
+                            </Link>
+                          )}
+                        </div>
+                      </>
+                    ) : null}
+                  </div>
+                }
+                onCancel={this.onDeleteCancel}
+                onConfirm={this.onDeleteOk}
+              />
+              <ContentsUploadModal
+                open={this.state.showUpload}
+                onCancel={this.onUploadCancel}
+                onOk={this.onUploadOk}
+                pathname={getBaseUrl(this.props.pathname)}
+              />
+              <ContentsRenameModal
+                open={this.state.showRename}
+                onCancel={this.onRenameCancel}
+                onOk={this.onRenameOk}
+                items={map(this.state.selected, (item) => ({
+                  url: item,
+                  title: this.getFieldById(item, 'title'),
+                  id: this.getFieldById(item, 'id'),
+                }))}
+              />
+              <ContentsTagsModal
+                open={this.state.showTags}
+                onCancel={this.onTagsCancel}
+                onOk={this.onTagsOk}
+                items={map(this.state.selected, (item) => ({
+                  url: item,
+                  subjects: this.getFieldById(item, 'Subject'),
+                }))}
+              />
+              <ContentsPropertiesModal
+                open={this.state.showProperties}
+                onCancel={this.onPropertiesCancel}
+                onOk={this.onPropertiesOk}
+                items={this.state.selected}
+              />
+              {this.state.showWorkflow && (
+                <ContentsWorkflowModal
+                  open={this.state.showWorkflow}
+                  onCancel={this.onWorkflowCancel}
+                  onOk={this.onWorkflowOk}
+                  items={this.state.selected}
+                />
+              )}
+              <div className="contents-pagination">
+                <Pagination
+                  current={this.state.currentPage}
+                  total={Math.ceil(this.props.total / this.state.pageSize)}
+                  pageSize={this.state.pageSize}
+                  pageSizes={[50, this.props.intl.formatMessage(messages.all)]}
+                  onChangePage={this.onChangePage}
+                  onChangePageSize={this.onChangePageSize}
+                />
               </div>
               {this.state.isClient &&
                 createPortal(
@@ -2185,7 +1609,7 @@ class Contents extends Component {
                   document.getElementById('toolbar'),
                 )}
             </Dimmer.Dimmable>
-          </Container>
+          </>
         ) : (
           <Unauthorized staticContext={this.props.staticContext} />
         )}
@@ -2196,29 +1620,14 @@ class Contents extends Component {
   }
 }
 
-let dndContext;
-
-const DragDropConnector = (props) => {
-  const { DragDropContext } = props.reactDnd;
-  const HTML5Backend = props.reactDndHtml5Backend.default;
-
-  const DndConnectedContents = React.useMemo(() => {
-    if (!dndContext) {
-      dndContext = DragDropContext(HTML5Backend);
-    }
-    return dndContext(Contents);
-  }, [DragDropContext, HTML5Backend]);
-
-  return <DndConnectedContents {...props} />;
-};
-
 export const __test__ = compose(
   injectIntl,
-  injectLazyLibs(['toastify', 'reactDnd']),
+  injectLazyLibs(['toastify']),
   connect(
     (store, props) => {
       return {
         token: store.userSession.token,
+        title: store.content.data.title,
         items: store.search.items,
         sort: store.content.update.sort,
         index: store.content.updatecolumns.idx,
@@ -2236,6 +1645,9 @@ export const __test__ = compose(
         updateRequest: store.content.update,
         objectActions: store.actions.actions.object,
         orderRequest: store.content.order,
+        // addableTypes: Array.isArray(store.types.types)
+        //   ? store.types.types.filter((t) => t.addable)
+        //   : [],
       };
     },
     {
@@ -2261,6 +1673,7 @@ export default compose(
     (store, props) => {
       return {
         token: store.userSession.token,
+        title: store.content.data.title,
         items: store.search.items,
         sort: store.content.update.sort,
         index: store.content.updatecolumns.idx,
@@ -2278,6 +1691,9 @@ export default compose(
         updateRequest: store.content.update,
         objectActions: store.actions.actions.object,
         orderRequest: store.content.order,
+        // addableTypes: Array.isArray(store.types.types)
+        //   ? store.types.types.filter((t) => t.addable)
+        //   : [],
       };
     },
     {
@@ -2304,5 +1720,5 @@ export default compose(
         await dispatch(listActions(getBaseUrl(location.pathname))),
     },
   ]),
-  injectLazyLibs(['toastify', 'reactDnd', 'reactDndHtml5Backend']),
-)(DragDropConnector);
+  injectLazyLibs(['toastify']),
+)(Contents);

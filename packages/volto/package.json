@@ -178,6 +178,8 @@
   "dependencies": {
     "@loadable/component": "5.14.1",
     "@loadable/server": "5.14.0",
+    "@plone/components": "workspace:*",
+    "@plone/contents": "workspace:*",
     "@plone/registry": "workspace:*",
     "@plone/scripts": "workspace:*",
     "@plone/volto-slate": "workspace:*",
@@ -218,6 +220,7 @@
     "react": "18.2.0",
     "react-anchor-link-smooth-scroll": "1.0.12",
     "react-animate-height": "2.0.17",
+    "react-aria-components": "^1.2.0",
     "react-beautiful-dnd": "13.0.0",
     "react-cookie": "4.1.1",
     "react-dates": "21.5.1",
