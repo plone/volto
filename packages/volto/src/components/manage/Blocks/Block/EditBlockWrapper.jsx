@@ -89,7 +89,7 @@ const EditBlockWrapper = (props) => {
   const blockRef = React.useRef(null);
 
   const shouldItDropAfter = (y) =>
-    y <= (blockRef.current ? blockRef.current.offsetHeight : 0) / 2;
+    y >= (blockRef.current ? blockRef.current.offsetHeight : 0) / 2;
 
   const doDrop = useCallback(
     async (evt) => {
