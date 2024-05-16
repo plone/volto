@@ -273,7 +273,7 @@ server.get('/*', (req, res) => {
                   config.settings.prefixPath &&
                   process.env.NODE_ENV === 'production'
                     ? config.settings.prefixPath
-                    : '/'
+                    : undefined
                 }
               >
                 <ReduxAsyncConnect routes={routes} helpers={api} />
