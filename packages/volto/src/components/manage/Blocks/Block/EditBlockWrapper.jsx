@@ -144,10 +144,12 @@ const EditBlockWrapper = (props) => {
 
   // --
 
+  const shouldItDropAfter = (y) => {};
+
   const doDropX = useCallback(
-    async (e) => {
+    async (evt) => {
       let items = await Promise.all(
-        e.items
+        evt.items
           .filter((item) => item.kind === 'text' && item.types.has('blocktype'))
           .map((item) => item.getText('blocktype')),
       );
@@ -156,13 +158,13 @@ const EditBlockWrapper = (props) => {
       );
       let indexDroppable = properties.blocks_layout.items.indexOf(block);
 
-      const dropAfter = true;
+      const dropAfter = shouldItDropAfter(evt.y);
 
       if (dropAfter) {
         indexDroppable += 1;
       }
-      if (indexDroppable < indexDraggable) {
-        indexDroppable += 1;
+      if (indexDroppable > indexDraggable) {
+        indexDroppable -= 1;
       }
       onMoveBlock(indexDraggable, indexDroppable);
     },
