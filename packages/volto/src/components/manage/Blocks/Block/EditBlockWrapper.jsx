@@ -144,7 +144,8 @@ const EditBlockWrapper = (props) => {
 
   // --
 
-  const shouldItDropAfter = (y) => {};
+  const shouldItDropAfter = (y) =>
+    y >= (blockRef.current ? blockRef.current.offsetHeight : 0) / 2;
 
   const doDropX = useCallback(
     async (evt) => {
