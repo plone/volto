@@ -2481,6 +2481,16 @@ msgstr "Ordenado"
 msgid "Origin"
 msgstr "Origen"
 
+#. Default: "Override source content"
+#: components/manage/Blocks/Teaser/schema
+msgid "Override source content"
+msgstr ""
+
+#. Default: "Override source content if you want to prevent further updates"
+#: components/manage/Blocks/Teaser/schema
+msgid "Override source content if you want to prevent further updates"
+msgstr ""
+
 #. Default: "Overview of relations of all content items"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Overview of relations of all content items"
@@ -2734,6 +2744,11 @@ msgstr "Hacer referencia a este elemento como elemento relacionado"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Referencing this item with {relationship}"
 msgstr "Hacer referencia a este elemento con {relationship}"
+
+#. Default: "Refresh source content"
+#: components/manage/Blocks/Teaser/Data
+msgid "Refresh source content"
+msgstr ""
 
 #. Default: "Register"
 #: components/theme/Anontools/Anontools

@@ -2481,6 +2481,16 @@ msgstr ""
 msgid "Origin"
 msgstr "Origine"
 
+#. Default: "Override source content"
+#: components/manage/Blocks/Teaser/schema
+msgid "Override source content"
+msgstr ""
+
+#. Default: "Override source content if you want to prevent further updates"
+#: components/manage/Blocks/Teaser/schema
+msgid "Override source content if you want to prevent further updates"
+msgstr ""
+
 #. Default: "Overview of relations of all content items"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Overview of relations of all content items"
@@ -2733,6 +2743,11 @@ msgstr ""
 #. Default: "Referencing this item with {relationship}"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Referencing this item with {relationship}"
+msgstr ""
+
+#. Default: "Refresh source content"
+#: components/manage/Blocks/Teaser/Data
+msgid "Refresh source content"
 msgstr ""
 
 #. Default: "Register"
