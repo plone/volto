@@ -13,7 +13,7 @@ import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
 import config from '@plone/volto/registry';
 import { BlockChooserButton } from '@plone/volto/components';
-import { useDrag, useDrop, DragPreview } from 'react-aria';
+import { useDrag, useDrop, DragPreview, useButton } from 'react-aria';
 
 import trashSVG from '@plone/volto/icons/delete.svg';
 
@@ -82,7 +82,8 @@ const EditBlockWrapper = (props) => {
     [onMoveBlock, properties?.block_layout?.items],
   );
 
-  let { dragProps, isDragging } = useDrag({
+  let { dragProps, dragButtonProps, isDragging } = useDrag({
+    hasDragButton: true,
     preview: previewRef,
     onDragEnd: (e) => {
       doDragEnd(e);
@@ -100,6 +101,12 @@ const EditBlockWrapper = (props) => {
       ];
     },
   });
+
+  let buttonRef = React.useRef(null);
+  let { buttonProps } = useButton(
+    { ...dragButtonProps, elementType: 'div' },
+    buttonRef,
+  );
 
   const shouldItDropAfter = (y) =>
     y >= (blockRef.current ? blockRef.current.offsetHeight : 0) / 2;
@@ -203,7 +210,7 @@ const EditBlockWrapper = (props) => {
             }}
             className="drag handle wrapper"
           >
-            <Icon name={dragSVG} size="18px" />
+            <Icon name={dragSVG} size="18px" ref={buttonRef} {...buttonProps} />
           </div>
           <div className={`ui drag block inner ${type}`}>
             {children}
