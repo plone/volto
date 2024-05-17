@@ -69,9 +69,24 @@ const EditBlockWrapper = (props) => {
   };
 
   const previewRef = React.useRef(null);
+  const blockRef = React.useRef(null);
+
+  const doDragEnd = useCallback(
+    (evt, a, b, c) => {
+      if (evt.dropOperation === 'move') {
+        console.log('dragEnd', evt, block, a, b, c);
+        // Since the successful drag is already doing the move,
+        // onDeleteBlock(block);
+      }
+    },
+    [onMoveBlock, properties?.block_layout?.items],
+  );
 
   let { dragProps, isDragging } = useDrag({
     preview: previewRef,
+    onDragEnd: (e) => {
+      doDragEnd(e);
+    },
     getItems() {
       console.log('drag', data);
       return [
@@ -86,8 +101,6 @@ const EditBlockWrapper = (props) => {
     },
   });
 
-  const blockRef = React.useRef(null);
-
   const shouldItDropAfter = (y) =>
     y >= (blockRef.current ? blockRef.current.offsetHeight : 0) / 2;
 
@@ -98,22 +111,32 @@ const EditBlockWrapper = (props) => {
           .filter((item) => item.kind === 'text' && item.types.has('blocktype'))
           .map((item) => item.getText('blocktype')),
       );
-      const indexDraggable = properties.blocks_layout.items.indexOf(
-        JSON.parse(items[0]).id,
-      );
+      // for now we only support a single item
+      const item = JSON.parse(items[0]);
+      const indexDraggable = properties.blocks_layout.items.indexOf(item.id);
       let indexDroppable = properties.blocks_layout.items.indexOf(block);
 
       const dropAfter = shouldItDropAfter(evt.y);
-
-      if (dropAfter) {
-        indexDroppable += 1;
+      if (indexDraggable !== -1) {
+        // in the same page
+        if (dropAfter) {
+          indexDroppable += 1;
+        }
+        if (indexDroppable > indexDraggable) {
+          indexDroppable -= 1;
+        }
+        onMoveBlock(indexDraggable, indexDroppable);
+      } else {
+        // dropped from different page
+        onInsertBlock(
+          properties.blocks_layout.items[
+            dropAfter ? indexDroppable : indexDroppable - 1
+          ],
+          item.data,
+        );
       }
-      if (indexDroppable > indexDraggable) {
-        indexDroppable -= 1;
-      }
-      onMoveBlock(indexDraggable, indexDroppable);
     },
-    [onMoveBlock, properties?.block_layout?.items],
+    [onMoveBlock, onInsertBlock, properties?.block_layout?.items],
   );
 
   const [isDropping, setIsDropping] = useState(false);
