@@ -476,6 +476,11 @@ msgstr "Basis Suchfilter"
 msgid "Block"
 msgstr "Block"
 
+#. Default: "Block Types"
+#: components/manage/Controlpanels/Controlpanels
+msgid "Block Types"
+msgstr "Blocktypen"
+
 #. Default: "Both email address and password are case sensitive, check that caps lock is not enabled."
 #: components/theme/Login/Login
 msgid "Both email address and password are case sensitive, check that caps lock is not enabled."

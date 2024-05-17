@@ -476,6 +476,11 @@ msgstr ""
 msgid "Block"
 msgstr "Bloco"
 
+#. Default: "Block Types"
+#: components/manage/Controlpanels/Controlpanels
+msgid "Block Types"
+msgstr ""
+
 #. Default: "Both email address and password are case sensitive, check that caps lock is not enabled."
 #: components/theme/Login/Login
 msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
