@@ -1,5 +1,4 @@
-import React from 'react';
-import { createContext, ReactNode, useContext, useMemo } from 'react';
+import React, { createContext, ReactNode, useContext, useMemo } from 'react';
 
 export type AnySearchSchema = {};
 export interface Location<TSearchObj extends AnySearchSchema = {}> {
