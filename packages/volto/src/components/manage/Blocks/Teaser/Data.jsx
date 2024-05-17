@@ -53,7 +53,7 @@ const TeaserData = (props) => {
           : null,
       image_scales: {
         preview_image: [resp?.preview_image],
-        image: [resp?.image?.image],
+        image: [resp?.image],
       },
       title: resp.title,
     };
