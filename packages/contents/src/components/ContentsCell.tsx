@@ -36,7 +36,7 @@ export function ContentsCell({
   onCopy,
   onDelete,
 }: Props) {
-  const { getContentIcon, intl } = useContentsContext();
+  const { getContentIcon, intl, flattenToAppURL } = useContentsContext();
   const [isMoreOptionsOpen, setIsMoreOptionsOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const Icon = getContentIcon(item['@type'], item.is_folderish, true);
@@ -45,7 +45,7 @@ export function ContentsCell({
     return (
       <Link
         className="react-aria-Link title-link"
-        href={`${item['@id']}${item.is_folderish ? '/contents' : ''}`}
+        href={`${flattenToAppURL(item['@id'])}${item.is_folderish ? '/contents' : ''}`}
       >
         <Icon size="S" title={item['Type'] || item['@type']} />
         {item.title}

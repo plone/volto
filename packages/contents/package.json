@@ -55,6 +55,7 @@
     "@plone/components": "workspace:*",
     "@plone/providers": "workspace:*",
     "@plone/registry": "workspace:*",
+    "@tanstack/react-query": "^5.36.2",
     "react-aria": "^3.33.0",
     "react-aria-components": "^1.2.0",
     "usehooks-ts": "^3.1.0"

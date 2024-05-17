@@ -9,34 +9,16 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
-import {
-  // Button,
-  Confirm,
-  // Container as SemanticContainer,
-  // Divider,
-  // Dropdown,
-  // Menu,
-  // Input,
-  // Segment,
-  // Table,
-  Loader,
-  Dimmer,
-} from 'semantic-ui-react';
-import {
-  // concat,
-  filter,
-  find,
-  indexOf,
-  keys,
-  map,
-  mapValues,
-  // pull,
-} from 'lodash';
+import { Confirm } from 'semantic-ui-react';
+import { filter, find, indexOf, keys, map, mapValues } from 'lodash';
 import move from 'lodash-move';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import { RouterProvider } from 'react-aria-components';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import '@plone/components/src/styles/basic/main.css';
 import '@plone/components/src/styles/quanta/main.css';
+import PloneClient from '@plone/client';
+import { PloneClientProvider } from '@plone/providers';
 import { ContentsTable, ContentsProvider } from '@plone/contents';
 import {
   asyncConnect,
@@ -63,7 +45,6 @@ import {
 import Indexes, { defaultIndexes } from '@plone/volto/constants/Indexes';
 import {
   Pagination,
-  // Popup,
   Toolbar,
   Toast,
   Icon,
@@ -80,28 +61,9 @@ import ContentsPropertiesModal from '@plone/volto/components/manage/Contents/Con
 
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
-// import config from '@plone/volto/registry';
+import config from '@plone/registry';
 
 import backSVG from '@plone/volto/icons/back.svg';
-// import cutSVG from '@plone/volto/icons/cut.svg';
-// import deleteSVG from '@plone/volto/icons/delete.svg';
-// import copySVG from '@plone/volto/icons/copy.svg';
-// import tagSVG from '@plone/volto/icons/tag.svg';
-// import renameSVG from '@plone/volto/icons/rename.svg';
-// import semaphoreSVG from '@plone/volto/icons/semaphore.svg';
-// import uploadSVG from '@plone/volto/icons/upload.svg';
-// import propertiesSVG from '@plone/volto/icons/properties.svg';
-// import pasteSVG from '@plone/volto/icons/paste.svg';
-// import zoomSVG from '@plone/volto/icons/zoom.svg';
-// import checkboxUncheckedSVG from '@plone/volto/icons/checkbox-unchecked.svg';
-// import checkboxCheckedSVG from '@plone/volto/icons/checkbox-checked.svg';
-// import checkboxIndeterminateSVG from '@plone/volto/icons/checkbox-indeterminate.svg';
-// import configurationSVG from '@plone/volto/icons/configuration-app.svg';
-// import sortDownSVG from '@plone/volto/icons/sort-down.svg';
-// import sortUpSVG from '@plone/volto/icons/sort-up.svg';
-// import downKeySVG from '@plone/volto/icons/down-key.svg';
-// import moreSVG from '@plone/volto/icons/more.svg';
-// import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
   back: {
@@ -286,6 +248,19 @@ const messages = defineMessages({
   },
 });
 
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      // With SSR, we usually want to set some default staleTime
+      // above 0 to avoid refetching immediately on the client
+      staleTime: 60 * 1000,
+    },
+  },
+});
+const ploneClient = PloneClient.initialize({
+  apiPath: config.settings.apiPath,
+});
+
 /**
  * Contents class.
  * @class Contents
@@ -326,21 +301,21 @@ class Contents extends Component {
       loading: PropTypes.bool,
       loaded: PropTypes.bool,
     }).isRequired,
-    items: PropTypes.arrayOf(
-      PropTypes.shape({
-        '@id': PropTypes.string,
-        '@type': PropTypes.string,
-        title: PropTypes.string,
-        description: PropTypes.string,
-      }),
-    ),
-    breadcrumbs: PropTypes.arrayOf(
-      PropTypes.shape({
-        title: PropTypes.string,
-        url: PropTypes.string,
-      }),
-    ).isRequired,
-    total: PropTypes.number.isRequired,
+    // items: PropTypes.arrayOf(
+    //   PropTypes.shape({
+    //     '@id': PropTypes.string,
+    //     '@type': PropTypes.string,
+    //     title: PropTypes.string,
+    //     description: PropTypes.string,
+    //   }),
+    // ),
+    // breadcrumbs: PropTypes.arrayOf(
+    //   PropTypes.shape({
+    //     title: PropTypes.string,
+    //     url: PropTypes.string,
+    //   }),
+    // ).isRequired,
+    // total: PropTypes.number.isRequired,
     pathname: PropTypes.string.isRequired,
   };
 
@@ -445,7 +420,7 @@ class Contents extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    this.fetchContents();
+    // this.fetchContents();
     this.setState({ isClient: true });
   }
   async componentDidUpdate(_, prevState) {
@@ -506,7 +481,7 @@ class Contents extends Component {
       (this.props.deleteRequest.loading && nextProps.deleteRequest.loaded) ||
       (this.props.updateRequest.loading && nextProps.updateRequest.loaded)
     ) {
-      this.fetchContents(nextProps.pathname);
+      // this.fetchContents(nextProps.pathname);
     }
     if (this.props.updateRequest.loading && nextProps.updateRequest.loaded) {
       this.props.toastify.toast.success(
@@ -519,14 +494,16 @@ class Contents extends Component {
     }
     if (this.props.pathname !== nextProps.pathname) {
       // Refetching content to sync the current object in the toolbar
-      this.props.getContent(getBaseUrl(nextProps.pathname));
+      // this.props.getContent(getBaseUrl(nextProps.pathname));
       this.setState(
         {
           currentPage: 0,
         },
         () =>
-          this.setState({ filter: '' }, () =>
-            this.fetchContents(nextProps.pathname),
+          this.setState(
+            { filter: '' },
+            // () => {},
+            // this.fetchContents(nextProps.pathname),
           ),
       );
     }
@@ -648,7 +625,7 @@ class Contents extends Component {
       },
       () => {
         self.filterTimeout = setTimeout(() => {
-          self.fetchContents();
+          // self.fetchContents();
         }, 200);
       },
     );
@@ -689,7 +666,7 @@ class Contents extends Component {
       {
         currentPage: value,
       },
-      () => this.fetchContents(),
+      // () => this.fetchContents(),
     );
   }
 
@@ -706,7 +683,7 @@ class Contents extends Component {
         pageSize: value,
         currentPage: 0,
       },
-      () => this.fetchContents(),
+      // () => this.fetchContents(),
     );
   }
 
@@ -747,7 +724,7 @@ class Contents extends Component {
           delta,
         )
         .then(() => {
-          this.fetchContents();
+          // this.fetchContents();
         });
     } else {
       this.setState({
@@ -796,7 +773,7 @@ class Contents extends Component {
           {
             currentPage: 0,
           },
-          () => this.fetchContents(),
+          // () => this.fetchContents(),
         );
       });
   }
@@ -821,7 +798,7 @@ class Contents extends Component {
           {
             currentPage: 0,
           },
-          () => this.fetchContents(),
+          // () => this.fetchContents(),
         );
       });
   }
@@ -858,10 +835,10 @@ class Contents extends Component {
    * @returns {undefined}
    */
   onUploadOk() {
-    this.fetchContents();
-    this.setState({
-      showUpload: false,
-    });
+    // this.fetchContents();
+    // this.setState({
+    //   showUpload: false,
+    // });
   }
 
   /**
@@ -950,18 +927,18 @@ class Contents extends Component {
    * @returns {undefined}
    */
   onWorkflowOk() {
-    this.fetchContents();
-    this.setState({
-      showWorkflow: false,
-      selected: [],
-    });
-    this.props.toastify.toast.success(
-      <Toast
-        success
-        title={this.props.intl.formatMessage(messages.success)}
-        content={this.props.intl.formatMessage(messages.messageWorkflowUpdate)}
-      />,
-    );
+    // this.fetchContents();
+    // this.setState({
+    //   showWorkflow: false,
+    //   selected: [],
+    // });
+    // this.props.toastify.toast.success(
+    //   <Toast
+    //     success
+    //     title={this.props.intl.formatMessage(messages.success)}
+    //     content={this.props.intl.formatMessage(messages.messageWorkflowUpdate)}
+    //   />,
+    // );
   }
 
   /**
@@ -1173,205 +1150,103 @@ class Contents extends Component {
       <>
         {folderContentsAction ? (
           <>
-            <Dimmer.Dimmable as="div" blurring dimmed={loading}>
-              <Dimmer active={loading} inverted>
-                <Loader indeterminate size="massive">
-                  {this.props.intl.formatMessage(messages.loading)}
-                </Loader>
-              </Dimmer>
-
-              <Helmet
-                title={`${this.props.intl.formatMessage(messages.contents)} - ${this.props.title}`}
-              />
-              <RouterProvider navigate={this.props.history.push}>
-                <ContentsProvider
-                  flattenToAppURL={flattenToAppURL}
-                  getBaseUrl={getBaseUrl}
-                  getContentIcon={getContentIcon}
-                  intl={this.props.intl}
-                  toast={this.props.toastify.toast}
-                >
-                  <ContentsTable
-                    pathname={getBaseUrl(this.props.pathname)}
-                    breadcrumbs={this.props.breadcrumbs.map((b) => ({
-                      '@id': `${b.url}/contents`,
-                      title: b.title,
-                    }))}
-                    objectActions={this.props.objectActions}
-                    title={this.props.title}
-                    loading={loading}
-                    canPaste={!!this.props.action}
-                    textFilter={this.state.filter}
-                    onChangeTextFilter={(value) => {
-                      this.onChangeFilter(undefined, { value });
-                    }}
-                    items={this.state.items}
-                    selected={new Set(this.state.selected)}
-                    setSelected={(selected) => {
-                      if (selected === 'all') {
-                        this.onSelectAll();
-                      } else {
-                        this.setState({ selected: [...selected] });
-                      }
-                    }}
-                    indexes={this.state.index}
-                    onSelectIndex={(index) => {
-                      this.onSelectIndex(undefined, { value: index });
-                    }}
-                    sortItems={(id) =>
-                      this.onSortItems(undefined, { value: id })
-                    }
-                    upload={this.upload}
-                    rename={this.rename}
-                    workflow={this.workflow}
-                    tags={this.tags}
-                    properties={this.properties}
-                    cut={(id) =>
-                      Promise.resolve(this.cut(undefined, { value: id }))
-                    }
-                    copy={(id) =>
-                      Promise.resolve(this.copy(undefined, { value: id }))
-                    }
-                    paste={this.paste}
-                    deleteItem={(id) =>
-                      Promise.resolve(this.delete(undefined, { value: id }))
-                    }
-                    orderItem={(id, delta) =>
-                      Promise.resolve(
-                        this.onOrderItem(id, undefined, delta, true),
-                      )
-                    }
-                    moveToTop={(index) =>
-                      Promise.resolve(
-                        this.onMoveToTop(undefined, { value: index }),
-                      )
-                    }
-                    moveToBottom={(index) =>
-                      Promise.resolve(
-                        this.onMoveToBottom(undefined, { value: index }),
-                      )
-                    }
+            <Helmet title={this.props.intl.formatMessage(messages.contents)} />
+            <RouterProvider navigate={this.props.history.push}>
+              <QueryClientProvider client={queryClient}>
+                <PloneClientProvider client={ploneClient}>
+                  <ContentsProvider
+                    flattenToAppURL={flattenToAppURL}
+                    // getBaseUrl={getBaseUrl}
+                    getContentIcon={getContentIcon}
+                    intl={this.props.intl}
                     toast={this.props.toastify.toast}
-                    // addableTypes={this.props.addableTypes}
-                  />
-                </ContentsProvider>
-              </RouterProvider>
-              <Confirm
-                open={this.state.showDelete}
-                confirmButton={
-                  this.state.brokenReferences === 0
-                    ? 'Delete'
-                    : 'Delete item and break links'
-                }
-                header={
-                  this.state.itemsToDelete.length === 1
-                    ? this.props.intl.formatMessage(
-                        messages.deleteConfirmSingleItem,
-                      )
-                    : this.props.intl.formatMessage(
-                        messages.deleteConfirmMultipleItems,
-                      )
-                }
-                content={
-                  <div className="content">
-                    {this.state.itemsToDelete.length > 1 ? (
-                      this.state.containedItemsToDelete > 0 ? (
-                        <>
-                          <FormattedMessage
-                            id="Some items are also a folder.
-                              By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
-                            defaultMessage="Some items are also a folder.
-                              By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
-                            values={{
-                              containedItemsToDelete: (
-                                <span>{this.state.containedItemsToDelete}</span>
-                              ),
-                              variation: (
-                                <span>
-                                  {this.state.containedItemsToDelete === 1 ? (
-                                    <FormattedMessage
-                                      id="item"
-                                      defaultMessage="item"
-                                    />
-                                  ) : (
-                                    <FormattedMessage
-                                      id="items"
-                                      defaultMessage="items"
-                                    />
-                                  )}
-                                </span>
-                              ),
-                            }}
-                          />
-                          {this.state.brokenReferences > 0 && (
-                            <>
-                              <br />
-                              <FormattedMessage
-                                id="Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
-                                defaultMessage="Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
-                                values={{
-                                  brokenReferences: (
-                                    <span>{this.state.brokenReferences}</span>
-                                  ),
-                                  variation: (
-                                    <span>
-                                      {this.state.brokenReferences === 1 ? (
-                                        <FormattedMessage
-                                          id="reference"
-                                          defaultMessage="reference"
-                                        />
-                                      ) : (
-                                        <FormattedMessage
-                                          id="references"
-                                          defaultMessage="references"
-                                        />
-                                      )}
-                                    </span>
-                                  ),
-                                }}
-                              />
-                            </>
-                          )}
-                        </>
-                      ) : (
-                        <>
-                          {this.state.brokenReferences > 0 && (
-                            <>
-                              <FormattedMessage
-                                id="Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
-                                defaultMessage="Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
-                                values={{
-                                  brokenReferences: (
-                                    <span>{this.state.brokenReferences}</span>
-                                  ),
-                                  variation: (
-                                    <span>
-                                      {this.state.brokenReferences === 1 ? (
-                                        <FormattedMessage
-                                          id="reference"
-                                          defaultMessage="reference"
-                                        />
-                                      ) : (
-                                        <FormattedMessage
-                                          id="references"
-                                          defaultMessage="references"
-                                        />
-                                      )}
-                                    </span>
-                                  ),
-                                }}
-                              />
-                            </>
-                          )}
-                        </>
-                      )
-                    ) : this.state.containedItemsToDelete > 0 ? (
+                  >
+                    <ContentsTable
+                      pathname={path}
+                      objectActions={this.props.objectActions}
+                      loading={loading}
+                      canPaste={!!this.props.action}
+                      textFilter={this.state.filter}
+                      onChangeTextFilter={(value) => {
+                        this.onChangeFilter(undefined, { value });
+                      }}
+                      selected={new Set(this.state.selected)}
+                      setSelected={(selected) => {
+                        if (selected === 'all') {
+                          this.onSelectAll();
+                        } else {
+                          this.setState({ selected: [...selected] });
+                        }
+                      }}
+                      indexes={this.state.index}
+                      onSelectIndex={(index) => {
+                        this.onSelectIndex(undefined, { value: index });
+                      }}
+                      sortItems={(id) =>
+                        this.onSortItems(undefined, { value: id })
+                      }
+                      upload={this.upload}
+                      rename={this.rename}
+                      workflow={this.workflow}
+                      tags={this.tags}
+                      properties={this.properties}
+                      cut={(id) =>
+                        Promise.resolve(this.cut(undefined, { value: id }))
+                      }
+                      copy={(id) =>
+                        Promise.resolve(this.copy(undefined, { value: id }))
+                      }
+                      paste={this.paste}
+                      deleteItem={(id) =>
+                        Promise.resolve(this.delete(undefined, { value: id }))
+                      }
+                      orderItem={(id, delta) =>
+                        Promise.resolve(
+                          this.onOrderItem(id, undefined, delta, true),
+                        )
+                      }
+                      moveToTop={(index) =>
+                        Promise.resolve(
+                          this.onMoveToTop(undefined, { value: index }),
+                        )
+                      }
+                      moveToBottom={(index) =>
+                        Promise.resolve(
+                          this.onMoveToBottom(undefined, { value: index }),
+                        )
+                      }
+                      // addableTypes={this.props.addableTypes}
+                    />
+                  </ContentsProvider>
+                </PloneClientProvider>
+              </QueryClientProvider>
+            </RouterProvider>
+            <Confirm
+              open={this.state.showDelete}
+              confirmButton={
+                this.state.brokenReferences === 0
+                  ? 'Delete'
+                  : 'Delete item and break links'
+              }
+              header={
+                this.state.itemsToDelete.length === 1
+                  ? this.props.intl.formatMessage(
+                      messages.deleteConfirmSingleItem,
+                    )
+                  : this.props.intl.formatMessage(
+                      messages.deleteConfirmMultipleItems,
+                    )
+              }
+              content={
+                <div className="content">
+                  {this.state.itemsToDelete.length > 1 ? (
+                    this.state.containedItemsToDelete > 0 ? (
                       <>
                         <FormattedMessage
-                          id="This item is also a folder.
-                            By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
-                          defaultMessage="This item is also a folder.
-                            By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
+                          id="Some items are also a folder.
+                              By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
+                          defaultMessage="Some items are also a folder.
+                              By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
                           values={{
                             containedItemsToDelete: (
                               <span>{this.state.containedItemsToDelete}</span>
@@ -1397,8 +1272,8 @@ class Contents extends Component {
                           <>
                             <br />
                             <FormattedMessage
-                              id="Deleting this item breaks {brokenReferences} {variation}."
-                              defaultMessage="Deleting this item breaks {brokenReferences} {variation}."
+                              id="Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
+                              defaultMessage="Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
                               values={{
                                 brokenReferences: (
                                   <span>{this.state.brokenReferences}</span>
@@ -1420,195 +1295,282 @@ class Contents extends Component {
                                 ),
                               }}
                             />
-                            <div className="broken-links-list">
-                              <FormattedMessage id="These items will have broken links" />
-                              <ul>
-                                {this.state.breaches.map((breach) => (
-                                  <li key={breach.source['@id']}>
-                                    <Link
-                                      to={flattenToAppURL(breach.source['@id'])}
-                                      title="Navigate to this item"
-                                    >
-                                      {breach.source.title}
-                                    </Link>{' '}
-                                    refers to{' '}
-                                    {breach.targets
-                                      .map((target) => (
-                                        <Link
-                                          to={flattenToAppURL(target['@id'])}
-                                          title="Navigate to this item"
-                                        >
-                                          {target.title}
-                                        </Link>
-                                      ))
-                                      .reduce((result, item) => (
-                                        <>
-                                          {result}, {item}
-                                        </>
-                                      ))}
-                                  </li>
-                                ))}
-                              </ul>
-                              {this.state.linksAndReferencesViewLink && (
-                                <Link
-                                  to={flattenToAppURL(
-                                    this.state.linksAndReferencesViewLink,
-                                  )}
-                                >
-                                  <FormattedMessage
-                                    id="View links and references to this item"
-                                    defaultMessage="View links and references to this item"
-                                  />
-                                </Link>
-                              )}
-                            </div>
                           </>
                         )}
                       </>
-                    ) : this.state.brokenReferences > 0 ? (
+                    ) : (
                       <>
-                        <FormattedMessage
-                          id="Deleting this item breaks {brokenReferences} {variation}."
-                          defaultMessage="Deleting this item breaks {brokenReferences} {variation}."
-                          values={{
-                            brokenReferences: (
-                              <span>{this.state.brokenReferences}</span>
-                            ),
-                            variation: (
-                              <span>
-                                {this.state.brokenReferences === 1 ? (
-                                  <FormattedMessage
-                                    id="reference"
-                                    defaultMessage="reference"
-                                  />
-                                ) : (
-                                  <FormattedMessage id="references" />
-                                )}
-                              </span>
-                            ),
-                          }}
-                        />
-                        <div className="broken-links-list">
-                          <FormattedMessage id="These items will have broken links" />
-                          <ul>
-                            {this.state.breaches.map((breach) => (
-                              <li key={breach.source['@id']}>
-                                <Link
-                                  to={flattenToAppURL(breach.source['@id'])}
-                                  title="Navigate to this item"
-                                >
-                                  {breach.source.title}
-                                </Link>{' '}
-                                refers to{' '}
-                                {breach.targets
-                                  .map((target) => (
-                                    <Link
-                                      to={flattenToAppURL(target['@id'])}
-                                      title="Navigate to this item"
-                                    >
-                                      {target.title}
-                                    </Link>
-                                  ))
-                                  .reduce((result, item) => (
-                                    <>
-                                      {result}, {item}
-                                    </>
-                                  ))}
-                              </li>
-                            ))}
-                          </ul>
-                          {this.state.linksAndReferencesViewLink && (
-                            <Link
-                              to={flattenToAppURL(
-                                this.state.linksAndReferencesViewLink,
-                              )}
-                            >
-                              <FormattedMessage
-                                id="View links and references to this item"
-                                defaultMessage="View links and references to this item"
-                              />
-                            </Link>
-                          )}
-                        </div>
+                        {this.state.brokenReferences > 0 && (
+                          <>
+                            <FormattedMessage
+                              id="Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
+                              defaultMessage="Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
+                              values={{
+                                brokenReferences: (
+                                  <span>{this.state.brokenReferences}</span>
+                                ),
+                                variation: (
+                                  <span>
+                                    {this.state.brokenReferences === 1 ? (
+                                      <FormattedMessage
+                                        id="reference"
+                                        defaultMessage="reference"
+                                      />
+                                    ) : (
+                                      <FormattedMessage
+                                        id="references"
+                                        defaultMessage="references"
+                                      />
+                                    )}
+                                  </span>
+                                ),
+                              }}
+                            />
+                          </>
+                        )}
                       </>
-                    ) : null}
-                  </div>
-                }
-                onCancel={this.onDeleteCancel}
-                onConfirm={this.onDeleteOk}
-              />
-              <ContentsUploadModal
-                open={this.state.showUpload}
-                onCancel={this.onUploadCancel}
-                onOk={this.onUploadOk}
-                pathname={getBaseUrl(this.props.pathname)}
-              />
-              <ContentsRenameModal
-                open={this.state.showRename}
-                onCancel={this.onRenameCancel}
-                onOk={this.onRenameOk}
-                items={map(this.state.selected, (item) => ({
-                  url: item,
-                  title: this.getFieldById(item, 'title'),
-                  id: this.getFieldById(item, 'id'),
-                }))}
-              />
-              <ContentsTagsModal
-                open={this.state.showTags}
-                onCancel={this.onTagsCancel}
-                onOk={this.onTagsOk}
-                items={map(this.state.selected, (item) => ({
-                  url: item,
-                  subjects: this.getFieldById(item, 'Subject'),
-                }))}
-              />
-              <ContentsPropertiesModal
-                open={this.state.showProperties}
-                onCancel={this.onPropertiesCancel}
-                onOk={this.onPropertiesOk}
+                    )
+                  ) : this.state.containedItemsToDelete > 0 ? (
+                    <>
+                      <FormattedMessage
+                        id="This item is also a folder.
+                            By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
+                        defaultMessage="This item is also a folder.
+                            By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
+                        values={{
+                          containedItemsToDelete: (
+                            <span>{this.state.containedItemsToDelete}</span>
+                          ),
+                          variation: (
+                            <span>
+                              {this.state.containedItemsToDelete === 1 ? (
+                                <FormattedMessage
+                                  id="item"
+                                  defaultMessage="item"
+                                />
+                              ) : (
+                                <FormattedMessage
+                                  id="items"
+                                  defaultMessage="items"
+                                />
+                              )}
+                            </span>
+                          ),
+                        }}
+                      />
+                      {this.state.brokenReferences > 0 && (
+                        <>
+                          <br />
+                          <FormattedMessage
+                            id="Deleting this item breaks {brokenReferences} {variation}."
+                            defaultMessage="Deleting this item breaks {brokenReferences} {variation}."
+                            values={{
+                              brokenReferences: (
+                                <span>{this.state.brokenReferences}</span>
+                              ),
+                              variation: (
+                                <span>
+                                  {this.state.brokenReferences === 1 ? (
+                                    <FormattedMessage
+                                      id="reference"
+                                      defaultMessage="reference"
+                                    />
+                                  ) : (
+                                    <FormattedMessage
+                                      id="references"
+                                      defaultMessage="references"
+                                    />
+                                  )}
+                                </span>
+                              ),
+                            }}
+                          />
+                          <div className="broken-links-list">
+                            <FormattedMessage id="These items will have broken links" />
+                            <ul>
+                              {this.state.breaches.map((breach) => (
+                                <li key={breach.source['@id']}>
+                                  <Link
+                                    to={flattenToAppURL(breach.source['@id'])}
+                                    title="Navigate to this item"
+                                  >
+                                    {breach.source.title}
+                                  </Link>{' '}
+                                  refers to{' '}
+                                  {breach.targets
+                                    .map((target) => (
+                                      <Link
+                                        to={flattenToAppURL(target['@id'])}
+                                        title="Navigate to this item"
+                                      >
+                                        {target.title}
+                                      </Link>
+                                    ))
+                                    .reduce((result, item) => (
+                                      <>
+                                        {result}, {item}
+                                      </>
+                                    ))}
+                                </li>
+                              ))}
+                            </ul>
+                            {this.state.linksAndReferencesViewLink && (
+                              <Link
+                                to={flattenToAppURL(
+                                  this.state.linksAndReferencesViewLink,
+                                )}
+                              >
+                                <FormattedMessage
+                                  id="View links and references to this item"
+                                  defaultMessage="View links and references to this item"
+                                />
+                              </Link>
+                            )}
+                          </div>
+                        </>
+                      )}
+                    </>
+                  ) : this.state.brokenReferences > 0 ? (
+                    <>
+                      <FormattedMessage
+                        id="Deleting this item breaks {brokenReferences} {variation}."
+                        defaultMessage="Deleting this item breaks {brokenReferences} {variation}."
+                        values={{
+                          brokenReferences: (
+                            <span>{this.state.brokenReferences}</span>
+                          ),
+                          variation: (
+                            <span>
+                              {this.state.brokenReferences === 1 ? (
+                                <FormattedMessage
+                                  id="reference"
+                                  defaultMessage="reference"
+                                />
+                              ) : (
+                                <FormattedMessage id="references" />
+                              )}
+                            </span>
+                          ),
+                        }}
+                      />
+                      <div className="broken-links-list">
+                        <FormattedMessage id="These items will have broken links" />
+                        <ul>
+                          {this.state.breaches.map((breach) => (
+                            <li key={breach.source['@id']}>
+                              <Link
+                                to={flattenToAppURL(breach.source['@id'])}
+                                title="Navigate to this item"
+                              >
+                                {breach.source.title}
+                              </Link>{' '}
+                              refers to{' '}
+                              {breach.targets
+                                .map((target) => (
+                                  <Link
+                                    to={flattenToAppURL(target['@id'])}
+                                    title="Navigate to this item"
+                                  >
+                                    {target.title}
+                                  </Link>
+                                ))
+                                .reduce((result, item) => (
+                                  <>
+                                    {result}, {item}
+                                  </>
+                                ))}
+                            </li>
+                          ))}
+                        </ul>
+                        {this.state.linksAndReferencesViewLink && (
+                          <Link
+                            to={flattenToAppURL(
+                              this.state.linksAndReferencesViewLink,
+                            )}
+                          >
+                            <FormattedMessage
+                              id="View links and references to this item"
+                              defaultMessage="View links and references to this item"
+                            />
+                          </Link>
+                        )}
+                      </div>
+                    </>
+                  ) : null}
+                </div>
+              }
+              onCancel={this.onDeleteCancel}
+              onConfirm={this.onDeleteOk}
+            />
+            <ContentsUploadModal
+              open={this.state.showUpload}
+              onCancel={this.onUploadCancel}
+              onOk={this.onUploadOk}
+              pathname={getBaseUrl(this.props.pathname)}
+            />
+            <ContentsRenameModal
+              open={this.state.showRename}
+              onCancel={this.onRenameCancel}
+              onOk={this.onRenameOk}
+              items={map(this.state.selected, (item) => ({
+                url: item,
+                title: this.getFieldById(item, 'title'),
+                id: this.getFieldById(item, 'id'),
+              }))}
+            />
+            <ContentsTagsModal
+              open={this.state.showTags}
+              onCancel={this.onTagsCancel}
+              onOk={this.onTagsOk}
+              items={map(this.state.selected, (item) => ({
+                url: item,
+                subjects: this.getFieldById(item, 'Subject'),
+              }))}
+            />
+            <ContentsPropertiesModal
+              open={this.state.showProperties}
+              onCancel={this.onPropertiesCancel}
+              onOk={this.onPropertiesOk}
+              items={this.state.selected}
+            />
+            {this.state.showWorkflow && (
+              <ContentsWorkflowModal
+                open={this.state.showWorkflow}
+                onCancel={this.onWorkflowCancel}
+                onOk={this.onWorkflowOk}
                 items={this.state.selected}
               />
-              {this.state.showWorkflow && (
-                <ContentsWorkflowModal
-                  open={this.state.showWorkflow}
-                  onCancel={this.onWorkflowCancel}
-                  onOk={this.onWorkflowOk}
-                  items={this.state.selected}
-                />
+            )}
+            <div className="contents-pagination">
+              <Pagination
+                current={this.state.currentPage}
+                total={Math.ceil(this.props.total / this.state.pageSize)}
+                pageSize={this.state.pageSize}
+                pageSizes={[50, this.props.intl.formatMessage(messages.all)]}
+                onChangePage={this.onChangePage}
+                onChangePageSize={this.onChangePageSize}
+              />
+            </div>
+            {this.state.isClient &&
+              createPortal(
+                <Toolbar
+                  pathname={this.props.pathname}
+                  inner={
+                    <Link
+                      to={`${path}`}
+                      aria-label={this.props.intl.formatMessage(messages.back)}
+                    >
+                      <Icon
+                        name={backSVG}
+                        className="contents circled"
+                        size="30px"
+                        title={this.props.intl.formatMessage(messages.back)}
+                      />
+                    </Link>
+                  }
+                />,
+                document.getElementById('toolbar'),
               )}
-              <div className="contents-pagination">
-                <Pagination
-                  current={this.state.currentPage}
-                  total={Math.ceil(this.props.total / this.state.pageSize)}
-                  pageSize={this.state.pageSize}
-                  pageSizes={[50, this.props.intl.formatMessage(messages.all)]}
-                  onChangePage={this.onChangePage}
-                  onChangePageSize={this.onChangePageSize}
-                />
-              </div>
-              {this.state.isClient &&
-                createPortal(
-                  <Toolbar
-                    pathname={this.props.pathname}
-                    inner={
-                      <Link
-                        to={`${path}`}
-                        aria-label={this.props.intl.formatMessage(
-                          messages.back,
-                        )}
-                      >
-                        <Icon
-                          name={backSVG}
-                          className="contents circled"
-                          size="30px"
-                          title={this.props.intl.formatMessage(messages.back)}
-                        />
-                      </Link>
-                    }
-                  />,
-                  document.getElementById('toolbar'),
-                )}
-            </Dimmer.Dimmable>
           </>
         ) : (
           <Unauthorized staticContext={this.props.staticContext} />
@@ -1627,12 +1589,12 @@ export const __test__ = compose(
     (store, props) => {
       return {
         token: store.userSession.token,
-        title: store.content.data.title,
-        items: store.search.items,
-        sort: store.content.update.sort,
-        index: store.content.updatecolumns.idx,
-        breadcrumbs: store.breadcrumbs.items,
-        total: store.search.total,
+        // title: store.content.data.title,
+        // items: store.search.items,
+        // sort: store.content.update.sort,
+        // index: store.content.updatecolumns.idx,
+        // breadcrumbs: store.breadcrumbs.items,
+        // total: store.search.total,
         searchRequest: {
           loading: store.search.loading,
           loaded: store.search.loaded,
@@ -1673,12 +1635,12 @@ export default compose(
     (store, props) => {
       return {
         token: store.userSession.token,
-        title: store.content.data.title,
-        items: store.search.items,
-        sort: store.content.update.sort,
-        index: store.content.updatecolumns.idx,
-        breadcrumbs: store.breadcrumbs.items,
-        total: store.search.total,
+        // title: store.content.data.title,
+        // items: store.search.items,
+        // sort: store.content.update.sort,
+        // index: store.content.updatecolumns.idx,
+        // breadcrumbs: store.breadcrumbs.items,
+        // total: store.search.total,
         searchRequest: {
           loading: store.search.loading,
           loaded: store.search.loaded,

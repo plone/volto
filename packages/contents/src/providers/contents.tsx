@@ -8,7 +8,7 @@ import type { IntlShape, Toast } from '../types';
 
 interface ContentsContext {
   flattenToAppURL: (path?: string) => string | undefined;
-  getBaseUrl: (url?: string) => string | undefined;
+  // getBaseUrl: (url?: string) => string | undefined;
   getContentIcon: (
     contentType?: string,
     isFolderish?: boolean,
@@ -20,7 +20,7 @@ interface ContentsContext {
 
 const ContentsContext = createContext<ContentsContext>({
   flattenToAppURL: (path) => path,
-  getBaseUrl: (url) => url,
+  // getBaseUrl: (url) => url,
   getContentIcon: () => undefined,
   intl: { locale: 'en-US', formatMessage: () => '' },
   toast: { error: () => '' },
@@ -29,18 +29,17 @@ const ContentsContext = createContext<ContentsContext>({
 type ContentsProviderProps = PropsWithChildren<ContentsContext>;
 
 export function ContentsProvider(props: ContentsProviderProps) {
-  let { children, flattenToAppURL, getBaseUrl, getContentIcon, intl, toast } =
-    props;
+  let { children, flattenToAppURL, getContentIcon, intl, toast } = props;
 
   let ctx = useMemo(
     () => ({
       flattenToAppURL,
-      getBaseUrl,
+      // getBaseUrl,
       getContentIcon,
       intl,
       toast,
     }),
-    [flattenToAppURL, getBaseUrl, getContentIcon, intl],
+    [flattenToAppURL, getContentIcon, intl, toast],
   );
 
   return (

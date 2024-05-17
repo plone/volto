@@ -1,4 +1,4 @@
-import React, { ComponentProps } from 'react';
+import React, { type ComponentProps } from 'react';
 import './Contents.css';
 // import type { ActionsResponse } from '@plone/types';
 import { VisuallyHidden } from 'react-aria';
@@ -8,8 +8,10 @@ import {
   type Selection,
   DialogTrigger,
   MenuTrigger,
+  Heading,
 } from 'react-aria-components';
 import { useMediaQuery } from 'usehooks-ts';
+import { useQuery } from '@tanstack/react-query';
 import {
   // AddIcon,
   Breadcrumbs,
@@ -22,9 +24,12 @@ import {
   Button,
   Table,
   Toast,
+  ProgressBar,
+  Modal,
+  Dialog,
 } from '@plone/components';
+import { usePloneClient } from '@plone/providers';
 import type { ArrayElement, Brain } from '@plone/types';
-import type { Toast as ToastType } from '../types';
 import { ContentsCell } from './ContentsCell';
 import { TableIndexesPopover } from './TableIndexesPopover';
 import { RearrangePopover } from './RearrangePopover';
@@ -33,15 +38,14 @@ import { ContentsActions } from './ContentsActions';
 import { useContentsContext } from '../providers/contents';
 
 interface ContentsTableProps {
-  // pathname: string;
-  breadcrumbs: ComponentProps<typeof Breadcrumbs>['items'];
+  pathname: string;
   // objectActions: ActionsResponse['object'];
   title: string;
   // loading: boolean;
   canPaste: boolean;
   textFilter: string;
   onChangeTextFilter: (value: string) => void;
-  items: Brain[];
+  // items: Brain[];
   selected: Selection;
   setSelected: (value: Selection) => void;
   indexes: {
@@ -71,7 +75,6 @@ interface ContentsTableProps {
   moveToTop: (index: number) => Promise<void>;
   moveToBottom: (index: number) => Promise<void>;
   // addableTypes: ComponentProps<typeof AddContentPopover>['addableTypes'];
-  toast: ToastType;
 }
 
 /**
@@ -81,15 +84,12 @@ interface ContentsTableProps {
  * Items can be sorted by drag and drop.
  */
 export function ContentsTable({
-  // pathname,
-  breadcrumbs = [],
+  pathname,
   // objectActions,
-  title,
-  // loading,
   canPaste,
   textFilter,
   onChangeTextFilter,
-  items,
+  // items,
   selected,
   setSelected,
   indexes: baseIndexes,
@@ -107,10 +107,49 @@ export function ContentsTable({
   orderItem,
   moveToTop,
   moveToBottom, // addableTypes,
-  toast,
 }: ContentsTableProps) {
-  const { intl } = useContentsContext();
+  const { intl, toast, flattenToAppURL } = useContentsContext();
+  const { getContentQuery, getSearchQuery, getBreadcrumbsQuery } =
+    usePloneClient();
   const isMobileScreenSize = useMediaQuery('(max-width: 992px)');
+
+  const { data: contentData, isLoading: contentIsLoading } = useQuery(
+    getContentQuery({
+      path: pathname,
+    }),
+  );
+
+  const { data: bcData, isLoading: bcIsLoading } = useQuery(
+    getBreadcrumbsQuery({
+      path: pathname,
+    }),
+  );
+
+  const { data: searchData, isLoading: searchIsLoading } = useQuery(
+    getSearchQuery({
+      query: {
+        path: {
+          query: pathname,
+          depth: 1,
+        },
+        sort_on: 'getObjPositionInParent',
+        sort_order: 'ascending',
+        metadata_fields: '_all',
+        show_inactive: true,
+        b_size: 100000000,
+        ...(textFilter && { SearchableText: `${textFilter}*` }),
+      },
+    }),
+  );
+
+  const isLoading = contentIsLoading || searchIsLoading || bcIsLoading;
+
+  const { title = '' } = contentData ?? {};
+  const { items = [] } = searchData ?? {};
+  const breadcrumbs = (bcData?.items ?? []).map((item) => ({
+    '@id': `${flattenToAppURL(item['@id'])}/contents`,
+    title: item.title,
+  }));
 
   // const folderContentsActions = objectActions.find(
   //   (action) => action.id === 'folderContents',
@@ -248,6 +287,21 @@ export function ContentsTable({
       }
     },
   });
+
+  if (isLoading)
+    return (
+      <Modal isOpen={true}>
+        <Dialog>
+          <Heading slot="title">
+            {intl.formatMessage({ id: 'loading' })}
+          </Heading>
+          <ProgressBar
+            aria-label={intl.formatMessage({ id: 'loading' })}
+            isIndeterminate
+          />
+        </Dialog>
+      </Modal>
+    );
 
   return (
     <Container

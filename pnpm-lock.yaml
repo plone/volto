@@ -1313,6 +1313,9 @@ importers:
       '@plone/registry':
         specifier: workspace:*
         version: link:../registry
+      '@tanstack/react-query':
+        specifier: ^5.36.2
+        version: 5.36.2(react@18.2.0)
       react:
         specifier: ^16.8.0 || ^17.0.0 || ^18.0.0
         version: 18.2.0
@@ -1761,12 +1764,18 @@ importers:
       '@loadable/server':
         specifier: 5.14.0
         version: 5.14.0(@loadable/component@5.14.1(react@18.2.0))(react@18.2.0)
+      '@plone/client':
+        specifier: workspace:*
+        version: link:../client
       '@plone/components':
-        specifier: workspace:2.0.0-alpha.8
+        specifier: workspace:*
         version: link:../components
       '@plone/contents':
         specifier: workspace:*
         version: link:../contents
+      '@plone/providers':
+        specifier: workspace:*
+        version: link:../providers
       '@plone/registry':
         specifier: workspace:*
         version: link:../registry
@@ -1779,6 +1788,9 @@ importers:
       '@redux-devtools/extension':
         specifier: ^3.3.0
         version: 3.3.0(redux@4.2.1)
+      '@tanstack/react-query':
+        specifier: ^5.36.2
+        version: 5.36.2(react@18.2.0)
       classnames:
         specifier: 2.2.6
         version: 2.2.6
@@ -6662,6 +6674,9 @@ packages:
   '@tanstack/query-core@5.29.0':
     resolution: {integrity: sha512-WgPTRs58hm9CMzEr5jpISe8HXa3qKQ8CxewdYZeVnA54JrPY9B1CZiwsCoLpLkf0dGRZq+LcX5OiJb0bEsOFww==}
 
+  '@tanstack/query-core@5.36.1':
+    resolution: {integrity: sha512-BteWYEPUcucEu3NBcDAgKuI4U25R9aPrHSP6YSf2NvaD2pSlIQTdqOfLRsxH9WdRYg7k0Uom35Uacb6nvbIMJg==}
+
   '@tanstack/query-devtools@5.28.10':
     resolution: {integrity: sha512-5UN629fKa5/1K/2Pd26gaU7epxRrYiT1gy+V+pW5K6hnf1DeUKK3pANSb2eHKlecjIKIhTwyF7k9XdyE2gREvQ==}
 
@@ -6684,6 +6699,11 @@ packages:
 
   '@tanstack/react-query@5.29.2':
     resolution: {integrity: sha512-nyuWILR4u7H5moLGSiifLh8kIqQDLNOHGuSz0rcp+J75fNc8aQLyr5+I2JCHU3n+nJrTTW1ssgAD8HiKD7IFBQ==}
+    peerDependencies:
+      react: ^18.0.0
+
+  '@tanstack/react-query@5.36.2':
+    resolution: {integrity: sha512-bHNa+5dead+j6SA8WVlEOPxcGfteVFgdyFTCFcxBgjnPf0fFpHUc7aNZBCnvmPXqy/BeQa9zTuU9ectb7i8ZXA==}
     peerDependencies:
       react: ^18.0.0
 
@@ -25170,6 +25190,8 @@ snapshots:
 
   '@tanstack/query-core@5.29.0': {}
 
+  '@tanstack/query-core@5.36.1': {}
+
   '@tanstack/query-devtools@5.28.10': {}
 
   '@tanstack/react-cross-context@1.26.10(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
@@ -25191,6 +25213,11 @@ snapshots:
   '@tanstack/react-query@5.29.2(react@18.2.0)':
     dependencies:
       '@tanstack/query-core': 5.29.0
+      react: 18.2.0
+
+  '@tanstack/react-query@5.36.2(react@18.2.0)':
+    dependencies:
+      '@tanstack/query-core': 5.36.1
       react: 18.2.0
 
   '@tanstack/react-router-server@1.29.2(@testing-library/jest-dom@6.4.2(vitest@1.5.0(@types/node@20.12.7)(jsdom@22.1.0)(less@3.11.1)(lightningcss@1.24.1)(sass@1.75.0)(terser@5.30.3)))(@types/node@20.12.7)(encoding@0.1.13)(less@3.11.1)(lightningcss@1.24.1)(preact@10.20.2)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(rollup@4.14.3)(sass@1.75.0)(terser@5.30.3)':
@@ -30100,7 +30127,7 @@ snapshots:
       doctrine: 2.1.0
       eslint: 8.57.0
       eslint-import-resolver-node: 0.3.9
-      eslint-module-utils: 2.8.1(@typescript-eslint/parser@7.1.1(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.1.1(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1)(eslint@8.57.0))(eslint@8.57.0)
+      eslint-module-utils: 2.8.1(@typescript-eslint/parser@7.7.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.7.0(eslint@8.57.0)(typescript@5.4.5))(eslint-plugin-import@2.29.1)(eslint@8.57.0))(eslint@8.57.0)
       hasown: 2.0.2
       is-core-module: 2.13.1
       is-glob: 4.0.3
