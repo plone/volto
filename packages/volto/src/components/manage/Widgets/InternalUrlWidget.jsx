@@ -44,7 +44,7 @@ export const InternalUrlWidget = (props) => {
 
   useEffect(() => {
     if (propValue !== value) {
-      setValue(propValue);
+      setValue(flattenToAppURL(propValue));
     }
   }, [propValue, value]);
   /**
