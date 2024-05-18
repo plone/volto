@@ -12,6 +12,7 @@ build:
     python: "3.12"
     nodejs: "20"
   commands:
+    - corepack prepare pnpm@latest --activate
     - make rtd-pr-preview
 
 # Build documentation in the "docs/" directory with Sphinx
