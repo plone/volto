@@ -143,12 +143,12 @@ docs-vale: bin/python docs-news  ## Install (once) and run Vale style, grammar, 
 	@echo
 	@echo "Vale is finished; look for any errors in the above output."
 
-.PHONY: netlify
-netlify:
+.PHONY: rtd-pr-preview
+rtd-pr-preview:
 	pnpm build:registry
 	(cd packages/volto && pnpm build-storybook -o ../../_build/html/storybook)
-	pwd && pip install -r requirements-docs.txt
-	cd $(DOCS_DIR) && pwd && sphinx-build -b html $(ALLSPHINXOPTS) ../$(BUILDDIR)/html
+	pip install -r requirements-docs.txt
+	cd $(DOCS_DIR) && sphinx-build -b html $(ALLSPHINXOPTS) ${READTHEDOCS_OUTPUT}/html/
 
 .PHONY: docs-test
 docs-test: docs-clean docs-linkcheckbroken docs-vale  ## Clean docs build, then run linkcheckbroken, vale
