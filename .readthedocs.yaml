@@ -17,8 +17,11 @@ build:
       # - npm ci
       # Install any other extra dependencies to build the docs
       - npm install -g pnpm@latest
-  commands:
-    - make rtd-pr-preview
+      - pnpm build:registry
+      - (cd packages/volto && pnpm build-storybook -o ../../_build/html/storybook)
+      - make rtd-pr-preview
+#  commands:
+#    - make rtd-pr-preview
 
 # Build documentation in the "docs/" directory with Sphinx
 #sphinx:
