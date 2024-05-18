@@ -11,6 +11,12 @@ build:
   tools:
     python: "3.12"
     nodejs: "20"
+  jobs:
+    post_install:
+      # Install dependencies defined in your ``package.json``
+      # - npm ci
+      # Install any other extra dependencies to build the docs
+      - npm install -g pnpm@latest
   commands:
     - make rtd-pr-preview
 

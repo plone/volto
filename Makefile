@@ -146,8 +146,8 @@ docs-vale: bin/python docs-news  ## Install (once) and run Vale style, grammar, 
 .PHONY: rtd-pr-preview
 rtd-pr-preview:
 #	corepack prepare pnpm@latest --activate
-#	pnpm build:registry
-#	(cd packages/volto && pnpm build-storybook -o ../../_build/html/storybook)
+	pnpm build:registry
+	(cd packages/volto && pnpm build-storybook -o ../../_build/html/storybook)
 	pip install -r requirements-docs.txt
 	cd $(DOCS_DIR) && sphinx-build -b html $(ALLSPHINXOPTS) ${READTHEDOCS_OUTPUT}/html/
 
