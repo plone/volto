@@ -17,6 +17,7 @@ build:
       # - npm ci
       # Install any other extra dependencies to build the docs
       - npm install -g pnpm@latest
+      - pnpm install
       - pnpm build:registry
       - (cd packages/volto && pnpm build-storybook -o ../../_build/html/storybook)
       - make rtd-pr-preview
