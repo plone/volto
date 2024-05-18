@@ -19,7 +19,7 @@ build:
       - npm install -g pnpm@latest
       - pnpm install
       - pnpm build:registry
-      - (cd packages/volto && pnpm build-storybook -o ../../_build/html/storybook)
+      - (cd packages/volto && pnpm build-storybook -o ${READTHEDOCS_OUTPUT}/html/storybook)
       - make rtd-pr-preview
 #  commands:
 #    - make rtd-pr-preview

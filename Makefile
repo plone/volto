@@ -145,7 +145,6 @@ docs-vale: bin/python docs-news  ## Install (once) and run Vale style, grammar, 
 
 .PHONY: rtd-pr-preview
 rtd-pr-preview:
-#	corepack prepare pnpm@latest --activate
 	pip install -r requirements-docs.txt
 	cd $(DOCS_DIR) && sphinx-build -b html $(ALLSPHINXOPTS) ${READTHEDOCS_OUTPUT}/html/
 
