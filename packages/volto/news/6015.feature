@@ -1,0 +1,1 @@
+Add Hindi translation in Volto. @iFlameing
