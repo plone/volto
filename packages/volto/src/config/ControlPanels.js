@@ -90,6 +90,13 @@ export const filterControlPanelsSchema = (controlpanel) => {
       'picture_variants',
       'image_captioning',
     ],
+    navigation: [
+      'generate_tabs',
+      'navigation_depth',
+      'sort_tabs_on',
+      'sort_tabs_reversed',
+      'sitemap_depth',
+    ],
   };
 
   // Creates modified version of properties object

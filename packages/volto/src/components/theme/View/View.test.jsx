@@ -22,6 +22,7 @@ beforeAll(() => {
   });
   config.settings.publicURL = 'https://plone.org';
 });
+global.__SERVER__ = true; // eslint-disable-line no-underscore-dangle
 
 const mockStore = configureStore();
 
