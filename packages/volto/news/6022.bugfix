@@ -1,0 +1,1 @@
+Fix duplication of execution of the build dependencies script on start @sneridagh
