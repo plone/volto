@@ -63,7 +63,7 @@ function getInitialState(
         ? [
             {
               i: 'SearchableText',
-              o: 'plone.app.querystring.operation.string.contains',
+              o: 'plone.app.querystring.operation.string.search',
               v: urlSearchText,
             },
           ]
@@ -148,7 +148,7 @@ function normalizeState({
     );
     params.query.push({
       i: 'SearchableText',
-      o: 'plone.app.querystring.operation.string.contains',
+      o: 'plone.app.querystring.operation.string.search',
       v: searchText,
     });
   }
