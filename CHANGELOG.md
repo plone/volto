@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 16.31.8 (2024-05-21)
+
+### Internal
+
+- Fix `.npmignore` file list - now `npm` seems that honors the undelying filesystem case setting @sneridagh [#0](https://github.com/plone/volto/issues/0)
+
 ## 16.31.7 (2024-05-21)
 
 ### Bugfix
