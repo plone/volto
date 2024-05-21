@@ -1,1 +1,0 @@
-Fix `.npmignore` file list - now `npm` seems that honors the undelying filesystem case setting @sneridagh

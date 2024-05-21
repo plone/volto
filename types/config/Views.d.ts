@@ -56,8 +56,17 @@ export const contentTypesViews: {
     };
     Event: any;
 };
-export const defaultView: import("react").FC<import("react-intl").WithIntlProps<any>> & {
-    WrappedComponent: import("react").ComponentType<any>;
+export const defaultView: {
+    (props: any): string;
+    propTypes: {
+        content: import("prop-types").Validator<NonNullable<import("prop-types").InferProps<{
+            title: import("prop-types").Requireable<string>;
+            description: import("prop-types").Requireable<string>;
+            text: import("prop-types").Requireable<import("prop-types").InferProps<{
+                data: import("prop-types").Requireable<string>;
+            }>>;
+        }>>>;
+    };
 };
 export const errorViews: {
     404: (props: any) => JSX.Element;

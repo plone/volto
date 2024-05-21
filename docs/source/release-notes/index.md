@@ -17,6 +17,17 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 17.16.0 (2024-05-21)
+
+### Feature
+
+- Use navroot to render the sitemap @erral [#5185](https://github.com/plone/volto/issues/5185)
+
+### Internal
+
+- Fix `.npmignore` file list - now `npm` seems that honors the undelying filesystem case setting @sneridagh [#0](https://github.com/plone/volto/issues/0)
+- Cleaned up useless injectIntl in DefaultView @pnicolli [#5994](https://github.com/plone/volto/issues/5994)
+
 ## 17.15.6 (2024-04-24)
 
 ### Bugfix
