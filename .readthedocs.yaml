@@ -5,4 +5,4 @@ build:
     python: "3.12"
   jobs:
     post_checkout:
-      exit 183;
+      - exit 183;
