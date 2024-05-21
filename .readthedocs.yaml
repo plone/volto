@@ -17,7 +17,8 @@ build:
       # - npm ci
       # Install any other extra dependencies to build the docs
       - corepack enable
-      - corepack use pnpm@*
+      - corepack install --global pnpm@*
+      - echo "$PATH"
       - pnpm install
       - pnpm build:registry
       - (cd packages/volto && pnpm build-storybook -o ${READTHEDOCS_OUTPUT}/html/storybook)
