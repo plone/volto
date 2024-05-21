@@ -1,15 +1,15 @@
 # https://docs.npmjs.com/using-npm/developers.html#keeping-files-out-of-your-package
 
 # Directories
-api/
-bin/
-build/
-lib/
-g-api/
-tests/
-share/
+/api/
+/bin/
+/build/
+/lib/
+/g-api/
+/tests/
+/share/
+/.storybook/
 .yarn/
-.storybook/
 
 # Docs
 docs/
@@ -28,7 +28,6 @@ __tests__/
 *.snap
 
 # Files
-.travis.yml
 requirements-docs.txt
 requirements-tests.txt
 yarn.lock
@@ -42,7 +41,6 @@ changelogupdater.js
 pip-selfcheck.json
 pyvenv.cfg
 Dockerfile
-CNAME
 entrypoint.sh
 Jenkinsfile
 Makefile
@@ -102,7 +100,7 @@ typings/
 .yarn-integrity
 
 # Volto logos
-./logos
+/logos
 
 # Razzle cache
 cache/
@@ -124,3 +122,9 @@ packages/*
 
 # yarn 3
 .yarn
+.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
