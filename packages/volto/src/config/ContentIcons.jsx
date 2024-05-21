@@ -6,6 +6,26 @@ import fileSVG from '@plone/volto/icons/file.svg';
 import pageSVG from '@plone/volto/icons/page.svg';
 import imageSVG from '@plone/volto/icons/image.svg';
 
+import {
+  AttachmentIcon,
+  CalendarIcon,
+  FolderIcon,
+  ImageIcon,
+  LinkIcon,
+  NewsIcon,
+  PageIcon,
+} from '@plone/components';
+
+export const quantaContentIcons = {
+  Document: PageIcon,
+  Folder: FolderIcon,
+  'News Item': NewsIcon,
+  Event: CalendarIcon,
+  Image: ImageIcon,
+  File: AttachmentIcon,
+  Link: LinkIcon,
+};
+
 export const contentIcons = {
   Document: pageSVG,
   Folder: folderSVG,

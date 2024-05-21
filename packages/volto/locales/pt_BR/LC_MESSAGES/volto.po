@@ -49,7 +49,6 @@ msgstr "Ação: "
 
 #. Default: "Actions"
 #: components/manage/Actions/Actions
-#: components/manage/Contents/Contents
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 #: components/manage/Controlpanels/Rules/Rules
@@ -404,7 +403,6 @@ msgstr "Você realmente deseja deletar este fieldset com todos os campos?"
 
 #. Default: "Ascending"
 #: components/manage/Blocks/Search/components/SortOn
-#: components/manage/Contents/Contents
 msgid "Ascending"
 msgstr "Ascendente"
 
@@ -1030,7 +1028,6 @@ msgstr "Profundidade"
 
 #. Default: "Descending"
 #: components/manage/Blocks/Search/components/SortOn
-#: components/manage/Contents/Contents
 msgid "Descending"
 msgstr "Descendente"
 
@@ -2413,7 +2410,6 @@ msgid "No workflow"
 msgstr "Sem workflow"
 
 #. Default: "None"
-#: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
 msgid "None"
 msgstr "Nenhum"
@@ -3316,9 +3312,9 @@ msgstr "Tamanho: {size}"
 msgid "Small"
 msgstr "Pequeno"
 
-#. Default: "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
+#. Default: "Some items are also a folder.
 #: components/manage/Contents/Contents
-msgid "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
+msgid "Some items are also a folder."
 msgstr ""
 
 #. Default: "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
@@ -3697,9 +3693,9 @@ msgstr "Este é um nome reservado e não pode ser usado"
 msgid "This is a working copy of {title}"
 msgstr "Esta é uma cópia de trabalho de {title}"
 
-#. Default: "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
+#. Default: "This item is also a folder.
 #: components/manage/Contents/Contents
-msgid "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
+msgid "This item is also a folder."
 msgstr ""
 
 #. Default: "This item was locked by {creator} on {date}"
@@ -3730,7 +3726,6 @@ msgstr "Hora"
 #. Default: "Title"
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Blocks/ToC/Schema
-#: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
