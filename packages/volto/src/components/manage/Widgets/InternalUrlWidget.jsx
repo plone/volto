@@ -184,4 +184,4 @@ InternalUrlWidget.defaultProps = {
   maxLength: null,
 };
 
-export default compose(withObjectBrowser)(InternalUrlWidget);
+export default withObjectBrowser(InternalUrlWidget);
