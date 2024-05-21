@@ -50,7 +50,6 @@
     }
   },
   "dependencies": {
-    "@internationalized/date": "^3.5.3",
     "@plone/client": "workspace:*",
     "@plone/components": "workspace:*",
     "@plone/providers": "workspace:*",

@@ -1,5 +1,5 @@
 import React, { ComponentProps, useRef, useState } from 'react';
-import { DateFormatter } from '@internationalized/date';
+import { useDateFormatter } from 'react-aria';
 import { Brain } from '../../../types/src';
 import { Button, Link, MoreoptionsIcon } from '@plone/components';
 import { ItemActionsPopover } from './ItemActionsPopover';
@@ -39,13 +39,23 @@ export function ContentsCell({
   const { getContentIcon, intl, flattenToAppURL } = useContentsContext();
   const [isMoreOptionsOpen, setIsMoreOptionsOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
+  const longFormatter = useDateFormatter({
+    dateStyle: 'full',
+    timeStyle: 'full',
+  });
+  const shortFormatter = useDateFormatter({
+    dateStyle: 'short',
+    timeStyle: 'short',
+  });
   const Icon = getContentIcon(item['@type'], item.is_folderish, true);
 
   if (column === 'title') {
     return (
       <Link
         className="react-aria-Link title-link"
-        href={`${flattenToAppURL(item['@id'])}${item.is_folderish ? '/contents' : ''}`}
+        href={`${flattenToAppURL(item['@id'])}${
+          item.is_folderish ? '/contents' : ''
+        }`}
       >
         <Icon size="S" title={item['Type'] || item['@type']} />
         {item.title}
@@ -130,14 +140,6 @@ export function ContentsCell({
     } else if (indexes.values[column].type === 'date') {
       const dateString = item[column];
       if (typeof dateString === 'string' && dateString !== 'None') {
-        const longFormatter = new DateFormatter(intl.locale, {
-          dateStyle: 'full',
-          timeStyle: 'full',
-        });
-        const shortFormatter = new DateFormatter(intl.locale, {
-          dateStyle: 'short',
-          timeStyle: 'short',
-        });
         const date = new Date(dateString);
 
         return (
