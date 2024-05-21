@@ -5,4 +5,6 @@ build:
     python: "3.12"
   jobs:
     post_checkout:
+      # Cancel the Read the Docs build
+      # https://docs.readthedocs.io/en/stable/build-customization.html#cancel-build-based-on-a-condition
       - exit 183;
