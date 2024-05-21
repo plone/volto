@@ -91,6 +91,10 @@ const messages = defineMessages({
     id: 'Relations',
     defaultMessage: 'Relations',
   },
+  blocktypes: {
+    id: 'Block Types',
+    defaultMessage: 'Block Types',
+  },
 });
 
 /**
@@ -167,6 +171,11 @@ export default function Controlpanels({ location }) {
         '@id': '/moderate-comments',
         group: intl.formatMessage(messages.content),
         title: intl.formatMessage(messages.moderatecomments),
+      },
+      {
+        '@id': '/blocktypes',
+        group: intl.formatMessage(messages.content),
+        title: intl.formatMessage(messages.blocktypes),
       },
       {
         '@id': '/users',
