@@ -16,7 +16,9 @@ build:
       # Install dependencies defined in your ``package.json``
       # - npm ci
       # Install any other extra dependencies to build the docs
-      - npm install -g pnpm@latest
+      - corepack enable
+      - corepack prepare pnpm@* --activate
+      - asdf reshim nodejs
       - pnpm install
       - pnpm build:registry
       - (cd packages/volto && pnpm build-storybook -o ${READTHEDOCS_OUTPUT}/html/storybook)
