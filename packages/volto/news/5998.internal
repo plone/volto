@@ -1,3 +1,0 @@
-Modified `locking` and `block-listing` cypress tests 
-to use more `assertions` instead of wait times in order to improve
-the reliability of the tests. @ichim-david

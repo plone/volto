@@ -1,5 +1,7 @@
+import { Brain } from './common';
+
 export interface GetSearchResponse {
   '@id': string;
-  items: any[];
+  items: Brain[];
   items_total: number;
 }
