@@ -46,6 +46,7 @@
     "react-query"
   ],
   "scripts": {
+    "watch": "parcel watch",
     "build": "parcel build",
     "build:force": "parcel build --no-cache",
     "test": "node testRunner.js",
