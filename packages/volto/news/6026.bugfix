@@ -1,1 +1,0 @@
-In the EditBlockWrapper, pass the `showRestricted` prop to the BlockChooserButton. @JeffersonBledsoe
