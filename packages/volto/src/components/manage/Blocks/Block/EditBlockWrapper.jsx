@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo, useCallback, useState } from 'react';
 import { Icon } from '@plone/volto/components';
 import {
   blockHasValue,
@@ -13,6 +13,7 @@ import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
 import config from '@plone/volto/registry';
 import { BlockChooserButton } from '@plone/volto/components';
+import { useDrag, useDrop, DragPreview, useButton } from 'react-aria';
 
 import trashSVG from '@plone/volto/icons/delete.svg';
 
@@ -32,13 +33,14 @@ const EditBlockWrapper = (props) => {
     );
   };
 
-  const { intl, blockProps, draginfo, children } = props;
+  const { intl, blockProps, children } = props;
   const {
     allowedBlocks,
     block,
     blocksConfig,
     selected,
     type,
+    onMoveBlock,
     onChangeBlock,
     onDeleteBlock,
     onInsertBlock,
@@ -63,67 +65,202 @@ const EditBlockWrapper = (props) => {
 
   // We need to merge the StyleWrapper styles with the draggable props from b-D&D
   const styleMergedWithDragProps = {
-    ...draginfo.draggableProps,
-    style: { ...style, ...draginfo.draggableProps.style },
+    style: { ...style },
   };
+
+  const previewRef = React.useRef(null);
+  const blockRef = React.useRef(null);
+
+  const doDragEnd = useCallback(
+    (evt, a, b, c) => {
+      if (evt.dropOperation === 'move') {
+        console.log('dragEnd', evt, block, a, b, c);
+        // Since the successful drag is already doing the move,
+        // onDeleteBlock(block);
+      }
+    },
+    [onMoveBlock, properties?.block_layout?.items],
+  );
+
+  let { dragProps, dragButtonProps, isDragging } = useDrag({
+    hasDragButton: true,
+    preview: previewRef,
+    onDragEnd: (e) => {
+      doDragEnd(e);
+    },
+    getItems() {
+      console.log('drag', data);
+      return [
+        {
+          // XXX No uppercase here, or you'll go crazy!
+          blocktype: JSON.stringify({
+            id: block,
+            data,
+          }),
+        },
+      ];
+    },
+  });
+
+  let buttonRef = React.useRef(null);
+  let { buttonProps } = useButton(
+    { ...dragButtonProps, elementType: 'div' },
+    buttonRef,
+  );
+
+  const shouldItDropAfter = (y) =>
+    y >= (blockRef.current ? blockRef.current.offsetHeight : 0) / 2;
+
+  const doDrop = useCallback(
+    async (evt) => {
+      let items = await Promise.all(
+        evt.items
+          .filter((item) => item.kind === 'text' && item.types.has('blocktype'))
+          .map((item) => item.getText('blocktype')),
+      );
+      // for now we only support a single item
+      const item = JSON.parse(items[0]);
+      const indexDraggable = properties.blocks_layout.items.indexOf(item.id);
+      let indexDroppable = properties.blocks_layout.items.indexOf(block);
+
+      const dropAfter = shouldItDropAfter(evt.y);
+      if (indexDraggable !== -1) {
+        // in the same page
+        if (dropAfter) {
+          indexDroppable += 1;
+        }
+        if (indexDroppable > indexDraggable) {
+          indexDroppable -= 1;
+        }
+        onMoveBlock(indexDraggable, indexDroppable);
+      } else {
+        // dropped from different page
+        onInsertBlock(
+          properties.blocks_layout.items[
+            dropAfter ? indexDroppable : indexDroppable - 1
+          ],
+          item.data,
+        );
+      }
+    },
+    [onMoveBlock, onInsertBlock, properties?.block_layout?.items],
+  );
+
+  const [isDropping, setIsDropping] = useState(false);
+  const [isDroppingAfter, setIsDroppingAfter] = useState(false);
+
+  const doDropEnter = useCallback(
+    (evt) => {
+      setIsDropping(true);
+      setIsDroppingAfter(shouldItDropAfter(evt.y));
+    },
+    [setIsDropping, setIsDroppingAfter],
+  );
+
+  const doDropExit = useCallback(
+    (evt) => {
+      setIsDropping(false);
+    },
+    [setIsDropping],
+  );
+
+  const { dropProps, isDropTarget } = useDrop({
+    ref: blockRef,
+    onDropEnter(e) {
+      doDropEnter(e);
+    },
+    onDropExit(e) {
+      doDropExit(e);
+    },
+    async onDrop(e) {
+      doDrop(e);
+    },
+  });
+
+  const blockIndex = properties.blocks_layout.items.indexOf(block);
 
   return (
     <div
-      ref={draginfo.innerRef}
-      {...styleMergedWithDragProps}
-      // Right now, we can have the alignment information in the styles property or in the
-      // block data root, we inject the classname here for having control over the whole
-      // Block Edit wrapper
-      className={cx(`block-editor-${data['@type']}`, classNames, {
-        [data.align]: data.align,
-      })}
+      style={isDragging ? { display: 'none' } : {}}
+      className={
+        isDropping
+          ? isDroppingAfter
+            ? 'dnd-droptarget-accepting-after'
+            : 'dnd-droptarget-accepting-before'
+          : 'dnd-droptarget-inactive'
+      }
+      {...dropProps}
+      ref={blockRef}
     >
-      <div style={{ position: 'relative' }}>
-        <div
-          style={{
-            visibility: visible ? 'visible' : 'hidden',
-            display: 'inline-block',
-          }}
-          {...draginfo.dragHandleProps}
-          className="drag handle wrapper"
-        >
-          <Icon name={dragSVG} size="18px" />
-        </div>
-        <div className={`ui drag block inner ${type}`}>
-          {children}
-          {selected && !required && editable && (
-            <Button
-              icon
-              basic
-              onClick={() => onDeleteBlock(block, true)}
-              className="delete-button"
-              aria-label={intl.formatMessage(messages.delete)}
-            >
-              <Icon name={trashSVG} size="18px" />
-            </Button>
-          )}
-          {config.experimental.addBlockButton.enabled && showBlockChooser && (
-            <BlockChooserButton
-              data={data}
-              block={block}
-              onInsertBlock={(id, value) => {
-                if (blockHasValue(data)) {
-                  onSelectBlock(onInsertBlock(id, value));
-                } else {
-                  onChangeBlock(id, value);
-                }
-              }}
-              onMutateBlock={onMutateBlock}
-              allowedBlocks={allowedBlocks}
-              blocksConfig={blocksConfig}
-              size="24px"
-              properties={properties}
-              navRoot={navRoot}
-              contentType={contentType}
-            />
-          )}
+      <div
+        {...dragProps}
+        {...styleMergedWithDragProps}
+        // Right now, we can have the alignment information in the styles property or in the
+        // block data root, we inject the classname here for having control over the whole
+        // Block Edit wrapper
+        className={cx(`block-editor-${data['@type']}`, classNames, {
+          [data.align]: data.align,
+        })}
+      >
+        <div style={{ position: 'relative' }}>
+          <div
+            style={{
+              visibility: visible ? 'visible' : 'hidden',
+              display: 'inline-block',
+            }}
+            className="drag handle wrapper"
+          >
+            <Icon name={dragSVG} size="18px" ref={buttonRef} {...buttonProps} />
+          </div>
+          <div className={`ui drag block inner ${type}`}>
+            {children}
+            {selected && !required && editable && (
+              <Button
+                icon
+                basic
+                onClick={() => onDeleteBlock(block, true)}
+                className="delete-button"
+                aria-label={intl.formatMessage(messages.delete)}
+              >
+                <Icon name={trashSVG} size="18px" />
+              </Button>
+            )}
+            {config.experimental.addBlockButton.enabled && showBlockChooser && (
+              <BlockChooserButton
+                data={data}
+                block={block}
+                onInsertBlock={(id, value) => {
+                  if (blockHasValue(data)) {
+                    onSelectBlock(onInsertBlock(id, value));
+                  } else {
+                    onChangeBlock(id, value);
+                  }
+                }}
+                onMutateBlock={onMutateBlock}
+                allowedBlocks={allowedBlocks}
+                blocksConfig={blocksConfig}
+                size="24px"
+                properties={properties}
+                navRoot={navRoot}
+                contentType={contentType}
+              />
+            )}
+          </div>
         </div>
       </div>
+      <DragPreview ref={previewRef}>
+        {(items) => {
+          const { '@type': type, plaintext: plainText } = JSON.parse(
+            items[0]['blocktype'],
+          ).data;
+          return (
+            <div className="dnd-preview">
+              <div className="dnd-preview-blocktype">{type}</div>
+              <div className="dnd-preview-plaintext">{plainText}</div>
+            </div>
+          );
+        }}
+      </DragPreview>
     </div>
   );
 };
