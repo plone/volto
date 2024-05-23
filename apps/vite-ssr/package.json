@@ -17,6 +17,7 @@
     "@plone/providers": "workspace:*",
     "@plone/registry": "workspace:*",
     "@plone/blocks": "workspace:*",
+    "@plone/slots": "workspace:*",
     "@tanstack/react-query": "^5.29.2",
     "@tanstack/react-router": "^1.28.2",
     "@tanstack/react-router-server": "^1.28.2",

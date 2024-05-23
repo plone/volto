@@ -29,10 +29,12 @@ export const login = ({
     },
     config: validatedArgs.config,
   };
+  console.log('this is form login plone clien');
   return apiRequest('post', '/@login', options);
 };
 
-export const loginQuery = ({ username, password, config }: LoginArgs) => ({
-  queryKey: [username, 'login'],
-  queryFn: () => login({ username, password, config }),
+export const loginQuery = () => ({
+  mutationKey: ['login', 'user'],
+  mutationFn: ({ username, password, config }: LoginArgs) =>
+    login({ username, password, config }),
 });

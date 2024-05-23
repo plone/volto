@@ -4,6 +4,7 @@ import { flattenToAppURL } from '../utils';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { usePloneClient } from '@plone/providers';
 import { Breadcrumbs, RenderBlocks } from '@plone/components';
+import { Header, Footer } from '@plone/slots';
 import config from '@plone/registry';
 
 const expand = ['breadcrumbs', 'navigation'];
@@ -25,17 +26,18 @@ function IndexComponent() {
   );
   return (
     <div className="p-2">
+      <Header />
       <Breadcrumbs
         items={data['@components'].breadcrumbs.items || []}
         root={data['@components'].breadcrumbs.root}
         includeRoot
       />
-
       <RenderBlocks
         content={data}
         blocksConfig={config.blocks.blocksConfig}
         pathname="/"
       />
+      <Footer />
     </div>
   );
 }
