@@ -62,7 +62,8 @@
     "release-major-alpha": "release-it major --preRelease=alpha",
     "release-alpha": "release-it --preRelease=alpha",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "dev": "vite"
   },
   "bundlewatch": {
     "files": [
@@ -229,7 +230,7 @@
     "react-fast-compare": "2.0.4",
     "react-image-gallery": "1.2.7",
     "react-intersection-observer": "9.1.0",
-    "react-intl": "3.8.0",
+    "react-intl": "3.12.1",
     "react-intl-redux": "2.3.0",
     "react-medium-image-zoom": "3.0.15",
     "react-popper": "^2.3.0",
@@ -268,7 +269,8 @@
     "universal-cookie-express": "4.0.3",
     "url": "^0.11.3",
     "use-deep-compare-effect": "1.8.1",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "vite-plugin-node-polyfills": "^0.22.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
@@ -310,6 +312,7 @@
     "@types/uuid": "^9.0.2",
     "@typescript-eslint/eslint-plugin": "^7.7.0",
     "@typescript-eslint/parser": "^7.7.0",
+    "@vitejs/plugin-react": "^4.3.0",
     "autoprefixer": "10.4.8",
     "axe-core": "4.4.2",
     "babel-loader": "9.1.0",
@@ -325,6 +328,7 @@
     "cypress-axe": "1.5.0",
     "cypress-file-upload": "5.0.8",
     "deep-freeze": "0.0.1",
+    "esbuild-plugin-react-virtualized": "^1.0.4",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-config-react-app": "^7.0.1",
@@ -379,6 +383,7 @@
     "ts-loader": "9.4.4",
     "typescript": "^5.4.2",
     "use-trace-update": "1.3.2",
+    "vite": "^5.2.11",
     "wait-on": "6.0.0",
     "webpack": "5.90.1",
     "webpack-bundle-analyzer": "4.10.1",

@@ -237,7 +237,7 @@ const apiMiddlewareFactory =
               config.settings.supportedLanguages.includes(lang)
             ) {
               const langFileName = toGettextLang(lang);
-              import('@root/../locales/' + langFileName + '.json').then(
+              import(`../../../../locales/${langFileName}.json`).then(
                 (locale) => {
                   dispatch(changeLanguage(lang, locale.default));
                 },

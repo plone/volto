@@ -1,4 +1,4 @@
-import '@plone/volto/config'; // This is the bootstrap for the global config - client side
+import './config'; // This is the bootstrap for the global config - client side
 import '@root/theme';
 import React from 'react';
 import { hydrateRoot } from 'react-dom/client';
