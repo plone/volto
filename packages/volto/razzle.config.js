@@ -342,6 +342,8 @@ const defaultModify = ({
               ...addonsAsExternals,
               /^@plone\/volto/,
               /^@plone\/components/,
+              /^@plone\/client/,
+              /^@plone\/providers/,
             ].filter(Boolean),
           }),
         ]
