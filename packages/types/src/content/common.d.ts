@@ -34,8 +34,8 @@ export type RelatedItem = {
   '@type': string;
   UID: string;
   description: string;
-  image_field: unknown;
-  image_scales: unknown;
+  image_field: '';
+  image_scales: Record<string, PreviewImage> | null;
   review_state: string;
   title: string;
 };
