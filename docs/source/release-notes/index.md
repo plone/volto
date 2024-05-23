@@ -17,6 +17,32 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.32 (2024-05-23)
+
+### Feature
+
+- Removes navigation settings that are not used by Volto. @wesleybl [#5961](https://github.com/plone/volto/issues/5961)
+- Add Hindi translation in Volto. @iFlameing [#6015](https://github.com/plone/volto/issues/6015)
+
+### Bugfix
+
+- Return a redirect response from Volto server-side rendering if the API request was redirected. @JeffersonBledsoe @mamico [#4834](https://github.com/plone/volto/issues/4834)
+- Fixed separator edit class spilling outside of the block toolbar @JeffersonBledsoe [#6010](https://github.com/plone/volto/issues/6010)
+- Fix duplication of execution of the build dependencies script on start @sneridagh [#6022](https://github.com/plone/volto/issues/6022)
+- In the EditBlockWrapper, pass the `showRestricted` prop to the BlockChooserButton. @JeffersonBledsoe [#6026](https://github.com/plone/volto/issues/6026)
+- Replace relative Import Path with Alias Import in 'Form.jsx' @MAX-786 [#6040](https://github.com/plone/volto/issues/6040)
+- Allow X-Robots-Tag header in images/files middleware @sneridagh [#6043](https://github.com/plone/volto/issues/6043)
+
+### Internal
+
+- Use pnpm corepack instead of installing it in CI @sneridagh [#6038](https://github.com/plone/volto/issues/6038)
+- Add client and providers to the SSR externals list @sneridagh [#6045](https://github.com/plone/volto/issues/6045)
+
+### Documentation
+
+- Use Plone Sphinx Theme. Migrate from Netlify to Read the Docs for pull request preview builds. @stevepiercy [#6030](https://github.com/plone/volto/issues/6030)
+- Build documentation and Storybook only when their files change. @stevepiercy [#6037](https://github.com/plone/volto/issues/6037)
+
 ## 18.0.0-alpha.31 (2024-05-15)
 
 ### Bugfix
