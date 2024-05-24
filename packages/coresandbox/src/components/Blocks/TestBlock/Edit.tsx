@@ -2,7 +2,7 @@ import { SidebarPortal } from '@plone/volto/components';
 import Data from './Data';
 import type { BlockEditProps } from '@plone/types';
 
-const InputBlockEdit = (props: BlockEditProps) => {
+const TextBlockEdit = (props: BlockEditProps) => {
   const { selected } = props;
 
   return (
@@ -15,4 +15,4 @@ const InputBlockEdit = (props: BlockEditProps) => {
   );
 };
 
-export default InputBlockEdit;
+export default TextBlockEdit;
