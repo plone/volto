@@ -44,7 +44,6 @@ export const flattenToDottedNotation = (
     ) {
       value.forEach((item, _index) => {
         Object.entries(item).forEach(([innerKey, innerValue]) => {
-          console.log(newKey, innerKey, innerValue);
           result[`${newKey}:list:${innerKey}`] = innerValue;
         });
       });
@@ -52,7 +51,6 @@ export const flattenToDottedNotation = (
       result[newKey] = value;
     }
   }
-  console.log('cacca', result);
   return result;
 };
 
