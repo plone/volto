@@ -5,7 +5,6 @@ import {
   useQuery,
 } from '@tanstack/react-query';
 import { PloneClientConfig } from '../validation/config';
-import { flatMap, map, pickBy, toPairs } from 'lodash';
 
 /*
   configGetter is required instead of using the config directly to make sure
@@ -44,7 +43,6 @@ export const flattenToDottedNotation = (
     ) {
       value.forEach((item, _index) => {
         Object.entries(item).forEach(([innerKey, innerValue]) => {
-          console.log(newKey, innerKey, innerValue);
           result[`${newKey}:list:${innerKey}`] = innerValue;
         });
       });
@@ -52,7 +50,6 @@ export const flattenToDottedNotation = (
       result[newKey] = value;
     }
   }
-  console.log('cacca', result);
   return result;
 };
 
