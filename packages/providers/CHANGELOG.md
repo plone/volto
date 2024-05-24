@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.1 (2024-05-23)
+
+### Internal
+
+- Cleanup imports in RouterLocation provider @pnicolli [#6029](https://github.com/plone/volto/issues/6029)
+
 ## 1.0.0-alpha.0 (2024-05-13)
 
 ### Feature

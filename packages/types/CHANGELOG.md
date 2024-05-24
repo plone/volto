@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.13 (2024-05-23)
+
+### Feature
+
+- New Brain type and new ArrayElement utility @pnicolli [#6029](https://github.com/plone/volto/issues/6029)
+
 ## 1.0.0-alpha.12 (2024-05-15)
 
 ### Bugfix
