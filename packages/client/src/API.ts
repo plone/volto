@@ -73,6 +73,9 @@ export function axiosConfigAdapter(
       return status >= 200 && status < 300; // default
     },
     paramsSerializer: function (params) {
+      console.log(
+        qs.stringify(params, { arrayFormat: 'colon-list-separator' }),
+      );
       return qs.stringify(params, { arrayFormat: 'colon-list-separator' });
     },
   };
