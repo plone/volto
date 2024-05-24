@@ -38,6 +38,8 @@ export default function client() {
 
   // Setup the client registry from the SSR response values, presents in the `window.env`
   // variable. This is key for the Seamless mode to work.
+  // [Vite] TODO: Add window.env vars in Vite too
+  window.env = window.env || {};
   if (window.env.apiPath) {
     config.settings.apiPath = window.env.apiPath;
   }

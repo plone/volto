@@ -48,9 +48,11 @@ export function persistAuthToken(store, req) {
     currentValue = state.userSession.token;
 
     if (
-      module.hot &&
-      module.hot.data &&
-      module.hot.data.reloaded &&
+      // TODO: how Vite handles the hotreload?
+      // module.hot &&
+      // module.hot.data &&
+      // module.hot.data.reloaded &&
+      false &&
       previousValue
     ) {
       currentValue = previousValue;

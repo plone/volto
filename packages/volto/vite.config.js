@@ -18,6 +18,9 @@ const addonsLoaderPath = createAddonsLoader(
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), nodePolyfills()],
+  server: {
+    port: 3000,
+  },
   resolve: {
     alias: [
       { find: /^~/, replacement: '' },
@@ -46,6 +49,8 @@ export default defineConfig({
     // By default, Vite doesn't include shims for NodeJS/
     // necessary for segment analytics lib to work
     __CLIENT__: true,
+    __SERVER__: false,
+    __DEVELOPMENT__: true,
   },
   optimizeDeps: {
     esbuildOptions: {

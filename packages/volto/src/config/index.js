@@ -241,3 +241,10 @@ ConfigRegistry.components = config.components;
 ConfigRegistry.slots = config.slots;
 
 applyAddonConfiguration(ConfigRegistry);
+
+// [Vite] This is needed to comply with the Volto add-on configuration.
+// TODO: In Volto 18, projectless builds this won't be needed anymore.
+// TODO: To deprecate in Volto 19.
+export default function applyConfig(config) {
+  return config;
+}

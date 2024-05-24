@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "classnames": "2.2.6",
+    "github-slugger": "1.4.0",
     "image-extensions": "1.1.0",
     "is-hotkey": "0.2.0",
     "is-url": "1.2.4",
