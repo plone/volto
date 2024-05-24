@@ -5,6 +5,7 @@ import {
   useQuery,
 } from '@tanstack/react-query';
 import { PloneClientConfig } from '../validation/config';
+import { flatMap, map, pickBy, toPairs } from 'lodash';
 
 /*
   configGetter is required instead of using the config directly to make sure
@@ -37,11 +38,21 @@ export const flattenToDottedNotation = (
 
     if (typeof value === 'object' && !Array.isArray(value) && value !== null) {
       Object.assign(result, flattenToDottedNotation(value, newKey));
+    } else if (
+      Array.isArray(value) &&
+      !value.some((item) => item && typeof item !== 'object')
+    ) {
+      value.forEach((item, _index) => {
+        Object.entries(item).forEach(([innerKey, innerValue]) => {
+          console.log(newKey, innerKey, innerValue);
+          result[`${newKey}:list:${innerKey}`] = innerValue;
+        });
+      });
     } else {
       result[newKey] = value;
     }
   }
-
+  console.log('cacca', result);
   return result;
 };
 
