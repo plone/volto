@@ -1,6 +1,6 @@
 import type { BlockViewProps } from '@plone/types';
 
-const TestBlockView = (props: BlockViewProps) => {
+const InputBlockView = (props: BlockViewProps) => {
   return (
     <div className="test-block">
       <div>Test Block</div>
@@ -9,4 +9,4 @@ const TestBlockView = (props: BlockViewProps) => {
   );
 };
 
-export default TestBlockView;
+export default InputBlockView;
