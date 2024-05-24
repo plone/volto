@@ -55,7 +55,7 @@ import {
 } from '@plone/volto/actions';
 import { compose } from 'redux';
 import config from '@plone/volto/registry';
-import SlotRenderer from '../../theme/SlotRenderer/SlotRenderer';
+import SlotRenderer from '@plone/volto/components/theme/SlotRenderer/SlotRenderer';
 
 /**
  * Form container class.
