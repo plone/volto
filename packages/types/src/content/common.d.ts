@@ -35,7 +35,7 @@ export type RelatedItem = {
   UID: string;
   description: string;
   image_field: '';
-  image_scales: Record<string, PreviewImage> | null;
+  image_scales: Record<string, Image> | null;
   review_state: string;
   title: string;
 };
@@ -46,7 +46,7 @@ export type ImageScale = {
   width: number;
 };
 
-export type PreviewImage = {
+export type Image = {
   'content-type': string;
   download: string;
   filename: string;
