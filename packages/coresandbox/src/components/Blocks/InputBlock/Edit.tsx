@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { SidebarPortal } from '@plone/volto/components';
 import Data from './Data';
 import type { BlockEditProps } from '@plone/types';
@@ -9,6 +9,10 @@ import aheadSVG from '@plone/volto/icons/ahead.svg';
 const InputBlockEdit = (props: BlockEditProps) => {
   const { selected, block, data, onChangeBlock } = props;
   const [url, setUrl] = React.useState(data?.url);
+
+  useEffect(() => {
+    setUrl(data?.url);
+  }, [data?.url]);
 
   return (
     <>
