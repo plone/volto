@@ -1,15 +1,9 @@
 import { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Input } from 'semantic-ui-react';
+
 import { Icon } from '@plone/volto/components';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
-
-/**
- * The simple text widget.
- *
- * It is the default fallback widget, so if no other widget is found based on
- * passed field properties, it will be used.
- */
 
 const TextWidget = (props) => {
   const {
@@ -24,13 +18,16 @@ const TextWidget = (props) => {
     maxLength,
     placeholder,
     isDisabled,
+    focus,
   } = props;
 
-  const ref = useRef(null);
+  const ref = useRef();
 
-  useEffect((focus) => {
-    if (focus) ref.current.focus();
-  }, []);
+  useEffect(() => {
+    if (focus) {
+      ref.current.focus();
+    }
+  }, [focus]);
 
   return (
     <FormFieldWrapper {...props} className="text">
@@ -69,7 +66,10 @@ TextWidget.propTypes = {
   description: PropTypes.string,
   required: PropTypes.bool,
   error: PropTypes.arrayOf(PropTypes.string),
+  value: PropTypes.string,
   focus: PropTypes.bool,
+  onChange: PropTypes.func,
+  onBlur: PropTypes.func,
   onClick: PropTypes.func,
   onEdit: PropTypes.func,
   onDelete: PropTypes.func,
