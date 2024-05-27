@@ -45,7 +45,7 @@ export function Breadcrumbs({
     <nav aria-label="breadcrumbs" role="navigation">
       <RACBreadcrumbs className={className} items={itemsWithRoot || items}>
         {(item) => (
-          <RACBreadcrumb className={className} id={item['@id']}>
+          <RACBreadcrumb id={item['@id']}>
             <Link href={item['@id']}>
               {item['@id'] === (root || '/') && <HomeIcon size="S" />}
               {item.title}
