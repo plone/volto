@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 16.31.9 (2024-05-27)
+
+### Bugfix
+
+- Allow X-Robots-Tag header in images/files middleware @sneridagh [#6043](https://github.com/plone/volto/issues/6043)
+
 ## 16.31.8 (2024-05-21)
 
 ### Internal
