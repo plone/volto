@@ -100,7 +100,6 @@ clean:
 setup:
 	# Setup ESlint for VSCode
 	node packages/scripts/vscodesettings.js
-	pnpm build:all
 
 ##### Documentation
 
@@ -144,12 +143,10 @@ docs-vale: bin/python docs-news  ## Install (once) and run Vale style, grammar, 
 	@echo
 	@echo "Vale is finished; look for any errors in the above output."
 
-.PHONY: netlify
-netlify:
-	pnpm build:registry
-	(cd packages/volto && pnpm build-storybook -o ../../_build/html/storybook)
-	pwd && pip install -r requirements-docs.txt
-	cd $(DOCS_DIR) && pwd && sphinx-build -b html $(ALLSPHINXOPTS) ../$(BUILDDIR)/html
+.PHONY: rtd-pr-preview
+rtd-pr-preview:
+	pip install -r requirements-docs.txt
+	cd $(DOCS_DIR) && sphinx-build -b html $(ALLSPHINXOPTS) ${READTHEDOCS_OUTPUT}/html/
 
 .PHONY: docs-test
 docs-test: docs-clean docs-linkcheckbroken docs-vale  ## Clean docs build, then run linkcheckbroken, vale
@@ -171,7 +168,7 @@ cypress-install:
 
 .PHONY: build-deps
 build-deps:
-	if [ ! -d $$(pwd)/registry/dist ]; then (pnpm build:deps); fi
+	if [ ! -d $$(pwd)/packages/registry/dist ]; then (pnpm build:deps); fi
 
 ##### Release
 
@@ -398,3 +395,7 @@ start-test-acceptance-server-detached: ## Start Test Acceptance Server Main Fixt
 .PHONY: stop-test-acceptance-server-detached
 stop-test-acceptance-server-detached: ## Stop Test Acceptance Server Main Fixture (docker container) in a detached (daemon) mode
 	docker kill plone-client-acceptance-server
+
+# include local overrides if present
+-include Makefile.local
+-include ../../../Makefile.local

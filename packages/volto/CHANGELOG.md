@@ -17,6 +17,67 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.32 (2024-05-23)
+
+### Feature
+
+- Removes navigation settings that are not used by Volto. @wesleybl [#5961](https://github.com/plone/volto/issues/5961)
+- Add Hindi translation in Volto. @iFlameing [#6015](https://github.com/plone/volto/issues/6015)
+
+### Bugfix
+
+- Return a redirect response from Volto server-side rendering if the API request was redirected. @JeffersonBledsoe @mamico [#4834](https://github.com/plone/volto/issues/4834)
+- Fixed separator edit class spilling outside of the block toolbar @JeffersonBledsoe [#6010](https://github.com/plone/volto/issues/6010)
+- Fix duplication of execution of the build dependencies script on start @sneridagh [#6022](https://github.com/plone/volto/issues/6022)
+- In the EditBlockWrapper, pass the `showRestricted` prop to the BlockChooserButton. @JeffersonBledsoe [#6026](https://github.com/plone/volto/issues/6026)
+- Replace relative Import Path with Alias Import in 'Form.jsx' @MAX-786 [#6040](https://github.com/plone/volto/issues/6040)
+- Allow X-Robots-Tag header in images/files middleware @sneridagh [#6043](https://github.com/plone/volto/issues/6043)
+
+### Internal
+
+- Use pnpm corepack instead of installing it in CI @sneridagh [#6038](https://github.com/plone/volto/issues/6038)
+- Add client and providers to the SSR externals list @sneridagh [#6045](https://github.com/plone/volto/issues/6045)
+
+### Documentation
+
+- Use Plone Sphinx Theme. Migrate from Netlify to Read the Docs for pull request preview builds. @stevepiercy [#6030](https://github.com/plone/volto/issues/6030)
+- Build documentation and Storybook only when their files change. @stevepiercy [#6037](https://github.com/plone/volto/issues/6037)
+
+## 18.0.0-alpha.31 (2024-05-15)
+
+### Bugfix
+
+- Replaced the spinner with a progress bar that shows the number of files being uploaded (Uploading x files out of y), and positioned the progress bar properly, while uploading a large number of files. @victorchrollo14 [#5620](https://github.com/plone/volto/issues/5620)
+- Disable `jsx-a11y/label-has-associated-control` so that we can use `eslint-plugin-jsx-a11y` version 6.8.0 if it's pulled by other dependencies. @ichim-david [#5785](https://github.com/plone/volto/issues/5785)
+- Fix some type definitions in JSDocs @sneridagh [#6014](https://github.com/plone/volto/issues/6014)
+- Use `pnpm` 9.1.1 @sneridagh
+  Remove `postinstall` script for building dependencies @sneridagh [#6017](https://github.com/plone/volto/issues/6017)
+
+### Internal
+
+- Allow `Makefile` options to be modified by a `Makefile.local` file if present. @ichim-david [#5997](https://github.com/plone/volto/issues/5997)
+- Modified `locking` and `block-listing` cypress tests 
+  to use more `assertions` instead of wait times in order to improve
+  the reliability of the tests. @ichim-david [#5998](https://github.com/plone/volto/issues/5998)
+
+### Documentation
+
+- Add sphinx-examples extension, update examples, align docs requirements with main documentation, and fix JSON example in upgrade guide. @stevepiercy [#6011](https://github.com/plone/volto/issues/6011)
+
+## 18.0.0-alpha.30 (2024-05-02)
+
+### Bugfix
+
+- Fix image disappears after pressing the Enter key on title field in image content-type. @iFlameing [#5973](https://github.com/plone/volto/issues/5973)
+- Defines the last 4 parameters of the `asyncConnect` function with optional. @wesleybl [#5985](https://github.com/plone/volto/issues/5985)
+- Fix server side sidebar rendering @sneridagh [#5993](https://github.com/plone/volto/issues/5993)
+
+### Internal
+
+- Update to use Plone 6.0.11 @sneridagh [#5989](https://github.com/plone/volto/issues/5989)
+- Flexibilize the pins for all ESlint deps, in Volto and generators @sneridagh [#5991](https://github.com/plone/volto/issues/5991)
+- Cleaned up useless injectIntl in DefaultView @pnicolli [#5994](https://github.com/plone/volto/issues/5994)
+
 ## 18.0.0-alpha.29 (2024-04-26)
 
 ### Feature

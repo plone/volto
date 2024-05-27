@@ -5,13 +5,13 @@
     "preinstall": "npx only-allow pnpm",
     "postinstall": "make setup",
     "watch": "pnpm --filter @plone/registry --filter @plone/client --filter @plone/components --filter @plone/providers watch",
-    "build:deps": "pnpm --parallel --filter @plone/registry build",
-    "build:all": "pnpm --parallel --filter @plone/registry --filter @plone/client --filter @plone/components --filter @plone/providers build",
-    "build:all:force": "pnpm --parallel --filter @plone/registry --filter @plone/client --filter @plone/components --filter @plone/providers build:force",
+    "build:deps": "pnpm --filter @plone/registry build",
+    "build:all": "pnpm --filter @plone/registry --filter @plone/client --filter @plone/components --filter @plone/providers build",
+    "build:all:force": "pnpm --filter @plone/registry --filter @plone/client --filter @plone/components --filter @plone/providers build:force",
     "build:registry": "pnpm --filter @plone/registry run build",
     "build:components": "pnpm --filter @plone/components run build",
     "build": "pnpm --filter @plone/volto build",
-    "start": "pnpm build:deps && pnpm --filter @plone/volto start",
+    "start": "pnpm --filter @plone/volto start",
     "start:project": "pnpm --filter plone run start",
     "lint": "pnpm build:all && eslint --max-warnings=0 '{apps,packages}/**/*.{js,jsx,ts,tsx}'",
     "lint:volto": "pnpm --filter @plone/volto run lint",
@@ -39,7 +39,7 @@
     "typescript": "^5.4.5",
     "vitest": "^1.5.0"
   },
-  "packageManager": "pnpm@8.15.4",
+  "packageManager": "pnpm@9.1.1",
   "pnpm": {
     "overrides": {
       "@pmmmwh/react-refresh-webpack-plugin": "0.5.11",

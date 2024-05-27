@@ -8,6 +8,18 @@
 
 <!-- towncrier release notes start -->
 
+## 9.0.0-alpha.16 (2024-05-15)
+
+### Bugfix
+
+- Disable `jsx-a11y/label-has-associated-control` so that we can use `eslint-plugin-jsx-a11y` version 6.8.0 if it's pulled by other dependencies. @ichim-david [#5785](https://github.com/plone/volto/issues/5785)
+
+## 9.0.0-alpha.15 (2024-05-02)
+
+### Internal
+
+- Flexibilize the pins for all ESlint deps, in Volto and generators @sneridagh [#5991](https://github.com/plone/volto/issues/5991)
+
 ## 9.0.0-alpha.14 (2024-03-24)
 
 ### Internal

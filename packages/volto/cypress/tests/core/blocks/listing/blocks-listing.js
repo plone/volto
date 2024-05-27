@@ -1077,38 +1077,42 @@ describe('Listing Block Tests', () => {
     cy.wait('@save');
     cy.wait('@content');
 
-    // The wait is needed to solve the flakyness introduced because that component
-    // is removed momentarilly from the DOM when saving
-    cy.wait(1000);
     //test second pagination click
-    cy.get('.ui.pagination.menu a[value="2"]').first().click();
+    cy.get('.ui.pagination.menu a[value="2"]')
+      .first()
+      .should('be.visible')
+      .click();
     //test f5
     cy.reload();
     cy.isInHTML({ parent: '.listing-item', content: 'My Folder 3' });
     cy.url().should('include', '=2');
     // const listing2 = cy.get('.ui.pagination.menu').last();
     //test third pagination click on second listing
-    cy.get('.ui.pagination.menu a[value="3"]').first().click();
+    cy.get('.ui.pagination.menu a[value="3"]')
+      .first()
+      .should('be.visible')
+      .click();
     //test f5
     cy.reload();
     cy.isInHTML({ parent: '.listing-item', content: 'My Folder 3' });
     cy.url().should('include', '=2');
     cy.url().should('include', '=3');
     //on logo click go to home page and remove ?page=2 from path
-    cy.get('.logo').first().click();
+    cy.get('.logo').first().should('be.visible').click();
     cy.url().should('not.include', '=2');
     cy.url().should('not.include', '=3');
 
-    // we need to wait for the page to load otherwise we navigate /my-page
-    // followed by / from the logo click
-    cy.wait(1000);
-
     cy.navigate('/my-page');
-    cy.wait(1000);
-    cy.get('.ui.pagination.menu a[value="2"]').first().click({ force: true });
-    cy.get('.ui.pagination.menu a[value="3"]').first().click({ force: true });
+    cy.get('.ui.pagination.menu a[value="2"]')
+      .first()
+      .should('be.visible')
+      .click({ force: true });
+    cy.get('.ui.pagination.menu a[value="3"]')
+      .first()
+      .should('be.visible')
+      .click({ force: true });
     cy.go(-1);
-    cy.wait(1000);
+    cy.wait('@content');
     cy.isInHTML({ parent: '.listing-item', content: 'My Folder 3' });
     cy.url().should('not.include', '=3');
     cy.go(-1);

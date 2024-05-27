@@ -13,11 +13,11 @@ import {
   Header,
   Icon,
   Image,
-  Loader,
   Modal,
   Table,
   Segment,
   Input,
+  Progress,
 } from 'semantic-ui-react';
 import loadable from '@loadable/component';
 import { concat, filter, map } from 'lodash';
@@ -39,6 +39,14 @@ const messages = defineMessages({
     id: '{count, plural, one {Upload {count} file} other {Upload {count} files}}',
     defaultMessage:
       '{count, plural, one {Upload {count} file} other {Upload {count} files}}',
+  },
+  filesUploaded: {
+    id: 'Files uploaded: {uploadedFiles}',
+    defaultMessage: 'Files uploaded: {uploadedFiles}',
+  },
+  totalFilesToUpload: {
+    id: 'Total files to upload: {totalFiles}',
+    defaultMessage: 'Total files to upload: {totalFiles}',
   },
 });
 
@@ -65,6 +73,7 @@ class ContentsUploadModal extends Component {
     open: PropTypes.bool.isRequired,
     onOk: PropTypes.func.isRequired,
     onCancel: PropTypes.func.isRequired,
+    uploadedFiles: PropTypes.number,
     multiple: PropTypes.bool,
     minSize: PropTypes.number,
     maxSize: PropTypes.number,
@@ -88,9 +97,9 @@ class ContentsUploadModal extends Component {
     this.onSubmit = this.onSubmit.bind(this);
     this.state = {
       files: [],
+      totalFiles: 0,
     };
   }
-
   /**
    * Component will receive props
    * @method componentWillReceiveProps
@@ -120,6 +129,7 @@ class ContentsUploadModal extends Component {
           index !== parseInt(event.target.getAttribute('value'), 10),
       ),
     });
+    this.setState((prevState) => ({ totalFiles: prevState.totalFiles - 1 }));
   }
 
   /**
@@ -142,6 +152,8 @@ class ContentsUploadModal extends Component {
     this.setState({
       files: concat(this.state.files, validFiles),
     });
+
+    this.setState({ totalFiles: validFiles.length });
   };
 
   /**
@@ -154,8 +166,8 @@ class ContentsUploadModal extends Component {
     this.setState({
       files: [],
     });
+    this.setState({ totalFiles: 0 });
   }
-
   /**
    * Name change handler
    * @method onChangeFileName
@@ -234,13 +246,23 @@ class ContentsUploadModal extends Component {
           <Header>
             <FormattedMessage id="Upload files" defaultMessage="Upload files" />
           </Header>
+
           <Dimmer active={this.props.request.loading}>
-            <Loader>
-              <FormattedMessage
-                id="Uploading files"
-                defaultMessage="Uploading files"
-              />
-            </Loader>
+            <div className="progress-container">
+              <Progress
+                className="progress-bar"
+                value={this.props.uploadedFiles}
+                total={this.state.totalFiles}
+              >
+                {this.props.intl.formatMessage(messages.filesUploaded, {
+                  uploadedFiles: this.props.uploadedFiles,
+                })}
+                <br />
+                {this.props.intl.formatMessage(messages.totalFilesToUpload, {
+                  totalFiles: this.state.totalFiles,
+                })}
+              </Progress>
+            </div>
           </Dimmer>
           <Modal.Content>
             <Dropzone
@@ -388,6 +410,7 @@ export default compose(
   connect(
     (state) => ({
       request: state.content.subrequests?.[SUBREQUEST] || {},
+      uploadedFiles: state.content.uploadedFiles,
     }),
     { createContent },
   ),
