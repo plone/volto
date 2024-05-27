@@ -3,7 +3,7 @@ import { z } from 'zod';
 const query = z.object({
   i: z.string(),
   o: z.string(),
-  v: z.array(z.string()),
+  v: z.union([z.string(), z.array(z.string())]),
 });
 
 export const querystringSearchDataSchema = z.object({
