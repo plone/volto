@@ -15,14 +15,14 @@
     "@plone/components": "workspace: *",
     "@plone/registry": "workspace: *",
     "@plone/providers": "workspace: *",
-    "@tanstack/react-query": "^5.24.6",
-    "@tanstack/react-query-devtools": "^5.24.6",
+    "@tanstack/react-query": "^5.37.1",
     "next": "14.2.2",
     "react": "^18",
     "react-aria-components": "^1.1.1",
     "react-dom": "^18"
   },
   "devDependencies": {
+    "@tanstack/react-query-devtools": "^5.37.1",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

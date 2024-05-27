@@ -21,10 +21,13 @@ export const getSearch = async ({
 
   const options: ApiRequestParams = {
     config,
-    params: flattenedQuery,
+    params: {
+      ...flattenedQuery,
+      'path.query': undefined,
+    },
   };
 
-  return apiRequest('get', '/@search', options);
+  return apiRequest('get', `${query.path?.query ?? ''}/@search`, options);
 };
 
 export const getSearchQuery = ({ query, config }: SearchArgs) => ({

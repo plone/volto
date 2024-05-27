@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.9 (2024-05-23)
+
+### Feature
+
+- Improved several components and styles @pnicolli [#6029](https://github.com/plone/volto/issues/6029)
+
 ## 2.0.0-alpha.8 (2024-05-13)
 
 ### Bugfix
