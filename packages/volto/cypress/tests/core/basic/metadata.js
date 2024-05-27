@@ -41,7 +41,11 @@ describe('Add Content Tests', () => {
   });
 
   it('After removing value of widget the focus should be removed from the field', () => {
-    cy.get('#field-creators').get('.react-select__multi-value__remove').click();
+    cy.get('#field-creators').type('aaa');
+    cy.get('#field-creators')
+      .type('aaa{Enter}')
+      .get('.react-select__multi-value__remove')
+      .click();
     cy.getSlateEditorAndType(
       'Test if all the text will be in this slate block',
     ).contains('Test if all the text will be in this slate block');
