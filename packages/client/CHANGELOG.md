@@ -8,6 +8,40 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.15 (2024-05-23)
+
+### Breaking
+
+- Provider has been moved to `@plone/providers` @sneridagh [#5887](https://github.com/plone/volto/pull/5887)
+
+### Bugfix
+
+- Update `vite` to 5.1.5. @davisagli [#5942](https://github.com/plone/volto/pull/5942)
+- Fixed path search bug @pnicolli [#6029](https://github.com/plone/volto/pull/6029)
+
+### Internal
+
+- Sync TypeScript version @sneridagh [#5912](https://github.com/plone/volto/pull/5912)
+- Improvements to the monorepo setup with utilities, especially ESLint. Build cached option to speedup operations. @sneridagh [#5969](https://github.com/plone/volto/pull/5969)
+- Saner defaults for building deps, switch default to cached, add `build:force` command @sneridagh [#5980](https://github.com/plone/volto/pull/5980)
+- Un-pin `@tanstack/react-query` dependency @sneridagh [#6045](https://github.com/plone/volto/pull/6045)
+
+## 1.0.0-alpha.14 (2024-03-05)
+
+### Internal
+
+- Upgrade TSQ to latest @sneridagh [#5824](https://github.com/plone/volto/pull/5824)
+
+## 1.0.0-alpha.13 (2024-03-02)
+
+### Internal
+
+- Update dependencies @sneridagh [#5815](https://github.com/plone/volto/pull/5815)
+
+### Documentation
+
+- Reorganize `README.md`, merging content into authoritative locations. Add `awesome_bot` to check links in all READMEs. @stevepiercy [#5437](https://github.com/plone/volto/pull/5437)
+
 ## 1.0.0-alpha.12 (2024-01-02)
 
 ### Internal

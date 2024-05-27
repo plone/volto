@@ -3,7 +3,10 @@
  * @module components/manage/Form/Form
  */
 
-import { BlocksForm, Field, Icon, Toast } from '@plone/volto/components';
+import { Icon, Toast } from '@plone/volto/components';
+import { Field, BlocksForm } from '@plone/volto/components/manage/Form';
+import BlocksToolbar from '@plone/volto/components/manage/Form/BlocksToolbar';
+import UndoToolbar from '@plone/volto/components/manage/Form/UndoToolbar';
 import {
   difference,
   FormValidation,
@@ -44,7 +47,6 @@ import {
 } from 'semantic-ui-react';
 import { v4 as uuid } from 'uuid';
 import { toast } from 'react-toastify';
-import { BlocksToolbar, UndoToolbar } from '@plone/volto/components';
 import {
   setMetadataFieldsets,
   resetMetadataFocus,
@@ -53,7 +55,7 @@ import {
 } from '@plone/volto/actions';
 import { compose } from 'redux';
 import config from '@plone/volto/registry';
-import SlotRenderer from '../../theme/SlotRenderer/SlotRenderer';
+import SlotRenderer from '@plone/volto/components/theme/SlotRenderer/SlotRenderer';
 
 /**
  * Form container class.
@@ -309,7 +311,7 @@ class Form extends Component {
       // Set focus to first input if available
       document
         .querySelector(`.field-wrapper-${this.props.metadataFieldFocus} input`)
-        .focus();
+        ?.focus();
 
       // Reset focus field
       this.props.resetMetadataFocus();
@@ -719,6 +721,10 @@ class Form extends Component {
               showRestricted={this.props.showRestricted}
               editable={this.props.editable}
               isMainForm={this.props.editable}
+              // Properties to pass to the BlocksForm to match the View ones
+              history={this.props.history}
+              location={this.props.location}
+              token={this.props.token}
             />
             {this.state.isClient &&
               this.state.sidebarMetadataIsAvailable &&
@@ -839,7 +845,7 @@ class Form extends Component {
                             {...schema.properties[field]}
                             id={field}
                             formData={formData}
-                            fieldSet={item.title.toLowerCase()}
+                            fieldSet={item.id}
                             focus={this.state.inFocus[field]}
                             value={formData?.[field]}
                             required={schema.required.indexOf(field) !== -1}

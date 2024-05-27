@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { cloneDeep, uniqBy } from 'lodash';
 import { useIntl } from 'react-intl';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch, shallowEqual } from 'react-redux';
+import jwtDecode from 'jwt-decode';
 import { toast } from 'react-toastify';
 import { Button, Checkbox } from 'semantic-ui-react';
-import { messages } from '@plone/volto/helpers';
-import { listGroups } from '@plone/volto/actions';
+import { messages, isManager, canAssignGroup } from '@plone/volto/helpers';
+import { listGroups, getUser } from '@plone/volto/actions';
 import { Icon, Toast } from '@plone/volto/components';
 import { updateGroup, listUsers } from '@plone/volto/actions';
 
@@ -24,6 +25,16 @@ const ListingTemplate = ({
 
   const pageSize = 25;
   const [userLimit, setUserLimit] = useState(pageSize);
+
+  const token = useSelector((state) => state.userSession.token, shallowEqual);
+  const user = useSelector((state) => state.users.user);
+  const userId = token ? jwtDecode(token).sub : '';
+
+  useEffect(() => {
+    dispatch(getUser(userId));
+  }, [dispatch, userId]);
+
+  const isUserManager = isManager(user);
 
   // y axis
   let items = useSelector((state) => state.users.users);
@@ -51,12 +62,17 @@ const ListingTemplate = ({
 
   // x axis
   let groups = useSelector((state) => state.groups.groups);
+
+  const getRoles = (group_id) => {
+    return groups.find((group) => group.id === group_id)?.roles || [];
+  };
+
   let show_matrix_options =
     !many_groups ||
     (many_groups && query_group.length > 1) ||
     groups_filter.length > 0 ||
     add_joined_groups;
-  let matrix_options; // list of Objects (value, label)
+  let matrix_options; // list of Objects (value, label, roles)
   if (show_matrix_options) {
     matrix_options =
       !many_groups || (many_groups && query_group.length > 1)
@@ -90,6 +106,10 @@ const ListingTemplate = ({
       }
       return 0;
     });
+    matrix_options = matrix_options.map((matrix_option) => ({
+      ...matrix_option,
+      roles: getRoles(matrix_option.value),
+    }));
   } else {
     matrix_options = [];
   }
@@ -126,7 +146,7 @@ const ListingTemplate = ({
         },
       }),
     )
-      .then((resp) => {
+      .then(() => {
         singleClick &&
           dispatch(
             listUsers({
@@ -209,13 +229,14 @@ const ListingTemplate = ({
                     <Checkbox
                       className="toggle-target"
                       defaultChecked={false}
-                      onChange={(event, { checked }) =>
+                      onChange={(_event, { checked }) =>
                         onSelectAllHandler(
                           matrix_option.value,
                           items.map((el) => el.id),
                           checked,
                         )
                       }
+                      disabled={!canAssignGroup(isUserManager, matrix_option)}
                     />
                   </div>
                 ))}
@@ -251,13 +272,14 @@ const ListingTemplate = ({
                         checked={item.groups?.items
                           ?.map((el) => el.id)
                           .includes(matrix_option.value)}
-                        onChange={(event, { checked }) => {
+                        onChange={(_event, { checked }) => {
                           onSelectOptionHandler(
                             { y: matrix_option.value, x: item.id },
                             checked,
                             true,
                           );
                         }}
+                        disabled={!canAssignGroup(isUserManager, matrix_option)}
                       />
                     ))}
                   </div>

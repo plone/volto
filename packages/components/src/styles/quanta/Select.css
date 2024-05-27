@@ -30,7 +30,7 @@ from the basic styles. Then, if people override the basic ones, then they won't 
   }
 }
 
-.react-aria-Popover[data-trigger='Select'] {
+.q.react-aria-Popover[data-trigger='Select'] {
   .react-aria-ListBoxItem {
     --highlight-background: var(--basic-300);
     --highlight-foreground: var(--text-color);

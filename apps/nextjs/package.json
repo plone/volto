@@ -6,30 +6,28 @@
     "dev": "next dev",
     "check-ts": "tsc --project tsconfig.json",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "prettier": "prettier --check 'src/**/*.{js,jsx,ts,tsx}'",
-    "prettier:fix": "prettier --write 'src/**/*.{js,jsx,ts,tsx}'"
+    "start:prod": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
+    "@plone/blocks": "workspace: *",
     "@plone/client": "workspace: *",
     "@plone/components": "workspace: *",
-    "@tanstack/react-query": "^5.0.5",
-    "@tanstack/react-query-devtools": "^5.4.2",
-    "next": "14.0.4",
+    "@plone/registry": "workspace: *",
+    "@plone/providers": "workspace: *",
+    "@tanstack/react-query": "^5.37.1",
+    "next": "14.2.2",
     "react": "^18",
-    "react-aria-components": "^1.0.0-rc.0",
+    "react-aria-components": "^1.1.1",
     "react-dom": "^18"
   },
   "devDependencies": {
+    "@tanstack/react-query-devtools": "^5.37.1",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
-    "eslint-config-next": "14.0.4",
-    "mrs-developer": "^2.1.1",
-    "prettier": "3.0.3",
-    "sass": "^1.69.1",
-    "typescript": "5.2.2"
+    "eslint-config-next": "14.2.2",
+    "typescript": "^5.4.5"
   }
 }

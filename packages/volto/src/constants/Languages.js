@@ -11,6 +11,7 @@ module.exports = {
   eu: 'Euskara',
   fi: 'Suomi',
   fr: 'Français',
+  hi: 'Hindi',
   it: 'Italiano',
   nl: 'Nederlands',
   ro: 'Română',

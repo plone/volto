@@ -67,7 +67,10 @@ cypress-install:
 
 .PHONY: build-deps
 build-deps:
-	if [ ! -d $$(pwd)/../registry/dist ]; then (cd ../../ && pnpm build:deps); fi
+	@if [ ! -d $$(pwd)/../registry/dist ] || [ $$(find $$(pwd)/../registry -newer $$(pwd)/../registry/dist -print -quit) ]; then \
+		(cd ../../ && pnpm build:deps); \
+	fi
+
 
 ##### Release (it runs the one inside)
 
@@ -144,8 +147,8 @@ full-test-acceptance-seamless: ## Runs Seamless Core Full Acceptance Testing in 
 ######### Project Acceptance tests
 
 .PHONY: start-test-acceptance-frontend-project
-start-test-acceptance-frontend-project: build-deps ## Start the Project Acceptance Frontend Fixture
-	(cd ../../my-volto-app && RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod)
+start-test-acceptance-frontend-project: ## Start the Project Acceptance Frontend Fixture
+	(cd ../../my-volto-app && RAZZLE_API_PATH=http://127.0.0.1:55001/plone yarn build && yarn start:prod)
 
 ######### CoreSandbox Acceptance tests
 

@@ -21,5 +21,5 @@ export const controlPanelsIcons: {
     aliases: string;
     relations: string;
 };
-export function filterControlPanels(controlpanels: any): any;
+export function filterControlPanels(controlpanels?: any[]): any[];
 export function filterControlPanelsSchema(controlpanel: any): any;

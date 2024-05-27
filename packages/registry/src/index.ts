@@ -27,7 +27,7 @@ export type ConfigData = {
 };
 
 type GetComponentResult = {
-  component: React.ComponentType;
+  component: React.ComponentType<any>;
 };
 
 export type ConfigType = InstanceType<typeof Config>;
@@ -249,7 +249,10 @@ class Config {
       const hasRegisteredNoPredicatesComponent = this._data.slots?.[
         slot
       ]?.data?.[name]?.find(({ predicates }) => !predicates);
-      if (hasRegisteredNoPredicatesComponent) {
+      if (
+        hasRegisteredNoPredicatesComponent &&
+        component !== hasRegisteredNoPredicatesComponent.component
+      ) {
         throw new Error(
           `There is already registered a component ${name} for the slot ${slot}. You can only register one slot component with no predicates per slot.`,
         );
@@ -357,11 +360,21 @@ class Config {
       }
       switch (action) {
         case 'after':
-          result.splice(targetIdx, 0, removed);
-          break;
+          if (targetIdx < origin) {
+            result.splice(targetIdx + 1, 0, removed);
+            break;
+          } else {
+            result.splice(targetIdx, 0, removed);
+            break;
+          }
         case 'before':
-          result.splice(targetIdx - 1, 0, removed);
-          break;
+          if (targetIdx > origin) {
+            result.splice(targetIdx - 1, 0, removed);
+            break;
+          } else {
+            result.splice(targetIdx, 0, removed);
+            break;
+          }
         case 'last':
           result.push(removed);
           break;

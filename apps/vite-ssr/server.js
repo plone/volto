@@ -1,14 +1,18 @@
 import fs from 'node:fs/promises';
 import express from 'express';
 import getPort, { portNumbers } from 'get-port';
+import dns from 'dns';
 
 const isTest = process.env.NODE_ENV === 'test' || !!process.env.VITE_TEST_BUILD;
+
+// If DNS returns both ipv4 and ipv6 addresses, prefer ipv4
 
 export async function createServer(
   root = process.cwd(),
   isProd = process.env.NODE_ENV === 'production',
   hmrPort,
 ) {
+  dns.setDefaultResultOrder('ipv4first');
   const app = express();
 
   const prodIndexHtml = isProd
@@ -93,8 +97,12 @@ export async function createServer(
 
 if (!isTest) {
   createServer().then(async ({ app }) =>
-    app.listen(await getPort({ port: portNumbers(3000, 3100) }), () => {
-      console.log('Client Server: http://localhost:3000');
-    }),
+    app.listen(
+      await getPort({ port: portNumbers(3000, 3100) }),
+      '0.0.0.0',
+      () => {
+        console.log('Client Server: http://localhost:3000');
+      },
+    ),
   );
 }
