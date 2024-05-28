@@ -27,7 +27,8 @@ const TextWidget = (props) => {
     if (focus) {
       ref.current.focus();
     }
-  }, [focus]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <FormFieldWrapper {...props} className="text">
@@ -63,41 +64,4 @@ export default TextWidget;
 TextWidget.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  description: PropTypes.string,
-  required: PropTypes.bool,
-  error: PropTypes.arrayOf(PropTypes.string),
-  value: PropTypes.string,
-  focus: PropTypes.bool,
-  onChange: PropTypes.func,
-  onBlur: PropTypes.func,
-  onClick: PropTypes.func,
-  onEdit: PropTypes.func,
-  onDelete: PropTypes.func,
-  icon: PropTypes.shape({
-    xmlns: PropTypes.string,
-    viewBox: PropTypes.string,
-    content: PropTypes.string,
-  }),
-  iconAction: PropTypes.func,
-  minLength: PropTypes.number,
-  maxLength: PropTypes.number,
-  wrapped: PropTypes.bool,
-  placeholder: PropTypes.string,
-};
-
-TextWidget.defaultProps = {
-  description: null,
-  required: false,
-  error: [],
-  value: null,
-  onChange: () => {},
-  onBlur: () => {},
-  onClick: () => {},
-  onEdit: null,
-  onDelete: null,
-  focus: false,
-  icon: null,
-  iconAction: null,
-  minLength: null,
-  maxLength: null,
 };
