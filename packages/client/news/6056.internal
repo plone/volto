@@ -1,0 +1,1 @@
+Remove custom test runner, using `vitest` config instead @sneridagh
