@@ -3052,6 +3052,7 @@ msgstr "Etichetta del campo di ricerca"
 
 #. Default: "Search results"
 #: components/manage/Blocks/Search/components/SearchDetails
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/theme/Search/Search
 msgid "Search results"
 msgstr "Risultati della ricerca"
