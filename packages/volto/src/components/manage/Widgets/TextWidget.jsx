@@ -27,7 +27,8 @@ const TextWidget = (props) => {
     if (focus) {
       ref.current.focus();
     }
-  }, [focus]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <FormFieldWrapper {...props} className="text">
