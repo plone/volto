@@ -5,6 +5,8 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: './setupTesting.ts',
+    fileParallelism: false,
+    pool: 'forks',
     poolOptions: {
       threads: {
         singleThread: true,
