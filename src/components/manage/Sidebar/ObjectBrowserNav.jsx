@@ -46,7 +46,7 @@ const ObjectBrowserNav = ({
   };
 
   return (
-    <Segment as={view === 'icons' ? 'div' : 'ul'} className="object-listing">
+    <Segment as="ul" className="object-listing">
       {currentSearchResults &&
         currentSearchResults.items.map((item) =>
           view === 'icons' ? (
