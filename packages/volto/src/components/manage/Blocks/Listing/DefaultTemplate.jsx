@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ConditionalLink, UniversalLink } from '@plone/volto/components';
-import { flattenToAppURL } from '@plone/volto/helpers';
-import { isInternalURL } from '@plone/volto/helpers/Url/Url';
+import RenderAccordingToContentType from '@plone/volto/components/manage/Blocks/Listing/RenderAccordingToContentType';
+import Link from '@plone/volto/components/manage/Blocks/Listing/Link';
 
 const DefaultTemplate = ({
   headlineTag,
@@ -11,18 +10,8 @@ const DefaultTemplate = ({
   linkHref,
   isEditMode,
 }) => {
-  let link = null;
   let href = linkHref?.[0]?.['@id'] || '';
-
-  if (isInternalURL(href)) {
-    link = (
-      <ConditionalLink to={flattenToAppURL(href)} condition={!isEditMode}>
-        {linkTitle || href}
-      </ConditionalLink>
-    );
-  } else if (href) {
-    link = <UniversalLink href={href}>{linkTitle || href}</UniversalLink>;
-  }
+  let title = linkTitle || href;
 
   const getTitleTag = (tag) => {
     const level = tag.slice(-1);
@@ -38,18 +27,14 @@ const DefaultTemplate = ({
     <>
       <div className="items">
         {items.map((item) => (
-          <div className="listing-item" key={item['@id']}>
-            <ConditionalLink item={item} condition={!isEditMode}>
-              <div className="listing-body">
-                <TitleTag>{item.title ? item.title : item.id}</TitleTag>
-                <p>{item.description}</p>
-              </div>
-            </ConditionalLink>
-          </div>
+          <RenderAccordingToContentType
+            isEditMode={isEditMode}
+            TitleTag={TitleTag}
+            item={item}
+          />
         ))}
       </div>
-
-      {link && <div className="footer">{link}</div>}
+      <Link href={href} title={title} isEditMode={isEditMode} />
     </>
   );
 };
