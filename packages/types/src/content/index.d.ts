@@ -77,7 +77,7 @@ export interface Content {
   subjects: [];
   table_of_contents: boolean | null;
   title: string;
-  type_tile: string | null;
+  type_title: string | null;
   version: number | null;
   versioning_enabled: boolean | null;
   working_copy: unknown;
