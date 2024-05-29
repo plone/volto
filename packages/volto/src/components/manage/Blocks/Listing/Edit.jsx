@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, useIntl } from 'react-intl';
 import { isEqual } from 'lodash';
@@ -32,6 +32,26 @@ const Edit = React.memo(
       (data?.querystring?.query?.length
         ? intl.formatMessage(messages.results)
         : intl.formatMessage(messages.items));
+
+    const newIdMapping = useMemo(
+      () => ({
+        default: 'list',
+        summary: 'list_with_images',
+      }),
+      [],
+    );
+
+    useEffect(() => {
+      if (data.variation) {
+        const id = newIdMapping[data.variation];
+        if (id) {
+          onChangeBlock(block, {
+            ...data,
+            variation: id,
+          });
+        }
+      }
+    }, [data, onChangeBlock, block, newIdMapping]);
 
     return (
       <>

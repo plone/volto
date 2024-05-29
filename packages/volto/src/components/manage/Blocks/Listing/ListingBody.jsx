@@ -63,6 +63,22 @@ const ListingBody = withQuerystringResults((props) => {
       variation?.template ?? defaultVariation?.template ?? null;
   }
 
+  const newIdMapping = useMemo(
+    () => ({
+      default: 'list',
+      summary: 'list_with_images',
+    }),
+    [],
+  );
+
+  if (data.variation) {
+    const id = newIdMapping[data.variation];
+    if (id) {
+      const newTemplate = variations.find((item) => item.id === id);
+      ListingBodyTemplate = newTemplate.template;
+    }
+  }
+
   const listingRef = createRef();
 
   const NoResults = variation?.noResultsComponent
