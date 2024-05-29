@@ -1665,6 +1665,7 @@ msgstr "Cronologia di {title}"
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsBreadcrumbs
 #: components/manage/Contents/ContentsBreadcrumbsHomeItem
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/theme/Breadcrumbs/Breadcrumbs
 #: components/theme/Logo/Logo
 msgid "Home"
@@ -1674,6 +1675,11 @@ msgstr "Home"
 #: components/manage/Contents/Contents
 msgid "ID"
 msgstr "ID"
+
+#. Default: "Icon View"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Icon View"
+msgstr ""
 
 #. Default: "If all of the following conditions are met:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -1998,6 +2004,11 @@ msgstr "Elementi collegati a questo contenuto con un collegamento ipertestuali n
 #: components/manage/Toolbar/More
 msgid "Links and references"
 msgstr "Link e collegamenti"
+
+#. Default: "List View"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "List View"
+msgstr ""
 
 #. Default: "Listing"
 #: components/manage/Blocks/Listing/schema
