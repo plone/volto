@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Config, ConfigType } from '@plone/registry';
+import { type ConfigType } from '@plone/registry';
 
 export const PloneRegistryContext = React.createContext<ConfigType | undefined>(
   undefined,
