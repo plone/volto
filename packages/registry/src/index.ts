@@ -32,7 +32,7 @@ type GetComponentResult = {
 
 export type ConfigType = InstanceType<typeof Config>;
 
-class Config {
+export class Config {
   public _data: ConfigData | Record<string, never>;
   static instance: ConfigType;
 
