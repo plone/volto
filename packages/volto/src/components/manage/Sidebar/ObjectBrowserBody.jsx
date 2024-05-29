@@ -43,6 +43,18 @@ const messages = defineMessages({
     id: 'Search SVG',
     defaultMessage: 'Search SVG',
   },
+  iconView: {
+    id: 'Icon View',
+    defaultMessage: 'Icon View',
+  },
+  listView: {
+    id: 'List View',
+    defaultMessage: 'List View',
+  },
+  home: {
+    id: 'Home',
+    defaultMessage: 'Home',
+  },
   of: { id: 'Selected items - x of y', defaultMessage: 'of' },
 });
 
@@ -467,12 +479,26 @@ class ObjectBrowserBody extends Component {
         </header>
         <Segment secondary className="breadcrumbs" vertical>
           {this.props.mode === 'image' && (
-            <Icon
-              name={this.state.view === 'list' ? iconsSVG : listSVG}
-              size="24px"
-              className="mode-switch"
+            <button
               onClick={this.toggleView}
-            />
+              className="mode-switch"
+              aria-label={this.props.intl.formatMessage(
+                this.state.view === 'list'
+                  ? messages.iconView
+                  : messages.listView,
+              )}
+            >
+              <Icon
+                name={this.state.view === 'list' ? iconsSVG : listSVG}
+                size="24px"
+                className="mode-switch"
+                title={this.props.intl.formatMessage(
+                  this.state.view === 'list'
+                    ? messages.iconView
+                    : messages.listView,
+                )}
+              />
+            </button>
           )}
           {!this.state.showSearchInput ? (
             <Breadcrumb>
@@ -485,17 +511,25 @@ class ObjectBrowserBody extends Component {
                         {index === 0 ? (
                           <Breadcrumb.Section
                             onClick={() => this.navigateTo('/')}
+                            role="button"
+                            aria-label={this.props.intl.formatMessage(
+                              messages.home,
+                            )}
                           >
                             <Icon
                               className="home-icon"
                               name={homeSVG}
                               size="18px"
+                              title={this.props.intl.formatMessage(
+                                messages.home,
+                              )}
                             />
                           </Breadcrumb.Section>
                         ) : (
                           <>
                             <Breadcrumb.Divider key={`divider-${item.url}`} />
                             <Breadcrumb.Section
+                              role="button"
                               onClick={() =>
                                 this.navigateTo(
                                   items.slice(0, index + 1).join('/'),
@@ -510,8 +544,17 @@ class ObjectBrowserBody extends Component {
                     );
                   })
               ) : (
-                <Breadcrumb.Section onClick={() => this.navigateTo('/')}>
-                  <Icon className="home-icon" name={homeSVG} size="18px" />
+                <Breadcrumb.Section
+                  onClick={() => this.navigateTo('/')}
+                  aria-label={this.props.intl.formatMessage(messages.home)}
+                >
+                  <Icon
+                    className="home-icon"
+                    name={homeSVG}
+                    role="button"
+                    size="18px"
+                    title={this.props.intl.formatMessage(messages.home)}
+                  />
                 </Breadcrumb.Section>
               )}
             </Breadcrumb>
