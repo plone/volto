@@ -48,8 +48,7 @@
   "scripts": {
     "build": "parcel build",
     "build:force": "parcel build --no-cache",
-    "test": "node testRunner.js",
-    "vitest": "vitest",
+    "test": "vitest",
     "check-ts": "tsc --project tsconfig.json",
     "coverage": "vitest run --coverage --no-threads",
     "dry-release": "release-it --dry-run",
