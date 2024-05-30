@@ -1,0 +1,1 @@
+Add Listing variants based on content type. @iFlameing
