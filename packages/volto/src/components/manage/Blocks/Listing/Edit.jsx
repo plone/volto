@@ -33,7 +33,7 @@ const Edit = React.memo(
         ? intl.formatMessage(messages.results)
         : intl.formatMessage(messages.items));
 
-    const newIdMapping = useMemo(
+    const idMapping = useMemo(
       () => ({
         default: 'list',
         summary: 'list_with_images',
@@ -43,7 +43,7 @@ const Edit = React.memo(
 
     useEffect(() => {
       if (data.variation) {
-        const id = newIdMapping[data.variation];
+        const id = idMapping[data.variation];
         if (id) {
           onChangeBlock(block, {
             ...data,
@@ -51,7 +51,7 @@ const Edit = React.memo(
           });
         }
       }
-    }, [data, onChangeBlock, block, newIdMapping]);
+    }, [data, onChangeBlock, block, idMapping]);
 
     return (
       <>

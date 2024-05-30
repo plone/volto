@@ -230,6 +230,9 @@ export { default as ViewHTMLBlock } from '@plone/volto/components/manage/Blocks/
 
 export { default as ListingBlockBody } from '@plone/volto/components/manage/Blocks/Listing/ListingBody';
 export { default as ListingBlockData } from '@plone/volto/components/manage/Blocks/Listing/ListingData';
+export { default as ListingNewsItemTemplate } from '@plone/volto/components/manage/Blocks/Listing/ListNewsItem';
+export { default as ListingEventItemTemplate } from '@plone/volto/components/manage/Blocks/Listing/ListEventItem';
+export { default as ListingPageItemTemplate } from '@plone/volto/components/manage/Blocks/Listing/ListPage';
 
 export { default as ImageSidebar } from '@plone/volto/components/manage/Blocks/Image/ImageSidebar';
 export { default as MapsSidebar } from '@plone/volto/components/manage/Blocks/Maps/MapsSidebar';
