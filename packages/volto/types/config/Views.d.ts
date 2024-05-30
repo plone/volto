@@ -33,9 +33,8 @@ export const contentTypesViews: {
     };
     Event: import("@loadable/component").LoadableComponent<any>;
 };
-export const defaultView: import("react").FC<import("react-intl").WithIntlProps<any>> & {
-    WrappedComponent: import("react").ComponentType<any>;
-};
+export function defaultView(props: any): string;
+export namespace defaultView { }
 export const errorViews: {
     404: (props: any) => import("react/jsx-runtime").JSX.Element;
     401: (props: any) => import("react/jsx-runtime").JSX.Element;

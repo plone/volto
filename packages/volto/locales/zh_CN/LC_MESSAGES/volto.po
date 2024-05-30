@@ -498,6 +498,11 @@ msgstr ""
 msgid "Browse"
 msgstr "浏览"
 
+#. Default: "Browse the site, drop an image, or use an URL"
+#: components/manage/Widgets/ImageWidget
+msgid "Browse the site, drop an image, or type an URL"
+msgstr "浏览网站，放入一张图片，或者输入一个URL"
+
 #. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
@@ -1454,6 +1459,11 @@ msgstr "文件视图"
 msgid "Filename"
 msgstr "文件名"
 
+#. Default: "Files uploaded: {uploadedFiles}"
+#: components/manage/Contents/ContentsUploadModal
+msgid "Files uploaded: {uploadedFiles}"
+msgstr "已上载的文件：{uploadedFiles}"
+
 #. Default: "Filter"
 #: helpers/MessageLabels/MessageLabels
 msgid "Filter"
@@ -1661,6 +1671,7 @@ msgstr "历史{title}"
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsBreadcrumbs
 #: components/manage/Contents/ContentsBreadcrumbsHomeItem
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/theme/Breadcrumbs/Breadcrumbs
 #: components/theme/Logo/Logo
 msgid "Home"
@@ -1669,6 +1680,11 @@ msgstr "首页"
 #. Default: "ID"
 #: components/manage/Contents/Contents
 msgid "ID"
+msgstr ""
+
+#. Default: "Icon View"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Icon View"
 msgstr ""
 
 #. Default: "If all of the following conditions are met:"
@@ -1993,6 +2009,11 @@ msgstr ""
 #: components/manage/LinksToItem/LinksToItem
 #: components/manage/Toolbar/More
 msgid "Links and references"
+msgstr ""
+
+#. Default: "List View"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "List View"
 msgstr ""
 
 #. Default: "Listing"
@@ -3048,6 +3069,7 @@ msgstr "搜索输入标签"
 
 #. Default: "Search results"
 #: components/manage/Blocks/Search/components/SearchDetails
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/theme/Search/Search
 msgid "Search results"
 msgstr "搜索结果"
@@ -3746,6 +3768,11 @@ msgstr "活动和非活动对象的总数"
 msgid "Total comments"
 msgstr "全部评论"
 
+#. Default: "Total files to upload: {totalFiles}"
+#: components/manage/Contents/ContentsUploadModal
+msgid "Total files to upload: {totalFiles}"
+msgstr "总计需上传的文件：{totalFiles}"
+
 #. Default: "Total number of objects in each cache"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Total number of objects in each cache"
@@ -3974,10 +4001,10 @@ msgstr ""
 msgid "Upload files"
 msgstr "上传文件"
 
-#. Default: "Uploading files"
-#: components/manage/Contents/ContentsUploadModal
-msgid "Uploading files"
-msgstr "上传文件中"
+#. Default: "Uploading image"
+#: components/manage/Widgets/ImageWidget
+msgid "Uploading image"
+msgstr "上传图像中"
 
 #. Default: "Use the form below to define the new content rule"
 #: components/manage/Controlpanels/Rules/AddRule
@@ -4298,11 +4325,6 @@ msgstr "您的网站是最新的。"
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Your usernaame is required for reset your password."
 msgstr "重置密码需要您的用户名。"
-
-#. Default: "Browse the site, drop an image, or use an URL"
-#: components/manage/Widgets/ImageWidget
-msgid "addImage"
-msgstr ""
 
 #. Default: "Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 #: helpers/MessageLabels/MessageLabels
@@ -4908,11 +4930,6 @@ msgstr ""
 #. Default: "Upload an image from your computer"
 #: components/manage/Widgets/ImageWidget
 msgid "uploadAnImage"
-msgstr ""
-
-#. Default: "Uploading image"
-#: components/manage/Widgets/ImageWidget
-msgid "uploadingImage"
 msgstr ""
 
 #. Default: "Input must be valid url (www.something.com or http(s)://www.something.com)"

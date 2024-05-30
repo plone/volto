@@ -8,6 +8,28 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.13 (2024-05-23)
+
+### Feature
+
+- New Brain type and new ArrayElement utility @pnicolli [#6029](https://github.com/plone/volto/issues/6029)
+
+## 1.0.0-alpha.12 (2024-05-15)
+
+### Bugfix
+
+- Fixed some type definitions @sneridagh [#6014](https://github.com/plone/volto/issues/6014)
+
+## 1.0.0-alpha.11 (2024-04-26)
+
+### Bugfix
+
+- Better BlocksData definitions @sneridagh [#5979](https://github.com/plone/volto/issues/5979)
+
+### Internal
+
+- Saner defaults for building deps, switch default to cached, add `build:force` command @sneridagh [#5980](https://github.com/plone/volto/issues/5980)
+
 ## 1.0.0-alpha.10 (2024-04-05)
 
 ### Bugfix

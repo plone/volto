@@ -499,6 +499,11 @@ msgstr "Relaciones rotas"
 msgid "Browse"
 msgstr "Navegue"
 
+#. Default: "Browse the site, drop an image, or use an URL"
+#: components/manage/Widgets/ImageWidget
+msgid "Browse the site, drop an image, or type an URL"
+msgstr "Navegue el contenido, arrastre un imagen o ingrese una dirección URL"
+
 #. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
@@ -1455,6 +1460,11 @@ msgstr "Vista de archivo"
 msgid "Filename"
 msgstr "Nombre del archivo"
 
+#. Default: "Files uploaded: {uploadedFiles}"
+#: components/manage/Contents/ContentsUploadModal
+msgid "Files uploaded: {uploadedFiles}"
+msgstr "Archivos subidos: {uploadedFiles}"
+
 #. Default: "Filter"
 #: helpers/MessageLabels/MessageLabels
 msgid "Filter"
@@ -1662,6 +1672,7 @@ msgstr "Historial de {title}"
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsBreadcrumbs
 #: components/manage/Contents/ContentsBreadcrumbsHomeItem
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/theme/Breadcrumbs/Breadcrumbs
 #: components/theme/Logo/Logo
 msgid "Home"
@@ -1671,6 +1682,11 @@ msgstr "Inicio"
 #: components/manage/Contents/Contents
 msgid "ID"
 msgstr "ID"
+
+#. Default: "Icon View"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Icon View"
+msgstr ""
 
 #. Default: "If all of the following conditions are met:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -1995,6 +2011,11 @@ msgstr "Vincular este elemento con un hipervínculo en el texto"
 #: components/manage/Toolbar/More
 msgid "Links and references"
 msgstr "Enlaces y referencias"
+
+#. Default: "List View"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "List View"
+msgstr ""
 
 #. Default: "Listing"
 #: components/manage/Blocks/Listing/schema
@@ -3049,6 +3070,7 @@ msgstr "Etiqueta del campo de búsqueda"
 
 #. Default: "Search results"
 #: components/manage/Blocks/Search/components/SearchDetails
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/theme/Search/Search
 msgid "Search results"
 msgstr "Resultado de la búsqueda"
@@ -3747,6 +3769,11 @@ msgstr "Número de objetos activos y no activos"
 msgid "Total comments"
 msgstr "Comentarios totales"
 
+#. Default: "Total files to upload: {totalFiles}"
+#: components/manage/Contents/ContentsUploadModal
+msgid "Total files to upload: {totalFiles}"
+msgstr "Total de archivos para cargar: {totalFiles}"
+
 #. Default: "Total number of objects in each cache"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Total number of objects in each cache"
@@ -3975,10 +4002,10 @@ msgstr "Cargar una imagen principal en el campo 'Imagen Principal'."
 msgid "Upload files"
 msgstr "Cargar archivos"
 
-#. Default: "Uploading files"
-#: components/manage/Contents/ContentsUploadModal
-msgid "Uploading files"
-msgstr "Cargando archivos"
+#. Default: "Uploading image"
+#: components/manage/Widgets/ImageWidget
+msgid "Uploading image"
+msgstr "Cargando imagen"
 
 #. Default: "Use the form below to define the new content rule"
 #: components/manage/Controlpanels/Rules/AddRule
@@ -4299,11 +4326,6 @@ msgstr "Su sitio está actualizado."
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Your usernaame is required for reset your password."
 msgstr "El nombre de usuario es necesario para restablecer su contraseña."
-
-#. Default: "Browse the site, drop an image, or use an URL"
-#: components/manage/Widgets/ImageWidget
-msgid "addImage"
-msgstr ""
 
 #. Default: "Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 #: helpers/MessageLabels/MessageLabels
@@ -4909,11 +4931,6 @@ msgstr "Actualizar de la versión {origin} a {destination}"
 #. Default: "Upload an image from your computer"
 #: components/manage/Widgets/ImageWidget
 msgid "uploadAnImage"
-msgstr ""
-
-#. Default: "Uploading image"
-#: components/manage/Widgets/ImageWidget
-msgid "uploadingImage"
 msgstr ""
 
 #. Default: "Input must be valid url (www.something.com or http(s)://www.something.com)"

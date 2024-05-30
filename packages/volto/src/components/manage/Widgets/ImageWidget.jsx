@@ -37,7 +37,7 @@ export const ImageToolbar = ({ className, data, id, onChange, selected }) => (
 
 const messages = defineMessages({
   addImage: {
-    id: 'addImage',
+    id: 'Browse the site, drop an image, or type an URL',
     defaultMessage: 'Browse the site, drop an image, or use an URL',
   },
   pickAnImage: {
@@ -53,7 +53,7 @@ const messages = defineMessages({
     defaultMessage: 'Enter a URL to an image',
   },
   uploadingImage: {
-    id: 'uploadingImage',
+    id: 'Uploading image',
     defaultMessage: 'Uploading image',
   },
 });

@@ -87,7 +87,10 @@
     ) {
     color: var(--basic-500);
   }
+}
 
+.q.react-aria-TextField,
+.q.react-aria-TextAreaField {
   .react-aria-Input,
   .react-aria-TextArea {
     width: 100%;

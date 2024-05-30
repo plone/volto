@@ -498,6 +498,11 @@ msgstr ""
 msgid "Browse"
 msgstr "Navegui"
 
+#. Default: "Browse the site, drop an image, or use an URL"
+#: components/manage/Widgets/ImageWidget
+msgid "Browse the site, drop an image, or type an URL"
+msgstr "Navegueu pel lloc, deixeu anar una imatge o escriviu un URL"
+
 #. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
@@ -1454,6 +1459,11 @@ msgstr "Arxiu"
 msgid "Filename"
 msgstr "Nom de l'arxiu"
 
+#. Default: "Files uploaded: {uploadedFiles}"
+#: components/manage/Contents/ContentsUploadModal
+msgid "Files uploaded: {uploadedFiles}"
+msgstr "Fitxers pujats: {uploadedFiles}"
+
 #. Default: "Filter"
 #: helpers/MessageLabels/MessageLabels
 msgid "Filter"
@@ -1661,6 +1671,7 @@ msgstr "Historial de {title}"
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsBreadcrumbs
 #: components/manage/Contents/ContentsBreadcrumbsHomeItem
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/theme/Breadcrumbs/Breadcrumbs
 #: components/theme/Logo/Logo
 msgid "Home"
@@ -1670,6 +1681,11 @@ msgstr "Inici"
 #: components/manage/Contents/Contents
 msgid "ID"
 msgstr "Id"
+
+#. Default: "Icon View"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Icon View"
+msgstr ""
 
 #. Default: "If all of the following conditions are met:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -1993,6 +2009,11 @@ msgstr ""
 #: components/manage/LinksToItem/LinksToItem
 #: components/manage/Toolbar/More
 msgid "Links and references"
+msgstr ""
+
+#. Default: "List View"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "List View"
 msgstr ""
 
 #. Default: "Listing"
@@ -3048,6 +3069,7 @@ msgstr "Cerca l'etiqueta d'entrada"
 
 #. Default: "Search results"
 #: components/manage/Blocks/Search/components/SearchDetails
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/theme/Search/Search
 msgid "Search results"
 msgstr "Resultats de la cerca"
@@ -3746,6 +3768,11 @@ msgstr "Total d'objectes actius i no actius"
 msgid "Total comments"
 msgstr "Total de comentaris"
 
+#. Default: "Total files to upload: {totalFiles}"
+#: components/manage/Contents/ContentsUploadModal
+msgid "Total files to upload: {totalFiles}"
+msgstr "Total fitxers per carregar: {totalFiles}"
+
 #. Default: "Total number of objects in each cache"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Total number of objects in each cache"
@@ -3974,10 +4001,10 @@ msgstr "Pengeu una imatge principal al camp de contingut 'Imatge principal'."
 msgid "Upload files"
 msgstr "Carregueu fitxers"
 
-#. Default: "Uploading files"
-#: components/manage/Contents/ContentsUploadModal
-msgid "Uploading files"
-msgstr "Carregant fitxers"
+#. Default: "Uploading image"
+#: components/manage/Widgets/ImageWidget
+msgid "Uploading image"
+msgstr "S'està carregant la imatge"
 
 #. Default: "Use the form below to define the new content rule"
 #: components/manage/Controlpanels/Rules/AddRule
@@ -4297,11 +4324,6 @@ msgstr ""
 #. Default: "Your username is required for reset your password."
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Your usernaame is required for reset your password."
-msgstr ""
-
-#. Default: "Browse the site, drop an image, or use an URL"
-#: components/manage/Widgets/ImageWidget
-msgid "addImage"
 msgstr ""
 
 #. Default: "Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
@@ -4908,11 +4930,6 @@ msgstr ""
 #. Default: "Upload an image from your computer"
 #: components/manage/Widgets/ImageWidget
 msgid "uploadAnImage"
-msgstr ""
-
-#. Default: "Uploading image"
-#: components/manage/Widgets/ImageWidget
-msgid "uploadingImage"
 msgstr ""
 
 #. Default: "Input must be valid url (www.something.com or http(s)://www.something.com)"
