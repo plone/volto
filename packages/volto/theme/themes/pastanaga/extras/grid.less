@@ -394,16 +394,16 @@ body.has-toolbar.has-sidebar .drag.gridBlock.handle.wrapper {
   }
 }
 
-// // Aspect ratio on all images
-// .grid-image-wrapper img,
-// .gridBlock .block.image img,
-// .block-editor-gridBlock .block-editor-image img,
-// .block-editor-image.contained img {
-//   width: 100%;
-//   aspect-ratio: @grid-images-aspect-ratio;
-//   object-fit: cover;
-//   object-position: @grid-images-object-position;
-// }
+// Aspect ratio on all images
+.grid-image-wrapper img,
+.gridBlock .block.image img,
+.block-editor-gridBlock .block-editor-image img,
+.block-editor-image.contained img {
+  width: 100%;
+  aspect-ratio: @grid-images-aspect-ratio;
+  object-fit: cover;
+  object-position: @grid-images-object-position;
+}
 
 // Prevents the above styling to leak to the unset image wrapper
 .block-editor-gridBlock .block-editor-image .no-image-wrapper img,
