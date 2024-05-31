@@ -499,7 +499,7 @@ msgstr "Relaciones rotas"
 msgid "Browse"
 msgstr "Navegue"
 
-#. Default: "Browse the site, drop an image, or use an URL"
+#. Default: "Browse the site, drop an image, or use a URL"
 #: components/manage/Widgets/ImageWidget
 msgid "Browse the site, drop an image, or type an URL"
 msgstr "Navegue el contenido, arrastre un imagen o ingrese una dirección URL"

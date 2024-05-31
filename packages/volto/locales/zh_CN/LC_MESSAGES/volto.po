@@ -498,7 +498,7 @@ msgstr ""
 msgid "Browse"
 msgstr "浏览"
 
-#. Default: "Browse the site, drop an image, or use an URL"
+#. Default: "Browse the site, drop an image, or use a URL"
 #: components/manage/Widgets/ImageWidget
 msgid "Browse the site, drop an image, or type an URL"
 msgstr "浏览网站，放入一张图片，或者输入一个URL"

@@ -497,7 +497,7 @@ msgstr ""
 msgid "Browse"
 msgstr "Navegar"
 
-#. Default: "Browse the site, drop an image, or use an URL"
+#. Default: "Browse the site, drop an image, or use a URL"
 #: components/manage/Widgets/ImageWidget
 msgid "Browse the site, drop an image, or type an URL"
 msgstr "Navegue no website, largue uma imagem ou escreva um URL"

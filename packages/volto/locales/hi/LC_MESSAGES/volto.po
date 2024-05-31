@@ -492,7 +492,7 @@ msgstr "टूटे संबंध"
 msgid "Browse"
 msgstr "ब्राउज़ करें"
 
-#. Default: "Browse the site, drop an image, or use an URL"
+#. Default: "Browse the site, drop an image, or use a URL"
 #: components/manage/Widgets/ImageWidget
 msgid "Browse the site, drop an image, or type an URL"
 msgstr "साइट ब्राउज़ करें, एक छवि छोड़ें, या एक URL टाइप करें"
