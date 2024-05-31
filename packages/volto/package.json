@@ -192,7 +192,7 @@
     "express": "4.19.2",
     "filesize": "6",
     "github-slugger": "1.4.0",
-    "history": "4.10.1",
+    "history": "^5.3.0",
     "hoist-non-react-statics": "3.3.2",
     "http-proxy-middleware": "2.0.1",
     "image-extensions": "1.1.0",

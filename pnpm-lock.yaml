@@ -1702,7 +1702,7 @@ importers:
         version: 2.2.6
       connected-react-router:
         specifier: 6.8.0
-        version: 6.8.0(history@4.10.1)(immutable@3.8.2)(react-redux@8.1.2(@types/react-dom@18.2.25)(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(redux@4.2.1))(react-router@5.2.0(react@18.2.0))(react@18.2.0)(redux@4.2.1)(seamless-immutable@7.1.4)
+        version: 6.8.0(history@5.3.0)(immutable@3.8.2)(react-redux@8.1.2(@types/react-dom@18.2.25)(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(redux@4.2.1))(react-router@5.2.0(react@18.2.0))(react@18.2.0)(redux@4.2.1)(seamless-immutable@7.1.4)
       debug:
         specifier: 4.3.2
         version: 4.3.2
@@ -1728,8 +1728,8 @@ importers:
         specifier: 1.4.0
         version: 1.4.0
       history:
-        specifier: 4.10.1
-        version: 4.10.1
+        specifier: ^5.3.0
+        version: 5.3.0
       hoist-non-react-statics:
         specifier: 3.3.2
         version: 3.3.2
@@ -30612,6 +30612,17 @@ snapshots:
   connected-react-router@6.8.0(history@4.10.1)(immutable@3.8.2)(react-redux@8.1.2(@types/react-dom@18.2.25)(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(redux@4.2.1))(react-router@5.2.0(react@18.2.0))(react@18.2.0)(redux@4.2.1)(seamless-immutable@7.1.4):
     dependencies:
       history: 4.10.1
+      immutable: 3.8.2
+      prop-types: 15.7.2
+      react: 18.2.0
+      react-redux: 8.1.2(@types/react-dom@18.2.25)(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(redux@4.2.1)
+      react-router: 5.2.0(react@18.2.0)
+      redux: 4.2.1
+      seamless-immutable: 7.1.4
+
+  connected-react-router@6.8.0(history@5.3.0)(immutable@3.8.2)(react-redux@8.1.2(@types/react-dom@18.2.25)(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(redux@4.2.1))(react-router@5.2.0(react@18.2.0))(react@18.2.0)(redux@4.2.1)(seamless-immutable@7.1.4):
+    dependencies:
+      history: 5.3.0
       immutable: 3.8.2
       prop-types: 15.7.2
       react: 18.2.0
