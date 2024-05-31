@@ -1,6 +1,5 @@
 import { useLocation } from 'react-router-dom';
 import config from '@plone/volto/registry';
-import type { Location } from 'history';
 import type { Content } from '@plone/types';
 
 /*
@@ -21,7 +20,7 @@ const SlotRenderer = ({
 
   let slots = config.getSlot(name, {
     content,
-    location: location as Location,
+    location: location as any, // Since we are using an older version of history, we need to cast it to any
     // This is to cover the use case while adding a new content and we don't have
     // have the navRoot information in the initial content. This will be
     // useful for SlotRenderers rendered in the `Add` route.
