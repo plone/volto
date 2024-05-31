@@ -37,7 +37,7 @@ export const ImageToolbar = ({ className, data, id, onChange, selected }) => (
 
 const messages = defineMessages({
   addImage: {
-    id: 'Browse the site, drop an image, or type an URL',
+    id: 'Browse the site, drop an image, or type a URL',
     defaultMessage: 'Browse the site, drop an image, or use a URL',
   },
   pickAnImage: {
