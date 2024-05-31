@@ -494,7 +494,7 @@ msgstr "ब्राउज़ करें"
 
 #. Default: "Browse the site, drop an image, or use a URL"
 #: components/manage/Widgets/ImageWidget
-msgid "Browse the site, drop an image, or type an URL"
+msgid "Browse the site, drop an image, or type a URL"
 msgstr "साइट ब्राउज़ करें, एक छवि छोड़ें, या एक URL टाइप करें"
 
 #. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."

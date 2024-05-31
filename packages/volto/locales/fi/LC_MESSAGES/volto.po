@@ -499,7 +499,7 @@ msgstr "Selaa"
 
 #. Default: "Browse the site, drop an image, or use a URL"
 #: components/manage/Widgets/ImageWidget
-msgid "Browse the site, drop an image, or type an URL"
+msgid "Browse the site, drop an image, or type a URL"
 msgstr "Selaa sivustoa, raahaa ja pudota kuva, tai syötä URL"
 
 #. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
@@ -2126,7 +2126,7 @@ msgstr "Kartat"
 #. Default: "Maps URL"
 #: components/manage/Blocks/Maps/schema
 msgid "Maps URL"
-msgstr "Kartan URL"
+msgstr "Karta URL"
 
 #. Default: "Maximum length is {len}."
 #: helpers/MessageLabels/MessageLabels
@@ -2659,7 +2659,7 @@ msgstr "Esikatselu"
 #. Default: "Preview Image URL"
 #: components/manage/Blocks/Video/schema
 msgid "Preview Image URL"
-msgstr "Esikatselukuvan URL-osoite"
+msgstr "Esikatselukuva URL-osoite"
 
 #. Default: "Profile"
 #: components/manage/Toolbar/PersonalTools
@@ -3389,7 +3389,7 @@ msgstr "Lähde"
 #. Default: "Specify a youtube video or playlist url"
 #: components/manage/Blocks/Video/Edit
 msgid "Specify a youtube video or playlist url"
-msgstr "Syötä Youtube-videon tai soittolistan URL."
+msgstr "Syötä Youtube-videon tai soittolista URL."
 
 #. Default: "Split"
 #: components/manage/Diff/Diff
