@@ -4549,7 +4549,7 @@ msgstr "Immagine di testata"
 #. Default: "Enter a URL to an image"
 #: components/manage/Widgets/ImageWidget
 msgid "linkAnImage"
-msgstr ""
+msgstr "Inserisci l'URL di un'immagine"
 
 #. Default: "Listing"
 #: config/Blocks
@@ -4648,7 +4648,7 @@ msgstr "In attesa"
 #. Default: "Pick an existing image"
 #: components/manage/Widgets/ImageWidget
 msgid "pickAnImage"
-msgstr ""
+msgstr "Seleziona un'immagine esistente"
 
 #. Default: "Private"
 #: components/manage/Contents/ContentsItem
@@ -4924,7 +4924,7 @@ msgstr "Aggiorna da versione {origin} a {destination}"
 #. Default: "Upload an image from your computer"
 #: components/manage/Widgets/ImageWidget
 msgid "uploadAnImage"
-msgstr ""
+msgstr "Carica un'immagine dal tuo computer"
 
 #. Default: "Input must be valid url (www.something.com or http(s)://www.something.com)"
 #: helpers/MessageLabels/MessageLabels
