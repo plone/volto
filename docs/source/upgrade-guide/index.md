@@ -224,6 +224,11 @@ There was a bug where a fieldset's generated value would be not valid.
 This has been fixed by passing down the `id` instead of the `title` to the fieldset's value.
 If your tests rely on the old fieldset's generated value for selecting fields, your tests could break, in which case you should amend them to use the updated fieldset's value instead.
 
+### Changes from the original slots feature
+
+Now `config.getSlots` in the configuration registry take the argument `location` instead of `pathname`.
+This allows to have more expressive conditions, and fulfill the use case of the `Add` form.
+
 (volto-upgrade-guide-17.x.x)=
 
 ## Upgrading to Volto 17.x.x
