@@ -226,8 +226,8 @@ If your tests rely on the old fieldset's generated value for selecting fields, y
 
 ### Changes from the original slots feature
 
-Now `config.getSlots` in the configuration registry take the argument `location` instead of `pathname`.
-This allows to have more expressive conditions, and fulfill the use case of the `Add` form.
+Now `config.getSlots` in the configuration registry takes the argument `location` instead of `pathname`.
+This allows more expressive conditions to fulfill the use case of the `Add` form.
 
 (volto-upgrade-guide-17.x.x)=
 

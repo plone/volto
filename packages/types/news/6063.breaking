@@ -1,1 +1,1 @@
-The `GetSlotArgs` type does no longer support `pathname` as key, instead, it uses `location` @sneridagh
+The `GetSlotArgs` type no longer supports `pathname` as a key, instead using `location`. @sneridagh
