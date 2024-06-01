@@ -266,7 +266,9 @@ It supports the `Add` form and can detect which content type you add.
 You can create your own predicate helpers to determine whether your slot component should render.
 The `SlotRenderer` will pass down the current `content`, the `location` object, and the current `navRoot` object into your custom predicate helper.
 You can also tailor your own `SlotRenderer`s, or shadow the original `SlotRenderer`, to satisfy your requirements.
-
+```{versionchanged} 18.0.0-alpha.32
+Now `config.getSlots` in the configuration registry takes the argument `location` instead of `pathname`.
+```
 
 (slots-getSlot-label)=
 
