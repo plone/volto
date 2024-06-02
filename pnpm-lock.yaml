@@ -1712,9 +1712,6 @@ importers:
       '@plone/scripts':
         specifier: workspace:*
         version: link:../scripts
-      '@plone/slots':
-        specifier: workspace:*
-        version: link:../slots
       '@plone/volto-slate':
         specifier: workspace:*
         version: link:../volto-slate
