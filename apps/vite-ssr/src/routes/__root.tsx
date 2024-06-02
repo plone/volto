@@ -6,7 +6,7 @@ import {
   useRouter,
   useRouterState,
 } from '@tanstack/react-router';
-import { DehydrateRouter } from '@tanstack/react-router-server/client';
+import { DehydrateRouter } from '@tanstack/start/client';
 import { RouterContext } from '../routerContext';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { RouterProvider } from 'react-aria-components';

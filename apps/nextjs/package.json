@@ -15,6 +15,7 @@
     "@plone/components": "workspace: *",
     "@plone/registry": "workspace: *",
     "@plone/providers": "workspace: *",
+    "@plone/slots": "workspace: *",
     "@tanstack/react-query": "^5.37.1",
     "next": "14.2.2",
     "react": "^18",

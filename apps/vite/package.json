@@ -9,13 +9,14 @@
     "start": "vite"
   },
   "dependencies": {
+    "@plone/blocks": "workspace:*",
     "@plone/client": "workspace:*",
     "@plone/components": "workspace:*",
     "@plone/providers": "workspace:*",
     "@plone/registry": "workspace:*",
-    "@plone/blocks": "workspace:*",
+    "@plone/slots": "workspace:*",
     "@tanstack/react-query": "^5.37.1",
-    "@tanstack/react-router": "^1.29.2",
+    "@tanstack/react-router": "^1.34.9",
     "axios": "^1.6.5",
     "react": "^18.2.0",
     "react-aria-components": "^1.2.1",
@@ -23,7 +24,7 @@
   },
   "devDependencies": {
     "@tanstack/react-query-devtools": "^5.37.1",
-    "@tanstack/router-devtools": "^1.29.2",
+    "@tanstack/router-devtools": "^1.34.9",
     "@types/react": "^18.2.47",
     "@types/react-dom": "^18.2.18",
     "@vitejs/plugin-react": "^4.2.1",
