@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button, Dimmer, Loader, Message } from 'semantic-ui-react';
 import { useIntl, defineMessages } from 'react-intl';
 import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import loadable from '@loadable/component';
-
+import { connect } from 'react-redux';
+import { compose } from 'redux';
 import useLinkEditor from '@plone/volto/components/manage/AnchorPlugin/useLinkEditor';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 
@@ -144,6 +145,26 @@ const UnconnectedImageInput = (props) => {
     ],
   );
 
+  useEffect(() => {
+    if (props.request.loading && props.request.loaded && uploading === true) {
+      setUploading(false);
+      onChange(id, props.content['@id'], {
+        image_field: 'image',
+        image_scales: {
+          image: props.content.image,
+        },
+      });
+    }
+  }, [
+    id,
+    onChange,
+    props.content,
+    props.request.loaded,
+    props.request.loading,
+    uploading,
+  ]);
+  // Update block data after upload finished
+
   const onDragEnter = React.useCallback(() => {
     if (restrictFileUpload === false) setDragging(true);
   }, [restrictFileUpload]);
@@ -274,8 +295,15 @@ const UnconnectedImageInput = (props) => {
     </div>
   );
 };
-
-export const ImageInput = withObjectBrowser(UnconnectedImageInput);
+export const ImageInput = compose(
+  connect(
+    (state, ownProps) => ({
+      request: state.content.subrequests[ownProps.block] || {},
+      content: state.content.subrequests[ownProps.block]?.data,
+    }),
+    { createContent },
+  ),
+)(withObjectBrowser(UnconnectedImageInput));
 
 const ImageUploadWidget = (props) => (
   <FormFieldWrapper {...props} className="image-upload-widget">
