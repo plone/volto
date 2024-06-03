@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form } from 'semantic-ui-react';
 import { Grid, Button } from 'semantic-ui-react';
-import { isEqual } from 'lodash';
+import { isEmpty, isEqual } from 'lodash';
 import { defineMessages, useIntl } from 'react-intl';
 
 const messages = defineMessages({
@@ -26,11 +26,11 @@ type Color =
 export type ColorPickerWidgetProps = {
   id: string;
   title: string;
-  value: string;
-  default: string;
-  required: boolean;
-  missing_value: unknown;
-  className: string;
+  value?: string;
+  default?: string | object;
+  required?: boolean;
+  missing_value?: unknown;
+  className?: string;
   onChange: (id: string, value: any) => void;
   colors: Color[];
 };
@@ -41,7 +41,7 @@ const ColorPickerWidget = (props: ColorPickerWidgetProps) => {
   const intl = useIntl();
 
   React.useEffect(() => {
-    if (!props.value && props.default) {
+    if (isEmpty(props.value) && props.default) {
       props.onChange(props.id, props.default);
     }
     // Yes, this is correct.

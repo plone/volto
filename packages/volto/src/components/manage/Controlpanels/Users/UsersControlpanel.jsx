@@ -17,13 +17,13 @@ import {
 import jwtDecode from 'jwt-decode';
 import {
   Icon,
-  ModalForm,
   Toast,
   Toolbar,
-  RenderUsers,
   Pagination,
   Error,
 } from '@plone/volto/components';
+import { ModalForm } from '@plone/volto/components/manage/Form';
+import RenderUsers from '@plone/volto/components/manage/Controlpanels/Users/RenderUsers';
 import { Link } from 'react-router-dom';
 import {
   Helmet,

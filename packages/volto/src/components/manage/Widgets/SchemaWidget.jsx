@@ -14,11 +14,8 @@ import { defineMessages, injectIntl } from 'react-intl';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import { slugify } from '@plone/volto/helpers/Utils/Utils';
 
-import {
-  Field,
-  ModalForm,
-  SchemaWidgetFieldset,
-} from '@plone/volto/components';
+import SchemaWidgetFieldset from '@plone/volto/components/manage/Widgets/SchemaWidgetFieldset';
+import { Field, ModalForm } from '@plone/volto/components/manage/Form';
 
 const messages = defineMessages({
   add: {

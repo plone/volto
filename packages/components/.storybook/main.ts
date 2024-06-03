@@ -1,5 +1,5 @@
 import type { StorybookConfig } from '@storybook/react-vite';
-const { mergeConfig } = require('vite');
+import { mergeConfig } from 'vite';
 
 const config: StorybookConfig = {
   // For some reason the property does not allow negation

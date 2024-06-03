@@ -9,6 +9,8 @@ jest.mock('../../manage/Toolbar/Toolbar', () =>
   jest.fn(() => <div id="Portal" />),
 );
 
+jest.mock('@plone/volto/components/manage/Form');
+
 const mockStore = configureStore();
 describe('Contact form', () => {
   it('renders a contact form', () => {

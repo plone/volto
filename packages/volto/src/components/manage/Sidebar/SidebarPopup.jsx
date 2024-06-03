@@ -16,6 +16,11 @@ const SidebarPopup = (props) => {
     onClose();
   };
 
+  const [isClient, setIsClient] = React.useState(false);
+  React.useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   React.useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside, false);
     return () => {
@@ -48,24 +53,25 @@ const SidebarPopup = (props) => {
         unmountOnExit
       >
         <>
-          {createPortal(
-            <aside
-              role="presentation"
-              onClick={(e) => {
-                e.stopPropagation();
-              }}
-              onKeyDown={(e) => {
-                e.stopPropagation();
-              }}
-              ref={asideElement}
-              key="sidebarpopup"
-              className="sidebar-container"
-              style={{ overflowY: 'auto' }}
-            >
-              {children}
-            </aside>,
-            document.body,
-          )}
+          {isClient &&
+            createPortal(
+              <aside
+                role="presentation"
+                onClick={(e) => {
+                  e.stopPropagation();
+                }}
+                onKeyDown={(e) => {
+                  e.stopPropagation();
+                }}
+                ref={asideElement}
+                key="sidebarpopup"
+                className="sidebar-container"
+                style={{ overflowY: 'auto' }}
+              >
+                {children}
+              </aside>,
+              document.body,
+            )}
         </>
       </CSSTransition>
     </>

@@ -23,13 +23,13 @@ import {
   setFormData,
 } from '@plone/volto/actions';
 import {
-  Form,
   Icon,
   Toolbar,
   Sidebar,
   Toast,
   TranslationObject,
 } from '@plone/volto/components';
+import { Form } from '@plone/volto/components/manage/Form';
 import {
   getBaseUrl,
   hasBlocksData,
@@ -394,6 +394,10 @@ class Add extends Component {
               this.setState({ formSelected: 'addForm' });
             }}
             global
+            // Properties to pass to the BlocksForm to match the View ones
+            history={this.props.history}
+            location={this.props.location}
+            token={this.props.token}
           />
           {this.state.isClient &&
             createPortal(

@@ -53,14 +53,6 @@ import {
 } from '@plone/volto/actions';
 import Indexes, { defaultIndexes } from '@plone/volto/constants/Indexes';
 import {
-  ContentsBreadcrumbs,
-  ContentsIndexHeader,
-  ContentsItem,
-  ContentsRenameModal,
-  ContentsUploadModal,
-  ContentsWorkflowModal,
-  ContentsTagsModal,
-  ContentsPropertiesModal,
   Pagination,
   Popup,
   Toolbar,
@@ -68,6 +60,14 @@ import {
   Icon,
   Unauthorized,
 } from '@plone/volto/components';
+import ContentsBreadcrumbs from '@plone/volto/components/manage/Contents/ContentsBreadcrumbs';
+import ContentsIndexHeader from '@plone/volto/components/manage/Contents/ContentsIndexHeader';
+import ContentsItem from '@plone/volto/components/manage/Contents/ContentsItem';
+import { ContentsRenameModal } from '@plone/volto/components/manage/Contents';
+import ContentsUploadModal from '@plone/volto/components/manage/Contents/ContentsUploadModal';
+import ContentsWorkflowModal from '@plone/volto/components/manage/Contents/ContentsWorkflowModal';
+import ContentsTagsModal from '@plone/volto/components/manage/Contents/ContentsTagsModal';
+import ContentsPropertiesModal from '@plone/volto/components/manage/Contents/ContentsPropertiesModal';
 
 import { Helmet, getBaseUrl } from '@plone/volto/helpers';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
@@ -534,11 +534,14 @@ class Contents extends Component {
       this.props.clipboardRequest.loading &&
       nextProps.clipboardRequest.error
     ) {
+      const msgBody =
+        nextProps.clipboardRequest.error?.response?.body?.message ||
+        this.props.intl.formatMessage(messages.error);
       this.props.toastify.toast.error(
         <Toast
           error
           title={this.props.intl.formatMessage(messages.error)}
-          content={this.props.intl.formatMessage(messages.error)}
+          content={msgBody}
         />,
       );
     }

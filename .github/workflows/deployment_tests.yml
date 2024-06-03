@@ -1,5 +1,9 @@
 name: Deployment Tests
 on: [push, pull_request]
+
+env:
+  node-version: 20.x
+
 jobs:
   vitessr:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
@@ -12,18 +16,13 @@ jobs:
       - uses: actions/checkout@v4
 
       # node setup
-      - name: Use Node.js 20.x
+      - name: Use Node.js ${{ env.node-version }}
         uses: actions/setup-node@v4
         with:
-          node-version: 20.x
+          node-version: ${{ env.node-version }}
 
-      - uses: pnpm/action-setup@v3
-        name: Install pnpm
-        with:
-          version: 8
-          # We don't want to install until later,
-          # when the cache and Cypress are in place
-          run_install: false
+      - name: Enable corepack
+        run: corepack enable
 
       - name: Get pnpm store directory
         shell: bash
@@ -41,8 +40,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build packages
-        run: pnpm build:deps && pnpm build:components
+      - name: Build dependencies
+        run: pnpm build:all
 
       - name: Start backend
         run: make start-backend-docker-detached
@@ -79,18 +78,13 @@ jobs:
       - uses: actions/checkout@v4
 
       # node setup
-      - name: Use Node.js 20.x
+      - name: Use Node.js ${{ env.node-version }}
         uses: actions/setup-node@v4
         with:
-          node-version: 20.x
+          node-version: ${{ env.node-version }}
 
-      - uses: pnpm/action-setup@v3
-        name: Install pnpm
-        with:
-          version: 8
-          # We don't want to install until later,
-          # when the cache and Cypress are in place
-          run_install: false
+      - name: Enable corepack
+        run: corepack enable
 
       - name: Get pnpm store directory
         shell: bash
@@ -108,8 +102,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build packages
-        run: pnpm build:deps && pnpm build:components
+      - name: Build dependencies
+        run: pnpm build:all
 
       - name: Start backend
         run: make start-backend-docker-detached
@@ -146,18 +140,13 @@ jobs:
       - uses: actions/checkout@v4
 
       # node setup
-      - name: Use Node.js 20.x
+      - name: Use Node.js ${{ env.node-version }}
         uses: actions/setup-node@v4
         with:
-          node-version: 20.x
+          node-version: ${{ env.node-version }}
 
-      - uses: pnpm/action-setup@v3
-        name: Install pnpm
-        with:
-          version: 8
-          # We don't want to install until later,
-          # when the cache and Cypress are in place
-          run_install: false
+      - name: Enable corepack
+        run: corepack enable
 
       - name: Get pnpm store directory
         shell: bash
@@ -175,8 +164,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build packages
-        run: pnpm build:deps && pnpm build:components
+      - name: Build dependencies
+        run: pnpm build:all
 
       - name: Start backend
         run: make start-backend-docker-detached
