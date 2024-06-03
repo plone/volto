@@ -12,6 +12,7 @@ import {
   flattenToAppURL,
   getBaseUrl,
   isInternalURL,
+  validateFileUploadSize,
 } from '@plone/volto/helpers';
 import { createContent } from '@plone/volto/actions';
 import { readAsDataURL } from 'promise-file-reader';
@@ -89,10 +90,12 @@ const UnconnectedImageInput = (props) => {
     (eventOrFile) => {
       if (restrictFileUpload === true) return;
       eventOrFile.target && eventOrFile.stopPropagation();
+
       setUploading(true);
       const file = eventOrFile.target
         ? eventOrFile.target.files[0]
         : eventOrFile[0];
+      if (!validateFileUploadSize(file, intl.formatMessage)) return;
       readAsDataURL(file).then((fileData) => {
         const fields = fileData.match(/^data:(.*);(.*),(.*)$/);
         dispatch(
@@ -108,7 +111,7 @@ const UnconnectedImageInput = (props) => {
                 filename: file.name,
               },
             },
-            requestId,
+            props.block || requestId,
           ),
         ).then((resp) => {
           if (resp) {
@@ -129,7 +132,16 @@ const UnconnectedImageInput = (props) => {
         });
       });
     },
-    [restrictFileUpload, dispatch, contextUrl, requestId, onChange, id],
+    [
+      restrictFileUpload,
+      intl.formatMessage,
+      dispatch,
+      contextUrl,
+      props.block,
+      requestId,
+      onChange,
+      id,
+    ],
   );
 
   const onDragEnter = React.useCallback(() => {
@@ -190,7 +202,6 @@ const UnconnectedImageInput = (props) => {
                           onFocus && onFocus();
                           e.preventDefault();
                           openObjectBrowser({
-                            mode: 'image',
                             onSelectItem: (
                               url,
                               { title, image_field, image_scales },

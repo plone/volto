@@ -97,6 +97,7 @@ function Edit(props) {
           <ImageInput
             onChange={handleChange}
             placeholderLinkInput={data.placeholder}
+            block={props.block}
           />
         )}
         <SidebarPortal selected={props.selected}>
