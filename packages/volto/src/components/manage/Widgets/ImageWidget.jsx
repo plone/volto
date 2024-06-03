@@ -113,7 +113,18 @@ const UnconnectedImageInput = (props) => {
         ).then((resp) => {
           if (resp) {
             setUploading(false);
-            onChange(id, resp['@id']);
+            onChange(id, resp['@id'], {
+              title: file.name,
+              image_field: 'image',
+              image_scales: {
+                image: {
+                  data: fields[3],
+                  encoding: fields[2],
+                  'content-type': fields[1],
+                  filename: file.name,
+                },
+              },
+            });
           }
         });
       });
@@ -237,6 +248,7 @@ const UnconnectedImageInput = (props) => {
                       onChange(
                         props.id,
                         isInternalURL(e) ? flattenToAppURL(e) : e,
+                        {},
                       )
                     }
                     placeholder={placeholderLinkInput}
