@@ -61,7 +61,6 @@ const messages = defineMessages({
 const UnconnectedImageInput = (props) => {
   const {
     id,
-    pathname,
     onChange,
     onFocus,
     openObjectBrowser,
@@ -79,7 +78,7 @@ const UnconnectedImageInput = (props) => {
   const linkEditor = useLinkEditor();
   const location = useLocation();
   const dispatch = useDispatch();
-  const contextUrl = pathname ?? location.pathname;
+  const contextUrl = location.pathname;
 
   const [uploading, setUploading] = React.useState(false);
   const [dragging, setDragging] = React.useState(false);
@@ -181,9 +180,17 @@ const UnconnectedImageInput = (props) => {
                           e.preventDefault();
                           openObjectBrowser({
                             mode: 'image',
-                            onSelectItem: (e) => {
-                              onChange(props.id, flattenToAppURL(e));
+                            onSelectItem: (
+                              url,
+                              { title, image_field, image_scales },
+                            ) => {
+                              onChange(props.id, url, {
+                                title,
+                                image_field,
+                                image_scales,
+                              });
                             },
+                            currentPath: contextUrl,
                           });
                         }}
                       >

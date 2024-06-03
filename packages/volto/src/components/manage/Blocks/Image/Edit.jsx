@@ -30,11 +30,14 @@ function Edit(props) {
   const { data } = props;
   const Image = config.getComponent({ name: 'Image' }).component;
   const handleChange = React.useCallback(
-    (id, image) => {
+    (id, image, { title, image_field, image_scales } = {}) => {
       const url = image ? image['@id'] || image : '';
       props.onChangeBlock(props.block, {
         ...props.data,
         url: flattenToAppURL(url),
+        image_field,
+        image_scales,
+        alt: props.data.alt || title || '',
       });
     },
     [props],

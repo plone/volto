@@ -22,7 +22,7 @@ context('Blocks Acceptance Tests', () => {
         contentType: 'Image',
         contentId: 'my-image',
         contentTitle: 'My Image',
-        path: '',
+        path: '/document',
       });
       cy.visit('/');
       cy.wait('@content');
@@ -41,6 +41,8 @@ context('Blocks Acceptance Tests', () => {
       cy.get('button[aria-label="Add block in position 0"]').click();
       cy.get('.blocks-chooser .mostUsed .button.image').click();
       cy.get('.block.image .toolbar-inner .buttons:first-child').click();
+
+      cy.get('[aria-label="Browse Test document"]').dblclick();
       cy.get('[aria-label="Select My Image"]').dblclick();
       cy.findByText('my-image');
 
