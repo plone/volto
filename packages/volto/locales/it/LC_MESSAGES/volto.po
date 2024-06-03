@@ -492,6 +492,11 @@ msgstr "Relazioni corrotte"
 msgid "Browse"
 msgstr "Sfoglia"
 
+#. Default: "Browse the site, drop an image, or use a URL"
+#: components/manage/Widgets/ImageWidget
+msgid "Browse the site, drop an image, or type a URL"
+msgstr "Sfoglia i contenuti, rilascia un'immagine o digita un URL"
+
 #. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
@@ -1448,6 +1453,11 @@ msgstr "Vista file"
 msgid "Filename"
 msgstr "Nome del file"
 
+#. Default: "Files uploaded: {uploadedFiles}"
+#: components/manage/Contents/ContentsUploadModal
+msgid "Files uploaded: {uploadedFiles}"
+msgstr "File caricati: {uploadedFiles}"
+
 #. Default: "Filter"
 #: helpers/MessageLabels/MessageLabels
 msgid "Filter"
@@ -1655,6 +1665,7 @@ msgstr "Cronologia di {title}"
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsBreadcrumbs
 #: components/manage/Contents/ContentsBreadcrumbsHomeItem
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/theme/Breadcrumbs/Breadcrumbs
 #: components/theme/Logo/Logo
 msgid "Home"
@@ -1664,6 +1675,11 @@ msgstr "Home"
 #: components/manage/Contents/Contents
 msgid "ID"
 msgstr "ID"
+
+#. Default: "Icon View"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Icon View"
+msgstr ""
 
 #. Default: "If all of the following conditions are met:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -1988,6 +2004,11 @@ msgstr "Elementi collegati a questo contenuto con un collegamento ipertestuali n
 #: components/manage/Toolbar/More
 msgid "Links and references"
 msgstr "Link e collegamenti"
+
+#. Default: "List View"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "List View"
+msgstr ""
 
 #. Default: "Listing"
 #: components/manage/Blocks/Listing/schema
@@ -3042,6 +3063,7 @@ msgstr "Etichetta del campo di ricerca"
 
 #. Default: "Search results"
 #: components/manage/Blocks/Search/components/SearchDetails
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/theme/Search/Search
 msgid "Search results"
 msgstr "Risultati della ricerca"
@@ -3740,6 +3762,11 @@ msgstr "Totale degli oggetti attivi e non attivi"
 msgid "Total comments"
 msgstr "Totale dei commenti"
 
+#. Default: "Total files to upload: {totalFiles}"
+#: components/manage/Contents/ContentsUploadModal
+msgid "Total files to upload: {totalFiles}"
+msgstr "Numero totale di file da caricare: {totalFiles}"
+
 #. Default: "Total number of objects in each cache"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Total number of objects in each cache"
@@ -3968,10 +3995,10 @@ msgstr "Carica un'Immagine di testata nel campo del contenuto."
 msgid "Upload files"
 msgstr "Carica file"
 
-#. Default: "Uploading files"
-#: components/manage/Contents/ContentsUploadModal
-msgid "Uploading files"
-msgstr "Caricamento dei files"
+#. Default: "Uploading image"
+#: components/manage/Widgets/ImageWidget
+msgid "Uploading image"
+msgstr "Caricamento dell'immagine"
 
 #. Default: "Use the form below to define the new content rule"
 #: components/manage/Controlpanels/Rules/AddRule
@@ -4293,11 +4320,6 @@ msgstr "Il tuo sito è aggiornato."
 msgid "Your usernaame is required for reset your password."
 msgstr "Il tuo username è richiesto per reimpostare la tua password."
 
-#. Default: "Browse the site, drop an image, or use an URL"
-#: components/manage/Widgets/ImageWidget
-msgid "addImage"
-msgstr ""
-
 #. Default: "Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormEmailDescription"
@@ -4527,7 +4549,7 @@ msgstr "Immagine di testata"
 #. Default: "Enter a URL to an image"
 #: components/manage/Widgets/ImageWidget
 msgid "linkAnImage"
-msgstr ""
+msgstr "Inserisci l'URL di un'immagine"
 
 #. Default: "Listing"
 #: config/Blocks
@@ -4626,7 +4648,7 @@ msgstr "In attesa"
 #. Default: "Pick an existing image"
 #: components/manage/Widgets/ImageWidget
 msgid "pickAnImage"
-msgstr ""
+msgstr "Seleziona un'immagine esistente"
 
 #. Default: "Private"
 #: components/manage/Contents/ContentsItem
@@ -4902,12 +4924,7 @@ msgstr "Aggiorna da versione {origin} a {destination}"
 #. Default: "Upload an image from your computer"
 #: components/manage/Widgets/ImageWidget
 msgid "uploadAnImage"
-msgstr ""
-
-#. Default: "Uploading image"
-#: components/manage/Widgets/ImageWidget
-msgid "uploadingImage"
-msgstr ""
+msgstr "Carica un'immagine dal tuo computer"
 
 #. Default: "Input must be valid url (www.something.com or http(s)://www.something.com)"
 #: helpers/MessageLabels/MessageLabels

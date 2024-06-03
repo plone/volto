@@ -44,6 +44,7 @@ context('Blocks Acceptance Tests', () => {
 
       cy.get('[aria-label="Browse Test document"]').dblclick();
       cy.get('[aria-label="Select My Image"]').dblclick();
+      cy.get('[aria-label="Browse Test document"]').dblclick();
       cy.findByText('my-image');
 
       cy.get('button[aria-label="Add block in position 1"]').click();

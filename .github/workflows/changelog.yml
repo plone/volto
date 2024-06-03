@@ -89,7 +89,7 @@ jobs:
           BASE_BRANCH: ${{ github.base_ref }}
 
       - name: Providers changelog check
-        if: steps.filter.outputs.types == 'true'
+        if: steps.filter.outputs.providers == 'true'
         run: |
           git fetch --no-tags origin main
           towncrier check --compare-with origin/main --dir packages/providers

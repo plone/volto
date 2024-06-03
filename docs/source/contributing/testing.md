@@ -17,6 +17,9 @@ For every feature or component, a unit test is mandatory in Volto core.
 
 Jest is configured in `package.json` under the `jest` key.
 
+
+(run-jest-tests-on-volto-core-label)=
+
 ## Run Jest tests on Volto core
 
 ```{note}

@@ -9,7 +9,7 @@
   ],
   "funding": "https://github.com/sponsors/plone",
   "license": "MIT",
-  "version": "1.0.0",
+  "version": "1.0.0-alpha.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/plone/volto.git"
@@ -42,8 +42,8 @@
   },
   "scripts": {
     "watch": "parcel watch",
-    "build": "parcel build --no-cache",
-    "build:cached": "parcel build",
+    "build": "parcel build",
+    "build:force": "parcel build --no-cache",
     "test": "vitest",
     "dry-release": "release-it --dry-run",
     "release": "release-it",
