@@ -87,6 +87,16 @@ const UnconnectedImageInput = (props) => {
 
   const requestId = `image-upload-${id}`;
 
+  useEffect(() => {
+    if (props.request.loading && !props.request.loaded && uploading) {
+      setUploading(false);
+      onChange(id, props?.content?.['@id'], {
+        image_field: 'image',
+        image_scales: { image: [props?.content?.image] },
+      });
+    }
+  }, [props.request, props?.content, uploading, onChange, id]);
+
   const handleUpload = React.useCallback(
     (eventOrFile) => {
       if (restrictFileUpload === true) return;
@@ -114,23 +124,7 @@ const UnconnectedImageInput = (props) => {
             },
             props.block || requestId,
           ),
-        ).then((resp) => {
-          if (resp) {
-            setUploading(false);
-            onChange(id, resp['@id'], {
-              title: file.name,
-              image_field: 'image',
-              image_scales: {
-                image: {
-                  data: fields[3],
-                  encoding: fields[2],
-                  'content-type': fields[1],
-                  filename: file.name,
-                },
-              },
-            });
-          }
-        });
+        );
       });
     },
     [
@@ -140,30 +134,8 @@ const UnconnectedImageInput = (props) => {
       contextUrl,
       props.block,
       requestId,
-      onChange,
-      id,
     ],
   );
-
-  useEffect(() => {
-    if (props.request.loading && props.request.loaded && uploading === true) {
-      setUploading(false);
-      onChange(id, props.content['@id'], {
-        image_field: 'image',
-        image_scales: {
-          image: props.content.image,
-        },
-      });
-    }
-  }, [
-    id,
-    onChange,
-    props.content,
-    props.request.loaded,
-    props.request.loading,
-    uploading,
-  ]);
-  // Update block data after upload finished
 
   const onDragEnter = React.useCallback(() => {
     if (restrictFileUpload === false) setDragging(true);
@@ -227,7 +199,7 @@ const UnconnectedImageInput = (props) => {
                               url,
                               { title, image_field, image_scales },
                             ) => {
-                              onChange(props.id, url, {
+                              onChange(props.id, flattenToAppURL(url), {
                                 title,
                                 image_field,
                                 image_scales,
@@ -295,12 +267,16 @@ const UnconnectedImageInput = (props) => {
     </div>
   );
 };
+
 export const ImageInput = compose(
   connect(
-    (state, ownProps) => ({
-      request: state.content.subrequests[ownProps.block] || {},
-      content: state.content.subrequests[ownProps.block]?.data,
-    }),
+    (state, ownProps) => {
+      const requestId = `image-upload-${ownProps.id}`;
+      return {
+        request: state.content.subrequests[ownProps.block || requestId] || {},
+        content: state.content.subrequests[ownProps.block]?.data,
+      };
+    },
     { createContent },
   ),
 )(withObjectBrowser(UnconnectedImageInput));

@@ -4,11 +4,19 @@
  */
 
 import React from 'react';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
 
+import { injectIntl } from 'react-intl';
 import cx from 'classnames';
 import { ImageSidebar, SidebarPortal } from '@plone/volto/components';
+import { createContent } from '@plone/volto/actions';
 
-import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers';
+import {
+  flattenToAppURL,
+  isInternalURL,
+  withBlockExtensions,
+} from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
 import { ImageInput } from '@plone/volto/components/manage/Widgets/ImageWidget';
@@ -18,7 +26,7 @@ import { ImageInput } from '@plone/volto/components/manage/Widgets/ImageWidget';
  * @function Edit
  */
 
-export default function Edit(props) {
+function Edit(props) {
   const { data } = props;
   const Image = config.getComponent({ name: 'Image' }).component;
   const handleChange = React.useCallback(
@@ -34,6 +42,7 @@ export default function Edit(props) {
     },
     [props],
   );
+
   return (
     <>
       <div
@@ -99,3 +108,15 @@ export default function Edit(props) {
     </>
   );
 }
+
+export default compose(
+  injectIntl,
+  withBlockExtensions,
+  connect(
+    (state, ownProps) => ({
+      request: state.content.subrequests[ownProps.block] || {},
+      content: state.content.subrequests[ownProps.block]?.data,
+    }),
+    { createContent },
+  ),
+)(Edit);
