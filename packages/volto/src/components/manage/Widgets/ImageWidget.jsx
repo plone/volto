@@ -93,15 +93,14 @@ const UnconnectedImageInput = (props) => {
   const image = content?.image;
 
   useEffect(() => {
-    if (uploading && loading && !loaded) {
+    if (uploading && !loading && loaded) {
       setUploading(false);
       onChange(id, imageId, {
         image_field: 'image',
         image_scales: { image: [image] },
       });
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loading, loaded, uploading, imageId, image, id]); // Explicitly list all dependencies
+  }, [loading, loaded, uploading, imageId, image, id, onChange]); // Explicitly list all dependencies
 
   const handleUpload = React.useCallback(
     (eventOrFile) => {

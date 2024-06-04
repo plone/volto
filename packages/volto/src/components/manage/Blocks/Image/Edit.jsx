@@ -99,6 +99,7 @@ function Edit(props) {
             onChange={handleChange}
             placeholderLinkInput={data.placeholder}
             block={props.block}
+            id={props.block}
           />
         )}
         <SidebarPortal selected={props.selected}>
