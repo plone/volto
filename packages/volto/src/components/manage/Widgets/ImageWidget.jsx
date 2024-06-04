@@ -87,15 +87,21 @@ const UnconnectedImageInput = (props) => {
 
   const requestId = `image-upload-${id}`;
 
+  const { loading, loaded } = props.request;
+  const { content } = props;
+  const imageId = content?.['@id'];
+  const image = content?.image;
+
   useEffect(() => {
-    if (props.request.loading && !props.request.loaded && uploading) {
+    if (uploading && loading && !loaded) {
       setUploading(false);
-      onChange(id, props?.content?.['@id'], {
+      onChange(id, imageId, {
         image_field: 'image',
-        image_scales: { image: [props?.content?.image] },
+        image_scales: { image: [image] },
       });
     }
-  }, [props.request, props?.content, uploading, onChange, id]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loading, loaded, uploading, imageId, image, id]); // Explicitly list all dependencies
 
   const handleUpload = React.useCallback(
     (eventOrFile) => {
@@ -110,7 +116,7 @@ const UnconnectedImageInput = (props) => {
       readAsDataURL(file).then((fileData) => {
         const fields = fileData.match(/^data:(.*);(.*),(.*)$/);
         dispatch(
-          props.createContent(
+          createContent(
             getBaseUrl(contextUrl),
             {
               '@type': 'Image',
