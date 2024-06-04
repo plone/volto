@@ -110,7 +110,7 @@ const UnconnectedImageInput = (props) => {
       readAsDataURL(file).then((fileData) => {
         const fields = fileData.match(/^data:(.*);(.*),(.*)$/);
         dispatch(
-          createContent(
+          props.createContent(
             getBaseUrl(contextUrl),
             {
               '@type': 'Image',
@@ -131,8 +131,8 @@ const UnconnectedImageInput = (props) => {
       restrictFileUpload,
       intl.formatMessage,
       dispatch,
+      props,
       contextUrl,
-      props.block,
       requestId,
     ],
   );
