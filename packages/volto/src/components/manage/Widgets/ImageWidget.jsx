@@ -274,7 +274,7 @@ export const ImageInput = compose(
       const requestId = `image-upload-${ownProps.id}`;
       return {
         request: state.content.subrequests[ownProps.block || requestId] || {},
-        content: state.content.subrequests[ownProps.block]?.data,
+        content: state.content.subrequests[ownProps.block || requestId]?.data,
       };
     },
     { createContent },
