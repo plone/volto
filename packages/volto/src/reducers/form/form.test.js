@@ -14,6 +14,12 @@ describe('Form reducer', () => {
       }),
     ).toEqual({
       global: { foo: 'bar' },
+      ui: {
+        gridSelected: null,
+        hovered: null,
+        multiSelected: [],
+        selected: null,
+      },
     });
   });
 });
