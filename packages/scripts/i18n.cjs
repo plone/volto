@@ -13,7 +13,6 @@ const babel = require('@babel/core');
 
 const path = require('path');
 const projectRootPath = path.resolve('.');
-const packageJson = require(path.join(projectRootPath, 'package.json'));
 
 const { program } = require('commander');
 const chalk = require('chalk');
