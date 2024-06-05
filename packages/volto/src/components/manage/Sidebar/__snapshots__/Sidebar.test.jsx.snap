@@ -54,10 +54,10 @@ Array [
           Block
         </button>
         <a
-           className="item"
-           onClick={[Function]}
-         >
-           Order
+          className="item"
+          onClick={[Function]}
+        >
+          Order
          </a>
       </div>
       <div
@@ -86,11 +86,11 @@ Array [
           viewBox=""
           xmlns=""
         />
-       </div>
-       <div
-         className="ui bottom attached segment tab tab-wrapper"
-         id="sidebar-order"
-       >
+      </div>
+      <div
+        className="ui bottom attached segment tab tab-wrapper"
+        id="sidebar-order"
+      >
         <svg
           className="icon tab-forbidden"
           dangerouslySetInnerHTML={
