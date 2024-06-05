@@ -62,7 +62,9 @@
   "dependencies": {
     "@plone/client": "workspace:*",
     "@plone/components": "workspace:*",
-    "@plone/registry": "workspace:*"
+    "@plone/registry": "workspace:*",
+    "@tanstack/react-query": "^5.37.1",
+    "react-aria-components": "^1.2.1"
   },
   "devDependencies": {
     "@parcel/config-default": "^2.12.0",
