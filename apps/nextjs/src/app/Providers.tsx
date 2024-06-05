@@ -1,12 +1,10 @@
 'use client';
 import React from 'react';
-import { useRouter } from 'next/navigation';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { PloneClientProvider } from '@plone/providers';
+import { useRouter, usePathname, useSearchParams } from 'next/navigation';
+import { QueryClient } from '@tanstack/react-query';
+import { PloneProvider } from '@plone/providers';
 import PloneClient from '@plone/client';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { RouterProvider } from 'react-aria-components';
-import { FlattenToAppURLProvider } from '@plone/components';
 import { flattenToAppURL } from './utils';
 import config from './config';
 
@@ -37,18 +35,27 @@ const Providers: React.FC<{
   );
 
   let router = useRouter();
+  let pathname = usePathname();
+  let search = useSearchParams();
 
   return (
-    <RouterProvider navigate={router.push}>
-      <PloneClientProvider client={ploneClient}>
-        <QueryClientProvider client={queryClient}>
-          <FlattenToAppURLProvider flattenToAppURL={flattenToAppURL}>
-            {children}
-            <ReactQueryDevtools initialIsOpen={false} />
-          </FlattenToAppURLProvider>
-        </QueryClientProvider>
-      </PloneClientProvider>
-    </RouterProvider>
+    <PloneProvider
+      ploneClient={ploneClient}
+      queryClient={queryClient}
+      // TODO: So Next doesn't have a useLocation hook, so we need to unify this
+      useLocation={() => ({
+        pathname,
+        search,
+        searchStr: '',
+        hash: '',
+        href: '',
+      })}
+      navigate={router.push}
+      flattenToAppURL={flattenToAppURL}
+    >
+      {children}
+      <ReactQueryDevtools initialIsOpen={false} />
+    </PloneProvider>
   );
 };
 

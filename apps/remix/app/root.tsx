@@ -9,7 +9,7 @@ import {
   ScrollRestoration,
 } from '@remix-run/react';
 import { useState } from 'react';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { QueryClient } from '@tanstack/react-query';
 import { PloneClientProvider } from '@plone/providers';
 import PloneClient from '@plone/client';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
@@ -47,14 +47,12 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <PloneClientProvider client={ploneClient}>
-          <QueryClientProvider client={queryClient}>
-            <Outlet />
-            <ScrollRestoration />
-            <Scripts />
-            <LiveReload />
-            <ReactQueryDevtools initialIsOpen={false} />
-          </QueryClientProvider>
+        <PloneClientProvider client={ploneClient} queryClient={queryClient}>
+          <Outlet />
+          <ScrollRestoration />
+          <Scripts />
+          <LiveReload />
+          <ReactQueryDevtools initialIsOpen={false} />
         </PloneClientProvider>
       </body>
     </html>
