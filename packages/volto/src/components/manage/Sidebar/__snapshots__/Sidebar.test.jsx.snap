@@ -58,7 +58,7 @@ Array [
           onClick={[Function]}
         >
           Order
-         </a>
+        </a>
       </div>
       <div
         className="ui bottom attached segment active tab tab-wrapper"
