@@ -11,15 +11,16 @@ myst:
 
 # Programatically configure Volto
 
-Volto allows you to define the active `add-ons` and `theme` via a file in the root of your project called `volto.config.js`.
+Volto allows you to define the active `add-ons` and `theme` via a file in the root of your project called {file}`volto.config.js`.
 
 It also allows you to define the `publicPath` to be used by Volto.
-The `public` directory is the one containing static resources that you want to be added to the build and accessed in the root of the server.
-These include `favicon` files, `robot.txt`, etc...
+The `public` directory contains static resources that you want to add to the build.
+It is accessed from the root of the server.
+These files include {file}`favicon.ico`, {file}`robot.txt`, and other static assets.
 
-## Dynamic Volto Addons Configuration
+## Dynamic Volto add-ons configuration
 
-There are some cases where defining the Volto addons your project is going to use via `package.json` `addons` key is not enough, and you need more control over it.
+There are some cases where defining the Volto add-ons in your project via {file}`package.json`'s `addons` key is not enough, and you need more control over it.
 For example, when you have several builds under the umbrella of the same project that share the core of the code, but each build have special requirements, like other CSS, customizations, {term}`shadowing` or the features of other addons available.
 
 This is an example of a `volto.config.js` file.
@@ -69,7 +70,8 @@ module.exports = {
 
 ## Define `public` directory
 
-The public path has to be a relative to the Volto files repository, or an absolute path. This configuration is the one that works in a project-less frontend setup.
+The public path must be either relative to the Volto files repository or an absolute path.
+This configuration is the one that works in a project-less frontend setup.
 
 ```js
 let addons = [];
