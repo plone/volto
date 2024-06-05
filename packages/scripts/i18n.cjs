@@ -182,17 +182,22 @@ function poToJson({ registry, addonMode }) {
 
     if (!addonMode) {
       // Merge addons locales
-      registry.getAddonDependencies().forEach((addon) => {
-        const addonlocale = `${registry.packages[addon].modulePath}/../${filename}`;
-        if (fs.existsSync(addonlocale)) {
-          const addonItems = Pofile.parse(
-            fs.readFileSync(addonlocale, 'utf8'),
-          ).items;
+      registry.getAddonDependencies().forEach((addonDep) => {
+        // What comes from getAddonDependencies is in the form of `@package/addon:profile`
+        const addon = addonDep.split(':')[0];
+        // Check if the addon is available in the registry, just in case
+        if (registry.packages[addon]) {
+          const addonlocale = `${registry.packages[addon].modulePath}/../${filename}`;
+          if (fs.existsSync(addonlocale)) {
+            const addonItems = Pofile.parse(
+              fs.readFileSync(addonlocale, 'utf8'),
+            ).items;
 
-          mergeMessages(result, addonItems, lang);
-          if (require.main === module) {
-            // We only log it if called as script
-            console.log(`Merging ${addon} locales for ${lang}`);
+            mergeMessages(result, addonItems, lang);
+            if (require.main === module) {
+              // We only log it if called as script
+              console.log(`Merging ${addon} locales for ${lang}`);
+            }
           }
         }
       });
