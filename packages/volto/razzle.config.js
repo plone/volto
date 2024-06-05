@@ -15,6 +15,7 @@ const CircularDependencyPlugin = require('circular-dependency-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
+const AfterBuildPlugin = require('@fiverr/afterbuild-webpack-plugin');
 
 const fileLoaderFinder = makeLoaderFinder('file-loader');
 
@@ -30,6 +31,7 @@ const defaultModify = ({
   webpackConfig: config,
   webpackObject: webpack,
   options,
+  paths,
 }) => {
   // Compile language JSON files from po files
   poToJson({ registry, addonMode: false });
@@ -156,6 +158,30 @@ const defaultModify = ({
         placeholders: true,
       }),
     );
+
+    // This copies the publicPath files set in voltoConfigJS with the local `public`
+    // directory at build time
+    if (registry.voltoConfigJS.publicPath) {
+      if (!dev) {
+        config.plugins.push(
+          new AfterBuildPlugin(() => {
+            const mergeDirectories = (sourceDir, targetDir) => {
+              const files = fs.readdirSync(sourceDir);
+              files.forEach((file) => {
+                const sourcePath = path.join(sourceDir, file);
+                const targetPath = path.join(targetDir, file);
+                fs.copyFileSync(sourcePath, targetPath);
+              });
+            };
+
+            mergeDirectories(
+              registry.voltoConfigJS.publicPath,
+              paths.appBuildPublic,
+            );
+          }),
+        );
+      }
+    }
   }
 
   if (target === 'node') {
@@ -387,12 +413,14 @@ module.exports = {
     webpackConfig,
     webpackObject,
     options,
+    paths,
   }) => {
     const defaultConfig = defaultModify({
       env: { target, dev },
       webpackConfig,
       webpackObject,
       options,
+      paths,
     });
 
     const res = addonExtenders.reduce(
