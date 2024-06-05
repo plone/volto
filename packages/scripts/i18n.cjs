@@ -155,9 +155,9 @@ function poToJson({ registry, addonMode }) {
               (item.comments[0] && item.comments[0].startsWith('. Default: ')
                 ? item.comments[0].replace('. Default: ', '')
                 : item.comments[0] &&
-                  item.comments[0].startsWith('defaultMessage:')
-                ? item.comments[0].replace('defaultMessage: ', '')
-                : '')
+                    item.comments[0].startsWith('defaultMessage:')
+                  ? item.comments[0].replace('defaultMessage: ', '')
+                  : '')
             : item.msgstr[0];
       }
     });
@@ -183,23 +183,22 @@ function poToJson({ registry, addonMode }) {
 
     if (!addonMode) {
       // Merge addons locales
-      if (packageJson.addons) {
-        registry.getAddonDependencies().forEach((addon) => {
-          const addonlocale = `${registry.packages[addon].modulePath}/../${filename}`;
-          if (fs.existsSync(addonlocale)) {
-            const addonItems = Pofile.parse(
-              fs.readFileSync(addonlocale, 'utf8'),
-            ).items;
+      registry.getAddonDependencies().forEach((addon) => {
+        const addonlocale = `${registry.packages[addon].modulePath}/../${filename}`;
+        if (fs.existsSync(addonlocale)) {
+          const addonItems = Pofile.parse(
+            fs.readFileSync(addonlocale, 'utf8'),
+          ).items;
 
-            mergeMessages(result, addonItems, lang);
-            if (require.main === module) {
-              // We only log it if called as script
-              console.log(`Merging ${addon} locales for ${lang}`);
-            }
+          mergeMessages(result, addonItems, lang);
+          if (require.main === module) {
+            // We only log it if called as script
+            console.log(`Merging ${addon} locales for ${lang}`);
           }
-        });
-      }
+        }
+      });
     }
+
     // Merge project locales, the project customization wins
     mergeMessages(result, projectLocalesItems, lang);
     fs.writeFileSync(`locales/${lang}.json`, JSON.stringify(result));
