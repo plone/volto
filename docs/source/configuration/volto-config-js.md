@@ -9,9 +9,13 @@ myst:
 
 (volto-config-js)=
 
-# Programatically define the active add-ons and theme
+# Programatically configure Volto
 
 Volto allows you to define the active `add-ons` and `theme` via a file in the root of your project called `volto.config.js`.
+
+It also allows you to define the `publicPath` to be used by Volto.
+The `public` directory is the one containing static resources that you want to be added to the build and accessed in the root of the server.
+These include `favicon` files, `robot.txt`, etc...
 
 ## Dynamic Volto Addons Configuration
 
@@ -60,6 +64,22 @@ if (process.env.MY_SPECIAL_SECOND_CUSTOM_BUILD) {
 module.exports = {
   addons,
   theme
+};
+```
+
+## Define `public` directory
+
+The public path has to be a relative to the Volto files repository, or an absolute path. This configuration is the one that works in a project-less frontend setup.
+
+```js
+let addons = [];
+let theme;
+let publicPath = '../../../public';
+
+module.exports = {
+  addons,
+  theme,
+  publicPath
 };
 ```
 
