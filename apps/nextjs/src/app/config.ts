@@ -7,6 +7,7 @@ const settings = {
     : 'http://localhost:3000',
 };
 
+//@ts-ignore
 config.set('settings', settings);
 
 export default config;
