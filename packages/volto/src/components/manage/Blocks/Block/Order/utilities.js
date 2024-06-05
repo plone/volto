@@ -1,4 +1,3 @@
-import { arrayMove } from '@dnd-kit/sortable';
 import { isArray } from 'lodash';
 
 import { getBlocksLayoutFieldname } from '@plone/volto/helpers';
@@ -13,6 +12,7 @@ export function getProjection(
   overId,
   dragOffset,
   indentationWidth,
+  arrayMove,
 ) {
   const overItemIndex = items.findIndex(({ id }) => id === overId);
   const activeItemIndex = items.findIndex(({ id }) => id === activeId);

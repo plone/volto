@@ -28,7 +28,7 @@ import { useDetectClickOutside, useEvent } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 import { createPortal } from 'react-dom';
 
-import { Order } from './Order/Order';
+import Order from './Order/Order';
 
 const BlocksForm = (props) => {
   const {

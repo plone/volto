@@ -1,54 +1,11 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { find, min } from 'lodash';
-import {
-  DndContext,
-  closestCenter,
-  PointerSensor,
-  useSensor,
-  useSensors,
-  DragOverlay,
-  MeasuringStrategy,
-  defaultDropAnimation,
-} from '@dnd-kit/core';
-import {
-  SortableContext,
-  arrayMove,
-  verticalListSortingStrategy,
-} from '@dnd-kit/sortable';
 
 import { flattenTree, getProjection, removeChildrenOf } from './utilities';
-import { SortableItem } from './SortableItem';
-import { CSS } from '@dnd-kit/utilities';
+import SortableItem from './SortableItem';
 
-const measuring = {
-  droppable: {
-    strategy: MeasuringStrategy.Always,
-  },
-};
-
-const dropAnimationConfig = {
-  keyframes({ transform }) {
-    return [
-      { opacity: 1, transform: CSS.Transform.toString(transform.initial) },
-      {
-        opacity: 0,
-        transform: CSS.Transform.toString({
-          ...transform.final,
-          x: transform.final.x + 5,
-          y: transform.final.y + 5,
-        }),
-      },
-    ];
-  },
-  easing: 'ease-out',
-  sideEffects({ active }) {
-    active.node.animate([{ opacity: 0 }, { opacity: 1 }], {
-      duration: defaultDropAnimation.duration,
-      easing: defaultDropAnimation.easing,
-    });
-  },
-};
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 export function Order({
   items = [],
@@ -57,11 +14,57 @@ export function Order({
   onSelectBlock,
   indentationWidth = 25,
   removable,
+  dndKitCore,
+  dndKitSortable,
+  dndKitUtilities,
 }) {
   const [activeId, setActiveId] = useState(null);
   const [overId, setOverId] = useState(null);
   const [offsetLeft, setOffsetLeft] = useState(0);
   const [currentPosition, setCurrentPosition] = useState(null);
+
+  const {
+    DndContext,
+    closestCenter,
+    PointerSensor,
+    useSensor,
+    useSensors,
+    DragOverlay,
+    MeasuringStrategy,
+    defaultDropAnimation,
+  } = dndKitCore;
+  const { SortableContext, arrayMove, verticalListSortingStrategy } =
+    dndKitSortable;
+  const { CSS } = dndKitUtilities;
+
+  const measuring = {
+    droppable: {
+      strategy: MeasuringStrategy.Always,
+    },
+  };
+
+  const dropAnimationConfig = {
+    keyframes({ transform }) {
+      return [
+        { opacity: 1, transform: CSS.Transform.toString(transform.initial) },
+        {
+          opacity: 0,
+          transform: CSS.Transform.toString({
+            ...transform.final,
+            x: transform.final.x + 5,
+            y: transform.final.y + 5,
+          }),
+        },
+      ];
+    },
+    easing: 'ease-out',
+    sideEffects({ active }) {
+      active.node.animate([{ opacity: 0 }, { opacity: 1 }], {
+        duration: defaultDropAnimation.duration,
+        easing: defaultDropAnimation.easing,
+      });
+    },
+  };
 
   const flattenedItems = useMemo(
     () => removeChildrenOf(flattenTree(items), activeId ? [activeId] : []),
@@ -75,6 +78,7 @@ export function Order({
           overId,
           offsetLeft,
           indentationWidth,
+          arrayMove,
         )
       : null;
   const sensorContext = useRef({
@@ -355,3 +359,9 @@ export function Order({
     return;
   }
 }
+
+export default injectLazyLibs([
+  'dndKitCore',
+  'dndKitSortable',
+  'dndKitUtilities',
+])(Order);
