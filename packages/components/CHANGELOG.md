@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.10 (2024-05-30)
+
+### Bugfix
+
+- Fix `align-items: start` to make autoprefixer happy @sneridagh [#6062](https://github.com/plone/volto/issues/6062)
+
 ## 2.0.0-alpha.9 (2024-05-23)
 
 ### Feature

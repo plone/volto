@@ -301,6 +301,7 @@
     "@testing-library/jest-dom": "6.4.2",
     "@testing-library/react": "14.2.0",
     "@testing-library/react-hooks": "8.0.1",
+    "@types/history": "^4.7.11",
     "@types/jest": "^29.5.8",
     "@types/loadable__component": "^5.13.9",
     "@types/lodash": "^4.14.201",

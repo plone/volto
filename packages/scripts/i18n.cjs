@@ -13,7 +13,6 @@ const babel = require('@babel/core');
 
 const path = require('path');
 const projectRootPath = path.resolve('.');
-const packageJson = require(path.join(projectRootPath, 'package.json'));
 
 const { program } = require('commander');
 const chalk = require('chalk');
@@ -155,9 +154,9 @@ function poToJson({ registry, addonMode }) {
               (item.comments[0] && item.comments[0].startsWith('. Default: ')
                 ? item.comments[0].replace('. Default: ', '')
                 : item.comments[0] &&
-                  item.comments[0].startsWith('defaultMessage:')
-                ? item.comments[0].replace('defaultMessage: ', '')
-                : '')
+                    item.comments[0].startsWith('defaultMessage:')
+                  ? item.comments[0].replace('defaultMessage: ', '')
+                  : '')
             : item.msgstr[0];
       }
     });
@@ -183,8 +182,11 @@ function poToJson({ registry, addonMode }) {
 
     if (!addonMode) {
       // Merge addons locales
-      if (packageJson.addons) {
-        registry.getAddonDependencies().forEach((addon) => {
+      registry.getAddonDependencies().forEach((addonDep) => {
+        // What comes from getAddonDependencies is in the form of `@package/addon:profile`
+        const addon = addonDep.split(':')[0];
+        // Check if the addon is available in the registry, just in case
+        if (registry.packages[addon]) {
           const addonlocale = `${registry.packages[addon].modulePath}/../${filename}`;
           if (fs.existsSync(addonlocale)) {
             const addonItems = Pofile.parse(
@@ -197,9 +199,10 @@ function poToJson({ registry, addonMode }) {
               console.log(`Merging ${addon} locales for ${lang}`);
             }
           }
-        });
-      }
+        }
+      });
     }
+
     // Merge project locales, the project customization wins
     mergeMessages(result, projectLocalesItems, lang);
     fs.writeFileSync(`locales/${lang}.json`, JSON.stringify(result));
