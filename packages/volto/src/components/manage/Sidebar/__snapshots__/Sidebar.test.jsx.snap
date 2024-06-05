@@ -53,6 +53,12 @@ Array [
         >
           Block
         </button>
+        <a
+           className="item"
+           onClick={[Function]}
+         >
+           Order
+         </a>
       </div>
       <div
         className="ui bottom attached segment active tab tab-wrapper"
@@ -62,6 +68,29 @@ Array [
         className="ui bottom attached segment tab tab-wrapper"
         id="sidebar-properties"
       >
+        <svg
+          className="icon tab-forbidden"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": undefined,
+            }
+          }
+          onClick={null}
+          style={
+            Object {
+              "fill": "currentColor",
+              "height": "48px",
+              "width": "auto",
+            }
+          }
+          viewBox=""
+          xmlns=""
+        />
+       </div>
+       <div
+         className="ui bottom attached segment tab tab-wrapper"
+         id="sidebar-order"
+       >
         <svg
           className="icon tab-forbidden"
           dangerouslySetInnerHTML={
