@@ -858,10 +858,19 @@ export function moveBlockEnhanced(formData, { source, destination }) {
   };
 }
 
+/**
+ * Finds the container with the specified containerId in the given formData.
+ *
+ * @param {object} formData - The form data object.
+ * @param {object} options - The options object.
+ * @param {string} options.containerId - The ID of the container to find.
+ * @returns {object|undefined} - The container object if found, otherwise undefined.
+ */
 export const findContainer = (formData, { containerId }) => {
   if (
     formData.blocks[containerId] &&
-    formData.blocks[containerId]['@type'] === 'gridBlock'
+    Object.keys(formData.blocks[containerId]).includes('blocks') &&
+    Object.keys(formData.blocks[containerId]).includes('blocks_layout')
   ) {
     return formData.blocks[containerId];
   }
@@ -869,7 +878,11 @@ export const findContainer = (formData, { containerId }) => {
   let container;
   Object.keys(formData.blocks).every((blockId) => {
     const block = formData.blocks[blockId];
-    if (block['@type'] === 'gridBlock') {
+    if (
+      formData.blocks[blockId] &&
+      Object.keys(formData.blocks[blockId]).includes('blocks') &&
+      Object.keys(formData.blocks[blockId]).includes('blocks_layout')
+    ) {
       container = findContainer(block, { containerId });
     }
     if (container) {

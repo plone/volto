@@ -1510,6 +1510,8 @@ describe('findBlocks', () => {
 });
 
 describe('findContainer', () => {
+  const blocksData = { blocks: {}, blocks_layout: { items: [] } };
+
   it('Get a container in the first level (main block container)', () => {
     const formData = {
       title: 'Example',
@@ -1517,15 +1519,17 @@ describe('findContainer', () => {
         1: { title: 'title', '@type': 'title' },
         2: { title: 'an image', '@type': 'image' },
         3: { title: 'description', '@type': 'description' },
-        4: { title: 'a container', '@type': 'container' },
+        4: { title: 'a container', '@type': 'container', ...blocksData },
       },
       blocks_layout: {
         items: ['1', '2', '3', '4'],
       },
     };
+
     expect(findContainer(formData, { containerId: '4' })).toStrictEqual({
       title: 'a container',
       '@type': 'container',
+      ...blocksData,
     });
   });
 
@@ -1613,6 +1617,8 @@ describe('findContainer', () => {
   });
 
   describe('findContainer then modify it', () => {
+    const blocksData = { blocks: {}, blocks_layout: { items: [] } };
+
     it('Get and modifies a container in the first level (main block container)', () => {
       const formData = {
         title: 'Example',
@@ -1620,7 +1626,7 @@ describe('findContainer', () => {
           1: { title: 'title', '@type': 'title' },
           2: { title: 'an image', '@type': 'image' },
           3: { title: 'description', '@type': 'description' },
-          4: { title: 'a container', '@type': 'container' },
+          4: { title: 'a container', '@type': 'container', ...blocksData },
         },
         blocks_layout: {
           items: ['1', '2', '3', '4'],
@@ -1632,6 +1638,7 @@ describe('findContainer', () => {
       expect(findContainer(formData, { containerId: '4' })).toStrictEqual({
         title: 'Modified the title of the container',
         '@type': 'container',
+        ...blocksData,
       });
     });
   });
