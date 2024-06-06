@@ -96,7 +96,7 @@ export namespace widgetMapping {
         export { type_1 as type };
     }
 }
-export const defaultWidget: import("@loadable/component").LoadableComponent<import("react-intl").WithIntlProps<any>>;
+export const defaultWidget: import("@loadable/component").LoadableComponent<any>;
 import { SchemaWidget } from '@plone/volto/components/manage/Widgets';
 import { TokenWidget } from '@plone/volto/components/manage/Widgets';
 import { QuerystringWidget } from '@plone/volto/components/manage/Widgets';
