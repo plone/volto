@@ -11,15 +11,13 @@ export type QuerystringSearchArgs = z.infer<
 };
 
 export const getQuerystringSearch = async ({
-  query,
   config,
+  ...args
 }: QuerystringSearchArgs): Promise<GetQuerystringSearchResponse> => {
   const validatedArgs = getQuerystringSearchSchema.parse({
-    query,
+    ...args,
   });
-
-  const queryObject = { query: validatedArgs.query };
-  const querystring = JSON.stringify(queryObject);
+  const querystring = JSON.stringify(validatedArgs);
   const encodedQuery = encodeURIComponent(querystring);
 
   const options: ApiRequestParams = {
@@ -33,9 +31,9 @@ export const getQuerystringSearch = async ({
 };
 
 export const getQuerystringSearchQuery = ({
-  query,
   config,
+  ...args
 }: QuerystringSearchArgs) => ({
-  queryKey: ['get', 'querystringSearch'],
-  queryFn: () => getQuerystringSearch({ query, config }),
+  queryKey: [args, 'get', 'querystringSearch'],
+  queryFn: () => getQuerystringSearch({ ...args, config }),
 });
