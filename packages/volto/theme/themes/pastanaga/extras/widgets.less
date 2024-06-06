@@ -153,3 +153,22 @@ body.babel-view .field.language-independent-field {
 .react-select__option {
   .word-break();
 }
+
+// makes sure event recurrence form buttons don't overflow when font is big
+.recurrence-form {
+  .byday-field {
+    .button {
+      flex-grow: 1;
+      padding-right: 0px;
+      padding-left: 0px;
+    }
+  }
+
+  .byyear-field {
+    .byyear-byday {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+  }
+}
