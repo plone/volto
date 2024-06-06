@@ -40,6 +40,14 @@ For this purpose, we have developed a {ref}`new utility <upgrade-guide-new-depen
 It is mandatory that you run the utility to make Volto version 18.0.0-alpha.21 or later work in your projects.
 This opens the door to use {term}`pnpm` in projects, too, and other goodies.
 
+```{versionremoved} 18.0.0-alpha.33
+The setting `config.settings.serverConfig.extractScripts.errorPages` has been removed.
+```
+
+Now scripts are added to error pages, regardless of whether they are in production mode.
+This setting is no longer necessary.
+
+
 (upgrade-guide-new-dependencies-synchronizer-label)=
 
 ### New dependencies synchronizer
