@@ -1,1 +1,1 @@
-Add support for configurable `public` directory outside Volto using `volto.config.js`. @sneridagh
+Add support for configurable `public` directory defined per add-on. @sneridagh
