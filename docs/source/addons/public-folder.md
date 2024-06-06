@@ -1,26 +1,29 @@
 ---
 myst:
   html_meta:
-    "description": "Add-on public folder"
+    "description": "How to add static served files from your add-on to your build"
     "property=og:description": "How to add static served files to the build from an add-on"
-    "property=og:title": "Define static served files"
-    "keywords": "Volto, Plone, Semantic UI, CSS, Volto theme"
+    "property=og:title": "Add static files from your add-on to your build"
+    "keywords": "Volto, Plone, Semantic UI, CSS, Volto theme, add-on, static, assets, files, build"
 ---
 
-# Add-on `public` folder
+# Add static files from your add-on to your build
 
-In the Volto build, some static files are added to the build, and then served along with the build files.
-These files are not touched, nor transformed by the build, served as-it-is in the root of the Volto site.
-It is useful to define files like:
+In the Volto build process, you can add static files to your build, then serve them along with the compiled files.
+Static files are not transformed or compiled by the build process.
+They are served as is from the root of the Volto site.
+It is useful to define static files such as the following:
 
-- robots.txt
-- favicon files
-- manifest files
+-   {file}`robots.txt`
+-   favicon files
+-   manifest files
+-   any other static files
 
-and other files alike.
 
-## Define a `public` folder in an add-on
+## Procedure to include static files
 
-Create a `public` folder in you add-on if it's not created yet, and add there the files you want to end up to the `public` folder build.
-The build will copy over the files taking into account the add-ons defined order, being the first one the default static files defined by Volto, then following the add-on order, will copy the files, so the last one defined will win.
+Create a folder named `public` at the root of your add-on, and add the static files to it.
+The build process will copy the files, taking into account all add-ons' defined order.
+The build process copies first the static files defined by Volto, then the static files from add-ons as defined by their configuration order.
+The last defined file overwrites any previously defined files.
 

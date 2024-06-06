@@ -11,7 +11,7 @@ const staticDirectory = () => {
     return path.join(process.env.BUILD_DIR, 'public');
   }
   // Only for development, when Volto detects that it's working on itself (not an
-  // old fashioned Volto project, there are add-ons (so it's the new setup) then
+  // old fashioned Volto project), there are add-ons (so it's the new setup) then
   // point to the public folder in the root of the setup, instead of the inner Volto
   // public folder.
   if (
