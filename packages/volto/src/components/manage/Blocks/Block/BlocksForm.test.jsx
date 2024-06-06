@@ -30,6 +30,9 @@ test('Allow override of blocksConfig', () => {
       locale: 'en',
       messages: {},
     },
+    form: {
+      ui: {},
+    },
   });
 
   const data = {
@@ -79,6 +82,9 @@ test('Removes invalid blocks on saving', () => {
     intl: {
       locale: 'en',
       messages: {},
+    },
+    form: {
+      ui: {},
     },
   });
 

@@ -114,5 +114,152 @@ exports[`Allow override of blocksConfig 1`] = `
       </div>
     </fieldset>
   </div>
+  <div
+    id="sidebar-order"
+  >
+    <div>
+      <li
+        class="tree-item-wrapper"
+        difflib="[object Object]"
+        dndkitcore="[object Object]"
+        moment="[object Object]"
+        prettierparserhtml="[object Object]"
+        prettierstandalone="[object Object]"
+        prismcore="[object Object]"
+        reactbeautifuldnd="[object Object]"
+        reactdates="[object Object]"
+        reactdnd="[object Object]"
+        reactdndhtml5backend="[object Object]"
+        reactselect="[object Object]"
+        reactselectasync="[object Object]"
+        reactselectasynccreateable="[object Object]"
+        reactselectasyncpaginate="[object Object]"
+        reactselectcreateable="[object Object]"
+        reactsortablehoc="[object Object]"
+        reactvirtualized="[object Object]"
+        role="presentation"
+        rrule="[object Module]"
+        style="--spacing: 0px;"
+        toastify="[object Object]"
+      >
+        <div
+          class="tree-item depth-0"
+          style="transition: transform 200ms ease;"
+        >
+          <button
+            aria-describedby="DndDescribedBy-0"
+            aria-disabled="false"
+            aria-roledescription="sortable"
+            class="action drag"
+            data-cypress="draggable-handle"
+            role="button"
+            tabindex="0"
+          >
+            <svg
+              class="icon"
+              style="width: auto; fill: currentColor;"
+              viewBox=""
+              xmlns=""
+            />
+          </button>
+          <span
+            class="text"
+          >
+             
+          </span>
+          <button
+            class="action delete"
+            tabindex="0"
+          >
+            <svg
+              class="icon"
+              style="width: auto; fill: currentColor;"
+              viewBox=""
+              xmlns=""
+            />
+          </button>
+        </div>
+      </li>
+      <li
+        class="tree-item-wrapper"
+        difflib="[object Object]"
+        dndkitcore="[object Object]"
+        moment="[object Object]"
+        prettierparserhtml="[object Object]"
+        prettierstandalone="[object Object]"
+        prismcore="[object Object]"
+        reactbeautifuldnd="[object Object]"
+        reactdates="[object Object]"
+        reactdnd="[object Object]"
+        reactdndhtml5backend="[object Object]"
+        reactselect="[object Object]"
+        reactselectasync="[object Object]"
+        reactselectasynccreateable="[object Object]"
+        reactselectasyncpaginate="[object Object]"
+        reactselectcreateable="[object Object]"
+        reactsortablehoc="[object Object]"
+        reactvirtualized="[object Object]"
+        role="presentation"
+        rrule="[object Module]"
+        style="--spacing: 0px;"
+        toastify="[object Object]"
+      >
+        <div
+          class="tree-item depth-0"
+          style="transition: transform 200ms ease;"
+        >
+          <button
+            aria-describedby="DndDescribedBy-0"
+            aria-disabled="false"
+            aria-roledescription="sortable"
+            class="action drag"
+            data-cypress="draggable-handle"
+            role="button"
+            tabindex="0"
+          >
+            <svg
+              class="icon"
+              style="width: auto; fill: currentColor;"
+              viewBox=""
+              xmlns=""
+            />
+          </button>
+          <span
+            class="text"
+          >
+             
+          </span>
+          <button
+            class="action delete"
+            tabindex="0"
+          >
+            <svg
+              class="icon"
+              style="width: auto; fill: currentColor;"
+              viewBox=""
+              xmlns=""
+            />
+          </button>
+        </div>
+      </li>
+      <div
+        id="DndDescribedBy-0"
+        style="display: none;"
+      >
+        
+    To pick up a draggable item, press the space bar.
+    While dragging, use the arrow keys to move the item.
+    Press space again to drop the item in its new position, or press escape to cancel.
+  
+      </div>
+      <div
+        aria-atomic="true"
+        aria-live="assertive"
+        id="DndLiveRegion-0"
+        role="status"
+        style="position: fixed; width: 1px; height: 1px; margin: -1px; border: 0px; padding: 0px; overflow: hidden; clip-path: inset(100%); white-space: nowrap;"
+      />
+    </div>
+  </div>
 </div>
 `;

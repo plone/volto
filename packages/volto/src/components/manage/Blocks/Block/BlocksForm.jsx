@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useIntl } from 'react-intl';
 import { cloneDeep, includes, isArray, keys, map } from 'lodash';
 import EditBlock from './Edit';
@@ -59,6 +59,12 @@ const BlocksForm = (props) => {
     location,
     token,
   } = props;
+
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const blockList = getBlocks(properties);
 
@@ -248,14 +254,13 @@ const BlocksForm = (props) => {
   // Note they are alreaady filtered by DragDropList, but we also want them
   // to be removed when the user saves the page next. Otherwise the invalid
   // blocks would linger for ever.
-  /*
+
   for (const [n, v] of blockList) {
     if (!v) {
       const newFormData = deleteBlock(properties, n);
       onChangeFormData(newFormData);
     }
   }
-  */
 
   useEvent('voltoClickBelowContent', () => {
     if (!config.experimental.addBlockButton.enabled || !isMainForm) return;
@@ -267,7 +272,7 @@ const BlocksForm = (props) => {
   return (
     <>
       {isMainForm &&
-        __CLIENT__ &&
+        isClient &&
         createPortal(
           <div>
             <Order
