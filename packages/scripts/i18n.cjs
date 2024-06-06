@@ -181,7 +181,9 @@ function poToJson({ registry, addonMode }) {
     }
 
     if (!addonMode) {
-      // Merge addons locales
+      // Merge addons locales - using getAddonDependencies because it preserves
+      // the order of the addons in the registry, even if they are add-on dependencies
+      // of and add-on
       registry.getAddonDependencies().forEach((addonDep) => {
         // What comes from getAddonDependencies is in the form of `@package/addon:profile`
         const addon = addonDep.split(':')[0];

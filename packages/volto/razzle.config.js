@@ -161,27 +161,48 @@ const defaultModify = ({
 
     // This copies the publicPath files set in voltoConfigJS with the local `public`
     // directory at build time
-    if (registry.voltoConfigJS.publicPath) {
-      if (!dev) {
-        config.plugins.push(
-          new AfterBuildPlugin(() => {
-            const mergeDirectories = (sourceDir, targetDir) => {
-              const files = fs.readdirSync(sourceDir);
-              files.forEach((file) => {
-                const sourcePath = path.join(sourceDir, file);
-                const targetPath = path.join(targetDir, file);
-                fs.copyFileSync(sourcePath, targetPath);
-              });
-            };
+    config.plugins.push(
+      new AfterBuildPlugin(() => {
+        const mergeDirectories = (sourceDir, targetDir) => {
+          const files = fs.readdirSync(sourceDir);
+          files.forEach((file) => {
+            const sourcePath = path.join(sourceDir, file);
+            const targetPath = path.join(targetDir, file);
+            fs.copyFileSync(sourcePath, targetPath);
+          });
+        };
 
-            mergeDirectories(
-              registry.voltoConfigJS.publicPath,
-              paths.appBuildPublic,
+        registry.getAddonDependencies().forEach((addonDep) => {
+          // What comes from getAddonDependencies is in the form of `@package/addon:profile`
+          const addon = addonDep.split(':')[0];
+          // Check if the addon is available in the registry, just in case
+          if (registry.packages[addon]) {
+            const p = fs.realpathSync(
+              `${registry.packages[addon].modulePath}/../.`,
             );
-          }),
-        );
-      }
-    }
+            if (fs.existsSync(path.join(p, 'public'))) {
+              if (!dev) {
+                mergeDirectories(path.join(p, 'public'), paths.appBuildPublic);
+              }
+              if (
+                dev &&
+                !registry.isVoltoProject &&
+                registry.addonNames.length > 0
+              ) {
+                const devPublicPath = `${projectRootPath}/../../../public`;
+                if (!fs.existsSync(devPublicPath)) {
+                  fs.mkdirSync(devPublicPath);
+                }
+                mergeDirectories(
+                  path.join(p, 'public'),
+                  `${projectRootPath}/../../../public`,
+                );
+              }
+            }
+          }
+        });
+      }),
+    );
   }
 
   if (target === 'node') {
