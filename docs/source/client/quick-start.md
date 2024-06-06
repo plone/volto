@@ -37,6 +37,7 @@ import ploneClient from '@plone/client';
 
 const client = ploneClient.initialize({
   apiPath: 'http://localhost:8080/Plone',
+  token: '', // Optional: auth_token to authorize the user
 });
 ```
 
@@ -64,6 +65,7 @@ import { usePathname } from 'next/navigation';
 
 const client = ploneClient.initialize({
   apiPath: 'http://localhost:8080/Plone',
+  token: '', // Optional: auth_token to authorize the user
 });
 
 export default function Title() {
