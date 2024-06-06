@@ -1998,6 +1998,9 @@ importers:
       '@dnd-kit/utilities':
         specifier: 3.2.2
         version: 3.2.2(react@18.2.0)
+      '@fiverr/afterbuild-webpack-plugin':
+        specifier: ^1.0.0
+        version: 1.0.0
       '@jest/globals':
         specifier: ^29.7.0
         version: 29.7.0
@@ -3901,6 +3904,10 @@ packages:
   '@fastify/busboy@2.1.1':
     resolution: {integrity: sha512-vBZP4NlzfOlerQTnba4aqZoMhE/a9HY7HRqoOPaETQcSQuWEIyZMHGfVu6w9wGtGK5fED5qRs2DteVCjOH60sA==}
     engines: {node: '>=14'}
+
+  '@fiverr/afterbuild-webpack-plugin@1.0.0':
+    resolution: {integrity: sha512-ZoeJ6Y91WAbavW0w4lBBzJlQ8jQPxJslVoajuvLSPXpJPBYbSRgfSJPrp/NTsv9C2nMqde4kYf/IW2rmmtPB+w==}
+    engines: {node: '>= 14.0.0'}
 
   '@fluentui/react-component-event-listener@0.63.1':
     resolution: {integrity: sha512-gSMdOh6tI3IJKZFqxfQwbTpskpME0CvxdxGM2tdglmf6ZPVDi0L4+KKIm+2dN8nzb8Ya1A8ZT+Ddq0KmZtwVQg==}
@@ -20947,6 +20954,8 @@ snapshots:
   '@fal-works/esbuild-plugin-global-externals@2.1.2': {}
 
   '@fastify/busboy@2.1.1': {}
+
+  '@fiverr/afterbuild-webpack-plugin@1.0.0': {}
 
   '@fluentui/react-component-event-listener@0.63.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
