@@ -1,0 +1,1 @@
+Fix JavaScript events association on error pages. Also remove settings `config.settings.serverConfig.extractScripts.errorPages`. Now scripts are added to error pages, regardless of whether we are in production mode or not. @wesleybl
