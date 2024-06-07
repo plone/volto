@@ -2,24 +2,12 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { map } from 'lodash';
 import { Menu, Dropdown } from 'semantic-ui-react';
-import {
-  FormattedMessage,
-  injectIntl,
-  useIntl,
-  defineMessages,
-} from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import Slugger from 'github-slugger';
 import { normalizeString } from '@plone/volto/helpers';
 
-const messages = defineMessages({
-  link: {
-    id: 'table-of-content-link',
-    defaultMessage: 'table-of-content-link',
-  },
-});
 const RenderMenuItems = ({ items }) => {
-  const intl = useIntl();
   return map(items, (item) => {
     const { id, level, title, override_toc, plaintext } = item;
     const slug = override_toc
@@ -29,12 +17,7 @@ const RenderMenuItems = ({ items }) => {
       item && (
         <React.Fragment key={id}>
           <Menu.Item className={`headline-${level}`}>
-            <AnchorLink
-              href={`#${slug}`}
-              aria-label={intl.formatMessage(messages.link)}
-            >
-              {title}
-            </AnchorLink>
+            <AnchorLink href={`#${slug}`}>{title}</AnchorLink>
           </Menu.Item>
           {item.items?.length > 0 && <RenderMenuItems items={item.items} />}
         </React.Fragment>
