@@ -23,8 +23,8 @@ export type ContainedItem = {
   '@id': string;
   '@type': string;
   description: string;
-  image_field: null;
-  image_scales: null;
+  image_field: string;
+  image_scales: Record<string, Image> | null;
   review_state: string;
   title: string;
 };
