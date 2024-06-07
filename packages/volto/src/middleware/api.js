@@ -222,17 +222,40 @@ const apiMiddlewareFactory =
           }
 
           const { settings } = config;
-          if (getState().apierror.connectionRefused) {
+          const state = getState();
+          if (state.apierror.connectionRefused) {
             next({
               ...rest,
               type: RESET_APIERROR,
             });
           }
           if (type === GET_CONTENT) {
+            // automatically set redux userSession.token if the user logged in another tab
+            if (!(subrequest || __SERVER__)) {
+              const cookies = new Cookies();
+              const token = cookies.get('auth_token');
+
+              if (token && !state.userSession?.token) {
+                dispatch({
+                  type: 'LOGIN_SUCCESS',
+                  result: {
+                    token,
+                  },
+                });
+              } else if (state.userSession?.token && !token) {
+                dispatch({
+                  type: 'LOGOUT_SUCCESS',
+                  result: {
+                    token,
+                  },
+                });
+              }
+            }
+
             const lang = result?.language?.token;
             if (
               lang &&
-              getState().intl.locale !== toReactIntlLang(lang) &&
+              state.intl.locale !== toReactIntlLang(lang) &&
               !subrequest &&
               config.settings.supportedLanguages.includes(lang)
             ) {
@@ -244,6 +267,7 @@ const apiMiddlewareFactory =
               );
             }
           }
+
           if (type === LOGIN && settings.websockets) {
             const cookies = new Cookies();
             cookies.set(

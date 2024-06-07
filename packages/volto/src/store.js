@@ -13,7 +13,6 @@ import {
   protectLoadStart,
   protectLoadEnd,
   loadProtector,
-  userSessionReset,
 } from '@plone/volto/middleware';
 
 const configureStore = (initialState, history, apiHelper) => {
@@ -23,7 +22,6 @@ const configureStore = (initialState, history, apiHelper) => {
     routerMiddleware(history),
     thunk,
     ...(apiHelper ? [api(apiHelper)] : []),
-    userSessionReset,
     protectLoadEnd,
     ...(__CLIENT__
       ? [save({ states: config.settings.persistentReducers, debounce: 500 })]
