@@ -3,16 +3,21 @@
  * @module components/manage/Blocks/ToC/View
  */
 
-import React from 'react';
 import PropTypes from 'prop-types';
 import { map } from 'lodash';
 import { List } from 'semantic-ui-react';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import Slugger from 'github-slugger';
 import { UniversalLink } from '@plone/volto/components';
 import { normalizeString } from '@plone/volto/helpers';
-
+const messages = defineMessages({
+  link: {
+    id: 'Table-Of-Content-Link',
+    defaultMessage: 'Table-Of-Content-Link',
+  },
+});
 const RenderListItems = ({ items, data }) => {
+  const intl = useIntl();
   return map(items, (item) => {
     const { id, level, title, override_toc, plaintext } = item;
     const slug = override_toc
@@ -21,7 +26,12 @@ const RenderListItems = ({ items, data }) => {
     return (
       item && (
         <List.Item key={id} className={`item headline-${level}`} as="li">
-          <UniversalLink href={`#${slug}`}>{title}</UniversalLink>
+          <UniversalLink
+            href={`#${slug}`}
+            aria-label={intl.formatMessage(messages.link)}
+          >
+            {title}
+          </UniversalLink>
           {item.items?.length > 0 && (
             <List
               ordered={data.ordered}
@@ -77,4 +87,4 @@ View.propTypes = {
   properties: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
-export default injectIntl(View);
+export default View;

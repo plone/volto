@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2024-05-29T18:53:42.120Z\n"
+"POT-Creation-Date: 2024-06-07T10:48:04.224Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -3502,6 +3502,16 @@ msgstr ""
 #: components/manage/Blocks/ToC/variations/DefaultTocRenderer
 #: components/manage/Blocks/ToC/variations/HorizontalMenu
 msgid "Table of Contents"
+msgstr ""
+
+#. Default: "Table-Of-Content-Link"
+#: components/manage/Blocks/ToC/variations/DefaultTocRenderer
+msgid "Table-Of-Content-Link"
+msgstr ""
+
+#. Default: "Table-of-Content-Link"
+#: components/manage/Blocks/ToC/variations/HorizontalMenu
+msgid "Table-of-Content-Link"
 msgstr ""
 
 #. Default: "Tabular view"
