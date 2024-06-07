@@ -17,6 +17,35 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.33 (2024-06-06)
+
+### Breaking
+
+- Fix JavaScript events association on error pages. Also remove settings `config.settings.serverConfig.extractScripts.errorPages`. Now scripts are added to error pages, regardless of whether we are in production mode or not. @wesleybl [#6048](https://github.com/plone/volto/issues/6048)
+- Breaking from the original slots implementation:
+  Now `config.getSlots` in the configuration registry takes the argument `location` instead of `pathname`.
+  This allows to have more expressive conditions, and fulfill the use case of the `Add` form.
+  @sneridagh [#6063](https://github.com/plone/volto/issues/6063)
+
+### Feature
+
+- Added object browser icon view @robgietema [#5279](https://github.com/plone/volto/issues/5279)
+- Refactor TextWidget. @Tishasoumya-02 [#6020](https://github.com/plone/volto/issues/6020)
+- Refactor IdWidget -@Tishasoumya-02 [#6027](https://github.com/plone/volto/issues/6027)
+- The `ContentTypeCondition` now supports the `Add` form, and detects when you create a content type that is set in the condition. @sneridagh
+  Added a new `BodyClass` helper while adding a new content type of the form `is-adding-contenttype-mycontenttype`. @sneridagh [#6063](https://github.com/plone/volto/issues/6063)
+- Add support for configurable `public` directory defined per add-on. @sneridagh [#6072](https://github.com/plone/volto/issues/6072)
+
+### Bugfix
+
+- Fix block chooser search is not focusable when clicked on add button @iRohitSingh [#5866](https://github.com/plone/volto/issues/5866)
+- Fixed skiplink links not tracking focus correctly @JeffersonBledsoe [#5959](https://github.com/plone/volto/issues/5959)
+- Remove left and right padding from _Event > Edit recurrence > Repeat on_ buttons when repeating for weekly or yearly events for big fonts, preventing overflow. @sabrina-bongiovanni [#6070](https://github.com/plone/volto/issues/6070)
+
+### Internal
+
+- Fix test script in monorepo root @sneridagh [#6051](https://github.com/plone/volto/issues/6051)
+
 ## 18.0.0-alpha.32 (2024-05-23)
 
 ### Feature
