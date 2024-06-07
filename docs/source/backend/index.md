@@ -10,7 +10,7 @@ myst:
 # Integration with the backend
 
 Integration with the Plone CMS is provided by the Plone API framework, namely [`plone.restapi`](https://github.com/plone/plone.restapi) and its lower-level [`plone.rest`](https://github.com/plone/plone.rest).
-For details, check the {doc}`plone.restapi/docs/source/index` documentation.
+For details, check the {doc}`plone:plone.restapi/docs/source/index` documentation.
 
 Some of the more interesting integration features that you can look up in the `plone.restapi` documentation include the following.
 

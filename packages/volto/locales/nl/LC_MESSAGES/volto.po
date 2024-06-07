@@ -1669,6 +1669,7 @@ msgstr "Geschiedenis van {title}"
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsBreadcrumbs
 #: components/manage/Contents/ContentsBreadcrumbsHomeItem
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/theme/Breadcrumbs/Breadcrumbs
 #: components/theme/Logo/Logo
 msgid "Home"
@@ -1677,6 +1678,11 @@ msgstr "Home"
 #. Default: "ID"
 #: components/manage/Contents/Contents
 msgid "ID"
+msgstr ""
+
+#. Default: "Icon View"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Icon View"
 msgstr ""
 
 #. Default: "If all of the following conditions are met:"
@@ -2001,6 +2007,11 @@ msgstr ""
 #: components/manage/LinksToItem/LinksToItem
 #: components/manage/Toolbar/More
 msgid "Links and references"
+msgstr ""
+
+#. Default: "List View"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "List View"
 msgstr ""
 
 #. Default: "Listing"
@@ -3056,6 +3067,7 @@ msgstr ""
 
 #. Default: "Search results"
 #: components/manage/Blocks/Search/components/SearchDetails
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/theme/Search/Search
 msgid "Search results"
 msgstr ""

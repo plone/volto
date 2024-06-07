@@ -86,6 +86,10 @@ class Api {
 
           Object.keys(headers).forEach((key) => request.set(key, headers[key]));
 
+          if (__SERVER__ && checkUrl && ['get', 'head'].includes(method)) {
+            request.redirects(0);
+          }
+
           if (data) {
             request.send(data);
           }
@@ -110,6 +114,14 @@ class Api {
                 url: request.xhr.responseURL,
               });
             }
+
+            if ([301, 302].includes(err?.status)) {
+              return reject({
+                code: err.status,
+                url: err.response.headers.location,
+              });
+            }
+
             return err ? reject(err) : resolve(response.body || response.text);
           });
         });

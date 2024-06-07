@@ -4,7 +4,7 @@ export declare const ButtonsWidget: import("@loadable/component").LoadableCompon
 export declare const ArrayWidget: import("@loadable/component").LoadableClassComponent<any>;
 export declare const CheckboxWidget: import("@loadable/component").LoadableComponent<import("react-intl").WithIntlProps<any>>;
 export declare const FileWidget: import("@loadable/component").LoadableComponent<import("react-intl").WithIntlProps<any>>;
-export declare const IdWidget: import("@loadable/component").LoadableClassComponent<any>;
+export declare const IdWidget: import("@loadable/component").LoadableComponent<any>;
 export declare const PasswordWidget: import("@loadable/component").LoadableComponent<import("react-intl").WithIntlProps<any>>;
 export declare const QueryWidget: import("@loadable/component").LoadableClassComponent<any>;
 export declare const QuerySortOnWidget: import("@loadable/component").LoadableClassComponent<any>;
@@ -12,7 +12,7 @@ export declare const QuerystringWidget: import("@loadable/component").LoadableCo
 export declare const SchemaWidget: import("@loadable/component").LoadableClassComponent<any>;
 export declare const SelectWidget: import("@loadable/component").LoadableClassComponent<any>;
 export declare const TextareaWidget: import("@loadable/component").LoadableComponent<import("react-intl").WithIntlProps<any>>;
-export declare const TextWidget: import("@loadable/component").LoadableComponent<import("react-intl").WithIntlProps<any>>;
+export declare const TextWidget: import("@loadable/component").LoadableComponent<any>;
 export declare const TokenWidget: import("@loadable/component").LoadableClassComponent<any>;
 export declare const WysiwygWidget: import("@loadable/component").LoadableClassComponent<any>;
 export declare const UrlWidget: import("@loadable/component").LoadableClassComponent<{
