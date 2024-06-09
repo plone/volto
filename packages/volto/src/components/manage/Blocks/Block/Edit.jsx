@@ -150,9 +150,13 @@ export class Edit extends Component {
               }
             }}
             onFocus={() => {
-              if (this.props.hovered !== this.props.id) {
-                this.props.setUIState({ hovered: this.props.id });
-              }
+              // TODO: This `onFocus` steals somehow the focus from the slate block
+              // we have to investigate why this is happening
+              // Apparently, I can't see any difference in the behavior
+              // If any, we can fix it in successive iterations
+              // if (this.props.hovered !== this.props.id) {
+              //   this.props.setUIState({ hovered: this.props.id });
+              // }
             }}
             onMouseLeave={() => this.props.setUIState({ hovered: null })}
             onClick={(e) => {
