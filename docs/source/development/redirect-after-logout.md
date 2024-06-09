@@ -9,7 +9,11 @@ myst:
 
 # How to Redirect to the Login Page After Logout in Volto
 
+## Overview 
+
 To redirect users to the login page after they log out in Volto, you need to customize the `PersonalTools` component. Follow these steps:
+
+## Steps
 
 1. **Shadow the component**: Create a new file at `customizations/components/manage/Toolbar/PersonalTools.jsx` and copy the contents of the original `PersonalTools.jsx` file from `volto/packages/volto/src/components/manage/Toolbar/PersonalTools.jsx`.
 
