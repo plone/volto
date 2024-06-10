@@ -172,6 +172,19 @@ const defaultModify = ({
           });
         };
 
+        // If we are in development mode, we copy the public directory to the
+        // public directory of the setup root, so the files are available
+        if (dev && !registry.isVoltoProject && registry.addonNames.length > 0) {
+          const devPublicPath = `${projectRootPath}/../../../public`;
+          if (!fs.existsSync(devPublicPath)) {
+            fs.mkdirSync(devPublicPath);
+          }
+          mergeDirectories(
+            path.join(projectRootPath, 'public'),
+            `${projectRootPath}/../../../public`,
+          );
+        }
+
         registry.getAddonDependencies().forEach((addonDep) => {
           // What comes from getAddonDependencies is in the form of `@package/addon:profile`
           const addon = addonDep.split(':')[0];
@@ -189,10 +202,6 @@ const defaultModify = ({
                 !registry.isVoltoProject &&
                 registry.addonNames.length > 0
               ) {
-                const devPublicPath = `${projectRootPath}/../../../public`;
-                if (!fs.existsSync(devPublicPath)) {
-                  fs.mkdirSync(devPublicPath);
-                }
                 mergeDirectories(
                   path.join(p, 'public'),
                   `${projectRootPath}/../../../public`,
