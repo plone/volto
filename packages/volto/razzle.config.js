@@ -15,6 +15,7 @@ const CircularDependencyPlugin = require('circular-dependency-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
+const AfterBuildPlugin = require('@fiverr/afterbuild-webpack-plugin');
 
 const fileLoaderFinder = makeLoaderFinder('file-loader');
 
@@ -30,6 +31,7 @@ const defaultModify = ({
   webpackConfig: config,
   webpackObject: webpack,
   options,
+  paths,
 }) => {
   // Compile language JSON files from po files
   poToJson({ registry, addonMode: false });
@@ -154,6 +156,60 @@ const defaultModify = ({
         flattening: true,
         paths: true,
         placeholders: true,
+      }),
+    );
+
+    // This copies the publicPath files set in voltoConfigJS with the local `public`
+    // directory at build time
+    config.plugins.push(
+      new AfterBuildPlugin(() => {
+        const mergeDirectories = (sourceDir, targetDir) => {
+          const files = fs.readdirSync(sourceDir);
+          files.forEach((file) => {
+            const sourcePath = path.join(sourceDir, file);
+            const targetPath = path.join(targetDir, file);
+            fs.copyFileSync(sourcePath, targetPath);
+          });
+        };
+
+        // If we are in development mode, we copy the public directory to the
+        // public directory of the setup root, so the files are available
+        if (dev && !registry.isVoltoProject && registry.addonNames.length > 0) {
+          const devPublicPath = `${projectRootPath}/../../../public`;
+          if (!fs.existsSync(devPublicPath)) {
+            fs.mkdirSync(devPublicPath);
+          }
+          mergeDirectories(
+            path.join(projectRootPath, 'public'),
+            `${projectRootPath}/../../../public`,
+          );
+        }
+
+        registry.getAddonDependencies().forEach((addonDep) => {
+          // What comes from getAddonDependencies is in the form of `@package/addon:profile`
+          const addon = addonDep.split(':')[0];
+          // Check if the addon is available in the registry, just in case
+          if (registry.packages[addon]) {
+            const p = fs.realpathSync(
+              `${registry.packages[addon].modulePath}/../.`,
+            );
+            if (fs.existsSync(path.join(p, 'public'))) {
+              if (!dev) {
+                mergeDirectories(path.join(p, 'public'), paths.appBuildPublic);
+              }
+              if (
+                dev &&
+                !registry.isVoltoProject &&
+                registry.addonNames.length > 0
+              ) {
+                mergeDirectories(
+                  path.join(p, 'public'),
+                  `${projectRootPath}/../../../public`,
+                );
+              }
+            }
+          }
+        });
       }),
     );
   }
@@ -387,12 +443,14 @@ module.exports = {
     webpackConfig,
     webpackObject,
     options,
+    paths,
   }) => {
     const defaultConfig = defaultModify({
       env: { target, dev },
       webpackConfig,
       webpackObject,
       options,
+      paths,
     });
 
     const res = addonExtenders.reduce(
