@@ -2478,7 +2478,7 @@ msgstr "Apri object browser"
 #. Default: "Order"
 #: components/manage/Sidebar/Sidebar
 msgid "Order"
-msgstr ""
+msgstr "Ordine"
 
 #. Default: "Ordered"
 #: components/manage/Blocks/ToC/Schema
