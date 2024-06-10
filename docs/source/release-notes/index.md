@@ -17,6 +17,12 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 17.16.1 (2024-06-10)
+
+### Bugfix
+
+- Fix removal of slate formatting applied to text when toggling the list buttons @robgietema [#6080](https://github.com/plone/volto/issues/6080)
+
 ## 17.16.0 (2024-05-21)
 
 ### Feature
