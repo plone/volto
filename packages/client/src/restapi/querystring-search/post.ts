@@ -9,6 +9,7 @@ import { QuerystringSearchResponse as PostQuerystringSearchResponse } from '@plo
 
 export const postQuerystringSearchArgsSchema = z.object({
   data: postQuerystringSearchDataSchema,
+  locale: z.string().optional(),
   config: PloneClientConfigSchema,
 });
 
@@ -18,10 +19,12 @@ export type PostQuerystringSearchArgs = z.infer<
 
 export const postQuerystringSearch = async ({
   data,
+  locale,
   config,
 }: PostQuerystringSearchArgs): Promise<PostQuerystringSearchResponse> => {
   const validatedArgs = postQuerystringSearchArgsSchema.parse({
     data,
+    locale,
     config,
   });
 
@@ -30,7 +33,11 @@ export const postQuerystringSearch = async ({
     config: validatedArgs.config,
   };
 
-  return apiRequest('post', '/@querystring-search', options);
+  return apiRequest(
+    'post',
+    `${locale ? `/${locale}` : ''}/@querystring-search`,
+    options,
+  );
 };
 
 export const postQuerystringSearchMutation = ({

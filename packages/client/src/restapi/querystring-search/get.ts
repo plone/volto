@@ -8,10 +8,12 @@ export type QuerystringSearchArgs = z.infer<
   typeof getQuerystringSearchSchema
 > & {
   config: PloneClientConfig;
+  locale?: string;
 };
 
 export const getQuerystringSearch = async ({
   config,
+  locale,
   ...args
 }: QuerystringSearchArgs): Promise<GetQuerystringSearchResponse> => {
   const validatedArgs = getQuerystringSearchSchema.parse({
@@ -27,7 +29,11 @@ export const getQuerystringSearch = async ({
     },
   };
 
-  return apiRequest('get', '/@querystring-search', options);
+  return apiRequest(
+    'get',
+    `${locale ? `/${locale}` : ''}/@querystring-search`,
+    options,
+  );
 };
 
 export const getQuerystringSearchQuery = ({
