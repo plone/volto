@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Button, Dimmer, Loader, Message } from 'semantic-ui-react';
 import { useIntl, defineMessages } from 'react-intl';
 import { useDispatch } from 'react-redux';
@@ -84,6 +84,8 @@ const UnconnectedImageInput = (props) => {
 
   const [uploading, setUploading] = React.useState(false);
   const [dragging, setDragging] = React.useState(false);
+
+  const imageUploadInputRef = useRef(null);
 
   const requestId = `image-upload-${id}`;
 
@@ -220,17 +222,25 @@ const UnconnectedImageInput = (props) => {
                   )}
                   {restrictFileUpload === false && (
                     <Button.Group>
-                      <label className="ui button compact basic icon">
+                      <Button
+                        title={intl.formatMessage(messages.uploadAnImage)}
+                        icon
+                        basic
+                        compact
+                        onClick={() => {
+                          imageUploadInputRef.current.click();
+                        }}
+                      >
                         <Icon name={uploadSVG} size="24px" />
-                        <input
-                          {...getInputProps({
-                            type: 'file',
-                            onChange: handleUpload,
-                            style: { display: 'none' },
-                          })}
-                          title={intl.formatMessage(messages.uploadAnImage)}
-                        />
-                      </label>
+                      </Button>
+                      <input
+                        {...getInputProps({
+                          type: 'file',
+                          ref: imageUploadInputRef,
+                          onChange: handleUpload,
+                          style: { display: 'none' },
+                        })}
+                      />
                     </Button.Group>
                   )}
 
