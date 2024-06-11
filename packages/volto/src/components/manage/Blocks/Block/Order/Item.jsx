@@ -93,7 +93,7 @@ export const Item = forwardRef(
             tabIndex={0}
             data-cypress="draggable-handle"
           >
-            <Icon name={dragSVG} size="16" />
+            <Icon name={dragSVG} size="16px" />
           </button>
           <span className="text">
             {config.blocks.blocksConfig[data?.['@type']]?.icon && (
