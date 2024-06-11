@@ -220,7 +220,7 @@ const BlocksForm = (props) => {
         }
       }}
     >
-      <fieldset className="invisible" disabled={!editable}>
+      <fieldset className="invisible dnd-parent" disabled={!editable}>
         {blockList.map(([childId, child], index) => {
           const blockProps = {
             allowedBlocks,

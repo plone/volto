@@ -54,8 +54,6 @@ const EditBlockWrapper = (props) => {
     contentType,
   } = blockProps;
 
-  const visible = selected && !hideHandler(data);
-
   const required = isBoolean(data.required)
     ? data.required
     : includes(config.blocks.requiredBlocks, type);
@@ -74,7 +72,6 @@ const EditBlockWrapper = (props) => {
   const doDragEnd = useCallback(
     (evt, a, b, c) => {
       if (evt.dropOperation === 'move') {
-        console.log('dragEnd', evt, block, a, b, c);
         // Since the successful drag is already doing the move,
         // onDeleteBlock(block);
       }
@@ -89,7 +86,6 @@ const EditBlockWrapper = (props) => {
       doDragEnd(e);
     },
     getItems() {
-      console.log('drag', data);
       return [
         {
           // XXX No uppercase here, or you'll go crazy!
@@ -101,6 +97,8 @@ const EditBlockWrapper = (props) => {
       ];
     },
   });
+
+  const visible = selected && !hideHandler(data) && !isDragging;
 
   let buttonRef = React.useRef(null);
   let { buttonProps } = useButton(
@@ -157,6 +155,10 @@ const EditBlockWrapper = (props) => {
     [setIsDropping, setIsDroppingAfter],
   );
 
+  const doDropMove = useCallback((evt) => {
+    setIsDroppingAfter(shouldItDropAfter(evt.y));
+  }, []);
+
   const doDropExit = useCallback(
     (evt) => {
       setIsDropping(false);
@@ -169,6 +171,9 @@ const EditBlockWrapper = (props) => {
     onDropEnter(e) {
       doDropEnter(e);
     },
+    onDropMove(e) {
+      doDropMove(e);
+    },
     onDropExit(e) {
       doDropExit(e);
     },
@@ -180,88 +185,113 @@ const EditBlockWrapper = (props) => {
   const blockIndex = properties.blocks_layout.items.indexOf(block);
 
   return (
-    <div
-      style={isDragging ? { display: 'none' } : {}}
-      className={
-        isDropping
-          ? isDroppingAfter
-            ? 'dnd-droptarget-accepting-after'
-            : 'dnd-droptarget-accepting-before'
-          : 'dnd-droptarget-inactive'
-      }
-      {...dropProps}
-      ref={blockRef}
-    >
+    <>
       <div
-        {...dragProps}
-        {...styleMergedWithDragProps}
-        // Right now, we can have the alignment information in the styles property or in the
-        // block data root, we inject the classname here for having control over the whole
-        // Block Edit wrapper
-        className={cx(`block-editor-${data['@type']}`, classNames, {
-          [data.align]: data.align,
-        })}
+        className={`dnd-droptarget-indicator ${
+          isDropping && !isDroppingAfter
+            ? 'dnd-droptarget-indicator-before'
+            : 'dnd-droptarget-indicator-inactive'
+        }`}
+        {...dropProps}
+      />
+      <div
+        className={`dnd-droptarget ${
+          isDropping
+            ? isDroppingAfter
+              ? 'dnd-droptarget-accepting-after'
+              : 'dnd-droptarget-accepting-before'
+            : 'dnd-droptarget-inactive'
+        } ${isDragging ? 'dnd-dragtarget-dragging' : ''}`}
+        {...dropProps}
+        ref={blockRef}
       >
-        <div style={{ position: 'relative' }}>
+        <div
+          style={{ position: 'relative' }}
+          className="dnd-droptarget-margin-enclosure"
+        >
           <div
-            style={{
-              visibility: visible ? 'visible' : 'hidden',
-              display: 'inline-block',
-            }}
-            className="drag handle wrapper"
+            // Right now, we can have the alignment information in the styles property or in the
+            // block data root, we inject the classname here for having control over the whole
+            // Block Edit wrapper
+            className={cx(`block-editor-${data['@type']}`, classNames, {
+              [data.align]: data.align,
+            })}
           >
-            <Icon name={dragSVG} size="18px" ref={buttonRef} {...buttonProps} />
-          </div>
-          <div className={`ui drag block inner ${type}`}>
-            {children}
-            {selected && !required && editable && (
-              <Button
-                icon
-                basic
-                onClick={() => onDeleteBlock(block, true)}
-                className="delete-button"
-                aria-label={intl.formatMessage(messages.delete)}
-              >
-                <Icon name={trashSVG} size="18px" />
-              </Button>
-            )}
-            {config.experimental.addBlockButton.enabled && showBlockChooser && (
-              <BlockChooserButton
-                data={data}
-                block={block}
-                onInsertBlock={(id, value) => {
-                  if (blockHasValue(data)) {
-                    onSelectBlock(onInsertBlock(id, value));
-                  } else {
-                    onChangeBlock(id, value);
-                  }
-                }}
-                onMutateBlock={onMutateBlock}
-                allowedBlocks={allowedBlocks}
-                blocksConfig={blocksConfig}
-                size="24px"
-                properties={properties}
-                navRoot={navRoot}
-                contentType={contentType}
+            <div style={{ position: 'relative' }} />
+            <div
+              {...dragProps}
+              {...styleMergedWithDragProps}
+              style={{
+                visibility: visible ? 'visible' : 'hidden',
+                display: 'inline-block',
+              }}
+              className="drag handle wrapper"
+            >
+              <Icon
+                name={dragSVG}
+                size="18px"
+                ref={buttonRef}
+                {...buttonProps}
               />
-            )}
+            </div>
+            <div className={`ui drag block inner ${type}`}>
+              {children}
+              {selected && !required && editable && (
+                <Button
+                  icon
+                  basic
+                  onClick={() => onDeleteBlock(block, true)}
+                  className="delete-button"
+                  aria-label={intl.formatMessage(messages.delete)}
+                >
+                  <Icon name={trashSVG} size="18px" />
+                </Button>
+              )}
+              {config.experimental.addBlockButton.enabled && showBlockChooser && (
+                <BlockChooserButton
+                  data={data}
+                  block={block}
+                  onInsertBlock={(id, value) => {
+                    if (blockHasValue(data)) {
+                      onSelectBlock(onInsertBlock(id, value));
+                    } else {
+                      onChangeBlock(id, value);
+                    }
+                  }}
+                  onMutateBlock={onMutateBlock}
+                  allowedBlocks={allowedBlocks}
+                  blocksConfig={blocksConfig}
+                  size="24px"
+                  properties={properties}
+                  navRoot={navRoot}
+                  contentType={contentType}
+                />
+              )}
+            </div>
           </div>
         </div>
+        <DragPreview ref={previewRef}>
+          {(items) => {
+            const { '@type': type, plaintext: plainText } = JSON.parse(
+              items[0]['blocktype'],
+            ).data;
+            return (
+              <div className="dnd-preview">
+                <div className="dnd-preview-blocktype">{type}</div>
+                <div className="dnd-preview-plaintext">{plainText}</div>
+              </div>
+            );
+          }}
+        </DragPreview>
       </div>
-      <DragPreview ref={previewRef}>
-        {(items) => {
-          const { '@type': type, plaintext: plainText } = JSON.parse(
-            items[0]['blocktype'],
-          ).data;
-          return (
-            <div className="dnd-preview">
-              <div className="dnd-preview-blocktype">{type}</div>
-              <div className="dnd-preview-plaintext">{plainText}</div>
-            </div>
-          );
-        }}
-      </DragPreview>
-    </div>
+      <div
+        className={`dnd-droptarget-indicator ${
+          isDropping && isDroppingAfter
+            ? 'dnd-droptarget-indicator-after'
+            : 'dnd-droptarget-indicator-inactive'
+        }`}
+      />
+    </>
   );
 };
 

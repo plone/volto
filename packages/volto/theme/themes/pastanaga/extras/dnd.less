@@ -5,7 +5,12 @@
 :root {
   --dnd-preview-border-color: #1e90ff;
   --dnd-preview-fill-color: rgb(35 40 105);
-  --dnd-droptarget-border-color: #1e90ff;
+  --dnd-droptarget-indicator-color: #1e90ff;
+  --dnd-dragtarget-dragging-opacity: 0.25;
+}
+
+.dnd-parent {
+  position: relative;
 }
 
 .dnd-preview {
@@ -28,20 +33,43 @@
   }
 }
 
-.dnd-droptarget-accepting-before,
-.dnd-droptarget-accepting-after,
-.dnd-droptarget-inactive {
-  border-top-width: 4px;
-  border-bottom-width: 4px;
-  border-left-width: 0;
-  border-right-width: 0;
-  border-style: solid;
-  border-top-color: transparent;
-  border-bottom-color: transparent;
+.dnd-dragtarget-dragging {
+  opacity: var(--dnd-dragtarget-dragging-opacity);
 }
-.dnd-droptarget-accepting-before {
-  border-top-color: var(--dnd-droptarget-border-color);
+
+.dnd-droptarget-margin-enclosure {
+  // enclose collapsing margins
+  border: 0.01px solid transparent;
 }
-.dnd-droptarget-accepting-after {
-  border-bottom-color: var(--dnd-droptarget-border-color);
+
+.dnd-droptarget-indicator {
+  position: absolute;
+  height: 4px;
+  width: 100%;
+}
+.dnd-droptarget-indicator-before,
+.dnd-droptarget-indicator-after {
+  background-color: var(--dnd-droptarget-indicator-color);
+  &:before,
+  &:after {
+    position: absolute;
+    bottom: -3px;
+    height: 10px;
+    width: 10px;
+    background-color: var(--dnd-droptarget-indicator-color);
+    content: '';
+    border-radius: 5px;
+  }
+  &:before {
+    left: -10px;
+  }
+  &:after {
+    right: -10px;
+  }
+}
+
+// Cosmetic override, instead of the current
+// top: 5px from blocks.less.
+.dnd-parent .block-editor-title .drag.handle.wrapper {
+  top: 25px;
 }
