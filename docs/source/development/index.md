@@ -26,6 +26,7 @@ environment-variables
 customizing-components
 customizing-views
 creating-views
+redirect-after-logout
 images
 i18n
 express
