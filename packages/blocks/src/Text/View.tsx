@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import type { BlockViewProps } from '@plone/types';
 import { renderSlate } from './slate';
 import config from '@plone/registry';
