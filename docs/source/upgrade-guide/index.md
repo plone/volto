@@ -40,6 +40,14 @@ For this purpose, we have developed a {ref}`new utility <upgrade-guide-new-depen
 It is mandatory that you run the utility to make Volto version 18.0.0-alpha.21 or later work in your projects.
 This opens the door to use {term}`pnpm` in projects, too, and other goodies.
 
+```{versionremoved} 18.0.0-alpha.33
+The setting `config.settings.serverConfig.extractScripts.errorPages` has been removed.
+```
+
+Now scripts are added to error pages, regardless of whether they are in production mode.
+This setting is no longer necessary.
+
+
 (upgrade-guide-new-dependencies-synchronizer-label)=
 
 ### New dependencies synchronizer
@@ -223,6 +231,11 @@ Although it is technically possible to keep the old version running, the script 
 There was a bug where a fieldset's generated value would be not valid.
 This has been fixed by passing down the `id` instead of the `title` to the fieldset's value.
 If your tests rely on the old fieldset's generated value for selecting fields, your tests could break, in which case you should amend them to use the updated fieldset's value instead.
+
+### Changes from the original slots feature
+
+Now `config.getSlots` in the configuration registry takes the argument `location` instead of `pathname`.
+This allows more expressive conditions to fulfill the use case of the `Add` form.
 
 (volto-upgrade-guide-17.x.x)=
 

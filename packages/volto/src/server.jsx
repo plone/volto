@@ -272,50 +272,48 @@ server.get('/*', (req, res) => {
         });
       }
 
+      const sendHtmlResponse = (
+        res,
+        statusCode,
+        extractor,
+        markup,
+        store,
+        req,
+        config,
+      ) => {
+        res.status(statusCode).send(
+          `<!doctype html>
+        ${renderToString(
+          <Html
+            extractor={extractor}
+            markup={markup}
+            store={store}
+            criticalCss={readCriticalCss(req)}
+            apiPath={res.locals.detectedHost || config.settings.apiPath}
+            publicURL={res.locals.detectedHost || config.settings.publicURL}
+          />,
+        )}
+      `,
+        );
+      };
+
       if (context.url) {
         res.redirect(flattenToAppURL(context.url));
       } else if (context.error_code) {
         res.set({
           'Cache-Control': 'no-cache',
         });
-
-        res.status(context.error_code).send(
-          `<!doctype html>
-              ${renderToString(
-                <Html
-                  extractor={extractor}
-                  markup={markup}
-                  store={store}
-                  extractScripts={
-                    config.settings.serverConfig.extractScripts?.errorPages ||
-                    process.env.NODE_ENV !== 'production'
-                  }
-                  criticalCss={readCriticalCss(req)}
-                  apiPath={res.locals.detectedHost || config.settings.apiPath}
-                  publicURL={
-                    res.locals.detectedHost || config.settings.publicURL
-                  }
-                />,
-              )}
-            `,
+        sendHtmlResponse(
+          res,
+          context.error_code,
+          extractor,
+          markup,
+          store,
+          req,
+          config,
         );
       } else {
-        res.status(200).send(
-          `<!doctype html>
-              ${renderToString(
-                <Html
-                  extractor={extractor}
-                  markup={markup}
-                  store={store}
-                  criticalCss={readCriticalCss(req)}
-                  apiPath={res.locals.detectedHost || config.settings.apiPath}
-                  publicURL={
-                    res.locals.detectedHost || config.settings.publicURL
-                  }
-                />,
-              )}
-            `,
-        );
+        sendHtmlResponse(res, 200, extractor, markup, store, req, config);
       }
     }, errorHandler)
     .catch(errorHandler);

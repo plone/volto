@@ -8,6 +8,17 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.16 (2024-06-06)
+
+### Bugfix
+
+- Fixed querystring search query type @pnicolli [#6034](https://github.com/plone/volto/pull/6034)
+- Fixed login mutation @sneridagh [#6053](https://github.com/plone/volto/pull/6053)
+
+### Internal
+
+- Remove custom test runner, using `vitest` config instead @sneridagh [#6056](https://github.com/plone/volto/pull/6056)
+
 ## 1.0.0-alpha.15 (2024-05-23)
 
 ### Breaking
