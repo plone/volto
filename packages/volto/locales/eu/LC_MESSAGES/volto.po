@@ -3632,6 +3632,11 @@ msgstr "Loturaren helbidea hauxe da:"
 msgid "The provided alternative url already exists!"
 msgstr "Eman duzun ordezko bidea jada badago!"
 
+#. Default: "The provided link does not lead to an image."
+#: components/manage/Blocks/Image/Edit
+msgid "The provided link does not lead to an image."
+msgstr ""
+
 #. Default: "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
 #: components/theme/Register/Register
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
