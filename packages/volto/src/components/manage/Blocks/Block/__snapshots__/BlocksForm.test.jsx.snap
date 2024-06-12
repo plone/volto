@@ -157,7 +157,7 @@ exports[`Allow override of blocksConfig 1`] = `
           >
             <svg
               class="icon"
-              style="width: auto; fill: currentColor;"
+              style="height: 16px; width: auto; fill: currentColor;"
               viewBox=""
               xmlns=""
             />
@@ -219,7 +219,7 @@ exports[`Allow override of blocksConfig 1`] = `
           >
             <svg
               class="icon"
-              style="width: auto; fill: currentColor;"
+              style="height: 16px; width: auto; fill: currentColor;"
               viewBox=""
               xmlns=""
             />
