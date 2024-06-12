@@ -69,22 +69,17 @@ const EditBlockWrapper = (props) => {
   const previewRef = React.useRef(null);
   const blockRef = React.useRef(null);
 
-  const doDragEnd = useCallback(
-    (evt, a, b, c) => {
-      if (evt.dropOperation === 'move') {
-        // Since the successful drag is already doing the move,
-        // onDeleteBlock(block);
-      }
-    },
-    [onMoveBlock, properties?.block_layout?.items],
-  );
+  // const onDragEnd = (evt, a, b, c) => {
+  //   if (evt.dropOperation === 'move') {
+  //     // Since the successful drag is already doing the move,
+  //     // onDeleteBlock(block);
+  //   }
+  // };
 
   let { dragProps, dragButtonProps, isDragging } = useDrag({
     hasDragButton: true,
     preview: previewRef,
-    onDragEnd: (e) => {
-      doDragEnd(e);
-    },
+    // onDragEnd,
     getItems() {
       return [
         {
@@ -109,77 +104,67 @@ const EditBlockWrapper = (props) => {
   const shouldItDropAfter = (y) =>
     y >= (blockRef.current ? blockRef.current.offsetHeight : 0) / 2;
 
-  const doDrop = useCallback(
-    async (evt) => {
-      let items = await Promise.all(
-        evt.items
-          .filter((item) => item.kind === 'text' && item.types.has('blocktype'))
-          .map((item) => item.getText('blocktype')),
-      );
-      // for now we only support a single item
-      const item = JSON.parse(items[0]);
-      const indexDraggable = properties.blocks_layout.items.indexOf(item.id);
-      let indexDroppable = properties.blocks_layout.items.indexOf(block);
+  const getDropOperation = (types, allowedOperations) =>
+    types.has('blocktype')
+      ? allowedOperations.includes('move')
+        ? 'move'
+        : 'copy'
+      : 'cancel';
 
-      const dropAfter = shouldItDropAfter(evt.y);
-      if (indexDraggable !== -1) {
-        // in the same page
-        if (dropAfter) {
-          indexDroppable += 1;
-        }
-        if (indexDroppable > indexDraggable) {
-          indexDroppable -= 1;
-        }
-        onMoveBlock(indexDraggable, indexDroppable);
-      } else {
-        // dropped from different page
-        onInsertBlock(
-          properties.blocks_layout.items[
-            dropAfter ? indexDroppable : indexDroppable - 1
-          ],
-          item.data,
-        );
+  const onDrop = async (evt) => {
+    let items = await Promise.all(
+      evt.items
+        .filter((item) => item.kind === 'text' && item.types.has('blocktype'))
+        .map((item) => item.getText('blocktype')),
+    );
+    // for now we only support a single item
+    if (items.length !== 1) {
+      return;
+    }
+    const item = JSON.parse(items[0]);
+    const indexDraggable = properties.blocks_layout.items.indexOf(item.id);
+    let indexDroppable = properties.blocks_layout.items.indexOf(block);
+
+    const dropAfter = shouldItDropAfter(evt.y);
+    if (indexDraggable !== -1 && evt.dropOperation !== 'copy') {
+      // in the same page
+      if (dropAfter) {
+        indexDroppable += 1;
       }
-    },
-    [onMoveBlock, onInsertBlock, properties?.block_layout?.items],
-  );
+      if (indexDroppable > indexDraggable) {
+        indexDroppable -= 1;
+      }
+      onMoveBlock(indexDraggable, indexDroppable);
+    } else {
+      // dropped from different page, or copied from same page
+      onInsertBlock(
+        properties.blocks_layout.items[
+          dropAfter ? indexDroppable : indexDroppable - 1
+        ],
+        item.data,
+      );
+    }
+  };
 
   const [isDropping, setIsDropping] = useState(false);
   const [isDroppingAfter, setIsDroppingAfter] = useState(false);
 
-  const doDropEnter = useCallback(
-    (evt) => {
-      setIsDropping(true);
-      setIsDroppingAfter(shouldItDropAfter(evt.y));
-    },
-    [setIsDropping, setIsDroppingAfter],
-  );
-
-  const doDropMove = useCallback((evt) => {
+  const onDropEnter = (evt) => {
+    setIsDropping(true);
     setIsDroppingAfter(shouldItDropAfter(evt.y));
-  }, []);
+  };
 
-  const doDropExit = useCallback(
-    (evt) => {
-      setIsDropping(false);
-    },
-    [setIsDropping],
-  );
+  const onDropMove = (evt) => setIsDroppingAfter(shouldItDropAfter(evt.y));
+
+  const onDropExit = (evt) => setIsDropping(false);
 
   const { dropProps, isDropTarget } = useDrop({
     ref: blockRef,
-    onDropEnter(e) {
-      doDropEnter(e);
-    },
-    onDropMove(e) {
-      doDropMove(e);
-    },
-    onDropExit(e) {
-      doDropExit(e);
-    },
-    async onDrop(e) {
-      doDrop(e);
-    },
+    onDropEnter,
+    onDropMove,
+    onDropExit,
+    getDropOperation,
+    onDrop,
   });
 
   const blockIndex = properties.blocks_layout.items.indexOf(block);
@@ -192,7 +177,6 @@ const EditBlockWrapper = (props) => {
             ? 'dnd-droptarget-indicator-before'
             : 'dnd-droptarget-indicator-inactive'
         }`}
-        {...dropProps}
       />
       <div
         className={`dnd-droptarget ${
