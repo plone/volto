@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 16.31.10 (2024-06-12)
+
+### Bugfix
+
+- Fixed group membership control panel's check for the `plone.restapi` version. @shibbu264 [#5448](https://github.com/plone/volto/issues/5448)
+
 ## 16.31.9 (2024-05-27)
 
 ### Bugfix
