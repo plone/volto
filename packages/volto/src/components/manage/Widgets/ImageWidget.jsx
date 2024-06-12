@@ -72,6 +72,7 @@ const UnconnectedImageInput = (props) => {
     hideLinkPicker = false,
     hideObjectBrowserPicker = false,
     restrictFileUpload = false,
+    objectBrowserPickerType = 'image',
     description,
     placeholderLinkInput = '',
   } = props;
@@ -202,6 +203,7 @@ const UnconnectedImageInput = (props) => {
                           onFocus && onFocus();
                           e.preventDefault();
                           openObjectBrowser({
+                            mode: objectBrowserPickerType,
                             onSelectItem: (
                               url,
                               { title, image_field, image_scales },
@@ -267,7 +269,9 @@ const UnconnectedImageInput = (props) => {
                       onChange(
                         props.id,
                         isInternalURL(e) ? flattenToAppURL(e) : e,
-                        {},
+                        {
+                          props,
+                        },
                       )
                     }
                     placeholder={placeholderLinkInput}
