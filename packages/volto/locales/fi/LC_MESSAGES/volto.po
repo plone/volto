@@ -3630,11 +3630,6 @@ msgstr "Linkin osoite on:"
 msgid "The provided alternative url already exists!"
 msgstr "Ehdotettu vaihtoehtoinen URL on jo olemassa!"
 
-#. Default: "The provided link does not lead to an image."
-#: components/manage/Blocks/Image/Edit
-msgid "The provided link does not lead to an image."
-msgstr ""
-
 #. Default: "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
 #: components/theme/Register/Register
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."

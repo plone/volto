@@ -3631,11 +3631,6 @@ msgstr "链接地址为："
 msgid "The provided alternative url already exists!"
 msgstr "提供的替代url已经存在!"
 
-#. Default: "The provided link does not lead to an image."
-#: components/manage/Blocks/Image/Edit
-msgid "The provided link does not lead to an image."
-msgstr ""
-
 #. Default: "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
 #: components/theme/Register/Register
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
