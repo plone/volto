@@ -265,6 +265,7 @@ const UnconnectedImageInput = (props) => {
                 {linkEditor.anchorNode && (
                   <linkEditor.LinkEditor
                     value={value}
+                    objectBrowserPickerType={objectBrowserPickerType}
                     onChange={(_, e) =>
                       onChange(
                         props.id,

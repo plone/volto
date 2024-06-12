@@ -281,7 +281,7 @@ class AddLinkForm extends Component {
                       e.preventDefault();
                       e.stopPropagation();
                       this.props.openObjectBrowser({
-                        mode: 'link',
+                        mode: this.props.objectBrowserPickerType || 'link',
                         overlay: true,
                         onSelectItem: (url) => {
                           this.onChange(url);

@@ -40,7 +40,8 @@ const useLinkEditor = () => {
 
   const LinkEditor = React.useCallback(
     (props) => {
-      const { id, value, onChange, placeholder } = props;
+      const { id, value, onChange, placeholder, objectBrowserPickerType } =
+        props;
       return showLinkEditor && anchorNode.current && savedPosition.current ? (
         <PositionedToolbar
           className="add-link"
@@ -50,6 +51,7 @@ const useLinkEditor = () => {
             placeholder={placeholder}
             data={{ url: value || '' }}
             theme={{}}
+            objectBrowserPickerType={objectBrowserPickerType}
             onChangeValue={(url) => {
               savedPosition.current = null;
               setShowLinkEditor(false);
