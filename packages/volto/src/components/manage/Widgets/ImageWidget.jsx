@@ -269,9 +269,7 @@ const UnconnectedImageInput = (props) => {
                       onChange(
                         props.id,
                         isInternalURL(e) ? flattenToAppURL(e) : e,
-                        {
-                          props,
-                        },
+                        {},
                       )
                     }
                     placeholder={placeholderLinkInput}
