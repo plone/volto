@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useIntl } from 'react-intl';
-import { cloneDeep, includes, isArray, keys, map } from 'lodash';
+import { cloneDeep, map } from 'lodash';
 import EditBlock from './Edit';
 import { DragDropList } from '@plone/volto/components';
 import {
@@ -205,14 +205,14 @@ const BlocksForm = (props) => {
     const blocksLayoutFieldname = getBlocksLayoutFieldname(newFormData);
     let error = false;
 
-    const allowedBlocks = keys(blocksConfig);
+    const allowedBlocks = Object.keys(blocksConfig);
 
     map(newFormData[blocksLayoutFieldname].items, (id) => {
       const block = newFormData[blocksFieldname][id];
-      if (!includes(allowedBlocks, block['@type'])) {
+      if (!allowedBlocks.includes(block['@type'])) {
         error = true;
       }
-      if (isArray(block[blocksLayoutFieldname]?.items)) {
+      if (Array.isArray(block[blocksLayoutFieldname]?.items)) {
         const size = block[blocksLayoutFieldname].items.length;
         const allowedSubBlocks = [
           ...(blocksConfig[block['@type']].allowedBlocks || allowedBlocks),
@@ -223,7 +223,7 @@ const BlocksForm = (props) => {
         }
         map(block[blocksLayoutFieldname].items, (subId) => {
           const subBlock = block[blocksFieldname][subId];
-          if (!includes(allowedSubBlocks, subBlock['@type'])) {
+          if (!allowedSubBlocks.includes(subBlock['@type'])) {
             error = true;
           }
         });
