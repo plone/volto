@@ -6,10 +6,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
+import { toast } from 'react-toastify';
+import { useIntl, defineMessages } from 'react-intl';
 
 import { injectIntl } from 'react-intl';
 import cx from 'classnames';
-import { ImageSidebar, SidebarPortal } from '@plone/volto/components';
+import { ImageSidebar, SidebarPortal, Toast } from '@plone/volto/components';
 import { createContent } from '@plone/volto/actions';
 
 import {
@@ -26,21 +28,57 @@ import { ImageInput } from '@plone/volto/components/manage/Widgets/ImageWidget';
  * @function Edit
  */
 
+const messages = defineMessages({
+  notImage: {
+    id: 'The provided link does not lead to an image.',
+    defaultMessage: 'The provided link does not lead to an image.',
+  },
+});
+
+async function checkImage(url, intl) {
+  return fetch(url, {
+    method: 'HEAD',
+  })
+    .then((response) => {
+      // Check if the response is OK and the content type is an image
+      return (
+        response.ok && response.headers.get('content-type').startsWith('image/')
+      );
+    })
+    .catch((error) => {
+      toast.error(
+        <Toast error title={intl.formatMessage(messages.notImage)} />,
+        { autoClose: false, toastId: 'not_image' },
+      );
+      return false;
+    });
+}
+
 function Edit(props) {
   const { data } = props;
+  const intl = useIntl();
   const Image = config.getComponent({ name: 'Image' }).component;
+
   const handleChange = React.useCallback(
-    (id, image, { title, image_field, image_scales } = {}) => {
+    async (id, image, { title, image_field, image_scales } = {}) => {
       const url = image ? image['@id'] || image : '';
-      props.onChangeBlock(props.block, {
-        ...props.data,
-        url: flattenToAppURL(url),
-        image_field,
-        image_scales,
-        alt: props.data.alt || title || '',
-      });
+      let check = await checkImage(url, intl);
+      if (check) {
+        props.onChangeBlock(props.block, {
+          ...props.data,
+          url: flattenToAppURL(url),
+          image_field,
+          image_scales,
+          alt: props.data.alt || title || '',
+        });
+      } else {
+        toast.error(
+          <Toast error title={intl.formatMessage(messages.notImage)} />,
+          { autoClose: false, toastId: 'not_image' },
+        );
+      }
     },
-    [props],
+    [intl, props],
   );
 
   return (
@@ -100,6 +138,7 @@ function Edit(props) {
             placeholderLinkInput={data.placeholder}
             block={props.block}
             id={props.block}
+            objectBrowserPickerType={'image'}
           />
         )}
         <SidebarPortal selected={props.selected}>
