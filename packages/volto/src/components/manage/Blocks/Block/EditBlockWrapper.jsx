@@ -224,26 +224,27 @@ const EditBlockWrapper = (props) => {
                   <Icon name={trashSVG} size="18px" />
                 </Button>
               )}
-              {config.experimental.addBlockButton.enabled && showBlockChooser && (
-                <BlockChooserButton
-                  data={data}
-                  block={block}
-                  onInsertBlock={(id, value) => {
-                    if (blockHasValue(data)) {
-                      onSelectBlock(onInsertBlock(id, value));
-                    } else {
-                      onChangeBlock(id, value);
-                    }
-                  }}
-                  onMutateBlock={onMutateBlock}
-                  allowedBlocks={allowedBlocks}
-                  blocksConfig={blocksConfig}
-                  size="24px"
-                  properties={properties}
-                  navRoot={navRoot}
-                  contentType={contentType}
-                />
-              )}
+              {config.experimental.addBlockButton.enabled &&
+                showBlockChooser && (
+                  <BlockChooserButton
+                    data={data}
+                    block={block}
+                    onInsertBlock={(id, value) => {
+                      if (blockHasValue(data)) {
+                        onSelectBlock(onInsertBlock(id, value));
+                      } else {
+                        onChangeBlock(id, value);
+                      }
+                    }}
+                    onMutateBlock={onMutateBlock}
+                    allowedBlocks={allowedBlocks}
+                    blocksConfig={blocksConfig}
+                    size="24px"
+                    properties={properties}
+                    navRoot={navRoot}
+                    contentType={contentType}
+                  />
+                )}
             </div>
           </div>
         </div>

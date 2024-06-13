@@ -39,7 +39,7 @@ const BlocksForm = (props) => {
     description,
     metadata,
     manage,
-    children,
+    // children,
     isMainForm = true,
     isContainer,
     stopPropagation,
