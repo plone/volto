@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback, useState } from 'react';
+import React, { useState } from 'react';
 import { Icon } from '@plone/volto/components';
 import {
   blockHasValue,
@@ -146,41 +146,34 @@ const EditBlockWrapper = (props) => {
     }
   };
 
-  const [isDropping, setIsDropping] = useState(false);
   const [isDroppingAfter, setIsDroppingAfter] = useState(false);
 
-  const onDropEnter = (evt) => {
-    setIsDropping(true);
-    setIsDroppingAfter(shouldItDropAfter(evt.y));
-  };
+  const onDropEnter = (evt) => setIsDroppingAfter(shouldItDropAfter(evt.y));
 
   const onDropMove = (evt) => setIsDroppingAfter(shouldItDropAfter(evt.y));
-
-  const onDropExit = (evt) => setIsDropping(false);
 
   const { dropProps, isDropTarget } = useDrop({
     ref: blockRef,
     onDropEnter,
     onDropMove,
-    onDropExit,
     getDropOperation,
     onDrop,
   });
 
-  const blockIndex = properties.blocks_layout.items.indexOf(block);
+  // const blockIndex = properties.blocks_layout.items.indexOf(block);
 
   return (
     <>
       <div
         className={`dnd-droptarget-indicator ${
-          isDropping && !isDroppingAfter
+          isDropTarget && !isDroppingAfter
             ? 'dnd-droptarget-indicator-before'
             : 'dnd-droptarget-indicator-inactive'
         }`}
       />
       <div
         className={`dnd-droptarget ${
-          isDropping
+          isDropTarget
             ? isDroppingAfter
               ? 'dnd-droptarget-accepting-after'
               : 'dnd-droptarget-accepting-before'
@@ -231,27 +224,26 @@ const EditBlockWrapper = (props) => {
                   <Icon name={trashSVG} size="18px" />
                 </Button>
               )}
-              {config.experimental.addBlockButton.enabled &&
-                showBlockChooser && (
-                  <BlockChooserButton
-                    data={data}
-                    block={block}
-                    onInsertBlock={(id, value) => {
-                      if (blockHasValue(data)) {
-                        onSelectBlock(onInsertBlock(id, value));
-                      } else {
-                        onChangeBlock(id, value);
-                      }
-                    }}
-                    onMutateBlock={onMutateBlock}
-                    allowedBlocks={allowedBlocks}
-                    blocksConfig={blocksConfig}
-                    size="24px"
-                    properties={properties}
-                    navRoot={navRoot}
-                    contentType={contentType}
-                  />
-                )}
+              {config.experimental.addBlockButton.enabled && showBlockChooser && (
+                <BlockChooserButton
+                  data={data}
+                  block={block}
+                  onInsertBlock={(id, value) => {
+                    if (blockHasValue(data)) {
+                      onSelectBlock(onInsertBlock(id, value));
+                    } else {
+                      onChangeBlock(id, value);
+                    }
+                  }}
+                  onMutateBlock={onMutateBlock}
+                  allowedBlocks={allowedBlocks}
+                  blocksConfig={blocksConfig}
+                  size="24px"
+                  properties={properties}
+                  navRoot={navRoot}
+                  contentType={contentType}
+                />
+              )}
             </div>
           </div>
         </div>
@@ -271,7 +263,7 @@ const EditBlockWrapper = (props) => {
       </div>
       <div
         className={`dnd-droptarget-indicator ${
-          isDropping && isDroppingAfter
+          isDropTarget && isDroppingAfter
             ? 'dnd-droptarget-indicator-after'
             : 'dnd-droptarget-indicator-inactive'
         }`}

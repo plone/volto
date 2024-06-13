@@ -1,7 +1,6 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
 import EditBlock from './Edit';
-import { DragDropList } from '@plone/volto/components';
 import {
   getBlocks,
   getBlocksFieldname,
@@ -47,7 +46,7 @@ const BlocksForm = (props) => {
     disableAddBlockOnEnterKey,
     blocksConfig = config.blocks.blocksConfig,
     editable = true,
-    direction = 'vertical',
+    // direction = 'vertical', // XXX Not supported atm
     history,
     location,
     token,
@@ -182,14 +181,6 @@ const BlocksForm = (props) => {
     const newFormData = moveBlock(properties, dragIndex, hoverIndex);
     onChangeFormData(newFormData);
   };
-
-  const defaultBlockWrapper = ({ draginfo }, editBlock, blockProps) => (
-    <EditBlockWrapper draginfo={draginfo} blockProps={blockProps}>
-      {editBlock}
-    </EditBlockWrapper>
-  );
-
-  const editBlockWrapper = children || defaultBlockWrapper;
 
   // Remove invalid blocks on saving
   // Note they are alreaady filtered by DragDropList, but we also want them
