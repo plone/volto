@@ -17,6 +17,17 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.35 (2024-06-13)
+
+### Breaking
+
+- Improve container detection, `config.settings.containerBlockTypes` is no longer needed @sneridagh [#6099](https://github.com/plone/volto/issues/6099)
+
+### Bugfix
+
+- Support nested directories in public folder add-on sync folders both in dev and build mode @sneridagh [#6098](https://github.com/plone/volto/issues/6098)
+- export getFieldURL from Url.js in helpers  @dobri1408 [#6100](https://github.com/plone/volto/issues/6100)
+
 ## 18.0.0-alpha.34 (2024-06-13)
 
 ### Feature

@@ -18,7 +18,7 @@ export { getWidgetView } from "./Widget/widget";
 export { getSiteAsyncPropExtender } from "./Site";
 export { ContentTypeCondition } from "./Slots";
 export { getAuthToken, persistAuthToken } from "@plone/volto/helpers/AuthToken/AuthToken";
-export { addAppURL, expandToBackendURL, flattenHTMLToAppURL, flattenToAppURL, stripQuerystring, toPublicURL, isInternalURL, getParentUrl, getBaseUrl, getView, isCmsUi, getId, isUrl, normalizeUrl, removeProtocol, URLUtils, flattenScales } from "@plone/volto/helpers/Url/Url";
+export { addAppURL, expandToBackendURL, flattenHTMLToAppURL, flattenToAppURL, stripQuerystring, toPublicURL, isInternalURL, getParentUrl, getBaseUrl, getView, isCmsUi, getId, isUrl, normalizeUrl, removeProtocol, URLUtils, flattenScales, getFieldURL } from "@plone/volto/helpers/Url/Url";
 export { nestContent, getLayoutFieldname, getContentIcon, getLanguageIndependentFields } from "@plone/volto/helpers/Content/Content";
 export { addBlock, insertBlock, blockHasValue, changeBlock, deleteBlock, emptyBlocksForm, getBlocks, getBlocksFieldname, getBlocksLayoutFieldname, hasBlocksData, moveBlock, mutateBlock, nextBlockId, previousBlockId, applyBlockDefaults, applySchemaDefaults, blocksFormGenerator, buildStyleClassNamesFromData, buildStyleClassNamesExtenders, buildStyleObjectFromData, getPreviousNextBlock, findBlocks, getBlocksHierarchy, moveBlockEnhanced } from "@plone/volto/helpers/Blocks/Blocks";
 export { getSimpleDefaultBlocks, getDefaultBlocks } from "@plone/volto/helpers/Blocks/defaultBlocks";

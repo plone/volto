@@ -135,6 +135,12 @@ export function applySchemaDefaults({ data, schema, intl }: {
  */
 export function applyBlockDefaults({ data, intl, navRoot, contentType, ...rest }: any, blocksConfig: any): any;
 /**
+ * Check if a block is a container block
+ * check blocks from data as well since some add-ons use that
+ * such as @eeacms/volto-tabs-block
+ */
+export function isBlockContainer(block: any): boolean;
+/**
  * Given a `block` object and a list of block types, return a list of block ids matching the types
  *
  * @function findBlocks
