@@ -142,6 +142,15 @@ export function applyBlockDefaults({ data, intl, navRoot, contentType, ...rest }
  * @return {Array} An array of block ids
  */
 export function findBlocks(blocks: any, types: any, result?: any[]): any[];
+/**
+ * Move block to different location index within blocks_layout
+ * @function moveBlock
+ * @param {Object} formData Form data
+ * @param {number} source index within form blocks_layout items
+ * @param {number} destination index within form blocks_layout items
+ * @return {Object} New form data
+ */
+export function moveBlockEnhanced(formData: any, { source, destination }: number): any;
 export function getBlocks(properties: any): any[];
 export function styleToClassName(key: any, value: any, prefix?: string): any;
 export function buildStyleClassNamesFromData(obj?: {}, prefix?: string): any;
@@ -149,3 +158,7 @@ export function buildStyleClassNamesExtenders({ block, content, data, classNames
 export function styleDataToStyleObject(key: any, value: any, prefix?: string): any[];
 export function buildStyleObjectFromData(obj?: any, prefix?: string): any;
 export function getPreviousNextBlock({ content, block }: any): any[];
+export function getBlocksHierarchy(properties: any): any;
+export function findContainer(formData: object, { containerId }: {
+    containerId: string;
+}): object | undefined;
