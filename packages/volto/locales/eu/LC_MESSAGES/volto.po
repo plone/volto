@@ -2482,6 +2482,11 @@ msgstr "Menua ireki"
 msgid "Open object browser"
 msgstr "Ireki elementu bilatzailea"
 
+#. Default: "Order"
+#: components/manage/Sidebar/Sidebar
+msgid "Order"
+msgstr ""
+
 #. Default: "Ordered"
 #: components/manage/Blocks/ToC/Schema
 msgid "Ordered"

@@ -2475,6 +2475,11 @@ msgstr "मेन्यू खोलें"
 msgid "Open object browser"
 msgstr "ऑब्जेक्ट ब्राउज़र खोलें"
 
+#. Default: "Order"
+#: components/manage/Sidebar/Sidebar
+msgid "Order"
+msgstr ""
+
 #. Default: "Ordered"
 #: components/manage/Blocks/ToC/Schema
 msgid "Ordered"
