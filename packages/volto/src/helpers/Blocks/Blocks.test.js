@@ -23,6 +23,7 @@ import {
   blocksFormGenerator,
   findBlocks,
   findContainer,
+  isBlockContainer,
 } from './Blocks';
 
 import config from '@plone/volto/registry';
@@ -1640,6 +1641,60 @@ describe('findContainer', () => {
         '@type': 'container',
         ...blocksData,
       });
+    });
+  });
+
+  describe('isBlockContainer', () => {
+    const blocksData = { blocks: {}, blocks_layout: { items: [] } };
+
+    it('basic test', () => {
+      const formData = {
+        title: 'Example',
+        blocks: {
+          1: { title: 'title', '@type': 'title' },
+          2: { title: 'an image', '@type': 'image' },
+          3: { title: 'description', '@type': 'description' },
+          4: { title: 'a container', '@type': 'container', ...blocksData },
+        },
+        blocks_layout: {
+          items: ['1', '2', '3', '4'],
+        },
+      };
+
+      const container = isBlockContainer(formData);
+      expect(container).toBeTruthy();
+    });
+
+    it('in data key (EEA add-ons)', () => {
+      const formData = {
+        title: 'Example',
+        data: {
+          blocks: {
+            1: { title: 'title', '@type': 'title' },
+            2: { title: 'an image', '@type': 'image' },
+            3: { title: 'description', '@type': 'description' },
+            4: { title: 'a container', '@type': 'container', ...blocksData },
+          },
+          blocks_layout: {
+            items: ['1', '2', '3', '4'],
+          },
+        },
+      };
+
+      const container = isBlockContainer(formData);
+      expect(container).toBeTruthy();
+    });
+
+    it('not a container', () => {
+      const formData = {
+        title: 'Example',
+        styles: {
+          color: 'red',
+        },
+      };
+
+      const container = isBlockContainer(formData);
+      expect(container).toBeFalsy();
     });
   });
 });
