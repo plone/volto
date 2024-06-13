@@ -700,8 +700,9 @@ export const getPreviousNextBlock = ({ content, block }) => {
  */
 export function isBlockContainer(block) {
   return (
-    hasBlocksData(block) ||
-    (block.hasOwnProperty('data') && hasBlocksData(block.data))
+    block &&
+    (hasBlocksData(block) ||
+      (block.hasOwnProperty('data') && hasBlocksData(block.data)))
   );
 }
 
