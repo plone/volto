@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.15 (2024-06-13)
+
+### Bugfix
+
+- Better `styleClassNameExtenders` typings @sneridagh [#6095](https://github.com/plone/volto/issues/6095)
+
 ## 1.0.0-alpha.14 (2024-06-06)
 
 ### Breaking
