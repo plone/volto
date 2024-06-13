@@ -1,0 +1,2 @@
+Add default 'l' and 'center' values to size and align fields of `Image` block.
+This fixes data not having any value adding proper options to the `Image` block. @ichim-david
