@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.16 (2024-06-13)
+
+### Breaking
+
+- Remove unused `config.settings.containerBlockTypes` @sneridagh [#6099](https://github.com/plone/volto/issues/6099)
+
 ## 1.0.0-alpha.15 (2024-06-13)
 
 ### Bugfix
