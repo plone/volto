@@ -46,15 +46,20 @@ describe('AddonConfigurationRegistry - Project', () => {
         version: '0.0.0',
       },
       'test-released-addon': {
+        basePath:
+          '/Users/sneridagh/Development/plone/volto/packages/volto/__tests__/fixtures/test-volto-project/node_modules/test-released-addon',
         isPublishedPackage: true,
         modulePath: `${base}/node_modules/test-released-addon`,
         name: 'test-released-addon',
         packageJson: `${base}/node_modules/test-released-addon/package.json`,
         addons: ['test-released-unmentioned:extra1,extra2'],
         isRegisteredAddon: true,
+        tsConfigPaths: null,
         version: '0.0.0',
       },
       'test-released-source-addon': {
+        basePath:
+          '/Users/sneridagh/Development/plone/volto/packages/volto/__tests__/fixtures/test-volto-project/node_modules/test-released-source-addon',
         isPublishedPackage: true,
         modulePath: `${base}/node_modules/test-released-source-addon/src`,
         name: 'test-released-source-addon',
@@ -62,15 +67,19 @@ describe('AddonConfigurationRegistry - Project', () => {
         razzleExtender: `${base}/node_modules/test-released-source-addon/razzle.extend.js`,
         addons: [],
         isRegisteredAddon: true,
+        tsConfigPaths: null,
         version: '0.0.0',
       },
       'test-released-unmentioned': {
         addons: [],
+        basePath:
+          '/Users/sneridagh/Development/plone/volto/packages/volto/__tests__/fixtures/test-volto-project/node_modules/test-released-unmentioned',
         isPublishedPackage: true,
         modulePath: `${base}/node_modules/test-released-unmentioned`,
         name: 'test-released-unmentioned',
         packageJson: `${base}/node_modules/test-released-unmentioned/package.json`,
         isRegisteredAddon: true,
+        tsConfigPaths: null,
         version: '0.0.0',
       },
       'my-volto-config-addon': {
