@@ -46,8 +46,7 @@ describe('AddonConfigurationRegistry - Project', () => {
         version: '0.0.0',
       },
       'test-released-addon': {
-        basePath:
-          '/Users/sneridagh/Development/plone/volto/packages/volto/__tests__/fixtures/test-volto-project/node_modules/test-released-addon',
+        basePath: `${base}/node_modules/test-released-addon`,
         isPublishedPackage: true,
         modulePath: `${base}/node_modules/test-released-addon`,
         name: 'test-released-addon',
@@ -58,8 +57,7 @@ describe('AddonConfigurationRegistry - Project', () => {
         version: '0.0.0',
       },
       'test-released-source-addon': {
-        basePath:
-          '/Users/sneridagh/Development/plone/volto/packages/volto/__tests__/fixtures/test-volto-project/node_modules/test-released-source-addon',
+        basePath: `${base}/node_modules/test-released-source-addon`,
         isPublishedPackage: true,
         modulePath: `${base}/node_modules/test-released-source-addon/src`,
         name: 'test-released-source-addon',
@@ -72,8 +70,7 @@ describe('AddonConfigurationRegistry - Project', () => {
       },
       'test-released-unmentioned': {
         addons: [],
-        basePath:
-          '/Users/sneridagh/Development/plone/volto/packages/volto/__tests__/fixtures/test-volto-project/node_modules/test-released-unmentioned',
+        basePath: `${base}/node_modules/test-released-unmentioned`,
         isPublishedPackage: true,
         modulePath: `${base}/node_modules/test-released-unmentioned`,
         name: 'test-released-unmentioned',
