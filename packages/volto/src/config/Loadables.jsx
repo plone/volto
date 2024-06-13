@@ -1,5 +1,20 @@
 import loadable from '@loadable/component';
 
+// This is to make happy the types declaration extractor (tsc) that is not able to
+// extract one private method the types from `@dnd-kit` library:
+// error TS9006: Declaration emit for this file requires using private name
+// 'DefaultDropAnimationSideEffectsOptions' from module '".../node_modules/@dnd-kit/core/dist/components/DragOverlay/hooks/useDropAnimation"'.
+// An explicit type annotation may unblock declaration emit
+
+/**
+ * @typedef {Object} LoadableLib
+ * @property {() => Promise<any>} import
+ * @property {Object} [options]
+ */
+
+/**
+ * @type {{ [key: string]: LoadableLib }}
+ */
 export const loadables = {
   prettierStandalone: loadable.lib(() => import('prettier/standalone')),
   prettierParserHtml: loadable.lib(() => import('prettier/plugins/html')),
