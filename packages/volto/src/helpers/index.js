@@ -61,6 +61,8 @@ export {
   buildStyleObjectFromData,
   getPreviousNextBlock,
   findBlocks,
+  getBlocksHierarchy,
+  moveBlockEnhanced,
 } from '@plone/volto/helpers/Blocks/Blocks';
 export {
   getSimpleDefaultBlocks,
@@ -98,6 +100,8 @@ export {
   hasApiExpander,
   replaceItemOfArray,
   cloneDeepSchema,
+  insertInArray,
+  removeFromArray,
   arrayRange,
   reorderArray,
   isInteractiveElement,

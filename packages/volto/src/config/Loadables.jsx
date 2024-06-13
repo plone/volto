@@ -35,4 +35,7 @@ export const loadables = {
   reactDndHtml5Backend: loadable.lib(() => import('react-dnd-html5-backend')),
   reactBeautifulDnd: loadable.lib(() => import('react-beautiful-dnd')),
   rrule: loadable.lib(() => import('rrule')),
+  dndKitCore: loadable.lib(() => import('@dnd-kit/core')),
+  dndKitSortable: loadable.lib(() => import('@dnd-kit/sortable')),
+  dndKitUtilities: loadable.lib(() => import('@dnd-kit/utilities')),
 };
