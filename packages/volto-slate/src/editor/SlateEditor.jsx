@@ -212,6 +212,13 @@ class SlateEditor extends Component {
       !isEqual(value, this.props.value);
     return res;
   }
+  renderElement = (props) => {
+    return <Element {...props} />;
+  };
+
+  renderLeaf = (props) => {
+    return <Leaf {...props} />;
+  };
 
   render() {
     const {
@@ -297,8 +304,8 @@ class SlateEditor extends Component {
               tabIndex={this.props.tabIndex || 0}
               readOnly={readOnly}
               placeholder={placeholder}
-              renderElement={(props) => <Element {...props} />}
-              renderLeaf={(props) => <Leaf {...props} />}
+              renderElement={this.renderElement}
+              renderLeaf={this.renderLeaf}
               decorate={this.multiDecorator}
               spellCheck={false}
               scrollSelectionIntoView={
