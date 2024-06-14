@@ -104,6 +104,10 @@ class TokenWidget extends Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
+    this.noOptionsMessage = this.noOptionsMessage.bind(this);
+  }
+  noOptionsMessage() {
+    this.props.intl.formatMessage(messages.no_options);
   }
 
   /**
@@ -195,9 +199,7 @@ class TokenWidget extends Component {
             this.props.placeholder ??
             this.props.intl.formatMessage(messages.select)
           }
-          noOptionsMessage={() =>
-            this.props.intl.formatMessage(messages.no_options)
-          }
+          noOptionsMessage={this.noOptionsMessage}
         />
       </FormFieldWrapper>
     );
