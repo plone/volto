@@ -9,17 +9,47 @@ export type QuerystringSearchArgs = z.infer<
 > & {
   config: PloneClientConfig;
   locale?: string;
+  currentPath?: string;
 };
 
 export const getQuerystringSearch = async ({
   config,
   locale,
+  currentPath,
   ...args
 }: QuerystringSearchArgs): Promise<GetQuerystringSearchResponse> => {
   const validatedArgs = getQuerystringSearchSchema.parse({
     ...args,
   });
-  const querystring = JSON.stringify(validatedArgs);
+  let query = validatedArgs.query;
+  if (!query || query.length === 0) {
+    // Emulate getFolderContents
+    query.push({
+      i: 'path',
+      o: 'plone.app.querystring.operation.string.relativePath',
+      v: `${
+        currentPath ? `${config.apiPath}/${locale ?? ''}${currentPath}` : '.'
+      }::1`,
+    });
+  } else {
+    if (validatedArgs.depth) {
+      query = validatedArgs.query.reduce((acc, curr) => {
+        if (curr.i === 'path') {
+          const finalPath = !curr.v.includes(config.apiPath)
+            ? currentPath
+              ? `${config.apiPath}/${locale ?? ''}${currentPath}`
+              : '.'
+            : curr.v;
+          return [
+            ...acc,
+            { i: curr.i, o: curr.o, v: `${finalPath}::${validatedArgs.depth}` },
+          ];
+        }
+        return acc;
+      }, [] as typeof validatedArgs.query);
+    }
+  }
+  const querystring = JSON.stringify({ ...validatedArgs, query });
   const encodedQuery = encodeURIComponent(querystring);
 
   const options: ApiRequestParams = {

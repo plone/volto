@@ -12,6 +12,7 @@ export const querystringSearchDataSchema = z.object({
   limit: z.string().optional(),
   sort_on: z.string().optional(),
   sort_order: z.string().optional(),
+  depth: z.string().optional(),
   fullobjects: z.boolean().optional(),
   query: z.array(query),
 });
