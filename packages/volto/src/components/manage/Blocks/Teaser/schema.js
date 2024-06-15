@@ -45,7 +45,7 @@ const messages = defineMessages({
   },
 });
 
-export const TeaserSchema = ({ intl }) => {
+export const TeaserSchema = ({ data, intl }) => {
   const schema = {
     title: intl.formatMessage(messages.teaser),
     fieldsets: [
@@ -55,10 +55,9 @@ export const TeaserSchema = ({ intl }) => {
         fields: [
           'href',
           'overwrite',
-          'title',
-          'head_title',
-          'description',
-          'preview_image',
+          ...(data?.overwrite
+            ? ['title', 'head_title', 'description', 'preview_image']
+            : []),
         ],
       },
     ],
@@ -101,60 +100,6 @@ export const TeaserSchema = ({ intl }) => {
         mode: 'image',
         allowExternals: true,
         selectedItemAttrs: ['image_field', 'image_scales'],
-      },
-      openLinkInNewTab: {
-        title: intl.formatMessage(messages.openLinkInNewTab),
-        type: 'boolean',
-      },
-    },
-    required: ['href'],
-  };
-
-  addStyling({ schema, intl });
-
-  schema.properties.styles.schema.properties.align = {
-    widget: 'align',
-    title: intl.formatMessage(messages.align),
-    actions: ['left', 'right', 'center'],
-    default: 'left',
-  };
-
-  schema.properties.styles.schema.fieldsets[0].fields = ['align'];
-
-  return schema;
-};
-
-export const OverwriteTeaserSchema = ({ intl }) => {
-  const schema = {
-    title: intl.formatMessage(messages.teaser),
-    fieldsets: [
-      {
-        id: 'default',
-        title: 'Default',
-        fields: ['href', 'overwrite'],
-      },
-    ],
-
-    properties: {
-      overwrite: {
-        title: intl.formatMessage(messages.overwrite),
-        description: intl.formatMessage(messages.overwriteDescription),
-        type: 'boolean',
-      },
-      href: {
-        title: intl.formatMessage(messages.Target),
-        widget: 'object_browser',
-        mode: 'link',
-        selectedItemAttrs: [
-          'Title',
-          'head_title',
-          'Description',
-          'hasPreviewImage',
-          'image_field',
-          'image_scales',
-          '@type',
-        ],
-        allowExternals: true,
       },
       openLinkInNewTab: {
         title: intl.formatMessage(messages.openLinkInNewTab),

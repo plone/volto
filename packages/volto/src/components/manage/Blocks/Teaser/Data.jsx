@@ -109,9 +109,10 @@ const TeaserData = (props) => {
     </Button.Group>
   );
 
-  const schema = data.overwrite
-    ? blocksConfig[data['@type']].blockSchema({ intl })
-    : blocksConfig[data['@type']].enhancedSchema({ intl });
+  const schema = blocksConfig[data['@type']].blockSchema({
+    data,
+    intl,
+  });
   const dataAdapter = blocksConfig[data['@type']].dataAdapter;
 
   return (
