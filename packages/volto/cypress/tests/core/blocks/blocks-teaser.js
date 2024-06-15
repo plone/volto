@@ -62,7 +62,7 @@ context('Blocks Acceptance Tests', () => {
       image: true,
       path: '/document',
     });
-    cy.visit('/document/edit');
+    cy.navigate('/document/edit');
     // WHEN I create a Teaser block and change the data of the referenced object
     cy.get('.block .slate-editor [contenteditable=true]').click();
     cy.get('.button .block-add-button').click({ force: true });
@@ -80,13 +80,13 @@ context('Blocks Acceptance Tests', () => {
     cy.get('.block.teaser .content p').contains(
       'are growing on the mountain tops',
     );
-    cy.visit('/document/blue-orchidees/edit');
-    cy.get('.documentFirstHeading').type(' and Tulips');
+    cy.navigate('/document/blue-orchidees/edit');
+    cy.wait('@schema');
+    cy.getSlateTitle().type(' and Tulips');
     cy.get('#toolbar-save').click();
-    cy.visit('/document/blue-orchidees');
     cy.get('.documentFirstHeading').contains('Blue Orchidees and Tulips');
     // THEN I can see the updated content in the teaser
-    cy.visit('/document');
+    cy.navigate('/document');
     cy.get('.block.teaser .content h2').contains('Blue Orchidees and Tulips');
     cy.get('.block.teaser .content p').contains(
       'are beautifully growing on the mountain tops',
