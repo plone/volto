@@ -168,6 +168,13 @@ class View extends Component {
 
   /**
    * Get view by content type
+   * @method renderToolbarInner
+   * @returns {JSX.Element} Markup for component.
+   */
+  renderToolbarInner = () => <span />;
+
+  /**
+   * Get view by content type
    * @method getViewByType
    * @returns {string} Markup for component.
    */
@@ -273,7 +280,10 @@ class View extends Component {
         )}
         {this.state.isClient &&
           createPortal(
-            <Toolbar pathname={this.props.pathname} inner={<span />} />,
+            <Toolbar
+              pathname={this.props.pathname}
+              inner={this.renderToolbarInner}
+            />,
             document.getElementById('toolbar'),
           )}
       </div>
