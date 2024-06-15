@@ -172,7 +172,7 @@ const EditBlockWrapper = (props) => {
         }`}
       />
       <div
-        className={`dnd-droptarget ${
+        className={`dnd-droptarget dnd-droptarget-margin-enclosure ${
           isDropTarget
             ? isDroppingAfter
               ? 'dnd-droptarget-accepting-after'
