@@ -93,14 +93,6 @@ backend-docker-start:
 frontend-docker-start:
 	docker run -it --rm --name=volto --link backend -p 3000:3000 -e RAZZLE_INTERNAL_API_PATH=http://backend:8080/Plone -e RAZZLE_DEV_PROXY_API_PATH=http://backend:8080/Plone plone/plone-frontend:latest
 
-.PHONY: guillotina-acceptance-backend-start
-guillotina-acceptance-backend-start:
-	docker-compose -f ../../g-api/docker-compose.yml up -d
-
-.PHONY: guillotina-acceptance-backend-stop
-guillotina-acceptance-backend-stop:
-	docker-compose -f ../../g-api/docker-compose.yml down
-
 ##### Acceptance tests (Cypress)
 ######### Dev mode Acceptance tests
 

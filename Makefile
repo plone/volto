@@ -197,8 +197,8 @@ backend-docker-start:
 backend-docker-detached-start:
 	docker run -d --rm --name=backend -p 8080:8080 -e SITE=Plone -e ADDONS='$(KGS)' $(DOCKER_IMAGE)
 
-.PHONY: backend-docker-detached-start
-backend-docker-detached-start:
+.PHONY: backend-docker-detached-stop
+backend-docker-detached-stop:
 	docker kill backend
 
 .PHONY: backend-docker-start-no-cors
@@ -208,14 +208,6 @@ backend-docker-start-no-cors:
 .PHONY: frontend-docker-start
 frontend-docker-start:
 	$(MAKE) -C "./packages/volto/" frontend-docker-start
-
-.PHONY: guillotina-acceptance-backend-start
-guillotina-acceptance-backend-start:
-	$(MAKE) -C "./packages/volto/" guillotina-acceptance-backend-start
-
-.PHONY: guillotina-acceptance-backend-stop
-guillotina-acceptance-backend-stop:
-	$(MAKE) -C "./packages/volto/" guillotina-acceptance-backend-stop
 
 ##### Acceptance tests (Cypress)
 ######### Dev mode Acceptance tests
