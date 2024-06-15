@@ -153,11 +153,6 @@ docs-test: docs-clean docs-linkcheckbroken docs-vale  ## Clean docs build, then 
 
 ##### Build
 
-.PHONY: storybook-build
-storybook-build:
-	pnpm build:registry
-	(cd packages/volto && pnpm build-storybook -o ../../docs/_build/html/storybook)
-
 .PHONY: patches
 patches:
 	(cd packages/volto && /bin/bash patches/patchit.sh > /dev/null 2>&1 ||true)
@@ -169,6 +164,17 @@ cypress-install:
 .PHONY: build-deps
 build-deps:
 	if [ ! -d $$(pwd)/packages/registry/dist ]; then (pnpm build:deps); fi
+
+## Storybook
+
+.PHONY: storybook-start
+storybook-start: ## Start Storybook server on port 6006
+	$(MAKE) -C "./packages/volto/" storybook-start
+
+.PHONY: storybook-build
+storybook-build:
+	pnpm build:registry
+	(cd packages/volto && pnpm build-storybook -o ../../docs/_build/html/storybook)
 
 ##### Release
 
@@ -183,206 +189,210 @@ copyreleasenotestodocs:
 
 ##### Docker containers
 
-.PHONY: start-backend-docker
-start-backend-docker:
-	docker run -it --rm --name=backend -p 8080:8080 -e SITE=Plone -e ADDONS='$(KGS)' $(DOCKER_IMAGE)
+.PHONY: backend-docker-start
+backend-docker-start:
+	$(MAKE) -C "./packages/volto/" backend-docker-start
 
-.PHONY: start-backend-docker-detached
-start-backend-docker-detached:
+.PHONY: backend-docker-detached-start
+backend-docker-detached-start:
 	docker run -d --rm --name=backend -p 8080:8080 -e SITE=Plone -e ADDONS='$(KGS)' $(DOCKER_IMAGE)
 
-.PHONY: stop-backend-docker-detached
-stop-backend-docker-detached:
+.PHONY: backend-docker-detached-start
+backend-docker-detached-start:
 	docker kill backend
 
-.PHONY: start-backend-docker-no-cors
-start-backend-docker-no-cors:
+.PHONY: backend-docker-start-no-cors
+backend-docker-start-no-cors:
 	docker run -it --rm --name=backend -p 8080:8080 -e SITE=Plone -e ADDONS='$(KGS)' -e CORS_=true $(DOCKER_IMAGE)
 
-.PHONY: start-frontend-docker
-start-frontend-docker:
-	docker run -it --rm --name=volto --link backend -p 3000:3000 -e RAZZLE_INTERNAL_API_PATH=http://backend:8080/Plone -e RAZZLE_DEV_PROXY_API_PATH=http://backend:8080/Plone plone/plone-frontend:latest
+.PHONY: frontend-docker-start
+frontend-docker-start:
+	$(MAKE) -C "./packages/volto/" frontend-docker-start
 
-.PHONY: start-backend-docker-guillotina
-start-backend-docker-guillotina:
-	docker-compose -f g-api/docker-compose.yml up -d
+.PHONY: guillotina-acceptance-backend-start
+guillotina-acceptance-backend-start:
+	$(MAKE) -C "./packages/volto/" guillotina-acceptance-backend-start
 
-.PHONY: stop-backend-docker-guillotina
-stop-backend-docker-guillotina:
-	docker-compose -f g-api/docker-compose.yml down
+.PHONY: guillotina-acceptance-backend-stop
+guillotina-acceptance-backend-stop:
+	$(MAKE) -C "./packages/volto/" guillotina-acceptance-backend-stop
 
 ##### Acceptance tests (Cypress)
 ######### Dev mode Acceptance tests
 
-.PHONY: start-test-acceptance-frontend-dev
-start-test-acceptance-frontend-dev: build-deps ## Start the Core Acceptance Frontend Fixture in dev mode
-	$(MAKE) -C "./packages/volto/" start-test-acceptance-frontend-dev
+.PHONY: acceptance-frontend-dev-start
+acceptance-frontend-dev-start: ## Start acceptance frontend in development mode
+	$(MAKE) -C "./packages/volto/" acceptance-frontend-dev-start
 
 ######### Core Acceptance tests
 
-.PHONY: start-test-acceptance-server test-acceptance-server
-start-test-acceptance-server test-acceptance-server: ## Start Test Acceptance Server Main Fixture (docker container)
-	$(MAKE) -C "./packages/volto/" start-test-acceptance-server
+.PHONY: acceptance-backend-start
+acceptance-backend-start: ## Start backend acceptance server
+	$(MAKE) -C "./packages/volto/" acceptance-backend-start
 
-.PHONY: start-test-acceptance-frontend
-start-test-acceptance-frontend: build-deps ## Start the Core Acceptance Frontend Fixture
-	$(MAKE) -C "./packages/volto/" start-test-acceptance-frontend
+.PHONY: ci-acceptance-backend-start
+ci-acceptance-backend-start: ## Start backend acceptance server in headless mode for CI
+	$(MAKE) -C "./packages/volto/" ci-acceptance-backend-start
 
-.PHONY: test-acceptance
-test-acceptance: ## Start Core Cypress Acceptance Tests
-	$(MAKE) -C "./packages/volto/" test-acceptance
+.PHONY: acceptance-frontend-prod-start
+acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode
+	$(MAKE) -C "./packages/volto/" acceptance-frontend-prod-start
 
-.PHONY: test-acceptance-headless
-test-acceptance-headless: ## Start Core Cypress Acceptance Tests in headless mode
-	$(MAKE) -C "./packages/volto/" test-acceptance-headless
+.PHONY: acceptance-test
+acceptance-test: ## Start Cypress in interactive mode
+	$(MAKE) -C "./packages/volto/" acceptance-test
 
-.PHONY: full-test-acceptance
-full-test-acceptance: ## Runs Core Full Acceptance Testing in headless mode
-	$(MAKE) -C "./packages/volto/" full-test-acceptance
+.PHONY: ci-acceptance-test
+ci-acceptance-test: ## Run cypress tests in headless mode for CI
+	$(MAKE) -C "./packages/volto/" ci-acceptance-test
+
+.PHONY: ci-acceptance-test-runall
+ci-acceptance-test-runall: ## Run in one command server, frontend and the cypress tests in headless mode for CI
+	$(MAKE) -C "./packages/volto/" ci-acceptance-test-runall
 
 ######### Seamless Core Acceptance tests
 
-.PHONY: start-test-acceptance-frontend-seamless
-start-test-acceptance-frontend-seamless: build-deps ## Start the Seamless Core Acceptance Frontend Fixture
-	$(MAKE) -C "./packages/volto/" start-test-acceptance-frontend-seamless
+.PHONY: seamless-acceptance-frontend-prod-start
+seamless-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for Seamless tests
+	$(MAKE) -C "./packages/volto/" seamless-acceptance-frontend-prod-start
 
-.PHONY: test-acceptance-seamless
-test-acceptance-seamless: ## Start Seamless Cypress Acceptance Tests
-	$(MAKE) -C "./packages/volto/" test-acceptance-seamless
+.PHONY: seamless-acceptance-test
+seamless-acceptance-test: ## Start Cypress in interactive mode for Seamless tests
+	$(MAKE) -C "./packages/volto/" seamless-acceptance-test
 
-.PHONY: start-test-acceptance-webserver-seamless
-start-test-acceptance-webserver-seamless: ## Start the seamless webserver
-	$(MAKE) -C "./packages/volto/" start-test-acceptance-webserver-seamless
+.PHONY: seamless-acceptance-webserver-start
+seamless-acceptance-webserver-start: ## Start the Seamless reverse proxy (traefik) in port 80
+	$(MAKE) -C "./packages/volto/" seamless-acceptance-webserver-start
 
-.PHONY: full-test-acceptance-seamless
-full-test-acceptance-seamless: ## Runs Seamless Core Full Acceptance Testing in headless mode
-	$(MAKE) -C "./packages/volto/" full-test-acceptance-seamless
+.PHONY: seamless-ci-acceptance-test-runall
+seamless-ci-acceptance-test-runall: ## Run in one command the backend, frontend, and the cypress tests in headless mode for CI for Seamless tests
+	$(MAKE) -C "./packages/volto/" seamless-ci-acceptance-test-runall
 
 ######### Project Acceptance tests
 
-.PHONY: start-test-acceptance-frontend-project
-start-test-acceptance-frontend-project: build-deps ## Start the Project Acceptance Frontend Fixture
-	$(MAKE) -C "./packages/volto/" start-test-acceptance-frontend-project
+.PHONY: project-acceptance-frontend-prod-start
+project-acceptance-frontend-prod-start: ## Start acceptance frontend in production mode for Project tests
+	$(MAKE) -C "./packages/volto/" project-acceptance-frontend-prod-start
 
 ######### CoreSandbox Acceptance tests
 
-.PHONY: start-test-acceptance-server-coresandbox test-acceptance-server-coresandbox
-start-test-acceptance-server-coresandbox test-acceptance-server-coresandbox: ## Start CoreSandbox Test Acceptance Server Fixture (docker container)
-	$(MAKE) -C "./packages/volto/" start-test-acceptance-server-coresandbox
+.PHONY: coresandbox-acceptance-backend-start
+coresandbox-acceptance-backend-start: ## Start backend acceptance server for CoreSandbox tests
+	$(MAKE) -C "./packages/volto/" coresandbox-acceptance-backend-start
 
-.PHONY: start-test-acceptance-frontend-coresandbox
-start-test-acceptance-frontend-coresandbox: build-deps ## Start the CoreSandbox Acceptance Frontend Fixture
-	$(MAKE) -C "./packages/volto/" start-test-acceptance-frontend-coresandbox
+.PHONY: coresandbox-acceptance-frontend-prod-start
+coresandbox-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for Coresandbox tests
+	$(MAKE) -C "./packages/volto/" coresandbox-acceptance-frontend-prod-start
 
-.PHONY: start-test-acceptance-frontend-coresandbox-dev
-start-test-acceptance-frontend-coresandbox-dev: build-deps ## Start the CoreSandbox Acceptance Frontend Fixture in dev mode
-	$(MAKE) -C "./packages/volto/" start-test-acceptance-frontend-coresandbox-dev
+.PHONY: coresandbox-acceptance-frontend-dev-start
+coresandbox-acceptance-frontend-dev-start: build-deps ## Start acceptance frontend in development mode for Coresandbox tests
+	$(MAKE) -C "./packages/volto/" coresandbox-acceptance-frontend-dev-start
 
-.PHONY: test-acceptance-coresandbox
-test-acceptance-coresandbox: ## Start CoreSandbox Cypress Acceptance Tests
-	$(MAKE) -C "./packages/volto/" test-acceptance-coresandbox
+.PHONY: coresandbox-acceptance-test
+coresandbox-acceptance-test: ## Start Cypress in interactive mode for CoreSandbox tests
+	$(MAKE) -C "./packages/volto/" coresandbox-acceptance-test
 
-.PHONY: test-acceptance-coresandbox-headless
-test-acceptance-coresandbox-headless: ## Start CoreSandbox Cypress Acceptance Tests in headless mode
-	$(MAKE) -C "./packages/volto/" test-acceptance-coresandbox-headless
+.PHONY: coresandbox-ci-acceptance-test
+coresandbox-ci-acceptance-test: ## Run cypress tests in headless mode for CI for CoreSandbox tests
+	$(MAKE) -C "./packages/volto/" coresandbox-ci-acceptance-test
 
-.PHONY: full-test-acceptance-coresandbox
-full-test-acceptance-coresandbox: ## Runs CoreSandbox Full Acceptance Testing in headless mode
-	$(MAKE) -C "./packages/volto/" full-test-acceptance-coresandbox
+.PHONY: coresandbox-ci-acceptance-test-runall
+coresandbox-ci-acceptance-test-runall: ## Run in one command the backend, frontend, and the cypress tests in headless mode for CI for CoreSandbox tests
+	$(MAKE) -C "./packages/volto/" coresandbox-ci-acceptance-test-runall
 
 ######### Multilingual Acceptance tests
 
-.PHONY: start-test-acceptance-server-multilingual test-acceptance-server-multilingual
-start-test-acceptance-server-multilingual test-acceptance-server-multilingual: ## Start Multilingual Acceptance Server Multilingual Fixture (docker container)
-	$(MAKE) -C "./packages/volto/" start-test-acceptance-server-multilingual
+.PHONY: multilingual-acceptance-backend-start
+multilingual-acceptance-backend-start: ## Start backend acceptance server for Multilingual tests
+	$(MAKE) -C "./packages/volto/" multilingual-acceptance-backend-start
 
-.PHONY: start-test-acceptance-frontend-multilingual
-start-test-acceptance-frontend-multilingual: build-deps ## Start the Multilingual Acceptance Frontend Fixture
-	$(MAKE) -C "./packages/volto/" start-test-acceptance-frontend-multilingual
+.PHONY: multilingual-acceptance-frontend-prod-start
+multilingual-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for Multilingual tests
+	$(MAKE) -C "./packages/volto/" multilingual-acceptance-frontend-prod-start
 
-.PHONY: test-acceptance-multilingual
-test-acceptance-multilingual: ## Start Multilingual Cypress Acceptance Tests
-	$(MAKE) -C "./packages/volto/" test-acceptance-multilingual
+.PHONY: multilingual-acceptance-test
+multilingual-acceptance-test: ## Start Cypress in interactive mode for Multilingual tests
+	$(MAKE) -C "./packages/volto/" multilingual-acceptance-test
 
-.PHONY: test-acceptance-multilingual-headless
-test-acceptance-multilingual-headless: ## Start Multilingual Cypress Acceptance Tests in headless mode
-	$(MAKE) -C "./packages/volto/" test-acceptance-multilingual-headless
+.PHONY: multilingual-ci-acceptance-test
+multilingual-ci-acceptance-test: ## Run cypress tests in headless mode for CI for Multilingual tests
+	$(MAKE) -C "./packages/volto/" multilingual-ci-acceptance-test
 
-.PHONY: full-test-acceptance-multilingual
-full-test-acceptance-multilingual: ## Runs Multilingual Full Acceptance Testing in headless mode
-	$(MAKE) -C "./packages/volto/" full-test-acceptance-multilingual
+.PHONY: multilingual-ci-acceptance-test-runall
+multilingual-ci-acceptance-test-runall: ## Run in one command the backend, frontend, and the cypress tests in headless mode for CI for Multilingual tests
+	$(MAKE) -C "./packages/volto/" multilingual-ci-acceptance-test-runall
 
 ######### Seamless Multilingual Acceptance tests
 
-.PHONY: start-test-acceptance-server-seamless-multilingual test-acceptance-server-seamless-multilingual
-start-test-acceptance-server-seamless-multilingual test-acceptance-server-seamless-multilingual: ## Start Seamless Multilingual Acceptance Server Multilingual Fixture (docker container)
-	$(MAKE) -C "./packages/volto/" start-test-acceptance-server-seamless-multilingual
+.PHONY: seamless-multilingual-acceptance-backend-start
+seamless-multilingual-acceptance-backend-start: ## Start backend acceptance server for Seamless Multilingual tests
+	$(MAKE) -C "./packages/volto/" seamless-multilingual-acceptance-backend-start
 
-.PHONY: start-test-acceptance-frontend-seamless-multilingual
-start-test-acceptance-frontend-seamless-multilingual: build-deps ## Start the Seamless Multilingual Acceptance Frontend Fixture
-	$(MAKE) -C "./packages/volto/" start-test-acceptance-frontend-seamless-multilingual
+.PHONY: seamless-multilingual-acceptance-frontend-prod-start
+seamless-multilingual-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for Seamless Multilingual tests
+	$(MAKE) -C "./packages/volto/" seamless-multilingual-acceptance-frontend-prod-start
 
-.PHONY: test-acceptance-seamless-multilingual
-test-acceptance-seamless-multilingual: ## Start Seamless Multilingual Cypress Acceptance Tests
-	$(MAKE) -C "./packages/volto/" test-acceptance-seamless-multilingual
+.PHONY: seamless-multilingual-acceptance-test
+seamless-multilingual-acceptance-test: ## Start Cypress in interactive mode for Seamless Multilingual tests
+	$(MAKE) -C "./packages/volto/" seamless-multilingual-acceptance-test
 
-.PHONY: test-acceptance-seamless-multilingual-headless
-test-acceptance-seamless-multilingual-headless: ## Start Seamless Multilingual Cypress Acceptance Tests in headless mode
-	$(MAKE) -C "./packages/volto/" test-acceptance-seamless-multilingual-headless
+.PHONY: seamless-multilingual-ci-acceptance-test
+seamless-multilingual-ci-acceptance-test: ## Run cypress tests in headless mode for CI for Seamless Multilingual tests
+	$(MAKE) -C "./packages/volto/" seamless-multilingual-ci-acceptance-test
 
-.PHONY: full-test-acceptance-seamless-multilingual
-full-test-acceptance-seamless-multilingual: ## Runs Seamless Multilingual Full Acceptance Testing in headless mode
-	$(MAKE) -C "./packages/volto/" full-test-acceptance-seamless-multilingual
+.PHONY: seamless-multilingual-ci-acceptance-test-runall
+seamless-multilingual-ci-acceptance-test-runall: ## Run in one command the backend, frontend, and the cypress tests in headless mode for CI for Seamless Multilingual tests
+	$(MAKE) -C "./packages/volto/" seamless-multilingual-ci-acceptance-test-runall
 
 ######### WorkingCopy Acceptance tests
 
-.PHONY: start-test-acceptance-server-workingcopy test-acceptance-server-workingcopy
-start-test-acceptance-server-workingcopy test-acceptance-server-workingcopy : ## Start the WorkingCopy Acceptance Server  Fixture (docker container)
-	$(MAKE) -C "./packages/volto/" start-test-acceptance-server-workingcopy
+.PHONY: workingcopy-acceptance-backend-start
+workingcopy-acceptance-backend-start: ## Start backend acceptance server for WorkingCopy tests
+	$(MAKE) -C "./packages/volto/" workingcopy-acceptance-backend-start
 
-.PHONY: start-test-acceptance-frontend-workingcopy
-start-test-acceptance-frontend-workingcopy: build-deps ## Start the WorkingCopy Acceptance Frontend Fixture
-	$(MAKE) -C "./packages/volto/" start-test-acceptance-frontend-workingcopy
+.PHONY: workingcopy-acceptance-frontend-prod-start
+workingcopy-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for WorkingCopy tests
+	$(MAKE) -C "./packages/volto/" workingcopy-acceptance-frontend-prod-start
 
-.PHONY: test-acceptance-workingcopy
-test-acceptance-workingcopy: ## Start WorkingCopy Cypress Acceptance Tests
-	$(MAKE) -C "./packages/volto/" test-acceptance-workingcopy
+.PHONY: workingcopy-acceptance-test
+workingcopy-acceptance-test: ## Start Cypress in interactive mode for WorkingCopy tests
+	$(MAKE) -C "./packages/volto/" workingcopy-acceptance-test
 
-.PHONY: test-acceptance-workingcopy-headless
-test-acceptance-workingcopy-headless: ## Start WorkingCopy Cypress Acceptance Tests in headless mode
-	$(MAKE) -C "./packages/volto/" test-acceptance-workingcopy-headless
+.PHONY: workingcopy-ci-acceptance-test
+workingcopy-ci-acceptance-test: ## Run cypress tests in headless mode for CI for WorkingCopy tests
+	$(MAKE) -C "./packages/volto/" workingcopy-ci-acceptance-test
 
-.PHONY: full-test-acceptance-workingcopy
-full-test-acceptance-workingcopy: ## Runs WorkingCopy Full Acceptance Testing in headless mode
-	$(MAKE) -C "./packages/volto/" full-test-acceptance-workingcopy
+.PHONY: workingcopy-ci-acceptance-test-runall
+workingcopy-ci-acceptance-test-runall: ## Run in one command the backend, frontend, and the cypress tests in headless mode for CI for WorkingCopy tests
+	$(MAKE) -C "./packages/volto/" workingcopy-ci-acceptance-test-runall
 
 ######### Guillotina Acceptance tests
 
-.PHONY: start-test-acceptance-server-guillotina
-start-test-acceptance-server-guillotina: ## Start Guillotina Test Acceptance Server (docker container)
+.PHONY: guillotina-acceptance-backend-start
+guillotina-acceptance-backend-start: ## Start backend acceptance server for Guillotina tests
 	docker-compose -f g-api/docker-compose.yml up > /dev/null
 
-.PHONY: start-test-acceptance-frontend-guillotina
-start-test-acceptance-frontend-guillotina: build-deps ## Start the Guillotina Acceptance Frontend Fixture
-	$(MAKE) -C "./packages/volto/" start-test-acceptance-frontend-guillotina
+.PHONY: guillotina-acceptance-frontend-prod-start
+guillotina-acceptance-frontend-prod-start: ## Start acceptance frontend in production mode for Guillotina tests
+	$(MAKE) -C "./packages/volto/" guillotina-acceptance-frontend-prod-start
 
-.PHONY: test-acceptance-guillotina
-test-acceptance-guillotina: ## Start the Guillotina Cypress Acceptance Tests
-	$(MAKE) -C "./packages/volto/" test-acceptance-guillotina
+.PHONY: guillotina-acceptance-test
+guillotina-acceptance-test: ## Start Cypress in interactive mode for Guillotina tests
+	$(MAKE) -C "./packages/volto/" guillotina-acceptance-test
 
-.PHONY: test-acceptance-guillotina-headless
-test-acceptance-guillotina-headless: ## Start the Guillotina Cypress Acceptance Tests in headless mode
-	$(MAKE) -C "./packages/volto/" test-acceptance-guillotina-headless
+.PHONY: guillotina-ci-acceptance-test
+guillotina-ci-acceptance-test: ## Run cypress tests in headless mode for CI for Guillotina tests
+	$(MAKE) -C "./packages/volto/" guillotina-ci-acceptance-test
 
-.PHONY: full-test-acceptance-guillotina
-full-test-acceptance-guillotina: ## Runs the Guillotina Full Acceptance Testing in headless mode
-	$(MAKE) -C "./packages/volto/" full-test-acceptance-guillotina
+.PHONY: guillotina-ci-acceptance-test-runall
+guillotina-ci-acceptance-test-runall: ## Run in one command the backend, frontend, and the cypress tests in headless mode for CI for Guillotina tests
+	$(MAKE) -C "./packages/volto/" guillotina-ci-acceptance-test-runall
 
 ######### Plone 5 Acceptance tests
 
-.PHONY: start-test-acceptance-server-5
-start-test-acceptance-server-5: ## Start Test Acceptance Server Main Fixture Plone 5 (docker container)
-	$(MAKE) -C "./packages/volto/" start-test-acceptance-server-5
+.PHONY: plone5-acceptance-backend-start
+plone5-acceptance-backend-start: ## Start backend acceptance server for Plone 5 tests
+	$(MAKE) -C "./packages/volto/" plone5-acceptance-backend-start
 
 ######### @plone/client
 
