@@ -55,7 +55,6 @@ export function mergeSlateWithBlockBackward(editor, prevBlock, event) {
     let endPoint;
 
     Transforms.insertNodes(editor, { text: '' }, { at: end });
-    
 
     end = Editor.end(editor, [0]);
 
@@ -132,7 +131,10 @@ export function createImageBlock(url, index, props) {
     [id, newFormData] = addBlock(properties, 'image', index + 1);
     newFormData = changeBlock(newFormData, id, { '@type': 'image', url });
   } else {
-    [id, newFormData] = insertBlock(properties, currBlockId, { '@type': 'image', url });
+    [id, newFormData] = insertBlock(properties, currBlockId, {
+      '@type': 'image',
+      url,
+    });
   }
 
   ReactDOM.unstable_batchedUpdates(() => {
