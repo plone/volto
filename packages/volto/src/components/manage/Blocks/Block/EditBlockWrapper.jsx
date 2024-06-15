@@ -182,10 +182,7 @@ const EditBlockWrapper = (props) => {
         {...dropProps}
         ref={blockRef}
       >
-        <div
-          style={{ position: 'relative' }}
-          className="dnd-droptarget-margin-enclosure"
-        >
+        <div style={{ position: 'relative' }}>
           <div
             // Right now, we can have the alignment information in the styles property or in the
             // block data root, we inject the classname here for having control over the whole
@@ -211,7 +208,9 @@ const EditBlockWrapper = (props) => {
                 {...buttonProps}
               />
             </div>
-            <div className={`ui drag block inner ${type}`}>
+            <div
+              className={`ui drag block inner ${type} dnd-droptarget-margin-enclosure`}
+            >
               {children}
               {selected && !required && editable && (
                 <Button
@@ -224,27 +223,26 @@ const EditBlockWrapper = (props) => {
                   <Icon name={trashSVG} size="18px" />
                 </Button>
               )}
-              {config.experimental.addBlockButton.enabled &&
-                showBlockChooser && (
-                  <BlockChooserButton
-                    data={data}
-                    block={block}
-                    onInsertBlock={(id, value) => {
-                      if (blockHasValue(data)) {
-                        onSelectBlock(onInsertBlock(id, value));
-                      } else {
-                        onChangeBlock(id, value);
-                      }
-                    }}
-                    onMutateBlock={onMutateBlock}
-                    allowedBlocks={allowedBlocks}
-                    blocksConfig={blocksConfig}
-                    size="24px"
-                    properties={properties}
-                    navRoot={navRoot}
-                    contentType={contentType}
-                  />
-                )}
+              {config.experimental.addBlockButton.enabled && showBlockChooser && (
+                <BlockChooserButton
+                  data={data}
+                  block={block}
+                  onInsertBlock={(id, value) => {
+                    if (blockHasValue(data)) {
+                      onSelectBlock(onInsertBlock(id, value));
+                    } else {
+                      onChangeBlock(id, value);
+                    }
+                  }}
+                  onMutateBlock={onMutateBlock}
+                  allowedBlocks={allowedBlocks}
+                  blocksConfig={blocksConfig}
+                  size="24px"
+                  properties={properties}
+                  navRoot={navRoot}
+                  contentType={contentType}
+                />
+              )}
             </div>
           </div>
         </div>
