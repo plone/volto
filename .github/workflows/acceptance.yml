@@ -63,7 +63,8 @@ jobs:
           browser: chrome
           spec: cypress/tests/core/basic/**/*.js
           start: |
-            make acceptance-backend-start
+            make ci-acceptance-backend-start
+            make acceptance-frontend-prod-start
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
@@ -141,7 +142,7 @@ jobs:
           browser: chrome
           spec: cypress/tests/core/content/**/*.js
           start: |
-            make acceptance-backend-start
+            make ci-acceptance-backend-start
             make acceptance-frontend-prod-start
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
@@ -220,7 +221,7 @@ jobs:
           browser: chrome
           spec: cypress/tests/core/controlpanels/**/*.js
           start: |
-            make acceptance-backend-start
+            make ci-acceptance-backend-start
             make acceptance-frontend-prod-start
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
@@ -299,7 +300,7 @@ jobs:
           browser: chrome
           spec: cypress/tests/core/blocks/*.js
           start: |
-            make acceptance-backend-start
+            make ci-acceptance-backend-start
             make acceptance-frontend-prod-start
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
@@ -378,7 +379,7 @@ jobs:
           browser: chrome
           spec: cypress/tests/core/blocks/listing/*.js
           start: |
-            make acceptance-backend-start
+            make ci-acceptance-backend-start
             make acceptance-frontend-prod-start
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
@@ -457,7 +458,7 @@ jobs:
           browser: chrome
           spec: cypress/tests/core/volto-slate/**/*.js
           start: |
-            make acceptance-backend-start
+            make ci-acceptance-backend-start
             make acceptance-frontend-prod-start
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
@@ -682,7 +683,7 @@ jobs:
   #         browser: chrome
   #         spec: cypress/tests/guillotina/**/*.js
   #         start: |
-  #           make acceptance-backend-start-guillotina
+  #           make ci-acceptance-backend-start-guillotina
   #           make acceptance-frontend-prod-start-guillotina
   #         wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:8081 http://127.0.0.1:3000'
 
@@ -977,7 +978,7 @@ jobs:
           browser: chrome
           spec: cypress/tests/minimal/**/*.js
           start: |
-            make acceptance-backend-start
+            make ci-acceptance-backend-start
             make project-acceptance-frontend-prod-start
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
@@ -1063,7 +1064,7 @@ jobs:
           spec: cypress/tests/core/basic/**/*.js
           config: baseUrl=http://localhost
           start: |
-            make acceptance-backend-start
+            make ci-acceptance-backend-start
             make seamless-acceptance-frontend-prod-start
             make seamless-acceptance-webserver-start
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000 http://localhost'
