@@ -1,14 +1,7 @@
-interface ResultItem {
-  '@id': string;
-  '@type': string;
-  description: string;
-  review_state: string;
-  title: string;
-  type_title: string;
-}
+import { Brain } from './common';
 
 export interface QuerystringSearchResponse {
   '@id': string;
-  items: ResultItem[];
+  items: Brain[];
   items_total: number;
 }

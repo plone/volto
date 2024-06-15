@@ -48,6 +48,10 @@ exports[`PersonalPreferences renders a personal preferences component 1`] = `
           \\"Français\\"
         ],
         [
+          \\"hi\\",
+          \\"Hindi\\"
+        ],
+        [
           \\"it\\",
           \\"Italiano\\"
         ],

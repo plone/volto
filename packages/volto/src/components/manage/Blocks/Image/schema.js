@@ -77,10 +77,12 @@ export function ImageSchema({ formData, intl }) {
       align: {
         title: intl.formatMessage(messages.Align),
         widget: 'align',
+        default: 'center',
       },
       size: {
         title: intl.formatMessage(messages.size),
         widget: 'image_size',
+        default: 'l',
       },
       href: {
         title: intl.formatMessage(messages.LinkTo),

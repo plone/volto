@@ -8,6 +8,35 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.16 (2024-06-13)
+
+### Breaking
+
+- Remove unused `config.settings.containerBlockTypes` @sneridagh [#6099](https://github.com/plone/volto/issues/6099)
+
+## 1.0.0-alpha.15 (2024-06-13)
+
+### Bugfix
+
+- Better `styleClassNameExtenders` typings @sneridagh [#6095](https://github.com/plone/volto/issues/6095)
+
+## 1.0.0-alpha.14 (2024-06-06)
+
+### Breaking
+
+- The `GetSlotArgs` type no longer supports `pathname` as a key, instead using `location`. @sneridagh [#6063](https://github.com/plone/volto/issues/6063)
+
+### Bugfix
+
+- BlockExtension as Interface @sneridagh [#6049](https://github.com/plone/volto/issues/6049)
+- Improved image typings @pnicolli [#6064](https://github.com/plone/volto/issues/6064)
+
+## 1.0.0-alpha.13 (2024-05-23)
+
+### Feature
+
+- New Brain type and new ArrayElement utility @pnicolli [#6029](https://github.com/plone/volto/issues/6029)
+
 ## 1.0.0-alpha.12 (2024-05-15)
 
 ### Bugfix

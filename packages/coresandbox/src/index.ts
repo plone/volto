@@ -2,8 +2,11 @@ import ListingBlockVariationTeaserContent from './components/Blocks/Listing/List
 import NewsAndEvents from './components/Views/NewsAndEvents';
 import TestBlockView from './components/Blocks/TestBlock/View';
 import TestBlockEdit from './components/Blocks/TestBlock/Edit';
+import InputBlockView from './components/Blocks/InputBlock/View';
+import InputBlockEdit from './components/Blocks/InputBlock/Edit';
 import { flattenToAppURL } from '@plone/volto/helpers';
 import { SliderSchema as TestBlockSchema } from './components/Blocks/TestBlock/schema';
+import { inputBlockSchema } from './components/Blocks/InputBlock/schema';
 import { multipleFieldsetsSchema } from './components/Blocks/TestBlock/schema';
 import { conditionalVariationsSchemaEnhancer } from './components/Blocks/schemaEnhancers';
 import codeSVG from '@plone/volto/icons/code.svg';
@@ -35,6 +38,20 @@ const testBlock: BlockConfigBase = {
       title: 'Custom',
     },
   ],
+  extensions: {},
+};
+const inputBlock: BlockConfigBase = {
+  id: 'inputBlock',
+  title: 'Input Block',
+  icon: codeSVG,
+  group: 'common',
+  view: InputBlockView,
+  edit: InputBlockEdit,
+  blockSchema: inputBlockSchema,
+  restricted: false,
+  mostUsed: true,
+  sidebarTab: 1,
+
   extensions: {},
 };
 
@@ -154,6 +171,7 @@ export const workingCopyFixture = (config: ConfigType) => {
 declare module '@plone/types' {
   export interface BlocksConfigData {
     testBlock: BlockConfigBase;
+    inputBlock: BlockConfigBase;
     testBlockConditional: BlockConfigBase;
     testBlockWithConditionalVariations: BlockConfigBase;
     testBlockMultipleFieldsets: BlockConfigBase;
@@ -164,6 +182,7 @@ declare module '@plone/types' {
 
 const applyConfig = (config: ConfigType) => {
   config.blocks.blocksConfig.testBlock = testBlock;
+  config.blocks.blocksConfig.inputBlock = inputBlock;
   config.blocks.blocksConfig.testBlockConditional = testBlockConditional;
   config.blocks.blocksConfig.testBlockWithConditionalVariations =
     testBlockWithConditionalVariations;

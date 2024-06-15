@@ -8,7 +8,7 @@
     }
   ],
   "license": "MIT",
-  "version": "1.0.0-alpha.14",
+  "version": "1.0.0-alpha.16",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -48,8 +48,7 @@
   "scripts": {
     "build": "parcel build",
     "build:force": "parcel build --no-cache",
-    "test": "node testRunner.js",
-    "vitest": "vitest",
+    "test": "vitest",
     "check-ts": "tsc --project tsconfig.json",
     "coverage": "vitest run --coverage --no-threads",
     "dry-release": "release-it --dry-run",
@@ -92,7 +91,7 @@
     "wait-on": "^7.2.0"
   },
   "dependencies": {
-    "@tanstack/react-query": "5.24.1",
+    "@tanstack/react-query": "^5.37.1",
     "axios": "^1.6.7",
     "debug": "4.3.4",
     "query-string": "^9.0.0",
