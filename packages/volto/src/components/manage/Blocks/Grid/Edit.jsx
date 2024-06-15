@@ -1,14 +1,16 @@
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import { useState } from 'react';
 import ContainerEdit from '../Container/Edit';
+import { useDispatch, useSelector } from 'react-redux';
+import { setUIState } from '@plone/volto/actions';
 
 const GridBlockEdit = (props) => {
   const { data } = props;
 
   const columnsLength = data?.blocks_layout?.items?.length || 0;
 
-  const [selectedBlock, setSelectedBlock] = useState(null);
+  const selectedBlock = useSelector((state) => state.form.ui.gridSelected);
+  const dispatch = useDispatch();
 
   return (
     <div
@@ -22,14 +24,14 @@ const GridBlockEdit = (props) => {
       // This is required to enabling a small "in-between" clickable area
       // for bringing the Grid sidebar alive once you have selected an inner block
       onClick={(e) => {
-        if (!e.block) setSelectedBlock(null);
+        if (!e.block) dispatch(setUIState({ gridSelected: null }));
       }}
       role="presentation"
     >
       <ContainerEdit
         {...props}
         selectedBlock={selectedBlock}
-        setSelectedBlock={setSelectedBlock}
+        setSelectedBlock={(id) => dispatch(setUIState({ gridSelected: id }))}
         direction="horizontal"
       />
     </div>

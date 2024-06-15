@@ -17,6 +17,64 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.35 (2024-06-13)
+
+### Breaking
+
+- Improve container detection, `config.settings.containerBlockTypes` is no longer needed @sneridagh [#6099](https://github.com/plone/volto/issues/6099)
+
+### Bugfix
+
+- Support nested directories in public folder add-on sync folders both in dev and build mode @sneridagh [#6098](https://github.com/plone/volto/issues/6098)
+- export getFieldURL from Url.js in helpers  @dobri1408 [#6100](https://github.com/plone/volto/issues/6100)
+
+## 18.0.0-alpha.34 (2024-06-13)
+
+### Feature
+
+- Added blocks layout navigator @robgietema @sneridagh [#5642](https://github.com/plone/volto/issues/5642)
+- Add support for reading the add-ons `tsconfig.json` paths and add them to the build resolve aliases @sneridagh [#6096](https://github.com/plone/volto/issues/6096)
+
+### Bugfix
+
+- Fix internalUrl Widget to Reflect Prop Changes via onChangeBlock @dorbi1408 @ichim-david [#6036](https://github.com/plone/volto/issues/6036)
+- Add default 'l' and 'center' values to size and align fields of `Image` block.
+  This fixes data not having any value adding proper options to the `Image` block. @ichim-david [#6046](https://github.com/plone/volto/issues/6046)
+- Fix public folder in dev mode, now it starts by default with the default Volto core defined public files @sneridagh [#6081](https://github.com/plone/volto/issues/6081)
+- Fix link in pop-up in `RelationsMatrix.jsx`. @stevepiercy [#6085](https://github.com/plone/volto/issues/6085)
+- Fix Uncaught RangeError: date value is not finite in DateTimeFormat.format.  @mauritsvanrees [#6087](https://github.com/plone/volto/issues/6087)
+- relations control panel. Restrict eglible relation targets according relation constraints of fields vocabulary. @ksuess [#6091](https://github.com/plone/volto/issues/6091)
+- Better `Icon` component JSDoc typings @sneridagh [#6095](https://github.com/plone/volto/issues/6095)
+
+## 18.0.0-alpha.33 (2024-06-06)
+
+### Breaking
+
+- Fix JavaScript events association on error pages. Also remove settings `config.settings.serverConfig.extractScripts.errorPages`. Now scripts are added to error pages, regardless of whether we are in production mode or not. @wesleybl [#6048](https://github.com/plone/volto/issues/6048)
+- Breaking from the original slots implementation:
+  Now `config.getSlots` in the configuration registry takes the argument `location` instead of `pathname`.
+  This allows to have more expressive conditions, and fulfill the use case of the `Add` form.
+  @sneridagh [#6063](https://github.com/plone/volto/issues/6063)
+
+### Feature
+
+- Added object browser icon view @robgietema [#5279](https://github.com/plone/volto/issues/5279)
+- Refactor TextWidget. @Tishasoumya-02 [#6020](https://github.com/plone/volto/issues/6020)
+- Refactor IdWidget -@Tishasoumya-02 [#6027](https://github.com/plone/volto/issues/6027)
+- The `ContentTypeCondition` now supports the `Add` form, and detects when you create a content type that is set in the condition. @sneridagh
+  Added a new `BodyClass` helper while adding a new content type of the form `is-adding-contenttype-mycontenttype`. @sneridagh [#6063](https://github.com/plone/volto/issues/6063)
+- Add support for configurable `public` directory defined per add-on. @sneridagh [#6072](https://github.com/plone/volto/issues/6072)
+
+### Bugfix
+
+- Fix block chooser search is not focusable when clicked on add button @iRohitSingh [#5866](https://github.com/plone/volto/issues/5866)
+- Fixed skiplink links not tracking focus correctly @JeffersonBledsoe [#5959](https://github.com/plone/volto/issues/5959)
+- Remove left and right padding from _Event > Edit recurrence > Repeat on_ buttons when repeating for weekly or yearly events for big fonts, preventing overflow. @sabrina-bongiovanni [#6070](https://github.com/plone/volto/issues/6070)
+
+### Internal
+
+- Fix test script in monorepo root @sneridagh [#6051](https://github.com/plone/volto/issues/6051)
+
 ## 18.0.0-alpha.32 (2024-05-23)
 
 ### Feature
