@@ -2490,6 +2490,16 @@ msgstr "क्रमबद्ध"
 msgid "Origin"
 msgstr "स्रोत"
 
+#. Default: "Override source content"
+#: components/manage/Blocks/Teaser/schema
+msgid "Override source content"
+msgstr ""
+
+#. Default: "Override source content if you want to prevent further updates"
+#: components/manage/Blocks/Teaser/schema
+msgid "Override source content if you want to prevent further updates"
+msgstr ""
+
 #. Default: "Overview of relations of all content items"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Overview of relations of all content items"
@@ -2743,6 +2753,11 @@ msgstr "संबंधित आइटम के रूप में इस आ
 #: components/manage/LinksToItem/LinksToItem
 msgid "Referencing this item with {relationship}"
 msgstr "{relationship} के साथ इस आइटम का संदर्भ"
+
+#. Default: "Refresh source content"
+#: components/manage/Blocks/Teaser/Data
+msgid "Refresh source content"
+msgstr ""
 
 #. Default: "Register"
 #: components/theme/Anontools/Anontools
