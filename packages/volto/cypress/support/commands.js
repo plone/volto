@@ -706,6 +706,14 @@ Cypress.Commands.add(
   },
 );
 
+Cypress.Commands.add(
+  'pasteImageClipboard',
+  { prevSubject: true },
+  (query, htmlContent) => {
+    return cy.wrap(query).trigger('paste', createImagePasteEvent());
+  },
+);
+
 Cypress.Commands.add('toolbarSave', () => {
   // Save
   cy.get('#toolbar-save', { timeout: 10000 }).click();
@@ -872,6 +880,22 @@ function createHtmlPasteEvent(htmlContent) {
       },
     },
   );
+}
+
+function createImagePasteEvent() {
+  let sourceFilename = 'cypress/fixtures/halfdome2022.jpg';
+  return cy.readFile(sourceFilename, 'base64').then((encodedImage) => {
+    console.log(encodedImage);
+    return Object.assign(
+      new Event('paste', { bubbles: true, cancelable: true }),
+      {
+        clipboardData: {
+          getData: () => encodedImage,
+          types: ['image/png'],
+        },
+      },
+    );
+  });
 }
 
 Cypress.Commands.add('addNewBlock', (blockName, createNewSlate = false) => {

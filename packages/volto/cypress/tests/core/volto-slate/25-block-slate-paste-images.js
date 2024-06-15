@@ -17,4 +17,15 @@ describe('Block Tests: paste external images', () => {
       .should('have.attr', 'src')
       .and('include', 'https://dummyimage.com/600x400/000/fff');
   });
+
+  it.only('should paste external images', function () {
+    cy.getSlate().focus().click().pasteImageClipboard();
+    cy.pause();
+    // Save
+    // cy.toolbarSave();
+
+    // cy.get('[id="page-document"] span img')
+    //   .should('have.attr', 'src')
+    //   .and('include', 'https://dummyimage.com/600x400/000/fff');
+  });
 });
