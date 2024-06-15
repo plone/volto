@@ -83,6 +83,7 @@ export const TeaserSchema = ({ intl }) => {
         title: intl.formatMessage(messages.overwrite),
         description: intl.formatMessage(messages.overwriteDescription),
         type: 'boolean',
+        default: false,
       },
       title: {
         title: intl.formatMessage(messages.title),

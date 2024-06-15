@@ -62,6 +62,7 @@ context('Blocks Acceptance Tests', () => {
       image: true,
       path: '/document',
     });
+
     cy.navigate('/document/edit');
     // WHEN I create a Teaser block and change the data of the referenced object
     cy.get('.block .slate-editor [contenteditable=true]').click();
@@ -75,6 +76,7 @@ context('Blocks Acceptance Tests', () => {
     cy.get('[aria-label="Select Blue Orchidees"]').dblclick();
     cy.wait(500);
     cy.get('#toolbar-save').click();
+
     cy.visit('/document');
     cy.get('.block.teaser .content h2').contains('Blue Orchidees');
     cy.get('.block.teaser .content p').contains(
@@ -83,7 +85,11 @@ context('Blocks Acceptance Tests', () => {
     cy.navigate('/document/blue-orchidees/edit');
     cy.wait('@schema');
     cy.getSlateTitle().type(' and Tulips');
+    cy.get('#field-description')
+      .clear()
+      .type('are beautifully growing on the mountain tops');
     cy.get('#toolbar-save').click();
+
     cy.get('.documentFirstHeading').contains('Blue Orchidees and Tulips');
     // THEN I can see the updated content in the teaser
     cy.navigate('/document');
