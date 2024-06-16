@@ -241,6 +241,19 @@ This allows more expressive conditions to fulfill the use case of the `Add` form
 
 The mechanism to detect if a block is a container or not has been improved and the config setting `config.settings.containerBlockTypes` is no longer needed, and core won't check for it anymore.
 
+### New naming convention for `Makefile` commands
+
+A new naming convention for `Makefile` commands has been decided, and implemented in Volto 18.
+It will be implemented through all the Volto tools, including the new boilerplate generators.
+The conventions is as follows:
+
+- Use kebab-case, where each word is separated by a hyphen.
+- Use hierarchical or taxonomic ranking, where the thing being operated upon is defined by `[thing]-[subthing]-[subsubthing]`.
+- `[thing]` may be omitted when it is the project itself.
+- The final term is the action to be performed upon the [thing].
+
+The documentation has been updated as well to reflect this change.
+
 (volto-upgrade-guide-17.x.x)=
 
 ## Upgrading to Volto 17.x.x
