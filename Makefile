@@ -47,9 +47,8 @@ all: build
 # Add the following 'help' target to your Makefile
 # And add help text after each target name starting with '\#\#'
 .PHONY: help
-help: .SHELLFLAGS:=-eu -o pipefail -O inherit_errexit -c
 help: ## This help message
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+	@echo -e "$$(grep -hE '^\S+:.*##' $(MAKEFILE_LIST) | sed -e 's/:.*##\s*/:/' -e 's/^\(.\+\):\(.*\)/\\x1b[36m\1\\x1b[m:\2/' | column -c2 -t -s :)"
 
 .PHONY: start
 # Run both the back-end and the front end
@@ -161,9 +160,14 @@ patches:
 cypress-install:
 	$(NODEBIN)/cypress install
 
+packages/registry/dist: packages/registry/src
+	pnpm build:registry
+
+packages/components/dist: packages/components/src
+	pnpm build:components
+
 .PHONY: build-deps
-build-deps:
-	if [ ! -d $$(pwd)/packages/registry/dist ]; then (pnpm build:deps); fi
+build-deps: packages/registry/dist
 
 ## Storybook
 
