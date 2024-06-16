@@ -83,6 +83,13 @@ install: build-deps ## Set up development environment
 
 ##### Documentation
 
+bin/python:
+	python3 -m venv . || virtualenv --clear --python=python3 .
+	bin/python -m pip install --upgrade pip
+	@echo "Python environment created."
+	bin/pip install -r requirements-docs.txt
+	@echo "Requirements installed."
+
 .PHONY: docs-clean
 docs-clean:  ## Clean current and legacy docs build directories, and Python virtual environment
 	rm -rf bin include lib
