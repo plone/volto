@@ -285,7 +285,7 @@ class AddLinkForm extends Component {
                     <Icon name={clearSVG} size="24px" />
                   </Button>
                 </Button.Group>
-              ) : (
+              ) : this.props.objectBrowserPickerType === 'link' ? (
                 <Button.Group>
                   <Button
                     basic
@@ -297,7 +297,7 @@ class AddLinkForm extends Component {
                       e.preventDefault();
                       e.stopPropagation();
                       this.props.openObjectBrowser({
-                        mode: this.props.objectBrowserPickerType || 'link',
+                        mode: this.props.objectBrowserPickerType,
                         overlay: true,
                         onSelectItem: (url) => {
                           this.onChange(url);
@@ -309,7 +309,8 @@ class AddLinkForm extends Component {
                     <Icon name={navTreeSVG} size="24px" />
                   </Button>
                 </Button.Group>
-              )}
+              ) : null}
+
               <Button.Group>
                 <Button
                   basic
