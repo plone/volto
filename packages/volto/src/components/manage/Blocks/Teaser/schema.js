@@ -35,13 +35,13 @@ const messages = defineMessages({
     defaultMessage: 'Alignment',
   },
   overwrite: {
-    id: 'Override source content',
-    defaultMessage: 'Override source content',
+    id: 'Override',
+    defaultMessage: 'Override',
   },
   overwriteDescription: {
-    id: 'Override source content if you want to prevent further updates',
+    id: 'Check this box if you want to override the target content.',
     defaultMessage:
-      'Override source content if you want to prevent further updates',
+      'Check this box if you want to override the target content.',
   },
 });
 
