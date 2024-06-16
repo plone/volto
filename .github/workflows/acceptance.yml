@@ -1001,9 +1001,9 @@ jobs:
         if: success()
         working-directory: ${{env.generator-directory}}
 
-  seamless:
+  deployment:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
-    name: Seamless Mode
+    name: Deployment Mode
     runs-on: ubuntu-latest
     timeout-minutes: 35
     strategy:
@@ -1065,8 +1065,8 @@ jobs:
           config: baseUrl=http://localhost
           start: |
             make ci-acceptance-backend-start
-            make seamless-acceptance-frontend-prod-start
-            make seamless-acceptance-webserver-start
+            make deployment-acceptance-frontend-prod-start
+            make deployment-acceptance-webserver-start
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000 http://localhost'
 
       # Upload Cypress screenshots
@@ -1082,9 +1082,9 @@ jobs:
           name: cypress-videos-seamless
           path: packages/volto/cypress/videos
 
-  multilingualseamless:
+  multilingualdeployment:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
-    name: Multilingual in Seamless Mode
+    name: Multilingual in Deployment Mode
     runs-on: ubuntu-latest
     timeout-minutes: 25
     strategy:
@@ -1145,9 +1145,9 @@ jobs:
           spec: cypress/tests/multilingual/**/*.js
           config: baseUrl=http://localhost
           start: |
-            make seamless-multilingual-acceptance-backend-start
-            make seamless-multilingual-acceptance-frontend-prod-start
-            make seamless-acceptance-webserver-start
+            make deployment-multilingual-acceptance-backend-start
+            make deployment-multilingual-acceptance-frontend-prod-start
+            make deployment-acceptance-webserver-start
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000 http://localhost'
 
       # Upload Cypress screenshots

@@ -30,19 +30,19 @@ All sessions should start from the `packages/volto` directory.
 1.  In the first session, start the backend server.
 
     ```shell
-    make start-test-acceptance-server
+    make acceptance-server-start
     ```
 
 1.  In the second session, start the frontend server.
 
     ```shell
-    make start-test-acceptance-frontend-dev
+    make acceptance-frontend-dev-start
     ```
 
 1.  In the third session, start the Cypress tests runner.
 
     ```shell
-    make test-acceptance
+    make acceptance-test
     ```
 
 1.  In the Cypress pop-up test style, choose `E2E Testing`, since Volto's tests are end-to-end tests.
@@ -52,7 +52,7 @@ All sessions should start from the `packages/volto` directory.
 
 1.  In the main Cypress runner section, you will see all of the test specs that Volto developers have written to test Volto and its packages.
 
-1.  To run a test, interact with the file based tree that displays all possible tests to run, and click on the test spec you need to run. 
+1.  To run a test, interact with the file based tree that displays all possible tests to run, and click on the test spec you need to run.
 
 We provide the following major test specs:
 
