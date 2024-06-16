@@ -218,7 +218,7 @@ ci-acceptance-test: ## Run cypress tests in headless mode for CI
 ci-acceptance-test-runall: ## With a single command, start both the acceptance frontend and backend acceptance server, and run Cypress tests in headless mode
 	$(MAKE) -C "./packages/volto/" ci-acceptance-test-runall
 
-######### Seamless Core Acceptance tests
+######### Deployment Core Acceptance tests
 
 .PHONY: deployment-acceptance-frontend-prod-start
 deployment-acceptance-frontend-prod-start: ## Start acceptance frontend in production mode for deployment

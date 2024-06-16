@@ -842,8 +842,8 @@ jobs:
           browser: chrome
           spec: cypress/tests/workingCopy/**/*.js
           start: |
-            make workingcopy-acceptance-backend-start
-            make workingcopy-acceptance-frontend-prod-start
+            make working-copy-acceptance-backend-start
+            make working-copy-acceptance-frontend-prod-start
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
