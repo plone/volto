@@ -1,1 +1,0 @@
-Added blocks layout navigator @robgietema @sneridagh

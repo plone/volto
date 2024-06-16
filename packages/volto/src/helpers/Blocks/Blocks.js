@@ -694,6 +694,19 @@ export const getPreviousNextBlock = ({ content, block }) => {
 };
 
 /**
+ * Check if a block is a container block
+ * check blocks from data as well since some add-ons use that
+ * such as @eeacms/volto-tabs-block
+ */
+export function isBlockContainer(block) {
+  return (
+    block &&
+    (hasBlocksData(block) ||
+      (block.hasOwnProperty('data') && hasBlocksData(block.data)))
+  );
+}
+
+/**
  * Given a `block` object and a list of block types, return a list of block ids matching the types
  *
  * @function findBlocks
@@ -701,8 +714,6 @@ export const getPreviousNextBlock = ({ content, block }) => {
  * @return {Array} An array of block ids
  */
 export function findBlocks(blocks, types, result = []) {
-  const containerBlockTypes = config.settings.containerBlockTypes;
-
   Object.keys(blocks).forEach((blockId) => {
     const block = blocks[blockId];
     // check blocks from data as well since some add-ons use that
@@ -710,7 +721,7 @@ export function findBlocks(blocks, types, result = []) {
     const child_blocks = block.blocks || block.data?.blocks;
     if (types.includes(block['@type'])) {
       result.push(blockId);
-    } else if (containerBlockTypes.includes(block['@type']) || child_blocks) {
+    } else if (isBlockContainer(block)) {
       findBlocks(child_blocks, types, result);
     }
   });
@@ -718,6 +729,9 @@ export function findBlocks(blocks, types, result = []) {
   return result;
 }
 
+/**
+ * Build a block's hierarchy that the order tab can understand and uses
+ */
 export const getBlocksHierarchy = (properties) => {
   const blocksFieldName = getBlocksFieldname(properties);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(properties);
@@ -725,10 +739,9 @@ export const getBlocksHierarchy = (properties) => {
     id: n,
     title: properties[blocksFieldName][n]?.['@type'],
     data: properties[blocksFieldName][n],
-    children:
-      properties[blocksFieldName][n]?.['@type'] === 'gridBlock'
-        ? getBlocksHierarchy(properties[blocksFieldName][n])
-        : [],
+    children: isBlockContainer(properties[blocksFieldName][n])
+      ? getBlocksHierarchy(properties[blocksFieldName][n])
+      : [],
   }));
 };
 

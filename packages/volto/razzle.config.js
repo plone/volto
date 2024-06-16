@@ -168,7 +168,13 @@ const defaultModify = ({
           files.forEach((file) => {
             const sourcePath = path.join(sourceDir, file);
             const targetPath = path.join(targetDir, file);
-            fs.copyFileSync(sourcePath, targetPath);
+            const isDirectory = fs.statSync(sourcePath).isDirectory();
+            if (isDirectory) {
+              fs.mkdirSync(targetPath, { recursive: true });
+              mergeDirectories(sourcePath, targetPath);
+            } else {
+              fs.copyFileSync(sourcePath, targetPath);
+            }
           });
         };
 
