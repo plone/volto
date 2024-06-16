@@ -124,7 +124,7 @@ ci-acceptance-backend-start: ## Start backend acceptance server in headless mode
 	# docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e ADDONS='$(KGS) $(TESTING_ADDONS)' -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors $(DOCKER_IMAGE) ./bin/robot-server plone.app.robotframework.testing.VOLTO_ROBOT_TESTING
 
 .PHONY: acceptance-frontend-prod-start
-acceptance-frontend-prod-start: ## Start acceptance frontend in production mode
+acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode
 	RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod
 
 .PHONY: acceptance-test
@@ -136,53 +136,53 @@ ci-acceptance-test: ## Run cypress tests in headless mode for CI
 	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress run --config specPattern='cypress/tests/core/**/*.{js,jsx,ts,tsx}'
 
 .PHONY: ci-acceptance-test-run-all
-ci-acceptance-test-runall: ## Run in one command the backend, frontend and the cypress tests in headless mode for CI
+ci-acceptance-test-runall: ## With a single command, start both the acceptance frontend and backend acceptance server, and run Cypress tests in headless mode
 	$(NODEBIN)/start-test "make ci-acceptance-backend-start" http-get://127.0.0.1:55001/plone "make acceptance-frontend-prod-start" http://127.0.0.1:3000 "make ci-acceptance-test"
 
 ######### Seamless Core Acceptance tests
 
-.PHONY: seamless-acceptance-frontend-prod-start
-seamless-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for Seamless tests
+.PHONY: deployment-acceptance-frontend-prod-start
+deployment-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for Seamless tests
 	pnpm build && pnpm start:prod
 
-.PHONY: seamless-acceptance-test
-seamless-acceptance-test: ## Start Cypress in interactive mode for Seamless tests
+.PHONY: deployment-acceptance-test
+deployment-acceptance-test: ## Start Cypress in interactive mode for tests in deployment
 	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config baseUrl='http://localhost'
 
-.PHONY: seamless-acceptance-webserver-start
-seamless-acceptance-webserver-start: ## Start the Seamless reverse proxy (traefik) in port 80
+.PHONY: deployment-acceptance-webserver-start
+deployment-acceptance-webserver-start: ## Start the reverse proxy (Traefik) in port 80 for deployment
 	cd cypress/docker && docker-compose -f seamless.yml up
 
-.PHONY: seamless-ci-acceptance-test-runall
-seamless-ci-acceptance-test-runall: ## Run in one command the backend, frontend, and the cypress tests in headless mode for CI for Seamless tests
-	$(NODEBIN)/start-test "make acceptance-backend-start" http-get://127.0.0.1:55001/plone "make seamless-acceptance-frontend-prod-start" http://127.0.0.1:3000 "make ci-acceptance-test"
+.PHONY: deployment-ci-acceptance-test-runall
+deployment-ci-acceptance-test-runall: ## Run in one command the backend, frontend, and the cypress tests in headless mode for CI for deployment
+	$(NODEBIN)/start-test "make acceptance-backend-start" http-get://127.0.0.1:55001/plone "make deployment-acceptance-frontend-prod-start" http://127.0.0.1:3000 "make ci-acceptance-test"
 
 ######### Project Acceptance tests
 
 .PHONY: project-acceptance-frontend-prod-start
-project-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for Project tests
+project-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for project tests
 	(cd ../../my-volto-app && RAZZLE_API_PATH=http://127.0.0.1:55001/plone yarn build && yarn start:prod)
 
 ######### CoreSandbox Acceptance tests
 
 .PHONY: coresandbox-acceptance-backend-start
-coresandbox-acceptance-backend-start: ## Start backend acceptance server for CoreSandbox tests
+coresandbox-acceptance-backend-start: ## Start backend acceptance server for core sandbox tests
 	docker run -i --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage,plone.volto:coresandbox -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors,plone.volto.coresandbox $(DOCKER_IMAGE_ACCEPTANCE)
 
 .PHONY: coresandbox-acceptance-frontend-prod-start
-coresandbox-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for Coresandbox tests
+coresandbox-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for core sandbox tests
 	ADDONS=@plone/volto-coresandbox RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod
 
 .PHONY: coresandbox-acceptance-frontend-dev-start
-coresandbox-acceptance-frontend-dev-start: build-deps ## Start acceptance frontend in development mode for Coresandbox tests
+coresandbox-acceptance-frontend-dev-start: build-deps ## Start acceptance frontend in development mode for core sandbox tests
 	ADDONS=@plone/volto-coresandbox RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm start
 
 .PHONY: coresandbox-acceptance-test
-coresandbox-acceptance-test: ## Start Cypress in interactive mode for CoreSandbox tests
+coresandbox-acceptance-test: ## Start Cypress in interactive mode for core sandbox tests
 	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config specPattern='cypress/tests/coresandbox/**/*.{js,jsx,ts,tsx}'
 
 .PHONY: coresandbox-ci-acceptance-test
-coresandbox-ci-acceptance-test: ## Run cypress tests in headless mode for CI for CoreSandbox tests
+coresandbox-ci-acceptance-test: ## Run Cypress tests in headless mode for CI for core sandbox tests
 	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress run --config specPattern='cypress/tests/coresandbox/**/*.{js,jsx,ts,tsx}'
 
 .PHONY: coresandbox-ci-acceptance-test-runall
@@ -192,67 +192,67 @@ coresandbox-ci-acceptance-test-runall: ## Run in one command the backend, fronte
 ######### Multilingual Acceptance tests
 
 .PHONY: multilingual-acceptance-backend-start
-multilingual-acceptance-backend-start: ## Start backend acceptance server for Multilingual tests
+multilingual-acceptance-backend-start: ## Start backend acceptance server for multilingual tests
 	docker run -i --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:multilingual $(DOCKER_IMAGE_ACCEPTANCE)
 
 .PHONY: multilingual-acceptance-frontend-prod-start
-multilingual-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for Multilingual tests
+multilingual-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for multilingual tests
 	ADDONS=@plone/volto-coresandbox:multilingualFixture RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod
 
 .PHONY: multilingual-acceptance-test
-multilingual-acceptance-test: ## Start Cypress in interactive mode for Multilingual tests
+multilingual-acceptance-test: ## Start Cypress in interactive mode for multilingual tests
 	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config specPattern='cypress/tests/multilingual/**/*.{js,jsx,ts,tsx}'
 
 .PHONY: multilingual-ci-acceptance-test
-multilingual-ci-acceptance-test: ## Run cypress tests in headless mode for CI for Multilingual tests
+multilingual-ci-acceptance-test: ## Run Cypress tests in headless mode for CI for multilingual tests
 	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress run --config specPattern='cypress/tests/multilingual/**/*.{js,jsx,ts,tsx}'
 
 .PHONY: multilingual-ci-acceptance-test-runall
-multilingual-ci-acceptance-test-runall: ## Run in one command the backend, frontend, and the cypress tests in headless mode for CI for Multilingual tests
+multilingual-ci-acceptance-test-runall: ## Run in one command the backend, frontend, and the Cypress tests in headless mode for CI for multilingual tests
 	$(NODEBIN)/start-test "make multilingual-acceptance-backend-start" http-get://127.0.0.1:55001/plone "make multilingual-acceptance-frontend-prod-start" http://127.0.0.1:3000 "make multilingual-ci-acceptance-test"
 
 ######### Seamless Multilingual Acceptance tests
 
-.PHONY: seamless-multilingual-acceptance-backend-start
-seamless-multilingual-acceptance-backend-start: ## Start backend acceptance server for Seamless Multilingual tests
+.PHONY: deployment-multilingual-acceptance-backend-start
+deployment-multilingual-acceptance-backend-start: ## Start backend acceptance server for multilingual tests for deployment
 	docker run -i --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:multilingual $(DOCKER_IMAGE_ACCEPTANCE)
 
-.PHONY: seamless-multilingual-acceptance-frontend-prod-start
-seamless-multilingual-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for Seamless Multilingual tests
+.PHONY: deployment-multilingual-acceptance-frontend-prod-start
+deployment-multilingual-acceptance-frontend-prod-start: build-deps ##Start acceptance frontend in production mode for multilingual tests for deployment
 	ADDONS=@plone/volto-coresandbox:multilingualFixture pnpm build && pnpm start:prod
 
-.PHONY: seamless-multilingual-acceptance-test
-seamless-multilingual-acceptance-test: ## Start Cypress in interactive mode for Seamless Multilingual tests
+.PHONY: deployment-multilingual-acceptance-test
+deployment-multilingual-acceptance-test: ## Start Cypress in interactive mode for multilingual tests for deployment
 	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config baseUrl='http://localhost',specPattern='cypress/tests/multilingual/**/*.{js,jsx,ts,tsx}'
 
-.PHONY: seamless-multilingual-ci-acceptance-test
-seamless-multilingual-ci-acceptance-test: ## Run cypress tests in headless mode for CI for Seamless Multilingual tests
+.PHONY: deployment-multilingual-ci-acceptance-test
+deployment-multilingual-ci-acceptance-test: ## Run Cypress tests in headless mode for CI for multilingual tests for deployment
 	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress run --config specPattern='cypress/tests/multilingual/**/*.{js,jsx,ts,tsx}'
 
-.PHONY: seamless-multilingual-ci-acceptance-test-runall
-seamless-multilingual-ci-acceptance-test-runall: ## Run in one command the backend, frontend, and the cypress tests in headless mode for CI for Seamless Multilingual tests
-	$(NODEBIN)/start-test "make seamless-multilingual-acceptance-backend-start" http-get://127.0.0.1:55001/plone "make seamless-multilingual-acceptance-frontend-prod-start" http://127.0.0.1:3000 "make seamless-multilingual-ci-acceptance-test"
+.PHONY: deployment-multilingual-ci-acceptance-test-runall
+deployment-multilingual-ci-acceptance-test-runall: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for multilingual tests for deployment
+	$(NODEBIN)/start-test "make deployment-multilingual-acceptance-backend-start" http-get://127.0.0.1:55001/plone "make deployment-multilingual-acceptance-frontend-prod-start" http://127.0.0.1:3000 "make deployment-multilingual-ci-acceptance-test"
 
 ######### WorkingCopy Acceptance tests
 
 .PHONY: workingcopy-acceptance-backend-start
-workingcopy-acceptance-backend-start: ## Start backend acceptance server for WorkingCopy tests
+workingcopy-acceptance-backend-start: ## Start backend acceptance server for working copy tests
 	docker run -i --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.app.iterate:default,plone.volto:default-homepage $(DOCKER_IMAGE_ACCEPTANCE)
 
 .PHONY: workingcopy-acceptance-frontend-prod-start
-workingcopy-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for WorkingCopy tests
+workingcopy-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for working copy tests
 	ADDONS=@plone/volto-coresandbox:workingCopyFixture RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod
 
 .PHONY: workingcopy-acceptance-test
-workingcopy-acceptance-test: ## Start Cypress in interactive mode for WorkingCopy tests
+workingcopy-acceptance-test: ## Start Cypress in interactive mode for working copy tests
 	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config specPattern='cypress/tests/workingCopy/**/*.{js,jsx,ts,tsx}'
 
 .PHONY: workingcopy-ci-acceptance-test
-workingcopy-ci-acceptance-test: ## Run cypress tests in headless mode for CI for WorkingCopy tests
+workingcopy-ci-acceptance-test: ## Run Cypress tests in headless mode for CI for working copy tests
 	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress run --config specPattern='cypress/tests/workingCopy/**/*.{js,jsx,ts,tsx}'
 
 .PHONY: workingcopy-ci-acceptance-test-runall
-workingcopy-ci-acceptance-test-runall: ## Run in one command the backend, frontend, and the cypress tests in headless mode for CI for WorkingCopy tests
+workingcopy-ci-acceptance-test-runall: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for working copy tests
 	$(NODEBIN)/start-test "make workingcopy-acceptance-backend-start" http-get://127.0.0.1:55001/plone "make workingcopy-acceptance-frontend-prod-start" http://127.0.0.1:3000 "make workingcopy-ci-acceptance-test"
 
 ######### Guillotina Acceptance tests
@@ -270,11 +270,11 @@ guillotina-acceptance-test: ## Start Cypress in interactive mode for Guillotina 
 	NODE_ENV=production CYPRESS_API=guillotina $(NODEBIN)/cypress open --config specPattern='cypress/tests/guillotina/**/*.{js,jsx,ts,tsx}'
 
 .PHONY: guillotina-ci-acceptance-test
-guillotina-ci-acceptance-test: ## Run cypress tests in headless mode for CI for Guillotina tests
+guillotina-ci-acceptance-test: ## Run Cypress tests in headless mode for CI for Guillotina tests
 	NODE_ENV=production CYPRESS_API=guillotina $(NODEBIN)/cypress run --config specPattern='cypress/tests/guillotina/**/*.{js,jsx,ts,tsx}'
 
 .PHONY: guillotina-ci-acceptance-test-runall
-guillotina-ci-acceptance-test-runall: ## Run in one command the backend, frontend, and the cypress tests in headless mode for CI for Guillotina tests
+guillotina-ci-acceptance-test-runall: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for Guillotina tests
 	$(NODEBIN)/start-test "make guillotina-acceptance-backend-start" http-get://127.0.0.1:8081 "make guillotina-acceptance-frontend-prod-start" http://127.0.0.1:3000 "make guillotina-ci-acceptance-test"
 
 ######### Plone 5 Acceptance tests
