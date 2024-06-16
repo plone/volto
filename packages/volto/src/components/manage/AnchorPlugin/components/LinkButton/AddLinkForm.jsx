@@ -34,6 +34,18 @@ const messages = defineMessages({
     id: 'Enter URL or select an item',
     defaultMessage: 'Enter URL or select an item',
   },
+  clear: {
+    id: 'Clear',
+    defaultMessage: 'Clear',
+  },
+  openObjectBrowser: {
+    id: 'Open object browser',
+    defaultMessage: 'Open object browser',
+  },
+  submit: {
+    id: 'Submit',
+    defaultMessage: 'Submit',
+  },
 });
 
 /**
@@ -263,6 +275,7 @@ class AddLinkForm extends Component {
                   <Button
                     basic
                     className="cancel"
+                    aria-label={this.props.intl.formatMessage(messages.clear)}
                     onClick={(e) => {
                       e.preventDefault();
                       e.stopPropagation();
@@ -277,6 +290,9 @@ class AddLinkForm extends Component {
                   <Button
                     basic
                     icon
+                    aria-label={this.props.intl.formatMessage(
+                      messages.openObjectBrowser,
+                    )}
                     onClick={(e) => {
                       e.preventDefault();
                       e.stopPropagation();
@@ -299,6 +315,7 @@ class AddLinkForm extends Component {
                   basic
                   primary
                   disabled={!value.length > 0}
+                  aria-label={this.props.intl.formatMessage(messages.submit)}
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
