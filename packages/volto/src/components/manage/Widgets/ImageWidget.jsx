@@ -195,7 +195,7 @@ const UnconnectedImageInput = (props) => {
                   {hideObjectBrowserPicker === false && (
                     <Button.Group>
                       <Button
-                        title={intl.formatMessage(messages.pickAnImage)}
+                        aria-label={intl.formatMessage(messages.pickAnImage)}
                         icon
                         basic
                         onClick={(e) => {
@@ -224,7 +224,7 @@ const UnconnectedImageInput = (props) => {
                   {restrictFileUpload === false && (
                     <Button.Group>
                       <Button
-                        title={intl.formatMessage(messages.uploadAnImage)}
+                        aria-label={intl.formatMessage(messages.uploadAnImage)}
                         icon
                         basic
                         compact
@@ -250,7 +250,7 @@ const UnconnectedImageInput = (props) => {
                       <Button
                         icon
                         basic
-                        title={intl.formatMessage(messages.linkAnImage)}
+                        aria-label={intl.formatMessage(messages.linkAnImage)}
                         onClick={(e) => {
                           !props.selected && onFocus && onFocus();
                           linkEditor.show();
