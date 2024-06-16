@@ -42,7 +42,7 @@ YELLOW=`tput setaf 3`
 # Top-level targets
 
 .PHONY: all
-all: build
+all: help
 
 # Add the following 'help' target to your Makefile
 # And add help text after each target name starting with '\#\#'
@@ -51,52 +51,33 @@ help: ## This help message
 	@echo -e "$$(grep -hE '^\S+:.*##' $(MAKEFILE_LIST) | sed -e 's/:.*##\s*/:/' -e 's/^\(.\+\):\(.*\)/\\x1b[36m\1\\x1b[m:\2/' | column -c2 -t -s :)"
 
 .PHONY: start
-# Run both the back-end and the front end
-start:
-	$(MAKE) -j 2 start-backend start-frontend
-
-.PHONY: start-frontend
-start-frontend:
+start: ## Starts Volto, allowing reloading of the add-on during development
 	pnpm start
 
-.PHONY: start-backend
-start-backend: ## Start Plone Backend
+.PHONY: backend-local-start
+backend-local-start: ## Start local Plone backend
 	$(MAKE) -C "./api/" start
 
-# TODO: Review release commands for all packages
-# Use TurboRepo
-
 .PHONY: build
-build:
-	make build-backend
-	make build-frontend
+build: ## Build a production bundle for distribution
+	$(MAKE) -C "./packages/volto/" build
 
-.PHONY: build-frontend
-build-frontend:
-	$(MAKE) -C "./packages/volto/" build-frontend
-
-.PHONY: build-backend
-build-backend:  ## Build Plone 5.2
+.PHONY: backend-local-build
+backend-local-build:  ## Build local Plone backend
 	$(MAKE) -C "./api/" build
 
 .PHONY: test
-test:
-	$(MAKE) -C "./api/" test
-
-bin/python:
-	python3 -m venv . || virtualenv --clear --python=python3 .
-	bin/python -m pip install --upgrade pip
-	@echo "Python environment created."
-	bin/pip install -r requirements-docs.txt
-	@echo "Requirements installed."
+test: ## Run unit tests
+	$(MAKE) -C "./packages/volto/" test
 
 .PHONY: clean
-clean:
+clean: ## Clean development environment
 	$(MAKE) -C "./api/" clean
+	rm -rf node_modules
 	find ./packages -name node_modules -exec rm -rf {} \;
 
-.PHONY: setup
-setup:
+.PHONY: install
+install: build-deps ## Set up development environment
 	# Setup ESlint for VSCode
 	node packages/scripts/vscodesettings.js
 
@@ -142,8 +123,8 @@ docs-vale: bin/python docs-news  ## Install (once) and run Vale style, grammar, 
 	@echo
 	@echo "Vale is finished; look for any errors in the above output."
 
-.PHONY: rtd-pr-preview
-rtd-pr-preview:
+.PHONY: docs-rtd-pr-preview
+docs-rtd-pr-preview: ## Build previews of pull requests that have documentation changes on Read the Docs via CI
 	pip install -r requirements-docs.txt
 	cd $(DOCS_DIR) && sphinx-build -b html $(ALLSPHINXOPTS) ${READTHEDOCS_OUTPUT}/html/
 
@@ -152,12 +133,8 @@ docs-test: docs-clean docs-linkcheckbroken docs-vale  ## Clean docs build, then 
 
 ##### Build
 
-.PHONY: patches
-patches:
-	(cd packages/volto && /bin/bash patches/patchit.sh > /dev/null 2>&1 ||true)
-
 .PHONY: cypress-install
-cypress-install:
+cypress-install: ## Install Cypress for acceptance tests
 	$(NODEBIN)/cypress install
 
 packages/registry/dist: packages/registry/src
@@ -167,7 +144,7 @@ packages/components/dist: packages/components/src
 	pnpm build:components
 
 .PHONY: build-deps
-build-deps: packages/registry/dist
+build-deps: packages/registry/dist ## Build dependencies
 
 ## Storybook
 
@@ -176,41 +153,36 @@ storybook-start: ## Start Storybook server on port 6006
 	$(MAKE) -C "./packages/volto/" storybook-start
 
 .PHONY: storybook-build
-storybook-build:
-	pnpm build:registry
-	(cd packages/volto && pnpm build-storybook -o ../../docs/_build/html/storybook)
+storybook-build: ## Build Storybook
+	$(MAKE) -C "./packages/volto/" storybook-build
 
 ##### Release
 
-.PHONY: corepackagebump
-corepackagebump:
-	node $(SCRIPTSPACKAGE)/corepackagebump.js packages/volto-slate $(VERSION)
-
-.PHONY: copyreleasenotestodocs
-copyreleasenotestodocs:
+.PHONY: release-notes-copy-to-docs
+release-notes-copy-to-docs: ## Copy release notes into documentation
 	cp CHANGELOG.md docs/source/release-notes/index.md
 	git add docs/source/release-notes/index.md
 
 ##### Docker containers
 
 .PHONY: backend-docker-start
-backend-docker-start:
+backend-docker-start: ## Starts a Docker-based backend for development
 	$(MAKE) -C "./packages/volto/" backend-docker-start
 
 .PHONY: backend-docker-detached-start
-backend-docker-detached-start:
+backend-docker-detached-start: ## Starts a Docker-based backend in detached mode (daemon)
 	docker run -d --rm --name=backend -p 8080:8080 -e SITE=Plone -e ADDONS='$(KGS)' $(DOCKER_IMAGE)
 
 .PHONY: backend-docker-detached-stop
-backend-docker-detached-stop:
+backend-docker-detached-stop: ## Stops the Docker-based backend in detached mode (daemon)
 	docker kill backend
 
 .PHONY: backend-docker-start-no-cors
-backend-docker-start-no-cors:
+backend-docker-start-no-cors: ## Stops the Docker-based backend in detached mode (daemon)
 	docker run -it --rm --name=backend -p 8080:8080 -e SITE=Plone -e ADDONS='$(KGS)' -e CORS_=true $(DOCKER_IMAGE)
 
 .PHONY: frontend-docker-start
-frontend-docker-start:
+frontend-docker-start: ## Starts a Docker-based frontend for development
 	$(MAKE) -C "./packages/volto/" frontend-docker-start
 
 ##### Acceptance tests (Cypress)

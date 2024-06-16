@@ -31,40 +31,49 @@ YELLOW=`tput setaf 3`
 # Top-level targets
 
 .PHONY: all
-all: build
+all: help
 
 # Add the following 'help' target to your Makefile
 # And add help text after each target name starting with '\#\#'
 .PHONY: help
-help: .SHELLFLAGS:=-eu -o pipefail -O inherit_errexit -c
 help: ## This help message
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+	@echo -e "$$(grep -hE '^\S+:.*##' $(MAKEFILE_LIST) | sed -e 's/:.*##\s*/:/' -e 's/^\(.\+\):\(.*\)/\\x1b[36m\1\\x1b[m:\2/' | column -c2 -t -s :)"
 
-# TODO: Review release commands for all packages
-# Use TurboRepo
+.PHONY: start
+start: ## Starts Volto, allowing reloading of the add-on during development
+	pnpm start
 
 .PHONY: build
-build:
+build: ## Build a production bundle for distribution
 	pnpm i && RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build
 
+.PHONY: test
+test: ## Run unit tests
+	pnpm test
+
 .PHONY: clean
-clean:
+clean: ## Clean development environment
 	rm -rf node_modules
 
+.PHONY: install
+install: build-deps ## Set up development environment
+	# Setup ESlint for VSCode
+	node packages/scripts/vscodesettings.js
+
 ##### Build
-.PHONY: patches
-patches:
-	/bin/bash patches/patchit.sh > /dev/null 2>&1 ||true
 
 .PHONY: cypress-install
-cypress-install:
+cypress-install: ## Install Cypress for acceptance tests
 	$(NODEBIN)/cypress install
 
+../registry/dist: ../registry/src
+	(cd ../../ && pnpm build:registry)
+
+../components/dist: ../components/src
+	(cd ../../ && pnpm build:components)
+
 .PHONY: build-deps
-build-deps:
-	@if [ ! -d $$(pwd)/../registry/dist ] || [ $$(find $$(pwd)/../registry -newer $$(pwd)/../registry/dist -print -quit) ]; then \
-		(cd ../../ && pnpm build:deps); \
-	fi
+build-deps: ../registry/dist ## Build dependencies
 
 ## Storybook
 .PHONY: storybook-start
@@ -78,19 +87,19 @@ storybook-build: build-deps ## Build Storybook
 
 ##### Release (it runs the one inside)
 
-.PHONY: copyreleasenotestodocs
-copyreleasenotestodocs:
+.PHONY: release-notes-copy-to-docs
+release-notes-copy-to-docs: ## Copy release notes into documentation
 	cp CHANGELOG.md ../../docs/source/release-notes/index.md
 	git add ../../docs/source/release-notes/index.md
 
 ##### Docker containers
 
 .PHONY: backend-docker-start
-backend-docker-start:
+backend-docker-start: ## Starts a Docker-based backend for development
 	docker run -it --rm --name=backend -p 8080:8080 -e SITE=Plone -e ADDONS='$(KGS)' $(DOCKER_IMAGE)
 
 .PHONY: frontend-docker-start
-frontend-docker-start:
+frontend-docker-start: ## Starts a Docker-based frontend for development
 	docker run -it --rm --name=volto --link backend -p 3000:3000 -e RAZZLE_INTERNAL_API_PATH=http://backend:8080/Plone -e RAZZLE_DEV_PROXY_API_PATH=http://backend:8080/Plone plone/plone-frontend:latest
 
 ##### Acceptance tests (Cypress)
