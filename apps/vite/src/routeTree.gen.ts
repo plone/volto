@@ -11,10 +11,16 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as LoginImport } from './routes/login'
 import { Route as SplatImport } from './routes/$'
 import { Route as IndexImport } from './routes/index'
 
 // Create/Update Routes
+
+const LoginRoute = LoginImport.update({
+  path: '/login',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const SplatRoute = SplatImport.update({
   path: '/$',
@@ -31,11 +37,24 @@ const IndexRoute = IndexImport.update({
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
     '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
     '/$': {
+      id: '/$'
+      path: '/$'
+      fullPath: '/$'
       preLoaderRoute: typeof SplatImport
+      parentRoute: typeof rootRoute
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginImport
       parentRoute: typeof rootRoute
     }
   }
@@ -43,6 +62,34 @@ declare module '@tanstack/react-router' {
 
 // Create and export the route tree
 
-export const routeTree = rootRoute.addChildren([IndexRoute, SplatRoute])
+export const routeTree = rootRoute.addChildren({
+  IndexRoute,
+  SplatRoute,
+  LoginRoute,
+})
 
 /* prettier-ignore-end */
+
+/* ROUTE_MANIFEST_START
+{
+  "routes": {
+    "__root__": {
+      "filePath": "__root.tsx",
+      "children": [
+        "/",
+        "/$",
+        "/login"
+      ]
+    },
+    "/": {
+      "filePath": "index.tsx"
+    },
+    "/$": {
+      "filePath": "$.tsx"
+    },
+    "/login": {
+      "filePath": "login.tsx"
+    }
+  }
+}
+ROUTE_MANIFEST_END */
