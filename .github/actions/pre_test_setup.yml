@@ -1,0 +1,50 @@
+name: pre test Setup
+
+runs:
+  using: 'composite'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # node setup
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Enable corepack
+        run: corepack enable
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v4
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Cache Cypress Binary
+        id: cache-cypress-binary
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/Cypress
+          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
+
+      - run: pnpm i
+
+      - name: Install Cypress if not in cache
+        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
+        working-directory: packages/volto
+        run: make cypress-install

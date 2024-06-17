@@ -11,43 +11,8 @@ jobs:
       matrix:
         node-version: [18.x, 20.x]
     steps:
-      - uses: actions/checkout@v4
-
-      # node setup
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Enable corepack
-        run: corepack enable
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - name: Cache Cypress Binary
-        id: cache-cypress-binary
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
-
-      - run: pnpm i
-
-      - name: Install Cypress if not in cache
-        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
-        working-directory: packages/volto
-        run: make cypress-install
+      - name: Pretest-Setup
+        uses: ./.github/actions/pre_test_setup.yml
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -90,43 +55,8 @@ jobs:
       matrix:
         node-version: [18.x, 20.x]
     steps:
-      - uses: actions/checkout@v4
-
-      # node setup
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Enable corepack
-        run: corepack enable
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - name: Cache Cypress Binary
-        id: cache-cypress-binary
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
-
-      - run: pnpm i
-
-      - name: Install Cypress if not in cache
-        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
-        working-directory: packages/volto
-        run: make cypress-install
+      - name: Pretest-Setup
+        uses: ./.github/actions/pre_test_setup.yml
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -169,43 +99,8 @@ jobs:
       matrix:
         node-version: [18.x, 20.x]
     steps:
-      - uses: actions/checkout@v4
-
-      # node setup
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Enable corepack
-        run: corepack enable
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - name: Cache Cypress Binary
-        id: cache-cypress-binary
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
-
-      - run: pnpm i
-
-      - name: Install Cypress if not in cache
-        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
-        working-directory: packages/volto
-        run: make cypress-install
+      - name: Pretest-Setup
+        uses: ./.github/actions/pre_test_setup.yml
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -248,43 +143,8 @@ jobs:
       matrix:
         node-version: [18.x, 20.x]
     steps:
-      - uses: actions/checkout@v4
-
-      # node setup
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Enable corepack
-        run: corepack enable
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - name: Cache Cypress Binary
-        id: cache-cypress-binary
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
-
-      - run: pnpm i
-
-      - name: Install Cypress if not in cache
-        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
-        working-directory: packages/volto
-        run: make cypress-install
+      - name: Pretest-Setup
+        uses: ./.github/actions/pre_test_setup.yml
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -327,43 +187,8 @@ jobs:
       matrix:
         node-version: [18.x, 20.x]
     steps:
-      - uses: actions/checkout@v4
-
-      # node setup
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Enable corepack
-        run: corepack enable
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - name: Cache Cypress Binary
-        id: cache-cypress-binary
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
-
-      - run: pnpm i
-
-      - name: Install Cypress if not in cache
-        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
-        working-directory: packages/volto
-        run: make cypress-install
+      - name: Pretest-Setup
+        uses: ./.github/actions/pre_test_setup.yml
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -406,43 +231,8 @@ jobs:
       matrix:
         node-version: [18.x, 20.x]
     steps:
-      - uses: actions/checkout@v4
-
-      # node setup
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Enable corepack
-        run: corepack enable
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - name: Cache Cypress Binary
-        id: cache-cypress-binary
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
-
-      - run: pnpm i
-
-      - name: Install Cypress if not in cache
-        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
-        working-directory: packages/volto
-        run: make cypress-install
+      - name: Pretest-Setup
+        uses: ./.github/actions/pre_test_setup.yml
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -484,43 +274,8 @@ jobs:
       matrix:
         node-version: [18.x]
     steps:
-      - uses: actions/checkout@v4
-
-      # node setup
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Enable corepack
-        run: corepack enable
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - name: Cache Cypress Binary
-        id: cache-cypress-binary
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
-
-      - run: pnpm i
-
-      - name: Install Cypress if not in cache
-        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
-        working-directory: packages/volto
-        run: make cypress-install
+      - name: Pretest-Setup
+        uses: ./.github/actions/pre_test_setup.yml
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -563,43 +318,8 @@ jobs:
       matrix:
         node-version: [18.x]
     steps:
-      - uses: actions/checkout@v4
-
-      # node setup
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Enable corepack
-        run: corepack enable
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - name: Cache Cypress Binary
-        id: cache-cypress-binary
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
-
-      - run: pnpm i
-
-      - name: Install Cypress if not in cache
-        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
-        working-directory: packages/volto
-        run: make cypress-install
+      - name: Pretest-Setup
+        uses: ./.github/actions/pre_test_setup.yml
 
       - name: Cypress Coresandbox Acceptance tests
         uses: cypress-io/github-action@v6
@@ -710,43 +430,8 @@ jobs:
       matrix:
         node-version: [18.x]
     steps:
-      - uses: actions/checkout@v4
-
-      # node setup
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Enable corepack
-        run: corepack enable
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - name: Cache Cypress Binary
-        id: cache-cypress-binary
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
-
-      - run: pnpm i
-
-      - name: Install Cypress if not in cache
-        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
-        working-directory: packages/volto
-        run: make cypress-install
+      - name: Pretest-Setup
+        uses: ./.github/actions/pre_test_setup.yml
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -790,43 +475,8 @@ jobs:
         node-version: [18.x]
         # python-version: [3.7]
     steps:
-      - uses: actions/checkout@v4
-
-      # node setup
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Enable corepack
-        run: corepack enable
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - name: Cache Cypress Binary
-        id: cache-cypress-binary
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
-
-      - run: pnpm i
-
-      - name: Install Cypress if not in cache
-        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
-        working-directory: packages/volto
-        run: make cypress-install
+      - name: Pretest-Setup
+        uses: ./.github/actions/pre_test_setup.yml
 
       # # python setup (temporary, while p.a.iterate changes are in a PR)
       # - name: Set up Python ${{ matrix.python-version }}
@@ -1035,43 +685,8 @@ jobs:
       matrix:
         node-version: [18.x]
     steps:
-      - uses: actions/checkout@v4
-
-      # node setup
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Enable corepack
-        run: corepack enable
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - name: Cache Cypress Binary
-        id: cache-cypress-binary
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
-
-      - run: pnpm i
-
-      - name: Install Cypress if not in cache
-        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
-        working-directory: packages/volto
-        run: make cypress-install
+      - name: Pretest-Setup
+        uses: ./.github/actions/pre_test_setup.yml
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -1116,43 +731,8 @@ jobs:
       matrix:
         node-version: [18.x]
     steps:
-      - uses: actions/checkout@v4
-
-      # node setup
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Enable corepack
-        run: corepack enable
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - name: Cache Cypress Binary
-        id: cache-cypress-binary
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
-
-      - run: pnpm i
-
-      - name: Install Cypress if not in cache
-        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
-        working-directory: packages/volto
-        run: make cypress-install
+      - name: Pretest-Setup
+        uses: ./.github/actions/pre_test_setup.yml
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
