@@ -165,7 +165,14 @@ export const tryParseJSON = (requestItem) => {
     try {
       resultObj = JSON.parse(requestItem.replace(/'/g, '"'));
     } catch (e) {
-      resultObj = null;
+      try {
+        // Treats strings like: `'String "double quotes"'`
+        resultObj = JSON.parse(
+          requestItem.replace(/"/g, '\\"').replace(/'/g, '"'),
+        );
+      } catch (e) {
+        resultObj = null;
+      }
     }
   }
   return resultObj;
@@ -398,4 +405,14 @@ export const validateFileUploadSize = (file, intlFunc) => {
     );
   }
   return isValid;
+};
+
+/**
+ * Extract invariant errors given an array of errors.
+ * @param {Array} erros
+ */
+export const extractInvariantErrors = (erros) => {
+  return erros
+    .filter((errorItem) => !('field' in errorItem))
+    .map((errorItem) => errorItem['message']);
 };
