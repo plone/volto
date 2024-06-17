@@ -1,7 +1,10 @@
 import { Login } from '@plone/types';
 import { apiRequest, ApiRequestParams } from '../../API';
 import { z } from 'zod';
-import { PloneClientConfigSchema } from '../../validation/config';
+import {
+  PloneClientConfig,
+  PloneClientConfigSchema,
+} from '../../validation/config';
 
 export const loginArgsSchema = z.object({
   username: z.string(),
@@ -32,7 +35,8 @@ export const login = ({
   return apiRequest('post', '/@login', options);
 };
 
-export const loginQuery = ({ username, password, config }: LoginArgs) => ({
-  queryKey: [username, 'login'],
-  queryFn: () => login({ username, password, config }),
+export const loginMutation = ({ config }: { config: PloneClientConfig }) => ({
+  mutationKey: ['login'],
+  mutationFn: ({ username, password }: Omit<LoginArgs, 'config'>) =>
+    login({ username, password, config }),
 });

@@ -1,10 +1,11 @@
+import { Location } from 'history';
 import type { Content } from '../content';
 
 export type SlotPredicate = (args: any) => boolean;
 
 export type GetSlotArgs = {
   content: Content;
-  pathname: string;
+  location: Location;
   navRoot?: Content;
 };
 

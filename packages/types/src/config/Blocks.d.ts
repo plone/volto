@@ -118,21 +118,14 @@ export interface BlockConfigBase {
   blocksConfig?: Partial<BlocksConfigData>;
 }
 
-export type BlockExtension = (
-  | {
-      id: string;
-      isDefault: true;
-      title: string;
-    }
-  | {
-      id: string;
-      title: string;
-    }
-) & {
+export interface BlockExtension {
+  id: string;
+  isDefault?: boolean;
+  title: string;
   template?: React.ComponentType<any>;
   render?: React.ComponentType<any>;
   fullobjects?: boolean;
-};
+}
 
 export interface SlateBlock extends BlockConfigBase {
   /**

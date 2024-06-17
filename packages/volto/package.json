@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "18.0.0-alpha.30",
+  "version": "18.0.0-alpha.35",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -281,7 +281,11 @@
     "@babel/plugin-syntax-export-namespace-from": "7.8.3",
     "@babel/runtime": "7.20.6",
     "@babel/types": "7.20.5",
+    "@fiverr/afterbuild-webpack-plugin": "^1.0.0",
     "@jest/globals": "^29.7.0",
+    "@dnd-kit/core": "6.0.8",
+    "@dnd-kit/sortable": "7.0.2",
+    "@dnd-kit/utilities": "3.2.2",
     "@loadable/babel-plugin": "5.13.2",
     "@loadable/webpack-plugin": "5.15.2",
     "@plone/types": "workspace:*",
@@ -300,6 +304,7 @@
     "@testing-library/jest-dom": "6.4.2",
     "@testing-library/react": "14.2.0",
     "@testing-library/react-hooks": "8.0.1",
+    "@types/history": "^4.7.11",
     "@types/jest": "^29.5.8",
     "@types/loadable__component": "^5.13.9",
     "@types/lodash": "^4.14.201",

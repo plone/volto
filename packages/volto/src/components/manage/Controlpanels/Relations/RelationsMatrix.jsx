@@ -414,7 +414,7 @@ const RelationsMatrix = (props) => {
                           <Popup
                             trigger={
                               <a
-                                href="https://6.docs.plone.org/volto/recipes/widget.html#restricting-potential-targets"
+                                href="https://6.docs.plone.org/volto/development/widget.html#widget-relation-field-label"
                                 target="_blank"
                                 rel="noopener noreferrer"
                               >

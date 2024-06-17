@@ -3,14 +3,12 @@ import Api from './Api';
 
 jest.mock('superagent', () => ({
   get: jest.fn((url) => ({
-    redirects: jest.fn(() => ({
-      url,
-      query: jest.fn(),
-      set: jest.fn(),
-      type: jest.fn(),
-      send: jest.fn(),
-      end: jest.fn(),
-    })),
+    url,
+    query: jest.fn(),
+    set: jest.fn(),
+    type: jest.fn(),
+    send: jest.fn(),
+    end: jest.fn(),
   })),
 }));
 
@@ -20,6 +18,7 @@ beforeAll(() => {
 
 const api = new Api();
 const { settings } = config;
+global.__SERVER__ = true; // eslint-disable-line no-underscore-dangle
 
 test('get request', () => {});
 
