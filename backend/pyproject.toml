@@ -1,0 +1,170 @@
+# Generated from:
+# https://github.com/plone/meta/tree/main/config/default
+# See the inline comments on how to expand/tweak this configuration file
+[build-system]
+requires = ["setuptools>=68.2"]
+
+[tool.towncrier]
+directory = "news/"
+filename = "CHANGES.md"
+start_string = "<!-- towncrier release notes start -->\n"
+title_format = "## {version} ({project_date})"
+template = "news/.changelog_template.jinja"
+underlines = ["", "", ""]
+
+[[tool.towncrier.type]]
+directory = "breaking"
+name = "Breaking changes:"
+showcontent = true
+
+[[tool.towncrier.type]]
+directory = "feature"
+name = "New features:"
+showcontent = true
+
+[[tool.towncrier.type]]
+directory = "bugfix"
+name = "Bug fixes:"
+showcontent = true
+
+[[tool.towncrier.type]]
+directory = "internal"
+name = "Internal:"
+showcontent = true
+
+[[tool.towncrier.type]]
+directory = "documentation"
+name = "Documentation:"
+showcontent = true
+
+[[tool.towncrier.type]]
+directory = "tests"
+name = "Tests"
+showcontent = true
+
+##
+# Add extra configuration options in .meta.toml:
+#  [pyproject]
+#  towncrier_extra_lines = """
+#  extra_configuration
+#  """
+##
+
+[tool.isort]
+profile = "plone"
+
+##
+# Add extra configuration options in .meta.toml:
+#  [pyproject]
+#  isort_extra_lines = """
+#  extra_configuration
+#  """
+##
+
+[tool.black]
+target-version = ["py38"]
+
+##
+# Add extra configuration options in .meta.toml:
+#  [pyproject]
+#  black_extra_lines = """
+#  extra_configuration
+#  """
+##
+
+[tool.codespell]
+ignore-words-list = "discreet,vew"
+skip = "*.po,*.min.js"
+##
+# Add extra configuration options in .meta.toml:
+#  [pyproject]
+#  codespell_ignores = "foo,bar"
+#  codespell_skip = "*.po,*.map,package-lock.json"
+##
+
+[tool.dependencychecker]
+Zope = [
+  # Zope own provided namespaces
+  'App', 'OFS', 'Products.Five', 'Products.OFSP', 'Products.PageTemplates',
+  'Products.SiteAccess', 'Shared', 'Testing', 'ZPublisher', 'ZTUtils',
+  'Zope2', 'webdav', 'zmi',
+  # ExtensionClass own provided namespaces
+  'ExtensionClass', 'ComputedAttribute', 'MethodObject',
+  # Zope dependencies
+  'AccessControl', 'Acquisition', 'AuthEncoding', 'beautifulsoup4', 'BTrees',
+  'cffi', 'Chameleon', 'DateTime', 'DocumentTemplate',
+  'MultiMapping', 'multipart', 'PasteDeploy', 'Persistence', 'persistent',
+  'pycparser', 'python-gettext', 'pytz', 'RestrictedPython', 'roman',
+  'soupsieve', 'transaction', 'waitress', 'WebOb', 'WebTest', 'WSGIProxy2',
+  'z3c.pt', 'zc.lockfile', 'ZConfig', 'zExceptions', 'ZODB', 'zodbpickle',
+  'zope.annotation', 'zope.browser', 'zope.browsermenu', 'zope.browserpage',
+  'zope.browserresource', 'zope.cachedescriptors', 'zope.component',
+  'zope.configuration', 'zope.container', 'zope.contentprovider',
+  'zope.contenttype', 'zope.datetime', 'zope.deferredimport',
+  'zope.deprecation', 'zope.dottedname', 'zope.event', 'zope.exceptions',
+  'zope.filerepresentation', 'zope.globalrequest', 'zope.hookable',
+  'zope.i18n', 'zope.i18nmessageid', 'zope.interface', 'zope.lifecycleevent',
+  'zope.location', 'zope.pagetemplate', 'zope.processlifetime', 'zope.proxy',
+  'zope.ptresource', 'zope.publisher', 'zope.schema', 'zope.security',
+  'zope.sequencesort', 'zope.site', 'zope.size', 'zope.structuredtext',
+  'zope.tal', 'zope.tales', 'zope.testbrowser', 'zope.testing',
+  'zope.traversing', 'zope.viewlet'
+]
+'Products.CMFCore' = [
+  'docutils', 'five.localsitemanager', 'Missing', 'Products.BTreeFolder2',
+  'Products.GenericSetup', 'Products.MailHost', 'Products.PythonScripts',
+  'Products.StandardCacheManagers', 'Products.ZCatalog', 'Record',
+  'zope.sendmail', 'Zope'
+]
+'plone.base' = [
+  'plone.batching', 'plone.registry', 'plone.schema','plone.z3cform',
+  'Products.CMFCore', 'Products.CMFDynamicViewFTI',
+]
+python-dateutil = ['dateutil']
+pytest-plone = ['pytest', 'plone.testing', 'plone.app.testing']
+ignore-packages = ['plone.app.iterate', 'plone.app.upgrade', 'plone.volto', 'zestreleaser.towncrier', 'zest.releaser', 'pytest-cov']
+
+##
+# Add extra configuration options in .meta.toml:
+#  [pyproject]
+#  dependencies_ignores = "['zestreleaser.towncrier']"
+#  dependencies_mappings = [
+#    "gitpython = ['git']",
+#    "pygithub = ['github']",
+#  ]
+##
+
+[tool.check-manifest]
+ignore = [
+    ".editorconfig",
+    ".flake8",
+    ".meta.toml",
+    ".pre-commit-config.yaml",
+    "dependabot.yml",
+    "mx.ini",
+    "tox.ini",
+
+]
+
+##
+# Add extra configuration options in .meta.toml:
+#  [pyproject]
+#  check_manifest_ignores = """
+#      "*.map.js",
+#      "*.pyc",
+#  """
+#  check_manifest_extra_lines = """
+#  ignore-bad-ideas = [
+#      "some/test/file/PKG-INFO",
+#  ]
+#  """
+##
+
+
+##
+# Add extra configuration options in .meta.toml:
+#  [pyproject]
+#  extra_lines = """
+#  _your own configuration lines_
+#  """
+##

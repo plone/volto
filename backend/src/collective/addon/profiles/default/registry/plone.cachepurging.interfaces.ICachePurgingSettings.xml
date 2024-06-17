@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<registry>
+  <record name="plone.cachepurging.interfaces.ICachePurgingSettings.enabled">
+    <value>True</value>
+  </record>
+  <record name="plone.cachepurging.interfaces.ICachePurgingSettings.cachingProxies">
+    <value>
+      <element>http://purger</element>
+    </value>
+  </record>
+  <record name="plone.cachepurging.interfaces.ICachePurgingSettings.virtualHosting">
+    <value>False</value>
+  </record>
+</registry>

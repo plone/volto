@@ -1,0 +1,10 @@
+<configure xmlns="http://namespaces.zope.org/zope">
+
+  <!-- Serializers -->
+
+  <utility
+      factory=".summary.JSONSummarySerializerMetadata"
+      name="collective.addon.summary_serializer_metadata"
+      />
+
+</configure>

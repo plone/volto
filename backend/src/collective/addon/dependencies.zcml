@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configure xmlns="http://namespaces.zope.org/zope">
+  <include package="plone.restapi" />
+  <include package="plone.volto" />
+  <include package="plone.app.caching" />
+</configure>

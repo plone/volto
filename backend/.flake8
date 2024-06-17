@@ -1,0 +1,22 @@
+# Generated from:
+# https://github.com/plone/meta/tree/master/config/default
+# See the inline comments on how to expand/tweak this configuration file
+[flake8]
+doctests = 1
+ignore =
+    # black takes care of line length
+    E501,
+    # black takes care of where to break lines
+    W503,
+    # black takes care of spaces within slicing (list[:])
+    E203,
+    # black takes care of spaces after commas
+    E231,
+
+##
+# Add extra configuration options in .meta.toml:
+#  [flake8]
+#  extra_lines = """
+#  _your own configuration lines_
+#  """
+##

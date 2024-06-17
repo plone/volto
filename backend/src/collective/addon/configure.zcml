@@ -1,0 +1,22 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="collective.addon"
+    >
+
+  <i18n:registerTranslations directory="locales" />
+
+  <include
+      package="Products.CMFCore"
+      file="permissions.zcml"
+      />
+
+  <include file="dependencies.zcml" />
+  <include file="profiles.zcml" />
+
+  <include package=".controlpanel" />
+  <include package=".indexers" />
+  <include package=".serializers" />
+  <include package=".vocabularies" />
+
+</configure>

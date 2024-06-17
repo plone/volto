@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+  <version>1000</version>
+  <dependencies>
+    <dependency>profile-plone.volto:default</dependency>
+    <dependency>profile-plone.app.caching:default</dependency>
+    <dependency>profile-plone.app.caching:with-caching-proxy</dependency>
+  </dependencies>
+</metadata>

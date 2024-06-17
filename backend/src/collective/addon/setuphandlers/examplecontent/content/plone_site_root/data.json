@@ -1,0 +1,267 @@
+{
+  "@id": "/Plone",
+  "@type": "Plone Site",
+  "UID": "plone_site_root",
+  "allow_discussion": null,
+  "blocks": {
+    "47c92ffe-c201-493c-97c9-a2d4e0beab69": {
+      "@type": "slate",
+      "plaintext": "Plone is a powerful content management system built on a rock-solid application stack written in the Python and JavaScript programming languages.",
+      "value": [
+        {
+          "children": [
+            {
+              "text": "Plone is a powerful content management system built on a rock-solid application stack written in the "
+            },
+            {
+              "children": [
+                {
+                  "text": "Python"
+                }
+              ],
+              "type": "em"
+            },
+            {
+              "text": " and "
+            },
+            {
+              "children": [
+                {
+                  "text": "JavaScript"
+                }
+              ],
+              "type": "em"
+            },
+            {
+              "text": " programming languages."
+            }
+          ],
+          "type": "p"
+        }
+      ]
+    },
+    "5f31e9e4-173f-4ec1-ab48-64e9e2789b76": {
+      "@type": "title"
+    },
+    "68357972-bd25-47e2-a098-c7932a923182": {
+      "@type": "image",
+      "alt": "Plone Foundation Logo",
+      "href": [
+        {
+          "@id": "https://plone.org/foundation",
+          "title": "plone.org/foundation"
+        }
+      ],
+      "image_field": "image",
+      "url": "resolveuid/a58ccead718140c1baa98d43595fc3e6"
+    },
+    "ae41d44d-c4b1-426c-acf6-2e28cb9a97a0": {
+      "@type": "slate",
+      "plaintext": "Find out more about Plone",
+      "value": [
+        {
+          "children": [
+            {
+              "text": "Find out more about Plone"
+            }
+          ],
+          "type": "h3"
+        }
+      ]
+    },
+    "d9707a27-2565-4d7d-9daa-6c61d60ce8fd": {
+      "@type": "slate",
+      "plaintext": " The features of Plone   Plone Documentation   Plone Training   Plone Community Forum   Add-ons for Plone (backend)   Add-ons for Volto (frontend) ",
+      "value": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "text": ""
+                },
+                {
+                  "children": [
+                    {
+                      "text": "The features of Plone"
+                    }
+                  ],
+                  "data": {
+                    "url": "https://plone.org/why-plone/features"
+                  },
+                  "type": "link"
+                },
+                {
+                  "text": ""
+                }
+              ],
+              "type": "li"
+            },
+            {
+              "children": [
+                {
+                  "text": ""
+                },
+                {
+                  "children": [
+                    {
+                      "text": "Plone Documentation"
+                    }
+                  ],
+                  "data": {
+                    "url": "https://docs.plone.org/"
+                  },
+                  "type": "link"
+                },
+                {
+                  "text": ""
+                }
+              ],
+              "type": "li"
+            },
+            {
+              "children": [
+                {
+                  "text": ""
+                },
+                {
+                  "children": [
+                    {
+                      "text": "Plone Training"
+                    }
+                  ],
+                  "data": {
+                    "url": "https://training.plone.org/"
+                  },
+                  "type": "link"
+                },
+                {
+                  "text": ""
+                }
+              ],
+              "type": "li"
+            },
+            {
+              "children": [
+                {
+                  "text": ""
+                },
+                {
+                  "children": [
+                    {
+                      "text": "Plone Community Forum"
+                    }
+                  ],
+                  "data": {
+                    "url": "https://community.plone.org/"
+                  },
+                  "type": "link"
+                },
+                {
+                  "text": ""
+                }
+              ],
+              "type": "li"
+            },
+            {
+              "children": [
+                {
+                  "text": ""
+                },
+                {
+                  "children": [
+                    {
+                      "text": "Add-ons for Plone (backend)"
+                    }
+                  ],
+                  "data": {
+                    "url": "https://github.com/collective/awesome-plone#readme"
+                  },
+                  "type": "link"
+                },
+                {
+                  "text": ""
+                }
+              ],
+              "type": "li"
+            },
+            {
+              "children": [
+                {
+                  "text": ""
+                },
+                {
+                  "children": [
+                    {
+                      "text": "Add-ons for Volto (frontend)"
+                    }
+                  ],
+                  "data": {
+                    "url": "https://github.com/collective/awesome-volto#readme"
+                  },
+                  "type": "link"
+                },
+                {
+                  "text": ""
+                }
+              ],
+              "type": "li"
+            }
+          ],
+          "type": "ul"
+        }
+      ]
+    },
+    "e5ace182-3746-472c-ad81-696425a2b161": {
+      "@type": "slate",
+      "plaintext": "Welcome to your new Plone site!",
+      "value": [
+        {
+          "children": [
+            {
+              "text": "Welcome to your new Plone site!"
+            }
+          ],
+          "type": "h2"
+        }
+      ]
+    }
+  },
+  "blocks_layout": {
+    "items": [
+      "5f31e9e4-173f-4ec1-ab48-64e9e2789b76",
+      "e5ace182-3746-472c-ad81-696425a2b161",
+      "ae41d44d-c4b1-426c-acf6-2e28cb9a97a0",
+      "47c92ffe-c201-493c-97c9-a2d4e0beab69",
+      "d9707a27-2565-4d7d-9daa-6c61d60ce8fd",
+      "68357972-bd25-47e2-a098-c7932a923182"
+    ]
+  },
+  "contributors": [],
+  "creators": [
+    "admin"
+  ],
+  "description": "",
+  "effective": null,
+  "exclude_from_nav": false,
+  "expires": null,
+  "exportimport.constrains": {},
+  "exportimport.conversation": [],
+  "exportimport.versions": {},
+  "id": "Plone",
+  "is_folderish": true,
+  "items_total": 0,
+  "language": "##DEFAULT##",
+  "lock": {
+    "locked": false,
+    "stealable": true
+  },
+  "parent": {},
+  "review_state": null,
+  "rights": "",
+  "subjects": [],
+  "table_of_contents": null,
+  "title": "Project Title",
+  "type_title": "Plone Site",
+  "workflow_history": {}
+}

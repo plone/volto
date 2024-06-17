@@ -1,0 +1,3 @@
+default_context:
+    initial_user_password: 'admin'
+    zcml_package_includes: 'collective.addon'

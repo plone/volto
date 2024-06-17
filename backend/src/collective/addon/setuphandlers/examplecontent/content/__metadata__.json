@@ -1,0 +1,40 @@
+{
+  "__version__": "1.0.0",
+  "_blob_files_": [
+    "a58ccead718140c1baa98d43595fc3e6/image/plone-foundation.png"
+  ],
+  "_data_files_": [
+    "plone_site_root/data.json",
+    "a720393b3c0240e5bd27c43fcd2cfd1e/data.json",
+    "a58ccead718140c1baa98d43595fc3e6/data.json"
+  ],
+  "default_page": {},
+  "local_roles": {
+    "a58ccead718140c1baa98d43595fc3e6": {
+      "local_roles": {
+        "admin": [
+          "Owner"
+        ]
+      }
+    },
+    "a720393b3c0240e5bd27c43fcd2cfd1e": {
+      "local_roles": {
+        "admin": [
+          "Owner"
+        ]
+      }
+    },
+    "plone_site_root": {
+      "local_roles": {
+        "admin": [
+          "Owner"
+        ]
+      }
+    }
+  },
+  "ordering": {
+    "a58ccead718140c1baa98d43595fc3e6": 0,
+    "a720393b3c0240e5bd27c43fcd2cfd1e": 42
+  },
+  "relations": []
+}
