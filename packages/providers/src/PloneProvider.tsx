@@ -33,6 +33,7 @@ interface PloneProviderProps {
   ploneClient: InstanceType<typeof PloneClient>;
   queryClient: QueryClient;
   useLocation: () => Location | undefined;
+  useParams: () => Record<string, string>;
   navigate: (path: string) => void;
   useHref?: (to: string, options?: any) => string;
   flattenToAppURL: (path: string | undefined) => string | undefined;
@@ -40,19 +41,35 @@ interface PloneProviderProps {
 }
 
 export function PloneProvider(props: PloneProviderProps) {
-  let { children, navigate, useLocation, useHref, ploneClient, queryClient } =
-    props;
+  let {
+    children,
+    navigate,
+    useLocation,
+    useParams,
+    useHref,
+    ploneClient,
+    queryClient,
+  } = props;
 
   let ctx = useMemo(
     () => ({
       ploneClient,
       queryClient,
       useLocation,
+      useParams,
       navigate,
       useHref,
       flattenToAppURL,
     }),
-    [ploneClient, queryClient, useLocation, navigate, useHref, flattenToAppURL],
+    [
+      ploneClient,
+      queryClient,
+      useLocation,
+      useParams,
+      navigate,
+      useHref,
+      flattenToAppURL,
+    ],
   );
 
   return (
@@ -62,6 +79,7 @@ export function PloneProvider(props: PloneProviderProps) {
           navigate={navigate}
           useHref={useHref}
           useLocation={useLocation}
+          useParams={useParams}
           flattenToAppURL={flattenToAppURL}
         >
           {children}

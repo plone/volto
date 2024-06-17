@@ -1,12 +1,30 @@
 'use client';
 import React from 'react';
-import { useRouter, usePathname, useSearchParams } from 'next/navigation';
+import {
+  useRouter,
+  usePathname,
+  useSearchParams,
+  useParams,
+} from 'next/navigation';
 import { QueryClient } from '@tanstack/react-query';
 import { PloneProvider } from '@plone/providers';
 import PloneClient from '@plone/client';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { flattenToAppURL } from './utils';
 import config from './config';
+
+function useLocation() {
+  let pathname = usePathname();
+  let search = useSearchParams();
+
+  return {
+    pathname,
+    search,
+    searchStr: '',
+    hash: (typeof window !== 'undefined' && window.location.hash) || '',
+    href: (typeof window !== 'undefined' && window.location.href) || '',
+  };
+}
 
 const Providers: React.FC<{
   children?: React.ReactNode;
@@ -35,22 +53,17 @@ const Providers: React.FC<{
   );
 
   let router = useRouter();
-  let pathname = usePathname();
-  let search = useSearchParams();
 
   return (
     <PloneProvider
       ploneClient={ploneClient}
       queryClient={queryClient}
-      // TODO: So Next doesn't have a useLocation hook, so we need to unify this
-      useLocation={() => ({
-        pathname,
-        search,
-        searchStr: '',
-        hash: '',
-        href: '',
-      })}
+      // NextJS doesn't have a useLocation hook, so we need to unify this
+      // in a custom hook
+      useLocation={useLocation}
       navigate={router.push}
+      useParams={useParams}
+      useHref={(to) => flattenToAppURL(to)}
       flattenToAppURL={flattenToAppURL}
     >
       {children}

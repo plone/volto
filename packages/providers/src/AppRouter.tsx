@@ -12,8 +12,20 @@ export interface Location<TSearchObj extends AnySearchSchema = {}> {
   hash: string;
 }
 
+// interface ParsedLocation {
+//   href: string
+//   pathname: string
+//   search: TFullSearchSchema
+//   searchStr: string
+//   state: HistoryState
+//   hash: string
+//   maskedLocation?: ParsedLocation
+//   unmaskOnReload?: boolean
+// }
+
 interface AppRouter {
   useLocation: () => Location | undefined;
+  useParams: () => Record<string, string>;
   navigate: (path: string) => void;
   useHref: (to: string, options?: any) => string;
   flattenToAppURL: (path: string | undefined) => string | undefined;
@@ -27,6 +39,7 @@ const AppRouterContext = createContext<AppRouter>({
     searchStr: '',
     hash: '',
   }),
+  useParams: () => ({}),
   navigate: () => {},
   useHref: () => '',
   flattenToAppURL,
@@ -34,6 +47,7 @@ const AppRouterContext = createContext<AppRouter>({
 
 interface AppRouterProps {
   useLocation: () => Location | undefined;
+  useParams: () => Record<string, string>;
   navigate: (path: string) => void;
   useHref?: (to: string, options?: any) => string;
   flattenToAppURL: (path: string | undefined) => string | undefined;
@@ -41,16 +55,18 @@ interface AppRouterProps {
 }
 
 export function AppRouterProvider(props: AppRouterProps) {
-  let { children, navigate, useLocation, useHref, flattenToAppURL } = props;
+  let { children, navigate, useLocation, useParams, useHref, flattenToAppURL } =
+    props;
 
   let ctx = useMemo(
     () => ({
       useLocation,
+      useParams,
       navigate,
       useHref,
       flattenToAppURL,
     }),
-    [useLocation, navigate, useHref, flattenToAppURL],
+    [useLocation, useParams, navigate, useHref, flattenToAppURL],
   );
 
   return (
