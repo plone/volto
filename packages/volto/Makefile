@@ -34,7 +34,8 @@ YELLOW=`tput setaf 3`
 all: help
 
 # Add the following 'help' target to your Makefile
-# And add help text after each target name starting with '\#\#'
+# and add help text after each target name starting with ' ##'
+# to return a pretty list of targets and their descriptions.
 .PHONY: help
 help: ## This help message
 	@echo -e "$$(grep -hE '^\S+:.*##' $(MAKEFILE_LIST) | sed -e 's/:.*##\s*/:/' -e 's/^\(.\+\):\(.*\)/\\x1b[36m\1\\x1b[m:\2/' | column -c2 -t -s :)"
@@ -76,6 +77,7 @@ cypress-install: ## Install Cypress for acceptance tests
 build-deps: ../registry/dist ## Build dependencies
 
 ## Storybook
+
 .PHONY: storybook-start
 storybook-start: ## Start Storybook server on port 6006
 	@echo "$(GREEN)==> Start Storybook$(RESET)"
@@ -142,7 +144,7 @@ ci-acceptance-test-run-all: ## With a single command, start both the acceptance 
 ######### Deployment Core Acceptance tests
 
 .PHONY: deployment-acceptance-frontend-prod-start
-deployment-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for Seamless tests
+deployment-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for deployment
 	pnpm build && pnpm start:prod
 
 .PHONY: deployment-acceptance-test
@@ -154,7 +156,7 @@ deployment-acceptance-web-server-start: ## Start the reverse proxy (Traefik) in 
 	cd cypress/docker && docker-compose -f seamless.yml up
 
 .PHONY: deployment-ci-acceptance-test-run-all
-deployment-ci-acceptance-test-run-all: ## Run in one command the backend, frontend, and the cypress tests in headless mode for CI for deployment
+deployment-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for deployment tests
 	$(NODEBIN)/start-test "make acceptance-backend-start" http-get://127.0.0.1:55001/plone "make deployment-acceptance-frontend-prod-start" http://127.0.0.1:3000 "make ci-acceptance-test"
 
 ######### Project Acceptance tests
@@ -186,7 +188,7 @@ coresandbox-ci-acceptance-test: ## Run Cypress tests in headless mode for CI for
 	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress run --config specPattern='cypress/tests/coresandbox/**/*.{js,jsx,ts,tsx}'
 
 .PHONY: coresandbox-ci-acceptance-test-run-all
-coresandbox-ci-acceptance-test-run-all: ## Run in one command the backend, frontend, and the cypress tests in headless mode for CI for CoreSandbox tests
+coresandbox-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for core sandbox tests
 	$(NODEBIN)/start-test "make coresandbox-acceptance-backend-start" http-get://127.0.0.1:55001/plone "make coresandbox-acceptance-frontend-prod-start" http://127.0.0.1:3000 "make coresandbox-ci-acceptance-test"
 
 ######### Multilingual Acceptance tests
@@ -208,7 +210,7 @@ multilingual-ci-acceptance-test: ## Run Cypress tests in headless mode for CI fo
 	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress run --config specPattern='cypress/tests/multilingual/**/*.{js,jsx,ts,tsx}'
 
 .PHONY: multilingual-ci-acceptance-test-run-all
-multilingual-ci-acceptance-test-run-all: ## Run in one command the backend, frontend, and the Cypress tests in headless mode for CI for multilingual tests
+multilingual-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for multilingual tests
 	$(NODEBIN)/start-test "make multilingual-acceptance-backend-start" http-get://127.0.0.1:55001/plone "make multilingual-acceptance-frontend-prod-start" http://127.0.0.1:3000 "make multilingual-ci-acceptance-test"
 
 ######### Deployment Multilingual Acceptance tests
