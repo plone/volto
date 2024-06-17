@@ -27,6 +27,7 @@ const Logo = () => {
   const navroot = useSelector((state) => state.navroot.data);
   const dispatch = useDispatch();
   const intl = useIntl();
+  return <></>;
 
   const messages = defineMessages({
     home: {
