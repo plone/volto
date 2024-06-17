@@ -2475,6 +2475,11 @@ msgstr "Deschideți meniul"
 msgid "Open object browser"
 msgstr "Deschideți browserul de obiecte"
 
+#. Default: "Order"
+#: components/manage/Sidebar/Sidebar
+msgid "Order"
+msgstr ""
+
 #. Default: "Ordered"
 #: components/manage/Blocks/ToC/Schema
 msgid "Ordered"

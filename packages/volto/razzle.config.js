@@ -168,9 +168,28 @@ const defaultModify = ({
           files.forEach((file) => {
             const sourcePath = path.join(sourceDir, file);
             const targetPath = path.join(targetDir, file);
-            fs.copyFileSync(sourcePath, targetPath);
+            const isDirectory = fs.statSync(sourcePath).isDirectory();
+            if (isDirectory) {
+              fs.mkdirSync(targetPath, { recursive: true });
+              mergeDirectories(sourcePath, targetPath);
+            } else {
+              fs.copyFileSync(sourcePath, targetPath);
+            }
           });
         };
+
+        // If we are in development mode, we copy the public directory to the
+        // public directory of the setup root, so the files are available
+        if (dev && !registry.isVoltoProject && registry.addonNames.length > 0) {
+          const devPublicPath = `${projectRootPath}/../../../public`;
+          if (!fs.existsSync(devPublicPath)) {
+            fs.mkdirSync(devPublicPath);
+          }
+          mergeDirectories(
+            path.join(projectRootPath, 'public'),
+            `${projectRootPath}/../../../public`,
+          );
+        }
 
         registry.getAddonDependencies().forEach((addonDep) => {
           // What comes from getAddonDependencies is in the form of `@package/addon:profile`
@@ -189,10 +208,6 @@ const defaultModify = ({
                 !registry.isVoltoProject &&
                 registry.addonNames.length > 0
               ) {
-                const devPublicPath = `${projectRootPath}/../../../public`;
-                if (!fs.existsSync(devPublicPath)) {
-                  fs.mkdirSync(devPublicPath);
-                }
                 mergeDirectories(
                   path.join(p, 'public'),
                   `${projectRootPath}/../../../public`,

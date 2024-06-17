@@ -2477,6 +2477,11 @@ msgstr ""
 msgid "Open object browser"
 msgstr ""
 
+#. Default: "Order"
+#: components/manage/Sidebar/Sidebar
+msgid "Order"
+msgstr ""
+
 #. Default: "Ordered"
 #: components/manage/Blocks/ToC/Schema
 msgid "Ordered"

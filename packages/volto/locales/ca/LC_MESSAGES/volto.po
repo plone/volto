@@ -2481,6 +2481,11 @@ msgstr "Obre el menú"
 msgid "Open object browser"
 msgstr "Obre el navegador d'objectes"
 
+#. Default: "Order"
+#: components/manage/Sidebar/Sidebar
+msgid "Order"
+msgstr ""
+
 #. Default: "Ordered"
 #: components/manage/Blocks/ToC/Schema
 msgid "Ordered"

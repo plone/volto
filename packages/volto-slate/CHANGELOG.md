@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.13 (2024-06-13)
+
+### Bugfix
+
+- Fix removal of slate formatting applied to text when toggling the list buttons @robgietema [#6080](https://github.com/plone/volto/issues/6080)
+
 ## 18.0.0-alpha.12 (2024-04-23)
 
 ### Bugfix

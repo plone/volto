@@ -17,6 +17,35 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.35 (2024-06-13)
+
+### Breaking
+
+- Improve container detection, `config.settings.containerBlockTypes` is no longer needed @sneridagh [#6099](https://github.com/plone/volto/issues/6099)
+
+### Bugfix
+
+- Support nested directories in public folder add-on sync folders both in dev and build mode @sneridagh [#6098](https://github.com/plone/volto/issues/6098)
+- export getFieldURL from Url.js in helpers  @dobri1408 [#6100](https://github.com/plone/volto/issues/6100)
+
+## 18.0.0-alpha.34 (2024-06-13)
+
+### Feature
+
+- Added blocks layout navigator @robgietema @sneridagh [#5642](https://github.com/plone/volto/issues/5642)
+- Add support for reading the add-ons `tsconfig.json` paths and add them to the build resolve aliases @sneridagh [#6096](https://github.com/plone/volto/issues/6096)
+
+### Bugfix
+
+- Fix internalUrl Widget to Reflect Prop Changes via onChangeBlock @dorbi1408 @ichim-david [#6036](https://github.com/plone/volto/issues/6036)
+- Add default 'l' and 'center' values to size and align fields of `Image` block.
+  This fixes data not having any value adding proper options to the `Image` block. @ichim-david [#6046](https://github.com/plone/volto/issues/6046)
+- Fix public folder in dev mode, now it starts by default with the default Volto core defined public files @sneridagh [#6081](https://github.com/plone/volto/issues/6081)
+- Fix link in pop-up in `RelationsMatrix.jsx`. @stevepiercy [#6085](https://github.com/plone/volto/issues/6085)
+- Fix Uncaught RangeError: date value is not finite in DateTimeFormat.format.  @mauritsvanrees [#6087](https://github.com/plone/volto/issues/6087)
+- relations control panel. Restrict eglible relation targets according relation constraints of fields vocabulary. @ksuess [#6091](https://github.com/plone/volto/issues/6091)
+- Better `Icon` component JSDoc typings @sneridagh [#6095](https://github.com/plone/volto/issues/6095)
+
 ## 18.0.0-alpha.33 (2024-06-06)
 
 ### Breaking

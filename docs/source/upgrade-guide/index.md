@@ -237,6 +237,10 @@ If your tests rely on the old fieldset's generated value for selecting fields, y
 Now `config.getSlots` in the configuration registry takes the argument `location` instead of `pathname`.
 This allows more expressive conditions to fulfill the use case of the `Add` form.
 
+### Improve container detection
+
+The mechanism to detect if a block is a container or not has been improved and the config setting `config.settings.containerBlockTypes` is no longer needed, and core won't check for it anymore.
+
 (volto-upgrade-guide-17.x.x)=
 
 ## Upgrading to Volto 17.x.x
