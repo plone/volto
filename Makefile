@@ -241,7 +241,7 @@ deployment-acceptance-web-server-start: ## Start the reverse proxy (Traefik) in 
 	$(MAKE) -C "./packages/volto/" deployment-acceptance-web-server-start
 
 .PHONY: deployment-ci-acceptance-test-run-all
-deployment-ci-acceptance-test-run-all: ## Run in one command the backend, frontend, and the cypress tests in headless mode for CI for deployment
+deployment-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for deployment tests
 	$(MAKE) -C "./packages/volto/" deployment-ci-acceptance-test-run-all
 
 ######### Project Acceptance tests
@@ -273,7 +273,7 @@ coresandbox-ci-acceptance-test: ## Run Cypress tests in headless mode for CI for
 	$(MAKE) -C "./packages/volto/" coresandbox-ci-acceptance-test
 
 .PHONY: coresandbox-ci-acceptance-test-run-all
-coresandbox-ci-acceptance-test-run-all: ## Run in one command the backend, frontend, and the Cypress tests in headless mode for CI for core sandbox tests
+coresandbox-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for core sandbox tests
 	$(MAKE) -C "./packages/volto/" coresandbox-ci-acceptance-test-run-all
 
 ######### Multilingual Acceptance tests
@@ -295,7 +295,7 @@ multilingual-ci-acceptance-test: ## Run Cypress tests in headless mode for CI fo
 	$(MAKE) -C "./packages/volto/" multilingual-ci-acceptance-test
 
 .PHONY: multilingual-ci-acceptance-test-run-all
-multilingual-ci-acceptance-test-run-all: ## Run in one command the backend, frontend, and the Cypress tests in headless mode for CI for multilingual tests
+multilingual-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for multilingual tests
 	$(MAKE) -C "./packages/volto/" multilingual-ci-acceptance-test-run-all
 
 ######### Deployment Multilingual Acceptance tests
