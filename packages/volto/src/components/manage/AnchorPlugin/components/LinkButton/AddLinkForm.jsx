@@ -314,7 +314,6 @@ class AddLinkForm extends Component {
               <Button.Group>
                 <Button
                   basic
-                  primary
                   disabled={!value.length > 0}
                   aria-label={this.props.intl.formatMessage(messages.submit)}
                   onClick={(e) => {
