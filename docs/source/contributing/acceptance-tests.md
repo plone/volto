@@ -30,7 +30,7 @@ All sessions should start from the `packages/volto` directory.
 1.  In the first session, start the backend server.
 
     ```shell
-    make acceptance-server-start
+    make acceptance-backend-start
     ```
 
 1.  In the second session, start the frontend server.
