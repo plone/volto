@@ -15,10 +15,10 @@ include ../../variables.mk
 
 # Recipe snippets for reuse
 
-CHECKOUT_BASENAME=$(shell basename $(shell realpath ./))
+CHECKOUT_BASENAME="$(shell basename $(shell realpath ./))"
 CHECKOUT_BRANCH=$(shell git branch --show-current)
 CHECKOUT_TMP=../$(CHECKOUT_BASENAME).tmp
-CHECKOUT_TMP_ABS=$(shell realpath $(CHECKOUT_TMP))
+CHECKOUT_TMP_ABS="$(shell realpath $(CHECKOUT_TMP))"
 
 # We like colors
 # From: https://coderwall.com/p/izxssa/colored-makefile-for-golang-projects
