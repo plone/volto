@@ -34,4 +34,4 @@ build:
       - pnpm install
       - pnpm build:registry
       - (cd packages/volto && pnpm build-storybook -o ${READTHEDOCS_OUTPUT}/html/storybook)
-      - make rtd-pr-preview
+      - make docs-rtd-pr-preview
