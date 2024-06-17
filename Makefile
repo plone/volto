@@ -45,7 +45,8 @@ YELLOW=`tput setaf 3`
 all: help
 
 # Add the following 'help' target to your Makefile
-# And add help text after each target name starting with '\#\#'
+# and add help text after each target name starting with ' ##'
+# to return a pretty list of targets and their descriptions.
 .PHONY: help
 help: ## This help message
 	@echo -e "$$(grep -hE '^\S+:.*##' $(MAKEFILE_LIST) | sed -e 's/:.*##\s*/:/' -e 's/^\(.\+\):\(.*\)/\\x1b[36m\1\\x1b[m:\2/' | column -c2 -t -s :)"
@@ -83,7 +84,7 @@ install: build-deps ## Set up development environment
 
 ##### Documentation
 
-bin/python:
+bin/python: ## Create a Python virtual environment with the latest pip, and install documentation requirements
 	python3 -m venv . || virtualenv --clear --python=python3 .
 	bin/python -m pip install --upgrade pip
 	@echo "Python environment created."
@@ -185,7 +186,7 @@ backend-docker-detached-stop: ## Stops the Docker-based backend in detached mode
 	docker kill backend
 
 .PHONY: backend-docker-start-no-cors
-backend-docker-start-no-cors: ## Stops the Docker-based backend in detached mode (daemon)
+backend-docker-start-no-cors: ## Starts the Docker-based backend without CORS in detached mode (daemon)
 	docker run -it --rm --name=backend -p 8080:8080 -e SITE=Plone -e ADDONS='$(KGS)' -e CORS_=true $(DOCKER_IMAGE)
 
 .PHONY: frontend-docker-start
@@ -246,7 +247,7 @@ deployment-ci-acceptance-test-run-all: ## Run in one command the backend, fronte
 ######### Project Acceptance tests
 
 .PHONY: project-acceptance-frontend-prod-start
-project-acceptance-frontend-prod-start: ## Start acceptance frontend in production mode for Project tests
+project-acceptance-frontend-prod-start: ## Start acceptance frontend in production mode for project tests
 	$(MAKE) -C "./packages/volto/" project-acceptance-frontend-prod-start
 
 ######### Core Sandbox Acceptance tests
