@@ -235,9 +235,9 @@ deployment-acceptance-frontend-prod-start: ## Start acceptance frontend in produ
 deployment-acceptance-test: ## Start Cypress in interactive mode for tests in deployment
 	$(MAKE) -C "./packages/volto/" deployment-acceptance-test
 
-.PHONY: deployment-acceptance-webserver-start
-deployment-acceptance-webserver-start: ## Start the reverse proxy (Traefik) in port 80 for deployment
-	$(MAKE) -C "./packages/volto/" deployment-acceptance-webserver-start
+.PHONY: deployment-acceptance-web-server-start
+deployment-acceptance-web-server-start: ## Start the reverse proxy (Traefik) in port 80 for deployment
+	$(MAKE) -C "./packages/volto/" deployment-acceptance-web-server-start
 
 .PHONY: deployment-ci-acceptance-test-runall
 deployment-ci-acceptance-test-runall: ## Run in one command the backend, frontend, and the cypress tests in headless mode for CI for deployment

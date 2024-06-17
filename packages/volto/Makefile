@@ -149,8 +149,8 @@ deployment-acceptance-frontend-prod-start: build-deps ## Start acceptance fronte
 deployment-acceptance-test: ## Start Cypress in interactive mode for tests in deployment
 	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config baseUrl='http://localhost'
 
-.PHONY: deployment-acceptance-webserver-start
-deployment-acceptance-webserver-start: ## Start the reverse proxy (Traefik) in port 80 for deployment
+.PHONY: deployment-acceptance-web-server-start
+deployment-acceptance-web-server-start: ## Start the reverse proxy (Traefik) in port 80 for deployment
 	cd cypress/docker && docker-compose -f seamless.yml up
 
 .PHONY: deployment-ci-acceptance-test-runall
