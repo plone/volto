@@ -620,6 +620,7 @@ msgid "Choose a file"
 msgstr "Seleccionar Archivo"
 
 #. Default: "Clear"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
 msgstr "Limpiar"
@@ -2478,6 +2479,7 @@ msgid "Open menu"
 msgstr "Abrir menú"
 
 #. Default: "Open object browser"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 #: components/manage/Widgets/ObjectBrowserWidget
 msgid "Open object browser"
 msgstr "Abrir buscador de objetos"
@@ -3460,6 +3462,11 @@ msgstr "Estilos"
 #: components/theme/ContactForm/ContactForm
 msgid "Subject"
 msgstr "Asunto"
+
+#. Default: "Submit"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
+msgid "Submit"
+msgstr ""
 
 #. Default: "Success"
 #: components/manage/Actions/Actions

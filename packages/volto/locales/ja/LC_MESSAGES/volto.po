@@ -618,6 +618,7 @@ msgid "Choose a file"
 msgstr "ファイルを選択"
 
 #. Default: "Clear"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
 msgstr "クリア"
@@ -2476,6 +2477,7 @@ msgid "Open menu"
 msgstr "メニューを開く"
 
 #. Default: "Open object browser"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 #: components/manage/Widgets/ObjectBrowserWidget
 msgid "Open object browser"
 msgstr "オブジェクトブラウザを開く"
@@ -3458,6 +3460,11 @@ msgstr ""
 #: components/theme/ContactForm/ContactForm
 msgid "Subject"
 msgstr "件名"
+
+#. Default: "Submit"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
+msgid "Submit"
+msgstr ""
 
 #. Default: "Success"
 #: components/manage/Actions/Actions

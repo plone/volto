@@ -620,6 +620,7 @@ msgid "Choose a file"
 msgstr "Aukeratu fitxategia"
 
 #. Default: "Clear"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
 msgstr "Garbitu"
@@ -2478,6 +2479,7 @@ msgid "Open menu"
 msgstr "Menua ireki"
 
 #. Default: "Open object browser"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 #: components/manage/Widgets/ObjectBrowserWidget
 msgid "Open object browser"
 msgstr "Ireki elementu bilatzailea"
@@ -3460,6 +3462,11 @@ msgstr "Estiloa"
 #: components/theme/ContactForm/ContactForm
 msgid "Subject"
 msgstr "Gaia"
+
+#. Default: "Submit"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
+msgid "Submit"
+msgstr ""
 
 #. Default: "Success"
 #: components/manage/Actions/Actions

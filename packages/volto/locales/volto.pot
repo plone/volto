@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2024-06-12T09:30:13.239Z\n"
+"POT-Creation-Date: 2024-06-17T05:56:11.772Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -615,6 +615,7 @@ msgid "Choose a file"
 msgstr ""
 
 #. Default: "Clear"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
 msgstr ""
@@ -2473,6 +2474,7 @@ msgid "Open menu"
 msgstr ""
 
 #. Default: "Open object browser"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 #: components/manage/Widgets/ObjectBrowserWidget
 msgid "Open object browser"
 msgstr ""
@@ -3454,6 +3456,11 @@ msgstr ""
 #. Default: "Subject"
 #: components/theme/ContactForm/ContactForm
 msgid "Subject"
+msgstr ""
+
+#. Default: "Submit"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
+msgid "Submit"
 msgstr ""
 
 #. Default: "Success"

@@ -618,6 +618,7 @@ msgid "Choose a file"
 msgstr "Valitse tiedosto"
 
 #. Default: "Clear"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
 msgstr "Tyhjennä"
@@ -2476,6 +2477,7 @@ msgid "Open menu"
 msgstr "Avaa valikko"
 
 #. Default: "Open object browser"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 #: components/manage/Widgets/ObjectBrowserWidget
 msgid "Open object browser"
 msgstr ""
@@ -3458,6 +3460,11 @@ msgstr "Tyyli"
 #: components/theme/ContactForm/ContactForm
 msgid "Subject"
 msgstr "Aihe"
+
+#. Default: "Submit"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
+msgid "Submit"
+msgstr ""
 
 #. Default: "Success"
 #: components/manage/Actions/Actions

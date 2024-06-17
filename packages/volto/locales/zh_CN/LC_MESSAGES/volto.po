@@ -619,6 +619,7 @@ msgid "Choose a file"
 msgstr "选择一个文件"
 
 #. Default: "Clear"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
 msgstr "清除"
@@ -2477,6 +2478,7 @@ msgid "Open menu"
 msgstr "打开菜单"
 
 #. Default: "Open object browser"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 #: components/manage/Widgets/ObjectBrowserWidget
 msgid "Open object browser"
 msgstr "打开目标浏览器"
@@ -3459,6 +3461,11 @@ msgstr ""
 #: components/theme/ContactForm/ContactForm
 msgid "Subject"
 msgstr "主题"
+
+#. Default: "Submit"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
+msgid "Submit"
+msgstr ""
 
 #. Default: "Success"
 #: components/manage/Actions/Actions

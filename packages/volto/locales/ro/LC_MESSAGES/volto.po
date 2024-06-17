@@ -613,6 +613,7 @@ msgid "Choose a file"
 msgstr "Alegeți un fișier"
 
 #. Default: "Clear"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
 msgstr "Curațați"
@@ -2471,6 +2472,7 @@ msgid "Open menu"
 msgstr "Deschideți meniul"
 
 #. Default: "Open object browser"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 #: components/manage/Widgets/ObjectBrowserWidget
 msgid "Open object browser"
 msgstr "Deschideți browserul de obiecte"
@@ -3453,6 +3455,11 @@ msgstr ""
 #: components/theme/ContactForm/ContactForm
 msgid "Subject"
 msgstr "Subiect"
+
+#. Default: "Submit"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
+msgid "Submit"
+msgstr ""
 
 #. Default: "Success"
 #: components/manage/Actions/Actions
