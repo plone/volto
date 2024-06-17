@@ -251,10 +251,7 @@ const UnconnectedImageInput = (props) => {
                       <Button
                         icon
                         basic
-                        aria-label={
-                          placeholderLinkInput ||
-                          intl.formatMessage(messages.linkAnImage)
-                        }
+                        aria-label={intl.formatMessage(messages.linkAnImage)}
                         onClick={(e) => {
                           !props.selected && onFocus && onFocus();
                           linkEditor.show();
@@ -268,7 +265,10 @@ const UnconnectedImageInput = (props) => {
                 {linkEditor.anchorNode && (
                   <linkEditor.LinkEditor
                     value={value}
-                    placeholder={intl.formatMessage(messages.linkAnImage)}
+                    placeholder={
+                      placeholderLinkInput ||
+                      intl.formatMessage(messages.linkAnImage)
+                    }
                     objectBrowserPickerType={objectBrowserPickerType}
                     onChange={(_, e) =>
                       onChange(
