@@ -251,7 +251,10 @@ const UnconnectedImageInput = (props) => {
                       <Button
                         icon
                         basic
-                        aria-label={placeholderLinkInput || intl.formatMessage(messages.linkAnImage)}
+                        aria-label={
+                          placeholderLinkInput ||
+                          intl.formatMessage(messages.linkAnImage)
+                        }
                         onClick={(e) => {
                           !props.selected && onFocus && onFocus();
                           linkEditor.show();
