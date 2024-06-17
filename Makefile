@@ -221,9 +221,9 @@ acceptance-test: ## Start Cypress in interactive mode
 ci-acceptance-test: ## Run cypress tests in headless mode for CI
 	$(MAKE) -C "./packages/volto/" ci-acceptance-test
 
-.PHONY: ci-acceptance-test-runall
-ci-acceptance-test-runall: ## With a single command, start both the acceptance frontend and backend acceptance server, and run Cypress tests in headless mode
-	$(MAKE) -C "./packages/volto/" ci-acceptance-test-runall
+.PHONY: ci-acceptance-test-run-all
+ci-acceptance-test-run-all: ## With a single command, start both the acceptance frontend and backend acceptance server, and run Cypress tests in headless mode
+	$(MAKE) -C "./packages/volto/" ci-acceptance-test-run-all
 
 ######### Deployment Core Acceptance tests
 
@@ -239,9 +239,9 @@ deployment-acceptance-test: ## Start Cypress in interactive mode for tests in de
 deployment-acceptance-web-server-start: ## Start the reverse proxy (Traefik) in port 80 for deployment
 	$(MAKE) -C "./packages/volto/" deployment-acceptance-web-server-start
 
-.PHONY: deployment-ci-acceptance-test-runall
-deployment-ci-acceptance-test-runall: ## Run in one command the backend, frontend, and the cypress tests in headless mode for CI for deployment
-	$(MAKE) -C "./packages/volto/" deployment-ci-acceptance-test-runall
+.PHONY: deployment-ci-acceptance-test-run-all
+deployment-ci-acceptance-test-run-all: ## Run in one command the backend, frontend, and the cypress tests in headless mode for CI for deployment
+	$(MAKE) -C "./packages/volto/" deployment-ci-acceptance-test-run-all
 
 ######### Project Acceptance tests
 
@@ -271,9 +271,9 @@ coresandbox-acceptance-test: ## Start Cypress in interactive mode for core sandb
 coresandbox-ci-acceptance-test: ## Run Cypress tests in headless mode for CI for core sandbox tests
 	$(MAKE) -C "./packages/volto/" coresandbox-ci-acceptance-test
 
-.PHONY: coresandbox-ci-acceptance-test-runall
-coresandbox-ci-acceptance-test-runall: ## Run in one command the backend, frontend, and the Cypress tests in headless mode for CI for core sandbox tests
-	$(MAKE) -C "./packages/volto/" coresandbox-ci-acceptance-test-runall
+.PHONY: coresandbox-ci-acceptance-test-run-all
+coresandbox-ci-acceptance-test-run-all: ## Run in one command the backend, frontend, and the Cypress tests in headless mode for CI for core sandbox tests
+	$(MAKE) -C "./packages/volto/" coresandbox-ci-acceptance-test-run-all
 
 ######### Multilingual Acceptance tests
 
@@ -293,9 +293,9 @@ multilingual-acceptance-test: ## Start Cypress in interactive mode for multiling
 multilingual-ci-acceptance-test: ## Run Cypress tests in headless mode for CI for multilingual tests
 	$(MAKE) -C "./packages/volto/" multilingual-ci-acceptance-test
 
-.PHONY: multilingual-ci-acceptance-test-runall
-multilingual-ci-acceptance-test-runall: ## Run in one command the backend, frontend, and the Cypress tests in headless mode for CI for multilingual tests
-	$(MAKE) -C "./packages/volto/" multilingual-ci-acceptance-test-runall
+.PHONY: multilingual-ci-acceptance-test-run-all
+multilingual-ci-acceptance-test-run-all: ## Run in one command the backend, frontend, and the Cypress tests in headless mode for CI for multilingual tests
+	$(MAKE) -C "./packages/volto/" multilingual-ci-acceptance-test-run-all
 
 ######### Deployment Multilingual Acceptance tests
 
@@ -315,9 +315,9 @@ deployment-multilingual-acceptance-test: ## Start Cypress in interactive mode fo
 deployment-multilingual-ci-acceptance-test: ## Run Cypress tests in headless mode for CI for multilingual tests for deployment
 	$(MAKE) -C "./packages/volto/" deployment-multilingual-ci-acceptance-test
 
-.PHONY: deployment-multilingual-ci-acceptance-test-runall
-deployment-multilingual-ci-acceptance-test-runall: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for multilingual tests for deployment
-	$(MAKE) -C "./packages/volto/" deployment-multilingual-ci-acceptance-test-runall
+.PHONY: deployment-multilingual-ci-acceptance-test-run-all
+deployment-multilingual-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for multilingual tests for deployment
+	$(MAKE) -C "./packages/volto/" deployment-multilingual-ci-acceptance-test-run-all
 
 ######### Working Copy Acceptance tests
 
@@ -337,9 +337,9 @@ working-copy-acceptance-test: ## Start Cypress in interactive mode for working c
 working-copy-ci-acceptance-test: ## Run Cypress tests in headless mode for CI for working copy tests
 	$(MAKE) -C "./packages/volto/" working-copy-ci-acceptance-test
 
-.PHONY: working-copy-ci-acceptance-test-runall
-working-copy-ci-acceptance-test-runall: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for working copy tests
-	$(MAKE) -C "./packages/volto/" working-copy-ci-acceptance-test-runall
+.PHONY: working-copy-ci-acceptance-test-run-all
+working-copy-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for working copy tests
+	$(MAKE) -C "./packages/volto/" working-copy-ci-acceptance-test-run-all
 
 ######### Guillotina Acceptance tests
 
@@ -359,9 +359,9 @@ guillotina-acceptance-test: ## Start Cypress in interactive mode for Guillotina 
 guillotina-ci-acceptance-test: ## Run Cypress tests in headless mode for CI for Guillotina tests
 	$(MAKE) -C "./packages/volto/" guillotina-ci-acceptance-test
 
-.PHONY: guillotina-ci-acceptance-test-runall
-guillotina-ci-acceptance-test-runall: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for Guillotina tests
-	$(MAKE) -C "./packages/volto/" guillotina-ci-acceptance-test-runall
+.PHONY: guillotina-ci-acceptance-test-run-all
+guillotina-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for Guillotina tests
+	$(MAKE) -C "./packages/volto/" guillotina-ci-acceptance-test-run-all
 
 ######### Plone 5 Acceptance tests
 

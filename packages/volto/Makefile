@@ -136,7 +136,7 @@ ci-acceptance-test: ## Run cypress tests in headless mode for CI
 	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress run --config specPattern='cypress/tests/core/**/*.{js,jsx,ts,tsx}'
 
 .PHONY: ci-acceptance-test-run-all
-ci-acceptance-test-runall: ## With a single command, start both the acceptance frontend and backend acceptance server, and run Cypress tests in headless mode
+ci-acceptance-test-run-all: ## With a single command, start both the acceptance frontend and backend acceptance server, and run Cypress tests in headless mode
 	$(NODEBIN)/start-test "make ci-acceptance-backend-start" http-get://127.0.0.1:55001/plone "make acceptance-frontend-prod-start" http://127.0.0.1:3000 "make ci-acceptance-test"
 
 ######### Deployment Core Acceptance tests
@@ -153,8 +153,8 @@ deployment-acceptance-test: ## Start Cypress in interactive mode for tests in de
 deployment-acceptance-web-server-start: ## Start the reverse proxy (Traefik) in port 80 for deployment
 	cd cypress/docker && docker-compose -f seamless.yml up
 
-.PHONY: deployment-ci-acceptance-test-runall
-deployment-ci-acceptance-test-runall: ## Run in one command the backend, frontend, and the cypress tests in headless mode for CI for deployment
+.PHONY: deployment-ci-acceptance-test-run-all
+deployment-ci-acceptance-test-run-all: ## Run in one command the backend, frontend, and the cypress tests in headless mode for CI for deployment
 	$(NODEBIN)/start-test "make acceptance-backend-start" http-get://127.0.0.1:55001/plone "make deployment-acceptance-frontend-prod-start" http://127.0.0.1:3000 "make ci-acceptance-test"
 
 ######### Project Acceptance tests
@@ -185,8 +185,8 @@ coresandbox-acceptance-test: ## Start Cypress in interactive mode for core sandb
 coresandbox-ci-acceptance-test: ## Run Cypress tests in headless mode for CI for core sandbox tests
 	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress run --config specPattern='cypress/tests/coresandbox/**/*.{js,jsx,ts,tsx}'
 
-.PHONY: coresandbox-ci-acceptance-test-runall
-coresandbox-ci-acceptance-test-runall: ## Run in one command the backend, frontend, and the cypress tests in headless mode for CI for CoreSandbox tests
+.PHONY: coresandbox-ci-acceptance-test-run-all
+coresandbox-ci-acceptance-test-run-all: ## Run in one command the backend, frontend, and the cypress tests in headless mode for CI for CoreSandbox tests
 	$(NODEBIN)/start-test "make coresandbox-acceptance-backend-start" http-get://127.0.0.1:55001/plone "make coresandbox-acceptance-frontend-prod-start" http://127.0.0.1:3000 "make coresandbox-ci-acceptance-test"
 
 ######### Multilingual Acceptance tests
@@ -207,8 +207,8 @@ multilingual-acceptance-test: ## Start Cypress in interactive mode for multiling
 multilingual-ci-acceptance-test: ## Run Cypress tests in headless mode for CI for multilingual tests
 	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress run --config specPattern='cypress/tests/multilingual/**/*.{js,jsx,ts,tsx}'
 
-.PHONY: multilingual-ci-acceptance-test-runall
-multilingual-ci-acceptance-test-runall: ## Run in one command the backend, frontend, and the Cypress tests in headless mode for CI for multilingual tests
+.PHONY: multilingual-ci-acceptance-test-run-all
+multilingual-ci-acceptance-test-run-all: ## Run in one command the backend, frontend, and the Cypress tests in headless mode for CI for multilingual tests
 	$(NODEBIN)/start-test "make multilingual-acceptance-backend-start" http-get://127.0.0.1:55001/plone "make multilingual-acceptance-frontend-prod-start" http://127.0.0.1:3000 "make multilingual-ci-acceptance-test"
 
 ######### Deployment Multilingual Acceptance tests
@@ -229,8 +229,8 @@ deployment-multilingual-acceptance-test: ## Start Cypress in interactive mode fo
 deployment-multilingual-ci-acceptance-test: ## Run Cypress tests in headless mode for CI for multilingual tests for deployment
 	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress run --config specPattern='cypress/tests/multilingual/**/*.{js,jsx,ts,tsx}'
 
-.PHONY: deployment-multilingual-ci-acceptance-test-runall
-deployment-multilingual-ci-acceptance-test-runall: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for multilingual tests for deployment
+.PHONY: deployment-multilingual-ci-acceptance-test-run-all
+deployment-multilingual-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for multilingual tests for deployment
 	$(NODEBIN)/start-test "make deployment-multilingual-acceptance-backend-start" http-get://127.0.0.1:55001/plone "make deployment-multilingual-acceptance-frontend-prod-start" http://127.0.0.1:3000 "make deployment-multilingual-ci-acceptance-test"
 
 ######### Working Copy Acceptance tests
@@ -251,8 +251,8 @@ working-copy-acceptance-test: ## Start Cypress in interactive mode for working c
 working-copy-ci-acceptance-test: ## Run Cypress tests in headless mode for CI for working copy tests
 	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress run --config specPattern='cypress/tests/workingCopy/**/*.{js,jsx,ts,tsx}'
 
-.PHONY: working-copy-ci-acceptance-test-runall
-working-copy-ci-acceptance-test-runall: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for working copy tests
+.PHONY: working-copy-ci-acceptance-test-run-all
+working-copy-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for working copy tests
 	$(NODEBIN)/start-test "make working-copy-acceptance-backend-start" http-get://127.0.0.1:55001/plone "make working-copy-acceptance-frontend-prod-start" http://127.0.0.1:3000 "make working-copy-ci-acceptance-test"
 
 ######### Guillotina Acceptance tests
@@ -273,8 +273,8 @@ guillotina-acceptance-test: ## Start Cypress in interactive mode for Guillotina 
 guillotina-ci-acceptance-test: ## Run Cypress tests in headless mode for CI for Guillotina tests
 	NODE_ENV=production CYPRESS_API=guillotina $(NODEBIN)/cypress run --config specPattern='cypress/tests/guillotina/**/*.{js,jsx,ts,tsx}'
 
-.PHONY: guillotina-ci-acceptance-test-runall
-guillotina-ci-acceptance-test-runall: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for Guillotina tests
+.PHONY: guillotina-ci-acceptance-test-run-all
+guillotina-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for Guillotina tests
 	$(NODEBIN)/start-test "make guillotina-acceptance-backend-start" http-get://127.0.0.1:8081 "make guillotina-acceptance-frontend-prod-start" http://127.0.0.1:3000 "make guillotina-ci-acceptance-test"
 
 ######### Plone 5 Acceptance tests
