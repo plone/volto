@@ -81,6 +81,7 @@ clean: ## Clean development environment
 install: build-deps ## Set up development environment
 	# Setup ESlint for VSCode
 	node packages/scripts/vscodesettings.js
+	pnpm i
 
 ##### Documentation
 
