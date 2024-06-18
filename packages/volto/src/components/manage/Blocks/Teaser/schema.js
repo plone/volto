@@ -35,13 +35,13 @@ const messages = defineMessages({
     defaultMessage: 'Alignment',
   },
   overwrite: {
-    id: 'Override',
-    defaultMessage: 'Override',
+    id: 'Customize teaser content',
+    defaultMessage: 'Customize teaser content',
   },
   overwriteDescription: {
-    id: 'Check this box if you want to override the target content.',
+    id: 'Check this box to customize the title, description, or image of the target content item for this teaser. Leave it unchecked to show updates to the target content item if it is edited later.',
     defaultMessage:
-      'Check this box if you want to override the target content.',
+      'Check this box to customize the title, description, or image of the target content item for this teaser. Leave it unchecked to show updates to the target content item if it is edited later.',
   },
 });
 
