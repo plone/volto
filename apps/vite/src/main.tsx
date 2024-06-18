@@ -57,9 +57,14 @@ if (!rootElement.innerHTML) {
       ploneClient={ploneClient}
       queryClient={queryClient}
       useLocation={useLocation}
-      navigate={(path: string) => router.navigate({ to: path })}
+      navigate={(path: string) =>
+        router.navigate({ to: flattenToAppURL(path) })
+      }
       // TODO: Investigate why this fails in @tanstack/router :/
-      // useHref={(to) => router.buildLocation(to).href}
+      useHref={(to) => {
+        return flattenToAppURL(to);
+      }}
+      useParams={router.useParams}
       flattenToAppURL={flattenToAppURL}
     >
       <RouterProvider router={router} />

@@ -7,15 +7,14 @@ import {
   dehydrate,
   QueryClient,
   HydrationBoundary,
-  useSuspenseQuery,
   useQuery,
 } from '@tanstack/react-query';
-import ploneClient from '@plone/client';
 import { flattenToAppURL } from '../utils';
 import { useLoaderData, useLocation } from '@remix-run/react';
 import { usePloneClient } from '@plone/providers';
 import { Breadcrumbs, RenderBlocks } from '@plone/components';
 import config from '@plone/registry';
+import { ploneClient } from '../client';
 
 export const meta: MetaFunction = () => {
   return [
@@ -38,10 +37,7 @@ export const loader = async ({ params, request }: LoaderFunctionArgs) => {
     },
   });
 
-  const cli = ploneClient.initialize({
-    apiPath: 'http://localhost:8080/Plone',
-  });
-  const { getContentQuery } = cli;
+  const { getContentQuery } = ploneClient;
 
   await queryClient.prefetchQuery(
     getContentQuery({ path: flattenToAppURL(request.url), expand }),

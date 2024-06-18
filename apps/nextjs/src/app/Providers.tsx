@@ -61,7 +61,10 @@ const Providers: React.FC<{
       // NextJS doesn't have a useLocation hook, so we need to unify this
       // in a custom hook
       useLocation={useLocation}
-      navigate={router.push}
+      navigate={(to) => {
+        debugger;
+        router.push(to);
+      }}
       useParams={useParams}
       useHref={(to) => flattenToAppURL(to)}
       flattenToAppURL={flattenToAppURL}
