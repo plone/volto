@@ -46,18 +46,19 @@ BIN_FOLDER=$(VENV_FOLDER)/bin
 all: build
 
 # Add the following 'help' target to your Makefile
-# And add help text after each target name starting with '\#\#'
+# and add help text after each target name starting with ' ##'
+# to return a pretty list of targets and their descriptions.
 .PHONY: help
 help: ## This help message
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+	@echo -e "$$(grep -hE '^\S+:.*##' $(MAKEFILE_LIST) | sed -e 's/:.*##\s*/:/' -e 's/^\(.\+\):\(.*\)/\\x1b[36m\1\\x1b[m:\2/' | column -c2 -t -s :)"
 
 $(BIN_FOLDER)/pip $(BIN_FOLDER)/tox $(BIN_FOLDER)/pipx $(BIN_FOLDER)/uv $(BIN_FOLDER)/mxdev:
-	@echo "$(GREEN)==> Setup Virtual Env$(RESET)"
+	@echo "$(GREEN)==> Set up Python virtual environment$(RESET)"
 	$(PYTHON) -m venv $(VENV_FOLDER)
 	$(BIN_FOLDER)/pip install -U "pip" "uv" "wheel" "pipx" "mxdev" "tox" "pre-commit"
 	if [ -d $(GIT_FOLDER) ]; then $(BIN_FOLDER)/pre-commit install; else echo "$(RED) Not installing pre-commit$(RESET)";fi
 
-instance/etc/zope.ini: $(BIN_FOLDER)/pip  ## Create instance configuration
+instance/etc/zope.ini: $(BIN_FOLDER)/pip ## Create instance configuration
 	@echo "$(GREEN)==> Create instance configuration$(RESET)"
 	$(BIN_FOLDER)/pipx run cookiecutter -f --no-input --config-file instance.yaml gh:plone/cookiecutter-zope-instance
 
@@ -77,8 +78,8 @@ install: build-dev ## Install Plone
 build: build-dev ## Install Plone
 
 .PHONY: clean
-clean: ## Clean environment
-	@echo "$(RED)==> Cleaning environment and build$(RESET)"
+clean: ## Clean development environment
+	@echo "$(RED)==> Cleaning development environment$(RESET)"
 	rm -rf $(VENV_FOLDER) pyvenv.cfg .installed.cfg instance .tox .venv .pytest_cache
 
 .PHONY: start
@@ -106,7 +107,7 @@ check: $(BIN_FOLDER)/tox ## Check and fix code base according to Plone standards
 	$(BIN_FOLDER)/tox -e lint
 
 # i18n
-$(BIN_FOLDER)/i18ndude: $(BIN_FOLDER)/pip
+$(BIN_FOLDER)/i18ndude: $(BIN_FOLDER)/pip ## Install translation and internationalization (i18n) tools
 	@echo "$(GREEN)==> Install translation tools$(RESET)"
 	$(BIN_FOLDER)/uv pip install i18ndude
 

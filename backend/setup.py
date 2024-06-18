@@ -7,7 +7,7 @@ from setuptools import setup
 setup(
     name="collective.addon",
     version="1.0.0a0",
-    description="A new project using Plone 6..",
+    description="A new project using Plone 6.",
     long_description="",
     long_description_content_type="text/markdown",
     classifiers=[
@@ -21,6 +21,7 @@ setup(
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
         "Operating System :: OS Independent",
         "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
     ],
@@ -29,7 +30,7 @@ setup(
     author_email="collective@plone.org",
     url="https://github.com/collective/collective.addon",
     project_urls={
-        "PyPI": "https://pypi.python.org/pypi/collective.addon",
+        "PyPI": "https://pypi.org/project/collective.addon",
         "Source": "https://github.com/collective/collective.addon",
         "Tracker": "https://github.com/collective/collective.addon/issues",
     },
