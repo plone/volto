@@ -20,6 +20,7 @@ import copySVG from '@plone/volto/icons/copy.svg';
 import cutSVG from '@plone/volto/icons/cut.svg';
 import pasteSVG from '@plone/volto/icons/paste.svg';
 import trashSVG from '@plone/volto/icons/delete.svg';
+import { cloneBlocks } from '@plone/volto/helpers/Blocks/cloneBlocks';
 
 export class BlocksToolbarComponent extends React.Component {
   constructor(props) {
@@ -97,8 +98,8 @@ export class BlocksToolbarComponent extends React.Component {
         return mode === 'copy'
           ? blockConfig.cloneData
             ? blockConfig.cloneData(blockData)
-            : [uuid(), blockData]
-          : [uuid(), blockData]; // if cut/pasting blocks, we don't clone
+            : [uuid(), cloneBlocks(blockData)]
+          : [uuid(), cloneBlocks(blockData)]; // if cut/pasting blocks, we don't clone
       })
       .filter((info) => !!info); // some blocks may refuse to be copied
     const blocksFieldname = getBlocksFieldname(formData);
