@@ -11,8 +11,11 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@plone/blocks": "workspace: *",
     "@plone/client": "workspace: *",
+    "@plone/components": "workspace: *",
     "@plone/providers": "workspace: *",
+    "@plone/registry": "workspace: *",
     "@remix-run/css-bundle": "^2.4.0",
     "@remix-run/node": "^2.8.1",
     "@remix-run/react": "^2.8.1",

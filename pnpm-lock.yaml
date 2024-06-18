@@ -800,12 +800,21 @@ importers:
 
   apps/remix:
     dependencies:
+      '@plone/blocks':
+        specifier: 'workspace: *'
+        version: link:../../packages/blocks
       '@plone/client':
         specifier: 'workspace: *'
         version: link:../../packages/client
+      '@plone/components':
+        specifier: 'workspace: *'
+        version: link:../../packages/components
       '@plone/providers':
         specifier: 'workspace: *'
         version: link:../../packages/providers
+      '@plone/registry':
+        specifier: 'workspace: *'
+        version: link:../../packages/registry
       '@remix-run/css-bundle':
         specifier: ^2.4.0
         version: 2.8.1

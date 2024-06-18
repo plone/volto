@@ -2,11 +2,13 @@ import { cssBundleHref } from '@remix-run/css-bundle';
 import type { LinksFunction } from '@remix-run/node';
 import {
   Links,
-  LiveReload,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
+  useHref,
+  useLocation,
+  useNavigate,
 } from '@remix-run/react';
 import { useState } from 'react';
 import { QueryClient } from '@tanstack/react-query';
@@ -14,9 +16,17 @@ import { PloneClientProvider } from '@plone/providers';
 import PloneClient from '@plone/client';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
+import '@plone/components/dist/basic.css';
+import { flattenToAppURL } from './utils';
+
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: 'stylesheet', href: cssBundleHref }] : []),
 ];
+
+function useHrefLocal(to) {
+  console.log(to);
+  return useHref(flattenToAppURL(to));
+}
 
 export default function App() {
   const [queryClient] = useState(
@@ -38,6 +48,8 @@ export default function App() {
     }),
   );
 
+  const navigate = useNavigate();
+
   return (
     <html lang="en">
       <head>
@@ -47,11 +59,16 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <PloneClientProvider client={ploneClient} queryClient={queryClient}>
+        <PloneClientProvider
+          client={ploneClient}
+          queryClient={queryClient}
+          useHref={useHrefLocal}
+          useLocation={useLocation}
+          navigate={navigate}
+        >
           <Outlet />
           <ScrollRestoration />
           <Scripts />
-          <LiveReload />
           <ReactQueryDevtools initialIsOpen={false} />
         </PloneClientProvider>
       </body>
