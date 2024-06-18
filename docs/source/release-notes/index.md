@@ -17,6 +17,12 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 17.16.2 (2024-06-18)
+
+### Bugfix
+
+- export getFieldURL from Url.js in helpers @dobri1408 [#6101](https://github.com/plone/volto/issues/6101)
+
 ## 17.16.1 (2024-06-10)
 
 ### Bugfix
