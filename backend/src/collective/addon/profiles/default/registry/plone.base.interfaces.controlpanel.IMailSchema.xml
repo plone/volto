@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<registry>
-  <records interface="plone.base.interfaces.controlpanel.IMailSchema"
-           prefix="plone"
-           purge="false"
-  >
-    <value key="email_from_name">Project Title</value>
-  </records>
-</registry>

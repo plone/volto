@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<registry>
-  <records interface="plone.base.interfaces.controlpanel.ISiteSchema"
-           prefix="plone"
-           purge="false"
-  >
-    <value key="site_title">Project Title</value>
-  </records>
-</registry>
