@@ -592,6 +592,11 @@ msgstr "Alterações salvas"
 msgid "Changes saved."
 msgstr "Alterações guardadas."
 
+#. Default: "Check this box to customize the title, description, or image of the target content item for this teaser. Leave it unchecked to show updates to the target content item if it is edited later."
+#: components/manage/Blocks/Teaser/schema
+msgid "Check this box to customize the title, description, or image of the target content item for this teaser. Leave it unchecked to show updates to the target content item if it is edited later."
+msgstr ""
+
 #. Default: "Checkbox"
 #: components/manage/Widgets/SchemaWidget
 msgid "Checkbox"
@@ -870,6 +875,11 @@ msgstr "Filtros atualmente aplicados"
 #: components/manage/Preferences/ChangePassword
 msgid "Current password"
 msgstr "Senha atual"
+
+#. Default: "Customize teaser content"
+#: components/manage/Blocks/Teaser/schema
+msgid "Customize teaser content"
+msgstr ""
 
 #. Default: "Cut"
 #: components/manage/Actions/Actions
@@ -2495,16 +2505,6 @@ msgstr ""
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Origin"
 msgstr "Origem"
-
-#. Default: "Override source content"
-#: components/manage/Blocks/Teaser/schema
-msgid "Override source content"
-msgstr ""
-
-#. Default: "Override source content if you want to prevent further updates"
-#: components/manage/Blocks/Teaser/schema
-msgid "Override source content if you want to prevent further updates"
-msgstr ""
 
 #. Default: "Overview of relations of all content items"
 #: components/manage/LinksToItem/LinksToItem
