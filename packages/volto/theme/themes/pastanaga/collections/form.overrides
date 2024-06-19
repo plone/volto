@@ -6,6 +6,10 @@
   margin: 0;
 }
 
+.ui.form .inline.field.overwritten input {
+  background-color: rgb(#edc3c2);
+}
+
 .ui.form .inline.field.help .wrapper {
   border-bottom: none;
 }

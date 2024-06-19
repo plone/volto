@@ -48,6 +48,7 @@ const InlineForm = (props) => {
     title,
     icon,
     headerActions,
+    actionButton,
     footer,
     focusIndex,
     intl,
@@ -160,6 +161,9 @@ const InlineForm = (props) => {
               block={block}
             />
           ))}
+          {actionButton && (
+            <Segment className="attached actions">{actionButton}</Segment>
+          )}
         </Segment>
       </div>
 
