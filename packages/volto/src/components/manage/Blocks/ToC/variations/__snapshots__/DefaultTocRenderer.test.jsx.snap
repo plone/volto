@@ -11,6 +11,7 @@ exports[`renders a default toc renderer component 1`] = `
     role="listitem"
   >
     <a
+      aria-label="Table-Of-Content-Link"
       className={null}
       href="/#hello-this-is-a-sample-page"
       onClick={[Function]}
@@ -29,6 +30,7 @@ exports[`renders a default toc renderer component 1`] = `
         role="listitem"
       >
         <a
+          aria-label="Table-Of-Content-Link"
           className={null}
           href="/#test-level-3"
           onClick={[Function]}
