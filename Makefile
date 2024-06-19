@@ -55,17 +55,9 @@ help: ## This help message
 start: ## Starts Volto, allowing reloading of the add-on during development
 	pnpm start
 
-.PHONY: backend-local-start
-backend-local-start: ## Start local Plone backend
-	$(MAKE) -C "./api/" start
-
 .PHONY: build
 build: ## Build a production bundle for distribution
 	$(MAKE) -C "./packages/volto/" build
-
-.PHONY: backend-local-build
-backend-local-build:  ## Build local Plone backend
-	$(MAKE) -C "./api/" build
 
 .PHONY: test
 test: ## Run unit tests
@@ -73,7 +65,6 @@ test: ## Run unit tests
 
 .PHONY: clean
 clean: ## Clean development environment
-	$(MAKE) -C "./api/" clean
 	rm -rf node_modules
 	find ./packages -name node_modules -exec rm -rf {} \;
 
