@@ -266,10 +266,8 @@ The following table lists the old and new Makefile commands and the new commands
 | help | help | Show this help |  |
 | start | start | Starts Volto, allowing reloading of the add-on during development |  |
 | start-frontend |  |  | Removed |
-| start-backend | backend-local-start | Start local Plone backend |  |
 | build | build | Build a production bundle for distribution | Added |
 | build-frontend |  |  | Removed |
-| build-backend | backend-local-build | Build local Plone backend |  |
 | test | test | Run unit tests |  |
 | clean | clean | Clean development environment |  |
 | setup | install | Set up development environment | Renamed to be consistent with the add-on setups |
