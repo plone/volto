@@ -582,9 +582,6 @@ Image override
 Alignment
 : The alignment of the teaser image can be set to left (default), right, or top.
 
-Background color
-: Set the background color of the teaser item to either transparent or light grey.
-
 
 (user-manual-teaser-grid-block-label)=
 
