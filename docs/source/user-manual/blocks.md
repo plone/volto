@@ -532,22 +532,37 @@ Entries
 
 ### Teaser block
 
-A teaser block displays a summary or teaser of a content item—such as an article or blog post—on a website, and links to the full content item.
-When the visitor clicks or taps on the teaser block, they will visit the full content item.
+A teaser block displays a summary or teaser of a target content item—such as an article or blog post—on a website, and links to the full content item.
+When the visitor clicks or taps on the teaser block, they will visit the full targeted content item.
 A teaser block typically includes a title, an excerpt or summary of the content, and a thumbnail image or other visual element.
 
+You can customize the presentation of the target content item in a teaser block.
+For example, you might want to shorten the title to fit the available width, or edit the description or image to emphasize a different aspect of the item in multiple teaser block locations.
+
+````{card}
 ```{image} ../_static/user-manual/blocks/teaser-block.png
 :alt: Teaser block
 ```
++++
+_Teaser block_
+````
 
 The teaser block has several configuration options.
 
+````{card}
 ```{image} ../_static/user-manual/blocks/teaser-block-configuration.png
-:alt: Teaser block
+:alt: Teaser block configuration
 ```
++++
+_Teaser block configuration_
+````
 
 Target
 : The target is either an existing content item in your Plone site that can be selected by clicking the list icon, or an external URL that can be typed into the text field and saved by clicking the right arrow when it appears after you start typing.
+
+Customize teaser content
+: Check this box to customize the title, description, or image of the target content item for this teaser.
+  Leave it unchecked to show updates to the target content item if it is edited later.
 
 Title
 : The title is the title of the content item.
@@ -563,6 +578,10 @@ Image override
 
 Alignment
 : The alignment of the teaser image can be set to left (default), right, or top.
+
+Background color
+: Set the background color of the teaser item to either transparent or light grey.
+
 
 (user-manual-teaser-grid-block-label)=
 
