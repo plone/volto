@@ -560,9 +560,12 @@ _Teaser block configuration_
 Target
 : The target is either an existing content item in your Plone site that can be selected by clicking the list icon, or an external URL that can be typed into the text field and saved by clicking the right arrow when it appears after you start typing.
 
+
 Customize teaser content
 : Check this box to customize the title, description, or image of the target content item for this teaser.
   Leave it unchecked to show updates to the target content item if it is edited later.
+  ```{versionadded} 18.0.0-alpha.36
+  ```
 
 Title
 : The title is the title of the content item.
