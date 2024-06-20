@@ -586,6 +586,11 @@ msgstr "परिवर्तन सहेजे गए"
 msgid "Changes saved."
 msgstr "परिवर्तन सहेजे गए।"
 
+#. Default: "Check this box to customize the title, description, or image of the target content item for this teaser. Leave it unchecked to show updates to the target content item if it is edited later."
+#: components/manage/Blocks/Teaser/schema
+msgid "Check this box to customize the title, description, or image of the target content item for this teaser. Leave it unchecked to show updates to the target content item if it is edited later."
+msgstr ""
+
 #. Default: "Checkbox"
 #: components/manage/Widgets/SchemaWidget
 msgid "Checkbox"
@@ -865,6 +870,11 @@ msgstr "वर्तमान फ़िल्टर लागू हैं"
 #: components/manage/Preferences/ChangePassword
 msgid "Current password"
 msgstr "वर्तमान पासवर्ड"
+
+#. Default: "Customize teaser content"
+#: components/manage/Blocks/Teaser/schema
+msgid "Customize teaser content"
+msgstr ""
 
 #. Default: "Cut"
 #: components/manage/Actions/Actions
@@ -2745,6 +2755,11 @@ msgstr "संबंधित आइटम के रूप में इस आ
 #: components/manage/LinksToItem/LinksToItem
 msgid "Referencing this item with {relationship}"
 msgstr "{relationship} के साथ इस आइटम का संदर्भ"
+
+#. Default: "Refresh source content"
+#: components/manage/Blocks/Teaser/Data
+msgid "Refresh source content"
+msgstr ""
 
 #. Default: "Register"
 #: components/theme/Anontools/Anontools
