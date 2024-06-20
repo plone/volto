@@ -280,6 +280,7 @@ class AddLinkForm extends Component {
                       e.preventDefault();
                       e.stopPropagation();
                       this.clear();
+                      this.input.focus();
                     }}
                   >
                     <Icon name={clearSVG} size="24px" />
