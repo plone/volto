@@ -222,7 +222,7 @@ start-test-acceptance-frontend-dev: build-deps ## Start the Core Acceptance Fron
 
 .PHONY: start-test-acceptance-server test-acceptance-server
 start-test-acceptance-server test-acceptance-server: ## Start Test Acceptance Server Main Fixture (docker container)
-	docker run -it --rm -p 55001:55001 $(DOCKER_IMAGE_ACCEPTANCE)
+	$(MAKE) -C "./packages/volto/" start-test-acceptance-server
 
 .PHONY: start-test-acceptance-frontend
 start-test-acceptance-frontend: build-deps ## Start the Core Acceptance Frontend Fixture

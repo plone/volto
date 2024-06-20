@@ -36,18 +36,19 @@
   display: inline-block;
 }
 
-.block .block.selected::before,
-.block .block.selected:hover::before {
-  border-width: 1px;
-  border-color: rgba(120, 192, 215, 0.75);
-}
-
 [data-slate-editor='true'] {
   outline: none;
 }
 
+.block .block.hovered::before,
 .block .block:hover::before {
   border-color: rgba(120, 192, 215, 0.375);
+}
+
+.block .block.selected::before,
+.block .block.selected:hover::before {
+  border-width: 1px;
+  border-color: rgba(120, 192, 215, 0.75);
 }
 
 .block .block.multiSelected::before {
