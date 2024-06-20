@@ -586,6 +586,11 @@ msgstr "Modifiche salvate"
 msgid "Changes saved."
 msgstr "Modifiche salvate."
 
+#. Default: "Check this box to customize the title, description, or image of the target content item for this teaser. Leave it unchecked to show updates to the target content item if it is edited later."
+#: components/manage/Blocks/Teaser/schema
+msgid "Check this box to customize the title, description, or image of the target content item for this teaser. Leave it unchecked to show updates to the target content item if it is edited later."
+msgstr ""
+
 #. Default: "Checkbox"
 #: components/manage/Widgets/SchemaWidget
 msgid "Checkbox"
@@ -864,6 +869,11 @@ msgstr "Filtri attualmente applicati"
 #: components/manage/Preferences/ChangePassword
 msgid "Current password"
 msgstr "Password corrente"
+
+#. Default: "Customize teaser content"
+#: components/manage/Blocks/Teaser/schema
+msgid "Customize teaser content"
+msgstr ""
 
 #. Default: "Cut"
 #: components/manage/Actions/Actions
@@ -2743,6 +2753,11 @@ msgstr "Elementi collegati a questo contenuto come contenuto correlato"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Referencing this item with {relationship}"
 msgstr "Elementi collegati a questo contenuto in {relationship}"
+
+#. Default: "Refresh source content"
+#: components/manage/Blocks/Teaser/Data
+msgid "Refresh source content"
+msgstr ""
 
 #. Default: "Register"
 #: components/theme/Anontools/Anontools
