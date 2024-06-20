@@ -43,6 +43,7 @@ const LeftColumnFacets = (props) => {
     data,
     totalItems,
     facets,
+    facetsCount,
     setFacets,
     setSortOn,
     setSortOrder,
@@ -80,6 +81,7 @@ const LeftColumnFacets = (props) => {
                 querystring={querystring}
                 data={data}
                 facets={facets}
+                facetsCount={facetsCount}
                 setFacets={(f) => {
                   flushSync(() => {
                     setFacets(f);

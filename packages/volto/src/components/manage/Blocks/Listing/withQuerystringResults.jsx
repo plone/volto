@@ -29,7 +29,14 @@ export default function withQuerystringResults(WrappedComponent) {
     // save the path so it won't trigger dispatch on eager router location change
     const [initialPath] = React.useState(getBaseUrl(path));
 
-    const copyFields = ['limit', 'query', 'sort_on', 'sort_order', 'depth'];
+    const copyFields = [
+      'limit',
+      'query',
+      'sort_on',
+      'sort_order',
+      'depth',
+      'facets',
+    ];
     const { currentPage, setCurrentPage } = usePagination(id, 1);
     const adaptedQuery = Object.assign(
       variation?.fullobjects ? { fullobjects: 1 } : { metadata_fields: '_all' },

@@ -43,6 +43,7 @@ const RightColumnFacets = (props) => {
     data,
     totalItems,
     facets,
+    facetsCount,
     setFacets,
     setSortOn,
     setSortOrder,
@@ -147,6 +148,7 @@ const RightColumnFacets = (props) => {
                 querystring={querystring}
                 data={data}
                 facets={facets}
+                facetsCount={facetsCount}
                 isEditMode={isEditMode}
                 setFacets={(f) => {
                   flushSync(() => {
