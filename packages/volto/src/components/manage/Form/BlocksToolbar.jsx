@@ -99,7 +99,7 @@ export class BlocksToolbarComponent extends React.Component {
           ? blockConfig.cloneData
             ? blockConfig.cloneData(blockData)
             : [uuid(), cloneBlocks(blockData)]
-          : [blockId, cloneBlocks(blockData)]; // if cut/pasting blocks, we don't clone
+          : [blockId, blockData]; // if cut/pasting blocks, we don't clone
       })
       .filter((info) => !!info); // some blocks may refuse to be copied
     const blocksFieldname = getBlocksFieldname(formData);
