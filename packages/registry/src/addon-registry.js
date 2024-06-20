@@ -518,13 +518,25 @@ class AddonConfigurationRegistry {
             }
           }
 
+          /**
+           *Covers the use case that the file was a jsx, but was created using .js extension
+           *
+           * @param {*} filePath
+           */
+          function simpleSwapFileExtension(filePath) {
+            // Extract the current file extension
+            const currentExtension = filePath.split('.').pop();
+            return filePath.replace(`.${currentExtension}`, '.jsx');
+          }
+
           const targetPath = filename.replace(customPath, sourcePath);
           // We try to find the source to shadow with the exact path
           // and we try also with the extension changed in search for JS<->TS
           // correspondence
           if (
             fs.existsSync(targetPath) ||
-            fs.existsSync(changeFileExtension(targetPath))
+            fs.existsSync(changeFileExtension(targetPath)) ||
+            fs.existsSync(simpleSwapFileExtension(targetPath))
           ) {
             aliases[
               filename
