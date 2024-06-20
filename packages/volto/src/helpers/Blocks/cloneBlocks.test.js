@@ -13,7 +13,7 @@ describe('cloneBlocks', () => {
     const result = cloneBlocks(blocksData);
 
     expect(result.blocks_layout.items[0]).not.toBe('a');
-    expect(result.blocks[result.blocks_layout.items[0]]).not.toBe({
+    expect(result.blocks[result.blocks_layout.items[0]]).toStrictEqual({
       '@type': 'slate',
       value: 1,
     });
