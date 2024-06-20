@@ -19,16 +19,16 @@ Follow these steps.
     Modify the `to` prop to include the `return_url` parameter with the desired redirect URL.
     In this case, we want to redirect to the `/login` page after logout:
 
-```jsx
-<Link id="toolbar-logout" to={`${getBaseUrl(pathname)}/logout?return_url=/login`}>
-  <Icon
-    className="logout"
-    name={logoutSVG}
-    size="30px"
-    title={intl.formatMessage(messages.logout)}
-  />
-</Link>
-```
+    ```jsx
+    <Link id="toolbar-logout" to={`${getBaseUrl(pathname)}/logout?return_url=/login`}>
+      <Icon
+        className="logout"
+        name={logoutSVG}
+        size="30px"
+        title={intl.formatMessage(messages.logout)}
+      />
+    </Link>
+    ```
 
 3.  **Save the changes**: Save the modified {file}`PersonalTools.jsx` file.
 
