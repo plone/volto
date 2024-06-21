@@ -51,7 +51,7 @@ import { SidebarPopup } from '@plone/volto/components';
 A helper component is available in core in order to simplify the task of defining and rendering the settings for a block: the `BlockDataForm` component.
 
 ```{note}
-`BlockDataForm` is a convenience component around the already available in core `InlineForm` that takes care of some aspects exclusively for Volto Blocks, like Variants and schemaExtenders. You can still use `InlineForm` across Volto, but using `BlockDataForm` is recommeneded for the blocks settings use case.
+`BlockDataForm` is a convenience component around the already available in core `InlineForm` that takes care of some aspects exclusively for Volto Blocks, like Variants and schemaExtenders. You can still use `InlineForm` across Volto, but using `BlockDataForm` is recommended for the blocks settings use case.
 ```
 
 The edit block settings component needs to be described by a schema that matches the format used to serialize the content type definitions. The widgets that will be used in rendering the form follow the same algorithm that is used for the regular metadata fields for the content types. As an example of schema, it could look like this:
@@ -220,7 +220,7 @@ This situation will be fixed in subsequent Volto releases.
 #### PropDataName vs dataName
 
 - `dataName` is the prop inside `data` object, used for `link` and `image` mode.
-- `PropDataName` is the name of field wich value is `data`. It's used for `multiple` mode.
+- `PropDataName` is the name of field which value is `data`. It's used for `multiple` mode.
 
 For example:
 

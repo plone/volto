@@ -31,7 +31,7 @@ describe('<Pluggable />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('Works with an empy Plug', () => {
+  it('Works with an empty Plug', () => {
     const { container } = render(
       <PluggablesProvider>
         <Pluggable name="test" />

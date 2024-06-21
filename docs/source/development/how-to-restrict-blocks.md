@@ -12,7 +12,7 @@ myst:
 You can restrict blocks from being added to a content type using the `restricted` key in the configuration object.
 This key can be a boolean or a function that returns a boolean.
 If the block is restricted, it won't show in the chooser.
-However, it can still be added either programatically or by directly using the REST API, so this restriction only applies to the user interface.
+However, it can still be added either programmatically or by directly using the REST API, so this restriction only applies to the user interface.
 The function has this signature:
 
 ```ts

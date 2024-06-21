@@ -109,7 +109,7 @@ Tags.defaultProps = {
 export default Tags;
 ```
 
-The final path of the overrided component will be
+The final path of the overridden component will be
 `customizations/components/theme/Tags/Tags.jsx`.
 
 (advanced-customization-scenarios-label)=

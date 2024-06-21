@@ -15,7 +15,7 @@ services:
     environment:
       RAZZLE_INTERNAL_API_PATH: http://backend:8080/Plone
       # In case that you want to connect to and outside (non-docker) local instance
-      # coment the above, use the next line
+      # comment the above, use the next line
       # RAZZLE_INTERNAL_API_PATH: http://host.docker.internal:8080/Plone
       RAZZLE_API_PATH: http://127.0.0.1:8080/Plone
       HOST: 0.0.0.0

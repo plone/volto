@@ -9,7 +9,7 @@ myst:
 
 (volto-config-js)=
 
-# Programatically define the active add-ons and theme
+# Programmatically define the active add-ons and theme
 
 Volto allows you to define the active `add-ons` and `theme` via a file in the root of your project called `volto.config.js`.
 

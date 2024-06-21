@@ -40,7 +40,7 @@ back json to the frontend.
 You could also use the internal proxy for production setups. For convenience and for
 testing/demoing using the stock build, it is also enabled in production mode since
 Volto 14. But it is bad for performance because the server side running Node.js process
-is also responsable for generating the SSR HTML. With nginx, Apache or another
+is also responsible for generating the SSR HTML. With nginx, Apache or another
 'reverse proxy' you can also create an internal API mount which is more suited for
 that. For more deployment information see {doc}`../deploying/seamless-mode`.
 ```

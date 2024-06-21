@@ -12,7 +12,7 @@ myst:
 We can create a Volto Add-on that acts as a Volto theme Add-on, so we can detach it from the project files.
 The advantage is that you convert the project Volto theme in a pluggable one, so you can deploy the same theme in different projects.
 You can even have themes depending on conditions that you could inject on build time.
-This is the purpose of `volto.config.js`, the ability of declaring `add-ons` and the active `theme` programatically. See {ref}`volto-config-js` for more information.
+This is the purpose of `volto.config.js`, the ability of declaring `add-ons` and the active `theme` programmatically. See {ref}`volto-config-js` for more information.
 For convenience, it can also be set via a `THEME` environment variable.
 
 1. Add a `theme` key in your `volto.config.js` file in the root of your project:

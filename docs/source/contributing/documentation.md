@@ -152,7 +152,7 @@ make storybook-build
 
 To hyperlink to Storybook entries from the narrative documentation, you can use one of two syntaxes.
 
-Use HTML syntax to enable hyperlinking in development, within Netlify preview builds, and when the main Plone documenation is updated.
+Use HTML syntax to enable hyperlinking in development, within Netlify preview builds, and when the main Plone documentation is updated.
 Hyperlinking in development requires that you run both `make docs-html` and `make storybook-build` commands once, then whenever you update either the narrative documentation or the Storybook.
 
 % sphinx-examples does not render HTML

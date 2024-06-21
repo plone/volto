@@ -389,7 +389,7 @@ class UndoControlpanel extends Component {
   }
 
   /**
-   * Handle next and prev buttons visiblity when transactions are sorted
+   * Handle next and prev buttons visibility when transactions are sorted
    * @method handleSortedNextPrevButtons
    * @returns {undefined}
    */
@@ -412,7 +412,7 @@ class UndoControlpanel extends Component {
   }
 
   /**
-   * Handle next and prev buttons visiblity when transactions are not sorted
+   * Handle next and prev buttons visibility when transactions are not sorted
    * @method handleNotSortedNextPrevButtons
    * @returns {undefined}
    */
@@ -435,7 +435,7 @@ class UndoControlpanel extends Component {
   }
 
   /**
-   * Handle next, prev buttons and table visiblity
+   * Handle next, prev buttons and table visibility
    * @method handleTableVisiblity
    * @returns {undefined}
    */

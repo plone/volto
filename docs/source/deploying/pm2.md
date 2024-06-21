@@ -18,7 +18,7 @@ You can use the good old known supervisord as well. However, the supervisord pro
 Create a file `mywebsite.com.pm2.config.js` in your repository or on your server.
 
 ```{important}
-Make sure your PM2 config file sufix ends in `config.js`, otherwise PM2 will ignore it.
+Make sure your PM2 config file suffix ends in `config.js`, otherwise PM2 will ignore it.
 ```
 
 ```js

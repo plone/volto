@@ -60,7 +60,7 @@ Volto should work on older Plone versions as well, since Plone REST API supports
 We do not support or test Plone versions that were released before Volto existed.
 
 ```{seealso}
-See also [Plone REST API Python and Plone compatability](https://github.com/plone/plone.restapi#python--plone-compatibility).
+See also [Plone REST API Python and Plone compatibility](https://github.com/plone/plone.restapi#python--plone-compatibility).
 ```
 
 

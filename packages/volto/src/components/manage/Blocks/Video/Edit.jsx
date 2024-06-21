@@ -116,7 +116,7 @@ class Edit extends Component {
   /**
    * Keydown handler on Variant Menu Form
    * This is required since the ENTER key is already mapped to a onKeyDown
-   * event and needs to be overriden with a child onKeyDown.
+   * event and needs to be overridden with a child onKeyDown.
    * @method onKeyDownVariantMenuForm
    * @param {Object} e Event object
    * @returns {undefined}

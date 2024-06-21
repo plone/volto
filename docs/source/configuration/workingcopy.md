@@ -27,5 +27,5 @@ Volto working copy support features include:
 
 - "Checkout" any content (except Plone site object) and create a working copy of that content
 - Work on the working copy
-- "Checkin" the working copy by applying the changes into the original (baseline) object
+- "Check in" the working copy by applying the changes into the original (baseline) object
 - Cancel the working copy if required

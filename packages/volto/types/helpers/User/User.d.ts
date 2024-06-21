@@ -11,7 +11,7 @@ export function userHasRoles(user: any, roles?: any[]): boolean;
  */
 export function isManager(user: any): boolean;
 /**
- * Checks if the user can assing group.
+ * Checks if the user can assign group.
  * @method canAssignGroup
  * @returns {boolean}
  */
