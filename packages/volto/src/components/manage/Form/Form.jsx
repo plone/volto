@@ -774,7 +774,14 @@ class Form extends Component {
                                     id={field}
                                     fieldSet={fieldset.title.toLowerCase()}
                                     formData={formData}
-                                    focus={this.state.inFocus[field]}
+                                    focus={
+                                      this.state.isClient &&
+                                      document
+                                        .getElementById('sidebar-metadata')
+                                        ?.contains(document.activeElement)
+                                        ? this.state.inFocus[field]
+                                        : false
+                                    }
                                     value={formData?.[field]}
                                     required={
                                       schema.required.indexOf(field) !== -1
