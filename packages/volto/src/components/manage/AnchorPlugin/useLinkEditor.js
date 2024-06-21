@@ -34,7 +34,7 @@ const useLinkEditor = () => {
   const savedPosition = React.useRef();
   const anchorNode = React.useRef();
 
-  if (anchorNode.current && !savedPosition.current) {
+  if (anchorNode.current) {
     savedPosition.current = getPositionStyle(anchorNode.current);
   }
 
