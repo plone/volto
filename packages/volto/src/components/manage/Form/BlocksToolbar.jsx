@@ -20,6 +20,7 @@ import copySVG from '@plone/volto/icons/copy.svg';
 import cutSVG from '@plone/volto/icons/cut.svg';
 import pasteSVG from '@plone/volto/icons/paste.svg';
 import trashSVG from '@plone/volto/icons/delete.svg';
+import { cloneBlocks } from '@plone/volto/helpers/Blocks/cloneBlocks';
 
 export class BlocksToolbarComponent extends React.Component {
   constructor(props) {
@@ -79,9 +80,9 @@ export class BlocksToolbarComponent extends React.Component {
     const { formData } = this.props;
     const blocksFieldname = getBlocksFieldname(formData);
     const blocks = formData[blocksFieldname];
-    const blocksData = this.props.selectedBlocks.map(
-      (blockId) => blocks[blockId],
-    );
+    const blocksData = this.props.selectedBlocks
+      .map((blockId) => [blockId, blocks[blockId]])
+      .filter(([blockId]) => !!blockId); // Removes null blocks
     this.props.setBlocksClipboard({ [actionType]: blocksData });
     this.props.onSetSelectedBlocks([]);
   }
@@ -91,14 +92,14 @@ export class BlocksToolbarComponent extends React.Component {
     const mode = Object.keys(blocksClipboard).includes('cut') ? 'cut' : 'copy';
     const blocksData = blocksClipboard[mode] || [];
     const cloneWithIds = blocksData
-      .filter((blockData) => !!blockData['@type'])
-      .map((blockData) => {
+      .filter(([blockId, blockData]) => blockId && !!blockData['@type']) // Removes null blocks
+      .map(([blockId, blockData]) => {
         const blockConfig = config.blocks.blocksConfig[blockData['@type']];
         return mode === 'copy'
           ? blockConfig.cloneData
             ? blockConfig.cloneData(blockData)
-            : [uuid(), blockData]
-          : [uuid(), blockData]; // if cut/pasting blocks, we don't clone
+            : [uuid(), cloneBlocks(blockData)]
+          : [blockId, blockData]; // if cut/pasting blocks, we don't clone
       })
       .filter((info) => !!info); // some blocks may refuse to be copied
     const blocksFieldname = getBlocksFieldname(formData);
