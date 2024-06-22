@@ -189,8 +189,8 @@ const UnconnectedImageInput = (props) => {
                   </Loader>
                 </Dimmer>
               )}
-              <img src={imageBlockSVG} alt="" />
-              <div>{description || intl.formatMessage(messages.addImage)}</div>
+              <img src={imageBlockSVG} alt="" className="placeholder" />
+              <p>{description || intl.formatMessage(messages.addImage)}</p>
               <div className="toolbar-wrapper">
                 <div className="toolbar-inner" ref={linkEditor.anchorNode}>
                   {hideObjectBrowserPicker === false && (
