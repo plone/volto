@@ -497,9 +497,9 @@ msgstr ""
 msgid "Browse"
 msgstr "Selaa"
 
-#. Default: "Browse the site, drop an image, or type an URL"
-#: components/manage/Blocks/Image/Edit
-msgid "Browse the site, drop an image, or type an URL"
+#. Default: "Browse the site, drop an image, or use a URL"
+#: components/manage/Widgets/ImageWidget
+msgid "Browse the site, drop an image, or type a URL"
 msgstr "Selaa sivustoa, raahaa ja pudota kuva, tai syötä URL"
 
 #. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
@@ -623,6 +623,7 @@ msgid "Choose a file"
 msgstr "Valitse tiedosto"
 
 #. Default: "Clear"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
 msgstr "Tyhjennä"
@@ -2136,7 +2137,7 @@ msgstr "Kartat"
 #. Default: "Maps URL"
 #: components/manage/Blocks/Maps/schema
 msgid "Maps URL"
-msgstr "Kartan URL"
+msgstr "Karta URL"
 
 #. Default: "Maximum length is {len}."
 #: helpers/MessageLabels/MessageLabels
@@ -2486,6 +2487,7 @@ msgid "Open menu"
 msgstr "Avaa valikko"
 
 #. Default: "Open object browser"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 #: components/manage/Widgets/ObjectBrowserWidget
 msgid "Open object browser"
 msgstr ""
@@ -2674,7 +2676,7 @@ msgstr "Esikatselu"
 #. Default: "Preview Image URL"
 #: components/manage/Blocks/Video/schema
 msgid "Preview Image URL"
-msgstr "Esikatselukuvan URL-osoite"
+msgstr "Esikatselukuva URL-osoite"
 
 #. Default: "Profile"
 #: components/manage/Toolbar/PersonalTools
@@ -3409,7 +3411,7 @@ msgstr "Lähde"
 #. Default: "Specify a youtube video or playlist url"
 #: components/manage/Blocks/Video/Edit
 msgid "Specify a youtube video or playlist url"
-msgstr "Syötä Youtube-videon tai soittolistan URL."
+msgstr "Syötä Youtube-videon tai soittolista URL."
 
 #. Default: "Split"
 #: components/manage/Diff/Diff
@@ -3473,6 +3475,11 @@ msgstr "Tyyli"
 #: components/theme/ContactForm/ContactForm
 msgid "Subject"
 msgstr "Aihe"
+
+#. Default: "Submit"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
+msgid "Submit"
+msgstr ""
 
 #. Default: "Success"
 #: components/manage/Actions/Actions
@@ -4021,7 +4028,7 @@ msgid "Upload files"
 msgstr "Lähetä palvelimelle tiedostoja"
 
 #. Default: "Uploading image"
-#: components/manage/Blocks/Image/Edit
+#: components/manage/Widgets/ImageWidget
 msgid "Uploading image"
 msgstr "Kuvaa ladataan"
 
@@ -4571,6 +4578,11 @@ msgstr "Käyttäjätunnukseni"
 msgid "leadimage"
 msgstr "nostokuva"
 
+#. Default: "Enter a URL to an image"
+#: components/manage/Widgets/ImageWidget
+msgid "linkAnImage"
+msgstr ""
+
 #. Default: "Listing"
 #: config/Blocks
 msgid "listing"
@@ -4664,6 +4676,11 @@ msgstr "muut"
 #: components/manage/Contents/ContentsItem
 msgid "pending"
 msgstr "odottaa"
+
+#. Default: "Pick an existing image"
+#: components/manage/Widgets/ImageWidget
+msgid "pickAnImage"
+msgstr ""
 
 #. Default: "Private"
 #: components/manage/Contents/ContentsItem
@@ -4934,6 +4951,11 @@ msgstr ""
 #. Default: "Update from version {origin} to {destination}"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "upgradeVersions"
+msgstr ""
+
+#. Default: "Upload an image from your computer"
+#: components/manage/Widgets/ImageWidget
+msgid "uploadAnImage"
 msgstr ""
 
 #. Default: "Input must be valid url (www.something.com or http(s)://www.something.com)"
