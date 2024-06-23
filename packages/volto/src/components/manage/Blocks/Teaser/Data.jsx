@@ -70,14 +70,20 @@ const TeaserData = (props) => {
   };
 
   const refresh = () => {
-    dispatch(
-      getContent(flattenToAppURL(data.href[0]['@id']), null, `${block}-teaser`),
-    ).then((resp) => {
-      if (resp) {
-        let blockData = dataTransformer(resp, data);
-        onChangeBlock(block, blockData);
-      }
-    });
+    if (data.href?.[0]?.['@id']) {
+      dispatch(
+        getContent(
+          flattenToAppURL(data.href[0]['@id']),
+          null,
+          `${block}-teaser`,
+        ),
+      ).then((resp) => {
+        if (resp) {
+          let blockData = dataTransformer(resp, data);
+          onChangeBlock(block, blockData);
+        }
+      });
+    }
   };
 
   const isReseteable =
@@ -102,6 +108,7 @@ const TeaserData = (props) => {
         aria-label={intl.formatMessage(messages.refreshTeaser)}
         basic
         onClick={() => refresh()}
+        disabled={isEmpty(data.href)}
       >
         {intl.formatMessage(messages.refreshTeaser)}
         <Icon name={reloadSVG} size="20px" color="#00000099" />
