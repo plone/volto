@@ -11,6 +11,8 @@ jobs:
       matrix:
         node-version: [18.x, 20.x]
     steps:
+      - uses: actions/checkout@v4
+
       - name: Set up testing infrastructure
         uses: ./.github/actions/pre_test_setup
         with:
@@ -57,6 +59,8 @@ jobs:
       matrix:
         node-version: [18.x, 20.x]
     steps:
+      - uses: actions/checkout@v4
+
       - name: Set up testing infrastructure
         uses: ./.github/actions/pre_test_setup
         with:
@@ -103,6 +107,8 @@ jobs:
       matrix:
         node-version: [18.x, 20.x]
     steps:
+      - uses: actions/checkout@v4
+
       - name: Set up testing infrastructure
         uses: ./.github/actions/pre_test_setup
         with:
@@ -149,6 +155,8 @@ jobs:
       matrix:
         node-version: [18.x, 20.x]
     steps:
+      - uses: actions/checkout@v4
+
       - name: Set up testing infrastructure
         uses: ./.github/actions/pre_test_setup
         with:
@@ -195,6 +203,8 @@ jobs:
       matrix:
         node-version: [18.x, 20.x]
     steps:
+      - uses: actions/checkout@v4
+
       - name: Set up testing infrastructure
         uses: ./.github/actions/pre_test_setup
         with:
@@ -241,6 +251,8 @@ jobs:
       matrix:
         node-version: [18.x, 20.x]
     steps:
+      - uses: actions/checkout@v4
+
       - name: Set up testing infrastructure
         uses: ./.github/actions/pre_test_setup
         with:
@@ -286,6 +298,8 @@ jobs:
       matrix:
         node-version: [18.x]
     steps:
+      - uses: actions/checkout@v4
+
       - name: Set up testing infrastructure
         uses: ./.github/actions/pre_test_setup
         with:
@@ -332,6 +346,8 @@ jobs:
       matrix:
         node-version: [18.x]
     steps:
+      - uses: actions/checkout@v4
+
       - name: Set up testing infrastructure
         uses: ./.github/actions/pre_test_setup
         with:
@@ -446,6 +462,8 @@ jobs:
       matrix:
         node-version: [18.x]
     steps:
+      - uses: actions/checkout@v4
+
       - name: Set up testing infrastructure
         uses: ./.github/actions/pre_test_setup
         with:
@@ -493,6 +511,8 @@ jobs:
         node-version: [18.x]
         # python-version: [3.7]
     steps:
+      - uses: actions/checkout@v4
+
       - name: Set up testing infrastructure
         uses: ./.github/actions/pre_test_setup
         with:
@@ -705,6 +725,8 @@ jobs:
       matrix:
         node-version: [18.x]
     steps:
+      - uses: actions/checkout@v4
+
       - name: Set up testing infrastructure
         uses: ./.github/actions/pre_test_setup
         with:
@@ -753,6 +775,8 @@ jobs:
       matrix:
         node-version: [18.x]
     steps:
+      - uses: actions/checkout@v4
+
       - name: Set up testing infrastructure
         uses: ./.github/actions/pre_test_setup
         with:
