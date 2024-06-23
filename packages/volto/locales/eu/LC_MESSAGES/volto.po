@@ -499,9 +499,9 @@ msgstr ""
 msgid "Browse"
 msgstr "Arakatu"
 
-#. Default: "Browse the site, drop an image, or type an URL"
-#: components/manage/Blocks/Image/Edit
-msgid "Browse the site, drop an image, or type an URL"
+#. Default: "Browse the site, drop an image, or use a URL"
+#: components/manage/Widgets/ImageWidget
+msgid "Browse the site, drop an image, or type a URL"
 msgstr "Atarian bilatu, irudi bat hona arrastatu edo URL bat idatzi"
 
 #. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
@@ -625,6 +625,7 @@ msgid "Choose a file"
 msgstr "Aukeratu fitxategia"
 
 #. Default: "Clear"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
 msgstr "Garbitu"
@@ -2488,6 +2489,7 @@ msgid "Open menu"
 msgstr "Menua ireki"
 
 #. Default: "Open object browser"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 #: components/manage/Widgets/ObjectBrowserWidget
 msgid "Open object browser"
 msgstr "Ireki elementu bilatzailea"
@@ -3476,6 +3478,11 @@ msgstr "Estiloa"
 msgid "Subject"
 msgstr "Gaia"
 
+#. Default: "Submit"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
+msgid "Submit"
+msgstr ""
+
 #. Default: "Success"
 #: components/manage/Actions/Actions
 #: components/manage/Aliases/Aliases
@@ -4023,7 +4030,7 @@ msgid "Upload files"
 msgstr "Kargatu fitxategiak"
 
 #. Default: "Uploading image"
-#: components/manage/Blocks/Image/Edit
+#: components/manage/Widgets/ImageWidget
 msgid "Uploading image"
 msgstr "Irudia kargatzen"
 
@@ -4573,6 +4580,11 @@ msgstr "Nire erabiltzaile izena da"
 msgid "leadimage"
 msgstr "Irudi nagusiaren eremua"
 
+#. Default: "Enter a URL to an image"
+#: components/manage/Widgets/ImageWidget
+msgid "linkAnImage"
+msgstr ""
+
 #. Default: "Listing"
 #: config/Blocks
 msgid "listing"
@@ -4666,6 +4678,11 @@ msgstr "besteak"
 #: components/manage/Contents/ContentsItem
 msgid "pending"
 msgstr "Zain"
+
+#. Default: "Pick an existing image"
+#: components/manage/Widgets/ImageWidget
+msgid "pickAnImage"
+msgstr ""
 
 #. Default: "Private"
 #: components/manage/Contents/ContentsItem
@@ -4937,6 +4954,11 @@ msgstr "Aktibatu/Desaktibatu"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "upgradeVersions"
 msgstr "Eguneratu {origin} bertsiotik {destination} bertsiora"
+
+#. Default: "Upload an image from your computer"
+#: components/manage/Widgets/ImageWidget
+msgid "uploadAnImage"
+msgstr ""
 
 #. Default: "Input must be valid url (www.something.com or http(s)://www.something.com)"
 #: helpers/MessageLabels/MessageLabels

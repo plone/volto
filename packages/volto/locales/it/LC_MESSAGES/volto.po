@@ -492,9 +492,9 @@ msgstr "Relazioni corrotte"
 msgid "Browse"
 msgstr "Sfoglia"
 
-#. Default: "Browse the site, drop an image, or type an URL"
-#: components/manage/Blocks/Image/Edit
-msgid "Browse the site, drop an image, or type an URL"
+#. Default: "Browse the site, drop an image, or use a URL"
+#: components/manage/Widgets/ImageWidget
+msgid "Browse the site, drop an image, or type a URL"
 msgstr "Sfoglia i contenuti, rilascia un'immagine o digita un URL"
 
 #. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
@@ -618,6 +618,7 @@ msgid "Choose a file"
 msgstr "Scegli un file"
 
 #. Default: "Clear"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
 msgstr "Annulla"
@@ -2481,6 +2482,7 @@ msgid "Open menu"
 msgstr "Apri menu"
 
 #. Default: "Open object browser"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 #: components/manage/Widgets/ObjectBrowserWidget
 msgid "Open object browser"
 msgstr "Apri object browser"
@@ -3469,6 +3471,11 @@ msgstr "Aspetto"
 msgid "Subject"
 msgstr "Oggetto"
 
+#. Default: "Submit"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
+msgid "Submit"
+msgstr ""
+
 #. Default: "Success"
 #: components/manage/Actions/Actions
 #: components/manage/Aliases/Aliases
@@ -4016,7 +4023,7 @@ msgid "Upload files"
 msgstr "Carica file"
 
 #. Default: "Uploading image"
-#: components/manage/Blocks/Image/Edit
+#: components/manage/Widgets/ImageWidget
 msgid "Uploading image"
 msgstr "Caricamento dell'immagine"
 
@@ -4566,6 +4573,11 @@ msgstr "Il mio nome utente è"
 msgid "leadimage"
 msgstr "Immagine di testata"
 
+#. Default: "Enter a URL to an image"
+#: components/manage/Widgets/ImageWidget
+msgid "linkAnImage"
+msgstr "Inserisci l'URL di un'immagine"
+
 #. Default: "Listing"
 #: config/Blocks
 msgid "listing"
@@ -4659,6 +4671,11 @@ msgstr "altre"
 #: components/manage/Contents/ContentsItem
 msgid "pending"
 msgstr "In attesa"
+
+#. Default: "Pick an existing image"
+#: components/manage/Widgets/ImageWidget
+msgid "pickAnImage"
+msgstr "Seleziona un'immagine esistente"
 
 #. Default: "Private"
 #: components/manage/Contents/ContentsItem
@@ -4930,6 +4947,11 @@ msgstr "Toggle"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "upgradeVersions"
 msgstr "Aggiorna da versione {origin} a {destination}"
+
+#. Default: "Upload an image from your computer"
+#: components/manage/Widgets/ImageWidget
+msgid "uploadAnImage"
+msgstr "Carica un'immagine dal tuo computer"
 
 #. Default: "Input must be valid url (www.something.com or http(s)://www.something.com)"
 #: helpers/MessageLabels/MessageLabels

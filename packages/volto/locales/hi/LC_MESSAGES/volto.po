@@ -492,9 +492,9 @@ msgstr "टूटे संबंध"
 msgid "Browse"
 msgstr "ब्राउज़ करें"
 
-#. Default: "Browse the site, drop an image, or type an URL"
-#: components/manage/Blocks/Image/Edit
-msgid "Browse the site, drop an image, or type an URL"
+#. Default: "Browse the site, drop an image, or use a URL"
+#: components/manage/Widgets/ImageWidget
+msgid "Browse the site, drop an image, or type a URL"
 msgstr "साइट ब्राउज़ करें, एक छवि छोड़ें, या एक URL टाइप करें"
 
 #. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
@@ -618,6 +618,7 @@ msgid "Choose a file"
 msgstr "एक फ़ाइल चुनें"
 
 #. Default: "Clear"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
 msgstr "साफ़ करें"
@@ -2481,6 +2482,7 @@ msgid "Open menu"
 msgstr "मेन्यू खोलें"
 
 #. Default: "Open object browser"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 #: components/manage/Widgets/ObjectBrowserWidget
 msgid "Open object browser"
 msgstr "ऑब्जेक्ट ब्राउज़र खोलें"
@@ -3469,6 +3471,11 @@ msgstr "स्टाइलिंग"
 msgid "Subject"
 msgstr "विषय"
 
+#. Default: "Submit"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
+msgid "Submit"
+msgstr ""
+
 #. Default: "Success"
 #: components/manage/Actions/Actions
 #: components/manage/Aliases/Aliases
@@ -4016,7 +4023,7 @@ msgid "Upload files"
 msgstr "फ़ाइलें अपलोड करें"
 
 #. Default: "Uploading image"
-#: components/manage/Blocks/Image/Edit
+#: components/manage/Widgets/ImageWidget
 msgid "Uploading image"
 msgstr "इमेज अपलोड हो रहा है"
 
@@ -4566,6 +4573,11 @@ msgstr "मेरा उपयोगकर्ता नाम है"
 msgid "leadimage"
 msgstr "प्रमुख छवि फ़ील्ड"
 
+#. Default: "Enter a URL to an image"
+#: components/manage/Widgets/ImageWidget
+msgid "linkAnImage"
+msgstr ""
+
 #. Default: "Listing"
 #: config/Blocks
 msgid "listing"
@@ -4659,6 +4671,11 @@ msgstr "अन्य"
 #: components/manage/Contents/ContentsItem
 msgid "pending"
 msgstr "अपूर्ण"
+
+#. Default: "Pick an existing image"
+#: components/manage/Widgets/ImageWidget
+msgid "pickAnImage"
+msgstr ""
 
 #. Default: "Private"
 #: components/manage/Contents/ContentsItem
@@ -4930,6 +4947,11 @@ msgstr "टॉगल"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "upgradeVersions"
 msgstr "{origin} से {destination} में अपडेट करें"
+
+#. Default: "Upload an image from your computer"
+#: components/manage/Widgets/ImageWidget
+msgid "uploadAnImage"
+msgstr ""
 
 #. Default: "Input must be valid url (www.something.com or http(s)://www.something.com)"
 #: helpers/MessageLabels/MessageLabels
