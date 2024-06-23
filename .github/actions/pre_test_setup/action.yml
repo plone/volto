@@ -1,4 +1,4 @@
-name: pre test Setup
+name: Set up testing infrastructure 
 
 runs:
   using: "composite"
@@ -11,7 +11,6 @@ runs:
         node-version: ${{ inputs.node-version }}
 
     - name: Enable corepack
-      shell: bash
       run: corepack enable
 
     - name: Get pnpm store directory
@@ -27,19 +26,18 @@ runs:
         restore-keys: |
           ${{ runner.os }}-pnpm-store-
 
-    - name: Install dependencies
-      shell: bash
-      run: pnpm i
-
     - name: Cache Cypress Binary
+      id: cache-cypress-binary
       uses: actions/cache@v4
       with:
         path: ~/.cache/Cypress
         key: binary-${{ inputs.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
 
+    - name: Install Volto dependencies
+      run: pnpm i
+
     - name: Install Cypress if not in cache
       if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
-      shell: bash
       working-directory: packages/volto
       run: make cypress-install
 
