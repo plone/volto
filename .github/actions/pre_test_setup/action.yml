@@ -11,6 +11,7 @@ runs:
         node-version: ${{ inputs.node-version }}
 
     - name: Enable corepack
+      shell: bash
       run: corepack enable
 
     - name: Get pnpm store directory
