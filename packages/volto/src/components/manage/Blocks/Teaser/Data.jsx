@@ -77,12 +77,14 @@ const TeaserData = (props) => {
           null,
           `${block}-teaser`,
         ),
-      ).then((resp) => {
-        if (resp) {
-          let blockData = dataTransformer(resp, data);
-          onChangeBlock(block, blockData);
-        }
-      });
+      )
+        .then((resp) => {
+          if (resp) {
+            let blockData = dataTransformer(resp, data);
+            onChangeBlock(block, blockData);
+          }
+        })
+        .catch((e) => {});
     }
   };
 
