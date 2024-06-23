@@ -15,6 +15,8 @@ jobs:
 
       - name: Pretest-Setup
         uses: ./.github/actions/pre_test_setup
+        with:
+          node-version: ${{ matrix.node-version }}
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -57,8 +59,12 @@ jobs:
       matrix:
         node-version: [18.x, 20.x]
     steps:
+      - uses: actions/checkout@v4
+
       - name: Pretest-Setup
         uses: ./.github/actions/pre_test_setup
+        with:
+          node-version: ${{ matrix.node-version }}
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -101,8 +107,12 @@ jobs:
       matrix:
         node-version: [18.x, 20.x]
     steps:
+      - uses: actions/checkout@v4
+
       - name: Pretest-Setup
         uses: ./.github/actions/pre_test_setup
+        with:
+          node-version: ${{ matrix.node-version }}
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -145,8 +155,12 @@ jobs:
       matrix:
         node-version: [18.x, 20.x]
     steps:
+      - uses: actions/checkout@v4
+
       - name: Pretest-Setup
         uses: ./.github/actions/pre_test_setup
+        with:
+          node-version: ${{ matrix.node-version }}
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -189,8 +203,12 @@ jobs:
       matrix:
         node-version: [18.x, 20.x]
     steps:
+      - uses: actions/checkout@v4
+
       - name: Pretest-Setup
         uses: ./.github/actions/pre_test_setup
+        with:
+          node-version: ${{ matrix.node-version }}
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -233,8 +251,12 @@ jobs:
       matrix:
         node-version: [18.x, 20.x]
     steps:
+      - uses: actions/checkout@v4
+
       - name: Pretest-Setup
         uses: ./.github/actions/pre_test_setup
+        with:
+          node-version: ${{ matrix.node-version }}
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -276,8 +298,12 @@ jobs:
       matrix:
         node-version: [18.x]
     steps:
+      - uses: actions/checkout@v4
+
       - name: Pretest-Setup
         uses: ./.github/actions/pre_test_setup
+        with:
+          node-version: ${{ matrix.node-version }}
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -320,8 +346,12 @@ jobs:
       matrix:
         node-version: [18.x]
     steps:
+      - uses: actions/checkout@v4
+
       - name: Pretest-Setup
         uses: ./.github/actions/pre_test_setup
+        with:
+          node-version: ${{ matrix.node-version }}
 
       - name: Cypress Coresandbox Acceptance tests
         uses: cypress-io/github-action@v6
@@ -432,8 +462,12 @@ jobs:
       matrix:
         node-version: [18.x]
     steps:
+      - uses: actions/checkout@v4
+
       - name: Pretest-Setup
         uses: ./.github/actions/pre_test_setup
+        with:
+          node-version: ${{ matrix.node-version }}
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -477,8 +511,12 @@ jobs:
         node-version: [18.x]
         # python-version: [3.7]
     steps:
+      - uses: actions/checkout@v4
+
       - name: Pretest-Setup
         uses: ./.github/actions/pre_test_setup
+        with:
+          node-version: ${{ matrix.node-version }}
 
       # # python setup (temporary, while p.a.iterate changes are in a PR)
       # - name: Set up Python ${{ matrix.python-version }}
@@ -687,8 +725,12 @@ jobs:
       matrix:
         node-version: [18.x]
     steps:
+      - uses: actions/checkout@v4
+
       - name: Pretest-Setup
         uses: ./.github/actions/pre_test_setup
+        with:
+          node-version: ${{ matrix.node-version }}
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
@@ -733,8 +775,12 @@ jobs:
       matrix:
         node-version: [18.x]
     steps:
+      - uses: actions/checkout@v4
+
       - name: Pretest-Setup
         uses: ./.github/actions/pre_test_setup
+        with:
+          node-version: ${{ matrix.node-version }}
 
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6

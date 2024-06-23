@@ -1,50 +1,49 @@
 name: pre test Setup
 
 runs:
-  using: 'composite'
+  using: "composite"
+  steps:
+    - uses: actions/checkout@v4
 
-permissions:
-  contents: write
+    - name: Use Node.js ${{ inputs.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.node-version }}
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+    - name: Enable corepack
+      shell: bash
+      run: corepack enable
 
-    steps:
-      - uses: actions/checkout@v4
+    - name: Get pnpm store directory
+      shell: bash
+      run: |
+        echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-      # node setup
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
+    - uses: actions/cache@v4
+      name: Setup pnpm cache
+      with:
+        path: ${{ env.STORE_PATH }}
+        key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-pnpm-store-
 
-      - name: Enable corepack
-        run: corepack enable
+    - name: Install dependencies
+      shell: bash
+      run: pnpm i
 
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+    - name: Cache Cypress Binary
+      uses: actions/cache@v4
+      with:
+        path: ~/.cache/Cypress
+        key: binary-${{ inputs.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
 
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+    - name: Install Cypress if not in cache
+      if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
+      shell: bash
+      working-directory: packages/volto
+      run: make cypress-install
 
-      - name: Cache Cypress Binary
-        id: cache-cypress-binary
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/Cypress
-          key: binary-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
-
-      - run: pnpm i
-
-      - name: Install Cypress if not in cache
-        if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
-        working-directory: packages/volto
-        run: make cypress-install
+inputs:
+  node-version:
+    description: 'Node.js version'
+    required: true
