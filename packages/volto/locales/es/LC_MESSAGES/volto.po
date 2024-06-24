@@ -1851,6 +1851,11 @@ msgstr "Intervalo anual"
 msgid "Invalid Block"
 msgstr "Bloque no válido: se eliminará al guardar"
 
+#. Default: "Invalid teaser source"
+#: components/manage/Blocks/Teaser/Data
+msgid "Invalid teaser source"
+msgstr ""
+
 #. Default: "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
 #: helpers/MessageLabels/MessageLabels
 msgid "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
