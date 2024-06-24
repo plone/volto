@@ -3507,21 +3507,16 @@ msgstr "Canvia a"
 msgid "Table"
 msgstr "Taula"
 
+#. Default: "Table Of Content {e}"
+#: components/manage/Blocks/ToC/View
+msgid "Table Of Content"
+msgstr ""
+
 #. Default: "Table of Contents"
 #: components/manage/Blocks/ToC/variations/DefaultTocRenderer
 #: components/manage/Blocks/ToC/variations/HorizontalMenu
 msgid "Table of Contents"
 msgstr "Taula de continguts"
-
-#. Default: "Table-Of-Content-Link"
-#: components/manage/Blocks/ToC/variations/DefaultTocRenderer
-msgid "Table-Of-Content-Link"
-msgstr ""
-
-#. Default: "Table-of-Content-Link"
-#: components/manage/Blocks/ToC/variations/HorizontalMenu
-msgid "Table-of-Content-Link"
-msgstr ""
 
 #. Default: "Tabular view"
 #: config/Views
