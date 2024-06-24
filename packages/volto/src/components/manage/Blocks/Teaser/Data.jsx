@@ -2,9 +2,13 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { defineMessages, useIntl } from 'react-intl';
 import { Button } from 'semantic-ui-react';
-import { Icon } from '@plone/volto/components';
+import { toast } from 'react-toastify';
+import { Icon, Toast } from '@plone/volto/components';
 import { BlockDataForm } from '@plone/volto/components/manage/Form';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import {
+  flattenToAppURL,
+  messages as defaultMessages,
+} from '@plone/volto/helpers';
 import { getContent } from '@plone/volto/actions';
 import { isEmpty } from 'lodash';
 
@@ -19,6 +23,10 @@ const messages = defineMessages({
   refreshTeaser: {
     id: 'Refresh source content',
     defaultMessage: 'Refresh source content',
+  },
+  invalidTeaser: {
+    id: 'Invalid teaser source',
+    defaultMessage: 'Invalid teaser source',
   },
 });
 
@@ -84,7 +92,15 @@ const TeaserData = (props) => {
             onChangeBlock(block, blockData);
           }
         })
-        .catch((e) => {});
+        .catch((e) => {
+          toast.error(
+            <Toast
+              error
+              title={props.intl.formatMessage(defaultMessages.error)}
+              content={props.intl.formatMessage(messages.invalidTeaser)}
+            />,
+          );
+        });
     }
   };
 
