@@ -2472,7 +2472,7 @@ msgstr "OK"
 #. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines."
 #: components/manage/Widgets/IdWidget
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines."
-msgstr ""
+msgstr "Nur 7-Bit Zeichen sind erlaubt. Darf keine Großbuchstaben und Sonderzeichen enthalten: <, >, &, #, /, ? oder andere, die in URLs nicht zulässig sind. Darf nicht beginnen mit: _, aq_, @@, ++. Darf nicht mit __ enden. Kann nicht sein: request,contributors, ., .., "". Darf keine neuen Zeilen enthalten."
 
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
@@ -2495,12 +2495,12 @@ msgstr "Objekt-Browser öffnen"
 #. Default: "Order"
 #: components/manage/Sidebar/Sidebar
 msgid "Order"
-msgstr ""
+msgstr "Reihung"
 
 #. Default: "Ordered"
 #: components/manage/Blocks/ToC/Schema
 msgid "Ordered"
-msgstr ""
+msgstr "Sortiert"
 
 #. Default: "Origin"
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
