@@ -1,10 +1,12 @@
 describe('Add Content Tests', () => {
+  let prefixPath;
   beforeEach(() => {
     cy.intercept('GET', `/**/*?expand*`).as('content');
     // give a logged in editor and the site root
     cy.autologin();
     cy.visit('/');
     cy.wait('@content');
+    prefixPath = Cypress.env('prefixPath') || '';
   });
 
   it('As editor I can add a file', function () {
@@ -222,7 +224,7 @@ describe('Add Content Tests', () => {
     // and the link should show up on the link view
     cy.contains('/link-target');
     // and the link redirects to the link target
-    cy.get('main a[href="/link-target"]').click();
+    cy.get(`main a[href="${prefixPath}/link-target"]`).click();
     cy.url().should('eq', Cypress.config().baseUrl + '/link-target');
     cy.get('main').contains('Link Target');
   });
