@@ -5,7 +5,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { Dropdown, Table, Checkbox, Loader } from 'semantic-ui-react';
+import { Dropdown, Table, Checkbox } from 'semantic-ui-react';
 import trashSVG from '@plone/volto/icons/delete.svg';
 import editSVG from '@plone/volto/icons/editing.svg';
 import { Icon, Toast } from '@plone/volto/components';
@@ -152,35 +152,31 @@ class RenderUsers extends Component {
           </Table.Cell>
         ))}
         <Table.Cell textAlign="right">
-          {this.props.loading === true ? (
-            <Loader active inline />
-          ) : (
-            this.canDeleteUser() && (
-              <Dropdown icon="ellipsis horizontal">
-                <Dropdown.Menu className="left">
-                  {this.props.userschema && (
-                    <Dropdown.Item
-                      id="edit-user-button"
-                      onClick={() => {
-                        this.onClickEdit({ formData: this.props.user });
-                      }}
-                      value={this.props.user['@id']}
-                    >
-                      <Icon name={editSVG} size="15px" />
-                      <FormattedMessage id="Edit" defaultMessage="Edit" />
-                    </Dropdown.Item>
-                  )}
+          {this.canDeleteUser() && (
+            <Dropdown icon="ellipsis horizontal">
+              <Dropdown.Menu className="left">
+                {this.props.userschema && (
                   <Dropdown.Item
-                    id="delete-user-button"
-                    onClick={this.props.onDelete}
+                    id="edit-user-button"
+                    onClick={() => {
+                      this.onClickEdit({ formData: this.props.user });
+                    }}
                     value={this.props.user['@id']}
                   >
-                    <Icon name={trashSVG} size="15px" />
-                    <FormattedMessage id="Delete" defaultMessage="Delete" />
+                    <Icon name={editSVG} size="15px" />
+                    <FormattedMessage id="Edit" defaultMessage="Edit" />
                   </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-            )
+                )}
+                <Dropdown.Item
+                  id="delete-user-button"
+                  onClick={this.props.onDelete}
+                  value={this.props.user['@id']}
+                >
+                  <Icon name={trashSVG} size="15px" />
+                  <FormattedMessage id="Delete" defaultMessage="Delete" />
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
           )}
         </Table.Cell>
         {Object.keys(this.state.user).length > 0 &&

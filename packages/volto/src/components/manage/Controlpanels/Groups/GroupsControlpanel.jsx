@@ -48,6 +48,7 @@ import {
   Button,
   Form,
   Input,
+  Loader,
   Segment,
   Table,
 } from 'semantic-ui-react';
@@ -160,6 +161,18 @@ class GroupsControlpanel extends Component {
         nextProps.createGroupRequest.loaded)
     ) {
       this.props.listGroups(this.state.search);
+    }
+    if (
+      this.props.deleteGroupRequest.loading &&
+      nextProps.deleteGroupRequest.loaded
+    ) {
+      toast.success(
+        <Toast
+          success
+          title={this.props.intl.formatMessage(messages.success)}
+          content={this.props.intl.formatMessage(messages.groupDeleted)}
+        />,
+      );
     }
     if (
       this.props.createGroupRequest.loading &&
@@ -376,6 +389,24 @@ class GroupsControlpanel extends Component {
   }
 
   /**
+   * Handle Success after deleteGroup()
+   *
+   * @returns {undefined}
+   */
+  onDeleteUserSuccess() {
+    this.setState({
+      groupToDelete: undefined,
+    });
+    toast.success(
+      <Toast
+        success
+        title={this.props.intl.formatMessage(messages.success)}
+        content={this.props.intl.formatMessage(messages.groupDeleted)}
+      />,
+    );
+  }
+
+  /**
    * On change page
    * @method onChangePage
    * @param {object} event Event object.
@@ -417,15 +448,19 @@ class GroupsControlpanel extends Component {
             )}
             content={
               <div className="content">
-                <ul className="content">
-                  <FormattedMessage
-                    id="Do you really want to delete the group {groupname}?"
-                    defaultMessage="Do you really want to delete the group {groupname}?"
-                    values={{
-                      groupname: <b>{groupNameToDelete}</b>,
-                    }}
-                  />
-                </ul>
+                {this.props.deleteRequest.loading ? (
+                  <Loader />
+                ) : (
+                  <ul className="content">
+                    <FormattedMessage
+                      id="Do you really want to delete the group {groupname}?"
+                      defaultMessage="Do you really want to delete the group {groupname}?"
+                      values={{
+                        groupname: <b>{groupNameToDelete}</b>,
+                      }}
+                    />
+                  </ul>
+                )}
               </div>
             }
             onCancel={this.onDeleteCancel}

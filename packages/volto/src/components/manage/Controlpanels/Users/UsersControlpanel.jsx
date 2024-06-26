@@ -51,6 +51,7 @@ import {
   Button,
   Segment,
   Table,
+  Loader,
 } from 'semantic-ui-react';
 
 /**
@@ -177,6 +178,9 @@ class UsersControlpanel extends Component {
         search: this.state.search,
       });
     }
+    if (this.props.deleteRequest.loading && nextProps.deleteRequest.loaded) {
+      this.onDeleteUserSuccess();
+    }
     if (this.props.createRequest.loading && nextProps.createRequest.loaded) {
       this.onAddUserSuccess();
     }
@@ -256,13 +260,6 @@ class UsersControlpanel extends Component {
   onDeleteOk() {
     if (this.state.userToDelete) {
       this.props.deleteUser(this.state.userToDelete.id);
-      toast.success(
-        <Toast
-          success
-          title={this.props.intl.formatMessage(messages.success)}
-          content={this.props.intl.formatMessage(messages.userDeleted)}
-        />,
-      );
       this.setState({
         showDelete: false,
         userToDelete: undefined,
@@ -352,6 +349,23 @@ class UsersControlpanel extends Component {
     );
   }
 
+  /**
+   * Handle Success after deleteUser()
+   *
+   * @returns {undefined}
+   */
+  onDeleteUserSuccess() {
+    this.setState({
+      userToDelete: undefined,
+    });
+    toast.success(
+      <Toast
+        success
+        title={this.props.intl.formatMessage(messages.success)}
+        content={this.props.intl.formatMessage(messages.userDeleted)}
+      />,
+    );
+  }
   /**
    *
    *
@@ -541,19 +555,24 @@ class UsersControlpanel extends Component {
             )}
             content={
               <div className="content">
-                <ul className="content">
-                  <FormattedMessage
-                    id="Do you really want to delete the user {username}?"
-                    defaultMessage="Do you really want to delete the user {username}?"
-                    values={{
-                      username: <b>{usernameToDelete}</b>,
-                    }}
-                  />
-                </ul>
+                {this.props.deleteRequest.loading ? (
+                  <Loader />
+                ) : (
+                  <ul className="content">
+                    <FormattedMessage
+                      id="Do you really want to delete the user {username}?"
+                      defaultMessage="Do you really want to delete the user {username}?"
+                      values={{
+                        username: <b>{usernameToDelete}</b>,
+                      }}
+                    />
+                  </ul>
+                )}
               </div>
             }
             onCancel={this.onDeleteCancel}
             onConfirm={this.onDeleteOk}
+            loading={this.props.deleteRequest.loading}
             size={null}
           />
           {this.props?.userschema?.loaded && this.state.showAddUser ? (
