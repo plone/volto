@@ -2500,7 +2500,7 @@ msgstr "Reihung"
 #. Default: "Ordered"
 #: components/manage/Blocks/ToC/Schema
 msgid "Ordered"
-msgstr "Sortiert"
+msgstr "Nummeriert"
 
 #. Default: "Origin"
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
