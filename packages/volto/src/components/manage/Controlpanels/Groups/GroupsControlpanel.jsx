@@ -51,6 +51,7 @@ import {
   Loader,
   Segment,
   Table,
+  Dimmer,
 } from 'semantic-ui-react';
 
 /**
@@ -253,10 +254,6 @@ class GroupsControlpanel extends Component {
   onDeleteOk() {
     if (this.state.groupToDelete) {
       this.props.deleteGroup(this.state.groupToDelete.id);
-      this.setState({
-        showDelete: false,
-        groupToDelete: undefined,
-      });
     }
   }
 
@@ -383,6 +380,7 @@ class GroupsControlpanel extends Component {
   onDeleteGroupSuccess() {
     this.setState({
       groupToDelete: undefined,
+      showDelete: false,
     });
     toast.success(
       <Toast
@@ -435,19 +433,21 @@ class GroupsControlpanel extends Component {
             )}
             content={
               <div className="content">
-                {this.props.deleteRequest.loading ? (
-                  <Loader />
-                ) : (
-                  <ul className="content">
-                    <FormattedMessage
-                      id="Do you really want to delete the group {groupname}?"
-                      defaultMessage="Do you really want to delete the group {groupname}?"
-                      values={{
-                        groupname: <b>{groupNameToDelete}</b>,
-                      }}
-                    />
-                  </ul>
-                )}
+                <Dimmer active={this.props.deleteRequest.loading}>
+                  <Loader>
+                    <FormattedMessage id="Loading" defaultMessage="Loading." />
+                  </Loader>
+                </Dimmer>
+
+                <ul className="content">
+                  <FormattedMessage
+                    id="Do you really want to delete the group {groupname}?"
+                    defaultMessage="Do you really want to delete the group {groupname}?"
+                    values={{
+                      groupname: <b>{groupNameToDelete}</b>,
+                    }}
+                  />
+                </ul>
               </div>
             }
             onCancel={this.onDeleteCancel}
