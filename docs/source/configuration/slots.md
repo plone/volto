@@ -223,8 +223,8 @@ You can also create custom predicate helpers.
 
 ```ts
 export function RouteCondition(path: string, exact?: boolean) {
-  return ({ pathname }: { pathname: string }) =>
-    Boolean(matchPath(pathname, { path, exact }));
+  return ({ location }: { location: Location }) =>
+    Boolean(matchPath(location.pathname, { path, exact }));
 }
 ```
 
@@ -246,21 +246,29 @@ It accepts the following parameters.
 
 ```ts
 export function ContentTypeCondition(contentType: string[]) {
-  return ({ content }: { content: Content }) =>
-    contentType.includes(content['@type']);
+  return ({ content, location }: { content: Content; location: Location }) => {
+    return (
+      contentType.includes(content?.['@type']) ||
+      contentType.some((type) => {
+        return location.search.includes(`type=${encodeURIComponent(type)}`);
+      })
+    );
+  };
 }
 ```
 
 The `ContentTypeCondition` helper predicate allows you to render a slot when the given content type matches the current content type.
 It accepts a list of possible content types.
-
+It supports the `Add` form and can detect which content type you add.
 
 ##### Custom predicates
 
 You can create your own predicate helpers to determine whether your slot component should render.
-The `SlotRenderer` will pass down the current `content` and the `pathname` into your custom predicate helper.
+The `SlotRenderer` will pass down the current `content`, the `location` object, and the current `navRoot` object into your custom predicate helper.
 You can also tailor your own `SlotRenderer`s, or shadow the original `SlotRenderer`, to satisfy your requirements.
-
+```{versionchanged} 18.0.0-alpha.33
+Now `config.getSlots` in the configuration registry takes the argument `location` instead of `pathname`.
+```
 
 (slots-getSlot-label)=
 

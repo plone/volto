@@ -26,6 +26,7 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
           cache: 'pip'
+          cache-dependency-path: 'requirements-docs.txt'
 
       - name: Create Python virtual environment
         run: pip install virtualenv

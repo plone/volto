@@ -30,6 +30,7 @@ export {
   removeProtocol,
   URLUtils,
   flattenScales,
+  getFieldURL,
 } from '@plone/volto/helpers/Url/Url';
 export { generateRobots } from '@plone/volto/helpers/Robots/Robots';
 export {
@@ -61,6 +62,8 @@ export {
   buildStyleObjectFromData,
   getPreviousNextBlock,
   findBlocks,
+  getBlocksHierarchy,
+  moveBlockEnhanced,
 } from '@plone/volto/helpers/Blocks/Blocks';
 export {
   getSimpleDefaultBlocks,
@@ -98,6 +101,8 @@ export {
   hasApiExpander,
   replaceItemOfArray,
   cloneDeepSchema,
+  insertInArray,
+  removeFromArray,
   arrayRange,
   reorderArray,
   isInteractiveElement,

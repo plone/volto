@@ -396,9 +396,9 @@ body.has-toolbar.has-sidebar .drag.gridBlock.handle.wrapper {
 
 // Aspect ratio on all images
 .grid-image-wrapper img,
-.gridBlock .block.image img,
-.block-editor-gridBlock .block-editor-image img,
-.block-editor-image.contained img {
+.gridBlock .block.image img:not(.placeholder),
+.block-editor-gridBlock .block-editor-image img:not(.placeholder),
+.block-editor-image.contained img:not(.placeholder) {
   width: 100%;
   aspect-ratio: @grid-images-aspect-ratio;
   object-fit: cover;

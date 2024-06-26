@@ -8,6 +8,25 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.11 (2024-06-06)
+
+### Bugfix
+
+- Fix ignored classname in breadcrumbs RAC @gomez [#6018](https://github.com/plone/volto/issues/6018)
+- Make css layer more specific @pnicolli [#6065](https://github.com/plone/volto/issues/6065)
+
+## 2.0.0-alpha.10 (2024-05-30)
+
+### Bugfix
+
+- Fix `align-items: start` to make autoprefixer happy @sneridagh [#6062](https://github.com/plone/volto/issues/6062)
+
+## 2.0.0-alpha.9 (2024-05-23)
+
+### Feature
+
+- Improved several components and styles @pnicolli [#6029](https://github.com/plone/volto/issues/6029)
+
 ## 2.0.0-alpha.8 (2024-05-13)
 
 ### Bugfix

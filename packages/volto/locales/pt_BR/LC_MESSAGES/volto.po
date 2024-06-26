@@ -498,9 +498,9 @@ msgstr "Relacionamentos rompidos"
 msgid "Browse"
 msgstr "Procurar"
 
-#. Default: "Browse the site, drop an image, or type an URL"
-#: components/manage/Blocks/Image/Edit
-msgid "Browse the site, drop an image, or type an URL"
+#. Default: "Browse the site, drop an image, or use a URL"
+#: components/manage/Widgets/ImageWidget
+msgid "Browse the site, drop an image, or type a URL"
 msgstr "Navegue no site, arraste uma imagem ou digite uma URL"
 
 #. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
@@ -592,6 +592,11 @@ msgstr "Alterações salvas"
 msgid "Changes saved."
 msgstr "Alterações guardadas."
 
+#. Default: "Check this box to customize the title, description, or image of the target content item for this teaser. Leave it unchecked to show updates to the target content item if it is edited later."
+#: components/manage/Blocks/Teaser/schema
+msgid "Check this box to customize the title, description, or image of the target content item for this teaser. Leave it unchecked to show updates to the target content item if it is edited later."
+msgstr ""
+
 #. Default: "Checkbox"
 #: components/manage/Widgets/SchemaWidget
 msgid "Checkbox"
@@ -619,6 +624,7 @@ msgid "Choose a file"
 msgstr "Escolha um arquivo"
 
 #. Default: "Clear"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
 msgstr "Limpar"
@@ -870,6 +876,11 @@ msgstr "Filtros atualmente aplicados"
 #: components/manage/Preferences/ChangePassword
 msgid "Current password"
 msgstr "Senha atual"
+
+#. Default: "Customize teaser content"
+#: components/manage/Blocks/Teaser/schema
+msgid "Customize teaser content"
+msgstr ""
 
 #. Default: "Cut"
 #: components/manage/Actions/Actions
@@ -1671,6 +1682,7 @@ msgstr "Histórico de {title}"
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsBreadcrumbs
 #: components/manage/Contents/ContentsBreadcrumbsHomeItem
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/theme/Breadcrumbs/Breadcrumbs
 #: components/theme/Logo/Logo
 msgid "Home"
@@ -1680,6 +1692,11 @@ msgstr "Início"
 #: components/manage/Contents/Contents
 msgid "ID"
 msgstr "ID"
+
+#. Default: "Icon View"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Icon View"
+msgstr ""
 
 #. Default: "If all of the following conditions are met:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -2003,6 +2020,11 @@ msgstr ""
 #: components/manage/LinksToItem/LinksToItem
 #: components/manage/Toolbar/More
 msgid "Links and references"
+msgstr ""
+
+#. Default: "List View"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "List View"
 msgstr ""
 
 #. Default: "Listing"
@@ -2466,9 +2488,15 @@ msgid "Open menu"
 msgstr "Abrir menu"
 
 #. Default: "Open object browser"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 #: components/manage/Widgets/ObjectBrowserWidget
 msgid "Open object browser"
 msgstr "Abrir navegador de objetos"
+
+#. Default: "Order"
+#: components/manage/Sidebar/Sidebar
+msgid "Order"
+msgstr ""
 
 #. Default: "Ordered"
 #: components/manage/Blocks/ToC/Schema
@@ -2732,6 +2760,11 @@ msgstr ""
 #. Default: "Referencing this item with {relationship}"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Referencing this item with {relationship}"
+msgstr ""
+
+#. Default: "Refresh source content"
+#: components/manage/Blocks/Teaser/Data
+msgid "Refresh source content"
 msgstr ""
 
 #. Default: "Register"
@@ -3058,6 +3091,7 @@ msgstr "Rótulo da caixa de busca"
 
 #. Default: "Search results"
 #: components/manage/Blocks/Search/components/SearchDetails
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/theme/Search/Search
 msgid "Search results"
 msgstr "Resultados da pesquisa"
@@ -3442,6 +3476,11 @@ msgstr "Estilo"
 #: components/theme/ContactForm/ContactForm
 msgid "Subject"
 msgstr "Assunto"
+
+#. Default: "Submit"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
+msgid "Submit"
+msgstr ""
 
 #. Default: "Success"
 #: components/manage/Actions/Actions
@@ -3990,7 +4029,7 @@ msgid "Upload files"
 msgstr "Enviar arquivos"
 
 #. Default: "Uploading image"
-#: components/manage/Blocks/Image/Edit
+#: components/manage/Widgets/ImageWidget
 msgid "Uploading image"
 msgstr "Enviando imagem"
 
@@ -4540,6 +4579,11 @@ msgstr "Meu nome de usuário é "
 msgid "leadimage"
 msgstr "Imagem principal"
 
+#. Default: "Enter a URL to an image"
+#: components/manage/Widgets/ImageWidget
+msgid "linkAnImage"
+msgstr "Adicione uma URL para a imagem."
+
 #. Default: "Listing"
 #: config/Blocks
 msgid "listing"
@@ -4633,6 +4677,11 @@ msgstr "outros"
 #: components/manage/Contents/ContentsItem
 msgid "pending"
 msgstr "Pendente"
+
+#. Default: "Pick an existing image"
+#: components/manage/Widgets/ImageWidget
+msgid "pickAnImage"
+msgstr "Selecione uma imagem existente"
 
 #. Default: "Private"
 #: components/manage/Contents/ContentsItem
@@ -4904,6 +4953,11 @@ msgstr "Alternar"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "upgradeVersions"
 msgstr "Atualizar da versão {origin} para versão {destination}"
+
+#. Default: "Upload an image from your computer"
+#: components/manage/Widgets/ImageWidget
+msgid "uploadAnImage"
+msgstr "Carregue uma imagem do seu computador"
 
 #. Default: "Input must be valid url (www.something.com or http(s)://www.something.com)"
 #: helpers/MessageLabels/MessageLabels

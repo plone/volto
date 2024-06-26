@@ -1,4 +1,4 @@
-import type { PreviewImage } from '../content/common';
+import type { Image } from '../content/common';
 
 export interface Brain {
   '@id': string;
@@ -33,7 +33,7 @@ export interface Brain {
   head_title: string | null; // TODO is this correct?
   id: string;
   image_field: string; // TODO could this be more specific?
-  image_scales: Record<string, PreviewImage> | null; // TODO could this be more specific?
+  image_scales: Record<string, Image> | null; // TODO could this be more specific?
   in_response_to: string | null; // TODO is this correct?
   is_folderish: boolean;
   last_comment_date: string | null;
