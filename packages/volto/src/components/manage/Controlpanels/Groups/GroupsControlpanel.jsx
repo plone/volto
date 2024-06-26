@@ -601,7 +601,6 @@ class GroupsControlpanel extends Component {
                         <RenderGroups
                           key={group.id}
                           onDelete={this.deleteGroup}
-                          loading={this.state.groupToDelete === group}
                           roles={this.props.roles}
                           group={group}
                           updateGroups={this.updateGroupRole}

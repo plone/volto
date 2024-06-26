@@ -572,7 +572,6 @@ class UsersControlpanel extends Component {
             }
             onCancel={this.onDeleteCancel}
             onConfirm={this.onDeleteOk}
-            loading={this.props.deleteRequest.loading}
             size={null}
           />
           {this.props?.userschema?.loaded && this.state.showAddUser ? (
@@ -657,22 +656,20 @@ class UsersControlpanel extends Component {
                       this.state.currentPage * 10,
                       this.state.pageSize * (this.state.currentPage + 1),
                     )
-                    .map((user) => {
-                      return (
-                        <RenderUsers
-                          key={user.id}
-                          onDelete={this.delete}
-                          loading={this.state.userToDelete === user}
-                          roles={this.props.roles}
-                          user={user}
-                          updateUser={this.updateUserRole}
-                          inheritedRole={this.props.inheritedRole}
-                          userschema={this.props.userschema}
-                          listUsers={this.props.listUsers}
-                          isUserManager={isUserManager}
-                        />
-                      );
-                    })}
+                    .map((user) => (
+                      <RenderUsers
+                        key={user.id}
+                        onDelete={this.delete}
+                        loading={this.state.userToDelete === user}
+                        roles={this.props.roles}
+                        user={user}
+                        updateUser={this.updateUserRole}
+                        inheritedRole={this.props.inheritedRole}
+                        userschema={this.props.userschema}
+                        listUsers={this.props.listUsers}
+                        isUserManager={isUserManager}
+                      />
+                    ))}
                 </Table.Body>
               </Table>
             )}
