@@ -166,13 +166,7 @@ class GroupsControlpanel extends Component {
       this.props.deleteGroupRequest.loading &&
       nextProps.deleteGroupRequest.loaded
     ) {
-      toast.success(
-        <Toast
-          success
-          title={this.props.intl.formatMessage(messages.success)}
-          content={this.props.intl.formatMessage(messages.groupDeleted)}
-        />,
-      );
+      this.onDeleteGroupSuccess();
     }
     if (
       this.props.createGroupRequest.loading &&
@@ -386,7 +380,7 @@ class GroupsControlpanel extends Component {
    *
    * @returns {undefined}
    */
-  onDeleteUserSuccess() {
+  onDeleteGroupSuccess() {
     this.setState({
       groupToDelete: undefined,
     });
