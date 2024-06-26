@@ -433,7 +433,7 @@ class GroupsControlpanel extends Component {
             )}
             content={
               <div className="content">
-                <Dimmer active={this.props.deleteRequest.loading}>
+                <Dimmer active={this?.props?.deleteGroupRequest?.loading}>
                   <Loader>
                     <FormattedMessage id="Loading" defaultMessage="Loading." />
                   </Loader>

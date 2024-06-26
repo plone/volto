@@ -553,7 +553,7 @@ class UsersControlpanel extends Component {
             )}
             content={
               <div className="content">
-                <Dimmer active={this.props.deleteRequest.loading}>
+                <Dimmer active={this.props?.deleteRequest?.loading}>
                   <Loader>
                     <FormattedMessage id="Loading" defaultMessage="Loading." />
                   </Loader>
