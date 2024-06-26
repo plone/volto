@@ -40,7 +40,7 @@ describe('Add Content Tests', () => {
     cy.get('.sidebar-container .tabs-wrapper a.active.item').contains('Page');
   });
 
-   it('After removing value of widget the focus should be removed from the field', () => {
+  it('After removing value of widget the focus should be removed from the field', () => {
     cy.get('#field-creators').type('aaa');
     cy.get('#field-creators')
       .type('aaa{Enter}')
