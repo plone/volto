@@ -1,4 +1,4 @@
-name: Set up NodeJS environment 
+name: Set up Node.js environment
 
 runs:
   using: "composite"
