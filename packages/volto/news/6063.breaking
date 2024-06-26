@@ -1,4 +1,0 @@
-Breaking from the original slots implementation:
-Now `config.getSlots` in the configuration registry takes the argument `location` instead of `pathname`.
-This allows to have more expressive conditions, and fulfill the use case of the `Add` form.
-@sneridagh

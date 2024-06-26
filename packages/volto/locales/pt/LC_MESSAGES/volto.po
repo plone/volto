@@ -497,9 +497,9 @@ msgstr ""
 msgid "Browse"
 msgstr "Navegar"
 
-#. Default: "Browse the site, drop an image, or type an URL"
-#: components/manage/Blocks/Image/Edit
-msgid "Browse the site, drop an image, or type an URL"
+#. Default: "Browse the site, drop an image, or use a URL"
+#: components/manage/Widgets/ImageWidget
+msgid "Browse the site, drop an image, or type a URL"
 msgstr "Navegue no website, largue uma imagem ou escreva um URL"
 
 #. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
@@ -591,6 +591,11 @@ msgstr "Alterações guardadas"
 msgid "Changes saved."
 msgstr "Alterações guardadas."
 
+#. Default: "Check this box to customize the title, description, or image of the target content item for this teaser. Leave it unchecked to show updates to the target content item if it is edited later."
+#: components/manage/Blocks/Teaser/schema
+msgid "Check this box to customize the title, description, or image of the target content item for this teaser. Leave it unchecked to show updates to the target content item if it is edited later."
+msgstr ""
+
 #. Default: "Checkbox"
 #: components/manage/Widgets/SchemaWidget
 msgid "Checkbox"
@@ -618,6 +623,7 @@ msgid "Choose a file"
 msgstr ""
 
 #. Default: "Clear"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
 msgstr ""
@@ -869,6 +875,11 @@ msgstr ""
 #: components/manage/Preferences/ChangePassword
 msgid "Current password"
 msgstr "Senha actual"
+
+#. Default: "Customize teaser content"
+#: components/manage/Blocks/Teaser/schema
+msgid "Customize teaser content"
+msgstr ""
 
 #. Default: "Cut"
 #: components/manage/Actions/Actions
@@ -2476,8 +2487,14 @@ msgid "Open menu"
 msgstr "Abrir menu"
 
 #. Default: "Open object browser"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 #: components/manage/Widgets/ObjectBrowserWidget
 msgid "Open object browser"
+msgstr ""
+
+#. Default: "Order"
+#: components/manage/Sidebar/Sidebar
+msgid "Order"
 msgstr ""
 
 #. Default: "Ordered"
@@ -2742,6 +2759,11 @@ msgstr ""
 #. Default: "Referencing this item with {relationship}"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Referencing this item with {relationship}"
+msgstr ""
+
+#. Default: "Refresh source content"
+#: components/manage/Blocks/Teaser/Data
+msgid "Refresh source content"
 msgstr ""
 
 #. Default: "Register"
@@ -3454,6 +3476,11 @@ msgstr ""
 msgid "Subject"
 msgstr "Assunto"
 
+#. Default: "Submit"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
+msgid "Submit"
+msgstr ""
+
 #. Default: "Success"
 #: components/manage/Actions/Actions
 #: components/manage/Aliases/Aliases
@@ -4001,7 +4028,7 @@ msgid "Upload files"
 msgstr "Enviar ficheiros"
 
 #. Default: "Uploading image"
-#: components/manage/Blocks/Image/Edit
+#: components/manage/Widgets/ImageWidget
 msgid "Uploading image"
 msgstr ""
 
@@ -4551,6 +4578,11 @@ msgstr "Meu nome de usuário é"
 msgid "leadimage"
 msgstr ""
 
+#. Default: "Enter a URL to an image"
+#: components/manage/Widgets/ImageWidget
+msgid "linkAnImage"
+msgstr ""
+
 #. Default: "Listing"
 #: config/Blocks
 msgid "listing"
@@ -4643,6 +4675,11 @@ msgstr ""
 #. Default: "Pending"
 #: components/manage/Contents/ContentsItem
 msgid "pending"
+msgstr ""
+
+#. Default: "Pick an existing image"
+#: components/manage/Widgets/ImageWidget
+msgid "pickAnImage"
 msgstr ""
 
 #. Default: "Private"
@@ -4914,6 +4951,11 @@ msgstr ""
 #. Default: "Update from version {origin} to {destination}"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "upgradeVersions"
+msgstr ""
+
+#. Default: "Upload an image from your computer"
+#: components/manage/Widgets/ImageWidget
+msgid "uploadAnImage"
 msgstr ""
 
 #. Default: "Input must be valid url (www.something.com or http(s)://www.something.com)"

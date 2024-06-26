@@ -45,7 +45,7 @@ const RelationsListing = ({
 
   const staticCatalogVocabularyQuery = useSelector(
     (state) =>
-      state.relations?.relations?.[relationtype]
+      state.relations?.relations?.data?.[relationtype]
         ?.staticCatalogVocabularyQuery || {},
   );
 

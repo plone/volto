@@ -46,15 +46,18 @@ describe('AddonConfigurationRegistry - Project', () => {
         version: '0.0.0',
       },
       'test-released-addon': {
+        basePath: `${base}/node_modules/test-released-addon`,
         isPublishedPackage: true,
         modulePath: `${base}/node_modules/test-released-addon`,
         name: 'test-released-addon',
         packageJson: `${base}/node_modules/test-released-addon/package.json`,
         addons: ['test-released-unmentioned:extra1,extra2'],
         isRegisteredAddon: true,
+        tsConfigPaths: null,
         version: '0.0.0',
       },
       'test-released-source-addon': {
+        basePath: `${base}/node_modules/test-released-source-addon`,
         isPublishedPackage: true,
         modulePath: `${base}/node_modules/test-released-source-addon/src`,
         name: 'test-released-source-addon',
@@ -62,15 +65,18 @@ describe('AddonConfigurationRegistry - Project', () => {
         razzleExtender: `${base}/node_modules/test-released-source-addon/razzle.extend.js`,
         addons: [],
         isRegisteredAddon: true,
+        tsConfigPaths: null,
         version: '0.0.0',
       },
       'test-released-unmentioned': {
         addons: [],
+        basePath: `${base}/node_modules/test-released-unmentioned`,
         isPublishedPackage: true,
         modulePath: `${base}/node_modules/test-released-unmentioned`,
         name: 'test-released-unmentioned',
         packageJson: `${base}/node_modules/test-released-unmentioned/package.json`,
         isRegisteredAddon: true,
+        tsConfigPaths: null,
         version: '0.0.0',
       },
       'my-volto-config-addon': {
@@ -131,6 +137,7 @@ describe('AddonConfigurationRegistry - Project', () => {
     const base = path.join(__dirname, 'fixtures', 'test-volto-project');
     const reg = new AddonConfigurationRegistry(base);
     expect(reg.getProjectCustomizationPaths()).toStrictEqual({
+      '@plone/volto/LanguageSwitcher': `${base}/src/customizations/LanguageSwitcher.js`,
       '@plone/volto/TSComponent': `${base}/src/customizations/TSComponent.jsx`,
       '@plone/volto/client': `${base}/src/customizations/client.js`,
       '@plone/volto/routes': `${base}/src/customizations/routes.tsx`,
@@ -143,6 +150,7 @@ describe('AddonConfigurationRegistry - Project', () => {
     const base = path.join(__dirname, 'fixtures', 'test-volto-project');
     const reg = new AddonConfigurationRegistry(base);
     expect(reg.getAddonCustomizationPaths()).toStrictEqual({
+      '@plone/volto/LanguageSwitcher': `${base}/node_modules/test-released-source-addon/src/customizations/LanguageSwitcher.js`,
       '@plone/volto/TSComponent': `${base}/node_modules/test-released-source-addon/src/customizations/TSComponent.jsx`,
       '@plone/volto/client': `${base}/node_modules/test-released-source-addon/src/customizations/client.js`,
       '@plone/volto/routes': `${base}/node_modules/test-released-source-addon/src/customizations/routes.tsx`,
