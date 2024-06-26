@@ -1,0 +1,9 @@
+Added `ImageWidget` component with upload, drop, external, and inline capabilities. @sneridagh @ichim-david @dobri1408
+
+Breaking:
+
+The user experience of the image upload has changed.
+The input field is now a row of buttons.
+The input field's placeholder text was moved above the buttons.
+Together these changes improve usability both on small screens and in small containers, such as when the widget is in grid block elements.
+If you shadow the image block edit component, make sure it continues to work as you expect, or update it to use the new image upload widget component.
