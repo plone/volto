@@ -340,6 +340,16 @@ The following table lists the old and new Makefile commands and the new commands
 
 The documentation has been updated as well to reflect this change.
 
+
+### New image widget component
+
+The Image Block edit component had the image upload widget component integrated in it.
+Now the component has been extracted to its own component for reusability in other blocks.
+If you shadowed the Image Block edit component, make sure it continues working as intended or update it to use the new image widget.
+The user experience of the image upload has changed too.
+It has been simplified and the URL form is now behind a button, so it's better suited for small screens and potential small containers like when the widget has to be in the grid block elements.
+
+
 (volto-upgrade-guide-17.x.x)=
 
 ## Upgrading to Volto 17.x.x

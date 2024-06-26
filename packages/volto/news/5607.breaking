@@ -1,0 +1,7 @@
+Added `ImageWidget` with upload, drop, external, and inline capabilities. @sneridagh @ichim-david @dobri1408
+
+Breaking:
+
+The user experience of the image upload has changed.
+The image edit component has been splitted up and now it's using the new image upload widget.
+If you shadowed this component, make sure it continues working as intended or update to the new image widget.
