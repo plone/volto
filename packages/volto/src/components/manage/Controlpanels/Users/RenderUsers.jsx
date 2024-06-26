@@ -151,7 +151,7 @@ class RenderUsers extends Component {
             )}
           </Table.Cell>
         ))}
-        <Table.Cell textAlign="center">
+        <Table.Cell textAlign="right">
           {this.props.loading === true ? (
             <Loader active inline />
           ) : (
