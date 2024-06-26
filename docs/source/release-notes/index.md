@@ -17,6 +17,38 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.36 (2024-06-26)
+
+### Breaking
+
+- Added `ImageWidget` component with upload, drop, external, and inline capabilities. @sneridagh @ichim-david @dobri1408
+
+  Breaking:
+
+  The user experience of the image upload has changed.
+  The input field is now a row of buttons.
+  The input field's placeholder text was moved above the buttons.
+  Together these changes improve usability both on small screens and in small containers, such as when the widget is in grid block elements.
+  If you shadow the image block edit component, make sure it continues to work as you expect, or update it to use the new image upload widget component. [#5607](https://github.com/plone/volto/issues/5607)
+
+### Feature
+
+- Add option for live teasers @steffenri @pbauer @nileshgulia1 @tlotze [#6023](https://github.com/plone/volto/issues/6023)
+- Improve shadowing by including the support for js->jsx extensions in old shadows. This allow support for upcoming renaming of files that should be jsx and are js. @sneridagh [#6113](https://github.com/plone/volto/issues/6113)
+
+### Bugfix
+
+- Ensure that sidebar field will not steal focus when metadata is edited  @dobri1408 [#5983](https://github.com/plone/volto/issues/5983)
+- Fixed 'diff' path for nonContentRoutes. @giuliaghisini [#6102](https://github.com/plone/volto/issues/6102)
+- Prevent duplicated UUIDs in inner blocks when copying container blocks @sneridagh [#6112](https://github.com/plone/volto/issues/6112)
+
+### Internal
+
+- Rename the `Makefile` commands to unify them with the new agreed naming scheme. @sneridagh [#6104](https://github.com/plone/volto/issues/6104)
+- Remove `api` folder. Add `backend` folder using latest backend best practices. @sneridagh [#6110](https://github.com/plone/volto/issues/6110)
+- Rename files with wrong extension `js->jsx` when they contain JSX. @sneridagh [#6114](https://github.com/plone/volto/issues/6114)
+- Automatically set a new issue's label to `03 type: feature (plip)` for PLIPs. @stevepiercy [#6122](https://github.com/plone/volto/issues/6122)
+
 ## 18.0.0-alpha.35 (2024-06-13)
 
 ### Breaking
