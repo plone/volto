@@ -13,8 +13,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up testing infrastructure
-        uses: ./.github/actions/pre_test_setup
+      - name: Set up NodeJS environment
+        uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
 
@@ -61,8 +61,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up testing infrastructure
-        uses: ./.github/actions/pre_test_setup
+      - name: Set up NodeJS environment
+        uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
 
@@ -109,8 +109,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up testing infrastructure
-        uses: ./.github/actions/pre_test_setup
+      - name: Set up NodeJS environment
+        uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
 
@@ -157,8 +157,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up testing infrastructure
-        uses: ./.github/actions/pre_test_setup
+      - name: Set up NodeJS environment
+        uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
 
@@ -205,8 +205,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up testing infrastructure
-        uses: ./.github/actions/pre_test_setup
+      - name: Set up NodeJS environment
+        uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
 
@@ -253,8 +253,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up testing infrastructure
-        uses: ./.github/actions/pre_test_setup
+      - name: Set up NodeJS environment
+        uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
 
@@ -300,8 +300,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up testing infrastructure
-        uses: ./.github/actions/pre_test_setup
+      - name: Set up NodeJS environment
+        uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
 
@@ -348,8 +348,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up testing infrastructure
-        uses: ./.github/actions/pre_test_setup
+      - name: Set up NodeJS environment
+        uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
 
@@ -396,8 +396,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up testing infrastructure
-        uses: ./.github/actions/pre_test_setup
+      - name: Set up NodeJS environment
+        uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
 
@@ -445,8 +445,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up testing infrastructure
-        uses: ./.github/actions/pre_test_setup
+      - name: Set up NodeJS environment
+        uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
 
@@ -635,8 +635,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up testing infrastructure
-        uses: ./.github/actions/pre_test_setup
+      - name: Set up NodeJS environment
+        uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
 
@@ -685,8 +685,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up testing infrastructure
-        uses: ./.github/actions/pre_test_setup
+      - name: Set up NodeJS environment
+        uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
 

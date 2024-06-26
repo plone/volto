@@ -1,4 +1,4 @@
-name: Set up testing infrastructure 
+name: Set up NodeJS environment 
 
 runs:
   using: "composite"
