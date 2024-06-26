@@ -17,6 +17,29 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 17.16.2 (2024-06-18)
+
+### Bugfix
+
+- export getFieldURL from Url.js in helpers @dobri1408 [#6101](https://github.com/plone/volto/issues/6101)
+
+## 17.16.1 (2024-06-10)
+
+### Bugfix
+
+- Fix removal of slate formatting applied to text when toggling the list buttons @robgietema [#6080](https://github.com/plone/volto/issues/6080)
+
+## 17.16.0 (2024-05-21)
+
+### Feature
+
+- Use navroot to render the sitemap @erral [#5185](https://github.com/plone/volto/issues/5185)
+
+### Internal
+
+- Fix `.npmignore` file list - now `npm` seems that honors the undelying filesystem case setting @sneridagh [#0](https://github.com/plone/volto/issues/0)
+- Cleaned up useless injectIntl in DefaultView @pnicolli [#5994](https://github.com/plone/volto/issues/5994)
+
 ## 17.15.6 (2024-04-24)
 
 ### Bugfix
