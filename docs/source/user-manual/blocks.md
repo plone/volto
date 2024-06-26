@@ -137,25 +137,6 @@ For example, you can insert an HTML snippet or widget from a third party service
 To use an HTML block, you need to have some knowledge of how to write HTML, unless you are provided an HTML code snippet from a third party that you can copy and paste into the block.
 
 
-(user-manual-hero-block-label)=
-
-### Hero block
-
-A hero block creates a full-width banner or header for a page.
-It is typically used to highlight important content or to create a visual impact at the top of a page.
-
-```{image} ../_static/user-manual/blocks/hero-block.png
-:alt: Hero block
-```
-
-Hero blocks typically include a background image or color.
-They can also include a title, description, and links to other pages in your site.
-
-You can use the block editor to configure its options.
-You can set the background image or color, its title and description, and links.
-For links, you can enter an external URL or select a page in your site by clicking the list icon, and give the link a title.
-
-
 (user-manual-image-block-label)=
 
 ### Image block
@@ -193,55 +174,6 @@ Image size
 Link to
 : You can enter a URL in the text field, or click the list icon and choose a page in your website, as the target for a link.
   You can optionally have the link open in a new tab when the user clicks it by checking the checkbox {guilabel}`Open in a new tab`.
-
-
-(user-manual-images-grid-block-label)=
-
-### Images grid block
-
-An images grid block displays a row of images on a page.
-It is typically used to showcase a collection of images in a visually appealing way.
-It can be configured to display the images in different layouts and styles.
-
-```{image} ../_static/user-manual/blocks/images-grid-block-number-of-columns.png
-:alt: Choose the number of images to insert in an images grid block.
-```
-
-After choosing the number of images to insert in an images grid block, you can configure the images exactly as you would configure a single image in an image block.
-
-```{image} ../_static/user-manual/blocks/image-block-configuration-options.png
-:alt: Image block configuration options
-```
-
-Source
-: The path or URL to the image.
-
-Alt text
-: Alternative text (alt text) is used by screen readers and search engines to describe the image.
-  Alt text should not be used for decorative images, as it adds noise to the screen reader.
-
-Alignment
-: Options for alignment include left, right, center, and full width.
-
-Image size
-: The image size determines its relative display width, either small, medium, or large.
-
-Link to
-: You can enter a URL in the text field, or click the list icon and choose a page in your website, as the target for a link.
-  You can optionally have the link open in a new tab when the user clicks it by checking the checkbox {guilabel}`Open in a new tab`.
-
-You can also manage the images in the images grid block.
-
-```{image} ../_static/user-manual/blocks/images-grid-block-manage-images.png
-:alt: Manage images in an images gride block
-```
-
--   Rearrange the order of images in the images grid block by dragging and dropping them.
--   Add an image to the images grid block by clicking the `+` button above and to the left of it.
--   Remove an image from an images grid block by clicking its `×` button.
-
-
-After inserting an image grid block, an image must be specified by any of the following methods.
 
 
 (user-manual-listing-block-label)=
@@ -532,22 +464,40 @@ Entries
 
 ### Teaser block
 
-A teaser block displays a summary or teaser of a content item—such as an article or blog post—on a website, and links to the full content item.
-When the visitor clicks or taps on the teaser block, they will visit the full content item.
+A teaser block displays a summary or teaser of a target content item—such as an article or blog post—on a website, and links to the full content item.
+When the visitor clicks or taps on the teaser block, they will visit the full targeted content item.
 A teaser block typically includes a title, an excerpt or summary of the content, and a thumbnail image or other visual element.
 
+You can customize the presentation of the target content item in a teaser block.
+For example, you might want to shorten the title to fit the available width, or edit the description or image to emphasize a different aspect of the item in multiple teaser block locations.
+
+````{card}
 ```{image} ../_static/user-manual/blocks/teaser-block.png
 :alt: Teaser block
 ```
++++
+_Teaser block_
+````
 
 The teaser block has several configuration options.
 
+````{card}
 ```{image} ../_static/user-manual/blocks/teaser-block-configuration.png
-:alt: Teaser block
+:alt: Teaser block configuration
 ```
++++
+_Teaser block configuration_
+````
 
 Target
 : The target is either an existing content item in your Plone site that can be selected by clicking the list icon, or an external URL that can be typed into the text field and saved by clicking the right arrow when it appears after you start typing.
+
+
+Customize teaser content
+: Check this box to customize the title, description, or image of the target content item for this teaser.
+  Leave it unchecked to show updates to the target content item if it is edited later.
+  ```{versionadded} 18.0.0-alpha.36
+  ```
 
 Title
 : The title is the title of the content item.
@@ -563,14 +513,6 @@ Image override
 
 Alignment
 : The alignment of the teaser image can be set to left (default), right, or top.
-
-(user-manual-teaser-grid-block-label)=
-
-### Teaser grid block
-
-```{todo}
-Needs content.
-```
 
 
 (user-manual-text-grid-block-label)=
