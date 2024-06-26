@@ -1,4 +1,4 @@
-# .github/workflows/rtd-pr-preview.yml
+# .github/workflows/docs-rtd-pr-preview.yml
 name: readthedocs/actions
 on:
   pull_request_target:
