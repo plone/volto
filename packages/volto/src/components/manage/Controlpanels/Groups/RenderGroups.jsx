@@ -5,7 +5,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { Dropdown, Table, Checkbox } from 'semantic-ui-react';
+import { Dropdown, Table, Checkbox, Loader } from 'semantic-ui-react';
 import trashSVG from '@plone/volto/icons/delete.svg';
 import ploneSVG from '@plone/volto/icons/plone.svg';
 import { Icon } from '@plone/volto/components';
@@ -111,19 +111,23 @@ class RenderGroups extends Component {
             )}
           </Table.Cell>
         ))}
-        <Table.Cell textAlign="right">
-          {this.canDeleteGroup() && (
-            <Dropdown icon="ellipsis horizontal">
-              <Dropdown.Menu className="left">
-                <Dropdown.Item
-                  onClick={this.props.onDelete}
-                  value={this.props.group['@id']}
-                >
-                  <Icon name={trashSVG} size="15px" />
-                  <FormattedMessage id="Delete" defaultMessage="Delete" />
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
+        <Table.Cell textAlign="center">
+          {this.props.loading === true ? (
+            <Loader active inline />
+          ) : (
+            this.canDeleteGroup() && (
+              <Dropdown icon="ellipsis horizontal">
+                <Dropdown.Menu className="left">
+                  <Dropdown.Item
+                    onClick={this.props.onDelete}
+                    value={this.props.group['@id']}
+                  >
+                    <Icon name={trashSVG} size="15px" />
+                    <FormattedMessage id="Delete" defaultMessage="Delete" />
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            )
           )}
         </Table.Cell>
       </Table.Row>

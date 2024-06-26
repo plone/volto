@@ -256,6 +256,13 @@ class UsersControlpanel extends Component {
   onDeleteOk() {
     if (this.state.userToDelete) {
       this.props.deleteUser(this.state.userToDelete.id);
+      toast.success(
+        <Toast
+          success
+          title={this.props.intl.formatMessage(messages.success)}
+          content={this.props.intl.formatMessage(messages.userDeleted)}
+        />,
+      );
       this.setState({
         showDelete: false,
         userToDelete: undefined,
@@ -272,6 +279,7 @@ class UsersControlpanel extends Component {
     this.setState({
       showDelete: false,
       itemsToDelete: [],
+      userToDelete: undefined,
     });
   }
 
@@ -630,19 +638,22 @@ class UsersControlpanel extends Component {
                       this.state.currentPage * 10,
                       this.state.pageSize * (this.state.currentPage + 1),
                     )
-                    .map((user) => (
-                      <RenderUsers
-                        key={user.id}
-                        onDelete={this.delete}
-                        roles={this.props.roles}
-                        user={user}
-                        updateUser={this.updateUserRole}
-                        inheritedRole={this.props.inheritedRole}
-                        userschema={this.props.userschema}
-                        listUsers={this.props.listUsers}
-                        isUserManager={isUserManager}
-                      />
-                    ))}
+                    .map((user) => {
+                      return (
+                        <RenderUsers
+                          key={user.id}
+                          onDelete={this.delete}
+                          loading={this.state.userToDelete === user}
+                          roles={this.props.roles}
+                          user={user}
+                          updateUser={this.updateUserRole}
+                          inheritedRole={this.props.inheritedRole}
+                          userschema={this.props.userschema}
+                          listUsers={this.props.listUsers}
+                          isUserManager={isUserManager}
+                        />
+                      );
+                    })}
                 </Table.Body>
               </Table>
             )}
