@@ -1598,6 +1598,11 @@ msgstr "Groupe"
 msgid "Group created"
 msgstr "Groupe créé"
 
+#. Default: "Group deleted"
+#: helpers/MessageLabels/MessageLabels
+msgid "Group deleted"
+msgstr ""
+
 #. Default: "Group roles updated"
 #: helpers/MessageLabels/MessageLabels
 msgid "Group roles updated"
@@ -4071,6 +4076,11 @@ msgstr "Configuration des utilisateurs et des groupes"
 #: helpers/MessageLabels/MessageLabels
 msgid "User created"
 msgstr "Utilisateur créé"
+
+#. Default: "User deleted"
+#: helpers/MessageLabels/MessageLabels
+msgid "User deleted"
+msgstr ""
 
 #. Default: "User name"
 #: components/manage/Controlpanels/Users/UsersControlpanel

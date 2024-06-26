@@ -1596,6 +1596,11 @@ msgstr "Ryhmä"
 msgid "Group created"
 msgstr "Ryhmä luotu"
 
+#. Default: "Group deleted"
+#: helpers/MessageLabels/MessageLabels
+msgid "Group deleted"
+msgstr ""
+
 #. Default: "Group roles updated"
 #: helpers/MessageLabels/MessageLabels
 msgid "Group roles updated"
@@ -4069,6 +4074,11 @@ msgstr "Käyttäjän ryhmän asetukset"
 #: helpers/MessageLabels/MessageLabels
 msgid "User created"
 msgstr "Käyttäjä luotu"
+
+#. Default: "User deleted"
+#: helpers/MessageLabels/MessageLabels
+msgid "User deleted"
+msgstr ""
 
 #. Default: "User name"
 #: components/manage/Controlpanels/Users/UsersControlpanel

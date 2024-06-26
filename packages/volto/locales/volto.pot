@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2024-06-19T03:18:12.945Z\n"
+"POT-Creation-Date: 2024-06-26T12:49:13.216Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -1591,6 +1591,11 @@ msgstr ""
 #. Default: "Group created"
 #: helpers/MessageLabels/MessageLabels
 msgid "Group created"
+msgstr ""
+
+#. Default: "Group deleted"
+#: helpers/MessageLabels/MessageLabels
+msgid "Group deleted"
 msgstr ""
 
 #. Default: "Group roles updated"
@@ -4065,6 +4070,11 @@ msgstr ""
 #. Default: "User created"
 #: helpers/MessageLabels/MessageLabels
 msgid "User created"
+msgstr ""
+
+#. Default: "User deleted"
+#: helpers/MessageLabels/MessageLabels
+msgid "User deleted"
 msgstr ""
 
 #. Default: "User name"

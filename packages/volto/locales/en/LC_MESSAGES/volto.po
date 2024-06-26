@@ -1591,6 +1591,11 @@ msgstr ""
 msgid "Group created"
 msgstr ""
 
+#. Default: "Group deleted"
+#: helpers/MessageLabels/MessageLabels
+msgid "Group deleted"
+msgstr ""
+
 #. Default: "Group roles updated"
 #: helpers/MessageLabels/MessageLabels
 msgid "Group roles updated"
@@ -4063,6 +4068,11 @@ msgstr ""
 #. Default: "User created"
 #: helpers/MessageLabels/MessageLabels
 msgid "User created"
+msgstr ""
+
+#. Default: "User deleted"
+#: helpers/MessageLabels/MessageLabels
+msgid "User deleted"
 msgstr ""
 
 #. Default: "User name"

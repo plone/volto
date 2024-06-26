@@ -182,7 +182,6 @@ class RenderUsers extends Component {
               </Dropdown>
             )
           )}
-          {}
         </Table.Cell>
         {Object.keys(this.state.user).length > 0 &&
           this.props.userschema.loaded && (
