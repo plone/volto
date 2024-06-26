@@ -259,13 +259,6 @@ class GroupsControlpanel extends Component {
   onDeleteOk() {
     if (this.state.groupToDelete) {
       this.props.deleteGroup(this.state.groupToDelete.id);
-      toast.success(
-        <Toast
-          success
-          title={this.props.intl.formatMessage(messages.success)}
-          content={this.props.intl.formatMessage(messages.groupDeleted)}
-        />,
-      );
       this.setState({
         showDelete: false,
         groupToDelete: undefined,
