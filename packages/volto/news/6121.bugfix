@@ -1,1 +1,1 @@
-fix(teaser): reset button undefined when no target @nileshgulia1
+fix reset teaser source button giving undefined error when no target is selected @nileshgulia1
