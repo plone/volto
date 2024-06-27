@@ -3,7 +3,7 @@
  * @module constants/Languages
  */
 
-module.exports = {
+const languages = {
   ca: 'Català',
   de: 'Deutsch',
   en: 'English',
@@ -20,3 +20,5 @@ module.exports = {
   pt_BR: 'Português (Brasil)',
   zh_CN: '中文',
 };
+
+export default languages;
