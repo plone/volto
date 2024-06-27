@@ -48,7 +48,7 @@ const TranslationObject = ({
       let lang =
         config.settings.supportedLanguages[Object.keys(locales).length];
       const langFileName = toGettextLang(lang);
-      import('@root/../locales/' + langFileName + '.json').then((locale) => {
+      import(`../../../../locales/${langFileName}.json`).then((locale) => {
         setLocales({ ...locales, [toReactIntlLang(lang)]: locale.default });
         setLoadingLocale(false);
       });

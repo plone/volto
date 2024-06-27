@@ -239,7 +239,7 @@ class Add extends Component {
     if (this.props.location?.state?.translationOf) {
       const language = this.props.location.state.languageFrom;
       const langFileName = toGettextLang(language);
-      import('@root/../locales/' + langFileName + '.json').then((locale) => {
+      import(`../../../../locales/${langFileName}.json`).then((locale) => {
         this.props.changeLanguage(language, locale.default);
       });
       this.props.history.push(this.props.location?.state?.translationOf);

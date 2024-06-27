@@ -24,7 +24,7 @@ const MultilingualRedirector = (props) => {
     let mounted = true;
     if (settings.isMultilingual && pathname === '/') {
       const langFileName = toGettextLang(redirectToLanguage);
-      import('@root/../locales/' + langFileName + '.json').then((locale) => {
+      import(`../../../../locales/${langFileName}.json`).then((locale) => {
         if (mounted) {
           dispatch(changeLanguage(redirectToLanguage, locale.default));
         }
