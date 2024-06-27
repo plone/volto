@@ -17,6 +17,23 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.37 (2024-06-27)
+
+### Feature
+
+- (feat): Add loading visual and succes message in controlpanel when deleting users and groups @dobri1408 [#6127](https://github.com/plone/volto/issues/6127)
+
+### Bugfix
+
+- fix reset teaser source button giving undefined error when no target is selected @nileshgulia1 [#6121](https://github.com/plone/volto/issues/6121)
+- Added three missing German translations. [@jensens] [#6124](https://github.com/plone/volto/issues/6124)
+
+### Internal
+
+- Improved the existing GitHub workflows by encapsulating a common operation into a reusable action for easier maintenance. @FritzHoing, @ichim-david [#6108](https://github.com/plone/volto/issues/6108)
+- Upgrade `react-intl` to maximum 3.x series to fix a bundling issue.
+  Rename missing js file that must be jsx. @sneridagh [#6128](https://github.com/plone/volto/issues/6128)
+
 ## 18.0.0-alpha.36 (2024-06-26)
 
 ### Breaking
