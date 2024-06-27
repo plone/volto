@@ -1839,11 +1839,11 @@ importers:
         specifier: 9.1.0
         version: 9.1.0(react@18.2.0)
       react-intl:
-        specifier: 3.8.0
-        version: 3.8.0(react@18.2.0)
+        specifier: 3.12.1
+        version: 3.12.1(react@18.2.0)
       react-intl-redux:
         specifier: 2.3.0
-        version: 2.3.0(@babel/runtime@7.20.6)(prop-types@15.7.2)(react-intl@3.8.0(react@18.2.0))(react-redux@8.1.2(@types/react-dom@18.2.25)(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(redux@4.2.1))(react@18.2.0)
+        version: 2.3.0(@babel/runtime@7.20.6)(prop-types@15.7.2)(react-intl@3.12.1(react@18.2.0))(react-redux@8.1.2(@types/react-dom@18.2.25)(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(redux@4.2.1))(react@18.2.0)
       react-medium-image-zoom:
         specifier: 3.0.15
         version: 3.0.15(prop-types@15.7.2)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -3932,6 +3932,9 @@ packages:
 
   '@formatjs/icu-skeleton-parser@1.8.0':
     resolution: {integrity: sha512-QWLAYvM0n8hv7Nq5BEs4LKIjevpVpbGLAJgOaYzg9wABEoX1j0JO1q2/jVkO6CVlq0dbsxZCngS5aXbysYueqA==}
+
+  '@formatjs/intl-displaynames@1.2.10':
+    resolution: {integrity: sha512-GROA2RP6+7Ouu0WnHFF78O5XIU7pBfI19WM1qm93l6MFWibUk67nCfVCK3VAYJkLy8L8ZxjkYT11VIAfvSz8wg==}
 
   '@formatjs/intl-listformat@1.4.8':
     resolution: {integrity: sha512-WNMQlEg0e50VZrGIkgD5n7+DAMGt3boKi1GJALfhFMymslJb5i+5WzWxyj/3a929Z6MAFsmzRIJjKuv+BxKAOQ==}
@@ -16269,6 +16272,11 @@ packages:
       react-intl: "^2.2.2 ||\_^3.0.0 || ^4.0.0 || ^5.0.0"
       react-redux: ^5.0.1 || ^6.0.0 || ^7.0.0
 
+  react-intl@3.12.1:
+    resolution: {integrity: sha512-cgumW29mwROIqyp8NXStYsoIm27+8FqnxykiLSawWjOxGIBeLuN/+p2srei5SRIumcJefOkOIHP+NDck05RgHg==}
+    peerDependencies:
+      react: ^16.3.0
+
   react-intl@3.8.0:
     resolution: {integrity: sha512-jWSbc7PUJOpmy0gC9LzTyERpt/auYmMyY0jtCmczgmRns5MIKG9Bav+NpCyZ6XG2jJQgJNWpLkMFy8u7MgjuqA==}
     peerDependencies:
@@ -20989,6 +20997,10 @@ snapshots:
     dependencies:
       '@formatjs/ecma402-abstract': 1.18.2
       tslib: 2.6.2
+
+  '@formatjs/intl-displaynames@1.2.10':
+    dependencies:
+      '@formatjs/intl-utils': 2.3.0
 
   '@formatjs/intl-listformat@1.4.8':
     dependencies:
@@ -32347,7 +32359,7 @@ snapshots:
       doctrine: 2.1.0
       eslint: 8.57.0
       eslint-import-resolver-node: 0.3.9
-      eslint-module-utils: 2.8.1(@typescript-eslint/parser@7.7.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.7.0(eslint@8.57.0)(typescript@5.4.5))(eslint-plugin-import@2.29.1)(eslint@8.57.0))(eslint@8.57.0)
+      eslint-module-utils: 2.8.1(@typescript-eslint/parser@7.1.1(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.1.1(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1)(eslint@8.57.0))(eslint@8.57.0)
       hasown: 2.0.2
       is-core-module: 2.13.1
       is-glob: 4.0.3
@@ -40017,6 +40029,14 @@ snapshots:
     dependencies:
       react: 18.2.0
 
+  react-intl-redux@2.3.0(@babel/runtime@7.20.6)(prop-types@15.7.2)(react-intl@3.12.1(react@18.2.0))(react-redux@8.1.2(@types/react-dom@18.2.25)(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(redux@4.2.1))(react@18.2.0):
+    dependencies:
+      '@babel/runtime': 7.20.6
+      prop-types: 15.7.2
+      react: 18.2.0
+      react-intl: 3.12.1(react@18.2.0)
+      react-redux: 8.1.2(@types/react-dom@18.2.25)(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(redux@4.2.1)
+
   react-intl-redux@2.3.0(@babel/runtime@7.20.6)(prop-types@15.7.2)(react-intl@3.8.0(react@18.2.0))(react-redux@8.1.2(@types/react-dom@18.2.25)(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(redux@4.2.1))(react@18.2.0):
     dependencies:
       '@babel/runtime': 7.20.6
@@ -40024,6 +40044,22 @@ snapshots:
       react: 18.2.0
       react-intl: 3.8.0(react@18.2.0)
       react-redux: 8.1.2(@types/react-dom@18.2.25)(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(redux@4.2.1)
+
+  react-intl@3.12.1(react@18.2.0):
+    dependencies:
+      '@formatjs/intl-displaynames': 1.2.10
+      '@formatjs/intl-listformat': 1.4.8
+      '@formatjs/intl-relativetimeformat': 4.5.16
+      '@formatjs/intl-unified-numberformat': 3.3.7
+      '@formatjs/intl-utils': 2.3.0
+      '@types/hoist-non-react-statics': 3.3.5
+      '@types/invariant': 2.2.37
+      hoist-non-react-statics: 3.3.2
+      intl-format-cache: 4.3.1
+      intl-messageformat: 7.8.4
+      intl-messageformat-parser: 3.6.4
+      react: 18.2.0
+      shallow-equal: 1.2.1
 
   react-intl@3.8.0(react@18.2.0):
     dependencies:
