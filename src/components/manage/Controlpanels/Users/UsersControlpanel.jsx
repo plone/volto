@@ -42,8 +42,10 @@ import {
   Form,
   Input,
   Button,
+  Dimmer,
   Segment,
   Table,
+  Loader,
 } from 'semantic-ui-react';
 
 /**
@@ -156,6 +158,9 @@ class UsersControlpanel extends Component {
         search: this.state.search,
       });
     }
+    if (this.props.deleteRequest.loading && nextProps.deleteRequest.loaded) {
+      this.onDeleteUserSuccess();
+    }
     if (this.props.createRequest.loading && nextProps.createRequest.loaded) {
       this.onAddUserSuccess();
     }
@@ -235,10 +240,6 @@ class UsersControlpanel extends Component {
   onDeleteOk() {
     if (this.state.userToDelete) {
       this.props.deleteUser(this.state.userToDelete.id);
-      this.setState({
-        showDelete: false,
-        userToDelete: undefined,
-      });
     }
   }
 
@@ -251,6 +252,7 @@ class UsersControlpanel extends Component {
     this.setState({
       showDelete: false,
       itemsToDelete: [],
+      userToDelete: undefined,
     });
   }
 
@@ -323,6 +325,24 @@ class UsersControlpanel extends Component {
     );
   }
 
+  /**
+   * Handle Success after deleteUser()
+   *
+   * @returns {undefined}
+   */
+  onDeleteUserSuccess() {
+    this.setState({
+      userToDelete: undefined,
+      showDelete: false,
+    });
+    toast.success(
+      <Toast
+        success
+        title={this.props.intl.formatMessage(messages.success)}
+        content={this.props.intl.formatMessage(messages.userDeleted)}
+      />,
+    );
+  }
   /**
    *
    *
@@ -491,6 +511,12 @@ class UsersControlpanel extends Component {
             )}
             content={
               <div className="content">
+                <Dimmer active={this.props?.deleteRequest?.loading}>
+                  <Loader>
+                    <FormattedMessage id="Loading" defaultMessage="Loading." />
+                  </Loader>
+                </Dimmer>
+
                 <ul className="content">
                   <FormattedMessage
                     id="Do you really want to delete the user {username}?"
