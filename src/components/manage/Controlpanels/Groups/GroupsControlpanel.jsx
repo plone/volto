@@ -41,8 +41,10 @@ import {
   Button,
   Form,
   Input,
+  Loader,
   Segment,
   Table,
+  Dimmer,
 } from 'semantic-ui-react';
 
 /**
@@ -141,6 +143,12 @@ class GroupsControlpanel extends Component {
       this.props.listGroups(this.state.search);
     }
     if (
+      this.props.deleteGroupRequest.loading &&
+      nextProps.deleteGroupRequest.loaded
+    ) {
+      this.onDeleteGroupSuccess();
+    }
+    if (
       this.props.createGroupRequest.loading &&
       nextProps.createGroupRequest.loaded
     ) {
@@ -225,10 +233,6 @@ class GroupsControlpanel extends Component {
   onDeleteOk() {
     if (this.state.groupToDelete) {
       this.props.deleteGroup(this.state.groupToDelete.id);
-      this.setState({
-        showDelete: false,
-        groupToDelete: undefined,
-      });
     }
   }
 
@@ -241,6 +245,7 @@ class GroupsControlpanel extends Component {
     this.setState({
       showDelete: false,
       itemsToDelete: [],
+      groupToDelete: undefined,
     });
   }
 
@@ -347,6 +352,25 @@ class GroupsControlpanel extends Component {
   }
 
   /**
+   * Handle Success after deleteGroup()
+   *
+   * @returns {undefined}
+   */
+  onDeleteGroupSuccess() {
+    this.setState({
+      groupToDelete: undefined,
+      showDelete: false,
+    });
+    toast.success(
+      <Toast
+        success
+        title={this.props.intl.formatMessage(messages.success)}
+        content={this.props.intl.formatMessage(messages.groupDeleted)}
+      />,
+    );
+  }
+
+  /**
    * On change page
    * @method onChangePage
    * @param {object} event Event object.
@@ -386,6 +410,12 @@ class GroupsControlpanel extends Component {
             )}
             content={
               <div className="content">
+                <Dimmer active={this?.props?.deleteGroupRequest?.loading}>
+                  <Loader>
+                    <FormattedMessage id="Loading" defaultMessage="Loading." />
+                  </Loader>
+                </Dimmer>
+
                 <ul className="content">
                   <FormattedMessage
                     id="Do you really want to delete the group {groupname}?"
