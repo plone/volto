@@ -17,6 +17,16 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 17.17.0 (2024-06-27)
+
+### Feature
+
+- Add loading visual and succes message in controlpanel when deleting users and groups @dobri1408 [#6127](https://github.com/plone/volto/issues/6127)
+
+### Bugfix
+
+- Ensure that sidebar field will not steal focus when metadata is edited 17.x.x backport @dobri1408 [#5982](https://github.com/plone/volto/issues/5982)
+
 ## 17.16.2 (2024-06-18)
 
 ### Bugfix
