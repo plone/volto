@@ -3,7 +3,7 @@
  * @module constants/Languages
  */
 
-const languages = {
+module.exports = {
   ca: 'Català',
   de: 'Deutsch',
   en: 'English',
@@ -21,4 +21,4 @@ const languages = {
   zh_CN: '中文',
 };
 
-export default languages;
+// export default languages;
