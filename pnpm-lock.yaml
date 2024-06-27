@@ -2319,15 +2319,27 @@ importers:
 
   packages/volto-slate:
     dependencies:
+      classnames:
+        specifier: 2.2.6
+        version: 2.2.6
+      github-slugger:
+        specifier: 1.4.0
+        version: 1.4.0
       image-extensions:
         specifier: 1.1.0
         version: 1.1.0
+      is-hotkey:
+        specifier: 0.2.0
+        version: 0.2.0
       is-url:
         specifier: 1.2.4
         version: 1.2.4
       jsdom:
         specifier: ^16.6.0
         version: 16.7.0
+      lodash:
+        specifier: 4.17.21
+        version: 4.17.21
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -2337,6 +2349,9 @@ importers:
       react-intersection-observer:
         specifier: 9.1.0
         version: 9.1.0(react@18.2.0)
+      redux-mock-store:
+        specifier: 1.5.4
+        version: 1.5.4
       slate:
         specifier: 0.100.0
         version: 0.100.0
@@ -2349,6 +2364,9 @@ importers:
       slate-react:
         specifier: 0.98.4
         version: 0.98.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(slate@0.100.0)
+      uuid:
+        specifier: ^9.0.1
+        version: 9.0.1
       weak-key:
         specifier: ^1.0.2
         version: 1.0.3
