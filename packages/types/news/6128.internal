@@ -1,0 +1,2 @@
+Upgrade `react-intl` to maximum 3.x series to fix a bundling issue.
+Rename missing js file that must be jsx. @sneridagh
