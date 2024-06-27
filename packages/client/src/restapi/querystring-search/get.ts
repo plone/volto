@@ -27,25 +27,22 @@ export const getQuerystringSearch = async ({
     query.push({
       i: 'path',
       o: 'plone.app.querystring.operation.string.relativePath',
-      v: `${
-        currentPath ? `${config.apiPath}/${locale ?? ''}${currentPath}` : '.'
-      }::1`,
+      v: `${currentPath ? `/${locale ?? ''}${currentPath}` : '.'}::1`,
     });
   } else {
     if (validatedArgs.depth) {
       query = validatedArgs.query.reduce((acc, curr) => {
         if (curr.i === 'path') {
-          const finalPath = !curr.v.includes(config.apiPath)
-            ? currentPath
-              ? `${config.apiPath}/${locale ?? ''}${currentPath}`
-              : '.'
-            : curr.v;
+          const finalPath =
+            locale && !curr.v.includes(locale)
+              ? `/${locale ?? ''}${curr.v}`
+              : curr.v;
           return [
             ...acc,
             { i: curr.i, o: curr.o, v: `${finalPath}::${validatedArgs.depth}` },
           ];
         }
-        return acc;
+        return [...acc, curr];
       }, [] as typeof validatedArgs.query);
     }
   }
