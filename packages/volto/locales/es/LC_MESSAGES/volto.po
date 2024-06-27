@@ -1598,6 +1598,11 @@ msgstr "Grupo"
 msgid "Group created"
 msgstr "Grupo creado"
 
+#. Default: "Group deleted"
+#: helpers/MessageLabels/MessageLabels
+msgid "Group deleted"
+msgstr ""
+
 #. Default: "Group roles updated"
 #: helpers/MessageLabels/MessageLabels
 msgid "Group roles updated"
@@ -2044,6 +2049,8 @@ msgid "Load more"
 msgstr "Cargar más"
 
 #. Default: "Loading."
+#: components/manage/Controlpanels/Groups/GroupsControlpanel
+#: components/manage/Controlpanels/Users/UsersControlpanel
 #: components/manage/Form/ModalForm
 msgid "Loading"
 msgstr "Cargando"
@@ -4071,6 +4078,11 @@ msgstr "Configuración de usuarios y grupos"
 #: helpers/MessageLabels/MessageLabels
 msgid "User created"
 msgstr "Usuario creado"
+
+#. Default: "User deleted"
+#: helpers/MessageLabels/MessageLabels
+msgid "User deleted"
+msgstr ""
 
 #. Default: "User name"
 #: components/manage/Controlpanels/Users/UsersControlpanel

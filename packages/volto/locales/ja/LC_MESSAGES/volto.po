@@ -1596,6 +1596,11 @@ msgstr "グループ"
 msgid "Group created"
 msgstr "グループが作成されました"
 
+#. Default: "Group deleted"
+#: helpers/MessageLabels/MessageLabels
+msgid "Group deleted"
+msgstr ""
+
 #. Default: "Group roles updated"
 #: helpers/MessageLabels/MessageLabels
 msgid "Group roles updated"
@@ -2042,6 +2047,8 @@ msgid "Load more"
 msgstr ""
 
 #. Default: "Loading."
+#: components/manage/Controlpanels/Groups/GroupsControlpanel
+#: components/manage/Controlpanels/Users/UsersControlpanel
 #: components/manage/Form/ModalForm
 msgid "Loading"
 msgstr "読み込み中"
@@ -4069,6 +4076,11 @@ msgstr ""
 #: helpers/MessageLabels/MessageLabels
 msgid "User created"
 msgstr "ユーザを作成しました"
+
+#. Default: "User deleted"
+#: helpers/MessageLabels/MessageLabels
+msgid "User deleted"
+msgstr ""
 
 #. Default: "User name"
 #: components/manage/Controlpanels/Users/UsersControlpanel
