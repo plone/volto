@@ -17,6 +17,12 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.38 (2024-06-28)
+
+### Internal
+
+- Renamed `constants/Languages.js` to `constants/Languages.cjs` @sneridagh [#6130](https://github.com/plone/volto/issues/6130)
+
 ## 18.0.0-alpha.37 (2024-06-27)
 
 ### Feature
