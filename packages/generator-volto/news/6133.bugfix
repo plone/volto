@@ -1,1 +1,0 @@
-Rename test-setup-config.js to test-setup-config.jsx, otherwise jest tests will eventually fail @tomschall
