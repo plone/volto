@@ -36,6 +36,7 @@ export namespace widgetMapping {
         export { SelectAutoComplete as autocomplete };
         export { ColorPickerWidget as color_picker };
         export { SelectWidget as select };
+        export { ImageWidget as image };
     }
     export let vocabulary: {
         'plone.app.vocabularies.Catalog': import("react").ForwardRefExoticComponent<Pick<import("react-intl").WithIntlProps<import("react-intl").WrappedComponentProps<string>>, string> & import("react").RefAttributes<import("react").ComponentType<import("react-intl").WrappedComponentProps<string>>>> & {
@@ -132,6 +133,7 @@ import SelectMetadataWidget from '@plone/volto/components/manage/Blocks/Search/w
 import SelectAutoComplete from '@plone/volto/components/manage/Widgets/SelectAutoComplete';
 import ColorPickerWidget from '@plone/volto/components/manage/Widgets/ColorPickerWidget';
 import SelectWidget from '@plone/volto/components/manage/Widgets/SelectWidget';
+import ImageWidget from '@plone/volto/components/manage/Widgets/ImageWidget';
 import CheckboxWidget from '@plone/volto/components/manage/Widgets/CheckboxWidget';
 import NumberWidget from '@plone/volto/components/manage/Widgets/NumberWidget';
 import { getWidgetView } from '@plone/volto/helpers/Widget/widget';

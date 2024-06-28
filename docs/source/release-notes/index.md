@@ -17,6 +17,12 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 17.18.0 (2024-06-28)
+
+### Feature
+
+- Backport image widget to Volto 17 @dobri1408 [#6136](https://github.com/plone/volto/issues/6136)
+
 ## 17.17.0 (2024-06-27)
 
 ### Feature
