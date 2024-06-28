@@ -1,2 +1,2 @@
-rename test-setup-config.js to test-setup-config.jsx @tomschall
-whitelist some dynamic imports to suppress vite warnings @tomschall
+rename test-setup-config.js to test-setup-config.jsx, otherwise jest tests will eventually fail @tomschall
+whitelist some dynamic imports to suppress vite warnings in storybook @tomschall
