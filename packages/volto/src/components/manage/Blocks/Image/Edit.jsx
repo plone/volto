@@ -4,13 +4,8 @@
  */
 
 import React from 'react';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-
-import { injectIntl } from 'react-intl';
 import cx from 'classnames';
 import { ImageSidebar, SidebarPortal } from '@plone/volto/components';
-import { createContent } from '@plone/volto/actions';
 
 import {
   flattenToAppURL,
@@ -20,18 +15,6 @@ import {
 import config from '@plone/volto/registry';
 
 import { ImageInput } from '@plone/volto/components/manage/Widgets/ImageWidget';
-
-/**
- * Edit image block function.
- * @function Edit
- */
-
-// const messages = defineMessages({
-//   notImage: {
-//     id: 'The provided link does not lead to an image.',
-//     defaultMessage: 'The provided link does not lead to an image.',
-//   },
-// });
 
 function Edit(props) {
   const { data } = props;
@@ -110,6 +93,7 @@ function Edit(props) {
             block={props.block}
             id={props.block}
             objectBrowserPickerType={'image'}
+            onSelectItem={props.onSelectItem}
           />
         )}
         <SidebarPortal selected={props.selected}>
@@ -120,14 +104,4 @@ function Edit(props) {
   );
 }
 
-export default compose(
-  injectIntl,
-  withBlockExtensions,
-  connect(
-    (state, ownProps) => ({
-      request: state.content.subrequests[ownProps.block] || {},
-      content: state.content.subrequests[ownProps.block]?.data,
-    }),
-    { createContent },
-  ),
-)(Edit);
+export default withBlockExtensions(Edit);

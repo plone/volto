@@ -75,6 +75,7 @@ const UnconnectedImageInput = (props) => {
     objectBrowserPickerType = 'image',
     description,
     placeholderLinkInput = '',
+    onSelectItem,
   } = props;
 
   const intl = useIntl();
@@ -204,16 +205,15 @@ const UnconnectedImageInput = (props) => {
                           e.preventDefault();
                           openObjectBrowser({
                             mode: objectBrowserPickerType,
-                            onSelectItem: (
-                              url,
-                              { title, image_field, image_scales },
-                            ) => {
-                              onChange(props.id, flattenToAppURL(url), {
-                                title,
-                                image_field,
-                                image_scales,
-                              });
-                            },
+                            onSelectItem: onSelectItem
+                              ? onSelectItem
+                              : (url, { title, image_field, image_scales }) => {
+                                  onChange(props.id, flattenToAppURL(url), {
+                                    title,
+                                    image_field,
+                                    image_scales,
+                                  });
+                                },
                             currentPath: contextUrl,
                           });
                         }}
