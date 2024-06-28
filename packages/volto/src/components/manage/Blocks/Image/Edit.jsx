@@ -93,7 +93,6 @@ function Edit(props) {
             block={props.block}
             id={props.block}
             objectBrowserPickerType={'image'}
-            onSelectItem={props.onSelectItem}
           />
         )}
         <SidebarPortal selected={props.selected}>
