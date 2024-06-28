@@ -1,0 +1,2 @@
+rename test-setup-config.js to test-setup-config.jsx @tomschall
+whitelist some dynamic imports to suppress vite warnings @tomschall
