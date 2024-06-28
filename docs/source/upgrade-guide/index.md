@@ -354,20 +354,21 @@ The input field's placeholder text was moved above the buttons.
 Together these changes improve usability both on small screens and in small containers, such as when the widget is in grid block elements.
 
 
-### Renaming of the `constants/Languages` module
+### Renamed the `constants/Languages` module
 
-`src/constants/Languages.js` has been renamed to `src/constants/Languages.cjs` since in fact, it's a commonJS module.
-This change is needed in order to be consistent with modules suffixes in Volto core, in preparation for replacing Razzle with a modern builder.
+`src/constants/Languages.js` has been renamed to `src/constants/Languages.cjs` since, in fact, it's a CommonJS module.
+This change is needed for consistency with module suffixes in Volto core, in preparation for replacing Razzle with a modern builder.
 
-The only Volto component that makes use of it is `PersonalPreferences`, if you have shadowed it you should update this component.
+The only Volto component that makes use of it is `PersonalPreferences`.
+If you shadow it, then you should update this component.
 For the rest, it is unlikely that your code refers to this module, since it's used internally by Volto itself.
 
-### Renaming of `test-setup-config` module
+### Renamed `test-setup-config` module
 
-`test-setup-config.js` has been renamed to `test-setup-config.jsx` since in fact, it contains JSX on it.
-This change is needed in order to be consistent with modules suffixes in Volto core, in preparation for replacing Razzle with a modern builder.
+`test-setup-config.js` has been renamed to `test-setup-config.jsx` since, in fact, it contains JSX.
+This change is needed for consistency with module suffixes in Volto core, in preparation for replacing Razzle with a modern builder.
 
-It is unlikely that your code uses it, only in case that you have heavily customized the Jest testing pipeline.
+It is unlikely that your code uses it, unless you heavily customized the Jest testing pipeline.
 
 
 (volto-upgrade-guide-17.x.x)=
