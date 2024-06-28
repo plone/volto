@@ -102,6 +102,7 @@ export const widgetMapping = {
     autocomplete: SelectAutoComplete,
     color_picker: ColorPickerWidget,
     select: SelectWidget,
+    image: ImageWidget,
   },
   vocabulary: {
     'plone.app.vocabularies.Catalog': ObjectBrowserWidget,
@@ -139,7 +140,6 @@ export const widgetMapping = {
       datetime: DatetimeViewWidget,
       description: DescriptionViewWidget,
       email: EmailViewWidget,
-      image: ImageWidget,
       file: FileViewWidget,
       image: ImageViewWidget,
       password: PasswordViewWidget,
