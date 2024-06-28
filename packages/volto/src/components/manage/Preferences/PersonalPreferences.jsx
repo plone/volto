@@ -88,7 +88,9 @@ class PersonalPreferences extends Component {
     let language = data.language || 'en';
     if (config.settings.supportedLanguages.includes(language)) {
       const langFileName = toGettextLang(language);
-      import('@root/../locales/' + langFileName + '.json').then((locale) => {
+      import(
+        /* @vite-ignore */ '@root/../locales/' + langFileName + '.json'
+      ).then((locale) => {
         this.props.changeLanguage(language, locale.default);
       });
     }

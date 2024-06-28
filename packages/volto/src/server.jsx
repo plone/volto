@@ -46,7 +46,9 @@ let locales = {};
 if (config.settings) {
   config.settings.supportedLanguages.forEach((lang) => {
     const langFileName = toGettextLang(lang);
-    import('@root/../locales/' + langFileName + '.json').then((locale) => {
+    import(
+      /* @vite-ignore */ '@root/../locales/' + langFileName + '.json'
+    ).then((locale) => {
       locales = { ...locales, [toReactIntlLang(lang)]: locale.default };
     });
   });
