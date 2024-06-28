@@ -19,6 +19,7 @@ import EditLeadImageBlock from '@plone/volto/components/manage/Blocks/LeadImage/
 import EditListingBlock from '@plone/volto/components/manage/Blocks/Listing/Edit';
 import DefaultNoResultsComponent from '@plone/volto/components/manage/Blocks/Listing/DefaultNoResultsComponent';
 import GalleryNoResultsComponent from '@plone/volto/components/manage/Blocks/Listing/GalleryNoResultsComponent';
+import GridListingBlockTemplate from '../components/manage/Blocks/Listing/Grid';
 import DefaultListingBlockTemplate from '@plone/volto/components/manage/Blocks/Listing/DefaultTemplate';
 import SummaryListingBlockTemplate from '@plone/volto/components/manage/Blocks/Listing/SummaryTemplate';
 import EditVideoBlock from '@plone/volto/components/manage/Blocks/Video/Edit';
@@ -319,9 +320,9 @@ const blocksConfig = {
     noResultsComponent: DefaultNoResultsComponent,
     variations: [
       {
-        id: 'default',
+        id: 'list',
         isDefault: true,
-        title: 'Default',
+        title: 'List',
         template: DefaultListingBlockTemplate,
       },
       {
@@ -331,9 +332,19 @@ const blocksConfig = {
         noResultsComponent: GalleryNoResultsComponent,
       },
       {
-        id: 'summary',
-        title: 'Summary',
+        id: 'list_with_images',
+        title: 'List with images',
         template: SummaryListingBlockTemplate,
+      },
+      {
+        id: 'grid',
+        title: 'Grid',
+        template: GridListingBlockTemplate,
+      },
+      {
+        id: 'grid_with_images',
+        title: 'Grid with images',
+        template: GridListingBlockTemplate,
       },
     ],
     getAsyncData: getListingBlockAsyncData,

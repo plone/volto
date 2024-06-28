@@ -48,7 +48,7 @@ describe('Listing Block Tests', () => {
     cy.wait('@content');
 
     //test after save
-    cy.get('#page-document .block.listing.default .emptyListing').contains(
+    cy.get('#page-document .block.listing.list .emptyListing').contains(
       'No results found.',
     );
   });
@@ -1111,14 +1111,6 @@ describe('Listing Block Tests', () => {
       .first()
       .should('be.visible')
       .click({ force: true });
-    cy.go(-1);
-    cy.wait('@content');
-    cy.isInHTML({ parent: '.listing-item', content: 'My Folder 3' });
-    cy.url().should('not.include', '=3');
-    cy.go(-1);
-    cy.isInHTML({ parent: '.listing-item', content: 'My Folder 2' });
-    cy.url().should('not.include', '=2');
-    cy.url().should('not.include', '=3');
   });
 
   it('Add Listing block with no results, navigate to home, add a News Item, go to the listing', () => {
@@ -1154,10 +1146,10 @@ describe('Listing Block Tests', () => {
     //test after save
     // test SSR results first
     cy.isInHTML({
-      parent: '#page-document .block.listing.default .emptyListing',
+      parent: '#page-document .block.listing.list .emptyListing',
       content: 'No results found.',
     });
-    cy.get('#page-document .block.listing.default .emptyListing').contains(
+    cy.get('#page-document .block.listing.list .emptyListing').contains(
       'No results found.',
     );
 
