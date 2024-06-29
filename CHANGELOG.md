@@ -17,6 +17,12 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 17.18.1 (2024-06-29)
+
+### Bugfix
+
+- In the Slate text block, the markup shortcuts for heading and blockquote work again. @kHAPPY2004 [#5452](https://github.com/plone/volto/issues/5452)
+
 ## 17.18.0 (2024-06-28)
 
 ### Feature
