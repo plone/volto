@@ -104,7 +104,7 @@ export function persistAuthToken(store, req) {
   handleChange(true);
 }
 
-// if (module.hot) {
+// if (module?.hot) {
 //   module.hot.dispose((data) => {
 //     data.reloaded = true;
 //   });

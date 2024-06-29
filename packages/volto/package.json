@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "18.0.0-alpha.37",
+  "version": "18.0.0-alpha.39",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -109,7 +109,7 @@
     },
     "setupFiles": [
       "./test-setup-globals.js",
-      "./test-setup-config.js"
+      "./test-setup-config.jsx"
     ],
     "globalSetup": "./global-test-setup.js",
     "setupFilesAfterEnv": [

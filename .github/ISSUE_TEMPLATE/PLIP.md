@@ -4,6 +4,7 @@ about: Plone Improvement Proposal
 title: ''
 labels: '03 type: feature (plip)'
 assignees: ''
+projects: 'plone/47'
 
 ---
 

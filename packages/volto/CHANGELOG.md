@@ -17,6 +17,19 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.39 (2024-06-28)
+
+### Bugfix
+
+- Cleanup Image widget and pass down onSelectItem prop if any @sneridagh [#6132](https://github.com/plone/volto/issues/6132)
+- Whitelist some dynamic imports to suppress vite warnings in storybook @tomschall [#6133](https://github.com/plone/volto/issues/6133)
+
+## 18.0.0-alpha.38 (2024-06-28)
+
+### Internal
+
+- Renamed `constants/Languages.js` to `constants/Languages.cjs` @sneridagh [#6130](https://github.com/plone/volto/issues/6130)
+
 ## 18.0.0-alpha.37 (2024-06-27)
 
 ### Feature
