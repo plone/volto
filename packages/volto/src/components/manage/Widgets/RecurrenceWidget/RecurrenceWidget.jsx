@@ -223,7 +223,6 @@ class RecurrenceWidget extends Component {
 
       if (changedStart || changedEnd) {
         let start = this.getUTCDate(this.props.formData?.start).toDate();
-        // let end = this.getUTCDate(this.props.formData?.end).toDate();
 
         let changeFormValues = {};
         if (changedEnd) {
@@ -263,7 +262,8 @@ class RecurrenceWidget extends Component {
   setRecurrenceStartEnd = () => {
     const start = this.props.formData?.start;
 
-    const _start = new Date(start); //The date is already in utc from plone, so this is not necessary: this.getUTCDate(start).startOf('day').toDate();
+         // The `start` date from Plone is in UTC
+        const _start = new Date(start);
 
     this.setState((prevState) => {
       let rruleSet = prevState.rruleSet;
