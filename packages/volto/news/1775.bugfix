@@ -1,0 +1,1 @@
+Changed /packages/volto/src/components/manage/Widgets/TextareaWidget.jsx to fix Auto-generated text-area form fields should have at least 10 lines by default and should increase size as the user types in text 
