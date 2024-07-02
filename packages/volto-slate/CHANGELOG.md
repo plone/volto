@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.15 (2024-06-28)
+
+### Internal
+
+- Add proper dependencies to `volto-slate`. @sneridagh [#6130](https://github.com/plone/volto/issues/6130)
+
 ## 18.0.0-alpha.14 (2024-06-26)
 
 ### Feature
