@@ -51,15 +51,9 @@ const TeaserDefaultTemplate = (props) => {
             }
           >
             <div className="teaser-item default">
-              {!isInternalURL(url) ? (
+              {url !== undefined && !isInternalURL(url) ? (
                 <div className="image-wrapper">
-                  <Image
-                    src={url}
-                    alt=""
-                    loading="lazy"
-                    imageField={image ? image.image_field : href.image_field}
-                    responsive={true}
-                  />
+                  <Image src={url} alt="" loading="lazy" responsive={true} />
                 </div>
               ) : (
                 (href.hasPreviewImage || href.image_field || image) && (
