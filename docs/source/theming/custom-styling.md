@@ -69,7 +69,7 @@ Volto look and feel is a Semantic UI theme that implements Pastanaga UI, called
 You can find it in the source code:
 `node_modules/@plone/volto/theme/themes/pastanaga`
 or on Github:
-https://github.com/plone/volto/tree/main/theme/themes/pastanaga
+https://github.com/plone/volto/tree/main/packages/volto/theme/themes/pastanaga
 ```
 
 Pastanaga Theme is an example on how to customize the default Semantic UI look

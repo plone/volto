@@ -1,0 +1,160 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Contact form renders a contact form 1`] = `
+<div>
+  <div
+    id="contact-form"
+  >
+    <div
+      class="ui container"
+      id="view"
+    >
+      <div
+        class="ui icon negative attached message"
+      >
+        <i
+          aria-hidden="true"
+          class="warning icon"
+        />
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            Error
+          </div>
+        </div>
+      </div>
+      <div
+        data-schema="{
+  \\"fieldsets\\": [
+    {
+      \\"fields\\": [
+        \\"name\\",
+        \\"from\\",
+        \\"subject\\",
+        \\"message\\"
+      ],
+      \\"id\\": \\"default\\",
+      \\"title\\": \\"Default\\"
+    }
+  ],
+  \\"properties\\": {
+    \\"name\\": {
+      \\"title\\": \\"Name\\",
+      \\"type\\": \\"string\\"
+    },
+    \\"from\\": {
+      \\"title\\": \\"From\\",
+      \\"type\\": \\"email\\"
+    },
+    \\"subject\\": {
+      \\"title\\": \\"Subject\\",
+      \\"type\\": \\"string\\"
+    },
+    \\"message\\": {
+      \\"title\\": \\"Message\\",
+      \\"type\\": \\"string\\",
+      \\"widget\\": \\"textarea\\"
+    }
+  },
+  \\"required\\": [
+    \\"from\\",
+    \\"message\\"
+  ]
+}"
+        id="Form"
+      />
+    </div>
+  </div>
+  <div
+    id="toolbar"
+  >
+    <div
+      id="Portal"
+    />
+  </div>
+</div>
+`;
+
+exports[`Contact form renders a contact form with error message 1`] = `
+<div>
+  <div
+    id="contact-form"
+  >
+    <div
+      class="ui container"
+      id="view"
+    >
+      <div
+        class="ui icon negative attached message"
+      >
+        <i
+          aria-hidden="true"
+          class="warning icon"
+        />
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            Error
+          </div>
+          <p>
+            Error foo
+          </p>
+        </div>
+      </div>
+      <div
+        data-schema="{
+  \\"fieldsets\\": [
+    {
+      \\"fields\\": [
+        \\"name\\",
+        \\"from\\",
+        \\"subject\\",
+        \\"message\\"
+      ],
+      \\"id\\": \\"default\\",
+      \\"title\\": \\"Default\\"
+    }
+  ],
+  \\"properties\\": {
+    \\"name\\": {
+      \\"title\\": \\"Name\\",
+      \\"type\\": \\"string\\"
+    },
+    \\"from\\": {
+      \\"title\\": \\"From\\",
+      \\"type\\": \\"email\\"
+    },
+    \\"subject\\": {
+      \\"title\\": \\"Subject\\",
+      \\"type\\": \\"string\\"
+    },
+    \\"message\\": {
+      \\"title\\": \\"Message\\",
+      \\"type\\": \\"string\\",
+      \\"widget\\": \\"textarea\\"
+    }
+  },
+  \\"required\\": [
+    \\"from\\",
+    \\"message\\"
+  ]
+}"
+        id="Form"
+      />
+    </div>
+  </div>
+  <div
+    id="toolbar"
+  >
+    <div
+      id="Portal"
+    />
+  </div>
+</div>
+`;

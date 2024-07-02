@@ -1,0 +1,164 @@
+/*******************************
+         Theme Overrides
+*******************************/
+
+.ui.form .inline.field {
+  margin: 0;
+}
+
+.ui.form .inline.field.overwritten input {
+  background-color: rgb(#edc3c2);
+}
+
+.ui.form .inline.field.help .wrapper {
+  border-bottom: none;
+}
+
+.ui.form .inline.field.help {
+  padding-bottom: @15px;
+}
+
+.ui.form .inline.field .help {
+  padding-top: @10px;
+  padding-bottom: @10px;
+  border-bottom: 1px solid @lightGreyBorderColor;
+}
+
+.ui.form p.help {
+  color: #878f93;
+  font-size: @13px;
+  font-weight: 300;
+  line-height: initial;
+}
+
+.ui.form .ui.input input:not([type]),
+.ui.form .ui.input input[type='date'],
+.ui.form .ui.input input[type='datetime-local'],
+.ui.form .ui.input input[type='email'],
+.ui.form .ui.input input[type='number'],
+.ui.form .ui.input input[type='password'],
+.ui.form .ui.input input[type='search'],
+.ui.form .ui.input input[type='tel'],
+.ui.form .ui.input input[type='time'],
+.ui.form .ui.input input[type='text'],
+.ui.form .ui.input input[type='file'],
+.ui.form .ui.input input[type='url'],
+.ui.form textarea {
+  height: 60px;
+  border-width: 0 0 @1px 0;
+  border-radius: 0;
+
+  &:focus {
+    border-radius: 0;
+  }
+}
+
+.ui.form .fields.error .field textarea,
+.ui.form .fields.error .field select,
+.ui.form .fields.error .field input:not([type]),
+.ui.form .fields.error .field input[type='date'],
+.ui.form .fields.error .field input[type='datetime-local'],
+.ui.form .fields.error .field input[type='email'],
+.ui.form .fields.error .field input[type='number'],
+.ui.form .fields.error .field input[type='password'],
+.ui.form .fields.error .field input[type='search'],
+.ui.form .fields.error .field input[type='tel'],
+.ui.form .fields.error .field input[type='time'],
+.ui.form .fields.error .field input[type='text'],
+.ui.form .fields.error .field input[type='file'],
+.ui.form .fields.error .field input[type='url'],
+.ui.form .field.error textarea,
+.ui.form .field.error select,
+.ui.form .field.error input:not([type]),
+.ui.form .field.error input[type='date'],
+.ui.form .field.error input[type='datetime-local'],
+.ui.form .field.error input[type='email'],
+.ui.form .field.error input[type='number'],
+.ui.form .field.error input[type='password'],
+.ui.form .field.error input[type='search'],
+.ui.form .field.error input[type='tel'],
+.ui.form .field.error input[type='time'],
+.ui.form .field.error input[type='text'],
+.ui.form .field.error input[type='file'],
+.ui.form .field.error input[type='url'],
+.ui.form .field.error textarea:focus,
+.ui.form .field.error select:focus,
+.ui.form .field.error input:not([type]):focus,
+.ui.form .field.error input[type='date']:focus,
+.ui.form .field.error input[type='datetime-local']:focus,
+.ui.form .field.error input[type='email']:focus,
+.ui.form .field.error input[type='number']:focus,
+.ui.form .field.error input[type='password']:focus,
+.ui.form .field.error input[type='search']:focus,
+.ui.form .field.error input[type='tel']:focus,
+.ui.form .field.error input[type='time']:focus,
+.ui.form .field.error input[type='text']:focus,
+.ui.form .field.error input[type='file']:focus,
+.ui.form .field.error input[type='url']:focus {
+  border-color: #d01157;
+  background: none;
+}
+
+.ui.form .field > .selection.dropdown {
+  height: 60px;
+}
+
+.ui.form .DraftEditor-root {
+  border-bottom: @inputBorder;
+}
+
+// From the original, due to the wrapper around label
+.ui.form .field .wrapper > label {
+  display: block;
+  margin: @labelMargin;
+  color: @labelColor;
+  font-size: @labelFontSize;
+  font-weight: @labelFontWeight;
+  hyphens: auto;
+  text-transform: @labelTextTransform;
+}
+
+.ui.form .toolbar {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  display: flex;
+  height: 60px;
+  align-items: center;
+  margin-right: 1rem;
+
+  .item {
+    cursor: pointer;
+  }
+}
+
+.ui.form .field .ui.basic.button.delete-button {
+  padding: 0;
+  border: none;
+  margin-left: 10px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+
+  &:hover,
+  &:focus {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    color: #e40166 !important;
+  }
+}
+
+.ui.form .inline.field .link-form-container {
+  .wrapper {
+    display: flex;
+    border-bottom: 1px solid @lightGreyBorderColor;
+
+    .ui.input.input-anchorlink-theme {
+      vertical-align: unset;
+
+      input {
+        height: unset;
+      }
+    }
+  }
+}

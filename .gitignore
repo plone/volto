@@ -21,33 +21,18 @@ build
 !.yarn/versions
 
 # Other
+.vscode
 /cache
 .yarn/
 .DS_Store
 .idea
 lighthouse-report.html
-.vscode/
 .#*
 *~
 /.settings/
 .*project
 
 # Python
-/api/.installed.cfg
-/api/.mr.developer.cfg
-/api/bin/
-/api/develop-eggs/
-/api/eggs/
-/api/include/
-/api/lib/
-/api/lib64/
-/api/notebook/env/
-/api/parts/
-/api/share/python-wheels/
-/api/src/
-/api/test/
-/api/var/
-/api/venv/
 /bin/
 /lib/
 .Python
@@ -55,7 +40,6 @@ include
 pip-selfcheck.json
 pyvenv.cfg
 share
-/api/lib64
 lib64
 
 # locales
@@ -85,3 +69,8 @@ public/critical.css
 docs/_build/
 /.python-version
 /.tool-versions
+docs/source/news
+
+.turbo
+.parcel-cache/
+tsconfig.tsbuildinfo
