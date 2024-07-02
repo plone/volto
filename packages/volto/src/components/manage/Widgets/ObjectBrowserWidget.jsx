@@ -63,6 +63,7 @@ export class ObjectBrowserWidgetComponent extends Component {
   static propTypes = {
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
+    url_link: PropTypes.string.isRequired,
     description: PropTypes.string,
     mode: PropTypes.string, // link, image, multiple
     return: PropTypes.string, // single, multiple
@@ -192,6 +193,7 @@ export class ObjectBrowserWidgetComponent extends Component {
           // Add the required attributes for the widget to work
           '@id',
           'title',
+          'url_link',
         ];
         resultantItem = Object.keys(item)
           .filter((key) => allowedItemKeys.includes(key))
@@ -257,6 +259,7 @@ export class ObjectBrowserWidgetComponent extends Component {
                 {
                   '@id': flattenToAppURL(link),
                   title: removeProtocol(link),
+                  url_link: flattenToAppURL(link),
                 },
               ]);
             }
@@ -266,6 +269,7 @@ export class ObjectBrowserWidgetComponent extends Component {
           {
             '@id': normalizeUrl(this.state.manualLinkInput),
             title: removeProtocol(this.state.manualLinkInput),
+            url_link: normalizeUrl(this.state.manualLinkInput),
           },
         ]);
       }
