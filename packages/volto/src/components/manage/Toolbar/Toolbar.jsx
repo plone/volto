@@ -368,7 +368,6 @@ class Toolbar extends Component {
       id: 'folderContents',
     });
     const { expanded } = this.state;
-    const isHomepage = path === '';
 
     return (
       this.props.token && (
@@ -625,7 +624,6 @@ class Toolbar extends Component {
                   messages.shrinkToolbar,
                 )}
                 className={cx({
-                  homepage: isHomepage,
                   [this.props.content?.review_state]:
                     this.props.content?.review_state,
                 })}
