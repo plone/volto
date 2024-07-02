@@ -51,23 +51,28 @@ const TeaserDefaultTemplate = (props) => {
             }
           >
             <div className="teaser-item default">
-              {url != undefined && !isInternalURL(url) ? (
-                <div className="image-wrapper">
-                  <Image src={url} alt="" loading="lazy" responsive={true} />
-                </div>
-              ) : (
-                (href.hasPreviewImage || href.image_field || image) && (
+              {
+                // eslint-disable-next-line
+                url != undefined && !isInternalURL(url) ? (
                   <div className="image-wrapper">
-                    <Image
-                      item={image || href}
-                      imageField={image ? image.image_field : href.image_field}
-                      alt=""
-                      loading="lazy"
-                      responsive={true}
-                    />
+                    <Image src={url} alt="" loading="lazy" responsive={true} />
                   </div>
+                ) : (
+                  (href.hasPreviewImage || href.image_field || image) && (
+                    <div className="image-wrapper">
+                      <Image
+                        item={image || href}
+                        imageField={
+                          image ? image.image_field : href.image_field
+                        }
+                        alt=""
+                        loading="lazy"
+                        responsive={true}
+                      />
+                    </div>
+                  )
                 )
-              )}
+              }
               <div className="content">
                 {data?.head_title && (
                   <div className="headline">{data.head_title}</div>
