@@ -22,7 +22,7 @@ const TeaserDefaultTemplate = (props) => {
   const intl = useIntl();
   const href = data.href?.[0];
   const image = data.preview_image?.[0];
-  const url = data.preview_image[0]?.['@id'];
+  const url = data.preview_image?.[0]?.['@id'];
 
   const Image = config.getComponent('Image').component;
   const { openExternalLinkInNewTab } = config.settings;
@@ -53,7 +53,13 @@ const TeaserDefaultTemplate = (props) => {
             <div className="teaser-item default">
               {!isInternalURL(url) ? (
                 <div className="image-wrapper">
-                  <Image src={url} alt="" loading="lazy" responsive={true} />
+                  <Image
+                    src={url}
+                    alt=""
+                    loading="lazy"
+                    imageField={image ? image.image_field : href.image_field}
+                    responsive={true}
+                  />
                 </div>
               ) : (
                 (href.hasPreviewImage || href.image_field || image) && (
