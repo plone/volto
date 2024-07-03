@@ -17,6 +17,20 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.40 (2024-07-03)
+
+### Bugfix
+
+- Fix aria-label of items that are `folderish` in ObjectBrowserNav component when performing item search. Previously it said `Select item.title` now `Browse item.title`. This brings it in line with the aria-label when not performing an item search. @sneridagh [#6150](https://github.com/plone/volto/issues/6150)
+
+### Internal
+
+- Automatically add a PLIP issue to the PLIP project board. @stevepiercy [#6134](https://github.com/plone/volto/issues/6134)
+
+### Documentation
+
+- Fix link to renamed `src/constants/Languages.cjs`. @stevepiercy [#6135](https://github.com/plone/volto/issues/6135)
+
 ## 18.0.0-alpha.39 (2024-06-28)
 
 ### Bugfix
