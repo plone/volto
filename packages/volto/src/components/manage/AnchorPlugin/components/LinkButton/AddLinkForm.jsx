@@ -246,7 +246,6 @@ class AddLinkForm extends Component {
           <div className="wrapper">
             <Input
               className={className}
-              id={`field-link`}
               name="link"
               value={value || ''}
               onChange={({ target }) => this.onChange(target.value)}
