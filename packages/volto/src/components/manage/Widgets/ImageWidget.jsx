@@ -302,10 +302,21 @@ export const ImageInput = compose(
   ),
 )(withObjectBrowser(UnconnectedImageInput));
 
-const ImageUploadWidget = (props) => (
-  <FormFieldWrapper {...props} className="image-upload-widget">
-    <ImageInput {...props} />
-  </FormFieldWrapper>
-);
+const ImageUploadWidget = (props) => {
+  const { fieldSet, id, title } = props;
+  return (
+    <FormFieldWrapper {...props} columns={1} className="image-upload-widget">
+      <div className="wrapper">
+        <label
+          id={`fieldset-${fieldSet}-field-label-${id}`}
+          htmlFor={`field-${id}`}
+        >
+          {title}
+        </label>
+      </div>
+      <ImageInput {...props} />
+    </FormFieldWrapper>
+  );
+};
 
 export default ImageUploadWidget;
