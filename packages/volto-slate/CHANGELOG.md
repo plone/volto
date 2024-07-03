@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.16 (2024-07-03)
+
+### Internal
+
+- Fix dependencies for the package @sneridagh [#6148](https://github.com/plone/volto/issues/6148)
+
 ## 18.0.0-alpha.15 (2024-06-28)
 
 ### Internal
