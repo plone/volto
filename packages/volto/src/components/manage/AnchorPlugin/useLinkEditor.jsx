@@ -17,13 +17,11 @@ import { PositionedToolbar } from '@plone/volto-slate/editor/ui';
 import AddLinkForm from '@plone/volto/components/manage/AnchorPlugin/components/LinkButton/AddLinkForm';
 
 function getPositionStyle(el) {
-  const rect = el.getBoundingClientRect();
-
   return {
     style: {
       opacity: 1,
-      top: rect.top + window.pageYOffset - 6,
-      left: rect.left + window.pageXOffset + rect.width / 2,
+      top: -5,
+      left: 55,
     },
   };
 }
@@ -45,6 +43,7 @@ const useLinkEditor = () => {
       return showLinkEditor && anchorNode.current && savedPosition.current ? (
         <PositionedToolbar
           className="add-link"
+          toggleButton={anchorNode.current}
           position={savedPosition.current}
         >
           <AddLinkForm
