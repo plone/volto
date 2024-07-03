@@ -11,6 +11,8 @@ myst:
 
 # Frontend
 
+TEST
+
 Volto is a React-based frontend for the [Plone CMS](https://plone.org).
 It is the default frontend starting with the Plone 6 release.
 
