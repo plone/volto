@@ -157,7 +157,10 @@
       vertical-align: unset;
 
       input {
+        width: 100%;
+        min-width: 100%;
         height: unset;
+        border-width: 0;
       }
     }
   }

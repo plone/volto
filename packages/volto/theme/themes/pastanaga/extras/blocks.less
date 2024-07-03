@@ -446,10 +446,15 @@ div.image-upload-widget-image {
   text-align: center;
 
   .toolbar-wrapper {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
   }
+}
+
+#sidebar-properties .image-upload-widget .slate-inline-toolbar {
+  left: 0 !important;
 }
 
 .ui.active.basic.icon.button {
@@ -727,7 +732,20 @@ div.image-upload-widget-image {
 .link-form-container {
   .inline.field .wrapper {
     min-height: initial;
-    border-bottom: none;
+    justify-content: space-between;
+    border-bottom: none !important;
+  }
+
+  .inline.field {
+    max-width: 93%;
+  }
+
+  .ui.input-anchorlink-theme {
+    max-width: 80%;
+  }
+
+  .ui.buttons {
+    width: auto;
   }
 
   button {
@@ -742,10 +760,6 @@ div.image-upload-widget-image {
     &:focus {
       outline: none;
     }
-  }
-
-  .ui.input {
-    min-width: 250px;
   }
 }
 
