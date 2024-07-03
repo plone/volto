@@ -96,15 +96,7 @@ const UnconnectedImageInput = (props) => {
   const imageId = content?.['@id'];
   const image = content?.image;
 
-  useEffect(() => {
-    if (uploading && !loading && loaded) {
-      setUploading(false);
-      onChange(id, imageId, {
-        image_field: 'image',
-        image_scales: { image: [image] },
-      });
-    }
-  }, [loading, loaded, uploading, imageId, image, id, onChange]); // Explicitly list all dependencies
+  const uploadHandledRef = useRef(false);
 
   const handleUpload = React.useCallback(
     (eventOrFile) => {
@@ -115,7 +107,9 @@ const UnconnectedImageInput = (props) => {
       const file = eventOrFile.target
         ? eventOrFile.target.files[0]
         : eventOrFile[0];
+
       if (!validateFileUploadSize(file, intl.formatMessage)) return;
+
       readAsDataURL(file).then((fileData) => {
         const fields = fileData.match(/^data:(.*);(.*),(.*)$/);
         dispatch(
@@ -136,16 +130,31 @@ const UnconnectedImageInput = (props) => {
         );
       });
     },
-    [
-      restrictFileUpload,
-      intl.formatMessage,
-      dispatch,
-      props,
-      contextUrl,
-      requestId,
-    ],
+    [dispatch, contextUrl, intl, props.block, requestId, restrictFileUpload],
   );
 
+  useEffect(() => {
+    if (
+      !uploading &&
+      !loading &&
+      loaded &&
+      imageId &&
+      image &&
+      !uploadHandledRef.current
+    ) {
+      uploadHandledRef.current = true;
+      onChange(id, imageId, {
+        image_field: 'image',
+        image_scales: { image: [image] },
+      });
+    }
+  }, [uploading, loading, loaded, imageId, image, onChange, id]);
+
+  useEffect(() => {
+    if (uploading && !loading && loaded) {
+      setUploading(false);
+    }
+  }, [uploading, loading, loaded]);
   const onDragEnter = React.useCallback(() => {
     if (restrictFileUpload === false) setDragging(true);
   }, [restrictFileUpload]);
