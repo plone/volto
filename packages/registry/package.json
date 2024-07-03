@@ -71,7 +71,8 @@
     "crypto-random-string": "3.2.0",
     "debug": "4.3.2",
     "dependency-graph": "0.10.0",
-    "glob": "7.1.6"
+    "glob": "7.1.6",
+    "tmp": "0.2.1"
   },
   "devDependencies": {
     "@parcel/packager-ts": "^2.12.0",

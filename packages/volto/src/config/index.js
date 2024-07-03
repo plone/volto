@@ -59,10 +59,12 @@ const publicURL =
     ? `http://${host}:${port}`
     : getServerURL(process.env.RAZZLE_API_PATH) || `http://${host}:${port}`);
 
-const serverConfig =
-  typeof __SERVER__ !== 'undefined' && __SERVER__
-    ? require('./server').default
-    : {};
+const serverConfig = {};
+// Move this to the server build only
+// const serverConfig =
+//   typeof __SERVER__ !== 'undefined' && __SERVER__
+//     ? require('./server').default
+//     : {};
 
 let config = {
   settings: {

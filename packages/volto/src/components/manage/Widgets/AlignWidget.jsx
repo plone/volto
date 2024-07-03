@@ -1,6 +1,6 @@
 import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
-import ButtonsWidget from './ButtonsWidget';
+import ButtonsWidget from '@plone/volto/components/manage/Widgets/ButtonsWidget';
 import imageLeftSVG from '@plone/volto/icons/image-left.svg';
 import imageRightSVG from '@plone/volto/icons/image-right.svg';
 import imageFitSVG from '@plone/volto/icons/image-fit.svg';

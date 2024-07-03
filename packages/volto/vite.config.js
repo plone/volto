@@ -46,6 +46,11 @@ export default defineConfig({
         find: 'volto-themes',
         replacement: path.resolve(__dirname, './theme/themes'),
       },
+      // This is needed to make lodash work with Vite as lodash-es is full ESM
+      {
+        find: 'lodash',
+        replacement: 'lodash-es',
+      },
     ],
   },
   define: {
@@ -55,6 +60,12 @@ export default defineConfig({
     __SERVER__: false,
     __DEVELOPMENT__: true,
   },
+  // ssr: {
+  //   optimizeDeps: {
+  //     include: ['lodash'],
+  //   },
+  //   noExternal: ['lodash'],
+  // },
   optimizeDeps: {
     esbuildOptions: {
       plugins: [fixReactVirtualized],
