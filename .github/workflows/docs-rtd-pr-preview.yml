@@ -1,7 +1,7 @@
 # .github/workflows/docs-rtd-pr-preview.yml
 name: readthedocs/actions
 on:
-  pull_request_target:
+  [push, pull_request_target]:
     types:
       - opened
     # Execute this action only on PRs that touch
