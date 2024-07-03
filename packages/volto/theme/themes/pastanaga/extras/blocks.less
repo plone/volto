@@ -445,6 +445,49 @@ div.image-upload-widget-image {
 .image-upload-widget {
   text-align: center;
 
+  .ui.grid > .row {
+    flex-direction: column;
+  }
+
+  .ui.grid > .row > .eight.wide.column {
+    width: 100% !important;
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .ui.message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ui.basic.button {
+    box-shadow: 0px 0px 0px 0.14285714rem transparent inset !important;
+  }
+
+  .toolbar-inner {
+    display: flex;
+    // width: min(100%, 450px);
+    height: 40px;
+    padding: 4px;
+    border-radius: 2px;
+    background-color: rgba(255, 255, 255, 0.975);
+    box-shadow:
+      0 0 8px rgba(0, 0, 0, 0.1),
+      0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+
+  .toolbar-inner .ui.buttons:first-child .ui.icon.button {
+    margin-left: 0;
+  }
+
+  .toolbar-inner .ui.icon.button {
+    padding: 4px;
+    border-radius: 1px;
+    margin-left: 4px;
+  }
+
   .toolbar-wrapper {
     display: flex;
     flex-direction: column;
