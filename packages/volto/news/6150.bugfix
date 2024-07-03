@@ -1,1 +1,1 @@
-Fix aria-label in ObjectBrowserNav component @sneridagh
+Fix aria-label of items that are `folderish` in ObjectBrowserNav component when performing item search. Previously it said `Select item.title` now `Browse item.title`. This brings it in line with the aria-label when not performing an item search. @sneridagh
