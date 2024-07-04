@@ -1,4 +1,5 @@
-Fixed image widget position and look and feel in sidebar @ichim-david
+Fixed image widget position and look and feel in sidebar. @ichim-david
 
 Breaking:
-- This change updated the markup of the widget in the generated form both in sidebar and in a normal form.
+- Updated the markup of the widget in the sidebar to render the widget on a single column bellow the label.
+- AddLink Pop-up of the widget is now rendered inside `toolbar-inner` instead of the document body, this fixes the positioning of the toolbar when scrolling.
