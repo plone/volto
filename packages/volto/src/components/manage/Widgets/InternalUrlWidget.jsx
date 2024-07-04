@@ -15,13 +15,13 @@ import navTreeSVG from '@plone/volto/icons/nav.svg';
 
 /** Widget to edit urls
  *
- * This is the default widget used for the `remoteUrl` field. You can also use
+ * This is a widget used for getting and setting an internal url. You can also use
  * it by declaring a field like:
  *
  * ```jsx
  * {
  *  title: "URL",
- *  widget: 'url',
+ *  widget: 'internal_url',
  * }
  * ```
  */
@@ -35,20 +35,20 @@ export const InternalUrlWidget = (props) => {
     maxLength,
     placeholder,
     isDisabled,
+    value,
   } = props;
   const inputId = `field-${id}`;
 
-  const [value, setValue] = useState(flattenToAppURL(props.value));
   const [isInvalid, setIsInvalid] = useState(false);
+
   /**
    * Clear handler
    * @method clear
    * @param {Object} value Value
-   * @returns {undefined}
+   * @returns {string} Empty string
    */
   const clear = () => {
-    setValue('');
-    onChange(id, undefined);
+    onChange(id, '');
   };
 
   const onChangeValue = (_value) => {
@@ -63,8 +63,6 @@ export const InternalUrlWidget = (props) => {
       }
     }
 
-    setValue(newValue);
-
     newValue = isInternalURL(newValue) ? flattenToAppURL(newValue) : newValue;
 
     if (!isInternalURL(newValue) && newValue.length > 0) {
@@ -75,7 +73,7 @@ export const InternalUrlWidget = (props) => {
       }
     }
 
-    onChange(id, newValue === '' ? undefined : newValue);
+    onChange(id, newValue);
   };
 
   return (
@@ -89,12 +87,10 @@ export const InternalUrlWidget = (props) => {
           disabled={isDisabled}
           placeholder={placeholder}
           onChange={({ target }) => onChangeValue(target.value)}
-          onBlur={({ target }) =>
-            onBlur(id, target.value === '' ? undefined : target.value)
-          }
+          onBlur={({ target }) => onBlur(id, target.value)}
           onClick={() => onClick()}
-          minLength={minLength || null}
-          maxLength={maxLength || null}
+          minLength={minLength}
+          maxLength={maxLength}
           error={isInvalid}
         />
         {value?.length > 0 ? (

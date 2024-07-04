@@ -157,10 +157,13 @@ jobs:
 
       - run: pnpm i
 
-      - run: make start-test-acceptance-server-detached
+      - run: make acceptance-server-detached-start
 
       - run: npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone && pnpm --filter @plone/client test
         working-directory: packages/client
+
+      - run: make acceptance-server-detached-stop
+
 
   helpers:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
