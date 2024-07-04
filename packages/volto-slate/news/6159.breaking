@@ -1,0 +1,3 @@
+Removed `Max(, 0)` call for `PositionedToolbar` left position. 
+This allows the `PositionedToolbar` to have negative left position if necessary
+such as in the case of the `AddLink` toolbar. @ichim-david
