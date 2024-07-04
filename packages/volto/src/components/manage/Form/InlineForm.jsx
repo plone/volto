@@ -6,13 +6,8 @@ import AnimateHeight from 'react-animate-height';
 import { keys, map, isEqual } from 'lodash';
 import { useAtom } from 'jotai';
 import { inlineFormFieldsetsState } from './InlineFormState';
-import {
-  insertInArray,
-  removeFromArray,
-  arrayRange,
-} from '@plone/volto/helpers/Utils/Utils';
-import { Icon } from '@plone/volto/components';
-import { Field } from '@plone/volto/components/manage/Form';
+import { insertInArray, removeFromArray, arrayRange } from '@plone/volto/helpers/Utils/Utils';
+import { Field, Icon } from '@plone/volto/components';
 import { applySchemaDefaults } from '@plone/volto/helpers';
 
 import upSVG from '@plone/volto/icons/up-key.svg';
@@ -48,7 +43,6 @@ const InlineForm = (props) => {
     title,
     icon,
     headerActions,
-    actionButton,
     footer,
     focusIndex,
     intl,
@@ -56,57 +50,47 @@ const InlineForm = (props) => {
   const _ = intl.formatMessage;
   const defaultFieldset = schema.fieldsets.find((o) => o.id === 'default');
   const other = schema.fieldsets.filter((o) => o.id !== 'default');
-
+  const [previousSchema, setPreviousSchema] = React.useState({});
   React.useEffect(() => {
     // Will set field values from schema, by matching the default values
+    if (JSON.stringify(previousSchema) !== JSON.stringify(schema)) {
+      const objectSchema = typeof schema === 'function' ? schema(props) : schema;
 
-    const objectSchema = typeof schema === 'function' ? schema(props) : schema;
-
-    const initialData = applySchemaDefaults({
-      data: formData,
-      schema: objectSchema,
-      intl,
-    });
-
-    if (onChangeFormData) {
-      onChangeFormData(initialData);
-    } else {
-      Object.keys(initialData).forEach((k) => {
-        if (!isEqual(initialData[k], formData?.[k])) {
-          onChangeField(k, initialData[k]);
-        }
+      const initialData = applySchemaDefaults({
+        data: formData,
+        schema: objectSchema,
+        intl,
       });
+
+      if (onChangeFormData) {
+        onChangeFormData(initialData);
+      } else {
+        Object.keys(initialData).forEach((k) => {
+          if (!isEqual(initialData[k], formData?.[k])) {
+            onChangeField(k, initialData[k]);
+          }
+        });
+      }
+
+      setPreviousSchema(schema);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [schema]);
 
   const [currentActiveFieldset, setCurrentActiveFieldset] = useAtom(
     inlineFormFieldsetsState({
       name: block,
       fielsetList: other,
-      initialState: config.settings.blockSettingsTabFieldsetsInitialStateOpen
-        ? arrayRange(0, other.length - 1, 1)
-        : [],
+      initialState: config.settings.blockSettingsTabFieldsetsInitialStateOpen ? arrayRange(0, other.length - 1, 1) : [],
     }),
   );
 
   function handleCurrentActiveFieldset(e, blockProps) {
     const { index } = blockProps;
     if (currentActiveFieldset.includes(index)) {
-      setCurrentActiveFieldset(
-        removeFromArray(
-          currentActiveFieldset,
-          currentActiveFieldset.indexOf(index),
-        ),
-      );
+      setCurrentActiveFieldset(removeFromArray(currentActiveFieldset, currentActiveFieldset.indexOf(index)));
     } else {
-      setCurrentActiveFieldset(
-        insertInArray(
-          currentActiveFieldset,
-          index,
-          currentActiveFieldset.length + 1,
-        ),
-      );
+      setCurrentActiveFieldset(insertInArray(currentActiveFieldset, index, currentActiveFieldset.length + 1));
     }
   }
 
@@ -124,24 +108,8 @@ const InlineForm = (props) => {
           {description}
         </Segment>
       )}
-      {keys(errors).length > 0 && (
-        <Message
-          icon="warning"
-          negative
-          attached
-          header={_(messages.error)}
-          content={_(messages.thereWereSomeErrors)}
-        />
-      )}
-      {error && (
-        <Message
-          icon="warning"
-          negative
-          attached
-          header={_(messages.error)}
-          content={error.message}
-        />
-      )}
+      {keys(errors).length > 0 && <Message icon="warning" negative attached header={_(messages.error)} content={_(messages.thereWereSomeErrors)} />}
+      {error && <Message icon="warning" negative attached header={_(messages.error)} content={error.message} />}
 
       <div id={`blockform-fieldset-${defaultFieldset.id}`}>
         <Segment className="form attached">
@@ -161,33 +129,18 @@ const InlineForm = (props) => {
               block={block}
             />
           ))}
-          {actionButton && (
-            <Segment className="attached actions">{actionButton}</Segment>
-          )}
         </Segment>
       </div>
 
       {other.map((fieldset, index) => (
         <Accordion fluid styled className="form" key={fieldset.id}>
           <div key={fieldset.id} id={`blockform-fieldset-${fieldset.id}`}>
-            <Accordion.Title
-              active={currentActiveFieldset.includes(index)}
-              index={index}
-              onClick={handleCurrentActiveFieldset}
-            >
+            <Accordion.Title active={currentActiveFieldset.includes(index)} index={index} onClick={handleCurrentActiveFieldset}>
               {fieldset.title && <>{fieldset.title}</>}
-              {currentActiveFieldset.includes(index) ? (
-                <Icon name={upSVG} size="20px" />
-              ) : (
-                <Icon name={downSVG} size="20px" />
-              )}
+              {currentActiveFieldset.includes(index) ? <Icon name={upSVG} size="20px" /> : <Icon name={downSVG} size="20px" />}
             </Accordion.Title>
             <Accordion.Content active={currentActiveFieldset.includes(index)}>
-              <AnimateHeight
-                animateOpacity
-                duration={500}
-                height={currentActiveFieldset.includes(index) ? 'auto' : 0}
-              >
+              <AnimateHeight animateOpacity duration={500} height={currentActiveFieldset.includes(index) ? 'auto' : 0}>
                 <Segment className="attached">
                   {map(fieldset.fields, (field) => (
                     <Field
