@@ -727,24 +727,20 @@ div.image-upload-widget-image {
 
 .link-form-container {
   .inline.field .wrapper {
-    width: 270px;
-    min-height: initial;
+    width: 270px; // needed to ensure placeholder shows and buttons are aligned to the right
+    min-height: initial; // overrides .input.field .wrapper
     justify-content: space-between;
-    border-bottom: none !important;
-  }
-
-  .inline.field {
-    max-width: 93%;
+    border-bottom: none;
   }
 
   .ui.input-anchorlink-theme {
-    width: 100% !important;
-    max-width: 80%;
-    margin-left: 0 !important;
+    width: 100% !important; // overrides form.less width: auto
+    max-width: 82%; // needed so buttons don't shift to the right when value is present
+    margin-left: 0 !important; // overrides .block .toolbar-inner .ui.input
   }
 
   .ui.buttons {
-    width: auto;
+    width: auto; // for Add Link popup button to be aligned to the right
   }
 
   button {

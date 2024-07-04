@@ -151,16 +151,13 @@
 .ui.form .inline.field .link-form-container {
   .wrapper {
     display: flex;
-    border-bottom: 1px solid @lightGreyBorderColor;
 
     .ui.input.input-anchorlink-theme {
       vertical-align: unset;
 
       input {
         width: 100%;
-        min-width: 100%;
-        height: unset;
-        border-width: 0;
+        height: unset; // input is only 40px and form.overrides sets height to 60px
       }
     }
   }
