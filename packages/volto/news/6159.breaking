@@ -1,0 +1,4 @@
+Fixed image widget position and look and feel in sidebar @ichim-david
+
+Breaking:
+- This change updated the markup of the widget in the generated form both in sidebar and in a normal form.
