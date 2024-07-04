@@ -313,7 +313,11 @@ export const ImageInput = compose(
 const ImageUploadWidget = (props) => {
   const { fieldSet, id, title } = props;
   return (
-    <FormFieldWrapper {...props} columns={1} className="image-upload-widget">
+    <FormFieldWrapper
+      {...props}
+      columns={1}
+      className="block image-upload-widget"
+    >
       <div className="wrapper">
         <label
           id={`fieldset-${fieldSet}-field-label-${id}`}
