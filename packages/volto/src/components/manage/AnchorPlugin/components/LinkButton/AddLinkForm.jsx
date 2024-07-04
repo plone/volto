@@ -64,6 +64,7 @@ class AddLinkForm extends Component {
   };
 
   static defaultProps = {
+    objectBrowserPickerType: 'link',
     placeholder: 'Enter URL or select an item',
   };
 
@@ -246,7 +247,6 @@ class AddLinkForm extends Component {
           <div className="wrapper">
             <Input
               className={className}
-              id={`field-link`}
               name="link"
               value={value || ''}
               onChange={({ target }) => this.onChange(target.value)}
