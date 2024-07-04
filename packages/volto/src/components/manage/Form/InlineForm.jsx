@@ -57,6 +57,7 @@ const InlineForm = (props) => {
   const defaultFieldset = schema.fieldsets.find((o) => o.id === 'default');
   const other = schema.fieldsets.filter((o) => o.id !== 'default');
   const [previousSchema, setPreviousSchema] = React.useState({});
+
   React.useEffect(() => {
     // Will set field values from schema, by matching the default values
     if (JSON.stringify(previousSchema) !== JSON.stringify(schema)) {
