@@ -14,6 +14,7 @@ import {
   getBaseUrl,
   isInternalURL,
   validateFileUploadSize,
+  usePrevious,
 } from '@plone/volto/helpers';
 import { createContent } from '@plone/volto/actions';
 import { readAsDataURL } from 'promise-file-reader';
@@ -91,12 +92,23 @@ const UnconnectedImageInput = (props) => {
 
   const requestId = `image-upload-${id}`;
 
-  const { loading, loaded } = props.request;
+  const loaded = props.request.loaded;
   const { content } = props;
   const imageId = content?.['@id'];
   const image = content?.image;
+  let loading = false;
 
-  const uploadHandledRef = useRef(false);
+  useEffect(() => {
+    if (uploading && loading && loaded) {
+      setUploading(false);
+      onChange(id, imageId, {
+        image_field: 'image',
+        image_scales: { image: [image] },
+      });
+    }
+  }, [loading, loaded, uploading, imageId, image, id, onChange]); // Explicitly list all dependencies
+
+  loading = usePrevious(props.request?.loading);
 
   const handleUpload = React.useCallback(
     (eventOrFile) => {
@@ -107,9 +119,7 @@ const UnconnectedImageInput = (props) => {
       const file = eventOrFile.target
         ? eventOrFile.target.files[0]
         : eventOrFile[0];
-
       if (!validateFileUploadSize(file, intl.formatMessage)) return;
-
       readAsDataURL(file).then((fileData) => {
         const fields = fileData.match(/^data:(.*);(.*),(.*)$/);
         dispatch(
@@ -130,31 +140,16 @@ const UnconnectedImageInput = (props) => {
         );
       });
     },
-    [dispatch, contextUrl, intl, props.block, requestId, restrictFileUpload],
+    [
+      restrictFileUpload,
+      intl.formatMessage,
+      dispatch,
+      props,
+      contextUrl,
+      requestId,
+    ],
   );
 
-  useEffect(() => {
-    if (
-      !uploading &&
-      !loading &&
-      loaded &&
-      imageId &&
-      image &&
-      !uploadHandledRef.current
-    ) {
-      uploadHandledRef.current = true;
-      onChange(id, imageId, {
-        image_field: 'image',
-        image_scales: { image: [image] },
-      });
-    }
-  }, [uploading, loading, loaded, imageId, image, onChange, id]);
-
-  useEffect(() => {
-    if (uploading && !loading && loaded) {
-      setUploading(false);
-    }
-  }, [uploading, loading, loaded]);
   const onDragEnter = React.useCallback(() => {
     if (restrictFileUpload === false) setDragging(true);
   }, [restrictFileUpload]);
@@ -170,7 +165,11 @@ const UnconnectedImageInput = (props) => {
       {selected && <ImageToolbar {...props} />}
       <img
         className={props.className}
-        src={`${flattenToAppURL(value)}/@@images/image/${imageSize}`}
+        src={
+          isInternalURL(value)
+            ? `${flattenToAppURL(value)}/@@images/image/${imageSize}`
+            : value
+        }
         alt=""
       />
     </div>

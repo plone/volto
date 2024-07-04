@@ -1,0 +1,7 @@
+Restored browse link in `Slate` add link popup. @ichim-david
+Fixed reccursive error when uploading image using `Image` widget. @sneridagh
+Fixed image display when using an external URL. @sneridagh
+Fixed position of Image widget toolbar when scrolling by changing position of toolbar
+to be within the widget area instead of body. @ichim-david
+Improved display of add link popup when using it inside the `Image` widget where we don't 
+have a link picker. @ichim-david
