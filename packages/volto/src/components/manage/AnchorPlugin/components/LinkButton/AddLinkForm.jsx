@@ -64,6 +64,7 @@ class AddLinkForm extends Component {
   };
 
   static defaultProps = {
+    objectBrowserPickerType: 'link',
     placeholder: 'Enter URL or select an item',
   };
 
