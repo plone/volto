@@ -104,7 +104,7 @@ const TeaserData = (props) => {
     }
   };
 
-  const isReseteable =
+  const isResettable =
     isEmpty(data.href) && !data.title && !data.description && !data.head_title;
 
   const HeaderActions = (
@@ -112,7 +112,7 @@ const TeaserData = (props) => {
       <Button
         aria-label={intl.formatMessage(messages.resetTeaser)}
         basic
-        disabled={isReseteable}
+        disabled={isResettable}
         onClick={() => reset()}
       >
         <Icon name={trashSVG} size="24px" color="red" />
@@ -144,13 +144,14 @@ const TeaserData = (props) => {
     <BlockDataForm
       schema={schema}
       title={schema.title}
-      onChangeField={(id, value) => {
+      onChangeField={(id, value, item) => {
         dataAdapter({
           block,
           data,
           id,
           onChangeBlock,
           value,
+          item,
         });
       }}
       onChangeBlock={onChangeBlock}

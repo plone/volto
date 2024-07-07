@@ -78,6 +78,7 @@ const UnconnectedImageInput = (props) => {
     placeholderLinkInput = '',
     onSelectItem,
   } = props;
+  const imageValue = value?.[0]?.['@id'] || value;
 
   const intl = useIntl();
   const linkEditor = useLinkEditor();
@@ -155,7 +156,7 @@ const UnconnectedImageInput = (props) => {
   }, [restrictFileUpload]);
   const onDragLeave = React.useCallback(() => setDragging(false), []);
 
-  return value ? (
+  return imageValue ? (
     <div
       className="image-upload-widget-image"
       onClick={onFocus}
@@ -166,9 +167,9 @@ const UnconnectedImageInput = (props) => {
       <img
         className={props.className}
         src={
-          isInternalURL(value)
-            ? `${flattenToAppURL(value)}/@@images/image/${imageSize}`
-            : value
+          isInternalURL(imageValue)
+            ? `${flattenToAppURL(imageValue)}/@@images/image/${imageSize}`
+            : imageValue
         }
         alt=""
       />
@@ -216,6 +217,11 @@ const UnconnectedImageInput = (props) => {
                             onSelectItem: onSelectItem
                               ? onSelectItem
                               : (url, { title, image_field, image_scales }) => {
+                                  console.log('url', url);
+                                  console.log('title', title);
+                                  console.log('image_field', image_field);
+                                  console.log('image_scales', image_scales);
+                                  console.log('props id ', props.id);
                                   onChange(props.id, flattenToAppURL(url), {
                                     title,
                                     image_field,
@@ -272,7 +278,7 @@ const UnconnectedImageInput = (props) => {
                 </div>
                 {linkEditor.anchorNode && (
                   <linkEditor.LinkEditor
-                    value={value}
+                    value={imageValue}
                     placeholder={
                       placeholderLinkInput ||
                       intl.formatMessage(messages.linkAnImage)
