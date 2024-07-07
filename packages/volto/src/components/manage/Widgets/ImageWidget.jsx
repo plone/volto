@@ -217,11 +217,6 @@ const UnconnectedImageInput = (props) => {
                             onSelectItem: onSelectItem
                               ? onSelectItem
                               : (url, { title, image_field, image_scales }) => {
-                                  console.log('url', url);
-                                  console.log('title', title);
-                                  console.log('image_field', image_field);
-                                  console.log('image_scales', image_scales);
-                                  console.log('props id ', props.id);
                                   onChange(props.id, flattenToAppURL(url), {
                                     title,
                                     image_field,
