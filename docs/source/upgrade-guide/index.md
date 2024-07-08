@@ -241,6 +241,136 @@ This allows more expressive conditions to fulfill the use case of the `Add` form
 
 The mechanism to detect if a block is a container or not has been improved and the config setting `config.settings.containerBlockTypes` is no longer needed, and core won't check for it anymore.
 
+### New naming convention for `Makefile` commands
+
+A new naming convention for `Makefile` commands has been implemented in Volto 18.
+This convention has been applied to all Volto tools, including the new boilerplate generators that use cookiecutter.
+The conventions is as follows:
+
+- Use kebab-case, where each word is separated by a hyphen.
+- Use hierarchical or taxonomic ranking, where the thing being operated upon is defined by `[thing]-[subthing]-[subsubthing]`.
+- `[thing]` may be omitted when it is the project itself.
+- The final term is the action to be performed upon the `[thing]`.
+
+Every Makefile command now has a description.
+To view a complete list of Makefile commands with their description, you can issue the following command.
+
+```shell
+make help
+```
+
+The following table lists the old and new Makefile commands and the new commands' description.
+
+| Command | Revised Command | Revised Description | Comments |
+|---|---|---|---|
+| help | help | Show this help |  |
+| start | start | Starts Volto, allowing reloading of the add-on during development |  |
+| start-frontend |  |  | Removed |
+| build | build | Build a production bundle for distribution | Added |
+| build-frontend |  |  | Removed |
+| test | test | Run unit tests |  |
+| clean | clean | Clean development environment |  |
+| setup | install | Set up development environment | Renamed to be consistent with the add-on setups |
+| bin/python | bin/python | Create a Python virtual environment with the latest pip, and install documentation requirements |  |
+| docs-clean | docs-clean | Clean current and legacy docs build directories, and Python virtual environment |  |
+| docs-news | docs-news | Create or update the symlink from docs to volto package |  |
+| docs-html | docs-html | Build html |  |
+| docs-livehtml | docs-livehtml | Rebuild Sphinx documentation on changes, with live-reload in the browser |  |
+| docs-linkcheck | docs-linkcheck | Run linkcheck |  |
+| docs-linkcheckbroken | docs-linkcheckbroken | Run linkcheck and show only broken links |  |
+| docs-vale | docs-vale | Install (once) and run Vale style, grammar, and spell checks |  |
+| rtd-pr-preview | docs-rtd-pr-preview | Build previews of pull requests that have documentation changes on Read the Docs via CI |  |
+| docs-test | docs-test | Clean docs build, then run linkcheckbroken, vale |  |
+| copyreleasenotestodocs | release-notes-copy-to-docs | Copy release notes into documentation |  |
+| storybook-build | storybook-build | Build Storybook |  |
+|  | storybook-start | Start Storybook server on port 6006 | Added |
+| patches |  |  | Removed |
+| cypress-install | cypress-install | Install Cypress for acceptance tests |  |
+| build-deps | build-deps | Build dependencies |  |
+| corepackagebump |  |  | Removed |
+| start-backend-docker | backend-docker-start | Starts a Docker-based backend for development |  |
+| start-backend-docker-detached | backend-docker-detached-start | Starts a Docker-based backend in detached mode (daemon) |  |
+| stop-backend-docker-detached | backend-docker-detached-stop | Stops the Docker-based backend in detached mode (daemon) |  |
+| start-backend-docker-no-cors | backend-docker-start-no-cors | Starts the Docker-based backend without CORS in detached mode (daemon) |  |
+| start-frontend-docker | frontend-docker-start | Starts a Docker-based frontend for development |  |
+| start-backend-docker-guillotina |  |  | Removed |
+| stop-backend-docker-guillotina |  |  | Removed |
+| start-test-acceptance-frontend-dev | acceptance-frontend-dev-start | Start acceptance frontend in development mode |  |
+| test-acceptance-server | acceptance-backend-start | Start backend acceptance server |  |
+| start-test-acceptance-server | ci-acceptance-backend-start | Start backend acceptance server in headless mode for CI |  |
+| start-test-acceptance-frontend | acceptance-frontend-prod-start | Start acceptance frontend in production mode |  |
+| test-acceptance | acceptance-test | Start Cypress in interactive mode |  |
+| test-acceptance-headless | ci-acceptance-test | Run Cypress tests in headless mode for CI |  |
+| full-test-acceptance | ci-acceptance-test-run-all | With a single command, start both the acceptance frontend and backend acceptance server, and run Cypress tests in headless mode |  |
+| start-test-acceptance-frontend-seamless | deployment-acceptance-frontend-prod-start | Start acceptance frontend in production mode for deployment |  |
+| test-acceptance-seamless | deployment-acceptance-test | Start Cypress in interactive mode for tests in deployment |  |
+| start-test-acceptance-web-server-seamless | deployment-acceptance-web-server-start | Start the reverse proxy (Traefik) on port 80 for deployment |  |
+| full-test-acceptance-seamless | deployment-ci-acceptance-test-run-all | Run in one command the backend, frontend, and the cypress tests in headless mode for CI for deployment |  |
+| start-test-acceptance-frontend-project | project-acceptance-frontend-prod-start | Start acceptance frontend in production mode for project tests |  |
+| start-test-acceptance-server-coresandbox | coresandbox-acceptance-backend-start | Start backend acceptance server for core sandbox tests |  |
+| start-test-acceptance-frontend-coresandbox | coresandbox-acceptance-frontend-prod-start | Start acceptance frontend in production mode for core sandbox tests |  |
+| start-test-acceptance-frontend-coresandbox-dev | coresandbox-acceptance-frontend-dev-start | Start acceptance frontend in development mode for core sandbox tests |  |
+| test-acceptance-coresandbox | coresandbox-acceptance-test | Start Cypress in interactive mode for core sandbox tests |  |
+| test-acceptance-coresandbox-headless | coresandbox-ci-acceptance-test | Run Cypress tests in headless mode for CI for core sandbox tests |  |
+| full-test-acceptance-coresandbox | coresandbox-ci-acceptance-test-run-all | With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for core sandbox tests |  |
+| start-test-acceptance-server-multilingual | multilingual-acceptance-backend-start | Start backend acceptance server for multilingual tests |  |
+| start-test-acceptance-frontend-multilingual | multilingual-acceptance-frontend-prod-start | Start acceptance frontend in production mode for multilingual tests |  |
+| test-acceptance-multilingual | multilingual-acceptance-test | Start Cypress in interactive mode for multilingual tests |  |
+| test-acceptance-multilingual-headless | multilingual-ci-acceptance-test | Run Cypress tests in headless mode for CI for multilingual tests |  |
+| full-test-acceptance-multilingual | multilingual-ci-acceptance-test-run-all | With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for multilingual tests |  |
+| start-test-acceptance-server-seamless-multilingual | deployment-multilingual-acceptance-backend-start | Start backend acceptance server for multilingual tests for deployment |  |
+| start-test-acceptance-frontend-seamless-multilingual | deployment-multilingual-acceptance-frontend-prod-start | Start acceptance frontend in production mode for multilingual tests for deployment |  |
+| test-acceptance-seamless-multilingual | deployment-multilingual-acceptance-test | Start Cypress in interactive mode for multilingual tests for deployment |  |
+| test-acceptance-seamless-multilingual-headless | deployment-multilingual-ci-acceptance-test | Run Cypress tests in headless mode for CI for multilingual tests for deployment |  |
+| full-test-acceptance-seamless-multilingual | deployment-multilingual-ci-acceptance-test-run-all | With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for multilingual tests for deployment |  |
+| start-test-acceptance-server-workingcopy | working-copy-acceptance-backend-start | Start backend acceptance server for working copy tests |  |
+| start-test-acceptance-frontend-workingcopy | working-copy-acceptance-frontend-prod-start | Start acceptance frontend in production mode for working copy tests |  |
+| test-acceptance-workingcopy | working-copy-acceptance-test | Start Cypress in interactive mode for working copy tests |  |
+| test-acceptance-workingcopy-headless | working-copy-ci-acceptance-test | Run Cypress tests in headless mode for CI for working copy tests |  |
+| full-test-acceptance-workingcopy | working-copy-ci-acceptance-test-run-all | With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for working copy tests |  |
+| start-test-acceptance-server-guillotina | guillotina-acceptance-backend-start | Start backend acceptance server for Guillotina tests |  |
+| start-test-acceptance-frontend-guillotina | guillotina-acceptance-frontend-prod-start | Start acceptance frontend in production mode for Guillotina tests |  |
+| test-acceptance-guillotina | guillotina-acceptance-test | Start Cypress in interactive mode for Guillotina tests |  |
+| test-acceptance-guillotina-headless | guillotina-ci-acceptance-test | Run Cypress tests in headless mode for CI for Guillotina tests |  |
+| full-test-acceptance-guillotina | guillotina-ci-acceptance-test-run-all | With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for Guillotina tests |  |
+| start-test-acceptance-server-5 | plone5-acceptance-backend-start | Start backend acceptance server for Plone 5 tests |  |
+| start-test-acceptance-server-detached | acceptance-server-detached-start | Starts test acceptance server main fixture in detached mode (daemon) |  |
+| stop-test-acceptance-server-detached | acceptance-server-detached-stop | Stop test acceptance server main fixture in detached mode (daemon) |  |
+
+
+The documentation has been updated as well to reflect this change.
+
+
+### New image upload widget component
+
+Previously the image upload widget component was integrated into the image block edit component.
+Now the image upload widget component is its own component, and you can reuse it in other blocks.
+
+If you shadow the image block edit component, make sure it continues to work as you expect, or update it to use the new image upload widget component.
+
+The new image upload widget component's user experience also changed.
+The input field is now a row of buttons.
+The input field's placeholder text was moved above the buttons.
+Together these changes improve usability both on small screens and in small containers, such as when the widget is in grid block elements.
+
+
+### Renamed the `constants/Languages` module
+
+`src/constants/Languages.js` has been renamed to `src/constants/Languages.cjs` since, in fact, it's a CommonJS module.
+This change is needed for consistency with module suffixes in Volto core, in preparation for replacing Razzle with a modern builder.
+
+The only Volto component that makes use of it is `PersonalPreferences`.
+If you shadow it, then you should update this component.
+For the rest, it is unlikely that your code refers to this module, since it's used internally by Volto itself.
+
+### Renamed `test-setup-config` module
+
+`test-setup-config.js` has been renamed to `test-setup-config.jsx` since, in fact, it contains JSX.
+This change is needed for consistency with module suffixes in Volto core, in preparation for replacing Razzle with a modern builder.
+
+It is unlikely that your code uses it, unless you heavily customized the Jest testing pipeline.
+
+
 (volto-upgrade-guide-17.x.x)=
 
 ## Upgrading to Volto 17.x.x

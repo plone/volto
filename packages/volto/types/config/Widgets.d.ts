@@ -14,6 +14,7 @@ export namespace widgetMapping {
         export { DatetimeWidget as date };
         export { PasswordWidget as password };
         export { FileWidget as file };
+        export { ImageWidget as image };
         export { AlignWidget as align };
         export { ButtonsWidget as buttons };
         export { UrlWidget as url };
@@ -108,6 +109,7 @@ import { TextareaWidget } from '@plone/volto/components/manage/Widgets';
 import { DatetimeWidget } from '@plone/volto/components/manage/Widgets';
 import { PasswordWidget } from '@plone/volto/components/manage/Widgets';
 import { FileWidget } from '@plone/volto/components/manage/Widgets';
+import ImageWidget from '@plone/volto/components/manage/Widgets/ImageWidget';
 import { AlignWidget } from '@plone/volto/components/manage/Widgets';
 import { ButtonsWidget } from '@plone/volto/components/manage/Widgets';
 import { InternalUrlWidget } from '@plone/volto/components/manage/Widgets';

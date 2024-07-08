@@ -168,7 +168,7 @@ For both sessions, change your working directory to the root of your Volto clone
 In the first session, start the backend.
 
 ```shell
-make start-backend-docker
+make backend-docker-start
 ```
 
 When you run this command for the first time, it will download Docker images, configure the backend, and start the backend.
