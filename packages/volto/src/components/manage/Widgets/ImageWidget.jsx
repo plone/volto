@@ -14,6 +14,7 @@ import {
   getBaseUrl,
   isInternalURL,
   validateFileUploadSize,
+  usePrevious,
 } from '@plone/volto/helpers';
 import { createContent } from '@plone/volto/actions';
 import { readAsDataURL } from 'promise-file-reader';
@@ -91,13 +92,14 @@ const UnconnectedImageInput = (props) => {
 
   const requestId = `image-upload-${id}`;
 
-  const { loading, loaded } = props.request;
+  const loaded = props.request.loaded;
   const { content } = props;
   const imageId = content?.['@id'];
   const image = content?.image;
+  let loading = false;
 
   useEffect(() => {
-    if (uploading && !loading && loaded) {
+    if (uploading && loading && loaded) {
       setUploading(false);
       onChange(id, imageId, {
         image_field: 'image',
@@ -105,6 +107,8 @@ const UnconnectedImageInput = (props) => {
       });
     }
   }, [loading, loaded, uploading, imageId, image, id, onChange]); // Explicitly list all dependencies
+
+  loading = usePrevious(props.request?.loading);
 
   const handleUpload = React.useCallback(
     (eventOrFile) => {
@@ -161,7 +165,11 @@ const UnconnectedImageInput = (props) => {
       {selected && <ImageToolbar {...props} />}
       <img
         className={props.className}
-        src={`${flattenToAppURL(value)}/@@images/image/${imageSize}`}
+        src={
+          isInternalURL(value)
+            ? `${flattenToAppURL(value)}/@@images/image/${imageSize}`
+            : value
+        }
         alt=""
       />
     </div>
@@ -302,10 +310,25 @@ export const ImageInput = compose(
   ),
 )(withObjectBrowser(UnconnectedImageInput));
 
-const ImageUploadWidget = (props) => (
-  <FormFieldWrapper {...props} className="image-upload-widget">
-    <ImageInput {...props} />
-  </FormFieldWrapper>
-);
+const ImageUploadWidget = (props) => {
+  const { fieldSet, id, title } = props;
+  return (
+    <FormFieldWrapper
+      {...props}
+      columns={1}
+      className="block image-upload-widget"
+    >
+      <div className="wrapper">
+        <label
+          id={`fieldset-${fieldSet}-field-label-${id}`}
+          htmlFor={`field-${id}`}
+        >
+          {title}
+        </label>
+      </div>
+      <ImageInput {...props} />
+    </FormFieldWrapper>
+  );
+};
 
 export default ImageUploadWidget;

@@ -17,6 +17,39 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.41 (2024-07-05)
+
+### Breaking
+
+- Fixed image widget position and look and feel in sidebar. @ichim-david
+
+  Breaking:
+  - Updated the markup of the widget in the sidebar to render the widget on a single column bellow the label.
+  - AddLink Pop-up of the widget is now rendered inside `toolbar-inner` instead of the document body, this fixes the positioning of the toolbar when scrolling. [#6159](https://github.com/plone/volto/issues/6159)
+
+### Bugfix
+
+- Revisit login/logout process, better catching of edge cases @sneridagh [#6155](https://github.com/plone/volto/issues/6155)
+- Restored browse link in `Slate` `AddLink` Pop-up. @ichim-david
+  Fixed recursive error when uploading an image using the `Image` widget. @sneridagh
+  Fixed image display when using an external URL. @sneridagh
+  Fixed the position of the `Image` widget toolbar when scrolling by changing the position of the toolbar to be within the widget area instead of the body. @ichim-david
+  Improved display of `AddLink` Pop-up when using it inside the `Image` widget where we don't have a link picker. @ichim-david [#6159](https://github.com/plone/volto/issues/6159)
+
+## 18.0.0-alpha.40 (2024-07-03)
+
+### Bugfix
+
+- Fix aria-label of items that are `folderish` in ObjectBrowserNav component when performing item search. Previously it said `Select item.title` now `Browse item.title`. This brings it in line with the aria-label when not performing an item search. @sneridagh [#6150](https://github.com/plone/volto/issues/6150)
+
+### Internal
+
+- Automatically add a PLIP issue to the PLIP project board. @stevepiercy [#6134](https://github.com/plone/volto/issues/6134)
+
+### Documentation
+
+- Fix link to renamed `src/constants/Languages.cjs`. @stevepiercy [#6135](https://github.com/plone/volto/issues/6135)
+
 ## 18.0.0-alpha.39 (2024-06-28)
 
 ### Bugfix
