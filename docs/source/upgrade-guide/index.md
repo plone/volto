@@ -354,6 +354,23 @@ The input field's placeholder text was moved above the buttons.
 Together these changes improve usability both on small screens and in small containers, such as when the widget is in grid block elements.
 
 
+### Renamed the `constants/Languages` module
+
+`src/constants/Languages.js` has been renamed to `src/constants/Languages.cjs` since, in fact, it's a CommonJS module.
+This change is needed for consistency with module suffixes in Volto core, in preparation for replacing Razzle with a modern builder.
+
+The only Volto component that makes use of it is `PersonalPreferences`.
+If you shadow it, then you should update this component.
+For the rest, it is unlikely that your code refers to this module, since it's used internally by Volto itself.
+
+### Renamed `test-setup-config` module
+
+`test-setup-config.js` has been renamed to `test-setup-config.jsx` since, in fact, it contains JSX.
+This change is needed for consistency with module suffixes in Volto core, in preparation for replacing Razzle with a modern builder.
+
+It is unlikely that your code uses it, unless you heavily customized the Jest testing pipeline.
+
+
 (volto-upgrade-guide-17.x.x)=
 
 ## Upgrading to Volto 17.x.x

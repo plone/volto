@@ -2,9 +2,13 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { defineMessages, useIntl } from 'react-intl';
 import { Button } from 'semantic-ui-react';
-import { Icon } from '@plone/volto/components';
+import { toast } from 'react-toastify';
+import { Icon, Toast } from '@plone/volto/components';
 import { BlockDataForm } from '@plone/volto/components/manage/Form';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import {
+  flattenToAppURL,
+  messages as defaultMessages,
+} from '@plone/volto/helpers';
 import { getContent } from '@plone/volto/actions';
 import { isEmpty } from 'lodash';
 
@@ -19,6 +23,10 @@ const messages = defineMessages({
   refreshTeaser: {
     id: 'Refresh source content',
     defaultMessage: 'Refresh source content',
+  },
+  invalidTeaser: {
+    id: 'Invalid teaser source',
+    defaultMessage: 'Invalid teaser source',
   },
 });
 
@@ -70,14 +78,30 @@ const TeaserData = (props) => {
   };
 
   const refresh = () => {
-    dispatch(
-      getContent(flattenToAppURL(data.href[0]['@id']), null, `${block}-teaser`),
-    ).then((resp) => {
-      if (resp) {
-        let blockData = dataTransformer(resp, data);
-        onChangeBlock(block, blockData);
-      }
-    });
+    if (data.href?.[0]?.['@id']) {
+      dispatch(
+        getContent(
+          flattenToAppURL(data.href[0]['@id']),
+          null,
+          `${block}-teaser`,
+        ),
+      )
+        .then((resp) => {
+          if (resp) {
+            let blockData = dataTransformer(resp, data);
+            onChangeBlock(block, blockData);
+          }
+        })
+        .catch((e) => {
+          toast.error(
+            <Toast
+              error
+              title={props.intl.formatMessage(defaultMessages.error)}
+              content={props.intl.formatMessage(messages.invalidTeaser)}
+            />,
+          );
+        });
+    }
   };
 
   const isReseteable =
@@ -102,6 +126,7 @@ const TeaserData = (props) => {
         aria-label={intl.formatMessage(messages.refreshTeaser)}
         basic
         onClick={() => refresh()}
+        disabled={isEmpty(data.href)}
       >
         {intl.formatMessage(messages.refreshTeaser)}
         <Icon name={reloadSVG} size="20px" color="#00000099" />
