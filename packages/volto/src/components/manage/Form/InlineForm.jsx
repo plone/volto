@@ -153,8 +153,8 @@ const InlineForm = (props) => {
               focus={index === focusIndex}
               value={formData[field]}
               required={schema.required.indexOf(field) !== -1}
-              onChange={(id, value) => {
-                onChangeField(id, value);
+              onChange={(id, value, itemInfo) => {
+                onChangeField(id, value, itemInfo);
               }}
               key={field}
               error={errors[field]}
