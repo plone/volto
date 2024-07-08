@@ -179,7 +179,6 @@ let config = {
     querystringSearchGet: false,
     blockSettingsTabFieldsetsInitialStateOpen: true,
     excludeLinksAndReferencesMenuItem: false,
-    containerBlockTypes: ['gridBlock'],
     siteTitleFormat: {
       includeSiteTitle: false,
       titleAndSiteTitleSeparator: '-',

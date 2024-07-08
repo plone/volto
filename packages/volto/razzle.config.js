@@ -20,7 +20,7 @@ const AfterBuildPlugin = require('@fiverr/afterbuild-webpack-plugin');
 const fileLoaderFinder = makeLoaderFinder('file-loader');
 
 const projectRootPath = path.resolve('.');
-const languages = require('./src/constants/Languages');
+const languages = require('./src/constants/Languages.cjs');
 
 const packageJson = require(path.join(projectRootPath, 'package.json'));
 
@@ -168,7 +168,13 @@ const defaultModify = ({
           files.forEach((file) => {
             const sourcePath = path.join(sourceDir, file);
             const targetPath = path.join(targetDir, file);
-            fs.copyFileSync(sourcePath, targetPath);
+            const isDirectory = fs.statSync(sourcePath).isDirectory();
+            if (isDirectory) {
+              fs.mkdirSync(targetPath, { recursive: true });
+              mergeDirectories(sourcePath, targetPath);
+            } else {
+              fs.copyFileSync(sourcePath, targetPath);
+            }
           });
         };
 

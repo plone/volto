@@ -12,10 +12,15 @@ import {
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import qs from 'query-string';
 
-import { Helmet } from '@plone/volto/helpers';
+import { Helmet, usePrevious } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 import { Icon } from '@plone/volto/components';
-import { login, resetLoginRequest } from '@plone/volto/actions';
+import {
+  login,
+  logout,
+  resetLoginRequest,
+  purgeMessages,
+} from '@plone/volto/actions';
 import { toast } from 'react-toastify';
 import { Toast } from '@plone/volto/components';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
@@ -78,8 +83,22 @@ const Login = (props) => {
     location.pathname.replace(/\/login\/?$/, '').replace(/\/logout\/?$/, '') ||
     '/';
 
+  const previousToken = usePrevious(token);
+
   useEffect(() => {
-    if (token && !(props.isLogout || location?.state?.isLogout)) {
+    if (location?.state?.isLogout) {
+      // Execute a true Logout action
+      // This is needed to cover the use case of being logged in in
+      // another backend (eg. in development), having a token for
+      // localhost and try to use it, the login route has to know that
+      // it's the same as it comes from a logout
+      // See also Unauthorized.jsx
+      dispatch(logout());
+      dispatch(purgeMessages());
+      // Reset the location state
+      history.push(`${location.pathname}${location.search}`);
+    } else if (token && token !== previousToken) {
+      // We just did a true login action
       history.push(returnUrl || '/');
       if (toast.isActive('loggedOut')) {
         toast.dismiss('loggedOut');
@@ -116,8 +135,10 @@ const Login = (props) => {
     intl,
     history,
     returnUrl,
-    props.isLogout,
+    location.search,
+    location.pathname,
     location?.state?.isLogout,
+    previousToken,
   ]);
 
   const onLogin = (event) => {
