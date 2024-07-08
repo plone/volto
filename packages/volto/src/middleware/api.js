@@ -125,38 +125,16 @@ function sendOnSocket(request) {
  * @param {Object} api Api object.
  * @returns {Promise} Action promise.
  */
-const apiMiddlewareFactory =
-  (api) =>
-  ({ dispatch, getState }) =>
-  (next) =>
-  (action) => {
+const apiMiddlewareFactory = (api) => {
+  const { dispatch, getState } = arguments[1];
+  const next = arguments[2];
+
+  const handleRequest = (request, type, isAnonymous) => {
     const { settings } = config;
+    const { subrequest } = arguments[3];
 
-    const token = getState().userSession.token;
-    let uploadedFiles = getState().content.uploadedFiles;
-    let isAnonymous = true;
-    if (token) {
-      const tokenExpiration = jwtDecode(token).exp;
-      const currentTime = new Date().getTime() / 1000;
-      isAnonymous = !token || currentTime > tokenExpiration;
-    }
-
-    if (typeof action === 'function') {
-      return action(dispatch, getState);
-    }
-
-    const { request, type, mode = 'parallel', ...rest } = action;
-    const { subrequest } = action; // We want subrequest remains in `...rest` above
-
-    let actionPromise;
-
-    if (!request) {
-      return next(action);
-    }
-
-    next({ ...rest, type: `${type}_PENDING` });
     if (socket) {
-      actionPromise = Array.isArray(request)
+      return Array.isArray(request)
         ? Promise.all(
             request.map((item) =>
               sendOnSocket({
@@ -172,199 +150,183 @@ const apiMiddlewareFactory =
             id: type,
           });
     } else {
-      actionPromise = Array.isArray(request)
-        ? mode === 'serial'
-          ? request.reduce((prevPromise, item) => {
-              return prevPromise.then((acc) => {
-                return api[item.op](
-                  addExpandersToPath(item.path, type, isAnonymous),
-                  {
-                    data: item.data,
-                    type: item.type,
-                    headers: item.headers,
-                    params: request.params,
-                    checkUrl: settings.actions_raising_api_errors.includes(
-                      action.type,
-                    ),
-                  },
-                ).then((reqres) => {
-                  if (action.subrequest === 'batch-upload') {
-                    dispatch(updateUploadedFiles(++uploadedFiles));
-                  }
-                  return [...acc, reqres];
-                });
-              });
-            }, Promise.resolve([]))
-          : Promise.all(
-              request.map((item) =>
-                api[item.op](addExpandersToPath(item.path, type, isAnonymous), {
+      return Array.isArray(request)
+        ? request.reduce((prevPromise, item) => {
+            return prevPromise.then((acc) => {
+              return api[item.op](
+                addExpandersToPath(item.path, type, isAnonymous),
+                {
                   data: item.data,
                   type: item.type,
                   headers: item.headers,
                   params: request.params,
                   checkUrl: settings.actions_raising_api_errors.includes(
-                    action.type,
+                    type,
                   ),
-                }),
-              ),
-            )
-        : api[request.op](addExpandersToPath(request.path, type, isAnonymous), {
-            data: request.data,
-            type: request.type,
-            headers: request.headers,
-            params: request.params,
-            checkUrl: settings.actions_raising_api_errors.includes(action.type),
-          });
-      actionPromise.then(
-        (result) => {
-          if (uploadedFiles !== 0) {
-            dispatch(updateUploadedFiles(0));
-          }
-
-          const { settings } = config;
-          if (getState().apierror.connectionRefused) {
-            next({
-              ...rest,
-              type: RESET_APIERROR,
-            });
-          }
-          if (type === GET_CONTENT) {
-            const lang = result?.language?.token;
-            if (
-              lang &&
-              getState().intl.locale !== toReactIntlLang(lang) &&
-              !subrequest &&
-              config.settings.supportedLanguages.includes(lang)
-            ) {
-              const langFileName = toGettextLang(lang);
-              import(
-                /* @vite-ignore */ '@root/../locales/' + langFileName + '.json'
-              ).then((locale) => {
-                dispatch(changeLanguage(lang, locale.default));
-              });
-            }
-          }
-          if (type === LOGIN && settings.websockets) {
-            const cookies = new Cookies();
-            cookies.set(
-              'auth_token',
-              result.token,
-              getCookieOptions({
-                expires: new Date(jwtDecode(result.token).exp * 1000),
-              }),
-            );
-            api.get('/@wstoken').then((res) => {
-              socket = new WebSocket(
-                `${settings.apiPath.replace('http', 'ws')}/@ws?ws_token=${
-                  res.token
-                }`,
-              );
-              socket.onmessage = (message) => {
-                const packet = JSON.parse(message.data);
-                if (packet.error) {
-                  dispatch({
-                    type: `${packet.id}_FAIL`,
-                    error: packet.error,
-                  });
-                } else {
-                  dispatch({
-                    type: `${packet.id}_SUCCESS`,
-                    result: JSON.parse(packet.data),
-                  });
+                },
+              ).then((reqres) => {
+                if (subrequest === 'batch-upload') {
+                  dispatch(updateUploadedFiles(++uploadedFiles));
                 }
-              };
-            });
-          }
-          try {
-            return next({ ...rest, result, type: `${type}_SUCCESS` });
-          } catch (error) {
-            // There was an exception while processing reducers or downstream middleware.
-            next({
-              ...rest,
-              error: { status: 500, error },
-              type: `${type}_FAIL`,
-            });
-            // Rethrow the original exception on the client side only,
-            // so it doesn't fall through to express on the server.
-            if (__CLIENT__) throw error;
-          }
-        },
-        (error) => {
-          // Only SSR can set ECONNREFUSED
-          if (error.code === 'ECONNREFUSED') {
-            next({
-              ...rest,
-              error,
-              statusCode: error.code,
-              connectionRefused: true,
-              type: SET_APIERROR,
-            });
-          }
-
-          // Response error is marked crossDomain if CORS error happen
-          else if (error.crossDomain) {
-            next({
-              ...rest,
-              error,
-              statusCode: 'CORSERROR',
-              connectionRefused: false,
-              type: SET_APIERROR,
-            });
-          }
-
-          // Check for actions who can raise api errors
-          if (settings.actions_raising_api_errors.includes(action.type)) {
-            // Gateway timeout
-            if (error?.response?.statusCode === 504) {
-              next({
-                ...rest,
-                error,
-                statusCode: error.code,
-                connectionRefused: true,
-                type: SET_APIERROR,
+                return [...acc, reqres];
               });
-            }
-
-            // Redirect
-            else if (error?.code === 301) {
-              next({
-                ...rest,
-                error,
-                statusCode: error.code,
-                connectionRefused: false,
-                type: SET_APIERROR,
-              });
-            }
-
-            // Redirect
-            else if (error?.code === 408) {
-              next({
-                ...rest,
-                error,
-                statusCode: error.code,
-                connectionRefused: false,
-                type: SET_APIERROR,
-              });
-            }
-
-            // Unauthorized
-            else if (error?.response?.statusCode === 401) {
-              next({
-                ...rest,
-                error,
-                statusCode: error.response,
-                message: error.response.body.message,
-                connectionRefused: false,
-                type: SET_APIERROR,
-              });
-            }
-          }
-          return next({ ...rest, error, type: `${type}_FAIL` });
-        },
-      );
+            });
+          }, Promise.resolve([]))
+        : api[request.op](
+            addExpandersToPath(request.path, type, isAnonymous),
+            {
+              data: request.data,
+              type: request.type,
+              headers: request.headers,
+              params: request.params,
+              checkUrl: settings.actions_raising_api_errors.includes(type),
+            },
+          );
     }
-
-    return actionPromise;
   };
 
+  const handleResponse = (result, type, subrequest) => {
+    const { settings } = config;
+    const { intl } = getState();
+
+    if (getState().apierror.connectionRefused) {
+      dispatch({ type: RESET_APIERROR });
+    }
+
+    if (type === GET_CONTENT) {
+      const lang = result?.language?.token;
+      if (
+        lang &&
+        intl.locale !== toReactIntlLang(lang) &&
+        !subrequest &&
+        config.settings.supportedLanguages.includes(lang)
+      ) {
+        const langFileName = toGettextLang(lang);
+        import(`@root/../locales/${langFileName}.json`).then((locale) => {
+          dispatch(changeLanguage(lang, locale.default));
+        });
+      }
+    }
+
+    if (type === LOGIN && settings.websockets) {
+      const cookies = new Cookies();
+      const token = result.token;
+      cookies.set(
+        'auth_token',
+        token,
+        getCookieOptions({
+          expires: new Date(jwtDecode(token).exp * 1000),
+        }),
+      );
+
+      api.get('/@wstoken').then((res) => {
+        socket = new WebSocket(
+          `${settings.apiPath.replace('http', 'ws')}/@ws?ws_token=${res.token}`,
+        );
+        socket.onmessage = (message) => {
+          const packet = JSON.parse(message.data);
+          if (packet.error) {
+            dispatch({
+              type: `${packet.id}_FAIL`,
+              error: packet.error,
+            });
+          } else {
+            dispatch({
+              type: `${packet.id}_SUCCESS`,
+              result: JSON.parse(packet.data),
+            });
+          }
+        };
+      });
+    }
+
+    try {
+      return dispatch({ type: `${type}_SUCCESS`, result });
+    } catch (error) {
+      dispatch({ type: `${type}_FAIL`, error: { status: 500, error } });
+      if (__CLIENT__) {
+        throw error;
+      }
+    }
+  };
+
+  const handleError = (error, type, subrequest) => {
+    const { settings } = config;
+
+    if (error.code === 'ECONNREFUSED') {
+      dispatch({
+        type: SET_APIERROR,
+        error,
+        statusCode: error.code,
+        connectionRefused: true,
+      });
+    } else if (error.crossDomain) {
+      dispatch({
+        type: SET_APIERROR,
+        error,
+        statusCode: 'CORSERROR',
+        connectionRefused: false,
+      });
+    } else if (settings.actions_raising_api_errors.includes(type)) {
+      if (error?.response?.statusCode === 504) {
+        dispatch({
+          type: SET_APIERROR,
+          error,
+          statusCode: error.code,
+          connectionRefused: true,
+        });
+      } else if (error?.code === 301) {
+        dispatch({
+          type: SET_APIERROR,
+          error,
+          statusCode: error.code,
+          connectionRefused: false,
+        });
+      } else if (error?.code === 408) {
+        dispatch({
+          type: SET_APIERROR,
+          error,
+          statusCode: error.code,
+          connectionRefused: false,
+        });
+      } else if (error?.response?.statusCode === 401) {
+        dispatch({
+          type: SET_APIERROR,
+          error,
+          statusCode: error.response,
+          message: error.response.body.message,
+          connectionRefused: false,
+        });
+      }
+    }
+
+    return dispatch({ type: `${type}_FAIL`, error });
+  };
+
+  return (action) => {
+    const { request, type, mode = 'parallel', ...rest } = action;
+    const token = getState().userSession.token;
+    let uploadedFiles = getState().content.uploadedFiles;
+    let isAnonymous = true;
+
+    if (token) {
+      const tokenExpiration = jwtDecode(token).exp;
+      const currentTime = new Date().getTime() / 1000;
+      isAnonymous = !token || currentTime > tokenExpiration;
+    }
+
+    if (typeof action === 'function') {
+      return action(dispatch, getState);
+    }
+
+    dispatch({ type: `${type}_PENDING` });
+
+    const actionPromise = handleRequest(request, type, isAnonymous, rest);
+
+    return actionPromise.then(
+      (result) => handleResponse(result, type, rest.subrequest),
+      (error) => handleError(error, type, rest.subrequest),
+    );
+  };
+};
 export default apiMiddlewareFactory;
