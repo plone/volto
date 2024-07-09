@@ -257,11 +257,11 @@ importers:
         specifier: 9.1.0
         version: 9.1.0(react@18.2.0)
       react-intl:
-        specifier: 3.8.0
-        version: 3.8.0(react@18.2.0)
+        specifier: 3.12.1
+        version: 3.12.1(react@18.2.0)
       react-intl-redux:
         specifier: 2.3.0
-        version: 2.3.0(@babel/runtime@7.20.6)(prop-types@15.7.2)(react-intl@3.8.0(react@18.2.0))(react-redux@8.1.2(@types/react-dom@18.2.25)(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(redux@4.2.1))(react@18.2.0)
+        version: 2.3.0(@babel/runtime@7.20.6)(prop-types@15.7.2)(react-intl@3.12.1(react@18.2.0))(react-redux@8.1.2(@types/react-dom@18.2.25)(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(redux@4.2.1))(react@18.2.0)
       react-medium-image-zoom:
         specifier: 3.0.15
         version: 3.0.15(prop-types@15.7.2)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -421,7 +421,7 @@ importers:
         version: 5.15.2(webpack@5.90.1(esbuild@0.20.2))
       '@plone/types':
         specifier: 1.0.0-alpha.11
-        version: 1.0.0-alpha.11(history@4.10.1)(react-dom@18.2.0(react@18.2.0))(react-intl@3.8.0(react@18.2.0))(react@18.2.0)
+        version: 1.0.0-alpha.11(history@4.10.1)(react-dom@18.2.0(react@18.2.0))(react-intl@3.12.1(react@18.2.0))(react@18.2.0)
       '@plone/volto-coresandbox':
         specifier: workspace:*
         version: link:../../packages/coresandbox
@@ -1305,8 +1305,8 @@ importers:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
       react-intl:
-        specifier: 3.8.0
-        version: 3.8.0(react@18.2.0)
+        specifier: 3.12.1
+        version: 3.12.1(react@18.2.0)
       react-redux:
         specifier: 8.1.2
         version: 8.1.2(@types/react-dom@18.2.25)(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(redux@4.2.1)
@@ -1665,8 +1665,8 @@ importers:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
       react-intl:
-        specifier: 3.8.0
-        version: 3.8.0(react@18.2.0)
+        specifier: 3.12.1
+        version: 3.12.1(react@18.2.0)
       release-it:
         specifier: ^17.1.1
         version: 17.1.1(typescript@5.4.2)
@@ -1839,11 +1839,11 @@ importers:
         specifier: 9.1.0
         version: 9.1.0(react@18.2.0)
       react-intl:
-        specifier: 3.8.0
-        version: 3.8.0(react@18.2.0)
+        specifier: 3.12.1
+        version: 3.12.1(react@18.2.0)
       react-intl-redux:
         specifier: 2.3.0
-        version: 2.3.0(@babel/runtime@7.20.6)(prop-types@15.7.2)(react-intl@3.8.0(react@18.2.0))(react-redux@8.1.2(@types/react-dom@18.2.25)(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(redux@4.2.1))(react@18.2.0)
+        version: 2.3.0(@babel/runtime@7.20.6)(prop-types@15.7.2)(react-intl@3.12.1(react@18.2.0))(react-redux@8.1.2(@types/react-dom@18.2.25)(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(redux@4.2.1))(react@18.2.0)
       react-medium-image-zoom:
         specifier: 3.0.15
         version: 3.0.15(prop-types@15.7.2)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -1989,6 +1989,15 @@ importers:
       '@babel/types':
         specifier: 7.20.5
         version: 7.20.5
+      '@dnd-kit/core':
+        specifier: 6.0.8
+        version: 6.0.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@dnd-kit/sortable':
+        specifier: 7.0.2
+        version: 7.0.2(@dnd-kit/core@6.0.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)
+      '@dnd-kit/utilities':
+        specifier: 3.2.2
+        version: 3.2.2(react@18.2.0)
       '@fiverr/afterbuild-webpack-plugin':
         specifier: ^1.0.0
         version: 1.0.0
@@ -2310,15 +2319,27 @@ importers:
 
   packages/volto-slate:
     dependencies:
+      classnames:
+        specifier: 2.2.6
+        version: 2.2.6
+      github-slugger:
+        specifier: 1.4.0
+        version: 1.4.0
       image-extensions:
         specifier: 1.1.0
         version: 1.1.0
+      is-hotkey:
+        specifier: 0.2.0
+        version: 0.2.0
       is-url:
         specifier: 1.2.4
         version: 1.2.4
       jsdom:
         specifier: ^16.6.0
         version: 16.7.0
+      lodash:
+        specifier: 4.17.21
+        version: 4.17.21
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -2328,6 +2349,24 @@ importers:
       react-intersection-observer:
         specifier: 9.1.0
         version: 9.1.0(react@18.2.0)
+      react-intl:
+        specifier: 3.12.1
+        version: 3.12.1(react@18.2.0)
+      react-redux:
+        specifier: 8.1.2
+        version: 8.1.2(@types/react-dom@18.2.25)(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(redux@4.2.1)
+      react-router-dom:
+        specifier: 5.2.0
+        version: 5.2.0(react@18.2.0)
+      react-toastify:
+        specifier: 5.5.0
+        version: 5.5.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      redux-mock-store:
+        specifier: 1.5.4
+        version: 1.5.4
+      semantic-ui-react:
+        specifier: 2.1.5
+        version: 2.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       slate:
         specifier: 0.100.0
         version: 0.100.0
@@ -2340,6 +2379,9 @@ importers:
       slate-react:
         specifier: 0.98.4
         version: 0.98.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(slate@0.100.0)
+      uuid:
+        specifier: ^9.0.1
+        version: 9.0.1
       weak-key:
         specifier: ^1.0.2
         version: 1.0.3
@@ -3261,8 +3303,30 @@ packages:
     resolution: {integrity: sha512-dBVuXR082gk3jsFp7Rd/JI4kytwGHecnCoTtXFb7DB6CNHp4rg5k1bhg0nWdLGLnOV71lmDzGQaLMy8iPLY0pw==}
     engines: {node: '>=10.0.0'}
 
-  '@dual-bundle/import-meta-resolve@4.0.0':
-    resolution: {integrity: sha512-ZKXyJeFAzcpKM2kk8ipoGIPUqx9BX52omTGnfwjJvxOCaZTM2wtDK7zN0aIgPRbT9XYAlha0HtmZ+XKteuh0Gw==}
+  '@dnd-kit/accessibility@3.1.0':
+    resolution: {integrity: sha512-ea7IkhKvlJUv9iSHJOnxinBcoOI3ppGnnL+VDJ75O45Nss6HtZd8IdN8touXPDtASfeI2T2LImb8VOZcL47wjQ==}
+    peerDependencies:
+      react: '>=16.8.0'
+
+  '@dnd-kit/core@6.0.8':
+    resolution: {integrity: sha512-lYaoP8yHTQSLlZe6Rr9qogouGUz9oRUj4AHhDQGQzq/hqaJRpFo65X+JKsdHf8oUFBzx5A+SJPUvxAwTF2OabA==}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+
+  '@dnd-kit/sortable@7.0.2':
+    resolution: {integrity: sha512-wDkBHHf9iCi1veM834Gbk1429bd4lHX4RpAwT0y2cHLf246GAvU2sVw/oxWNpPKQNQRQaeGXhAVgrOl1IT+iyA==}
+    peerDependencies:
+      '@dnd-kit/core': ^6.0.7
+      react: '>=16.8.0'
+
+  '@dnd-kit/utilities@3.2.2':
+    resolution: {integrity: sha512-+MKAJEOfaBe5SmV6t34p80MMKhjvUz0vRrvVJbPT0WElzaOJ/1xs+D+KDv+tD/NE5ujfrChEcshd4fLn0wpiqg==}
+    peerDependencies:
+      react: '>=16.8.0'
+
+  '@dual-bundle/import-meta-resolve@4.1.0':
+    resolution: {integrity: sha512-+nxncfwHM5SgAtrVzgpzJOI1ol0PkumhVo469KCf9lUi21IGcY90G98VuHm9VRrUypmAzawAHO9bs6hqeADaVg==}
 
   '@emotion/babel-plugin@11.11.0':
     resolution: {integrity: sha512-m4HEDZleaaCH+XgDDsPF15Ht6wTLsgDTeR3WYj9Q/k76JtWhrJjcP4+/XlG8LGT/Rol9qUfOIztXeA84ATpqPQ==}
@@ -3902,6 +3966,9 @@ packages:
   '@formatjs/icu-skeleton-parser@1.8.0':
     resolution: {integrity: sha512-QWLAYvM0n8hv7Nq5BEs4LKIjevpVpbGLAJgOaYzg9wABEoX1j0JO1q2/jVkO6CVlq0dbsxZCngS5aXbysYueqA==}
 
+  '@formatjs/intl-displaynames@1.2.10':
+    resolution: {integrity: sha512-GROA2RP6+7Ouu0WnHFF78O5XIU7pBfI19WM1qm93l6MFWibUk67nCfVCK3VAYJkLy8L8ZxjkYT11VIAfvSz8wg==}
+
   '@formatjs/intl-listformat@1.4.8':
     resolution: {integrity: sha512-WNMQlEg0e50VZrGIkgD5n7+DAMGt3boKi1GJALfhFMymslJb5i+5WzWxyj/3a929Z6MAFsmzRIJjKuv+BxKAOQ==}
 
@@ -3911,24 +3978,13 @@ packages:
   '@formatjs/intl-relativetimeformat@4.5.16':
     resolution: {integrity: sha512-IQ0haY97oHAH5OYUdykNiepdyEWj3SAT+Fp9ZpR85ov2JNiFx+12WWlxlVS8ehdyncC2ZMt/SwFIy2huK2+6/A==}
 
-  '@formatjs/intl-unified-numberformat@2.2.0':
-    resolution: {integrity: sha512-A9ov4uO04pSHG5Iqcrc457hvsq3lz/oWQ3B0I03zbL1rnBC8ttrZEobw3X3k/tWYPXeNJbRtsSbXqzJo55NeBw==}
-    deprecated: We have renamed the package to @formatjs/intl-numberformat
-
   '@formatjs/intl-unified-numberformat@3.3.7':
     resolution: {integrity: sha512-KnWgLRHzCAgT9eyt3OS34RHoyD7dPDYhRcuKn+/6Kv2knDF8Im43J6vlSW6Hm1w63fNq3ZIT1cFk7RuVO3Psag==}
     deprecated: We have renamed the package to @formatjs/intl-numberformat
 
-  '@formatjs/intl-utils@1.6.0':
-    resolution: {integrity: sha512-5D0C4tQgNFJNaJ17BYum0GfAcKNK3oa1VWzgkv/AN7i52fg4r69ZLcpEGpf6tZiX9Qld8CDwTQOeFt6fuOqgVw==}
-    deprecated: the package is rather renamed to @formatjs/ecma-abstract with some changes in functionality (primarily selectUnit is removed and we don't plan to make any further changes to this package
-
   '@formatjs/intl-utils@2.3.0':
     resolution: {integrity: sha512-KWk80UPIzPmUg+P0rKh6TqspRw0G6eux1PuJr+zz47ftMaZ9QDwbGzHZbtzWkl5hgayM/qrKRutllRC7D/vVXQ==}
     deprecated: the package is rather renamed to @formatjs/ecma-abstract with some changes in functionality (primarily selectUnit is removed and we don't plan to make any further changes to this package
-
-  '@formatjs/macro@0.2.8':
-    resolution: {integrity: sha512-5IBdn5+D8VGdi6Px0M/PidtqzHVrOj3dVJdV+YmWNRaWHdSvBd1wUd0gMcZnQXAxN+RzlGS/ddfOxFkjSlyQuA==}
 
   '@gar/promisify@1.1.3':
     resolution: {integrity: sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==}
@@ -12394,10 +12450,6 @@ packages:
   intl-format-cache@4.3.1:
     resolution: {integrity: sha512-OEUYNA7D06agqPOYhbTkl0T8HA3QKSuwWh1HiClEnpd9vw7N+3XsQt5iZ0GUEchp5CW1fQk/tary+NsbF3yQ1Q==}
 
-  intl-locales-supported@1.8.12:
-    resolution: {integrity: sha512-FJPl7p1LYO/C+LpwlDcvVpq7AeFTdFgwnq1JjdNYKjb51xkIxssXRR8LaA0fJFogjwRRztqw1ahgSJMSZsSFdw==}
-    deprecated: bad publish
-
   intl-messageformat-parser@3.6.4:
     resolution: {integrity: sha512-RgPGwue0mJtoX2Ax8EmMzJzttxjnva7gx0Q7mKJ4oALrTZvtmCeAw5Msz2PcjW4dtCh/h7vN/8GJCxZO1uv+OA==}
     deprecated: We've written a new parser that's 6x faster and is backwards compatible. Please use @formatjs/icu-messageformat-parser
@@ -16238,8 +16290,8 @@ packages:
       react-intl: "^2.2.2 ||\_^3.0.0 || ^4.0.0 || ^5.0.0"
       react-redux: ^5.0.1 || ^6.0.0 || ^7.0.0
 
-  react-intl@3.8.0:
-    resolution: {integrity: sha512-jWSbc7PUJOpmy0gC9LzTyERpt/auYmMyY0jtCmczgmRns5MIKG9Bav+NpCyZ6XG2jJQgJNWpLkMFy8u7MgjuqA==}
+  react-intl@3.12.1:
+    resolution: {integrity: sha512-cgumW29mwROIqyp8NXStYsoIm27+8FqnxykiLSawWjOxGIBeLuN/+p2srei5SRIumcJefOkOIHP+NDck05RgHg==}
     peerDependencies:
       react: ^16.3.0
 
@@ -20533,7 +20585,32 @@ snapshots:
 
   '@discoveryjs/json-ext@0.5.7': {}
 
-  '@dual-bundle/import-meta-resolve@4.0.0': {}
+  '@dnd-kit/accessibility@3.1.0(react@18.2.0)':
+    dependencies:
+      react: 18.2.0
+      tslib: 2.6.2
+
+  '@dnd-kit/core@6.0.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
+    dependencies:
+      '@dnd-kit/accessibility': 3.1.0(react@18.2.0)
+      '@dnd-kit/utilities': 3.2.2(react@18.2.0)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      tslib: 2.6.2
+
+  '@dnd-kit/sortable@7.0.2(@dnd-kit/core@6.0.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)':
+    dependencies:
+      '@dnd-kit/core': 6.0.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@dnd-kit/utilities': 3.2.2(react@18.2.0)
+      react: 18.2.0
+      tslib: 2.6.2
+
+  '@dnd-kit/utilities@3.2.2(react@18.2.0)':
+    dependencies:
+      react: 18.2.0
+      tslib: 2.6.2
+
+  '@dual-bundle/import-meta-resolve@4.1.0': {}
 
   '@emotion/babel-plugin@11.11.0':
     dependencies:
@@ -20934,6 +21011,10 @@ snapshots:
       '@formatjs/ecma402-abstract': 1.18.2
       tslib: 2.6.2
 
+  '@formatjs/intl-displaynames@1.2.10':
+    dependencies:
+      '@formatjs/intl-utils': 2.3.0
+
   '@formatjs/intl-listformat@1.4.8':
     dependencies:
       '@formatjs/intl-utils': 2.3.0
@@ -20946,19 +21027,11 @@ snapshots:
     dependencies:
       '@formatjs/intl-utils': 2.3.0
 
-  '@formatjs/intl-unified-numberformat@2.2.0':
-    dependencies:
-      '@formatjs/intl-utils': 1.6.0
-
   '@formatjs/intl-unified-numberformat@3.3.7':
     dependencies:
       '@formatjs/intl-utils': 2.3.0
 
-  '@formatjs/intl-utils@1.6.0': {}
-
   '@formatjs/intl-utils@2.3.0': {}
-
-  '@formatjs/macro@0.2.8': {}
 
   '@gar/promisify@1.1.3': {}
 
@@ -22910,11 +22983,11 @@ snapshots:
 
   '@pkgr/core@0.1.1': {}
 
-  '@plone/types@1.0.0-alpha.11(history@4.10.1)(react-dom@18.2.0(react@18.2.0))(react-intl@3.8.0(react@18.2.0))(react@18.2.0)':
+  '@plone/types@1.0.0-alpha.11(history@4.10.1)(react-dom@18.2.0(react@18.2.0))(react-intl@3.12.1(react@18.2.0))(react@18.2.0)':
     dependencies:
       history: 4.10.1
       react: 18.2.0
-      react-intl: 3.8.0(react@18.2.0)
+      react-intl: 3.12.1(react@18.2.0)
     optionalDependencies:
       react-dom: 18.2.0(react@18.2.0)
 
@@ -32291,7 +32364,7 @@ snapshots:
       doctrine: 2.1.0
       eslint: 8.57.0
       eslint-import-resolver-node: 0.3.9
-      eslint-module-utils: 2.8.1(@typescript-eslint/parser@7.1.1(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.1.1(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1)(eslint@8.57.0))(eslint@8.57.0)
+      eslint-module-utils: 2.8.1(@typescript-eslint/parser@7.7.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.7.0(eslint@8.57.0)(typescript@5.4.5))(eslint-plugin-import@2.29.1)(eslint@8.57.0))(eslint@8.57.0)
       hasown: 2.0.2
       is-core-module: 2.13.1
       is-glob: 4.0.3
@@ -34355,8 +34428,6 @@ snapshots:
   interpret@2.2.0: {}
 
   intl-format-cache@4.3.1: {}
-
-  intl-locales-supported@1.8.12: {}
 
   intl-messageformat-parser@3.6.4:
     dependencies:
@@ -39961,28 +40032,27 @@ snapshots:
     dependencies:
       react: 18.2.0
 
-  react-intl-redux@2.3.0(@babel/runtime@7.20.6)(prop-types@15.7.2)(react-intl@3.8.0(react@18.2.0))(react-redux@8.1.2(@types/react-dom@18.2.25)(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(redux@4.2.1))(react@18.2.0):
+  react-intl-redux@2.3.0(@babel/runtime@7.20.6)(prop-types@15.7.2)(react-intl@3.12.1(react@18.2.0))(react-redux@8.1.2(@types/react-dom@18.2.25)(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(redux@4.2.1))(react@18.2.0):
     dependencies:
       '@babel/runtime': 7.20.6
       prop-types: 15.7.2
       react: 18.2.0
-      react-intl: 3.8.0(react@18.2.0)
+      react-intl: 3.12.1(react@18.2.0)
       react-redux: 8.1.2(@types/react-dom@18.2.25)(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(redux@4.2.1)
 
-  react-intl@3.8.0(react@18.2.0):
+  react-intl@3.12.1(react@18.2.0):
     dependencies:
+      '@formatjs/intl-displaynames': 1.2.10
       '@formatjs/intl-listformat': 1.4.8
       '@formatjs/intl-relativetimeformat': 4.5.16
-      '@formatjs/intl-unified-numberformat': 2.2.0
-      '@formatjs/macro': 0.2.8
+      '@formatjs/intl-unified-numberformat': 3.3.7
+      '@formatjs/intl-utils': 2.3.0
       '@types/hoist-non-react-statics': 3.3.5
       '@types/invariant': 2.2.37
       hoist-non-react-statics: 3.3.2
       intl-format-cache: 4.3.1
-      intl-locales-supported: 1.8.12
       intl-messageformat: 7.8.4
       intl-messageformat-parser: 3.6.4
-      invariant: 2.2.4
       react: 18.2.0
       shallow-equal: 1.2.1
 
@@ -42106,7 +42176,7 @@ snapshots:
       '@csstools/css-tokenizer': 2.2.4
       '@csstools/media-query-list-parser': 2.1.9(@csstools/css-parser-algorithms@2.6.1(@csstools/css-tokenizer@2.2.4))(@csstools/css-tokenizer@2.2.4)
       '@csstools/selector-specificity': 3.0.3(postcss-selector-parser@6.0.16)
-      '@dual-bundle/import-meta-resolve': 4.0.0
+      '@dual-bundle/import-meta-resolve': 4.1.0
       balanced-match: 2.0.0
       colord: 2.9.3
       cosmiconfig: 9.0.0(typescript@5.4.5)

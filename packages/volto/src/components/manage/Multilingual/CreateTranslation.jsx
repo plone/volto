@@ -34,7 +34,9 @@ const CreateTranslation = (props) => {
       // We change the interface language
       if (config.settings.supportedLanguages.includes(language)) {
         const langFileName = toGettextLang(language);
-        import('@root/../locales/' + langFileName + '.json').then((locale) => {
+        import(
+          /* @vite-ignore */ '@root/../locales/' + langFileName + '.json'
+        ).then((locale) => {
           dispatch(changeLanguage(language, locale.default));
         });
       }

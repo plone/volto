@@ -156,7 +156,7 @@ const messages = defineMessages({
     defaultMessage: 'Item(s) has been updated.',
   },
   messageReorder: {
-    id: 'Item succesfully moved.',
+    id: 'Item successfully moved.',
     defaultMessage: 'Item successfully moved.',
   },
   messagePasted: {

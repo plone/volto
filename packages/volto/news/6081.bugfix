@@ -1,1 +1,0 @@
-Fix public folder in dev mode, now it starts by default with the default Volto core defined public files @sneridagh
