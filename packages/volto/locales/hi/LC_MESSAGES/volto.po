@@ -527,7 +527,6 @@ msgstr ""
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 #: components/manage/Delete/Delete
-#: components/manage/Edit/Edit-wip
 #: components/manage/Edit/Edit
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
@@ -1208,7 +1207,6 @@ msgid "Edit values"
 msgstr "मान संपादित करें"
 
 #. Default: "Edit {title}"
-#: components/manage/Edit/Edit-wip
 #: components/manage/Edit/Edit
 msgid "Edit {title}"
 msgstr "संपादित करें {title}"
@@ -1331,7 +1329,6 @@ msgstr "एन्ट्रीज़"
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/UndoControlpanel
-#: components/manage/Edit/Edit-wip
 #: components/manage/Edit/Edit
 #: components/manage/Form/InlineForm
 #: components/manage/Toolbar/More
@@ -3013,7 +3010,6 @@ msgstr "नियम निष्पादित होते हैं जब �
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
-#: components/manage/Edit/Edit-wip
 #: components/manage/Edit/Edit
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
@@ -3701,7 +3697,6 @@ msgstr "खोजी गई मानदंडों के साथ कोई 
 
 #. Default: "There are some errors."
 #: components/manage/Add/Add
-#: components/manage/Edit/Edit-wip
 #: components/manage/Edit/Edit
 msgid "There are some errors."
 msgstr "कुछ त्रुटियाँ हैं।"

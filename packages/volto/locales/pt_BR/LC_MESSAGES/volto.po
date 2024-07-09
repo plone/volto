@@ -533,7 +533,6 @@ msgstr "Não é possível editar layout para o tipo de conteúdo <strong>{type}<
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 #: components/manage/Delete/Delete
-#: components/manage/Edit/Edit-wip
 #: components/manage/Edit/Edit
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
@@ -1214,7 +1213,6 @@ msgid "Edit values"
 msgstr "Editar valores"
 
 #. Default: "Edit {title}"
-#: components/manage/Edit/Edit-wip
 #: components/manage/Edit/Edit
 msgid "Edit {title}"
 msgstr "Editar {title}"
@@ -1337,7 +1335,6 @@ msgstr ""
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/UndoControlpanel
-#: components/manage/Edit/Edit-wip
 #: components/manage/Edit/Edit
 #: components/manage/Form/InlineForm
 #: components/manage/Toolbar/More
@@ -3019,7 +3016,6 @@ msgstr "As regras são realizadas quando ocorre um evento de disparo. As ações
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
-#: components/manage/Edit/Edit-wip
 #: components/manage/Edit/Edit
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
@@ -3707,7 +3703,6 @@ msgstr ""
 
 #. Default: "There are some errors."
 #: components/manage/Add/Add
-#: components/manage/Edit/Edit-wip
 #: components/manage/Edit/Edit
 msgid "There are some errors."
 msgstr "Existem alguns erros."

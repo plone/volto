@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2024-07-09T06:19:33.683Z\n"
+"POT-Creation-Date: 2024-07-09T06:25:05.312Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -529,7 +529,6 @@ msgstr ""
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 #: components/manage/Delete/Delete
-#: components/manage/Edit/Edit-wip
 #: components/manage/Edit/Edit
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
@@ -1210,7 +1209,6 @@ msgid "Edit values"
 msgstr ""
 
 #. Default: "Edit {title}"
-#: components/manage/Edit/Edit-wip
 #: components/manage/Edit/Edit
 msgid "Edit {title}"
 msgstr ""
@@ -1333,7 +1331,6 @@ msgstr ""
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/UndoControlpanel
-#: components/manage/Edit/Edit-wip
 #: components/manage/Edit/Edit
 #: components/manage/Form/InlineForm
 #: components/manage/Toolbar/More
@@ -3015,7 +3012,6 @@ msgstr ""
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
-#: components/manage/Edit/Edit-wip
 #: components/manage/Edit/Edit
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
@@ -3703,7 +3699,6 @@ msgstr ""
 
 #. Default: "There are some errors."
 #: components/manage/Add/Add
-#: components/manage/Edit/Edit-wip
 #: components/manage/Edit/Edit
 msgid "There are some errors."
 msgstr ""

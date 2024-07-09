@@ -533,7 +533,6 @@ msgstr ""
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 #: components/manage/Delete/Delete
-#: components/manage/Edit/Edit-wip
 #: components/manage/Edit/Edit
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
@@ -1214,7 +1213,6 @@ msgid "Edit values"
 msgstr "编辑值"
 
 #. Default: "Edit {title}"
-#: components/manage/Edit/Edit-wip
 #: components/manage/Edit/Edit
 msgid "Edit {title}"
 msgstr "编辑 {title}"
@@ -1337,7 +1335,6 @@ msgstr ""
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/UndoControlpanel
-#: components/manage/Edit/Edit-wip
 #: components/manage/Edit/Edit
 #: components/manage/Form/InlineForm
 #: components/manage/Toolbar/More
@@ -3019,7 +3016,6 @@ msgstr "触发事件发生时执行规则。只有符合规则的所有条件，
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
-#: components/manage/Edit/Edit-wip
 #: components/manage/Edit/Edit
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
@@ -3707,7 +3703,6 @@ msgstr ""
 
 #. Default: "There are some errors."
 #: components/manage/Add/Add
-#: components/manage/Edit/Edit-wip
 #: components/manage/Edit/Edit
 msgid "There are some errors."
 msgstr ""
