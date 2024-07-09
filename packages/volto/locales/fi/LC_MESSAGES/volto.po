@@ -1872,7 +1872,7 @@ msgstr "Sivun koko"
 #. Default: "Item successfully moved."
 #: components/manage/Contents/Contents
 msgid "Item successfully moved."
-msgstr ""
+msgstr "Sisällön siirto onnistui."
 
 #. Default: "Item(s) copied."
 #: components/manage/Contents/Contents

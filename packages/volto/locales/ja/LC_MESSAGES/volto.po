@@ -1872,7 +1872,7 @@ msgstr "1ページ表示件数"
 #. Default: "Item successfully moved."
 #: components/manage/Contents/Contents
 msgid "Item successfully moved."
-msgstr ""
+msgstr "アイテムは正常に移動されました。"
 
 #. Default: "Item(s) copied."
 #: components/manage/Contents/Contents

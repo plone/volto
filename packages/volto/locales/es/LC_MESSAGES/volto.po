@@ -1874,7 +1874,7 @@ msgstr "Número de elementos"
 #. Default: "Item successfully moved."
 #: components/manage/Contents/Contents
 msgid "Item successfully moved."
-msgstr ""
+msgstr "Elemento movido correctamente."
 
 #. Default: "Item(s) copied."
 #: components/manage/Contents/Contents

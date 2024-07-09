@@ -1867,7 +1867,7 @@ msgstr "Risultati per pagina"
 #. Default: "Item successfully moved."
 #: components/manage/Contents/Contents
 msgid "Item successfully moved."
-msgstr ""
+msgstr "Elemento spostato correttamente."
 
 #. Default: "Item(s) copied."
 #: components/manage/Contents/Contents

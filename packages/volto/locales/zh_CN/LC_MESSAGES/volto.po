@@ -1873,7 +1873,7 @@ msgstr "条目批量大小"
 #. Default: "Item successfully moved."
 #: components/manage/Contents/Contents
 msgid "Item successfully moved."
-msgstr ""
+msgstr "成功移除条目。"
 
 #. Default: "Item(s) copied."
 #: components/manage/Contents/Contents

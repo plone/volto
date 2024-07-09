@@ -1873,7 +1873,7 @@ msgstr "Mida del lot d'articles"
 #. Default: "Item successfully moved."
 #: components/manage/Contents/Contents
 msgid "Item successfully moved."
-msgstr ""
+msgstr "L'element s'ha mogut correctament."
 
 #. Default: "Item(s) copied."
 #: components/manage/Contents/Contents
