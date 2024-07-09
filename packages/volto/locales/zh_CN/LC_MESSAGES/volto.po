@@ -473,7 +473,6 @@ msgid "Base search query"
 msgstr "基本搜索查询"
 
 #. Default: "Block"
-#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Block"
 msgstr "块"
@@ -1119,7 +1118,6 @@ msgstr "确定要删除这个条目吗"
 
 #. Default: "Document"
 #: components/manage/Multilingual/TranslationObject
-#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Document"
 msgstr "文档"
@@ -1391,7 +1389,6 @@ msgid "Existing alternative urls for this item"
 msgstr "此项目现有可选的urls"
 
 #. Default: "Expand sidebar"
-#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Expand sidebar"
 msgstr "扩大侧边栏"
@@ -2512,7 +2509,6 @@ msgid "Open object browser"
 msgstr "打开目标浏览器"
 
 #. Default: "Order"
-#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Order"
 msgstr ""
@@ -3240,7 +3236,6 @@ msgid "Set your password"
 msgstr "设置你的密码"
 
 #. Default: "Settings"
-#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Settings"
 msgstr "设置"
@@ -3329,7 +3324,6 @@ msgid "Show total results"
 msgstr "显示全部结果"
 
 #. Default: "Shrink sidebar"
-#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
 msgstr "缩小侧边栏"

@@ -474,7 +474,6 @@ msgid "Base search query"
 msgstr "Requête de base de la recherche"
 
 #. Default: "Block"
-#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Block"
 msgstr "Bloc"
@@ -1120,7 +1119,6 @@ msgstr "Voulez-vous vraiment supprimer cet élément ?"
 
 #. Default: "Document"
 #: components/manage/Multilingual/TranslationObject
-#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Document"
 msgstr "Document"
@@ -1392,7 +1390,6 @@ msgid "Existing alternative urls for this item"
 msgstr "URLs alternatives existantes pour cet élément"
 
 #. Default: "Expand sidebar"
-#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Expand sidebar"
 msgstr "Étendre la barre latérale"
@@ -2513,7 +2510,6 @@ msgid "Open object browser"
 msgstr "Ouvrir le navigateur d'objets"
 
 #. Default: "Order"
-#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Order"
 msgstr ""
@@ -3241,7 +3237,6 @@ msgid "Set your password"
 msgstr "Définir votre mot de passe"
 
 #. Default: "Settings"
-#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Settings"
 msgstr "Paramètres"
@@ -3330,7 +3325,6 @@ msgid "Show total results"
 msgstr "Afficher le nombre de résultat"
 
 #. Default: "Shrink sidebar"
-#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
 msgstr "Rétrécir la barre latérale"

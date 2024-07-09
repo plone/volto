@@ -467,7 +467,6 @@ msgid "Base search query"
 msgstr "Interogare căutare de bază"
 
 #. Default: "Block"
-#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Block"
 msgstr "Bloc"
@@ -1113,7 +1112,6 @@ msgstr "Doriți cu adevărat să ștergeți acest articol?"
 
 #. Default: "Document"
 #: components/manage/Multilingual/TranslationObject
-#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Document"
 msgstr "Document"
@@ -1385,7 +1383,6 @@ msgid "Existing alternative urls for this item"
 msgstr ""
 
 #. Default: "Expand sidebar"
-#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Expand sidebar"
 msgstr "Extinde bara laterală"
@@ -2506,7 +2503,6 @@ msgid "Open object browser"
 msgstr "Deschideți browserul de obiecte"
 
 #. Default: "Order"
-#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Order"
 msgstr ""
@@ -3234,7 +3230,6 @@ msgid "Set your password"
 msgstr "Setați parola"
 
 #. Default: "Settings"
-#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Settings"
 msgstr "Setări"
@@ -3323,7 +3318,6 @@ msgid "Show total results"
 msgstr ""
 
 #. Default: "Shrink sidebar"
-#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
 msgstr "Reduceți bara laterală"

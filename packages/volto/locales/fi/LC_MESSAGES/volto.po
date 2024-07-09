@@ -472,7 +472,6 @@ msgid "Base search query"
 msgstr ""
 
 #. Default: "Block"
-#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Block"
 msgstr "Palikka"
@@ -1118,7 +1117,6 @@ msgstr "Haluatko varmasti poistaa tämän sisällön?"
 
 #. Default: "Document"
 #: components/manage/Multilingual/TranslationObject
-#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Document"
 msgstr "Sivu"
@@ -1390,7 +1388,6 @@ msgid "Existing alternative urls for this item"
 msgstr "Voimassaolevat vaihtoehtoiset URL:t tälle kohteelle"
 
 #. Default: "Expand sidebar"
-#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Expand sidebar"
 msgstr "Laajenna sivupalkki"
@@ -2511,7 +2508,6 @@ msgid "Open object browser"
 msgstr ""
 
 #. Default: "Order"
-#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Order"
 msgstr ""
@@ -3239,7 +3235,6 @@ msgid "Set your password"
 msgstr "Vaihda salasanasi"
 
 #. Default: "Settings"
-#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Settings"
 msgstr "Asetukset"
@@ -3328,7 +3323,6 @@ msgid "Show total results"
 msgstr "Näytä tulokset"
 
 #. Default: "Shrink sidebar"
-#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
 msgstr "Kutista sivupalkki"

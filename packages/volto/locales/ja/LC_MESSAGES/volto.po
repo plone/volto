@@ -472,7 +472,6 @@ msgid "Base search query"
 msgstr ""
 
 #. Default: "Block"
-#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Block"
 msgstr "ブロック"
@@ -1118,7 +1117,6 @@ msgstr "このアイテムを削除してよろしいですか?"
 
 #. Default: "Document"
 #: components/manage/Multilingual/TranslationObject
-#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Document"
 msgstr "文書"
@@ -1390,7 +1388,6 @@ msgid "Existing alternative urls for this item"
 msgstr ""
 
 #. Default: "Expand sidebar"
-#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Expand sidebar"
 msgstr "サイドバーを開く"
@@ -2511,7 +2508,6 @@ msgid "Open object browser"
 msgstr "オブジェクトブラウザを開く"
 
 #. Default: "Order"
-#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Order"
 msgstr ""
@@ -3239,7 +3235,6 @@ msgid "Set your password"
 msgstr "パスワードを設定"
 
 #. Default: "Settings"
-#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Settings"
 msgstr "設定"
@@ -3328,7 +3323,6 @@ msgid "Show total results"
 msgstr ""
 
 #. Default: "Shrink sidebar"
-#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
 msgstr "サイドバーを閉じる"
