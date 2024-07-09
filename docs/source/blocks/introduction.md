@@ -75,7 +75,7 @@ You can enable them on any content type by enabling `Blocks` behavior provided b
 3. Select the `Blocks` behavior
 4. Save
 
-You can also add the behavior programatically via GenericSetup:
+You can also add the behavior programmatically via GenericSetup:
 
 ```xml
 <?xml version="1.0"?>
