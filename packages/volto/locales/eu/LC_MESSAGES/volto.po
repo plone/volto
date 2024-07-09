@@ -474,6 +474,7 @@ msgid "Base search query"
 msgstr "Oinarrizko bilaketa kontsulta"
 
 #. Default: "Block"
+#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Block"
 msgstr "Blokea"
@@ -534,6 +535,7 @@ msgstr "Ezin da <strong>{type}</strong> elementu-motaren itxura aldatu, <strong>
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 #: components/manage/Delete/Delete
+#: components/manage/Edit/Edit-wip
 #: components/manage/Edit/Edit
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
@@ -1118,6 +1120,7 @@ msgstr "Elementu hau ezabatu egin nahi duzu?"
 
 #. Default: "Document"
 #: components/manage/Multilingual/TranslationObject
+#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Document"
 msgstr "Dokumentua"
@@ -1214,6 +1217,7 @@ msgid "Edit values"
 msgstr "Editatu balioak"
 
 #. Default: "Edit {title}"
+#: components/manage/Edit/Edit-wip
 #: components/manage/Edit/Edit
 msgid "Edit {title}"
 msgstr "Editatu {title}"
@@ -1336,6 +1340,7 @@ msgstr ""
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/UndoControlpanel
+#: components/manage/Edit/Edit-wip
 #: components/manage/Edit/Edit
 #: components/manage/Form/InlineForm
 #: components/manage/Toolbar/More
@@ -1387,6 +1392,7 @@ msgid "Existing alternative urls for this item"
 msgstr "Elementu honentzako ordezko helbidea"
 
 #. Default: "Expand sidebar"
+#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Expand sidebar"
 msgstr "Alboko barra zabaldu"
@@ -1873,8 +1879,8 @@ msgstr "Elementu-multzoaren tamaina"
 
 #. Default: "Item successfully moved."
 #: components/manage/Contents/Contents
-msgid "Item succesfully moved."
-msgstr "Elementua ongi mugitu da."
+msgid "Item successfully moved."
+msgstr ""
 
 #. Default: "Item(s) copied."
 #: components/manage/Contents/Contents
@@ -2507,6 +2513,7 @@ msgid "Open object browser"
 msgstr "Ireki elementu bilatzailea"
 
 #. Default: "Order"
+#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Order"
 msgstr ""
@@ -3017,6 +3024,7 @@ msgstr "Erregelak akzio bat gertatzen denean exekutatzen dira. Erregelaren akzio
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
+#: components/manage/Edit/Edit-wip
 #: components/manage/Edit/Edit
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
@@ -3233,6 +3241,7 @@ msgid "Set your password"
 msgstr "Ezarri zure pasahitza"
 
 #. Default: "Settings"
+#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Settings"
 msgstr "Ezarpenak"
@@ -3321,6 +3330,7 @@ msgid "Show total results"
 msgstr "Emaitza kopurua erakutsi"
 
 #. Default: "Shrink sidebar"
+#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
 msgstr "Txikitu alboko barra"
@@ -3704,6 +3714,7 @@ msgstr ""
 
 #. Default: "There are some errors."
 #: components/manage/Add/Add
+#: components/manage/Edit/Edit-wip
 #: components/manage/Edit/Edit
 msgid "There are some errors."
 msgstr ""

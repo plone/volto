@@ -472,6 +472,7 @@ msgid "Base search query"
 msgstr ""
 
 #. Default: "Block"
+#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Block"
 msgstr "Palikka"
@@ -532,6 +533,7 @@ msgstr "Sisältötyypin <strong>{type}</strong> asettelua ei voi muokata, koska 
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 #: components/manage/Delete/Delete
+#: components/manage/Edit/Edit-wip
 #: components/manage/Edit/Edit
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
@@ -1116,6 +1118,7 @@ msgstr "Haluatko varmasti poistaa tämän sisällön?"
 
 #. Default: "Document"
 #: components/manage/Multilingual/TranslationObject
+#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Document"
 msgstr "Sivu"
@@ -1212,6 +1215,7 @@ msgid "Edit values"
 msgstr "Muokkaa arvoja"
 
 #. Default: "Edit {title}"
+#: components/manage/Edit/Edit-wip
 #: components/manage/Edit/Edit
 msgid "Edit {title}"
 msgstr "Muokkaa {title}"
@@ -1334,6 +1338,7 @@ msgstr ""
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/UndoControlpanel
+#: components/manage/Edit/Edit-wip
 #: components/manage/Edit/Edit
 #: components/manage/Form/InlineForm
 #: components/manage/Toolbar/More
@@ -1385,6 +1390,7 @@ msgid "Existing alternative urls for this item"
 msgstr "Voimassaolevat vaihtoehtoiset URL:t tälle kohteelle"
 
 #. Default: "Expand sidebar"
+#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Expand sidebar"
 msgstr "Laajenna sivupalkki"
@@ -1871,8 +1877,8 @@ msgstr "Sivun koko"
 
 #. Default: "Item successfully moved."
 #: components/manage/Contents/Contents
-msgid "Item succesfully moved."
-msgstr "Sisällön siirto onnistui."
+msgid "Item successfully moved."
+msgstr ""
 
 #. Default: "Item(s) copied."
 #: components/manage/Contents/Contents
@@ -2505,6 +2511,7 @@ msgid "Open object browser"
 msgstr ""
 
 #. Default: "Order"
+#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Order"
 msgstr ""
@@ -3015,6 +3022,7 @@ msgstr ""
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
+#: components/manage/Edit/Edit-wip
 #: components/manage/Edit/Edit
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
@@ -3231,6 +3239,7 @@ msgid "Set your password"
 msgstr "Vaihda salasanasi"
 
 #. Default: "Settings"
+#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Settings"
 msgstr "Asetukset"
@@ -3319,6 +3328,7 @@ msgid "Show total results"
 msgstr "Näytä tulokset"
 
 #. Default: "Shrink sidebar"
+#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
 msgstr "Kutista sivupalkki"
@@ -3702,6 +3712,7 @@ msgstr ""
 
 #. Default: "There are some errors."
 #: components/manage/Add/Add
+#: components/manage/Edit/Edit-wip
 #: components/manage/Edit/Edit
 msgid "There are some errors."
 msgstr ""

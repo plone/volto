@@ -467,6 +467,7 @@ msgid "Base search query"
 msgstr "मूल खोज क्वेरी"
 
 #. Default: "Block"
+#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Block"
 msgstr "ब्लॉक"
@@ -527,6 +528,7 @@ msgstr ""
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 #: components/manage/Delete/Delete
+#: components/manage/Edit/Edit-wip
 #: components/manage/Edit/Edit
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
@@ -1111,6 +1113,7 @@ msgstr "क्या आप वाकई इस आइटम को हटान
 
 #. Default: "Document"
 #: components/manage/Multilingual/TranslationObject
+#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Document"
 msgstr "दस्तावेज़"
@@ -1207,6 +1210,7 @@ msgid "Edit values"
 msgstr "मान संपादित करें"
 
 #. Default: "Edit {title}"
+#: components/manage/Edit/Edit-wip
 #: components/manage/Edit/Edit
 msgid "Edit {title}"
 msgstr "संपादित करें {title}"
@@ -1329,6 +1333,7 @@ msgstr "एन्ट्रीज़"
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/UndoControlpanel
+#: components/manage/Edit/Edit-wip
 #: components/manage/Edit/Edit
 #: components/manage/Form/InlineForm
 #: components/manage/Toolbar/More
@@ -1380,6 +1385,7 @@ msgid "Existing alternative urls for this item"
 msgstr "इस आइटम के लिए मौजूदा वैकल्पिक URL"
 
 #. Default: "Expand sidebar"
+#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Expand sidebar"
 msgstr "साइडबार का विस्तार करें"
@@ -1866,8 +1872,8 @@ msgstr "आइटम बैच का आकार"
 
 #. Default: "Item successfully moved."
 #: components/manage/Contents/Contents
-msgid "Item succesfully moved."
-msgstr "वस्तु सफलतापूर्वक हटा दी गई।"
+msgid "Item successfully moved."
+msgstr ""
 
 #. Default: "Item(s) copied."
 #: components/manage/Contents/Contents
@@ -2500,6 +2506,7 @@ msgid "Open object browser"
 msgstr "ऑब्जेक्ट ब्राउज़र खोलें"
 
 #. Default: "Order"
+#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Order"
 msgstr ""
@@ -3010,6 +3017,7 @@ msgstr "नियम निष्पादित होते हैं जब �
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
+#: components/manage/Edit/Edit-wip
 #: components/manage/Edit/Edit
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
@@ -3226,6 +3234,7 @@ msgid "Set your password"
 msgstr "अपना पासवर्ड सेट करें"
 
 #. Default: "Settings"
+#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Settings"
 msgstr "सेटिंग्स"
@@ -3314,6 +3323,7 @@ msgid "Show total results"
 msgstr "कुल परिणाम दिखाएं"
 
 #. Default: "Shrink sidebar"
+#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
 msgstr "साइडबार को छोटा करें"
@@ -3697,6 +3707,7 @@ msgstr "खोजी गई मानदंडों के साथ कोई 
 
 #. Default: "There are some errors."
 #: components/manage/Add/Add
+#: components/manage/Edit/Edit-wip
 #: components/manage/Edit/Edit
 msgid "There are some errors."
 msgstr "कुछ त्रुटियाँ हैं।"

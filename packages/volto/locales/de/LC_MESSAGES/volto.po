@@ -472,6 +472,7 @@ msgid "Base search query"
 msgstr "Basis Suchfilter"
 
 #. Default: "Block"
+#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Block"
 msgstr "Block"
@@ -532,6 +533,7 @@ msgstr "Layout für <strong>{type}</strong> kann nicht verändert werden, da das
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 #: components/manage/Delete/Delete
+#: components/manage/Edit/Edit-wip
 #: components/manage/Edit/Edit
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
@@ -1116,6 +1118,7 @@ msgstr "Möchten Sie den Artikel wirklich löschen?"
 
 #. Default: "Document"
 #: components/manage/Multilingual/TranslationObject
+#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Document"
 msgstr "Seite"
@@ -1212,6 +1215,7 @@ msgid "Edit values"
 msgstr "Werte bearbeiten"
 
 #. Default: "Edit {title}"
+#: components/manage/Edit/Edit-wip
 #: components/manage/Edit/Edit
 msgid "Edit {title}"
 msgstr "{title} bearbeiten"
@@ -1334,6 +1338,7 @@ msgstr ""
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/UndoControlpanel
+#: components/manage/Edit/Edit-wip
 #: components/manage/Edit/Edit
 #: components/manage/Form/InlineForm
 #: components/manage/Toolbar/More
@@ -1385,6 +1390,7 @@ msgid "Existing alternative urls for this item"
 msgstr "Existierende, alternative URLs für dieses Element"
 
 #. Default: "Expand sidebar"
+#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Expand sidebar"
 msgstr "Sidebar vergrößern"
@@ -1871,8 +1877,8 @@ msgstr "Batch-Anzahl"
 
 #. Default: "Item successfully moved."
 #: components/manage/Contents/Contents
-msgid "Item succesfully moved."
-msgstr "Objekt wurde erfolgreich verschoben."
+msgid "Item successfully moved."
+msgstr ""
 
 #. Default: "Item(s) copied."
 #: components/manage/Contents/Contents
@@ -2505,6 +2511,7 @@ msgid "Open object browser"
 msgstr "Objekt-Browser öffnen"
 
 #. Default: "Order"
+#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Order"
 msgstr "Reihung"
@@ -3015,6 +3022,7 @@ msgstr "Regeln werden nach einem auslösenden Ereignis ausgeführt. Regelaktione
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
+#: components/manage/Edit/Edit-wip
 #: components/manage/Edit/Edit
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
@@ -3231,6 +3239,7 @@ msgid "Set your password"
 msgstr "Setzen Sie Ihr Passwort"
 
 #. Default: "Settings"
+#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Settings"
 msgstr "Einstellungen"
@@ -3319,6 +3328,7 @@ msgid "Show total results"
 msgstr "Anzahl an Ergebnissen anzeigen"
 
 #. Default: "Shrink sidebar"
+#: components/manage/Sidebar/Sidebar-wip
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
 msgstr "Sidebar verkleinern"
@@ -3702,6 +3712,7 @@ msgstr ""
 
 #. Default: "There are some errors."
 #: components/manage/Add/Add
+#: components/manage/Edit/Edit-wip
 #: components/manage/Edit/Edit
 msgid "There are some errors."
 msgstr ""
