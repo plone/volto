@@ -32,6 +32,7 @@ import applyAddonConfiguration, { addonsInfo } from 'load-volto-addons';
 import ConfigRegistry from '@plone/volto/registry';
 
 import { getSiteAsyncPropExtender } from '@plone/volto/helpers';
+import { registerValidators } from './validation';
 
 const host = process.env.HOST || 'localhost';
 const port = process.env.PORT || '3000';
@@ -238,5 +239,7 @@ ConfigRegistry.addonRoutes = config.addonRoutes;
 ConfigRegistry.addonReducers = config.addonReducers;
 ConfigRegistry.components = config.components;
 ConfigRegistry.slots = config.slots;
+
+registerValidators(ConfigRegistry);
 
 applyAddonConfiguration(ConfigRegistry);

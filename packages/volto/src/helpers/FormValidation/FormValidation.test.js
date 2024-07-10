@@ -54,7 +54,7 @@ describe('FormValidation', () => {
       expect(FormValidation.validateFieldsPerFieldset()).toEqual({});
     });
 
-    it('validates missing required', () => {
+    it('required - validates missing', () => {
       expect(
         FormValidation.validateFieldsPerFieldset({
           schema,
@@ -66,7 +66,7 @@ describe('FormValidation', () => {
       });
     });
 
-    it('do not treat 0 as missing required value', () => {
+    it('required - do not treat 0 as missing required value', () => {
       let newSchema = {
         ...schema,
         properties: {
@@ -98,7 +98,7 @@ describe('FormValidation', () => {
       ).toEqual({});
     });
 
-    it('validates incorrect email', () => {
+    it('email - validates incorrect', () => {
       expect(
         FormValidation.validateFieldsPerFieldset({
           schema,
@@ -110,7 +110,7 @@ describe('FormValidation', () => {
       });
     });
 
-    it('validates correct email', () => {
+    it('email - validates', () => {
       formData.email = 'test@domain.name';
       expect(
         FormValidation.validateFieldsPerFieldset({
@@ -120,7 +120,8 @@ describe('FormValidation', () => {
         }),
       ).toEqual({});
     });
-    it('validates incorrect url', () => {
+
+    it('url - validates incorrect url', () => {
       formData.url = 'foo';
       expect(
         FormValidation.validateFieldsPerFieldset({
@@ -130,7 +131,8 @@ describe('FormValidation', () => {
         }),
       ).toEqual({ url: [messages.isValidURL.defaultMessage] });
     });
-    it('validates url', () => {
+
+    it('url - validates', () => {
       formData.url = 'https://plone.org/';
       expect(
         FormValidation.validateFieldsPerFieldset({
@@ -140,7 +142,8 @@ describe('FormValidation', () => {
         }),
       ).toEqual({});
     });
-    it('validates url with ip', () => {
+
+    it('url - validates url with ip', () => {
       formData.url = 'http://127.0.0.1:8080/Plone';
       expect(
         FormValidation.validateFieldsPerFieldset({
@@ -150,7 +153,8 @@ describe('FormValidation', () => {
         }),
       ).toEqual({});
     });
-    it('validates url with localhost', () => {
+
+    it('url - validates url with localhost', () => {
       formData.url = 'http://localhost:8080/Plone';
       expect(
         FormValidation.validateFieldsPerFieldset({
@@ -159,6 +163,295 @@ describe('FormValidation', () => {
           formatMessage,
         }),
       ).toEqual({});
+    });
+
+    it('default - min lenght', () => {
+      let newSchema = {
+        properties: {
+          ...schema.properties,
+          customField: {
+            title: 'password',
+            description: '',
+            minLength: '8',
+          },
+        },
+        required: [],
+      };
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema: newSchema,
+          formData: {
+            username: 'test username',
+            customField: 'asd',
+          },
+          formatMessage,
+        }),
+      ).toEqual({
+        customField: [messages.minLength.defaultMessage],
+      });
+    });
+
+    it('default - max lenght', () => {
+      let newSchema = {
+        properties: {
+          ...schema.properties,
+          customField: {
+            title: 'password',
+            description: '',
+            maxLength: '8',
+          },
+        },
+        required: [],
+      };
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema: newSchema,
+          formData: {
+            username: 'test username',
+            customField: 'asdasdasdasdasd',
+          },
+          formatMessage,
+        }),
+      ).toEqual({
+        customField: [messages.maxLength.defaultMessage],
+      });
+    });
+
+    it('number - isNumber', () => {
+      let newSchema = {
+        properties: {
+          ...schema.properties,
+          customField: {
+            title: 'Number field',
+            type: 'number',
+            description: '',
+          },
+        },
+        required: [],
+      };
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema: newSchema,
+          formData: {
+            username: 'test username',
+            customField: '1',
+          },
+          formatMessage,
+        }),
+      ).toEqual({
+        customField: [messages.isNumber.defaultMessage],
+      });
+    });
+
+    it('number - minimum', () => {
+      let newSchema = {
+        properties: {
+          ...schema.properties,
+          customField: {
+            title: 'Number field',
+            type: 'number',
+            description: '',
+            minimum: 8,
+          },
+        },
+        required: [],
+      };
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema: newSchema,
+          formData: {
+            username: 'test username',
+            customField: 1,
+          },
+          formatMessage,
+        }),
+      ).toEqual({
+        customField: [messages.minimum.defaultMessage],
+      });
+    });
+
+    it('number - maximum', () => {
+      let newSchema = {
+        properties: {
+          ...schema.properties,
+          customField: {
+            title: 'Number field',
+            type: 'number',
+            description: '',
+            maximum: 8,
+          },
+        },
+        required: [],
+      };
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema: newSchema,
+          formData: {
+            username: 'test username',
+            customField: 10,
+          },
+          formatMessage,
+        }),
+      ).toEqual({
+        customField: [messages.maximum.defaultMessage],
+      });
+    });
+
+    it('integer - isInteger', () => {
+      let newSchema = {
+        properties: {
+          ...schema.properties,
+          customField: {
+            title: 'Integer field',
+            type: 'integer',
+            description: '',
+          },
+        },
+        required: [],
+      };
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema: newSchema,
+          formData: {
+            username: 'test username',
+            customField: 1.5,
+          },
+          formatMessage,
+        }),
+      ).toEqual({
+        customField: [messages.isInteger.defaultMessage],
+      });
+    });
+
+    it('integer - minimum', () => {
+      let newSchema = {
+        properties: {
+          ...schema.properties,
+          customField: {
+            title: 'Integer field',
+            type: 'integer',
+            description: '',
+            minimum: 8,
+          },
+        },
+        required: [],
+      };
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema: newSchema,
+          formData: {
+            username: 'test username',
+            customField: 1,
+          },
+          formatMessage,
+        }),
+      ).toEqual({
+        customField: [messages.minimum.defaultMessage],
+      });
+    });
+
+    it('integer - maximum', () => {
+      let newSchema = {
+        properties: {
+          ...schema.properties,
+          customField: {
+            title: 'Integer field',
+            type: 'number',
+            description: '',
+            maximum: 8,
+          },
+        },
+        required: [],
+      };
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema: newSchema,
+          formData: {
+            username: 'test username',
+            customField: 10,
+          },
+          formatMessage,
+        }),
+      ).toEqual({
+        customField: [messages.maximum.defaultMessage],
+      });
+    });
+
+    it('password - min lenght', () => {
+      let newSchema = {
+        ...schema,
+        properties: {
+          ...schema.properties,
+          password: {
+            title: 'password',
+            type: 'password',
+            description: '',
+            minLength: '8',
+          },
+        },
+        required: [],
+      };
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema: newSchema,
+          formData: { username: 'test username', password: 'asd' },
+          formatMessage,
+        }),
+      ).toEqual({
+        password: [messages.minLength.defaultMessage],
+      });
+    });
+
+    it('password - max lenght', () => {
+      let newSchema = {
+        ...schema,
+        properties: {
+          ...schema.properties,
+          password: {
+            title: 'password',
+            type: 'password',
+            description: '',
+            maxLength: '8',
+          },
+        },
+        required: [],
+      };
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema: newSchema,
+          formData: { username: 'test username', password: 'asdasdasdasdasd' },
+          formatMessage,
+        }),
+      ).toEqual({
+        password: [messages.maxLength.defaultMessage],
+      });
+    });
+
+    it('array - uniqueItems', () => {
+      let newSchema = {
+        properties: {
+          ...schema.properties,
+          customField: {
+            title: 'Array field',
+            type: 'array',
+            description: '',
+            uniqueItems: true,
+          },
+        },
+        required: [],
+      };
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema: newSchema,
+          formData: {
+            username: 'test username',
+            customField: [1, 1],
+          },
+          formatMessage,
+        }),
+      ).toEqual({
+        customField: [messages.uniqueItems.defaultMessage],
+      });
     });
   });
 });

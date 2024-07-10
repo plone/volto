@@ -137,10 +137,10 @@ docs-test: docs-clean docs-linkcheckbroken docs-vale  ## Clean docs build, then 
 cypress-install: ## Install Cypress for acceptance tests
 	$(NODEBIN)/cypress install
 
-packages/registry/dist: packages/registry/src
+packages/registry/dist: $(shell find packages/registry/src -type f)
 	pnpm build:registry
 
-packages/components/dist: packages/components/src
+packages/components/dist: $(shell find packages/components/src -type f)
 	pnpm build:components
 
 .PHONY: build-deps
