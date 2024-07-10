@@ -1866,7 +1866,7 @@ msgstr "आइटम बैच का आकार"
 
 #. Default: "Item successfully moved."
 #: components/manage/Contents/Contents
-msgid "Item succesfully moved."
+msgid "Item successfully moved."
 msgstr "वस्तु सफलतापूर्वक हटा दी गई।"
 
 #. Default: "Item(s) copied."
