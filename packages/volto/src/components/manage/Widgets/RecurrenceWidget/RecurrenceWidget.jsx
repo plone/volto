@@ -263,8 +263,8 @@ class RecurrenceWidget extends Component {
   setRecurrenceStartEnd = () => {
     const start = this.props.formData?.start;
 
-         // The `start` date from Plone is in UTC
-        const _start = new Date(start);
+    // The `start` date from Plone is in UTC
+    const _start = new Date(start);
 
     this.setState((prevState) => {
       let rruleSet = prevState.rruleSet;
@@ -477,8 +477,8 @@ class RecurrenceWidget extends Component {
       field === 'dtstart'
         ? value
         : rruleSet.dtstart()
-        ? rruleSet.dtstart()
-        : new Date();
+          ? rruleSet.dtstart()
+          : new Date();
     var exdates =
       field === 'exdates' ? value : Object.assign([], rruleSet.exdates());
 
