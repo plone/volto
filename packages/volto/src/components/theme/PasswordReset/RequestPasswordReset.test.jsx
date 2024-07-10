@@ -6,6 +6,8 @@ import { MemoryRouter } from 'react-router-dom';
 
 import RequestPasswordReset from './RequestPasswordReset';
 
+jest.mock('@plone/volto/components/manage/Form');
+
 const mockStore = configureStore();
 
 describe('RequestPasswordReset', () => {
@@ -21,6 +23,13 @@ describe('RequestPasswordReset', () => {
       intl: {
         locale: 'en',
         messages: {},
+      },
+      content: {
+        data: {},
+        create: {
+          loading: false,
+          loaded: true,
+        },
       },
     });
     const component = renderer.create(

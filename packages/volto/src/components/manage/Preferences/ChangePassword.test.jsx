@@ -1,5 +1,5 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import { Provider } from 'react-intl-redux';
 import configureStore from 'redux-mock-store';
 import jwt from 'jsonwebtoken';
@@ -9,9 +9,8 @@ import ChangePassword from './ChangePassword';
 
 const mockStore = configureStore();
 
-jest.mock('react-portal', () => ({
-  Portal: jest.fn(() => <div id="Portal" />),
-}));
+jest.mock('@plone/volto/components/manage/Form');
+jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
 
 describe('ChangePassword', () => {
   it('renders a change password component', () => {
@@ -28,15 +27,23 @@ describe('ChangePassword', () => {
           loading: false,
         },
       },
+      content: {
+        data: {},
+        create: {
+          loading: false,
+          loaded: true,
+        },
+      },
     });
-    const component = renderer.create(
+    const { container } = render(
       <Provider store={store}>
         <MemoryRouter>
           <ChangePassword location={{ pathname: '/blog' }} />
+          <div id="toolbar"></div>
         </MemoryRouter>
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+
+    expect(container).toMatchSnapshot();
   });
 });

@@ -15,6 +15,7 @@ myst:
 i18n
 best-practices
 theme
+public-folder
 ```
 
 There are several advanced scenarios where we might want to have more control
@@ -372,20 +373,8 @@ changed, to enable a custom Semantic theme inside the add-on:
 
 
 ```js
-const analyzerPlugin = {
-  name: 'bundle-analyzer',
-  options: {
-    analyzerHost: '0.0.0.0',
-    analyzerMode: 'static',
-    generateStatsFile: true,
-    statsFilename: 'stats.json',
-    reportFilename: 'reports.html',
-    openAnalyzer: false,
-  },
-};
-
 const plugins = (defaultPlugins) => {
-  return defaultPlugins.concat([analyzerPlugin]);
+  return defaultPlugins;
 };
 const modify = (config, { target, dev }, webpack) => {
   const themeConfigPath = `${__dirname}/theme/theme.config`;

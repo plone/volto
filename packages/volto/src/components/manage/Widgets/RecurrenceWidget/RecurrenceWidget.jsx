@@ -6,7 +6,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
-//import { RRule, RRuleSet, rrulestr } from 'rrule';
 import { connect } from 'react-redux';
 
 import cx from 'classnames';
@@ -22,7 +21,9 @@ import {
   Header,
 } from 'semantic-ui-react';
 
-import { SelectWidget, Icon, DatetimeWidget } from '@plone/volto/components';
+import { Icon } from '@plone/volto/components';
+import DatetimeWidget from '@plone/volto/components/manage/Widgets/DatetimeWidget';
+import SelectWidget from '@plone/volto/components/manage/Widgets/SelectWidget';
 import { toBackendLang } from '@plone/volto/helpers';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
@@ -795,7 +796,7 @@ class RecurrenceWidget extends Component {
         id={`${fieldSet || 'field'}-${id}`}
       >
         <Grid>
-          <Grid.Row stretched>
+          <Grid.Row stretched verticalAlign="middle">
             <Grid.Column width="4">
               <div className="wrapper">
                 <label htmlFor={`field-${id}`}>{title}</label>

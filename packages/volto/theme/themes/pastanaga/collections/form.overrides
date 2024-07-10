@@ -6,6 +6,10 @@
   margin: 0;
 }
 
+.ui.form .inline.field.overwritten input {
+  background-color: rgb(#edc3c2);
+}
+
 .ui.form .inline.field.help .wrapper {
   border-bottom: none;
 }
@@ -147,13 +151,13 @@
 .ui.form .inline.field .link-form-container {
   .wrapper {
     display: flex;
-    border-bottom: 1px solid @lightGreyBorderColor;
 
     .ui.input.input-anchorlink-theme {
       vertical-align: unset;
 
       input {
-        height: unset;
+        width: 100%;
+        height: unset; // input is only 40px and form.overrides sets height to 60px
       }
     }
   }

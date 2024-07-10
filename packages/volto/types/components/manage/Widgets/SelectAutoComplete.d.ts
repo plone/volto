@@ -1,7 +1,6 @@
-export const SelectAutoCompleteComponent: import("react").FC<import("react-intl").WithIntlProps<any>> & {
-    WrappedComponent: import("react").ComponentType<any>;
+export const SelectAutoCompleteComponent: React.FC<import("react-intl").WithIntlProps<any>> & {
+    WrappedComponent: React.ComponentType<any>;
 };
-declare const _default: import("react").ForwardRefExoticComponent<Pick<import("react-intl").WithIntlProps<import("react-intl").WrappedComponentProps<string>>, string> & import("react").RefAttributes<import("react").ComponentType<import("react-intl").WrappedComponentProps<string>>>> & {
-    WrappedComponent: import("react").ComponentType<import("react-intl").WrappedComponentProps<string>>;
-};
+declare const _default: any;
 export default _default;
+import React from 'react';

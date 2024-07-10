@@ -1,93 +1,92 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Rules renders rules control panel control 1`] = `
-<div
-  id="page-rules"
->
+<div>
   <div
-    className="ui container"
+    id="page-rules"
   >
-    <article
-      id="content"
+    <div
+      class="ui container"
     >
-      <div
-        className="ui raised segments"
+      <article
+        id="content"
       >
         <div
-          className="ui segment primary"
-        >
-          Content Rules
-        </div>
-        <div
-          className="ui segment secondary"
-        >
-          Use the form below to define, change or remove content rules. Rules will automatically perform actions on content when certain triggers take place. After defining rules, you may want to go to a folder to assign them, using the 'rules' item in the actions menu.
-        </div>
-        <div
-          className="ui segment"
+          class="ui raised segments"
         >
           <div
-            className="ui small header"
+            class="ui segment primary"
           >
-            Filter Rules:
+            Content Rules
           </div>
-          <form
-            className="ui form"
-            onSubmit={[Function]}
+          <div
+            class="ui segment secondary"
+          >
+            Use the form below to define, change or remove content rules. Rules will automatically perform actions on content when certain triggers take place. After defining rules, you may want to go to a folder to assign them, using the 'rules' item in the actions menu.
+          </div>
+          <div
+            class="ui segment"
           >
             <div
-              style={
-                Object {
-                  "display": "flex",
-                  "flexWrap": "wrap",
-                }
-              }
-            />
-          </form>
-          <table
-            className="ui table"
-          >
-            <tbody
-              className=""
+              class="ui small header"
             >
-              <tr
-                className=""
+              Filter Rules:
+            </div>
+            <form
+              class="ui form"
+            >
+              <div
+                style="display: flex; flex-wrap: wrap;"
+              />
+            </form>
+            <table
+              class="ui table"
+            >
+              <tbody
+                class=""
               >
-                <th
-                  className=""
+                <tr
+                  class=""
                 >
-                  Content Rule
-                </th>
-                <th
-                  className=""
-                >
-                  Event
-                </th>
-                <th
-                  className=""
-                >
-                  Status
-                </th>
-                <th
-                  className=""
-                >
-                  Actions
-                </th>
-              </tr>
-            </tbody>
-          </table>
-          <button
-            className="ui primary button"
-            onClick={[Function]}
-          >
-            Add content rule
-          </button>
+                  <th
+                    class=""
+                  >
+                    Content Rule
+                  </th>
+                  <th
+                    class=""
+                  >
+                    Event
+                  </th>
+                  <th
+                    class=""
+                  >
+                    Status
+                  </th>
+                  <th
+                    class=""
+                  >
+                    Actions
+                  </th>
+                </tr>
+              </tbody>
+            </table>
+            <button
+              class="ui primary button"
+            >
+              Add content rule
+            </button>
+          </div>
         </div>
-      </div>
-    </article>
+      </article>
+    </div>
   </div>
   <div
-    id="Portal"
-  />
+    id="toolbar"
+  >
+    <div
+      id="Portal"
+    />
+  </div>
 </div>
 `;

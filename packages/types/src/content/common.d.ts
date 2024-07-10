@@ -2,6 +2,7 @@ import type { BreadcrumbsResponse } from '../services/breadcrumbs';
 import type { NavigationResponse } from '../services/navigation';
 import type { ActionsResponse } from '../services/actions';
 import type { GetTypesResponse } from '../services/types';
+import type { GetNavrootResponse } from '../services/navroot';
 import type { GetAliasesResponse } from '../services/aliases';
 import type { ContextNavigationResponse } from '../services/contextnavigation';
 import type { WorkflowResponse } from '../services/workflow';
@@ -13,6 +14,7 @@ export interface Expanders {
   breadcrumbs: BreadcrumbsResponse;
   contextnavigation: ContextNavigationResponse;
   navigation: NavigationResponse;
+  navroot: GetNavrootResponse;
   types: GetTypesResponse;
   workflow: WorkflowResponse;
 }
@@ -32,8 +34,8 @@ export type RelatedItem = {
   '@type': string;
   UID: string;
   description: string;
-  image_field: unknown;
-  image_scales: unknown;
+  image_field: string;
+  image_scales: Record<string, Image> | null;
   review_state: string;
   title: string;
 };
@@ -44,7 +46,7 @@ export type ImageScale = {
   width: number;
 };
 
-export type PreviewImage = {
+export type Image = {
   'content-type': string;
   download: string;
   filename: string;

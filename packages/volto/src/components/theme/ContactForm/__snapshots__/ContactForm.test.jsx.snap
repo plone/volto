@@ -1,154 +1,76 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Contact form renders a contact form 1`] = `
-<div
-  id="contact-form"
->
+<div>
   <div
-    className="ui container"
-    id="view"
+    id="contact-form"
   >
     <div
-      className="ui icon negative attached message"
+      class="ui container"
+      id="view"
     >
-      <i
-        aria-hidden="true"
-        className="warning icon"
-        onClick={[Function]}
-      />
       <div
-        className="content"
+        class="ui icon negative attached message"
       >
+        <i
+          aria-hidden="true"
+          class="warning icon"
+        />
         <div
-          className="header"
-        >
-          Error
-        </div>
-      </div>
-    </div>
-    <div
-      className="ui container"
-    >
-      <form
-        className="ui form"
-        method="post"
-        onSubmit={[Function]}
-      >
-        <fieldset
-          className="invisible"
+          class="content"
         >
           <div
-            className="ui raised segments"
+            class="header"
           >
-            <div
-              className="ui segment"
-            >
-              <div
-                className="ui segment primary"
-              >
-                <h1
-                  style={
-                    Object {
-                      "fontSize": "16px",
-                    }
-                  }
-                >
-                   
-                  Contact form
-                </h1>
-              </div>
-              <div
-                className="mocked-default-widget"
-                id="mocked-field-name"
-              >
-                Name
-                 - 
-                No description
-              </div>
-              <div
-                className="mocked-default-widget"
-                id="mocked-field-from"
-              >
-                From
-                 - 
-                No description
-              </div>
-              <div
-                className="mocked-default-widget"
-                id="mocked-field-subject"
-              >
-                Subject
-                 - 
-                No description
-              </div>
-              <div
-                className="mocked-textarea-widget"
-                id="mocked-field-message"
-              >
-                Message
-                 - 
-                No description
-              </div>
-            </div>
-            <div
-              className="ui clearing segment actions"
-            >
-              <button
-                aria-label="Send"
-                className="ui basic primary right floated button"
-                onClick={[Function]}
-                title="Send"
-                type="submit"
-              >
-                <svg
-                  className="icon circled"
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": undefined,
-                    }
-                  }
-                  onClick={null}
-                  style={
-                    Object {
-                      "fill": "currentColor",
-                      "height": "30px",
-                      "width": "auto",
-                    }
-                  }
-                  viewBox=""
-                  xmlns=""
-                />
-              </button>
-              <button
-                aria-label="Cancel"
-                className="ui basic secondary right floated button"
-                onClick={[Function]}
-                title="Cancel"
-              >
-                <svg
-                  className="icon circled"
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": undefined,
-                    }
-                  }
-                  onClick={null}
-                  style={
-                    Object {
-                      "fill": "currentColor",
-                      "height": "30px",
-                      "width": "auto",
-                    }
-                  }
-                  viewBox=""
-                  xmlns=""
-                />
-              </button>
-            </div>
+            Error
           </div>
-        </fieldset>
-      </form>
+        </div>
+      </div>
+      <div
+        data-schema="{
+  \\"fieldsets\\": [
+    {
+      \\"fields\\": [
+        \\"name\\",
+        \\"from\\",
+        \\"subject\\",
+        \\"message\\"
+      ],
+      \\"id\\": \\"default\\",
+      \\"title\\": \\"Default\\"
+    }
+  ],
+  \\"properties\\": {
+    \\"name\\": {
+      \\"title\\": \\"Name\\",
+      \\"type\\": \\"string\\"
+    },
+    \\"from\\": {
+      \\"title\\": \\"From\\",
+      \\"type\\": \\"email\\"
+    },
+    \\"subject\\": {
+      \\"title\\": \\"Subject\\",
+      \\"type\\": \\"string\\"
+    },
+    \\"message\\": {
+      \\"title\\": \\"Message\\",
+      \\"type\\": \\"string\\",
+      \\"widget\\": \\"textarea\\"
+    }
+  },
+  \\"required\\": [
+    \\"from\\",
+    \\"message\\"
+  ]
+}"
+        id="Form"
+      />
     </div>
+  </div>
+  <div
+    id="toolbar"
+  >
     <div
       id="Portal"
     />
@@ -157,157 +79,79 @@ exports[`Contact form renders a contact form 1`] = `
 `;
 
 exports[`Contact form renders a contact form with error message 1`] = `
-<div
-  id="contact-form"
->
+<div>
   <div
-    className="ui container"
-    id="view"
+    id="contact-form"
   >
     <div
-      className="ui icon negative attached message"
+      class="ui container"
+      id="view"
     >
-      <i
-        aria-hidden="true"
-        className="warning icon"
-        onClick={[Function]}
-      />
       <div
-        className="content"
+        class="ui icon negative attached message"
       >
+        <i
+          aria-hidden="true"
+          class="warning icon"
+        />
         <div
-          className="header"
-        >
-          Error
-        </div>
-        <p>
-          Error foo
-        </p>
-      </div>
-    </div>
-    <div
-      className="ui container"
-    >
-      <form
-        className="ui form"
-        method="post"
-        onSubmit={[Function]}
-      >
-        <fieldset
-          className="invisible"
+          class="content"
         >
           <div
-            className="ui raised segments"
+            class="header"
           >
-            <div
-              className="ui segment"
-            >
-              <div
-                className="ui segment primary"
-              >
-                <h1
-                  style={
-                    Object {
-                      "fontSize": "16px",
-                    }
-                  }
-                >
-                   
-                  Contact form
-                </h1>
-              </div>
-              <div
-                className="mocked-default-widget"
-                id="mocked-field-name"
-              >
-                Name
-                 - 
-                No description
-              </div>
-              <div
-                className="mocked-default-widget"
-                id="mocked-field-from"
-              >
-                From
-                 - 
-                No description
-              </div>
-              <div
-                className="mocked-default-widget"
-                id="mocked-field-subject"
-              >
-                Subject
-                 - 
-                No description
-              </div>
-              <div
-                className="mocked-textarea-widget"
-                id="mocked-field-message"
-              >
-                Message
-                 - 
-                No description
-              </div>
-            </div>
-            <div
-              className="ui clearing segment actions"
-            >
-              <button
-                aria-label="Send"
-                className="ui basic primary right floated button"
-                onClick={[Function]}
-                title="Send"
-                type="submit"
-              >
-                <svg
-                  className="icon circled"
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": undefined,
-                    }
-                  }
-                  onClick={null}
-                  style={
-                    Object {
-                      "fill": "currentColor",
-                      "height": "30px",
-                      "width": "auto",
-                    }
-                  }
-                  viewBox=""
-                  xmlns=""
-                />
-              </button>
-              <button
-                aria-label="Cancel"
-                className="ui basic secondary right floated button"
-                onClick={[Function]}
-                title="Cancel"
-              >
-                <svg
-                  className="icon circled"
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": undefined,
-                    }
-                  }
-                  onClick={null}
-                  style={
-                    Object {
-                      "fill": "currentColor",
-                      "height": "30px",
-                      "width": "auto",
-                    }
-                  }
-                  viewBox=""
-                  xmlns=""
-                />
-              </button>
-            </div>
+            Error
           </div>
-        </fieldset>
-      </form>
+          <p>
+            Error foo
+          </p>
+        </div>
+      </div>
+      <div
+        data-schema="{
+  \\"fieldsets\\": [
+    {
+      \\"fields\\": [
+        \\"name\\",
+        \\"from\\",
+        \\"subject\\",
+        \\"message\\"
+      ],
+      \\"id\\": \\"default\\",
+      \\"title\\": \\"Default\\"
+    }
+  ],
+  \\"properties\\": {
+    \\"name\\": {
+      \\"title\\": \\"Name\\",
+      \\"type\\": \\"string\\"
+    },
+    \\"from\\": {
+      \\"title\\": \\"From\\",
+      \\"type\\": \\"email\\"
+    },
+    \\"subject\\": {
+      \\"title\\": \\"Subject\\",
+      \\"type\\": \\"string\\"
+    },
+    \\"message\\": {
+      \\"title\\": \\"Message\\",
+      \\"type\\": \\"string\\",
+      \\"widget\\": \\"textarea\\"
+    }
+  },
+  \\"required\\": [
+    \\"from\\",
+    \\"message\\"
+  ]
+}"
+        id="Form"
+      />
     </div>
+  </div>
+  <div
+    id="toolbar"
+  >
     <div
       id="Portal"
     />

@@ -4,6 +4,7 @@
 `plone.volto`
 [Aa]sync
 [Bb]ackend
+CommonJS
 JavaScript
 npm
 nvm

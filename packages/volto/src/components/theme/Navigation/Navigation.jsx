@@ -48,40 +48,42 @@ const Navigation = (props) => {
     }
     setisMobileMenuOpen(false);
   };
-
   return (
-    <nav className="navigation" id="navigation" aria-label="Site">
-      <div className="hamburger-wrapper mobile tablet only">
-        <button
-          className={cx('hamburger hamburger--spin', {
-            'is-active': isMobileMenuOpen,
-          })}
-          aria-label={
-            isMobileMenuOpen
-              ? intl.formatMessage(messages.closeMobileMenu, {
-                  type: type,
-                })
-              : intl.formatMessage(messages.openMobileMenu, {
-                  type: type,
-                })
-          }
-          title={
-            isMobileMenuOpen
-              ? intl.formatMessage(messages.closeMobileMenu, {
-                  type: type,
-                })
-              : intl.formatMessage(messages.openMobileMenu, {
-                  type: type,
-                })
-          }
-          type="button"
-          onClick={toggleMobileMenu}
-        >
-          <span className="hamburger-box">
-            <span className="hamburger-inner" />
-          </span>
-        </button>
-      </div>
+    <nav className="navigation" id="navigation" aria-label="Site" tabIndex="-1">
+      {items?.length ? (
+        <div className="hamburger-wrapper mobile tablet only">
+          <button
+            className={cx('hamburger hamburger--spin', {
+              'is-active': isMobileMenuOpen,
+            })}
+            aria-label={
+              isMobileMenuOpen
+                ? intl.formatMessage(messages.closeMobileMenu, {
+                    type: type,
+                  })
+                : intl.formatMessage(messages.openMobileMenu, {
+                    type: type,
+                  })
+            }
+            title={
+              isMobileMenuOpen
+                ? intl.formatMessage(messages.closeMobileMenu, {
+                    type: type,
+                  })
+                : intl.formatMessage(messages.openMobileMenu, {
+                    type: type,
+                  })
+            }
+            type="button"
+            onClick={toggleMobileMenu}
+          >
+            <span className="hamburger-box">
+              <span className="hamburger-inner" />
+            </span>
+          </button>
+        </div>
+      ) : null}
+
       <Menu
         stackable
         pointing

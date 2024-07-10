@@ -36,7 +36,7 @@ import userSession from '@plone/volto/reducers/userSession/userSession';
 
 import ErrorPage from '@plone/volto/error';
 
-import languages from '@plone/volto/constants/Languages';
+import languages from '@plone/volto/constants/Languages.cjs';
 
 import configureStore from '@plone/volto/store';
 import { ReduxAsyncConnect, loadOnServer } from './helpers/AsyncConnect';
@@ -46,7 +46,9 @@ let locales = {};
 if (config.settings) {
   config.settings.supportedLanguages.forEach((lang) => {
     const langFileName = toGettextLang(lang);
-    import('@root/../locales/' + langFileName + '.json').then((locale) => {
+    import(
+      /* @vite-ignore */ '@root/../locales/' + langFileName + '.json'
+    ).then((locale) => {
       locales = { ...locales, [toReactIntlLang(lang)]: locale.default };
     });
   });
@@ -239,7 +241,7 @@ server.get('/*', (req, res) => {
         : store.getState().content.data?.language?.token ||
           config.settings.defaultLanguage;
 
-      if (toBackendLang(initialLang) !== contentLang) {
+      if (toBackendLang(initialLang) !== contentLang && url !== '/') {
         const newLang = toReactIntlLang(
           new locale.Locales(contentLang).best(supported).toString(),
         );
@@ -272,50 +274,48 @@ server.get('/*', (req, res) => {
         });
       }
 
+      const sendHtmlResponse = (
+        res,
+        statusCode,
+        extractor,
+        markup,
+        store,
+        req,
+        config,
+      ) => {
+        res.status(statusCode).send(
+          `<!doctype html>
+        ${renderToString(
+          <Html
+            extractor={extractor}
+            markup={markup}
+            store={store}
+            criticalCss={readCriticalCss(req)}
+            apiPath={res.locals.detectedHost || config.settings.apiPath}
+            publicURL={res.locals.detectedHost || config.settings.publicURL}
+          />,
+        )}
+      `,
+        );
+      };
+
       if (context.url) {
         res.redirect(flattenToAppURL(context.url));
       } else if (context.error_code) {
         res.set({
           'Cache-Control': 'no-cache',
         });
-
-        res.status(context.error_code).send(
-          `<!doctype html>
-              ${renderToString(
-                <Html
-                  extractor={extractor}
-                  markup={markup}
-                  store={store}
-                  extractScripts={
-                    config.settings.serverConfig.extractScripts?.errorPages ||
-                    process.env.NODE_ENV !== 'production'
-                  }
-                  criticalCss={readCriticalCss(req)}
-                  apiPath={res.locals.detectedHost || config.settings.apiPath}
-                  publicURL={
-                    res.locals.detectedHost || config.settings.publicURL
-                  }
-                />,
-              )}
-            `,
+        sendHtmlResponse(
+          res,
+          context.error_code,
+          extractor,
+          markup,
+          store,
+          req,
+          config,
         );
       } else {
-        res.status(200).send(
-          `<!doctype html>
-              ${renderToString(
-                <Html
-                  extractor={extractor}
-                  markup={markup}
-                  store={store}
-                  criticalCss={readCriticalCss(req)}
-                  apiPath={res.locals.detectedHost || config.settings.apiPath}
-                  publicURL={
-                    res.locals.detectedHost || config.settings.publicURL
-                  }
-                />,
-              )}
-            `,
-        );
+        sendHtmlResponse(res, 200, extractor, markup, store, req, config);
       }
     }, errorHandler)
     .catch(errorHandler);

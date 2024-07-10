@@ -4,24 +4,18 @@ exports[`PreviewImage not renders a fallback image if showDefault prop is false 
 <img
   alt="Item title"
   className="extra"
-  item={
-    Object {
-      "@id": "http://localhost:3000/something",
-      "title": "Item title",
-    }
-  }
+  height="300"
+  src="default-image.svg"
+  width="400"
 />
 `;
 
 exports[`PreviewImage renders a fallback image 1`] = `
 <img
   alt="Item title"
-  item={
-    Object {
-      "@id": "http://localhost:3000/something",
-      "title": "Item title",
-    }
-  }
+  height="300"
+  src="default-image.svg"
+  width="400"
 />
 `;
 
@@ -29,12 +23,9 @@ exports[`PreviewImage renders a fallback image with alt prop 1`] = `
 <img
   alt="Alt prop"
   className="extra"
-  item={
-    Object {
-      "@id": "http://localhost:3000/something",
-      "title": "Item title",
-    }
-  }
+  height="300"
+  src="default-image.svg"
+  width="400"
 />
 `;
 
@@ -42,12 +33,9 @@ exports[`PreviewImage renders a fallback image with alt prop empty 1`] = `
 <img
   alt=""
   className="extra"
-  item={
-    Object {
-      "@id": "http://localhost:3000/something",
-      "title": "Item title",
-    }
-  }
+  height="300"
+  src="default-image.svg"
+  width="400"
 />
 `;
 
@@ -55,18 +43,16 @@ exports[`PreviewImage renders a fallback image with extra props 1`] = `
 <img
   alt="Item title"
   className="extra"
-  item={
-    Object {
-      "@id": "http://localhost:3000/something",
-      "title": "Item title",
-    }
-  }
+  height="300"
+  src="default-image.svg"
+  width="400"
 />
 `;
 
 exports[`PreviewImage renders a preview image 1`] = `
 <img
   alt="Item title"
+  image_field="image"
   item={
     Object {
       "@id": "http://localhost:3000/something",
@@ -97,6 +83,7 @@ exports[`PreviewImage renders a preview image with extra props 1`] = `
 <img
   alt="Item title"
   className="extra"
+  image_field="image"
   item={
     Object {
       "@id": "http://localhost:3000/something",

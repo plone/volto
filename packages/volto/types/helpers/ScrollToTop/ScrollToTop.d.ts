@@ -1,2 +1,2 @@
-declare const _default: import("react-redux").ConnectedComponent<import("react").JSXElementConstructor<never>, never>;
+declare const _default: any;
 export default _default;

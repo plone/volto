@@ -98,7 +98,7 @@ const withObjectBrowser = (WrappedComponent) =>
               <ObjectBrowserBody
                 {...this.props}
                 data={
-                  this.state.propDataName
+                  this.state.propDataName && this.props[this.state.propDataName]
                     ? this.props[this.state.propDataName]
                     : this.props.data
                 }

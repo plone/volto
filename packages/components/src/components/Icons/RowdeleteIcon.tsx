@@ -1,7 +1,8 @@
-import Icon from '../Icon/Icon';
+import React from 'react';
+import { Icon } from '../Icon/Icon';
 import type { IconPropsWithoutChildren } from '../Icon/Icon';
 
-const Rowdelete = (props: IconPropsWithoutChildren) => {
+export const RowdeleteIcon = (props: IconPropsWithoutChildren) => {
   return (
     <Icon {...props}>
       <svg
@@ -16,5 +17,3 @@ const Rowdelete = (props: IconPropsWithoutChildren) => {
     </Icon>
   );
 };
-
-export default Rowdelete;

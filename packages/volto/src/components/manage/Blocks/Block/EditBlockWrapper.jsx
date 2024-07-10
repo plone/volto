@@ -3,6 +3,7 @@ import { Icon } from '@plone/volto/components';
 import {
   blockHasValue,
   buildStyleClassNamesFromData,
+  buildStyleObjectFromData,
 } from '@plone/volto/helpers';
 import dragSVG from '@plone/volto/icons/drag.svg';
 import { Button } from 'semantic-ui-react';
@@ -34,6 +35,7 @@ const EditBlockWrapper = (props) => {
   const { intl, blockProps, draginfo, children } = props;
   const {
     allowedBlocks,
+    showRestricted,
     block,
     blocksConfig,
     selected,
@@ -57,16 +59,23 @@ const EditBlockWrapper = (props) => {
     ? data.required
     : includes(config.blocks.requiredBlocks, type);
 
-  const styles = buildStyleClassNamesFromData(data.styles);
+  const classNames = buildStyleClassNamesFromData(data.styles);
+  const style = buildStyleObjectFromData(data.styles);
+
+  // We need to merge the StyleWrapper styles with the draggable props from b-D&D
+  const styleMergedWithDragProps = {
+    ...draginfo.draggableProps,
+    style: { ...style, ...draginfo.draggableProps.style },
+  };
 
   return (
     <div
       ref={draginfo.innerRef}
-      {...draginfo.draggableProps}
+      {...styleMergedWithDragProps}
       // Right now, we can have the alignment information in the styles property or in the
       // block data root, we inject the classname here for having control over the whole
       // Block Edit wrapper
-      className={cx(`block-editor-${data['@type']}`, styles, {
+      className={cx(`block-editor-${data['@type']}`, classNames, {
         [data.align]: data.align,
       })}
     >
@@ -107,6 +116,7 @@ const EditBlockWrapper = (props) => {
               }}
               onMutateBlock={onMutateBlock}
               allowedBlocks={allowedBlocks}
+              showRestricted={showRestricted}
               blocksConfig={blocksConfig}
               size="24px"
               properties={properties}

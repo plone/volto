@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 
@@ -22,17 +22,22 @@ beforeAll(() => {
   });
   config.settings.publicURL = 'https://plone.org';
 });
+global.__SERVER__ = true; // eslint-disable-line no-underscore-dangle
 
 const mockStore = configureStore();
 
-jest.mock('react-portal', () => ({
-  Portal: jest.fn(() => <div id="Portal" />),
-}));
+jest.mock('../../manage/Toolbar/Toolbar', () =>
+  jest.fn(() => <div id="Portal" />),
+);
+
 jest.mock('../SocialSharing/SocialSharing', () =>
   jest.fn(() => <div id="SocialSharing" />),
 );
 jest.mock('../Comments/Comments', () => jest.fn(() => <div id="Comments" />));
 jest.mock('../Tags/Tags', () => jest.fn(() => <div id="Tags" />));
+jest.mock('../SlotRenderer/SlotRenderer', () =>
+  jest.fn(() => <div id="SlotRenderer" />),
+);
 jest.mock('../ContentMetadataTags/ContentMetadataTags', () =>
   jest.fn(() => <div id="ContentMetadataTags" />),
 );
@@ -147,13 +152,14 @@ describe('View', () => {
         messages: {},
       },
     });
-    const component = renderer.create(
+    const { container } = render(
       <Provider store={store}>
         <View location={{ pathname: '/test' }} />
+        <div id="toolbar"></div>
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+
+    expect(container).toMatchSnapshot();
   });
 
   it('renders a summary view', () => {
@@ -167,13 +173,14 @@ describe('View', () => {
         messages: {},
       },
     });
-    const component = renderer.create(
+    const { container } = render(
       <Provider store={store}>
         <View location={{ pathname: '/test' }} />
+        <div id="toolbar"></div>
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+
+    expect(container).toMatchSnapshot();
   });
 
   it('renders a tabular view', () => {
@@ -187,13 +194,14 @@ describe('View', () => {
         messages: {},
       },
     });
-    const component = renderer.create(
+    const { container } = render(
       <Provider store={store}>
         <View location={{ pathname: '/test' }} />
+        <div id="toolbar"></div>
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+
+    expect(container).toMatchSnapshot();
   });
 
   it('renders a document view', () => {
@@ -207,13 +215,14 @@ describe('View', () => {
         messages: {},
       },
     });
-    const component = renderer.create(
+    const { container } = render(
       <Provider store={store}>
         <View location={{ pathname: '/test' }} />
+        <div id="toolbar"></div>
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+
+    expect(container).toMatchSnapshot();
   });
 
   it('renders a new view element if the @id changed', () => {
@@ -235,16 +244,18 @@ describe('View', () => {
         messages: {},
       },
     });
-    const component = renderer.create(
+    const { rerender } = render(
       <Provider store={store}>
         <View location={{ pathname: '/a' }} />
+        <div id="toolbar"></div>
       </Provider>,
     );
     expect(instanceCount).toBe(1);
     store.getState().content.data['@id'] = '/b';
-    component.update(
+    rerender(
       <Provider store={store}>
         <View location={{ pathname: '/b' }} />
+        <div id="toolbar"></div>
       </Provider>,
     );
     expect(instanceCount).toBe(2);

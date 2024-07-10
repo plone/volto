@@ -30,6 +30,7 @@ export {
   removeProtocol,
   URLUtils,
   flattenScales,
+  getFieldURL,
 } from '@plone/volto/helpers/Url/Url';
 export { generateRobots } from '@plone/volto/helpers/Robots/Robots';
 export {
@@ -58,9 +59,16 @@ export {
   blocksFormGenerator,
   buildStyleClassNamesFromData,
   buildStyleClassNamesExtenders,
+  buildStyleObjectFromData,
   getPreviousNextBlock,
   findBlocks,
+  getBlocksHierarchy,
+  moveBlockEnhanced,
 } from '@plone/volto/helpers/Blocks/Blocks';
+export {
+  getSimpleDefaultBlocks,
+  getDefaultBlocks,
+} from '@plone/volto/helpers/Blocks/defaultBlocks';
 export { default as BodyClass } from '@plone/volto/helpers/BodyClass/BodyClass';
 export { default as ScrollToTop } from '@plone/volto/helpers/ScrollToTop/ScrollToTop';
 export {
@@ -76,6 +84,7 @@ export { default as langmap } from './LanguageMap/LanguageMap';
 export { default as Helmet } from './Helmet/Helmet';
 export { default as FormValidation } from './FormValidation/FormValidation';
 export { validateFileUploadSize } from './FormValidation/FormValidation';
+export { tryParseJSON } from './FormValidation/FormValidation';
 export {
   difference,
   getColor,
@@ -92,6 +101,8 @@ export {
   hasApiExpander,
   replaceItemOfArray,
   cloneDeepSchema,
+  insertInArray,
+  removeFromArray,
   arrayRange,
   reorderArray,
   isInteractiveElement,
@@ -110,7 +121,12 @@ export {
   composeSchema,
 } from './Extensions';
 export { asyncConnect } from './AsyncConnect';
-export { userHasRoles } from './User/User';
+export {
+  userHasRoles,
+  isManager,
+  canAssignGroup,
+  canAssignRole,
+} from './User/User';
 // export { injectLazyLibs } from './Loadable/Loadable';
 export { useDetectClickOutside } from './Utils/useDetectClickOutside';
 export { useEvent } from './Utils/useEvent';
@@ -124,3 +140,4 @@ export {
   getWorkflowOptions,
 } from './Workflows/Workflows';
 export { getSiteAsyncPropExtender } from './Site';
+export { ContentTypeCondition } from './Slots';

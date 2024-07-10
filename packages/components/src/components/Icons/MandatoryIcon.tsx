@@ -1,7 +1,8 @@
-import Icon from '../Icon/Icon';
+import React from 'react';
+import { Icon } from '../Icon/Icon';
 import type { IconPropsWithoutChildren } from '../Icon/Icon';
 
-const Mandatory = (props: IconPropsWithoutChildren) => {
+export const MandatoryIcon = (props: IconPropsWithoutChildren) => {
   return (
     <Icon {...props}>
       <svg
@@ -19,5 +20,3 @@ const Mandatory = (props: IconPropsWithoutChildren) => {
     </Icon>
   );
 };
-
-export default Mandatory;

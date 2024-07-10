@@ -110,6 +110,10 @@ export const messages = defineMessages({
     id: 'Add group',
     defaultMessage: 'Add group',
   },
+  groupDeleted: {
+    id: 'Group deleted',
+    defaultMessage: 'Group deleted',
+  },
   addUserFormUsernameTitle: {
     id: 'Username',
     defaultMessage: 'Username',
@@ -212,6 +216,10 @@ export const messages = defineMessages({
   userCreated: {
     id: 'User created',
     defaultMessage: 'User created',
+  },
+  userDeleted: {
+    id: 'User deleted',
+    defaultMessage: 'User deleted',
   },
   groupCreated: {
     id: 'Group created',

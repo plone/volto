@@ -3,7 +3,7 @@
  * @class Wrapper
  * @extends Component
  */
-export default class Wrapper extends Component<any, any, any> {
+export default class Wrapper extends React.Component<any, any, any> {
     /**
      * Property types.
      * @property {Object} propTypes Property types.
@@ -1049,9 +1049,9 @@ export default class Wrapper extends Component<any, any, any> {
         };
         lazyLibraries: {};
     };
-    render(): JSX.Element;
+    render(): import("react/jsx-runtime").JSX.Element;
 }
-export class RealStoreWrapper extends Component<any, any, any> {
+export class RealStoreWrapper extends React.Component<any, any, any> {
     /**
      * Property types.
      * @property {Object} propTypes Property types.
@@ -2097,11 +2097,11 @@ export class RealStoreWrapper extends Component<any, any, any> {
         };
         lazyLibraries: {};
     };
-    render(): JSX.Element;
+    render(): import("react/jsx-runtime").JSX.Element;
 }
 export function FormUndoWrapper({ initialState, children, showControls, }: {
     initialState?: {};
     children: any;
     showControls?: boolean;
-}): JSX.Element;
-import { Component } from 'react';
+}): import("react/jsx-runtime").JSX.Element;
+import React from 'react';

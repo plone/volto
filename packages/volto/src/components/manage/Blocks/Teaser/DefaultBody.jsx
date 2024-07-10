@@ -18,7 +18,7 @@ const messages = defineMessages({
 });
 
 const TeaserDefaultTemplate = (props) => {
-  const { className, data, isEditMode } = props;
+  const { className, data, isEditMode, style } = props;
   const intl = useIntl();
   const href = data.href?.[0];
   const image = data.preview_image?.[0];
@@ -27,7 +27,7 @@ const TeaserDefaultTemplate = (props) => {
   const { openExternalLinkInNewTab } = config.settings;
 
   return (
-    <div className={cx('block teaser', className)}>
+    <div className={cx('block teaser', className)} style={style}>
       <>
         {!href && isEditMode && (
           <Message>
