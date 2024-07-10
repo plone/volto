@@ -57,9 +57,11 @@ clean: ## Clean development environment
 	rm -rf node_modules
 
 .PHONY: install
-install: build-deps ## Set up development environment
+install: ## Set up development environment
 	# Setup ESlint for VSCode
 	node packages/scripts/vscodesettings.js
+	pnpm i
+	make build-deps
 
 ##### Build
 
