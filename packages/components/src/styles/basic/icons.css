@@ -1,0 +1,108 @@
+@import './theme.css';
+
+:root {
+  /* These has to be mapped to global css custom properties based on the SG scales */
+  --quanta-icon-default-size-s: 18px;
+  --quanta-icon-default-size-m: 24px;
+  --quanta-icon-size-s: var(--quanta-icon-default-size-s);
+  --quanta-icon-size-m: var(--quanta-icon-default-size-m);
+  --quanta-icon-size-xxs: calc(var(--quanta-icon-size-s) / 2);
+  --quanta-icon-size-xs: calc(var(--quanta-icon-size-m) / 2);
+  --quanta-icon-size-l: calc(var(--quanta-icon-size-s) * 2);
+  --quanta-icon-size-xl: calc(var(--quanta-icon-size-m) * 2);
+  --quanta-icon-size-xxl: calc(var(--quanta-icon-size-m) * 3);
+
+  --quanta-color-icon-informative: var(--quanta-sapphire);
+  --quanta-color-icon-negative: var(--quanta-candy);
+  --quanta-color-icon-positive: var(--quanta-neon);
+  --quanta-color-icon-notice: var(--quanta-lemmon);
+}
+
+.q.icon {
+  display: inline-block;
+
+  /* Inherit the text color */
+  color: inherit;
+
+  /* Fill should match the current text color */
+  fill: currentColor;
+
+  /* Hide the svg overflow in IE. */
+  &:not(:root) {
+    overflow: hidden;
+  }
+
+  /* Don't catch clicks or hover, otherwise they may not escape the SVG */
+  pointer-events: none;
+}
+@media (forced-colors: active) {
+  .q.icon {
+    /* Automatically adjust the SVG to pick up the text color for High Contrast mode */
+    forced-color-adjust: auto;
+  }
+}
+
+.q {
+  &.icon--sizeXXS {
+    &,
+    img,
+    svg {
+      block-size: var(--quanta-icon-size-xxs);
+      inline-size: var(--quanta-icon-size-xxs);
+    }
+  }
+
+  &.icon--sizeXS {
+    &,
+    img,
+    svg {
+      block-size: var(--quanta-icon-size-xs);
+      inline-size: var(--quanta-icon-size-xs);
+    }
+  }
+
+  &.icon--sizeS {
+    &,
+    img,
+    svg {
+      block-size: var(--quanta-icon-size-s);
+      inline-size: var(--quanta-icon-size-s);
+    }
+  }
+
+  &.icon--sizeM {
+    &,
+    img,
+    svg {
+      block-size: var(--quanta-icon-size-m);
+      inline-size: var(--quanta-icon-size-m);
+    }
+  }
+
+  &.icon--sizeL {
+    &,
+    img,
+    svg {
+      block-size: var(--quanta-icon-size-l);
+      inline-size: var(--quanta-icon-size-l);
+    }
+  }
+
+  &.icon--sizeXL {
+    &,
+    img,
+    svg {
+      block-size: var(--quanta-icon-size-xl);
+      inline-size: var(--quanta-icon-size-xl);
+    }
+  }
+
+  &.icon--sizeXXL {
+    &,
+    img,
+    svg {
+      block-size: var(--quanta-icon-size-xxl);
+      inline-size: var(--quanta-icon-size-xxl);
+    }
+  }
+}
