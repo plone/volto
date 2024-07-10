@@ -10,13 +10,20 @@ exports[`SocialSharing renders a social sharing component 1`] = `
   }
 >
   <br />
-  <div
-    className="SocialMediaShareButton SocialMediaShareButton--facebook"
+  <button
+    className="react-share__ShareButton"
     onClick={[Function]}
-    onKeyPress={[Function]}
-    role="button"
-    style={Object {}}
-    tabIndex="0"
+    quote="Title"
+    style={
+      Object {
+        "backgroundColor": "transparent",
+        "border": "none",
+        "color": "inherit",
+        "cursor": "pointer",
+        "font": "inherit",
+        "padding": 0,
+      }
+    }
   >
     <button
       className="ui facebook mini button"
@@ -24,14 +31,21 @@ exports[`SocialSharing renders a social sharing component 1`] = `
     >
       Facebook
     </button>
-  </div>
-  <div
-    className="SocialMediaShareButton SocialMediaShareButton--twitter"
+  </button>
+  <button
+    className="react-share__ShareButton"
+    description="Description"
     onClick={[Function]}
-    onKeyPress={[Function]}
-    role="button"
-    style={Object {}}
-    tabIndex="0"
+    style={
+      Object {
+        "backgroundColor": "transparent",
+        "border": "none",
+        "color": "inherit",
+        "cursor": "pointer",
+        "font": "inherit",
+        "padding": 0,
+      }
+    }
   >
     <button
       className="ui twitter mini button"
@@ -39,7 +53,7 @@ exports[`SocialSharing renders a social sharing component 1`] = `
     >
       Twitter
     </button>
-  </div>
+  </button>
   <br />
   <br />
 </div>
