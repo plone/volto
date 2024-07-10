@@ -790,9 +790,9 @@ jobs:
           config: baseUrl=http://localhost/foo
           env: prefixPath=/foo
           start: |
-            make start-test-acceptance-server
-            make start-test-acceptance-frontend-prefixed
-            make start-test-acceptance-webserver-prefixed
+            make ci-acceptance-backend-start
+            make prefixed-acceptance-frontend-prod-start
+            make deployment-prefixed-acceptance-web-server-start
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000/foo http://localhost/foo'
 
       # Upload Cypress screenshots
@@ -875,9 +875,9 @@ jobs:
           config: baseUrl=http://localhost/foo
           env: prefixPath=/foo
           start: |
-            make start-test-acceptance-server
-            make start-test-acceptance-frontend-prefixed
-            make start-test-acceptance-webserver-prefixed
+            make ci-acceptance-backend-start
+            make prefixed-acceptance-frontend-prod-start
+            make deployment-prefixed-acceptance-web-server-start
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000/foo http://localhost/foo'
 
       # Upload Cypress screenshots
@@ -960,9 +960,9 @@ jobs:
           config: baseUrl=http://localhost/foo
           env: prefixPath=/foo
           start: |
-            make start-test-acceptance-server
-            make start-test-acceptance-frontend-prefixed
-            make start-test-acceptance-webserver-prefixed
+            make ci-acceptance-backend-start
+            make prefixed-acceptance-frontend-prod-start
+            make deployment-prefixed-acceptance-web-server-start
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000/foo http://localhost/foo'
 
       # Upload Cypress screenshots
@@ -1045,9 +1045,9 @@ jobs:
           config: baseUrl=http://localhost/foo
           env: prefixPath=/foo
           start: |
-            make start-test-acceptance-server
-            make start-test-acceptance-frontend-prefixed
-            make start-test-acceptance-webserver-prefixed
+            make ci-acceptance-backend-start
+            make prefixed-acceptance-frontend-prod-start
+            make deployment-prefixed-acceptance-web-server-start
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000/foo http://localhost/foo'
 
       # Upload Cypress screenshots
@@ -1130,9 +1130,9 @@ jobs:
           config: baseUrl=http://localhost/foo
           env: prefixPath=/foo
           start: |
-            make start-test-acceptance-server
-            make start-test-acceptance-frontend-prefixed
-            make start-test-acceptance-webserver-prefixed
+            make ci-acceptance-backend-start
+            make prefixed-acceptance-frontend-prod-start
+            make deployment-prefixed-acceptance-web-server-start
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000/foo http://localhost/foo'
 
       # Upload Cypress screenshots
@@ -1215,9 +1215,9 @@ jobs:
           config: baseUrl=http://localhost/foo
           env: prefixPath=/foo
           start: |
-            make start-test-acceptance-server
-            make start-test-acceptance-frontend-prefixed
-            make start-test-acceptance-webserver-prefixed
+            make ci-acceptance-backend-start
+            make prefixed-acceptance-frontend-prod-start
+            make deployment-prefixed-acceptance-web-server-start
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000/foo http://localhost/foo'
 
       # Upload Cypress screenshots
@@ -1300,9 +1300,9 @@ jobs:
           config: baseUrl=http://localhost/foo
           env: prefixPath=/foo
           start: |
-            make start-test-acceptance-server-seamless-multilingual
-            make start-test-acceptance-frontend-prefixed-multilingual
-            make start-test-acceptance-webserver-prefixed
+            make deployment-multilingual-acceptance-backend-start
+            make prefixed-multilingual-acceptance-frontend-prod-start
+            make deployment-prefixed-acceptance-web-server-start
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000/foo http://localhost/foo'
 
       # Upload Cypress screenshots

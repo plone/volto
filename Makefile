@@ -292,21 +292,21 @@ multilingual-ci-acceptance-test-run-all: ## With a single command, run the backe
 
 ######### Prefixed Core Acceptance tests
 
-.PHONY: start-test-acceptance-frontend-prefixed
-start-test-acceptance-frontend-prefixed: ## Start the prefixed Core Acceptance Frontend Fixture
-	$(MAKE) -C "./packages/volto/" start-test-acceptance-frontend-prefixed
+.PHONY: prefixed-acceptance-frontend-prod-start
+prefixed-acceptance-frontend-prod-start: ## Start the prefixed Core Acceptance Frontend Fixture
+	$(MAKE) -C "./packages/volto/" prefixed-acceptance-frontend-prod-start
 
-.PHONY: full-test-acceptance-prefixed
-full-test-acceptance-prefixed: ## Runs prefixed Core Full Acceptance Testing in headless mode
-	$(MAKE) -C "./packages/volto/" full-test-acceptance-prefixed
+.PHONY: prefixed-ci-acceptance-test-run-all
+prefixed-ci-acceptance-test-run-all: ## Runs prefixed Core Full Acceptance Testing in headless mode
+	$(MAKE) -C "./packages/volto/" prefixed-ci-acceptance-test-run-all
 
-.PHONY: test-acceptance-prefixed
-test-acceptance-prefixed: ## Start Prefixed Cypress Acceptance Tests
-	$(MAKE) -C "./packages/volto/" test-acceptance-prefixed
+.PHONY: prefixed-acceptance-test
+prefixed-acceptance-test: ## Start Prefixed Cypress Acceptance Tests
+	$(MAKE) -C "./packages/volto/" prefixed-acceptance-test
 
-.PHONY: start-test-acceptance-webserver-prefixed
-start-test-acceptance-webserver-prefixed: ## Start the prefixed webserver
-	$(MAKE) -C "./packages/volto/" start-test-acceptance-webserver-prefixed
+.PHONY: deployment-prefixed-acceptance-web-server-start
+deployment-prefixed-acceptance-web-server-start: ## Start the prefixed webserver
+	$(MAKE) -C "./packages/volto/" deployment-prefixed-acceptance-web-server-start
 
 ######### Deployment Multilingual Acceptance tests
 

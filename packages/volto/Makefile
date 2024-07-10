@@ -259,26 +259,26 @@ working-copy-ci-acceptance-test-run-all: ## With a single command, run the backe
 
 ######### Prefixed Core Acceptance tests
 
-.PHONY: start-test-acceptance-frontend-prefixed
-start-test-acceptance-frontend-prefixed: build-deps ## Start the prefixed Core Acceptance Frontend Fixture
+.PHONY: prefixed-acceptance-frontend-prod-start
+prefixed-acceptance-frontend-prod-start: build-deps ## Start the prefixed Core Acceptance Frontend Fixture
 	RAZZLE_PREFIX_PATH=/foo RAZZLE_API_PATH=http://localhost/foo pnpm build && pnpm start:prod
 
-.PHONY: full-test-acceptance-prefixed
-full-test-acceptance-prefixed: ## Runs prefixed Core Full Acceptance Testing in headless mode
-	$(NODEBIN)/start-test "make start-test-acceptance-server" http-get://localhost:55001/plone "make start-test-acceptance-frontend-prefixed" http://localhost:3000 "make test-acceptance-headless"
+.PHONY: prefixed-ci-acceptance-test-run-all
+prefixed-ci-acceptance-test-run-all: ## Runs prefixed Core Full Acceptance Testing in headless mode
+	$(NODEBIN)/start-test "make ci-acceptance-backend-start" http-get://localhost:55001/plone "make prefixed-acceptance-frontend-prod-start" http://localhost:3000 "make ci-acceptance-test"
 
-.PHONY: test-acceptance-prefixed
-test-acceptance-prefixed: ## Start Prefixed Cypress Acceptance Tests
+.PHONY: prefixed-acceptance-test
+prefixed-acceptance-test: ## Start Prefixed Cypress Acceptance Tests
 	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config baseUrl='http://localhost/foo' --env prefixPath="/foo"
 
-.PHONY: start-test-acceptance-webserver-prefixed
-start-test-acceptance-webserver-prefixed: ## Start the prefixed webserver
+.PHONY: deployment-prefixed-acceptance-web-server-start
+deployment-prefixed-acceptance-web-server-start: ## Start the prefixed webserver
 	cd cypress/docker && docker-compose -f prefixed.yml up
 
 ######### Prefixed Multilingual Acceptance tests
 
-.PHONY: start-test-acceptance-frontend-prefixed-multilingual
-start-test-acceptance-frontend-prefixed-multilingual: build-deps ## Start the prefixed Core Acceptance Frontend Fixture
+.PHONY: prefixed-multilingual-acceptance-frontend-prod-start
+prefixed-multilingual-acceptance-frontend-prod-start: build-deps ## Start the prefixed Core Acceptance Frontend Fixture
 	ADDONS=@plone/volto-coresandbox:multilingualFixture RAZZLE_PREFIX_PATH=/foo RAZZLE_API_PATH=http://localhost/foo pnpm build && pnpm start:prod
 
 ######### Guillotina Acceptance tests
