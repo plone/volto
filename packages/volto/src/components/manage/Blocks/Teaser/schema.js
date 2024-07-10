@@ -96,7 +96,7 @@ export const TeaserSchema = ({ data, intl }) => {
       },
       preview_image: {
         title: intl.formatMessage(messages.imageOverride),
-        widget: 'image',
+        widget: 'object_browser',
         mode: 'image',
         allowExternals: true,
         selectedItemAttrs: ['image_field', 'image_scales'],
