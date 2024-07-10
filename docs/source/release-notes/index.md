@@ -17,6 +17,12 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 17.18.2 (2024-07-10)
+
+### Bugfix
+
+- Return a redirect response from Volto server-side rendering if the API request was redirected. @JeffersonBledsoe @mamico [#4854](https://github.com/plone/volto/issues/4854)
+
 ## 17.18.1 (2024-06-29)
 
 ### Bugfix
