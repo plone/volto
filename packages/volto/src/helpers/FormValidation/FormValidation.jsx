@@ -149,13 +149,35 @@ const validateFieldsPerFieldset = (
       fieldData,
     );
 
-    const mergedErrors = [...defaultFieldErrors, ...fieldErrors];
+    // Validation per field type or field widget
+    const hasSpecificValidator = field.validator;
+    let specificFieldErrors = [];
+    // test each criterion eg. maximum, isEmail, isUrl, etc
+    if (hasSpecificValidator) {
+      const specificFieldValidationCriteria = config.getComponents({
+        name: 'fieldValidator',
+        dependencies: [hasSpecificValidator],
+      });
+
+      specificFieldErrors = checkFieldErrors(
+        specificFieldValidationCriteria,
+        field,
+        fieldData,
+      );
+    }
+
+    const mergedErrors = [
+      ...defaultFieldErrors,
+      ...fieldErrors,
+      ...specificFieldErrors,
+    ];
 
     if (mergedErrors.length > 0) {
       errors[fieldId] = [
         ...(errors[fieldId] || []),
         ...defaultFieldErrors,
         ...fieldErrors,
+        ...specificFieldErrors,
       ];
     }
   });

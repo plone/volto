@@ -1,5 +1,7 @@
 import FormValidation from './FormValidation';
 import { messages } from '../MessageLabels/MessageLabels';
+import config from '@plone/volto/registry';
+import { urlValidator } from './validators';
 
 const schema = {
   properties: {
@@ -453,7 +455,69 @@ describe('FormValidation', () => {
         customField: [messages.uniqueItems.defaultMessage],
       });
     });
+
+    it('default - specific validator set - Errors', () => {
+      let newSchema = {
+        properties: {
+          ...schema.properties,
+          customField: {
+            title: 'Default field',
+            description: '',
+            validator: 'isURL',
+          },
+        },
+        required: [],
+      };
+      config.registerComponent({
+        name: 'fieldValidator',
+        dependencies: ['isURL'],
+        component: urlValidator,
+      });
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema: newSchema,
+          formData: {
+            username: 'test username',
+            customField: 'foo',
+          },
+          formatMessage,
+        }),
+      ).toEqual({
+        customField: [messages.isValidURL.defaultMessage],
+      });
+    });
+
+    it('default - specific validator set - Succeeds', () => {
+      let newSchema = {
+        properties: {
+          ...schema.properties,
+          customField: {
+            title: 'Default field',
+            description: '',
+            validator: 'isURL',
+          },
+        },
+        required: [],
+      };
+      config.registerComponent({
+        name: 'fieldValidator',
+        dependencies: ['isURL'],
+        component: urlValidator,
+      });
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema: newSchema,
+          formData: {
+            username: 'test username',
+            customField: 'https://plone.org/',
+          },
+          formatMessage,
+        }),
+      ).toEqual({});
+    });
   });
 
-  describe('validateFieldsPerFieldset', () => {});
+  // describe('validateBlockDataFields', () => {
+
+  // });
 });
