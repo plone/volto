@@ -1873,7 +1873,7 @@ msgstr "Elementu-multzoaren tamaina"
 
 #. Default: "Item successfully moved."
 #: components/manage/Contents/Contents
-msgid "Item succesfully moved."
+msgid "Item successfully moved."
 msgstr "Elementua ongi mugitu da."
 
 #. Default: "Item(s) copied."

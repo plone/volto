@@ -352,7 +352,7 @@ pnpm --filter plone-vite-ssr dev
 
 ## Support libraries
 
-Volto uses serveral libraries to support development.
+Volto uses several libraries to support development.
 
 ### `volto-coresandbox`
 
