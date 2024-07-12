@@ -334,6 +334,8 @@ class Form extends Component {
     ) {
       this.setState(() => ({ sidebarMetadataIsAvailable: true }));
     }
+
+    this.updateEventEndVisibility();
   }
 
   /**
@@ -379,6 +381,23 @@ class Form extends Component {
   }
 
   /**
+   * If user selects "Open End" checkbox on the Event forms, "Event Ends" field will disappear
+   */
+  updateEventEndVisibility() {
+    if (this.state.formData?.open_end === undefined) {
+      return;
+    }
+
+    const endFieldWrapper = document.querySelector('.field-wrapper-end');
+
+    if (endFieldWrapper) {
+      endFieldWrapper.style.display = this.state.formData.open_end
+        ? 'none'
+        : '';
+    }
+  }
+
+  /**
    * Component did mount
    * @method componentDidMount
    * @returns {undefined}
@@ -407,6 +426,7 @@ class Form extends Component {
       if (this.props.global) {
         this.props.setFormData(newFormData);
       }
+      this.updateEventEndVisibility();
       return {
         errors,
         formData: newFormData,
