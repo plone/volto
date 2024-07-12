@@ -109,7 +109,8 @@ const InlineForm = (props) => {
       );
     }
   }
-
+  console.log(errors);
+  console.log(keys(errors).length);
   return (
     <div className="ui form">
       {title && (
@@ -142,7 +143,6 @@ const InlineForm = (props) => {
           content={error.message}
         />
       )}
-
       <div id={`blockform-fieldset-${defaultFieldset.id}`}>
         <Segment className="form attached">
           {map(defaultFieldset.fields, (field, index) => (
@@ -166,7 +166,6 @@ const InlineForm = (props) => {
           )}
         </Segment>
       </div>
-
       {other.map((fieldset, index) => (
         <Accordion fluid styled className="form" key={fieldset.id}>
           <div key={fieldset.id} id={`blockform-fieldset-${fieldset.id}`}>

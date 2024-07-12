@@ -116,4 +116,5 @@ export interface BlockEditProps {
   history: History;
   location: Location;
   token: string;
+  errors: Record<string, string>;
 }

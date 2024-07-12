@@ -551,6 +551,53 @@ class Form extends Component {
       );
       // Changes the focus to the metadata tab in the sidebar if error
       this.props.setSidebarTab(0);
+    } else if (keys(errors).length === 0) {
+      const blocks = this.state.formData[getBlocksFieldname(formData)];
+      const blocksLayout =
+        this.state.formData[getBlocksLayoutFieldname(formData)];
+      let blocksErrors = {};
+      const defaultSchema = {
+        properties: {},
+        fieldsets: [],
+        required: [],
+      };
+      blocksLayout.items.forEach((block) => {
+        let blockSchema =
+          config.blocks.blocksConfig[blocks[block]['@type']].blockSchema ||
+          defaultSchema;
+        if (typeof blockSchema === 'function') {
+          blockSchema = blockSchema({
+            intl: this.props.intl,
+            formData: blocks[block],
+          });
+        }
+        const blockErrors = FormValidation.validateFieldsPerFieldset({
+          schema: blockSchema,
+          formData: blocks[block],
+          formatMessage: this.props.intl.formatMessage,
+        });
+        blocksErrors = {
+          ...blocksErrors,
+          ...blockErrors,
+        };
+      });
+      this.setState(
+        {
+          errors: blocksErrors,
+        },
+        () => {
+          Object.keys(errors).forEach((err) =>
+            toast.error(
+              <Toast
+                error
+                title={this.props.schema.properties[err].title || err}
+                content={errors[err].join(', ')}
+              />,
+            ),
+          );
+        },
+      );
+      this.props.setSidebarTab(1);
     } else {
       // Get only the values that have been modified (Edit forms), send all in case that
       // it's an add form
@@ -730,6 +777,7 @@ class Form extends Component {
                 history={this.props.history}
                 location={this.props.location}
                 token={this.props.token}
+                errors={this.state.errors}
               />
               {this.state.isClient &&
                 this.state.sidebarMetadataIsAvailable &&

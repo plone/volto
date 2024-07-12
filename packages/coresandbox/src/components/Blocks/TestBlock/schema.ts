@@ -154,7 +154,7 @@ export const SliderSchema: BlockConfigBase['blockSchema'] = ({ intl }) => ({
       widget: 'richtext',
     },
   },
-  required: [],
+  required: ['fieldAfterObjectList'],
 });
 
 export const multipleFieldsetsSchema: BlockConfigBase['blockSchema'] = ({

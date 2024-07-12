@@ -58,6 +58,7 @@ const BlocksForm = (props) => {
     history,
     location,
     token,
+    errors,
   } = props;
 
   const [isClient, setIsClient] = useState(false);
@@ -354,6 +355,7 @@ const BlocksForm = (props) => {
                 history,
                 location,
                 token,
+                errors,
               };
               return editBlockWrapper(
                 dragProps,
