@@ -123,7 +123,7 @@ export class DatetimeWidgetComponent extends Component {
     return (
       this.props.dateOnly ||
       this.props.widget === 'date' ||
-      this.props.formData.whole_day
+      this.props.formData?.whole_day
     );
   }
 
