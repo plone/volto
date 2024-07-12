@@ -456,6 +456,41 @@ describe('FormValidation', () => {
       });
     });
 
+    it('array - uniqueItems false', () => {
+      let newSchema = {
+        properties: {
+          ...schema.properties,
+          customField: {
+            title: 'Array field',
+            type: 'array',
+            description: '',
+            uniqueItems: false,
+          },
+        },
+        required: [],
+      };
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema: newSchema,
+          formData: {
+            username: 'test username',
+            customField: [1, 1],
+          },
+          formatMessage,
+        }),
+      ).toEqual({});
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema: newSchema,
+          formData: {
+            username: 'test username',
+            customField: [1],
+          },
+          formatMessage,
+        }),
+      ).toEqual({});
+    });
+
     it('default - specific validator set - Errors', () => {
       let newSchema = {
         properties: {

@@ -119,6 +119,9 @@ export const isInteger = ({ value, formatMessage }: Validator) => {
 };
 
 export const hasUniqueItems = ({ value, field, formatMessage }: Validator) => {
+  if (!field.uniqueItems) {
+    return null;
+  }
   const isValid =
     field.uniqueItems &&
     value &&
