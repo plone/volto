@@ -120,7 +120,11 @@ export class DatetimeWidgetComponent extends Component {
   }
 
   getDateOnly() {
-    return this.props.dateOnly || this.props.widget === 'date';
+    return (
+      this.props.dateOnly ||
+      this.props.widget === 'date' ||
+      this.props.formData.whole_day
+    );
   }
 
   /**
