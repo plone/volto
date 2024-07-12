@@ -2,7 +2,7 @@ import React, { forwardRef } from 'react';
 import classNames from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
 import { includes } from 'lodash';
-
+import cx from 'classnames';
 import { Icon } from '@plone/volto/components';
 import { setUIState } from '@plone/volto/actions';
 import config from '@plone/volto/registry';
@@ -28,6 +28,7 @@ export const Item = forwardRef(
       style,
       value,
       wrapperRef,
+      errors,
       ...props
     },
     ref,
@@ -37,6 +38,7 @@ export const Item = forwardRef(
     const multiSelected = useSelector((state) => state.form.ui.multiSelected);
     const gridSelected = useSelector((state) => state.form.ui.gridSelected);
     const dispatch = useDispatch();
+
     return (
       <li
         className={classNames(
@@ -95,7 +97,9 @@ export const Item = forwardRef(
           >
             <Icon name={dragSVG} size="16px" />
           </button>
-          <span className="text">
+          <span
+            className={cx('text', { errored: Object.keys(errors).length > 0 })}
+          >
             {config.blocks.blocksConfig[data?.['@type']]?.icon && (
               <Icon
                 name={config.blocks.blocksConfig[data?.['@type']]?.icon}

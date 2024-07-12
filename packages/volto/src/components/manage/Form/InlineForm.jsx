@@ -109,8 +109,7 @@ const InlineForm = (props) => {
       );
     }
   }
-  console.log(errors);
-  console.log(keys(errors).length);
+
   return (
     <div className="ui form">
       {title && (
@@ -157,7 +156,7 @@ const InlineForm = (props) => {
                 onChangeField(id, value, itemInfo);
               }}
               key={field}
-              error={errors[field]}
+              error={errors?.[block]?.[field] || {}}
               block={block}
             />
           ))}
@@ -198,7 +197,7 @@ const InlineForm = (props) => {
                         onChangeField(id, value);
                       }}
                       key={field}
-                      error={errors[field]}
+                      error={errors?.[block]?.[field] || {}}
                       block={block}
                     />
                   ))}

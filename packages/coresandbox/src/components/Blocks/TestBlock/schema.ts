@@ -154,7 +154,7 @@ export const SliderSchema: BlockConfigBase['blockSchema'] = ({ intl }) => ({
       widget: 'richtext',
     },
   },
-  required: ['fieldAfterObjectList'],
+  required: [],
 });
 
 export const multipleFieldsetsSchema: BlockConfigBase['blockSchema'] = ({
@@ -181,6 +181,11 @@ export const multipleFieldsetsSchema: BlockConfigBase['blockSchema'] = ({
       id: 'fourth',
       title: 'fourth',
       fields: ['href', 'firstWithDefault', 'style'],
+    },
+    {
+      id: 'fifth',
+      title: 'fifth',
+      fields: ['fieldRequiredInFieldset'],
     },
   ],
   properties: {
@@ -232,6 +237,9 @@ export const multipleFieldsetsSchema: BlockConfigBase['blockSchema'] = ({
       title: 'HTML',
       widget: 'richtext',
     },
+    fieldRequiredInFieldset: {
+      title: 'Field required in fieldset',
+    },
   },
-  required: [],
+  required: ['fieldRequiredInFieldset'],
 });

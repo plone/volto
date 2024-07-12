@@ -576,28 +576,45 @@ class Form extends Component {
           formData: blocks[block],
           formatMessage: this.props.intl.formatMessage,
         });
-        blocksErrors = {
-          ...blocksErrors,
-          ...blockErrors,
-        };
+        if (keys(blockErrors).length > 0) {
+          blocksErrors = {
+            ...blocksErrors,
+            [block]: { ...blockErrors },
+          };
+        }
       });
-      this.setState(
-        {
-          errors: blocksErrors,
-        },
-        () => {
-          Object.keys(errors).forEach((err) =>
+
+      if (keys(blocksErrors).length > 0) {
+        this.setState(
+          {
+            errors: blocksErrors,
+          },
+          () => {
+            const errorField = Object.entries(
+              Object.entries(blocksErrors)[0][1],
+            )[0][0];
+            const errorMessage = Object.entries(
+              Object.entries(blocksErrors)[0][1],
+            )[0][1];
             toast.error(
               <Toast
                 error
-                title={this.props.schema.properties[err].title || err}
-                content={errors[err].join(', ')}
+                title={this.props.intl.formatMessage(
+                  messages.blocksFieldsErrorTitle,
+                  { errorField },
+                )}
+                content={errorMessage}
               />,
-            ),
-          );
-        },
-      );
-      this.props.setSidebarTab(1);
+            );
+          },
+        );
+        this.props.setSidebarTab(1);
+        this.props.setUIState({
+          selected: Object.keys(blocksErrors)[0],
+          multiSelected: [],
+          hovered: null,
+        });
+      }
     } else {
       // Get only the values that have been modified (Edit forms), send all in case that
       // it's an add form

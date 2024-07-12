@@ -282,6 +282,7 @@ const BlocksForm = (props) => {
               onDeleteBlock={onDeleteBlock}
               onSelectBlock={onSelectBlock}
               removable
+              errors={errors}
             />
           </div>,
           document.getElementById('sidebar-order'),

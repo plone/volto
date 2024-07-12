@@ -375,4 +375,8 @@ export const messages = defineMessages({
     id: 'fileTooLarge',
     defaultMessage: 'This website does not accept files larger than {limit}',
   },
+  blocksFieldsErrorTitle: {
+    id: 'blocksFieldsErrorTitle',
+    defaultMessage: 'Error in the block field {errorField}.',
+  },
 });
