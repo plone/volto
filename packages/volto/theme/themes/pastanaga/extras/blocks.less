@@ -275,6 +275,58 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
   }
 }
 
+// Hacks for keeping the full-width image in the edit screen
+.view-editview {
+  &.has-sidebar {
+    .block.align.full img {
+      width: calc(100vw - 375px) !important;
+    }
+  }
+
+  &.has-sidebar-collapsed {
+    .block.align.full img {
+      width: calc(100vw - 20px) !important;
+    }
+  }
+  @media (min-width: 766px) {
+    &.has-toolbar {
+      &.has-sidebar {
+        .block.align.full img {
+          width: calc(100vw - 228px) !important;
+          padding-left: 228px;
+          transition: padding-left 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+        }
+      }
+
+      &.has-sidebar-collapsed {
+        .block.align.full img {
+          width: calc(100vw - 50px) !important;
+          padding-left: 51px;
+          transition: width 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+        }
+      }
+    }
+
+    &.has-toolbar-collapsed {
+      &.has-sidebar {
+        .block.align.full img {
+          width: calc(100vw - 198px) !important;
+          padding-left: 198px;
+          transition: padding-left 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+        }
+      }
+
+      &.has-sidebar-collapsed {
+        .block.align.full img {
+          width: calc(100vw - 20px) !important;
+          padding-left: 20px;
+          transition: width 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+        }
+      }
+    }
+  }
+}
+
 .block.align:not(.right):not(.left) {
   clear: both;
 }
