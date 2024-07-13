@@ -1,0 +1,2 @@
+Fixed full aligned image size issue on the edit screen by changing padding-left and width
+values depending on the position of the sidebar and toolbar. @cihanandac
