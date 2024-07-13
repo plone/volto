@@ -7,27 +7,28 @@ import TableOfContentsSchema from './Schema';
 import View from './View';
 
 const Edit = (props) => {
+  const { onChangeBlock, data, block, selected, navRoot, contentType } = props;
   const schema = TableOfContentsSchema(props);
-  const handleChangeField = (id, value) => {
-    props.onChangeBlock(props.block, {
-      ...props.data,
-      [id]: value,
-    });
-  };
+
   return (
     <>
       <View {...props} mode="edit" />
 
-      <SidebarPortal selected={this.props.selected}>
+      <SidebarPortal selected={selected}>
         <BlockDataForm
           schema={schema}
           title={schema.title}
-          onChangeField={handleChangeField}
-          onChangeBlock={props.onChangeBlock}
-          formData={props.data}
-          block={props.block}
-          navRoot={props.navRoot}
-          contentType={props.contentType}
+          onChangeField={(id, value) => {
+            onChangeBlock(block, {
+              ...data,
+              [id]: value,
+            });
+          }}
+          onChangeBlock={onChangeBlock}
+          formData={data}
+          block={block}
+          navRoot={navRoot}
+          contentType={contentType}
         />
       </SidebarPortal>
     </>
