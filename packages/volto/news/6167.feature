@@ -1,1 +1,1 @@
-Refactor Blocks/Toc/Edit Component to functional component -@Prince0906
+Refactor the table of contents block component from a class component to a functional component. @Prince0906
