@@ -171,6 +171,11 @@ In the first session, start the backend.
 make backend-docker-start
 ```
 
+```{note}
+Since `Volto 18.0.0-alpha.42`, the backend data is stored in a `Docker` volume named `data` added within `packages/volto` directory when you run `make backend-docker-start` for the first time.
+This way you can easily persist the data between sessions.
+```
+
 When you run this command for the first time, it will download Docker images, configure the backend, and start the backend.
 Browse to the backend running at http://localhost:8080.
 
