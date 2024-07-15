@@ -170,6 +170,23 @@ export function flattenHTMLToAppURL(html) {
 }
 
 /**
+ * Adds the prefix to the URL if the prefix is defined and it's an internal.
+ * This function should be used where it is not possible to use the Link and UniversalLink components.
+ * @method addPrefixPath
+ * @param {string} url Some URL
+ * @returns {string} Perfixed URL
+ */
+export function addPrefixPath(url) {
+  const { prefixPath } = config.settings;
+  if (!prefixPath || !isInternalURL(url) || url.startsWith(prefixPath))
+    return url;
+  if (url === '/') {
+    return prefixPath;
+  }
+  return `${prefixPath}${url}`; // Add prefixPath to url if it's an internal URL and not a static resource.
+}
+
+/**
  * Add the app url
  * @method addAppURL
  * @param {string} url URL of the object
