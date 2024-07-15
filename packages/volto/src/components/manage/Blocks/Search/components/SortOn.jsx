@@ -61,11 +61,11 @@ const SortOn = (props) => {
 
   return (
     <div className="search-sort-wrapper">
-      <div className="search-sort-on">
-        <span className="sort-label">
-          {intl.formatMessage(messages.sortOn)}
-        </span>
-        {sortOnOptions.length > 1 && (
+      {sortOnOptions.length > 1 && (
+        <div className="search-sort-on">
+          <span className="sort-label">
+            {intl.formatMessage(messages.sortOn)}
+          </span>
           <Select
             id="select-search-sort-on"
             name="select-searchblock-sort-on"
@@ -87,8 +87,8 @@ const SortOn = (props) => {
               !isEditMode && setSortOn(data.value);
             }}
           />
-        )}
-      </div>
+        </div>
+      )}
       <Button
         icon
         basic
