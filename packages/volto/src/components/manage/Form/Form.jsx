@@ -12,6 +12,7 @@ import {
   FormValidation,
   getBlocksFieldname,
   getBlocksLayoutFieldname,
+  hasBlocksData,
   messages,
 } from '@plone/volto/helpers';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
@@ -527,35 +528,13 @@ class Form extends Component {
         })
       : {};
 
-    if (keys(errors).length > 0) {
-      const activeIndex = FormValidation.showFirstTabWithErrors({
-        errors,
-        schema: this.props.schema,
-      });
-      this.setState(
-        {
-          errors,
-          activeIndex,
-        },
-        () => {
-          Object.keys(errors).forEach((err) =>
-            toast.error(
-              <Toast
-                error
-                title={this.props.schema.properties[err].title || err}
-                content={errors[err].join(', ')}
-              />,
-            ),
-          );
-        },
-      );
-      // Changes the focus to the metadata tab in the sidebar if error
-      this.props.setSidebarTab(0);
-    } else if (keys(errors).length === 0) {
+    let blocksErrors = {};
+
+    if (hasBlocksData(formData)) {
+      // Validate blocks
       const blocks = this.state.formData[getBlocksFieldname(formData)];
       const blocksLayout =
         this.state.formData[getBlocksLayoutFieldname(formData)];
-      let blocksErrors = {};
       const defaultSchema = {
         properties: {},
         fieldsets: [],
@@ -583,30 +562,50 @@ class Form extends Component {
           };
         }
       });
+    }
 
-      if (keys(blocksErrors).length > 0) {
-        this.setState(
-          {
-            errors: blocksErrors,
-          },
-          () => {
-            const errorField = Object.entries(
-              Object.entries(blocksErrors)[0][1],
-            )[0][0];
-            const errorMessage = Object.entries(
-              Object.entries(blocksErrors)[0][1],
-            )[0][1];
-            toast.error(
-              <Toast
-                error
-                title={this.props.intl.formatMessage(
-                  messages.blocksFieldsErrorTitle,
-                  { errorField },
-                )}
-                content={errorMessage}
-              />,
-            );
-          },
+    if (keys(errors).length > 0 || keys(blocksErrors).length > 0) {
+      const activeIndex = FormValidation.showFirstTabWithErrors({
+        errors,
+        schema: this.props.schema,
+      });
+
+      this.setState({
+        errors: {
+          ...errors,
+          ...(!isEmpty(blocksErrors) && { blocks: blocksErrors }),
+        },
+        activeIndex,
+      });
+
+      if (keys(errors).length > 0) {
+        // Changes the focus to the metadata tab in the sidebar if error
+        Object.keys(errors).forEach((err) =>
+          toast.error(
+            <Toast
+              error
+              title={this.props.schema.properties[err].title || err}
+              content={errors[err].join(', ')}
+            />,
+          ),
+        );
+        this.props.setSidebarTab(0);
+      } else if (keys(blocksErrors).length > 0) {
+        const errorField = Object.entries(
+          Object.entries(blocksErrors)[0][1],
+        )[0][0];
+        const errorMessage = Object.entries(
+          Object.entries(blocksErrors)[0][1],
+        )[0][1];
+        toast.error(
+          <Toast
+            error
+            title={this.props.intl.formatMessage(
+              messages.blocksFieldsErrorTitle,
+              { errorField },
+            )}
+            content={errorMessage}
+          />,
         );
         this.props.setSidebarTab(1);
         this.props.setUIState({
@@ -794,7 +793,7 @@ class Form extends Component {
                 history={this.props.history}
                 location={this.props.location}
                 token={this.props.token}
-                errors={this.state.errors}
+                errors={this.state.errors.blocks}
               />
               {this.state.isClient &&
                 this.state.sidebarMetadataIsAvailable &&
