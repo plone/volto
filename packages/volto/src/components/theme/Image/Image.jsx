@@ -1,6 +1,10 @@
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import { flattenToAppURL, flattenScales } from '@plone/volto/helpers';
+import {
+  flattenToAppURL,
+  flattenScales,
+  addPrefixPath,
+} from '@plone/volto/helpers';
 
 /**
  * Image component
@@ -46,9 +50,10 @@ export default function Image({
 
     const isSvg = image['content-type'] === 'image/svg+xml';
     // In case `base_path` is present (`preview_image_link`) use it as base path
-    const basePath = image.base_path || item['@id'];
-
-    attrs.src = `${flattenToAppURL(basePath)}/${image.download}`;
+    const basePath = addPrefixPath(
+      flattenToAppURL(image.base_path || item['@id']),
+    );
+    attrs.src = `${basePath}/${image.download}`;
     attrs.width = image.width;
     attrs.height = image.height;
     attrs.className = cx(className, { responsive });
@@ -61,10 +66,7 @@ export default function Image({
       });
 
       attrs.srcSet = sortedScales
-        .map(
-          (scale) =>
-            `${flattenToAppURL(basePath)}/${scale.download} ${scale.width}w`,
-        )
+        .map((scale) => `${basePath}/${scale.download} ${scale.width}w`)
         .join(', ');
     }
   }
