@@ -4396,6 +4396,11 @@ msgstr "Introduzca el nombre de usuario que desee utilizar. Generalmente algo co
 msgid "availableViews"
 msgstr "Vistas disponibles"
 
+#. Default: "Error in the block field {errorField}."
+#: helpers/MessageLabels/MessageLabels
+msgid "blocksFieldsErrorTitle"
+msgstr ""
+
 #. Default: "Forgot your password?"
 #: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset

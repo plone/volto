@@ -4396,6 +4396,11 @@ msgstr "Idatzi zure erabiltzaile izena, "jgarmendia" moduko zerbait. Ez da onart
 msgid "availableViews"
 msgstr "Bistak"
 
+#. Default: "Error in the block field {errorField}."
+#: helpers/MessageLabels/MessageLabels
+msgid "blocksFieldsErrorTitle"
+msgstr ""
+
 #. Default: "Forgot your password?"
 #: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset

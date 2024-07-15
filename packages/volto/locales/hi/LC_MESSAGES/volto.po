@@ -4389,6 +4389,11 @@ msgstr "एक उपयोगकर्ता नाम दर्ज करे�
 msgid "availableViews"
 msgstr "उपलब्ध दृश्य"
 
+#. Default: "Error in the block field {errorField}."
+#: helpers/MessageLabels/MessageLabels
+msgid "blocksFieldsErrorTitle"
+msgstr ""
+
 #. Default: "Forgot your password?"
 #: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset

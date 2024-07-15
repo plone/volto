@@ -4394,6 +4394,11 @@ msgstr "Geben Sie einen Nutzernamen ein, beispielsweise etwas wie "m.muster". Be
 msgid "availableViews"
 msgstr "Verfügbare Ansichten"
 
+#. Default: "Error in the block field {errorField}."
+#: helpers/MessageLabels/MessageLabels
+msgid "blocksFieldsErrorTitle"
+msgstr ""
+
 #. Default: "Forgot your password?"
 #: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset

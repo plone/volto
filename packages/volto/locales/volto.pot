@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2024-07-09T06:25:05.312Z\n"
+"POT-Creation-Date: 2024-07-12T16:21:15.231Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -4389,6 +4389,11 @@ msgstr ""
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema
 msgid "availableViews"
+msgstr ""
+
+#. Default: "Error in the block field {errorField}."
+#: helpers/MessageLabels/MessageLabels
+msgid "blocksFieldsErrorTitle"
 msgstr ""
 
 #. Default: "Forgot your password?"

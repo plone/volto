@@ -4396,6 +4396,11 @@ msgstr "Saisissez un nom d'utilisateur, haituellement quelque chose comme "jdupo
 msgid "availableViews"
 msgstr "Vues disponibles"
 
+#. Default: "Error in the block field {errorField}."
+#: helpers/MessageLabels/MessageLabels
+msgid "blocksFieldsErrorTitle"
+msgstr ""
+
 #. Default: "Forgot your password?"
 #: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset

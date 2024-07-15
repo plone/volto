@@ -4389,6 +4389,11 @@ msgstr "Inserisci uno username, ad esempio 'jsmith'. Non sono consentiti spazi o
 msgid "availableViews"
 msgstr "Viste disponibili"
 
+#. Default: "Error in the block field {errorField}."
+#: helpers/MessageLabels/MessageLabels
+msgid "blocksFieldsErrorTitle"
+msgstr ""
+
 #. Default: "Forgot your password?"
 #: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
