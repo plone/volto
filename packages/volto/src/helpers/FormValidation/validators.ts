@@ -10,13 +10,8 @@ type MinMaxValidator = {
 
 type Validator = {
   value: string;
-  field: {
-    minLength: number;
-    maxLength: number;
-    minimum: number;
-    maximum: number;
-    uniqueItems: Boolean;
-  };
+  field: Record<string, any>;
+  formData?: any;
   formatMessage: Function;
 };
 
@@ -128,4 +123,26 @@ export const hasUniqueItems = ({ value, field, formatMessage }: Validator) => {
     // unique items
     [...new Set(value)].length === value.length;
   return !isValid ? formatMessage(messages.uniqueItems) : null;
+};
+
+export const startEventDateRangeValidator = ({
+  value,
+  field,
+  formData,
+  formatMessage,
+}: Validator) => {
+  const isValid =
+    value && formData.end && new Date(value) < new Date(formData.end);
+  return !isValid ? formatMessage(messages.startEventRange) : null;
+};
+
+export const endEventDateRangeValidator = ({
+  value,
+  field,
+  formData,
+  formatMessage,
+}: Validator) => {
+  const isValid =
+    value && formData.start && new Date(value) < new Date(formData.start);
+  return !isValid ? formatMessage(messages.endEventRange) : null;
 };

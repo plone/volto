@@ -167,6 +167,109 @@ describe('FormValidation', () => {
       ).toEqual({});
     });
 
+    it('default - widget validator from block - Fails', () => {
+      let newSchema = {
+        properties: {
+          ...schema.properties,
+          customField: {
+            title: 'Default field',
+            description: '',
+            widget: 'isURL',
+          },
+        },
+        required: [],
+      };
+      config.registerComponent({
+        name: 'fieldValidator',
+        dependencies: ['isURL'],
+        component: urlValidator,
+      });
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema: newSchema,
+          formData: {
+            username: 'test username',
+            customField: 'asd',
+          },
+          formatMessage,
+        }),
+      ).toEqual({
+        customField: [messages.isValidURL.defaultMessage],
+      });
+    });
+
+    it('default - type and widget validator from block - Fails', () => {
+      let newSchema = {
+        properties: {
+          ...schema.properties,
+          customField: {
+            title: 'Default field',
+            description: '',
+            type: 'customfieldtype',
+            widget: 'isURL',
+          },
+        },
+        required: [],
+      };
+      config.registerComponent({
+        name: 'fieldValidator',
+        dependencies: ['customfieldtype', 'willFail'],
+        component: () => 'Fails',
+      });
+      config.registerComponent({
+        name: 'fieldValidator',
+        dependencies: ['isURL'],
+        component: urlValidator,
+      });
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema: newSchema,
+          formData: {
+            username: 'test username',
+            customField: 'asd',
+          },
+          formatMessage,
+        }),
+      ).toEqual({
+        customField: ['Fails', messages.isValidURL.defaultMessage],
+      });
+    });
+
+    it('default - widget validator from content type set - Fails', () => {
+      let newSchema = {
+        properties: {
+          ...schema.properties,
+          customField: {
+            title: 'Default field',
+            description: '',
+            widgetOptions: {
+              frontendOptions: {
+                widget: 'isURL',
+              },
+            },
+          },
+        },
+        required: [],
+      };
+      config.registerComponent({
+        name: 'fieldValidator',
+        dependencies: ['isURL'],
+        component: urlValidator,
+      });
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema: newSchema,
+          formData: {
+            username: 'test username',
+            customField: 'asd',
+          },
+          formatMessage,
+        }),
+      ).toEqual({
+        customField: [messages.isValidURL.defaultMessage],
+      });
+    });
+
     it('default - min lenght', () => {
       let newSchema = {
         properties: {
@@ -549,6 +652,70 @@ describe('FormValidation', () => {
           formatMessage,
         }),
       ).toEqual({});
+    });
+
+    it('default - specific validator from content type set - Succeeds', () => {
+      let newSchema = {
+        properties: {
+          ...schema.properties,
+          customField: {
+            title: 'Default field',
+            description: '',
+            widgetOptions: {
+              frontendOptions: {
+                validator: 'isURL',
+              },
+            },
+          },
+        },
+        required: [],
+      };
+      config.registerComponent({
+        name: 'fieldValidator',
+        dependencies: ['isURL'],
+        component: urlValidator,
+      });
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema: newSchema,
+          formData: {
+            username: 'test username',
+            customField: 'https://plone.org/',
+          },
+          formatMessage,
+        }),
+      ).toEqual({});
+    });
+
+    it('default - per behavior specific - Fails', () => {
+      let newSchema = {
+        properties: {
+          ...schema.properties,
+          customField: {
+            behavior: 'plone.event',
+            title: 'Default field',
+            description: '',
+          },
+        },
+        required: [],
+      };
+      config.registerComponent({
+        name: 'fieldValidator',
+        dependencies: ['plone.event', 'customField'],
+        component: urlValidator,
+      });
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema: newSchema,
+          formData: {
+            username: 'test username',
+            customField: 'asd',
+          },
+          formatMessage,
+        }),
+      ).toEqual({
+        customField: [messages.isValidURL.defaultMessage],
+      });
     });
   });
 

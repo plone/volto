@@ -10,6 +10,8 @@ import {
   minimumValidator,
   isInteger,
   hasUniqueItems,
+  startEventDateRangeValidator,
+  endEventDateRangeValidator,
 } from '@plone/volto/helpers/FormValidation/validators';
 
 const registerValidators = (config: ConfigType) => {
@@ -77,6 +79,18 @@ const registerValidators = (config: ConfigType) => {
     name: 'fieldValidator',
     dependencies: ['array', 'uniqueItems'],
     component: hasUniqueItems,
+  });
+
+  config.registerComponent({
+    name: 'fieldValidator',
+    dependencies: ['plone.eventbasic', 'start'],
+    component: startEventDateRangeValidator,
+  });
+
+  config.registerComponent({
+    name: 'fieldValidator',
+    dependencies: ['plone.eventbasic', 'end'],
+    component: endEventDateRangeValidator,
   });
 };
 

@@ -1267,6 +1267,11 @@ msgstr "Aktivoitu?"
 msgid "End Date"
 msgstr "Päättymispäivä"
 
+#. Default: "End event date happens before than the start event date"
+#: helpers/MessageLabels/MessageLabels
+msgid "End event date happens before than the start event date"
+msgstr ""
+
 #. Default: "Enter URL or select an item"
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 msgid "Enter URL or select an item"
@@ -3435,6 +3440,11 @@ msgstr "Halkaise"
 #: components/manage/Contents/Contents
 msgid "Start Date"
 msgstr "Aloituspäivä"
+
+#. Default: "Start event date happens later than the end event date"
+#: helpers/MessageLabels/MessageLabels
+msgid "Start event date happens later than the end event date"
+msgstr ""
 
 #. Default: "Start of the recurrence"
 #: components/manage/Widgets/RecurrenceWidget/Occurences

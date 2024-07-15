@@ -379,4 +379,12 @@ export const messages = defineMessages({
     id: 'blocksFieldsErrorTitle',
     defaultMessage: 'Error in the block field {errorField}.',
   },
+  startEventRange: {
+    id: 'Start event date happens later than the end event date',
+    defaultMessage: 'Start event date happens later than the end event date',
+  },
+  endEventRange: {
+    id: 'End event date happens before than the start event date',
+    defaultMessage: 'End event date happens before than the start event date',
+  },
 });
