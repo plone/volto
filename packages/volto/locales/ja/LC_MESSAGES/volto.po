@@ -1728,6 +1728,11 @@ msgstr ""
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
 msgstr "確かに正しいURLを入力したのにエラーになってしまう場合は、 {site_admin} に連絡してください。"
 
+#. Default: "If you have only one sort on a property, please place it in the top sort field."
+#: components/manage/Blocks/Search/schema
+msgid "If you have only one sort on a property, please place it in the top sort field."
+msgstr ""
+
 #. Default: "Image"
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/Image/schema

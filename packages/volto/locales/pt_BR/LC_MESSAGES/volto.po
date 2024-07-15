@@ -1729,6 +1729,11 @@ msgstr "Se você tiver certeza de que este usuário abandonou o objeto, você po
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
 msgstr "Se você tiver certeza de que tem o endereço web correto, mas está encontrando um erro, entre em contato com o {site_admin}."
 
+#. Default: "If you have only one sort on a property, please place it in the top sort field."
+#: components/manage/Blocks/Search/schema
+msgid "If you have only one sort on a property, please place it in the top sort field."
+msgstr ""
+
 #. Default: "Image"
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/Image/schema

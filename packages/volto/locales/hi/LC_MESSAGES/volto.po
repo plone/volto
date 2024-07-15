@@ -1723,6 +1723,11 @@ msgstr "यदि आप इस उपयोगकर्ता को सुन�
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
 msgstr "यदि आपको लगता है कि आपके पास सही वेब पता है लेकिन आपको एक त्रुटि का सामना करना पड़ रहा है, कृपया {site_admin} से संपर्क करें।"
 
+#. Default: "If you have only one sort on a property, please place it in the top sort field."
+#: components/manage/Blocks/Search/schema
+msgid "If you have only one sort on a property, please place it in the top sort field."
+msgstr ""
+
 #. Default: "Image"
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/Image/schema

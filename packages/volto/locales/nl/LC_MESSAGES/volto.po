@@ -1727,6 +1727,11 @@ msgstr ""
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
 msgstr "Indien u er zeker van bent dat u het webadres goed heeft, maar toch een foutmelding krijgt, neem dan contact op met {site_admin}."
 
+#. Default: "If you have only one sort on a property, please place it in the top sort field."
+#: components/manage/Blocks/Search/schema
+msgid "If you have only one sort on a property, please place it in the top sort field."
+msgstr ""
+
 #. Default: "Image"
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/Image/schema

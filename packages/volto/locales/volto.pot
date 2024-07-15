@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2024-07-09T06:25:05.312Z\n"
+"POT-Creation-Date: 2024-07-15T14:26:02.941Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -1723,6 +1723,11 @@ msgstr ""
 #: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
+msgstr ""
+
+#. Default: "If you have only one sort on a property, please place it in the top sort field."
+#: components/manage/Blocks/Search/schema
+msgid "If you have only one sort on a property, please place it in the top sort field."
 msgstr ""
 
 #. Default: "Image"
