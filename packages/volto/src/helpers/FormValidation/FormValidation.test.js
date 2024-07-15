@@ -717,6 +717,37 @@ describe('FormValidation', () => {
         customField: [messages.isValidURL.defaultMessage],
       });
     });
+
+    it('block - per block type and fieldID specific - Fails', () => {
+      let newSchema = {
+        properties: {
+          ...schema.properties,
+          customField: {
+            title: 'Default field',
+            description: '',
+          },
+        },
+        required: [],
+      };
+      config.registerComponent({
+        name: 'fieldValidator',
+        dependencies: ['slider', 'customField'],
+        component: urlValidator,
+      });
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema: newSchema,
+          formData: {
+            '@type': 'slider',
+            username: 'test username',
+            customField: 'asd',
+          },
+          formatMessage,
+        }),
+      ).toEqual({
+        customField: [messages.isValidURL.defaultMessage],
+      });
+    });
   });
 
   // describe('validateBlockDataFields', () => {

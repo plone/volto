@@ -111,6 +111,20 @@ config.registerComponent({
 The first dependency should be the name of the behavior, and second the name (`id`) of the field.
 This type of validator only applies to content type validators.
 
+### Per block type and field name validator
+
+These validators are applied depending on the block type in combination of the name of the field in the block settings JSON schema.
+
+```ts
+config.registerComponent({
+  name: 'fieldValidator',
+  dependencies: ['slider', 'url'],
+  component: urlValidator,
+});
+```
+The first dependency should be the `id` of the block, and second the `id` of the field.
+This type of validator only applies to blocks.
+
 ### Specific validator using the `validator` key in the field
 
 A final type of validator are applied to the field if the `validator` key is present in the JSON schema definition of the form field.

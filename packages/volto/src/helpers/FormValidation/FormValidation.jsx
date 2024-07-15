@@ -203,12 +203,30 @@ const validateFieldsPerFieldset = (
       );
     }
 
+    // Validation per block type validator
+    const hasBlockType = formData['@type'];
+    let blockTypeFieldErrors = [];
+    // test each criterion eg. maximum, isEmail, isUrl, etc
+    if (hasBlockType) {
+      const blockTypeFieldValidationCriteria = config.getComponents({
+        name: 'fieldValidator',
+        dependencies: [hasBlockType, fieldId],
+      });
+
+      blockTypeFieldErrors = checkFieldErrors(
+        blockTypeFieldValidationCriteria,
+        field,
+        fieldData,
+      );
+    }
+
     const mergedErrors = [
       ...defaultFieldErrors,
       ...fieldErrors,
       ...widgetErrors,
       ...perBehaviorFieldErrors,
       ...specificFieldErrors,
+      ...blockTypeFieldErrors,
     ];
 
     if (mergedErrors.length > 0) {
@@ -219,6 +237,7 @@ const validateFieldsPerFieldset = (
         ...widgetErrors,
         ...perBehaviorFieldErrors,
         ...specificFieldErrors,
+        ...blockTypeFieldErrors,
       ];
     }
   });
