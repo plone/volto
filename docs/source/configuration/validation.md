@@ -9,7 +9,7 @@ myst:
 
 # Client side form field validation
 
-Volto provides a mechanism for providing form field validation in an extensible way.
+Volto provides a mechanism for delivering form field validation in an extensible way.
 This extensibility is based on the Volto component registry.
 
 ## Registering a validator
@@ -32,7 +32,7 @@ config.registerComponent({
 
 It takes two `dependencies`.
 The first element should be the `default` identifier, and the second you can set it up to identify the validator.
-In the case of the example, this other dependency is `minLenght`.
+In the case of the example, this other dependency is `minLength`.
 It can be any string.
 
 ### Per field `type` validators
@@ -80,7 +80,7 @@ config.registerComponent({
 
 It takes two `dependencies` since we can potentially have several validators for the same `widget`.
 The first element should be the `widget`, and the second you can set it up to identify the validator.
-You should specify the `widget` in the JSON schema of the block (or as an additional data in the content type definition).
+You should specify the `widget` in the JSON schema of the block (or as additional data in the content type definition).
 The next example is for the use case of a block JSON schema:
 
 ```ts
@@ -99,7 +99,7 @@ let blockSchema = {
 
 ### Per behavior and field name validator
 
-These validators are applied depending on the behavior (usually coming from a content type definition) in combination of the name of the field.
+These validators are applied depending on the behavior (usually coming from a content type definition) in combination with the name of the field.
 
 ```ts
 config.registerComponent({
@@ -108,12 +108,12 @@ config.registerComponent({
   component: urlValidator,
 });
 ```
-The first dependency should be the name of the behavior, and second the name (`id`) of the field.
-This type of validator only applies to content type validators.
+The first dependency should be the name of the behavior, and the second the name (`id`) of the field.
+This type of validator only applies to content-type validators.
 
 ### Per block type and field name validator
 
-These validators are applied depending on the block type in combination of the name of the field in the block settings JSON schema.
+These validators are applied depending on the block type in combination with the name of the field in the block settings JSON schema.
 
 ```ts
 config.registerComponent({
@@ -122,12 +122,12 @@ config.registerComponent({
   component: urlValidator,
 });
 ```
-The first dependency should be the `id` of the block, and second the `id` of the field.
+The first dependency should be the `id` of the block, and the second the `id` of the field.
 This type of validator only applies to blocks.
 
 ### Specific validator using the `validator` key in the field
 
-A final type of validator are applied to the field if the `validator` key is present in the JSON schema definition of the form field.
+A final type of validator is applied to the field if the `validator` key is present in the JSON schema definition of the form field.
 
 ```ts
 config.registerComponent({
@@ -137,8 +137,8 @@ config.registerComponent({
 });
 ```
 
-The dependencies takes one single name, in this case, the name of the validator.
-You should specify the validator in the JSON schema of the block (or as an additional data in the content type definition).
+The dependencies take one single name, in this case, the name of the validator.
+You should specify the validator in the JSON schema of the block (or as additional data in the content type definition).
 
 ```ts
 let blockSchema = {
@@ -155,11 +155,11 @@ let blockSchema = {
 ```
 
 It does not need to be tied to any field `type` or `widget` definition.
-It runs in addition to all the above, so it complements the normal validators, if any apply.
+It runs in addition to all the above, so it complements the normal validators if any apply.
 
 ## Volto's default validators
 
-Volto provide a set of validators by default, you can find them in this module: `packages/volto/src/config/validators.ts`
+Volto provides a set of validators by default, you can find them in this module: `packages/volto/src/config/validators.ts`
 
 ### How to override them
 
@@ -182,7 +182,7 @@ type Validator = {
 };
 ```
 
-This is an example of a `isNumber` validator:
+This is an example of an `isNumber` validator:
 
 ```ts
 export const isNumber = ({ value, formatMessage }: Validator) => {
