@@ -30,8 +30,7 @@ config.registerComponent({
 });
 ```
 
-It takes two `dependencies` since we can have several validators for the `default` use case.
-The first element should be the fixed `default` identifier, and the second you can set it up to identify the validator itself.
+It takes two `dependencies` being the first element a fixed `default` identifier, and the second you can set it up to identify the validator itself.
 In the case of the example, this other dependency is `minLength`.
 It can be any string.
 
@@ -48,18 +47,20 @@ config.registerComponent({
 ```
 
 It takes two `dependencies` since we can potentially have several validators for the same `type`.
-The first element should be the `type`, and the second you can set it up to identify the validator itself.
-You should specify the `type` in the JSON schema of the block (in a content type, this is included in the default serialization of the field).
-The next example is for the use case of a block JSON schema:
+The first element should be the field `type`, and the second you should set it up to identify the validator itself.
+You should specify the `type` in the JSON schema of the block (in a content type, it is included in the default serialization of the field).
+If a field does not specify type, it assumes a `string` type as validator.
+The next example is for the use case of JSON schema defined in a block:
 
 ```ts
 let blockSchema = {
+  // ... fieldset definition in here
   properties: {
     ...schema.properties,
     customField: {
       title: 'My custom field',
       description: '',
-      type: 'integer'
+      type: 'integer',
     },
   },
   required: [],
@@ -73,24 +74,25 @@ These validators are applied depending on the specified `widget` of the field.
 ```ts
 config.registerComponent({
   name: 'fieldValidator',
-  dependencies: ['myCustomURLWidget', 'maximum'],
-  component: maximumValidator,
+  dependencies: ['phoneNumber', 'isValidPhone'],
+  component: phoneValidator,
 });
 ```
 
 It takes two `dependencies` since we can potentially have several validators for the same `widget`.
-The first element should be the `widget`, and the second you can set it up to identify the validator.
+The first element should be the name of the `widget`, and the second you can set it up to identify the validator.
 You should specify the `widget` in the JSON schema of the block (or as additional data in the content type definition).
 The next example is for the use case of a block JSON schema:
 
 ```ts
 let blockSchema = {
+  // ... fieldset definition in here
   properties: {
     ...schema.properties,
-    customField: {
-      title: 'My custom field',
+    phone: {
+      title: 'Phone number',
       description: '',
-      widget: 'myCustomURLWidget',
+      widget: 'phoneNumber',
     },
   },
   required: [],
@@ -104,11 +106,13 @@ These validators are applied depending on the behavior (usually coming from a co
 ```ts
 config.registerComponent({
   name: 'fieldValidator',
-  dependencies: ['plone.eventbasic', 'start'],
-  component: urlValidator,
+  dependencies: ['plone.eventbasic', 'start', 'startValidator'],
+  component: startEventDateRangeValidator,
 });
 ```
+
 The first dependency should be the name of the behavior, and the second the name (`id`) of the field.
+It can get a third dependency in case you want to specify several validators for the same behavior - field id combination.
 This type of validator only applies to content-type validators.
 
 ### Per block type and field name validator
@@ -118,11 +122,13 @@ These validators are applied depending on the block type in combination with the
 ```ts
 config.registerComponent({
   name: 'fieldValidator',
-  dependencies: ['slider', 'url'],
+  dependencies: ['slider', 'url', 'isURL'],
   component: urlValidator,
 });
 ```
+
 The first dependency should be the `id` of the block, and the second the `id` of the field.
+It can get a third dependency in case you want to specify several validators for the same block type - field id combination.
 This type of validator only applies to blocks.
 
 ### Specific validator using the `validator` key in the field
@@ -142,6 +148,7 @@ You should specify the validator in the JSON schema of the block (or as addition
 
 ```ts
 let blockSchema = {
+  // ... fieldset definition in here
   properties: {
     ...schema.properties,
     customField: {
@@ -155,7 +162,7 @@ let blockSchema = {
 ```
 
 It does not need to be tied to any field `type` or `widget` definition.
-It runs in addition to all the above, so it complements the normal validators if any apply.
+It runs in addition to all the above, so it complements the other validators if any apply.
 
 ## Volto's default validators
 
