@@ -30,8 +30,8 @@ config.registerComponent({
 });
 ```
 
-It takes two `dependencies`.
-The first element should be the `default` identifier, and the second you can set it up to identify the validator.
+It takes two `dependencies` since we can have several validators for the `default` use case.
+The first element should be the fixed `default` identifier, and the second you can set it up to identify the validator itself.
 In the case of the example, this other dependency is `minLength`.
 It can be any string.
 
@@ -48,7 +48,7 @@ config.registerComponent({
 ```
 
 It takes two `dependencies` since we can potentially have several validators for the same `type`.
-The first element should be the `type`, and the second you can set it up to identify the validator.
+The first element should be the `type`, and the second you can set it up to identify the validator itself.
 You should specify the `type` in the JSON schema of the block (in a content type, this is included in the default serialization of the field).
 The next example is for the use case of a block JSON schema:
 
