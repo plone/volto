@@ -376,6 +376,13 @@ It is unlikely that your code uses it, unless you heavily customized the Jest te
 This was not used by the core since some time ago, and nowadays is more suitable for being an add-on and not being included in core.
 If you still use it, bring it back as your main add-on dependency, bring back the `SocialSharing` component from Volto 17 as a custom component in your add-on code.
 
+### Refactor of `FormValidation` module
+
+The `packages/volto/src/helpers/FormValidation/FormValidation.jsx` module has been heavily refactored.
+Some helper functions have been moved to `packages/volto/src/helpers/FormValidation/validators.ts`, however, none of that functions were exported in the first place, so no imports will be broken.
+In case that you've shadowed the `packages/volto/src/helpers/FormValidation/FormValidation.jsx` module, you should revisit it and update it with the latest refactor.
+If you added more validators manually in that shadow, please refer to the documentation to add the validators in the new way: {doc}`../configuration/validation`.
+
 (volto-upgrade-guide-17.x.x)=
 
 ## Upgrading to Volto 17.x.x
