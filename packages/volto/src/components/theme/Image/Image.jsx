@@ -45,13 +45,19 @@ export default function Image({
     if (!image) return null;
 
     const isSvg = image['content-type'] === 'image/svg+xml';
+    console.log(isSvg, image.width, image.height, imageProps);
     // In case `base_path` is present (`preview_image_link`) use it as base path
     const basePath = image.base_path || item['@id'];
 
     attrs.src = `${flattenToAppURL(basePath)}/${image.download}`;
-    attrs.width = image.width;
-    attrs.height = image.height;
+
     attrs.className = cx(className, { responsive });
+
+    //set the scale only if not svg, because svg is not supported for the scale
+    if (!isSvg) {
+      attrs.width = image.width;
+      attrs.height = image.height;
+    }
 
     if (!isSvg && image.scales && Object.keys(image.scales).length > 0) {
       const sortedScales = Object.values(image.scales).sort((a, b) => {
