@@ -45,7 +45,6 @@ export default function Image({
     if (!image) return null;
 
     const isSvg = image['content-type'] === 'image/svg+xml';
-    console.log(isSvg, image.width, image.height, imageProps);
     // In case `base_path` is present (`preview_image_link`) use it as base path
     const basePath = image.base_path || item['@id'];
 
