@@ -381,10 +381,10 @@ export const messages = defineMessages({
   },
   startEventRange: {
     id: 'Start event date happens later than the end event date',
-    defaultMessage: 'Start event date happens later than the end event date',
+    defaultMessage: 'Event start date happens later than the event end date',
   },
   endEventRange: {
     id: 'End event date happens before than the start event date',
-    defaultMessage: 'End event date happens before than the start event date',
+    defaultMessage: 'Event end date happens before the event start date',
   },
 });
