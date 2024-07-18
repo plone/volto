@@ -49,7 +49,6 @@ export default function Image({
     const basePath = image.base_path || item['@id'];
 
     attrs.src = `${flattenToAppURL(basePath)}/${image.download}`;
-
     attrs.className = cx(className, { responsive });
 
     //set the scale only if not svg, because svg is not supported for the scale
