@@ -51,7 +51,7 @@ const TeaserDefaultTemplate = (props) => {
             }
           >
             <div className="teaser-item default">
-              {url && !isInternalURL(url) ? (
+              {url && !image?.image_field ? (
                 <div className="image-wrapper">
                   <Image src={url} alt="" loading="lazy" responsive={true} />
                 </div>
