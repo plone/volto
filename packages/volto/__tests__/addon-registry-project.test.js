@@ -137,6 +137,7 @@ describe('AddonConfigurationRegistry - Project', () => {
     const base = path.join(__dirname, 'fixtures', 'test-volto-project');
     const reg = new AddonConfigurationRegistry(base);
     expect(reg.getProjectCustomizationPaths()).toStrictEqual({
+      '@plone/volto/LanguageSwitcher': `${base}/src/customizations/LanguageSwitcher.js`,
       '@plone/volto/TSComponent': `${base}/src/customizations/TSComponent.jsx`,
       '@plone/volto/client': `${base}/src/customizations/client.js`,
       '@plone/volto/routes': `${base}/src/customizations/routes.tsx`,
@@ -149,6 +150,7 @@ describe('AddonConfigurationRegistry - Project', () => {
     const base = path.join(__dirname, 'fixtures', 'test-volto-project');
     const reg = new AddonConfigurationRegistry(base);
     expect(reg.getAddonCustomizationPaths()).toStrictEqual({
+      '@plone/volto/LanguageSwitcher': `${base}/node_modules/test-released-source-addon/src/customizations/LanguageSwitcher.js`,
       '@plone/volto/TSComponent': `${base}/node_modules/test-released-source-addon/src/customizations/TSComponent.jsx`,
       '@plone/volto/client': `${base}/node_modules/test-released-source-addon/src/customizations/client.js`,
       '@plone/volto/routes': `${base}/node_modules/test-released-source-addon/src/customizations/routes.tsx`,

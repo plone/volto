@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 1.7.0 (2024-06-26)
+
+### Feature
+
+- Improve shadowing by including the support for js->jsx extensions in old shadows. This allow support for upcoming renaming of files that should be jsx and are js. @sneridagh [#6113](https://github.com/plone/volto/issues/6113)
+
 ## 1.6.0 (2024-06-13)
 
 ### Feature

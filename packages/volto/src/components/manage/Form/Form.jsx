@@ -349,7 +349,7 @@ class Form extends Component {
 
   /**
    * If user clicks on input, the form will be not considered pristine
-   * this will avoid onBlur effects without interraction with the form
+   * this will avoid onBlur effects without interaction with the form
    * @param {Object} e event
    */
   onClickInput(e) {
@@ -774,7 +774,14 @@ class Form extends Component {
                                     id={field}
                                     fieldSet={fieldset.title.toLowerCase()}
                                     formData={formData}
-                                    focus={this.state.inFocus[field]}
+                                    focus={
+                                      this.state.isClient &&
+                                      document
+                                        .getElementById('sidebar-metadata')
+                                        ?.contains(document.activeElement)
+                                        ? this.state.inFocus[field]
+                                        : false
+                                    }
                                     value={formData?.[field]}
                                     required={
                                       schema.required.indexOf(field) !== -1
