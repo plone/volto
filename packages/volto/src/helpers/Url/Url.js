@@ -139,7 +139,10 @@ export const isCmsUi = memoize((currentPathname) => {
   // because the regexp test does not take that into account
   // https://github.com/plone/volto/issues/870
   return settings.nonContentRoutes.reduce(
-    (acc, route) => acc || new RegExp(route).test(`/${fullPath}`),
+    (acc, route) =>
+      acc ||
+      (settings.publicUiRoutes.indexOf(route) < 0 &&
+        new RegExp(route).test(`/${fullPath}`)),
     false,
   );
 });
