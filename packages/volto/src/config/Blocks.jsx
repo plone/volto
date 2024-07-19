@@ -10,6 +10,7 @@ import ViewListingBlock from '@plone/volto/components/manage/Blocks/Listing/View
 import ViewVideoBlock from '@plone/volto/components/manage/Blocks/Video/View';
 import ViewMapBlock from '@plone/volto/components/manage/Blocks/Maps/View';
 import ViewHTMLBlock from '@plone/volto/components/manage/Blocks/HTML/View';
+import ViewFormBlock from '@plone/volto/components/manage/Blocks/Form/View';
 
 import EditTitleBlock from '@plone/volto/components/manage/Blocks/Title/Edit';
 import EditDescriptionBlock from '@plone/volto/components/manage/Blocks/Description/Edit';
@@ -24,6 +25,7 @@ import SummaryListingBlockTemplate from '@plone/volto/components/manage/Blocks/L
 import EditVideoBlock from '@plone/volto/components/manage/Blocks/Video/Edit';
 import EditMapBlock from '@plone/volto/components/manage/Blocks/Maps/Edit';
 import EditHTMLBlock from '@plone/volto/components/manage/Blocks/HTML/Edit';
+import EditFormBlock from '@plone/volto/components/manage/Blocks/Form/Edit';
 
 import descriptionSVG from '@plone/volto/icons/description.svg';
 import titleSVG from '@plone/volto/icons/text.svg';
@@ -382,6 +384,18 @@ const blocksConfig = {
     group: 'common',
     view: ViewHTMLBlock,
     edit: EditHTMLBlock,
+    schema: BlockSettingsSchema,
+    restricted: false,
+    mostUsed: false,
+    sidebarTab: 0,
+  },
+  form: {
+    id: 'form',
+    title: 'Form',
+    icon: codeSVG,
+    group: 'common',
+    view: ViewFormBlock,
+    edit: EditFormBlock,
     schema: BlockSettingsSchema,
     restricted: false,
     mostUsed: false,
