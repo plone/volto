@@ -3,6 +3,8 @@ const chalk = require('chalk');
 const Generator = require('yeoman-generator');
 const _ = require('lodash');
 const utils = require('./utils');
+const fs = require('fs');
+const fsp = require('fs').promises;
 
 // bring in the deprecated install method from the yeoman-generator/lib/actions/install.js
 _.extend(Generator.prototype, require('yeoman-generator/lib/actions/install'));
@@ -149,8 +151,44 @@ Run "npm install -g @plone/generator-volto" to update.`,
 
     let props;
 
+    // dependencies
+    let VoltoPackageJSON;
+    let PloneTypesVersion;
+    if (voltoVersion === '*') {
+      VoltoPackageJSON = JSON.parse(
+        fs.readFileSync(`packages/volto/package.json`, 'utf8'),
+      );
+      voltoVersion = VoltoPackageJSON.version;
+      PloneTypesVersion = await utils.getPloneTypesVersion('main');
+    } else {
+      VoltoPackageJSON = await utils.getVoltoPackageJSON(voltoVersion);
+      PloneTypesVersion = await utils.getPloneTypesVersion(voltoVersion);
+    }
+
+    const VoltoDependencies = VoltoPackageJSON.dependencies;
+    const VoltoDevDependencies = VoltoPackageJSON.devDependencies;
+
     const dependencies = {
       '@plone/volto': voltoVersion,
+      // TODO: find a better way to specify the version of the core dependencies
+      // Since they grab "workspace: *" from the volto package.json
+      '@plone/scripts': '^3.6.0',
+      ...Object.fromEntries(
+        Object.entries(VoltoDependencies).filter(
+          ([key]) => !key.startsWith('@plone'),
+        ),
+      ),
+    };
+
+    const devDependencies = {
+      // TODO: find a better way to specify the version of the core devDependencies
+      // Since they grab "workspace: *" from the volto package.json
+      '@plone/types': PloneTypesVersion,
+      ...Object.fromEntries(
+        Object.entries(VoltoDevDependencies).filter(
+          ([key]) => !key.startsWith('@plone'),
+        ),
+      ),
     };
 
     // Project name
@@ -164,7 +202,7 @@ Run "npm install -g @plone/generator-volto" to update.`,
           {
             type: 'input',
             name: 'projectName',
-            message: 'Project name (e.g. my-volto-project)',
+            message: 'Project name (e.g. myvoltoproject)',
             default: path.basename(process.cwd()),
           },
         ]);
@@ -234,7 +272,16 @@ Run "npm install -g @plone/generator-volto" to update.`,
     }
 
     // Dependencies
-    this.globals.dependencies = JSON.stringify(dependencies, null, 4);
+    this.globals.dependencies = JSON.stringify(
+      utils.orderedDependencies(dependencies),
+      null,
+      4,
+    );
+    this.globals.devDependencies = JSON.stringify(
+      utils.orderedDependencies(devDependencies),
+      null,
+      4,
+    );
   }
 
   writing() {
@@ -269,9 +316,13 @@ Run "npm install -g @plone/generator-volto" to update.`,
     }
   }
 
-  end() {
+  async end() {
     const base =
       currentDir === this.globals.projectName ? '.' : this.globals.projectName;
+
+    // Delete the unfamous "package.json.tpl"
+    await fsp.unlink(path.join(base, 'package.json.tpl'));
+
     this.composeWith(require.resolve('../addon'), {
       addonName: this.opts.defaultAddonName
         ? this.opts.defaultAddonName

@@ -3,18 +3,15 @@
  * @module components/manage/Controlpanels/Controlpanels
  */
 
-import { Helmet, asyncConnect } from '@plone/volto/helpers';
+import { Helmet } from '@plone/volto/helpers';
 import { concat, filter, last, map, sortBy, uniqBy } from 'lodash';
-import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
-import { Portal } from 'react-portal';
-import { connect } from 'react-redux';
+import { createPortal } from 'react-dom';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { compose } from 'redux';
 import { Container, Grid, Header, Message, Segment } from 'semantic-ui-react';
 
-import { getSystemInformation, listControlpanels } from '@plone/volto/actions';
 import { Error, Icon, Toolbar, VersionOverview } from '@plone/volto/components';
 
 import config from '@plone/volto/registry';
@@ -99,14 +96,18 @@ const messages = defineMessages({
 /**
  * Controlpanels container class.
  */
-function Controlpanels({
-  controlpanels,
-  controlpanelsRequest,
-  systemInformation,
-  pathname,
-}) {
+export default function Controlpanels({ location }) {
   const intl = useIntl();
   const [isClient, setIsClient] = useState(false);
+
+  const { pathname } = location;
+  const controlpanels = useSelector(
+    (state) => state.controlpanels.controlpanels,
+  );
+  const controlpanelsRequest = useSelector((state) => state.controlpanels.list);
+  const systemInformation = useSelector(
+    (state) => state.controlpanels.systeminformation,
+  );
 
   useEffect(() => {
     setIsClient(true);
@@ -260,8 +261,8 @@ function Controlpanels({
           </Segment>
         </Segment.Group>
       </Container>
-      {isClient && (
-        <Portal node={document.getElementById('toolbar')}>
+      {isClient &&
+        createPortal(
           <Toolbar
             pathname={pathname}
             hideDefaultViewButtons
@@ -275,47 +276,9 @@ function Controlpanels({
                 />
               </Link>
             }
-          />
-        </Portal>
-      )}
+          />,
+          document.getElementById('toolbar'),
+        )}
     </div>
   );
 }
-
-/**
- * Property types.
- * @property {Object} propTypes Property types.
- * @static
- */
-Controlpanels.propTypes = {
-  controlpanels: PropTypes.arrayOf(
-    PropTypes.shape({
-      '@id': PropTypes.string,
-      group: PropTypes.string,
-      title: PropTypes.string,
-    }),
-  ).isRequired,
-  pathname: PropTypes.string.isRequired,
-};
-
-export default compose(
-  connect((state, props) => ({
-    controlpanels: state.controlpanels.controlpanels,
-    controlpanelsRequest: state.controlpanels.list,
-    pathname: props.location.pathname,
-    systemInformation: state.controlpanels.systeminformation,
-  })),
-
-  asyncConnect([
-    {
-      key: 'controlpanels',
-      promise: async ({ location, store: { dispatch } }) =>
-        await dispatch(listControlpanels()),
-    },
-    {
-      key: 'systemInformation',
-      promise: async ({ location, store: { dispatch } }) =>
-        await dispatch(getSystemInformation()),
-    },
-  ]),
-)(Controlpanels);

@@ -100,7 +100,7 @@ declare function SearchSchema({ data, intl }: {
         };
         availableViews: {
             title: any;
-            choices: any;
+            choices: string[][];
             widget: string;
         };
     };

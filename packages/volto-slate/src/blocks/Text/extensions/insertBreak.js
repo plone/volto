@@ -34,7 +34,7 @@ export const withSplitBlocksOnBreak = (editor) => {
         const { data } = blockProps;
 
         // Don't add new block if not allowed
-        if (data?.disableNewBlocks) {
+        if (data?.disableNewBlocks || blockProps.detached) {
           return insertBreak();
         }
 
@@ -42,9 +42,9 @@ export const withSplitBlocksOnBreak = (editor) => {
         // deconstructToVoltoBlocks
         ReactDOM.unstable_batchedUpdates(() => {
           const [top, bottom] = splitEditorInTwoFragments(editor);
-          setEditorContent(editor, top);
           // ReactEditor.blur(editor);
           createAndSelectNewBlockAfter(editor, bottom);
+          setEditorContent(editor, top);
         });
       }
       return;

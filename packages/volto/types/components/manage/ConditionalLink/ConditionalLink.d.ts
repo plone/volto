@@ -4,7 +4,7 @@ declare function ConditionalLink({ condition, to, item, ...props }: {
     condition: any;
     to: any;
     item: any;
-}): any;
+}): import("react/jsx-runtime").JSX.Element;
 declare namespace ConditionalLink {
     namespace propTypes {
         let condition: any;

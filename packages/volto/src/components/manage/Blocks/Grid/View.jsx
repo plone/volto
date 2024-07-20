@@ -5,7 +5,7 @@ import { withBlockExtensions } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
 const GridBlockView = (props) => {
-  const { data, path, className } = props;
+  const { data, path, className, style } = props;
   const metadata = props.metadata || props.properties;
   const columns = data.blocks_layout.items;
   const blocksConfig =
@@ -22,6 +22,7 @@ const GridBlockView = (props) => {
         three: columns?.length === 3,
         four: columns?.length === 4,
       })}
+      style={style}
     >
       {data.headline && <h2 className="headline">{data.headline}</h2>}
 

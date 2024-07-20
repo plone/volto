@@ -47,46 +47,12 @@ The Volto Team reviews pull requests only from people with a GitHub account who 
 ```{include} ./branch-policy.md
 ```
 
+
 (contributing-install-volto-for-development-label)=
 
 ## Install Volto for development
 
-To make changes to Volto, you need to run it from a copy of the [`plone/volto` GitHub repository](https://github.com/plone/volto/).
-
-### Prerequisites
-
-You need all the requirements already mentioned in {doc}`plone:install/install-from-packages`.
-
-### Clone the Volto repository
-
-```shell
-git clone https://github.com/plone/volto.git
-```
-
-### Start the Plone backend
-
-While developing Volto, you need to have the Plone backend running.
-If you don't already have the backend installed, the easiest way is to run the following command inside the Volto repository:
-
-```shell
-make start-backend-docker
-```
-
-### Install Node.js dependencies
-
-```shell
-yarn
-```
-
-### Start Volto
-
-```shell
-yarn start
-```
-
-### Open Volto in your browser
-
-Browse to [http://localhost:3000](http://localhost:3000).
+For developing Volto, follow {doc}`developing-core`.
 
 
 (contributing-translations-label)=
@@ -94,7 +60,7 @@ Browse to [http://localhost:3000](http://localhost:3000).
 ## Translations
 
 All text that can be shown in a browser must be translatable.
-Please mark all such strings as translatable as defined in the [i18n guide](../recipes/i18n.md).
+Please mark all such strings as translatable as defined in the [i18n guide](../development/i18n.md).
 
 
 (contributing-branch-policy-for-translations-label)=
@@ -161,6 +127,7 @@ redux
 routing
 icons
 accessibility-guidelines
+bundle-size-optimization
 typescript
 volto-core-addons
 version-policy

@@ -9,13 +9,14 @@ import { Helmet } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link, withRouter } from 'react-router-dom';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Container } from 'semantic-ui-react';
 import jwtDecode from 'jwt-decode';
 import { toast } from 'react-toastify';
 
-import { Form, Icon, Toast, Toolbar } from '@plone/volto/components';
+import { Icon, Toast, Toolbar } from '@plone/volto/components';
+import { Form } from '@plone/volto/components/manage/Form';
 import { updatePassword } from '@plone/volto/actions';
 import { getBaseUrl } from '@plone/volto/helpers';
 
@@ -195,8 +196,8 @@ class ChangePassword extends Component {
           onCancel={this.onCancel}
           loading={this.props.loading}
         />
-        {this.state.isClient && (
-          <Portal node={document.getElementById('toolbar')}>
+        {this.state.isClient &&
+          createPortal(
             <Toolbar
               pathname={this.props.pathname}
               hideDefaultViewButtons
@@ -213,9 +214,9 @@ class ChangePassword extends Component {
                   />
                 </Link>
               }
-            />
-          </Portal>
-        )}
+            />,
+            document.getElementById('toolbar'),
+          )}
       </Container>
     );
   }

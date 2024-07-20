@@ -1,9 +1,4 @@
-import type {
-  Expanders,
-  ContainedItem,
-  PreviewImage,
-  RelatedItem,
-} from './common';
+import type { Expanders, ContainedItem, Image, RelatedItem } from './common';
 
 export interface Content {
   '@components': Expanders;
@@ -33,6 +28,7 @@ export interface Content {
   expires: string | null;
   id: string;
   is_folderish: boolean;
+  image?: Image | null;
   items: ContainedItem[];
   items_total: number;
   language: unknown;
@@ -68,7 +64,7 @@ export interface Content {
     title: string;
   };
   preview_caption: string | null;
-  preview_image: PreviewImage;
+  preview_image?: Image | null;
   previous_item: {
     '@id': string;
     '@type': string;
@@ -81,7 +77,7 @@ export interface Content {
   subjects: [];
   table_of_contents: boolean | null;
   title: string;
-  type_tile: string | null;
+  type_title: string | null;
   version: number | null;
   versioning_enabled: boolean | null;
   working_copy: unknown;
@@ -90,3 +86,4 @@ export interface Content {
 
 export interface CreateContentResponse extends Content {}
 export interface UpdateContentResponse extends Content {}
+export * from './common';

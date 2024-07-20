@@ -1,120 +1,126 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Search renders a search component 1`] = `
-<div
-  className="ui container"
-  id="page-search"
->
+<div>
   <div
-    className="container"
+    class="ui container"
+    id="page-search"
   >
-    <article
-      id="content"
+    <div
+      class="container"
     >
-      <header>
-        <h1
-          className="documentFirstHeading"
-        >
-          Search results for 
-          <q>
-            blog
-          </q>
-        </h1>
-        <div
-          id="search-tags"
-        />
-        <div>
-          No results found
-        </div>
-      </header>
-      <section
-        id="content-core"
+      <article
+        id="content"
       >
-        <article
-          className="tileItem"
-        >
-          <h2
-            className="tileHeadline"
+        <header>
+          <h1
+            class="documentFirstHeading"
           >
-            <a
-              className="summary url"
-              href="/blog"
-              onClick={[Function]}
-              target={null}
-              title="Folder"
-            >
-              Blog
-            </a>
-          </h2>
+            Search results for 
+            <q>
+              blog
+            </q>
+          </h1>
           <div
-            className="tileBody"
-          >
-            <span
-              className="description"
-            >
-              My blog
-            </span>
-          </div>
-          <div
-            className="tileFooter"
-          >
-            <a
-              className={null}
-              href="/blog"
-              onClick={[Function]}
-              target={null}
-              title={null}
-            >
-              Read More…
-            </a>
-          </div>
-          <div
-            className="visualClear"
+            id="search-tags"
           />
-        </article>
-      </section>
-    </article>
+          <div>
+            No results found
+          </div>
+        </header>
+        <section
+          id="content-core"
+        >
+          <article
+            class="tileItem"
+          >
+            <h2
+              class="tileHeadline"
+            >
+              <a
+                class="summary url"
+                href="/blog"
+                title="Folder"
+              >
+                Blog
+              </a>
+            </h2>
+            <div
+              class="tileBody"
+            >
+              <span
+                class="description"
+              >
+                My blog
+              </span>
+            </div>
+            <div
+              class="tileFooter"
+            >
+              <a
+                href="/blog"
+              >
+                Read More…
+              </a>
+            </div>
+            <div
+              class="visualClear"
+            />
+          </article>
+        </section>
+      </article>
+    </div>
   </div>
   <div
-    id="Portal"
-  />
+    id="toolbar"
+  >
+    <div
+      id="Portal"
+    />
+  </div>
 </div>
 `;
 
 exports[`Search renders an empty search component 1`] = `
-<div
-  className="ui container"
-  id="page-search"
->
+<div>
   <div
-    className="container"
+    class="ui container"
+    id="page-search"
   >
-    <article
-      id="content"
+    <div
+      class="container"
     >
-      <header>
-        <h1
-          className="documentFirstHeading"
-        >
-          Search results for 
-          <q>
-            blog
-          </q>
-        </h1>
-        <div
-          id="search-tags"
+      <article
+        id="content"
+      >
+        <header>
+          <h1
+            class="documentFirstHeading"
+          >
+            Search results for 
+            <q>
+              blog
+            </q>
+          </h1>
+          <div
+            id="search-tags"
+          />
+          <div>
+            No results found
+          </div>
+        </header>
+        <section
+          id="content-core"
         />
-        <div>
-          No results found
-        </div>
-      </header>
-      <section
-        id="content-core"
-      />
-    </article>
+      </article>
+    </div>
   </div>
   <div
-    id="Portal"
-  />
+    id="toolbar"
+  >
+    <div
+      id="Portal"
+    />
+  </div>
 </div>
 `;

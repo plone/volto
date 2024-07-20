@@ -5,7 +5,7 @@ import { defineMessages, useIntl } from 'react-intl';
 
 import { usePrevious } from '@plone/volto/helpers';
 import { updateComment } from '@plone/volto/actions';
-import { ModalForm } from '@plone/volto/components';
+import { ModalForm } from '@plone/volto/components/manage/Form';
 
 const messages = defineMessages({
   editComment: {
@@ -60,6 +60,7 @@ const CommentEditModal = (props) => {
             text: {
               title: intl.formatMessage(messages.comment),
               type: 'string',
+              widget: 'textarea',
               description: '',
             },
           },

@@ -22,4 +22,4 @@ exports[`RichTextWidget renders a rich text view widget component with children 
 />
 `;
 
-exports[`RichTextWidget renders an empty rich text view widget component 1`] = `""`;
+exports[`RichTextWidget renders an empty rich text view widget component 1`] = `null`;

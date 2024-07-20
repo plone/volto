@@ -1,7 +1,8 @@
-import Icon from '../Icon/Icon';
+import React from 'react';
+import { Icon } from '../Icon/Icon';
 import type { IconPropsWithoutChildren } from '../Icon/Icon';
 
-const Share = (props: IconPropsWithoutChildren) => {
+export const ShareIcon = (props: IconPropsWithoutChildren) => {
   return (
     <Icon {...props}>
       <svg
@@ -20,5 +21,3 @@ const Share = (props: IconPropsWithoutChildren) => {
     </Icon>
   );
 };
-
-export default Share;

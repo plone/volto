@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link, withRouter } from 'react-router-dom';
 import { find, isEqual, map } from 'lodash';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import {
   Button,
   Checkbox,
@@ -505,8 +505,8 @@ class SharingComponent extends Component {
             </Form>
           </Plug>
         </Segment.Group>
-        {this.state.isClient && (
-          <Portal node={document.getElementById('toolbar')}>
+        {this.state.isClient &&
+          createPortal(
             <Toolbar
               pathname={this.props.pathname}
               hideDefaultViewButtons
@@ -523,9 +523,9 @@ class SharingComponent extends Component {
                   />
                 </Link>
               }
-            />
-          </Portal>
-        )}
+            />,
+            document.getElementById('toolbar'),
+          )}
       </Container>
     );
   }

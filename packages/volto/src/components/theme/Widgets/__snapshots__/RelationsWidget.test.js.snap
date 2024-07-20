@@ -264,4 +264,4 @@ exports[`RelationsWidget renders a vocabulary relations view widget component 1`
 </ul>
 `;
 
-exports[`RelationsWidget renders an empty relations view widget component 1`] = `""`;
+exports[`RelationsWidget renders an empty relations view widget component 1`] = `null`;

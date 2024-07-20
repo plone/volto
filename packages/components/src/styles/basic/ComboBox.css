@@ -1,0 +1,125 @@
+@import './Checkbox.css';
+@import './ListBox.css';
+@import './Popover.css';
+@import './Form.css';
+@import './Button.css';
+@import './theme.css';
+
+.react-aria-ComboBox {
+  color: var(--text-color);
+
+  .react-aria-Input {
+    padding: 0.286rem 2rem 0.286rem 0.571rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    margin: 0;
+    background: var(--field-background);
+    color: var(--field-text-color);
+    font-size: 1.072rem;
+    vertical-align: middle;
+
+    &[data-focused] {
+      outline: none;
+      outline: 2px solid var(--focus-ring-color);
+      outline-offset: -1px;
+    }
+  }
+
+  .react-aria-Button {
+    width: 1.429rem;
+    height: 1.429rem;
+    padding: 0;
+    border: none;
+    border-radius: 4px;
+    margin-left: -1.714rem;
+    background: var(--highlight-background);
+    color: var(--highlight-foreground);
+    cursor: default;
+    font-size: 0.857rem;
+    forced-color-adjust: none;
+
+    &[data-pressed] {
+      background: var(--highlight-background);
+      box-shadow: none;
+    }
+  }
+}
+
+.react-aria-Popover[data-trigger='ComboBox'] {
+  width: var(--trigger-width);
+
+  .react-aria-ListBox {
+    display: block;
+    width: unset;
+    min-height: unset;
+    max-height: inherit;
+    border: none;
+
+    .react-aria-Header {
+      padding-left: 1.571rem;
+    }
+  }
+
+  .react-aria-ListBoxItem {
+    padding: 0.286rem 0.571rem 0.286rem 1.571rem;
+
+    &[data-focus-visible] {
+      outline: none;
+    }
+
+    &[data-selected] {
+      background: unset;
+      color: var(--text-color);
+      font-weight: 600;
+
+      &::before {
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        alt: ' ';
+        content: '✓';
+        content: '✓' / '';
+      }
+    }
+
+    &[data-focused],
+    &[data-pressed] {
+      background: var(--highlight-background);
+      color: var(--highlight-foreground);
+    }
+  }
+}
+
+.react-aria-ListBoxItem[href] {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.react-aria-ComboBox {
+  .react-aria-Input {
+    &[data-disabled] {
+      border-color: var(--border-color-disabled);
+    }
+  }
+
+  .react-aria-Button {
+    &[data-disabled] {
+      background: var(--border-color-disabled);
+    }
+  }
+
+  .react-aria-Input {
+    &[data-invalid]:not([data-focused]) {
+      border-color: var(--color-invalid);
+    }
+  }
+
+  .react-aria-FieldError {
+    color: var(--color-invalid);
+    font-size: 12px;
+  }
+
+  [slot='description'] {
+    font-size: 12px;
+  }
+}

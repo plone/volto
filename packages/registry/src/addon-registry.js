@@ -3,7 +3,6 @@ const glob = require('glob').sync;
 const path = require('path');
 const fs = require('fs');
 const debug = require('debug')('shadowing');
-const { map } = require('lodash');
 const { DepGraph } = require('dependency-graph');
 
 function getPackageBasePath(base) {
@@ -98,16 +97,24 @@ class AddonConfigurationRegistry {
     const packageJson = (this.packageJson = require(
       path.join(projectRootPath, 'package.json'),
     ));
+    this.voltoConfigJS = {};
     // Loads the dynamic config, if any
-    if (fs.existsSync(path.join(projectRootPath, 'volto.config.js'))) {
+    if (process.env.VOLTOCONFIG) {
+      if (fs.existsSync(path.resolve(process.env.VOLTOCONFIG))) {
+        const voltoConfigPath = path.resolve(process.env.VOLTOCONFIG);
+        console.log(`Using volto.config.js in: ${voltoConfigPath}`);
+        this.voltoConfigJS = require(voltoConfigPath);
+      }
+    } else if (fs.existsSync(path.join(projectRootPath, 'volto.config.js'))) {
       this.voltoConfigJS = require(
         path.join(projectRootPath, 'volto.config.js'),
       );
     } else {
-      this.voltoConfigJS = [];
+      this.voltoConfigJS = {};
     }
 
     this.projectRootPath = projectRootPath;
+    this.isVoltoProject = packageJson.name !== '@plone/volto';
     this.voltoPath =
       packageJson.name === '@plone/volto'
         ? `${projectRootPath}`
@@ -128,10 +135,10 @@ class AddonConfigurationRegistry {
     this.packages = {};
     this.customizations = new Map();
 
-    // Theme from a package.json key, from volto.config.js or from an ENV VAR
-    // Programatically via volto.config.js wins or the ENV VAR if present
+    // Theme from an ENV VAR, from volto.config.js or from a package.json key
+    // in this order of preference
     this.theme =
-      packageJson.theme || this.voltoConfigJS.theme || process.env.THEME;
+      process.env.THEME || this.voltoConfigJS.theme || packageJson.theme;
 
     this.initDevelopmentPackages();
     this.initPublishedPackages();
@@ -159,12 +166,12 @@ class AddonConfigurationRegistry {
    * Returns a tuple `[baseUrl, pathsConfig]`
    *
    */
-  getTSConfigPaths() {
+  getTSConfigPaths(rootPath = this.projectRootPath) {
     let configFile;
-    if (fs.existsSync(`${this.projectRootPath}/tsconfig.json`))
-      configFile = `${this.projectRootPath}/tsconfig.json`;
-    else if (fs.existsSync(`${this.projectRootPath}/jsconfig.json`))
-      configFile = `${this.projectRootPath}/jsconfig.json`;
+    if (fs.existsSync(`${rootPath}/tsconfig.json`))
+      configFile = `${rootPath}/tsconfig.json`;
+    else if (fs.existsSync(`${rootPath}/jsconfig.json`))
+      configFile = `${rootPath}/jsconfig.json`;
 
     let pathsConfig;
     let baseUrl;
@@ -258,6 +265,8 @@ class AddonConfigurationRegistry {
           if (!this.addonNames.includes(name)) this.addonNames.push(name);
         });
       }
+      const packageTSConfig = this.getTSConfigPaths(basePath);
+
       this.packages[name] = {
         name,
         version: pkg.version,
@@ -265,6 +274,8 @@ class AddonConfigurationRegistry {
         isRegisteredAddon: this.addonNames.includes(name),
         modulePath,
         packageJson,
+        basePath,
+        tsConfigPaths: packageTSConfig[1] ? packageTSConfig : null,
         addons: pkg.addons || [],
       };
     }
@@ -359,7 +370,31 @@ class AddonConfigurationRegistry {
   }
 
   /**
-   * Returns a mapping name:diskpath to be uses in webpack's resolve aliases
+   * Returns a list of aliases given the defined paths in `tsconfig.json`
+   */
+  getAliasesFromTSConfig(basePath, tsConfig) {
+    const [baseUrl, options] = tsConfig;
+    const fullPathsPath = baseUrl ? `${basePath}/${baseUrl}` : basePath;
+
+    let aliases = {};
+    Object.keys(options || {}).forEach((item) => {
+      const name = item.replace(/\/\*$/, '');
+      // webpack5 allows arrays here, fix later
+      const value = path.resolve(
+        fullPathsPath,
+        options[item][0].replace(/\/\*$/, ''),
+      );
+
+      aliases[name] = value;
+    });
+
+    return aliases;
+  }
+
+  /**
+   * Returns a mapping name:diskpath to be uses in webpack's resolve aliases.
+   * It includes all registered add-ons and their `src` paths, and also the paths
+   * defined in the `tsconfig.json` files of the add-ons.
    */
   getResolveAliases() {
     const pairs = [
@@ -369,7 +404,20 @@ class AddonConfigurationRegistry {
       ]),
     ];
 
-    return fromEntries(pairs);
+    let aliasesFromTSPaths = {};
+    Object.keys(this.packages).forEach((o) => {
+      if (this.packages[o].tsConfigPaths) {
+        aliasesFromTSPaths = {
+          ...aliasesFromTSPaths,
+          ...this.getAliasesFromTSConfig(
+            this.packages[o].basePath,
+            this.packages[o].tsConfigPaths,
+          ),
+        };
+      }
+    });
+
+    return { ...fromEntries(pairs), ...aliasesFromTSPaths };
   }
 
   /**
@@ -440,58 +488,67 @@ class AddonConfigurationRegistry {
       );
 
       reg.forEach(({ customPath, name, sourcePath }) => {
-        map(
-          glob(
-            `${customPath}/**/*.*(svg|png|jpg|jpeg|gif|ico|less|js|jsx|ts|tsx)`,
-          ),
-          (filename) => {
-            function changeFileExtension(filePath) {
-              // Extract the current file extension
-              const currentExtension = filePath.split('.').pop();
+        glob(
+          `${customPath}/**/*.*(svg|png|jpg|jpeg|gif|ico|less|js|jsx|ts|tsx)`,
+        ).map((filename) => {
+          function changeFileExtension(filePath) {
+            // Extract the current file extension
+            const currentExtension = filePath.split('.').pop();
 
-              // Define the mapping between file extensions
-              const extensionMapping = {
-                jsx: 'tsx',
-                tsx: 'jsx',
-                js: 'ts',
-                ts: 'js',
-              };
+            // Define the mapping between file extensions
+            const extensionMapping = {
+              jsx: 'tsx',
+              tsx: 'jsx',
+              js: 'ts',
+              ts: 'js',
+            };
 
-              // Check if the current extension is in the mapping
-              if (currentExtension in extensionMapping) {
-                // Replace the current extension with the corresponding one from the mapping
-                const newExtension = extensionMapping[currentExtension];
-                const newPath = filePath.replace(
-                  `.${currentExtension}`,
-                  `.${newExtension}`,
-                );
-                return newPath;
-              } else {
-                // If the current extension is not in the mapping, return the original path
-                return filePath;
-              }
-            }
-
-            const targetPath = filename.replace(customPath, sourcePath);
-            // We try to find the source to shadow with the exact path
-            // and we try also with the extension changed in search for JS<->TS
-            // correspondence
-            if (
-              fs.existsSync(targetPath) ||
-              fs.existsSync(changeFileExtension(targetPath))
-            ) {
-              aliases[
-                filename
-                  .replace(customPath, name)
-                  .replace(/\.(js|jsx|ts|tsx)$/, '')
-              ] = path.resolve(filename);
-            } else {
-              debug(
-                `The file ${filename} doesn't exist in the ${name} (${targetPath}), unable to customize.`,
+            // Check if the current extension is in the mapping
+            if (currentExtension in extensionMapping) {
+              // Replace the current extension with the corresponding one from the mapping
+              const newExtension = extensionMapping[currentExtension];
+              const newPath = filePath.replace(
+                `.${currentExtension}`,
+                `.${newExtension}`,
               );
+              return newPath;
+            } else {
+              // If the current extension is not in the mapping, return the original path
+              return filePath;
             }
-          },
-        );
+          }
+
+          /**
+           *Covers the use case that the file was a jsx, but was created using .js extension
+           *
+           * @param {*} filePath
+           */
+          function simpleSwapFileExtension(filePath) {
+            // Extract the current file extension
+            const currentExtension = filePath.split('.').pop();
+            return filePath.replace(`.${currentExtension}`, '.jsx');
+          }
+
+          const targetPath = filename.replace(customPath, sourcePath);
+          // We try to find the source to shadow with the exact path
+          // and we try also with the extension changed in search for JS<->TS
+          // correspondence
+          if (
+            fs.existsSync(targetPath) ||
+            fs.existsSync(changeFileExtension(targetPath)) ||
+            fs.existsSync(simpleSwapFileExtension(targetPath))
+          ) {
+            aliases[
+              filename
+                .replace(customPath, name)
+                .replace(/\.(js|jsx|ts|tsx)$/, '')
+            ] = path.resolve(filename);
+          } else {
+            debug(
+              `The file ${filename} doesn't exist in the ${name} (${targetPath}), unable to customize.`,
+            );
+          }
+        });
       });
     });
 

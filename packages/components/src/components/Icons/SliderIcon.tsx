@@ -1,7 +1,8 @@
-import Icon from '../Icon/Icon';
+import React from 'react';
+import { Icon } from '../Icon/Icon';
 import type { IconPropsWithoutChildren } from '../Icon/Icon';
 
-const Slider = (props: IconPropsWithoutChildren) => {
+export const SliderIcon = (props: IconPropsWithoutChildren) => {
   return (
     <Icon {...props}>
       <svg
@@ -21,5 +22,3 @@ const Slider = (props: IconPropsWithoutChildren) => {
     </Icon>
   );
 };
-
-export default Slider;

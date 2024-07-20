@@ -264,7 +264,7 @@ export const toggleBlock = (editor, format, allowedChildren) => {
   } else if (!isListItem && !wantsList) {
     toggleFormat(editor, format, allowedChildren);
   } else if (isListItem && wantsList && isActive) {
-    clearFormatting(editor);
+    clearList(editor);
   } else {
     console.warn('toggleBlock case not covered, please examine:', {
       wantsList,
@@ -296,6 +296,21 @@ export const switchListType = (editor, format) => {
   });
   const block = { type: format, children: [] };
   Transforms.wrapNodes(editor, block);
+};
+
+/*
+ * Clear list by exploding the block
+ */
+export const clearList = (editor) => {
+  const { slate } = config.settings;
+  Transforms.unwrapNodes(editor, {
+    match: (n) => slate.listTypes.includes(n.type),
+    split: true,
+  });
+  Transforms.setNodes(editor, {
+    type: 'p',
+  });
+  Editor.normalize(editor);
 };
 
 export const changeBlockToList = (editor, format) => {
