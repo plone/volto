@@ -12,7 +12,7 @@ projects: 'plone/47'
 
 <!--
 
-Read http://5.docs.plone.org/develop/coredev/docs/plips.html first!
+Read https://6.docs.plone.org/contributing/core/plips.html first!
 
 Set "03 type: feature: plip" as label.
 
