@@ -1,87 +1,90 @@
-import React, { Component } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { EditorReference, SlateEditor } from '@plone/volto-slate/editor';
 import { ReactEditor } from 'slate-react';
 import config from '@plone/volto/registry';
 
-class Cell extends Component {
-  static propTypes = {
-    onSelectCell: PropTypes.func.isRequired,
-    row: PropTypes.number,
-    cell: PropTypes.number,
-    value: PropTypes.array,
-    selected: PropTypes.bool,
-    onChange: PropTypes.func.isRequired,
-    isTableBlockSelected: PropTypes.bool,
-  };
+const Cell = ({
+  onSelectCell,
+  row,
+  cell,
+  value,
+  selected,
+  onChange,
+  isTableBlockSelected,
+  selectedCell,
+}) => {
+  const [editor, setEditor] = useState(null);
+  const isUnmounted = useRef(false);
+  const tableblockExtensions = config.settings.slate.tableblockExtensions;
 
-  static defaultProps = {};
+  useEffect(() => {
+    return () => {
+      isUnmounted.current = true;
+    };
+  }, []);
 
-  constructor(props) {
-    super(props);
-
-    this.onChange = this.onChange.bind(this);
-    this.handleContainerFocus = this.handleContainerFocus.bind(this);
-    this.state = { editor: null };
-    this.tableblockExtensions = config.settings.slate.tableblockExtensions;
-  }
-
-  componentWillUnmount() {
-    this.isUnmounted = true;
-  }
-
-  componentDidUpdate(prevProps) {
+  useEffect(() => {
     if (
-      prevProps.isTableBlockSelected !== this.props.isTableBlockSelected &&
-      this.props.isTableBlockSelected &&
-      this.props.cell === 0 &&
-      this.props.row === 0 &&
-      (!this.props.selectedCell ||
-        (this.props.selectedCell.row === 0 &&
-          this.props.selectedCell.cell === 0))
+      isTableBlockSelected &&
+      cell === 0 &&
+      row === 0 &&
+      (!selectedCell || (selectedCell.row === 0 && selectedCell.cell === 0))
     ) {
-      this.props.onSelectCell(this.props.row, this.props.cell);
+      onSelectCell(row, cell);
 
-      // Wait for Slate to initialize before asking it to focus
-      if (this.state.editor) {
-        setTimeout(
-          () => !this.isUnmounted && ReactEditor.focus(this.state.editor),
-          0,
-        );
+      if (editor) {
+        setTimeout(() => {
+          if (!isUnmounted.current) {
+            ReactEditor.focus(editor);
+          }
+        }, 0);
       }
     }
-  }
+  }, [isTableBlockSelected, cell, row, selectedCell, onSelectCell, editor]);
 
-  onChange(val) {
-    this.props.onChange(this.props.row, this.props.cell, [...val]);
-  }
+  const handleChange = (val) => {
+    onChange(row, cell, [...val]);
+  };
 
-  handleContainerFocus() {
-    this.props.onSelectCell(this.props.row, this.props.cell);
-  }
+  const handleContainerFocus = () => {
+    onSelectCell(row, cell);
+  };
 
-  render() {
-    return (
-      __CLIENT__ && (
-        <SlateEditor
-          tabIndex={0}
-          onChange={this.onChange}
-          extensions={this.tableblockExtensions}
-          value={this.props.value}
-          selected={this.props.selected}
-          onFocus={this.handleContainerFocus}
-          onClick={this.handleContainerFocus}
-          debug={false}
-        >
-          <EditorReference
-            onHasEditor={(editor) =>
-              !this.state.editor && this.setState({ editor })
-            }
-          />
-        </SlateEditor>
-      )
-    );
-  }
-}
+  return (
+    __CLIENT__ && (
+      <SlateEditor
+        tabIndex={0}
+        onChange={handleChange}
+        extensions={tableblockExtensions}
+        value={value}
+        selected={selected}
+        onFocus={handleContainerFocus}
+        onClick={handleContainerFocus}
+        debug={false}
+      >
+        <EditorReference
+          onHasEditor={(editorInstance) => !editor && setEditor(editorInstance)}
+        />
+      </SlateEditor>
+    )
+  );
+};
+
+Cell.propTypes = {
+  onSelectCell: PropTypes.func.isRequired,
+  row: PropTypes.number,
+  cell: PropTypes.number,
+  value: PropTypes.array,
+  selected: PropTypes.bool,
+  onChange: PropTypes.func.isRequired,
+  isTableBlockSelected: PropTypes.bool,
+  selectedCell: PropTypes.shape({
+    row: PropTypes.number,
+    cell: PropTypes.number,
+  }),
+};
+
+Cell.defaultProps = {};
 
 export default Cell;
