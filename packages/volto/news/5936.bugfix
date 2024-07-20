@@ -1,2 +1,1 @@
-Fixed full aligned image size issue on the edit screen by changing padding-left and width
-values depending on the position of the sidebar and toolbar. @cihanandac
+When adding an image to a block, and selecting the `full` alignment option, keep the image inside the block instead of overflowing. @cihanandac
