@@ -162,9 +162,18 @@ pnpm install
 
 ## Start the backend and Volto
 
-```{versionadded} 18.0.0-alpha.42
+`````{versionadded} 18.0.0-alpha.42
 Persist backend data across Docker sessions.
+
+````{warning}
+Do not use this method of persistence in a production environment.
+It is intended only for development.
+
+```{seealso}
+{doc}`../deploying/index`
 ```
+````
+`````
 
 Every time you want to run Volto for core development, you will need to create two terminal sessions, one for the backend and one for the frontend.
 For both sessions, change your working directory to the root of your Volto clone.
