@@ -25,6 +25,12 @@
     &.upper {
       transform: translateY(-100%);
     }
+
+    .link-form-container {
+      margin-left: 2px;
+      display: flex; 
+      align-items: center;
+    }
   }
 
   .toolbar-wrapper.active {
@@ -47,6 +53,7 @@
     font-family: 'Poppins', 'Helvetica Neue', Arial, Helvetica, sans-serif;
     font-size: 1rem;
     font-weight: normal;
+    min-width: 300px; // needed for image widget slate toolbar
 
     .expando {
       flex-grow: 1;

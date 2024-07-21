@@ -22,7 +22,7 @@ declare namespace inline {
     }): import("react/jsx-runtime").JSX.Element;
 }
 /**
- * Note that children can be maped to render a list or do other cool stuff
+ * Note that children can be mapped to render a list or do other cool stuff
  */
 declare const blocks: {
     unstyled: (children: any, { keys }: {

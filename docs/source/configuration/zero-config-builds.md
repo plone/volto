@@ -68,7 +68,7 @@ server {
 
 ## Configuring PORT on runtime
 
-PORT environment variable is also configurable at runtime, whish is specially useful in production since you can inject it in the run command line or in your favorite process manager, per config, without having to rebuild Volto in the process. In PM2 it would be like:
+PORT environment variable is also configurable at runtime, which is specially useful in production since you can inject it in the run command line or in your favorite process manager, per config, without having to rebuild Volto in the process. In PM2 it would be like:
 
 ```js hl_lines="9"
 module.exports = {
