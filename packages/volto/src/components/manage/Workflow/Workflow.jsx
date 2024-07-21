@@ -6,7 +6,8 @@ import { uniqBy } from 'lodash';
 import { toast } from 'react-toastify';
 import { defineMessages, useIntl } from 'react-intl';
 
-import { FormFieldWrapper, Icon, Toast } from '@plone/volto/components';
+import { Icon, Toast } from '@plone/volto/components';
+import { FormFieldWrapper } from '@plone/volto/components/manage/Widgets';
 import {
   flattenToAppURL,
   getWorkflowOptions,
@@ -145,8 +146,8 @@ const customSelectStyles = {
     color: state.isSelected
       ? '#007bc1'
       : state.isFocused
-      ? '#4a4a4a'
-      : 'inherit',
+        ? '#4a4a4a'
+        : 'inherit',
     ':active': {
       backgroundColor: null,
     },

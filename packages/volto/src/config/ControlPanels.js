@@ -44,7 +44,7 @@ export const controlPanelsIcons = {
   relations: relationsSVG,
 };
 
-export const filterControlPanels = (controlpanels) => {
+export const filterControlPanels = (controlpanels = []) => {
   const HIDDEN_CONTROL_PANELS = ['markup', 'content-rules'];
 
   return controlpanels.filter(
@@ -89,6 +89,13 @@ export const filterControlPanelsSchema = (controlpanel) => {
       'quality_3x',
       'picture_variants',
       'image_captioning',
+    ],
+    navigation: [
+      'generate_tabs',
+      'navigation_depth',
+      'sort_tabs_on',
+      'sort_tabs_reversed',
+      'sitemap_depth',
     ],
   };
 

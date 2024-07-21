@@ -1,5 +1,5 @@
 import React from 'react';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import { CSSTransition } from 'react-transition-group';
 import PropTypes from 'prop-types';
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
@@ -15,6 +15,11 @@ const SidebarPopup = (props) => {
     if (asideElement && doesNodeContainClick(asideElement.current, e)) return;
     onClose();
   };
+
+  const [isClient, setIsClient] = React.useState(false);
+  React.useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   React.useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside, false);
@@ -32,9 +37,13 @@ const SidebarPopup = (props) => {
           classNames="overlay-container"
           unmountOnExit
         >
-          <Portal node={document?.body}>
-            <div className="overlay-container"></div>
-          </Portal>
+          <>
+            {document?.body &&
+              createPortal(
+                <div className="overlay-container"></div>,
+                document?.body,
+              )}
+          </>
         </CSSTransition>
       )}
       <CSSTransition
@@ -43,23 +52,27 @@ const SidebarPopup = (props) => {
         classNames="sidebar-container"
         unmountOnExit
       >
-        <Portal>
-          <aside
-            role="presentation"
-            onClick={(e) => {
-              e.stopPropagation();
-            }}
-            onKeyDown={(e) => {
-              e.stopPropagation();
-            }}
-            ref={asideElement}
-            key="sidebarpopup"
-            className="sidebar-container"
-            style={{ overflowY: 'auto' }}
-          >
-            {children}
-          </aside>
-        </Portal>
+        <>
+          {isClient &&
+            createPortal(
+              <aside
+                role="presentation"
+                onClick={(e) => {
+                  e.stopPropagation();
+                }}
+                onKeyDown={(e) => {
+                  e.stopPropagation();
+                }}
+                ref={asideElement}
+                key="sidebarpopup"
+                className="sidebar-container"
+                style={{ overflowY: 'auto' }}
+              >
+                {children}
+              </aside>,
+              document.body,
+            )}
+        </>
       </CSSTransition>
     </>
   );

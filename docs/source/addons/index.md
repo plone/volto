@@ -15,6 +15,7 @@ myst:
 i18n
 best-practices
 theme
+public-folder
 ```
 
 There are several advanced scenarios where we might want to have more control

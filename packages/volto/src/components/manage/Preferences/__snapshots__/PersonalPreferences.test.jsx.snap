@@ -3,62 +3,88 @@
 exports[`PersonalPreferences renders a personal preferences component 1`] = `
 <div>
   <div
-    class="ui container"
-  >
-    <form
-      class="ui form"
-      method="post"
-    >
-      <fieldset
-        class="invisible"
-      >
-        <div
-          class="ui raised segments"
-        >
-          <div
-            class="ui segment"
-          >
-            <div
-              class="mocked-choices-widget"
-              id="mocked-field-language"
-            >
-              Language
-               - 
-              Your preferred language
-            </div>
-          </div>
-          <div
-            class="ui clearing segment actions"
-          >
-            <button
-              aria-label="Save"
-              class="ui basic primary right floated button"
-              title="Save"
-              type="submit"
-            >
-              <svg
-                class="icon circled"
-                style="height: 30px; width: auto; fill: currentColor;"
-                viewBox=""
-                xmlns=""
-              />
-            </button>
-            <button
-              aria-label="Cancel"
-              class="ui basic secondary right floated button"
-              title="Cancel"
-            >
-              <svg
-                class="icon circled"
-                style="height: 30px; width: auto; fill: currentColor;"
-                viewBox=""
-                xmlns=""
-              />
-            </button>
-          </div>
-        </div>
-      </fieldset>
-    </form>
-  </div>
+    data-schema="{
+  \\"fieldsets\\": [
+    {
+      \\"id\\": \\"default\\",
+      \\"title\\": \\"Default\\",
+      \\"fields\\": [
+        \\"language\\"
+      ]
+    }
+  ],
+  \\"properties\\": {
+    \\"language\\": {
+      \\"description\\": \\"Your preferred language\\",
+      \\"title\\": \\"Language\\",
+      \\"type\\": \\"string\\",
+      \\"choices\\": [
+        [
+          \\"ca\\",
+          \\"Català\\"
+        ],
+        [
+          \\"de\\",
+          \\"Deutsch\\"
+        ],
+        [
+          \\"en\\",
+          \\"English\\"
+        ],
+        [
+          \\"es\\",
+          \\"Español\\"
+        ],
+        [
+          \\"eu\\",
+          \\"Euskara\\"
+        ],
+        [
+          \\"fi\\",
+          \\"Suomi\\"
+        ],
+        [
+          \\"fr\\",
+          \\"Français\\"
+        ],
+        [
+          \\"hi\\",
+          \\"Hindi\\"
+        ],
+        [
+          \\"it\\",
+          \\"Italiano\\"
+        ],
+        [
+          \\"nl\\",
+          \\"Nederlands\\"
+        ],
+        [
+          \\"ro\\",
+          \\"Română\\"
+        ],
+        [
+          \\"ja\\",
+          \\"日本語\\"
+        ],
+        [
+          \\"pt\\",
+          \\"Português\\"
+        ],
+        [
+          \\"pt_BR\\",
+          \\"Português (Brasil)\\"
+        ],
+        [
+          \\"zh_CN\\",
+          \\"中文\\"
+        ]
+      ]
+    }
+  },
+  \\"required\\": []
+}"
+    id="Form"
+  />
 </div>
 `;

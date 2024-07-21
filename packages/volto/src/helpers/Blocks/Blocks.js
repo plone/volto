@@ -7,7 +7,11 @@ import { omit, without, endsWith, find, isObject, keys, merge } from 'lodash';
 import move from 'lodash-move';
 import { v4 as uuid } from 'uuid';
 import config from '@plone/volto/registry';
-import { applySchemaEnhancer } from '@plone/volto/helpers';
+import {
+  applySchemaEnhancer,
+  insertInArray,
+  removeFromArray,
+} from '@plone/volto/helpers';
 
 /**
  * Get blocks field.
@@ -414,7 +418,7 @@ export function emptyBlocksForm() {
  * (could be empty, if not type given) and the number of blocks
  * @function blocksFormGenerator
  * @param {number} number How many blocks to generate of the type (could be "empty", if no type provided)
- * @param {number} type The type of the blocks
+ * @param {string} type The type of the blocks
  * @return {Object} blocks/blocks_layout pair filled with the generated blocks
  */
 export function blocksFormGenerator(number, type) {
@@ -483,26 +487,26 @@ export function applySchemaDefaults({ data = {}, schema, intl }) {
             [currentField]: schema.properties[currentField].default,
           }
         : intl &&
-          schema.properties[currentField].schema &&
-          !(schema.properties[currentField].widget === 'object_list') // TODO: this should be renamed as itemSchema
-        ? {
-            ...accumulator,
-            [currentField]: {
-              ...applySchemaDefaults({
-                data: { ...data[currentField], ...accumulator[currentField] },
-                schema:
-                  typeof schema.properties[currentField].schema === 'function'
-                    ? schema.properties[currentField].schema({
-                        data: accumulator[currentField],
-                        formData: accumulator[currentField],
-                        intl,
-                      })
-                    : schema.properties[currentField].schema,
-                intl,
-              }),
-            },
-          }
-        : accumulator;
+            schema.properties[currentField].schema &&
+            !(schema.properties[currentField].widget === 'object_list') // TODO: this should be renamed as itemSchema
+          ? {
+              ...accumulator,
+              [currentField]: {
+                ...applySchemaDefaults({
+                  data: { ...data[currentField], ...accumulator[currentField] },
+                  schema:
+                    typeof schema.properties[currentField].schema === 'function'
+                      ? schema.properties[currentField].schema({
+                          data: accumulator[currentField],
+                          formData: accumulator[currentField],
+                          intl,
+                        })
+                      : schema.properties[currentField].schema,
+                  intl,
+                }),
+              },
+            }
+          : accumulator;
     }, {}),
     data,
   );
@@ -690,6 +694,19 @@ export const getPreviousNextBlock = ({ content, block }) => {
 };
 
 /**
+ * Check if a block is a container block
+ * check blocks from data as well since some add-ons use that
+ * such as @eeacms/volto-tabs-block
+ */
+export function isBlockContainer(block) {
+  return (
+    block &&
+    (hasBlocksData(block) ||
+      (block.hasOwnProperty('data') && hasBlocksData(block.data)))
+  );
+}
+
+/**
  * Given a `block` object and a list of block types, return a list of block ids matching the types
  *
  * @function findBlocks
@@ -697,19 +714,199 @@ export const getPreviousNextBlock = ({ content, block }) => {
  * @return {Array} An array of block ids
  */
 export function findBlocks(blocks, types, result = []) {
-  const containerBlockTypes = config.settings.containerBlockTypes;
-
   Object.keys(blocks).forEach((blockId) => {
     const block = blocks[blockId];
+    // check blocks from data as well since some add-ons use that
+    // such as @eeacms/volto-tabs-block
+    const child_blocks = block.blocks || block.data?.blocks;
     if (types.includes(block['@type'])) {
       result.push(blockId);
-    } else if (containerBlockTypes.includes(block['@type']) || block.blocks) {
-      findBlocks(block.blocks, types, result);
+    } else if (isBlockContainer(block)) {
+      findBlocks(child_blocks, types, result);
     }
   });
 
   return result;
 }
+
+/**
+ * Build a block's hierarchy that the order tab can understand and uses
+ */
+export const getBlocksHierarchy = (properties) => {
+  const blocksFieldName = getBlocksFieldname(properties);
+  const blocksLayoutFieldname = getBlocksLayoutFieldname(properties);
+  return properties[blocksLayoutFieldname]?.items?.map((n) => ({
+    id: n,
+    title: properties[blocksFieldName][n]?.['@type'],
+    data: properties[blocksFieldName][n],
+    children: isBlockContainer(properties[blocksFieldName][n])
+      ? getBlocksHierarchy(properties[blocksFieldName][n])
+      : [],
+  }));
+};
+
+/**
+ * Move block to different location index within blocks_layout
+ * @function moveBlock
+ * @param {Object} formData Form data
+ * @param {number} source index within form blocks_layout items
+ * @param {number} destination index within form blocks_layout items
+ * @return {Object} New form data
+ */
+export function moveBlockEnhanced(formData, { source, destination }) {
+  const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
+  const blocksFieldName = getBlocksFieldname(formData);
+
+  // If either one of source and destination are present
+  // (Moves intra-container or container <-> main container)
+  if (source.parent || destination.parent) {
+    // Move from a container to the main container
+    if (source.parent && !destination.parent) {
+      let clonedFormData = { ...formData };
+
+      clonedFormData[blocksFieldName][source.id] =
+        formData[blocksFieldName][source.parent][blocksFieldName][source.id];
+
+      clonedFormData[blocksLayoutFieldname].items = insertInArray(
+        formData[blocksLayoutFieldname].items,
+        source.id,
+        destination.position,
+      );
+
+      // Remove the source block from the source parent
+      const sourceContainer = findContainer(clonedFormData, {
+        containerId: source.parent,
+      });
+      delete sourceContainer[blocksFieldName][source.id];
+      sourceContainer[blocksLayoutFieldname].items = removeFromArray(
+        sourceContainer[blocksLayoutFieldname].items,
+        source.position,
+      );
+
+      return clonedFormData;
+    }
+
+    // Move from the main container to an inner container
+    if (!source.parent && destination.parent) {
+      let clonedFormData = { ...formData };
+
+      const destinationContainer = findContainer(clonedFormData, {
+        containerId: destination.parent,
+      });
+      destinationContainer[blocksFieldName][source.id] =
+        clonedFormData[blocksFieldName][source.id];
+      destinationContainer[blocksLayoutFieldname].items = insertInArray(
+        destinationContainer[blocksLayoutFieldname].items,
+        source.id,
+        destination.position,
+      );
+
+      // Remove the source block from the source parent
+      delete clonedFormData[blocksFieldName][source.id];
+      clonedFormData[blocksLayoutFieldname].items = removeFromArray(
+        clonedFormData[blocksLayoutFieldname].items,
+        source.position,
+      );
+
+      return clonedFormData;
+    }
+
+    // Move within the same container (except moves within the main container)
+    if (source.parent === destination.parent) {
+      let clonedFormData = { ...formData };
+
+      const destinationContainer = findContainer(clonedFormData, {
+        containerId: destination.parent,
+      });
+
+      destinationContainer[blocksLayoutFieldname].items = move(
+        destinationContainer[blocksLayoutFieldname].items,
+        source.position,
+        destination.position,
+      );
+      return clonedFormData;
+    }
+
+    // Move between containers
+    if (source.parent !== destination.parent) {
+      let clonedFormData = { ...formData };
+
+      const destinationContainer = findContainer(clonedFormData, {
+        containerId: destination.parent,
+      });
+      destinationContainer[blocksFieldName][source.id] =
+        formData[blocksFieldName][source.parent][blocksFieldName][source.id];
+
+      destinationContainer[blocksLayoutFieldname].items = insertInArray(
+        destinationContainer[blocksLayoutFieldname].items,
+        source.id,
+        destination.position,
+      );
+
+      // Remove the source block from the source parent
+      const sourceContainer = findContainer(clonedFormData, {
+        containerId: source.parent,
+      });
+      delete sourceContainer[blocksFieldName][source.id];
+      sourceContainer[blocksLayoutFieldname].items = removeFromArray(
+        sourceContainer[blocksLayoutFieldname].items,
+        source.position,
+      );
+
+      return clonedFormData;
+    }
+  }
+
+  // Default catch all, no source/destination parent specified
+  // Move within the main container
+  return {
+    ...formData,
+    [blocksLayoutFieldname]: {
+      items: move(
+        formData[blocksLayoutFieldname].items,
+        source.position,
+        destination.position,
+      ),
+    },
+  };
+}
+
+/**
+ * Finds the container with the specified containerId in the given formData.
+ *
+ * @param {object} formData - The form data object.
+ * @param {object} options - The options object.
+ * @param {string} options.containerId - The ID of the container to find.
+ * @returns {object|undefined} - The container object if found, otherwise undefined.
+ */
+export const findContainer = (formData, { containerId }) => {
+  if (
+    formData.blocks[containerId] &&
+    Object.keys(formData.blocks[containerId]).includes('blocks') &&
+    Object.keys(formData.blocks[containerId]).includes('blocks_layout')
+  ) {
+    return formData.blocks[containerId];
+  }
+
+  let container;
+  Object.keys(formData.blocks).every((blockId) => {
+    const block = formData.blocks[blockId];
+    if (
+      formData.blocks[blockId] &&
+      Object.keys(formData.blocks[blockId]).includes('blocks') &&
+      Object.keys(formData.blocks[blockId]).includes('blocks_layout')
+    ) {
+      container = findContainer(block, { containerId });
+    }
+    if (container) {
+      return false;
+    } else {
+      return true;
+    }
+  });
+
+  return container;
+};
 
 const _dummyIntl = {
   formatMessage() {},

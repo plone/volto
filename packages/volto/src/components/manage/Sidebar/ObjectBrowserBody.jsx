@@ -21,6 +21,8 @@ import clearSVG from '@plone/volto/icons/clear.svg';
 import searchSVG from '@plone/volto/icons/zoom.svg';
 import linkSVG from '@plone/volto/icons/link.svg';
 import homeSVG from '@plone/volto/icons/home.svg';
+import iconsSVG from '@plone/volto/icons/apps.svg';
+import listSVG from '@plone/volto/icons/list-bullet.svg';
 
 import ObjectBrowserNav from '@plone/volto/components/manage/Sidebar/ObjectBrowserNav';
 
@@ -40,6 +42,18 @@ const messages = defineMessages({
   search: {
     id: 'Search SVG',
     defaultMessage: 'Search SVG',
+  },
+  iconView: {
+    id: 'Icon View',
+    defaultMessage: 'Icon View',
+  },
+  listView: {
+    id: 'List View',
+    defaultMessage: 'List View',
+  },
+  home: {
+    id: 'Home',
+    defaultMessage: 'Home',
   },
   of: { id: 'Selected items - x of y', defaultMessage: 'of' },
 });
@@ -104,27 +118,27 @@ class ObjectBrowserBody extends Component {
         this.props.mode === 'multiple'
           ? '/'
           : this.props.mode === 'image' && this.props.data?.url
-          ? getParentURL(this.props.data.url)
-          : '/',
+            ? getParentURL(this.props.data.url)
+            : '/',
       currentLinkFolder:
         this.props.mode === 'multiple'
           ? '/'
           : this.props.mode === 'link' && this.props.data?.href
-          ? getParentURL(this.props.data.href)
-          : '/',
+            ? getParentURL(this.props.data.href)
+            : '/',
       parentFolder: '',
       selectedImage:
         this.props.mode === 'multiple'
           ? ''
           : this.props.mode === 'image' && this.props.data?.url
-          ? flattenToAppURL(this.props.data.url)
-          : '',
+            ? flattenToAppURL(this.props.data.url)
+            : '',
       selectedHref:
         this.props.mode === 'multiple'
           ? ''
           : this.props.mode === 'link' && this.props.data?.href
-          ? flattenToAppURL(this.props.data.href)
-          : '',
+            ? flattenToAppURL(this.props.data.href)
+            : '',
       showSearchInput: false,
       // In image mode, the searchable types default to the image types which
       // can be overridden with the property if specified.
@@ -132,6 +146,7 @@ class ObjectBrowserBody extends Component {
         this.props.mode === 'image'
           ? this.props.searchableTypes || config.settings.imageObjects
           : this.props.searchableTypes,
+      view: this.props.mode === 'image' ? 'icons' : 'list',
     };
     this.searchInputRef = React.createRef();
   }
@@ -150,8 +165,8 @@ class ObjectBrowserBody extends Component {
       mode === 'multiple'
         ? ''
         : mode === 'image'
-        ? this.state.selectedImage
-        : this.state.selectedHref;
+          ? this.state.selectedImage
+          : this.state.selectedHref;
     if (currentSelected && isInternalURL(currentSelected)) {
       this.props.searchContent(
         getParentURL(currentSelected),
@@ -201,9 +216,27 @@ class ObjectBrowserBody extends Component {
         showSearchInput: !prevState.showSearchInput,
       }),
       () => {
-        if (this.searchInputRef?.current) this.searchInputRef.current.focus();
+        if (this.searchInputRef?.current) {
+          this.searchInputRef.current.focus();
+        } else {
+          this.props.searchContent(
+            this.state.currentFolder,
+            {
+              'path.depth': 1,
+              sort_on: 'getObjPositionInParent',
+              metadata_fields: '_all',
+              b_size: 1000,
+            },
+            `${this.props.block}-${this.props.mode}`,
+          );
+        }
       },
     );
+
+  toggleView = () =>
+    this.setState((prevState) => ({
+      view: prevState.view === 'icons' ? 'list' : 'icons',
+    }));
 
   onSearch = (e) => {
     const text = flattenToAppURL(e.target.value);
@@ -386,25 +419,9 @@ class ObjectBrowserBody extends Component {
    */
   render() {
     return (
-      <Segment.Group raised>
+      <Segment.Group raised className="object-browser">
         <header className="header pulled">
           <div className="vertical divider" />
-          {this.state.currentFolder === '/' ? (
-            <>
-              {this.props.mode === 'image' ? (
-                <Icon name={folderSVG} size="24px" />
-              ) : (
-                <Icon name={linkSVG} size="24px" />
-              )}
-            </>
-          ) : (
-            <button
-              aria-label={this.props.intl.formatMessage(messages.back)}
-              onClick={() => this.navigateTo(this.state.parentFolder)}
-            >
-              <Icon name={backSVG} size="24px" />
-            </button>
-          )}
           {this.state.showSearchInput ? (
             <Input
               className="search"
@@ -414,20 +431,40 @@ class ObjectBrowserBody extends Component {
                 messages.SearchInputPlaceholder,
               )}
             />
-          ) : this.props.mode === 'image' ? (
-            <h2>
-              <FormattedMessage
-                id="Choose Image"
-                defaultMessage="Choose Image"
-              />
-            </h2>
           ) : (
-            <h2>
-              <FormattedMessage
-                id="Choose Target"
-                defaultMessage="Choose Target"
-              />
-            </h2>
+            <>
+              {this.state.currentFolder === '/' ? (
+                <>
+                  {this.props.mode === 'image' ? (
+                    <Icon name={folderSVG} size="24px" />
+                  ) : (
+                    <Icon name={linkSVG} size="24px" />
+                  )}
+                </>
+              ) : (
+                <button
+                  aria-label={this.props.intl.formatMessage(messages.back)}
+                  onClick={() => this.navigateTo(this.state.parentFolder)}
+                >
+                  <Icon name={backSVG} size="24px" />
+                </button>
+              )}
+              {this.props.mode === 'image' ? (
+                <h2>
+                  <FormattedMessage
+                    id="Choose Image"
+                    defaultMessage="Choose Image"
+                  />
+                </h2>
+              ) : (
+                <h2>
+                  <FormattedMessage
+                    id="Choose Target"
+                    defaultMessage="Choose Target"
+                  />
+                </h2>
+              )}
+            </>
           )}
 
           <button
@@ -441,40 +478,94 @@ class ObjectBrowserBody extends Component {
           </button>
         </header>
         <Segment secondary className="breadcrumbs" vertical>
-          <Breadcrumb>
-            {this.state.currentFolder !== '/' ? (
-              this.state.currentFolder.split('/').map((item, index, items) => {
-                return (
-                  <React.Fragment key={`divider-${item}-${index}`}>
-                    {index === 0 ? (
-                      <Breadcrumb.Section onClick={() => this.navigateTo('/')}>
-                        <Icon
-                          className="home-icon"
-                          name={homeSVG}
-                          size="18px"
-                        />
-                      </Breadcrumb.Section>
-                    ) : (
-                      <>
-                        <Breadcrumb.Divider key={`divider-${item.url}`} />
-                        <Breadcrumb.Section
-                          onClick={() =>
-                            this.navigateTo(items.slice(0, index + 1).join('/'))
-                          }
-                        >
-                          {item}
-                        </Breadcrumb.Section>
-                      </>
-                    )}
-                  </React.Fragment>
-                );
-              })
-            ) : (
-              <Breadcrumb.Section onClick={() => this.navigateTo('/')}>
-                <Icon className="home-icon" name={homeSVG} size="18px" />
-              </Breadcrumb.Section>
-            )}
-          </Breadcrumb>
+          {this.props.mode === 'image' && (
+            <button
+              onClick={this.toggleView}
+              className="mode-switch"
+              aria-label={this.props.intl.formatMessage(
+                this.state.view === 'list'
+                  ? messages.iconView
+                  : messages.listView,
+              )}
+            >
+              <Icon
+                name={this.state.view === 'list' ? iconsSVG : listSVG}
+                size="24px"
+                className="mode-switch"
+                title={this.props.intl.formatMessage(
+                  this.state.view === 'list'
+                    ? messages.iconView
+                    : messages.listView,
+                )}
+              />
+            </button>
+          )}
+          {!this.state.showSearchInput ? (
+            <Breadcrumb>
+              {this.state.currentFolder !== '/' ? (
+                this.state.currentFolder
+                  .split('/')
+                  .map((item, index, items) => {
+                    return (
+                      <React.Fragment key={`divider-${item}-${index}`}>
+                        {index === 0 ? (
+                          <Breadcrumb.Section
+                            onClick={() => this.navigateTo('/')}
+                            role="button"
+                            aria-label={this.props.intl.formatMessage(
+                              messages.home,
+                            )}
+                          >
+                            <Icon
+                              className="home-icon"
+                              name={homeSVG}
+                              size="18px"
+                              title={this.props.intl.formatMessage(
+                                messages.home,
+                              )}
+                            />
+                          </Breadcrumb.Section>
+                        ) : (
+                          <>
+                            <Breadcrumb.Divider key={`divider-${item.url}`} />
+                            <Breadcrumb.Section
+                              role="button"
+                              onClick={() =>
+                                this.navigateTo(
+                                  items.slice(0, index + 1).join('/'),
+                                )
+                              }
+                            >
+                              {item}
+                            </Breadcrumb.Section>
+                          </>
+                        )}
+                      </React.Fragment>
+                    );
+                  })
+              ) : (
+                <Breadcrumb.Section
+                  onClick={() => this.navigateTo('/')}
+                  aria-label={this.props.intl.formatMessage(messages.home)}
+                >
+                  <Icon
+                    className="home-icon"
+                    name={homeSVG}
+                    role="button"
+                    size="18px"
+                    title={this.props.intl.formatMessage(messages.home)}
+                  />
+                </Breadcrumb.Section>
+              )}
+            </Breadcrumb>
+          ) : (
+            <div className="searchResults">
+              <FormattedMessage
+                id="Search results"
+                defaultMessage="Search results"
+              />
+            </div>
+          )}
         </Segment>
         {this.props.mode === 'multiple' && (
           <Segment className="infos">
@@ -510,6 +601,7 @@ class ObjectBrowserBody extends Component {
           handleClickOnItem={this.handleClickOnItem}
           handleDoubleClickOnItem={this.handleDoubleClickOnItem}
           mode={this.props.mode}
+          view={this.state.view}
           navigateTo={this.navigateTo}
           isSelectable={this.isSelectable}
         />
@@ -523,6 +615,7 @@ export default compose(
   connect(
     (state) => ({
       searchSubrequests: state.search.subrequests,
+      lang: state.intl.locale,
     }),
     { searchContent },
   ),

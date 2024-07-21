@@ -6,10 +6,11 @@ export default SidebarPortal;
  * @param {string} tab Element id where to insert sidebar content, default: sidebar-properties
  * @returns {string} Rendered sidebar
  */
-declare function SidebarPortal({ children, selected, tab }: any): string;
+declare function SidebarPortal({ children, selected, tab }: React.ReactNode): string;
 declare namespace SidebarPortal {
     namespace propTypes {
         let children: any;
         let selected: any;
     }
 }
+import React from 'react';

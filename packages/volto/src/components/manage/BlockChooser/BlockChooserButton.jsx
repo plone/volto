@@ -7,7 +7,7 @@ import config from '@plone/volto/registry';
 import { Button, Ref } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
 import { usePopper } from 'react-popper';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 
 const messages = defineMessages({
   addBlock: {
@@ -115,8 +115,8 @@ const BlockChooserButton = (props) => {
             />
           </Ref>
         )}
-      {addNewBlockOpened && (
-        <Portal node={document.getElementById('body')}>
+      {addNewBlockOpened &&
+        createPortal(
           <div
             ref={setPopperElement}
             style={styles.popper}
@@ -148,9 +148,9 @@ const BlockChooserButton = (props) => {
               navRoot={navRoot}
               contentType={contentType}
             />
-          </div>
-        </Portal>
-      )}
+          </div>,
+          document.body,
+        )}
     </>
   );
 };

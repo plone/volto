@@ -8,6 +8,94 @@
 
 <!-- towncrier release notes start -->
 
+## 9.0.0-alpha.17 (2024-06-28)
+
+### Bugfix
+
+- Rename test-setup-config.js to test-setup-config.jsx, otherwise jest tests will eventually fail @tomschall [#6133](https://github.com/plone/volto/issues/6133)
+
+## 9.0.0-alpha.16 (2024-05-15)
+
+### Bugfix
+
+- Disable `jsx-a11y/label-has-associated-control` so that we can use `eslint-plugin-jsx-a11y` version 6.8.0 if it's pulled by other dependencies. @ichim-david [#5785](https://github.com/plone/volto/issues/5785)
+
+## 9.0.0-alpha.15 (2024-05-02)
+
+### Internal
+
+- Flexibilize the pins for all ESlint deps, in Volto and generators @sneridagh [#5991](https://github.com/plone/volto/issues/5991)
+
+## 9.0.0-alpha.14 (2024-03-24)
+
+### Internal
+
+- Fix StoryBook for project generator in Volto 18 @sneridagh [#5911](https://github.com/plone/volto/issues/5911)
+- Update project template to use Storybook 8. @sneridagh [#5912](https://github.com/plone/volto/issues/5912)
+
+## 9.0.0-alpha.13 (2024-03-18)
+
+### Bugfix
+
+- Improve the generator by getting the `@plone/types` version from GH @sneridagh [#5889](https://github.com/plone/volto/issues/5889)
+
+## 9.0.0-alpha.12 (2024-03-18)
+
+### Feature
+
+- Copy over the `dependencies` and `devDependencies` from Volto in the generated project given the version provided @sneridagh [#5879](https://github.com/plone/volto/issues/5879)
+
+### Internal
+
+- Bump @plone/scripts and @plone/types to latests @sneridagh [#5888](https://github.com/plone/volto/issues/5888)
+
+## 9.0.0-alpha.11 (2024-03-14)
+
+### Bugfix
+
+- Upgrade all versions in generator templates @sneridagh [#5844](https://github.com/plone/volto/issues/5844)
+- Improve deps in project generator. @sneridagh @wesleybl [#5870](https://github.com/plone/volto/issues/5870)
+
+## 9.0.0-alpha.10 (2024-03-05)
+
+### Bugfix
+
+- Add new forced resolutions to projects too @sneridagh [#5839](https://github.com/plone/volto/issues/5839)
+
+## 9.0.0-alpha.9 (2024-03-05)
+
+### Bugfix
+
+- Ensure hidden files get added to new addon projects in generator-volto @instification [#5719](https://github.com/plone/volto/issues/5719)
+
+## 9.0.0-alpha.8 (2024-03-02)
+
+### Internal
+
+- Update dependencies @sneridagh [#5815](https://github.com/plone/volto/issues/5815)
+
+## 9.0.0-alpha.7 (2024-03-01)
+
+### Bugfix
+
+- Switch peerDependencies to Volto 18 for generator-volto alpha's/latest. [#5780](https://github.com/plone/volto/issues/5780)
+
+## 9.0.0-alpha.6 (2024-02-18)
+
+### Bugfix
+
+- Fix @plone/volto-slate path in moduleNameMapper. @wesleybl [#5743](https://github.com/plone/volto/issues/5743)
+
+## 9.0.0-alpha.5 (2024-02-06)
+
+### Bugfix
+
+- Fix tests in projects that involves TS files @sneridagh [#5738](https://github.com/plone/volto/issues/5738)
+
+### Documentation
+
+- Reorganize `README.md`, merging content into authoritative locations. Add `awesome_bot` to check links in all READMEs. @stevepiercy [#5437](https://github.com/plone/volto/issues/5437)
+
 ## 9.0.0-alpha.4 (2024-02-02)
 
 ### Bugfix

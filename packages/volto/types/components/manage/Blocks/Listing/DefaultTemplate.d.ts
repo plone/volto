@@ -5,7 +5,7 @@ declare function DefaultTemplate({ headlineTag, items, linkTitle, linkHref, isEd
     linkTitle: any;
     linkHref: any;
     isEditMode: any;
-}): JSX.Element;
+}): import("react/jsx-runtime").JSX.Element;
 declare namespace DefaultTemplate {
     namespace propTypes {
         let items: any;

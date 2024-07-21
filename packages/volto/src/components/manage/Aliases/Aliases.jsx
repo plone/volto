@@ -8,7 +8,7 @@ import { Helmet } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import {
   Button,
   Checkbox,
@@ -20,7 +20,12 @@ import {
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
-import { removeAliases, addAliases, getAliases } from '@plone/volto/actions';
+import {
+  removeAliases,
+  addAliases,
+  getAliases,
+  getContent,
+} from '@plone/volto/actions';
 
 import { Icon, Toolbar } from '@plone/volto/components';
 
@@ -96,6 +101,7 @@ class Aliases extends Component {
       datetime: '',
       batchSize: '',
     });
+    this.props.getContent(getBaseUrl(this.props.pathname));
     this.setState({ isClient: true });
   }
 
@@ -317,8 +323,8 @@ class Aliases extends Component {
             </Segment>
           </Form>
         </Segment.Group>
-        {this.state.isClient && (
-          <Portal node={document.getElementById('toolbar')}>
+        {this.state.isClient &&
+          createPortal(
             <Toolbar
               pathname={this.props.pathname}
               hideDefaultViewButtons
@@ -335,9 +341,9 @@ class Aliases extends Component {
                   />
                 </Link>
               }
-            />
-          </Portal>
-        )}
+            />,
+            document.getElementById('toolbar'),
+          )}
       </Container>
     );
   }
@@ -351,6 +357,6 @@ export default compose(
       pathname: props.location.pathname,
       title: state.content.data?.title || '',
     }),
-    { addAliases, getAliases, removeAliases },
+    { addAliases, getAliases, removeAliases, getContent },
   ),
 )(Aliases);

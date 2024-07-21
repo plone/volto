@@ -1,4 +1,3 @@
-/// <reference types="react" />
 type Color = {
     name: string;
     label: string;
@@ -11,13 +10,13 @@ type Color = {
 export type ColorPickerWidgetProps = {
     id: string;
     title: string;
-    value: string;
-    default: string;
-    required: boolean;
-    missing_value: unknown;
-    className: string;
+    value?: string;
+    default?: string | object;
+    required?: boolean;
+    missing_value?: unknown;
+    className?: string;
     onChange: (id: string, value: any) => void;
     colors: Color[];
 };
-declare const ColorPickerWidget: (props: ColorPickerWidgetProps) => JSX.Element;
+declare const ColorPickerWidget: (props: ColorPickerWidgetProps) => import("react/jsx-runtime").JSX.Element;
 export default ColorPickerWidget;

@@ -1,4 +1,4 @@
 export default function StoryComponent({ children, ...args }: {
     [x: string]: any;
     children: any;
-}): JSX.Element;
+}): import("react/jsx-runtime").JSX.Element;

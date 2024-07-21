@@ -83,7 +83,7 @@ but also the [lookup
 mechanism](https://github.com/plone/volto/blob/212026a39fd9aa0e1d6c324f967b51a3daa10b01/packages/volto/src/components/manage/Form/Field.jsx#L151)
 to understand how things work.
 
-See {doc}`../recipes/widget` for more information.
+See {doc}`../development/widget` for more information.
 
 ## views
 

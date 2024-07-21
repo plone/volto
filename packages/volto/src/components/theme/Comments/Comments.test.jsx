@@ -15,6 +15,8 @@ jest.mock('moment', () =>
 );
 
 jest.mock('@plone/volto/helpers/Loadable/Loadable');
+jest.mock('@plone/volto/components/manage/Form');
+
 beforeAll(
   async () =>
     await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
@@ -56,6 +58,13 @@ describe('Comments', () => {
       intl: {
         locale: 'en',
         messages: {},
+      },
+      content: {
+        data: {},
+        create: {
+          loading: false,
+          loaded: true,
+        },
       },
     });
     const component = renderer.create(
