@@ -175,7 +175,20 @@ make backend-docker-start
 Persist backend data across Docker sessions.
 ```
 
-When you run this command for the first time, it will download Docker images, configure the backend, and start the backend.
+When you run this command for the first time, it will download Docker images, configure the backend, create a Docker volume to persist the data named `volto-backend-data`, and start the backend.
+
+
+When you run `make backend-docker-start` again, it will not download the Docker images, but will start the backend using the existing Docker volume.
+
+```{note}
+If you would like to start the backend with a clean data volume, you can run the following command:
+
+    docker volume rm volto-backend-data
+
+Then, run `make backend-docker-start` again to start the backend with a clean data volume.
+
+```
+    
 Browse to the backend running at http://localhost:8080.
 
 In the second session, start the frontend.
