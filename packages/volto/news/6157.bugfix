@@ -1,3 +1,4 @@
-Persist data for the `backend-docker-start` `Docker` container in a `Docker` volume named `volto-backend-data`.
-This way the data is persisted between runs of the container and if new data is needed it's easy to delete the `data` volume and start again.
+Persist data for the `backend-docker-start` Docker container in a Docker volume named `volto-backend-data`.
+This way the data is persisted between runs of the container.
+You can also delete the `data` volume to start fresh.
 @ichim-david
