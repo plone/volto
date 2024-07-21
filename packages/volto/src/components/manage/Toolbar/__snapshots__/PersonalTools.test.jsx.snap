@@ -423,7 +423,7 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
   >
     <img
       alt="user avatar"
-      src="/@portrait/admin"
+      src="http://localhost:8080/Plone/++api++/@portrait/admin"
     />
   </div>
   <div

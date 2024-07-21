@@ -36,23 +36,19 @@
   display: inline-block;
 }
 
+[data-slate-editor='true'] {
+  outline: none;
+}
+
+.block .block.hovered::before,
+.block .block:hover::before {
+  border-color: rgba(120, 192, 215, 0.375);
+}
+
 .block .block.selected::before,
 .block .block.selected:hover::before {
   border-width: 1px;
   border-color: rgba(120, 192, 215, 0.75);
-}
-
-.block-editor-title,
-.block-editor-slate,
-.block-editor-slateTable,
-.slate-editor.selected {
-  :focus-visible {
-    outline: none;
-  }
-}
-
-.block .block:hover::before {
-  border-color: rgba(120, 192, 215, 0.375);
 }
 
 .block .block.multiSelected::before {
@@ -323,6 +319,16 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
       0 2px 4px rgba(0, 0, 0, 0.05);
     transform: translate(-50%, 0);
 
+    .separator {
+      position: relative;
+      top: 5px;
+      display: inline-block;
+      height: 24px;
+      border-right: 1px solid #ddd;
+      margin: 0 0 4px 4px;
+      vertical-align: bottom;
+    }
+
     form {
       display: flex;
     }
@@ -395,7 +401,6 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
       padding: 4px;
       border-radius: 1px;
       margin-left: 4px;
-      color: @brown !important;
 
       &:hover {
         background-color: #edf1f2 !important;
@@ -408,11 +413,49 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
       }
     }
   }
+}
 
-  .ui.active.basic.icon.button {
-    border: 1px solid #2996da;
-    background: transparent !important;
+.toolbar-buttons {
+  // used by the ImageUploadWidget
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+}
+
+.image-upload-widget-toolbar {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+
+  .icon.circled {
+    border: 1px solid #e4e8ec;
+    background: #f3f5f7;
+    box-shadow: inset 0 0 0 0.14285714rem transparent !important;
   }
+}
+
+div.image-upload-widget-image {
+  position: relative;
+
+  img {
+    max-width: 100% !important;
+  }
+}
+
+.image-upload-widget {
+  text-align: center;
+
+  .toolbar-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+}
+
+.ui.active.basic.icon.button {
+  border: 1px solid #2996da;
+  background: transparent !important;
 }
 
 // Hero block
@@ -596,16 +639,6 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
   height: 100%;
 }
 
-.separator {
-  position: relative;
-  top: 5px;
-  display: inline-block;
-  height: 24px;
-  border-right: 1px solid #ddd;
-  margin: 0 0 4px 4px;
-  vertical-align: bottom;
-}
-
 // HTML block
 .html-editor {
   z-index: 1;
@@ -694,8 +727,20 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
 
 .link-form-container {
   .inline.field .wrapper {
-    min-height: initial;
+    width: 270px; // needed to ensure placeholder shows and buttons are aligned to the right
+    min-height: initial; // overrides .input.field .wrapper
+    justify-content: space-between;
     border-bottom: none;
+  }
+
+  .ui.input-anchorlink-theme {
+    width: 100% !important; // overrides form.less width: auto
+    max-width: 81%; // needed so buttons don't shift to the right when value is present
+    margin-left: 0 !important; // overrides .block .toolbar-inner .ui.input
+  }
+
+  .ui.buttons {
+    width: auto; // for Add Link popup button to be aligned to the right
   }
 
   button {
@@ -710,10 +755,6 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
     &:focus {
       outline: none;
     }
-  }
-
-  .ui.input {
-    min-width: 250px;
   }
 }
 

@@ -498,9 +498,9 @@ msgstr ""
 msgid "Browse"
 msgstr "浏览"
 
-#. Default: "Browse the site, drop an image, or type an URL"
-#: components/manage/Blocks/Image/Edit
-msgid "Browse the site, drop an image, or type an URL"
+#. Default: "Browse the site, drop an image, or use a URL"
+#: components/manage/Widgets/ImageWidget
+msgid "Browse the site, drop an image, or type a URL"
 msgstr "浏览网站，放入一张图片，或者输入一个URL"
 
 #. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
@@ -592,6 +592,11 @@ msgstr "更改已经保存"
 msgid "Changes saved."
 msgstr "更改已经保存"
 
+#. Default: "Check this box to customize the title, description, or image of the target content item for this teaser. Leave it unchecked to show updates to the target content item if it is edited later."
+#: components/manage/Blocks/Teaser/schema
+msgid "Check this box to customize the title, description, or image of the target content item for this teaser. Leave it unchecked to show updates to the target content item if it is edited later."
+msgstr ""
+
 #. Default: "Checkbox"
 #: components/manage/Widgets/SchemaWidget
 msgid "Checkbox"
@@ -619,6 +624,7 @@ msgid "Choose a file"
 msgstr "选择一个文件"
 
 #. Default: "Clear"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
 msgstr "清除"
@@ -870,6 +876,11 @@ msgstr "当前应用的过滤器"
 #: components/manage/Preferences/ChangePassword
 msgid "Current password"
 msgstr "当前的密码"
+
+#. Default: "Customize teaser content"
+#: components/manage/Blocks/Teaser/schema
+msgid "Customize teaser content"
+msgstr ""
 
 #. Default: "Cut"
 #: components/manage/Actions/Actions
@@ -1459,6 +1470,11 @@ msgstr "文件视图"
 msgid "Filename"
 msgstr "文件名"
 
+#. Default: "Files uploaded: {uploadedFiles}"
+#: components/manage/Contents/ContentsUploadModal
+msgid "Files uploaded: {uploadedFiles}"
+msgstr "已上载的文件：{uploadedFiles}"
+
 #. Default: "Filter"
 #: helpers/MessageLabels/MessageLabels
 msgid "Filter"
@@ -1581,6 +1597,11 @@ msgstr "组"
 msgid "Group created"
 msgstr "组已创建"
 
+#. Default: "Group deleted"
+#: helpers/MessageLabels/MessageLabels
+msgid "Group deleted"
+msgstr ""
+
 #. Default: "Group roles updated"
 #: helpers/MessageLabels/MessageLabels
 msgid "Group roles updated"
@@ -1666,6 +1687,7 @@ msgstr "历史{title}"
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsBreadcrumbs
 #: components/manage/Contents/ContentsBreadcrumbsHomeItem
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/theme/Breadcrumbs/Breadcrumbs
 #: components/theme/Logo/Logo
 msgid "Home"
@@ -1674,6 +1696,11 @@ msgstr "首页"
 #. Default: "ID"
 #: components/manage/Contents/Contents
 msgid "ID"
+msgstr ""
+
+#. Default: "Icon View"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Icon View"
 msgstr ""
 
 #. Default: "If all of the following conditions are met:"
@@ -1828,6 +1855,11 @@ msgstr ""
 msgid "Invalid Block"
 msgstr "无效的块"
 
+#. Default: "Invalid teaser source"
+#: components/manage/Blocks/Teaser/Data
+msgid "Invalid teaser source"
+msgstr ""
+
 #. Default: "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
 #: helpers/MessageLabels/MessageLabels
 msgid "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
@@ -1840,7 +1872,7 @@ msgstr "条目批量大小"
 
 #. Default: "Item successfully moved."
 #: components/manage/Contents/Contents
-msgid "Item succesfully moved."
+msgid "Item successfully moved."
 msgstr "成功移除条目。"
 
 #. Default: "Item(s) copied."
@@ -2000,6 +2032,11 @@ msgstr ""
 msgid "Links and references"
 msgstr ""
 
+#. Default: "List View"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "List View"
+msgstr ""
+
 #. Default: "Listing"
 #: components/manage/Blocks/Listing/schema
 msgid "Listing"
@@ -2016,6 +2053,8 @@ msgid "Load more"
 msgstr "加载更多"
 
 #. Default: "Loading."
+#: components/manage/Controlpanels/Groups/GroupsControlpanel
+#: components/manage/Controlpanels/Users/UsersControlpanel
 #: components/manage/Form/ModalForm
 msgid "Loading"
 msgstr "加载中"
@@ -2461,9 +2500,15 @@ msgid "Open menu"
 msgstr "打开菜单"
 
 #. Default: "Open object browser"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 #: components/manage/Widgets/ObjectBrowserWidget
 msgid "Open object browser"
 msgstr "打开目标浏览器"
+
+#. Default: "Order"
+#: components/manage/Sidebar/Sidebar
+msgid "Order"
+msgstr ""
 
 #. Default: "Ordered"
 #: components/manage/Blocks/ToC/Schema
@@ -2727,6 +2772,11 @@ msgstr ""
 #. Default: "Referencing this item with {relationship}"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Referencing this item with {relationship}"
+msgstr ""
+
+#. Default: "Refresh source content"
+#: components/manage/Blocks/Teaser/Data
+msgid "Refresh source content"
 msgstr ""
 
 #. Default: "Register"
@@ -3053,6 +3103,7 @@ msgstr "搜索输入标签"
 
 #. Default: "Search results"
 #: components/manage/Blocks/Search/components/SearchDetails
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/theme/Search/Search
 msgid "Search results"
 msgstr "搜索结果"
@@ -3438,6 +3489,11 @@ msgstr ""
 msgid "Subject"
 msgstr "主题"
 
+#. Default: "Submit"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
+msgid "Submit"
+msgstr ""
+
 #. Default: "Success"
 #: components/manage/Actions/Actions
 #: components/manage/Aliases/Aliases
@@ -3751,6 +3807,11 @@ msgstr "活动和非活动对象的总数"
 msgid "Total comments"
 msgstr "全部评论"
 
+#. Default: "Total files to upload: {totalFiles}"
+#: components/manage/Contents/ContentsUploadModal
+msgid "Total files to upload: {totalFiles}"
+msgstr "总计需上传的文件：{totalFiles}"
+
 #. Default: "Total number of objects in each cache"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Total number of objects in each cache"
@@ -3979,13 +4040,8 @@ msgstr ""
 msgid "Upload files"
 msgstr "上传文件"
 
-#. Default: "Uploading files"
-#: components/manage/Contents/ContentsUploadModal
-msgid "Uploading files"
-msgstr "上传文件中"
-
 #. Default: "Uploading image"
-#: components/manage/Blocks/Image/Edit
+#: components/manage/Widgets/ImageWidget
 msgid "Uploading image"
 msgstr "上传图像中"
 
@@ -4026,6 +4082,11 @@ msgstr "用户组设置"
 #: helpers/MessageLabels/MessageLabels
 msgid "User created"
 msgstr "用户已创建"
+
+#. Default: "User deleted"
+#: helpers/MessageLabels/MessageLabels
+msgid "User deleted"
+msgstr ""
 
 #. Default: "User name"
 #: components/manage/Controlpanels/Users/UsersControlpanel
@@ -4535,6 +4596,11 @@ msgstr "我的用户名是"
 msgid "leadimage"
 msgstr ""
 
+#. Default: "Enter a URL to an image"
+#: components/manage/Widgets/ImageWidget
+msgid "linkAnImage"
+msgstr ""
+
 #. Default: "Listing"
 #: config/Blocks
 msgid "listing"
@@ -4628,6 +4694,11 @@ msgstr ""
 #: components/manage/Contents/ContentsItem
 msgid "pending"
 msgstr "待审核"
+
+#. Default: "Pick an existing image"
+#: components/manage/Widgets/ImageWidget
+msgid "pickAnImage"
+msgstr ""
 
 #. Default: "Private"
 #: components/manage/Contents/ContentsItem
@@ -4898,6 +4969,11 @@ msgstr ""
 #. Default: "Update from version {origin} to {destination}"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "upgradeVersions"
+msgstr ""
+
+#. Default: "Upload an image from your computer"
+#: components/manage/Widgets/ImageWidget
+msgid "uploadAnImage"
 msgstr ""
 
 #. Default: "Input must be valid url (www.something.com or http(s)://www.something.com)"

@@ -702,10 +702,7 @@ Cypress.Commands.add(
   'pasteClipboard',
   { prevSubject: true },
   (query, htmlContent) => {
-    return cy
-      .wrap(query)
-      .type(' {backspace}')
-      .trigger('paste', createHtmlPasteEvent(htmlContent));
+    return cy.wrap(query).trigger('paste', createHtmlPasteEvent(htmlContent));
   },
 );
 
@@ -719,11 +716,10 @@ Cypress.Commands.add('clearSlate', (selector) => {
   return cy
     .get(selector)
     .focus()
-    .click({ force: true }) // fix sporadic failure this element is currently animating
-    .wait(1000)
-    .type('{selectAll}')
-    .wait(1000)
-    .type('{backspace}');
+    .click({ force: true })
+    .type('{selectAll}', { delay: 20 })
+    .type('{backspace}', { delay: 20 })
+    .wait(200);
 });
 
 Cypress.Commands.add('getSlate', (createNewSlate = false) => {
@@ -786,6 +782,15 @@ Cypress.Commands.add('typeInSlate', { prevSubject: true }, (subject, text) => {
       .wait(1000)
   );
 });
+
+Cypress.Commands.add(
+  'typeWithDelay',
+  { prevSubject: 'element' },
+  (subject, text, options) => {
+    const delay = options && options.delay ? options.delay : 20;
+    cy.wrap(subject).type(text, { delay });
+  },
+);
 
 Cypress.Commands.add('lineBreakInSlate', { prevSubject: true }, (subject) => {
   return (
@@ -876,7 +881,9 @@ Cypress.Commands.add('addNewBlock', (blockName, createNewSlate = false) => {
 });
 
 Cypress.Commands.add('navigate', (route = '') => {
-  return cy.window().its('appHistory').invoke('push', route);
+  cy.intercept('GET', '**/*').as('navGetCall');
+  cy.window().its('appHistory').invoke('push', route);
+  cy.wait('@navGetCall');
 });
 
 Cypress.Commands.add('store', () => {

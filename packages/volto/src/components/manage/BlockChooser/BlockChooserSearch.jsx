@@ -35,6 +35,7 @@ const BlockChooserSearch = ({ onChange, searchValue }) => {
           placeholder={intl.formatMessage(messages.search)}
           title={intl.formatMessage(messages.search)}
           ref={searchInput}
+          autoFocus
         />
         {searchValue && (
           <Button

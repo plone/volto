@@ -15,10 +15,12 @@ export function ImageSchema({ formData, intl }: {
         align: {
             title: any;
             widget: string;
+            default: string;
         };
         size: {
             title: any;
             widget: string;
+            default: string;
         };
         href: {
             title: any;

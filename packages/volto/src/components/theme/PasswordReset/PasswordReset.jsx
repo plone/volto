@@ -12,7 +12,7 @@ import { Helmet } from '@plone/volto/helpers';
 import { Container } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
-import { Form } from '@plone/volto/components';
+import { Form } from '@plone/volto/components/manage/Form';
 import { setInitialPassword } from '@plone/volto/actions';
 import config from '@plone/volto/registry';
 

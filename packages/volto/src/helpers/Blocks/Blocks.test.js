@@ -22,6 +22,8 @@ import {
   getPreviousNextBlock,
   blocksFormGenerator,
   findBlocks,
+  findContainer,
+  isBlockContainer,
 } from './Blocks';
 
 import config from '@plone/volto/registry';
@@ -1505,5 +1507,194 @@ describe('findBlocks', () => {
     };
     const types = ['description', 'slate'];
     expect(findBlocks(blocks, types)).toStrictEqual(['3', '4', '8', '9']);
+  });
+});
+
+describe('findContainer', () => {
+  const blocksData = { blocks: {}, blocks_layout: { items: [] } };
+
+  it('Get a container in the first level (main block container)', () => {
+    const formData = {
+      title: 'Example',
+      blocks: {
+        1: { title: 'title', '@type': 'title' },
+        2: { title: 'an image', '@type': 'image' },
+        3: { title: 'description', '@type': 'description' },
+        4: { title: 'a container', '@type': 'container', ...blocksData },
+      },
+      blocks_layout: {
+        items: ['1', '2', '3', '4'],
+      },
+    };
+
+    expect(findContainer(formData, { containerId: '4' })).toStrictEqual({
+      title: 'a container',
+      '@type': 'container',
+      ...blocksData,
+    });
+  });
+
+  it('Get a container in the second level', () => {
+    const formData = {
+      title: 'Example',
+      blocks: {
+        1: { title: 'title', '@type': 'title' },
+        2: { title: 'an image', '@type': 'image' },
+        3: { title: 'description', '@type': 'description' },
+        4: {
+          title: 'a container',
+          '@type': 'container',
+          blocks: {
+            1: { title: 'title', '@type': 'title' },
+            2: { title: 'an image', '@type': 'image' },
+            'second-level': {
+              title: 'a container',
+              '@type': 'container',
+              blocks: {},
+              blocks_layout: { items: [] },
+            },
+          },
+          blocks_layout: { items: [1, 2, 'second-level'] },
+        },
+      },
+      blocks_layout: {
+        items: ['1', '2', '3', '4'],
+      },
+    };
+
+    expect(
+      findContainer(formData, { containerId: 'second-level' }),
+    ).toStrictEqual({
+      title: 'a container',
+      '@type': 'container',
+      blocks: {},
+      blocks_layout: { items: [] },
+    });
+  });
+
+  it('Get a container in the third level', () => {
+    const formData = {
+      title: 'Example',
+      blocks: {
+        1: { title: 'title', '@type': 'title' },
+        2: { title: 'an image', '@type': 'image' },
+        3: { title: 'description', '@type': 'description' },
+        4: {
+          title: 'a container',
+          '@type': 'container',
+          blocks: {
+            1: { title: 'title', '@type': 'title' },
+            2: { title: 'an image', '@type': 'image' },
+            'second-level': {
+              title: 'a second level container',
+              '@type': 'container',
+              blocks: {
+                'third-level': {
+                  title: 'a third level container',
+                  '@type': 'container',
+                  blocks: {},
+                  blocks_layout: { items: [] },
+                },
+              },
+              blocks_layout: { items: ['third-level'] },
+            },
+          },
+          blocks_layout: { items: [1, 2, 'second-level'] },
+        },
+      },
+      blocks_layout: {
+        items: ['1', '2', '3', '4'],
+      },
+    };
+
+    expect(
+      findContainer(formData, { containerId: 'third-level' }),
+    ).toStrictEqual({
+      title: 'a third level container',
+      '@type': 'container',
+      blocks: {},
+      blocks_layout: { items: [] },
+    });
+  });
+
+  describe('findContainer then modify it', () => {
+    const blocksData = { blocks: {}, blocks_layout: { items: [] } };
+
+    it('Get and modifies a container in the first level (main block container)', () => {
+      const formData = {
+        title: 'Example',
+        blocks: {
+          1: { title: 'title', '@type': 'title' },
+          2: { title: 'an image', '@type': 'image' },
+          3: { title: 'description', '@type': 'description' },
+          4: { title: 'a container', '@type': 'container', ...blocksData },
+        },
+        blocks_layout: {
+          items: ['1', '2', '3', '4'],
+        },
+      };
+
+      const container = findContainer(formData, { containerId: '4' });
+      container.title = 'Modified the title of the container';
+      expect(findContainer(formData, { containerId: '4' })).toStrictEqual({
+        title: 'Modified the title of the container',
+        '@type': 'container',
+        ...blocksData,
+      });
+    });
+  });
+
+  describe('isBlockContainer', () => {
+    const blocksData = { blocks: {}, blocks_layout: { items: [] } };
+
+    it('basic test', () => {
+      const formData = {
+        title: 'Example',
+        blocks: {
+          1: { title: 'title', '@type': 'title' },
+          2: { title: 'an image', '@type': 'image' },
+          3: { title: 'description', '@type': 'description' },
+          4: { title: 'a container', '@type': 'container', ...blocksData },
+        },
+        blocks_layout: {
+          items: ['1', '2', '3', '4'],
+        },
+      };
+
+      const container = isBlockContainer(formData);
+      expect(container).toBeTruthy();
+    });
+
+    it('in data key (EEA add-ons)', () => {
+      const formData = {
+        title: 'Example',
+        data: {
+          blocks: {
+            1: { title: 'title', '@type': 'title' },
+            2: { title: 'an image', '@type': 'image' },
+            3: { title: 'description', '@type': 'description' },
+            4: { title: 'a container', '@type': 'container', ...blocksData },
+          },
+          blocks_layout: {
+            items: ['1', '2', '3', '4'],
+          },
+        },
+      };
+
+      const container = isBlockContainer(formData);
+      expect(container).toBeTruthy();
+    });
+
+    it('not a container', () => {
+      const formData = {
+        title: 'Example',
+        styles: {
+          color: 'red',
+        },
+      };
+
+      const container = isBlockContainer(formData);
+      expect(container).toBeFalsy();
+    });
   });
 });

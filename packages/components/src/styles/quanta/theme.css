@@ -1,0 +1,4 @@
+:root {
+  --highlight-background: var(--quanta-sapphire);
+  --highlight-background-pressed: var(--quanta-royal);
+}
