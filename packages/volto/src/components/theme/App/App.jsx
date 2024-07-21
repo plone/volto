@@ -51,6 +51,7 @@ import clearSVG from '@plone/volto/icons/clear.svg';
 import MultilingualRedirector from '@plone/volto/components/theme/MultilingualRedirector/MultilingualRedirector';
 import WorkingCopyToastsFactory from '@plone/volto/components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory';
 import LockingToastsFactory from '@plone/volto/components/manage/LockingToastsFactory/LockingToastsFactory';
+import RouteAnnouncer from '@plone/volto/components/theme/RouteAnnouncer/RouteAnnouncer';
 
 /**
  * @export
@@ -191,6 +192,7 @@ export class App extends Component {
             </main>
           </Segment>
         </MultilingualRedirector>
+        <RouteAnnouncer />
         <Footer />
         <LockingToastsFactory
           content={this.props.content}
