@@ -1,3 +1,8 @@
+/**
+ * Personal information component.
+ * @module components/manage/Preferences/PersonalInformation
+ */
+
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -9,6 +14,11 @@ import { Toast } from '@plone/volto/components';
 import { Form } from '@plone/volto/components/manage/Form';
 import { getUser, updateUser, getUserSchema } from '@plone/volto/actions';
 
+/**
+ * PersonalInformation functional component.
+ * @function PersonalInformation
+ * @param {Object} props Component properties
+ */
 const PersonalInformation = ({
   getUser,
   getUserSchema,
@@ -21,12 +31,25 @@ const PersonalInformation = ({
   userschema,
   loading,
 }) => {
+  /**
+   * Effect to fetch user data and schema on component mount
+   * @method useEffect
+   */
   useEffect(() => {
     getUser(userId);
     getUserSchema();
   }, [getUser, getUserSchema, userId]);
 
+  /**
+   * Submit handler
+   * @method onSubmit
+   * @param {object} data Form data.
+   * @returns {undefined}
+   */
   const onSubmit = (data) => {
+    // We don't want the user to change his login name/username or the roles
+    // from this form
+    // Backend will complain anyways, but we clean the data here before it does
     const { id, username, roles, ...cleanedData } = data;
     updateUser(userId, cleanedData);
     toast.success(
@@ -39,6 +62,11 @@ const PersonalInformation = ({
     if (closeMenu) closeMenu();
   };
 
+  /**
+   * Cancel handler
+   * @method onCancel
+   * @returns {undefined}
+   */
   const onCancel = () => {
     if (closeMenu) {
       closeMenu();
@@ -47,6 +75,11 @@ const PersonalInformation = ({
     }
   };
 
+  /**
+   * Render method.
+   * @method render
+   * @returns {JSX.Element} Markup for the component.
+   */
   return (
     userschema?.loaded && (
       <Form
@@ -60,6 +93,11 @@ const PersonalInformation = ({
   );
 };
 
+/**
+ * Property types.
+ * @property {Object} propTypes Property types.
+ * @static
+ */
 PersonalInformation.propTypes = {
   user: PropTypes.shape({
     fullname: PropTypes.string,
@@ -79,6 +117,13 @@ PersonalInformation.propTypes = {
   userschema: PropTypes.object.isRequired,
 };
 
+/**
+ * Connected PersonalInformation component.
+ * @function connect
+ * @param {function} mapStateToProps - Redux state to props mapping.
+ * @param {Object} actions - Redux actions.
+ * @returns {function} Connected PersonalInformation component.
+ */
 export default connect(
   (state) => ({
     user: state.users.user,
