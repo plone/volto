@@ -1,4 +1,4 @@
-# Volto
+# Volto - the default Plone 6 frontend
 
 <img align="right" width="300" alt="Volto logo png" src="./logos/VoltoLogoEra2.png#gh-light-mode-only" />
 <img align="right" width="300" alt="Volto logo png" src="./logos/VoltoLogoEra2-dark-mode.png#gh-dark-mode-only" />
@@ -8,22 +8,21 @@
 [![Acceptance Tests](https://github.com/plone/volto/actions/workflows/acceptance.yml/badge.svg)](https://github.com/plone/volto/actions/workflows/acceptance.yml)
 [![Build Status Docs](https://github.com/plone/volto/actions/workflows/docs.yml/badge.svg)](https://github.com/plone/volto/actions)
 
+
 ## Introduction
 
-[Volto](https://github.com/plone/volto) is a ReactJS-based frontend for the [Plone](https://plone.org) Content Management System. It will become the default UI for the upcoming Plone 6 release.
+[Volto](https://github.com/plone/volto) is a ReactJS-based frontend for the [Plone](https://plone.org) Content Management System.
+It is the default frontend starting with the Plone 6 release.
 
 [Plone](https://plone.org) is a CMS built on Python with more than 20 years of history and experience.
 
-Plone has very interesting features that appeal to developers and users alike,
-such as customizable content types, hierarchical URL object traversing and a
-sophisticated content workflow powered by a granular permissions model. This
-allows you to build anything from simple websites to enterprise-grade
-intranets.
+Plone has features that appeal to developers and users alike, such as an intuitive editing interface, customizable content types, hierarchical organization, and a sophisticated permissions model.
+This allows you to build anything from simple websites to enterprise-grade intranets.
 
 Volto exposes all these features and communicates with Plone via its [REST API](https://github.com/plone/plone.restapi).
-Volto has the ability of being easily extensible, themeable, and customizable.
 
-It features the Pastanaga editor, a modern block-based content layout editor. It is extensible and customizable, so you can adapt the default blocks provided to match your requirements, or build new ones to cover them.
+Volto features the Pastanaga editor, a modern block-based content layout editor.
+It is extensible and customizable, so you can adapt the provided default blocks to meet your requirements, or build new ones.
 
 Volto is extensible using add-ons.
 You can build your own or choose from the community released ones:
@@ -31,300 +30,50 @@ You can build your own or choose from the community released ones:
 - [Volto Add-ons in NPM](https://www.npmjs.com/search?q=keywords%3Avolto-addon%2Cvolto)
 - [Volto Awesome](https://github.com/collective/awesome-volto)
 
+
 ## Demo
 
-You can try a Volto online demo in [https://6.demo.plone.org/](https://6.demo.plone.org/)
+You can try a Volto online demo at [https://demo.plone.org/](https://demo.plone.org/).
 
-### Try the demo locally
 
-If you want to give Volto a quick try and you have [Docker](https://www.docker.com/get-started) installed in your computer, bootstrap the demo using `docker-compose`:
+## Create a Volto project
 
-```shell
-git clone https://github.com/plone/volto.git
-cd volto
-docker-compose up
-```
+To start a new project using Volto, follow the [Plone installation documentation](https://6.docs.plone.org/install/create-project.html).
 
-Go to [http://localhost:3000](http://localhost:3000) in your browser.
-
-## Quick Start
-
-First get all the requirements installed on your system.
-
-### Prerequisites
-
-- [Node.js LTS (18.x)](https://nodejs.org/)
-- [Python](https://python.org/) - See below for specific versions.
-- [Docker](https://www.docker.com/get-started) (if using the Plone docker images)
-
-The versions of Python that are supported in Volto depend on the version of Plone that you use.
-
-| Plone | Python | Volto |
-|---|---|---|
-| 5.2 | 2.7, 3.6-3.8 | 15.0 |
-| 6.0 | 3.8-3.11 | 16.0 |
-
-### Create a Volto project using the generator
-
-Create a new Volto project by using the `@plone/generator-volto` utility.
-
-It will bootstrap a Volto project in a folder of your choice with all the required
-boilerplate to start customizing your Volto site.
-
-```
-npm install -g yo @plone/generator-volto
-yo @plone/volto
-```
-follow the prompts questions, provide `myvoltoproject` as project name then, when it finishes:
-
-```
-cd myvoltoproject
-```
-
-### Bootstrap the Plone API backend
-
-You can bootstrap a ready Docker Plone container with all the dependencies and ready for Volto use. We recommend to use the Plone docker builds based in `pip` [plone/plone-backend](https://github.com/plone/plone-backend) image:
-
-```shell
-docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e PROFILES="plone.volto:default-homepage" plone/plone-backend:6.0.1
-```
-
-or as an alternative if you have experience with Plone and you have all the
-dependencies installed on your system, you can use the supplied convenience buildout in the
-`api` folder by issuing the command:
-
-```shell
-make build-backend
-```
-
-#### Recommended Plone version
-
-Volto is the default UI for Plone 6, so it will work for all Plone 6 released versions.
-
-For the Plone 5 series, the latest released version of Plone 5 (with Python 3) is recommended (at the time of writing 5.2.10).
-
-#### KGS (known good set of versions) for backend packages
-
-On Plone 6, we recommend using the known good set (KGS) of package versions that are specified in the Plone release.
-
-On Plone 5, Volto is currently tested with the following packages pinned to specific versions, and we recommend using the same versions, which are:
-
-- plone.restapi 8.32.6
-- plone.rest 2.0.0
-- plone.volto 4.0.3
-
-This would be the docker command to spawn a Plone 5 container with the right KGS versions:
-
-```shell
-docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="plone.restapi==8.32.6 plone.volto==4.0.3 plone.rest==2.0.0" -e PROFILES="plone.volto:default-homepage" plone/plone-backend
-```
-
-### Start Volto
-
-```shell
-yarn start
-```
-
-### Browsing
-
-Go to [http://localhost:3000](http://localhost:3000) in your browser.
-
-## Volto in Production
-
-Volto is actively developed since 2017 and used in production since 2018 on the following websites:
-
-- [VHS Ehrenamtsportal](https://vhs-ehrenamtsportal.de) (Website to help volunteers that help refugees for the [German Adult Education Association](https://www.dvv-vhs.de/en/home/), developed by [kitconcept GmbH](https://kitconcept.com), 2018)
-- [Zeelandia](https://zeelandia.de) (Corporate website for one of the leading backery ingredients manufacturers in Germany, developed by [kitconcept GmbH](https://kitconcept.com), 2019)
-- [Excellence at Humboldt-Universität zu Berlin](https://www.alles-beginnt-mit-einer-frage.de) (Website for the excellence initiative of the [Humboldt University Berlin](https://hu-berlin.de), developed by [kitconcept GmbH](https://kitconcept.com), 2019)
-- [Forest Information System for Europe](https://forest.eea.europa.eu) (Thematic website focusing on European forests, developed by [Eau de Web](https://www.eaudeweb.ro), 2019)
-- [Industrial Emissions portal for Europe](https://industry.eea.europa.eu) (Thematic website focusing on European industrial emissions, developed by [Eau de Web](https://www.eaudeweb.ro), 2020)
-- [Energy Climate Union portal for Europe](https://climate-energy.eea.europa.eu/) (Thematic website focusing on European strides towards mitigating climate change, developed by [Eau de Web](https://www.eaudeweb.ro), 2020)
-- [Talke Carrer Website](https://karriere.talke.com/) (Carrer website for [Talke](https://www.talke.com), one of the leading a chemical and petrochemical logistics companies in Germany, developed by [kitconcept GmbH](https://kitconcept.com), 2020)
-- [Stradanove](http://www.stradanove.it/) (Website of the Department of Youth Policies of the Municipality of Modena, developed by [RedTurtle](https://redturtle.it), 2020)
-- [VisitModena](https://www.visitmodena.it/) (Tourist website of the Municipality of Modena, developed by [RedTurtle](https://redturtle.it), 2020)
-- [Study guide at University of Jyväskylä](https://studyguide.jyu.fi/2020/) (Static website where [Volto is used as a headless CMS for authoring additional content](https://tech.blog.jyu.fi/2020/06/plone-volto-hasura-gatsbyjs-mashup/), 2020)
-- [Nuova Voce Ecologista](https://nuovavoceecologista.it) (Website of Nuova Voce Ecologista, an Italian green Party, 2020)
-- [BISE](https://biodiversity.europa.eu) (Biodiversity Information System for Europe, developed by [Eau de Web](https://www.eaudeweb.ro), 2019)
-- [MEDICE Webseite](https://medice.com/de-de) (Website for MEDICE Arzneimittel Pütter GmbH & Co. KG), developed by [Werkbank GmbH](https://werkbank.de/), 2020)
-- [Jobfamilie MEDICE](https://jobfamilie.medice.de/de) (Carrer website for MEDICE Arzneimittel Pütter GmbH & Co. KG), developed by [Werkbank GmbH](https://werkbank.de/), 2020)
-- [Baccanale Imola](https://www.baccanaleimola.it) (Baccanale is a food fair that happens every year in Imola, Italy. Developed by [RedTurtle](https://redturtle.it), 2020)
-- [ResOU](https://resou.osaka-u.ac.jp) (ResOU is introducing official researched releases by the University of Osaka, Japan. Developed by [CMScom](https://www.cmscom.jp), 2020)
-- [Humboldt Labor](https://www.humboldt-labor.de/) (The Humboldt Lab is a website where the Humboldt University Berlin presents its latest research projects and findings. Developed by [WLDX](https://wldx.de/) and [kitconcept GmbH](https://kitconcept.com), 2020)
-- [Osaka University](https://www.osaka-u.ac.jp/en) (Osaka University is considered one of the most prestigious universities in Japan. Developed by [CMScom](https://www.cmscom.jp), 2021)
-- [Comune di Modena](https://www.comune.modena.it/) (Website of the Municipality of Modena. Developed by [RedTurtle](https://redturtle.it), 2020)
-- [Comune di Camposanto](https://www.comune.camposanto.mo.it/) (Website of the Municipality of Camposanto. Developed by [RedTurtle](https://redturtle.it), 2021)
-- [Comune di Cantagallo](https://www.comune.cantagallo.po.it/) (Website of the Municipality of Cantagallo. Developed by [RedTurtle](https://redturtle.it), 2021)
-- [Comune di Vernio](https://www.comune.vernio.po.it/) (Website of the Municipality of Vernio. Developed by [RedTurtle](https://redturtle.it), 2021)
-- [Unione dei Comuni della Val Bisenzio](https://www.bisenzio.it/) (Website of the Municipality union of Val Bisenzio. Developed by [RedTurtle](https://redturtle.it), 2021)
-- [Comune di Vaiano](https://www.comune.vaiano.po.it/) (Website of the Municipality of Vaiano. Developed by [RedTurtle](https://redturtle.it), 2021)
-- [ASP Area Nord](https://www.aspareanord.it/) (Website of the Public company of personal services of the Modena municipalities in the north area. Developed by [RedTurtle](https://redturtle.it), 2021)
-- [Comune di San Possidonio](https://www.comune.sanpossidonio.mo.it/) (Website of the Municipality of San Possidonio. Developed by [RedTurtle](https://redturtle.it), 2021)
-- [Comune di Mirandola](https://comune.mirandola.mo.it/) (Website of the Municipality of Mirandola. Developed by [RedTurtle](https://redturtle.it), 2021)
-- [Comune di Medolla](http://www.comune.medolla.mo.it/) (Website of the Municipality of Medolla. Developed by [RedTurtle](https://redturtle.it), 2021)
-- [Camera di Commercio dell'Umbria](https://www.umbria.camcom.it) (Website Chamber of Commerce of Umbria. Developed by [RedTurtle](https://redturtle.it), 2021)
-- [Biblioteche Pianura Est](https://bibest.it) (Website of the Associated libraries of eastern plain. Developed by [RedTurtle](https://redturtle.it), 2021)
-- [Camera di Commercio di Reggio Emilia](https://www.re.camcom.gov.it/) (Website Chamber of Commerce of Reggio Emilia. Developed by [RedTurtle](https://redturtle.it), 2021)
-- [RawMaterial](https://rawmaterial.it/en) (Company's website. Developed by [RawMaterial](https://rawmaterial.it/en), 2021)
-- [WISE-Freshwater](https://water.europa.eu/freshwater) (WISE-Freshwater, the Freshwater Information System for Europe. Developed by [Eau de web](https://eaudeweb.ro) for the European Environmental Agency, 2021)
-- [EEA-IMSv4](https://www.eea.europa.eu/ims) (EEA Indicator Management System v4. Developed by [Eau de web](https://eaudeweb.ro) for the European Environmental Agency, 2021)
-- [Memori](https://memori.ai/en) (Corporate website for Memori, startup specializing in technologies applied to the experience of memory through the development of Artificial Intelligences. Developed by [RawMaterial](https://rawmaterial.it/en), 2021)
-- [TwinCreator](https://twincreator.com/en) (TwinCreator allows you to design and train multiple AI’s through simple conversation through NLP. Developed by [RawMaterial](https://rawmaterial.it/en), 2021)
-- [MemoryTwin](https://memorytwin.com/en) (Product website, MemoryTwin allows you to create your personal artificial intelligence, able to remember and speak. Developed by [RawMaterial](https://rawmaterial.it/en), 2022)
-- [Forschungszentrum Jülich](https://fz-juelich.de) (Website for Forschungzentrum Jülich, which is one of the largest research institutions in Europe, developed by [kitconcept GmbH](https://kitconcept.com), 2022)
-- [ILPO](https://ilpo.jyu.fi/) (the registration portal of continuous learning at the University of Jyväskylä. Developed by University of Jyväskylä, 2022)
-- [Debabarreneko mankomunitatea](https://debabarrena.eus) (Website of the Commonwealth of Debabarrena, community of municipalities to centralize waste handling services, developed by [CodeSyntax](https://www.codesyntax.com/en), 2022)
-- [Debako Udala / Ayuntamiento de Deba](https://www.deba.eus) (Website of the municipality of Deba, developed by [CodeSyntax](https://www.codesyntax.com/en), 2022)
-- [Helmholtz-Institut Erlangen-Nürnberg für Erneuerbare Energien (HI-ERN)](https://www.hi-ern.de) (Website for HI ERN, a research institution for renewable energies, developed by [kitconcept GmbH](https://kitconcept.com), 2022)
-- [Lanku](https://www.lanku.eus) (Website for Lanku Kultur Zerbitzuak, a company offering cultural services and improvised Basque verse singing sessions across the Basque Country, developed by [CodeSyntax](https://www.codesyntax.com/en), 2023)
-- [UEU](https://www.ueu.eus) (Website for Udako Euskal Unibertsitatea, a non-profit University offering all its service only in Basque: courses, publications, ... developed by [CodeSyntax](https://www.codesyntax.com/en), 2023)
-
-Please create a new [issue](https://github.com/plone/volto/issues/new) or [pull request](https://github.com/plone/volto/pulls) to add your Volto-site here!
 
 ## Documentation
 
-You can find the latest (in-progress) documentation in [https://6.dev-docs.plone.org/](https://6.dev-docs.plone.org/volto/index.html)
+You can find the latest documentation at [https://6.docs.plone.org/](https://6.docs.plone.org/volto/index.html).
 
-## Training
+For links to trainings and videos, see [Other learning resources](https://6.docs.plone.org/volto/tutorials/index.html).
 
-On the [Plone Trainings Website](https://training.plone.org) you'll find
-Volto-dedicated open training materials, plus React and other
-JavaScript-centered trainings.
 
-- [Mastering Plone 6 Development](https://training.plone.org/mastering-plone/)
-  The comprehensive training on Plone 6 with best practice tips for developers and integrators.
-- [Volto](https://training.plone.org/5/volto/index.html)
-  A detailed training on how to create your own website using Volto frontend.
-- [Volto Hands-On](https://training.plone.org/voltohandson/index.html)
-- [Volto Add-ons Development](https://training.plone.org/voltoaddons/index.html)
-- [Plone Deployment](https://training.plone.org/5/plone-deployment/index.html)
-- [React](https://training.plone.org/react/index.html)
-- [JavaScript For Plone Developers](https://training.plone.org/5/javascript/index.html)
+## Supported Plone, Python, and Plone REST API versions
 
-## Talks
+See [Plone, Python, and Plone REST API compatibility](https://6.docs.plone.org/volto/contributing/version-policy.html#version-policy-plone-python-and-plone-rest-api-compatibility)
 
-### Plone Conference Ferrara 2019
+See the [Plone Release Schedule](https://plone.org/download/release-schedule) for details of maintenance and support.
 
-[Víctor Fernández de Alba - Plone Beyond 2020: Jump into Volto today!](https://www.youtube.com/watch?v=8QrGOgXo1Js&list=PLGN9BI-OAQkQD9HliElIk9pe-8O_Y6S04&index=16&t=0s)
 
-[Rob Gietema - How to create your own Volto site!](https://www.youtube.com/watch?v=3QLN8tsjjf4&list=PLGN9BI-OAQkQD9HliElIk9pe-8O_Y6S04&index=11&t=0s)
+## Supported Node.js versions
 
-[Timo Stollenwerk - On the Road - Plone 6 and Beyond](https://www.youtube.com/watch?v=suXVdfYV2kA&list=PLGN9BI-OAQkQD9HliElIk9pe-8O_Y6S04&index=14&t=0s)
+See [Node.js version policy](https://6.docs.plone.org/volto/contributing/version-policy.html#version-policy-plone-python-and-plone-rest-api-compatibility).
 
-[Rodrigo Ferreira de Souza - Data migration to Plone 5.2 and Volto](https://www.youtube.com/watch?v=kb9SEsnllqE&list=PLGN9BI-OAQkQD9HliElIk9pe-8O_Y6S04&index=49&t=0s)
 
-[Nicola Zambello - A Volto story: building a website by prototyping](https://www.youtube.com/watch?v=xtxJURICkWc&list=PLGN9BI-OAQkQD9HliElIk9pe-8O_Y6S04&index=17&t=0s)
+## Supported browsers
 
-[Luca Pisani - Plone and React.js: An interview to Volto](https://www.youtube.com/watch?v=JZFUOG843no&list=PLGN9BI-OAQkQD9HliElIk9pe-8O_Y6S04&index=26&t=0s)
+See [Supported browsers](https://6.docs.plone.org/volto/contributing/version-policy.html#version-policy-supported-browsers).
 
-### Plone Conference Tokyo 2018
 
-[Rob Gietema - Volto](https://2018.ploneconf.org/talks/plone-react)
+## Contributing
 
-[Rob Gietema / Víctor Fernández de Alba - Volto Extensibility Story](https://2018.ploneconf.org/talks/plone-react-extensibility-story)
+To contribute to the Volto project by writing code, documentation, translations, and so on, please read [Contributing to Plone](https://6.docs.plone.org/contributing/index.html) and [Contributing to Volto](https://6.docs.plone.org/volto/contributing/index.html).
 
-[Víctor Fernández de Alba - Theming Volto](https://2018.ploneconf.org/talks/theming-plone-react)
+For newcomers to Volto, Plone, or open source software, you must read and follow [First-time contributors](https://6.docs.plone.org/contributing/first-time.html).
 
-[Timo Stollenwerk / Víctor Fernández de Alba / Ramon Navarro - Volto Case Studies](https://2018.ploneconf.org/talks/plone-react-case-studies-when-stability-and-security-meet-speed-and-a-modern-user-interface)
+Since December 2023, this repository has a monorepo structure.
+Volto itself is treated as a library and you can find it in the `packages/volto` folder.
 
-[Timo Stollenwerk - Reinventing Plone, Roadmap to the Modern Web](https://2018.ploneconf.org/talks/reinventing-plone-roadmap-to-the-modern-web)
-
-## Node Support
-
-- Node 18: Supported since Volto 17
-- Node 16: Supported since Volto 14
-- Node 14: No longer supported. It was supported from Volto 8.8.0 - 16
-- Node 12: No longer supported. It was supported from Volto 4 - 15
-- Node 10: No longer supported. It was supported from Volto 1 - 12
-
-## Browser support
-
-Volto works well with any modern (evergreen) browser, including their mobile
-flavors: Chrome, Firefox, Safari, Edge.
-
-We do not guarantee that deprecated browsers (e.g., Internet Explorer 11) are supported by Volto. Although proven possible, it's too great an effort to maintain. It is left to the integrator to provide support for it.
-
-## Upgrades
-
-You can find the upgrade guide here: https://6.dev-docs.plone.org/volto/upgrade-guide/index.html
-
-## Volto Development
-
-For Volto development you need all the requirements already mentioned on the
-[Quick Start](#quick-start) section.
-
-### Checkout the Volto repository
-
-```shell
-git clone https://github.com/plone/volto.git
-```
-
-### Install dependencies
-
-```shell
-yarn
-```
-
-### Install Plone backend
-
-Either using a Docker command:
-
-```shell
-docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e PROFILES="plone.volto:default-homepage" plone/plone-backend:6.0.1
-```
-
-or using the convenience makefile command:
-
-```shell
-make start-backend-docker
-```
-
-or running Plone on your machine (advanced), additional dependencies might be
-required, only for Plone experienced integrators/developers. Check the [Plone
-Installation Documentation](https://6.docs.plone.org/install/index.html).
-
-```shell
-make build-backend
-```
-
-### Run frontend
-
-Either using a Docker command:
-
-```shell
-docker run -it --rm --name=volto --link backend -p 3000:3000 -e RAZZLE_INTERNAL_API_PATH=http://backend:8080/Plone -e RAZZLE_DEV_PROXY_API_PATH=http://backend:8080/Plone plone/plone-frontend:latest
-```
-
-or using the convenience makefile command:
-
-```shell
-make start-frontend-docker
-```
-
-or from the local repository code:
-
-```shell
-yarn && yarn start
-```
-
-### Browsing
-
-Browse to [http://localhost:3000](http://localhost:3000) in your browser.
-
-### Testing
-
-```shell
-yarn test
-```
-
-## Acceptance testing
-
-Here you can find a guide on how acceptance testing is done in Volto:
-
-https://6.dev-docs.plone.org/volto/developer-guidelines/acceptance-tests.html
-
-## Translations
-
-If you would like contribute to translate Volto into several languages, please, read the [Internationalization (i18n) guide](https://6.dev-docs.plone.org/volto/recipes/i18n.html).
 
 ## Contributors
 
@@ -332,40 +81,92 @@ If you would like contribute to translate Volto into several languages, please, 
   <img src="https://contrib.rocks/image?repo=plone/volto" />
 </a>
 
-## Alternative backends
-
-Volto also supports other APIs like [Guillotina](https://guillotina.io/), a
-Python resource management system, inspired by Plone and using the same basic
-concepts like traversal, content types, and permissions model.
-
-Last but not least, it also supports a [Volto Node.js-based backend reference](https://github.com/plone/volto-reference-backend) API implementation that
-demos how other systems could also use Volto to display and create content
-through it.
-
-### Run a Guillotina backend
-
-*Disclaimer:* Guillotina doesn't support the full API/features that Plone provides. Contributors are welcome.
-
-```shell
-docker-compose -f g-api/docker-compose.yml up -d
-```
-
-or using the convenience makefile command:
-
-```shell
-make start-backend-docker-guillotina
-```
-
-### Running the acceptance tests with Guillotina backend
-
-If you want to use Guillotina as a backend to run the tests you should run:
-
-```shell
-yarn ci:start-api-plone-guillotina
-```
 
 ## License
 
-MIT License. Copyrights hold the [Plone Foundation](https://plone.org/foundation).
+MIT License. Copyrights held by the [Plone Foundation](https://plone.org/foundation).
 
 See [LICENSE.md](LICENSE.md) for details.
+
+
+## Volto in production
+
+Volto has been actively developed since 2017.
+It has been used in production since 2018 on numerous websites.
+
+The authoritative source of the list of Volto websites in production is maintained at [Awesome Volto](https://github.com/collective/awesome-volto#websites-built-with-volto).
+
+The Plone Marketing Team copy-pastes its content on a quarterly basis into [They use Plone 6](https://plone.org/why-plone/they-use-plone/they-use-plone-6).
+
+To ensure your website gets the greatest exposure, add it both to [Awesome Volto](https://github.com/collective/awesome-volto#websites-built-with-volto) and this README.
+
+- [ASP Area Nord](https://www.aspareanord.it/) (Website of the Public company of personal services of the Modena municipalities in the north area. Developed by [RedTurtle](https://www.redturtle.it), 2021)
+- [Baccanale Imola](https://www.baccanaleimola.it) (Baccanale is a food fair that happens every year in Imola, Italy. Developed by [RedTurtle](https://www.redturtle.it), 2020)
+- [Biblioteche Pianura Est](https://bibest.it/it) (Website of the Associated libraries of eastern plain. Developed by [RedTurtle](https://www.redturtle.it/), 2021)
+- [BISE](https://biodiversity.europa.eu) (Biodiversity Information System for Europe, developed by [Eau de Web](https://eaudeweb.ro/), 2019)
+- [Camera di Commercio dell'Umbria](https://www.umbria.camcom.it) (Website Chamber of Commerce of Umbria. Developed by [RedTurtle](https://www.redturtle.it), 2021)
+- [Camera di Commercio di Reggio Emilia](https://www.emilia.camcom.it) (Website Chamber of Commerce of Reggio Emilia. Developed by [RedTurtle](https://www.redturtle.it), 2021)
+- [Comune di Camposanto](https://www.comune.camposanto.mo.it/) (Website of the Municipality of Camposanto. Developed by [RedTurtle](https://www.redturtle.it), 2021)
+- [Comune di Cantagallo](https://www.comune.cantagallo.po.it/) (Website of the Municipality of Cantagallo. Developed by [RedTurtle](https://www.redturtle.it), 2021)
+- [Comune di Medolla](https://www.comune.medolla.mo.it/) (Website of the Municipality of Medolla. Developed by [RedTurtle](https://www.redturtle.it), 2021)
+- [Comune di Mirandola](https://www.comune.mirandola.mo.it/) (Website of the Municipality of Mirandola. Developed by [RedTurtle](https://www.redturtle.it), 2021)
+- [Comune di Modena](https://www.comune.modena.it/) (Website of the Municipality of Modena. Developed by [RedTurtle](https://www.redturtle.it), 2020)
+- [Comune di San Possidonio](https://www.comune.sanpossidonio.mo.it/) (Website of the Municipality of San Possidonio. Developed by [RedTurtle](https://www.redturtle.it), 2021)
+- [Comune di Vaiano](https://www.comune.vaiano.po.it/) (Website of the Municipality of Vaiano. Developed by [RedTurtle](https://www.redturtle.it), 2021)
+- [Comune di Vernio](https://www.comune.vernio.po.it/) (Website of the Municipality of Vernio. Developed by [RedTurtle](https://www.redturtle.it), 2021)
+- [Debabarreneko mankomunitatea](https://debabarrena.eus/eu) (Website of the Commonwealth of Debabarrena, community of municipalities to centralize waste handling services, developed by [CodeSyntax](https://www.codesyntax.com/en), 2022)
+- [Debako Udala / Ayuntamiento de Deba](https://www.deba.eus/eu) (Website of the municipality of Deba, developed by [CodeSyntax](https://www.codesyntax.com/en), 2022)
+- [European Environment Agency](https://www.eea.europa.eu/en) (Website of the European Environment Agency. Developed by [Eau de Web](https://eaudeweb.ro), 2023)
+- [Energy Climate Union portal for Europe](https://climate-energy.eea.europa.eu/) (Thematic website focusing on European strides towards mitigating climate change, developed by [Eau de Web](https://eaudeweb.ro/), 2020)
+- [Excellence at Humboldt-Universität zu Berlin](https://www.alles-beginnt-mit-einer-frage.de) (Website for the excellence initiative of the [Humboldt University Berlin](https://www.hu-berlin.de/de), developed by [kitconcept GmbH](https://kitconcept.com), 2019)
+- [Forest Information System for Europe](https://forest.eea.europa.eu) (Thematic website focusing on European forests, developed by [Eau de Web](https://eaudeweb.ro/), 2019)
+- [Forschungszentrum Jülich](https://www.fz-juelich.de/de) (Website for Forschungzentrum Jülich, which is one of the largest research institutions in Europe, developed by [kitconcept GmbH](https://kitconcept.com), 2022)
+- [German Aerospace Center (DLR)](https://www.dlr.de/de) (The German Aerospace Center (DLR) is the Federal Republic of Germany's research center for aeronautics. With more than 10.000 employees and a yearly budget of more than 1 billion euros, it is one of the largest research institutions in Germany, developed by [kitconcept GmbH](https://kitconcept.com), 2023)
+- [Helmholtz-Institut Erlangen-Nürnberg für Erneuerbare Energien (HI-ERN)](https://www.hi-ern.de/de) (Website for HI ERN, a research institution for renewable energies, developed by [kitconcept GmbH](https://kitconcept.com), 2022)
+- [Humboldt Labor](https://www.humboldtforum.org/de/programm/dauerangebot/ausstellung/nach-der-natur-14144/) (The Humboldt Lab is a website where the Humboldt University Berlin presents its latest research projects and findings. Developed by [WLDX](https://wldx.de/) and [kitconcept GmbH](https://kitconcept.com), 2020)
+- [ILPO](https://ilpo.jyu.fi/) (the registration portal of continuous learning at the University of Jyväskylä. Developed by University of Jyväskylä, 2022)
+- [Industrial Emissions portal for Europe](https://industry.eea.europa.eu) (Thematic website focusing on European industrial emissions, developed by [Eau de Web](https://eaudeweb.ro/), 2020)
+- [Jobfamilie MEDICE](https://jobfamilie.medice.de/de) (Carrer website for MEDICE Arzneimittel Pütter GmbH & Co. KG), developed by [Werkbank GmbH](https://werkbank.de/), 2020)
+- [Lanku](https://www.lanku.eus) (Website for Lanku Kultur Zerbitzuak, a company offering cultural services and improvised Basque verse singing sessions across the Basque Country, developed by [CodeSyntax](https://www.codesyntax.com/en), 2023)
+- [Leibniz Institute for Science and Mathematics Education (IPN)](https://www.leibniz-ipn.de/de) (Website of the IPN, a research institute dedicated to issues related to learning and teaching of science, mathematics and computer science in and outside of schools, developed by [Starzel](https://www.starzel.de), 2023)
+- [MEDICE Webseite](https://medice.com/de-de) (Website for MEDICE Arzneimittel Pütter GmbH & Co. KG), developed by [Werkbank GmbH](https://werkbank.de/), 2020)
+- [Nuova Voce Ecologista](https://nuovavoceecologista.it) (Website of Nuova Voce Ecologista, an Italian green Party, 2020)
+- [Osaka University](https://www.osaka-u.ac.jp/en) (Osaka University is considered one of the most prestigious universities in Japan. Developed by [CMScom](https://www.cmscom.jp), 2021)
+- [ResOU](https://resou.osaka-u.ac.jp/ja) (ResOU is introducing official researched releases by the University of Osaka, Japan. Developed by [CMScom](https://www.cmscom.jp), 2020)
+- [Stradanove](https://www.stradanove.it/) (Website of the Department of Youth Policies of the Municipality of Modena, developed by [RedTurtle](https://www.redturtle.it), 2020)
+- [Study guide at University of Jyväskylä](https://studyguide.jyu.fi/2020/en/) (Static website where [Volto is used as a headless CMS for authoring additional content](https://tech.blog.jyu.fi/2020/06/plone-volto-hasura-gatsbyjs-mashup/), 2020)
+- [Talke Carrer Website](https://karriere.talke.com/) (Carrer website for [Talke](https://www.talke.com), one of the leading a chemical and petrochemical logistics companies in Germany, developed by [kitconcept GmbH](https://kitconcept.com), 2020)
+- [UEU](https://www.ueu.eus) (Website for Udako Euskal Unibertsitatea, a non-profit University offering all its service only in Basque: courses, publications, ... developed by [CodeSyntax](https://www.codesyntax.com/en), 2023)
+- [Unione dei Comuni della Val Bisenzio](https://www.bisenzio.it/) (Website of the Municipality union of Val Bisenzio. Developed by [RedTurtle](https://www.redturtle.it), 2021)
+- [VHS Ehrenamtsportal](https://vhs-ehrenamtsportal.de) (Website to help volunteers that help refugees for the [German Adult Education Association](https://www.volkshochschule.de/), developed by [kitconcept GmbH](https://kitconcept.com), 2018)
+- [VisitModena](https://www.visitmodena.it/it) (Tourist website of the Municipality of Modena, developed by [RedTurtle](https://www.redturtle.it), 2020)
+- [WISE-Freshwater](https://water.europa.eu/freshwater) (WISE-Freshwater, the Freshwater Information System for Europe. Developed by [Eau de web](https://eaudeweb.ro) for the European Environmental Agency, 2021)
+- [Zeelandia](https://www.zeelandia.de/) (Corporate website for one of the leading bakery ingredients manufacturers in Germany, developed by [kitconcept GmbH](https://kitconcept.com), 2019)
+
+
+### Open-source websites built with Volto
+
+The following websites have been built with Volto.
+You can find their complete source code by following their links.
+Please note that complex websites are built on top of Volto add-ons, and most of the time they're just an empty shell for the add-ons.
+You should check the dependencies in their `package.json` for more details.
+
+- [Forest Information System for Europe](https://github.com/eea/fise-frontend) - Volto project for [Forest Information System for Europe website](https://forest.eea.europa.eu)
+- [Freshwater Information System for Europe](https://github.com/eea/freshwater-frontend) - Volto project for [Freshwater Information System for Europe website](https://water.europa.eu/freshwater)
+- [European Industrial Emissions Portal](https://github.com/eea/industry-frontend ) - Volto project for [European Industrial Emissions Portal website](https://industry.eea.europa.eu)
+- [Biodiversity Information System for Europe](https://github.com/eea/bise-frontend) - Volto project for [Biodiversity Information System for Europe website](https://biodiversity.europa.eu)
+- [EEA Main Website frontend](https://github.com/eea/eea-website-frontend) - Volto project for [European Environment Agency](https://www.eea.europa.eu/en)
+- [Climate and energy in the EU](https://github.com/eea/climate-energy-frontend) - Volto project for [Climate and energy in the EU website](https://climate-energy.eea.europa.eu)
+- [volto-bise](https://github.com/eea/volto-bise) - A Volto project packaged as an addon. It provides Theming using a razzle.extend.js provided alias.
+- [design-volto-theme](https://github.com/RedTurtle/design-volto-theme) Volto theme for Italian Public Administration
+- [2021.ploneconf.org](https://github.com/plone/ploneconf.org/tree/2021) - Volto project for [Plone Conference 2021 site](https://2021.ploneconf.org)
+- [2022.ploneconf.org](https://github.com/plone/ploneconf.org/tree/2022) - Volto project for [Plone Conference 2022 site](https://2022.ploneconf.org)
+- [2023.ploneconf.org](https://github.com/plone/ploneconf.org/tree/2023) - Volto project for [Plone Conference 2023 site](https://2023.ploneconf.org)
+- [plone.org.br](https://github.com/plonegovbr/plone.org.br) - Volto project for the [Brazilian Plone Community](https://plone.org.br)
+- [nsw-design-system-plone6-kit](https://github.com/pretagov/nsw-design-system-plone6-kit) - NSW Design System Plone 6 Kit Volto project for [NSW.gov.au sites](https://digitalnsw.pretagov.com.au/)
+- [volto-centraalmuseum-theme](https://github.com/intk/volto-centraalmuseum-theme) - Volto project for the [Centraal Museum & Rietveld](https://www.centraalmuseum.nl/nl) made for [INTK](https://www.intk.com/en).
+- [volto-eea-design-system](https://github.com/eea/volto-eea-design-system) - EEA Design System Plone 6 Kit Volto project for [European Environment Agency web sites](https://eea.github.io/volto-eea-design-system/)
+- [volto-eea-website-theme](https://github.com/eea/volto-eea-website-theme) - EEA Plone 6 Volto Theme for [European Environment Agency web sites](https://www.eea.europa.eu/en)
+- [volto-eea-kitkat](https://github.com/eea/volto-eea-kitkat) - A known good set of Volto add-ons to be used within all EEA projects and beyond, made for [European Environment Agency](https://www.eea.europa.eu/en)
+- [volto-rietveldschroderhuis-theme](https://github.com/intk/volto-rietveldschroderhuis-theme) - Volto project for the [Rietveld Schröder House](https://www.rietveldschroderhuis.nl/en) made for [INTK](https://www.intk.com/en).
+- [volto-zeeuwsmuseum-theme](https://github.com/intk/volto-zeeuwsmuseum-theme) - Volto project for the [Zeeuws Museum](https://www.zeeuwsmuseum.nl/en) made for [INTK](https://www.intk.com/en).

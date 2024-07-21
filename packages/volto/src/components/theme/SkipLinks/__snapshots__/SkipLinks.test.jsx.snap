@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SkipLinks renders skip links 1`] = `
+<div
+  aria-label="Skiplinks"
+  className="skiplinks-wrapper"
+  role="complementary"
+>
+  <a
+    className="skiplink"
+    href="#view"
+  >
+    Skip to main content
+  </a>
+  <a
+    className="skiplink"
+    href="#navigation"
+  >
+    Skip to navigation
+  </a>
+  <a
+    className="skiplink"
+    href="#footer"
+  >
+    Skip to footer
+  </a>
+</div>
+`;

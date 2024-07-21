@@ -1,7 +1,7 @@
 import isUrl from 'is-url';
 import imageExtensions from 'image-extensions';
 import { blockTagDeserializer } from '@plone/volto-slate/editor/deserialize';
-import { getBaseUrl } from '@plone/volto/helpers';
+import { getBaseUrl, validateFileUploadSize } from '@plone/volto/helpers';
 import { v4 as uuid } from 'uuid';
 import { Transforms } from 'slate';
 
@@ -46,10 +46,7 @@ export const onImageLoad = (editor, reader) => () => {
     },
   };
 
-  uploadContent(url, content, block).then((data) => {
-    const dlUrl = data.image.download;
-    insertImage(editor, dlUrl);
-  });
+  uploadContent(url, content, block);
 };
 
 export const withDeserializers = (editor) => {
@@ -66,7 +63,9 @@ export const withDeserializers = (editor) => {
     ...editor.dataTransferHandlers,
     files: (files) => {
       const unprocessed = [];
+      const { intl } = editor.getBlockProps();
       for (const file of files) {
+        if (!validateFileUploadSize(file, intl.formatMessage)) return;
         const reader = new FileReader();
         const [mime] = file.type.split('/');
         if (mime === 'image') {
