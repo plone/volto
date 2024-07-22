@@ -379,9 +379,14 @@ If you still use it, bring it back as your main add-on dependency, bring back th
 ### Refactor of `FormValidation` module
 
 The `packages/volto/src/helpers/FormValidation/FormValidation.jsx` module has been heavily refactored.
-Some helper functions have been moved to `packages/volto/src/helpers/FormValidation/validators.ts`, however, none of those functions were exported in the first place, so no imports will be broken.
-In case that you've shadowed the `packages/volto/src/helpers/FormValidation/FormValidation.jsx` module, you should revisit it and update it with the latest refactor.
-If you added more validators manually in that shadow, please refer to the documentation to add the validators in the new way: {doc}`../configuration/validation`.
+Some helper functions have been moved to `packages/volto/src/helpers/FormValidation/validators.ts`.
+None of those functions were exported in the first place, so no imports will be broken.
+If you shadowed the module {file}`packages/volto/src/helpers/FormValidation/FormValidation.jsx`, you should review it and update it accordingly.
+
+```{seealso}
+{doc}`../configuration/validation`
+```
+
 
 (volto-upgrade-guide-17.x.x)=
 
