@@ -3,7 +3,7 @@ myst:
   html_meta:
     "description": "Client side form field validation"
     "property=og:description": "Client side form field validation"
-    "property=og:title": "Form fields validation"
+    "property=og:title": "Client side form field validation"
     "keywords": "Volto, Plone, frontend, React, configuration, form, fields, validation"
 ---
 
@@ -11,23 +11,30 @@ myst:
 
 Volto provides a mechanism for delivering form field validation in an extensible way.
 This extensibility is based on the Volto registry.
-It applies to content types, custom programatically generated forms and blocks schema settings.
-All of them are serialized using JSON schema standard and then Volto generates the resultant form out of it.
+It applies to content types, custom programatically generated forms, and blocks schema settings.
+The mechanism serializes all of them according to the [JSON schema standard](https://json-schema.org/draft/2020-12/json-schema-validation).
+Finally Volto generates the form from the serialization.
 
-## Registering a validator
 
-You can register a validator using the registry API from your add-on configuration.
-The validators are registered using the `registerUtility` API method.
+## Register a validator
 
-### Registering and declaring a simple validator
+You can register a validator using the `registerUtility` method in the registry API from your add-on configuration.
 
-The most common thing is to have a field that you want to validate with a specific validator.
-Volto provide some default validators, see at the end of this chapter for more information.
 
-#### For Volto custom forms and block schema forms
+### Register and declare a simple validator
 
-When you define them programatically, in your core, using JSON schema, you can register a custom validator using the `format` property.
-This is the case of creating the schema for a block:
+This section describes how to validate a field with a specific validator, a common use case.
+Volto also provides some default validators.
+
+```{seealso}
+{ref}`voltos-default-validators-label`
+```
+
+#### Volto custom forms and block schema forms
+
+When you define custom forms and block schema forms programatically, you can register a custom validator using the `format` property in your core using JSON schema.
+
+The following example shows how to create the schema for a block.
 
 ```ts
 let blockSchema = {
@@ -44,7 +51,8 @@ let blockSchema = {
 };
 ```
 
-`url` named validator should be registered by this name as a Volto validator utility:
+You should register the `url` named validator as a Volto validator utility.
+In the following example, the `urlValidator` method validator will be applied for the block field `customField` in the previous example.
 
 ```ts
 config.registerUtility({
@@ -54,11 +62,10 @@ config.registerUtility({
 })
 ```
 
-In this case, the `urlValidator` method validator will be applied for the block field `customField`.
 
-#### For content types
+#### Content types
 
-Content types also can specify the `format` using the schema hints in the backend in the `frontendOptions`:
+You can also specify the `format` of content types using the schema hints in the backend using `frontendOptions`.
 
 ```python
 from plone.supermodel import model
@@ -78,8 +85,9 @@ class IMyContent(model.Schema):
     # Rest of your content type definition
 ```
 
-For the record, the resultant `plone.restapi` response will be something like the following, a bit different than in blocks JSON schema.
-But the validation engine will take care too:
+The response from `plone.restapi` will be something like the following.
+It is slightly different from blocks JSON schema, but the validation engine will behave the same.
+The `urlValidator` method validator will be applied for the content type field `customField` from the earlier example.
 
 ```json
 {
@@ -96,16 +104,22 @@ But the validation engine will take care too:
 }
 ```
 
-and the `urlValidator` method validator will be applied for the content type field `customField`.
 
 ### Advanced scenarios
 
-In case you need more granularity and you don't have access to modify the existing implementation of the JSON schema definitions for existing content types, blocks or forms (might be in third party add-ons), you can use the following advanced validator registrations, using `field`, `widget`, `behaviorName` or `blockType` validator registrations.
+In case you need more granularity, and you don't have access to modify the existing implementation of the JSON schema definitions for existing content types, blocks, or forms, you can use the following advanced validator registrations, using `field`, `widget`, `behaviorName`, or `blockType` validator registrations.
 
-#### Per field `type` validators
 
-These validators are applied depending on the specified `type` of the field in the JSON schema from content types, forms or blocks.
-The next example is for the use case of JSON schema defined in a block:
+#### Field `type` validators
+
+Field `type` validators are applied depending on the specified `type` of the field in the JSON schema from content types, forms, or blocks.
+
+You should specify the `type` in the JSON schema of the block.
+In a content type, it is included in the default serialization of the field.
+
+If a field does not specify `type`, it assumes a `string` type as validator.
+
+The next example shows how to define the JSON schema in a block.
 
 ```ts
 let blockSchema = {
@@ -134,12 +148,13 @@ config.registerUtility({
 })
 ```
 
-You should specify the `type` in the JSON schema of the block (in a content type, it is included in the default serialization of the field).
-If a field does not specify type, it assumes a `string` type as validator.
 
-#### Per field `widget` validators
+#### Field `widget` validators
 
-These validators are applied depending on the specified `widget` of the field.
+Field `widget` validators are applied depending on the specified `widget` of the field.
+You should specify the `widget` either in the JSON schema of the block or as additional data in the content type definition.
+
+The following example shows how to specify the `widget` either in the JSON schema of the block.
 
 ```ts
 let blockSchema = {
@@ -167,10 +182,8 @@ config.registerUtility({
 })
 ```
 
-
-You should specify the `widget` in the JSON schema of the block, or as additional data in the content type definition.
-Content types also can specify the `widget` to be used using the schema hints in the backend in the `frontendOptions`:
-
+The following example shows how to specify the `widget` in the content type definition in the schema hints in the backend using `frontendOptions`.
+The validation engine  will behave the same, applying the `urlValidator` method validator for the content type field `customField` in the previous example.
 
 ```python
 from plone.supermodel import model
@@ -190,11 +203,13 @@ class IMyContent(model.Schema):
     # Rest of your content type definition
 ```
 
-the validation engine will take care too, and the `urlValidator` method validator will be applied for the content type field `customField`.
 
-#### Per behavior and field name validator
+#### Behavior and field name validators
 
-These validators are applied depending on the behavior (usually coming from a content type definition) in combination with the name of the field.
+Behavior and field name validators are applied depending on the behavior in combination with the name of the field.
+These usually come from a content type definition.
+This type of validator only applies to content type validators.
+It takes the `behaviorName` and the `fieldName` as dependencies.
 
 ```ts
 config.registerUtility({
@@ -208,12 +223,12 @@ config.registerUtility({
 })
 ```
 
-It takes the `behaviorName` and the `fieldName` as dependencies.
-This type of validator only applies to content type validators.
 
-#### Per block type and field name validator
+#### Block type and field name validators
 
-These validators are applied depending on the block type in combination with the name of the field in the block settings JSON schema.
+Block type and field name validators are applied depending on the block type in combination with the name of the field in the block settings JSON schema.
+This type of validator only applies to blocks.
+It takes the `blockType` and the `fieldName` as dependencies.
 
 ```ts
 config.registerUtility({
@@ -227,16 +242,20 @@ config.registerUtility({
 })
 ```
 
-It takes the `blockType` and the `fieldName` as dependencies.
-This type of validator only applies to blocks.
+
+(voltos-default-validators-label)=
 
 ## Volto's default validators
 
-Volto provides a set of validators by default, you can find them in this module: `packages/volto/src/config/validators.ts`
+Volto provides a set of validators by default.
+You can find them in the module {file}`packages/volto/src/config/validators.ts`.
 
-### How to override a validator
 
-You can override them in your add-on as any other component defined in the registry, by redefining them using the same `dependencies`, and providing your own.
+### Override a validator
+
+You can override a validator in your add-on in the same way as any other component defined in the registry.
+You can redefine them using the same `dependencies` and provide your own validator.
+
 
 ## Signature of a validator
 
@@ -266,8 +285,13 @@ export const isNumber = ({ value, formatMessage }: Validator) => {
 };
 ```
 
+
 ## Invariants
 
-Using the `formData` you can perform validation checks using other field data as source.
-This is interesting in the case that two fields are related, like `start` and `end` dates.
-You can create invariant type of validators thanks to this.
+Using `formData`, you can perform validation checks using other field data as source.
+This is useful when you want to validate two related fields, such as ensuring the end date of an event is after its start date.
+You can create invariant validator types.
+
+```{todo}
+Needs example.
+```
