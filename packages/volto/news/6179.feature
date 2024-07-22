@@ -1,0 +1,1 @@
+Refactor the `PersonalPreferences` component from a class component to a functional component. @antedotee
