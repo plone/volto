@@ -3,13 +3,12 @@
  * @module components/manage/Preferences/PersonalPreferences
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
+import { useDispatch } from 'react-redux';
 import { map, keys } from 'lodash';
-import { withCookies } from 'react-cookie';
-import { defineMessages, injectIntl } from 'react-intl';
+import { useCookies } from 'react-cookie';
+import { defineMessages, useIntl } from 'react-intl';
 import { toast } from 'react-toastify';
 
 import { Toast } from '@plone/volto/components';
@@ -50,104 +49,59 @@ const messages = defineMessages({
   },
 });
 
-/**
- * PersonalPreferences class.
- * @class PersonalPreferences
- * @extends Component
- */
-class PersonalPreferences extends Component {
-  /**
-   * Property types.
-   * @property {Object} propTypes Property types.
-   * @static
-   */
-  static propTypes = {
-    changeLanguage: PropTypes.func.isRequired,
-    closeMenu: PropTypes.func.isRequired,
-  };
+const PersonalPreferences = ({ closeMenu }) => {
+  const intl = useIntl();
+  const dispatch = useDispatch();
+  const [cookies] = useCookies(['I18N_LANGUAGE']);
 
-  /**
-   * Constructor
-   * @method constructor
-   * @param {Object} props Component properties
-   * @constructs PersonalPreferences
-   */
-  constructor(props) {
-    super(props);
-    this.onCancel = this.onCancel.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-  }
-
-  /**
-   * Submit handler
-   * @method onSubmit
-   * @param {object} data Form data.
-   * @returns {undefined}
-   */
-  onSubmit(data) {
+  const onSubmit = async (data) => {
     let language = data.language || 'en';
     if (config.settings.supportedLanguages.includes(language)) {
       const langFileName = toGettextLang(language);
-      import(
+      const locale = await import(
         /* @vite-ignore */ '@root/../locales/' + langFileName + '.json'
-      ).then((locale) => {
-        this.props.changeLanguage(language, locale.default);
-      });
+      );
+      dispatch(changeLanguage(language, locale.default));
     }
     toast.success(
-      <Toast success title={this.props.intl.formatMessage(messages.saved)} />,
+      <Toast success title={intl.formatMessage(messages.saved)} />,
     );
-    this.props.closeMenu();
-  }
+    closeMenu();
+  };
 
-  /**
-   * Cancel handler
-   * @method onCancel
-   * @returns {undefined}
-   */
-  onCancel() {
-    this.props.closeMenu();
-  }
+  const onCancel = () => {
+    closeMenu();
+  };
 
-  /**
-   * Render method.
-   * @method render
-   * @returns {string} Markup for the component.
-   */
-  render() {
-    const { cookies } = this.props;
-    return (
-      <Form
-        formData={{ language: cookies.get('I18N_LANGUAGE') || '' }}
-        schema={{
-          fieldsets: [
-            {
-              id: 'default',
-              title: this.props.intl.formatMessage(messages.default),
-              fields: ['language'],
-            },
-          ],
-          properties: {
-            language: {
-              description: this.props.intl.formatMessage(
-                messages.languageDescription,
-              ),
-              title: this.props.intl.formatMessage(messages.language),
-              type: 'string',
-              choices: map(keys(languages), (lang) => [lang, languages[lang]]),
-            },
+  return (
+    <Form
+      formData={{ language: cookies.I18N_LANGUAGE || '' }}
+      schema={{
+        fieldsets: [
+          {
+            id: 'default',
+            title: intl.formatMessage(messages.default),
+            fields: ['language'],
           },
-          required: [],
-        }}
-        onSubmit={this.onSubmit}
-        onCancel={this.onCancel}
-      />
-    );
-  }
-}
+        ],
+        properties: {
+          language: {
+            description: intl.formatMessage(messages.languageDescription),
+            title: intl.formatMessage(messages.language),
+            type: 'string',
+            choices: map(keys(languages), (lang) => [lang, languages[lang]]),
+          },
+        },
+        required: [],
+      }}
+      onSubmit={onSubmit}
+      onCancel={onCancel}
+    />
+  );
+};
 
-export default compose(
-  injectIntl,
-  withCookies,
-  connect(null, { changeLanguage }),
-)(PersonalPreferences);
+PersonalPreferences.propTypes = {
+  closeMenu: PropTypes.func.isRequired,
+};
+
+export default PersonalPreferences;
