@@ -163,39 +163,6 @@ class Config {
     }
   }
 
-  getComponents(
-    options: { name: string; dependencies?: string[] | string } | string,
-  ): Array<GetComponentResult> {
-    if (typeof options === 'object') {
-      const { name, dependencies = '' } = options;
-      let depsString: string = '';
-      if (dependencies && Array.isArray(dependencies)) {
-        depsString = dependencies.join('+');
-      } else if (typeof dependencies === 'string') {
-        depsString = dependencies;
-      }
-      const componentName = `${name}${depsString ? `|${depsString}` : ''}`;
-      const componentsKeys = Object.keys(this._data.components).filter((key) =>
-        key.startsWith(componentName),
-      );
-      const components = componentsKeys.map(
-        (key) => this._data.components[key],
-      );
-
-      return components;
-    } else {
-      // Shortcut notation, accepting a lonely string as argument
-      const componentName = options;
-      const componentsKeys = Object.keys(this._data.components).filter((key) =>
-        key.startsWith(componentName),
-      );
-      const components = componentsKeys.map(
-        (key) => this._data.components[key],
-      );
-      return components;
-    }
-  }
-
   registerComponent(options: {
     name: string;
     dependencies?: string[] | string;

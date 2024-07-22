@@ -113,39 +113,6 @@ describe('Component registry', () => {
       }).component,
     ).toEqual('this is a Bar component');
   });
-  it('getComponents - get a collection of component registration', () => {
-    expect(config.getComponents('Toolbar').length).toEqual(2);
-    expect(config.getComponents('Toolbar')[0].component).toEqual(
-      'this is the Toolbar component',
-    );
-    expect(config.getComponents('Toolbar')[1].component).toEqual(
-      'this is the Types component',
-    );
-  });
-  it('getComponents - get a collection of component registration and deps', () => {
-    config.registerComponent({
-      name: 'Toolbar',
-      component: 'this is a StringFieldWidget component',
-      dependencies: ['News Item', 'StringFieldWidget'],
-    });
-    config.registerComponent({
-      name: 'Toolbar',
-      component: 'this is a AnotherWidget component',
-      dependencies: ['News Item', 'AnotherWidget'],
-    });
-    expect(
-      config.getComponents({ name: 'Toolbar', dependencies: ['News Item'] })
-        .length,
-    ).toEqual(2);
-    expect(
-      config.getComponents({ name: 'Toolbar', dependencies: ['News Item'] })[0]
-        .component,
-    ).toEqual('this is a StringFieldWidget component');
-    expect(
-      config.getComponents({ name: 'Toolbar', dependencies: ['News Item'] })[1]
-        .component,
-    ).toEqual('this is a AnotherWidget component');
-  });
 });
 
 describe('Slots registry', () => {
