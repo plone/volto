@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2024-07-15T15:43:39.835Z\n"
+"POT-Creation-Date: 2024-07-22T14:32:27.896Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -1264,7 +1264,7 @@ msgstr ""
 msgid "End Date"
 msgstr ""
 
-#. Default: "End event date happens before than the start event date"
+#. Default: "Event end date happens before the event start date"
 #: helpers/MessageLabels/MessageLabels
 msgid "End event date happens before than the start event date"
 msgstr ""
@@ -3438,7 +3438,7 @@ msgstr ""
 msgid "Start Date"
 msgstr ""
 
-#. Default: "Start event date happens later than the end event date"
+#. Default: "Event start date happens later than the event end date"
 #: helpers/MessageLabels/MessageLabels
 msgid "Start event date happens later than the end event date"
 msgstr ""

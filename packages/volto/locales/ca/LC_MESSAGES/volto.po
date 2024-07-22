@@ -1268,7 +1268,7 @@ msgstr ""
 msgid "End Date"
 msgstr "Data de finalització"
 
-#. Default: "End event date happens before than the start event date"
+#. Default: "Event end date happens before the event start date"
 #: helpers/MessageLabels/MessageLabels
 msgid "End event date happens before than the start event date"
 msgstr ""
@@ -3442,7 +3442,7 @@ msgstr "Dividir"
 msgid "Start Date"
 msgstr "Data d'inici"
 
-#. Default: "Start event date happens later than the end event date"
+#. Default: "Event start date happens later than the event end date"
 #: helpers/MessageLabels/MessageLabels
 msgid "Start event date happens later than the end event date"
 msgstr ""
