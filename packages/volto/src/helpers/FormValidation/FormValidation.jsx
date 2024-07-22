@@ -110,7 +110,7 @@ const validateFieldsPerFieldset = (
         const errorMessage =
           fieldData === undefined || fieldData === null
             ? null
-            : widgetCriterion.component({
+            : widgetCriterion.method({
                 value: fieldData,
                 field,
                 formData,
@@ -124,24 +124,28 @@ const validateFieldsPerFieldset = (
   Object.entries(schema.properties).forEach(([fieldId, field]) => {
     let fieldData = formData[fieldId];
 
-    // Default validation for all fields (required, minLength, maxLength)
-    const defaultFieldValidationCriteria = config.getComponents({
-      name: 'fieldValidator',
-      dependencies: ['default'],
-    });
+    // Validation per specific validator set (format property)
+    const hasSpecificValidator =
+      field.widgetOptions?.frontendOptions?.format || field.format;
+    let specificFieldErrors = [];
+    if (hasSpecificValidator) {
+      const specificValidationCriteria = config.getUtilities({
+        type: 'validator',
+        dependencies: { format: hasSpecificValidator },
+      });
 
-    const defaultFieldErrors = checkFieldErrors(
-      defaultFieldValidationCriteria,
-      field,
-      fieldData,
-    );
+      specificFieldErrors = checkFieldErrors(
+        specificValidationCriteria,
+        field,
+        fieldData,
+      );
+    }
 
     // Validation per field type
-    const fieldType = field.type || 'string';
-    // test each criterion eg. maximum, isEmail, isUrl, etc
-    const fieldTypeValidationCriteria = config.getComponents({
-      name: 'fieldValidator',
-      dependencies: [fieldType],
+    const fieldType = field.type || 'string'; // defaults to string
+    const fieldTypeValidationCriteria = config.getUtilities({
+      type: 'validator',
+      dependencies: { fieldType },
     });
 
     const fieldErrors = checkFieldErrors(
@@ -151,66 +155,46 @@ const validateFieldsPerFieldset = (
     );
 
     // Validation per field widget
-    const fieldWidget =
+    const widgetName =
       field.widgetOptions?.frontendOptions?.widget || field.widget || '';
 
     let widgetErrors = [];
-    if (fieldWidget) {
-      const fieldWidgetValidationCriteria = config.getComponents({
-        name: 'fieldValidator',
-        dependencies: [fieldWidget],
+    if (widgetName) {
+      const widgetNameValidationCriteria = config.getUtilities({
+        type: 'validator',
+        dependencies: { widgetName },
       });
 
       widgetErrors = checkFieldErrors(
-        fieldWidgetValidationCriteria,
+        widgetNameValidationCriteria,
         field,
         fieldData,
       );
     }
 
-    // Validation per specific behavior and fieldId
-    const perBehaviorSpecificValidator = field.behavior;
+    // Validation per specific behavior and field name (for content types)
+    const behaviorName = field.behavior;
     let perBehaviorFieldErrors = [];
-    // test each criterion eg. maximum, isEmail, isUrl, etc
-    if (perBehaviorSpecificValidator) {
-      const specificFieldValidationCriteria = config.getComponents({
-        name: 'fieldValidator',
-        dependencies: [perBehaviorSpecificValidator, fieldId],
+    if (behaviorName) {
+      const specificPerBehaviorFieldValidationCriteria = config.getUtilities({
+        type: 'validator',
+        dependencies: { behaviorName, fieldName: fieldId },
       });
 
       perBehaviorFieldErrors = checkFieldErrors(
-        specificFieldValidationCriteria,
+        specificPerBehaviorFieldValidationCriteria,
         field,
         fieldData,
       );
     }
 
-    // Validation per specific validator
-    const hasSpecificValidator =
-      field.widgetOptions?.frontendOptions?.validator || field.validator;
-    let specificFieldErrors = [];
-    // test each criterion eg. maximum, isEmail, isUrl, etc
-    if (hasSpecificValidator) {
-      const specificFieldValidationCriteria = config.getComponents({
-        name: 'fieldValidator',
-        dependencies: [hasSpecificValidator],
-      });
-
-      specificFieldErrors = checkFieldErrors(
-        specificFieldValidationCriteria,
-        field,
-        fieldData,
-      );
-    }
-
-    // Validation per block type validator
-    const hasBlockType = formData['@type'];
+    // Validation per block type validator (for blocks)
+    const blockType = formData['@type'];
     let blockTypeFieldErrors = [];
-    // test each criterion eg. maximum, isEmail, isUrl, etc
-    if (hasBlockType) {
-      const blockTypeFieldValidationCriteria = config.getComponents({
-        name: 'fieldValidator',
-        dependencies: [hasBlockType, fieldId],
+    if (blockType) {
+      const blockTypeFieldValidationCriteria = config.getUtilities({
+        type: 'validator',
+        dependencies: { blockType, fieldName: fieldId },
       });
 
       blockTypeFieldErrors = checkFieldErrors(
@@ -221,22 +205,20 @@ const validateFieldsPerFieldset = (
     }
 
     const mergedErrors = [
-      ...defaultFieldErrors,
+      ...specificFieldErrors,
       ...fieldErrors,
       ...widgetErrors,
       ...perBehaviorFieldErrors,
-      ...specificFieldErrors,
       ...blockTypeFieldErrors,
     ];
 
     if (mergedErrors.length > 0) {
       errors[fieldId] = [
         ...(errors[fieldId] || []),
-        ...defaultFieldErrors,
+        ...specificFieldErrors,
         ...fieldErrors,
         ...widgetErrors,
         ...perBehaviorFieldErrors,
-        ...specificFieldErrors,
         ...blockTypeFieldErrors,
       ];
     }

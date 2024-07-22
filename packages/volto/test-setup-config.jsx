@@ -155,7 +155,7 @@ config.set('components', {
   },
 });
 
-registerValidators(config);
+config.set('utilities', {});
 
 config.set('experimental', {
   addBlockButton: {
@@ -164,3 +164,5 @@ config.set('experimental', {
 });
 
 config.set('slots', {});
+
+registerValidators(config);

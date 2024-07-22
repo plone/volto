@@ -167,23 +167,19 @@ describe('FormValidation', () => {
       ).toEqual({});
     });
 
-    it('default - widget validator from block - Fails', () => {
+    it('widget - validator from block - Fails', () => {
       let newSchema = {
         properties: {
           ...schema.properties,
           customField: {
             title: 'Default field',
             description: '',
-            widget: 'isURL',
+            widget: 'url',
           },
         },
         required: [],
       };
-      config.registerComponent({
-        name: 'fieldValidator',
-        dependencies: ['isURL'],
-        component: urlValidator,
-      });
+
       expect(
         FormValidation.validateFieldsPerFieldset({
           schema: newSchema,
@@ -198,7 +194,7 @@ describe('FormValidation', () => {
       });
     });
 
-    it('default - type and widget validator from block - Fails', () => {
+    it('type + widget - validator from block - Fails', () => {
       let newSchema = {
         properties: {
           ...schema.properties,
@@ -206,20 +202,16 @@ describe('FormValidation', () => {
             title: 'Default field',
             description: '',
             type: 'customfieldtype',
-            widget: 'isURL',
+            widget: 'url',
           },
         },
         required: [],
       };
-      config.registerComponent({
-        name: 'fieldValidator',
-        dependencies: ['customfieldtype', 'willFail'],
-        component: () => 'Fails',
-      });
-      config.registerComponent({
-        name: 'fieldValidator',
-        dependencies: ['isURL'],
-        component: urlValidator,
+      config.registerUtility({
+        type: 'validator',
+        name: 'alwaysFail',
+        dependencies: { fieldType: 'customfieldtype' },
+        method: () => 'Fails',
       });
       expect(
         FormValidation.validateFieldsPerFieldset({
@@ -235,7 +227,7 @@ describe('FormValidation', () => {
       });
     });
 
-    it('default - widget validator from content type set - Fails', () => {
+    it('widget - validator from content type set - Fails', () => {
       let newSchema = {
         properties: {
           ...schema.properties,
@@ -244,18 +236,13 @@ describe('FormValidation', () => {
             description: '',
             widgetOptions: {
               frontendOptions: {
-                widget: 'isURL',
+                widget: 'url',
               },
             },
           },
         },
         required: [],
       };
-      config.registerComponent({
-        name: 'fieldValidator',
-        dependencies: ['isURL'],
-        component: urlValidator,
-      });
       expect(
         FormValidation.validateFieldsPerFieldset({
           schema: newSchema,
@@ -461,7 +448,7 @@ describe('FormValidation', () => {
           ...schema.properties,
           customField: {
             title: 'Integer field',
-            type: 'number',
+            type: 'integer',
             description: '',
             maximum: 8,
           },
@@ -594,22 +581,23 @@ describe('FormValidation', () => {
       ).toEqual({});
     });
 
-    it('default - specific validator set - Errors', () => {
+    it('format - specific validator set - Errors', () => {
       let newSchema = {
         properties: {
           ...schema.properties,
           customField: {
             title: 'Default field',
             description: '',
-            validator: 'isURL',
+            format: 'url',
           },
         },
         required: [],
       };
-      config.registerComponent({
-        name: 'fieldValidator',
-        dependencies: ['isURL'],
-        component: urlValidator,
+      config.registerUtility({
+        type: 'validator',
+        name: 'url',
+        dependencies: { format: 'url' },
+        method: urlValidator,
       });
       expect(
         FormValidation.validateFieldsPerFieldset({
@@ -625,22 +613,23 @@ describe('FormValidation', () => {
       });
     });
 
-    it('default - specific validator set - Succeeds', () => {
+    it('format - specific validator set - Succeeds', () => {
       let newSchema = {
         properties: {
           ...schema.properties,
           customField: {
             title: 'Default field',
             description: '',
-            validator: 'isURL',
+            format: 'url',
           },
         },
         required: [],
       };
-      config.registerComponent({
-        name: 'fieldValidator',
-        dependencies: ['isURL'],
-        component: urlValidator,
+      config.registerUtility({
+        type: 'validator',
+        name: 'url',
+        dependencies: { format: 'url' },
+        method: urlValidator,
       });
       expect(
         FormValidation.validateFieldsPerFieldset({
@@ -654,7 +643,7 @@ describe('FormValidation', () => {
       ).toEqual({});
     });
 
-    it('default - specific validator from content type set - Succeeds', () => {
+    it('format - specific validator from content type set - Fails', () => {
       let newSchema = {
         properties: {
           ...schema.properties,
@@ -663,17 +652,54 @@ describe('FormValidation', () => {
             description: '',
             widgetOptions: {
               frontendOptions: {
-                validator: 'isURL',
+                format: 'url',
               },
             },
           },
         },
         required: [],
       };
-      config.registerComponent({
-        name: 'fieldValidator',
-        dependencies: ['isURL'],
-        component: urlValidator,
+      config.registerUtility({
+        type: 'validator',
+        name: 'url',
+        dependencies: { format: 'url' },
+        method: urlValidator,
+      });
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema: newSchema,
+          formData: {
+            username: 'test username',
+            customField: 'asdasd',
+          },
+          formatMessage,
+        }),
+      ).toEqual({
+        customField: [messages.isValidURL.defaultMessage],
+      });
+    });
+
+    it('format - specific validator from content type set - Succeeds', () => {
+      let newSchema = {
+        properties: {
+          ...schema.properties,
+          customField: {
+            title: 'Default field',
+            description: '',
+            widgetOptions: {
+              frontendOptions: {
+                format: 'url',
+              },
+            },
+          },
+        },
+        required: [],
+      };
+      config.registerUtility({
+        type: 'validator',
+        name: 'url',
+        dependencies: { format: 'url' },
+        method: urlValidator,
       });
       expect(
         FormValidation.validateFieldsPerFieldset({
@@ -687,7 +713,7 @@ describe('FormValidation', () => {
       ).toEqual({});
     });
 
-    it('default - per behavior specific - Fails', () => {
+    it('behavior + fieldName - Fails', () => {
       let newSchema = {
         properties: {
           ...schema.properties,
@@ -699,10 +725,15 @@ describe('FormValidation', () => {
         },
         required: [],
       };
-      config.registerComponent({
-        name: 'fieldValidator',
-        dependencies: ['plone.event', 'customField'],
-        component: urlValidator,
+      config.registerUtility({
+        type: 'validator',
+        name: 'url',
+        dependencies: {
+          behaviorName: 'plone.event',
+          fieldName: 'customField',
+          format: 'url',
+        },
+        method: urlValidator,
       });
       expect(
         FormValidation.validateFieldsPerFieldset({
@@ -729,10 +760,10 @@ describe('FormValidation', () => {
         },
         required: [],
       };
-      config.registerComponent({
-        name: 'fieldValidator',
-        dependencies: ['slider', 'customField'],
-        component: urlValidator,
+      config.registerUtility({
+        type: 'validator',
+        dependencies: { blockType: 'slider', fieldName: 'customField' },
+        method: urlValidator,
       });
       expect(
         FormValidation.validateFieldsPerFieldset({
@@ -749,8 +780,4 @@ describe('FormValidation', () => {
       });
     });
   });
-
-  // describe('validateBlockDataFields', () => {
-
-  // });
 });

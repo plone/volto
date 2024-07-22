@@ -15,82 +15,109 @@ import {
 } from '@plone/volto/helpers/FormValidation/validators';
 
 const registerValidators = (config: ConfigType) => {
-  config.registerComponent({
-    name: 'fieldValidator',
-    dependencies: ['default', 'minLength'],
-    component: minLengthValidator,
+  config.registerUtility({
+    name: 'minLength',
+    type: 'validator',
+    dependencies: { fieldType: 'string' },
+    method: minLengthValidator,
   });
 
-  config.registerComponent({
-    name: 'fieldValidator',
-    dependencies: ['default', 'maxLength'],
-    component: maxLengthValidator,
+  config.registerUtility({
+    name: 'maxLength',
+    type: 'validator',
+    dependencies: { fieldType: 'string' },
+    method: maxLengthValidator,
   });
 
-  config.registerComponent({
-    name: 'fieldValidator',
-    dependencies: ['email', 'isValidEmail'],
-    component: emailValidator,
+  config.registerUtility({
+    name: 'minLength',
+    type: 'validator',
+    dependencies: { fieldType: 'password' },
+    method: minLengthValidator,
   });
 
-  config.registerComponent({
-    name: 'fieldValidator',
-    dependencies: ['url', 'isValidURL'],
-    component: urlValidator,
+  config.registerUtility({
+    name: 'maxLength',
+    type: 'validator',
+    dependencies: { fieldType: 'password' },
+    method: maxLengthValidator,
   });
 
-  config.registerComponent({
-    name: 'fieldValidator',
-    dependencies: ['number', 'isNumber'],
-    component: isNumber,
+  config.registerUtility({
+    name: 'email',
+    type: 'validator',
+    dependencies: { widgetName: 'email' },
+    method: emailValidator,
   });
 
-  config.registerComponent({
-    name: 'fieldValidator',
-    dependencies: ['number', 'minimum'],
-    component: minimumValidator,
+  config.registerUtility({
+    name: 'url',
+    type: 'validator',
+    dependencies: { widgetName: 'url' },
+    method: urlValidator,
   });
 
-  config.registerComponent({
-    name: 'fieldValidator',
-    dependencies: ['number', 'maximum'],
-    component: maximumValidator,
+  config.registerUtility({
+    name: 'number',
+    type: 'validator',
+    dependencies: { fieldType: 'number' },
+    method: isNumber,
   });
 
-  config.registerComponent({
-    name: 'fieldValidator',
-    dependencies: ['integer', 'isNumber'],
-    component: isInteger,
+  config.registerUtility({
+    name: 'minimum',
+    type: 'validator',
+    dependencies: { fieldType: 'number' },
+    method: minimumValidator,
   });
 
-  config.registerComponent({
-    name: 'fieldValidator',
-    dependencies: ['integer', 'minimum'],
-    component: minimumValidator,
+  config.registerUtility({
+    name: 'maximum',
+    type: 'validator',
+    dependencies: { fieldType: 'number' },
+    method: maximumValidator,
   });
 
-  config.registerComponent({
-    name: 'fieldValidator',
-    dependencies: ['integer', 'maximum'],
-    component: maximumValidator,
+  config.registerUtility({
+    name: 'integer',
+    type: 'validator',
+    dependencies: { fieldType: 'integer' },
+    method: isInteger,
   });
 
-  config.registerComponent({
-    name: 'fieldValidator',
-    dependencies: ['array', 'uniqueItems'],
-    component: hasUniqueItems,
+  config.registerUtility({
+    name: 'minimum',
+    type: 'validator',
+    dependencies: { fieldType: 'integer' },
+    method: minimumValidator,
   });
 
-  config.registerComponent({
-    name: 'fieldValidator',
-    dependencies: ['plone.eventbasic', 'start'],
-    component: startEventDateRangeValidator,
+  config.registerUtility({
+    name: 'maximum',
+    type: 'validator',
+    dependencies: { fieldType: 'integer' },
+    method: maximumValidator,
   });
 
-  config.registerComponent({
-    name: 'fieldValidator',
-    dependencies: ['plone.eventbasic', 'end'],
-    component: endEventDateRangeValidator,
+  config.registerUtility({
+    name: 'uniqueItems',
+    type: 'validator',
+    dependencies: { fieldType: 'array' },
+    method: hasUniqueItems,
+  });
+
+  config.registerUtility({
+    name: 'dateRangeValidator',
+    type: 'validator',
+    dependencies: { behaviorName: 'plone.eventbasic', fieldName: 'start' },
+    method: startEventDateRangeValidator,
+  });
+
+  config.registerUtility({
+    name: 'dateRangeValidator',
+    type: 'validator',
+    dependencies: { behaviorName: 'plone.eventbasic', fieldName: 'end' },
+    method: endEventDateRangeValidator,
   });
 };
 

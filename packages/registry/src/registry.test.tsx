@@ -8,6 +8,7 @@ beforeEach(() => {
     'Teaser|News Item': { component: 'This is the News Item Teaser component' },
   });
   config.set('slots', {});
+  config.set('utilities', {});
 });
 
 describe('Component registry', () => {
@@ -951,5 +952,148 @@ describe('Slots registry', () => {
       name: 'save',
       component: TestComponent,
     });
+  });
+});
+
+describe('Utilities registry', () => {
+  afterEach(() => {
+    config.set('utilities', {});
+  });
+
+  it('registers a simple utility', () => {
+    config.registerUtility({
+      name: 'url',
+      type: 'validator',
+      method: () => 'this is a simple validator utility',
+    });
+
+    expect(
+      config.getUtility({ name: 'url', type: 'validator' }).method(),
+    ).toEqual('this is a simple validator utility');
+  });
+
+  it('registers an utility with dependencies', () => {
+    config.registerUtility({
+      name: 'email',
+      type: 'validator',
+      dependencies: { fieldType: 'email' },
+      method: () => 'this is a validator utility with dependencies',
+    });
+
+    expect(
+      config
+        .getUtility({
+          name: 'email',
+          dependencies: { fieldType: 'email' },
+          type: 'validator',
+        })
+        .method(),
+    ).toEqual('this is a validator utility with dependencies');
+  });
+
+  it('registers both an utility with dependencies and with no dependencies', () => {
+    config.registerUtility({
+      name: 'email',
+      type: 'validator',
+      method: () => 'this is a simple validator utility',
+    });
+
+    config.registerUtility({
+      name: 'email',
+      type: 'validator',
+      dependencies: { fieldType: 'email' },
+      method: () => 'this is a validator utility with dependencies',
+    });
+
+    expect(
+      config.getUtility({ name: 'email', type: 'validator' }).method(),
+    ).toEqual('this is a simple validator utility');
+
+    expect(
+      config
+        .getUtility({
+          name: 'email',
+          dependencies: { fieldType: 'email' },
+          type: 'validator',
+        })
+        .method(),
+    ).toEqual('this is a validator utility with dependencies');
+  });
+
+  it('registers an utility with dependencies and another with different dependencies', () => {
+    config.registerUtility({
+      name: 'email',
+      type: 'validator',
+      dependencies: { fieldType: 'email' },
+      method: () => 'this is a validator utility with dependencies for email',
+    });
+
+    config.registerUtility({
+      name: 'email',
+      type: 'validator',
+      dependencies: { fieldType: 'string' },
+      method: () => 'this is a validator utility with dependencies for string',
+    });
+
+    expect(
+      config
+        .getUtility({
+          name: 'email',
+          dependencies: { fieldType: 'string' },
+          type: 'validator',
+        })
+        .method(),
+    ).toEqual('this is a validator utility with dependencies for string');
+
+    expect(
+      config
+        .getUtility({
+          name: 'email',
+          dependencies: { fieldType: 'email' },
+          type: 'validator',
+        })
+        .method(),
+    ).toEqual('this is a validator utility with dependencies for email');
+  });
+
+  it('getUtilities - registers two utilities with the same dependencies and different names', () => {
+    config.registerUtility({
+      name: 'minLength',
+      type: 'validator',
+      dependencies: { fieldType: 'string' },
+      method: () => 'this is a validator for minLength',
+    });
+
+    config.registerUtility({
+      name: 'maxLength',
+      type: 'validator',
+      dependencies: { fieldType: 'string' },
+      method: () => 'this is a validator for maxLength',
+    });
+
+    expect(
+      config.getUtilities({
+        dependencies: { fieldType: 'string' },
+        type: 'validator',
+      }).length,
+    ).toEqual(2);
+
+    expect(
+      config
+        .getUtilities({
+          dependencies: { fieldType: 'string' },
+          type: 'validator',
+        })[0]
+        .method(),
+    ).toEqual('this is a validator for minLength');
+
+    expect(
+      config
+        .getUtilities({
+          dependencies: { fieldType: 'string' },
+          type: 'validator',
+        })[1]
+        .method(),
+    ).toEqual('this is a validator for maxLength');
   });
 });
