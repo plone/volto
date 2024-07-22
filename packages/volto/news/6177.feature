@@ -1,1 +1,1 @@
-Refactor the PersonalInformation component from a class component to a functional component. @Prince0906
+Refactor the `PersonalInformation` component from a class component to a functional component. @Prince0906
