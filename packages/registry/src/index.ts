@@ -166,7 +166,7 @@ class Config {
   registerComponent(options: {
     name: string;
     dependencies?: string[] | string;
-    component: (args: any) => any;
+    component: React.ComponentType;
   }) {
     const { name, component, dependencies = '' } = options;
     let depsString: string = '';
