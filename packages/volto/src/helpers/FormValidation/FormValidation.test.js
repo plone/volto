@@ -257,7 +257,7 @@ describe('FormValidation', () => {
       });
     });
 
-    it('default - min lenght', () => {
+    it('string - min lenght', () => {
       let newSchema = {
         properties: {
           ...schema.properties,
@@ -283,7 +283,7 @@ describe('FormValidation', () => {
       });
     });
 
-    it('default - max lenght', () => {
+    it('string - max lenght', () => {
       let newSchema = {
         properties: {
           ...schema.properties,
@@ -307,6 +307,56 @@ describe('FormValidation', () => {
       ).toEqual({
         customField: [messages.maxLength.defaultMessage],
       });
+    });
+
+    it('string - pattern - Fail', () => {
+      let newSchema = {
+        properties: {
+          ...schema.properties,
+          customField: {
+            title: 'password',
+            description: '',
+            pattern: '^[a-zA-Z0-9]*$',
+          },
+        },
+        required: [],
+      };
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema: newSchema,
+          formData: {
+            username: 'test username',
+            customField: 'as#',
+          },
+          formatMessage,
+        }),
+      ).toEqual({
+        customField: [messages.pattern.defaultMessage],
+      });
+    });
+
+    it('string - pattern - Succeeds', () => {
+      let newSchema = {
+        properties: {
+          ...schema.properties,
+          customField: {
+            title: 'password',
+            description: '',
+            pattern: '^[a-zA-Z0-9]*$',
+          },
+        },
+        required: [],
+      };
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema: newSchema,
+          formData: {
+            username: 'test username',
+            customField: 'asasd',
+          },
+          formatMessage,
+        }),
+      ).toEqual({});
     });
 
     it('number - isNumber', () => {

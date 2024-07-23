@@ -389,4 +389,8 @@ export const messages = defineMessages({
     defaultMessage:
       'Event end date must be on or after {startDateValueOrStartFieldName}',
   },
+  pattern: {
+    id: 'The value does not match the pattern {pattern}',
+    defaultMessage: 'The value does not match the pattern {pattern}',
+  },
 });

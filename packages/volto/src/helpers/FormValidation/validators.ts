@@ -158,3 +158,13 @@ export const endEventDateRangeValidator = ({
       })
     : null;
 };
+
+export const patternValidator = ({
+  value,
+  field,
+  formatMessage,
+}: Validator) => {
+  const regex = new RegExp(field.pattern);
+  const isValid = regex.test(value);
+  return !isValid ? formatMessage(messages.pattern) : null;
+};
