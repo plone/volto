@@ -137,7 +137,11 @@ export const startEventDateRangeValidator = ({
 }: Validator) => {
   const isValid =
     value && formData.end && new Date(value) < new Date(formData.end);
-  return !isValid ? formatMessage(messages.startEventRange) : null;
+  return !isValid
+    ? formatMessage(messages.startEventRange, {
+        endDateValueOrEndFieldName: formData.end || 'end',
+      })
+    : null;
 };
 
 export const endEventDateRangeValidator = ({
@@ -147,6 +151,10 @@ export const endEventDateRangeValidator = ({
   formatMessage,
 }: Validator) => {
   const isValid =
-    value && formData.start && new Date(value) < new Date(formData.start);
-  return !isValid ? formatMessage(messages.endEventRange) : null;
+    value && formData.start && new Date(value) > new Date(formData.start);
+  return !isValid
+    ? formatMessage(messages.endEventRange, {
+        startDateValueOrStartFieldName: formData.start || 'start',
+      })
+    : null;
 };

@@ -718,7 +718,7 @@ describe('FormValidation', () => {
         properties: {
           ...schema.properties,
           customField: {
-            behavior: 'plone.event',
+            behavior: 'plone.eventbasic',
             title: 'Default field',
             description: '',
           },
@@ -729,7 +729,7 @@ describe('FormValidation', () => {
         type: 'validator',
         name: 'url',
         dependencies: {
-          behaviorName: 'plone.event',
+          behaviorName: 'plone.eventbasic',
           fieldName: 'customField',
           format: 'url',
         },
@@ -746,6 +746,60 @@ describe('FormValidation', () => {
         }),
       ).toEqual({
         customField: [messages.isValidURL.defaultMessage],
+      });
+    });
+
+    it('behavior + fieldName - start date in Event - Fails', () => {
+      let contentTypeSchema = {
+        properties: {
+          ...schema.properties,
+          start: {
+            behavior: 'plone.eventbasic',
+            type: 'string',
+            title: 'Start date',
+            description: '',
+          },
+        },
+        required: [],
+      };
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema: contentTypeSchema,
+          formData: {
+            start: '2024-08-01T11:00:00+00:00',
+            end: '2024-04-01T11:00:00+00:00',
+          },
+          formatMessage,
+        }),
+      ).toEqual({
+        start: [messages.startEventRange.defaultMessage],
+      });
+    });
+
+    it('behavior + fieldName - end date in Event - Fails', () => {
+      let contentTypeSchema = {
+        properties: {
+          ...schema.properties,
+          end: {
+            behavior: 'plone.eventbasic',
+            type: 'string',
+            title: 'End date',
+            description: '',
+          },
+        },
+        required: [],
+      };
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema: contentTypeSchema,
+          formData: {
+            start: '2024-08-01T11:00:00+00:00',
+            end: '2024-04-01T11:00:00+00:00',
+          },
+          formatMessage,
+        }),
+      ).toEqual({
+        end: [messages.endEventRange.defaultMessage],
       });
     });
 

@@ -380,11 +380,13 @@ export const messages = defineMessages({
     defaultMessage: 'Error in the block field {errorField}.',
   },
   startEventRange: {
-    id: 'Start event date happens later than the end event date',
-    defaultMessage: 'Event start date happens later than the event end date',
+    id: 'Event start date must be on or before {endDateValueOrEndFieldName}',
+    defaultMessage:
+      'Event start date must be on or before {endDateValueOrEndFieldName}',
   },
   endEventRange: {
-    id: 'End event date happens before than the start event date',
-    defaultMessage: 'Event end date happens before the event start date',
+    id: 'Event end date must be on or after {startDateValueOrStartFieldName}',
+    defaultMessage:
+      'Event end date must be on or after {startDateValueOrStartFieldName}',
   },
 });
