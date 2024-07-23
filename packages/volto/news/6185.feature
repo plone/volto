@@ -1,0 +1,1 @@
+Refactor the `Edit` component from a class component to a functional component. @FreakForever
