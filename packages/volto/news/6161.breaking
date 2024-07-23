@@ -1,5 +1,5 @@
-Add foundations for extensible validation in forms @sneridagh
+Add foundations for extensible validation in forms. @sneridagh
 
 Breaking:
 `packages/volto/src/helpers/FormValidation/FormValidation.jsx` has been heavily refactored.
-If you have shadowed this component in your project/add-on, please review and update your shadow.
+If you shadowed this component in your project or add-on, you should review it and update it accordingly.

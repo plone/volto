@@ -939,7 +939,7 @@ describe('Utilities registry', () => {
     ).toEqual('this is a simple validator utility');
   });
 
-  it('registers an utility with dependencies', () => {
+  it('registers a utility with dependencies', () => {
     config.registerUtility({
       name: 'email',
       type: 'validator',
@@ -958,7 +958,7 @@ describe('Utilities registry', () => {
     ).toEqual('this is a validator utility with dependencies');
   });
 
-  it('registers both an utility with dependencies and with no dependencies', () => {
+  it('registers utilities, one with and one without dependencies', () => {
     config.registerUtility({
       name: 'email',
       type: 'validator',
@@ -987,7 +987,7 @@ describe('Utilities registry', () => {
     ).toEqual('this is a validator utility with dependencies');
   });
 
-  it('registers an utility with dependencies and another with different dependencies', () => {
+  it('registers utilities with the same name, but different dependencies', () => {
     config.registerUtility({
       name: 'email',
       type: 'validator',
