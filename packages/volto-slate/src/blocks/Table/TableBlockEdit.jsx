@@ -3,7 +3,7 @@
  * @module volto-slate/blocks/Table/Edit
  */
 
-import React, { Component } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { isEmpty, map, remove } from 'lodash';
 import { Button, Table } from 'semantic-ui-react';
@@ -159,98 +159,45 @@ const messages = defineMessages({
 
 /**
  * Edit component for the Slate Table block type in Volto.
- * @class Edit
- * @extends Component
+ * @function Edit
  */
-class Edit extends Component {
+const Edit = (props) => {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
    * @static
    */
-  static propTypes = {
-    data: PropTypes.objectOf(PropTypes.any).isRequired,
-    detached: PropTypes.bool,
-    index: PropTypes.number.isRequired,
-    selected: PropTypes.bool.isRequired,
-    block: PropTypes.string.isRequired,
-    onAddBlock: PropTypes.func.isRequired,
-    onChangeBlock: PropTypes.func.isRequired,
-    onDeleteBlock: PropTypes.func.isRequired,
-    onInsertBlock: PropTypes.func.isRequired,
-    onMutateBlock: PropTypes.func.isRequired,
-    onFocusPreviousBlock: PropTypes.func.isRequired,
-    onFocusNextBlock: PropTypes.func.isRequired,
-    onSelectBlock: PropTypes.func.isRequired,
-  };
+  const { data, detached, index, selected, block, onAddBlock, onChangeBlock, onDeleteBlock, onInsertBlock, onMutateBlock, onFocusPreviousBlock, onFocusNextBlock, onSelectBlock } = props;
+
+  const [selectedCell, setSelectedCell] = useState({ row: 0, cell: 0 });
+  const [isClient, setIsClient] = useState(false);
 
   /**
-   * Default properties
-   * @property {Object} defaultProps Default properties.
-   * @static
+   * Effect hook to handle componentDidMount logic
+   * This runs once after the initial render
    */
-  static defaultProps = {
-    detached: false,
-  };
-
-  /**
-   * Constructor
-   * @method constructor
-   * @param {Object} props Component properties
-   * @constructs WysiwygEditor
-   */
-  constructor(props) {
-    super(props);
-    this.state = {
-      headers: [],
-      rows: {},
-      selected: {
-        row: 0,
-        cell: 0,
-      },
-      isClient: false,
-    };
-    this.onChange = this.onChange.bind(this);
-    this.onSelectCell = this.onSelectCell.bind(this);
-    this.onInsertRowBefore = this.onInsertRowBefore.bind(this);
-    this.onInsertRowAfter = this.onInsertRowAfter.bind(this);
-    this.onInsertColBefore = this.onInsertColBefore.bind(this);
-    this.onInsertColAfter = this.onInsertColAfter.bind(this);
-    this.onDeleteRow = this.onDeleteRow.bind(this);
-    this.onDeleteCol = this.onDeleteCol.bind(this);
-    this.onChangeCell = this.onChangeCell.bind(this);
-    this.toggleCellType = this.toggleCellType.bind(this);
-  }
-
-  /**
-   * Component did mount lifecycle method
-   * @method componentDidMount
-   * @returns {undefined}
-   */
-  componentDidMount() {
-    if (!this.props.data.table || isEmpty(this.props.data.table)) {
-      this.props.onChangeBlock(this.props.block, {
-        ...this.props.data,
+  useEffect(() => {
+    if (!data.table || isEmpty(data.table)) {
+      onChangeBlock(block, {
+        ...data,
         table: initialTable,
       });
     }
-    this.setState({ isClient: true });
-  }
+    setIsClient(true);
+  }, []);
 
   /**
-   * Component will receive props lifecycle method
-   * @method componentWillReceiveProps
-   * @param {Object} nextProps Next properties
-   * @returns {undefined}
+   * Effect hook to handle componentWillReceiveProps logic
+   * This runs when data changes
    */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (!nextProps.data.table || isEmpty(nextProps.data.table)) {
-      this.props.onChangeBlock(nextProps.block, {
-        ...nextProps.data,
+  useEffect(() => {
+    if (!data.table || isEmpty(data.table)) {
+      onChangeBlock(block, {
+        ...data,
         table: initialTable,
       });
     }
-  }
+  }, [data]);
 
   /**
    * On change
@@ -259,16 +206,19 @@ class Edit extends Component {
    * @param {any} value New value of modified property.
    * @returns {undefined}
    */
-  onChange(id, value) {
-    const table = this.props.data.table;
-    this.props.onChangeBlock(this.props.block, {
-      ...this.props.data,
-      table: {
-        ...table,
-        [id]: value,
-      },
-    });
-  }
+  const onChange = useCallback(
+    (id, value) => {
+      const table = data.table;
+      onChangeBlock(block, {
+        ...data,
+        table: {
+          ...table,
+          [id]: value,
+        },
+      });
+    },
+    [data, onChangeBlock, block],
+  );
 
   /**
    * Select cell handler
@@ -277,9 +227,9 @@ class Edit extends Component {
    * @param {Number} cell Cell index.
    * @returns {undefined}
    */
-  onSelectCell(row, cell) {
-    this.setState({ selected: { row, cell } });
-  }
+  const onSelectCell = useCallback((row, cell) => {
+    setSelectedCell({ row, cell });
+  }, []);
 
   /**
    * Change cell handler
@@ -288,402 +238,322 @@ class Edit extends Component {
    * @param {Array} slateValue Value of the `SlateEditor` in the cell.
    * @returns {undefined}
    */
-  onChangeCell(row, cell, slateValue) {
-    const table = JSON.parse(JSON.stringify(this.props.data.table));
-    table.rows[row].cells[cell] = {
-      ...table.rows[row].cells[cell],
-      value: JSON.parse(JSON.stringify(slateValue)),
-    };
-    this.props.onChangeBlock(this.props.block, {
-      ...this.props.data,
-      table,
-    });
-  }
+  const onChangeCell = useCallback(
+    (row, cell, slateValue) => {
+      const table = JSON.parse(JSON.stringify(data.table));
+      table.rows[row].cells[cell] = {
+        ...table.rows[row].cells[cell],
+        value: JSON.parse(JSON.stringify(slateValue)),
+      };
+      onChangeBlock(block, {
+        ...data,
+        table,
+      });
+    },
+    [data, onChangeBlock, block],
+  );
 
   /**
    * Toggle cell type (from header to data or reverse)
    * @method toggleCellType
    * @returns {undefined}
    */
-  toggleCellType() {
-    const table = { ...this.props.data.table };
-    let type =
-      table.rows[this.state.selected.row].cells[this.state.selected.cell].type;
-    table.rows[this.state.selected.row].cells[this.state.selected.cell].type =
-      type === 'header' ? 'data' : 'header';
-    this.props.onChangeBlock(this.props.block, {
-      ...this.props.data,
+  const toggleCellType = useCallback(() => {
+    const table = { ...data.table };
+    let type = table.rows[selectedCell.row].cells[selectedCell.cell].type;
+    table.rows[selectedCell.row].cells[selectedCell.cell].type = type === 'header' ? 'data' : 'header';
+    onChangeBlock(block, {
+      ...data,
       table,
     });
-  }
+  }, [data, onChangeBlock, block, selectedCell]);
 
   /**
    * Insert row before handler. Keeps the selected cell as selected after the
    * operation is done.
    * @returns {undefined}
    */
-  onInsertRowBefore() {
-    const table = this.props.data.table;
-    this.props.onChangeBlock(this.props.block, {
-      ...this.props.data,
+  const onInsertRowBefore = useCallback(() => {
+    const table = data.table;
+    onChangeBlock(block, {
+      ...data,
       table: {
         ...table,
         rows: [
-          ...table.rows.slice(0, this.state.selected.row),
+          ...table.rows.slice(0, selectedCell.row),
           emptyRow(table.rows[0].cells),
-          ...table.rows.slice(this.state.selected.row),
+          ...table.rows.slice(selectedCell.row),
         ],
       },
     });
-    this.setState({
-      selected: {
-        row: this.state.selected.row + 1,
-        cell: this.state.selected.cell,
-      },
+    setSelectedCell({
+      row: selectedCell.row + 1,
+      cell: selectedCell.cell,
     });
-  }
+  }, [data, onChangeBlock, block, selectedCell]);
 
   /**
    * Insert row after handler
    * @returns {undefined}
    */
-  onInsertRowAfter() {
-    const table = this.props.data.table;
-    this.props.onChangeBlock(this.props.block, {
-      ...this.props.data,
+  const onInsertRowAfter = useCallback(() => {
+    const table = data.table;
+    onChangeBlock(block, {
+      ...data,
       table: {
         ...table,
         rows: [
-          ...table.rows.slice(0, this.state.selected.row + 1),
+          ...table.rows.slice(0, selectedCell.row + 1),
           emptyRow(table.rows[0].cells),
-          ...table.rows.slice(this.state.selected.row + 1),
+          ...table.rows.slice(selectedCell.row + 1),
         ],
       },
     });
-  }
+  }, [data, onChangeBlock, block, selectedCell]);
 
   /**
-   * Insert column before handler. Keeps the selected cell as selected after the
-   * operation is done.
+   * Insert column before handler
    * @returns {undefined}
    */
-  onInsertColBefore() {
-    const table = this.props.data.table;
-    this.props.onChangeBlock(this.props.block, {
-      ...this.props.data,
+  const onInsertColBefore = useCallback(() => {
+    const table = data.table;
+    onChangeBlock(block, {
+      ...data,
       table: {
         ...table,
-        rows: map(table.rows, (row, index) => ({
+        rows: map(table.rows, (row) => ({
           ...row,
           cells: [
-            ...row.cells.slice(0, this.state.selected.cell),
-            emptyCell(table.rows[index].cells[this.state.selected.cell].type),
-            ...row.cells.slice(this.state.selected.cell),
+            ...row.cells.slice(0, selectedCell.cell),
+            emptyCell(row.cells[selectedCell.cell].type),
+            ...row.cells.slice(selectedCell.cell),
           ],
         })),
       },
     });
-    this.setState({
-      selected: {
-        row: this.state.selected.row,
-        cell: this.state.selected.cell + 1,
-      },
+    setSelectedCell({
+      row: selectedCell.row,
+      cell: selectedCell.cell + 1,
     });
-  }
+  }, [data, onChangeBlock, block, selectedCell]);
 
   /**
    * Insert column after handler
    * @returns {undefined}
    */
-  onInsertColAfter() {
-    const table = this.props.data.table;
-    this.props.onChangeBlock(this.props.block, {
-      ...this.props.data,
-      table: {
-        ...table,
-        rows: map(table.rows, (row, index) => ({
-          ...row,
-          cells: [
-            ...row.cells.slice(0, this.state.selected.cell + 1),
-            emptyCell(table.rows[index].cells[this.state.selected.cell].type),
-            ...row.cells.slice(this.state.selected.cell + 1),
-          ],
-        })),
-      },
-    });
-  }
-
-  /**
-   * Delete column handler. Changes the selected cell if the last table column
-   * is selected.
-   * @returns {undefined}
-   */
-  onDeleteCol() {
-    const table = this.props.data.table;
-
-    if (this.state.selected.cell === table.rows[0].cells.length - 1) {
-      this.setState({
-        selected: {
-          row: this.state.selected.row,
-          cell: this.state.selected.cell - 1,
-        },
-      });
-    }
-
-    this.props.onChangeBlock(this.props.block, {
-      ...this.props.data,
+  const onInsertColAfter = useCallback(() => {
+    const table = data.table;
+    onChangeBlock(block, {
+      ...data,
       table: {
         ...table,
         rows: map(table.rows, (row) => ({
           ...row,
-          cells: remove(
-            row.cells,
-            (cell, index) => index !== this.state.selected.cell,
-          ),
+          cells: [
+            ...row.cells.slice(0, selectedCell.cell + 1),
+            emptyCell(row.cells[selectedCell.cell].type),
+            ...row.cells.slice(selectedCell.cell + 1),
+          ],
         })),
       },
     });
-  }
+  }, [data, onChangeBlock, block, selectedCell]);
 
   /**
-   * Delete row handler. Changes the selected cell if the last table row is
-   * selected.
-   * @method onDeleteRow
+   * Delete row handler
    * @returns {undefined}
    */
-  onDeleteRow() {
-    const table = this.props.data.table;
-
-    if (this.state.selected.row === table.rows.length - 1) {
-      this.setState({
-        selected: {
-          row: this.state.selected.row - 1,
-          cell: this.state.selected.cell,
-        },
-      });
-    }
-
-    this.props.onChangeBlock(this.props.block, {
-      ...this.props.data,
+  const onDeleteRow = useCallback(() => {
+    const table = data.table;
+    const rows = JSON.parse(JSON.stringify(table.rows));
+    remove(rows, (row, index) => index === selectedCell.row);
+    onChangeBlock(block, {
+      ...data,
       table: {
         ...table,
-        rows: remove(
-          table.rows,
-          (row, index) => index !== this.state.selected.row,
-        ),
+        rows,
       },
     });
-  }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.selected && !this.props.selected) {
-      this.setState({ selected: null });
-    }
-  }
+    setSelectedCell({ row: 0, cell: 0 });
+  }, [data, onChangeBlock, block, selectedCell]);
 
   /**
-   * Render method.
-   * @method render
-   * @returns {string} Markup for the component.
+   * Delete column handler
+   * @returns {undefined}
    */
-  render() {
-    const headers = this.props.data.table?.rows?.[0]?.cells || [];
-    const rows =
-      this.props.data.table?.rows?.filter((_, index) => index > 0) || [];
-    const schema = TableSchema(this.props);
+  const onDeleteCol = useCallback(() => {
+    const table = data.table;
+    const rows = map(table.rows, (row) => {
+      const newRow = JSON.parse(JSON.stringify(row));
+      remove(newRow.cells, (cell, index) => index === selectedCell.cell);
+      return newRow;
+    });
+    onChangeBlock(block, {
+      ...data,
+      table: {
+        ...table,
+        rows,
+      },
+    });
+    setSelectedCell({ row: 0, cell: 0 });
+  }, [data, onChangeBlock, block, selectedCell]);
 
-    return (
-      // TODO: use slate-table instead of table, but first copy the CSS styles
-      // to the new name
-      <div className={cx('block table', { selected: this.props.selected })}>
-        {this.props.selected && (
-          <div className="toolbar">
-            <Button.Group>
+  return (
+    <>
+      <div
+        className={cx(
+          'block selected table align',
+          {
+            center: !Boolean(data.align),
+          },
+          data.align,
+        )}
+      >
+        <Table
+          basic={data.table.basic ? 'very' : false}
+          compact={data.table.compact ? 'very' : false}
+          fixed={data.table.fixed}
+          celled={data.table.celled}
+          inverted={data.table.inverted}
+          striped={data.table.striped}
+        >
+          {!data.table.hideHeaders && (
+            <Table.Header>
+              <Table.Row>
+                {map(data.table.rows[0].cells, (item, index) => (
+                  <Cell
+                    key={item.key}
+                    value={item.value}
+                    row={0}
+                    cell={index}
+                    selected={selectedCell.row === 0 && selectedCell.cell === index}
+                    onFocus={() => onSelectCell(0, index)}
+                    onChange={(value) => onChangeCell(0, index, value)}
+                    editable
+                  />
+                ))}
+              </Table.Row>
+            </Table.Header>
+          )}
+          <Table.Body>
+            {map(data.table.rows.slice(1), (row, rowIndex) => (
+              <Table.Row key={row.key}>
+                {map(row.cells, (cell, cellIndex) => (
+                  <Cell
+                    key={cell.key}
+                    value={cell.value}
+                    row={rowIndex + 1}
+                    cell={cellIndex}
+                    selected={
+                      selectedCell.row === rowIndex + 1 &&
+                      selectedCell.cell === cellIndex
+                    }
+                    onFocus={() => onSelectCell(rowIndex + 1, cellIndex)}
+                    onChange={(value) => onChangeCell(rowIndex + 1, cellIndex, value)}
+                    editable
+                  />
+                ))}
+              </Table.Row>
+            ))}
+          </Table.Body>
+        </Table>
+      </div>
+      <SidebarPortal selected={selected}>
+        <div className="sidebar-metadata-container">
+          <BlockDataForm
+            schema={TableSchema(props)}
+            title={props.intl.formatMessage(messages.edit)}
+            onChangeField={(id, value) => onChange(id, value)}
+            formData={data.table}
+          />
+          <div className="buttons-wrapper">
+            <Button.Group fluid>
               <Button
                 icon
                 basic
-                onClick={this.onInsertRowBefore}
-                title={this.props.intl.formatMessage(messages.insertRowBefore)}
-                aria-label={this.props.intl.formatMessage(
-                  messages.insertRowBefore,
-                )}
+                onClick={onInsertRowBefore}
+                aria-label={props.intl.formatMessage(messages.insertRowBefore)}
               >
                 <Icon name={rowBeforeSVG} size="24px" />
               </Button>
-            </Button.Group>
-            <Button.Group>
               <Button
                 icon
                 basic
-                onClick={this.onInsertRowAfter}
-                title={this.props.intl.formatMessage(messages.insertRowAfter)}
-                aria-label={this.props.intl.formatMessage(
-                  messages.insertRowAfter,
-                )}
+                onClick={onInsertRowAfter}
+                aria-label={props.intl.formatMessage(messages.insertRowAfter)}
               >
                 <Icon name={rowAfterSVG} size="24px" />
               </Button>
-            </Button.Group>
-            <Button.Group>
               <Button
                 icon
                 basic
-                onClick={this.onDeleteRow}
-                disabled={this.props.data.table?.rows?.length === 1}
-                title={this.props.intl.formatMessage(messages.deleteRow)}
-                aria-label={this.props.intl.formatMessage(messages.deleteRow)}
+                onClick={onDeleteRow}
+                aria-label={props.intl.formatMessage(messages.deleteRow)}
               >
                 <Icon name={rowDeleteSVG} size="24px" />
               </Button>
             </Button.Group>
-            <Button.Group>
+            <Button.Group fluid>
               <Button
                 icon
                 basic
-                onClick={this.onInsertColBefore}
-                title={this.props.intl.formatMessage(messages.insertColBefore)}
-                aria-label={this.props.intl.formatMessage(
-                  messages.insertColBefore,
-                )}
+                onClick={onInsertColBefore}
+                aria-label={props.intl.formatMessage(messages.insertColBefore)}
               >
                 <Icon name={colBeforeSVG} size="24px" />
               </Button>
-            </Button.Group>
-            <Button.Group>
               <Button
                 icon
                 basic
-                onClick={this.onInsertColAfter}
-                title={this.props.intl.formatMessage(messages.insertColAfter)}
-                aria-label={this.props.intl.formatMessage(
-                  messages.insertColAfter,
-                )}
+                onClick={onInsertColAfter}
+                aria-label={props.intl.formatMessage(messages.insertColAfter)}
               >
                 <Icon name={colAfterSVG} size="24px" />
               </Button>
-            </Button.Group>
-            <Button.Group>
               <Button
                 icon
                 basic
-                onClick={this.onDeleteCol}
-                disabled={this.props.data.table?.rows?.[0].cells.length === 1}
-                title={this.props.intl.formatMessage(messages.deleteCol)}
-                aria-label={this.props.intl.formatMessage(messages.deleteCol)}
+                onClick={onDeleteCol}
+                aria-label={props.intl.formatMessage(messages.deleteCol)}
               >
                 <Icon name={colDeleteSVG} size="24px" />
               </Button>
             </Button.Group>
+            <Button
+              fluid
+              basic
+              onClick={toggleCellType}
+              aria-label={props.intl.formatMessage(
+                selectedCell.type === 'header'
+                  ? messages.data
+                  : messages.header,
+              )}
+            >
+              {selectedCell.type === 'header'
+                ? props.intl.formatMessage(messages.data)
+                : props.intl.formatMessage(messages.header)}
+            </Button>
           </div>
-        )}
-        {this.props.data.table && (
-          <Table
-            fixed={this.props.data.table.fixed}
-            compact={this.props.data.table.compact}
-            basic={this.props.data.table.basic ? 'very' : false}
-            celled={this.props.data.table.celled}
-            inverted={this.props.data.table.inverted}
-            striped={this.props.data.table.striped}
-            className="slate-table-block"
-          >
-            {!this.props.data.table.hideHeaders ? (
-              <Table.Header>
-                <Table.Row textAlign="left">
-                  {headers.map((cell, cellIndex) => (
-                    <Table.HeaderCell
-                      key={cell.key}
-                      textAlign="left"
-                      verticalAlign="middle"
-                    >
-                      <Cell
-                        value={cell.value}
-                        row={0}
-                        cell={cellIndex}
-                        onSelectCell={this.onSelectCell}
-                        selected={
-                          this.props.selected &&
-                          this.state.selected &&
-                          0 === this.state.selected.row &&
-                          cellIndex === this.state.selected.cell
-                        }
-                        selectedCell={this.state.selected}
-                        isTableBlockSelected={this.props.selected}
-                        onAddBlock={this.props.onAddBlock}
-                        onSelectBlock={this.props.onSelectBlock}
-                        onChange={this.onChangeCell}
-                        index={this.props.index}
-                      />
-                    </Table.HeaderCell>
-                  ))}
-                </Table.Row>
-              </Table.Header>
-            ) : (
-              ''
-            )}
-            <Table.Body>
-              {map(rows, (row, rowIndex) => (
-                <Table.Row key={row.key}>
-                  {map(row.cells, (cell, cellIndex) => (
-                    <Table.Cell
-                      key={cell.key}
-                      textAlign="left"
-                      verticalAlign="middle"
-                      className={
-                        this.props.selected &&
-                        this.state.selected &&
-                        rowIndex + 1 === this.state.selected.row &&
-                        cellIndex === this.state.selected.cell &&
-                        this.props.selected
-                          ? 'selected'
-                          : ''
-                      }
-                    >
-                      <Cell
-                        value={cell.value}
-                        row={rowIndex + 1}
-                        cell={cellIndex}
-                        onSelectCell={this.onSelectCell}
-                        selected={
-                          this.props.selected &&
-                          this.state.selected &&
-                          rowIndex + 1 === this.state.selected.row &&
-                          cellIndex === this.state.selected.cell
-                        }
-                        selectedCell={this.state.selected}
-                        isTableBlockSelected={this.props.selected}
-                        onAddBlock={this.props.onAddBlock}
-                        onSelectBlock={this.props.onSelectBlock}
-                        onChange={this.onChangeCell}
-                        index={this.props.index}
-                      />
-                    </Table.Cell>
-                  ))}
-                </Table.Row>
-              ))}
-            </Table.Body>
-          </Table>
-        )}
-        {this.props.selected && this.state.selected && this.state.isClient && (
-          <SidebarPortal selected={this.props.selected}>
-            <BlockDataForm
-              schema={schema}
-              title={schema.title}
-              onChangeField={(id, value) => {
-                this.props.onChangeBlock(this.props.block, {
-                  ...this.props.data,
-                  [id]: value,
-                });
-              }}
-              onChangeBlock={this.props.onChangeBlock}
-              formData={this.props.data}
-              block={this.props.block}
-              blocksConfig={this.props.blocksConfig}
-            />
-          </SidebarPortal>
-        )}
-      </div>
-    );
-  }
-}
+        </div>
+      </SidebarPortal>
+    </>
+  );
+};
+
+Edit.propTypes = {
+  data: PropTypes.objectOf(PropTypes.any).isRequired,
+  detached: PropTypes.bool.isRequired,
+  index: PropTypes.number.isRequired,
+  selected: PropTypes.bool.isRequired,
+  block: PropTypes.string.isRequired,
+  onAddBlock: PropTypes.func.isRequired,
+  onChangeBlock: PropTypes.func.isRequired,
+  onDeleteBlock: PropTypes.func.isRequired,
+  onInsertBlock: PropTypes.func.isRequired,
+  onMutateBlock: PropTypes.func.isRequired,
+  onFocusPreviousBlock: PropTypes.func.isRequired,
+  onFocusNextBlock: PropTypes.func.isRequired,
+  onSelectBlock: PropTypes.func.isRequired,
+};
 
 export default injectIntl(Edit);
