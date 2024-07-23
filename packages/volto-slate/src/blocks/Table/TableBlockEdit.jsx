@@ -170,7 +170,6 @@ const Edit = (props) => {
   const { data, selected, block, onChangeBlock } = props;
 
   const [selectedCell, setSelectedCell] = useState({ row: 0, cell: 0 });
-  const [isClient, setIsClient] = useState(false);
 
   /**
    * Effect hook to handle componentDidMount logic
@@ -183,8 +182,7 @@ const Edit = (props) => {
         table: initialTable,
       });
     }
-    setIsClient(true);
-  }, []);
+  }, [block, data, onChangeBlock]);
 
   /**
    * Effect hook to handle componentWillReceiveProps logic
@@ -197,7 +195,7 @@ const Edit = (props) => {
         table: initialTable,
       });
     }
-  }, [data]);
+  }, [data, block, onChangeBlock]);
 
   /**
    * On change
