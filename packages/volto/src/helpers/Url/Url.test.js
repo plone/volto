@@ -66,7 +66,7 @@ describe('Url', () => {
     it('return empty string if no url is empty string', () => {
       expect(getBaseUrl('')).toBe('');
     });
-    it('return a null/undefined mailto adress ', () => {
+    it('return a null/undefined mailto address ', () => {
       expect(normaliseMail(null)).toBe('mailto:null');
       expect(normaliseMail(undefined)).toBe('mailto:undefined');
     });
@@ -163,14 +163,14 @@ describe('Url', () => {
   });
 
   describe('flattenHTMLToAppURL', () => {
-    it('flattens all occurences of the api URL from an html snippet', () => {
+    it('flattens all occurrences of the api URL from an html snippet', () => {
       const html = `<a href="${settings.apiPath}/foo/bar">An internal link</a><a href="${settings.apiPath}/foo/baz">second link</a>`;
       expect(flattenHTMLToAppURL(html)).toBe(
         '<a href="/foo/bar">An internal link</a><a href="/foo/baz">second link</a>',
       );
     });
 
-    it('flattens all occurences of the api URL from an html snippet, with settings.internalApiPath', () => {
+    it('flattens all occurrences of the api URL from an html snippet, with settings.internalApiPath', () => {
       const html = `<a href="http://plone:8080/Plone/foo/bar">An internal link</a><a href="http://plone:8080/Plone/foo/baz">second link</a>`;
       const saved = settings.internalApiPath;
       settings.internalApiPath = 'http://plone:8080/Plone';
@@ -228,7 +228,7 @@ describe('Url', () => {
       const href = undefined;
       expect(isInternalURL(href)).toBe(undefined);
     });
-    it('tells if an  URL is external if settings.externalroutes is persent.', () => {
+    it('tells if an  URL is external if settings.externalroutes is present.', () => {
       const url = `https://localhost:3000/fb/my-page/contents`;
       const blacklistedurl = '/blacklisted';
       settings.externalRoutes = [

@@ -8,6 +8,80 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.17 (2024-06-27)
+
+### Internal
+
+- Upgrade `react-intl` to maximum 3.x series to fix a bundling issue.
+  Rename missing js file that must be jsx. @sneridagh [#6128](https://github.com/plone/volto/issues/6128)
+
+## 1.0.0-alpha.16 (2024-06-13)
+
+### Breaking
+
+- Remove unused `config.settings.containerBlockTypes` @sneridagh [#6099](https://github.com/plone/volto/issues/6099)
+
+## 1.0.0-alpha.15 (2024-06-13)
+
+### Bugfix
+
+- Better `styleClassNameExtenders` typings @sneridagh [#6095](https://github.com/plone/volto/issues/6095)
+
+## 1.0.0-alpha.14 (2024-06-06)
+
+### Breaking
+
+- The `GetSlotArgs` type no longer supports `pathname` as a key, instead using `location`. @sneridagh [#6063](https://github.com/plone/volto/issues/6063)
+
+### Bugfix
+
+- BlockExtension as Interface @sneridagh [#6049](https://github.com/plone/volto/issues/6049)
+- Improved image typings @pnicolli [#6064](https://github.com/plone/volto/issues/6064)
+
+## 1.0.0-alpha.13 (2024-05-23)
+
+### Feature
+
+- New Brain type and new ArrayElement utility @pnicolli [#6029](https://github.com/plone/volto/issues/6029)
+
+## 1.0.0-alpha.12 (2024-05-15)
+
+### Bugfix
+
+- Fixed some type definitions @sneridagh [#6014](https://github.com/plone/volto/issues/6014)
+
+## 1.0.0-alpha.11 (2024-04-26)
+
+### Bugfix
+
+- Better BlocksData definitions @sneridagh [#5979](https://github.com/plone/volto/issues/5979)
+
+### Internal
+
+- Saner defaults for building deps, switch default to cached, add `build:force` command @sneridagh [#5980](https://github.com/plone/volto/issues/5980)
+
+## 1.0.0-alpha.10 (2024-04-05)
+
+### Bugfix
+
+- Split widgets type definitions into their own interfaces so they are extendable @sneridagh [#5948](https://github.com/plone/volto/issues/5948)
+
+## 1.0.0-alpha.9 (2024-04-03)
+
+### Bugfix
+
+- Fix experimental settings and new button type @sneridagh [#5921](https://github.com/plone/volto/issues/5921)
+
+## 1.0.0-alpha.8 (2024-03-25)
+
+### Bugfix
+
+- Improve APIExpanders Types, export all @sneridagh [#5918](https://github.com/plone/volto/issues/5918)
+
+### Internal
+
+- Sync TypeScript version @sneridagh [#5912](https://github.com/plone/volto/issues/5912)
+
 ## 1.0.0-alpha.7 (2024-03-18)
 
 ### Feature

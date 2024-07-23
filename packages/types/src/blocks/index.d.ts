@@ -9,6 +9,7 @@ import type { Location, History } from 'history';
 
 export interface BlocksFormData {
   '@type': AvailableBlocks;
+  variation?: string;
 }
 
 export interface BlockViewProps {

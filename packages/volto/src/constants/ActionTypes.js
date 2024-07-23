@@ -145,3 +145,5 @@ export const RESET_LOGIN_REQUEST = 'RESET_LOGIN_REQUEST';
 export const GET_SITE = 'GET_SITE';
 export const GET_NAVROOT = 'GET_NAVROOT';
 export const SET_FORM_DATA = 'SET_FORM_DATA';
+export const SET_UI_STATE = 'SET_UI_STATE';
+export const UPDATE_UPLOADED_FILES = 'UPDATE_UPLOADED_FILES';

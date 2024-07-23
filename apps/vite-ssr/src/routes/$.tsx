@@ -2,7 +2,7 @@ import { createFileRoute } from '@tanstack/react-router';
 import * as React from 'react';
 import { flattenToAppURL } from '../utils';
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { usePloneClient } from '@plone/client/provider';
+import { usePloneClient } from '@plone/providers';
 import { Breadcrumbs } from '@plone/components';
 
 const expand = ['breadcrumbs', 'navigation'];

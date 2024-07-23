@@ -5,6 +5,8 @@ import configureStore from 'redux-mock-store';
 import ObjectListWidget from './ObjectListWidget';
 
 jest.mock('@plone/volto/helpers/Loadable/Loadable');
+jest.mock('@plone/volto/components/manage/Form');
+
 beforeAll(
   async () =>
     await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),

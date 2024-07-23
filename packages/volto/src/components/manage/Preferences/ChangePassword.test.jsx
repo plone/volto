@@ -9,6 +9,7 @@ import ChangePassword from './ChangePassword';
 
 const mockStore = configureStore();
 
+jest.mock('@plone/volto/components/manage/Form');
 jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
 
 describe('ChangePassword', () => {
