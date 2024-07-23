@@ -262,8 +262,9 @@ describe('Url', () => {
       expect(isUrl(href)).toBe(true);
     });
     it('isUrl test 6', () => {
+      // at the end of the day, this is a strange, but valid, URL
       const href = `www.e`;
-      expect(isUrl(href)).toBe(false);
+      expect(isUrl(href)).toBe(true);
     });
     it('isUrl test 7', () => {
       const href = `file://server/folder/file.txt`;
