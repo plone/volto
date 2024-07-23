@@ -360,7 +360,8 @@ const Edit = (props) => {
   }, [data, onChangeBlock, block, selectedCell]);
 
   /**
-   * Delete row handler
+  * Delete row handler. Changes the selected cell if the last table row is
+  * selected.
    * @returns {undefined}
    */
   const onDeleteRow = useCallback(() => {
@@ -378,7 +379,8 @@ const Edit = (props) => {
   }, [data, onChangeBlock, block, selectedCell]);
 
   /**
-   * Delete column handler
+   * Delete column handler. Changes the selected cell if the last table column
+   * is selected.
    * @returns {undefined}
    */
   const onDeleteCol = useCallback(() => {
