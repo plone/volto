@@ -9,6 +9,8 @@ import {
   maximumValidator,
   minimumValidator,
   isIntegerValidator,
+  maxItemsValidator,
+  minItemsValidator,
   hasUniqueItemsValidator,
   startEventDateRangeValidator,
   endEventDateRangeValidator,
@@ -105,6 +107,20 @@ const registerValidators = (config: ConfigType) => {
     type: 'validator',
     dependencies: { fieldType: 'integer' },
     method: maximumValidator,
+  });
+
+  config.registerUtility({
+    name: 'maxItems',
+    type: 'validator',
+    dependencies: { fieldType: 'array' },
+    method: maxItemsValidator,
+  });
+
+  config.registerUtility({
+    name: 'minItems',
+    type: 'validator',
+    dependencies: { fieldType: 'array' },
+    method: minItemsValidator,
   });
 
   config.registerUtility({

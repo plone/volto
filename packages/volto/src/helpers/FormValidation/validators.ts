@@ -164,7 +164,38 @@ export const patternValidator = ({
   field,
   formatMessage,
 }: Validator) => {
+  if (!field.pattern) {
+    return null;
+  }
   const regex = new RegExp(field.pattern);
   const isValid = regex.test(value);
   return !isValid ? formatMessage(messages.pattern) : null;
+};
+
+export const maxItemsValidator = ({
+  value,
+  field,
+  formatMessage,
+}: Validator) => {
+  if (!field.maxItems) {
+    return null;
+  }
+  const isValid = Array.isArray(value) && value.length <= field.maxItems;
+  return !isValid
+    ? formatMessage(messages.maxItems, { maxItems: field.maxItems })
+    : null;
+};
+
+export const minItemsValidator = ({
+  value,
+  field,
+  formatMessage,
+}: Validator) => {
+  if (!field.minItems) {
+    return null;
+  }
+  const isValid = Array.isArray(value) && value.length >= field.minItems;
+  return !isValid
+    ? formatMessage(messages.minItems, { minItems: field.minItems })
+    : null;
 };

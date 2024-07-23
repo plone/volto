@@ -393,4 +393,14 @@ export const messages = defineMessages({
     id: 'The value does not match the pattern {pattern}',
     defaultMessage: 'The value does not match the pattern {pattern}',
   },
+  maxItems: {
+    id: 'The number of items must be less than or equal to {maxItems}',
+    defaultMessage:
+      'The number of items must be less than or equal to {maxItems}',
+  },
+  minItems: {
+    id: 'The number of items must be greater than or equal to {minItems}',
+    defaultMessage:
+      'The number of items must be greater than or equal to {minItems}',
+  },
 });

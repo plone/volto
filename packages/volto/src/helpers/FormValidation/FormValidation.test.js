@@ -569,6 +569,60 @@ describe('FormValidation', () => {
       });
     });
 
+    it('array - maxItems', () => {
+      let newSchema = {
+        properties: {
+          ...schema.properties,
+          customField: {
+            title: 'Array field',
+            type: 'array',
+            description: '',
+            maxItems: 1,
+          },
+        },
+        required: [],
+      };
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema: newSchema,
+          formData: {
+            username: 'test username',
+            customField: [1, 2],
+          },
+          formatMessage,
+        }),
+      ).toEqual({
+        customField: [messages.maxItems.defaultMessage],
+      });
+    });
+
+    it('array - minItems', () => {
+      let newSchema = {
+        properties: {
+          ...schema.properties,
+          customField: {
+            title: 'Array field',
+            type: 'array',
+            description: '',
+            minItems: 3,
+          },
+        },
+        required: [],
+      };
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema: newSchema,
+          formData: {
+            username: 'test username',
+            customField: [1],
+          },
+          formatMessage,
+        }),
+      ).toEqual({
+        customField: [messages.minItems.defaultMessage],
+      });
+    });
+
     it('array - uniqueItems', () => {
       let newSchema = {
         properties: {
@@ -596,7 +650,7 @@ describe('FormValidation', () => {
       });
     });
 
-    it('array - uniqueItems false', () => {
+    it('array - uniqueItems - false', () => {
       let newSchema = {
         properties: {
           ...schema.properties,
