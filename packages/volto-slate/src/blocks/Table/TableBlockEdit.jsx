@@ -167,7 +167,7 @@ const Edit = (props) => {
    * @property {Object} propTypes Property types.
    * @static
    */
-  const { data, detached, index, selected, block, onAddBlock, onChangeBlock, onDeleteBlock, onInsertBlock, onMutateBlock, onFocusPreviousBlock, onFocusNextBlock, onSelectBlock } = props;
+  const { data, selected, block, onChangeBlock } = props;
 
   const [selectedCell, setSelectedCell] = useState({ row: 0, cell: 0 });
   const [isClient, setIsClient] = useState(false);
@@ -261,7 +261,9 @@ const Edit = (props) => {
   const toggleCellType = useCallback(() => {
     const table = { ...data.table };
     let type = table.rows[selectedCell.row].cells[selectedCell.cell].type;
-    table.rows[selectedCell.row].cells[selectedCell.cell].type = type === 'header' ? 'data' : 'header';
+    table.rows[selectedCell.row].cells[selectedCell.cell].type =
+      type === 'header' ? 'data' : 'header';
+
     onChangeBlock(block, {
       ...data,
       table,
@@ -360,8 +362,7 @@ const Edit = (props) => {
   }, [data, onChangeBlock, block, selectedCell]);
 
   /**
-  * Delete row handler. Changes the selected cell if the last table row is
-  * selected.
+   * Delete row handler
    * @returns {undefined}
    */
   const onDeleteRow = useCallback(() => {
@@ -379,8 +380,7 @@ const Edit = (props) => {
   }, [data, onChangeBlock, block, selectedCell]);
 
   /**
-   * Delete column handler. Changes the selected cell if the last table column
-   * is selected.
+   * Delete column handler
    * @returns {undefined}
    */
   const onDeleteCol = useCallback(() => {
@@ -428,7 +428,9 @@ const Edit = (props) => {
                     value={item.value}
                     row={0}
                     cell={index}
-                    selected={selectedCell.row === 0 && selectedCell.cell === index}
+                    selected={
+                      selectedCell.row === 0 && selectedCell.cell === index
+                    }
                     onFocus={() => onSelectCell(0, index)}
                     onChange={(value) => onChangeCell(0, index, value)}
                     editable
@@ -451,7 +453,9 @@ const Edit = (props) => {
                       selectedCell.cell === cellIndex
                     }
                     onFocus={() => onSelectCell(rowIndex + 1, cellIndex)}
-                    onChange={(value) => onChangeCell(rowIndex + 1, cellIndex, value)}
+                    onChange={(value) =>
+                      onChangeCell(rowIndex + 1, cellIndex, value)
+                    }
                     editable
                   />
                 ))}
