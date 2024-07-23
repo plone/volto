@@ -83,7 +83,7 @@ export const emailValidator = ({ value, formatMessage }: Validator): string => {
   return !isValid ? formatMessage(messages.isValidEmail) : null;
 };
 
-export const isNumber = ({ value, formatMessage }: Validator) => {
+export const isNumberValidator = ({ value, formatMessage }: Validator) => {
   const floatRegex = /^[+-]?\d+(\.\d+)?$/;
   const isValid =
     typeof value === 'number' && !isNaN(value) && floatRegex.test(value);
@@ -106,14 +106,18 @@ export const maximumValidator = ({ value, field, formatMessage }: Validator) =>
     formatMessage,
   });
 
-export const isInteger = ({ value, formatMessage }: Validator) => {
+export const isIntegerValidator = ({ value, formatMessage }: Validator) => {
   const intRegex = /^-?[0-9]+$/;
   const isValid =
     typeof value === 'number' && !isNaN(value) && intRegex.test(value);
   return !isValid ? formatMessage(messages.isInteger) : null;
 };
 
-export const hasUniqueItems = ({ value, field, formatMessage }: Validator) => {
+export const hasUniqueItemsValidator = ({
+  value,
+  field,
+  formatMessage,
+}: Validator) => {
   if (!field.uniqueItems) {
     return null;
   }

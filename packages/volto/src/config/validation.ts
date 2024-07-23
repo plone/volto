@@ -5,11 +5,11 @@ import {
   maxLengthValidator,
   urlValidator,
   emailValidator,
-  isNumber,
+  isNumberValidator,
   maximumValidator,
   minimumValidator,
-  isInteger,
-  hasUniqueItems,
+  isIntegerValidator,
+  hasUniqueItemsValidator,
   startEventDateRangeValidator,
   endEventDateRangeValidator,
 } from '@plone/volto/helpers/FormValidation/validators';
@@ -61,7 +61,7 @@ const registerValidators = (config: ConfigType) => {
     name: 'number',
     type: 'validator',
     dependencies: { fieldType: 'number' },
-    method: isNumber,
+    method: isNumberValidator,
   });
 
   config.registerUtility({
@@ -82,7 +82,7 @@ const registerValidators = (config: ConfigType) => {
     name: 'integer',
     type: 'validator',
     dependencies: { fieldType: 'integer' },
-    method: isInteger,
+    method: isIntegerValidator,
   });
 
   config.registerUtility({
@@ -103,7 +103,7 @@ const registerValidators = (config: ConfigType) => {
     name: 'uniqueItems',
     type: 'validator',
     dependencies: { fieldType: 'array' },
-    method: hasUniqueItems,
+    method: hasUniqueItemsValidator,
   });
 
   config.registerUtility({
