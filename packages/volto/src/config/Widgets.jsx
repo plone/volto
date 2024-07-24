@@ -55,7 +55,6 @@ import ImageWidget from '@plone/volto/components/manage/Widgets/ImageWidget';
 // Widgets mapping
 export const widgetMapping = {
   id: {
-    schema: SchemaWidget,
     subjects: TokenWidget,
     query: QuerystringWidget,
     recurrence: RecurrenceWidget,
@@ -89,6 +88,7 @@ export const widgetMapping = {
     autocomplete: SelectAutoComplete,
     color_picker: ColorPickerWidget,
     select: SelectWidget,
+    schema: SchemaWidget,
   },
   vocabulary: {
     'plone.app.vocabularies.Catalog': ObjectBrowserWidget,
