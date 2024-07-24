@@ -1536,6 +1536,11 @@ msgstr "Liste des dossiers"
 msgid "Forbidden"
 msgstr "Interdit"
 
+#. Default: "Form"
+#: components/manage/Blocks/Form/schema
+msgid "Form"
+msgstr ""
+
 #. Default: "Fourth"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Fourth"
@@ -2739,6 +2744,11 @@ msgstr ""
 #: components/manage/Contents/Contents
 msgid "Rearrange items by…"
 msgstr "Réorganiser les éléments par…"
+
+#. Default: "Recipient"
+#: components/manage/Blocks/Form/schema
+msgid "Recipient"
+msgstr ""
 
 #. Default: "Ends"
 #: components/manage/Widgets/RecurrenceWidget/EndField

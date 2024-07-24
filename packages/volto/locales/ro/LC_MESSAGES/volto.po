@@ -1529,6 +1529,11 @@ msgstr ""
 msgid "Forbidden"
 msgstr "Interzis"
 
+#. Default: "Form"
+#: components/manage/Blocks/Form/schema
+msgid "Form"
+msgstr ""
+
 #. Default: "Fourth"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Fourth"
@@ -2732,6 +2737,11 @@ msgstr ""
 #: components/manage/Contents/Contents
 msgid "Rearrange items by…"
 msgstr "Reorganizați elementele in functie de …"
+
+#. Default: "Recipient"
+#: components/manage/Blocks/Form/schema
+msgid "Recipient"
+msgstr ""
 
 #. Default: "Ends"
 #: components/manage/Widgets/RecurrenceWidget/EndField

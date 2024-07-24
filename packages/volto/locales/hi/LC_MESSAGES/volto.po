@@ -1529,6 +1529,11 @@ msgstr "फ़ोल्डर सूची"
 msgid "Forbidden"
 msgstr "निषिद्ध"
 
+#. Default: "Form"
+#: components/manage/Blocks/Form/schema
+msgid "Form"
+msgstr ""
+
 #. Default: "Fourth"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Fourth"
@@ -2732,6 +2737,11 @@ msgstr "केवल इस प्रकार के संबंध के ल
 #: components/manage/Contents/Contents
 msgid "Rearrange items by…"
 msgstr "मद्दों को फिर से व्यवस्थित करें द्वारा…"
+
+#. Default: "Recipient"
+#: components/manage/Blocks/Form/schema
+msgid "Recipient"
+msgstr ""
 
 #. Default: "Ends"
 #: components/manage/Widgets/RecurrenceWidget/EndField

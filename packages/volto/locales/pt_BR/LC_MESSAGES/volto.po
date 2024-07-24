@@ -1535,6 +1535,11 @@ msgstr "Listagem"
 msgid "Forbidden"
 msgstr "Restrito"
 
+#. Default: "Form"
+#: components/manage/Blocks/Form/schema
+msgid "Form"
+msgstr ""
+
 #. Default: "Fourth"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Fourth"
@@ -2738,6 +2743,11 @@ msgstr "Apenas leitura para este tipo de relacionamento."
 #: components/manage/Contents/Contents
 msgid "Rearrange items by…"
 msgstr "Reorganizar itens por…"
+
+#. Default: "Recipient"
+#: components/manage/Blocks/Form/schema
+msgid "Recipient"
+msgstr ""
 
 #. Default: "Ends"
 #: components/manage/Widgets/RecurrenceWidget/EndField

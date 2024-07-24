@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2024-07-09T06:25:05.312Z\n"
+"POT-Creation-Date: 2024-07-24T08:35:32.661Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -1531,6 +1531,11 @@ msgstr ""
 msgid "Forbidden"
 msgstr ""
 
+#. Default: "Form"
+#: components/manage/Blocks/Form/schema
+msgid "Form"
+msgstr ""
+
 #. Default: "Fourth"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Fourth"
@@ -2733,6 +2738,11 @@ msgstr ""
 #. Default: "Rearrange items by…"
 #: components/manage/Contents/Contents
 msgid "Rearrange items by…"
+msgstr ""
+
+#. Default: "Recipient"
+#: components/manage/Blocks/Form/schema
+msgid "Recipient"
 msgstr ""
 
 #. Default: "Ends"

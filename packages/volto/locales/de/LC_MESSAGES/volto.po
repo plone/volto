@@ -1534,6 +1534,11 @@ msgstr "Ordner"
 msgid "Forbidden"
 msgstr "Verboten"
 
+#. Default: "Form"
+#: components/manage/Blocks/Form/schema
+msgid "Form"
+msgstr ""
+
 #. Default: "Fourth"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Fourth"
@@ -2737,6 +2742,11 @@ msgstr "Relationen von diesem Typ sind nur im Kontext editierbar."
 #: components/manage/Contents/Contents
 msgid "Rearrange items by…"
 msgstr "Elemente sortieren nach…"
+
+#. Default: "Recipient"
+#: components/manage/Blocks/Form/schema
+msgid "Recipient"
+msgstr ""
 
 #. Default: "Ends"
 #: components/manage/Widgets/RecurrenceWidget/EndField

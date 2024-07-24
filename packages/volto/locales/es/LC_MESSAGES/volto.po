@@ -1536,6 +1536,11 @@ msgstr "Listado de la carpeta"
 msgid "Forbidden"
 msgstr "Prohibido"
 
+#. Default: "Form"
+#: components/manage/Blocks/Form/schema
+msgid "Form"
+msgstr ""
+
 #. Default: "Fourth"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Fourth"
@@ -2739,6 +2744,11 @@ msgstr "Solo lectura para este tipo de relación."
 #: components/manage/Contents/Contents
 msgid "Rearrange items by…"
 msgstr "Reordenar elementos por..."
+
+#. Default: "Recipient"
+#: components/manage/Blocks/Form/schema
+msgid "Recipient"
+msgstr ""
 
 #. Default: "Ends"
 #: components/manage/Widgets/RecurrenceWidget/EndField
