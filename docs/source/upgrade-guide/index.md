@@ -379,7 +379,7 @@ If you still use it, you can add it to your main add-on dependency, and extract 
 
 ### `SchemaWidget` widget registration change
 
-Previously, it was registered as a widget `id`, but this definition could leak the widget and be applied to unwanted fields.
+Previously, it was registered as a widget `id` assigned to the `schema` key. Due to this common key name, this definition could leak the widget and be applied to unwanted fields.
 Now it's registered as a `widget`, so if you are using it in your project/add-ons you should update the field definition and add the `widget` property.
 
 ```ts
