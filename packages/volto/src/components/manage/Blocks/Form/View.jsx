@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Form } from '@plone/volto/components/manage/Form';
 
-const FormBlockView = ({ properties, metadata }) => {
-  return <h2>Form!</h2>;
+const FormBlockView = ({ data, properties, metadata }) => {
+  return <Form schema={data.schema} formData={{}} />;
 };
 
 /**

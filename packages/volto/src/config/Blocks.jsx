@@ -399,7 +399,7 @@ const blocksConfig = {
     schema: BlockSettingsSchema,
     restricted: false,
     mostUsed: false,
-    sidebarTab: 0,
+    sidebarTab: 1,
   },
   search: {
     id: 'search',

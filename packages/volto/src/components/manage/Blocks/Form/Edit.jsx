@@ -1,13 +1,27 @@
 import React, { Component } from 'react';
-
+import { isEmpty } from 'lodash';
 import { SidebarPortal } from '@plone/volto/components';
 import { Form, BlockDataForm } from '@plone/volto/components/manage/Form';
+import { withBlockExtensions } from '@plone/volto/helpers';
 
 import FormSchema from './schema';
 
 class Edit extends Component {
   render() {
     const schema = FormSchema(this.props);
+    const { data } = this.props;
+
+    const defaultEmptyData = {
+      fieldsets: [
+        {
+          id: 'default',
+          title: 'Default',
+          fields: [],
+        },
+      ],
+      properties: {},
+      required: [],
+    };
 
     return (
       <>
@@ -28,56 +42,23 @@ class Edit extends Component {
                 title: 'Schema',
                 type: 'string',
                 widget: 'schema',
+                default: defaultEmptyData,
               },
             },
             required: [],
             title: 'Form',
             type: 'object',
           }}
-          formData={{
-            schema: {
-              fieldsets: [
-                {
-                  behavior: 'plone',
-                  fields: ['name', 'from', 'subject', 'message'],
-                  id: 'default',
-                  title: 'Default',
-                },
-              ],
-              properties: {
-                name: {
-                  description: 'Please enter your full name',
-                  factory: 'Text',
-                  title: 'Name',
-                  type: 'string',
-                  widget: 'text',
-                },
-                from: {
-                  description: 'Please enter your e-mail address',
-                  factory: 'Text',
-                  title: 'From',
-                  type: 'string',
-                  widget: 'text',
-                },
-                subject: {
-                  description: '',
-                  factory: 'Text',
-                  title: 'Subject',
-                  type: 'string',
-                  widget: 'text',
-                },
-                message: {
-                  description: 'Please enter the message you want to send',
-                  factory: 'Text',
-                  title: 'Message',
-                  type: 'string',
-                  widget: 'text',
-                },
-              },
-              required: [],
-              title: 'Form',
-              type: 'object',
-            },
+          formData={
+            isEmpty(data.schema)
+              ? { schema: defaultEmptyData }
+              : { schema: data.schema }
+          }
+          onChangeFormData={(formData) => {
+            this.props.onChangeBlock(this.props.block, {
+              ...data,
+              schema: formData.schema,
+            });
           }}
           hideActions
         />
@@ -104,4 +85,4 @@ class Edit extends Component {
   }
 }
 
-export default Edit;
+export default withBlockExtensions(Edit);

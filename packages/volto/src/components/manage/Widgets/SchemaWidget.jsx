@@ -1079,6 +1079,7 @@ class SchemaWidget extends Component {
     if (!this.props.value) {
       return '';
     }
+
     const nonUserCreatedFields = this.props.value.fieldsets[
       this.state.currentFieldset
     ].fields.filter(
