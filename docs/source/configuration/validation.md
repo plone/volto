@@ -247,7 +247,40 @@ config.registerUtility({
 
 ## Volto's default validators
 
-Volto provides a set of validators by default.
+Volto provides a set of validators by default:
+
+### Strings
+- minLength
+- maxLength
+- pattern
+
+### Password
+- minLength
+- maxLength
+- pattern
+
+### Numbers
+- isNumber
+- minimum
+- maximum
+
+### Integers
+- isInteger
+- minimum
+- maximum
+
+### Arrays
+- maxItems
+- minItems
+- uniqueItems
+
+### Per widget
+- email
+- url
+
+### Event content type
+- start/end dates check
+
 You can find them in the module {file}`packages/volto/src/config/validators.ts`.
 
 

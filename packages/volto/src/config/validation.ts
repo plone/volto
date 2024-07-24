@@ -54,6 +54,13 @@ const registerValidators = (config: ConfigType) => {
   });
 
   config.registerUtility({
+    name: 'pattern',
+    type: 'validator',
+    dependencies: { fieldType: 'password' },
+    method: patternValidator,
+  });
+
+  config.registerUtility({
     name: 'email',
     type: 'validator',
     dependencies: { widgetName: 'email' },
