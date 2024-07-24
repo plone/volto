@@ -433,6 +433,7 @@ class Config {
       throw new Error('No method provided');
     } else {
       depsString = Object.keys(dependencies)
+        .sort()
         .map((key) => `${key}:${dependencies[key]}`)
         .join('+');
     }
