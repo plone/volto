@@ -376,6 +376,21 @@ It is unlikely that your code uses it, unless you heavily customized the Jest te
 The `react-share` library and `SocialSharing` component has not been used in the core since some time ago, and it is more suitable as an add-on and not in core.
 If you still use it, you can add it to your main add-on dependency, and extract the `SocialSharing` component from Volto 17 as a custom component in your add-on code.
 
+
+### `SchemaWidget` widget registration change
+
+Previously, it was registered as a widget `id`, but this definition could leak the widget and be applied to unwanted fields.
+Now it's registered as a `widget`, so if you are using it in your project/add-ons you should update the field definition and add the `widget` property.
+
+```ts
+// more form definition above...
+schema: {
+  title: 'Schema',
+  widget: 'schema'
+}
+// rest of the form definition...
+```
+
 (volto-upgrade-guide-17.x.x)=
 
 ## Upgrading to Volto 17.x.x

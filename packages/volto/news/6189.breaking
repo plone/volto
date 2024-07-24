@@ -1,0 +1,1 @@
+Remove widget registration as `id`, move to `widget` type instead. @sneridagh
