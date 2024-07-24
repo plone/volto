@@ -63,14 +63,14 @@ const registerValidators = (config: ConfigType) => {
   config.registerUtility({
     name: 'email',
     type: 'validator',
-    dependencies: { widgetName: 'email' },
+    dependencies: { widget: 'email' },
     method: emailValidator,
   });
 
   config.registerUtility({
     name: 'url',
     type: 'validator',
-    dependencies: { widgetName: 'url' },
+    dependencies: { widget: 'url' },
     method: urlValidator,
   });
 

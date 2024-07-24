@@ -162,7 +162,7 @@ const validateFieldsPerFieldset = (
     if (widgetName) {
       const widgetNameValidationCriteria = config.getUtilities({
         type: 'validator',
-        dependencies: { widgetName },
+        dependencies: { widget: widgetName },
       });
 
       widgetErrors = checkFieldErrors(

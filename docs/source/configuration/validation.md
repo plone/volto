@@ -176,7 +176,7 @@ config.registerUtility({
   type: 'validator',
   name: 'phoneNumber',
   dependencies: {
-    widgetName: 'phoneNumber',
+    widget: 'phoneNumber',
   },
   method: phoneValidator,
 })
