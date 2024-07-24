@@ -16,6 +16,47 @@ The mechanism serializes all of them according to the [JSON schema standard](htt
 Finally Volto generates the form from the serialization.
 
 
+(voltos-default-validators-label)=
+
+## Volto's default validators
+
+Volto provides a set of validators by default:
+
+### Strings
+- minLength
+- maxLength
+- pattern
+
+### Password
+- minLength
+- maxLength
+- pattern
+
+### Numbers
+- isNumber
+- minimum
+- maximum
+
+### Integers
+- isInteger
+- minimum
+- maximum
+
+### Arrays
+- maxItems
+- minItems
+- uniqueItems
+
+### Per widget
+- email
+- url
+
+### Event content type
+- start/end dates check
+
+You can find them in the module {file}`packages/volto/src/config/validators.ts`.
+
+
 ## Register a validator
 
 You can register a validator using the `registerUtility` method in the registry API from your add-on configuration.
@@ -24,11 +65,7 @@ You can register a validator using the `registerUtility` method in the registry 
 ### Register and declare a simple validator
 
 This section describes how to validate a field with a specific validator, a common use case.
-Volto also provides some default validators.
 
-```{seealso}
-{ref}`voltos-default-validators-label`
-```
 
 #### Volto custom forms and block schema forms
 
@@ -240,47 +277,6 @@ config.registerUtility({
   method: urlValidator,
 })
 ```
-
-
-(voltos-default-validators-label)=
-
-## Volto's default validators
-
-Volto provides a set of validators by default:
-
-### Strings
-- minLength
-- maxLength
-- pattern
-
-### Password
-- minLength
-- maxLength
-- pattern
-
-### Numbers
-- isNumber
-- minimum
-- maximum
-
-### Integers
-- isInteger
-- minimum
-- maximum
-
-### Arrays
-- maxItems
-- minItems
-- uniqueItems
-
-### Per widget
-- email
-- url
-
-### Event content type
-- start/end dates check
-
-You can find them in the module {file}`packages/volto/src/config/validators.ts`.
 
 
 ### Override a validator
