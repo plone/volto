@@ -1,1 +1,1 @@
-Add `getComponents` that match a partial set of dependencies, given a name. @sneridagh
+Added Utilities registry, `registerUtility`, `getUtility` and `getUtilities` @sneridagh
