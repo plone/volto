@@ -1,0 +1,1 @@
+Removed `SchemaWidget` widget registration as `id` widget mapping assigned to the `schema` key, moved to `widget` mapping registration with the same `schema` key.  @sneridagh
