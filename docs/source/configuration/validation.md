@@ -154,7 +154,7 @@ config.registerUtility({
 Field `widget` validators are applied depending on the specified `widget` of the field.
 You should specify the `widget` either in the JSON schema of the block or as additional data in the content type definition.
 
-The following example shows how to specify the `widget` either in the JSON schema of the block.
+The following example shows how to specify the `widget` in the JSON schema of the block.
 
 ```ts
 let blockSchema = {
@@ -183,7 +183,7 @@ config.registerUtility({
 ```
 
 The following example shows how to specify the `widget` in the content type definition in the schema hints in the backend using `frontendOptions`.
-The validation engine  will behave the same, applying the `urlValidator` method validator for the content type field `customField` in the previous example.
+The validation engine will behave the same as in the JSON schema of the block, applying the `urlValidator` method validator for the content type field `customField` in the previous example.
 
 ```python
 from plone.supermodel import model
