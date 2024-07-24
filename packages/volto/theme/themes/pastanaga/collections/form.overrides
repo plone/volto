@@ -123,13 +123,47 @@
   z-index: 1;
   top: 0;
   right: 0;
+  left: auto;
   display: flex;
   height: 60px;
   align-items: center;
   margin-right: 1rem;
+  background: transparent;
+  box-shadow: none;
+  transform: none;
 
   .item {
     cursor: pointer;
+  }
+}
+
+.block.form {
+  [data-rbd-draggable-context-id] {
+    margin-bottom: 0;
+  }
+
+  .ui.menu .item > i.icon {
+    margin-left: -2px;
+  }
+
+  .square.icon {
+    margin-top: -2px;
+  }
+
+  .ui.segments > div {
+    background: white !important;
+  }
+
+  .drag.handle {
+    cursor: grab;
+  }
+
+  .tabular.menu > .item {
+    height: 66px;
+
+    button {
+      border-bottom-width: 5px;
+    }
   }
 }
 
