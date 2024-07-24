@@ -107,8 +107,7 @@ The `urlValidator` method validator will be applied for the content type field `
 
 ### Advanced scenarios
 
-In case you need more granularity, and you don't have access to modify the existing implementation of the JSON schema definitions for existing content types, blocks, or forms, you can use the following advanced validator registrations, using `field`, `widget`, `behaviorName`, or `blockType` validator registrations.
-
+If, for some reason, you can't modify the existing implementation of the JSON schema definitions for existing content types, blocks, or forms, you can use the following advanced validator registrations, which allows you to register validators depending on the `field`, the `widget`, the `behaviorName` (in case of a content type), or the `blockType` (in case of a block).
 
 #### Field `type` validators
 
