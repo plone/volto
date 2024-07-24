@@ -9,7 +9,16 @@ myst:
 
 # Develop Volto core
 
-This chapter describes how to develop Volto core and its libraries, packages, and apps as open source software contributions.
+This chapter describes how to develop the latest version of Volto core and its libraries, packages, and apps as open source software contributions.
+
+```{seealso}
+For previous versions of Volto core, you should follow the guide in the relevant version branch to build and run the backend.
+
+-   [Volto 17](https://github.com/plone/volto/blob/17.x.x/api/README.rst)
+-   [Volto 16](https://github.com/plone/volto/blob/16.x.x/api/README.rst)
+
+Additionally you can build each version of Volto documentation by running `make docs-html` from the root of the repository, and reading the relevant developer and contributing documentation.
+```
 
 ```{seealso}
 To create a full Plone project with both frontend and backend, see {doc}`plone:install/create-project` instead.
