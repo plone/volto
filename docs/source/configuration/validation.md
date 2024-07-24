@@ -323,7 +323,21 @@ export const isNumber = ({ value, formatMessage }: Validator) => {
 Using `formData`, you can perform validation checks using other field data as source.
 This is useful when you want to validate two related fields, such as ensuring the end date of an event is after its start date.
 You can create invariant validator types.
+In the following code snippet you can check how to create a validator method for checking if the Event content type `start`/`end` fields are valid:
 
-```{todo}
-Needs example.
+```ts
+export const startEventDateRangeValidator = ({
+  value,
+  field,
+  formData,
+  formatMessage,
+}: Validator) => {
+  const isValid =
+    value && formData.end && new Date(value) < new Date(formData.end);
+  return !isValid
+    ? formatMessage(messages.startEventRange, {
+        endDateValueOrEndFieldName: formData.end || 'end',
+      })
+    : null;
+};
 ```
