@@ -371,10 +371,10 @@ This change is needed for consistency with module suffixes in Volto core, in pre
 It is unlikely that your code uses it, unless you heavily customized the Jest testing pipeline.
 
 
-### Remove `react-share` library and `SocialSharing` component
+### Removed `react-share` library and `SocialSharing` component
 
-This was not used by the core since some time ago, and nowadays is more suitable for being an add-on and not being included in core.
-If you still use it, bring it back as your main add-on dependency, bring back the `SocialSharing` component from Volto 17 as a custom component in your add-on code.
+The `react-share` library and `SocialSharing` component has not been used in the core since some time ago, and it is more suitable as an add-on and not in core.
+If you still use it, you can add it to your main add-on dependency, and extract the `SocialSharing` component from Volto 17 as a custom component in your add-on code.
 
 ### Refactor of `FormValidation` module
 
