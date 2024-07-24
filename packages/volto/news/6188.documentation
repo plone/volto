@@ -1,1 +1,1 @@
-Improved i18n docs for customizations @pnicolli
+Improved i18n docs regarding new translated messages not being picked up by the i18n translation mechanism when added in shadowed components. @pnicolli
