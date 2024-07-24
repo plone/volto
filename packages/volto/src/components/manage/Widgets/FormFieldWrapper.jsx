@@ -4,7 +4,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Grid, Icon as IconOld, Label } from 'semantic-ui-react';
+import { Form, Grid, Icon, Label } from 'semantic-ui-react';
 import { map } from 'lodash';
 import cx from 'classnames';
 import { defineMessages, useIntl } from 'react-intl';
@@ -67,14 +67,13 @@ const FormFieldWrapper = (props) => {
     <Form.Field
       inline
       required={required}
-      error={error && error.length > 0}
+      error={!!error.length}
       className={cx(
         description ? 'help' : '',
         className,
         `field-wrapper-${id}`,
-        multilingual_options?.language_independent
-          ? 'language-independent-field'
-          : null,
+        multilingual_options?.language_independent &&
+          'language-independent-field',
       )}
     >
       <Grid>
@@ -99,7 +98,7 @@ const FormFieldWrapper = (props) => {
           )}
           <Grid.Column width={columns === 2 ? 8 : 12}>
             {onEdit && !isDisabled && (
-              <div className="toolbar" style={{ zIndex: '2' }}>
+              <div className="toolbar" style={{ zIndex: 2 }}>
                 <button
                   aria-label={intl.formatMessage(messages.edit)}
                   className="item ui noborder button"
@@ -108,7 +107,7 @@ const FormFieldWrapper = (props) => {
                     onEdit(id);
                   }}
                 >
-                  <IconOld name="write square" size="large" color="blue" />
+                  <Icon name="write square" size="large" color="blue" />
                 </button>
                 <button
                   aria-label={intl.formatMessage(messages.delete)}
@@ -118,7 +117,7 @@ const FormFieldWrapper = (props) => {
                     onDelete(id);
                   }}
                 >
-                  <IconOld name="close" size="large" color="red" />
+                  <Icon name="close" size="large" color="red" />
                 </button>
               </div>
             )}
@@ -129,9 +128,8 @@ const FormFieldWrapper = (props) => {
           <Grid.Row stretched>
             <Grid.Column stretched width="12">
               <p className="help">
-                {multilingual_options
-                  ? `${intl.formatMessage(messages.language_independent)} `
-                  : null}
+                {multilingual_options &&
+                  `${intl.formatMessage(messages.language_independent)} `}
                 {description}
               </p>
             </Grid.Column>
@@ -148,6 +146,7 @@ FormFieldWrapper.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  fieldSet: PropTypes.string,
   required: PropTypes.bool,
   error: PropTypes.arrayOf(PropTypes.string),
   wrapped: PropTypes.bool,
@@ -164,16 +163,18 @@ FormFieldWrapper.propTypes = {
 
 FormFieldWrapper.defaultProps = {
   description: null,
+  fieldSet: '',
   required: false,
   error: [],
   wrapped: true,
   columns: 2,
-  onDelete: null,
-  isDisabled: null,
   draggable: null,
+  isDisabled: null,
   noForInFieldLabel: false,
   multilingual_options: null,
   children: null,
+  onEdit: null,
+  onDelete: null,
 };
 
 export default FormFieldWrapper;
