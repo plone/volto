@@ -9,7 +9,7 @@ myst:
 
 # Client side form field validation
 
-Volto provides a mechanism for delivering form field validation in an extensible way.
+Volto provides an extensible way to validate form field values.
 This extensibility is based on the Volto registry.
 It applies to content types, custom programatically generated forms, and blocks schema settings.
 The mechanism serializes all of them according to the [JSON schema standard](https://json-schema.org/draft/2020-12/json-schema-validation).
