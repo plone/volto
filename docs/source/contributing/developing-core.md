@@ -16,7 +16,6 @@ For previous versions of Volto core, you should follow the guide in the relevant
 
 -   [Volto 17](https://github.com/plone/volto/blob/17.x.x/api/README.rst)
 -   [Volto 16](https://github.com/plone/volto/blob/16.x.x/api/README.rst)
--   [Volto 15](https://github.com/plone/volto/blob/15.x.x/api/README.rst)
 
 Additionally you can build each version of Volto documentation by running `make docs-html` from the root of the repository, and reading the relevant developer and contributing documentation.
 ```
