@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { cloneDeep, uniqBy } from 'lodash';
+import React, { useEffect, useState, useMemo } from 'react';
+import { cloneDeep, uniqBy, debounce } from 'lodash';
 import { useIntl } from 'react-intl';
 import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import jwtDecode from 'jwt-decode';
@@ -114,25 +114,41 @@ const ListingTemplate = ({
     matrix_options = [];
   }
 
+  const debouncedListUsers = useMemo(
+    () =>
+      debounce((query_user, groups_filter, userLimit) => {
+        dispatch(
+          listUsers({
+            search: query_user,
+            groups_filter: groups_filter.map((el) => el.value),
+            limit: userLimit,
+          }),
+        );
+      }, 300),
+    [dispatch],
+  );
+
   useEffect(() => {
     // Get users.
     if (show_users) {
-      dispatch(
-        listUsers({
-          search: query_user,
-          groups_filter: groups_filter.map((el) => el.value),
-          limit: userLimit,
-        }),
-      );
+      debouncedListUsers(query_user, groups_filter, userLimit);
     }
-  }, [dispatch, query_user, groups_filter, show_users, userLimit]);
+  }, [debouncedListUsers, query_user, groups_filter, show_users, userLimit]);
+
+  const debouncedListGroups = useMemo(
+    () =>
+      debounce((query_group) => {
+        dispatch(listGroups(query_group));
+      }, 300),
+    [dispatch],
+  );
 
   useEffect(() => {
     // Get matrix groups.
     if (show_matrix_options) {
-      dispatch(listGroups(query_group));
+      debouncedListGroups(query_group);
     }
-  }, [dispatch, query_group, show_matrix_options, groups_filter]);
+  }, [debouncedListGroups, query_group, show_matrix_options]);
 
   const onSelectOptionHandler = (selectedvalue, checked, singleClick) => {
     singleClick = singleClick ?? false;
