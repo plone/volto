@@ -1269,11 +1269,6 @@ msgstr "Aktibatuta?"
 msgid "End Date"
 msgstr "Bukaera data"
 
-#. Default: "Event end date happens before the event start date"
-#: helpers/MessageLabels/MessageLabels
-msgid "End event date happens before than the start event date"
-msgstr ""
-
 #. Default: "Enter URL or select an item"
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 msgid "Enter URL or select an item"
@@ -1361,10 +1356,20 @@ msgstr "Errorea"
 msgid "Event"
 msgstr "Hitzordua"
 
+#. Default: "Event end date must be on or after {startDateValueOrStartFieldName}"
+#: helpers/MessageLabels/MessageLabels
+msgid "Event end date must be on or after {startDateValueOrStartFieldName}"
+msgstr ""
+
 #. Default: "Event listing"
 #: config/Views
 msgid "Event listing"
 msgstr "Hitzorduen zerrenda"
+
+#. Default: "Event start date must be on or before {endDateValueOrEndFieldName}"
+#: helpers/MessageLabels/MessageLabels
+msgid "Event start date must be on or before {endDateValueOrEndFieldName}"
+msgstr ""
 
 #. Default: "Event view"
 #: config/Views
@@ -3443,11 +3448,6 @@ msgstr "Banatu"
 msgid "Start Date"
 msgstr "Hasiera-data"
 
-#. Default: "Event start date happens later than the event end date"
-#: helpers/MessageLabels/MessageLabels
-msgid "Start event date happens later than the end event date"
-msgstr ""
-
 #. Default: "Start of the recurrence"
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "Start of the recurrence"
@@ -3676,6 +3676,16 @@ msgstr "Elementua ezin izan da ezabatu."
 msgid "The link address is:"
 msgstr "Loturaren helbidea hauxe da:"
 
+#. Default: "The number of items must be greater than or equal to {minItems}"
+#: helpers/MessageLabels/MessageLabels
+msgid "The number of items must be greater than or equal to {minItems}"
+msgstr ""
+
+#. Default: "The number of items must be less than or equal to {maxItems}"
+#: helpers/MessageLabels/MessageLabels
+msgid "The number of items must be less than or equal to {maxItems}"
+msgstr ""
+
 #. Default: "The provided alternative url already exists!"
 #: components/manage/Aliases/Aliases
 msgid "The provided alternative url already exists!"
@@ -3691,6 +3701,11 @@ msgstr "Izen-emate prozesua ondo egin duzu. Begiratu zure eposta, kontua aktibat
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "The site configuration is outdated and needs to be upgraded."
 msgstr "Atariaren konfigurazioa zaharkituta dago eta eguneratu egin behar da."
+
+#. Default: "The value does not match the pattern {pattern}"
+#: helpers/MessageLabels/MessageLabels
+msgid "The value does not match the pattern {pattern}"
+msgstr ""
 
 #. Default: "The working copy was discarded"
 #: components/manage/Toolbar/More

@@ -1269,11 +1269,6 @@ msgstr "Activé ?"
 msgid "End Date"
 msgstr "Date de fin"
 
-#. Default: "Event end date happens before the event start date"
-#: helpers/MessageLabels/MessageLabels
-msgid "End event date happens before than the start event date"
-msgstr ""
-
 #. Default: "Enter URL or select an item"
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 msgid "Enter URL or select an item"
@@ -1361,10 +1356,20 @@ msgstr "Erreur"
 msgid "Event"
 msgstr "Événement"
 
+#. Default: "Event end date must be on or after {startDateValueOrStartFieldName}"
+#: helpers/MessageLabels/MessageLabels
+msgid "Event end date must be on or after {startDateValueOrStartFieldName}"
+msgstr ""
+
 #. Default: "Event listing"
 #: config/Views
 msgid "Event listing"
 msgstr "Liste des événements"
+
+#. Default: "Event start date must be on or before {endDateValueOrEndFieldName}"
+#: helpers/MessageLabels/MessageLabels
+msgid "Event start date must be on or before {endDateValueOrEndFieldName}"
+msgstr ""
 
 #. Default: "Event view"
 #: config/Views
@@ -3443,11 +3448,6 @@ msgstr "Divisé"
 msgid "Start Date"
 msgstr "Date de début"
 
-#. Default: "Event start date happens later than the event end date"
-#: helpers/MessageLabels/MessageLabels
-msgid "Start event date happens later than the end event date"
-msgstr ""
-
 #. Default: "Start of the recurrence"
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "Start of the recurrence"
@@ -3676,6 +3676,16 @@ msgstr "L'élement n'a pas pu être supprimé."
 msgid "The link address is:"
 msgstr "L'adresse du lien est :"
 
+#. Default: "The number of items must be greater than or equal to {minItems}"
+#: helpers/MessageLabels/MessageLabels
+msgid "The number of items must be greater than or equal to {minItems}"
+msgstr ""
+
+#. Default: "The number of items must be less than or equal to {maxItems}"
+#: helpers/MessageLabels/MessageLabels
+msgid "The number of items must be less than or equal to {maxItems}"
+msgstr ""
+
 #. Default: "The provided alternative url already exists!"
 #: components/manage/Aliases/Aliases
 msgid "The provided alternative url already exists!"
@@ -3691,6 +3701,11 @@ msgstr "Le processus d'inscription a réussi. Veuillez vérifier votre boîte e-
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "The site configuration is outdated and needs to be upgraded."
 msgstr "La configuration du site nécessite une mise à niveau."
+
+#. Default: "The value does not match the pattern {pattern}"
+#: helpers/MessageLabels/MessageLabels
+msgid "The value does not match the pattern {pattern}"
+msgstr ""
 
 #. Default: "The working copy was discarded"
 #: components/manage/Toolbar/More
