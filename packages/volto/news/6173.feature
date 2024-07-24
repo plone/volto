@@ -1,1 +1,1 @@
-Added config.settings.publicNonContentRoutes to avoid cms-ui in these public routes. @giuliaghisini
+Added `config.settings.publicNonContentRoutes` to avoid `isCmsUi` issues in these public routes. @giuliaghisini
