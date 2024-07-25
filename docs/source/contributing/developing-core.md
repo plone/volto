@@ -9,12 +9,23 @@ myst:
 
 # Develop Volto core
 
-This chapter describes how to develop Volto core and its libraries, packages, and apps as open source software contributions.
+This chapter describes how to develop the latest version of Volto core and its libraries, packages, and apps as open source software contributions.
+
+```{seealso}
+For previous versions of Volto core, you should follow the guide in the relevant version branch to build and run the backend.
+
+-   [Volto 17](https://github.com/plone/volto/blob/17.x.x/api/README.rst)
+-   [Volto 16](https://github.com/plone/volto/blob/16.x.x/api/README.rst)
+
+Additionally you can build each version of Volto documentation by running `make docs-html` from the root of the repository, and reading the relevant developer and contributing documentation.
+```
 
 ```{seealso}
 To create a full Plone project with both frontend and backend, see {doc}`plone:install/create-project` instead.
 ```
 
+
+(developing-core-monorepo-structure-label)=
 
 ## Monorepo structure
 
@@ -23,15 +34,9 @@ This means that several apps and libraries related to each other are stored in t
 They are managed together but released individually.
 This allows the code to be shared effectively, and unifies tracking of changes across all of the apps and libraries.
 
-This monorepo uses pnpm as a package manager, extensively using the workspaces feature.
+This monorepo uses pnpm as a package manager, extensively using its {term}`workspace` feature.
 It's organized in two folders, depending on whether it's a library (package) or an app.
-They are located in the `packages` or `apps` folder.
-They are declared as pnpm workspaces.
-This means they can be managed from the root, using the package manager `--filter` feature.
-
-```{seealso}
-For more information about pnpm workspaces, read the [documentation of pnpm workspaces](https://pnpm.io/workspaces).
-```
+The workspaces are located in the `packages` or `apps` folder.
 
 
 ### Folder layout
@@ -78,6 +83,7 @@ To set up a Volto core development environment, your system must satisfy the fol
 -   {term}`pnpm`
 -   {term}`GNU make`
 -   {term}`Docker`
+-   {term}`Git`
 
 ```{note}
 When developing Volto core, pnpm is required.
@@ -87,38 +93,8 @@ When developing a project using Plone, Yarn or other package managers may be use
 
 ### nvm
 
-The following terminal session commands use `bash` for the shell.
-Adapt them for your flavor of shell.
-
-```{seealso}
-See the [`nvm` install and update script documentation](https://github.com/nvm-sh/nvm#install--update-script).
-For the `fish` shell, see [`nvm.fish`](https://github.com/jorgebucaran/nvm.fish).
+```{include} ./install-nvm.md
 ```
-
-1.  Create your shell profile, if it does not exist.
-
-    ```shell
-    touch ~/.bash_profile
-    ```
-
-2.  Download and run the `nvm` install and update script, and pipe it into `bash`.
-
-    ```shell
-    curl -o- https://raw.githubusercontent.com/creationix/nvm/v{NVM_VERSION}/install.sh | bash
-    ```
-
-3.  Source your profile.
-    Alternatively close the session and open a new one.
-
-    ```shell
-    source ~/.bash_profile
-    ```
-
-4.  Verify that the `nvm` version is that which you just installed or updated:
-
-    ```shell
-    nvm --version
-    ```
 
 
 ### Node.js
@@ -152,7 +128,6 @@ pnpm --version
 
 Compare the output to the [latest pnpm release number](https://www.npmjs.com/package/pnpm).
 
-
 ```{seealso}
 [pnpm installation](https://pnpm.io/installation).
 ```
@@ -167,6 +142,12 @@ Compare the output to the [latest pnpm release number](https://www.npmjs.com/pac
 ### Docker
 
 ```{include} ./install-docker.md
+```
+
+
+### Git
+
+```{include} ../contributing/install-git.md
 ```
 
 
@@ -190,16 +171,42 @@ pnpm install
 
 ## Start the backend and Volto
 
+`````{versionadded} 18.0.0-alpha.42
+Persist backend data across Docker sessions.
+
+````{warning}
+Do not use this method of persistence in a production environment.
+It is intended only for development.
+
+```{seealso}
+{doc}`../deploying/index`
+```
+````
+`````
+
 Every time you want to run Volto for core development, you will need to create two terminal sessions, one for the backend and one for the frontend.
 For both sessions, change your working directory to the root of your Volto clone.
 
 In the first session, start the backend.
 
 ```shell
-make start-backend-docker
+make backend-docker-start
 ```
 
-When you run this command for the first time, it will download Docker images, configure the backend, and start the backend.
+When you run this command for the first time, it will download Docker images, configure the backend, create a Docker volume to persist the data named `volto-backend-data`, and start the backend.
+
+Subsequently, when you run `make backend-docker-start`, it will only start the backend using the existing configuration and Docker image and volume.
+
+````{note}
+If you would like to start the backend with a clean data volume, you can run the following command.
+
+```shell
+docker volume rm volto-backend-data
+```
+
+Then run `make backend-docker-start` again to start the backend with a clean data volume.
+````
+    
 Browse to the backend running at http://localhost:8080.
 
 In the second session, start the frontend.
@@ -213,18 +220,35 @@ Browse to the frontend running at http://localhost:3000.
 To stop either the backend or frontend, use {kbd}`ctrl-c`.
 
 
-## Running commands
+(developing-core-run-commands-for-pnpm-workspaces-label)=
 
-pnpm has the concept of `workspaces`.
-Every package or app located in the `packages` or `apps` folders are declared as a pnpm workspace.
-They can be managed using the pnpm `--filter` feature, with either of the following commands:
+## Run commands for pnpm workspaces
+
+As mentioned in {ref}`developing-core-monorepo-structure-label`, pnpm has the concept of {term}`workspace`.
+Every package or app located in the `packages` or `apps` folders is declared as a pnpm workspace.
+
+When developing Volto, you can run pnpm commands from either the repository root or inside the package's or app's workspace in `packages/<package_name>` or `apps/<app_name>`.
+
+pnpm commands will apply in the context from which they are run.
+That means when you run a pnpm command from the repository root, it will apply to all workspaces.
+It also means when you run a pnpm command from inside a workspace, it will apply only to that workspace.
+
+You can also use the pnpm `--filter` feature from the repository root to apply to only the specified workspaces, as shown in the following examples.
 
 ```shell
 pnpm --filter @plone/volto start
 ```
 
+The above command when run from the repository root will start Volto.
+
 ```shell
 pnpm --filter @plone/registry build
+```
+
+The above command when run from the repository root will build the Volto registry.
+
+```{seealso}
+For more information about pnpm workspaces, read the [documentation of pnpm workspaces](https://pnpm.io/workspaces).
 ```
 
 
@@ -243,10 +267,10 @@ pnpm start
 ```
 ````
 
-You can also run commands of specific workspaces using the `--filter` feature as shown in the previous section.
+You can also run commands for a specific workspace using the `--filter` feature as shown in the previous section, {ref}`developing-core-run-commands-for-pnpm-workspaces-label`.
 
 
-## Developing other libraries
+## Develop other libraries in a workspace
 
 If a package is a dependency of another package in the monorepo, and it's declared as a workspace, they can be declared as usual in the {file}`package.json` as follows:
 
@@ -257,7 +281,7 @@ If a package is a dependency of another package in the monorepo, and it's declar
 ```
 
 ```{seealso}
-[pnpm workspaces](https://pnpm.io/workspaces)
+[Documentation of pnpm workspaces](https://pnpm.io/workspaces).
 ```
 
 
@@ -297,28 +321,73 @@ Used by Volto, you can also use it in other JavaScript frameworks and environmen
 
 `@plone/volto-slate` is the glue package that provides support for the Slate library in Volto.
 
-## Supported frameworks
 
-Plone supports several frontend implementations, the main one being Volto as the default frontend and reference React-based implementation.
-There are plans to support implementations in other frontends, including NextJS and Remix.
+## Supported frontends
 
-### Plone
+Plone 6 comes with two frontend {term}`reference implementation`s.
+Volto is the default frontend, and is React-based.
+Classic UI is the Python-based, server-side rendered frontend.
 
-The default frontend and reference React-based implementation in Plone is Volto.
-In the `apps` folder you'll find a Volto project scaffolding that uses Volto as a library.
-This is the same as the one that you'll have when running the Volto generator or `cookiecutter-plone-starter`.
+In Volto's `apps` folder, you'll find a Volto project scaffolding that uses Volto as a library.
+This is the same as that which you'll have when you run the Volto generator or `cookiecutter-plone-starter`.
 
-### NextJS
 
-Coming soon.
+## Experimental frontends
+
+Other frontends are currently under heavy development.
+They are marked as experimental and, for now, they are a proof of concept demonstrating that other frontends are possible.
+Although they do work now in an acceptable way, the implementation might change in the future.
+These implementations only show how to access the public Plone content in the current site, dealing with data fetching and routing.
+All implementations are located in the `apps` directory in a subdirectory according to their implementation name.
+They use the Plone frontend strategic packages, including `@plone/registry`, `@plone/client`, and `@plone/components`.
+
+
+### Next.js
+
+This frontend is a proof of concept using Next.js with Plone.
+
+You can try it out using the following command.
+
+```shell
+pnpm --filter plone-nextjs dev
+```
 
 ### Remix
 
-Coming soon.
+This frontend is a proof of concept using Remix with Plone.
+
+You can try it out using the following command.
+
+```shell
+pnpm --filter plone-remix dev
+```
+
+### Vite build (client only)
+
+This frontend is a proof of concept using a custom client build based in Vite with Plone.
+It uses `@tanstack/router` in combination with `@plone/client`, which in turns uses `@tanstack/query`.
+This build is suitable for applications that do not need server side generation, and it's client only.
+
+You can try it out using the following command.
+
+```shell
+pnpm --filter plone-vite dev
+```
+
+### Vite SSR build
+
+This frontend is a proof of concept using a custom build, based in Vite with SSR with Plone.
+It uses `@tanstack/router` in combination with `@plone/client` (which in turns uses `@tanstack/query`).
+
+You can try it out using the following command.
+
+```shell
+pnpm --filter plone-vite-ssr dev
+```
 
 ## Support libraries
 
-Volto uses serveral libraries to support development.
+Volto uses several libraries to support development.
 
 ### `volto-coresandbox`
 

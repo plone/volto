@@ -10,13 +10,11 @@ declare const _default: {
             overlay: string;
         }) => void;
         closeObjectBrowser: () => void;
-        render(): JSX.Element;
-        context: any;
+        render(): import("react/jsx-runtime").JSX.Element;
+        context: unknown;
         setState<K extends string | number | symbol>(state: any, callback?: () => void): void;
         forceUpdate(callback?: () => void): void;
-        readonly props: Readonly<any> & Readonly<{
-            children?: any;
-        }>;
+        readonly props: Readonly<any>;
         refs: {
             [key: string]: React.ReactInstance;
         };

@@ -1,7 +1,8 @@
-import Icon from '../Icon/Icon';
+import React from 'react';
+import { Icon } from '../Icon/Icon';
 import type { IconPropsWithoutChildren } from '../Icon/Icon';
 
-const Moreoptions = (props: IconPropsWithoutChildren) => {
+export const MoreoptionsIcon = (props: IconPropsWithoutChildren) => {
   return (
     <Icon {...props}>
       <svg
@@ -15,5 +16,3 @@ const Moreoptions = (props: IconPropsWithoutChildren) => {
     </Icon>
   );
 };
-
-export default Moreoptions;

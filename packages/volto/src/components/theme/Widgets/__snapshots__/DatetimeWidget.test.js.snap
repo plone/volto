@@ -26,4 +26,4 @@ exports[`DatetimeWidget renders a date view widget component with children 1`] =
 </span>
 `;
 
-exports[`DatetimeWidget renders an empty date view widget component 1`] = `""`;
+exports[`DatetimeWidget renders an empty date view widget component 1`] = `null`;

@@ -14,7 +14,13 @@ export function createPluggable(name: any): {
     (props: any): React.FunctionComponentElement<any>;
     pluggableName: any;
     Plug: {
-        (props: any): React.FunctionComponentElement<any>;
+        (props: any): React.FunctionComponentElement<{
+            [x: string]: any;
+            pluggable: any;
+            id: any;
+            dependencies?: any[];
+            children: any;
+        }>;
         displayName: string;
     };
 };
@@ -25,11 +31,23 @@ export function createPluggableAndPlug(name: any): ({
     (props: any): React.FunctionComponentElement<any>;
     pluggableName: any;
     Plug: {
-        (props: any): React.FunctionComponentElement<any>;
+        (props: any): React.FunctionComponentElement<{
+            [x: string]: any;
+            pluggable: any;
+            id: any;
+            dependencies?: any[];
+            children: any;
+        }>;
         displayName: string;
     };
 } | {
-    (props: any): React.FunctionComponentElement<any>;
+    (props: any): React.FunctionComponentElement<{
+        [x: string]: any;
+        pluggable: any;
+        id: any;
+        dependencies?: any[];
+        children: any;
+    }>;
     displayName: string;
 })[];
 export const context: React.Context<any>;

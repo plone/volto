@@ -1,5 +1,5 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import { Provider } from 'react-intl-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
@@ -10,9 +10,8 @@ import { __test__ as LinksToItem } from './LinksToItem';
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-jest.mock('react-portal', () => ({
-  Portal: jest.fn(() => <div id="Portal" />),
-}));
+jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+
 jest.mock('../Toolbar/More', () => jest.fn(() => <div className="More" />));
 
 describe('LinksToItem', () => {
@@ -99,14 +98,15 @@ describe('LinksToItem', () => {
         messages: {},
       },
     });
-    const component = renderer.create(
+    const { container } = render(
       <Provider store={store}>
         <MemoryRouter>
           <LinksToItem location={{ pathname: '/page-1/links-to-item' }} />
+          <div id="toolbar"></div>
         </MemoryRouter>
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+
+    expect(container).toMatchSnapshot();
   });
 });

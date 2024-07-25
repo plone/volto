@@ -1,124 +1,117 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`UsersControlpanel renders a user control component 1`] = `
-<div
-  className="ui container users-control-panel"
->
+<div>
   <div
-    className="container"
-  />
-  <div
-    className="ui raised segments"
+    class="ui container users-control-panel"
   >
     <div
-      className="ui segment primary"
-    >
-      Users
-    </div>
+      class="container"
+    />
     <div
-      className="ui secondary segment"
+      class="ui raised segments"
     >
-      Note that roles set here apply directly to a user. The symbol
-      <svg
-        className="icon"
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "<title>plone-svg</title>undefined",
-          }
-        }
-        onClick={null}
-        style={
-          Object {
-            "fill": "#007EB1",
-            "height": "20px",
-            "width": "auto",
-          }
-        }
-        viewBox=""
-        xmlns=""
-      />
-      indicates a role inherited from membership in a group.
-    </div>
-    <div
-      className="ui segment"
-    >
-      <form
-        className="ui form"
-        onSubmit={[Function]}
+      <div
+        class="ui segment primary"
       >
-        <div
-          className="field"
+        Users
+      </div>
+      <div
+        class="ui secondary segment"
+      >
+        Note that roles set here apply directly to a user. The symbol
+        <svg
+          class="icon"
+          style="height: 20px; width: auto; fill: #007EB1;"
+          viewBox=""
+          xmlns=""
+        >
+          <title>
+            plone-svg
+          </title>
+          undefined
+        </svg>
+        indicates a role inherited from membership in a group.
+      </div>
+      <div
+        class="ui segment"
+      >
+        <form
+          class="ui form"
         >
           <div
-            className="ui action input"
+            class="field"
           >
-            <input
-              id="user-search-input"
-              name="SearchableText"
-              onChange={[Function]}
-              placeholder="Search users…"
-              type="text"
-            />
-            <button
-              className="ui icon button"
-              onClick={[Function]}
+            <div
+              class="ui action input"
             >
-              <i
-                aria-hidden="true"
-                className="search icon"
-                onClick={[Function]}
+              <input
+                id="user-search-input"
+                name="SearchableText"
+                placeholder="Search users…"
+                type="text"
               />
-            </button>
+              <button
+                class="ui icon button"
+              >
+                <i
+                  aria-hidden="true"
+                  class="search icon"
+                />
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <form
+        class="ui form"
+      >
+        <table
+          class="ui striped unstackable attached padded table"
+        >
+          <thead
+            class=""
+          >
+            <tr
+              class=""
+            >
+              <th
+                class=""
+              >
+                User name
+              </th>
+              <th
+                class=""
+              >
+                Actions
+              </th>
+            </tr>
+          </thead>
+          <tbody
+            class=""
+            data-user="users"
+          />
+        </table>
+        <div
+          class="contents-pagination"
+        >
+          <div
+            class="ui secondary attached menu"
+          >
+            <div
+              class="menu"
+            />
           </div>
         </div>
       </form>
     </div>
-    <form
-      className="ui form"
-      onSubmit={[Function]}
-    >
-      <table
-        className="ui striped unstackable attached padded table"
-      >
-        <thead
-          className=""
-        >
-          <tr
-            className=""
-          >
-            <th
-              className=""
-            >
-              User name
-            </th>
-            <th
-              className=""
-            >
-              Actions
-            </th>
-          </tr>
-        </thead>
-        <tbody
-          className=""
-          data-user="users"
-        />
-      </table>
-      
-      <div
-        className="contents-pagination"
-      >
-        <div
-          className="ui secondary attached menu"
-        >
-          <div
-            className="menu"
-          />
-        </div>
-      </div>
-    </form>
   </div>
   <div
-    id="Portal"
-  />
+    id="toolbar"
+  >
+    <div
+      id="Portal"
+    />
+  </div>
 </div>
 `;

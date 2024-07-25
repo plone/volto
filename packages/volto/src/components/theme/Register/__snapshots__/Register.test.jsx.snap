@@ -5,86 +5,35 @@ exports[`Register renders a register component 1`] = `
   id="page-register"
 >
   <div
-    className="ui container"
-  >
-    <form
-      className="ui form"
-      method="post"
-      onSubmit={[Function]}
-    >
-      <fieldset
-        className="invisible"
-      >
-        <div
-          className="ui raised segments"
-        >
-          <div
-            className="ui segment"
-          >
-            <div
-              className="ui segment primary"
-            >
-              <h1
-                style={
-                  Object {
-                    "fontSize": "16px",
-                  }
-                }
-              >
-                 
-                Registration form
-              </h1>
-            </div>
-            <div
-              className="mocked-default-widget"
-              id="mocked-field-fullname"
-            >
-              Full Name
-               - 
-              Enter full name, e.g. John Smith.
-            </div>
-            <div
-              className="mocked-default-widget"
-              id="mocked-field-email"
-            >
-              E-mail
-               - 
-              Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.
-            </div>
-          </div>
-          <div
-            className="ui clearing segment actions"
-          >
-            <button
-              aria-label="Register"
-              className="ui basic primary right floated button"
-              onClick={[Function]}
-              title="Register"
-              type="submit"
-            >
-              <svg
-                className="icon circled"
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": undefined,
-                  }
-                }
-                onClick={null}
-                style={
-                  Object {
-                    "fill": "currentColor",
-                    "height": "30px",
-                    "width": "auto",
-                  }
-                }
-                viewBox=""
-                xmlns=""
-              />
-            </button>
-          </div>
-        </div>
-      </fieldset>
-    </form>
-  </div>
+    data-schema="{
+  \\"fieldsets\\": [
+    {
+      \\"id\\": \\"default\\",
+      \\"title\\": \\"Default\\",
+      \\"fields\\": [
+        \\"fullname\\",
+        \\"email\\"
+      ]
+    }
+  ],
+  \\"properties\\": {
+    \\"fullname\\": {
+      \\"type\\": \\"string\\",
+      \\"title\\": \\"Full Name\\",
+      \\"description\\": \\"Enter full name, e.g. John Smith.\\"
+    },
+    \\"email\\": {
+      \\"type\\": \\"string\\",
+      \\"title\\": \\"E-mail\\",
+      \\"description\\": \\"Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.\\"
+    }
+  },
+  \\"required\\": [
+    \\"fullname\\",
+    \\"email\\"
+  ]
+}"
+    id="Form"
+  />
 </div>
 `;

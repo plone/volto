@@ -1,18 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Controlpanel renders a controlpanel component 1`] = `
-<div
-  id="page-controlpanel"
->
+<div>
   <div
-    className="ui container"
+    id="page-controlpanel"
   >
     <div
-      id="form"
-    />
+      class="ui container"
+    >
+      <div
+        data-schema="{
+  \\"fieldsets\\": [],
+  \\"properties\\": {}
+}"
+        id="Form"
+      />
+    </div>
   </div>
   <div
-    id="Portal"
-  />
+    id="toolbar"
+  >
+    <div
+      id="Portal"
+    />
+  </div>
 </div>
 `;

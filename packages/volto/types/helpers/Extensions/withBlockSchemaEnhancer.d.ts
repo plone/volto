@@ -20,16 +20,16 @@ export function addExtensionFieldToSchema({ schema, name, items, intl, title, de
 }): any;
 export function withBlockSchemaEnhancer(FormComponent: any, extensionName?: string, insertFieldToOrder?: typeof _addField): ({ ...props }: {
     [x: string]: any;
-}) => JSX.Element;
+}) => import("react/jsx-runtime").JSX.Element;
 export function applySchemaEnhancer({ schema: originalSchema, formData, intl, blocksConfig, navRoot, contentType, }: {
     schema: any;
     formData: any;
     intl: any;
-    blocksConfig?: import("@plone/registry/node_modules/@plone/types").BlocksConfigData;
+    blocksConfig?: import("@plone/types").BlocksConfigData;
     navRoot: any;
     contentType: any;
 }): any;
-export function withVariationSchemaEnhancer(FormComponent: any): (props: any) => JSX.Element;
+export function withVariationSchemaEnhancer(FormComponent: any): (props: any) => import("react/jsx-runtime").JSX.Element;
 export namespace EMPTY_STYLES_SCHEMA {
     let fieldsets: {
         id: string;

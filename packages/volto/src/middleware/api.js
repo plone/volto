@@ -17,7 +17,7 @@ import {
   RESET_APIERROR,
   SET_APIERROR,
 } from '@plone/volto/constants/ActionTypes';
-import { changeLanguage } from '@plone/volto/actions';
+import { changeLanguage, updateUploadedFiles } from '@plone/volto/actions';
 import {
   toGettextLang,
   toReactIntlLang,
@@ -133,6 +133,7 @@ const apiMiddlewareFactory =
     const { settings } = config;
 
     const token = getState().userSession.token;
+    let uploadedFiles = getState().content.uploadedFiles;
     let isAnonymous = true;
     if (token) {
       const tokenExpiration = jwtDecode(token).exp;
@@ -154,7 +155,6 @@ const apiMiddlewareFactory =
     }
 
     next({ ...rest, type: `${type}_PENDING` });
-
     if (socket) {
       actionPromise = Array.isArray(request)
         ? Promise.all(
@@ -188,6 +188,9 @@ const apiMiddlewareFactory =
                     ),
                   },
                 ).then((reqres) => {
+                  if (action.subrequest === 'batch-upload') {
+                    dispatch(updateUploadedFiles(++uploadedFiles));
+                  }
                   return [...acc, reqres];
                 });
               });
@@ -214,6 +217,10 @@ const apiMiddlewareFactory =
           });
       actionPromise.then(
         (result) => {
+          if (uploadedFiles !== 0) {
+            dispatch(updateUploadedFiles(0));
+          }
+
           const { settings } = config;
           if (getState().apierror.connectionRefused) {
             next({
@@ -230,11 +237,11 @@ const apiMiddlewareFactory =
               config.settings.supportedLanguages.includes(lang)
             ) {
               const langFileName = toGettextLang(lang);
-              import('@root/../locales/' + langFileName + '.json').then(
-                (locale) => {
-                  dispatch(changeLanguage(lang, locale.default));
-                },
-              );
+              import(
+                /* @vite-ignore */ '@root/../locales/' + langFileName + '.json'
+              ).then((locale) => {
+                dispatch(changeLanguage(lang, locale.default));
+              });
             }
           }
           if (type === LOGIN && settings.websockets) {

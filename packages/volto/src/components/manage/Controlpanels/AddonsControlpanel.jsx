@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import {
   Accordion,
   Button,
@@ -550,8 +550,8 @@ class AddonsControlpanel extends Component {
           )}
         </Segment.Group>
 
-        {this.state.isClient && (
-          <Portal node={document.getElementById('toolbar')}>
+        {this.state.isClient &&
+          createPortal(
             <Toolbar
               pathname={this.props.pathname}
               hideDefaultViewButtons
@@ -568,9 +568,9 @@ class AddonsControlpanel extends Component {
                   </Link>
                 </>
               }
-            />
-          </Portal>
-        )}
+            />,
+            document.getElementById('toolbar'),
+          )}
       </Container>
     );
   }

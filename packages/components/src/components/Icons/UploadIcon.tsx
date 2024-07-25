@@ -1,7 +1,8 @@
-import Icon from '../Icon/Icon';
+import React from 'react';
+import { Icon } from '../Icon/Icon';
 import type { IconPropsWithoutChildren } from '../Icon/Icon';
 
-const Upload = (props: IconPropsWithoutChildren) => {
+export const UploadIcon = (props: IconPropsWithoutChildren) => {
   return (
     <Icon {...props}>
       <svg
@@ -16,5 +17,3 @@ const Upload = (props: IconPropsWithoutChildren) => {
     </Icon>
   );
 };
-
-export default Upload;

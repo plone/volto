@@ -18,8 +18,8 @@ import Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorize
 import Forbidden from '@plone/volto/components/theme/Forbidden/Forbidden';
 import ServerError from '@plone/volto/components/theme/Error/ServerError';
 
-const EventView = loadable(() =>
-  import('@plone/volto/components/theme/View/EventView'),
+const EventView = loadable(
+  () => import('@plone/volto/components/theme/View/EventView'),
 );
 
 defineMessages({

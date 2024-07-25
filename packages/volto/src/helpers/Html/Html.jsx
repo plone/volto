@@ -143,8 +143,8 @@ class Html extends Component {
               rel: !criticalCss
                 ? elem.props.rel
                 : elem.props.as === 'style'
-                ? 'prefetch'
-                : elem.props.rel,
+                  ? 'prefetch'
+                  : elem.props.rel,
             }),
           )}
           {/* Styles in development are loaded with Webpack's style-loader, in production,
@@ -187,14 +187,12 @@ class Html extends Component {
             charSet="UTF-8"
           />
           {/* Add the crossorigin while in development */}
-          {this.props.extractScripts !== false
-            ? extractor.getScriptElements().map((elem) =>
-                React.cloneElement(elem, {
-                  crossOrigin:
-                    process.env.NODE_ENV === 'production' ? undefined : 'true',
-                }),
-              )
-            : ''}
+          {extractor.getScriptElements().map((elem) =>
+            React.cloneElement(elem, {
+              crossOrigin:
+                process.env.NODE_ENV === 'production' ? undefined : 'true',
+            }),
+          )}
         </body>
       </html>
     );
