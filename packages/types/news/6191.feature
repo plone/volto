@@ -1,1 +1,1 @@
-Change the types in `common.d.ts` to interfaces, to make them extendable.
+Change the types in `common.d.ts` to interfaces, to make them extendable. @tomschall
