@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { defineMessages, useIntl } from 'react-intl';
@@ -20,17 +20,9 @@ const messages = defineMessages({
 
 const Edit = React.memo(
   (props) => {
-    const { properties, selected, block, data, onChangeBlock } = props;
+    const { properties, selected, data } = props;
 
     const intl = useIntl();
-    const node = useRef(null);
-
-    const onAlignBlock = (align) => {
-      onChangeBlock(block, {
-        ...data,
-        align,
-      });
-    };
 
     const Image = config.getComponent({ name: 'Image' }).component;
     const placeholder =
