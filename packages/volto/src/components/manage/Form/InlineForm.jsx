@@ -11,7 +11,8 @@ import {
   removeFromArray,
   arrayRange,
 } from '@plone/volto/helpers/Utils/Utils';
-import { Field, Icon } from '@plone/volto/components';
+import { Icon } from '@plone/volto/components';
+import { Field } from '@plone/volto/components/manage/Form';
 import { applySchemaDefaults } from '@plone/volto/helpers';
 
 import upSVG from '@plone/volto/icons/up-key.svg';
@@ -47,6 +48,7 @@ const InlineForm = (props) => {
     title,
     icon,
     headerActions,
+    actionButton,
     footer,
     focusIndex,
     intl,
@@ -151,14 +153,17 @@ const InlineForm = (props) => {
               focus={index === focusIndex}
               value={formData[field]}
               required={schema.required.indexOf(field) !== -1}
-              onChange={(id, value) => {
-                onChangeField(id, value);
+              onChange={(id, value, itemInfo) => {
+                onChangeField(id, value, itemInfo);
               }}
               key={field}
               error={errors[field]}
               block={block}
             />
           ))}
+          {actionButton && (
+            <Segment className="attached actions">{actionButton}</Segment>
+          )}
         </Segment>
       </div>
 

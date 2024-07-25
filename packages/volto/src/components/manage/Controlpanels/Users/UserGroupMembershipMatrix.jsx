@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useIntl } from 'react-intl';
 import { Checkbox, Form, Input } from 'semantic-ui-react';
 
-import { isEqual } from 'lodash';
+import { isEqual, debounce } from 'lodash';
 
 import { messages } from '@plone/volto/helpers';
 import { listGroups } from '@plone/volto/actions'; // getRegistry
-import UserGroupMembershipListing from './UserGroupMembershipListing';
+import UserGroupMembershipListing from '@plone/volto/components/manage/Controlpanels/Users/UserGroupMembershipListing';
 
 const UserGroupMembershipMatrix = ({ many_users, many_groups }) => {
   const intl = useIntl();
@@ -38,12 +38,20 @@ const UserGroupMembershipMatrix = ({ many_users, many_groups }) => {
     });
   }
 
+  const debouncedListGroups = useMemo(
+    () =>
+      debounce((query_group_filter) => {
+        dispatch(listGroups('', query_group_filter));
+      }, 300),
+    [dispatch],
+  );
+
   useEffect(() => {
     // TODO fetch group for at least query_group_filter.length > 1?
     if (!many_groups || (many_groups && query_group_filter.length > 1)) {
-      dispatch(listGroups('', query_group_filter));
+      debouncedListGroups(query_group_filter);
     }
-  }, [dispatch, many_groups, query_group_filter]);
+  }, [debouncedListGroups, many_groups, query_group_filter]);
 
   const onReset = (event) => {
     // event.preventDefault();

@@ -12,18 +12,25 @@ import {
   updateUser,
   updateGroup,
   getUserSchema,
+  getUser,
 } from '@plone/volto/actions';
+import jwtDecode from 'jwt-decode';
 import {
   Icon,
-  ModalForm,
   Toast,
   Toolbar,
-  RenderUsers,
   Pagination,
   Error,
 } from '@plone/volto/components';
+import { ModalForm } from '@plone/volto/components/manage/Form';
+import RenderUsers from '@plone/volto/components/manage/Controlpanels/Users/RenderUsers';
 import { Link } from 'react-router-dom';
-import { Helmet, messages } from '@plone/volto/helpers';
+import {
+  Helmet,
+  messages,
+  isManager,
+  canAssignGroup,
+} from '@plone/volto/helpers';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import addUserSvg from '@plone/volto/icons/add-user.svg';
 import saveSVG from '@plone/volto/icons/save.svg';
@@ -32,7 +39,7 @@ import { find, map, pull, difference } from 'lodash';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
 import { bindActionCreators, compose } from 'redux';
@@ -42,8 +49,10 @@ import {
   Form,
   Input,
   Button,
+  Dimmer,
   Segment,
   Table,
+  Loader,
 } from 'semantic-ui-react';
 
 /**
@@ -77,6 +86,19 @@ class UsersControlpanel extends Component {
         roles: PropTypes.arrayOf(PropTypes.string),
       }),
     ).isRequired,
+    user: PropTypes.shape({
+      '@id': PropTypes.string,
+      id: PropTypes.string,
+      description: PropTypes.string,
+      email: PropTypes.string,
+      fullname: PropTypes.string,
+      groups: PropTypes.object,
+      location: PropTypes.string,
+      portrait: PropTypes.string,
+      home_page: PropTypes.string,
+      roles: PropTypes.arrayOf(PropTypes.string),
+      username: PropTypes.string,
+    }).isRequired,
   };
 
   /**
@@ -124,6 +146,7 @@ class UsersControlpanel extends Component {
       });
     }
     await this.props.getUserSchema();
+    await this.props.getUser(this.props.userId);
   };
 
   // Because username field needs to be disabled if email login is enabled!
@@ -155,6 +178,9 @@ class UsersControlpanel extends Component {
       this.props.listUsers({
         search: this.state.search,
       });
+    }
+    if (this.props.deleteRequest.loading && nextProps.deleteRequest.loaded) {
+      this.onDeleteUserSuccess();
     }
     if (this.props.createRequest.loading && nextProps.createRequest.loaded) {
       this.onAddUserSuccess();
@@ -235,10 +261,6 @@ class UsersControlpanel extends Component {
   onDeleteOk() {
     if (this.state.userToDelete) {
       this.props.deleteUser(this.state.userToDelete.id);
-      this.setState({
-        showDelete: false,
-        userToDelete: undefined,
-      });
     }
   }
 
@@ -251,6 +273,7 @@ class UsersControlpanel extends Component {
     this.setState({
       showDelete: false,
       itemsToDelete: [],
+      userToDelete: undefined,
     });
   }
 
@@ -324,6 +347,24 @@ class UsersControlpanel extends Component {
   }
 
   /**
+   * Handle Success after deleteUser()
+   *
+   * @returns {undefined}
+   */
+  onDeleteUserSuccess() {
+    this.setState({
+      userToDelete: undefined,
+      showDelete: false,
+    });
+    toast.success(
+      <Toast
+        success
+        title={this.props.intl.formatMessage(messages.success)}
+        content={this.props.intl.formatMessage(messages.userDeleted)}
+      />,
+    );
+  }
+  /**
    *
    *
    * @param {*} data
@@ -338,8 +379,8 @@ class UsersControlpanel extends Component {
           entry.id === name && !entry.roles.includes(value)
             ? [...entry.roles, value]
             : entry.id !== name
-            ? entry.roles
-            : pull(entry.roles, value),
+              ? entry.roles
+              : pull(entry.roles, value),
       })),
     });
   }
@@ -407,6 +448,20 @@ class UsersControlpanel extends Component {
   }
 
   /**
+   * Filters the roles a user can assign when adding a user.
+   * @method canAssignAdd
+   * @returns {arry}
+   */
+  canAssignAdd(isManager) {
+    if (isManager) return this.props.roles;
+    return this.props.user?.roles
+      ? this.props.roles.filter((role) =>
+          this.props.user.roles.includes(role.id),
+        )
+      : [];
+  }
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -426,7 +481,9 @@ class UsersControlpanel extends Component {
     // of the userschema is changed and it is used like that through
     // the lifecycle of the application
     let adduserschema = {};
+    let isUserManager = false;
     if (this.props?.userschema?.loaded) {
+      isUserManager = isManager(this.props.user);
       adduserschema = JSON.parse(
         JSON.stringify(this.props?.userschema?.userschema),
       );
@@ -454,13 +511,18 @@ class UsersControlpanel extends Component {
       adduserschema.properties['roles'] = {
         title: this.props.intl.formatMessage(messages.addUserFormRolesTitle),
         type: 'array',
-        choices: this.props.roles.map((role) => [role.id, role.title]),
+        choices: this.canAssignAdd(isUserManager).map((role) => [
+          role.id,
+          role.title,
+        ]),
         noValueOption: false,
       };
       adduserschema.properties['groups'] = {
         title: this.props.intl.formatMessage(messages.addUserGroupNameTitle),
         type: 'array',
-        choices: this.props.groups.map((group) => [group.id, group.id]),
+        choices: this.props.groups
+          .filter((group) => canAssignGroup(isUserManager, group))
+          .map((group) => [group.id, group.id]),
         noValueOption: false,
       };
       if (
@@ -491,6 +553,12 @@ class UsersControlpanel extends Component {
             )}
             content={
               <div className="content">
+                <Dimmer active={this.props?.deleteRequest?.loading}>
+                  <Loader>
+                    <FormattedMessage id="Loading" defaultMessage="Loading." />
+                  </Loader>
+                </Dimmer>
+
                 <ul className="content">
                   <FormattedMessage
                     id="Do you really want to delete the user {username}?"
@@ -598,6 +666,7 @@ class UsersControlpanel extends Component {
                         inheritedRole={this.props.inheritedRole}
                         userschema={this.props.userschema}
                         listUsers={this.props.listUsers}
+                        isUserManager={isUserManager}
                       />
                     ))}
                 </Table.Body>
@@ -619,8 +688,8 @@ class UsersControlpanel extends Component {
             </div>
           </Form>
         </Segment.Group>
-        {this.state.isClient && (
-          <Portal node={document.getElementById('toolbar')}>
+        {this.state.isClient &&
+          createPortal(
             <Toolbar
               pathname={this.props.pathname}
               hideDefaultViewButtons
@@ -672,9 +741,9 @@ class UsersControlpanel extends Component {
                   </Button>
                 </>
               }
-            />
-          </Portal>
-        )}
+            />,
+            document.getElementById('toolbar'),
+          )}
       </Container>
     );
   }
@@ -686,6 +755,10 @@ export default compose(
     (state, props) => ({
       roles: state.roles.roles,
       users: state.users.users,
+      user: state.users.user,
+      userId: state.userSession.token
+        ? jwtDecode(state.userSession.token).sub
+        : '',
       groups: state.groups.groups,
       many_users: state.controlpanels?.controlpanel?.data?.many_users,
       many_groups: state.controlpanels?.controlpanel?.data?.many_groups,
@@ -710,6 +783,7 @@ export default compose(
           updateUser,
           updateGroup,
           getUserSchema,
+          getUser,
         },
         dispatch,
       ),

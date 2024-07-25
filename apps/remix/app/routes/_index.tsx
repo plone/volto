@@ -12,7 +12,7 @@ import {
 import ploneClient from '@plone/client';
 import { flattenToAppURL } from '../utils';
 import { useLoaderData, useLocation } from '@remix-run/react';
-import { usePloneClient } from '@plone/client/provider';
+import { usePloneClient } from '@plone/providers';
 
 export const meta: MetaFunction = () => {
   return [
@@ -34,6 +34,7 @@ export const loader = async ({ params, request }: LoaderFunctionArgs) => {
       },
     },
   });
+
   const cli = ploneClient.initialize({
     apiPath: 'http://localhost:8080/Plone',
   });

@@ -5,7 +5,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { injectIntl } from 'react-intl';
 
 import {
   Container as SemanticContainer,
@@ -16,7 +15,7 @@ import {
 import config from '@plone/volto/registry';
 import { getSchema } from '@plone/volto/actions';
 import { getWidget } from '@plone/volto/helpers/Widget/utils';
-import RenderBlocks from './RenderBlocks';
+import RenderBlocks from '@plone/volto/components/theme/View/RenderBlocks';
 
 import { hasBlocksData, getBaseUrl } from '@plone/volto/helpers';
 import { useDispatch, useSelector } from 'react-redux';
@@ -137,4 +136,4 @@ DefaultView.propTypes = {
   }).isRequired,
 };
 
-export default injectIntl(DefaultView);
+export default DefaultView;

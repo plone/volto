@@ -151,6 +151,11 @@ export class App extends Component {
             [trim(join(split(this.props.pathname, '/'), ' section-'))]:
               this.props.pathname !== '/',
             siteroot: this.props.pathname === '/',
+            [`is-adding-contenttype-${decodeURIComponent(
+              this.props.location?.search?.replace('?type=', ''),
+            )
+              .replace(' ', '')
+              .toLowerCase()}`]: this.props.location?.search,
             'is-authenticated': !!this.props.token,
             'is-anonymous': !this.props.token,
             'cms-ui': isCmsUI,
@@ -242,6 +247,7 @@ export const fetchContent = async ({ store, location }) => {
         id,
         data,
         blocksConfig,
+        content,
       });
       if (!p?.length) {
         throw new Error(

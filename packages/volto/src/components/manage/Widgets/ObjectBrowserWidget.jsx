@@ -6,9 +6,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
-import { compact, isArray, isEmpty, remove } from 'lodash';
+import { compact, includes, isArray, isEmpty, remove } from 'lodash';
 import { connect } from 'react-redux';
-import { Label, Popup, Button } from 'semantic-ui-react';
+import { Image, Label, Popup, Button } from 'semantic-ui-react';
 import {
   flattenToAppURL,
   isInternalURL,
@@ -21,6 +21,7 @@ import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrow
 import { defineMessages, injectIntl } from 'react-intl';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
+import config from '@plone/volto/registry';
 
 import navTreeSVG from '@plone/volto/icons/nav.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -122,7 +123,16 @@ export class ObjectBrowserWidgetComponent extends Component {
         }
         trigger={
           <Label>
-            <div className="item-title">{item.title}</div>
+            <div className="item-title">
+              {includes(config.settings.imageObjects, item['@type']) ? (
+                <Image
+                  size="small"
+                  src={`${item['@id']}/@@images/image/thumb`}
+                />
+              ) : (
+                item.title
+              )}
+            </div>
             <div>
               {this.props.mode === 'multiple' && (
                 <Icon

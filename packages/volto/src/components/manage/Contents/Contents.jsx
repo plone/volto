@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
 import {
   Button,
@@ -53,14 +53,6 @@ import {
 } from '@plone/volto/actions';
 import Indexes, { defaultIndexes } from '@plone/volto/constants/Indexes';
 import {
-  ContentsBreadcrumbs,
-  ContentsIndexHeader,
-  ContentsItem,
-  ContentsRenameModal,
-  ContentsUploadModal,
-  ContentsWorkflowModal,
-  ContentsTagsModal,
-  ContentsPropertiesModal,
   Pagination,
   Popup,
   Toolbar,
@@ -68,6 +60,14 @@ import {
   Icon,
   Unauthorized,
 } from '@plone/volto/components';
+import ContentsBreadcrumbs from '@plone/volto/components/manage/Contents/ContentsBreadcrumbs';
+import ContentsIndexHeader from '@plone/volto/components/manage/Contents/ContentsIndexHeader';
+import ContentsItem from '@plone/volto/components/manage/Contents/ContentsItem';
+import { ContentsRenameModal } from '@plone/volto/components/manage/Contents';
+import ContentsUploadModal from '@plone/volto/components/manage/Contents/ContentsUploadModal';
+import ContentsWorkflowModal from '@plone/volto/components/manage/Contents/ContentsWorkflowModal';
+import ContentsTagsModal from '@plone/volto/components/manage/Contents/ContentsTagsModal';
+import ContentsPropertiesModal from '@plone/volto/components/manage/Contents/ContentsPropertiesModal';
 
 import { Helmet, getBaseUrl } from '@plone/volto/helpers';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
@@ -156,7 +156,7 @@ const messages = defineMessages({
     defaultMessage: 'Item(s) has been updated.',
   },
   messageReorder: {
-    id: 'Item succesfully moved.',
+    id: 'Item successfully moved.',
     defaultMessage: 'Item successfully moved.',
   },
   messagePasted: {
@@ -534,11 +534,14 @@ class Contents extends Component {
       this.props.clipboardRequest.loading &&
       nextProps.clipboardRequest.error
     ) {
+      const msgBody =
+        nextProps.clipboardRequest.error?.response?.body?.message ||
+        this.props.intl.formatMessage(messages.error);
       this.props.toastify.toast.error(
         <Toast
           error
           title={this.props.intl.formatMessage(messages.error)}
-          content={this.props.intl.formatMessage(messages.error)}
+          content={msgBody}
         />,
       );
     }
@@ -1191,7 +1194,11 @@ class Contents extends Component {
     return this.props.token && this.props.objectActions?.length > 0 ? (
       <>
         {folderContentsAction ? (
-          <Container id="page-contents" className="folder-contents">
+          <Container
+            id="page-contents"
+            className="folder-contents"
+            aria-live="polite"
+          >
             <Dimmer.Dimmable as="div" blurring dimmed={loading}>
               <Dimmer active={loading} inverted>
                 <Loader indeterminate size="massive">
@@ -1226,10 +1233,8 @@ class Contents extends Component {
                           this.state.containedItemsToDelete > 0 ? (
                             <>
                               <FormattedMessage
-                                id="Some items are also a folder.
-                              By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
-                                defaultMessage="Some items are also a folder.
-                              By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
+                                id="Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
+                                defaultMessage="Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
                                 values={{
                                   containedItemsToDelete: (
                                     <span>
@@ -1323,10 +1328,8 @@ class Contents extends Component {
                         ) : this.state.containedItemsToDelete > 0 ? (
                           <>
                             <FormattedMessage
-                              id="This item is also a folder.
-                            By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
-                              defaultMessage="This item is also a folder.
-                            By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
+                              id="This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
+                              defaultMessage="This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
                               values={{
                                 containedItemsToDelete: (
                                   <span>
@@ -1989,9 +1992,9 @@ class Contents extends Component {
                                         this.state.selected.length === 0
                                           ? checkboxUncheckedSVG
                                           : this.state.selected.length ===
-                                            this.state.items.length
-                                          ? checkboxCheckedSVG
-                                          : checkboxIndeterminateSVG
+                                              this.state.items.length
+                                            ? checkboxCheckedSVG
+                                            : checkboxIndeterminateSVG
                                       }
                                       color={
                                         this.state.selected.length > 0
@@ -2159,8 +2162,8 @@ class Contents extends Component {
                   </section>
                 </article>
               </div>
-              {this.state.isClient && (
-                <Portal node={document.getElementById('toolbar')}>
+              {this.state.isClient &&
+                createPortal(
                   <Toolbar
                     pathname={this.props.pathname}
                     inner={
@@ -2178,9 +2181,9 @@ class Contents extends Component {
                         />
                       </Link>
                     }
-                  />
-                </Portal>
-              )}
+                  />,
+                  document.getElementById('toolbar'),
+                )}
             </Dimmer.Dimmable>
           </Container>
         ) : (

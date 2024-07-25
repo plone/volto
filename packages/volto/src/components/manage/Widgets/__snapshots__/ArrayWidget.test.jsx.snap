@@ -251,9 +251,7 @@ exports[`renders an array widget component 1`] = `
                         "whiteSpace": "pre",
                       }
                     }
-                  >
-                    
-                  </div>
+                  />
                 </div>
               </div>
             </div>

@@ -37,6 +37,7 @@ export {
   lockContent,
   unlockContent,
   linkIntegrityCheck,
+  updateUploadedFiles,
 } from '@plone/volto/actions/content/content';
 export {
   getControlpanel,
@@ -150,7 +151,13 @@ export {
 } from '@plone/volto/actions/workflow/workflow';
 export { getQuerystring } from '@plone/volto/actions/querystring/querystring';
 export { getQueryStringResults } from '@plone/volto/actions/querystringsearch/querystringsearch';
-export { setSidebarTab } from '@plone/volto/actions/sidebar/sidebar';
+export {
+  setMetadataFieldsets,
+  setMetadataFocus,
+  resetMetadataFocus,
+  setSidebarTab,
+} from '@plone/volto/actions/sidebar/sidebar';
+export { setFormData, setUIState } from '@plone/volto/actions/form/form';
 export {
   deleteLinkTranslation,
   getTranslationLocator,

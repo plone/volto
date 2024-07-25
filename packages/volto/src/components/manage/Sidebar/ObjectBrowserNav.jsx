@@ -26,6 +26,7 @@ const ObjectBrowserNav = ({
   handleClickOnItem,
   handleDoubleClickOnItem,
   mode,
+  view,
   navigateTo,
   isSelectable,
 }) => {
@@ -47,83 +48,138 @@ const ObjectBrowserNav = ({
   return (
     <Segment as="ul" className="object-listing">
       {currentSearchResults &&
-        currentSearchResults.items.map((item) => (
-          <li
-            role="presentation"
-            aria-label={
-              item.is_folderish && mode === 'image'
-                ? `${intl.formatMessage(messages.browse)} ${item.title}`
-                : `${intl.formatMessage(messages.select)} ${item.title}`
-            }
-            key={item['@id']}
-            className={cx('', {
-              'selected-item': isSelected(item),
-
-              disabled:
-                mode === 'image'
-                  ? !config.settings.imageObjects.includes(item['@type']) &&
-                    !item.is_folderish
-                  : !isSelectable(item),
-            })}
-            onClick={() => handleClickOnItem(item)}
-            onDoubleClick={() => handleDoubleClickOnItem(item)}
-          >
-            <span title={`${item['@id']} (${item['@type']})`}>
-              <Popup
-                key={item['@id']}
-                content={
-                  <>
-                    <Icon name={homeSVG} size="18px" />{' '}
-                    {flattenToAppURL(item['@id'])} ( {item['@type']})
-                  </>
+        currentSearchResults.items.map((item) =>
+          view === 'icons' ? (
+            <li
+              className="image-wrapper"
+              title={`${item['@id']} (${item['@type']})`}
+            >
+              <div
+                basic
+                role="presentation"
+                onClick={(e) => handleClickOnItem(item)}
+                onDoubleClick={() => handleDoubleClickOnItem(item)}
+                className="image-preview"
+                aria-label={
+                  item.is_folderish && mode === 'image'
+                    ? `${intl.formatMessage(messages.browse)} ${item.title}`
+                    : `${intl.formatMessage(messages.select)} ${item.title}`
                 }
-                trigger={
-                  <span>
+              >
+                {item['@type'] === 'Image' ? (
+                  <img
+                    src={`${item['@id']}/@@images/image/preview`}
+                    alt={item.title}
+                    style={{
+                      width: 143,
+                      height: 143,
+                    }}
+                    className={isSelected(item) ? 'selected' : ''}
+                  />
+                ) : (
+                  <div className="icon-wrapper">
                     <Icon
                       name={getContentIcon(item['@type'], item.is_folderish)}
-                      size="24px"
+                      size="45px"
                     />
-                  </span>
-                }
-              />
-
-              {item.title}
-            </span>
-            {item.is_folderish && mode === 'image' && (
-              <Icon
-                className="right-arrow-icon"
-                name={rightArrowSVG}
-                size="24px"
-              />
-            )}
-            {item.is_folderish && (mode === 'link' || mode === 'multiple') && (
-              <div
-                role="presentation"
-                className="right-arrow-link-mode"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  navigateTo(item['@id']);
-                }}
-              >
-                <Button.Group>
-                  <Button
-                    basic
-                    icon
-                    aria-label={`${intl.formatMessage(messages.browse)} ${
-                      item.title
-                    }`}
-                  >
-                    <Icon
-                      className="right-arrow-icon"
-                      name={rightArrowSVG}
-                      size="24px"
-                    />
-                  </Button>
-                </Button.Group>
+                  </div>
+                )}
               </div>
-            )}
-          </li>
-        ))}
+              <div className="image-title">
+                <div
+                  className="icon-align-name"
+                  onClick={(e) => handleClickOnItem(item)}
+                  aria-hidden="true"
+                >
+                  <div
+                    title={item.title}
+                    style={{ width: 143 }}
+                    className="image-title-content"
+                  >
+                    {item.title}
+                  </div>
+                </div>
+              </div>
+            </li>
+          ) : (
+            <li
+              role="presentation"
+              aria-label={
+                item.is_folderish && mode === 'image'
+                  ? `${intl.formatMessage(messages.browse)} ${item.title}`
+                  : `${intl.formatMessage(messages.select)} ${item.title}`
+              }
+              key={item['@id']}
+              className={cx('', {
+                'selected-item': isSelected(item),
+
+                disabled:
+                  mode === 'image'
+                    ? !config.settings.imageObjects.includes(item['@type']) &&
+                      !item.is_folderish
+                    : !isSelectable(item),
+              })}
+              onClick={() => handleClickOnItem(item)}
+              onDoubleClick={() => handleDoubleClickOnItem(item)}
+            >
+              <span title={`${item['@id']} (${item['@type']})`}>
+                <Popup
+                  key={item['@id']}
+                  content={
+                    <>
+                      <Icon name={homeSVG} size="18px" />{' '}
+                      {flattenToAppURL(item['@id'])} ( {item['@type']})
+                    </>
+                  }
+                  trigger={
+                    <span>
+                      <Icon
+                        name={getContentIcon(item['@type'], item.is_folderish)}
+                        size="24px"
+                      />
+                    </span>
+                  }
+                />
+
+                {item.title}
+              </span>
+              {item.is_folderish && mode === 'image' && (
+                <Icon
+                  className="right-arrow-icon"
+                  name={rightArrowSVG}
+                  size="24px"
+                />
+              )}
+              {item.is_folderish &&
+                (mode === 'link' || mode === 'multiple') && (
+                  <div
+                    role="presentation"
+                    className="right-arrow-link-mode"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigateTo(item['@id']);
+                    }}
+                  >
+                    <Button.Group>
+                      <Button
+                        basic
+                        icon
+                        aria-label={`${intl.formatMessage(messages.browse)} ${
+                          item.title
+                        }`}
+                      >
+                        <Icon
+                          className="right-arrow-icon"
+                          name={rightArrowSVG}
+                          size="24px"
+                        />
+                      </Button>
+                    </Button.Group>
+                  </div>
+                )}
+            </li>
+          ),
+        )}
     </Segment>
   );
 };

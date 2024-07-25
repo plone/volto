@@ -26,4 +26,4 @@ exports[`EmailWidget renders an email view widget component with children 1`] = 
 </a>
 `;
 
-exports[`EmailWidget renders an empty email view widget component 1`] = `""`;
+exports[`EmailWidget renders an empty email view widget component 1`] = `null`;

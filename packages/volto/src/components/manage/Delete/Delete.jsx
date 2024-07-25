@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import { Button, Container, List, Segment } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import qs from 'query-string';
@@ -110,15 +110,15 @@ const Delete = () => {
             </Segment>
           </Segment.Group>
         </Container>
-        {isClient && (
-          <Portal node={document.getElementById('toolbar')}>
+        {isClient &&
+          createPortal(
             <Toolbar
               pathname={pathname}
               hideDefaultViewButtons
               inner={<span />}
-            />
-          </Portal>
-        )}
+            />,
+            document.getElementById('toolbar'),
+          )}
       </div>
     );
   }

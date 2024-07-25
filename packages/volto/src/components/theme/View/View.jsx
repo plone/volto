@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Redirect } from 'react-router-dom';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import { injectIntl } from 'react-intl';
 import qs from 'query-string';
 
@@ -28,6 +28,7 @@ import {
 } from '@plone/volto/helpers';
 
 import config from '@plone/volto/registry';
+import SlotRenderer from '../SlotRenderer/SlotRenderer';
 
 /**
  * View container class.
@@ -205,8 +206,10 @@ class View extends Component {
    */
   render() {
     const { views } = config;
-    if (this.props.error && this.props.error.code === 301) {
-      const redirect = flattenToAppURL(this.props.error.url).split('?')[0];
+    if ([301, 302].includes(this.props.error?.code)) {
+      const redirect = flattenToAppURL(this.props.error.url)
+        .split('?')[0]
+        .replace('/++api++', '');
       return <Redirect to={`${redirect}${this.props.location.search}`} />;
     } else if (this.props.error && !this.props.connectionRefused) {
       let FoundView;
@@ -234,7 +237,7 @@ class View extends Component {
       this.getViewByLayout() || this.getViewByType() || this.getViewDefault();
 
     return (
-      <div id="view">
+      <div id="view" tabIndex="-1">
         <ContentMetadataTags content={this.props.content} />
         {/* Body class if displayName in component is set */}
         <BodyClass
@@ -244,6 +247,7 @@ class View extends Component {
               : null
           }
         />
+        <SlotRenderer name="aboveContent" content={this.props.content} />
         <RenderedView
           key={this.props.content['@id']}
           content={this.props.content}
@@ -251,26 +255,20 @@ class View extends Component {
           token={this.props.token}
           history={this.props.history}
         />
+        <SlotRenderer name="belowContent" content={this.props.content} />
         {config.settings.showTags &&
           this.props.content.subjects &&
           this.props.content.subjects.length > 0 && (
             <Tags tags={this.props.content.subjects} />
           )}
-        {/* Add opt-in social sharing if required, disabled by default */}
-        {/* In the future this might be parameterized from the app config */}
-        {/* <SocialSharing
-          url={typeof window === 'undefined' ? '' : window.location.href}
-          title={this.props.content.title}
-          description={this.props.content.description || ''}
-        /> */}
         {this.props.content.allow_discussion && (
           <Comments pathname={this.props.pathname} />
         )}
-        {this.state.isClient && (
-          <Portal node={document.getElementById('toolbar')}>
-            <Toolbar pathname={this.props.pathname} inner={<span />} />
-          </Portal>
-        )}
+        {this.state.isClient &&
+          createPortal(
+            <Toolbar pathname={this.props.pathname} inner={<span />} />,
+            document.getElementById('toolbar'),
+          )}
       </div>
     );
   }

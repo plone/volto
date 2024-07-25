@@ -1,7 +1,8 @@
-import Icon from '../Icon/Icon';
+import React from 'react';
+import { Icon } from '../Icon/Icon';
 import type { IconPropsWithoutChildren } from '../Icon/Icon';
 
-const Navigation = (props: IconPropsWithoutChildren) => {
+export const NavigationIcon = (props: IconPropsWithoutChildren) => {
   return (
     <Icon {...props}>
       <svg
@@ -15,5 +16,3 @@ const Navigation = (props: IconPropsWithoutChildren) => {
     </Icon>
   );
 };
-
-export default Navigation;
