@@ -94,7 +94,7 @@ describe('FormValidation', () => {
       expect(
         FormValidation.validateFieldsPerFieldset({
           schema: newSchema,
-          formData: { username: 'test username', age: 0 },
+          formData: { username: 'test username', age: '0' },
           formatMessage,
         }),
       ).toEqual({});
@@ -339,7 +339,7 @@ describe('FormValidation', () => {
           schema: newSchema,
           formData: {
             username: 'test username',
-            customField: '1',
+            customField: 1,
           },
           formatMessage,
         }),
@@ -366,7 +366,7 @@ describe('FormValidation', () => {
           schema: newSchema,
           formData: {
             username: 'test username',
-            customField: 1,
+            customField: '1',
           },
           formatMessage,
         }),
@@ -393,7 +393,7 @@ describe('FormValidation', () => {
           schema: newSchema,
           formData: {
             username: 'test username',
-            customField: 10,
+            customField: '10',
           },
           formatMessage,
         }),
@@ -473,7 +473,7 @@ describe('FormValidation', () => {
           schema: newSchema,
           formData: {
             username: 'test username',
-            customField: 10,
+            customField: '10',
           },
           formatMessage,
         }),

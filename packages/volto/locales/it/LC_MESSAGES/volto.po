@@ -1262,7 +1262,7 @@ msgstr "Abilitato?"
 msgid "End Date"
 msgstr "Data di fine"
 
-#. Default: "End event date happens before than the start event date"
+#. Default: "Event end date happens before the event start date"
 #: helpers/MessageLabels/MessageLabels
 msgid "End event date happens before than the start event date"
 msgstr ""
@@ -3436,7 +3436,7 @@ msgstr "Dividi"
 msgid "Start Date"
 msgstr "Data di inizio"
 
-#. Default: "Start event date happens later than the end event date"
+#. Default: "Event start date happens later than the event end date"
 #: helpers/MessageLabels/MessageLabels
 msgid "Start event date happens later than the end event date"
 msgstr ""

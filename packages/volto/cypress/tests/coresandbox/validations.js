@@ -140,7 +140,7 @@ context('Select widgets family Acceptance Tests', () => {
 
     it('Test URI Field by entering invalid URI', function () {
       cy.findAllByText('Other fields').click();
-      cy.get('.input #field-uri_field').type('plone');
+      cy.get('#field-uri_field').type('plone');
       cy.findAllByText('URI field').click();
 
       cy.get('.form-error-label')
