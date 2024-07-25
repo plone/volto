@@ -84,9 +84,9 @@ export const emailValidator = ({ value, formatMessage }: Validator): string => {
 };
 
 export const isNumber = ({ value, formatMessage }: Validator) => {
+  const isNumeric = (string: string | number) => Number.isFinite(+string);
   const floatRegex = /^[+-]?\d+(\.\d+)?$/;
-  const isValid =
-    typeof value === 'number' && !isNaN(value) && floatRegex.test(value);
+  const isValid = isNumeric(value) && floatRegex.test(value);
   return !isValid ? formatMessage(messages.isNumber) : null;
 };
 
@@ -107,9 +107,9 @@ export const maximumValidator = ({ value, field, formatMessage }: Validator) =>
   });
 
 export const isInteger = ({ value, formatMessage }: Validator) => {
+  const isNumeric = (string: string | number) => Number.isFinite(+string);
   const intRegex = /^-?[0-9]+$/;
-  const isValid =
-    typeof value === 'number' && !isNaN(value) && intRegex.test(value);
+  const isValid = isNumeric(value) && intRegex.test(value);
   return !isValid ? formatMessage(messages.isInteger) : null;
 };
 
