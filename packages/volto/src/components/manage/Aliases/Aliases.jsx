@@ -2,7 +2,7 @@
  * Aliases container.
  * @module components/manage/Aliases/Aliases
  */
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
@@ -53,185 +53,108 @@ const messages = defineMessages({
   },
 });
 
-/**
- * Aliases class.
- * @class Aliases
- * @extends Component
- */
-class Aliases extends Component {
-  /**
-   * Property types.
-   * @property {Object} propTypes Property types.
-   * @static
-   */
-  static propTypes = {
-    removeAliases: PropTypes.func.isRequired,
-    addAliases: PropTypes.func.isRequired,
-    getAliases: PropTypes.func.isRequired,
-    pathname: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-  };
+const Aliases = (props) => {
+  const [isClient, setIsClient] = useState(false);
+  const [newAlias, setNewAlias] = useState('');
+  const [isAliasCorrect, setIsAliasCorrect] = useState(false);
+  const [isAliasAlready, setIsAliasAlready] = useState(false);
+  const [aliasesToRemove, setAliasesToRemove] = useState([]);
 
-  /**
-   * Constructor
-   * @method constructor
-   * @param {Object} props Component properties
-   * @constructs Aliases
-   */
-  constructor(props) {
-    super(props);
-    this.state = {
-      isClient: false,
-      newAlias: '',
-      isAliasCorrect: false,
-      isAliasAlready: false,
-      aliasesToRemove: [],
-    };
-  }
-
-  /**
-   * Component did mount
-   * @method componentDidMount
-   * @returns {undefined}
-   */
-  componentDidMount() {
-    this.props.getAliases(getBaseUrl(this.props.pathname), {
+  useEffect(() => {
+    props.getAliases(getBaseUrl(props.pathname), {
       query: '',
       manual: '',
       datetime: '',
       batchSize: '',
     });
-    this.props.getContent(getBaseUrl(this.props.pathname));
-    this.setState({ isClient: true });
-  }
+    props.getContent(getBaseUrl(props.pathname));
+    setIsClient(true);
+  }, [props.pathname]);
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.newAlias !== this.state.newAlias) {
-      if (this.state.newAlias.charAt(0) === '/') {
-        this.setState({ isAliasCorrect: true });
-      } else {
-        this.setState({ isAliasCorrect: false });
-      }
-      if (
-        this.props.aliases?.items.find(
-          (item) => item.path === this.state.newAlias,
-        )
-      ) {
-        this.setState({ isAliasAlready: true });
-      } else {
-        this.setState({ isAliasAlready: false });
-      }
+  useEffect(() => {
+    if (newAlias.charAt(0) === '/') {
+      setIsAliasCorrect(true);
+    } else {
+      setIsAliasCorrect(false);
     }
-  }
+    if (props.aliases?.items.find((item) => item.path === newAlias)) {
+      setIsAliasAlready(true);
+    } else {
+      setIsAliasAlready(false);
+    }
+  }, [newAlias, props.aliases]);
 
-  /**
-   * Component will receive props
-   * @method componentWillReceiveProps
-   * @param {Object} nextProps Next properties
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (this.props.aliases.add.loading && nextProps.aliases.add.loaded) {
-      if (nextProps.aliases.add.error) {
-        this.setState({ isAliasAlready: true });
+  useEffect(() => {
+    if (props.aliases.add.loading && props.aliases.add.loaded) {
+      if (props.aliases.add.error) {
+        setIsAliasAlready(true);
       } else {
-        this.setState({ isAliasAlready: false });
+        setIsAliasAlready(false);
         toast.success(
           <Toast
             success
-            title={this.props.intl.formatMessage(messages.success)}
-            content={this.props.intl.formatMessage(messages.successAdd)}
-          />,
+            title={props.intl.formatMessage(messages.success)}
+            content={props.intl.formatMessage(messages.successAdd)}
+          />
         );
       }
-      this.props.getAliases(getBaseUrl(this.props.pathname), {
+      props.getAliases(getBaseUrl(props.pathname), {
         query: '',
         manual: '',
         datetime: '',
         batchSize: '',
       });
     }
-    if (this.props.aliases.remove.loading && nextProps.aliases.remove.loaded) {
-      this.props.getAliases(getBaseUrl(this.props.pathname), {
+    if (props.aliases.remove.loading && nextProps.aliases.remove.loaded) {
+      props.getAliases(getBaseUrl(props.pathname), {
         query: '',
         manual: '',
         datetime: '',
         batchSize: '',
       });
     }
-  }
+  }, [props.aliases]);
 
-  /**
-   * Url change handler
-   * @method handleAltChange
-   * @returns {undefined}
-   */
-  handleAltChange(val) {
-    this.setState({ newAlias: val });
-  }
 
-  /**
-   * New alias submit handler
-   * @method handleSubmitAlias
-   * @returns {undefined}
-   */
-  handleSubmitAlias() {
-    if (this.state.isAliasCorrect) {
-      this.props.addAliases(getBaseUrl(this.props.pathname), {
-        items: this.state.newAlias,
+  const handleAltChange = (val) => {
+    setNewAlias(val);
+  }
+  const handleSubmitAlias = () => {
+    if (isAliasCorrect) {
+      props.addAliases(getBaseUrl(props.pathname), {
+        items: newAlias,
       });
-      this.setState({ newAlias: '' });
+      setNewAlias('');
     }
   }
 
-  /**
-   * Check to-remove aliases handler
-   * @method handleSubmitAlias
-   * @returns {undefined}
-   */
-  handleCheckAlias(alias) {
-    const aliases = this.state.aliasesToRemove;
-    if (aliases.includes(alias)) {
-      const index = aliases.indexOf(alias);
-      if (index > -1) {
-        let newAliasesArr = aliases;
-        newAliasesArr.splice(index, 1);
-        this.setState({ aliasesToRemove: newAliasesArr });
+  const handleCheckAlias = (alias) => {
+    setAliasesToRemove((prevAliases) => {
+      if (prevAliases.includes(alias)) {
+        return prevAliases.filter((item) => item !== alias);
+      } else {
+        return [...prevAliases, alias];
       }
-    } else {
-      this.setState({
-        aliasesToRemove: [...this.state.aliasesToRemove, alias],
-      });
-    }
-  }
-
-  /**
-   * Remove aliases handler
-   * @method handleRemoveAliases
-   * @returns {undefined}
-   */
-  handleRemoveAliases() {
-    this.props.removeAliases(getBaseUrl(this.props.pathname), {
-      items: this.state.aliasesToRemove,
     });
-    this.setState({ aliasesToRemove: [] });
+  };
+
+
+  const handleRemoveAliases = () => {
+    props.removeAliases(getBaseUrl(props.pathname), {
+      items: aliasesToRemove,
+    });
+    setAliasesToRemove([]);
   }
 
-  /**
-   * Render method.
-   * @method render
-   * @returns {string} Markup for the component.
-   */
-  render() {
-    return (
+  return (
       <Container id="aliases">
-        <Helmet title={this.props.intl.formatMessage(messages.aliases)} />
+        <Helmet title={props.intl.formatMessage(messages.aliases)} />
         <Segment.Group raised>
           <Segment className="primary">
             <FormattedMessage
               id="URL Management for {title}"
               defaultMessage="URL Management for {title}"
-              values={{ title: <q>{this.props.title}</q> }}
+              values={{ title: <q>{props.title}</q> }}
             />
           </Segment>
           <Segment secondary>
@@ -259,10 +182,10 @@ class Aliases extends Component {
                   id="alternative-url-input"
                   name="alternative-url"
                   placeholder="/example"
-                  value={this.state.newAlias}
-                  onChange={(e) => this.handleAltChange(e.target.value)}
+                  value={newAlias}
+                  onChange={(e) => handleAltChange(e.target.value)}
                 />
-                {!this.state.isAliasCorrect && this.state.newAlias !== '' && (
+                {!isAliasCorrect && newAlias !== '' && (
                   <p style={{ color: 'red' }}>
                     <FormattedMessage
                       id="Alternative url path must start with a slash."
@@ -270,7 +193,7 @@ class Aliases extends Component {
                     />
                   </p>
                 )}
-                {this.state.isAliasAlready && (
+                {isAliasAlready && (
                   <p style={{ color: 'red' }}>
                     <FormattedMessage
                       id="The provided alternative url already exists!"
@@ -282,11 +205,11 @@ class Aliases extends Component {
               <Button
                 id="submit-alias"
                 primary
-                onClick={() => this.handleSubmitAlias()}
+                onClick={() => handleSubmitAlias} // useState and define the function
                 disabled={
-                  !this.state.isAliasCorrect ||
-                  this.state.newAlias === '' ||
-                  this.state.isAliasAlready
+                  !isAliasCorrect ||
+                  newAlias === '' ||
+                  isAliasAlready
                 }
               >
                 <FormattedMessage id="Add" defaultMessage="Add" />
@@ -301,43 +224,43 @@ class Aliases extends Component {
                   defaultMessage="Existing alternative urls for this item"
                 />
               </Header>
-              {this.props.aliases?.items.map((alias, i) => (
+              {props.aliases?.items.map((alias, i) => (
                 <Form.Field key={i}>
                   <Checkbox
                     id={`alias-check-${i}`}
-                    onChange={(e, { value }) => this.handleCheckAlias(value)}
+                    onChange={(e, { value }) => handleCheckAlias(value)}
                     value={alias.path}
                     label={alias.path}
-                    checked={this.state.aliasesToRemove.includes(alias.path)}
+                    checked={aliasesToRemove.includes(alias.path)}
                   />
                 </Form.Field>
               ))}
               <Button
                 id="remove-alias"
-                onClick={() => this.handleRemoveAliases()}
+                onClick={() => handleRemoveAliases()}
                 primary
-                disabled={this.state.aliasesToRemove.length === 0}
+                disabled={aliasesToRemove.length === 0}
               >
                 <FormattedMessage id="Remove" defaultMessage="Remove" />
               </Button>
             </Segment>
           </Form>
         </Segment.Group>
-        {this.state.isClient &&
+        {isClient &&
           createPortal(
             <Toolbar
-              pathname={this.props.pathname}
+              pathname={props.pathname}
               hideDefaultViewButtons
               inner={
                 <Link
-                  to={`${getBaseUrl(this.props.pathname)}`}
+                  to={`${getBaseUrl(props.pathname)}`}
                   className="item"
                 >
                   <Icon
                     name={backSVG}
                     className="contents circled"
                     size="30px"
-                    title={this.props.intl.formatMessage(messages.back)}
+                    title={props.intl.formatMessage(messages.back)}
                   />
                 </Link>
               }
@@ -347,6 +270,13 @@ class Aliases extends Component {
       </Container>
     );
   }
+
+Aliases.propTypes = {
+  removeAliases: PropTypes.func.isRequired,
+  addAliases: PropTypes.func.isRequired,
+  getAliases: PropTypes.func.isRequired,
+  pathname: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 }
 
 export default compose(
