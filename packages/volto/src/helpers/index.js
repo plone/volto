@@ -30,6 +30,7 @@ export {
   removeProtocol,
   URLUtils,
   flattenScales,
+  getFieldURL,
 } from '@plone/volto/helpers/Url/Url';
 export { generateRobots } from '@plone/volto/helpers/Robots/Robots';
 export {
@@ -61,6 +62,8 @@ export {
   buildStyleObjectFromData,
   getPreviousNextBlock,
   findBlocks,
+  getBlocksHierarchy,
+  moveBlockEnhanced,
 } from '@plone/volto/helpers/Blocks/Blocks';
 export {
   getSimpleDefaultBlocks,
@@ -98,6 +101,8 @@ export {
   hasApiExpander,
   replaceItemOfArray,
   cloneDeepSchema,
+  insertInArray,
+  removeFromArray,
   arrayRange,
   reorderArray,
   isInteractiveElement,
@@ -116,7 +121,12 @@ export {
   composeSchema,
 } from './Extensions';
 export { asyncConnect } from './AsyncConnect';
-export { userHasRoles } from './User/User';
+export {
+  userHasRoles,
+  isManager,
+  canAssignGroup,
+  canAssignRole,
+} from './User/User';
 // export { injectLazyLibs } from './Loadable/Loadable';
 export { useDetectClickOutside } from './Utils/useDetectClickOutside';
 export { useEvent } from './Utils/useEvent';

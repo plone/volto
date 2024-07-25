@@ -10,18 +10,25 @@ import {
   listRoles,
   updateGroup,
   authenticatedRole,
+  getUser,
 } from '@plone/volto/actions';
+import jwtDecode from 'jwt-decode';
 import {
   Icon,
-  ModalForm,
   Toast,
   Toolbar,
-  RenderGroups,
   Pagination,
   Error,
 } from '@plone/volto/components';
+import RenderGroups from '@plone/volto/components/manage/Controlpanels/Groups/RenderGroups';
+import { ModalForm } from '@plone/volto/components/manage/Form';
 import { Link } from 'react-router-dom';
-import { Helmet, messages } from '@plone/volto/helpers';
+import {
+  Helmet,
+  messages,
+  isManager,
+  canAssignRole,
+} from '@plone/volto/helpers';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import addUserSvg from '@plone/volto/icons/add-user.svg';
 import saveSVG from '@plone/volto/icons/save.svg';
@@ -41,8 +48,10 @@ import {
   Button,
   Form,
   Input,
+  Loader,
   Segment,
   Table,
+  Dimmer,
 } from 'semantic-ui-react';
 
 /**
@@ -75,6 +84,19 @@ class GroupsControlpanel extends Component {
         groupname: PropTypes.string,
       }),
     ).isRequired,
+    user: PropTypes.shape({
+      '@id': PropTypes.string,
+      id: PropTypes.string,
+      description: PropTypes.string,
+      email: PropTypes.string,
+      fullname: PropTypes.string,
+      groups: PropTypes.object,
+      location: PropTypes.string,
+      portrait: PropTypes.string,
+      home_page: PropTypes.string,
+      roles: PropTypes.arrayOf(PropTypes.string),
+      username: PropTypes.string,
+    }).isRequired,
   };
 
   /**
@@ -118,6 +140,7 @@ class GroupsControlpanel extends Component {
         groupEntries: this.props.groups,
       });
     }
+    await this.props.getUser(this.props.userId);
   };
   /**
    * Component did mount
@@ -139,6 +162,12 @@ class GroupsControlpanel extends Component {
         nextProps.createGroupRequest.loaded)
     ) {
       this.props.listGroups(this.state.search);
+    }
+    if (
+      this.props.deleteGroupRequest.loading &&
+      nextProps.deleteGroupRequest.loaded
+    ) {
+      this.onDeleteGroupSuccess();
     }
     if (
       this.props.createGroupRequest.loading &&
@@ -225,10 +254,6 @@ class GroupsControlpanel extends Component {
   onDeleteOk() {
     if (this.state.groupToDelete) {
       this.props.deleteGroup(this.state.groupToDelete.id);
-      this.setState({
-        showDelete: false,
-        groupToDelete: undefined,
-      });
     }
   }
 
@@ -241,6 +266,7 @@ class GroupsControlpanel extends Component {
     this.setState({
       showDelete: false,
       itemsToDelete: [],
+      groupToDelete: undefined,
     });
   }
 
@@ -347,6 +373,25 @@ class GroupsControlpanel extends Component {
   }
 
   /**
+   * Handle Success after deleteGroup()
+   *
+   * @returns {undefined}
+   */
+  onDeleteGroupSuccess() {
+    this.setState({
+      groupToDelete: undefined,
+      showDelete: false,
+    });
+    toast.success(
+      <Toast
+        success
+        title={this.props.intl.formatMessage(messages.success)}
+        content={this.props.intl.formatMessage(messages.groupDeleted)}
+      />,
+    );
+  }
+
+  /**
    * On change page
    * @method onChangePage
    * @param {object} event Event object.
@@ -375,6 +420,8 @@ class GroupsControlpanel extends Component {
       ? this.state.groupToDelete.id
       : '';
 
+    const isUserManager = isManager(this.props.user);
+
     return (
       <Container className="users-control-panel">
         <Helmet title={this.props.intl.formatMessage(messages.groups)} />
@@ -386,6 +433,12 @@ class GroupsControlpanel extends Component {
             )}
             content={
               <div className="content">
+                <Dimmer active={this?.props?.deleteGroupRequest?.loading}>
+                  <Loader>
+                    <FormattedMessage id="Loading" defaultMessage="Loading." />
+                  </Loader>
+                </Dimmer>
+
                 <ul className="content">
                   <FormattedMessage
                     id="Do you really want to delete the group {groupname}?"
@@ -460,10 +513,9 @@ class GroupsControlpanel extends Component {
                       messages.addGroupsFormRolesTitle,
                     ),
                     type: 'array',
-                    choices: this.props.roles.map((role) => [
-                      role.id,
-                      role.title,
-                    ]),
+                    choices: this.props.roles
+                      .filter((role) => canAssignRole(isUserManager, role))
+                      .map((role) => [role.id, role.title]),
                     noValueOption: false,
                     description: '',
                   },
@@ -553,6 +605,7 @@ class GroupsControlpanel extends Component {
                           group={group}
                           updateGroups={this.updateGroupRole}
                           inheritedRole={this.state.authenticatedRole}
+                          isUserManager={isUserManager}
                         />
                       ))}
                   </Table.Body>
@@ -640,6 +693,10 @@ export default compose(
   injectIntl,
   connect(
     (state, props) => ({
+      user: state.users.user,
+      userId: state.userSession.token
+        ? jwtDecode(state.userSession.token).sub
+        : '',
       roles: state.roles.roles,
       groups: state.groups.groups,
       description: state.description,
@@ -661,6 +718,7 @@ export default compose(
           createGroup,
           updateGroup,
           authenticatedRole,
+          getUser,
         },
         dispatch,
       ),

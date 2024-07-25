@@ -10,7 +10,7 @@ const ConditionalLink = ({ condition, to, item, ...props }) => {
       </UniversalLink>
     );
   } else {
-    return props.children;
+    return <>{props.children}</>;
   }
 };
 

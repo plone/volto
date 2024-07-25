@@ -97,33 +97,51 @@ It's even possible to use TailwindCSS for styling the components in this package
 
 ### Basic
 
+- BlockToolbar
 - Button
 - Checkbox
-- CheckboxField
-- CheckboxGroup
-- Combobox
 - Container
 - Dialog
-- Form
 - GridList
 - Icon
 - Link
-- Listbox
+- ListBox
 - Menu
 - Modal
-- NumberField
 - Popover
-- RadioGroup
-- Select
-- Switch
+- Slider
+- Table
 - Tabs
 - TagGroup
-- TextField
-- TextAreaField
 - ToggleButton
 - Toolbar
-- BlockToolbar
 - Tooltip
+
+### Forms
+
+- CheckboxField
+- Form
+- Meter
+- NumberField
+- SearchField
+- Select
+- TextAreaField
+- TextField
+- TimeField
+
+### Widgets
+
+- Calendar
+- CheckboxField
+- CheckboxGroup
+- ComboBox
+- DateField
+- DatePicker
+- DateRangePicker
+- ProgressBar
+- RadioGroup
+- RangeCalendar
+- Switch
 
 ### Viewlets
 
@@ -138,6 +156,7 @@ It's even possible to use TailwindCSS for styling the components in this package
 
 - TextField
 - TextAreaField
+- Select
 
 ## Quanta icons
 

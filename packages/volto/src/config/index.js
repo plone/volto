@@ -27,8 +27,6 @@ import {
   filterControlPanelsSchema,
 } from './ControlPanels';
 
-import { richtextEditorSettings, richtextViewSettings } from './RichTextEditor';
-
 import applyAddonConfiguration, { addonsInfo } from 'load-volto-addons';
 
 import ConfigRegistry from '@plone/volto/registry';
@@ -99,7 +97,7 @@ let config = {
       process.env.RAZZLE_INTERNAL_API_PATH ||
       process.env.RAZZLE_API_PATH ||
       'http://localhost:8080/Plone', // Set it to '' for disabling the proxy
-    // proxyRewriteTarget Set it for set a custom target for the proxy or overide the internal VHM rewrite
+    // proxyRewriteTarget Set it for set a custom target for the proxy or override the internal VHM rewrite
     // proxyRewriteTarget: '/VirtualHostBase/http/localhost:8080/Plone/VirtualHostRoot/_vh_api'
     // proxyRewriteTarget: 'https://myvoltositeinproduction.com'
     proxyRewriteTarget: process.env.RAZZLE_PROXY_REWRITE_TARGET || undefined,
@@ -112,8 +110,6 @@ let config = {
     legacyTraverse: process.env.RAZZLE_LEGACY_TRAVERSE || false,
     cookieExpires: 15552000, //in seconds. Default is 6 month (15552000)
     nonContentRoutes,
-    richtextEditorSettings, // Part of draftjs support, to be removed
-    richtextViewSettings, // Part of draftjs support, to be removed
     imageObjects: ['Image'],
     reservedIds: ['login', 'layout', 'plone', 'zip', 'properties'],
     downloadableObjects: ['File'], //list of content-types for which the direct download of the file will be carried out if the user is not authenticated
@@ -144,15 +140,6 @@ let config = {
         'reactSelect',
         'reactBeautifulDnd',
         // 'diffLib',
-      ],
-      draftEditor: [
-        'immutableLib',
-        'draftJs',
-        'draftJsLibIsSoftNewlineEvent',
-        'draftJsFilters',
-        'draftJsInlineToolbarPlugin',
-        'draftJsImportHtml',
-        'draftJsBlockBreakoutPlugin',
       ],
     },
     appExtras: [],
@@ -191,7 +178,6 @@ let config = {
     querystringSearchGet: false,
     blockSettingsTabFieldsetsInitialStateOpen: true,
     excludeLinksAndReferencesMenuItem: false,
-    containerBlockTypes: ['gridBlock'],
     siteTitleFormat: {
       includeSiteTitle: false,
       titleAndSiteTitleSeparator: '-',

@@ -26,8 +26,9 @@ navDepth
     Navigation levels depth used in the navigation endpoint calls. Increasing this is useful for implementing fat navigation menus. Defaults to `1`.
 
 defaultBlockType
-    The default block type in Volto is "text", which uses the current DraftJS-based implementation for the rich text editor. Future alternative rich text editors will need to use this setting and replace it with their block type. The block definition should also include the `blockHasValue` function, which is needed to activate the Block Chooser functionality. See this function signature in [Blocks > Settings](../blocks/settings.md).
-
+    The name of the default block type used when a new block is added.
+    The default value of this setting is `slate`, which uses the current Slate-based implementation for the rich text editor.
+    If you change this to a different type of block, make sure the block configuration includes the {ref}`blockHasValue` function.
 
 sentryOptions
     In Volto 16.0.0.alpha.45, Sentry integration was moved from core to the add-on [`@plone-collective/volto-sentry`](https://www.npmjs.com/package/@plone-collective/volto-sentry).
@@ -521,11 +522,4 @@ criticalCssPath
     this file exists it is loaded and its content is embedded inline into the
     generated HTML. By default this path is `public/critical.css`. See the
     {doc}`../deploying/performance` section for more details.
-
-extractScripts
-    An object that allows you to configure the insertion of scripts on the page
-    in some particular cases.
-    For the moment it admits only one property: `errorPages` whose value is a Boolean.
-
-    If `extractScripts.errorPages` is `true`, the JS will be inserted into the error page.
 ```

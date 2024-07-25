@@ -8,6 +8,63 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.11 (2024-06-06)
+
+### Bugfix
+
+- Fix ignored classname in breadcrumbs RAC @gomez [#6018](https://github.com/plone/volto/issues/6018)
+- Make css layer more specific @pnicolli [#6065](https://github.com/plone/volto/issues/6065)
+
+## 2.0.0-alpha.10 (2024-05-30)
+
+### Bugfix
+
+- Fix `align-items: start` to make autoprefixer happy @sneridagh [#6062](https://github.com/plone/volto/issues/6062)
+
+## 2.0.0-alpha.9 (2024-05-23)
+
+### Feature
+
+- Improved several components and styles @pnicolli [#6029](https://github.com/plone/volto/issues/6029)
+
+## 2.0.0-alpha.8 (2024-05-13)
+
+### Bugfix
+
+- Update `vite` to 5.1.5. @davisagli [#5942](https://github.com/plone/volto/issues/5942)
+
+### Internal
+
+- Remove `parcel-optimizer-react-client` plugin @sneridagh [#5887](https://github.com/plone/volto/issues/5887)
+- Upgrade Storybook to version 8. @sneridagh [#5912](https://github.com/plone/volto/issues/5912)
+- Improvements to the monorepo setup with utilities, especially ESLint. Build cached option to speedup operations. @sneridagh [#5969](https://github.com/plone/volto/issues/5969)
+- Saner defaults for building deps, switch default to cached, add `build:force` command @sneridagh [#5980](https://github.com/plone/volto/issues/5980)
+- Update to RAC 1.2.0 @sneridagh [#6014](https://github.com/plone/volto/issues/6014)
+
+## 2.0.0-alpha.7 (2024-03-14)
+
+### Bugfix
+
+- Missing CSS in build for `Container` @sneridagh [#5849](https://github.com/plone/volto/issues/5849)
+
+### Internal
+
+- Cleanup deps @sneridagh [#5846](https://github.com/plone/volto/issues/5846)
+
+## 2.0.0-alpha.6 (2024-03-06)
+
+### Breaking
+
+- Refactor the `Container` component.
+  The inference for the `as` prop is complete.
+  Replace the internal `className` to be `q container` @sneridagh [#5848](https://github.com/plone/volto/issues/5848)
+
+## 2.0.0-alpha.5 (2024-03-05)
+
+### Bugfix
+
+- Fix some case inconsistencies in CSS declarations @sneridagh [#5824](https://github.com/plone/volto/issues/5824)
+
 ## 2.0.0-alpha.4 (2024-03-02)
 
 ### Bugfix

@@ -23,13 +23,13 @@ import {
   setFormData,
 } from '@plone/volto/actions';
 import {
-  Form,
   Icon,
   Toolbar,
   Sidebar,
   Toast,
   TranslationObject,
 } from '@plone/volto/components';
+import { Form } from '@plone/volto/components/manage/Form';
 import {
   getBaseUrl,
   hasBlocksData,
@@ -193,7 +193,7 @@ class Add extends Component {
           erroMessage = this.props.intl.formatMessage(messages.someErrors);
         }
       } else {
-        erroMessage = error;
+        erroMessage = errorsList.error?.message || error;
       }
 
       this.setState({ error: error });
@@ -239,7 +239,9 @@ class Add extends Component {
     if (this.props.location?.state?.translationOf) {
       const language = this.props.location.state.languageFrom;
       const langFileName = toGettextLang(language);
-      import('@root/../locales/' + langFileName + '.json').then((locale) => {
+      import(
+        /* @vite-ignore */ '@root/../locales/' + langFileName + '.json'
+      ).then((locale) => {
         this.props.changeLanguage(language, locale.default);
       });
       this.props.history.push(this.props.location?.state?.translationOf);
@@ -394,6 +396,10 @@ class Add extends Component {
               this.setState({ formSelected: 'addForm' });
             }}
             global
+            // Properties to pass to the BlocksForm to match the View ones
+            history={this.props.history}
+            location={this.props.location}
+            token={this.props.token}
           />
           {this.state.isClient &&
             createPortal(

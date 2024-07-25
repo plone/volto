@@ -1,6 +1,5 @@
 import { useLocation } from 'react-router-dom';
 import config from '@plone/volto/registry';
-
 import type { Content } from '@plone/types';
 
 /*
@@ -17,11 +16,11 @@ const SlotRenderer = ({
   content: Content;
   navRoot?: Content;
 }) => {
-  const pathname = useLocation().pathname;
+  const location = useLocation();
 
   let slots = config.getSlot(name, {
     content,
-    pathname,
+    location: location as any, // Since we are using an older version of history, we need to cast it to any
     // This is to cover the use case while adding a new content and we don't have
     // have the navRoot information in the initial content. This will be
     // useful for SlotRenderers rendered in the `Add` route.
@@ -44,7 +43,14 @@ const SlotRenderer = ({
         }) => {
           // ^^ Weird compilation issue for Jest tests, that forced to re-declare the type above
           const SlotComponent = component;
-          return <SlotComponent key={name} />;
+          return (
+            <SlotComponent
+              key={name}
+              content={content}
+              location={location}
+              navRoot={navRoot}
+            />
+          );
         },
       )}
     </>

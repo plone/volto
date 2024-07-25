@@ -1,1 +1,0 @@
-Removed css from `contents.less` that made the Contents table break words in tiny sections due to small table headers such as `ID` or `UID`.  @ichim.david

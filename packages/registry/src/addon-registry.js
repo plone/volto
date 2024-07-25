@@ -97,6 +97,7 @@ class AddonConfigurationRegistry {
     const packageJson = (this.packageJson = require(
       path.join(projectRootPath, 'package.json'),
     ));
+    this.voltoConfigJS = {};
     // Loads the dynamic config, if any
     if (process.env.VOLTOCONFIG) {
       if (fs.existsSync(path.resolve(process.env.VOLTOCONFIG))) {
@@ -109,10 +110,11 @@ class AddonConfigurationRegistry {
         path.join(projectRootPath, 'volto.config.js'),
       );
     } else {
-      this.voltoConfigJS = [];
+      this.voltoConfigJS = {};
     }
 
     this.projectRootPath = projectRootPath;
+    this.isVoltoProject = packageJson.name !== '@plone/volto';
     this.voltoPath =
       packageJson.name === '@plone/volto'
         ? `${projectRootPath}`
@@ -164,12 +166,12 @@ class AddonConfigurationRegistry {
    * Returns a tuple `[baseUrl, pathsConfig]`
    *
    */
-  getTSConfigPaths() {
+  getTSConfigPaths(rootPath = this.projectRootPath) {
     let configFile;
-    if (fs.existsSync(`${this.projectRootPath}/tsconfig.json`))
-      configFile = `${this.projectRootPath}/tsconfig.json`;
-    else if (fs.existsSync(`${this.projectRootPath}/jsconfig.json`))
-      configFile = `${this.projectRootPath}/jsconfig.json`;
+    if (fs.existsSync(`${rootPath}/tsconfig.json`))
+      configFile = `${rootPath}/tsconfig.json`;
+    else if (fs.existsSync(`${rootPath}/jsconfig.json`))
+      configFile = `${rootPath}/jsconfig.json`;
 
     let pathsConfig;
     let baseUrl;
@@ -263,6 +265,8 @@ class AddonConfigurationRegistry {
           if (!this.addonNames.includes(name)) this.addonNames.push(name);
         });
       }
+      const packageTSConfig = this.getTSConfigPaths(basePath);
+
       this.packages[name] = {
         name,
         version: pkg.version,
@@ -270,6 +274,8 @@ class AddonConfigurationRegistry {
         isRegisteredAddon: this.addonNames.includes(name),
         modulePath,
         packageJson,
+        basePath,
+        tsConfigPaths: packageTSConfig[1] ? packageTSConfig : null,
         addons: pkg.addons || [],
       };
     }
@@ -364,7 +370,31 @@ class AddonConfigurationRegistry {
   }
 
   /**
-   * Returns a mapping name:diskpath to be uses in webpack's resolve aliases
+   * Returns a list of aliases given the defined paths in `tsconfig.json`
+   */
+  getAliasesFromTSConfig(basePath, tsConfig) {
+    const [baseUrl, options] = tsConfig;
+    const fullPathsPath = baseUrl ? `${basePath}/${baseUrl}` : basePath;
+
+    let aliases = {};
+    Object.keys(options || {}).forEach((item) => {
+      const name = item.replace(/\/\*$/, '');
+      // webpack5 allows arrays here, fix later
+      const value = path.resolve(
+        fullPathsPath,
+        options[item][0].replace(/\/\*$/, ''),
+      );
+
+      aliases[name] = value;
+    });
+
+    return aliases;
+  }
+
+  /**
+   * Returns a mapping name:diskpath to be uses in webpack's resolve aliases.
+   * It includes all registered add-ons and their `src` paths, and also the paths
+   * defined in the `tsconfig.json` files of the add-ons.
    */
   getResolveAliases() {
     const pairs = [
@@ -374,7 +404,20 @@ class AddonConfigurationRegistry {
       ]),
     ];
 
-    return fromEntries(pairs);
+    let aliasesFromTSPaths = {};
+    Object.keys(this.packages).forEach((o) => {
+      if (this.packages[o].tsConfigPaths) {
+        aliasesFromTSPaths = {
+          ...aliasesFromTSPaths,
+          ...this.getAliasesFromTSConfig(
+            this.packages[o].basePath,
+            this.packages[o].tsConfigPaths,
+          ),
+        };
+      }
+    });
+
+    return { ...fromEntries(pairs), ...aliasesFromTSPaths };
   }
 
   /**
@@ -475,13 +518,25 @@ class AddonConfigurationRegistry {
             }
           }
 
+          /**
+           *Covers the use case that the file was a jsx, but was created using .js extension
+           *
+           * @param {*} filePath
+           */
+          function simpleSwapFileExtension(filePath) {
+            // Extract the current file extension
+            const currentExtension = filePath.split('.').pop();
+            return filePath.replace(`.${currentExtension}`, '.jsx');
+          }
+
           const targetPath = filename.replace(customPath, sourcePath);
           // We try to find the source to shadow with the exact path
           // and we try also with the extension changed in search for JS<->TS
           // correspondence
           if (
             fs.existsSync(targetPath) ||
-            fs.existsSync(changeFileExtension(targetPath))
+            fs.existsSync(changeFileExtension(targetPath)) ||
+            fs.existsSync(simpleSwapFileExtension(targetPath))
           ) {
             aliases[
               filename

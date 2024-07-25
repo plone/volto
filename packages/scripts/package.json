@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "3.4.0",
+  "version": "3.6.2",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -36,7 +36,8 @@
   "bin": {
     "addon": "./addon/index.js",
     "changelogupdater": "./changelogupdater.cjs",
-    "i18n": "./i18n.cjs"
+    "i18n": "./i18n.cjs",
+    "volto-update-deps": "./volto-update-deps.js"
   },
   "publishConfig": {
     "access": "public"

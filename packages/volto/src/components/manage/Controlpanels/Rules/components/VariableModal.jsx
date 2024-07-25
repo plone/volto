@@ -6,7 +6,7 @@ import { getVocabulary } from '@plone/volto/actions';
 import { injectIntl } from 'react-intl';
 import { compose } from 'redux';
 
-import { ModalForm } from '@plone/volto/components';
+import { ModalForm } from '@plone/volto/components/manage/Form';
 
 const setSchema = (name, choices = '') => {
   switch (name) {

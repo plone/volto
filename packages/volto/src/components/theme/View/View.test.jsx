@@ -22,6 +22,7 @@ beforeAll(() => {
   });
   config.settings.publicURL = 'https://plone.org';
 });
+global.__SERVER__ = true; // eslint-disable-line no-underscore-dangle
 
 const mockStore = configureStore();
 
@@ -29,9 +30,6 @@ jest.mock('../../manage/Toolbar/Toolbar', () =>
   jest.fn(() => <div id="Portal" />),
 );
 
-jest.mock('../SocialSharing/SocialSharing', () =>
-  jest.fn(() => <div id="SocialSharing" />),
-);
 jest.mock('../Comments/Comments', () => jest.fn(() => <div id="Comments" />));
 jest.mock('../Tags/Tags', () => jest.fn(() => <div id="Tags" />));
 jest.mock('../SlotRenderer/SlotRenderer', () =>

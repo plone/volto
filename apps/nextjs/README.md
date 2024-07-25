@@ -8,13 +8,14 @@ To start, from the root of the monorepo:
 
 ```shell
 pnpm install
+pnpm build:deps && pnpm build:components
 pnpm --filter plone-nextjs run dev
 ```
 
 Then start the Plone backend:
 
 ```shell
-make start-backend-docker
+make backend-docker-start
 ```
 
 ## Deployment at Vercel

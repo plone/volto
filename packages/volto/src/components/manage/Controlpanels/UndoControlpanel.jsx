@@ -10,7 +10,8 @@ import { Link } from 'react-router-dom';
 import { createPortal } from 'react-dom';
 import { Container, Segment, Table, Menu, Input } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import { Icon, Toolbar, Form, Toast } from '@plone/volto/components';
+import { Icon, Toolbar, Toast } from '@plone/volto/components';
+import { Form } from '@plone/volto/components/manage/Form';
 import backSVG from '@plone/volto/icons/back.svg';
 import { map } from 'lodash';
 import { Helmet } from '@plone/volto/helpers';
@@ -388,7 +389,7 @@ class UndoControlpanel extends Component {
   }
 
   /**
-   * Handle next and prev buttons visiblity when transactions are sorted
+   * Handle next and prev buttons visibility when transactions are sorted
    * @method handleSortedNextPrevButtons
    * @returns {undefined}
    */
@@ -411,7 +412,7 @@ class UndoControlpanel extends Component {
   }
 
   /**
-   * Handle next and prev buttons visiblity when transactions are not sorted
+   * Handle next and prev buttons visibility when transactions are not sorted
    * @method handleNotSortedNextPrevButtons
    * @returns {undefined}
    */
@@ -434,7 +435,7 @@ class UndoControlpanel extends Component {
   }
 
   /**
-   * Handle next, prev buttons and table visiblity
+   * Handle next, prev buttons and table visibility
    * @method handleTableVisiblity
    * @returns {undefined}
    */

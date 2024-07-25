@@ -36,9 +36,9 @@ critical-cli -h
 critical-cli https://example.com/ -o critical.css
 ```
 
-You can pass multiple URLs and screen dimmensions and the extracted CSS will be
+You can pass multiple URLs and screen dimensions and the extracted CSS will be
 optimized (duplicate rules will be eliminated, etc). See the [Advanced preset
-of cssnano](https://web.archive.org/web/20230101000000*/https://cssnano.co/docs/what-are-optimisations/) for details. One last
+of cssnano](https://cssnano.github.io/cssnano/docs/what-are-optimisations/) for details. One last
 optimization applied strips all `@import` declarations from the generated CSS.
 
 After that, copy this file to the `public/critical.css` path (configurable
