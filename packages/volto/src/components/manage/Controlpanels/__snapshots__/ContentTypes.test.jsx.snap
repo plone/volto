@@ -1,0 +1,249 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContentTypes renders dexterity content-types controlpanel component 1`] = `
+<div>
+  <div
+    class="ui container types-control-panel"
+  >
+    <div
+      class="container"
+    />
+    <div
+      class="ui container"
+    >
+      <article
+        id="content"
+      >
+        <div
+          class="ui disabled header"
+        >
+          Dexterity Content Types
+        </div>
+        <section
+          id="content-core"
+        >
+          <table
+            class="ui single line striped compact table"
+          >
+            <thead
+              class=""
+            >
+              <tr
+                class=""
+              >
+                <th
+                  class=""
+                >
+                  Type
+                </th>
+                <th
+                  class=""
+                >
+                  Description
+                </th>
+                <th
+                  class=""
+                >
+                  Items
+                </th>
+                <th
+                  class="right aligned"
+                >
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody
+              class=""
+            >
+              <tr
+                class=""
+              >
+                <td
+                  class=""
+                >
+                  <a
+                    href="/controlpanel/dexterity-types/Document"
+                  >
+                    Page
+                  </a>
+                </td>
+                <td
+                  class=""
+                />
+                <td
+                  class=""
+                >
+                  0
+                </td>
+                <td
+                  class="right aligned"
+                >
+                  <div
+                    aria-expanded="false"
+                    class="ui dropdown actions-Document"
+                    role="listbox"
+                    tabindex="0"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="ellipsis horizontal icon"
+                    />
+                    <div
+                      class="menu transition left"
+                    >
+                      <div
+                        class="item edit-Document"
+                        role="option"
+                      >
+                        <svg
+                          class="icon"
+                          style="height: 15px; width: auto; fill: currentColor;"
+                          viewBox=""
+                          xmlns=""
+                        />
+                        Edit
+                      </div>
+                      <div
+                        class="item"
+                        role="option"
+                      >
+                        <svg
+                          class="icon"
+                          style="height: 15px; width: auto; fill: currentColor;"
+                          viewBox=""
+                          xmlns=""
+                        />
+                        Schema
+                      </div>
+                      <div
+                        class="item layout-Document"
+                        role="option"
+                      >
+                        <svg
+                          class="icon"
+                          style="height: 15px; width: auto; fill: currentColor;"
+                          viewBox=""
+                          xmlns=""
+                        />
+                        Layout
+                      </div>
+                      <div
+                        class="item delete-Document"
+                        role="option"
+                      >
+                        <svg
+                          class="icon"
+                          style="height: 15px; width: auto; fill: currentColor;"
+                          viewBox=""
+                          xmlns=""
+                        />
+                        Delete
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr
+                class=""
+              >
+                <td
+                  class=""
+                >
+                  <a
+                    href="/controlpanel/dexterity-types/Folder"
+                  >
+                    Folder
+                  </a>
+                </td>
+                <td
+                  class=""
+                />
+                <td
+                  class=""
+                >
+                  0
+                </td>
+                <td
+                  class="right aligned"
+                >
+                  <div
+                    aria-expanded="false"
+                    class="ui dropdown actions-Folder"
+                    role="listbox"
+                    tabindex="0"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="ellipsis horizontal icon"
+                    />
+                    <div
+                      class="menu transition left"
+                    >
+                      <div
+                        class="item edit-Folder"
+                        role="option"
+                      >
+                        <svg
+                          class="icon"
+                          style="height: 15px; width: auto; fill: currentColor;"
+                          viewBox=""
+                          xmlns=""
+                        />
+                        Edit
+                      </div>
+                      <div
+                        class="item"
+                        role="option"
+                      >
+                        <svg
+                          class="icon"
+                          style="height: 15px; width: auto; fill: currentColor;"
+                          viewBox=""
+                          xmlns=""
+                        />
+                        Schema
+                      </div>
+                      <div
+                        class="item layout-Folder"
+                        role="option"
+                      >
+                        <svg
+                          class="icon"
+                          style="height: 15px; width: auto; fill: currentColor;"
+                          viewBox=""
+                          xmlns=""
+                        />
+                        Layout
+                      </div>
+                      <div
+                        class="item delete-Folder"
+                        role="option"
+                      >
+                        <svg
+                          class="icon"
+                          style="height: 15px; width: auto; fill: currentColor;"
+                          viewBox=""
+                          xmlns=""
+                        />
+                        Delete
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </article>
+    </div>
+  </div>
+  <div
+    id="toolbar"
+  >
+    <div
+      id="Portal"
+    />
+  </div>
+</div>
+`;

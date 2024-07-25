@@ -1,1 +1,0 @@
-Fix error ``no such file or directory, open 'addon-testing-project/jsconfig.json'`` in addon clone command. @wesleybl

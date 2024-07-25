@@ -1,1 +1,0 @@
-Configure the `prettier` and `prettier:fix` yarn commands to also include the root js files and the `cypress` subfolder @tiberiuichim
