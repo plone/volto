@@ -79,7 +79,7 @@ const Register = () => {
   }, [intl, history, loaded, prevloading]);
 
   const onSubmit = (data) => {
-    const { fullname, email, password } = data;
+    const { fullname, email } = data;
     dispatch(
       createUser({
         fullname: fullname,
