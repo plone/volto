@@ -1,0 +1,186 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sharing renders a sharing component 1`] = `
+<div>
+  <div
+    class="ui container"
+    id="page-sharing"
+  >
+    <div
+      class="ui raised segments"
+    >
+      <div
+        class="ui segment primary"
+      >
+        Sharing for 
+        <q>
+          Blog
+        </q>
+      </div>
+      <div
+        class="ui secondary segment"
+      >
+        You can control who can view and edit your item using the list below.
+      </div>
+      <div
+        class="ui segment"
+      >
+        <form
+          class="ui form"
+        >
+          <div
+            class="field"
+          >
+            <div
+              class="ui action input"
+            >
+              <input
+                id="sharing-component-search"
+                name="SearchableText"
+                placeholder="Search for user or group"
+                type="text"
+              />
+              <button
+                aria-label="Search"
+                class="ui icon button"
+              >
+                <i
+                  aria-hidden="true"
+                  class="search icon"
+                />
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <form
+        class="ui form"
+      >
+        <table
+          class="ui celled striped attached padded table"
+        >
+          <thead
+            class=""
+          >
+            <tr
+              class=""
+            >
+              <th
+                class=""
+              >
+                Name
+              </th>
+              <th
+                class=""
+              >
+                Can add
+              </th>
+            </tr>
+          </thead>
+          <tbody
+            class=""
+          >
+            <tr
+              class=""
+            >
+              <td
+                class=""
+              >
+                <i
+                  aria-hidden="true"
+                  class="user icon"
+                  title="User"
+                />
+                 
+                John Doe
+                 (john-doe)
+              </td>
+              <td
+                class=""
+              />
+            </tr>
+          </tbody>
+        </table>
+        <div
+          class="ui attached segment"
+        >
+          <div
+            class="field"
+          >
+            <div
+              class="ui checked checkbox"
+            >
+              <input
+                checked=""
+                class="hidden"
+                id="inherit-permissions-checkbox"
+                name="inherit-permissions-checkbox"
+                readonly=""
+                tabindex="0"
+                type="checkbox"
+                value=""
+              />
+              <label
+                for="inherit-permissions-checkbox"
+              >
+                Inherit permissions from higher levels
+              </label>
+            </div>
+          </div>
+          <p
+            class="help"
+          >
+            By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol 
+            <i
+              aria-hidden="true"
+              class="green check circle outline icon"
+            />
+             indicates an inherited value. Similarly, the symbol 
+            <i
+              aria-hidden="true"
+              class="blue check circle outline icon"
+            />
+             indicates a global role, which is managed by the site administrator.
+          </p>
+        </div>
+        <div
+          class="ui clearing attached segment actions"
+        >
+          <button
+            aria-label="Save"
+            class="ui basic primary right floated button"
+            title="Save"
+            type="submit"
+          >
+            <svg
+              class="icon circled"
+              style="height: 30px; width: auto; fill: currentColor;"
+              viewBox=""
+              xmlns=""
+            />
+          </button>
+          <button
+            aria-label="Cancel"
+            class="ui basic secondary right floated button"
+            title="Cancel"
+          >
+            <svg
+              class="icon circled"
+              style="height: 30px; width: auto; fill: currentColor;"
+              viewBox=""
+              xmlns=""
+            />
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div
+    id="toolbar"
+  >
+    <div
+      id="Portal"
+    />
+  </div>
+</div>
+`;

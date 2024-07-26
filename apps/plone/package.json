@@ -1,0 +1,361 @@
+{
+  "name": "plone",
+  "description": "Plone CMS Volto frontend project",
+  "license": "MIT",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "razzle start",
+    "build": "razzle build --noninteractive",
+    "lint": "./node_modules/eslint/bin/eslint.js --max-warnings=0 'src/**/*.{js,jsx,ts,tsx}'",
+    "lint:fix": "./node_modules/eslint/bin/eslint.js --fix 'src/**/*.{js,jsx,ts,tsx}'",
+    "lint:ci": "./node_modules/eslint/bin/eslint.js --max-warnings=0 -f checkstyle 'src/**/*.{js,jsx,ts,tsx}' > eslint.xml",
+    "prettier": "./node_modules/.bin/prettier --single-quote --check 'src/**/*.{js,jsx,ts,tsx,css,scss}'",
+    "prettier:fix": "./node_modules/.bin/prettier --single-quote --write 'src/**/*.{js,jsx,ts,tsx,css,scss}'",
+    "prettier:ci": "./node_modules/.bin/prettier --single-quote --check 'src/**/*.{js,jsx,ts,tsx,css,scss}'",
+    "stylelint": "stylelint 'theme/**/*.{css,scss,less}' 'src/**/*.{css,scss,less}'",
+    "stylelint:overrides": "stylelint 'theme/**/*.overrides' 'src/**/*.overrides'",
+    "stylelint:fix": "yarn stylelint --fix && yarn stylelint:overrides --fix",
+    "test": "razzle test --passWithNoTests",
+    "typecheck": "tsc --project tsconfig.json --noEmit",
+    "cypress:open": "make test-acceptance",
+    "cypress:run": "test-acceptance-headless",
+    "start:prod": "NODE_ENV=production node build/server.js",
+    "i18n": "rm -rf build/messages && NODE_ENV=production i18n",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "workspaces": [
+    "src/addons/volto-volto-project"
+  ],
+  "addons": [
+    "volto-volto-project"
+  ],
+  "jest": {
+    "modulePathIgnorePatterns": [
+      "api"
+    ],
+    "transform": {
+      "^.+\\.js(x)?$": "babel-jest",
+      "^.+\\.(png)$": "jest-file",
+      "^.+\\.(jpg)$": "jest-file",
+      "^.+\\.(svg)$": "./node_modules/@plone/volto/jest-svgsystem-transform.js"
+    },
+    "transformIgnorePatterns": [
+      "/node_modules/(?!@plone/volto).+\\.js$"
+    ],
+    "moduleNameMapper": {
+      "@plone/volto/cypress/(.*)$": "<rootDir>/node_modules/@plone/volto/cypress/$1",
+      "@plone/volto/addon-registry": "<rootDir>/node_modules/@plone/volto/addon-registry",
+      "@plone/volto/webpack-plugins/webpack-less-plugin": "<rootDir>/node_modules/@plone/volto/webpack-plugins/webpack-less-plugin",
+      "@plone/volto/babel": "<rootDir>/node_modules/@plone/volto/babel",
+      "@plone/volto/(.*)$": "<rootDir>/node_modules/@plone/volto/src/$1",
+      "@plone/volto-slate/(.*)$": "<rootDir>/node_modules/@plone/volto/packages/volto-slate/src/$1",
+      "load-volto-addons": "<rootDir>/node_modules/@plone/volto/jest-addons-loader.js",
+      "@package/(.*)$": "<rootDir>/src/$1",
+      "@root/(.*)$": "<rootDir>/src/$1",
+      "~/(.*)$": "<rootDir>/src/$1",
+      "\\.(css|less|scss|sass)$": "identity-obj-proxy"
+    },
+    "coverageThreshold": {
+      "global": {
+        "branches": 10,
+        "functions": 10,
+        "lines": 10,
+        "statements": 10
+      }
+    },
+    "setupFiles": [
+      "@plone/volto/test-setup-globals.js",
+      "@plone/volto/test-setup-config.jsx"
+    ],
+    "globals": {
+      "__DEV__": true
+    }
+  },
+  "prettier": {
+    "trailingComma": "all",
+    "singleQuote": true,
+    "overrides": [
+      {
+        "files": "*.overrides",
+        "options": {
+          "parser": "less"
+        }
+      }
+    ]
+  },
+  "stylelint": {
+    "extends": [
+      "stylelint-config-idiomatic-order"
+    ],
+    "plugins": [
+      "stylelint-prettier"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "**/*.less"
+        ],
+        "customSyntax": "postcss-less"
+      },
+      {
+        "files": [
+          "**/*.overrides"
+        ],
+        "customSyntax": "postcss-less"
+      },
+      {
+        "files": [
+          "**/*.scss"
+        ],
+        "customSyntax": "postcss-scss"
+      }
+    ],
+    "rules": {
+      "prettier/prettier": true,
+      "rule-empty-line-before": [
+        "always-multi-line",
+        {
+          "except": [
+            "first-nested"
+          ],
+          "ignore": [
+            "after-comment"
+          ]
+        }
+      ]
+    },
+    "ignoreFiles": "theme/themes/default/**/*.overrides"
+  },
+  "browserslist": [
+    ">1%",
+    "last 4 versions",
+    "Firefox ESR",
+    "not ie 11",
+    "not dead"
+  ],
+  "engines": {
+    "node": "^16 || ^18 || ^20"
+  },
+  "dependencies": {
+    "@loadable/component": "5.14.1",
+    "@loadable/server": "5.14.0",
+    "@plone/registry": "workspace:*",
+    "@plone/scripts": "workspace:*",
+    "@plone/volto": "workspace:*",
+    "@plone/volto-slate": "workspace:*",
+    "@redux-devtools/extension": "^3.3.0",
+    "classnames": "2.2.6",
+    "connected-react-router": "6.8.0",
+    "debug": "4.3.2",
+    "decorate-component-with-props": "1.2.1",
+    "dependency-graph": "0.10.0",
+    "detect-browser": "5.1.0",
+    "diff": "3.5.0",
+    "express": "4.19.2",
+    "filesize": "6",
+    "github-slugger": "1.4.0",
+    "history": "4.10.1",
+    "hoist-non-react-statics": "3.3.2",
+    "http-proxy-middleware": "2.0.1",
+    "image-extensions": "1.1.0",
+    "immutable": "3",
+    "is-hotkey": "0.2.0",
+    "is-url": "1.2.4",
+    "jotai": "2.0.3",
+    "jwt-decode": "2.2.0",
+    "linkify-it": "3.0.2",
+    "locale": "0.1.0",
+    "lodash": "4.17.21",
+    "lodash-move": "1.1.1",
+    "moment": "2.29.4",
+    "object-assign": "4.1.1",
+    "prepend-http": "2",
+    "pretty-bytes": "5.3.0",
+    "prismjs": "1.27.0",
+    "process": "^0.11.10",
+    "promise-file-reader": "1.0.2",
+    "prop-types": "15.7.2",
+    "query-string": "7.1.0",
+    "rc-time-picker": "3.7.3",
+    "react": "18.2.0",
+    "react-anchor-link-smooth-scroll": "1.0.12",
+    "react-animate-height": "2.0.17",
+    "react-beautiful-dnd": "13.0.0",
+    "react-cookie": "4.1.1",
+    "react-dates": "21.5.1",
+    "react-detect-click-outside": "1.1.1",
+    "react-dnd": "5.0.0",
+    "react-dnd-html5-backend": "5.0.1",
+    "react-dom": "18.2.0",
+    "react-dropzone": "11.1.0",
+    "react-fast-compare": "2.0.4",
+    "react-image-gallery": "1.2.7",
+    "react-intersection-observer": "9.1.0",
+    "react-intl": "3.12.1",
+    "react-intl-redux": "2.3.0",
+    "react-medium-image-zoom": "3.0.15",
+    "react-popper": "^2.3.0",
+    "react-redux": "8.1.2",
+    "react-router": "5.2.0",
+    "react-router-config": "5.1.1",
+    "react-router-dom": "5.2.0",
+    "react-router-hash-link": "2.4.3",
+    "react-select": "4.3.1",
+    "react-select-async-paginate": "0.5.3",
+    "react-share": "2.3.1",
+    "react-side-effect": "2.1.2",
+    "react-simple-code-editor": "0.7.1",
+    "react-sortable-hoc": "2.0.0",
+    "react-test-renderer": "18.2.0",
+    "react-toastify": "5.5.0",
+    "react-transition-group": "4.4.5",
+    "react-virtualized": "9.22.3",
+    "redux": "4.2.1",
+    "redux-actions": "3.0.0",
+    "redux-connect": "10.0.0",
+    "redux-localstorage-simple": "2.5.1",
+    "redux-mock-store": "1.5.4",
+    "redux-thunk": "2.4.2",
+    "rrule": "2.7.1",
+    "semantic-ui-less": "2.4.1",
+    "semantic-ui-react": "2.1.5",
+    "serialize-javascript": "3.1.0",
+    "slate": "0.100.0",
+    "slate-hyperscript": "0.100.0",
+    "slate-react": "0.98.4",
+    "superagent": "3.8.2",
+    "tlds": "1.203.1",
+    "undoo": "0.5.0",
+    "universal-cookie": "4.0.4",
+    "universal-cookie-express": "4.0.3",
+    "url": "^0.11.3",
+    "use-deep-compare-effect": "1.8.1",
+    "uuid": "^8.3.2",
+    "volto-volto-project": "workspace:*"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/eslint-parser": "7.22.15",
+    "@babel/plugin-proposal-export-default-from": "7.18.10",
+    "@babel/plugin-proposal-export-namespace-from": "7.18.9",
+    "@babel/plugin-proposal-json-strings": "7.18.6",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "7.18.6",
+    "@babel/plugin-proposal-throw-expressions": "7.18.6",
+    "@babel/plugin-syntax-export-namespace-from": "7.8.3",
+    "@babel/runtime": "7.20.6",
+    "@babel/types": "7.20.5",
+    "@jest/globals": "^29.7.0",
+    "@loadable/babel-plugin": "5.13.2",
+    "@loadable/webpack-plugin": "5.15.2",
+    "@plone/scripts": "workspace:*",
+    "@plone/types": "1.0.0-alpha.11",
+    "@plone/volto-coresandbox": "workspace:*",
+    "@sinonjs/fake-timers": "^6.0.1",
+    "@storybook/addon-actions": "^8.0.4",
+    "@storybook/addon-controls": "^8.0.4",
+    "@storybook/addon-docs": "^8.0.4",
+    "@storybook/addon-essentials": "^8.0.4",
+    "@storybook/addon-links": "^8.0.4",
+    "@storybook/addon-webpack5-compiler-babel": "^3.0.3",
+    "@storybook/builder-webpack5": "^6.5.15",
+    "@storybook/manager-webpack5": "^6.5.15",
+    "@storybook/react": "^8.0.4",
+    "@storybook/react-webpack5": "^8.0.4",
+    "@storybook/theming": "^8.0.4",
+    "@testing-library/cypress": "10.0.1",
+    "@testing-library/jest-dom": "6.4.2",
+    "@testing-library/react": "14.2.0",
+    "@testing-library/react-hooks": "8.0.1",
+    "@types/jest": "^29.5.8",
+    "@types/loadable__component": "^5.13.9",
+    "@types/lodash": "^4.14.201",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@types/react-router-dom": "^5.3.3",
+    "@types/react-test-renderer": "18.0.7",
+    "@types/uuid": "^9.0.2",
+    "@typescript-eslint/eslint-plugin": "^7.7.0",
+    "@typescript-eslint/parser": "^7.7.0",
+    "autoprefixer": "10.4.8",
+    "axe-core": "4.4.2",
+    "babel-loader": "9.1.0",
+    "babel-plugin-add-module-exports": "0.2.1",
+    "babel-plugin-lodash": "3.3.4",
+    "babel-plugin-react-intl": "5.1.17",
+    "babel-plugin-root-import": "6.1.0",
+    "babel-preset-razzle": "4.2.18",
+    "bundlewatch": "0.3.3",
+    "circular-dependency-plugin": "5.2.2",
+    "css-loader": "5.2.7",
+    "cypress": "13.6.6",
+    "cypress-axe": "1.5.0",
+    "cypress-file-upload": "5.0.8",
+    "deep-freeze": "0.0.1",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-react-app": "^7.0.1",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-import-resolver-babel-plugin-root-import": "^1.1.1",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "full-icu": "1.4.0",
+    "glob": "7.1.6",
+    "html-webpack-plugin": "5.5.0",
+    "identity-obj-proxy": "3.0.0",
+    "jest": "26.6.3",
+    "jest-environment-jsdom": "^26",
+    "jest-file": "1.0.0",
+    "jest-junit": "8.0.0",
+    "jsdom": "^16.7.0",
+    "jsonwebtoken": "9.0.0",
+    "less": "3.11.1",
+    "less-loader": "11.1.0",
+    "lodash-webpack-plugin": "0.11.6",
+    "mini-css-extract-plugin": "2.7.2",
+    "moment-locales-webpack-plugin": "1.2.0",
+    "mrs-developer": "^2.1.1",
+    "postcss": "8.4.31",
+    "postcss-flexbugs-fixes": "5.0.2",
+    "postcss-less": "6.0.0",
+    "postcss-load-config": "3.1.4",
+    "postcss-loader": "7.0.2",
+    "postcss-overrides": "3.1.4",
+    "postcss-scss": "4.0.6",
+    "prettier": "3.2.5",
+    "razzle": "4.2.18",
+    "razzle-dev-utils": "4.2.18",
+    "razzle-plugin-scss": "4.2.18",
+    "react-docgen-typescript-plugin": "^1.0.5",
+    "react-error-overlay": "6.0.9",
+    "react-is": "^18.2.0",
+    "release-it": "^17.1.1",
+    "semver": "^7.5.4",
+    "start-server-and-test": "1.14.0",
+    "storybook": "^8.0.4",
+    "style-loader": "3.3.1",
+    "stylelint": "^16.3.1",
+    "stylelint-config-idiomatic-order": "10.0.0",
+    "stylelint-prettier": "5.0.0",
+    "svg-loader": "0.0.2",
+    "svgo-loader": "3.0.3",
+    "terser-webpack-plugin": "5.3.6",
+    "tmp": "0.2.1",
+    "ts-jest": "^26.4.2",
+    "ts-loader": "9.4.4",
+    "tsconfig": "*",
+    "typescript": "^5.4.2",
+    "use-trace-update": "1.3.2",
+    "wait-on": "6.0.0",
+    "webpack": "5.90.1",
+    "webpack-bundle-analyzer": "4.10.1",
+    "webpack-dev-server": "4.11.1",
+    "webpack-node-externals": "3.0.0",
+    "why": "0.6.2"
+  },
+  "theme": "volto-volto-project"
+}
