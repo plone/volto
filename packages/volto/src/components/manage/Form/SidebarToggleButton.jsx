@@ -32,6 +32,7 @@ export const SidebarToggleButton = () => {
       pluggable="main.toolbar.bottom"
       id="sidebar-toggle-button"
       dependencies={[sidebarExpanded]}
+      order={-1}
     >
       <Button
         className={cx('settings', {
