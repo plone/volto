@@ -40,13 +40,13 @@ export interface RelatedItem {
   title: string;
 }
 
-export interface ImageScale {
+export type ImageScale = {
   download: string;
   height: number;
   width: number;
-}
+};
 
-export interface Image {
+export type Image = {
   'content-type': string;
   download: string;
   filename: string;
@@ -65,4 +65,4 @@ export interface Image {
   };
   size: number;
   width: number;
-}
+};
