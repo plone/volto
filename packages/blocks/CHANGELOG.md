@@ -7,3 +7,9 @@
 -->
 
 <!-- towncrier release notes start -->
+
+## 1.0.0-alpha.1 (2024-07-26)
+
+### Internal
+
+- Initial release @sneridagh [#0](https://github.com/plone/volto/pull/0)
