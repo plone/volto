@@ -1,11 +1,8 @@
 describe('Self registration Tests', () => {
   beforeEach(() => {
     cy.visit('/');
-    cy.setRegistry(
-      // 'plone.app.discussion.interfaces.IDiscussionSettings.globally_enabled',
-      'plone.enable_self_reg',
-      true,
-    );
+    cy.setRegistry('plone.enable_self_reg', true);
+    cy.setRegistry('plone.use_email_as_login', true);
   });
   it('As an anonymous user, I can request a self registration from the navigation bar', function () {
     cy.findByText('Register').click();
