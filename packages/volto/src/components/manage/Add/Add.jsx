@@ -50,7 +50,6 @@ import config from '@plone/volto/registry';
 
 import saveSVG from '@plone/volto/icons/save.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
-import configSVG from '@plone/volto/icons/configuration.svg';
 
 const messages = defineMessages({
   add: {

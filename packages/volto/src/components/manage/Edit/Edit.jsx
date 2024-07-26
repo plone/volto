@@ -15,7 +15,6 @@ import { createPortal } from 'react-dom';
 import qs from 'query-string';
 import { find } from 'lodash';
 import { toast } from 'react-toastify';
-import cx from 'classnames';
 
 import {
   Forbidden,
@@ -47,7 +46,6 @@ import { tryParseJSON } from '@plone/volto/helpers';
 
 import saveSVG from '@plone/volto/icons/save.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
-import configSVG from '@plone/volto/icons/configuration.svg';
 
 import config from '@plone/volto/registry';
 
