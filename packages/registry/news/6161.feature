@@ -1,1 +1,1 @@
-Added Utilities registry, `registerUtility`, `getUtility` and `getUtilities` @sneridagh
+Added `Utilities` registry for `registerUtility`, `getUtility`, and `getUtilities`. @sneridagh

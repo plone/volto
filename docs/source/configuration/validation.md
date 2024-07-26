@@ -52,7 +52,7 @@ Volto provides a set of validators by default:
 - url
 
 ### Event content type
-- start/end dates check
+- event end date must be on or after its start date
 
 You can find them in the module {file}`packages/volto/src/config/validators.ts`.
 
@@ -144,7 +144,8 @@ The `urlValidator` method validator will be applied for the content type field `
 
 ### Advanced scenarios
 
-If, for some reason, you can't modify the existing implementation of the JSON schema definitions for existing content types, blocks, or forms, you can use the following advanced validator registrations, which allows you to register validators depending on the `field`, the `widget`, the `behaviorName` (in case of a content type), or the `blockType` (in case of a block).
+If, for some reason, you can't modify the existing implementation of the JSON schema definitions for existing content types, blocks, or forms, you can use the following advanced validator registrations.
+These allow you to register validators according to whether it is a `field`, `widget`, `behaviorName` (for content types), or `blockType` (for blocks).
 
 #### Field `type` validators
 
@@ -319,7 +320,7 @@ export const isNumber = ({ value, formatMessage }: Validator) => {
 Using `formData`, you can perform validation checks using other field data as source.
 This is useful when you want to validate two related fields, such as ensuring the end date of an event is after its start date.
 You can create invariant validator types.
-In the following code snippet you can check how to create a validator method for checking if the Event content type `start`/`end` fields are valid:
+The following code snippet shows how to create a validator method that ensures the event content type's end date is after its start date.
 
 ```ts
 export const startEventDateRangeValidator = ({
