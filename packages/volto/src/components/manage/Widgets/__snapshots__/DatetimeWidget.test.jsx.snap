@@ -19,7 +19,7 @@ exports[`datetime widget converts UTC date and adapt to local datetime 1`] = `
           >
             <label
               for="field-my-field"
-              id="fieldset-undefined-field-label-my-field"
+              id="fieldset--field-label-my-field"
             >
               My field
             </label>
