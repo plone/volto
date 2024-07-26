@@ -135,6 +135,8 @@ class SlateEditor extends Component {
           } catch {}
         }, 100); // flush
       }
+
+      this.state.editor.normalize({ force: true });
     }
   }
 
@@ -164,7 +166,14 @@ class SlateEditor extends Component {
         ReactEditor.focus(editor);
         Transforms.select(editor, selection);
       } else {
-        Transforms.select(editor, Editor.end(editor, []));
+        try {
+          Transforms.select(editor, Editor.end(editor, []));
+        } catch (error) {
+          // Weird error only happening in Cypress
+          // Adding a try/catch
+          // eslint-disable-next-line no-console
+          console.log(error);
+        }
       }
 
       this.setState({
@@ -257,12 +266,16 @@ class SlateEditor extends Component {
         <EditorContext.Provider value={editor}>
           <Slate
             editor={editor}
-            value={this.props.value || slateSettings.defaultValue()}
+            initialValue={this.props.value || slateSettings.defaultValue()}
             onChange={this.handleChange}
           >
             {selected ? (
               <>
-                <InlineToolbar editor={editor} className={className} />
+                <InlineToolbar
+                  editor={editor}
+                  className={className}
+                  slateSettings={this.props.slateSettings}
+                />
                 {Object.keys(slateSettings.elementToolbarButtons).map(
                   (t, i) => {
                     return (

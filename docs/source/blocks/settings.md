@@ -17,18 +17,17 @@ Since Volto have its own set of default blocks, you should extend them by adding
 So we add these lines to the `src/config.js`:
 
 ```js
-import MainSliderViewBlock from '@package/components/Blocks/MainSlider/View';
-import MainSliderEditBlock from '@package/components/Blocks/MainSlider/Edit';
+import MainSliderViewBlock from '@root/components/Blocks/MainSlider/View';
+import MainSliderEditBlock from '@root/components/Blocks/MainSlider/Edit';
 import sliderSVG from '@plone/volto/icons/slider.svg';
 
-import SimpleTeaserView from '@package/components/Blocks/SimpleTeaserView';
-import CardTeaserView from '@package/components/Blocks/CardTeaserView';
-import DefaultColumnRenderer from '@package/components/Blocks/DefaultColumnRenderer';
-import NumberColumnRenderer from '@package/components/Blocks/NumberColumnRenderer';
-import ColoredColumnRenderer from '@package/components/Blocks/ColoredColumnRenderer';
-import CardTeaserView from '@package/components/Blocks/CardTeaserView';
+import SimpleTeaserView from '@root/components/Blocks/SimpleTeaserView';
+import CardTeaserView from '@root/components/Blocks/CardTeaserView';
+import DefaultColumnRenderer from '@root/components/Blocks/DefaultColumnRenderer';
+import NumberColumnRenderer from '@root/components/Blocks/NumberColumnRenderer';
+import ColoredColumnRenderer from '@root/components/Blocks/ColoredColumnRenderer';
 
-import CustomSchemaEnhancer from '@package/components/Blocks/CustomSchemaEnhancer';
+import CustomSchemaEnhancer from '@root/components/Blocks/CustomSchemaEnhancer';
 
 [...]
 
@@ -40,7 +39,7 @@ const customBlocks = {
     group: 'common', // The group (blocks can be grouped, displayed in the chooser)
     view: MainSliderViewBlock, // The view mode component
     edit: MainSliderEditBlock, // The edit mode component
-    restricted: false, // {Boolean|function} If the block is restricted, it won't show in the chooser. The function signature is `({properties, block})` where `properties` is the current object data and `block` is the block being evaluated in `BlockChooser`.
+    restricted: false, // {Boolean|function} If the block is restricted, it won't show in the chooser. The function signature is `({properties, block, navRoot, contentType})` where `properties` is the current object data and `block` is the block being evaluated in `BlockChooser`. `navRoot` is the nearest navigation root object and `contentType` is the current content type.
     mostUsed: true, // A meta group `most used`, appearing at the top of the chooser
     blockHasOwnFocusManagement: false, // Set this to true if the block manages its own focus
     sidebarTab: 0, // The sidebar tab you want to be selected when selecting the block
@@ -115,7 +114,7 @@ export const blocks = {
 We start by importing both view and edit components of our recently created custom block.
 
 ```{note}
-Notice the `@package` alias.
+Notice the `@root` alias.
 You can use it when importing modules/components from your own project.
 ```
 
@@ -137,6 +136,38 @@ defineMessages({
 ```
 
 Our new block should be ready to use in the editor.
+
+## Common block options
+
+It is a common pattern to use the block configuration to allow customization of a block's behavior or to provide block-specific implementation of various Volto mechanisms.
+Some of these common options are described in the following sections.
+
+(blockHasValue)=
+
+### `blockHasValue`
+
+`blockHasValue` is a function that returns `true` if the provided block data represents a non-empty value for the current block.
+Required for alternate default block types implementations.
+It has the following signature.
+
+```jsx
+blockHasValue(data) => boolean
+```
+
+### `initialValue`
+
+`initialValue` is a function that can be used to get the initial value for a block.
+It has the following signature.
+
+```jsx
+initialValue({id, value, formData, intl}) => newFormData
+```
+
+### `blockSchema`
+
+A must-have for modern Volto blocks, `blockSchema` is a function, or directly the schema object, that returns the schema for the block data.
+Although it's not required, defining the schema enables the block to have its initial value based on the default values declared in the schema.
+
 
 ## Other block options
 
@@ -174,6 +205,18 @@ and provide your own per content type, e.g:
 ```js
 const initialBlocks = {
     Document: ['leadimage', 'title', 'text', 'listing' ]
+};
+```
+
+You can also pass the full configuration for the block using an object:
+
+```js
+const initialBlocks = {
+  Document: [
+    { '@type': 'leadImage', fixed: true, required: true },
+    { '@type': 'title' },
+    { '@type': 'slate', value: 'My default text', plaintext: 'My default text' },
+  ],
 };
 ```
 

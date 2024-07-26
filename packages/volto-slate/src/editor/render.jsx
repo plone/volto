@@ -1,9 +1,19 @@
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
+import { useLocation } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { useIntl } from 'react-intl';
+import { useSelector } from 'react-redux';
 import { Node, Text } from 'slate';
 import cx from 'classnames';
-import { isEmpty, isEqual, omit } from 'lodash';
+import { isEmpty, omit } from 'lodash';
+import { UniversalLink, Toast } from '@plone/volto/components';
+import { messages, addAppURL } from '@plone/volto/helpers';
+import useClipboard from '@plone/volto/hooks/clipboard/useClipboard';
 import config from '@plone/volto/registry';
+import linkSVG from '@plone/volto/icons/link.svg';
+
+import './less/slate.less';
 
 const OMITTED = ['editor', 'path'];
 
@@ -106,13 +116,7 @@ export const serializeNodes = (nodes, getAttributes, extras = {}) => {
           mode="view"
           key={path}
           data-slate-data={node.data ? serializeData(node) : null}
-          attributes={
-            isEqual(path, [0])
-              ? getAttributes
-                ? getAttributes(node, path)
-                : null
-              : null
-          }
+          attributes={getAttributes ? getAttributes(node, path) : null}
           extras={extras}
         >
           {_serializeNodes(Array.from(Node.children(editor, path)))}
@@ -153,3 +157,68 @@ export const serializeNodesToText = (nodes) => {
 
 export const serializeNodesToHtml = (nodes) =>
   renderToStaticMarkup(serializeNodes(nodes));
+
+export const renderLinkElement = (tagName) => {
+  function LinkElement({
+    attributes,
+    children,
+    mode = 'edit',
+    className = null,
+  }) {
+    const { slate = {} } = config.settings;
+    const Tag = tagName;
+    const slug = attributes.id || '';
+    const location = useLocation();
+    const token = useSelector((state) => state.userSession.token);
+    const appPathname = addAppURL(location.pathname);
+    // eslint-disable-next-line no-unused-vars
+    const [copied, copy, setCopied] = useClipboard(
+      appPathname.concat(`#${slug}`),
+    );
+    const intl = useIntl();
+    return !token || slate.useLinkedHeadings === false ? (
+      <Tag {...attributes} className={className} tabIndex={0}>
+        {children}
+      </Tag>
+    ) : (
+      <Tag {...attributes} className={className} tabIndex={0}>
+        {children}
+        {mode === 'view' && slug && (
+          <UniversalLink
+            className="anchor"
+            aria-hidden="true"
+            tabIndex={-1}
+            href={`#${slug}`}
+          >
+            <style>
+              {/* Prettify the unstyled flash of the link icon on development */}
+              {`
+              a.anchor svg {
+                height: var(--anchor-svg-height, 24px);
+              }
+              `}
+            </style>
+            <svg
+              {...linkSVG.attributes}
+              dangerouslySetInnerHTML={{ __html: linkSVG.content }}
+              height={null}
+              onClick={() => {
+                copy();
+
+                toast.info(
+                  <Toast
+                    info
+                    title={intl.formatMessage(messages.success)}
+                    content={intl.formatMessage(messages.urlClipboardCopy)}
+                  />,
+                );
+              }}
+            ></svg>
+          </UniversalLink>
+        )}
+      </Tag>
+    );
+  }
+  LinkElement.displayName = `${tagName}LinkElement`;
+  return LinkElement;
+};

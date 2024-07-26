@@ -2,6 +2,7 @@ import TableBlockEdit from './TableBlockEdit';
 import TableBlockView from './TableBlockView';
 import { extractTables } from './deconstruct';
 import { normalizeTable } from './extensions/normalizeTable';
+import { normalizeExternalData } from '../Text/extensions';
 
 import tableSVG from '@plone/volto/icons/table.svg';
 
@@ -25,6 +26,7 @@ export default function install(config) {
       // withDeserializers,
       // breakList,
       normalizeTable,
+      normalizeExternalData,
     ],
   };
 
@@ -48,7 +50,6 @@ export default function install(config) {
     // },
   };
 
-  config.blocks.blocksConfig.table.restricted = true;
   config.blocks.blocksConfig.slateTable = {
     ...tableBlockConfig,
     id: 'slateTable',

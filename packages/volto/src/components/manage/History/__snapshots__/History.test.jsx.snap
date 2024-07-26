@@ -1,0 +1,268 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`History redirects if unassigned 1`] = `
+<div>
+  <div
+    class="ui container view-wrapper"
+  >
+    <h1>
+      Forbidden
+    </h1>
+    <p
+      class="description"
+    >
+      We apologize for the inconvenience, but you don't have permissions on this resource.
+    </p>
+  </div>
+  <div
+    id="toolbar"
+  />
+</div>
+`;
+
+exports[`History redirects if unassigned, no token gives unauthorized 1`] = `
+<div>
+  <div
+    class="ui container view-wrapper"
+  >
+    <h1>
+      Unauthorized
+    </h1>
+    <h3 />
+    <p
+      class="description"
+    >
+      You are trying to access a protected resource, please 
+      <a
+        href="/blog/login"
+      >
+        log in
+      </a>
+       first.
+    </p>
+    <p>
+      If you are certain you have the correct web address but are encountering an error, please contact the 
+      <a
+        href="/contact-form"
+      >
+        Site Administration
+      </a>
+      .
+    </p>
+    <p>
+      Thank you.
+    </p>
+  </div>
+  <div
+    id="toolbar"
+  />
+</div>
+`;
+
+exports[`History renders a history component 1`] = `
+<div>
+  <div
+    class="ui container"
+    id="page-history"
+  >
+    <div
+      class="ui raised segments"
+    >
+      <div
+        class="ui segment primary"
+      >
+        History of 
+        <q>
+          Blog
+        </q>
+      </div>
+      <div
+        class="ui secondary segment"
+      >
+        You can view the history of your item below.
+      </div>
+      <table
+        class="ui selectable single line attached compact table"
+      >
+        <thead
+          class=""
+        >
+          <tr
+            class=""
+          >
+            <th
+              class="one wide"
+            >
+              #
+            </th>
+            <th
+              class="four wide"
+            >
+              What
+            </th>
+            <th
+              class="four wide"
+            >
+              Who
+            </th>
+            <th
+              class="four wide"
+            >
+              When
+            </th>
+            <th
+              class="four wide"
+            >
+              Change Note
+            </th>
+            <th
+              class=""
+            />
+          </tr>
+        </thead>
+        <tbody
+          class=""
+        >
+          <tr
+            class=""
+          >
+            <td
+              class=""
+            >
+              <span />
+            </td>
+            <td
+              class=""
+            >
+              <span>
+                Publish
+                 (Private → Published)
+              </span>
+            </td>
+            <td
+              class=""
+            >
+              Web Admin
+            </td>
+            <td
+              class=""
+            >
+              <time
+                datetime="2017-04-19T14:09:36+02:00"
+                title="Wednesday, April 19, 2017 at 12:09 PM"
+              >
+                4/19/2017
+              </time>
+            </td>
+            <td
+              class=""
+            />
+            <td
+              class=""
+            />
+          </tr>
+          <tr
+            class=""
+          >
+            <td
+              class=""
+            >
+              <span />
+            </td>
+            <td
+              class=""
+            >
+              <span>
+                Edited
+              </span>
+            </td>
+            <td
+              class=""
+            >
+              Web Admin
+            </td>
+            <td
+              class=""
+            >
+              <time
+                datetime="2017-04-19T14:09:35+02:00"
+                title="Wednesday, April 19, 2017 at 12:09 PM"
+              >
+                4/19/2017
+              </time>
+            </td>
+            <td
+              class=""
+            >
+              Changed text
+            </td>
+            <td
+              class=""
+            >
+              <div
+                aria-expanded="false"
+                class="ui dropdown"
+                role="listbox"
+                tabindex="0"
+              >
+                <i
+                  aria-hidden="true"
+                  class="ellipsis horizontal icon"
+                />
+                <div
+                  class="menu transition left"
+                />
+              </div>
+            </td>
+          </tr>
+          <tr
+            class=""
+          >
+            <td
+              class=""
+            >
+              <span />
+            </td>
+            <td
+              class=""
+            >
+              <span>
+                Create
+                 (Private)
+              </span>
+            </td>
+            <td
+              class=""
+            >
+              Web Admin
+            </td>
+            <td
+              class=""
+            >
+              <time
+                datetime="2017-04-19T14:09:34+02:00"
+                title="Wednesday, April 19, 2017 at 12:09 PM"
+              >
+                4/19/2017
+              </time>
+            </td>
+            <td
+              class=""
+            />
+            <td
+              class=""
+            />
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div
+    id="toolbar"
+  >
+    <div
+      id="Portal"
+    />
+  </div>
+</div>
+`;

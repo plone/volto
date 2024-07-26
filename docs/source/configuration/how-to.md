@@ -9,7 +9,7 @@ myst:
 
 # The configuration registry
 
-Volto has a centralized configuration registry used to parameterize Volto. It has the
+Volto has a centralized {term}`configuration registry` used to parameterize Volto. It has the
 form of a singleton that can be called and queried from anywhere in your code like this:
 
 ```js
@@ -60,7 +60,7 @@ add-ons configuration in `config` argument. Next, perform all the required modif
 to the config and finally, return the config object.
 
 By reading Volto's
-[src/config/index.js](https://github.com/plone/volto/blob/master/src/config/index.js),
+[src/config/index.js](https://github.com/plone/volto/blob/main/packages/volto/src/config/index.js),
 you'll get to see that Volto provides some default configuration objects
 (`blocks`, `widgets`, `settings`, etc), passes them through the
 `applyAddonConfiguration()` function, which allows any installed addons to
@@ -78,12 +78,12 @@ See {doc}`settings-reference` for details.
 
 The `widgets` object holds the widget registry, used to decide which widget
 should be used when rendering forms. Check [its
-definition](https://github.com/plone/volto/blob/master/src/config/Widgets.jsx)
+definition](https://github.com/plone/volto/blob/main/packages/volto/src/config/Widgets.jsx)
 but also the [lookup
-mechanism](https://github.com/plone/volto/blob/6fd62cb2860bc7cf3cb7c36ea86bfd8bd03247d9/src/components/manage/Form/Field.jsx#L112)
+mechanism](https://github.com/plone/volto/blob/212026a39fd9aa0e1d6c324f967b51a3daa10b01/packages/volto/src/components/manage/Form/Field.jsx#L151)
 to understand how things work.
 
-See {doc}`../recipes/widget` for more information.
+See {doc}`../development/widget` for more information.
 
 ## views
 

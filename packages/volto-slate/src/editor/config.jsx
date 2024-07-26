@@ -18,7 +18,6 @@ import superindexIcon from '@plone/volto/icons/superindex.svg';
 import { createEmptyParagraph } from '@plone/volto-slate/utils';
 
 import {
-  MarkButton,
   MarkElementButton,
   BlockButton,
   ClearFormattingButton,
@@ -43,6 +42,7 @@ import {
   bTagDeserializer,
   codeTagDeserializer,
 } from './deserialize';
+import { renderLinkElement } from './render';
 
 // Registry of available buttons
 export const buttons = {
@@ -95,7 +95,7 @@ export const buttons = {
     />
   ),
   code: (props) => (
-    <MarkButton title="Code" format="code" icon={codeIcon} {...props} />
+    <MarkElementButton title="Code" format="code" icon={codeIcon} {...props} />
   ),
   'heading-two': (props) => (
     <BlockButton
@@ -234,10 +234,10 @@ export const defaultBlockType = 'p';
 export const elements = {
   default: ({ attributes, children }) => <p {...attributes}>{children}</p>,
 
-  h1: ({ attributes, children }) => <h1 {...attributes}>{children}</h1>,
-  h2: ({ attributes, children }) => <h2 {...attributes}>{children}</h2>,
-  h3: ({ attributes, children }) => <h3 {...attributes}>{children}</h3>,
-  h4: ({ attributes, children }) => <h4 {...attributes}>{children}</h4>,
+  h1: renderLinkElement('h1'),
+  h2: renderLinkElement('h2'),
+  h3: renderLinkElement('h3'),
+  h4: renderLinkElement('h4'),
 
   li: ({ attributes, children }) => <li {...attributes}>{children}</li>,
   ol: ({ attributes, children }) => <ol {...attributes}>{children}</ol>,
