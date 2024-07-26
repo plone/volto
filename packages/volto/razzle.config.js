@@ -20,7 +20,7 @@ const AfterBuildPlugin = require('@fiverr/afterbuild-webpack-plugin');
 const fileLoaderFinder = makeLoaderFinder('file-loader');
 
 const projectRootPath = path.resolve('.');
-const languages = require('./src/constants/Languages');
+const languages = require('./src/constants/Languages.cjs');
 
 const packageJson = require(path.join(projectRootPath, 'package.json'));
 
@@ -168,7 +168,13 @@ const defaultModify = ({
           files.forEach((file) => {
             const sourcePath = path.join(sourceDir, file);
             const targetPath = path.join(targetDir, file);
-            fs.copyFileSync(sourcePath, targetPath);
+            const isDirectory = fs.statSync(sourcePath).isDirectory();
+            if (isDirectory) {
+              fs.mkdirSync(targetPath, { recursive: true });
+              mergeDirectories(sourcePath, targetPath);
+            } else {
+              fs.copyFileSync(sourcePath, targetPath);
+            }
           });
         };
 
@@ -255,10 +261,10 @@ const defaultModify = ({
         newDefs['process.env.RAZZLE_PUBLIC_DIR'] = newDefs[
           'process.env.RAZZLE_PUBLIC_DIR'
         ].replace(projectRootPath, '.');
-        // Handles the PORT, so it takes the real PORT from the runtime enviroment var,
+        // Handles the PORT, so it takes the real PORT from the runtime environment var,
         // but keeps the one from build time, if different from 3000 (by not deleting it)
         // So build time one takes precedence, do not set it in build time if you want
-        // to control it always via runtime (assumming 3000 === not set in build time)
+        // to control it always via runtime (assuming 3000 === not set in build time)
         if (newDefs['process.env.PORT'] === '3000') {
           delete newDefs['process.env.PORT'];
         }

@@ -48,6 +48,7 @@ const InlineForm = (props) => {
     title,
     icon,
     headerActions,
+    actionButton,
     footer,
     focusIndex,
     intl,
@@ -152,14 +153,17 @@ const InlineForm = (props) => {
               focus={index === focusIndex}
               value={formData[field]}
               required={schema.required.indexOf(field) !== -1}
-              onChange={(id, value) => {
-                onChangeField(id, value);
+              onChange={(id, value, itemInfo) => {
+                onChangeField(id, value, itemInfo);
               }}
               key={field}
               error={errors[field]}
               block={block}
             />
           ))}
+          {actionButton && (
+            <Segment className="attached actions">{actionButton}</Segment>
+          )}
         </Segment>
       </div>
 

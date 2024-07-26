@@ -8,6 +8,25 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.17 (2024-06-27)
+
+### Internal
+
+- Upgrade `react-intl` to maximum 3.x series to fix a bundling issue.
+  Rename missing js file that must be jsx. @sneridagh [#6128](https://github.com/plone/volto/issues/6128)
+
+## 1.0.0-alpha.16 (2024-06-13)
+
+### Breaking
+
+- Remove unused `config.settings.containerBlockTypes` @sneridagh [#6099](https://github.com/plone/volto/issues/6099)
+
+## 1.0.0-alpha.15 (2024-06-13)
+
+### Bugfix
+
+- Better `styleClassNameExtenders` typings @sneridagh [#6095](https://github.com/plone/volto/issues/6095)
+
 ## 1.0.0-alpha.14 (2024-06-06)
 
 ### Breaking
