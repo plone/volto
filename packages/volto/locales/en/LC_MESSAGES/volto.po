@@ -1380,6 +1380,7 @@ msgid "Existing alternative urls for this item"
 msgstr ""
 
 #. Default: "Expand sidebar"
+#: components/manage/Form/SidebarToggleButton
 #: components/manage/Sidebar/Sidebar
 msgid "Expand sidebar"
 msgstr ""
@@ -3314,6 +3315,7 @@ msgid "Show total results"
 msgstr ""
 
 #. Default: "Shrink sidebar"
+#: components/manage/Form/SidebarToggleButton
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
 msgstr ""
