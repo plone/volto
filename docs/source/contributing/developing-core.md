@@ -9,7 +9,16 @@ myst:
 
 # Develop Volto core
 
-This chapter describes how to develop Volto core and its libraries, packages, and apps as open source software contributions.
+This chapter describes how to develop the latest version of Volto core and its libraries, packages, and apps as open source software contributions.
+
+```{seealso}
+For previous versions of Volto core, you should follow the guide in the relevant version branch to build and run the backend.
+
+-   [Volto 17](https://github.com/plone/volto/blob/17.x.x/api/README.rst)
+-   [Volto 16](https://github.com/plone/volto/blob/16.x.x/api/README.rst)
+
+Additionally you can build each version of Volto documentation by running `make docs-html` from the root of the repository, and reading the relevant developer and contributing documentation.
+```
 
 ```{seealso}
 To create a full Plone project with both frontend and backend, see {doc}`plone:install/create-project` instead.
@@ -162,6 +171,19 @@ pnpm install
 
 ## Start the backend and Volto
 
+`````{versionadded} 18.0.0-alpha.42
+Persist backend data across Docker sessions.
+
+````{warning}
+Do not use this method of persistence in a production environment.
+It is intended only for development.
+
+```{seealso}
+{doc}`../deploying/index`
+```
+````
+`````
+
 Every time you want to run Volto for core development, you will need to create two terminal sessions, one for the backend and one for the frontend.
 For both sessions, change your working directory to the root of your Volto clone.
 
@@ -171,7 +193,20 @@ In the first session, start the backend.
 make backend-docker-start
 ```
 
-When you run this command for the first time, it will download Docker images, configure the backend, and start the backend.
+When you run this command for the first time, it will download Docker images, configure the backend, create a Docker volume to persist the data named `volto-backend-data`, and start the backend.
+
+Subsequently, when you run `make backend-docker-start`, it will only start the backend using the existing configuration and Docker image and volume.
+
+````{note}
+If you would like to start the backend with a clean data volume, you can run the following command.
+
+```shell
+docker volume rm volto-backend-data
+```
+
+Then run `make backend-docker-start` again to start the backend with a clean data volume.
+````
+    
 Browse to the backend running at http://localhost:8080.
 
 In the second session, start the frontend.
@@ -352,7 +387,7 @@ pnpm --filter plone-vite-ssr dev
 
 ## Support libraries
 
-Volto uses serveral libraries to support development.
+Volto uses several libraries to support development.
 
 ### `volto-coresandbox`
 

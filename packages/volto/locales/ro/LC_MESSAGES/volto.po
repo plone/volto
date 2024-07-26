@@ -1866,7 +1866,7 @@ msgstr "Dimensiunea lotului obiectului"
 
 #. Default: "Item successfully moved."
 #: components/manage/Contents/Contents
-msgid "Item succesfully moved."
+msgid "Item successfully moved."
 msgstr "Obiectul a fost mutat cu succes."
 
 #. Default: "Item(s) copied."
