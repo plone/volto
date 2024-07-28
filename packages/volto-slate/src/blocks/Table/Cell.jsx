@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { EditorReference, SlateEditor } from '@plone/volto-slate/editor';
 import { ReactEditor } from 'slate-react';
@@ -15,14 +15,7 @@ const Cell = ({
   selectedCell,
 }) => {
   const [editor, setEditor] = useState(null);
-  const isUnmounted = useRef(false);
-  const tableblockExtensions = config.settings.slate.tableblockExtensions;
-
-  useEffect(() => {
-    return () => {
-      isUnmounted.current = true;
-    };
-  }, []);
+  const [isUnmounted, setIsUnmounted] = useState(false);
 
   useEffect(() => {
     if (
@@ -31,32 +24,45 @@ const Cell = ({
       row === 0 &&
       (!selectedCell || (selectedCell.row === 0 && selectedCell.cell === 0))
     ) {
-      onSelectCell(row, cell);
-
-      if (editor) {
-        setTimeout(() => {
-          if (!isUnmounted.current) {
-            ReactEditor.focus(editor);
-          }
-        }, 0);
+      if (selectedCell?.row !== row || selectedCell?.cell !== cell) {
+        onSelectCell(row, cell);
       }
     }
-  }, [isTableBlockSelected, cell, row, selectedCell, onSelectCell, editor]);
+  }, [isTableBlockSelected, cell, row, selectedCell, onSelectCell]);
 
-  const handleChange = (val) => {
-    onChange(row, cell, [...val]);
-  };
+  useEffect(() => {
+    if (editor && isTableBlockSelected && !isUnmounted) {
+      setTimeout(() => {
+        if (!isUnmounted) {
+          ReactEditor.focus(editor);
+        }
+      }, 0);
+    }
+  }, [editor, isTableBlockSelected, isUnmounted]);
 
-  const handleContainerFocus = () => {
+  useEffect(() => {
+    return () => {
+      setIsUnmounted(true);
+    };
+  }, []);
+
+  const handleChange = useCallback(
+    (val) => {
+      onChange(row, cell, [...val]);
+    },
+    [onChange, row, cell],
+  );
+
+  const handleContainerFocus = useCallback(() => {
     onSelectCell(row, cell);
-  };
+  }, [onSelectCell, row, cell]);
 
   return (
     __CLIENT__ && (
       <SlateEditor
         tabIndex={0}
         onChange={handleChange}
-        extensions={tableblockExtensions}
+        extensions={config.settings.slate.tableblockExtensions}
         value={value}
         selected={selected}
         onFocus={handleContainerFocus}
@@ -64,7 +70,7 @@ const Cell = ({
         debug={false}
       >
         <EditorReference
-          onHasEditor={(editorInstance) => !editor && setEditor(editorInstance)}
+          onHasEditor={(editor) => !editor && setEditor(editor)}
         />
       </SlateEditor>
     )
