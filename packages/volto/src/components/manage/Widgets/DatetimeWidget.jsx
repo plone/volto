@@ -1,8 +1,4 @@
-/**
- * DatetimeWidget component.
- * @module components/manage/Widgets/DatetimeWidget
- */
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { compose } from 'redux';
 import PropTypes from 'prop-types';
 import { defineMessages, injectIntl } from 'react-intl';
@@ -73,107 +69,88 @@ const defaultTimeDateOnly = {
   second: 0,
 };
 
-/**
- * DatetimeWidget component function
- * @function DatetimeWidgetComponent
- *
- * To use it, in schema properties, declare a field like:
- *
- * ```jsx
- * {
- *  title: "Publish date",
- *  type: 'datetime',
- * }
- * ```
- */
-const DatetimeWidgetComponent = ({
-  id,
-  resettable,
-  intl,
-  reactDates,
-  widgetOptions,
-  lang,
-  value,
-  onChange,
-  dateOnly,
-  noPastDates,
-  isDisabled,
-  moment: momentLib,
-  ...props
-}) => {
-  const moment = momentLib.default;
-
-  const initialInternalValue = useMemo(() => {
-    return parseDateTime(toBackendLang(lang), value, undefined, moment);
-  }, [lang, value, moment]);
+const DatetimeWidgetComponent = (props) => {
+  const {
+    id,
+    resettable,
+    intl,
+    reactDates,
+    widgetOptions,
+    lang,
+    moment,
+    value,
+    onChange,
+    dateOnly,
+    widget,
+    noPastDates: propNoPastDates,
+    isDisabled,
+  } = props;
 
   const [focused, setFocused] = useState(false);
-  const [isDefault, setIsDefault] = useState(
-    initialInternalValue?.toISOString() === moment().utc().toISOString(),
-  );
-
-  const getInternalValue = useCallback(() => {
-    return parseDateTime(toBackendLang(lang), value, undefined, moment);
-  }, [lang, value, moment]);
-
-  const getDateOnly = useCallback(() => {
-    return dateOnly || props.widget === 'date';
-  }, [dateOnly, props.widget]);
-
-  const handleDateChange = useCallback(
-    (date) => {
-      if (date) {
-        const base = (getInternalValue() || moment()).set({
-          year: date.year(),
-          month: date.month(),
-          date: date.date(),
-          ...(getDateOnly() ? defaultTimeDateOnly : {}),
-        });
-        const dateValue = getDateOnly()
-          ? base.format('YYYY-MM-DD')
-          : base.toISOString();
-        onChange(id, dateValue);
-      }
-      setIsDefault(false);
-    },
-    [getInternalValue, getDateOnly, onChange, id, moment],
-  );
-
-  const handleTimeChange = useCallback(
-    (time) => {
-      if (time) {
-        const base = (getInternalValue() || moment()).set({
-          hours: time?.hours() ?? 0,
-          minutes: time?.minutes() ?? 0,
-          seconds: 0,
-        });
-        const dateValue = base.toISOString();
-        onChange(id, dateValue);
-      }
-    },
-    [getInternalValue, onChange, id, moment],
-  );
-
-  const handleResetDates = useCallback(() => {
-    setIsDefault(false);
-    onChange(id, null);
-  }, [onChange, id]);
-
-  const handleFocusChange = useCallback(({ focused }) => {
-    setFocused(focused);
-  }, []);
-
-  useEffect(() => {
-    setIsDefault(
-      initialInternalValue?.toISOString() === moment().utc().toISOString(),
-    );
-  }, [initialInternalValue, moment]);
+  const [isDefault, setIsDefault] = useState(false);
 
   const { SingleDatePicker } = reactDates;
+
+  useEffect(() => {
+    const parsedDateTime = parseDateTime(
+      toBackendLang(lang),
+      value,
+      undefined,
+      moment.default,
+    );
+    setIsDefault(
+      parsedDateTime?.toISOString() === moment.default().utc().toISOString(),
+    );
+  }, [value, lang, moment]);
+
+  const getInternalValue = () => {
+    return parseDateTime(toBackendLang(lang), value, undefined, moment.default);
+  };
+
+  const getDateOnly = () => {
+    return dateOnly || widget === 'date';
+  };
+
+  const onDateChange = (date) => {
+    if (date) {
+      const isDateOnly = getDateOnly();
+      const base = (getInternalValue() || moment.default()).set({
+        year: date.year(),
+        month: date.month(),
+        date: date.date(),
+        ...(isDateOnly ? defaultTimeDateOnly : {}),
+      });
+      const dateValue = isDateOnly
+        ? base.format('YYYY-MM-DD')
+        : base.toISOString();
+      onChange(id, dateValue);
+    }
+    setIsDefault(false);
+  };
+
+  const onTimeChange = (time) => {
+    if (time) {
+      const base = (getInternalValue() || moment.default()).set({
+        hours: time?.hours() ?? 0,
+        minutes: time?.minutes() ?? 0,
+        seconds: 0,
+      });
+      const dateValue = base.toISOString();
+      onChange(id, dateValue);
+    }
+  };
+
+  const onResetDates = () => {
+    setIsDefault(false);
+    onChange(id, null);
+  };
+
+  const onFocusChange = ({ focused }) => setFocused(focused);
+
+  const noPastDates =
+    propNoPastDates || widgetOptions?.pattern_options?.noPastDates;
   const datetime = getInternalValue();
-  const dateOnlyValue = getDateOnly();
-  const noPastDatesValue =
-    noPastDates || widgetOptions?.pattern_options?.noPastDates;
+  const isDateOnly = getDateOnly();
 
   return (
     <FormFieldWrapper {...props}>
@@ -186,13 +163,13 @@ const DatetimeWidgetComponent = ({
           <SingleDatePicker
             date={datetime}
             disabled={isDisabled}
-            onDateChange={handleDateChange}
+            onDateChange={onDateChange}
             focused={focused}
             numberOfMonths={1}
-            {...(noPastDatesValue ? {} : { isOutsideRange: () => false })}
-            onFocusChange={handleFocusChange}
+            {...(noPastDates ? {} : { isOutsideRange: () => false })}
+            onFocusChange={onFocusChange}
             noBorder
-            displayFormat={moment
+            displayFormat={moment.default
               .localeData(toBackendLang(lang))
               .longDateFormat('L')}
             navPrev={<PrevIcon />}
@@ -201,7 +178,7 @@ const DatetimeWidgetComponent = ({
             placeholder={intl.formatMessage(messages.date)}
           />
         </div>
-        {!dateOnlyValue && (
+        {!isDateOnly && (
           <div
             className={cx('ui input time-input', {
               'default-date': isDefault,
@@ -211,12 +188,12 @@ const DatetimeWidgetComponent = ({
               disabled={isDisabled}
               defaultValue={datetime}
               value={datetime}
-              onChange={handleTimeChange}
+              onChange={onTimeChange}
               allowEmpty={false}
               showSecond={false}
               use12Hours={lang === 'en'}
               id={`${id}-time`}
-              format={moment
+              format={moment.default
                 .localeData(toBackendLang(lang))
                 .longDateFormat('LT')}
               placeholder={intl.formatMessage(messages.time)}
@@ -227,10 +204,9 @@ const DatetimeWidgetComponent = ({
         )}
         {resettable && (
           <button
-            // FF needs that the type is "button" in order to not POST the form
             type="button"
             disabled={isDisabled || !datetime}
-            onClick={handleResetDates}
+            onClick={onResetDates}
             className="item ui noborder button"
           >
             <Icon name={clearSVG} size="24px" className="close" />
@@ -241,11 +217,6 @@ const DatetimeWidgetComponent = ({
   );
 };
 
-/**
- * Property types.
- * @property {Object} propTypes Property types.
- * @static
- */
 DatetimeWidgetComponent.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
@@ -260,11 +231,6 @@ DatetimeWidgetComponent.propTypes = {
   resettable: PropTypes.bool,
 };
 
-/**
- * Default properties.
- * @property {Object} defaultProps Default properties.
- * @static
- */
 DatetimeWidgetComponent.defaultProps = {
   description: null,
   required: false,
