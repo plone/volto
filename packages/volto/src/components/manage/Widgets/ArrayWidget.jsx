@@ -148,42 +148,50 @@ const compareOption = (inputValue = '', option, accessors) => {
  * ```
  */
 
-const ArrayWidget = ({
-  id,
-  title,
-  description,
-  required,
-  error,
-  value,
-  onChange,
-  choices,
-  items,
-  vocabBaseUrl,
-  vocabLoading,
-  vocabLoaded,
-  getVocabulary,
-  disabled,
-  isDisabled,
-  focus,
-  placeholder,
-  default: defaultValue,
-  noValueOption,
-  reactSelectCreateable,
-  reactSortableHOC,
-  reactSelect,
-  lang,
-  creatable,
-}) => {
+const ArrayWidget = (props) => {
+  const {
+    id,
+    value,
+    onChange,
+    choices,
+    items,
+    vocabBaseUrl,
+    vocabLoading,
+    vocabLoaded,
+    getVocabulary,
+    disabled,
+    isDisabled,
+    focus,
+    placeholder,
+    default: defaultValue,
+    noValueOption,
+    reactSelectCreateable,
+    reactSortableHOC,
+    reactSelect,
+    lang,
+    creatable,
+  } = props;
+
   const intl = useIntl();
 
   // Effect to fetch vocabulary if needed
   useEffect(() => {
+    if (!items?.choices?.length && !choices?.length && vocabBaseUrl) {
+      getVocabulary({
+        vocabNameOrURL: vocabBaseUrl,
+        size: -1,
+        subrequest: lang,
+      });
+    }
+  }, [items, choices, vocabBaseUrl, lang, getVocabulary]);
+
+  useEffect(() => {
     if (
       !items?.choices?.length &&
       !choices?.length &&
-      vocabBaseUrl &&
       vocabLoading === undefined &&
-      !vocabLoaded
+      !vocabLoaded &&
+      vocabBaseUrl
     ) {
       getVocabulary({
         vocabNameOrURL: vocabBaseUrl,
@@ -194,9 +202,9 @@ const ArrayWidget = ({
   }, [
     items,
     choices,
-    vocabBaseUrl,
     vocabLoading,
     vocabLoaded,
+    vocabBaseUrl,
     lang,
     getVocabulary,
   ]);
@@ -253,13 +261,7 @@ const ArrayWidget = ({
       : SortableContainer(CreatableSelect);
 
   return (
-    <FormFieldWrapper
-      id={id}
-      title={title}
-      description={description}
-      required={required}
-      error={error}
-    >
+    <FormFieldWrapper {...props}>
       <SortableSelect
         useDragHandle
         // react-sortable-hoc props:
@@ -338,10 +340,6 @@ const ArrayWidget = ({
 
 ArrayWidget.propTypes = {
   id: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string,
-  required: PropTypes.bool,
-  error: PropTypes.arrayOf(PropTypes.string),
   getVocabulary: PropTypes.func.isRequired,
   choices: PropTypes.arrayOf(
     PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
@@ -364,8 +362,6 @@ ArrayWidget.propTypes = {
 };
 
 ArrayWidget.defaultProps = {
-  description: null,
-  required: false,
   items: {
     vocabulary: null,
   },
