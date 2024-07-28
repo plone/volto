@@ -3,7 +3,7 @@
  * @module components/manage/Controlpanels/UsersControlpanelGroups
  */
 import PropTypes from 'prop-types';
-import React from 'react'
+import React from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { Dropdown, Table, Checkbox } from 'semantic-ui-react';
 import trashSVG from '@plone/volto/icons/delete.svg';
@@ -15,14 +15,8 @@ import { canAssignRole } from '@plone/volto/helpers';
  * RenderGroups functional component.
  */
 const RenderGroups = (props) => {
-  const {
-    group,
-    roles,
-    inheritedRole,
-    onDelete,
-    isUserManager,
-    updateGroups,
-  } = props;
+const { group, roles, inheritedRole, onDelete, isUserManager, updateGroups } =
+  props;
 
   /**
    * @param {*} event
