@@ -3,7 +3,7 @@
  * @module components/manage/Controlpanels/UsersControlpanelGroups
  */
 import PropTypes from 'prop-types';
-import React from 'react';
+import React from 'react'
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { Dropdown, Table, Checkbox } from 'semantic-ui-react';
 import trashSVG from '@plone/volto/icons/delete.svg';
