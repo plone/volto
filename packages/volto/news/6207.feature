@@ -1,0 +1,1 @@
+Refactor the `ModerateComments.jsx` component from a class component to a functional component. @BhavishyaSahay
