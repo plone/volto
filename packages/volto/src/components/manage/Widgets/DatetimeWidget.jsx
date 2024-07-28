@@ -2,7 +2,7 @@
  * DatetimeWidget component.
  * @module components/manage/Widgets/DatetimeWidget
  */
-import React, { Component } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { compose } from 'redux';
 import PropTypes from 'prop-types';
 import { defineMessages, injectIntl } from 'react-intl';
@@ -50,6 +50,7 @@ const PrevIcon = () => (
     <Icon name={leftKey} size="30px" />
   </div>
 );
+
 const NextIcon = () => (
   <div
     style={{
@@ -73,9 +74,8 @@ const defaultTimeDateOnly = {
 };
 
 /**
- * DatetimeWidget component class
- * @class DatetimeWidget
- * @extends Component
+ * DatetimeWidget component function
+ * @function DatetimeWidgetComponent
  *
  * To use it, in schema properties, declare a field like:
  *
@@ -86,175 +86,160 @@ const defaultTimeDateOnly = {
  * }
  * ```
  */
-export class DatetimeWidgetComponent extends Component {
-  /**
-   * Constructor
-   * @method constructor
-   * @param {Object} props Component properties
-   * @constructs DatetimeWidget
-   */
-  constructor(props) {
-    super(props);
-    this.moment = props.moment.default;
+const DatetimeWidgetComponent = ({
+  id,
+  resettable,
+  intl,
+  reactDates,
+  widgetOptions,
+  lang,
+  value,
+  onChange,
+  dateOnly,
+  noPastDates,
+  isDisabled,
+  moment: momentLib,
+  ...props
+}) => {
+  const moment = momentLib.default;
 
-    this.state = {
-      focused: false,
-      // if passed value matches the construction time, we guess it's a default
-      isDefault:
-        parseDateTime(
-          toBackendLang(this.props.lang),
-          this.props.value,
-          undefined,
-          this.moment,
-        )?.toISOString() === this.moment().utc().toISOString(),
-    };
-  }
+  const initialInternalValue = useMemo(() => {
+    return parseDateTime(toBackendLang(lang), value, undefined, moment);
+  }, [lang, value, moment]);
 
-  getInternalValue() {
-    return parseDateTime(
-      toBackendLang(this.props.lang),
-      this.props.value,
-      undefined,
-      this.moment,
+  const [focused, setFocused] = useState(false);
+  const [isDefault, setIsDefault] = useState(
+    initialInternalValue?.toISOString() === moment().utc().toISOString(),
+  );
+
+  const getInternalValue = useCallback(() => {
+    return parseDateTime(toBackendLang(lang), value, undefined, moment);
+  }, [lang, value, moment]);
+
+  const getDateOnly = useCallback(() => {
+    return dateOnly || props.widget === 'date';
+  }, [dateOnly, props.widget]);
+
+  const handleDateChange = useCallback(
+    (date) => {
+      if (date) {
+        const base = (getInternalValue() || moment()).set({
+          year: date.year(),
+          month: date.month(),
+          date: date.date(),
+          ...(getDateOnly() ? defaultTimeDateOnly : {}),
+        });
+        const dateValue = getDateOnly()
+          ? base.format('YYYY-MM-DD')
+          : base.toISOString();
+        onChange(id, dateValue);
+      }
+      setIsDefault(false);
+    },
+    [getInternalValue, getDateOnly, onChange, id, moment],
+  );
+
+  const handleTimeChange = useCallback(
+    (time) => {
+      if (time) {
+        const base = (getInternalValue() || moment()).set({
+          hours: time?.hours() ?? 0,
+          minutes: time?.minutes() ?? 0,
+          seconds: 0,
+        });
+        const dateValue = base.toISOString();
+        onChange(id, dateValue);
+      }
+    },
+    [getInternalValue, onChange, id, moment],
+  );
+
+  const handleResetDates = useCallback(() => {
+    setIsDefault(false);
+    onChange(id, null);
+  }, [onChange, id]);
+
+  const handleFocusChange = useCallback(({ focused }) => {
+    setFocused(focused);
+  }, []);
+
+  useEffect(() => {
+    setIsDefault(
+      initialInternalValue?.toISOString() === moment().utc().toISOString(),
     );
-  }
+  }, [initialInternalValue, moment]);
 
-  getDateOnly() {
-    return this.props.dateOnly || this.props.widget === 'date';
-  }
+  const { SingleDatePicker } = reactDates;
+  const datetime = getInternalValue();
+  const dateOnlyValue = getDateOnly();
+  const noPastDatesValue =
+    noPastDates || widgetOptions?.pattern_options?.noPastDates;
 
-  /**
-   * Update date storage
-   * @method onDateChange
-   * @param {Object} date updated momentjs Object for date
-   * @returns {undefined}
-   */
-  onDateChange = (date) => {
-    if (date) {
-      const moment = this.props.moment.default;
-      const isDateOnly = this.getDateOnly();
-      const base = (this.getInternalValue() || moment()).set({
-        year: date.year(),
-        month: date.month(),
-        date: date.date(),
-        ...(isDateOnly ? defaultTimeDateOnly : {}),
-      });
-      const dateValue = isDateOnly
-        ? base.format('YYYY-MM-DD')
-        : base.toISOString();
-      this.props.onChange(this.props.id, dateValue);
-    }
-    this.setState({ isDefault: false });
-  };
-
-  /**
-   * Update date storage
-   * @method onTimeChange
-   * @param {Object} time updated momentjs Object for time
-   * @returns {undefined}
-   */
-  onTimeChange = (time) => {
-    const moment = this.props.moment.default;
-    if (time) {
-      const base = (this.getInternalValue() || moment()).set({
-        hours: time?.hours() ?? 0,
-        minutes: time?.minutes() ?? 0,
-        seconds: 0,
-      });
-      const dateValue = base.toISOString();
-      this.props.onChange(this.props.id, dateValue);
-    }
-  };
-
-  onResetDates = () => {
-    this.setState({ isDefault: false });
-    this.props.onChange(this.props.id, null);
-  };
-
-  /**
-   * Handle SingleDatePicker focus
-   * @method onFocusChange
-   * @param {boolean} focused component focus state.
-   * @returns {undefined}
-   */
-  onFocusChange = ({ focused }) => this.setState({ focused });
-
-  render() {
-    const { id, resettable, intl, reactDates, widgetOptions, lang } =
-      this.props;
-    const noPastDates =
-      this.props.noPastDates || widgetOptions?.pattern_options?.noPastDates;
-    const moment = this.props.moment.default;
-    const datetime = this.getInternalValue();
-    const dateOnly = this.getDateOnly();
-    const { SingleDatePicker } = reactDates;
-
-    return (
-      <FormFieldWrapper {...this.props}>
-        <div className="date-time-widget-wrapper">
+  return (
+    <FormFieldWrapper {...props}>
+      <div className="date-time-widget-wrapper">
+        <div
+          className={cx('ui input date-input', {
+            'default-date': isDefault,
+          })}
+        >
+          <SingleDatePicker
+            date={datetime}
+            disabled={isDisabled}
+            onDateChange={handleDateChange}
+            focused={focused}
+            numberOfMonths={1}
+            {...(noPastDatesValue ? {} : { isOutsideRange: () => false })}
+            onFocusChange={handleFocusChange}
+            noBorder
+            displayFormat={moment
+              .localeData(toBackendLang(lang))
+              .longDateFormat('L')}
+            navPrev={<PrevIcon />}
+            navNext={<NextIcon />}
+            id={`${id}-date`}
+            placeholder={intl.formatMessage(messages.date)}
+          />
+        </div>
+        {!dateOnlyValue && (
           <div
-            className={cx('ui input date-input', {
-              'default-date': this.state.isDefault,
+            className={cx('ui input time-input', {
+              'default-date': isDefault,
             })}
           >
-            <SingleDatePicker
-              date={datetime}
-              disabled={this.props.isDisabled}
-              onDateChange={this.onDateChange}
-              focused={this.state.focused}
-              numberOfMonths={1}
-              {...(noPastDates ? {} : { isOutsideRange: () => false })}
-              onFocusChange={this.onFocusChange}
-              noBorder
-              displayFormat={moment
+            <TimePicker
+              disabled={isDisabled}
+              defaultValue={datetime}
+              value={datetime}
+              onChange={handleTimeChange}
+              allowEmpty={false}
+              showSecond={false}
+              use12Hours={lang === 'en'}
+              id={`${id}-time`}
+              format={moment
                 .localeData(toBackendLang(lang))
-                .longDateFormat('L')}
-              navPrev={<PrevIcon />}
-              navNext={<NextIcon />}
-              id={`${id}-date`}
-              placeholder={intl.formatMessage(messages.date)}
+                .longDateFormat('LT')}
+              placeholder={intl.formatMessage(messages.time)}
+              focusOnOpen
+              placement="bottomRight"
             />
           </div>
-          {!dateOnly && (
-            <div
-              className={cx('ui input time-input', {
-                'default-date': this.state.isDefault,
-              })}
-            >
-              <TimePicker
-                disabled={this.props.isDisabled}
-                defaultValue={datetime}
-                value={datetime}
-                onChange={this.onTimeChange}
-                allowEmpty={false}
-                showSecond={false}
-                use12Hours={lang === 'en'}
-                id={`${id}-time`}
-                format={moment
-                  .localeData(toBackendLang(lang))
-                  .longDateFormat('LT')}
-                placeholder={intl.formatMessage(messages.time)}
-                focusOnOpen
-                placement="bottomRight"
-              />
-            </div>
-          )}
-          {resettable && (
-            <button
-              // FF needs that the type is "button" in order to not POST the form
-              type="button"
-              disabled={this.props.isDisabled || !datetime}
-              onClick={() => this.onResetDates()}
-              className="item ui noborder button"
-            >
-              <Icon name={clearSVG} size="24px" className="close" />
-            </button>
-          )}
-        </div>
-      </FormFieldWrapper>
-    );
-  }
-}
+        )}
+        {resettable && (
+          <button
+            // FF needs that the type is "button" in order to not POST the form
+            type="button"
+            disabled={isDisabled || !datetime}
+            onClick={handleResetDates}
+            className="item ui noborder button"
+          >
+            <Icon name={clearSVG} size="24px" className="close" />
+          </button>
+        )}
+      </div>
+    </FormFieldWrapper>
+  );
+};
 
 /**
  * Property types.
