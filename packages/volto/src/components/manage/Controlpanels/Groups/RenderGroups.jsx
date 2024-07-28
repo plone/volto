@@ -2,27 +2,21 @@
  * Users controlpanel groups.
  * @module components/manage/Controlpanels/UsersControlpanelGroups
  */
-import PropTypes from 'prop-types';
-import React from 'react'
-import { FormattedMessage, injectIntl } from 'react-intl';
-import { Dropdown, Table, Checkbox } from 'semantic-ui-react';
-import trashSVG from '@plone/volto/icons/delete.svg';
-import ploneSVG from '@plone/volto/icons/plone.svg';
-import { Icon } from '@plone/volto/components';
-import { canAssignRole } from '@plone/volto/helpers';
+import PropTypes from "prop-types";
+import React from "react";
+import { FormattedMessage, injectIntl } from "react-intl";
+import { Dropdown, Table, Checkbox } from "semantic-ui-react";
+import trashSVG from "@plone/volto/icons/delete.svg";
+import ploneSVG from "@plone/volto/icons/plone.svg";
+import { Icon } from "@plone/volto/components";
+import { canAssignRole } from "@plone/volto/helpers";
 
 /**
  * RenderGroups functional component.
  */
 const RenderGroups = (props) => {
-  const {
-    group,
-    roles,
-    inheritedRole,
-    onDelete,
-    isUserManager,
-    updateGroups,
-  } = props;
+  const { group, roles, inheritedRole, onDelete, isUserManager, updateGroups } =
+    props;
 
   /**
    * @param {*} event
@@ -30,7 +24,7 @@ const RenderGroups = (props) => {
    * @memberof UsersControlpanelUser
    */
   const onChange = (event, { value }) => {
-    const [group, role] = value.split('&role=');
+    const [group, role] = value.split("&role=");
     updateGroups(group, role);
   };
 
@@ -45,7 +39,7 @@ const RenderGroups = (props) => {
 
   const canDeleteGroup = () => {
     if (isUserManager) return true;
-    return !group.roles.includes('Manager');
+    return !group.roles.includes("Manager");
   };
 
   return (
@@ -55,17 +49,17 @@ const RenderGroups = (props) => {
         <Table.Cell key={role.id}>
           {inheritedRole &&
           inheritedRole.includes(role.id) &&
-          group.roles.includes('Authenticated') ? (
+          group.roles.includes("Authenticated") ? (
             <Icon
               name={ploneSVG}
               size="20px"
               color="#007EB1"
-              title={'plone-svg'}
+              title={"plone-svg"}
             />
           ) : (
             <Checkbox
               checked={
-                group.id === 'AuthenticatedUsers'
+                group.id === "AuthenticatedUsers"
                   ? isAuthGroup(role.id)
                   : group.roles.includes(role.id)
               }
@@ -80,7 +74,7 @@ const RenderGroups = (props) => {
         {canDeleteGroup() && (
           <Dropdown icon="ellipsis horizontal">
             <Dropdown.Menu className="left">
-              <Dropdown.Item onClick={onDelete} value={group['@id']}>
+              <Dropdown.Item onClick={onDelete} value={group["@id"]}>
                 <Icon name={trashSVG} size="15px" />
                 <FormattedMessage id="Delete" defaultMessage="Delete" />
               </Dropdown.Item>
@@ -104,7 +98,7 @@ RenderGroups.propTypes = {
   roles: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string,
-    })
+    }),
   ).isRequired,
   inheritedRole: PropTypes.array,
   onDelete: PropTypes.func.isRequired,
