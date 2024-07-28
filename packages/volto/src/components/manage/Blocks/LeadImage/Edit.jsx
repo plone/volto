@@ -1,12 +1,7 @@
-/**
- * Edit image block.
- * @module components/manage/Blocks/Image/Edit
- */
-
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
-import { defineMessages, injectIntl } from 'react-intl';
+import { defineMessages, useIntl } from 'react-intl';
 import cx from 'classnames';
 import { Message } from 'semantic-ui-react';
 import { isEqual } from 'lodash';
@@ -23,67 +18,16 @@ const messages = defineMessages({
   },
 });
 
-/**
- * Edit image block class.
- * @class Edit
- * @extends Component
- */
-class Edit extends Component {
-  /**
-   * Property types.
-   * @property {Object} propTypes Property types.
-   * @static
-   */
-  static propTypes = {
-    properties: PropTypes.objectOf(PropTypes.any).isRequired,
-    selected: PropTypes.bool.isRequired,
-    block: PropTypes.string.isRequired,
-    index: PropTypes.number.isRequired,
-    data: PropTypes.objectOf(PropTypes.any).isRequired,
-    pathname: PropTypes.string.isRequired,
-    onChangeBlock: PropTypes.func.isRequired,
-    openObjectBrowser: PropTypes.func.isRequired,
-  };
+const Edit = React.memo(
+  (props) => {
+    const { properties, selected, data } = props;
 
-  /**
-   * Align block handler
-   * @method onAlignBlock
-   * @param {string} align Alignment option
-   * @returns {undefined}
-   */
-  onAlignBlock(align) {
-    this.props.onChangeBlock(this.props.block, {
-      ...this.props.data,
-      align,
-    });
-  }
+    const intl = useIntl();
 
-  /**
-   * @param {*} nextProps
-   * @returns {boolean}
-   * @memberof Edit
-   */
-  shouldComponentUpdate(nextProps) {
-    return (
-      this.props.selected ||
-      nextProps.selected ||
-      !isEqual(this.props.data, nextProps.data)
-    );
-  }
-
-  node = React.createRef();
-
-  /**
-   * Render method.
-   * @method render
-   * @returns {string} Markup for the component.
-   */
-  render() {
     const Image = config.getComponent({ name: 'Image' }).component;
-    const { data, properties } = this.props;
     const placeholder =
-      this.props.data.placeholder ||
-      this.props.intl.formatMessage(messages.ImageBlockInputPlaceholder);
+      data.placeholder ||
+      intl.formatMessage(messages.ImageBlockInputPlaceholder);
 
     const hasImage = !!properties.image;
     const hasImageData = hasImage && !!properties.image.data;
@@ -135,12 +79,29 @@ class Edit extends Component {
             alt={altText}
           />
         )}
-        <SidebarPortal selected={this.props.selected}>
-          <LeadImageSidebar {...this.props} />
+        <SidebarPortal selected={selected}>
+          <LeadImageSidebar {...props} />
         </SidebarPortal>
       </div>
     );
-  }
-}
+  },
+  (prevProps, nextProps) => {
+    return (
+      prevProps.selected === nextProps.selected &&
+      isEqual(prevProps.data, nextProps.data)
+    );
+  },
+);
 
-export default compose(injectIntl)(Edit);
+Edit.propTypes = {
+  properties: PropTypes.objectOf(PropTypes.any).isRequired,
+  selected: PropTypes.bool.isRequired,
+  block: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
+  data: PropTypes.objectOf(PropTypes.any).isRequired,
+  pathname: PropTypes.string.isRequired,
+  onChangeBlock: PropTypes.func.isRequired,
+  openObjectBrowser: PropTypes.func.isRequired,
+};
+
+export default compose()(Edit);
