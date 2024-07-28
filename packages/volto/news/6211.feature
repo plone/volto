@@ -1,0 +1,1 @@
+Refactored SelectAutoComplete from class-based component to functional component. @codic-yeeshu
