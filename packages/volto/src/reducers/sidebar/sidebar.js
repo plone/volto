@@ -6,9 +6,10 @@
 import { union } from 'lodash';
 
 import {
+  RESET_METADATA_FOCUS,
   SET_METADATA_FIELDSETS,
   SET_METADATA_FOCUS,
-  RESET_METADATA_FOCUS,
+  SET_SIDEBAR_EXPANDED,
   SET_SIDEBAR_TAB,
 } from '@plone/volto/constants/ActionTypes';
 
@@ -47,6 +48,11 @@ export default function sidebar(state = initialState, action = {}) {
       return {
         ...state,
         tab: action.index,
+      };
+    case SET_SIDEBAR_EXPANDED:
+      return {
+        ...state,
+        expanded: action.isExpanded,
       };
     default:
       return state;

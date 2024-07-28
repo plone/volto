@@ -1,15 +1,17 @@
-import React, { useState, Fragment, useCallback } from 'react';
+import { setSidebarExpanded, setSidebarTab } from '@plone/volto/actions';
+import { Icon } from '@plone/volto/components';
+import { BodyClass, getCookieOptions } from '@plone/volto/helpers';
+import cx from 'classnames';
 import PropTypes from 'prop-types';
-import { Button, Tab } from 'semantic-ui-react';
-import { useDispatch, useSelector } from 'react-redux';
-import { compose } from 'redux';
+import { Fragment, useCallback, useState } from 'react';
 import { withCookies } from 'react-cookie';
 import { defineMessages, useIntl } from 'react-intl';
-import cx from 'classnames';
-import { BodyClass, getCookieOptions } from '@plone/volto/helpers';
-import { Icon } from '@plone/volto/components';
+import { useDispatch, useSelector } from 'react-redux';
+import { compose } from 'redux';
+import { Button, Tab } from 'semantic-ui-react';
+
+import clearSVG from '@plone/volto/icons/clear.svg';
 import forbiddenSVG from '@plone/volto/icons/forbidden.svg';
-import { setSidebarTab } from '@plone/volto/actions';
 import expandSVG from '@plone/volto/icons/left-key.svg';
 import collapseSVG from '@plone/volto/icons/right-key.svg';
 
@@ -51,9 +53,8 @@ const Sidebar = (props) => {
     settingsTab,
     orderTab = true,
   } = props;
-  const [expanded, setExpanded] = useState(
-    cookies.get('sidebar_expanded') !== 'false',
-  );
+  const expanded = useSelector((state) => state.sidebar.expanded ?? true);
+
   const [size] = useState(0);
   const [showFull, setshowFull] = useState(true);
 
@@ -63,7 +64,7 @@ const Sidebar = (props) => {
 
   const onToggleExpanded = () => {
     cookies.set('sidebar_expanded', !expanded, getCookieOptions());
-    setExpanded(!expanded);
+    dispatch(setSidebarExpanded(!expanded));
     resetFullSizeSidebar();
   };
 
@@ -133,6 +134,13 @@ const Sidebar = (props) => {
             className="full-size-icon"
             name={showFull ? expandSVG : collapseSVG}
           />
+        </Button>
+        <Button
+          className="close-sidenav-btn"
+          aria-label={intl.formatMessage(messages.shrinkSidebar)}
+          onClick={onToggleExpanded}
+        >
+          <Icon name={clearSVG} />
         </Button>
         <Tab
           menu={{

@@ -1387,6 +1387,7 @@ msgid "Existing alternative urls for this item"
 msgstr "Alias disponibles para este elemento"
 
 #. Default: "Expand sidebar"
+#: components/manage/Form/SidebarToggleButton
 #: components/manage/Sidebar/Sidebar
 msgid "Expand sidebar"
 msgstr "Expandir barra lateral"
@@ -3321,6 +3322,7 @@ msgid "Show total results"
 msgstr "Mostrar resultados totales"
 
 #. Default: "Shrink sidebar"
+#: components/manage/Form/SidebarToggleButton
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
 msgstr "Contraer barra lateral"
