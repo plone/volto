@@ -793,7 +793,8 @@ class Form extends Component {
                 history={this.props.history}
                 location={this.props.location}
                 token={this.props.token}
-                errors={this.state.errors.blocks}
+                errors={this.state.errors}
+                blocksErrors={this.state.errors.blocks}
               />
               {this.state.isClient &&
                 this.state.sidebarMetadataIsAvailable &&
