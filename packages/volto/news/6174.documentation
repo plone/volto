@@ -1,0 +1,1 @@
+Use relative links to ensure static files get copied during documentation build. @stevepiercy
