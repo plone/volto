@@ -1,0 +1,2 @@
+Allow `ImageWidget` value to be an object and use the `@id` to get the value if present. 
+This is useful for fields that were using the `object_browser` widget previously to set values. @ichim-david
