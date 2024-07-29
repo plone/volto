@@ -1,0 +1,1 @@
+Refactor the table of contents block component from a class component to a functional component. @Prince0906
