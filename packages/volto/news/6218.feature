@@ -1,0 +1,1 @@
+Refactored `SelectWidget` from class-based to functional-based component. @codic-yeeshu

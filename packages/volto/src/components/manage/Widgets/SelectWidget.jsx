@@ -1,14 +1,9 @@
-/**
- * SelectWidget component.
- * @module components/manage/Widgets/SelectWidget
- */
-
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { map } from 'lodash';
-import { defineMessages, injectIntl } from 'react-intl';
+import { defineMessages, useIntl } from 'react-intl';
 import {
   getVocabFromHint,
   getVocabFromField,
@@ -76,199 +71,151 @@ const messages = defineMessages({
   },
 });
 
-/**
- * SelectWidget component class.
- * @function SelectWidget
- * @returns {string} Markup of the component.
- */
-class SelectWidget extends Component {
-  /**
-   * Property types.
-   * @property {Object} propTypes Property types.
-   * @static
-   */
-  static propTypes = {
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string,
-    required: PropTypes.bool,
-    error: PropTypes.arrayOf(PropTypes.string),
-    getVocabulary: PropTypes.func.isRequired,
-    getVocabularyTokenTitle: PropTypes.func.isRequired,
-    choices: PropTypes.arrayOf(
-      PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
-    ),
-    items: PropTypes.shape({
-      vocabulary: PropTypes.object,
-    }),
-    widgetOptions: PropTypes.shape({
-      vocabulary: PropTypes.object,
-    }),
-    value: PropTypes.oneOfType([
-      PropTypes.object,
-      PropTypes.string,
-      PropTypes.bool,
-      PropTypes.func,
-      PropTypes.array,
-    ]),
-    onChange: PropTypes.func.isRequired,
-    onBlur: PropTypes.func,
-    onClick: PropTypes.func,
-    onEdit: PropTypes.func,
-    onDelete: PropTypes.func,
-    wrapped: PropTypes.bool,
-    noValueOption: PropTypes.bool,
-    customOptionStyling: PropTypes.any,
-    isMulti: PropTypes.bool,
-    placeholder: PropTypes.string,
-  };
+const SelectWidget = (props) => {
+  const {
+    id,
+    title,
+    required,
+    description,
+    error,
+    value,
+    onChange,
+    onBlur,
+    onClick,
+    choices,
+    isDisabled,
+    getVocabulary,
+    getVocabularyTokenTitle,
+    vocabBaseUrl,
+    reactSelect,
+    noValueOption,
+    placeholder,
+    customOptionStyling,
+    isMulti,
+    type,
+    lang,
+    ...rest
+  } = props;
 
-  /**
-   * Default properties
-   * @property {Object} defaultProps Default properties.
-   * @static
-   */
-  static defaultProps = {
-    description: null,
-    required: false,
-    items: {
-      vocabulary: null,
-    },
-    widgetOptions: {
-      vocabulary: null,
-    },
-    error: [],
-    choices: [],
-    value: null,
-    onChange: () => {},
-    onBlur: () => {},
-    onClick: () => {},
-    onEdit: null,
-    onDelete: null,
-    noValueOption: true,
-    customOptionStyling: null,
-  };
+  const intl = useIntl();
+  const Select = reactSelect.default;
 
-  /**
-   * Component did mount
-   * @method componentDidMount
-   * @returns {undefined}
-   */
-  componentDidMount() {
-    if (
-      (!this.props.choices || this.props.choices?.length === 0) &&
-      this.props.vocabBaseUrl
-    ) {
-      this.props.getVocabulary({
-        vocabNameOrURL: this.props.vocabBaseUrl,
+  useEffect(() => {
+    if ((!choices || choices?.length === 0) && vocabBaseUrl) {
+      getVocabulary({
+        vocabNameOrURL: vocabBaseUrl,
         size: -1,
-        subrequest: this.props.lang,
+        subrequest: lang,
       });
     }
-  }
+  }, [choices, vocabBaseUrl, getVocabulary, lang]);
 
-  componentDidUpdate(prevProps) {
-    if (
-      this.props.vocabBaseUrl !== prevProps.vocabBaseUrl &&
-      (!this.props.choices || this.props.choices?.length === 0)
-    ) {
-      this.props.getVocabulary({
-        vocabNameOrURL: this.props.vocabBaseUrl,
-        size: -1,
-        subrequest: this.props.lang,
-      });
-    }
-  }
+  const normalizedValue = normalizeValue(choices, value, intl);
 
-  /**
-   * Render method.
-   * @method render
-   * @returns {string} Markup for the component.
-   */
-  render() {
-    const { id, choices, value, intl, onChange } = this.props;
-    const normalizedValue = normalizeValue(choices, value, intl);
-    // Make sure that both disabled and isDisabled (from the DX layout feat work)
-    const disabled = this.props.disabled || this.props.isDisabled;
-    const Select = this.props.reactSelect.default;
+  let options = vocabBaseUrl
+    ? choices
+    : [
+        ...map(choices, (option) => ({
+          value: option[0],
+          label: option[1] !== 'None' && option[1] ? option[1] : option[0],
+        })),
+        ...(noValueOption &&
+        (props.default === undefined || props.default === null)
+          ? [
+              {
+                label: intl.formatMessage(messages.no_value),
+                value: 'no-value',
+              },
+            ]
+          : []),
+      ];
 
-    let options = this.props.vocabBaseUrl
-      ? this.props.choices
-      : [
-          ...map(choices, (option) => ({
-            value: option[0],
-            label:
-              // Fix "None" on the serializer, to remove when fixed in p.restapi
-              option[1] !== 'None' && option[1] ? option[1] : option[0],
-          })),
-          // Only set "no-value" option if there's no default in the field
-          // TODO: also if this.props.defaultValue?
-          ...(this.props.noValueOption &&
-          (this.props.default === undefined || this.props.default === null)
-            ? [
-                {
-                  label: this.props.intl.formatMessage(messages.no_value),
-                  value: 'no-value',
-                },
-              ]
-            : []),
-        ];
+  const isMultiSelect = isMulti
+    ? isMulti
+    : id === 'roles' || id === 'groups' || type === 'array';
 
-    const isMulti = this.props.isMulti
-      ? this.props.isMulti
-      : id === 'roles' || id === 'groups' || this.props.type === 'array';
-
-    return (
-      <FormFieldWrapper {...this.props}>
-        <Select
-          id={`field-${id}`}
-          key={choices}
-          name={id}
-          menuShouldScrollIntoView={false}
-          isDisabled={disabled}
-          isSearchable={true}
-          className="react-select-container"
-          classNamePrefix="react-select"
-          isMulti={isMulti}
-          options={options}
-          styles={customSelectStyles}
-          theme={selectTheme}
-          components={{
-            ...(options?.length > 25 && {
-              MenuList,
-            }),
-            MultiValueContainer,
-            DropdownIndicator,
-            ClearIndicator,
-            Option: this.props.customOptionStyling || Option,
-          }}
-          value={normalizedValue}
-          placeholder={
-            this.props.placeholder ??
-            this.props.intl.formatMessage(messages.select)
-          }
-          onChange={(selectedOption) => {
-            if (isMulti) {
-              return onChange(
-                id,
-                selectedOption.map((el) => el.value),
-              );
-            }
-            return onChange(
+  return (
+    <FormFieldWrapper
+      id={id}
+      title={title}
+      required={required}
+      description={description}
+      error={error}
+      {...rest}
+    >
+      <Select
+        id={`field-${id}`}
+        name={id}
+        className="react-select-container"
+        classNamePrefix="react-select"
+        isDisabled={isDisabled}
+        isMulti={isMultiSelect}
+        options={options}
+        styles={customSelectStyles}
+        theme={selectTheme}
+        components={{
+          ...(options?.length > 25 && { MenuList }),
+          MultiValueContainer,
+          DropdownIndicator,
+          ClearIndicator,
+          Option: customOptionStyling || Option,
+        }}
+        value={normalizedValue}
+        placeholder={placeholder ?? intl.formatMessage(messages.select)}
+        onChange={(selectedOption) => {
+          if (isMultiSelect) {
+            onChange(
+              id,
+              selectedOption ? selectedOption.map((item) => item.value) : [],
+            );
+          } else {
+            onChange(
               id,
               selectedOption && selectedOption.value !== 'no-value'
                 ? selectedOption.value
                 : undefined,
             );
-          }}
-          isClearable
-        />
-      </FormFieldWrapper>
-    );
-  }
-}
+          }
+        }}
+        onBlur={onBlur}
+        onClick={onClick}
+        isClearable
+      />
+    </FormFieldWrapper>
+  );
+};
 
-export const SelectWidgetComponent = injectIntl(SelectWidget);
+SelectWidget.propTypes = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string,
+  required: PropTypes.bool,
+  error: PropTypes.arrayOf(PropTypes.string),
+  value: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.string,
+    PropTypes.bool,
+    PropTypes.array,
+  ]),
+  choices: PropTypes.arrayOf(
+    PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  ),
+  onChange: PropTypes.func.isRequired,
+  onBlur: PropTypes.func,
+  onClick: PropTypes.func,
+  wrapped: PropTypes.bool,
+  noValueOption: PropTypes.bool,
+  isMulti: PropTypes.bool,
+  type: PropTypes.string,
+};
+
+SelectWidget.defaultProps = {
+  description: null,
+  required: false,
+  error: [],
+  choices: [],
+  noValueOption: true,
+};
 
 export default compose(
   injectLazyLibs(['reactSelect']),
@@ -283,8 +230,6 @@ export default compose(
       const vocabState =
         state.vocabularies?.[vocabBaseUrl]?.subrequests?.[state.intl.locale];
 
-      // If the schema already has the choices in it, then do not try to get the vocab,
-      // even if there is one
       if (props.choices) {
         return {
           choices: props.choices,
@@ -296,8 +241,6 @@ export default compose(
           choices: vocabState?.items ?? [],
           lang: state.intl.locale,
         };
-        // There is a moment that vocabState is not there yet, so we need to pass the
-        // vocabBaseUrl to the component.
       } else if (vocabBaseUrl) {
         return {
           vocabBaseUrl,
@@ -308,4 +251,4 @@ export default compose(
     },
     { getVocabulary, getVocabularyTokenTitle },
   ),
-)(SelectWidgetComponent);
+)(SelectWidget);
