@@ -3,7 +3,7 @@ import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { defineMessages, useIntl } from 'react-intl';
 import qs from 'query-string';
-import { Login, Toast } from '@plone/volto/components';
+import { Toast } from '@plone/volto/components';
 import { logout, purgeMessages } from '@plone/volto/actions';
 import { toast } from 'react-toastify';
 
@@ -55,7 +55,7 @@ const Logout = ({ location }) => {
     }
   }, [history, returnUrl, intl, token]);
 
-  return <Login location={{ query: location.query }} isLogout={true} />;
+  return '';
 };
 
 export default Logout;

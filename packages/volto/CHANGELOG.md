@@ -17,6 +17,101 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.41 (2024-07-05)
+
+### Breaking
+
+- Fixed image widget position and look and feel in sidebar. @ichim-david
+
+  Breaking:
+  - Updated the markup of the widget in the sidebar to render the widget on a single column bellow the label.
+  - AddLink Pop-up of the widget is now rendered inside `toolbar-inner` instead of the document body, this fixes the positioning of the toolbar when scrolling. [#6159](https://github.com/plone/volto/issues/6159)
+
+### Bugfix
+
+- Revisit login/logout process, better catching of edge cases @sneridagh [#6155](https://github.com/plone/volto/issues/6155)
+- Restored browse link in `Slate` `AddLink` Pop-up. @ichim-david
+  Fixed recursive error when uploading an image using the `Image` widget. @sneridagh
+  Fixed image display when using an external URL. @sneridagh
+  Fixed the position of the `Image` widget toolbar when scrolling by changing the position of the toolbar to be within the widget area instead of the body. @ichim-david
+  Improved display of `AddLink` Pop-up when using it inside the `Image` widget where we don't have a link picker. @ichim-david [#6159](https://github.com/plone/volto/issues/6159)
+
+## 18.0.0-alpha.40 (2024-07-03)
+
+### Bugfix
+
+- Fix aria-label of items that are `folderish` in ObjectBrowserNav component when performing item search. Previously it said `Select item.title` now `Browse item.title`. This brings it in line with the aria-label when not performing an item search. @sneridagh [#6150](https://github.com/plone/volto/issues/6150)
+
+### Internal
+
+- Automatically add a PLIP issue to the PLIP project board. @stevepiercy [#6134](https://github.com/plone/volto/issues/6134)
+
+### Documentation
+
+- Fix link to renamed `src/constants/Languages.cjs`. @stevepiercy [#6135](https://github.com/plone/volto/issues/6135)
+
+## 18.0.0-alpha.39 (2024-06-28)
+
+### Bugfix
+
+- Cleanup Image widget and pass down onSelectItem prop if any @sneridagh [#6132](https://github.com/plone/volto/issues/6132)
+- Whitelist some dynamic imports to suppress vite warnings in storybook @tomschall [#6133](https://github.com/plone/volto/issues/6133)
+
+## 18.0.0-alpha.38 (2024-06-28)
+
+### Internal
+
+- Renamed `constants/Languages.js` to `constants/Languages.cjs` @sneridagh [#6130](https://github.com/plone/volto/issues/6130)
+
+## 18.0.0-alpha.37 (2024-06-27)
+
+### Feature
+
+- (feat): Add loading visual and succes message in controlpanel when deleting users and groups @dobri1408 [#6127](https://github.com/plone/volto/issues/6127)
+
+### Bugfix
+
+- fix reset teaser source button giving undefined error when no target is selected @nileshgulia1 [#6121](https://github.com/plone/volto/issues/6121)
+- Added three missing German translations. [@jensens] [#6124](https://github.com/plone/volto/issues/6124)
+
+### Internal
+
+- Improved the existing GitHub workflows by encapsulating a common operation into a reusable action for easier maintenance. @FritzHoing, @ichim-david [#6108](https://github.com/plone/volto/issues/6108)
+- Upgrade `react-intl` to maximum 3.x series to fix a bundling issue.
+  Rename missing js file that must be jsx. @sneridagh [#6128](https://github.com/plone/volto/issues/6128)
+
+## 18.0.0-alpha.36 (2024-06-26)
+
+### Breaking
+
+- Added `ImageWidget` component with upload, drop, external, and inline capabilities. @sneridagh @ichim-david @dobri1408
+
+  Breaking:
+
+  The user experience of the image upload has changed.
+  The input field is now a row of buttons.
+  The input field's placeholder text was moved above the buttons.
+  Together these changes improve usability both on small screens and in small containers, such as when the widget is in grid block elements.
+  If you shadow the image block edit component, make sure it continues to work as you expect, or update it to use the new image upload widget component. [#5607](https://github.com/plone/volto/issues/5607)
+
+### Feature
+
+- Add option for live teasers @steffenri @pbauer @nileshgulia1 @tlotze [#6023](https://github.com/plone/volto/issues/6023)
+- Improve shadowing by including the support for js->jsx extensions in old shadows. This allow support for upcoming renaming of files that should be jsx and are js. @sneridagh [#6113](https://github.com/plone/volto/issues/6113)
+
+### Bugfix
+
+- Ensure that sidebar field will not steal focus when metadata is edited  @dobri1408 [#5983](https://github.com/plone/volto/issues/5983)
+- Fixed 'diff' path for nonContentRoutes. @giuliaghisini [#6102](https://github.com/plone/volto/issues/6102)
+- Prevent duplicated UUIDs in inner blocks when copying container blocks @sneridagh [#6112](https://github.com/plone/volto/issues/6112)
+
+### Internal
+
+- Rename the `Makefile` commands to unify them with the new agreed naming scheme. @sneridagh [#6104](https://github.com/plone/volto/issues/6104)
+- Remove `api` folder. Add `backend` folder using latest backend best practices. @sneridagh [#6110](https://github.com/plone/volto/issues/6110)
+- Rename files with wrong extension `js->jsx` when they contain JSX. @sneridagh [#6114](https://github.com/plone/volto/issues/6114)
+- Automatically set a new issue's label to `03 type: feature (plip)` for PLIPs. @stevepiercy [#6122](https://github.com/plone/volto/issues/6122)
+
 ## 18.0.0-alpha.35 (2024-06-13)
 
 ### Breaking

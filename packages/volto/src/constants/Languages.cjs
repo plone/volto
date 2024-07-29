@@ -20,3 +20,5 @@ module.exports = {
   pt_BR: 'Português (Brasil)',
   zh_CN: '中文',
 };
+
+// export default languages;
