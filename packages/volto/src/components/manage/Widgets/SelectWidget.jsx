@@ -247,6 +247,7 @@ export default compose(
           lang: state.intl.locale,
         };
       }
+
       return { lang: state.intl.locale };
     },
     { getVocabulary, getVocabularyTokenTitle },
