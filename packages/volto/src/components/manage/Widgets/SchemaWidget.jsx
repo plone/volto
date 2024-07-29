@@ -622,7 +622,7 @@ class SchemaWidget extends Component {
             }
           })(values.factory),
         },
-      },
+      }, //Select //Image //ObjectBrowser //Id //SelectAutoComplete //RichText
       required: values.required
         ? [...this.props.value.required, fieldId]
         : this.props.value.required,

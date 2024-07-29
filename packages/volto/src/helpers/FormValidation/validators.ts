@@ -83,13 +83,6 @@ export const emailValidator = ({ value, formatMessage }: Validator): string => {
   return !isValid ? formatMessage(messages.isValidEmail) : null;
 };
 
-// export const isNumber = ({ value, formatMessage }: Validator) => {
-//   const isNumeric = (string: string | number) => Number.isFinite(+string);
-//   const floatRegex = /^[+-]?\d+(\.\d+)?$/;
-//   const isValid = isNumeric(value) && floatRegex.test(value);
-//   return !isValid ? formatMessage(messages.isNumber) : null;
-// };
-
 export const isNumber = ({ value, formatMessage }: Validator) => {
   const floatRegex = /^[+-]?\d+(\.\d+)?$/;
   const isValid =

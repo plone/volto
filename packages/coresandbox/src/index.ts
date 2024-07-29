@@ -8,13 +8,17 @@ import { flattenToAppURL } from '@plone/volto/helpers';
 import { SliderSchema as TestBlockSchema } from './components/Blocks/TestBlock/schema';
 import { inputBlockSchema } from './components/Blocks/InputBlock/schema';
 import { multipleFieldsetsSchema } from './components/Blocks/TestBlock/schema';
-import { conditionalVariationsSchemaEnhancer } from './components/Blocks/schemaEnhancers';
+import {
+  conditionalVariationsSchemaEnhancer,
+  FormFieldSchemaEnhancer,
+} from './components/Blocks/schemaEnhancers';
 import codeSVG from '@plone/volto/icons/code.svg';
 import type { BlockConfigBase } from '@plone/types';
 import type { ConfigType } from '@plone/registry';
 import SlotComponentTest from './components/Slots/SlotTest';
 import { ContentTypeCondition } from '@plone/volto/helpers';
 import { RouteCondition } from '@plone/volto/helpers/Slots';
+import TestForm from './components/TestForm';
 
 const testBlock: BlockConfigBase = {
   id: 'testBlock',
@@ -134,6 +138,33 @@ const testBlockDefaultView: BlockConfigBase = {
   extensions: {},
 };
 
+const testFormFieldView: BlockConfigBase = {
+  ...testBlockDefaultView,
+  id: 'testBlockDefaultView',
+  title: 'testFormFieldView',
+  schemaEnhancer: FormFieldSchemaEnhancer,
+};
+// const testFormFieldView: BlockConfigBase = {
+//   id: 'testBlockDefaultView',
+//   title: 'testFormFieldView',
+//   icon: codeSVG,
+//   group: 'common',
+//   blockSchema: TestBlockSchema,
+//   restricted: false,
+//   mostUsed: true,
+//   sidebarTab: 1,
+//   variations: [
+//     {
+//       id: 'default',
+//       title: 'Default',
+//     },
+//     {
+//       id: 'custom',
+//       title: 'Custom',
+//     },
+//   ],
+//   extensions: {},
+// };
 const listing = (config: ConfigType) => {
   return {
     ...config.blocks.blocksConfig.listing,
@@ -177,10 +208,19 @@ declare module '@plone/types' {
     testBlockMultipleFieldsets: BlockConfigBase;
     testBlockDefaultEdit: BlockConfigBase;
     testBlockDefaultView: BlockConfigBase;
+    testFormFieldView: BlockConfigBase;
   }
 }
 
 const applyConfig = (config: ConfigType) => {
+  config.addonRoutes = [
+    ...config.addonRoutes,
+    {
+      path: '/testform',
+      component: TestForm,
+      exact: false,
+    },
+  ];
   config.blocks.blocksConfig.testBlock = testBlock;
   config.blocks.blocksConfig.inputBlock = inputBlock;
   config.blocks.blocksConfig.testBlockConditional = testBlockConditional;
@@ -190,6 +230,7 @@ const applyConfig = (config: ConfigType) => {
     testBlockMultipleFieldsets;
   config.blocks.blocksConfig.testBlockDefaultEdit = testBlockDefaultEdit;
   config.blocks.blocksConfig.testBlockDefaultView = testBlockDefaultView;
+  config.blocks.blocksConfig.testFormFieldView = testFormFieldView;
   config.blocks.blocksConfig.listing = listing(config);
   config.views.contentTypesViews.Folder = NewsAndEvents;
 

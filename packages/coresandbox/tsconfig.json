@@ -19,7 +19,7 @@
     },
     "baseUrl": "."
   },
-  "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jx"],
+  "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jx", "src/components/Blocks/FormBlock/TestForm.tsx"],
   "exclude": [
     "node_modules",
     "src/**/*.test.{js,jsx,ts,tsx}",
