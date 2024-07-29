@@ -11,7 +11,7 @@ type MinMaxValidator = {
 type Validator = {
   value: string;
   field: Record<string, any>;
-  formData?: any;
+  formData: any;
   formatMessage: Function;
 };
 

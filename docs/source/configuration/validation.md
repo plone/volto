@@ -297,7 +297,7 @@ type Validator = {
   // The field schema definition object
   field: Record<string, any>;
   // The form data
-  formData?: any;
+  formData: any;
   // The intl formatMessage function
   formatMessage: Function;
 };
