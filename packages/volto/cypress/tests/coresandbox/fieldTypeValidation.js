@@ -1,5 +1,5 @@
-context('Select widgets family Acceptance Tests', () => {
-  describe('Select', () => {
+context('Test field types in example content', () => {
+  describe('Test', () => {
     beforeEach(() => {
       cy.intercept('GET', `/**/*?expand*`).as('content');
       cy.intercept('GET', '/**/@types/example').as('schema');
