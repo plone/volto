@@ -10,11 +10,6 @@ context('Test Field Type in Example Content ', () => {
       cy.visit('/');
       cy.wait('@content');
       cy.navigate('/form');
-      // We always add a new example content type, fill the required
-      // cy.navigate('/add?type=example');
-      // cy.wait('@schema');
-
-      // cy.get('#field-title').type('An Example');
     });
 
     it('Test Email field by entering email address without a domain', function () {
@@ -61,7 +56,6 @@ context('Test Field Type in Example Content ', () => {
     it('Test URI Field by entering invalid URI', function () {
       cy.get('#field-url').type('plone');
       cy.findAllByText('Enter URL').click();
-
       cy.get('.form-error-label')
         .contains(
           'Input must be valid url (www.something.com or http(s)://www.something.com)',
@@ -72,7 +66,6 @@ context('Test Field Type in Example Content ', () => {
     it('Test ID Field Type', function () {
       cy.get('#field-id').type('Plone');
       cy.findAllByText('Enter ID').click();
-
       cy.get('.form-error-label')
         .contains(
           'Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines.',
@@ -93,9 +86,7 @@ context('Test Field Type in Example Content ', () => {
     });
     it('Missing required field error', function () {
       cy.get('#field-textLine').type('Volto Coresandbox fixture');
-
       cy.get('#field-email').type('plone@org.com');
-
       cy.get('#field-password').click();
       cy.get('#field-email').click();
       cy.get('.form-error-label')

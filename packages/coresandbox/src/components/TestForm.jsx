@@ -32,10 +32,6 @@ const messages = defineMessages({
     id: 'Date/Time',
     defaultMessage: 'Enter Date/Time',
   },
-  imageTitle: {
-    id: 'Image',
-    defaultMessage: 'Upload Image',
-  },
 
   idTitle: {
     id: 'Id',
@@ -59,12 +55,7 @@ const messages = defineMessages({
 
   PasswordTitle: {
     id: 'password',
-    defaultMessage: 'password',
-  },
-
-  numberTitle: {
-    id: 'Number',
-    defaultMessage: 'Enter Number',
+    defaultMessage: 'Password',
   },
 });
 
@@ -92,8 +83,6 @@ const TestForm = (props) => {
                 'textLine',
                 'email',
                 'password',
-                'image',
-                // 'number',
                 'url',
                 'datetime',
                 'id',
@@ -115,14 +104,6 @@ const TestForm = (props) => {
               title: intl.formatMessage(messages.PasswordTitle),
               widget: 'password',
             },
-            image: {
-              title: intl.formatMessage(messages.imageTitle),
-              widget: 'image',
-            },
-            // number: {
-            //   title: intl.formatMessage(messages.numberTitle),
-            //   widget: 'Integer',
-            // },
             url: {
               title: intl.formatMessage(messages.urlTitle),
               widget: 'url',
