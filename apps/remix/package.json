@@ -13,6 +13,7 @@
   "dependencies": {
     "@plone/client": "workspace: *",
     "@plone/providers": "workspace: *",
+    "@plone/slots": "workspace: *",
     "@remix-run/css-bundle": "^2.4.0",
     "@remix-run/node": "^2.8.1",
     "@remix-run/react": "^2.8.1",
