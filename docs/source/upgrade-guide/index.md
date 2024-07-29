@@ -371,10 +371,28 @@ This change is needed for consistency with module suffixes in Volto core, in pre
 It is unlikely that your code uses it, unless you heavily customized the Jest testing pipeline.
 
 
-### Remove `react-share` library and `SocialSharing` component
+### Removed `react-share` library and `SocialSharing` component
 
-This was not used by the core since some time ago, and nowadays is more suitable for being an add-on and not being included in core.
-If you still use it, bring it back as your main add-on dependency, bring back the `SocialSharing` component from Volto 17 as a custom component in your add-on code.
+The `react-share` library and `SocialSharing` component has not been used in the core since some time ago, and it is more suitable as an add-on and not in core.
+If you still use it, you can add it to your main add-on dependency, and extract the `SocialSharing` component from Volto 17 as a custom component in your add-on code.
+
+
+### `SchemaWidget` widget registration change
+
+Previously in the widget mapping, the `SchemaWidget` was registered in the `id` object and assigned to the `schema` key.
+Due to this common key name, this definition could leak the widget and be applied to unwanted fields.
+The `SchemaWidget` is now registered under the `widget` object.
+If you use it in your project or add-ons, you should update the field definition, and add the `widget` property.
+
+```ts
+// more form definition above...
+schema: {
+  title: 'Schema',
+  widget: 'schema'
+}
+// rest of the form definition...
+```
+
 
 (volto-upgrade-guide-17.x.x)=
 
