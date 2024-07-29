@@ -376,7 +376,7 @@ describe('FormValidation', () => {
           schema: newSchema,
           formData: {
             username: 'test username',
-            customField: '1',
+            customField: 1.8,
           },
           formatMessage,
         }),
@@ -403,7 +403,7 @@ describe('FormValidation', () => {
           schema: newSchema,
           formData: {
             username: 'test username',
-            customField: 1,
+            customField: '1',
           },
           formatMessage,
         }),
@@ -430,7 +430,7 @@ describe('FormValidation', () => {
           schema: newSchema,
           formData: {
             username: 'test username',
-            customField: 10,
+            customField: '10',
           },
           formatMessage,
         }),
