@@ -15,7 +15,7 @@ import type { ConfigType } from '@plone/registry';
 import SlotComponentTest from './components/Slots/SlotTest';
 import { ContentTypeCondition } from '@plone/volto/helpers';
 import { RouteCondition } from '@plone/volto/helpers/Slots';
-
+import TestForm from './components/TestForm';
 const testBlock: BlockConfigBase = {
   id: 'testBlock',
   title: 'testBlock',
@@ -181,6 +181,14 @@ declare module '@plone/types' {
 }
 
 const applyConfig = (config: ConfigType) => {
+  config.addonRoutes = [
+    ...config.addonRoutes,
+    {
+      path: '/form',
+      component: TestForm,
+      exact: false,
+    },
+  ];
   config.blocks.blocksConfig.testBlock = testBlock;
   config.blocks.blocksConfig.inputBlock = inputBlock;
   config.blocks.blocksConfig.testBlockConditional = testBlockConditional;

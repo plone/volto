@@ -84,9 +84,11 @@ export const emailValidator = ({ value, formatMessage }: Validator): string => {
 };
 
 export const isNumberValidator = ({ value, formatMessage }: Validator) => {
+  const isNumeric = (string: string | number) => Number.isFinite(+string);
   const floatRegex = /^[+-]?\d+(\.\d+)?$/;
-  const isValid =
-    typeof value === 'string' && !isNaN(+value) && floatRegex.test(value);
+  const isValid = isNumeric(value) && floatRegex.test(value);
+  // const isValid =
+  //   typeof value === 'string' && !isNaN(+value) && floatRegex.test(value);
   return !isValid ? formatMessage(messages.isNumber) : null;
 };
 

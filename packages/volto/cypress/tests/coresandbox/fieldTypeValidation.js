@@ -51,7 +51,6 @@ context('Select widgets family Acceptance Tests', () => {
       cy.wait(100);
       cy.get('.toast-inner-content').should('not.exist');
     });
-
     it('Test Date & Time Field', function () {
       const date = new Date();
       const year = date.getFullYear();
@@ -137,6 +136,7 @@ context('Select widgets family Acceptance Tests', () => {
       cy.wait('@content');
       cy.get('.relation').should('have.attr', 'href');
     });
+    //relation widget Folder private
 
     it('Test URI Field by entering invalid URI', function () {
       cy.findAllByText('Other fields').click();
