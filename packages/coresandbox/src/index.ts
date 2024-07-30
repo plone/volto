@@ -16,6 +16,9 @@ import SlotComponentTest from './components/Slots/SlotTest';
 import { ContentTypeCondition } from '@plone/volto/helpers';
 import { RouteCondition } from '@plone/volto/helpers/Slots';
 import TestForm from './components/TestForm';
+import FormBlockView from './components/Blocks/FormBlock/View';
+import FormBlockEdit from './components/Blocks/FormBlock/Edit';
+import { formBlockSchema } from './components/Blocks/FormBlock/schema';
 const testBlock: BlockConfigBase = {
   id: 'testBlock',
   title: 'testBlock',
@@ -133,6 +136,20 @@ const testBlockDefaultView: BlockConfigBase = {
   ],
   extensions: {},
 };
+const testformBlock: BlockConfigBase = {
+  id: 'testformBlock',
+  title: 'Form Block',
+  icon: codeSVG,
+  group: 'common',
+  view: FormBlockView,
+  edit: FormBlockEdit,
+  blockSchema: formBlockSchema,
+  restricted: false,
+  mostUsed: true,
+  sidebarTab: 1,
+
+  extensions: {},
+};
 
 const listing = (config: ConfigType) => {
   return {
@@ -177,6 +194,7 @@ declare module '@plone/types' {
     testBlockMultipleFieldsets: BlockConfigBase;
     testBlockDefaultEdit: BlockConfigBase;
     testBlockDefaultView: BlockConfigBase;
+    testformBlock: BlockConfigBase;
   }
 }
 
@@ -198,6 +216,7 @@ const applyConfig = (config: ConfigType) => {
     testBlockMultipleFieldsets;
   config.blocks.blocksConfig.testBlockDefaultEdit = testBlockDefaultEdit;
   config.blocks.blocksConfig.testBlockDefaultView = testBlockDefaultView;
+  config.blocks.blocksConfig.testformBlock = testformBlock;
   config.blocks.blocksConfig.listing = listing(config);
   config.views.contentTypesViews.Folder = NewsAndEvents;
 

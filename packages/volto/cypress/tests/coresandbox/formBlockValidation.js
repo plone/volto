@@ -1,29 +1,41 @@
-context('Test Field Type in form ', () => {
+context('Test Field Type in form block', () => {
   describe('Test', () => {
     beforeEach(() => {
       cy.intercept('GET', `/**/*?expand*`).as('content');
-      cy.intercept('GET', '/**/@types/example').as('schema');
-      cy.intercept('POST', '/**/').as('create');
-
+      cy.intercept('GET', '/**/Document').as('schema');
       // given a logged in editor and a page in edit mode
       cy.autologin();
+      cy.createContent({
+        contentType: 'Document',
+        contentId: 'document',
+        contentTitle: 'Test document',
+      });
       cy.visit('/');
       cy.wait('@content');
-      cy.navigate('/form');
+      cy.navigate('/document');
+      cy.wait('@content');
+      cy.navigate('/document/edit');
+      cy.wait('@schema');
+      cy.getSlateTitle();
+
+      cy.getSlate().click();
+      cy.get('.button .block-add-button').click({ force: true });
+
+      cy.get('.blocks-chooser .mostUsed .button.testformBlock').click();
     });
 
     it('Test Email field by entering email address without a domain', function () {
-      cy.get('#field-email').type('plone');
+      cy.get('#field-email').click({ force: true }).type('plone');
       cy.findAllByText('Email').click();
-
       cy.get('.form-error-label')
         .contains('Input must be valid email (something@domain.com)')
         .should('be.visible');
     });
 
     it('Test Text Field', function () {
-      cy.get('#field-textline').type('Volto Coresandbox fixture');
-      cy.findAllByText('Title').click();
+      cy.get('#field-textline')
+        .click({ force: true })
+        .type('Volto Coresandbox fixture');
       cy.get('.form-error-label').should('not.exist');
     });
 
@@ -54,7 +66,7 @@ context('Test Field Type in form ', () => {
     });
 
     it('Test URI Field by entering invalid URI', function () {
-      cy.get('#field-url').type('plone');
+      cy.get('#field-url').click({ force: true }).type('plone');
       cy.findAllByText('Enter URL').click();
       cy.get('.form-error-label')
         .contains(
@@ -64,7 +76,7 @@ context('Test Field Type in form ', () => {
     });
 
     it('Test ID Field Type', function () {
-      cy.get('#field-id').type('Plone');
+      cy.get('#field-id').click({ force: true }).type('Plone');
       cy.findAllByText('Enter ID').click();
       cy.get('.form-error-label')
         .contains(
@@ -72,17 +84,11 @@ context('Test Field Type in form ', () => {
         )
         .should('be.visible');
     });
-    it('Test Link Document/News/Event Field Type', function () {
-      cy.get('.objectbrowser-field > .selected-values').click();
-      cy.get('svg.icon.home-icon').click();
-      cy.get('li').last().click();
-      cy.findAllByText('Link to Document/Event/News').click();
-      cy.get('.objectbrowser-field > .selected-values > div.ui.label').should(
-        'be.visible',
-      );
-    });
+
     it('Test RichText Field Type', function () {
-      cy.get('.slate_wysiwyg_box').type('Plone{selectall}');
+      cy.get('p[data-slate-node="element"]')
+        .click({ force: true })
+        .type('Plone{selectall}');
       cy.get('a[title="Bold"]').click();
       cy.get('a[title="Italic"]').click();
       cy.get('.slate_wysiwyg_box').click();

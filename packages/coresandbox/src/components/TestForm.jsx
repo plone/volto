@@ -14,7 +14,7 @@ const messages = defineMessages({
     id: 'Default',
     defaultMessage: 'Default',
   },
-  textLineTitle: {
+  textlineTitle: {
     id: 'Title',
     defaultMessage: 'Title',
   },
@@ -80,7 +80,7 @@ const TestForm = (props) => {
               id: 'default',
               title: intl.formatMessage(messages.default),
               fields: [
-                'textLine',
+                'textline',
                 'email',
                 'password',
                 'url',
@@ -92,8 +92,8 @@ const TestForm = (props) => {
             },
           ],
           properties: {
-            textLine: {
-              title: intl.formatMessage(messages.textLineTitle),
+            textline: {
+              title: intl.formatMessage(messages.textlineTitle),
               widget: 'text',
             },
             email: {

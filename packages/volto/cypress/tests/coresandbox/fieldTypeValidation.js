@@ -18,7 +18,7 @@ context('Test field types in example content', () => {
     });
 
     it('Test Email field by entering email address without a domain', function () {
-      cy.get('#field-email_field').type('abc');
+      cy.get('#field-email_field').type('plone');
       cy.findAllByText('Email field').click();
 
       cy.get('.form-error-label')
