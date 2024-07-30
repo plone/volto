@@ -129,7 +129,7 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
     }
 
     .toolbar-handler {
-      button {
+      .toolbar-handler-button {
         opacity: 0.3;
       }
 
@@ -243,7 +243,7 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
       width: 100%;
       justify-content: center;
 
-      button {
+      .toolbar-handler-button {
         width: @toolbarWidth;
         height: 20px;
         padding: 0;
@@ -428,7 +428,7 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
         flex-direction: column;
         justify-content: center;
 
-        button {
+        .toolbar-handler-button {
           width: @toolbarWidthMin;
           height: @toolbarWidth;
 
@@ -752,3 +752,10 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
   }
 }
 // End Orphaned CSS
+
+// Toolbar handler color in homepage
+.contenttype-plone-site {
+  #toolbar .toolbar-handler .toolbar-handler-button:before {
+    background: @teal-blue;
+  }
+}
