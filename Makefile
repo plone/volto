@@ -69,10 +69,11 @@ clean: ## Clean development environment
 	find ./packages -name node_modules -exec rm -rf {} \;
 
 .PHONY: install
-install: build-deps ## Set up development environment
+install: ## Set up development environment
 	# Setup ESlint for VSCode
-	node packages/scripts/vscodesettings.js
 	pnpm i
+	node packages/scripts/vscodesettings.js
+	make build-deps
 
 ##### Documentation
 
@@ -137,10 +138,10 @@ docs-test: docs-clean docs-linkcheckbroken docs-vale  ## Clean docs build, then 
 cypress-install: ## Install Cypress for acceptance tests
 	$(NODEBIN)/cypress install
 
-packages/registry/dist: packages/registry/src
+packages/registry/dist: $(shell find packages/registry/src -type f)
 	pnpm build:registry
 
-packages/components/dist: packages/components/src
+packages/components/dist: $(shell find packages/components/src -type f)
 	pnpm build:components
 
 .PHONY: build-deps
