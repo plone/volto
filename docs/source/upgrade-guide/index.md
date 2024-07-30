@@ -431,8 +431,10 @@ return (
 
 ### `SchemaWidget` widget registration change
 
-Previously, it was registered as a widget `id` assigned to the `schema` key. Due to this common key name, this definition could leak the widget and be applied to unwanted fields.
-Now it's registered as a `widget`, so if you are using it in your project/add-ons you should update the field definition and add the `widget` property.
+Previously in the widget mapping, the `SchemaWidget` was registered in the `id` object and assigned to the `schema` key.
+Due to this common key name, this definition could leak the widget and be applied to unwanted fields.
+The `SchemaWidget` is now registered under the `widget` object.
+If you use it in your project or add-ons, you should update the field definition, and add the `widget` property.
 
 ```ts
 // more form definition above...

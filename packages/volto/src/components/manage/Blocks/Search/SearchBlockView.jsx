@@ -49,10 +49,26 @@ const applyDefaults = (data, root) => {
       v: root || '/',
     },
   ];
+
+  const searchBySearchableText = data.query.filter(
+    (item) => item['i'] === 'SearchableText',
+  ).length;
+
+  const sort_on = data?.sort_on
+    ? { sort_on: data.sort_on }
+    : searchBySearchableText === 0
+      ? { sort_on: 'effective' }
+      : {};
+  const sort_order = data?.sort_order
+    ? { sort_order: data.sort_order }
+    : searchBySearchableText === 0
+      ? { sort_order: 'descending' }
+      : {};
+
   return {
     ...data,
-    sort_on: data?.sort_on || 'effective',
-    sort_order: data?.sort_order || 'descending',
+    ...sort_on,
+    ...sort_order,
     query: data?.query?.length ? data.query : defaultQuery,
   };
 };
