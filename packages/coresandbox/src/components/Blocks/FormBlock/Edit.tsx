@@ -40,16 +40,6 @@ const messages = defineMessages({
     defaultMessage: 'Enter ID',
   },
 
-  linkTitle: {
-    id: 'Link',
-    defaultMessage: 'Link to Document/Event/News',
-  },
-
-  linkDescription: {
-    id: 'Enter Link',
-    defaultMessage: 'Enter Link',
-  },
-
   richTextTitle: {
     id: 'RichText',
     defaultMessage: 'Enter RichText',
@@ -84,7 +74,6 @@ const FormBlockEdit = (props: BlockEditProps) => {
                   'url',
                   'datetime',
                   'id',
-                  'link',
                   'richtext',
                 ],
               },
@@ -113,11 +102,6 @@ const FormBlockEdit = (props: BlockEditProps) => {
               id: {
                 title: intl.formatMessage(messages.idTitle),
                 widget: 'id',
-              },
-              link: {
-                title: intl.formatMessage(messages.linkTitle),
-                widget: 'object_browser',
-                mode: 'link',
               },
               richtext: {
                 title: intl.formatMessage(messages.richTextTitle),
