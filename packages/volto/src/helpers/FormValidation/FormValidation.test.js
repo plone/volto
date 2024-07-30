@@ -359,7 +359,7 @@ describe('FormValidation', () => {
       ).toEqual({});
     });
 
-    it('number - isNumber', () => {
+    it('number - isNumber - fails (not string|number as number)', () => {
       let newSchema = {
         properties: {
           ...schema.properties,
@@ -376,13 +376,64 @@ describe('FormValidation', () => {
           schema: newSchema,
           formData: {
             username: 'test username',
-            customField: '1',
+            //since 'number' can accept digits in string & number format hence testing it with an alphabet
+            customField: 'n',
           },
           formatMessage,
         }),
       ).toEqual({
         customField: [messages.isNumber.defaultMessage],
       });
+    });
+
+    it('number - isNumber - as string', () => {
+      let newSchema = {
+        properties: {
+          ...schema.properties,
+          customField: {
+            title: 'Number field',
+            type: 'number',
+            description: '',
+          },
+        },
+        required: [],
+      };
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema: newSchema,
+          formData: {
+            username: 'test username',
+            //since 'number' can accept digits in string & number format hence testing it with an alphabet
+            customField: '1',
+          },
+          formatMessage,
+        }),
+      ).toEqual({});
+    });
+
+    it('number - isNumber - as number', () => {
+      let newSchema = {
+        properties: {
+          ...schema.properties,
+          customField: {
+            title: 'Number field',
+            type: 'number',
+            description: '',
+          },
+        },
+        required: [],
+      };
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema: newSchema,
+          formData: {
+            username: 'test username',
+            //since 'number' can accept digits in string & number format hence testing it with an alphabet
+            customField: 1,
+          },
+          formatMessage,
+        }),
+      ).toEqual({});
     });
 
     it('number - minimum', () => {
