@@ -1,4 +1,4 @@
-context('Test Field Type in Example Content ', () => {
+context('Test Field Type in form ', () => {
   describe('Test', () => {
     beforeEach(() => {
       cy.intercept('GET', `/**/*?expand*`).as('content');
