@@ -68,7 +68,7 @@ const server = express()
   })
   .use(cookiesMiddleware());
 
-if (process.env.RAZZLE_PREFIX_PATH && process.env.NODE_ENV === 'production') {
+if (process.env.RAZZLE_PREFIX_PATH) {
   server.use(
     process.env.RAZZLE_PREFIX_PATH,
     express.static(
