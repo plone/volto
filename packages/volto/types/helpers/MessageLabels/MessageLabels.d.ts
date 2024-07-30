@@ -549,4 +549,40 @@ export namespace messages {
         let defaultMessage_91: string;
         export { defaultMessage_91 as defaultMessage };
     }
+    namespace blocksFieldsErrorTitle {
+        let id_92: string;
+        export { id_92 as id };
+        let defaultMessage_92: string;
+        export { defaultMessage_92 as defaultMessage };
+    }
+    namespace startEventRange {
+        let id_93: string;
+        export { id_93 as id };
+        let defaultMessage_93: string;
+        export { defaultMessage_93 as defaultMessage };
+    }
+    namespace endEventRange {
+        let id_94: string;
+        export { id_94 as id };
+        let defaultMessage_94: string;
+        export { defaultMessage_94 as defaultMessage };
+    }
+    namespace pattern {
+        let id_95: string;
+        export { id_95 as id };
+        let defaultMessage_95: string;
+        export { defaultMessage_95 as defaultMessage };
+    }
+    namespace maxItems {
+        let id_96: string;
+        export { id_96 as id };
+        let defaultMessage_96: string;
+        export { defaultMessage_96 as defaultMessage };
+    }
+    namespace minItems {
+        let id_97: string;
+        export { id_97 as id };
+        let defaultMessage_97: string;
+        export { defaultMessage_97 as defaultMessage };
+    }
 }
