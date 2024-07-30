@@ -1723,11 +1723,6 @@ msgstr "यदि आप इस उपयोगकर्ता को सुन�
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
 msgstr "यदि आपको लगता है कि आपके पास सही वेब पता है लेकिन आपको एक त्रुटि का सामना करना पड़ रहा है, कृपया {site_admin} से संपर्क करें।"
 
-#. Default: "If you have only one sort on a property, please place it in the top sort field."
-#: components/manage/Blocks/Search/schema
-msgid "If you have only one sort on a property, please place it in the top sort field."
-msgstr ""
-
 #. Default: "Image"
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/Image/schema
@@ -3403,6 +3398,11 @@ msgstr "क्रमबद्ध करें द्वारा"
 msgid "Sort on options"
 msgstr "क्रमबद्ध करें द्वारा विकल्प"
 
+#. Default: "Sort on {value}"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Sort on {value}"
+msgstr ""
+
 #. Default: "Sort transactions by User-Name, Path or Date"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Sort transactions by User-Name, Path or Date"
@@ -3412,6 +3412,11 @@ msgstr "उपयोगकर्ता-नाम, पथ या तिथि द
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Sorted"
 msgstr "क्रमबद्ध किया गया"
+
+#. Default: "Sorted on"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Sorted on"
+msgstr ""
 
 #. Default: "Source"
 #: components/manage/Blocks/HTML/Edit

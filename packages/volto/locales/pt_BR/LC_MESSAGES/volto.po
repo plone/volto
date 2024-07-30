@@ -1729,11 +1729,6 @@ msgstr "Se você tiver certeza de que este usuário abandonou o objeto, você po
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
 msgstr "Se você tiver certeza de que tem o endereço web correto, mas está encontrando um erro, entre em contato com o {site_admin}."
 
-#. Default: "If you have only one sort on a property, please place it in the top sort field."
-#: components/manage/Blocks/Search/schema
-msgid "If you have only one sort on a property, please place it in the top sort field."
-msgstr ""
-
 #. Default: "Image"
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/Image/schema
@@ -3409,6 +3404,11 @@ msgstr "Ordenado por"
 msgid "Sort on options"
 msgstr "Opções de ordenação"
 
+#. Default: "Sort on {value}"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Sort on {value}"
+msgstr ""
+
 #. Default: "Sort transactions by User-Name, Path or Date"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Sort transactions by User-Name, Path or Date"
@@ -3418,6 +3418,11 @@ msgstr "Ordenar transações por Nome de Usuário, Caminho ou Data"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Sorted"
 msgstr "Ordenado"
+
+#. Default: "Sorted on"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Sorted on"
+msgstr ""
 
 #. Default: "Source"
 #: components/manage/Blocks/HTML/Edit

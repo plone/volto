@@ -1723,11 +1723,6 @@ msgstr "Se sei sicuro che questo utente ha chiuso l'oggetto, puoi sbloccarlo. Sa
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
 msgstr "Se sei sicuro di aver inserito l'indirizzo corretto ma ottieni comunque un errore, contatta l' {site_admin}."
 
-#. Default: "If you have only one sort on a property, please place it in the top sort field."
-#: components/manage/Blocks/Search/schema
-msgid "If you have only one sort on a property, please place it in the top sort field."
-msgstr ""
-
 #. Default: "Image"
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/Image/schema
@@ -3403,6 +3398,11 @@ msgstr "Ordina per"
 msgid "Sort on options"
 msgstr "Opzioni di ordinamento"
 
+#. Default: "Sort on {value}"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Sort on {value}"
+msgstr ""
+
 #. Default: "Sort transactions by User-Name, Path or Date"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Sort transactions by User-Name, Path or Date"
@@ -3412,6 +3412,11 @@ msgstr "Ordina transazioni per Username, Percorso o Data"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Sorted"
 msgstr "Ordinato"
+
+#. Default: "Sorted on"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Sorted on"
+msgstr ""
 
 #. Default: "Source"
 #: components/manage/Blocks/HTML/Edit

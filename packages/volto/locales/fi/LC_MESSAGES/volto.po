@@ -1728,11 +1728,6 @@ msgstr "Jos olet varma, että käyttäjä ei muokkaa kohdetta, voit avata lukitu
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
 msgstr "Jos olet vakuuttunut, että tämä sivu pitäisi olla olemassa, ota yhteyttä sivuston ylläpitoon: {site_admin}."
 
-#. Default: "If you have only one sort on a property, please place it in the top sort field."
-#: components/manage/Blocks/Search/schema
-msgid "If you have only one sort on a property, please place it in the top sort field."
-msgstr ""
-
 #. Default: "Image"
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/Image/schema
@@ -3408,6 +3403,11 @@ msgstr "Järjestys"
 msgid "Sort on options"
 msgstr "Lajittelun vaihtoehdot"
 
+#. Default: "Sort on {value}"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Sort on {value}"
+msgstr ""
+
 #. Default: "Sort transactions by User-Name, Path or Date"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Sort transactions by User-Name, Path or Date"
@@ -3417,6 +3417,11 @@ msgstr "Lajittele nimen, polun tai päivämäärän perusteella"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Sorted"
 msgstr "Lajiteltu"
+
+#. Default: "Sorted on"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Sorted on"
+msgstr ""
 
 #. Default: "Source"
 #: components/manage/Blocks/HTML/Edit

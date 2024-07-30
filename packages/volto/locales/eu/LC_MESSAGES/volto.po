@@ -1730,11 +1730,6 @@ msgstr "Erabiltzaileak elementua editatzeari utzi diola ziur bazaude, objektua d
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
 msgstr "Ziurtatu helbide zuzenean zaudena, hala ere errorea baduzu jarri kontaktuan {site_admin}."
 
-#. Default: "If you have only one sort on a property, please place it in the top sort field."
-#: components/manage/Blocks/Search/schema
-msgid "If you have only one sort on a property, please place it in the top sort field."
-msgstr ""
-
 #. Default: "Image"
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/Image/schema
@@ -3410,6 +3405,11 @@ msgstr "Ordenazioa"
 msgid "Sort on options"
 msgstr "Ordenatu aukeren arabera"
 
+#. Default: "Sort on {value}"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Sort on {value}"
+msgstr ""
+
 #. Default: "Sort transactions by User-Name, Path or Date"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Sort transactions by User-Name, Path or Date"
@@ -3419,6 +3419,11 @@ msgstr "Ordenatu transakzioak erabiltzaile-izen, bide edo dataren arabera"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Sorted"
 msgstr "Ordenatuta"
+
+#. Default: "Sorted on"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Sorted on"
+msgstr ""
 
 #. Default: "Source"
 #: components/manage/Blocks/HTML/Edit

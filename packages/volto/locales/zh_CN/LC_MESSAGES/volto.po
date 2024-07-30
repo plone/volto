@@ -1729,11 +1729,6 @@ msgstr "如果您确定该用户已放弃该对象，则可以解锁该对象。
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
 msgstr "如果您确定访问的Web地址正确,但是遇到错误，请联系{site_admin}。"
 
-#. Default: "If you have only one sort on a property, please place it in the top sort field."
-#: components/manage/Blocks/Search/schema
-msgid "If you have only one sort on a property, please place it in the top sort field."
-msgstr ""
-
 #. Default: "Image"
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/Image/schema
@@ -3409,6 +3404,11 @@ msgstr "排序"
 msgid "Sort on options"
 msgstr "根据选项排序"
 
+#. Default: "Sort on {value}"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Sort on {value}"
+msgstr ""
+
 #. Default: "Sort transactions by User-Name, Path or Date"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Sort transactions by User-Name, Path or Date"
@@ -3418,6 +3418,11 @@ msgstr "按用户名、路径或日期对事务进行排序"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Sorted"
 msgstr "排序"
+
+#. Default: "Sorted on"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Sorted on"
+msgstr ""
 
 #. Default: "Source"
 #: components/manage/Blocks/HTML/Edit

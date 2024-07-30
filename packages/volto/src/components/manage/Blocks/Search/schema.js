@@ -41,11 +41,6 @@ const messages = defineMessages({
     defaultMessage:
       'The button presence disables the live search, the query is issued when you press ENTER',
   },
-  showSortOnDescription: {
-    id: 'If you have only one sort on a property, please place it in the top sort field.',
-    defaultMessage:
-      'If you have only one sort on a property, please place it in the top sort field.',
-  },
   searchButtonLabel: {
     id: 'Search button label',
     defaultMessage: 'Search button label',
@@ -277,7 +272,6 @@ const SearchSchema = ({ data = {}, intl }) => {
       sortOnOptions: {
         title: intl.formatMessage(messages.sortOnOptions),
         widget: 'array',
-        description: intl.formatMessage(messages.showSortOnDescription),
       },
       facets: {
         title: intl.formatMessage(messages.facets),
