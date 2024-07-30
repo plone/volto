@@ -389,6 +389,45 @@ If you shadowed the module {file}`packages/volto/src/helpers/FormValidation/Form
 {doc}`../configuration/validation`
 ```
 
+### Field validation for blocks
+
+`BlockDataForm` component now gets a new prop `errors`.
+This prop must be assigned with the new prop passed down from the blocks engine `blocksErrors`.
+If not passed down, the block can't display any field validation error.
+
+```tsx
+// More component code above here
+
+  const {
+    block,
+    blocksConfig,
+    contentType,
+    data,
+    navRoot,
+    onChangeBlock,
+    blocksErrors,
+  } = props;
+
+return (
+  <BlockDataForm
+    block={block}
+    schema={schema}
+    title={schema.title}
+    onChangeField={(id: string, value: any) => {
+      onChangeBlock(block, {
+        ...data,
+        [id]: value,
+      });
+    }}
+    onChangeBlock={onChangeBlock}
+    formData={data}
+    blocksConfig={blocksConfig}
+    navRoot={navRoot}
+    contentType={contentType}
+    errors={blocksErrors}
+  />
+)
+```
 
 ### `SchemaWidget` widget registration change
 

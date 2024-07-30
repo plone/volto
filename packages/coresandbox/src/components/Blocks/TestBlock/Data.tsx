@@ -10,7 +10,7 @@ const TestBlockData = (props: BlockEditProps) => {
     data,
     navRoot,
     onChangeBlock,
-    errors,
+    blocksErrors,
   } = props;
   const intl = useIntl();
   const schema = blocksConfig[data['@type']].blockSchema({ intl, props });
@@ -31,7 +31,7 @@ const TestBlockData = (props: BlockEditProps) => {
       blocksConfig={blocksConfig}
       navRoot={navRoot}
       contentType={contentType}
-      errors={errors}
+      errors={blocksErrors}
     />
   );
 };
