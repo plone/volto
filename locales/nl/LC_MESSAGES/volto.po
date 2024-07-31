@@ -3240,6 +3240,11 @@ msgstr "Sorteer op"
 msgid "Sort on options"
 msgstr "Sorteer op opties"
 
+#. Default: "Sort on {value}"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Sort on {value}"
+msgstr ""
+
 #. Default: "Sort transactions by User-Name, Path or Date"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Sort transactions by User-Name, Path or Date"
@@ -3249,6 +3254,11 @@ msgstr "Sorteer transacties op gebruikersnaam, pad of datum"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Sorted"
 msgstr "Gesorteerd"
+
+#. Default: "Sorted on"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Sorted on"
+msgstr ""
 
 #. Default: "Source"
 #: components/manage/Blocks/HTML/Edit
