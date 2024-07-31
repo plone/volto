@@ -3,7 +3,6 @@
  * @module components/theme/RelatedItems/RelatedItems
  */
 
-import React from 'react';
 import { UniversalLink } from '@plone/volto/components';
 import { defineMessages, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
@@ -19,34 +18,31 @@ const messages = defineMessages({
 /**
  * Related Items component.
  * @function RelatedItems
- * @param {array} tags Array of related items.
- * @returns {string} Markup of the component.
+ * @param {array} relatedItems Array of related items.
+ * @returns {JSX.Element} Markup of the component.
  */
+const RelatedItems = ({ relatedItems, intl }) => {
+  if (!relatedItems || relatedItems.length === 0) {
+    return null;
+  }
 
-const RelatedItems = ({ relatedItems, intl }) =>
-  relatedItems && relatedItems.length > 0 ? (
-    <Container>
-      <h4 className="ui header">{intl.formatMessage(messages.relatedItems)}</h4>
-      <div className="ui list">
+  return (
+    <Container style={{ 'margin-top': '20px' }}>
+      <h2>{intl.formatMessage(messages.relatedItems)}</h2>
+      <ul>
         {relatedItems.map((relatedItem) =>
           relatedItem ? (
-            <div className="item" key={relatedItem['@id']}>
-              <div className="content">
-                <UniversalLink className="header" item={relatedItem}>
-                  <div>{relatedItem['title']}</div>
-                  <div className="description">
-                    {relatedItem['description']}
-                  </div>
-                </UniversalLink>
-              </div>
-            </div>
+            <li key={relatedItem['@id']}>
+              <UniversalLink href={relatedItem['@id']}>
+                {relatedItem.title}
+              </UniversalLink>
+            </li>
           ) : null,
         )}
-      </div>
+      </ul>
     </Container>
-  ) : (
-    <span />
   );
+};
 
 /**
  * Property types.
@@ -60,6 +56,7 @@ RelatedItems.propTypes = {
       title: PropTypes.string.isRequired,
     }),
   ),
+  intl: PropTypes.object.isRequired,
 };
 
 /**
@@ -68,7 +65,7 @@ RelatedItems.propTypes = {
  * @static
  */
 RelatedItems.defaultProps = {
-  RelatedItems: null,
+  relatedItems: [],
 };
 
 export default injectIntl(RelatedItems);
