@@ -3,105 +3,68 @@
 exports[`Related Items renders with related items 1`] = `
 <div
   className="ui container"
+  style={
+    Object {
+      "margin-top": "20px",
+    }
+  }
 >
-  <h4
-    className="ui header"
-  >
+  <h2>
     Related Items
-  </h4>
-  <div
-    className="ui list"
-  >
-    <div
-      className="item"
-    >
-      <div
-        className="content"
+  </h2>
+  <ul>
+    <li>
+      <a
+        className={null}
+        href="/test-1"
+        onClick={[Function]}
+        target={null}
+        title={null}
       >
-        <a
-          className="header"
-          href="/test-1"
-          onClick={[Function]}
-          target={null}
-          title={null}
-        >
-          <div>
-            Title 1
-          </div>
-          <div
-            className="description"
-          >
-            Description 1
-          </div>
-        </a>
-      </div>
-    </div>
-    <div
-      className="item"
-    >
-      <div
-        className="content"
+        Title 1
+      </a>
+    </li>
+    <li>
+      <a
+        className={null}
+        href="/test-2"
+        onClick={[Function]}
+        target={null}
+        title={null}
       >
-        <a
-          className="header"
-          href="/test-2"
-          onClick={[Function]}
-          target={null}
-          title={null}
-        >
-          <div>
-            Title 2
-          </div>
-          <div
-            className="description"
-          >
-            Description 2
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
+        Title 2
+      </a>
+    </li>
+  </ul>
 </div>
 `;
 
 exports[`Related Items renders with related items has null 1`] = `
 <div
   className="ui container"
+  style={
+    Object {
+      "margin-top": "20px",
+    }
+  }
 >
-  <h4
-    className="ui header"
-  >
+  <h2>
     Related Items
-  </h4>
-  <div
-    className="ui list"
-  >
-    <div
-      className="item"
-    >
-      <div
-        className="content"
+  </h2>
+  <ul>
+    <li>
+      <a
+        className={null}
+        href="/test-1"
+        onClick={[Function]}
+        target={null}
+        title={null}
       >
-        <a
-          className="header"
-          href="/test-1"
-          onClick={[Function]}
-          target={null}
-          title={null}
-        >
-          <div>
-            Title 1
-          </div>
-          <div
-            className="description"
-          >
-            Description 1
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
+        Title 1
+      </a>
+    </li>
+  </ul>
 </div>
 `;
 
-exports[`Related Items renders without related items 1`] = `<span />`;
+exports[`Related Items renders without related items 1`] = `null`;
