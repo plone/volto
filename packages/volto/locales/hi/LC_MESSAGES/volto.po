@@ -3408,6 +3408,11 @@ msgstr "क्रमबद्ध करें द्वारा"
 msgid "Sort on options"
 msgstr "क्रमबद्ध करें द्वारा विकल्प"
 
+#. Default: "Sort on {value}"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Sort on {value}"
+msgstr ""
+
 #. Default: "Sort transactions by User-Name, Path or Date"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Sort transactions by User-Name, Path or Date"
@@ -3417,6 +3422,11 @@ msgstr "उपयोगकर्ता-नाम, पथ या तिथि द
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Sorted"
 msgstr "क्रमबद्ध किया गया"
+
+#. Default: "Sorted on"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Sorted on"
+msgstr ""
 
 #. Default: "Source"
 #: components/manage/Blocks/HTML/Edit
