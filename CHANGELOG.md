@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 16.31.11 (2024-07-31)
+
+### Bugfix
+
+- Fix search block showing no option select in sort on property @iRohitSingh [#5055](https://github.com/plone/volto/issues/5055)
+
 ## 16.31.10 (2024-06-12)
 
 ### Bugfix
