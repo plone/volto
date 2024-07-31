@@ -32,7 +32,7 @@ const Unauthorized = () => {
           defaultMessage="You are trying to access a protected resource, please {login} first."
           values={{
             login: (
-              <Link to={`${getBaseUrl(location.pathname)}/login`}>
+              <Link to={`${getBaseUrl(location.pathname)}/login?next_url=${encodeURIComponent(location.pathname)}`}>
                 <FormattedMessage id="log in" defaultMessage="log in" />
               </Link>
             ),
