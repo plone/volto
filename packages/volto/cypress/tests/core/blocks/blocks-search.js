@@ -581,10 +581,7 @@ describe('Search Block Tests', () => {
       .click();
     cy.get(
       '#select-listingblock-sort-on > .react-select__control > .react-select__value-container',
-    )
-
-      .click();
-
+    ).click();
     cy.findByText('Effective date').click();
     cy.get('.field-wrapper-showSortOn .wrapper .ui label').click();
     //save page
