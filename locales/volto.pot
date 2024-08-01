@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2024-06-28T15:32:40.460Z\n"
+"POT-Creation-Date: 2024-08-01T17:04:31.246Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -3363,11 +3363,6 @@ msgstr ""
 #. Default: "Sort on options"
 #: components/manage/Blocks/Search/schema
 msgid "Sort on options"
-msgstr ""
-
-#. Default: "Sort on {value}"
-#: components/manage/Blocks/Search/components/SortOn
-msgid "Sort on {value}"
 msgstr ""
 
 #. Default: "Sort transactions by User-Name, Path or Date"
