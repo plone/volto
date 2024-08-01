@@ -3373,6 +3373,11 @@ msgstr "Ordina transazioni per Username, Percorso o Data"
 msgid "Sorted"
 msgstr "Ordinato"
 
+#. Default: "Sorted on"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Sorted on"
+msgstr ""
+
 #. Default: "Source"
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Controlpanels/Relations/BrokenRelations

@@ -3378,6 +3378,11 @@ msgstr "Lajittele nimen, polun tai päivämäärän perusteella"
 msgid "Sorted"
 msgstr "Lajiteltu"
 
+#. Default: "Sorted on"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Sorted on"
+msgstr ""
+
 #. Default: "Source"
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Controlpanels/Relations/BrokenRelations

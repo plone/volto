@@ -3378,6 +3378,11 @@ msgstr "Transaktionen nach Nutzernamen, Pfad oder Datum sortieren"
 msgid "Sorted"
 msgstr "Sortiert"
 
+#. Default: "Sorted on"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Sorted on"
+msgstr ""
+
 #. Default: "Source"
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Controlpanels/Relations/BrokenRelations

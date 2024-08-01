@@ -3379,6 +3379,11 @@ msgstr "按用户名、路径或日期对事务进行排序"
 msgid "Sorted"
 msgstr "排序"
 
+#. Default: "Sorted on"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Sorted on"
+msgstr ""
+
 #. Default: "Source"
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Controlpanels/Relations/BrokenRelations

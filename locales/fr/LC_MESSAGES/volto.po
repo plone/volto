@@ -3380,6 +3380,11 @@ msgstr "Trier les transaction par utilisateur, chemin ou date"
 msgid "Sorted"
 msgstr "Trié"
 
+#. Default: "Sorted on"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Sorted on"
+msgstr ""
+
 #. Default: "Source"
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Controlpanels/Relations/BrokenRelations
