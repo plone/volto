@@ -3413,11 +3413,6 @@ msgstr "Sortieren nach"
 msgid "Sort on options"
 msgstr "Sortieroptionen"
 
-#. Default: "Sort on {value}"
-#: components/manage/Blocks/Search/components/SortOn
-msgid "Sort on {value}"
-msgstr ""
-
 #. Default: "Sort transactions by User-Name, Path or Date"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Sort transactions by User-Name, Path or Date"
