@@ -17,6 +17,7 @@ export function Order({
   dndKitCore,
   dndKitSortable,
   dndKitUtilities,
+  errors,
 }) {
   const [activeId, setActiveId] = useState(null);
   const [overId, setOverId] = useState(null);
@@ -146,6 +147,7 @@ export function Order({
             indentationWidth={indentationWidth}
             onRemove={removable ? () => handleRemove(id) : undefined}
             onSelectBlock={onSelectBlock}
+            errors={errors?.[id] || {}}
           />
         ))}
         {createPortal(
