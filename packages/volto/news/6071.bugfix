@@ -1,0 +1,1 @@
+When user changes location, set the `userSession.token` value based on cookie. This fixes the login status not being properly determined by the application. @tiberiu-ichim
