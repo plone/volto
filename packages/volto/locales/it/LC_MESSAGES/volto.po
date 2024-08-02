@@ -1328,6 +1328,7 @@ msgstr ""
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Edit/Edit
 #: components/manage/Form/InlineForm
@@ -3407,11 +3408,6 @@ msgstr "Ordina per"
 #: components/manage/Blocks/Search/schema
 msgid "Sort on options"
 msgstr "Opzioni di ordinamento"
-
-#. Default: "Sort on {value}"
-#: components/manage/Blocks/Search/components/SortOn
-msgid "Sort on {value}"
-msgstr ""
 
 #. Default: "Sort transactions by User-Name, Path or Date"
 #: components/manage/Controlpanels/UndoControlpanel
