@@ -41,6 +41,49 @@ You can try a Volto online demo at [https://demo.plone.org/](https://demo.plone.
 To start a new project using Volto, follow the [Plone installation documentation](https://6.docs.plone.org/install/create-project.html).
 
 
+## Local Development Setup
+
+
+### Prerequisites
+
+Ensure you have [pnpm](https://pnpm.io/installation) installed. If not, install it using:
+```
+    npm install -g pnpm 
+
+```
+1. Install Dependencies 
+```
+    pnpm install 
+```
+2. Build Dependencies
+
+
+Build the registry:
+```
+    pnpm build:registry
+```
+Build components:
+```
+    pnpm build:components
+```
+Build all dependencies:
+```
+    pnpm build:all
+```
+3. Start the project 
+```
+    pnpm start      
+```
+4. Lint and Format Code
+```
+    pnpm lint
+    pnpm prettier
+    pnpm stylelint
+```
+
+
+ 
+
 ## Documentation
 
 You can find the latest documentation at [https://6.docs.plone.org/](https://6.docs.plone.org/volto/index.html).
