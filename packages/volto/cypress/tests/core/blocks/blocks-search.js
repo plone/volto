@@ -558,7 +558,7 @@ describe('Search Block Tests', () => {
     cy.get('#toolbar-save > .icon').click();
     cy.wait(500);
   });
-  it('Search block - test on select 1 sort on in listin criteria sorton', () => {
+  it('Search block - test on select 1 sort on in listing criteria sort on', () => {
     cy.visit('/');
     cy.get('#toolbar-add > .icon').click();
     cy.get('#toolbar-add-document').click();
@@ -590,8 +590,12 @@ describe('Search Block Tests', () => {
     // then we are able to see title and value
     cy.get('span.sorted-label').should('have.text', 'Sorted onEffective date');
     cy.get('span.sorted-label-value').should('have.text', 'Effective date');
+    // Verify the presence of Ascending button
+    cy.get('button[title="Ascending"]').should('be.visible');
+    // Verify the presence of Descending button
+    cy.get('button[title="Descending"]').should('be.visible');
   });
-  it('Search block - test on Only one sortOn options below.', () => {
+  it('Search block - test on only one sort on option below.', () => {
     cy.visit('/');
     cy.get('#toolbar-add > .icon').click();
     cy.get('#toolbar-add-document').click();
@@ -608,13 +612,17 @@ describe('Search Block Tests', () => {
     cy.get('#toolbar-save').click();
     // then we are able to see label and sort option
     cy.get('.sort-label').should('have.text', 'Sort on');
-    cy.get('#select-search-sort-on  ').click();
+    cy.get('#select-search-sort-on').click();
     cy.findByText('Effective date').click({ force: true });
     cy.get(
       'div#select-search-sort-on.search-react-select-container.css-2b097c-container',
     ).contains('Effective date');
+    // Verify the presence of Ascending button
+    cy.get('button[title="Ascending"]').should('be.visible');
+    // Verify the presence of Descending button
+    cy.get('button[title="Descending"]').should('be.visible');
   });
-  it('Search block - test on Select both Listing sorton and Sorton options', () => {
+  it('Search block - test on select both listing sort on and sort on options', () => {
     cy.visit('/');
     cy.get('#toolbar-add > .icon').click();
     cy.get('#toolbar-add-document').click();
@@ -638,22 +646,26 @@ describe('Search Block Tests', () => {
       '#select-listingblock-sort-on > .react-select__control > .react-select__value-container',
     ).click();
     cy.findByText('Order in folder').click();
-    // Add one soron options below
+    // Add one sort on options below
     cy.get('.field-wrapper-showSortOn .wrapper .ui label').click();
     cy.get('#field-sortOnOptions').click();
     cy.findByText('Effective date').click();
-    //save page
+    // save page
     cy.get('#toolbar-save').click();
     // then we are able to see label and sort option
     cy.get('.sort-label').should('have.text', 'Sort on');
-    cy.get('#select-search-sort-on  ').click();
+    cy.get('#select-search-sort-on').click();
     cy.findByText('Effective date').click({ force: true });
     cy.get(
       'div#select-search-sort-on.search-react-select-container.css-2b097c-container',
     ).contains('Effective date');
-    cy.get('#select-search-sort-on  ').click();
+    cy.get('#select-search-sort-on').click();
     cy.get(
       'div#select-search-sort-on.search-react-select-container.css-2b097c-container',
     ).contains('Order in folder');
+    // Verify the presence of Ascending button
+    cy.get('button[title="Ascending"]').should('be.visible');
+    // Verify the presence of Descending button
+    cy.get('button[title="Descending"]').should('be.visible');
   });
 });
