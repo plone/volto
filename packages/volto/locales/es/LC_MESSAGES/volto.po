@@ -3542,11 +3542,6 @@ msgstr "Cambiar a"
 msgid "Table"
 msgstr "Tabla"
 
-#. Default: "Table Of Content {e}"
-#: components/manage/Blocks/ToC/View
-msgid "Table Of Content"
-msgstr ""
-
 #. Default: "Table of Contents"
 #: components/manage/Blocks/ToC/variations/DefaultTocRenderer
 #: components/manage/Blocks/ToC/variations/HorizontalMenu
