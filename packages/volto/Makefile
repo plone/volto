@@ -155,7 +155,7 @@ deployment-acceptance-test: ## Start Cypress in interactive mode for tests in de
 
 .PHONY: deployment-acceptance-web-server-start
 deployment-acceptance-web-server-start: ## Start the reverse proxy (Traefik) in port 80 for deployment
-	cd cypress/docker && docker-compose -f seamless.yml up
+	cd cypress/docker && docker compose -f seamless.yml up
 
 .PHONY: deployment-ci-acceptance-test-run-all
 deployment-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for deployment tests
