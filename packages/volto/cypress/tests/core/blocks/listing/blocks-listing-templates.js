@@ -24,12 +24,12 @@ describe('Folder Contents Tests', () => {
   });
 
   it('Should render Summary template', () => {
-    // when inserting image and selecting summary listing
+    // when inserting a Page and selecting summary listing
     cy.createContent({
-      contentType: 'Image',
+      contentType: 'Document',
       path: '/my-folder/my-document',
-      contentId: 'my-image',
-      contentTitle: 'My Image',
+      contentId: 'my-page2',
+      contentTitle: 'My Page',
     });
 
     cy.visit('/my-folder/my-document');
@@ -39,14 +39,14 @@ describe('Folder Contents Tests', () => {
     cy.get(
       '[style="transition: opacity 500ms ease 0ms;"] > :nth-child(2) > .ui',
     ).click();
-    cy.get('#field-variation').click().type('summary{enter}');
+    cy.get('#field-variation').click().type('list_with_images{enter}');
     cy.get('#toolbar-save').click();
     cy.wait('@content');
 
     cy.url().should('eq', Cypress.config().baseUrl + '/my-folder/my-document');
     cy.get('.listing-item img')
       .should('have.attr', 'src')
-      .and('contain', '/my-folder/my-document/my-image/@@images/image-');
+      .and('contain', '/static/media/default-image');
     cy.get('.listing-item img')
       .should('be.visible')
       .and(($img) => {
@@ -57,10 +57,10 @@ describe('Folder Contents Tests', () => {
     // check SSR rendering by adding query parameters
     cy.get('.edit').click();
     cy.get('.block-editor-listing').click();
-    cy.configureListingWith('Image');
+    cy.configureListingWith('Page');
     cy.get('#toolbar-save').click();
 
-    cy.isInHTML({ parent: '.listing-item:eq(0)', content: 'My Image' });
+    cy.isInHTML({ parent: '.listing-item:eq(0)', content: 'My Folder' });
   });
 
   it('Summary listing should render default preview images', () => {
@@ -79,7 +79,7 @@ describe('Folder Contents Tests', () => {
     cy.get(
       '[style="transition: opacity 500ms ease 0ms;"] > :nth-child(2) > .ui',
     ).click();
-    cy.get('#field-variation').click().type('summary{enter}');
+    cy.get('#field-variation').click().type('list_with_images{enter}');
     cy.get('#toolbar-save').click();
     cy.wait('@content');
 
