@@ -22,10 +22,6 @@ const messages = defineMessages({
     id: 'Sort on',
     defaultMessage: 'Sort on',
   },
-  sortOnButtonTitle: {
-    id: 'Sort on {value}',
-    defaultMessage: 'Sort on {value}',
-  },
   ascending: {
     id: 'Ascending',
     defaultMessage: 'Ascending',
