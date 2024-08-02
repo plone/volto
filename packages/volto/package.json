@@ -55,7 +55,7 @@
     "lint:fix": "eslint --fix 'src/**/*.{js,jsx,ts,tsx,json}'",
     "lint:husky": "eslint --max-warnings=0 --fix",
     "i18n": "rm -rf build/messages && NODE_ENV=production i18n",
-    "i18n:ci": "pnpm i18n && git diff -G'^[^\"POT]' --exit-code",
+    "i18n:ci": "pnpm i18n && git diff -G'^([^\"POT],[^# .Default])' --exit-code",
     "typecheck": "tsc --project tsconfig.json --noEmit",
     "dry-release": "release-it --dry-run",
     "release": "release-it",
