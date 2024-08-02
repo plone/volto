@@ -2,10 +2,8 @@
  * View toc block.
  * @module components/manage/Blocks/ToC/View
  */
-
 import React from 'react';
 import PropTypes from 'prop-types';
-import { injectIntl } from 'react-intl';
 import cx from 'classnames';
 import { Message } from 'semantic-ui-react';
 import config from '@plone/volto/registry';
@@ -86,6 +84,7 @@ export const getBlocksTocEntries = (properties, tocData) => {
  */
 const View = (props) => {
   const { data } = props;
+  const title = data.title ? data.title : '';
   const { variation } = props;
   const metadata = props.metadata || props.properties;
   const blocksFieldname = getBlocksFieldname(metadata);
@@ -165,7 +164,10 @@ const View = (props) => {
 
   const Renderer = variation?.view;
   return (
-    <div className={cx('table-of-contents', variation?.id)}>
+    <nav
+      aria-label={`${title}`}
+      className={cx('table-of-contents', variation?.id)}
+    >
       {props.mode === 'edit' && !data.title && !tocEntries.length && (
         <Message>Table of content</Message>
       )}
@@ -175,7 +177,7 @@ const View = (props) => {
       ) : (
         <div>View extension not found</div>
       )}
-    </div>
+    </nav>
   );
 };
 
@@ -188,4 +190,4 @@ View.propTypes = {
   properties: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
-export default injectIntl(withBlockExtensions(View));
+export default withBlockExtensions(View);
