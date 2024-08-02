@@ -58,6 +58,8 @@ const BlocksForm = (props) => {
     history,
     location,
     token,
+    errors,
+    blocksErrors,
   } = props;
 
   const [isClient, setIsClient] = useState(false);
@@ -281,6 +283,7 @@ const BlocksForm = (props) => {
               onDeleteBlock={onDeleteBlock}
               onSelectBlock={onSelectBlock}
               removable
+              errors={blocksErrors}
             />
           </div>,
           document.getElementById('sidebar-order'),
@@ -354,6 +357,8 @@ const BlocksForm = (props) => {
                 history,
                 location,
                 token,
+                errors,
+                blocksErrors,
               };
               return editBlockWrapper(
                 dragProps,

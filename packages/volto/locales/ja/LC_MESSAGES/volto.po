@@ -1354,9 +1354,19 @@ msgstr ""
 msgid "Event"
 msgstr ""
 
+#. Default: "Event end date must be on or after {startDateValueOrStartFieldName}"
+#: helpers/MessageLabels/MessageLabels
+msgid "Event end date must be on or after {startDateValueOrStartFieldName}"
+msgstr ""
+
 #. Default: "Event listing"
 #: config/Views
 msgid "Event listing"
+msgstr ""
+
+#. Default: "Event start date must be on or before {endDateValueOrEndFieldName}"
+#: helpers/MessageLabels/MessageLabels
+msgid "Event start date must be on or before {endDateValueOrEndFieldName}"
 msgstr ""
 
 #. Default: "Event view"
@@ -3403,6 +3413,11 @@ msgstr "ソート順"
 msgid "Sort on options"
 msgstr ""
 
+#. Default: "Sort on {value}"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Sort on {value}"
+msgstr ""
+
 #. Default: "Sort transactions by User-Name, Path or Date"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Sort transactions by User-Name, Path or Date"
@@ -3411,6 +3426,11 @@ msgstr ""
 #. Default: "Sorted"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Sorted"
+msgstr ""
+
+#. Default: "Sorted on"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Sorted on"
 msgstr ""
 
 #. Default: "Source"
@@ -3664,6 +3684,16 @@ msgstr ""
 msgid "The link address is:"
 msgstr ""
 
+#. Default: "The number of items must be greater than or equal to {minItems}"
+#: helpers/MessageLabels/MessageLabels
+msgid "The number of items must be greater than or equal to {minItems}"
+msgstr ""
+
+#. Default: "The number of items must be less than or equal to {maxItems}"
+#: helpers/MessageLabels/MessageLabels
+msgid "The number of items must be less than or equal to {maxItems}"
+msgstr ""
+
 #. Default: "The provided alternative url already exists!"
 #: components/manage/Aliases/Aliases
 msgid "The provided alternative url already exists!"
@@ -3678,6 +3708,11 @@ msgstr "The registration process has been successful. Please check your e-mail i
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "The site configuration is outdated and needs to be upgraded."
+msgstr ""
+
+#. Default: "The value does not match the pattern {pattern}"
+#: helpers/MessageLabels/MessageLabels
+msgid "The value does not match the pattern {pattern}"
 msgstr ""
 
 #. Default: "The working copy was discarded"
@@ -4392,6 +4427,11 @@ msgstr ""
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema
 msgid "availableViews"
+msgstr ""
+
+#. Default: "Error in the block field {errorField}."
+#: helpers/MessageLabels/MessageLabels
+msgid "blocksFieldsErrorTitle"
 msgstr ""
 
 #. Default: "Forgot your password?"
