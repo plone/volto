@@ -37,9 +37,9 @@ msgstr "Kopiatu"
 msgid "Cut"
 msgstr "Ebaki"
 
+#. Default: "Item(s) pasted."
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
-#. Default: "Item(s) pasted."
 msgid "Item(s) pasted."
 msgstr "Elementuak ondo itsatsi dira."
 
