@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
 "POT-Creation-Date: 2024-03-06T08:38:38.161Z\n"
-"PO-Revision-Date: 2024-08-02 15:12+0000\n"
+"PO-Revision-Date: 2024-08-03 03:25+0000\n"
 "Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
 "Language-Team: Basque <https://hosted.weblate.org/projects/plone/volto/eu/>\n"
 "Language: eu\n"
@@ -3186,7 +3186,7 @@ msgstr "Fitxategia"
 #. Default: "Link"
 #: components/manage/Toolbar/Toolbar
 msgid "Link"
-msgstr "Esteka"
+msgstr "Lotura"
 
 #. Default: "More"
 #: components/manage/Toolbar/Toolbar
