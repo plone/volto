@@ -4,7 +4,6 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { defineMessages, useIntl } from 'react-intl';
 import cx from 'classnames';
 import { Message } from 'semantic-ui-react';
 import config from '@plone/volto/registry';
@@ -83,14 +82,7 @@ export const getBlocksTocEntries = (properties, tocData) => {
  * @class View
  * @extends Component
  */
-const messages = defineMessages({
-  link: {
-    id: 'Table Of Content',
-    defaultMessage: 'Table Of Content {e}',
-  },
-});
 const View = (props) => {
-  const intl = useIntl();
   const { data } = props;
   const title = data.title ? data.title : '';
   const { variation } = props;
@@ -173,8 +165,8 @@ const View = (props) => {
   const Renderer = variation?.view;
   return (
     <nav
+      aria-label={`${title}`}
       className={cx('table-of-contents', variation?.id)}
-      aria-label={intl.formatMessage({ ...messages.link }, { e: `${title}` })}
     >
       {props.mode === 'edit' && !data.title && !tocEntries.length && (
         <Message>Table of content</Message>
