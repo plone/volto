@@ -81,9 +81,6 @@ Build all dependencies:
     pnpm stylelint
 ```
 
-
- 
-
 ## Documentation
 
 You can find the latest documentation at [https://6.docs.plone.org/](https://6.docs.plone.org/volto/index.html).
