@@ -227,6 +227,8 @@ const applyConfig = (config: ConfigType) => {
     predicates: [ContentTypeCondition(['Document']), RouteCondition('/hello')],
   });
 
+  config.settings.showSelfRegistration = true;
+
   return config;
 };
 
