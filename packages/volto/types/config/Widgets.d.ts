@@ -1,6 +1,5 @@
 export namespace widgetMapping {
     export namespace id {
-        export { SchemaWidget as schema };
         export { TokenWidget as subjects };
         export { QuerystringWidget as query };
         export { RecurrenceWidget as recurrence };
@@ -34,6 +33,7 @@ export namespace widgetMapping {
         export { SelectAutoComplete as autocomplete };
         export { ColorPickerWidget as color_picker };
         export { SelectWidget as select };
+        export { SchemaWidget as schema };
     }
     export let vocabulary: {
         'plone.app.vocabularies.Catalog': import("@loadable/component").LoadableComponent<Omit<import("react-intl").WithIntlProps<import("react-intl").WrappedComponentProps<string>>, "ref"> & import("react").RefAttributes<import("react").ComponentType<import("react-intl").WrappedComponentProps<string>>>>;
@@ -98,7 +98,6 @@ export namespace widgetMapping {
     }
 }
 export const defaultWidget: import("@loadable/component").LoadableComponent<any>;
-import { SchemaWidget } from '@plone/volto/components/manage/Widgets';
 import { TokenWidget } from '@plone/volto/components/manage/Widgets';
 import { QuerystringWidget } from '@plone/volto/components/manage/Widgets';
 import { RecurrenceWidget } from '@plone/volto/components/manage/Widgets';
@@ -126,6 +125,7 @@ import { SelectMetadataWidget } from '@plone/volto/components/manage/Widgets';
 import { SelectAutoComplete } from '@plone/volto/components/manage/Widgets';
 import { ColorPickerWidget } from '@plone/volto/components/manage/Widgets';
 import { SelectWidget } from '@plone/volto/components/manage/Widgets';
+import { SchemaWidget } from '@plone/volto/components/manage/Widgets';
 import { CheckboxWidget } from '@plone/volto/components/manage/Widgets';
 import { NumberWidget } from '@plone/volto/components/manage/Widgets';
 import { getWidgetView } from '@plone/volto/helpers/Widget/widget';

@@ -182,6 +182,11 @@ export const multipleFieldsetsSchema: BlockConfigBase['blockSchema'] = ({
       title: 'fourth',
       fields: ['href', 'firstWithDefault', 'style'],
     },
+    {
+      id: 'fifth',
+      title: 'fifth',
+      fields: ['fieldRequiredInFieldset'],
+    },
   ],
   properties: {
     slides: {
@@ -232,6 +237,9 @@ export const multipleFieldsetsSchema: BlockConfigBase['blockSchema'] = ({
       title: 'HTML',
       widget: 'richtext',
     },
+    fieldRequiredInFieldset: {
+      title: 'Field required in fieldset',
+    },
   },
-  required: [],
+  required: ['fieldRequiredInFieldset'],
 });

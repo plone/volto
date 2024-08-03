@@ -17,6 +17,48 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.42 (2024-07-30)
+
+### Breaking
+
+- Add foundations for extensible validation in forms. @sneridagh
+
+  Breaking:
+  `packages/volto/src/helpers/FormValidation/FormValidation.jsx` has been heavily refactored.
+  If you shadowed this component in your project or add-on, you should review it and update it accordingly. [#6161](https://github.com/plone/volto/issues/6161)
+- Remove `react-share` library and `SocialSharing` component @sneridagh [#6162](https://github.com/plone/volto/issues/6162)
+- In the widget mapping, moved the `SchemaWidget` registration from the `id` object to the `widget` object, and added the `widget` key to the `schema` object in the `properties` object for `makeSchemaList`. @sneridagh [#6189](https://github.com/plone/volto/issues/6189)
+
+### Bugfix
+
+- Fixed UTC problems in `RecurrenceWidget`. @giuliaghisini [#5002](https://github.com/plone/volto/issues/5002)
+- Do not send sorting information in the search block if no sort_on setting is configured @erral [#5338](https://github.com/plone/volto/issues/5338)
+- Fixed pagination in search results by passing `pageSize` explicitly to all search API calls. @EshaanAgg [#5464](https://github.com/plone/volto/issues/5464)
+- Fix the toolbar handler color for the homepage to match its "published" state. @sabrina-bongiovanni [#6126](https://github.com/plone/volto/issues/6126)
+- Allow `ImageWidget` value to be an object and use the `@id` to get the value if present. 
+  This is useful for fields that were using the `object_browser` widget previously to set values. @ichim-david [#6156](https://github.com/plone/volto/issues/6156)
+- Persist data for the `backend-docker-start` Docker container in a Docker volume named `volto-backend-data`.
+  This way the data is persisted between runs of the container.
+  You can also delete the `data` volume to start fresh.
+  @ichim-david [#6157](https://github.com/plone/volto/issues/6157)
+- Improve CSS for the `SchemaWidget` widget. @robgietema @sneridagh [#6189](https://github.com/plone/volto/issues/6189)
+
+### Internal
+
+- Debounced searching for users and groups in the `User Group Membership` Control Panel. @pnicolli [#6153](https://github.com/plone/volto/issues/6153)
+- Update the link in the PLIP issue template to the new Plone 6 Documentation PLIP page. @stevepiercy [#6175](https://github.com/plone/volto/issues/6175)
+- Added Cypress test for field types in example content - @Tishasoumya-02 [#6217](https://github.com/plone/volto/issues/6217)
+
+### Documentation
+
+- Changed a few typos within documentation, README's and comments. @FritzHoing [#6109](https://github.com/plone/volto/issues/6109)
+- Use relative links to ensure static files get copied during documentation build. @stevepiercy [#6174](https://github.com/plone/volto/issues/6174)
+- Clean up upgrade guide for `react-share` library and `SocialSharing` component. @stevepiercy [#6175](https://github.com/plone/volto/issues/6175)
+- Add references for contributing to latest and earlier versions of Volto. @stevepiercy [#6184](https://github.com/plone/volto/issues/6184)
+- Improved i18n docs regarding new translated messages not being picked up by the i18n translation mechanism when added in shadowed components. @pnicolli [#6188](https://github.com/plone/volto/issues/6188)
+- Add a label and minor grammar fixes to i18n documentation. @stevepiercy [#6192](https://github.com/plone/volto/issues/6192)
+- Polish upgrade docs and news items for `SchemaWidget`. @stevepiercy [#6193](https://github.com/plone/volto/issues/6193)
+
 ## 18.0.0-alpha.41 (2024-07-05)
 
 ### Breaking

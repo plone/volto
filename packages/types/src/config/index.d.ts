@@ -3,6 +3,7 @@ import type { BlocksConfig } from './Blocks';
 import type { ViewsConfig } from './Views';
 import type { WidgetsConfig } from './Widgets';
 import type { SlotsConfig } from './Slots';
+import type { UtilitiesConfig } from './Utilities';
 
 export type AddonReducersConfig = Record<string, Function>;
 
@@ -33,12 +34,20 @@ export type ConfigData = {
   addonRoutes: AddonRoutesConfig;
   slots: SlotsConfig;
   components: ComponentsConfig;
+  utilities: UtilitiesConfig;
   experimental: ExperimentalConfig;
 };
 
-export { SettingsConfig, BlocksConfig, ViewsConfig, WidgetsConfig };
+export {
+  BlocksConfig,
+  SettingsConfig,
+  UtilitiesConfig,
+  ViewsConfig,
+  WidgetsConfig,
+};
 export * from './Blocks';
 export * from './Settings';
 export * from './Slots';
+export * from './Utilities';
 export * from './Views';
 export * from './Widgets';
