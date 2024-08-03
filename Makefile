@@ -1,4 +1,6 @@
 # Volto development
+# Allow setting the language for backend-docker-start. Default is `en`.
+LANGUAGE      ?=en
 
 ### Defensive settings for make:
 #     https://tech.davis-hansson.com/p/make/
@@ -167,7 +169,7 @@ release-notes-copy-to-docs: ## Copy release notes into documentation
 
 .PHONY: backend-docker-start
 backend-docker-start: ## Starts a Docker-based backend for development
-	$(MAKE) -C "./packages/volto/" backend-docker-start
+	$(MAKE) -C "./packages/volto/" backend-docker-start -e $(LANGUAGE)
 
 .PHONY: backend-docker-detached-start
 backend-docker-detached-start: ## Starts a Docker-based backend in detached mode (daemon)
