@@ -3,18 +3,17 @@
  * @module components/manage/Blocks/Block/Edit
  */
 
-import React, { Component } from 'react';
+import { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { defineMessages, injectIntl } from 'react-intl';
+import { defineMessages, useIntl } from 'react-intl';
 import cx from 'classnames';
 import { setSidebarTab, setUIState } from '@plone/volto/actions';
 import config from '@plone/volto/registry';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import { applyBlockDefaults } from '@plone/volto/helpers';
 import { ViewDefaultBlock, EditDefaultBlock } from '@plone/volto/components';
-
 import {
   SidebarPortal,
   BlockSettingsSidebar,
@@ -28,225 +27,157 @@ const messages = defineMessages({
   },
 });
 
-/**
- * Edit block class.
- * @class Edit
- * @extends Component
- */
-export class Edit extends Component {
-  /**
-   * Property types.
-   * @property {Object} propTypes Property types.
-   * @static
-   */
-  static propTypes = {
-    type: PropTypes.string.isRequired,
-    data: PropTypes.objectOf(PropTypes.any).isRequired,
-    // properties is mapped to formData, so it's not connected to changes of the object
-    properties: PropTypes.objectOf(PropTypes.any).isRequired,
-    selected: PropTypes.bool.isRequired,
-    multiSelected: PropTypes.bool,
-    index: PropTypes.number.isRequired,
-    id: PropTypes.string.isRequired,
-    manage: PropTypes.bool,
-    onMoveBlock: PropTypes.func.isRequired,
-    onDeleteBlock: PropTypes.func.isRequired,
-    editable: PropTypes.bool,
-    pathname: PropTypes.string.isRequired,
-  };
+const Edit = (props) => {
+  const {
+    type,
+    data,
+    selected,
+    multiSelected,
+    index,
+    id,
+    manage,
+    editable,
+    hovered,
+    sidebarTab,
+    setSidebarTab,
+    setUIState,
+    onSelectBlock,
+    handleKeyDown,
+  } = props;
 
-  /**
-   * Default properties.
-   * @property {Object} defaultProps Default properties.
-   * @static
-   */
-  static defaultProps = {
-    manage: false,
-    editable: true,
-  };
+  const blockNode = useRef(null);
+  const intl = useIntl();
+  const blocksConfig = config.blocks.blocksConfig;
+  const disableNewBlocks = data?.disableNewBlocks;
 
-  componentDidMount() {
-    const { type } = this.props;
-    const { blocksConfig = config.blocks.blocksConfig } = this.props;
+  const blockHasOwnFocusManagement =
+    blocksConfig?.[type]?.blockHasOwnFocusManagement || null;
 
-    const blockHasOwnFocusManagement =
-      blocksConfig?.[type]?.['blockHasOwnFocusManagement'] || null;
-    if (
-      !blockHasOwnFocusManagement &&
-      this.props.selected &&
-      this.blockNode.current
-    ) {
-      this.blockNode.current.focus();
+  useEffect(() => {
+    if (!blockHasOwnFocusManagement && selected && blockNode.current) {
+      blockNode.current.focus();
     }
-    const tab = this.props.manage ? 1 : blocksConfig?.[type]?.sidebarTab || 0;
-    if (
-      this.props.selected &&
-      this.props.editable &&
-      this.props.sidebarTab !== 2
-    ) {
-      this.props.setSidebarTab(tab);
+    const tab = manage ? 1 : blocksConfig?.[type]?.sidebarTab || 0;
+    if (selected && editable && sidebarTab !== 2) {
+      setSidebarTab(tab);
     }
+  }, [
+    selected,
+    type,
+    editable,
+    sidebarTab,
+    manage,
+    setSidebarTab,
+    blocksConfig,
+    blockHasOwnFocusManagement,
+  ]);
+
+  useEffect(() => {
+    if (!blockHasOwnFocusManagement && selected && blockNode.current) {
+      blockNode.current.focus();
+    }
+  }, [selected, type, blockHasOwnFocusManagement]);
+
+  let Block = blocksConfig?.[type]?.edit || EditDefaultBlock;
+  if (
+    data?.readOnly ||
+    (!editable && !config.blocks.showEditBlocksInBabelView)
+  ) {
+    Block = blocksConfig?.[type]?.view || ViewDefaultBlock;
   }
+  const schema = blocksConfig?.[type]?.schema || BlockSettingsSchema;
 
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    const { blocksConfig = config.blocks.blocksConfig } = this.props;
-    const { selected, type } = this.props;
-    const blockHasOwnFocusManagement =
-      blocksConfig?.[type]?.['blockHasOwnFocusManagement'] || null;
-    if (
-      !blockHasOwnFocusManagement &&
-      nextProps.selected &&
-      selected !== nextProps.selected &&
-      this.blockNode.current
-    ) {
-      this.blockNode.current.focus();
-    }
-    if (
-      ((!this.props.selected && nextProps.selected) ||
-        type !== nextProps.type) &&
-      this.props.editable
-    ) {
-      const tab = this.props.manage
-        ? 1
-        : blocksConfig?.[nextProps.type]?.sidebarTab || 0;
-      if (this.props.sidebarTab !== 2) {
-        this.props.setSidebarTab(tab);
-      }
-    }
-  }
+  return (
+    <>
+      {Block !== null ? (
+        <div
+          role="button"
+          onMouseOver={() => hovered !== id && setUIState({ hovered: id })}
+          onFocus={() => {}}
+          onMouseLeave={() => setUIState({ hovered: null })}
+          onClick={(e) => {
+            const isMultipleSelection = e.shiftKey || e.ctrlKey || e.metaKey;
+            !selected &&
+              onSelectBlock(id, selected ? false : isMultipleSelection, e);
+          }}
+          onKeyDown={
+            !(blockHasOwnFocusManagement || disableNewBlocks)
+              ? (e) => handleKeyDown(e, index, id, blockNode.current)
+              : null
+          }
+          className={cx('block', type, data.variation, {
+            selected: selected || multiSelected,
+            multiSelected: multiSelected,
+            hovered: hovered === id,
+          })}
+          style={{ outline: 'none' }}
+          ref={blockNode}
+          tabIndex={blockHasOwnFocusManagement ? null : -1}
+        >
+          <Block
+            {...props}
+            blockNode={blockNode}
+            data={applyBlockDefaults(props)}
+          />
+          {manage && (
+            <SidebarPortal selected={selected} tab="sidebar-settings">
+              <BlockSettingsSidebar {...props} schema={schema} />
+            </SidebarPortal>
+          )}
+        </div>
+      ) : (
+        <div
+          role="button"
+          onMouseOver={() => setUIState({ hovered: id })}
+          onFocus={() => setUIState({ hovered: id })}
+          onMouseLeave={() => setUIState({ hovered: null })}
+          onClick={() => !selected && onSelectBlock(id)}
+          onKeyDown={
+            !(blockHasOwnFocusManagement || disableNewBlocks)
+              ? (e) => handleKeyDown(e, index, id, blockNode.current)
+              : null
+          }
+          className={cx(`block ${type}`, { selected })}
+          style={{ outline: 'none' }}
+          ref={blockNode}
+          tabIndex={-1}
+        >
+          {intl.formatMessage(messages.unknownBlock, { block: type })}
+        </div>
+      )}
+    </>
+  );
+};
 
-  blockNode = React.createRef();
+Edit.propTypes = {
+  type: PropTypes.string.isRequired,
+  data: PropTypes.objectOf(PropTypes.any).isRequired,
+  selected: PropTypes.bool.isRequired,
+  multiSelected: PropTypes.bool,
+  index: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
+  manage: PropTypes.bool,
+  editable: PropTypes.bool,
+  hovered: PropTypes.string,
+  sidebarTab: PropTypes.number,
+  setSidebarTab: PropTypes.func.isRequired,
+  setUIState: PropTypes.func.isRequired,
+  onSelectBlock: PropTypes.func.isRequired,
+  handleKeyDown: PropTypes.func.isRequired,
+};
 
-  /**
-   * Render method.
-   * @method render
-   * @returns {string} Markup for the component.
-   */
-  render() {
-    const { blocksConfig = config.blocks.blocksConfig } = this.props;
-    const { editable, type } = this.props;
-
-    const disableNewBlocks = this.props.data?.disableNewBlocks;
-
-    let Block = blocksConfig?.[type]?.['edit'] || EditDefaultBlock;
-    if (
-      this.props.data?.readOnly ||
-      (!editable && !config.blocks.showEditBlocksInBabelView)
-    ) {
-      Block = blocksConfig?.[type]?.['view'] || ViewDefaultBlock;
-    }
-    const schema = blocksConfig?.[type]?.['schema'] || BlockSettingsSchema;
-    const blockHasOwnFocusManagement =
-      blocksConfig?.[type]?.['blockHasOwnFocusManagement'] || null;
-
-    return (
-      <>
-        {Block !== null ? (
-          <div
-            role="presentation"
-            onMouseOver={() => {
-              if (this.props.hovered !== this.props.id) {
-                this.props.setUIState({ hovered: this.props.id });
-              }
-            }}
-            onFocus={() => {
-              // TODO: This `onFocus` steals somehow the focus from the slate block
-              // we have to investigate why this is happening
-              // Apparently, I can't see any difference in the behavior
-              // If any, we can fix it in successive iterations
-              // if (this.props.hovered !== this.props.id) {
-              //   this.props.setUIState({ hovered: this.props.id });
-              // }
-            }}
-            onMouseLeave={() => this.props.setUIState({ hovered: null })}
-            onClick={(e) => {
-              const isMultipleSelection = e.shiftKey || e.ctrlKey || e.metaKey;
-              !this.props.selected &&
-                this.props.onSelectBlock(
-                  this.props.id,
-                  this.props.selected ? false : isMultipleSelection,
-                  e,
-                );
-            }}
-            onKeyDown={
-              !(blockHasOwnFocusManagement || disableNewBlocks)
-                ? (e) =>
-                    this.props.handleKeyDown(
-                      e,
-                      this.props.index,
-                      this.props.id,
-                      this.blockNode.current,
-                    )
-                : null
-            }
-            className={cx('block', type, this.props.data.variation, {
-              selected: this.props.selected || this.props.multiSelected,
-              multiSelected: this.props.multiSelected,
-              hovered: this.props.hovered === this.props.id,
-            })}
-            style={{ outline: 'none' }}
-            ref={this.blockNode}
-            // The tabIndex is required for the keyboard navigation
-            /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
-            tabIndex={!blockHasOwnFocusManagement ? -1 : null}
-          >
-            <Block
-              {...this.props}
-              blockNode={this.blockNode}
-              data={applyBlockDefaults(this.props)}
-            />
-            {this.props.manage && (
-              <SidebarPortal
-                selected={this.props.selected}
-                tab="sidebar-settings"
-              >
-                <BlockSettingsSidebar {...this.props} schema={schema} />
-              </SidebarPortal>
-            )}
-          </div>
-        ) : (
-          <div
-            role="presentation"
-            onMouseOver={() =>
-              this.props.setUIState({ hovered: this.props.id })
-            }
-            onFocus={() => this.props.setUIState({ hovered: this.props.id })}
-            onMouseLeave={() => this.props.setUIState({ hovered: null })}
-            onClick={() =>
-              !this.props.selected && this.props.onSelectBlock(this.props.id)
-            }
-            onKeyDown={
-              !(blockHasOwnFocusManagement || disableNewBlocks)
-                ? (e) =>
-                    this.props.handleKeyDown(
-                      e,
-                      this.props.index,
-                      this.props.id,
-                      this.blockNode.current,
-                    )
-                : null
-            }
-            className={cx(`block ${type}`, { selected: this.props.selected })}
-            style={{ outline: 'none' }}
-            ref={this.blockNode}
-            // The tabIndex is required for the keyboard navigation
-            tabIndex={-1}
-          >
-            {this.props.intl.formatMessage(messages.unknownBlock, {
-              block: type,
-            })}
-          </div>
-        )}
-      </>
-    );
-  }
-}
+Edit.defaultProps = {
+  manage: false,
+  editable: true,
+  multiSelected: false,
+  hovered: null,
+  sidebarTab: 0,
+};
 
 export default compose(
-  injectIntl,
   withObjectBrowser,
   connect(
-    (state, props) => ({
+    (state) => ({
       hovered: state.form?.ui.hovered || null,
       sidebarTab: state.sidebar?.tab,
     }),
