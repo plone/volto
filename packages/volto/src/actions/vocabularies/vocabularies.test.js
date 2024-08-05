@@ -38,7 +38,7 @@ describe('Vocabularies actions', () => {
       expect(action.vocabulary).toEqual(vocabNameOrURL);
       expect(action.request.op).toEqual('get');
       expect(action.request.path).toEqual(
-        `/@vocabularies/plone.app.vocabularies.Keywords?b_start=0&title=${query}`,
+        `/de/foo/bar/@vocabularies/plone.app.vocabularies.Keywords?b_start=0&title=${query}`,
       );
     });
     it('should create an action to get a vocabulary if an b_size=-1 is passed', () => {
@@ -50,7 +50,7 @@ describe('Vocabularies actions', () => {
       expect(action.vocabulary).toEqual(vocabNameOrURL);
       expect(action.request.op).toEqual('get');
       expect(action.request.path).toEqual(
-        `/@vocabularies/plone.app.vocabularies.Keywords?b_start=0&b_size=-1`,
+        `/de/foo/bar/@vocabularies/plone.app.vocabularies.Keywords?b_start=0&b_size=-1`,
       );
     });
   });
