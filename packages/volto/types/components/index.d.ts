@@ -33,7 +33,6 @@ export { default as Logout } from "@plone/volto/components/theme/Logout/Logout";
 export { default as Sitemap } from "@plone/volto/components/theme/Sitemap/Sitemap";
 export { default as Search } from "@plone/volto/components/theme/Search/Search";
 export { default as Comments } from "@plone/volto/components/theme/Comments/Comments";
-export { default as SocialSharing } from "@plone/volto/components/theme/SocialSharing/SocialSharing";
 export { default as Register } from "@plone/volto/components/theme/Register/Register";
 export { default as PasswordReset } from "@plone/volto/components/theme/PasswordReset/PasswordReset";
 export { default as RequestPasswordReset } from "@plone/volto/components/theme/PasswordReset/RequestPasswordReset";
