@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import { defineMessages } from 'react-intl';
 import { compose } from 'redux';
 
-import { SidebarPortal, BlockDataForm } from '@plone/volto/components';
+import { SidebarPortal } from '@plone/volto/components';
+import { BlockDataForm } from '@plone/volto/components/manage/Form';
 import { addExtensionFieldToSchema } from '@plone/volto/helpers/Extensions/withBlockSchemaEnhancer';
 import { getBaseUrl } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
@@ -22,6 +23,7 @@ const messages = defineMessages({
 const SearchBlockEdit = (props) => {
   const {
     block,
+    blocksErrors,
     onChangeBlock,
     data,
     selected,
@@ -93,6 +95,7 @@ const SearchBlockEdit = (props) => {
           formData={data}
           navRoot={navRoot}
           contentType={contentType}
+          errors={blocksErrors}
         />
       </SidebarPortal>
     </>

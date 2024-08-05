@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { SidebarPortal } from '@plone/volto/components';
-import BlockDataForm from '@plone/volto/components/manage/Form/BlockDataForm';
+import { BlockDataForm } from '@plone/volto/components/manage/Form';
 
 import TableOfContentsSchema from './Schema';
 import View from './View';
@@ -29,6 +29,7 @@ class Edit extends Component {
             block={this.props.block}
             navRoot={this.props.navRoot}
             contentType={this.props.contentType}
+            errors={this.props.blocksErrors}
           />
         </SidebarPortal>
       </>

@@ -77,28 +77,22 @@ exports[`renders a dictionary widget component 1`] = `
                   class="ui drag block inner"
                 >
                   <div
-                    class="mocked-default-widget"
-                    id="mocked-field-en-0-test-dict-talk"
+                    class="Field"
+                    id="en-0-test-dict-talk"
                   >
                     English
-                     - 
-                    No description
                   </div>
                   <div
-                    class="mocked-default-widget"
-                    id="mocked-field-de-1-test-dict-talk"
+                    class="Field"
+                    id="de-1-test-dict-talk"
                   >
                     Deutsch
-                     - 
-                    No description
                   </div>
                   <div
-                    class="mocked-default-widget"
-                    id="mocked-field-it-2-test-dict-talk"
+                    class="Field"
+                    id="it-2-test-dict-talk"
                   >
                     Italiano
-                     - 
-                    No description
                   </div>
                 </div>
                 <div>
@@ -145,28 +139,22 @@ exports[`renders a dictionary widget component 1`] = `
                   class="ui drag block inner"
                 >
                   <div
-                    class="mocked-default-widget"
-                    id="mocked-field-en-0-test-dict-keynote"
+                    class="Field"
+                    id="en-0-test-dict-keynote"
                   >
                     English
-                     - 
-                    No description
                   </div>
                   <div
-                    class="mocked-default-widget"
-                    id="mocked-field-de-1-test-dict-keynote"
+                    class="Field"
+                    id="de-1-test-dict-keynote"
                   >
                     Deutsch
-                     - 
-                    No description
                   </div>
                   <div
-                    class="mocked-default-widget"
-                    id="mocked-field-it-2-test-dict-keynote"
+                    class="Field"
+                    id="it-2-test-dict-keynote"
                   >
                     Italiano
-                     - 
-                    No description
                   </div>
                 </div>
                 <div>
@@ -213,28 +201,22 @@ exports[`renders a dictionary widget component 1`] = `
                   class="ui drag block inner"
                 >
                   <div
-                    class="mocked-default-widget"
-                    id="mocked-field-en-0-test-dict-lightning-talk"
+                    class="Field"
+                    id="en-0-test-dict-lightning-talk"
                   >
                     English
-                     - 
-                    No description
                   </div>
                   <div
-                    class="mocked-default-widget"
-                    id="mocked-field-de-1-test-dict-lightning-talk"
+                    class="Field"
+                    id="de-1-test-dict-lightning-talk"
                   >
                     Deutsch
-                     - 
-                    No description
                   </div>
                   <div
-                    class="mocked-default-widget"
-                    id="mocked-field-it-2-test-dict-lightning-talk"
+                    class="Field"
+                    id="it-2-test-dict-lightning-talk"
                   >
                     Italiano
-                     - 
-                    No description
                   </div>
                 </div>
                 <div>

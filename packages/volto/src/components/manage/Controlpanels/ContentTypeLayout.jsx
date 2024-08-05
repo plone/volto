@@ -19,14 +19,8 @@ import { Button, Segment } from 'semantic-ui-react';
 import { toast } from 'react-toastify';
 import { defineMessages, injectIntl, FormattedMessage } from 'react-intl';
 import { nth, join } from 'lodash';
-import {
-  Error,
-  Form,
-  Icon,
-  Toolbar,
-  Sidebar,
-  Toast,
-} from '@plone/volto/components';
+import { Error, Icon, Toolbar, Sidebar, Toast } from '@plone/volto/components';
+import { Form } from '@plone/volto/components/manage/Form';
 import {
   getSchema,
   updateSchema,

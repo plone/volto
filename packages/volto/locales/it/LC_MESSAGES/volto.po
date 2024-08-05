@@ -492,9 +492,9 @@ msgstr "Relazioni corrotte"
 msgid "Browse"
 msgstr "Sfoglia"
 
-#. Default: "Browse the site, drop an image, or type an URL"
-#: components/manage/Blocks/Image/Edit
-msgid "Browse the site, drop an image, or type an URL"
+#. Default: "Browse the site, drop an image, or use a URL"
+#: components/manage/Widgets/ImageWidget
+msgid "Browse the site, drop an image, or type a URL"
 msgstr "Sfoglia i contenuti, rilascia un'immagine o digita un URL"
 
 #. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
@@ -586,6 +586,11 @@ msgstr "Modifiche salvate"
 msgid "Changes saved."
 msgstr "Modifiche salvate."
 
+#. Default: "Check this box to customize the title, description, or image of the target content item for this teaser. Leave it unchecked to show updates to the target content item if it is edited later."
+#: components/manage/Blocks/Teaser/schema
+msgid "Check this box to customize the title, description, or image of the target content item for this teaser. Leave it unchecked to show updates to the target content item if it is edited later."
+msgstr ""
+
 #. Default: "Checkbox"
 #: components/manage/Widgets/SchemaWidget
 msgid "Checkbox"
@@ -613,6 +618,7 @@ msgid "Choose a file"
 msgstr "Scegli un file"
 
 #. Default: "Clear"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
 msgstr "Annulla"
@@ -864,6 +870,11 @@ msgstr "Filtri attualmente applicati"
 #: components/manage/Preferences/ChangePassword
 msgid "Current password"
 msgstr "Password corrente"
+
+#. Default: "Customize teaser content"
+#: components/manage/Blocks/Teaser/schema
+msgid "Customize teaser content"
+msgstr ""
 
 #. Default: "Cut"
 #: components/manage/Actions/Actions
@@ -1317,6 +1328,7 @@ msgstr ""
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Edit/Edit
 #: components/manage/Form/InlineForm
@@ -1338,10 +1350,20 @@ msgstr "Errore"
 msgid "Event"
 msgstr "Evento"
 
+#. Default: "Event end date must be on or after {startDateValueOrStartFieldName}"
+#: helpers/MessageLabels/MessageLabels
+msgid "Event end date must be on or after {startDateValueOrStartFieldName}"
+msgstr ""
+
 #. Default: "Event listing"
 #: config/Views
 msgid "Event listing"
 msgstr "Elenco eventi"
+
+#. Default: "Event start date must be on or before {endDateValueOrEndFieldName}"
+#: helpers/MessageLabels/MessageLabels
+msgid "Event start date must be on or before {endDateValueOrEndFieldName}"
+msgstr ""
 
 #. Default: "Event view"
 #: config/Views
@@ -1452,6 +1474,11 @@ msgstr "Vista file"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Filename"
 msgstr "Nome del file"
+
+#. Default: "Files uploaded: {uploadedFiles}"
+#: components/manage/Contents/ContentsUploadModal
+msgid "Files uploaded: {uploadedFiles}"
+msgstr "File caricati: {uploadedFiles}"
 
 #. Default: "Filter"
 #: helpers/MessageLabels/MessageLabels
@@ -1575,6 +1602,11 @@ msgstr "Gruppo"
 msgid "Group created"
 msgstr "Gruppo creato"
 
+#. Default: "Group deleted"
+#: helpers/MessageLabels/MessageLabels
+msgid "Group deleted"
+msgstr ""
+
 #. Default: "Group roles updated"
 #: helpers/MessageLabels/MessageLabels
 msgid "Group roles updated"
@@ -1660,6 +1692,7 @@ msgstr "Cronologia di {title}"
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsBreadcrumbs
 #: components/manage/Contents/ContentsBreadcrumbsHomeItem
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/theme/Breadcrumbs/Breadcrumbs
 #: components/theme/Logo/Logo
 msgid "Home"
@@ -1669,6 +1702,11 @@ msgstr "Home"
 #: components/manage/Contents/Contents
 msgid "ID"
 msgstr "ID"
+
+#. Default: "Icon View"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Icon View"
+msgstr ""
 
 #. Default: "If all of the following conditions are met:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -1822,6 +1860,11 @@ msgstr "anni"
 msgid "Invalid Block"
 msgstr "Blocco non valido - Salvando, verrà rimosso"
 
+#. Default: "Invalid teaser source"
+#: components/manage/Blocks/Teaser/Data
+msgid "Invalid teaser source"
+msgstr ""
+
 #. Default: "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
 #: helpers/MessageLabels/MessageLabels
 msgid "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
@@ -1834,7 +1877,7 @@ msgstr "Risultati per pagina"
 
 #. Default: "Item successfully moved."
 #: components/manage/Contents/Contents
-msgid "Item succesfully moved."
+msgid "Item successfully moved."
 msgstr "Elemento spostato correttamente."
 
 #. Default: "Item(s) copied."
@@ -1994,6 +2037,11 @@ msgstr "Elementi collegati a questo contenuto con un collegamento ipertestuali n
 msgid "Links and references"
 msgstr "Link e collegamenti"
 
+#. Default: "List View"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "List View"
+msgstr ""
+
 #. Default: "Listing"
 #: components/manage/Blocks/Listing/schema
 msgid "Listing"
@@ -2010,6 +2058,8 @@ msgid "Load more"
 msgstr "Carica altro"
 
 #. Default: "Loading."
+#: components/manage/Controlpanels/Groups/GroupsControlpanel
+#: components/manage/Controlpanels/Users/UsersControlpanel
 #: components/manage/Form/ModalForm
 msgid "Loading"
 msgstr "Caricamento"
@@ -2455,9 +2505,15 @@ msgid "Open menu"
 msgstr "Apri menu"
 
 #. Default: "Open object browser"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 #: components/manage/Widgets/ObjectBrowserWidget
 msgid "Open object browser"
 msgstr "Apri object browser"
+
+#. Default: "Order"
+#: components/manage/Sidebar/Sidebar
+msgid "Order"
+msgstr "Ordine"
 
 #. Default: "Ordered"
 #: components/manage/Blocks/ToC/Schema
@@ -2722,6 +2778,11 @@ msgstr "Elementi collegati a questo contenuto come contenuto correlato"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Referencing this item with {relationship}"
 msgstr "Elementi collegati a questo contenuto in {relationship}"
+
+#. Default: "Refresh source content"
+#: components/manage/Blocks/Teaser/Data
+msgid "Refresh source content"
+msgstr ""
 
 #. Default: "Register"
 #: components/theme/Anontools/Anontools
@@ -3047,6 +3108,7 @@ msgstr "Etichetta del campo di ricerca"
 
 #. Default: "Search results"
 #: components/manage/Blocks/Search/components/SearchDetails
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/theme/Search/Search
 msgid "Search results"
 msgstr "Risultati della ricerca"
@@ -3357,6 +3419,11 @@ msgstr "Ordina transazioni per Username, Percorso o Data"
 msgid "Sorted"
 msgstr "Ordinato"
 
+#. Default: "Sorted on"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Sorted on"
+msgstr ""
+
 #. Default: "Source"
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Controlpanels/Relations/BrokenRelations
@@ -3431,6 +3498,11 @@ msgstr "Aspetto"
 #: components/theme/ContactForm/ContactForm
 msgid "Subject"
 msgstr "Oggetto"
+
+#. Default: "Submit"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
+msgid "Submit"
+msgstr ""
 
 #. Default: "Success"
 #: components/manage/Actions/Actions
@@ -3603,6 +3675,16 @@ msgstr "L'elemento non può essere eliminato."
 msgid "The link address is:"
 msgstr "L'indirizzo del collegamento è:"
 
+#. Default: "The number of items must be greater than or equal to {minItems}"
+#: helpers/MessageLabels/MessageLabels
+msgid "The number of items must be greater than or equal to {minItems}"
+msgstr ""
+
+#. Default: "The number of items must be less than or equal to {maxItems}"
+#: helpers/MessageLabels/MessageLabels
+msgid "The number of items must be less than or equal to {maxItems}"
+msgstr ""
+
 #. Default: "The provided alternative url already exists!"
 #: components/manage/Aliases/Aliases
 msgid "The provided alternative url already exists!"
@@ -3618,6 +3700,11 @@ msgstr "La registrazione è avvenuta correttamente. Per favore controlla la tua 
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "The site configuration is outdated and needs to be upgraded."
 msgstr "La configurazione del sito è obsoleta e deve essere aggiornata."
+
+#. Default: "The value does not match the pattern {pattern}"
+#: helpers/MessageLabels/MessageLabels
+msgid "The value does not match the pattern {pattern}"
+msgstr ""
 
 #. Default: "The working copy was discarded"
 #: components/manage/Toolbar/More
@@ -3744,6 +3831,11 @@ msgstr "Totale degli oggetti attivi e non attivi"
 #: components/manage/Contents/Contents
 msgid "Total comments"
 msgstr "Totale dei commenti"
+
+#. Default: "Total files to upload: {totalFiles}"
+#: components/manage/Contents/ContentsUploadModal
+msgid "Total files to upload: {totalFiles}"
+msgstr "Numero totale di file da caricare: {totalFiles}"
 
 #. Default: "Total number of objects in each cache"
 #: components/manage/Controlpanels/DatabaseInformation
@@ -3973,13 +4065,8 @@ msgstr "Carica un'Immagine di testata nel campo del contenuto."
 msgid "Upload files"
 msgstr "Carica file"
 
-#. Default: "Uploading files"
-#: components/manage/Contents/ContentsUploadModal
-msgid "Uploading files"
-msgstr "Caricamento dei files"
-
 #. Default: "Uploading image"
-#: components/manage/Blocks/Image/Edit
+#: components/manage/Widgets/ImageWidget
 msgid "Uploading image"
 msgstr "Caricamento dell'immagine"
 
@@ -4020,6 +4107,11 @@ msgstr "Impostazioni Gruppi Utenti"
 #: helpers/MessageLabels/MessageLabels
 msgid "User created"
 msgstr "Utente creato"
+
+#. Default: "User deleted"
+#: helpers/MessageLabels/MessageLabels
+msgid "User deleted"
+msgstr ""
 
 #. Default: "User name"
 #: components/manage/Controlpanels/Users/UsersControlpanel
@@ -4231,7 +4323,7 @@ msgstr "Annuale"
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypes
 msgid "Yes"
-msgstr "Si"
+msgstr "Sì"
 
 #. Default: "You are trying to access a protected resource, please {login} first."
 #: components/theme/Unauthorized/Unauthorized
@@ -4327,6 +4419,11 @@ msgstr "Inserisci uno username, ad esempio 'jsmith'. Non sono consentiti spazi o
 #: components/manage/Blocks/Search/schema
 msgid "availableViews"
 msgstr "Viste disponibili"
+
+#. Default: "Error in the block field {errorField}."
+#: helpers/MessageLabels/MessageLabels
+msgid "blocksFieldsErrorTitle"
+msgstr ""
 
 #. Default: "Forgot your password?"
 #: components/theme/Login/Login
@@ -4529,6 +4626,11 @@ msgstr "Il mio nome utente è"
 msgid "leadimage"
 msgstr "Immagine di testata"
 
+#. Default: "Enter a URL to an image"
+#: components/manage/Widgets/ImageWidget
+msgid "linkAnImage"
+msgstr "Inserisci l'URL di un'immagine"
+
 #. Default: "Listing"
 #: config/Blocks
 msgid "listing"
@@ -4622,6 +4724,11 @@ msgstr "altre"
 #: components/manage/Contents/ContentsItem
 msgid "pending"
 msgstr "In attesa"
+
+#. Default: "Pick an existing image"
+#: components/manage/Widgets/ImageWidget
+msgid "pickAnImage"
+msgstr "Seleziona un'immagine esistente"
 
 #. Default: "Private"
 #: components/manage/Contents/ContentsItem
@@ -4893,6 +5000,11 @@ msgstr "Toggle"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "upgradeVersions"
 msgstr "Aggiorna da versione {origin} a {destination}"
+
+#. Default: "Upload an image from your computer"
+#: components/manage/Widgets/ImageWidget
+msgid "uploadAnImage"
+msgstr "Carica un'immagine dal tuo computer"
 
 #. Default: "Input must be valid url (www.something.com or http(s)://www.something.com)"
 #: helpers/MessageLabels/MessageLabels

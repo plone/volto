@@ -54,6 +54,9 @@ module.exports = {
         'plugin:import/recommended',
         'plugin:import/typescript',
       ],
+      rules: {
+        '@typescript-eslint/no-explicit-any': 0,
+      },
     },
 
     // Node

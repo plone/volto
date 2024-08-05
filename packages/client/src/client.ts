@@ -1,5 +1,5 @@
 import {
-  loginQuery as _loginQuery,
+  loginMutation as _loginMutation,
   login as _login,
 } from './restapi/login/post';
 import type { LoginArgs } from './restapi/login/post';
@@ -145,7 +145,7 @@ export default class PloneClient {
   /*
     Initialization queries
   */
-  loginQuery = queryWithConfig(_loginQuery, this.getConfig);
+  loginMutation = mutationWithConfig(_loginMutation, this.getConfig);
 
   /*
     Content queries
@@ -546,7 +546,7 @@ export default class PloneClient {
     Initialization hooks
   */
 
-  useLogin = queryHookFromQuery(this.loginQuery);
+  useLogin = mutationHookFromMutation(this.loginMutation);
 
   /*
     Actions hooks

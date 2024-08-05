@@ -51,7 +51,7 @@ describe('New Block Auto Focus Tests', () => {
   it('Press Enter on a image block adds new autofocused default block', () => {
     cy.addNewBlock('image');
     // Timing issues ahead :(
-    cy.get('.block-editor-image .no-image-wrapper img')
+    cy.get('.block-editor-image img')
       .should('be.visible')
       .and(($img) => {
         // "naturalWidth" and "naturalHeight" are set when the image loads

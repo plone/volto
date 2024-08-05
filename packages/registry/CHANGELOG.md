@@ -8,6 +8,58 @@
 
 <!-- towncrier release notes start -->
 
+## 1.8.0 (2024-07-30)
+
+### Feature
+
+- Added `Utilities` registry for `registerUtility`, `getUtility`, and `getUtilities`. @sneridagh [#6161](https://github.com/plone/volto/issues/6161)
+
+### Documentation
+
+- Changed a few typos within documentation, README's and comments. @FritzHoing [#6109](https://github.com/plone/volto/issues/6109)
+
+## 1.7.0 (2024-06-26)
+
+### Feature
+
+- Improve shadowing by including the support for js->jsx extensions in old shadows. This allow support for upcoming renaming of files that should be jsx and are js. @sneridagh [#6113](https://github.com/plone/volto/issues/6113)
+
+## 1.6.0 (2024-06-13)
+
+### Feature
+
+- Add support for reading the add-ons `tsconfig.json` paths and add them to the build resolve aliases @sneridagh [#6096](https://github.com/plone/volto/issues/6096)
+
+## 1.5.7 (2024-05-15)
+
+### Bugfix
+
+- Fix type for component registry components @sneridagh [#6002](https://github.com/plone/volto/issues/6002)
+
+### Internal
+
+- Saner defaults for building deps, switch default to cached, add `build:force` command @sneridagh [#5980](https://github.com/plone/volto/issues/5980)
+
+## 1.5.6 (2024-04-23)
+
+### Bugfix
+
+- Remove `parcel-optimizer-react-client` plugin @sneridagh [#5887](https://github.com/plone/volto/issues/5887)
+
+### Internal
+
+- Improvements to the monorepo setup with utilities, especially ESLint. Build cached option to speedup operations. @sneridagh [#5969](https://github.com/plone/volto/issues/5969)
+
+## 1.5.5 (2024-04-03)
+
+### Bugfix
+
+- Fix registry wrong default primitive type @sneridagh [#5925](https://github.com/plone/volto/issues/5925)
+
+### Internal
+
+- Sync TypeScript version @sneridagh [#5912](https://github.com/plone/volto/issues/5912)
+
 ## 1.5.4 (2024-03-21)
 
 ### Bugfix

@@ -1,0 +1,32 @@
+{
+  "name": "plone-vite",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "start": "vite"
+  },
+  "dependencies": {
+    "@plone/client": "workspace:*",
+    "@plone/components": "workspace:*",
+    "@plone/providers": "workspace:*",
+    "@plone/registry": "workspace:*",
+    "@plone/blocks": "workspace:*",
+    "@tanstack/react-query": "^5.37.1",
+    "@tanstack/react-router": "^1.29.2",
+    "axios": "^1.6.5",
+    "react": "^18.2.0",
+    "react-aria-components": "^1.2.1",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@tanstack/react-query-devtools": "^5.37.1",
+    "@tanstack/router-devtools": "^1.29.2",
+    "@types/react": "^18.2.47",
+    "@types/react-dom": "^18.2.18",
+    "@vitejs/plugin-react": "^4.2.1",
+    "vite": "^5.0.13"
+  }
+}

@@ -12,7 +12,8 @@ exports[`ContentType renders dexterity content-type component 1`] = `
       Page Content Type
     </div>
     <div
-      id="form"
+      data-schema="{}"
+      id="Form"
     />
   </div>
   <div

@@ -22,8 +22,8 @@ import {
   queryRelations,
   rebuildRelations,
 } from '@plone/volto/actions';
-import RelationsListing from './RelationsListing';
-import BrokenRelations from './BrokenRelations';
+import RelationsListing from '@plone/volto/components/manage/Controlpanels/Relations/RelationsListing';
+import BrokenRelations from '@plone/volto/components/manage/Controlpanels/Relations/BrokenRelations';
 import helpSVG from '@plone/volto/icons/help.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import navTreeSVG from '@plone/volto/icons/nav.svg';
@@ -414,7 +414,7 @@ const RelationsMatrix = (props) => {
                           <Popup
                             trigger={
                               <a
-                                href="https://6.docs.plone.org/volto/recipes/widget.html#restricting-potential-targets"
+                                href="https://6.docs.plone.org/volto/development/widget.html#widget-relation-field-label"
                                 target="_blank"
                                 rel="noopener noreferrer"
                               >

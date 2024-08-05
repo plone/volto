@@ -129,7 +129,7 @@ server {
   access_log /dev/stdout;
   error_log /dev/stdout;
 
-  # [seamless mode] Recomended as default configuration, using seamless mode new plone.rest traversal
+  # [seamless mode] Recommended as default configuration, using seamless mode new plone.rest traversal
   # yarn build && yarn start:prod
   location ~ /\+\+api\+\+($|/.*) {
       rewrite ^/\+\+api\+\+($|/.*) /VirtualHostBase/http/myservername.org/Plone/++api++/VirtualHostRoot/$1 break;

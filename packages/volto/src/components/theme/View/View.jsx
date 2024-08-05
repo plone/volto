@@ -206,8 +206,10 @@ class View extends Component {
    */
   render() {
     const { views } = config;
-    if (this.props.error && this.props.error.code === 301) {
-      const redirect = flattenToAppURL(this.props.error.url).split('?')[0];
+    if ([301, 302].includes(this.props.error?.code)) {
+      const redirect = flattenToAppURL(this.props.error.url)
+        .split('?')[0]
+        .replace('/++api++', '');
       return <Redirect to={`${redirect}${this.props.location.search}`} />;
     } else if (this.props.error && !this.props.connectionRefused) {
       let FoundView;
@@ -235,7 +237,7 @@ class View extends Component {
       this.getViewByLayout() || this.getViewByType() || this.getViewDefault();
 
     return (
-      <div id="view">
+      <div id="view" tabIndex="-1">
         <ContentMetadataTags content={this.props.content} />
         {/* Body class if displayName in component is set */}
         <BodyClass
@@ -259,13 +261,6 @@ class View extends Component {
           this.props.content.subjects.length > 0 && (
             <Tags tags={this.props.content.subjects} />
           )}
-        {/* Add opt-in social sharing if required, disabled by default */}
-        {/* In the future this might be parameterized from the app config */}
-        {/* <SocialSharing
-          url={typeof window === 'undefined' ? '' : window.location.href}
-          title={this.props.content.title}
-          description={this.props.content.description || ''}
-        /> */}
         {this.props.content.allow_discussion && (
           <Comments pathname={this.props.pathname} />
         )}

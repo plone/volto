@@ -23,7 +23,7 @@ export function isManager(user) {
 }
 
 /**
- * Checks if the user can assing group.
+ * Checks if the user can assign group.
  * @method canAssignGroup
  * @returns {boolean}
  */

@@ -6,4 +6,5 @@ styles/rules/*
 node_modules
 packages/volto/types/*
 storybook-static
-app/vite-ssr/src/routeTree.gen.ts
+apps/vite-ssr/src/routeTree.gen.ts
+apps/vite/src/routeTree.gen.ts

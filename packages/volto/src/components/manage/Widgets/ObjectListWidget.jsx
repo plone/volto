@@ -1,7 +1,8 @@
 import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { Accordion, Button, Segment } from 'semantic-ui-react';
-import { DragDropList, FormFieldWrapper, Icon } from '@plone/volto/components';
+import { DragDropList, Icon } from '@plone/volto/components';
+import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 import { applySchemaDefaults, reorderArray } from '@plone/volto/helpers';
 import ObjectWidget from '@plone/volto/components/manage/Widgets/ObjectWidget';
 
