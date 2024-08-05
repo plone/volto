@@ -29,6 +29,7 @@ class Edit extends Component {
             block={this.props.block}
             navRoot={this.props.navRoot}
             contentType={this.props.contentType}
+            errors={this.props.blocksErrors}
           />
         </SidebarPortal>
       </>
