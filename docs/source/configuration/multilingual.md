@@ -45,7 +45,7 @@ You can either pass an environment variable into the make command to start the b
 
 ```shell
 # pass method
-make backend-docker-start LANGUAGE=pt-br
+LANGUAGE=pt-br make backend-docker-start
 
 # export method
 export LANGUAGE=pt-br
