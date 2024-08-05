@@ -1,1 +1,1 @@
-Refactor Register Component -@Tishasoumya-02
+Refactor the `Register` component from class-based to functional. @Tishasoumya-02
