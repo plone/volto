@@ -1,0 +1,1 @@
+When there is a contextualized vocabulary url in the schema, Volto must call it with the full path and not return it to the site root. @mamico
