@@ -82,7 +82,7 @@ You can also add the behavior programmatically via GenericSetup:
 <object name="LRF" meta_type="Dexterity FTI" i18n:domain="plone"
    xmlns:i18n="http://xml.zope.org/namespaces/i18n">
  <property name="behaviors" purge="false">
-  <element value="plone.restapi.behaviors.IBlocks" />
+  <element value="volto.blocks" />
  </property>
 </object>
 ```

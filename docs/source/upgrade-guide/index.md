@@ -363,6 +363,7 @@ The only Volto component that makes use of it is `PersonalPreferences`.
 If you shadow it, then you should update this component.
 For the rest, it is unlikely that your code refers to this module, since it's used internally by Volto itself.
 
+
 ### Renamed `test-setup-config` module
 
 `test-setup-config.js` has been renamed to `test-setup-config.jsx` since, in fact, it contains JSX.
@@ -376,6 +377,57 @@ It is unlikely that your code uses it, unless you heavily customized the Jest te
 The `react-share` library and `SocialSharing` component has not been used in the core since some time ago, and it is more suitable as an add-on and not in core.
 If you still use it, you can add it to your main add-on dependency, and extract the `SocialSharing` component from Volto 17 as a custom component in your add-on code.
 
+
+### Refactor of `FormValidation` module
+
+The `packages/volto/src/helpers/FormValidation/FormValidation.jsx` module has been heavily refactored.
+Some helper functions have been moved to `packages/volto/src/helpers/FormValidation/validators.ts`.
+None of those functions were exported in the first place, so no imports will be broken.
+If you shadowed the module {file}`packages/volto/src/helpers/FormValidation/FormValidation.jsx`, you should review it and update it accordingly.
+
+```{seealso}
+{doc}`../configuration/validation`
+```
+
+### Field validation for blocks
+
+`BlockDataForm` component now gets a new prop `errors`.
+This prop must be assigned with the new prop passed down from the blocks engine `blocksErrors`.
+If not passed down, the block can't display any field validation error.
+
+```tsx
+// More component code above here
+
+  const {
+    block,
+    blocksConfig,
+    contentType,
+    data,
+    navRoot,
+    onChangeBlock,
+    blocksErrors,
+  } = props;
+
+return (
+  <BlockDataForm
+    block={block}
+    schema={schema}
+    title={schema.title}
+    onChangeField={(id: string, value: any) => {
+      onChangeBlock(block, {
+        ...data,
+        [id]: value,
+      });
+    }}
+    onChangeBlock={onChangeBlock}
+    formData={data}
+    blocksConfig={blocksConfig}
+    navRoot={navRoot}
+    contentType={contentType}
+    errors={blocksErrors}
+  />
+)
+```
 
 ### `SchemaWidget` widget registration change
 
