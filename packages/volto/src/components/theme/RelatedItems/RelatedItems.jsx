@@ -27,7 +27,7 @@ const RelatedItems = ({ relatedItems, intl }) => {
   }
 
   return (
-    <Container style={{ 'margin-top': '20px' }}>
+    <Container className="related-items">
       <h2>{intl.formatMessage(messages.relatedItems)}</h2>
       <ul>
         {relatedItems.map((relatedItem) =>
