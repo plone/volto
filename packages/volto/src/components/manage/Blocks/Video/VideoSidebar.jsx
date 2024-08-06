@@ -18,7 +18,8 @@ const messages = defineMessages({
 });
 
 const VideoSidebar = (props) => {
-  const { data, block, onChangeBlock, navRoot, contentType } = props;
+  const { data, block, blocksErrors, onChangeBlock, navRoot, contentType } =
+    props;
   const intl = useIntl();
   const schema = VideoBlockSchema({ ...props, intl });
 
@@ -44,6 +45,7 @@ const VideoSidebar = (props) => {
           block={block}
           navRoot={navRoot}
           contentType={contentType}
+          errors={blocksErrors}
         />
       )}
     </>

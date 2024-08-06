@@ -8,6 +8,48 @@
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.17 (2024-07-05)
+
+### Feature
+
+- Use the unused `toggleButton` prop in `PositionedToolbar` to render the toolbar in a different `portal` target falling back to `document.body` if `toggleButton` is not provided. @ichim-david
+
+  When `toggleButton` is provided as a `portal` target, allow negative left positioning except when the target is `document.body` to prevent the toolbar going off-screen and avoid breaking changes. @ichim-david [#6159](https://github.com/plone/volto/issues/6159)
+
+## 18.0.0-alpha.16 (2024-07-03)
+
+### Internal
+
+- Fix dependencies for the package @sneridagh [#6148](https://github.com/plone/volto/issues/6148)
+
+## 18.0.0-alpha.15 (2024-06-28)
+
+### Internal
+
+- Add proper dependencies to `volto-slate`. @sneridagh [#6130](https://github.com/plone/volto/issues/6130)
+
+## 18.0.0-alpha.14 (2024-06-26)
+
+### Feature
+
+- Added `link-form-container` styles for `AddLinkForm` component. @ichim-david [#5607](https://github.com/plone/volto/issues/5607)
+- Handle breakList in DetachedTextBlockEditor. @giuliaghisini [#6106](https://github.com/plone/volto/issues/6106)
+
+### Bugfix
+
+- In the Slate text block, the markup shortcuts for heading and blockquote work again. @kHAPPY2004 [#5452](https://github.com/plone/volto/issues/5452)
+- When pasting an image into a Slate block, now only an image block is created, instead of both a Slate block and an image block. @aryan7081 [#5818](https://github.com/plone/volto/issues/5818)
+
+### Internal
+
+- Rename files with wrong extension `js->jsx` when they contain JSX. @sneridagh [#6114](https://github.com/plone/volto/issues/6114)
+
+## 18.0.0-alpha.13 (2024-06-13)
+
+### Bugfix
+
+- Fix removal of slate formatting applied to text when toggling the list buttons @robgietema [#6080](https://github.com/plone/volto/issues/6080)
+
 ## 18.0.0-alpha.12 (2024-04-23)
 
 ### Bugfix

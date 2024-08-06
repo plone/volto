@@ -14,7 +14,7 @@ import { toast } from 'react-toastify';
 
 import { Toast } from '@plone/volto/components';
 import { Form } from '@plone/volto/components/manage/Form';
-import languages from '@plone/volto/constants/Languages';
+import languages from '@plone/volto/constants/Languages.cjs';
 import { changeLanguage } from '@plone/volto/actions';
 import { toGettextLang } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
@@ -88,7 +88,9 @@ class PersonalPreferences extends Component {
     let language = data.language || 'en';
     if (config.settings.supportedLanguages.includes(language)) {
       const langFileName = toGettextLang(language);
-      import('@root/../locales/' + langFileName + '.json').then((locale) => {
+      import(
+        /* @vite-ignore */ '@root/../locales/' + langFileName + '.json'
+      ).then((locale) => {
         this.props.changeLanguage(language, locale.default);
       });
     }

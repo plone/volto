@@ -8,6 +8,61 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.19 (2024-07-30)
+
+### Feature
+
+- Added `errors` shape to the `BlockEditProps`.
+  Added typings for `Utilities` registry. @sneridagh [#6161](https://github.com/plone/volto/issues/6161)
+
+## 1.0.0-alpha.18 (2024-07-26)
+
+### Feature
+
+- Change the types in `common.d.ts` to interfaces, to make them extendable. @tomschall [#6191](https://github.com/plone/volto/issues/6191)
+
+## 1.0.0-alpha.17 (2024-06-27)
+
+### Internal
+
+- Upgrade `react-intl` to maximum 3.x series to fix a bundling issue.
+  Rename missing js file that must be jsx. @sneridagh [#6128](https://github.com/plone/volto/issues/6128)
+
+## 1.0.0-alpha.16 (2024-06-13)
+
+### Breaking
+
+- Remove unused `config.settings.containerBlockTypes` @sneridagh [#6099](https://github.com/plone/volto/issues/6099)
+
+## 1.0.0-alpha.15 (2024-06-13)
+
+### Bugfix
+
+- Better `styleClassNameExtenders` typings @sneridagh [#6095](https://github.com/plone/volto/issues/6095)
+
+## 1.0.0-alpha.14 (2024-06-06)
+
+### Breaking
+
+- The `GetSlotArgs` type no longer supports `pathname` as a key, instead using `location`. @sneridagh [#6063](https://github.com/plone/volto/issues/6063)
+
+### Bugfix
+
+- BlockExtension as Interface @sneridagh [#6049](https://github.com/plone/volto/issues/6049)
+- Improved image typings @pnicolli [#6064](https://github.com/plone/volto/issues/6064)
+
+## 1.0.0-alpha.13 (2024-05-23)
+
+### Feature
+
+- New Brain type and new ArrayElement utility @pnicolli [#6029](https://github.com/plone/volto/issues/6029)
+
+## 1.0.0-alpha.12 (2024-05-15)
+
+### Bugfix
+
+- Fixed some type definitions @sneridagh [#6014](https://github.com/plone/volto/issues/6014)
+
 ## 1.0.0-alpha.11 (2024-04-26)
 
 ### Bugfix

@@ -37,6 +37,7 @@ const EditBlockWrapper = (props) => {
   const { intl, blockProps, draginfo, children } = props;
   const {
     allowedBlocks,
+    showRestricted,
     block,
     blocksConfig,
     selected,
@@ -131,6 +132,7 @@ const EditBlockWrapper = (props) => {
               }}
               onMutateBlock={onMutateBlock}
               allowedBlocks={allowedBlocks}
+              showRestricted={showRestricted}
               blocksConfig={blocksConfig}
               size="24px"
               properties={properties}

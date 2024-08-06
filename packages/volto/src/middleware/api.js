@@ -237,11 +237,11 @@ const apiMiddlewareFactory =
               config.settings.supportedLanguages.includes(lang)
             ) {
               const langFileName = toGettextLang(lang);
-              import('@root/../locales/' + langFileName + '.json').then(
-                (locale) => {
-                  dispatch(changeLanguage(lang, locale.default));
-                },
-              );
+              import(
+                /* @vite-ignore */ '@root/../locales/' + langFileName + '.json'
+              ).then((locale) => {
+                dispatch(changeLanguage(lang, locale.default));
+              });
             }
           }
           if (type === LOGIN && settings.websockets) {

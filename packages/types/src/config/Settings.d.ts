@@ -1,3 +1,6 @@
+import { Content } from '../content';
+import { BlocksConfigData } from './Blocks';
+
 type apiExpandersType =
   | { match: string; GET_CONTENT: string[] }
   | {
@@ -7,6 +10,18 @@ type apiExpandersType =
         | { [key: string]: string }
         | (() => { [key: string]: string });
     };
+
+type styleClassNameExtendersType = ({
+  block,
+  content,
+  data,
+  classNames,
+}: {
+  block: string;
+  content: Content;
+  data: BlocksConfigData;
+  classNames: string[];
+}) => string[];
 
 export interface SettingsConfig {
   [key: string]: unknown;
@@ -78,11 +93,10 @@ export interface SettingsConfig {
   errorHandlers: unknown[];
   styleClassNameConverters: unknown;
   hashLinkSmoothScroll: boolean;
-  styleClassNameExtenders: unknown;
+  styleClassNameExtenders: styleClassNameExtendersType[];
   querystringSearchGet: boolean;
   blockSettingsTabFieldsetsInitialStateOpen: boolean;
   excludeLinksAndReferencesMenuItem: boolean;
-  containerBlockTypes: string[];
   siteTitleFormat: {
     includeSiteTitle: boolean;
     titleAndSiteTitleSeparator: string;

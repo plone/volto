@@ -30,6 +30,7 @@ export {
   removeProtocol,
   URLUtils,
   flattenScales,
+  getFieldURL,
 } from '@plone/volto/helpers/Url/Url';
 export { generateRobots } from '@plone/volto/helpers/Robots/Robots';
 export {
@@ -62,6 +63,8 @@ export {
   buildStyleObjectFromData,
   getPreviousNextBlock,
   findBlocks,
+  getBlocksHierarchy,
+  moveBlockEnhanced,
 } from '@plone/volto/helpers/Blocks/Blocks';
 export {
   getSimpleDefaultBlocks,
@@ -83,6 +86,7 @@ export { default as Helmet } from './Helmet/Helmet';
 export { default as FormValidation } from './FormValidation/FormValidation';
 export { validateFileUploadSize } from './FormValidation/FormValidation';
 export { tryParseJSON } from './FormValidation/FormValidation';
+export { extractInvariantErrors } from './FormValidation/FormValidation';
 export {
   difference,
   getColor,
@@ -99,6 +103,8 @@ export {
   hasApiExpander,
   replaceItemOfArray,
   cloneDeepSchema,
+  insertInArray,
+  removeFromArray,
   arrayRange,
   reorderArray,
   isInteractiveElement,
