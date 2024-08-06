@@ -2,12 +2,7 @@
 
 exports[`Related Items renders with related items 1`] = `
 <div
-  className="ui container"
-  style={
-    Object {
-      "margin-top": "20px",
-    }
-  }
+  className="ui container related-items"
 >
   <h2>
     Related Items
@@ -41,12 +36,7 @@ exports[`Related Items renders with related items 1`] = `
 
 exports[`Related Items renders with related items has null 1`] = `
 <div
-  className="ui container"
-  style={
-    Object {
-      "margin-top": "20px",
-    }
-  }
+  className="ui container related-items"
 >
   <h2>
     Related Items
