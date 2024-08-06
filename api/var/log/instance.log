@@ -1,0 +1,25 @@
+2020-11-30 15:16:05,645 WARNING [Init:89][MainThread] Class Products.CMFFormController.ControllerPythonScript.ControllerPythonScript has a security declaration for nonexistent method 'ZPythonScriptHTML_changePrefs'
+2020-11-30 15:16:05,650 WARNING [Init:89][MainThread] Class Products.CMFFormController.ControllerValidator.ControllerValidator has a security declaration for nonexistent method 'ZPythonScriptHTML_changePrefs'
+2020-11-30 15:16:06,055 INFO    [Products.PloneHotfix20200121:49][MainThread] Applied sql_quote patch
+2020-11-30 15:16:06,104 INFO    [Products.PloneHotfix20200121:49][MainThread] Applied in_portal patch
+2020-11-30 15:16:06,105 INFO    [Products.PloneHotfix20200121:49][MainThread] Applied password_validation patch
+2020-11-30 15:16:06,116 INFO    [Products.PloneHotfix20200121:49][MainThread] Applied pac patch
+2020-11-30 15:16:06,146 INFO    [Products.PloneHotfix20200121:49][MainThread] Applied content patch
+2020-11-30 15:16:06,157 INFO    [Products.PloneHotfix20200121:49][MainThread] Applied layout patch
+2020-11-30 15:16:06,237 INFO    [Products.PloneHotfix20200121:49][MainThread] Applied restapi_local_roles patch
+2020-11-30 15:16:06,237 INFO    [Products.PloneHotfix20200121:57][MainThread] Hotfix installed
+2020-11-30 15:16:06,494 WARNING [ZODB.FileStorage:398][MainThread] Ignoring index for /Users/giuliaghisini/progetti/volto/volto/api/var/filestorage/Data.fs
+2020-11-30 15:16:06,584 WARNING [TemporaryStorage:93][MainThread] DEPRECATED: Usage of the package tempstorage is deprecated, as it is known to randomly lose data.
+Especially on Zope 4. For details see https://github.com/zopefoundation/tempstorage/issues/8
+and https://github.com/zopefoundation/tempstorage
+
+2020-11-30 15:16:07,700 INFO    [chameleon.config:38][MainThread] directory cache: /Users/giuliaghisini/progetti/volto/volto/api/var/cache.
+2020-11-30 15:16:12,401 INFO    [Zope:45][MainThread] Ready to handle requests
+2021-05-26 11:32:47,659 WARNING [TemporaryStorage:93][MainThread] DEPRECATED: Usage of the package tempstorage is deprecated, as it is known to randomly lose data.
+Especially on Zope 4. For details see https://github.com/zopefoundation/tempstorage/issues/8
+and https://github.com/zopefoundation/tempstorage
+
+2021-05-26 11:32:48,384 INFO    [chameleon.config:38][MainThread] directory cache: /Users/giuliaghisini/progetti/volto/volto/api/var/cache.
+2021-05-26 11:32:51,545 INFO    [Zope:45][MainThread] Ready to handle requests
+2021-05-26 11:35:06,482 WARNING [waitress.queue:117][MainThread] Task queue depth is 1
+2021-05-26 11:35:06,483 WARNING [waitress.queue:117][MainThread] Task queue depth is 2
