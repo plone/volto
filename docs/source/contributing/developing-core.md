@@ -224,6 +224,10 @@ Then run `make backend-docker-start` again to start the backend with a clean dat
 
 If you use the Docker image [`plone-backend`](https://github.com/plone/plone-backend), you can set its `LANGUAGE` environment variable, overriding the default of `en`, when you start it.
 
+This variable is applied only when the Plone site is created.
+If you persist data through restarts, you only need to do this once.
+Conversely, if you create a Plone site in the wrong language, you can delete the data volume, and recreate it with the correct language.
+
 You can either pass an environment variable into the make command to start the backend, or export an environment variable in your shell session and start the backend.
 
 ```shell
