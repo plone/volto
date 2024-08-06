@@ -37,22 +37,6 @@ Those should be set either using GenericSetup using your policy package or manua
 Examples include `en` for English, or `pt-br` for Portuguese (Brazil).
 ```
 
-## Docker backend configuration
-
-If you use the Docker image [`plone-backend`](https://github.com/plone/plone-backend), you can set its `LANGUAGE` environment variable, overriding the default of `en`, when you start it.
-
-You can either pass an environment variable into the make command to start the backend, or export an environment variable in your shell session and start the backend.
-
-```shell
-# pass method
-LANGUAGE=pt-br make backend-docker-start
-
-# export method
-export LANGUAGE=pt-br
-make backend-docker-start
-```
-
-
 ## Features
 
 Volto multilingual includes the following features.
