@@ -30,9 +30,11 @@ export function getVocabulary({
   subrequest,
 }) {
   const vocabulary = getVocabName(vocabNameOrURL);
-  const vocabPath = config.settings.contextualVocabularies.includes(vocabulary)
-    ? `/@vocabularies/${vocabulary}`
-    : flattenToAppURL(vocabNameOrURL);
+  const contextualVocabularies = config.settings.contextualVocabularies;
+  const vocabPath =
+    contextualVocabularies && contextualVocabularies.includes(vocabulary)
+      ? flattenToAppURL(vocabNameOrURL)
+      : `/@vocabularies/${vocabulary}`;
 
   let queryString = `b_start=${start}${size ? '&b_size=' + size : ''}`;
 
@@ -67,9 +69,11 @@ export function getVocabularyTokenTitle({
 }) {
   // In case we have a URL, we have to get the vocabulary name
   const vocabulary = getVocabName(vocabNameOrURL);
-  const vocabPath = config.settings.contextualVocabularies.includes(vocabulary)
-    ? `/@vocabularies/${vocabulary}`
-    : flattenToAppURL(vocabNameOrURL);
+  const contextualVocabularies = config.settings.contextualVocabularies;
+  const vocabPath =
+    contextualVocabularies && contextualVocabularies.includes(vocabulary)
+      ? flattenToAppURL(vocabNameOrURL)
+      : `/@vocabularies/${vocabulary}`;
   const queryString = {
     ...(token && { token }),
     ...(tokens && { tokens }),
