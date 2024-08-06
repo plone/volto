@@ -11,7 +11,7 @@ myst:
 
 Volto provides support for Plone's multilingual feature through the Plone core add-on `plone.app.multilingual`.
 It is included with Plone 5 and later.
-You can enable it through the Plone Classic UI administrative interface.
+You can enable it through the {guilabel}`Add-ons` control panel in the administrative interface.
 
 
 ## Volto configuration
