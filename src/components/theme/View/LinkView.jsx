@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers';
 import { Container as SemanticContainer } from 'semantic-ui-react';
 import { UniversalLink } from '@plone/volto/components';
+import { Redirect } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import config from '@plone/volto/registry';
 
@@ -59,6 +60,9 @@ class LinkView extends Component {
    */
   render() {
     const { remoteUrl } = this.props.content;
+    if (__SERVER__ && !this.props.token && remoteUrl) {
+      return <Redirect to={remoteUrl} />;
+    }
     const { openExternalLinkInNewTab } = config.settings;
     const Container =
       config.getComponent({ name: 'Container' }).component || SemanticContainer;
