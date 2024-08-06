@@ -255,11 +255,24 @@ describe('Url', () => {
     });
     it('isUrl test 4', () => {
       const href = `https://www`;
-      expect(isUrl(href)).toBe(false);
+      expect(isUrl(href)).toBe(true);
     });
     it('isUrl test 5', () => {
+      const href = `https://www/foo/bar`;
+      expect(isUrl(href)).toBe(true);
+    });
+    it('isUrl test 6', () => {
+      // at the end of the day, this is a strange, but valid, URL
       const href = `www.e`;
-      expect(isUrl(href)).toBe(false);
+      expect(isUrl(href)).toBe(true);
+    });
+    it('isUrl test 7', () => {
+      const href = `file://server/folder/file.txt`;
+      expect(isUrl(href)).toBe(true);
+    });
+    it('isUrl test 8', () => {
+      const href = `file://server.dir.internal/folder/file.txt`;
+      expect(isUrl(href)).toBe(true);
     });
   });
   describe('getFieldURL', () => {
