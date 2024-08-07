@@ -51,7 +51,7 @@ exports[`No 'No value' option when default value is 0 1`] = `
               class="react-select__control react-select__control--is-focused react-select__control--menu-is-open css-1ptmoe7-control"
             >
               <div
-                class="react-select__value-container react-select__value-container--is-multi css-1a9cv00-ValueContainer"
+                class="react-select__value-container react-select__value-container--is-multi css-1dvrfad"
               >
                 <div
                   class="react-select__placeholder css-1wa3eu0-placeholder"
@@ -59,7 +59,7 @@ exports[`No 'No value' option when default value is 0 1`] = `
                   Select…
                 </div>
                 <div
-                  class="css-b8ldur-Input"
+                  class="css-1g6gooi"
                 >
                   <div
                     class="react-select__input"
@@ -84,14 +84,14 @@ exports[`No 'No value' option when default value is 0 1`] = `
                 </div>
               </div>
               <div
-                class="react-select__indicators css-1hb7zxy-IndicatorsContainer"
+                class="react-select__indicators css-1wy0on6"
               >
                 <span
                   class="react-select__indicator-separator css-6fp5c8-indicatorSeparator"
                 />
                 <div
                   aria-hidden="true"
-                  class="react-select__indicator react-select__dropdown-indicator css-7hdh9a-DropdownIndicator"
+                  class="react-select__indicator react-select__dropdown-indicator css-9t8fgp"
                 >
                   <svg
                     class="icon"
@@ -106,7 +106,7 @@ exports[`No 'No value' option when default value is 0 1`] = `
               class="react-select__menu css-109xf7j-menu"
             >
               <div
-                class="react-select__menu-list react-select__menu-list--is-multi css-4ljt47-MenuList"
+                class="react-select__menu-list react-select__menu-list--is-multi css-11unzgr"
               >
                 <div
                   class="react-select__option react-select__option--is-focused css-p2m0aa-option"
@@ -192,7 +192,7 @@ exports[`renders an array widget component 1`] = `
             onTouchEnd={[Function]}
           >
             <div
-              className="react-select__value-container react-select__value-container--is-multi css-1a9cv00-ValueContainer"
+              className="react-select__value-container react-select__value-container--is-multi css-1dvrfad"
             >
               <div
                 className="react-select__placeholder css-1wa3eu0-placeholder"
@@ -200,7 +200,7 @@ exports[`renders an array widget component 1`] = `
                 Select…
               </div>
               <div
-                className="css-b8ldur-Input"
+                className="css-1g6gooi"
               >
                 <div
                   className="react-select__input"
@@ -256,14 +256,14 @@ exports[`renders an array widget component 1`] = `
               </div>
             </div>
             <div
-              className="react-select__indicators css-1hb7zxy-IndicatorsContainer"
+              className="react-select__indicators css-1wy0on6"
             >
               <span
                 className="react-select__indicator-separator css-6fp5c8-indicatorSeparator"
               />
               <div
                 aria-hidden="true"
-                className="react-select__indicator react-select__dropdown-indicator css-7hdh9a-DropdownIndicator"
+                className="react-select__indicator react-select__dropdown-indicator css-9t8fgp"
                 onMouseDown={[Function]}
                 onTouchEnd={[Function]}
               >
