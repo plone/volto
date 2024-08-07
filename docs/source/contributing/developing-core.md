@@ -169,7 +169,19 @@ pnpm install
 ```
 
 
-## Start the backend and Volto
+(develop-volto-start-plone-label)=
+
+## Start Plone
+
+Every time you want to run Volto for core development, you will need to create two terminal sessions, one for the {ref}`backend <develop-volto-start-the-backend-label>` and one for the {ref}`frontend <develop-volto-start-the-frontend-label>`.
+For both sessions, change your working directory to the root of your Volto clone.
+
+To stop either the backend or frontend, use {kbd}`ctrl-c`.
+
+
+(develop-volto-start-the-backend-label)=
+
+### Start the backend
 
 `````{versionadded} 18.0.0-alpha.42
 Persist backend data across Docker sessions.
@@ -184,10 +196,8 @@ It is intended only for development.
 ````
 `````
 
-Every time you want to run Volto for core development, you will need to create two terminal sessions, one for the backend and one for the frontend.
-For both sessions, change your working directory to the root of your Volto clone.
-
 In the first session, start the backend.
+You can browse to the backend running at http://localhost:8080.
 
 ```shell
 make backend-docker-start
@@ -206,18 +216,41 @@ docker volume rm volto-backend-data
 
 Then run `make backend-docker-start` again to start the backend with a clean data volume.
 ````
-    
-Browse to the backend running at http://localhost:8080.
 
-In the second session, start the frontend.
+
+(develop-volto-configure-backend-language-label)=
+
+#### Configure backend language
+
+If you use the Docker image [`plone-backend`](https://github.com/plone/plone-backend), you can set its `LANGUAGE` environment variable, overriding the default of `en`, when you start it.
+
+This variable is applied only when the Plone site is created.
+If you persist data through restarts, you only need to do this once.
+Conversely, if you create a Plone site in the wrong language, you can delete the data volume, and recreate it with the correct language.
+
+You can either pass an environment variable into the make command to start the backend, or export an environment variable in your shell session and start the backend.
+
+```shell
+# pass method
+LANGUAGE=pt-br make backend-docker-start
+
+# export method
+export LANGUAGE=pt-br
+make backend-docker-start
+```
+
+
+(develop-volto-start-the-frontend-label)=
+
+## Start the frontend
+
+In the second session, start the frontend, Volto.
 
 ```shell
 pnpm start
 ```
 
 Browse to the frontend running at http://localhost:3000.
-
-To stop either the backend or frontend, use {kbd}`ctrl-c`.
 
 
 (developing-core-run-commands-for-pnpm-workspaces-label)=

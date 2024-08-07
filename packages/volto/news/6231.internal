@@ -1,0 +1,1 @@
+Allow setting the language for `make backend-docker-start`. Default is `en`. Added usage documentation in Contributing > Develop Volto core, and reorganized it. Cleaned up Configuration > Multilingual. @stevepiercy
