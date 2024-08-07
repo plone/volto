@@ -10,12 +10,8 @@ import cx from 'classnames';
  * The main Slate toolbar. All the others are just wrappers, UI or used here
  */
 const InlineToolbar = (props) => {
-  const {
-    editor,
-    className,
-    showExpandedToolbar,
-    setShowExpandedToolbar,
-  } = props;
+  const { editor, className, showExpandedToolbar, setShowExpandedToolbar } =
+    props;
 
   const slate = props.slateSettings || config.settings.slate;
 
