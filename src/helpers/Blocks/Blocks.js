@@ -425,7 +425,10 @@ export function applySchemaDefaults({ data = {}, schema, intl }) {
  * @param {Object} params An object with data, intl and anything else
  * @return {Object} Derived data, with the defaults extracted from the schema
  */
-export function applyBlockDefaults({ data, intl, ...rest }, blocksConfig) {
+export function applyBlockDefaults(
+  { data, intl, navRoot, contentType, ...rest },
+  blocksConfig,
+) {
   // We pay attention to not break on a missing (invalid) block.
   const block_type = data?.['@type'];
   const { blockSchema } =
@@ -436,7 +439,13 @@ export function applyBlockDefaults({ data, intl, ...rest }, blocksConfig) {
     typeof blockSchema === 'function'
       ? blockSchema({ data, intl, ...rest })
       : blockSchema;
-  schema = applySchemaEnhancer({ schema, formData: data, intl });
+  schema = applySchemaEnhancer({
+    schema,
+    formData: data,
+    intl,
+    navRoot,
+    contentType,
+  });
 
   return applySchemaDefaults({ data, schema, intl });
 }
@@ -524,3 +533,28 @@ export const getPreviousNextBlock = ({ content, block }) => {
 
   return [previousBlock, nextBlock];
 };
+
+/**
+ * Given a `block` object and a list of block types, return a list of block ids matching the types
+ *
+ * @function findBlocks
+ * @param {Object} types A list with the list of types to be matched
+ * @return {Array} An array of block ids
+ */
+export function findBlocks(blocks, types, result = []) {
+  const containerBlockTypes = config.settings.containerBlockTypes;
+
+  Object.keys(blocks).forEach((blockId) => {
+    const block = blocks[blockId];
+    // check blocks from data as well since some add-ons use that
+    // such as @eeacms/volto-tabs-block
+    const child_blocks = block.blocks || block.data?.blocks;
+    if (types.includes(block['@type'])) {
+      result.push(blockId);
+    } else if (containerBlockTypes.includes(block['@type']) || child_blocks) {
+      findBlocks(child_blocks, types, result);
+    }
+  });
+
+  return result;
+}

@@ -11,7 +11,7 @@ import { injectIntl } from 'react-intl';
 import deleteSVG from '@plone/volto/icons/delete.svg';
 import { Icon, FormFieldWrapper } from '@plone/volto/components';
 import loadable from '@loadable/component';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { flattenToAppURL, validateFileUploadSize } from '@plone/volto/helpers';
 import { defineMessages, useIntl } from 'react-intl';
 
 const imageMimetypes = [
@@ -95,6 +95,7 @@ const FileWidget = (props) => {
    */
   const onDrop = (files) => {
     const file = files[0];
+    if (!validateFileUploadSize(file, intl.formatMessage)) return;
     readAsDataURL(file).then((data) => {
       const fields = data.match(/^data:(.*);(.*),(.*)$/);
       onChange(id, {
@@ -172,6 +173,7 @@ const FileWidget = (props) => {
         {value && value.filename}
         {value && (
           <Button
+            type="button"
             icon
             basic
             className="delete-button"

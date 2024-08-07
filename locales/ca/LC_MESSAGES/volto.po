@@ -1,6 +1,3 @@
-# Translation of plone.pot to Catalan
-# Ramon Navarro Bosch <bloodbare a plone.org>, 2021
-# Víctor Fernández de Alba <victor a plone.org>, 2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
@@ -425,6 +422,7 @@ msgstr ""
 #: components/manage/Controlpanels/UpgradeControlPanel
 #: components/manage/Diff/Diff
 #: components/manage/History/History
+#: components/manage/LinksToItem/LinksToItem
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalPreferences
@@ -480,11 +478,6 @@ msgstr "Navegueu pel lloc, deixeu anar una imatge o escriviu un URL"
 # defaultMessage: By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator.
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 msgstr "Per defecte, els permisos del contenidor d'aquest element són heretats. Si es desactiva, només seran vàlids els permisos de compartició definits explícitament. A la vista general, el símbol ${inherited} indica un valor heretat. De la mateixa manera, el símbol ${global} indica un rol global, que és gestionat per l'administrador del lloc."
-
-#: components/manage/Contents/Contents
-# defaultMessage: By deleting this item, you will break links that exist in the items listed below. If this is indeed what you want to do, we recommend that remove these references first.
-msgid "By deleting this item, you will break links that exist in the items listed below. If this is indeed what you want to do, we recommend that remove these references first."
-msgstr ""
 
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Cache Name
@@ -739,6 +732,11 @@ msgstr ""
 msgid "Content rules from parent folders"
 msgstr ""
 
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Content that links to or references {title}
+msgid "Content that links to or references {title}"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Content type created
 msgid "Content type created"
@@ -768,7 +766,7 @@ msgid "Copy"
 msgstr "Copia"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: undefined
+# defaultMessage: Copy blocks
 msgid "Copy blocks"
 msgstr "Copiar blocks"
 
@@ -781,6 +779,11 @@ msgstr "Copyright"
 # defaultMessage: Copyright statement or other rights information on this item.
 msgid "Copyright statement or other rights information on this item."
 msgstr "Declaració de drets d'autor o informació sobre altres drets sobre aquest article."
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Create or delete relations to target
+msgid "Create or delete relations to target"
+msgstr ""
 
 #: components/manage/Toolbar/More
 # defaultMessage: Create working copy
@@ -836,7 +839,7 @@ msgid "Cut"
 msgstr "Talla"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: undefined
+# defaultMessage: Cut blocks
 msgid "Cut blocks"
 msgstr "Talla bloc"
 
@@ -943,7 +946,7 @@ msgid "Delete action"
 msgstr ""
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: undefined
+# defaultMessage: Delete blocks
 msgid "Delete blocks"
 msgstr "Esborra blocs"
 
@@ -962,9 +965,24 @@ msgstr ""
 msgid "Delete row"
 msgstr "Suprimeix la fila"
 
+#: components/manage/Contents/Contents
+# defaultMessage: Delete selected items?
+msgid "Delete selected items?"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: Delete this item?
+msgid "Delete this item?"
+msgstr ""
+
 #: components/manage/Controlpanels/Rules/Rules
 # defaultMessage: Deleted
 msgid "Deleted"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: Deleting this item breaks {brokenReferences} {variation}.
+msgid "Deleting this item breaks {brokenReferences} {variation}."
 msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
@@ -1029,11 +1047,6 @@ msgstr "Distribuït sota la {license}."
 # defaultMessage: Add border to inner columns
 msgid "Divide each row into separate cells"
 msgstr "Afegeix una vora a les columnes interiors"
-
-#: components/manage/Contents/Contents
-# defaultMessage: Do you really want to delete the following items?
-msgid "Do you really want to delete the following items?"
-msgstr "Realment voleu suprimir els elements següents?"
 
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 # defaultMessage: Do you really want to delete the group {groupname}?
@@ -1110,6 +1123,7 @@ msgstr "Les adreces de correu electrònic no coincideixen."
 #: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Controlpanels/Rules/EditRule
+#: components/manage/Controlpanels/Users/RenderUsers
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/FormFieldWrapper
 #: components/manage/Widgets/ObjectBrowserWidget
@@ -1252,13 +1266,18 @@ msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Enter your new password. Minimum 5 characters.
-msgid "Enter your new password. Minimum 5 characters."
-msgstr "Introduïu la vostra nova contrasenya. Mínim 5 caràcters."
+# defaultMessage: Enter your new password. Minimum 8 characters.
+msgid "Enter your new password. Minimum 8 characters."
+msgstr "Introduïu la vostra nova contrasenya. Mínim 8 caràcters."
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Enter your username for verification.
 msgid "Enter your username for verification."
+msgstr ""
+
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Entries
+msgid "Entries"
 msgstr ""
 
 #: components/manage/Add/Add
@@ -1401,6 +1420,11 @@ msgstr "Arxiu"
 msgid "Filename"
 msgstr "Nom de l'arxiu"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Filter
+msgid "Filter"
+msgstr ""
+
 #: components/manage/Controlpanels/Rules/Rules
 # defaultMessage: Filter Rules:
 msgid "Filter Rules:"
@@ -1425,6 +1449,11 @@ msgstr "Filtra..."
 # defaultMessage: First
 msgid "First"
 msgstr "Primer"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Fix relations
+msgid "Fix relations"
+msgstr ""
 
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Fixed width columns
@@ -1562,6 +1591,11 @@ msgstr "Amaga les respostes"
 msgid "Hide facet?"
 msgstr "Amagar la faceta?"
 
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Hide title
+msgid "Hide title"
+msgstr ""
+
 #: components/manage/History/History
 #: components/manage/Toolbar/More
 # defaultMessage: History
@@ -1693,6 +1727,11 @@ msgstr "Insereix fila després"
 msgid "Insert row before"
 msgstr "Insereix fila abans"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Inspect relations
+msgid "Inspect relations"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Install
 msgid "Install"
@@ -1737,6 +1776,11 @@ msgstr "Any(s)"
 #: components/theme/View/RenderBlocks
 # defaultMessage: Invalid block - Will be removed on saving
 msgid "Invalid Block"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them.
+msgid "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
 msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
@@ -1785,11 +1829,6 @@ msgstr "Articles"
 # defaultMessage: Items must be unique.
 msgid "Items must be unique."
 msgstr "Els articles han de ser únics."
-
-#: components/manage/Contents/Contents
-# defaultMessage: Items to be deleted:
-msgid "Items to be deleted:"
-msgstr ""
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Label
@@ -1869,6 +1908,11 @@ msgstr "Enllaça més"
 msgid "Link redirect view"
 msgstr "Redirecció d'enllaç"
 
+#: components/manage/Blocks/Image/schema
+# defaultMessage: Link settings
+msgid "Link settings"
+msgstr ""
+
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Link Title
@@ -1887,6 +1931,17 @@ msgstr "Enllaç a"
 # defaultMessage: Link translation for
 msgid "Link translation for"
 msgstr "Traducció d'enllaços per"
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Linking this item with hyperlink in text
+msgid "Linking this item with hyperlink in text"
+msgstr ""
+
+#: components/manage/LinksToItem/LinksToItem
+#: components/manage/Toolbar/More
+# defaultMessage: Links and references
+msgid "Links and references"
+msgstr ""
 
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Listing
@@ -1978,6 +2033,11 @@ msgstr ""
 #: components/manage/Controlpanels/Aliases
 # defaultMessage: Manually or automatically added?
 msgid "Manually or automatically added?"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Many relations found. Please search.
+msgid "Many relations found. Please search."
 msgstr ""
 
 #: components/manage/Blocks/Maps/MapsSidebar
@@ -2140,7 +2200,6 @@ msgid "News item view"
 msgstr "Notícia"
 
 #: components/manage/Contents/ContentsItem
-#: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: No
 msgid "No"
@@ -2206,6 +2265,11 @@ msgstr "No s'han trobat articles en aquest contenidor."
 msgid "No items selected"
 msgstr "No s'ha seleccionat cap element"
 
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: No links to this item found.
+msgid "No links to this item found."
+msgstr ""
+
 #: components/manage/Blocks/Maps/MapsSidebar
 # defaultMessage: No map selected
 msgid "No map selected"
@@ -2223,6 +2287,11 @@ msgstr "No s'ha establert cap ocurrència"
 # defaultMessage: No options
 msgid "No options"
 msgstr "Sense opcions"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: No relation found
+msgid "No relation found"
+msgstr ""
 
 #: components/manage/BlockChooser/BlockChooser
 #: components/theme/Search/Search
@@ -2324,10 +2393,20 @@ msgstr "Obre el menú"
 msgid "Open object browser"
 msgstr "Obre el navegador d'objectes"
 
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Ordered
+msgid "Ordered"
+msgstr ""
+
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Origin
 msgid "Origin"
 msgstr "Origen"
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Overview of relations of all content items
+msgid "Overview of relations of all content items"
+msgstr ""
 
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Page
@@ -2363,7 +2442,7 @@ msgid "Paste"
 msgstr "Enganxar"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: undefined
+# defaultMessage: Paste blocks
 msgid "Paste blocks"
 msgstr "Enganxa blocs"
 
@@ -2469,11 +2548,6 @@ msgstr ""
 msgid "Possible values"
 msgstr "Valors possibles (introduïu les opcions permeses una per línia)."
 
-#: components/manage/Contents/Contents
-# defaultMessage: Potential link breakage
-msgid "Potential link breakage"
-msgstr ""
-
 #: components/theme/Footer/Footer
 # defaultMessage: Powered by Plone & Python
 msgid "Powered by Plone & Python"
@@ -2568,6 +2642,16 @@ msgstr ""
 msgid "Reduce complexity"
 msgstr "Disseny de taula minimalista"
 
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Referencing this item as related item
+msgid "Referencing this item as related item"
+msgstr ""
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Referencing this item with {relationship}
+msgid "Referencing this item with {relationship}"
+msgstr ""
+
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
 #: components/theme/Register/Register
@@ -2579,6 +2663,21 @@ msgstr "Registrar-se"
 # defaultMessage: Registration form
 msgid "Registration form"
 msgstr "Formulari d'inscripció"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: relation
+msgid "Relation name"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Relations
+msgid "Relations"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Relations updated
+msgid "Relations updated"
+msgstr ""
 
 #: components/theme/Search/Search
 # defaultMessage: Relevance
@@ -2710,6 +2809,7 @@ msgid "Revert to this revision"
 msgstr "Torna a aquesta revisió"
 
 #: components/manage/Contents/Contents
+#: components/manage/LinksToItem/LinksToItem
 # defaultMessage: Review state
 msgid "Review state"
 msgstr "Estat de revisió"
@@ -2788,6 +2888,11 @@ msgstr "Desa"
 msgid "Saved"
 msgstr ""
 
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Scheduled
+msgid "Scheduled"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypesActions
 # defaultMessage: Schema
 msgid "Schema"
@@ -2862,6 +2967,16 @@ msgid "Search results for {term}"
 msgstr "Resultats de la cerca per a {term}"
 
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Search sources by title or path
+msgid "Search sources by title or path"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Search targets by title or path
+msgid "Search targets by title or path"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Search users…
 msgid "Search users…"
 msgstr "Cerca usuaris..."
@@ -2884,6 +2999,7 @@ msgstr "Títol de la secció"
 #: components/manage/Controlpanels/Aliases
 #: components/manage/Rules/Rules
 #: components/manage/Sidebar/ObjectBrowserNav
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Select
 msgid "Select"
 msgstr "Seleccioneu"
@@ -2898,10 +3014,20 @@ msgstr "Seleccioneu una data per afegir a la recurrència"
 msgid "Select columns to show"
 msgstr "Seleccioneu les columnes per mostrar"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Select relation
+msgid "Select relation"
+msgstr ""
+
 #: components/manage/Contents/ContentsWorkflowModal
 # defaultMessage: Select the transition to be used for modifying the items state.
 msgid "Select the transition to be used for modifying the items state."
 msgstr "Seleccioneu la transició que s'utilitzarà per modificar l'estat dels elements."
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Selected
+msgid "Selected"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 # defaultMessage: Selected dates
@@ -2941,6 +3067,11 @@ msgstr "Enviar"
 #: helpers/MessageLabels/MessageLabels
 # defaultMessage: Send a confirmation mail with a link to set the password.
 msgid "Send a confirmation mail with a link to set the password."
+msgstr ""
+
+#: components/theme/Error/ServerError
+# defaultMessage: Server Error
+msgid "Server Error"
 msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
@@ -3074,6 +3205,16 @@ msgstr "Mida: {size}"
 msgid "Small"
 msgstr ""
 
+#: components/manage/Contents/Contents
+# defaultMessage: Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders.
+msgid "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken.
+msgid "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
+msgstr ""
+
 #: error
 # defaultMessage: Sorry, something went wrong with your request
 msgid "Sorry, something went wrong with your request"
@@ -3109,6 +3250,11 @@ msgstr ""
 #: components/manage/Controlpanels/UndoControlpanel
 # defaultMessage: Sorted
 msgid "Sorted"
+msgstr ""
+
+#: components/manage/Blocks/Search/components/SortOn
+# defaultMessage: Sorted on
+msgid "Sorted on"
 msgstr ""
 
 #: components/manage/Blocks/HTML/Edit
@@ -3153,6 +3299,11 @@ msgstr "Estat"
 #: components/manage/Controlpanels/Rules/Rules
 # defaultMessage: Status
 msgid "Status"
+msgstr ""
+
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Sticky
+msgid "Sticky"
 msgstr ""
 
 #: components/manage/Multilingual/CompareLanguages
@@ -3375,6 +3526,16 @@ msgstr "La còpia de treball es va descartar"
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
 msgstr "El {plonecms} és {copyright} 2000-{current_year} per {plonefoundation} i amics."
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: There are no groups with the searched criteria
+msgid "There are no groups with the searched criteria"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: There are no users with the searched criteria
+msgid "There are no users with the searched criteria"
+msgstr ""
+
 #: components/theme/CorsError/CorsError
 # defaultMessage: There is a configuration problem on the backend
 msgid "There is a configuration problem on the backend"
@@ -3401,11 +3562,6 @@ msgstr "Hi va haver alguns errors."
 msgid "Third"
 msgstr "Tercer"
 
-#: components/manage/Contents/Contents
-# defaultMessage: This Page is referenced by the following items:
-msgid "This Page is referenced by the following items:"
-msgstr ""
-
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 # defaultMessage: This has an ongoing working copy in {title}
 msgid "This has an ongoing working copy in {title}"
@@ -3420,6 +3576,11 @@ msgstr ""
 # defaultMessage: This is a working copy of {title}
 msgid "This is a working copy of {title}"
 msgstr "Aquesta és una còpia de treball de {title}"
+
+#: components/manage/Contents/Contents
+# defaultMessage: This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder.
+msgid "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
+msgstr ""
 
 #: components/manage/LockingToastsFactory/LockingToastsFactory
 # defaultMessage: This item was locked by {creator} on {date}
@@ -3448,6 +3609,7 @@ msgstr "Hora"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Teaser/schema
+#: components/manage/Blocks/ToC/Schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
@@ -3475,11 +3637,6 @@ msgstr "Total d'objectes actius i no actius"
 # defaultMessage: Total comments
 msgid "Total comments"
 msgstr "Total de comentaris"
-
-#: components/manage/Contents/Contents
-# defaultMessage: Total items to be deleted:
-msgid "Total items to be deleted:"
-msgstr ""
 
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Total number of objects in each cache
@@ -3539,6 +3696,7 @@ msgid "Triggering event field error. Please select a value"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes
+#: components/manage/LinksToItem/LinksToItem
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
 # defaultMessage: Type
@@ -3658,6 +3816,11 @@ msgstr ""
 msgid "Update"
 msgstr "Actualització"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Update User
+msgid "Update User"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Update installed addons
 msgid "Update installed addons"
@@ -3774,6 +3937,11 @@ msgid "User roles updated"
 msgstr "Rols d'usuari actualitzats"
 
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: User updated successfuly
+msgid "User updated successfuly"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Username
 msgid "Username"
 msgstr "Nom d'usuari"
@@ -3827,6 +3995,11 @@ msgstr "veure"
 msgid "View changes"
 msgstr "Veure els canvis"
 
+#: components/manage/Contents/Contents
+# defaultMessage: View links and references to this item
+msgid "View links and references to this item"
+msgstr ""
+
 #: components/manage/History/History
 # defaultMessage: View this revision
 msgid "View this revision"
@@ -3871,6 +4044,11 @@ msgstr "Demanem disculpes per les molèsties, però el backend del lloc al qual 
 # defaultMessage: We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for.
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
 msgstr "Demanem disculpes per les molèsties, però la pàgina a la qual estàveu intentant accedir no es troba en aquesta adreça. Podeu utilitzar els enllaços següents per ajudar-vos a trobar el que busqueu."
+
+#: components/theme/Error/ServerError
+# defaultMessage: We apologize for the inconvenience, but there was an unexpected error on the server.
+msgid "We apologize for the inconvenience, but there was an unexpected error on the server."
+msgstr ""
 
 #: components/theme/Forbidden/Forbidden
 # defaultMessage: We apologize for the inconvenience, but you don't have permissions on this resource.
@@ -3955,7 +4133,6 @@ msgid "Yearly"
 msgstr "Anualment"
 
 #: components/manage/Contents/ContentsItem
-#: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Yes
 msgid "Yes"
@@ -4152,6 +4329,16 @@ msgstr "quan"
 msgid "event_where"
 msgstr "On?"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: This website does not accept files larger than {limit}
+msgid "fileTooLarge"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: flush intIds and rebuild relations
+msgid "flush intIds and rebuild relations"
+msgstr ""
+
 #: components/manage/Blocks/Teaser/schema
 # defaultMessage: Head title
 msgid "head_title"
@@ -4186,6 +4373,16 @@ msgstr "L'entrada ha de ser enter"
 # defaultMessage: Intranet
 msgid "intranet"
 msgstr "Intranet"
+
+#: components/manage/Contents/Contents
+# defaultMessage: item
+msgid "item"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: items
+msgid "items"
+msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: My email is
@@ -4306,6 +4503,21 @@ msgstr "Publicat"
 msgid "querystring-widget-select"
 msgstr "Selecciona ..."
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: rebuild relations
+msgid "rebuild relations"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: reference
+msgid "reference"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: references
+msgid "references"
+msgstr ""
+
 #: components/theme/Search/Search
 # defaultMessage: results
 msgid "results found"
@@ -4334,7 +4546,7 @@ msgstr "a"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: [month] [day], [year]
 msgid "rrule_dateFormat"
-msgstr "[mes] [dia], [any]"
+msgstr "[month] [day], [year]"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: day
@@ -4506,10 +4718,20 @@ msgstr "Saltar a la navegació"
 msgid "sort"
 msgstr "Ordena"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: sources path
+msgid "sources path"
+msgstr ""
+
 #: config/Blocks
 # defaultMessage: Table
 msgid "table"
 msgstr "Taula"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: target path
+msgid "target path"
+msgstr ""
 
 #: config/Blocks
 # defaultMessage: Text
@@ -4521,6 +4743,7 @@ msgstr "Text"
 msgid "title"
 msgstr "Títol"
 
+#: components/manage/Blocks/ToC/Schema
 #: config/Blocks
 # defaultMessage: Table of Contents
 msgid "toc"

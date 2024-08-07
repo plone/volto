@@ -314,7 +314,8 @@ export class QuerystringWidgetComponent extends Component {
                                   label: field[1].title,
                                   value: field[0],
                                   isDisabled: (value || []).some(
-                                    (v) => v['i'] === field[0],
+                                    (v) =>
+                                      v['i'] !== 'path' && v['i'] === field[0],
                                   ),
                                 }),
                               ),
@@ -444,8 +445,11 @@ export class QuerystringWidgetComponent extends Component {
                           (field) => ({
                             label: field[1].title,
                             value: field[0],
+                            // disable selecting indexes that are already used,
+                            // except for path, which has explicit support
+                            // in the backend for multipath queries
                             isDisabled: (value || []).some(
-                              (v) => v['i'] === field[0],
+                              (v) => v['i'] !== 'path' && v['i'] === field[0],
                             ),
                           }),
                         ),

@@ -20,7 +20,12 @@ import {
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
-import { removeAliases, addAliases, getAliases } from '@plone/volto/actions';
+import {
+  removeAliases,
+  addAliases,
+  getAliases,
+  getContent,
+} from '@plone/volto/actions';
 
 import { Icon, Toolbar } from '@plone/volto/components';
 
@@ -96,6 +101,7 @@ class Aliases extends Component {
       datetime: '',
       batchSize: '',
     });
+    this.props.getContent(getBaseUrl(this.props.pathname));
     this.setState({ isClient: true });
   }
 
@@ -351,6 +357,6 @@ export default compose(
       pathname: props.location.pathname,
       title: state.content.data?.title || '',
     }),
-    { addAliases, getAliases, removeAliases },
+    { addAliases, getAliases, removeAliases, getContent },
   ),
 )(Aliases);

@@ -1,10 +1,14 @@
 /* eslint no-console: 0 */
+import dns from 'dns';
 import http from 'http';
 
 import app from './server';
 import debug from 'debug';
 
-export default () => {
+export default function server() {
+  // If DNS returns both ipv4 and ipv6 addresses, prefer ipv4
+  dns.setDefaultResultOrder('ipv4first');
+
   const server = http.createServer(app);
   // const host = process.env.HOST || 'localhost';
   const port = process.env.PORT || 3000;
@@ -46,4 +50,4 @@ export default () => {
       currentApp = newApp;
     });
   };
-};
+}

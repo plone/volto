@@ -1,7 +1,7 @@
 import DefaultTocRenderer from './DefaultTocRenderer';
 import HorizontalMenu from './HorizontalMenu';
 
-export default [
+const ToCVariations = [
   {
     id: 'default',
     title: 'Listing (default)',
@@ -14,3 +14,5 @@ export default [
     view: HorizontalMenu,
   },
 ];
+
+export default ToCVariations;

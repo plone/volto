@@ -76,7 +76,9 @@ exports[`Html renders a html component 1`] = `
       id="main"
     />
     <div
+      aria-label="Sidebar"
       id="sidebar"
+      role="complementary"
     />
     <script
       charSet="UTF-8"
@@ -171,7 +173,9 @@ exports[`Html renders a html component with apiPath present 1`] = `
       id="main"
     />
     <div
+      aria-label="Sidebar"
       id="sidebar"
+      role="complementary"
     />
     <script
       charSet="UTF-8"

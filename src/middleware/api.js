@@ -18,7 +18,11 @@ import {
   SET_APIERROR,
 } from '@plone/volto/constants/ActionTypes';
 import { changeLanguage } from '@plone/volto/actions';
-import { normalizeLanguageName, getCookieOptions } from '@plone/volto/helpers';
+import {
+  toGettextLang,
+  toReactIntlLang,
+  getCookieOptions,
+} from '@plone/volto/helpers';
 let socket = null;
 
 /**
@@ -43,7 +47,7 @@ export function addExpandersToPath(path, type, isAnonymous) {
   const {
     url,
     query: { expand, ...query },
-  } = qs.parseUrl(path);
+  } = qs.parseUrl(path, { decode: false });
 
   const expandersFromConfig = apiExpanders
     .filter((expand) => matchPath(url, expand.match) && expand[type])
@@ -205,11 +209,11 @@ const apiMiddlewareFactory = (api) => ({ dispatch, getState }) => (next) => (
           const lang = result?.language?.token;
           if (
             lang &&
-            getState().intl.language !== lang &&
+            getState().intl.locale !== toReactIntlLang(lang) &&
             !subrequest &&
             config.settings.supportedLanguages.includes(lang)
           ) {
-            const langFileName = normalizeLanguageName(lang);
+            const langFileName = toGettextLang(lang);
             import('~/../locales/' + langFileName + '.json').then((locale) => {
               dispatch(changeLanguage(lang, locale.default));
             });
@@ -246,10 +250,22 @@ const apiMiddlewareFactory = (api) => ({ dispatch, getState }) => (next) => (
             };
           });
         }
-        return next({ ...rest, result, type: `${type}_SUCCESS` });
+        try {
+          return next({ ...rest, result, type: `${type}_SUCCESS` });
+        } catch (error) {
+          // There was an exception while processing reducers or downstream middleware.
+          next({
+            ...rest,
+            error: { status: 500, error },
+            type: `${type}_FAIL`,
+          });
+          // Rethrow the original exception on the client side only,
+          // so it doesn't fall through to express on the server.
+          if (__CLIENT__) throw error;
+        }
       },
       (error) => {
-        // Only SRR can set ECONNREFUSED
+        // Only SSR can set ECONNREFUSED
         if (error.code === 'ECONNREFUSED') {
           next({
             ...rest,

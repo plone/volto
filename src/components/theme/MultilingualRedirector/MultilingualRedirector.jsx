@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useCookies } from 'react-cookie';
 import config from '@plone/volto/registry';
 import { changeLanguage } from '@plone/volto/actions';
-import { normalizeLanguageName } from '@plone/volto/helpers';
+import { toGettextLang } from '@plone/volto/helpers';
 
 const MultilingualRedirector = (props) => {
   const { settings } = config;
@@ -23,7 +23,7 @@ const MultilingualRedirector = (props) => {
     // const detectedLang = (navigator.language || navigator.userLanguage).substring(0, 2);
     let mounted = true;
     if (settings.isMultilingual && pathname === '/') {
-      const langFileName = normalizeLanguageName(redirectToLanguage);
+      const langFileName = toGettextLang(redirectToLanguage);
       import('@root/../locales/' + langFileName + '.json').then((locale) => {
         if (mounted) {
           dispatch(changeLanguage(redirectToLanguage, locale.default));

@@ -26,8 +26,9 @@ import {
   Html,
   Api,
   persistAuthToken,
-  normalizeLanguageName,
-  toLangUnderscoreRegion,
+  toBackendLang,
+  toGettextLang,
+  toReactIntlLang,
 } from '@plone/volto/helpers';
 import { changeLanguage } from '@plone/volto/actions';
 
@@ -44,9 +45,9 @@ let locales = {};
 
 if (config.settings) {
   config.settings.supportedLanguages.forEach((lang) => {
-    const langFileName = normalizeLanguageName(lang);
+    const langFileName = toGettextLang(lang);
     import('@root/../locales/' + langFileName + '.json').then((locale) => {
-      locales = { ...locales, [lang]: locale.default };
+      locales = { ...locales, [toReactIntlLang(lang)]: locale.default };
     });
   });
 }
@@ -101,13 +102,15 @@ server.use(function (err, req, res, next) {
 function setupServer(req, res, next) {
   const api = new Api(req);
 
-  const lang = new locale.Locales(
-    req.universalCookies.get('I18N_LANGUAGE') ||
-      config.settings.defaultLanguage ||
-      req.headers['accept-language'],
-  )
-    .best(supported)
-    .toString();
+  const lang = toReactIntlLang(
+    new locale.Locales(
+      req.universalCookies.get('I18N_LANGUAGE') ||
+        config.settings.defaultLanguage ||
+        req.headers['accept-language'],
+    )
+      .best(supported)
+      .toString(),
+  );
 
   // Minimum initial state for the fake Redux store instance
   const initialState = {
@@ -176,13 +179,15 @@ server.get('/*', (req, res) => {
 
   const browserdetect = detect(req.headers['user-agent']);
 
-  const lang = new locale.Locales(
-    req.universalCookies.get('I18N_LANGUAGE') ||
-      config.settings.defaultLanguage ||
-      req.headers['accept-language'],
-  )
-    .best(supported)
-    .toString();
+  const lang = toReactIntlLang(
+    new locale.Locales(
+      req.universalCookies.get('I18N_LANGUAGE') ||
+        config.settings.defaultLanguage ||
+        req.headers['accept-language'],
+    )
+      .best(supported)
+      .toString(),
+  );
 
   const authToken = req.universalCookies.get('auth_token');
   const initialState = {
@@ -217,7 +222,7 @@ server.get('/*', (req, res) => {
 
   loadOnServer({ store, location, routes, api })
     .then(() => {
-      const cookie_lang =
+      const initialLang =
         req.universalCookies.get('I18N_LANGUAGE') ||
         config.settings.defaultLanguage ||
         req.headers['accept-language'];
@@ -230,15 +235,15 @@ server.get('/*', (req, res) => {
       // present the language token field, for some reason. In this case, we
       // should follow the cookie rather then switching the language
       const contentLang = store.getState().content.get?.error
-        ? cookie_lang
+        ? initialLang
         : store.getState().content.data?.language?.token ||
           config.settings.defaultLanguage;
 
-      if (cookie_lang !== contentLang) {
-        const newLocale = toLangUnderscoreRegion(
+      if (toBackendLang(initialLang) !== contentLang && url !== '/') {
+        const newLang = toReactIntlLang(
           new locale.Locales(contentLang).best(supported).toString(),
         );
-        store.dispatch(changeLanguage(newLocale, locales[newLocale], req));
+        store.dispatch(changeLanguage(newLang, locales[newLang], req));
       }
 
       const context = {};
@@ -257,6 +262,15 @@ server.get('/*', (req, res) => {
 
       const readCriticalCss =
         config.settings.serverConfig.readCriticalCss || defaultReadCriticalCss;
+
+      // If we are showing an "old browser" warning,
+      // make sure it doesn't get cached in a shared cache
+      const browserdetect = store.getState().browserdetect;
+      if (config.settings.notSupportedBrowsers.includes(browserdetect?.name)) {
+        res.set({
+          'Cache-Control': 'private',
+        });
+      }
 
       if (context.url) {
         res.redirect(flattenToAppURL(context.url));

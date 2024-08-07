@@ -6,6 +6,16 @@
   font-weight: @inputFontWeight;
 }
 
+/* This aligns the height of the field name label to the other side in case
+of an error is present, it overrides a default from SemanticUI grid definitions. */
+.inline.field .ui.grid > .stretched.row > .column > .wrapper {
+  flex-grow: 0;
+}
+/* Exception - Toolbar */
+#toolbar .inline.field .ui.grid > .stretched.row > .column > .wrapper {
+  flex-grow: 1;
+}
+
 .inline.field {
   .wrapper {
     display: flex;

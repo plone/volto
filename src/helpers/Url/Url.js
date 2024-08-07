@@ -3,7 +3,7 @@
  * @module helpers/Url
  */
 
-import { last, memoize } from 'lodash';
+import { last, memoize, isArray, isObject, isString } from 'lodash';
 import { urlRegex, telRegex, mailRegex } from './urlRegex';
 import prependHttp from 'prepend-http';
 import config from '@plone/volto/registry';
@@ -252,6 +252,27 @@ export function isUrl(url) {
 }
 
 /**
+ * Get field url
+ * @method getFieldURL
+ * @param {object} data
+ * @returns {string | any} URL string value if field is of url type or any.
+ */
+export const getFieldURL = (data) => {
+  let url = data;
+  const _isObject = data && isObject(data) && !isArray(data);
+  if (_isObject && data['@type'] === 'URL') {
+    url = data['value'] ?? data['url'] ?? data['href'] ?? data;
+  } else if (_isObject) {
+    url = data['@id'] ?? data['url'] ?? data['href'] ?? data;
+  }
+  if (isArray(data)) {
+    url = data.map((item) => getFieldURL(item));
+  }
+  if (isString(url) && isInternalURL(url)) return flattenToAppURL(url);
+  return url;
+};
+
+/**
  * Normalize URL, adds protocol (if required eg. user has not entered the protocol)
  * @method normalizeUrl
  * @param {string} url URL of the object
@@ -280,14 +301,14 @@ export function isTelephone(text) {
 }
 
 export function normaliseMail(email) {
-  if (email.toLowerCase().startsWith('mailto:')) {
+  if (email?.toLowerCase()?.startsWith('mailto:')) {
     return email;
   }
   return `mailto:${email}`;
 }
 
 export function normalizeTelephone(tel) {
-  if (tel.toLowerCase().startsWith('tel:')) {
+  if (tel?.toLowerCase()?.startsWith('tel:')) {
     return tel;
   }
   return `tel:${tel}`;
@@ -310,12 +331,17 @@ export function checkAndNormalizeUrl(url) {
     res.url = URLUtils.normalizeTelephone(url);
   } else {
     //url
-    if (!res.url.startsWith('/') && !res.url.startsWith('#')) {
+    if (
+      res.url?.length >= 0 &&
+      !res.url.startsWith('/') &&
+      !res.url.startsWith('#')
+    ) {
       res.url = URLUtils.normalizeUrl(url);
       if (!URLUtils.isUrl(res.url)) {
         res.isValid = false;
       }
     }
+    if (res.url === undefined || res.url === null) res.isValid = false;
   }
   return res;
 }

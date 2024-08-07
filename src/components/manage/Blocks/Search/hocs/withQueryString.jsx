@@ -10,7 +10,7 @@ function getDisplayName(WrappedComponent) {
  * A HOC that injects querystring metadata information from the backend.
  *
  */
-export default (WrappedComponent) => {
+export default function withQueryString(WrappedComponent) {
   function WithQueryString(props) {
     const dispatch = useDispatch();
 
@@ -29,4 +29,4 @@ export default (WrappedComponent) => {
     WrappedComponent,
   )})`;
   return WithQueryString;
-};
+}

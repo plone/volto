@@ -57,7 +57,7 @@ class RenderGroups extends Component {
    * @memberof UsersControlpanelUser
    */
   onChange(event, { value }) {
-    const [group, role] = value.split('.');
+    const [group, role] = value.split('&role=');
     this.props.updateGroups(group, role);
   }
 
@@ -97,7 +97,7 @@ class RenderGroups extends Component {
                     : this.props.group.roles.includes(role.id)
                 }
                 onChange={this.onChange}
-                value={`${this.props.group.id}.${role.id}`}
+                value={`${this.props.group.id}&role=${role.id}`}
               />
             )}
           </Table.Cell>

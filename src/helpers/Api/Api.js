@@ -80,6 +80,10 @@ class Api {
 
           Object.keys(headers).forEach((key) => request.set(key, headers[key]));
 
+          if (__SERVER__ && checkUrl && ['get', 'head'].includes(method)) {
+            request.redirects(0);
+          }
+
           if (data) {
             request.send(data);
           }
@@ -89,7 +93,7 @@ class Api {
               checkUrl &&
               request.url &&
               request.xhr &&
-              stripQuerystring(request.url) !==
+              encodeURI(stripQuerystring(request.url)) !==
                 stripQuerystring(request.xhr.responseURL)
             ) {
               if (request.xhr.responseURL?.length === 0) {
@@ -104,6 +108,14 @@ class Api {
                 url: request.xhr.responseURL,
               });
             }
+
+            if ([301, 302].includes(err?.status)) {
+              return reject({
+                code: err.status,
+                url: err.response.headers.location,
+              });
+            }
+
             return err ? reject(err) : resolve(response.body || response.text);
           });
         });

@@ -111,7 +111,7 @@ export function normalizeValue(choices, value, intl) {
 
   if (Array.isArray(value)) {
     // a list of values, like ['foo', 'bar'];
-    return value.map((v) => normalizeValue(choices, v));
+    return value.map((v) => normalizeValue(choices, v, intl));
   }
 
   if (isObject(value)) {

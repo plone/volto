@@ -1,6 +1,7 @@
 import React from 'react';
 import { defineMessages } from 'react-intl';
 import { useIntl } from 'react-intl';
+import { find, isEmpty } from 'lodash';
 import config from '@plone/volto/registry';
 import { cloneDeepSchema } from '@plone/volto/helpers/Utils/Utils';
 
@@ -200,6 +201,8 @@ export const applySchemaEnhancer = ({
   formData,
   intl,
   blocksConfig = config.blocks.blocksConfig,
+  navRoot,
+  contentType,
 }) => {
   let schema, schemaEnhancer;
 
@@ -216,6 +219,8 @@ export const applySchemaEnhancer = ({
         schema: cloneDeepSchema(originalSchema),
         formData,
         intl,
+        navRoot,
+        contentType,
       });
     return schema || originalSchema;
   }
@@ -231,12 +236,15 @@ export const applySchemaEnhancer = ({
         schema: cloneDeepSchema(originalSchema),
         formData,
         intl,
+        navRoot,
+        contentType,
       })
     : cloneDeepSchema(originalSchema);
 
   // Finalize the schema with a schemaEnhancer in the block config;
   schemaEnhancer = blocksConfig?.[blockType]?.schemaEnhancer;
-  if (schemaEnhancer) schema = schemaEnhancer({ schema, formData, intl });
+  if (schemaEnhancer)
+    schema = schemaEnhancer({ schema, formData, intl, navRoot, contentType });
 
   return schema || originalSchema;
 };
@@ -249,7 +257,7 @@ export const applySchemaEnhancer = ({
  * - adds the variation selection input (as a choice widget)
  */
 export const withVariationSchemaEnhancer = (FormComponent) => (props) => {
-  const { formData, schema: originalSchema } = props;
+  const { formData, schema: originalSchema, navRoot, contentType } = props;
   const intl = useIntl();
 
   const blocksConfig = getBlocksConfig(props);
@@ -257,15 +265,10 @@ export const withVariationSchemaEnhancer = (FormComponent) => (props) => {
   const blockType = formData['@type'];
   const variations = blocksConfig[blockType]?.variations || [];
 
-  let schema = applySchemaEnhancer({
-    schema: originalSchema,
-    formData,
-    intl,
-    blocksConfig,
-  });
+  let schema = cloneDeepSchema(originalSchema);
 
   if (variations.length > 1) {
-    addExtensionFieldToSchema({
+    schema = addExtensionFieldToSchema({
       schema,
       name: 'variation',
       items: variations,
@@ -274,6 +277,15 @@ export const withVariationSchemaEnhancer = (FormComponent) => (props) => {
       insertFieldToOrder: _addField,
     });
   }
+
+  schema = applySchemaEnhancer({
+    schema,
+    formData,
+    intl,
+    blocksConfig,
+    navRoot,
+    contentType,
+  });
 
   return <FormComponent {...props} schema={schema} />;
 };
@@ -291,20 +303,23 @@ export const EMPTY_STYLES_SCHEMA = {
 };
 
 /**
- * Creates the `styles` field and fieldset in a schema
+ * Adds the `styles` field and 'styling' fieldset in a given schema
  */
 export const addStyling = ({ schema, formData, intl }) => {
-  schema.fieldsets.push({
-    id: 'styling',
-    title: intl.formatMessage(messages.styling),
-    fields: ['styles'],
-  });
+  if (isEmpty(find(schema.fieldsets, { id: 'styling' }))) {
+    schema.fieldsets.push({
+      id: 'styling',
+      title: intl.formatMessage(messages.styling),
+      fields: ['styles'],
+    });
 
-  schema.properties.styles = {
-    widget: 'object',
-    title: intl.formatMessage(messages.styling),
-    schema: EMPTY_STYLES_SCHEMA,
-  };
+    schema.properties.styles = {
+      widget: 'object',
+      title: intl.formatMessage(messages.styling),
+      schema: cloneDeepSchema(EMPTY_STYLES_SCHEMA),
+    };
+  }
+
   return schema;
 };
 

@@ -42,6 +42,15 @@
   border-color: rgba(120, 192, 215, 0.75);
 }
 
+.block-editor-title,
+.block-editor-slate,
+.block-editor-slateTable,
+.slate-editor.selected {
+  :focus-visible {
+    outline: none;
+  }
+}
+
 .block .block:hover::before {
   border-color: rgba(120, 192, 215, 0.375);
 }
@@ -477,7 +486,9 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
 
   &.new-add-block {
     bottom: -26px;
-    left: 50%;
+    left: calc(
+      50% - 12px
+    ); // This is to compensate the width of the icon and center it correctly
     padding: 0 !important;
     border: none !important;
     background: white !important;
@@ -1066,6 +1077,12 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
     flex-direction: row;
     align-items: center;
     margin-right: 0.5em;
+
+    .sorted-label-value {
+      margin-right: 0.5em;
+      margin-left: 0.7em;
+      color: @lightGrey;
+    }
   }
 
   .sort-label {

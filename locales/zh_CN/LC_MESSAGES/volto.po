@@ -422,6 +422,7 @@ msgstr "可用的内容规则"
 #: components/manage/Controlpanels/UpgradeControlPanel
 #: components/manage/Diff/Diff
 #: components/manage/History/History
+#: components/manage/LinksToItem/LinksToItem
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalPreferences
@@ -477,11 +478,6 @@ msgstr "浏览网站，放入一张图片，或者输入一个URL"
 # defaultMessage: By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator.
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 msgstr "默认情况下，条目的权限从父文件夹继承，您可以禁用继承，明确设置权限。总体来说，${inherited}符号表示这是一个继承的值，${global}符号表示这是一个由网站管理员管理的全局角色。"
-
-#: components/manage/Contents/Contents
-# defaultMessage: By deleting this item, you will break links that exist in the items listed below. If this is indeed what you want to do, we recommend that remove these references first.
-msgid "By deleting this item, you will break links that exist in the items listed below. If this is indeed what you want to do, we recommend that remove these references first."
-msgstr "删除这些条目，将会破坏下列条目中的链连引用，如果您确定要这样做，建议您先删除这些引用。"
 
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Cache Name
@@ -736,6 +732,11 @@ msgstr "{title}的内容规则"
 msgid "Content rules from parent folders"
 msgstr "父文件夹的内容规则"
 
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Content that links to or references {title}
+msgid "Content that links to or references {title}"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Content type created
 msgid "Content type created"
@@ -765,7 +766,7 @@ msgid "Copy"
 msgstr "复制"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: undefined
+# defaultMessage: Copy blocks
 msgid "Copy blocks"
 msgstr "复制块"
 
@@ -778,6 +779,11 @@ msgstr "版权"
 # defaultMessage: Copyright statement or other rights information on this item.
 msgid "Copyright statement or other rights information on this item."
 msgstr "本内容的版权信息"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Create or delete relations to target
+msgid "Create or delete relations to target"
+msgstr ""
 
 #: components/manage/Toolbar/More
 # defaultMessage: Create working copy
@@ -833,7 +839,7 @@ msgid "Cut"
 msgstr "剪切"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: undefined
+# defaultMessage: Cut blocks
 msgid "Cut blocks"
 msgstr "剪切块"
 
@@ -940,7 +946,7 @@ msgid "Delete action"
 msgstr "删除操作"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: undefined
+# defaultMessage: Delete blocks
 msgid "Delete blocks"
 msgstr "删除块"
 
@@ -959,10 +965,25 @@ msgstr "删除条件"
 msgid "Delete row"
 msgstr "删除条件"
 
+#: components/manage/Contents/Contents
+# defaultMessage: Delete selected items?
+msgid "Delete selected items?"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: Delete this item?
+msgid "Delete this item?"
+msgstr ""
+
 #: components/manage/Controlpanels/Rules/Rules
 # defaultMessage: Deleted
 msgid "Deleted"
 msgstr "已删除"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Deleting this item breaks {brokenReferences} {variation}.
+msgid "Deleting this item breaks {brokenReferences} {variation}."
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Depth
@@ -1026,11 +1047,6 @@ msgstr "使用{license} 发布"
 # defaultMessage: Add border to inner columns
 msgid "Divide each row into separate cells"
 msgstr "将每一行分成独立的单元格"
-
-#: components/manage/Contents/Contents
-# defaultMessage: Do you really want to delete the following items?
-msgid "Do you really want to delete the following items?"
-msgstr "确定要删除这个条目吗？"
 
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 # defaultMessage: Do you really want to delete the group {groupname}?
@@ -1107,6 +1123,7 @@ msgstr "邮箱地址不匹配"
 #: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Controlpanels/Rules/EditRule
+#: components/manage/Controlpanels/Users/RenderUsers
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/FormFieldWrapper
 #: components/manage/Widgets/ObjectBrowserWidget
@@ -1249,14 +1266,19 @@ msgstr "输入你的邮箱进行验证"
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Enter your new password. Minimum 5 characters.
-msgid "Enter your new password. Minimum 5 characters."
-msgstr "输入你的新密码。最少5个字符"
+# defaultMessage: Enter your new password. Minimum 8 characters.
+msgid "Enter your new password. Minimum 8 characters."
+msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Enter your username for verification.
 msgid "Enter your username for verification."
 msgstr "输入你的用户名进行验证"
+
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Entries
+msgid "Entries"
+msgstr ""
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -1398,6 +1420,11 @@ msgstr "文件视图"
 msgid "Filename"
 msgstr "文件名"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Filter
+msgid "Filter"
+msgstr ""
+
 #: components/manage/Controlpanels/Rules/Rules
 # defaultMessage: Filter Rules:
 msgid "Filter Rules:"
@@ -1422,6 +1449,11 @@ msgstr "过滤"
 # defaultMessage: First
 msgid "First"
 msgstr "首个"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Fix relations
+msgid "Fix relations"
+msgstr ""
 
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Fixed width columns
@@ -1559,6 +1591,11 @@ msgstr "隐藏回复"
 msgid "Hide facet?"
 msgstr ""
 
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Hide title
+msgid "Hide title"
+msgstr ""
+
 #: components/manage/History/History
 #: components/manage/Toolbar/More
 # defaultMessage: History
@@ -1690,6 +1727,11 @@ msgstr "在后面插入行"
 msgid "Insert row before"
 msgstr "在前面插入行"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Inspect relations
+msgid "Inspect relations"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Install
 msgid "Install"
@@ -1735,6 +1777,11 @@ msgstr ""
 # defaultMessage: Invalid block - Will be removed on saving
 msgid "Invalid Block"
 msgstr "无效的块"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them.
+msgid "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Item batch size
@@ -1782,11 +1829,6 @@ msgstr "条目"
 # defaultMessage: Items must be unique.
 msgid "Items must be unique."
 msgstr "条目必须是独特的"
-
-#: components/manage/Contents/Contents
-# defaultMessage: Items to be deleted:
-msgid "Items to be deleted:"
-msgstr "需要删除的条目"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Label
@@ -1866,6 +1908,11 @@ msgstr "链接更多"
 msgid "Link redirect view"
 msgstr "链接重定向视图"
 
+#: components/manage/Blocks/Image/schema
+# defaultMessage: Link settings
+msgid "Link settings"
+msgstr ""
+
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Link Title
@@ -1884,6 +1931,17 @@ msgstr "链接至"
 # defaultMessage: Link translation for
 msgid "Link translation for"
 msgstr "链接翻译"
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Linking this item with hyperlink in text
+msgid "Linking this item with hyperlink in text"
+msgstr ""
+
+#: components/manage/LinksToItem/LinksToItem
+#: components/manage/Toolbar/More
+# defaultMessage: Links and references
+msgid "Links and references"
+msgstr ""
 
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Listing
@@ -1976,6 +2034,11 @@ msgstr ""
 # defaultMessage: Manually or automatically added?
 msgid "Manually or automatically added?"
 msgstr "手动添加还是自动添加？"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Many relations found. Please search.
+msgid "Many relations found. Please search."
+msgstr ""
 
 #: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Maps/schema
@@ -2137,7 +2200,6 @@ msgid "News item view"
 msgstr "新闻视图"
 
 #: components/manage/Contents/ContentsItem
-#: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: No
 msgid "No"
@@ -2203,6 +2265,11 @@ msgstr "在此容器中没有发现条目。"
 msgid "No items selected"
 msgstr "未选择条目"
 
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: No links to this item found.
+msgid "No links to this item found."
+msgstr ""
+
 #: components/manage/Blocks/Maps/MapsSidebar
 # defaultMessage: No map selected
 msgid "No map selected"
@@ -2220,6 +2287,11 @@ msgstr ""
 # defaultMessage: No options
 msgid "No options"
 msgstr "没有选项"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: No relation found
+msgid "No relation found"
+msgstr ""
 
 #: components/manage/BlockChooser/BlockChooser
 #: components/theme/Search/Search
@@ -2321,10 +2393,20 @@ msgstr "打开菜单"
 msgid "Open object browser"
 msgstr "打开目标浏览器"
 
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Ordered
+msgid "Ordered"
+msgstr ""
+
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Origin
 msgid "Origin"
 msgstr "原始"
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Overview of relations of all content items
+msgid "Overview of relations of all content items"
+msgstr ""
 
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Page
@@ -2360,7 +2442,7 @@ msgid "Paste"
 msgstr "粘贴"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: undefined
+# defaultMessage: Paste blocks
 msgid "Paste blocks"
 msgstr "粘贴块"
 
@@ -2466,11 +2548,6 @@ msgstr "位置已改变"
 msgid "Possible values"
 msgstr "可选值"
 
-#: components/manage/Contents/Contents
-# defaultMessage: Potential link breakage
-msgid "Potential link breakage"
-msgstr "可能产生坏链接"
-
 #: components/theme/Footer/Footer
 # defaultMessage: Powered by Plone & Python
 msgid "Powered by Plone & Python"
@@ -2565,6 +2642,16 @@ msgstr "重做"
 msgid "Reduce complexity"
 msgstr "减少复杂性"
 
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Referencing this item as related item
+msgid "Referencing this item as related item"
+msgstr ""
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Referencing this item with {relationship}
+msgid "Referencing this item with {relationship}"
+msgstr ""
+
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
 #: components/theme/Register/Register
@@ -2576,6 +2663,21 @@ msgstr "注册"
 # defaultMessage: Registration form
 msgid "Registration form"
 msgstr "注册表单"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: relation
+msgid "Relation name"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Relations
+msgid "Relations"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Relations updated
+msgid "Relations updated"
+msgstr ""
 
 #: components/theme/Search/Search
 # defaultMessage: Relevance
@@ -2707,6 +2809,7 @@ msgid "Revert to this revision"
 msgstr "回退到这个版本"
 
 #: components/manage/Contents/Contents
+#: components/manage/LinksToItem/LinksToItem
 # defaultMessage: Review state
 msgid "Review state"
 msgstr "审核状态"
@@ -2785,6 +2888,11 @@ msgstr ""
 msgid "Saved"
 msgstr "已保存"
 
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Scheduled
+msgid "Scheduled"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypesActions
 # defaultMessage: Schema
 msgid "Schema"
@@ -2859,6 +2967,16 @@ msgid "Search results for {term}"
 msgstr "搜索{term}的结果"
 
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Search sources by title or path
+msgid "Search sources by title or path"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Search targets by title or path
+msgid "Search targets by title or path"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Search users…
 msgid "Search users…"
 msgstr "搜索用户..."
@@ -2881,6 +2999,7 @@ msgstr "章节标题"
 #: components/manage/Controlpanels/Aliases
 #: components/manage/Rules/Rules
 #: components/manage/Sidebar/ObjectBrowserNav
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Select
 msgid "Select"
 msgstr "选择"
@@ -2895,10 +3014,20 @@ msgstr ""
 msgid "Select columns to show"
 msgstr "选择要显示的列"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Select relation
+msgid "Select relation"
+msgstr ""
+
 #: components/manage/Contents/ContentsWorkflowModal
 # defaultMessage: Select the transition to be used for modifying the items state.
 msgid "Select the transition to be used for modifying the items state."
 msgstr "选择用于修改条目状态的事务。"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Selected
+msgid "Selected"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 # defaultMessage: Selected dates
@@ -2939,6 +3068,11 @@ msgstr "发送"
 # defaultMessage: Send a confirmation mail with a link to set the password.
 msgid "Send a confirmation mail with a link to set the password."
 msgstr "发送一条带设置密码链接的确认邮件"
+
+#: components/theme/Error/ServerError
+# defaultMessage: Server Error
+msgid "Server Error"
+msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Set my password
@@ -3071,6 +3205,16 @@ msgstr "大小：{size}"
 msgid "Small"
 msgstr "小"
 
+#: components/manage/Contents/Contents
+# defaultMessage: Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders.
+msgid "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken.
+msgid "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
+msgstr ""
+
 #: error
 # defaultMessage: Sorry, something went wrong with your request
 msgid "Sorry, something went wrong with your request"
@@ -3107,6 +3251,11 @@ msgstr "按用户名、路径或日期对事务进行排序"
 # defaultMessage: Sorted
 msgid "Sorted"
 msgstr "排序"
+
+#: components/manage/Blocks/Search/components/SortOn
+# defaultMessage: Sorted on
+msgid "Sorted on"
+msgstr ""
 
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Blocks/Image/schema
@@ -3151,6 +3300,11 @@ msgstr "状态"
 # defaultMessage: Status
 msgid "Status"
 msgstr "状态"
+
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Sticky
+msgid "Sticky"
+msgstr ""
 
 #: components/manage/Multilingual/CompareLanguages
 # defaultMessage: Stop compare
@@ -3372,6 +3526,16 @@ msgstr "工作副本被丢弃"
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: There are no groups with the searched criteria
+msgid "There are no groups with the searched criteria"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: There are no users with the searched criteria
+msgid "There are no users with the searched criteria"
+msgstr ""
+
 #: components/theme/CorsError/CorsError
 # defaultMessage: There is a configuration problem on the backend
 msgid "There is a configuration problem on the backend"
@@ -3398,11 +3562,6 @@ msgstr "这里出现了一些错误。"
 msgid "Third"
 msgstr "第三"
 
-#: components/manage/Contents/Contents
-# defaultMessage: This Page is referenced by the following items:
-msgid "This Page is referenced by the following items:"
-msgstr "此页面被下列条目引用："
-
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 # defaultMessage: This has an ongoing working copy in {title}
 msgid "This has an ongoing working copy in {title}"
@@ -3417,6 +3576,11 @@ msgstr "这是一个保留名字，不能使用"
 # defaultMessage: This is a working copy of {title}
 msgid "This is a working copy of {title}"
 msgstr "这是{title}的一个工作副本"
+
+#: components/manage/Contents/Contents
+# defaultMessage: This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder.
+msgid "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
+msgstr ""
 
 #: components/manage/LockingToastsFactory/LockingToastsFactory
 # defaultMessage: This item was locked by {creator} on {date}
@@ -3445,6 +3609,7 @@ msgstr "时间"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Teaser/schema
+#: components/manage/Blocks/ToC/Schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
@@ -3472,11 +3637,6 @@ msgstr "活动和非活动对象的总数"
 # defaultMessage: Total comments
 msgid "Total comments"
 msgstr "全部评论"
-
-#: components/manage/Contents/Contents
-# defaultMessage: Total items to be deleted:
-msgid "Total items to be deleted:"
-msgstr ""
 
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Total number of objects in each cache
@@ -3536,6 +3696,7 @@ msgid "Triggering event field error. Please select a value"
 msgstr "触发了事件字段错误。请选择一个值"
 
 #: components/manage/Controlpanels/ContentTypes
+#: components/manage/LinksToItem/LinksToItem
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
 # defaultMessage: Type
@@ -3655,6 +3816,11 @@ msgstr "未排序"
 msgid "Update"
 msgstr "更新"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Update User
+msgid "Update User"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Update installed addons
 msgid "Update installed addons"
@@ -3771,6 +3937,11 @@ msgid "User roles updated"
 msgstr "用户角色更新"
 
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: User updated successfuly
+msgid "User updated successfuly"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Username
 msgid "Username"
 msgstr "用户名"
@@ -3824,6 +3995,11 @@ msgstr ""
 msgid "View changes"
 msgstr ""
 
+#: components/manage/Contents/Contents
+# defaultMessage: View links and references to this item
+msgid "View links and references to this item"
+msgstr ""
+
 #: components/manage/History/History
 # defaultMessage: View this revision
 msgid "View this revision"
@@ -3868,6 +4044,11 @@ msgstr "很抱歉，您正在访问的网站后端现在不可用。请稍后重
 # defaultMessage: We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for.
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
 msgstr "很抱歉，您所尝试访问的地址不存在。您可以使用下面的链接帮助您查找所需内容。"
+
+#: components/theme/Error/ServerError
+# defaultMessage: We apologize for the inconvenience, but there was an unexpected error on the server.
+msgid "We apologize for the inconvenience, but there was an unexpected error on the server."
+msgstr ""
 
 #: components/theme/Forbidden/Forbidden
 # defaultMessage: We apologize for the inconvenience, but you don't have permissions on this resource.
@@ -3952,7 +4133,6 @@ msgid "Yearly"
 msgstr "每年"
 
 #: components/manage/Contents/ContentsItem
-#: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Yes
 msgid "Yes"
@@ -4149,6 +4329,16 @@ msgstr ""
 msgid "event_where"
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: This website does not accept files larger than {limit}
+msgid "fileTooLarge"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: flush intIds and rebuild relations
+msgid "flush intIds and rebuild relations"
+msgstr ""
+
 #: components/manage/Blocks/Teaser/schema
 # defaultMessage: Head title
 msgid "head_title"
@@ -4183,6 +4373,16 @@ msgstr "整数"
 # defaultMessage: Intranet
 msgid "intranet"
 msgstr "内部"
+
+#: components/manage/Contents/Contents
+# defaultMessage: item
+msgid "item"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: items
+msgid "items"
+msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: My email is
@@ -4303,6 +4503,21 @@ msgstr "已发布"
 msgid "querystring-widget-select"
 msgstr ""
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: rebuild relations
+msgid "rebuild relations"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: reference
+msgid "reference"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: references
+msgid "references"
+msgstr ""
+
 #: components/theme/Search/Search
 # defaultMessage: results
 msgid "results found"
@@ -4331,7 +4546,7 @@ msgstr ""
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: [month] [day], [year]
 msgid "rrule_dateFormat"
-msgstr ""
+msgstr "[year]-[month]-[day]"
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 # defaultMessage: day
@@ -4503,10 +4718,20 @@ msgstr "跳到导航栏"
 msgid "sort"
 msgstr "排序"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: sources path
+msgid "sources path"
+msgstr ""
+
 #: config/Blocks
 # defaultMessage: Table
 msgid "table"
 msgstr "表格"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: target path
+msgid "target path"
+msgstr ""
 
 #: config/Blocks
 # defaultMessage: Text
@@ -4518,6 +4743,7 @@ msgstr "文本"
 msgid "title"
 msgstr "标题"
 
+#: components/manage/Blocks/ToC/Schema
 #: config/Blocks
 # defaultMessage: Table of Contents
 msgid "toc"

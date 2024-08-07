@@ -74,6 +74,7 @@ let config = {
     port,
     // The URL Volto is going to be served (see sensible defaults above)
     publicURL,
+    okRoute: '/ok',
     apiPath,
     apiExpanders: [
       // Add the following expanders for only issuing a single request.
@@ -150,6 +151,7 @@ let config = {
     },
     appExtras: [],
     maxResponseSize: 2000000000, // This is superagent default (200 mb)
+    maxFileUploadSize: null,
     serverConfig,
     storeExtenders: [],
     showTags: true,
@@ -181,6 +183,9 @@ let config = {
     hashLinkSmoothScroll: false,
     styleClassNameExtenders,
     querystringSearchGet: false,
+    blockSettingsTabFieldsetsInitialStateOpen: true,
+    excludeLinksAndReferencesMenuItem: true,
+    containerBlockTypes: [],
   },
   experimental: {
     addBlockButton: {

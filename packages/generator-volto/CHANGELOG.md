@@ -1,10 +1,105 @@
-# Change Log
+# Volto Generator Release Notes
 
-## 6.0.0 (unreleased)
+<!-- You should *NOT* be adding new change log entries to this file.
+     You should create a file in the news directory instead.
+     For helpful instructions, please see:
+     https://6.dev-docs.plone.org/volto/developer-guidelines/contributing.html#create-a-pull-request
+-->
 
-### Breaking
+<!-- towncrier release notes start -->
+
+## 6.4.1 (2023-11-03)
+
+### Bugfix
+
+- Add TypeScript support for 6.x.x series @sneridagh [#5357](https://github.com/plone/volto/issues/5357)
+
+## 6.4.0 (2023-09-27)
+
+### Bugfix
+
+- Fix generator for Volto 16, keep some backported code, get in all changes in generator-6.x.x From now on, the 6.x.x series of the generator will be released from the 16.x.x branch. will be @sneridagh [#5232](https://github.com/plone/volto/issues/5232)
+
+
+## 6.3.1 (2023-04-13)
+
+### Bugfix
+
+- Force the resolution of the `react-error-overlay` package to `6.0.9` @sneridagh [#4687](https://github.com/plone/volto/issues/4687)
+
+
+## 6.3.0 (2023-03-05)
 
 ### Feature
+
+- Improve stylelint config in generator, include scss support @sneridagh [#4469](https://github.com/plone/volto/issues/4469)
+
+
+## 6.2.6 (2023-03-04)
+
+### Bugfix
+
+- Fix ESlint failure for the generator @sneridagh [#4465](https://github.com/plone/volto/issues/4465)
+
+
+## 6.2.5 (2023-03-02)
+
+### Internal
+
+- Get the App component from the registry. This makes it possible to add wrappers over the App@tiberiuichim [#4413](https://github.com/plone/volto/issues/4413)
+
+
+## 6.2.4 (2023-03-02)
+
+### Bugfix
+
+- Fix generator adding the jest config for @plone/volto-slate @sneridagh [#4453](https://github.com/plone/volto/issues/4453)
+
+### Internal
+
+- made razzle.config.js in project template easier to extend @akshatgarg12 [#3424](https://github.com/plone/volto/issues/3424)
+
+
+## 6.2.3 (2023-01-16)
+
+### Bugfix
+
+- Add scss to stylelint config in package.json script @sneridagh [#4259](https://github.com/plone/volto/issues/4259)
+
+
+## 6.2.2 (2022-12-23)
+
+### Bugfix
+
+- Update docker image used in Makefile for addons @sneridagh [#4184](https://github.com/plone/volto/issues/4184)
+
+
+## 6.2.1 (2022-12-23)
+
+### Bugfix
+
+- Update docker image used in Makefile for addons @sneridagh [#4175](https://github.com/plone/volto/issues/4175)
+
+
+## 6.2.0 (2022-12-15)
+
+### Feature
+
+- Allow passing a Github branch or tag as Volto version (ex: `--volto=plone/volto#16.3.0`) @tiberiuichim [#4073](https://github.com/plone/volto/issues/4073)
+
+### Bugfix
+
+- Use semver to identify latest package when using the `--canary` flag @tiberiuichim @avoinea [#4074](https://github.com/plone/volto/issues/4074)
+- Fix cypress support filename @sneridagh [#4129](https://github.com/plone/volto/issues/4129)
+
+
+## 6.1.2 (2022-12-05)
+
+### Bugfix
+
+- Add `cypress.config.js` to generator templates @sneridagh [#4021](https://github.com/plone/volto/issues/4021)
+
+
 ## 6.1.1 (2022-11-24)
 
 ### Bugfix
@@ -29,8 +124,6 @@
 ### Bugfix
 
 - Generator is aware of `rc`, `beta` and `alphas` as possible releases for canary @sneridagh
-
-### Internal
 
 ## 6.0.0-alpha.3 (2022-11-16)
 

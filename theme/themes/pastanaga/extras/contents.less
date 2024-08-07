@@ -94,6 +94,7 @@
 
   .contents-table-wrapper {
     width: 100%;
+    overflow-x: auto;
 
     .ui.attached.table {
       width: 100%;
@@ -191,6 +192,10 @@
     white-space: normal;
     word-break: break-all;
   }
+
+  .broken-links-list {
+    margin-top: 30px;
+  }
 }
 
 .contenttype-event {
@@ -203,4 +208,15 @@
   display: flex;
   align-items: center;
   margin-top: 2rem;
+}
+
+/* Contents Upload Modal */
+.contents-upload-modal {
+  .file-name {
+    width: 75%;
+
+    input {
+      padding: 0.67857143em 1em;
+    }
+  }
 }

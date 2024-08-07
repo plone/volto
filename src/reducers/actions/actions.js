@@ -46,7 +46,7 @@ export default function actions(state = initialState, action = {}) {
         'actions',
         getBaseUrl(flattenToAppURL(action.result['@id'])),
       );
-      if (hasExpander) {
+      if (hasExpander && !action.subrequest) {
         return {
           ...state,
           error: null,
@@ -57,11 +57,13 @@ export default function actions(state = initialState, action = {}) {
       }
       return state;
     case `${LIST_ACTIONS}_SUCCESS`:
-      hasExpander = hasApiExpander(
-        'actions',
-        getBaseUrl(flattenToAppURL(action.result['@id'])),
-      );
-      if (!hasExpander) {
+      // Even if the expander is set or not, if the LIST_ACTIONS is
+      // called, we want it to store the data if the actions data is
+      // not set in the expander data (['@components']) but in the "normal"
+      // action result (we look for the object property returned by the endpoint)
+      // Unfortunately, this endpoint returns all the actions in a plain object
+      // with no structure :(
+      if (action.result.object) {
         return {
           ...state,
           error: null,

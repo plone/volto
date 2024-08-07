@@ -15,7 +15,7 @@ import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers';
  * @class View
  * @extends Component
  */
-export const View = ({ data, detached }) => {
+export const View = ({ data, detached, className }) => {
   const href = data?.href?.[0]?.['@id'] || '';
   return (
     <p
@@ -26,6 +26,7 @@ export const View = ({ data, detached }) => {
           detached,
         },
         data.align,
+        className,
       )}
     >
       {data.url && (

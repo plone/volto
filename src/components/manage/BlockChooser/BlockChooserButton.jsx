@@ -52,7 +52,10 @@ const BlockChooserButton = (props) => {
     blocksConfig,
     buttonComponent,
     properties,
+    navRoot,
+    contentType,
   } = props;
+
   const { disableNewBlocks } = data;
   const [addNewBlockOpened, setAddNewBlockOpened] = React.useState(false);
 
@@ -110,6 +113,8 @@ const BlockChooserButton = (props) => {
           properties={properties}
           showRestricted={showRestricted}
           ref={blockChooserRef}
+          navRoot={navRoot}
+          contentType={contentType}
         />
       )}
     </>

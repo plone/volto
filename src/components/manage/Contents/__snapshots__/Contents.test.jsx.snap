@@ -44,6 +44,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                 className="menu top-menu-menu"
               >
                 <button
+                  aria-label="Upload"
                   className="ui button icon item upload"
                   onBlur={[Function]}
                   onClick={[Function]}
@@ -75,6 +76,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                 className="menu top-menu-menu"
               >
                 <button
+                  aria-label="Rename"
                   className="ui button disabled icon item"
                   onBlur={[Function]}
                   onClick={[Function]}
@@ -102,6 +104,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                   />
                 </button>
                 <button
+                  aria-label="State"
                   className="ui button disabled icon item"
                   onBlur={[Function]}
                   onClick={[Function]}
@@ -129,6 +132,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                   />
                 </button>
                 <button
+                  aria-label="Tags"
                   className="ui button disabled icon item"
                   onBlur={[Function]}
                   onClick={[Function]}
@@ -156,6 +160,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                   />
                 </button>
                 <button
+                  aria-label="Properties"
                   className="ui button disabled icon item"
                   onBlur={[Function]}
                   onClick={[Function]}
@@ -187,6 +192,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                 className="menu top-menu-menu"
               >
                 <button
+                  aria-label="Cut"
                   className="ui button disabled icon item"
                   onBlur={[Function]}
                   onClick={[Function]}
@@ -214,6 +220,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                   />
                 </button>
                 <button
+                  aria-label="Copy"
                   className="ui button disabled icon item"
                   onBlur={[Function]}
                   onClick={[Function]}
@@ -241,6 +248,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                   />
                 </button>
                 <button
+                  aria-label="Paste"
                   className="ui button icon item"
                   onBlur={[Function]}
                   onClick={[Function]}
@@ -268,6 +276,7 @@ exports[`Contents renders a folder contents view component 1`] = `
                   />
                 </button>
                 <button
+                  aria-label="Delete"
                   className="ui button disabled icon item"
                   onBlur={[Function]}
                   onClick={[Function]}

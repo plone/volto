@@ -26,7 +26,7 @@ body {
   &.has-toolbar-menu-open,
   &.has-mobile-menu-open {
     // The body scroll locker when the toolbar or the mobile menu are active in mobile.
-    @media only screen and (max-width: @largestMobileScreen) {
+    @media only screen and (max-width: @largestTabletScreen) {
       overflow: hidden;
     }
   }
@@ -588,4 +588,5 @@ body.has-toolbar-collapsed .mobile-menu {
 @import 'login';
 @import 'language-selector';
 @import 'views';
+@import 'toc';
 .loadUIOverrides();

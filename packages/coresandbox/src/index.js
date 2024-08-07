@@ -2,7 +2,10 @@ import ListingBlockVariationTeaserContent from './components/Blocks/Listing/List
 import NewsAndEvents from './components/Views/NewsAndEvents';
 import TestBlockView from './components/Blocks/TestBlock/View';
 import TestBlockEdit from './components/Blocks/TestBlock/Edit';
+import { flattenToAppURL } from '@plone/volto/helpers';
 import { SliderSchema as TestBlockSchema } from './components/Blocks/TestBlock/schema';
+import { multipleFieldsetsSchema } from './components/Blocks/TestBlock/schema';
+import { conditionalVariationsSchemaEnhancer } from './components/Blocks/schemaEnhancers';
 import codeSVG from '@plone/volto/icons/code.svg';
 
 const testBlock = {
@@ -23,6 +26,7 @@ const testBlock = {
     {
       id: 'default',
       title: 'Default',
+      isDefault: true,
     },
     {
       id: 'custom',
@@ -30,6 +34,40 @@ const testBlock = {
     },
   ],
   extensions: {},
+};
+
+const testBlockConditional = {
+  ...testBlock,
+  id: 'testBlockConditional',
+  title: 'Test Conditional Block',
+  restricted: ({ properties, navRoot, contentType }) => {
+    if (contentType === 'News Item') {
+      return false;
+    } else if (flattenToAppURL(properties?.parent?.['@id']) === '/folder') {
+      return false;
+    }
+    return true;
+  },
+};
+
+const testBlockWithConditionalVariations = {
+  ...testBlock,
+  id: 'testBlockWithConditionalVariations',
+  title: 'Test Block with Conditional Variations',
+  schemaEnhancer: conditionalVariationsSchemaEnhancer,
+};
+
+const testBlockMultipleFieldsets = {
+  id: 'testBlockMultipleFieldsets',
+  title: 'testBlockMultipleFieldsets',
+  icon: codeSVG,
+  group: 'common',
+  view: TestBlockView,
+  edit: TestBlockEdit,
+  blockSchema: multipleFieldsetsSchema,
+  restricted: false,
+  mostUsed: true,
+  sidebarTab: 1,
 };
 
 const testBlockDefaultEdit = {
@@ -122,6 +160,11 @@ export const workingCopyFixture = (config) => {
 
 const applyConfig = (config) => {
   config.blocks.blocksConfig.testBlock = testBlock;
+  config.blocks.blocksConfig.testBlockConditional = testBlockConditional;
+  config.blocks.blocksConfig.testBlockWithConditionalVariations =
+    testBlockWithConditionalVariations;
+  config.blocks.blocksConfig.testBlockMultipleFieldsets =
+    testBlockMultipleFieldsets;
   config.blocks.blocksConfig.testBlockDefaultEdit = testBlockDefaultEdit;
   config.blocks.blocksConfig.testBlockDefaultView = testBlockDefaultView;
   config.blocks.blocksConfig.listing = listing(config);

@@ -22,7 +22,7 @@ exports[`BlockDataForm should add variations to schema 1`] = `
 </div>
 `;
 
-exports[`BlockDataForm should does not add variations to schema when unneeded 1`] = `
+exports[`BlockDataForm should not add variations to schema when explicitly disabled 1`] = `
 <div>
   <div
     class="ui form"
@@ -38,7 +38,23 @@ exports[`BlockDataForm should does not add variations to schema when unneeded 1`
 </div>
 `;
 
-exports[`BlockDataForm should does not add variations when only one variation 1`] = `
+exports[`BlockDataForm should not add variations to schema when unneeded 1`] = `
+<div>
+  <div
+    class="ui form"
+  >
+    <div
+      id="blockform-fieldset-default"
+    >
+      <div
+        class="ui segment form attached"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`BlockDataForm should not add variations when only one variation 1`] = `
 <div>
   <div
     class="ui form"

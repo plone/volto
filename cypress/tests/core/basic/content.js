@@ -87,7 +87,7 @@ describe('Add Content Tests', () => {
     cy.findByLabelText('/my-page').children('td').eq(1).click();
 
     cy.get('.top-menu-menu .delete').click();
-    cy.get('.modal.active').contains('Potential link breakage');
+    cy.get('.modal.active').contains('View links and references to this item');
     cy.get('.actions').contains('Delete').click();
   });
 

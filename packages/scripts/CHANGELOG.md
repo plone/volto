@@ -65,7 +65,7 @@
 
 - Removed `Razzle` as dependency, leave only the `babel-preset-razzle` one which is enough.
 
-  See https://6.dev-docs.plone.org/volto/upgrade-guide/index.html for more information.
+  See https://6.docs.plone.org/volto/upgrade-guide/index.html for more information.
 
 ## 1.6.0 (2022-08-05)
 

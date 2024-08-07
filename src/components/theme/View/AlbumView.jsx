@@ -5,9 +5,14 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Container, GridColumn, Segment } from 'semantic-ui-react';
+import {
+  Container as SemanticContainer,
+  GridColumn,
+  Segment,
+} from 'semantic-ui-react';
 import { Button, Modal, Grid } from 'semantic-ui-react';
 import { Icon, UniversalLink, PreviewImage } from '@plone/volto/components';
+import config from '@plone/volto/registry';
 
 import openSVG from '@plone/volto/icons/open.svg';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
@@ -56,6 +61,9 @@ class AlbumView extends Component {
 
   render() {
     const { content } = this.props;
+    const Container =
+      config.getComponent({ name: 'Container' }).component || SemanticContainer;
+
     return (
       <Container className="view-wrapper">
         <article id="content">

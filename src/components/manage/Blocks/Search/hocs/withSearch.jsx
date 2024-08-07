@@ -5,6 +5,8 @@ import { useLocation, useHistory } from 'react-router-dom';
 
 import { resolveExtension } from '@plone/volto/helpers/Extensions/withBlockExtensions';
 import config from '@plone/volto/registry';
+import { usePrevious } from '@plone/volto/helpers';
+import { isEqual } from 'lodash';
 
 function getDisplayName(WrappedComponent) {
   return WrappedComponent.displayName || WrappedComponent.name || 'Component';
@@ -89,9 +91,21 @@ function normalizeState({
     types: facetWidgetTypes,
   } = config.blocks.blocksConfig.search.extensions.facetWidgets;
 
+  // Here, we are removing the QueryString of the Listing ones, which is present in the Facet
+  // because we already initialize the facet with those values.
+  const configuredFacets = facetSettings
+    ? facetSettings.map((facet) => facet?.field?.value)
+    : [];
+
+  let copyOfQuery = query.query ? [...query.query] : [];
+
+  const queryWithoutFacet = copyOfQuery.filter((query) => {
+    return !configuredFacets.includes(query.i);
+  });
+
   const params = {
     query: [
-      ...(query.query || []),
+      ...(queryWithoutFacet || []),
       ...(facetSettings || []).map((facet) => {
         if (!facet?.field) return null;
 
@@ -148,12 +162,16 @@ const getSearchFields = (searchData) => {
 };
 
 /**
- * A HOC that will mirror the search block state to a hash location
+ * A hook that will mirror the search block state to a hash location
  */
 const useHashState = () => {
   const location = useLocation();
   const history = useHistory();
 
+  /**
+   * Required to maintain parameter compatibility.
+    With this we will maintain support for receiving hash (#) and search (?) type parameters.
+  */
   const oldState = React.useMemo(() => {
     return {
       ...qs.parse(location.search),
@@ -169,7 +187,7 @@ const useHashState = () => {
 
   const setSearchData = React.useCallback(
     (searchData) => {
-      const newParams = qs.parse(location.hash);
+      const newParams = qs.parse(location.search);
 
       let changed = false;
 
@@ -186,11 +204,11 @@ const useHashState = () => {
 
       if (changed) {
         history.push({
-          hash: qs.stringify(newParams),
+          search: qs.stringify(newParams),
         });
       }
     },
-    [history, oldState, location.hash],
+    [history, oldState, location.search],
   );
 
   return [current, setSearchData];
@@ -246,14 +264,34 @@ const withSearch = (options) => (WrappedComponent) => {
     const [searchText, setSearchText] = React.useState(urlSearchText);
     const configuredFacets =
       data.facets?.map((facet) => facet?.field?.value) || [];
+
+    // Here we are getting the initial value of the facet if Listing Query contains the same criteria as
+    // facet.
+    const queryData = data?.query?.query
+      ? deserializeQuery(JSON.stringify(data?.query?.query))
+      : [];
+
+    let intializeFacetWithQueryValue = [];
+
+    for (let value of configuredFacets) {
+      const queryString = queryData.find((item) => item.i === value);
+      if (queryString) {
+        intializeFacetWithQueryValue = [
+          ...intializeFacetWithQueryValue,
+          { [queryString.i]: queryString.v },
+        ];
+      }
+    }
+
     const multiFacets = data.facets
       ?.filter((facet) => facet?.multiple)
       .map((facet) => facet?.field?.value);
     const [facets, setFacets] = React.useState(
       Object.assign(
         {},
-        ...urlQuery.map(({ i, v }) => ({ [i]: v })), // TODO: the 'o' should be kept. This would be a major refactoring of the facets
-
+        ...urlQuery.map(({ i, v }) => ({ [i]: v })),
+        // TODO: the 'o' should be kept. This would be a major refactoring of the facets
+        ...intializeFacetWithQueryValue,
         // support for simple filters like ?Subject=something
         // TODO: since the move to hash params this is no longer working.
         // We'd have to treat the location.search and manage it just like the
@@ -271,13 +309,59 @@ const withSearch = (options) => (WrappedComponent) => {
         ),
       ),
     );
+    const previousUrlQuery = usePrevious(urlQuery);
+
+    // During first render the previousUrlQuery is undefined and urlQuery
+    // is empty so it ressetting the facet when you are navigating but during reload we have urlQuery and we need
+    // to set the facet at first render.
+    const preventOverrideOfFacetState =
+      previousUrlQuery === undefined && urlQuery.length === 0;
+
+    React.useEffect(() => {
+      if (
+        !isEqual(urlQuery, previousUrlQuery) &&
+        !preventOverrideOfFacetState
+      ) {
+        setFacets(
+          Object.assign(
+            {},
+            ...urlQuery.map(({ i, v }) => ({ [i]: v })), // TODO: the 'o' should be kept. This would be a major refactoring of the facets
+
+            // support for simple filters like ?Subject=something
+            // TODO: since the move to hash params this is no longer working.
+            // We'd have to treat the location.search and manage it just like the
+            // hash, to support it. We can read it, but we'd have to reset it as
+            // well, so at that point what's the difference to the hash?
+            ...configuredFacets.map((f) =>
+              locationSearchData[f]
+                ? {
+                    [f]:
+                      multiFacets.indexOf(f) > -1
+                        ? [locationSearchData[f]]
+                        : locationSearchData[f],
+                  }
+                : {},
+            ),
+          ),
+        );
+      }
+    }, [
+      urlQuery,
+      configuredFacets,
+      locationSearchData,
+      multiFacets,
+      previousUrlQuery,
+      preventOverrideOfFacetState,
+    ]);
 
     const [sortOn, setSortOn] = React.useState(data?.query?.sort_on);
     const [sortOrder, setSortOrder] = React.useState(data?.query?.sort_order);
 
-    const [searchData, setSearchData] = React.useState(
-      getInitialState(data, facets, urlSearchText, id),
-    );
+    const [searchData, setSearchData] = React.useState({});
+
+    React.useEffect(() => {
+      setSearchData(getInitialState(data, facets, urlSearchText, id));
+    }, [facets, data, urlSearchText, id]);
 
     const timeoutRef = React.useRef();
     const facetSettings = data?.facets;
@@ -297,13 +381,13 @@ const withSearch = (options) => (WrappedComponent) => {
               id,
               query: data.query || {},
               facets: toSearchFacets || facets,
-              searchText: toSearchText || searchText,
-              sortOn: toSortOn || sortOn,
+              searchText: toSearchText ? toSearchText.trim() : '',
+              sortOn: toSortOn || undefined,
               sortOrder: toSortOrder || sortOrder,
               facetSettings,
             });
             if (toSearchFacets) setFacets(toSearchFacets);
-            if (toSortOn) setSortOn(toSortOn);
+            if (toSortOn) setSortOn(toSortOn || undefined);
             if (toSortOrder) setSortOrder(toSortOrder);
             setSearchData(searchData);
             setLocationSearchData(getSearchFields(searchData));
@@ -325,6 +409,16 @@ const withSearch = (options) => (WrappedComponent) => {
       ],
     );
 
+    const removeSearchQuery = () => {
+      searchData.query = searchData.query.reduce(
+        // Remove SearchableText from query
+        (acc, kvp) => (kvp.i === 'SearchableText' ? acc : [...acc, kvp]),
+        [],
+      );
+      setSearchData(searchData);
+      setLocationSearchData(getSearchFields(searchData));
+    };
+
     const querystringResults = useSelector(
       (state) => state.querystringsearch.subrequests,
     );
@@ -343,6 +437,7 @@ const withSearch = (options) => (WrappedComponent) => {
         sortOrder={sortOrder}
         searchedText={urlSearchText}
         searchText={searchText}
+        removeSearchQuery={removeSearchQuery}
         setSearchText={setSearchText}
         onTriggerSearch={onTriggerSearch}
         totalItems={totalItems}

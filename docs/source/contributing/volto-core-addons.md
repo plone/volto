@@ -1,4 +1,4 @@
-# Volto Core add-ons
+# Volto core add-ons
 
 Volto has the concept of "core add-ons".
 They are add-ons that are always installed in Volto.

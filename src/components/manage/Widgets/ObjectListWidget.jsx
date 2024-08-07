@@ -2,7 +2,7 @@ import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { Accordion, Button, Segment } from 'semantic-ui-react';
 import { DragDropList, FormFieldWrapper, Icon } from '@plone/volto/components';
-import { applySchemaDefaults } from '@plone/volto/helpers';
+import { applySchemaDefaults, reorderArray } from '@plone/volto/helpers';
 import ObjectWidget from '@plone/volto/components/manage/Widgets/ObjectWidget';
 
 import upSVG from '@plone/volto/icons/up-key.svg';
@@ -164,13 +164,8 @@ const ObjectListWidget = (props) => {
           if (!destination) {
             return;
           }
-
-          const first = value[source.index];
-          const second = value[destination.index];
-          value[destination.index] = first;
-          value[source.index] = second;
-
-          onChange(id, value);
+          const newValue = reorderArray(value, source.index, destination.index);
+          onChange(id, newValue);
           return true;
         }}
       >

@@ -35,7 +35,11 @@ import {
   getSchema,
   listActions,
 } from '@plone/volto/actions';
-import { getBaseUrl, hasBlocksData } from '@plone/volto/helpers';
+import {
+  flattenToAppURL,
+  getBaseUrl,
+  hasBlocksData,
+} from '@plone/volto/helpers';
 import { preloadLazyLibs } from '@plone/volto/helpers/Loadable';
 
 import saveSVG from '@plone/volto/icons/save.svg';
@@ -260,7 +264,12 @@ class Edit extends Component {
 
   setComparingLanguage(lang, content_id) {
     this.setState({ comparingLanguage: lang });
-    this.props.getContent(content_id, null, 'compare_to', null);
+    this.props.getContent(
+      flattenToAppURL(content_id),
+      null,
+      'compare_to',
+      null,
+    );
   }
 
   form = React.createRef();
@@ -277,6 +286,7 @@ class Edit extends Component {
       <Form
         isEditForm
         ref={this.form}
+        navRoot={this.props.content?.['@components']?.navroot?.navroot || {}}
         schema={this.props.schema}
         type={this.props.content?.['@type']}
         formData={this.props.content}
@@ -297,6 +307,7 @@ class Edit extends Component {
         onSelectForm={() => {
           this.setState({ formSelected: 'editForm' });
         }}
+        global
       />
     );
 

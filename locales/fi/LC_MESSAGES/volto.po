@@ -1,9 +1,3 @@
-# 
-# Translators:
-# Petri Savolainen <petri.savolainen@iki.fi>, 2020
-# Asko Soukka <asko.soukka@iki.fi>, 2020
-# Rikupekka Oksanen <rioksane@gmail.com>, 2022
-# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
@@ -427,6 +421,7 @@ msgstr "Saatavilla olevat sisältösäännöt:"
 #: components/manage/Controlpanels/UpgradeControlPanel
 #: components/manage/Diff/Diff
 #: components/manage/History/History
+#: components/manage/LinksToItem/LinksToItem
 #: components/manage/Multilingual/ManageTranslations
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalPreferences
@@ -482,11 +477,6 @@ msgstr "Selaa sivustoa, raahaa ja pudota kuva, tai syötä URL"
 # defaultMessage: By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator.
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 msgstr "Oletuksena käyttöoikeudet peritään aina edeltävältä sisältötasolta. Jos tämä valinta poistetaan, vain tällä tasolla erikseen määritellyt käyttöoikeudet ovat voimassa. {inherited} tarkoittaa perittyä käyttöoikeutta. {global} tarkoittaa ylläpitäjän myöntämää sivustonlaajuista käyttöoikeutta."
-
-#: components/manage/Contents/Contents
-# defaultMessage: By deleting this item, you will break links that exist in the items listed below. If this is indeed what you want to do, we recommend that remove these references first.
-msgid "By deleting this item, you will break links that exist in the items listed below. If this is indeed what you want to do, we recommend that remove these references first."
-msgstr "Poistamalla tämän kohteen, rikot alla listatuissa kohteissa olevat linkit. Jos todella haluat tehdä tämän, suosittelemme, että poistat viittaukset ensin."
 
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Cache Name
@@ -741,6 +731,11 @@ msgstr "Sisältösäännöt kohteelle {title} "
 msgid "Content rules from parent folders"
 msgstr "Sisältösäännöt ylemmistä kansioista"
 
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Content that links to or references {title}
+msgid "Content that links to or references {title}"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Content type created
 msgid "Content type created"
@@ -770,7 +765,7 @@ msgid "Copy"
 msgstr "Kopioi"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: undefined
+# defaultMessage: Copy blocks
 msgid "Copy blocks"
 msgstr "Kopioi palikat"
 
@@ -783,6 +778,11 @@ msgstr "Tekijänoikeudet"
 # defaultMessage: Copyright statement or other rights information on this item.
 msgid "Copyright statement or other rights information on this item."
 msgstr "Tekijänoikeuslauseke tai muu sisällön tekijänoikeuksia kuvaava tieto."
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Create or delete relations to target
+msgid "Create or delete relations to target"
+msgstr ""
 
 #: components/manage/Toolbar/More
 # defaultMessage: Create working copy
@@ -838,7 +838,7 @@ msgid "Cut"
 msgstr "Leikkaa"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: undefined
+# defaultMessage: Cut blocks
 msgid "Cut blocks"
 msgstr "Leikkaa palikat"
 
@@ -945,7 +945,7 @@ msgid "Delete action"
 msgstr "Poista toiminto"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: undefined
+# defaultMessage: Delete blocks
 msgid "Delete blocks"
 msgstr "Poista palikat"
 
@@ -964,10 +964,25 @@ msgstr "Poista ehto"
 msgid "Delete row"
 msgstr "Poista valittu rivi"
 
+#: components/manage/Contents/Contents
+# defaultMessage: Delete selected items?
+msgid "Delete selected items?"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: Delete this item?
+msgid "Delete this item?"
+msgstr ""
+
 #: components/manage/Controlpanels/Rules/Rules
 # defaultMessage: Deleted
 msgid "Deleted"
 msgstr "Poistettu"
+
+#: components/manage/Contents/Contents
+# defaultMessage: Deleting this item breaks {brokenReferences} {variation}.
+msgid "Deleting this item breaks {brokenReferences} {variation}."
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Depth
@@ -1031,11 +1046,6 @@ msgstr "Julkaistu {license} -lisenssillä."
 # defaultMessage: Add border to inner columns
 msgid "Divide each row into separate cells"
 msgstr "Erottuvat sarakkeet"
-
-#: components/manage/Contents/Contents
-# defaultMessage: Do you really want to delete the following items?
-msgid "Do you really want to delete the following items?"
-msgstr "Haluatko varmasti poistaa kaiken tämän sisällön?"
 
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 # defaultMessage: Do you really want to delete the group {groupname}?
@@ -1112,6 +1122,7 @@ msgstr "Sähköpostiosoitteet eivät olleet identtiset."
 #: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Controlpanels/Rules/EditRule
+#: components/manage/Controlpanels/Users/RenderUsers
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/FormFieldWrapper
 #: components/manage/Widgets/ObjectBrowserWidget
@@ -1254,14 +1265,19 @@ msgstr "Syötä sähköpostiosoitteesi vahvistusta varten."
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Enter your new password. Minimum 5 characters.
-msgid "Enter your new password. Minimum 5 characters."
-msgstr "Syötä uusi salasanasi, jossa on vähintään viisi (5) merkkiä."
+# defaultMessage: Enter your new password. Minimum 8 characters.
+msgid "Enter your new password. Minimum 8 characters."
+msgstr "Syötä uusi salasanasi, jossa on vähintään viisi (8) merkkiä."
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Enter your username for verification.
 msgid "Enter your username for verification."
 msgstr "Syötä käyttäjätunnuksesi vahvistusta varten."
+
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Entries
+msgid "Entries"
+msgstr ""
 
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -1403,6 +1419,11 @@ msgstr "Tiedostonäkymä"
 msgid "Filename"
 msgstr "Tiedostonimi"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Filter
+msgid "Filter"
+msgstr ""
+
 #: components/manage/Controlpanels/Rules/Rules
 # defaultMessage: Filter Rules:
 msgid "Filter Rules:"
@@ -1427,6 +1448,11 @@ msgstr "Suodattimet…"
 # defaultMessage: First
 msgid "First"
 msgstr "Ensimmäinen"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Fix relations
+msgid "Fix relations"
+msgstr ""
 
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Fixed width columns
@@ -1564,6 +1590,11 @@ msgstr "Piilota vastaukset"
 msgid "Hide facet?"
 msgstr "Piilota fasetti?"
 
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Hide title
+msgid "Hide title"
+msgstr ""
+
 #: components/manage/History/History
 #: components/manage/Toolbar/More
 # defaultMessage: History
@@ -1695,6 +1726,11 @@ msgstr "Lisää rivi valinnan jälkeen"
 msgid "Insert row before"
 msgstr "Lisää rivi ennen valintaa"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Inspect relations
+msgid "Inspect relations"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Install
 msgid "Install"
@@ -1740,6 +1776,11 @@ msgstr "Toista vuosittain"
 # defaultMessage: Invalid block - Will be removed on saving
 msgid "Invalid Block"
 msgstr "Virheellinen palikka"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them.
+msgid "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
+msgstr ""
 
 #: components/manage/Widgets/QuerystringWidget
 # defaultMessage: Item batch size
@@ -1787,11 +1828,6 @@ msgstr "Sisältö"
 # defaultMessage: Items must be unique.
 msgid "Items must be unique."
 msgstr "Kohteiden täytyy olla ainutkertaisia."
-
-#: components/manage/Contents/Contents
-# defaultMessage: Items to be deleted:
-msgid "Items to be deleted:"
-msgstr "Poistettavat kohteet:"
 
 #: components/manage/Blocks/Search/schema
 # defaultMessage: Label
@@ -1871,6 +1907,11 @@ msgstr "Lisää"
 msgid "Link redirect view"
 msgstr "Linkin uudelleenohjauksen näkymä"
 
+#: components/manage/Blocks/Image/schema
+# defaultMessage: Link settings
+msgid "Link settings"
+msgstr ""
+
 #: components/manage/Blocks/HeroImageLeft/schema
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Link Title
@@ -1889,6 +1930,17 @@ msgstr "Linkin kohde"
 # defaultMessage: Link translation for
 msgid "Link translation for"
 msgstr "Linkin käännös kohteelle"
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Linking this item with hyperlink in text
+msgid "Linking this item with hyperlink in text"
+msgstr ""
+
+#: components/manage/LinksToItem/LinksToItem
+#: components/manage/Toolbar/More
+# defaultMessage: Links and references
+msgid "Links and references"
+msgstr ""
 
 #: components/manage/Blocks/Listing/schema
 # defaultMessage: Listing
@@ -1981,6 +2033,11 @@ msgstr "Manuaalinen"
 # defaultMessage: Manually or automatically added?
 msgid "Manually or automatically added?"
 msgstr "Manuaalisesti vai automaattisesti lisätty?"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Many relations found. Please search.
+msgid "Many relations found. Please search."
+msgstr ""
 
 #: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Maps/schema
@@ -2142,7 +2199,6 @@ msgid "News item view"
 msgstr "Uutisnäkymä"
 
 #: components/manage/Contents/ContentsItem
-#: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: No
 msgid "No"
@@ -2208,6 +2264,11 @@ msgstr "Ei sisältöä"
 msgid "No items selected"
 msgstr "Sisältöä ei ole valittu"
 
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: No links to this item found.
+msgid "No links to this item found."
+msgstr ""
+
 #: components/manage/Blocks/Maps/MapsSidebar
 # defaultMessage: No map selected
 msgid "No map selected"
@@ -2225,6 +2286,11 @@ msgstr "Toistumista ei ole määritetty"
 # defaultMessage: No options
 msgid "No options"
 msgstr "Ei vaihtoehtoja"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: No relation found
+msgid "No relation found"
+msgstr ""
 
 #: components/manage/BlockChooser/BlockChooser
 #: components/theme/Search/Search
@@ -2326,10 +2392,20 @@ msgstr "Avaa valikko"
 msgid "Open object browser"
 msgstr ""
 
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Ordered
+msgid "Ordered"
+msgstr ""
+
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Origin
 msgid "Origin"
 msgstr "Kuva"
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Overview of relations of all content items
+msgid "Overview of relations of all content items"
+msgstr ""
 
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Page
@@ -2365,7 +2441,7 @@ msgid "Paste"
 msgstr "Liitä"
 
 #: helpers/MessageLabels/MessageLabels
-# defaultMessage: undefined
+# defaultMessage: Paste blocks
 msgid "Paste blocks"
 msgstr ""
 
@@ -2471,11 +2547,6 @@ msgstr "Järjestystä muutettu"
 msgid "Possible values"
 msgstr "Mahdolliset arvot"
 
-#: components/manage/Contents/Contents
-# defaultMessage: Potential link breakage
-msgid "Potential link breakage"
-msgstr "Mahdollinen rikkinäinen linkki"
-
 #: components/theme/Footer/Footer
 # defaultMessage: Powered by Plone & Python
 msgid "Powered by Plone & Python"
@@ -2570,6 +2641,16 @@ msgstr "Toista"
 msgid "Reduce complexity"
 msgstr "Yksinkertainen taulukko"
 
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Referencing this item as related item
+msgid "Referencing this item as related item"
+msgstr ""
+
+#: components/manage/LinksToItem/LinksToItem
+# defaultMessage: Referencing this item with {relationship}
+msgid "Referencing this item with {relationship}"
+msgstr ""
+
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
 #: components/theme/Register/Register
@@ -2581,6 +2662,21 @@ msgstr "Rekisteröidy"
 # defaultMessage: Registration form
 msgid "Registration form"
 msgstr "Rekisteröitymislomake"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: relation
+msgid "Relation name"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Relations
+msgid "Relations"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Relations updated
+msgid "Relations updated"
+msgstr ""
 
 #: components/theme/Search/Search
 # defaultMessage: Relevance
@@ -2712,6 +2808,7 @@ msgid "Revert to this revision"
 msgstr "Palauta tämä versio"
 
 #: components/manage/Contents/Contents
+#: components/manage/LinksToItem/LinksToItem
 # defaultMessage: Review state
 msgid "Review state"
 msgstr "Julkaisutila"
@@ -2790,6 +2887,11 @@ msgstr "Tallenna toistuminen"
 msgid "Saved"
 msgstr "Tallennettu"
 
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Scheduled
+msgid "Scheduled"
+msgstr ""
+
 #: components/manage/Controlpanels/ContentTypesActions
 # defaultMessage: Schema
 msgid "Schema"
@@ -2864,6 +2966,16 @@ msgid "Search results for {term}"
 msgstr "Hakutulokset: {term}"
 
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: Search sources by title or path
+msgid "Search sources by title or path"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Search targets by title or path
+msgid "Search targets by title or path"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Search users…
 msgid "Search users…"
 msgstr "Etsi käyttäjiä…"
@@ -2886,6 +2998,7 @@ msgstr "Osion otsikko"
 #: components/manage/Controlpanels/Aliases
 #: components/manage/Rules/Rules
 #: components/manage/Sidebar/ObjectBrowserNav
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Select
 msgid "Select"
 msgstr "Valitse"
@@ -2900,10 +3013,20 @@ msgstr "Valitse toistumiseen lisättävä päivä"
 msgid "Select columns to show"
 msgstr "Näytettävät sarakkeet"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Select relation
+msgid "Select relation"
+msgstr ""
+
 #: components/manage/Contents/ContentsWorkflowModal
 # defaultMessage: Select the transition to be used for modifying the items state.
 msgid "Select the transition to be used for modifying the items state."
 msgstr "Valitse tilasiirtymä, jolla sisällön julkisuutta muutetaan."
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Selected
+msgid "Selected"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 # defaultMessage: Selected dates
@@ -2944,6 +3067,11 @@ msgstr "Lähetä"
 # defaultMessage: Send a confirmation mail with a link to set the password.
 msgid "Send a confirmation mail with a link to set the password."
 msgstr "Lähetä vahvistusviesti ja linkki salasanan asettamista varten."
+
+#: components/theme/Error/ServerError
+# defaultMessage: Server Error
+msgid "Server Error"
+msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Set my password
@@ -3076,6 +3204,16 @@ msgstr "Koko: {size}"
 msgid "Small"
 msgstr "Pieni"
 
+#: components/manage/Contents/Contents
+# defaultMessage: Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders.
+msgid "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken.
+msgid "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
+msgstr ""
+
 #: error
 # defaultMessage: Sorry, something went wrong with your request
 msgid "Sorry, something went wrong with your request"
@@ -3112,6 +3250,11 @@ msgstr "Lajittele nimen, polun tai päivämäärän perusteella"
 # defaultMessage: Sorted
 msgid "Sorted"
 msgstr "Lajiteltu"
+
+#: components/manage/Blocks/Search/components/SortOn
+# defaultMessage: Sorted on
+msgid "Sorted on"
+msgstr ""
 
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Blocks/Image/schema
@@ -3156,6 +3299,11 @@ msgstr "Julkisuus"
 # defaultMessage: Status
 msgid "Status"
 msgstr "Tila"
+
+#: components/manage/Blocks/ToC/Schema
+# defaultMessage: Sticky
+msgid "Sticky"
+msgstr ""
 
 #: components/manage/Multilingual/CompareLanguages
 # defaultMessage: Stop compare
@@ -3377,6 +3525,16 @@ msgstr "Työkopio poistettiin"
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
 msgstr "{plonecms} {copyright} 2000-{current_year} {plonefoundation} ja ystävien toimesta."
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: There are no groups with the searched criteria
+msgid "There are no groups with the searched criteria"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: There are no users with the searched criteria
+msgid "There are no users with the searched criteria"
+msgstr ""
+
 #: components/theme/CorsError/CorsError
 # defaultMessage: There is a configuration problem on the backend
 msgid "There is a configuration problem on the backend"
@@ -3403,11 +3561,6 @@ msgstr "Löytyi joitakin puutteita tai virheitä."
 msgid "Third"
 msgstr "Kolmas"
 
-#: components/manage/Contents/Contents
-# defaultMessage: This Page is referenced by the following items:
-msgid "This Page is referenced by the following items:"
-msgstr "Tähän sivuun viitataan seuraavista:"
-
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 # defaultMessage: This has an ongoing working copy in {title}
 msgid "This has an ongoing working copy in {title}"
@@ -3421,6 +3574,11 @@ msgstr ""
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 # defaultMessage: This is a working copy of {title}
 msgid "This is a working copy of {title}"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder.
+msgid "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
 msgstr ""
 
 #: components/manage/LockingToastsFactory/LockingToastsFactory
@@ -3450,6 +3608,7 @@ msgstr "Aika"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Blocks/Teaser/schema
+#: components/manage/Blocks/ToC/Schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
@@ -3477,11 +3636,6 @@ msgstr "Aktiivisten ja ei-aktiivisten kohteiden määrä"
 # defaultMessage: Total comments
 msgid "Total comments"
 msgstr "Kommentteja"
-
-#: components/manage/Contents/Contents
-# defaultMessage: Total items to be deleted:
-msgid "Total items to be deleted:"
-msgstr ""
 
 #: components/manage/Controlpanels/DatabaseInformation
 # defaultMessage: Total number of objects in each cache
@@ -3541,6 +3695,7 @@ msgid "Triggering event field error. Please select a value"
 msgstr "Käynnistä tapahtumakentän virhe. Valtse arvo"
 
 #: components/manage/Controlpanels/ContentTypes
+#: components/manage/LinksToItem/LinksToItem
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
 # defaultMessage: Type
@@ -3660,6 +3815,11 @@ msgstr "Lajittelu poistettu"
 msgid "Update"
 msgstr "Päivitä"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: Update User
+msgid "Update User"
+msgstr ""
+
 #: components/manage/Controlpanels/AddonsControlpanel
 # defaultMessage: Update installed addons
 msgid "Update installed addons"
@@ -3776,6 +3936,11 @@ msgid "User roles updated"
 msgstr "Käyttäjän roolit päivitetty"
 
 #: helpers/MessageLabels/MessageLabels
+# defaultMessage: User updated successfuly
+msgid "User updated successfuly"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
 # defaultMessage: Username
 msgid "Username"
 msgstr "Käyttäjätunnus"
@@ -3829,6 +3994,11 @@ msgstr "Näytä"
 msgid "View changes"
 msgstr "Näytä muutokset"
 
+#: components/manage/Contents/Contents
+# defaultMessage: View links and references to this item
+msgid "View links and references to this item"
+msgstr ""
+
 #: components/manage/History/History
 # defaultMessage: View this revision
 msgid "View this revision"
@@ -3873,6 +4043,11 @@ msgstr "Olemme pahoillamme, mutta taustajärjestelmä ei vastaa. Ole hyvä ja ko
 # defaultMessage: We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for.
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
 msgstr "Olemme pahoillamme, mutta tästä osoitteesta ei löytynyt mitään sisältöä."
+
+#: components/theme/Error/ServerError
+# defaultMessage: We apologize for the inconvenience, but there was an unexpected error on the server.
+msgid "We apologize for the inconvenience, but there was an unexpected error on the server."
+msgstr ""
 
 #: components/theme/Forbidden/Forbidden
 # defaultMessage: We apologize for the inconvenience, but you don't have permissions on this resource.
@@ -3957,7 +4132,6 @@ msgid "Yearly"
 msgstr "Vuosittain"
 
 #: components/manage/Contents/ContentsItem
-#: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Yes
 msgid "Yes"
@@ -4154,6 +4328,16 @@ msgstr "Milloin"
 msgid "event_where"
 msgstr "Missä"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: This website does not accept files larger than {limit}
+msgid "fileTooLarge"
+msgstr ""
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: flush intIds and rebuild relations
+msgid "flush intIds and rebuild relations"
+msgstr ""
+
 #: components/manage/Blocks/Teaser/schema
 # defaultMessage: Head title
 msgid "head_title"
@@ -4188,6 +4372,16 @@ msgstr "numero"
 # defaultMessage: Intranet
 msgid "intranet"
 msgstr "inranet"
+
+#: components/manage/Contents/Contents
+# defaultMessage: item
+msgid "item"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: items
+msgid "items"
+msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: My email is
@@ -4307,6 +4501,21 @@ msgstr "julkaistu"
 # defaultMessage: Select…
 msgid "querystring-widget-select"
 msgstr "Valitse..."
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: rebuild relations
+msgid "rebuild relations"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: reference
+msgid "reference"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: references
+msgid "references"
+msgstr ""
 
 #: components/theme/Search/Search
 # defaultMessage: results
@@ -4508,10 +4717,20 @@ msgstr "Siirry navigointiin"
 msgid "sort"
 msgstr "järjestys"
 
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: sources path
+msgid "sources path"
+msgstr ""
+
 #: config/Blocks
 # defaultMessage: Table
 msgid "table"
 msgstr "taulukko"
+
+#: helpers/MessageLabels/MessageLabels
+# defaultMessage: target path
+msgid "target path"
+msgstr ""
 
 #: config/Blocks
 # defaultMessage: Text
@@ -4523,6 +4742,7 @@ msgstr "teksti"
 msgid "title"
 msgstr "nimike"
 
+#: components/manage/Blocks/ToC/Schema
 #: config/Blocks
 # defaultMessage: Table of Contents
 msgid "toc"

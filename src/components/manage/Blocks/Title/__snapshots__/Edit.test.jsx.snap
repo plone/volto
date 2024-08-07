@@ -28,7 +28,6 @@ exports[`renders edit blocks renders an edit title block component 1`] = `
   spellCheck={false}
   style={
     Object {
-      "outline": "none",
       "position": "relative",
       "whiteSpace": "pre-wrap",
       "wordWrap": "break-word",

@@ -19,7 +19,7 @@ This documentation is orientative. Volto does NOT support legacy or vendor depre
 
 These package versions should be pinned to this especific versions, unless
 their code or dependencies have some es6 only compatible, because their
-maintainers mainly target the node world.
+maintainers mainly target the Node.js world.
 
 * "query-string": "4.1.0"
 * "superagent": "3.8.2"

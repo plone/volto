@@ -39,7 +39,7 @@ export default function types(state = initialState, action = {}) {
         'types',
         getBaseUrl(flattenToAppURL(action.result['@id'])),
       );
-      if (hasExpander) {
+      if (hasExpander && !action.subrequest) {
         return {
           ...state,
           error: null,

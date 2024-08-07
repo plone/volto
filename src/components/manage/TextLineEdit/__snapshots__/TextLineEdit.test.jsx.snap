@@ -28,7 +28,6 @@ exports[`renders TextLineEdit renders an TextLineEdit as h1 1`] = `
   spellCheck={false}
   style={
     Object {
-      "outline": "none",
       "position": "relative",
       "whiteSpace": "pre-wrap",
       "wordWrap": "break-word",
@@ -86,7 +85,6 @@ exports[`renders TextLineEdit renders an TextLineEdit as h2 1`] = `
   spellCheck={false}
   style={
     Object {
-      "outline": "none",
       "position": "relative",
       "whiteSpace": "pre-wrap",
       "wordWrap": "break-word",
@@ -144,7 +142,6 @@ exports[`renders TextLineEdit renders an TextLineEdit as h2 with a classname 1`]
   spellCheck={false}
   style={
     Object {
-      "outline": "none",
       "position": "relative",
       "whiteSpace": "pre-wrap",
       "wordWrap": "break-word",

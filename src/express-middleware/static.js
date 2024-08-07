@@ -2,7 +2,7 @@ import express from 'express';
 import path from 'path';
 import config from '@plone/volto/registry';
 
-const staticMiddleware = express.static(
+const staticMiddlewareFn = express.static(
   process.env.BUILD_DIR
     ? path.join(process.env.BUILD_DIR, 'public')
     : process.env.RAZZLE_PUBLIC_DIR,
@@ -24,9 +24,9 @@ const staticMiddleware = express.static(
   },
 );
 
-export default function () {
+export default function staticsMiddleware() {
   const middleware = express.Router();
-  middleware.all('*', staticMiddleware);
+  middleware.all('*', staticMiddlewareFn);
   middleware.id = 'staticResourcesProcessor';
   return middleware;
 }

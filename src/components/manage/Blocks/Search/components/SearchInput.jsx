@@ -13,7 +13,14 @@ const messages = defineMessages({
 });
 
 const SearchInput = (props) => {
-  const { data, searchText, setSearchText, isLive, onTriggerSearch } = props;
+  const {
+    data,
+    searchText,
+    setSearchText,
+    isLive,
+    onTriggerSearch,
+    removeSearchQuery,
+  } = props;
   const intl = useIntl();
 
   return (
@@ -44,7 +51,7 @@ const SearchInput = (props) => {
             className="search-input-clear-icon-button"
             onClick={() => {
               setSearchText('');
-              onTriggerSearch('');
+              removeSearchQuery();
             }}
           >
             <Icon name={clearSVG} />

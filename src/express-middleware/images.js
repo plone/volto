@@ -1,9 +1,16 @@
 import express from 'express';
 import { getAPIResourceWithAuth } from '@plone/volto/helpers';
 
-const HEADERS = ['content-type', 'content-disposition', 'cache-control'];
+const HEADERS = [
+  'content-type',
+  'content-disposition',
+  'cache-control',
+  'x-sendfile',
+  'x-accel-redirect',
+  'x-robots-tag',
+];
 
-function imageMiddleware(req, res, next) {
+function imageMiddlewareFn(req, res, next) {
   getAPIResourceWithAuth(req)
     .then((resource) => {
       // Just forward the headers that we need
@@ -17,11 +24,11 @@ function imageMiddleware(req, res, next) {
     .catch(next);
 }
 
-export default function () {
+export default function imagesMiddleware() {
   const middleware = express.Router();
 
-  middleware.all(['**/@@images/*'], imageMiddleware);
-  middleware.all(['/@portrait/*'], imageMiddleware);
+  middleware.all(['**/@@images/*'], imageMiddlewareFn);
+  middleware.all(['/@portrait/*'], imageMiddlewareFn);
   middleware.id = 'imageResourcesProcessor';
   return middleware;
 }

@@ -3,7 +3,7 @@ import { resolveExtension } from '@plone/volto/helpers/Extensions/withBlockExten
 import config from '@plone/volto/registry';
 import { hasNonValueOperation, hasDateOperation } from '../utils';
 
-const showFacet = (index) => {
+const defaultShowFacet = (index) => {
   const { values } = index;
   return index
     ? hasNonValueOperation(index.operations || []) ||
@@ -61,7 +61,11 @@ const Facets = (props) => {
 
           // TODO :handle changing the type of facet (multi/nonmulti)
 
-          const { view: FacetWidget, stateToValue } = resolveExtension(
+          const {
+            view: FacetWidget,
+            stateToValue,
+            showFacet = defaultShowFacet,
+          } = resolveExtension(
             'type',
             search.extensions.facetWidgets.types,
             facetSettings,

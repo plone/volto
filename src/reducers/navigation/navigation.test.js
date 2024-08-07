@@ -172,4 +172,34 @@ describe('Navigation reducer (NAVIGATION)GET_CONTENT', () => {
       loading: false,
     });
   });
+
+  it('should handle (NAVIGATION)GET_NAVIGATION_SUCCESS (standalone with apiExpander enabled)', () => {
+    expect(
+      navigation(undefined, {
+        type: `${GET_NAVIGATION}_SUCCESS`,
+        result: {
+          items: [
+            {
+              title: 'Welcome to Plone!',
+              description:
+                'Congratulations! You have successfully installed Plone.',
+              '@id': `${settings.apiPath}/front-page`,
+            },
+          ],
+        },
+      }),
+    ).toEqual({
+      error: null,
+      items: [
+        {
+          title: 'Welcome to Plone!',
+          description:
+            'Congratulations! You have successfully installed Plone.',
+          url: '/front-page',
+        },
+      ],
+      loaded: true,
+      loading: false,
+    });
+  });
 });

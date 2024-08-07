@@ -4,7 +4,7 @@ myst:
     "description": "Installing Volto"
     "property=og:description": "Installing Volto"
     "property=og:title": "Getting Started"
-    "keywords": "Volto, Plone, frontend, React, install, nvm, NodeJS, JavaScript"
+    "keywords": "Volto, Plone, frontend, React, install, nvm, Node.js , JavaScript"
 ---
 
 (frontend-getting-started-label)=
@@ -23,13 +23,9 @@ This chapter contains some legacy information that may be useful to Plone 5.2 de
 
 Volto can be installed in any operating system assuming that the following pre-requisites are met:
 
-- [Node.js LTS (18.x)](https://nodejs.org/en)
+- [Node.js LTS (16.x or 18.x)](https://nodejs.org/en)
 - [Python](https://www.python.org/) - See below for specific versions.
 - [Docker](https://www.docker.com/get-started) (if using the Plone docker images)
-
-```{note}
-*UPDATE 2022-10-25*: Since 2022-10-25, NodeJS 18 is in LTS state (https://github.com/nodejs/release#release-schedule). However, due to changes in internal SSL libraries, some Volto dependencies have been deprecated and need to be updated in order to continue working in NodeJS 18, mainly Webpack 4 (see: https://github.com/webpack/webpack/issues/14532#issuecomment-947525539 for further information). You can still use it, but NodeJS should be run under a special flag: `NODE_OPTIONS=--openssl-legacy-provider`. See also Volto's PR: https://github.com/plone/volto/pull/3699 for more information.
-```
 
 The versions of Python that are supported in Volto depend on the version of Plone that you use.
 
@@ -49,25 +45,25 @@ They assume you have a macOS/Linux machine.
 There are three processes continuously running when you have a working Volto website:
 
 1. A frontend web application running in your browser (JavaScript)
-2. A Node.js server process that delivers the JavaScript to the client and does
+2. A {term}`Node.js` server process that delivers the JavaScript to the client and does
    {term}`server-side rendering` (SSR) of your pages on first request (JavaScript, the
    Razzle package is used for SSR)
 3. A Plone server process that stores and delivers all content through a REST API (Python)
 
 When you start with Volto most of the first customisations you will want to make (or maybe
 ever need to make) are in the JavaScript code used in the browser and Razzle process. Therefore
-this getting started chapter will focus on installing a NodeJS/JavaScript environment locally
+this getting started chapter will focus on installing a Node.js/JavaScript environment locally
 and suggest you start the API backend using a container.
 
 
 (frontend-getting-started-install-nvm-label)=
 
-## Install nvm (NodeJS version manager)
+## Install nvm (Node.js version manager)
 
-If you have a working Node JavaScript development already set up on your machine or you prefer
-another management tool to install/maintain node this step is not needed. If you have less
+If you have a working Node.js JavaScript development already set up on your machine or you prefer
+another management tool to install/maintain Node.js this step is not needed. If you have less
 experience with setting up JavaScript, it's a good idea to integrate nvm for development, as
-it provides easy access to any NodeJS released version.
+it provides easy access to any Node.js released version.
 
 1.  Open a terminal console and type:
 
@@ -90,14 +86,14 @@ it provides easy access to any NodeJS released version.
     nvm version
     ```
 
-4.  Install any active LTS version of NodeJS (https://github.com/nodejs/release#release-schedule):
+4.  Install any active LTS version of Node.js (https://github.com/nodejs/release#release-schedule):
 
     ```bash
     nvm install 16
     nvm use 16
     ```
 
-5.  Test NodeJS:
+5.  Test Node.js :
 
     ```bash
     node -v
@@ -108,8 +104,8 @@ it provides easy access to any NodeJS released version.
     ```
 
     ```{note}
-    Volto supports currently active NodeJS LTS versions based on [NodeJS
-    Releases page](https://github.com/nodejs/release#release-schedule), starting with Node 12 LTS.
+    Volto supports currently active Node.js LTS versions based on [Node.js
+    Releases page](https://github.com/nodejs/release#release-schedule), starting with Node.js 16 LTS.
     ```
 
 
@@ -126,9 +122,9 @@ npm install -g yo
 
 (frontend-getting-started-yarn-label)=
 
-## Yarn (NodeJS package manager)
+## Yarn (Node.js package manager)
 
-Install the Yarn Classic version (not the 2.x one!), of the popular node package manager.
+Install the Yarn Classic version (not the 2.x one!), of the popular Node.js package manager.
 
 1. Open a terminal and type:
 
@@ -192,7 +188,8 @@ docker run -it --rm --name=plone \
 ```
 
 ```{tip}
-This setup is meant only for demonstration and quick testing purposes (since it destroys the container on exit (--rm)). In case you need production ready deployment, check the latest [Plone Deployment Training](https://training.plone.org/5/plone-deployment/index.html).
+This setup is meant only for demonstration and quick testing purposes, since it destroys the container on exit (`--rm`).
+In case you need production-ready deployment, check the latest [Plone Deployment Training](https://training.plone.org/plone-deployment/index.html).
 ```
 
 ```{note}
@@ -209,7 +206,7 @@ execute `docker run` will be use to persist the backend server data.
 
 If you are somewhat familiar with Python development, you can also install Plone locally
 without using Docker. Check the [backend configuration](../configuration/backend.md) section.
-It also has more information on plone.volto.
+It also has more information on `plone.volto`.
 
 
 (frontend-getting-started-install-volto-label)=
@@ -222,7 +219,7 @@ You may choose to install the canary version, which is the latest alpha release,
 
 1.  Open a terminal and execute:
 
-    ```bash
+    ```shell
     npm install -g yo @plone/generator-volto
     # install latest stable release
     yo @plone/volto
@@ -230,16 +227,19 @@ You may choose to install the canary version, which is the latest alpha release,
     yo @plone/volto --canary
     ```
 
-2.  Answer to the prompted questions and provide the name of the new app (folder) to be created. For the sake of this documentation, provide `myvoltoproject` as project name then.
+    See {doc}`../recipes/creating-project` for more advanced options that can be passed to the generator.
+
+2.  Answer the questions when prompted, and provide the name of the new app (folder) to be created.
+    For the sake of this documentation, provide `myvoltoproject` as the project name.
 
     ````{note}
     You can run the generator with parameters to tailor your requirements.
 
-    ```bash
+    ```shell
     yo @plone/volto --help
     ```
 
-    or take a look at the [README](https://github.com/plone/volto/blob/master/packages/generator-volto/README.md) for more information.
+    or take a look at the [README](https://github.com/plone/volto/blob/main/packages/generator-volto/README.md) for more information.
     ````
 
 3.  Change directory to the newly created folder `myvoltoapp` (or the one you've chosen):
@@ -266,7 +266,7 @@ You may choose to install the canary version, which is the latest alpha release,
 ## Build the production bundle
 
 In production environments, you should build an static version of your (Volto) app. The
-app should be run in a node process (because of the {term}`server-side rendering`
+app should be run in a Node.js process (because of the {term}`server-side rendering`
 part), but it also have a client part that is provided and deployed by the server
 side rendering process.
 
@@ -277,12 +277,12 @@ side rendering process.
     ```
     The resultant build is available in the `build` folder.
 
-2.  Run the Volto Nodejs process
+2.  Run the Volto Node.js process
     ```bash
     yarn start:prod
     ```
 
-    to run the node process with the production build. You can also run it manually:
+    to run the Node.js process with the production build. You can also run it manually:
 
     ```bash
     NODE_ENV=production node build/server.js

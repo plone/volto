@@ -1,5 +1,3 @@
-# Yeoman Volto App development
-
 ### Defensive settings for make:
 #     https://tech.davis-hansson.com/p/make/
 SHELL:=bash
@@ -11,11 +9,15 @@ MAKEFLAGS+=--warn-undefined-variables
 MAKEFLAGS+=--no-builtin-rules
 
 # Update the versions depending on your project requirements | Last Updated 2023-03-02
-DOCKER_IMAGE=plone/server-dev:6.0.2
-DOCKER_IMAGE_ACCEPTANCE=plone/server-acceptance:6.0.2
+DOCKER_IMAGE=plone/server-dev:6.0.6
+DOCKER_IMAGE_ACCEPTANCE=plone/server-acceptance:6.0.6
 KGS=
 TESTING_ADDONS=plone.app.robotframework==2.0.0 plone.app.testing==7.0.0
 NODEBIN = ./node_modules/.bin
+
+# Plone 5 legacy
+DOCKER_IMAGE5=plone/plone-backend:5.2.9
+KGS5=plone.restapi==8.43.0 plone.volto==4.0.0 plone.rest==2.0.0
 
 # Project settings
 
@@ -38,13 +40,6 @@ all: project
 .PHONY: help
 help:		## Show this help.
 	@echo -e "$$(grep -hE '^\S+:.*##' $(MAKEFILE_LIST) | sed -e 's/:.*##\s*/:/' -e 's/^\(.\+\):\(.*\)/\\x1b[36m\1\\x1b[m:\2/' | column -c2 -t -s :)"
-
-.PHONY: start-test-backend
-start-test-backend: ## Start Test Plone Backend
-	@echo "$(GREEN)==> Start Test Plone Backend$(RESET)"
-	docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e ADDONS='$(KGS) plone.app.robotframework==2.0.0a3 plone.app.testing==7.0.0a2 plone.app.contenttypes' -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors $(DOCKER_IMAGE) ./bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
-	## KGS in case you need a Plone 5.2 series (comment/remove above line):
-	# docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e ADDONS='$(KGS) plone.app.robotframework==2.0.0a3 plone.app.contenttypes' -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors $(DOCKER_IMAGE) ./bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
 
 .PHONY: start-backend-docker
 start-backend-docker:		## Starts a Docker-based backend
@@ -83,7 +78,7 @@ start-test-acceptance-server start-test-backend : ## Start Test Plone Backend
 
 .PHONY: start-test-acceptance-frontend
 start-test-acceptance-frontend: ## Start the Acceptance Frontend Fixture
-	RAZZLE_API_PATH=http://localhost:55001/plone yarn build && yarn start:prod
+	RAZZLE_API_PATH=http://127.0.0.1:55001/plone yarn build && yarn start:prod
 
 .PHONY: test-acceptance
 test-acceptance: ## Start Core Cypress Acceptance Tests
@@ -95,7 +90,7 @@ test-acceptance-headless: ## Start Core Cypress Acceptance Tests in headless mod
 
 .PHONY: full-test-acceptance
 full-test-acceptance: ## Runs Core Full Acceptance Testing in headless mode
-	$(NODEBIN)/start-test "make start-test-acceptance-server" http-get://localhost:55001/plone "make start-test-acceptance-frontend" http://localhost:3000 "make test-acceptance-headless"
+	$(NODEBIN)/start-test "make start-test-acceptance-server" http-get://127.0.0.1:55001/plone "make start-test-acceptance-frontend" http://127.0.0.1:3000 "make test-acceptance-headless"
 
 .PHONY: test-acceptance
 test-acceptance-addon: ## Start Core Cypress Acceptance Tests for an addon
@@ -107,4 +102,4 @@ test-acceptance-addon-headless: ## Start Core Cypress Acceptance Tests for an ad
 
 .PHONY: full-test-acceptance-addon
 full-test-acceptance-addon: ## Runs Core Full Acceptance Testing for an addon in headless mode
-	$(NODEBIN)/start-test "make start-test-acceptance-server" http-get://localhost:55001/plone "make start-test-acceptance-frontend" http://localhost:3000 "make test-acceptance-addon-headless"
+	$(NODEBIN)/start-test "make start-test-acceptance-server" http-get://127.0.0.1:55001/plone "make start-test-acceptance-frontend" http://127.0.0.1:3000 "make test-acceptance-addon-headless"

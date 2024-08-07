@@ -11,6 +11,7 @@ import {
   getControlpanel,
   updateUser,
   updateGroup,
+  getUserSchema,
 } from '@plone/volto/actions';
 import {
   Icon,
@@ -98,6 +99,7 @@ class UsersControlpanel extends Component {
     this.updateUserRole = this.updateUserRole.bind(this);
     this.state = {
       search: '',
+      isLoading: false,
       showAddUser: false,
       showAddUserErrorConfirm: false,
       addUserError: '',
@@ -107,6 +109,7 @@ class UsersControlpanel extends Component {
       isClient: false,
       currentPage: 0,
       pageSize: 10,
+      loginUsingEmail: false,
     };
   }
 
@@ -120,6 +123,15 @@ class UsersControlpanel extends Component {
         entries: this.props.users,
       });
     }
+    await this.props.getUserSchema();
+  };
+
+  // Because username field needs to be disabled if email login is enabled!
+  checkLoginUsingEmailStatus = async () => {
+    await this.props.getControlpanel('security');
+    this.setState({
+      loginUsingEmail: this.props.controlPanelData?.data.use_email_as_login,
+    });
   };
 
   /**
@@ -132,6 +144,7 @@ class UsersControlpanel extends Component {
       isClient: true,
     });
     this.fetchData();
+    this.checkLoginUsingEmailStatus();
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
@@ -171,9 +184,19 @@ class UsersControlpanel extends Component {
    */
   onSearch(event) {
     event.preventDefault();
-    this.props.listUsers({
-      search: this.state.search,
-    });
+    this.setState({ isLoading: true });
+    this.props
+      .listUsers({
+        search: this.state.search,
+      })
+      .then(() => {
+        this.setState({ isLoading: false });
+      })
+      .catch((error) => {
+        this.setState({ isLoading: false });
+        // eslint-disable-next-line no-console
+        console.error('Error searching users', error);
+      });
   }
 
   /**
@@ -255,12 +278,28 @@ class UsersControlpanel extends Component {
    * @returns {undefined}
    */
   onAddUserSubmit(data, callback) {
-    const { groups, sendPasswordReset } = data;
-    if (groups && groups.length > 0) this.addUserToGroup(data);
-    this.props.createUser(data, sendPasswordReset);
-    this.setState({
-      addUserSetFormDataCallback: callback,
-    });
+    const { groups, sendPasswordReset, password } = data;
+    if (
+      sendPasswordReset !== undefined &&
+      sendPasswordReset === true &&
+      password !== undefined
+    ) {
+      toast.error(
+        <Toast
+          error
+          title={this.props.intl.formatMessage(messages.error)}
+          content={this.props.intl.formatMessage(
+            messages.addUserFormPasswordAndSendPasswordTogetherNotAllowed,
+          )}
+        />,
+      );
+    } else {
+      if (groups && groups.length > 0) this.addUserToGroup(data);
+      this.props.createUser(data, sendPasswordReset);
+      this.setState({
+        addUserSetFormDataCallback: callback,
+      });
+    }
   }
 
   /**
@@ -382,6 +421,65 @@ class UsersControlpanel extends Component {
     let usernameToDelete = this.state.userToDelete
       ? this.state.userToDelete.username
       : '';
+    // Copy the userschema using JSON serialization/deserialization
+    // this is really ugly, but if we don't do this the original value
+    // of the userschema is changed and it is used like that through
+    // the lifecycle of the application
+    let adduserschema = {};
+    if (this.props?.userschema?.loaded) {
+      adduserschema = JSON.parse(
+        JSON.stringify(this.props?.userschema?.userschema),
+      );
+      adduserschema.properties['username'] = {
+        title: this.props.intl.formatMessage(messages.addUserFormUsernameTitle),
+        type: 'string',
+        description: this.props.intl.formatMessage(
+          messages.addUserFormUsernameDescription,
+        ),
+      };
+      adduserschema.properties['password'] = {
+        title: this.props.intl.formatMessage(messages.addUserFormPasswordTitle),
+        type: 'password',
+        description: this.props.intl.formatMessage(
+          messages.addUserFormPasswordDescription,
+        ),
+        widget: 'password',
+      };
+      adduserschema.properties['sendPasswordReset'] = {
+        title: this.props.intl.formatMessage(
+          messages.addUserFormSendPasswordResetTitle,
+        ),
+        type: 'boolean',
+      };
+      adduserschema.properties['roles'] = {
+        title: this.props.intl.formatMessage(messages.addUserFormRolesTitle),
+        type: 'array',
+        choices: this.props.roles.map((role) => [role.id, role.title]),
+        noValueOption: false,
+      };
+      adduserschema.properties['groups'] = {
+        title: this.props.intl.formatMessage(messages.addUserGroupNameTitle),
+        type: 'array',
+        choices: this.props.groups.map((group) => [group.id, group.id]),
+        noValueOption: false,
+      };
+      if (
+        adduserschema.fieldsets &&
+        adduserschema.fieldsets.length > 0 &&
+        !adduserschema.fieldsets[0]['fields'].includes('username')
+      ) {
+        adduserschema.fieldsets[0]['fields'] = adduserschema.fieldsets[0][
+          'fields'
+        ].concat([
+          'username',
+          'password',
+          'sendPasswordReset',
+          'roles',
+          'groups',
+        ]);
+      }
+    }
+
     return (
       <Container className="users-control-panel">
         <Helmet title={this.props.intl.formatMessage(messages.users)} />
@@ -408,7 +506,7 @@ class UsersControlpanel extends Component {
             onConfirm={this.onDeleteOk}
             size={null}
           />
-          {this.state.showAddUser ? (
+          {this.props?.userschema?.loaded && this.state.showAddUser ? (
             <ModalForm
               open={this.state.showAddUser}
               className="modal"
@@ -419,92 +517,7 @@ class UsersControlpanel extends Component {
               }
               title={this.props.intl.formatMessage(messages.addUserFormTitle)}
               loading={this.props.createRequest.loading}
-              schema={{
-                fieldsets: [
-                  {
-                    id: 'default',
-                    title: 'FIXME: User Data',
-                    fields: [
-                      'username',
-                      'fullname',
-                      'email',
-                      'password',
-                      'sendPasswordReset',
-                      'roles',
-                      'groups',
-                    ],
-                  },
-                ],
-                properties: {
-                  username: {
-                    title: this.props.intl.formatMessage(
-                      messages.addUserFormUsernameTitle,
-                    ),
-                    type: 'string',
-                    description: this.props.intl.formatMessage(
-                      messages.addUserFormUsernameDescription,
-                    ),
-                  },
-                  fullname: {
-                    title: this.props.intl.formatMessage(
-                      messages.addUserFormFullnameTitle,
-                    ),
-                    type: 'string',
-                    description: this.props.intl.formatMessage(
-                      messages.addUserFormFullnameDescription,
-                    ),
-                  },
-                  email: {
-                    title: this.props.intl.formatMessage(
-                      messages.addUserFormEmailTitle,
-                    ),
-                    type: 'string',
-                    description: this.props.intl.formatMessage(
-                      messages.addUserFormEmailDescription,
-                    ),
-                    widget: 'email',
-                  },
-                  password: {
-                    title: this.props.intl.formatMessage(
-                      messages.addUserFormPasswordTitle,
-                    ),
-                    type: 'password',
-                    description: this.props.intl.formatMessage(
-                      messages.addUserFormPasswordDescription,
-                    ),
-                    widget: 'password',
-                  },
-                  sendPasswordReset: {
-                    title: this.props.intl.formatMessage(
-                      messages.addUserFormSendPasswordResetTitle,
-                    ),
-                    type: 'boolean',
-                  },
-                  roles: {
-                    title: this.props.intl.formatMessage(
-                      messages.addUserFormRolesTitle,
-                    ),
-                    type: 'array',
-                    choices: this.props.roles.map((role) => [
-                      role.id,
-                      role.title,
-                    ]),
-                    noValueOption: false,
-                  },
-                  groups: {
-                    title: this.props.intl.formatMessage(
-                      messages.addUserGroupNameTitle,
-                    ),
-                    type: 'array',
-                    choices: this.props.groups.map((group) => [
-                      group.id,
-                      group.id,
-                    ]),
-                    noValueOption: false,
-                  },
-                },
-                required: ['username', 'email'],
-              }}
+              schema={adduserschema}
             />
           ) : null}
         </div>
@@ -533,7 +546,11 @@ class UsersControlpanel extends Component {
               <Form.Field>
                 <Input
                   name="SearchableText"
-                  action={{ icon: 'search' }}
+                  action={{
+                    icon: 'search',
+                    loading: this.state.isLoading,
+                    disabled: this.state.isLoading,
+                  }}
                   placeholder={this.props.intl.formatMessage(
                     messages.searchUsers,
                   )}
@@ -544,7 +561,8 @@ class UsersControlpanel extends Component {
             </Form>
           </Segment>
           <Form>
-            <div className="table">
+            {((this.props.many_users && this.state.entries.length > 0) ||
+              !this.props.many_users) && (
               <Table padded striped attached unstackable>
                 <Table.Header>
                   <Table.Row>
@@ -578,11 +596,18 @@ class UsersControlpanel extends Component {
                         user={user}
                         updateUser={this.updateUserRole}
                         inheritedRole={this.props.inheritedRole}
+                        userschema={this.props.userschema}
+                        listUsers={this.props.listUsers}
                       />
                     ))}
                 </Table.Body>
               </Table>
-            </div>
+            )}
+            {this.state.entries.length === 0 && this.state.search && (
+              <Segment>
+                {this.props.intl.formatMessage(messages.userSearchNoResults)}
+              </Segment>
+            )}
             <div className="contents-pagination">
               <Pagination
                 current={this.state.currentPage}
@@ -670,6 +695,8 @@ export default compose(
       createRequest: state.users.create,
       loadRolesRequest: state.roles,
       inheritedRole: state.authRole.authenticatedRole,
+      userschema: state.userschema,
+      controlPanelData: state.controlpanels?.controlpanel,
     }),
     (dispatch) =>
       bindActionCreators(
@@ -682,6 +709,7 @@ export default compose(
           createUser,
           updateUser,
           updateGroup,
+          getUserSchema,
         },
         dispatch,
       ),

@@ -10,10 +10,14 @@ import {
   isCmsUi,
   isInternalURL,
   isUrl,
+  getFieldURL,
   normalizeUrl,
   removeProtocol,
   addAppURL,
   expandToBackendURL,
+  checkAndNormalizeUrl,
+  normaliseMail,
+  normalizeTelephone,
 } from './Url';
 
 beforeEach(() => {
@@ -60,6 +64,17 @@ describe('Url', () => {
     });
     it('return empty string if no url is empty string', () => {
       expect(getBaseUrl('')).toBe('');
+    });
+    it('return a null/undefined mailto adress ', () => {
+      expect(normaliseMail(null)).toBe('mailto:null');
+      expect(normaliseMail(undefined)).toBe('mailto:undefined');
+    });
+    it('return a null/undefined telephone number', () => {
+      expect(normalizeTelephone(null)).toBe('tel:null');
+      expect(normalizeTelephone(undefined)).toBe('tel:undefined');
+    });
+    it('null returns an invalid link', () => {
+      expect(checkAndNormalizeUrl(null).isValid).toBe(false);
     });
   });
 
@@ -244,6 +259,46 @@ describe('Url', () => {
     it('isUrl test 5', () => {
       const href = `www.e`;
       expect(isUrl(href)).toBe(false);
+    });
+  });
+  describe('getFieldURL', () => {
+    it('returns app URL if the field is a string', () => {
+      const field = `${settings.apiPath}/foo/bar`;
+      expect(getFieldURL(field)).toBe('/foo/bar');
+    });
+    it('returns app URL if the field is an object with "@id"', () => {
+      const field = { '@id': '/foo/bar' };
+      expect(getFieldURL(field)).toBe('/foo/bar');
+    });
+    it('returns app URL if the field is an object with type URL', () => {
+      const field = { '@type': 'URL', value: '/foo/bar' };
+      expect(getFieldURL(field)).toBe('/foo/bar');
+    });
+    it('returns app URL if the field is an object with url or href properties', () => {
+      const fieldUrl = { url: '/foo/bar' };
+      const fieldHref = { href: '/foo/bar' };
+      expect(getFieldURL(fieldUrl)).toBe('/foo/bar');
+      expect(getFieldURL(fieldHref)).toBe('/foo/bar');
+    });
+    it('returns array of app URL if the field is an array of strings', () => {
+      const field = [
+        `${settings.apiPath}/foo/bar/1`,
+        `${settings.apiPath}/foo/bar/2`,
+      ];
+      expect(getFieldURL(field)).toStrictEqual(['/foo/bar/1', '/foo/bar/2']);
+    });
+    it('returns array of app URL if the field is an array of objects', () => {
+      const field = [
+        {
+          '@type': 'URL',
+          value: `${settings.apiPath}/foo/bar/1`,
+        },
+        {
+          '@type': 'URL',
+          value: `${settings.apiPath}/foo/bar/2`,
+        },
+      ];
+      expect(getFieldURL(field)).toStrictEqual(['/foo/bar/1', '/foo/bar/2']);
     });
   });
   describe('normalizeUrl', () => {

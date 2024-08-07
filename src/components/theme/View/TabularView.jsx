@@ -6,8 +6,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { UniversalLink } from '@plone/volto/components';
-import { Container, Table } from 'semantic-ui-react';
+import { Container as SemanticContainer, Table } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
+import config from '@plone/volto/registry';
 
 /**
  * Tabular view component class.
@@ -15,59 +16,64 @@ import { FormattedMessage } from 'react-intl';
  * @param {Object} content Content object.
  * @returns {string} Markup of the component.
  */
-const TabularView = ({ content }) => (
-  <Container className="view-wrapper">
-    <article id="content">
-      <header>
-        <h1 className="documentFirstHeading">{content.title}</h1>
-        {content.description && (
-          <p className="documentDescription">{content.description}</p>
-        )}
-      </header>
-      <section id="content-core">
-        <Table celled padded>
-          <Table.Header>
-            <Table.Row>
-              <Table.HeaderCell>
-                <FormattedMessage id="Title" defaultMessage="Title" />
-              </Table.HeaderCell>
-              <Table.HeaderCell>
-                <FormattedMessage
-                  id="Description"
-                  defaultMessage="Description"
-                />
-              </Table.HeaderCell>
-              <Table.HeaderCell>
-                <FormattedMessage id="Type" defaultMessage="Type" />
-              </Table.HeaderCell>
-              <Table.HeaderCell>
-                <FormattedMessage id="State" defaultMessage="State" />
-              </Table.HeaderCell>
-            </Table.Row>
-          </Table.Header>
-          <Table.Body>
-            {content.items.map((item) => (
-              <Table.Row key={item.url}>
-                <Table.Cell>
-                  <UniversalLink
-                    item={item}
-                    className="summary url"
-                    title={item['@type']}
-                  >
-                    {item.title}
-                  </UniversalLink>
-                </Table.Cell>
-                <Table.Cell>{item.description}</Table.Cell>
-                <Table.Cell>{item['@type']}</Table.Cell>
-                <Table.Cell>{item.review_state}</Table.Cell>
+const TabularView = ({ content }) => {
+  const Container =
+    config.getComponent({ name: 'Container' }).component || SemanticContainer;
+
+  return (
+    <Container className="view-wrapper">
+      <article id="content">
+        <header>
+          <h1 className="documentFirstHeading">{content.title}</h1>
+          {content.description && (
+            <p className="documentDescription">{content.description}</p>
+          )}
+        </header>
+        <section id="content-core">
+          <Table celled padded>
+            <Table.Header>
+              <Table.Row>
+                <Table.HeaderCell>
+                  <FormattedMessage id="Title" defaultMessage="Title" />
+                </Table.HeaderCell>
+                <Table.HeaderCell>
+                  <FormattedMessage
+                    id="Description"
+                    defaultMessage="Description"
+                  />
+                </Table.HeaderCell>
+                <Table.HeaderCell>
+                  <FormattedMessage id="Type" defaultMessage="Type" />
+                </Table.HeaderCell>
+                <Table.HeaderCell>
+                  <FormattedMessage id="State" defaultMessage="State" />
+                </Table.HeaderCell>
               </Table.Row>
-            ))}
-          </Table.Body>
-        </Table>
-      </section>
-    </article>
-  </Container>
-);
+            </Table.Header>
+            <Table.Body>
+              {content.items.map((item) => (
+                <Table.Row key={item.url}>
+                  <Table.Cell>
+                    <UniversalLink
+                      item={item}
+                      className="summary url"
+                      title={item['@type']}
+                    >
+                      {item.title}
+                    </UniversalLink>
+                  </Table.Cell>
+                  <Table.Cell>{item.description}</Table.Cell>
+                  <Table.Cell>{item['@type']}</Table.Cell>
+                  <Table.Cell>{item.review_state}</Table.Cell>
+                </Table.Row>
+              ))}
+            </Table.Body>
+          </Table>
+        </section>
+      </article>
+    </Container>
+  );
+};
 
 /**
  * Property types.

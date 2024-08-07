@@ -1,7 +1,7 @@
 import React from 'react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
-import { waitFor, render, screen } from '@testing-library/react';
+import { waitFor, render, screen, fireEvent } from '@testing-library/react';
 
 import SelectWidget from './SelectWidget';
 
@@ -41,5 +41,49 @@ test('renders a select widget component', async () => {
   );
 
   await waitFor(() => screen.getByText('My field'));
+  expect(container).toMatchSnapshot();
+});
+
+test("No 'No value' option when default value is 0", async () => {
+  const store = mockStore({
+    intl: {
+      locale: 'en',
+      messages: {},
+    },
+  });
+
+  const choices = [
+    ['0', 'None'],
+    ['1', 'One'],
+  ];
+
+  const value = {
+    value: '0',
+    label: 'None',
+  };
+
+  const _default = 0;
+
+  const { container } = render(
+    <Provider store={store}>
+      <SelectWidget
+        id="my-field"
+        title="My field"
+        fieldSet="default"
+        choices={choices}
+        default={_default}
+        value={value}
+        onChange={() => {}}
+        onBlur={() => {}}
+        onClick={() => {}}
+      />
+    </Provider>,
+  );
+
+  await waitFor(() => screen.getByText('None'));
+  fireEvent.mouseDown(
+    container.querySelector('.react-select__dropdown-indicator'),
+    { button: 0 },
+  );
   expect(container).toMatchSnapshot();
 });

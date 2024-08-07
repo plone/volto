@@ -6,8 +6,9 @@ jobs:
     name: Core Basic
     timeout-minutes: 45
     strategy:
+      fail-fast: false
       matrix:
-        node-version: [14.x, 16.x]
+        node-version: [14.x, 16.x, 18.x]
     steps:
       - uses: actions/checkout@v3
 
@@ -22,7 +23,7 @@ jobs:
       - run: yarn --immutable
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v6
         env:
           BABEL_ENV: production
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -31,15 +32,13 @@ jobs:
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          record: true
-          parallel: false # Since they run on different node versions, we can't parallel
+          install: false
           browser: chrome
-          group: Core ${{ matrix.node-version }}
           spec: cypress/tests/core/basic/**/*.js
           start: |
             make start-test-acceptance-server
             make start-test-acceptance-frontend
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v1
@@ -59,8 +58,9 @@ jobs:
     name: Core Blocks
     timeout-minutes: 35
     strategy:
+      fail-fast: false
       matrix:
-        node-version: [14.x, 16.x]
+        node-version: [14.x, 16.x, 18.x]
     steps:
       - uses: actions/checkout@v3
 
@@ -75,7 +75,7 @@ jobs:
       - run: yarn --immutable
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v6
         env:
           BABEL_ENV: production
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -84,15 +84,13 @@ jobs:
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          record: true
-          parallel: false # Since they run on different node versions, we can't parallel
+          install: false
           browser: chrome
-          group: Core Blocks ${{ matrix.node-version }}
           spec: cypress/tests/core/blocks/**/*.js
           start: |
             make start-test-acceptance-server
             make start-test-acceptance-frontend
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v1
@@ -112,8 +110,9 @@ jobs:
     name: Core Volto Slate
     timeout-minutes: 45
     strategy:
+      fail-fast: false
       matrix:
-        node-version: [14.x, 16.x]
+        node-version: [14.x, 16.x, 18.x]
     steps:
       - uses: actions/checkout@v3
 
@@ -128,7 +127,7 @@ jobs:
       - run: yarn --immutable
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v6
         env:
           BABEL_ENV: production
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -137,15 +136,13 @@ jobs:
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          record: true
-          parallel: false # Since they run on different node versions, we can't parallel
+          install: false
           browser: chrome
-          group: Core Volto Slate ${{ matrix.node-version }}
           spec: cypress/tests/core/volto-slate/**/*.js
           start: |
             make start-test-acceptance-server
             make start-test-acceptance-frontend
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v1
@@ -164,6 +161,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Core Basic - Plone 5
     strategy:
+      fail-fast: false
       matrix:
         node-version: [16.x]
     steps:
@@ -180,7 +178,7 @@ jobs:
       - run: yarn --immutable
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v6
         env:
           BABEL_ENV: production
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -189,15 +187,13 @@ jobs:
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          record: true
-          parallel: false # Since they run on different node versions, we can't parallel
+          install: false
           browser: chrome
-          group: Core Basic - Plone 5
           spec: cypress/tests/core/basic/**/*.js
           start: |
             make start-test-acceptance-server-5
             make start-test-acceptance-frontend
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v1
@@ -217,6 +213,7 @@ jobs:
     name: Coresandbox
     timeout-minutes: 35
     strategy:
+      fail-fast: false
       matrix:
         node-version: [16.x]
         python-version: [3.7]
@@ -257,7 +254,7 @@ jobs:
       #     CI: true
 
       - name: Cypress Coresandbox Acceptance tests
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v6
         env:
           BABEL_ENV: production
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -266,15 +263,13 @@ jobs:
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          record: true
-          parallel: true
+          install: false
           browser: chrome
-          group: Coresandbox
           spec: cypress/tests/coresandbox/**/*.js
           start: |
             make start-test-acceptance-server-coresandbox
             make start-test-acceptance-frontend-coresandbox
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v1
@@ -294,6 +289,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 35
     strategy:
+      fail-fast: false
       matrix:
         node-version: [16.x]
     steps:
@@ -310,7 +306,7 @@ jobs:
       - run: yarn --immutable
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v6
         env:
           BABEL_ENV: production
           CYPRESS_API: guillotina
@@ -320,15 +316,13 @@ jobs:
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          record: true
-          parallel: true
+          install: false
           browser: chrome
-          group: Guillotina
           spec: cypress/tests/guillotina/**/*.js
           start: |
             make start-test-acceptance-server-guillotina
             make start-test-acceptance-frontend-guillotina
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:8081 http://localhost:3000'
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:8081 http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v1
@@ -348,6 +342,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 35
     strategy:
+      fail-fast: false
       matrix:
         node-version: [16.x]
     steps:
@@ -364,7 +359,7 @@ jobs:
       - run: yarn --immutable
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v6
         env:
           BABEL_ENV: production
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -373,15 +368,13 @@ jobs:
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          record: true
-          parallel: true
+          install: false
           browser: chrome
-          group: Multilingual
           spec: cypress/tests/multilingual/**/*.js
           start: |
             make start-test-acceptance-server-multilingual
             make start-test-acceptance-frontend-multilingual
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v1
@@ -401,6 +394,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 35
     strategy:
+      fail-fast: false
       matrix:
         node-version: [16.x]
         # python-version: [3.7]
@@ -442,7 +436,7 @@ jobs:
       #     CI: true
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v6
         env:
           BABEL_ENV: production
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -451,15 +445,13 @@ jobs:
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          record: true
-          parallel: true
+          install: false
           browser: chrome
-          group: Working Copy
           spec: cypress/tests/workingCopy/**/*.js
           start: |
             make start-test-acceptance-server-workingcopy
             make start-test-acceptance-frontend-workingcopy
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v1
@@ -479,8 +471,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 35
     strategy:
+      fail-fast: false
       matrix:
-        node-version: [16.x]
+        node-version: [16.x, 18.x]
     env:
       generator-directory: ./packages/generator-volto
       project-directory: ./my-volto-app
@@ -530,7 +523,7 @@ jobs:
         working-directory: ${{env.project-directory}}
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v6
         env:
           BABEL_ENV: production
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -539,15 +532,13 @@ jobs:
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          record: true
-          parallel: true
+          install: false
           browser: chrome
-          group: Project Generator
           spec: cypress/tests/minimal/**/*.js
           start: |
             make start-test-acceptance-server
             make start-test-acceptance-frontend-project
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v1
@@ -573,6 +564,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 35
     strategy:
+      fail-fast: false
       matrix:
         node-version: [16.x]
     steps:
@@ -589,7 +581,7 @@ jobs:
       - run: yarn --immutable
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v6
         env:
           BABEL_ENV: production
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -598,10 +590,8 @@ jobs:
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          record: true
-          parallel: true
+          install: false
           browser: chrome
-          group: Seamless
           spec: cypress/tests/core/basic/**/*.js
           config: baseUrl=http://localhost
           start: |
@@ -609,6 +599,60 @@ jobs:
             make start-test-acceptance-frontend-seamless
             make start-test-acceptance-webserver-seamless
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000 http://localhost'
+
+      # Upload Cypress screenshots
+      - uses: actions/upload-artifact@v1
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+      # Upload Cypress videos
+      - uses: actions/upload-artifact@v1
+        if: failure()
+        with:
+          name: cypress-videos
+          path: cypress/videos
+
+  multilingualseamless:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
+    name: Multilingual in Seamless Mode
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [18.x]
+    steps:
+      - uses: actions/checkout@v3
+
+      # node setup
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
+
+      # node install
+      - run: yarn --immutable
+
+      - name: Cypress acceptance tests
+        uses: cypress-io/github-action@v6
+        env:
+          BABEL_ENV: production
+          CYPRESS_RETRIES: 2
+          # Recommended: pass the GitHub token lets this action correctly
+          # determine the unique run id necessary to re-run the checks
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          install: false
+          browser: chrome
+          spec: cypress/tests/multilingual/**/*.js
+          config: baseUrl=http://localhost
+          start: |
+            make start-test-acceptance-server-seamless-multilingual
+            make start-test-acceptance-frontend-seamless-multilingual
+            make start-test-acceptance-webserver-seamless
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000 http://localhost'
 
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v1

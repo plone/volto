@@ -33,10 +33,11 @@ import {
   getBlocksLayoutFieldname,
   getLanguageIndependentFields,
   langmap,
-  normalizeLanguageName,
+  toGettextLang,
 } from '@plone/volto/helpers';
 
 import { preloadLazyLibs } from '@plone/volto/helpers/Loadable';
+import { tryParseJSON } from '@plone/volto/helpers';
 
 import config from '@plone/volto/registry';
 
@@ -178,13 +179,29 @@ class Add extends Component {
         new DOMParser().parseFromString(message, 'text/html')?.all[0]
           ?.textContent || message;
 
-      this.setState({ error: error });
+      const errorsList = tryParseJSON(error);
+      let erroMessage;
+      if (Array.isArray(errorsList)) {
+        const invariantErrors = errorsList
+          .filter((errorItem) => !('field' in errorItem))
+          .map((errorItem) => errorItem['message']);
+        if (invariantErrors.length > 0) {
+          // Plone invariant validation message.
+          erroMessage = invariantErrors.join(' - ');
+        } else {
+          // Error in specific field.
+          erroMessage = this.props.intl.formatMessage(messages.someErrors);
+        }
+      } else {
+        erroMessage = errorsList.error?.message || error;
+      }
 
+      this.setState({ error: error });
       toast.error(
         <Toast
           error
           title={this.props.intl.formatMessage(messages.error)}
-          content={`${nextProps.createRequest.error.status}:  ${error}`}
+          content={erroMessage}
         />,
       );
     }
@@ -219,7 +236,7 @@ class Add extends Component {
   onCancel() {
     if (this.props.location?.state?.translationOf) {
       const language = this.props.location.state.languageFrom;
-      const langFileName = normalizeLanguageName(language);
+      const langFileName = toGettextLang(language);
       import('@root/../locales/' + langFileName + '.json').then((locale) => {
         this.props.changeLanguage(language, locale.default);
       });
@@ -316,6 +333,9 @@ class Add extends Component {
           <Form
             ref={this.form}
             key="translated-or-new-content-form"
+            navRoot={
+              this.props.content?.['@components']?.navroot?.navroot || {}
+            }
             schema={this.props.schema}
             type={this.props.type}
             formData={{
@@ -335,6 +355,9 @@ class Add extends Component {
               // Copy the Language Independent Fields values from the to-be translated content
               // into the default values of the translated content Add form.
               ...lifData(),
+              parent: {
+                '@id': this.props.content?.['@id'] || '',
+              },
             }}
             requestError={this.state.error}
             onSubmit={this.onSubmit}
@@ -353,6 +376,7 @@ class Add extends Component {
             onSelectForm={() => {
               this.setState({ formSelected: 'addForm' });
             }}
+            global
           />
           {this.state.isClient && (
             <Portal node={document.getElementById('toolbar')}>

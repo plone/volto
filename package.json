@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "16.20.1",
+  "version": "16.31.11",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -44,8 +44,8 @@
     "test:husky": "CI=true yarn test --bail --findRelatedTests",
     "test:debug": "node --inspect node_modules/.bin/jest --runInBand",
     "start:prod": "NODE_ENV=production node build/server.js",
-    "prettier": "./node_modules/.bin/prettier --single-quote --check 'src/**/*.{js,jsx,ts,tsx,json}'",
-    "prettier:fix": "./node_modules/.bin/prettier --single-quote --write 'src/**/*.{js,jsx,ts,tsx,json}'",
+    "prettier": "./node_modules/.bin/prettier --single-quote --check 'src/**/*.{js,jsx,json}'",
+    "prettier:fix": "./node_modules/.bin/prettier --single-quote --write 'src/**/*.{js,jsx,json}'",
     "stylelint": "./node_modules/.bin/stylelint 'theme/**/*.{css,less}' 'src/**/*.{css,less}'",
     "stylelint:overrides": "./node_modules/.bin/stylelint 'theme/**/*.overrides' 'src/**/*.overrides'",
     "stylelint:fix": "yarn stylelint --fix && yarn stylelint:overrides --fix",
@@ -197,6 +197,9 @@
       "release": true,
       "releaseName": "${version}",
       "releaseNotes": "cat .changelog.draft"
+    },
+    "npm": {
+      "tag": "lts"
     }
   },
   "lint-staged": {
@@ -222,7 +225,7 @@
     ]
   },
   "engines": {
-    "node": "^14 || ^16"
+    "node": "^14 || ^16 || ^18"
   },
   "dependencies": {
     "@babel/core": "^7.0.0",
@@ -313,7 +316,7 @@
     "lodash-move": "1.1.1",
     "lodash-webpack-plugin": "0.11.5",
     "mini-css-extract-plugin": "0.9.0",
-    "moment": "2.24.0",
+    "moment": "2.29.4",
     "object-assign": "4.1.1",
     "pofile": "1.0.10",
     "postcss": "8.4.13",
@@ -365,7 +368,7 @@
     "react-simple-code-editor": "0.7.1",
     "react-sortable-hoc": "2.0.0",
     "react-test-renderer": "17.0.2",
-    "react-toastify": "5.4.1",
+    "react-toastify": "5.5.0",
     "react-transition-group": "4.4.5",
     "react-virtualized": "9.22.3",
     "redraft": "0.10.2",
@@ -381,9 +384,9 @@
     "semantic-ui-react": "2.0.3",
     "semver": "5.6.0",
     "serialize-javascript": "3.1.0",
-    "slate": "0.84.0",
-    "slate-hyperscript": "0.81.3",
-    "slate-react": "0.83.2",
+    "slate": "0.100.0",
+    "slate-hyperscript": "0.100.0",
+    "slate-react": "0.98.4",
     "start-server-and-test": "1.14.0",
     "style-loader": "2",
     "stylelint": "14.0.1",

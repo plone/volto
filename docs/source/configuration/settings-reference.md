@@ -40,7 +40,7 @@ contentIcons
     With this property you can configure Content Types icons.
     Those are visible in Contents view (ex "Folder contents").  The default
     ones are in
-    [config/ContentIcons.jsx](https://github.com/plone/volto/blob/master/src/config/ContentIcons.jsx)
+    [config/ContentIcons.jsx](https://github.com/plone/volto/blob/main/src/config/ContentIcons.jsx)
     and you can extend them in your project's config for custom content types
     using `settings.contentIcons`.
 
@@ -82,6 +82,10 @@ maxResponseSize
 
     You can edit this limit in the `settings` object setting a new value in bytes
     (for example, to set 500 mb you need to write 5000000000).
+
+maxFileUploadSize
+    The maximum allowed size of file uploads (in bytes).
+    Default: `null` (no limit enforced by Volto).
 
 initialReducersBlacklist
     The initial state passed from server to browser needs to be minimal in order to optimize the resultant html generated. This state gets stored in `window.__data` and received in client.
@@ -226,7 +230,6 @@ workflowMapping
     It's meant to be extended with your own workflows/transitions.
     It is recommended to assign the same color to the transition as the destination state, so the user can have the visual hint to which state are they transitioning to.
 
-
 styleClassNameConverters
     An object with functions used by the style wrapper helpers to convert style
     data to actual class names. You can customize the generated classname by
@@ -296,8 +299,9 @@ styleClassNameExtenders
         },
       ];
     ```
+
 apiExpanders
-    You can configure the API expanders Volto uses using the `settings.apiExpanders` like:
+    You can configure the API expanders in Volto using `settings.apiExpanders`, as in the following example.
 
     ```jsx
     import { GET_CONTENT } from '@plone/volto/constants/ActionTypes';
@@ -326,7 +330,7 @@ apiExpanders
     }
     ```
 
-    If you want that Volto only does a single request and concentrate all the expanders in it then configure `apiExpanders` like:
+    If you want Volto to make only a single request, combining all the expanders in it, then configure `apiExpanders` as shown.
 
     ```jsx
     config.settings.apiExpanders = [
@@ -373,8 +377,33 @@ additionalToolbarComponents
       }}
     </Plug>
     ```
-```
 
+blockSettingsTabFieldsetsInitialStateOpen
+    A Boolean, `true` by default.
+    The fieldsets in the blocks settings tab start by default as non-collapsed (opened), you can decide to have them collapsed (closed) by default setting this to `false`.
+
+excludeLinksAndReferencesMenuItem
+    A Boolean, `false` by default.
+    The content menu links to the {guilabel}`Links and references` view per default.
+    Exclude this menu item by setting `excludeLinksAndReferencesMenuItem` to `true`.
+    For Volto 16 series it's excluded by default.
+
+excludeLinksAndReferencesMenuItem
+    A Boolean, `false` by default.
+    The content menu links to the {guilabel}`Links and references` view per default.
+    Exclude this menu item by setting `excludeLinksAndReferencesMenuItem` to `true`.
+
+okRoute
+    Volto provides an `/ok` URL where it responds with a `text/plain ok` response, with an `HTTP 200` status code, to signal third party health check services that the Volto process is running correctly.
+
+    Using this setting, one can modify such an URL and configure it to respond with another URL.
+
+    The provided default URL matches the existing Plone Classic UI URL.
+
+    ```jsx
+      config.settings.okRoute = '/site-is-ok'
+    ```
+```
 
 ## Views settings
 

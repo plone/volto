@@ -50,8 +50,8 @@ const messages = defineMessages({
     defaultMessage: 'New password',
   },
   passwordDescription: {
-    id: 'Enter your new password. Minimum 5 characters.',
-    defaultMessage: 'Enter your new password. Minimum 5 characters.',
+    id: 'Enter your new password. Minimum 8 characters.',
+    defaultMessage: 'Enter your new password. Minimum 8 characters.',
   },
   passwordRepeatTitle: {
     id: 'Confirm password',
@@ -227,6 +227,9 @@ class PasswordReset extends Component {
       );
     }
     if (this.props.token) {
+      const errmsg = this.props.error
+        ? this.props.error.response.body.error
+        : null;
       return (
         <div id="page-password-reset">
           <Helmet
@@ -238,7 +241,7 @@ class PasswordReset extends Component {
               description={this.props.intl.formatMessage(messages.description)}
               onSubmit={this.onSubmit}
               onCancel={this.onCancel}
-              error={this.state.error || this.props.error}
+              error={this.state.error || errmsg}
               schema={{
                 fieldsets: [
                   {

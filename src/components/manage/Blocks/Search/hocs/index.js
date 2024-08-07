@@ -1,2 +1,2 @@
-export withQueryString from './withQueryString';
-export withSearch from './withSearch';
+export { default as withQueryString } from './withQueryString';
+export { default as withSearch } from './withSearch';

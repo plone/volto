@@ -36,6 +36,26 @@ test('renders a ListingBody component', () => {
     content: {
       data: {
         is_folderish: true,
+        blocks: {
+          '839ee00b-013b-4f4a-9b10-8867938fdac3': {
+            '@type': 'listing',
+            block: '839ee00b-013b-4f4a-9b10-8867938fdac3',
+            headlineTag: 'h2',
+            query: [],
+            querystring: {
+              b_size: '2',
+              query: [
+                {
+                  i: 'path',
+                  o: 'plone.app.querystring.operation.string.absolutePath',
+                  v: '/',
+                },
+              ],
+              sort_order: 'ascending',
+            },
+            variation: 'default',
+          },
+        },
       },
     },
     intl: {

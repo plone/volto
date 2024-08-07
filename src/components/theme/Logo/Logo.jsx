@@ -8,6 +8,7 @@ import { Image } from 'semantic-ui-react';
 import { useSelector } from 'react-redux';
 import config from '@plone/volto/registry';
 import { UniversalLink } from '@plone/volto/components';
+import { toBackendLang } from '@plone/volto/helpers';
 import LogoImage from '@plone/volto/components/theme/Logo/Logo.svg';
 
 const messages = defineMessages({
@@ -34,7 +35,7 @@ const Logo = () => {
 
   return (
     <UniversalLink
-      href={settings.isMultilingual ? `/${lang}` : '/'}
+      href={settings.isMultilingual ? `/${toBackendLang(lang)}` : '/'}
       title={intl.formatMessage(messages.site)}
     >
       <Image

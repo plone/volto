@@ -1,7 +1,7 @@
 {
   "name": "@plone/generator-volto",
   "description": "Yeoman Volto App Generator: scaffolding for Volto projects",
-  "homepage": "https://www.npmjs.com/package/@plone/generator-volto-app",
+  "homepage": "https://www.npmjs.com/package/@plone/generator-volto",
   "maintainers": [
     {
       "name": "Plone Foundation",
@@ -10,13 +10,13 @@
     }
   ],
   "license": "MIT",
-  "version": "6.0.0-alpha.3",
+  "version": "6.4.1",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/plone/generator-volto.git"
+    "url": "git+https://github.com/plone/volto.git"
   },
   "bugs": {
-    "url": "https://github.com/plone/generator-volto/issues",
+    "url": "https://github.com/plone/volto/issues",
     "email": "plone-developers@lists.sourceforge.net"
   },
   "keywords": [
@@ -75,6 +75,9 @@
       "release": true,
       "releaseName": "@plone/generator-volto ${version}",
       "releaseNotes": "cat .changelog.draft"
+    },
+    "npm": {
+      "tag": "lts"
     }
   },
   "jest": {
@@ -96,7 +99,7 @@
     }
   },
   "engines": {
-    "node": "^12 || ^14 || ^16"
+    "node": "^12 || ^14 || ^16 || ^18"
   },
   "dependencies": {
     "ansi-escapes": "2.0.0",
@@ -108,9 +111,11 @@
     "fs-extra": "3.0.0",
     "gitly": "2.0.3",
     "mkdirp-then": "1.2.0",
+    "ms": "1.0.0",
     "mz": "2.6.0",
     "ora": "1.2.0",
     "promise": "7.1.1",
+    "semver": "7.3.8",
     "update-notifier": "^5.0.1",
     "yeoman-generator": "^4.12.0"
   },
@@ -124,7 +129,7 @@
     "jest": "^24.8.0",
     "lint-staged": "^9.4.3",
     "prettier": "2.0.5",
-    "release-it": "^14.9.0",
+    "release-it": "^16.2.1",
     "yeoman-assert": "^3.1.0",
     "yeoman-test": "^6.1.0"
   }

@@ -3,7 +3,14 @@ import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
 import BlockDataForm from '@plone/volto/components/manage/Form/BlockDataForm';
 
-const Settings = ({ data, block, onChangeBlock, schema }) => {
+const Settings = ({
+  data,
+  block,
+  onChangeBlock,
+  schema,
+  navRoot,
+  contentType,
+}) => {
   return (
     <BlockDataForm
       schema={schema}
@@ -14,7 +21,11 @@ const Settings = ({ data, block, onChangeBlock, schema }) => {
           [id]: value,
         });
       }}
+      onChangeBlock={onChangeBlock}
       formData={data}
+      applySchemaEnhancers={false}
+      navRoot={navRoot}
+      contentType={contentType}
     />
   );
 };

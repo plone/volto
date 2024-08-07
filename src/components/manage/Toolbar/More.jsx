@@ -53,6 +53,10 @@ const messages = defineMessages({
     id: 'URL Management',
     defaultMessage: 'URL Management',
   },
+  linkstoitem: {
+    id: 'Links and references',
+    defaultMessage: 'Links and references',
+  },
   ManageTranslations: {
     id: 'Manage Translations',
     defaultMessage: 'Manage Translations',
@@ -227,6 +231,7 @@ class More extends Component {
     const aliasesAction = find(this.props.actions.object_buttons, {
       id: 'redirection',
     });
+
     const { content, intl } = this.props;
 
     const dateOptions = {
@@ -317,6 +322,16 @@ class More extends Component {
                 </li>
               )}
             </Plug>
+            {path !== '' && !config.settings.excludeLinksAndReferencesMenuItem && (
+              <Plug pluggable="toolbar-more-menu-list" id="linkstoitems">
+                <li>
+                  <Link to={`${path}/links-to-item`}>
+                    {this.props.intl.formatMessage(messages.linkstoitem)}
+                    <Icon name={rightArrowSVG} size="24px" />
+                  </Link>
+                </li>
+              </Plug>
+            )}
             <Plug pluggable="toolbar-more-menu-list" id="rules">
               {rulesAction && (
                 <li>

@@ -82,6 +82,7 @@ config.set('settings', {
   viewableInBrowserObjects: [],
   styleClassNameConverters,
   styleClassNameExtenders,
+  containerBlockTypes: [],
 });
 config.set('blocks', {
   blocksConfig: {

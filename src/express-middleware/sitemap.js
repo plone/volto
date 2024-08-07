@@ -47,7 +47,7 @@ export const sitemapIndex = function (req, res, next) {
   });
 };
 
-export default function () {
+export default function sitemapMiddleware() {
   const middleware = express.Router();
 
   middleware.all('**/sitemap.xml.gz', sitemap);

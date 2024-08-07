@@ -22,6 +22,13 @@ const { poToJson } = require('@plone/scripts/i18n.cjs');
 
 const packageJson = require(path.join(projectRootPath, 'package.json'));
 
+// This is a workaround to support webpack 4 on Node 17+,
+// because the MD4 hash algorithm is no longer supported by Node.
+const crypto = require('crypto');
+const crypto_orig_createHash = crypto.createHash;
+crypto.createHash = (algorithm) =>
+  crypto_orig_createHash(algorithm === 'md4' ? 'sha256' : algorithm);
+
 const registry = new AddonConfigurationRegistry(projectRootPath);
 
 const defaultModify = ({
@@ -244,6 +251,9 @@ const defaultModify = ({
     // avoids including lodash multiple times.
     // semantic-ui-react uses lodash-es, everything else uses lodash
     'lodash-es': path.dirname(require.resolve('lodash')),
+    // workaround for backwards-incompatible change in slate-react
+    '@slate-react': path.dirname(require.resolve('slate-react')),
+    'slate-react$': `${registry.voltoPath}/packages/volto-slate/src/slate-react`,
   };
 
   const [

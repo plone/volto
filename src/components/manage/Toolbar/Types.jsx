@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { filter, find, isEmpty, map } from 'lodash';
 import { FormattedMessage } from 'react-intl';
-import { flattenToAppURL, langmap } from '@plone/volto/helpers';
+import { flattenToAppURL, langmap, toBackendLang } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
 
 const Types = ({ types, pathname, content, currentLanguage }) => {
@@ -59,7 +59,7 @@ const Types = ({ types, pathname, content, currentLanguage }) => {
                   find(content['@components'].translations.items, {
                     language: lang,
                   }),
-              ) && currentLanguage !== lang,
+              ) && toBackendLang(currentLanguage) !== lang,
           );
 
           return (

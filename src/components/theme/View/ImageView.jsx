@@ -5,11 +5,11 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Container } from 'semantic-ui-react';
+import { Container as SemanticContainer } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
 import prettybytes from 'pretty-bytes';
-
 import { flattenToAppURL } from '@plone/volto/helpers';
+import config from '@plone/volto/registry';
 
 /**
  * Image view component class.
@@ -17,37 +17,42 @@ import { flattenToAppURL } from '@plone/volto/helpers';
  * @params {object} content Content object.
  * @returns {string} Markup of the component.
  */
-const ImageView = ({ content }) => (
-  <Container className="view-wrapper">
-    <h1 className="documentFirstHeading">
-      {content.title}
-      {content.subtitle && ` - ${content.subtitle}`}
-    </h1>
-    {content.description && (
-      <p className="documentDescription">{content.description}</p>
-    )}
-    {content?.image?.download && (
-      <a href={flattenToAppURL(content.image.download)}>
-        <img
-          alt={content.title}
-          src={flattenToAppURL(content.image.scales.preview.download)}
-        />
-        <figcaption>
-          <FormattedMessage
-            id="Size: {size}"
-            defaultMessage="Size: {size}"
-            values={{ size: prettybytes(content.image.size) }}
+const ImageView = ({ content }) => {
+  const Container =
+    config.getComponent({ name: 'Container' }).component || SemanticContainer;
+
+  return (
+    <Container className="view-wrapper">
+      <h1 className="documentFirstHeading">
+        {content.title}
+        {content.subtitle && ` - ${content.subtitle}`}
+      </h1>
+      {content.description && (
+        <p className="documentDescription">{content.description}</p>
+      )}
+      {content?.image?.download && (
+        <a href={flattenToAppURL(content.image.download)}>
+          <img
+            alt={content.title}
+            src={flattenToAppURL(content.image.scales.preview.download)}
           />
-          &nbsp; &mdash; &nbsp;
-          <FormattedMessage
-            id="Click to download full sized image"
-            defaultMessage="Click to download full sized image"
-          />
-        </figcaption>
-      </a>
-    )}
-  </Container>
-);
+          <figcaption>
+            <FormattedMessage
+              id="Size: {size}"
+              defaultMessage="Size: {size}"
+              values={{ size: prettybytes(content.image.size) }}
+            />
+            &nbsp; &mdash; &nbsp;
+            <FormattedMessage
+              id="Click to download full sized image"
+              defaultMessage="Click to download full sized image"
+            />
+          </figcaption>
+        </a>
+      )}
+    </Container>
+  );
+};
 
 /**
  * Property types.

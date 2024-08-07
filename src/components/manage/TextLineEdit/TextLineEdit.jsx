@@ -174,7 +174,7 @@ export const TextLineEdit = (props) => {
     return <div />;
   }
   return (
-    <Slate editor={editor} onChange={handleChange} value={initialValue}>
+    <Slate editor={editor} onChange={handleChange} initialValue={initialValue}>
       <Editable
         readOnly={!editable}
         onKeyDown={handleKeyDown}

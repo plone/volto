@@ -7,7 +7,7 @@ import DefaultBlockView from './DefaultView';
 
 const DefaultBlockEdit = (props) => {
   const { blocksConfig = config.blocks.blocksConfig } = props;
-  const { data, onChangeBlock, block, selected } = props;
+  const { data, onChangeBlock, block, selected, navRoot, contentType } = props;
   const intl = useIntl();
   const blockSchema = blocksConfig?.[data['@type']]?.blockSchema;
   const schema =
@@ -32,6 +32,8 @@ const DefaultBlockEdit = (props) => {
               });
             }}
             formData={data}
+            navRoot={navRoot}
+            contentType={contentType}
           />
         </SidebarPortal>
       ) : (

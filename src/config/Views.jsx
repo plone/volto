@@ -16,6 +16,7 @@ import RequestTimeout from '@plone/volto/components/theme/RequestTimeout/Request
 import AlbumView from '@plone/volto/components/theme/View/AlbumView';
 import Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
 import Forbidden from '@plone/volto/components/theme/Forbidden/Forbidden';
+import ServerError from '@plone/volto/components/theme/Error/ServerError';
 
 const EventView = loadable(() =>
   import('@plone/volto/components/theme/View/EventView'),
@@ -114,6 +115,7 @@ export const errorViews = {
   '401': Unauthorized,
   '403': Forbidden,
   '408': RequestTimeout,
+  '500': ServerError,
   ECONNREFUSED: ConnectionRefused,
   corsError: CorsError,
 };

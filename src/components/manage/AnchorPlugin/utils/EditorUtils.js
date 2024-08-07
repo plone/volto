@@ -1,4 +1,4 @@
-export default ({ draftJs }) => ({
+const EditorUtils = ({ draftJs }) => ({
   createLinkAtSelection(editorState, url) {
     const contentState = editorState
       .getCurrentContent()
@@ -43,3 +43,5 @@ export default ({ draftJs }) => ({
     return entity && entity.getType() === entityType;
   },
 });
+
+export default EditorUtils;

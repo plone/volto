@@ -98,6 +98,7 @@ exports[`Login renders a login component 1`] = `
                     className="ui input"
                   >
                     <input
+                      autoComplete="current-password"
                       id="password"
                       name="password"
                       onChange={[Function]}

@@ -4,8 +4,8 @@
  * @example import { api } from 'middleware';
  */
 
-export api from '@plone/volto/middleware/api';
-export blacklistRoutes from './blacklistRoutes';
+export { default as api } from '@plone/volto/middleware/api';
+export { default as blacklistRoutes } from './blacklistRoutes';
 export {
   protectLoadStart,
   protectLoadEnd,

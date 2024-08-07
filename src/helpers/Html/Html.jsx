@@ -97,8 +97,10 @@ class Html extends Component {
     } = this.props;
     const head = Helmet.rewind();
     const bodyClass = join(BodyClass.rewind(), ' ');
+    const htmlAttributes = head.htmlAttributes.toComponent();
+
     return (
-      <html lang="en">
+      <html lang={htmlAttributes.lang}>
         <head>
           <meta charSet="utf-8" />
           {head.base.toComponent()}
@@ -181,7 +183,7 @@ class Html extends Component {
         <body className={bodyClass}>
           <div role="navigation" aria-label="Toolbar" id="toolbar" />
           <div id="main" dangerouslySetInnerHTML={{ __html: markup }} />
-          <div id="sidebar" />
+          <div role="complementary" aria-label="Sidebar" id="sidebar" />
           <script
             dangerouslySetInnerHTML={{
               __html: `window.__data=${serialize(

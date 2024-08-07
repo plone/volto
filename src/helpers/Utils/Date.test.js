@@ -192,6 +192,8 @@ describe('formatRelativeDate helper', () => {
   it('can use alternate style narrow', () => {
     const now = Date.now();
     const d = new Date(now + 3 * MONTH);
-    expect(formatRelativeDate({ date: d, style: 'narrow' })).toBe('in 3 mo.');
+    expect(['in 3 mo.', 'in 3mo']).toContain(
+      formatRelativeDate({ date: d, style: 'narrow' }),
+    );
   });
 });

@@ -26,6 +26,8 @@ const SearchBlockEdit = (props) => {
     data,
     selected,
     intl,
+    navRoot,
+    contentType,
     onTriggerSearch,
     querystring = {},
   } = props;
@@ -61,9 +63,15 @@ const SearchBlockEdit = (props) => {
   const { query = {} } = data || {};
   // We don't need deep compare here, as this is just json serializable data.
   const deepQuery = JSON.stringify(query);
+
   useEffect(() => {
-    onTriggerSearch();
-  }, [deepQuery, onTriggerSearch]);
+    onTriggerSearch(
+      '',
+      data?.facets,
+      data?.query?.sort_on,
+      data?.query?.sort_order,
+    );
+  }, [deepQuery, onTriggerSearch, data]);
 
   return (
     <>
@@ -83,6 +91,8 @@ const SearchBlockEdit = (props) => {
           }}
           onChangeBlock={onChangeBlock}
           formData={data}
+          navRoot={navRoot}
+          contentType={contentType}
         />
       </SidebarPortal>
     </>

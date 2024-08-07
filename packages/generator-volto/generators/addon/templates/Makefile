@@ -11,6 +11,16 @@ MAKEFLAGS+=--warn-undefined-variables
 MAKEFLAGS+=--no-builtin-rules
 
 # Project settings
+# Update the versions depending on your project requirements | Last Updated 2023-06-17
+DOCKER_IMAGE=plone/server-dev:6.0.6
+DOCKER_IMAGE_ACCEPTANCE=plone/server-acceptance:6.0.6
+KGS=
+NODEBIN = ./node_modules/.bin
+
+# Plone 5 legacy
+DOCKER_IMAGE5=plone/plone-backend:5.2.10
+KGS5=plone.restapi==8.43.0 plone.volto==4.0.8 plone.rest==3.0.0
+TESTING_ADDONS=plone.app.robotframework==2.0.0 plone.app.testing==7.0.0
 
 DIR=$(shell basename $$(pwd))
 ADDON ?= "<%= addonName %>"

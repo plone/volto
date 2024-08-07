@@ -59,6 +59,7 @@ exports[`FileWidget renders a file widget component with value 1`] = `
             <button
               aria-label="delete file"
               class="ui basic icon button delete-button"
+              type="button"
             >
               <svg
                 class="icon"
@@ -134,6 +135,7 @@ exports[`FileWidget renders a file widget component with value in raw data 1`] =
             <button
               aria-label="delete file"
               class="ui basic icon button delete-button"
+              type="button"
             >
               <svg
                 class="icon"

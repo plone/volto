@@ -1,4 +1,4 @@
-# Translation of plone.pot to EU
+# Translation of volto.pot to EU
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
@@ -15,3 +15,5 @@ msgstr ""
 "Language-Code: eu\n"
 "Language-Name: eu\n"
 "Preferred-Encodings: utf-8 latin1\n"
+
+

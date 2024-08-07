@@ -5,14 +5,14 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { map, remove } from 'lodash';
-import { Button, Segment, Table, Form } from 'semantic-ui-react';
-import { Portal } from 'react-portal';
+import { isEmpty, map, remove } from 'lodash';
+import { Button, Table } from 'semantic-ui-react';
 import cx from 'classnames';
-import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 
 import Cell from './Cell';
-import { Field, Icon } from '@plone/volto/components';
+import { BlockDataForm, Icon, SidebarPortal } from '@plone/volto/components';
+import TableSchema from './schema';
 
 import rowBeforeSVG from '@plone/volto/icons/row-before.svg';
 import rowAfterSVG from '@plone/volto/icons/row-after.svg';
@@ -130,42 +130,6 @@ const messages = defineMessages({
     id: 'Delete col',
     defaultMessage: 'Delete col',
   },
-  hideHeaders: {
-    id: 'Hide headers',
-    defaultMessage: 'Hide headers',
-  },
-  sortable: {
-    id: 'Make the table sortable',
-    defaultMessage: 'Make the table sortable',
-  },
-  sortableDescription: {
-    id: 'Visible only in view mode',
-    defaultMessage: 'Visible only in view mode',
-  },
-  fixed: {
-    id: 'Fixed width table cells',
-    defaultMessage: 'Fixed width table cells',
-  },
-  compact: {
-    id: 'Make the table compact',
-    defaultMessage: 'Make the table compact',
-  },
-  basic: {
-    id: 'Reduce complexity',
-    defaultMessage: 'Reduce complexity',
-  },
-  celled: {
-    id: 'Divide each row into separate cells',
-    defaultMessage: 'Divide each row into separate cells',
-  },
-  inverted: {
-    id: 'Table color inverted',
-    defaultMessage: 'Table color inverted',
-  },
-  striped: {
-    id: 'Stripe alternate rows with color',
-    defaultMessage: 'Stripe alternate rows with color',
-  },
   left: {
     id: 'Left',
     defaultMessage: 'Left',
@@ -255,15 +219,6 @@ class Edit extends Component {
     this.onDeleteCol = this.onDeleteCol.bind(this);
     this.onChangeCell = this.onChangeCell.bind(this);
     this.toggleCellType = this.toggleCellType.bind(this);
-    this.toggleBool = this.toggleBool.bind(this);
-    this.toggleHideHeaders = this.toggleHideHeaders.bind(this);
-    this.toggleSortable = this.toggleSortable.bind(this);
-    this.toggleFixed = this.toggleFixed.bind(this);
-    this.toggleCompact = this.toggleCompact.bind(this);
-    this.toggleBasic = this.toggleBasic.bind(this);
-    this.toggleCelled = this.toggleCelled.bind(this);
-    this.toggleInverted = this.toggleInverted.bind(this);
-    this.toggleStriped = this.toggleStriped.bind(this);
   }
 
   /**
@@ -272,7 +227,7 @@ class Edit extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    if (!this.props.data.table) {
+    if (!this.props.data.table || isEmpty(this.props.data.table)) {
       this.props.onChangeBlock(this.props.block, {
         ...this.props.data,
         table: initialTable,
@@ -288,7 +243,7 @@ class Edit extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
-    if (!nextProps.data.table) {
+    if (!nextProps.data.table || isEmpty(nextProps.data.table)) {
       this.props.onChangeBlock(nextProps.block, {
         ...nextProps.data,
         table: initialTable,
@@ -519,95 +474,6 @@ class Edit extends Component {
     });
   }
 
-  /**
-   * Toggles bool state data ('fixed', 'compact' etc. can be true or false).
-   * @method toggleBool
-   * @param {string} value Key in the table state to toggle.
-   * @returns {undefined}
-   */
-  toggleBool(value) {
-    const table = this.props.data.table;
-    this.props.onChangeBlock(this.props.block, {
-      ...this.props.data,
-      table: {
-        ...table,
-        [value]: !table[value],
-      },
-    });
-  }
-
-  /**
-   * Toggle fixed
-   * @method toggleHideHeaders
-   * @returns {undefined}
-   */
-  toggleHideHeaders() {
-    this.toggleBool('hideHeaders');
-  }
-
-  /**
-   * Toggle sortable
-   * @method toggleSortable
-   * @returns {undefined}
-   */
-  toggleSortable() {
-    this.toggleBool('sortable');
-  }
-
-  /**
-   * Toggle fixed
-   * @method toggleFixed
-   * @returns {undefined}
-   */
-  toggleFixed() {
-    this.toggleBool('fixed');
-  }
-
-  /**
-   * Toggle compact
-   * @method toggleCompact
-   * @returns {undefined}
-   */
-  toggleCompact() {
-    this.toggleBool('compact');
-  }
-
-  /**
-   * Toggle basic
-   * @method toggleBasic
-   * @returns {undefined}
-   */
-  toggleBasic() {
-    this.toggleBool('basic');
-  }
-
-  /**
-   * Toggle celled
-   * @method toggleCelled
-   * @returns {undefined}
-   */
-  toggleCelled() {
-    this.toggleBool('celled');
-  }
-
-  /**
-   * Toggle inverted
-   * @method toggleInverted
-   * @returns {undefined}
-   */
-  toggleInverted() {
-    this.toggleBool('inverted');
-  }
-
-  /**
-   * Toggle striped
-   * @method toggleStriped
-   * @returns {undefined}
-   */
-  toggleStriped() {
-    this.toggleBool('striped');
-  }
-
   componentDidUpdate(prevProps) {
     if (prevProps.selected && !this.props.selected) {
       this.setState({ selected: null });
@@ -623,6 +489,7 @@ class Edit extends Component {
     const headers = this.props.data.table?.rows?.[0]?.cells || [];
     const rows =
       this.props.data.table?.rows?.filter((_, index) => index > 0) || [];
+    const schema = TableSchema(this.props);
 
     return (
       // TODO: use slate-table instead of table, but first copy the CSS styles
@@ -661,10 +528,7 @@ class Edit extends Component {
                 icon
                 basic
                 onClick={this.onDeleteRow}
-                disabled={
-                  this.props.data.table &&
-                  this.props.data.table.rows.length === 1
-                }
+                disabled={this.props.data.table?.rows?.length === 1}
                 title={this.props.intl.formatMessage(messages.deleteRow)}
                 aria-label={this.props.intl.formatMessage(messages.deleteRow)}
               >
@@ -702,10 +566,7 @@ class Edit extends Component {
                 icon
                 basic
                 onClick={this.onDeleteCol}
-                disabled={
-                  this.props.data.table &&
-                  this.props.data.table.rows[0].cells.length === 1
-                }
+                disabled={this.props.data.table?.rows?.[0].cells.length === 1}
                 title={this.props.intl.formatMessage(messages.deleteCol)}
                 aria-label={this.props.intl.formatMessage(messages.deleteCol)}
               >
@@ -802,80 +663,22 @@ class Edit extends Component {
           </Table>
         )}
         {this.props.selected && this.state.selected && this.state.isClient && (
-          <Portal node={document.getElementById('sidebar-properties')}>
-            <Form method="post" onSubmit={(event) => event.preventDefault()}>
-              <Segment secondary attached>
-                <FormattedMessage id="Table" defaultMessage="Table" />
-              </Segment>
-              <Segment attached>
-                <Field
-                  id="hideHeaders"
-                  title={this.props.intl.formatMessage(messages.hideHeaders)}
-                  type="boolean"
-                  value={
-                    this.props.data.table && this.props.data.table.hideHeaders
-                  }
-                  onChange={() => this.toggleHideHeaders()}
-                />
-                <Field
-                  id="sortable"
-                  title={this.props.intl.formatMessage(messages.sortable)}
-                  description={this.props.intl.formatMessage(
-                    messages.sortableDescription,
-                  )}
-                  type="boolean"
-                  value={
-                    this.props.data.table && this.props.data.table.sortable
-                  }
-                  onChange={() => this.toggleSortable()}
-                />
-                <Field
-                  id="fixed"
-                  title={this.props.intl.formatMessage(messages.fixed)}
-                  type="boolean"
-                  value={this.props.data.table && this.props.data.table.fixed}
-                  onChange={() => this.toggleFixed()}
-                />
-                <Field
-                  id="celled"
-                  title={this.props.intl.formatMessage(messages.celled)}
-                  type="boolean"
-                  value={this.props.data.table && this.props.data.table.celled}
-                  onChange={this.toggleCelled}
-                />
-                <Field
-                  id="striped"
-                  title={this.props.intl.formatMessage(messages.striped)}
-                  type="boolean"
-                  value={this.props.data.table && this.props.data.table.striped}
-                  onChange={this.toggleStriped}
-                />
-                <Field
-                  id="compact"
-                  title={this.props.intl.formatMessage(messages.compact)}
-                  type="boolean"
-                  value={this.props.data.table && this.props.data.table.compact}
-                  onChange={() => this.toggleCompact()}
-                />
-                <Field
-                  id="basic"
-                  title={this.props.intl.formatMessage(messages.basic)}
-                  type="boolean"
-                  value={this.props.data.table && this.props.data.table.basic}
-                  onChange={this.toggleBasic}
-                />
-                <Field
-                  id="inverted"
-                  title={this.props.intl.formatMessage(messages.inverted)}
-                  type="boolean"
-                  value={
-                    this.props.data.table && this.props.data.table.inverted
-                  }
-                  onChange={this.toggleInverted}
-                />
-              </Segment>
-            </Form>
-          </Portal>
+          <SidebarPortal selected={this.props.selected}>
+            <BlockDataForm
+              schema={schema}
+              title={schema.title}
+              onChangeField={(id, value) => {
+                this.props.onChangeBlock(this.props.block, {
+                  ...this.props.data,
+                  [id]: value,
+                });
+              }}
+              onChangeBlock={this.props.onChangeBlock}
+              formData={this.props.data}
+              block={this.props.block}
+              blocksConfig={this.props.blocksConfig}
+            />
+          </SidebarPortal>
         )}
       </div>
     );

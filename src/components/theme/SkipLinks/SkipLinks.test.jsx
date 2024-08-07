@@ -3,6 +3,7 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
+import { PluggablesProvider } from '@plone/volto/components/manage/Pluggable';
 
 import SkipLinks from './SkipLinks';
 
@@ -18,9 +19,11 @@ describe('SkipLinks', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <MemoryRouter>
-          <SkipLinks />
-        </MemoryRouter>
+        <PluggablesProvider>
+          <MemoryRouter>
+            <SkipLinks />
+          </MemoryRouter>
+        </PluggablesProvider>
       </Provider>,
     );
     const json = component.toJSON();

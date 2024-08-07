@@ -1,6 +1,3 @@
-# Gettext Message File for Plone
-# Translators:
-# Leonardo J. Caballero G. <leonardocaballero@gmail.com>, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
@@ -20,3 +17,5 @@ msgstr ""
 "Preferred-Encodings: utf-8\n"
 "Domain: volto\n"
 "X-Is-Fallback-For: es-ar es-bo es-cl es-co es-cr es-do es-ec es-es es-sv es-gt es-hn es-mx es-ni es-pa es-py es-pe es-pr es-us es-uy es-ve\n"
+
+
