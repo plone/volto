@@ -31,10 +31,16 @@ const IndexRoute = IndexImport.update({
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
     '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
     '/$': {
+      id: '/$'
+      path: '/$'
+      fullPath: '/$'
       preLoaderRoute: typeof SplatImport
       parentRoute: typeof rootRoute
     }
@@ -43,6 +49,26 @@ declare module '@tanstack/react-router' {
 
 // Create and export the route tree
 
-export const routeTree = rootRoute.addChildren([IndexRoute, SplatRoute])
+export const routeTree = rootRoute.addChildren({ IndexRoute, SplatRoute })
 
 /* prettier-ignore-end */
+
+/* ROUTE_MANIFEST_START
+{
+  "routes": {
+    "__root__": {
+      "filePath": "__root.tsx",
+      "children": [
+        "/",
+        "/$"
+      ]
+    },
+    "/": {
+      "filePath": "index.tsx"
+    },
+    "/$": {
+      "filePath": "$.tsx"
+    }
+  }
+}
+ROUTE_MANIFEST_END */
