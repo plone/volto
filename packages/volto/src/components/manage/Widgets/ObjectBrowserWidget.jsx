@@ -1,9 +1,4 @@
-/**
- * ObjectBrowserWidget component.
- * @module components/manage/Widgets/ObjectBrowserWidget
- */
-
-import React, { Component } from 'react';
+import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { compact, includes, isArray, isEmpty, remove } from 'lodash';
@@ -49,63 +44,14 @@ const messages = defineMessages({
   },
 });
 
-/**
- * ObjectBrowserWidget component class.
- * @class ObjectBrowserWidget
- * @extends Component
- */
-export class ObjectBrowserWidgetComponent extends Component {
-  /**
-   * Property types.
-   * @property {Object} propTypes Property types.
-   * @static
-   */
-  static propTypes = {
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string,
-    mode: PropTypes.string, // link, image, multiple
-    return: PropTypes.string, // single, multiple
-    initialPath: PropTypes.string,
-    required: PropTypes.bool,
-    error: PropTypes.arrayOf(PropTypes.string),
-    value: PropTypes.oneOfType([
-      PropTypes.arrayOf(PropTypes.object),
-      PropTypes.object,
-    ]),
-    onChange: PropTypes.func.isRequired,
-    openObjectBrowser: PropTypes.func.isRequired,
-    allowExternals: PropTypes.bool,
-    placeholder: PropTypes.string,
-  };
+const ObjectBrowserWidgetComponent = (props) => {
+  const [manualLinkInput, setManualLinkInput] = useState('');
+  const [validURL, setValidURL] = useState(false);
 
-  /**
-   * Default properties
-   * @property {Object} defaultProps Default properties.
-   * @static
-   */
-  static defaultProps = {
-    description: null,
-    required: false,
-    error: [],
-    value: [],
-    mode: 'multiple',
-    return: 'multiple',
-    initialPath: '',
-    allowExternals: false,
-  };
+  const selectedItemsRef = useRef(null);
+  const placeholderRef = useRef(null);
 
-  state = {
-    manualLinkInput: '',
-    validURL: false,
-  };
-
-  constructor(props) {
-    super(props);
-    this.selectedItemsRef = React.createRef();
-    this.placeholderRef = React.createRef();
-  }
-  renderLabel(item) {
+  const renderLabel = (item) => {
     const href = item['@id'];
     return (
       <Popup
@@ -134,14 +80,14 @@ export class ObjectBrowserWidgetComponent extends Component {
               )}
             </div>
             <div>
-              {this.props.mode === 'multiple' && (
+              {props.mode === 'multiple' && (
                 <Icon
                   name={clearSVG}
                   size="12px"
                   className="right"
                   onClick={(event) => {
                     event.preventDefault();
-                    this.removeItem(item);
+                    removeItem(item);
                   }}
                 />
               )}
@@ -150,26 +96,24 @@ export class ObjectBrowserWidgetComponent extends Component {
         }
       />
     );
-  }
+  };
 
-  removeItem = (item) => {
-    let value = [...this.props.value];
+  const removeItem = (item) => {
+    let value = [...props.value];
     remove(value, function (_item) {
       return _item['@id'] === item['@id'];
     });
-    this.props.onChange(this.props.id, value);
+    props.onChange(props.id, value);
   };
 
-  onChange = (item) => {
+  const handleChange = (item) => {
     let value =
-      this.props.mode === 'multiple' && this.props.value
-        ? [...this.props.value]
-        : [];
+      props.mode === 'multiple' && props.value ? [...props.value] : [];
     value = value.filter((item) => item != null);
     const maxSize =
-      this.props.widgetOptions?.pattern_options?.maximumSelectionSize || -1;
+      props.widgetOptions?.pattern_options?.maximumSelectionSize || -1;
     if (maxSize === 1 && value.length === 1) {
-      value = []; //enable replace of selected item with another value, if maxsize is 1
+      value = [];
     }
     let exists = false;
     let index = -1;
@@ -179,20 +123,10 @@ export class ObjectBrowserWidgetComponent extends Component {
         index = _index;
       }
     });
-    //find(value, {
-    //   '@id': flattenToAppURL(item['@id']),
-    // });
     if (!exists) {
-      // add item
-      // Check if we want to filter the attributes of the selected item
       let resultantItem = item;
-      if (this.props.selectedItemAttrs) {
-        const allowedItemKeys = [
-          ...this.props.selectedItemAttrs,
-          // Add the required attributes for the widget to work
-          '@id',
-          'title',
-        ];
+      if (props.selectedItemAttrs) {
+        const allowedItemKeys = [...props.selectedItemAttrs, '@id', 'title'];
         resultantItem = Object.keys(item)
           .filter((key) => allowedItemKeys.includes(key))
           .reduce((obj, key) => {
@@ -200,60 +134,57 @@ export class ObjectBrowserWidgetComponent extends Component {
             return obj;
           }, {});
       }
-      // Add required @id field, just in case
       resultantItem = { ...resultantItem, '@id': item['@id'] };
       value.push(resultantItem);
-      if (this.props.return === 'single') {
-        this.props.onChange(this.props.id, value[0]);
+      if (props.return === 'single') {
+        props.onChange(props.id, value[0]);
       } else {
-        this.props.onChange(this.props.id, value);
+        props.onChange(props.id, value);
       }
     } else {
-      //remove item
       value.splice(index, 1);
-      this.props.onChange(this.props.id, value);
+      props.onChange(props.id, value);
     }
   };
 
-  onManualLinkInput = (e) => {
-    this.setState({ manualLinkInput: e.target.value });
-    if (this.validateManualLink(e.target.value)) {
-      this.setState({ validURL: true });
+  const onManualLinkInput = (e) => {
+    setManualLinkInput(e.target.value);
+    if (validateManualLink(e.target.value)) {
+      setValidURL(true);
     } else {
-      this.setState({ validURL: false });
+      setValidURL(false);
     }
   };
 
-  validateManualLink = (url) => {
-    if (this.props.allowExternals) {
+  const validateManualLink = (url) => {
+    if (props.allowExternals) {
       return isUrl(url);
     } else {
       return isInternalURL(url);
     }
   };
 
-  onSubmitManualLink = () => {
-    if (this.validateManualLink(this.state.manualLinkInput)) {
-      if (isInternalURL(this.state.manualLinkInput)) {
-        const link = this.state.manualLinkInput;
-        // convert it into an internal on if possible
-        this.props
+  const onSubmitManualLink = () => {
+    if (validateManualLink(manualLinkInput)) {
+      if (isInternalURL(manualLinkInput)) {
+        const link = manualLinkInput;
+        props
           .searchContent(
             '/',
             {
-              'path.query': flattenToAppURL(this.state.manualLinkInput),
+              'path.query': flattenToAppURL(manualLinkInput),
               'path.depth': '0',
               sort_on: 'getObjPositionInParent',
               metadata_fields: '_all',
               b_size: 1000,
             },
-            `${this.props.block}-${this.props.mode}`,
+            `${props.block}-${props.mode}`,
           )
           .then((resp) => {
             if (resp.items?.length > 0) {
-              this.onChange(resp.items[0]);
+              handleChange(resp.items[0]);
             } else {
-              this.props.onChange(this.props.id, [
+              props.onChange(props.id, [
                 {
                   '@id': flattenToAppURL(link),
                   title: removeProtocol(link),
@@ -262,22 +193,23 @@ export class ObjectBrowserWidgetComponent extends Component {
             }
           });
       } else {
-        this.props.onChange(this.props.id, [
+        props.onChange(props.id, [
           {
-            '@id': normalizeUrl(this.state.manualLinkInput),
-            title: removeProtocol(this.state.manualLinkInput),
+            '@id': normalizeUrl(manualLinkInput),
+            title: removeProtocol(manualLinkInput),
           },
         ]);
       }
-      this.setState({ validURL: true, manualLinkInput: '' });
+      setValidURL(true);
+      setManualLinkInput('');
     }
   };
 
-  onKeyDownManualLink = (e) => {
+  const onKeyDownManualLink = (e) => {
     if (e.key === 'Enter') {
       e.preventDefault();
       e.stopPropagation();
-      this.onSubmitManualLink();
+      onSubmitManualLink();
     } else if (e.key === 'Escape') {
       e.preventDefault();
       e.stopPropagation();
@@ -285,141 +217,154 @@ export class ObjectBrowserWidgetComponent extends Component {
     }
   };
 
-  showObjectBrowser = (ev) => {
+  const showObjectBrowser = (ev) => {
     ev.preventDefault();
-    this.props.openObjectBrowser({
-      mode: this.props.mode,
-      currentPath: this.props.initialPath || this.props.location.pathname,
+    props.openObjectBrowser({
+      mode: props.mode,
+      currentPath: props.initialPath || props.location.pathname,
       propDataName: 'value',
       onSelectItem: (url, item) => {
-        this.onChange(item);
+        handleChange(item);
       },
       selectableTypes:
-        this.props.widgetOptions?.pattern_options?.selectableTypes ||
-        this.props.selectableTypes,
+        props.widgetOptions?.pattern_options?.selectableTypes ||
+        props.selectableTypes,
       maximumSelectionSize:
-        this.props.widgetOptions?.pattern_options?.maximumSelectionSize ||
-        this.props.maximumSelectionSize,
+        props.widgetOptions?.pattern_options?.maximumSelectionSize ||
+        props.maximumSelectionSize,
     });
   };
 
-  handleSelectedItemsRefClick = (e) => {
-    if (this.props.isDisabled) {
+  const handleSelectedItemsRefClick = (e) => {
+    if (props.isDisabled) {
       return;
     }
 
     if (
-      e.target.contains(this.selectedItemsRef.current) ||
-      e.target.contains(this.placeholderRef.current)
+      e.target.contains(selectedItemsRef.current) ||
+      e.target.contains(placeholderRef.current)
     ) {
-      this.showObjectBrowser(e);
+      showObjectBrowser(e);
     }
   };
 
-  /**
-   * Render method.
-   * @method render
-   * @returns {string} Markup for the component.
-   */
-  render() {
-    const { id, description, fieldSet, value, mode, onChange, isDisabled } =
-      this.props;
+  const { id, description, fieldSet, value, mode, onChange, isDisabled, intl } =
+    props;
 
-    let items = compact(!isArray(value) && value ? [value] : value || []);
+  let items = compact(!isArray(value) && value ? [value] : value || []);
 
-    let icon =
-      mode === 'multiple' || items.length === 0 ? navTreeSVG : clearSVG;
-    let iconAction =
-      mode === 'multiple' || items.length === 0
-        ? this.showObjectBrowser
-        : (e) => {
-            e.preventDefault();
-            onChange(id, this.props.return === 'single' ? null : []);
-          };
+  let icon = mode === 'multiple' || items.length === 0 ? navTreeSVG : clearSVG;
+  let iconAction =
+    mode === 'multiple' || items.length === 0
+      ? showObjectBrowser
+      : (e) => {
+          e.preventDefault();
+          onChange(id, props.return === 'single' ? null : []);
+        };
 
-    return (
-      <FormFieldWrapper
-        {...this.props}
-        className={description ? 'help text' : 'text'}
+  return (
+    <FormFieldWrapper {...props} className={description ? 'help text' : 'text'}>
+      <div
+        className="objectbrowser-field"
+        aria-labelledby={`fieldset-${fieldSet || 'default'}-field-label-${id}`}
       >
         <div
-          className="objectbrowser-field"
-          aria-labelledby={`fieldset-${
-            fieldSet || 'default'
-          }-field-label-${id}`}
+          className="selected-values"
+          onClick={handleSelectedItemsRefClick}
+          onKeyDown={handleSelectedItemsRefClick}
+          role="searchbox"
+          tabIndex={0}
+          ref={selectedItemsRef}
         >
-          <div
-            className="selected-values"
-            onClick={this.handleSelectedItemsRefClick}
-            onKeyDown={this.handleSelectedItemsRefClick}
-            role="searchbox"
-            tabIndex={0}
-            ref={this.selectedItemsRef}
-          >
-            {items.map((item) => this.renderLabel(item))}
+          {items.map((item) => renderLabel(item))}
 
-            {items.length === 0 && this.props.mode === 'multiple' && (
-              <div className="placeholder" ref={this.placeholderRef}>
-                {this.props.placeholder ??
-                  this.props.intl.formatMessage(messages.placeholder)}
-              </div>
+          {items.length === 0 && props.mode === 'multiple' && (
+            <div className="placeholder" ref={placeholderRef}>
+              {props.placeholder ?? intl.formatMessage(messages.placeholder)}
+            </div>
+          )}
+          {props.allowExternals &&
+            items.length === 0 &&
+            props.mode !== 'multiple' && (
+              <input
+                onKeyDown={onKeyDownManualLink}
+                onChange={onManualLinkInput}
+                value={manualLinkInput}
+                placeholder={
+                  props.placeholder ?? intl.formatMessage(messages.placeholder)
+                }
+              />
             )}
-            {this.props.allowExternals &&
-              items.length === 0 &&
-              this.props.mode !== 'multiple' && (
-                <input
-                  onKeyDown={this.onKeyDownManualLink}
-                  onChange={this.onManualLinkInput}
-                  value={this.state.manualLinkInput}
-                  placeholder={
-                    this.props.placeholder ??
-                    this.props.intl.formatMessage(messages.placeholder)
-                  }
-                />
-              )}
-          </div>
-          {this.state.manualLinkInput && isEmpty(items) && (
-            <Button.Group>
-              <Button
-                basic
-                className="cancel"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  this.setState({ manualLinkInput: '' });
-                }}
-              >
-                <Icon name={clearSVG} size="18px" color="#e40166" />
-              </Button>
-              <Button
-                basic
-                primary
-                disabled={!this.state.validURL}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  this.onSubmitManualLink();
-                }}
-              >
-                <Icon name={aheadSVG} size="18px" />
-              </Button>
-            </Button.Group>
-          )}
-          {!this.state.manualLinkInput && (
-            <Button
-              aria-label={this.props.intl.formatMessage(
-                messages.openObjectBrowser,
-              )}
-              onClick={iconAction}
-              className="action"
-              disabled={isDisabled}
-            >
-              <Icon name={icon} size="18px" />
-            </Button>
-          )}
         </div>
-      </FormFieldWrapper>
-    );
-  }
-}
+        {manualLinkInput && isEmpty(items) && (
+          <Button.Group>
+            <Button
+              basic
+              className="cancel"
+              onClick={(e) => {
+                e.stopPropagation();
+                setManualLinkInput('');
+              }}
+            >
+              <Icon name={clearSVG} size="18px" color="#e40166" />
+            </Button>
+            <Button
+              basic
+              primary
+              disabled={!validURL}
+              onClick={(e) => {
+                e.stopPropagation();
+                onSubmitManualLink();
+              }}
+            >
+              <Icon name={aheadSVG} size="18px" />
+            </Button>
+          </Button.Group>
+        )}
+        {!manualLinkInput && (
+          <Button
+            aria-label={intl.formatMessage(messages.openObjectBrowser)}
+            onClick={iconAction}
+            className="action"
+            disabled={isDisabled}
+          >
+            <Icon name={icon} size="18px" />
+          </Button>
+        )}
+      </div>
+    </FormFieldWrapper>
+  );
+};
+
+ObjectBrowserWidgetComponent.propTypes = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string,
+  mode: PropTypes.string,
+  return: PropTypes.string,
+  initialPath: PropTypes.string,
+  required: PropTypes.bool,
+  error: PropTypes.arrayOf(PropTypes.string),
+  value: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.object),
+    PropTypes.object,
+  ]),
+  onChange: PropTypes.func.isRequired,
+  openObjectBrowser: PropTypes.func.isRequired,
+  allowExternals: PropTypes.bool,
+  placeholder: PropTypes.string,
+};
+
+ObjectBrowserWidgetComponent.defaultProps = {
+  description: null,
+  required: false,
+  error: [],
+  value: [],
+  mode: 'multiple',
+  return: 'multiple',
+  initialPath: '',
+  allowExternals: false,
+};
 
 const ObjectBrowserWidgetMode = (mode) =>
   compose(
@@ -428,6 +373,7 @@ const ObjectBrowserWidgetMode = (mode) =>
     withRouter,
     connect(null, { searchContent }),
   )((props) => <ObjectBrowserWidgetComponent {...props} mode={mode} />);
+
 export { ObjectBrowserWidgetMode };
 export default compose(
   injectIntl,
