@@ -29,6 +29,7 @@ export {
   normalizeUrl,
   removeProtocol,
   URLUtils,
+  addPrefixPath,
   flattenScales,
   getFieldURL,
 } from '@plone/volto/helpers/Url/Url';

@@ -17,8 +17,9 @@ export const getAPIResourceWithAuth = (req) =>
   new Promise((resolve, reject) => {
     const { settings } = config;
     const APISUFIX = settings.legacyTraverse ? '' : '/++api++';
-
+    const prefix = settings.prefixPath;
     let apiPath = '';
+
     if (settings.internalApiPath && __SERVER__) {
       apiPath = settings.internalApiPath;
     } else if (__DEVELOPMENT__ && settings.devProxyToApiPath) {
@@ -26,8 +27,16 @@ export const getAPIResourceWithAuth = (req) =>
     } else {
       apiPath = settings.apiPath;
     }
+
+    let path = req.path;
+
+    if (prefix && path.match(new RegExp(`^${prefix}(/|$)`))) {
+      //if path starts with prefixPath
+      path = path.slice(prefix.length);
+    }
+
     const request = superagent
-      .get(`${apiPath}${__DEVELOPMENT__ ? '' : APISUFIX}${req.path}`)
+      .get(`${apiPath}${__DEVELOPMENT__ ? '' : APISUFIX}${path}`)
       .maxResponseSize(settings.maxResponseSize)
       .responseType('blob');
     const authToken = req.universalCookies.get('auth_token');
