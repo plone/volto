@@ -8,6 +8,7 @@ exports[`renders an edit video block component 1`] = `
     className="video-inner"
   >
     <div
+      aria-label="Play Video"
       className="ui 16:9 embed"
       onClick={[Function]}
       onKeyPress={[Function]}
