@@ -11,6 +11,14 @@ myst:
 
 # Finding links and references to the current page
 
+```{versionadded} Volto 16.28.0
+This feature was added in Volto 16.28.0, but it was disabled by default.
+```
+
+```{versionchanged} Volto 17.0.0-alpha.19
+This feature is now enabled by default.
+```
+
 Sometimes it can be hard to keep track from where a certain page is referenced.
 This is especially true whenever you want to reconstruct your website with a greater number of objects being moved or deleted.
 For this situation, you can visit the {guilabel}`Links and references` page, which is an overview of all content items that reference a certain content item.
@@ -23,6 +31,15 @@ An item references another item by creating a hyperlink to this item, using the 
 
 In the toolbar on the left side, you can click on the item with the three horizontally aligned dots, called {guilabel}`More menu`.
 Click then on the item labeled {guilabel}`Links and references`.
+
+````{note}
+If you do not see {guilabel}`Links and references`, then you either have a version of Volto that does not support this feature, or this feature has not been enabled on your site.
+In either case, contact your site administrator for assistance.
+
+```{seealso}
+{term}`excludeLinksAndReferencesMenuItem`
+```
+````
 
 You can see now a table displaying all links to and references of the current item.
 
