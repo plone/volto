@@ -41,7 +41,6 @@ import moreSVG from '@plone/volto/icons/more.svg';
 import userSVG from '@plone/volto/icons/user.svg';
 import backSVG from '@plone/volto/icons/back.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
-import { useContent } from '@plone/volto/hooks/content/useContent';
 
 const messages = defineMessages({
   edit: {
@@ -132,7 +131,7 @@ const Toolbar = (props) => {
 
   const actions = useSelector((state) => state.actions.actions, shallowEqual);
 
-  const content = useContent();
+  const content = useSelector((state) => state.content?.data, shallowEqual);
   const unlockRequest = useSelector((state) => state.content?.unlock);
 
   const token = useSelector((state) => state.userSession.token, shallowEqual);
