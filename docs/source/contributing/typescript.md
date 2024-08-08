@@ -17,7 +17,10 @@ ESlint has been configured in order to accept code base written both in JavaScri
 TypeScript in projects and add-ons has been supported since Volto 14.
 It is now supported in the project generator by default.
 
-## TypeScript in core
+
+(typescript-policy-in-core-label)=
+
+## TypeScript policy in core
 
 The internal policy for TypeScript support in Volto core will be as follows.
 
@@ -44,30 +47,10 @@ If you use the Volto generator, TypeScript is enabled by default, and you can al
 
 ### Enable it in your Volto 17 project
 
-If you already use Volto 17 in your projects, using a boilerplate generated before Volto 17.0.0-alpha.27 and the generator 7.0.0-alpha.7, you can enable TypeScript support as follows:
+If you already use Volto 17 in your projects, using a boilerplate generated before Volto 17.0.0-alpha.27 and the generator 7.0.0-alpha.7, you can enable TypeScript support as follows.
 
-Edit your {file}`package.json`:
-
-```diff
--    "lint": "./node_modules/eslint/bin/eslint.js --max-warnings=0 'src/**/*.{js,jsx}'",
--    "lint:fix": "./node_modules/eslint/bin/eslint.js --max-warnings=0 --fix 'src/**/*.{js,jsx}'",
--    "lint:ci": "./node_modules/eslint/bin/eslint.js --max-warnings=0 -f checkstyle 'src/**/*.{js,jsx}' > eslint.xml",
-+    "lint": "./node_modules/eslint/bin/eslint.js --max-warnings=0 'src/**/*.{js,jsx,ts,tsx,json}'",
-+    "lint:fix": "./node_modules/eslint/bin/eslint.js --fix 'src/**/*.{js,jsx,ts,tsx,json}'",
-+    "lint:ci": "./node_modules/eslint/bin/eslint.js --max-warnings=0 -f checkstyle 'src/**/*.{js,jsx,ts,tsx,json}' > eslint.xml",
-```
-
-```diff
-"devDependencies": {
-+     "@plone/scripts": ^3.0.0,
-+     "@typescript-eslint/eslint-plugin": "6.7.0",
-+     "@typescript-eslint/parser": "6.7.0",
-+     "stylelint-prettier": "1.1.2",
-+     "ts-jest": "^26.4.2",
-+     "ts-loader": "9.4.4",
-+     "typescript": "5.2.2"
-}
-```
+Edit your {file}`package.json` to align with that in the Volto repo.
+You will need to modify [`lint` in the scripts section](https://github.com/plone/volto/blob/17.x.x/packages/generator-volto/generators/app/templates/package.json.tpl#L10-L12) and the [`devDependencies` section](https://github.com/plone/volto/blob/17.x.x/packages/generator-volto/generators/app/templates/package.json.tpl#L139-L161).
 
 ```{note}
 After making this change, you might experience hoisting problems and some packages can't be found on start.

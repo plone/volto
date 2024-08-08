@@ -1,0 +1,1 @@
+Fix `Teaser` block image override option to render external images and internal images pointing to image scales. @Tishasoumya-02
