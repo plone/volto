@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppExtras can take string extra parameters to be used from the actual component 1`] = `
+Array [
+  <div
+    className="everywhere"
+  >
+    /all-blogs/1
+  </div>,
+  <div
+    className="blog-listing"
+    one="two"
+    three="four"
+  />,
+]
+`;
+
+exports[`AppExtras can take string path as match 1`] = `
+Array [
+  <div
+    className="everywhere"
+  >
+    /something
+  </div>,
+  <div
+    className="something"
+  >
+    {"path":"/something","url":"/something","isExact":true,"params":{}}
+  </div>,
+]
+`;
+
+exports[`AppExtras ignore property works 1`] = `
+Array [
+  <div
+    className="everywhere"
+  >
+    /frontpage
+  </div>,
+  <div
+    className="frontpage-content"
+  >
+    {"path":"/frontpage","url":"/frontpage","isExact":true,"params":{}}
+  </div>,
+]
+`;
+
+exports[`AppExtras ignore property works 2`] = `
+<div
+  className="everywhere"
+>
+  /frontpage/images
+</div>
+`;
+
+exports[`AppExtras renders 2 app extras on specific path /blog/edit 1`] = `
+Array [
+  <div
+    className="everywhere"
+  >
+    /blog/edit
+  </div>,
+  <div
+    className="blog-edit"
+  />,
+]
+`;
+
+exports[`AppExtras renders one app extras registered on empty string 1`] = `
+<div
+  className="everywhere"
+>
+  /
+</div>
+`;
+
+exports[`AppExtras renders other 2 app extras on exact path /blog 1`] = `
+Array [
+  <div
+    className="everywhere"
+  >
+    /blog
+  </div>,
+  <div
+    className="blog-view"
+  >
+    {"path":"/blog","url":"/blog","isExact":true,"params":{}}
+  </div>,
+]
+`;
