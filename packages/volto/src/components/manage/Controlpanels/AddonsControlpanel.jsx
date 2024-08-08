@@ -445,28 +445,27 @@ const AddonsControlpanel = (props) => {
         )}
       </Segment.Group>
 
-
       {isClient &&
-          createPortal(
-            <Toolbar
-              pathname={pathname}
-              hideDefaultViewButtons
-              inner={
-                <>
-                  <Link to="/controlpanel" className="item">
-                    <Icon
-                      name={backSVG}
-                      aria-label={intl.formatMessage(messages.back)}
-                      className="contents circled"
-                      size="30px"
-                      title={intl.formatMessage(messages.back)}
-                    />
-                  </Link>
-                </>
-              }
-            />,
-            document.getElementById('toolbar'),
-          )}
+        createPortal(
+          <Toolbar
+            pathname={pathname}
+            hideDefaultViewButtons
+            inner={
+              <>
+                <Link to="/controlpanel" className="item">
+                  <Icon
+                    name={backSVG}
+                    aria-label={intl.formatMessage(messages.back)}
+                    className="contents circled"
+                    size="30px"
+                    title={intl.formatMessage(messages.back)}
+                  />
+                </Link>
+              </>
+            }
+          />,
+          document.getElementById('toolbar'),
+        )}
     </Container>
   );
 };
