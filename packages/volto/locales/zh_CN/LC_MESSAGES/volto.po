@@ -919,6 +919,11 @@ msgstr "数据库位置"
 msgid "Database Size"
 msgstr "数据库大小"
 
+#. Default: "The Database Manager allow you to view database status information"
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Database information"
+msgstr ""
+
 #. Default: "Database main"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Database main"
@@ -3630,11 +3635,6 @@ msgstr "文本"
 #: components/theme/Unauthorized/Unauthorized
 msgid "Thank you."
 msgstr ""
-
-#. Default: "The Database Manager allow you to view database status information"
-#: components/manage/Controlpanels/DatabaseInformation
-msgid "The Database Manager allow you to view database status information"
-msgstr "数据库管理器允许您查看数据库状态信息"
 
 #. Default: "The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again."
 #: components/theme/RequestTimeout/RequestTimeout

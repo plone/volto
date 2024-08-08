@@ -913,6 +913,11 @@ msgstr "Locația bazei de date"
 msgid "Database Size"
 msgstr "Dimensiunea bazei de date"
 
+#. Default: "The Database Manager allow you to view database status information"
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Database information"
+msgstr ""
+
 #. Default: "Database main"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Database main"
@@ -3624,11 +3629,6 @@ msgstr "Text"
 #: components/theme/Unauthorized/Unauthorized
 msgid "Thank you."
 msgstr "Mulțumesc."
-
-#. Default: "The Database Manager allow you to view database status information"
-#: components/manage/Controlpanels/DatabaseInformation
-msgid "The Database Manager allow you to view database status information"
-msgstr "Managerul bazei de date vă permite să vizualizați informațiile despre starea bazei de date"
 
 #. Default: "The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again."
 #: components/theme/RequestTimeout/RequestTimeout

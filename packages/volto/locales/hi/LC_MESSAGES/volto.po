@@ -913,6 +913,11 @@ msgstr "डेटाबेस स्थान"
 msgid "Database Size"
 msgstr "डेटाबेस आकार"
 
+#. Default: "The Database Manager allow you to view database status information"
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Database information"
+msgstr ""
+
 #. Default: "Database main"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Database main"
@@ -3624,11 +3629,6 @@ msgstr "टेक्स्ट"
 #: components/theme/Unauthorized/Unauthorized
 msgid "Thank you."
 msgstr "धन्यवाद।"
-
-#. Default: "The Database Manager allow you to view database status information"
-#: components/manage/Controlpanels/DatabaseInformation
-msgid "The Database Manager allow you to view database status information"
-msgstr "डेटाबेस प्रबंधक आपको डेटाबेस स्थिति जानकारी देखने की सुविधा प्रदान करता है"
 
 #. Default: "The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again."
 #: components/theme/RequestTimeout/RequestTimeout

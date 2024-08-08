@@ -920,6 +920,11 @@ msgstr "Localisation de la base de donnée"
 msgid "Database Size"
 msgstr "Taille de la basse de donnée"
 
+#. Default: "The Database Manager allow you to view database status information"
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Database information"
+msgstr ""
+
 #. Default: "Database main"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Database main"
@@ -3631,11 +3636,6 @@ msgstr "Texte"
 #: components/theme/Unauthorized/Unauthorized
 msgid "Thank you."
 msgstr "Merci."
-
-#. Default: "The Database Manager allow you to view database status information"
-#: components/manage/Controlpanels/DatabaseInformation
-msgid "The Database Manager allow you to view database status information"
-msgstr "Le gestionnaire de base de données vous permet d'afficher les informations d'état de la base de données"
 
 #. Default: "The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again."
 #: components/theme/RequestTimeout/RequestTimeout

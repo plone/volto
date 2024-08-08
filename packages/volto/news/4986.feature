@@ -1,0 +1,1 @@
+Refactor Controlpanel databaseInformation from class component to functional component. @Tishasoumya-02

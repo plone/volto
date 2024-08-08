@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2024-08-02T16:48:19.008Z\n"
+"POT-Creation-Date: 2024-08-07T14:32:29.146Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -913,6 +913,11 @@ msgstr ""
 #. Default: "Database Size"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Database Size"
+msgstr ""
+
+#. Default: "The Database Manager allow you to view database status information"
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Database information"
 msgstr ""
 
 #. Default: "Database main"
@@ -3625,11 +3630,6 @@ msgstr ""
 #: components/theme/RequestTimeout/RequestTimeout
 #: components/theme/Unauthorized/Unauthorized
 msgid "Thank you."
-msgstr ""
-
-#. Default: "The Database Manager allow you to view database status information"
-#: components/manage/Controlpanels/DatabaseInformation
-msgid "The Database Manager allow you to view database status information"
 msgstr ""
 
 #. Default: "The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again."
