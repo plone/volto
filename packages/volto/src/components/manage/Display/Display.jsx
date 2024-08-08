@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
@@ -110,136 +110,114 @@ const customSelectStyles = {
   }),
 };
 
-/**
- * Display container class.
- * @class Display
- * @extends Component
- */
-class DisplaySelect extends Component {
-  /**
-   * Property types.
-   * @property {Object} propTypes Property types.
-   * @static
-   */
-  static propTypes = {
-    getSchema: PropTypes.func.isRequired,
-    updateContent: PropTypes.func.isRequired,
-    getContent: PropTypes.func.isRequired,
-    loaded: PropTypes.bool.isRequired,
-    pathname: PropTypes.string.isRequired,
-    layouts: PropTypes.arrayOf(PropTypes.string),
-    layout: PropTypes.string,
-    type: PropTypes.string.isRequired,
-  };
+const DisplaySelect = (props) => {
+  const {
+    layout,
+    intl,
+    getSchema,
+    getContent,
+    updateContent,
+    type,
+    pathname,
+    loaded,
+    layouts,
+  } = props;
 
-  /**
-   * Default properties
-   * @property {Object} defaultProps Default properties.
-   * @static
-   */
-  static defaultProps = {
-    layouts: [],
-    layout: '',
-  };
+  const [selectedOption, setSelectedOption] = useState({
+    value: layout,
+    label:
+      intl.formatMessage({
+        id: config.views.layoutViewsNamesMapping?.[layout],
+        defaultMessage: config.views.layoutViewsNamesMapping?.[layout],
+      }) || layout,
+  });
 
-  state = {
-    selectedOption: {
-      value: this.props.layout,
-      label:
-        this.props.intl.formatMessage({
-          id: config.views.layoutViewsNamesMapping?.[this.props.layout],
-          defaultMessage:
-            config.views.layoutViewsNamesMapping?.[this.props.layout],
-        }) || this.props.layout,
-    },
-  };
+  useEffect(() => {
+    getSchema(type);
+  }, [getSchema, type]);
 
-  componentDidMount() {
-    this.props.getSchema(this.props.type);
-  }
-
-  /**
-   * Component will receive props
-   * @method componentWillReceiveProps
-   * @param {Object} nextProps Next properties
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.pathname !== this.props.pathname) {
-      this.props.getSchema(nextProps.type);
+  useEffect(() => {
+    if (!loaded) {
+      getContent(pathname);
     }
-    if (!this.props.loaded && nextProps.loaded) {
-      this.props.getContent(nextProps.pathname);
-    }
-  }
+  }, [loaded, getContent, pathname]);
 
-  /**
-   * On set layout handler
-   * @method setLayout
-   * @param {Object} event Event object
-   * @returns {undefined}
-   */
-  setLayout = (selectedOption) => {
-    this.props.updateContent(this.props.pathname, {
+  const setLayout = (selectedOption) => {
+    updateContent(pathname, {
       layout: selectedOption.value,
     });
-    this.setState({ selectedOption });
+    setSelectedOption(selectedOption);
   };
 
-  selectValue = (option) => (
+  const selectValue = (option) => (
     <Fragment>
       <span className="Select-value-label">{option.label}</span>
     </Fragment>
   );
 
-  optionRenderer = (option) => (
+  const optionRenderer = (option) => (
     <Fragment>
       <span style={{ marginRight: 'auto' }}>{option.label}</span>
       <Icon name={checkSVG} size="24px" />
     </Fragment>
   );
 
-  render() {
-    const { selectedOption } = this.state;
-    const Select = this.props.reactSelect.default;
-    const layoutsNames = config.views.layoutViewsNamesMapping;
-    const layoutOptions = this.props.layouts
-      .filter(
-        (layout) =>
-          Object.keys(config.views.contentTypesViews).includes(layout) ||
-          Object.keys(config.views.layoutViews).includes(layout),
-      )
-      .map((item) => ({
-        value: item,
-        label:
-          this.props.intl.formatMessage({
-            id: layoutsNames[item],
-            defaultMessage: layoutsNames[item],
-          }) || item,
-      }));
+  const Select = props.reactSelect.default;
+  const layoutsNames = config.views.layoutViewsNamesMapping;
+  const layoutOptions = layouts
+    .filter(
+      (layout) =>
+        Object.keys(config.views.contentTypesViews).includes(layout) ||
+        Object.keys(config.views.layoutViews).includes(layout),
+    )
+    .map((item) => ({
+      value: item,
+      label:
+        intl.formatMessage({
+          id: layoutsNames[item],
+          defaultMessage: layoutsNames[item],
+        }) || item,
+    }));
 
-    return layoutOptions?.length > 1 ? (
-      <FormFieldWrapper
-        id="display-select"
-        title={this.props.intl.formatMessage(messages.Viewmode)}
-        {...this.props}
-      >
-        <Select
-          name="display-select"
-          className="react-select-container"
-          classNamePrefix="react-select"
-          options={layoutOptions}
-          styles={customSelectStyles}
-          theme={selectTheme}
-          components={{ DropdownIndicator, Option }}
-          onChange={this.setLayout}
-          defaultValue={selectedOption}
-          isSearchable={false}
-        />
-      </FormFieldWrapper>
-    ) : null;
-  }
-}
+  return layoutOptions?.length > 1 ? (
+    <FormFieldWrapper
+      id="display-select"
+      title={intl.formatMessage(messages.Viewmode)}
+      {...props}
+    >
+      <Select
+        name="display-select"
+        className="react-select-container"
+        classNamePrefix="react-select"
+        options={layoutOptions}
+        styles={customSelectStyles}
+        theme={selectTheme}
+        components={{ DropdownIndicator, Option }}
+        onChange={setLayout}
+        defaultValue={selectedOption}
+        isSearchable={false}
+        getOptionLabel={selectValue}
+        formatOptionLabel={optionRenderer}
+      />
+    </FormFieldWrapper>
+  ) : null;
+};
+
+DisplaySelect.propTypes = {
+  getSchema: PropTypes.func.isRequired,
+  updateContent: PropTypes.func.isRequired,
+  getContent: PropTypes.func.isRequired,
+  loaded: PropTypes.bool.isRequired,
+  pathname: PropTypes.string.isRequired,
+  layouts: PropTypes.arrayOf(PropTypes.string),
+  layout: PropTypes.string,
+  type: PropTypes.string.isRequired,
+};
+
+DisplaySelect.defaultProps = {
+  layouts: [],
+  layout: '',
+};
 
 export default compose(
   injectIntl,

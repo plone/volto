@@ -1,0 +1,1 @@
+Refactor the `Aliases` component from a class component to a functional component. @FreakForever
