@@ -4,7 +4,7 @@ on: [push]
 env:
   ADDON_NAME: "<%= addonName %>"
   ADDON_PATH: "<%= name %>"
-  VOLTO_VERSION: "17.0.0-alpha.25"
+  VOLTO_VERSION: "17.0.0"
 
 jobs:
 
