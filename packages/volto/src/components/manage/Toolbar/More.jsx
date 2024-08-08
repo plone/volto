@@ -415,7 +415,6 @@ const More = (props) => {
                     }}
                   >
                     {intl.formatMessage(messages.removeWorkingCopy)}
-
                     <Icon
                       name={removeSVG}
                       size="24px"
