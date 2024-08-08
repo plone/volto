@@ -1,0 +1,1 @@
+Changed imports from relative to absolute to avoid type errors in add-on tests. @wesleybl
