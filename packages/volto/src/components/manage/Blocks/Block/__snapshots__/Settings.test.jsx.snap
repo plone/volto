@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Settings renders block settings form without schema enhancers 1`] = `
+<div>
+  <div
+    data-schema="{
+  \\"fieldsets\\": [
+    {
+      \\"title\\": \\"Default\\",
+      \\"id\\": \\"default\\",
+      \\"fields\\": []
+    }
+  ],
+  \\"properties\\": {},
+  \\"required\\": []
+}"
+    id="BlockDataForm"
+  />
+</div>
+`;

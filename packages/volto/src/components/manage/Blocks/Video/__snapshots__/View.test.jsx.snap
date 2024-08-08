@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a view video component 1`] = `
+<div
+  className="block video align center"
+>
+  <div
+    className="video-inner"
+  >
+    <div
+      className="ui 16:9 embed"
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      tabIndex={0}
+    >
+      <i
+        aria-hidden="true"
+        className="play icon"
+        onClick={[Function]}
+      />
+      <img
+        className="placeholder"
+        src="https://img.youtube.com/vi/KqjeO_ekW3g/sddefault.jpg"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders a view video component with placeholder 1`] = `
+<div
+  className="block video align center"
+>
+  <div
+    className="video-inner"
+  >
+    <div
+      className="ui 16:9 embed"
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      tabIndex={0}
+    >
+      <i
+        aria-hidden="true"
+        className="play icon"
+        onClick={[Function]}
+      />
+      <img
+        className="placeholder"
+        src="https://github.com/plone/volto/raw/main/logos/volto-colorful.png"
+      />
+    </div>
+  </div>
+</div>
+`;

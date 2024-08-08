@@ -74,9 +74,19 @@ export async function runGitGenerator({
     branch,
   });
 
+  // BBB: Maintains compatibility with
+  // @plone/generator-volto < 7.0.0-alpha.7
+  // In new versions of @plone/generator-volto we do not have jsconfig.json but tsconfig.json
+  let configFile;
+  if (fs.existsSync(`${destination}/jsconfig.json`)) {
+    configFile = 'jsconfig.json';
+  } else {
+    configFile = 'tsconfig.json';
+  }
+
   await develop({
     root: destination,
-    configFile: 'jsconfig.json',
+    configFile: configFile,
     output: 'addons',
   });
 
@@ -163,9 +173,19 @@ export async function runLocalGenerator({
     destination,
   });
 
+  // BBB: Maintains compatibility with
+  // @plone/generator-volto < 7.0.0-alpha.7
+  // In new versions of @plone/generator-volto we do not have jsconfig.json but tsconfig.json
+  let configFile;
+  if (fs.existsSync(`${destination}/jsconfig.json`)) {
+    configFile = 'jsconfig.json';
+  } else {
+    configFile = 'tsconfig.json';
+  }
+
   await develop({
     root: destination,
-    configFile: 'jsconfig.json',
+    configFile: configFile,
     output: 'addons',
   });
 

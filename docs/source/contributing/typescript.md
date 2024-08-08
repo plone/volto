@@ -9,14 +9,114 @@ myst:
 
 # TypeScript
 
-```{note}
-This feature is available since Volto 14. Please note that TypeScript is *not* allowed in Volto core, that's why it's not enabled in the core by default. This feature enables the use of TypeScript (as opt-in) in projects and in add-ons.
+```{versionadded} 17.0.0-alpha.27
 ```
 
-It is possible to enable TypeScript support when developing you project with Volto.
-Volto itself is not written in TypeScript, but it is ready to use it if you want.
+TypeScript support has been added to Volto core.
+ESlint has been configured in order to accept code base written both in JavaScript and in TypeScript.
+TypeScript in projects and add-ons has been supported since Volto 14.
+It is now supported in the project generator by default.
 
-In order to enable TypeScript, you need to install these additional dependencies in your project:
+
+(typescript-policy-in-core-label)=
+
+## TypeScript policy in core
+
+The internal policy for TypeScript support in Volto core will be as follows.
+
+-   No existing code has been migrated.
+    Volto 17.0.0 has no TypeScript code present.
+    Only *support* for TypeScript has been added.
+-   Code in core can be written in either JavaScript or TypeScript, or both.
+-   You are not forced to migrate existing code to TypeScript.
+    It's your choice which one to use.
+-   If you need to backport code to a version of Volto before 17.0.0, you must make the code compatible without TypeScript.
+
+## TypeScript learning resources
+
+-   [TypeScript Official Handbook](https://www.typescriptlang.org/docs/handbook/intro.html)
+
+-   [TotalTypeScript React with TypeScript Free course](https://www.totaltypescript.com/tutorials/react-with-typescript)
+
+-   [TotalTypeScript Beginner's TypeScript Free course](https://www.totaltypescript.com/tutorials/beginners-typescript)
+
+## TypeScript in projects and add-ons
+
+You can enable TypeScript support when developing your project in Volto.
+If you use the Volto generator, TypeScript is enabled by default, and you can already start using TypeScript in it.
+
+### Enable it in your Volto 17 project
+
+If you already use Volto 17 in your projects, using a boilerplate generated before Volto 17.0.0-alpha.27 and the generator 7.0.0-alpha.7, you can enable TypeScript support as follows.
+
+Edit your {file}`package.json` to align with that in the Volto repo.
+You will need to modify [`lint` in the scripts section](https://github.com/plone/volto/blob/17.x.x/packages/generator-volto/generators/app/templates/package.json.tpl#L10-L12) and the [`devDependencies` section](https://github.com/plone/volto/blob/17.x.x/packages/generator-volto/generators/app/templates/package.json.tpl#L139-L161).
+
+```{note}
+After making this change, you might experience hoisting problems and some packages can't be found on start.
+In that case, make sure you reset your `yarn.lock` by deleting it and start with a clean environment.
+```
+
+To use TypeScript in your projects, you'll need to introduce a TypeScript configuration file {file}`tsconfig.json`, and remove the existing file {file}`jsconfig.json`.
+You can use the one provided by the generator as a template, or use your own:
+
+```json
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "module": "commonjs",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "paths": {},
+    "baseUrl": "src"
+  },
+  "include": ["src"],
+  "exclude": [
+    "node_modules",
+    "build",
+    "public",
+    "coverage",
+    "src/**/*.test.{js,jsx,ts,tsx}",
+    "src/**/*.spec.{js,jsx,ts,tsx}",
+    "src/**/*.stories.{js,jsx,ts,tsx}"
+  ]
+}
+```
+
+If you use `mrs-developer` in your project, update the command in {file}`Makefile`:
+
+```diff
+--- a/Makefile
++++ b/Makefile
+@@ -59,7 +59,8 @@ preinstall: ## Preinstall task, checks if missdev (mrs-developer) is present and runs it
+
+ .PHONY: develop
+ develop: ## Runs missdev in the local project (mrs.developer.json should be present)
+-       npx -p mrs-developer missdev --config=jsconfig.json --output=addons --fetch-https
++       if [ -f $$(pwd)/jsconfig.json ]; then npx -p mrs-developer missdev --config=jsconfig.json --output=addons --fetch-https; fi
++       if [ ! -f $$(pwd)/jsconfig.json ]; then npx -p mrs-developer missdev --output=addons --fetch-https; fi
+```
+
+````{note}
+After editing your {file}`Makefile`, run `mrs-developer` with the following command, so the configuration gets in the right place ({file}`tsconfig.json`).
+```shell
+make develop
+```
+````
+
+### Enable it in a project not using Volto 17 yet
+
+To use TypeScript for an existing project in Volto versions 14.x-16.x, you need to install these additional dependencies in your project:
 
 ```shell
 yarn add --dev typescript @typescript-eslint/parser @typescript-eslint/eslint-plugin @types/react @types/react-dom concurrently

@@ -122,8 +122,8 @@ const PersistentSlashMenu = ({ editor }) => {
         hasAllowedBlocks
           ? allowedBlocks.includes(item.id)
           : typeof item.restricted === 'function'
-          ? !item.restricted({ properties, block: item })
-          : !item.restricted,
+            ? !item.restricted({ properties, block: item })
+            : !item.restricted,
       )
         .filter((block) => Boolean(block.title && block.id))
         .filter((block) => {

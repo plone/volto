@@ -1,7 +1,3 @@
-# Disallow all user agents from the following directories and files
+# Disallow all user agents from indexing pages and links in the site on Netlify only.
 User-agent: *
-Disallow: /_sources/
-Disallow: /.doctrees/
-Disallow: /*.txt$
-Disallow: /.buildinfo$
-Disallow: /objects.inv$
+Disallow: /

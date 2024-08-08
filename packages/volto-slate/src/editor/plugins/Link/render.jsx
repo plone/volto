@@ -1,4 +1,5 @@
 import React from 'react';
+import cx from 'classnames';
 import { UniversalLink } from '@plone/volto/components';
 import config from '@plone/volto/registry';
 import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers';
@@ -20,18 +21,16 @@ const ViewLink = ({ url, target, download, children }) => {
 
 export const LinkElement = (props) => {
   const { attributes, children, element, mode = 'edit' } = props;
+  const isInternalUrl = isInternalURL(element.data?.url);
+  const linkUrl = element.data?.url;
 
   return mode === 'view' ? (
     <ViewLink {...(element.data || {})}>{children}</ViewLink>
   ) : (
     <a
       {...attributes}
-      className="slate-editor-link"
-      href={
-        isInternalURL(element.data?.url)
-          ? flattenToAppURL(element.data?.url)
-          : element.data?.url
-      }
+      className={cx('slate-editor-link', { external: !isInternalUrl })}
+      href={isInternalUrl ? flattenToAppURL(linkUrl) : linkUrl}
       onClick={(e) => e.preventDefault()}
     >
       {Array.isArray(children)

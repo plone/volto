@@ -6,18 +6,18 @@ To ease the release process, we use the utility [`release-it`](https://www.npmjs
 
 To start a release, you must fulfill the following requirements:
 
-- Have permission to push to `master` branch
+- Have permission to push to `main` branch
 - Have permission on the [`@plone` organization on npm](https://www.npmjs.com/org/plone).
 - Have an environment variable `GITHUB_TOKEN` with a GitHub personal token with permissions to write to the [Volto Release page on GitHub](https://github.com/plone/volto/releases).
 - Install [`pipx`](https://pypa.github.io/pipx/) in your system.
 
 To request these permissions, on GitHub tag `@plone/release-team`, or in Discord post to the [`release-team` channel](https://discord.com/channels/786421998426521600/897549410521714760).
 
-### Permission to push to `master` branch
+### Permission to push to `main` branch
 
-The release process involves pushing directly to the `master` branch.
-Volto's `master` branch is protected, so the releaser needs to have permission for pushing to it.
-At the moment of this writing, members of the GitHub group `@plone/volto-team` have permission to push to `master`.
+The release process involves pushing directly to the `main` branch.
+Volto's `main` branch is protected, so the releaser needs to have permission for pushing to it.
+At the moment of this writing, members of the GitHub group `@plone/volto-team` have permission to push to `main`.
 
 ### Permission to release Volto to npm registry
 

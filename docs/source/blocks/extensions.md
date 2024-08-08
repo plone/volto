@@ -35,7 +35,6 @@ While it is up to each specific block implementation on how they use
 this machinery, Volto provides the infrastructure to help define block
 extensions and variations.
 
-
 (extensions-block-variations)=
 
 ## Block variations
@@ -65,19 +64,19 @@ export default (config) => {
       id: 'default',
       title: 'Default',
       isDefault: true,
-      template: SimpleTeaserView
+      template: SimpleTeaserView,
     },
     {
       id: 'card',
       label: 'Card',
       template: CardTeaserView,
-      schemaEnhancer: ({schema, formData, intl}) => {
+      schemaEnhancer: ({ schema, formData, intl }) => {
         schema.properties.cardSize = '...'; // fill in your implementation
         return schema;
-      }
-    }
+      },
+    },
   ];
-}
+};
 ```
 
 Notice the `schemaEnhancer` field, which allows customization of the schema for
@@ -89,12 +88,14 @@ To get the same behavior for any other custom extension, you can wrap
 ```jsx
 import { defineMessages } from 'react-intl';
 
-const GalleryBlockForm = withBlockSchemaEnhancer(InlineForm, 'galleryTemplates');
+const GalleryBlockForm = withBlockSchemaEnhancer(
+  InlineForm,
+  'galleryTemplates',
+);
 ```
 
 You can even wrap `BlockDataForm` with it and "stack" multiple block extensions
 selection dropdowns.
-
 
 (extensions-schema-enhancers)=
 
@@ -110,7 +111,6 @@ injected `intl`, to aid with internationalization.
 For example:
 
 ```jsx
-
 const messages = defineMessages({
   title: {
     id: 'Column renderer',
@@ -128,7 +128,7 @@ export default (config) => {
           id: 'default',
           title: 'Default',
           isDefault: true,
-          template: DefaultColumnRenderer
+          template: DefaultColumnRenderer,
         },
         {
           id: 'number',
@@ -139,19 +139,19 @@ export default (config) => {
           id: 'colored',
           title: 'Colored',
           template: ColoredColumnRenderer,
-          schemaEnhancer: ({formData, schema, intl}) => {
+          schemaEnhancer: ({ formData, schema, intl }) => {
             schema.properties.color = {
               widget: 'color',
               title: 'Color',
             };
             schema.fieldsets[0].fields.push('color');
             return schema;
-          }
-        }
-      ]
-    }
-  }
-}
+          },
+        },
+      ],
+    },
+  };
+};
 ```
 
 ```{note}
@@ -169,7 +169,63 @@ import { composeSchema } from '@plone/volto/helpers';
 const oldEnhancer = blocksConfig.dataTable.schemaEnhancer;
 
 blocksConfig.dataTable.schemaEnhancer = composeSchema(
-  oldEnhancer, addTitleField, addStandardStyling);
+  oldEnhancer,
+  addTitleField,
+  addStandardStyling,
+);
+```
+
+(extensions-changing-variations)=
+
+## Conditional variations
+
+Apart from the form data and the schema, the schema enhancers will also get passed the navigation root and content type.
+These values can be used to dynamically change the variations to be used by the block.
+
+For example:
+
+```jsx
+import { defineMessages } from 'react-intl';
+import { addExtensionFieldToSchema } from '@plone/volto/helpers/Extensions';
+
+const messages = defineMessages({
+  variation: {
+    id: 'Variation',
+    defaultMessage: 'Variation',
+  },
+});
+
+export const conditionalVariationsSchemaEnhancer = ({
+  schema,
+  formData,
+  intl,
+  navRoot,
+  contentType,
+}) => {
+  if (contentType === 'Event' || navRoot.id === 'my-nav-root') {
+    // We redefine the variations in the case that it's an Event content type
+    const variations = [
+      {
+        id: 'default',
+        title: 'Default',
+        isDefault: true,
+      },
+      {
+        id: 'custom',
+        title: 'Custom modified variation',
+      },
+    ];
+
+    schema = addExtensionFieldToSchema({
+      schema,
+      name: 'variation',
+      items: variations,
+      intl,
+      title: messages.variation,
+    });
+  }
+  return schema;
+};
 ```
 
 (extensions-consuming-extensions)=
@@ -180,7 +236,7 @@ It is completely up to the block implementation on what exactly is an
 "extension". The typical use case is to make parts of the view renderer
 "replaceable". If used with the `withBlockSchemaEnhancer`-derived forms, the
 chosen extension is saved in the block data, but in the rendering, we will
- need the "resolved" extension object from the `blocksConfig`
+need the "resolved" extension object from the `blocksConfig`
 configuration. To help with this, we have another HOC, the
 `withBlockExtensions`, which injects the resolved extensions object as props.
 To use it, wrap your relevant components with it, for example, the block's `View` component.

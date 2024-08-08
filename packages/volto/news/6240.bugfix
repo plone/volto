@@ -1,0 +1,2 @@
+fixed change of form.ui.hovered when editing blocks, because if you have a FormBlock component inside another one,
+onMouseOver fires for all stacked blocks and you cannot use the nested form. @giuliaghisini

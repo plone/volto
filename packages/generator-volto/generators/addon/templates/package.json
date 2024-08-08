@@ -10,10 +10,39 @@
     "plone",
     "react"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
-    "i18n": "rm -rf build/messages && NODE_ENV=production i18n --addon"
+    "i18n": "rm -rf build/messages && NODE_ENV=production i18n --addon",
+    "dry-release": "release-it --dry-run",
+    "release": "release-it",
+    "release-major-alpha": "release-it major --preRelease=alpha",
+    "release-alpha": "release-it --preRelease=alpha",
+    "release-rc": "release-it --preRelease=rc"
   },
   "devDependencies": {
-    "@plone/scripts": "*"
+    "@plone/scripts": "^3.5.0",
+    "@babel/eslint-parser": "7.23.10",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-react-app": "^7.0.1",
+    "eslint-plugin-flowtype": "^8.0.3",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "postcss-less": "6.0.0",
+    "postcss-scss": "4.0.9",
+    "prettier": "3.2.5",
+    "release-it": "^17.1.1",
+    "stylelint": "16.2.1",
+    "stylelint-config-idiomatic-order": "10.0.0",
+    "stylelint-config-sass-guidelines": "11.0.0",
+    "stylelint-prettier": "5.0.0"
+  },
+  "peerDependencies": {
+    "@plone/volto": "^18.0.0"
   }
 }

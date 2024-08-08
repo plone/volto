@@ -7,7 +7,6 @@ import enMessages from '@root/../locales/en.json';
 import '@root/theme';
 
 export const parameters = {
-  actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
     matchers: {
       color: /(background|color)$/i,

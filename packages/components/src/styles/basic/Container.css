@@ -1,0 +1,15 @@
+.q.container {
+  container-type: inline-size;
+
+  &.layout {
+    max-width: var(--layout-container-width);
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  &.narrow {
+    max-width: var(--narrow-container-width);
+    margin-right: auto;
+    margin-left: auto;
+  }
+}

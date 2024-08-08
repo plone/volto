@@ -1,0 +1,1 @@
+Fix loading of .cjs in webpack. @davisagli

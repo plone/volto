@@ -1,5 +1,2 @@
-node
-nodejs
-javascript
-js
-Javascript
+[^.]js
+NodeJS

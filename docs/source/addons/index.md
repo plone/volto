@@ -15,6 +15,7 @@ myst:
 i18n
 best-practices
 theme
+public-folder
 ```
 
 There are several advanced scenarios where we might want to have more control
@@ -32,7 +33,7 @@ by Babel), whole-process customization via razzle.extend.js and
 integration with Volto's {term}`configuration registry`.
 ```
 
-The add-on can be published to an NPM registry or directly installed from github
+The add-on can be published to an npm registry or directly installed from github
 by Yarn. By using [mrs-develop](https://github.com/collective/mrs-developer),
 it's possible to have a workflow similar to zc.buildout's mr.developer, where
 you can "checkout" an add-on for development.
@@ -56,7 +57,7 @@ You can install a Volto add-on just like any other JS package:
 yarn add name-of-add-on
 ```
 
-If the add-on is not published on NPM, you can retrieve it directly from Github:
+If the add-on is not published on npm, you can retrieve it directly from Github:
 
 ```shell
 yarn add collective/volto-dropdownmenu
@@ -74,7 +75,7 @@ configurations methods, making it possible to selectively choose which specific
 add-on functionality you want to load.
 
 In your Volto project's ``package.json`` you can allow the add-on to alter the
-global configuration by adding, in the `addons` key, a list of volto add-on
+global configuration by adding, in the `addons` key, a list of Volto add-on
 package names, like:
 
 ```js
@@ -224,7 +225,7 @@ to pull the packages. So, create `mrs.developer.json` and add:
 Then run:
 
 ```shell
-yarn develop
+make develop
 ```
 
 Now the add-on is found in `src/addons/`.
@@ -372,20 +373,8 @@ changed, to enable a custom Semantic theme inside the add-on:
 
 
 ```js
-const analyzerPlugin = {
-  name: 'bundle-analyzer',
-  options: {
-    analyzerHost: '0.0.0.0',
-    analyzerMode: 'static',
-    generateStatsFile: true,
-    statsFilename: 'stats.json',
-    reportFilename: 'reports.html',
-    openAnalyzer: false,
-  },
-};
-
 const plugins = (defaultPlugins) => {
-  return defaultPlugins.concat([analyzerPlugin]);
+  return defaultPlugins;
 };
 const modify = (config, { target, dev }, webpack) => {
   const themeConfigPath = `${__dirname}/theme/theme.config`;
@@ -439,9 +428,9 @@ in your add-on's `addons` key, just like you do in your project. By doing so,
 that other add-on's configuration loader is executed first, so you can depend on
 the configuration being already applied. Another benefit is that you'll have
 to declare only the "top level" add-on in your project, the dependencies will be
-discovered and automatically treated as Volto add-ons. For example, volto-slate
-depends on volto-object-widget's configuration being already applied, so
-volto-slate can declare in its `package.json`:
+discovered and automatically treated as Volto add-ons. For example, `volto-slate`
+depends on `volto-object-widget`'s configuration being already applied, so
+`volto-slate` can declare in its `package.json`:
 
 ```json
 {

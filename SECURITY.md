@@ -1,14 +1,8 @@
-# Security Policy
+# Security policy
 
-## Supported Versions
+Volto supports only the latest major version of Plone with security updates.
+See https://plone.org/security/update-policy.
 
-Volto is currently under very active development. Therefore we only support the latest major version with security updates.
+## Reporting a vulnerability
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 7.x.x   | :white_check_mark: |
-| < 7.0   | :x:                |
-
-## Reporting a Vulnerability
-
-If you found a possible vulnerability please contact the Plone security team under security@plone.org.
+If you found a possible vulnerability, please contact the Plone security team at security@plone.org.

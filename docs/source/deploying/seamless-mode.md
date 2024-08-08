@@ -87,7 +87,7 @@ problematic from the SEO point of view), so indexers cannot reach it.
 
 Repeatable docker builds (since the config will be based on runtime).
 
-Ready to use production builds (e.g. vanila Volto built, ready for testing), configured in runtime.
+Ready to use production builds (e.g. vanilla Volto built, ready for testing), configured in runtime.
 
 ![How Plone 6 works](HowPlone6Works001.png)
 
@@ -129,7 +129,7 @@ server {
   access_log /dev/stdout;
   error_log /dev/stdout;
 
-  # [seamless mode] Recomended as default configuration, using seamless mode new plone.rest traversal
+  # [seamless mode] Recommended as default configuration, using seamless mode new plone.rest traversal
   # yarn build && yarn start:prod
   location ~ /\+\+api\+\+($|/.*) {
       rewrite ^/\+\+api\+\+($|/.*) /VirtualHostBase/http/myservername.org/Plone/++api++/VirtualHostRoot/$1 break;

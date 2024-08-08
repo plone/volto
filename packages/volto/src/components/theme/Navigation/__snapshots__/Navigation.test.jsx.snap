@@ -1,0 +1,270 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navigation renders a navigation component including external links 1`] = `
+<nav
+  aria-label="Site"
+  className="navigation"
+  id="navigation"
+  tabIndex="-1"
+>
+  <div
+    className="hamburger-wrapper mobile tablet only"
+  >
+    <button
+      aria-label="Open menu"
+      className="hamburger hamburger--spin"
+      onClick={[Function]}
+      title="Open menu"
+      type="button"
+    >
+      <span
+        className="hamburger-box"
+      >
+        <span
+          className="hamburger-inner"
+        />
+      </span>
+    </button>
+  </div>
+  <div
+    className="ui pointing secondary stackable computer large screen widescreen only menu"
+    onClick={[Function]}
+  >
+    <a
+      aria-current={null}
+      className="item"
+      href="/blog"
+      onClick={[Function]}
+    >
+      Blog
+    </a>
+    <a
+      aria-current={null}
+      className="item"
+      href="/users"
+      onClick={[Function]}
+    >
+      Users
+    </a>
+    <a
+      className="item"
+      href="https://store.plone.org"
+      rel="noopener noreferrer"
+      target="_self"
+    >
+      Store
+    </a>
+  </div>
+</nav>
+`;
+
+exports[`Navigation renders a navigation component with an active item 1`] = `
+<nav
+  aria-label="Site"
+  className="navigation"
+  id="navigation"
+  tabIndex="-1"
+>
+  <div
+    className="hamburger-wrapper mobile tablet only"
+  >
+    <button
+      aria-label="Open menu"
+      className="hamburger hamburger--spin"
+      onClick={[Function]}
+      title="Open menu"
+      type="button"
+    >
+      <span
+        className="hamburger-box"
+      >
+        <span
+          className="hamburger-inner"
+        />
+      </span>
+    </button>
+  </div>
+  <div
+    className="ui pointing secondary stackable computer large screen widescreen only menu"
+    onClick={[Function]}
+  >
+    <a
+      aria-current="page"
+      className="item active"
+      href="/blog"
+      onClick={[Function]}
+      style={Object {}}
+    >
+      Blog
+    </a>
+    <a
+      aria-current={null}
+      className="item"
+      href="/users"
+      onClick={[Function]}
+    >
+      Users
+    </a>
+  </div>
+</nav>
+`;
+
+exports[`Navigation renders a navigation component with an active item when its subchildren are accessed 1`] = `
+<nav
+  aria-label="Site"
+  className="navigation"
+  id="navigation"
+  tabIndex="-1"
+>
+  <div
+    className="hamburger-wrapper mobile tablet only"
+  >
+    <button
+      aria-label="Open menu"
+      className="hamburger hamburger--spin"
+      onClick={[Function]}
+      title="Open menu"
+      type="button"
+    >
+      <span
+        className="hamburger-box"
+      >
+        <span
+          className="hamburger-inner"
+        />
+      </span>
+    </button>
+  </div>
+  <div
+    className="ui pointing secondary stackable computer large screen widescreen only menu"
+    onClick={[Function]}
+  >
+    <a
+      aria-current="page"
+      className="item active"
+      href="/blog"
+      onClick={[Function]}
+      style={Object {}}
+    >
+      Blog
+    </a>
+    <a
+      aria-current={null}
+      className="item"
+      href="/users"
+      onClick={[Function]}
+    >
+      Users
+    </a>
+  </div>
+</nav>
+`;
+
+exports[`Navigation renders a navigation component with only one active item even if there are similar item names 1`] = `
+<nav
+  aria-label="Site"
+  className="navigation"
+  id="navigation"
+  tabIndex="-1"
+>
+  <div
+    className="hamburger-wrapper mobile tablet only"
+  >
+    <button
+      aria-label="Open menu"
+      className="hamburger hamburger--spin"
+      onClick={[Function]}
+      title="Open menu"
+      type="button"
+    >
+      <span
+        className="hamburger-box"
+      >
+        <span
+          className="hamburger-inner"
+        />
+      </span>
+    </button>
+  </div>
+  <div
+    className="ui pointing secondary stackable computer large screen widescreen only menu"
+    onClick={[Function]}
+  >
+    <a
+      aria-current="page"
+      className="item active"
+      href="/blog"
+      onClick={[Function]}
+      style={Object {}}
+    >
+      Blog
+    </a>
+    <a
+      aria-current={null}
+      className="item"
+      href="/blog-of-mine"
+      onClick={[Function]}
+    >
+      Blog of mine
+    </a>
+    <a
+      aria-current={null}
+      className="item"
+      href="/users"
+      onClick={[Function]}
+    >
+      Users
+    </a>
+  </div>
+</nav>
+`;
+
+exports[`Navigation renders a navigation component without active items 1`] = `
+<nav
+  aria-label="Site"
+  className="navigation"
+  id="navigation"
+  tabIndex="-1"
+>
+  <div
+    className="hamburger-wrapper mobile tablet only"
+  >
+    <button
+      aria-label="Open menu"
+      className="hamburger hamburger--spin"
+      onClick={[Function]}
+      title="Open menu"
+      type="button"
+    >
+      <span
+        className="hamburger-box"
+      >
+        <span
+          className="hamburger-inner"
+        />
+      </span>
+    </button>
+  </div>
+  <div
+    className="ui pointing secondary stackable computer large screen widescreen only menu"
+    onClick={[Function]}
+  >
+    <a
+      aria-current={null}
+      className="item"
+      href="/blog"
+      onClick={[Function]}
+    >
+      Blog
+    </a>
+    <a
+      aria-current={null}
+      className="item"
+      href="/users"
+      onClick={[Function]}
+    >
+      Users
+    </a>
+  </div>
+</nav>
+`;

@@ -1,0 +1,59 @@
+@import './theme.css';
+
+.react-aria-Breadcrumbs {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  color: var(--text-color);
+  font-size: 18px;
+  list-style: none;
+
+  svg.home-icon {
+    margin-top: -5px;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+
+  .react-aria-Breadcrumb:not(:last-child)::after {
+    padding: 0 5px;
+    alt: ' ';
+    content: '›';
+    content: '›' / '';
+  }
+
+  .react-aria-Link {
+    position: relative;
+    color: var(--link-color-secondary);
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+
+    &[data-hovered] {
+      text-decoration: underline;
+    }
+
+    &[data-current] {
+      color: var(--text-color);
+      font-weight: bold;
+    }
+
+    &[data-focus-visible]:after {
+      position: absolute;
+      border: 2px solid var(--focus-ring-color);
+      border-radius: 6px;
+      content: '';
+      inset: -2px -4px;
+    }
+  }
+
+  .react-aria-Link {
+    &[data-disabled] {
+      cursor: default;
+
+      &:not([data-current]) {
+        color: var(--text-color-disabled);
+      }
+    }
+  }
+}

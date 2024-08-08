@@ -1,4 +1,5 @@
 import ReactDOM from 'react-dom';
+import { cloneDeep } from 'lodash';
 import { serializeNodesToText } from '@plone/volto-slate/editor/render';
 import { Editor } from 'slate';
 import {
@@ -8,6 +9,7 @@ import {
   isCursorAtBlockEnd,
   mergeSlateWithBlockBackward,
   mergeSlateWithBlockForward,
+  makeEditor,
 } from '@plone/volto-slate/utils';
 import {
   changeBlock,
@@ -15,7 +17,6 @@ import {
   getBlocksFieldname,
   getBlocksLayoutFieldname,
 } from '@plone/volto/helpers';
-
 /**
  * Joins the current block (which has an active Slate Editor)
  * with the previous block, to make a single block.
@@ -164,9 +165,11 @@ function getBlockEndAsRange(block) {
   const { value } = block;
   const location = [value.length - 1]; // adress of root node
   const editor = { children: value };
-  const path = Editor.last(editor, location)[1]; // last Node in the block
+  const newEditor = makeEditor();
+  newEditor.children = cloneDeep(editor.children);
+  const path = Editor.last(newEditor, location)[1]; // last Node in the block
   // The last Text node (leaf node) entry inside the path computed just above.
-  const [leaf, leafpath] = Editor.leaf(editor, path);
+  const [leaf, leafpath] = Editor.leaf(newEditor, path);
   // The offset of the Points in the collapsed Range computed below:
   const offset = (leaf.text || '').length;
 

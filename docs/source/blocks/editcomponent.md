@@ -21,7 +21,7 @@ The sidebar and the object browser are the main ones.
 
 ## Sidebar
 
-We can use the new sidebar when building our blocks' edit components.
+We can use the new sidebar when building our block's edit components.
 The sidebar is a new UI asset that is available in Volto 4.
 You need to instantiate it this way:
 
@@ -51,7 +51,7 @@ import { SidebarPopup } from '@plone/volto/components';
 A helper component is available in core in order to simplify the task of defining and rendering the settings for a block: the `BlockDataForm` component.
 
 ```{note}
-`BlockDataForm` is a convenience component around the already available in core `InlineForm` that takes care of some aspects exclusively for Volto Blocks, like Variants and schemaExtenders. You can still use `InlineForm` across Volto, but using `BlockDataForm` is recommeneded for the blocks settings use case.
+`BlockDataForm` is a convenience component around the already available in core `InlineForm` that takes care of some aspects exclusively for Volto Blocks, like Variants and schemaExtenders. You can still use `InlineForm` across Volto, but using `BlockDataForm` is recommended for the blocks settings use case.
 ```
 
 The edit block settings component needs to be described by a schema that matches the format used to serialize the content type definitions. The widgets that will be used in rendering the form follow the same algorithm that is used for the regular metadata fields for the content types. As an example of schema, it could look like this:
@@ -195,19 +195,19 @@ this.props.openObjectBrowser({
 
 This widget shows an objectBrowser to find content/contents on site.
 
-It is the default widget for vocabulary fields that uses plone.app.vocabularies.Catalog.
+It is the default widget for vocabulary fields that uses `plone.app.vocabularies.Catalog`.
 
 It works in 3 different mode:
 
-- **image**: The field value is an object.
-  The path of selected item is saved in 'url' property of value object. (fieldName: {url:''})
-- **link**: The field value is an object.
-  The path of selected item is saved in 'href' property of value object. (fieldName: {href:''})
-- **multiple**: The field value is an array of objects.
+- `image`: The field value is an object.
+  The path of selected item is saved in `url` property of value object. (`fieldName: {url:''}`)
+- `link`: The field value is an object.
+  The path of selected item is saved in `href` property of value object. (`fieldName: {href:''}`)
+- `multiple`: The field value is an array of objects.
 
 #### `return` prop
 
-The object widget returns always an array, even if it's meant to have only one object in return. In order to fix that situation and do not issue a breaking change, a `return` prop is being introduced, so if it's value is `single`, then it returns a single value:
+The object widget returns always an array, even if it's meant to have only one object in return. In order to fix that situation and do not issue a breaking change, a `return` prop is being introduced, so if its value is `single`, then it returns a single value:
 
 ```js
 export const Image = () => <ObjectBrowserWidget mode="image" return="single" />;
@@ -219,8 +219,8 @@ This situation will be fixed in subsequent Volto releases.
 
 #### PropDataName vs dataName
 
-- **dataName** is the prop inside _data_ object, used for _link_ and _image_ mode.
-- **PropDataName** is the name of field wich value is _data_. It's used for _multiple_ mode.
+- `dataName` is the prop inside `data` object, used for `link` and `image` mode.
+- `PropDataName` is the name of field which value is `data`. It's used for `multiple` mode.
 
 For example:
 
@@ -230,9 +230,9 @@ content:{ '@id': 'page-1', related_pages:[], image:{url:""}, link:{href:""} }
 
 if we use object browser widget for fields:
 
-- **related_pages**: propDataName is _related_pages_ and dataName is null,
-- **image**: dataName is _url_ and propDataName is null
-- **link**: dataName is _href_ and propDataName is null
+- `related_pages`: propDataName is `related_pages` and `dataName` is `null`.
+- `image`: dataName is `url` and `propDataName` is `null`.
+- `link`: dataName is `href` and `propDataName` is `null`.
 
 #### Usage in blocks schema
 
@@ -273,7 +273,7 @@ tokenized value, as if it was selected via the Object Browser widget.
 
 #### ObjectBrowserWidgetMode()
 
-Returns the component widget with _mode_ passed as argument.
+Returns the component widget with `mode` passed as argument.
 
 The default mode for ObjectBrowserWidget is multiple. If you would like to use this widget with link or image mode as widget field for a specific field id (for example), you could specify in in config.js as:
 
@@ -299,7 +299,7 @@ If `selectableTypes` is set in `widgetOptions.pattern_options`, then only items 
 <ObjectBrowserWidget ... widgetOptions={{pattern_options:{selectableTypes:['News Item','Event']}}}>
 ```
 
-You can also set the _selectableTypes_ from plone when declaring a field for contenttype:
+You can also set the `selectableTypes` from `plone` when declaring a field for `contenttype`:
 
 ```jsx
 form.widget(
@@ -313,15 +313,15 @@ form.widget(
 );
 ```
 
-#### MaximumSelectionSize
+#### `maximumSelectionSize`
 
-If **maximumSelectionSize** is set in _widgetOptions.pattern_options_, widget allows to select at most the **maximumSelectionSize** number of items defined in _widgetOptions.pattern_options.maximumSelectionSize_.
+If `maximumSelectionSize` is set in `widgetOptions.pattern_options`, the widget allows to select at most the `maximumSelectionSize` number of items defined in `widgetOptions.pattern_options.maximumSelectionSize`.
 
 ```jsx
 <ObjectBrowserWidget ... widgetOptions={{pattern_options:{maximumSelectionSize:2}}}>
 ```
 
-You can also set the _maximumSelectionSize_ from plone when declaring a field for contenttype:
+You can also set the `maximumSelectionSize` from `plone` when declaring a field for `contenttype`:
 
 ```jsx
 form.widget(
@@ -429,15 +429,15 @@ class Example extends Component {
 
 The current block engine is available as the separate `BlocksForm` component,
 used to be a part of the `Form.jsx` component. It has been previously exposed
-as the [@eeacms/volto-blocks-form](https://github.com/eea/volto-blocks-form)
+as the [`@eeacms/volto-blocks-form`](https://github.com/eea/volto-blocks-form)
 addon and reused in several other addons, so you can find integration examples
 in addons such as
-[volto-columns-block](https://github.com/eea/volto-columns-block),
-[volto-accordion-block](https://github.com/rohberg/volto-accordion-block),
-[@eeacms/volto-accordion-block](https://github.com/eea/volto-accordion-block),
-[@eeacms/volto-grid-block](https://github.com/eea/volto-accordion-block), but
+[`volto-columns-block`](https://github.com/eea/volto-columns-block),
+[`volto-accordion-block`](https://github.com/rohberg/volto-accordion-block),
+[`@eeacms/volto-accordion-block`](https://github.com/eea/volto-accordion-block),
+[`@eeacms/volto-grid-block`](https://github.com/eea/volto-accordion-block), but
 probably the simplest implementation to follow is in the
-[@eeacms/volto-group-block](https://github.com/eea/volto-group-block)
+[`@eeacms/volto-group-block`](https://github.com/eea/volto-group-block)
 
 Notice that the `BlocksForm` component allows overriding the edit block
 wrapper and allows passing a custom `blocksConfig` configuration object, for
@@ -507,6 +507,6 @@ You can also reuse the DragDropList component as a separate component:
   </DragDropList>
 ```
 
-Check the source code of volto-columns-block and
-[volto-taxonomy](https://github.com/eea/volto-taxonomy/) for details on
+Check the source code of `volto-columns-block` and
+[`volto-taxonomy`](https://github.com/eea/volto-taxonomy/) for details on
 how to reuse this component.

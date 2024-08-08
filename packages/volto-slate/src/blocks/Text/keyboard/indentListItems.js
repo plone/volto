@@ -55,8 +55,8 @@ export function indentListItems({ editor, event }) {
         ? decreaseMultipleItemsDepth(editor, event)
         : decreaseItemDepth(editor, event)
       : event.ctrlKey
-      ? increaseMultipleItemDepth(editor, event)
-      : increaseItemDepth(editor, event);
+        ? increaseMultipleItemDepth(editor, event)
+        : increaseItemDepth(editor, event);
   }
 }
 

@@ -6,7 +6,7 @@
 import React from 'react';
 import isUndefined from 'lodash/isUndefined';
 import isString from 'lodash/isString';
-import { FormFieldWrapper } from '@plone/volto/components';
+import { FormFieldWrapper } from '@plone/volto/components/manage/Widgets';
 import SlateEditor from '@plone/volto-slate/editor/SlateEditor';
 
 import { createEmptyParagraph, createParagraph } from '../utils/blocks';

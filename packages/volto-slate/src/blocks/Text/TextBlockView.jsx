@@ -5,6 +5,7 @@ import {
 import config from '@plone/volto/registry';
 import { isEqual } from 'lodash';
 import Slugger from 'github-slugger';
+import { normalizeString } from '@plone/volto/helpers';
 
 const TextBlockView = (props) => {
   const { id, data, styling = {} } = props;
@@ -17,7 +18,7 @@ const TextBlockView = (props) => {
     if (node.type && isEqual(path, [0])) {
       if (topLevelTargetElements.includes(node.type) || override_toc) {
         const text = serializeNodesToText(node?.children || []);
-        const slug = Slugger.slug(text);
+        const slug = Slugger.slug(normalizeString(text));
         res.id = slug || id;
       }
     }

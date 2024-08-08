@@ -1,0 +1,41 @@
+@import './theme.css';
+
+.react-aria-Link {
+  position: relative;
+  color: var(--link-color);
+  cursor: pointer;
+  font-size: 18px;
+  outline: none;
+  text-decoration: underline;
+  transition: all 200ms;
+
+  /* TODO: review, but removing the fancyness for now */
+  /* &[data-hovered] {
+    text-decoration-style: wavy;
+  } */
+
+  &[data-pressed] {
+    color: var(--link-color-pressed);
+  }
+
+  &[data-hovered] {
+    color: var(--link-color-secondary);
+  }
+
+  &[data-focused] {
+    color: var(--link-color-secondary);
+  }
+
+  &[data-focus-visible]:after {
+    position: absolute;
+    border: 2px solid var(--focus-ring-color);
+    border-radius: 6px;
+    content: '';
+    inset: -3px -6px;
+  }
+
+  &[data-disabled] {
+    color: var(--text-color-disabled);
+    cursor: default;
+  }
+}

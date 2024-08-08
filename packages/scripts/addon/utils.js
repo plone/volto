@@ -1,6 +1,6 @@
 import fs from 'fs';
 
-export function amendPackageJSON(name, destination, isCanary) {
+export function amendPackageJSON(name, destination) {
   const packageJSON = JSON.parse(
     fs.readFileSync(`${destination}/package.json`, 'utf8'),
   );

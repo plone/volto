@@ -50,7 +50,7 @@ and either pass them directly as component props, or tweak them combine them,
 etc.
 
 You can view the content of the global Redux store by using a browser [Redux
-developer extension](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd).
+developer extension](https://chromewebstore.google.com/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd).
 The code that is used to populate this store is in the `src/reducers` folder.
 
 In some parts of Volto you'll see `asyncConnect` being used, which is needed to
@@ -111,7 +111,7 @@ Creating a "request action" potentially triggers some additional access. For
 example, even if we only declare the `GET_CONTENT` type of action, we can see
 that `GET_CONTENT_SUCCESS`, `GET_CONTENT_PENDING` and `GET_CONTENT_FAIL` are
 also used in the `content` reducer. They are automatically created by the
-special Api middleware, available in `src/middleware/api.js`.
+special API middleware, available in `src/middleware/api.js`.
 
 ## Customizing the Redux middleware
 

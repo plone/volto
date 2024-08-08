@@ -13,7 +13,7 @@ Volto can be configured to work with [Sentry.io](https://sentry.io/welcome/).
 Sentry is a monitoring platform that can help identify the cause of errors in your project.
 
 
-## Prerequisities
+## Prerequisites
 
 1.  Install the add-on [`@plone-collective/volto-sentry`](https://www.npmjs.com/package/@plone-collective/volto-sentry).
 2.  In Sentry, create a new organization, and add a project to it.

@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "module": "commonjs",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "strictPropertyInitialization": false,
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "paths": {}
+  },
+  "include": ["src", "src/**/*.js"],
+  "exclude": [
+    "node_modules",
+    "build",
+    "public",
+    "coverage",
+    "src/**/*.test.{js,jsx,ts,tsx}",
+    "src/**/*.spec.{js,jsx,ts,tsx}",
+    "src/**/*.stories.{js,jsx,ts,tsx}"
+  ]
+}
