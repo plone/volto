@@ -4,7 +4,6 @@ import { Dropdown, Table, Checkbox } from 'semantic-ui-react';
 import trashSVG from '@plone/volto/icons/delete.svg';
 import ploneSVG from '@plone/volto/icons/plone.svg';
 import { Icon } from '@plone/volto/components';
-import { canAssignRole } from '@plone/volto/helpers';
 
 const RenderGroups = (props) => {
   const onChange = (event, { value }) => {
