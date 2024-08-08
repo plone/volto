@@ -91,17 +91,6 @@ const Aliases = (props) => {
   const prevaliasesremoveloading = usePrevious(aliases.remove.loading);
 
   useEffect(() => {
-    dispatch(
-      getAliases(getBaseUrl(pathname), {
-        query: filterQuery,
-        manual: filterType.value,
-        datetime: createdBefore,
-        batchSize: itemsPerPage,
-      }),
-    );
-  });
-
-  useEffect(() => {
     if (
       prevaliasesitemstotal !== aliases.items_total ||
       previtemsPerPage !== itemsPerPage
