@@ -41,7 +41,7 @@
     "@testing-library/jest-dom": "6.4.2",
     "@testing-library/react": "12.1.5",
     "axe-core": "4.8.4",
-    "cypress": "13.6.6",
+    "cypress": "13.13.2",
     "cypress-axe": "1.5.0",
     "cypress-file-upload": "5.0.8"
   },
