@@ -261,10 +261,10 @@ const defaultModify = ({
         newDefs['process.env.RAZZLE_PUBLIC_DIR'] = newDefs[
           'process.env.RAZZLE_PUBLIC_DIR'
         ].replace(projectRootPath, '.');
-        // Handles the PORT, so it takes the real PORT from the runtime enviroment var,
+        // Handles the PORT, so it takes the real PORT from the runtime environment var,
         // but keeps the one from build time, if different from 3000 (by not deleting it)
         // So build time one takes precedence, do not set it in build time if you want
-        // to control it always via runtime (assumming 3000 === not set in build time)
+        // to control it always via runtime (assuming 3000 === not set in build time)
         if (newDefs['process.env.PORT'] === '3000') {
           delete newDefs['process.env.PORT'];
         }
@@ -277,7 +277,7 @@ const defaultModify = ({
   // Don't load SVGs from ./src/icons with file-loader
   const fileLoader = config.module.rules.find(fileLoaderFinder);
   fileLoader.exclude = [
-    /\.(config|variables|overrides)$/,
+    /\.(config|variables|overrides|cjs)$/,
     /icons\/.*\.svg$/,
     ...fileLoader.exclude,
   ];

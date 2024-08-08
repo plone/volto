@@ -10,6 +10,7 @@ import type {
   SlotComponent,
   SlotPredicate,
   SlotsConfig,
+  UtilitiesConfig,
   ViewsConfig,
   WidgetsConfig,
 } from '@plone/types';
@@ -23,11 +24,16 @@ export type ConfigData = {
   addonRoutes: AddonRoutesConfig;
   slots: SlotsConfig;
   components: ComponentsConfig;
+  utilities: UtilitiesConfig;
   experimental: ExperimentalConfig;
 };
 
 type GetComponentResult = {
   component: React.ComponentType<any>;
+};
+
+type GetUtilityResult = {
+  method: (...args: any[]) => any;
 };
 
 export type ConfigType = InstanceType<typeof Config>;
@@ -126,6 +132,14 @@ class Config {
 
   set components(components) {
     this._data.components = components;
+  }
+
+  get utilities() {
+    return this._data.utilities;
+  }
+
+  set utilities(utilities) {
+    this._data.utilities = utilities;
   }
 
   getComponent(
@@ -405,6 +419,69 @@ class Config {
     }
     const result = currentSlotComponents.slice();
     currentSlot.data[name] = result.splice(position, 1);
+  }
+
+  registerUtility(options: {
+    name: string;
+    type: string;
+    dependencies?: Record<string, string>;
+    method: (args: any) => any;
+  }) {
+    const { name, type, method, dependencies = {} } = options;
+    let depsString: string = '';
+    if (!method) {
+      throw new Error('No method provided');
+    } else {
+      depsString = Object.keys(dependencies)
+        .sort()
+        .map((key) => `${key}:${dependencies[key]}`)
+        .join('+');
+    }
+    const utilityName = `${depsString ? `|${depsString}` : ''}${name}`;
+
+    let utilityType = this._data.utilities[type];
+    if (!utilityType) {
+      this._data.utilities[type] = {};
+      utilityType = this._data.utilities[type];
+    }
+    utilityType[utilityName] = { method };
+  }
+
+  getUtility(options: {
+    name: string;
+    type: string;
+    dependencies?: Record<string, string>;
+  }): GetUtilityResult {
+    const { name, type, dependencies = {} } = options;
+    let depsString: string = '';
+    depsString = Object.keys(dependencies)
+      .map((key) => `${key}:${dependencies[key]}`)
+      .join('+');
+
+    const utilityName = `${depsString ? `|${depsString}` : ''}${name}`;
+
+    return this._data.utilities[type][utilityName] || {};
+  }
+
+  getUtilities(options: {
+    type: string;
+    dependencies?: Record<string, string>;
+  }): Array<GetUtilityResult> {
+    const { type, dependencies = {} } = options;
+    let depsString: string = '';
+    depsString = Object.keys(dependencies)
+      .map((key) => `${key}:${dependencies[key]}`)
+      .join('+');
+
+    const utilityName = `${depsString ? `|${depsString}` : ''}`;
+    const utilitiesKeys = Object.keys(this._data.utilities[type]).filter(
+      (key) => key.startsWith(utilityName),
+    );
+    const utilities = utilitiesKeys.map(
+      (key) => this._data.utilities[type][key],
+    );
+
+    return utilities;
   }
 }
 

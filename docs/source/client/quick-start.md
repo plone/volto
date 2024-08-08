@@ -14,7 +14,7 @@ The API request layer allows to build and send arbitrary requests to Plone REST 
 It has the potential to also be able to send requests to other APIs (provided the custom Query options factories/functions).
 
 The Javascript Plone client is conceived to work with TanStack Query, the query or mutation functions can be used to call any Plone REST API endpoint without using it.
-These functions can be used in other use cases like command line helpers, scripts or programatic tests.
+These functions can be used in other use cases like command line helpers, scripts or programmatic tests.
 
 ## Installation​
 

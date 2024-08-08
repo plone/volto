@@ -64,6 +64,7 @@ cypress/screenshots
 # Local environment setup
 .env
 public/critical.css
+packages/volto/data
 
 # Sphinx and MyST
 docs/_build/

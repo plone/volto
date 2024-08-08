@@ -446,6 +446,7 @@ div.image-upload-widget-image {
   text-align: center;
 
   .toolbar-wrapper {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -726,8 +727,20 @@ div.image-upload-widget-image {
 
 .link-form-container {
   .inline.field .wrapper {
-    min-height: initial;
+    width: 270px; // needed to ensure placeholder shows and buttons are aligned to the right
+    min-height: initial; // overrides .input.field .wrapper
+    justify-content: space-between;
     border-bottom: none;
+  }
+
+  .ui.input-anchorlink-theme {
+    width: 100% !important; // overrides form.less width: auto
+    max-width: 81%; // needed so buttons don't shift to the right when value is present
+    margin-left: 0 !important; // overrides .block .toolbar-inner .ui.input
+  }
+
+  .ui.buttons {
+    width: auto; // for Add Link popup button to be aligned to the right
   }
 
   button {
@@ -742,10 +755,6 @@ div.image-upload-widget-image {
     &:focus {
       outline: none;
     }
-  }
-
-  .ui.input {
-    min-width: 250px;
   }
 }
 
@@ -1111,6 +1120,12 @@ div.image-upload-widget-image {
     flex-direction: row;
     align-items: center;
     margin-right: 0.5em;
+
+    .sorted-label-value {
+      margin-right: 0.5em;
+      margin-left: 0.7em;
+      color: @lightGrey;
+    }
   }
 
   .sort-label {

@@ -66,7 +66,7 @@ describe('Url', () => {
     it('return empty string if no url is empty string', () => {
       expect(getBaseUrl('')).toBe('');
     });
-    it('return a null/undefined mailto adress ', () => {
+    it('return a null/undefined mailto address ', () => {
       expect(normaliseMail(null)).toBe('mailto:null');
       expect(normaliseMail(undefined)).toBe('mailto:undefined');
     });
@@ -163,14 +163,14 @@ describe('Url', () => {
   });
 
   describe('flattenHTMLToAppURL', () => {
-    it('flattens all occurences of the api URL from an html snippet', () => {
+    it('flattens all occurrences of the api URL from an html snippet', () => {
       const html = `<a href="${settings.apiPath}/foo/bar">An internal link</a><a href="${settings.apiPath}/foo/baz">second link</a>`;
       expect(flattenHTMLToAppURL(html)).toBe(
         '<a href="/foo/bar">An internal link</a><a href="/foo/baz">second link</a>',
       );
     });
 
-    it('flattens all occurences of the api URL from an html snippet, with settings.internalApiPath', () => {
+    it('flattens all occurrences of the api URL from an html snippet, with settings.internalApiPath', () => {
       const html = `<a href="http://plone:8080/Plone/foo/bar">An internal link</a><a href="http://plone:8080/Plone/foo/baz">second link</a>`;
       const saved = settings.internalApiPath;
       settings.internalApiPath = 'http://plone:8080/Plone';
@@ -228,7 +228,7 @@ describe('Url', () => {
       const href = undefined;
       expect(isInternalURL(href)).toBe(undefined);
     });
-    it('tells if an  URL is external if settings.externalroutes is persent.', () => {
+    it('tells if an  URL is external if settings.externalroutes is present.', () => {
       const url = `https://localhost:3000/fb/my-page/contents`;
       const blacklistedurl = '/blacklisted';
       settings.externalRoutes = [
@@ -255,11 +255,24 @@ describe('Url', () => {
     });
     it('isUrl test 4', () => {
       const href = `https://www`;
-      expect(isUrl(href)).toBe(false);
+      expect(isUrl(href)).toBe(true);
     });
     it('isUrl test 5', () => {
+      const href = `https://www/foo/bar`;
+      expect(isUrl(href)).toBe(true);
+    });
+    it('isUrl test 6', () => {
+      // at the end of the day, this is a strange, but valid, URL
       const href = `www.e`;
-      expect(isUrl(href)).toBe(false);
+      expect(isUrl(href)).toBe(true);
+    });
+    it('isUrl test 7', () => {
+      const href = `file://server/folder/file.txt`;
+      expect(isUrl(href)).toBe(true);
+    });
+    it('isUrl test 8', () => {
+      const href = `file://server.dir.internal/folder/file.txt`;
+      expect(isUrl(href)).toBe(true);
     });
   });
   describe('getFieldURL', () => {

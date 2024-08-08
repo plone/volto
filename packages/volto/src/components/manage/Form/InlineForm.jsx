@@ -142,7 +142,6 @@ const InlineForm = (props) => {
           content={error.message}
         />
       )}
-
       <div id={`blockform-fieldset-${defaultFieldset.id}`}>
         <Segment className="form attached">
           {map(defaultFieldset.fields, (field, index) => (
@@ -153,11 +152,11 @@ const InlineForm = (props) => {
               focus={index === focusIndex}
               value={formData[field]}
               required={schema.required.indexOf(field) !== -1}
-              onChange={(id, value) => {
-                onChangeField(id, value);
+              onChange={(id, value, itemInfo) => {
+                onChangeField(id, value, itemInfo);
               }}
               key={field}
-              error={errors[field]}
+              error={errors?.[block]?.[field] || {}}
               block={block}
             />
           ))}
@@ -166,7 +165,6 @@ const InlineForm = (props) => {
           )}
         </Segment>
       </div>
-
       {other.map((fieldset, index) => (
         <Accordion fluid styled className="form" key={fieldset.id}>
           <div key={fieldset.id} id={`blockform-fieldset-${fieldset.id}`}>
@@ -199,7 +197,7 @@ const InlineForm = (props) => {
                         onChangeField(id, value);
                       }}
                       key={field}
-                      error={errors[field]}
+                      error={errors?.[block]?.[field] || {}}
                       block={block}
                     />
                   ))}

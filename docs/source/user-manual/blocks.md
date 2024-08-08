@@ -442,7 +442,7 @@ The TOC block has several configuration options.
 Variation
 : Toggles the display of the TOC to be a listing (default) or horizontal as tabs.
   The horizontal variation also adds a dropdown button, if necessary, so the items that won't fit would be displayed in the dropdown list.
-  ```{video} /_static/user-manual/blocks/table-of-contents-block-with-dropdown.mp4
+  ```{video} ../_static/user-manual/blocks/table-of-contents-block-with-dropdown.mp4
   :alt: Table of contents block with dropdown menu.
   ```
 

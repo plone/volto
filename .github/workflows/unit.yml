@@ -16,29 +16,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # node setup
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+      - name: Set up Node.js environment
+        uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
-
-      - name: Enable corepack
-        run: corepack enable
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - run: pnpm i
 
       # Locales in place are needed for the tests to pass
       - run: pnpm --filter @plone/volto i18n

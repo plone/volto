@@ -120,6 +120,7 @@ const ContentTypeSchema = (props) => {
           title: 'Form schema',
           type: 'schema',
           id: 'schema',
+          widget: 'schema',
         },
       },
       required: [],
