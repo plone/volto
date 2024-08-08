@@ -10,6 +10,7 @@ import { setPluginOptions } from '@plone/volto-slate/actions';
 /*
  * Note: this is a weirder component, it should be called as a native function
  */
+// eslint-disable-next-line import/no-anonymous-default-export
 export default (options) => (editor) => {
   const {
     isActiveElement,

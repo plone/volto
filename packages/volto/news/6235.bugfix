@@ -1,0 +1,1 @@
+Return a 302 response for server-side rendering of the Link view for unauthenticated users. @davisagli
