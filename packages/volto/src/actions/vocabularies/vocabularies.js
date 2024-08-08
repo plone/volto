@@ -7,6 +7,8 @@ import {
   GET_VOCABULARY,
   GET_VOCABULARY_TOKEN_TITLE,
 } from '@plone/volto/constants/ActionTypes';
+import config from '@plone/registry';
+import { flattenToAppURL } from '@plone/volto/helpers';
 import { getVocabName } from '@plone/volto/helpers/Vocabularies/Vocabularies';
 import qs from 'query-string';
 
@@ -28,6 +30,11 @@ export function getVocabulary({
   subrequest,
 }) {
   const vocabulary = getVocabName(vocabNameOrURL);
+  const contextualVocabularies = config.settings.contextualVocabularies;
+  const vocabPath =
+    contextualVocabularies && contextualVocabularies.includes(vocabulary)
+      ? flattenToAppURL(vocabNameOrURL)
+      : `/@vocabularies/${vocabulary}`;
 
   let queryString = `b_start=${start}${size ? '&b_size=' + size : ''}`;
 
@@ -40,7 +47,7 @@ export function getVocabulary({
     start,
     request: {
       op: 'get',
-      path: `/@vocabularies/${vocabulary}?${queryString}`,
+      path: `${vocabPath}?${queryString}`,
     },
     subrequest,
   };
@@ -62,6 +69,11 @@ export function getVocabularyTokenTitle({
 }) {
   // In case we have a URL, we have to get the vocabulary name
   const vocabulary = getVocabName(vocabNameOrURL);
+  const contextualVocabularies = config.settings.contextualVocabularies;
+  const vocabPath =
+    contextualVocabularies && contextualVocabularies.includes(vocabulary)
+      ? flattenToAppURL(vocabNameOrURL)
+      : `/@vocabularies/${vocabulary}`;
   const queryString = {
     ...(token && { token }),
     ...(tokens && { tokens }),
@@ -75,12 +87,9 @@ export function getVocabularyTokenTitle({
     subrequest,
     request: {
       op: 'get',
-      path: `/@vocabularies/${vocabulary}?b_size=-1&${qs.stringify(
-        queryString,
-        {
-          encode: false,
-        },
-      )}`,
+      path: `${vocabPath}?b_size=-1&${qs.stringify(queryString, {
+        encode: false,
+      })}`,
     },
   };
 }
