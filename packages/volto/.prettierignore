@@ -1,0 +1,8 @@
+**/.next
+**/build
+**/coverage
+**/dist
+styles/rules/*
+node_modules
+./types/*
+locales

@@ -12,11 +12,8 @@ import {
   validateFileUploadSize,
 } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
-import {
-  BlockDataForm,
-  SidebarPortal,
-  BlockChooserButton,
-} from '@plone/volto/components';
+import { SidebarPortal, BlockChooserButton } from '@plone/volto/components';
+import { BlockDataForm } from '@plone/volto/components/manage/Form';
 
 import { SlateEditor } from '@plone/volto-slate/editor';
 import { serializeNodesToText } from '@plone/volto-slate/editor/render';
@@ -70,6 +67,8 @@ export const DefaultTextBlockEditor = (props) => {
     allowedBlocks,
     formTitle,
     formDescription,
+    navRoot,
+    contentType,
   } = props;
 
   const { slate } = config.settings;
@@ -267,6 +266,8 @@ export const DefaultTextBlockEditor = (props) => {
               blocksConfig={blocksConfig}
               size="24px"
               properties={properties}
+              navRoot={navRoot}
+              contentType={contentType}
             />
           )}
 
