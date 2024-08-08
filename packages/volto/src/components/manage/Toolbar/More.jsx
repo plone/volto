@@ -80,8 +80,7 @@ const messages = defineMessages({
     defaultMessage: 'Changes applied',
   },
   workingCopyAppliedBy: {
-    id:
-      'Made by {creator} on {date}. This is not a working copy anymore, but the main content.',
+    id: 'Made by {creator} on {date}. This is not a working copy anymore, but the main content.',
     defaultMessage:
       'Made by {creator} on {date}. This is not a working copy anymore, but the main content.',
   },
@@ -279,16 +278,17 @@ const More = (props) => {
               </li>
             )}
           </Plug>
-          {path !== '' && !config.settings.excludeLinksAndReferencesMenuItem && (
-            <Plug pluggable="toolbar-more-menu-list" id="linkstoitems">
-              <li>
-                <Link to={`${path}/links-to-item`}>
-                  {intl.formatMessage(messages.linkstoitem)}
-                  <Icon name={rightArrowSVG} size="24px" />
-                </Link>
-              </li>
-            </Plug>
-          )}
+          {path !== '' &&
+            !config.settings.excludeLinksAndReferencesMenuItem && (
+              <Plug pluggable="toolbar-more-menu-list" id="linkstoitems">
+                <li>
+                  <Link to={`${path}/links-to-item`}>
+                    {intl.formatMessage(messages.linkstoitem)}
+                    <Icon name={rightArrowSVG} size="24px" />
+                  </Link>
+                </li>
+              </Plug>
+            )}
           <Plug pluggable="toolbar-more-menu-list" id="rules">
             {rulesAction && (
               <li>
