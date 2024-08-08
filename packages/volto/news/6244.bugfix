@@ -1,1 +1,1 @@
-Fixes imports to avoid type errors in addons tests. @wesleybl
+Changed imports from relative to absolute to avoid type errors in add-on tests. @wesleybl
