@@ -186,7 +186,7 @@ start-frontend-docker:
 
 .PHONY: start-backend-docker-guillotina
 start-backend-docker-guillotina:
-	docker-compose -f g-api/docker-compose.yml up -d
+	docker compose -f g-api/docker-compose.yml up -d
 
 ##### Acceptance tests (Cypress)
 
@@ -211,7 +211,7 @@ start-test-backend: ## Start Test Plone Backend (api folder)
 
 .PHONY: stop-backend-docker-guillotina
 stop-backend-docker-guillotina:
-	docker-compose -f g-api/docker-compose.yml down
+	docker compose -f g-api/docker-compose.yml down
 
 
 .PHONY: test-acceptance-server-old
@@ -258,7 +258,7 @@ test-acceptance-seamless: ## Start Seamless Cypress Acceptance Tests
 
 .PHONY: start-test-acceptance-webserver-seamless
 start-test-acceptance-webserver-seamless: ## Start the seamless webserver
-	cd cypress/docker && docker-compose -f seamless.yml up
+	cd cypress/docker && docker compose -f seamless.yml up
 
 .PHONY: full-test-acceptance-seamless
 full-test-acceptance-seamless: ## Runs Seamless Core Full Acceptance Testing in headless mode
@@ -368,7 +368,7 @@ full-test-acceptance-workingcopy: ## Runs WorkingCopy Full Acceptance Testing in
 
 .PHONY: start-test-acceptance-server-guillotina
 start-test-acceptance-server-guillotina: ## Start Guillotina Test Acceptance Server (docker container)
-	docker-compose -f g-api/docker-compose.yml up > /dev/null
+	docker compose -f g-api/docker-compose.yml up > /dev/null
 
 .PHONY: start-test-acceptance-frontend-guillotina
 start-test-acceptance-frontend-guillotina: ## Start the Guillotina Acceptance Frontend Fixture
