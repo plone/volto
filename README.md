@@ -37,12 +37,12 @@ You can try a Volto online demo in [https://6.demo.plone.org/](https://6.demo.pl
 
 ### Try the demo locally
 
-If you want to give Volto a quick try and you have [Docker](https://www.docker.com/get-started) installed in your computer, bootstrap the demo using `docker-compose`:
+If you want to give Volto a quick try and you have [Docker](https://www.docker.com/get-started) installed in your computer, bootstrap the demo using `docker compose`:
 
 ```shell
 git clone https://github.com/plone/volto.git
 cd volto
-docker-compose up
+docker compose up
 ```
 
 Go to [http://localhost:3000](http://localhost:3000) in your browser.
@@ -332,7 +332,7 @@ through it.
 *Disclaimer:* Guillotina doesn't support the full API/features that Plone provides. Contributors are welcome.
 
 ```shell
-docker-compose -f g-api/docker-compose.yml up -d
+docker compose -f g-api/docker-compose.yml up -d
 ```
 
 or using the convenience makefile command:
