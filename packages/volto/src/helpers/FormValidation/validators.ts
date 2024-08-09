@@ -1,4 +1,4 @@
-import { validationMessage } from './FormValidation';
+import { validationMessage } from '@plone/volto/helpers/FormValidation/FormValidation';
 import { messages } from '@plone/volto/helpers/MessageLabels/MessageLabels';
 
 type MinMaxValidator = {
