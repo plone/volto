@@ -7,7 +7,7 @@ import TableOfContentsSchema from './Schema';
 import View from './View';
 
 const Edit = (props) => {
-  const { onChangeBlock, data, block, selected, navRoot, contentType } = props;
+  const { onChangeBlock, data, block, selected, navRoot, contentType, blocksErrors } = props;
   const schema = TableOfContentsSchema(props);
 
   return (
@@ -29,6 +29,7 @@ const Edit = (props) => {
           block={block}
           navRoot={navRoot}
           contentType={contentType}
+          errors={blocksErrors}
         />
       </SidebarPortal>
     </>
