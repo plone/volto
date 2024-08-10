@@ -1292,10 +1292,10 @@ msgstr "पूरा नाम दर्ज करें, उदाहरण क
 msgid "Enter map Embed Code"
 msgstr "नक्शे का एम्बेड कोड दर्ज करें"
 
-#. Default: "Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target."
+#. Default: "Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
 #: components/manage/Controlpanels/Aliases
-msgid "Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target."
-msgstr "लक्ष्य का पूर्ण रास्ता दर्ज करें। पथ '/ ' से प्रारंभ होना चाहिए। लक्ष्य मौजूद होना चाहिए या लक्ष्य के लिए मौजूदा वैकल्पिक URL पथ होना चाहिए।"
+msgid "Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
+msgstr "लक्ष्य का पूर्ण रास्ता दर्ज करें। लक्ष्य मौजूद होना चाहिए या लक्ष्य के लिए मौजूदा वैकल्पिक URL पथ होना चाहिए।"
 
 #. Default: "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
 #: components/manage/Aliases/Aliases
@@ -3605,11 +3605,6 @@ msgstr "प्रति कैश के लिए लक्षित मेम�
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Target number of objects in memory per cache"
 msgstr "प्रति कैश में मेमोरी में ऑब्जेक्ट की लक्षित संख्या"
-
-#. Default: "Target url path must start with a slash."
-#: components/manage/Controlpanels/Aliases
-msgid "Target url path must start with a slash."
-msgstr "लक्षित URL पथ को स्लैश के साथ शुरू होना चाहिए।"
 
 #. Default: "Teaser"
 #: components/manage/Blocks/Teaser/schema

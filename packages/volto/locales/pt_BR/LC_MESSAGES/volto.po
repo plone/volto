@@ -1298,10 +1298,10 @@ msgstr "Digite o nome completo. Por exemplo, José da Silva."
 msgid "Enter map Embed Code"
 msgstr "Informe o código Embed do mapa"
 
-#. Default: "Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target."
+#. Default: "Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
 #: components/manage/Controlpanels/Aliases
-msgid "Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target."
-msgstr "Informe o caminho absoluto do destino. O caminho deve começar com '/'. O destino deve existir ou ser um caminho da URL alternativa existente para o destino."
+msgid "Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
+msgstr "Informe o caminho absoluto do destino. O destino deve existir ou ser um caminho da URL alternativa existente para o destino."
 
 #. Default: "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
 #: components/manage/Aliases/Aliases
@@ -3611,11 +3611,6 @@ msgstr "Tamanho de memória por cache em bytes"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Target number of objects in memory per cache"
 msgstr "Número de objetos na memória por cache"
-
-#. Default: "Target url path must start with a slash."
-#: components/manage/Controlpanels/Aliases
-msgid "Target url path must start with a slash."
-msgstr "O caminho da URL de destino deve começar com uma barra."
 
 #. Default: "Teaser"
 #: components/manage/Blocks/Teaser/schema
