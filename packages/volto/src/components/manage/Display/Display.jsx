@@ -5,6 +5,7 @@ import { compose } from 'redux';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 import { getSchema, updateContent, getContent } from '@plone/volto/actions';
+import { getLayoutFieldname } from '@plone/volto/helpers';
 import { usePrevious } from '@plone/volto/helpers';
 import { FormFieldWrapper, Icon } from '@plone/volto/components';
 import { defineMessages, useIntl } from 'react-intl';
@@ -113,11 +114,23 @@ const DisplaySelect = (props) => {
   const { pathname } = props;
   const intl = useIntl();
   const dispatch = useDispatch();
-  const [selectedOption, setselectedOption] = useState();
   const loaded = useSelector((state) => state.content.update.loaded);
   const layouts = useSelector((state) =>
     state.schema.schema ? state.schema.schema.layouts : [],
   );
+  const layout = useSelector((state) =>
+    state.content.data
+      ? state.content.data[getLayoutFieldname(state.content.data)]
+      : '',
+  );
+  const [selectedOption, setselectedOption] = useState({
+    value: layout,
+    label:
+      intl.formatMessage({
+        id: config.views.layoutViewsNamesMapping?.[layout],
+        defaultMessage: config.views.layoutViewsNamesMapping?.[layout],
+      }) || layout,
+  });
 
   const type = useSelector((state) =>
     state.content.data ? state.content.data['@type'] : '',
