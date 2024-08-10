@@ -918,11 +918,6 @@ msgstr ""
 msgid "Database Size"
 msgstr ""
 
-#. Default: "The Database Manager allow you to view database status information"
-#: components/manage/Controlpanels/DatabaseInformation
-msgid "Database information"
-msgstr ""
-
 #. Default: "Database main"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Database main"

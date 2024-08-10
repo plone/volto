@@ -913,11 +913,6 @@ msgstr "Locația bazei de date"
 msgid "Database Size"
 msgstr "Dimensiunea bazei de date"
 
-#. Default: "The Database Manager allow you to view database status information"
-#: components/manage/Controlpanels/DatabaseInformation
-msgid "Database information"
-msgstr ""
-
 #. Default: "Database main"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Database main"

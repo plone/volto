@@ -47,14 +47,6 @@ const DatabaseInformation = () => {
         </Segment>
         <Segment>
           <Message>
-            <FormattedMessage
-              id="Database information"
-              defaultMessage="The Database Manager allow you to view database status information"
-            />
-          </Message>
-        </Segment>
-        <Segment>
-          <Message>
             <Message.Header>
               <FormattedMessage
                 id="Database main"
