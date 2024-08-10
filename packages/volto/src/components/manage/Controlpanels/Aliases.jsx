@@ -73,7 +73,6 @@ const Aliases = (props) => {
   const [altUrlPath, setAltUrlPath] = useState('');
   const [isAltUrlCorrect, setIsAltUrlCorrect] = useState(false);
   const [targetUrlPath, setTargetUrlPath] = useState('');
-  const [isTargetUrlCorrect, setIsTargetUrlCorrect] = useState(false);
   const [aliasesToRemove, setAliasesToRemove] = useState([]);
   const [errorMessageAdd, setErrorMessageAdd] = useState('');
   const [filterQuery, setFilterQuery] = useState('');
@@ -119,13 +118,6 @@ const Aliases = (props) => {
         setIsAltUrlCorrect(true);
       } else {
         setIsAltUrlCorrect(false);
-      }
-    }
-    if (prevtargetUrlPath !== targetUrlPath) {
-      if (targetUrlPath.charAt(0) === '/') {
-        setIsTargetUrlCorrect(true);
-      } else {
-        setIsTargetUrlCorrect(false);
       }
     }
   }, [
@@ -233,7 +225,7 @@ const Aliases = (props) => {
   };
 
   const handleSubmitAlias = useCallback(() => {
-    if (isAltUrlCorrect && isTargetUrlCorrect) {
+    if (isAltUrlCorrect) {
       dispatch(
         addAliases('', {
           items: [
@@ -247,13 +239,7 @@ const Aliases = (props) => {
       setAltUrlPath('');
       setTargetUrlPath('');
     }
-  }, [
-    isAltUrlCorrect,
-    isTargetUrlCorrect,
-    altUrlPath,
-    targetUrlPath,
-    dispatch,
-  ]);
+  }, [isAltUrlCorrect, altUrlPath, targetUrlPath, dispatch]);
 
   const handleCheckAlias = (alias) => {
     const aliasess = [...aliasesToRemove];
@@ -344,8 +330,8 @@ const Aliases = (props) => {
                 </Header>
                 <p className="help">
                   <FormattedMessage
-                    id="Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target."
-                    defaultMessage="Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target."
+                    id="Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
+                    defaultMessage="Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
                   />
                 </p>
                 <Form.Field>
@@ -356,14 +342,6 @@ const Aliases = (props) => {
                     value={targetUrlPath}
                     onChange={(e) => handleTargetUrlChange(e.target.value)}
                   />
-                  {!isTargetUrlCorrect && targetUrlPath !== '' && (
-                    <p style={{ color: 'red' }}>
-                      <FormattedMessage
-                        id="Target url path must start with a slash."
-                        defaultMessage="Target url path must start with a slash."
-                      />
-                    </p>
-                  )}
                 </Form.Field>
                 <Button
                   id="submit-alias"
@@ -371,7 +349,6 @@ const Aliases = (props) => {
                   onClick={() => handleSubmitAlias()}
                   disabled={
                     !isAltUrlCorrect ||
-                    !isTargetUrlCorrect ||
                     altUrlPath === '' ||
                     targetUrlPath === ''
                   }
