@@ -11,7 +11,6 @@ describe('Add Content Tests', () => {
     cy.visit('/events');
     cy.get('#toolbar-more').click();
     cy.findByText('Listing view').click();
-    cy.findByText('Album view').click();
     cy.visit('/events');
     cy.wait('@content');
     cy.wait(2000);
@@ -42,6 +41,7 @@ describe('Add Content Tests', () => {
     cy.visit('/events');
     cy.get('#toolbar-more').click();
     cy.findByText('Listing view').click();
+    cy.findByText('Album view').click();
     cy.visit('/events');
     cy.wait('@content');
     cy.wait(2000);
