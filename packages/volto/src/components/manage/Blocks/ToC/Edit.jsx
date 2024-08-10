@@ -8,13 +8,13 @@ import View from './View';
 
 const Edit = (props) => {
   const {
-      onChangeBlock,
-      data,
-      block,
-      selected,
-      navRoot,
-      contentType,
-      blocksErrors,
+    onChangeBlock,
+    data,
+    block,
+    selected,
+    navRoot,
+    contentType,
+    blocksErrors,
   } = props;
   const schema = TableOfContentsSchema(props);
 
