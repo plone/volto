@@ -3627,11 +3627,6 @@ msgstr "Testua"
 msgid "Thank you."
 msgstr "Eskerrik asko."
 
-#. Default: "The Database Manager allow you to view database status information"
-#: components/manage/Controlpanels/DatabaseInformation
-msgid "The Database Manager allow you to view database status information"
-msgstr "Datu-basearen kudeatzaileak datu-basearen egoera erakusten ditu"
-
 #. Default: "The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again."
 #: components/theme/RequestTimeout/RequestTimeout
 msgid "The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again."

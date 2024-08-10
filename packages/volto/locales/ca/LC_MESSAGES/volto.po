@@ -3626,11 +3626,6 @@ msgstr "Text"
 msgid "Thank you."
 msgstr "Gràcies."
 
-#. Default: "The Database Manager allow you to view database status information"
-#: components/manage/Controlpanels/DatabaseInformation
-msgid "The Database Manager allow you to view database status information"
-msgstr "El Gestor de bases de dades us permet veure la informació d'estat de la base de dades"
-
 #. Default: "The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again."
 #: components/theme/RequestTimeout/RequestTimeout
 msgid "The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again."
