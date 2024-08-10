@@ -4,7 +4,7 @@ import {
   getBlocksFieldname,
   getBlocksLayoutFieldname,
   hasBlocksData,
-} from './Blocks';
+} from '@plone/volto/helpers/Blocks/Blocks';
 import config from '@plone/registry';
 
 export function cloneBlocks(blocksData) {
