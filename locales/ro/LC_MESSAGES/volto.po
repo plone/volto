@@ -1238,8 +1238,8 @@ msgid "Enter map Embed Code"
 msgstr "Introduceți codul de integrare a hărții"
 
 #: components/manage/Controlpanels/Aliases
-# defaultMessage: Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target.
-msgid "Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target."
+# defaultMessage: Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target.
+msgid "Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
 msgstr ""
 
 #: components/manage/Aliases/Aliases
@@ -3419,11 +3419,6 @@ msgstr "Dimensiunea țintă a memoriei raportat la cache în octeți"
 # defaultMessage: Target number of objects in memory per cache
 msgid "Target number of objects in memory per cache"
 msgstr "Numărul țintă de obiecte din memorie raportat la cache"
-
-#: components/manage/Controlpanels/Aliases
-# defaultMessage: Target url path must start with a slash.
-msgid "Target url path must start with a slash."
-msgstr ""
 
 #: components/manage/Blocks/Teaser/schema
 # defaultMessage: Teaser

@@ -1244,9 +1244,9 @@ msgid "Enter map Embed Code"
 msgstr "输入 map 嵌入代码"
 
 #: components/manage/Controlpanels/Aliases
-# defaultMessage: Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target.
-msgid "Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target."
-msgstr "输入目标的绝对路径。路径必须以‘/’开头。目标必须存在，或者是指向目标的现有可选的url路径。"
+# defaultMessage: Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target.
+msgid "Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
+msgstr "输入目标的绝对路径。目标必须存在，或者是指向目标的现有可选的url路径。"
 
 #: components/manage/Aliases/Aliases
 #: components/manage/Controlpanels/Aliases
@@ -3425,11 +3425,6 @@ msgstr "每个缓存目标以字节为单位的内存大小"
 # defaultMessage: Target number of objects in memory per cache
 msgid "Target number of objects in memory per cache"
 msgstr ""
-
-#: components/manage/Controlpanels/Aliases
-# defaultMessage: Target url path must start with a slash.
-msgid "Target url path must start with a slash."
-msgstr "目标url路径必须以斜杠开头。"
 
 #: components/manage/Blocks/Teaser/schema
 # defaultMessage: Teaser

@@ -1245,9 +1245,9 @@ msgid "Enter map Embed Code"
 msgstr "Sartu itsasteko kodea"
 
 #: components/manage/Controlpanels/Aliases
-# defaultMessage: Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target.
-msgid "Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target."
-msgstr "Idatzi helburuaren bide absolutua. Bidea '/' karakterearekin hasi behar da. Helburua existitu egin behar da edo ordezko helbide bat izan behar da."
+# defaultMessage: Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target.
+msgid "Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
+msgstr "Idatzi helburuaren bide absolutua. Helburua existitu egin behar da edo ordezko helbide bat izan behar da."
 
 #: components/manage/Aliases/Aliases
 #: components/manage/Controlpanels/Aliases
@@ -3426,11 +3426,6 @@ msgstr "Katxe bakoitzaren tamaina "
 # defaultMessage: Target number of objects in memory per cache
 msgid "Target number of objects in memory per cache"
 msgstr "Katxe bakoitzaren elementu-kopurua"
-
-#: components/manage/Controlpanels/Aliases
-# defaultMessage: Target url path must start with a slash.
-msgid "Target url path must start with a slash."
-msgstr "Helburuaren bidea / karakterearekin hasi behar da"
 
 #: components/manage/Blocks/Teaser/schema
 # defaultMessage: Teaser

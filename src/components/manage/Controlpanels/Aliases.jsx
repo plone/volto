@@ -1,8 +1,3 @@
-/**
- * Moderate comments component.
- * @module components/manage/Controlpanels/Aliases
- */
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -93,7 +88,6 @@ class Aliases extends Component {
       altUrlPath: '',
       isAltUrlCorrect: false,
       targetUrlPath: '',
-      isTargetUrlCorrect: false,
       aliasesToRemove: [],
       errorMessageAdd: '',
       filterQuery: '',
@@ -158,14 +152,6 @@ class Aliases extends Component {
         this.setState({ isAltUrlCorrect: true });
       } else {
         this.setState({ isAltUrlCorrect: false });
-      }
-    }
-
-    if (prevState.targetUrlPath !== this.state.targetUrlPath) {
-      if (this.state.targetUrlPath.charAt(0) === '/') {
-        this.setState({ isTargetUrlCorrect: true });
-      } else {
-        this.setState({ isTargetUrlCorrect: false });
       }
     }
   }
@@ -303,7 +289,7 @@ class Aliases extends Component {
    * @returns {undefined}
    */
   handleSubmitAlias() {
-    if (this.state.isAltUrlCorrect && this.state.isTargetUrlCorrect) {
+    if (this.state.isAltUrlCorrect) {
       this.props.addAliases('', {
         items: [
           {
@@ -431,8 +417,8 @@ class Aliases extends Component {
                   </Header>
                   <p className="help">
                     <FormattedMessage
-                      id="Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target."
-                      defaultMessage="Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target."
+                      id="Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
+                      defaultMessage="Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
                     />
                   </p>
                   <Form.Field>
@@ -445,15 +431,6 @@ class Aliases extends Component {
                         this.handleTargetUrlChange(e.target.value)
                       }
                     />
-                    {!this.state.isTargetUrlCorrect &&
-                      this.state.targetUrlPath !== '' && (
-                        <p style={{ color: 'red' }}>
-                          <FormattedMessage
-                            id="Target url path must start with a slash."
-                            defaultMessage="Target url path must start with a slash."
-                          />
-                        </p>
-                      )}
                   </Form.Field>
                   <Button
                     id="submit-alias"
@@ -461,7 +438,6 @@ class Aliases extends Component {
                     onClick={() => this.handleSubmitAlias()}
                     disabled={
                       !this.state.isAltUrlCorrect ||
-                      !this.state.isTargetUrlCorrect ||
                       this.state.altUrlPath === '' ||
                       this.state.targetUrlPath === ''
                     }

@@ -1244,8 +1244,8 @@ msgid "Enter map Embed Code"
 msgstr "Introduïu el codi d'inserció del mapa"
 
 #: components/manage/Controlpanels/Aliases
-# defaultMessage: Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target.
-msgid "Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target."
+# defaultMessage: Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target.
+msgid "Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
 msgstr ""
 
 #: components/manage/Aliases/Aliases
@@ -3425,11 +3425,6 @@ msgstr "Mida de memòria objectiu per memòria cau en bytes"
 # defaultMessage: Target number of objects in memory per cache
 msgid "Target number of objects in memory per cache"
 msgstr "Nombre objectiu d'objectes a la memòria per memòria cau"
-
-#: components/manage/Controlpanels/Aliases
-# defaultMessage: Target url path must start with a slash.
-msgid "Target url path must start with a slash."
-msgstr ""
 
 #: components/manage/Blocks/Teaser/schema
 # defaultMessage: Teaser
