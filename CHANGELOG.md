@@ -8,6 +8,13 @@
 
 <!-- towncrier release notes start -->
 
+## 16.31.12 (2024-08-12)
+
+### Bugfix
+
+- Return a 302 response for server-side rendering of the Link view for unauthenticated users. @davisagli [#6235](https://github.com/plone/volto/issues/6235)
+- In the URL Management control panel, allow external URLs as targets. @davisagli [#6247](https://github.com/plone/volto/issues/6247)
+
 ## 16.31.11 (2024-07-31)
 
 ### Bugfix
