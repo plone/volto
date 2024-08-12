@@ -1,0 +1,52 @@
+name: Acceptance tests
+on: [push]
+
+env:
+  ADDON_NAME: "volto-volto-project"
+  ADDON_PATH: "volto-volto-project"
+  VOLTO_VERSION: "17.0.0"
+
+jobs:
+
+  acceptance:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Install Cypress
+        run: |
+          cd acceptance
+          yarn
+
+      - name: "Cypress: Acceptance tests"
+        uses: cypress-io/github-action@v6
+        env:
+          BABEL_ENV: production
+          CYPRESS_RETRIES: 2
+        with:
+          parallel: false
+          browser: chrome
+          working-directory: acceptance
+          spec: cypress/tests/*.js
+          install: false
+          start: |
+            docker compose -f ci.yml --profile prod up
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
+
+      # Upload Cypress screenshots
+      - uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: cypress-screenshots-acceptance
+          path: acceptance/cypress/screenshots
+
+      # Upload Cypress videos
+      - uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: cypress-videos-acceptance
+          path: acceptance/cypress/videos

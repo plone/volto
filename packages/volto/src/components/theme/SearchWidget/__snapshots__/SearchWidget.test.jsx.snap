@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchWidget renders a search widget component 1`] = `
+<form
+  action="http://localhost:3000/search"
+  className="ui form"
+  onSubmit={[Function]}
+>
+  <div
+    className="field searchbox"
+  >
+    <div
+      className="ui transparent input"
+    >
+      <input
+        aria-label="Search"
+        autoComplete="off"
+        name="SearchableText"
+        onChange={[Function]}
+        placeholder="Search Site"
+        title="Search"
+        type="text"
+        value=""
+      />
+    </div>
+    <button
+      aria-label="Search"
+    >
+      <svg
+        className="icon"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": undefined,
+          }
+        }
+        onClick={null}
+        style={
+          Object {
+            "fill": "currentColor",
+            "height": "18px",
+            "width": "auto",
+          }
+        }
+        viewBox=""
+        xmlns=""
+      />
+    </button>
+  </div>
+</form>
+`;

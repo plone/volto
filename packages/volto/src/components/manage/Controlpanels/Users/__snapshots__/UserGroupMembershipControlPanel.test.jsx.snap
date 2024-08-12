@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserGroupMembershipControlPanel renders a user group membership control component 1`] = `
+<div>
+  <div
+    class="ui container view-wrapper"
+  >
+    <h1>
+      Unauthorized
+    </h1>
+    <h3 />
+    <p
+      class="description"
+    >
+      You are trying to access a protected resource, please 
+      <a
+        href="/login"
+      >
+        log in
+      </a>
+       first.
+    </p>
+    <p>
+      If you are certain you have the correct web address but are encountering an error, please contact the 
+      <a
+        href="/contact-form"
+      >
+        Site Administration
+      </a>
+      .
+    </p>
+    <p>
+      Thank you.
+    </p>
+  </div>
+  <div
+    id="toolbar"
+  />
+</div>
+`;

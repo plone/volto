@@ -1,6 +1,6 @@
-import { toggleList, unwrapList } from './utils';
+import { toggleList } from './utils';
 import { isBlockActive } from '@plone/volto-slate/utils';
-import { UL, OL, LI } from '@plone/volto-slate/constants';
+import { UL, OL, LI, H2, H3, BLOCKQUOTE } from '@plone/volto-slate/constants';
 
 /**
  * Uses the old toggleList function to toggle lists on or off or from a type to another.
@@ -22,11 +22,11 @@ export const localToggleList = (editor, format) => {
  */
 export const autoformatRules = [
   {
-    type: 'h2',
+    type: H2,
     markup: '#',
   },
   {
-    type: 'h3',
+    type: H3,
     markup: '##',
   },
   {
@@ -44,36 +44,36 @@ export const autoformatRules = [
     },
   },
   {
-    type: 'blockquote',
+    type: BLOCKQUOTE,
     markup: ['>'],
     // preFormat,
   },
   {
-    type: 'bold',
+    type: 'strong',
     between: ['**', '**'],
     mode: 'inline',
     insertTrigger: true,
   },
   {
-    type: 'bold',
+    type: 'strong',
     between: ['__', '__'],
     mode: 'inline',
     insertTrigger: true,
   },
   {
-    type: 'italic',
+    type: 'em',
     between: ['*', '*'],
     mode: 'inline',
     insertTrigger: true,
   },
   {
-    type: 'italic',
+    type: 'em',
     between: ['_', '_'],
     mode: 'inline',
     insertTrigger: true,
   },
   {
-    type: 'strikethrough',
+    type: 'del',
     between: ['~~', '~~'],
     mode: 'inline',
     insertTrigger: true,
