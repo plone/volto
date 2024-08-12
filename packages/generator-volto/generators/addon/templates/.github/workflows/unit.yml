@@ -1,0 +1,15 @@
+name: Unit Tests
+on: [push]
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - name: Main checkout
+        uses: actions/checkout@v3
+
+      - name: Unit tests
+        run: make test-ci

@@ -1,0 +1,16 @@
+node_modules/
+dist/
+stats.html
+storybook-static
+lib
+
+# yarn 3
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+.parcel-cache/
