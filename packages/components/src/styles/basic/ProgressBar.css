@@ -1,0 +1,50 @@
+@import './theme.css';
+
+.react-aria-ProgressBar {
+  display: grid;
+  width: 250px;
+  color: var(--text-color);
+  gap: 4px;
+  grid-template-areas:
+    'label value'
+    'bar bar';
+  grid-template-columns: 1fr auto;
+
+  .value {
+    grid-area: value;
+  }
+
+  .bar {
+    overflow: hidden;
+    height: 10px;
+    border-radius: 5px;
+    box-shadow: inset 0px 0px 0px 1px var(--border-color);
+    forced-color-adjust: none;
+    grid-area: bar;
+    will-change: transform;
+  }
+
+  .fill {
+    height: 100%;
+    background: var(--highlight-background);
+  }
+
+  &:not([aria-valuenow]) {
+    .fill {
+      width: 120px;
+      border-radius: inherit;
+      animation: indeterminate 1.5s infinite ease-in-out;
+      will-change: transform;
+    }
+  }
+}
+
+@keyframes indeterminate {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(250px);
+  }
+}

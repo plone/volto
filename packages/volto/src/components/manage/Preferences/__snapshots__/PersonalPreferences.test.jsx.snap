@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PersonalPreferences renders a personal preferences component 1`] = `
+<div>
+  <div
+    data-schema="{
+  \\"fieldsets\\": [
+    {
+      \\"id\\": \\"default\\",
+      \\"title\\": \\"Default\\",
+      \\"fields\\": [
+        \\"language\\"
+      ]
+    }
+  ],
+  \\"properties\\": {
+    \\"language\\": {
+      \\"description\\": \\"Your preferred language\\",
+      \\"title\\": \\"Language\\",
+      \\"type\\": \\"string\\",
+      \\"choices\\": [
+        [
+          \\"ca\\",
+          \\"Català\\"
+        ],
+        [
+          \\"de\\",
+          \\"Deutsch\\"
+        ],
+        [
+          \\"en\\",
+          \\"English\\"
+        ],
+        [
+          \\"es\\",
+          \\"Español\\"
+        ],
+        [
+          \\"eu\\",
+          \\"Euskara\\"
+        ],
+        [
+          \\"fi\\",
+          \\"Suomi\\"
+        ],
+        [
+          \\"fr\\",
+          \\"Français\\"
+        ],
+        [
+          \\"hi\\",
+          \\"Hindi\\"
+        ],
+        [
+          \\"it\\",
+          \\"Italiano\\"
+        ],
+        [
+          \\"nl\\",
+          \\"Nederlands\\"
+        ],
+        [
+          \\"ro\\",
+          \\"Română\\"
+        ],
+        [
+          \\"ja\\",
+          \\"日本語\\"
+        ],
+        [
+          \\"pt\\",
+          \\"Português\\"
+        ],
+        [
+          \\"pt_BR\\",
+          \\"Português (Brasil)\\"
+        ],
+        [
+          \\"zh_CN\\",
+          \\"中文\\"
+        ]
+      ]
+    }
+  },
+  \\"required\\": []
+}"
+    id="Form"
+  />
+</div>
+`;
