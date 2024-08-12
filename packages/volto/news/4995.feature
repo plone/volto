@@ -1,0 +1,1 @@
+Refactor AddonsControlpanel from class to functional components. @Tishasoumya
