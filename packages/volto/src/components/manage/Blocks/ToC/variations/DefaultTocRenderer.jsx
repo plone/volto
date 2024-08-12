@@ -12,7 +12,7 @@ import Slugger from 'github-slugger';
 import { UniversalLink } from '@plone/volto/components';
 import { normalizeString } from '@plone/volto/helpers';
 
-const RenderListItems = ({ items, data }) => {
+const RenderListItems = ({ mode, items, data }) => {
   return map(items, (item) => {
     const { id, level, title, override_toc, plaintext } = item;
     const slug = override_toc
@@ -42,7 +42,7 @@ const RenderListItems = ({ items, data }) => {
  * @class View
  * @extends Component
  */
-const View = ({ data, tocEntries }) => {
+const View = ({ mode, data, tocEntries }) => {
   return (
     <>
       {data.title && !data.hide_title ? (
@@ -62,7 +62,7 @@ const View = ({ data, tocEntries }) => {
         bulleted={!data.ordered}
         as={data.ordered ? 'ol' : 'ul'}
       >
-        <RenderListItems items={tocEntries} data={data} />
+        <RenderListItems mode={mode} items={tocEntries} data={data} />
       </List>
     </>
   );
