@@ -68,8 +68,8 @@ const Edit = React.memo((props) => {
             return data.align === 'full' || data.align === 'center'
               ? '100vw'
               : data.align === 'left' || data.align === 'right'
-              ? '50vw'
-              : undefined;
+                ? '50vw'
+                : undefined;
           }}
           alt={altText}
         />
