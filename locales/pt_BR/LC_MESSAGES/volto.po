@@ -1244,9 +1244,9 @@ msgid "Enter map Embed Code"
 msgstr "Informe o código Embed do mapa"
 
 #: components/manage/Controlpanels/Aliases
-# defaultMessage: Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target.
-msgid "Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target."
-msgstr "Informe o caminho absoluto do destino. O caminho deve começar com '/'. O destino deve existir ou ser um caminho da URL alternativa existente para o destino."
+# defaultMessage: Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target.
+msgid "Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
+msgstr "Informe o caminho absoluto do destino. O destino deve existir ou ser um caminho da URL alternativa existente para o destino."
 
 #: components/manage/Aliases/Aliases
 #: components/manage/Controlpanels/Aliases
@@ -3425,11 +3425,6 @@ msgstr "Tamanho de memória por cache em bytes"
 # defaultMessage: Target number of objects in memory per cache
 msgid "Target number of objects in memory per cache"
 msgstr "Número de objetos na memória por cache"
-
-#: components/manage/Controlpanels/Aliases
-# defaultMessage: Target url path must start with a slash.
-msgid "Target url path must start with a slash."
-msgstr "O caminho da URL de destino deve começar com uma barra."
 
 #: components/manage/Blocks/Teaser/schema
 # defaultMessage: Teaser
