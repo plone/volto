@@ -1,5 +1,5 @@
 import { map, keys, intersection, isEmpty } from 'lodash';
-import { messages } from '../MessageLabels/MessageLabels';
+import { messages } from '@plone/volto/helpers/MessageLabels/MessageLabels';
 import config from '@plone/volto/registry';
 import { toast } from 'react-toastify';
 import Toast from '@plone/volto/components/manage/Toast/Toast';
