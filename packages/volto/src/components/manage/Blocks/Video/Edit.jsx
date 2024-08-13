@@ -22,7 +22,7 @@ const messages = defineMessages({
   },
 });
 
-const Edit = React.memo((props) => {
+const Edit = (props) => {
   const { data, block, onChangeBlock, selected } = props;
   const intl = useIntl();
   const [url, setUrl] = useState('');
@@ -126,7 +126,8 @@ const Edit = React.memo((props) => {
       </SidebarPortal>
     </div>
   );
-});
+};
+
 Edit.propTypes = {
   selected: PropTypes.bool.isRequired,
   block: PropTypes.string.isRequired,
