@@ -30,13 +30,22 @@ const PersonalInformation = (props) => {
     delete data.id;
     delete data.username;
     delete data.roles;
-    dispatch(updateUser(userId, data));
-    toast.success(
-      <Toast
-        success
-        title={intl.formatMessage(messages.success)}
-        content={intl.formatMessage(messages.saved)}
-      />,
+    // dispatch(updateUser(userId, data));
+    // toast.success(
+    //   <Toast
+    //     success
+    //     title={intl.formatMessage(messages.success)}
+    //     content={intl.formatMessage(messages.saved)}
+    //   />,
+    // );
+    dispatch(updateUser(userId, data)).then(() =>
+      toast.success(
+        <Toast
+          success
+          title={intl.formatMessage(messages.success)}
+          content={intl.formatMessage(messages.saved)}
+        />,
+      ),
     );
     if (props.closeMenu) props.closeMenu();
   };
