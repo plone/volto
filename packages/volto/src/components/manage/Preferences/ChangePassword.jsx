@@ -132,16 +132,13 @@ const ChangePassword = () => {
         onCancel={onCancel}
         loading={loading}
       />
-      {isClient && 
+      {isClient &&
         createPortal(
           <Toolbar
             pathname={pathname}
             hideDefaultViewButtons
             inner={
-              <Link
-                to={`${getBaseUrl(pathname)}`}
-                className="item"
-              >
+              <Link to={`${getBaseUrl(pathname)}`} className="item">
                 <Icon
                   name={backSVG}
                   className="contents circled"
@@ -152,8 +149,7 @@ const ChangePassword = () => {
             }
           />,
           document.getElementById('toolbar'),
-        )
-      }
+        )}
     </Container>
   );
 };
