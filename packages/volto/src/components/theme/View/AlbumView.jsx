@@ -14,19 +14,19 @@ import aheadSVG from '@plone/volto/icons/ahead.svg';
 import backSVG from '@plone/volto/icons/back.svg';
 
 const AlbumView = ({ content }) => {
-  const [openIndex, setopenIndex] = useState(undefined);
+  const [openIndex, setOpenIndex] = useState(undefined);
 
   const closeModal = () => {
-    setopenIndex(-1);
+    setOpenIndex(-1);
   };
 
   const nextImage = () => {
-    let openIndexes = (openIndex + 1) % content.items.length;
-    setopenIndex(openIndexes);
+    let OpenIndex = (openIndex + 1) % content.items.length;
+    setOpenIndex(OpenIndex);
   };
   const prevImage = () => {
-    const openIndexes = (openIndex - 1) % content.items.length;
-    setopenIndex(openIndexes);
+    const OpenIndex = (openIndex - 1) % content.items.length;
+    setOpenIndex(OpenIndex);
   };
   const Container =
     config.getComponent({ name: 'Container' }).component || SemanticContainer;
@@ -57,7 +57,7 @@ const AlbumView = ({ content }) => {
                               item={item}
                               alt={item.image_caption || item.title}
                               onClick={() => {
-                                setopenIndex(index);
+                                setOpenIndex(index);
                               }}
                               className="ui middle aligned image"
                               responsive={true}
@@ -107,7 +107,7 @@ const AlbumView = ({ content }) => {
                                 item={item}
                                 alt={item.image_caption}
                                 onClick={() => {
-                                  setopenIndex(index);
+                                  setOpenIndex(index);
                                 }}
                                 className="ui image"
                                 responsive={true}
