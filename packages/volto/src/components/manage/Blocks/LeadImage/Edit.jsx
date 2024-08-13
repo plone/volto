@@ -16,7 +16,7 @@ const messages = defineMessages({
   },
 });
 
-const Edit = React.memo((props) => {
+const Edit = (props) => {
   const intl = useIntl();
   const { data, properties, selected } = props;
 
@@ -64,13 +64,13 @@ const Edit = React.memo((props) => {
           className={className}
           item={properties}
           imageField="image"
-          sizes={() => {
+          sizes={(() => {
             return data.align === 'full' || data.align === 'center'
               ? '100vw'
               : data.align === 'left' || data.align === 'right'
                 ? '50vw'
                 : undefined;
-          }}
+          })()}
           alt={altText}
         />
       )}
@@ -79,7 +79,7 @@ const Edit = React.memo((props) => {
       </SidebarPortal>
     </div>
   );
-});
+};
 
 export default Edit;
 Edit.propTypes = {
