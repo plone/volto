@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders an Image Block Sidebar component 1`] = `
+<div
+  data-schema="{
+  \\"title\\": \\"Maps\\",
+  \\"block\\": \\"Maps\\",
+  \\"fieldsets\\": [
+    {
+      \\"id\\": \\"default\\",
+      \\"title\\": \\"Default\\",
+      \\"fields\\": [
+        \\"url\\",
+        \\"title\\",
+        \\"align\\"
+      ]
+    }
+  ],
+  \\"properties\\": {
+    \\"url\\": {
+      \\"title\\": \\"Maps URL\\",
+      \\"widget\\": \\"url\\"
+    },
+    \\"title\\": {
+      \\"title\\": \\"Alt text\\"
+    },
+    \\"align\\": {
+      \\"title\\": \\"Alignment\\",
+      \\"widget\\": \\"align\\"
+    }
+  },
+  \\"required\\": []
+}"
+  id="BlockDataForm"
+/>
+`;

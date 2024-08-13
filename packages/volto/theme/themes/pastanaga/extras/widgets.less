@@ -1,0 +1,282 @@
+@keyframes field-just-changed-anim {
+  0% {
+    background-color: yellow;
+  }
+
+  100% {
+    background-color: transparent;
+  }
+}
+
+.field-just-changed {
+  animation: field-just-changed-anim 0.5s;
+}
+
+.ui.segment.form.attached {
+  .field:last-child {
+    margin-bottom: 1em;
+  }
+}
+
+// FormFieldWrapper
+.field.inline {
+  .add-item-button-wrapper {
+    padding: 1rem 0 0 1rem;
+
+    .ui.button {
+      display: inline-block;
+      padding: 7px 10px;
+      border: 2px solid @blue;
+      border-radius: 10px;
+      margin-bottom: 10px; // Covers long button texts
+      background-color: transparent;
+      color: @blue;
+      cursor: pointer;
+      font-size: 16px;
+      opacity: 0.8;
+    }
+  }
+}
+
+.objectlist-widget {
+  margin-bottom: 20px;
+
+  [data-rbd-draggable-context-id] {
+    margin-bottom: 0;
+  }
+
+  // This button reset should be general to all widgets (at some point)
+  button {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    text-align: initial;
+  }
+
+  .ui.accordion {
+    border: 1px solid #ddd;
+
+    .ui.segment {
+      padding-right: 0;
+      padding-left: 0;
+      border-bottom: none;
+      box-shadow: none;
+    }
+
+    .title {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  .accordion-tools button {
+    cursor: pointer;
+  }
+}
+
+[id^='blockform-fieldset-'] .objectlist-widget {
+  [data-rbd-droppable-id] {
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+}
+
+.ui.accordion .ui.segment {
+  border: none;
+}
+
+.ui.accordion.form .objectlist-widget .accordion {
+  margin-top: 0;
+}
+
+.accordion-title-wrapper {
+  display: flex;
+  align-content: center;
+}
+
+.querystring-widget {
+  padding-bottom: 20px;
+}
+
+.querystring-widget,
+.query-widget {
+  .simple-field-name {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    font-weight: 500;
+  }
+
+  .fields {
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+    border-bottom: 1px dotted @borderColor;
+  }
+
+  .fields:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .main-fields-wrapper {
+    display: flex;
+    width: 100%;
+    flex: 1 0 auto;
+    padding-right: 0.5em;
+    padding-left: 0.5em;
+  }
+
+  .button .icon {
+    margin: 0 !important;
+  }
+}
+
+.field.inline.dictwidget {
+  .ui.grid.entries-list {
+    margin: 0;
+  }
+}
+
+// Fake "disabled" field for language independent fields
+// Only on Add form
+body.babel-view #page-add-translation #page-add .language-independent-field,
+body.babel-view .field.language-independent-field {
+  pointer-events: none;
+
+  input,
+  svg,
+  .ui.checkbox label:after {
+    opacity: 0.3 !important;
+  }
+}
+
+// makes sure that long words (eg. German) get properly broken in selects.
+.react-select__option {
+  .word-break();
+}
+
+// makes sure event recurrence form buttons don't overflow when font is big
+.recurrence-form {
+  .byday-field {
+    .button {
+      flex-grow: 1;
+      padding-right: 0px;
+      padding-left: 0px;
+    }
+  }
+
+  .byyear-field {
+    .byyear-byday {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+  }
+}
+
+.image-widget {
+  container-type: inline-size;
+
+  .no-image-wrapper {
+    display: flex;
+    width: ~'min(100%, 450px)';
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .toolbar-inner {
+    display: flex;
+    width: ~'min(100%, 450px)';
+    height: 40px;
+    padding: 4px;
+    border-radius: 2px;
+    background-color: rgba(255, 255, 255, 0.975);
+    box-shadow:
+      0 0 8px rgba(0, 0, 0, 0.1),
+      0 2px 4px rgba(0, 0, 0, 0.05);
+
+    .ui.form & .ui.input input[type='text'] {
+      height: initial;
+    }
+
+    & > svg {
+      display: inline-block !important;
+      box-sizing: content-box;
+      padding: 4px;
+      margin-right: 4px;
+      color: @brown !important;
+    }
+
+    .ui.input {
+      width: 100%;
+      margin-left: 8px;
+    }
+
+    .ui.input > input {
+      padding: 0;
+      border: none;
+    }
+
+    .ui.icon.button {
+      padding: 4px;
+      border-radius: 1px;
+      margin-left: -3px;
+      color: @brown !important;
+
+      &:hover {
+        background-color: #edf1f2 !important;
+      }
+    }
+
+    .ui.buttons:first-child {
+      & .ui.icon.button {
+        margin-left: 0;
+      }
+    }
+  }
+
+  @blueArctic: #e2f1fd;
+  @greySnow: #f3f5f7;
+  @greySmoke: #e4e8ec;
+
+  .image-widget-preview-wrapper {
+    position: relative;
+  }
+
+  .ui.basic.button.remove-block-button {
+    position: absolute;
+    z-index: 2;
+    top: 6px;
+    right: 2px;
+    background-color: transparent;
+    box-shadow: none;
+
+    .icon {
+      height: 18px !important;
+    }
+
+    .circled {
+      padding: 8px;
+      border: 1px solid @greySmoke;
+      background: @greySnow;
+
+      &:hover {
+        background-color: @greySmoke;
+      }
+    }
+
+    &:hover {
+      background-color: transparent !important;
+    }
+  }
+
+  .image-widget-filepath-preview {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    word-break: break-all;
+
+    a {
+      margin-left: 5px;
+    }
+  }
+}
