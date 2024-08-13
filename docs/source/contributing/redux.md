@@ -50,7 +50,7 @@ and either pass them directly as component props, or tweak them combine them,
 etc.
 
 You can view the content of the global Redux store by using a browser [Redux
-developer extension](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd).
+developer extension](https://chromewebstore.google.com/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd).
 The code that is used to populate this store is in the `src/reducers` folder.
 
 In some parts of Volto you'll see `asyncConnect` being used, which is needed to
