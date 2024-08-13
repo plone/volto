@@ -37,7 +37,7 @@ describe('Folder Contents Tests', () => {
     cy.getSlate().click();
     cy.get('button.block-add-button').click();
     cy.get(
-      '[style="transition: opacity 0.1s 0.2s;"] > :nth-child(2) > .ui',
+      '[style="transition: opacity 500ms ease 0ms;"] > :nth-child(2) > .ui',
     ).click();
     cy.get('#field-variation').click().type('summary{enter}');
     cy.get('#toolbar-save').click();
@@ -77,7 +77,7 @@ describe('Folder Contents Tests', () => {
     cy.getSlate().click();
     cy.get('button.block-add-button').click();
     cy.get(
-      '[style="transition: opacity 0.1s 0.2s;"] > :nth-child(2) > .ui',
+      '[style="transition: opacity 500ms ease 0ms;"] > :nth-child(2) > .ui',
     ).click();
     cy.get('#field-variation').click().type('summary{enter}');
     cy.get('#toolbar-save').click();
@@ -119,7 +119,7 @@ describe('Folder Contents Tests', () => {
     cy.getSlate().click();
     cy.get('button.block-add-button').click();
     cy.get(
-      '[style="transition: opacity 0.1s 0.2s;"] > :nth-child(2) > .ui',
+      '[style="transition: opacity 500ms ease 0ms;"] > :nth-child(2) > .ui',
     ).click();
     cy.get('#field-variation').click().type('imageGallery{enter}');
     cy.get('#toolbar-save').click();
