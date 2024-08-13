@@ -1,1 +1,0 @@
-Storybook Actions component test-@Tishasoumya-02
