@@ -10,7 +10,7 @@ if (process.argv.length < 2) {
 const pr = process.argv[2];
 const URL = `https://api.github.com/repos/plone/volto/pulls/${pr}`;
 
-function getPRInfo(pr) {
+function getPRInfo() {
   return new Promise((resolve, reject) => {
     https
       .get(
@@ -43,7 +43,8 @@ function getPRInfo(pr) {
 }
 
 function execCommand(command) {
-  execSync(command, (error, stdout, stderr) => {
+  return execSync(command, (error, stdout, stderr) => {
+    console.log(stdout);
     if (error) {
       console.log(`error: ${error.message}`);
       return;
@@ -52,17 +53,23 @@ function execCommand(command) {
       console.log(`stderr: ${stderr}`);
       return;
     }
+    return stdout;
   });
 }
 
-async function main(params) {
-  const PRInfo = await getPRInfo(pr);
+async function main() {
+  const PRInfo = await getPRInfo();
 
-  execCommand(`git pull`);
-  execCommand(`git co -b ${PRInfo.branchName}__16`);
+  // const currentBranch = execCommand(
+  //   `git rev-parse --abbrev-ref HEAD`,
+  // ).toString();
+  // execCommand(`git co -b ${PRInfo.branchName}__${currentBranch.split('.')[0]}`);
+
+  // Now we do that in the same PR
   execCommand(`git cherry-pick ${PRInfo.mergeCommit}`);
-  execCommand(`git push`);
-  execCommand(`git co 16.x.x`);
+
+  // execCommand(`git push`);
+  // execCommand(`git co $(git rev-parse --abbrev-ref HEAD)`);
 }
 
 main();
