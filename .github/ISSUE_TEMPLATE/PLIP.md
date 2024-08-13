@@ -2,8 +2,9 @@
 name: "\U0001F680 PLIP"
 about: Plone Improvement Proposal
 title: ''
-labels: ''
+labels: '03 type: feature (plip)'
 assignees: ''
+projects: 'plone/47'
 
 ---
 
@@ -11,7 +12,7 @@ assignees: ''
 
 <!--
 
-Read http://5.docs.plone.org/develop/coredev/docs/plips.html first!
+Read https://6.docs.plone.org/contributing/core/plips.html first!
 
 Set "03 type: feature: plip" as label.
 

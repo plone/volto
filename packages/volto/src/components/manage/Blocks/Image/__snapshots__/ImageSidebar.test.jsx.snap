@@ -1,0 +1,116 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders an Image Block Sidebar component 1`] = `
+Array [
+  <header
+    className="header pulled"
+  >
+    <h2>
+      Image
+    </h2>
+    <div
+      className="ui buttons"
+    >
+      <button
+        className="ui basic button"
+        onClick={[Function]}
+        title="Clear image"
+      >
+        <svg
+          className="icon"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": undefined,
+            }
+          }
+          onClick={null}
+          style={
+            Object {
+              "fill": "red",
+              "height": "24px",
+              "width": "auto",
+            }
+          }
+          viewBox=""
+          xmlns=""
+        />
+      </button>
+    </div>
+  </header>,
+  <div
+    className="ui secondary attached segment sidebar-metadata-container image-sidebar"
+  >
+    <div>
+      image
+    </div>
+    <img
+      alt="Image preview"
+      className="responsive"
+      decoding="async"
+      loading="lazy"
+      sizes="188px"
+      src="image"
+      style={
+        Object {
+          "width": "50%",
+        }
+      }
+    />
+  </div>,
+  <div
+    data-schema="{
+  \\"fieldsets\\": [
+    {
+      \\"id\\": \\"default\\",
+      \\"title\\": \\"Default\\",
+      \\"fields\\": [
+        \\"alt\\",
+        \\"align\\",
+        \\"size\\"
+      ]
+    },
+    {
+      \\"id\\": \\"link_settings\\",
+      \\"title\\": \\"Link settings\\",
+      \\"fields\\": [
+        \\"href\\",
+        \\"openLinkInNewTab\\"
+      ]
+    }
+  ],
+  \\"properties\\": {
+    \\"alt\\": {
+      \\"title\\": \\"Alt text\\"
+    },
+    \\"align\\": {
+      \\"title\\": \\"Alignment\\",
+      \\"widget\\": \\"align\\",
+      \\"default\\": \\"center\\"
+    },
+    \\"size\\": {
+      \\"title\\": \\"Image size\\",
+      \\"widget\\": \\"image_size\\",
+      \\"default\\": \\"l\\"
+    },
+    \\"href\\": {
+      \\"title\\": \\"Link to\\",
+      \\"widget\\": \\"object_browser\\",
+      \\"mode\\": \\"link\\",
+      \\"selectedItemAttrs\\": [
+        \\"Title\\",
+        \\"Description\\",
+        \\"hasPreviewImage\\"
+      ],
+      \\"allowExternals\\": true
+    },
+    \\"openLinkInNewTab\\": {
+      \\"title\\": \\"Open in a new tab\\",
+      \\"type\\": \\"boolean\\"
+    }
+  },
+  \\"required\\": []
+}"
+    id="BlockDataForm"
+  />,
+]
+`;
