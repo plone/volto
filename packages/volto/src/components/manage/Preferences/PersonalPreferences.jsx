@@ -52,7 +52,9 @@ const PersonalPreferences = (props) => {
     let language = data.language || 'en';
     if (config.settings.supportedLanguages.includes(language)) {
       const langFileName = toGettextLang(language);
-      import( /* @vite-ignore */ '@root/../locales/' + langFileName + '.json').then((locale) => {
+      import(
+        /* @vite-ignore */ '@root/../locales/' + langFileName + '.json'
+      ).then((locale) => {
         dispatch(changeLanguage(language, locale.default));
       });
     }
