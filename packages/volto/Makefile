@@ -13,6 +13,9 @@ MAKEFLAGS+=--no-builtin-rules
 # Project settings (read from repo root)
 include ../../variables.mk
 
+# Allow setting the language for backend-docker-start. Default is `en`.
+LANGUAGE ?=en
+
 # Recipe snippets for reuse
 
 CHECKOUT_BASENAME="$(shell basename $(shell realpath ./))"
@@ -57,9 +60,11 @@ clean: ## Clean development environment
 	rm -rf node_modules
 
 .PHONY: install
-install: build-deps ## Set up development environment
+install: ## Set up development environment
 	# Setup ESlint for VSCode
 	node packages/scripts/vscodesettings.js
+	pnpm i
+	make build-deps
 
 ##### Build
 
@@ -98,7 +103,7 @@ release-notes-copy-to-docs: ## Copy release notes into documentation
 
 .PHONY: backend-docker-start
 backend-docker-start: ## Starts a Docker-based backend for development
-	docker run -it --rm --name=backend -p 8080:8080 -v volto-backend-data:/data -e SITE=Plone -e ADDONS='$(KGS)' $(DOCKER_IMAGE)
+	docker run -it --rm --name=backend -p 8080:8080 -v volto-backend-data:/data -e SITE=Plone -e ADDONS='$(KGS)' -e LANGUAGE='$(LANGUAGE)' $(DOCKER_IMAGE)
 
 .PHONY: frontend-docker-start
 frontend-docker-start: ## Starts a Docker-based frontend for development
@@ -153,7 +158,7 @@ deployment-acceptance-test: ## Start Cypress in interactive mode for tests in de
 
 .PHONY: deployment-acceptance-web-server-start
 deployment-acceptance-web-server-start: ## Start the reverse proxy (Traefik) in port 80 for deployment
-	cd cypress/docker && docker-compose -f seamless.yml up
+	cd cypress/docker && docker compose -f seamless.yml up
 
 .PHONY: deployment-ci-acceptance-test-run-all
 deployment-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for deployment tests

@@ -36,7 +36,7 @@ runs:
 
     - name: Install Volto dependencies
       shell: bash
-      run: pnpm i
+      run: make install
 
     - name: Install Cypress if not in cache
       if: steps.cache-cypress-binary.outputs.cache-hit != 'true'

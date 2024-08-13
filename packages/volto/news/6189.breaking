@@ -1,1 +1,0 @@
-In the widget mapping, moved the `SchemaWidget` registration from the `id` object to the `widget` object, and added the `widget` key to the `schema` object in the `properties` object for `makeSchemaList`. @sneridagh

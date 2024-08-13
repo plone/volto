@@ -1293,10 +1293,10 @@ msgstr "输入您的姓名，如：张三"
 msgid "Enter map Embed Code"
 msgstr "输入 map 嵌入代码"
 
-#. Default: "Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target."
+#. Default: "Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
 #: components/manage/Controlpanels/Aliases
-msgid "Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target."
-msgstr "输入目标的绝对路径。路径必须以‘/’开头。目标必须存在，或者是指向目标的现有可选的url路径。"
+msgid "Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
+msgstr "输入目标的绝对路径。目标必须存在，或者是指向目标的现有可选的url路径。"
 
 #. Default: "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
 #: components/manage/Aliases/Aliases
@@ -1334,6 +1334,7 @@ msgstr ""
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Edit/Edit
 #: components/manage/Form/InlineForm
@@ -1355,10 +1356,20 @@ msgstr ""
 msgid "Event"
 msgstr "事件"
 
+#. Default: "Event end date must be on or after {startDateValueOrStartFieldName}"
+#: helpers/MessageLabels/MessageLabels
+msgid "Event end date must be on or after {startDateValueOrStartFieldName}"
+msgstr ""
+
 #. Default: "Event listing"
 #: config/Views
 msgid "Event listing"
 msgstr "事件列表"
+
+#. Default: "Event start date must be on or before {endDateValueOrEndFieldName}"
+#: helpers/MessageLabels/MessageLabels
+msgid "Event start date must be on or before {endDateValueOrEndFieldName}"
+msgstr ""
 
 #. Default: "Event view"
 #: config/Views
@@ -3414,6 +3425,11 @@ msgstr "按用户名、路径或日期对事务进行排序"
 msgid "Sorted"
 msgstr "排序"
 
+#. Default: "Sorted on"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Sorted on"
+msgstr ""
+
 #. Default: "Source"
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Controlpanels/Relations/BrokenRelations
@@ -3591,11 +3607,6 @@ msgstr "每个缓存目标以字节为单位的内存大小"
 msgid "Target number of objects in memory per cache"
 msgstr ""
 
-#. Default: "Target url path must start with a slash."
-#: components/manage/Controlpanels/Aliases
-msgid "Target url path must start with a slash."
-msgstr "目标url路径必须以斜杠开头。"
-
 #. Default: "Teaser"
 #: components/manage/Blocks/Teaser/schema
 msgid "Teaser"
@@ -3614,11 +3625,6 @@ msgstr "文本"
 #: components/theme/Unauthorized/Unauthorized
 msgid "Thank you."
 msgstr ""
-
-#. Default: "The Database Manager allow you to view database status information"
-#: components/manage/Controlpanels/DatabaseInformation
-msgid "The Database Manager allow you to view database status information"
-msgstr "数据库管理器允许您查看数据库状态信息"
 
 #. Default: "The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again."
 #: components/theme/RequestTimeout/RequestTimeout
@@ -3665,6 +3671,16 @@ msgstr "此条目无法被删除。"
 msgid "The link address is:"
 msgstr "链接地址为："
 
+#. Default: "The number of items must be greater than or equal to {minItems}"
+#: helpers/MessageLabels/MessageLabels
+msgid "The number of items must be greater than or equal to {minItems}"
+msgstr ""
+
+#. Default: "The number of items must be less than or equal to {maxItems}"
+#: helpers/MessageLabels/MessageLabels
+msgid "The number of items must be less than or equal to {maxItems}"
+msgstr ""
+
 #. Default: "The provided alternative url already exists!"
 #: components/manage/Aliases/Aliases
 msgid "The provided alternative url already exists!"
@@ -3680,6 +3696,11 @@ msgstr "注册过程成功完成。请在您的电子邮箱中查看有关如何
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "The site configuration is outdated and needs to be upgraded."
 msgstr "网站配置已过时，需要升级。"
+
+#. Default: "The value does not match the pattern {pattern}"
+#: helpers/MessageLabels/MessageLabels
+msgid "The value does not match the pattern {pattern}"
+msgstr ""
 
 #. Default: "The working copy was discarded"
 #: components/manage/Toolbar/More
@@ -4393,6 +4414,11 @@ msgstr ""
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema
 msgid "availableViews"
+msgstr ""
+
+#. Default: "Error in the block field {errorField}."
+#: helpers/MessageLabels/MessageLabels
+msgid "blocksFieldsErrorTitle"
 msgstr ""
 
 #. Default: "Forgot your password?"

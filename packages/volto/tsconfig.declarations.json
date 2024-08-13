@@ -9,9 +9,10 @@
     "esModuleInterop": true,
     "jsx": "react-jsx",
     "preserveSymlinks": true,
+    "downlevelIteration": true,
     "paths": {
-      "@plone/volto/*": ["./src/*"],
+      "@plone/volto/*": ["./src/*"]
     }
   },
-  "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.tsx"],
+  "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.tsx"]
 }
