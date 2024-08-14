@@ -131,6 +131,13 @@ const ContentsPropertiesModal = (props) => {
   if (values?.length) {
     for (const name of Object.keys(schema.properties)) {
       const firstValue = values[0][name];
+      // should not show floor or ceiling dates
+      if (
+        (name === 'effective' && firstValue && firstValue <= '1970') ||
+        (name === 'expires' && firstValue && firstValue >= '2499')
+      ) {
+        continue;
+      }
       if (values.every((item) => item[name] === firstValue)) {
         initialData[name] = firstValue;
       }
