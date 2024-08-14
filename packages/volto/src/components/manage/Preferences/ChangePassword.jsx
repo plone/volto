@@ -77,13 +77,16 @@ const ChangePassword = () => {
 
   const onSubmit = (data) => {
     if (data.newPassword === data.newPasswordRepeat) {
-      dispatch(updatePassword(userId, data.oldPassword, data.newPassword));
-      toast.success(
-        <Toast
-          success
-          title={intl.formatMessage(messages.success)}
-          content={intl.formatMessage(messages.saved)}
-        />,
+      dispatch(updatePassword(userId, data.oldPassword, data.newPassword)).then(
+        () => {
+          toast.success(
+            <Toast
+              success
+              title={intl.formatMessage(messages.success)}
+              content={intl.formatMessage(messages.saved)}
+            />,
+          );
+        },
       );
     }
   };
