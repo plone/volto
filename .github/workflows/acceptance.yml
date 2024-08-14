@@ -41,13 +41,13 @@ jobs:
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-screenshots
           path: cypress/screenshots
       # Upload Cypress videos
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-videos
@@ -93,13 +93,13 @@ jobs:
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-screenshots
           path: cypress/screenshots
       # Upload Cypress videos
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-videos
@@ -145,13 +145,13 @@ jobs:
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-screenshots
           path: cypress/screenshots
       # Upload Cypress videos
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-videos
@@ -197,13 +197,13 @@ jobs:
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-screenshots
           path: cypress/screenshots
       # Upload Cypress videos
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-videos
@@ -249,13 +249,13 @@ jobs:
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-screenshots
           path: cypress/screenshots
       # Upload Cypress videos
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-videos
@@ -301,13 +301,13 @@ jobs:
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-screenshots
           path: cypress/screenshots
       # Upload Cypress videos
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-videos
@@ -352,13 +352,13 @@ jobs:
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-screenshots
           path: cypress/screenshots
       # Upload Cypress videos
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-videos
@@ -403,13 +403,13 @@ jobs:
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-screenshots
           path: cypress/screenshots
       # Upload Cypress videos
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-videos
@@ -456,13 +456,13 @@ jobs:
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:8081 http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-screenshots
           path: cypress/screenshots
       # Upload Cypress videos
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-videos
@@ -508,13 +508,13 @@ jobs:
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-screenshots
           path: cypress/screenshots
       # Upload Cypress videos
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-videos
@@ -585,13 +585,13 @@ jobs:
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-screenshots
           path: cypress/screenshots
       # Upload Cypress videos
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-videos
@@ -686,14 +686,14 @@ jobs:
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-screenshots
           path: cypress/screenshots
 
       # Upload Cypress videos
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-videos
@@ -746,13 +746,13 @@ jobs:
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000 http://localhost'
 
       # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-screenshots
           path: cypress/screenshots
       # Upload Cypress videos
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-videos
@@ -800,13 +800,13 @@ jobs:
           wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000 http://localhost'
 
       # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-screenshots
           path: cypress/screenshots
       # Upload Cypress videos
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-videos

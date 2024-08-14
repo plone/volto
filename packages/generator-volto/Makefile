@@ -29,4 +29,4 @@ test-acceptance-server:
 
 .PHONY: test-acceptance-guillotina
 test-acceptance-guillotina:
-	docker-compose -f g-api/docker-compose.yml up > /dev/null
+	docker compose -f g-api/docker-compose.yml up > /dev/null
