@@ -1,1 +1,1 @@
-Refactor ReferenceWidget from class to functional component. @Tishasoumya
+Refactor `ReferenceWidget` from class-based to functional component. @Tishasoumya
