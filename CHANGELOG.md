@@ -8,6 +8,13 @@
 
 <!-- towncrier release notes start -->
 
+## 16.32.0 (2024-08-16)
+
+### Feature
+
+- The schema for the `ContentsPropertiesModal` can be enhanced using the `contentPropertiesSchemaEnhancer` setting.
+  Also, the properties form is now prepopulated with values if all selected items share the same value. @davisagli [#6248](https://github.com/plone/volto/issues/6248)
+
 ## 16.31.12 (2024-08-12)
 
 ### Bugfix
