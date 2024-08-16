@@ -16,10 +16,7 @@ exports[`Search renders a search component 1`] = `
           <h1
             class="documentFirstHeading"
           >
-            Search results for 
-            <q>
-              blog
-            </q>
+            Search results
           </h1>
           <div
             id="search-tags"
@@ -97,10 +94,7 @@ exports[`Search renders an empty search component 1`] = `
           <h1
             class="documentFirstHeading"
           >
-            Search results for 
-            <q>
-              blog
-            </q>
+            Search results
           </h1>
           <div
             id="search-tags"

@@ -1,20 +1,15 @@
-/**
- * Search component.
- * @module components/theme/Search/Search
- */
-
-import React, { Component } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { UniversalLink } from '@plone/volto/components';
-import { asyncConnect } from '@plone/volto/helpers';
+import { asyncConnect, usePrevious } from '@plone/volto/helpers';
 import { FormattedMessage } from 'react-intl';
 import { createPortal } from 'react-dom';
 import { Container, Pagination, Button, Header } from 'semantic-ui-react';
 import qs from 'query-string';
+import { compose } from 'redux';
 import classNames from 'classnames';
-import { defineMessages, injectIntl } from 'react-intl';
+import { defineMessages, useIntl } from 'react-intl';
 import config from '@plone/volto/registry';
 import { Helmet } from '@plone/volto/helpers';
 import { searchContent } from '@plone/volto/actions';
@@ -22,6 +17,8 @@ import { SearchTags, Toolbar, Icon } from '@plone/volto/components';
 
 import paginationLeftSVG from '@plone/volto/icons/left-key.svg';
 import paginationRightSVG from '@plone/volto/icons/right-key.svg';
+import { useClient } from '@plone/volto/hooks';
+import { useHistory } from 'react-router-dom';
 
 const messages = defineMessages({
   Search: {
@@ -30,110 +27,65 @@ const messages = defineMessages({
   },
 });
 
-/**
- * Search class.
- * @class SearchComponent
- * @extends Component
- */
-class Search extends Component {
-  /**
-   * Property types.
-   * @property {Object} propTypes Property types.
-   * @static
-   */
-  static propTypes = {
-    searchContent: PropTypes.func.isRequired,
-    searchableText: PropTypes.string,
-    subject: PropTypes.string,
-    path: PropTypes.string,
-    items: PropTypes.arrayOf(
-      PropTypes.shape({
-        '@id': PropTypes.string,
-        '@type': PropTypes.string,
-        title: PropTypes.string,
-        description: PropTypes.string,
-      }),
-    ),
-    pathname: PropTypes.string.isRequired,
-  };
+const Search = (props) => {
+  const intl = useIntl();
+  const defaultPageSize = config.settings.defaultPageSize;
+  const dispatch = useDispatch();
+  const isClient = useClient();
 
-  /**
-   * Default properties.
-   * @property {Object} defaultProps Default properties.
-   * @static
-   */
-  static defaultProps = {
-    items: [],
-    searchableText: null,
-    subject: null,
-    path: null,
-  };
+  const [currentPage, setCurrentPage] = useState(1);
+  const [active, setActive] = useState('relevance');
+  const [searchParams, setSearchParams] = useState();
+  const history = useHistory();
+  const location = props.history;
+  const { pathname, search } = location;
 
-  constructor(props) {
-    super(props);
-    this.defaultPageSize = config.settings.defaultPageSize;
-    this.state = { currentPage: 1, isClient: false, active: 'relevance' };
-  }
+  const items = useSelector((state) => state.search?.items);
+  const searchableText = qs.parse(search).SearchableText;
+  const prevSearch = usePrevious(search);
 
-  /**
-   * Component did mount
-   * @method componentDidMount
-   * @returns {undefined}
-   */
-  componentDidMount() {
-    this.doSearch();
-    this.setState({ isClient: true });
-  }
-
-  /**
-   * Component will receive props
-   * @method componentWillReceiveProps
-   * @param {Object} nextProps Next properties
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillReceiveProps = (nextProps) => {
-    if (this.props.location.search !== nextProps.location.search) {
-      this.doSearch();
-    }
-  };
-
-  /**
-   * Search based on the given searchableText, subject and path.
-   * @method doSearch
-   * @param {string} searchableText The searchable text string
-   * @param {string} subject The subject (tag)
-   * @param {string} path The path to restrict the search to
-   * @returns {undefined}
-   */
-
-  doSearch = () => {
-    const options = qs.parse(this.props.history.location.search);
-    this.setState({ currentPage: 1 });
+  const doSearch = useCallback(() => {
+    const options = qs.parse(search);
+    setCurrentPage(1);
     options['use_site_search_settings'] = 1;
-    this.props.searchContent('', {
-      b_size: this.defaultPageSize,
-      ...options,
-    });
-  };
-
-  handleQueryPaginationChange = (e, { activePage }) => {
-    window.scrollTo(0, 0);
-    let options = qs.parse(this.props.history.location.search);
-    options['use_site_search_settings'] = 1;
-
-    this.setState({ currentPage: activePage }, () => {
-      this.props.searchContent('', {
-        b_size: this.defaultPageSize,
+    dispatch(
+      searchContent('', {
+        b_size: defaultPageSize,
         ...options,
-        b_start:
-          (this.state.currentPage - 1) *
-          (options.b_size || this.defaultPageSize),
-      });
-    });
+      }),
+    );
+  }, [defaultPageSize, dispatch, search]);
+
+  useEffect(() => {
+    doSearch();
+  });
+
+  useEffect(() => {
+    if (prevSearch !== search) {
+      doSearch();
+    }
+  }, [search, prevSearch, doSearch]);
+
+  useEffect(() => {
+    history.replace({ search: searchParams });
+  }, [active, currentPage, searchParams, history]);
+
+  const handleQueryPaginationChange = (e, { activePage }) => {
+    window.scrollTo(0, 0);
+    let options = qs.parse(search);
+    options['use_site_search_settings'] = 1;
+    setCurrentPage(activePage);
+    dispatch(
+      searchContent('', {
+        b_size: defaultPageSize,
+        ...options,
+        b_start: (currentPage - 1) * (options.b_size || defaultPageSize),
+      }),
+    );
   };
 
-  onSortChange = (event, sort_order) => {
-    let options = qs.parse(this.props.history.location.search);
+  const onSortChange = (event, sort_order) => {
+    let options = qs.parse(search);
     options.sort_on = event.target.name;
     options.sort_order = sort_order || 'ascending';
     if (event.target.name === 'relevance') {
@@ -141,218 +93,183 @@ class Search extends Component {
       delete options.sort_order;
     }
     let searchParams = qs.stringify(options);
-    this.setState({ currentPage: 1, active: event.target.name }, () => {
-      // eslint-disable-next-line no-restricted-globals
-      this.props.history.replace({
-        search: searchParams,
-      });
-    });
+    setSearchParams(searchParams);
+    setCurrentPage(1);
+    setActive(event.target.name);
   };
 
-  /**
-   * Render method.
-   * @method render
-   * @returns {string} Markup for the component.
-   */
-  render() {
-    const options = qs.parse(this.props.history.location.search);
+  const options = qs.parse(search);
 
-    return (
-      <Container id="page-search">
-        <Helmet title={this.props.intl.formatMessage(messages.Search)} />
-        <div className="container">
-          <article id="content">
-            <header>
-              <h1 className="documentFirstHeading">
-                {this.props.searchableText ? (
-                  <FormattedMessage
-                    id="Search results for {term}"
-                    defaultMessage="Search results for {term}"
-                    values={{
-                      term: <q>{this.props.searchableText}</q>,
-                    }}
-                  />
-                ) : (
-                  <FormattedMessage
-                    id="Search results"
-                    defaultMessage="Search results"
-                  />
-                )}
-              </h1>
-
-              <SearchTags />
-
-              {this.props.search?.items_total > 0 ? (
-                <div className="items_total">
-                  {this.props.search.items_total}{' '}
-                  <FormattedMessage
-                    id="results found"
-                    defaultMessage="results"
-                  />
-                  <Header>
-                    <Header.Content className="header-content">
-                      <div className="sort-by">
-                        <FormattedMessage
-                          id="Sort By:"
-                          defaultMessage="Sort by:"
-                        />
-                      </div>
-                      <Button
-                        onClick={(event) => {
-                          this.onSortChange(event);
-                        }}
-                        name="relevance"
-                        size="tiny"
-                        className={classNames('button-sort', {
-                          'button-active': this.state.active === 'relevance',
-                        })}
-                      >
-                        <FormattedMessage
-                          id="Relevance"
-                          defaultMessage="Relevance"
-                        />
-                      </Button>
-                      <Button
-                        onClick={(event) => {
-                          this.onSortChange(event);
-                        }}
-                        name="sortable_title"
-                        size="tiny"
-                        className={classNames('button-sort', {
-                          'button-active':
-                            this.state.active === 'sortable_title',
-                        })}
-                      >
-                        <FormattedMessage
-                          id="Alphabetically"
-                          defaultMessage="Alphabetically"
-                        />
-                      </Button>
-                      <Button
-                        onClick={(event) => {
-                          this.onSortChange(event, 'reverse');
-                        }}
-                        name="effective"
-                        size="tiny"
-                        className={classNames('button-sort', {
-                          'button-active': this.state.active === 'effective',
-                        })}
-                      >
-                        <FormattedMessage
-                          id="Date (newest first)"
-                          defaultMessage="Date (newest first)"
-                        />
-                      </Button>
-                    </Header.Content>
-                  </Header>
-                </div>
+  return (
+    <Container id="page-search">
+      <Helmet title={intl.formatMessage(messages.Search)} />
+      <div className="container">
+        <article id="content">
+          <header>
+            <h1 className="documentFirstHeading">
+              {searchableText ? (
+                <FormattedMessage
+                  id="Search results for {term}"
+                  defaultMessage="Search results for {term}"
+                  values={{
+                    term: <q>{searchableText}</q>,
+                  }}
+                />
               ) : (
-                <div>
-                  <FormattedMessage
-                    id="No results found"
-                    defaultMessage="No results found"
-                  />
-                </div>
+                <FormattedMessage
+                  id="Search results"
+                  defaultMessage="Search results"
+                />
               )}
-            </header>
-            <section id="content-core">
-              {this.props.items.map((item) => (
-                <article className="tileItem" key={item['@id']}>
-                  <h2 className="tileHeadline">
-                    <UniversalLink
-                      item={item}
-                      className="summary url"
-                      title={item['@type']}
-                    >
-                      {item.title}
-                    </UniversalLink>
-                  </h2>
-                  {item.description && (
-                    <div className="tileBody">
-                      <span className="description">{item.description}</span>
-                    </div>
-                  )}
-                  <div className="tileFooter">
-                    <UniversalLink item={item}>
+            </h1>
+
+            <SearchTags />
+
+            {props.search?.items_total > 0 ? (
+              <div className="items_total">
+                {props.search.items_total}{' '}
+                <FormattedMessage id="results found" defaultMessage="results" />
+                <Header>
+                  <Header.Content className="header-content">
+                    <div className="sort-by">
                       <FormattedMessage
-                        id="Read More…"
-                        defaultMessage="Read More…"
+                        id="Sort By:"
+                        defaultMessage="Sort by:"
                       />
-                    </UniversalLink>
-                  </div>
-                  <div className="visualClear" />
-                </article>
-              ))}
-
-              {this.props.search?.batching && (
-                <div className="search-footer">
-                  <Pagination
-                    activePage={this.state.currentPage}
-                    totalPages={Math.ceil(
-                      this.props.search.items_total /
-                        (options.b_size || this.defaultPageSize),
+                    </div>
+                    <Button
+                      onClick={(event) => {
+                        onSortChange(event);
+                      }}
+                      name="relevance"
+                      size="tiny"
+                      className={classNames('button-sort', {
+                        'button-active': active === 'relevance',
+                      })}
+                    >
+                      <FormattedMessage
+                        id="Relevance"
+                        defaultMessage="Relevance"
+                      />
+                    </Button>
+                    <Button
+                      onClick={(event) => {
+                        onSortChange(event);
+                      }}
+                      name="sortable_title"
+                      size="tiny"
+                      className={classNames('button-sort', {
+                        'button-active': active === 'sortable_title',
+                      })}
+                    >
+                      <FormattedMessage
+                        id="Alphabetically"
+                        defaultMessage="Alphabetically"
+                      />
+                    </Button>
+                    <Button
+                      onClick={(event) => {
+                        onSortChange(event, 'reverse');
+                      }}
+                      name="effective"
+                      size="tiny"
+                      className={classNames('button-sort', {
+                        'button-active': active === 'effective',
+                      })}
+                    >
+                      <FormattedMessage
+                        id="Date (newest first)"
+                        defaultMessage="Date (newest first)"
+                      />
+                    </Button>
+                  </Header.Content>
+                </Header>
+              </div>
+            ) : (
+              <div>
+                <FormattedMessage
+                  id="No results found"
+                  defaultMessage="No results found"
+                />
+              </div>
+            )}
+          </header>
+          <section id="content-core">
+            {items
+              ? items.map((item) => (
+                  <article className="tileItem" key={item['@id']}>
+                    <h2 className="tileHeadline">
+                      <UniversalLink
+                        item={item}
+                        className="summary url"
+                        title={item['@type']}
+                      >
+                        {item.title}
+                      </UniversalLink>
+                    </h2>
+                    {item.description && (
+                      <div className="tileBody">
+                        <span className="description">{item.description}</span>
+                      </div>
                     )}
-                    onPageChange={this.handleQueryPaginationChange}
-                    firstItem={null}
-                    lastItem={null}
-                    prevItem={{
-                      content: <Icon name={paginationLeftSVG} size="18px" />,
-                      icon: true,
-                      'aria-disabled': !this.props.search.batching.prev,
-                      className: !this.props.search.batching.prev
-                        ? 'disabled'
-                        : null,
-                    }}
-                    nextItem={{
-                      content: <Icon name={paginationRightSVG} size="18px" />,
-                      icon: true,
-                      'aria-disabled': !this.props.search.batching.next,
-                      className: !this.props.search.batching.next
-                        ? 'disabled'
-                        : null,
-                    }}
-                  />
-                </div>
-              )}
-            </section>
-          </article>
-        </div>
-        {this.state.isClient &&
-          createPortal(
-            <Toolbar
-              pathname={this.props.pathname}
-              hideDefaultViewButtons
-              inner={<span />}
-            />,
-            document.getElementById('toolbar'),
-          )}
-      </Container>
-    );
-  }
-}
+                    <div className="tileFooter">
+                      <UniversalLink item={item}>
+                        <FormattedMessage
+                          id="Read More…"
+                          defaultMessage="Read More…"
+                        />
+                      </UniversalLink>
+                    </div>
+                    <div className="visualClear" />
+                  </article>
+                ))
+              : ''}
 
-export const __test__ = compose(
-  injectIntl,
-  connect(
-    (state, props) => ({
-      items: state.search.items,
-      searchableText: qs.parse(props.history.location.search).SearchableText,
-      pathname: props.history.location.pathname,
-    }),
-    { searchContent },
-  ),
-)(Search);
+            {props.search?.batching && (
+              <div className="search-footer">
+                <Pagination
+                  activePage={currentPage}
+                  totalPages={Math.ceil(
+                    props.search.items_total /
+                      (options.b_size || defaultPageSize),
+                  )}
+                  onPageChange={handleQueryPaginationChange}
+                  firstItem={null}
+                  lastItem={null}
+                  prevItem={{
+                    content: <Icon name={paginationLeftSVG} size="18px" />,
+                    icon: true,
+                    'aria-disabled': !props.search.batching.prev,
+                    className: !props.search.batching.prev ? 'disabled' : null,
+                  }}
+                  nextItem={{
+                    content: <Icon name={paginationRightSVG} size="18px" />,
+                    icon: true,
+                    'aria-disabled': !props.search.batching.next,
+                    className: !props.search.batching.next ? 'disabled' : null,
+                  }}
+                />
+              </div>
+            )}
+          </section>
+        </article>
+      </div>
+      {isClient &&
+        createPortal(
+          <Toolbar
+            pathname={pathname}
+            hideDefaultViewButtons
+            inner={<span />}
+          />,
+          document.getElementById('toolbar'),
+        )}
+    </Container>
+  );
+};
+
+export const __test__ = Search;
 
 export default compose(
-  injectIntl,
-  connect(
-    (state, props) => ({
-      items: state.search.items,
-      searchableText: qs.parse(props.history.location.search).SearchableText,
-      pathname: props.location.pathname,
-    }),
-    { searchContent },
-  ),
   asyncConnect([
     {
       key: 'search',
@@ -366,3 +283,14 @@ export default compose(
     },
   ]),
 )(Search);
+
+Search.propTypes = {
+  subject: PropTypes.string,
+  path: PropTypes.string,
+  pathname: PropTypes.string.isRequired,
+};
+
+Search.defaultProps = {
+  subject: null,
+  path: null,
+};
