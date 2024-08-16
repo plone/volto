@@ -1526,7 +1526,7 @@ class Contents extends Component {
                     items={this.state.selected}
                     values={map(this.state.selected, (id) =>
                       find(this.state.items, { '@id': id }),
-                    )}
+                    ).filter((item) => item)}
                   />
                   {this.state.showWorkflow && (
                     <ContentsWorkflowModal
