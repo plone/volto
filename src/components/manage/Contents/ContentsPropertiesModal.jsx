@@ -3,15 +3,17 @@
  * @module components/manage/Contents/ContentsPropertiesModal
  */
 
-import React, { Component } from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { isEmpty, map } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 
+import { cloneDeepSchema } from '@plone/volto/helpers/Utils/Utils';
 import { updateContent } from '@plone/volto/actions';
 import { ModalForm } from '@plone/volto/components';
+import config from '@plone/volto/registry';
 
 const messages = defineMessages({
   properties: {
@@ -124,13 +126,19 @@ class ContentsPropertiesModal extends Component {
    * @param {Object} data Form data
    * @returns {undefined}
    */
-  onSubmit(data) {
-    if (isEmpty(data)) {
+  onSubmit(initialData, data) {
+    let changes = {};
+    for (const name of Object.keys(data)) {
+      if (data[name] !== initialData[name]) {
+        changes[name] = data[name];
+      }
+    }
+    if (isEmpty(changes)) {
       this.props.onOk();
     } else {
       this.props.updateContent(
         this.props.items,
-        map(this.props.items, () => data),
+        map(this.props.items, () => changes),
       );
     }
   }
@@ -141,71 +149,96 @@ class ContentsPropertiesModal extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const baseSchema = {
+      fieldsets: [
+        {
+          id: 'default',
+          title: this.props.intl.formatMessage(messages.default),
+          fields: [
+            'effective',
+            'expires',
+            'rights',
+            'creators',
+            'exclude_from_nav',
+          ],
+        },
+      ],
+      properties: {
+        effective: {
+          description: this.props.intl.formatMessage(
+            messages.effectiveDescription,
+          ),
+          title: this.props.intl.formatMessage(messages.effectiveTitle),
+          type: 'string',
+          widget: 'datetime',
+        },
+        expires: {
+          description: this.props.intl.formatMessage(
+            messages.expiresDescription,
+          ),
+          title: this.props.intl.formatMessage(messages.expiresTitle),
+          type: 'string',
+          widget: 'datetime',
+        },
+        rights: {
+          description: this.props.intl.formatMessage(
+            messages.rightsDescription,
+          ),
+          title: this.props.intl.formatMessage(messages.rightsTitle),
+          type: 'string',
+          widget: 'textarea',
+        },
+        creators: {
+          description: this.props.intl.formatMessage(
+            messages.creatorsDescription,
+          ),
+          title: this.props.intl.formatMessage(messages.creatorsTitle),
+          type: 'array',
+        },
+        exclude_from_nav: {
+          description: this.props.intl.formatMessage(
+            messages.excludeFromNavDescription,
+          ),
+          title: this.props.intl.formatMessage(messages.excludeFromNavTitle),
+          type: 'boolean',
+        },
+      },
+      required: [],
+    };
+    const schemaEnhancer = config.settings.contentPropertiesSchemaEnhancer;
+    let schema = schemaEnhancer
+      ? schemaEnhancer({
+          schema: cloneDeepSchema(baseSchema),
+          intl: this.props.intl,
+        })
+      : baseSchema;
+
+    const initialData = {};
+    if (this.props.values?.length) {
+      for (const name of Object.keys(schema.properties)) {
+        const firstValue = this.props.values[0][name];
+        // should not show floor or ceiling dates
+        if (
+          (name === 'effective' && firstValue && firstValue <= '1970') ||
+          (name === 'expires' && firstValue && firstValue >= '2499')
+        ) {
+          continue;
+        }
+        if (this.props.values.every((item) => item[name] === firstValue)) {
+          initialData[name] = firstValue;
+        }
+      }
+    }
+
     return (
       this.props.open && (
         <ModalForm
           open={this.props.open}
-          onSubmit={this.onSubmit}
+          onSubmit={this.onSubmit.bind(this, initialData)}
           onCancel={this.props.onCancel}
           title={this.props.intl.formatMessage(messages.properties)}
-          schema={{
-            fieldsets: [
-              {
-                id: 'default',
-                title: this.props.intl.formatMessage(messages.default),
-                fields: [
-                  'effective',
-                  'expires',
-                  'rights',
-                  'creators',
-                  'exclude_from_nav',
-                ],
-              },
-            ],
-            properties: {
-              effective: {
-                description: this.props.intl.formatMessage(
-                  messages.effectiveDescription,
-                ),
-                title: this.props.intl.formatMessage(messages.effectiveTitle),
-                type: 'string',
-                widget: 'datetime',
-              },
-              expires: {
-                description: this.props.intl.formatMessage(
-                  messages.expiresDescription,
-                ),
-                title: this.props.intl.formatMessage(messages.expiresTitle),
-                type: 'string',
-                widget: 'datetime',
-              },
-              rights: {
-                description: this.props.intl.formatMessage(
-                  messages.rightsDescription,
-                ),
-                title: this.props.intl.formatMessage(messages.rightsTitle),
-                type: 'string',
-                widget: 'textarea',
-              },
-              creators: {
-                description: this.props.intl.formatMessage(
-                  messages.creatorsDescription,
-                ),
-                title: this.props.intl.formatMessage(messages.creatorsTitle),
-                type: 'array',
-              },
-              exclude_from_nav: {
-                description: this.props.intl.formatMessage(
-                  messages.excludeFromNavDescription,
-                ),
-                title: this.props.intl.formatMessage(
-                  messages.excludeFromNavTitle,
-                ),
-                type: 'boolean',
-              },
-            },
-            required: [],
-          }}
+          schema={schema}
+          formData={initialData}
         />
       )
     );
