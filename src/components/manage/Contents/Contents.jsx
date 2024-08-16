@@ -1524,6 +1524,9 @@ class Contents extends Component {
                     onCancel={this.onPropertiesCancel}
                     onOk={this.onPropertiesOk}
                     items={this.state.selected}
+                    values={map(this.state.selected, (id) =>
+                      find(this.state.items, { '@id': id }),
+                    )}
                   />
                   {this.state.showWorkflow && (
                     <ContentsWorkflowModal
