@@ -169,6 +169,7 @@ let config = {
     ],
     showSelfRegistration: false,
     contentMetadataTagsImageField: 'image',
+    contentPropertiesSchemaEnhancer: null,
     hasWorkingCopySupport: false,
     maxUndoLevels: 200, // undo history size for the main form
     addonsInfo: addonsInfo,
