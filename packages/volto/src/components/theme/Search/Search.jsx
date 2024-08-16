@@ -58,7 +58,7 @@ const Search = (props) => {
 
   useEffect(() => {
     doSearch();
-  });
+  }, [doSearch]);
 
   useEffect(() => {
     if (prevSearch !== search) {
