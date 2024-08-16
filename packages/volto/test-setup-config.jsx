@@ -9,7 +9,10 @@
 import React from 'react';
 import config from '@plone/volto/registry';
 import { loadables } from '@plone/volto/config/Loadables';
-import { nonContentRoutes } from '@plone/volto/config/NonContentRoutes';
+import {
+  nonContentRoutes,
+  publicNonContentRoutes,
+} from '@plone/volto/config/NonContentRoutes';
 import { contentIcons } from '@plone/volto/config/ContentIcons';
 import {
   styleClassNameConverters,
@@ -32,6 +35,7 @@ config.set('settings', {
   defaultPageSize: 25,
   isMultilingual: false,
   nonContentRoutes,
+  publicNonContentRoutes,
   contentIcons: contentIcons,
   loadables,
   lazyBundles: {

@@ -35,3 +35,18 @@ export const nonContentRoutes = [
   '/manage-translations',
   ...(config.settings?.externalRoutes?.map((route) => route.match.path) || []),
 ];
+
+// PublicUi routes that are nonContentRoutes, and should not be members of isCmsUi
+// Must be a subset of nonContentRoutes !
+export const publicNonContentRoutes = [
+  '/login',
+  '/logout',
+  '/sitemap',
+  '/register',
+  '/search',
+  '/change-password',
+  '/contact-form',
+  '/register',
+  /\/passwordreset\/.*$/,
+  '/passwordreset',
+];

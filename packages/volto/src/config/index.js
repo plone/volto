@@ -8,7 +8,7 @@ import {
   layoutViewsNamesMapping,
 } from './Views';
 import { nonContentRoutes } from './NonContentRoutes';
-import { publicNonContentRoutes } from './PublicNonContentRoutes';
+import { publicNonContentRoutes } from './NonContentRoutes';
 import {
   groupBlocksOrder,
   requiredBlocks,
