@@ -8,6 +8,13 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.19 (2024-07-30)
+
+### Feature
+
+- Added `errors` shape to the `BlockEditProps`.
+  Added typings for `Utilities` registry. @sneridagh [#6161](https://github.com/plone/volto/issues/6161)
+
 ## 1.0.0-alpha.18 (2024-07-26)
 
 ### Feature

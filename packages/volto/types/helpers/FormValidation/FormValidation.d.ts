@@ -1,3 +1,4 @@
+export function validationMessage(isValid: boolean, criterion: string, valueToCompare: string | number, intlFunc: Function): any;
 export function tryParseJSON(requestItem: string): any;
 export default FormValidation;
 export function validateFileUploadSize(file: File, intlFunc: Function): boolean;

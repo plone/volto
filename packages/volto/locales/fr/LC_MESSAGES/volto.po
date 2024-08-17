@@ -1294,10 +1294,10 @@ msgstr "Saisissez votre nom complet (par exemple : John Smith)"
 msgid "Enter map Embed Code"
 msgstr "Saisissez le code intégré de la carte"
 
-#. Default: "Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target."
+#. Default: "Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
 #: components/manage/Controlpanels/Aliases
-msgid "Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target."
-msgstr "Saisissez le chemin absolu de la cible. Le chemin doit commencer par '/'. La cible doit exister ou être un chemin d'URL alternatif existant vers la cible."
+msgid "Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
+msgstr "Saisissez le chemin absolu de la cible. La cible doit exister ou être un chemin d'URL alternatif existant vers la cible."
 
 #. Default: "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
 #: components/manage/Aliases/Aliases
@@ -1335,6 +1335,7 @@ msgstr ""
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Edit/Edit
 #: components/manage/Form/InlineForm
@@ -1356,10 +1357,20 @@ msgstr "Erreur"
 msgid "Event"
 msgstr "Événement"
 
+#. Default: "Event end date must be on or after {startDateValueOrStartFieldName}"
+#: helpers/MessageLabels/MessageLabels
+msgid "Event end date must be on or after {startDateValueOrStartFieldName}"
+msgstr ""
+
 #. Default: "Event listing"
 #: config/Views
 msgid "Event listing"
 msgstr "Liste des événements"
+
+#. Default: "Event start date must be on or before {endDateValueOrEndFieldName}"
+#: helpers/MessageLabels/MessageLabels
+msgid "Event start date must be on or before {endDateValueOrEndFieldName}"
+msgstr ""
 
 #. Default: "Event view"
 #: config/Views
@@ -3415,6 +3426,11 @@ msgstr "Trier les transaction par utilisateur, chemin ou date"
 msgid "Sorted"
 msgstr "Trié"
 
+#. Default: "Sorted on"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Sorted on"
+msgstr ""
+
 #. Default: "Source"
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Controlpanels/Relations/BrokenRelations
@@ -3592,11 +3608,6 @@ msgstr "Taille de la mémoire par cache en octets"
 msgid "Target number of objects in memory per cache"
 msgstr "Nombre d'objets en mémoire par cache"
 
-#. Default: "Target url path must start with a slash."
-#: components/manage/Controlpanels/Aliases
-msgid "Target url path must start with a slash."
-msgstr "Le chemin de destination d'URL doit commencer par une barre oblique."
-
 #. Default: "Teaser"
 #: components/manage/Blocks/Teaser/schema
 msgid "Teaser"
@@ -3615,11 +3626,6 @@ msgstr "Texte"
 #: components/theme/Unauthorized/Unauthorized
 msgid "Thank you."
 msgstr "Merci."
-
-#. Default: "The Database Manager allow you to view database status information"
-#: components/manage/Controlpanels/DatabaseInformation
-msgid "The Database Manager allow you to view database status information"
-msgstr "Le gestionnaire de base de données vous permet d'afficher les informations d'état de la base de données"
 
 #. Default: "The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again."
 #: components/theme/RequestTimeout/RequestTimeout
@@ -3666,6 +3672,16 @@ msgstr "L'élement n'a pas pu être supprimé."
 msgid "The link address is:"
 msgstr "L'adresse du lien est :"
 
+#. Default: "The number of items must be greater than or equal to {minItems}"
+#: helpers/MessageLabels/MessageLabels
+msgid "The number of items must be greater than or equal to {minItems}"
+msgstr ""
+
+#. Default: "The number of items must be less than or equal to {maxItems}"
+#: helpers/MessageLabels/MessageLabels
+msgid "The number of items must be less than or equal to {maxItems}"
+msgstr ""
+
 #. Default: "The provided alternative url already exists!"
 #: components/manage/Aliases/Aliases
 msgid "The provided alternative url already exists!"
@@ -3681,6 +3697,11 @@ msgstr "Le processus d'inscription a réussi. Veuillez vérifier votre boîte e-
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "The site configuration is outdated and needs to be upgraded."
 msgstr "La configuration du site nécessite une mise à niveau."
+
+#. Default: "The value does not match the pattern {pattern}"
+#: helpers/MessageLabels/MessageLabels
+msgid "The value does not match the pattern {pattern}"
+msgstr ""
 
 #. Default: "The working copy was discarded"
 #: components/manage/Toolbar/More
@@ -4395,6 +4416,11 @@ msgstr "Saisissez un nom d'utilisateur, haituellement quelque chose comme "jdupo
 #: components/manage/Blocks/Search/schema
 msgid "availableViews"
 msgstr "Vues disponibles"
+
+#. Default: "Error in the block field {errorField}."
+#: helpers/MessageLabels/MessageLabels
+msgid "blocksFieldsErrorTitle"
+msgstr ""
 
 #. Default: "Forgot your password?"
 #: components/theme/Login/Login

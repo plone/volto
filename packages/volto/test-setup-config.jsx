@@ -26,6 +26,7 @@ import {
 } from '@plone/volto/config/ControlPanels';
 
 import ListingBlockSchema from '@plone/volto/components/manage/Blocks/Listing/schema';
+import { registerValidators } from '@plone/volto/config/validation';
 
 config.set('settings', {
   apiPath: 'http://localhost:8080/Plone',
@@ -157,9 +158,15 @@ config.set('components', {
     component: (props) => <img alt="Image component mock" {...props} />,
   },
 });
+
+config.set('utilities', {});
+
 config.set('experimental', {
   addBlockButton: {
     enabled: false,
   },
 });
+
 config.set('slots', {});
+
+registerValidators(config);

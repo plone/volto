@@ -1294,10 +1294,10 @@ msgstr "Idatzi izen osoa, adb. Jon Garmendia."
 msgid "Enter map Embed Code"
 msgstr "Sartu itsasteko kodea"
 
-#. Default: "Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target."
+#. Default: "Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
 #: components/manage/Controlpanels/Aliases
-msgid "Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target."
-msgstr "Idatzi helburuaren bide absolutua. Bidea '/' karakterearekin hasi behar da. Helburua existitu egin behar da edo ordezko helbide bat izan behar da."
+msgid "Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
+msgstr "Idatzi helburuaren bide absolutua. Helburua existitu egin behar da edo ordezko helbide bat izan behar da."
 
 #. Default: "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
 #: components/manage/Aliases/Aliases
@@ -1335,6 +1335,7 @@ msgstr ""
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Edit/Edit
 #: components/manage/Form/InlineForm
@@ -1356,10 +1357,20 @@ msgstr "Errorea"
 msgid "Event"
 msgstr "Hitzordua"
 
+#. Default: "Event end date must be on or after {startDateValueOrStartFieldName}"
+#: helpers/MessageLabels/MessageLabels
+msgid "Event end date must be on or after {startDateValueOrStartFieldName}"
+msgstr ""
+
 #. Default: "Event listing"
 #: config/Views
 msgid "Event listing"
 msgstr "Hitzorduen zerrenda"
+
+#. Default: "Event start date must be on or before {endDateValueOrEndFieldName}"
+#: helpers/MessageLabels/MessageLabels
+msgid "Event start date must be on or before {endDateValueOrEndFieldName}"
+msgstr ""
 
 #. Default: "Event view"
 #: config/Views
@@ -3415,6 +3426,11 @@ msgstr "Ordenatu transakzioak erabiltzaile-izen, bide edo dataren arabera"
 msgid "Sorted"
 msgstr "Ordenatuta"
 
+#. Default: "Sorted on"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Sorted on"
+msgstr ""
+
 #. Default: "Source"
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Controlpanels/Relations/BrokenRelations
@@ -3592,11 +3608,6 @@ msgstr "Katxe bakoitzaren tamaina "
 msgid "Target number of objects in memory per cache"
 msgstr "Katxe bakoitzaren elementu-kopurua"
 
-#. Default: "Target url path must start with a slash."
-#: components/manage/Controlpanels/Aliases
-msgid "Target url path must start with a slash."
-msgstr "Helburuaren bidea / karakterearekin hasi behar da"
-
 #. Default: "Teaser"
 #: components/manage/Blocks/Teaser/schema
 msgid "Teaser"
@@ -3615,11 +3626,6 @@ msgstr "Testua"
 #: components/theme/Unauthorized/Unauthorized
 msgid "Thank you."
 msgstr "Eskerrik asko."
-
-#. Default: "The Database Manager allow you to view database status information"
-#: components/manage/Controlpanels/DatabaseInformation
-msgid "The Database Manager allow you to view database status information"
-msgstr "Datu-basearen kudeatzaileak datu-basearen egoera erakusten ditu"
 
 #. Default: "The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again."
 #: components/theme/RequestTimeout/RequestTimeout
@@ -3666,6 +3672,16 @@ msgstr "Elementua ezin izan da ezabatu."
 msgid "The link address is:"
 msgstr "Loturaren helbidea hauxe da:"
 
+#. Default: "The number of items must be greater than or equal to {minItems}"
+#: helpers/MessageLabels/MessageLabels
+msgid "The number of items must be greater than or equal to {minItems}"
+msgstr ""
+
+#. Default: "The number of items must be less than or equal to {maxItems}"
+#: helpers/MessageLabels/MessageLabels
+msgid "The number of items must be less than or equal to {maxItems}"
+msgstr ""
+
 #. Default: "The provided alternative url already exists!"
 #: components/manage/Aliases/Aliases
 msgid "The provided alternative url already exists!"
@@ -3681,6 +3697,11 @@ msgstr "Izen-emate prozesua ondo egin duzu. Begiratu zure eposta, kontua aktibat
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "The site configuration is outdated and needs to be upgraded."
 msgstr "Atariaren konfigurazioa zaharkituta dago eta eguneratu egin behar da."
+
+#. Default: "The value does not match the pattern {pattern}"
+#: helpers/MessageLabels/MessageLabels
+msgid "The value does not match the pattern {pattern}"
+msgstr ""
 
 #. Default: "The working copy was discarded"
 #: components/manage/Toolbar/More
@@ -4395,6 +4416,11 @@ msgstr "Idatzi zure erabiltzaile izena, "jgarmendia" moduko zerbait. Ez da onart
 #: components/manage/Blocks/Search/schema
 msgid "availableViews"
 msgstr "Bistak"
+
+#. Default: "Error in the block field {errorField}."
+#: helpers/MessageLabels/MessageLabels
+msgid "blocksFieldsErrorTitle"
+msgstr ""
 
 #. Default: "Forgot your password?"
 #: components/theme/Login/Login

@@ -1292,9 +1292,9 @@ msgstr "氏名（フルネーム）を入力。例： Hanako Suzuki や 山田�
 msgid "Enter map Embed Code"
 msgstr "地図のEmbedコードを入力"
 
-#. Default: "Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target."
+#. Default: "Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
 #: components/manage/Controlpanels/Aliases
-msgid "Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target."
+msgid "Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
 msgstr ""
 
 #. Default: "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
@@ -1333,6 +1333,7 @@ msgstr ""
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Edit/Edit
 #: components/manage/Form/InlineForm
@@ -1354,9 +1355,19 @@ msgstr ""
 msgid "Event"
 msgstr ""
 
+#. Default: "Event end date must be on or after {startDateValueOrStartFieldName}"
+#: helpers/MessageLabels/MessageLabels
+msgid "Event end date must be on or after {startDateValueOrStartFieldName}"
+msgstr ""
+
 #. Default: "Event listing"
 #: config/Views
 msgid "Event listing"
+msgstr ""
+
+#. Default: "Event start date must be on or before {endDateValueOrEndFieldName}"
+#: helpers/MessageLabels/MessageLabels
+msgid "Event start date must be on or before {endDateValueOrEndFieldName}"
 msgstr ""
 
 #. Default: "Event view"
@@ -3413,6 +3424,11 @@ msgstr ""
 msgid "Sorted"
 msgstr ""
 
+#. Default: "Sorted on"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Sorted on"
+msgstr ""
+
 #. Default: "Source"
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Controlpanels/Relations/BrokenRelations
@@ -3590,11 +3606,6 @@ msgstr "キャッシュごとの最大容量(byte単位)"
 msgid "Target number of objects in memory per cache"
 msgstr "キャッシュごとのメモリー上の最大オブジェクト数"
 
-#. Default: "Target url path must start with a slash."
-#: components/manage/Controlpanels/Aliases
-msgid "Target url path must start with a slash."
-msgstr ""
-
 #. Default: "Teaser"
 #: components/manage/Blocks/Teaser/schema
 msgid "Teaser"
@@ -3613,11 +3624,6 @@ msgstr "テキスト"
 #: components/theme/Unauthorized/Unauthorized
 msgid "Thank you."
 msgstr "ありがとうございます。"
-
-#. Default: "The Database Manager allow you to view database status information"
-#: components/manage/Controlpanels/DatabaseInformation
-msgid "The Database Manager allow you to view database status information"
-msgstr "この画面でデータベースの状態を確認できます。"
 
 #. Default: "The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again."
 #: components/theme/RequestTimeout/RequestTimeout
@@ -3664,6 +3670,16 @@ msgstr ""
 msgid "The link address is:"
 msgstr ""
 
+#. Default: "The number of items must be greater than or equal to {minItems}"
+#: helpers/MessageLabels/MessageLabels
+msgid "The number of items must be greater than or equal to {minItems}"
+msgstr ""
+
+#. Default: "The number of items must be less than or equal to {maxItems}"
+#: helpers/MessageLabels/MessageLabels
+msgid "The number of items must be less than or equal to {maxItems}"
+msgstr ""
+
 #. Default: "The provided alternative url already exists!"
 #: components/manage/Aliases/Aliases
 msgid "The provided alternative url already exists!"
@@ -3678,6 +3694,11 @@ msgstr "The registration process has been successful. Please check your e-mail i
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "The site configuration is outdated and needs to be upgraded."
+msgstr ""
+
+#. Default: "The value does not match the pattern {pattern}"
+#: helpers/MessageLabels/MessageLabels
+msgid "The value does not match the pattern {pattern}"
 msgstr ""
 
 #. Default: "The working copy was discarded"
@@ -4392,6 +4413,11 @@ msgstr ""
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema
 msgid "availableViews"
+msgstr ""
+
+#. Default: "Error in the block field {errorField}."
+#: helpers/MessageLabels/MessageLabels
+msgid "blocksFieldsErrorTitle"
 msgstr ""
 
 #. Default: "Forgot your password?"

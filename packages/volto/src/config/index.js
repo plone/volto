@@ -33,6 +33,7 @@ import applyAddonConfiguration, { addonsInfo } from 'load-volto-addons';
 import ConfigRegistry from '@plone/volto/registry';
 
 import { getSiteAsyncPropExtender } from '@plone/volto/helpers';
+import { registerValidators } from './validation';
 
 const host = process.env.HOST || 'localhost';
 const port = process.env.PORT || '3000';
@@ -169,6 +170,7 @@ let config = {
     ],
     showSelfRegistration: false,
     contentMetadataTagsImageField: 'image',
+    contentPropertiesSchemaEnhancer: null,
     hasWorkingCopySupport: false,
     maxUndoLevels: 200, // undo history size for the main form
     addonsInfo: addonsInfo,
@@ -211,8 +213,9 @@ let config = {
   },
   addonRoutes: [],
   addonReducers: {},
-  slots: {},
   components,
+  slots: {},
+  utilities: {},
 };
 
 // The apiExpanders depends on a config of the object, so it's done here
@@ -240,5 +243,8 @@ ConfigRegistry.addonRoutes = config.addonRoutes;
 ConfigRegistry.addonReducers = config.addonReducers;
 ConfigRegistry.components = config.components;
 ConfigRegistry.slots = config.slots;
+ConfigRegistry.utilities = config.utilities;
+
+registerValidators(ConfigRegistry);
 
 applyAddonConfiguration(ConfigRegistry);

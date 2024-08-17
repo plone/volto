@@ -1287,10 +1287,10 @@ msgstr "पूरा नाम दर्ज करें, उदाहरण क
 msgid "Enter map Embed Code"
 msgstr "नक्शे का एम्बेड कोड दर्ज करें"
 
-#. Default: "Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target."
+#. Default: "Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
 #: components/manage/Controlpanels/Aliases
-msgid "Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target."
-msgstr "लक्ष्य का पूर्ण रास्ता दर्ज करें। पथ '/ ' से प्रारंभ होना चाहिए। लक्ष्य मौजूद होना चाहिए या लक्ष्य के लिए मौजूदा वैकल्पिक URL पथ होना चाहिए।"
+msgid "Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
+msgstr "लक्ष्य का पूर्ण रास्ता दर्ज करें। लक्ष्य मौजूद होना चाहिए या लक्ष्य के लिए मौजूदा वैकल्पिक URL पथ होना चाहिए।"
 
 #. Default: "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
 #: components/manage/Aliases/Aliases
@@ -1328,6 +1328,7 @@ msgstr "एन्ट्रीज़"
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Edit/Edit
 #: components/manage/Form/InlineForm
@@ -1349,10 +1350,20 @@ msgstr "त्रुटि"
 msgid "Event"
 msgstr "आयोजन"
 
+#. Default: "Event end date must be on or after {startDateValueOrStartFieldName}"
+#: helpers/MessageLabels/MessageLabels
+msgid "Event end date must be on or after {startDateValueOrStartFieldName}"
+msgstr ""
+
 #. Default: "Event listing"
 #: config/Views
 msgid "Event listing"
 msgstr "आयोजन सूची"
+
+#. Default: "Event start date must be on or before {endDateValueOrEndFieldName}"
+#: helpers/MessageLabels/MessageLabels
+msgid "Event start date must be on or before {endDateValueOrEndFieldName}"
+msgstr ""
 
 #. Default: "Event view"
 #: config/Views
@@ -3408,6 +3419,11 @@ msgstr "उपयोगकर्ता-नाम, पथ या तिथि द
 msgid "Sorted"
 msgstr "क्रमबद्ध किया गया"
 
+#. Default: "Sorted on"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Sorted on"
+msgstr ""
+
 #. Default: "Source"
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Controlpanels/Relations/BrokenRelations
@@ -3585,11 +3601,6 @@ msgstr "प्रति कैश के लिए लक्षित मेम�
 msgid "Target number of objects in memory per cache"
 msgstr "प्रति कैश में मेमोरी में ऑब्जेक्ट की लक्षित संख्या"
 
-#. Default: "Target url path must start with a slash."
-#: components/manage/Controlpanels/Aliases
-msgid "Target url path must start with a slash."
-msgstr "लक्षित URL पथ को स्लैश के साथ शुरू होना चाहिए।"
-
 #. Default: "Teaser"
 #: components/manage/Blocks/Teaser/schema
 msgid "Teaser"
@@ -3608,11 +3619,6 @@ msgstr "टेक्स्ट"
 #: components/theme/Unauthorized/Unauthorized
 msgid "Thank you."
 msgstr "धन्यवाद।"
-
-#. Default: "The Database Manager allow you to view database status information"
-#: components/manage/Controlpanels/DatabaseInformation
-msgid "The Database Manager allow you to view database status information"
-msgstr "डेटाबेस प्रबंधक आपको डेटाबेस स्थिति जानकारी देखने की सुविधा प्रदान करता है"
 
 #. Default: "The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again."
 #: components/theme/RequestTimeout/RequestTimeout
@@ -3659,6 +3665,16 @@ msgstr "आइटम को हटाया नहीं जा सका।"
 msgid "The link address is:"
 msgstr "लिंक पता है:"
 
+#. Default: "The number of items must be greater than or equal to {minItems}"
+#: helpers/MessageLabels/MessageLabels
+msgid "The number of items must be greater than or equal to {minItems}"
+msgstr ""
+
+#. Default: "The number of items must be less than or equal to {maxItems}"
+#: helpers/MessageLabels/MessageLabels
+msgid "The number of items must be less than or equal to {maxItems}"
+msgstr ""
+
 #. Default: "The provided alternative url already exists!"
 #: components/manage/Aliases/Aliases
 msgid "The provided alternative url already exists!"
@@ -3674,6 +3690,11 @@ msgstr "रजिस्ट्रेशन प्रक्रिया सफल 
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "The site configuration is outdated and needs to be upgraded."
 msgstr "साइट कॉन्फ़िगरेशन पुरानी है और अपग्रेड की आवश्यकता है।"
+
+#. Default: "The value does not match the pattern {pattern}"
+#: helpers/MessageLabels/MessageLabels
+msgid "The value does not match the pattern {pattern}"
+msgstr ""
 
 #. Default: "The working copy was discarded"
 #: components/manage/Toolbar/More
@@ -4388,6 +4409,11 @@ msgstr "एक उपयोगकर्ता नाम दर्ज करे�
 #: components/manage/Blocks/Search/schema
 msgid "availableViews"
 msgstr "उपलब्ध दृश्य"
+
+#. Default: "Error in the block field {errorField}."
+#: helpers/MessageLabels/MessageLabels
+msgid "blocksFieldsErrorTitle"
+msgstr ""
 
 #. Default: "Forgot your password?"
 #: components/theme/Login/Login
