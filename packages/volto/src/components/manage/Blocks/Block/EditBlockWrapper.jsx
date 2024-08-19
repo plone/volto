@@ -63,7 +63,6 @@ const EditBlockWrapper = (props) => {
   let classNames = buildStyleClassNamesFromData(data.styles);
   classNames = buildStyleClassNamesExtenders({
     block,
-    null,
     data,
     classNames,
   });
