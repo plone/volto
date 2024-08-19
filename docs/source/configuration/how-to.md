@@ -150,3 +150,24 @@ export default function applyConfig(config) {
 
   return config;
 }
+```
+
+## nonContentRoutes and publicNonContentRoutes
+
+The `nonContentRoutes` is a list of routes declaration for which is applied the body-class `cms-ui`. This are the routes usesed in the `backoffice` side of Volto.
+You can include either RegEx or a string representing the ending of the url. 
+
+The `publicNonContentRoutes` is a list of nonContentRoutes used in the `public` side of Volto. For example, some static public route such as '/search', or '/sitemap', ...
+
+```js
+export default function applyConfig(config) {
+  config.settings = {
+    ...config.settings,
+    nonContentRoutes:[....],
+    publicNonContentRoutes: [....]
+  };
+
+  return config;
+}
+```
+
