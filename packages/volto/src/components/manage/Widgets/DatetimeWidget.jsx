@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { compose } from 'redux';
 import PropTypes from 'prop-types';
-import { defineMessages, injectIntl } from 'react-intl';
+import { defineMessages, useIntl } from 'react-intl';
 import { connect } from 'react-redux';
 import loadable from '@loadable/component';
 import cx from 'classnames';
@@ -73,7 +73,6 @@ const DatetimeWidgetComponent = (props) => {
   const {
     id,
     resettable,
-    intl,
     reactDates,
     widgetOptions,
     lang,
@@ -85,6 +84,8 @@ const DatetimeWidgetComponent = (props) => {
     noPastDates: propNoPastDates,
     isDisabled,
   } = props;
+
+  const intl = useIntl();
 
   const [focused, setFocused] = useState(false);
   const [isDefault, setIsDefault] = useState(false);
@@ -246,5 +247,4 @@ export default compose(
   connect((state) => ({
     lang: state.intl.locale,
   })),
-  injectIntl,
 )(DatetimeWidgetComponent);
