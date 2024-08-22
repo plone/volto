@@ -152,7 +152,7 @@ export default function applyConfig(config) {
 }
 ```
 
-## nonContentRoutes and publicNonContentRoutes
+## `nonContentRoutes` and `publicNonContentRoutes`
 
 The `nonContentRoutes` is a list of routes declaration for which is applied the body-class `cms-ui`. This are the routes usesed in the `backoffice` side of Volto.
 You can include either RegEx or a string representing the ending of the url. 
