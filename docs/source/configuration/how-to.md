@@ -165,6 +165,7 @@ You can configure `nonContentRoutes` with either a regular expression or a strin
 These routes are used for public sections of a Volto site that do not require authentication.
 This subset includes `/login`, `/search`, and `/sitemap`.
 
+The following example shows how to configure settings for `nonContentRoutes` and `publicNonContentRoutes`.
 ```js
 export default function applyConfig(config) {
   config.settings = {
