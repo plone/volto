@@ -154,7 +154,11 @@ export default function applyConfig(config) {
 
 ## `nonContentRoutes` and `publicNonContentRoutes`
 
-The `nonContentRoutes` is a list of routes declaration for which is applied the body-class `cms-ui`. This are the routes usesed in the `backoffice` side of Volto.
+`nonContentRoutes` is a list of routes reserved in Volto for its functionality as a content management system.
+These functions include user authentication and registration, changing settings through control panels, generating a site map, and other functions.
+Examples of these routes include `/login`, `/register`, and `/\/controlpanel\/.*$/`.
+Editors can't use them for content.
+The HTML attribute class value `cms-ui` is applied to members of `nonContentRoutes`.
 You can include either RegEx or a string representing the ending of the url. 
 
 The `publicNonContentRoutes` is a list of nonContentRoutes used in the `public` side of Volto. For example, some static public route such as '/search', or '/sitemap', ...
