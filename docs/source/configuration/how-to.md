@@ -159,7 +159,7 @@ These functions include user authentication and registration, changing settings 
 Examples of these routes include `/login`, `/register`, and `/\/controlpanel\/.*$/`.
 Editors can't use them for content.
 The HTML attribute class value `cms-ui` is applied to members of `nonContentRoutes`.
-You can include either RegEx or a string representing the ending of the url. 
+You can configure `nonContentRoutes` with either a regular expression or a string representing the end of the URI.
 
 The `publicNonContentRoutes` is a list of nonContentRoutes used in the `public` side of Volto. For example, some static public route such as '/search', or '/sitemap', ...
 
