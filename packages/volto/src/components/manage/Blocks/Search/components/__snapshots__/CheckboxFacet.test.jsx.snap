@@ -17,6 +17,7 @@ exports[`CheckboxFacet renders a facet component with checkboxes 1`] = `
     >
       <div
         className="ui radio checkbox"
+        htmlFor="first"
         onChange={[Function]}
         onClick={[Function]}
         onMouseDown={[Function]}
@@ -25,11 +26,14 @@ exports[`CheckboxFacet renders a facet component with checkboxes 1`] = `
         <input
           checked={false}
           className="hidden"
+          id="first"
           readOnly={true}
           tabIndex={0}
           type="checkbox"
         />
-        <label>
+        <label
+          htmlFor="first"
+        >
           First
         </label>
       </div>
@@ -39,6 +43,7 @@ exports[`CheckboxFacet renders a facet component with checkboxes 1`] = `
     >
       <div
         className="ui radio checkbox"
+        htmlFor="second"
         onChange={[Function]}
         onClick={[Function]}
         onMouseDown={[Function]}
@@ -47,11 +52,14 @@ exports[`CheckboxFacet renders a facet component with checkboxes 1`] = `
         <input
           checked={false}
           className="hidden"
+          id="second"
           readOnly={true}
           tabIndex={0}
           type="checkbox"
         />
-        <label>
+        <label
+          htmlFor="second"
+        >
           Second
         </label>
       </div>
