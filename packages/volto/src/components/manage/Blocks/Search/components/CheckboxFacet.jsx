@@ -21,8 +21,10 @@ const CheckboxFacet = (props) => {
         {choices.map(({ label, value }, i) => (
           <div className="entry" key={value}>
             <Checkbox
+              id={value}
               disabled={isEditMode}
               label={label}
+              htmlFor={value}
               radio={!isMulti}
               checked={
                 isMulti
