@@ -150,6 +150,7 @@ let config = {
     maxFileUploadSize: null,
     serverConfig,
     storeExtenders: [],
+    showTags: true,
     controlpanels: [],
     controlPanelsIcons,
     filterControlPanels,

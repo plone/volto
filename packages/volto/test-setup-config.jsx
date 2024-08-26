@@ -32,6 +32,7 @@ config.set('settings', {
   defaultLanguage: 'en',
   supportedLanguages: ['en'],
   defaultPageSize: 25,
+  showTags: true,
   isMultilingual: false,
   nonContentRoutes,
   contentIcons: contentIcons,

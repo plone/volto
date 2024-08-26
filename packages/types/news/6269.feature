@@ -1,1 +1,0 @@
-Remove `showTags` setting. @wesleybl

@@ -75,6 +75,7 @@ export interface SettingsConfig {
   maxFileUploadSize: number | null;
   serverConfig: unknown;
   storeExtenders: unknown[];
+  showTags: boolean;
   controlpanels: unknown[];
   controlPanelsIcons: Record<string, React.ComponentType>;
   filterControlPanels: unknown;

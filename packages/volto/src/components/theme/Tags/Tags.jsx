@@ -6,6 +6,7 @@
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Container } from 'semantic-ui-react';
+import config from '@plone/registry';
 
 /**
  * Tags component.
@@ -18,7 +19,7 @@ import { Container } from 'semantic-ui-react';
 const Tags = ({ content }) => {
   const tags = content?.subjects || [];
 
-  if (!tags.length) return null;
+  if (!config.settings.showTags || !tags.length) return null;
 
   return (
     <Container className="tags">
