@@ -4,6 +4,7 @@ import { filter, isEmpty } from 'lodash';
 import { Menu } from 'semantic-ui-react';
 import { useIntl, FormattedMessage } from 'react-intl';
 import { Icon } from '@plone/volto/components';
+import { useSelector } from 'react-redux';
 
 const emptySlateBlock = () => ({
   value: [
@@ -108,6 +109,8 @@ const PersistentSlashMenu = ({ editor }) => {
   } = props;
   const disableNewBlocks = data?.disableNewBlocks || detached;
 
+  const user = useSelector((state) => state.users?.user);
+
   const [slashMenuSelected, setSlashMenuSelected] = React.useState(0);
 
   const hasAllowedBlocks = !isEmpty(allowedBlocks);
@@ -122,7 +125,7 @@ const PersistentSlashMenu = ({ editor }) => {
         hasAllowedBlocks
           ? allowedBlocks.includes(item.id)
           : typeof item.restricted === 'function'
-            ? !item.restricted({ properties, block: item })
+            ? !item.restricted({ properties, block: item, user: user })
             : !item.restricted,
       )
         .filter((block) => Boolean(block.title && block.id))
@@ -152,6 +155,7 @@ const PersistentSlashMenu = ({ editor }) => {
       properties,
       slashCommand,
       hasAllowedBlocks,
+      user,
     ],
   );
 
