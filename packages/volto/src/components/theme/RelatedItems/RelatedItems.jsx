@@ -7,6 +7,7 @@ import { UniversalLink } from '@plone/volto/components';
 import { defineMessages, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import { Container } from 'semantic-ui-react';
+import config from '@plone/registry';
 
 const messages = defineMessages({
   relatedItems: {
@@ -21,8 +22,13 @@ const messages = defineMessages({
  * @param {array} relatedItems Array of related items.
  * @returns {JSX.Element} Markup of the component.
  */
-const RelatedItems = ({ relatedItems, intl }) => {
-  if (!relatedItems || relatedItems.length === 0) {
+const RelatedItems = ({ content, intl }) => {
+  const relatedItems = content?.relatedItems;
+  if (
+    !config.settings.showRelatedItems ||
+    !relatedItems ||
+    relatedItems.length === 0
+  ) {
     return null;
   }
 
