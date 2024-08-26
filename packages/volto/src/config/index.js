@@ -18,6 +18,7 @@ import {
 import { components } from './Components';
 import { loadables } from './Loadables';
 import { workflowMapping } from './Workflows';
+import slots from './slots';
 
 import { contentIcons } from './ContentIcons';
 import { styleClassNameConverters, styleClassNameExtenders } from './Style';
@@ -244,6 +245,18 @@ ConfigRegistry.addonReducers = config.addonReducers;
 ConfigRegistry.components = config.components;
 ConfigRegistry.slots = config.slots;
 ConfigRegistry.utilities = config.utilities;
+
+// Register slots
+Object.entries(slots).forEach(([slotName, components]) => {
+  components.forEach(({ name, component, predicates = [] }) => {
+    ConfigRegistry.registerSlotComponent({
+      slot: slotName,
+      name,
+      component,
+      predicates,
+    });
+  });
+});
 
 registerValidators(ConfigRegistry);
 
