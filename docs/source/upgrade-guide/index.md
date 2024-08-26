@@ -445,6 +445,9 @@ schema: {
 // rest of the form definition...
 ```
 
+### Tags in slot
+
+The Tags component has been moved to the `belowContent` slot. It now receives the `content` property instead of the `tags` property. The `showTags` setting has been removed.
 
 (volto-upgrade-guide-17.x.x)=
 
