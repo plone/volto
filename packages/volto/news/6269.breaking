@@ -1,1 +1,1 @@
-Move Tags component to the slot `belowContent`. @wesleybl
+Move `Tags` component to the slot `belowContent`. @wesleybl
