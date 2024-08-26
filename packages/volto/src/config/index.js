@@ -25,6 +25,7 @@ import {
   controlPanelsIcons,
   filterControlPanels,
   filterControlPanelsSchema,
+  unwantedControlPanelsFields,
 } from './ControlPanels';
 
 import applyAddonConfiguration, { addonsInfo } from 'load-volto-addons';
@@ -153,6 +154,7 @@ let config = {
     controlPanelsIcons,
     filterControlPanels,
     filterControlPanelsSchema,
+    unwantedControlPanelsFields,
     externalRoutes: [
       // URL to be considered as external
       // {
@@ -168,6 +170,7 @@ let config = {
     ],
     showSelfRegistration: false,
     contentMetadataTagsImageField: 'image',
+    contentPropertiesSchemaEnhancer: null,
     hasWorkingCopySupport: false,
     maxUndoLevels: 200, // undo history size for the main form
     addonsInfo: addonsInfo,
