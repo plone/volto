@@ -1,2 +1,1 @@
-- Show related items.
-  @wesleybl
+Show related items. @wesleybl
