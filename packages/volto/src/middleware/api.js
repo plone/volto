@@ -230,28 +230,6 @@ const apiMiddlewareFactory =
             });
           }
           if (type === GET_CONTENT) {
-            // automatically set redux userSession.token if the user logged in another tab
-            // if (!(subrequest || __SERVER__)) {
-            //   const cookies = new Cookies();
-            //   const token = cookies.get('auth_token');
-            //
-            //   if (token && !state.userSession?.token) {
-            //     dispatch({
-            //       type: 'LOGIN_SUCCESS',
-            //       result: {
-            //         token,
-            //       },
-            //     });
-            //   } else if (state.userSession?.token && !token) {
-            //     dispatch({
-            //       type: 'LOGOUT_SUCCESS',
-            //       result: {
-            //         token,
-            //       },
-            //     });
-            //   }
-            // }
-
             const lang = result?.language?.token;
             if (
               lang &&
