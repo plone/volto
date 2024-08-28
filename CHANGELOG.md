@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 16.32.1 (2024-08-28)
+
+### Bugfix
+
+- Fix error in `SortOn` component when no sort is selected. @davisagli [#6273](https://github.com/plone/volto/issues/6273)
+
 ## 16.32.0 (2024-08-16)
 
 ### Feature
