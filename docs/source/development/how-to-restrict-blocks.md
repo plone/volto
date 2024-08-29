@@ -27,8 +27,11 @@ The function has this signature:
 }
 ```
 
-Where `properties` is the current object data and `block` is the block being evaluated in `BlockChooser`.
-`navRoot` is the nearest navigation root object and `contentType` is the current content type. `user` is an object that represents the currently authenticated user.
+`properties` is the current object data.
+`block` is the block being evaluated in `BlockChooser`.
+`navRoot` is the nearest navigation root object.
+`contentType` is the current content type.
+`user` is an object that represents the currently authenticated user.
 
 In the following configuration example, you can restrict a block so that it cannot be added unless the content type is `News Item` or the content item is in a specific path in the content tree (`/folder`):
 
