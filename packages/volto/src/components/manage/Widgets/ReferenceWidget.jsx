@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { Label, Dropdown, Popup, Icon } from 'semantic-ui-react';
@@ -100,7 +100,7 @@ const ReferenceWidget = (props) => {
     });
   }, [intl, search, value]);
 
-  const onSearchChange = (data) => {
+  const onSearchChange = (event, data) => {
     if (data.searchQuery && data.searchQuery !== '') {
       dispatch(
         searchContent('', {
@@ -111,7 +111,7 @@ const ReferenceWidget = (props) => {
       dispatch(resetSearchContent());
     }
   };
-  const renderLabel = (item, defaultProps) => {
+  const renderLabel = (item, index, defaultProps) => {
     return (
       <Popup
         key={item.value}
@@ -158,7 +158,7 @@ const ReferenceWidget = (props) => {
               ? flattenToAppURL(value['@id'])
               : ''
         }
-        onChange={(data) => {
+        onChange={(event, data) => {
           return onChange(
             id,
             multiple
@@ -185,14 +185,6 @@ ReferenceWidget.propTypes = {
     PropTypes.object,
   ]),
   onChange: PropTypes.func.isRequired,
-  search: PropTypes.arrayOf(
-    PropTypes.shape({
-      '@id': PropTypes.string,
-      '@type': PropTypes.string,
-      title: PropTypes.string,
-      description: PropTypes.string,
-    }),
-  ),
   wrapped: PropTypes.bool,
 };
 
@@ -200,7 +192,6 @@ ReferenceWidget.defaultProps = {
   description: null,
   required: false,
   error: [],
-  search: [],
   value: null,
   multiple: true,
 };
