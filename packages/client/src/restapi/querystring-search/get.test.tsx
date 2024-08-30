@@ -45,9 +45,7 @@ describe('[GET] QuerystringSearch', () => {
 
     const { result } = renderHook(
       () =>
-        useQuery(
-          getQuerystringSearchQuery({ query: querystringSearchData.query }),
-        ),
+        useQuery(getQuerystringSearchQuery({ data: querystringSearchData })),
       {
         wrapper: createWrapper(),
       },
