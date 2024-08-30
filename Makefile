@@ -147,6 +147,10 @@ packages/components/dist: $(shell find packages/components/src -type f)
 .PHONY: build-deps
 build-deps: packages/registry/dist ## Build dependencies
 
+.PHONY: i18n
+i18n: ## Converts your po files into json to translate volto frontend
+	$(MAKE) -C "./packages/volto/" i18n
+
 ## Storybook
 
 .PHONY: storybook-start
