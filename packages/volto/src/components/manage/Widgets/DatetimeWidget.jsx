@@ -85,6 +85,7 @@ const DatetimeWidgetComponent = (props) => {
   } = props;
 
   const intl = useIntl();
+  const lang = intl.locale;
 
   const [focused, setFocused] = useState(false);
   const [isDefault, setIsDefault] = useState(false);
