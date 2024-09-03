@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { compose } from 'redux';
 import PropTypes from 'prop-types';
 import { defineMessages, useIntl } from 'react-intl';
-import { connect } from 'react-redux';
 import loadable from '@loadable/component';
 import cx from 'classnames';
 import { Icon } from '@plone/volto/components';
@@ -242,4 +240,6 @@ DatetimeWidgetComponent.defaultProps = {
   resettable: true,
 };
 
-export default injectLazyLibs(['reactDates', 'moment'])(DatetimeWidgetComponent);
+export default injectLazyLibs(['reactDates', 'moment'])(
+  DatetimeWidgetComponent,
+);
