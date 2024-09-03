@@ -75,7 +75,6 @@ const DatetimeWidgetComponent = (props) => {
     resettable,
     reactDates,
     widgetOptions,
-    lang,
     moment,
     value,
     onChange,
