@@ -242,9 +242,4 @@ DatetimeWidgetComponent.defaultProps = {
   resettable: true,
 };
 
-export default compose(
-  injectLazyLibs(['reactDates', 'moment']),
-  connect((state) => ({
-    lang: state.intl.locale,
-  })),
-)(DatetimeWidgetComponent);
+export default injectLazyLibs(['reactDates', 'moment'])(DatetimeWidgetComponent);
