@@ -558,4 +558,114 @@ describe('Search Block Tests', () => {
     cy.get('#toolbar-save > .icon').click();
     cy.wait(500);
   });
+  it('Search block - test on select 1 sort on in listing criteria sort on', () => {
+    cy.visit('/');
+    cy.get('#toolbar-add > .icon').click();
+    cy.get('#toolbar-add-document').click();
+    cy.getSlateTitle().focus().click().type('My Search Page');
+
+    // Add Search listing block
+    cy.addNewBlock('search');
+
+    // Add search query criteria
+    cy.get('#default-query-0-query .react-select__value-container').click();
+    cy.get('#default-query-0-query .react-select__option')
+      .contains('Type')
+      .click();
+
+    cy.get('#default-query-0-query .fields:first-of-type > .field').click();
+    cy.get(
+      '#default-query-0-query .fields:first-of-type > .field .react-select__option',
+    )
+      .contains('Page')
+      .click();
+    cy.get(
+      '#select-listingblock-sort-on > .react-select__control > .react-select__value-container',
+    ).click();
+    cy.findByText('Effective date').click();
+    cy.get('.field-wrapper-showSortOn .wrapper .ui label').click();
+    //save page
+    cy.get('#toolbar-save').click();
+
+    // then we are able to see title and value
+    cy.get('span.sorted-label').should('have.text', 'Sorted onEffective date');
+    cy.get('span.sorted-label-value').should('have.text', 'Effective date');
+    // Verify the presence of Ascending button
+    cy.get('button[title="Ascending"]').should('be.visible');
+    // Verify the presence of Descending button
+    cy.get('button[title="Descending"]').should('be.visible');
+  });
+  it('Search block - test on only one sort on option below.', () => {
+    cy.visit('/');
+    cy.get('#toolbar-add > .icon').click();
+    cy.get('#toolbar-add-document').click();
+    cy.getSlateTitle().focus().click().type('My Search Page');
+
+    // Add Search listing block
+    cy.addNewBlock('search');
+    cy.get('.field-wrapper-showSortOn .wrapper .ui label').click();
+    cy.get(
+      '#field-sortOnOptions > .react-select__control > .react-select__value-container ',
+    ).click();
+    cy.findByText('Effective date').click();
+    //save page
+    cy.get('#toolbar-save').click();
+    // then we are able to see label and sort option
+    cy.get('.sort-label').should('have.text', 'Sort on');
+    cy.get('#select-search-sort-on').click();
+    cy.findByText('Effective date').click({ force: true });
+    cy.get(
+      'div#select-search-sort-on.search-react-select-container.css-2b097c-container',
+    ).contains('Effective date');
+    // Verify the presence of Ascending button
+    cy.get('button[title="Ascending"]').should('be.visible');
+    // Verify the presence of Descending button
+    cy.get('button[title="Descending"]').should('be.visible');
+  });
+  it('Search block - test on select both listing sort on and sort on options', () => {
+    cy.visit('/');
+    cy.get('#toolbar-add > .icon').click();
+    cy.get('#toolbar-add-document').click();
+    cy.getSlateTitle().focus().click().type('My Search Page');
+
+    // Add Search listing block
+    cy.addNewBlock('search');
+    // Add search query criteria
+    cy.get('#default-query-0-query .react-select__value-container').click();
+    cy.get('#default-query-0-query .react-select__option')
+      .contains('Type')
+      .click();
+
+    cy.get('#default-query-0-query .fields:first-of-type > .field').click();
+    cy.get(
+      '#default-query-0-query .fields:first-of-type > .field .react-select__option',
+    )
+      .contains('Page')
+      .click();
+    cy.get(
+      '#select-listingblock-sort-on > .react-select__control > .react-select__value-container',
+    ).click();
+    cy.findByText('Order in folder').click();
+    // Add one sort on options below
+    cy.get('.field-wrapper-showSortOn .wrapper .ui label').click();
+    cy.get('#field-sortOnOptions').click();
+    cy.findByText('Effective date').click();
+    // save page
+    cy.get('#toolbar-save').click();
+    // then we are able to see label and sort option
+    cy.get('.sort-label').should('have.text', 'Sort on');
+    cy.get('#select-search-sort-on').click();
+    cy.findByText('Effective date').click({ force: true });
+    cy.get(
+      'div#select-search-sort-on.search-react-select-container.css-2b097c-container',
+    ).contains('Effective date');
+    cy.get('#select-search-sort-on').click();
+    cy.get(
+      'div#select-search-sort-on.search-react-select-container.css-2b097c-container',
+    ).contains('Order in folder');
+    // Verify the presence of Ascending button
+    cy.get('button[title="Ascending"]').should('be.visible');
+    // Verify the presence of Descending button
+    cy.get('button[title="Descending"]').should('be.visible');
+  });
 });

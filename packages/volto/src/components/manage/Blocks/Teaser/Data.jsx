@@ -31,8 +31,15 @@ const messages = defineMessages({
 });
 
 const TeaserData = (props) => {
-  const { block, blocksConfig, data, onChangeBlock, navRoot, contentType } =
-    props;
+  const {
+    block,
+    blocksConfig,
+    blocksErrors,
+    data,
+    onChangeBlock,
+    navRoot,
+    contentType,
+  } = props;
   const dispatch = useDispatch();
   const intl = useIntl();
 
@@ -161,6 +168,7 @@ const TeaserData = (props) => {
       actionButton={data.overwrite && ActionButton}
       navRoot={navRoot}
       contentType={contentType}
+      errors={blocksErrors}
     />
   );
 };

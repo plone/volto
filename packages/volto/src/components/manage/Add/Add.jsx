@@ -5,7 +5,11 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { BodyClass, Helmet } from '@plone/volto/helpers';
+import {
+  BodyClass,
+  Helmet,
+  extractInvariantErrors,
+} from '@plone/volto/helpers';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { keys, isEmpty } from 'lodash';
@@ -182,9 +186,7 @@ class Add extends Component {
       const errorsList = tryParseJSON(error);
       let erroMessage;
       if (Array.isArray(errorsList)) {
-        const invariantErrors = errorsList
-          .filter((errorItem) => !('field' in errorItem))
-          .map((errorItem) => errorItem['message']);
+        const invariantErrors = extractInvariantErrors(errorsList);
         if (invariantErrors.length > 0) {
           // Plone invariant validation message.
           erroMessage = invariantErrors.join(' - ');
@@ -414,6 +416,7 @@ class Add extends Component {
                       aria-label={this.props.intl.formatMessage(messages.save)}
                       onClick={() => this.form.current.onSubmit()}
                       loading={this.props.createRequest.loading}
+                      disabled={this.props.createRequest.loading}
                     >
                       <Icon
                         name={saveSVG}

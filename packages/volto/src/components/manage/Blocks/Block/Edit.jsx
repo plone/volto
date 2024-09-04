@@ -144,12 +144,14 @@ export class Edit extends Component {
         {Block !== null ? (
           <div
             role="presentation"
-            onMouseOver={() => {
+            onMouseEnter={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
               if (this.props.hovered !== this.props.id) {
                 this.props.setUIState({ hovered: this.props.id });
               }
             }}
-            onFocus={() => {
+            onFocus={(e) => {
               // TODO: This `onFocus` steals somehow the focus from the slate block
               // we have to investigate why this is happening
               // Apparently, I can't see any difference in the behavior
@@ -158,7 +160,11 @@ export class Edit extends Component {
               //   this.props.setUIState({ hovered: this.props.id });
               // }
             }}
-            onMouseLeave={() => this.props.setUIState({ hovered: null })}
+            onMouseLeave={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              this.props.setUIState({ hovered: null });
+            }}
             onClick={(e) => {
               const isMultipleSelection = e.shiftKey || e.ctrlKey || e.metaKey;
               !this.props.selected &&
@@ -207,11 +213,21 @@ export class Edit extends Component {
         ) : (
           <div
             role="presentation"
-            onMouseOver={() =>
-              this.props.setUIState({ hovered: this.props.id })
-            }
-            onFocus={() => this.props.setUIState({ hovered: this.props.id })}
-            onMouseLeave={() => this.props.setUIState({ hovered: null })}
+            onMouseEnter={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              this.props.setUIState({ hovered: this.props.id });
+            }}
+            onFocus={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              this.props.setUIState({ hovered: this.props.id });
+            }}
+            onMouseLeave={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              this.props.setUIState({ hovered: null });
+            }}
             onClick={() =>
               !this.props.selected && this.props.onSelectBlock(this.props.id)
             }
