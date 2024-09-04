@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import PloneClient from '@plone/client';
 
@@ -18,16 +19,18 @@ export const usePloneClient = () => {
 
 export type PloneClientProviderProps = {
   client: InstanceType<typeof PloneClient>;
+  queryClient: QueryClient;
   children?: React.ReactNode;
 };
 
 export const PloneClientProvider = ({
   client,
+  queryClient,
   children,
 }: PloneClientProviderProps): JSX.Element => {
   return (
     <PloneClientContext.Provider value={client}>
-      {children}
+      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
     </PloneClientContext.Provider>
   );
 };

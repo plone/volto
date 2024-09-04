@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { RouterProvider, createRouter } from '@tanstack/react-router';
+import {
+  RouterProvider,
+  createRouter,
+  useLocation,
+} from '@tanstack/react-router';
 import { routeTree } from './routeTree.gen';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { QueryClient } from '@tanstack/react-query';
 
 import PloneClient from '@plone/client';
-import { PloneClientProvider } from '@plone/providers';
-import { FlattenToAppURLProvider } from '@plone/providers';
+import { PloneProvider } from '@plone/providers';
 import { flattenToAppURL } from './utils';
 
 import './config';
@@ -50,12 +53,16 @@ const rootElement = document.getElementById('app')!;
 if (!rootElement.innerHTML) {
   const root = ReactDOM.createRoot(rootElement);
   root.render(
-    <PloneClientProvider client={ploneClient}>
-      <QueryClientProvider client={queryClient}>
-        <FlattenToAppURLProvider flattenToAppURL={flattenToAppURL}>
-          <RouterProvider router={router} />
-        </FlattenToAppURLProvider>
-      </QueryClientProvider>
-    </PloneClientProvider>,
+    <PloneProvider
+      ploneClient={ploneClient}
+      queryClient={queryClient}
+      useLocation={useLocation}
+      navigate={(path: string) => router.navigate({ to: path })}
+      // TODO: Investigate why this fails in @tanstack/router :/
+      // useHref={(to) => router.buildLocation(to).href}
+      flattenToAppURL={flattenToAppURL}
+    >
+      <RouterProvider router={router} />
+    </PloneProvider>,
   );
 }
