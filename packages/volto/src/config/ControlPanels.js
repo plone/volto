@@ -90,6 +90,7 @@ export const unwantedControlPanelsFields = {
   navigation: [
     'generate_tabs',
     'navigation_depth',
+    'nonfolderish_tabs',
     'sort_tabs_on',
     'sort_tabs_reversed',
     'sitemap_depth',
