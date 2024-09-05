@@ -1,1 +1,1 @@
-Pass the `user` object to the `restricted` function of the block settings. @wesleybl
+Pass `user`, `navRoot` and `contentType` objects to the `restricted` function of the block settings. @wesleybl

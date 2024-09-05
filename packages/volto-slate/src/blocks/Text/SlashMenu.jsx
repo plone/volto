@@ -106,6 +106,8 @@ const PersistentSlashMenu = ({ editor }) => {
     selected,
     allowedBlocks,
     detached,
+    navRoot,
+    contentType,
   } = props;
   const disableNewBlocks = data?.disableNewBlocks || detached;
 
@@ -125,7 +127,13 @@ const PersistentSlashMenu = ({ editor }) => {
         hasAllowedBlocks
           ? allowedBlocks.includes(item.id)
           : typeof item.restricted === 'function'
-            ? !item.restricted({ properties, block: item, user: user })
+            ? !item.restricted({
+                properties,
+                block: item,
+                navRoot,
+                contentType,
+                user,
+              })
             : !item.restricted,
       )
         .filter((block) => Boolean(block.title && block.id))
