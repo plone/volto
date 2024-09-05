@@ -163,6 +163,8 @@ const PersistentSlashMenu = ({ editor }) => {
       properties,
       slashCommand,
       hasAllowedBlocks,
+      navRoot,
+      contentType,
       user,
     ],
   );
