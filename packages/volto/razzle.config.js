@@ -358,6 +358,8 @@ const defaultModify = ({
         include.push(p);
       }
     });
+    // TODO: Place here a list of the core packages that are non-volto add-ons
+    // eg. all 3rd level @plone/* strategic packages
     addonsAsExternals = packagesNames.map((addon) => new RegExp(addon));
   }
 
@@ -406,6 +408,7 @@ const defaultModify = ({
               /^@plone\/components/,
               /^@plone\/client/,
               /^@plone\/providers/,
+              /^@plone\/slots/,
             ].filter(Boolean),
           }),
         ]

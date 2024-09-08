@@ -9,11 +9,12 @@ export interface Location<TSearchObj extends AnySearchSchema = {}> {
   hash: string;
 }
 
-interface RouterLocation {
+interface AppRouter {
   useLocation: () => Location | undefined;
+  navigate: (path: string) => void;
 }
 
-const RouterLocationContext = createContext<RouterLocation>({
+const AppRouterContext = createContext<AppRouter>({
   useLocation: () => ({
     href: '',
     pathname: '',
@@ -21,31 +22,33 @@ const RouterLocationContext = createContext<RouterLocation>({
     searchStr: '',
     hash: '',
   }),
+  navigate: () => {},
 });
 
-interface RouterLocationProps {
+interface AppRouterProps {
   useLocation: () => Location | undefined;
+  navigate: (path: string) => void;
   children: ReactNode;
 }
 
-export function RouterLocationProvider(props: RouterLocationProps) {
-  let { children, useLocation } = props;
+export function AppRouterProvider(props: AppRouterProps) {
+  let { children, navigate, useLocation } = props;
 
   let ctx = useMemo(
     () => ({
       useLocation,
+      navigate,
     }),
-    [useLocation],
+    [useLocation, navigate],
   );
 
   return (
-    <RouterLocationContext.Provider value={ctx}>
+    <AppRouterContext.Provider value={ctx}>
       {children}
-    </RouterLocationContext.Provider>
+    </AppRouterContext.Provider>
   );
 }
 
-export function useRouterLocation() {
-  const { useLocation } = useContext(RouterLocationContext);
-  return useLocation();
+export function useAppRouter() {
+  return useContext(AppRouterContext);
 }

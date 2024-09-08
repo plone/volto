@@ -4,6 +4,7 @@ import {
   Outlet,
   createRootRouteWithContext,
   useRouter,
+  useLocation,
 } from '@tanstack/react-router';
 import { TanStackRouterDevtools } from '@tanstack/router-devtools';
 import { QueryClient } from '@tanstack/react-query';
@@ -13,6 +14,8 @@ import { RouterProvider } from 'react-aria-components';
 import PloneClient from '@plone/client';
 
 import '@plone/components/dist/basic.css';
+import '../main.css';
+import { AppRouterProvider } from '@plone/providers';
 
 export const Route = createRootRouteWithContext<{
   queryClient: QueryClient;
@@ -25,10 +28,17 @@ function RootComponent() {
   const router = useRouter();
 
   return (
-    <RouterProvider navigate={(path: string) => router.navigate({ to: path })}>
-      <Outlet />
-      <ReactQueryDevtools buttonPosition="top-right" />
-      <TanStackRouterDevtools position="bottom-right" />
-    </RouterProvider>
+    <AppRouterProvider
+      navigate={(path: string) => router.navigate({ to: path })}
+      useLocation={useLocation}
+    >
+      <RouterProvider
+        navigate={(path: string) => router.navigate({ to: path })}
+      >
+        <Outlet />
+        <ReactQueryDevtools buttonPosition="top-right" />
+        <TanStackRouterDevtools position="bottom-right" />
+      </RouterProvider>
+    </AppRouterProvider>
   );
 }
