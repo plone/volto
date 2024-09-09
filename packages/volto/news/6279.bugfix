@@ -1,1 +1,1 @@
-Empty GridBlocks will not be rendered in 'View' @MAX-786
+Fix error rendering empty grid blocks. @MAX-786
