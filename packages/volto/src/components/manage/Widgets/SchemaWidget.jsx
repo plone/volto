@@ -422,12 +422,13 @@ class SchemaWidget extends Component {
      */
     error: PropTypes.arrayOf(PropTypes.string),
     /**
+     * Filter for factory choices
+     */
+    filterFactory: PropTypes.arrayOf(PropTypes.string),
+    /**
      * On change handler
      */
     onChange: PropTypes.func.isRequired,
-    /**
-     * Intl object
-     */
   };
 
   /**
@@ -439,6 +440,7 @@ class SchemaWidget extends Component {
     required: false,
     value: {},
     error: [],
+    filterFactory: null,
   };
 
   /**
@@ -1074,7 +1076,7 @@ class SchemaWidget extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { error, reactBeautifulDnd } = this.props;
+    const { error, reactBeautifulDnd, filterFactory } = this.props;
     const { Draggable, DragDropContext, Droppable } = reactBeautifulDnd;
     if (!this.props.value) {
       return '';
@@ -1328,6 +1330,7 @@ class SchemaWidget extends Component {
                   vocabulary: {
                     '@id': `Fields`,
                   },
+                  filterChoices: filterFactory,
                 },
                 title: {
                   type: 'string',

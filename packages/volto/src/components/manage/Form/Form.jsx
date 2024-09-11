@@ -91,6 +91,7 @@ class Form extends Component {
     onSubmit: PropTypes.func,
     onCancel: PropTypes.func,
     submitLabel: PropTypes.string,
+    cancelLabel: PropTypes.string,
     resetAfterSubmit: PropTypes.bool,
     resetOnCancel: PropTypes.bool,
     isEditForm: PropTypes.bool,
@@ -124,6 +125,7 @@ class Form extends Component {
     onSubmit: null,
     onCancel: null,
     submitLabel: null,
+    cancelLabel: null,
     resetAfterSubmit: false,
     resetOnCancel: false,
     isEditForm: false,
@@ -1024,10 +1026,16 @@ class Form extends Component {
                     <Button
                       basic
                       secondary
-                      aria-label={this.props.intl.formatMessage(
-                        messages.cancel,
-                      )}
-                      title={this.props.intl.formatMessage(messages.cancel)}
+                      aria-label={
+                        this.props.cancelLabel
+                          ? this.props.cancelLabel
+                          : this.props.intl.formatMessage(messages.cancel)
+                      }
+                      title={
+                        this.props.cancelLabel
+                          ? this.props.cancelLabel
+                          : this.props.intl.formatMessage(messages.cancel)
+                      }
                       floated="right"
                       onClick={this.onCancel}
                     >
