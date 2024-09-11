@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import map from 'lodash/map';
+import { filter, map } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 import {
   getVocabFromHint,
@@ -95,6 +95,7 @@ class SelectWidget extends Component {
     title: PropTypes.string.isRequired,
     description: PropTypes.string,
     required: PropTypes.bool,
+    filterChoices: PropTypes.arrayOf(PropTypes.string),
     error: PropTypes.arrayOf(PropTypes.string),
     getVocabulary: PropTypes.func.isRequired,
     getVocabularyTokenTitle: PropTypes.func.isRequired,
@@ -134,6 +135,7 @@ class SelectWidget extends Component {
   static defaultProps = {
     description: null,
     required: false,
+    filterChoices: null,
     items: {
       vocabulary: null,
     },
@@ -189,7 +191,7 @@ class SelectWidget extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { id, choices, value, intl, onChange } = this.props;
+    const { id, choices, value, intl, onChange, filterChoices } = this.props;
     const normalizedValue = normalizeValue(choices, value, intl);
     // Make sure that both disabled and isDisabled (from the DX layout feat work)
     const disabled = this.props.disabled || this.props.isDisabled;
@@ -216,6 +218,10 @@ class SelectWidget extends Component {
               ]
             : []),
         ];
+
+    if (filterChoices) {
+      options = filter(options, (item) => filterChoices.includes(item.value));
+    }
 
     const isMulti = this.props.isMulti
       ? this.props.isMulti
