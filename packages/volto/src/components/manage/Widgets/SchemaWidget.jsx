@@ -46,6 +46,10 @@ const messages = defineMessages({
     id: 'Default',
     defaultMessage: 'Default',
   },
+  defaultValue: {
+    id: 'Default value',
+    defaultMessage: 'Default value',
+  },
   idTitle: {
     id: 'Short Name',
     defaultMessage: 'Short Name',
@@ -155,16 +159,16 @@ const schemaField = (factory, intl, fieldsets) => ({
         ...((factory) => {
           switch (factory) {
             case 'Rich Text':
-              return ['maxLength'];
+              return ['maxLength', 'default'];
             case 'URL':
             case 'Password':
             case 'label_password_field':
             case 'Email':
             case 'label_email':
-              return ['minLength', 'maxLength'];
+              return ['minLength', 'maxLength', 'default'];
             case 'Integer':
             case 'label_integer_field':
-              return ['minimum', 'maximum'];
+              return ['minimum', 'maximum', 'default'];
             case 'Floating-point number':
             case 'label_float_field':
             case 'Date/Time':
@@ -186,7 +190,7 @@ const schemaField = (factory, intl, fieldsets) => ({
             case 'label_choice_field':
               return ['values'];
             default:
-              return ['minLength', 'maxLength'];
+              return ['minLength', 'maxLength', 'default'];
           }
         })(factory),
         ...['required'],
@@ -220,6 +224,11 @@ const schemaField = (factory, intl, fieldsets) => ({
               type: 'integer',
               title: intl.formatMessage(messages.maxLength),
             },
+            default: {
+              title: intl.formatMessage(messages.defaultValue),
+              widget: 'richtext',
+              type: 'string',
+            },
           };
         case 'URL':
         case 'Password':
@@ -235,6 +244,10 @@ const schemaField = (factory, intl, fieldsets) => ({
               type: 'integer',
               title: intl.formatMessage(messages.maxLength),
             },
+            default: {
+              type: 'string',
+              title: intl.formatMessage(messages.defaultValue),
+            },
           };
         case 'Integer':
         case 'label_integer_field':
@@ -246,6 +259,10 @@ const schemaField = (factory, intl, fieldsets) => ({
             maximum: {
               type: 'integer',
               title: intl.formatMessage(messages.maximum),
+            },
+            default: {
+              type: 'integer',
+              title: intl.formatMessage(messages.default),
             },
           };
         case 'Floating-point number':
@@ -283,6 +300,10 @@ const schemaField = (factory, intl, fieldsets) => ({
             maxLength: {
               type: 'integer',
               title: intl.formatMessage(messages.maxLength),
+            },
+            default: {
+              type: 'string',
+              title: intl.formatMessage(messages.defaultValue),
             },
           };
       }
