@@ -195,6 +195,8 @@ const schemaField = (factory, intl, fieldsets) => ({
             case 'Choice':
             case 'label_choice_field':
               return ['values'];
+            case 'hidden':
+              return ['default'];
             default:
               return ['minLength', 'maxLength', 'default'];
           }
@@ -295,6 +297,13 @@ const schemaField = (factory, intl, fieldsets) => ({
               type: 'string',
               title: intl.formatMessage(messages.choices),
               widget: 'textarea',
+            },
+          };
+        case 'hidden':
+          return {
+            default: {
+              type: 'string',
+              title: intl.formatMessage(messages.defaultValue),
             },
           };
         default:
@@ -455,6 +464,10 @@ class SchemaWidget extends Component {
     /**
      * On change handler
      */
+    additionalFactory: PropTypes.arrayOf(PropTypes.object),
+    /**
+     * On change handler
+     */
     onChange: PropTypes.func.isRequired,
   };
 
@@ -468,6 +481,7 @@ class SchemaWidget extends Component {
     value: {},
     error: [],
     filterFactory: null,
+    additionalFactory: null,
   };
 
   /**
@@ -641,6 +655,11 @@ class SchemaWidget extends Component {
               case 'label_boolean_field':
                 return {
                   type: 'boolean',
+                  factory,
+                };
+              case 'hidden':
+                return {
+                  type: 'hidden',
                   factory,
                 };
               default:
@@ -1103,7 +1122,8 @@ class SchemaWidget extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { error, reactBeautifulDnd, filterFactory } = this.props;
+    const { additionalFactory, error, reactBeautifulDnd, filterFactory } =
+      this.props;
     const { Draggable, DragDropContext, Droppable } = reactBeautifulDnd;
     if (!this.props.value) {
       return '';
@@ -1358,6 +1378,7 @@ class SchemaWidget extends Component {
                     '@id': `Fields`,
                   },
                   filterChoices: filterFactory,
+                  additionalChoices: additionalFactory,
                 },
                 title: {
                   type: 'string',
