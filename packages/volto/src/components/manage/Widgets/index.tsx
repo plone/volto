@@ -35,6 +35,13 @@ export const FileWidget = loadable(
     ),
 );
 
+export const HiddenWidget = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "Widgets" */ '@plone/volto/components/manage/Widgets/HiddenWidget'
+    ),
+);
+
 export const IdWidget = loadable(
   () =>
     import(
