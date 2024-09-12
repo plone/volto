@@ -162,7 +162,7 @@ describe('Blocks Tests', () => {
       });
   });
 
-  it.only('Create an image block and initially alt attr is empty', () => {
+  it('Create an image block and initially alt attr is empty', () => {
     // when I add an image block via upload
     cy.get('.content-area .slate-editor [contenteditable=true]', {
       timeout: 10000,
