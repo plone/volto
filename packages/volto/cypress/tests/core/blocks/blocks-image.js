@@ -35,7 +35,8 @@ describe('Blocks Tests', () => {
       .last()
       .focus()
       .should('have.css', 'outline', 'rgb(16, 16, 16) auto 1px');
-    cy.get('.block.image .ui.input input[type="text"]').type(
+    cy.findByLabelText('Enter a URL to an image').click();
+    cy.get('.ui.input.editor-link.input-anchorlink-theme input').type(
       `https://github.com/plone/volto/raw/main/logos/volto-colorful.png{enter}`,
     );
     cy.get('#toolbar-save').click();
