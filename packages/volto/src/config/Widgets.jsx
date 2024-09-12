@@ -5,6 +5,7 @@ import {
   CheckboxWidget,
   FileWidget,
   IdWidget,
+  HiddenWidget,
   PasswordWidget,
   QueryWidget,
   QuerySortOnWidget,
@@ -51,6 +52,7 @@ import TitleViewWidget from '@plone/volto/components/theme/Widgets/TitleWidget';
 import TokenViewWidget from '@plone/volto/components/theme/Widgets/TokenWidget';
 import UrlViewWidget from '@plone/volto/components/theme/Widgets/UrlWidget';
 import ImageWidget from '@plone/volto/components/manage/Widgets/ImageWidget';
+import HiddenViewWidget from '@plone/volto/components/manage/Widgets/HiddenWidget';
 
 // Widgets mapping
 export const widgetMapping = {
@@ -108,6 +110,7 @@ export const widgetMapping = {
     number: NumberWidget,
     integer: NumberWidget,
     id: IdWidget,
+    hidden: HiddenWidget,
   },
   views: {
     getWidget: getWidgetView,
@@ -145,6 +148,7 @@ export const widgetMapping = {
     type: {
       array: ArrayViewWidget,
       boolean: BooleanViewWidget,
+      hidden: HiddenViewWidget,
     },
   },
 };

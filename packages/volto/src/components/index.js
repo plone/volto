@@ -169,6 +169,7 @@ export {
   ArrayWidget,
   CheckboxWidget,
   FileWidget,
+  HiddenWidget,
   IdWidget,
   PasswordWidget,
   QueryWidget,
