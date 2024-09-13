@@ -450,6 +450,21 @@ schema: {
 The `Tags` component has been moved to the `belowContent` slot.
 It now receives the `content` property instead of the `tags` property.
 
+### CookiePlone is now the recommended project and add-on generator for Volto 18
+
+```{versionadded} 18.0.0-alpha.43
+```
+The recommended way for developing Volto projects will be using [Cookieplone](https://github.com/plone/cookieplone) as a boilerplate generator.
+Cookieplone uses the frontend code installed using `pnpm` instead of `yarn`.
+This affects the way that we generate the official Docker images, since they have to be compatible with the `pnpm` setup.
+
+From Volto `18.0.0-alpha.43` the official `plone-frontend` Docker image will be the one using `pnpm`.
+During all the 18 series, a new image with the suffix `-yarn` (`plone-frontend:18-yarn`) will be generated as well for those of you that won't migrate your boilerplate and code to the new setup yet. When Volto 19 is out, we won't support it nor build it anymore.
+
+```{deprecated} 18.0.0-alpha.43
+The `yarn`-based generator `@plone/generator-volto` package and project boilerplates generated with it are deprecated and will not receive any further updates. The recommended way of generating a project boilerplate is Cookieplone. Please update your code to the `pnpm` based setup.
+```
+
 (volto-upgrade-guide-17.x.x)=
 
 ## Upgrading to Volto 17.x.x
