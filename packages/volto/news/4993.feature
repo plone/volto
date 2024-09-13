@@ -1,1 +1,0 @@
-Refactor ControlPanels/Groups RenderGroups from class components to functional component. @Tishasoumya-02

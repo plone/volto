@@ -1,2 +1,2 @@
-declare const _default: any;
-export default _default;
+export default DatabaseInformation;
+declare function DatabaseInformation(): import("react/jsx-runtime").JSX.Element;
