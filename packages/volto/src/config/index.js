@@ -18,6 +18,7 @@ import {
 import { components } from './Components';
 import { loadables } from './Loadables';
 import { workflowMapping } from './Workflows';
+import slots from './slots';
 
 import { contentIcons } from './ContentIcons';
 import { styleClassNameConverters, styleClassNameExtenders } from './Style';
@@ -25,6 +26,7 @@ import {
   controlPanelsIcons,
   filterControlPanels,
   filterControlPanelsSchema,
+  unwantedControlPanelsFields,
 } from './ControlPanels';
 
 import applyAddonConfiguration, { addonsInfo } from 'load-volto-addons';
@@ -32,6 +34,7 @@ import applyAddonConfiguration, { addonsInfo } from 'load-volto-addons';
 import ConfigRegistry from '@plone/volto/registry';
 
 import { getSiteAsyncPropExtender } from '@plone/volto/helpers';
+import { registerValidators } from './validation';
 
 const host = process.env.HOST || 'localhost';
 const port = process.env.PORT || '3000';
@@ -99,7 +102,7 @@ let config = {
       process.env.RAZZLE_INTERNAL_API_PATH ||
       process.env.RAZZLE_API_PATH ||
       'http://localhost:8080/Plone', // Set it to '' for disabling the proxy
-    // proxyRewriteTarget Set it for set a custom target for the proxy or overide the internal VHM rewrite
+    // proxyRewriteTarget Set it for set a custom target for the proxy or override the internal VHM rewrite
     // proxyRewriteTarget: '/VirtualHostBase/http/localhost:8080/Plone/VirtualHostRoot/_vh_api'
     // proxyRewriteTarget: 'https://myvoltositeinproduction.com'
     proxyRewriteTarget: process.env.RAZZLE_PROXY_REWRITE_TARGET || undefined,
@@ -154,6 +157,7 @@ let config = {
     controlPanelsIcons,
     filterControlPanels,
     filterControlPanelsSchema,
+    unwantedControlPanelsFields,
     externalRoutes: [
       // URL to be considered as external
       // {
@@ -169,6 +173,7 @@ let config = {
     ],
     showSelfRegistration: false,
     contentMetadataTagsImageField: 'image',
+    contentPropertiesSchemaEnhancer: null,
     hasWorkingCopySupport: false,
     maxUndoLevels: 200, // undo history size for the main form
     addonsInfo: addonsInfo,
@@ -211,8 +216,9 @@ let config = {
   },
   addonRoutes: [],
   addonReducers: {},
-  slots: {},
   components,
+  slots: {},
+  utilities: {},
 };
 
 // The apiExpanders depends on a config of the object, so it's done here
@@ -240,6 +246,21 @@ ConfigRegistry.addonRoutes = config.addonRoutes;
 ConfigRegistry.addonReducers = config.addonReducers;
 ConfigRegistry.components = config.components;
 ConfigRegistry.slots = config.slots;
+ConfigRegistry.utilities = config.utilities;
+
+// Register slots
+Object.entries(slots).forEach(([slotName, components]) => {
+  components.forEach(({ name, component, predicates = [] }) => {
+    ConfigRegistry.registerSlotComponent({
+      slot: slotName,
+      name,
+      component,
+      predicates,
+    });
+  });
+});
+
+registerValidators(ConfigRegistry);
 
 applyAddonConfiguration(ConfigRegistry);
 

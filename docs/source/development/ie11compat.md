@@ -4,7 +4,7 @@ myst:
     "description": "Legacy browser support with polyfills, babel-env, and pre- and post-transpiling"
     "property=og:description": "Legacy browser support with polyfills, babel-env, and pre- and post-transpiling"
     "property=og:title": "Legacy Browser Support (IE11 compatibility)"
-    "keywords": "Volto, Plone, frontend, React, IE11 compatability, polyfills, legacy browser support"
+    "keywords": "Volto, Plone, frontend, React, IE11 compatibility, polyfills, legacy browser support"
 ---
 
 # Legacy Browser Support (IE11 compatibility)

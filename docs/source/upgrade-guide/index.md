@@ -81,7 +81,7 @@ yarn
 ```
 
 After this, the `volto-update-deps` script will be available in your environment.
-Now you can run the script to syncrhonize dependencies:
+Now you can run the script to synchronize dependencies:
 
 ```shell
 yarn volto-update-deps
@@ -363,6 +363,7 @@ The only Volto component that makes use of it is `PersonalPreferences`.
 If you shadow it, then you should update this component.
 For the rest, it is unlikely that your code refers to this module, since it's used internally by Volto itself.
 
+
 ### Renamed `test-setup-config` module
 
 `test-setup-config.js` has been renamed to `test-setup-config.jsx` since, in fact, it contains JSX.
@@ -370,6 +371,99 @@ This change is needed for consistency with module suffixes in Volto core, in pre
 
 It is unlikely that your code uses it, unless you heavily customized the Jest testing pipeline.
 
+
+### Removed `react-share` library and `SocialSharing` component
+
+The `react-share` library and `SocialSharing` component has not been used in the core since some time ago, and it is more suitable as an add-on and not in core.
+If you still use it, you can add it to your main add-on dependency, and extract the `SocialSharing` component from Volto 17 as a custom component in your add-on code.
+
+
+### Refactor of `FormValidation` module
+
+The `packages/volto/src/helpers/FormValidation/FormValidation.jsx` module has been heavily refactored.
+Some helper functions have been moved to `packages/volto/src/helpers/FormValidation/validators.ts`.
+None of those functions were exported in the first place, so no imports will be broken.
+If you shadowed the module {file}`packages/volto/src/helpers/FormValidation/FormValidation.jsx`, you should review it and update it accordingly.
+
+```{seealso}
+{doc}`../configuration/validation`
+```
+
+### Field validation for blocks
+
+`BlockDataForm` component now gets a new prop `errors`.
+This prop must be assigned with the new prop passed down from the blocks engine `blocksErrors`.
+If not passed down, the block can't display any field validation error.
+
+```tsx
+// More component code above here
+
+  const {
+    block,
+    blocksConfig,
+    contentType,
+    data,
+    navRoot,
+    onChangeBlock,
+    blocksErrors,
+  } = props;
+
+return (
+  <BlockDataForm
+    block={block}
+    schema={schema}
+    title={schema.title}
+    onChangeField={(id: string, value: any) => {
+      onChangeBlock(block, {
+        ...data,
+        [id]: value,
+      });
+    }}
+    onChangeBlock={onChangeBlock}
+    formData={data}
+    blocksConfig={blocksConfig}
+    navRoot={navRoot}
+    contentType={contentType}
+    errors={blocksErrors}
+  />
+)
+```
+
+### `SchemaWidget` widget registration change
+
+Previously in the widget mapping, the `SchemaWidget` was registered in the `id` object and assigned to the `schema` key.
+Due to this common key name, this definition could leak the widget and be applied to unwanted fields.
+The `SchemaWidget` is now registered under the `widget` object.
+If you use it in your project or add-ons, you should update the field definition, and add the `widget` property.
+
+```ts
+// more form definition above...
+schema: {
+  title: 'Schema',
+  widget: 'schema'
+}
+// rest of the form definition...
+```
+
+### Tags in slot
+
+The `Tags` component has been moved to the `belowContent` slot.
+It now receives the `content` property instead of the `tags` property.
+
+### CookiePlone is now the recommended project and add-on generator for Volto 18
+
+```{versionadded} 18.0.0-alpha.43
+```
+The recommended way for developing Volto projects will be using [Cookieplone](https://github.com/plone/cookieplone) as a boilerplate generator.
+Cookieplone uses the frontend code installed using `pnpm` instead of `yarn`.
+This affects the way that we generate the official Docker images, since they have to be compatible with the `pnpm` setup.
+
+From Volto `18.0.0-alpha.43` the official `plone-frontend` Docker image will be the one using `pnpm`.
+During all the 18 series, a new image with the suffix `-yarn` (`plone-frontend:18-yarn`) will be generated as well for those of you that won't migrate your boilerplate and code to the new setup yet. When Volto 19 is out, we won't support it nor build it anymore.
+
+```{deprecated} 18.0.0-alpha.43
+The `yarn`-based generator `@plone/generator-volto` package and project boilerplates generated with it are deprecated and will not receive any further updates. The recommended way of generating a project boilerplate is Cookieplone. Please update your code to the `pnpm` based setup.
+```
 
 (volto-upgrade-guide-17.x.x)=
 
@@ -1403,16 +1497,16 @@ Not really a breaking change, but it's worth noting it. By default, Volto 14 com
 ### Blocks chooser now uses the title instead of the id of the block as translation source
 
 The `BlockChooser` component now uses the `title` of the block as source for translating
-the block title. Before, it took the `id` of the block, which is utterly wrong and missleading. There is a chance that this change will trigger untranslated blocks titles in your projects and add-ons.
+the block title. Before, it took the `id` of the block, which is utterly wrong and misleading. There is a chance that this change will trigger untranslated blocks titles in your projects and add-ons.
 
 ### Variation field now uses the title instead of the id of the variation as translation source
 
 Following the same convention as the above change, `Variation` field coming from the block enhancers now uses the `title` of the block as source for translating
-the variation title. Before, it took the `id` of the block, which as stated before, is wrong and missleading. There is a chance that  this change will trigger untranslated variation titles in your projects and add-ons.
+the variation title. Before, it took the `id` of the block, which as stated before, is wrong and misleading. There is a chance that  this change will trigger untranslated variation titles in your projects and add-ons.
 
 ### Listing block no longer retrieve fullobjects by default
 
-The query used by the listing block always used the `fullobjects` flag, which fully serialized (and thus, wake from the db) the resultant response items. This was causing performance issues. From Volto 14, the results will get the normal catalog query metadata results. You'll need to adapt your code to get the appropiate data if required and/or use the metadata counterparts. If your custom code depends on this behavior and you don't have time to adapt now, there's a scape hatch: set an additional `fullobjects` key to `true` per variation in the variation of the listing block config object:
+The query used by the listing block always used the `fullobjects` flag, which fully serialized (and thus, wake from the db) the resultant response items. This was causing performance issues. From Volto 14, the results will get the normal catalog query metadata results. You'll need to adapt your code to get the appropriate data if required and/or use the metadata counterparts. If your custom code depends on this behavior and you don't have time to adapt now, there's a scape hatch: set an additional `fullobjects` key to `true` per variation in the variation of the listing block config object:
 
 ```js
     variations: [
@@ -2026,7 +2120,7 @@ See the documentation of Razzle for more information: https://razzlejs.org/
 #### Changes involved
 
 We need to patch an internal Razzle utility in order to allow the use of non-released
-Razzle plugins. This feature will be in Razzle 4, unfortunatelly at this point the
+Razzle plugins. This feature will be in Razzle 4, unfortunately at this point the
 development of the Razzle 3 branch is freezed already, so we need to amend the original
 using the patch. The patch will be obsolete and no longer required once we move to
 Razzle 4 (see https://github.com/jaredpalmer/razzle/pull/1467).
@@ -2100,7 +2194,7 @@ diff --git a/package.json b/package.json
      "mrs-developer": "1.2.0",
 ```
 
-### Recomended `browserslist` in `package.json`
+### Recommended `browserslist` in `package.json`
 
 Not a breaking change, but you might want to narrow the targets your Volto project is
 targeting. This might improve your build times, as well as your bundle size. This is
@@ -2714,7 +2808,7 @@ create your own as well.
 
 ### Blocks engine - Simplification of the edit blocks wrapper
 
-The edit block wrapper boilerplate was quite big, and for bootstraping an edit block you had to copy it from an existing block. Now all this boilerplate has been transferred to the Blocks Engine, so bootstrapping the edit component of a block is easier and does not require any pre-existing code.
+The edit block wrapper boilerplate was quite big, and for bootstrapping an edit block you had to copy it from an existing block. Now all this boilerplate has been transferred to the Blocks Engine, so bootstrapping the edit component of a block is easier and does not require any pre-existing code.
 
 In order to upgrade your blocks you should simplify the outer `<div>` (took as an example the Title block):
 
