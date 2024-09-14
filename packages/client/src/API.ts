@@ -44,6 +44,13 @@ const _handleResponse = ({ data }: AxiosResponse) => data;
 
 const _handleError = (error: any) => {
   debug(error);
+  if (axios.isAxiosError(error) && error.response){
+    return Promise.resolve({
+      status: error.response.status,
+      data: error.response.data,
+      headers: error.response.headers,
+    });
+  }
   return Promise.reject(error);
 };
 
