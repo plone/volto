@@ -1,5 +1,5 @@
 import { defineMessages } from 'react-intl';
-import { cloneDeep } from 'lodash';
+import { cloneDeep } from 'lodash-es';
 
 import ViewTitleBlock from '@plone/volto/components/manage/Blocks/Title/View';
 import ViewDescriptionBlock from '@plone/volto/components/manage/Blocks/Description/View';

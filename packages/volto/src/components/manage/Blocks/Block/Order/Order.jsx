@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { find, min } from 'lodash';
+import { find, min } from 'lodash-es';
 
 import { flattenTree, getProjection, removeChildrenOf } from './utilities';
 import SortableItem from './SortableItem';

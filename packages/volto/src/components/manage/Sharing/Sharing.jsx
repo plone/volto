@@ -9,7 +9,7 @@ import { Helmet } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link, withRouter } from 'react-router-dom';
-import { find, isEqual, map } from 'lodash';
+import { find, isEqual, map } from 'lodash-es';
 import { createPortal } from 'react-dom';
 import {
   Button,

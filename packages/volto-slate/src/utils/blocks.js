@@ -5,7 +5,7 @@ import {
   getBlocksFieldname,
   getBlocksLayoutFieldname,
 } from '@plone/volto/helpers';
-import _ from 'lodash';
+import _ from 'lodash-es';
 import { makeEditor } from './editor';
 
 // case sensitive; first in an inner array is the default and preffered format

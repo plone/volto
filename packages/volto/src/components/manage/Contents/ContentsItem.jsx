@@ -7,7 +7,7 @@ import React from 'react';
 import { Button, Table, Menu, Divider } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { map } from 'lodash';
+import { map } from 'lodash-es';
 import { useIntl, defineMessages, FormattedMessage } from 'react-intl';
 import { Circle, FormattedDate, Icon, Popup } from '@plone/volto/components';
 import { getContentIcon } from '@plone/volto/helpers';

@@ -3,7 +3,7 @@
  * @module reducers/breadcrumbs/breadcrumbs
  */
 
-import { map } from 'lodash';
+import { map } from 'lodash-es';
 import {
   flattenToAppURL,
   getBaseUrl,

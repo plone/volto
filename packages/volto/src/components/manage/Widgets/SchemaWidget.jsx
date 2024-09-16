@@ -7,7 +7,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import PropTypes from 'prop-types';
-import { concat, findIndex, isString, map, omit, slice, without } from 'lodash';
+import {
+  concat,
+  findIndex,
+  isString,
+  map,
+  omit,
+  slice,
+  without,
+} from 'lodash-es';
 import move from 'lodash-move';
 import { Confirm, Form, Grid, Icon, Message, Segment } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';

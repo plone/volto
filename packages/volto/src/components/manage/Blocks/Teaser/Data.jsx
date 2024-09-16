@@ -10,7 +10,7 @@ import {
   messages as defaultMessages,
 } from '@plone/volto/helpers';
 import { getContent } from '@plone/volto/actions';
-import { isEmpty } from 'lodash';
+import { isEmpty } from 'lodash-es';
 
 import reloadSVG from '@plone/volto/icons/reload.svg';
 import trashSVG from '@plone/volto/icons/delete.svg';

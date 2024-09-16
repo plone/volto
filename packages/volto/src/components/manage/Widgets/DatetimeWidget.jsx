@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, useIntl } from 'react-intl';
-import loadable from '@loadable/component';
+import { lazy } from 'react';
 import cx from 'classnames';
 import { Icon } from '@plone/volto/components';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
@@ -16,7 +16,7 @@ import 'rc-time-picker/assets/index.css';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 
-const TimePicker = loadable(() => import('rc-time-picker'));
+const TimePicker = lazy(() => import('rc-time-picker'));
 
 const messages = defineMessages({
   date: {

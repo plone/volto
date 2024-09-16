@@ -2,6 +2,7 @@ import fs from 'node:fs/promises';
 import express from 'express';
 import getPort, { portNumbers } from 'get-port';
 import dns from 'dns';
+import cookiesMiddleware from 'universal-cookie-express';
 
 const isTest = process.env.NODE_ENV === 'test' || !!process.env.VITE_TEST_BUILD;
 
@@ -45,6 +46,7 @@ export async function createServer(
     });
     // use vite's connect instance as middleware
     app.use(vite.middlewares);
+    app.use(cookiesMiddleware());
   } else {
     const sirv = (await import('sirv')).default;
     app.use((await import('compression')).default());

@@ -5,7 +5,7 @@ import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { save, load } from 'redux-localstorage-simple';
 
 import config from '@plone/volto/registry';
-import reducers from '@root/reducers';
+import reducers from './reducers';
 
 import {
   api,
@@ -25,7 +25,7 @@ const configureStore = (initialState, history, apiHelper) => {
     ...(apiHelper ? [api(apiHelper)] : []),
     userSessionReset,
     protectLoadEnd,
-    ...(__CLIENT__
+    ...(!import.meta.env.SSR
       ? [save({ states: config.settings.persistentReducers, debounce: 500 })]
       : []),
   ];
@@ -33,7 +33,10 @@ const configureStore = (initialState, history, apiHelper) => {
     (acc, extender) => extender(acc),
     stack,
   );
-  const middlewares = composeWithDevTools(applyMiddleware(...stack));
+  const middlewares = !import.meta.env.SSR
+    ? composeWithDevTools(applyMiddleware(...stack))
+    : applyMiddleware(...stack);
+
   const store = createStore(
     combineReducers({
       router: connectRouter(history),
@@ -43,7 +46,7 @@ const configureStore = (initialState, history, apiHelper) => {
     }),
     {
       ...initialState,
-      ...(__CLIENT__
+      ...(!import.meta.env.SSR
         ? load({ states: config.settings.persistentReducers })
         : {}),
     },

@@ -1,4 +1,4 @@
-import loadable from '@loadable/component';
+import { lazy } from 'react';
 
 // This is to make happy the types declaration extractor (tsc) that is not able to
 // extract one private method the types from `@dnd-kit` library:

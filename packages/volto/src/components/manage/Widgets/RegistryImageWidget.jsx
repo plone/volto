@@ -11,7 +11,7 @@ import { injectIntl } from 'react-intl';
 import deleteSVG from '@plone/volto/icons/delete.svg';
 import { Icon } from '@plone/volto/components';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
-import loadable from '@loadable/component';
+import { lazy } from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { toPublicURL, validateFileUploadSize } from '@plone/volto/helpers';
 
@@ -23,7 +23,7 @@ const imageMimetypes = [
   'image/gif',
   'image/svg+xml',
 ];
-const Dropzone = loadable(() => import('react-dropzone'));
+const Dropzone = lazy(() => import('react-dropzone'));
 
 const messages = defineMessages({
   releaseDrag: {

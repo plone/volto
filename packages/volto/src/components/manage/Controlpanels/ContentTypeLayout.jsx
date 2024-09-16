@@ -18,7 +18,7 @@ import { createPortal } from 'react-dom';
 import { Button, Segment } from 'semantic-ui-react';
 import { toast } from 'react-toastify';
 import { defineMessages, injectIntl, FormattedMessage } from 'react-intl';
-import { nth, join } from 'lodash';
+import { nth, join } from 'lodash-es';
 import { Error, Icon, Toolbar, Sidebar, Toast } from '@plone/volto/components';
 import { Form } from '@plone/volto/components/manage/Form';
 import {

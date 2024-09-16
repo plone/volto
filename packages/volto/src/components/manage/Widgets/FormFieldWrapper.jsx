@@ -5,7 +5,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Form, Grid, Icon as IconOld, Label } from 'semantic-ui-react';
-import { map } from 'lodash';
+import { map } from 'lodash-es';
 import cx from 'classnames';
 import { defineMessages, injectIntl } from 'react-intl';
 

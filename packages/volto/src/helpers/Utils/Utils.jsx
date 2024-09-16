@@ -1,4 +1,10 @@
-import { cloneDeepWith, flatten, isEqual, isObject, transform } from 'lodash';
+import {
+  cloneDeepWith,
+  flatten,
+  isEqual,
+  isObject,
+  transform,
+} from 'lodash-es';
 import React from 'react';
 import { matchPath } from 'react-router';
 import config from '@plone/volto/registry';

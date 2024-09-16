@@ -3,7 +3,7 @@
  * @module components/manage/LinksToItem/LinksToItem
  */
 import React, { useEffect, useState } from 'react';
-import { find } from 'lodash';
+import { find } from 'lodash-es';
 import { Helmet } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
 import { createPortal } from 'react-dom';

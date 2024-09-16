@@ -190,7 +190,7 @@
     "debug": "4.3.2",
     "decorate-component-with-props": "1.2.1",
     "dependency-graph": "0.10.0",
-    "detect-browser": "5.1.0",
+    "detect-browser": "5.3.0",
     "diff": "3.5.0",
     "express": "4.19.2",
     "filesize": "6",
@@ -272,7 +272,7 @@
     "url": "^0.11.3",
     "use-deep-compare-effect": "1.8.1",
     "uuid": "^8.3.2",
-    "vite-plugin-node-polyfills": "^0.22.0"
+    "vite-plugin-node-polyfills": "0.17.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
@@ -394,7 +394,7 @@
     "ts-loader": "9.4.4",
     "typescript": "^5.4.2",
     "use-trace-update": "1.3.2",
-    "vite": "^5.2.11",
+    "vite": "^5.4.5",
     "wait-on": "6.0.0",
     "webpack": "5.90.1",
     "webpack-bundle-analyzer": "4.10.1",

@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { Helmet } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { filter, isEqual, map } from 'lodash';
+import { filter, isEqual, map } from 'lodash-es';
 import { Container, Button, Dropdown, Grid, Table } from 'semantic-ui-react';
 import { Link, withRouter } from 'react-router-dom';
 import { createPortal } from 'react-dom';

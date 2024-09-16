@@ -4,7 +4,7 @@
 import React from 'react';
 import { useSlate } from 'slate-react';
 import { useDispatch } from 'react-redux';
-import { omit } from 'lodash';
+import { omit } from 'lodash-es';
 
 import { ToolbarButton } from '@plone/volto-slate/editor/ui';
 import { hasRangeSelection } from '@plone/volto-slate/utils';

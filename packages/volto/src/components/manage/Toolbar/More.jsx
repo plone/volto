@@ -3,7 +3,7 @@ import { defineMessages, useIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
-import { find } from 'lodash';
+import { find } from 'lodash-es';
 import { toast } from 'react-toastify';
 
 import { Toast } from '@plone/volto/components';

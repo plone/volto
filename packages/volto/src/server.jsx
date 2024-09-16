@@ -8,7 +8,7 @@ import express from 'express';
 import { renderToString } from 'react-dom/server';
 import { createMemoryHistory } from 'history';
 import { parse as parseUrl } from 'url';
-import { keys } from 'lodash';
+import { keys } from 'lodash-es';
 import locale from 'locale';
 import { detect } from 'detect-browser';
 import path from 'path';
@@ -73,6 +73,7 @@ const middleware = (config.settings.expressMiddleware || []).filter((m) => m);
 server.all('*', setupServer);
 if (middleware.length) server.use('/', middleware);
 
+// This is for error handling
 server.use(function (err, req, res, next) {
   if (err) {
     const { store } = res.locals;
@@ -101,6 +102,7 @@ server.use(function (err, req, res, next) {
   }
 });
 
+// This is for all routes (see above)
 function setupServer(req, res, next) {
   const api = new Api(req);
 

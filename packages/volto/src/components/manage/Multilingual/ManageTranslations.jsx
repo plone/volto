@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Container, Segment, Table } from 'semantic-ui-react';
 import { Helmet } from '@plone/volto/helpers';
 import { flattenToAppURL, getBaseUrl, langmap } from '@plone/volto/helpers';
-import { reduce } from 'lodash';
+import { reduce } from 'lodash-es';
 import { Link, useLocation } from 'react-router-dom';
 import { Icon, Toast, Toolbar } from '@plone/volto/components';
 import config from '@plone/volto/registry';

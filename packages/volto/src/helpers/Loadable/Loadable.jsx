@@ -1,7 +1,7 @@
 import React from 'react';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
-import { omit } from 'lodash';
+import { omit } from 'lodash-es';
 
 import { loadLazyLibrary } from '@plone/volto/actions';
 import config from '@plone/volto/registry';

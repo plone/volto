@@ -1,7 +1,7 @@
 import React from 'react';
 import { getBaseUrl, applyBlockDefaults } from '@plone/volto/helpers';
 import { defineMessages, useIntl } from 'react-intl';
-import { map } from 'lodash';
+import { map } from 'lodash-es';
 import { MaybeWrap } from '@plone/volto/components';
 import {
   getBlocksFieldname,

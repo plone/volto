@@ -31,7 +31,7 @@ import {
   map,
   mapValues,
   pull,
-} from 'lodash';
+} from 'lodash-es';
 import move from 'lodash-move';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import { asyncConnect } from '@plone/volto/helpers';

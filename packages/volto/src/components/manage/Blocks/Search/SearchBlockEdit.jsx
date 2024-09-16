@@ -11,7 +11,7 @@ import config from '@plone/volto/registry';
 import { SearchBlockViewComponent } from './SearchBlockView';
 import Schema from './schema';
 import { withSearch, withQueryString } from './hocs';
-import { cloneDeep } from 'lodash';
+import { cloneDeep } from 'lodash-es';
 
 const messages = defineMessages({
   template: {

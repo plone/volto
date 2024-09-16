@@ -5,7 +5,7 @@
 
 import Cookies from 'universal-cookie';
 import jwtDecode from 'jwt-decode';
-import { compact, flatten, union } from 'lodash';
+import { compact, flatten, union } from 'lodash-es';
 import { matchPath } from 'react-router';
 import qs from 'query-string';
 

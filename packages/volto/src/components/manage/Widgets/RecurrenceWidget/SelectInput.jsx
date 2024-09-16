@@ -5,7 +5,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { find } from 'lodash';
+import { find } from 'lodash-es';
 import {
   Option,
   DropdownIndicator,

@@ -12,7 +12,7 @@ import {
 } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { keys, isEmpty } from 'lodash';
+import { keys, isEmpty } from 'lodash-es';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Button, Grid, Menu } from 'semantic-ui-react';
 import { createPortal } from 'react-dom';

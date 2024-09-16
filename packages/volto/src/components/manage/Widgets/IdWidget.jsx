@@ -7,7 +7,7 @@ import { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { Input } from 'semantic-ui-react';
-import { compact, concat, keys, map, union, uniq } from 'lodash';
+import { compact, concat, keys, map, union, uniq } from 'lodash-es';
 
 import { defineMessages, useIntl } from 'react-intl';
 import { Icon } from '@plone/volto/components';

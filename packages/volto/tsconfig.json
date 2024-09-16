@@ -21,6 +21,9 @@
       "@root/*": ["./src/*"]
     }
   },
+  "semantic-ui-react": {
+    "esm": true
+  },
   "include": ["src", "packages"],
   "exclude": [
     "node_modules",

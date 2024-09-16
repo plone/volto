@@ -20,7 +20,7 @@ import RenderBlocks from '@plone/volto/components/theme/View/RenderBlocks';
 import { hasBlocksData, getBaseUrl } from '@plone/volto/helpers';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { isEqual } from 'lodash';
+import { isEqual } from 'lodash-es';
 
 /**
  * Component to display the default view.

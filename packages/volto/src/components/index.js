@@ -5,7 +5,7 @@
  * undefined, check the order of imports in this file.
  * @module components
  */
-import loadable from '@loadable/component';
+import { lazy } from 'react';
 
 //  Do not lazy load them, since it has not much sense (they will live in the main chunk)
 // The App and View component are deliberatelly left out of this index.js file!
@@ -63,7 +63,7 @@ export { default as FileView } from '@plone/volto/components/theme/View/FileView
 export { default as ImageView } from '@plone/volto/components/theme/View/ImageView';
 export { default as NewsItemView } from '@plone/volto/components/theme/View/NewsItemView';
 
-export const EventView = loadable(
+export const EventView = lazy(
   () => import('@plone/volto/components/theme/View/EventView'),
 );
 
@@ -103,13 +103,13 @@ export {
 export { default as Circle } from '@plone/volto/components/manage/Contents/circle';
 
 export { default as Delete } from '@plone/volto/components/manage/Delete/Delete';
-export const Diff = loadable(
+export const Diff = lazy(
   () =>
     import(
       /* webpackChunkName: "HistoryView" */ '@plone/volto/components/manage/Diff/Diff'
     ),
 );
-export const DiffField = loadable(
+export const DiffField = lazy(
   () =>
     import(
       /* webpackChunkName: "HistoryView" */ '@plone/volto/components/manage/Diff/DiffField'
@@ -119,7 +119,7 @@ export { default as Display } from '@plone/volto/components/manage/Display/Displ
 export { default as Edit } from '@plone/volto/components/manage/Edit/Edit';
 export { default as History } from '@plone/volto/components/manage/History/History';
 export { default as Sharing } from '@plone/volto/components/manage/Sharing/Sharing';
-export const Rules = loadable(
+export const Rules = lazy(
   () => import('@plone/volto/components/manage/Rules/Rules'),
 );
 export { default as Aliases } from '@plone/volto/components/manage/Aliases/Aliases';
@@ -199,10 +199,10 @@ export {
   FormFieldWrapper,
 } from '@plone/volto/components/manage/Widgets';
 
-export const SchemaWidgetFieldset = loadable(
+export const SchemaWidgetFieldset = lazy(
   () => import('@plone/volto/components/manage/Widgets/SchemaWidgetFieldset'),
 );
-export const ObjectBrowserWidgetMode = loadable(
+export const ObjectBrowserWidgetMode = lazy(
   () => import('@plone/volto/components/manage/Widgets/ObjectBrowserWidget'),
 );
 

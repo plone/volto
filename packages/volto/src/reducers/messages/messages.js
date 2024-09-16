@@ -2,7 +2,7 @@
  * Messages reducer.
  * @module reducers/messages/messages
  */
-import { map, concat, filter } from 'lodash';
+import { map, concat, filter } from 'lodash-es';
 
 import {
   ADD_MESSAGE,

@@ -6,7 +6,7 @@ import { useIntl } from 'react-intl';
 import { useSelector } from 'react-redux';
 import { Node, Text } from 'slate';
 import cx from 'classnames';
-import { isEmpty, omit } from 'lodash';
+import { isEmpty, omit } from 'lodash-es';
 import { UniversalLink, Toast } from '@plone/volto/components';
 import { messages, addAppURL } from '@plone/volto/helpers';
 import useClipboard from '@plone/volto/hooks/clipboard/useClipboard';

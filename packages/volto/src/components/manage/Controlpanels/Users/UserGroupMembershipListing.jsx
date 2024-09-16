@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import { cloneDeep, uniqBy, debounce } from 'lodash';
+import { cloneDeep, uniqBy, debounce } from 'lodash-es';
 import { useIntl } from 'react-intl';
 import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import jwtDecode from 'jwt-decode';

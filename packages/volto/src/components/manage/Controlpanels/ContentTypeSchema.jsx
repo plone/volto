@@ -5,7 +5,7 @@
 
 import { getSchema, putSchema } from '@plone/volto/actions';
 import { getParentUrl } from '@plone/volto/helpers';
-import { nth } from 'lodash';
+import { nth } from 'lodash-es';
 import { Error, Icon, Toast, Toolbar } from '@plone/volto/components';
 import { Form } from '@plone/volto/components/manage/Form';
 import clearSVG from '@plone/volto/icons/clear.svg';

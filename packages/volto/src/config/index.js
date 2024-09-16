@@ -16,7 +16,7 @@ import {
   initialBlocksFocus,
 } from './Blocks';
 import { components } from './Components';
-import { loadables } from './Loadables';
+// import { loadables } from './Loadables';
 import { workflowMapping } from './Workflows';
 import slots from './slots';
 
@@ -135,7 +135,7 @@ let config = {
     initialReducersBlacklist: [], // reducers in this list won't be hydrated in windows.__data
     asyncPropsExtenders: [getSiteAsyncPropExtender], // per route asyncConnect customizers
     contentIcons: contentIcons,
-    loadables,
+    // loadables,
     lazyBundles: {
       cms: [
         'prettierStandalone',

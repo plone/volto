@@ -30,7 +30,7 @@ import {
   without,
   cloneDeep,
   xor,
-} from 'lodash';
+} from 'lodash-es';
 import isBoolean from 'lodash/isBoolean';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';

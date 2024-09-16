@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { isEmpty } from 'lodash';
+import { isEmpty } from 'lodash-es';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import { v4 as uuid } from 'uuid';
 

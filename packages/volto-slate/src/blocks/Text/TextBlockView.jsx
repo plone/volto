@@ -3,7 +3,7 @@ import {
   serializeNodesToText,
 } from '@plone/volto-slate/editor/render';
 import config from '@plone/volto/registry';
-import { isEqual } from 'lodash';
+import { isEqual } from 'lodash-es';
 import Slugger from 'github-slugger';
 import { normalizeString } from '@plone/volto/helpers';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, useIntl } from 'react-intl';
-import { isEqual } from 'lodash';
+import { isEqual } from 'lodash-es';
 import { withBlockExtensions } from '@plone/volto/helpers';
 
 import {

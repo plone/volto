@@ -1,5 +1,5 @@
-import loadable from '@loadable/component';
+import { lazy } from 'react';
 
-export const CommentEditModal = loadable(
+export const CommentEditModal = lazy(
   () => import('@plone/volto/components/theme/Comments/CommentEditModal'),
 );

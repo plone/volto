@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useIntl } from 'react-intl';
-import { cloneDeep, map } from 'lodash';
+import { cloneDeep, map } from 'lodash-es';
 import EditBlock from './Edit';
 import { DragDropList } from '@plone/volto/components';
 import {

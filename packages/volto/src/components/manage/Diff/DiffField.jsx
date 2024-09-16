@@ -5,7 +5,7 @@
 
 import React from 'react';
 // import { diffWords as dWords } from 'diff';
-import { join, map } from 'lodash';
+import { join, map } from 'lodash-es';
 import PropTypes from 'prop-types';
 import { Grid } from 'semantic-ui-react';
 import ReactDOMServer from 'react-dom/server';

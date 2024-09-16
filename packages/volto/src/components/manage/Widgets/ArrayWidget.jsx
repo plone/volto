@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
-import { find, isObject } from 'lodash';
+import { find, isObject } from 'lodash-es';
 
 import {
   getVocabFromHint,

@@ -3,7 +3,7 @@
  * @module routes
  */
 import debug from 'debug';
-import { compact } from 'lodash';
+import { compact } from 'lodash-es';
 import {
   Add,
   Aliases,

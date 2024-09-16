@@ -9,7 +9,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 
 import cx from 'classnames';
-import { isEqual, map, find, concat, remove } from 'lodash';
+import { isEqual, map, find, concat, remove } from 'lodash-es';
 import { defineMessages, injectIntl } from 'react-intl';
 import {
   Form,

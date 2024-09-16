@@ -4,7 +4,7 @@
  */
 
 import { Helmet } from '@plone/volto/helpers';
-import { concat, filter, last, map, sortBy, uniqBy } from 'lodash';
+import { concat, filter, last, map, sortBy, uniqBy } from 'lodash-es';
 import { useEffect, useState } from 'react';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import { createPortal } from 'react-dom';

@@ -8,8 +8,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Popup } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
-import loadable from '@loadable/component';
-import { isEqual } from 'lodash';
+import { lazy } from 'react';
+import { isEqual } from 'lodash-es';
 
 import { Icon } from '@plone/volto/components';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
@@ -18,7 +18,7 @@ import clearSVG from '@plone/volto/icons/clear.svg';
 import codeSVG from '@plone/volto/icons/code.svg';
 import indentSVG from '@plone/volto/icons/indent.svg';
 
-const Editor = loadable(() => import('react-simple-code-editor'));
+const Editor = lazy(() => import('react-simple-code-editor'));
 
 const messages = defineMessages({
   source: {

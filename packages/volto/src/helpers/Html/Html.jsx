@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from '@plone/volto/helpers/Helmet/Helmet';
 import serialize from 'serialize-javascript';
-import { join } from 'lodash';
+import { join } from 'lodash-es';
 import BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
 import { runtimeConfig } from '@plone/volto/runtime_config';
 import config from '@plone/volto/registry';
@@ -136,7 +136,7 @@ class Html extends Component {
             />
           )}
           {/* Add the crossorigin while in development */}
-          {extractor.getLinkElements().map((elem) =>
+          {/* {extractor.getLinkElements().map((elem) =>
             React.cloneElement(elem, {
               crossOrigin:
                 process.env.NODE_ENV === 'production' ? undefined : 'true',
@@ -146,10 +146,10 @@ class Html extends Component {
                   ? 'prefetch'
                   : elem.props.rel,
             }),
-          )}
+          )} */}
           {/* Styles in development are loaded with Webpack's style-loader, in production,
               they need to be static*/}
-          {process.env.NODE_ENV === 'production' ? (
+          {/* {process.env.NODE_ENV === 'production' ? (
             criticalCss ? (
               <>
                 <script
@@ -172,27 +172,27 @@ class Html extends Component {
             ) : (
               extractor.getStyleElements()
             )
-          ) : undefined}
+          ) : undefined} */}
         </head>
         <body className={bodyClass}>
           <div role="navigation" aria-label="Toolbar" id="toolbar" />
           <div id="main" dangerouslySetInnerHTML={{ __html: markup }} />
           <div role="complementary" aria-label="Sidebar" id="sidebar" />
-          <script
+          {/* <script
             dangerouslySetInnerHTML={{
               __html: `window.__data=${serialize(
                 loadReducers(store.getState()),
               )};`,
             }}
             charSet="UTF-8"
-          />
+          /> */}
           {/* Add the crossorigin while in development */}
-          {extractor.getScriptElements().map((elem) =>
+          {/* {extractor.getScriptElements().map((elem) =>
             React.cloneElement(elem, {
               crossOrigin:
                 process.env.NODE_ENV === 'production' ? undefined : 'true',
             }),
-          )}
+          )} */}
         </body>
       </html>
     );

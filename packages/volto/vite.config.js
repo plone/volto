@@ -17,7 +17,7 @@ const addonsLoaderPath = createAddonsLoader(
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), nodePolyfills()],
+  plugins: [nodePolyfills(), react()],
   server: {
     port: 3000,
     proxy: {
@@ -27,6 +27,10 @@ export default defineConfig({
   resolve: {
     alias: [
       { find: /^~/, replacement: '' },
+      {
+        find: '@plone/volto/config',
+        replacement: path.resolve(__dirname, './src/config'),
+      },
       { find: '@plone/volto', replacement: path.resolve(__dirname, './src/') },
       { find: '@root', replacement: path.resolve(__dirname, './src/') },
       {
@@ -60,12 +64,13 @@ export default defineConfig({
     __SERVER__: false,
     __DEVELOPMENT__: true,
   },
-  // ssr: {
-  //   optimizeDeps: {
-  //     include: ['lodash'],
-  //   },
-  //   noExternal: ['lodash'],
-  // },
+  ssr: {
+    // optimizeDeps: {
+    //   include: ['lodash', 'lodash-es'],
+    // },
+    // external: ['lodash', 'semantic-ui-react'],
+    noExternal: ['@root/config'],
+  },
   optimizeDeps: {
     esbuildOptions: {
       plugins: [fixReactVirtualized],

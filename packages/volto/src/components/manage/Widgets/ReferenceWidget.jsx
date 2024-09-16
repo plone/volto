@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { Label, Dropdown, Popup, Icon } from 'semantic-ui-react';
-import { compact, concat, fromPairs, map, values, uniqBy } from 'lodash';
+import { compact, concat, fromPairs, map, values, uniqBy } from 'lodash-es';
 import { defineMessages, useIntl } from 'react-intl';
 
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { map, keys } from 'lodash';
+import { map, keys } from 'lodash-es';
 import { defineMessages, useIntl } from 'react-intl';
 import { toast } from 'react-toastify';
 import { compose } from 'redux';

@@ -17,7 +17,7 @@ import {
   Table,
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import { map } from 'lodash';
+import { map } from 'lodash-es';
 
 import {
   getSystemInformation,

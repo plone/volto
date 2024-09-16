@@ -29,7 +29,7 @@ import { Icon, Toolbar } from '@plone/volto/components';
 import { useClient } from '@plone/volto/hooks';
 
 import backSVG from '@plone/volto/icons/back.svg';
-import { map } from 'lodash';
+import { map } from 'lodash-es';
 import { toast } from 'react-toastify';
 import { Toast } from '@plone/volto/components';
 

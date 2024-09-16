@@ -1,4 +1,4 @@
-import { isBoolean, isObject, isString } from 'lodash';
+import { isBoolean, isObject, isString } from 'lodash-es';
 import { getBoolean } from '@plone/volto/helpers';
 import { defineMessages } from 'react-intl';
 

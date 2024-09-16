@@ -3,7 +3,7 @@
  * TODO Enrich with features of user control panel. Then replace user control panel.
  */
 import React, { useEffect, useState } from 'react';
-import { find } from 'lodash';
+import { find } from 'lodash-es';
 import { createPortal } from 'react-dom';
 import { useHistory } from 'react-router';
 import { Link, useLocation } from 'react-router-dom';

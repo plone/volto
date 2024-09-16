@@ -1,5 +1,5 @@
 import React from 'react';
-import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
+import doesNodeContainClick from '@plone/volto/helpers/Utils/doesNodeContainClick';
 import addSVG from '@plone/volto/icons/circle-plus.svg';
 import { blockHasValue } from '@plone/volto/helpers';
 import { Icon, BlockChooser } from '@plone/volto/components';

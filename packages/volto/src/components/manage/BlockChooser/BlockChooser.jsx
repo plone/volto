@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import { filter, map, groupBy, isEmpty } from 'lodash';
+import { filter, map, groupBy, isEmpty } from 'lodash-es';
 import { Accordion, Button } from 'semantic-ui-react';
 import { useIntl, defineMessages } from 'react-intl';
 import { Icon } from '@plone/volto/components';
