@@ -65,7 +65,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "dev": "vite",
-    "dev:server": "node src/vite-server.js"
+    "dev:server": "node src/vite-server.js",
+    "dev:server:debug": "NODE_INSPECT_RESUME_ON_START=1 node inspect src/vite-server.js"
   },
   "bundlewatch": {
     "files": [

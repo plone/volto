@@ -21,7 +21,7 @@ const configureStore = (initialState, history, apiHelper) => {
     blacklistRoutes,
     protectLoadStart,
     routerMiddleware(history),
-    thunk,
+    thunk.default || thunk, // This makes vite SSR happy, since the default import is wrong in Node land. Maybe need to be tweaked for it to continue working in Browser land. TODO: investigate why
     ...(apiHelper ? [api(apiHelper)] : []),
     userSessionReset,
     protectLoadEnd,
