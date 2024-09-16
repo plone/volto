@@ -4,7 +4,7 @@ import { filter, isEmpty } from 'lodash';
 import { Menu } from 'semantic-ui-react';
 import { useIntl, FormattedMessage } from 'react-intl';
 import { Icon } from '@plone/volto/components';
-import { useSelector } from 'react-redux';
+import { useFetchUser } from '@plone/volto/hooks';
 
 const emptySlateBlock = () => ({
   value: [
@@ -111,7 +111,7 @@ const PersistentSlashMenu = ({ editor }) => {
   } = props;
   const disableNewBlocks = data?.disableNewBlocks || detached;
 
-  const user = useSelector((state) => state.users?.user);
+  const user = useFetchUser();
 
   const [slashMenuSelected, setSlashMenuSelected] = React.useState(0);
 
