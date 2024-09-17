@@ -6,9 +6,9 @@ import express from 'express';
 import { TitleWidget, Moment } from './test_loadable';
 // import './config';
 // import { CookiesProvider } from 'react-cookie';
-// import { Provider } from 'react-intl-redux';
-// import { StaticRouter } from 'react-router-dom';
-// import { ReduxAsyncConnect, loadOnServer } from './helpers/AsyncConnect';
+import { Provider } from 'react-intl-redux';
+import { StaticRouter } from 'react-router-dom';
+import { ReduxAsyncConnect } from './helpers/AsyncConnect';
 import Html from './helpers/Html/Html';
 import { CookiesProvider } from 'react-cookie';
 import Api from '@plone/volto/helpers/Api/Api';
@@ -21,6 +21,7 @@ import locale from 'locale';
 import languages from '@plone/volto/constants/Languages.cjs';
 import { createMemoryHistory } from 'history';
 import configureStore from '@plone/volto/store';
+import routes from './routes';
 
 import config from '@plone/volto/registry';
 
@@ -90,16 +91,24 @@ export async function render(opts: {
   //     </Provider>
   //   </CookiesProvider>,
   // );
+
   const moment = (await Moment).default;
+
+  const context = {};
   const markup = ReactDOMServer.renderToString(
     <CookiesProvider cookies={req.universalCookies}>
-      <div>
-        HELLO from SSR! at {req.url}
-        <React.Suspense>
-          <TitleWidget value="The title" />
-          <TitleWidget value={moment().toISOString()} />
-        </React.Suspense>
-      </div>
+      <Provider store={store}>
+        <StaticRouter context={context} location={req.url}>
+          <ReduxAsyncConnect routes={routes} helpers={api} />
+          {/* <div>
+            HELLO from SSR! at {req.url}
+            <React.Suspense>
+              <TitleWidget value="The title" />
+              <TitleWidget value={moment().toISOString()} />
+            </React.Suspense>
+          </div> */}
+        </StaticRouter>
+      </Provider>
     </CookiesProvider>,
   );
   // Render the app
@@ -114,7 +123,7 @@ export async function render(opts: {
     <Html
       // extractor={extractor}
       markup={markup}
-      store={{}}
+      store={store}
       // criticalCss={readCriticalCss(req)}
       // apiPath={opts.res.locals.detectedHost || config.settings.apiPath}
       // publicURL={opts.res.locals.detectedHost || config.settings.publicURL}

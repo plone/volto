@@ -69,7 +69,7 @@ export default defineConfig({
     //   include: ['lodash', 'lodash-es'],
     // },
     // external: ['lodash', 'semantic-ui-react'],
-    noExternal: ['@root/config'],
+    noExternal: ['use-deep-compare-effect'],
   },
   optimizeDeps: {
     esbuildOptions: {
