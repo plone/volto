@@ -60,7 +60,7 @@ const SortOn = (props) => {
 
   const showSelectField = sortOnOptions.length > 1;
   if (!showSelectField && !activeSortOn) {
-    return;
+    return null;
   }
   const value = {
     value: activeSortOn || intl.formatMessage(messages.noSelection),

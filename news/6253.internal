@@ -1,0 +1,1 @@
+Bump actions/upload-artifact to v4 and replace `docker-compose` with `docker compose`. @stevepiercy, @davisagli
