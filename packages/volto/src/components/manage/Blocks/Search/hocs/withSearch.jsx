@@ -18,6 +18,7 @@ const SEARCH_ENDPOINT_FIELDS = [
   'limit',
   'sort_on',
   'sort_order',
+  'facets',
 ];
 
 const PAQO = 'plone.app.querystring.operation';
@@ -42,7 +43,12 @@ function getInitialState(
 
   return {
     query: [
-      ...(data.query?.query || []),
+      ...(data.query?.query.map((q) => {
+        return {
+          ...q,
+          mandatory: true,
+        };
+      }) || []),
       ...(facetSettings || [])
         .map((facet) => {
           if (!facet?.field) return null;
@@ -73,6 +79,7 @@ function getInitialState(
     sort_order: sortOrderParam || data.query?.sort_order,
     b_size: data.query?.b_size,
     limit: data.query?.limit,
+    facets: (data?.facets || []).map((facet) => facet?.field?.value),
     block: id,
   };
 }
@@ -126,6 +133,7 @@ function normalizeState({
         return valueToQuery({ value, facet });
       }),
     ].filter((o) => !!o),
+    facets: configuredFacets,
     sort_on: sortOn || query.sort_on,
     sort_order: sortOrder || query.sort_order,
     b_size: query.b_size,
@@ -447,7 +455,6 @@ const withSearch = (options) => (WrappedComponent) => {
     );
     const totalItems =
       querystringResults[id]?.total || querystringResults[id]?.items?.length;
-
     return (
       <WrappedComponent
         {...props}

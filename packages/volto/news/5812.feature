@@ -1,0 +1,1 @@
+feat(search): show facets count and hide facets that are not meeting the mandatory criterias in search block @razvanMiu @dobri1408

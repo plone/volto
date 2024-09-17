@@ -10,7 +10,7 @@ import config from '@plone/volto/registry';
 
 import { SearchBlockViewComponent } from './SearchBlockView';
 import Schema from './schema';
-import { withSearch, withQueryString } from './hocs';
+import { withSearch, withQueryString, withFacetsCount } from './hocs';
 import { cloneDeep } from 'lodash';
 
 const messages = defineMessages({
@@ -102,4 +102,8 @@ const SearchBlockEdit = (props) => {
   );
 };
 
-export default compose(withQueryString, withSearch())(SearchBlockEdit);
+export default compose(
+  withQueryString,
+  withFacetsCount,
+  withSearch(),
+)(SearchBlockEdit);

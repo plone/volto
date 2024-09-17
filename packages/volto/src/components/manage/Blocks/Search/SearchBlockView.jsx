@@ -5,7 +5,7 @@ import { withBlockExtensions } from '@plone/volto/helpers';
 
 import config from '@plone/volto/registry';
 
-import { withSearch, withQueryString } from './hocs';
+import { withSearch, withQueryString, withFacetsCount } from './hocs';
 import { compose } from 'redux';
 import { useSelector } from 'react-redux';
 import { isEqual, isFunction } from 'lodash';
@@ -122,4 +122,6 @@ export const SearchBlockViewComponent = compose(
   (Component) => React.memo(Component, blockPropsAreChanged),
 )(SearchBlockView);
 
-export default withSearch()(withQueryString(SearchBlockViewComponent));
+export default withSearch()(
+  withQueryString(withFacetsCount(SearchBlockViewComponent)),
+);
