@@ -275,18 +275,22 @@ class Form extends Component {
       });
     }
 
-    if (requestError && prevProps.requestError !== requestError) {
-      errors =
-        FormValidation.giveServerErrorsToCorrespondingFields(requestError);
-      activeIndex = FormValidation.showFirstTabWithErrors({
-        errors,
-        schema: this.props.schema,
-      });
-
-      this.setState({
-        errors,
-        activeIndex,
-      });
+    const stateHasErrors =
+      Object.keys(this.state.errors).length > 0 &&
+      this.state.errors.constructor === Object;
+    if (requestError) {
+      if (prevProps.requestError !== requestError || !stateHasErrors) {
+        errors =
+          FormValidation.giveServerErrorsToCorrespondingFields(requestError);
+        activeIndex = FormValidation.showFirstTabWithErrors({
+          errors,
+          schema: this.props.schema,
+        });
+        this.setState({
+          errors,
+          activeIndex,
+        });
+      }
     }
 
     if (this.props.onChangeFormData) {
@@ -563,13 +567,11 @@ class Form extends Component {
         }
       });
     }
-
     if (keys(errors).length > 0 || keys(blocksErrors).length > 0) {
       const activeIndex = FormValidation.showFirstTabWithErrors({
         errors,
         schema: this.props.schema,
       });
-
       this.setState({
         errors: {
           ...errors,
@@ -580,14 +582,23 @@ class Form extends Component {
 
       if (keys(errors).length > 0) {
         // Changes the focus to the metadata tab in the sidebar if error
-        Object.keys(errors).forEach((err) =>
-          toast.error(
-            <Toast
-              error
-              title={this.props.schema.properties[err].title || err}
-              content={errors[err].join(', ')}
-            />,
-          ),
+        toast.error(
+          <Toast
+            error
+            title={this.props.intl.formatMessage(messages.error)}
+            content={
+              <ul>
+                {Object.keys(errors).map((err) => (
+                  <li>
+                    <strong>
+                      {this.props.schema.properties[err].title || err}:
+                    </strong>{' '}
+                    {errors[err]}
+                  </li>
+                ))}
+              </ul>
+            }
+          />,
         );
         this.props.setSidebarTab(0);
       } else if (keys(blocksErrors).length > 0) {
@@ -714,7 +725,6 @@ class Form extends Component {
     const schema = this.removeBlocksLayoutFields(originalSchema);
     const Container =
       config.getComponent({ name: 'Container' }).component || SemanticContainer;
-
     return this.props.visual ? (
       // Removing this from SSR is important, since react-beautiful-dnd supports SSR,
       // but draftJS don't like it much and the hydration gets messed up
