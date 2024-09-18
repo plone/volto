@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 import fixReactVirtualized from 'esbuild-plugin-react-virtualized';
 import { nodePolyfills } from 'vite-plugin-node-polyfills';
+import { svgLoader } from './vite-plugins/svg';
 
 import AddonConfigurationRegistry from '@plone/registry/src/addon-registry';
 import createAddonsLoader from '@plone/registry/src/create-addons-loader';
@@ -17,7 +18,27 @@ const addonsLoaderPath = createAddonsLoader(
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [nodePolyfills(), react()],
+  plugins: [
+    nodePolyfills(),
+    svgLoader({
+      svgoConfig: {
+        plugins: [
+          {
+            name: 'preset-default',
+            params: {
+              overrides: {
+                convertPathData: false,
+                removeViewBox: false,
+              },
+            },
+          },
+          'removeTitle',
+          'removeUselessStrokeAndFill',
+        ],
+      },
+    }),
+    react(),
+  ],
   server: {
     port: 3000,
     proxy: {

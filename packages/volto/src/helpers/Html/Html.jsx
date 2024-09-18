@@ -21,7 +21,8 @@ if (window.addEventListener) {
   window.onload=alter
 }`;
 
-export const loadReducers = (state = {}) => {
+// Better only export components for HMR to work fine
+const loadReducers = (state = {}) => {
   const { settings } = config;
   return Object.assign(
     {},
@@ -70,11 +71,6 @@ class Html extends Component {
    * @static
    */
   static propTypes = {
-    extractor: PropTypes.shape({
-      getLinkElements: PropTypes.func.isRequired,
-      getScriptElements: PropTypes.func.isRequired,
-      getStyleElements: PropTypes.func.isRequired,
-    }).isRequired,
     markup: PropTypes.string.isRequired,
     store: PropTypes.shape({
       getState: PropTypes.func,
@@ -87,8 +83,7 @@ class Html extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { extractor, markup, store, criticalCss, apiPath, publicURL } =
-      this.props;
+    const { markup, store, criticalCss, apiPath, publicURL } = this.props;
     const head = Helmet.rewind();
     const bodyClass = join(BodyClass.rewind(), ' ');
     const htmlAttributes = head.htmlAttributes.toComponent();
@@ -178,14 +173,14 @@ class Html extends Component {
           <div role="navigation" aria-label="Toolbar" id="toolbar" />
           <div id="main" dangerouslySetInnerHTML={{ __html: markup }} />
           <div role="complementary" aria-label="Sidebar" id="sidebar" />
-          {/* <script
+          <script
             dangerouslySetInnerHTML={{
               __html: `window.__data=${serialize(
                 loadReducers(store.getState()),
               )};`,
             }}
             charSet="UTF-8"
-          /> */}
+          />
           {/* Add the crossorigin while in development */}
           {/* {extractor.getScriptElements().map((elem) =>
             React.cloneElement(elem, {
@@ -193,6 +188,25 @@ class Html extends Component {
                 process.env.NODE_ENV === 'production' ? undefined : 'true',
             }),
           )} */}
+          <script
+            type="module"
+            suppressHydrationWarning
+            dangerouslySetInnerHTML={{
+              __html: `
+              import RefreshRuntime from "/@react-refresh"
+              RefreshRuntime.injectIntoGlobalHook(window)
+              window.$RefreshReg$ = () => {}
+              window.$RefreshSig$ = () => (type) => type
+              window.__vite_plugin_react_preamble_installed__ = true
+            `,
+            }}
+          />
+          <script type="module" src="/@vite/client" />
+          <script type="module" src="/src/client.js"></script>
+          {/* Hydration error debugger overlay, to use in conjunction with */}
+          {/* https://github.com/BuilderIO/hydration-overlay/blob/main/README.md */}
+          {/* Uncomment to enable */}
+          <script src="/src/hydration-overlay.js" />
         </body>
       </html>
     );

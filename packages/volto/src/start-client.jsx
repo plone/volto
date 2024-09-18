@@ -7,7 +7,6 @@ import { IntlProvider } from 'react-intl-redux';
 import { ConnectedRouter } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
 import { ReduxAsyncConnect } from '@plone/volto/helpers/AsyncConnect';
-import { loadableReady } from '@loadable/component';
 import { CookiesProvider } from 'react-cookie';
 import debug from 'debug';
 import routes from '@root/routes';
@@ -15,6 +14,8 @@ import config from '@plone/volto/registry';
 
 import configureStore from '@plone/volto/store';
 import { Api, persistAuthToken, ScrollToTop } from '@plone/volto/helpers';
+import { HydrationOverlay } from '@builder.io/react-hydration-overlay';
+import { TitleWidget, Moment } from './test_loadable';
 
 export const history = createBrowserHistory();
 
@@ -59,20 +60,33 @@ export default function client() {
     config.settings.legacyTraverse = true;
   }
 
-  loadableReady(() => {
-    hydrateRoot(
-      document.getElementById('main'),
-      <CookiesProvider>
-        <Provider store={store}>
-          <IntlProvider onError={reactIntlErrorHandler}>
-            <ConnectedRouter history={history}>
-              <ScrollToTop>
-                <ReduxAsyncConnect routes={routes} helpers={api} />
-              </ScrollToTop>
-            </ConnectedRouter>
-          </IntlProvider>
-        </Provider>
-      </CookiesProvider>,
-    );
-  });
+  hydrateRoot(
+    document.getElementById('main'),
+    <CookiesProvider>
+      <Provider store={store}>
+        <IntlProvider onError={reactIntlErrorHandler}>
+          <ConnectedRouter history={history}>
+            {/* <ScrollToTop> */}
+            <React.Suspense>
+              {/* <HydrationOverlay> */}
+              <ReduxAsyncConnect routes={routes} helpers={api} />
+              {/* </HydrationOverlay> */}
+            </React.Suspense>
+            {/* </ScrollToTop> */}
+          </ConnectedRouter>
+        </IntlProvider>
+      </Provider>
+    </CookiesProvider>,
+  );
+
+  // hydrateRoot(
+  //   document.getElementById('main'),
+  //   <div>
+  //     HELLO from SSR!
+  //     <React.Suspense>
+  //       <TitleWidget value="The title" />
+  //       {/* <TitleWidget value={moment().toISOString()} /> */}
+  //     </React.Suspense>
+  //   </div>,
+  // );
 }
