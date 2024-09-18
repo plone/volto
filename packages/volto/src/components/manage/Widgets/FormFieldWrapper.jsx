@@ -8,6 +8,8 @@ import { Form, Grid, Icon as IconOld, Label } from 'semantic-ui-react';
 import { map } from 'lodash';
 import cx from 'classnames';
 import { defineMessages, injectIntl } from 'react-intl';
+import LanguageSVG from '@plone/volto/icons/language.svg';
+import { Icon } from '@plone/volto/components';
 
 const messages = defineMessages({
   edit: {
@@ -21,6 +23,11 @@ const messages = defineMessages({
   language_independent: {
     id: 'Language independent field.',
     defaultMessage: 'Language independent field.',
+  },
+  language_independent_icon_title: {
+    id: 'Language independent icon title',
+    defaultMessage:
+      'This field is a language-independent field. Any value you enter here will be synced between the translations when you save this form.',
   },
 });
 /**
@@ -91,6 +98,9 @@ class FormFieldWrapper extends Component {
       noForInFieldLabel,
       multilingual_options,
     } = this.props;
+
+    const languageIndependent = multilingual_options?.language_independent;
+
     const wdg = (
       <>
         {this.props.children}
@@ -112,16 +122,14 @@ class FormFieldWrapper extends Component {
           description ? 'help' : '',
           className,
           `field-wrapper-${id}`,
-          multilingual_options?.language_independent
-            ? 'language-independent-field'
-            : null,
+          languageIndependent ? 'language-independent-field' : null,
         )}
       >
         <Grid>
           <Grid.Row stretched>
             {columns === 2 && (
               <Grid.Column width="4">
-                <div className="wrapper">
+                <div className="wrapper title-icon-container">
                   <label
                     id={`fieldset-${fieldSet}-field-label-${id}`}
                     htmlFor={noForInFieldLabel ? null : `field-${id}`}
@@ -133,6 +141,18 @@ class FormFieldWrapper extends Component {
                       />
                     )}
                     {title}
+                    {languageIndependent && (
+                      <div className="languageIndependent-icon">
+                        <Icon
+                          title={intl.formatMessage(
+                            messages.language_independent_icon_title,
+                          )}
+                          name={LanguageSVG}
+                          size="24px"
+                          color="#555"
+                        />
+                      </div>
+                    )}
                   </label>
                 </div>
               </Grid.Column>
