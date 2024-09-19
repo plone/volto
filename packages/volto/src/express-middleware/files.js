@@ -1,5 +1,5 @@
 import express from 'express';
-import { getAPIResourceWithAuth } from '@plone/volto/helpers';
+import { getAPIResourceWithAuth } from '../helpers/Api/APIResourceWithAuth';
 
 const HEADERS = [
   'accept-ranges',

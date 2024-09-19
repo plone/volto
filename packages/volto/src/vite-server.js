@@ -3,6 +3,7 @@ import express from 'express';
 import getPort, { portNumbers } from 'get-port';
 import dns from 'dns';
 import cookiesMiddleware from 'universal-cookie-express';
+import { serverSettings } from './express-middleware/server.js';
 
 const isTest = process.env.NODE_ENV === 'test' || !!process.env.VITE_TEST_BUILD;
 
@@ -53,6 +54,26 @@ export async function createServer(
     app.use('/', sirv('./dist/client', { extensions: [] }));
   }
 
+  // This is the loader of the former "Seamless" mode parameters from the headers
+  app.all('*', function NetworkParamsDetection(req, res, next) {
+    if (!process.env.VITE_API_PATH && req.headers.host) {
+      res.locals.detectedHost = `${
+        req.headers['x-forwarded-proto'] || req.protocol
+      }://${req.headers.host}`;
+      // config.settings.apiPath = res.locals.detectedHost;
+      // config.settings.publicURL = res.locals.detectedHost;
+    }
+
+    next();
+  });
+
+  // Loads the Express server middleware from the settings.
+  // We no longer load them in the server file, since it's an Express-only config
+  // we avoid to have to exclude it explicitly from the build (and all the deps do
+  // not get in the server build either)
+  const middleware = (serverSettings.expressMiddleware || []).filter((m) => m);
+  if (middleware.length) app.use('/', middleware);
+
   app.use('*', async (req, res) => {
     try {
       const url = req.originalUrl;
@@ -86,7 +107,12 @@ export async function createServer(
       })();
 
       console.log('Rendering: ', url, '...');
-      entry.render({ req, res, url, head: isProd ? viteHead : '' });
+      entry.render({
+        req,
+        res,
+        url,
+        head: isProd ? viteHead : '',
+      });
     } catch (e) {
       !isProd && vite.ssrFixStacktrace(e);
       console.log(e.stack);

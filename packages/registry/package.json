@@ -33,13 +33,13 @@
   },
   "source": "src/index.ts",
   "main": "dist/main.js",
-  "module": "dist/module.js",
+  "module": "dist/module.mjs",
   "types": "dist/types.d.ts",
   "exports": {
     "./src/*": "./src/*.js",
     ".": {
       "types": "./dist/types.d.ts",
-      "import": "./dist/module.js",
+      "import": "./dist/module.mjs",
       "require": "./dist/main.js"
     }
   },

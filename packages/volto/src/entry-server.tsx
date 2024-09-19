@@ -53,6 +53,10 @@ function reactIntlErrorHandler(error) {
   debug('i18n')(error);
 }
 
+export async function getConfig() {
+  return config;
+}
+
 export async function render(opts: {
   url: string;
   head: string;
@@ -60,6 +64,10 @@ export async function render(opts: {
   res: ServerResponse;
 }) {
   const { req, res } = opts;
+
+  // Reconcile seamless mode apiPath with the config
+  config.settings.apiPath = res.locals.detectedHost;
+  config.settings.publicURL = res.locals.detectedHost;
 
   function errorHandler(error) {
     const errorPage = (
@@ -124,7 +132,7 @@ export async function render(opts: {
 
   const url = req.originalUrl || req.url;
   // const location = new URL(url, `http://${req.headers.host}`);
-  const location = parseUrl(url);
+  const location = parseUrl(url); // TODO: improve the parsing with above?
   loadOnServer({ store, location, routes, api })
     .then(() => {
       const initialLang =

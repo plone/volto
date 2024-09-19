@@ -37,4 +37,5 @@ const settings = {
   ],
 };
 
+export { settings as serverSettings };
 export default settings;
