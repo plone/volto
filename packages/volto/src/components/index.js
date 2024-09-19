@@ -177,6 +177,7 @@ export {
   QuerystringWidget,
   SchemaWidget,
   SelectWidget,
+  StaticTextWidget,
   TextareaWidget,
   TextWidget,
   TokenWidget,
