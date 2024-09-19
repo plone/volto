@@ -15,7 +15,7 @@ Array [
           className="four wide column"
         >
           <div
-            className="wrapper"
+            className="wrapper title-icon-container"
           >
             <label
               htmlFor="field-my-field"

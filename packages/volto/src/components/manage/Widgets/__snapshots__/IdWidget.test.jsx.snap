@@ -15,7 +15,7 @@ exports[`IdWidget renders an empty id widget component 1`] = `
           class="four wide column"
         >
           <div
-            class="wrapper"
+            class="wrapper title-icon-container"
           >
             <label
               for="field-my-field"
@@ -60,7 +60,7 @@ exports[`IdWidget renders an id widget with a valid dot character 1`] = `
           class="four wide column"
         >
           <div
-            class="wrapper"
+            class="wrapper title-icon-container"
           >
             <label
               for="field-my-field.jpg"
@@ -105,7 +105,7 @@ exports[`IdWidget renders an id widget with a valid value 1`] = `
           class="four wide column"
         >
           <div
-            class="wrapper"
+            class="wrapper title-icon-container"
           >
             <label
               for="field-my-field"
@@ -150,7 +150,7 @@ exports[`IdWidget renders an id widget with an reserved name 1`] = `
           class="four wide column"
         >
           <div
-            class="wrapper"
+            class="wrapper title-icon-container"
           >
             <label
               for="field-my-field"
@@ -200,7 +200,7 @@ exports[`IdWidget renders an id widget with invalid characters 1`] = `
           class="four wide column"
         >
           <div
-            class="wrapper"
+            class="wrapper title-icon-container"
           >
             <label
               for="field-my-field"

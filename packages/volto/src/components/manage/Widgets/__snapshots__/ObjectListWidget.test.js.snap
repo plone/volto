@@ -18,7 +18,7 @@ exports[`renders an object list widget component 1`] = `
             class="four wide column"
           >
             <div
-              class="wrapper"
+              class="wrapper title-icon-container"
             >
               <label
                 id="fieldset-my-field-set-field-label-my-widget"

@@ -15,7 +15,7 @@ exports[`renders a select widget component 1`] = `
           class="four wide column"
         >
           <div
-            class="wrapper"
+            class="wrapper title-icon-container"
           >
             <label
               for="field-my-field"
