@@ -1,1 +1,0 @@
-Add language independent field icon @iRohitSingh

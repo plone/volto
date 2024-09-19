@@ -27,7 +27,7 @@ const messages = defineMessages({
   language_independent_icon_title: {
     id: 'Language independent icon title',
     defaultMessage:
-      'This field is a language-independent field. Any value you enter here will be synced between the translations when you save this form.',
+      'This is a language independent field. Any value you enter here will overwrite the corresponding field of all members of the translation group when you save this form.',
   },
 });
 /**
