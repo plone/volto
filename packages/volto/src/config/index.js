@@ -65,7 +65,7 @@ const publicURL =
 const serverConfig = {};
 // Move this to the server build only
 // const serverConfig =
-//   typeof __SERVER__ !== 'undefined' && __SERVER__
+//   import.meta.env.SSR
 //     ? require('./server').default
 //     : {};
 

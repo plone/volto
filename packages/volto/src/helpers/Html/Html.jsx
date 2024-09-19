@@ -202,7 +202,7 @@ class Html extends Component {
             }}
           />
           <script type="module" src="/@vite/client" />
-          <script type="module" src="/src/client.js"></script>
+          <script type="module" src="/src/entry-client.tsx"></script>
           {/* Hydration error debugger overlay, to use in conjunction with */}
           {/* https://github.com/BuilderIO/hydration-overlay/blob/main/README.md */}
           {/* Uncomment to enable */}

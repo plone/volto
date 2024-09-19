@@ -141,7 +141,7 @@ export const TitleBlockEdit = (props) => {
     );
   }, []);
 
-  if (typeof window.__SERVER__ !== 'undefined') {
+  if (import.meta.env.SSR) {
     return <div />;
   }
   return (

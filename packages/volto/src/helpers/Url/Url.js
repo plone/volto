@@ -197,7 +197,7 @@ export function expandToBackendURL(path) {
   }
 
   let apiPath = '';
-  if (settings.internalApiPath && __SERVER__) {
+  if (settings.internalApiPath && import.meta.env.SSR) {
     apiPath = settings.internalApiPath;
   } else if (settings.apiPath) {
     apiPath = settings.apiPath;

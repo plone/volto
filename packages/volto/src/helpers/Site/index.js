@@ -11,7 +11,7 @@ const getSiteAsyncPropExtender = {
       dispatchActions.push({
         key: GET_SITE,
         promise: ({ location, store: { dispatch } }) =>
-          __SERVER__ && dispatch(getSite()),
+          import.meta.env.SSR && dispatch(getSite()),
       });
     }
     return dispatchActions;

@@ -286,7 +286,7 @@ const apiMiddlewareFactory =
             });
             // Rethrow the original exception on the client side only,
             // so it doesn't fall through to express on the server.
-            if (__CLIENT__) throw error;
+            if (!import.meta.env.SSR) throw error;
           }
         },
         (error) => {

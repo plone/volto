@@ -152,7 +152,7 @@ export const DescriptionBlockEdit = (props) => {
     );
   }, []);
 
-  if (typeof window.__SERVER__ !== 'undefined') {
+  if (import.meta.env.SSR) {
     return <div />;
   }
 
