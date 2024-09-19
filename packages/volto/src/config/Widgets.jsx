@@ -28,6 +28,7 @@ import {
   VocabularyTermsWidget,
   SelectMetadataWidget,
   SelectAutoComplete,
+  StaticTextWidget,
   ColorPickerWidget,
   DatetimeWidget,
   RecurrenceWidget,
@@ -53,6 +54,7 @@ import TokenViewWidget from '@plone/volto/components/theme/Widgets/TokenWidget';
 import UrlViewWidget from '@plone/volto/components/theme/Widgets/UrlWidget';
 import ImageWidget from '@plone/volto/components/manage/Widgets/ImageWidget';
 import HiddenViewWidget from '@plone/volto/components/manage/Widgets/HiddenWidget';
+import StaticTextViewWidget from '@plone/volto/components/manage/Widgets/StaticTextWidget';
 
 // Widgets mapping
 export const widgetMapping = {
@@ -91,6 +93,7 @@ export const widgetMapping = {
     color_picker: ColorPickerWidget,
     select: SelectWidget,
     schema: SchemaWidget,
+    static_text: StaticTextWidget,
   },
   vocabulary: {
     'plone.app.vocabularies.Catalog': ObjectBrowserWidget,
@@ -141,6 +144,8 @@ export const widgetMapping = {
       title: TitleViewWidget,
       url: UrlViewWidget,
       internal_url: InternalUrlWidget,
+      static_text: StaticTextViewWidget,
+      hidden: HiddenViewWidget,
       object: () => '', // TODO: Not implemented yet: Object View widget
     },
     vocabulary: {},
@@ -148,7 +153,6 @@ export const widgetMapping = {
     type: {
       array: ArrayViewWidget,
       boolean: BooleanViewWidget,
-      hidden: HiddenViewWidget,
     },
   },
 };
