@@ -49,10 +49,9 @@ export function persistAuthToken(store, req) {
 
     if (
       // TODO: how Vite handles the hotreload?
-      // module.hot &&
-      // module.hot.data &&
-      // module.hot.data.reloaded &&
-      false &&
+      import.meta.hot &&
+      import.meta.hot.data &&
+      import.meta.hot.data.reloaded &&
       previousValue
     ) {
       currentValue = previousValue;
@@ -104,8 +103,8 @@ export function persistAuthToken(store, req) {
   handleChange(true);
 }
 
-// if (module?.hot) {
-//   module.hot.dispose((data) => {
-//     data.reloaded = true;
-//   });
-// }
+if (import.meta.hot) {
+  import.meta.hot.dispose((data) => {
+    data.reloaded = true;
+  });
+}
