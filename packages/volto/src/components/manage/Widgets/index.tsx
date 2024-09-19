@@ -91,6 +91,13 @@ export const SelectWidget = loadable(
     ),
 );
 
+export const StaticTextWidget = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "Widgets" */ '@plone/volto/components/manage/Widgets/StaticTextWidget'
+    ),
+);
+
 export const TextareaWidget = loadable(
   () =>
     import(

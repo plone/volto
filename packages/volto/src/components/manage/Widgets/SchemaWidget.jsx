@@ -189,6 +189,7 @@ const schemaField = (factory, intl, fieldsets) => ({
             case 'Choice':
             case 'label_choice_field':
               return ['values'];
+            case 'static_text':
             case 'hidden':
               return ['default'];
             default:
@@ -291,6 +292,14 @@ const schemaField = (factory, intl, fieldsets) => ({
               type: 'string',
               title: intl.formatMessage(messages.choices),
               widget: 'textarea',
+            },
+          };
+        case 'static_text':
+          return {
+            default: {
+              title: intl.formatMessage(messages.defaultValue),
+              widget: 'richtext',
+              type: 'string',
             },
           };
         case 'hidden':
@@ -651,9 +660,16 @@ class SchemaWidget extends Component {
                   type: 'boolean',
                   factory,
                 };
+              case 'static_text':
+                return {
+                  type: 'object',
+                  widget: 'static_text',
+                  factory,
+                };
               case 'hidden':
                 return {
-                  type: 'hidden',
+                  type: 'string',
+                  widget: 'hidden',
                   factory,
                 };
               default:
