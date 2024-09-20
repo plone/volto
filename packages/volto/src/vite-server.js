@@ -3,7 +3,6 @@ import express from 'express';
 import getPort, { portNumbers } from 'get-port';
 import dns from 'dns';
 import cookiesMiddleware from 'universal-cookie-express';
-import { serverSettings } from './express-middleware/server.js';
 
 const isTest = process.env.NODE_ENV === 'test' || !!process.env.VITE_TEST_BUILD;
 

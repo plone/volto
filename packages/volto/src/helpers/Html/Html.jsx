@@ -206,7 +206,7 @@ class Html extends Component {
           {/* Hydration error debugger overlay, to use in conjunction with */}
           {/* https://github.com/BuilderIO/hydration-overlay/blob/main/README.md */}
           {/* Uncomment to enable */}
-          <script src="/src/hydration-overlay.js" />
+          {/* <script src="/src/hydration-overlay.js" /> */}
         </body>
       </html>
     );
