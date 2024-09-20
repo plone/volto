@@ -1,48 +1,46 @@
 // Internal proxy to bypass CORS while developing.
 
 import express from 'express';
-import networking from '../config/networking.js';
 import {
   createProxyMiddleware,
   responseInterceptor,
 } from 'http-proxy-middleware';
 import querystring from 'querystring';
-import { parse as parseUrl } from 'url';
 
-const filter = function (pathname, req) {
-  // This is the proxy to the API in case the accept header is 'application/json'
-  return networking.devProxyToApiPath && pathname.startsWith('/++api++');
-};
-
-let _env = null;
+// let _env = null;
 
 // the config is not available at the middleware creation time, so it needs to
 // read/cache the global configuration on first request.
 // TODO: remove since it's now obsolete
-function getEnv() {
-  if (_env) {
-    return _env;
-  }
+// function getEnv() {
+//   if (_env) {
+//     return _env;
+//   }
 
-  const apiPathURL = parseUrl(networking.apiPath);
-  const proxyURL = parseUrl(networking.devProxyToApiPath);
-  const serverURL = `${proxyURL.protocol}//${proxyURL.host}`;
-  const instancePath = proxyURL.pathname;
+//   const apiPathURL = parseUrl(networking.apiPath);
+//   const proxyURL = parseUrl(networking.devProxyToApiPath);
+//   const serverURL = `${proxyURL.protocol}//${proxyURL.host}`;
+//   const instancePath = proxyURL.pathname;
 
-  _env = {
-    apiPathURL,
-    serverURL,
-    instancePath,
-  };
+//   _env = {
+//     apiPathURL,
+//     serverURL,
+//     instancePath,
+//   };
 
-  return _env;
-}
+//   return _env;
+// }
 
 function devProxyMiddlewareFn(req, res, next) {
-  const apiPathURL = parseUrl(res.locals.detectedHost || networking.apiPath);
-  const proxyURL = parseUrl(networking.devProxyToApiPath);
+  const apiPathURL = new URL(res.locals.detectedHost || res.locals.apiPath);
+  const proxyURL = new URL(res.locals.devProxyToApiPath);
   const serverURL = `${proxyURL.protocol}//${proxyURL.host}`;
   const instancePath = proxyURL.pathname;
+
+  const filter = function (pathname, req) {
+    // This is the proxy to the API in case the accept header is 'application/json'
+    return res.locals.devProxyToApiPath && pathname.startsWith('/++api++');
+  };
 
   const devProxy = createProxyMiddleware(filter, {
     selfHandleResponse: true,
@@ -79,7 +77,7 @@ function devProxyMiddlewareFn(req, res, next) {
     pathRewrite: (path, req) => {
       // const { apiPathURL, instancePath } = getEnv();
       const target =
-        networking.proxyRewriteTarget ||
+        res.locals.proxyRewriteTarget ||
         `/VirtualHostBase/${apiPathURL.protocol.slice(0, -1)}/${
           apiPathURL.hostname
         }:${apiPathURL.port}${instancePath}/++api++/VirtualHostRoot`;

@@ -54,24 +54,30 @@ export async function createServer(
     app.use('/', sirv('./dist/client', { extensions: [] }));
   }
 
+  // Load the current config for the Express server to consume it
+  const currentConfig = (await vite.ssrLoadModule('/src/config')).currentConfig;
+  // console.log(currentConfig);
+
   // This is the loader of the former "Seamless" mode parameters from the headers
-  app.all('*', function NetworkParamsDetection(req, res, next) {
+  app.all('*', async function loadVoltoConfig(req, res, next) {
+    // const config = await vite.ssrLoadModule('/src/config');
+    res.locals.apiPath = currentConfig.settings.apiPath;
+    res.locals.devProxyToApiPath = currentConfig.settings.devProxyToApiPath;
+    res.locals.proxyRewriteTarget = currentConfig.settings.proxyRewriteTarget;
+
     if (!process.env.VITE_API_PATH && req.headers.host) {
       res.locals.detectedHost = `${
         req.headers['x-forwarded-proto'] || req.protocol
       }://${req.headers.host}`;
-      // config.settings.apiPath = res.locals.detectedHost;
-      // config.settings.publicURL = res.locals.detectedHost;
     }
 
     next();
   });
 
   // Loads the Express server middleware from the settings.
-  // We no longer load them in the server file, since it's an Express-only config
-  // we avoid to have to exclude it explicitly from the build (and all the deps do
-  // not get in the server build either)
-  const middleware = (serverSettings.expressMiddleware || []).filter((m) => m);
+  const middleware = (
+    currentConfig.settings.serverConfig.expressMiddleware || []
+  ).filter((m) => m);
   if (middleware.length) app.use('/', middleware);
 
   app.use('*', async (req, res) => {

@@ -62,12 +62,9 @@ const publicURL =
     ? `http://${host}:${port}`
     : getServerURL(process.env.RAZZLE_API_PATH) || `http://${host}:${port}`);
 
-const serverConfig = {};
-// Move this to the server build only
-// const serverConfig =
-//   import.meta.env.SSR
-//     ? require('./server').default
-//     : {};
+const serverConfig = import.meta.env.SSR
+  ? (await import('./server')).default
+  : {};
 
 let config = {
   settings: {
@@ -262,11 +259,8 @@ Object.entries(slots).forEach(([slotName, components]) => {
 
 registerValidators(ConfigRegistry);
 
-applyAddonConfiguration(ConfigRegistry);
+const currentConfig = applyAddonConfiguration(ConfigRegistry);
 
-// [Vite] This is needed to comply with the Volto add-on configuration.
-// TODO: In Volto 18, projectless builds this won't be needed anymore.
-// TODO: To deprecate in Volto 19.
-export default function applyConfig(config) {
-  return config;
-}
+// [Vite] This is required to pass the evaluated config to the Express Server
+// not as an import side-effect but as a return value.
+export { currentConfig };

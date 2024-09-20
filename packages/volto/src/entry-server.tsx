@@ -65,9 +65,12 @@ export async function render(opts: {
 }) {
   const { req, res } = opts;
 
-  // Reconcile seamless mode apiPath with the config
-  config.settings.apiPath = res.locals.detectedHost;
-  config.settings.publicURL = res.locals.detectedHost;
+  // Sync the config object with the values coming from the Express server
+  // detected host from headers
+  if (!process.env.VITE_API_PATH && req.headers.host) {
+    config.settings.apiPath = res.locals.detectedHost;
+    config.settings.publicURL = res.locals.detectedHost;
+  }
 
   function errorHandler(error) {
     const errorPage = (
