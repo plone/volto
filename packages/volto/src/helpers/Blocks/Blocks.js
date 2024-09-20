@@ -718,7 +718,7 @@ export function isBlockContainer(block) {
  * @param {Object} types A list with the list of types to be matched
  * @return {Array} An array of block ids
  */
-export function findBlocks(blocks={}, types, result = []) {
+export function findBlocks(blocks = {}, types, result = []) {
   Object.keys(blocks).forEach((blockId) => {
     const block = blocks[blockId];
     // check blocks from data as well since some add-ons use that
