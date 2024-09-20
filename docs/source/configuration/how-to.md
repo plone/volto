@@ -1,10 +1,10 @@
 ---
 myst:
   html_meta:
-    "description": "Volto has a centralized configuration registry used to parameterize Volto."
-    "property=og:description": "Volto has a centralized configuration registry used to parameterize Volto."
-    "property=og:title": "The configuration registry"
-    "keywords": "Volto, Plone, frontend, React, configuration, registry"
+    'description': 'Volto has a centralized configuration registry used to parameterize Volto.'
+    'property=og:description': 'Volto has a centralized configuration registry used to parameterize Volto.'
+    'property=og:title': 'The configuration registry'
+    'keywords': 'Volto, Plone, frontend, React, configuration, registry'
 ---
 
 # The configuration registry
@@ -20,7 +20,7 @@ then access any of its internal configuration to retrieve the configuration you 
 like:
 
 ```js
-const absoluteUrl = `${config.settings.apiPath}/${content.url}`
+const absoluteUrl = `${config.settings.apiPath}/${content.url}`;
 ```
 
 Both the main project and individual add-ons can extend Volto's configuration registry.
@@ -152,7 +152,7 @@ export default function applyConfig(config) {
 }
 ```
 
-## `nonContentRoutes` and `publicNonContentRoutes`
+## `nonContentRoutes` and `nonContentRoutesPublic`
 
 `nonContentRoutes` is a list of routes reserved in Volto for its functionality as a content management system.
 These functions include user authentication and registration, changing settings through control panels, generating a site map, and other functions.
@@ -161,20 +161,20 @@ Editors can't use them for content.
 The HTML attribute class value `cms-ui` is applied to members of `nonContentRoutes`.
 You can configure `nonContentRoutes` with either a regular expression or a string representing the end of the URI.
 
-`publicNonContentRoutes` is a subset of `nonContentRoutes`.
+`nonContentRoutesPublic` is a subset of `nonContentRoutes`.
 These routes are used for public sections of a Volto site that do not require authentication.
 This subset includes `/login`, `/search`, and `/sitemap`.
 
-The following example shows how to configure settings for `nonContentRoutes` and `publicNonContentRoutes`.
+The following example shows how to configure settings for `nonContentRoutes` and `nonContentRoutesPublic`.
+
 ```js
 export default function applyConfig(config) {
   config.settings = {
     ...config.settings,
     nonContentRoutes:[....],
-    publicNonContentRoutes: [....]
+    nonContentRoutesPublic: [....]
   };
 
   return config;
 }
 ```
-
