@@ -1,10 +1,10 @@
 ---
 myst:
   html_meta:
-    'description': 'Volto has a centralized configuration registry used to parameterize Volto.'
-    'property=og:description': 'Volto has a centralized configuration registry used to parameterize Volto.'
-    'property=og:title': 'The configuration registry'
-    'keywords': 'Volto, Plone, frontend, React, configuration, registry'
+    "description": "Volto has a centralized configuration registry used to parameterize Volto."
+    "property=og:description": "Volto has a centralized configuration registry used to parameterize Volto."
+    "property=og:title": "The configuration registry"
+    "keywords": "Volto, Plone, frontend, React, configuration, registry"
 ---
 
 # The configuration registry
