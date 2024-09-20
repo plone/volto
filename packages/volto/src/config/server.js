@@ -1,18 +1,20 @@
 // import imagesMiddleware from '@plone/volto/express-middleware/images';
 // import filesMiddleware from '@plone/volto/express-middleware/files';
 // import robotstxtMiddleware from '@plone/volto/express-middleware/robotstxt';
-// import okMiddleware from '@plone/volto/express-middleware/ok';
+import okMiddleware from '@plone/volto/express-middleware/ok';
 // import sitemapMiddleware from '@plone/volto/express-middleware/sitemap';
 // import staticsMiddleware from '@plone/volto/express-middleware/static';
 import devProxyMiddleware from '../express-middleware/devproxy';
+import hostDetectionFn from '../express-middleware/hostDetect';
 
 const settings = {
   expressMiddleware: [
+    hostDetectionFn(),
     devProxyMiddleware(),
     // filesMiddleware(),
     // imagesMiddleware(),
     // robotstxtMiddleware(),
-    // okMiddleware(),
+    okMiddleware(),
     // sitemapMiddleware(),
     // staticsMiddleware(),
   ],

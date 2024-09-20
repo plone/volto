@@ -57,22 +57,6 @@ export async function createServer(
   const currentConfig = (await vite.ssrLoadModule('/src/config')).currentConfig;
   // console.log(currentConfig);
 
-  // This is the loader of the former "Seamless" mode parameters from the headers
-  app.all('*', async function loadVoltoConfig(req, res, next) {
-    // const config = await vite.ssrLoadModule('/src/config');
-    res.locals.apiPath = currentConfig.settings.apiPath;
-    res.locals.devProxyToApiPath = currentConfig.settings.devProxyToApiPath;
-    res.locals.proxyRewriteTarget = currentConfig.settings.proxyRewriteTarget;
-
-    if (!process.env.VITE_API_PATH && req.headers.host) {
-      res.locals.detectedHost = `${
-        req.headers['x-forwarded-proto'] || req.protocol
-      }://${req.headers.host}`;
-    }
-
-    next();
-  });
-
   // Loads the Express server middleware from the settings.
   const middleware = (
     currentConfig.settings.serverConfig.expressMiddleware || []
