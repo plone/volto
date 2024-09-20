@@ -141,7 +141,7 @@ export const isCmsUi = memoize((currentPathname) => {
   return settings.nonContentRoutes.reduce(
     (acc, route) =>
       acc ||
-      (!settings.publicNonContentRoutes?.includes(route) &&
+      (!settings.nonContentRoutesPublic?.includes(route) &&
         new RegExp(route).test(fullPath)),
     false,
   );
