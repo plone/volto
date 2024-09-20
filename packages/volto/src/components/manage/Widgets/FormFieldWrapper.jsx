@@ -129,7 +129,7 @@ class FormFieldWrapper extends Component {
           <Grid.Row stretched>
             {columns === 2 && (
               <Grid.Column width="4">
-                <div className="wrapper title-icon-container">
+                <div className="wrapper">
                   <label
                     id={`fieldset-${fieldSet}-field-label-${id}`}
                     htmlFor={noForInFieldLabel ? null : `field-${id}`}

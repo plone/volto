@@ -15,7 +15,7 @@ exports[`No 'No value' option when default value is 0 1`] = `
           class="four wide column"
         >
           <div
-            class="wrapper title-icon-container"
+            class="wrapper"
           >
             <label
               for="field-my-field"
@@ -179,7 +179,7 @@ exports[`renders a select widget component 1`] = `
           class="four wide column"
         >
           <div
-            class="wrapper title-icon-container"
+            class="wrapper"
           >
             <label
               for="field-my-field"

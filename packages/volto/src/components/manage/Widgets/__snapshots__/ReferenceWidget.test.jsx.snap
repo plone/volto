@@ -14,7 +14,7 @@ exports[`renders an array widget component 1`] = `
         className="four wide column"
       >
         <div
-          className="wrapper title-icon-container"
+          className="wrapper"
         >
           <label
             htmlFor="field-my-field"

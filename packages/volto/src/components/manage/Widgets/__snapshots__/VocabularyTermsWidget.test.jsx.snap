@@ -15,7 +15,7 @@ exports[`renders a dictionary widget component 1`] = `
           class="four wide column"
         >
           <div
-            class="wrapper title-icon-container"
+            class="wrapper"
           >
             <label
               for="field-test-dict"
