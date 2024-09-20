@@ -152,7 +152,7 @@ describe('Url', () => {
     [...settings.nonContentRoutes, '/controlpanel/mypanel'].forEach((route) => {
       if (typeof route === 'string') {
         if (settings.nonContentRoutesPublic.includes(route)) {
-          it(`matches public-non-content-route ${route}`, () => {
+          it(`matches non-content-route-public ${route}`, () => {
             expect(isCmsUi(route)).toBe(false);
           });
         } else {
