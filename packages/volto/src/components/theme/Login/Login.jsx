@@ -25,6 +25,7 @@ import { toast } from 'react-toastify';
 import { Toast } from '@plone/volto/components';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
+import { useUser } from '@plone/volto/hooks';
 
 const messages = defineMessages({
   login: {
@@ -84,6 +85,9 @@ const Login = (props) => {
     '/';
 
   const previousToken = usePrevious(token);
+
+  // Get user and place their data in the Redux store
+  useUser();
 
   useEffect(() => {
     if (location?.state?.isLogout) {

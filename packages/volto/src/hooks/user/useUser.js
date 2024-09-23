@@ -11,7 +11,7 @@ const useFetchUser = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!user?.id) {
+    if (!user?.id && userId) {
       dispatch(getUser(userId));
     }
   }, [dispatch, userId, user]);
