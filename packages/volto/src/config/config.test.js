@@ -221,6 +221,7 @@ test('test navigation controlpanel fields', () => {
   const not_in_navigation = [
     'generate_tabs',
     'navigation_depth',
+    'nonfolderish_tabs',
     'sort_tabs_on',
     'sort_tabs_reversed',
     'sitemap_depth',

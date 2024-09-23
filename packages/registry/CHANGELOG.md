@@ -8,6 +8,16 @@
 
 <!-- towncrier release notes start -->
 
+## 1.8.0 (2024-07-30)
+
+### Feature
+
+- Added `Utilities` registry for `registerUtility`, `getUtility`, and `getUtilities`. @sneridagh [#6161](https://github.com/plone/volto/issues/6161)
+
+### Documentation
+
+- Changed a few typos within documentation, README's and comments. @FritzHoing [#6109](https://github.com/plone/volto/issues/6109)
+
 ## 1.7.0 (2024-06-26)
 
 ### Feature

@@ -9,7 +9,16 @@ myst:
 
 # Develop Volto core
 
-This chapter describes how to develop Volto core and its libraries, packages, and apps as open source software contributions.
+This chapter describes how to develop the latest version of Volto core and its libraries, packages, and apps as open source software contributions.
+
+```{seealso}
+For previous versions of Volto core, you should follow the guide in the relevant version branch to build and run the backend.
+
+-   [Volto 17](https://github.com/plone/volto/blob/17.x.x/api/README.rst)
+-   [Volto 16](https://github.com/plone/volto/blob/16.x.x/api/README.rst)
+
+Additionally you can build each version of Volto documentation by running `make docs-html` from the root of the repository, and reading the relevant developer and contributing documentation.
+```
 
 ```{seealso}
 To create a full Plone project with both frontend and backend, see {doc}`plone:install/create-project` instead.
@@ -160,29 +169,88 @@ pnpm install
 ```
 
 
-## Start the backend and Volto
+(develop-volto-start-plone-label)=
 
-Every time you want to run Volto for core development, you will need to create two terminal sessions, one for the backend and one for the frontend.
+## Start Plone
+
+Every time you want to run Volto for core development, you will need to create two terminal sessions, one for the {ref}`backend <develop-volto-start-the-backend-label>` and one for the {ref}`frontend <develop-volto-start-the-frontend-label>`.
 For both sessions, change your working directory to the root of your Volto clone.
 
+To stop either the backend or frontend, use {kbd}`ctrl-c`.
+
+
+(develop-volto-start-the-backend-label)=
+
+### Start the backend
+
+`````{versionadded} 18.0.0-alpha.42
+Persist backend data across Docker sessions.
+
+````{warning}
+Do not use this method of persistence in a production environment.
+It is intended only for development.
+
+```{seealso}
+{doc}`../deploying/index`
+```
+````
+`````
+
 In the first session, start the backend.
+You can browse to the backend running at http://localhost:8080.
 
 ```shell
 make backend-docker-start
 ```
 
-When you run this command for the first time, it will download Docker images, configure the backend, and start the backend.
-Browse to the backend running at http://localhost:8080.
+When you run this command for the first time, it will download Docker images, configure the backend, create a Docker volume to persist the data named `volto-backend-data`, and start the backend.
 
-In the second session, start the frontend.
+Subsequently, when you run `make backend-docker-start`, it will only start the backend using the existing configuration and Docker image and volume.
+
+````{note}
+If you would like to start the backend with a clean data volume, you can run the following command.
+
+```shell
+docker volume rm volto-backend-data
+```
+
+Then run `make backend-docker-start` again to start the backend with a clean data volume.
+````
+
+
+(develop-volto-configure-backend-language-label)=
+
+#### Configure backend language
+
+If you use the Docker image [`plone-backend`](https://github.com/plone/plone-backend), you can set its `LANGUAGE` environment variable, overriding the default of `en`, when you start it.
+
+This variable is applied only when the Plone site is created.
+If you persist data through restarts, you only need to do this once.
+Conversely, if you create a Plone site in the wrong language, you can delete the data volume, and recreate it with the correct language.
+
+You can either pass an environment variable into the make command to start the backend, or export an environment variable in your shell session and start the backend.
+
+```shell
+# pass method
+LANGUAGE=pt-br make backend-docker-start
+
+# export method
+export LANGUAGE=pt-br
+make backend-docker-start
+```
+
+
+(develop-volto-start-the-frontend-label)=
+
+## Start the frontend
+
+In the second session, start the frontend, Volto.
 
 ```shell
 pnpm start
 ```
 
 Browse to the frontend running at http://localhost:3000.
-
-To stop either the backend or frontend, use {kbd}`ctrl-c`.
 
 
 (developing-core-run-commands-for-pnpm-workspaces-label)=

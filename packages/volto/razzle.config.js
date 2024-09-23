@@ -277,7 +277,7 @@ const defaultModify = ({
   // Don't load SVGs from ./src/icons with file-loader
   const fileLoader = config.module.rules.find(fileLoaderFinder);
   fileLoader.exclude = [
-    /\.(config|variables|overrides)$/,
+    /\.(config|variables|overrides|cjs)$/,
     /icons\/.*\.svg$/,
     ...fileLoader.exclude,
   ];
