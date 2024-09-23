@@ -20,6 +20,7 @@ import {
   controlPanelsIcons,
   filterControlPanels,
   filterControlPanelsSchema,
+  unwantedControlPanelsFields,
 } from '@plone/volto/config/ControlPanels';
 
 import ListingBlockSchema from '@plone/volto/components/manage/Blocks/Listing/schema';
@@ -31,6 +32,7 @@ config.set('settings', {
   defaultLanguage: 'en',
   supportedLanguages: ['en'],
   defaultPageSize: 25,
+  showTags: true,
   isMultilingual: false,
   nonContentRoutes,
   contentIcons: contentIcons,
@@ -49,6 +51,7 @@ config.set('settings', {
   controlPanelsIcons,
   filterControlPanels,
   filterControlPanelsSchema,
+  unwantedControlPanelsFields,
   apiExpanders: [],
   downloadableObjects: ['File'],
   viewableInBrowserObjects: [],
