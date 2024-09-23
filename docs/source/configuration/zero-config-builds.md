@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Volto 13 has several new features that allows zero configuration on build time, using some sensible defaults and using the current request to know in which domain Volto is being hosted and configuring itself in runtime."
-  "property=og:description": "Volto 13 has several new features that allows zero configuration on build time, using some sensible defaults and using the current request to know in which domain Volto is being hosted and configuring itself in runtime."
-  "property=og:title": "Zero configuration builds"
-  "keywords": "Volto, Plone, frontend, React, Zero, configuration, builds"
+myst:
+  html_meta:
+    "description": "Volto 13 has several new features that allows zero configuration on build time, using some sensible defaults and using the current request to know in which domain Volto is being hosted and configuring itself in runtime."
+    "property=og:description": "Volto 13 has several new features that allows zero configuration on build time, using some sensible defaults and using the current request to know in which domain Volto is being hosted and configuring itself in runtime."
+    "property=og:title": "Zero configuration builds"
+    "keywords": "Volto, Plone, frontend, React, Zero, configuration, builds"
 ---
 
 # Zero configuration builds
@@ -13,12 +14,14 @@ This feature is available since Volto 13.
 ```
 
 In the past (before Volto 13), Volto was configured in build time using several
-environment vars, commonly supplied via the command line, like:
+environment variables, commonly supplied via the command line, such as the following:
 
-`PORT=11001 RAZZLE_API_PATH=https://plone.org/api yarn build`
+```shell
+PORT=11001 RAZZLE_API_PATH=https://plone.org/api yarn build`
+```
 
-and since RAZZLE is a isomorphic app, some of these values passed on build time, were
-hardcoded in the code because the code in client and server need to know them upfront to
+and since Razzle is an isomorphic application, some of these values passed on build time, were
+hardcoded in the code because the code in client and server need to know them up front to
 in order to work.
 
 Volto 13 has several new features that allows zero configuration on build time, using
@@ -65,7 +68,7 @@ server {
 
 ## Configuring PORT on runtime
 
-PORT environment variable is also configurable at runtime, whish is specially useful in production since you can inject it in the run command line or in your favorite process manager, per config, without having to rebuild Volto in the process. In PM2 it would be like:
+PORT environment variable is also configurable at runtime, which is specially useful in production since you can inject it in the run command line or in your favorite process manager, per config, without having to rebuild Volto in the process. In PM2 it would be like:
 
 ```js hl_lines="9"
 module.exports = {

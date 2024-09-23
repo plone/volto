@@ -1,10 +1,12 @@
 import { Editor, Text, Transforms } from 'slate';
 import { deserialize } from '@plone/volto-slate/editor/deserialize';
 import {
+  createBlock,
   createDefaultBlock,
   MIMETypeName,
   normalizeExternalData,
 } from '@plone/volto-slate/utils';
+import { isBlockActive } from '../../utils/blocks';
 
 export const insertData = (editor) => {
   editor.dataTransferHandlers = {
@@ -27,13 +29,26 @@ export const insertData = (editor) => {
 
       let fragment;
 
+      // eslint-disable-next-line no-console
+      console.debug('clipboard operation', {
+        clipboard: dt,
+        parsedBody: body,
+      });
+
       const val = deserialize(editor, body);
       fragment = Array.isArray(val) ? val : [val];
-
-      // external normalization
-      fragment = normalizeExternalData(editor, fragment);
+      fragment = editor.normalizeExternalData(fragment);
 
       editor.insertFragment(fragment);
+
+      // eslint-disable-next-line no-console
+      console.debug('result clipboard operation', {
+        clipboard: dt,
+        parsedBody: body,
+        deserializedValue: val,
+        normalizedFragment: fragment,
+        editorChildren: editor.children,
+      });
 
       return true;
     },
@@ -42,11 +57,20 @@ export const insertData = (editor) => {
       if (!text) return;
 
       const paras = text.split('\n');
-      const fragment = paras.map((p) => createDefaultBlock([{ text: p }]));
-      // return insertData(data);
+
+      // If just 1 line insert text
+      if (paras.length === 1) {
+        Transforms.insertText(editor, paras[0]);
+        return true;
+      }
+
+      // Check if inside a list
+      const fragment =
+        isBlockActive(editor, 'ul') || isBlockActive(editor, 'ol')
+          ? paras.map((p) => createBlock('li', [{ text: p }]))
+          : paras.map((p) => createDefaultBlock([{ text: p }]));
 
       // check if fragment is p with text and insert as fragment if so
-
       const fragmentContainsText = (f) => {
         var trigger = false;
         if (f && f[0]) {
@@ -74,7 +98,9 @@ export const insertData = (editor) => {
       if (Editor.string(editor, [])) {
         if (
           Array.isArray(fragment) &&
-          fragment.findIndex((b) => Editor.isInline(b) || Text.isText(b)) > -1
+          fragment.findIndex(
+            (b) => Editor.isInline(editor, b) || Text.isText(b),
+          ) > -1
         ) {
           // console.log('insert fragment', fragment);
           // TODO: we want normalization also when dealing with fragments
@@ -83,6 +109,7 @@ export const insertData = (editor) => {
         }
       }
 
+      // always normalize when dealing with plain text
       const nodes = normalizeExternalData(editor, fragment);
       if (!containsText) {
         Transforms.insertNodes(editor, nodes);
@@ -105,7 +132,6 @@ export const insertData = (editor) => {
       editor.beforeInsertData(data);
     }
 
-    // debugger;
     for (let i = 0; i < editor.dataTransferFormatsOrder.length; ++i) {
       const dt = editor.dataTransferFormatsOrder[i];
       if (dt === 'files') {

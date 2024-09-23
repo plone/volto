@@ -8,7 +8,7 @@ import RichTextWidgetView from './widgets/RichTextWidgetView';
 import HtmlSlateWidget from './widgets/HtmlSlateWidget';
 import ObjectByTypeWidget from './widgets/ObjectByTypeWidget';
 
-export default (config) => {
+export default function applyConfig(config) {
   config = [installSlate, installTextBlock, installTableBlock].reduce(
     (acc, apply) => apply(acc),
     config,
@@ -31,7 +31,10 @@ export default (config) => {
     'numbered-list',
     'bulleted-list',
     'blockquote',
+    'styleMenu',
   ];
+
+  config.settings.slate.scrollIntoView = false;
 
   config.addonReducers = {
     ...config.addonReducers,
@@ -55,4 +58,4 @@ export default (config) => {
   }
 
   return config;
-};
+}

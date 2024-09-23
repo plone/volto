@@ -3,6 +3,5 @@ export const withIsSelected = (editor) => {
     const blockProps = editor.getBlockProps();
     return blockProps.selected;
   };
-
   return editor;
 };

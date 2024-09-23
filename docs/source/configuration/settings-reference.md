@@ -1,21 +1,23 @@
 ---
-html_meta:
-  "description": "This is a summary of all the Volto configuration options and what they control."
-  "property=og:description": "This is a summary of all the Volto configuration options and what they control."
-  "property=og:title": "Settings reference guide"
-  "keywords": "Volto, Plone, frontend, React, configuration, settings, reference"
+myst:
+  html_meta:
+    "description": "This is a summary of all the Volto configuration options and what they control."
+    "property=og:description": "This is a summary of all the Volto configuration options and what they control."
+    "property=og:title": "Settings reference guide"
+    "keywords": "Volto, Plone, frontend, React, configuration, settings, reference"
 ---
 
 # Settings reference guide
 
 This is a summary of all the configuration options and what they control.
 
-
 ```{note}
 This list is still incomplete, contributions are welcomed!
 ```
 
 ## Main settings
+
+They are exposed in `config.settings`:
 
 ```{glossary}
 :sorted:
@@ -24,48 +26,22 @@ navDepth
     Navigation levels depth used in the navigation endpoint calls. Increasing this is useful for implementing fat navigation menus. Defaults to `1`.
 
 defaultBlockType
-    The default block type in Volto is "text", which uses the current DraftJS-based implementation for the rich text editor. Future alternative rich text editors will need to use this setting and replace it with their block type. The block definition should also include the `blockHasValue` function, which is needed to activate the Block Chooser functionality. See this function signature in [Blocks > Settings](../blocks/settings.md).
+    The name of the default block type used when a new block is added.
+    The default value of this setting is `slate`, which uses the current Slate-based implementation for the rich text editor.
+    If you change this to a different type of block, make sure the block configuration includes the {ref}`blockHasValue` function.
 
 sentryOptions
-    Sentry configuration:
+    In Volto 16.0.0.alpha.45, Sentry integration was moved from core to the add-on [`@plone-collective/volto-sentry`](https://www.npmjs.com/package/@plone-collective/volto-sentry).
 
-    ```js
-    import {
-      settings as defaultSettings,
-    } from '@plone/volto/config';
-
-    const settings = {
-      ...defaultSettings,
-      sentryOptions: {
-        ...defaultSettings.sentryOptions,
-        dsn: 'https://key@sentry.io/1',
-        environment: 'production',
-        release: '1.2.3',
-        serverName: 'volto',
-        tags: {
-          site: 'foo.bar',
-          app: 'test_app',
-          logger: 'volto',
-        },
-        extras: {
-          key: 'value',
-        },
-        integrations: [
-            ...defaultSettings.sentryOptions.integrations,
-            // new MyAwesomeIntegration()
-        ]
-      }
-    };
-    ```
     ```{seealso}
-    See more about [Sentry integration](../deploying/sentry.md).
+    See {doc}`../deploying/sentry`.
     ```
 
 contentIcons
     With this property you can configure Content Types icons.
     Those are visible in Contents view (ex "Folder contents").  The default
     ones are in
-    [config/ContentIcons.jsx](https://github.com/plone/volto/blob/master/src/config/ContentIcons.jsx)
+    [config/ContentIcons.jsx](https://github.com/plone/volto/blob/main/packages/volto/src/config/ContentIcons.jsx)
     and you can extend them in your project's config for custom content types
     using `settings.contentIcons`.
 
@@ -103,10 +79,14 @@ persistentReducers
 maxResponseSize
     The library that we use to get files and images from the backend (superagent)
     has a response size limit of 200 mb, so if you want to get a file bigger than 200 mb
-    from Plone, the SSR will throw an error.
+    from Plone, the {term}`SSR` will throw an error.
 
     You can edit this limit in the `settings` object setting a new value in bytes
     (for example, to set 500 mb you need to write 5000000000).
+
+maxFileUploadSize
+    The maximum allowed size of file uploads (in bytes).
+    Default: `null` (no limit enforced by Volto).
 
 initialReducersBlacklist
     The initial state passed from server to browser needs to be minimal in order to optimize the resultant html generated. This state gets stored in `window.__data` and received in client.
@@ -128,7 +108,7 @@ initialReducersBlacklist
 loadables
     A mapping of loadable libraries that can be injected into components using
     the `injectLazyLibs` HOC wrapper. See the [Lazy
-    loading](../recipes/lazyload) page for more details.
+    loading](../development/lazyload) page for more details.
 
 lazyBundles
     A mapping of bundles to list of lazy library names. Create new bundles (or
@@ -143,7 +123,7 @@ storeExtenders
 
 asyncPropsExtenders
     Per-route customizable `asyncConnect` action dispatcher. These enable
-    proper server-side rendering of content that depends on additional async
+    proper {term}`server-side rendering` of content that depends on additional async
     props coming from backend calls. It is a list of route-like configuration
     objects (they are matched using
     [matchRoutes](https://github.com/remix-run/react-router/blob/ea44618e68f6a112e48404b2ea0da3e207daf4f0/packages/react-router-config/modules/matchRoutes.js).
@@ -224,11 +204,316 @@ controlpanels
     ```
 
     The group can be one of the default groups 'General', 'Content', 'Security', 'Add-on Configuration', 'Users and Groups' or a custom group.
+
+filterControlPanelsSchema
+    A schema factory for a control panel.
+    It is used internally, to tweak the schemas provided by the `@controlpanels` endpoint, making them fit for Volto.
+    It uses the `unwantedControlPanelsFields` setting.
+
+unwantedControlPanelsFields
+    Control panels' fields that are not used in Volto.
+    It is used internally by the `filterControlPanelsSchema` function.
+
+errorHandlers
+    A list of error handlers that will be called when there is an unhandled exception. Each error handler is a function that
+    receives a single argument, the `error` object.
+
+workflowMapping
+    It's an object that defines the mapping between workflow states/transitions and the color that should show in the change Workflow dropdown. This is the default:
+
+    ```js
+    export const workflowMapping = {
+      published: { value: 'published', color: '#007bc1' },
+      publish: { value: 'publish', color: '#007bc1' },
+      private: { value: 'private', color: '#ed4033' },
+      pending: { value: 'pending', color: '#f6a808' },
+      send_back: { value: 'private', color: '#ed4033' },
+      retract: { value: 'private', color: '#ed4033' },
+      reject: { value: 'private', color: '#ed4033' },
+      submit: { value: 'review', color: '#f4e037' },
+    };
+    ```
+
+    It's meant to be extended with your own workflows/transitions.
+    It is recommended to assign the same color to the transition as the destination state, so the user can have the visual hint to which state are they transitioning to.
+
+styleClassNameConverters
+    An object with functions used by the style wrapper helpers to convert style
+    data to actual class names. You can customize the generated classname by
+    registering fieldnames with names such as `<fieldname>:<converterName>`,
+    where the converter is registered here.
+
+styleClassNameExtenders
+    An array containing functions that extends how the StyleWrapper builds a list of styles. These functions have the signature `({ block, content, data, classNames }) => classNames`. Here are some examples of useful ones, for simplicity, they are compacted in one extender:
+
+    ```js
+      import { getPreviousNextBlock } from '@plone/volto/helpers';
+
+      config.settings.styleClassNameExtenders = [
+        ({ block, content, data, classNames }) => {
+          let styles = [];
+          const [previousBlock, nextBlock] = getPreviousNextBlock({
+            content,
+            block,
+          });
+
+          // Inject a class depending of which type is the next block
+          if (nextBlock?.['@type']) {
+            styles.push(`next--is--${nextBlock['@type']}`);
+          }
+
+          // Inject a class depending if previous is the same type of block
+          if (data?.['@type'] === previousBlock?.['@type']) {
+            styles.push('previous--is--same--block-type');
+          }
+
+          // Inject a class depending if next is the same type of block
+          if (data?.['@type'] === nextBlock?.['@type']) {
+            styles.push('next--is--same--block-type');
+          }
+
+          // Inject a class depending if it's the first of block type
+          if (data?.['@type'] !== previousBlock?.['@type']) {
+            styles.push('is--first--of--block-type');
+          }
+
+          // Inject a class depending if it's the last of block type
+          if (data?.['@type'] !== nextBlock?.['@type']) {
+            styles.push('is--last--of--block-type');
+          }
+
+          // Given a StyleWrapper defined `backgroundColor` style
+          const previousColor =
+            previousBlock?.styles?.backgroundColor ?? 'transparent';
+          const currentColor = data?.styles?.backgroundColor ?? 'transparent';
+          const nextColor = nextBlock?.styles?.backgroundColor ?? 'transparent';
+
+          // Inject a class depending if the previous block has the same `backgroundColor`
+          if (currentColor === previousColor) {
+            styles.push('previous--has--same--backgroundColor');
+          } else if (currentColor !== previousColor) {
+            styles.push('previous--has--different--backgroundColor');
+          }
+
+          // Inject a class depending if the next block has the same `backgroundColor`
+          if (currentColor === nextColor) {
+            styles.push('next--has--same--backgroundColor');
+          } else if (currentColor !== nextColor) {
+            styles.push('next--has--different--backgroundColor');
+          }
+
+          return [...classNames, ...styles];
+        },
+      ];
+    ```
+
+apiExpanders
+    You can configure the API expanders in Volto using `settings.apiExpanders`, as in the following example.
+
+    ```jsx
+    import { GET_CONTENT } from '@plone/volto/constants/ActionTypes';
+
+    export default function applyConfig (config) {
+      config.settings.apiExpanders = [
+          ...config.settings.apiExpanders,
+          {
+            match: '',
+            GET_CONTENT: ['mycustomexpander'],
+          },
+          {
+            match: '/de',
+            GET_CONTENT: ['myothercustomexpander'],
+          },
+          {
+            match: '/de',
+            GET_CONTENT: ['navigation'],
+            querystring: {
+              'expand.navigation.depth': 3,
+            },
+          }
+      ];
+
+      return config;
+    }
+    ```
+
+    If you want Volto to make only a single request, combining all the expanders in it, then configure `apiExpanders` as shown.
+
+    ```jsx
+    config.settings.apiExpanders = [
+      {
+        match: '',
+        GET_CONTENT: ['breadcrumbs', 'navigation', 'actions', 'types'],
+      },
+    ],
+    ```
+    The configuration accepts a list of matchers, with the ability to filter by the request path and action type for maximum flexibility.
+    It also accepts a `querystring` object that allows configuring the expanders via query string parameters, such as the navigation expander.
+    The `querystring` object accepts a querystring object or a function that returns a querystring object.
+
+    ```js
+    export default function applyConfig (config) {
+      config.settings.apiExpanders = [
+          ...config.settings.apiExpanders,
+          {
+            match: '',
+            GET_CONTENT: ['mycustomexpander'],
+          },
+          {
+            match: '/de',
+            GET_CONTENT: ['myothercustomexpander'],
+          },
+          {
+            match: '/de',
+            GET_CONTENT: ['navigation'],
+            querystring: (config) => ({
+              'expand.navigation.depth': config.settings.navDepth,
+            }),
+          }
+      ];
+
+      return config;
+    }
+    ```
+
+    This is used in case that you want to pass current (as in resultant, in place) config options to the querystring object.
+
+additionalToolbarComponents
+    For additional toolbar menus, the menu body component needs to be added to the on-demand loaded components.
+
+    ```jsx
+    config.settings.additionalToolbarComponents = {
+      bookmarksMenu: {
+        component: BookmarksEditorComponent,
+        wrapper: null,
+      },
+    };
+    ```
+
+    The plug:
+    ```jsx
+    <Plug pluggable="main.toolbar.bottom" id="bookmarks-menu">
+      {({ onClickHandler }) => {
+        return (
+          <button
+            className="show-bookmarks"
+            aria-label={intl.formatMessage(messages.label_showbookmarksmenu)}
+            onClick={(e) => onClickHandler(e, 'bookmarksMenu')}
+            tabIndex={0}
+            id="toolbar-show-bookmarks"
+          >
+            <Icon
+              name={bookSVG}
+              size="30px"
+              title={intl.formatMessage(messages.label_showbookmarksmenu)}
+            />
+          </button>
+        );
+      }}
+    </Plug>
+    ```
+
+blockSettingsTabFieldsetsInitialStateOpen
+    A Boolean, `true` by default.
+    The fieldsets in the blocks settings tab start by default as non-collapsed (opened), you can decide to have them collapsed (closed) by default setting this to `false`.
+
+excludeLinksAndReferencesMenuItem
+    A Boolean, `false` by default.
+    The content menu links to the {guilabel}`Links and references` view per default.
+    Exclude this menu item by setting `excludeLinksAndReferencesMenuItem` to `true`.
+
+    ```{seealso}
+    {doc}`../user-manual/links-to-item`
+    ```
+
+okRoute
+    Volto provides an `/ok` URL where it responds with a `text/plain ok` response, with an `HTTP 200` status code, to signal third party health check services that the Volto process is running correctly.
+
+    Using this setting, one can modify such an URL and configure it to respond with another URL.
+
+    The provided default URL matches the existing Plone Classic UI URL.
+
+    ```jsx
+      config.settings.okRoute = '/site-is-ok'
+    ```
+
+siteTitleFormat
+    Volto lets you modify how the site title is built.
+    By default the site title only includes the title of the current page.
+
+    By modifying this configuration setting, you can decide whether to use the title of the navigation root (either the site root or the language root folder) as the second part of the title.
+
+    You can also decide the separator character between the current page title and the site title.
+
+    ```jsx
+        siteTitleFormat: {
+          includeSiteTitle: true,
+          titleAndSiteTitleSeparator: '-',
+        }
+    ```
+
+querystringSearchGet
+    Volto uses `HTTP POST` requests to query the `@querystring-search` endpoint.
+    This can create a lot of traffic between Volto and the backend, and can also create a lot of cache misses.
+
+    By modifying this configuration setting and setting it to `true`, the endpoint queries will be executed as `HTTP GET` requests.
+    Thus any proxy cache in between Volto and the backend may cache those queries, improving your site performance.
+
+    Please be aware that this could break some other functionality in your site, or some of your queries may break, when they contain more than 2000 characters.
+    [See an explanation of character limits in URLs](https://stackoverflow.com/questions/417142/what-is-the-maximum-length-of-a-url-in-different-browsers/417184#417184).
+    Please test this setting properly before enabling in a production site.
+
+```
+
+## Views settings
+
+They are exposed in `config.views`:
+
+```{glossary}
+:sorted:
+
+layoutViewsNamesMapping
+    Plone's layout views are identified by a simple string. This object maps this string with a nice literal (in English as default).
+    These view names are exposed in the `Display` component in the toolbar's {guilabel}`more` menu.
+    The keys are the name of the Plone layout, and the values are the i18n string `id`:
+
+    ```js
+    export const layoutViewsNamesMapping = {
+      album_view: 'Album view',
+      event_listing: 'Event listing',
+      full_view: 'All content',
+      listing_view: 'Listing view',
+      summary_view: 'Summary view',
+      tabular_view: 'Tabular view',
+      layout_view: 'Mosaic layout',
+      document_view: 'Document view',
+      folder_listing: 'Folder listing',
+      newsitem_view: 'News item view',
+      link_redirect_view: 'Link redirect view',
+      file_view: 'File view',
+      image_view: 'Image view',
+      event_view: 'Event view',
+      view: 'Default view',
+    };
+    ```
+
+    You can customize this object to add or modify the existing entries.
+    They are i18n aware, so you can add the corresponding i18n message in your project's `src/config.js` or your add-on's `src/index.js`:
+
+    ```js
+    import { defineMessages } from 'react-intl';
+    defineMessages({
+      album_view: {
+        id: 'Album view',
+        defaultMessage: 'Album view',
+      },
+    })
+    ```
 ```
 
 ## Server-specific serverConfig
 
-Settings that are relevant to the Express-powered Volto SSR server are stored
+Settings that are relevant to the Express-powered Volto {term}`SSR` server are stored
 in the `config.settings.serverConfig` object.
 
 ```{glossary}
@@ -236,19 +521,11 @@ in the `config.settings.serverConfig` object.
 
 expressMiddleware
     A list of ExpressJs middleware that can extend the built-in functionality of
-    Volto's server. See the [Express](../recipes/express) section for more details.
+    Volto's server. See the [Express](../development/express) section for more details.
 
 criticalCssPath
     A path relative to the project root that points to an optional CSS file. If
     this file exists it is loaded and its content is embedded inline into the
     generated HTML. By default this path is `public/critical.css`. See the
     {doc}`../deploying/performance` section for more details.
-
-extractScripts
-    An object that allows you to configure the insertion of scripts on the page
-    in some particular cases.
-    For the moment it admits only one property: `errorPages` whose value is a Boolean.
-
-    If `extractScripts.errorPages` is `true`, the JS will be inserted into the error page.
-
 ```

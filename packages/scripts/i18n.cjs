@@ -1,0 +1,341 @@
+#!/usr/bin/env node
+/* eslint no-console: 0 */
+/**
+ * i18n script.
+ * @module scripts/i18n
+ */
+
+const { find, keys, map, concat, reduce } = require('lodash');
+const glob = require('glob').sync;
+const fs = require('fs');
+const Pofile = require('pofile');
+const babel = require('@babel/core');
+
+const path = require('path');
+const projectRootPath = path.resolve('.');
+
+const { program } = require('commander');
+const chalk = require('chalk');
+
+/**
+ * Extract messages into separate JSON files
+ * @function extractMessages
+ * @return {undefined}
+ */
+function extractMessages() {
+  map(
+    // We ignore the existing customized shadowed components ones, since most
+    // probably we won't be overriding them
+    // If so, we should do it in the config object or somewhere else
+    // We also ignore the addons folder since they are populated using
+    // their own locales files and taken care separatedly in this script
+    glob('src/**/*.{js,jsx,ts,tsx}', {
+      ignore: ['src/customizations/**', 'src/addons/**'],
+    }),
+    (filename) => {
+      babel.transformFileSync(filename, {}, (err) => {
+        if (err) {
+          console.log(err);
+        }
+      });
+    },
+  );
+}
+
+/**
+ * Get messages from separate JSON files
+ * @function getMessages
+ * @return {Object} Object with messages
+ */
+function getMessages() {
+  return reduce(
+    concat(
+      {},
+      ...map(
+        // We ignore the existing customized shadowed components ones, since most
+        // probably we won't be overriding them
+        // If so, we should do it in the config object or somewhere else
+        // We also ignore the addons folder since they are populated using
+        // their own locales files and taken care separatedly in this script
+        glob('build/messages/src/**/*.json', {
+          ignore: [
+            'build/messages/src/customizations/**',
+            'build/messages/src/addons/**',
+          ],
+        }),
+        (filename) =>
+          map(JSON.parse(fs.readFileSync(filename, 'utf8')), (message) => ({
+            ...message,
+            filename: filename.match(/build\/messages\/src\/(.*).json$/)[1],
+          })),
+      ),
+    ),
+    (current, value) => {
+      let result = current;
+      if (current.id) {
+        result = {
+          [current.id]: {
+            defaultMessage: current.defaultMessage,
+            filenames: [current.filename],
+          },
+        };
+      }
+
+      if (result[value.id]) {
+        result[value.id].filenames.push(value.filename);
+      } else {
+        result[value.id] = {
+          defaultMessage: value.defaultMessage,
+          filenames: [value.filename],
+        };
+      }
+      return result;
+    },
+  );
+}
+
+/**
+ * Convert messages to pot format
+ * @function messagesToPot
+ * @param {Object} messages Messages
+ * @return {string} Formatted pot string
+ */
+function messagesToPot(messages) {
+  return map(keys(messages).sort(), (key) =>
+    [
+      `#. Default: "${messages[key].defaultMessage.trim()}"`,
+      ...map(messages[key].filenames, (filename) => `#: ${filename}`),
+      `msgid "${key}"`,
+      'msgstr ""',
+    ].join('\n'),
+  ).join('\n\n');
+}
+
+/**
+ * Pot header
+ * @function potHeader
+ * @return {string} Formatted pot header
+ */
+function potHeader() {
+  return `msgid ""
+msgstr ""
+"Project-Id-Version: Plone\\n"
+"POT-Creation-Date: ${new Date().toISOString()}\\n"
+"Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\\n"
+"Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\\n"
+"Content-Type: text/plain; charset=utf-8\\n"
+"Content-Transfer-Encoding: 8bit\\n"
+"Plural-Forms: nplurals=1; plural=0;\\n"
+"MIME-Version: 1.0\\n"
+"Language-Code: en\\n"
+"Language-Name: English\\n"
+"Preferred-Encodings: utf-8\\n"
+"Domain: volto\\n"
+
+`;
+}
+
+/**
+ * Convert po files into json
+ * @function poToJson
+ * @return {undefined}
+ */
+function poToJson({ registry, addonMode }) {
+  const mergeMessages = (result, items, language) => {
+    items.forEach((item) => {
+      if (item.msgid in result) {
+        if (item.msgstr[0] !== '') {
+          result[item.msgid] = item.msgstr[0];
+        }
+      } else {
+        result[item.msgid] =
+          language === 'en'
+            ? item.msgstr[0] ||
+              (item.comments[0] && item.comments[0].startsWith('. Default: ')
+                ? item.comments[0].replace('. Default: ', '')
+                : item.comments[0] &&
+                    item.comments[0].startsWith('defaultMessage:')
+                  ? item.comments[0].replace('defaultMessage: ', '')
+                  : '')
+            : item.msgstr[0];
+      }
+    });
+
+    return result;
+  };
+
+  map(glob('locales/**/*.po'), (filename) => {
+    let { items } = Pofile.parse(fs.readFileSync(filename, 'utf8'));
+    const projectLocalesItems = Pofile.parse(
+      fs.readFileSync(filename, 'utf8'),
+    ).items;
+    const lang = filename.match(/locales\/(.*)\/LC_MESSAGES\//)[1];
+    const result = {};
+
+    // Merge volto core locales
+    const lib = `node_modules/@plone/volto/${filename}`;
+    if (fs.existsSync(lib)) {
+      const libItems = Pofile.parse(fs.readFileSync(lib, 'utf8')).items;
+      items = [...libItems, ...items];
+      mergeMessages(result, items, lang);
+    }
+
+    if (!addonMode) {
+      // Merge addons locales - using getAddonDependencies because it preserves
+      // the order of the addons in the registry, even if they are add-on dependencies
+      // of an add-on
+      registry.getAddonDependencies().forEach((addonDep) => {
+        // What comes from getAddonDependencies is in the form of `@package/addon:profile`
+        const addon = addonDep.split(':')[0];
+        // Check if the addon is available in the registry, just in case
+        if (registry.packages[addon]) {
+          const addonlocale = `${registry.packages[addon].modulePath}/../${filename}`;
+          if (fs.existsSync(addonlocale)) {
+            const addonItems = Pofile.parse(
+              fs.readFileSync(addonlocale, 'utf8'),
+            ).items;
+
+            mergeMessages(result, addonItems, lang);
+            if (require.main === module) {
+              // We only log it if called as script
+              console.log(`Merging ${addon} locales for ${lang}`);
+            }
+          }
+        }
+      });
+    }
+
+    // Merge project locales, the project customization wins
+    mergeMessages(result, projectLocalesItems, lang);
+    fs.writeFileSync(`locales/${lang}.json`, JSON.stringify(result));
+  });
+}
+
+/**
+ * Format header
+ * @function formatHeader
+ * @param {Array} comments Array of comments
+ * @param {Object} headers Object of header items
+ * @return {string} Formatted header
+ */
+function formatHeader(comments, headers) {
+  return [
+    ...map(comments, (comment) => `#. ${comment}`),
+    'msgid ""',
+    'msgstr ""',
+    ...map(keys(headers), (key) => `"${key}: ${headers[key]}\\n"`),
+    '',
+  ].join('\n');
+}
+
+/**
+ * Sync po by the pot file
+ * @function syncPoByPot
+ * @return {undefined}
+ */
+function syncPoByPot() {
+  const pot = Pofile.parse(fs.readFileSync('locales/volto.pot', 'utf8'));
+  map(glob('locales/**/*.po'), (filename) => {
+    const po = Pofile.parse(fs.readFileSync(filename, 'utf8'));
+
+    fs.writeFileSync(
+      filename,
+      `${formatHeader(po.comments, po.headers)}
+${map(pot.items, (item) => {
+  const poItem = find(po.items, { msgid: item.msgid });
+  return [
+    `#. ${item.extractedComments[0]}`,
+    `${map(item.references, (ref) => `#: ${ref}`).join('\n')}`,
+    `msgid "${item.msgid}"`,
+    `msgstr "${poItem ? poItem.msgstr : ''}"`,
+  ].join('\n');
+}).join('\n\n')}\n`,
+    );
+  });
+}
+
+function main({ addonMode }) {
+  console.log('Extracting messages from source files...');
+  extractMessages();
+  console.log('Synchronizing messages to pot file...');
+  // We only write the pot file if it's really different
+  const newPot = `${potHeader()}${messagesToPot(getMessages())}\n`.replace(
+    /"POT-Creation-Date:(.*)\\n"/,
+    '',
+  );
+  const oldPot = fs
+    .readFileSync('locales/volto.pot', 'utf8')
+    .replace(/"POT-Creation-Date:(.*)\\n"/, '');
+
+  if (newPot !== oldPot) {
+    fs.writeFileSync(
+      'locales/volto.pot',
+      `${potHeader()}${messagesToPot(getMessages())}\n`,
+    );
+  }
+  console.log('Synchronizing messages to po files...');
+  syncPoByPot();
+  if (!addonMode) {
+    let AddonConfigurationRegistry;
+    try {
+      // Detect where is the registry (if we are in Volto 18 or above for either core and projects)
+      if (
+        fs.existsSync(
+          path.join(
+            projectRootPath,
+            '/node_modules/@plone/registry/src/addon-registry.js',
+          ),
+        )
+      ) {
+        AddonConfigurationRegistry = require(
+          path.join(
+            projectRootPath,
+            '/node_modules/@plone/registry/src/addon-registry',
+          ),
+        );
+      } else {
+        // We are in Volto 17 or below
+        // Check if core Volto or project
+        if (
+          fs.existsSync(
+            path.join(projectRootPath, '/node_modules/@plone/volto'),
+          )
+        ) {
+          // We are in a project
+          AddonConfigurationRegistry = require(
+            path.join(
+              projectRootPath,
+              '/node_modules/@plone/volto/addon-registry',
+            ),
+          );
+        } else {
+          // We are in core (17 or below)
+          AddonConfigurationRegistry = require(
+            path.join(projectRootPath, 'addon-registry'),
+          );
+        }
+      }
+    } catch {
+      console.log(
+        chalk.red(
+          'Getting the addon registry failed. Are you executing i18n from inside an addon? Try the -a flag.',
+        ),
+      );
+      process.exit();
+    }
+    console.log('Generating the language JSON files...');
+    const registry = new AddonConfigurationRegistry(projectRootPath);
+    poToJson({ registry, addonMode });
+  }
+  console.log('done!');
+}
+
+// This is the equivalent of `if __name__ == '__main__'` in Python :)
+if (require.main === module) {
+  program.option('-a, --addon', 'run i18n script for addons');
+  program.parse(process.argv);
+  const options = program.opts();
+  main({ addonMode: options.addon });
+}
+
+module.exports = { poToJson };

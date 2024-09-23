@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Volto blocks are composed of an edit and a view component."
-  "property=og:description": "Volto blocks are composed of an edit and a view component."
-  "property=og:title": "Blocks anatomy"
-  "keywords": "Volto, React, blocks, edit, view, Plone"
+myst:
+  html_meta:
+    "description": "Volto blocks are composed of an edit and a view component."
+    "property=og:description": "Volto blocks are composed of an edit and a view component."
+    "property=og:title": "Blocks anatomy"
+    "keywords": "Volto, React, blocks, edit, view, Plone"
 ---
 
 # Blocks anatomy
@@ -76,3 +77,25 @@ The edit component of a block receives these props from the Blocks Engine:
 
 You can use all these props to render your edit block and model its behavior.
 
+## Default block edit and view components
+
+Volto later then 16.0.0 ships with a set of default Edit and View components.
+The view component is mostly a placeholder, with an auto-generated listing of
+the block fields, while the default Edit component is the most interesting, as
+it can use the `schema` that you can specify in the block configuration to
+automatically render a form for the Block settings, in the Volto Sidebar. In
+the main editing area, it will render the view component, so for many blocks
+you can just develop a schema and the View component.
+
+To use the default Edit and/or View component, just don't set any value in the
+block configuration:
+
+```js
+config.blocks.blocksConfig.myBlock = {
+  id: 'myBlock',
+  title: "My block",
+  edit: null,   // or simply omit it
+  view: null,   // or simply omit it
+  // ... the rest of the settings
+}
+```

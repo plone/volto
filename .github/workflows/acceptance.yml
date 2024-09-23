@@ -1,620 +1,510 @@
 name: Acceptance Tests
-on: [push]
+on: [push, pull_request]
 jobs:
   core:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     runs-on: ubuntu-latest
     name: Core Basic
     timeout-minutes: 45
     strategy:
+      fail-fast: false
       matrix:
-        node-version: [14.x, 16.x]
+        node-version: [18.x, 20.x]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
-      # node setup
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - name: Set up Node.js environment
+        uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
 
-      # node cache
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v1
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
-      ## node install
-      - run: yarn --frozen-lockfile
-
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v6
         env:
           BABEL_ENV: production
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           CYPRESS_RETRIES: 2
           # Recommended: pass the GitHub token lets this action correctly
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          record: true
-          parallel: false # Since they run on different node versions, we can't parallel
+          install: false
+          working-directory: packages/volto
           browser: chrome
-          # headless: true
-          group: Core ${{ matrix.node-version }}
           spec: cypress/tests/core/basic/**/*.js
           start: |
-            make start-test-acceptance-server
-            make start-test-acceptance-frontend
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
+            make ci-acceptance-backend-start
+            make acceptance-frontend-prod-start
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-screenshots
-          path: cypress/screenshots
+          path: packages/volto/cypress/screenshots
       # Upload Cypress videos
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-videos
-          path: cypress/videos
+          path: packages/volto/cypress/videos
+
+  corecontent:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
+    runs-on: ubuntu-latest
+    name: Core Content
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [18.x, 20.x]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js environment
+        uses: ./.github/actions/node_env_setup
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Cypress acceptance tests
+        uses: cypress-io/github-action@v6
+        env:
+          BABEL_ENV: production
+          CYPRESS_RETRIES: 2
+          # Recommended: pass the GitHub token lets this action correctly
+          # determine the unique run id necessary to re-run the checks
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          install: false
+          working-directory: packages/volto
+          browser: chrome
+          spec: cypress/tests/core/content/**/*.js
+          start: |
+            make ci-acceptance-backend-start
+            make acceptance-frontend-prod-start
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
+
+      # Upload Cypress screenshots
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: packages/volto/cypress/screenshots
+      # Upload Cypress videos
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-videos
+          path: packages/volto/cypress/videos
+
+  corecontrolpanels:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
+    runs-on: ubuntu-latest
+    name: Core Control Panels
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [18.x, 20.x]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js environment
+        uses: ./.github/actions/node_env_setup
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Cypress acceptance tests
+        uses: cypress-io/github-action@v6
+        env:
+          BABEL_ENV: production
+          CYPRESS_RETRIES: 2
+          # Recommended: pass the GitHub token lets this action correctly
+          # determine the unique run id necessary to re-run the checks
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          install: false
+          working-directory: packages/volto
+          browser: chrome
+          spec: cypress/tests/core/controlpanels/**/*.js
+          start: |
+            make ci-acceptance-backend-start
+            make acceptance-frontend-prod-start
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
+
+      # Upload Cypress screenshots
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: packages/volto/cypress/screenshots
+      # Upload Cypress videos
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-videos
+          path: packages/volto/cypress/videos
 
   coreblocks:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     runs-on: ubuntu-latest
     name: Core Blocks
     timeout-minutes: 35
     strategy:
+      fail-fast: false
       matrix:
-        node-version: [14.x, 16.x]
+        node-version: [18.x, 20.x]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
-      # node setup
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - name: Set up Node.js environment
+        uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
 
-      # node cache
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v1
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
-      ## node install
-      - run: yarn --frozen-lockfile
-
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v6
         env:
           BABEL_ENV: production
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           CYPRESS_RETRIES: 2
           # Recommended: pass the GitHub token lets this action correctly
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          record: true
-          parallel: false # Since they run on different node versions, we can't parallel
+          install: false
+          working-directory: packages/volto
           browser: chrome
-          # headless: true
-          group: Core Blocks ${{ matrix.node-version }}
-          spec: cypress/tests/core/blocks/**/*.js
+          spec: cypress/tests/core/blocks/*.js
           start: |
-            make start-test-acceptance-server
-            make start-test-acceptance-frontend
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
+            make ci-acceptance-backend-start
+            make acceptance-frontend-prod-start
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-screenshots
-          path: cypress/screenshots
+          path: packages/volto/cypress/screenshots
       # Upload Cypress videos
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-videos
-          path: cypress/videos
+          path: packages/volto/cypress/videos
+
+  coreblockslisting:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
+    runs-on: ubuntu-latest
+    name: Core Blocks - Listing
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [18.x, 20.x]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js environment
+        uses: ./.github/actions/node_env_setup
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Cypress acceptance tests
+        uses: cypress-io/github-action@v6
+        env:
+          BABEL_ENV: production
+          CYPRESS_RETRIES: 2
+          # Recommended: pass the GitHub token lets this action correctly
+          # determine the unique run id necessary to re-run the checks
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          install: false
+          working-directory: packages/volto
+          browser: chrome
+          spec: cypress/tests/core/blocks/listing/*.js
+          start: |
+            make ci-acceptance-backend-start
+            make acceptance-frontend-prod-start
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
+
+      # Upload Cypress screenshots
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: packages/volto/cypress/screenshots
+      # Upload Cypress videos
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-videos
+          path: packages/volto/cypress/videos
 
   corevoltoslate:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     runs-on: ubuntu-latest
     name: Core Volto Slate
     timeout-minutes: 45
     strategy:
+      fail-fast: false
       matrix:
-        node-version: [14.x, 16.x]
+        node-version: [18.x, 20.x]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
-      # node setup
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - name: Set up Node.js environment
+        uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
 
-      # node cache
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v1
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
-      ## node install
-      - run: yarn --frozen-lockfile
-
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v6
         env:
           BABEL_ENV: production
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           CYPRESS_RETRIES: 2
           # Recommended: pass the GitHub token lets this action correctly
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          record: true
-          parallel: false # Since they run on different node versions, we can't parallel
+          install: false
+          working-directory: packages/volto
           browser: chrome
-          # headless: true
-          group: Core Volto Slate ${{ matrix.node-version }}
           spec: cypress/tests/core/volto-slate/**/*.js
           start: |
-            make start-test-acceptance-server
-            make start-test-acceptance-frontend
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
+            make ci-acceptance-backend-start
+            make acceptance-frontend-prod-start
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-screenshots
-          path: cypress/screenshots
+          path: packages/volto/cypress/screenshots
       # Upload Cypress videos
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-videos
-          path: cypress/videos
+          path: packages/volto/cypress/videos
 
-  core6:
+  core5:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     runs-on: ubuntu-latest
-    name: Core Basic - Plone 6
+    name: Core Basic - Plone 5
     strategy:
+      fail-fast: false
       matrix:
-        node-version: [16.x]
+        node-version: [18.x]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
-      # node setup
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - name: Set up Node.js environment
+        uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
 
-      # node cache
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v1
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
-      ## node install
-      - run: yarn --frozen-lockfile
-
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v6
         env:
           BABEL_ENV: production
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           CYPRESS_RETRIES: 2
           # Recommended: pass the GitHub token lets this action correctly
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          record: true
-          parallel: false # Since they run on different node versions, we can't parallel
+          install: false
+          working-directory: packages/volto
           browser: chrome
-          # headless: true
-          group: Core Basic - Plone 6
           spec: cypress/tests/core/basic/**/*.js
           start: |
-            make start-test-acceptance-server DOCKER_IMAGE=plone/plone-backend:6.0.0a4
-            make start-test-acceptance-frontend
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
+            make plone5-acceptance-backend-start
+            make acceptance-frontend-prod-start
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-screenshots
-          path: cypress/screenshots
+          path: packages/volto/cypress/screenshots
       # Upload Cypress videos
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-videos
-          path: cypress/videos
+          path: packages/volto/cypress/videos
 
   coresandbox:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     runs-on: ubuntu-latest
     name: Coresandbox
     timeout-minutes: 35
     strategy:
+      fail-fast: false
       matrix:
-        node-version: [16.x]
-        python-version: [3.7]
+        node-version: [18.x]
     steps:
-      - uses: actions/checkout@v2
-      - name: debug
-        working-directory: api
-        run: ls -al
+      - uses: actions/checkout@v4
 
-      # node setup
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - name: Set up Node.js environment
+        uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
-
-      # node cache
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v1
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
-      - run: yarn --frozen-lockfile
-
-      # python setup (temporary, while p.volto coresandbox changes are in a PR)
-      # - name: Set up Python ${{ matrix.python-version }}
-      #   uses: actions/setup-python@v1
-      #   with:
-      #     python-version: ${{ matrix.python-version }}
-
-      # # python cache
-      # - uses: actions/cache@v1
-      #   with:
-      #     path: ~/.cache/pip
-      #     key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-pip-
-      # # python install
-      # - run: pip install virtualenv
-      # - name: pip install
-      #   working-directory: api
-      #   run: pip install -r requirements.txt
-      # - name: buildout
-      #   working-directory: api
-      #   run: buildout
-      #   env:
-      #     CI: true
 
       - name: Cypress Coresandbox Acceptance tests
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v6
         env:
           BABEL_ENV: production
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           CYPRESS_RETRIES: 2
           # Recommended: pass the GitHub token lets this action correctly
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          record: true
-          parallel: true
+          install: false
+          working-directory: packages/volto
           browser: chrome
-          # headless: true
-          group: Coresandbox
           spec: cypress/tests/coresandbox/**/*.js
           start: |
-            make start-test-acceptance-server-coresandbox
-            make start-test-acceptance-frontend-coresandbox
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
+            make coresandbox-acceptance-backend-start
+            make coresandbox-acceptance-frontend-prod-start
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-screenshots
-          path: cypress/screenshots
+          path: packages/volto/cypress/screenshots
       # Upload Cypress videos
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-videos
-          path: cypress/videos
-
-  guillotina:
-    name: Guillotina
-    runs-on: ubuntu-latest
-    timeout-minutes: 35
-    strategy:
-      matrix:
-        node-version: [16.x]
-    steps:
-      - uses: actions/checkout@v2
-
-      # node setup
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      # node cache
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v1
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
-      # node install
-      - run: yarn --frozen-lockfile
-
-      - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v4
-        env:
-          BABEL_ENV: production
-          CYPRESS_API: guillotina
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          CYPRESS_RETRIES: 2
-          # Recommended: pass the GitHub token lets this action correctly
-          # determine the unique run id necessary to re-run the checks
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          record: true
-          parallel: true
-          browser: chrome
-          headless: true
-          group: Guillotina
-          spec: cypress/tests/guillotina/**/*.js
-          start: |
-            make start-test-acceptance-server-guillotina
-            make start-test-acceptance-frontend-guillotina
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:8081 http://localhost:3000'
-
-      # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v1
-        if: failure()
-        with:
-          name: cypress-screenshots
-          path: cypress/screenshots
-      # Upload Cypress videos
-      - uses: actions/upload-artifact@v1
-        if: failure()
-        with:
-          name: cypress-videos
-          path: cypress/videos
+          path: packages/volto/cypress/videos
 
   multilingual:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     name: Multilingual
     runs-on: ubuntu-latest
     timeout-minutes: 35
     strategy:
+      fail-fast: false
       matrix:
-        node-version: [16.x]
+        node-version: [18.x]
     steps:
-      - uses: actions/checkout@v2
-      - name: debug
-        working-directory: api
-        run: ls -al
+      - uses: actions/checkout@v4
 
-      # node setup
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - name: Set up Node.js environment
+        uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
 
-      # node cache
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v1
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
-      # node install
-      - run: yarn --frozen-lockfile
-
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v6
         env:
           BABEL_ENV: production
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           CYPRESS_RETRIES: 2
           # Recommended: pass the GitHub token lets this action correctly
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          record: true
-          parallel: true
+          install: false
+          working-directory: packages/volto
           browser: chrome
-          headless: true
-          group: Multilingual
           spec: cypress/tests/multilingual/**/*.js
           start: |
-            make start-test-acceptance-server-multilingual
-            make start-test-acceptance-frontend-multilingual
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
+            make multilingual-acceptance-backend-start
+            make multilingual-acceptance-frontend-prod-start
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-screenshots
-          path: cypress/screenshots
+          path: packages/volto/cypress/screenshots
       # Upload Cypress videos
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-videos
-          path: cypress/videos
+          path: packages/volto/cypress/videos
 
   workingcopy:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     name: Working Copy
     runs-on: ubuntu-latest
     timeout-minutes: 35
     strategy:
+      fail-fast: false
       matrix:
-        node-version: [16.x]
+        node-version: [18.x]
         # python-version: [3.7]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
-      # node setup
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - name: Set up Node.js environment
+        uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
 
-      # node cache
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v1
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
-      # node install
-      - run: yarn --frozen-lockfile
-
-      # # python setup (temporary, while p.a.iterate changes are in a PR)
-      # - name: Set up Python ${{ matrix.python-version }}
-      #   uses: actions/setup-python@v1
-      #   with:
-      #     python-version: ${{ matrix.python-version }}
-
-      # # python cache
-      # - uses: actions/cache@v1
-      #   with:
-      #     path: ~/.cache/pip
-      #     key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-pip-
-      # # python install
-      # - run: pip install virtualenv
-      # - name: pip install
-      #   working-directory: api
-      #   run: pip install -r requirements.txt
-      # - name: buildout
-      #   working-directory: api
-      #   run: buildout
-      #   env:
-      #     CI: true
-
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v6
         env:
           BABEL_ENV: production
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           CYPRESS_RETRIES: 2
           # Recommended: pass the GitHub token lets this action correctly
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          record: true
-          parallel: true
+          install: false
+          working-directory: packages/volto
           browser: chrome
-          headless: true
-          group: Working Copy
           spec: cypress/tests/workingCopy/**/*.js
           start: |
-            make start-test-acceptance-server-workingcopy
-            make start-test-acceptance-frontend-workingcopy
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
+            make working-copy-acceptance-backend-start
+            make working-copy-acceptance-frontend-prod-start
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-screenshots
-          path: cypress/screenshots
+          path: packages/volto/cypress/screenshots
       # Upload Cypress videos
-      - uses: actions/upload-artifact@v1
-        if: always()
+      - uses: actions/upload-artifact@v4
+        if: failure()
         with:
           name: cypress-videos
-          path: cypress/videos
+          path: packages/volto/cypress/videos
 
   generator:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     name: Project Generator
     runs-on: ubuntu-latest
     timeout-minutes: 35
     strategy:
+      fail-fast: false
       matrix:
-        node-version: [16.x]
+        node-version: [18.x, 20.x]
     env:
       generator-directory: ./packages/generator-volto
       project-directory: ./my-volto-app
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
-      # node setup
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - name: Set up Node.js environment
+        uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
 
-      # node cache
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v1
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
-      # Build main Volto environment
-      - name: Build main Volto environment
-        run: yarn --frozen-lockfile
-
       # Generator own tests
       - name: Generator tests
-        run: yarn && yarn test
+        run: pnpm test
         working-directory: ${{env.generator-directory}}
 
       # install Yeoman and the generator
@@ -624,121 +514,177 @@ jobs:
         working-directory: ${{env.generator-directory}}
 
       # create a project
-      - run: yo @plone/volto my-volto-app --description "test volto project" --no-interactive
+      - run: yo @plone/volto my-volto-app --description "test volto project" --volto . --skip-install --no-interactive
+      # When main is canary, make sure we use it in the generator
+      # - run: yo @plone/volto my-volto-app --description "test volto project" --volto . --skip-install --no-interactive --canary
 
       - name: Install yalc
         run: npm -g install yalc
 
       - name: Install a yalc'ed version of the current Volto in the project - publish
-        run: yalc publish
+        run: |
+          yalc publish packages/types
+          (cd packages/registry && yalc add @plone/types --no-pure && yalc publish)
+          yalc publish packages/scripts
+          yalc publish packages/volto-slate
+          (cd packages/volto && yalc add @plone/scripts --no-pure && yalc add @plone/registry --no-pure && yalc add @plone/volto-slate --no-pure && yalc publish)
       - name: Install a yalc'ed version of the current Volto in the project - add
-        run: yalc add @plone/volto --no-pure
+        run: |
+          yalc add @plone/volto --no-pure
         working-directory: ${{env.project-directory}}
       - name: Install a yalc'ed version of the current Volto in the project - install
-        run: yarn --force
+        run: yarn config set -H enableImmutableInstalls false && yarn
+        working-directory: ${{env.project-directory}}
+
+      - name: Running lint on a project works
+        run: yarn lint
+        working-directory: ${{env.project-directory}}
+
+      - name: Running prettier on a project works
+        run: yarn prettier
+        working-directory: ${{env.project-directory}}
+
+      - name: Running stylelint on a project works
+        run: yarn stylelint
+        working-directory: ${{env.project-directory}}
+
+      - name: Build Storybook
+        run: yarn build-storybook
         working-directory: ${{env.project-directory}}
 
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v6
         env:
           BABEL_ENV: production
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           CYPRESS_RETRIES: 2
           # Recommended: pass the GitHub token lets this action correctly
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          record: true
-          parallel: true
+          install: false
+          working-directory: packages/volto
           browser: chrome
-          headless: true
-          group: Project Generator
           spec: cypress/tests/minimal/**/*.js
           start: |
-            make start-test-acceptance-server
-            make start-test-acceptance-frontend-project
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
+            make ci-acceptance-backend-start
+            make project-acceptance-frontend-prod-start
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000'
 
       # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-screenshots
-          path: cypress/screenshots
+          path: packages/volto/cypress/screenshots
 
       # Upload Cypress videos
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-videos
-          path: cypress/videos
+          path: packages/volto/cypress/videos
 
       - name: Test if npm packs correctly
         run: npm pack --dry-run
         if: success()
         working-directory: ${{env.generator-directory}}
 
-  seamless:
-    name: Seamless Mode
+  deployment:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
+    name: Deployment Mode
     runs-on: ubuntu-latest
     timeout-minutes: 35
     strategy:
+      fail-fast: false
       matrix:
-        node-version: [16.x]
+        node-version: [18.x]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
-      # node setup
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - name: Set up Node.js environment
+        uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
 
-      # node cache
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v1
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
-      # node install
-      - run: yarn --frozen-lockfile
-
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v6
         env:
           BABEL_ENV: production
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           CYPRESS_RETRIES: 2
           # Recommended: pass the GitHub token lets this action correctly
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          record: true
-          parallel: true
+          install: false
+          working-directory: packages/volto
           browser: chrome
-          headless: true
-          group: Seamless
-          spec: cypress/tests/minimal/**/*.js
+          spec: cypress/tests/core/basic/**/*.js
+          config: baseUrl=http://localhost
           start: |
-            make start-test-acceptance-server
-            make start-test-acceptance-frontend-seamless
-          wait-on: 'npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone http://localhost:3000'
+            make ci-acceptance-backend-start
+            make deployment-acceptance-frontend-prod-start
+            make deployment-acceptance-web-server-start
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000 http://localhost'
 
       # Upload Cypress screenshots
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-screenshots
-          path: cypress/screenshots
+          path: packages/volto/cypress/screenshots
       # Upload Cypress videos
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-videos-seamless
+          path: packages/volto/cypress/videos
+
+  multilingual-deployment:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
+    name: Multilingual in Deployment Mode
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [18.x]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js environment
+        uses: ./.github/actions/node_env_setup
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Cypress acceptance tests
+        uses: cypress-io/github-action@v6
+        env:
+          BABEL_ENV: production
+          CYPRESS_RETRIES: 2
+          # Recommended: pass the GitHub token lets this action correctly
+          # determine the unique run id necessary to re-run the checks
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          install: false
+          working-directory: packages/volto
+          browser: chrome
+          spec: cypress/tests/multilingual/**/*.js
+          config: baseUrl=http://localhost
+          start: |
+            make deployment-multilingual-acceptance-backend-start
+            make deployment-multilingual-acceptance-frontend-prod-start
+            make deployment-acceptance-web-server-start
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://127.0.0.1:3000 http://localhost'
+
+      # Upload Cypress screenshots
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: packages/volto/cypress/screenshots
+      # Upload Cypress videos
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-videos
-          path: cypress/videos
+          path: packages/volto/cypress/videos

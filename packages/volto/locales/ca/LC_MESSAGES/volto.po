@@ -1,0 +1,5078 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Plone\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"PO-Revision-Date: 2019-07-02 00:11+0200\n"
+"Last-Translator: Víctor Fernández de Alba <victor@plone.org>\n"
+"Language: \n"
+"Language-Team: Català <plone-cat@lists.plone.org>\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Language-Code: ca\n"
+"Language-Name: Catalan\n"
+"Preferred-Encodings: utf-8\n"
+"Domain: plone\n"
+"X-Is-Fallback-For: ca-ad ca-es ca-fr ca-it\n"
+
+#. Default: "<p>Add some HTML here</p>"
+#: components/manage/Blocks/HTML/Edit
+msgid "<p>Add some HTML here</p>"
+msgstr "<p>Afegeix codi HTML aquí</p>"
+
+#. Default: "Account Registration Completed"
+#: components/theme/Register/Register
+msgid "Account Registration Completed"
+msgstr "Registre del compte completat"
+
+#. Default: "Account activation completed"
+#: components/theme/PasswordReset/PasswordReset
+msgid "Account activation completed"
+msgstr "Activació del compte completat"
+
+#. Default: "Action"
+#: components/manage/Controlpanels/ModerateComments
+msgid "Action"
+msgstr "Acció"
+
+#. Default: "Action changed"
+#: components/manage/Controlpanels/Rules/ConfigureRule
+msgid "Action changed"
+msgstr ""
+
+#. Default: "Action:"
+#: components/manage/Controlpanels/Rules/ConfigureRule
+msgid "Action: "
+msgstr ""
+
+#. Default: "Actions"
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+#: components/manage/Controlpanels/ContentTypes
+#: components/manage/Controlpanels/Groups/GroupsControlpanel
+#: components/manage/Controlpanels/Rules/Rules
+#: components/manage/Controlpanels/Users/UsersControlpanel
+msgid "Actions"
+msgstr "Accions"
+
+#. Default: "Activate and deactivate add-ons in the lists below."
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Activate and deactivate"
+msgstr "Activar i desactivar"
+
+#. Default: "Active"
+#: components/manage/Rules/Rules
+msgid "Active"
+msgstr ""
+
+#. Default: "Active content rules in this Page"
+#: components/manage/Rules/Rules
+msgid "Active content rules in this Page"
+msgstr ""
+
+#. Default: "Add"
+#: components/manage/Aliases/Aliases
+#: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/ContentTypes
+#: components/manage/Controlpanels/Rules/ConfigureRule
+#: components/manage/Rules/Rules
+#: components/manage/Toolbar/Toolbar
+#: components/manage/Widgets/SchemaWidget
+#: helpers/MessageLabels/MessageLabels
+msgid "Add"
+msgstr "Afegeix"
+
+#. Default: "Add"
+#: components/manage/Widgets/ObjectListWidget
+msgid "Add (object list)"
+msgstr ""
+
+#. Default: "To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see"
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Add Addons"
+msgstr "Afegeix complements"
+
+#. Default: "Add Content…"
+#: components/manage/Toolbar/Types
+msgid "Add Content"
+msgstr "Afegeix contingut"
+
+#. Default: "Add Content Rule"
+#: components/manage/Controlpanels/Rules/AddRule
+msgid "Add Content Rule"
+msgstr ""
+
+#. Default: "Add Rule"
+#: components/manage/Controlpanels/Rules/AddRule
+msgid "Add Rule"
+msgstr ""
+
+#. Default: "Add Translation…"
+#: components/manage/Toolbar/Types
+msgid "Add Translation…"
+msgstr "Afegeix traducció…"
+
+#. Default: "Add User"
+#: helpers/MessageLabels/MessageLabels
+msgid "Add User"
+msgstr "Afegeix usuari"
+
+#. Default: "Add a description…"
+#: components/manage/Blocks/Description/Edit
+msgid "Add a description…"
+msgstr "Afegeix una descripció"
+
+#. Default: "Add a new alternative url"
+#: components/manage/Aliases/Aliases
+msgid "Add a new alternative url"
+msgstr ""
+
+#. Default: "Action added"
+#: components/manage/Controlpanels/Rules/ConfigureRule
+msgid "Add action"
+msgstr ""
+
+#. Default: "Add block"
+#: components/manage/BlockChooser/BlockChooserButton
+msgid "Add block"
+msgstr "Afegeix bloc"
+
+#. Default: "Add block in position {index}"
+#: components/manage/Blocks/Container/NewBlockAddButton
+msgid "Add block in position {index}"
+msgstr ""
+
+#. Default: "Add block…"
+#: helpers/MessageLabels/MessageLabels
+msgid "Add block…"
+msgstr "Afegeix bloc…"
+
+#. Default: "Condition added"
+#: components/manage/Controlpanels/Rules/ConfigureRule
+msgid "Add condition"
+msgstr ""
+
+#. Default: "Add content rule"
+#: components/manage/Controlpanels/Rules/Rules
+msgid "Add content rule"
+msgstr ""
+
+#. Default: "Add criteria"
+#: components/manage/Widgets/QueryWidget
+msgid "Add criteria"
+msgstr "Afegeix criteri"
+
+#. Default: "Add date"
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Add date"
+msgstr "Afegeix data"
+
+#. Default: "Add element to container"
+#: components/manage/Blocks/Container/SimpleContainerToolbar
+msgid "Add element to container"
+msgstr ""
+
+#. Default: "Add field"
+#: components/manage/Widgets/SchemaWidget
+msgid "Add field"
+msgstr "Afegeix camp"
+
+#. Default: "Add fieldset"
+#: components/manage/Widgets/SchemaWidget
+msgid "Add fieldset"
+msgstr "Afegeix grup de camps (fieldset)"
+
+#. Default: "Add group"
+#: helpers/MessageLabels/MessageLabels
+msgid "Add group"
+msgstr "Afegeix grup"
+
+#. Default: "Add new content type"
+#: components/manage/Controlpanels/ContentTypes
+msgid "Add new content type"
+msgstr "Afegeix un nou tipus de contingut"
+
+#. Default: "Add new group"
+#: helpers/MessageLabels/MessageLabels
+msgid "Add new group"
+msgstr "Afegeix un nou grup"
+
+#. Default: "Add new user"
+#: helpers/MessageLabels/MessageLabels
+msgid "Add new user"
+msgstr "Afegeix un nou usuari"
+
+#. Default: "Add to Groups"
+#: helpers/MessageLabels/MessageLabels
+msgid "Add to Groups"
+msgstr "Afegeix a grups"
+
+#. Default: "Add users to group"
+#: helpers/MessageLabels/MessageLabels
+msgid "Add users to group"
+msgstr ""
+
+#. Default: "Add term"
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Add vocabulary term"
+msgstr "Afegeix un nou terme del vocabulari"
+
+#. Default: "Add {type}"
+#: components/manage/Add/Add
+msgid "Add {type}"
+msgstr "Afegeix {type}"
+
+#. Default: "Add-Ons"
+#: components/manage/Controlpanels/Controlpanels
+msgid "Add-Ons"
+msgstr ""
+
+#. Default: "Add-on Configuration"
+#: components/manage/Controlpanels/Controlpanels
+msgid "Add-on Configuration"
+msgstr ""
+
+#. Default: "Add-ons"
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Add-ons"
+msgstr ""
+
+#. Default: "Add-ons Settings"
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Add-ons Settings"
+msgstr "Configuració de complements"
+
+#. Default: "Added"
+#: components/manage/Rules/Rules
+msgid "Added"
+msgstr ""
+
+#. Default: "Additional date"
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+msgid "Additional date"
+msgstr "Data addicional"
+
+#. Default: "Addon could not be installed"
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Addon could not be installed"
+msgstr ""
+
+#. Default: "Addon could not be uninstalled"
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Addon could not be uninstalled"
+msgstr ""
+
+#. Default: "Addon could not be upgraded"
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Addon could not be upgraded"
+msgstr ""
+
+#. Default: "Addon installed succesfuly"
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Addon installed succesfuly"
+msgstr ""
+
+#. Default: "Addon uninstalled succesfuly"
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Addon uninstalled succesfuly"
+msgstr ""
+
+#. Default: "Addon upgraded succesfuly"
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Addon upgraded succesfuly"
+msgstr ""
+
+#. Default: "Advanced facet?"
+#: components/manage/Blocks/Search/schema
+msgid "Advanced facet?"
+msgstr ""
+
+#. Default: "Advanced facets are initially hidden and displayed on demand"
+#: components/manage/Blocks/Search/schema
+msgid "Advanced facets are initially hidden and displayed on demand"
+msgstr ""
+
+#. Default: "Album view"
+#: config/Views
+msgid "Album view"
+msgstr "Album"
+
+#. Default: "Alias"
+#: components/manage/Controlpanels/Aliases
+msgid "Alias"
+msgstr ""
+
+#. Default: "Alias has been added"
+#: components/manage/Aliases/Aliases
+#: components/manage/Controlpanels/Aliases
+msgid "Alias has been added"
+msgstr ""
+
+#. Default: "Alignment"
+#: components/manage/Blocks/Image/schema
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/schema
+#: components/manage/Blocks/Teaser/schema
+#: components/manage/Blocks/Video/schema
+msgid "Alignment"
+msgstr "Posicionament"
+
+#. Default: "All"
+#: components/manage/Contents/Contents
+msgid "All"
+msgstr "Tots"
+
+#. Default: "All content"
+#: config/Views
+msgid "All content"
+msgstr "Tot el contingut"
+
+#. Default: "All existing alternative urls for this site"
+#: components/manage/Controlpanels/Aliases
+msgid "All existing alternative urls for this site"
+msgstr ""
+
+#. Default: "Alphabetically"
+#: components/theme/Search/Search
+msgid "Alphabetically"
+msgstr "Alfabèticament"
+
+#. Default: "Alt text"
+#: components/manage/Blocks/Image/schema
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/schema
+msgid "Alt text"
+msgstr "Text alternatiu (alt)"
+
+#. Default: "Leave empty if the image is purely decorative."
+#: components/manage/Blocks/Image/schema
+msgid "Alt text hint"
+msgstr "Deixeu el camp buit si la imatge és purament decorativa"
+
+#. Default: "Describe the purpose of the image."
+#: components/manage/Blocks/Image/schema
+msgid "Alt text hint link text"
+msgstr "Descriu el propòsit de la imatge"
+
+#. Default: "Alternative url path (Required)"
+#: components/manage/Controlpanels/Aliases
+msgid "Alternative url path (Required)"
+msgstr ""
+
+#. Default: "Alternative url path must start with a slash."
+#: components/manage/Aliases/Aliases
+#: components/manage/Controlpanels/Aliases
+msgid "Alternative url path must start with a slash."
+msgstr ""
+
+#. Default: "Alternative url path → target url path (date and time of creation, manually created yes/no)"
+#: components/manage/Controlpanels/Aliases
+msgid "Alternative url path → target url path (date and time of creation, manually created yes/no)"
+msgstr ""
+
+#. Default: "Applied to subfolders"
+#: components/manage/Rules/Rules
+msgid "Applied to subfolders"
+msgstr ""
+
+#. Default: "Applies to subfolders?"
+#: components/manage/Rules/Rules
+msgid "Applies to subfolders?"
+msgstr ""
+
+#. Default: "Apply to subfolders"
+#: components/manage/Rules/Rules
+msgid "Apply to subfolders"
+msgstr ""
+
+#. Default: "Apply working copy"
+#: components/manage/Toolbar/More
+msgid "Apply working copy"
+msgstr "Aplicar la còpia de treball"
+
+#. Default: "Are you sure you want to delete this field?"
+#: components/manage/Widgets/SchemaWidget
+msgid "Are you sure you want to delete this field?"
+msgstr "Esteu segurs que voleu eliminar aquest camp?"
+
+#. Default: "Are you sure you want to delete this fieldset including all fields?"
+#: components/manage/Widgets/SchemaWidget
+msgid "Are you sure you want to delete this fieldset including all fields?"
+msgstr "Esteu segurs que voleu eliminar aquest grup de camps i tots els camps que inclou?"
+
+#. Default: "Ascending"
+#: components/manage/Blocks/Search/components/SortOn
+#: components/manage/Contents/Contents
+msgid "Ascending"
+msgstr "Ascendent"
+
+#. Default: "Assign the {role} role to {entry}"
+#: components/manage/Sharing/Sharing
+msgid "Assign the {role} role to {entry}"
+msgstr ""
+
+#. Default: "Assignments"
+#: components/manage/Controlpanels/Rules/ConfigureRule
+msgid "Assignments"
+msgstr ""
+
+#. Default: "Available"
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Available"
+msgstr "Disponible"
+
+#. Default: "Available content rules:"
+#: components/manage/Rules/Rules
+msgid "Available content rules:"
+msgstr ""
+
+#. Default: "Back"
+#: components/manage/Aliases/Aliases
+#: components/manage/Contents/Contents
+#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
+#: components/manage/Controlpanels/ContentTypes
+#: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/DatabaseInformation
+#: components/manage/Controlpanels/ModerateComments
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/ConfigureRule
+#: components/manage/Controlpanels/Rules/EditRule
+#: components/manage/Controlpanels/Rules/Rules
+#: components/manage/Controlpanels/UndoControlpanel
+#: components/manage/Controlpanels/UpgradeControlPanel
+#: components/manage/Diff/Diff
+#: components/manage/History/History
+#: components/manage/LinksToItem/LinksToItem
+#: components/manage/Multilingual/ManageTranslations
+#: components/manage/Preferences/ChangePassword
+#: components/manage/Preferences/PersonalPreferences
+#: components/manage/Rules/Rules
+#: components/manage/Sharing/Sharing
+#: components/manage/Sidebar/ObjectBrowserBody
+#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/Toolbar
+#: components/theme/ContactForm/ContactForm
+#: helpers/MessageLabels/MessageLabels
+msgid "Back"
+msgstr "Enrere"
+
+#. Default: "Base"
+#: components/manage/Diff/Diff
+msgid "Base"
+msgstr "Base"
+
+#. Default: "Base search query"
+#: components/manage/Blocks/Search/schema
+msgid "Base search query"
+msgstr "Base de cerca"
+
+#. Default: "Block"
+#: components/manage/Sidebar/Sidebar
+msgid "Block"
+msgstr "Bloc"
+
+#. Default: "Both email address and password are case sensitive, check that caps lock is not enabled."
+#: components/theme/Login/Login
+msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
+msgstr "Tant l'adreça de correu electrònic com la contrasenya són sensibles a les majúscules i minúscules, comproveu que no teniu activada la tecla de bloqueig de les majúscules."
+
+#. Default: "Breadcrumbs"
+#: components/theme/Breadcrumbs/Breadcrumbs
+msgid "Breadcrumbs"
+msgstr "Barra de ruta"
+
+#. Default: "Broken relations"
+#: components/manage/Controlpanels/Relations/BrokenRelations
+msgid "Broken relations"
+msgstr ""
+
+#. Default: "Browse"
+#: components/manage/Contents/ContentsUploadModal
+#: components/manage/Sidebar/ObjectBrowserNav
+msgid "Browse"
+msgstr "Navegui"
+
+#. Default: "Browse the site, drop an image, or use a URL"
+#: components/manage/Widgets/ImageWidget
+msgid "Browse the site, drop an image, or type a URL"
+msgstr "Navegueu pel lloc, deixeu anar una imatge o escriviu un URL"
+
+#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+#: components/manage/Sharing/Sharing
+msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+msgstr "Per defecte, els permisos del contenidor d'aquest element són heretats. Si es desactiva, només seran vàlids els permisos de compartició definits explícitament. A la vista general, el símbol ${inherited} indica un valor heretat. De la mateixa manera, el símbol ${global} indica un rol global, que és gestionat per l'administrador del lloc."
+
+#. Default: "Cache Name"
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Cache Name"
+msgstr "Nom de la memòria cau"
+
+#. Default: "Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled"
+#: components/manage/Controlpanels/ContentTypeLayout
+msgid "Can not edit Layout for <strong>{type}</strong> content-type as it doesn't have support for <strong>Volto Blocks</strong> enabled"
+msgstr "No es pot editar el disseny per al tipus de contingut <strong>{type}</strong> ja que no és compatible amb <strong>el blocs de Volto</strong> activats"
+
+#. Default: "Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>"
+#: components/manage/Controlpanels/ContentTypeLayout
+msgid "Can not edit Layout for <strong>{type}</strong> content-type as the <strong>Blocks behavior</strong> is enabled and <strong>read-only</strong>"
+msgstr "No es pot editar el disseny per al tipus de contingut <strong>{type}</strong> ja que el comportament de <strong>blocs</strong> està habilitat i <strong>només de lectura</strong>"
+
+#. Default: "Cancel"
+#: components/manage/Add/Add
+#: components/manage/Contents/ContentsUploadModal
+#: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
+#: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
+#: components/manage/Delete/Delete
+#: components/manage/Edit/Edit
+#: components/manage/Form/ModalForm
+#: components/manage/Sharing/Sharing
+#: components/theme/Login/Login
+#: helpers/MessageLabels/MessageLabels
+msgid "Cancel"
+msgstr "Cancel·lar"
+
+#. Default: "Cell"
+#: config/Blocks
+msgid "Cell"
+msgstr "Cel·la"
+
+#. Default: "Center"
+#: components/manage/Blocks/Maps/Edit
+#: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
+msgid "Center"
+msgstr "Centre"
+
+#. Default: "Change Note"
+#: components/manage/History/History
+msgid "Change Note"
+msgstr "Canvia nota"
+
+#. Default: "Change Password"
+#: components/manage/Preferences/ChangePassword
+msgid "Change Password"
+msgstr "Canvia la contrasenya"
+
+#. Default: "Change State"
+#: components/manage/Contents/ContentsWorkflowModal
+msgid "Change State"
+msgstr "Canvia d'estat"
+
+#. Default: "Change workflow state recursively"
+#: components/manage/Contents/ContentsWorkflowModal
+msgid "Change workflow state recursively"
+msgstr "Canvieu l'estat del flux de treball de manera recursiva"
+
+#. Default: "Changes applied"
+#: components/manage/Toolbar/More
+msgid "Changes applied."
+msgstr "Canvis aplicats"
+
+#. Default: "Changes saved"
+#: components/manage/Preferences/ChangePassword
+#: components/manage/Preferences/PersonalPreferences
+msgid "Changes saved"
+msgstr "S'han guardat els canvis"
+
+#. Default: "Changes saved."
+#: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
+#: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Controlpanels/Controlpanel
+msgid "Changes saved."
+msgstr "S'han guardat els canvis."
+
+#. Default: "Check this box to customize the title, description, or image of the target content item for this teaser. Leave it unchecked to show updates to the target content item if it is edited later."
+#: components/manage/Blocks/Teaser/schema
+msgid "Check this box to customize the title, description, or image of the target content item for this teaser. Leave it unchecked to show updates to the target content item if it is edited later."
+msgstr ""
+
+#. Default: "Checkbox"
+#: components/manage/Widgets/SchemaWidget
+msgid "Checkbox"
+msgstr "Casella de selecció"
+
+#. Default: "Choices"
+#: components/manage/Widgets/SelectWidget
+msgid "Choices"
+msgstr "Opcions"
+
+#. Default: "Choose Image"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Choose Image"
+msgstr "Trieu Imatge"
+
+#. Default: "Choose Target"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Choose Target"
+msgstr "Trieu Destí"
+
+#. Default: "Choose a file"
+#: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
+msgid "Choose a file"
+msgstr "Trieu un fitxer"
+
+#. Default: "Clear"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
+#: components/manage/Blocks/HTML/Edit
+msgid "Clear"
+msgstr "Clar"
+
+#. Default: "Clear filters"
+#: components/manage/Blocks/Search/components/FilterList
+msgid "Clear filters"
+msgstr "Esborra filtres"
+
+#. Default: "Clear search"
+#: components/manage/BlockChooser/BlockChooserSearch
+msgid "Clear search"
+msgstr ""
+
+#. Default: "Click to download full sized image"
+#: components/theme/View/ImageView
+msgid "Click to download full sized image"
+msgstr "Feu clic per descarregar la imatge a mida completa"
+
+#. Default: "Close"
+#: components/manage/Widgets/SelectWidget
+msgid "Close"
+msgstr "Tanca"
+
+#. Default: "Close menu"
+#: components/theme/Navigation/Navigation
+msgid "Close menu"
+msgstr "Tanca el menú"
+
+#. Default: "Code"
+#: components/manage/Blocks/HTML/Edit
+msgid "Code"
+msgstr "Codi"
+
+#. Default: "Collapse item"
+#: components/manage/Widgets/ObjectListWidget
+msgid "Collapse item"
+msgstr "Replega l'element"
+
+#. Default: "Collection"
+#: components/manage/Toolbar/Toolbar
+msgid "Collection"
+msgstr "Col·lecció"
+
+#. Default: "Color"
+#: components/manage/Widgets/ColorPickerWidget
+msgid "Color"
+msgstr ""
+
+#. Default: "Comment"
+#: components/manage/Controlpanels/ModerateComments
+#: components/theme/Comments/CommentEditModal
+#: components/theme/Comments/Comments
+msgid "Comment"
+msgstr "Comentar"
+
+#. Default: "Commenter"
+#: components/manage/Controlpanels/ModerateComments
+msgid "Commenter"
+msgstr "Comentarista"
+
+#. Default: "Comments"
+#: components/theme/Comments/Comments
+msgid "Comments"
+msgstr "Comentaris"
+
+#. Default: "Compare"
+#: components/manage/Diff/Diff
+msgid "Compare"
+msgstr "Compara"
+
+#. Default: "Condition changed"
+#: components/manage/Controlpanels/Rules/ConfigureRule
+msgid "Condition changed"
+msgstr ""
+
+#. Default: "Condition:"
+#: components/manage/Controlpanels/Rules/ConfigureRule
+msgid "Condition: "
+msgstr ""
+
+#. Default: "Configuration Versions"
+#: components/manage/Controlpanels/UpgradeControlPanel
+msgid "Configuration Versions"
+msgstr ""
+
+#. Default: "Configure Content Rule"
+#: components/manage/Controlpanels/Rules/EditRule
+msgid "Configure Content Rule"
+msgstr ""
+
+#. Default: "Configure Content Rule: {title}"
+#: components/manage/Controlpanels/Rules/ConfigureRule
+msgid "Configure Content Rule: {title}"
+msgstr ""
+
+#. Default: "Configure content rule"
+#: components/manage/Controlpanels/Rules/ConfigureRule
+msgid "Configure content rule"
+msgstr ""
+
+#. Default: "Confirm password"
+#: components/manage/Preferences/ChangePassword
+#: components/theme/PasswordReset/PasswordReset
+msgid "Confirm password"
+msgstr "Confirma la contrassenya"
+
+#. Default: "Connection refused"
+#: components/theme/ConnectionRefused/ConnectionRefused
+msgid "Connection refused"
+msgstr "Connexió rebutjada"
+
+#. Default: "Contact form"
+#: components/theme/ContactForm/ContactForm
+msgid "Contact form"
+msgstr "Formulari de contacte"
+
+#. Default: "Contained items"
+#: components/manage/Blocks/Listing/Edit
+msgid "Contained items"
+msgstr "Elements continguts"
+
+#. Default: "Container settings"
+#: components/manage/Blocks/Container/SimpleContainerToolbar
+msgid "Container settings"
+msgstr ""
+
+#. Default: "Content"
+#: components/manage/Controlpanels/Controlpanels
+msgid "Content"
+msgstr ""
+
+#. Default: "Content Rule"
+#: components/manage/Controlpanels/Rules/Rules
+msgid "Content Rule"
+msgstr ""
+
+#. Default: "Content Rules"
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/Rules/Rules
+msgid "Content Rules"
+msgstr ""
+
+#. Default: "Content rules for {title}"
+#: components/manage/Rules/Rules
+msgid "Content rules for {title}"
+msgstr ""
+
+#. Default: "Content rules from parent folders"
+#: components/manage/Rules/Rules
+msgid "Content rules from parent folders"
+msgstr ""
+
+#. Default: "Content that links to or references {title}"
+#: components/manage/LinksToItem/LinksToItem
+msgid "Content that links to or references {title}"
+msgstr ""
+
+#. Default: "Content type created"
+#: components/manage/Controlpanels/ContentTypes
+msgid "Content type created"
+msgstr "Tipus de contingut creat"
+
+#. Default: "Content type deleted"
+#: components/manage/Controlpanels/ContentTypes
+msgid "Content type deleted"
+msgstr "S'ha suprimit el tipus de contingut"
+
+#. Default: "Contents"
+#: components/manage/Contents/Contents
+#: components/manage/Toolbar/Toolbar
+msgid "Contents"
+msgstr "Continguts"
+
+#. Default: "Controls"
+#: components/manage/Blocks/Search/schema
+msgid "Controls"
+msgstr "Controls"
+
+#. Default: "Copy"
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsItem
+msgid "Copy"
+msgstr "Copia"
+
+#. Default: "Copy blocks"
+#: helpers/MessageLabels/MessageLabels
+msgid "Copy blocks"
+msgstr "Copiar blocks"
+
+#. Default: "Copyright"
+#: components/theme/Footer/Footer
+msgid "Copyright"
+msgstr "Copyright"
+
+#. Default: "Copyright statement or other rights information on this item."
+#: components/manage/Contents/ContentsPropertiesModal
+msgid "Copyright statement or other rights information on this item."
+msgstr "Declaració de drets d'autor o informació sobre altres drets sobre aquest article."
+
+#. Default: "Create or delete relations to target"
+#: helpers/MessageLabels/MessageLabels
+msgid "Create or delete relations to target"
+msgstr ""
+
+#. Default: "Create working copy"
+#: components/manage/Toolbar/More
+msgid "Create working copy"
+msgstr "Crea una còpia de treball"
+
+#. Default: "Created by {creator} on {date}"
+#: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
+msgid "Created by {creator} on {date}"
+msgstr "Creat per {creator} el {date}"
+
+#. Default: "Created on"
+#: components/manage/Contents/Contents
+msgid "Created on"
+msgstr "Creat el"
+
+#. Default: "Creator"
+#: components/manage/Contents/Contents
+msgid "Creator"
+msgstr "Creador"
+
+#. Default: "Creators"
+#: components/manage/Contents/ContentsPropertiesModal
+msgid "Creators"
+msgstr "Creadors"
+
+#. Default: "Criteria"
+#: components/manage/Widgets/QuerystringWidget
+#: components/manage/Widgets/QueryWidget
+msgid "Criteria"
+msgstr "Criteris"
+
+#. Default: "Current active configuration"
+#: components/manage/Controlpanels/UpgradeControlPanel
+msgid "Current active configuration"
+msgstr ""
+
+#. Default: "Current filters applied"
+#: components/manage/Blocks/Search/components/FilterList
+msgid "Current filters applied"
+msgstr "S'han aplicat els filtres actuals"
+
+#. Default: "Current password"
+#: components/manage/Preferences/ChangePassword
+msgid "Current password"
+msgstr "Contrasenya actual"
+
+#. Default: "Customize teaser content"
+#: components/manage/Blocks/Teaser/schema
+msgid "Customize teaser content"
+msgstr ""
+
+#. Default: "Cut"
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsItem
+msgid "Cut"
+msgstr "Talla"
+
+#. Default: "Cut blocks"
+#: helpers/MessageLabels/MessageLabels
+msgid "Cut blocks"
+msgstr "Talla bloc"
+
+#. Default: "Daily"
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Daily"
+msgstr "Diàriament"
+
+#. Default: "Database"
+#: components/manage/Controlpanels/Controlpanels
+msgid "Database"
+msgstr ""
+
+#. Default: "Database Information"
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Database Information"
+msgstr "Informació de la base de dades"
+
+#. Default: "Database Location"
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Database Location"
+msgstr "Ubicació de la base de dades"
+
+#. Default: "Database Size"
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Database Size"
+msgstr "Mida de la base de dades"
+
+#. Default: "Database main"
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Database main"
+msgstr "Base de dades principal"
+
+#. Default: "Date"
+#: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/ModerateComments
+#: components/manage/Widgets/DatetimeWidget
+msgid "Date"
+msgstr "Data"
+
+#. Default: "Date (newest first)"
+#: components/theme/Search/Search
+msgid "Date (newest first)"
+msgstr "Data (el més nou primer)"
+
+#. Default: "Default"
+#: components/manage/Contents/ContentsPropertiesModal
+#: components/manage/Contents/ContentsRenameModal
+#: components/manage/Contents/ContentsTagsModal
+#: components/manage/Contents/ContentsWorkflowModal
+#: components/manage/Controlpanels/UndoControlpanel
+#: components/manage/Preferences/ChangePassword
+#: components/manage/Preferences/PersonalPreferences
+#: components/manage/Widgets/SchemaWidget
+#: components/manage/Widgets/SelectWidget
+#: components/theme/Comments/CommentEditModal
+#: components/theme/Comments/Comments
+#: components/theme/ContactForm/ContactForm
+#: components/theme/PasswordReset/PasswordReset
+#: components/theme/PasswordReset/RequestPasswordReset
+#: components/theme/Register/Register
+msgid "Default"
+msgstr "Per defecte"
+
+#. Default: "Default view"
+#: config/Views
+msgid "Default view"
+msgstr "Per defecte"
+
+#. Default: "Delete"
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsItem
+#: components/manage/Controlpanels/ContentTypesActions
+#: components/manage/Controlpanels/ModerateComments
+#: components/manage/Delete/Delete
+#: components/manage/Widgets/FormFieldWrapper
+#: components/manage/Widgets/ObjectBrowserWidget
+#: components/theme/Comments/Comments
+msgid "Delete"
+msgstr "Suprimeix"
+
+#. Default: "Delete Group"
+#: helpers/MessageLabels/MessageLabels
+msgid "Delete Group"
+msgstr "Suprimeix el grup"
+
+#. Default: "Delete Type"
+#: components/manage/Controlpanels/ContentTypes
+msgid "Delete Type"
+msgstr "Suprimeix el tipus"
+
+#. Default: "Delete User"
+#: helpers/MessageLabels/MessageLabels
+msgid "Delete User"
+msgstr "Suprimeix l'usuari"
+
+#. Default: "Action deleted"
+#: components/manage/Controlpanels/Rules/ConfigureRule
+msgid "Delete action"
+msgstr ""
+
+#. Default: "Delete blocks"
+#: helpers/MessageLabels/MessageLabels
+msgid "Delete blocks"
+msgstr "Esborra blocs"
+
+#. Default: "Delete col"
+#: config/Blocks
+msgid "Delete col"
+msgstr "Esborra la columna"
+
+#. Default: "Condition deleted"
+#: components/manage/Controlpanels/Rules/ConfigureRule
+msgid "Delete condition"
+msgstr ""
+
+#. Default: "Delete row"
+#: config/Blocks
+msgid "Delete row"
+msgstr "Suprimeix la fila"
+
+#. Default: "Delete selected items?"
+#: components/manage/Contents/Contents
+msgid "Delete selected items?"
+msgstr ""
+
+#. Default: "Delete this item?"
+#: components/manage/Contents/Contents
+msgid "Delete this item?"
+msgstr ""
+
+#. Default: "Deleted"
+#: components/manage/Controlpanels/Rules/Rules
+msgid "Deleted"
+msgstr ""
+
+#. Default: "Deleting this item breaks {brokenReferences} {variation}."
+#: components/manage/Contents/Contents
+msgid "Deleting this item breaks {brokenReferences} {variation}."
+msgstr ""
+
+#. Default: "Depth"
+#: components/manage/Widgets/QuerystringWidget
+msgid "Depth"
+msgstr "Profunditat"
+
+#. Default: "Descending"
+#: components/manage/Blocks/Search/components/SortOn
+#: components/manage/Contents/Contents
+msgid "Descending"
+msgstr "Descendent"
+
+#. Default: "Description"
+#: components/manage/Blocks/Teaser/schema
+#: components/manage/Controlpanels/ContentTypes
+#: components/manage/Widgets/SchemaWidget
+#: components/manage/Widgets/SelectWidget
+#: components/theme/View/TabularView
+#: helpers/MessageLabels/MessageLabels
+msgid "Description"
+msgstr "Descripció"
+
+#. Default: "Diff"
+#: components/manage/Diff/Diff
+msgid "Diff"
+msgstr "Diferència"
+
+#. Default: "Difference between revision {one} and {two} of {title}"
+#: components/manage/Diff/Diff
+msgid "Difference between revision {one} and {two} of {title}"
+msgstr "Diferència entre la revisió {one} i {two} de {title}"
+
+#. Default: "Disable"
+#: components/manage/Rules/Rules
+msgid "Disable"
+msgstr ""
+
+#. Default: "Disable apply to subfolders"
+#: components/manage/Rules/Rules
+msgid "Disable apply to subfolders"
+msgstr ""
+
+#. Default: "Disabled"
+#: components/manage/Rules/Rules
+msgid "Disabled"
+msgstr ""
+
+#. Default: "Disabled apply to subfolders"
+#: components/manage/Rules/Rules
+msgid "Disabled apply to subfolders"
+msgstr ""
+
+#. Default: "Distributed under the {license}."
+#: components/theme/Footer/Footer
+msgid "Distributed under the {license}."
+msgstr "Distribuït sota la {license}."
+
+#. Default: "Add border to inner columns"
+#: config/Blocks
+msgid "Divide each row into separate cells"
+msgstr "Afegeix una vora a les columnes interiors"
+
+#. Default: "Do you really want to delete the group {groupname}?"
+#: components/manage/Controlpanels/Groups/GroupsControlpanel
+msgid "Do you really want to delete the group {groupname}?"
+msgstr "Realment voleu suprimir el grup {groupname}?"
+
+#. Default: "Do you really want to delete type {typename}?"
+#: components/manage/Controlpanels/ContentTypes
+msgid "Do you really want to delete the type {typename}?"
+msgstr "Realment voleu suprimir el tipus {typename}?"
+
+#. Default: "Do you really want to delete the user {username}?"
+#: components/manage/Controlpanels/Users/UsersControlpanel
+msgid "Do you really want to delete the user {username}?"
+msgstr "Realment voleu suprimir l'usuari {username}?"
+
+#. Default: "Do you really want to delete this item?"
+#: components/manage/Delete/Delete
+msgid "Do you really want to delete this item?"
+msgstr "Realment voleu suprimir aquest element?"
+
+#. Default: "Document"
+#: components/manage/Multilingual/TranslationObject
+#: components/manage/Sidebar/Sidebar
+msgid "Document"
+msgstr "Document"
+
+#. Default: "Document view"
+#: config/Views
+msgid "Document view"
+msgstr "Document"
+
+#. Default: "Download Event"
+#: components/theme/EventDetails/EventDetails
+msgid "Download Event"
+msgstr ""
+
+#. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
+#: components/manage/Contents/ContentsUploadModal
+msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
+msgstr "Arrossegueu i deixeu anar fitxers des del vostre ordinador a aquesta àrea o feu clic al botó 'Examinar'."
+
+#. Default: "Drop file here to replace the existing file"
+#: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
+msgid "Drop file here to replace the existing file"
+msgstr "Deixeu anar el fitxer aquí per substituir el fitxer existent"
+
+#. Default: "Drop file here to upload a new file"
+#: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
+msgid "Drop file here to upload a new file"
+msgstr "Deixeu anar el fitxer aquí per pujar un fitxer nou"
+
+#. Default: "Drop files here ..."
+#: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
+msgid "Drop files here ..."
+msgstr "Deixeu fitxers aquí..."
+
+#. Default: "Dry run selected, transaction aborted."
+#: components/manage/Controlpanels/UpgradeControlPanel
+msgid "Dry run selected, transaction aborted."
+msgstr ""
+
+#. Default: "E-mail"
+#: components/theme/Register/Register
+msgid "E-mail"
+msgstr "correu electrònic"
+
+#. Default: "E-mail addresses do not match."
+#: components/theme/PasswordReset/PasswordReset
+msgid "E-mail addresses do not match."
+msgstr "Les adreces de correu electrònic no coincideixen."
+
+#. Default: "Edit"
+#: components/manage/Contents/ContentsItem
+#: components/manage/Controlpanels/ContentTypesActions
+#: components/manage/Controlpanels/ModerateComments
+#: components/manage/Controlpanels/Rules/EditRule
+#: components/manage/Controlpanels/Users/RenderUsers
+#: components/manage/Toolbar/Toolbar
+#: components/manage/Widgets/FormFieldWrapper
+#: components/manage/Widgets/ObjectBrowserWidget
+#: components/theme/Comments/Comments
+msgid "Edit"
+msgstr "Edita"
+
+#. Default: "Edit Rule"
+#: components/manage/Controlpanels/Rules/EditRule
+msgid "Edit Rule"
+msgstr ""
+
+#. Default: "Edit comment"
+#: components/theme/Comments/CommentEditModal
+msgid "Edit comment"
+msgstr "Edita el comentari"
+
+#. Default: "Edit field"
+#: components/manage/Widgets/SchemaWidget
+msgid "Edit field"
+msgstr "Edita el camp"
+
+#. Default: "Edit fieldset"
+#: components/manage/Widgets/SchemaWidget
+msgid "Edit fieldset"
+msgstr "Edita el conjunt de camps"
+
+#. Default: "Edit recurrence"
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Edit recurrence"
+msgstr "Edita la recurrència"
+
+#. Default: "Edit values"
+#: components/manage/Form/InlineForm
+msgid "Edit values"
+msgstr "Edita valors"
+
+#. Default: "Edit {title}"
+#: components/manage/Edit/Edit
+msgid "Edit {title}"
+msgstr "Edita {title}"
+
+#. Default: "Email"
+#: helpers/MessageLabels/MessageLabels
+msgid "Email"
+msgstr "Correu electrònic"
+
+#. Default: "Email sent"
+#: components/theme/ContactForm/ContactForm
+msgid "Email sent"
+msgstr "Email enviat"
+
+#. Default: "Embed code error, please follow the instructions and try again."
+#: components/manage/Blocks/Maps/Edit
+msgid "Embed code error, please follow the instructions and try again."
+msgstr "Error d'inserció del codi, seguiu les instruccions i torneu-ho a provar."
+
+#. Default: "Empty object list"
+#: components/manage/Widgets/ObjectListWidget
+msgid "Empty object list"
+msgstr "Llista d'objectes buida"
+
+#. Default: "Enable"
+#: components/manage/Rules/Rules
+msgid "Enable"
+msgstr ""
+
+#. Default: "Enable editable Blocks"
+#: components/manage/Controlpanels/ContentTypeLayout
+msgid "Enable editable Blocks"
+msgstr "Activa els blocs editables"
+
+#. Default: "Enabled"
+#: components/manage/Rules/Rules
+msgid "Enabled"
+msgstr ""
+
+#. Default: "Enabled here?"
+#: components/manage/Rules/Rules
+msgid "Enabled here?"
+msgstr ""
+
+#. Default: "Enabled?"
+#: components/manage/Rules/Rules
+msgid "Enabled?"
+msgstr ""
+
+#. Default: "End Date"
+#: components/manage/Blocks/Search/components/DateRangeFacet
+#: components/manage/Contents/Contents
+msgid "End Date"
+msgstr "Data de finalització"
+
+#. Default: "Enter URL or select an item"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
+msgid "Enter URL or select an item"
+msgstr "Introduïu l'URL o seleccioneu un element"
+
+#. Default: "Enter a username above to search or click 'Show All'"
+#: helpers/MessageLabels/MessageLabels
+msgid "Enter a username above to search or click 'Show All'"
+msgstr "Introduïu un nom d'usuari a dalt per cercar o feu clic a 'Mostra-ho tot'"
+
+#. Default: "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
+#: components/theme/Register/Register
+msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
+msgstr "Introduïu una adreça de correu electrònic. Aquest serà el vostre nom d'inici de sessió. Respectem la vostra privadesa i no donarem l'adreça a tercers ni l'exposarem enlloc."
+
+#. Default: "Enter full name, e.g. John Smith."
+#: components/theme/Register/Register
+msgid "Enter full name, e.g. John Smith."
+msgstr "Introduïu el nom complet, per exemple John Smith."
+
+#. Default: "Enter map Embed Code"
+#: components/manage/Blocks/Maps/Edit
+msgid "Enter map Embed Code"
+msgstr "Introduïu el codi d'inserció del mapa"
+
+#. Default: "Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
+#: components/manage/Controlpanels/Aliases
+msgid "Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
+msgstr ""
+
+#. Default: "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
+#: components/manage/Aliases/Aliases
+#: components/manage/Controlpanels/Aliases
+msgid "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
+msgstr ""
+
+#. Default: "Enter your current password."
+#: components/manage/Preferences/ChangePassword
+msgid "Enter your current password."
+msgstr "Introduïu la vostra contrasenya actual."
+
+#. Default: "Enter your email for verification."
+#: components/theme/PasswordReset/PasswordReset
+msgid "Enter your email for verification."
+msgstr ""
+
+#. Default: "Enter your new password. Minimum 8 characters."
+#: components/manage/Preferences/ChangePassword
+#: components/theme/PasswordReset/PasswordReset
+msgid "Enter your new password. Minimum 8 characters."
+msgstr "Introduïu la vostra nova contrasenya. Mínim 8 caràcters."
+
+#. Default: "Enter your username for verification."
+#: components/theme/PasswordReset/PasswordReset
+msgid "Enter your username for verification."
+msgstr ""
+
+#. Default: "Entries"
+#: components/manage/Blocks/ToC/Schema
+msgid "Entries"
+msgstr ""
+
+#. Default: "Error"
+#: components/manage/Add/Add
+#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/UndoControlpanel
+#: components/manage/Edit/Edit
+#: components/manage/Form/InlineForm
+#: components/manage/Toolbar/More
+#: components/manage/Widgets/SchemaWidget
+#: components/theme/ContactForm/ContactForm
+#: components/theme/Login/Login
+#: helpers/MessageLabels/MessageLabels
+msgid "Error"
+msgstr "Error"
+
+#. Default: "Error"
+#: components/manage/Controlpanels/Aliases
+msgid "ErrorHeader"
+msgstr ""
+
+#. Default: "Event"
+#: components/manage/Controlpanels/Rules/Rules
+msgid "Event"
+msgstr ""
+
+#. Default: "Event end date must be on or after {startDateValueOrStartFieldName}"
+#: helpers/MessageLabels/MessageLabels
+msgid "Event end date must be on or after {startDateValueOrStartFieldName}"
+msgstr ""
+
+#. Default: "Event listing"
+#: config/Views
+msgid "Event listing"
+msgstr "Llista d'esdeveniments"
+
+#. Default: "Event start date must be on or before {endDateValueOrEndFieldName}"
+#: helpers/MessageLabels/MessageLabels
+msgid "Event start date must be on or before {endDateValueOrEndFieldName}"
+msgstr ""
+
+#. Default: "Event view"
+#: config/Views
+msgid "Event view"
+msgstr "Esdeveniment"
+
+#. Default: "Exclude from navigation"
+#: components/manage/Contents/ContentsPropertiesModal
+msgid "Exclude from navigation"
+msgstr "Exclou de la navegació"
+
+#. Default: "Exclude this occurence"
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+msgid "Exclude this occurence"
+msgstr "Exclou aquesta ocurrència"
+
+#. Default: "Excluded from navigation"
+#: components/manage/Contents/Contents
+msgid "Excluded from navigation"
+msgstr "Exclòs de la navegació"
+
+#. Default: "Existing alternative urls for this item"
+#: components/manage/Aliases/Aliases
+msgid "Existing alternative urls for this item"
+msgstr ""
+
+#. Default: "Expand sidebar"
+#: components/manage/Sidebar/Sidebar
+msgid "Expand sidebar"
+msgstr "Amplieu la barra lateral"
+
+#. Default: "Expiration Date"
+#: components/manage/Contents/ContentsPropertiesModal
+msgid "Expiration Date"
+msgstr "Data de caducitat"
+
+#. Default: "Expiration date"
+#: components/manage/Contents/Contents
+msgid "Expiration date"
+msgstr "Data de caducitat"
+
+#. Default: "Expired"
+#: components/manage/Contents/ContentsItem
+msgid "Expired"
+msgstr "Caducat"
+
+#. Default: "External URL"
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+msgid "External URL"
+msgstr "URL externa"
+
+#. Default: "Facet"
+#: components/manage/Blocks/Search/schema
+msgid "Facet"
+msgstr "Faceta"
+
+#. Default: "Facet widget"
+#: components/manage/Blocks/Search/schema
+msgid "Facet widget"
+msgstr "Giny de faceta"
+
+#. Default: "Facets"
+#: components/manage/Blocks/Search/schema
+msgid "Facets"
+msgstr "Facetes"
+
+#. Default: "Facets on left side"
+#: config/Blocks
+msgid "Facets on left side"
+msgstr "Facetes al costat esquerre"
+
+#. Default: "Facets on right side"
+#: config/Blocks
+msgid "Facets on right side"
+msgstr "Facetes al costat dret"
+
+#. Default: "Facets on top"
+#: config/Blocks
+msgid "Facets on top"
+msgstr "Facetes a la part superior"
+
+#. Default: "Failed to undo transactions"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Failed To Undo Transactions"
+msgstr ""
+
+#. Default: "Field"
+#: components/manage/Blocks/Search/schema
+msgid "Field"
+msgstr "Camp"
+
+#. Default: "File"
+#: components/manage/Toolbar/Toolbar
+msgid "File"
+msgstr "Dossier"
+
+#. Default: "File size"
+#: components/manage/Contents/ContentsUploadModal
+msgid "File size"
+msgstr "Mida de l'arxiu"
+
+#. Default: "File view"
+#: config/Views
+msgid "File view"
+msgstr "Arxiu"
+
+#. Default: "Filename"
+#: components/manage/Contents/ContentsUploadModal
+msgid "Filename"
+msgstr "Nom de l'arxiu"
+
+#. Default: "Files uploaded: {uploadedFiles}"
+#: components/manage/Contents/ContentsUploadModal
+msgid "Files uploaded: {uploadedFiles}"
+msgstr "Fitxers pujats: {uploadedFiles}"
+
+#. Default: "Filter"
+#: helpers/MessageLabels/MessageLabels
+msgid "Filter"
+msgstr ""
+
+#. Default: "Filter Rules:"
+#: components/manage/Controlpanels/Rules/Rules
+msgid "Filter Rules:"
+msgstr ""
+
+#. Default: "Filter by prefix"
+#: components/manage/Controlpanels/Aliases
+msgid "Filter by prefix"
+msgstr ""
+
+#. Default: "Filter users by groups"
+#: helpers/MessageLabels/MessageLabels
+msgid "Filter users by groups"
+msgstr ""
+
+#. Default: "Filter…"
+#: components/manage/Contents/Contents
+msgid "Filter…"
+msgstr "Filtra..."
+
+#. Default: "First"
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+msgid "First"
+msgstr "Primer"
+
+#. Default: "Fix relations"
+#: helpers/MessageLabels/MessageLabels
+msgid "Fix relations"
+msgstr ""
+
+#. Default: "Fixed width columns"
+#: config/Blocks
+msgid "Fixed width table cells"
+msgstr "Columnes d'amplada fixa"
+
+#. Default: "Fold"
+#: components/manage/BlockChooser/BlockChooser
+msgid "Fold"
+msgstr "Plegar"
+
+#. Default: "Folder"
+#: components/manage/Contents/Contents
+msgid "Folder"
+msgstr "Carpeta"
+
+#. Default: "Folder listing"
+#: config/Views
+msgid "Folder listing"
+msgstr "Llistat"
+
+#. Default: "Forbidden"
+#: components/theme/Forbidden/Forbidden
+msgid "Forbidden"
+msgstr "Prohibit"
+
+#. Default: "Fourth"
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+msgid "Fourth"
+msgstr "Quart"
+
+#. Default: "From"
+#: components/theme/ContactForm/ContactForm
+msgid "From"
+msgstr "Des de"
+
+#. Default: "Full"
+#: components/manage/Blocks/Maps/Edit
+#: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
+msgid "Full"
+msgstr "Complet"
+
+#. Default: "Full Name"
+#: components/theme/Register/Register
+msgid "Full Name"
+msgstr "Nom complet"
+
+#. Default: "Fullname"
+#: helpers/MessageLabels/MessageLabels
+msgid "Fullname"
+msgstr "Nom complet"
+
+#. Default: "GNU GPL license"
+#: components/theme/Footer/Footer
+msgid "GNU GPL license"
+msgstr "Llicència GNU GPL"
+
+#. Default: "General"
+#: components/manage/Controlpanels/Controlpanels
+msgid "General"
+msgstr ""
+
+#. Default: "Global role"
+#: components/manage/Sharing/Sharing
+msgid "Global role"
+msgstr "Paper global"
+
+#. Default: "Google Maps Embedded Block"
+#: components/manage/Blocks/Maps/Edit
+msgid "Google Maps Embedded Block"
+msgstr "Bloc incrustat de Google Maps"
+
+#. Default: "Grid"
+#: components/manage/Blocks/Grid/schema
+msgid "Grid"
+msgstr ""
+
+#. Default: "Group"
+#: components/manage/Sharing/Sharing
+msgid "Group"
+msgstr "Grup"
+
+#. Default: "Group created"
+#: helpers/MessageLabels/MessageLabels
+msgid "Group created"
+msgstr "Grup creat"
+
+#. Default: "Group deleted"
+#: helpers/MessageLabels/MessageLabels
+msgid "Group deleted"
+msgstr ""
+
+#. Default: "Group roles updated"
+#: helpers/MessageLabels/MessageLabels
+msgid "Group roles updated"
+msgstr "S'han actualitzat els rols del grup"
+
+#. Default: "Groupname"
+#: components/manage/Controlpanels/Groups/GroupsControlpanel
+#: helpers/MessageLabels/MessageLabels
+msgid "Groupname"
+msgstr "Nom del grup"
+
+#. Default: "Groups"
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/Groups/GroupsControlpanel
+#: helpers/MessageLabels/MessageLabels
+msgid "Groups"
+msgstr "Grups"
+
+#. Default: "Groups are logical collections of users, such as departments and business units. Groups are not directly related to permissions on a global level, you normally use Roles for that - and let certain Groups have a particular role. The symbol{plone_svg}indicates a role inherited from membership in another group."
+#: components/manage/Controlpanels/Groups/GroupsControlpanel
+msgid "Groups are logical collections of users, such as departments and business units. Groups are not directly related to permissions on a global level, you normally use Roles for that - and let certain Groups have a particular role. The symbol{plone_svg}indicates a role inherited from membership in another group."
+msgstr "Els grups són col·leccions lògiques d'usuaris, com ara departaments i unitats de negoci. Els grups no estan directament relacionats amb els permisos a nivell global, normalment feu servir Rols per a això, i deixeu que determinats Grups tinguin un paper determinat. El símbol{plone_svg}indica un rol heretat de la pertinença a un altre grup."
+
+#. Default: "Header cell"
+#: config/Blocks
+msgid "Header cell"
+msgstr "Cel·la de capçalera"
+
+#. Default: "Headline"
+#: components/manage/Blocks/Grid/schema
+#: components/manage/Blocks/Listing/schema
+#: components/manage/Blocks/Search/schema
+msgid "Headline"
+msgstr "Titular"
+
+#. Default: "Headline level"
+#: components/manage/Blocks/Listing/schema
+msgid "Headline level"
+msgstr ""
+
+#. Default: "Hidden facets will still filter the results if proper parameters are passed in URLs"
+#: components/manage/Blocks/Search/schema
+msgid "Hidden facets will still filter the results if proper parameters are passed in URLs"
+msgstr "Les facetes ocultes encara filtraran els resultats si es passen els paràmetres adequats als URL"
+
+#. Default: "Hide Replies"
+#: components/theme/Comments/Comments
+msgid "Hide Replies"
+msgstr "Amaga les respostes"
+
+#. Default: "Hide facet?"
+#: components/manage/Blocks/Search/schema
+msgid "Hide facet?"
+msgstr "Amagar la faceta?"
+
+#. Default: "Hide filters"
+#: components/manage/Blocks/Search/components/Facets
+msgid "Hide filters"
+msgstr ""
+
+#. Default: "Hide title"
+#: components/manage/Blocks/ToC/Schema
+msgid "Hide title"
+msgstr ""
+
+#. Default: "History"
+#: components/manage/History/History
+#: components/manage/Toolbar/More
+msgid "History"
+msgstr "Història"
+
+#. Default: "#"
+#: components/manage/History/History
+msgid "History Version Number"
+msgstr "#"
+
+#. Default: "History of {title}"
+#: components/manage/History/History
+msgid "History of {title}"
+msgstr "Historial de {title}"
+
+#. Default: "Home"
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsBreadcrumbs
+#: components/manage/Contents/ContentsBreadcrumbsHomeItem
+#: components/manage/Sidebar/ObjectBrowserBody
+#: components/theme/Breadcrumbs/Breadcrumbs
+#: components/theme/Logo/Logo
+msgid "Home"
+msgstr "Inici"
+
+#. Default: "ID"
+#: components/manage/Contents/Contents
+msgid "ID"
+msgstr "Id"
+
+#. Default: "Icon View"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Icon View"
+msgstr ""
+
+#. Default: "If all of the following conditions are met:"
+#: components/manage/Controlpanels/Rules/ConfigureRule
+msgid "If all of the following conditions are met:"
+msgstr ""
+
+#. Default: "If selected, this item will not appear in the navigation tree"
+#: components/manage/Contents/ContentsPropertiesModal
+msgid "If selected, this item will not appear in the navigation tree"
+msgstr "Si se selecciona, aquest element no apareixerà a l'arbre de navegació"
+
+#. Default: "If this date is in the future, the content will not show up in listings and searches until this date."
+#: components/manage/Contents/ContentsPropertiesModal
+msgid "If this date is in the future, the content will not show up in listings and searches until this date."
+msgstr "Si aquesta data és en el futur, el contingut no apareixerà a les llistes i cerques fins a aquesta data."
+
+#. Default: "If you are certain this user has abandoned the object, you may unlock the object. You will then be able to edit it."
+#: components/manage/LockingToastsFactory/LockingToastsFactory
+msgid "If you are certain this user has abandoned the object, you may unlock the object. You will then be able to edit it."
+msgstr "Si esteu segur que aquest usuari ha abandonat l'objecte, podeu desbloquejar-lo. Aleshores podreu editar-lo."
+
+#. Default: "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
+#: components/theme/NotFound/NotFound
+#: components/theme/Unauthorized/Unauthorized
+msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
+msgstr "Si esteu segur que teniu l'adreça web correcta però trobeu un error, poseu-vos en contacte amb el {site_admin}."
+
+#. Default: "Image"
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Image/schema
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+msgid "Image"
+msgstr "imatge"
+
+#. Default: "Image gallery"
+#: config/Blocks
+msgid "Image gallery"
+msgstr "Galeria d'imatges"
+
+#. Default: "Image override"
+#: components/manage/Blocks/Teaser/schema
+msgid "Image override"
+msgstr ""
+
+#. Default: "Image size"
+#: components/manage/Blocks/Image/schema
+msgid "Image size"
+msgstr ""
+
+#. Default: "Image view"
+#: config/Views
+msgid "Image view"
+msgstr "Imatge"
+
+#. Default: "Include this occurrence"
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+msgid "Include this occurence"
+msgstr "Incloeu aquesta ocurrència"
+
+#. Default: "Info"
+#: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
+#: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Controlpanels/Controlpanel
+msgid "Info"
+msgstr "Informació"
+
+#. Default: "You have selected the option 'many users' or 'many groups'. Thus this control panel asks for input to show users and groups. If you want to see users and groups instantaneous, head over to user group settings. See the button on the left."
+#: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
+msgid "InfoUserGroupSettings"
+msgstr ""
+
+#. Default: "Inherit permissions from higher levels"
+#: components/manage/Sharing/Sharing
+msgid "Inherit permissions from higher levels"
+msgstr "Hereta els permisos dels nivells superiors"
+
+#. Default: "Inherited value"
+#: components/manage/Sharing/Sharing
+msgid "Inherited value"
+msgstr "Valor heretat"
+
+#. Default: "Insert col after"
+#: config/Blocks
+msgid "Insert col after"
+msgstr "Inseriu col després"
+
+#. Default: "Insert col before"
+#: config/Blocks
+msgid "Insert col before"
+msgstr "Inseriu el coll abans"
+
+#. Default: "Insert row after"
+#: config/Blocks
+msgid "Insert row after"
+msgstr "Insereix fila després"
+
+#. Default: "Insert row before"
+#: config/Blocks
+msgid "Insert row before"
+msgstr "Insereix fila abans"
+
+#. Default: "Inspect relations"
+#: helpers/MessageLabels/MessageLabels
+msgid "Inspect relations"
+msgstr ""
+
+#. Default: "Install"
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Install"
+msgstr "Instal·lar"
+
+#. Default: "Installed"
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Installed"
+msgstr "Instal·lat"
+
+#. Default: "Installed version"
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Installed version"
+msgstr "Versió instal·lada"
+
+#. Default: "Installing a third party add-on"
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Installing a third party add-on"
+msgstr ""
+
+#. Default: "days"
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Interval Daily"
+msgstr "Interval diari"
+
+#. Default: "Month(s)"
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Interval Monthly"
+msgstr "Mes/Messos"
+
+#. Default: "week(s)"
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Interval Weekly"
+msgstr "Setmana(es)"
+
+#. Default: "year(s)"
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Interval Yearly"
+msgstr "Any(s)"
+
+#. Default: "Invalid block - Will be removed on saving"
+#: components/manage/Blocks/Block/DefaultView
+#: components/theme/View/RenderBlocks
+msgid "Invalid Block"
+msgstr ""
+
+#. Default: "Invalid teaser source"
+#: components/manage/Blocks/Teaser/Data
+msgid "Invalid teaser source"
+msgstr ""
+
+#. Default: "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
+#: helpers/MessageLabels/MessageLabels
+msgid "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
+msgstr ""
+
+#. Default: "Item batch size"
+#: components/manage/Widgets/QuerystringWidget
+msgid "Item batch size"
+msgstr "Mida del lot d'articles"
+
+#. Default: "Item successfully moved."
+#: components/manage/Contents/Contents
+msgid "Item successfully moved."
+msgstr "L'element s'ha mogut correctament."
+
+#. Default: "Item(s) copied."
+#: components/manage/Contents/Contents
+msgid "Item(s) copied."
+msgstr "Elements copiats."
+
+#. Default: "Item(s) cut."
+#: components/manage/Contents/Contents
+msgid "Item(s) cut."
+msgstr "Element(s) tallat."
+
+#. Default: "Item(s) has been updated."
+#: components/manage/Contents/Contents
+msgid "Item(s) has been updated."
+msgstr "Els elements s'han actualitzat."
+
+#. Default: "Item(s) pasted."
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+msgid "Item(s) pasted."
+msgstr "Elements enganxats."
+
+#. Default: "Item(s) state has been updated."
+#: components/manage/Contents/Contents
+msgid "Item(s) state has been updated."
+msgstr "L'estat dels elements s'ha actualitzat."
+
+#. Default: "Items"
+#: components/manage/Controlpanels/ContentTypes
+msgid "Items"
+msgstr "Articles"
+
+#. Default: "Items must be unique."
+#: components/manage/Form/ModalForm
+#: helpers/MessageLabels/MessageLabels
+msgid "Items must be unique."
+msgstr "Els articles han de ser únics."
+
+#. Default: "Label"
+#: components/manage/Blocks/Search/schema
+msgid "Label"
+msgstr "Etiqueta"
+
+#. Default: "Language"
+#: components/manage/Preferences/PersonalPreferences
+msgid "Language"
+msgstr "Llenguatge"
+
+#. Default: "Language independent field."
+#: components/manage/Widgets/FormFieldWrapper
+msgid "Language independent field."
+msgstr ""
+
+#. Default: "Large"
+#: components/manage/Widgets/ImageSizeWidget
+msgid "Large"
+msgstr ""
+
+#. Default: "Last"
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+msgid "Last"
+msgstr "Últim"
+
+#. Default: "Last comment date"
+#: components/manage/Contents/Contents
+msgid "Last comment date"
+msgstr "Data de l'últim comentari"
+
+#. Default: "Last modified"
+#: components/manage/Contents/ContentsUploadModal
+msgid "Last modified"
+msgstr "Última modificació"
+
+#. Default: "Latest available configuration"
+#: components/manage/Controlpanels/UpgradeControlPanel
+msgid "Latest available configuration"
+msgstr ""
+
+#. Default: "Latest version"
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Latest version"
+msgstr "Última versió"
+
+#. Default: "Layout"
+#: components/manage/Controlpanels/ContentTypesActions
+msgid "Layout"
+msgstr "Disseny"
+
+#. Default: "Lead Image"
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+msgid "Lead Image"
+msgstr "Imatge Principal"
+
+#. Default: "Left"
+#: components/manage/Blocks/Maps/Edit
+#: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
+msgid "Left"
+msgstr "A l'esquerra"
+
+#. Default: "Less filters"
+#: components/manage/Blocks/Search/components/Facets
+msgid "Less filters"
+msgstr ""
+
+#. Default: "Link"
+#: components/manage/Toolbar/Toolbar
+msgid "Link"
+msgstr "Enllaç"
+
+#. Default: "Anchor link copied to the clipboard"
+#: helpers/MessageLabels/MessageLabels
+msgid "Link copied to clipboard"
+msgstr ""
+
+#. Default: "Link more"
+#: components/manage/Blocks/Listing/schema
+msgid "Link more"
+msgstr "Enllaça més"
+
+#. Default: "Link redirect view"
+#: config/Views
+msgid "Link redirect view"
+msgstr "Redirecció d'enllaç"
+
+#. Default: "Link settings"
+#: components/manage/Blocks/Image/schema
+msgid "Link settings"
+msgstr ""
+
+#. Default: "Link Title"
+#: components/manage/Blocks/Listing/schema
+msgid "Link title"
+msgstr "Títol de l'enllaç"
+
+#. Default: "Link to"
+#: components/manage/Blocks/Image/schema
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Listing/schema
+msgid "Link to"
+msgstr "Enllaç a"
+
+#. Default: "Link translation for"
+#: components/manage/Multilingual/ManageTranslations
+msgid "Link translation for"
+msgstr "Traducció d'enllaços per"
+
+#. Default: "Linking this item with hyperlink in text"
+#: components/manage/LinksToItem/LinksToItem
+msgid "Linking this item with hyperlink in text"
+msgstr ""
+
+#. Default: "Links and references"
+#: components/manage/LinksToItem/LinksToItem
+#: components/manage/Toolbar/More
+msgid "Links and references"
+msgstr ""
+
+#. Default: "List View"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "List View"
+msgstr ""
+
+#. Default: "Listing"
+#: components/manage/Blocks/Listing/schema
+msgid "Listing"
+msgstr "llistat"
+
+#. Default: "Listing view"
+#: config/Views
+msgid "Listing view"
+msgstr "Llistat"
+
+#. Default: "Load more..."
+#: components/theme/Comments/Comments
+msgid "Load more"
+msgstr "Carrega més..."
+
+#. Default: "Loading."
+#: components/manage/Controlpanels/Groups/GroupsControlpanel
+#: components/manage/Controlpanels/Users/UsersControlpanel
+#: components/manage/Form/ModalForm
+msgid "Loading"
+msgstr "Carregant."
+
+#. Default: "Login"
+#: components/theme/Login/Login
+msgid "Log In"
+msgstr "Iniciar Sessió"
+
+#. Default: "Log in"
+#: components/theme/Anontools/Anontools
+#: components/theme/Login/Login
+msgid "Log in"
+msgstr "Iniciar Sessió"
+
+#. Default: "Logged out"
+#: components/theme/Logout/Logout
+msgid "Logged out"
+msgstr ""
+
+#. Default: "Login"
+#: components/theme/Login/Login
+msgid "Login"
+msgstr "Iniciar Sessió"
+
+#. Default: "Login Failed"
+#: components/theme/Login/Login
+msgid "Login Failed"
+msgstr "Error a l'iniciar sessió"
+
+#. Default: "Login Name"
+#: components/theme/Login/Login
+msgid "Login Name"
+msgstr "Nom d'usuari"
+
+#. Default: "Logo of"
+#: components/theme/Logo/Logo
+msgid "Logo of"
+msgstr ""
+
+#. Default: "Logout"
+#: components/manage/Toolbar/PersonalTools
+msgid "Logout"
+msgstr "Tancar sessió"
+
+#. Default: "Made by {creator} on {date}. This is not a working copy anymore, but the main content."
+#: components/manage/Toolbar/More
+msgid "Made by {creator} on {date}. This is not a working copy anymore, but the main content."
+msgstr "Fet per {creator} el {date}. Aquesta ja no és una còpia de treball, sinó el contingut principal."
+
+#. Default: "Reduce cell padding"
+#: config/Blocks
+msgid "Make the table compact"
+msgstr "Redueix els marges de la cel·la"
+
+#. Default: "Manage Translations"
+#: components/manage/Multilingual/ManageTranslations
+#: components/manage/Toolbar/More
+msgid "Manage Translations"
+msgstr "Gestionar les traduccions"
+
+#. Default: "Manage content…"
+#: components/manage/Toolbar/More
+msgid "Manage content…"
+msgstr ""
+
+#. Default: "Manage translations for {title}"
+#: components/manage/Multilingual/ManageTranslations
+msgid "Manage translations for {title}"
+msgstr "Gestiona les traduccions per a {title}"
+
+#. Default: "Manual"
+#: components/manage/Controlpanels/Aliases
+msgid "Manual"
+msgstr ""
+
+#. Default: "Manually or automatically added?"
+#: components/manage/Controlpanels/Aliases
+msgid "Manually or automatically added?"
+msgstr ""
+
+#. Default: "Many relations found. Please search."
+#: helpers/MessageLabels/MessageLabels
+msgid "Many relations found. Please search."
+msgstr ""
+
+#. Default: "Maps"
+#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Maps/schema
+msgid "Maps"
+msgstr ""
+
+#. Default: "Maps URL"
+#: components/manage/Blocks/Maps/schema
+msgid "Maps URL"
+msgstr "URL del mapa"
+
+#. Default: "Maximum length is {len}."
+#: helpers/MessageLabels/MessageLabels
+msgid "Maximum length is {len}."
+msgstr "La longitud màxima és {len}."
+
+#. Default: "Maximum value is {len}."
+#: helpers/MessageLabels/MessageLabels
+msgid "Maximum value is {len}."
+msgstr "El valor màxim és {len}."
+
+#. Default: "Medium"
+#: components/manage/Widgets/ImageSizeWidget
+msgid "Medium"
+msgstr ""
+
+#. Default: "Membership updated"
+#: helpers/MessageLabels/MessageLabels
+msgid "Membership updated"
+msgstr ""
+
+#. Default: "Message"
+#: components/theme/ContactForm/ContactForm
+msgid "Message"
+msgstr "Missatge"
+
+#. Default: "Minimum length is {len}."
+#: components/manage/Form/ModalForm
+#: helpers/MessageLabels/MessageLabels
+msgid "Minimum length is {len}."
+msgstr "La longitud mínima és {len}."
+
+#. Default: "Minimum value is {len}."
+#: helpers/MessageLabels/MessageLabels
+msgid "Minimum value is {len}."
+msgstr "El valor mínim és {len}."
+
+#. Default: "Moderate Comments"
+#: components/manage/Controlpanels/Controlpanels
+msgid "Moderate Comments"
+msgstr "Comentaris moderats"
+
+#. Default: "Moderate comments"
+#: components/manage/Controlpanels/ModerateComments
+msgid "Moderate comments"
+msgstr "Modera els comentaris"
+
+#. Default: "Monday and Friday"
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Monday and Friday"
+msgstr "dilluns i divendres"
+
+#. Default: "Day"
+#: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
+msgid "Month day"
+msgstr "Dia"
+
+#. Default: "Monthly"
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Monthly"
+msgstr "Mensual"
+
+#. Default: "More"
+#: components/manage/Toolbar/Toolbar
+msgid "More"
+msgstr "Més"
+
+#. Default: "More filters"
+#: components/manage/Blocks/Search/components/Facets
+msgid "More filters"
+msgstr ""
+
+#. Default: "More information about the upgrade procedure can be found in the documentation section of plone.org in the Upgrade Guide."
+#: components/manage/Controlpanels/UpgradeControlPanel
+msgid "More information about the upgrade procedure can be found in the documentation section of plone.org in the Upgrade Guide."
+msgstr ""
+
+#. Default: "Mosaic layout"
+#: config/Views
+msgid "Mosaic layout"
+msgstr ""
+
+#. Default: "Move down"
+#: components/manage/Controlpanels/Rules/ConfigureRule
+msgid "Move down"
+msgstr ""
+
+#. Default: "Move to bottom of folder"
+#: components/manage/Contents/ContentsItem
+msgid "Move to bottom of folder"
+msgstr "Mou a la part inferior de la carpeta"
+
+#. Default: "Move to top of folder"
+#: components/manage/Contents/ContentsItem
+msgid "Move to top of folder"
+msgstr "Mou a la part superior de la carpeta"
+
+#. Default: "Move up"
+#: components/manage/Controlpanels/Rules/ConfigureRule
+msgid "Move up"
+msgstr ""
+
+#. Default: "Multiple choices?"
+#: components/manage/Blocks/Search/schema
+msgid "Multiple choices?"
+msgstr "Múltiples opcions?"
+
+#. Default: "My email is"
+#: components/theme/PasswordReset/PasswordReset
+msgid "My email is"
+msgstr ""
+
+#. Default: "My user name is"
+#: components/theme/PasswordReset/PasswordReset
+msgid "My username is"
+msgstr "El meu nom d'usuari és"
+
+#. Default: "Name"
+#: components/manage/Sharing/Sharing
+#: components/theme/ContactForm/ContactForm
+msgid "Name"
+msgstr "Nom"
+
+#. Default: "Narrow"
+#: components/manage/Widgets/AlignWidget
+msgid "Narrow"
+msgstr ""
+
+#. Default: "Navigate back"
+#: error
+msgid "Navigate back"
+msgstr "Navega enrere"
+
+#. Default: "Navigation"
+#: components/theme/Navigation/ContextNavigation
+msgid "Navigation"
+msgstr "Navegació"
+
+#. Default: "New password"
+#: components/manage/Preferences/ChangePassword
+#: components/theme/PasswordReset/PasswordReset
+msgid "New password"
+msgstr "Nova contrasenya"
+
+#. Default: "News Item"
+#: components/manage/Toolbar/Toolbar
+msgid "News Item"
+msgstr "Noticia"
+
+#. Default: "News item view"
+#: config/Views
+msgid "News item view"
+msgstr "Notícia"
+
+#. Default: "No"
+#: components/manage/Contents/ContentsItem
+#: components/manage/Controlpanels/ContentTypes
+msgid "No"
+msgstr "No"
+
+#. Default: "No transactions found"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "No Transactions Found"
+msgstr ""
+
+#. Default: "No transactions selected"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "No Transactions Selected"
+msgstr ""
+
+#. Default: "No transactions selected to do undo"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "No Transactions Selected To Do Undo"
+msgstr ""
+
+#. Default: "No Video selected"
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "No Video selected"
+msgstr ""
+
+#. Default: "No addons found"
+#: components/manage/Controlpanels/VersionOverview
+msgid "No addons found"
+msgstr ""
+
+#. Default: "No broken relations found."
+#: components/manage/Controlpanels/Relations/RelationsMatrix
+msgid "No broken relations found."
+msgstr ""
+
+#. Default: "There is no connection to the server, due to a timeout o no network connection."
+#: components/theme/RequestTimeout/RequestTimeout
+msgid "No connection to the server"
+msgstr ""
+
+#. Default: "No image selected"
+#: components/manage/Blocks/Image/ImageSidebar
+msgid "No image selected"
+msgstr ""
+
+#. Default: "No image set in Lead Image content field"
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+msgid "No image set in Lead Image content field"
+msgstr "No s'ha establert cap imatge al camp de contingut de la imatge principal"
+
+#. Default: "No image set in image content field"
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+msgid "No image set in image content field"
+msgstr "No s'ha establert cap imatge al camp de contingut de la imatge"
+
+#. Default: "No images found."
+#: components/manage/Blocks/Listing/GalleryNoResultsComponent
+msgid "No images found."
+msgstr ""
+
+#. Default: "No items found in this container."
+#: components/manage/Blocks/Listing/ListingBody
+msgid "No items found in this container."
+msgstr "No s'han trobat articles en aquest contenidor."
+
+#. Default: "No items selected"
+#: components/manage/Widgets/ObjectBrowserWidget
+msgid "No items selected"
+msgstr "No s'ha seleccionat cap element"
+
+#. Default: "No links to this item found."
+#: components/manage/LinksToItem/LinksToItem
+msgid "No links to this item found."
+msgstr ""
+
+#. Default: "No map selected"
+#: components/manage/Blocks/Maps/MapsSidebar
+msgid "No map selected"
+msgstr "No s'ha seleccionat cap mapa"
+
+#. Default: "No occurences set"
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+msgid "No occurences set"
+msgstr "No s'ha establert cap ocurrència"
+
+#. Default: "No options"
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectAutoComplete
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
+msgid "No options"
+msgstr "Sense opcions"
+
+#. Default: "No relation found"
+#: helpers/MessageLabels/MessageLabels
+msgid "No relation found"
+msgstr ""
+
+#. Default: "No results found"
+#: components/manage/BlockChooser/BlockChooser
+#: components/theme/Search/Search
+msgid "No results found"
+msgstr "Sense resultats"
+
+#. Default: "No results found."
+#: components/manage/Blocks/Listing/DefaultNoResultsComponent
+#: components/manage/Widgets/ReferenceWidget
+msgid "No results found."
+msgstr "Sense resultats."
+
+#. Default: "No selection"
+#: components/manage/Blocks/Search/components/SortOn
+#: components/manage/Widgets/QuerySortOnWidget
+#: components/manage/Widgets/QuerystringWidget
+msgid "No selection"
+msgstr "Sense selecció"
+
+#. Default: "This addon does not provide an uninstall profile."
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "No uninstall profile"
+msgstr "Aquest complement no proporciona un perfil de desinstal·lació."
+
+#. Default: "No user found"
+#: helpers/MessageLabels/MessageLabels
+msgid "No user found"
+msgstr ""
+
+#. Default: "No value"
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/ReferenceWidget
+#: components/manage/Widgets/SelectUtils
+#: components/manage/Widgets/SelectWidget
+msgid "No value"
+msgstr "Sense valor"
+
+#. Default: "No workflow"
+#: components/manage/Workflow/Workflow
+msgid "No workflow"
+msgstr "Sense flux de treball"
+
+#. Default: "None"
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsItem
+msgid "None"
+msgstr "Cap"
+
+#. Default: "Note"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Note"
+msgstr ""
+
+#. Default: "Note that roles set here apply directly to a user. The symbol{plone_svg}indicates a role inherited from membership in a group."
+#: components/manage/Controlpanels/Users/UsersControlpanel
+msgid "Note that roles set here apply directly to a user. The symbol{plone_svg}indicates a role inherited from membership in a group."
+msgstr "Tingueu en compte que els rols establerts aquí s'apliquen directament a un usuari. El símbol{plone_svg}indica un rol heretat de la pertinença a un grup."
+
+#. Default: "Number of active objects"
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Number of active objects"
+msgstr "Nombre d'objectes actius"
+
+#. Default: "Object Size"
+#: components/manage/Contents/Contents
+msgid "Object Size"
+msgstr "Mida de l'objecte"
+
+#. Default: "occurrence(s)"
+#: components/manage/Widgets/RecurrenceWidget/EndField
+msgid "Occurences"
+msgstr "esdeveniment(s)"
+
+#. Default: "Ok"
+#: components/manage/Delete/Delete
+msgid "Ok"
+msgstr "D'acord"
+
+#. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines."
+#: components/manage/Widgets/IdWidget
+msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines."
+msgstr ""
+
+#. Default: "Open in a new tab"
+#: components/manage/Blocks/Image/schema
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Teaser/schema
+msgid "Open in a new tab"
+msgstr "Obre en una pestanya nova"
+
+#. Default: "Open menu"
+#: components/theme/Navigation/Navigation
+msgid "Open menu"
+msgstr "Obre el menú"
+
+#. Default: "Open object browser"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
+#: components/manage/Widgets/ObjectBrowserWidget
+msgid "Open object browser"
+msgstr "Obre el navegador d'objectes"
+
+#. Default: "Order"
+#: components/manage/Sidebar/Sidebar
+msgid "Order"
+msgstr ""
+
+#. Default: "Ordered"
+#: components/manage/Blocks/ToC/Schema
+msgid "Ordered"
+msgstr ""
+
+#. Default: "Origin"
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+msgid "Origin"
+msgstr "Origen"
+
+#. Default: "Overview of relations of all content items"
+#: components/manage/LinksToItem/LinksToItem
+msgid "Overview of relations of all content items"
+msgstr ""
+
+#. Default: "Page"
+#: components/manage/Toolbar/Toolbar
+msgid "Page"
+msgstr "Pàgina"
+
+#. Default: "Parent fieldset"
+#: components/manage/Widgets/SchemaWidget
+msgid "Parent fieldset"
+msgstr "Conjunt de camps pare"
+
+#. Default: "Password"
+#: components/theme/Login/Login
+#: helpers/MessageLabels/MessageLabels
+msgid "Password"
+msgstr "Contrasenya"
+
+#. Default: "Password reset"
+#: components/theme/PasswordReset/PasswordReset
+#: components/theme/PasswordReset/RequestPasswordReset
+msgid "Password reset"
+msgstr "Restableix la contrasenya"
+
+#. Default: "Passwords do not match."
+#: components/theme/PasswordReset/PasswordReset
+msgid "Passwords do not match."
+msgstr "Les contrasenyes no coincideixen."
+
+#. Default: "Paste"
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+msgid "Paste"
+msgstr "Enganxar"
+
+#. Default: "Paste blocks"
+#: helpers/MessageLabels/MessageLabels
+msgid "Paste blocks"
+msgstr "Enganxa blocs"
+
+#. Default: "Perform the following actions:"
+#: components/manage/Controlpanels/Rules/ConfigureRule
+msgid "Perform the following actions:"
+msgstr ""
+
+#. Default: "Permissions have been updated successfully"
+#: components/manage/Sharing/Sharing
+msgid "Permissions have been updated successfully"
+msgstr "Els permisos s'han actualitzat correctament"
+
+#. Default: "Permissions updated"
+#: components/manage/Sharing/Sharing
+msgid "Permissions updated"
+msgstr "Permisos actualitzats"
+
+#. Default: "Personal Information"
+#: components/manage/Toolbar/Toolbar
+msgid "Personal Information"
+msgstr "Informació personal"
+
+#. Default: "Personal Preferences"
+#: components/manage/Preferences/PersonalPreferences
+#: components/manage/Toolbar/Toolbar
+msgid "Personal Preferences"
+msgstr "Preferències personals"
+
+#. Default: "Personal tools"
+#: components/manage/Toolbar/More
+#: components/manage/Toolbar/Toolbar
+msgid "Personal tools"
+msgstr "Eines personals"
+
+#. Default: "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
+#: components/manage/Contents/ContentsPropertiesModal
+msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
+msgstr "Responsables de la creació del contingut d'aquest article. Introduïu una llista de noms d'usuari, un per línia. El creador principal hauria de ser primer."
+
+#. Default: "Please choose an existing content as source for this element"
+#: components/manage/Blocks/Teaser/DefaultBody
+msgid "Please choose an existing content as source for this element"
+msgstr ""
+
+#. Default: "Please continue with the upgrade."
+#: components/manage/Controlpanels/Controlpanels
+msgid "Please continue with the upgrade."
+msgstr ""
+
+#. Default: "Please ensure you have a backup of your site before performing the upgrade."
+#: components/manage/Controlpanels/UpgradeControlPanel
+msgid "Please ensure you have a backup of your site before performing the upgrade."
+msgstr ""
+
+#. Default: "Please enter a valid URL by deleting the block and adding a new video block."
+#: components/manage/Blocks/Video/Body
+msgid "Please enter a valid URL by deleting the block and adding a new video block."
+msgstr "Introduïu un URL vàlid suprimint el bloc i afegint un bloc de vídeo nou."
+
+#. Default: "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
+#: components/manage/Blocks/Maps/Edit
+msgid "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
+msgstr "Introduïu el codi d'inserció proporcionat per Google Maps -> Comparteix -> Insereix el mapa. Hauria de contenir el codi <iframe> ."
+
+#. Default: "Please fill out the form below to set your password."
+#: components/theme/PasswordReset/PasswordReset
+msgid "Please fill out the form below to set your password."
+msgstr "Si us plau, omple el formulari següent per configurar la teva contrasenya."
+
+#. Default: "Please search for users or use the filters on the side."
+#: helpers/MessageLabels/MessageLabels
+msgid "Please search for users or use the filters on the side."
+msgstr ""
+
+#. Default: "Please upgrade to plone.restapi >= 8.24.0."
+#: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
+msgid "Please upgrade to plone.restapi >= 8.24.0."
+msgstr ""
+
+#. Default: "Please upgrade to plone.restapi >= 8.39.0."
+#: components/manage/Controlpanels/Relations/Relations
+msgid "Please upgrade to plone.restapi >= 8.39.0."
+msgstr ""
+
+#. Default: "Plone Foundation"
+#: components/theme/Footer/Footer
+msgid "Plone Foundation"
+msgstr "Fundació Plone"
+
+#. Default: "Plone{reg} Open Source CMS/WCM"
+#: components/theme/Footer/Footer
+msgid "Plone{reg} Open Source CMS/WCM"
+msgstr "Plone{reg} CMS/WCM de codi obert"
+
+#. Default: "Position changed"
+#: components/manage/Controlpanels/Rules/ConfigureRule
+msgid "Position changed"
+msgstr ""
+
+#. Default: "Possible values (Enter allowed choices one per line)."
+#: components/manage/Widgets/SchemaWidget
+msgid "Possible values"
+msgstr "Valors possibles (introduïu les opcions permeses una per línia)."
+
+#. Default: "Powered by Plone & Python"
+#: components/theme/Footer/Footer
+msgid "Powered by Plone & Python"
+msgstr "Desenvolupat amb Plone i Python"
+
+#. Default: "Preferences"
+#: components/manage/Toolbar/PersonalTools
+msgid "Preferences"
+msgstr "Preferències"
+
+#. Default: "Prettify your code"
+#: components/manage/Blocks/HTML/Edit
+msgid "Prettify your code"
+msgstr "Prepareu el vostre codi"
+
+#. Default: "Preview"
+#: components/manage/Blocks/HTML/Edit
+#: components/manage/Contents/ContentsUploadModal
+msgid "Preview"
+msgstr "Vista prèvia"
+
+#. Default: "Preview Image URL"
+#: components/manage/Blocks/Video/schema
+msgid "Preview Image URL"
+msgstr "Previsualitza l'URL de la imatge"
+
+#. Default: "Profile"
+#: components/manage/Toolbar/PersonalTools
+msgid "Profile"
+msgstr "Perfil"
+
+#. Default: "Properties"
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsPropertiesModal
+msgid "Properties"
+msgstr "Propietats"
+
+#. Default: "Publication date"
+#: components/manage/Contents/Contents
+msgid "Publication date"
+msgstr "Data de publicació"
+
+#. Default: "Publishing Date"
+#: components/manage/Contents/ContentsPropertiesModal
+msgid "Publishing Date"
+msgstr "Data de publicació"
+
+#. Default: "Query"
+#: components/manage/Blocks/Listing/schema
+msgid "Query"
+msgstr "Consulta"
+
+#. Default: "Re-enter the password. Make sure the passwords are identical."
+#: components/manage/Preferences/ChangePassword
+#: components/theme/PasswordReset/PasswordReset
+msgid "Re-enter the password. Make sure the passwords are identical."
+msgstr "Torneu a introduir la contrasenya. Assegureu-vos que les contrasenyes són idèntiques."
+
+#. Default: "Read More…"
+#: components/theme/Search/Search
+#: components/theme/View/SummaryView
+msgid "Read More…"
+msgstr "Llegeix més…"
+
+#. Default: "Read only for this type of relation."
+#: components/manage/Controlpanels/Relations/RelationsListing
+msgid "Read only for this type of relation."
+msgstr ""
+
+#. Default: "Rearrange items by…"
+#: components/manage/Contents/Contents
+msgid "Rearrange items by…"
+msgstr "Reorganitza els elements per..."
+
+#. Default: "Ends"
+#: components/manage/Widgets/RecurrenceWidget/EndField
+msgid "Recurrence ends"
+msgstr "Acaba"
+
+#. Default: "after"
+#: components/manage/Widgets/RecurrenceWidget/EndField
+msgid "Recurrence ends after"
+msgstr "Després"
+
+#. Default: "on"
+#: components/manage/Widgets/RecurrenceWidget/EndField
+msgid "Recurrence ends on"
+msgstr "La recurrència acava el"
+
+#. Default: "Redo"
+#: components/manage/Form/UndoToolbar
+msgid "Redo"
+msgstr ""
+
+#. Default: "Minimalistic table design"
+#: config/Blocks
+msgid "Reduce complexity"
+msgstr "Disseny de taula minimalista"
+
+#. Default: "Referencing this item as related item"
+#: components/manage/LinksToItem/LinksToItem
+msgid "Referencing this item as related item"
+msgstr ""
+
+#. Default: "Referencing this item with {relationship}"
+#: components/manage/LinksToItem/LinksToItem
+msgid "Referencing this item with {relationship}"
+msgstr ""
+
+#. Default: "Refresh source content"
+#: components/manage/Blocks/Teaser/Data
+msgid "Refresh source content"
+msgstr ""
+
+#. Default: "Register"
+#: components/theme/Anontools/Anontools
+#: components/theme/Login/Login
+#: components/theme/Register/Register
+msgid "Register"
+msgstr "Registrar-se"
+
+#. Default: "Registration form"
+#: components/theme/Register/Register
+msgid "Registration form"
+msgstr "Formulari d'inscripció"
+
+#. Default: "Relation"
+#: components/manage/Controlpanels/Relations/RelationsMatrix
+#: helpers/MessageLabels/MessageLabels
+msgid "Relation name"
+msgstr ""
+
+#. Default: "Relations"
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/Relations/Relations
+#: helpers/MessageLabels/MessageLabels
+msgid "Relations"
+msgstr ""
+
+#. Default: "Relations are editable with plone.api >= 2.0.3."
+#: components/manage/Controlpanels/Relations/RelationsListing
+msgid "Relations are editable with plone.api >= 2.0.3."
+msgstr ""
+
+#. Default: "Relations updated"
+#: helpers/MessageLabels/MessageLabels
+msgid "Relations updated"
+msgstr ""
+
+#. Default: "Relevance"
+#: components/theme/Search/Search
+msgid "Relevance"
+msgstr "Pertinència"
+
+#. Default: "Remove"
+#: components/manage/Aliases/Aliases
+msgid "Remove"
+msgstr ""
+
+#. Default: "Remove element {index}"
+#: components/manage/Blocks/Container/EditBlockWrapper
+msgid "Remove element {index}"
+msgstr ""
+
+#. Default: "Remove item"
+#: components/manage/Widgets/ObjectListWidget
+msgid "Remove item"
+msgstr "Elimina l'element"
+
+#. Default: "Remove"
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Remove recurrence"
+msgstr "Elimina"
+
+#. Default: "Remove selected"
+#: components/manage/Controlpanels/Aliases
+msgid "Remove selected"
+msgstr ""
+
+#. Default: "Remove term"
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Remove term"
+msgstr "Elimina el terme"
+
+#. Default: "Remove users from group"
+#: helpers/MessageLabels/MessageLabels
+msgid "Remove users from group"
+msgstr ""
+
+#. Default: "Remove working copy"
+#: components/manage/Toolbar/More
+msgid "Remove working copy"
+msgstr "Elimina la còpia de treball"
+
+#. Default: "Rename"
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+msgid "Rename"
+msgstr "Canviar el nom"
+
+#. Default: "Renaming items..."
+#: components/manage/Contents/ContentsRenameModal
+msgid "Rename Items Loading Message"
+msgstr "S'està canviant el nom dels elements..."
+
+#. Default: "Rename items"
+#: components/manage/Contents/ContentsRenameModal
+msgid "Rename items"
+msgstr "Canvia el nom dels elements"
+
+#. Default: "Repeat"
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Repeat"
+msgstr "Repetiu"
+
+#. Default: "Repeat every"
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Repeat every"
+msgstr "Repetiu-ne totes"
+
+#. Default: "Repeat on"
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Repeat on"
+msgstr "Repetiu"
+
+#. Default: "Replace existing file"
+#: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
+msgid "Replace existing file"
+msgstr "Substitueix el fitxer existent"
+
+#. Default: "Reply"
+#: components/theme/Comments/Comments
+msgid "Reply"
+msgstr "Respon"
+
+#. Default: "Required"
+#: components/manage/Widgets/SchemaWidget
+#: components/manage/Widgets/SelectWidget
+msgid "Required"
+msgstr "Obligatori"
+
+#. Default: "Required input is missing."
+#: components/manage/Form/ModalForm
+#: helpers/MessageLabels/MessageLabels
+msgid "Required input is missing."
+msgstr "Falta l'entrada necessària."
+
+#. Default: "Reset element {index}"
+#: components/manage/Blocks/Container/EditBlockWrapper
+msgid "Reset element {index}"
+msgstr ""
+
+#. Default: "Reset title"
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Reset term title"
+msgstr "Restableix el títol"
+
+#. Default: "Reset the block"
+#: components/manage/Blocks/Teaser/Data
+msgid "Reset the block"
+msgstr ""
+
+#. Default: "Results limit"
+#: components/manage/Widgets/QuerystringWidget
+msgid "Results limit"
+msgstr "Límit de resultats"
+
+#. Default: "Results preview"
+#: components/manage/Blocks/Listing/Edit
+msgid "Results preview"
+msgstr "Vista prèvia dels resultats"
+
+#. Default: "Results template"
+#: components/manage/Blocks/Search/SearchBlockEdit
+msgid "Results template"
+msgstr "Plantilla de resultats"
+
+#. Default: "Reversed order"
+#: components/manage/Widgets/QuerystringWidget
+msgid "Reversed order"
+msgstr "Ordre invertit"
+
+#. Default: "Revert to this revision"
+#: components/manage/History/History
+msgid "Revert to this revision"
+msgstr "Torna a aquesta revisió"
+
+#. Default: "Review state"
+#: components/manage/Contents/Contents
+#: components/manage/LinksToItem/LinksToItem
+msgid "Review state"
+msgstr "Estat de revisió"
+
+#. Default: "Richtext"
+#: components/manage/Widgets/SchemaWidget
+msgid "Richtext"
+msgstr "Text enriquit"
+
+#. Default: "Right"
+#: components/manage/Blocks/Maps/Edit
+#: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
+msgid "Right"
+msgstr "Dret"
+
+#. Default: "Rights"
+#: components/manage/Contents/ContentsPropertiesModal
+msgid "Rights"
+msgstr "drets"
+
+#. Default: "Roles"
+#: helpers/MessageLabels/MessageLabels
+msgid "Roles"
+msgstr "Funcions"
+
+#. Default: "Root"
+#: components/manage/Contents/ContentsBreadcrumbs
+#: components/manage/Contents/ContentsBreadcrumbsRootItem
+msgid "Root"
+msgstr "Arrel"
+
+#. Default: "Rule added"
+#: components/manage/Controlpanels/Rules/AddRule
+msgid "Rule added"
+msgstr ""
+
+#. Default: "Rule enable changed"
+#: components/manage/Controlpanels/Rules/Rules
+msgid "Rule enable changed"
+msgstr ""
+
+#. Default: "Rules"
+#: components/manage/Rules/Rules
+#: components/manage/Toolbar/More
+msgid "Rules"
+msgstr ""
+
+#. Default: "Rules execute when a triggering event occurs. Rule actions will only be invoked if all the rule's conditions are met. You can add new actions and conditions using the buttons below."
+#: components/manage/Controlpanels/Rules/ConfigureRule
+msgid "Rules execute when a triggering event occurs. Rule actions will only be invoked if all the rule's conditions are met. You can add new actions and conditions using the buttons below."
+msgstr ""
+
+#. Default: "Save"
+#: components/manage/Add/Add
+#: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypeLayout
+#: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
+#: components/manage/Edit/Edit
+#: components/manage/Form/ModalForm
+#: components/manage/Sharing/Sharing
+#: helpers/MessageLabels/MessageLabels
+msgid "Save"
+msgstr "Desa"
+
+#. Default: "Save"
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Save recurrence"
+msgstr "Desa"
+
+#. Default: "Saved"
+#: helpers/MessageLabels/MessageLabels
+msgid "Saved"
+msgstr ""
+
+#. Default: "Scheduled"
+#: components/manage/Contents/ContentsItem
+msgid "Scheduled"
+msgstr ""
+
+#. Default: "Schema"
+#: components/manage/Controlpanels/ContentTypesActions
+msgid "Schema"
+msgstr "Esquema"
+
+#. Default: "Schema updates"
+#: components/manage/Controlpanels/ContentTypeSchema
+msgid "Schema updates"
+msgstr "Actualitzacions d'esquemes"
+
+#. Default: "Search"
+#: components/manage/BlockChooser/BlockChooserSearch
+#: components/manage/Blocks/Search/components/SearchInput
+#: components/manage/Blocks/Search/layout/LeftColumnFacets
+#: components/manage/Blocks/Search/layout/RightColumnFacets
+#: components/manage/Blocks/Search/layout/TopSideFacets
+#: components/manage/Blocks/Search/schema
+#: components/manage/Sharing/Sharing
+#: components/theme/Search/Search
+#: components/theme/SearchWidget/SearchWidget
+msgid "Search"
+msgstr "Cerca"
+
+#. Default: "Search SVG"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Search SVG"
+msgstr "Cerca SVG"
+
+#. Default: "Search Site"
+#: components/theme/SearchWidget/SearchWidget
+msgid "Search Site"
+msgstr "Cerca al lloc"
+
+#. Default: "Search block"
+#: components/manage/Blocks/Search/schema
+msgid "Search block"
+msgstr "Bloc de cerca"
+
+#. Default: "Search button label"
+#: components/manage/Blocks/Search/schema
+msgid "Search button label"
+msgstr "Etiqueta del botó de cerca"
+
+#. Default: "Search content"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Search content"
+msgstr "Cerca contingut"
+
+#. Default: "Search for user or group"
+#: components/manage/Sharing/Sharing
+msgid "Search for user or group"
+msgstr "Cerca usuari o grup"
+
+#. Default: "Search group…"
+#: helpers/MessageLabels/MessageLabels
+msgid "Search group…"
+msgstr "Cerca grup..."
+
+#. Default: "Search input label"
+#: components/manage/Blocks/Search/schema
+msgid "Search input label"
+msgstr "Cerca l'etiqueta d'entrada"
+
+#. Default: "Search results"
+#: components/manage/Blocks/Search/components/SearchDetails
+#: components/manage/Sidebar/ObjectBrowserBody
+#: components/theme/Search/Search
+msgid "Search results"
+msgstr "Resultats de la cerca"
+
+#. Default: "Search results for {term}"
+#: components/theme/Search/Search
+msgid "Search results for {term}"
+msgstr "Resultats de la cerca per a {term}"
+
+#. Default: "Search sources by title or path"
+#: helpers/MessageLabels/MessageLabels
+msgid "Search sources by title or path"
+msgstr ""
+
+#. Default: "Search targets by title or path"
+#: helpers/MessageLabels/MessageLabels
+msgid "Search targets by title or path"
+msgstr ""
+
+#. Default: "Search users…"
+#: helpers/MessageLabels/MessageLabels
+msgid "Search users…"
+msgstr "Cerca usuaris..."
+
+#. Default: "Searched for: <em>{searchedtext}</em>."
+#: components/manage/Blocks/Search/components/SearchDetails
+msgid "Searched for: <em>{searchedtext}</em>."
+msgstr ""
+
+#. Default: "Second"
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+msgid "Second"
+msgstr "Segon"
+
+#. Default: "Section title"
+#: components/manage/Blocks/Search/schema
+msgid "Section title"
+msgstr "Títol de la secció"
+
+#. Default: "Select"
+#: components/manage/Controlpanels/Aliases
+#: components/manage/Rules/Rules
+#: components/manage/Sidebar/ObjectBrowserNav
+#: helpers/MessageLabels/MessageLabels
+msgid "Select"
+msgstr "Seleccioneu"
+
+#. Default: "Select a date to add to recurrence"
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Select a date to add to recurrence"
+msgstr "Seleccioneu una data per afegir a la recurrència"
+
+#. Default: "Select columns to show"
+#: components/manage/Contents/Contents
+msgid "Select columns to show"
+msgstr "Seleccioneu les columnes per mostrar"
+
+#. Default: "Select relation"
+#: helpers/MessageLabels/MessageLabels
+msgid "Select relation"
+msgstr ""
+
+#. Default: "Select the transition to be used for modifying the items state."
+#: components/manage/Contents/ContentsWorkflowModal
+msgid "Select the transition to be used for modifying the items state."
+msgstr "Seleccioneu la transició que s'utilitzarà per modificar l'estat dels elements."
+
+#. Default: "Selected"
+#: helpers/MessageLabels/MessageLabels
+msgid "Selected"
+msgstr ""
+
+#. Default: "Selected dates"
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+msgid "Selected dates"
+msgstr "Dates seleccionades"
+
+#. Default: "Selected items"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Selected items"
+msgstr "Elements seleccionats"
+
+#. Default: "of"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Selected items - x of y"
+msgstr "de"
+
+#. Default: "Selection"
+#: components/manage/Widgets/SchemaWidget
+msgid "Selection"
+msgstr "Selecció"
+
+#. Default: "Select…"
+#: components/manage/Blocks/Search/widgets/SelectMetadataField
+#: components/manage/Contents/Contents
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectAutoComplete
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TokenWidget
+msgid "Select…"
+msgstr "Selecciona ..."
+
+#. Default: "Send"
+#: components/theme/ContactForm/ContactForm
+msgid "Send"
+msgstr "Enviar"
+
+#. Default: "Send a confirmation mail with a link to set the password."
+#: helpers/MessageLabels/MessageLabels
+msgid "Send a confirmation mail with a link to set the password."
+msgstr ""
+
+#. Default: "Server Error"
+#: components/theme/Error/ServerError
+msgid "Server Error"
+msgstr ""
+
+#. Default: "Set my password"
+#: components/theme/PasswordReset/PasswordReset
+msgid "Set my password"
+msgstr "Estableix la meva contrasenya"
+
+#. Default: "Set your password"
+#: components/theme/PasswordReset/PasswordReset
+msgid "Set your password"
+msgstr "Establiu la contrasenya"
+
+#. Default: "Settings"
+#: components/manage/Sidebar/Sidebar
+msgid "Settings"
+msgstr "Configuració"
+
+#. Default: "Sharing"
+#: components/manage/Sharing/Sharing
+#: components/manage/Toolbar/More
+msgid "Sharing"
+msgstr "Compartir"
+
+#. Default: "Sharing for {title}"
+#: components/manage/Sharing/Sharing
+msgid "Sharing for {title}"
+msgstr "Compartint per a {title}"
+
+#. Default: "Short Name"
+#: components/manage/Widgets/SchemaWidget
+#: components/manage/Widgets/SelectWidget
+msgid "Short Name"
+msgstr "Nom curt"
+
+#. Default: "Short name"
+#: components/manage/Contents/ContentsRenameModal
+msgid "Short name"
+msgstr "Nom curt"
+
+#. Default: "Show"
+#: components/manage/Controlpanels/Aliases
+#: components/theme/Pagination/Pagination
+msgid "Show"
+msgstr "Espectacle"
+
+#. Default: "Show All"
+#: helpers/MessageLabels/MessageLabels
+msgid "Show All"
+msgstr "Mostrar tots"
+
+#. Default: "Show Replies"
+#: components/theme/Comments/Comments
+msgid "Show Replies"
+msgstr "Mostra les respostes"
+
+#. Default: "Show filters"
+#: components/manage/Blocks/Search/components/Facets
+msgid "Show filters"
+msgstr ""
+
+#. Default: "Show groups of users below"
+#: helpers/MessageLabels/MessageLabels
+msgid "Show groups of users below"
+msgstr ""
+
+#. Default: "Show item"
+#: components/manage/Widgets/ObjectListWidget
+msgid "Show item"
+msgstr "Mostra l'element"
+
+#. Default: "Show potential sources. Not only objects that are source of some relation."
+#: components/manage/Controlpanels/Relations/RelationsMatrix
+msgid "Show potential sources. Not only objects that are source of some relation."
+msgstr ""
+
+#. Default: "Show potential targets. Not only objects that are target of some relation."
+#: components/manage/Controlpanels/Relations/RelationsMatrix
+msgid "Show potential targets. Not only objects that are target of some relation."
+msgstr ""
+
+#. Default: "Show search button?"
+#: components/manage/Blocks/Search/schema
+msgid "Show search button?"
+msgstr "Mostra el botó de cerca?"
+
+#. Default: "Show search input?"
+#: components/manage/Blocks/Search/schema
+msgid "Show search input?"
+msgstr "Mostra l'entrada de cerca?"
+
+#. Default: "Show sorting?"
+#: components/manage/Blocks/Search/schema
+msgid "Show sorting?"
+msgstr "Mostra l'ordenació?"
+
+#. Default: "Show total results"
+#: components/manage/Blocks/Search/schema
+msgid "Show total results"
+msgstr ""
+
+#. Default: "Shrink sidebar"
+#: components/manage/Sidebar/Sidebar
+msgid "Shrink sidebar"
+msgstr "Redueix la barra lateral"
+
+#. Default: "Shrink toolbar"
+#: components/manage/Toolbar/Toolbar
+msgid "Shrink toolbar"
+msgstr "Redueix la barra d'eines"
+
+#. Default: "Sign in to start session"
+#: components/theme/Login/Login
+msgid "Sign in to start session"
+msgstr "Inicieu la sessió per iniciar la sessió"
+
+#. Default: "Site Administration"
+#: components/theme/NotFound/NotFound
+#: components/theme/Unauthorized/Unauthorized
+msgid "Site Administration"
+msgstr "Administració del lloc"
+
+#. Default: "Site Setup"
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Toolbar/PersonalTools
+#: components/theme/Breadcrumbs/Breadcrumbs
+msgid "Site Setup"
+msgstr "Configuració del lloc"
+
+#. Default: "Sitemap"
+#: components/theme/Sitemap/Sitemap
+msgid "Sitemap"
+msgstr "Mapa del lloc"
+
+#. Default: "Size: {size}"
+#: components/theme/View/ImageView
+msgid "Size: {size}"
+msgstr "Mida: {size}"
+
+#. Default: "Small"
+#: components/manage/Widgets/ImageSizeWidget
+msgid "Small"
+msgstr ""
+
+#. Default: "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
+#: components/manage/Contents/Contents
+msgid "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
+msgstr ""
+
+#. Default: "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
+#: components/manage/Contents/Contents
+msgid "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
+msgstr ""
+
+#. Default: "Some relations are broken. Please fix."
+#: components/manage/Controlpanels/Relations/Relations
+msgid "Some relations are broken. Please fix."
+msgstr ""
+
+#. Default: "Sorry, something went wrong with your request"
+#: error
+msgid "Sorry, something went wrong with your request"
+msgstr "Ho sentim, hi ha hagut un error amb la teva sol·licitud"
+
+#. Default: "Sort by"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Sort By"
+msgstr ""
+
+#. Default: "Sort by:"
+#: components/theme/Search/Search
+msgid "Sort By:"
+msgstr "Ordenar per:"
+
+#. Default: "Sort on"
+#: components/manage/Blocks/Search/components/SortOn
+#: components/manage/Widgets/QuerySortOnWidget
+#: components/manage/Widgets/QuerystringWidget
+msgid "Sort on"
+msgstr "Ordena"
+
+#. Default: "Sort on options"
+#: components/manage/Blocks/Search/schema
+msgid "Sort on options"
+msgstr "Ordena les opcions"
+
+#. Default: "Sort transactions by User-Name, Path or Date"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Sort transactions by User-Name, Path or Date"
+msgstr ""
+
+#. Default: "Sorted"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Sorted"
+msgstr ""
+
+#. Default: "Sorted on"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Sorted on"
+msgstr ""
+
+#. Default: "Source"
+#: components/manage/Blocks/HTML/Edit
+#: components/manage/Controlpanels/Relations/BrokenRelations
+#: components/manage/Controlpanels/Relations/RelationsMatrix
+msgid "Source"
+msgstr "Origen"
+
+#. Default: "Specify a youtube video or playlist url"
+#: components/manage/Blocks/Video/Edit
+msgid "Specify a youtube video or playlist url"
+msgstr "Especifiqueu un URL de vídeo o llista de reproducció de YouTube"
+
+#. Default: "Split"
+#: components/manage/Diff/Diff
+msgid "Split"
+msgstr "Dividir"
+
+#. Default: "Start Date"
+#: components/manage/Blocks/Search/components/DateRangeFacet
+#: components/manage/Contents/Contents
+msgid "Start Date"
+msgstr "Data d'inici"
+
+#. Default: "Start of the recurrence"
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+msgid "Start of the recurrence"
+msgstr "Inici de la recurrència"
+
+#. Default: "Start password reset"
+#: components/theme/PasswordReset/RequestPasswordReset
+msgid "Start password reset"
+msgstr "Inicia el restabliment de la contrasenya"
+
+#. Default: "State"
+#: components/manage/Contents/Contents
+#: components/manage/Workflow/Workflow
+#: components/theme/View/TabularView
+msgid "State"
+msgstr "Estat"
+
+#. Default: "Status"
+#: components/manage/Controlpanels/Rules/Rules
+msgid "Status"
+msgstr ""
+
+#. Default: "Sticky"
+#: components/manage/Blocks/ToC/Schema
+msgid "Sticky"
+msgstr ""
+
+#. Default: "Stop compare"
+#: components/manage/Multilingual/CompareLanguages
+msgid "Stop compare"
+msgstr "Deixa de comparar"
+
+#. Default: "String"
+#: components/manage/Widgets/SchemaWidget
+msgid "String"
+msgstr "Cadena"
+
+#. Default: "Alternate row background color"
+#: config/Blocks
+msgid "Stripe alternate rows with color"
+msgstr "Color de fons alternatiu de la fila"
+
+#. Default: "Styling"
+#: helpers/Extensions/withBlockSchemaEnhancer
+msgid "Styling"
+msgstr ""
+
+#. Default: "Subject"
+#: components/theme/ContactForm/ContactForm
+msgid "Subject"
+msgstr "Assumpte"
+
+#. Default: "Submit"
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
+msgid "Submit"
+msgstr ""
+
+#. Default: "Success"
+#: components/manage/Actions/Actions
+#: components/manage/Aliases/Aliases
+#: components/manage/Contents/Contents
+#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/ContentTypes
+#: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/ConfigureRule
+#: components/manage/Controlpanels/Rules/EditRule
+#: components/manage/Controlpanels/Rules/Rules
+#: components/manage/Controlpanels/UndoControlpanel
+#: components/manage/Multilingual/ManageTranslations
+#: components/manage/Preferences/ChangePassword
+#: components/manage/Preferences/PersonalPreferences
+#: components/manage/Rules/Rules
+#: components/theme/ContactForm/ContactForm
+#: helpers/MessageLabels/MessageLabels
+msgid "Success"
+msgstr "Èxit"
+
+#. Default: "Successfully undone transactions"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Successfully Undone Transactions"
+msgstr ""
+
+#. Default: "Summary"
+#: config/Blocks
+msgid "Summary"
+msgstr "Resum"
+
+#. Default: "Summary view"
+#: config/Views
+msgid "Summary view"
+msgstr "Sumari"
+
+#. Default: "Switch to"
+#: components/theme/LanguageSelector/LanguageSelector
+msgid "Switch to"
+msgstr "Canvia a"
+
+#. Default: "Table"
+#: config/Blocks
+msgid "Table"
+msgstr "Taula"
+
+#. Default: "Table of Contents"
+#: components/manage/Blocks/ToC/variations/DefaultTocRenderer
+#: components/manage/Blocks/ToC/variations/HorizontalMenu
+msgid "Table of Contents"
+msgstr "Taula de continguts"
+
+#. Default: "Tabular view"
+#: config/Views
+msgid "Tabular view"
+msgstr "Taula"
+
+#. Default: "Tags"
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsTagsModal
+msgid "Tags"
+msgstr "Etiquetes"
+
+#. Default: "Tags to add"
+#: components/manage/Contents/ContentsTagsModal
+msgid "Tags to add"
+msgstr "Etiquetes per afegir"
+
+#. Default: "Tags to remove"
+#: components/manage/Contents/ContentsTagsModal
+msgid "Tags to remove"
+msgstr "Etiquetes per eliminar"
+
+#. Default: "Target"
+#: components/manage/Blocks/Teaser/schema
+#: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/Relations/BrokenRelations
+#: components/manage/Controlpanels/Relations/RelationsMatrix
+msgid "Target"
+msgstr ""
+
+#. Default: "Target Path (Required)"
+#: components/manage/Controlpanels/Aliases
+msgid "Target Path (Required)"
+msgstr ""
+
+#. Default: "Target memory size per cache in bytes"
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Target memory size per cache in bytes"
+msgstr "Mida de memòria objectiu per memòria cau en bytes"
+
+#. Default: "Target number of objects in memory per cache"
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Target number of objects in memory per cache"
+msgstr "Nombre objectiu d'objectes a la memòria per memòria cau"
+
+#. Default: "Teaser"
+#: components/manage/Blocks/Teaser/schema
+msgid "Teaser"
+msgstr ""
+
+#. Default: "Text"
+#: components/manage/Widgets/SchemaWidget
+msgid "Text"
+msgstr "Text"
+
+#. Default: "Thank you."
+#: components/theme/ConnectionRefused/ConnectionRefused
+#: components/theme/CorsError/CorsError
+#: components/theme/NotFound/NotFound
+#: components/theme/RequestTimeout/RequestTimeout
+#: components/theme/Unauthorized/Unauthorized
+msgid "Thank you."
+msgstr "Gràcies."
+
+#. Default: "The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again."
+#: components/theme/RequestTimeout/RequestTimeout
+msgid "The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again."
+msgstr ""
+
+#. Default: "The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable."
+#: components/theme/ConnectionRefused/ConnectionRefused
+msgid "The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable."
+msgstr "El backend no respon, comproveu si heu iniciat Plone, comproveu l'objecte de configuració del vostre projecte apiPath (o si feu servir el servidor intermediari intern, devProxyToApiPath) o la variable d'entorn de RAZZLE_API_PATH Volto."
+
+#. Default: "The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources."
+#: components/theme/CorsError/CorsError
+msgid "The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources."
+msgstr "El backend està responent, però les capçaleres CORS no estan configurades correctament i el navegador ha denegat l'accés als recursos del backend."
+
+#. Default: "The backend server of your website is not answering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
+#: components/theme/CorsError/CorsError
+msgid "The backend server of your website is not answering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
+msgstr "El servidor backend del vostre lloc web no respon, demanem disculpes per les molèsties. Si us plau, prova de tornar a carregar la pàgina i torna-ho a provar. Si el problema persisteix, poseu-vos en contacte amb els administradors del lloc."
+
+#. Default: "The button presence disables the live search, the query is issued when you press ENTER"
+#: components/manage/Blocks/Search/schema
+msgid "The button presence disables the live search, the query is issued when you press ENTER"
+msgstr "La presència del botó desactiva la cerca en directe, la consulta s'emet quan premeu INTRO"
+
+#. Default: "The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones."
+#: components/manage/Rules/Rules
+msgid "The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones."
+msgstr ""
+
+#. Default: "The following list shows which upgrade steps are going to be run. Upgrading sometimes performs a catalog/security update, which may take a long time on large sites. Be patient."
+#: components/manage/Controlpanels/UpgradeControlPanel
+msgid "The following list shows which upgrade steps are going to be run. Upgrading sometimes performs a catalog/security update, which may take a long time on large sites. Be patient."
+msgstr ""
+
+#. Default: "The item could not be deleted."
+#: components/manage/Contents/Contents
+msgid "The item could not be deleted."
+msgstr "No s'ha pogut suprimir l'element."
+
+#. Default: "The link address is:"
+#: components/theme/View/LinkView
+msgid "The link address is:"
+msgstr "L'adreça de l'enllaç és:"
+
+#. Default: "The number of items must be greater than or equal to {minItems}"
+#: helpers/MessageLabels/MessageLabels
+msgid "The number of items must be greater than or equal to {minItems}"
+msgstr ""
+
+#. Default: "The number of items must be less than or equal to {maxItems}"
+#: helpers/MessageLabels/MessageLabels
+msgid "The number of items must be less than or equal to {maxItems}"
+msgstr ""
+
+#. Default: "The provided alternative url already exists!"
+#: components/manage/Aliases/Aliases
+msgid "The provided alternative url already exists!"
+msgstr ""
+
+#. Default: "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
+#: components/theme/Register/Register
+msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
+msgstr "El procés de registre ha estat satisfactori. Si us plau, comproveu la vostra bústia d'entrada de correu electrònic per obtenir informació sobre com activar el vostre compte."
+
+#. Default: "The site configuration is outdated and needs to be upgraded."
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/UpgradeControlPanel
+msgid "The site configuration is outdated and needs to be upgraded."
+msgstr ""
+
+#. Default: "The value does not match the pattern {pattern}"
+#: helpers/MessageLabels/MessageLabels
+msgid "The value does not match the pattern {pattern}"
+msgstr ""
+
+#. Default: "The working copy was discarded"
+#: components/manage/Toolbar/More
+msgid "The working copy was discarded"
+msgstr "La còpia de treball es va descartar"
+
+#. Default: "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
+#: components/theme/Footer/Footer
+msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
+msgstr "El {plonecms} és {copyright} 2000-{current_year} per {plonefoundation} i amics."
+
+#. Default: "There are no groups with the searched criteria"
+#: helpers/MessageLabels/MessageLabels
+msgid "There are no groups with the searched criteria"
+msgstr ""
+
+#. Default: "There are no users with the searched criteria"
+#: helpers/MessageLabels/MessageLabels
+msgid "There are no users with the searched criteria"
+msgstr ""
+
+#. Default: "There are some errors."
+#: components/manage/Add/Add
+#: components/manage/Edit/Edit
+msgid "There are some errors."
+msgstr ""
+
+#. Default: "There is a configuration problem on the backend"
+#: components/theme/CorsError/CorsError
+msgid "There is a configuration problem on the backend"
+msgstr "Hi ha un problema de configuració al backend"
+
+#. Default: "There was an error with the upgrade."
+#: components/manage/Controlpanels/UpgradeControlPanel
+msgid "There was an error with the upgrade."
+msgstr ""
+
+#. Default: "There were some errors"
+#: components/manage/Form/InlineForm
+msgid "There were some errors"
+msgstr "Hi va haver alguns errors"
+
+#. Default: "There were some errors."
+#: components/manage/Form/ModalForm
+#: helpers/MessageLabels/MessageLabels
+msgid "There were some errors."
+msgstr "Hi va haver alguns errors."
+
+#. Default: "Third"
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+msgid "Third"
+msgstr "Tercer"
+
+#. Default: "This has an ongoing working copy in {title}"
+#: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
+msgid "This has an ongoing working copy in {title}"
+msgstr "Té una còpia de treball en curs a {title}"
+
+#. Default: "This is a reserved name and can't be used"
+#: components/manage/Widgets/IdWidget
+msgid "This is a reserved name and can't be used"
+msgstr ""
+
+#. Default: "This is a working copy of {title}"
+#: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
+msgid "This is a working copy of {title}"
+msgstr "Aquesta és una còpia de treball de {title}"
+
+#. Default: "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
+#: components/manage/Contents/Contents
+msgid "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
+msgstr ""
+
+#. Default: "This item was locked by {creator} on {date}"
+#: components/manage/LockingToastsFactory/LockingToastsFactory
+msgid "This item was locked by {creator} on {date}"
+msgstr "Aquest element va ser bloquejat per {creator} el dia {date}"
+
+#. Default: "This name will be displayed in the URL."
+#: components/manage/Contents/ContentsRenameModal
+msgid "This name will be displayed in the URL."
+msgstr "Aquest nom es mostrarà a l'URL."
+
+#. Default: "This page does not seem to exist…"
+#: components/theme/NotFound/NotFound
+msgid "This page does not seem to exist…"
+msgstr "Sembla que aquesta pàgina no existeix..."
+
+#. Default: "This rule is assigned to the following locations:"
+#: components/manage/Controlpanels/Rules/ConfigureRule
+msgid "This rule is assigned to the following locations:"
+msgstr ""
+
+#. Default: "Time"
+#: components/manage/Widgets/DatetimeWidget
+msgid "Time"
+msgstr "Hora"
+
+#. Default: "Title"
+#: components/manage/Blocks/Teaser/schema
+#: components/manage/Blocks/ToC/Schema
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsRenameModal
+#: components/manage/Controlpanels/ContentTypes
+#: components/manage/Widgets/SchemaWidget
+#: components/manage/Widgets/SelectWidget
+#: components/theme/View/TabularView
+#: helpers/MessageLabels/MessageLabels
+msgid "Title"
+msgstr "Títol"
+
+#. Default: "Title field error. Value not provided or already existing."
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
+msgid "Title field error. Value not provided or already existing."
+msgstr ""
+
+#. Default: "Total active and non-active objects"
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Total active and non-active objects"
+msgstr "Total d'objectes actius i no actius"
+
+#. Default: "Total comments"
+#: components/manage/Contents/Contents
+msgid "Total comments"
+msgstr "Total de comentaris"
+
+#. Default: "Total files to upload: {totalFiles}"
+#: components/manage/Contents/ContentsUploadModal
+msgid "Total files to upload: {totalFiles}"
+msgstr "Total fitxers per carregar: {totalFiles}"
+
+#. Default: "Total number of objects in each cache"
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Total number of objects in each cache"
+msgstr "Nombre total d'objectes a cada memòria cau"
+
+#. Default: "Total number of objects in memory from all caches"
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Total number of objects in memory from all caches"
+msgstr "Nombre total d'objectes a la memòria de totes les memòria cau"
+
+#. Default: "Total number of objects in the database"
+#: components/manage/Controlpanels/DatabaseInformation
+msgid "Total number of objects in the database"
+msgstr "Nombre total d'objectes a la base de dades"
+
+#. Default: "Transactions"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Transactions"
+msgstr ""
+
+#. Default: "#"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Transactions Checkbox"
+msgstr ""
+
+#. Default: "Transactions have been sorted"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Transactions Have Been Sorted"
+msgstr ""
+
+#. Default: "Transactions have been unsorted"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Transactions Have Been Unsorted"
+msgstr ""
+
+#. Default: "Translate to {lang}"
+#: components/manage/Add/Add
+#: components/manage/Toolbar/Types
+msgid "Translate to {lang}"
+msgstr "Tradueix a {lang}"
+
+#. Default: "Translation linked"
+#: components/manage/Multilingual/ManageTranslations
+msgid "Translation linked"
+msgstr "Traducció enllaçada"
+
+#. Default: "Translation linking removed"
+#: components/manage/Multilingual/ManageTranslations
+msgid "Translation linking removed"
+msgstr "S'ha eliminat l'enllaç de traducció"
+
+#. Default: "Triggering event field error. Please select a value"
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
+msgid "Triggering event field error. Please select a value"
+msgstr ""
+
+#. Default: "Type"
+#: components/manage/Controlpanels/ContentTypes
+#: components/manage/LinksToItem/LinksToItem
+#: components/manage/Widgets/SchemaWidget
+#: components/theme/View/TabularView
+msgid "Type"
+msgstr "Tipus"
+
+#. Default: "Type a Video (YouTube, Vimeo or mp4) URL"
+#: components/manage/Blocks/Video/Edit
+msgid "Type a Video (YouTube, Vimeo or mp4) URL"
+msgstr "Escriviu un URL de vídeo (YouTube, Vimeo o mp4)."
+
+#. Default: "Type text..."
+#: components/manage/Widgets/SelectAutoComplete
+msgid "Type text..."
+msgstr ""
+
+#. Default: "Type the heading…"
+#: components/manage/TextLineEdit/TextLineEdit
+msgid "Type the heading…"
+msgstr ""
+
+#. Default: "Type the title…"
+#: components/manage/Blocks/Title/Edit
+msgid "Type the title…"
+msgstr "Escriu el títol…"
+
+#. Default: "UID"
+#: components/manage/Contents/Contents
+msgid "UID"
+msgstr "UID"
+
+#. Default: "URL Management"
+#: components/manage/Aliases/Aliases
+#: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Toolbar/More
+msgid "URL Management"
+msgstr ""
+
+#. Default: "URL Management for {title}"
+#: components/manage/Aliases/Aliases
+msgid "URL Management for {title}"
+msgstr ""
+
+#. Default: "Unassign"
+#: components/manage/Rules/Rules
+msgid "Unassign"
+msgstr ""
+
+#. Default: "Unassigned"
+#: components/manage/Rules/Rules
+msgid "Unassigned"
+msgstr ""
+
+#. Default: "Unauthorized"
+#: components/manage/Toolbar/More
+#: components/theme/Unauthorized/Unauthorized
+msgid "Unauthorized"
+msgstr "No autoritzada"
+
+#. Default: "Undo"
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/UndoControlpanel
+#: components/manage/Form/UndoToolbar
+msgid "Undo"
+msgstr ""
+
+#. Default: "Undo Controlpanel"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Undo Controlpanel"
+msgstr ""
+
+#. Default: "Unfold"
+#: components/manage/BlockChooser/BlockChooser
+msgid "Unfold"
+msgstr "Desplegar"
+
+#. Default: "Unified"
+#: components/manage/Diff/Diff
+msgid "Unified"
+msgstr "Unificat"
+
+#. Default: "Uninstall"
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Uninstall"
+msgstr "Desinstal·lar"
+
+#. Default: "Unknown Block {block}"
+#: components/manage/Blocks/Block/DefaultView
+#: components/manage/Blocks/Block/Edit
+#: components/theme/View/RenderBlocks
+msgid "Unknown Block"
+msgstr "Bloc desconegut {block}"
+
+#. Default: "Unlink translation for"
+#: components/manage/Multilingual/ManageTranslations
+msgid "Unlink translation for"
+msgstr "Desenllaça la traducció de"
+
+#. Default: "Unlock"
+#: components/manage/Toolbar/Toolbar
+msgid "Unlock"
+msgstr "Descobrir"
+
+#. Default: "Unsorted"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Unsorted"
+msgstr ""
+
+#. Default: "Update"
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Update"
+msgstr "Actualització"
+
+#. Default: "Update User"
+#: helpers/MessageLabels/MessageLabels
+msgid "Update User"
+msgstr ""
+
+#. Default: "Update installed addons"
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Update installed addons"
+msgstr "Actualitza els complements instal·lats"
+
+#. Default: "Update installed addons:"
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Update installed addons:"
+msgstr "Actualitza els complements instal·lats:"
+
+#. Default: "Updates available"
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Updates available"
+msgstr "Actualitzacions disponibles"
+
+#. Default: "Upgrade"
+#: components/manage/Controlpanels/UpgradeControlPanel
+msgid "Upgrade"
+msgstr ""
+
+#. Default: "Upgrade Plone Site"
+#: components/manage/Controlpanels/UpgradeControlPanel
+msgid "Upgrade Plone Site"
+msgstr ""
+
+#. Default: "Upgrade Report"
+#: components/manage/Controlpanels/UpgradeControlPanel
+msgid "Upgrade Report"
+msgstr ""
+
+#. Default: "Upgrade Steps"
+#: components/manage/Controlpanels/UpgradeControlPanel
+msgid "Upgrade Steps"
+msgstr ""
+
+#. Default: "Upload"
+#: components/manage/Contents/Contents
+msgid "Upload"
+msgstr "Pujar"
+
+#. Default: "Upload a lead image in the 'Lead Image' content field."
+#: components/manage/Blocks/LeadImage/Edit
+msgid "Upload a lead image in the 'Lead Image' content field."
+msgstr "Pengeu una imatge principal al camp de contingut 'Imatge principal'."
+
+#. Default: "Upload files"
+#: components/manage/Contents/ContentsUploadModal
+msgid "Upload files"
+msgstr "Carregueu fitxers"
+
+#. Default: "Uploading image"
+#: components/manage/Widgets/ImageWidget
+msgid "Uploading image"
+msgstr "S'està carregant la imatge"
+
+#. Default: "Use the form below to define the new content rule"
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
+msgid "Use the form below to define the new content rule"
+msgstr ""
+
+#. Default: "Use the form below to define, change or remove content rules. Rules will automatically perform actions on content when certain triggers take place. After defining rules, you may want to go to a folder to assign them, using the 'rules' item in the actions menu."
+#: components/manage/Controlpanels/Rules/Rules
+msgid "Use the form below to define, change or remove content rules. Rules will automatically perform actions on content when certain triggers take place. After defining rules, you may want to go to a folder to assign them, using the 'rules' item in the actions menu."
+msgstr ""
+
+#. Default: "Used for programmatic access to the fieldset."
+#: components/manage/Widgets/SchemaWidget
+#: components/manage/Widgets/SelectWidget
+msgid "Used for programmatic access to the fieldset."
+msgstr "S'utilitza per a l'accés programàtic al conjunt de camps."
+
+#. Default: "User"
+#: components/manage/Sharing/Sharing
+msgid "User"
+msgstr "Usuari"
+
+#. Default: "User Group Membership"
+#: components/manage/Controlpanels/Controlpanels
+#: helpers/MessageLabels/MessageLabels
+msgid "User Group Membership"
+msgstr ""
+
+#. Default: "User Group Settings"
+#: helpers/MessageLabels/MessageLabels
+msgid "User Group Settings"
+msgstr ""
+
+#. Default: "User created"
+#: helpers/MessageLabels/MessageLabels
+msgid "User created"
+msgstr "Usuari creat"
+
+#. Default: "User deleted"
+#: helpers/MessageLabels/MessageLabels
+msgid "User deleted"
+msgstr ""
+
+#. Default: "User name"
+#: components/manage/Controlpanels/Users/UsersControlpanel
+msgid "User name"
+msgstr "Nom d'usuari"
+
+#. Default: "User roles updated"
+#: helpers/MessageLabels/MessageLabels
+msgid "User roles updated"
+msgstr "Rols d'usuari actualitzats"
+
+#. Default: "User updated successfuly"
+#: helpers/MessageLabels/MessageLabels
+msgid "User updated successfuly"
+msgstr ""
+
+#. Default: "Username"
+#: helpers/MessageLabels/MessageLabels
+msgid "Username"
+msgstr "Nom d'usuari"
+
+#. Default: "Users"
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/Users/UsersControlpanel
+#: helpers/MessageLabels/MessageLabels
+msgid "Users"
+msgstr "usuaris"
+
+#. Default: "Users and Groups"
+#: components/manage/Controlpanels/Controlpanels
+msgid "Users and Groups"
+msgstr "Usuaris i Grups"
+
+#. Default: "Using this form, you can manage alternative urls for an item. This is an easy way to make an item available under two different URLs."
+#: components/manage/Aliases/Aliases
+msgid "Using this form, you can manage alternative urls for an item. This is an easy way to make an item available under two different URLs."
+msgstr ""
+
+#. Default: "Variation"
+#: helpers/Extensions/withBlockSchemaEnhancer
+msgid "Variation"
+msgstr "Variació"
+
+#. Default: "Version Overview"
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/UpgradeControlPanel
+msgid "Version Overview"
+msgstr "Visió general de la versió"
+
+#. Default: "Video"
+#: components/manage/Blocks/Video/schema
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "Video"
+msgstr "Vídeo"
+
+#. Default: "Video URL"
+#: components/manage/Blocks/Video/schema
+msgid "Video URL"
+msgstr "URL del vídeo"
+
+#. Default: "View"
+#: components/manage/Contents/ContentsItem
+msgid "View"
+msgstr "veure"
+
+#. Default: "View changes"
+#: components/manage/History/History
+msgid "View changes"
+msgstr "Veure els canvis"
+
+#. Default: "View links and references to this item"
+#: components/manage/Contents/Contents
+msgid "View links and references to this item"
+msgstr ""
+
+#. Default: "View this revision"
+#: components/manage/History/History
+msgid "View this revision"
+msgstr "Veure aquesta revisió"
+
+#. Default: "View working copy"
+#: components/manage/Toolbar/More
+msgid "View working copy"
+msgstr "Veure còpia de treball"
+
+#. Default: "View"
+#: components/manage/Display/Display
+msgid "Viewmode"
+msgstr "veure"
+
+#. Default: "Vocabulary term"
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Vocabulary term"
+msgstr "Terme de vocabulari"
+
+#. Default: "Title"
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Vocabulary term title"
+msgstr "Títol"
+
+#. Default: "Vocabulary terms"
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Vocabulary terms"
+msgstr "Termes de vocabulari"
+
+#. Default: "You are running in 'debug mode'. This mode is intended for sites that are under development. This allows many configuration changes to be immediately visible, but will make your site run more slowly. To turn off debug mode, stop the server, set 'debug-mode=off' in your buildout.cfg, re-run bin/buildout and then restart the server process."
+#: components/manage/Controlpanels/VersionOverview
+msgid "Warning Regarding debug mode"
+msgstr "Esteu executant en 'mode de depuració'. Aquest mode està pensat per a llocs que estan en desenvolupament. Això permet que molts canvis de configuració siguin visibles immediatament, però farà que el vostre lloc funcioni més lentament. Per desactivar el mode de depuració, atureu el servidor, configureu 'debug-mode=off' al vostre buildout.cfg, torneu a executar bin/buildout i després reinicieu el procés del servidor."
+
+#. Default: "We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later."
+#: components/theme/ConnectionRefused/ConnectionRefused
+msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later."
+msgstr "Demanem disculpes per les molèsties, però el backend del lloc al qual esteu accedint no està disponible en aquest moment. Siusplau, intenta-ho més tard."
+
+#. Default: "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
+#: components/theme/NotFound/NotFound
+msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
+msgstr "Demanem disculpes per les molèsties, però la pàgina a la qual estàveu intentant accedir no es troba en aquesta adreça. Podeu utilitzar els enllaços següents per ajudar-vos a trobar el que busqueu."
+
+#. Default: "We apologize for the inconvenience, but there was an unexpected error on the server."
+#: components/theme/Error/ServerError
+msgid "We apologize for the inconvenience, but there was an unexpected error on the server."
+msgstr ""
+
+#. Default: "We apologize for the inconvenience, but you don't have permissions on this resource."
+#: components/theme/Forbidden/Forbidden
+msgid "We apologize for the inconvenience, but you don't have permissions on this resource."
+msgstr "Demanem disculpes per les molèsties, però no teniu permisos sobre aquest recurs."
+
+#. Default: "The"
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
+msgid "Weeek day of month"
+msgstr "El"
+
+#. Default: "Weekday"
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Weekday"
+msgstr "Dia de la setmana"
+
+#. Default: "Weekly"
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Weekly"
+msgstr "Setmanalment"
+
+#. Default: "What"
+#: components/manage/Controlpanels/UndoControlpanel
+#: components/manage/History/History
+msgid "What"
+msgstr "Què"
+
+#. Default: "When"
+#: components/manage/Controlpanels/UndoControlpanel
+#: components/manage/History/History
+msgid "When"
+msgstr "Quan"
+
+#. Default: "When this date is reached, the content will nolonger be visible in listings and searches."
+#: components/manage/Contents/ContentsPropertiesModal
+msgid "When this date is reached, the content will nolonger be visible in listings and searches."
+msgstr "Quan s'arribi a aquesta data, el contingut ja no serà visible a les llistes i cerques."
+
+#. Default: "Whether or not execution of further rules should stop after this rule is executed"
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
+msgid "Whether or not execution of further rules should stop after this rule is executed"
+msgstr ""
+
+#. Default: "Whether or not other rules should be triggered by the actions launched by this rule. Activate this only if you are sure this won't create infinite loops"
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
+msgid "Whether or not other rules should be triggered by the actions launched by this rule. Activate this only if you are sure this won't create infinite loops"
+msgstr ""
+
+#. Default: "Whether or not the rule is currently enabled"
+#: components/manage/Controlpanels/Rules/AddRule
+#: components/manage/Controlpanels/Rules/EditRule
+msgid "Whether or not the rule is currently enabled"
+msgstr ""
+
+#. Default: "Who"
+#: components/manage/Controlpanels/UndoControlpanel
+#: components/manage/History/History
+msgid "Who"
+msgstr "OMS"
+
+#. Default: "Wide"
+#: components/manage/Sidebar/AlignBlock
+#: components/manage/Widgets/AlignWidget
+msgid "Wide"
+msgstr ""
+
+#. Default: "Updating workflow states..."
+#: components/manage/Contents/ContentsWorkflowModal
+msgid "Workflow Change Loading Message"
+msgstr "S'estan actualitzant els estats del flux de treball..."
+
+#. Default: "Workflow updated."
+#: components/manage/Workflow/Workflow
+msgid "Workflow updated."
+msgstr "Flux de treball actualitzat."
+
+#. Default: "Yearly"
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Yearly"
+msgstr "Anualment"
+
+#. Default: "Yes"
+#: components/manage/Contents/ContentsItem
+#: components/manage/Controlpanels/ContentTypes
+msgid "Yes"
+msgstr "Sí"
+
+#. Default: "You are trying to access a protected resource, please {login} first."
+#: components/theme/Unauthorized/Unauthorized
+msgid "You are trying to access a protected resource, please {login} first."
+msgstr "Esteu provant d'accedir a un recurs protegit, primer {login} ."
+
+#. Default: "You are using an outdated browser"
+#: components/theme/OutdatedBrowser/OutdatedBrowser
+msgid "You are using an outdated browser"
+msgstr "Esteu utilitzant un navegador obsolet"
+
+#. Default: "You can add a comment by filling out the form below. Plain text formatting."
+#: components/theme/Comments/Comments
+msgid "You can add a comment by filling out the form below. Plain text formatting."
+msgstr "Pots afegir un comentari omplint el formulari següent. Format de text sense format."
+
+#. Default: "You can control who can view and edit your item using the list below."
+#: components/manage/Sharing/Sharing
+msgid "You can control who can view and edit your item using the list below."
+msgstr "Podeu controlar qui pot veure i editar el vostre element mitjançant la llista següent."
+
+#. Default: "You can view the difference of the revisions below."
+#: components/manage/Diff/Diff
+msgid "You can view the difference of the revisions below."
+msgstr "Podeu veure la diferència de les revisions a continuació."
+
+#. Default: "You can view the history of your item below."
+#: components/manage/History/History
+msgid "You can view the history of your item below."
+msgstr "Podeu veure l'historial del vostre article a continuació."
+
+#. Default: "You can't paste this content here"
+#: components/manage/Contents/Contents
+msgid "You can't paste this content here"
+msgstr "No podeu enganxar aquest contingut aquí"
+
+#. Default: "You have been logged out from the site."
+#: components/theme/Logout/Logout
+msgid "You have been logged out from the site."
+msgstr ""
+
+#. Default: "You have not the required permission for this control panel."
+#: components/manage/Controlpanels/Relations/Relations
+msgid "You have not the required permission for this control panel."
+msgstr ""
+
+#. Default: "Your email is required for reset your password."
+#: components/theme/PasswordReset/RequestPasswordReset
+msgid "Your email is required for reset your password."
+msgstr ""
+
+#. Default: "Your password has been set successfully. You may now {link} with your new password."
+#: components/theme/PasswordReset/PasswordReset
+msgid "Your password has been set successfully. You may now {link} with your new password."
+msgstr "La vostra contrasenya s'ha establert correctament. Ara podeu {link} amb la vostra nova contrasenya."
+
+#. Default: "Your preferred language"
+#: components/manage/Preferences/PersonalPreferences
+msgid "Your preferred language"
+msgstr "El teu idioma preferit"
+
+#. Default: "Your site is up to date."
+#: components/manage/Controlpanels/UpgradeControlPanel
+msgid "Your site is up to date."
+msgstr ""
+
+#. Default: "Your username is required for reset your password."
+#: components/theme/PasswordReset/RequestPasswordReset
+msgid "Your usernaame is required for reset your password."
+msgstr ""
+
+#. Default: "Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
+#: helpers/MessageLabels/MessageLabels
+msgid "addUserFormEmailDescription"
+msgstr ""
+
+#. Default: "Enter full name, e.g. John Smith."
+#: helpers/MessageLabels/MessageLabels
+msgid "addUserFormFullnameDescription"
+msgstr ""
+
+#. Default: "Enter your new password. Minimum 8 characters."
+#: helpers/MessageLabels/MessageLabels
+msgid "addUserFormPasswordDescription"
+msgstr ""
+
+#. Default: "Enter a user name, usually something like "jsmith". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in."
+#: helpers/MessageLabels/MessageLabels
+msgid "addUserFormUsernameDescription"
+msgstr ""
+
+#. Default: "Available views"
+#: components/manage/Blocks/Search/schema
+msgid "availableViews"
+msgstr ""
+
+#. Default: "Error in the block field {errorField}."
+#: helpers/MessageLabels/MessageLabels
+msgid "blocksFieldsErrorTitle"
+msgstr ""
+
+#. Default: "Forgot your password?"
+#: components/theme/Login/Login
+#: components/theme/PasswordReset/RequestPasswordReset
+msgid "box_forgot_password_option"
+msgstr "Has oblidat la teva contrasenya?"
+
+#. Default: "Checkbox"
+#: config/Blocks
+msgid "checkboxFacet"
+msgstr ""
+
+#. Default: "column"
+#: components/manage/Blocks/Grid/templates
+msgid "column"
+msgstr ""
+
+#. Default: "columns"
+#: components/manage/Blocks/Grid/templates
+msgid "columns"
+msgstr ""
+
+#. Default: "Common"
+#: config/Blocks
+msgid "common"
+msgstr "Comú"
+
+#. Default: "Compare to language"
+#: components/manage/Multilingual/CompareLanguages
+msgid "compare_to"
+msgstr "Compara amb la llengua"
+
+#. Default: "{countofrelation} broken {countofrelation, plural, one {relation} other {relations}} of type {typeofrelation}"
+#: components/manage/Controlpanels/Relations/BrokenRelations
+msgid "countBrokenRelations"
+msgstr ""
+
+#. Default: "Date Range"
+#: config/Blocks
+msgid "daterangeFacet"
+msgstr ""
+
+#. Default: "delete"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "delete"
+msgstr "Suprimeix"
+
+#. Default: "You are using {browsername} {browserversion} which is deprecated by its vendor. That means that it does not get security updates and it is not ready for current modern web features, which deteriorates the user experience. Please upgrade to a modern browser."
+#: components/theme/OutdatedBrowser/OutdatedBrowser
+msgid "deprecated_browser_notice_message"
+msgstr "Esteu utilitzant {browsername} {browserversion} que està obsolet pel seu proveïdor. Això vol dir que no rep actualitzacions de seguretat i que no està preparat per a les funcions web modernes actuals, cosa que deteriora l'experiència de l'usuari. Si us plau, actualitzeu a un navegador modern."
+
+#. Default: "Description"
+#: config/Blocks
+msgid "description"
+msgstr "Descripció"
+
+#. Default: "For security reasons, we store your password encrypted, and cannot mail it to you. If you would like to reset your password, fill out the form below and we will send you an email at the address you gave when you registered to start the process of resetting your password."
+#: components/theme/PasswordReset/RequestPasswordReset
+msgid "description_lost_password"
+msgstr "Per motius de seguretat, emmagatzemem la vostra contrasenya xifrada i no us la podem enviar per correu. Si voleu restablir la vostra contrasenya, ompliu el formulari següent i us enviarem un correu electrònic a l'adreça que vau donar quan us vau registrar per iniciar el procés de restabliment de la vostra contrasenya."
+
+#. Default: "Your password reset request has been mailed. It should arrive in your mailbox shortly. When you receive the message, visit the address it contains to reset your password."
+#: components/theme/PasswordReset/RequestPasswordReset
+msgid "description_sent_password"
+msgstr "La vostra sol·licitud de restabliment de la contrasenya s'ha enviat per correu. Hauria d'arribar a la vostra bústia en breu. Quan rebeu el missatge, visiteu l'adreça que conté per restablir la vostra contrasenya."
+
+#. Default: "Draft"
+#: components/manage/Contents/ContentsItem
+msgid "draft"
+msgstr "Esborrany"
+
+#. Default: "Input must be valid email (something@domain.com)"
+#: helpers/MessageLabels/MessageLabels
+msgid "email"
+msgstr "L'entrada ha de ser un correu electrònic vàlid (alguna cosa@domini.com)"
+
+#. Default: "All dates"
+#: components/theme/EventDetails/EventDetails
+msgid "event_alldates"
+msgstr "Totes les dates"
+
+#. Default: "Attendees"
+#: components/theme/EventDetails/EventDetails
+msgid "event_attendees"
+msgstr "Assistents"
+
+#. Default: "Contact Name"
+#: components/theme/EventDetails/EventDetails
+msgid "event_contactname"
+msgstr "Nom de contacte"
+
+#. Default: "Contact Phone"
+#: components/theme/EventDetails/EventDetails
+msgid "event_contactphone"
+msgstr "Telèfon de contacte"
+
+#. Default: "Website"
+#: components/theme/EventDetails/EventDetails
+msgid "event_website"
+msgstr "Lloc web"
+
+#. Default: "What"
+#: components/theme/EventDetails/EventDetails
+msgid "event_what"
+msgstr "Què"
+
+#. Default: "When"
+#: components/theme/EventDetails/EventDetails
+msgid "event_when"
+msgstr "quan"
+
+#. Default: "Where"
+#: components/theme/EventDetails/EventDetails
+msgid "event_where"
+msgstr "On?"
+
+#. Default: "This website does not accept files larger than {limit}"
+#: helpers/MessageLabels/MessageLabels
+msgid "fileTooLarge"
+msgstr ""
+
+#. Default: "flush intIds and rebuild relations"
+#: helpers/MessageLabels/MessageLabels
+msgid "flush intIds and rebuild relations"
+msgstr ""
+
+#. Default: "<ul><li>Regenerate intIds (tokens of relations in relation catalog)</li><li>Rebuild relations</li></ul><p>Check the log for details!</p><p><b>Warning</b>: If you have add-ons relying on intIds, you should not flush them.</p>"
+#: helpers/MessageLabels/MessageLabels
+msgid "flushAndRebuildRelationsHints"
+msgstr ""
+
+#. Default: "Head title"
+#: components/manage/Blocks/Teaser/schema
+msgid "head_title"
+msgstr ""
+
+#. Default: "Password reset confirmation sent"
+#: components/theme/PasswordReset/RequestPasswordReset
+msgid "heading_sent_password"
+msgstr "S'ha enviat la confirmació de restabliment de la contrasenya"
+
+#. Default: "Hero"
+#: config/Blocks
+msgid "hero"
+msgstr "Heroi"
+
+#. Default: "HTML"
+#: config/Blocks
+msgid "html"
+msgstr "HTML"
+
+#. Default: "Image"
+#: config/Blocks
+msgid "image"
+msgstr "Imatge"
+
+#. Default: "Clear image"
+#: components/manage/Blocks/Image/ImageSidebar
+msgid "image_block_clear"
+msgstr ""
+
+#. Default: "Image preview"
+#: components/manage/Blocks/Image/ImageSidebar
+msgid "image_block_preview"
+msgstr ""
+
+#. Default: "Input must be integer"
+#: helpers/MessageLabels/MessageLabels
+msgid "integer"
+msgstr "L'entrada ha de ser enter"
+
+#. Default: "Intranet"
+#: components/manage/Contents/ContentsItem
+msgid "intranet"
+msgstr "Intranet"
+
+#. Default: "item"
+#: components/manage/Contents/Contents
+msgid "item"
+msgstr ""
+
+#. Default: "items"
+#: components/manage/Contents/Contents
+msgid "items"
+msgstr ""
+
+#. Default: "My email is"
+#: components/theme/PasswordReset/RequestPasswordReset
+msgid "label_my_email_is"
+msgstr ""
+
+#. Default: "My user name is"
+#: components/theme/PasswordReset/RequestPasswordReset
+msgid "label_my_username_is"
+msgstr "El meu nom d'usuari és"
+
+#. Default: "Lead Image Field"
+#: config/Blocks
+msgid "leadimage"
+msgstr "Camp d'imatge principal"
+
+#. Default: "Enter a URL to an image"
+#: components/manage/Widgets/ImageWidget
+msgid "linkAnImage"
+msgstr ""
+
+#. Default: "Listing"
+#: config/Blocks
+msgid "listing"
+msgstr "Llistat"
+
+#. Default: "Loading"
+#: components/manage/Blocks/Listing/ListingBody
+#: components/manage/Contents/Contents
+msgid "loading"
+msgstr "Carregant"
+
+#. Default: "log in"
+#: components/theme/Unauthorized/Unauthorized
+msgid "log in"
+msgstr "Iniciar Sessió"
+
+#. Default: "Maps"
+#: config/Blocks
+msgid "maps"
+msgstr "Mapes"
+
+#. Default: "Maximum Length"
+#: components/manage/Widgets/SchemaWidget
+msgid "maxLength"
+msgstr "Longitud màxima"
+
+#. Default: "End of the range (including the value itself)"
+#: components/manage/Widgets/SchemaWidget
+msgid "maximum"
+msgstr "Final de l'interval (inclòs el propi valor)"
+
+#. Default: "Media"
+#: config/Blocks
+msgid "media"
+msgstr "Mitjans de comunicació"
+
+#. Default: "Minimum Length"
+#: components/manage/Widgets/SchemaWidget
+msgid "minLength"
+msgstr "Longitud mínima"
+
+#. Default: "Start of the range"
+#: components/manage/Widgets/SchemaWidget
+msgid "minimum"
+msgstr "Inici de la gamma"
+
+#. Default: "Most used"
+#: config/Blocks
+msgid "mostUsed"
+msgstr "El més utilitzat"
+
+#. Default: "Found {sources} sources and {targets} targets. Narrow down to {max}!"
+#: components/manage/Controlpanels/Relations/RelationsListing
+msgid "narrowDownRelations"
+msgstr ""
+
+#. Default: "No"
+#: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
+#: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+#: components/theme/Widgets/BooleanWidget
+msgid "no"
+msgstr ""
+
+#. Default: "No workflow state"
+#: components/manage/Contents/ContentsItem
+msgid "no workflow state"
+msgstr "Sense estat de flux de treball"
+
+#. Default: "Input must be number"
+#: helpers/MessageLabels/MessageLabels
+msgid "number"
+msgstr "L'entrada ha de ser un número"
+
+#. Default: "of the month"
+#: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
+#: components/manage/Widgets/RecurrenceWidget/ByYearField
+msgid "of the month"
+msgstr "del mes"
+
+#. Default: "or try a different page."
+#: error
+msgid "or try a different page."
+msgstr "o prova una pàgina diferent."
+
+#. Default: "others"
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+msgid "others"
+msgstr "altres"
+
+#. Default: "Pending"
+#: components/manage/Contents/ContentsItem
+msgid "pending"
+msgstr ""
+
+#. Default: "Pick an existing image"
+#: components/manage/Widgets/ImageWidget
+msgid "pickAnImage"
+msgstr ""
+
+#. Default: "Private"
+#: components/manage/Contents/ContentsItem
+msgid "private"
+msgstr "privat"
+
+#. Default: "Published"
+#: components/manage/Contents/ContentsItem
+msgid "published"
+msgstr "Publicat"
+
+#. Default: "Select…"
+#: components/manage/Widgets/QueryWidget
+msgid "querystring-widget-select"
+msgstr "Selecciona ..."
+
+#. Default: "rebuild relations"
+#: helpers/MessageLabels/MessageLabels
+msgid "rebuild relations"
+msgstr ""
+
+#. Default: "reference"
+#: components/manage/Contents/Contents
+msgid "reference"
+msgstr ""
+
+#. Default: "references"
+#: components/manage/Contents/Contents
+msgid "references"
+msgstr ""
+
+#. Default: "results"
+#: components/theme/Search/Search
+msgid "results found"
+msgstr "resultats"
+
+#. Default: "return to the site root"
+#: error
+msgid "return to the site root"
+msgstr "tornar a l'arrel del lloc"
+
+#. Default: "and"
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_and"
+msgstr "i"
+
+#. Default: "(~approximate)"
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_approximate"
+msgstr "(~aproximat)"
+
+#. Default: "at"
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_at"
+msgstr "a"
+
+#. Default: "[month] [day], [year]"
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_dateFormat"
+msgstr "[month] [day], [year]"
+
+#. Default: "day"
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_day"
+msgstr "Dia"
+
+#. Default: "days"
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_days"
+msgstr "Dies"
+
+#. Default: "every"
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_every"
+msgstr "cada"
+
+#. Default: "for"
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_for"
+msgstr "per"
+
+#. Default: "hour"
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_hour"
+msgstr "hora"
+
+#. Default: "hours"
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_hours"
+msgstr "hores"
+
+#. Default: "in"
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_in"
+msgstr "a"
+
+#. Default: "last"
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_last"
+msgstr "últim"
+
+#. Default: "minutes"
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_minutes"
+msgstr "minuts"
+
+#. Default: "month"
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_month"
+msgstr "més"
+
+#. Default: "months"
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_months"
+msgstr "mesos"
+
+#. Default: "nd"
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_nd"
+msgstr "nd"
+
+#. Default: "on"
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_on"
+msgstr "on"
+
+#. Default: "on the"
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_on the"
+msgstr "a la"
+
+#. Default: "or"
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_or"
+msgstr "o"
+
+#. Default: "rd"
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_rd"
+msgstr "rd"
+
+#. Default: "st"
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_st"
+msgstr "st"
+
+#. Default: "th"
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_th"
+msgstr "th"
+
+#. Default: "the"
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_the"
+msgstr "el"
+
+#. Default: "time"
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_time"
+msgstr "temps"
+
+#. Default: "times"
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_times"
+msgstr "vegades"
+
+#. Default: "until"
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_until"
+msgstr "fins que"
+
+#. Default: "week"
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_week"
+msgstr "setmana"
+
+#. Default: "weekday"
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_weekday"
+msgstr "Dia de la setmana"
+
+#. Default: "weekdays"
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_weekdays"
+msgstr "Els dies laborables"
+
+#. Default: "weeks"
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_weeks"
+msgstr "Setmanes"
+
+#. Default: "year"
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_year"
+msgstr "Curs"
+
+#. Default: "years"
+#: components/manage/Widgets/RecurrenceWidget/Utils
+msgid "rrule_years"
+msgstr "Anys"
+
+#. Default: "Select"
+#: config/Blocks
+msgid "selectFacet"
+msgstr ""
+
+#. Default: "Select view"
+#: components/manage/Blocks/Search/components/ViewSwitcher
+msgid "selectView"
+msgstr ""
+
+#. Default: "Skip to footer"
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-footer"
+msgstr "Saltar al peu de pàgina"
+
+#. Default: "Skip to main content"
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-main-content"
+msgstr "Ves al contingut principal"
+
+#. Default: "Skip to navigation"
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplink-navigation"
+msgstr "Saltar a la navegació"
+
+#. Default: "sort"
+#: components/manage/Contents/Contents
+msgid "sort"
+msgstr "Ordena"
+
+#. Default: "sources path"
+#: helpers/MessageLabels/MessageLabels
+msgid "sources path"
+msgstr ""
+
+#. Default: "Table"
+#: config/Blocks
+msgid "table"
+msgstr "Taula"
+
+#. Default: "target path"
+#: helpers/MessageLabels/MessageLabels
+msgid "target path"
+msgstr ""
+
+#. Default: "Text"
+#: config/Blocks
+msgid "text"
+msgstr ""
+
+#. Default: "Title"
+#: config/Blocks
+msgid "title"
+msgstr "Títol"
+
+#. Default: "Table of Contents"
+#: components/manage/Blocks/ToC/Schema
+#: config/Blocks
+msgid "toc"
+msgstr "Taula de continguts"
+
+#. Default: "Toggle"
+#: config/Blocks
+msgid "toggleFacet"
+msgstr ""
+
+#. Default: "Update from version {origin} to {destination}"
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "upgradeVersions"
+msgstr ""
+
+#. Default: "Upload an image from your computer"
+#: components/manage/Widgets/ImageWidget
+msgid "uploadAnImage"
+msgstr ""
+
+#. Default: "Input must be valid url (www.something.com or http(s)://www.something.com)"
+#: helpers/MessageLabels/MessageLabels
+msgid "url"
+msgstr "L'entrada ha de ser un URL vàlid (www.something.com o http(s)://www.something.com)"
+
+#. Default: "user avatar"
+#: components/manage/Toolbar/PersonalTools
+msgid "user avatar"
+msgstr "avatar de l'usuari"
+
+#. Default: "Video"
+#: config/Blocks
+msgid "video"
+msgstr "Vídeo"
+
+#. Default: "Views"
+#: components/manage/Blocks/Search/schema
+msgid "views"
+msgstr ""
+
+#. Default: "Visit external website"
+#: components/theme/EventDetails/EventDetails
+msgid "visit_external_website"
+msgstr "Visiteu el lloc web extern"
+
+#. Default: "You are not authorized to perform this operation."
+#: components/manage/Toolbar/More
+msgid "workingCopyErrorUnauthorized"
+msgstr ""
+
+#. Default: "An error occurred while performing this operation."
+#: components/manage/Toolbar/More
+msgid "workingCopyGenericError"
+msgstr ""
+
+#. Default: "Yes"
+#: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
+#: components/manage/Blocks/Search/components/ToggleFacetFilterListEntry
+#: components/theme/Widgets/BooleanWidget
+msgid "yes"
+msgstr ""
+
+#. Default: "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
+#: components/manage/Contents/ContentsUploadModal
+msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
+msgstr "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
+
+#. Default: "{count} selected"
+#: components/manage/Contents/Contents
+msgid "{count} selected"
+msgstr "{count} seleccionat"
+
+#. Default: "{id} Content Type"
+#: components/manage/Controlpanels/ContentType
+msgid "{id} Content Type"
+msgstr "{id} Tipus de contingut"
+
+#. Default: "{id} Schema"
+#: components/manage/Controlpanels/ContentTypeSchema
+msgid "{id} Schema"
+msgstr "{id} Esquema"
+
+#. Default: "{title} copied."
+#: components/manage/Actions/Actions
+msgid "{title} copied."
+msgstr "{title} copiat."
+
+#. Default: "{title} cut."
+#: components/manage/Actions/Actions
+msgid "{title} cut."
+msgstr "{title} tall."
+
+#. Default: "{title} has been deleted."
+#: components/manage/Actions/Actions
+msgid "{title} has been deleted."
+msgstr "S'ha suprimit{title}."

@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Integrate your add-on with Volto's add-on framework"
-  "property=og:description": "Integrate your add-on with Volto's add-on framework"
-  "property=og:title": "Best practices for add-ons"
-  "keywords": "Volto, Plone, frontend, React, best practices, add-ons"
+myst:
+  html_meta:
+    "description": "Integrate your add-on with Volto's add-on framework"
+    "property=og:description": "Integrate your add-on with Volto's add-on framework"
+    "property=og:title": "Best practices for add-ons"
+    "keywords": "Volto, Plone, frontend, React, best practices, add-ons"
 ---
 
 # Best practices for add-ons
@@ -23,7 +24,7 @@ register the most basic configuration of that widget with a name that can be
 used.
 
 On more complicated cases, see if you can structure your code to use the
-`settings` configuration registry, or stash your configuration in your block
+`settings` {term}`configuration registry`, or stash your configuration in your block
 registration, for example.
 
 As an example: let's say we're building a Color Picker widget and we want to
@@ -35,7 +36,7 @@ multiple instances of that color widget with custom color palettes.
 
 ### Provide additional configuration
 
-An add-on can ship with multiple Volto configuration loaders. This makes it
+An add-on can ship with multiple {term}`Volto configuration loader`s. This makes it
 possible to provide configuration methods for demo purposes, for example, or to
 ship with a default "shallow" integration, then provide another separate
 configuration loader for a deeper integration.
@@ -72,15 +73,15 @@ hold the Cypress integration tests and trigger the CI tests.
 If you're releasing your add-on to `npmjs.com`, please consider adding the
 following tags, next to your add-on-specific tags:
 
-- volto-addon
-- volto
-- plone
-- react
+- `volto-addon`
+- `volto`
+- `plone`
+- `react`
 
-## Include in collective/awesome-volto
+## Include in `collective/awesome-volto`
 
 Even if you think your add-on is not generic or it's tricky to integrate, please
 consider including your add-on in the
-[collective/awesome-volto](https://github.com/collective/awesome-volto) add-ons
+[`collective/awesome-volto`](https://github.com/collective/awesome-volto) add-ons
 list. This provides visibility to your add-on but also further solidifies
-Volto's possition in our Plone community.
+Volto's position in our Plone community.

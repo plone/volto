@@ -1,0 +1,181 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UsersControlpanelGroups renders a UsersControlpanelGroups component 1`] = `
+<tr
+  className=""
+>
+  <td
+    className=""
+  >
+    <div
+      className="ui fitted checkbox"
+      onChange={[Function]}
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+    >
+      <input
+        checked={false}
+        className="hidden"
+        readOnly={true}
+        tabIndex={0}
+        type="checkbox"
+        value="Administrators"
+      />
+      <label />
+    </div>
+  </td>
+  <td
+    className=""
+  >
+    Administrators
+  </td>
+  <td
+    className=""
+  >
+    <div
+      className="ui fitted checkbox"
+      onChange={[Function]}
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+    >
+      <input
+        checked={false}
+        className="hidden"
+        disabled={false}
+        readOnly={true}
+        tabIndex={0}
+        type="checkbox"
+        value="Administrators.Member"
+      />
+      <label />
+    </div>
+  </td>
+  <td
+    className=""
+  >
+    <div
+      className="ui fitted checkbox"
+      onChange={[Function]}
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+    >
+      <input
+        checked={false}
+        className="hidden"
+        disabled={false}
+        readOnly={true}
+        tabIndex={0}
+        type="checkbox"
+        value="Administrators.Reader"
+      />
+      <label />
+    </div>
+  </td>
+  <td
+    className=""
+  >
+    <div
+      className="ui checked fitted checkbox"
+      onChange={[Function]}
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+    >
+      <input
+        checked={true}
+        className="hidden"
+        disabled={false}
+        readOnly={true}
+        tabIndex={0}
+        type="checkbox"
+        value="Administrators.Manager"
+      />
+      <label />
+    </div>
+  </td>
+</tr>
+`;
+
+exports[`UsersControlpanelGroups renders a UsersControlpanelGroups component with no Manager user 1`] = `
+<tr
+  className=""
+>
+  <td
+    className=""
+  >
+    Administrators
+  </td>
+  <td
+    className=""
+  >
+    <div
+      className="ui fitted checkbox"
+      onChange={[Function]}
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+    >
+      <input
+        checked={false}
+        className="hidden"
+        disabled={false}
+        readOnly={true}
+        tabIndex={0}
+        type="checkbox"
+        value="Administrators.Member"
+      />
+      <label />
+    </div>
+  </td>
+  <td
+    className=""
+  >
+    <div
+      className="ui fitted checkbox"
+      onChange={[Function]}
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+    >
+      <input
+        checked={false}
+        className="hidden"
+        disabled={false}
+        readOnly={true}
+        tabIndex={0}
+        type="checkbox"
+        value="Administrators.Reader"
+      />
+      <label />
+    </div>
+  </td>
+  <td
+    className=""
+  >
+    <div
+      className="ui checked disabled fitted checkbox"
+      onChange={[Function]}
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+    >
+      <input
+        checked={true}
+        className="hidden"
+        disabled={true}
+        readOnly={true}
+        tabIndex={-1}
+        type="checkbox"
+        value="Administrators.Manager"
+      />
+      <label />
+    </div>
+  </td>
+  <td
+    className="right aligned"
+  />
+</tr>
+`;

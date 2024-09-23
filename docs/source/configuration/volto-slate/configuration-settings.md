@@ -1,9 +1,10 @@
 ---
-html_meta:
-  "description": "Slate Editor configuration settings"
-  "property=og:description": "Slate Editor configuration settings"
-  "property=og:title": "Editor Configuration"
-  "keywords": "Volto, Plone, frontend, React, Slate, Slate-React, volto-slate"
+myst:
+  html_meta:
+    "description": "Slate Editor configuration settings"
+    "property=og:description": "Slate Editor configuration settings"
+    "property=og:title": "Editor Configuration"
+    "keywords": "Volto, Plone, frontend, React, Slate, Slate-React, volto-slate"
 ---
 
 (editor-configuration-label)=
@@ -15,6 +16,34 @@ These are controlled from the `config.js` settings.
 
 
 (editor-configuration-defaultBlockType-label)=
+
+
+## `slate.styleMenu`
+
+Add a menu applying CSS classes to text passages or entire paragraphs.
+
+`slate.styleMenu.inlineStyles` are applied to selected text passages, while `slate.styleMenu.blockStyles` are applied to selected paragraphs.
+
+```{image} ../../_static/style_menu.png
+:alt: Style Menu
+```
+
+```js
+slate.styleMenu.inlineStyles = [
+    {
+      cssClass: 'cool-inline-text',
+      label: 'Cool Inline Text',
+      icon: (props) => <Icon name={iconSVG} size="24px" />,
+    },
+  ];
+  slate.styleMenu.blockStyles = [
+    {
+      cssClass: 'underline-block-text',
+      label: 'Cool Block Text',
+      icon: (props) => <Icon name={iconSVG} size="24px" />,
+    },
+  ];
+```
 
 ## `defaultBlockType`
 
@@ -208,4 +237,40 @@ They are not persisted in the final value, so they are useful, for example, to h
 
 ```js
 slate.runtimeDecorators = [([node, path], ranges) => ranges];
+```
+
+(editor-configuration-slate-useLinkedHeadings-label)=
+
+## `slate.useLinkedHeadings`
+
+The setting `slate.useLinkedHeadings` controls whether `volto-slate` creates anchors for headings, such as `h1` and `h2`, in the editor.
+
+The default setting is `true`.
+
+You can opt out of this feature by setting its value to `false`.
+
+```js
+slate.useLinkedHeadings = false
+```
+
+```{versionchanged} Volto 17.0.0-alpha.28
+This feature is still enabled by default, but has a condition to show only for authenticated users.
+```
+
+(editor-configuration-blocks-initialBlocksFocus-label)=
+
+## `blocks.initialBlocksFocus`
+
+Determine which type of block should be selected on edit.
+
+```js
+blocks.initialBlocksFocus === {
+  <content type name>: <block type>
+};
+```
+
+Disable selection of any block and prevent scrolling to a block:
+
+```js
+blocks.initialBlocksFocus === null;
 ```

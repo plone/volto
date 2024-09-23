@@ -75,8 +75,20 @@ cypress/screenshots
 .env.test.local
 .env.production.local
 
+# generic
 data
 omelette
 
+# build
 public/critical.css
 src/addons/*
+/cache
+
+# yarn 3
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions

@@ -13,13 +13,14 @@ exports[`TextBlockEdit renders w/o errors 1`] = `
         class="toolbar-wrapper"
       />
       <div
+        aria-multiline="false"
         autocapitalize="false"
         autocorrect="false"
         contenteditable="false"
         data-slate-editor="true"
         data-slate-node="value"
         spellcheck="false"
-        style="position: relative; outline: none; white-space: pre-wrap; word-wrap: break-word; min-height: 0px;"
+        style="position: relative; white-space: pre-wrap; word-wrap: break-word;"
         tabindex="0"
         zindex="-1"
       >
@@ -33,13 +34,6 @@ exports[`TextBlockEdit renders w/o errors 1`] = `
               class=""
               data-slate-leaf="true"
             >
-              <span
-                contenteditable="false"
-                data-slate-placeholder="true"
-                style="position: absolute; pointer-events: none; width: 100%; max-width: 100%; display: block; opacity: 0.333; user-select: none; text-decoration: none;"
-              >
-                Type text…
-              </span>
               <span
                 data-slate-length="0"
                 data-slate-zero-width="n"

@@ -1,0 +1,244 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a dictionary widget component 1`] = `
+<div>
+  <div
+    class="inline field vocabularytermswidget dictwidget field-wrapper-test-dict"
+  >
+    <div
+      class="ui grid"
+    >
+      <div
+        class="stretched row"
+      >
+        <div
+          class="four wide column"
+        >
+          <div
+            class="wrapper"
+          >
+            <label
+              for="field-test-dict"
+              id="fieldset-default-field-label-test-dict"
+            >
+              My Vocabulary
+            </label>
+          </div>
+        </div>
+        <div
+          class="eight wide column"
+        >
+          <div
+            class="add-item-button-wrapper"
+          >
+            <button
+              aria-label="Vocabulary term"
+              class="ui button"
+            >
+              <svg
+                class="icon"
+                style="height: 18px; width: auto; fill: currentColor;"
+                viewBox=""
+                xmlns=""
+              />
+              Add term
+            </button>
+          </div>
+          <div
+            data-rbd-droppable-context-id="0"
+            data-rbd-droppable-id="id-0"
+            style="position: relative;"
+          >
+            <div
+              class="vocabularyterm"
+              data-rbd-draggable-context-id="0"
+              data-rbd-draggable-id="talk"
+            >
+              <div
+                style="align-items: center; display: flex;"
+              >
+                <div
+                  aria-describedby="rbd-hidden-text-0-hidden-text-0"
+                  class="draghandlewrapper"
+                  data-rbd-drag-handle-context-id="0"
+                  data-rbd-drag-handle-draggable-id="talk"
+                  draggable="false"
+                  role="button"
+                  tabindex="0"
+                >
+                  <svg
+                    class="icon"
+                    style="height: 18px; width: auto; fill: currentColor;"
+                    viewBox=""
+                    xmlns=""
+                  />
+                </div>
+                <div
+                  class="ui drag block inner"
+                >
+                  <div
+                    class="Field"
+                    id="en-0-test-dict-talk"
+                  >
+                    English
+                  </div>
+                  <div
+                    class="Field"
+                    id="de-1-test-dict-talk"
+                  >
+                    Deutsch
+                  </div>
+                  <div
+                    class="Field"
+                    id="it-2-test-dict-talk"
+                  >
+                    Italiano
+                  </div>
+                </div>
+                <div>
+                  <button
+                    aria-label="Remove term #talk"
+                    class="ui basic icon button delete-button"
+                    title="Remove term"
+                  >
+                    <svg
+                      class="icon"
+                      style="height: 20px; width: auto; fill: #e40166;"
+                      viewBox=""
+                      xmlns=""
+                    />
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div
+              class="vocabularyterm"
+              data-rbd-draggable-context-id="0"
+              data-rbd-draggable-id="keynote"
+            >
+              <div
+                style="align-items: center; display: flex;"
+              >
+                <div
+                  aria-describedby="rbd-hidden-text-0-hidden-text-0"
+                  class="draghandlewrapper"
+                  data-rbd-drag-handle-context-id="0"
+                  data-rbd-drag-handle-draggable-id="keynote"
+                  draggable="false"
+                  role="button"
+                  tabindex="0"
+                >
+                  <svg
+                    class="icon"
+                    style="height: 18px; width: auto; fill: currentColor;"
+                    viewBox=""
+                    xmlns=""
+                  />
+                </div>
+                <div
+                  class="ui drag block inner"
+                >
+                  <div
+                    class="Field"
+                    id="en-0-test-dict-keynote"
+                  >
+                    English
+                  </div>
+                  <div
+                    class="Field"
+                    id="de-1-test-dict-keynote"
+                  >
+                    Deutsch
+                  </div>
+                  <div
+                    class="Field"
+                    id="it-2-test-dict-keynote"
+                  >
+                    Italiano
+                  </div>
+                </div>
+                <div>
+                  <button
+                    aria-label="Remove term #keynote"
+                    class="ui basic icon button delete-button"
+                    title="Remove term"
+                  >
+                    <svg
+                      class="icon"
+                      style="height: 20px; width: auto; fill: #e40166;"
+                      viewBox=""
+                      xmlns=""
+                    />
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div
+              class="vocabularyterm"
+              data-rbd-draggable-context-id="0"
+              data-rbd-draggable-id="lightning-talk"
+            >
+              <div
+                style="align-items: center; display: flex;"
+              >
+                <div
+                  aria-describedby="rbd-hidden-text-0-hidden-text-0"
+                  class="draghandlewrapper"
+                  data-rbd-drag-handle-context-id="0"
+                  data-rbd-drag-handle-draggable-id="lightning-talk"
+                  draggable="false"
+                  role="button"
+                  tabindex="0"
+                >
+                  <svg
+                    class="icon"
+                    style="height: 18px; width: auto; fill: currentColor;"
+                    viewBox=""
+                    xmlns=""
+                  />
+                </div>
+                <div
+                  class="ui drag block inner"
+                >
+                  <div
+                    class="Field"
+                    id="en-0-test-dict-lightning-talk"
+                  >
+                    English
+                  </div>
+                  <div
+                    class="Field"
+                    id="de-1-test-dict-lightning-talk"
+                  >
+                    Deutsch
+                  </div>
+                  <div
+                    class="Field"
+                    id="it-2-test-dict-lightning-talk"
+                  >
+                    Italiano
+                  </div>
+                </div>
+                <div>
+                  <button
+                    aria-label="Remove term #lightning-talk"
+                    class="ui basic icon button delete-button"
+                    title="Remove term"
+                  >
+                    <svg
+                      class="icon"
+                      style="height: 20px; width: auto; fill: #e40166;"
+                      viewBox=""
+                      xmlns=""
+                    />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -1,14 +1,15 @@
 ---
-html_meta:
-  "description": "Simple deployment of a Volto application"
-  "property=og:description": "Simple deployment of a Volto application"
-  "property=og:title": "Simple deployment"
-  "keywords": "Volto, Plone, frontend, React, deployment"
+myst:
+  html_meta:
+    "description": "Simple deployment of a Volto application"
+    "property=og:description": "Simple deployment of a Volto application"
+    "property=og:title": "Simple deployment"
+    "keywords": "Volto, Plone, frontend, React, deployment"
 ---
 
 # Simple deployment
 
-Volto is a Node application that runs on your machine/server and listens to a port. Once you are ready to deploy it, you should build it running:
+Volto is a Node.js application that runs on your machine/server and listens to a port. Once you are ready to deploy it, you should build it running:
 
 ```bash
 $ yarn build
@@ -34,7 +35,7 @@ $ NODE_ENV=production node build/server.js
 
 This will start Volto in the PORT specified in the build command, and will issue internal API queries to the RAZZLE_API_PATH specified as well.
 
-The simplest deployment is to start this node process in your server by any mean of your choice (systemd, process manager, etc) and manage its lifecycle.
+The simplest deployment is to start this Node.js process in your server by any mean of your choice (systemd, process manager, etc) and manage its lifecycle.
 
 ## Reverse proxies
 
@@ -71,4 +72,4 @@ location ~ / {
 
 ### Understanding CORS errors
 
-If you're getting [CORS errors](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors#Identifying_the_issue) you need to understand the nature of these errors: the backend server (usually Plone) needs to be configured to "know" the final domain where the content is fetched. This is done for security purposes, to protect the information in the backend server from being loaded by client browsers on unknown domains. So make sure that the backend server is properly configured for your purposes. When using Plone with Docker, check the [CORS](https://github.com/plone/plone.docker#for-basic-usage) documentation section, otherwise the [CORS section of plone.rest](https://github.com/plone/plone.rest#cors).
+If you're getting [CORS errors](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors#Identifying_the_issue) you need to understand the nature of these errors: the backend server (usually Plone) needs to be configured to "know" the final domain where the content is fetched. This is done for security purposes, to protect the information in the backend server from being loaded by client browsers on unknown domains. So make sure that the backend server is properly configured for your purposes. When using Plone with Docker, check the [CORS](https://github.com/plone/plone.docker#for-basic-usage) documentation section, otherwise the [CORS section of `plone.rest`](https://github.com/plone/plone.rest#cors).
