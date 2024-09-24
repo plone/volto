@@ -1,6 +1,9 @@
 import React from 'react';
-import ObjectBrowserBody from '@plone/volto/components/manage/Sidebar/ObjectBrowserBody';
-import SidebarPopup from '@plone/volto/components/manage/Sidebar/SidebarPopup';
+import {
+  ObjectBrowserBody,
+  SidebarPopup,
+} from '@plone/volto/components/manage/Sidebar';
+
 import { getBaseUrl } from '@plone/volto/helpers';
 
 const withObjectBrowser = (WrappedComponent) =>

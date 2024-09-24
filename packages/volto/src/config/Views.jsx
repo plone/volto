@@ -9,14 +9,14 @@ import NewsItemView from '@plone/volto/components/theme/View/NewsItemView';
 import SummaryView from '@plone/volto/components/theme/View/SummaryView';
 import TabularView from '@plone/volto/components/theme/View/TabularView';
 import LinkView from '@plone/volto/components/theme/View/LinkView';
-import NotFoundView from '@plone/volto/components/theme/NotFound/NotFound';
+import { NotFound } from '@plone/volto/components/theme/NotFound';
 import ConnectionRefused from '@plone/volto/components/theme/ConnectionRefused/ConnectionRefused';
 import CorsError from '@plone/volto/components/theme/CorsError/CorsError';
 import RequestTimeout from '@plone/volto/components/theme/RequestTimeout/RequestTimeout';
 import AlbumView from '@plone/volto/components/theme/View/AlbumView';
-import Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
-import Forbidden from '@plone/volto/components/theme/Forbidden/Forbidden';
-import ServerError from '@plone/volto/components/theme/Error/ServerError';
+import { Unauthorized } from '@plone/volto/components/theme/Unauthorized';
+import { Forbidden } from '@plone/volto/components/theme/Forbidden';
+import { ServerError } from '@plone/volto/components/theme/Error';
 
 const EventView = loadable(
   () => import('@plone/volto/components/theme/View/EventView'),
@@ -111,7 +111,7 @@ export const contentTypesViews = {
 export const defaultView = DefaultView;
 
 export const errorViews = {
-  404: NotFoundView,
+  404: NotFound,
   401: Unauthorized,
   403: Forbidden,
   408: RequestTimeout,

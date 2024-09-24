@@ -24,7 +24,7 @@ import homeSVG from '@plone/volto/icons/home.svg';
 import iconsSVG from '@plone/volto/icons/apps.svg';
 import listSVG from '@plone/volto/icons/list-bullet.svg';
 
-import ObjectBrowserNav from '@plone/volto/components/manage/Sidebar/ObjectBrowserNav';
+import { ObjectBrowserNav } from '@plone/volto/components/manage/Sidebar';
 
 const messages = defineMessages({
   SearchInputPlaceholder: {

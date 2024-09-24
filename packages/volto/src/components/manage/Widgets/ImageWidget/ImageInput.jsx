@@ -1,14 +1,13 @@
 import React, { useEffect, useRef } from 'react';
-import { Button, Dimmer, Loader, Message } from 'semantic-ui-react';
-import { useIntl, defineMessages } from 'react-intl';
-import { useDispatch } from 'react-redux';
-import { useLocation } from 'react-router-dom';
-import loadable from '@loadable/component';
-import { connect } from 'react-redux';
 import { compose } from 'redux';
-import useLinkEditor from '@plone/volto/components/manage/AnchorPlugin/useLinkEditor';
+import { useDispatch, connect } from 'react-redux';
+import { useLocation } from 'react-router-dom';
+import { useIntl, defineMessages } from 'react-intl';
+import { Button, Dimmer, Loader, Message } from 'semantic-ui-react';
+import { readAsDataURL } from 'promise-file-reader';
+import loadable from '@loadable/component';
+import { createContent } from '@plone/volto/actions';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
-
 import {
   flattenToAppURL,
   getBaseUrl,
@@ -16,27 +15,16 @@ import {
   validateFileUploadSize,
   usePrevious,
 } from '@plone/volto/helpers';
-import { createContent } from '@plone/volto/actions';
-import { readAsDataURL } from 'promise-file-reader';
-import { FormFieldWrapper, Icon } from '@plone/volto/components';
+import { Icon } from '@plone/volto/components';
+import useLinkEditor from '@plone/volto/components/manage/AnchorPlugin/useLinkEditor';
 
+import { ImageToolbar } from '@plone/volto/components/manage/Widgets/ImageWidget';
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
-import clearSVG from '@plone/volto/icons/clear.svg';
 import navTreeSVG from '@plone/volto/icons/nav.svg';
 import linkSVG from '@plone/volto/icons/link.svg';
 import uploadSVG from '@plone/volto/icons/upload.svg';
 
 const Dropzone = loadable(() => import('react-dropzone'));
-
-export const ImageToolbar = ({ className, data, id, onChange, selected }) => (
-  <div className="image-upload-widget-toolbar">
-    <Button.Group>
-      <Button icon basic onClick={() => onChange(id, null)}>
-        <Icon className="circled" name={clearSVG} size="24px" color="#e40166" />
-      </Button>
-    </Button.Group>
-  </div>
-);
 
 const messages = defineMessages({
   addImage: {
@@ -298,7 +286,7 @@ const UnconnectedImageInput = (props) => {
   );
 };
 
-export const ImageInput = compose(
+const ImageInput = compose(
   connect(
     (state, ownProps) => {
       const requestId = `image-upload-${ownProps.id}`;
@@ -311,25 +299,4 @@ export const ImageInput = compose(
   ),
 )(withObjectBrowser(UnconnectedImageInput));
 
-const ImageUploadWidget = (props) => {
-  const { fieldSet, id, title } = props;
-  return (
-    <FormFieldWrapper
-      {...props}
-      columns={1}
-      className="block image-upload-widget"
-    >
-      <div className="wrapper">
-        <label
-          id={`fieldset-${fieldSet}-field-label-${id}`}
-          htmlFor={`field-${id}`}
-        >
-          {title}
-        </label>
-      </div>
-      <ImageInput {...props} />
-    </FormFieldWrapper>
-  );
-};
-
-export default ImageUploadWidget;
+export default ImageInput;

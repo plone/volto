@@ -1,6 +1,6 @@
 import React from 'react';
-import ImageWidget from './ImageWidget';
-import WidgetStory from './story';
+import ImageWidget from '.';
+import WidgetStory from '../story';
 
 export const Default = WidgetStory.bind({
   props: { id: 'image_widget', title: 'Image', data: {}, properties: {} },
