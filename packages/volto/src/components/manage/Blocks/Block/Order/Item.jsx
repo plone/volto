@@ -98,7 +98,9 @@ export const Item = forwardRef(
             <Icon name={dragSVG} size="16px" />
           </button>
           <span
-            className={cx('text', { errored: Object.keys(errors).length > 0 })}
+            className={cx('text', {
+              errored: errors && Object.keys(errors).length > 0,
+            })}
           >
             {config.blocks.blocksConfig[data?.['@type']]?.icon && (
               <Icon

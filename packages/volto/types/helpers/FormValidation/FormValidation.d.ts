@@ -2,6 +2,7 @@ export function validationMessage(isValid: boolean, criterion: string, valueToCo
 export function tryParseJSON(requestItem: string): any;
 export default FormValidation;
 export function validateFileUploadSize(file: File, intlFunc: Function): boolean;
+export function extractInvariantErrors(erros: any[]): any[];
 declare class FormValidation {
     /**
      * The first Fieldset (Tab) that has any errors

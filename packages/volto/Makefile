@@ -81,6 +81,10 @@ cypress-install: ## Install Cypress for acceptance tests
 .PHONY: build-deps
 build-deps: ../registry/dist ## Build dependencies
 
+.PHONY: i18n
+i18n: ## Extract and compile translations
+	pnpm i18n
+
 ## Storybook
 
 .PHONY: storybook-start

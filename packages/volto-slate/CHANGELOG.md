@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 18.0.0-alpha.18 (2024-09-13)
+
+### Feature
+
+- Pass `user`, `navRoot` and `contentType` objects to the `restricted` function of the block settings. @wesleybl [#6264](https://github.com/plone/volto/issues/6264)
+
 ## 18.0.0-alpha.17 (2024-07-05)
 
 ### Feature

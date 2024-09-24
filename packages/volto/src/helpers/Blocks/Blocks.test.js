@@ -511,6 +511,21 @@ describe('Blocks', () => {
       });
     });
 
+    it('initializes data for new block with initialValue in insertBlock', () => {
+      const [newId, form] = insertBlock(
+        {
+          blocks: { a: { value: 1 }, b: { value: 2 } },
+          blocks_layout: { items: ['a', 'b'] },
+        },
+        'b',
+        { '@type': 'dummyText' },
+      );
+      expect(form.blocks[newId]).toStrictEqual({
+        '@type': 'dummyText',
+        marker: true,
+      });
+    });
+
     it('initializes data for new block based on schema defaults', () => {
       const [newId, form] = addBlock(
         {
