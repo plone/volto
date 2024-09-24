@@ -15,7 +15,6 @@ import qs from 'query-string';
 import {
   ContentMetadataTags,
   Comments,
-  Tags,
   Toolbar,
 } from '@plone/volto/components';
 import { listActions, getContent } from '@plone/volto/actions';
@@ -256,11 +255,6 @@ class View extends Component {
           history={this.props.history}
         />
         <SlotRenderer name="belowContent" content={this.props.content} />
-        {config.settings.showTags &&
-          this.props.content.subjects &&
-          this.props.content.subjects.length > 0 && (
-            <Tags tags={this.props.content.subjects} />
-          )}
         {this.props.content.allow_discussion && (
           <Comments pathname={this.props.pathname} />
         )}

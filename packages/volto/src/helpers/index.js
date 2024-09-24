@@ -40,6 +40,7 @@ export {
   getLanguageIndependentFields,
 } from '@plone/volto/helpers/Content/Content';
 export {
+  applyBlockInitialValue,
   addBlock,
   insertBlock,
   blockHasValue,
@@ -85,6 +86,7 @@ export { default as Helmet } from './Helmet/Helmet';
 export { default as FormValidation } from './FormValidation/FormValidation';
 export { validateFileUploadSize } from './FormValidation/FormValidation';
 export { tryParseJSON } from './FormValidation/FormValidation';
+export { extractInvariantErrors } from './FormValidation/FormValidation';
 export {
   difference,
   getColor,

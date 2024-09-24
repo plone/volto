@@ -151,14 +151,28 @@ describe('Url', () => {
   describe('isCmsUi', () => {
     [...settings.nonContentRoutes, '/controlpanel/mypanel'].forEach((route) => {
       if (typeof route === 'string') {
-        it(`matches non-content-route ${route}`, () => {
-          expect(isCmsUi(`/mycontent/${route}`)).toBe(true);
-        });
+        if (settings.nonContentRoutesPublic.includes(route)) {
+          it(`matches non-content-route-public ${route}`, () => {
+            expect(isCmsUi(route)).toBe(false);
+          });
+        } else {
+          it(`matches non-content-route ${route}`, () => {
+            expect(isCmsUi(`/mycontent/${route}`)).toBe(true);
+          });
+        }
       }
     });
 
     it('returns false on non-cms-ui views', () => {
       expect(isCmsUi('/mycontent')).toBe(false);
+    });
+
+    it('returns true on non content routes', () => {
+      expect(isCmsUi('/mycontent/historyview')).toBe(true);
+    });
+
+    it('returns false on public non content routes', () => {
+      expect(isCmsUi('/mycontent/login')).toBe(false);
     });
   });
 
@@ -255,11 +269,24 @@ describe('Url', () => {
     });
     it('isUrl test 4', () => {
       const href = `https://www`;
-      expect(isUrl(href)).toBe(false);
+      expect(isUrl(href)).toBe(true);
     });
     it('isUrl test 5', () => {
+      const href = `https://www/foo/bar`;
+      expect(isUrl(href)).toBe(true);
+    });
+    it('isUrl test 6', () => {
+      // at the end of the day, this is a strange, but valid, URL
       const href = `www.e`;
-      expect(isUrl(href)).toBe(false);
+      expect(isUrl(href)).toBe(true);
+    });
+    it('isUrl test 7', () => {
+      const href = `file://server/folder/file.txt`;
+      expect(isUrl(href)).toBe(true);
+    });
+    it('isUrl test 8', () => {
+      const href = `file://server.dir.internal/folder/file.txt`;
+      expect(isUrl(href)).toBe(true);
     });
   });
   describe('getFieldURL', () => {

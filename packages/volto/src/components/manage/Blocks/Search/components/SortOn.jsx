@@ -22,10 +22,6 @@ const messages = defineMessages({
     id: 'Sort on',
     defaultMessage: 'Sort on',
   },
-  sortOnButtonTitle: {
-    id: 'Sort on {value}',
-    defaultMessage: 'Sort on {value}',
-  },
   ascending: {
     id: 'Ascending',
     defaultMessage: 'Ascending',
@@ -64,7 +60,7 @@ const SortOn = (props) => {
 
   const showSelectField = sortOnOptions.length > 1;
   if (!showSelectField && !activeSortOn) {
-    return;
+    return null;
   }
   const value = {
     value: activeSortOn || intl.formatMessage(messages.noSelection),

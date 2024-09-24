@@ -1292,10 +1292,10 @@ msgstr "Syötä koko nimi, esimerkiksi Lumi Vuorinen."
 msgid "Enter map Embed Code"
 msgstr "Syötä Google Maps -upotuskoodi"
 
-#. Default: "Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target."
+#. Default: "Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
 #: components/manage/Controlpanels/Aliases
-msgid "Enter the absolute path of the target. The path must start with '/'. Target must exist or be an existing alternative url path to the target."
-msgstr "Syötä kohteen osoite. Osoitteen tulee alkaa merkillä '/'. Kohteen tulee olla olemassa tai sen tulee olla olemassaoleva vaihtoehtoinen URL-polku kohteelle."
+msgid "Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
+msgstr "Syötä kohteen osoite. Kohteen tulee olla olemassa tai sen tulee olla olemassaoleva vaihtoehtoinen URL-polku kohteelle."
 
 #. Default: "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
 #: components/manage/Aliases/Aliases
@@ -1333,6 +1333,7 @@ msgstr ""
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/ContentTypeSchema
+#: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Edit/Edit
 #: components/manage/Form/InlineForm
@@ -3413,11 +3414,6 @@ msgstr "Järjestys"
 msgid "Sort on options"
 msgstr "Lajittelun vaihtoehdot"
 
-#. Default: "Sort on {value}"
-#: components/manage/Blocks/Search/components/SortOn
-msgid "Sort on {value}"
-msgstr ""
-
 #. Default: "Sort transactions by User-Name, Path or Date"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Sort transactions by User-Name, Path or Date"
@@ -3610,11 +3606,6 @@ msgstr "Välimuistin tavoitekoko tavuina"
 msgid "Target number of objects in memory per cache"
 msgstr "Välimuistin tavoitekoko olioiden määrässä"
 
-#. Default: "Target url path must start with a slash."
-#: components/manage/Controlpanels/Aliases
-msgid "Target url path must start with a slash."
-msgstr "Kohdeosoitteen tulee alkaa kauttaviivalla."
-
 #. Default: "Teaser"
 #: components/manage/Blocks/Teaser/schema
 msgid "Teaser"
@@ -3633,11 +3624,6 @@ msgstr "Teksti"
 #: components/theme/Unauthorized/Unauthorized
 msgid "Thank you."
 msgstr "Kiitos."
-
-#. Default: "The Database Manager allow you to view database status information"
-#: components/manage/Controlpanels/DatabaseInformation
-msgid "The Database Manager allow you to view database status information"
-msgstr "Tietokantamanageri sallii sinun katsoa tietokannan tilannetietoa."
 
 #. Default: "The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again."
 #: components/theme/RequestTimeout/RequestTimeout
