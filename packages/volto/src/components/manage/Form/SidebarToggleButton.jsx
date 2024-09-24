@@ -10,13 +10,9 @@ import configSVG from '@plone/volto/icons/configuration.svg';
 import { Button } from 'semantic-ui-react';
 
 const messages = defineMessages({
-  shrinkSidebar: {
-    id: 'Shrink sidebar',
-    defaultMessage: 'Shrink sidebar',
-  },
-  expandSidebar: {
-    id: 'Expand sidebar',
-    defaultMessage: 'Expand sidebar',
+  sidebarExpanded: {
+    id: 'Sidebar expanded',
+    defaultMessage: 'Sidebar expanded',
   },
 });
 
@@ -40,11 +36,9 @@ export const SidebarToggleButton = () => {
         })}
         // TODO: The below should set `aria-pressed`, but it doesn't for some reason :(
         active={sidebarExpanded}
-        aria-label={
-          sidebarExpanded
-            ? intl.formatMessage(messages.shrinkSidebar)
-            : intl.formatMessage(messages.expandSidebar)
-        }
+        aria-label={intl.formatMessage(messages.sidebarExpanded)}
+        aria-expanded={sidebarExpanded}
+        aria-controls="sidebar"
         onClick={() => {
           dispatch(setSidebarExpanded(!sidebarExpanded));
         }}
