@@ -17,7 +17,6 @@ exports[`CheckboxFacet renders a facet component with checkboxes 1`] = `
     >
       <div
         className="ui radio checkbox"
-        htmlFor="first"
         onChange={[Function]}
         onClick={[Function]}
         onMouseDown={[Function]}
@@ -43,7 +42,6 @@ exports[`CheckboxFacet renders a facet component with checkboxes 1`] = `
     >
       <div
         className="ui radio checkbox"
-        htmlFor="second"
         onChange={[Function]}
         onClick={[Function]}
         onMouseDown={[Function]}

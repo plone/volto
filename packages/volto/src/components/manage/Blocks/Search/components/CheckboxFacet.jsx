@@ -24,7 +24,6 @@ const CheckboxFacet = (props) => {
               id={value}
               disabled={isEditMode}
               label={label}
-              htmlFor={value}
               radio={!isMulti}
               checked={
                 isMulti
