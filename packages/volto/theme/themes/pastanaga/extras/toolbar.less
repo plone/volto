@@ -291,10 +291,11 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
       background: transparent;
       cursor: pointer;
       text-align: initial;
+      box-shadow: unset !important; // Some buttons have double outlines due to default styles. Safely disable those styles here.
 
       svg {
-        // SVGs are inline by default, causing the spacing to be odd
-        display: block;
+        display: block; // SVGs are inline by default, causing the spacing to be odd
+        margin: 0; // Some SVGs have margin set by default styles.
       }
 
       &:focus {
