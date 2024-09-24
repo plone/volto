@@ -28,6 +28,14 @@ const SidebarPopup = (props) => {
     };
   });
 
+  React.useEffect(() => {
+    if (open) {
+      if (asideElement && asideElement.current) {
+        asideElement.current.focus();
+      }
+    }
+  }, [open, asideElement]);
+
   return (
     <>
       {overlay && (
@@ -60,7 +68,9 @@ const SidebarPopup = (props) => {
                 onClick={(e) => {
                   e.stopPropagation();
                 }}
-                onKeyDown={(e) => {
+                tabIndex={-1}
+                onKeyUp={(e) => {
+                  if (e.key === 'Escape') onClose();
                   e.stopPropagation();
                 }}
                 ref={asideElement}
