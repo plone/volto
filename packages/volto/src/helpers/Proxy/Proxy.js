@@ -4,6 +4,9 @@
  * @param {Object} req Original request object
  * @return {function} Superagent request function
  */
+
+const HEADERS = ['range', 'if-range'];
+
 export const addHeadersFactory = (orig) => {
   return (request) => {
     const x_forwarded_host = orig.headers['x-forwarded-host'] || orig.hostname;
@@ -17,5 +20,11 @@ export const addHeadersFactory = (orig) => {
       request.set('x-forwarded-for', x_forwarded_for);
     }
     x_forwarded_host && request.set('x-forwarded-host', x_forwarded_host);
+    // forward additional headers
+    HEADERS.forEach((header) => {
+      if (orig.headers[header]) {
+        request.set(header, orig.headers[header]);
+      }
+    });
   };
 };

@@ -1,8 +1,6 @@
 /**
  * getAPIResourceWithAuth helper.
  * @module helpers/Api/APIResourceWithAuth
- *
- * DEPRECATED: use http-proxy-middleware instead
  */
 
 import superagent from 'superagent';
