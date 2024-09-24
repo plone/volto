@@ -3,6 +3,12 @@ const { parse } = require('recast');
 const fs = require('fs');
 const path = require('path');
 
+const barrelMap = {
+  [path.resolve(path.join(__dirname, 'helpers'))]: '@plone/volto/helpers',
+  [path.resolve(path.join(__dirname, 'components'))]: '@plone/volto/components',
+  [path.resolve(path.join(__dirname, 'actions'))]: '@plone/volto/actions',
+};
+
 // Utility function to load aliases from tsconfig.json or jsconfig.json
 function getAliases() {
   const configPath = path.resolve('tsconfig.json'); // Adjust if using jsconfig.json
@@ -10,7 +16,7 @@ function getAliases() {
     const tsconfig = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
     const paths = tsconfig.compilerOptions && tsconfig.compilerOptions.paths;
     if (paths) {
-      const baseUrl = path.resolve(tsconfig.compilerOptions.baseUrl || './');
+      const baseUrl = './';
       return Object.keys(paths).reduce((aliasMap, alias) => {
         aliasMap[alias.replace('/*', '')] = path.resolve(
           baseUrl,
@@ -77,7 +83,10 @@ module.exports = function (fileInfo, api, options) {
     const exportMapping = parseBarrelFile(barrelFilePath);
 
     if (exportMapping[importedName]) {
-      const resolvedModule = exportMapping[importedName];
+      let resolvedModule = exportMapping[importedName];
+      if (resolvedModule.startsWith('@plone/volto')) {
+        resolvedModule = resolveWithAlias(resolvedModule, aliasMap);
+      }
       const resolvedPath = path.resolve(modulePath, resolvedModule);
       return resolvedPath;
     }
@@ -88,9 +97,12 @@ module.exports = function (fileInfo, api, options) {
   // Transform the imports
   root
     .find(j.ImportDeclaration)
-    .filter((path) => path.node.source.value.includes('@plone/volto/helpers')) // Adjust this condition to match your barrel path
+    .filter((path) =>
+      Object.values(barrelMap).some((item) => path.node.source.value === item),
+    ) // Adjust this condition to match your barrel path
     .forEach((importDecl) => {
       const modulePath = importDecl.node.source.value;
+      const newImportsMap = [];
       const newImports = [];
 
       importDecl.node.specifiers.forEach((specifier) => {
@@ -101,15 +113,32 @@ module.exports = function (fileInfo, api, options) {
             importedName,
           );
           if (resolvedPath) {
-            newImports.push(
-              j.importDeclaration(
-                [j.importSpecifier(j.identifier(importedName))],
-                j.literal(resolvedPath),
-              ),
-            );
+            if (newImportsMap?.[resolvedPath]) {
+              newImportsMap[resolvedPath].push(importedName);
+            } else {
+              newImportsMap[resolvedPath] = [importedName];
+            }
           }
         }
       });
+
+      for (const resolvedPath in newImportsMap) {
+        let backToModulePath;
+        Object.entries(barrelMap).forEach(([key, value]) => {
+          if (resolvedPath.includes(key)) {
+            backToModulePath = resolvedPath.replace(key, value);
+          }
+        });
+
+        newImports.push(
+          j.importDeclaration(
+            newImportsMap[resolvedPath].map((importedName) =>
+              j.importSpecifier(j.identifier(importedName)),
+            ),
+            j.literal(backToModulePath),
+          ),
+        );
+      }
 
       if (newImports.length > 0) {
         j(importDecl).replaceWith(newImports);
