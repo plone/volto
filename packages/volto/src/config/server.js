@@ -35,11 +35,6 @@ const settings = {
       },
     },
   ],
-  // configs for extends/overrides the http-proxy-middleware options for files and images
-  // see the defaults in src/helpers/Proxy/Proxy.js
-  httpProxyOptions: {},
-  httpProxyOptionsImages: {},
-  httpProxyOptionsFiles: {},
 };
 
 export default settings;
