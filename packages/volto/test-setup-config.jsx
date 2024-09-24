@@ -20,9 +20,11 @@ import {
   controlPanelsIcons,
   filterControlPanels,
   filterControlPanelsSchema,
+  unwantedControlPanelsFields,
 } from '@plone/volto/config/ControlPanels';
 
 import ListingBlockSchema from '@plone/volto/components/manage/Blocks/Listing/schema';
+import { registerValidators } from '@plone/volto/config/validation';
 
 config.set('settings', {
   apiPath: 'http://localhost:8080/Plone',
@@ -30,6 +32,7 @@ config.set('settings', {
   defaultLanguage: 'en',
   supportedLanguages: ['en'],
   defaultPageSize: 25,
+  showTags: true,
   isMultilingual: false,
   nonContentRoutes,
   contentIcons: contentIcons,
@@ -48,6 +51,7 @@ config.set('settings', {
   controlPanelsIcons,
   filterControlPanels,
   filterControlPanelsSchema,
+  unwantedControlPanelsFields,
   apiExpanders: [],
   downloadableObjects: ['File'],
   viewableInBrowserObjects: [],
@@ -153,9 +157,15 @@ config.set('components', {
     component: (props) => <img alt="Image component mock" {...props} />,
   },
 });
+
+config.set('utilities', {});
+
 config.set('experimental', {
   addBlockButton: {
     enabled: false,
   },
 });
+
 config.set('slots', {});
+
+registerValidators(config);

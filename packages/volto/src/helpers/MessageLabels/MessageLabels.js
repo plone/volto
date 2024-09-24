@@ -375,4 +375,32 @@ export const messages = defineMessages({
     id: 'fileTooLarge',
     defaultMessage: 'This website does not accept files larger than {limit}',
   },
+  blocksFieldsErrorTitle: {
+    id: 'blocksFieldsErrorTitle',
+    defaultMessage: 'Error in the block field {errorField}.',
+  },
+  startEventRange: {
+    id: 'Event start date must be on or before {endDateValueOrEndFieldName}',
+    defaultMessage:
+      'Event start date must be on or before {endDateValueOrEndFieldName}',
+  },
+  endEventRange: {
+    id: 'Event end date must be on or after {startDateValueOrStartFieldName}',
+    defaultMessage:
+      'Event end date must be on or after {startDateValueOrStartFieldName}',
+  },
+  pattern: {
+    id: 'The value does not match the pattern {pattern}',
+    defaultMessage: 'The value does not match the pattern {pattern}',
+  },
+  maxItems: {
+    id: 'The number of items must be less than or equal to {maxItems}',
+    defaultMessage:
+      'The number of items must be less than or equal to {maxItems}',
+  },
+  minItems: {
+    id: 'The number of items must be greater than or equal to {minItems}',
+    defaultMessage:
+      'The number of items must be greater than or equal to {minItems}',
+  },
 });
