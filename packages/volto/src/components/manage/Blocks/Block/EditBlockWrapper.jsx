@@ -4,6 +4,7 @@ import {
   applyBlockInitialValue,
   getBlocksFieldname,
   blockHasValue,
+  buildStyleClassNamesFromData,
   buildStyleObjectFromData,
 } from '@plone/volto/helpers';
 import dragSVG from '@plone/volto/icons/drag.svg';
@@ -11,6 +12,7 @@ import { Button } from 'semantic-ui-react';
 import includes from 'lodash/includes';
 import isBoolean from 'lodash/isBoolean';
 import { defineMessages, injectIntl } from 'react-intl';
+import cx from 'classnames';
 import config from '@plone/volto/registry';
 import { BlockChooserButton } from '@plone/volto/components';
 
@@ -59,6 +61,7 @@ const EditBlockWrapper = (props) => {
     ? data.required
     : includes(config.blocks.requiredBlocks, type);
 
+  const classNames = buildStyleClassNamesFromData(data.styles);
   const style = buildStyleObjectFromData(data.styles);
 
   // We need to merge the StyleWrapper styles with the draggable props from b-D&D
@@ -74,19 +77,23 @@ const EditBlockWrapper = (props) => {
       // Right now, we can have the alignment information in the styles property or in the
       // block data root, we inject the classname here for having control over the whole
       // Block Edit wrapper
+      className={cx(`block-editor-${data['@type']}`, classNames, {
+        [data.align]: data.align,
+      })}
     >
       <div style={{ position: 'relative' }}>
+        <div
+          style={{
+            visibility: visible ? 'visible' : 'hidden',
+            display: 'inline-block',
+          }}
+          {...draginfo.dragHandleProps}
+          className="drag handle wrapper"
+        >
+          <Icon name={dragSVG} size="18px" />
+        </div>
         <div className={`ui drag block inner ${type}`}>
-          <div
-            style={{
-              visibility: visible ? 'visible' : 'hidden',
-              display: 'inline-block',
-            }}
-            className="drag handle wrapper"
-            aria-controls="block-1"
-          >
-            <Icon name={dragSVG} size="18px" />
-          </div>
+          {children}
           {selected && !required && editable && (
             <Button
               icon
@@ -133,7 +140,6 @@ const EditBlockWrapper = (props) => {
               contentType={contentType}
             />
           )}
-          {children}
         </div>
       </div>
     </div>
