@@ -4,7 +4,6 @@
  */
 
 import React from 'react';
-// import { diffWords as dWords } from 'diff';
 import { join, map } from 'lodash';
 import PropTypes from 'prop-types';
 import { Grid } from 'semantic-ui-react';
@@ -13,6 +12,7 @@ import { Provider } from 'react-intl-redux';
 import { createBrowserHistory } from 'history';
 import { ConnectedRouter } from 'connected-react-router';
 import { useSelector } from 'react-redux';
+import config from '@plone/volto/registry';
 
 import { Api } from '@plone/volto/helpers';
 import configureStore from '@plone/volto/store';
@@ -46,12 +46,37 @@ const DiffField = ({
   diffLib,
 }) => {
   const language = useSelector((state) => state.intl.locale);
+
   const readable_date_format = {
     dateStyle: 'full',
     timeStyle: 'short',
   };
+  const splitWords = (str) => {
+    if (!str) return [];
+    const splitedArray = [];
+    let elementCurent = '';
+    let insideTag = false;
+    for (let i = 0; i < str.length; i++)
+      if (str[i] === '<') {
+        if (elementCurent) splitedArray.push(elementCurent);
+        elementCurent = '<';
+        insideTag = true;
+      } else if (str[i] === '>') {
+        elementCurent += '>';
+        splitedArray.push(elementCurent);
+        elementCurent = '';
+        insideTag = false;
+      } else if (str[i] === ' ' && insideTag === false) {
+        elementCurent += ' ';
+        splitedArray.push(elementCurent);
+        elementCurent = '';
+      } else elementCurent += str[i];
+    if (elementCurent) splitedArray.push(elementCurent);
+    return splitedArray;
+  };
+
   const diffWords = (oneStr, twoStr) => {
-    return diffLib.diffWords(String(oneStr), String(twoStr));
+    return diffLib.diffArrays(splitWords(oneStr), splitWords(twoStr));
   };
 
   let parts, oneArray, twoArray;
@@ -116,7 +141,30 @@ const DiffField = ({
       }
       case 'textarea':
       default:
-        parts = diffWords(one, two);
+        const Widget = config.widgets.views.widget[schema.widget];
+
+        if (Widget) {
+          const api = new Api();
+          const history = createBrowserHistory();
+          const store = configureStore(window.__data, history, api);
+          parts = diffWords(
+            ReactDOMServer.renderToStaticMarkup(
+              <Provider store={store}>
+                <ConnectedRouter history={history}>
+                  <Widget value={one} />
+                </ConnectedRouter>
+              </Provider>,
+            ),
+            ReactDOMServer.renderToStaticMarkup(
+              <Provider store={store}>
+                <ConnectedRouter history={history}>
+                  <Widget value={two} />
+                </ConnectedRouter>
+              </Provider>,
+            ),
+          );
+        } else parts = diffWords(one, two);
+
         break;
     }
   } else if (schema.type === 'object') {
@@ -128,6 +176,7 @@ const DiffField = ({
   } else {
     parts = diffWords(one?.title || one, two?.title || two);
   }
+
   return (
     <Grid data-testid="DiffField">
       <Grid.Row>
@@ -140,14 +189,36 @@ const DiffField = ({
             <span
               dangerouslySetInnerHTML={{
                 __html: join(
-                  map(
-                    parts,
-                    (part) =>
-                      (part.removed &&
-                        `<span class="deletion">${part.value}</span>`) ||
-                      (!part.added && `<span>${part.value}</span>`) ||
-                      '',
-                  ),
+                  map(parts, (part) => {
+                    let combined = (part.value || []).reduce((acc, value) => {
+                      if (
+                        part.removed &&
+                        !value.includes('<') &&
+                        !value.includes('>') &&
+                        !value.includes('>') &&
+                        !value.includes('</') &&
+                        !value.includes('"') &&
+                        !value.includes('src') &&
+                        !value.includes('href') &&
+                        !value.includes('=')
+                      )
+                        return acc + `<span class="deletion">${value}</span>`;
+                      if (
+                        part.added &&
+                        !value.includes('<') &&
+                        !value.includes('>') &&
+                        !value.includes('>') &&
+                        !value.includes('</') &&
+                        !value.includes('"') &&
+                        !value.includes('src') &&
+                        !value.includes('href') &&
+                        !value.includes('=')
+                      )
+                        return acc;
+                      return acc + value;
+                    }, '');
+                    return combined;
+                  }),
                   '',
                 ),
               }}
@@ -157,14 +228,36 @@ const DiffField = ({
             <span
               dangerouslySetInnerHTML={{
                 __html: join(
-                  map(
-                    parts,
-                    (part) =>
-                      (part.added &&
-                        `<span class="addition">${part.value}</span>`) ||
-                      (!part.removed && `<span>${part.value}</span>`) ||
-                      '',
-                  ),
+                  map(parts, (part) => {
+                    let combined = (part.value || []).reduce((acc, value) => {
+                      if (
+                        part.added &&
+                        !value.includes('<') &&
+                        !value.includes('>') &&
+                        !value.includes('>') &&
+                        !value.includes('</') &&
+                        !value.includes('"') &&
+                        !value.includes('src') &&
+                        !value.includes('href') &&
+                        !value.includes('=')
+                      )
+                        return acc + `<span class="addition">${value}</span>`;
+                      if (
+                        part.removed &&
+                        !value.includes('<') &&
+                        !value.includes('>') &&
+                        !value.includes('>') &&
+                        !value.includes('</') &&
+                        !value.includes('"') &&
+                        !value.includes('src') &&
+                        !value.includes('href') &&
+                        !value.includes('=')
+                      )
+                        return acc;
+                      return acc + value;
+                    }, '');
+                    return combined;
+                  }),
                   '',
                 ),
               }}
@@ -178,15 +271,38 @@ const DiffField = ({
             <span
               dangerouslySetInnerHTML={{
                 __html: join(
-                  map(
-                    parts,
-                    (part) =>
-                      (part.removed &&
-                        `<span class="deletion">${part.value}</span>`) ||
-                      (part.added &&
-                        `<span class="addition">${part.value}</span>`) ||
-                      (!part.added && `<span>${part.value}</span>`),
-                  ),
+                  map(parts, (part) => {
+                    let combined = (part.value || []).reduce((acc, value) => {
+                      if (
+                        part.removed &&
+                        !value.includes('<') &&
+                        !value.includes('>') &&
+                        !value.includes('>') &&
+                        !value.includes('</') &&
+                        !value.includes('"') &&
+                        !value.includes('src') &&
+                        !value.includes('href') &&
+                        !value.includes('=')
+                      )
+                        return acc + `<span class="deletion">${value}</span>`;
+
+                      if (
+                        part.added &&
+                        !value.includes('<') &&
+                        !value.includes('>') &&
+                        !value.includes('>') &&
+                        !value.includes('</') &&
+                        !value.includes('"') &&
+                        !value.includes('src') &&
+                        !value.includes('href') &&
+                        !value.includes('=')
+                      )
+                        return acc + `<span class="addition">${value}</span>`;
+
+                      return acc + value;
+                    }, '');
+                    return combined;
+                  }),
                   '',
                 ),
               }}
