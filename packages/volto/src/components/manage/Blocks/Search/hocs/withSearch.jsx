@@ -335,7 +335,7 @@ const withSearch = (options) => (WrappedComponent) => {
     const previousUrlQuery = usePrevious(urlQuery);
 
     // During first render the previousUrlQuery is undefined and urlQuery
-    // is empty so it ressetting the facet when you are navigating but during reload we have urlQuery and we need
+    // is empty so it resetting the facet when you are navigating but during reload we have urlQuery and we need
     // to set the facet at first render.
     const preventOverrideOfFacetState =
       previousUrlQuery === undefined && urlQuery.length === 0;
@@ -418,12 +418,12 @@ const withSearch = (options) => (WrappedComponent) => {
               query: data.query || {},
               facets: toSearchFacets || facets,
               searchText: toSearchText ? toSearchText.trim() : '',
-              sortOn: toSortOn || sortOn,
+              sortOn: toSortOn || undefined,
               sortOrder: toSortOrder || sortOrder,
               facetSettings,
             });
             if (toSearchFacets) setFacets(toSearchFacets);
-            if (toSortOn) setSortOn(toSortOn);
+            if (toSortOn) setSortOn(toSortOn || undefined);
             if (toSortOrder) setSortOrder(toSortOrder);
             setSearchData(newSearchData);
             setLocationSearchData(getSearchFields(newSearchData));

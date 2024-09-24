@@ -1,18 +1,45 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Controlpanel renders a controlpanel component 1`] = `
-<div
-  id="page-controlpanel"
->
+<div>
   <div
-    className="ui container"
+    id="page-controlpanel"
   >
     <div
-      id="form"
+      class="ui container"
     />
   </div>
   <div
-    id="Portal"
-  />
+    id="toolbar"
+  >
+    <div
+      id="Portal"
+    />
+  </div>
+</div>
+`;
+
+exports[`Controlpanel renders a controlpanel component with error 1`] = `
+<div>
+  <div
+    id="page-controlpanel"
+  >
+    <div
+      class="ui container"
+    >
+      <div
+        id="form"
+      >
+        requestError : [{'message': 'Twitter username should not include the "@" prefix character.', 'field': 'twitter_username', 'error': 'ValidationError'}]
+      </div>
+    </div>
+  </div>
+  <div
+    id="toolbar"
+  >
+    <div
+      id="Portal"
+    />
+  </div>
 </div>
 `;

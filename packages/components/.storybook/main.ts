@@ -1,4 +1,5 @@
 import type { StorybookConfig } from '@storybook/react-vite';
+import { mergeConfig } from 'vite';
 
 const config: StorybookConfig = {
   // For some reason the property does not allow negation
@@ -8,7 +9,6 @@ const config: StorybookConfig = {
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
-    '@storybook/addon-mdx-gfm',
   ],
   framework: {
     name: '@storybook/react-vite',
@@ -26,6 +26,13 @@ const config: StorybookConfig = {
       },
       propFilter: () => true,
     },
+  },
+  async viteFinal(config) {
+    return mergeConfig(config, {
+      build: {
+        minify: false,
+      },
+    });
   },
 };
 export default config;

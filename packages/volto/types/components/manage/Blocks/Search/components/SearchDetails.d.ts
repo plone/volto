@@ -4,4 +4,4 @@ declare function SearchDetails({ total, text, as, data }: {
     text: any;
     as?: string;
     data: any;
-}): JSX.Element;
+}): import("react/jsx-runtime").JSX.Element;

@@ -8,20 +8,25 @@ To start, from the root of the monorepo:
 
 ```shell
 pnpm install
+pnpm build:deps && pnpm build:components
 pnpm --filter plone-nextjs run dev
 ```
 
 Then start the Plone backend:
 
 ```shell
-make start-backend-docker
+make backend-docker-start
 ```
 
 ## Deployment at Vercel
 
 
 We introduce an environment variable `API_SERVER_URL`.
-We have to create this environment variable in the Vercel deployment's control panel, specifying the URL where your backend API server is deployed and the route where the API is located, such as `API_SERVER_URL=https://my_server_DNS_name/api`.
+You need to create this environment variable in the Vercel deployment's control panel, specifying the URL where your backend API server is deployed, and the route where the API is located, as shown.
+
+```shell
+API_SERVER_URL=https://my-server-DNS-name.tld/api
+```
 
 ### Application rewrite configuragtion
 
@@ -92,8 +97,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
@@ -107,4 +110,4 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.

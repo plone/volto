@@ -1387,11 +1387,16 @@ export default class Wrapper extends Component {
   render() {
     const mockStore = configureStore();
     const store = mockStore(this.customState());
+    const state = store.getState();
 
     return (
       <Provider store={store}>
         <PluggablesProvider>
-          <IntlProvider locale="en">
+          <IntlProvider
+            locale={state.intl.locale}
+            messages={state.intl.messages}
+            defaultLocale={state.intl.defaultLocale ?? 'en'}
+          >
             <StaticRouter location={this.props.location}>
               <div className="volto-storybook-container">
                 {this.props.children}
@@ -1434,11 +1439,16 @@ export class RealStoreWrapper extends Component {
     // If thunk is not included there's a complaint about async actions
     const history = createBrowserHistory();
     const store = configureRealStore(this.customState(), history);
+    const state = store.getState();
 
     return (
       <Provider store={store}>
         <PluggablesProvider>
-          <IntlProvider locale="en">
+          <IntlProvider
+            locale={state.intl.locale}
+            messages={state.intl.messages}
+            defaultLocale={state.intl.defaultLocale ?? 'en'}
+          >
             <StaticRouter location={this.props.location}>
               <div className="volto-storybook-container">
                 {this.props.children}

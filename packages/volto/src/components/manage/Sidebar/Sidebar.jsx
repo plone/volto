@@ -34,12 +34,23 @@ const messages = defineMessages({
     id: 'Expand sidebar',
     defaultMessage: 'Expand sidebar',
   },
+  order: {
+    id: 'Order',
+    defaultMessage: 'Order',
+  },
 });
 
 const Sidebar = (props) => {
   const dispatch = useDispatch();
   const intl = useIntl();
-  const { cookies, content, documentTab, blockTab, settingsTab } = props;
+  const {
+    cookies,
+    content,
+    documentTab,
+    blockTab,
+    settingsTab,
+    orderTab = true,
+  } = props;
   const [expanded, setExpanded] = useState(
     cookies.get('sidebar_expanded') !== 'false',
   );
@@ -138,6 +149,7 @@ const Sidebar = (props) => {
           panes={[
             !!documentTab && {
               menuItem: {
+                key: 'documentTab',
                 as: 'button',
                 className: 'ui button',
                 content: type || intl.formatMessage(messages.document),
@@ -152,6 +164,7 @@ const Sidebar = (props) => {
             },
             !!blockTab && {
               menuItem: {
+                key: 'blockTab',
                 as: 'button',
                 className: 'ui button',
                 content: intl.formatMessage(messages.block),
@@ -161,6 +174,22 @@ const Sidebar = (props) => {
                   key="properties"
                   className="tab-wrapper"
                   id="sidebar-properties"
+                >
+                  <Icon
+                    className="tab-forbidden"
+                    name={forbiddenSVG}
+                    size="48px"
+                  />
+                </Tab.Pane>
+              ),
+            },
+            !!orderTab && {
+              menuItem: intl.formatMessage(messages.order),
+              pane: (
+                <Tab.Pane
+                  key="order"
+                  className="tab-wrapper"
+                  id="sidebar-order"
                 >
                   <Icon
                     className="tab-forbidden"

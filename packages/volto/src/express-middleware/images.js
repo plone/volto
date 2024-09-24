@@ -7,6 +7,7 @@ const HEADERS = [
   'cache-control',
   'x-sendfile',
   'x-accel-redirect',
+  'x-robots-tag',
 ];
 
 function imageMiddlewareFn(req, res, next) {

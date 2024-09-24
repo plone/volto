@@ -1,0 +1,68 @@
+@import './Form.css';
+@import './Button.css';
+@import './theme.css';
+
+.react-aria-TimeField {
+  color: var(--text-color);
+}
+
+.react-aria-DateInput {
+  display: flex;
+  width: fit-content;
+  min-width: 150px;
+  padding: 4px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--field-background);
+  forced-color-adjust: none;
+  white-space: nowrap;
+
+  &[data-focus-within] {
+    outline: 2px solid var(--focus-ring-color);
+    outline-offset: -1px;
+  }
+}
+
+.react-aria-DateSegment {
+  padding: 0 2px;
+  color: var(--text-color);
+  font-variant-numeric: tabular-nums;
+  text-align: end;
+
+  &[data-type='literal'] {
+    padding: 0;
+  }
+
+  &[data-placeholder] {
+    color: var(--text-color-placeholder);
+    font-style: italic;
+  }
+
+  &:focus {
+    border-radius: 4px;
+    background: var(--highlight-background);
+    caret-color: transparent;
+    color: var(--highlight-foreground);
+    outline: none;
+  }
+
+  &[data-invalid] {
+    color: var(--color-invalid);
+
+    &:focus {
+      background: var(--highlight-background-invalid);
+      color: var(--highlight-foreground);
+    }
+  }
+}
+
+.react-aria-TimeField {
+  .react-aria-FieldError {
+    color: var(--color-invalid);
+    font-size: 12px;
+  }
+
+  [slot='description'] {
+    font-size: 12px;
+  }
+}

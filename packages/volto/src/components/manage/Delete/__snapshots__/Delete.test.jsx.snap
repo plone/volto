@@ -1,70 +1,78 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Delete renders a delete component 1`] = `
-<div
-  id="page-delete"
->
+<div>
   <div
-    className="ui container"
+    id="page-delete"
   >
     <div
-      className="ui raised segments"
+      class="ui container"
     >
       <div
-        className="ui segment primary"
-      >
-        Do you really want to delete this item?
-      </div>
-      <div
-        className="ui attached segment"
+        class="ui raised segments"
       >
         <div
-          className="ui bulleted list"
-          role="list"
+          class="ui segment primary"
+        >
+          Do you really want to delete this item?
+        </div>
+        <div
+          class="ui attached segment"
         >
           <div
-            className="item"
-            onClick={[Function]}
-            role="listitem"
+            class="ui bulleted list"
+            role="list"
           >
-            Blog
+            <div
+              class="item"
+              role="listitem"
+            >
+              Blog
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        className="ui clearing segment actions"
-      >
-        <button
-          aria-label="Ok"
-          className="ui big basic circular icon primary right floated button"
-          onClick={[Function]}
-          title="Ok"
+        <div
+          class="ui clearing segment actions"
         >
-          <i
-            aria-hidden="true"
-            className="arrow right icon"
-            onClick={[Function]}
-          />
-        </button>
-        <button
-          aria-label="Cancel"
-          className="ui big basic circular icon secondary right floated button"
-          onClick={[Function]}
-          title="Cancel"
-        >
-          <i
-            aria-hidden="true"
-            className="remove icon"
-            onClick={[Function]}
-          />
-        </button>
+          <button
+            aria-label="Ok"
+            class="ui big basic circular icon primary right floated button"
+            title="Ok"
+          >
+            <i
+              aria-hidden="true"
+              class="arrow right icon"
+            />
+          </button>
+          <button
+            aria-label="Cancel"
+            class="ui big basic circular icon secondary right floated button"
+            title="Cancel"
+          >
+            <i
+              aria-hidden="true"
+              class="remove icon"
+            />
+          </button>
+        </div>
       </div>
     </div>
   </div>
   <div
-    id="Portal"
-  />
+    id="toolbar"
+  >
+    <div
+      id="Portal"
+    />
+  </div>
 </div>
 `;
 
-exports[`Delete renders an empty delete component 1`] = `<div />`;
+exports[`Delete renders an empty delete component 1`] = `
+<div>
+  <div />
+  <div
+    id="toolbar"
+  />
+</div>
+`;

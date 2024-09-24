@@ -181,7 +181,9 @@ class Toolbar extends Component {
     types: [],
   };
 
+  toolbarRef = React.createRef();
   toolbarWindow = React.createRef();
+  buttonRef = React.createRef();
 
   constructor(props) {
     super(props);
@@ -262,8 +264,9 @@ class Toolbar extends Component {
     );
   };
 
-  closeMenu = () =>
+  closeMenu = () => {
     this.setState(() => ({ showMenu: false, loadedComponents: [] }));
+  };
 
   loadComponent = (type) => {
     const { loadedComponents } = this.state;
@@ -283,6 +286,15 @@ class Toolbar extends Component {
           state.loadedComponents[state.loadedComponents.length - 2]
         ].hideToolbarBody || false,
     }));
+  };
+
+  toggleButtonPressed = (e) => {
+    const target = e.target;
+    const button =
+      target.tagName === 'BUTTON'
+        ? target
+        : this.findAncestor(e.target, 'button');
+    this.buttonRef.current = button;
   };
 
   toggleMenu = (e, selector) => {
@@ -310,11 +322,29 @@ class Toolbar extends Component {
         menuStyle: { top: 0 },
       }));
     }
+    this.toggleButtonPressed(e);
     this.loadComponent(selector);
   };
 
+  findAncestor = (el, sel) => {
+    while (
+      (el = el.parentElement) &&
+      !(el.matches || el.matchesSelector).call(el, sel)
+    );
+    return el;
+  };
+
   handleClickOutside = (e) => {
+    const target = e.target;
     if (this.pusher && doesNodeContainClick(this.pusher, e)) return;
+
+    // if the click is on the same button, do not close the menu as it
+    // may be handled by the toggleMenu action
+    const button =
+      doesNodeContainClick(this.toolbarRef.current, e) &&
+      this.findAncestor(target, 'button');
+    if (button && button === this.buttonRef.current) return;
+
     this.closeMenu();
   };
 
@@ -427,7 +457,10 @@ class Toolbar extends Component {
               )}
             </div>
           </div>
-          <div className={this.state.expanded ? 'toolbar expanded' : 'toolbar'}>
+          <div
+            className={this.state.expanded ? 'toolbar expanded' : 'toolbar'}
+            ref={this.toolbarRef}
+          >
             <div className="toolbar-body">
               <div className="toolbar-actions">
                 {this.props.hideDefaultViewButtons && this.props.inner && (
@@ -590,7 +623,7 @@ class Toolbar extends Component {
                 aria-label={this.props.intl.formatMessage(
                   messages.shrinkToolbar,
                 )}
-                className={cx({
+                className={cx('toolbar-handler-button', {
                   [this.props.content?.review_state]:
                     this.props.content?.review_state,
                 })}

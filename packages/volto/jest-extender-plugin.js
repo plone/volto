@@ -10,9 +10,15 @@ module.exports = {
     options: { razzleOptions, pluginOptions },
     paths,
   }) {
-    // If the RAZZLE_JEST_CONFIG env var exists, use it as the file with the Jest config
-    // overrides
+    // If the RAZZLE_JEST_CONFIG env var exists,
+    // use it as the file with the Jest config overrides
     if (process.env.RAZZLE_JEST_CONFIG) {
+      if (fs.existsSync(path.resolve(process.env.RAZZLE_JEST_CONFIG))) {
+        const jestConfigPath = path.resolve(process.env.RAZZLE_JEST_CONFIG);
+        const jestConfig = require(jestConfigPath);
+        config = { ...config, ...jestConfig };
+        return config;
+      }
       if (
         fs.existsSync(`${projectRootPath}/${process.env.RAZZLE_JEST_CONFIG}`)
       ) {

@@ -1,9 +1,10 @@
+import React from 'react';
 import {
   Breadcrumbs as RACBreadcrumbs,
-  Breadcrumb,
+  Breadcrumb as RACBreadcrumb,
 } from 'react-aria-components';
-import Link from '../Link/Link';
-import HomeIcon from './HomeIcon';
+import { Link } from '../Link/Link';
+import { HomeIcon } from './HomeIcon';
 import type { BreadcrumbsProps as RACBreadcrumbsProps } from 'react-aria-components';
 
 type Breadcrumb = {
@@ -25,7 +26,8 @@ interface BreadcrumbsProps<T> extends RACBreadcrumbsProps<T> {
 /**
  * Breadcrumbs display a hierarchy of links to the current page or resource in an application.
  */
-export default function Breadcrumbs({
+export function Breadcrumbs({
+  className,
   items,
   root,
   includeRoot,
@@ -41,14 +43,14 @@ export default function Breadcrumbs({
 
   return (
     <nav aria-label="breadcrumbs" role="navigation">
-      <RACBreadcrumbs className="q breadcrumbs" items={itemsWithRoot || items}>
+      <RACBreadcrumbs className={className} items={itemsWithRoot || items}>
         {(item) => (
-          <Breadcrumb key={item['@id']} className="q breadcrumb">
+          <RACBreadcrumb id={item['@id']}>
             <Link href={item['@id']}>
               {item['@id'] === (root || '/') && <HomeIcon size="S" />}
               {item.title}
             </Link>
-          </Breadcrumb>
+          </RACBreadcrumb>
         )}
       </RACBreadcrumbs>
     </nav>

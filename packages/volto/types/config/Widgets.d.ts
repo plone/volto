@@ -1,8 +1,5 @@
-export const DatetimeWidget: any;
-export const RecurrenceWidget: any;
 export namespace widgetMapping {
     export namespace id {
-        export { SchemaWidget as schema };
         export { TokenWidget as subjects };
         export { QuerystringWidget as query };
         export { RecurrenceWidget as recurrence };
@@ -11,12 +8,12 @@ export namespace widgetMapping {
         export { RegistryImageWidget as site_logo };
     }
     export namespace widget {
-        export { WysiwygWidget as richtext };
         export { TextareaWidget as textarea };
         export { DatetimeWidget as datetime };
         export { DatetimeWidget as date };
         export { PasswordWidget as password };
         export { FileWidget as file };
+        export { ImageWidget as image };
         export { AlignWidget as align };
         export { ButtonsWidget as buttons };
         export { UrlWidget as url };
@@ -36,13 +33,14 @@ export namespace widgetMapping {
         export { SelectAutoComplete as autocomplete };
         export { ColorPickerWidget as color_picker };
         export { SelectWidget as select };
+        export { SchemaWidget as schema };
     }
     export let vocabulary: {
-        'plone.app.vocabularies.Catalog': any;
+        'plone.app.vocabularies.Catalog': import("@loadable/component").LoadableComponent<Omit<import("react-intl").WithIntlProps<import("react-intl").WrappedComponentProps<string>>, "ref"> & import("react").RefAttributes<import("react").ComponentType<import("react-intl").WrappedComponentProps<string>>>>;
     };
     export let factory: {
-        'Relation List': any;
-        'Relation Choice': any;
+        'Relation List': import("@loadable/component").LoadableComponent<Omit<import("react-intl").WithIntlProps<import("react-intl").WrappedComponentProps<string>>, "ref"> & import("react").RefAttributes<import("react").ComponentType<import("react-intl").WrappedComponentProps<string>>>>;
+        'Relation Choice': import("@loadable/component").LoadableComponent<any>;
     };
     export { SelectWidget as choices };
     export namespace type {
@@ -99,4 +97,52 @@ export namespace widgetMapping {
         export { type_1 as type };
     }
 }
-export const defaultWidget: any;
+export const defaultWidget: import("@loadable/component").LoadableComponent<any>;
+import { TokenWidget } from '@plone/volto/components/manage/Widgets';
+import { QuerystringWidget } from '@plone/volto/components/manage/Widgets';
+import { RecurrenceWidget } from '@plone/volto/components/manage/Widgets';
+import { UrlWidget } from '@plone/volto/components/manage/Widgets';
+import { IdWidget } from '@plone/volto/components/manage/Widgets';
+import { RegistryImageWidget } from '@plone/volto/components/manage/Widgets';
+import { TextareaWidget } from '@plone/volto/components/manage/Widgets';
+import { DatetimeWidget } from '@plone/volto/components/manage/Widgets';
+import { PasswordWidget } from '@plone/volto/components/manage/Widgets';
+import { FileWidget } from '@plone/volto/components/manage/Widgets';
+import ImageWidget from '@plone/volto/components/manage/Widgets/ImageWidget';
+import { AlignWidget } from '@plone/volto/components/manage/Widgets';
+import { ButtonsWidget } from '@plone/volto/components/manage/Widgets';
+import { InternalUrlWidget } from '@plone/volto/components/manage/Widgets';
+import { EmailWidget } from '@plone/volto/components/manage/Widgets';
+import { ArrayWidget } from '@plone/volto/components/manage/Widgets';
+import { QueryWidget } from '@plone/volto/components/manage/Widgets';
+import { QuerySortOnWidget } from '@plone/volto/components/manage/Widgets';
+import { ObjectBrowserWidget } from '@plone/volto/components/manage/Widgets';
+import { ObjectWidget } from '@plone/volto/components/manage/Widgets';
+import { ObjectListWidget } from '@plone/volto/components/manage/Widgets';
+import { VocabularyTermsWidget } from '@plone/volto/components/manage/Widgets';
+import { ImageSizeWidget } from '@plone/volto/components/manage/Widgets';
+import { SelectMetadataWidget } from '@plone/volto/components/manage/Widgets';
+import { SelectAutoComplete } from '@plone/volto/components/manage/Widgets';
+import { ColorPickerWidget } from '@plone/volto/components/manage/Widgets';
+import { SelectWidget } from '@plone/volto/components/manage/Widgets';
+import { SchemaWidget } from '@plone/volto/components/manage/Widgets';
+import { CheckboxWidget } from '@plone/volto/components/manage/Widgets';
+import { NumberWidget } from '@plone/volto/components/manage/Widgets';
+import { getWidgetView } from '@plone/volto/helpers/Widget/widget';
+import TextViewWidget from '@plone/volto/components/theme/Widgets/TextWidget';
+import FileViewWidget from '@plone/volto/components/theme/Widgets/FileWidget';
+import ImageViewWidget from '@plone/volto/components/theme/Widgets/ImageWidget';
+import RelationsViewWidget from '@plone/volto/components/theme/Widgets/RelationsWidget';
+import TokenViewWidget from '@plone/volto/components/theme/Widgets/TokenWidget';
+import ArrayViewWidget from '@plone/volto/components/theme/Widgets/ArrayWidget';
+import BooleanViewWidget from '@plone/volto/components/theme/Widgets/BooleanWidget';
+import SelectViewWidget from '@plone/volto/components/theme/Widgets/SelectWidget';
+import DateViewWidget from '@plone/volto/components/theme/Widgets/DateWidget';
+import DatetimeViewWidget from '@plone/volto/components/theme/Widgets/DatetimeWidget';
+import DescriptionViewWidget from '@plone/volto/components/theme/Widgets/DescriptionWidget';
+import EmailViewWidget from '@plone/volto/components/theme/Widgets/EmailWidget';
+import PasswordViewWidget from '@plone/volto/components/theme/Widgets/PasswordWidget';
+import RelationViewWidget from '@plone/volto/components/theme/Widgets/RelationWidget';
+import RichTextViewWidget from '@plone/volto/components/theme/Widgets/RichTextWidget';
+import TitleViewWidget from '@plone/volto/components/theme/Widgets/TitleWidget';
+import UrlViewWidget from '@plone/volto/components/theme/Widgets/UrlWidget';

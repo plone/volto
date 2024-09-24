@@ -1,6 +1,8 @@
 import React from 'react';
 import { Icon } from '@plone/volto/components';
 import {
+  applyBlockInitialValue,
+  getBlocksFieldname,
   blockHasValue,
   buildStyleClassNamesFromData,
   buildStyleObjectFromData,
@@ -35,6 +37,7 @@ const EditBlockWrapper = (props) => {
   const { intl, blockProps, draginfo, children } = props;
   const {
     allowedBlocks,
+    showRestricted,
     block,
     blocksConfig,
     selected,
@@ -61,17 +64,22 @@ const EditBlockWrapper = (props) => {
   const classNames = buildStyleClassNamesFromData(data.styles);
   const style = buildStyleObjectFromData(data.styles);
 
+  // We need to merge the StyleWrapper styles with the draggable props from b-D&D
+  const styleMergedWithDragProps = {
+    ...draginfo.draggableProps,
+    style: { ...style, ...draginfo.draggableProps.style },
+  };
+
   return (
     <div
       ref={draginfo.innerRef}
-      {...draginfo.draggableProps}
+      {...styleMergedWithDragProps}
       // Right now, we can have the alignment information in the styles property or in the
       // block data root, we inject the classname here for having control over the whole
       // Block Edit wrapper
       className={cx(`block-editor-${data['@type']}`, classNames, {
         [data.align]: data.align,
       })}
-      style={style}
     >
       <div style={{ position: 'relative' }}>
         <div
@@ -105,11 +113,26 @@ const EditBlockWrapper = (props) => {
                 if (blockHasValue(data)) {
                   onSelectBlock(onInsertBlock(id, value));
                 } else {
-                  onChangeBlock(id, value);
+                  const blocksFieldname = getBlocksFieldname(properties);
+                  const newFormData = applyBlockInitialValue({
+                    id,
+                    value,
+                    blocksConfig,
+                    formData: {
+                      ...properties,
+                      [blocksFieldname]: {
+                        ...properties[blocksFieldname],
+                        [id]: value || null,
+                      },
+                    },
+                  });
+                  const newValue = newFormData[blocksFieldname][id];
+                  onChangeBlock(id, newValue);
                 }
               }}
               onMutateBlock={onMutateBlock}
               allowedBlocks={allowedBlocks}
+              showRestricted={showRestricted}
               blocksConfig={blocksConfig}
               size="24px"
               properties={properties}
