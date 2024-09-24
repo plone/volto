@@ -11,6 +11,11 @@ function RouteAnnouncer() {
   }
 
   useEffect(() => {
+    function handlePop(event) {
+      const pageTitle = event.target.document.title;
+      updatePage(pageTitle);
+    }
+
     const observer = new MutationObserver((mutationList) => {
       for (const mutation of mutationList) {
         if (mutation.type === 'childList') {
@@ -28,9 +33,11 @@ function RouteAnnouncer() {
       childList: true,
       subtree: true,
     });
+    window.addEventListener('popstate', handlePop);
 
     return () => {
       observer.disconnect();
+      window.removeEventListener('popstate', handlePop);
     };
   }, []);
 
