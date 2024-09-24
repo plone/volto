@@ -17,7 +17,7 @@
     "jsx": "react-jsx",
     "paths": {}
   },
-  "include": ["src"],
+  "include": ["src", "src/**/*.js"],
   "exclude": [
     "node_modules",
     "build",

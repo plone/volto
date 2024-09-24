@@ -47,46 +47,12 @@ The Volto Team reviews pull requests only from people with a GitHub account who 
 ```{include} ./branch-policy.md
 ```
 
+
 (contributing-install-volto-for-development-label)=
 
 ## Install Volto for development
 
-To make changes to Volto, you need to run it from a copy of the [`plone/volto` GitHub repository](https://github.com/plone/volto/).
-
-### Prerequisites
-
-You need all the requirements already mentioned in {doc}`plone:install/install-from-packages`.
-
-### Clone the Volto repository
-
-```shell
-git clone https://github.com/plone/volto.git
-```
-
-### Start the Plone backend
-
-While developing Volto, you need to have the Plone backend running.
-If you don't already have the backend installed, the easiest way is to run the following command inside the Volto repository:
-
-```shell
-make start-backend-docker
-```
-
-### Install Node.js dependencies
-
-```shell
-yarn
-```
-
-### Start Volto
-
-```
-yarn start
-```
-
-### Open Volto in your browser
-
-Browse to [http://localhost:3000](http://localhost:3000).
+For developing Volto, follow {doc}`developing-core`.
 
 
 (contributing-translations-label)=
@@ -94,13 +60,17 @@ Browse to [http://localhost:3000](http://localhost:3000).
 ## Translations
 
 All text that can be shown in a browser must be translatable.
-Please mark all such strings as translatable as defined in the [i18n guide](../recipes/i18n.md).
+Please mark all such strings as translatable as defined in the [i18n guide](../development/i18n.md).
+
+
+(contributing-branch-policy-for-translations-label)=
 
 ### Branch policy for translations
 
-Due to the nature of `main` and `16.x.x` branches, some developments that may land in `main` may not be backported to `16.x.x`. This means that many translations that may come with those developments will be useless in the `16.x.x` branch and thus porting them to `16.x.x` makes no sense.
+Due to the nature of `main` and numbered released branches, some developments that may land in `main` may not be backported to these branches.
+This means that many translations that may come with those developments will be useless in the released branches, thus backporting them makes no sense.
 
-When contributing translations, please create pull requests directly from branches created from `16.x.x`, and point your pull requests to that exact branch instead of `main`.
+When contributing translations, please create a branch from the numbered released branch, and point your pull request to that branch, instead of `main`.
 
 
 (contributing-change-log-entry-label)=
@@ -117,7 +87,7 @@ For details see {ref}`contributing-change-log-label`.
 
 (contributing-documenting-your-changes-label)=
 
-## Document your changes
+## Document breaking changes
 
 If the feature includes a breaking change, you must include instructions for how to upgrade in the [upgrade guide](../upgrade-guide/index.md).
 
@@ -134,6 +104,7 @@ Specifically:
 -   {doc}`./linting`
 -   {doc}`./testing`
 -   {doc}`./acceptance-tests`
+-   {doc}`./documentation`
 
 
 (contributing-developer-guidelines-label)=
@@ -143,19 +114,23 @@ Specifically:
 ```{toctree}
 :maxdepth: 1
 
+developing-core
 design-principles
 style-guide
 language-features
 linting
+testing
+acceptance-tests
+documentation
 react
 redux
 routing
 icons
-testing
-acceptance-tests
 accessibility-guidelines
+bundle-size-optimization
 typescript
 volto-core-addons
+version-policy
 ```
 
 

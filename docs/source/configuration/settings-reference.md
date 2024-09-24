@@ -26,8 +26,9 @@ navDepth
     Navigation levels depth used in the navigation endpoint calls. Increasing this is useful for implementing fat navigation menus. Defaults to `1`.
 
 defaultBlockType
-    The default block type in Volto is "text", which uses the current DraftJS-based implementation for the rich text editor. Future alternative rich text editors will need to use this setting and replace it with their block type. The block definition should also include the `blockHasValue` function, which is needed to activate the Block Chooser functionality. See this function signature in [Blocks > Settings](../blocks/settings.md).
-
+    The name of the default block type used when a new block is added.
+    The default value of this setting is `slate`, which uses the current Slate-based implementation for the rich text editor.
+    If you change this to a different type of block, make sure the block configuration includes the {ref}`blockHasValue` function.
 
 sentryOptions
     In Volto 16.0.0.alpha.45, Sentry integration was moved from core to the add-on [`@plone-collective/volto-sentry`](https://www.npmjs.com/package/@plone-collective/volto-sentry).
@@ -40,7 +41,7 @@ contentIcons
     With this property you can configure Content Types icons.
     Those are visible in Contents view (ex "Folder contents").  The default
     ones are in
-    [config/ContentIcons.jsx](https://github.com/plone/volto/blob/main/src/config/ContentIcons.jsx)
+    [config/ContentIcons.jsx](https://github.com/plone/volto/blob/main/packages/volto/src/config/ContentIcons.jsx)
     and you can extend them in your project's config for custom content types
     using `settings.contentIcons`.
 
@@ -107,7 +108,7 @@ initialReducersBlacklist
 loadables
     A mapping of loadable libraries that can be injected into components using
     the `injectLazyLibs` HOC wrapper. See the [Lazy
-    loading](../recipes/lazyload) page for more details.
+    loading](../development/lazyload) page for more details.
 
 lazyBundles
     A mapping of bundles to list of lazy library names. Create new bundles (or
@@ -205,7 +206,13 @@ controlpanels
     The group can be one of the default groups 'General', 'Content', 'Security', 'Add-on Configuration', 'Users and Groups' or a custom group.
 
 filterControlPanelsSchema
-    A schema factory for a control panel. It is used internally, to tweak the schemas provided by the controlpanel endpoint, to make them fit for Volto.
+    A schema factory for a control panel.
+    It is used internally, to tweak the schemas provided by the `@controlpanels` endpoint, making them fit for Volto.
+    It uses the `unwantedControlPanelsFields` setting.
+
+unwantedControlPanelsFields
+    Control panels' fields that are not used in Volto.
+    It is used internally by the `filterControlPanelsSchema` function.
 
 errorHandlers
     A list of error handlers that will be called when there is an unhandled exception. Each error handler is a function that
@@ -415,6 +422,10 @@ excludeLinksAndReferencesMenuItem
     The content menu links to the {guilabel}`Links and references` view per default.
     Exclude this menu item by setting `excludeLinksAndReferencesMenuItem` to `true`.
 
+    ```{seealso}
+    {doc}`../user-manual/links-to-item`
+    ```
+
 okRoute
     Volto provides an `/ok` URL where it responds with a `text/plain ok` response, with an `HTTP 200` status code, to signal third party health check services that the Volto process is running correctly.
 
@@ -510,18 +521,11 @@ in the `config.settings.serverConfig` object.
 
 expressMiddleware
     A list of ExpressJs middleware that can extend the built-in functionality of
-    Volto's server. See the [Express](../recipes/express) section for more details.
+    Volto's server. See the [Express](../development/express) section for more details.
 
 criticalCssPath
     A path relative to the project root that points to an optional CSS file. If
     this file exists it is loaded and its content is embedded inline into the
     generated HTML. By default this path is `public/critical.css`. See the
     {doc}`../deploying/performance` section for more details.
-
-extractScripts
-    An object that allows you to configure the insertion of scripts on the page
-    in some particular cases.
-    For the moment it admits only one property: `errorPages` whose value is a Boolean.
-
-    If `extractScripts.errorPages` is `true`, the JS will be inserted into the error page.
 ```

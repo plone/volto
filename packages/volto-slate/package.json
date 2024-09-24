@@ -1,11 +1,12 @@
 {
   "name": "@plone/volto-slate",
-  "version": "17.4.0",
+  "version": "18.0.0-alpha.18",
   "description": "Slate.js integration with Volto",
   "main": "src/index.js",
   "author": "European Environment Agency: IDM2 A-Team",
   "license": "MIT",
   "keywords": [
+    "volto-core-addon",
     "volto-addon",
     "volto-slate",
     "volto-slate-addon",
@@ -13,31 +14,42 @@
     "plone",
     "react"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
+    "classnames": "2.2.6",
+    "github-slugger": "1.4.0",
     "image-extensions": "1.1.0",
+    "is-hotkey": "0.2.0",
     "is-url": "1.2.4",
     "jsdom": "^16.6.0",
-    "react-intersection-observer": "^8.32.0",
-    "slate": "^0.71.0",
-    "slate-history": "^0.66.0",
-    "slate-hyperscript": "^0.67.0",
-    "slate-react": "^0.71.0",
+    "lodash": "4.17.21",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-intersection-observer": "9.1.0",
+    "react-intl": "3.12.1",
+    "react-redux": "8.1.2",
+    "react-router-dom": "5.2.0",
+    "react-toastify": "5.5.0",
+    "redux-mock-store": "1.5.4",
+    "semantic-ui-react": "2.1.5",
+    "slate": "0.100.0",
+    "slate-history": "0.100.0",
+    "slate-hyperscript": "0.100.0",
+    "slate-react": "0.98.4",
+    "uuid": "^9.0.1",
     "weak-key": "^1.0.2"
   },
   "devDependencies": {
     "@testing-library/react": "9.5.0",
-    "babel-plugin-transform-class-properties": "^6.24.1"
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "release-it": "^17.0.0"
   },
   "scripts": {
-    "test": "make test",
-    "test:fix": "make test-update",
-    "stylelint": "../node_modules/stylelint/bin/stylelint.js --allow-empty-input 'src/**/*.{css,less}'",
-    "stylelint:overrides": "../node_modules/.bin/stylelint --syntax less --allow-empty-input 'theme/**/*.overrides' 'src/**/*.overrides'",
-    "stylelint:fix": "yarn stylelint --fix && yarn stylelint:overrides --fix",
-    "prettier": "../node_modules/.bin/prettier --single-quote --check 'src/**/*.{js,jsx,json,css,less,md}'",
-    "prettier:fix": "../node_modules/.bin/prettier --single-quote --write 'src/**/*.{js,jsx,json,css,less,md}'",
-    "lint": "../node_modules/eslint/bin/eslint.js --max-warnings=0 'src/**/*.{js,jsx}'",
-    "lint:fix": "../node_modules/eslint/bin/eslint.js --fix 'src/**/*.{js,jsx}'",
-    "i18n": "mv .i18n.babel.config.js babel.config.js; rm -rf build/messages && NODE_ENV=production node src/i18n.js; mv babel.config.js .i18n.babel.config.js"
+    "dry-release": "release-it --dry-run",
+    "release": "release-it",
+    "release-major-alpha": "release-it major --preRelease=alpha",
+    "release-alpha": "release-it --preRelease=alpha"
   }
 }

@@ -20,7 +20,7 @@ then access any of its internal configuration to retrieve the configuration you 
 like:
 
 ```js
-const absoluteUrl = `${config.settings.apiPath}/${content.url}`
+const absoluteUrl = `${config.settings.apiPath}/${content.url}`;
 ```
 
 Both the main project and individual add-ons can extend Volto's configuration registry.
@@ -60,7 +60,7 @@ add-ons configuration in `config` argument. Next, perform all the required modif
 to the config and finally, return the config object.
 
 By reading Volto's
-[src/config/index.js](https://github.com/plone/volto/blob/main/src/config/index.js),
+[src/config/index.js](https://github.com/plone/volto/blob/main/packages/volto/src/config/index.js),
 you'll get to see that Volto provides some default configuration objects
 (`blocks`, `widgets`, `settings`, etc), passes them through the
 `applyAddonConfiguration()` function, which allows any installed addons to
@@ -78,12 +78,12 @@ See {doc}`settings-reference` for details.
 
 The `widgets` object holds the widget registry, used to decide which widget
 should be used when rendering forms. Check [its
-definition](https://github.com/plone/volto/blob/main/src/config/Widgets.jsx)
+definition](https://github.com/plone/volto/blob/main/packages/volto/src/config/Widgets.jsx)
 but also the [lookup
-mechanism](https://github.com/plone/volto/blob/6fd62cb2860bc7cf3cb7c36ea86bfd8bd03247d9/src/components/manage/Form/Field.jsx#L112)
+mechanism](https://github.com/plone/volto/blob/212026a39fd9aa0e1d6c324f967b51a3daa10b01/packages/volto/src/components/manage/Form/Field.jsx#L151)
 to understand how things work.
 
-See {doc}`../recipes/widget` for more information.
+See {doc}`../development/widget` for more information.
 
 ## views
 
@@ -150,3 +150,31 @@ export default function applyConfig(config) {
 
   return config;
 }
+```
+
+## `nonContentRoutes` and `nonContentRoutesPublic`
+
+`nonContentRoutes` is a list of routes reserved in Volto for its functionality as a content management system.
+These functions include user authentication and registration, changing settings through control panels, generating a site map, and other functions.
+Examples of these routes include `/login`, `/register`, and `/\/controlpanel\/.*$/`.
+Editors can't use them for content.
+The HTML attribute class value `cms-ui` is applied to members of `nonContentRoutes`.
+You can configure `nonContentRoutes` with either a regular expression or a string representing the end of the URI.
+
+`nonContentRoutesPublic` is a subset of `nonContentRoutes`.
+These routes are used for public sections of a Volto site that do not require authentication.
+This subset includes `/login`, `/search`, and `/sitemap`.
+
+The following example shows how to configure settings for `nonContentRoutes` and `nonContentRoutesPublic`.
+
+```js
+export default function applyConfig(config) {
+  config.settings = {
+    ...config.settings,
+    nonContentRoutes:[....],
+    nonContentRoutesPublic: [....]
+  };
+
+  return config;
+}
+```

@@ -1,11 +1,11 @@
 import cx from 'classnames';
 import React, { useRef, useEffect } from 'react';
-import { Portal } from 'react-portal';
 import { useSlate } from 'slate-react';
 import Separator from './Separator';
 import BasicToolbar from './BasicToolbar';
 import { Editor, Node } from 'slate';
 import { ReactEditor } from 'slate-react';
+import { createPortal } from 'react-dom';
 
 const Toolbar = ({
   elementType,
@@ -82,21 +82,20 @@ const Toolbar = ({
     )}px`;
   });
 
-  return (
-    <Portal>
-      <BasicToolbar
-        className={cx('slate-inline-toolbar', { [className]: className })}
-        ref={ref}
-      >
-        {children}
-        {enableExpando && toggleButton && (
-          <>
-            <Separator />
-            {toggleButton}
-          </>
-        )}
-      </BasicToolbar>
-    </Portal>
+  return createPortal(
+    <BasicToolbar
+      className={cx('slate-inline-toolbar', { [className]: className })}
+      ref={ref}
+    >
+      {children}
+      {enableExpando && toggleButton && (
+        <>
+          <Separator />
+          {toggleButton}
+        </>
+      )}
+    </BasicToolbar>,
+    document.body,
   );
 };
 
