@@ -291,8 +291,13 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
       cursor: pointer;
       text-align: initial;
 
-      &:focus-visible {
-        outline: 1px auto;
+      &:focus {
+        outline: 2px solid black;
+        outline-offset: 2px;
+
+        &:has(.circled) {
+          border-radius: 50%;
+        }
       }
     }
   }
