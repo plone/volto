@@ -1398,7 +1398,6 @@ msgid "Existing alternative urls for this item"
 msgstr "Elementu honentzako ordezko helbidea"
 
 #. Default: "Expand sidebar"
-#: components/manage/Form/SidebarToggleButton
 #: components/manage/Sidebar/Sidebar
 msgid "Expand sidebar"
 msgstr "Alboko barra zabaldu"
@@ -3333,7 +3332,6 @@ msgid "Show total results"
 msgstr "Emaitza kopurua erakutsi"
 
 #. Default: "Shrink sidebar"
-#: components/manage/Form/SidebarToggleButton
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
 msgstr "Txikitu alboko barra"
@@ -3342,6 +3340,11 @@ msgstr "Txikitu alboko barra"
 #: components/manage/Toolbar/Toolbar
 msgid "Shrink toolbar"
 msgstr "Txikitu tresna-barra"
+
+#. Default: "Sidebar expanded"
+#: components/manage/Form/SidebarToggleButton
+msgid "Sidebar expanded"
+msgstr ""
 
 #. Default: "Sign in to start session"
 #: components/theme/Login/Login

@@ -1397,7 +1397,6 @@ msgid "Existing alternative urls for this item"
 msgstr "此项目现有可选的urls"
 
 #. Default: "Expand sidebar"
-#: components/manage/Form/SidebarToggleButton
 #: components/manage/Sidebar/Sidebar
 msgid "Expand sidebar"
 msgstr "扩大侧边栏"
@@ -3332,7 +3331,6 @@ msgid "Show total results"
 msgstr "显示全部结果"
 
 #. Default: "Shrink sidebar"
-#: components/manage/Form/SidebarToggleButton
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
 msgstr "缩小侧边栏"
@@ -3341,6 +3339,11 @@ msgstr "缩小侧边栏"
 #: components/manage/Toolbar/Toolbar
 msgid "Shrink toolbar"
 msgstr "缩小工具栏"
+
+#. Default: "Sidebar expanded"
+#: components/manage/Form/SidebarToggleButton
+msgid "Sidebar expanded"
+msgstr ""
 
 #. Default: "Sign in to start session"
 #: components/theme/Login/Login
