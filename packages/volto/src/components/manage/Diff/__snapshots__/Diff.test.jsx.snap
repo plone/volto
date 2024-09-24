@@ -232,16 +232,16 @@ exports[`Diff renders a diff component 1`] = `
           class="top aligned six wide column"
         >
           <span>
-            <span>
-              My 
+            My 
+            <span
+              class="deletion"
+            >
+              old 
             </span>
             <span
               class="deletion"
             >
-              old
-            </span>
-            <span>
-               title
+              title
             </span>
           </span>
         </div>
@@ -249,21 +249,16 @@ exports[`Diff renders a diff component 1`] = `
           class="top aligned six wide column"
         >
           <span>
-            <span>
-              My 
+            My 
+            <span
+              class="addition"
+            >
+              new 
             </span>
             <span
               class="addition"
             >
-              new
-            </span>
-            <span>
-               title
-            </span>
-            <span
-              class="addition"
-            >
-              ,
+              title,
             </span>
           </span>
         </div>
