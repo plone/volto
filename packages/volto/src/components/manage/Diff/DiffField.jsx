@@ -13,20 +13,34 @@ import { createBrowserHistory } from 'history';
 import { ConnectedRouter } from 'connected-react-router';
 import { useSelector } from 'react-redux';
 import config from '@plone/volto/registry';
-
 import { Api } from '@plone/volto/helpers';
 import configureStore from '@plone/volto/store';
 import { DefaultView } from '@plone/volto/components/';
 import { serializeNodes } from '@plone/volto-slate/editor/render';
-
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 /**
- * Enhanced diff words utility
- * @function diffWords
- * @param oneStr Field one
- * @param twoStr Field two
+ * Helper function to handle repetitive value checks and formatting.
  */
+const formatDiffPart = (part, value) => {
+  if (
+    !value.includes('<') &&
+    !value.includes('>') &&
+    !value.includes('</') &&
+    !value.includes('"') &&
+    !value.includes('src') &&
+    !value.includes('href') &&
+    !value.includes('=')
+  ) {
+    if (part.removed) {
+      return `<span class="deletion">${value}</span>`;
+    }
+    if (part.added) {
+      return `<span class="addition">${value}</span>`;
+    }
+  }
+  return value;
+};
 
 /**
  * Diff field component.
@@ -51,6 +65,7 @@ const DiffField = ({
     dateStyle: 'full',
     timeStyle: 'short',
   };
+
   const splitWords = (str) => {
     if (!str) return [];
     const splitedArray = [];
@@ -191,31 +206,7 @@ const DiffField = ({
                 __html: join(
                   map(parts, (part) => {
                     let combined = (part.value || []).reduce((acc, value) => {
-                      if (
-                        part.removed &&
-                        !value.includes('<') &&
-                        !value.includes('>') &&
-                        !value.includes('>') &&
-                        !value.includes('</') &&
-                        !value.includes('"') &&
-                        !value.includes('src') &&
-                        !value.includes('href') &&
-                        !value.includes('=')
-                      )
-                        return acc + `<span class="deletion">${value}</span>`;
-                      if (
-                        part.added &&
-                        !value.includes('<') &&
-                        !value.includes('>') &&
-                        !value.includes('>') &&
-                        !value.includes('</') &&
-                        !value.includes('"') &&
-                        !value.includes('src') &&
-                        !value.includes('href') &&
-                        !value.includes('=')
-                      )
-                        return acc;
-                      return acc + value;
+                      return acc + formatDiffPart(part, value);
                     }, '');
                     return combined;
                   }),
@@ -230,31 +221,7 @@ const DiffField = ({
                 __html: join(
                   map(parts, (part) => {
                     let combined = (part.value || []).reduce((acc, value) => {
-                      if (
-                        part.added &&
-                        !value.includes('<') &&
-                        !value.includes('>') &&
-                        !value.includes('>') &&
-                        !value.includes('</') &&
-                        !value.includes('"') &&
-                        !value.includes('src') &&
-                        !value.includes('href') &&
-                        !value.includes('=')
-                      )
-                        return acc + `<span class="addition">${value}</span>`;
-                      if (
-                        part.removed &&
-                        !value.includes('<') &&
-                        !value.includes('>') &&
-                        !value.includes('>') &&
-                        !value.includes('</') &&
-                        !value.includes('"') &&
-                        !value.includes('src') &&
-                        !value.includes('href') &&
-                        !value.includes('=')
-                      )
-                        return acc;
-                      return acc + value;
+                      return acc + formatDiffPart(part, value);
                     }, '');
                     return combined;
                   }),
@@ -273,33 +240,7 @@ const DiffField = ({
                 __html: join(
                   map(parts, (part) => {
                     let combined = (part.value || []).reduce((acc, value) => {
-                      if (
-                        part.removed &&
-                        !value.includes('<') &&
-                        !value.includes('>') &&
-                        !value.includes('>') &&
-                        !value.includes('</') &&
-                        !value.includes('"') &&
-                        !value.includes('src') &&
-                        !value.includes('href') &&
-                        !value.includes('=')
-                      )
-                        return acc + `<span class="deletion">${value}</span>`;
-
-                      if (
-                        part.added &&
-                        !value.includes('<') &&
-                        !value.includes('>') &&
-                        !value.includes('>') &&
-                        !value.includes('</') &&
-                        !value.includes('"') &&
-                        !value.includes('src') &&
-                        !value.includes('href') &&
-                        !value.includes('=')
-                      )
-                        return acc + `<span class="addition">${value}</span>`;
-
-                      return acc + value;
+                      return acc + formatDiffPart(part, value);
                     }, '');
                     return combined;
                   }),
