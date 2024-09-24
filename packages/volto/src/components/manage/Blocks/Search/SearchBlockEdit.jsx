@@ -23,6 +23,7 @@ const messages = defineMessages({
 const SearchBlockEdit = (props) => {
   const {
     block,
+    blocksErrors,
     onChangeBlock,
     data,
     selected,
@@ -94,6 +95,7 @@ const SearchBlockEdit = (props) => {
           formData={data}
           navRoot={navRoot}
           contentType={contentType}
+          errors={blocksErrors}
         />
       </SidebarPortal>
     </>

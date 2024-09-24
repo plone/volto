@@ -84,4 +84,4 @@ Even if you think your add-on is not generic or it's tricky to integrate, please
 consider including your add-on in the
 [`collective/awesome-volto`](https://github.com/collective/awesome-volto) add-ons
 list. This provides visibility to your add-on but also further solidifies
-Volto's possition in our Plone community.
+Volto's position in our Plone community.

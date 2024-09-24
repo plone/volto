@@ -161,7 +161,7 @@ export function addBlock(formData, type, index, blocksConfig) {
 
   return [
     id,
-    _applyBlockInitialValue({
+    applyBlockInitialValue({
       id,
       value,
       blocksConfig,
@@ -197,8 +197,12 @@ export function addBlock(formData, type, index, blocksConfig) {
  * to call `onChangeBlock` at their creation time, as this is prone to racing
  * issue on block data storage.
  */
-const _applyBlockInitialValue = ({ id, value, blocksConfig, formData }) => {
-  const blocksFieldname = getBlocksFieldname(formData);
+export const applyBlockInitialValue = ({
+  id,
+  value,
+  blocksConfig,
+  formData,
+}) => {
   const type = value['@type'];
   blocksConfig = blocksConfig || config.blocks.blocksConfig;
 
@@ -208,6 +212,7 @@ const _applyBlockInitialValue = ({ id, value, blocksConfig, formData }) => {
       value,
       formData,
     });
+    const blocksFieldname = getBlocksFieldname(formData);
     formData[blocksFieldname][id] = value;
   }
 
@@ -238,7 +243,7 @@ export function mutateBlock(formData, id, value, blocksConfig) {
   const trailId = formData[blocksLayoutFieldname].items[index];
   if (trailId) {
     const block = formData[blocksFieldname][trailId];
-    newFormData = _applyBlockInitialValue({
+    newFormData = applyBlockInitialValue({
       id,
       value,
       blocksConfig,
@@ -256,7 +261,7 @@ export function mutateBlock(formData, id, value, blocksConfig) {
   }
 
   const idTrailingBlock = uuid();
-  newFormData = _applyBlockInitialValue({
+  newFormData = applyBlockInitialValue({
     id,
     value,
     blocksConfig,
@@ -307,8 +312,8 @@ export function insertBlock(
   });
 
   const newBlockId = uuid();
-  const newFormData = _applyBlockInitialValue({
-    id,
+  const newFormData = applyBlockInitialValue({
+    id: newBlockId,
     value,
     blocksConfig,
     formData: {
@@ -713,7 +718,7 @@ export function isBlockContainer(block) {
  * @param {Object} types A list with the list of types to be matched
  * @return {Array} An array of block ids
  */
-export function findBlocks(blocks, types, result = []) {
+export function findBlocks(blocks = {}, types, result = []) {
   Object.keys(blocks).forEach((blockId) => {
     const block = blocks[blockId];
     // check blocks from data as well since some add-ons use that

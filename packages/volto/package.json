@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "18.0.0-alpha.39",
+  "version": "18.0.0-alpha.43",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -240,7 +240,6 @@
     "react-router-hash-link": "2.4.3",
     "react-select": "4.3.1",
     "react-select-async-paginate": "0.5.3",
-    "react-share": "2.3.1",
     "react-side-effect": "2.1.2",
     "react-simple-code-editor": "0.7.1",
     "react-sortable-hoc": "2.0.0",
@@ -326,7 +325,7 @@
     "bundlewatch": "0.3.3",
     "circular-dependency-plugin": "5.2.2",
     "css-loader": "5.2.7",
-    "cypress": "13.6.6",
+    "cypress": "13.13.2",
     "cypress-axe": "1.5.0",
     "cypress-file-upload": "5.0.8",
     "deep-freeze": "0.0.1",
