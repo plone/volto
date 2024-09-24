@@ -291,6 +291,11 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
       cursor: pointer;
       text-align: initial;
 
+      svg {
+        // SVGs are inline by default, causing the spacing to be odd
+        display: block;
+      }
+
       &:focus {
         outline: 2px solid black;
         outline-offset: 2px;
