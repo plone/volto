@@ -99,7 +99,7 @@ export declare const EmailWidget: import("@loadable/component").LoadableComponen
 export declare const NumberWidget: import("@loadable/component").LoadableComponent<import("react-intl").WithIntlProps<any>>;
 export declare const ImageSizeWidget: import("@loadable/component").LoadableComponent<import("react-intl").WithIntlProps<any>>;
 export declare const RegistryImageWidget: import("@loadable/component").LoadableComponent<import("react-intl").WithIntlProps<any>>;
-export declare const ReferenceWidget: import("@loadable/component").LoadableClassComponent<any>;
+export declare const ReferenceWidget: import("@loadable/component").LoadableComponent<any>;
 export declare const ObjectBrowserWidget: import("@loadable/component").LoadableComponent<Omit<import("react-intl").WithIntlProps<import("react-intl").WrappedComponentProps<string>>, "ref"> & import("react").RefAttributes<import("react").ComponentType<import("react-intl").WrappedComponentProps<string>>>>;
 export declare const ObjectWidget: import("@loadable/component").LoadableComponent<{
     [x: string]: any;

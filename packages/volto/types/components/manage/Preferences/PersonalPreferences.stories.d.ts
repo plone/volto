@@ -1,7 +1,7 @@
-export const Datetime: any;
+export const PersonalPreferences: any;
 declare namespace _default {
     export let title: string;
-    export { DatetimeWidgetComponent as component };
+    export { PersonalPreferences as component };
     export let decorators: ((Story: any) => import("react/jsx-runtime").JSX.Element)[];
     export let argTypes: {};
 }
