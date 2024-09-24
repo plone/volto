@@ -274,14 +274,13 @@ class Form extends Component {
         selected: null,
       });
     }
-
-    const stateHasErrors =
-      Object.keys(this.state.errors).length > 0 &&
-      this.state.errors.constructor === Object;
     if (requestError) {
-      if (prevProps.requestError !== requestError || !stateHasErrors) {
-        errors =
-          FormValidation.giveServerErrorsToCorrespondingFields(requestError);
+      errors =
+        FormValidation.giveServerErrorsToCorrespondingFields(requestError);
+      if (
+        !isEqual(prevProps.requestError, requestError) ||
+        !isEqual(this.state.errors, errors)
+      ) {
         activeIndex = FormValidation.showFirstTabWithErrors({
           errors,
           schema: this.props.schema,
@@ -588,8 +587,8 @@ class Form extends Component {
             title={this.props.intl.formatMessage(messages.error)}
             content={
               <ul>
-                {Object.keys(errors).map((err) => (
-                  <li>
+                {Object.keys(errors).map((err, index) => (
+                  <li key={index}>
                     <strong>
                       {this.props.schema.properties[err].title || err}:
                     </strong>{' '}
