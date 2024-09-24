@@ -1,1 +1,1 @@
-Update Brazilian Portuguese translations [@ericof]
+Update Brazilian Portuguese translations. @ericof
