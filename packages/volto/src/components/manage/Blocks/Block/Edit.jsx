@@ -152,13 +152,8 @@ export class Edit extends Component {
               }
             }}
             onFocus={(e) => {
-              // TODO: This `onFocus` steals somehow the focus from the slate block
-              // we have to investigate why this is happening
-              // Apparently, I can't see any difference in the behavior
-              // If any, we can fix it in successive iterations
-              // if (this.props.hovered !== this.props.id) {
-              //   this.props.setUIState({ hovered: this.props.id });
-              // }
+              !this.props.selected &&
+                this.props.onSelectBlock(this.props.id, this.props.selected, e);
             }}
             onMouseLeave={(e) => {
               e.preventDefault();
