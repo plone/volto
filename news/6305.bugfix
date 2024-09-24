@@ -1,0 +1,1 @@
+When you update a block's properties using onChangeBlock, the widget may not show these changes because its state isn't updating correctly @tedw87
