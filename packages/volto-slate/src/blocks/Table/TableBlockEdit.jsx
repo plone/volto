@@ -11,7 +11,8 @@ import cx from 'classnames';
 import { defineMessages, injectIntl } from 'react-intl';
 
 import Cell from './Cell';
-import { Icon, SidebarPortal } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
 import { BlockDataForm } from '@plone/volto/components/manage/Form';
 import TableSchema from './schema';
 
