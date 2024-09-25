@@ -13,7 +13,9 @@ import routes from '@root/routes';
 import config from '@plone/volto/registry';
 
 import configureStore from '@plone/volto/store';
-import { Api, persistAuthToken, ScrollToTop } from '@plone/volto/helpers';
+import Api from '@plone/volto/helpers/Api/Api';
+import ScrollToTop from '@plone/volto/helpers/ScrollToTop/ScrollToTop';
+import { persistAuthToken } from '@plone/volto/helpers/AuthToken/AuthToken';
 import { HydrationOverlay } from '@builder.io/react-hydration-overlay';
 import { TitleWidget, Moment } from './test_loadable';
 

@@ -1,6 +1,9 @@
 import { lazy } from 'react';
-import { getSystemInformation, listControlpanels } from '@plone/volto/actions';
-import { asyncConnect } from '@plone/volto/helpers';
+import {
+  getSystemInformation,
+  listControlpanels,
+} from '@plone/volto/actions/controlpanels/controlpanels';
+import { asyncConnect } from '@plone/volto/helpers/AsyncConnect';
 
 // CONTROLPANELS
 
