@@ -16,30 +16,117 @@ import config from '@plone/volto/registry';
 import { Api } from '@plone/volto/helpers';
 import configureStore from '@plone/volto/store';
 import { DefaultView } from '@plone/volto/components/';
+import { RenderBlocks } from '@plone/volto/components';
 import { serializeNodes } from '@plone/volto-slate/editor/render';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 /**
  * Helper function to handle repetitive value checks and formatting.
  */
-const formatDiffPart = (part, value) => {
-  if (
-    !value.includes('<') &&
-    !value.includes('>') &&
-    !value.includes('</') &&
-    !value.includes('"') &&
-    !value.includes('src') &&
-    !value.includes('href') &&
-    !value.includes('=')
-  ) {
-    if (part.removed) {
-      return `<span class="deletion">${value}</span>`;
+
+/**
+ * Improved formatDiffPart function that handles HTML tags correctly.
+ */
+
+const isHtmlTag = (str) => {
+  // Match complete HTML tags, including:
+  // 1. Opening tags like <div>, <img src="example" />, <svg>...</svg>
+  // 2. Self-closing tags like <img />, <br />
+  // 3. Closing tags like </div>
+  return /^<([a-zA-Z]+[0-9]*)\b[^>]*>|^<\/([a-zA-Z]+[0-9]*)\b[^>]*>$|^<([a-zA-Z]+[0-9]*)\b[^>]*\/>$/.test(
+    str,
+  );
+};
+const splitWords = (str) => {
+  if (!str) return [];
+
+  const result = [];
+  let currentWord = '';
+  let insideTag = false;
+  let insideSpecialTag = false;
+  let tagBuffer = '';
+
+  // Special tags that should not be split (e.g., <img />, <svg> ... </svg>)
+  const specialTags = ['img', 'svg'];
+
+  for (let i = 0; i < str.length; i++) {
+    const char = str[i];
+
+    // Start of an HTML tag
+    if (char === '<') {
+      if (currentWord) {
+        result.push(currentWord); // Push text before the tag
+        currentWord = '';
+      }
+      insideTag = true;
+      tagBuffer += char;
     }
-    if (part.added) {
-      return `<span class="addition">${value}</span>`;
+    // End of an HTML tag
+    else if (char === '>') {
+      tagBuffer += char;
+      insideTag = false;
+
+      // Check if the tagBuffer contains a special tag
+      const tagNameMatch = tagBuffer.match(/^<\/?([a-zA-Z]+[0-9]*)\b/);
+      if (tagNameMatch && specialTags.includes(tagNameMatch[1])) {
+        insideSpecialTag =
+          tagNameMatch[0].startsWith('<') && !tagNameMatch[0].startsWith('</');
+        result.push(tagBuffer); // Push the complete special tag as one unit
+        tagBuffer = '';
+        continue;
+      }
+
+      result.push(tagBuffer); // Push the complete tag
+      tagBuffer = '';
+    }
+    // Inside the tag or special tag
+    else if (insideTag || insideSpecialTag) {
+      tagBuffer += char;
+    }
+    // Space outside of tags - push current word
+    else if (char === ' ' && !insideTag && !insideSpecialTag) {
+      if (currentWord) {
+        result.push(currentWord);
+        currentWord = '';
+      }
+      result.push(' ');
+    }
+    // Accumulate characters outside of tags
+    else {
+      currentWord += char;
     }
   }
-  return value;
+
+  // Push any remaining text
+  if (currentWord) {
+    result.push(currentWord);
+  }
+  if (tagBuffer) {
+    result.push(tagBuffer); // Push remaining tagBuffer
+  }
+
+  return result;
+};
+const formatDiffPart = (part, value, side) => {
+  if (!isHtmlTag(value)) {
+    if (part.removed && (side === 'left' || side === 'unified')) {
+      return `<span class="deletion">${value}</span>`;
+    } else if (part.removed) return '';
+    else if (part.added && (side === 'right' || side === 'unified')) {
+      return `<span class="addition">${value}</span>`;
+    } else if (part.added) return '';
+    return value;
+  } else {
+    if (side === 'unified' && part.removed) return value;
+    else if (side === 'unified' && part.added) return '';
+    if (part.removed && side === 'left') {
+      return value;
+    } else if (part.removed) return '';
+    else if (part.added && side === 'right') {
+      return value;
+    } else if (part.added) return '';
+    return value;
+  }
 };
 
 /**
@@ -50,6 +137,7 @@ const formatDiffPart = (part, value) => {
  * @param {Object} schema Field schema
  * @returns {string} Markup of the component.
  */
+
 const DiffField = ({
   one,
   two,
@@ -60,39 +148,23 @@ const DiffField = ({
   diffLib,
 }) => {
   const language = useSelector((state) => state.intl.locale);
-
   const readable_date_format = {
     dateStyle: 'full',
     timeStyle: 'short',
   };
-
-  const splitWords = (str) => {
-    if (!str) return [];
-    const splitedArray = [];
-    let elementCurent = '';
-    let insideTag = false;
-    for (let i = 0; i < str.length; i++)
-      if (str[i] === '<') {
-        if (elementCurent) splitedArray.push(elementCurent);
-        elementCurent = '<';
-        insideTag = true;
-      } else if (str[i] === '>') {
-        elementCurent += '>';
-        splitedArray.push(elementCurent);
-        elementCurent = '';
-        insideTag = false;
-      } else if (str[i] === ' ' && insideTag === false) {
-        elementCurent += ' ';
-        splitedArray.push(elementCurent);
-        elementCurent = '';
-      } else elementCurent += str[i];
-    if (elementCurent) splitedArray.push(elementCurent);
-    return splitedArray;
-  };
-
   const diffWords = (oneStr, twoStr) => {
     return diffLib.diffArrays(splitWords(oneStr), splitWords(twoStr));
   };
+  /**
+   * Detect if the given string is an HTML tag (opening or closing).
+   */
+
+  /**
+   * Improved splitWords function that handles HTML tags correctly.
+   */
+  /**
+   * Improved splitWords function that handles HTML tags (with or without attributes) correctly.
+   */
 
   let parts, oneArray, twoArray;
   if (schema.widget) {
@@ -118,14 +190,14 @@ const DiffField = ({
           ReactDOMServer.renderToStaticMarkup(
             <Provider store={store}>
               <ConnectedRouter history={history}>
-                <DefaultView content={contentOne} />
+                <RenderBlocks content={contentOne} />
               </ConnectedRouter>
             </Provider>,
           ),
           ReactDOMServer.renderToStaticMarkup(
             <Provider store={store}>
               <ConnectedRouter history={history}>
-                <DefaultView content={contentTwo} />
+                <RenderBlocks content={contentTwo} />
               </ConnectedRouter>
             </Provider>,
           ),
@@ -201,34 +273,38 @@ const DiffField = ({
       {view === 'split' && (
         <Grid.Row>
           <Grid.Column width={6} verticalAlign="top">
-            <span
-              dangerouslySetInnerHTML={{
-                __html: join(
-                  map(parts, (part) => {
-                    let combined = (part.value || []).reduce((acc, value) => {
-                      return acc + formatDiffPart(part, value);
-                    }, '');
-                    return combined;
-                  }),
-                  '',
-                ),
-              }}
-            />
+            <div style={{ maxWidth: '600px' }}>
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: join(
+                    map(parts, (part) => {
+                      let combined = (part.value || []).reduce((acc, value) => {
+                        return acc + formatDiffPart(part, value, 'left');
+                      }, '');
+                      return combined;
+                    }),
+                    '',
+                  ),
+                }}
+              />
+            </div>
           </Grid.Column>
           <Grid.Column width={6} verticalAlign="top">
-            <span
-              dangerouslySetInnerHTML={{
-                __html: join(
-                  map(parts, (part) => {
-                    let combined = (part.value || []).reduce((acc, value) => {
-                      return acc + formatDiffPart(part, value);
-                    }, '');
-                    return combined;
-                  }),
-                  '',
-                ),
-              }}
-            />
+            <div style={{ maxWidth: '600px' }}>
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: join(
+                    map(parts, (part) => {
+                      let combined = (part.value || []).reduce((acc, value) => {
+                        return acc + formatDiffPart(part, value, 'right');
+                      }, '');
+                      return combined;
+                    }),
+                    '',
+                  ),
+                }}
+              />
+            </div>
           </Grid.Column>
         </Grid.Row>
       )}
@@ -240,7 +316,7 @@ const DiffField = ({
                 __html: join(
                   map(parts, (part) => {
                     let combined = (part.value || []).reduce((acc, value) => {
-                      return acc + formatDiffPart(part, value);
+                      return acc + formatDiffPart(part, value, 'unified');
                     }, '');
                     return combined;
                   }),
