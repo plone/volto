@@ -1,0 +1,1715 @@
+import {
+  addBlock,
+  blockHasValue,
+  changeBlock,
+  deleteBlock,
+  emptyBlocksForm,
+  getBlocks,
+  getBlocksFieldname,
+  getBlocksLayoutFieldname,
+  hasBlocksData,
+  insertBlock,
+  moveBlock,
+  mutateBlock,
+  nextBlockId,
+  previousBlockId,
+  visitBlocks,
+  applyBlockDefaults,
+  applySchemaDefaults,
+  buildStyleClassNamesFromData,
+  buildStyleClassNamesExtenders,
+  buildStyleObjectFromData,
+  getPreviousNextBlock,
+  blocksFormGenerator,
+  findBlocks,
+  findContainer,
+  isBlockContainer,
+} from './Blocks';
+
+import config from '@plone/volto/registry';
+
+config.blocks.blocksConfig.text = {
+  id: 'text',
+  title: 'Text',
+  group: 'text',
+  restricted: false,
+  mostUsed: false,
+  blockHasOwnFocusManagement: true,
+  blockHasValue: (data) => {
+    const isEmpty =
+      !data.text ||
+      (data.text?.blocks?.length === 1 && data.text.blocks[0].text === '');
+    return !isEmpty;
+  },
+  blockSchema: ({ data }) => ({
+    fieldsets: [
+      {
+        id: 'default',
+        fields: ['title', 'description', 'nonDefault', 'booleanField'],
+        title: 'Default',
+      },
+    ],
+    properties: {
+      title: {
+        default: 'Default title',
+      },
+      description: {
+        default: 'Default description',
+      },
+      nonDefault: {
+        title: 'Non default',
+      },
+      booleanField: {
+        title: 'BooleanField',
+        default: false,
+      },
+    },
+  }),
+};
+
+config.blocks.blocksConfig.dummyText = {
+  id: 'dummyText',
+  title: 'Text',
+  group: 'text',
+  restricted: false,
+  mostUsed: false,
+  blockHasOwnFocusManagement: true,
+  blockHasValue: (data) => {
+    const isEmpty =
+      !data.text ||
+      (data.text?.blocks?.length === 1 && data.text.blocks[0].text === '');
+    return !isEmpty;
+  },
+  initialValue: ({ value, id, formData }) => {
+    return { ...value, marker: true };
+  },
+};
+
+config.blocks.blocksConfig.enhancedBlock = {
+  id: 'enhancedBlock',
+  title: 'Text',
+  group: 'text',
+  restricted: false,
+  mostUsed: false,
+  blockHasOwnFocusManagement: true,
+  blockHasValue: (data) => {
+    const isEmpty =
+      !data.text ||
+      (data.text?.blocks?.length === 1 && data.text.blocks[0].text === '');
+    return !isEmpty;
+  },
+  schemaEnhancer: ({ schema, formData }) => {
+    schema.fieldsets[0].fields.push('extra');
+    schema.properties.extra = { default: 'Extra value' };
+    return schema;
+  },
+  variations: [
+    {
+      id: 'firstVariation',
+      schemaEnhancer: ({ schema, formData }) => {
+        schema.fieldsets[0].fields.push('extraVariationField');
+        schema.properties['extraVariationField'] = {
+          default: 'Extra variation field',
+        };
+        return schema;
+      },
+    },
+  ],
+  blockSchema: ({ data }) => ({
+    fieldsets: [
+      {
+        id: 'default',
+        fields: ['title', 'description', 'nonDefault'],
+        title: 'Default',
+      },
+    ],
+    properties: {
+      title: {
+        default: 'Default title',
+      },
+      description: {
+        default: 'Default description',
+      },
+      nonDefault: {
+        title: 'Non default',
+      },
+    },
+  }),
+};
+
+config.blocks.blocksConfig.enhancedBlockCase2 = {
+  id: 'enhancedBlockCase2',
+  title: 'Text',
+  group: 'text',
+  restricted: false,
+  mostUsed: false,
+  blockHasOwnFocusManagement: true,
+  blockHasValue: (data) => {
+    const isEmpty =
+      !data.text ||
+      (data.text?.blocks?.length === 1 && data.text.blocks[0].text === '');
+    return !isEmpty;
+  },
+  schemaEnhancer: ({ schema, formData }) => {
+    schema.fieldsets[0].fields.push('extra');
+    schema.properties.extra = {
+      default: 'Extra value from block schema enhancer',
+    };
+    return schema;
+  },
+  variations: [
+    {
+      id: 'firstVariation',
+      schemaEnhancer: ({ schema, formData }) => {
+        schema.properties['extra'] = {
+          default: 'Extra variation field',
+        };
+        return schema;
+      },
+    },
+  ],
+  blockSchema: ({ data }) => ({
+    fieldsets: [
+      {
+        id: 'default',
+        fields: ['title', 'description', 'nonDefault'],
+        title: 'Default',
+      },
+    ],
+    properties: {
+      title: {
+        default: 'Default title',
+      },
+      description: {
+        default: 'Default description',
+      },
+      nonDefault: {
+        title: 'Non default',
+      },
+    },
+  }),
+};
+
+const itemSchema = (props) => {
+  return {
+    title: 'Item',
+    addMessage: 'Add',
+    fieldsets: [
+      {
+        id: 'default',
+        title: 'Default',
+        fields: [
+          'href',
+          'title',
+          'description',
+          'preview_image',
+          'extraDefault',
+        ],
+      },
+    ],
+
+    properties: {
+      href: {
+        title: 'Source',
+        widget: 'object_browser',
+        mode: 'link',
+        selectedItemAttrs: [
+          'Title',
+          'Description',
+          'hasPreviewImage',
+          'headtitle',
+        ],
+        allowExternals: true,
+      },
+      title: {
+        title: 'title',
+      },
+      description: {
+        title: 'description',
+      },
+      preview_image: {
+        title: 'Image Override',
+        widget: 'object_browser',
+        mode: 'image',
+        allowExternals: true,
+      },
+      extraDefault: {
+        title: 'Extra',
+        default: 'Extra default',
+      },
+    },
+    required: [],
+  };
+};
+
+config.blocks.blocksConfig.slider = {
+  id: 'slider',
+  title: 'Slider',
+  group: 'Special',
+  restricted: false,
+  mostUsed: false,
+  blockHasOwnFocusManagement: true,
+  blockSchema: (props) => ({
+    title: 'slider',
+    fieldsets: [
+      {
+        id: 'default',
+        title: 'Default',
+        fields: [
+          'slides',
+          'fieldAfterObjectList',
+          'href',
+          'firstWithDefault',
+          'style',
+          'anotherWithDefault',
+          'yetAnotherWithDefault',
+        ],
+      },
+    ],
+    properties: {
+      slides: {
+        widget: 'object_list',
+        schema: itemSchema,
+        default: [
+          {
+            '@id': 'asdasdasd-qweqwe-zxczxc',
+            extraDefault:
+              'Extra default (Manual in parent slider widget default)',
+          },
+        ],
+      },
+      fieldAfterObjectList: {
+        title: 'Field after OL',
+      },
+      href: {
+        widget: 'object_browser',
+        mode: 'link',
+        selectedItemAttrs: [
+          'Title',
+          'Description',
+          'hasPreviewImage',
+          'headtitle',
+        ],
+        allowExternals: true,
+      },
+      firstWithDefault: {
+        title: 'Field with default',
+        default: 'Some default value',
+      },
+      style: {
+        widget: 'object',
+        schema: {
+          title: 'Style',
+          fieldsets: [
+            {
+              id: 'default',
+              fields: ['color', 'theme'],
+              title: 'Default',
+            },
+          ],
+          properties: {
+            color: {
+              title: 'Color',
+              default: 'red',
+            },
+            theme: {
+              title: 'Theme',
+              default: 'primary',
+            },
+          },
+          required: [],
+        },
+      },
+      anotherWithDefault: {
+        title: 'Field with default 2',
+        default: 2,
+        type: 'number',
+      },
+      yetAnotherWithDefault: {
+        title: 'Field with default 3',
+        default: ['one', 'two'],
+        type: 'array',
+      },
+    },
+    required: [],
+  }),
+};
+
+config.settings.defaultBlockType = 'text';
+
+describe('Blocks', () => {
+  describe('getBlocksFieldname', () => {
+    it('can get the blocks field name from formdata', () => {
+      expect(getBlocksFieldname({ title: 'Example', blocks: [] })).toBe(
+        'blocks',
+      );
+    });
+
+    it('returns null if no blocks field name from formdata is present', () => {
+      expect(getBlocksLayoutFieldname({ title: 'Example' })).toBe(null);
+    });
+
+    it('can get the blocks field name from formdata of a nested schema', () => {
+      expect(
+        getBlocksFieldname({
+          title: 'Example',
+          'guillotina_cms.interfaces.blocks.IBlocks.blocks': [],
+        }),
+      ).toBe('guillotina_cms.interfaces.blocks.IBlocks.blocks');
+    });
+  });
+
+  describe('getBlocksLayoutFieldname', () => {
+    it('can get the blocks layout field name from formdata', () => {
+      expect(
+        getBlocksLayoutFieldname({ title: 'Example', blocks_layout: [] }),
+      ).toBe('blocks_layout');
+    });
+
+    it('returns null if no layout field name from formdata is present', () => {
+      expect(getBlocksLayoutFieldname({ title: 'Example' })).toBe(null);
+    });
+
+    it('can get the blocks layout field name from formdata of a nested schema', () => {
+      expect(
+        getBlocksLayoutFieldname({
+          title: 'Example',
+          'guillotina_cms.interfaces.blocks.IBlocks.blocks_layout': [],
+        }),
+      ).toBe('guillotina_cms.interfaces.blocks.IBlocks.blocks_layout');
+    });
+  });
+
+  describe('hasBlocksData', () => {
+    it('checks blocks data when there is none', () => {
+      expect(hasBlocksData({ title: 'Example' })).toBe(false);
+    });
+
+    it('checks blocks data in the root', () => {
+      expect(hasBlocksData({ title: 'Example', blocks: [] })).toBe(true);
+    });
+
+    it('checks blocks data in a nested schema', () => {
+      expect(
+        hasBlocksData({
+          title: 'Example',
+          'guillotina_cms.interfaces.blocks.IBlocks.blocks': [],
+        }),
+      ).toBe(true);
+    });
+
+    describe('blockHasValue', () => {
+      it('returns true when block checker is not defined', () => {
+        expect(blockHasValue({ '@type': 'not-defined' })).toBe(true);
+        // const consoleSpy = jest
+        //   .spyOn(console, 'error')
+        //   .mockImplementation(() => {});
+        // expect(consoleSpy).toHaveBeenCalled();
+      });
+
+      it('returns true for text blocks with valid text', () => {
+        const textBlock = {
+          '@type': 'text',
+          text: {
+            blocks: [
+              {
+                data: {},
+                depth: 0,
+                entityRanges: [],
+                inlineStyleRanges: [],
+                key: 'cnh5c',
+                text: 'The block text content',
+                type: 'unstyled',
+              },
+            ],
+          },
+        };
+        expect(blockHasValue(textBlock)).toBe(true);
+      });
+
+      it('returns false for text blocks with empty text', () => {
+        const textBlock = {
+          '@type': 'text',
+          text: {
+            blocks: [
+              {
+                data: {},
+                depth: 0,
+                entityRanges: [],
+                inlineStyleRanges: [],
+                key: 'cnh5c',
+                text: '',
+                type: 'unstyled',
+              },
+            ],
+          },
+        };
+        expect(blockHasValue(textBlock)).toBe(false);
+      });
+    });
+  });
+
+  describe('getBlocks', () => {
+    it('returns empty when there is no block content and no items in layout', () => {
+      expect(getBlocks({ blocks: {}, blocks_layout: {} })).toStrictEqual([]);
+    });
+
+    it('returns empty when there is no block content', () => {
+      expect(
+        getBlocks({ blocks: {}, blocks_layout: { items: [] } }),
+      ).toStrictEqual([]);
+    });
+
+    it('returns ordered pairs', () => {
+      expect(
+        getBlocks({
+          blocks: { a: { value: 1 }, b: { value: 2 } },
+          blocks_layout: { items: ['a', 'b'] },
+        }),
+      ).toStrictEqual([
+        ['a', { value: 1 }],
+        ['b', { value: 2 }],
+      ]);
+
+      expect(
+        getBlocks({
+          blocks: { a: { value: 1 }, b: { value: 2 } },
+          blocks_layout: { items: ['b', 'a'] },
+        }),
+      ).toStrictEqual([
+        ['b', { value: 2 }],
+        ['a', { value: 1 }],
+      ]);
+    });
+  });
+
+  describe('addBlock', () => {
+    it('add new block within formdata', () => {
+      const [newId, form] = addBlock(
+        {
+          blocks: { a: { value: 1 }, b: { value: 2 } },
+          blocks_layout: { items: ['a', 'b'] },
+        },
+        'text',
+        1,
+      );
+      expect(form.blocks_layout.items).toStrictEqual(['a', newId, 'b']);
+    });
+
+    it('initializes data for new block with initialValue', () => {
+      const [newId, form] = addBlock(
+        {
+          blocks: { a: { value: 1 }, b: { value: 2 } },
+          blocks_layout: { items: ['a', 'b'] },
+        },
+        'dummyText',
+        1,
+      );
+      expect(form.blocks[newId]).toStrictEqual({
+        '@type': 'dummyText',
+        marker: true,
+      });
+    });
+
+    it('initializes data for new block with initialValue in insertBlock', () => {
+      const [newId, form] = insertBlock(
+        {
+          blocks: { a: { value: 1 }, b: { value: 2 } },
+          blocks_layout: { items: ['a', 'b'] },
+        },
+        'b',
+        { '@type': 'dummyText' },
+      );
+      expect(form.blocks[newId]).toStrictEqual({
+        '@type': 'dummyText',
+        marker: true,
+      });
+    });
+
+    it('initializes data for new block based on schema defaults', () => {
+      const [newId, form] = addBlock(
+        {
+          blocks: { a: { value: 1 }, b: { value: 2 } },
+          blocks_layout: { items: ['a', 'b'] },
+        },
+        'text',
+        1,
+      );
+      expect(form.blocks[newId]).toStrictEqual({
+        '@type': 'text',
+        booleanField: false,
+        description: 'Default description',
+        title: 'Default title',
+      });
+    });
+
+    it('initializes data for new block based on schema defaults and initialValue', () => {
+      config.blocks.blocksConfig.text.initialValue = ({ value }) => ({
+        ...value,
+        marker: true,
+      });
+      const [newId, form] = addBlock(
+        {
+          blocks: { a: { value: 1 }, b: { value: 2 } },
+          blocks_layout: { items: ['a', 'b'] },
+        },
+        'text',
+        1,
+      );
+
+      delete config.blocks.blocksConfig.text.initialValue;
+
+      expect(form.blocks[newId]).toStrictEqual({
+        '@type': 'text',
+        booleanField: false,
+        description: 'Default description',
+        title: 'Default title',
+        marker: true,
+      });
+    });
+  });
+
+  describe('moveBlock', () => {
+    it('Move block within formdata', () => {
+      const form = moveBlock(
+        {
+          blocks: { a: { value: 1 }, b: { value: 2 } },
+          blocks_layout: { items: ['a', 'b'] },
+        },
+        0,
+        1,
+      );
+      expect(form.blocks_layout.items).toStrictEqual(['b', 'a']);
+    });
+  });
+
+  describe('changeBlock', () => {
+    it('change block within formdata', () => {
+      expect(
+        changeBlock(
+          {
+            blocks: { a: { value: 1 }, b: { value: 2 } },
+            blocks_layout: { items: ['a', 'b'] },
+          },
+          'a',
+          { value: 2 },
+        )['blocks']['a'],
+      ).toStrictEqual({ value: 2 });
+    });
+  });
+
+  describe('mutateBlock', () => {
+    it('mutate block within formdata and add new one after', () => {
+      const form = mutateBlock(
+        {
+          blocks: { a: { value: 1 }, b: { value: 2 } },
+          blocks_layout: { items: ['a', 'b'] },
+        },
+        'a',
+        { value: 3 },
+      );
+      const newId = form.blocks_layout.items[1];
+      expect(form.blocks.a).toStrictEqual({ value: 3 });
+      expect(form.blocks[newId]).toStrictEqual({ '@type': 'text' });
+      expect(form.blocks_layout.items).toStrictEqual(['a', newId, 'b']);
+    });
+  });
+
+  describe('insertBlock', () => {
+    it('insert new block within formdata before given block id', () => {
+      const [newId, form] = insertBlock(
+        {
+          blocks: { a: { value: 1 }, b: { value: 2 } },
+          blocks_layout: { items: ['a', 'b'] },
+        },
+        'b',
+        { value: 3 },
+      );
+      expect(form.blocks_layout.items).toStrictEqual(['a', newId, 'b']);
+    });
+  });
+
+  describe('deleteBlock', () => {
+    it('delete block by id', () => {
+      const form = deleteBlock(
+        {
+          blocks: { a: { value: 1 }, b: { value: 2 } },
+          blocks_layout: { items: ['a', 'b'] },
+        },
+        'b',
+      );
+      expect(form.blocks_layout.items).toStrictEqual(['a']);
+    });
+  });
+
+  describe('emptyBlocksForm', () => {
+    it('generates new empty blocks form with one block', () => {
+      const form = emptyBlocksForm();
+      const uid = form['blocks_layout']['items'][0];
+      expect(form['blocks'][uid]).toStrictEqual({ '@type': 'text' });
+    });
+  });
+
+  describe('previousBlockId', () => {
+    it('get previous block id', () => {
+      expect(
+        previousBlockId(
+          {
+            blocks_layout: { items: ['a', 'b'] },
+          },
+          'b',
+        ),
+      ).toBe('a');
+    });
+  });
+
+  describe('nextBlockId', () => {
+    it('get next block id', () => {
+      expect(
+        nextBlockId(
+          {
+            blocks_layout: { items: ['a', 'b'] },
+          },
+          'a',
+        ),
+      ).toBe('b');
+    });
+  });
+
+  describe('visitBlocks', () => {
+    it('visit blocks', () => {
+      const d = {
+        data: {
+          blocks: {
+            1: {
+              blocks: {
+                2: {},
+                3: {
+                  data: {
+                    blocks: {
+                      11: {},
+                      12: {},
+                      13: {},
+                    },
+                    blocks_layout: {
+                      items: ['11', '12', '13'],
+                    },
+                  },
+                },
+                7: {
+                  blocks: {
+                    8: {},
+                    9: {},
+                    10: {},
+                  },
+                  blocks_layout: {
+                    items: ['8', '9', '10'],
+                  },
+                },
+              },
+              blocks_layout: {
+                items: ['2', '3', '7'],
+              },
+            },
+            4: {
+              blocks: {
+                5: {},
+                6: {},
+              },
+              blocks_layout: {
+                items: ['5', '6'],
+              },
+            },
+          },
+          blocks_layout: {
+            items: ['1', '4'],
+          },
+        },
+      };
+
+      const a = [];
+      visitBlocks(d.data, (x) => {
+        a.push(x);
+      });
+
+      expect(a.length).toBe(13);
+    });
+  });
+
+  describe('applySchemaDefaults', () => {
+    it('Sets data according to schema default values', () => {
+      const data = {
+        '@type': 'text',
+        description: 'already filled',
+      };
+      const schema = config.blocks.blocksConfig.text.blockSchema({ data });
+      expect(applySchemaDefaults({ schema, data })).toEqual({
+        '@type': 'text',
+        booleanField: false,
+        title: 'Default title',
+        description: 'already filled',
+      });
+    });
+    it('Sets data according to schema default values, top level and styling wrapper object field', () => {
+      const data = {
+        '@type': 'slider',
+      };
+      const schema = config.blocks.blocksConfig.slider.blockSchema({ data });
+
+      // if you don't pass down intl, the ObjectWidget defaults are not applied
+      expect(applySchemaDefaults({ schema, data })).toEqual({
+        '@type': 'slider',
+        anotherWithDefault: 2,
+        slides: [
+          {
+            '@id': 'asdasdasd-qweqwe-zxczxc',
+            extraDefault:
+              'Extra default (Manual in parent slider widget default)',
+          },
+        ],
+        firstWithDefault: 'Some default value',
+        yetAnotherWithDefault: ['one', 'two'],
+      });
+
+      expect(applySchemaDefaults({ schema, data, intl: {} })).toEqual({
+        '@type': 'slider',
+        anotherWithDefault: 2,
+        slides: [
+          {
+            '@id': 'asdasdasd-qweqwe-zxczxc',
+            extraDefault:
+              'Extra default (Manual in parent slider widget default)',
+          },
+        ],
+        firstWithDefault: 'Some default value',
+        style: {
+          color: 'red',
+          theme: 'primary',
+        },
+        yetAnotherWithDefault: ['one', 'two'],
+      });
+    });
+
+    it('Sets data according to schema default values, keeps existing data', () => {
+      const schema = {
+        properties: {
+          style: {
+            widget: 'object',
+            schema: {
+              title: 'Style',
+              fieldsets: [
+                {
+                  id: 'default',
+                  fields: ['color', 'theme'],
+                  title: 'Default',
+                },
+              ],
+              properties: {
+                color: {
+                  title: 'Color',
+                  default: 'red',
+                },
+                theme: {
+                  title: 'Theme',
+                  default: 'primary',
+                },
+              },
+              required: [],
+            },
+          },
+        },
+      };
+
+      expect(
+        applySchemaDefaults({
+          schema,
+          data: {
+            '@type': 'slider',
+            style: {
+              theme: 'secondary',
+            },
+          },
+          intl: {},
+        }),
+      ).toEqual({
+        '@type': 'slider',
+        style: {
+          color: 'red',
+          theme: 'secondary',
+        },
+      });
+    });
+
+    it('Sets data according to schema default values, keeps existing data', () => {
+      const schema = {
+        properties: {
+          style: {
+            widget: 'object',
+            schema: {
+              title: 'Style',
+              fieldsets: [
+                {
+                  id: 'default',
+                  fields: ['color', 'theme'],
+                  title: 'Default',
+                },
+              ],
+              properties: {
+                color: {
+                  title: 'Color',
+                  default: 'red',
+                },
+                theme: {
+                  title: 'Theme',
+                  default: 'primary',
+                },
+              },
+              required: [],
+            },
+          },
+        },
+      };
+
+      expect(
+        applySchemaDefaults({
+          schema,
+          data: {
+            '@type': 'slider',
+            style: {
+              theme: 'secondary',
+            },
+          },
+          intl: {},
+        }),
+      ).toEqual({
+        '@type': 'slider',
+        style: {
+          color: 'red',
+          theme: 'secondary',
+        },
+      });
+    });
+  });
+
+  describe('applyBlockDefaults', () => {
+    it('Sets data according to schema default values', () => {
+      const data = {
+        '@type': 'text',
+        description: 'already filled',
+      };
+      expect(applyBlockDefaults({ data })).toEqual({
+        '@type': 'text',
+        booleanField: false,
+        title: 'Default title',
+        description: 'already filled',
+      });
+    });
+
+    it('Does not do anything if there is no schema for block', () => {
+      const data = {
+        '@type': 'missing',
+        description: 'already filled',
+      };
+      expect(applyBlockDefaults({ data })).toEqual({
+        '@type': 'missing',
+        description: 'already filled',
+      });
+    });
+
+    it('Supports block schema enhancers', () => {
+      const data = {
+        '@type': 'enhancedBlock',
+        description: 'already filled',
+        // variation: 'firstVariation',
+      };
+      expect(applyBlockDefaults({ data })).toEqual({
+        '@type': 'enhancedBlock',
+        title: 'Default title',
+        description: 'already filled',
+        extra: 'Extra value',
+      });
+    });
+
+    it('Supports block schema enhancers coming from variations', () => {
+      const data = {
+        '@type': 'enhancedBlock',
+        description: 'already filled',
+        variation: 'firstVariation',
+      };
+      expect(applyBlockDefaults({ data })).toEqual({
+        '@type': 'enhancedBlock',
+        title: 'Default title',
+        description: 'already filled',
+        extra: 'Extra value',
+        extraVariationField: 'Extra variation field',
+        variation: 'firstVariation',
+      });
+    });
+
+    it('Block schema enhancers override variations', () => {
+      const data = {
+        '@type': 'enhancedBlockCase2',
+        description: 'already filled',
+        variation: 'firstVariation',
+      };
+      expect(applyBlockDefaults({ data })).toEqual({
+        '@type': 'enhancedBlockCase2',
+        title: 'Default title',
+        description: 'already filled',
+        extra: 'Extra value from block schema enhancer',
+        variation: 'firstVariation',
+      });
+    });
+
+    it('Tolerates a missing (invalid) block', () => {
+      const data = {};
+      expect(applyBlockDefaults({ data })).toEqual({});
+    });
+  });
+
+  describe('buildStyleClassNamesFromData', () => {
+    it('Sets styles classname array according to style values', () => {
+      const styles = {
+        color: 'red',
+        backgroundColor: '#AABBCC',
+      };
+      expect(buildStyleClassNamesFromData(styles)).toEqual([
+        'has--color--red',
+        'has--backgroundColor--AABBCC',
+      ]);
+    });
+
+    it('Sets styles classname array according to style values with nested', () => {
+      const styles = {
+        color: 'red',
+        backgroundColor: '#AABBCC',
+        nested: {
+          foo: 'white',
+          bar: 'black',
+        },
+      };
+      expect(buildStyleClassNamesFromData(styles)).toEqual([
+        'has--color--red',
+        'has--backgroundColor--AABBCC',
+        'has--nested--foo--white',
+        'has--nested--bar--black',
+      ]);
+    });
+
+    it('Sets styles classname array according to style values with nested and colors', () => {
+      const styles = {
+        color: 'red',
+        backgroundColor: '#AABBCC',
+        nested: {
+          foo: '#fff',
+          bar: '#000',
+        },
+      };
+      expect(buildStyleClassNamesFromData(styles)).toEqual([
+        'has--color--red',
+        'has--backgroundColor--AABBCC',
+        'has--nested--foo--fff',
+        'has--nested--bar--000',
+      ]);
+    });
+
+    it('Supports multiple nested level', () => {
+      const styles = {
+        color: 'red',
+        backgroundColor: '#AABBCC',
+        nested: {
+          l1: 'white',
+          level2: {
+            foo: '#fff',
+            bar: '#000',
+          },
+        },
+      };
+      expect(buildStyleClassNamesFromData(styles)).toEqual([
+        'has--color--red',
+        'has--backgroundColor--AABBCC',
+        'has--nested--l1--white',
+        'has--nested--level2--foo--fff',
+        'has--nested--level2--bar--000',
+      ]);
+    });
+
+    it('Sets styles classname array according to style values with int values', () => {
+      const styles = {
+        color: 'red',
+        borderRadius: 8,
+      };
+      expect(buildStyleClassNamesFromData(styles)).toEqual([
+        'has--color--red',
+        'has--borderRadius--8',
+      ]);
+    });
+
+    it('Understands noprefix converter for style values', () => {
+      const styles = {
+        color: 'red',
+        'theme:noprefix': 'primary',
+      };
+      expect(buildStyleClassNamesFromData(styles)).toEqual([
+        'has--color--red',
+        'primary',
+      ]);
+    });
+
+    it('Understands bool converter for trueish value', () => {
+      const styles = {
+        color: 'red',
+        'inverted:bool': true,
+      };
+      expect(buildStyleClassNamesFromData(styles)).toEqual([
+        'has--color--red',
+        'inverted',
+      ]);
+    });
+
+    it('Understands bool converter for false value', () => {
+      const styles = {
+        color: 'red',
+        'inverted:bool': false,
+      };
+      expect(buildStyleClassNamesFromData(styles)).toEqual(['has--color--red']);
+    });
+
+    it('Ugly edge cases', () => {
+      const styles = {
+        color: undefined,
+        nested: {
+          l1: {},
+        },
+      };
+      expect(buildStyleClassNamesFromData(styles)).toEqual([]);
+    });
+
+    it('It does not output any className for style converter values', () => {
+      const styles = {
+        color: 'red',
+        '--background-color': '#FFF',
+      };
+      expect(buildStyleClassNamesFromData(styles)).toEqual(['has--color--red']);
+    });
+
+    it.skip('It does not output any className for unknown converter values', () => {
+      const styles = {
+        color: 'red',
+        'backgroundColor:style': '#FFF',
+      };
+      expect(buildStyleClassNamesFromData(styles)).toEqual(['has--color--red']);
+    });
+  });
+
+  describe('buildStyleObjectFromData', () => {
+    it('Understands style converter for style values, no styles found', () => {
+      const styles = {
+        color: 'red',
+        backgroundColor: '#FFF',
+      };
+      expect(buildStyleObjectFromData(styles)).toEqual({});
+    });
+
+    it('Understands style converter for style values', () => {
+      const styles = {
+        color: 'red',
+        '--background-color': '#FFF',
+      };
+      expect(buildStyleObjectFromData(styles)).toEqual({
+        '--background-color': '#FFF',
+      });
+    });
+
+    it('Supports multiple nested levels', () => {
+      const styles = {
+        '--color': 'red',
+        backgroundColor: '#AABBCC',
+        nested: {
+          l1: 'white',
+          '--foo': 'white',
+          level2: {
+            '--foo': '#fff',
+            bar: '#000',
+          },
+        },
+      };
+      expect(buildStyleObjectFromData(styles)).toEqual({
+        '--color': 'red',
+        '--nested--foo': 'white',
+        '--nested--level2--foo': '#fff',
+      });
+    });
+
+    it('Supports multiple nested levels and optional inclusion of the name of the level', () => {
+      const styles = {
+        '--color': 'red',
+        backgroundColor: '#AABBCC',
+        'nested:noprefix': {
+          l1: 'white',
+          '--foo': 'white',
+          level2: {
+            '--foo': '#fff',
+            bar: '#000',
+          },
+        },
+      };
+      expect(buildStyleObjectFromData(styles)).toEqual({
+        '--color': 'red',
+        '--foo': 'white',
+        '--level2--foo': '#fff',
+      });
+    });
+  });
+
+  describe('getPreviousNextBlock', () => {
+    it('basic functionality', () => {
+      const content = {
+        blocks: {
+          1: {
+            '@type': 'slate',
+            styles: {
+              backgroundColor: 'grey',
+            },
+          },
+          2: {
+            '@type': 'slate',
+          },
+          3: {
+            '@type': 'slate',
+            styles: {
+              backgroundColor: 'grey',
+            },
+          },
+        },
+        blocks_layout: {
+          items: [1, 2, 3],
+        },
+      };
+      const block = 2;
+      const [previousBlock, nextBlock] = getPreviousNextBlock({
+        content,
+        block,
+      });
+      expect(previousBlock).toEqual({
+        '@type': 'slate',
+        styles: {
+          backgroundColor: 'grey',
+        },
+      });
+      expect(nextBlock).toEqual({
+        '@type': 'slate',
+        styles: {
+          backgroundColor: 'grey',
+        },
+      });
+    });
+  });
+
+  describe('buildStyleClassNamesExtenders', () => {
+    beforeAll(() => {
+      // Example styleClassNameExtenders
+      config.settings.styleClassNameExtenders = [
+        ({ block, content, data, classNames }) => {
+          let styles = [];
+          const [previousBlock, nextBlock] = getPreviousNextBlock({
+            content,
+            block,
+          });
+
+          if (nextBlock?.['@type']) {
+            styles.push(`next--is--${nextBlock['@type']}`);
+          }
+
+          if (data?.['@type'] === previousBlock?.['@type']) {
+            styles.push('previous--is--same--block-type');
+          }
+
+          if (data?.['@type'] === nextBlock?.['@type']) {
+            styles.push('next--is--same--block-type');
+          }
+
+          if (data?.['@type'] !== previousBlock?.['@type']) {
+            styles.push('is--first--of--block-type');
+          }
+
+          if (data?.['@type'] !== nextBlock?.['@type']) {
+            styles.push('is--last--of--block-type');
+          }
+
+          const previousColor =
+            previousBlock?.styles?.backgroundColor ?? 'transparent';
+          const currentColor = data?.styles?.backgroundColor ?? 'transparent';
+          const nextColor = nextBlock?.styles?.backgroundColor ?? 'transparent';
+
+          if (currentColor === previousColor) {
+            styles.push('previous--has--same--backgroundColor');
+          } else if (currentColor !== previousColor) {
+            styles.push('previous--has--different--backgroundColor');
+          }
+
+          if (currentColor === nextColor) {
+            styles.push('next--has--same--backgroundColor');
+          } else if (currentColor !== nextColor) {
+            styles.push('next--has--different--backgroundColor');
+          }
+
+          return [...classNames, ...styles];
+        },
+      ];
+    });
+
+    it('slate grey + slate + slate grey ', () => {
+      const content = {
+        blocks: {
+          1: {
+            '@type': 'slate',
+            styles: {
+              backgroundColor: 'grey',
+            },
+          },
+          2: {
+            '@type': 'slate',
+          },
+          3: {
+            '@type': 'slate',
+            styles: {
+              backgroundColor: 'grey',
+            },
+          },
+        },
+        blocks_layout: {
+          items: [1, 2, 3],
+        },
+      };
+      const block = 2;
+      const data = content['blocks'][2];
+      const classNames = [];
+      expect(
+        buildStyleClassNamesExtenders({ block, content, data, classNames }),
+      ).toStrictEqual([
+        'next--is--slate',
+        'previous--is--same--block-type',
+        'next--is--same--block-type',
+        'previous--has--different--backgroundColor',
+        'next--has--different--backgroundColor',
+      ]);
+    });
+
+    it('slate grey + slate grey + slate grey ', () => {
+      const content = {
+        blocks: {
+          1: {
+            '@type': 'slate',
+            styles: {
+              backgroundColor: 'grey',
+            },
+          },
+          2: {
+            '@type': 'slate',
+            styles: {
+              backgroundColor: 'grey',
+            },
+          },
+          3: {
+            '@type': 'slate',
+            styles: {
+              backgroundColor: 'grey',
+            },
+          },
+        },
+        blocks_layout: {
+          items: [1, 2, 3],
+        },
+      };
+      const block = 2;
+      const data = content['blocks'][2];
+      const classNames = [];
+
+      expect(
+        buildStyleClassNamesExtenders({ block, content, data, classNames }),
+      ).toStrictEqual([
+        'next--is--slate',
+        'previous--is--same--block-type',
+        'next--is--same--block-type',
+        'previous--has--same--backgroundColor',
+        'next--has--same--backgroundColor',
+      ]);
+    });
+
+    it('grid + slate grey + slate grey ', () => {
+      const content = {
+        blocks: {
+          1: {
+            '@type': '__grid',
+          },
+          2: {
+            '@type': 'slate',
+            styles: {
+              backgroundColor: 'grey',
+            },
+          },
+          3: {
+            '@type': 'slate',
+            styles: {
+              backgroundColor: 'grey',
+            },
+          },
+        },
+        blocks_layout: {
+          items: [1, 2, 3],
+        },
+      };
+      const block = 2;
+      const data = content['blocks'][2];
+      const classNames = [];
+
+      expect(
+        buildStyleClassNamesExtenders({ block, content, data, classNames }),
+      ).toStrictEqual([
+        'next--is--slate',
+        'next--is--same--block-type',
+        'is--first--of--block-type',
+        'previous--has--different--backgroundColor',
+        'next--has--same--backgroundColor',
+      ]);
+    });
+
+    it('grid + grid + slate grey ', () => {
+      const content = {
+        blocks: {
+          1: {
+            '@type': '__grid',
+          },
+          2: {
+            '@type': '__grid',
+          },
+          3: {
+            '@type': 'slate',
+            styles: {
+              backgroundColor: 'grey',
+            },
+          },
+        },
+        blocks_layout: {
+          items: [1, 2, 3],
+        },
+      };
+      const block = 2;
+      const data = content['blocks'][2];
+      const classNames = [];
+
+      expect(
+        buildStyleClassNamesExtenders({ block, content, data, classNames }),
+      ).toStrictEqual([
+        'next--is--slate',
+        'previous--is--same--block-type',
+        'is--last--of--block-type',
+        'previous--has--same--backgroundColor',
+        'next--has--different--backgroundColor',
+      ]);
+    });
+
+    it('grid + grid + slate grey - with existing classNames list', () => {
+      const content = {
+        blocks: {
+          1: {
+            '@type': '__grid',
+          },
+          2: {
+            '@type': '__grid',
+          },
+          3: {
+            '@type': 'slate',
+            styles: {
+              backgroundColor: 'grey',
+            },
+          },
+        },
+        blocks_layout: {
+          items: [1, 2, 3],
+        },
+      };
+      const block = 2;
+      const data = content['blocks'][2];
+      const classNames = ['has--align--center'];
+
+      expect(
+        buildStyleClassNamesExtenders({ block, content, data, classNames }),
+      ).toStrictEqual([
+        'has--align--center',
+        'next--is--slate',
+        'previous--is--same--block-type',
+        'is--last--of--block-type',
+        'previous--has--same--backgroundColor',
+        'next--has--different--backgroundColor',
+      ]);
+    });
+  });
+
+  describe('blocksFormGenerator', () => {
+    it('Returns an empty blocks/blocks_layout pair', () => {
+      expect(blocksFormGenerator(0, '')).toEqual({
+        blocks: {},
+        blocks_layout: { items: [] },
+      });
+    });
+    it('Returns a filled blocks/blocks_layout pair with type block', () => {
+      const result = blocksFormGenerator(2, 'teaser');
+      expect(Object.keys(result.blocks).length).toEqual(2);
+      expect(result.blocks_layout.items.length).toEqual(2);
+      expect(result.blocks[result.blocks_layout.items[0]]['@type']).toEqual(
+        'teaser',
+      );
+      expect(result.blocks[result.blocks_layout.items[1]]['@type']).toEqual(
+        'teaser',
+      );
+    });
+  });
+});
+
+describe('findBlocks', () => {
+  it('Get all blocks in the first level (main block container)', () => {
+    const blocks = {
+      1: { title: 'title', '@type': 'title' },
+      2: { title: 'an image', '@type': 'image' },
+      3: { title: 'description', '@type': 'description' },
+      4: { title: 'a text', '@type': 'slate' },
+    };
+    const types = ['description'];
+    expect(findBlocks(blocks, types)).toStrictEqual(['3']);
+  });
+
+  it('Get all blocks in the first level (main block container) given a list', () => {
+    const blocks = {
+      1: { title: 'title', '@type': 'title' },
+      2: { title: 'an image', '@type': 'image' },
+      3: { title: 'description', '@type': 'description' },
+      4: { title: 'a text', '@type': 'slate' },
+    };
+    const types = ['description', 'slate'];
+    expect(findBlocks(blocks, types)).toStrictEqual(['3', '4']);
+  });
+
+  it('Get all blocks in the first level (main block container) given a list', () => {
+    const blocks = {
+      1: { title: 'title', '@type': 'title' },
+      2: { title: 'an image', '@type': 'image' },
+      3: { title: 'description', '@type': 'description' },
+      4: { title: 'a text', '@type': 'slate' },
+      5: { title: 'a text', '@type': 'slate' },
+    };
+    const types = ['description', 'slate'];
+    expect(findBlocks(blocks, types)).toStrictEqual(['3', '4', '5']);
+  });
+
+  it('Get all blocks, including containers, given a list', () => {
+    const blocks = {
+      1: { title: 'title', '@type': 'title' },
+      2: { title: 'an image', '@type': 'image' },
+      3: { title: 'description', '@type': 'description' },
+      4: { title: 'a text', '@type': 'slate' },
+      5: {
+        title: 'a container',
+        '@type': 'gridBlock',
+        blocks: {
+          6: { title: 'title', '@type': 'title' },
+          7: { title: 'an image', '@type': 'image' },
+          8: { title: 'description', '@type': 'description' },
+          9: { title: 'a text', '@type': 'slate' },
+        },
+      },
+    };
+    const types = ['description', 'slate'];
+    expect(findBlocks(blocks, types)).toStrictEqual(['3', '4', '8', '9']);
+  });
+});
+
+describe('findContainer', () => {
+  const blocksData = { blocks: {}, blocks_layout: { items: [] } };
+
+  it('Get a container in the first level (main block container)', () => {
+    const formData = {
+      title: 'Example',
+      blocks: {
+        1: { title: 'title', '@type': 'title' },
+        2: { title: 'an image', '@type': 'image' },
+        3: { title: 'description', '@type': 'description' },
+        4: { title: 'a container', '@type': 'container', ...blocksData },
+      },
+      blocks_layout: {
+        items: ['1', '2', '3', '4'],
+      },
+    };
+
+    expect(findContainer(formData, { containerId: '4' })).toStrictEqual({
+      title: 'a container',
+      '@type': 'container',
+      ...blocksData,
+    });
+  });
+
+  it('Get a container in the second level', () => {
+    const formData = {
+      title: 'Example',
+      blocks: {
+        1: { title: 'title', '@type': 'title' },
+        2: { title: 'an image', '@type': 'image' },
+        3: { title: 'description', '@type': 'description' },
+        4: {
+          title: 'a container',
+          '@type': 'container',
+          blocks: {
+            1: { title: 'title', '@type': 'title' },
+            2: { title: 'an image', '@type': 'image' },
+            'second-level': {
+              title: 'a container',
+              '@type': 'container',
+              blocks: {},
+              blocks_layout: { items: [] },
+            },
+          },
+          blocks_layout: { items: [1, 2, 'second-level'] },
+        },
+      },
+      blocks_layout: {
+        items: ['1', '2', '3', '4'],
+      },
+    };
+
+    expect(
+      findContainer(formData, { containerId: 'second-level' }),
+    ).toStrictEqual({
+      title: 'a container',
+      '@type': 'container',
+      blocks: {},
+      blocks_layout: { items: [] },
+    });
+  });
+
+  it('Get a container in the third level', () => {
+    const formData = {
+      title: 'Example',
+      blocks: {
+        1: { title: 'title', '@type': 'title' },
+        2: { title: 'an image', '@type': 'image' },
+        3: { title: 'description', '@type': 'description' },
+        4: {
+          title: 'a container',
+          '@type': 'container',
+          blocks: {
+            1: { title: 'title', '@type': 'title' },
+            2: { title: 'an image', '@type': 'image' },
+            'second-level': {
+              title: 'a second level container',
+              '@type': 'container',
+              blocks: {
+                'third-level': {
+                  title: 'a third level container',
+                  '@type': 'container',
+                  blocks: {},
+                  blocks_layout: { items: [] },
+                },
+              },
+              blocks_layout: { items: ['third-level'] },
+            },
+          },
+          blocks_layout: { items: [1, 2, 'second-level'] },
+        },
+      },
+      blocks_layout: {
+        items: ['1', '2', '3', '4'],
+      },
+    };
+
+    expect(
+      findContainer(formData, { containerId: 'third-level' }),
+    ).toStrictEqual({
+      title: 'a third level container',
+      '@type': 'container',
+      blocks: {},
+      blocks_layout: { items: [] },
+    });
+  });
+
+  describe('findContainer then modify it', () => {
+    const blocksData = { blocks: {}, blocks_layout: { items: [] } };
+
+    it('Get and modifies a container in the first level (main block container)', () => {
+      const formData = {
+        title: 'Example',
+        blocks: {
+          1: { title: 'title', '@type': 'title' },
+          2: { title: 'an image', '@type': 'image' },
+          3: { title: 'description', '@type': 'description' },
+          4: { title: 'a container', '@type': 'container', ...blocksData },
+        },
+        blocks_layout: {
+          items: ['1', '2', '3', '4'],
+        },
+      };
+
+      const container = findContainer(formData, { containerId: '4' });
+      container.title = 'Modified the title of the container';
+      expect(findContainer(formData, { containerId: '4' })).toStrictEqual({
+        title: 'Modified the title of the container',
+        '@type': 'container',
+        ...blocksData,
+      });
+    });
+  });
+
+  describe('isBlockContainer', () => {
+    const blocksData = { blocks: {}, blocks_layout: { items: [] } };
+
+    it('basic test', () => {
+      const formData = {
+        title: 'Example',
+        blocks: {
+          1: { title: 'title', '@type': 'title' },
+          2: { title: 'an image', '@type': 'image' },
+          3: { title: 'description', '@type': 'description' },
+          4: { title: 'a container', '@type': 'container', ...blocksData },
+        },
+        blocks_layout: {
+          items: ['1', '2', '3', '4'],
+        },
+      };
+
+      const container = isBlockContainer(formData);
+      expect(container).toBeTruthy();
+    });
+
+    it('in data key (EEA add-ons)', () => {
+      const formData = {
+        title: 'Example',
+        data: {
+          blocks: {
+            1: { title: 'title', '@type': 'title' },
+            2: { title: 'an image', '@type': 'image' },
+            3: { title: 'description', '@type': 'description' },
+            4: { title: 'a container', '@type': 'container', ...blocksData },
+          },
+          blocks_layout: {
+            items: ['1', '2', '3', '4'],
+          },
+        },
+      };
+
+      const container = isBlockContainer(formData);
+      expect(container).toBeTruthy();
+    });
+
+    it('not a container', () => {
+      const formData = {
+        title: 'Example',
+        styles: {
+          color: 'red',
+        },
+      };
+
+      const container = isBlockContainer(formData);
+      expect(container).toBeFalsy();
+    });
+  });
+});

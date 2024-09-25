@@ -2,13 +2,14 @@ name: Documentation
 on:
   push:
     branches:
-      - master
+      - main
     paths:
       - 'docs/**'
   # Build pull requests
   pull_request:
     paths:
       - 'docs/**'
+      - 'styles/**'
 
 jobs:
   docs:
@@ -16,21 +17,24 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ['3.10']
+        python-version: ['3.12']
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
           cache: 'pip'
+          cache-dependency-path: 'requirements-docs.txt'
 
       - name: Create Python virtual environment
         run: pip install virtualenv
 
       - name: pip install requirements
-        run: pip install -r requirements-docs.txt
+        run: |
+          pip install -r requirements-docs.txt
+          sudo snap install --edge vale
 
       - name: Check for broken links
         run: make docs-linkcheckbroken
@@ -38,12 +42,8 @@ jobs:
       - name: Build HTML documentation
         run: make docs-html
 
-      - uses: errata-ai/vale-action@reviewdog
-        with:
-          # debug: true
-          files: all
-        env:
-          # Required, set by GitHub actions automatically:
-          # https://docs.github.com/en/actions/security-guides/automatic-token-authentication#about-the-github_token-secret
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-                 
+      - name: Run vale
+        run: |
+          git clone https://github.com/errata-ai/Microsoft.git
+          cp -r ./Microsoft/Microsoft ./styles
+          vale --no-exit ./docs

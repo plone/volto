@@ -1,0 +1,27 @@
+.vscode/
+.history
+logs
+*.log
+npm-debug.log*
+.DS_Store
+*.swp
+yarn-error.log
+
+node_modules
+build
+dist
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+.changelog.draft
+
+# yarn 3
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
