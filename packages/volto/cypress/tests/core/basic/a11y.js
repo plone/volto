@@ -1,6 +1,7 @@
 describe('Accessibility Tests', () => {
   beforeEach(() => {
     cy.visit('/');
+    cy.autologin();
     cy.injectAxe(); // make sure axe is available on the page
   });
 
@@ -14,18 +15,15 @@ describe('Accessibility Tests', () => {
   });
 
   it('Image block has not a11y violations', () => {
-    cy.autologin();
-    cy.visit('/');
     cy.createContent({
       contentType: 'Document',
-      contentId: 'my-page',
-      contentTitle: 'My Page',
+      contentId: 'a11y-image-block',
+      contentTitle: 'a11y image block',
     });
-    cy.visit('/my-page');
-
+    cy.visit('/a11y-image-block');
     cy.wait(500);
-
-    cy.navigate('/my-page/edit');
+    // Add an image block
+    cy.navigate('/a11y-image-block/edit');
     cy.get('.block .slate-editor [contenteditable=true]').click();
     cy.get('.button .block-add-button').click({ force: true });
     cy.get('.blocks-chooser .mostUsed')
@@ -41,6 +39,35 @@ describe('Accessibility Tests', () => {
     cy.get('img').should('exist');
     cy.get('img').should('have.attr', 'src');
     cy.wait(1000);
+    cy.injectAxe();
+    cy.checkA11y();
+  });
+
+  it('Table has no a11y violations', () => {
+    cy.createContent({
+      contentType: 'Document',
+      contentId: 'a11y-table-block',
+      contentTitle: 'a11y table block',
+    });
+    cy.visit('/a11y-table-block/edit');
+    // Add a table block
+    cy.get('.block .slate-editor [contenteditable=true]').click();
+    cy.get('.button .block-add-button').click({ force: true });
+    cy.get('[aria-label="Unfold Common blocks"]').click();
+    cy.get('.blocks-chooser .common')
+      .findByText('Table')
+      .click({ force: true });
+    cy.get('tbody > :nth-child(1) > :nth-child(1)').click().type('headline 1');
+    cy.get('tbody > :nth-child(1) > :nth-child(2)').click().type('headline 2');
+    cy.get('#toolbar-save').click();
+    // Ensure the table exists and has correct structure
+    cy.get('table').should('exist'); // Wait for the table to render
+    cy.get('thead').should('exist'); // Ensure the table has a header
+    // Wait for the headers to exist and contain correct content
+    cy.get('thead th').should('have.length', 2);
+    cy.get('thead th').first().should('exist');
+    cy.get('thead th').last().should('exist');
+    cy.wait(500);
     cy.injectAxe();
     cy.checkA11y();
   });
