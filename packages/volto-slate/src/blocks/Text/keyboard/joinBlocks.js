@@ -16,7 +16,7 @@ import {
   deleteBlock,
   getBlocksFieldname,
   getBlocksLayoutFieldname,
-} from '@plone/volto/helpers';
+} from '@plone/volto/helpers/Blocks/Blocks';
 /**
  * Joins the current block (which has an active Slate Editor)
  * with the previous block, to make a single block.

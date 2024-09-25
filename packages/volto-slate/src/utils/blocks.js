@@ -4,7 +4,7 @@ import config from '@plone/volto/registry';
 import {
   getBlocksFieldname,
   getBlocksLayoutFieldname,
-} from '@plone/volto/helpers';
+} from '@plone/volto/helpers/Blocks/Blocks';
 import _ from 'lodash-es';
 import { makeEditor } from './editor';
 

@@ -5,7 +5,7 @@ import {
 import config from '@plone/volto/registry';
 import { isEqual } from 'lodash-es';
 import Slugger from 'github-slugger';
-import { normalizeString } from '@plone/volto/helpers';
+import { normalizeString } from '@plone/volto/helpers/Utils/Utils';
 
 const TextBlockView = (props) => {
   const { id, data, styling = {} } = props;

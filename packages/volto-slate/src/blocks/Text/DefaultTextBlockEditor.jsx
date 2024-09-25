@@ -6,11 +6,8 @@ import { defineMessages, useIntl } from 'react-intl';
 import { useInView } from 'react-intersection-observer';
 import { Dimmer, Loader, Message, Segment } from 'semantic-ui-react';
 
-import {
-  flattenToAppURL,
-  getBaseUrl,
-  validateFileUploadSize,
-} from '@plone/volto/helpers';
+import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers/Url/Url';
+import { validateFileUploadSize } from '@plone/volto/helpers/FormValidation/FormValidation';
 import config from '@plone/volto/registry';
 import { SidebarPortal, BlockChooserButton } from '@plone/volto/components';
 import { BlockDataForm } from '@plone/volto/components/manage/Form';

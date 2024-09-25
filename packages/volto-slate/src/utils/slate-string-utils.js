@@ -280,6 +280,8 @@ const isBMPEmoji = (code) => {
   // is released. Fails gracefully if upkeep lags behind,
   // same way Slate previously behaved with all emojis.
   return (
+    // right arrow curving down (⤵)
+    // right arrow curving up (⤴)
     code === 0x2764 || // heart (❤)
     code === 0x2642 || // male (♂)
     code === 0x2640 || // female (♀)
@@ -299,8 +301,8 @@ const isBMPEmoji = (code) => {
     code === 0x2194 || // left-right arrow (↔)
     code === 0x21a9 || // right arrow curving left (↩)
     code === 0x21aa || // left arrow curving right (↪)
-    code === 0x2934 || // right arrow curving up (⤴)
-    code === 0x2935 // right arrow curving down (⤵)
+    code === 0x2934 ||
+    code === 0x2935
   );
 };
 
