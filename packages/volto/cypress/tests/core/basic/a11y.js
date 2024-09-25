@@ -1,7 +1,6 @@
 describe('Accessibility Tests', () => {
   beforeEach(() => {
     cy.visit('/');
-    cy.autologin();
     cy.injectAxe(); // make sure axe is available on the page
   });
 
@@ -19,6 +18,8 @@ describe('Accessibility Tests', () => {
   });
 
   it('Image block has not a11y violations', () => {
+    cy.autologin();
+
     cy.createContent({
       contentType: 'Document',
       contentId: 'a11y-image-block',
@@ -48,6 +49,8 @@ describe('Accessibility Tests', () => {
   });
 
   it('Table has no a11y violations', () => {
+    cy.autologin();
+
     cy.createContent({
       contentType: 'Document',
       contentId: 'a11y-table-block',
@@ -77,6 +80,8 @@ describe('Accessibility Tests', () => {
   });
 
   it('Maps has no a11y violations', () => {
+    cy.autologin();
+
     cy.createContent({
       contentType: 'Document',
       contentId: 'a11y-maps-block',
@@ -101,6 +106,8 @@ describe('Accessibility Tests', () => {
   });
 
   it('Text block has no a11y violations', () => {
+    cy.autologin();
+
     cy.createContent({
       contentType: 'Document',
       contentId: 'a11y-text-block',
