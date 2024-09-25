@@ -1,5 +1,83 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`DiffField renders a boolean field 1`] = `
+<div>
+  <div
+    class="ui grid"
+    data-testid="DiffField"
+  >
+    <div
+      class="row"
+    >
+      <div
+        class="twelve wide column"
+      >
+        Text
+      </div>
+    </div>
+    <div
+      class="row"
+    >
+      <div
+        class="top aligned sixteen wide column"
+      >
+        <span>
+          <span
+            class="deletion"
+          >
+            true
+          </span>
+          <span
+            class="addition"
+          >
+            false
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DiffField renders a boolean field with inverse values 1`] = `
+<div>
+  <div
+    class="ui grid"
+    data-testid="DiffField"
+  >
+    <div
+      class="row"
+    >
+      <div
+        class="twelve wide column"
+      >
+        Text
+      </div>
+    </div>
+    <div
+      class="row"
+    >
+      <div
+        class="top aligned sixteen wide column"
+      >
+        <span>
+          <span
+            class="deletion"
+          >
+            false
+          </span>
+          <span
+            class="addition"
+          >
+            true
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`DiffField renders a datetime field 1`] = `
 <div>
   <div
@@ -208,7 +286,7 @@ exports[`DiffField renders an array field 1`] = `
         class="top aligned sixteen wide column"
       >
         <span>
-          one
+          one, 
           <span
             class="deletion"
           >
@@ -248,7 +326,7 @@ exports[`DiffField renders an array of objects field 1`] = `
         class="top aligned sixteen wide column"
       >
         <span>
-          one
+          one, 
           <span
             class="deletion"
           >
