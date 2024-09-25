@@ -226,7 +226,6 @@ const DiffField = ({
         break;
       }
       case 'textarea':
-
       default:
         const Widget = config.widgets?.views?.widget?.[schema.widget];
 
