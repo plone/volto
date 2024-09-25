@@ -12,7 +12,7 @@ myst:
 You can restrict blocks from being added to a content type using the `restricted` key in the configuration object.
 This key can be a boolean or a function that returns a boolean.
 If the block is restricted, it won't show in the chooser.
-However, it can still be added either programatically or by directly using the REST API, so this restriction only applies to the user interface.
+However, it can still be added either programmatically or by directly using the REST API, so this restriction only applies to the user interface.
 The function has this signature:
 
 ```ts
@@ -22,12 +22,16 @@ The function has this signature:
     block: BlockConfigBase;
     navRoot: Content;
     contentType: string;
+    user: Object
   }) => boolean;
 }
 ```
 
-Where `properties` is the current object data and `block` is the block being evaluated in `BlockChooser`.
-`navRoot` is the nearest navigation root object and `contentType` is the current content type.
+`properties` is the current object data.
+`block` is the block being evaluated in `BlockChooser`.
+`navRoot` is the nearest navigation root object.
+`contentType` is the current content type.
+`user` is an object that represents the currently authenticated user.
 
 In the following configuration example, you can restrict a block so that it cannot be added unless the content type is `News Item` or the content item is in a specific path in the content tree (`/folder`):
 

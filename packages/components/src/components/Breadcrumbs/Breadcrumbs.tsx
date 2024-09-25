@@ -27,6 +27,7 @@ interface BreadcrumbsProps<T> extends RACBreadcrumbsProps<T> {
  * Breadcrumbs display a hierarchy of links to the current page or resource in an application.
  */
 export function Breadcrumbs({
+  className,
   items,
   root,
   includeRoot,
@@ -42,7 +43,7 @@ export function Breadcrumbs({
 
   return (
     <nav aria-label="breadcrumbs" role="navigation">
-      <RACBreadcrumbs items={itemsWithRoot || items}>
+      <RACBreadcrumbs className={className} items={itemsWithRoot || items}>
         {(item) => (
           <RACBreadcrumb id={item['@id']}>
             <Link href={item['@id']}>

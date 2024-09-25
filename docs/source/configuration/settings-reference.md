@@ -206,7 +206,13 @@ controlpanels
     The group can be one of the default groups 'General', 'Content', 'Security', 'Add-on Configuration', 'Users and Groups' or a custom group.
 
 filterControlPanelsSchema
-    A schema factory for a control panel. It is used internally, to tweak the schemas provided by the controlpanel endpoint, to make them fit for Volto.
+    A schema factory for a control panel.
+    It is used internally, to tweak the schemas provided by the `@controlpanels` endpoint, making them fit for Volto.
+    It uses the `unwantedControlPanelsFields` setting.
+
+unwantedControlPanelsFields
+    Control panels' fields that are not used in Volto.
+    It is used internally by the `filterControlPanelsSchema` function.
 
 errorHandlers
     A list of error handlers that will be called when there is an unhandled exception. Each error handler is a function that
@@ -522,11 +528,4 @@ criticalCssPath
     this file exists it is loaded and its content is embedded inline into the
     generated HTML. By default this path is `public/critical.css`. See the
     {doc}`../deploying/performance` section for more details.
-
-extractScripts
-    An object that allows you to configure the insertion of scripts on the page
-    in some particular cases.
-    For the moment it admits only one property: `errorPages` whose value is a Boolean.
-
-    If `extractScripts.errorPages` is `true`, the JS will be inserted into the error page.
 ```

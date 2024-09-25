@@ -1,6 +1,8 @@
 import React from 'react';
 import { Icon } from '@plone/volto/components';
 import {
+  applyBlockInitialValue,
+  getBlocksFieldname,
   blockHasValue,
   buildStyleClassNamesFromData,
   buildStyleObjectFromData,
@@ -35,6 +37,7 @@ const EditBlockWrapper = (props) => {
   const { intl, blockProps, draginfo, children } = props;
   const {
     allowedBlocks,
+    showRestricted,
     block,
     blocksConfig,
     selected,
@@ -110,11 +113,26 @@ const EditBlockWrapper = (props) => {
                 if (blockHasValue(data)) {
                   onSelectBlock(onInsertBlock(id, value));
                 } else {
-                  onChangeBlock(id, value);
+                  const blocksFieldname = getBlocksFieldname(properties);
+                  const newFormData = applyBlockInitialValue({
+                    id,
+                    value,
+                    blocksConfig,
+                    formData: {
+                      ...properties,
+                      [blocksFieldname]: {
+                        ...properties[blocksFieldname],
+                        [id]: value || null,
+                      },
+                    },
+                  });
+                  const newValue = newFormData[blocksFieldname][id];
+                  onChangeBlock(id, newValue);
                 }
               }}
               onMutateBlock={onMutateBlock}
               allowedBlocks={allowedBlocks}
+              showRestricted={showRestricted}
               blocksConfig={blocksConfig}
               size="24px"
               properties={properties}

@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "18.0.0-alpha.31",
+  "version": "18.0.0-alpha.43",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -108,7 +108,7 @@
     },
     "setupFiles": [
       "./test-setup-globals.js",
-      "./test-setup-config.js"
+      "./test-setup-config.jsx"
     ],
     "globalSetup": "./global-test-setup.js",
     "setupFilesAfterEnv": [
@@ -235,7 +235,7 @@
     "react-fast-compare": "2.0.4",
     "react-image-gallery": "1.2.7",
     "react-intersection-observer": "9.1.0",
-    "react-intl": "3.8.0",
+    "react-intl": "3.12.1",
     "react-intl-redux": "2.3.0",
     "react-medium-image-zoom": "3.0.15",
     "react-popper": "^2.3.0",
@@ -246,7 +246,6 @@
     "react-router-hash-link": "2.4.3",
     "react-select": "4.3.1",
     "react-select-async-paginate": "0.5.3",
-    "react-share": "2.3.1",
     "react-side-effect": "2.1.2",
     "react-simple-code-editor": "0.7.1",
     "react-sortable-hoc": "2.0.0",
@@ -287,7 +286,11 @@
     "@babel/plugin-syntax-export-namespace-from": "7.8.3",
     "@babel/runtime": "7.20.6",
     "@babel/types": "7.20.5",
+    "@fiverr/afterbuild-webpack-plugin": "^1.0.0",
     "@jest/globals": "^29.7.0",
+    "@dnd-kit/core": "6.0.8",
+    "@dnd-kit/sortable": "7.0.2",
+    "@dnd-kit/utilities": "3.2.2",
     "@loadable/babel-plugin": "5.13.2",
     "@loadable/webpack-plugin": "5.15.2",
     "@plone/types": "workspace:*",
@@ -306,6 +309,7 @@
     "@testing-library/jest-dom": "6.4.2",
     "@testing-library/react": "14.2.0",
     "@testing-library/react-hooks": "8.0.1",
+    "@types/history": "^4.7.11",
     "@types/jest": "^29.5.8",
     "@types/loadable__component": "^5.13.9",
     "@types/lodash": "^4.14.201",
@@ -327,7 +331,7 @@
     "bundlewatch": "0.3.3",
     "circular-dependency-plugin": "5.2.2",
     "css-loader": "5.2.7",
-    "cypress": "13.6.6",
+    "cypress": "13.13.2",
     "cypress-axe": "1.5.0",
     "cypress-file-upload": "5.0.8",
     "deep-freeze": "0.0.1",

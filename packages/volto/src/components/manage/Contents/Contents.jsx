@@ -127,7 +127,7 @@ const messages = defineMessages({
     defaultMessage: 'Item(s) has been updated.',
   },
   messageReorder: {
-    id: 'Item succesfully moved.',
+    id: 'Item successfully moved.',
     defaultMessage: 'Item successfully moved.',
   },
   messagePasted: {
@@ -1501,6 +1501,7 @@ class Contents extends Component {
               }
               onCancel={this.onDeleteCancel}
               onConfirm={this.onDeleteOk}
+              size="medium"
             />
             <ContentsUploadModal
               open={this.state.showUpload}

@@ -4,7 +4,7 @@ export declare const ButtonsWidget: import("@loadable/component").LoadableCompon
 export declare const ArrayWidget: import("@loadable/component").LoadableClassComponent<any>;
 export declare const CheckboxWidget: import("@loadable/component").LoadableComponent<import("react-intl").WithIntlProps<any>>;
 export declare const FileWidget: import("@loadable/component").LoadableComponent<import("react-intl").WithIntlProps<any>>;
-export declare const IdWidget: import("@loadable/component").LoadableClassComponent<any>;
+export declare const IdWidget: import("@loadable/component").LoadableComponent<any>;
 export declare const PasswordWidget: import("@loadable/component").LoadableComponent<import("react-intl").WithIntlProps<any>>;
 export declare const QueryWidget: import("@loadable/component").LoadableClassComponent<any>;
 export declare const QuerySortOnWidget: import("@loadable/component").LoadableClassComponent<any>;
@@ -12,7 +12,7 @@ export declare const QuerystringWidget: import("@loadable/component").LoadableCo
 export declare const SchemaWidget: import("@loadable/component").LoadableClassComponent<any>;
 export declare const SelectWidget: import("@loadable/component").LoadableClassComponent<any>;
 export declare const TextareaWidget: import("@loadable/component").LoadableComponent<import("react-intl").WithIntlProps<any>>;
-export declare const TextWidget: import("@loadable/component").LoadableComponent<import("react-intl").WithIntlProps<any>>;
+export declare const TextWidget: import("@loadable/component").LoadableComponent<any>;
 export declare const TokenWidget: import("@loadable/component").LoadableClassComponent<any>;
 export declare const WysiwygWidget: import("@loadable/component").LoadableClassComponent<any>;
 export declare const UrlWidget: import("@loadable/component").LoadableClassComponent<{
@@ -99,7 +99,7 @@ export declare const EmailWidget: import("@loadable/component").LoadableComponen
 export declare const NumberWidget: import("@loadable/component").LoadableComponent<import("react-intl").WithIntlProps<any>>;
 export declare const ImageSizeWidget: import("@loadable/component").LoadableComponent<import("react-intl").WithIntlProps<any>>;
 export declare const RegistryImageWidget: import("@loadable/component").LoadableComponent<import("react-intl").WithIntlProps<any>>;
-export declare const ReferenceWidget: import("@loadable/component").LoadableClassComponent<any>;
+export declare const ReferenceWidget: import("@loadable/component").LoadableComponent<any>;
 export declare const ObjectBrowserWidget: import("@loadable/component").LoadableComponent<Omit<import("react-intl").WithIntlProps<import("react-intl").WrappedComponentProps<string>>, "ref"> & import("react").RefAttributes<import("react").ComponentType<import("react-intl").WrappedComponentProps<string>>>>;
 export declare const ObjectWidget: import("@loadable/component").LoadableComponent<{
     [x: string]: any;

@@ -8,6 +8,16 @@
 
 <!-- towncrier release notes start -->
 
+## 3.6.2 (2024-06-06)
+
+### Bugfix
+
+- 'Fix `poToJson` script, making it support `volto.config.js` @sneridagh [#6073](https://github.com/plone/volto/issues/6073)
+
+### Documentation
+
+- Improve comments @sneridagh [#6072](https://github.com/plone/volto/issues/6072)
+
 ## 3.6.1 (2024-03-18)
 
 ### Bugfix

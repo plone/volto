@@ -34,11 +34,7 @@ describe('Folder Contents Tests', () => {
 
     cy.visit('/my-folder/my-document');
     cy.get('.edit').click();
-    cy.getSlate().click();
-    cy.get('button.block-add-button').click();
-    cy.get(
-      '[style="transition: opacity 500ms ease 0ms;"] > :nth-child(2) > .ui',
-    ).click();
+    cy.addNewBlock('listing');
     cy.get('#field-variation').click().type('summary{enter}');
     cy.get('#toolbar-save').click();
     cy.wait('@content');
@@ -74,11 +70,7 @@ describe('Folder Contents Tests', () => {
 
     cy.visit('/my-folder/my-document');
     cy.get('.edit').click();
-    cy.getSlate().click();
-    cy.get('button.block-add-button').click();
-    cy.get(
-      '[style="transition: opacity 500ms ease 0ms;"] > :nth-child(2) > .ui',
-    ).click();
+    cy.addNewBlock('listing');
     cy.get('#field-variation').click().type('summary{enter}');
     cy.get('#toolbar-save').click();
     cy.wait('@content');
@@ -116,11 +108,7 @@ describe('Folder Contents Tests', () => {
 
     cy.visit('/my-folder/my-document');
     cy.get('.edit').click();
-    cy.getSlate().click();
-    cy.get('button.block-add-button').click();
-    cy.get(
-      '[style="transition: opacity 500ms ease 0ms;"] > :nth-child(2) > .ui',
-    ).click();
+    cy.addNewBlock('listing');
     cy.get('#field-variation').click().type('imageGallery{enter}');
     cy.get('#toolbar-save').click();
     cy.wait('@content');
