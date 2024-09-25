@@ -72,6 +72,30 @@ describe('Accessibility Tests', () => {
     cy.checkA11y();
   });
 
+  it('Maps has no a11y violations', () => {
+    cy.createContent({
+      contentType: 'Document',
+      contentId: 'a11y-maps-block',
+      contentTitle: 'a11y table block',
+    });
+    cy.visit('/a11y-maps-block/edit');
+    // Add a maps block
+    cy.get('.block .slate-editor [contenteditable=true]').click();
+    cy.get('.button .block-add-button').click({ force: true });
+    cy.get('[aria-label="Unfold Common blocks"]').click();
+    cy.get('.blocks-chooser .common').findByText('Maps').click({ force: true });
+    cy.get('.block.maps .toolbar-inner .ui.input input').type(
+      `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2849.5450170616454!2d26.09630651539734!3d44.43966397910285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff21fbe45e2b%3A0x4b4116b92d4338d3!2sBucharest%2C%20Romania!5e0!3m2!1sen!2sin!4v1684408874419!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>{enter}`,
+    );
+    cy.get(
+      '#sidebar #blockform-fieldset-default .field-wrapper-title #field-title',
+    ).type('plone location');
+    cy.get('#toolbar-save').click();
+    cy.wait(1000);
+    cy.injectAxe();
+    cy.checkA11y();
+  });
+
   // TODO: Adapt this to volto-slate table
   // it('Table has no a11y violations', () => {
   //   cy.createContent({
