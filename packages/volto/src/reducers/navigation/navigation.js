@@ -4,11 +4,8 @@
  */
 
 import { map } from 'lodash-es';
-import {
-  flattenToAppURL,
-  getBaseUrl,
-  hasApiExpander,
-} from '@plone/volto/helpers';
+import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers/Url/Url';
+import { hasApiExpander } from '@plone/volto/helpers/Utils/Utils';
 
 import {
   GET_CONTENT,

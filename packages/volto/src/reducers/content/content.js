@@ -5,7 +5,7 @@
 
 import { map, mapKeys, omit } from 'lodash-es';
 
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 
 import {
   CREATE_CONTENT,

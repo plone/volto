@@ -17,12 +17,13 @@ import {
   RESET_APIERROR,
   SET_APIERROR,
 } from '@plone/volto/constants/ActionTypes';
-import { changeLanguage, updateUploadedFiles } from '@plone/volto/actions';
+import { changeLanguage } from '@plone/volto/actions/language/language';
+import { updateUploadedFiles } from '@plone/volto/actions/content/content';
 import {
   toGettextLang,
   toReactIntlLang,
-  getCookieOptions,
-} from '@plone/volto/helpers';
+} from '@plone/volto/helpers/Utils/Utils';
+import { getCookieOptions } from '@plone/volto/helpers/Cookies/cookies';
 let socket = null;
 
 /**
