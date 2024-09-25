@@ -15,6 +15,7 @@ import { useSelector } from 'react-redux';
 import config from '@plone/volto/registry';
 import { Api } from '@plone/volto/helpers';
 import configureStore from '@plone/volto/store';
+import { DefaultView } from '@plone/volto/components/';
 import { RenderBlocks } from '@plone/volto/components';
 import { serializeNodes } from '@plone/volto-slate/editor/render';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
@@ -37,6 +38,7 @@ const isHtmlTag = (str) => {
   );
 };
 const splitWords = (str) => {
+  if (typeof str !== 'string') return str;
   if (!str) return [];
 
   const result = [];
@@ -152,18 +154,9 @@ const DiffField = ({
     timeStyle: 'short',
   };
   const diffWords = (oneStr, twoStr) => {
+    console.log(oneStr, twoStr, splitWords(oneStr));
     return diffLib.diffArrays(splitWords(oneStr), splitWords(twoStr));
   };
-  /**
-   * Detect if the given string is an HTML tag (opening or closing).
-   */
-
-  /**
-   * Improved splitWords function that handles HTML tags correctly.
-   */
-  /**
-   * Improved splitWords function that handles HTML tags (with or without attributes) correctly.
-   */
 
   let parts, oneArray, twoArray;
   if (schema.widget) {
@@ -272,7 +265,7 @@ const DiffField = ({
       {view === 'split' && (
         <Grid.Row>
           <Grid.Column width={6} verticalAlign="top">
-            <div style={{ maxWidth: '600px' }}>
+            <div>
               <span
                 dangerouslySetInnerHTML={{
                   __html: join(
@@ -289,7 +282,7 @@ const DiffField = ({
             </div>
           </Grid.Column>
           <Grid.Column width={6} verticalAlign="top">
-            <div style={{ maxWidth: '600px' }}>
+            <div>
               <span
                 dangerouslySetInnerHTML={{
                   __html: join(
