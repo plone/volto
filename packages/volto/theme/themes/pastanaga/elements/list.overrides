@@ -41,3 +41,34 @@
     margin-left: @64px;
   }
 }
+
+#main {
+  .ui.list > .item {
+    .header.summary-listing-item-header {
+      &:extend(h3);
+    }
+
+    // Apply different colors based on the state-x class
+    .listing-item {
+      &.state-published .header.summary-listing-item-header,
+      &.state-publish .header.summary-listing-item-header {
+        color: @itemPublishedColor; // Published and publish state color
+      }
+
+      &.state-private .header.summary-listing-item-header,
+      &.state-send_back .header.summary-listing-item-header,
+      &.state-retract .header.summary-listing-item-header,
+      &.state-reject .header.summary-listing-item-header {
+        color: @itemPrivateColor; // Private, send_back, retract, reject state color
+      }
+
+      &.state-pending .header.summary-listing-item-header {
+        color: @itemPendingColor; // Pending state color
+      }
+
+      &.state-submit .header.summary-listing-item-header {
+        color: @itemSubmitColor; // Submit state color
+      }
+    }
+  }
+}
