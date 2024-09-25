@@ -140,7 +140,7 @@ const Sidebar = (props) => {
           aria-label={intl.formatMessage(messages.shrinkSidebar)}
           onClick={onToggleExpanded}
         >
-          <Icon name={clearSVG} />
+          <Icon name={clearSVG} size="26px" />
         </Button>
         <Tab
           menu={{
