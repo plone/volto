@@ -15,7 +15,6 @@ import { useSelector } from 'react-redux';
 import config from '@plone/volto/registry';
 import { Api } from '@plone/volto/helpers';
 import configureStore from '@plone/volto/store';
-import { DefaultView } from '@plone/volto/components/';
 import { RenderBlocks } from '@plone/volto/components';
 import { serializeNodes } from '@plone/volto-slate/editor/render';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
