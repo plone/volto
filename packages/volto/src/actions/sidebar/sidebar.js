@@ -7,6 +7,7 @@ import {
   SET_METADATA_FIELDSETS,
   SET_METADATA_FOCUS,
   RESET_METADATA_FOCUS,
+  SET_SIDEBAR_EXPANDED,
   SET_SIDEBAR_TAB,
 } from '@plone/volto/constants/ActionTypes';
 
@@ -59,5 +60,12 @@ export function setSidebarTab(index) {
   return {
     type: SET_SIDEBAR_TAB,
     index,
+  };
+}
+
+export function setSidebarExpanded(isExpanded) {
+  return {
+    type: SET_SIDEBAR_EXPANDED,
+    isExpanded,
   };
 }

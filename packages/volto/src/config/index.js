@@ -194,6 +194,10 @@ let config = {
     addBlockButton: {
       enabled: true,
     },
+    sidebarCloseButton: false,
+    sidebarToggleButton: {
+      position: false, // Can be 'toolbar' or 'floating'
+    },
   },
   widgets: {
     ...widgetMapping,

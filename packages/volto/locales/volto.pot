@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2024-08-10T17:00:27.117Z\n"
+"POT-Creation-Date: 2024-09-24T10:11:16.339Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -3334,6 +3334,11 @@ msgstr ""
 #. Default: "Shrink toolbar"
 #: components/manage/Toolbar/Toolbar
 msgid "Shrink toolbar"
+msgstr ""
+
+#. Default: "Sidebar expanded"
+#: components/manage/Form/SidebarToggleButton
+msgid "Sidebar expanded"
 msgstr ""
 
 #. Default: "Sign in to start session"
