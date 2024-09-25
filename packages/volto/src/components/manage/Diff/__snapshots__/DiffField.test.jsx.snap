@@ -1,61 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DiffField renders a boolean field 1`] = `
-<div>
-  <div
-    class="ui grid"
-    data-testid="DiffField"
-  >
-    <div
-      class="row"
-    >
-      <div
-        class="twelve wide column"
-      >
-        Text
-      </div>
-    </div>
-    <div
-      class="row"
-    >
-      <div
-        class="top aligned sixteen wide column"
-      >
-        <span />
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`DiffField renders a boolean field with inverse values 1`] = `
-<div>
-  <div
-    class="ui grid"
-    data-testid="DiffField"
-  >
-    <div
-      class="row"
-    >
-      <div
-        class="twelve wide column"
-      >
-        Text
-      </div>
-    </div>
-    <div
-      class="row"
-    >
-      <div
-        class="top aligned sixteen wide column"
-      >
-        <span />
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
 exports[`DiffField renders a datetime field 1`] = `
 <div>
   <div
@@ -128,9 +72,7 @@ exports[`DiffField renders a diff field in split mode 1`] = `
       <div
         class="top aligned six wide column"
       >
-        <div
-          style="max-width: 600px;"
-        >
+        <div>
           <span>
             My 
             <span
@@ -145,9 +87,7 @@ exports[`DiffField renders a diff field in split mode 1`] = `
       <div
         class="top aligned six wide column"
       >
-        <div
-          style="max-width: 600px;"
-        >
+        <div>
           <span>
             My 
             <span
@@ -268,15 +208,16 @@ exports[`DiffField renders an array field 1`] = `
         class="top aligned sixteen wide column"
       >
         <span>
+          one
           <span
             class="deletion"
           >
-            onetwo
+            two
           </span>
           <span
             class="addition"
           >
-            onethree
+            three
           </span>
         </span>
       </div>
@@ -307,15 +248,16 @@ exports[`DiffField renders an array of objects field 1`] = `
         class="top aligned sixteen wide column"
       >
         <span>
+          one
           <span
             class="deletion"
           >
-            onetwo
+            two
           </span>
           <span
             class="addition"
           >
-            onethree
+            three
           </span>
         </span>
       </div>
