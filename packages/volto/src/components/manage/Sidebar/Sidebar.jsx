@@ -1,6 +1,7 @@
 import { setSidebarExpanded, setSidebarTab } from '@plone/volto/actions';
 import { Icon } from '@plone/volto/components';
 import { BodyClass, getCookieOptions } from '@plone/volto/helpers';
+import config from '@plone/volto/registry';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 import { Fragment, useCallback, useState } from 'react';
@@ -112,19 +113,23 @@ const Sidebar = (props) => {
         className={cx('sidebar-container', { collapsed: !expanded })}
         style={size > 0 ? { width: size } : null}
       >
-        <Button
-          aria-label={
-            expanded
-              ? intl.formatMessage(messages.shrinkSidebar)
-              : intl.formatMessage(messages.expandSidebar)
-          }
-          className={
-            content && content.review_state
-              ? `${content.review_state} trigger`
-              : 'trigger'
-          }
-          onClick={onToggleExpanded}
-        />
+        {['toolbar', 'floating'].includes(
+          config.experimental.sidebarToggleButton?.position,
+        ) ? null : (
+          <Button
+            aria-label={
+              expanded
+                ? intl.formatMessage(messages.shrinkSidebar)
+                : intl.formatMessage(messages.expandSidebar)
+            }
+            className={
+              content && content.review_state
+                ? `${content.review_state} trigger`
+                : 'trigger'
+            }
+            onClick={onToggleExpanded}
+          />
+        )}
         <Button
           className="full-size-sidenav-btn"
           onClick={onToggleFullSize}
@@ -135,13 +140,16 @@ const Sidebar = (props) => {
             name={showFull ? expandSVG : collapseSVG}
           />
         </Button>
-        <Button
-          className="close-sidenav-btn"
-          aria-label={intl.formatMessage(messages.shrinkSidebar)}
-          onClick={onToggleExpanded}
-        >
-          <Icon name={clearSVG} size="26px" />
-        </Button>
+        {config.experimental.sidebarCloseButton ||
+        config.experimental.sidebarToggleButton?.position ? (
+          <Button
+            className="close-sidenav-btn"
+            aria-label={intl.formatMessage(messages.shrinkSidebar)}
+            onClick={onToggleExpanded}
+          >
+            <Icon name={clearSVG} size="26px" />
+          </Button>
+        ) : null}
         <Tab
           menu={{
             secondary: true,

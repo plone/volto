@@ -750,7 +750,10 @@ class Form extends Component {
                 }
                 onSelectBlock={this.onSelectBlock}
               />
-              <SidebarToggleButton />
+              {config.experimental.sidebarToggleButton?.position ===
+              'toolbar' ? (
+                <SidebarToggleButton />
+              ) : null}
               <UndoToolbar
                 state={{
                   formData,
