@@ -24,9 +24,10 @@ export const addHeadersFactory = (orig) => {
 };
 
 export const defaultHttpProxyOptions = {
-  pathRewrite: (path, req) => {
-    return `${config.settings.legacyTraverse ? '' : '/++api++'}${path}`;
-  },
+  // we don't need/want that for proxying binary
+  // pathRewrite: (path, req) => {
+  //   return `${config.settings.legacyTraverse ? '' : '/++api++'}${path}`;
+  // },
   router: (req) => {
     if (config.settings.internalApiPath && __SERVER__) {
       return config.settings.internalApiPath;
