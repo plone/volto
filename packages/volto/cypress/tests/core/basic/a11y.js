@@ -96,6 +96,25 @@ describe('Accessibility Tests', () => {
     cy.checkA11y();
   });
 
+  it('Text block has no a11y violations', () => {
+    cy.createContent({
+      contentType: 'Document',
+      contentId: 'a11y-text-block',
+      contentTitle: 'a11y text block',
+    });
+    cy.visit('/a11y-text-block/edit');
+    // Add a text block
+    cy.get('.block .slate-editor [contenteditable=true]').click();
+    cy.get('.button .block-add-button').click({ force: true });
+    cy.get('[aria-label="Unfold Text blocks"]').click();
+    cy.get('.blocks-chooser .slate').findByText('Text').click({ force: true });
+    cy.getSlateEditorAndType('My text').contains('My text');
+    cy.get('#toolbar-save').click();
+    cy.wait(1000);
+    cy.injectAxe();
+    cy.checkA11y();
+  });
+
   // TODO: Adapt this to volto-slate table
   // it('Table has no a11y violations', () => {
   //   cy.createContent({
