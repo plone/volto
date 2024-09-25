@@ -10,6 +10,7 @@ import ChangePassword from '@plone/volto/components/manage/Preferences/ChangePas
 import ContactForm from '@plone/volto/components/theme/ContactForm/ContactForm';
 import CreateTranslation from '@plone/volto/components/manage/Multilingual/CreateTranslation';
 import Delete from '@plone/volto/components/manage/Delete/Delete';
+import Diff from '@plone/volto/components/manage/Diff/Diff';
 import Edit from '@plone/volto/components/manage/Edit/Edit';
 import History from '@plone/volto/components/manage/History/History';
 import LinksToItem from '@plone/volto/components/manage/LinksToItem/LinksToItem';
