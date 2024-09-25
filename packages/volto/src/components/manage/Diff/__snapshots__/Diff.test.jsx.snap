@@ -231,9 +231,7 @@ exports[`Diff renders a diff component 1`] = `
         <div
           class="top aligned six wide column"
         >
-          <div
-            style="max-width: 600px;"
-          >
+          <div>
             <span>
               My 
               <span
@@ -253,9 +251,7 @@ exports[`Diff renders a diff component 1`] = `
         <div
           class="top aligned six wide column"
         >
-          <div
-            style="max-width: 600px;"
-          >
+          <div>
             <span>
               My 
               <span
